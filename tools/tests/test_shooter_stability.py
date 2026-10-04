@@ -20,7 +20,6 @@ Ground truth (research-verified):
 Run: python3 -m unittest tools/tests/test_shooter_stability.py
 """
 
-import math
 import unittest
 from pathlib import Path
 

@@ -25,6 +25,7 @@ Exit: 0 when every check passes, 1 when any fails.
 
 import math
 import os
+import re
 import sys
 
 # ─── SQF mirrors ────────────────────────────────────────────────────────────
@@ -229,8 +230,6 @@ def check_noise_floor_bounds():
 
 
 # ─── Value-range audit (parse the SQF, assert against wiki/ACE3 bands) ─────
-
-import re
 
 NVG_SQF = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),

@@ -15,7 +15,6 @@ known BCs is wrong).
 Run: python3 -m unittest tools/tests/test_ballistic_coefficient.py
 """
 
-import math
 import unittest
 from pathlib import Path
 

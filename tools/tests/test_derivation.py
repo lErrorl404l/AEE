@@ -13,7 +13,6 @@ A derivation that drifts from the measured physics fails the gate.
 Run: python3 -m unittest tools/tests/test_derivation.py
 """
 
-import math
 import unittest
 from pathlib import Path
 

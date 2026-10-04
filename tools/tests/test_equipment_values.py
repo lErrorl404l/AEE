@@ -27,7 +27,7 @@ FNC_PACK = (CLOTHING / "fnc_getPackProperties.sqf").read_text(encoding="utf-8")
 def extract_tiers(slot_var):
     """Return {keyword: tier_string} from the standalone switch."""
     m = re.search(
-        rf"switch \(true\) do \{{(.*?)\n\}};",
+        r"switch \(true\) do \{(.*?)\n\};",
         slot_var,
         re.S,
     )

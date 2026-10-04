@@ -30,7 +30,8 @@ Run:  python3 tools/validation/validate_dof.py
 Exit: 0 when every check passes, 1 when any fails.
 """
 
-import math
+import math as _math
+
 
 # ─── Optics physics (from the research report) ─────────────────────────────
 
@@ -82,8 +83,6 @@ TICK_S = 0.1
 #   focus_half = atan(tan(hFOV/2) * 0.15)
 # Default 16:9 -> 11.3 deg half-angle (was a fixed 6 deg, which is only
 # ~8 % of screen and too small on ultrawide).
-import math as _math
-
 _FOV_TOP = 0.75
 _ASPECT = 16.0 / 9.0
 _H_FOV_TAN = _math.tan(_math.atan(_FOV_TOP)) * _ASPECT
@@ -645,7 +644,6 @@ def check_extreme_far():
     bldg = [(-12.0, 12.0, 250.0, False)]
     series = [(0.0, 1.0, [(-12.0, 12.0, 3.0, False)]), (1.0, 30.0, bldg)]
     fh, rh, sh = run_scenario(series, focus0=3.0, n_ticks=300)
-    steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
     ok = abs(fh[-1] - 250.0) < 0.5 and max_x_step_ok(fh) and monotonic_toward(fh, 250.0)
     return {
         "name": "Extreme far - rack to 250 m",
@@ -777,7 +775,6 @@ def check_noise_no_hunting():
     import random
 
     random.seed(7)
-    wall = [(-12.0, 12.0, 15.0, False)]
     # Jittered scene: vary the reported wall distance by +-1.5 m each
     # tick, simulating fan-median noise on a stationary view.
     series = []

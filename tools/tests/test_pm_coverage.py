@@ -144,9 +144,9 @@ class TestPmAmmoCoverage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.ammo = [
-            l.strip()
-            for l in AMMO_INV.read_text(encoding="utf-8").splitlines()
-            if l.strip() and not NOISE.search(l)
+            line.strip()
+            for line in AMMO_INV.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not NOISE.search(line)
         ]
 
     def test_real_ammo_resolves(self):

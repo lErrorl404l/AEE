@@ -8,7 +8,6 @@ reference: Peel 2007 (doi:10.5194/hess-11-1633-2007).
 Run: python3 -m unittest tools/tests/test_biome.py
 """
 
-import math
 import unittest
 from pathlib import Path
 

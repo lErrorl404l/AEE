@@ -17,7 +17,6 @@ import unittest
 
 import numpy as np
 
-from tools.tests.test_sleep_model import sleep_pressure
 from tools.tests.test_shooter_stability import (
     cold_factor,
     fatigue_factor_hours,
@@ -313,7 +312,6 @@ class TestHotAltitudeCoupling(unittest.TestCase):
     def test_coupling_stays_bounded_full_scenario(self):
         # Whole scenario: every combined output in bounds.
         deficit = 0.0
-        prev = None
         for hour in range(0, 25, 2):
             wbgt = 30.0 if hour < 12 else 26.0
             deficit = dehydration_step(deficit, wbgt, 2.0, clothed=True)

@@ -18,6 +18,8 @@ Units: SI (W/m2, K, kg, m).  Temperatures in Celsius at the interface.
 """
 
 import math
+import unittest
+from pathlib import Path
 
 # ─── Constants (all sourced) ────────────────────────────────────────────────
 SIGMA = 5.670374419e-8  # W/m2K4, Stefan-Boltzmann (CODATA 2022)
@@ -177,7 +179,6 @@ def gagge_evaporative(t_sk, t_cr, t_air, rh, h_c, v_bl):
         * math.exp(max(0.0, t_sk - T_SK_NEUTRAL) / 10.7)
     )
     e_rsw = 0.68 * m_rsw
-    h_e = LR * h_c * 1e-3 * 1e3  # W/m2·Pa: LR K/kPa x h_c -> see note
     # Lewis relation: h_e = LR * h_c with LR = 16.5 K/kPa.  Convert:
     #   16.5 K/kPa = 0.0165 K/Pa; h_e [W/m2·Pa] = 0.0165 * h_c [W/m2K]
     #   because 1 W/m2K of convection transports 1/rho_cp ... simpler:
@@ -395,10 +396,6 @@ def solve_two_node(
     return t_core1, t_skin1
 
 
-import unittest
-from pathlib import Path
-
-
 class TestSQFSync(unittest.TestCase):
     """The Python mirror must stay locked to the SQF source.
 
@@ -532,7 +529,6 @@ def flir_radiance(t_surf_c, eps, t_air_c, f_ground=0.5, t_ground_c=None):
     total-longwave Swinbank sky.  Measured band values: Tebo (1965)
     Flagstaff -21 to -82 C; a clear-sky band temperature ~35 K below
     air is the temperate mid-range.  Overcast lifts it toward air."""
-    import math
 
     eps = max(0.05, min(1.0, eps))
     if t_ground_c is None:

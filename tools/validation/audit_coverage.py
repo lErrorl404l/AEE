@@ -17,7 +17,6 @@ Run:  python3 tools/validation/audit_coverage.py
 
 import json
 import re
-import sys
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"

@@ -7,7 +7,6 @@ Returns 0 if clean, 1 if issues found.
 
 import os
 import sys
-import re
 import fnmatch
 
 ADDONS_DIR = os.path.join(os.path.dirname(__file__), "..", "addons")
@@ -45,9 +44,6 @@ def check_file(path):
 
     for lineno, raw in enumerate(lines, 1):
         line = raw.rstrip("\n").rstrip("\r")
-
-        # Skip comments (single-line)
-        stripped = line.strip()
 
         # Track if we're inside a string
         in_string_sq = False  # 'single quoted'

@@ -1,4 +1,8 @@
-import re, sys, json, glob, os
+import re
+import sys
+import json
+import glob
+import os
 
 MARKETING = [
     "seamless",
@@ -392,7 +396,6 @@ def lint(text):
     # Flag only em dashes (U+2014), which instructions.md says to avoid.
     em = raw.count("—")
     total = sum(v.values())
-    per100 = {k: round(x * 100.0 / words, 2) for k, x in v.items()}
     return {
         "words": words,
         "sentences": len(sents),

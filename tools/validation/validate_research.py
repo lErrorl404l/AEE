@@ -247,8 +247,6 @@ def pressure_altitude(qnh_hpa, field_elev_m):
     """
     # More accurate: use ISA pressure at field elevation
     isa_p_sl = 1013.25
-    # Barometric: P = P0 * (1 - 0.0065*h/288.15)^5.2559
-    p_at_field = isa_p_sl * (1.0 - 0.0065 * field_elev_m / 288.15) ** 5.2559
     # Pressure altitude: height where ISA pressure equals actual QNH
     if abs(qnh_hpa - isa_p_sl) < 0.01:
         return field_elev_m
@@ -285,7 +283,6 @@ def true_airspeed_from_indicated(ias_kts, pressure_alt_m, t_c):
     Ref: FAA HDBK Ch. 11 — TAS = IAS / sqrt(sigma)
     sigma = rho / rho0, rho0 = 1.225 kg/m3
     """
-    e_s = 6.1121 * math.exp((18.678 - t_c / 234.5) * t_c / (257.14 + t_c))
     # Approximate pressure at altitude
     p_hpa = 1013.25 * (1.0 - 0.0065 * pressure_alt_m / 288.15) ** 5.2559
     t_k = t_c + 273.15
@@ -430,7 +427,6 @@ def water_balance_step(rain_01, evap_mm_h, saturation, storage_mm, soil_type="lo
     ro = runoff_rate(eff_rain, saturation, soil_type)
     infiltrated = eff_rain - ro
     # Storage change
-    dS = infiltrated * 0.05  # 5% of infiltrated water stored on surface
     new_storage = max(0.0, ro * 0.1)  # 10% of runoff temporarily stored
     # Saturation update
     new_sat = min(1.0, saturation + infiltrated * 0.001)
@@ -542,14 +538,6 @@ def check_dew_point():
 
 def check_frost_physical_behaviour():
     """Frost state model: physical behaviour checks."""
-    cases = [
-        # Clear calm cold night: frost expected
-        (frost_state(-5, 80, 0.5, 0.0, 0.0), True, "clear calm cold night"),
-        # Warm humid day: no frost
-        (frost_state(25, 70, 2.0, 0.3, 0.8), False, "warm humid day"),
-        # Windy night: less frost than calm
-        (frost_state(-3, 85, 8.0, 0.1, 0.0), None, "windy night vs calm"),
-    ]
     cold_night = frost_state(-5, 80, 0.5, 0.0, 0.0)["frost_risk"]
     warm_day = frost_state(25, 70, 2.0, 0.3, 0.8)["frost_risk"]
     wind_calm = frost_state(2, 80, 0.5, 0.0, 0.0)["frost_risk"]

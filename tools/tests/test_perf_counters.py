@@ -109,7 +109,6 @@ class TestZeroOverheadGate(unittest.TestCase):
         # script_debug.hpp: ENABLE_PERFORMANCE_COUNTERS is commented; the
         # #else branch defines the macros as empty.  Assert the header
         # still has the disabled branch intact.
-        import re
         from pathlib import Path
 
         hdr = Path("addons/main/script_debug.hpp").read_text(encoding="utf-8")
