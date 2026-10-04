@@ -1444,14 +1444,14 @@ missionNamespace setVariable [QGVAR(nvgFocusHoldUntil), _holdUntil];
 // MANUAL at their hyperfocal ring position; only the ENVG-II fusion
 // goggle starts in AUTO.  In MANUAL the ring holds where the player set
 // it - moving closer/further passes objects through the plane naturally.
-private _dofModeSet = missionNamespace getVariable ["aee_optics_dofModeSet", false];
+private _dofModeSet = missionNamespace getVariable [QGVAR(dofModeSet), false];
 if (!_dofModeSet) then {
-    missionNamespace setVariable ["aee_optics_dofMode", _dofModeDefault];
-    missionNamespace setVariable ["aee_optics_dofModeSet", true];
+    missionNamespace setVariable [QGVAR(dofMode), _dofModeDefault];
+    missionNamespace setVariable [QGVAR(dofModeSet), true];
 };
-private _dofMode = missionNamespace getVariable ["aee_optics_dofMode", _dofModeDefault];
+private _dofMode = missionNamespace getVariable [QGVAR(dofMode), _dofModeDefault];
 private _focusDist = if (_dofMode == 1) then {
-    private _manual = missionNamespace getVariable ["aee_optics_dofManualDist", _dofDefaultDist];
+    private _manual = missionNamespace getVariable [QGVAR(dofManualDist), _dofDefaultDist];
     _manual max _dofNearLimit min _dofMaxDist
 } else {
     _curFocus max _dofNearLimit min _dofMaxDist

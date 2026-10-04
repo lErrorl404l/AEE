@@ -22,9 +22,9 @@ AEE_MODULE_POST_INIT
 // The focus values live in missionNamespace so fnc_applyNVGTubeModel reads
 // them on the sensor PFH tick regardless of which addon owns the keybind.
 ["AEE", "DoFModeToggle", [LLSTRING(DoFModeToggle), "Toggle NVG focus: auto or manual"], {
-    private _mode = missionNamespace getVariable ["aee_optics_dofMode", 0];
+    private _mode = missionNamespace getVariable [QEGVAR(nightvision,dofMode), 0];
     _mode = parseNumber (_mode != 1);   // 0 <-> 1
-    missionNamespace setVariable ["aee_optics_dofMode", _mode];
+    missionNamespace setVariable [QEGVAR(nightvision,dofMode), _mode];
     if (_mode == 0) then {
         AEE_LOG_INFO("DoF focus: AUTO");
     } else {
@@ -38,13 +38,13 @@ AEE_MODULE_POST_INIT
 // the default KEYBIND [key, [shift, ctrl, alt]] - [0, [false,false,false]]
 // means unbound by default (the player assigns it in Configure Addons).
 ["AEE", "DoFFocusIn", [LLSTRING(DoFFocusIn), "NVG manual focus: rack nearer"], {
-    private _d = missionNamespace getVariable ["aee_optics_dofManualDist", 15];
+    private _d = missionNamespace getVariable [QEGVAR(nightvision,dofManualDist), 15];
     _d = (_d - 1) max 0.25;
-    missionNamespace setVariable ["aee_optics_dofManualDist", _d];
+    missionNamespace setVariable [QEGVAR(nightvision,dofManualDist), _d];
 }, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
 
 ["AEE", "DoFFocusOut", [LLSTRING(DoFFocusOut), "NVG manual focus: rack farther"], {
-    private _d = missionNamespace getVariable ["aee_optics_dofManualDist", 15];
+    private _d = missionNamespace getVariable [QEGVAR(nightvision,dofManualDist), 15];
     _d = (_d + 1) min 300;
-    missionNamespace setVariable ["aee_optics_dofManualDist", _d];
+    missionNamespace setVariable [QEGVAR(nightvision,dofManualDist), _d];
 }, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
