@@ -29,6 +29,9 @@ AEE_MODULE_POST_INIT
     // Fade normal-vision optical effects immediately (managePostProcess
     // gates on vision mode internally).
     [] call FUNC(managePostProcess);
+    // Apply or stand down the normal-vision base grade at once, so a mode
+    // change does not wait for the 1 s PFH tick.
+    [] call FUNC(applyBaseGrade);
     // Reset sensor handles to -1 on entry.  The engine can kill ppEffects
     // (alt-tab, resize) leaving stale positive handle numbers that fail
     // every call with "Invalid post effect handle".  Forcing -1 makes the
@@ -180,6 +183,8 @@ if (hasInterface) then {
     [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
     // Eye adaptation: AEE owns the camera aperture and its rate (issue #141).
     [] call FUNC(initEyeAdaptation);
+    // Normal-vision base grade and acuity pass (image realism).
+    [] call FUNC(initBaseGrade);
 };
 
 
