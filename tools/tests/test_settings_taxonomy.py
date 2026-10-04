@@ -128,6 +128,9 @@ EXPECTED_WILDLIFE = {
     ("AEE Wildlife", "Behaviour"): {
         "aee_wildlife_spookSensitivity",
         "aee_wildlife_silenceDecay",
+        "aee_wildlife_hungerRate",
+        "aee_wildlife_thirstRate",
+        "aee_wildlife_herdSize",
     },
 }
 

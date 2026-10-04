@@ -554,5 +554,19 @@ class TestResourceScore(unittest.TestCase):
         self.assertNotEqual(water, food)
 
 
+class TestWildlifeSettingsStrings(unittest.TestCase):
+    """Every wildlife setting declares both stringtable keys."""
+
+    def test_every_setting_has_both_stringtable_keys(self):
+        settings = (WILDLIFE / "initSettings.inc.sqf").read_text(encoding="utf-8")
+        strings = (WILDLIFE / "stringtable.xml").read_text(encoding="utf-8")
+        names = re.findall(r"AEE_SETTING_\w+\(\s*(\w+)", settings)
+        self.assertGreater(len(names), 0)
+        for name in names:
+            with self.subTest(setting=name):
+                self.assertIn(f"STR_AEE_Wildlife_{name}_Name", strings)
+                self.assertIn(f"STR_AEE_Wildlife_{name}_Description", strings)
+
+
 if __name__ == "__main__":
     unittest.main()

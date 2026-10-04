@@ -27,4 +27,10 @@ AEE_SETTING_SLIDER(spookSensitivity,"AEE Wildlife","Behaviour",0,2,1.0,0.05);
 
 AEE_SETTING_SLIDER(silenceDecay,"AEE Wildlife","Behaviour",0.01,0.2,0.05,0.005);
 
+AEE_SETTING_SLIDER(hungerRate,"AEE Wildlife","Behaviour",0.001,0.1,0.02,0.001);
+
+AEE_SETTING_SLIDER(thirstRate,"AEE Wildlife","Behaviour",0.001,0.2,0.03,0.001);
+
+AEE_SETTING_SLIDER(herdSize,"AEE Wildlife","Behaviour",1,12,4,1);
+
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Wildlife",false);

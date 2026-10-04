@@ -41,6 +41,22 @@
             <Original>Wildlife</Original>
             <English>Wildlife</English>
         </Key>
+        <Key ID="STR_AEE_Wildlife_herdSize_Description">
+            <Original>Target number of animals of one species in a herd</Original>
+            <English>Target number of animals of one species in a herd</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_herdSize_Name">
+            <Original>Herd Size</Original>
+            <English>Herd Size</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_hungerRate_Description">
+            <Original>How fast an animal becomes hungry, per second</Original>
+            <English>How fast an animal becomes hungry, per second</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_hungerRate_Name">
+            <Original>Hunger Rate</Original>
+            <English>Hunger Rate</English>
+        </Key>
         <Key ID="STR_AEE_Wildlife_logDebug_Description">
             <Original>Log wildlife diagnostics to the RPT. Turn this on before reporting a fault</Original>
             <English>Log wildlife diagnostics to the RPT. Turn this on before reporting a fault</English>
@@ -80,6 +96,14 @@
         <Key ID="STR_AEE_Wildlife_spookSensitivity_Name">
             <Original>Spook Sensitivity</Original>
             <English>Spook Sensitivity</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_thirstRate_Description">
+            <Original>How fast an animal becomes thirsty, per second</Original>
+            <English>How fast an animal becomes thirsty, per second</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_thirstRate_Name">
+            <Original>Thirst Rate</Original>
+            <English>Thirst Rate</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_tickInterval_Description">
             <Original>Wildlife simulation tick interval in seconds</Original>

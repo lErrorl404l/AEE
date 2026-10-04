@@ -565,6 +565,22 @@ operator and the debug console.
 | `aee_wildlife_ambientPFH` | wildlife | The wildlife client tick handle |
 | `aee_wildlife_firedManEH` | wildlife | The core player engine handler key for the gunfire report |
 
+## Wildlife fauna state
+
+The client-local fauna driver publishes its live list and its resource
+providers. The per-animal needs and herd anchor live on the agent object.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_wildlife_fauna` | wildlife | The live fauna list, one entry per spawned animal |
+| `aee_wildlife_speciesTable` | wildlife | The loaded vanilla species table |
+| `aee_wildlife_herds` | wildlife | The herd anchors, one entry per species cluster |
+| `aee_wildlife_waterProvider` | wildlife | The water proximity provider stored for the action callback |
+| `aee_wildlife_vegProvider` | wildlife | The vegetation score provider stored for the action callback |
+| `aee_wildlife_hunger` | wildlife | Per-animal hunger, an object variable |
+| `aee_wildlife_thirst` | wildlife | Per-animal thirst, an object variable |
+| `aee_wildlife_herdAnchor` | wildlife | Per-animal herd leash centre, an object variable |
+
 ## Wildlife and AI debug hooks
 
 These variables are read from missionNamespace and are not CBA settings. Set
@@ -579,3 +595,4 @@ owning function headers.
 | `aee_wildlife_forceNight` | BOOL | Override the day and night choice |
 | `aee_wildlife_forceSpook` | ARRAY | Raise a spook wave at this position |
 | `aee_wildlife_forceSilence` | NUMBER | Override the silence gain multiplier |
+| `aee_wildlife_forceSpecies` | STRING | Force one animal class, bypassing the biome mix |

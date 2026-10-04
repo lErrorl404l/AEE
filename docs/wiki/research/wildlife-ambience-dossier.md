@@ -76,6 +76,47 @@ is a finding.
 - FINDING: no `CfgAmbientSounds` class list. The engine ambient bed is
   controlled by `enableEnvironment`, not by a per-context class list.
 
+## Species table
+
+The machine-readable table is `addons/wildlife/data/species_table.sqf`. Each
+row is `[biomeFamily, [class, ...]]`. The families are the Koppen first-letter
+groups, cold, temperate, arid and tropical, plus the water and settlement
+overlays. Every class is a confirmed vanilla CfgVehicles Animals class. The
+kernel `fnc_speciesForBiome` builds a deterministic `[class, count]` mix from
+the biome, the time, the water and the vegetation score, using a small integer
+hash of the mission seed and the class index. Two clients at the same cell and
+time see the same mix.
+
+## Resource model
+
+Water is a cell where `EFUNC(environmental,getCoastDistance)` is below the
+arrival distance. Grazing is a cell where the vegetation vote in
+`aee_environmental_terrainSignals` scores high. `fnc_resourceScore` turns the
+water proximity or the vegetation score and the distance into a suitability,
+and `fnc_pickResourceTarget` walks an eight point ring at each increasing
+radius and returns the best point. The providers that read the two published
+facts are supplied by the fauna runtime.
+
+## Fauna register additions
+
+The fauna constants are modelling choices, UNSOURCED, except the animal class
+list and the agent control facts.
+
+| Constant | Value | Source | State |
+| --- | --- | --- | --- |
+| Animal hard cap per client | 16 | Modelling | [UNSOURCED] |
+| Spawn radius | 350 m | Modelling, inside the 800 m ambient far plane | [UNSOURCED] |
+| Despawn radius | 600 m | Modelling | [UNSOURCED] |
+| Hunger rate | 0.02 per second | Modelling | [UNSOURCED] |
+| Thirst rate | 0.03 per second | Modelling | [UNSOURCED] |
+| Herd size, sheep and goat | 3 to 6 | Modelling | [UNSOURCED] |
+| Grazing arrival distance | 40 m | Modelling | [UNSOURCED] |
+| Water arrival distance | 25 m | Modelling | [UNSOURCED] |
+| Biome species table | Per-biome class lists | BIKI CfgVehicles Animals | [P-W] |
+| `BIS_fnc_animalBehaviour_disable` | true | BIKI Animals, Override Default Animal Behaviour | [P] |
+| Agent move commands | `moveTo`, `setDestination` | BIKI Animals, agents cannot use `doMove` | [P] |
+| Agent locality | Local | BIKI createAgent, BI feedback T155634 | [P] |
+
 ## Sources
 
 - BIKI Arma 3 Sound Files, the confirmed `.wss` set.
