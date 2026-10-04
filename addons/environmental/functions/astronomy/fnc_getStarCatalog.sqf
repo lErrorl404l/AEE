@@ -111,45 +111,82 @@ private _rows = if (_precCache isEqualTo [] || {(_precCache select 0) isNotEqual
     _precCache select 1
 };
 
-// ─── Compute visible stars ─────────────────────────────────────────────────
+// ─── Visible-set cache ─────────────────────────────────────────────────────
+// The rotation from the precessed equatorial rows to [alt, az] depends only
+// on the local sidereal time, the observer latitude, and the magnitude
+// filter.  The world latitude is fixed for a mission and the sidereal time
+// advances slowly, so the code reuses the built set until one of those inputs
+// moves.  0.25 degrees of sidereal time is well under the 0.5-degree moon
+// disc, so a cached field is visually identical.  Latitude, limiting
+// magnitude, the debug force and the date are compared exactly: a teleport to
+// another world, a time jump or a force change recomputes.  The player
+// position enters through the latitude the shared geolocation source derives
+// from the world.
+private _visibleCache = missionNamespace getVariable [QGVAR(starCatalogVisible), []];
 private _visible = [];
-private _sinLST = sin _LST;
-private _cosLST = cos _LST;
-private _sinLat = sin _lat;
-private _cosLat = cos _lat;
-
-{
-    // The rows are sorted by magnitude, brightest first, so a star past the
-    // limit means every later star is past it too. Stop the scan before the
-    // rotation: the tick only pays for the stars it can use.
-    if ((_x select 5) > _mLim) exitWith {};
-
-    // Hour angle, from the precomputed right ascension: the sine and cosine
-    // of (LST - RA) need no per-star trig.
-    private _sinHa = _sinLST * (_x select 2) - _cosLST * (_x select 1);
-    private _cosHa = _cosLST * (_x select 2) + _sinLST * (_x select 1);
-
-    // Altitude above horizon (degrees)
-    private _altDeg = asin ((_x select 3) * _sinLat + (_x select 4) * _cosLat * _cosHa);
-
-    // Azimuth from north, clockwise.  The Meeus Ch. 13 atan2 form measures
-    // from the south, westward; add 180 degrees for the north convention
-    // fnc_starDirection documents and consumes.
-    if (_altDeg > 0) then {
-        private _azDeg = (_sinHa atan2 (_cosHa * _sinLat - ((_x select 3) / (_x select 4)) * _cosLat)) + 180;
-        _azDeg = _azDeg mod 360;
-        if (_azDeg < 0) then { _azDeg = _azDeg + 360; };
-        _visible pushBack [(_x select 0), _altDeg, _azDeg, (_x select 5)];
+private _cacheHit = false;
+if (_visibleCache isNotEqualTo []) then {
+    _visibleCache params ["_cLST", "_cLat", "_cMLim", "_cForce", "_cDate", "_cVisible"];
+    // Fold the sidereal-time difference into [-180, 180] so a wrap past 360
+    // degrees does not read as a full revolution.
+    private _dLST = abs(_LST - _cLST);
+    if (_dLST > 180) then { _dLST = 360 - _dLST; };
+    if (_dLST <= 0.25
+        && (_lat == _cLat)
+        && (_mLim == _cMLim)
+        && (_starsForce == _cForce)
+        && (_dateKey isEqualTo _cDate)) then {
+        _visible = _cVisible;
+        _cacheHit = true;
     };
-} forEach _rows;
+};
 
-// Sort by altitude, highest first.  The boolean form of sort orders by
-// the first element of each item, so sort a keyed copy that carries the
-// altitude first, then restore the [name, altitude, azimuth, magnitude]
-// shape.  Sorting the raw items would order by the name string instead.
-private _keyed = _visible apply { [(_x select 1), _x] };
-_keyed sort true;
-_visible = _keyed apply { _x select 1 };
+if (!_cacheHit) then {
+    // ─── Compute visible stars ─────────────────────────────────────────────
+    private _sinLST = sin _LST;
+    private _cosLST = cos _LST;
+    private _sinLat = sin _lat;
+    private _cosLat = cos _lat;
+
+    {
+        // The rows are sorted by magnitude, brightest first, so a star past the
+        // limit means every later star is past it too. Stop the scan before the
+        // rotation: the tick only pays for the stars it can use.
+        if ((_x select 5) > _mLim) exitWith {};
+
+        // Hour angle, from the precomputed right ascension: the sine and cosine
+        // of (LST - RA) need no per-star trig.
+        private _sinHa = _sinLST * (_x select 2) - _cosLST * (_x select 1);
+        private _cosHa = _cosLST * (_x select 2) + _sinLST * (_x select 1);
+
+        // Altitude above horizon (degrees)
+        private _altDeg = asin ((_x select 3) * _sinLat + (_x select 4) * _cosLat * _cosHa);
+
+        // Azimuth from north, clockwise.  The Meeus Ch. 13 atan2 form measures
+        // from the south, westward; add 180 degrees for the north convention
+        // fnc_starDirection documents and consumes.
+        if (_altDeg > 0) then {
+            private _azDeg = (_sinHa atan2 (_cosHa * _sinLat - ((_x select 3) / (_x select 4)) * _cosLat)) + 180;
+            _azDeg = _azDeg mod 360;
+            if (_azDeg < 0) then { _azDeg = _azDeg + 360; };
+            _visible pushBack [(_x select 0), _altDeg, _azDeg, (_x select 5)];
+        };
+    } forEach _rows;
+
+    // Sort by altitude, highest first.  The boolean form of sort orders by
+    // the first element of each item, so sort a keyed copy that carries the
+    // altitude first, then restore the [name, altitude, azimuth, magnitude]
+    // shape.  Sorting the raw items would order by the name string instead.
+    private _keyed = _visible apply { [(_x select 1), _x] };
+    _keyed sort true;
+    _visible = _keyed apply { _x select 1 };
+
+    // Keep the inputs beside the set so the next tick can test the cache.
+    missionNamespace setVariable [
+        QGVAR(starCatalogVisible),
+        [_LST, _lat, _mLim, _starsForce, _dateKey, _visible]
+    ];
+};
 
 missionNamespace setVariable [QGVAR(visibleStars), _visible];
 
