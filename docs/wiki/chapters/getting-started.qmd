@@ -100,3 +100,17 @@ Make sure `aee_core` is loaded. The settings are registered in
 **Compatibility addon loads but produces no state.**
 Check the RPT for `[AEE-TEST] [PASS]` lines. Each compat addon
 logs its integration result on mission start.
+
+**The night sky does not appear (no stars, meteors, aurora or Milky Way).**
+Grep the RPT for `sky state`. The line reports each feature as `ON` or
+`OFF(<reason>)` with the physical gates, the settings and the force-hook
+values, so it names the gate that turned a feature off. The one INFO line
+appears at mission start; set the AEE Environmental Diagnostics switch (or
+`aee_environmental_logDebug`) for the line every tick. If the line is absent
+completely, the running PBO predates the code: re-unzip the release over the
+mod with `-o` and restart. Force a feature to confirm the render path from the
+debug console:
+
+```
+missionNamespace setVariable ["aee_environmental_skyForce", true];
+```

@@ -346,6 +346,55 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_lastStrikePos` | core | Last lightning strike position |
 | `aee_core_lightningIgnition` | core | Lightning ignition flag |
 
+### Night-sky render state
+
+The night-sky renderers publish their per-frame state for the consolidated
+`sky state` log line. The client workers write these; the log and the operator
+read them.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_environmental_auroraActive` | environmental | Whether the aurora curtain is drawn this frame |
+| `aee_environmental_auroraSourceCount` | environmental | Live aurora particle sources |
+| `aee_environmental_milkyWayActive` | environmental | Whether the Milky Way band is drawn this frame |
+| `aee_environmental_milkyWaySampleCount` | environmental | Milky Way band samples this frame |
+| `aee_environmental_faintStarCount` | environmental | Faint stars drawn by the immediate-mode layer |
+| `aee_environmental_effectiveNelm` | environmental | The limiting magnitude the starfield uses (forced when `aee_environmental_starsForce` is set) |
+| `aee_environmental_starEmitterCount` | environmental | Bright-star light emitters requested |
+
+### Night-sky debug hooks
+
+Five `missionNamespace` hooks force the night sky for an in-game check. The
+consolidated line is greppable by `sky state`.
+
+| Hook | Type | Purpose |
+|---|---|---|
+| `aee_environmental_skyForce` | Boolean | Force the whole night sky on |
+| `aee_environmental_auroraForce` | Number | -1 off, 0..1 forces that aurora intensity |
+| `aee_environmental_milkyWayForce` | Boolean | Force the Milky Way on |
+| `aee_environmental_starsForce` | Number | Forced limiting magnitude (6.5 reveals the faint bulk) |
+| `aee_environmental_meteorForce` | String | One-shot shower code (spawns one meteor) |
+
+Set a hook from the debug console with the `missionNamespace setVariable`
+form:
+
+```
+missionNamespace setVariable ["aee_environmental_skyForce", true];
+missionNamespace setVariable ["aee_environmental_auroraForce", 0.8];
+missionNamespace setVariable ["aee_environmental_milkyWayForce", true];
+missionNamespace setVariable ["aee_environmental_starsForce", 6.5];
+missionNamespace setVariable ["aee_environmental_meteorForce", "GEM"];
+```
+
+Clear every hook and return to the physics:
+
+```
+missionNamespace setVariable ["aee_environmental_skyForce", false];
+missionNamespace setVariable ["aee_environmental_auroraForce", -1];
+missionNamespace setVariable ["aee_environmental_milkyWayForce", false];
+missionNamespace setVariable ["aee_environmental_starsForce", 0];
+```
+
 ## Settings
 
 ### Diagnostics switches

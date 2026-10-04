@@ -188,6 +188,13 @@ read them. The variables below are grouped by subsystem.
 | `aee_environmental_visibleStars` | The visible star count |
 | `aee_environmental_starLights` | The star light-emitter registry |
 | `aee_environmental_meteors` | The active meteor registry |
+| `aee_environmental_auroraActive` | Whether the aurora curtain is drawn |
+| `aee_environmental_auroraSourceCount` | Live aurora particle sources |
+| `aee_environmental_milkyWayActive` | Whether the Milky Way band is drawn |
+| `aee_environmental_milkyWaySampleCount` | Milky Way band samples |
+| `aee_environmental_faintStarCount` | Faint stars drawn by the immediate-mode layer |
+| `aee_environmental_effectiveNelm` | The limiting magnitude the starfield uses |
+| `aee_environmental_starEmitterCount` | Bright-star light emitters requested |
 
 ## Soil and hydrology
 
