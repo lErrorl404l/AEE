@@ -251,5 +251,89 @@ class TestSkyGateReason(unittest.TestCase):
         )
 
 
+class TestSkyStateLogContract(unittest.TestCase):
+    """The consolidated log line and its environment-tick wiring."""
+
+    def setUp(self):
+        self.logger = (SENSOR / "fnc_logSkyState.sqf").read_text(encoding="utf-8")
+        self.core = (
+            ROOT / "addons" / "core" / "functions" / "fnc_updateEnvironment.sqf"
+        ).read_text(encoding="utf-8")
+
+    def test_logger_shape(self):
+        self.assertIn('"sky state | sun=', self.logger)
+        self.assertIn("AEE_LOG_INFO", self.logger)
+        self.assertIn("AEE_LOG_DEBUG", self.logger)
+        self.assertIn("skyLogStarted", self.logger)
+
+    def test_calls_gate_kernel_for_all_features(self):
+        self.assertEqual(self.logger.count("call FUNC(skyGateReason)"), 4)
+        for feature in ('"stars"', '"meteors"', '"aurora"', '"milkyway"'):
+            self.assertIn(feature, self.logger)
+
+    @staticmethod
+    def _balanced(text, open_idx):
+        depth = 0
+        in_str = False
+        i = open_idx
+        while i < len(text):
+            c = text[i]
+            if in_str:
+                if c == '"':
+                    in_str = False
+            elif c == '"':
+                in_str = True
+            elif c in "[({":
+                depth += 1
+            elif c in "])}":
+                depth -= 1
+                if depth == 0:
+                    return text[open_idx : i + 1]
+            i += 1
+        raise AssertionError("unbalanced format array")
+
+    @staticmethod
+    def _top_level_commas(block):
+        depth = 0
+        in_str = False
+        count = 0
+        for c in block[1:-1]:
+            if in_str:
+                if c == '"':
+                    in_str = False
+            elif c == '"':
+                in_str = True
+            elif c in "[({":
+                depth += 1
+            elif c in "])}":
+                depth -= 1
+            elif c == "," and depth == 0:
+                count += 1
+        return count
+
+    def test_format_specifiers_match_arguments(self):
+        start = self.logger.index('"sky state | sun=')
+        fmt_end = self.logger.index('"', start + 1)
+        fmt = self.logger[start : fmt_end + 1]
+        specifiers = sorted(int(n) for n in re.findall(r"%(\d+)", fmt))
+        self.assertEqual(specifiers, list(range(1, len(specifiers) + 1)))
+        bracket = self.logger.index("[", self.logger.rindex("format", 0, start))
+        block = self._balanced(self.logger, bracket)
+        self.assertEqual(self._top_level_commas(block), len(specifiers))
+
+    def test_core_wires_logger_after_catalog(self):
+        self.assertIn("EFUNC(environmental,logSkyState)", self.core)
+        self.assertLess(
+            self.core.index("EFUNC(environmental,getStarCatalog)"),
+            self.core.index("EFUNC(environmental,logSkyState)"),
+        )
+
+    def test_old_windowed_logs_removed(self):
+        meteors = (SENSOR / "fnc_updateMeteors.sqf").read_text(encoding="utf-8")
+        stars = (SENSOR / "fnc_starLightsSync.sqf").read_text(encoding="utf-8")
+        self.assertNotIn("meteorLogAt", meteors)
+        self.assertNotIn("starLogAt", stars)
+
+
 if __name__ == "__main__":
     unittest.main()

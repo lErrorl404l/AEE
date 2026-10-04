@@ -75,7 +75,7 @@ if (_feature == "aurora") then {
         else {
             if (_kpIndex <= 4) then { _on = false; _reason = "KP"; }
             else {
-                if (!((_daytime < 6) || (_daytime > 20))) then { _on = false; _reason = "DAYTIME"; }
+                if ((_daytime >= 6) && (_daytime <= 20)) then { _on = false; _reason = "DAYTIME"; }
                 else { if (_latDeg <= _ovalLimit) then { _on = false; _reason = "LATITUDE"; }; };
             };
         };

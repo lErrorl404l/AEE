@@ -335,6 +335,10 @@ private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing)
 [_ambientLux, _seeing] call EFUNC(environmental,calculateLimitingMagnitude);
 private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
 [_posASL2D, date] call EFUNC(environmental,getStarCatalog);
+// One consolidated night-sky state line (INFO once, then DEBUG).
+// Reads the render registries the client workers publish, so it sits after
+// the star catalogue and the space-weather gates it reports.
+[] call EFUNC(environmental,logSkyState);
 [] call EFUNC(atmos,calculateCloudCeiling);
 [] call EFUNC(radio,calculateIonosphericAbsorption);
 if (GVAR(environmentalEnabled)) then {

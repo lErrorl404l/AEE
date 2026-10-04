@@ -68,7 +68,6 @@ if (_lat == 0) then { _lat = 40; };
 private _mLim = missionNamespace getVariable [QGVAR(limitingMagnitude), 6.5];
 private _eyePos = ((call CBA_fnc_currentUnit) call EFUNC(core,getEyeState)) select 0;
 private _showers = [] call FUNC(meteorShowers);
-private _spawns = 0;
 
 {
     private _state = [_date, _lat, _mLim, _x] call FUNC(meteorState);
@@ -113,18 +112,8 @@ private _spawns = 0;
 
             private _despawnAt = diag_tickTime + METEOR_LIFETIME;
             _meteors pushBack [_carrier, _light, _trail, METEOR_LIGHT_BRIGHTNESS, _despawnAt];
-            _spawns = _spawns + 1;
         };
     };
 } forEach _showers;
 
 missionNamespace setVariable [QGVAR(meteors), _meteors];
-
-// ── Windowed trace so the event reads in an .rpt. ────────────────────────
-private _logAt = missionNamespace getVariable [QGVAR(meteorLogAt), -1e9];
-if !(_logAt isEqualType 0) then { _logAt = -1e9; };
-if (diag_tickTime >= _logAt) then {
-    missionNamespace setVariable [QGVAR(meteorLogAt), diag_tickTime + 5];
-    private _logMsg = format ["meteor: %1 active, %2 spawns", count _meteors, _spawns];
-    AEE_LOG_DEBUG(_logMsg);
-};
