@@ -200,8 +200,6 @@ if (GVAR(physiologyEnabled)) then {
 BEGIN_COUNTER(optics);
 [] call EFUNC(environmental,calculateSpaceWeather);
 [_posASL] call EFUNC(core,calculateIlluminance);
-// Engine camera aperture follows the illuminance model (issue #141).
-[] call EFUNC(atmos,updateAperture);
 [] call EFUNC(thermal,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
 if (GVAR(opticsEnabled)) then {
