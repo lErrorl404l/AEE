@@ -27,7 +27,7 @@ params [
 ];
 
 private _range = 1e10;
-if ((count _senses) > 0) then {
+if (_senses isNotEqualTo []) then {
     _range = _senses select 0;
 };
 

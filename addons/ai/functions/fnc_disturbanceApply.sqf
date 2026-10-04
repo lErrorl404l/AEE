@@ -34,15 +34,15 @@ for "_i" from 0 to (_count - 1) do {
     private _entry = _cells select _i;
     if (((_entry select 0) select 0) == (_key select 0) && ((_entry select 0) select 1) == (_key select 1)) then {
         private _raised = (_entry select 1) max _magnitude;
-        _out = _out + [[_key, _raised, _now]];
+        _out pushBack [_key, _raised, _now];
         _found = true;
     } else {
-        _out = _out + [_entry];
+        _out pushBack _entry;
     };
 };
 
 if (!_found) then {
-    _out = _out + [[_key, _magnitude, _now]];
+    _out pushBack [_key, _magnitude, _now];
 };
 
 _out
