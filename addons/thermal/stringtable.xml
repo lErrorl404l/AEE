@@ -65,14 +65,6 @@
             <Original>Thermal Repaint Rate</Original>
             <English>Thermal Repaint Rate</English>
         </Key>
-        <Key ID="STR_AEE_Thermal_thermalAgcHunt_Description">
-            <Original>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</Original>
-            <English>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</English>
-        </Key>
-        <Key ID="STR_AEE_Thermal_thermalAgcHunt_Name">
-            <Original>Thermal AGC Hunt</Original>
-            <English>Thermal AGC Hunt</English>
-        </Key>
         <Key ID="STR_AEE_Thermal_thermalAgcHuntPeriod_Description">
             <Original>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</Original>
             <English>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</English>
@@ -80,6 +72,14 @@
         <Key ID="STR_AEE_Thermal_thermalAgcHuntPeriod_Name">
             <Original>Thermal AGC Hunt Period</Original>
             <English>Thermal AGC Hunt Period</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalAgcHunt_Description">
+            <Original>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</Original>
+            <English>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalAgcHunt_Name">
+            <Original>Thermal AGC Hunt</Original>
+            <English>Thermal AGC Hunt</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalBaseChannel_Description">
             <Original>The host channel for the thermal display. Vanilla TI runs the display on the engine's own thermal channel overlaid on the vehicle's native TI. DTV disables the vehicle's native TI and draws the display over the day channel instead, the route the proven A3TI and MKK thermal mods use, so the engine's TI pass cannot fight the mod's. DTV is vehicle-only: the player must be in a vehicle optic. It is a prototype for comparison and is the only channel that does not set the ppEffectForceInNVG flag.</Original>

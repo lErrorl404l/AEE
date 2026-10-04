@@ -176,5 +176,191 @@ class TestThermalImperfectionParams(unittest.TestCase):
         self.assertEqual(len(result), 4)
 
 
+def _code(path):
+    """The SQF source with its leading block-comment header removed."""
+    text = path.read_text(encoding="utf-8")
+    return text[text.index("*/") + 2 :] if "*/" in text else text
+
+
+DRIVER = GRADE / "fnc_applyBaseGrade.sqf"
+INIT = GRADE / "fnc_initBaseGrade.sqf"
+TEARDOWN = GRADE / "fnc_teardownBaseGrade.sqf"
+THERMAL_DISPLAY = THERMAL / "functions" / "display" / "fnc_applyThermalVision.sqf"
+OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
+OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
+OPTICS_SETTINGS = OPTICS / "initSettings.inc.sqf"
+OPTICS_STRINGS = OPTICS / "stringtable.xml"
+THERMAL_SETTINGS = THERMAL / "initSettings.inc.sqf"
+THERMAL_STRINGS = THERMAL / "stringtable.xml"
+
+BASE_GRADE_SETTINGS = [
+    "baseGradeEnabled",
+    "baseGradeContrast",
+    "baseGradeBrightness",
+    "baseGradeBlackPoint",
+    "baseGradeSaturation",
+    "baseGradeSharpness",
+    "baseGradeGrain",
+    "baseGradeAcuityEnabled",
+]
+
+THERMAL_SETTINGS_NAMES = [
+    "thermalTemporalNoise",
+    "thermalAgcHunt",
+    "thermalAgcHuntPeriod",
+    "thermalNucDrift",
+    "thermalHotBloom",
+    "thermalImperfectionsEnabled",
+]
+
+GRADE_FUNCTIONS = [
+    "baseGradeParams",
+    "applyBaseGrade",
+    "initBaseGrade",
+    "teardownBaseGrade",
+]
+
+
+class TestBaseGradeDriverContract(unittest.TestCase):
+    """Source contract for the registry-owned base grade and acuity driver."""
+
+    def test_recreation_goes_through_the_registry(self):
+        code = _code(DRIVER)
+        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertNotIn("= ppEffectCreate", code, "the driver bypasses the registry")
+
+    def test_owns_the_two_named_keys_at_the_registry_priorities(self):
+        code = _code(DRIVER)
+        self.assertIn('"BaseGrade"', code)
+        self.assertIn('"BaseAcuity"', code)
+        self.assertIn("ColorCorrections", code)
+        self.assertIn("FilmGrain", code)
+        self.assertIn("1505", code)
+        self.assertIn("2505", code)
+
+    def test_vision_mode_gate_precedes_the_live_grade_adjust(self):
+        code = _code(DRIVER)
+        gate = code.index("currentVisionMode")
+        self.assertLess(gate, code.index("ppEffectAdjust _ccParams"))
+        self.assertLess(gate, code.index("ppEffectAdjust _grainParams"))
+
+    def test_every_adjust_has_a_handle_guard(self):
+        code = _code(DRIVER)
+        adjusts = list(re.finditer(r"(\w+)\s+ppEffectAdjust", code))
+        self.assertGreaterEqual(len(adjusts), 3, "expected the grade and grain adjusts")
+        for match in adjusts:
+            var = match.group(1)
+            self.assertRegex(
+                code[: match.start()],
+                rf"if\s*\({var}\s*>=\s*0\)\s*then",
+                f"adjust on {var} has no >= 0 guard before it",
+            )
+
+    def test_stand_down_neutralises_the_colorcorrections(self):
+        code = _code(DRIVER)
+        self.assertIn("[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]]", code)
+
+    def test_reads_the_eight_image_settings(self):
+        code = _code(DRIVER)
+        for name in BASE_GRADE_SETTINGS:
+            self.assertIn(name, code, f"setting {name} is not read")
+
+    def test_publishes_the_state(self):
+        code = _code(DRIVER)
+        for name in ("baseGradeActive", "baseGradeCC", "baseGradeGrain"):
+            self.assertIn(f"QGVAR({name})", code, f"state {name} is not published")
+
+
+class TestThermalIntegrationContract(unittest.TestCase):
+    """The imperfection terms fold into the existing chain, no new effect."""
+
+    def test_adds_no_new_pp_effect(self):
+        # The display already owns a recreate loop; the integration must add
+        # no new effect, so every create must draw its name from the table.
+        code = _code(THERMAL_DISPLAY)
+        creates = list(re.finditer(r"ppEffectCreate\s*\[([^\]]*)\]", code))
+        self.assertGreaterEqual(len(creates), 1)
+        for match in creates:
+            self.assertIn(
+                "_name", match.group(1), f"a new effect is created: {match.group(0)}"
+            )
+
+    def test_calls_the_imperfection_kernel(self):
+        code = _code(THERMAL_DISPLAY)
+        self.assertIn("FUNC(thermalImperfectionParams)", code)
+
+    def test_reads_the_four_force_hooks(self):
+        code = _code(THERMAL_DISPLAY)
+        for hook in ("bloomForce", "agcHuntForce", "nucForce", "temporalNoiseForce"):
+            self.assertIn(hook, code, f"force hook {hook} is not read")
+
+    def test_publishes_the_four_artefacts(self):
+        code = _code(THERMAL_DISPLAY)
+        for name in ("bloom", "agcHunt", "nucDrift", "temporalNoise"):
+            self.assertIn(f"QGVAR({name})", code, f"state {name} is not published")
+
+
+class TestImageRealismWiring(unittest.TestCase):
+    """Functions are prepped, started, wired, and documented."""
+
+    def test_every_grade_function_is_prepped(self):
+        text = OPTICS_PREP.read_text(encoding="utf-8")
+        for name in GRADE_FUNCTIONS:
+            self.assertIn(f"PREPS(grade,{name});", text, f"{name} is not prepped")
+
+    def test_postinit_starts_the_module_after_eye_adaptation(self):
+        text = OPTICS_POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("FUNC(initBaseGrade)", text)
+        self.assertLess(
+            text.index("FUNC(initEyeAdaptation)"),
+            text.index("FUNC(initBaseGrade)"),
+        )
+
+    def test_vision_mode_branch_applies_the_grade(self):
+        text = OPTICS_POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("FUNC(applyBaseGrade)", text)
+        self.assertLess(
+            text.index("FUNC(managePostProcess)"),
+            text.index("FUNC(applyBaseGrade)"),
+        )
+
+    def test_teardown_releases_through_the_registry(self):
+        code = _code(TEARDOWN)
+        self.assertIn("EFUNC(core,destroyPPEffect)", code)
+        self.assertIn("QGVAR(baseGradePFH)", code)
+
+    def test_settings_are_registered(self):
+        optics = OPTICS_SETTINGS.read_text(encoding="utf-8")
+        for name in BASE_GRADE_SETTINGS:
+            self.assertIn(name, optics, f"setting {name} is not registered")
+        self.assertIn('"AEE Optics","Image"', optics)
+        thermal = THERMAL_SETTINGS.read_text(encoding="utf-8")
+        for name in THERMAL_SETTINGS_NAMES:
+            self.assertIn(name, thermal, f"setting {name} is not registered")
+        self.assertIn('"AEE Thermal","Sensor"', thermal)
+
+    def test_every_setting_has_name_and_description(self):
+        optics = OPTICS_STRINGS.read_text(encoding="utf-8")
+        for name in BASE_GRADE_SETTINGS:
+            self.assertIn(f"STR_AEE_Optics_{name}_Name", optics)
+            self.assertIn(f"STR_AEE_Optics_{name}_Description", optics)
+        thermal = THERMAL_STRINGS.read_text(encoding="utf-8")
+        for name in THERMAL_SETTINGS_NAMES:
+            self.assertIn(f"STR_AEE_Thermal_{name}_Name", thermal)
+            self.assertIn(f"STR_AEE_Thermal_{name}_Description", thermal)
+
+    def test_stringtable_keys_are_sorted(self):
+        optics = re.findall(
+            r'<Key ID="(STR_AEE_Optics_\w+)"',
+            OPTICS_STRINGS.read_text(encoding="utf-8"),
+        )
+        self.assertEqual(optics, sorted(optics), "optics keys are not sorted")
+        thermal = re.findall(
+            r'<Key ID="(STR_AEE_Thermal_\w+)"',
+            THERMAL_STRINGS.read_text(encoding="utf-8"),
+        )
+        self.assertEqual(thermal, sorted(thermal), "thermal keys are not sorted")
+
+
 if __name__ == "__main__":
     unittest.main()
