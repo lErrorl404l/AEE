@@ -491,6 +491,7 @@ state for the operator and for the debug console.
 | `aee_optics_baseGradeActive` | optics | Normal-vision base grade currently applied |
 | `aee_optics_baseGradeCC` | optics | Base-grade ColorCorrections handle |
 | `aee_optics_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
+| `aee_optics_visionModelActive` | optics | True when the human-vision model owns the normal-vision grade this tick |
 | `aee_thermal_bloom` | thermal | Hot-source bloom amplitude this tick |
 | `aee_thermal_agcHunt` | thermal | AGC hunt gain offset this tick |
 | `aee_thermal_nucDrift` | thermal | Non-uniformity (NUC) drift this tick |

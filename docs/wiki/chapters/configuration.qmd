@@ -451,6 +451,16 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_optics_viewDistanceEnabled` | CHECKBOX | `true` | yes | optics | Drive the engine view distance from the physics visibility state (fog, haze, rain, night sensitivity, acuity). Mostly lowers view distance in weather - a performance gain |
 
+## AEE Optics → Vision
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_visionContrastScale` | SLIDER | `1.0` | yes | optics | Contrast scale on the human-vision tone stage, range 0.5 to 1.5. It scales the display contrast the Naka-Rushton and CIE L* tangent derives. The exact calibration gain is UNSOURCED. |
+| `aee_optics_visionModelEnabled` | CHECKBOX | `false` | yes | optics | Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. The switch is off until the colour stage lands, so the shipped image is unchanged. |
+| `aee_optics_visionToneEnabled` | CHECKBOX | `true` | yes | optics | Enable the tone and contrast stage of the human-vision model. It derives the display brightness, contrast and black point from the adapted scene luminance. The form is SOURCED to Naka and Rushton 1966 and CIE 15:2004. |
+| `aee_optics_visionToneStrength` | SLIDER | `1.0` | yes | optics | Strength of the human-vision tone stage, range 0 to 1. At 0 the stage is the identity and the image is unchanged. The exact value is UNSOURCED. |
+| `aee_optics_visionWhiteBalance` | CHECKBOX | `true` | yes | optics | Enable the partial von Kries white balance of the human-vision model. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED. |
+
 ## AEE Physiology → Cold Weather
 
 | Setting | Type | Default | Global | Addon | Purpose |

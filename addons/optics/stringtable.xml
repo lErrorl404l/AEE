@@ -353,5 +353,45 @@
             <Original>Vision-Driven View Distance</Original>
             <English>Vision-Driven View Distance</English>
         </Key>
+        <Key ID="STR_AEE_Optics_visionContrastScale_Description">
+            <Original>Contrast scale on the human-vision tone stage, range 0.5 to 1.5. It scales the display contrast the Naka-Rushton and CIE L* tangent derives. The exact calibration gain is UNSOURCED.</Original>
+            <English>Contrast scale on the human-vision tone stage, range 0.5 to 1.5. It scales the display contrast the Naka-Rushton and CIE L* tangent derives. The exact calibration gain is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionContrastScale_Name">
+            <Original>Vision Contrast Scale</Original>
+            <English>Vision Contrast Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionModelEnabled_Description">
+            <Original>Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. The switch is off until the colour stage lands, so the shipped image is unchanged.</Original>
+            <English>Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. The switch is off until the colour stage lands, so the shipped image is unchanged.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionModelEnabled_Name">
+            <Original>Human-Vision Model</Original>
+            <English>Human-Vision Model</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionToneEnabled_Description">
+            <Original>Enable the tone and contrast stage of the human-vision model. It derives the display brightness, contrast and black point from the adapted scene luminance. The form is SOURCED to Naka and Rushton 1966 and CIE 15:2004.</Original>
+            <English>Enable the tone and contrast stage of the human-vision model. It derives the display brightness, contrast and black point from the adapted scene luminance. The form is SOURCED to Naka and Rushton 1966 and CIE 15:2004.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionToneEnabled_Name">
+            <Original>Vision Tone Stage</Original>
+            <English>Vision Tone Stage</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionToneStrength_Description">
+            <Original>Strength of the human-vision tone stage, range 0 to 1. At 0 the stage is the identity and the image is unchanged. The exact value is UNSOURCED.</Original>
+            <English>Strength of the human-vision tone stage, range 0 to 1. At 0 the stage is the identity and the image is unchanged. The exact value is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionToneStrength_Name">
+            <Original>Vision Tone Strength</Original>
+            <English>Vision Tone Strength</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionWhiteBalance_Description">
+            <Original>Enable the partial von Kries white balance of the human-vision model. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED.</Original>
+            <English>Enable the partial von Kries white balance of the human-vision model. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_visionWhiteBalance_Name">
+            <Original>Vision White Balance</Original>
+            <English>Vision White Balance</English>
+        </Key>
     </Package>
 </Project>

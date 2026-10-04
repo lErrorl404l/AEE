@@ -77,6 +77,23 @@ class TestExperimentalTaxonomy(unittest.TestCase):
                 self.assertIn(setting.name, EXPECTED_EXPERIMENTAL)
 
 
+EXPECTED_OPTICS_VISION = {
+    "aee_optics_visionContrastScale",
+    "aee_optics_visionModelEnabled",
+    "aee_optics_visionToneEnabled",
+    "aee_optics_visionToneStrength",
+    "aee_optics_visionWhiteBalance",
+}
+
+
+class TestOpticsVisionTaxonomy(unittest.TestCase):
+    """AEE Optics > Vision holds exactly the five human-vision settings."""
+
+    def test_optics_vision_group_is_exact(self):
+        groups = taxonomy_groups({"AEE Optics"})
+        self.assertEqual(groups.get(("AEE Optics", "Vision")), EXPECTED_OPTICS_VISION)
+
+
 EXPECTED_DEBUG = {
     ("AEE Debug", "Core"): {"aee_core_diagnostic", "aee_core_logDebug"},
     ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},
