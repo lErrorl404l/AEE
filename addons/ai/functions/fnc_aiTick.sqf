@@ -78,7 +78,8 @@ for "_i" from 0 to ((count _agents) - 1) do {
             };
         };
 
-        AEE_LOG_DEBUG(format ["agent %1 action %2 disturbance %3 need %4", _id, _action, _disturbance, _need]);
+        private _logMsg = format ["agent %1 action %2 disturbance %3 need %4", _id, _action, _disturbance, _need];
+        AEE_LOG_DEBUG(_logMsg);
     };
 
     _ticked = _ticked + 1;
