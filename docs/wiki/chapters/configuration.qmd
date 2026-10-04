@@ -245,6 +245,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_optics_dynamicMeteors` | CHECKBOX | `true` | yes | optics | Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate) |
 | `aee_optics_dynamicStars` | CHECKBOX | `true` | yes | optics | Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright) |
 | `aee_optics_hudEnabled` | CHECKBOX | `false` | yes | optics | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
 

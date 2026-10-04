@@ -55,6 +55,7 @@ def main():
         "tools/tests/test_dynamics.py",
         "tools/tests/test_dynamic_stars.py",
         "tools/tests/test_star_catalog.py",
+        "tools/tests/test_meteors.py",
         "tools/tests/test_trajectories.py",
         "tools/tests/test_compat.py",
         "tools/tests/test_optics_vision.py",

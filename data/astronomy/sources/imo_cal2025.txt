@@ -1,0 +1,1273 @@
+IMO INFO(3.1-24)                                                                                             1
+
+
+
+
+International Meteor Organization
+
+2025 Meteor Shower Calendar
+edited by Jürgen Rendtel 1
+
+
+
+1       Introduction
+Welcome to the thirty-fifth edition of the International Meteor Organization (IMO) Meteor
+Shower Calendar. Its main goal is to draw the attention of observers to both regularly returning
+meteor showers and to events which may be possible according to model calculations. Additional
+peaks and/or enhanced rates found by observations, and observational evidence of no rate or
+density enhancement at predicted moments are of scinetific interest. Rate and timing data may
+help to improve our knowledge about meteoroid streams. We hope the Calendar continues to
+be a useful tool to plan your meteor observing activities.
+Video meteor camera networks are collecting data throughout the year. Nevertheless, visual
+observations comprise an important data sample for many showers, and the well established
+analysing procedures allow us to derive reliable flux density data. Because visual observers are
+more affected by moonlit skies than video cameras, we consider the moonlight circumstances
+when describing the visibility of meteor showers. For the three strongest annual shower peaks in
+2025, we find an almost moonlight-free Quadrantid peak, the Perseid peak is shortly after Full
+Moon, while the waning crescent Moon will little affect observations of the Geminid maximum.
+Favourable conditions allow near-maximum observations of the η-Aquariids, the Southern δ-
+Aquariids, the Aurigids, the Orionids, the Leonids and the Ursids. Cirumstances are poor for
+the April Lyrids, the September ε-Perseids and the October Draconids. Note, that 2025 is
+another Taurid “swarm year” with possibly enhanced Taurid activity in early November (see
+page 13).
+The heart of the Calendar is the Working List of Visual Meteor Showers (Table 5, page 25)
+which is continuously updated so that it is the single most accurate listing available anywhere
+today for visual meteor observing. Nevertheless, it is a Working List which is subject to further
+modifications, based on the best data we had at the time the Calendar was written. Observers
+should always check for later changes noted in the IMO’s journal WGN or on the IMO website.
+Vice versa, we are always interested to receive information whenever you find any anomalies!
+In the Calendar we refer to the shower designation as listed by the IAU’s Meteor Data Center,
+which has 110 “established showers” (2024 June 12).
+    1
+     Based on information in the Meteor Observers Workbook 2014, edited by Jürgen Rendtel (referred to as ‘WB’
+in the Calendar), and “A Comprehensive List of Meteor Showers Obtained from 10 Years of Observations with
+the IMO Video Meteor Network” by Sirko Molau and Jürgen Rendtel (referred to as ‘VID’ in the Calendar),
+as amended by subsequent discussions and additional material extracted from data analyses produced since.
+I particularly thank Mikhail Maslov and Jérémie Vaubaillon for new information and comments in respect of
+events in 2025 (see also the References in section 8). Masahiro Koseki added important data about several
+showers. Hiroshi Ogawa provided useful information concerning daytime showers detectable by radio forward
+scatter observations. Information about the SDA and CAP activity in late July base on comments by Koen
+Miskotte. Last but not least thanks to Tim Cooper, Robert Lunsford, Mikhail Maslov, and Alastair McBeath
+for carefully checking the contents. This Calendar version 3.1-24 includes information provided by Mikiya Sato
+on 2024 June 26 (pages 5, 15 and 17).
+2                                                                                IMO INFO(3.1-24)
+
+
+Interesting encounters are listed in Table 6a (page 27). Since there is always a possibility of
+completely unexpected events, ideally meteor observing should be performed throughout the
+year. This way we can improve the data for established meteoroid streams covering their entire
+activity periods. Combining data obtained with different techniques improve the reliability of
+derived quantities and is helpful for calibrating purposes.
+Video meteor observations allow us to detect weak sources. An increasing number of confirmed
+radiants provides us with more possibilities to establish relations between meteoroid streams
+and their parent objects. Some of the sources may produce only single events but no annual
+recurring showers, such as, for example, the June Boötids or the τ -Herculids.
+Observing techniques which allow the collection of useful shower data include visual, video and
+still-imaging along with radar and radio forward scatter methods. Visual and video data allow
+rate and flux density calculations as well as determination of the particle size distribution in terms
+of the population index r or the mass index s. Multi-station camera setups provide us with orbital
+data, essential for meteoroid-stream investigations. Showers with radiants too near the Sun for
+observing by the various optical methods can be detected by forward-scatter radio or back-
+scatter radar observations. The list of daytime showers (Table 7) has been updated referring to
+IAU-established showers including comments on their detectability provided by Hiroshi Ogawa.
+
+The IMO’s aims are to encourage, collect, analyze, and publish combined meteor data obtained
+from sites all over the globe, to improve our understanding of the meteor activity detectable
+from the Earth’s surface. For best effects, it is recommended that all observers should follow
+the standard IMO observing guidelines when compiling information, and submit those data
+promptly to the appropriate Commission for analysis (contact details are at the end of the
+Calendar). Many analyses try to combine data obtained by more than one method, extending
+the ranges and coverage but also to calibrate results from different techniques. Thanks to the
+efforts of the many IMO observers worldwide since 1988 that have done this, we have been able
+to achieve as much as we have to date, including keeping the shower listings vibrant. This is not
+a matter for complacency however, since it is solely by the continued support of many people
+across the planet that our attempts to construct a better and more complete picture of the
+near-Earth meteoroid flux can proceed.
+Timing predictions are included below on all the more active night-time and daytime shower
+maxima as reliably as possible. However, it is essential to understand that in many cases, such
+maxima are not known more precisely than to the nearest degree of solar longitude. In addition,
+variations in individual showers from year to year mean past returns are only a guide as to when
+even major shower peaks can be expected. As noted already, the information given here may be
+updated and added-to after the Calendar has been published. Some showers are known to show
+particle mass-sorting within their meteoroid streams, so the radar, radio, still-imaging, video
+and visual meteor maxima may occur at different times from one another, and not necessarily
+just in those showers. The majority of data available are for visual shower maxima, so this must
+be borne in mind when employing other observing techniques.
+Whenever you are able to observe, we wish you all a most successful year’s work and very much
+look forward to receiving your data, whose input is possible via the online form on the IMO’s
+website www.imo.net. Clear skies!
+IMO INFO(3.1-24)                                                                                 3
+
+
+2    Antihelion Source
+The Antihelion Source (ANT) is a large, roughly oval area of about 30◦ in right ascension and
+15◦ in declination, centred about 12◦ east of the solar opposition point on the ecliptic, hence its
+name. It is not a true shower at all (and therefore has no IAU shower number), but is rather a
+region of sky in which a number of variably, if weakly, active minor showers have their radiants.
+IMO video results have shown that even instrumentally, it was impossible to define distinct and
+constantly observable radiants for many of the showers here! Thus we recommend observers
+simply to identify meteors from these showers as coming from the ANT alone.
+Apart from this, we have been able to retain the α-Capricornids and particularly the Southern
+δ-Aquariids in July to August as apparently distinguishable showers separate from the ANT.
+Later in the year, the Taurid showers dominate the activity from the Antihelion region meaning
+the ANT should be considered inactive while the Taurids are underway, from late September
+into December. To assist observers, a set of charts showing the location for the ANT and any
+other nearby shower radiants is included here, to complement the numerical positions of Table 6,
+while comments on the ANT’s location and likely activity are given in the quarterly summary
+notes.
+
+
+
+3    January to March
+The year starts with the Quadrantid (010 QUA) peak for the northern hemisphere observers
+on January 3 close to 15h UT.
+On 2015 January 10 at 02h 50m UT, radar and video data showed an outburst of the κ-Cancrids
+(793 KCA; radiant at α = 138◦ , δ = +9◦ ) at λ⊙ = 289 ◦. 315. Activity from this source was
+also found in the 2016 data of the IMO Video Network and data of the SonotaCo network find
+the shower annually over the past decade around January 10. There are hints that the KCA
+event of 2015 may have been an enhancement of the o-Leonids (515 OLE). Both are in the
+working list of the IAU MDC and require more data. The outburst position of the 2015 activity
+is reached on 2025 January 9 near 16h UT. At this time, the radiant of the Antihelion source
+centre is located at α = 122◦ , δ = +19◦ , which is roughly 20◦ northeast of the KCA radiant;
+KCA meteors (V∞ = 47 km/s) are faster than those from the ANT (V∞ = 30 km/s).
+The ι-Centaurids (919 ICN) – not in our working list – appear to be active annually, albeit
+with fairly low rates, but in 2024 showed enhanced activity between January 21–26 (Cooper,
+2024). The shower of fast meteors (V∞ = 64km/s) with a radiant at α = 199◦ , δ = −39◦ could
+benefit from dedicated visual observation.
+The Comae Berenicids (020 COM) can be traced until early February. Around January 18
+we find weak activity of the γ-Ursae Minorids (404 GUM) – this year badly affected by
+bright moonlight. The α-Centaurids (102 ACE) reach their maximum around February 8
+and perhaps later – see the ACE description on page 5.
+The ANT’s radiant centre is in south-east Gemini in early January, and crosses Cancer during
+much of the month, before passing into southern Leo for most of February. It then shifts through
+southern Virgo during March – see the chart shown on the next page.
+Probable ZHRs will be of the order of 2 to 3 during most of the time. Video meteor flux density
+data indicate a slight increase in March around λ⊙ ≈ 355◦ (corresponding to 2025 March 15).
+4                                                                           IMO INFO(3.1-24)
+
+
+
+
+Quadrantids (010 QUA)
+
+Active: December 28–January 12; Maximum: January 3, 15h 00m UT (λ⊙ = 283 ◦. 15),
+ZHR = 80 (can vary ≈ 60 − 200);
+Radiant: α = 230◦ , δ = +49◦ ; Radiant drift: see Table 6;
+V∞ = 41 km/s; r = 2.1 at maximum, 2.5 elsewhere.
+
+
+                                                     In 2022 and 2023, the highest visual
+                                                     QUA rates were in the lower range of the
+                                                     values given above but at the same po-
+                                                     sition as usual. Maximum rates of the
+                                                     2024 return were at the average level.
+                                                     Video meteor data of 2020–2022 indi-
+                                                     cated a peak time a few hours ahead of
+                                                     the reference time, but the peaks in 2023
+                                                     and 2024 occurred at the known 283 ◦. 15
+                                                     again. In the years 2020–2022, the radio
+                                                     forward scatter data show a maximum
+                                                     which is wider than the usually quoted
+                                                     4 hours. Modelling the stream is diffi-
+                                                     cult so that all data may help checking
+                                                     the current model parameters. This year
+                                                     the conditions are perfect concerning the
+                                                     moonlight effects.
+It is well known that the QUA activity extends until about January 12 and even a few days
+after the actual peak, bright fireballs have been observed. Another 5–7 days after the peak can
+still be used for undisturbed optical observations.
+IMO INFO(3.1-24)                                                                               5
+
+
+
+
+α-Centaurids (102 ACE)
+
+Active: January 31–February 20; Maximum: February 8 (λ⊙ = 319 ◦. 4);
+ZHR variable, usually ≈ 6;
+Radiant: α = 211◦ , δ = −58◦ ; Radiant drift: see Table 6; V∞ = 58 km/s; r = 2.0.
+
+
+                                                 The α-Centaurids are mainly known from their
+                                                 appearances in 1974 and 1980 when bursts of
+                                                 only a few hours’ duration apparently yielded
+                                                 ZHRs close to 20–30. The average peak ZHR
+                                                 between 1988–2007 was merely 6 though (WB,
+                                                 p. 18), albeit coverage has frequently been ex-
+                                                 tremely patchy. Significant activity was re-
+                                                 ported on 2015 February 14 (airborne obser-
+                                                 vation) although there was no confirmation of
+                                                 an outburst predicted for 2015 February 8. An
+                                                 outburst during 2021 February 13–15 associ-
+                                                 ated with the γ-Crucids (1047 GCR) might have
+                                                 been a return of the ACE. Visual observation
+                                                 during the late part of the activity after the
+                                                 assumed maximum will be difficult due to in-
+                                                 creasing moonlight interference.
+Since further data is needed to obtain information about the stream which is not clearly de-
+tectable recently by visual and video observations, observers may concentrate on the first week
+of February. The shower’s radiant is nearly circumpolar for much of the sub-equatorial inhabited
+Earth, and is at a useful elevation from late evening onwards.
+
+
+
+4    April to June
+In this period the meteor rates increase significantly, but much of the total meteor activity in
+late April into May remains unobservable for optical methods as it is caused by daytime showers
+with their radiants located less than about 30◦ distant from the Sun.
+Sato’s calculations yield a return of the April α-Capricornids (752 AAC) on April 7 at
+13h 35m UT (λ⊙ = 17 ◦. 637) from a radiant at α = 304◦ , δ = −13◦ . This shower of fast meteors
+(V∞ = 69 km/s) was detected in 2014 (SonotaCo, et al., 2014) and a new approach to the dust
+trail is expected in 2025.
+The waning Moon partly affects observations of the maximum of the April Lyrids (006 LYR)
+while the conditions are fine for the π-Puppid (137 PPU) maximum on April 23.
+Observations of the maximum of the η-Aquariids (031 ETA) can be observed essentially
+under moon-free conditions as the waxing Moon leaves the morning hours unaffected. This is
+not the case for the minor η-Lyrids (145 ELY) with activity around May 10 – two days before
+Full Moon. The June Boötids (170 JBO) reach their potential maximum between June 23
+and 28.
+According to analyses of visual and video IMO data, the ANT should produce ZHRs of the
+order of 4–5 with insignificant variations. The radiant area drifts from south-east Virgo through
+6                                                                               IMO INFO(3.1-24)
+
+
+Libra in April, then across the northern part of Scorpius to southern Ophiuchus in May, and on
+into Sagittarius for much of June (charts on the next page).
+
+
+
+
+Daytime showers: In the second half of May and throughout June, most of the meteor action
+switches to sources with their radiants in the daylight sky (see also Table 7 at page 27). Here we
+give the data of the IAU MDC and recent findings (Ogawa, 2022; 2023) and some brief comments.
+
+
+                 Shower                             Maximum λ⊙ (Date)
+                                                  IAU MDC       Ogawa
+                 April Piscids (144 APS)        26 ◦. 0 (Apr 16)   32 ◦. 6 (Apr 22)
+                 N. ω-Cetids (152 NOC)          47 ◦. 8 (May 08)   52 ◦. 0 (May 12)
+                 S. ω-Cetids (153 OCE)          48 ◦. 6 (May 09)   48 ◦. 8 (May 09)
+                 S. May Arietids (156 SMA)      52 ◦. 7 (May 13)
+                 Arietids (171 ARI)             76 ◦. 7 (Jun 07)   77 ◦. 8 (Jun 08)
+                 ζ-Perseids (172 ZPE)           78 ◦. 6 (Jun 09)   83 ◦. 5 (Jun 14)
+                 β-Taurids (173 BTA)            96 ◦. 7 (Jun 28)
+IMO INFO(3.1-24)                                                                               7
+
+
+For the April Piscids (144 APS), Ogawa (2022) finds an activity which seems to be of similar
+strength to the radio Ursids of December in the period λ⊙ = 30 ◦. 5 − 34 ◦. 5 and a maximum at
+λ⊙ = 32 ◦. 6. This differs significantly from the values in the IAU MDC database: maximum
+at λ⊙ = 26◦ (April 16) or even earlier. This early date is before the start date found by
+Ogawa (2022) and requires observations. Later in May there are three showers: 152 NOC,
+153 OCE, 156 SMA, with radiants relatively close to one another and overlapping activity periods.
+Therefore it is probably not possible to separate the activity of these showers in radio forward
+scatter observations. We may perhaps identify a broad activity profile around λ⊙ = 50◦ (2025
+May 10/11). The Arietids (171 ARI) is the strongest of the daytime showers, but again we
+find an overlap, now with the ζ-Perseids (172 ZPE) between 73◦ and 88◦ . The actual duration
+of the shower(s) is not well known.
+
+April Lyrids (006 LYR)
+Active: April 14–30; Maximum: April 22, 13h 30m UT (λ⊙ = 32 ◦. 32, but may vary – see text);
+ZHR = 18 (can be variable, up to 90);
+Radiant: α = 271◦ , δ = +34◦ ; Radiant drift: see Table 6;
+V∞ = 49 km/s; r = 2.1.
+
+
+The λ⊙ = 32 ◦. 32 (2025 April 22, 13h 30m UT) timing given here refers to the ideal maximum
+position found in IMO results from 1988–2000. However, the maximum time was variable from
+year to year. The recent maxima have been found between λ⊙ = 32 ◦. 2–32 ◦. 5 (equivalent to 2025
+April 22, 10h 30m to 18h 00m UT). Usually, the peak activity at the ideal time produced higher
+ZHRs, ≈ 23. The further the peak happened from this, the lower the ZHRs were, down to ≈ 14
+– a relation which needs to be confirmed. Further, the shower’s peak length varied. A ZHR of
+more than half of the peak value was found on average for 32.1 hours, but this duration varied
+between 14.8 and 61.7 hours. The best rates are normally achieved for just a few hours. The
+analysis also confirmed that occasionally, as their highest rates occurred, the Lyrids produced a
+brief increase in fainter meteors. In 1982 a short-lived ZHR of 90 was recorded.
+For 2025 there are no predictions
+for any activity increase from the-
+oretical modelling of this shower
+associated with the long-period
+comet C/1861 G1 (Thatcher).
+Lyrid meteors are best viewed
+from the northern hemisphere,
+but are visible from many sites
+north and south of the equator.
+As the radiant rises during the
+night, watches can be carried out
+usefully after about 22h 30m local
+time from mid-northern sites, but
+only well after midnight from the
+mid-southern hemisphere. The
+waning crescent moon in Capri-
+cornus should not disturb too
+much (last quarter on April 21).
+8                                                                           IMO INFO(3.1-24)
+
+
+π-Puppids (137 PPU)
+
+Active: April 15–28; Maximum: April 23, 19h UT (λ⊙ = 33 ◦. 5);
+ZHR variable, in most years ≈ 5, but up to around 40;
+Radiant: α = 110◦ , δ = −45◦ ; Radiant drift: see Table 6;
+V∞ = 18 km/s; r = 2.0.
+
+
+
+The shower was discovered in 1972; later notable, short-lived, activity with rates around 40
+meteors per hour was reported in 1977 and 1982. In both years, the parent comet, 26P/Grigg-
+Skjellerup was at perihelion. Before 1982, little activity had been seen at other times, but in
+1983, a ZHR of ≈ 13 was reported, perhaps suggesting material has begun to spread further
+along the comet’s orbit. The comet passed its perihelion last on 2023 December 25.
+                                               Not unexpectedly, nothing meteorically signif-
+                                               icant happened in the years around the recent
+                                               perihelion passages. When this Calendar was
+                                               prepared, no predictions for any 2025 π-Puppid
+                                               meteor activity had been issued.
+                                               The π-Puppids are best-seen from the southern
+                                               hemisphere, with useful observations mainly
+                                               practical before midnight, as the radiant is very
+                                               low to setting after 01h local time. The last
+                                               quarter Moon (April 21) leaves the first half of
+                                               the night undisturbed for optical observations
+                                               this year. Covering whatever transpires is im-
+                                               portant, even if that is to report no obvious
+                                               activity. The IMO data over the past 19 years
+                                               have only records of 2018, 2019 and 2020 which
+                                               confirm low, but detectable rates.
+
+
+
+η-Aquariids (031 ETA)
+
+
+Active: April 19–May 28; Maximum: May 6, 03h UT (λ⊙ = 45 ◦. 5); ZHR = 50 (var., 40–85);
+Radiant: α = 338◦ , δ = −1◦ ; Radiant drift: see Table 6;
+V∞ = 66 km/s; r = 2.4.
+
+
+
+This stream is associated with Comet 1P/Halley, like the Orionids of October. Shower meteors
+are only visible in the hours before dawn essentially from tropical and southern hemisphere
+sites. The shower is one of the best for southern observers. Useful results may be obtained
+from places up to about 40◦ N latitude. The radiant culminates near 8h local time. In most
+years, a substantial amount of optical ETA-data is collected worldwide. However, due to the
+relatively short observing window between radiant rise and morning twilight for each site, it
+remains difficult to obtain a continuous profile.
+IMO INFO(3.1-24)                                                                                 9
+
+
+This year the moonlight interference
+increases after the maximum period
+(Full Moon on May 12). IMO anal-
+yses of visual data collected since 1984
+have shown that ZHRs are generally
+above 30 in the period May 3–10. An
+often claimed variability of the peak
+rates associated with Jupiter’s orbital
+period close to 12 years has not been
+confirmed in a recent study (Egal et
+al., 2020) using optical and radar data.
+The preliminary data of the 2024 re-
+turn shows slightly enhanced rates at
+a rather late position on May 8.
+Recent peak ZHRs were:
+
+        2008   2009    2017   2018   2019   2020   2021    2022   2023   2024
+        ≈ 85   ≈ 70     75     60     50     50     45      42     40    45 (preliminary)
+
+
+June-Boötids (170 JBO)
+Active: June 22–July 2; Maximum: June 27, 11h UT (λ⊙ = 95 ◦. 7), but see text;
+ZHR = variable, 0–100+;
+Radiant: α = 224◦ , δ = +48◦ ; Radiant drift: see Table 6; V∞ = 18 km/s; r = 2.2.
+
+
+                                                   This shower is known for its unexpected re-
+                                                   turn of 1998 (ZHR 50 − 100+ for more than
+                                                   half a day). Another outburst of similar length
+                                                   (ZHR ≈ 20−50) was observed on 2004 June 23.
+                                                   The return predicted in 2010 yielded a poorly
+                                                   established ZHR < 10 on June 23–24. Prior
+                                                   to 1998, only three more probable returns had
+                                                   been detected, in 1916, 1921 and 1927 (how-
+                                                   ever, with different reliability).
+                                                   The orbit of the parent comet 7P/Pons-
+                                                   Winnecke (orbital period about 6.3 years, last
+                                                   perihelion passage on 2021 May 27) currently
+                                                   lies around 0.23 astronomical units outside the
+                                                   Earth’s at its closest approach.
+The 1998 and 2004 events resulted from meteoroids ejected from the comet in the past when
+the comet was still in a different orbit. For the 2025 return, there are no predictions of peculiar
+activity published. Nevertheless, we encourage all observers to monitor throughout the proposed
+period, in case of any activity. From mid-northerly latitudes the radiant is observable almost all
+night, but the prolonged – in some places continuous – twilight overnight keeps the useable time
+short. VID suggested some June-Boötids may be visible in most years around June 20 − 25 but
+with activity largely negligible except near λ⊙ = 92◦ (2025 June 23, 14h UT), radiating from
+α = 216◦ , δ = +38◦ which is about ten degrees south of the radiant found in 1998 and 2004.
+10                                                                              IMO INFO(3.1-24)
+
+
+5    July to September
+The ANT is the chief focus for visual attention in the first half of July, as its radiant area moves
+steadily through eastern Sagittarius, then across northern Capricornus into southwest Aquarius
+(see chart below). ZHRs for most of the month should be ≈ 2 to 3. From around September 20,
+the Southern Taurids (002 STA) effectively take over the near-ecliptic activity from the ANT
+through to December (see chart on page 13).
+
+
+
+
+The low activity of the July Pegasids (175 JPE) around July 10 coincides with the Full Moon
+period. After mid-July the large ANT radiant area overlaps that of the minor α-Capricornids
+(001 CAP) into August, but the lower apparent velocity of the CAP allows observers to separate
+the two. The stronger and faster Southern δ-Aquariids (005 SDA) should be distinguishable
+from the ANT as well. The highest rates of CAP and SDA are due on July 30/31.
+On 2016 July 28 at 00h 07m UT (λ⊙ = 125 ◦. 132) the July γ-Draconids (184 GDR) produced
+an outburst detected by radar and video observations. The same position is reached again on
+2025 July 28 near 07h UT – worth checking although there was no extra activity observed in
+2017 – 2023. SonotaCo net observations indicate that the GDR is an annual shower with a sharp
+but variable maximum from year to year (Koseki, 2020). The radiant is at α = 280◦ , δ = +51◦ ,
+and the meteors have low speed (V∞ = 27 km/s).
+The η-Eridanids (191 ERI) are effectively visible only in the first days of August before the
+Full Moon on August 9.
+The Perseid (007 PER) maximum on August 12 occurs shortly after the Full Moon. At the
+time of the maximum the gibbous moon will be in Pisces, badly affecting the visible rates as it
+gains height together with the radiant. Vaubaillon mentions that there may be activity from the
+1079 dust trail which is disrupted into at least two parts. The Earth will approach one of these
+at λ⊙ = 139 ◦. 736 (2025 August 12, 13h 15m UT) with possible significant rates from a radiant at
+α = 46 ◦. 0, δ = +57 ◦. 6. Minor contributions from other old trails may add somewhat. Further,
+Jenniskens (2006) lists a filament encounter after λ⊙ = 139 ◦. 38 (i.e. August 12 well after 04h
+UT) with a ZHR ≤ 50.
+The maximum period of the κ-Cygnids (012 KCG) around August 16 is moon-free.
+Circumstances are good for observations of the Aurigid (206 AUR) maximum in the night
+August 31 – September 1. The September ε-Perseids (208 SPE) reach their maximum on
+September 9/10, just about two days after the Full Moon. The parent object is not known; there
+are some ideas about a long period object and in 2016 a meteor cluster was observed.
+IMO INFO(3.1-24)                                                                               11
+
+
+The ε-Eridanids (209 EER) – not to be mixed up with the η-Eridanids (191 ERI) – seem
+to be related to comet C/1841 L1 Klinkerfues. If so, Vaubaillon finds weak activity from the
+1216 trail (6 revolutions) on 2025 September 12, 20h 43m UT (λ⊙ = 169 ◦. 983). The radiant at
+α = 52◦ , δ = −15◦ rises only well after midnight so that optical observations are affected by the
+waning Moon in Taurus.
+For radio observers, daytime activity decreases (see remarks to Table 7 on page 27). We may
+detect the κ-Leonids (212 KLE) at λ⊙ = 183◦ (September 25) as another established daytime
+shower. The Daytime Sextantid (221 DSX) maximum follows at λ⊙ = 188◦ (October 1).
+Very few meteors of this shower may also be detected by optical methods.
+
+Southern δ-Aquariids (005 SDA)
+
+Active: July 12–August 23; Maximum: July 31 (λ⊙ = 128◦ ); ZHR = 25;
+Radiant: α = 340◦ , δ = −16◦ ; Radiant drift: see Table 6; V∞ = 41 km/s; r = 2.5 (see text).
+
+
+The shower is one of the most active annual sources in the southern hemisphere. The ZHR of
+the SDA is around 25 for about two days; the ZHR exceeds 20 between λ⊙ = 124◦ and 129◦ .
+During the maximum there are numerous bright SDA meteors visible, causing r ≈ 2.5 around
+the maximum and r ≈ 3.1 away from the peak period. Rare outbursts with a ZHR of about 40
+were reported by Australian observers on 1977 July 28/29 and from Crete on 2003 July 28/29
+– both before the maximum date found in recent years (e.g., Koseki, 2021) and given here. The
+activity level and variations of the shower need to be monitored. First quarter Moon on August
+1 leaves most of the night undisturbed until after the maximum.
+The radiant is shown in the chart on page 10. At mid-northern latitudes only a small portion of
+the shower meteors is visible, but conditions significantly improve towards southern latitudes.
+
+α-Capricornids (001 CAP)
+
+Active: July 3–August 15; Maximum: July 31 (λ⊙ = 128◦ ); ZHR = 5;
+Radiant: α = 307◦ , δ = −10◦ ; Radiant drift: see Table 6; V∞ = 23 km/s; r = 2.5.
+
+
+Although the radiant of the CAP (see chart on page 10) partly overlaps that of the large ANT
+region, the low CAP velocity should allow to distinguish between the two sources. Frequently,
+bright and at times fireball-class shower meteors are seen. Minor rate enhancements have been
+reported at a few occasions in the past, although the highest observed ZHR of ≈ 10 dates back
+to 1995. Recent results suggest the maximum date of July 30/31.
+
+η-Eridanids (191 ERI)
+
+Active: July 31–August 19; Maximum: August 07, λ⊙ = 135◦ ; ZHR = 3;
+Radiant: α = 41◦ , δ = −11◦ ; Radiant drift: see Table 6; V∞ = 64 km/s; r = 3.0.
+
+
+The η-Eridanids (191 ERI) included in our working list recently may be associated with comet
+C/1852 K1 (Chacornac). The activity period given here has been adapted from Koseki (2021;
+pp. 140–141).
+12                                                                          IMO INFO(3.1-24)
+
+
+It seems that the activity continues long af-
+ter its maximum which needs observational
+data. However, this will be difficult after
+about August 7 due to increasing moonlight
+interference. The radiant of these fast me-
+teors in the northwestern part of Eridanus is
+best observed after midnight, preferably from
+southern locations.
+
+
+
+κ-Cygnids (012 KCG)
+
+Active: August 3–28; Maximum: August 16 (λ⊙ = 144◦ ); ZHR = 3;
+Radiant: α = 288◦ , δ = +54◦ ; Radiant drift: see Table 6; V∞ = 23 km/s; r = 3.0.
+
+
+Enhanced κ-Cygnid activity was observed in 2007, 2014 and 2021 supporting an assumed 7-year
+period of the stream. This indicates that we do not expect enhanced rates in 2025. Apart from
+the periodic peaks, a recent analysis indicates a general ZHR level increase in the recent years
+after an apparent dip in the period 1990–2005.
+An average flux density profile for the period
+2012–2018 from video data shows a clear max-
+imum at 144◦ and detectable activity between
+August 2 and September 3.
+Research by Koseki (2014) has shown a com-
+plex radiant structure extending into Draco
+and Lyra. The isolated radiant position and
+the low velocity of the meteoroids should be
+used to associate KCG meteors to the complex
+assuming a slightly larger radiant area. The
+shower is best-observed from northern hemi-
+sphere sites, from where the radiant is eas-
+ily available all night. Visual observations are
+not suitable to distinguish between the sub-
+radiants identified with other techniques, but
+provide the total activity from radiants in the
+mentioned area.
+
+Aurigids (206 AUR)
+
+Active: August 28–September 5; Maximum: September 01, 03h UT (λ⊙ = 158 ◦. 6) – see text;
+ZHR = 10; Radiant: α = 91◦ , δ = +39◦ ; Radiant drift: see Table 6; V∞ = 66 km/s; r = 2.5.
+
+
+This northern-hemisphere shower has produced outbursts with peak ZHRs of ≈ 30–50 recorded
+in 1935, 1986, 1994 and 2019. Observations of the first predicted outburst in 2007 confirmed
+the calculated values widely and was characterised by many bright meteors. The peak ZHR of
+≈ 130 lasted only for about 20 minutes.
+IMO INFO(3.1-24)                                                                               13
+
+
+                                               Slightly enhanced rates were also observed in
+                                               2021. According to calculations of Sato (2023)
+                                               the assumed one-revolution dust trail was last in
+                                               the vicinity of the Earth on 2022 September 01
+                                               at 01h UT (λ⊙ = 158 ◦. 289), but not close enough
+                                               for detectable extra activity. For 2025 there is no
+                                               exceptional activity expected.
+                                               The Aurigid radiant reaches a useful elevation
+                                               only after ≈ 01h local time – this year with no
+                                               moonlight interference.
+
+
+
+
+6    October to December
+The maxima of the Orionids (008 ORI) and Leonids (013 LEO) are free of moonlight; the
+major Geminid (004 GEM) maximum is only little affected and the Ursids (015 URS) can
+be observed in dark skies.
+The two Taurid branches reach their highest rates around November 05 (Southern Taurids, 002
+STA) and November 12 (Northern Taurids, 017 NTA), respectively, between Full Moon and last
+quarter Moon. The ANT activity resumes only around December 10, as the Northern Taurids
+fade away. The radiant centre tracks from Taurus across southern Gemini during later December.
+The typical ZHR level is about 2. Here we want to draw your attention to the possibility of
+enhanced rates of brighter Taurids: 2025 will be another “Taurid swarm” year. Larger meteoroids
+in the vicinity of the 7:2 orbital period resonance with Jupiter usually cause bright meteors and
+fireballs in such swarm years about a week around November 3. The previous “swarm” in 2022
+was observed under poor circumstances (near Full Moon) mainly by video cameras. The flux
+density observed in the first decade of November in 2022 was about twice as high as in 2023.
+14                                                                              IMO INFO(3.1-24)
+
+
+
+
+Several minor showers are active in the last quarter of the year. The maximum of the October
+Camelopardalids (281 OCT) occurs on October 5 in moonlit skies. The October Draconids
+(009 DRA) reach their maximum on October 8 just after Full Moon. The very weak δ-
+Aurigids (224 DAU, maximum October 11) are also effectively invisible due to moonlight.
+Later, the ε-Geminids (023 EGE, maximum October 18) and the Leonis Minorids (022
+LMI) occur in dark skies. This is also the case for the α-Monocerotids (246 AMO) – with
+no peculiar activity expected in 2025. The November Orionids (250 NOO) can be nicely
+observed.
+In the past years, there were several activity signs from the Andromedids (018 AND) on
+2021 November 28 and 2018 December 02. There is nothing predicted for the 2025 return,
+but observers might want to check for slow AND meteors. Recent analyses indicate that weak
+AND activity is observable annually. The radiant drifts significantly northwards in declination
+from end November to early December (Shiba, 2022). The very late part is listed as 446 DPC
+(December ϕ-Cassiopeids; activity observed in 2011):
+   λ⊙     Date      α     δ    Shower
+     ◦               ◦      ◦
+  230 Nov 12 22 +32 AND
+  240◦ Nov 22 24◦ +41◦ AND
+  250◦ Dec 01 23◦ +50◦ AND
+  255◦ Dec 06 20◦ +55◦ DPC
+Conditions are poor for the early December southern showers. The Phoenicids (254 PHO;
+maximum December 1) and the complex Puppid-Velids (301 PUP; maximum December 7),
+both are more active with a waxing Moon. Later, the Monocerotids (019 MON, maximum
+December 9) and the σ-Hydrids (016 HYD, maximum December 9) have a gibbous waning
+Moon in the morning sky.
+There was a hint at possible meteors from comet 46P/Wirtanen in the 2023 Calendar.
+Vaubaillion’s calculations reveal that there might be another chance to observe activity from
+a 7-revolutions trail of this shower, tentatively called λ-Sculptorids on 2025 December 12,
+roughly between 10h and 22h UT. The radiant of these extremely slow meteors (V∞ = 10km/s)
+is at α = 8◦ , δ = −38◦ .
+The maximum of the weak and long-lasting Comae Berenicids (020 COM) around Decem-
+ber 16 occurs close to the New Moon. There are several showers with similar radiants and also
+orbital elements to the COM and previously listed December Leonis Minorids (032 DLM).
+An activity period of over 70 degrees appears too long for a meteor shower having such a high
+inclination orbit. Due to the complex situation (especially for the visual observer – see Rend-
+tel, 2023) we suggest to summarise all meteors from the (extended) COM/DLM-region under
+“COM” for the entire activity period.
+At the end of the year, the first Quadrantids (010 QUA) can be seen.
+
+Draconids (009 DRA)
+Active: October 6–10; Maximum: October 8, 19h UT (λ⊙ = 195 ◦. 4); ZHR = 5 (?);
+Radiant: α = 263◦ , δ = +56◦ ; Radiant drift: negligible; V∞ = 21 km/s; r = 2.6.
+
+
+Although the observing conditions for the Draconids (also called October Draconids) are very
+poor – the gibbous Moon less than 2 days after full is in Aries – we give some details here. The ra-
+diant is north-circumpolar for latitudes north of about 45◦ N. Draconid meteors are exceptionally
+slow-moving.
+IMO INFO(3.1-24)                                                                              15
+
+
+
+
+                                                 The shower produced spectacular meteor storms
+                                                 in 1933 and 1946, and enhanced but lower rates
+                                                 in several other years (ZHRs ≈ 20–500+). Re-
+                                                 cent outbursts happened in 2011 (ZHR ≈ 300;
+                                                 predicted) and in 2012 (unexpected). The 2018
+                                                 return yielded a ZHR of about 150 persisting for
+                                                 about 4 hours.
+                                                 For the 2025 return we expect an encounter with
+                                                 the 2012 dust trail on October 8. Calculated
+                                                 peak times are:
+                                                 λ⊙ = 195 ◦. 269 (15h 52m UT; Jenniskens, 2006).
+                                                 λ⊙ = 195 ◦. 238 (15h 07m UT; Maslov, 2024).
+                                                 λ⊙ = 195 ◦. 257 (15h 34m UT; Sato, 2024).
+Estimated prospects for the activity level: Jenniskens 2006 (Table 6d) gives ZHR ≤ 50. Maslov
+calculated that the number density is about 8 times higher than of a 1-revolution Leonid trail.
+However, the Earth crosses this unperturbed trail at the end dominated by small meteoroids
+(high ejection velocities required). So there may be a very short outburst with a ZHR of 100–150
+from a radiant which is essentially identical to the position given above. Sato also emphasizes
+that the trail is dominated by small meteoroids and therefore may be limited to radar obser-
+vations. The time of the closest approach favours observing sites roughly east of 40◦ E in the
+northern hemisphere.
+The parent comet 21P/Giacobini-Zinner will reach its next perihelion on 2025 March 25. There-
+fore we advise observers to pay attention to a period about 24 hours around the given time as
+there may be meteors from older dust trails which produce no significant rates alone but perhaps
+add to the general rate.
+
+ε-Geminids (023 EGE)
+
+Active: October 14–27; Maximum: October 18 (λ⊙ = 205◦ ); ZHR = 3;
+Radiant: α = 102◦ , δ = +27◦ ; Radiant drift: see Table 6;
+V∞ = 70 km/s; r = 3.0.
+
+
+
+                                                   A weak minor shower with characteristics
+                                                   and activity nearly coincident with the Ori-
+                                                   onids, so great care must be taken to sepa-
+                                                   rate meteors of the two sources. The wax-
+                                                   ing moon is not an issue. Northern observers
+                                                   have a radiant elevation advantage and can
+                                                   observe from about local midnight onwards.
+                                                   There is some uncertainty about the shower’s
+                                                   parameters. Both visual and video data in-
+                                                   dicate that the maximum may be later than
+                                                   listed; at least it is not well defined with
+                                                   ZHRs of about 3 for more than one day.
+16                                                                          IMO INFO(3.1-24)
+
+
+Orionids (008 ORI)
+
+Active: October 2–November 7; Maximum: October 21 (λ⊙ = 208◦ ); ZHR = 20+;
+Radiant: α = 95◦ , δ = +16◦ ; Radiant drift: see Table 6;
+V∞ = 66 km/s; r = 2.5.
+
+
+The shower’s radiant (see chart above in the EGE section) is at a useful elevation from local
+midnight or so in either hemisphere, somewhat before in the north. New Moon on October 21
+is perfect for all optical observations.
+Each return from 2006 to 2009 produced unexpectedly strong ZHRs of around 40–70 on two
+or three consecutive dates. An earlier IMO analysis of the shower, using data from 1984–2001,
+found both the peak ZHR and r parameters varied somewhat from year to year, with the highest
+mean ZHR ranging from ≈ 14–31 during the examined interval.
+A suspected 12-year periodicity in stronger returns claimed earlier in the 20th century is not
+detectable from visual data but seems to occur in CMOR radar data since 2002 (Egal et al.,
+2020). Higher activity due to the suspected cycle was mentioned for the period between 2020–
+2022 in the previous calendars. The average maximum Orionid ZHRs in the years 2012–2020
+was in the range of 20–30. The available data do not allow us to draw a conclusion about the
+periodicity question.
+The Orionids may also provide several lesser maxima and sometimes the activity may be similar
+for several consecutive nights centred on the main peak. In 1993 and 1998, a submaximum about
+as strong as the normal peak was detected on October 17/18 from Europe.
+
+Leonis Minorids (022 LMI)
+
+Active: October 19–27; Maximum: October 24 (λ⊙ = 211◦ ); ZHR = 2;
+Radiant: α = 162◦ , δ = +37◦ ; Radiant drift: see Table 6;
+V∞ = 62 km/s; r = 3.0.
+
+                                               This shower was first found in photographic or-
+                                               bital data and comet C/1739 K1 (Zanotti) is
+                                               suggested as parent object. The activity was
+                                               established from video data over the past years,
+                                               and a reasonable sample of visual data has been
+                                               collected as well.
+                                               Visual data from 2017–2021 yield a maximum
+                                               ZHR of the order of 5 around October 24 or
+                                               perhaps slightly earlier. The radiant area can
+                                               be seen solely from the northern hemisphere,
+                                               where it rises around midnight. The given max-
+                                               imum date is close to the New Moon providing
+                                               good conditions to observe the entire activity
+                                               period.
+IMO INFO(3.1-24)                                                                               17
+
+
+Leonids (013 LEO)
+
+Active: November 6–30; Maximum: November 17, 18h UT (nodal crossing at λ⊙ = 235 ◦. 27),
+but see text; ZHR ≈ 15
+Radiant: α = 152◦ , δ = +22◦ ; Radiant drift: see Table 6;
+V∞ = 71 km/s; r = 2.5.
+
+
+The parent comet of this shower, 55P/Tempel-Tuttle, has passed its aphelion; the next perihelion
+is due on 2031 May 20. The meteoroids we observe now are ahead of the comet. The knowledge
+of the dust ejection mechanisms and trail evolution allowed us to predict and verify variable
+activity in numerous years until recently.
+
+                                                     The (“regular”) nodal Leonid maximum at
+                                                     λ⊙ = 235 ◦. 27 should occur on 2025 Novem-
+                                                     ber 17 shortly before 18h UT. Maslov
+                                                     (2007) gives 2025 November 17, 10h UT
+                                                     (i.e. λ⊙ = 234 ◦. 95) with an expected ZHR
+                                                     of about 10–15.
+                                                     Additionally, Maslov calculated extra ac-
+                                                     tivity from the 1699 dust trail to occur on
+                                                     November 17 close to 19h and 22h 30m UT.
+                                                     The activity level is difficult to estimate.
+                                                     The particles come close to the Earth
+                                                     but have been ejected from the comet
+                                                     at relatively high negative (backwards)
+                                                     ejection velocities.
+
+Smaller meteoroids are expected to be blown away by solar radiation pressure in such a trail.
+This suggests only a rather small increase of the ZHR but the meteor brightnesses should be
+higher than the average level.
+Calculations by Sato confirm the Earth’s approach to two segments of the 1699 trail at 19h 18m
+and 22h 40m UT. Sato expects that the second peak may have a detectable activity. There is
+litte experience with dust returning prior to the parent comet.
+Another quite old trail from 1167 is mentioned by Vaubaillon. This split trail comes close to the
+Earth already on November 9, around 22h UT. It is worth monitoring the activity although there
+is no idea about the rate. This also holds for the 1633 trail. Here the minimum distance is even
+larger, but observers should be alert to monitor the activity on November 15, around 03h UT.
+Here are the 2025 encounter times in chronological order:
+Nov 09, 22h UT (1167 dust trail)
+Nov 15, 03h UT (1633 dust trail)
+Nov 17, 10h UT (nodal maximum at λ⊙ = 234 ◦. 95)
+Nov 17, 18h UT (nodal maximum at λ⊙ = 235 ◦. 27)
+Nov 17, 19h UT (1699 dust trail at λ⊙ = 235 ◦. 341)
+Nov 17, 22h 40m UT (1699 dust trail at λ⊙ = 235 ◦. 482)
+18                                                                            IMO INFO(3.1-24)
+
+
+α-Monocerotids (246 AMO)
+
+Active: November 15–25; Maximum: November 21, 23h 30m UT (λ⊙ = 239 ◦. 32);
+ZHR = variable, usually ≤ 5, see text;
+Radiant: α = 117◦ , δ = +01◦ ; Radiant drift: see Table 6; V∞ = 65 km/s; r = 2.4.
+
+
+                                                   The most recent α-Monocerotid outbursts
+                                                   have been observed in 1995 (ZHR ≈ 420) and
+                                                   2019 (ZHR ≈ 120). In both cases, the peak
+                                                   lasted for just five minutes, the entire out-
+                                                   bursts 30 minutes. The next strong AMO
+                                                   outburst is unlikely before 2043. Despite all
+                                                   this, observers are advised to monitor the
+                                                   AMO annually to complete our knowledge
+                                                   about this stream. New Moon on Novem-
+                                                   ber 20 provides us with favourable observing
+                                                   conditions. The radiant reaches suitable el-
+                                                   evation above the horizon from about local
+                                                   midnight.
+November Orionids (250 NOO)
+
+Active: November 14–December 6; Maximum: November 28 (λ⊙ = 246◦ ); ZHR = 3;
+Radiant: α = 91◦ , δ = +16◦ ; Radiant drift: see Table 6;
+V∞ = 41 km/s; r = 3.0
+
+
+Detailed analysis of video data revealed that there are two consecutive, very similar showers
+whose activity intervals partially overlap each other: the November Orionids (250 NOO), followed
+by the Monocerotids (019 MON). In the last days of November the NOO shower is the strongest
+source in the sky.
+                                                     The radiant is located in northern Orion,
+                                                     about 8◦ north of α Ori. This location is
+                                                     close to the Northern Taurids, but far enough
+                                                     east to distinguish meteors from the two
+                                                     sources. Additionally, the faster velocity of
+                                                     the November Orionids should help distin-
+                                                     guish these meteors from the slower Taurids.
+
+                                                   The radiant culminates near 2h local time,
+                                                   but is above the horizon for most of the night.
+                                                   First quarter Moon on November 28 leaves
+                                                   the better suited morning hours for optical
+                                                   observations under dark skies.
+IMO INFO(3.1-24)                                                                                 19
+
+
+Geminids (004 GEM)
+
+Active: December 4–17; Maximum: December 14, 08h UT (λ⊙ = 262 ◦. 2); ZHR = 150;
+Radiant: α = 112◦ , δ = +33◦ ; Radiant drift: see Table 6;
+V∞ = 35 km/s; r = 2.6.
+
+
+                                                    The best and most reliable of the major an-
+                                                    nual showers presently observable reaches its
+                                                    broad moon-free maximum on December 14
+                                                    centred at 08h UT. The shower is known for
+                                                    bright meteors and fireballs.
+                                                    Well north of the equator, the radiant rises
+                                                    about sunset, reaching a usable elevation al-
+                                                    ready from the local evening hours onwards.
+                                                    Observing locations at middle and northern
+                                                    latitudes are best suited. In the southern
+                                                    hemisphere, the radiant appears only around
+                                                    local midnight or so. It culminates near 02h
+                                                    local time.
+The peak has shown little variability in its timing in recent years, with the more reliably-reported
+maxima during the past two decades (WB, p. 66) all having occurred within λ⊙ = 261 ◦. 5 to
+262 ◦. 4, that is 2025 December 13, 15h to December 14, 12h UT.
+The Geminids are known for their broad maximum, producing ZHR of 100 and more over
+roughly 10–12 hours. During most returns a mass sorting was observed: there is a larger portion
+of bright Geminids towards the end of the immediate maximum period. Since the Geminids are
+on a short-period orbit, relatively rapid changes may happen. So all observations of each return
+may help to follow and understand the evolution of this unique stream. Around the maximum
+observers should report their rate and magnitude data for short intervals (no longer than 15
+minutes).
+
+
+
+Ursids (015 URS)
+
+Active: December 17–26; Maximum: December 22, 10h UT (λ⊙ = 270 ◦. 7) and see text;
+ZHR = 10 (occasionally variable up to 50);
+Radiant: α = 217◦ , δ = +76◦ ; Radiant drift: see Table 6;
+V∞ = 33 km/s; r = 2.8.
+
+
+This poorly-observed northern hemisphere shower has produced at least two major outbursts (in
+1945 and 1986). Further events could have been missed due to weather conditions. The maximum
+is rather narrow and seems to fluctuate from year to year. Several lesser rate enhancements have
+been reported from 2006 to 2008, in 2011, 2014, 2015, 2017 and 2020 (visual and video data).
+The parent comet 8P/Tuttle has an orbital period of 13.6 years. It passed its perihelion last
+on 2021 August 27. In the past, many Ursid peaks occurred when the comet was close to its
+aphelion, indicating that predictions are difficult.
+20                                                                            IMO INFO(3.1-24)
+
+
+For the 2025 return, Jenniskens (2006, Table 5b) lists a filament encounter on December 22,
+05h 39m UT (λ⊙ = 270 ◦. 26). The ZHR of 25 listed in Jenniskens is similar to the values indicated
+by him for the 2021—24 returns, although no such enhancements were reported by observers
+in 2021–23. Vaubaillon finds the densest section of the stream in the vicinity of the Earth on
+December 22 around 10h UT at the average position with no pronounced peak.
+                                                         The Ursid radiant is circumpolar from
+                                                         most northern sites, so fails to rise for
+                                                         most southern ones. The radiant is
+                                                         highest in the sky towards the morning
+                                                         and is essentially moon-free in 2025.
+IMO INFO(3.1-24)                                                                                21
+
+
+7    Radiant sizes and meteor plotting for visual observers
+by Rainer Arlt
+
+If you are not observing during a major-shower maximum, it is essential to associate meteors with
+their radiants correctly, since the total number of meteors will be small for each source. Meteor
+plotting allows shower association by more objective criteria after your observation than the
+simple imaginary back-prolongation of paths under the sky. With meteors plotted on gnomonic
+maps, you can trace them back to their radiants by extending their straight line paths. If a
+radiant lies on another chart, you should find common stars on an adjacent chart to extend this
+back-prolongation correctly.
+How large a radiant should be assumed for shower association? The real physical radiant size is
+very small, but visual plotting errors cause many true shower meteors to miss this real radiant
+area. Thus we have to assume a larger effective radiant to allow for these errors. Unfortunately,
+as we enlarge the radiant, so more and more sporadic meteors will appear to line up accidentally
+with this region. Hence we have to apply an optimum radiant diameter to compensate for the
+plotting errors loss, but which will not then be swamped by sporadic meteor pollution. Table 1
+gives this optimum diameter as a function of the distance of the meteor from the radiant.
+
+
+       Table 1. Optimum radiant diameters to be assumed for shower association of
+       minor-shower meteors as a function of the radiant distance D of the meteor.
+
+                                       D     optimum diameter
+                                      15◦          14◦
+                                      30◦          17◦
+                                      50◦          20◦
+                                      70◦          23◦
+
+
+Note that this radiant diameter criterion applies to all shower radiants except those of the
+Southern and Northern Taurids, and the Antihelion Source. The optimum α × δ size to be
+assumed for the STA and NTA is instead 20◦ × 10◦ , while that for the ANT is still larger, at
+30◦ × 15◦ .
+Path-direction is not the only criterion for shower association. The angular velocity of the meteor
+should match the expected speed of the given shower meteors according to their geocentric
+velocities. Angular velocity estimates should be made in degrees per second (◦ /s). To do this,
+make the meteors you see move for one second in your imagination at the speed you saw them.
+The path length of this imaginary meteor is the angular velocity in ◦ /s. Note that typical speeds
+are in the range 3◦ /s to 25◦ /s. Typical errors for such estimates are given in Table 2.
+
+
+                        Table 2. Error limits for the angular velocity.
+
+                            angular velocity [◦ /s]   5   10   15   20   30
+                            permitted error [◦ /s]    3    5    6    7    8
+
+
+If you find a meteor in your plots which passes the radiant within the diameter given by Table 1,
+check its angular velocity. Table 3 gives the angular speeds for a few geocentric velocities, which
+can then be looked up in Table 5 for each shower.
+22                                                                            IMO INFO(3.1-24)
+
+
+
+
+Table 3. Angular velocities as a function of the radiant distance of the meteor (D) and the
+elevation of the meteor above the horizon (h) for three different geocentric velocities (V∞ ). All
+velocities are in ◦ /s.
+
+                 V∞ = 25 km/s                      V∞ = 40 km/s               V∞ = 60 km/s
+ h\D   10◦    20◦ 40◦ 60◦ 90◦          10◦   20◦    40◦ 60◦ 90◦        10◦   20◦ 40◦ 60◦ 90◦
+
+ 10◦    0.4   0.9   1.6   2.2   2.5    0.7   1.4    2.6   3.5   4.0    0.9   1.8   3.7   4.6   5.3
+ 20◦    0.9   1.7   3.2   4.3   4.9    1.4   2.7    5.0   6.8   7.9    1.8   3.5   6.7   9.0   10
+ 40◦    1.6   3.2   5.9   8.0   9.3    2.6   5.0    9.5   13    15     3.7   6.7   13    17    20
+ 60◦    2.2   4.3   8.0   11    13     3.5   6.8    13    17    20     4.6   9.0   17    23    26
+ 90◦    2.5   4.9   9.3   13    14     4.0   7.9    15    20    23     5.3   10    20    26    30
+IMO INFO(3.1-24)                                                                                  23
+
+
+8     References and Abbreviations
+References:
+Brown P., Wong D.K., Weryk R.J., Wiegert P., 2010: A meteoroid stream survey using the Canadian
+  Meteor Orbit Radar. (II), Icarus 207, 66–81.
+Cooper T., 2024: personal communication (June 20).
+Egal A., 2020: Upcoming Eta-Aquariid outbursts, talk at the online-IMC 2020.
+Egal A., Brown P.G., Rendtel J., Campbell-Brown M., Wiegert P., 2020: Activity of the Eta-Aquariid
+  and Orionid meteor showers, Astron. Astrophys. 640, id.A58, 24 pp.
+Jenniskens P., 2006: Meteor showers and their parent comets. Cambr. Univ. Press. (esp. Tables 5ff).
+Koseki M., 2014: Various meteor scenes II: Cygnid-Draconid Complex (κ-Cygnids), WGN 42, 181–197.
+Koseki M., 2020: Cygnid-Draconid Complex (κ-Cygnids) II: Call for observations, κ-Cygnids 2021,
+ WGN 48, 129-136.
+Koseki M., 2021: The activity of meteor showers recorded by SonotaCo Net video observations 2007–
+ 2018, eMN 6, 91–246.
+Maslov M., 2007: Leonid predictions for the period 2001 – 2100, WGN 35, 5–12.
+Molau S., Rendtel J., 2009: A comprehensive list of meteor showers obtained from 10 years of observa-
+ tions with the IMO Video Meteor Network, WGN 37, 98–121.
+Ogawa H., 2022: Long-term studies of major and daytime meteor showers using world wide radio
+ meteor observations, WGN 50, 148–157.
+Ogawa H., 2023: personal communication (May 14).
+Rendtel J. (Ed.), 2014: Meteor Observers Workbook 2014, IMO.
+Rendtel J., Molau S., 2023: High inclination meteor showers in December and January, WGN 50,
+  158–164.
+Sato M., 2024: personal communication (June 26).
+Shiba Y., 2022: Jupiter family meteor showers by SonotaCo Network observations, WGN 50, 38–61.
+SonotaCo, Shimoda C., Inoue H., Masuzawa T., Sato M., 2014: Observation of April alpha Capricornids
+  (IAU#752 AAC), WGN 42, 222-226.
+Vaubaillon J., 2024: personal communication (June 4).
+
+
+Abbreviations:
+α, δ: Coordinates for a shower’s radiant position, usually at maximum. α is right ascension, δ
+  is declination. Radiants drift across the sky each day due to the Earth’s own orbital motion
+  around the Sun, and this must be allowed for using the details in Table 6 for nights away from
+  the listed shower maxima.
+r: The population index, a term computed from each shower’s meteor magnitude distribution.
+  r = 2.0 − 2.5 implies a larger fraction of brighter meteors than average, while r above 3.0 is
+  richer in fainter meteors than average.
+λ⊙ : Solar longitude, a precise measure of the Earth’s position on its orbit which is not dependent
+  on the vagaries of the calendar. All λ⊙ are given for the equinox 2000.0.
+V∞ : Pre-atmospheric or apparent meteoric velocity, given in km/s. Velocities range from about
+  11 km/s (very slow) to 72 km/s (very fast). 40 km/s is roughly medium speed.
+ZHR: Zenithal Hourly Rate, a calculated maximum number of meteors an ideal observer would
+  see in perfectly clear skies (reference limiting magnitude +6.5) with the shower radiant over-
+  head. This figure is given in terms of meteors per hour.
+24                                                                 IMO INFO(3.1-24)
+
+
+9    Tables: lunar and shower data
+
+                      Table 4. Lunar phases for 2025.
+
+           New Moon       First Quarter   Full Moon     Last Quarter
+
+                          January 6       January 13    January 21
+           January 29     February 5      February 12   February 20
+           February 28    March 6         March 14      March 22
+           March 29       April 5         April 13      April 21
+           April 27       May 4           May 12        May 20
+           May 27         June 3          June 11       June 18
+           June 25        July 2          July 10       July 18
+           July 24        August 1        August 9      August 16
+           August 23      August 31       September 7   September 14
+           September 21   September 30    October 7     October 13
+           October 21     October 29      November 5    November 12
+           November 20    November 28     December 5    December 11
+           December 20    December 27
+IMO INFO(3.1-24)                                                                                    25
+
+
+Table 5. Working List of Visual Meteor Showers. Details in this Table were correct
+according to the best information available in June 2024, with maximum dates accurate only
+for 2025. The parenthesized maximum date for the Puppids-Velids indicates a reference date for
+the radiant only, not necessarily a true maximum. The given ZHR is based on recent oberved
+returns. Possibly periodic showers are noted as ‘Var’ = variable. For more information check
+the updates published e.g. in the IMO Journal WGN.
+
+                                              Maximum               Radiant      V∞     r     ZHR
+ Shower                        Activity
+                                             Date   λ⊙              α     δ      km/s
+
+ Antihelion Source (ANT)   Dec 10–Sep 20    March–April,           see Table 6   30     3.0    4
+                                 –          late May, late June
+ Quadrantids (010 QUA)      Dec 28–Jan 12   Jan 03     283 ◦. 15   230◦   +49◦   41     2.1    80
+ γ-Ursae Minorids (404 GUM) Jan 10–Jan 22   Jan 18     298◦        228◦   +67◦   31     3.0     3
+ α-Centaurids (102 ACE)     Jan 31–Feb 20   Feb 08     319 ◦. 4    211◦   −58◦   58     2.0     6
+ April Lyrids (006 LYR)     Apr 14–Apr 30   Apr 22      32 ◦. 32   271◦   +34◦   49     2.1    18
+ π-Puppids (137 PPU)        Apr 15–Apr 28   Apr 23      33 ◦. 5    110◦   −45◦   18     2.0   Var
+ η-Aquariids (031 ETA)      Apr 19–May 28   May 06      45 ◦. 5    338◦   −01◦   66     2.4    50
+ η-Lyrids (145 ELY)         May 03–May 14   May 10      50 ◦. 0    291◦   +43◦   43     3.0     3
+ Dayt. Arietids (171 ARI) May 14–Jun 24     Jun 07      76 ◦. 7     43◦   +24◦   38     2.8    30
+ June Bootids (170 JBO)     Jun 22–Jul 02   Jun 27      95 ◦. 7    224◦   +48◦   18     2.2   Var
+ July Pegasids (175 JPE) Jul 04–Jul 14      Jul 10     108 ◦. 0    347◦   +11◦   63     3.0     3
+ July γ-Draconids (184 GDR) Jul 25–Jul 31   Jul 28     125 ◦. 13   280◦   +51◦   27     3.0     5
+ S. δ-Aquariids (005 SDA) Jul 12–Aug 23     Jul 31     128◦        340◦   −16◦   41     2.5    25
+ α-Capricornids (001 CAP) Jul 03–Aug 15     Jul 31     128◦        307◦   −10◦   23     2.5     5
+ η-Eridanids (191 ERI)      Jul 31–Aug 19   Aug 07     135◦         41◦   −11◦   64     3.0     3
+ Perseids (007 PER)         Jul 17–Aug 24   Aug 12     140 ◦. 0     48◦   +58◦   59     2.2   100
+ κ-Cygnids (012 KCG)        Aug 03–Aug 28   Aug 16     144◦        286◦   +59◦   23     3.0     3
+ Aurigids (206 AUR)         Aug 28–Sep 05   Sep 01     158 ◦. 6     91◦   +39◦   66     2.5     6
+ Sep. ε-Perseids (208 SPE) Sep 05–Sep 21    Sep 09     166 ◦. 7     48◦   +40◦   64     3.0     8
+ Dayt. Sextantids (221 DSX) Sep 09–Oct 09   Sep 27     184 ◦. 3    156◦   −02◦   32     2.5     5
+ Oct. Camelopard. (281 OCT) Oct 05–Oct 06   Oct 05     192 ◦. 58   164◦   +79◦   47     2.5     5
+ Draconids (009 DRA)        Oct 06–Oct 10   Oct 08     195 ◦. 4    262◦   +54◦   20     2.6     5
+ δ-Aurigids (224 DAU)       Oct 10–Oct 18   Oct 11     198◦         84◦   +44◦   64     3.0     2
+ ε-Geminids (023 EGE)       Oct 14–Oct 27   Oct 18     205◦        102◦   +27◦   70     3.0     3
+ Orionids (008 ORI)         Oct 02–Nov 07   Oct 21     208◦         95◦   +16◦   66     2.5    20
+ Leonis Minorids (022 LMI) Oct 19–Oct 27    Oct 24     211◦        162◦   +37◦   62     3.0     2
+ S. Taurids (002 STA)       Sep 20–Nov 20   Nov 05     223◦         52◦   +15◦   27     2.3     7
+ N. Taurids (017 NTA)       Oct 20–Dec 10   Nov 12     230◦         58◦   +22◦   29     2.3     5
+ Leonids (013 LEO)          Nov 06–Nov 30   Nov 17     235 ◦. 27   152◦   +22◦   71     2.5    10
+ α-Monocerotids (246 AMO) Nov 15–Nov 25     Nov 21     239 ◦. 32   117◦   +01◦   65     2.4   Var
+ Nov. Orionids (250 NOO) Nov 13–Dec 06      Nov 28     246◦         91◦   +16◦   44     3.0     3
+ Phoenicids (254 PHO)       Dec 01–Dec 05   Dec 01     249 ◦. 5     08◦   −27◦   15     2.8   Var
+ Puppid-Velids (301 PUP) Dec 01–Dec 15      (Dec 07)   (255◦ )     123◦   −45◦   44     2.9    10
+ Monocerotids (019 MON) Dec 05–Dec 20       Dec 09     257◦        100◦   +08◦   41     3.0     3
+ σ-Hydrids (016 HYD)        Dec 03–Dec 20   Dec 09     257◦        125◦   +02◦   58     3.0     7
+ Geminids (004 GEM)         Dec 04–Dec 20   Dec 14     262 ◦. 2    112◦   +33◦   35     2.6   150
+ Comae Berenicids (020 COM) Dec 05–Feb 04   Dec 16     264◦        158◦   +30◦   64     3.0     3
+ Ursids (015 URS)           Dec 17–Dec 26   Dec 22     270 ◦. 7    217◦   +76◦   33     2.8    10
+
+
+
+Table 6 (next page). Radiant positions during the year in α and δ.
+   26                                                                         IMO INFO(3.1-24)
+  Date         ANT          QUA         COM
+Jan     0   112◦ +21◦    228◦ +50◦   172◦ +25◦
+Jan     5   117◦ +20◦    231◦ +49◦   176◦ +23◦                   GUM
+Jan    10   122◦ +19◦    234◦ +48◦   180◦ +21◦                220◦ +71◦
+Jan    15   127◦ +17◦                185◦ +19◦                224◦ +69◦
+Jan    20   132◦ +16◦                189◦ +17◦                228◦ +67◦
+Jan    25   138◦ +15◦                193◦ +15◦      ACE       232◦ +65◦
+Jan    30   143◦ +13◦                198◦ +12◦   199◦ −56◦
+Feb     5   149◦ +11◦                203◦ +10◦   206◦ −58◦
+Feb    10   154◦   +9◦                           213◦ −59◦
+Feb    15   159 ◦
+                   +7◦                           219◦ −61◦
+Feb    20   164◦   +5◦                           224◦ −62◦
+Feb    28   172 ◦
+                   +2◦
+Mar     5   177◦    0◦
+Mar 10      182 ◦
+                   −2◦
+Mar 15      187◦   −4◦
+Mar 20      192◦   −6◦
+Mar 25      197◦   −7◦
+Mar 30      202◦   −9◦
+Apr     5   208 ◦
+                  −11◦
+Apr 10      213◦ −13◦       LYR         PPU
+Apr 15      218◦ −15◦    263◦ +34◦   106◦ −44◦       ETA
+Apr 20      222◦ −16◦    269◦ +34◦   109◦ −45◦   323◦   −7◦
+Apr 25      227◦ −18◦    274◦ +34◦   111◦ −45◦   328 ◦
+                                                        −5◦
+Apr 30      232◦ −19◦    279◦ +34◦               332◦   −3◦      ELY
+May 05      237◦ −20◦                            337◦   −1◦   286◦ +43◦
+May 10      242◦ −21◦                            341◦   +1◦   291◦ +43◦
+May 15      247◦ −22◦                            345◦   +3◦   296◦ +44◦
+May 20      252◦ −22◦                            349 ◦
+                                                        +5◦
+May 25      256◦ −23◦                            353◦   +7◦
+May 30      262◦ −23◦      ARI
+Jun     5   267◦ −23◦    42◦ +24◦
+Jun 10      272◦ −23◦    47◦ +24◦
+Jun 15      276◦ −23◦
+Jun 20      281◦ −23◦       JBO
+Jun 25      286◦ −22◦    223◦ +48◦
+Jun 30      291◦ −21◦    225◦ +47◦      CAP                                  JPE
+Jul     5   296◦ −20◦                285◦ −16◦      SDA                   343◦ +10◦
+Jul    10   300◦ −19◦      PER       289◦ −15◦   325◦ −19◦                347◦ +11◦
+Jul    15   305◦ −18◦     6◦ +50◦    294◦ −14◦   329◦ −19◦                351◦ +12◦
+Jul    20   310◦ −17◦    11◦ +52◦    299◦ −12◦   333◦ −18◦                356◦ +13◦      GDR
+Jul    25   315◦ −15◦    22◦ +53◦    303◦ −11◦   337◦ −17◦                            277◦ +51◦
+Jul    30   319◦ −14◦    29◦ +54◦    307◦ −10◦   340◦ −16◦      ERI          KCG      282◦ +51◦
+Aug     5   325◦ −12◦    37◦ +56◦    313◦  −8◦   345◦ −14◦    39◦ −14◦    281◦ +45◦
+Aug 10      330◦ −10◦    45◦ +57◦    318 ◦
+                                           −6◦   349◦ −13◦    44◦ −12◦    284◦ +49◦
+Aug 15      335◦   −8◦   51◦ +58◦                352◦ −12◦    48◦ −10◦    287◦ +53◦
+Aug 20      340 ◦
+                   −7◦   57◦ +58◦       AUR      356◦ −11◦    52◦  −9◦    289◦ +56◦
+Aug 25      344◦   −5◦   63◦ +58◦     85◦ +40◦                            291◦ +59◦
+Aug 30      349◦   −3◦                90◦ +39◦     SPE                    293◦ +62◦
+Sep     5   355◦   −1◦                96◦ +39◦   43◦ +40◦
+Sep    10     0◦   +1◦               102◦ +39◦   48◦ +40◦
+Sep    15     5◦   +2◦      STA                  53◦ +40◦
+Sep    20                18◦   +5◦      DSX      59◦ +41◦
+Sep    25                21 ◦
+                               +6◦   147◦  −2◦
+Sep    30                25◦   +7◦   152◦  −2◦      ORI                      OCT
+Oct     5                28 ◦
+                               +8◦                85◦ +14◦      DAU       164◦ +79◦      DRA
+Oct    10                32◦   +9◦      EGE       88◦ +15◦    82◦ +45◦                262◦ +54◦
+Oct    15      NTA       36 ◦
+                              +11◦    99◦ +27◦    91◦ +15◦    87◦ +43◦       LMI
+Oct    20    38◦ +18◦    40◦ +12◦    104◦ +27◦    94◦ +16◦    92◦ +41◦    158◦ +39◦
+Oct    25    43◦ +19◦    43◦ +13◦    109◦ +27◦    98◦ +16◦                163◦ +37◦
+Oct    30    47◦ +20◦    47◦ +14◦                101◦ +16◦                168◦ +35◦
+Nov     5    52◦ +21◦    52◦ +15◦                105◦ +17◦       LEO
+Nov 10       56◦ +22◦    56◦ +15◦       NOO                   147◦ +24◦                  AMO
+Nov 15       61◦ +23◦    60◦ +16◦     81◦ +16◦                150◦ +23◦               112◦  +2◦
+Nov 20       65◦ +24◦    64◦ +16◦     84◦ +16◦                153◦ +21◦               116 ◦
+                                                                                            +1◦
+Nov 25       70◦ +24◦                 88◦ +16◦     PHO        156◦ +20◦      PUP      120◦   0◦
+Nov 30       74◦ +24◦       GEM       92◦ +16◦    7◦ −27◦     159◦ +19◦   130◦ −44◦    91 ◦
+                                                                                            +8◦
+Dec     5    85◦ +23◦    103◦ +33◦   149◦ +37◦   10◦ −27◦     122◦  +3◦   132◦ −44◦    98◦  +9◦
+Dec 10       90◦ +23◦    108◦ +33◦   153◦ +35◦   13◦ −28◦     126◦  +2◦   135◦ −44◦   101◦  +8◦
+Dec 15       96◦ +23◦    113◦ +33◦   157◦ +33◦                130◦  +1◦   138◦ −44◦   105◦  +7◦
+Dec 20      101◦ +23◦    118◦ +32◦   161◦ +31◦                134◦   0◦   217◦ +76◦   108◦  +7◦
+Dec 25      106◦ +22◦                166◦ +28◦                   HYD      217◦ +74◦      MON
+Dec 30      111◦ +21◦    226◦ +50◦   170◦ +26◦                               URS
+               ANT          QUA         COM
+IMO INFO(3.1-24)                                                                               27
+
+
+
+
+Table 6a. Dates and radiant positions (in α and δ) for the sources of possible or
+additional activity described in the text.
+
+                                            Activity      λ⊙         Radiant         Details
+        Shower
+                                             Date       2000.0       α     δ        see page
+        κ-Cancrids (793 KCA)                 Jan 09    289 ◦. 315   138◦    +9◦          3
+        April α-Capricornids (752 AAC)       Apr 07     17 ◦. 637   304◦   −13◦          5
+        July γ-Draconids (184 GDR)            Jul 28   125 ◦. 132   280◦   +51◦         10
+        Perseids (007 PER)                   Aug 12    139 ◦. 736    46◦   +58◦         10
+                                             Aug 12    139 ◦. 38     48◦   +58◦         10
+        ε-Eridanids (209 EER)                Sep 12    169 ◦. 983    52◦   −15◦         11
+        October Draconids (009 DRA)          Oct 08    195 ◦. 257   263◦   +56◦         15
+        Leonids (013 LEO)                    Nov 09    227 ◦. 40                        17
+                                             Nov 15    232 ◦. 64                        17
+                                             Nov 17    235 ◦. 341   154◦   +22◦         17
+                                             Nov 17    235 ◦. 482   154◦   +22◦         17
+        Ursids (015 URS)                     Dec 22    270 ◦. 26    218◦   +76◦         19
+
+
+
+
+Table 7. Working List of Daytime Radio Meteor Showers. According to the naming
+rules, all shower names have the prefix ‘Daytime’ which is omitted in our Table. We only included
+showers which are listed as “established” in the IAU MDC database and are strong enough for
+forward scatter observations (WCmax > 500 in Brown et al., 2010). For recent activity data
+compiled here see Ogawa (2022; 2023). See also the Table of northern summer daytime showers
+on page 6. In most cases, the start and end of the activity period are uncertain and the given
+values are tentative. For the 144 APS we refer to the values provided by Ogawa (2022) and
+described on page 6.
+
+
+                                                            Max        λ⊙         Radiant
+        Shower                             Activity
+                                                            Date     2000.0       α     δ
+        April Piscids (144 APS)       Apr 20 – Apr 25 Apr 22           32 ◦. 6     5◦    +5◦
+        N. ω-Cetids (152 NOC)         May 01 – May 17 May 06           45 ◦. 5     9◦   +17◦
+        S. ω-Cetids (153 OCE)         May 01 – May 17 May 06           45 ◦. 5    20◦    −6◦
+        S. May Arietids (156 SMA)     May 01 – May 17 May 07           47 ◦. 1    28◦    +8◦
+        Arietids (171 ARI)            May 25 – Jun 20 Jun 07           77 ◦. 0    43◦   +24◦
+        ζ-Perseids (172 ZPE)          May 30 – Jun 20 Jun 09           78 ◦. 6    67◦   +23◦
+        β-Taurids (173 BTA)           Jun 15 – Jul 05 Jun 25           94◦        82◦   +20◦
+        κ-Leonids (212 KLE)           Sep 20 – Sep 30 Sep 25          183◦       162◦   +15◦
+        Sextantids (221 DSX)          Sep 15 – Oct 05 Oct 01          188◦       156◦     2◦
+28                                                                             IMO INFO(3.1-24)
+
+
+10     Useful addresses
+On the IMO’s website http://www.imo.net you find online forms to submit visual reports and
+reports of fireball sightings. It is also possible to submit reports of visual observation sessions
+for other observers. You can also access all reports in the database, both of visual data and
+fireball reports.
+Visual reports: http://www.imo.net → Observations → Add a visual observation session
+Fireball reports: http://www.imo.net → Observations → Report a fireball
+For more information on observing techniques, to see the latest results from well-observed major
+meteor showers and unusual shower outbursts, or when you wish to submit your results, please
+use the IMO’s website, www.imo.net as your first stop. The web page also allows to access
+the data for own analyses. Questions can be mailed to the appropriate address (note the word
+“meteor” must feature in your message’s “subject” line to pass the anti-spam filters):
+
+For especially bright meteors: fireball@imo.net
+For meteor still imaging: photo@imo.net
+For forward-scatter radio observing: radio@imo.net
+For meteor moving-imaging: video@imo.net
+For visual observing: visual@imo.net
+
+The IMO has Commssions for various fields, about which you may enquire with the respective
+director:
+Photographic Commission: William Ward, 84 Woodwynd, Kilwinning, KA13 7DJ, Scotland,
+    U.K.; e-mail: bill meteor@yahoo.com
+
+Radio Commission: Christian Steyaert, Kruisven 66, 2400 Mol, Belgium;
+  e-mail: steyaert@vvs.be
+
+Video Commission Sirko Molau, Abenstalstraße 13b, 84072 Seysdorf, Germany;
+  e-mail: sirko@molau.de
+
+Visual Commission: Jürgen Rendtel, Eschenweg 16, 14476 Potsdam, Germany;
+   e-mail: jrendtel@web.de
+
+You can join the International Meteor Organization by visiting the web page www.imo.net →
+“Join the IMO”.
+As an alternative or to obtain additional information, you may contact the Secretary-General
+via lunro.imo.usa@cox.net.
+Those unable to access the Internet may write for information to Robert Lunsford, IMO Secretary-
+General, 14884 Quail Valley Way, El Cajon, CA 92021-2227, USA. When using ordinary mail,
+please try to enclose return postage, either in the form of stamps (same country only) or as an
+International Reply Coupon (I.R.C. – available from main postal outlets). Thank you!
+
+DOI: 10.13140/RG.2.2.21221.00486
+
+
+c International Meteor Organization, 2024.
+
