@@ -69,6 +69,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_ballistics_logDebug` | CHECKBOX | `false` | yes | ballistics | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
+## AEE Environmental → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_environmental_logDebug` | CHECKBOX | `false` | yes | environmental | Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental > Diagnostics) |
+
 ## AEE Environmental → Display
 
 | Setting | Type | Default | Global | Addon | Purpose |

@@ -69,3 +69,7 @@ AEE_SETTING_SLIDER(slabDepth,"AEE Environmental","Snow",0.1,2,1.0,1);
 AEE_SETTING_CHECKBOX(dynamicStars,"AEE Environmental","Display",true);
 
 AEE_SETTING_CHECKBOX(dynamicMeteors,"AEE Environmental","Display",true);
+
+// Diagnostics: the consolidated sky-state line logs at DEBUG after the first
+// INFO line when this switch is on.
+AEE_SETTING_CHECKBOX(logDebug,"AEE Environmental","Diagnostics",false);
