@@ -306,5 +306,73 @@ class TestEyeDriverContract(unittest.TestCase):
             self.assertIn(hook, text, f"debug hook {hook} not read")
 
 
+OPTICS = ROOT / "addons" / "optics"
+PREP = OPTICS / "XEH_PREP.hpp"
+POSTINIT = OPTICS / "XEH_postInit.sqf"
+SETTINGS = OPTICS / "initSettings.inc.sqf"
+STRINGS = OPTICS / "stringtable.xml"
+
+
+class TestEyeWiring(unittest.TestCase):
+    """The module is registered, started, and documented."""
+
+    EYE_FUNCTIONS = [
+        "eyeMesopicWeight",
+        "eyePupilSteady",
+        "eyePupilStep",
+        "eyeAdaptStep",
+        "eyeSceneLux",
+        "eyeSkyFraction",
+        "eyeSkyCast",
+        "eyeAperture",
+        "eyeSampleScene",
+        "updateEyeAdaptation",
+        "initEyeAdaptation",
+    ]
+
+    EYE_SETTINGS = [
+        "eyeAdaptationEnabled",
+        "eyeReflectance",
+        "eyeTauLight",
+        "eyeTauDarkCone",
+        "eyeTauDarkRod",
+        "eyePupilTauConstrict",
+        "eyePupilTauDilate",
+        "eyeMesopicLow",
+        "eyeMesopicHigh",
+        "eyeFastBlend",
+        "eyeAmbientLuxScale",
+        "eyeLocalLuxScale",
+        "eyeBlindingLuxScale",
+    ]
+
+    def test_every_function_is_prepped(self):
+        text = PREP.read_text(encoding="utf-8")
+        for name in self.EYE_FUNCTIONS:
+            self.assertIn(f"PREPS(eye,{name});", text, f"{name} is not prepped")
+
+    def test_postinit_starts_the_module(self):
+        text = POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("FUNC(initEyeAdaptation)", text)
+
+    def test_settings_are_registered(self):
+        text = SETTINGS.read_text(encoding="utf-8")
+        for name in self.EYE_SETTINGS:
+            self.assertIn(name, text, f"setting {name} is not registered")
+        self.assertIn('"AEE Optics","Eye Adaptation"', text)
+
+    def test_stringtable_keys_are_sorted(self):
+        keys = re.findall(
+            r'<Key ID="(STR_AEE_Optics_\w+)"', STRINGS.read_text(encoding="utf-8")
+        )
+        self.assertEqual(keys, sorted(keys), "stringtable keys are not sorted")
+
+    def test_every_setting_has_name_and_description(self):
+        text = STRINGS.read_text(encoding="utf-8")
+        for name in self.EYE_SETTINGS:
+            self.assertIn(f"STR_AEE_Optics_{name}_Name", text)
+            self.assertIn(f"STR_AEE_Optics_{name}_Description", text)
+
+
 if __name__ == "__main__":
     unittest.main()

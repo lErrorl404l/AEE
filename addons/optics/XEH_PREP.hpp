@@ -17,6 +17,20 @@ PREPS(sensor,calculateSolarGlare);
 
 PREPS(sensor,calculateVehicleHeatShimmer);
 PREPS(sensor,getOpticProperties);
+
+// Eye adaptation (issue #141): AEE owns the camera aperture and its rate.
+PREPS(eye,eyeMesopicWeight);
+PREPS(eye,eyePupilSteady);
+PREPS(eye,eyePupilStep);
+PREPS(eye,eyeAdaptStep);
+PREPS(eye,eyeSceneLux);
+PREPS(eye,eyeSkyFraction);
+PREPS(eye,eyeSkyCast);
+PREPS(eye,eyeAperture);
+PREPS(eye,eyeSampleScene);
+PREPS(eye,updateEyeAdaptation);
+PREPS(eye,initEyeAdaptation);
+
 PREPS(vision,managePostProcess);
 PREPS(vision,teardownSensors);
 PREPS(vision,runThermalPass);
