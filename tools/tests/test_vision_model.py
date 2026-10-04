@@ -236,5 +236,46 @@ class TestPerceptionToneResponse(unittest.TestCase):
         self.assertLessEqual(brightness, 1.3)
 
 
+def compose(args):
+    """Run fnc_perceptionParams with fnc_perceptionToneResponse bound."""
+    globals_ = {
+        "__FUNC__perceptionToneResponse": lambda *a: run_sqf(TONE_KERNEL, list(a)),
+    }
+    return run_sqf(COMPOSE_KERNEL, args, globals_)
+
+
+class TestPerceptionComposition(unittest.TestCase):
+    """fnc_perceptionParams composes the light slice from the real SQF.
+
+    Slice 1: the tone stage only.  The colour stage is identity, so the
+    colorize alpha is 0 (BIKI capture 20240220225631).  The weight array is
+    the Rec.709 luma.
+    """
+
+    def test_array_has_seven_elements(self):
+        cc, _ = compose([])
+        self.assertEqual(len(cc), 7)
+
+    def test_default_inputs_keep_the_colorize_alpha_zero(self):
+        cc, _ = compose([])
+        self.assertEqual(cc[4][3], 0, "the default composition desaturates")
+
+    def test_strength_zero_is_the_identity_fixture(self):
+        cc, _ = compose([1, 1, [1, 1, 1], True, False, 0, 1])
+        self.assertEqual(cc, NEUTRAL_FIXTURE)
+
+    def test_disabled_tone_is_the_identity_fixture(self):
+        cc, _ = compose([1, 1, [1, 1, 1], False, False, 1, 1])
+        self.assertEqual(cc, NEUTRAL_FIXTURE)
+
+    def test_weight_array_is_rec709(self):
+        cc, _ = compose([])
+        self.assertEqual(cc[5], REC709_WEIGHTS)
+
+    def test_filmgrain_has_six_elements(self):
+        _, grain = compose([])
+        self.assertEqual(len(grain), 6)
+
+
 if __name__ == "__main__":
     unittest.main()
