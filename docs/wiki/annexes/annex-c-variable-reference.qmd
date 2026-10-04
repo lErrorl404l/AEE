@@ -433,6 +433,25 @@ Every `logDebug` switch registers under **AEE Debug > <component>**. The
 coverage-gaps release added one to every addon that declares settings, so
 all nineteen sit in one place, grouped by the owning component.
 
+### Human-vision model (perception)
+
+The human-vision model registers its operator switches under **AEE Optics >
+Vision** and its colour calibration under **AEE Experimental > Vision**.  The
+full list, types and defaults are in the generated configuration chapter.  Each
+constant is traced to a published source or marked UNSOURCED in the stringtable
+description.
+
+| Variable | Category | Purpose |
+|---|---|---|
+| `aee_optics_visionModelEnabled` | Optics > Vision | Enable the physical model for normal vision |
+| `aee_optics_visionToneEnabled` | Optics > Vision | Enable the tone and contrast stage |
+| `aee_optics_visionToneStrength` | Optics > Vision | Tone-stage strength, 0 to 1 |
+| `aee_optics_visionContrastScale` | Optics > Vision | Tone-stage contrast scale, 0.5 to 1.5 |
+| `aee_optics_visionWhiteBalance` | Optics > Vision | Enable the partial von Kries white balance |
+| `aee_optics_visionAdaptationDegree` | Experimental > Vision | Degree of chromatic adaptation D, 0 to 1 (CIE 159:2004) |
+| `aee_optics_visionMesopicDesaturation` | Experimental > Vision | Maximum mesopic desaturation, 0 to 0.5 |
+| `aee_optics_visionPurkinjeStrength` | Experimental > Vision | Purkinje tint strength, 0 to 1 |
+
 ### Exposure pin test (thermal)
 
 `aee_thermal_agcPinned` is a debug-console switch, not a registered
