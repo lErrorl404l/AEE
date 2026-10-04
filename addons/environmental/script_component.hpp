@@ -37,3 +37,14 @@
 #define AURORA_BAND_ALT_M 4000
 #define AURORA_GREEN [0.35,1.0,0.45]
 #define AURORA_RED [1.0,0.30,0.35]
+
+// ── Milky Way band render (night-sky debug) ───────────────────────────────
+// The surface-brightness anchor is the published dark-sky value (21.8
+// mag/arcsec^2, Crumey 2014); MILKY_WAY_NELM_MIN derives from that contrast.
+// The colour, alpha, radius and sample count are render tunables, UNSOURCED.
+#define MILKY_WAY_TICK 0.5
+#define MILKY_WAY_NELM_MIN 5.0
+#define MILKY_WAY_SAMPLES 96
+#define MILKY_WAY_ALPHA 0.18
+#define MILKY_WAY_RADIUS 5000
+#define MILKY_WAY_COLOUR [0.70,0.72,0.85]
