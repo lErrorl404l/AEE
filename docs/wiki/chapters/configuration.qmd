@@ -241,6 +241,14 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
 | `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
 
+## AEE Experimental → Vision
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_visionAdaptationDegree` | SLIDER | `1.0` | yes | optics | Degree of chromatic adaptation D of the human-vision model, range 0 to 1. CIECAM02 defines D = F times (1 - (1/3.6) times exp((-LA - 42) / 92)); F is 0.8 for a dim surround, 0.9 average, 1.0 dark. SOURCED: CIE 159:2004. The default 1.0 is a full adaptation. |
+| `aee_optics_visionMesopicDesaturation` | SLIDER | `0.3` | yes | optics | Maximum desaturation of the human-vision model in a scotopic scene, range 0 to 0.5. The mesopic-colour kernel raises the ColorCorrections colorize alpha toward this value as the CIE 191:2010 photopic fraction falls. The engine can only desaturate. The exact amplitude is UNSOURCED. |
+| `aee_optics_visionPurkinjeStrength` | SLIDER | `0.5` | yes | optics | Strength of the Purkinje shift of the human-vision model, range 0 to 1. It scales the move of the colorize colour toward the scotopic blue-green hue (507 nm, CIE 1951) as the CIE 191:2010 photopic fraction falls. The tint amplitude is UNSOURCED. |
+
 ## AEE FX → Events
 
 | Setting | Type | Default | Global | Addon | Purpose |

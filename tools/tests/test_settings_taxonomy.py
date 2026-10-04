@@ -54,21 +54,35 @@ class TestSettingsTaxonomy(unittest.TestCase):
                 self.assertIn(setting.name, EXPECTED_HUD)
 
 
-EXPECTED_EXPERIMENTAL = {
+EXPECTED_EXPERIMENTAL_FUSION = {
     "aee_thermal_fusionAlwaysOn",
     "aee_thermal_fusionFovFrame",
     "aee_thermal_fusionOutline",
     "aee_thermal_fusionSolidFill",
 }
 
+EXPECTED_EXPERIMENTAL_VISION = {
+    "aee_optics_visionAdaptationDegree",
+    "aee_optics_visionMesopicDesaturation",
+    "aee_optics_visionPurkinjeStrength",
+}
+
+# Every AEE Experimental name, across all subcategories.  The unknown-setting
+# guard reads this union; the per-group exact tests read the two sets above, so
+# the Fusion exact group stays unchanged.
+EXPECTED_EXPERIMENTAL = EXPECTED_EXPERIMENTAL_FUSION | EXPECTED_EXPERIMENTAL_VISION
+
 
 class TestExperimentalTaxonomy(unittest.TestCase):
-    """AEE Experimental holds exactly the four thermal-fusion knobs."""
+    """AEE Experimental holds the fusion and the vision-calibration knobs."""
 
     def test_experimental_group_is_exact(self):
         groups = taxonomy_groups({"AEE Experimental"})
         self.assertEqual(
-            groups.get(("AEE Experimental", "Fusion")), EXPECTED_EXPERIMENTAL
+            groups.get(("AEE Experimental", "Fusion")), EXPECTED_EXPERIMENTAL_FUSION
+        )
+        self.assertEqual(
+            groups.get(("AEE Experimental", "Vision")), EXPECTED_EXPERIMENTAL_VISION
         )
 
     def test_no_unknown_setting_uses_a_taxonomy_category(self):
