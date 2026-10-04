@@ -54,5 +54,28 @@ class TestSettingsTaxonomy(unittest.TestCase):
                 self.assertIn(setting.name, EXPECTED_HUD)
 
 
+EXPECTED_EXPERIMENTAL = {
+    "aee_thermal_fusionAlwaysOn",
+    "aee_thermal_fusionFovFrame",
+    "aee_thermal_fusionOutline",
+    "aee_thermal_fusionSolidFill",
+}
+
+
+class TestExperimentalTaxonomy(unittest.TestCase):
+    """AEE Experimental holds exactly the four thermal-fusion knobs."""
+
+    def test_experimental_group_is_exact(self):
+        groups = taxonomy_groups({"AEE Experimental"})
+        self.assertEqual(
+            groups.get(("AEE Experimental", "Fusion")), EXPECTED_EXPERIMENTAL
+        )
+
+    def test_no_unknown_setting_uses_a_taxonomy_category(self):
+        for setting in gen.collect_settings():
+            if setting.category == "AEE Experimental":
+                self.assertIn(setting.name, EXPECTED_EXPERIMENTAL)
+
+
 if __name__ == "__main__":
     unittest.main()
