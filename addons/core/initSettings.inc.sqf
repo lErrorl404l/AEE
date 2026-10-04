@@ -84,7 +84,7 @@ AEE_SETTING_SLIDER(clothingInsulation,"AEE","Thermal",0.5,2.0,1.0,1);
 AEE_SETTING_CHECKBOX(mudAccretionEnabled,"AEE","Mobility",true);
 
 // ── Diagnostic ─────────────────────────────────────────────────────────────
-AEE_SETTING_CHECKBOX_LOCAL(diagnostic,"AEE","Core",false);
+AEE_SETTING_CHECKBOX_LOCAL(diagnostic,"AEE Debug","Core",false);
 
 // ── Radio / Comms ──────────────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(radioPropagationEnabled,"AEE","Radio",true);
@@ -114,7 +114,7 @@ AEE_SETTING_CHECKBOX(maritimeEnabled,"AEE","Maritime",true);
 AEE_SETTING_CHECKBOX(fxEnabled,"AEE","FX",true);
 
 // ── Collision diagnostics (issue #172) ────────────────────────────────────
-AEE_SETTING_CHECKBOX(collisionDebug,"AEE","FX",false);
+AEE_SETTING_CHECKBOX(collisionDebug,"AEE Debug","FX",false);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The switch behind AEE_LOG_DEBUG.  Without a declared setting the flag
@@ -125,7 +125,7 @@ AEE_SETTING_CHECKBOX(collisionDebug,"AEE","FX",false);
     QGVAR(logDebug),
     "CHECKBOX",
     [LLSTRING(logDebug_Name), LLSTRING(logDebug_Description)],
-    ["AEE", "Core"],
+    ["AEE Debug", "Core"],
     false,
     true,
     {

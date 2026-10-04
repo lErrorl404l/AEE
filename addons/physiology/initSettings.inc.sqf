@@ -173,4 +173,4 @@ AEE_SETTING_SLIDER(ScentIntensity,"AEE Physiology","Scent",0,2,1.0,1);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_physiology_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE Physiology","Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Physiology",false);

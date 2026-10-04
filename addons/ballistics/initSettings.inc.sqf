@@ -16,4 +16,4 @@ AEE_SETTING_SLIDER(ammoHeatPerShotJ,"AEE Ballistics","Ammo Temperature",0,0.001,
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_ballistics_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE Ballistics","Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Ballistics",false);

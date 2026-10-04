@@ -26,4 +26,4 @@ AEE_SETTING_SLIDER(medicalBurnDamageScale,"AEE","Compat - ACE3",0,0.01,0.0005,4)
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_compat_ace3_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - ACE3 Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Compat - ACE3",false);

@@ -114,4 +114,4 @@ AEE_SETTING_CHECKBOX(vehicleCouplingEnabled,"AEE Mobility","Vehicle",true);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_mobility_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE Mobility","Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Mobility",false);
