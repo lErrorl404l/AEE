@@ -118,14 +118,39 @@ if (_hAcuity < 0) then {
     _hAcuity = ["optics", "BaseAcuity", "FilmGrain", 2505, QGVAR(ppHandle_BaseAcuity)] call EFUNC(core,createPPEffect);
 };
 
-private _params = [
-    GVAR(baseGradeContrast),
-    GVAR(baseGradeBrightness),
-    GVAR(baseGradeBlackPoint),
-    GVAR(baseGradeSaturation),
-    GVAR(baseGradeSharpness),
-    GVAR(baseGradeGrain)
-] call FUNC(baseGradeParams);
+// The physical human-vision model subsumes the aesthetic base grade in place.
+// The master switch is read defensively: the setting registers in a later
+// commit, and a bare GVAR read can throw between the commits.  When the model
+// is on, the driver reads the eye model's published adapted luminance and
+// mesopic photopic fraction; it never writes the aperture.
+private _useModel = missionNamespace getVariable [QGVAR(visionModelEnabled), false];
+private _params = [];
+if (_useModel isEqualTo true) then {
+    private _adaptedLux = missionNamespace getVariable [QGVAR(eyeAdaptedLux), 1];
+    private _mesopicW = missionNamespace getVariable [QGVAR(eyeMesopic), 1];
+    private _toneEnabled = missionNamespace getVariable [QGVAR(visionToneEnabled), true];
+    private _whiteBalance = missionNamespace getVariable [QGVAR(visionWhiteBalance), false];
+    private _toneStrength = missionNamespace getVariable [QGVAR(visionToneStrength), 1];
+    private _contrastScale = missionNamespace getVariable [QGVAR(visionContrastScale), 1];
+    _params = [
+        _adaptedLux,
+        _mesopicW,
+        [1, 1, 1],
+        _toneEnabled,
+        _whiteBalance,
+        _toneStrength,
+        _contrastScale
+    ] call FUNC(perceptionParams);
+} else {
+    _params = [
+        GVAR(baseGradeContrast),
+        GVAR(baseGradeBrightness),
+        GVAR(baseGradeBlackPoint),
+        GVAR(baseGradeSaturation),
+        GVAR(baseGradeSharpness),
+        GVAR(baseGradeGrain)
+    ] call FUNC(baseGradeParams);
+};
 private _ccParams = _params select 0;
 private _grainParams = _params select 1;
 
@@ -147,3 +172,4 @@ if (_hAcuity >= 0) then {
 missionNamespace setVariable [QGVAR(baseGradeActive), true];
 missionNamespace setVariable [QGVAR(baseGradeCC), _hCC];
 missionNamespace setVariable [QGVAR(baseGradeGrain), _hAcuity];
+missionNamespace setVariable [QGVAR(visionModelActive), _useModel isEqualTo true];
