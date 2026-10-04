@@ -21,6 +21,36 @@ FUNCS = WILDLIFE / "functions"
 DATA = WILDLIFE / "data"
 MANIFEST = DATA / "sound_manifest.sqf"
 
+SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
+SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
+DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
+
+# A tiny manifest for the pure kernel tests.  The real manifest has the same
+# row shape.
+TEST_MANIFEST = [
+    ["water", "Sound_Stream", 120, 0.8],
+    ["night", "Owl", 120, 0.6],
+    ["day_temperate", "a3\\sounds_f\\ambient\\animals\\birds1.wss", 120, 0.7],
+    ["day_arid", "a3\\sounds_f\\ambient\\animals\\birds3.wss", 120, 0.5],
+]
+
+
+def sound_bed(biome, is_night, near_water, wind, disturbance, manifest=None):
+    if manifest is None:
+        manifest = TEST_MANIFEST
+    return run_sqf(
+        SOUND_BED, [biome, is_night, near_water, wind, disturbance, manifest]
+    )
+
+
+def spook_range(magnitude, sensitivity, base_range):
+    return run_sqf(SPOOK_RANGE, [magnitude, sensitivity, base_range])
+
+
+def disturbance_silence(disturbance, decay):
+    return run_sqf(DISTURBANCE_SILENCE, [disturbance, decay])
+
+
 # The only CfgSFX classes the manifest may name.  Each is a confirmed vanilla
 # class (BIKI CfgSFX).  A new class here needs a dossier citation.
 ALLOWED_CFGSFX = {"Owl", "Sound_Stream"}
@@ -79,6 +109,65 @@ class TestSoundManifest(unittest.TestCase):
             self.assertIsInstance(row[3], (int, float))
             self.assertGreater(row[2], 0)
             self.assertGreater(row[3], 0)
+
+
+class TestSoundBedForContext(unittest.TestCase):
+    """fnc_soundBedForContext runs from the real SQF."""
+
+    def test_water_wins_over_night_and_day(self):
+        key, _gain = sound_bed("Cfb", True, 0.9, 0, 0)
+        self.assertEqual(key, "water")
+
+    def test_night_wins_when_water_is_absent(self):
+        key, _gain = sound_bed("Cfb", True, 0.1, 0, 0)
+        self.assertEqual(key, "night")
+
+    def test_day_when_neither_water_nor_night(self):
+        key, _gain = sound_bed("Cfb", False, 0.1, 0, 0)
+        self.assertTrue(key.startswith("day"), key)
+
+    def test_biome_family_selects_the_day_key(self):
+        self.assertEqual(sound_bed("BWh", False, 0, 0, 0)[0], "day_arid")
+        self.assertEqual(sound_bed("Af", False, 0, 0, 0)[0], "day_tropical")
+        self.assertEqual(sound_bed("Dfb", False, 0, 0, 0)[0], "day_cold")
+
+    def test_gain_decreases_as_disturbance_rises(self):
+        _key, quiet = sound_bed("Cfb", False, 0, 0, 0.0)
+        _key, loud = sound_bed("Cfb", False, 0, 0, 0.8)
+        self.assertLess(loud, quiet)
+
+
+class TestSpookRange(unittest.TestCase):
+    """fnc_spookRange runs from the real SQF."""
+
+    def test_range_doubles_with_the_base_range(self):
+        single = spook_range(0.5, 1, 10)
+        double = spook_range(0.5, 1, 20)
+        self.assertAlmostEqual(double, single * 2)
+
+    def test_zero_base_range_is_zero(self):
+        self.assertEqual(spook_range(0.5, 1, 0), 0)
+
+    def test_magnitude_clamps_at_zero(self):
+        self.assertAlmostEqual(spook_range(-3, 1, 20), spook_range(0, 1, 20))
+
+    def test_sensitivity_scales_the_range(self):
+        self.assertAlmostEqual(spook_range(0.5, 2, 20), spook_range(0.5, 1, 20) * 2)
+
+
+class TestDisturbanceSilence(unittest.TestCase):
+    """fnc_disturbanceSilence runs from the real SQF."""
+
+    def test_zero_disturbance_is_full_gain(self):
+        self.assertAlmostEqual(disturbance_silence(0, 0.05), 1.0)
+
+    def test_full_disturbance_is_silent(self):
+        self.assertAlmostEqual(disturbance_silence(1, 0.05), 0.0)
+
+    def test_mid_disturbance_sits_between(self):
+        value = disturbance_silence(0.5, 0.05)
+        self.assertGreater(value, 0.0)
+        self.assertLess(value, 1.0)
 
 
 if __name__ == "__main__":
