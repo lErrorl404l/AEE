@@ -145,6 +145,14 @@
             <Original>Dynamic Meteors</Original>
             <English>Dynamic Meteors</English>
         </Key>
+        <Key ID="STR_AEE_Environmental_dynamicMilkyWay_Description">
+            <Original>Draw the Milky Way as a faint client-side band along the galactic plane (night, cloud and limiting magnitude gate it; forceable)</Original>
+            <English>Draw the Milky Way as a faint client-side band along the galactic plane (night, cloud and limiting magnitude gate it; forceable)</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_dynamicMilkyWay_Name">
+            <Original>Dynamic Milky Way</Original>
+            <English>Dynamic Milky Way</English>
+        </Key>
         <Key ID="STR_AEE_Environmental_dynamicStars_Description">
             <Original>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</Original>
             <English>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</English>
