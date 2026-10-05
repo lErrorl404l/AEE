@@ -296,6 +296,31 @@ class TestWildlifeSourceContracts(unittest.TestCase):
                 )
         self.assertGreaterEqual(calls, 1)
 
+    def test_cfg_sfx_bed_uses_the_client_local_sound_source(self):
+        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        match = re.search(r"createSoundSourceLocal\s*\[(.*?)\]\s*;", text, re.DOTALL)
+        self.assertIsNotNone(match, "no createSoundSourceLocal call in the bed")
+        arguments = [part.strip() for part in match.group(1).split(",")]
+        self.assertEqual(len(arguments), 4, match.group(0))
+
+    def test_no_network_global_sound_source_under_wildlife(self):
+        pattern = re.compile(r"\bcreateSoundSource\b")
+        for path in WILDLIFE.rglob("*.sqf"):
+            text = path.read_text(encoding="utf-8")
+            self.assertIsNone(
+                pattern.search(text),
+                f"{path.name} uses the network-global createSoundSource",
+            )
+
+    def test_the_bed_is_deleted_before_recreation(self):
+        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        self.assertIn("deleteVehicle", text)
+        self.assertLess(
+            text.index("deleteVehicle"),
+            text.index("createSoundSourceLocal"),
+            "the previous bed is not deleted before the new local source",
+        )
+
     def test_init_wildlife_gates_on_has_interface(self):
         text = (FUNCS / "fnc_initWildlife.sqf").read_text(encoding="utf-8")
         self.assertIn("hasInterface", text)
