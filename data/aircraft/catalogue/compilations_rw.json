@@ -1,0 +1,151 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "First-slice aircraft catalogue capture.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "rah66_comanche",
+      "canonical_name": "Boeing-Sikorsky RAH-66 Comanche",
+      "maker": "Boeing-Sikorsky",
+      "model": "RAH-66",
+      "variant": "prototype",
+      "variant_id": "rah66",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "historical",
+      "aliases": [
+        "comanche",
+        "rah66"
+      ],
+      "keywords": [
+        "scout",
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "uh60a_black_hawk",
+      "canonical_name": "Sikorsky UH-60A Black Hawk",
+      "maker": "Sikorsky",
+      "model": "UH-60",
+      "variant": "UH-60A",
+      "variant_id": "uh60a",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "black hawk",
+        "uh60"
+      ],
+      "keywords": [
+        "utility",
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "light_utility_rotary",
+      "canonical_name": "Mil Mi-2",
+      "maker": "Mil",
+      "model": "Mi-2",
+      "variant": "Mi-2",
+      "variant_id": "mi2",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "historical",
+      "aliases": [
+        "hoplite",
+        "mi2"
+      ],
+      "keywords": [
+        "light",
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi28_havoc",
+      "canonical_name": "Mil Mi-28 Havoc",
+      "maker": "Mil",
+      "model": "Mi-28",
+      "variant": "Mi-28",
+      "variant_id": "mi28",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "havoc",
+        "mi28"
+      ],
+      "keywords": [
+        "attack",
+        "gunship"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi26_halo",
+      "canonical_name": "Mil Mi-26 Halo",
+      "maker": "Mil",
+      "model": "Mi-26",
+      "variant": "Mi-26",
+      "variant_id": "mi26",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "halo",
+        "mi26"
+      ],
+      "keywords": [
+        "heavy",
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "aw159_wildcat",
+      "canonical_name": "AgustaWestland AW159 Wildcat",
+      "maker": "AgustaWestland",
+      "model": "AW159",
+      "variant": "Wildcat",
+      "variant_id": "aw159",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "GB",
+      "era": "contemporary",
+      "aliases": [
+        "wildcat",
+        "aw159"
+      ],
+      "keywords": [
+        "maritime",
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}
