@@ -3121,6 +3121,13 @@ private _p29Pass = 0;
     // the ambient bed and species kernels are pure, so the dedicated server
     // measures the edge behaviour directly. It renders nothing.
     execVM "aee_p81_wildlife_edge_probe.sqf";
+    // PHASE 82 lives in aee_p82_pfh_probe.sqf: the CBA per-frame handler runs
+    // a registered function as `[_args, _handle] call _function`.  The
+    // registered entries must accept that array; a strict `params` on a
+    // registered entry was the live client defect.  A dedicated server has
+    // hasInterface false, so the probe calls the entries with the handler
+    // array directly.
+    execVM "aee_p82_pfh_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.

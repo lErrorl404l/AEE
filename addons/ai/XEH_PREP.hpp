@@ -8,6 +8,7 @@ PREP(agentDecide);
 PREP(agentRegister);
 PREP(agentUnregister);
 PREP(aiTick);
+PREP(aiTickPFH);
 PREP(reportStimulus);
 PREP(receiveStimulus);
 PREP(initAI);
