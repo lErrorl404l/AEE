@@ -29,10 +29,12 @@ generator. No command-line entry point.
 from __future__ import annotations
 
 import json
+import math
 import re
-from collections.abc import Collection
-from dataclasses import dataclass
+from collections.abc import Collection, Mapping
+from dataclasses import dataclass, field
 from pathlib import Path
+from types import MappingProxyType
 
 # The real-world source types. Only these can be a class-map mapping source.
 REAL_SOURCE_TYPES = frozenset(
@@ -64,6 +66,9 @@ RUNTIME_FIELD_UNITS: dict[str, str] = {
     "length_mm": "mm",
     "width_mm": "mm",
     "height_mm": "mm",
+    "rated_power_w": "W",
+    "drag_area_m2": "m^2",
+    "rotor_disc_area_m2": "m^2",
 }
 
 # The runtime inputs per vehicle family, in projection order. A wheeled set
@@ -128,6 +133,61 @@ DERIVATION_STATE_MARKERS: dict[str, str] = {
     "tyre_diameter_mm": "derived from the size code",
 }
 DERIVATION_FIELDS = frozenset(DERIVATION_STATE_MARKERS)
+
+# The aircraft corpus is a sibling of the vehicle corpus. It keeps the value
+# object, the grades and the resolution ladder, and changes only the type enum,
+# the runtime sets and the named derivations. A jet's thrust is a force, not
+# power, so the rated power is derived as
+# ``thrust_kn * 1000 * reference_speed_ms`` at the reference speed.
+AIRCRAFT_VEHICLE_TYPES = frozenset({"fixed_wing", "rotary_wing"})
+AIRCRAFT_REQUIRED_RUNTIME_BY_TYPE: dict[str, tuple[str, ...]] = {
+    "fixed_wing": ("operating_weight_kg", "rated_power_w"),
+    "rotary_wing": (
+        "operating_weight_kg",
+        "rated_power_w",
+        "rotor_disc_area_m2",
+    ),
+}
+AIRCRAFT_DERIVATION_STATE_MARKERS: dict[str, str] = {
+    "operating_weight_kg": "derived operating weight",
+    "rated_power_w": "derived rated power",
+    "rotor_disc_area_m2": "derived rotor disc area",
+    "drag_area_m2": "derived drag area",
+}
+AIRCRAFT_DERIVATION_FIELDS = frozenset(AIRCRAFT_DERIVATION_STATE_MARKERS)
+
+HP_TO_W = HP_TO_KW * 1000.0
+
+
+@dataclass(frozen=True)
+class Profile:
+    """A corpus profile: the type enum, its runtime sets and its derivations."""
+
+    name: str
+    vehicle_types: frozenset[str]
+    runtime_by_type: Mapping[str, tuple[str, ...]]
+    text_fields: frozenset[str]
+    derivation_markers: Mapping[str, str]
+    derivation_fields: frozenset[str]
+
+
+GROUND_PROFILE = Profile(
+    name="ground",
+    vehicle_types=VEHICLE_TYPES,
+    runtime_by_type=MappingProxyType(dict(REQUIRED_RUNTIME_BY_TYPE)),
+    text_fields=TEXT_RUNTIME_FIELDS,
+    derivation_markers=MappingProxyType(dict(DERIVATION_STATE_MARKERS)),
+    derivation_fields=DERIVATION_FIELDS,
+)
+
+AIRCRAFT_PROFILE = Profile(
+    name="aircraft",
+    vehicle_types=AIRCRAFT_VEHICLE_TYPES,
+    runtime_by_type=MappingProxyType(dict(AIRCRAFT_REQUIRED_RUNTIME_BY_TYPE)),
+    text_fields=frozenset(),
+    derivation_markers=MappingProxyType(dict(AIRCRAFT_DERIVATION_STATE_MARKERS)),
+    derivation_fields=AIRCRAFT_DERIVATION_FIELDS,
+)
 
 # Engine identity sources. They can bind a game class only at grade
 # ``claimed`` and only when the evidence names the concrete token or kind.
@@ -197,6 +257,7 @@ class CatalogueEntry:
     runtime_ready: bool
     values: dict[str, object]
     source_file: str
+    profile: Profile = GROUND_PROFILE
 
     def identity_aliases(self) -> tuple[str, ...]:
         """Every token that names this entry: id, variant id and aliases."""
@@ -208,9 +269,11 @@ class CatalogueEntry:
                 keys.append(token)
         return tuple(keys)
 
-    def resolved_fields(self) -> dict[str, ResolvedField]:
+    def resolved_fields(
+        self, profile: Profile | None = None
+    ) -> dict[str, ResolvedField]:
         """Resolve the runtime fields of this entry for the projection."""
-        return resolve_fields(self.vehicle_type, self.values)
+        return resolve_fields(self.vehicle_type, self.values, profile or self.profile)
 
     def to_mapping(self) -> dict[str, object]:
         """Return the record as a plain mapping for the contract validator.
@@ -256,6 +319,37 @@ class ClassMapping:
 
     def to_mapping(self) -> dict[str, object]:
         """Return the mapping as a plain mapping for the contract validator."""
+        return {
+            "game_class": self.game_class,
+            "class_token": self.class_token,
+            "catalogue_id": self.catalogue_id,
+            "identity_source": self.identity_source,
+            "identity_evidence": self.identity_evidence,
+            "grade": self.grade,
+            "note": self.note,
+        }
+
+
+@dataclass(frozen=True)
+class ClassBinding:
+    """One concrete game class bound to a catalogue entry.
+
+    A class binding is finer than a class map. The class map names a class
+    token; a binding names the concrete, deployed class and the entry it
+    stands for. It carries the same identity evidence and grade rules.
+    """
+
+    game_class: str
+    class_token: str
+    catalogue_id: str
+    identity_source: str
+    identity_evidence: str
+    grade: str
+    note: str
+    source_file: str
+
+    def to_mapping(self) -> dict[str, object]:
+        """Return the binding as a plain mapping for the contract validator."""
         return {
             "game_class": self.game_class,
             "class_token": self.class_token,
@@ -316,9 +410,9 @@ def _from_held(field: str, entry: dict[str, object]) -> ResolvedField:
     )
 
 
-def _absent(field: str) -> ResolvedField:
+def _absent(field: str, profile: Profile = GROUND_PROFILE) -> ResolvedField:
     """A field no held value and no derivation reaches: a labelled zero."""
-    value: object = "" if field in TEXT_RUNTIME_FIELDS else 0
+    value: object = "" if field in profile.text_fields else 0
     return ResolvedField(
         name=field,
         value=value,
@@ -381,32 +475,54 @@ NET_POWER_STATE = (
 )
 
 
-def _derive_operating_weight(values: dict[str, object]) -> ResolvedField | None:
-    for basis in ("curb_weight_kg", "gross_weight_kg"):
+_OPERATING_WEIGHT_STATES: dict[str, str] = {
+    "curb_weight_kg": (
+        "derived operating weight from the published curb weight; no "
+        "operating weight is published, so the curb weight is the basis"
+    ),
+    "gross_weight_kg": (
+        "derived operating weight from the gross vehicle weight rating; "
+        "no operating or curb weight is published, so the rating is the "
+        "basis and it is a maximum, not a kerb weight"
+    ),
+    "empty_weight_kg": (
+        "derived operating weight from the published empty weight; no "
+        "operating weight is published, so the empty weight is the basis"
+    ),
+    "max_takeoff_weight_kg": (
+        "derived operating weight from the maximum takeoff weight; no "
+        "operating or empty weight is published, so the maximum is the basis"
+    ),
+}
+
+_GROUND_WEIGHT_BASES = ("curb_weight_kg", "gross_weight_kg")
+_AIRCRAFT_WEIGHT_BASES = ("empty_weight_kg", "max_takeoff_weight_kg")
+
+
+def _derive_operating_weight(
+    values: dict[str, object], bases: tuple[str, ...]
+) -> ResolvedField | None:
+    for basis in bases:
         base = held_value(values, basis)
         if base is None:
             continue
-        if basis == "curb_weight_kg":
-            state = (
-                "derived operating weight from the published curb weight; no "
-                "operating weight is published, so the curb weight is the basis"
-            )
-        else:
-            state = (
-                "derived operating weight from the gross vehicle weight rating; "
-                "no operating or curb weight is published, so the rating is the "
-                "basis and it is a maximum, not a kerb weight"
-            )
         return ResolvedField(
             name="operating_weight_kg",
             value=base.get("value"),
             unit="kg",
             source=str(base.get("source", "")),
             locator=str(base.get("locator", "")),
-            state=state,
+            state=_OPERATING_WEIGHT_STATES[basis],
             grade="derived",
         )
     return None
+
+
+def _number(value: object) -> float | None:
+    """Return a finite number, or None for a bool, a string or a non-number."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    return float(value)
 
 
 def _derive_net_power(values: dict[str, object]) -> ResolvedField | None:
@@ -453,46 +569,186 @@ def _derive_tyre(values: dict[str, object], field: str) -> ResolvedField | None:
     )
 
 
-def resolve_field(values: dict[str, object], field: str) -> ResolvedField:
+def _derive_rated_power(values: dict[str, object]) -> ResolvedField | None:
+    """Rated power from thrust, then net power, then published horsepower.
+
+    A jet publishes thrust, a force, not power. The rated power is the thrust
+    converted to power at the reference speed:
+    ``rated_power_w = thrust_kn * 1000 * reference_speed_ms``. The conversion
+    is the plan's settled thrust branch, so the kernel stays unchanged.
+    """
+    thrust = held_value(values, "thrust_kn")
+    reference = held_value(values, "reference_speed_ms")
+    if thrust is not None and reference is not None:
+        thrust_kn = _number(thrust.get("value"))
+        reference_ms = _number(reference.get("value"))
+        if thrust_kn is not None and reference_ms is not None:
+            return ResolvedField(
+                name="rated_power_w",
+                value=round(thrust_kn * 1000.0 * reference_ms, POWER_ROUND),
+                unit="W",
+                source=str(thrust.get("source", "")),
+                locator=str(thrust.get("locator", "")),
+                state=(
+                    "derived rated power from thrust: "
+                    "rated_power_w = thrust_kn * 1000 * reference_speed_ms; "
+                    f"{thrust_kn} kN at {reference_ms} m/s"
+                ),
+                grade="derived",
+            )
+    net = held_value(values, "net_power_kw")
+    if net is not None:
+        net_kw = _number(net.get("value"))
+        if net_kw is not None:
+            return ResolvedField(
+                name="rated_power_w",
+                value=round(net_kw * 1000.0, POWER_ROUND),
+                unit="W",
+                source=str(net.get("source", "")),
+                locator=str(net.get("locator", "")),
+                state=(
+                    "derived rated power from the net power: "
+                    "rated_power_w = net_power_kw * 1000"
+                ),
+                grade="derived",
+            )
+    hp = held_value(values, "published_power_hp")
+    if hp is not None:
+        horsepower = _number(hp.get("value"))
+        if horsepower is not None:
+            return ResolvedField(
+                name="rated_power_w",
+                value=round(horsepower * HP_TO_W, POWER_ROUND),
+                unit="W",
+                source=str(hp.get("source", "")),
+                locator=str(hp.get("locator", "")),
+                state=(
+                    "derived rated power from the published power: "
+                    "rated_power_w = published_power_hp * 745.699872 "
+                    "(1 hp = 745.699872 W)"
+                ),
+                grade="derived",
+            )
+    return None
+
+
+def _derive_rotor_disc(values: dict[str, object]) -> ResolvedField | None:
+    """Rotor disc area from the rotor diameter: ``pi * (diameter / 2)^2``."""
+    base = held_value(values, "rotor_diameter_m")
+    if base is None:
+        return None
+    diameter = _number(base.get("value"))
+    if diameter is None:
+        return None
+    return ResolvedField(
+        name="rotor_disc_area_m2",
+        value=round(math.pi * (diameter / 2.0) ** 2, POWER_ROUND),
+        unit="m^2",
+        source=str(base.get("source", "")),
+        locator=str(base.get("locator", "")),
+        state=(
+            "derived rotor disc area from the rotor diameter "
+            f"{diameter} m: rotor_disc_area_m2 = pi * (rotor_diameter_m / 2)^2"
+        ),
+        grade="derived",
+    )
+
+
+def _derive_drag_area(values: dict[str, object]) -> ResolvedField | None:
+    """Drag area from the drag coefficient and the wing area."""
+    coefficient = held_value(values, "drag_coefficient")
+    wing_area = held_value(values, "wing_area_m2")
+    if coefficient is None or wing_area is None:
+        return None
+    cd = _number(coefficient.get("value"))
+    area = _number(wing_area.get("value"))
+    if cd is None or area is None:
+        return None
+    return ResolvedField(
+        name="drag_area_m2",
+        value=round(cd * area, POWER_ROUND),
+        unit="m^2",
+        source=str(coefficient.get("source", "")),
+        locator=str(coefficient.get("locator", "")),
+        state=(
+            "derived drag area from the drag coefficient and the wing area: "
+            f"drag_area_m2 = drag_coefficient * wing_area_m2 = {cd} * {area}"
+        ),
+        grade="derived",
+    )
+
+
+def _derive_field(
+    values: dict[str, object], field: str, profile: Profile
+) -> ResolvedField | None:
+    """Choose the named derivation from the profile, never from a caller hint."""
+    if field not in profile.derivation_fields:
+        return None
+    if field == "operating_weight_kg":
+        bases = (
+            _AIRCRAFT_WEIGHT_BASES
+            if profile.name == "aircraft"
+            else _GROUND_WEIGHT_BASES
+        )
+        return _derive_operating_weight(values, bases)
+    if field == "net_power_kw":
+        return _derive_net_power(values)
+    if field in ("tyre_width_mm", "tyre_diameter_mm"):
+        return _derive_tyre(values, field)
+    if field == "rated_power_w":
+        return _derive_rated_power(values)
+    if field == "rotor_disc_area_m2":
+        return _derive_rotor_disc(values)
+    if field == "drag_area_m2":
+        return _derive_drag_area(values)
+    return None
+
+
+def resolve_field(
+    values: dict[str, object], field: str, profile: Profile = GROUND_PROFILE
+) -> ResolvedField:
     """Resolve one runtime field: held, then the named derivation, then zero."""
     held = held_value(values, field)
     if held is not None:
         return _from_held(field, held)
-    if field == "operating_weight_kg":
-        derived = _derive_operating_weight(values)
-    elif field == "net_power_kw":
-        derived = _derive_net_power(values)
-    elif field in ("tyre_width_mm", "tyre_diameter_mm"):
-        derived = _derive_tyre(values, field)
-    else:
-        derived = None
+    derived = _derive_field(values, field, profile)
     if derived is not None:
         return derived
-    return _absent(field)
+    return _absent(field, profile)
 
 
 def resolve_fields(
-    vehicle_type: str, values: dict[str, object]
+    vehicle_type: str,
+    values: dict[str, object],
+    profile: Profile = GROUND_PROFILE,
 ) -> dict[str, ResolvedField]:
-    """Resolve every runtime field of one vehicle type, in projection order."""
-    required = REQUIRED_RUNTIME_BY_TYPE.get(vehicle_type, ())
-    return {field: resolve_field(values, field) for field in required}
+    """Resolve every runtime field of one type, in projection order."""
+    required = profile.runtime_by_type.get(vehicle_type, ())
+    return {field: resolve_field(values, field, profile) for field in required}
 
 
-def is_runtime_ready(vehicle_type: str, values: dict[str, object]) -> bool:
+def is_runtime_ready(
+    vehicle_type: str,
+    values: dict[str, object],
+    profile: Profile = GROUND_PROFILE,
+) -> bool:
     """True when every runtime field resolves to a non-absent value."""
-    required = REQUIRED_RUNTIME_BY_TYPE.get(vehicle_type)
+    required = profile.runtime_by_type.get(vehicle_type)
     if not required:
         return False
-    resolved = resolve_fields(vehicle_type, values)
+    resolved = resolve_fields(vehicle_type, values, profile)
     return all(field.grade != "absent" for field in resolved.values())
 
 
-def source_record_id(vehicle_type: str, values: dict[str, object]) -> str:
+def source_record_id(
+    vehicle_type: str,
+    values: dict[str, object],
+    profile: Profile = GROUND_PROFILE,
+) -> str:
     """The source id of the first field that resolved via a held value or a
     named derivation, or an empty string when every field is absent."""
-    for field in REQUIRED_RUNTIME_BY_TYPE.get(vehicle_type, ()):
-        resolved = resolve_field(values, field)
+    for field in profile.runtime_by_type.get(vehicle_type, ()):
+        resolved = resolve_field(values, field, profile)
         if resolved.grade != "absent" and resolved.source:
             return resolved.source
     return ""
@@ -507,6 +763,7 @@ class CatalogueLoad:
     alias_index: dict[str, str]
     warnings: list[str]
     errors: list[str]
+    bindings: list[ClassBinding] = field(default_factory=list)
 
 
 def _read_json(path: Path, errors: list[str]) -> object | None:
@@ -524,6 +781,7 @@ def _load_entry(
     seen_ids: set[str],
     seen_variants: set[str],
     errors: list[str],
+    profile: Profile = GROUND_PROFILE,
 ) -> CatalogueEntry | None:
     record = _mapping(raw)
     if record is None:
@@ -558,7 +816,7 @@ def _load_entry(
     vehicle_type = _text(record.get("vehicle_type")) or ""
     # The reported flag means every runtime field resolved to a non-absent
     # value. It never blocks a row.
-    runtime_ready = is_runtime_ready(vehicle_type, values)
+    runtime_ready = is_runtime_ready(vehicle_type, values, profile)
 
     aliases = _normalised_list(record.get("aliases"), where, "aliases", errors)
     keywords = _normalised_list(record.get("keywords"), where, "keywords", errors)
@@ -579,10 +837,13 @@ def _load_entry(
         runtime_ready=runtime_ready,
         values=values,
         source_file=source_file,
+        profile=profile,
     )
 
 
-def _load_entries(data_dir: Path, errors: list[str]) -> list[CatalogueEntry]:
+def _load_entries(
+    data_dir: Path, profile: Profile, errors: list[str]
+) -> list[CatalogueEntry]:
     entries: list[CatalogueEntry] = []
     seen_ids: set[str] = set()
     seen_variants: set[str] = set()
@@ -605,7 +866,9 @@ def _load_entries(data_dir: Path, errors: list[str]) -> list[CatalogueEntry]:
             errors.append(f"catalogue file {path.name}: entries must be an array")
             continue
         for raw in raw_entries:
-            entry = _load_entry(raw, path.name, seen_ids, seen_variants, errors)
+            entry = _load_entry(
+                raw, path.name, seen_ids, seen_variants, errors, profile
+            )
             if entry is not None:
                 entries.append(entry)
     return entries
@@ -632,8 +895,10 @@ def _build_alias_index(
     return index
 
 
-def _real_source_ids(data_dir: Path, errors: list[str]) -> set[str]:
-    """Read sources.json and return the real-world mapping source ids."""
+def _source_ids_of_types(
+    data_dir: Path, types: frozenset[str], errors: list[str]
+) -> set[str]:
+    """Read sources.json and return the ids whose type is in ``types``."""
     path = data_dir / "sources.json"
     if not path.is_file():
         return set()
@@ -646,9 +911,19 @@ def _real_source_ids(data_dir: Path, errors: list[str]) -> set[str]:
         if source is None:
             continue
         sid = _text(source.get("source_id"))
-        if sid is not None and source.get("type") in REAL_SOURCE_TYPES:
+        if sid is not None and source.get("type") in types:
             ids.add(sid)
     return ids
+
+
+def _real_source_ids(data_dir: Path, errors: list[str]) -> set[str]:
+    """Read sources.json and return the real-world mapping source ids."""
+    return _source_ids_of_types(data_dir, REAL_SOURCE_TYPES, errors)
+
+
+def _engine_source_ids(data_dir: Path, errors: list[str]) -> set[str]:
+    """Read sources.json and return the engine class-table source ids."""
+    return _source_ids_of_types(data_dir, ENGINE_MAPPING_SOURCE_TYPES, errors)
 
 
 def _load_mapping(
@@ -759,23 +1034,143 @@ def _load_mappings(
     return mappings
 
 
+def _load_binding(
+    record: dict[str, object],
+    catalogue_ids: set[str],
+    real_source_ids: set[str],
+    engine_source_ids: set[str],
+    seen: set[str],
+    errors: list[str],
+) -> ClassBinding | None:
+    game_class = _text(record.get("game_class"))
+    where = f"class binding {game_class or '<none>'}"
+    ok = True
+
+    if game_class is None:
+        errors.append(f"{where}: game_class is required")
+        ok = False
+    elif game_class in seen:
+        errors.append(
+            f"{where}: duplicate game_class; one game class binds to one "
+            "catalogue entry"
+        )
+        return None
+    else:
+        seen.add(game_class)
+
+    class_token = record.get("class_token")
+    if not isinstance(class_token, str):
+        errors.append(f"{where}: class_token must be a string")
+        ok = False
+
+    cid = _text(record.get("catalogue_id"))
+    if cid is None:
+        errors.append(f"{where}: catalogue_id is required")
+        ok = False
+    elif cid not in catalogue_ids:
+        errors.append(f"{where}: unknown catalogue_id {cid}")
+        ok = False
+
+    grade = record.get("grade")
+    grade_ok = isinstance(grade, str) and grade in CLASS_MAP_GRADES
+    if not grade_ok:
+        errors.append(f"{where}: grade must be one of {sorted(CLASS_MAP_GRADES)}")
+        ok = False
+
+    source_id = _text(record.get("identity_source"))
+    if source_id is None:
+        errors.append(
+            f"{where}: identity_source is required; a binding needs a "
+            "real-world or class-table source"
+        )
+        ok = False
+    elif source_id in real_source_ids:
+        pass
+    elif source_id in engine_source_ids and grade == "claimed":
+        pass
+    else:
+        errors.append(
+            f"{where}: identity_source {source_id} is not a real-world or "
+            "class-table source at grade claimed"
+        )
+        ok = False
+
+    evidence = _text(record.get("identity_evidence"))
+    if evidence is None:
+        errors.append(f"{where}: identity_evidence is required")
+        ok = False
+
+    if not ok:
+        return None
+    return ClassBinding(
+        game_class=game_class or "",
+        class_token=class_token if isinstance(class_token, str) else "",
+        catalogue_id=cid or "",
+        identity_source=source_id or "",
+        identity_evidence=evidence or "",
+        grade=grade if isinstance(grade, str) else "",
+        note=_text(record.get("note")) or "",
+        source_file="class_bindings.json",
+    )
+
+
+def _load_bindings(
+    data_dir: Path,
+    catalogue_ids: set[str],
+    real_source_ids: set[str],
+    engine_source_ids: set[str],
+    errors: list[str],
+) -> list[ClassBinding]:
+    bindings: list[ClassBinding] = []
+    path = data_dir / "class_bindings.json"
+    if not path.is_file():
+        return bindings
+    loaded = _read_json(path, errors)
+    records = _sequence(loaded)
+    if records is None:
+        if loaded is not None:
+            errors.append("class_bindings.json: must be a top-level array")
+        return bindings
+    seen: set[str] = set()
+    for raw in records:
+        record = _mapping(raw)
+        if record is None:
+            errors.append("class binding entry: must be an object")
+            continue
+        binding = _load_binding(
+            record, catalogue_ids, real_source_ids, engine_source_ids, seen, errors
+        )
+        if binding is not None:
+            bindings.append(binding)
+    return bindings
+
+
 def load(
-    data_dir: Path, *, real_source_ids: Collection[str] | None = None
+    data_dir: Path,
+    *,
+    real_source_ids: Collection[str] | None = None,
+    profile: Profile = GROUND_PROFILE,
 ) -> CatalogueLoad:
-    """Load the catalogue and the class map. Return typed records.
+    """Load the catalogue, the class map and the class bindings.
 
     ``real_source_ids`` names the source ids that can act as a mapping source.
     When it is None, the loader reads ``sources.json`` and takes the real-world
-    types. A missing catalogue directory or class map loads as an empty list.
+    types. A missing catalogue directory, class map or bindings file loads as an
+    empty list. ``profile`` selects the type enum, the runtime sets and the
+    named derivations. It defaults to the ground profile, so every existing
+    caller is unchanged.
     """
     errors: list[str] = []
     warnings: list[str] = []
-    entries = _load_entries(data_dir, errors)
+    entries = _load_entries(data_dir, profile, errors)
     catalogue_ids = {entry.catalogue_id for entry in entries}
     if real_source_ids is None:
         real_ids = _real_source_ids(data_dir, errors)
+        engine_ids = _engine_source_ids(data_dir, errors)
     else:
         real_ids = set(real_source_ids)
+        engine_ids = _engine_source_ids(data_dir, errors)
     mappings = _load_mappings(data_dir, catalogue_ids, real_ids, errors)
+    bindings = _load_bindings(data_dir, catalogue_ids, real_ids, engine_ids, errors)
     alias_index = _build_alias_index(entries, warnings)
-    return CatalogueLoad(entries, mappings, alias_index, warnings, errors)
+    return CatalogueLoad(entries, mappings, alias_index, warnings, errors, bindings)
