@@ -21,6 +21,8 @@ PREP(calculateTerrainLimits);
 PREP(applyTerrainDrag);
 PREP(classifyVehicle);
 PREP(getTerrainSpeedFactor);
+PREP(getAircraftData);
+PREP(getAircraftMatch);
 PREP(getVehicleBands);
 PREP(getVehicleData);
 PREP(getVehicleGeometry);
