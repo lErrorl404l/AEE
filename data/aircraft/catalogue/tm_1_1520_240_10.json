@@ -1,0 +1,40 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "First-slice aircraft catalogue capture.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "ch47_chinook",
+      "canonical_name": "Boeing CH-47 Chinook",
+      "maker": "Boeing",
+      "model": "CH-47",
+      "variant": "CH-47D",
+      "variant_id": "ch47d",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "chinook",
+        "ch47"
+      ],
+      "keywords": [
+        "heavy",
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "max_takeoff_weight_kg": {
+          "value": 22680,
+          "unit": "kg",
+          "source": "src_tm_1_1520_240_10",
+          "locator": "operating limits",
+          "state": "CH-47D maximum gross weight 50000 lb converted",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "First-slice aircraft catalogue capture.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "md500",
+      "canonical_name": "MD Helicopters MD 500",
+      "maker": "MD Helicopters",
+      "model": "MD 500",
+      "variant": "500E",
+      "variant_id": "md500e",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "md500",
+        "hummingbird"
+      ],
+      "keywords": [
+        "light",
+        "utility"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 752,
+          "unit": "kg",
+          "source": "src_md500e_2023",
+          "locator": "standard configuration",
+          "state": "MD 500E standard empty weight stated by the maker",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 313,
+          "unit": "kW",
+          "source": "src_md500e_2023",
+          "locator": "powerplant",
+          "state": "250-C20B rated power 420 shp converted to kW",
+          "grade": "claimed"
+        },
+        "rotor_diameter_m": {
+          "value": 8.05,
+          "unit": "m",
+          "source": "src_md500e_2023",
+          "locator": "main rotor",
+          "state": "main rotor diameter stated by the maker",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "md530_defender",
+      "canonical_name": "MD Helicopters MD 530 Defender",
+      "maker": "MD Helicopters",
+      "model": "MD 530",
+      "variant": "530F",
+      "variant_id": "md530f",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "md530",
+        "pawnee",
+        "defender"
+      ],
+      "keywords": [
+        "light",
+        "attack"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 782,
+          "unit": "kg",
+          "source": "src_md530f_2023",
+          "locator": "standard configuration",
+          "state": "MD 530F standard empty weight stated by the maker",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 478,
+          "unit": "kW",
+          "source": "src_md530f_2023",
+          "locator": "powerplant",
+          "state": "250-C30 rated power 650 shp converted to kW",
+          "grade": "claimed"
+        },
+        "rotor_diameter_m": {
+          "value": 8.38,
+          "unit": "m",
+          "source": "src_md530f_2023",
+          "locator": "main rotor",
+          "state": "main rotor diameter stated by the maker",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "md500_civil",
+      "canonical_name": "MD Helicopters MD 500 civil",
+      "maker": "MD Helicopters",
+      "model": "MD 500",
+      "variant": "500E civil",
+      "variant_id": "md500_civil",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "md500 civil"
+      ],
+      "keywords": [
+        "civil",
+        "utility"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 752,
+          "unit": "kg",
+          "source": "src_md500e_2023",
+          "locator": "standard configuration",
+          "state": "MD 500E standard empty weight stated by the maker",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 313,
+          "unit": "kW",
+          "source": "src_md500e_2023",
+          "locator": "powerplant",
+          "state": "250-C20B rated power 420 shp converted to kW",
+          "grade": "claimed"
+        },
+        "rotor_diameter_m": {
+          "value": 8.05,
+          "unit": "m",
+          "source": "src_md500e_2023",
+          "locator": "main rotor",
+          "state": "main rotor diameter stated by the maker",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
