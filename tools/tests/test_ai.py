@@ -22,6 +22,7 @@ DECAY = AI / "fnc_stimulusDecay.sqf"
 KEY = AI / "fnc_disturbanceKey.sqf"
 APPLY = AI / "fnc_disturbanceApply.sqf"
 SAMPLE = AI / "fnc_disturbanceSample.sqf"
+PRUNE = AI / "fnc_disturbancePrune.sqf"
 SENSE = AI / "fnc_agentSense.sqf"
 DECIDE = AI / "fnc_agentDecide.sqf"
 
@@ -43,6 +44,19 @@ def sample(cells, cell_key, now, half_life):
         SAMPLE,
         [cells, cell_key, now, half_life],
         globals_={"__FUNC__stimulusDecay": lambda m, a, h: run_sqf(DECAY, [m, a, h])},
+    )
+
+
+def prune(cells, now, cap=256, horizon=120):
+    # The harness strips the preprocessor header, so the half-life macro is
+    # injected as a global.  The engine expands it to 45 at build time.
+    return run_sqf(
+        PRUNE,
+        [cells, now, cap, horizon],
+        globals_={
+            "__FUNC__stimulusDecay": lambda m, a, h: run_sqf(DECAY, [m, a, h]),
+            "AI_STIMULUS_HALF_LIFE": 45,
+        },
     )
 
 
@@ -80,6 +94,62 @@ class TestDisturbanceField(unittest.TestCase):
 
     def test_sample_missing_cell_is_zero(self):
         self.assertAlmostEqual(sample([], key([5, 5, 0]), 0, 45), 0.0)
+
+
+def _seed_field(now, cells, magnitude=1.0):
+    # Distinct cells at a 50 m step, so each key is unique.
+    return [
+        [key([i * 50, 0, 0], 50), magnitude, now - age] for i, age in enumerate(cells)
+    ]
+
+
+class TestDisturbancePrune(unittest.TestCase):
+    """The field bound: an age prune then a decayed-magnitude cap."""
+
+    def test_the_bound_holds_over_a_long_field(self):
+        # 2000 cells, times spread over 600 s.  Only the last 120 s survive
+        # the age prune, and the survivors still exceed the 256 cap.
+        now = 600.0
+        field = _seed_field(now, [i * 0.3 for i in range(2000)])
+        result = prune(field, now, 256, 120)
+        self.assertLessEqual(len(result), 256)
+        for entry in result:
+            self.assertLessEqual(now - (entry[2]), 120)
+
+    def test_a_new_over_cap_field_returns_exactly_the_cap(self):
+        # 2000 new cells: the age prune keeps all of them, so the cap alone
+        # must return exactly 256 entries.
+        now = 500.0
+        field = _seed_field(now, [0.0 for _ in range(2000)])
+        result = prune(field, now, 256, 120)
+        self.assertEqual(len(result), 256)
+        self.assertEqual(len({tuple(entry[0]) for entry in result}), 256)
+
+    def test_a_small_field_is_returned_unchanged(self):
+        # A field at or below the cap must pass through untouched, so the
+        # existing apply and sample semantics do not change.
+        now = 120.0
+        field = [[key([0, 0, 0]), 0.5, 100], [key([60, 0, 0]), 0.4, 110]]
+        result = prune(field, now, 256, 120)
+        self.assertEqual(result, field)
+        # A cap-selecting regression would return 256 here.
+        self.assertNotEqual(len(result), 256)
+
+    def test_the_cap_prefers_the_larger_decayed_magnitude(self):
+        # The older cell has the larger raw magnitude but the smaller decayed
+        # value, so the cap keeps the newer cell.
+        now = 100.0
+        strong_old = [key([0, 0, 0]), 1.0, 55]  # age 45, decayed 0.5
+        weak_new = [key([60, 0, 0]), 0.6, 100]  # age 0, decayed 0.6
+        result = prune([strong_old, weak_new], now, 1, 120)
+        self.assertEqual(result, [weak_new])
+
+    def test_stale_cells_are_dropped_before_the_cap(self):
+        now = 1000.0
+        stale = [key([0, 0, 0]), 1.0, 800]
+        fresh = [key([60, 0, 0]), 0.2, 990]
+        result = prune([stale, fresh], now, 256, 120)
+        self.assertEqual(result, [fresh])
 
 
 def sense(disturbance, distance, need, senses):
@@ -137,6 +207,22 @@ class TestAiSourceContracts(unittest.TestCase):
     def test_force_decide_hook_is_read(self):
         text = (AI / "fnc_aiTick.sqf").read_text(encoding="utf-8")
         self.assertGreaterEqual(text.count("aee_ai_forceDecide"), 1)
+
+    def test_both_field_owners_prune_with_the_shared_policy(self):
+        wildlife_tick = (
+            ROOT / "addons" / "wildlife" / "functions" / "fnc_wildlifeTick.sqf"
+        )
+        for path in (wildlife_tick, AI / "fnc_receiveStimulus.sqf"):
+            text = path.read_text(encoding="utf-8")
+            calls = [line for line in text.splitlines() if "disturbancePrune" in line]
+            self.assertTrue(calls, f"{path.name} does not call disturbancePrune")
+            self.assertTrue(
+                any(
+                    "AI_CELL_CAP" in line and "AI_CELL_HORIZON" in line
+                    for line in calls
+                ),
+                f"{path.name} does not pass the cap and the horizon",
+            )
 
 
 if __name__ == "__main__":

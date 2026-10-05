@@ -2,6 +2,7 @@ PREP(stimulusDecay);
 PREP(disturbanceKey);
 PREP(disturbanceApply);
 PREP(disturbanceSample);
+PREP(disturbancePrune);
 PREP(agentSense);
 PREP(agentDecide);
 PREP(agentRegister);

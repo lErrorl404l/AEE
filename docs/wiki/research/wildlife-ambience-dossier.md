@@ -180,3 +180,6 @@ The sound runtime constants are modelling choices, UNSOURCED.
 | Spook flight-initiation distance, small bird | 8 to 25 m | Flight-initiation distance scales with body mass and starting distance, Blumstein 2003 and Ydenberg and Dill 1986 | [P-concept], numeric default [UNSOURCED] |
 | Gunfire spook radius | 150 to 250 m | The human gunshot peak is about 140 dB at the muzzle, NIOSH and OSHA hearing-loss literature. No animal distance source | [UNSOURCED] |
 | Quiet approach speed threshold | 1.5 m/s | Modelling, from the engine `speed` value | [UNSOURCED] |
+| Disturbance cell age horizon | 120 s | Modelling, `AI_CELL_HORIZON`, enforced by `fnc_disturbancePrune` | [UNSOURCED] |
+| Disturbance cell cap | 256 cells | Modelling, `AI_CELL_CAP`, enforced by `fnc_disturbancePrune` | [UNSOURCED] |
+| Disturbance prune policy | Drop past the horizon, then keep the cap by largest decayed magnitude | Modelling, `fnc_disturbancePrune`, both field owners call it | [UNSOURCED] |
