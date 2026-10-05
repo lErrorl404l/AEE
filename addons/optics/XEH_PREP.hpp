@@ -47,6 +47,10 @@ PREPS(vision,calculateViewDistance);
 // Scene-aware shadow distance (aee-workshop-copy item 6).
 PREPS(vision,shadowSamplePattern);
 PREPS(vision,shadowClassifyScene);
+PREPS(vision,shadowTargetDistance);
+PREPS(vision,shadowSmoothDistance);
+PREPS(vision,shadowFpsGovernor);
+PREPS(vision,shadowStabilizeDepth);
 PREPS(vision,ppEffectCreate);
 PREPS(vision,destroyBasePostProcess);
 PREPS(vision,weatherGrainParams);
