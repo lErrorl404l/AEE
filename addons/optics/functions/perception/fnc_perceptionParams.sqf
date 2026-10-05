@@ -81,6 +81,8 @@ private _blend = [0, 0, 0, 0];
 private _colorize = [1, 1, 1, _alpha];
 if (_whiteBalance || (_mesopicW < 1)) then {
     private _meso = [_mesopicW, _desatMax, _purkinjeStrength] call FUNC(perceptionMesopicColor);
+    // A zero mesopic alpha is the identity: keep the neutral colour and the
+    // bounded desaturation alpha, so the default settings never tint.
     if ((_meso select 3) > 0) then {
         _colorize = [_meso select 0, _meso select 1, _meso select 2, _alpha];
     };

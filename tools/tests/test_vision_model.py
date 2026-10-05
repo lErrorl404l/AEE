@@ -795,5 +795,75 @@ class TestPerceptionCost(unittest.TestCase):
         )
 
 
+class TestPerceptionNoTintAtDefaults(unittest.TestCase):
+    """At the plan defaults the colour stage is the identity.
+
+    With mesopic desaturation 0 and Purkinje strength 0 the mesopic kernel
+    returns [1, 1, 1, 0] for every mesopic fraction, and with white balance
+    off the blend stays [0, 0, 0, 0].  This is the headline: no green cast.
+    """
+
+    # The composition arguments at the registered defaults:
+    # [adaptedLux, mesopicW, illuminant, toneEnabled, whiteBalance, strength,
+    #  contrastScale, adaptDegree, desatMax, purkinje, anchor, desatAlpha].
+    DEFAULTS = [1, 1, [1, 1, 1], True, False, 0.25, 1, 0.9, 0, 0, [1, 1, 0], 0]
+
+    def _compose_at(self, mesopic_w):
+        args = list(self.DEFAULTS)
+        args[1] = mesopic_w
+        return compose(args)[0]
+
+    def test_colorize_is_the_identity_at_the_defaults(self):
+        for mesopic_w in (0, 0.25, 0.5, 0.75, 1):
+            cc = self._compose_at(mesopic_w)
+            self.assertEqual(cc[4], [1, 1, 1, 0], f"tint at mesopic {mesopic_w}")
+            self.assertEqual(cc[3], [0, 0, 0, 0], f"blend at mesopic {mesopic_w}")
+
+    def test_mesopic_kernel_is_the_identity_for_every_fraction(self):
+        for mesopic_w in (0, 0.25, 0.5, 0.75, 1):
+            self.assertEqual(run_sqf(MESOPIC_KERNEL, [mesopic_w, 0, 0]), [1, 1, 1, 0])
+
+    def test_no_Green_cast_at_the_defaults(self):
+        # The capital G keeps this test selectable by `-k Green`.
+        for mesopic_w in (0, 0.25, 0.5, 0.75, 1):
+            r, g, b, alpha = self._compose_at(mesopic_w)[4]
+            self.assertAlmostEqual(g, r, places=9, msg="a green cast at defaults")
+            self.assertAlmostEqual(b, r, places=9, msg="a blue cast at defaults")
+            self.assertEqual(alpha, 0, "the default path desaturates")
+
+
+class TestPerceptionDriverFallbacks(unittest.TestCase):
+    """The driver's absent-setting fallbacks are the plan defaults.
+
+    CBA registers the setting names in a later commit; a tick before that, or
+    a missionNamespace that is not yet set, makes getVariable return the
+    fallback.  The fallback must equal the registered default, or the old
+    green-cast value returns for a tick.  Defaults: tone 0.25, mesopic
+    desaturation 0, Purkinje 0.
+    """
+
+    FALLBACKS = {
+        "visionToneStrength": "0.25",
+        "visionMesopicDesaturation": "0",
+        "visionPurkinjeStrength": "0",
+    }
+
+    def test_absent_setting_fallbacks_are_the_plan_defaults(self):
+        code = _code(DRIVER)
+        for name, literal in self.FALLBACKS.items():
+            pattern = (
+                r"getVariable\s*\[\s*QGVAR\("
+                + re.escape(name)
+                + r"\)\s*,\s*"
+                + re.escape(literal)
+                + r"\s*\]"
+            )
+            self.assertRegex(
+                code,
+                pattern,
+                f"the absent-setting fallback for {name} is not {literal}",
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

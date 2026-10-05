@@ -33,7 +33,9 @@ Arguments:
 
 Returns:
   Array - colorize slot [r, g, b, alpha], alpha last, alpha 0 to 0.5.  At
-          _mesopicW 1 the return is the identity [1, 1, 1, 0].
+          _mesopicW 1 the return is the identity [1, 1, 1, 0].  At the default
+          settings (_desatMax 0, _purkinjeStrength 0) the return is the
+          identity for every fraction, so the default path ships no tint.
 */
 
 params [
