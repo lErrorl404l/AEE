@@ -1,0 +1,48 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "First-slice aircraft catalogue capture.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "cessna_172_skyhawk",
+      "canonical_name": "Cessna 172 Skyhawk",
+      "maker": "Cessna",
+      "model": "172",
+      "variant": "172S",
+      "variant_id": "172s",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "piston_prop",
+      "role": "utility",
+      "class_token": "Plane",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "skyhawk",
+        "c172"
+      ],
+      "keywords": [
+        "civil",
+        "trainer"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "max_takeoff_weight_kg": {
+          "value": 1157,
+          "unit": "kg",
+          "source": "src_faa_tcds_3a12",
+          "locator": "model 172S maximum weight",
+          "state": "maximum takeoff weight 2550 lb converted to kg",
+          "grade": "standard"
+        },
+        "published_power_hp": {
+          "value": 180,
+          "unit": "hp",
+          "source": "src_faa_tcds_3a12",
+          "locator": "engine",
+          "state": "Lycoming IO-360-L2A rated 180 hp",
+          "grade": "standard"
+        }
+      }
+    }
+  ]
+}

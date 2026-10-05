@@ -1,0 +1,48 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "First-slice aircraft catalogue capture.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "jas39c_gripen",
+      "canonical_name": "Saab JAS 39C Gripen",
+      "maker": "Saab",
+      "model": "JAS 39",
+      "variant": "39C",
+      "variant_id": "jas39c",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turbofan",
+      "role": "multirole",
+      "class_token": "Plane",
+      "country": "SE",
+      "era": "contemporary",
+      "aliases": [
+        "gripen",
+        "jas39"
+      ],
+      "keywords": [
+        "multirole",
+        "fighter"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "max_takeoff_weight_kg": {
+          "value": 14000,
+          "unit": "kg",
+          "source": "src_saab_gripen_c",
+          "locator": "performance",
+          "state": "maximum takeoff weight stated on the Saab factsheet",
+          "grade": "claimed"
+        },
+        "thrust_kn": {
+          "value": 80.5,
+          "unit": "kN",
+          "source": "src_saab_gripen_c",
+          "locator": "powerplant",
+          "state": "RM12 thrust with afterburner stated on the Saab factsheet",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
