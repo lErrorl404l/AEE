@@ -28,6 +28,8 @@ if (_source == "") exitWith {};
 if ((_source find ".") >= 0) then {
     [_source, _position, _gain, WILDLIFE_SOUND_MAX_DISTANCE] call FUNC(playOneShot);
 } else {
+    // The previous local source is deleted first, so the bed holds at most
+    // one instance and cannot stack when the context changes.
     private _current = missionNamespace getVariable [QGVAR(ambientSource), objNull];
     if (!isNull _current) then {
         deleteVehicle _current;

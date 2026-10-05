@@ -56,21 +56,34 @@ private _vegProvider = {
 missionNamespace setVariable [QGVAR(waterProvider), _waterProvider];
 missionNamespace setVariable [QGVAR(vegProvider), _vegProvider];
 
-// The first animal of a species cluster sets the herd anchor.  Later animals
-// of the same species leash to it.
+// The herd size setting caps how many animals share one anchor.  The first
+// animal of a species cluster sets the anchor.  A later animal joins the
+// first anchor of the same species that has room, else it starts a new herd.
+// The slot is released when an animal is culled, so the cap stays accurate.
+private _herdSize = [QGVAR(herdSize), 4, 1] call EFUNC(core,readState);
+_herdSize = (round _herdSize) max 1;
+
 private _herds = missionNamespace getVariable [GVAR(herds), []];
 if !(_herds isEqualType []) then { _herds = []; };
 private _herdAnchor = getPos _agent;
 private _found = false;
 for "_i" from 0 to ((count _herds) - 1) do {
-    private _row = _herds select _i;
-    if ((_row select 0) == _species) then {
-        if (!_found) then { _herdAnchor = _row select 1; };
-        _found = true;
+    if (!_found) then {
+        private _row = _herds select _i;
+        if ((_row select 0) == _species) then {
+            if ((count _row) < 3) then { _row pushBack 0; };
+            private _members = _row select 2;
+            if !(_members isEqualType 0) then { _members = 0; };
+            if (_members < _herdSize) then {
+                _herdAnchor = _row select 1;
+                _row set [2, _members + 1];
+                _found = true;
+            };
+        };
     };
 };
 if (!_found) then {
-    _herds pushBack [_species, _herdAnchor];
+    _herds pushBack [_species, _herdAnchor, 1];
     missionNamespace setVariable [GVAR(herds), _herds];
 };
 _agent setVariable [QGVAR(herdAnchor), _herdAnchor];

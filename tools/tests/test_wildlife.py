@@ -246,6 +246,15 @@ class TestFaunaSourceContracts(unittest.TestCase):
         self.assertIn("herdAnchor", text)
         self.assertIn("herds", text)
 
+    def test_herd_size_setting_drives_the_herd(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("QGVAR(herdSize)", text)
+
+    def test_cull_releases_the_herd_slot(self):
+        text = (FUNCS / "fnc_cullFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("herdAnchor", text)
+        self.assertIn("herds", text)
+
     def test_spawn_uses_create_agent(self):
         text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
         self.assertIn("createAgent", text)

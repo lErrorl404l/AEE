@@ -29,4 +29,7 @@ if ((_now - _last) < (1 / AI_BROADCAST_RATE)) exitWith {};
 
 missionNamespace setVariable [QGVAR(lastReport), _now];
 
+// -2 is every machine except the origin (the caller).  On a hosted server the
+// local player is the origin, so the caller applies its own stimulus directly
+// and the field stays consistent without a self-broadcast.
 [[_pos, _magnitude, _now]] remoteExecCall [QFUNC(receiveStimulus), -2];
