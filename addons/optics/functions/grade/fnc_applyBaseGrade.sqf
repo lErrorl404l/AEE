@@ -194,11 +194,11 @@ if (_useModel isEqualTo true) then {
     };
     private _toneEnabled = missionNamespace getVariable [QGVAR(visionToneEnabled), true];
     private _whiteBalance = missionNamespace getVariable [QGVAR(visionWhiteBalance), false];
-    private _toneStrength = missionNamespace getVariable [QGVAR(visionToneStrength), 1];
+    private _toneStrength = missionNamespace getVariable [QGVAR(visionToneStrength), 0.25];
     private _contrastScale = missionNamespace getVariable [QGVAR(visionContrastScale), 1];
     private _adaptDegree = missionNamespace getVariable [QGVAR(visionAdaptationDegree), 0.9];
-    private _desatMax = missionNamespace getVariable [QGVAR(visionMesopicDesaturation), 0.3];
-    private _purkinje = missionNamespace getVariable [QGVAR(visionPurkinjeStrength), 0.5];
+    private _desatMax = missionNamespace getVariable [QGVAR(visionMesopicDesaturation), 0];
+    private _purkinje = missionNamespace getVariable [QGVAR(visionPurkinjeStrength), 0];
     // Bounded desaturation: the mesopic setting scales with the scotopic
     // fraction, then clamps to the 0 to 0.10 bound the anchor clamp enforces.
     private _desatAlpha = (((_desatMax * (1 - _mesopicW)) max 0) min 0.10);
