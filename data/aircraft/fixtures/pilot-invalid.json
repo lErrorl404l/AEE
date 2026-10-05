@@ -1,0 +1,43 @@
+{
+  "retrieved": "2026-10-05",
+  "note": "RED FIXTURE ONLY, not runtime data. The task 9 validator must reject this file. It holds no real aircraft value, no real class mapping and no held source. Every value is the sentinel FIXTURE-NOT-A-REAL-VALUE. operating_weight_kg has no source key. rated_power_w has no unit key and names an engine_config source, which the schema forbids as a value source. The record is not runtime-ready. Do not promote this file to data/aircraft/catalogue/.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "fixture_red_aircraft",
+      "canonical_name": "FIXTURE",
+      "maker": "FIXTURE",
+      "model": "FIXTURE",
+      "variant": "FIXTURE",
+      "variant_id": "fixture_red_variant",
+      "vehicle_type": "fixed_wing",
+      "class_token": "Plane",
+      "country": "NONE",
+      "era": "none",
+      "aliases": [
+        "fixture"
+      ],
+      "keywords": [
+        "fixture"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": "FIXTURE-NOT-A-REAL-VALUE",
+          "unit": "kg",
+          "locator": "fixture only, no real locator",
+          "state": "fixture state, not a real configuration",
+          "grade": "documented"
+        },
+        "rated_power_w": {
+          "value": "FIXTURE-NOT-A-REAL-VALUE",
+          "source": "fixture_engine_config",
+          "locator": "fixture only, no real locator",
+          "state": "fixture state, not a real configuration",
+          "grade": "documented"
+        }
+      }
+    }
+  ],
+  "conflicts": []
+}
