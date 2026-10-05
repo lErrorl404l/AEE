@@ -103,6 +103,13 @@ if ((_forceBase isEqualType []) && ((count _forceBase) >= 3)) then {
     };
 };
 
+// Publish the resolved anchor (the cached config value plus any debug override).
+// The adjust path below is client-only, but the resolution above sits before the
+// hasInterface exit, so a dedicated-server probe can still observe what the
+// driver uses.  The debug line is not readable headless because it is emitted
+// below that exit.
+missionNamespace setVariable [QGVAR(visionBaseResolved), _baseAnchor];
+
 // Neutralise, then disable, then clear the active flag.  Every adjust, enable
 // and destroy sits behind a >= 0 guard.
 private _standDown = {
