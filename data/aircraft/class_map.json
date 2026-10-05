@@ -1,0 +1,20 @@
+[
+  {
+    "game_class": "Plane",
+    "class_token": "Plane",
+    "catalogue_id": "a10a_thunderbolt_ii",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "AEE class token Plane; class table kind Plane; one representative entry, grade claimed",
+    "grade": "claimed",
+    "note": "Engine class-table binding, graded claimed. No real-world source names the AEE class."
+  },
+  {
+    "game_class": "Helicopter",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "AEE class token Helicopter; class table kind Helicopter; one representative entry, grade claimed",
+    "grade": "claimed",
+    "note": "Engine class-table binding, graded claimed. No real-world source names the AEE class."
+  }
+]

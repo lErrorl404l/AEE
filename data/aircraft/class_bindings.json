@@ -1,0 +1,138 @@
+[
+  {
+    "game_class": "B_Plane_CAS_01_F",
+    "class_token": "Plane",
+    "catalogue_id": "a10a_thunderbolt_ii",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_CAS_01_F is an Arma 3 Plane class for the A-164 Wipeout; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_CAS_02_F",
+    "class_token": "Plane",
+    "catalogue_id": "su25_frogfoot",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_CAS_02_F is an Arma 3 Plane class for the To-199 Neophron; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_CAS_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Plane_Fighter_03_CAS_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_AA_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Plane_Fighter_03_AA_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_dynamicLoadout_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Plane_Fighter_03_dynamicLoadout_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Plane_Civil_01_F",
+    "class_token": "Plane",
+    "catalogue_id": "cessna_172_skyhawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Plane_Civil_01_F is an Arma 3 Plane class for the Cessna 172; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_Fighter_01_F is an Arma 3 Plane class for the F/A-18 Super Hornet; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_F",
+    "class_token": "Plane",
+    "catalogue_id": "su57_felon",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_Fighter_02_F is an Arma 3 Plane class for the Su-57 Felon; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Light_01_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Heli_Light_01_F is an Arma 3 Helicopter class for the MH-9 Hummingbird; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Light_01_armed_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md530_defender",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Heli_Light_01_armed_F is an Arma 3 Helicopter class for the AH-9 Pawnee; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Attack_01_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "rah66_comanche",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Heli_Attack_01_F is an Arma 3 Helicopter class for the AH-99 Blackfoot; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Transport_01_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Heli_Transport_01_F is an Arma 3 Helicopter class for the UH-80 Ghost Hawk; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Light_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "light_utility_rotary",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Light_02_F is an Arma 3 Helicopter class for the PO-30 Orca; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Attack_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi28_havoc",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Attack_02_F is an Arma 3 Helicopter class for the Mi-48 Kajman; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Heli_light_03_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw159_wildcat",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Heli_light_03_F is an Arma 3 Helicopter class for the WY-55 Hellcat; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Heli_Transport_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "ch47_chinook",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_Light_01_civil_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500_civil",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_Light_01_civil_F is an Arma 3 Helicopter class for the MD 500 civil; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  }
+]
