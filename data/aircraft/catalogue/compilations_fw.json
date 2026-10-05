@@ -1,0 +1,121 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "First-slice aircraft catalogue capture.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "su25_frogfoot",
+      "canonical_name": "Sukhoi Su-25",
+      "maker": "Sukhoi",
+      "model": "Su-25",
+      "variant": "Su-25",
+      "variant_id": "su25",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turbojet",
+      "role": "attack",
+      "class_token": "Plane",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "frogfoot",
+        "su25"
+      ],
+      "keywords": [
+        "cas",
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "wing_area_m2": {
+          "value": 30.1,
+          "unit": "m^2",
+          "source": "src_milavia_su25",
+          "locator": "dimensions",
+          "state": "UNSOURCED real-world figure from an unheld public compilation; lead only.",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "l159_alca",
+      "canonical_name": "Aero L-159 ALCA",
+      "maker": "Aero Vodochody",
+      "model": "L-159",
+      "variant": "L-159",
+      "variant_id": "l159",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turbofan",
+      "role": "trainer",
+      "class_token": "Plane",
+      "country": "CZ",
+      "era": "contemporary",
+      "aliases": [
+        "alca",
+        "l159"
+      ],
+      "keywords": [
+        "trainer",
+        "light attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "fa18e_super_hornet",
+      "canonical_name": "Boeing F/A-18E Super Hornet",
+      "maker": "Boeing",
+      "model": "F/A-18",
+      "variant": "E",
+      "variant_id": "fa18e",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turbofan",
+      "role": "multirole",
+      "class_token": "Plane",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "super hornet",
+        "fa18"
+      ],
+      "keywords": [
+        "carrier",
+        "multirole"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "wing_area_m2": {
+          "value": 46.5,
+          "unit": "m^2",
+          "source": "src_fa18_blog",
+          "locator": "wing area",
+          "state": "UNSOURCED real-world figure from an unheld public compilation; lead only.",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "su57_felon",
+      "canonical_name": "Sukhoi Su-57",
+      "maker": "Sukhoi",
+      "model": "Su-57",
+      "variant": "Su-57",
+      "variant_id": "su57",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turbofan",
+      "role": "multirole",
+      "class_token": "Plane",
+      "country": "RU",
+      "era": "modern",
+      "aliases": [
+        "felon",
+        "su57"
+      ],
+      "keywords": [
+        "stealth",
+        "multirole"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

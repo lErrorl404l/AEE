@@ -1,0 +1,49 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "First-slice aircraft catalogue capture.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "a10a_thunderbolt_ii",
+      "canonical_name": "Fairchild A-10A Thunderbolt II",
+      "maker": "Fairchild Republic",
+      "model": "A-10",
+      "variant": "A-10A",
+      "variant_id": "a10a",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turbofan",
+      "role": "attack",
+      "class_token": "Plane",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "a10",
+        "wipeout",
+        "thunderbolt ii"
+      ],
+      "keywords": [
+        "cas",
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 12701,
+          "unit": "kg",
+          "source": "src_to_1a10a1",
+          "locator": "weight and balance section",
+          "state": "A-10A operating weight stated in the flight manual (28000 lb)",
+          "grade": "documented"
+        },
+        "thrust_kn": {
+          "value": 39.6,
+          "unit": "kN",
+          "source": "src_to_1a10a1",
+          "locator": "engine thrust",
+          "state": "installed sea-level static thrust (8900 lbf) converted to kN",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}
