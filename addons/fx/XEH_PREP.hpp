@@ -7,6 +7,8 @@ PREPS(blast,calculateBlastOverpressure);
 
 // ── particle ──────────────────────────────────────────────────────────────
 PREPS(particle,calculateDownwash);
+PREPS(particle,heatHazeAlpha);
+PREPS(particle,heatHazeSize);
 PREPS(particle,kickupParams);
 PREPS(particle,particleAllocate);
 PREPS(particle,particleEffectConfig);
@@ -19,6 +21,7 @@ PREPS(particle,registerParticleSource);
 PREPS(particle,renderSupersonicTrace);
 PREPS(particle,surfaceMaterial);
 PREPS(particle,surfaceSample);
+PREPS(particle,weatherParticleAlpha);
 
 // ── weather ───────────────────────────────────────────────────────────────
 PREPS(weather,applyAtmosphericDust);
