@@ -3154,6 +3154,12 @@ private _p29Pass = 0;
     // the exact arrays and the colour invariant (the sixth element is 1).  It
     // renders nothing.
     execVM "aee_p86_grain_probe.sqf";
+    // PHASE 87 lives in aee_p87_shadow_probe.sqf: the shadow kernels are pure
+    // and the driver publishes its state above the hasInterface exit, so a
+    // dedicated server drives the kernels, calls the real driver and asserts
+    // the published target is bounded and never exceeds the object target.
+    // It renders nothing.
+    execVM "aee_p87_shadow_probe.sqf";
     // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
     // surface (scalar keys, no thermalProperties) and the TI command contract
     // resolve headless, so a dedicated server verifies what the StageTI

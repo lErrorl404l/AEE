@@ -4,6 +4,7 @@
 // them. CBA_fnc_waitAndExecute takes [function, args, delay].
 
 diag_log text "[AEE-TEST] mission start";
+execVM "aee_p87_shadow_probe.sqf";
 
 // -- PHASE 1: settings registered by initSettings.inc.sqf ------------------
 private _enabled = missionNamespace getVariable ["aee_core_enabled", -1];
