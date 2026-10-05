@@ -14,10 +14,10 @@ if (!isNil QGVAR(ambientPFH)) then {
     GVAR(ambientPFH) = nil;
 };
 
-private _source = missionNamespace getVariable [GVAR(ambientSource), objNull];
+private _source = missionNamespace getVariable [QGVAR(ambientSource), objNull];
 if (!isNull _source) then {
     deleteVehicle _source;
-    missionNamespace setVariable [GVAR(ambientSource), objNull];
+    missionNamespace setVariable [QGVAR(ambientSource), objNull];
 };
 
 AEE_LOG_INFO("wildlife client tick stopped")

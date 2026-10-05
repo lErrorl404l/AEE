@@ -476,6 +476,7 @@ private _rtdOn = difficultyEnabledRTD;
 private _rtdHeli = createVehicle ["B_Heli_Light_01_F", [2000, 3000, 100], [], 0, "FLY"];
 private _collective = nil;
 if (!isNull _rtdHeli) then { _collective = collectiveRTD _rtdHeli; };
+if (isNil "_collective") then { _collective = []; };
 if (!isNull _rtdHeli) then { deleteVehicle _rtdHeli; };
 diag_log text format ["[P65] reader: difficultyEnabledRTD %1, collectiveRTD %2 (%3), throttleRTD absent from the harness server binary",
     _rtdOn, _collective, typeName _collective];

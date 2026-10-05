@@ -39,7 +39,7 @@ private _animals = missionNamespace getVariable [QGVAR(animalsEnabled), false];
 if !(_animals isEqualType true) then { _animals = false; };
 if (!_animals) exitWith { [] };
 
-private _table = missionNamespace getVariable [GVAR(speciesTable), []];
+private _table = missionNamespace getVariable [QGVAR(speciesTable), []];
 if !(_table isEqualType []) then { _table = []; };
 if (_table isEqualTo []) exitWith { [] };
 

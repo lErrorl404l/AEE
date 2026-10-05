@@ -24,7 +24,7 @@ private _manifest = call (compile preprocessFileLineNumbers QPATHTOF(data\sound_
 missionNamespace setVariable [QGVAR(manifest), _manifest];
 
 private _speciesTable = call (compile preprocessFileLineNumbers QPATHTOF(data\species_table.sqf));
-missionNamespace setVariable [GVAR(speciesTable), _speciesTable];
+missionNamespace setVariable [QGVAR(speciesTable), _speciesTable];
 
 GVAR(ambientPFH) = [FUNC(wildlifeTick), _interval] call CBA_fnc_addPerFrameHandler;
 
