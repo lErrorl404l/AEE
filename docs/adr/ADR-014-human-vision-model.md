@@ -30,6 +30,12 @@ The engine limits the work. Arma 3 renders a low dynamic range image through a f
 
 9. The model runs inside the existing 1.0 s client PFH. It adds at most one engine read per tick (`getLightingAt`). The pure kernels are arithmetic over a few numbers. It does not touch the 5 ms `aee_core_fnc_updateEnvironment` gate.
 
+10. The model anchors the normal-vision grade to the base game's own default grade. AEE reads the class `CfgPostProcessTemplates >> Default >> colorCorrections` from `a3\functions_f\config.cpp` line 3553 of `functions_f.pbo` (build 2025-08-11) at run time. The read runs once per session and the result is cached. The value is neutral: brightness 1, contrast 1, offset 0. AEE keeps the scalar triple `[1, 1, 0]`. AEE never ships or copies the full vanilla array. The weight array and the colorize array are AEE's own. When the raw array is absent, malformed or out of range, AEE falls back to `[1, 1, 0]` with the same source.
+
+11. The grade is the anchor plus a small bounded deviation, computed in `fnc_perceptionBaseGrade`. The bounds are contrast +0.00 to +0.08, offset -0.02 to 0.00, brightness -0.03 to +0.03 and a desaturation alpha 0 to 0.10. The default tone strength is 0.25. On the neutral vanilla anchor the default grade is about contrast 1.04, brightness 1.0, offset -0.008 and colorize `[1, 1, 1, 0]`. Contrast may only rise and the black point may only deepen, so the grade cannot flatten or wash out the image.
+
+12. The default path ships no tint. `visionPurkinjeStrength` defaults to 0, `visionMesopicDesaturation` defaults to 0 and `visionWhiteBalance` defaults to false. At those defaults the mesopic kernel returns `[1, 1, 1, 0]` for every mesopic fraction, and the blend stays `[0, 0, 0, 0]`. The mesopic, illuminant and chromatic-adaptation kernels stay as the opt-in experimental path. The mesopic band is 0.005 to 5.0 cd/m2 (CIE 191:2010). The Purkinje hue direction is blue-green toward 507 nm (CIE 1951).
+
 ## The five stages and their sources
 
 Stage 1, light level and photoreceptor adaptation. The eye adapts to the scene luminance. The model works in base-10 log luminance. Two slow pools, cones and rods, chase the target with first-order lags. This stage already exists in the eye module.
@@ -94,6 +100,16 @@ Every new constant is listed with its source, or marked UNSOURCED. The executor 
 | White-balance blend cap | 0.25 | 0 to 0.25 | UNSOURCED. A blend toward a solid colour washes out the image. |
 | Display-RGB diagonal gain | clamp(2 - illuminant, 0, 1) | fixed | UNSOURCED. The engine has no cone matrix, so the display diagonal is a stand-in. |
 | Luma floor in the illuminant kernel | small positive | fixed | UNSOURCED. A guard against a divide by zero. |
+| Vanilla default anchor | `[1, 1, 0]` | fixed | SOURCED: `functions_f.pbo`, `a3\functions_f\config.cpp` line 3553, class `CfgPostProcessTemplates >> Default >> colorCorrections`, build 2025-08-11. Neutral scalar triple only. The full vanilla array is not shipped or copied. |
+| Anchor fallback | `[1, 1, 0]` | fixed | SOURCED: the same as the vanilla default anchor. Used when the raw array is absent, malformed or out of range. |
+| Contrast delta bound | `+0.00` to `+0.08` above the anchor | fixed | UNSOURCED: a small contrast lift. Operator-tunable by the clamp. |
+| Offset delta bound | `-0.02` to `0.00` from the anchor | fixed | UNSOURCED: a small black-point deepen. |
+| Brightness delta bound | `-0.03` to `+0.03` from the anchor | fixed | UNSOURCED: a small exposure nudge. |
+| Desaturation alpha bound | `0` to `0.10` | fixed | SOURCED direction: the engine desaturates only (BIKI). The amplitude is UNSOURCED. |
+| Default tone strength | `0.25` | 0 to 1 | UNSOURCED: scales the tone kernel into the bound. |
+| Default white balance | `false` | bool | UNSOURCED: the engine ambient is green-biased, so full adaptation ships a cast. |
+| Default mesopic desaturation | `0` | 0 to 0.5 | UNSOURCED: the operator rejects the tint. |
+| Default Purkinje strength | `0` | 0 to 1 | UNSOURCED: the operator rejects the tint. The hue direction is SOURCED: CIE 1951. |
 
 ## The honest engine ceiling
 
@@ -126,7 +142,7 @@ No UK MOD or NATO defence standard governs these vision constants. Civilian CIE,
 
 ## UNSOURCED values
 
-The values marked UNSOURCED, and repeated beside the value in code and in the stringtable description, are the mesopic smoothstep shape, the Naka-Rushton exponent and sigma, the exact Weber fraction, the Purkinje tint and desaturation amplitudes, the tone calibration gain, the tone contrast and offset clamps, the white-balance blend cap, the display-RGB diagonal gain and the illuminant luma floor. Mid-grey reflectance is a photographic convention, not a CIE constant.
+The values marked UNSOURCED, and repeated beside the value in code and in the stringtable description, are the mesopic smoothstep shape, the Naka-Rushton exponent and sigma, the exact Weber fraction, the Purkinje tint and desaturation amplitudes, the tone calibration gain, the tone contrast and offset clamps, the white-balance blend cap, the display-RGB diagonal gain and the illuminant luma floor. The small-improvement deltas are also UNSOURCED: the contrast, offset and brightness bounds, the desaturation alpha amplitude, the default tone strength and the tint-retirement defaults. Mid-grey reflectance is a photographic convention, not a CIE constant.
 
 ## Consequences
 
@@ -139,6 +155,7 @@ The values marked UNSOURCED, and repeated beside the value in code and in the st
 
 - BIKI Post Process Effects, Wayback capture 20240220225631: the ColorCorrections and FilmGrain parameter tables.
 - BIKI `getLightingAt`, capture 20250120023422: the ambient light colour element.
+- `functions_f.pbo`, `a3\functions_f\config.cpp` line 3553 (build 2025-08-11): the class `CfgPostProcessTemplates >> Default >> colorCorrections`, the neutral default anchor.
 - CIE 15:2004 and ISO 11664-4: the CIE 1976 L* function.
 - CIE 159:2004: CIECAM02, the CAT02 matrix and the degree of adaptation D.
 - CIE 018:2019, CIE 191:2010 and IES TM-12-12: photopic and scotopic response, and the mesopic band.
