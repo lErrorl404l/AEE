@@ -108,6 +108,9 @@ if (_hasUnit) then {
             };
         } forEach _traffic;
 
+        // Bound the field before it is published: drop stale cells, then cap
+        // by decayed magnitude.  The prune kernel owns the policy.
+        _field = [_field, _now, AI_CELL_CAP, AI_CELL_HORIZON] call EFUNC(ai,disturbancePrune);
         missionNamespace setVariable [QEGVAR(ai,disturbance), _field];
     };
 };
