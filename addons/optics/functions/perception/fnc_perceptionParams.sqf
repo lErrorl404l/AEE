@@ -28,7 +28,9 @@ the array is the identity.
 The engine has no cone matrix and no oversaturation, so the colour stage is an
 approximation: a blend toward the complementary tint, and a desaturation toward
 the scotopic hue.  The FilmGrain array is the acuity candidate (sharpness 4.0,
-intensity 0.006, BIKI FilmGrain defaults otherwise).
+intensity 0.006, monochromatic 1 colour; BIKI FilmGrain defaults otherwise).
+The monochromatic element must stay non-zero: the Arma 3 value 0 is monochrome
+and drains normal vision to grey.
 
 Arguments:
   0: Number - adapted scene luminance, cd/m2
@@ -57,8 +59,8 @@ params [
     ["_strength", 1, [0]],
     ["_contrastScale", 1, [0]],
     ["_adaptDegree", 0.9, [0]],
-    ["_desatMax", 0.3, [0]],
-    ["_purkinjeStrength", 0.5, [0]],
+    ["_desatMax", 0, [0]],
+    ["_purkinjeStrength", 0, [0]],
     ["_anchor", [1, 1, 0], [[]]],
     ["_desatAlpha", 0, [0]]
 ];
@@ -102,6 +104,9 @@ private _cc = [
     [-1, -1, 0, 0, 0, 0, 0]
 ];
 
-private _grain = [0.006, 4.0, 2.01, 0.75, 1.0, 0];
+// The last FilmGrain element is the monochromatic flag.  BIKI Arma 3: 0 is
+// monochrome, any other value is colour.  0 desaturates normal vision, so the
+// acuity grain ships colour.
+private _grain = [0.006, 4.0, 2.01, 0.75, 1.0, 1];
 
 [_cc, _grain]

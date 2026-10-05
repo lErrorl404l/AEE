@@ -40,8 +40,8 @@ Returns:
 
 params [
     ["_mesopicW", 1, [0]],
-    ["_desatMax", 0.3, [0]],
-    ["_purkinjeStrength", 0.5, [0]]
+    ["_desatMax", 0, [0]],
+    ["_purkinjeStrength", 0, [0]]
 ];
 
 private _w = (((_mesopicW max 0) min 1));
