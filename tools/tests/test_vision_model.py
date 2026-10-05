@@ -52,16 +52,17 @@ REC709_WEIGHTS = [0.2126, 0.7152, 0.0722, 0]
 RADIAL_DEFAULT = [-1, -1, 0, 0, 0, 0, 0]
 
 # The all-stages-neutral composed ColorCorrections array: tone identity, no
-# white balance, photopic mesopic fraction.  The colorize alpha is 0, the
-# identity (BIKI capture 20240220225631).  This is the fixture the perception
-# composition kernel must reproduce at neutral inputs.
+# white balance, photopic mesopic fraction.  The identity is the engine's own
+# neutral post-process (CfgPostProcessTemplates >> Default >> colorCorrections =
+# {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}}): colorize alpha 1 and zero weights.
+# This is the fixture the perception composition kernel must reproduce.
 NEUTRAL_FIXTURE = [
     1,
     1,
     0,
     [0, 0, 0, 0],
-    [1, 1, 1, 0],
-    [0.2126, 0.7152, 0.0722, 0],
+    [1, 1, 1, 1],
+    [0, 0, 0, 0],
     [-1, -1, 0, 0, 0, 0, 0],
 ]
 
@@ -101,10 +102,16 @@ def cc_contract_pixel(pixel, cc):
     alpha 0 preserves colour and alpha 1 is the grey class.
     """
     _brightness, _contrast, _offset, _blend, colorize, weights, _radial = cc
-    alpha = colorize[3]
+    # The engine neutral is colorize alpha 1 with zero desaturation weights
+    # (CfgPostProcessTemplates >> Default >> colorCorrections).  Zero weights
+    # means the engine applies no desaturation, and colorize alpha 1 preserves
+    # the original colour.  A lower alpha blends toward the desaturation target.
+    if sum(weights[:3]) == 0 or colorize[3] >= 1:
+        return list(pixel)
+    amount = 1 - colorize[3]
     luma = sum(w * c for w, c in zip(weights[:3], pixel))
     grey = [channel * luma for channel in colorize[:3]]
-    return [p * (1 - alpha) + g * alpha for p, g in zip(pixel, grey)]
+    return [p * (1 - amount) + g * amount for p, g in zip(pixel, grey)]
 
 
 class TestColorCorrectionsContract(unittest.TestCase):
@@ -129,7 +136,8 @@ class TestColorCorrectionsContract(unittest.TestCase):
 
     def test_colorize_alpha_is_the_last_value(self):
         cc, _ = run_sqf(BASE_KERNEL, [1.15, 1.0, -0.02, 0.4])
-        self.assertEqual(cc[4][3], 0.4)
+        # The engine neutral alpha is 1; a desaturation of 0.4 maps to 1 - 0.4.
+        self.assertEqual(cc[4][3], 0.6)
 
     def test_weight_slot_fourth_value_is_zero(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
@@ -146,9 +154,9 @@ class TestNeutralFixtureIdentity(unittest.TestCase):
     def test_fixture_has_seven_elements(self):
         self.assertEqual(len(NEUTRAL_FIXTURE), 7)
 
-    def test_fixture_colorize_alpha_is_zero(self):
+    def test_fixture_colorize_alpha_is_the_engine_neutral(self):
         self.assertEqual(
-            NEUTRAL_FIXTURE[4][3], 0, "the neutral fixture desaturates: alpha is not 0"
+            NEUTRAL_FIXTURE[4][3], 1, "the neutral fixture desaturates: alpha is not 1"
         )
 
     def test_fixture_tone_is_identity(self):
@@ -158,9 +166,9 @@ class TestNeutralFixtureIdentity(unittest.TestCase):
         self.assertEqual(NEUTRAL_FIXTURE[3], [0, 0, 0, 0])
         self.assertEqual(NEUTRAL_FIXTURE[6], RADIAL_DEFAULT)
 
-    def test_fixture_weight_array_is_rec709_and_nonzero(self):
-        self.assertEqual(NEUTRAL_FIXTURE[5], REC709_WEIGHTS)
-        self.assertNotEqual(NEUTRAL_FIXTURE[5][:3], [0, 0, 0])
+    def test_fixture_weight_array_is_zero(self):
+        self.assertEqual(NEUTRAL_FIXTURE[5], [0, 0, 0, 0])
+        self.assertEqual(NEUTRAL_FIXTURE[5][:3], [0, 0, 0])
 
     def test_fixture_pixel_is_unchanged(self):
         patch = [0.8, 0.2, 0.1]
@@ -175,9 +183,10 @@ class TestDefaultPathColorizeAlpha(unittest.TestCase):
     neutral fixture must both leave the colour stage at identity.
     """
 
-    def test_default_kernel_colorize_alpha_is_zero(self):
+    def test_default_kernel_colorize_is_the_engine_neutral(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
-        self.assertEqual(cc[4][3], 0, "the default path desaturates")
+        self.assertEqual(cc[4][3], 1, "the default path desaturates")
+        self.assertEqual(cc[5], [0, 0, 0, 0], "the default path has desaturation weights")
 
     def test_base_grade_acuity_grain_is_colour_not_monochrome(self):
         # BIKI capture 20240220225631: the Arma 3 FilmGrain monochromatic
@@ -194,7 +203,7 @@ class TestDefaultPathColorizeAlpha(unittest.TestCase):
         cc, _ = compose(
             [50, 0.98, [1, 1, 1], True, False, 0.25, 1, 0.9, 0, 0, [1, 1, 0], 0]
         )
-        self.assertEqual(cc[4], [1, 1, 1, 0], "the default mesopic path desaturates")
+        self.assertEqual(cc[4], [1, 1, 1, 1], "the default mesopic path desaturates")
 
     def test_perception_acuity_grain_is_colour_not_monochrome(self):
         _, grain = compose([])
@@ -202,8 +211,8 @@ class TestDefaultPathColorizeAlpha(unittest.TestCase):
         self.assertNotEqual(grain[5], 0, "the acuity grain is monochrome")
 
     def test_neutral_fixture_matches_the_shipped_default(self):
-        self.assertEqual(NEUTRAL_FIXTURE[4][3], 0)
-        self.assertEqual(NEUTRAL_FIXTURE[5], REC709_WEIGHTS)
+        self.assertEqual(NEUTRAL_FIXTURE[4][3], 1)
+        self.assertEqual(NEUTRAL_FIXTURE[5], [0, 0, 0, 0])
 
 
 class TestIdentityDetectsDesaturation(unittest.TestCase):
@@ -215,9 +224,10 @@ class TestIdentityDetectsDesaturation(unittest.TestCase):
         for got, want in zip(out, patch):
             self.assertAlmostEqual(got, want, places=9)
 
-    def test_alpha_one_turns_a_red_patch_grey(self):
+    def test_a_desaturating_array_turns_a_red_patch_grey(self):
         desaturated = list(NEUTRAL_FIXTURE)
-        desaturated[4] = [1, 1, 1, 1]
+        desaturated[4] = [1, 1, 1, 0]
+        desaturated[5] = REC709_WEIGHTS
         out = cc_contract_pixel([0.8, 0.2, 0.1], desaturated)
         self.assertAlmostEqual(out[0], out[1], places=9)
         self.assertAlmostEqual(out[1], out[2], places=9)
@@ -532,9 +542,10 @@ class TestPerceptionComposition(unittest.TestCase):
         cc, _ = compose([])
         self.assertEqual(len(cc), 7)
 
-    def test_default_inputs_keep_the_colorize_alpha_zero(self):
+    def test_default_inputs_use_the_engine_neutral(self):
         cc, _ = compose([])
-        self.assertEqual(cc[4][3], 0, "the default composition desaturates")
+        self.assertEqual(cc[4][3], 1, "the default composition desaturates")
+        self.assertEqual(cc[5], [0, 0, 0, 0], "the default composition has weights")
 
     def test_strength_zero_is_the_identity_fixture(self):
         cc, _ = compose([1, 1, [1, 1, 1], True, False, 0, 1])
@@ -544,9 +555,9 @@ class TestPerceptionComposition(unittest.TestCase):
         cc, _ = compose([1, 1, [1, 1, 1], False, False, 1, 1])
         self.assertEqual(cc, NEUTRAL_FIXTURE)
 
-    def test_weight_array_is_rec709(self):
+    def test_default_weight_array_is_zero(self):
         cc, _ = compose([])
-        self.assertEqual(cc[5], REC709_WEIGHTS)
+        self.assertEqual(cc[5], [0, 0, 0, 0])
 
     def test_filmgrain_has_six_elements(self):
         _, grain = compose([])
@@ -555,7 +566,7 @@ class TestPerceptionComposition(unittest.TestCase):
     def test_colour_slots_stay_neutral_when_the_colour_path_is_off(self):
         cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, False, 1, 1])
         self.assertEqual(cc[3], [0, 0, 0, 0])
-        self.assertEqual(cc[4], [1, 1, 1, 0])
+        self.assertEqual(cc[4], [1, 1, 1, 1])
 
 
 class TestPerceptionColourComposition(unittest.TestCase):
@@ -580,8 +591,8 @@ class TestPerceptionColourComposition(unittest.TestCase):
             [1, 0, [1, 1, 1], True, False, 1, 1, 0.9, 0.3, 0.5, [1, 1, 0], 0.08]
         )
         self.assertGreater(cc[4][3], 0)
-        self.assertLessEqual(cc[4][3], 0.5)
-        self.assertAlmostEqual(cc[4][3], 0.08, places=9)
+        self.assertGreaterEqual(cc[4][3], 0.5)
+        self.assertAlmostEqual(cc[4][3], 0.92, places=9)
         self.assertNotEqual(cc[4][:3], [1, 1, 1], "the mesopic kernel did not run")
         self.assertGreater(cc[4][2], cc[4][0], "the colorize is not blue-shifted")
 
@@ -599,7 +610,7 @@ class TestPerceptionColourComposition(unittest.TestCase):
 
 
 STAND_DOWN_RE = re.compile(
-    r"\[1, 1, 0, \[0,0,0,0\], \[1,1,1,0\], \[0\.2126,0\.7152,0\.0722,0\], "
+    r"\[1, 1, 0, \[0,0,0,0\], \[1,1,1,1\], \[0,0,0,0\], "
     r"\[-1,-1,0,0,0,0,0\]\]"
 )
 
@@ -677,12 +688,12 @@ class TestPerceptionDriverContract(unittest.TestCase):
     def test_stand_down_neutral_is_the_contract_identity(self):
         code = _code(DRIVER)
         self.assertIn(
-            "[1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], "
+            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], "
             "[-1,-1,0,0,0,0,0]]",
             code,
             "the stand-down neutral is not the contract identity",
         )
-        self.assertNotIn("[1,1,1,1]", code, "the stand-down still desaturates")
+        self.assertNotIn("[1,1,1,0]", code, "the stand-down still desaturates")
 
     def test_stand_down_fixture_is_the_identity_image(self):
         code = _code(DRIVER)
@@ -755,7 +766,7 @@ class TestPerceptionColourContracts(unittest.TestCase):
         match = STAND_DOWN_RE.search(code)
         self.assertIsNotNone(match, "the stand-down identity is missing")
         cc = ast.literal_eval(match.group())
-        self.assertEqual(cc[4][3], 0, "the stand-down desaturates")
+        self.assertEqual(cc[4][3], 1, "the stand-down desaturates")
 
     def test_warm_illuminant_with_white_balance_off_keeps_the_blend_alpha_zero(self):
         cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, False, 1, 1])
@@ -768,7 +779,7 @@ class TestPerceptionColourContracts(unittest.TestCase):
     def test_neutral_illuminant_is_the_identity_image(self):
         cc, _ = compose([1, 1, [1, 1, 1], True, True, 0, 1])
         self.assertEqual(cc[3][3], 0, "a neutral illuminant blended the image")
-        self.assertEqual(cc[4][3], 0)
+        self.assertEqual(cc[4][3], 1)
         patch = [0.8, 0.2, 0.1]
         for got, want in zip(cc_contract_pixel(patch, cc), patch):
             self.assertAlmostEqual(got, want, places=9)
@@ -818,14 +829,14 @@ class TestPerceptionSmallBound(unittest.TestCase):
             self.assertLessEqual(cc[1], c0 + 0.08, f"contrast above bound at {lum}")
             self.assertGreaterEqual(cc[2], o0 - 0.02, f"offset below bound at {lum}")
             self.assertLessEqual(cc[2], o0, f"offset above the anchor at {lum}")
-            self.assertGreaterEqual(cc[4][3], 0, f"alpha below bound at {lum}")
-            self.assertLessEqual(cc[4][3], 0.10, f"alpha above bound at {lum}")
+            self.assertGreaterEqual(cc[4][3], 0.90, f"alpha below bound at {lum}")
+            self.assertLessEqual(cc[4][3], 1, f"alpha above bound at {lum}")
 
     def test_composed_alpha_clamps_to_the_upper_bound(self):
         for lum in self.LUM_SWEEP:
             alpha = self._compose_at(lum, desat_alpha=0.5)[4][3]
-            self.assertGreaterEqual(alpha, 0)
-            self.assertLessEqual(alpha, 0.10)
+            self.assertGreaterEqual(alpha, 0.90)
+            self.assertLessEqual(alpha, 1)
 
     def test_kernel_grade_stays_within_the_small_bound_over_the_sweep(self):
         for lum in self.LUM_SWEEP:
@@ -982,7 +993,7 @@ class TestPerceptionNoTintAtDefaults(unittest.TestCase):
     def test_colorize_is_the_identity_at_the_defaults(self):
         for mesopic_w in (0, 0.25, 0.5, 0.75, 1):
             cc = self._compose_at(mesopic_w)
-            self.assertEqual(cc[4], [1, 1, 1, 0], f"tint at mesopic {mesopic_w}")
+            self.assertEqual(cc[4], [1, 1, 1, 1], f"tint at mesopic {mesopic_w}")
             self.assertEqual(cc[3], [0, 0, 0, 0], f"blend at mesopic {mesopic_w}")
 
     def test_mesopic_kernel_is_the_identity_for_every_fraction(self):
@@ -1001,7 +1012,7 @@ class TestPerceptionNoTintAtDefaults(unittest.TestCase):
         cc = compose(args)[0]
         self.assertEqual(
             cc[4],
-            [1, 1, 1, 0],
+            [1, 1, 1, 1],
             "a full Purkinje strength tinted a zero-desaturation grade",
         )
 
@@ -1011,7 +1022,7 @@ class TestPerceptionNoTintAtDefaults(unittest.TestCase):
             r, g, b, alpha = self._compose_at(mesopic_w)[4]
             self.assertAlmostEqual(g, r, places=9, msg="a green cast at defaults")
             self.assertAlmostEqual(b, r, places=9, msg="a blue cast at defaults")
-            self.assertEqual(alpha, 0, "the default path desaturates")
+            self.assertEqual(alpha, 1, "the default path desaturates")
 
 
 class TestPerceptionDriverFallbacks(unittest.TestCase):

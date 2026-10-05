@@ -90,7 +90,7 @@ and the colorize array are AEE's own.
 
 The grade is the anchor plus a small bounded deviation, computed in
 `fnc_perceptionBaseGrade`. The bounds are contrast +0.00 to +0.08, offset -0.02
-to 0.00, brightness -0.03 to +0.03 and a desaturation alpha 0 to 0.10. The
+to 0.00, brightness -0.03 to +0.03 and a bounded desaturation alpha. The
 default tone strength is 0.25. On the neutral vanilla anchor the default grade
 is about contrast 1.04, brightness 1.0, offset -0.008 and colorize
 `[1, 1, 1, 0]`.
@@ -137,7 +137,7 @@ carries it too.
 | D50 white | x 0.3457, y 0.3585 | fixed | SOURCED: CIE 15:2004. |
 | Rec.709 luma weights | 0.2126, 0.7152, 0.0722 | fixed | SOURCED: ITU-R BT.709-6. |
 | ColorCorrections slot order | brightness, contrast, offset, blend, colorize, weights, radial | fixed | SOURCED: BIKI Post Process Effects, Wayback capture 2024-02-20. |
-| ColorCorrections identity | colorize alpha 0 | fixed | SOURCED: BIKI, alpha 0 is original colour, alpha 1 is B&W times the colour. |
+| ColorCorrections identity | colorize alpha 1, zero weights | fixed | SOURCED: the engine's own neutral, CfgPostProcessTemplates >> Default >> colorCorrections = {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}} (functions_f.pbo). |
 | Radial default | -1, -1, 0, 0, 0, 0, 0 | fixed | SOURCED: BIKI, Arma 3 radial default. |
 | FilmGrain defaults | 0.005, 1.25, 2.01, 0.75, 1.0, 0 | fixed | SOURCED: BIKI, Arma 3 defaults. |
 | Reference illuminance anchors | 0.0001 lx to 100000 lx | fixed | SOURCED: IES Handbook and CIE 011, secondary restatement. |

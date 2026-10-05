@@ -16,12 +16,17 @@ sensitivity is a band-pass function (Campbell and Robson 1968, J Physiol, DOI
 10.1113/jphysiol.1968.sp008574).
 
 ColorCorrections slot order (BIKI Post Process Effects, capture 20240220225631):
-  [brightness, contrast, offset, blend, colorize, weights, radial].  The
-  colorize alpha (slot 4) is the saturation: 0 is the identity, 1 is black and
-  white times the colorize colour.  Slot 5 holds the luma weights for the
-  desaturation, its fourth value fixed 0.  Slot 6 is the optional Arma 3
-  radial, default [-1,-1,0,0,0,0,0].  A wrong length or a colorize alpha of 1
-  is the black-and-white class that drained normal vision to grey.
+  [brightness, contrast, offset, blend, colorize, weights, radial].  Slot 5
+  holds the luma weights for the desaturation, its fourth value fixed 0.  Slot
+  6 is the optional Arma 3 radial, default [-1,-1,0,0,0,0,0].
+
+  The identity is the engine's OWN neutral, not a BIKI-table guess: the base
+  game's CfgPostProcessTemplates >> Default >> colorCorrections =
+  {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}} (functions_f.pbo, applied verbatim by
+  fn_setppeffecttemplate) renders colour with colorize alpha 1 and all-zero
+  weights.  A colorize alpha of 0 with nonzero weights drains normal vision to
+  grey; an earlier revision shipped exactly that class by trusting the wiki
+  table's "0 = original colour" wording.
 
 Per-constant source register (UNSOURCED values are marked beside the clamp):
   contrast    1.15, range 0.8 to 1.6.  ACES tone scale is an S-shaped curve
@@ -82,13 +87,27 @@ _saturation = (_saturation max 0) min 0.5;
 _sharpness = (_sharpness max 1) min 20;
 _grain = (_grain max 0) min 0.05;
 
+// The identity MUST be the engine's own neutral post-process:
+// CfgPostProcessTemplates >> Default >> colorCorrections =
+// {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}} (functions_f.pbo; fn_setppeffecttemplate
+// feeds that array straight to ppEffectAdjust).  The base game renders colour
+// with it, so it is the authoritative identity: colorize alpha 1 and all-zero
+// desaturation weights.  The previous hard-coded {1,1,1,0} colorize alpha with
+// Rec.709 weights did NOT match it and drained normal vision to grey.  A
+// nonzero operator saturation engages the desaturation weights.
+private _weights = [0, 0, 0, 0];
+private _colorize = [1, 1, 1, 1];
+if (_saturation > 0) then {
+    _weights = [0.2126, 0.7152, 0.0722, 0];
+    _colorize = [1, 1, 1, 1 - _saturation];
+};
 private _cc = [
     _brightness,
     _contrast,
     _offset,
     [0, 0, 0, 0],
-    [1, 1, 1, _saturation],
-    [0.2126, 0.7152, 0.0722, 0],
+    _colorize,
+    _weights,
     [-1, -1, 0, 0, 0, 0, 0]
 ];
 private _grainParams = [_grain, _sharpness, 2.01, 0.75, 1.0, 1];
