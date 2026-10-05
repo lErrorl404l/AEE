@@ -52,6 +52,7 @@ Debug hooks (set on missionNamespace; debug console only, no CBA setting):
   aee_optics_visionForceLux      Number: override the adapted luminance, cd/m2.
   aee_optics_visionForceMesopic  Number: override the mesopic photopic fraction.
   aee_optics_visionForceIlluminant  Array: override the scene illuminant colour.
+  aee_optics_visionForceBase     Array: override the base-grade anchor [b, c, o].
   aee_optics_logDebug            Bool: log one DEBUG line per tick.
 
 Arguments: none.
@@ -66,6 +67,41 @@ Returns:
 // paths.
 private _hCC = missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseGrade), -1];
 private _hAcuity = missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseAcuity), -1];
+
+// The vanilla base-grade anchor.  The developers' default post-process grade is
+// the Default class of the base-game post-process template in functions_f.pbo.
+// AEE reads the loaded config once per session and caches the scalar triple
+// [brightness, contrast,
+// offset]; it never ships or copies the Bohemia config.  The read sits above
+// every post-process adjust so the anchor is known before an adjust can run.
+// Fallback [1, 1, 0] source: a3\functions_f\config.cpp line 3553 of
+// functions_f.pbo, build 2025-08-11.  The fallback is a number triple with a
+// source, not shipped content.
+if (isNil QGVAR(visionBaseAnchor)) then {
+    private _raw = getArray (configFile >> "CfgPostProcessTemplates" >> "Default" >> "colorCorrections");
+    private _anchor = [1, 1, 0];
+    if ((_raw isEqualType []) && ((count _raw) >= 3)) then {
+        private _b = _raw select 0;
+        private _c = _raw select 1;
+        private _o = _raw select 2;
+        if ((_b isEqualType 0) && (_c isEqualType 0) && (_o isEqualType 0) && (_b >= 0) && (_b <= 4) && (_c >= 0) && (_c <= 4) && (_o >= -1) && (_o <= 1)) then {
+            _anchor = [_b, _c, _o];
+        };
+    };
+    missionNamespace setVariable [QGVAR(visionBaseAnchor), _anchor];
+};
+
+// Debug hook: a three-number aee_optics_visionForceBase overrides the anchor.
+private _baseAnchor = missionNamespace getVariable [QGVAR(visionBaseAnchor), [1, 1, 0]];
+private _forceBase = missionNamespace getVariable [QGVAR(visionForceBase), []];
+if ((_forceBase isEqualType []) && ((count _forceBase) >= 3)) then {
+    private _fb = _forceBase select 0;
+    private _fc = _forceBase select 1;
+    private _fo = _forceBase select 2;
+    if ((_fb isEqualType 0) && (_fc isEqualType 0) && (_fo isEqualType 0)) then {
+        _baseAnchor = [_fb, _fc, _fo];
+    };
+};
 
 // Neutralise, then disable, then clear the active flag.  Every adjust, enable
 // and destroy sits behind a >= 0 guard.
@@ -211,7 +247,7 @@ if (_useModel isEqualTo true) then {
 private _ccParams = _params select 0;
 private _grainParams = _params select 1;
 
-private _visionLog = format ["vision model active=%1 adaptedLux=%2 mesopic=%3 contrast=%4", _useModel isEqualTo true, _adaptedLux, _mesopicW, (_ccParams select 1)];
+private _visionLog = format ["vision model active=%1 adaptedLux=%2 mesopic=%3 contrast=%4 base=%5", _useModel isEqualTo true, _adaptedLux, _mesopicW, (_ccParams select 1), _baseAnchor];
 AEE_LOG_DEBUG(_visionLog);
 
 if (_hCC >= 0) then {
