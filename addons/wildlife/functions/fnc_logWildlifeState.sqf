@@ -16,7 +16,7 @@ line is valid before any agent, animal or sound exists.
 
 Debug hooks, set on missionNamespace:
   - aee_wildlife_forceBiome    String, force the biome
-  - aee_wildlife_forceNight    Bool or Number, force night
+  - aee_wildlife_forceNight    Bool, force night (a number means off)
   - aee_wildlife_forceSilence  Number, 0..1 forced silence, -1 off
   - aee_wildlife_forceSpook    Array, a forced spook position
   - aee_wildlife_forceSpecies  String, force the species row
@@ -107,8 +107,12 @@ if !(_tickInterval isEqualType 0) then { _tickInterval = 1.0; };
 
 private _forceBiome = missionNamespace getVariable ["aee_wildlife_forceBiome", ""];
 if !(_forceBiome isEqualType "") then { _forceBiome = ""; };
-private _forceNight = missionNamespace getVariable ["aee_wildlife_forceNight", 0];
-if !(_forceNight isEqualTypeAny [0, false]) then { _forceNight = 0; };
+// The tick applies a Bool hook only.  A number is the off sentinel.  Render
+// the applied state as 0 or 1 so the line never disagrees with the tick and
+// no Bool reaches a numeric operator.
+private _forceNightHook = missionNamespace getVariable ["aee_wildlife_forceNight", 0];
+private _forceNight = 0;
+if (_forceNightHook isEqualType false) then { _forceNight = [0, 1] select _forceNightHook; };
 private _forceSilence = missionNamespace getVariable ["aee_wildlife_forceSilence", -1];
 if !(_forceSilence isEqualType 0) then { _forceSilence = -1; };
 private _forceSpook = missionNamespace getVariable ["aee_wildlife_forceSpook", []];
@@ -117,12 +121,16 @@ private _forceSpecies = missionNamespace getVariable ["aee_wildlife_forceSpecies
 if !(_forceSpecies isEqualType "") then { _forceSpecies = ""; };
 
 // The tick duration is written by fnc_wildlifeTick only inside the trace
-// gate, so the line shows the last recorded tick and "-" when tracing is off.
-private _tickField = "-";
+// gate.  The token carries the last recorded tick and the configured tick
+// interval, both in ms, as "measured/interval"; the measured part is "-"
+// with tracing off.  The interval has no separate token, so it rides the
+// tick token and the 24-token format stays unchanged.
+private _tickIntervalMs = round (_tickInterval * 1000);
+private _tickField = format ["-/%1", _tickIntervalMs];
 if (AEE_TRACE_ON) then {
     private _lastTickMs = missionNamespace getVariable [QGVAR(lastTickMs), -1];
     if (_lastTickMs isEqualType 0) then {
-        if (_lastTickMs >= 0) then { _tickField = round _lastTickMs; };
+        if (_lastTickMs >= 0) then { _tickField = format ["%1/%2", round _lastTickMs, _tickIntervalMs]; };
     };
 };
 

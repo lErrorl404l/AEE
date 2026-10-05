@@ -8,6 +8,7 @@ methods read the engine wiring, which the harness cannot execute.
 Run: python3 -m unittest tools.tests.test_ai -v
 """
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -144,6 +145,20 @@ class TestDisturbancePrune(unittest.TestCase):
         result = prune([strong_old, weak_new], now, 1, 120)
         self.assertEqual(result, [weak_new])
 
+    def test_an_over_cap_field_with_distinct_scores_keeps_the_top_cells(self):
+        # Every cell scores differently, so an ascending or descending sort
+        # regression cannot pass by ties.  The prune must keep exactly the cap
+        # and the kept set must be the highest scoring cells.
+        now = 600.0
+        n = 256 + 64
+        field = [[key([i * 50, 0, 0], 50), 1.0 - (i * 0.001), now] for i in range(n)]
+        result = prune(field, now, 256, 120)
+        self.assertEqual(len(result), 256)
+        kept = {tuple(entry[0]) for entry in result}
+        self.assertEqual(kept, {tuple(entry[0]) for entry in field[:256]})
+        for entry in field[256:]:
+            self.assertNotIn(tuple(entry[0]), kept)
+
     def test_stale_cells_are_dropped_before_the_cap(self):
         now = 1000.0
         stale = [key([0, 0, 0]), 1.0, 800]
@@ -188,6 +203,16 @@ class TestAgentDecide(unittest.TestCase):
 
 
 AI_DIR = ROOT / "addons" / "ai"
+WILDLIFE_HEADER = ROOT / "addons" / "wildlife" / "script_component.hpp"
+
+
+def _header_define(path, name):
+    """The numeric value of a #define in a component header."""
+    text = path.read_text(encoding="utf-8")
+    match = re.search(rf"^#define\s+{name}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
+    if not match:
+        raise AssertionError(f"{name} is not defined in {path}")
+    return float(match.group(1))
 
 
 class TestAiSourceContracts(unittest.TestCase):
@@ -223,6 +248,18 @@ class TestAiSourceContracts(unittest.TestCase):
                 ),
                 f"{path.name} does not pass the cap and the horizon",
             )
+
+
+class TestFieldCapMirrorContract(unittest.TestCase):
+    """The wildlife mirror of the ai field caps must equal the ai value."""
+
+    def test_the_wildlife_mirror_equals_the_ai_value(self):
+        for name in ("AI_CELL_CAP", "AI_CELL_HORIZON"):
+            with self.subTest(name=name):
+                self.assertEqual(
+                    _header_define(WILDLIFE_HEADER, name),
+                    _header_define(AI_DIR / "script_component.hpp", name),
+                )
 
 
 if __name__ == "__main__":

@@ -73,10 +73,11 @@ jobs:
     # The soak is the long run, so it does not ride the daily cron. It runs
     # on a manual dispatch and on the weekly Sunday schedule only.
     if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 4 * * 0'
-    # The soak length plus the build. 90 minutes covers the 20 minute default
-    # and the HEMTT build with headroom.
+    # The soak and the stress length plus the two builds. 150 minutes covers
+    # the 20 minute default soak, the short stress run and the HEMTT builds
+    # with headroom.
     runs-on: [self-hosted, linux, aee]
-    timeout-minutes: 90
+    timeout-minutes: 150
     env:
       # The server path is a repository variable, not a committed file: both
       # tests/docker/server_root and tests/docker/server are gitignored. Set
@@ -99,6 +100,8 @@ jobs:
       - uses: arma-actions/hemtt@v1
       - name: Weekly soak and stress test
         run: tools/docker_test.sh --soak --soak-min ${{ github.event.inputs.soak-minutes || 20 }}
+      - name: Weekly stress test
+        run: tools/docker_test.sh --stress --soak-min 2
       - name: Upload soak log on failure
         if: failure()
         uses: actions/upload-artifact@v7

@@ -539,6 +539,22 @@ class TestWildlifeStateLineContract(unittest.TestCase):
         ):
             self.assertIn(token, self.text)
 
+    def test_the_force_night_hook_type_is_shared_with_the_tick(self):
+        # The logger and the tick accept the same hook type, so the line never
+        # reports a value the tick ignored, and no Bool reaches a numeric
+        # operator.
+        tick = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("_forceNight isEqualType false", tick)
+        self.assertIn("_forceNightHook isEqualType false", self.text)
+        self.assertNotIn("isEqualTypeAny [0, false]", self.text)
+        self.assertNotIn("round _forceNight", self.text)
+
+    def test_the_tick_interval_is_printed_in_the_tick_token(self):
+        # The interval local is consumed by the tick token, so it is not an
+        # unused read and the 24-token format is unchanged.
+        self.assertIn("_tickIntervalMs = round (_tickInterval * 1000)", self.text)
+        self.assertIn('format ["-/%1", _tickIntervalMs]', self.text)
+
 
 class TestMonitorWildlifeContract(unittest.TestCase):
     """The on-demand monitor stays read-only and dry-run."""
