@@ -417,5 +417,21 @@
             <Original>Vision White Balance</Original>
             <English>Vision White Balance</English>
         </Key>
+        <Key ID="STR_AEE_Optics_weatherGrainIntensity_Description">
+            <Original>Intensity scale of the rain-scaled film grain, range 0 to 1. At 0 the grain is not visible. The kernel values are re-derived from Real Lighting and Weather (Workshop 2809399991); no mod content is copied. The exact default 0.5 is UNSOURCED.</Original>
+            <English>Intensity scale of the rain-scaled film grain, range 0 to 1. At 0 the grain is not visible. The kernel values are re-derived from Real Lighting and Weather (Workshop 2809399991); no mod content is copied. The exact default 0.5 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_weatherGrainIntensity_Name">
+            <Original>Weather Grain Intensity</Original>
+            <English>Weather Grain Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_weatherGrainRainThreshold_Description">
+            <Original>Rain level at which the weather film grain engages, range 0 to 1. The grain disengages below half this level, the module hysteresis pattern. The exact default 0.2 is UNSOURCED.</Original>
+            <English>Rain level at which the weather film grain engages, range 0 to 1. The grain disengages below half this level, the module hysteresis pattern. The exact default 0.2 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_weatherGrainRainThreshold_Name">
+            <Original>Weather Grain Rain Threshold</Original>
+            <English>Weather Grain Rain Threshold</English>
+        </Key>
     </Package>
 </Project>

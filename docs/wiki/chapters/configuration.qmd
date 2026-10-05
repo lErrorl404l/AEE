@@ -456,6 +456,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_seeingFXIntensity` | SLIDER | `0.02` | yes | optics | Long-range shimmer strength from atmospheric seeing |
 | `aee_optics_snowBlindnessIntensity` | SLIDER | `1.0` | yes | optics | Scale on the snow blindness dazzle overlay |
 | `aee_optics_solarGlareIntensity` | SLIDER | `1.0` | yes | optics | Scale on god-ray brightness from solar glare |
+| `aee_optics_weatherGrainIntensity` | SLIDER | `0.5` | yes | optics | Intensity scale of the rain-scaled film grain, range 0 to 1. At 0 the grain is not visible. The kernel values are re-derived from Real Lighting and Weather (Workshop 2809399991); no mod content is copied. The exact default 0.5 is UNSOURCED. |
+| `aee_optics_weatherGrainRainThreshold` | SLIDER | `0.2` | yes | optics | Rain level at which the weather film grain engages, range 0 to 1. The grain disengages below half this level, the module hysteresis pattern. The exact default 0.2 is UNSOURCED. |
 
 ## AEE Optics → Particles
 

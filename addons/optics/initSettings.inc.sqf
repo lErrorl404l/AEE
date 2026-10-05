@@ -51,6 +51,14 @@ AEE_SETTING_SLIDER(rainDecayRate,"AEE Optics","Particles",0,0.1,0.02,0);
 
 AEE_SETTING_SLIDER(chromaCap,"AEE Optics","Intensity",0,0.2,0.06,0);
 
+// ── Weather film grain (aee-workshop-copy item 5) ─────────────────────────
+// The rain-scaled grain is re-derived from Real Lighting and Weather (Workshop
+// 2809399991); no mod content is copied.  Intensity 0 makes the grain
+// invisible.  The grain disengages below half the rain threshold, the module
+// hysteresis pattern, so a value at the boundary does not toggle every tick.
+AEE_SETTING_SLIDER(weatherGrainIntensity,"AEE Optics","Intensity",0,1,0.5,2);
+AEE_SETTING_SLIDER(weatherGrainRainThreshold,"AEE Optics","Intensity",0,1,0.2,2);
+
 // ── Vision-driven view distance (issue #138) ──────────────────────────────
 // Drives the engine's view distance from the physics visibility state
 // (fog, haze, rain, NELM, acuity).  Defaults ON; disable to keep the

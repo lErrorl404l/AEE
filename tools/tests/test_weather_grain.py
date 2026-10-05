@@ -176,7 +176,8 @@ class TestWeatherGrainWiring(unittest.TestCase):
         # The matcher grain scale is element 2 of the published profile.
         self.assertIn("QEGVAR(environmental,worldLighting)", live)
         self.assertIn("select 2", live)
-        self.assertIn("AEE_WEATHER_GRAIN_INTENSITY", live)
+        self.assertIn("QGVAR(weatherGrainIntensity)", live)
+        self.assertIn("QGVAR(weatherGrainRainThreshold)", live)
         # The colour invariant holds on the adjust call.
         self.assertRegex(
             live, r"ppEffectAdjust \[_intensity, _sharpness, _size, 1, 1, 1\]"
@@ -202,3 +203,49 @@ class TestWeatherGrainWiring(unittest.TestCase):
             ("FilmGrain", "addons/optics/functions/vision/fnc_applyWeatherGrain.sqf")
         ]
         self.assertEqual(sorted(hits), sorted(expected))
+
+
+INIT_SETTINGS = OPTICS / "initSettings.inc.sqf"
+STRINGTABLE = OPTICS / "stringtable.xml"
+CONFIG_DOCS = REPO / "docs" / "wiki" / "chapters" / "configuration.qmd"
+
+
+class TestWeatherGrainSettings(unittest.TestCase):
+    def test_settings_register_in_the_optics_intensity_group(self) -> None:
+        live = live_source(INIT_SETTINGS)
+        self.assertRegex(
+            live,
+            r'AEE_SETTING_SLIDER\(weatherGrainIntensity,"AEE Optics","Intensity",0,1,0\.5,2\)',
+        )
+        self.assertRegex(
+            live,
+            r'AEE_SETTING_SLIDER\(weatherGrainRainThreshold,"AEE Optics","Intensity",0,1,0\.2,2\)',
+        )
+
+    def test_driver_reads_the_settings_not_constants(self) -> None:
+        live = live_source(APPLY)
+        self.assertIn("QGVAR(weatherGrainIntensity)", live)
+        self.assertIn("QGVAR(weatherGrainRainThreshold)", live)
+        self.assertNotIn("AEE_WEATHER_GRAIN_", live)
+        # The off-threshold is half the on-threshold (the hysteresis pattern).
+        self.assertIn("_rainThreshold * 0.5", live)
+
+    def test_stringtable_carries_the_keys(self) -> None:
+        text = STRINGTABLE.read_text(encoding="utf-8")
+        for key in (
+            "STR_AEE_Optics_weatherGrainIntensity_Name",
+            "STR_AEE_Optics_weatherGrainIntensity_Description",
+            "STR_AEE_Optics_weatherGrainRainThreshold_Name",
+            "STR_AEE_Optics_weatherGrainRainThreshold_Description",
+        ):
+            with self.subTest(key=key):
+                self.assertIn(key, text)
+
+    def test_configuration_docs_are_regenerated(self) -> None:
+        doc = CONFIG_DOCS.read_text(encoding="utf-8")
+        for name in (
+            "aee_optics_weatherGrainIntensity",
+            "aee_optics_weatherGrainRainThreshold",
+        ):
+            with self.subTest(name=name):
+                self.assertIn(name, doc)
