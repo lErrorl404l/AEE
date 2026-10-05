@@ -121,6 +121,7 @@ def main():
         "tools/tests/test_localize_guard.py",
         "tools/tests/test_config_docs.py",
         "tools/tests/test_engine_hdr_config.py",
+        "tools/tests/test_world_lighting_matcher.py",
         "tools/tests/test_settings_taxonomy.py",
         "tools/tests/test_ltm.py",
         "tools/tests/test_hud.py",

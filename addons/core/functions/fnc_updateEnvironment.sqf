@@ -86,6 +86,14 @@ if (!_realWeather) then {
     };
 };
 
+// World lighting matcher.  Classify the world from latitude, biome, terrain
+// signals and weather and publish the run-time lighting profile.  The config
+// anchor is read at world load, so this is where AEE adapts at run time.  Cheap
+// and safe headless.  Runs in both weather modes.
+BEGIN_COUNTER(worldLighting);
+[] call EFUNC(environmental,applyWorldLighting);
+END_COUNTER(worldLighting);
+
 // Wind runs in BOTH modes.  updateWind reads the engine wind command and
 // publishes the computed vector and gusts to the shared state and the
 // engine (setWind).  Real-weather mode replaces temperature/pressure/

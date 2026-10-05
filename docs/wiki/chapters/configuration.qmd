@@ -243,6 +243,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_environmental_FlashFloodThreshold` | SLIDER | `50` | yes | environmental | Rain rate (mm/h) that counts as flash-flood producing |
 | `aee_environmental_InversionBoost` | SLIDER | `0.6` | yes | environmental | Sound-range boost on clear calm nights |
 | `aee_environmental_SandstormWindThreshold` | SLIDER | `10` | yes | environmental | Wind speed (m/s) that triggers sandstorms |
+| `aee_environmental_weatherOwnership` | CHECKBOX | `false` | yes | environmental | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
 
 ## AEE Experimental → Fusion
 
