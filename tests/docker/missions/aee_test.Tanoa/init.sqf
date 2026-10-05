@@ -56,6 +56,8 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
     // (issue #184), so read the classification cache instead.
     private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", "<none>"];
     diag_log text format ["[BIOME] %1=%2", worldName, _mapBiome];
+    // World lighting matcher: classify the loaded world, no per-map entry.
+    execVM "aee_p84b_world_lighting_probe.sqf";
 
     if ((!isNil "_t") && (!isNil "_p") && (!isNil "_rh") && (!isNil "_rho") && (!isNil "_biome")) then {
         private _okT = (_t > -60) && (_t < 60);
