@@ -3,51 +3,98 @@
 This note records what AEE can and cannot change in the engine image pipeline.
 It states the ceiling so no later claim overstates it.
 
-## HDRNewPars
+## The anchor lives in the world class chain
 
-`CfgWorlds >> HDRNewPars` is the engine HDR pipeline. The engine reads the
-block at world load. It sets bloom, the tonemap curve, the eye-adaptation
-gains and the night-shift aperture. A script cannot change the block at run
-time. No `ppEffect` reaches the same stage. AEE ships the block in
-`addons/environmental/config.cpp`, so the values apply from the first frame.
+`CfgWorlds` holds the engine image settings. A direct child class, for example
+`class CfgWorlds { class HDRNewPars {...}; }`, is an unreferenced sibling and
+is inert. The engine reads `HDRNewPars`, `DOFPars`, `Lighting` and the
+`DayLighting` keyframes through the world class chain:
 
-## Load order
+`CfgWorlds >> DefaultWorld >> CAWorld >> <World>:CAWorld`
 
-Every mod that ships `CfgWorlds >> HDRNewPars` competes for the same block.
-The last addon to load wins on a conflicting key. AEE cannot control the load
-order of another mod. AEE also cannot detect a later override at run time,
-because the engine does not publish the winning values. The probe P84 reads
-the loaded values in the test rig only.
+AEE re-homes the anchor into `CAWorld` and into every stock world that
+redeclares the class: `Stratis`, `Altis`, `Malden`, `Tanoa` and `Enoch`. Each
+block uses the explicit base form `class X: X`, so the engine merges the
+values instead of replacing the class. Every block carries the same values.
+This is the engine's structural requirement, not per-map tuning, so no value
+is keyed by a map name. The `requiredAddons` list names the map addons so AEE
+loads on top of them.
+
+## HDRNewPars and DOFPars
+
+`HDRNewPars` is the engine HDR pipeline: bloom, the tonemap curve, the eye
+adaptation gains and the night shift aperture. `DOFPars` places the NVG focal
+plane. The engine reads both at world load. A script cannot change either at
+run time. No `ppEffect` reaches the same stage.
 
 ## starEmissivity
 
-`starEmissivity` scales the engine star draw. The engine reads the value from
-the world's own `Lighting` class. The base config only forward-declares
-`DefaultLighting`, so AEE overrides each official world's `Lighting`. The
-value is 40, mid-band between Fluffys (30) and Real Lighting and Weather
-(60). A higher value raises the star brightness. A custom world keeps its own
-value. The engine still draws its own star field. AEE does not ship a star
-texture.
+`starEmissivity` scales the engine star draw. The engine core declares
+`DefaultLighting` with `access = 3` and `starEmissivity = 0.3`. A re-open
+merges and propagates, but a world that sets its own `starEmissivity` shadows
+it. `CAWorld` and each stock world's `Lighting` therefore carry the same 40. A
+custom world that sets its own keeps it. 40 sits mid-band between Fluffys (30)
+and Real Lighting and Weather (60).
 
 ## DayLighting
 
-`CfgWorlds >> DayLightingBrightAlmost` and `DayLightingRainy` carry the
-night-darkness endpoints. The engine interpolates the world lighting between
-those endpoints as the sun and moon move. AEE overrides only `deepNight` and
-`fullNight`. The other keyframes keep the base game value.
+`DayLightingBrightAlmost` and `DayLightingRainy` carry the night-darkness
+endpoints. The engine interpolates the world lighting between those endpoints
+as the sun and moon move. AEE overrides only `deepNight` and `fullNight`. The
+other keyframes keep the base game value.
 
-## Interaction risk
+## The probe reads the resolved world
 
-The eye-adaptation gains (`eyeAdaptFactorLight`, `eyeAdaptFactorDark`) and the
-night-shift aperture meet AEE's own eye model and NVG gain. A dark `fullNight`
-endpoint lowers the scene luminance. The AEE eye model then raises its
-adaptation. The NVG gain raises the tube brightness next. The two effects can
-compound. The P84 probe proves the config values, not the composed image. The
-composed image needs an operator look in the game.
+The P84 probe reads `CfgWorlds >> worldName >> HDRNewPars`, not a direct
+`CfgWorlds` child. It proves AEE's values reached the engine's class chain, not
+an inert sibling. The probe runs headless and renders nothing.
+
+## No runtime command
+
+No script command changes `HDRNewPars`, `DOFPars`, `starEmissivity`,
+`Lighting`, the `DayLighting` keyframes or the `Weather` block. These values
+are fixed at world load.
+
+## Per-lever ownership
+
+The free run-time weather levers and their owner:
+
+| Lever | Owner |
+|---|---|
+| `setGusts` | AEE, when `AEE Environmental > Weather > weatherOwnership` is on (default off) |
+| `setHumidity` | AEE, same setting |
+| `setShadowDistance` | AEE optics, the scene-aware shadow distance item |
+| `overcast` | read only. `compat_realweather` owns the server write |
+| `rain` | read only |
+| `fog` | read only |
+| `wind` | read only |
+
+AEE keeps reading `overcast`, `rain`, `fog` and `wind`. It writes gusts and
+humidity only when the operator turns ownership on. This avoids a feedback
+loop and keeps `compat_realweather` authoritative. The write is server side
+and default off.
+
+## The matcher
+
+The config is load time and world independent. AEE adapts at run time through
+`fnc_applyWorldLighting`. It runs once per environment tick. It reads latitude
+(`core getWorldLocation`), biome (`aee_core_biome`), terrain signals
+(`aee_environmental_terrainSignals`) and engine overcast. It classifies the
+world with `fnc_worldLightingClass` and derives four bounded scales with
+`fnc_worldLightingProfile`: the night factor, the star render scale, the grain
+scale and the haze scale. It publishes the profile as
+`aee_environmental_worldLighting` and the class as
+`aee_environmental_worldLightingClass`.
+
+The class comes from the Koppen group of the biome, the water fraction and the
+mean elevation, never from a map name. A custom or unknown world falls back to
+the temperate class. The class table is keyed by climate class, not by map.
+The biome mapping is SOURCED (Koppen, Peel et al. 2007). The profile numbers
+are UNSOURCED aesthetic proxies.
 
 ## Honest ceiling
 
-AEE proves the config values headless. AEE cannot prove the rendered frame
-headless. A script cannot set a video option or read the operator's choice.
-The HDR bloom, the night darkness, the grain and the shadow behaviour each
-need an in-game look. This note claims no more.
+AEE proves the resolved config values headless. AEE cannot prove the rendered
+frame headless. A script cannot set a video option or read the operator's
+choice. The HDR bloom, the night darkness, the grain and the shadow behaviour
+each need an in-game look. This note claims no more.

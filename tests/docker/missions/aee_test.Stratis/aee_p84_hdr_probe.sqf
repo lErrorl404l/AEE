@@ -1,13 +1,16 @@
-// PHASE 84: the engine HDR and night-darkness ceiling.
+// PHASE 84: the engine HDR and night-darkness anchor, resolved per world.
 //
-// The engine reads CfgWorlds >> HDRNewPars, the world Lighting class and the
-// CfgWorlds >> DayLighting* night-darkness endpoints at world load.  A script
-// cannot change them at run time.  This probe reads the loaded config and
-// asserts the exact values AEE ships.  It renders nothing.
+// A direct CfgWorlds child is an unreferenced sibling and inert.  The engine
+// reads HDRNewPars, DOFPars, Lighting and the DayLighting keyframes through the
+// world class chain (CfgWorlds >> DefaultWorld >> CAWorld >> <World>:CAWorld).
+// This probe reads the RESOLVED world config via worldName, so it proves AEE's
+// values reached the engine's class chain, not an inert sibling.  It renders
+// nothing.
 
-private _hdr = configFile >> "CfgWorlds" >> "HDRNewPars";
-private _worldLight = configFile >> "CfgWorlds" >> worldName >> "Lighting";
-private _bright = configFile >> "CfgWorlds" >> "DayLightingBrightAlmost";
+private _world = configFile >> "CfgWorlds" >> worldName;
+private _hdr = _world >> "HDRNewPars";
+private _lighting = _world >> "Lighting";
+private _bright = _world >> "DayLightingBrightAlmost";
 private _pass = 0;
 private _fail = 0;
 private _notes = [];
@@ -36,12 +39,12 @@ if (_nightShift == 600) then {
     _notes pushBack format ["nightShiftLuminanceScale %1", _nightShift];
 };
 
-private _starEmissivity = getNumber (_worldLight >> "starEmissivity");
+private _starEmissivity = getNumber (_lighting >> "starEmissivity");
 if (_starEmissivity == 40) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
-    _notes pushBack format ["world %1 starEmissivity %2", worldName, _starEmissivity];
+    _notes pushBack format ["%1 Lighting starEmissivity %2", worldName, _starEmissivity];
 };
 
 private _fullNight = getArray (_bright >> "fullNight");
@@ -65,7 +68,7 @@ if (_deepFirst == -15) then {
 };
 
 if (_fail == 0) then {
-    diag_log text format ["[P84] [PASS] engine hdr and night ceiling: %1 checks", _pass];
+    diag_log text format ["[P84] [PASS] %1 engine hdr and night ceiling: %2 checks", worldName, _pass];
 } else {
-    diag_log text format ["[P84] [FAIL] engine hdr and night ceiling: %1 passed, %2 failed: %3", _pass, _fail, str _notes];
+    diag_log text format ["[P84] [FAIL] %1 engine hdr and night ceiling: %2 passed, %3 failed: %4", worldName, _pass, _fail, str _notes];
 };
