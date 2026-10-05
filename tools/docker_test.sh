@@ -339,6 +339,105 @@ if [ ! -d "$MODS/@cba_a3" ]; then
     [ -d "$MODS/@CBA_A3" ] && mv "$MODS/@CBA_A3" "$MODS/@cba_a3"
 fi
 
+# ── Soak and stress modes ───────────────────────────────────────────────────
+# A long run of the soak mission drives the pure AI and wildlife kernels and
+# samples them.  --stress adds the saturation burst and the bounded agent
+# churn.  Both modes need the built PBO and CBA, so they sit after the build.
+SOAK_MODE=""
+for _arg in "$@"; do
+    case "$_arg" in
+    --soak) SOAK_MODE=soak ;;
+    --stress) SOAK_MODE=stress ;;
+    esac
+done
+if [ -n "$SOAK_MODE" ]; then
+    SOAK_MIN=20
+    SOAK_PREV=""
+    for _arg in "$@"; do
+        if [ "$SOAK_PREV" = "--soak-min" ]; then
+            SOAK_MIN="$_arg"
+        fi
+        SOAK_PREV="$_arg"
+    done
+    SOAK_STRESS=false
+    if [ "$SOAK_MODE" = "stress" ]; then
+        SOAK_STRESS=true
+    fi
+    SOAK_MISSION="$DOCKER/missions/aee_soak.Stratis"
+    SOAK_OVERLAY="$DOCKER/docker-compose.soak.yml"
+    SOAK_CFG_BAK="$DOCKER/configs/server.cfg.soakbak"
+    COMPOSE_FILES=(-f "$DOCKER/docker-compose.yml" -f "$SOAK_OVERLAY")
+
+    echo "==> soak mode=$SOAK_MODE minutes=$SOAK_MIN stress=$SOAK_STRESS"
+
+    # Keep the committed server.cfg so the default run is unchanged after this
+    # mode.  The soak mission is the only entry in the Missions class, because
+    # the wrapper launches with -autoInit and no -mission and so picks the
+    # first entry, exactly as the map rotation mode relies on.
+    cp "$DOCKER/configs/server.cfg" "$SOAK_CFG_BAK"
+
+    {
+        echo "services:"
+        echo "  aee-test:"
+        echo "    environment:"
+        echo "      - ARMA3_SERVER__WORLD=Stratis"
+        echo "      - ARMA3_SERVER__MISSION=aee_soak.Stratis"
+        echo "      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3"
+    } >"$SOAK_OVERLAY"
+
+    cat >"$DOCKER/configs/server.cfg" <<CFGEOF
+hostname = "AEE Test";
+password = "";
+passwordAdmin = "";
+maxPlayers = 8;
+persistent = 1;
+loopback = 1;
+kickDuplicate = 0;
+BattlEye = 0;
+verifySignatures = 0;
+class Missions {
+    class AEESoak { template = "aee_soak.Stratis"; difficulty = "custom"; };
+};
+CFGEOF
+
+    cat >"$SOAK_MISSION/soak_config.sqf" <<CFGEOF
+AEE_SOAK_MINUTES = $SOAK_MIN;
+AEE_SOAK_STRESS = $SOAK_STRESS;
+CFGEOF
+
+    clean_profiles
+    docker compose "${COMPOSE_FILES[@]}" up -d --force-recreate
+
+    SOAK_WAIT=$((SOAK_MIN * 60 + 180))
+    echo "==> waiting for the soak (up to ${SOAK_WAIT} s)"
+    for _ in $(seq 1 $((SOAK_MIN * 12 + 36))); do
+        if docker compose "${COMPOSE_FILES[@]}" logs 2>/dev/null | grep -q "\[AEE-SOAK\] DONE"; then
+            break
+        fi
+        sleep 5
+    done
+
+    echo "==> capturing soak log"
+    docker compose "${COMPOSE_FILES[@]}" logs >"$DOCKER/run.soak.log" 2>&1
+
+    echo "==> verifying soak"
+    if ! python3 "$DOCKER/verify_soak.py" "$DOCKER/run.soak.log"; then
+        echo "soak harness failed; full log at tests/docker/run.soak.log"
+        docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true
+        cp "$SOAK_CFG_BAK" "$DOCKER/configs/server.cfg" 2>/dev/null || true
+        rm -f "$SOAK_CFG_BAK" "$SOAK_OVERLAY" "$SOAK_MISSION/soak_config.sqf"
+        clean_profiles
+        exit 1
+    fi
+
+    docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true
+    cp "$SOAK_CFG_BAK" "$DOCKER/configs/server.cfg" 2>/dev/null || true
+    rm -f "$SOAK_CFG_BAK" "$SOAK_OVERLAY" "$SOAK_MISSION/soak_config.sqf"
+    clean_profiles
+    echo "==> soak done"
+    exit 0
+fi
+
 BASELINE=0
 COMPOSE_FILES=(-f "$DOCKER/docker-compose.yml")
 if [ "${1:-}" = "--baseline" ]; then
