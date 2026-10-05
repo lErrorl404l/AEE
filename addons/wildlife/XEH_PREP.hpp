@@ -14,6 +14,7 @@ PREP(playAmbientBed);
 PREP(spookWave);
 PREP(logWildlifeState);
 PREP(wildlifeTick);
+PREP(wildlifeTickPFH);
 PREP(initWildlife);
 PREP(teardownWildlife);
 PREP(monitorWildlife);

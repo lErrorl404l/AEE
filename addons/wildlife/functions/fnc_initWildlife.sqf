@@ -26,7 +26,7 @@ missionNamespace setVariable [QGVAR(manifest), _manifest];
 private _speciesTable = call (compile preprocessFileLineNumbers QPATHTOF(data\species_table.sqf));
 missionNamespace setVariable [QGVAR(speciesTable), _speciesTable];
 
-GVAR(ambientPFH) = [FUNC(wildlifeTick), _interval] call CBA_fnc_addPerFrameHandler;
+GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHandler;
 
 // The gunfire report rides the core player engine handler: a raw BIS "Fired"
 // event on the local unit, re-attached across respawn.  The key is the

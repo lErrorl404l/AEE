@@ -14,6 +14,6 @@ Returns:
 if (!hasInterface) exitWith {};
 if (!isNil QGVAR(aiPFH)) exitWith {};
 
-GVAR(aiPFH) = [FUNC(aiTick), AI_TICK] call CBA_fnc_addPerFrameHandler;
+GVAR(aiPFH) = [FUNC(aiTickPFH), AI_TICK] call CBA_fnc_addPerFrameHandler;
 
 AEE_LOG_INFO("ai substrate PFH started")
