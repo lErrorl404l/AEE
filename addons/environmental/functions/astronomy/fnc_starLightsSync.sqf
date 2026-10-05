@@ -63,12 +63,16 @@ private _flareSizeBase = 0.8;
 // The light-emitter path renders only the bright stars: the engine caps
 // concurrent dynamic lights, so the faint bulk is left to a Draw3D
 // primitive (not yet shipped).  STAR_LIGHT_MAX_MAG is that ceiling.
+// The star brightness model publishes a 0..1 render scale; it multiplies
+// each star's alpha in fnc_starMagnitude.
+private _brightnessScale = missionNamespace getVariable [QGVAR(starBrightnessCoefficient), 1];
+if !(_brightnessScale isEqualType 0) then { _brightnessScale = 1; };
 private _desired = [];
 {
     _x params ["_name", "_altDeg", "_azDeg", "_vmag"];
     if (_vmag > STAR_LIGHT_MAX_MAG) then { continue; };
     private _dir = [_altDeg, _azDeg] call FUNC(starDirection);
-    private _mag = [_vmag] call FUNC(starMagnitude);
+    private _mag = [_vmag, _brightnessScale] call FUNC(starMagnitude);
     _desired pushBack [_name, _dir, _mag select 0, _mag select 1];
 } forEach _stars;
 

@@ -26,7 +26,8 @@ Returns: limiting magnitude (higher = fainter stars visible).
 
 params [
     ["_ambientLux", 0.001, [0]],
-    ["_seeing", 0.5, [0]]
+    ["_seeing", 0.5, [0]],
+    ["_houseCount", 0, [0]]
 ];
 
 // ─── Base NELM from sky brightness ─────────────────────────────────────────
@@ -43,8 +44,14 @@ private _mBase = 6.5 - log (_ambientLux / 0.001 max 1e-6);
 private _clampedSeeing = _seeing max 0.1 min 1.0;
 private _seeingPenalty = 0.2 + 1.3 * ((_clampedSeeing - 0.1) / 0.9);
 
+// ─── Light-pollution penalty ──────────────────────────────────────────────
+// Nearby settlement raises the sky background and hides faint stars.  The
+// magnitude penalty is a bounded function of the nearby house count; the
+// caller caches the count on a 5 s key so the kernel stays pure.
+private _pollution = [_houseCount] call FUNC(lightPollutionPenalty);
+
 // ─── Total limiting magnitude ──────────────────────────────────────────────
-private _mLim = _mBase - _seeingPenalty;
+private _mLim = _mBase - _pollution - _seeingPenalty;
 _mLim = _mLim max 2.0 min 7.0;
 
 missionNamespace setVariable [QGVAR(limitingMagnitude), _mLim];
