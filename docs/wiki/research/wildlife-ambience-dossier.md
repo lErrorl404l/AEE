@@ -109,7 +109,10 @@ list and the agent control facts.
 | Despawn radius | 600 m | Modelling | [UNSOURCED] |
 | Hunger rate | 0.02 per second | Modelling | [UNSOURCED] |
 | Thirst rate | 0.03 per second | Modelling | [UNSOURCED] |
-| Herd size, sheep and goat | 3 to 6 | Modelling | [UNSOURCED] |
+| Herd size, max same-species animals per anchor | Default 4, range 1 to 12 | Modelling, the `aee_wildlife_herdSize` slider | [UNSOURCED] |
+| Needs threshold, drink | 0.6 | Modelling, the `fnc_needsTick` thirst goal | [UNSOURCED] |
+| Needs threshold, forage | 0.4 | Modelling, the `fnc_needsTick` hunger goal | [UNSOURCED] |
+| Resource search range | 200 m | Modelling, the `fnc_resourceScore` distance normaliser | [UNSOURCED] |
 | Grazing arrival distance | 40 m | Modelling | [UNSOURCED] |
 | Water arrival distance | 25 m | Modelling | [UNSOURCED] |
 | Biome species table | Per-biome class lists | BIKI CfgVehicles Animals | [P-W] |
@@ -145,7 +148,14 @@ The sound runtime constants are modelling choices, UNSOURCED.
 | Constant | Value | Source | State |
 | --- | --- | --- | --- |
 | Sound-instance cap per client | 8 | Modelling | [UNSOURCED] |
+| Silence decay | 0.05 per disturbance unit | Modelling, the `aee_wildlife_silenceDecay` slider | [UNSOURCED] |
+| Wildlife simulation tick budget | 2 ms per call | Modelling, the core gate is 5 ms | [UNSOURCED] |
 | One-shot sound max distance | 120 m | `playSound3D` distance argument | [P] |
+| Rain bed gain factor | Up to 1.5 times at rain 1 | Modelling, the engine `rain` input | [UNSOURCED] |
+| Wet-ground bed damping | Up to 0.3 of the gain | Modelling, damp ground muffles the bed | [UNSOURCED] |
+| Soil moisture input | Default 0.2 | `aee_core_soilMoisture` from `fnc_updateSoilMoisture` | [PROJECT] |
+| Surface wetness input | Default 0 | `aee_core_surfaceWetness` from `fnc_calculateSurfaceWetness` | [PROJECT] |
+| Nearby-unit sense radius | 60 m, at most 8 units | Modelling, a bounded `nearEntities` scan | [UNSOURCED] |
 | Spook flight-initiation distance, small bird | 8 to 25 m | Flight-initiation distance scales with body mass and starting distance, Blumstein 2003 and Ydenberg and Dill 1986 | [P-concept], numeric default [UNSOURCED] |
 | Gunfire spook radius | 150 to 250 m | The human gunshot peak is about 140 dB at the muzzle, NIOSH and OSHA hearing-loss literature. No animal distance source | [UNSOURCED] |
 | Quiet approach speed threshold | 1.5 m/s | Modelling, from the engine `speed` value | [UNSOURCED] |

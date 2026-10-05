@@ -46,7 +46,29 @@ for "_i" from 0 to ((count _fauna) - 1) do {
     };
 
     if (_drop) then {
-        if (!isNull _agent) then { deleteVehicle _agent; };
+        if (!isNull _agent) then {
+            // Release the herd slot first, so a later spawn can reuse it and
+            // the herd size cap stays accurate.
+            private _herdAnchor = _agent getVariable [QGVAR(herdAnchor), []];
+            if (_herdAnchor isEqualType []) then {
+                private _class = _entry select 2;
+                private _herds = missionNamespace getVariable [GVAR(herds), []];
+                if (_herds isEqualType []) then {
+                    for "_h" from 0 to ((count _herds) - 1) do {
+                        private _row = _herds select _h;
+                        if ((count _row) >= 3) then {
+                            if (((_row select 0) == _class) && ((_row select 1) isEqualTo _herdAnchor)) then {
+                                private _members = _row select 2;
+                                if (_members isEqualType 0) then {
+                                    _row set [2, ((_members - 1) max 0)];
+                                };
+                            };
+                        };
+                    };
+                };
+            };
+            deleteVehicle _agent;
+        };
         [_id] call EFUNC(ai,agentUnregister);
     } else {
         _kept pushBack _entry;
