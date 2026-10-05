@@ -10,7 +10,7 @@ The machine-readable table is
 `[contextKey, vanillaPathOrCfgSFXClass, maxDistance, baseGain]`. A row with a
 dot in the second value is a raw vanilla `.wss` file loaded with `playSound3D`
 and the `local` argument true. A row without a dot is a vanilla `CfgSFX` class
-loaded with `createSoundSource` as a looping positional bed.
+loaded client-local with `createSoundSourceLocal` as a looping positional bed.
 
 Sourcing key: **[P]** primary document read. **[P-W]** primary via Wayback.
 **[PROJECT]** already in this repository with its own citation.
@@ -20,7 +20,7 @@ Sourcing key: **[P]** primary document read. **[P-W]** primary via Wayback.
 
 | contextKey | Source | Type | maxDistance m | baseGain | Source state |
 | --- | --- | --- | --- | --- | --- |
-| water | Sound_Stream | CfgSFX | 120 | 0.60 | [P] BIKI createSoundSource |
+| water | Sound_Stream | CfgSFX | 120 | 0.60 | [P] BIKI createSoundSourceLocal |
 | night | Owl | CfgSFX | 120 | 0.45 | [P] BIKI CfgSFX |
 | night | owl1.wss, owl2.wss, owl3.wss | raw | 120 | 0.70 | [P] BIKI Sound Files |
 | day_temperate | birds1.wss to birds5.wss | raw | 120 | 0.70 | [P] BIKI Sound Files |
@@ -131,7 +131,7 @@ This is the operator-only parity check.
 
 - BIKI Arma 3 Sound Files, the confirmed `.wss` set.
 - BIKI `playSound3D`, the positional one-shot and its `local` argument.
-- BIKI `createSoundSource`, the local looping positional source.
+- BIKI `createSoundSourceLocal`, the client-local looping positional source.
 - BIKI `CfgSFX`, the `Owl` and `Sound_Stream` classes.
 - BIKI `enableEnvironment`, `[ambientLife, ambientSound, windSound]`.
 - BIKI Arma 3 CfgVehicles Animals (Wayback, January 2025), the animal class
