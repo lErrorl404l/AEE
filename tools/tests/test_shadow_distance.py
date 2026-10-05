@@ -36,7 +36,11 @@ TARGET = VISION / "fnc_shadowTargetDistance.sqf"
 SMOOTH = VISION / "fnc_shadowSmoothDistance.sqf"
 GOVERNOR = VISION / "fnc_shadowFpsGovernor.sqf"
 STABILIZE = VISION / "fnc_shadowStabilizeDepth.sqf"
+DRIVER = VISION / "fnc_calculateViewDistance.sqf"
 PREP = OPTICS / "XEH_PREP.hpp"
+INIT_SETTINGS = OPTICS / "initSettings.inc.sqf"
+STRINGTABLE = OPTICS / "stringtable.xml"
+CONFIG_DOCS = REPO / "docs" / "wiki" / "chapters" / "configuration.qmd"
 
 
 # ─── Python mirror of the classification spec ────────────────────────────────
@@ -592,6 +596,115 @@ class TestShadowKernelPurityAndMarking(unittest.TestCase):
             self.assertIn("no licence", text)
             self.assertIn("No mod content is copied", text)
             self.assertIn("UNSOURCED", text)
+
+
+class TestShadowDriverContract(unittest.TestCase):
+    def test_driver_publishes_the_shadow_state_above_the_interface_exit(self) -> None:
+        live = live_source(DRIVER)
+        exit_idx = live.index("if (!hasInterface) exitWith")
+        for name in ("shadowTarget", "shadowScene", "shadowCoverage"):
+            marker = f"missionNamespace setVariable [QGVAR({name})"
+            with self.subTest(name=name):
+                self.assertIn(marker, live)
+                self.assertLess(
+                    live.index(marker),
+                    exit_idx,
+                    f"{name} is published below the interface exit",
+                )
+
+    def test_driver_never_calls_set_view_distance_from_the_shadow_path(self) -> None:
+        live = live_source(DRIVER)
+        exit_idx = live.index("if (!hasInterface) exitWith")
+        # Every setViewDistance call is the terrain ramp, below the exit.  The
+        # shadow path (above the exit) owns only setObjectViewDistance.
+        self.assertGreater(live.index("setViewDistance"), exit_idx)
+
+    def test_driver_calls_the_shadow_kernels(self) -> None:
+        live = live_source(DRIVER)
+        for entry in (
+            "FUNC(shadowSamplePattern)",
+            "FUNC(shadowClassifyScene)",
+            "FUNC(shadowStabilizeDepth)",
+            "FUNC(shadowTargetDistance)",
+            "FUNC(shadowSmoothDistance)",
+            "FUNC(shadowFpsGovernor)",
+        ):
+            with self.subTest(entry=entry):
+                self.assertIn(entry, live)
+
+    def test_driver_clamps_the_shadow_target_to_the_object_target(self) -> None:
+        live = live_source(DRIVER)
+        self.assertIn("_targetDistance = _targetDistance min _objTarget", live)
+        self.assertIn(
+            "_shadowTarget = ((_candidate min _ceilingNew) max 0) min _objTarget", live
+        )
+
+    def test_driver_reads_the_settings_not_constants(self) -> None:
+        live = live_source(DRIVER)
+        for name in (
+            "shadowAdaptiveEnabled",
+            "shadowMinDistance",
+            "shadowMaxDistance",
+            "shadowSampleCount",
+            "shadowUpdateInterval",
+            "shadowOpeningSensitivity",
+            "shadowFarSceneInfluence",
+            "shadowMovementProtection",
+            "shadowCameraTurnProtection",
+            "shadowOpticsProtection",
+            "shadowTargetFPS",
+        ):
+            with self.subTest(name=name):
+                self.assertIn(f"QGVAR({name})", live)
+
+    def test_driver_holds_the_last_value_when_the_map_is_open(self) -> None:
+        live = live_source(DRIVER)
+        self.assertIn("visibleMap", live)
+
+
+SHADOW_SETTINGS = (
+    ("shadowAdaptiveEnabled", "CHECKBOX", "true"),
+    ("shadowMinDistance", "SLIDER", "0,500,50,0"),
+    ("shadowMaxDistance", "SLIDER", "25,2000,500,0"),
+    ("shadowSampleCount", "SLIDER", "5,25,13,0"),
+    ("shadowUpdateInterval", "SLIDER", "0.10,2,0.10,2"),
+    ("shadowOpeningSensitivity", "SLIDER", "3,50,12,0"),
+    ("shadowFarSceneInfluence", "SLIDER", "0,100,75,0"),
+    ("shadowMovementProtection", "SLIDER", "0,10,0.6,2"),
+    ("shadowCameraTurnProtection", "SLIDER", "0,500,0,0"),
+    ("shadowOpticsProtection", "SLIDER", "0,500,0,0"),
+    ("shadowTargetFPS", "SLIDER", "0,240,0,0"),
+)
+
+
+class TestShadowSettings(unittest.TestCase):
+    def test_settings_register_in_the_shadows_group(self) -> None:
+        live = live_source(INIT_SETTINGS)
+        for name, kind, args in SHADOW_SETTINGS:
+            entry = f'AEE_SETTING_{kind}({name},"AEE Optics","Shadows",{args})'
+            with self.subTest(name=name):
+                self.assertIn(entry, live)
+
+    def test_stringtable_carries_the_keys(self) -> None:
+        text = STRINGTABLE.read_text(encoding="utf-8")
+        for name, _kind, _args in SHADOW_SETTINGS:
+            for suffix in ("Name", "Description"):
+                key = f"STR_AEE_Optics_{name}_{suffix}"
+                with self.subTest(key=key):
+                    self.assertIn(key, text)
+
+    def test_configuration_docs_are_regenerated(self) -> None:
+        doc = CONFIG_DOCS.read_text(encoding="utf-8")
+        for name, _kind, _args in SHADOW_SETTINGS:
+            with self.subTest(name=name):
+                self.assertIn(f"aee_optics_{name}", doc)
+
+    def test_no_new_top_level_category(self) -> None:
+        live = live_source(INIT_SETTINGS)
+        for name, kind, args in SHADOW_SETTINGS:
+            entry = f'AEE_SETTING_{kind}({name},"AEE Optics","Shadows",{args})'
+            with self.subTest(name=name):
+                self.assertIn(entry, live)
 
 
 if __name__ == "__main__":

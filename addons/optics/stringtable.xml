@@ -297,6 +297,94 @@
             <Original>Seeing Effect Intensity</Original>
             <English>Seeing Effect Intensity</English>
         </Key>
+        <Key ID="STR_AEE_Optics_shadowAdaptiveEnabled_Description">
+            <Original>Enable the scene-aware shadow distance. The distance follows the sampled scene. The classifier values are re-derived from Adaptive Shadows (Workshop 3792830104); no mod content is copied. The classifier is heuristic and its thresholds are UNSOURCED.</Original>
+            <English>Enable the scene-aware shadow distance. The distance follows the sampled scene. The classifier values are re-derived from Adaptive Shadows (Workshop 3792830104); no mod content is copied. The classifier is heuristic and its thresholds are UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowAdaptiveEnabled_Name">
+            <Original>Adaptive Shadow Distance</Original>
+            <English>Adaptive Shadow Distance</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowCameraTurnProtection_Description">
+            <Original>Camera-turn protection in metres, range 0 to 500. The target grows during a fast turn. The default 0 is UNSOURCED.</Original>
+            <English>Camera-turn protection in metres, range 0 to 500. The target grows during a fast turn. The default 0 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowCameraTurnProtection_Name">
+            <Original>Shadow Camera Turn Protection</Original>
+            <English>Shadow Camera Turn Protection</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowFarSceneInfluence_Description">
+            <Original>Far scene influence percentage, range 0 to 100. A higher value lets distant geometry raise the shadow distance. The default 75 is UNSOURCED.</Original>
+            <English>Far scene influence percentage, range 0 to 100. A higher value lets distant geometry raise the shadow distance. The default 75 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowFarSceneInfluence_Name">
+            <Original>Shadow Far Scene Influence</Original>
+            <English>Shadow Far Scene Influence</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowMaxDistance_Description">
+            <Original>Maximum shadow distance in metres, range 25 to 2000. The target is clamped to the object view distance and the engine maximum. The default 500 matches the previous fixed value and is UNSOURCED.</Original>
+            <English>Maximum shadow distance in metres, range 25 to 2000. The target is clamped to the object view distance and the engine maximum. The default 500 matches the previous fixed value and is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowMaxDistance_Name">
+            <Original>Shadow Maximum Distance</Original>
+            <English>Shadow Maximum Distance</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowMinDistance_Description">
+            <Original>Minimum shadow distance in metres, range 0 to 500. The target never goes below this value. The default 50 is UNSOURCED.</Original>
+            <English>Minimum shadow distance in metres, range 0 to 500. The target never goes below this value. The default 50 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowMinDistance_Name">
+            <Original>Shadow Minimum Distance</Original>
+            <English>Shadow Minimum Distance</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowMovementProtection_Description">
+            <Original>Movement protection in metres per metre per second, range 0 to 10. The target grows with speed. The default 0.6 is UNSOURCED.</Original>
+            <English>Movement protection in metres per metre per second, range 0 to 10. The target grows with speed. The default 0.6 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowMovementProtection_Name">
+            <Original>Shadow Movement Protection</Original>
+            <English>Shadow Movement Protection</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowOpeningSensitivity_Description">
+            <Original>Opening sensitivity percentage, range 3 to 50. A higher value classifies more scenes as openings. The default 12 is UNSOURCED.</Original>
+            <English>Opening sensitivity percentage, range 3 to 50. A higher value classifies more scenes as openings. The default 12 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowOpeningSensitivity_Name">
+            <Original>Shadow Opening Sensitivity</Original>
+            <English>Shadow Opening Sensitivity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowOpticsProtection_Description">
+            <Original>Optics protection in metres, range 0 to 500. The target grows in optics. The default 0 is UNSOURCED.</Original>
+            <English>Optics protection in metres, range 0 to 500. The target grows in optics. The default 0 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowOpticsProtection_Name">
+            <Original>Shadow Optics Protection</Original>
+            <English>Shadow Optics Protection</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowSampleCount_Description">
+            <Original>Number of screen samples used to classify the scene, range 5 to 25. The default 13 is UNSOURCED.</Original>
+            <English>Number of screen samples used to classify the scene, range 5 to 25. The default 13 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowSampleCount_Name">
+            <Original>Shadow Sample Count</Original>
+            <English>Shadow Sample Count</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowTargetFPS_Description">
+            <Original>Target frame rate for the shadow governor, range 0 to 240. At 0 the governor is off and the ceiling is the effective maximum. The default 0 is UNSOURCED.</Original>
+            <English>Target frame rate for the shadow governor, range 0 to 240. At 0 the governor is off and the ceiling is the effective maximum. The default 0 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowTargetFPS_Name">
+            <Original>Shadow Target FPS</Original>
+            <English>Shadow Target FPS</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowUpdateInterval_Description">
+            <Original>Minimum seconds between shadow scene samples, range 0.10 to 2. The default 0.10 is UNSOURCED.</Original>
+            <English>Minimum seconds between shadow scene samples, range 0.10 to 2. The default 0.10 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_shadowUpdateInterval_Name">
+            <Original>Shadow Update Interval</Original>
+            <English>Shadow Update Interval</English>
+        </Key>
         <Key ID="STR_AEE_Optics_smokePersistenceScale_Description">
             <Original>Global smoke-duration multiplier</Original>
             <English>Global smoke-duration multiplier</English>
