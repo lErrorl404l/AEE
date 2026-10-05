@@ -69,6 +69,12 @@ jobs:
         run: python3 tools/validation/validate_vehicle_mass_model.py
       - name: Engine mass calibration validation
         run: python3 tools/validation/validate_mass_calibration.py
+      - name: Aircraft projection freshness check
+        run: python3 tools/validation/gen_aircraft_data.py --check
+      - name: Aircraft coverage freshness check
+        run: python3 tools/validation/gen_aircraft_coverage.py --check
+      - name: Aircraft data validation
+        run: python3 tools/validation/validate_aircraft_data.py
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:
