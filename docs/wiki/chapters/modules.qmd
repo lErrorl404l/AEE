@@ -223,6 +223,7 @@ disturbance field that every machine computes deterministically.
 | `aiTick` | Run the four-stage model over the registry |
 | `disturbanceApply` | Raise a disturbance cell to a stronger stimulus |
 | `disturbanceKey` | Map a position to its disturbance cell |
+| `disturbancePrune` | Drop cells past the horizon and keep the cap, the `fnc_disturbancePrune` kernel |
 | `disturbanceSample` | Read the decayed disturbance at a cell |
 | `initAI` | Start the substrate client tick |
 | `receiveStimulus` | Apply a broadcast stimulus to the local field |
@@ -245,6 +246,8 @@ media only.
 | `cullFauna` | Delete animals beyond the despawn radius or above the cap |
 | `disturbanceSilence` | Map the disturbance to an ambient gain multiplier |
 | `initWildlife` | Start the wildlife client tick |
+| `logWildlifeState` | Emit the consolidated state line, the `fnc_logWildlifeState` kernel |
+| `monitorWildlife` | Print the state line and the tick timings, the `fnc_monitorWildlife` dry-run instrument |
 | `needsTick` | Raise hunger and thirst and pick the animal goal |
 | `pickResourceTarget` | Find the best nearby water or grazing point |
 | `playAmbientBed` | Play the ambient bed for one context |

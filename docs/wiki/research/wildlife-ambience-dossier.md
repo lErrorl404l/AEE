@@ -148,6 +148,74 @@ operator confirms parity by joining two clients, standing at one grid, and
 checking that the species mix matches while the individual animals differ.
 This is the operator-only parity check.
 
+## Soak, stress and observability
+
+The soak and the stress run the real kernels without a player. They prove the
+field bound, the caps and the budgets. They cannot prove the look or the
+sound. Those stay operator-only checks in
+`docs/wiki/research/ai-wildlife-operator-qa.md`.
+
+### Field bound
+
+The disturbance field is a per-machine store of decaying stimulus cells. Two
+rules bound it. A cell is dropped when its age passes `AI_CELL_HORIZON`, 120 s.
+When the survivors still exceed `AI_CELL_CAP`, 256 cells, the field keeps the
+cells with the largest decayed magnitude. The pure kernel
+`fnc_disturbancePrune` applies both rules. The two field owners,
+`fnc_wildlifeTick` and `fnc_receiveStimulus`, both call it. The cell size
+`AI_CELL_SIZE` is 50 m. The half-life `AI_STIMULUS_HALF_LIFE` is 45 s. The
+prune is deterministic, so two machines keep the same field.
+
+### Budgets
+
+| Budget | Value | State |
+| --- | --- | --- |
+| Core environment tick, `aee_core_fnc_updateEnvironment` | 5 ms per call, PHASE10 | Unchanged |
+| Wildlife dry-run tick, `fnc_wildlifeTick` | 2 ms per call, PHASE11 | Unchanged, re-asserted at the soak end |
+
+### Soak and stress
+
+The soak runs for 20 min. The stress mode runs for 30 min. Both sample every
+30 s. The two durations and the interval are UNSOURCED modelling choices.
+
+The stress mode starts with a saturation burst. It seeds 4000 distinct cells
+and applies 100000 stimuli. It calls 100000 spooks and churns 64 agents. The
+burst sizes are UNSOURCED modelling choices. The sound cap
+`WILDLIFE_SOUND_INSTANCE_CAP` is 8. The animal cap `WILDLIFE_ANIMAL_CAP` is
+16.
+
+One sample line has this format. `t` is the elapsed seconds. `tick` is the
+tick cost in ms. `field` is the live cell count. `max` is the largest decayed
+magnitude. The rest are the live fauna count, the live sound count, the live
+agent count and the spook count.
+
+```
+[SOAK-SAMPLE] t=%1 tick=%2ms field=%3 max=%4 fauna=%5 sound=%6 agents=%7 spook=%8
+```
+
+### State line
+
+`fnc_logWildlifeState` builds one line. It emits at `AEE_LOG_INFO` on the
+first call, then at `AEE_LOG_DEBUG`. The `AEE Debug > AI` switch, the
+`AEE Debug > Wildlife` switch and `AEE_TRACE_ON` gate it. The line costs near
+nothing when tracing is off.
+
+```
+wildlife state | ai=agents:%1 field=%2 max=%3 decide=%4 | bed=%5 gain=%6 disturbance=%7 spook=%8 range=%9 | fauna=%10/%11 sound=%12/%13 ambient=%14 | gates=on=%15 ambient=%16 animals=%17 density=%18 | forces=biome=%19 night=%20 silence=%21 spook=%22 species=%23 | tick=%24ms
+```
+
+### Monitor
+
+An operator runs the monitor from the debug console.
+
+```
+[] call aee_wildlife_fnc_monitorWildlife;
+```
+
+`fnc_monitorWildlife` prints the state line, the wildlife tick cost and the
+AI tick cost. It takes the best of three samples of 100 iterations. It is a
+dry run. It never plays a sound and it never spawns an animal.
+
 ## Sources
 
 - BIKI Arma 3 Sound Files, the confirmed `.wss` set.
@@ -183,3 +251,10 @@ The sound runtime constants are modelling choices, UNSOURCED.
 | Disturbance cell age horizon | 120 s | Modelling, `AI_CELL_HORIZON`, enforced by `fnc_disturbancePrune` | [UNSOURCED] |
 | Disturbance cell cap | 256 cells | Modelling, `AI_CELL_CAP`, enforced by `fnc_disturbancePrune` | [UNSOURCED] |
 | Disturbance prune policy | Drop past the horizon, then keep the cap by largest decayed magnitude | Modelling, `fnc_disturbancePrune`, both field owners call it | [UNSOURCED] |
+| Soak sample interval | 30 s | Modelling, the `[SOAK-SAMPLE]` cadence | [UNSOURCED] |
+| Soak duration, nominal | 20 min | Modelling, the `--soak` default | [UNSOURCED] |
+| Soak duration, stress | 30 min | Modelling, the `--stress` mode | [UNSOURCED] |
+| Stress cell burst | 4000 distinct cells | Modelling, the saturation burst | [UNSOURCED] |
+| Stress apply burst | 100000 applies | Modelling, the saturation burst | [UNSOURCED] |
+| Stress spook burst | 100000 spooks | Modelling, the saturation burst | [UNSOURCED] |
+| Stress agent churn | 64 agents | Modelling, test code only, cleaned up | [UNSOURCED] |
