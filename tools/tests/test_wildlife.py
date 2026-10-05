@@ -31,6 +31,7 @@ PICK_RESOURCE = FUNCS / "fnc_pickResourceTarget.sqf"
 SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
 SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
 DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
+MONITOR = FUNCS / "fnc_monitorWildlife.sqf"
 
 # A tiny manifest for the pure kernel tests.  The real manifest has the same
 # row shape.
@@ -537,6 +538,50 @@ class TestWildlifeStateLineContract(unittest.TestCase):
             "aee_wildlife_forceSpecies",
         ):
             self.assertIn(token, self.text)
+
+
+class TestMonitorWildlifeContract(unittest.TestCase):
+    """The on-demand monitor stays read-only and dry-run."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.text = MONITOR.read_text(encoding="utf-8")
+
+    def test_the_function_exists_and_is_prepped(self):
+        self.assertTrue(MONITOR.is_file())
+        prep = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(monitorWildlife);", prep)
+
+    def test_it_calls_the_wildlife_tick_with_the_dry_run_flag(self):
+        self.assertIn("[[0, 0, 0], true] call FUNC(wildlifeTick)", self.text)
+
+    def test_it_calls_the_ai_tick_with_the_dry_run_flag(self):
+        self.assertIn("aee_ai_fnc_aiTick", self.text)
+        self.assertIn("[true], _iters] call _measure", self.text)
+
+    def test_it_never_plays_or_spawns(self):
+        body = _strip_sqf_comments(self.text)
+        for token in ("playSound3D", "createSoundSourceLocal", "createAgent"):
+            self.assertNotIn(token, body, f"the monitor uses {token}")
+
+    def test_it_prints_the_counts_and_the_gates(self):
+        for token in (
+            "agents=%3",
+            "field=%4",
+            "fauna=%5/%6",
+            "sound=%7/%8",
+            "gates=on=%9",
+            "ambient=%10",
+            "animals=%11",
+            "density=%12",
+        ):
+            self.assertIn(token, self.text)
+
+    def test_it_returns_the_prefixed_line_with_a_tick_token(self):
+        self.assertIn('"wildlife monitor |', self.text)
+        self.assertIn("tick=%1", self.text)
+        # The last expression is the composed line, so the function returns it.
+        self.assertTrue(self.text.rstrip().endswith("_line"))
 
 
 # The confirmed vanilla CfgVehicles Animals classes the species table may name

@@ -16,3 +16,4 @@ PREP(logWildlifeState);
 PREP(wildlifeTick);
 PREP(initWildlife);
 PREP(teardownWildlife);
+PREP(monitorWildlife);
