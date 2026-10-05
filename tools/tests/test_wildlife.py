@@ -458,6 +458,87 @@ class TestNewAddonsLogDebugContract(unittest.TestCase):
                 self.assertIn("_logDebug_Description", strings)
 
 
+def _strip_sqf_comments(text):
+    """The source with block and line comments removed, newlines kept."""
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
+    return re.sub(r"//[^\n]*", "", text)
+
+
+class TestWildlifeStateLineContract(unittest.TestCase):
+    """The consolidated state line keeps the night-sky cost pattern."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.text = (FUNCS / "fnc_logWildlifeState.sqf").read_text(encoding="utf-8")
+        body = _strip_sqf_comments(cls.text)
+        cls.code = [
+            line.strip()
+            for line in body.splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
+
+    def test_the_first_statement_is_the_trace_guard(self):
+        first = self.code[0]
+        self.assertTrue(first.startswith("if ("), first)
+        self.assertIn("stateLogStarted", first)
+        self.assertIn("exitWith", first)
+        self.assertIn("AEE_TRACE_ON", first)
+        self.assertIn("aee_ai_logDebug", first)
+
+    def test_the_line_is_emitted_info_then_debug(self):
+        self.assertEqual(self.text.count("AEE_LOG_INFO(_logMsg)"), 1)
+        self.assertEqual(self.text.count("AEE_LOG_DEBUG(_logMsg)"), 1)
+        # The first call sets the started flag and emits INFO.  Every later
+        # call takes the DEBUG branch.
+        started = self.text.index("setVariable [QGVAR(stateLogStarted), true]")
+        guard = self.text.index("getVariable [QGVAR(stateLogStarted), false]")
+        info = self.text.index("AEE_LOG_INFO(_logMsg)")
+        self.assertLess(guard, info)
+        self.assertLess(started, info)
+        # The DEBUG line sits in the then-branch, so later calls take it.
+        self.assertIn("AEE_LOG_DEBUG(_logMsg);", self.text)
+
+    def test_the_format_carries_every_required_field(self):
+        self.assertIn("private _logMsg = format [", self.text)
+        for token in (
+            "wildlife state |",
+            "ai=agents:",
+            "field=",
+            "bed=",
+            "fauna=",
+            "sound=",
+            "gates=",
+            "forces=",
+            "tick=",
+            "fauna=%10/%11 sound=%12/%13",
+            "tick=%24ms",
+        ):
+            self.assertIn(token, self.text)
+
+    def test_the_line_reads_the_guarded_registries_and_gates(self):
+        for token in (
+            "QEGVAR(ai,agents)",
+            "QEGVAR(ai,disturbance)",
+            "aee_ai_forceDecide",
+            "QGVAR(fauna)",
+            "QGVAR(maxAnimals)",
+            "QGVAR(soundInstances)",
+            "WILDLIFE_SOUND_INSTANCE_CAP",
+            "QGVAR(ambientSource)",
+            "QGVAR(enabled)",
+            "QGVAR(ambientEnabled)",
+            "QGVAR(animalsEnabled)",
+            "QGVAR(density)",
+            "QGVAR(tickInterval)",
+            "aee_wildlife_forceBiome",
+            "aee_wildlife_forceNight",
+            "aee_wildlife_forceSilence",
+            "aee_wildlife_forceSpook",
+            "aee_wildlife_forceSpecies",
+        ):
+            self.assertIn(token, self.text)
+
+
 # The confirmed vanilla CfgVehicles Animals classes the species table may name
 # (BIKI CfgVehicles Animals, Wayback 2025-01-16).  A new class here needs a
 # dossier citation.  There is no cow, no owl unit and no dolphin in vanilla.
