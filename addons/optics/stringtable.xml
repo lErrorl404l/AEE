@@ -370,8 +370,8 @@
             <English>Vision Contrast Scale</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionMesopicDesaturation_Description">
-            <Original>Maximum desaturation of the human-vision model in a scotopic scene, range 0 to 0.5. The mesopic-colour kernel raises the ColorCorrections colorize alpha toward this value as the CIE 191:2010 photopic fraction falls. The engine can only desaturate. The exact amplitude is UNSOURCED.</Original>
-            <English>Maximum desaturation of the human-vision model in a scotopic scene, range 0 to 0.5. The mesopic-colour kernel raises the ColorCorrections colorize alpha toward this value as the CIE 191:2010 photopic fraction falls. The engine can only desaturate. The exact amplitude is UNSOURCED.</English>
+            <Original>Maximum desaturation of the human-vision model in a scotopic scene, range 0 to 0.5. Default 0, so the default path ships no tint. The engine ambient is green-biased and the operator rejects the tint. Raise it in AEE Experimental to opt in to the experimental mesopic path. The engine can only desaturate. The exact amplitude is UNSOURCED.</Original>
+            <English>Maximum desaturation of the human-vision model in a scotopic scene, range 0 to 0.5. Default 0, so the default path ships no tint. The engine ambient is green-biased and the operator rejects the tint. Raise it in AEE Experimental to opt in to the experimental mesopic path. The engine can only desaturate. The exact amplitude is UNSOURCED.</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionMesopicDesaturation_Name">
             <Original>Vision Mesopic Desaturation</Original>
@@ -386,8 +386,8 @@
             <English>Human-Vision Model</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionPurkinjeStrength_Description">
-            <Original>Strength of the Purkinje shift of the human-vision model, range 0 to 1. It scales the move of the colorize colour toward the scotopic blue-green hue (507 nm, CIE 1951) as the CIE 191:2010 photopic fraction falls. The tint amplitude is UNSOURCED.</Original>
-            <English>Strength of the Purkinje shift of the human-vision model, range 0 to 1. It scales the move of the colorize colour toward the scotopic blue-green hue (507 nm, CIE 1951) as the CIE 191:2010 photopic fraction falls. The tint amplitude is UNSOURCED.</English>
+            <Original>Strength of the Purkinje shift of the human-vision model, range 0 to 1. Default 0, so the default path ships no tint. The engine ambient is green-biased and the operator rejects the tint. Raise it in AEE Experimental to opt in to the experimental mesopic path. The hue direction is SOURCED to CIE 1951. The tint amplitude is UNSOURCED.</Original>
+            <English>Strength of the Purkinje shift of the human-vision model, range 0 to 1. Default 0, so the default path ships no tint. The engine ambient is green-biased and the operator rejects the tint. Raise it in AEE Experimental to opt in to the experimental mesopic path. The hue direction is SOURCED to CIE 1951. The tint amplitude is UNSOURCED.</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionPurkinjeStrength_Name">
             <Original>Vision Purkinje Strength</Original>
@@ -402,16 +402,16 @@
             <English>Vision Tone Stage</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionToneStrength_Description">
-            <Original>Strength of the human-vision tone stage, range 0 to 1. At 0 the stage is the identity and the image is unchanged. The exact value is UNSOURCED.</Original>
-            <English>Strength of the human-vision tone stage, range 0 to 1. At 0 the stage is the identity and the image is unchanged. The exact value is UNSOURCED.</English>
+            <Original>Strength of the human-vision tone stage, range 0 to 1. Default 0.25. The stage is a small bounded rise over the base game's neutral default grade. The anchor clamp keeps the image within a small deviation of that grade. At 0 the stage is the identity. The exact value is UNSOURCED.</Original>
+            <English>Strength of the human-vision tone stage, range 0 to 1. Default 0.25. The stage is a small bounded rise over the base game's neutral default grade. The anchor clamp keeps the image within a small deviation of that grade. At 0 the stage is the identity. The exact value is UNSOURCED.</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionToneStrength_Name">
             <Original>Vision Tone Strength</Original>
             <English>Vision Tone Strength</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionWhiteBalance_Description">
-            <Original>Enable the partial von Kries white balance of the human-vision model. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED.</Original>
-            <English>Enable the partial von Kries white balance of the human-vision model. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED.</English>
+            <Original>Enable the partial von Kries white balance of the human-vision model. Default off. The engine ambient under vegetation is green-biased, so full adaptation ships a cast. Turn it on to opt in to the experimental white-balance path. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED.</Original>
+            <English>Enable the partial von Kries white balance of the human-vision model. Default off. The engine ambient under vegetation is green-biased, so full adaptation ships a cast. Turn it on to opt in to the experimental white-balance path. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED.</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionWhiteBalance_Name">
             <Original>Vision White Balance</Original>
