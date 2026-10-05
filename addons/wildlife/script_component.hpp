@@ -7,3 +7,10 @@
 #define WILDLIFE_SOUND_INSTANCE_CAP 8
 #define WILDLIFE_SOUND_MAX_DISTANCE 120
 #define WILDLIFE_ANIMAL_CAP 16
+
+// The disturbance field policy is owned by aee_ai.  The wildlife tick is the
+// only cross-addon consumer, so the cap and the horizon are mirrored here
+// rather than reaching into the aee_ai header.  Keep them in step with
+// addons/ai/script_component.hpp and the per-constant register.
+#define AI_CELL_CAP 256
+#define AI_CELL_HORIZON 120
