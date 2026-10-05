@@ -3144,6 +3144,11 @@ private _p29Pass = 0;
     // terrain signals and weather, with no per-map entry, so it runs on every
     // world the rotation loads.  It renders nothing.
     execVM "aee_p84b_world_lighting_probe.sqf";
+    // PHASE 85 lives in aee_p85_star_probe.sqf: the star brightness kernels
+    // are pure, so it drives them directly and asserts the NELM falls with
+    // light pollution, the coefficient rises with moon phase and the weather
+    // fade falls under high overcast.  It renders nothing.
+    execVM "aee_p85_star_probe.sqf";
     // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
     // surface (scalar keys, no thermalProperties) and the TI command contract
     // resolve headless, so a dedicated server verifies what the StageTI
