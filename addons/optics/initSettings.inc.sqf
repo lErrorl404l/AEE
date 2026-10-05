@@ -59,6 +59,22 @@ AEE_SETTING_SLIDER(chromaCap,"AEE Optics","Intensity",0,0.2,0.06,0);
 AEE_SETTING_SLIDER(weatherGrainIntensity,"AEE Optics","Intensity",0,1,0.5,2);
 AEE_SETTING_SLIDER(weatherGrainRainThreshold,"AEE Optics","Intensity",0,1,0.2,2);
 
+// ── Scene-aware shadow distance (aee-workshop-copy item 6) ────────────────
+// The shadow distance follows the scene classification.  The values are
+// re-derived from Adaptive Shadows (Workshop 3792830104); no mod content is
+// copied.  The classifier is heuristic and its thresholds are UNSOURCED.
+AEE_SETTING_CHECKBOX(shadowAdaptiveEnabled,"AEE Optics","Shadows",true);
+AEE_SETTING_SLIDER(shadowMinDistance,"AEE Optics","Shadows",0,500,50,0);
+AEE_SETTING_SLIDER(shadowMaxDistance,"AEE Optics","Shadows",25,2000,500,0);
+AEE_SETTING_SLIDER(shadowSampleCount,"AEE Optics","Shadows",5,25,13,0);
+AEE_SETTING_SLIDER(shadowUpdateInterval,"AEE Optics","Shadows",0.10,2,0.10,2);
+AEE_SETTING_SLIDER(shadowOpeningSensitivity,"AEE Optics","Shadows",3,50,12,0);
+AEE_SETTING_SLIDER(shadowFarSceneInfluence,"AEE Optics","Shadows",0,100,75,0);
+AEE_SETTING_SLIDER(shadowMovementProtection,"AEE Optics","Shadows",0,10,0.6,2);
+AEE_SETTING_SLIDER(shadowCameraTurnProtection,"AEE Optics","Shadows",0,500,0,0);
+AEE_SETTING_SLIDER(shadowOpticsProtection,"AEE Optics","Shadows",0,500,0,0);
+AEE_SETTING_SLIDER(shadowTargetFPS,"AEE Optics","Shadows",0,240,0,0);
+
 // ── Vision-driven view distance (issue #138) ──────────────────────────────
 // Drives the engine's view distance from the physics visibility state
 // (fog, haze, rain, NELM, acuity).  Defaults ON; disable to keep the
