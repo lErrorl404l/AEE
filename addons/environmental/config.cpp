@@ -84,4 +84,16 @@ class CfgWorlds {
         blur = 0.6;
         farOnly = 1;
     };
+    // The night-darkness endpoints the engine interpolates between.  These
+    // deepNight and fullNight arrays are re-derived from Real Lighting and
+    // Weather (Workshop 2809399991) lines 589-602.  No mod content is copied.
+    // Every other keyframe keeps the base game value.
+    class DayLightingBrightAlmost {
+        deepNight[] = {-15,{0.0049,0.0098,0.0098},{0,0.002,0.003},{0,0,0},{0,0,0},{0,0.002,0.003},{0,0.002,0.003},0};
+        fullNight[] = {-5,{0.182,0.213,0.25},{0.05,0.111,0.221},{0.039,0.034,0.004},{0.04,0.049,0.072},{0.082,0.128,0.185},{0.283,0.35,0.431},0};
+    };
+    class DayLightingRainy {
+        deepNight[] = {-15,{0.0049,0.0098,0.0098},{0,0.002,0.003},{0,0,0},{0,0,0},{0,0.002,0.003},{0,0.002,0.003},0};
+        fullNight[] = {-5,{0.023,0.023,0.023},{0.02,0.02,0.02},{0.023,0.023,0.023},{0.02,0.02,0.02},{0.0098,0.0098,0.02},{0.08,0.059,0.059},0};
+    };
 };
