@@ -57,6 +57,7 @@ PREPS(perception,perceptionToneResponse);
 PREPS(perception,perceptionIlluminant);
 PREPS(perception,perceptionChromaticAdaptation);
 PREPS(perception,perceptionMesopicColor);
+PREPS(perception,perceptionBaseGrade);
 PREPS(perception,perceptionParams);
 
 PREPS(hud,hudBuild);
