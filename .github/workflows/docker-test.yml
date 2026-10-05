@@ -6,9 +6,22 @@ name: Docker Test
 # schedule or a manual dispatch, never on push or pull_request: a public
 # repository must not run untrusted code on a self-hosted runner.
 on:
+  # A daily headless regression at 03:00 UTC and a longer weekly soak at
+  # 04:00 UTC on Sunday. A manual dispatch runs both jobs. There is no push
+  # and no pull_request trigger: a public repository must not run untrusted
+  # code on a self-hosted runner.
   schedule:
     - cron: '0 3 * * *'
+    - cron: '0 4 * * 0'
   workflow_dispatch:
+    inputs:
+      soak-minutes:
+        # The weekly soak is the long run. The manual input bounds it. On a
+        # schedule event the input is absent, so the step falls back to 20.
+        description: Soak duration in minutes
+        required: false
+        default: '20'
+        type: string
 
 permissions:
   contents: read
@@ -54,4 +67,42 @@ jobs:
           path: |
             tests/docker/run.log
             tests/docker/run.*.log
+          if-no-files-found: ignore
+
+  soak:
+    # The soak is the long run, so it does not ride the daily cron. It runs
+    # on a manual dispatch and on the weekly Sunday schedule only.
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 4 * * 0'
+    # The soak length plus the build. 90 minutes covers the 20 minute default
+    # and the HEMTT build with headroom.
+    runs-on: [self-hosted, linux, aee]
+    timeout-minutes: 90
+    env:
+      # The server path is a repository variable, not a committed file: both
+      # tests/docker/server_root and tests/docker/server are gitignored. Set
+      # it once in Settings > Variables; a service runner does not inherit a
+      # shell export.
+      ARMA3_SERVER_ROOT: ${{ vars.ARMA3_SERVER_ROOT }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Assert the Arma 3 server is installed on the runner
+        run: |
+          root="${ARMA3_SERVER_ROOT:-}"
+          if [ -z "$root" ] && [ -f "$GITHUB_WORKSPACE/tests/docker/server_root" ]; then
+            root="$(head -n1 "$GITHUB_WORKSPACE/tests/docker/server_root" | tr -d '[:space:]')"
+          fi
+          root="${root:-$GITHUB_WORKSPACE/tests/docker/server}"
+          if [ ! -x "$root/arma3server_x64" ]; then
+            echo "::error::no Arma 3 server on the runner at $root. Set ARMA3_SERVER_ROOT or write the path into tests/docker/server_root."
+            exit 1
+          fi
+      - uses: arma-actions/hemtt@v1
+      - name: Weekly soak and stress test
+        run: tools/docker_test.sh --soak --soak-min ${{ github.event.inputs.soak-minutes || 20 }}
+      - name: Upload soak log on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: aee-soak-log
+          path: tests/docker/run.soak.log
           if-no-files-found: ignore
