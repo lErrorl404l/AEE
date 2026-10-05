@@ -11,9 +11,9 @@ is a labelled zero, not a refusal.
 
 - Catalogue entries: 17
 - Emitted runtime rows: 17
-- Runtime-ready entries: 4
-- Entries with an absent runtime field: 13
-- Absent fields: 30
+- Runtime-ready entries: 7
+- Entries with an absent runtime field: 10
+- Absent fields: 15
 
 ## a10a_thunderbolt_ii - Fairchild A-10A Thunderbolt II (fixed_wing)
 
@@ -89,12 +89,11 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | derived | 14288 | `src_fa18_natops` | basic weight 31,500 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
 | `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 
 ## jas39c_gripen - Saab JAS 39C Gripen (fixed_wing)
@@ -135,19 +134,13 @@ is a labelled zero, not a refusal.
 - Capture: `data/aircraft/catalogue/compilations_rw.json`
 - Required set: rotary_wing (3 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
-| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+| `operating_weight_kg` | derived | 1076 | `src_opfor_weg` | Mi-2 empty weight 2,372 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
+| `rated_power_w` | derived | 298279.9488 | `src_opfor_weg` | 2 x 400 shp PZL GTD-350 | derived rated power from the published power: rated_power_w = published_power_hp * 745.699872 (1 hp = 745.699872 W) |
+| `rotor_disc_area_m2` | derived | 167.415473 | `src_opfor_weg` | Mi-2 main rotor diameter 14.6 m | derived rotor disc area from the rotor diameter 14.6 m: rotor_disc_area_m2 = pi * (rotor_diameter_m / 2)^2 |
 
 ## md500 - MD Helicopters MD 500 (rotary_wing)
 
@@ -193,38 +186,26 @@ is a labelled zero, not a refusal.
 - Capture: `data/aircraft/catalogue/compilations_rw.json`
 - Required set: rotary_wing (3 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
-| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+| `operating_weight_kg` | derived | 12809 | `src_opfor_weg` | Mi-26 empty weight 28,240 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
+| `rated_power_w` | derived | 8500978.5408 | `src_opfor_weg` | 2 x 11,400 shp Lotarev D-136 | derived rated power from the published power: rated_power_w = published_power_hp * 745.699872 (1 hp = 745.699872 W) |
+| `rotor_disc_area_m2` | derived | 804.247719 | `src_opfor_weg` | Mi-26 main rotor diameter 32 m | derived rotor disc area from the rotor diameter 32.0 m: rotor_disc_area_m2 = pi * (rotor_diameter_m / 2)^2 |
 
 ## mi28_havoc - Mil Mi-28 Havoc (rotary_wing)
 
 - Capture: `data/aircraft/catalogue/compilations_rw.json`
 - Required set: rotary_wing (3 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
-| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+| `operating_weight_kg` | derived | 3175 | `src_opfor_weg` | Mi-28 empty weight 7,000 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
+| `rated_power_w` | derived | 1640539.7184 | `src_opfor_weg` | 2 x 2,200 shp Klimov TV3-117VMA | derived rated power from the published power: rated_power_w = published_power_hp * 745.699872 (1 hp = 745.699872 W) |
+| `rotor_disc_area_m2` | derived | 232.352193 | `src_opfor_weg` | Mi-28 main rotor diameter 17.2 m | derived rotor disc area from the rotor diameter 17.2 m: rotor_disc_area_m2 = pi * (rotor_diameter_m / 2)^2 |
 
 ## rah66_comanche - Boeing-Sikorsky RAH-66 Comanche (rotary_wing)
 
@@ -235,13 +216,12 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | derived | 3526 | `src_rah66_case` | empty weight 7,774 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
 | `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
 | `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
 
@@ -254,12 +234,11 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | derived | 4320 | `src_opfor_weg` | Su-25 empty weight 9,525 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
 | `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 
 ## su57_felon - Sukhoi Su-57 (fixed_wing)
@@ -271,12 +250,11 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | derived | 18000 | `src_odin_weg_2025` | Su-57 weight, empty | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
 | `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 
 ## uh60a_black_hawk - Sikorsky UH-60A Black Hawk (rotary_wing)
@@ -288,12 +266,10 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | derived | 9185 | `src_tm_1_1520_237_10` | maximum weight 20,250 lb converted to kg | derived operating weight from the maximum takeoff weight; no operating or empty weight is published, so the maximum is the basis |
 | `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rotor_disc_area_m2` | derived | 210.211504 | `src_tm_1_1520_237_10` | main rotor diameter 53 ft 8 in | derived rotor disc area from the rotor diameter 16.36 m: rotor_disc_area_m2 = pi * (rotor_diameter_m / 2)^2 |
 
 | Absent field | Next source class |
 |---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
-| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |

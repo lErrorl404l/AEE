@@ -26,13 +26,13 @@
       ],
       "runtime_ready": false,
       "values": {
-        "wing_area_m2": {
-          "value": 30.1,
-          "unit": "m^2",
-          "source": "src_milavia_su25",
-          "locator": "dimensions",
-          "state": "UNSOURCED real-world figure from an unheld public compilation; lead only.",
-          "grade": "claimed"
+        "empty_weight_kg": {
+          "value": 4320,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Su-25 empty weight 9,525 lb converted to kg",
+          "state": "US Army OPFOR guide empty weight; pounds converted to kilograms at capture",
+          "grade": "documented"
         }
       }
     },
@@ -83,13 +83,21 @@
       ],
       "runtime_ready": false,
       "values": {
-        "wing_area_m2": {
-          "value": 46.5,
-          "unit": "m^2",
-          "source": "src_fa18_blog",
-          "locator": "wing area",
-          "state": "UNSOURCED real-world figure from an unheld public compilation; lead only.",
-          "grade": "claimed"
+        "empty_weight_kg": {
+          "value": 14288,
+          "unit": "kg",
+          "source": "src_fa18_natops",
+          "locator": "basic weight 31,500 lb converted to kg",
+          "state": "NATOPS basic weight; pounds converted to kilograms at capture",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 29937,
+          "unit": "kg",
+          "source": "src_fa18_natops",
+          "locator": "maximum gross weight 66,000 lb converted to kg",
+          "state": "NATOPS maximum gross weight; pounds converted to kilograms at capture",
+          "grade": "documented"
         }
       }
     },
@@ -115,7 +123,32 @@
         "multirole"
       ],
       "runtime_ready": false,
-      "values": {}
+      "values": {
+        "empty_weight_kg": {
+          "value": 18000,
+          "unit": "kg",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-57 weight, empty",
+          "state": "US Army ODIN guide empty weight",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 35000,
+          "unit": "kg",
+          "source": "src_odin_weg_2025",
+          "locator": "Su-57 weight, maximum",
+          "state": "US Army ODIN guide maximum weight",
+          "grade": "documented"
+        },
+        "thrust_kn": {
+          "value": 139.3,
+          "unit": "kN",
+          "source": "src_odin_weg_2025",
+          "locator": "2 x Saturn/Lyulka 117S, 14,200 kgf each",
+          "state": "US Army ODIN guide thrust in kgf converted to kN at capture",
+          "grade": "documented"
+        }
+      }
     }
   ]
 }

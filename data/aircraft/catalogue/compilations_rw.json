@@ -25,7 +25,16 @@
         "recon"
       ],
       "runtime_ready": false,
-      "values": {}
+      "values": {
+        "empty_weight_kg": {
+          "value": 3526,
+          "unit": "kg",
+          "source": "src_rah66_case",
+          "locator": "empty weight 7,774 lb converted to kg",
+          "state": "DTIC Comanche case history empty weight; pounds converted to kilograms at capture",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "uh60a_black_hawk",
@@ -49,7 +58,24 @@
         "transport"
       ],
       "runtime_ready": false,
-      "values": {}
+      "values": {
+        "max_takeoff_weight_kg": {
+          "value": 9185,
+          "unit": "kg",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "maximum weight 20,250 lb converted to kg",
+          "state": "UH-60A operator's manual maximum weight; pounds converted to kilograms at capture",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 16.36,
+          "unit": "m",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "main rotor diameter 53 ft 8 in",
+          "state": "UH-60A operator's manual rotor diameter converted to metres at capture",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "light_utility_rotary",
@@ -72,8 +98,33 @@
         "light",
         "utility"
       ],
-      "runtime_ready": false,
-      "values": {}
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 1076,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Mi-2 empty weight 2,372 lb converted to kg",
+          "state": "US Army OPFOR guide empty weight; pounds converted to kilograms at capture",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 400,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "2 x 400 shp PZL GTD-350",
+          "state": "US Army OPFOR guide shaft horsepower per engine, used as published power",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 14.6,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Mi-2 main rotor diameter 14.6 m",
+          "state": "US Army OPFOR guide main rotor diameter",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "mi28_havoc",
@@ -96,8 +147,33 @@
         "attack",
         "gunship"
       ],
-      "runtime_ready": false,
-      "values": {}
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 3175,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Mi-28 empty weight 7,000 lb converted to kg",
+          "state": "US Army OPFOR guide empty weight; pounds converted to kilograms at capture",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 2200,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "2 x 2,200 shp Klimov TV3-117VMA",
+          "state": "US Army OPFOR guide shaft horsepower per engine, used as published power",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 17.2,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Mi-28 main rotor diameter 17.2 m",
+          "state": "US Army OPFOR guide main rotor diameter",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "mi26_halo",
@@ -120,8 +196,33 @@
         "heavy",
         "transport"
       ],
-      "runtime_ready": false,
-      "values": {}
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 12809,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Mi-26 empty weight 28,240 lb converted to kg",
+          "state": "US Army OPFOR guide empty weight; pounds converted to kilograms at capture",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 11400,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "2 x 11,400 shp Lotarev D-136",
+          "state": "US Army OPFOR guide shaft horsepower per engine, used as published power",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 32.0,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Mi-26 main rotor diameter 32 m",
+          "state": "US Army OPFOR guide main rotor diameter",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "aw159_wildcat",
