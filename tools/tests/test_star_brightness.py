@@ -33,6 +33,7 @@ PENALTY = ASTRONOMY / "fnc_lightPollutionPenalty.sqf"
 LIMIT = ASTRONOMY / "fnc_calculateLimitingMagnitude.sqf"
 CATALOG = ASTRONOMY / "fnc_getStarCatalog.sqf"
 MAGNITUDE = ASTRONOMY / "fnc_starMagnitude.sqf"
+ENV_UPDATE = REPO / "addons" / "core" / "functions" / "fnc_updateEnvironment.sqf"
 
 
 # ─── Python mirrors of the same spec, for cross-checking the SQF ────────────
@@ -195,6 +196,81 @@ class TestKernelPurity(unittest.TestCase):
                 self.assertIn("3749362906", text)
                 self.assertIn("no licence", text)
                 self.assertIn("UNSOURCED", text)
+
+
+def mirror_nelm(
+    ambient_lux: float, seeing: float, houses: float, subtract_pollution: bool = True
+) -> float:
+    m_base = 6.5 - math.log10(max(ambient_lux / 0.001, 1e-6))
+    clamped_seeing = max(0.1, min(1.0, seeing))
+    seeing_penalty = 0.2 + 1.3 * ((clamped_seeing - 0.1) / 0.9)
+    pollution = penalty(houses) if subtract_pollution else 0.0
+    return max(2.0, min(7.0, m_base - pollution - seeing_penalty))
+
+
+class TestNelmLinksToLightPollution(unittest.TestCase):
+    """fnc_calculateLimitingMagnitude subtracts the light-pollution penalty."""
+
+    def test_nelm_falls_with_more_houses(self) -> None:
+        live = live_source(LIMIT)
+        self.assertIn("call FUNC(lightPollutionPenalty)", live)
+        self.assertTrue(
+            __import__("re").search(r"_mBase\s*-\s*_pollution", live),
+            "the penalty is not subtracted from _mBase",
+        )
+        # Tie the numeric result to the source: if the subtraction line is
+        # commented out the live source loses both tokens and the NELM no
+        # longer falls with houses.
+        wired = "call FUNC(lightPollutionPenalty)" in live
+        n0 = mirror_nelm(0.001, 0.1, 0, wired)
+        n100 = mirror_nelm(0.001, 0.1, 100, wired)
+        self.assertLess(n100, n0)
+
+    def test_nelm_unchanged_at_zero_houses(self) -> None:
+        self.assertAlmostEqual(penalty(0), 0.0, places=6)
+        self.assertAlmostEqual(
+            mirror_nelm(0.001, 0.1, 0), mirror_nelm(0.001, 0.1, 0, False), places=6
+        )
+        self.assertAlmostEqual(
+            mirror_nelm(0.3, 0.5, 0), mirror_nelm(0.3, 0.5, 0, False), places=6
+        )
+
+
+class TestStarCatalogueWiring(unittest.TestCase):
+    def test_star_catalogue_applies_the_brightness_coefficient(self) -> None:
+        live = live_source(CATALOG)
+        self.assertIn("call FUNC(starBrightnessCoefficient)", live)
+        self.assertIn("call FUNC(starWeatherFade)", live)
+        self.assertIn("GVAR(starBrightnessScale)", live)
+        self.assertIn("GVAR(worldLighting)", live)
+        self.assertIn("setVariable [QGVAR(starBrightnessCoefficient)", live)
+
+    def test_source_contract_reads_getlighting_element_1(self) -> None:
+        # The tick caller caches the engine ambient brightness (getLighting
+        # element 1); the catalogue reads the cache.  The kernel stays pure.
+        live_tick = live_source(ENV_UPDATE)
+        self.assertIn("getLighting select 1", live_tick)
+        live_cat = live_source(CATALOG)
+        self.assertIn("ambientBrightness", live_cat)
+
+    def test_renderers_pass_the_published_scale(self) -> None:
+        for renderer in (
+            ASTRONOMY / "fnc_drawFaintStars.sqf",
+            ASTRONOMY / "fnc_starLightsSync.sqf",
+        ):
+            live = live_source(renderer)
+            with self.subTest(renderer=renderer.name):
+                self.assertIn("starBrightnessCoefficient", live)
+                self.assertRegex(live, r"call FUNC\(starMagnitude\)")
+
+
+class TestStarMagnitudeScale(unittest.TestCase):
+    def test_scale_multiplies_alpha_and_clamps(self) -> None:
+        base = run_sqf(MAGNITUDE, [2])[1]
+        scaled = run_sqf(MAGNITUDE, [2, 0.5])[1]
+        self.assertAlmostEqual(scaled, base * 0.5, places=6)
+        self.assertAlmostEqual(run_sqf(MAGNITUDE, [-1.46, 100])[1], 1.0, places=6)
+        self.assertAlmostEqual(run_sqf(MAGNITUDE, [0, 0])[1], 0.0, places=6)
 
 
 if __name__ == "__main__":

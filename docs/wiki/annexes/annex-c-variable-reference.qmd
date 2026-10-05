@@ -373,6 +373,9 @@ read them.
 | `aee_environmental_faintStarCount` | environmental | Faint stars drawn by the immediate-mode layer |
 | `aee_environmental_effectiveNelm` | environmental | The limiting magnitude the starfield uses (forced when `aee_environmental_starsForce` is set) |
 | `aee_environmental_starEmitterCount` | environmental | Bright-star light emitters requested |
+| `aee_environmental_starBrightnessCoefficient` | environmental | Resolved star render scale 0..1 (moon, light pollution, weather and the world matcher) |
+| `aee_environmental_houseCount` | environmental | Nearby house count behind the light-pollution penalty (5 s cache) |
+| `aee_environmental_ambientBrightness` | environmental | Engine ambient brightness behind the star coefficient (5 s cache) |
 
 ### Night-sky debug hooks
 

@@ -78,6 +78,14 @@ AEE_SETTING_CHECKBOX(dynamicAurora,"AEE Environmental","Display",true);
 
 AEE_SETTING_CHECKBOX(dynamicMilkyWay,"AEE Environmental","Display",true);
 
+// Star brightness model (aee-workshop-copy item 3).  starBrightnessScale
+// multiplies the resolved 0..1 render scale and clamps to 0..1;
+// starLightPollutionEnabled gates the nearby-house scan that feeds the NELM
+// light-pollution penalty.
+AEE_SETTING_SLIDER(starBrightnessScale,"AEE Environmental","Display",0,2,1.0,1);
+
+AEE_SETTING_CHECKBOX(starLightPollutionEnabled,"AEE Environmental","Display",true);
+
 // Diagnostics: the consolidated sky-state line logs at DEBUG after the first
 // INFO line when this switch is on.
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Environmental",false);

@@ -21,6 +21,11 @@ if !(_nelm isEqualType 0) then { _nelm = 6.5; };
 private _eyePos = ((call CBA_fnc_currentUnit) call EFUNC(core,getEyeState)) select 0;
 private _drawn = 0;
 
+// The star brightness model publishes a 0..1 render scale; it multiplies each
+// star's alpha in fnc_starMagnitude.
+private _brightnessScale = missionNamespace getVariable [QGVAR(starBrightnessCoefficient), 1];
+if !(_brightnessScale isEqualType 0) then { _brightnessScale = 1; };
+
 {
     if (_drawn >= FAINT_STAR_MAX) exitWith {};
     private _altDeg = _x select 1;
@@ -30,7 +35,7 @@ private _drawn = 0;
     if (_vmag > _nelm) then { continue; };
     if (_altDeg < 0) then { continue; };
     private _dir = [_altDeg, _azDeg] call FUNC(starDirection);
-    private _mag = [_vmag] call FUNC(starMagnitude);
+    private _mag = [_vmag, _brightnessScale] call FUNC(starMagnitude);
     private _p1 = _eyePos vectorAdd (_dir vectorMultiply FAINT_STAR_RADIUS);
     private _p2 = _eyePos vectorAdd (_dir vectorMultiply (FAINT_STAR_RADIUS + 1));
     drawLine3D [_p1, _p2, [0.85, 0.88, 1.0, (_mag select 1) * 0.8]];

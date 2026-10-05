@@ -24,14 +24,20 @@ never collapses to a pixel:
 
 Arguments:
   0: Number - visual magnitude (smaller is brighter; Sirius is -1.46)
+  1: Number - brightness scale, multiplies alpha (default 1, clamped 0..1)
 
 Returns:
   Array [sizeScale, alpha] - size multiplier and brightness in [0, 1].
 */
 
-params [["_vmag", 0, [0]]];
+params [["_vmag", 0, [0]], ["_brightnessScale", 1, [0]]];
 
 private _alpha = ((10 ^ (-0.4 * _vmag)) max 0) min 1;
 private _size = ((1.5 - 0.25 * _vmag) max 0.3) min 1.5;
+
+// The star brightness model scales the rendered alpha; the result is clamped
+// so no scale can push a star past full brightness.  Parenthesise the clamp:
+// some readings bind min tighter than max.
+_alpha = ((_alpha * _brightnessScale) max 0) min 1;
 
 [_size, _alpha]

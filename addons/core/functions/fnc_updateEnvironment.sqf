@@ -340,7 +340,27 @@ private _moonPhase = missionNamespace getVariable [QEGVAR(environmental,lunarPha
 [_sunElev, _moonPhase] call EFUNC(environmental,classifyNight);
 private _ambientLux = missionNamespace getVariable [QEGVAR(core,ambientLux), 0.001];
 private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing), 0.5];
-[_ambientLux, _seeing] call EFUNC(environmental,calculateLimitingMagnitude);
+
+// Light pollution: the house scan is expensive, so cache it on a 5 s key and
+// share it with the star catalogue.  The NELM kernel stays pure; this tick is
+// the only place that reads the engine.  The operator switch gates the scan.
+private _houseKey = floor (diag_tickTime / 5);
+private _houseCache = missionNamespace getVariable [QEGVAR(environmental,houseCache), []];
+private _houseCount = 0;
+private _ambientBrightness = 0;
+if ((_houseCache isEqualType []) && {(count _houseCache) > 2} && {(_houseCache select 0) == _houseKey}) then {
+    _houseCount = _houseCache select 1;
+    _ambientBrightness = _houseCache select 2;
+} else {
+    if ((missionNamespace getVariable [QEGVAR(environmental,starLightPollutionEnabled), true]) && hasInterface) then {
+        _houseCount = count (nearestTerrainObjects [positionCameraToWorld [0,0,0], ["HOUSE","LIGHTHOUSE"], 750, false, true]);
+    };
+    _ambientBrightness = getLighting select 1;
+    missionNamespace setVariable [QEGVAR(environmental,houseCache), [_houseKey, _houseCount, _ambientBrightness]];
+};
+missionNamespace setVariable [QEGVAR(environmental,houseCount), _houseCount];
+missionNamespace setVariable [QEGVAR(environmental,ambientBrightness), _ambientBrightness];
+[_ambientLux, _seeing, _houseCount] call EFUNC(environmental,calculateLimitingMagnitude);
 private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
 [_posASL2D, date] call EFUNC(environmental,getStarCatalog);
 // One consolidated night-sky state line (INFO once, then DEBUG).

@@ -85,6 +85,41 @@ if (_starsForce isEqualType 0) then {
     if (_starsForce > 0) then { _mLim = _starsForce; };
 };
 
+// ─── Star brightness coefficient (item 3) ─────────────────────────────────
+// Rebuild the Star Light coefficient from the moon phase, the cached ambient
+// brightness (getLighting element 1), the cached house count, the engine
+// overcast and fog, and the matcher world star scale.  The combined value is a
+// 0..1 render-scale multiplier: 1 in a pristine dark sky, lower under moon,
+// light pollution, cloud or a harsh world.  Published for the renderers.
+private _moonPhase = moonPhase date;
+if !(_moonPhase isEqualType 0) then { _moonPhase = 0.5; };
+
+private _ambientBrightness = missionNamespace getVariable [QGVAR(ambientBrightness), 0];
+if !(_ambientBrightness isEqualType 0) then { _ambientBrightness = 0; };
+
+private _houseCount = missionNamespace getVariable [QGVAR(houseCount), 0];
+if !(_houseCount isEqualType 0) then { _houseCount = 0; };
+
+private _brightnessCoeff = [_moonPhase, _ambientBrightness, _houseCount] call FUNC(starBrightnessCoefficient);
+_brightnessCoeff = [_brightnessCoeff, overcast, fog] call FUNC(starWeatherFade);
+
+// Matcher world factor: element 1 of aee_environmental_worldLighting (starScale).
+private _worldLighting = missionNamespace getVariable [QGVAR(worldLighting), []];
+private _worldStarScale = 1;
+if ((_worldLighting isEqualType []) && {(count _worldLighting) > 1}) then {
+    _worldStarScale = _worldLighting select 1;
+};
+if !(_worldStarScale isEqualType 0) then { _worldStarScale = 1; };
+_brightnessCoeff = _brightnessCoeff * _worldStarScale;
+
+// Operator display scale (AEE Environmental > Display).
+private _operatorScale = GVAR(starBrightnessScale);
+if !(_operatorScale isEqualType 0) then { _operatorScale = 1; };
+_brightnessCoeff = _brightnessCoeff * _operatorScale;
+
+_brightnessCoeff = ((_brightnessCoeff max 0) min 1);
+missionNamespace setVariable [QGVAR(starBrightnessCoefficient), _brightnessCoeff];
+
 // ─── Precession cache (J2000 to the mission date) ─────────────────────────
 // Precession depends on the date alone, so precess the whole catalogue once
 // per date and keep it. The per-tick loop then applies only the sidereal-time

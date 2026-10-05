@@ -200,6 +200,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_environmental_dynamicMeteors` | CHECKBOX | `true` | yes | environmental | Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate) |
 | `aee_environmental_dynamicMilkyWay` | CHECKBOX | `true` | yes | environmental | Draw the Milky Way as a faint client-side band along the galactic plane (night, cloud and limiting magnitude gate it; forceable) |
 | `aee_environmental_dynamicStars` | CHECKBOX | `true` | yes | environmental | Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright) |
+| `aee_environmental_starBrightnessScale` | SLIDER | `1.0` | yes | environmental | Multiplies the resolved star render scale (0..2), clamped to 0..1 |
+| `aee_environmental_starLightPollutionEnabled` | CHECKBOX | `true` | yes | environmental | Dim stars by nearby settlement skyglow; the house scan runs every 5 s |
 
 ## AEE Environmental → Fire
 
