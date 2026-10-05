@@ -1182,6 +1182,7 @@ def self_check() -> list[str]:
 
     record = _self_rotary_record()
     del _self_values(record)["rotor_disc_area_m2"]
+    del _self_values(record)["rotor_diameter_m"]
     check(
         "rotary missing disc area",
         "misses required field rotor_disc_area_m2",
