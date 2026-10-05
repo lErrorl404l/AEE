@@ -187,6 +187,21 @@ class TestEngineHdrKeys(unittest.TestCase):
             msg="starEmissivity must sit on DefaultLighting at 40",
         )
 
+    def test_star_emissivity_reaches_each_world_lighting(self) -> None:
+        # The engine reads starEmissivity from the world's own Lighting class.
+        # The base config only forward-declares DefaultLighting and every
+        # official world sets its own, so AEE overrides each world's Lighting
+        # with an explicit base.
+        worlds = ("CAWorld", "Stratis", "Altis", "VR", "Malden", "Enoch", "Tanoa")
+        for world in worlds:
+            lighting = _class_body(_class_body(SRC, world), "Lighting")
+            self.assertAlmostEqual(
+                _number(lighting, "starEmissivity"),
+                40.0,
+                places=5,
+                msg=f"{world}.Lighting.starEmissivity must be 40",
+            )
+
     def test_deep_night_and_full_night_arrays(self) -> None:
         bright = _class_body(SRC, "DayLightingBrightAlmost")
         rainy = _class_body(SRC, "DayLightingRainy")

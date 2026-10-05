@@ -29,8 +29,9 @@ class CfgPatches {
 // mod code or content is copied.  The base game config is read at run time
 // and is not shipped.
 //
-// starEmissivity scales the engine star draw.  It is set on DefaultLighting,
-// the class every world's Lighting inherits, so it reaches all worlds.  40
+// starEmissivity scales the engine star draw.  The engine reads it from the
+// world's own Lighting class.  The base config only forward-declares
+// DefaultLighting, so AEE overrides each official world's Lighting too.  40
 // sits mid-band between Fluffys (30) and Real Lighting (60).
 //
 // The NVG keys keep their calibration.  NVG objectives are fixed-aperture
@@ -41,8 +42,53 @@ class CfgPatches {
 //
 // DOFPars places the NVG focal plane at ~12 m (27 mm EFL, MIL-PRF-49427C).
 class CfgWorlds {
+    // starEmissivity scales the engine star draw.  The engine reads the value
+    // from the world's own Lighting class, not from DefaultLighting.  The base
+    // config forward-declares DefaultLighting and gives it no value, and every
+    // official world sets its own, so AEE overrides each world's Lighting.  A
+    // redefinition without a base clears the inherited base, so every block
+    // below names its base.  Real Lighting and Weather (Workshop 2809399991)
+    // and Fluffys (Workshop 3704702374, 3737586377) also override each world's
+    // Lighting.  40 sits mid-band between Fluffys (30) and Real Lighting (60).
+    // No mod content is copied.
     class DefaultLighting {
         starEmissivity = 40;
+    };
+    class DefaultWorld;
+    class CAWorld: DefaultWorld {
+        class Lighting: DefaultLighting {
+            starEmissivity = 40;
+        };
+    };
+    class Stratis: CAWorld {
+        class Lighting: DefaultLighting {
+            starEmissivity = 40;
+        };
+    };
+    class Altis: CAWorld {
+        class Lighting: DefaultLighting {
+            starEmissivity = 40;
+        };
+    };
+    class VR: CAWorld {
+        class Lighting: DefaultLighting {
+            starEmissivity = 40;
+        };
+    };
+    class Malden: CAWorld {
+        class Lighting: DefaultLighting {
+            starEmissivity = 40;
+        };
+    };
+    class Enoch: CAWorld {
+        class Lighting: DefaultLighting {
+            starEmissivity = 40;
+        };
+    };
+    class Tanoa: CAWorld {
+        class Lighting: DefaultLighting {
+            starEmissivity = 40;
+        };
     };
     class HDRNewPars {
         nvgApertureMin = 7;
