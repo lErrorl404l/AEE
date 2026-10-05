@@ -103,6 +103,11 @@ def main():
         "tools/tests/test_vehicle_corpus.py",
         "tools/tests/test_vehicle_coverage.py",
         "tools/tests/test_runtime_vehicles.py",
+        # Aircraft suites: test_aircraft catalogue, runtime, corpus and coverage.
+        "tools/tests/test_aircraft_catalogue.py",
+        "tools/tests/test_runtime_aircraft.py",
+        "tools/tests/test_aircraft_corpus.py",
+        "tools/tests/test_aircraft_coverage.py",
         "tools/tests/test_vehicle_mass_model.py",
         "tools/tests/test_vehicle_mass_estimate.py",
         "tools/tests/test_vehicle_mass_separation.py",
