@@ -3128,6 +3128,11 @@ private _p29Pass = 0;
     // hasInterface false, so the probe calls the entries with the handler
     // array directly.
     execVM "aee_p82_pfh_probe.sqf";
+    // PHASE 83 lives in aee_p83_grade_probe.sqf: the base-grade driver reads
+    // the vanilla config anchor and resolves the debug override above the
+    // hasInterface exit, so a dedicated server can still observe the resolved
+    // anchor and the default composed grade.  It renders nothing.
+    execVM "aee_p83_grade_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.

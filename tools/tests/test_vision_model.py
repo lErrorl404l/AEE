@@ -643,6 +643,7 @@ class TestPerceptionDriverContract(unittest.TestCase):
             "baseGradeCC",
             "baseGradeGrain",
             "visionModelActive",
+            "visionBaseResolved",
         ):
             self.assertIn(f"QGVAR({name})", code, f"state {name} is not published")
 
