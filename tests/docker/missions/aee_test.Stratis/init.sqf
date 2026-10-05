@@ -3139,6 +3139,11 @@ private _p29Pass = 0;
     // so the probe asserts bloom, tonemap, night shift, starEmissivity and
     // the DayLighting arrays directly.  It renders nothing.
     execVM "aee_p84_hdr_probe.sqf";
+    // PHASE 84B lives in aee_p84b_world_lighting_probe.sqf: the run-time world
+    // lighting matcher classifies the LOADED world from latitude, biome,
+    // terrain signals and weather, with no per-map entry, so it runs on every
+    // world the rotation loads.  It renders nothing.
+    execVM "aee_p84b_world_lighting_probe.sqf";
     // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
     // surface (scalar keys, no thermalProperties) and the TI command contract
     // resolve headless, so a dedicated server verifies what the StageTI
