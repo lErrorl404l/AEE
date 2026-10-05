@@ -167,11 +167,11 @@ class TestAnchorIsInTheWorldChain(unittest.TestCase):
                 f"class {name} must not be a direct CfgWorlds child",
             )
 
-    def test_required_addons_cover_the_worlds(self) -> None:
-        for world in WORLDS:
-            self.assertIn(
-                f'"A3_Map_{world}"', SRC, f"A3_Map_{world} must be a required addon"
-            )
+    def test_required_addons_anchor_the_load_order(self) -> None:
+        # A3_Data_F_Decade_Loadorder is the base-game load-order anchor.  The
+        # per-map names were dropped: the engine warns on A3_Map_Tanoa when the
+        # Apex map is not loaded, and a warning fails the run gate.
+        self.assertIn('"A3_Data_F_Decade_Loadorder"', SRC)
 
     def test_ca_world_hdr_inherits(self) -> None:
         self.assertRegex(CA_WORLD, r"class\s+HDRNewPars\s*:\s*HDRNewPars\s*\{")

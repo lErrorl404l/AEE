@@ -12,11 +12,7 @@ class CfgPatches {
             "aee_core",
             "cba_main",
             "cba_xeh",
-            "A3_Map_Stratis",
-            "A3_Map_Altis",
-            "A3_Map_Malden",
-            "A3_Map_Tanoa",
-            "A3_Map_Enoch"
+            "A3_Data_F_Decade_Loadorder"
         };
         author = AUTHOR;
         authors[] = AUTHORS;
