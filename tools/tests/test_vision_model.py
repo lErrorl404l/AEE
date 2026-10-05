@@ -41,6 +41,7 @@ COMPOSE_KERNEL = PERCEPTION / "fnc_perceptionParams.sqf"
 ILLUMINANT_KERNEL = PERCEPTION / "fnc_perceptionIlluminant.sqf"
 CHROMA_KERNEL = PERCEPTION / "fnc_perceptionChromaticAdaptation.sqf"
 MESOPIC_KERNEL = PERCEPTION / "fnc_perceptionMesopicColor.sqf"
+BASE_ANCHOR_KERNEL = PERCEPTION / "fnc_perceptionBaseGrade.sqf"
 
 OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
 OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
@@ -76,6 +77,7 @@ PERCEPTION_FUNCTIONS = [
     "perceptionIlluminant",
     "perceptionChromaticAdaptation",
     "perceptionMesopicColor",
+    "perceptionBaseGrade",
     "perceptionParams",
 ]
 
@@ -359,6 +361,82 @@ class TestPerceptionMesopicColor(unittest.TestCase):
         self.assertEqual(run_sqf(MESOPIC_KERNEL, [2]), [1, 1, 1, 0])
         _r, _g, _b, alpha = run_sqf(MESOPIC_KERNEL, [0, 0.9, 2])
         self.assertLessEqual(alpha, 0.5)
+
+
+class TestPerceptionBaseAnchor(unittest.TestCase):
+    """fnc_perceptionBaseGrade bounds the composed grade to the vanilla anchor.
+
+    The base game ships the neutral default grade brightness 1, contrast 1,
+    offset 0 (a3\\functions_f\\config.cpp line 3553 of functions_f.pbo, build
+    2025-08-11).  The kernel allows only a small bounded deviation: brightness
+    within 0.03 either side of the anchor, contrast 0.00 to 0.08 above it,
+    offset -0.02 to 0.00 from it, and a desaturation alpha 0 to 0.10.
+    """
+
+    def test_identity_inputs_return_the_anchor_and_zero_alpha(self):
+        self.assertEqual(
+            run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1, 1, 0], 1, 0]),
+            [1, 1, 0, 0],
+        )
+
+    def test_contrast_clamps_to_the_upper_bound(self):
+        # dc = (cT - 1) * s = 0.08 at cT 1.08, s 1.
+        _b, c, _o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1.08, 0], [1, 1, 0], 1, 0])
+        self.assertAlmostEqual(c, 1.08, places=9)
+
+    def test_contrast_cannot_fall_below_the_anchor(self):
+        _b, c, _o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 0.8, 0], [1, 1, 0], 1, 0])
+        self.assertAlmostEqual(c, 1.0, places=9)
+
+    def test_offset_clamps_to_the_lower_bound(self):
+        # do = oT * s = -0.02 at oT -0.02, s 1.
+        _b, _c, o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, -0.02], [1, 1, 0], 1, 0])
+        self.assertAlmostEqual(o, -0.02, places=9)
+
+    def test_offset_cannot_rise_above_the_anchor(self):
+        _b, _c, o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0.05], [1, 1, 0], 1, 0])
+        self.assertAlmostEqual(o, 0.0, places=9)
+
+    def test_brightness_clamps_to_each_bound(self):
+        b_hi, _c, _o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1.03, 1, 0], [1, 1, 0], 1, 0])
+        b_lo, _c, _o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[0.97, 1, 0], [1, 1, 0], 1, 0])
+        self.assertAlmostEqual(b_hi, 1.03, places=9)
+        self.assertAlmostEqual(b_lo, 0.97, places=9)
+
+    def test_alpha_clamps_to_the_upper_bound(self):
+        _b, _c, _o, a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1, 1, 0], 1, 0.10])
+        _b, _c, _o, a_over = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1, 1, 0], 1, 0.5])
+        self.assertAlmostEqual(a, 0.10, places=9)
+        self.assertAlmostEqual(a_over, 0.10, places=9)
+
+    def test_alpha_cannot_go_negative(self):
+        _b, _c, _o, a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1, 1, 0], 1, -1])
+        self.assertAlmostEqual(a, 0.0, places=9)
+
+    def test_out_of_range_input_still_returns_in_bound(self):
+        b, c, o, a = run_sqf(
+            BASE_ANCHOR_KERNEL, [[1e12, 1e12, 1e12], [1, 1, 0], 99, 99]
+        )
+        self.assertGreaterEqual(b, 0.97)
+        self.assertLessEqual(b, 1.03)
+        self.assertGreaterEqual(c, 1.0)
+        self.assertLessEqual(c, 1.08)
+        self.assertGreaterEqual(o, -0.02)
+        self.assertLessEqual(o, 0.0)
+        self.assertGreaterEqual(a, 0)
+        self.assertLessEqual(a, 0.10)
+
+    def test_malformed_tone_and_anchor_fall_back(self):
+        self.assertEqual(
+            run_sqf(BASE_ANCHOR_KERNEL, ["x", [1, 2], 1, 0]),
+            [1, 1, 0, 0],
+        )
+
+    def test_a_non_neutral_anchor_shifts_the_bounds(self):
+        b, c, o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1.1, 1.2, -0.05], 1, 0])
+        self.assertAlmostEqual(b, 1.1, places=9)
+        self.assertAlmostEqual(c, 1.2, places=9)
+        self.assertAlmostEqual(o, -0.05, places=9)
 
 
 def compose(args):
