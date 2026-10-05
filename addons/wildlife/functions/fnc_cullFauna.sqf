@@ -17,7 +17,7 @@ Returns:
 
 params [["_position", [0, 0, 0], [[]]]];
 
-private _fauna = missionNamespace getVariable [GVAR(fauna), []];
+private _fauna = missionNamespace getVariable [QGVAR(fauna), []];
 if !(_fauna isEqualType []) then { _fauna = []; };
 
 private _despawn = missionNamespace getVariable [QGVAR(despawnRadius), 600];
@@ -52,7 +52,7 @@ for "_i" from 0 to ((count _fauna) - 1) do {
             private _herdAnchor = _agent getVariable [QGVAR(herdAnchor), []];
             if (_herdAnchor isEqualType []) then {
                 private _class = _entry select 2;
-                private _herds = missionNamespace getVariable [GVAR(herds), []];
+                private _herds = missionNamespace getVariable [QGVAR(herds), []];
                 if (_herds isEqualType []) then {
                     for "_h" from 0 to ((count _herds) - 1) do {
                         private _row = _herds select _h;
@@ -75,6 +75,6 @@ for "_i" from 0 to ((count _fauna) - 1) do {
     };
 };
 
-missionNamespace setVariable [GVAR(fauna), _kept];
+missionNamespace setVariable [QGVAR(fauna), _kept];
 
 _kept

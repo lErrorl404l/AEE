@@ -63,7 +63,7 @@ missionNamespace setVariable [QGVAR(vegProvider), _vegProvider];
 private _herdSize = [QGVAR(herdSize), 4, 1] call EFUNC(core,readState);
 _herdSize = (round _herdSize) max 1;
 
-private _herds = missionNamespace getVariable [GVAR(herds), []];
+private _herds = missionNamespace getVariable [QGVAR(herds), []];
 if !(_herds isEqualType []) then { _herds = []; };
 private _herdAnchor = getPos _agent;
 private _found = false;
@@ -84,7 +84,7 @@ for "_i" from 0 to ((count _herds) - 1) do {
 };
 if (!_found) then {
     _herds pushBack [_species, _herdAnchor, 1];
-    missionNamespace setVariable [GVAR(herds), _herds];
+    missionNamespace setVariable [QGVAR(herds), _herds];
 };
 _agent setVariable [QGVAR(herdAnchor), _herdAnchor];
 

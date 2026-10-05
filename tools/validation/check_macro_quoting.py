@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
-"""Fail when a getVariable/setVariable name is the UNQUOTED EGVAR form.
+"""Fail when a getVariable/setVariable name is the UNQUOTED macro form.
 
-`EGVAR(component,name)` expands to the bare token `aee_component_name`. SQF
-reads a bare token as a variable reference, so
+`EGVAR(component,name)` expands to the bare token `aee_component_name`, and
+the one-part `GVAR(name)` expands to the bare token `aee_component_name` too.
+SQF reads a bare token as a variable reference, so
 
     missionNamespace getVariable [EGVAR(core,currentTemperature), 15]
+    missionNamespace getVariable [GVAR(manifest), []]
 
-passes a variable whose value is nil, not the String name. The read returns
+pass a variable whose value is nil, not the String name. The read returns
 the default silently, or raises "Type HashMap, expected String" when the
-default is not a String.
+default is not a String. The live incident: 125 "Undefined variable
+aee_wildlife_manifest" errors in a docker run.
 
-The correct form is QEGVAR, which yields the quoted name:
+The correct forms are QEGVAR and QGVAR, which yield the quoted name:
 
     missionNamespace getVariable [QEGVAR(core,currentTemperature), 15]
+    missionNamespace getVariable [QGVAR(manifest), []]
 
-This has now caused two incidents. The first was 72 sites across 52 files,
-found only in a client RPT. The second was a single site reintroduced while
-fixing the first, found by the docker harness. A rule stated in prose did
-not prevent the recurrence, so it is a lint.
+The EGVAR form has caused two incidents: the first was 72 sites across 52
+files, found only in a client RPT; the second was a single site reintroduced
+while fixing the first. The GVAR blind spot was the third: this lint saw only
+EGVAR, so the wildlife addon shipped unquoted GVAR keys to a server. A rule
+stated in prose did not prevent the recurrence, so it is a lint.
 
 Run:  python3 tools/validation/check_macro_quoting.py
 Exit 0 when clean, 1 on any unquoted name.

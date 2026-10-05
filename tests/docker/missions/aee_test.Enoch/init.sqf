@@ -41,8 +41,16 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
     private _rh = missionNamespace getVariable ["aee_core_currentHumidity", nil];
     private _rho = missionNamespace getVariable ["aee_core_currentAirDensity", nil];
     private _biome = missionNamespace getVariable ["aee_core_biome", nil];
+    // Nil-safe display: the probe keys can be unpublished, and format
+    // evaluates every argument, so an undefined private would throw here.
+    // The variables keep their nil value for the isNil assertions below.
+    private _tText = if (isNil "_t") then { "<nil>" } else { str _t };
+    private _pText = if (isNil "_p") then { "<nil>" } else { str _p };
+    private _rhText = if (isNil "_rh") then { "<nil>" } else { str _rh };
+    private _rhoText = if (isNil "_rho") then { "<nil>" } else { str _rho };
+    private _biomeText = if (isNil "_biome") then { "<nil>" } else { _biome };
     diag_log text format ["[AEE-TEST] tick sample: T=%1 P=%2 RH=%3 rho=%4 biome=%5",
-        _t, _p, _rh, _rho, _biome];
+        _tText, _pText, _rhText, _rhoText, _biomeText];
     // Map-wide biome verdict from the getBiome cache.  aee_core_biome
     // is overwritten by per-position detection during the tick wait
     // (issue #184), so read the classification cache instead.

@@ -45,7 +45,7 @@ if !(_forceBiome isEqualType "") then { _forceBiome = ""; };
 if (_forceBiome != "") then { _biome = _forceBiome; };
 
 private _isNight = sunOrMoon < 0.5;
-private _forceNight = missionNamespace getVariable ["aee_wildlife_forceNight", nil];
+private _forceNight = missionNamespace getVariable ["aee_wildlife_forceNight", 0];  // non-nil default: nil leaves a private undefined (SQF) and the isEqualType guard throws every tick
 if (_forceNight isEqualType false) then { _isNight = _forceNight; };
 
 private _nearWater = 0;
@@ -131,7 +131,7 @@ if ((count _signals) >= 2) then {
 };
 _vegScore = ((_vegScore max 0) min 1);
 
-private _manifest = missionNamespace getVariable [GVAR(manifest), []];
+private _manifest = missionNamespace getVariable [QGVAR(manifest), []];
 if !(_manifest isEqualType []) then { _manifest = []; };
 
 private _bed = [_biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount, _vegScore] call FUNC(soundBedForContext);
@@ -213,7 +213,7 @@ if (_ambient) then {
 // Fauna: spawn up to the remaining allowance, then cull what is out of range
 // or over the cap.  The spawn budget kernel owns the decision.
 if (_animals) then {
-    private _fauna = missionNamespace getVariable [GVAR(fauna), []];
+    private _fauna = missionNamespace getVariable [QGVAR(fauna), []];
     if !(_fauna isEqualType []) then { _fauna = []; };
 
     private _liveCount = 0;
@@ -232,7 +232,7 @@ if (_animals) then {
     private _budget = [0, _spawnRadius, _despawnRadius, _liveCount, _cap] call FUNC(spawnBudget);
     if (((_budget select 1)) && ((_budget select 0) > 0)) then {
         private _created = [_position, _budget select 0] call FUNC(spawnFauna);
-        missionNamespace setVariable [GVAR(fauna), _fauna + _created];
+        missionNamespace setVariable [QGVAR(fauna), _fauna + _created];
     };
 
     [_position] call FUNC(cullFauna);
