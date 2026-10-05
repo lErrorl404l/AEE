@@ -125,6 +125,7 @@ def main():
         "tools/tests/test_nvg_imperfections.py",
         "tools/tests/test_ai.py",
         "tools/tests/test_wildlife.py",
+        "tools/tests/test_ai_wildlife_soak.py",
         "tools/tests/test_sqf_nil_reads.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
