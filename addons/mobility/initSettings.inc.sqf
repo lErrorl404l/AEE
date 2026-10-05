@@ -5,6 +5,9 @@
 // mobility stringtable.
 
 // ── Flight Turbulence ──────────────────────────────────────────────────────
+// Applies atmospheric turbulence, gusts and wind shear to aircraft.  The
+// advanced and rotor-lib models take a PhysX force; the simple model takes a
+// local velocity delta.  Every application is gated to the owning machine.
 [
     QGVAR(flightTurbulence),
     "CHECKBOX",
@@ -18,6 +21,13 @@
 AEE_SETTING_SLIDER(turbulenceScale,"AEE Mobility","Turbulence",0,3,1,1);
 
 AEE_SETTING_SLIDER(turbulenceRadius,"AEE Mobility","Turbulence",500,5000,2000,0);
+
+// ── Airframe density and icing load ────────────────────────────────────────
+// Applies the published lift ratio and the FAR 25 App C icing state to a
+// locally-owned airframe as bounded lift/drag forces and an ice-mass delta.
+AEE_SETTING_CHECKBOX(flightAeroPenalty,"AEE Mobility","Flight",true);
+
+AEE_SETTING_SLIDER(airframeRadius,"AEE Mobility","Flight",500,5000,2000,0);
 
 // ── Traction ────────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(mudAccretionRate,"AEE Mobility","Hydrology",0,0.02,0.002,3);

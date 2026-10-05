@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Mobility">
+        <Key ID="STR_AEE_Mobility_airframeRadius_Description">
+            <Original>Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic.</Original>
+            <English>Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_airframeRadius_Name">
+            <Original>Airframe Load Radius</Original>
+            <English>Airframe Load Radius</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_baseflowRate_perDay_Description">
             <Original>Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention.</Original>
             <English>Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention.</English>
@@ -56,6 +64,14 @@
         <Key ID="STR_AEE_Mobility_estimateVehicleMassEnabled_Name">
             <Original>Vehicle Mass Estimate</Original>
             <English>Vehicle Mass Estimate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_flightAeroPenalty_Description">
+            <Original>Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe.</Original>
+            <English>Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_flightAeroPenalty_Name">
+            <Original>Airframe Density and Icing Load</Original>
+            <English>Airframe Density and Icing Load</English>
         </Key>
         <Key ID="STR_AEE_Mobility_flightTurbulence_Description">
             <Original>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</Original>

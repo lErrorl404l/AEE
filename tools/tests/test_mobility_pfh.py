@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Structural checks on AEE's three client-side per-frame loops.
+"""Structural checks on AEE's client-side per-frame loops.
 
-`addons/mobility/XEH_postInit.sqf` runs three handlers at interval 0, which
-in Arma 3 is every frame.  Two of them cache a candidate list on a refresh
-timer, and the turbulence loop does the same through a mission variable.
-Each list was built from `vehicles` with no radius test, so the per-frame
-loop ran a distance check against every ground vehicle in the world.  Three
-per-frame world scans is a stutter.
+`addons/mobility/XEH_postInit.sqf` runs five handlers at interval 0.05 s
+(20 Hz, not every rendered frame).  Each handler caches a candidate list on a
+refresh timer, and the turbulence loop does the same through a mission
+variable.  Each list was built from `vehicles` with no radius test, so the
+per-frame loop ran a distance check against every ground vehicle in the world.
+Three per-frame world scans is a stutter.
 
 The radius test has to live in the REFRESH, not in the per-frame loop.  This
 reads the SOURCE, because a mirror of the loop would prove nothing about the
@@ -40,10 +40,12 @@ class TestPerFrameRadiusFiltering(unittest.TestCase):
         self.post = _code_only(_POST_INIT.read_text(encoding="utf-8"))
         self.turb = _code_only(_TURBULENCE.read_text(encoding="utf-8"))
 
-    def test_post_init_runs_three_interval_zero_handlers(self):
+    def test_post_init_runs_five_per_frame_handlers(self):
         """Guard the premise: these loops are the per-frame cost."""
-        count = len(re.findall(r"\}, 0\] call CBA_fnc_addPerFrameHandler", self.post))
-        self.assertEqual(count, 3, f"expected 3 interval-0 handlers, found {count}")
+        count = len(
+            re.findall(r"\}, 0\.05\] call CBA_fnc_addPerFrameHandler", self.post)
+        )
+        self.assertEqual(count, 5, f"expected 5 0.05 s handlers, found {count}")
 
     def test_rollover_radius_is_in_the_refresh(self):
         refresh = self.post.index("if ((time - GVAR(rolloverRefresh)) > 1) then")

@@ -26,6 +26,41 @@ END_COUNTER(applyFlightTurbulence);
     AEE_LOG_INFO("flight turbulence PFH started");
 };
 
+// Per-frame airframe density and icing load: the published lift ratio and the
+// FAR 25 App C icing state become bounded lift/drag forces and an ice-mass
+// delta.  The candidate list is cached on the same 1 s refresh the other
+// loops use.  The applied function gates on local ownership.
+if (GVAR(flightAeroPenalty)) then {
+    GVAR(airframeVehicles) = [];
+    GVAR(airframeRefresh) = -1;
+
+    GVAR(airframeLoadPFH) = [{
+        private _perfT0 = diag_tickTime;
+        private _ref = [worldSize / 2, worldSize / 2, 0];
+        private _player = call CBA_fnc_currentUnit;
+        if (!isNil "_player" && {!isNull _player}) then {
+            _ref = getPosATL _player;
+        };
+
+        if ((time - GVAR(airframeRefresh)) > 1) then {
+            GVAR(airframeVehicles) = vehicles select {
+                (alive _x) && {(_x isKindOf "Air")} && {!(_x isKindOf "ParachuteBase")} && {(_x distance _ref) < GVAR(airframeRadius)}
+            };
+            GVAR(airframeRefresh) = time;
+        };
+
+        {
+            BEGIN_COUNTER(applyAirframeLoad);
+            [_x] call FUNC(applyAirframeLoad);
+            END_COUNTER(applyAirframeLoad);
+        } forEach GVAR(airframeVehicles);
+        private _perfMsg = format ["airframeLoad %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(airframeVehicles)];
+        AEE_LOG_DEBUG(_perfMsg);
+    }, 0.05] call CBA_fnc_addPerFrameHandler;
+
+    AEE_LOG_INFO("airframe density/icing PFH started");
+};
+
 // Per-frame vehicle rollover: tips a vehicle whose sustained lateral
 // acceleration exceeds its Static Stability Factor threshold (#108).  The
 // vehicle list is cached and refreshed, so the loop does not scan the world

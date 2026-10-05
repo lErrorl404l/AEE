@@ -10,9 +10,17 @@ currentWind, currentWindDir, currentAirDensity) and applies a smoothed gust
 vector to every airborne, moving aircraft within range of a player or the
 mission centre.
 
-Simple Flight Model (SFM) aircraft receive the gust as a velocity delta via
-setVelocity. Advanced Flight Model (ASM) aircraft receive it as a force via
-addForce, scaled by mass.
+The advanced flight model (the scenario-global flag difficultyEnabledRTD)
+and any rotor-lib airframe (the RotorLibHelicopterProperties class) receive
+the gust as a PhysX force via addForce, with a bounded addTorque attitude
+nudge for a rotary airframe.  The simple model receives a local velocity
+delta via setVelocity.  Every application is gated to the machine that owns
+the object, so a remote client or a dedicated server never writes another
+machine's velocity state.
+
+The engine has no "AdvancedFlightModel" class.  The old gate tested for it,
+matched nothing, and left the addForce branch dead.  The correct gate is the
+difficulty flag and the rotor-lib property above.
 
 Wind shear: when gusts exceed 15 m/s, a deterministic horizontal impulse is
 added on a fixed roll so all clients agree.
@@ -89,9 +97,13 @@ if (_gusts > 15) then {
 private _state = missionNamespace getVariable [QGVAR(turbulenceState), []];
 private _newState = [];
 
+// The advanced model is a scenario-global flag, so read it once per call.
+private _rtd = difficultyEnabledRTD;
+
 private _candidates = _aircraft select {
     (!isNull _x) &&
     (alive _x) &&
+    (local _x) &&
     (((getPosATL _x) select 2) > 3) &&
     (speed _x > 10)
 };
@@ -121,22 +133,41 @@ private _candidates = _aircraft select {
     private _newSmooth = _smooth vectorAdd ((_target vectorDiff _smooth) vectorMultiply 0.1);
     _newState pushBack [_veh, _newSmooth];
 
-    // Apply — SFM via velocity delta, ASM via force
-    // ponytail: addVectorUp does not exist in Arma 3; addForce is the
-    // engine command for external forces on ASM aircraft (reference mod).
-    private _isASM = isClass (configOf _veh >> "AdvancedFlightModel");
-    if (_isASM) then {
-        private _mass = getMass _veh;
-        _veh addForce [(_newSmooth vectorMultiply (_densityFactor * _mass / 100)), [0, 0, 0]];
+    // ─── Apply ─────────────────────────────────────────────────────────
+    // The advanced model is the global difficulty flag and a rotor-lib
+    // airframe is identified by its own property class.  The old test for an
+    // "AdvancedFlightModel" class matched nothing, so this branch never ran.
+    private _rotorLib = isClass (configOf _veh >> "RotorLibHelicopterProperties");
+    private _physical = ([_rtd, _rotorLib] call FUNC(resolveFlightModel)) == 1;
+
+    private _mass = getMass _veh;
+    if (_mass <= 0) then { _mass = AERO_DEFAULT_AIRCRAFT_MASS_KG; };
+
+    if (_physical) then {
+        private _smoothMag = vectorMagnitude _newSmooth;
+        private _forceN = [_smoothMag, _densityFactor, _mass] call FUNC(calculateTurbulenceForce);
+        if (_forceN > 0) then {
+            private _dir = [0, 0, 0];
+            if (_smoothMag > 0) then { _dir = vectorNormalized _newSmooth; };
+            _veh addForce [_dir vectorMultiply _forceN, [0, 0, 0]];
+            // A rotary airframe also takes a bounded attitude nudge, so the
+            // gust rolls and yaws the machine and not only translates it.
+            if (_rotorLib) then {
+                private _torque = (_dir vectorCrossProduct [0, 0, 1]) vectorMultiply (_forceN * TURBULENCE_TORQUE_FRACTION);
+                _veh addTorque [_torque, false];
+            };
+        };
     } else {
+        // Simple model: a LOCAL velocity delta, applied on the owning machine
+        // only.  It is no longer the sole path; the advanced and rotor-lib
+        // models take the physical path above.
         _veh setVelocity ((velocity _veh) vectorAdd _newSmooth);
     };
 
-    // Wind-shear kick
+    // Wind-shear kick, same model split.
     if (_shearVec isNotEqualTo [0, 0, 0]) then {
-        if (_isASM) then {
-            private _mass = getMass _veh;
-            _veh addForce [_shearVec vectorMultiply (_mass / 100), [0, 0, 0]];
+        if (_physical) then {
+            _veh addForce [_shearVec vectorMultiply (_mass / TURBULENCE_FORCE_DIVISOR), [0, 0, 0]];
         } else {
             _veh setVelocity ((velocity _veh) vectorAdd _shearVec);
         };

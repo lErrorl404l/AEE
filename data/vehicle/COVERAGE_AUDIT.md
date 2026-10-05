@@ -9,12 +9,12 @@ with no recorded row is `lead`. A ground token with no lead is
 `no_source`. A non-ground token is `excluded_non_ground`. A token
 never leaves the inventory in silence.
 
-- Tokens: 36
+- Tokens: 37
 - Ground tokens: 7
 - recorded: 6
 - lead: 0
 - no_source: 1
-- excluded_non_ground: 29
+- excluded_non_ground: 30
 - Runtime rows: 6
 
 ## Ground tokens
@@ -54,6 +54,7 @@ never leaves the inventory in silence.
 | `LandVehicle` | no positive ground class-table row |
 | `Man` | no positive ground class-table row |
 | `Motorcycle` | no positive ground class-table row |
+| `ParachuteBase` | no positive ground class-table row |
 | `Plane` | no positive ground class-table row |
 | `ReammoBox` | no positive ground class-table row |
 | `Ruins` | no positive ground class-table row |

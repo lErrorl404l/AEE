@@ -306,6 +306,13 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
 
+## AEE Mobility → Flight
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_airframeRadius` | SLIDER | `2000` | yes | mobility | Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic. |
+| `aee_mobility_flightAeroPenalty` | CHECKBOX | `true` | yes | mobility | Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe. |
+
 ## AEE Mobility → Hydrology
 
 | Setting | Type | Default | Global | Addon | Purpose |
