@@ -1,5 +1,6 @@
 PREP(applyFlightTurbulence);
 PREP(applyAirframeLoad);
+PREP(logAirframeState);
 PREP(resolveFlightModel);
 PREP(calculateTurbulenceForce);
 PREP(calculateAeroPenalty);

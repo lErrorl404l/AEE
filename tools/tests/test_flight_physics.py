@@ -46,6 +46,7 @@ TURB_FORCE = FUNCS / "fnc_calculateTurbulenceForce.sqf"
 AERO_PENALTY = FUNCS / "fnc_calculateAeroPenalty.sqf"
 APPLY_AIR = FUNCS / "fnc_applyAirframeLoad.sqf"
 APPLY_TURB = FUNCS / "fnc_applyFlightTurbulence.sqf"
+LOG_AIRFRAME = FUNCS / "fnc_logAirframeState.sqf"
 
 G = 9.80665
 
@@ -279,6 +280,42 @@ class TestApplyAirframeLoadContract(unittest.TestCase):
 
     def test_drag_uses_the_declared_area(self):
         self.assertIn("AERO_DRAG_AREA_M2", self.src)
+
+
+class TestAirframeStateConsumer(unittest.TestCase):
+    """The applied penalties have a real consumer on the mobility debug gate.
+
+    fnc_applyAirframeLoad publishes airLiftLoss, airDragRise, airIceMassKg and
+    airLiftRatioApplied.  Before this consumer nothing read them.  Removing the
+    state line fails these tests and makes validate_cba_settings.py report the
+    four names as orphan writes again.
+    """
+
+    def setUp(self):
+        self.consumer = _code_only(LOG_AIRFRAME.read_text(encoding="utf-8"))
+        self.post = _code_only(POST_INIT.read_text(encoding="utf-8"))
+
+    def test_reads_every_published_penalty(self):
+        for name in (
+            "airLiftLoss",
+            "airDragRise",
+            "airIceMassKg",
+            "airLiftRatioApplied",
+        ):
+            with self.subTest(name=name):
+                self.assertIn(f"QGVAR({name})", self.consumer)
+
+    def test_the_consumer_is_gated_on_the_trace_switch(self):
+        self.assertIn("if (!AEE_TRACE_ON) exitWith", self.consumer)
+        self.assertIn("airframe state | applied", self.consumer)
+
+    def test_post_init_runs_the_state_line_at_one_hertz(self):
+        self.assertIn("FUNC(logAirframeState)", self.post)
+        self.assertIn("}, 1.0] call CBA_fnc_addPerFrameHandler", self.post)
+
+    def test_prep_registers_the_consumer(self):
+        prep = PREP.read_text(encoding="utf-8")
+        self.assertIn("PREP(logAirframeState)", prep)
 
 
 class TestWiring(unittest.TestCase):

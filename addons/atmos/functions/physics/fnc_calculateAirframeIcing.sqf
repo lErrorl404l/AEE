@@ -67,4 +67,17 @@ missionNamespace setVariable [QGVAR(iceAccretion_kg), _iceMass];
 missionNamespace setVariable [QGVAR(airframeIcing), _severity];
 missionNamespace setVariable [QGVAR(airframeIcingDetected), _detected];
 
+// The published detection flag is the observable state of the icing chain.
+// The atmos debug gate carries the line, so the operator forces it with
+// aee_atmos_logDebug or aee_core_logDebug.  The guard means no read and no
+// message build when the gate is off.
+if (AEE_TRACE_ON) then {
+    private _detectedState = missionNamespace getVariable [QGVAR(airframeIcingDetected), false];
+    private _icingMsg = format [
+        "airframe icing | detected=%1 severity=%2 iceMassKg=%3",
+        _detectedState, round (_severity * 1000) / 1000, round (_iceMass * 100) / 100
+    ];
+    AEE_LOG_DEBUG(_icingMsg);
+};
+
 _severity
