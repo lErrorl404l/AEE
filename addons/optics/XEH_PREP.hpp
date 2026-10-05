@@ -44,6 +44,9 @@ PREPS(vision,dtvHostTick);
 PREPS(vision,dtvHostStart);
 PREPS(vision,dtvHostStop);
 PREPS(vision,calculateViewDistance);
+// Scene-aware shadow distance (aee-workshop-copy item 6).
+PREPS(vision,shadowSamplePattern);
+PREPS(vision,shadowClassifyScene);
 PREPS(vision,ppEffectCreate);
 PREPS(vision,destroyBasePostProcess);
 PREPS(vision,weatherGrainParams);
