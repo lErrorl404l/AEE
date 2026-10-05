@@ -62,7 +62,8 @@ if (isNil "_driver" || isNil "_compose") then {
     };
 
     // 3. The default composition has seven elements and the identity colour
-    //    slots: no tint (colorize alpha 0) and the Rec.709 luma weights.
+    //    slots: the engine's own neutral post-process (colorize alpha 1, zero
+    //    desaturation weights), as the base game's Default template ships it.
     private _params = [
         100,        // adapted luminance, cd/m2 (a photopic day)
         1,          // mesopic fraction 1, photopic
@@ -81,8 +82,8 @@ if (isNil "_driver" || isNil "_compose") then {
     private _composeOk = false;
     if (_cc isEqualType []) then {
         if ((count _cc) isEqualTo 7) then {
-            if ((_cc select 4) isEqualTo [1, 1, 1, 0]) then {
-                if ((_cc select 5) isEqualTo [0.2126, 0.7152, 0.0722, 0]) then {
+            if ((_cc select 4) isEqualTo [1, 1, 1, 1]) then {
+                if ((_cc select 5) isEqualTo [0, 0, 0, 0]) then {
                     _composeOk = true;
                 };
             };

@@ -115,8 +115,11 @@ missionNamespace setVariable [QGVAR(visionBaseResolved), _baseAnchor];
 private _standDown = {
     params ["_hCC", "_hAcuity"];
     if (_hCC >= 0) then {
-        // Identity: colorize alpha 0 keeps the original colour; alpha 1 is B&W.
-        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]];
+        // Identity: the engine's own neutral post-process
+        // (CfgPostProcessTemplates >> Default >> colorCorrections =
+        // {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}}): colorize alpha 1, zero
+        // desaturation weights.  A colorize alpha of 0 drains colour to grey.
+        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], [-1,-1,0,0,0,0,0]];
         _hCC ppEffectCommit 0;
         _hCC ppEffectEnable false;
     };

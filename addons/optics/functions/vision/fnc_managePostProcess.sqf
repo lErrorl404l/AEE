@@ -179,8 +179,10 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
     };
     if (missionNamespace getVariable [QGVAR(ccActive), false]) then {
         if (_hCC >= 0) then {
-            // Identity: colorize alpha 0 keeps the original colour; alpha 1 is B&W.
-            _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]];
+            // Identity: the engine's own neutral post-process
+            // (CfgPostProcessTemplates >> Default >> colorCorrections =
+            // {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}}): colorize alpha 1, zero weights.
+            _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], [-1,-1,0,0,0,0,0]];
             _hCC ppEffectCommit 1;
         };
         private _gen = missionNamespace getVariable [QGVAR(ccGen), 0];
@@ -327,8 +329,10 @@ if (_ccOn) then {
 } else {
     if (_ccActive) then {
         // Fade to neutral over 5 s, then disable if still neutral
-        // Identity: colorize alpha 0 keeps the original colour; alpha 1 is B&W.
-        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]];
+        // Identity: the engine's own neutral post-process
+        // (CfgPostProcessTemplates >> Default >> colorCorrections =
+        // {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}}): colorize alpha 1, zero weights.
+        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], [-1,-1,0,0,0,0,0]];
         _hCC ppEffectCommit 5;
         private _gen = missionNamespace getVariable [QGVAR(ccGen), 0];
         [{

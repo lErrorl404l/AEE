@@ -9,10 +9,12 @@ parameter arrays the engine effects consume.
 
 The ColorCorrections contract is [brightness, contrast, offset, blend,
 colorize, weights, radial] (BIKI Post Process Effects, capture 20240220225631).
-The colorize alpha (the fourth value of slot 4) is the desaturation amount: 0
-keeps the original colour, 1 is black and white times the colorize colour.  The
-identity alpha is 0.  The weight array (slot 5) is the Rec.709 luma
-(0.2126, 0.7152, 0.0722), its fourth value fixed 0.
+The identity is the engine's OWN neutral, not a BIKI-table guess: the base
+game's CfgPostProcessTemplates >> Default >> colorCorrections =
+{1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}} (functions_f.pbo, applied verbatim by
+fn_setppeffecttemplate) renders colour with colorize alpha 1 and all-zero
+weights.  The colour stage overrides the identity with the Rec.709 luma weights
+(0.2126, 0.7152, 0.0722), fourth value fixed 0, only when it is active.
 
 Tone stage: fnc_perceptionToneResponse maps the adapted scene luminance to the
 display brightness, contrast and black point.  fnc_perceptionBaseGrade then
@@ -80,13 +82,22 @@ private _alpha = _grade select 3;
 // The colour stage is off when white balance is off and the scene is photopic,
 // so the array stays the identity.
 private _blend = [0, 0, 0, 0];
-private _colorize = [1, 1, 1, _alpha];
+// The identity MUST be the engine's own neutral post-process:
+// CfgPostProcessTemplates >> Default >> colorCorrections =
+// {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}} (functions_f.pbo; fn_setppeffecttemplate
+// feeds that array straight to ppEffectAdjust).  The base game renders colour
+// with it: colorize alpha 1 and all-zero desaturation weights.  The colour
+// stage only overrides it when active, so the default photopic image keeps the
+// original colour.
+private _colorize = [1, 1, 1, 1];
+private _weights = [0, 0, 0, 0];
 if (_whiteBalance || (_mesopicW < 1)) then {
     private _meso = [_mesopicW, _desatMax, _purkinjeStrength] call FUNC(perceptionMesopicColor);
     // A zero mesopic alpha is the identity: keep the neutral colour and the
     // bounded desaturation alpha, so the default settings never tint.
     if ((_meso select 3) > 0) then {
-        _colorize = [_meso select 0, _meso select 1, _meso select 2, _alpha];
+        _colorize = [_meso select 0, _meso select 1, _meso select 2, 1 - _alpha];
+        _weights = [0.2126, 0.7152, 0.0722, 0];
     };
     if (_whiteBalance) then {
         private _illum = [_illuminant] call FUNC(perceptionIlluminant);
@@ -100,7 +111,7 @@ private _cc = [
     _offset,
     _blend,
     _colorize,
-    [0.2126, 0.7152, 0.0722, 0],
+    _weights,
     [-1, -1, 0, 0, 0, 0, 0]
 ];
 

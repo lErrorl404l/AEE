@@ -16,7 +16,7 @@ The engine limits the work. Arma 3 renders a low dynamic range image through a f
 
 2. The new pure kernels live in `addons/optics/functions/perception/`. They compute stages 2, 4 and 5. Stage 1 is read from the eye model and never written. Stage 3 is a stated ceiling, because the engine cannot filter. The kernels are pure. They use no missionNamespace, no GVAR or EGVAR, and no engine command. `tools/tests/sqf_lite.py` runs them in the test suite.
 
-3. The model ships in three slices. Slice 1 ships the light and tone stage. Slice 2 ships the colour and tint stage. Slice 3 enables the model by default. The default switch is on. The photopic default keeps the colorize alpha at 0, so the default image is not desaturated. At the real CBA defaults the tone stage is active, so a full-identity assertion runs on the all-stages-neutral fixture, not on the CBA defaults.
+3. The model ships in three slices. Slice 1 ships the light and tone stage. Slice 2 ships the colour and tint stage. Slice 3 enables the model by default. The default switch is on. The photopic default keeps the engine's own neutral colorize (alpha 1, zero weights), so the default image is not desaturated. At the real CBA defaults the tone stage is active, so a full-identity assertion runs on the all-stages-neutral fixture, not on the CBA defaults.
 
 4. The perception path subsumes the aesthetic base grade in place. The driver `addons/optics/functions/grade/fnc_applyBaseGrade.sqf` gains one branch. When the model is on, the driver calls `FUNC(perceptionParams)`. Otherwise it calls `FUNC(baseGradeParams)`. The operator reverses the branch through the `visionModelEnabled` setting. The legacy kernel output is unchanged.
 
@@ -26,13 +26,13 @@ The engine limits the work. Arma 3 renders a low dynamic range image through a f
 
 7. The white target is the display white D65. The scene illuminant is the engine ambient colour from `getLightingAt`. The adaptation is a partial von Kries blend. The engine has no cone matrix, so the ColorCorrections blend slot carries a small complementary tint in the display domain.
 
-8. A gap-closing test pins the contract and the identity image. `TestColorCorrectionsContract` pins the seven-element shape and each slot role. `TestNeutralFixtureIdentity` asserts the all-stages-neutral fixture. `TestDefaultPathColorizeAlpha` asserts the photopic default colorize alpha is 0. `TestIdentityDetectsDesaturation` proves the suite detects the black-and-white class. That class drained normal vision to grey, and no machine gate caught it before.
+8. A gap-closing test pins the contract and the identity image. `TestColorCorrectionsContract` pins the seven-element shape and each slot role. `TestNeutralFixtureIdentity` asserts the all-stages-neutral fixture. `TestDefaultPathColorizeAlpha` asserts the photopic default colorize is the engine neutral (alpha 1, zero weights). `TestIdentityDetectsDesaturation` proves the suite detects the black-and-white class. That class drained normal vision to grey, and no machine gate caught it before.
 
 9. The model runs inside the existing 1.0 s client PFH. It adds at most one engine read per tick (`getLightingAt`). The pure kernels are arithmetic over a few numbers. It does not touch the 5 ms `aee_core_fnc_updateEnvironment` gate.
 
 10. The model anchors the normal-vision grade to the base game's own default grade. AEE reads the class `CfgPostProcessTemplates >> Default >> colorCorrections` from `a3\functions_f\config.cpp` line 3553 of `functions_f.pbo` (build 2025-08-11) at run time. The read runs once per session and the result is cached. The value is neutral: brightness 1, contrast 1, offset 0. AEE keeps the scalar triple `[1, 1, 0]`. AEE never ships or copies the full vanilla array. The weight array and the colorize array are AEE's own. When the raw array is absent, malformed or out of range, AEE falls back to `[1, 1, 0]` with the same source.
 
-11. The grade is the anchor plus a small bounded deviation, computed in `fnc_perceptionBaseGrade`. The bounds are contrast +0.00 to +0.08, offset -0.02 to 0.00, brightness -0.03 to +0.03 and a desaturation alpha 0 to 0.10. The default tone strength is 0.25. On the neutral vanilla anchor the default grade is about contrast 1.04, brightness 1.0, offset -0.008 and colorize `[1, 1, 1, 0]`. Contrast may only rise and the black point may only deepen, so the grade cannot flatten or wash out the image.
+11. The grade is the anchor plus a small bounded deviation, computed in `fnc_perceptionBaseGrade`. The bounds are contrast +0.00 to +0.08, offset -0.02 to 0.00, brightness -0.03 to +0.03 and a desaturation alpha 0 to 0.10. The default tone strength is 0.25. On the neutral vanilla anchor the default grade is about contrast 1.04, brightness 1.0, offset -0.008 and the engine-neutral colorize `[1, 1, 1, 1]` with zero weights. Contrast may only rise and the black point may only deepen, so the grade cannot flatten or wash out the image.
 
 12. The default path ships no tint. `visionPurkinjeStrength` defaults to 0, `visionMesopicDesaturation` defaults to 0 and `visionWhiteBalance` defaults to false. At those defaults the mesopic kernel returns `[1, 1, 1, 0]` for every mesopic fraction, and the blend stays `[0, 0, 0, 0]`. The mesopic, illuminant and chromatic-adaptation kernels stay as the opt-in experimental path. The mesopic band is 0.005 to 5.0 cd/m2 (CIE 191:2010). The Purkinje hue direction is blue-green toward 507 nm (CIE 1951).
 
@@ -86,7 +86,7 @@ Every new constant is listed with its source, or marked UNSOURCED. The executor 
 | D50 white | x 0.3457, y 0.3585 | fixed | SOURCED: CIE 15:2004. |
 | Rec.709 luma weights | 0.2126, 0.7152, 0.0722 | fixed | SOURCED: ITU-R BT.709-6. |
 | ColorCorrections slot order | brightness, contrast, offset, blend, colorize, weights, radial | fixed | SOURCED: BIKI Post Process Effects, Wayback capture 2024-02-20. |
-| ColorCorrections identity | colorize alpha 0 | fixed | SOURCED: BIKI, alpha 0 is original colour, alpha 1 is B&W times the colour. |
+| ColorCorrections identity | colorize alpha 1, zero weights | fixed | SOURCED: the engine's own neutral, CfgPostProcessTemplates >> Default >> colorCorrections = {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}} (functions_f.pbo). |
 | Radial default | -1, -1, 0, 0, 0, 0, 0 | fixed | SOURCED: BIKI, Arma 3 radial default. |
 | FilmGrain defaults | 0.005, 1.25, 2.01, 0.75, 1.0, 0 | fixed | SOURCED: BIKI, Arma 3 defaults. |
 | Reference illuminance anchors | 0.0001 lx to 100000 lx | fixed | SOURCED: IES Handbook and CIE 011, secondary restatement. |

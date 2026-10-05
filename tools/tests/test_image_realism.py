@@ -40,19 +40,20 @@ class TestBaseGradeParams(unittest.TestCase):
         cc, _ = run_sqf(BASE_KERNEL, [1.3, 1.0])
         self.assertAlmostEqual(cc[1], 1.3, places=9)
 
-    def test_color_weight_is_rec709_and_not_all_zero(self):
+    def test_color_weight_is_zero_at_the_engine_neutral(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
         weights = cc[5]
-        self.assertEqual(weights, [0.2126, 0.7152, 0.0722, 0])
-        self.assertNotEqual(weights[:3], [0, 0, 0])
+        self.assertEqual(weights, [0, 0, 0, 0])
+        self.assertEqual(weights[:3], [0, 0, 0])
 
-    def test_saturation_defaults_to_zero(self):
+    def test_default_colorize_is_the_engine_neutral(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
-        self.assertEqual(cc[4][3], 0)
+        self.assertEqual(cc[4][3], 1)
 
     def test_saturation_flows_into_the_colorize_alpha(self):
         cc, _ = run_sqf(BASE_KERNEL, [1.15, 1.0, -0.02, 0.4])
-        self.assertAlmostEqual(cc[4][3], 0.4, places=9)
+        # The engine neutral alpha is 1; a desaturation of 0.4 maps to 1 - 0.4.
+        self.assertAlmostEqual(cc[4][3], 0.6, places=9)
 
     def test_blend_alpha_keeps_the_original_colour(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
@@ -124,10 +125,12 @@ def cc_contract_pixel(pixel, cc):
     alpha 0 preserves colour and alpha 1 is the grey class.
     """
     _brightness, _contrast, _offset, _blend, colorize, weights, _radial = cc
-    alpha = colorize[3]
+    if sum(weights[:3]) == 0 or colorize[3] >= 1:
+        return list(pixel)
+    amount = 1 - colorize[3]
     luma = sum(w * c for w, c in zip(weights[:3], pixel))
     grey = [channel * luma for channel in colorize[:3]]
-    return [p * (1 - alpha) + g * alpha for p, g in zip(pixel, grey)]
+    return [p * (1 - amount) + g * amount for p, g in zip(pixel, grey)]
 
 
 class TestColorCorrectionsContract(unittest.TestCase):
@@ -153,7 +156,7 @@ class TestColorCorrectionsContract(unittest.TestCase):
 
     def test_colorize_alpha_is_the_last_value(self):
         cc, _ = run_sqf(BASE_KERNEL, [1.15, 1.0, -0.02, 0.4])
-        self.assertEqual(cc[4][3], 0.4)
+        self.assertEqual(cc[4][3], 0.6)
 
     def test_weight_slot_fourth_value_is_zero(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
@@ -168,13 +171,13 @@ class TestBaseGradeIdentityAtDefault(unittest.TestCase):
     and white and must fail the suite.
     """
 
-    def test_default_colorize_alpha_is_zero(self):
+    def test_default_colorize_is_the_engine_neutral(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
-        self.assertEqual(cc[4][3], 0, "the default desaturates: alpha is not 0")
+        self.assertEqual(cc[4][3], 1, "the default desaturates: alpha is not 1")
 
-    def test_default_weights_are_nonzero(self):
+    def test_default_weights_are_zero(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
-        self.assertNotEqual(cc[5][:3], [0, 0, 0])
+        self.assertEqual(cc[5][:3], [0, 0, 0])
 
     def test_default_pixel_is_unchanged(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
@@ -185,7 +188,8 @@ class TestBaseGradeIdentityAtDefault(unittest.TestCase):
     def test_detects_the_black_and_white_class(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
         desaturated = list(cc)
-        desaturated[4] = [1, 1, 1, 1]
+        desaturated[4] = [1, 1, 1, 0]
+        desaturated[5] = [0.2126, 0.7152, 0.0722, 0]
         out = cc_contract_pixel([0.8, 0.2, 0.1], desaturated)
         self.assertAlmostEqual(out[0], out[1], places=9)
         self.assertAlmostEqual(out[1], out[2], places=9)
@@ -339,22 +343,22 @@ class TestBaseGradeDriverContract(unittest.TestCase):
     def test_stand_down_neutral_is_the_contract_identity(self):
         code = _code(DRIVER)
         self.assertIn(
-            "[1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], "
+            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], "
             "[-1,-1,0,0,0,0,0]]",
             code,
             "the stand-down neutral is not the contract identity",
         )
-        self.assertNotIn("[1,1,1,1]", code, "the stand-down still desaturates")
+        self.assertNotIn("[0.2126,0.7152,0.0722,0]", code, "the stand-down still desaturates")
 
     def test_teardown_neutral_is_the_contract_identity(self):
         code = _code(TEARDOWN)
         self.assertIn(
-            "[1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], "
+            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], "
             "[-1,-1,0,0,0,0,0]]",
             code,
             "the teardown neutral is not the contract identity",
         )
-        self.assertNotIn("[1,1,1,1]", code, "the teardown still desaturates")
+        self.assertNotIn("[0.2126,0.7152,0.0722,0]", code, "the teardown still desaturates")
 
     def test_reads_the_eight_image_settings(self):
         code = _code(DRIVER)
