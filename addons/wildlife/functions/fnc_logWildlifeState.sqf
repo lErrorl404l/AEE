@@ -101,10 +101,6 @@ private _animals = missionNamespace getVariable [QGVAR(animalsEnabled), false];
 if !(_animals isEqualType true) then { _animals = false; };
 private _density = missionNamespace getVariable [QGVAR(density), 1.0];
 if !(_density isEqualType 0) then { _density = 1.0; };
-// The interval is read with the gates so the on-demand monitor reports one value.
-private _tickInterval = missionNamespace getVariable [QGVAR(tickInterval), 1.0];
-if !(_tickInterval isEqualType 0) then { _tickInterval = 1.0; };
-
 private _forceBiome = missionNamespace getVariable ["aee_wildlife_forceBiome", ""];
 if !(_forceBiome isEqualType "") then { _forceBiome = ""; };
 // The tick applies a Bool hook only.  A number is the off sentinel.  Render
@@ -121,16 +117,12 @@ private _forceSpecies = missionNamespace getVariable ["aee_wildlife_forceSpecies
 if !(_forceSpecies isEqualType "") then { _forceSpecies = ""; };
 
 // The tick duration is written by fnc_wildlifeTick only inside the trace
-// gate.  The token carries the last recorded tick and the configured tick
-// interval, both in ms, as "measured/interval"; the measured part is "-"
-// with tracing off.  The interval has no separate token, so it rides the
-// tick token and the 24-token format stays unchanged.
-private _tickIntervalMs = round (_tickInterval * 1000);
-private _tickField = format ["-/%1", _tickIntervalMs];
+// gate, so the line shows the last recorded tick and "-" when tracing is off.
+private _tickField = "-";
 if (AEE_TRACE_ON) then {
     private _lastTickMs = missionNamespace getVariable [QGVAR(lastTickMs), -1];
     if (_lastTickMs isEqualType 0) then {
-        if (_lastTickMs >= 0) then { _tickField = format ["%1/%2", round _lastTickMs, _tickIntervalMs]; };
+        if (_lastTickMs >= 0) then { _tickField = round _lastTickMs; };
     };
 };
 

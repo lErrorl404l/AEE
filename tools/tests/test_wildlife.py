@@ -530,7 +530,6 @@ class TestWildlifeStateLineContract(unittest.TestCase):
             "QGVAR(ambientEnabled)",
             "QGVAR(animalsEnabled)",
             "QGVAR(density)",
-            "QGVAR(tickInterval)",
             "aee_wildlife_forceBiome",
             "aee_wildlife_forceNight",
             "aee_wildlife_forceSilence",
@@ -548,12 +547,6 @@ class TestWildlifeStateLineContract(unittest.TestCase):
         self.assertIn("_forceNightHook isEqualType false", self.text)
         self.assertNotIn("isEqualTypeAny [0, false]", self.text)
         self.assertNotIn("round _forceNight", self.text)
-
-    def test_the_tick_interval_is_printed_in_the_tick_token(self):
-        # The interval local is consumed by the tick token, so it is not an
-        # unused read and the 24-token format is unchanged.
-        self.assertIn("_tickIntervalMs = round (_tickInterval * 1000)", self.text)
-        self.assertIn('format ["-/%1", _tickIntervalMs]', self.text)
 
 
 class TestMonitorWildlifeContract(unittest.TestCase):
