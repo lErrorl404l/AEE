@@ -86,19 +86,19 @@ private _table = [
     ["aw159_wildcat", "aw159", "rotary_wing", "Helicopter", "ihelilight03f", "wildcat|aw159", "maritime|utility", "", [0, 0, 0, 0]],
     ["cessna_172_skyhawk", "172s", "fixed_wing", "Plane", "cplanecivil01f", "skyhawk|c172", "civil|trainer", "src_faa_tcds_3a12", [1157, 134225.97696, 0, 0]],
     ["ch47_chinook", "ch47d", "rotary_wing", "Helicopter", "ihelitransport02f", "chinook|ch47", "heavy|transport", "src_tm_1_1520_240_10", [22680, 0, 0, 0]],
-    ["fa18e_super_hornet", "fa18e", "fixed_wing", "Plane", "bplanefighter01f", "superhornet|fa18", "carrier|multirole", "", [0, 0, 0, 0]],
+    ["fa18e_super_hornet", "fa18e", "fixed_wing", "Plane", "bplanefighter01f", "superhornet|fa18", "carrier|multirole", "src_fa18_natops", [14288, 0, 0, 0]],
     ["jas39c_gripen", "jas39c", "fixed_wing", "Plane", "", "gripen|jas39", "multirole|fighter", "src_saab_gripen_c", [14000, 0, 0, 0]],
     ["l159_alca", "l159", "fixed_wing", "Plane", "iplanefighter03aaf|iplanefighter03casf|iplanefighter03dynamicloadoutf", "alca|l159", "trainer|lightattack", "", [0, 0, 0, 0]],
-    ["light_utility_rotary", "mi2", "rotary_wing", "Helicopter", "ohelilight02f", "hoplite|mi2", "light|utility", "", [0, 0, 0, 0]],
+    ["light_utility_rotary", "mi2", "rotary_wing", "Helicopter", "ohelilight02f", "hoplite|mi2", "light|utility", "src_opfor_weg", [1076, 298279.9488, 0, 167.415473]],
     ["md500", "md500e", "rotary_wing", "Helicopter", "bhelilight01f", "md500|hummingbird", "light|utility", "src_md500e_2023", [752, 313000.0, 0, 50.895764]],
     ["md500_civil", "md500_civil", "rotary_wing", "Helicopter", "chelilight01civilf", "md500civil", "civil|utility", "src_md500e_2023", [752, 313000.0, 0, 50.895764]],
     ["md530_defender", "md530f", "rotary_wing", "Helicopter", "bhelilight01armedf", "md530|pawnee|defender", "light|attack", "src_md530f_2023", [782, 478000.0, 0, 55.154115]],
-    ["mi26_halo", "mi26", "rotary_wing", "Helicopter", "", "halo|mi26", "heavy|transport", "", [0, 0, 0, 0]],
-    ["mi28_havoc", "mi28", "rotary_wing", "Helicopter", "oheliattack02f", "havoc|mi28", "attack|gunship", "", [0, 0, 0, 0]],
-    ["rah66_comanche", "rah66", "rotary_wing", "Helicopter", "bheliattack01f", "comanche|rah66", "scout|recon", "", [0, 0, 0, 0]],
-    ["su25_frogfoot", "su25", "fixed_wing", "Plane", "oplanecas02f", "frogfoot|su25", "cas|attack", "", [0, 0, 0, 0]],
-    ["su57_felon", "su57", "fixed_wing", "Plane", "oplanefighter02f", "felon|su57", "stealth|multirole", "", [0, 0, 0, 0]],
-    ["uh60a_black_hawk", "uh60a", "rotary_wing", "Helicopter", "bhelitransport01f|helicopter", "blackhawk|uh60", "utility|transport", "", [0, 0, 0, 0]]
+    ["mi26_halo", "mi26", "rotary_wing", "Helicopter", "", "halo|mi26", "heavy|transport", "src_opfor_weg", [12809, 8500978.5408, 0, 804.247719]],
+    ["mi28_havoc", "mi28", "rotary_wing", "Helicopter", "oheliattack02f", "havoc|mi28", "attack|gunship", "src_opfor_weg", [3175, 1640539.7184, 0, 232.352193]],
+    ["rah66_comanche", "rah66", "rotary_wing", "Helicopter", "bheliattack01f", "comanche|rah66", "scout|recon", "src_rah66_case", [3526, 0, 0, 0]],
+    ["su25_frogfoot", "su25", "fixed_wing", "Plane", "oplanecas02f", "frogfoot|su25", "cas|attack", "src_opfor_weg", [4320, 0, 0, 0]],
+    ["su57_felon", "su57", "fixed_wing", "Plane", "oplanefighter02f", "felon|su57", "stealth|multirole", "src_odin_weg_2025", [18000, 0, 0, 0]],
+    ["uh60a_black_hawk", "uh60a", "rotary_wing", "Helicopter", "bhelitransport01f|helicopter", "blackhawk|uh60", "utility|transport", "src_tm_1_1520_237_10", [9185, 0, 0, 210.211504]]
 ];
 
 // [catalogue_id, variant_id, vehicle_type, confidence, matched_by,
