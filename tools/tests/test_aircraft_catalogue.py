@@ -240,5 +240,124 @@ class ClassBindingReaderTest(unittest.TestCase):
         )
 
 
+class AliasAndDerivationTest(unittest.TestCase):
+    def test_aliases_and_keywords_are_normalised_and_deduplicated(self) -> None:
+        entry = _entry(
+            "fixture_plane",
+            aliases=["A-10", "  a10  ", "Wipeout"],
+            keywords=["Close Air Support", "CAS"],
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        record = loaded.entries[0]
+        self.assertEqual(("a10", "wipeout"), record.aliases)
+        self.assertEqual(("closeairsupport", "cas"), record.keywords)
+
+    def test_shared_alias_is_dropped_with_a_warning(self) -> None:
+        entries = [
+            _entry("fixture_one", aliases=["shared", "alpha"]),
+            _entry("fixture_two", aliases=["shared", "beta"]),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture(entries)})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertNotIn("shared", loaded.alias_index)
+        self.assertEqual("fixture_one", loaded.alias_index["alpha"])
+        self.assertTrue(
+            any("alias shared" in w and "dropped" in w for w in loaded.warnings),
+            loaded.warnings,
+        )
+
+    def test_rated_power_derives_from_net_power_kw(self) -> None:
+        entry = _entry(
+            "fixture_plane",
+            values={
+                "operating_weight_kg": _value(1000, "kg"),
+                "net_power_kw": _value(500.0, "kW"),
+            },
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        resolved = loaded.entries[0].resolved_fields()["rated_power_w"]
+        self.assertEqual("derived", resolved.grade)
+        self.assertEqual(500000.0, resolved.value)
+        self.assertIn("rated_power_w = net_power_kw * 1000", resolved.state)
+
+    def test_rated_power_derives_from_published_power_hp(self) -> None:
+        entry = _entry(
+            "fixture_plane",
+            values={
+                "operating_weight_kg": _value(1000, "kg"),
+                "published_power_hp": _value(200.0, "hp"),
+            },
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        resolved = loaded.entries[0].resolved_fields()["rated_power_w"]
+        self.assertEqual("derived", resolved.grade)
+        self.assertEqual(round(200.0 * 745.699872, 6), resolved.value)
+        self.assertIn("published_power_hp * 745.699872", resolved.state)
+
+    def test_drag_area_derives_from_coefficient_and_wing_area(self) -> None:
+        entry = _entry(
+            "fixture_plane",
+            values={
+                "operating_weight_kg": _value(1000, "kg"),
+                "thrust_kn": _value(50.0, "kN"),
+                "reference_speed_ms": _value(200.0, "m/s"),
+                "drag_coefficient": _value(0.02, "ratio"),
+                "wing_area_m2": _value(30.0, "m^2"),
+            },
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        resolved = loaded.entries[0].resolved_fields()
+        self.assertNotIn("drag_area_m2", resolved)  # fixed-wing runtime set
+        drag = vc.resolve_field(
+            loaded.entries[0].values, "drag_area_m2", vc.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", drag.grade)
+        self.assertEqual(0.6, drag.value)
+        self.assertIn("drag_area_m2 = drag_coefficient * wing_area_m2", drag.state)
+
+    def test_duplicate_catalogue_id_is_rejected(self) -> None:
+        entries = [_entry("fixture_cat"), _entry("fixture_cat")]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture(entries)})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertEqual(1, len(loaded.entries))
+        self.assertTrue(
+            any("duplicate catalogue_id" in e for e in loaded.errors), loaded.errors
+        )
+
+    def test_duplicate_variant_id_is_rejected(self) -> None:
+        entries = [
+            _entry("fixture_one", variant_id="shared_variant"),
+            _entry("fixture_two", variant_id="shared_variant"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture(entries)})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertEqual(1, len(loaded.entries))
+        self.assertTrue(
+            any("duplicate variant_id shared_variant" in e for e in loaded.errors),
+            loaded.errors,
+        )
+
+    def test_a_lead_is_not_runtime_ready(self) -> None:
+        entry = _entry(
+            "fixture_plane",
+            values={"operating_weight_kg": _value(1000, "kg")},
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertIs(False, loaded.entries[0].runtime_ready)
+
+
 if __name__ == "__main__":
     unittest.main()
