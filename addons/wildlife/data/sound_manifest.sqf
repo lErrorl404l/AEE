@@ -10,6 +10,11 @@ looping positional bed.  contextKey is the key fnc_soundBedForContext returns.
 A context the plan requests but vanilla cannot supply is a recorded finding
 in docs/wiki/research/wildlife-ambience-dossier.md, never a fetch.  The
 night-insect, deer and wolf contexts are findings for that reason.
+
+The day contexts carry an open-ground row set under the day_<family> key and
+a forest row set under the day_<family>_forest key.  Both reuse the same
+vanilla bird files.  The forest rows carry the higher base gain, because a
+wooded bed is denser than the open field in the same climate.
 */
 
 [
@@ -29,6 +34,17 @@ night-insect, deer and wolf contexts are findings for that reason.
     ["day_arid", "a3\sounds_f\ambient\animals\birds5.wss", 120, 0.45],
     ["day_tropical", "a3\sounds_f\ambient\animals\birds2.wss", 120, 0.75],
     ["day_tropical", "a3\sounds_f\ambient\animals\birds3.wss", 120, 0.75],
+    ["day_temperate_forest", "a3\sounds_f\ambient\animals\birds1.wss", 120, 0.85],
+    ["day_temperate_forest", "a3\sounds_f\ambient\animals\birds2.wss", 120, 0.85],
+    ["day_temperate_forest", "a3\sounds_f\ambient\animals\birds3.wss", 120, 0.85],
+    ["day_temperate_forest", "a3\sounds_f\ambient\animals\birds4.wss", 120, 0.85],
+    ["day_temperate_forest", "a3\sounds_f\ambient\animals\birds5.wss", 120, 0.85],
+    ["day_cold_forest", "a3\sounds_f\ambient\animals\birds1.wss", 120, 0.70],
+    ["day_cold_forest", "a3\sounds_f\ambient\animals\birds4.wss", 120, 0.70],
+    ["day_arid_forest", "a3\sounds_f\ambient\animals\birds3.wss", 120, 0.60],
+    ["day_arid_forest", "a3\sounds_f\ambient\animals\birds5.wss", 120, 0.60],
+    ["day_tropical_forest", "a3\sounds_f\ambient\animals\birds2.wss", 120, 0.90],
+    ["day_tropical_forest", "a3\sounds_f\ambient\animals\birds3.wss", 120, 0.90],
     ["farm", "a3\sounds_f\ambient\animals\hen1.wss", 120, 0.55],
     ["farm", "a3\sounds_f\ambient\animals\hen2.wss", 120, 0.55],
     ["farm", "a3\sounds_f\ambient\animals\hen3.wss", 120, 0.55],

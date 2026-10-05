@@ -27,6 +27,10 @@ Sourcing key: **[P]** primary document read. **[P-W]** primary via Wayback.
 | day_cold | birds1.wss, birds4.wss | raw | 120 | 0.55 | [P] BIKI Sound Files |
 | day_arid | birds3.wss, birds5.wss | raw | 120 | 0.45 | [P] BIKI Sound Files |
 | day_tropical | birds2.wss, birds3.wss | raw | 120 | 0.75 | [P] BIKI Sound Files |
+| day_temperate_forest | birds1.wss to birds5.wss | raw | 120 | 0.85 | [P] BIKI Sound Files |
+| day_cold_forest | birds1.wss, birds4.wss | raw | 120 | 0.70 | [P] BIKI Sound Files |
+| day_arid_forest | birds3.wss, birds5.wss | raw | 120 | 0.60 | [P] BIKI Sound Files |
+| day_tropical_forest | birds2.wss, birds3.wss | raw | 120 | 0.90 | [P] BIKI Sound Files |
 | farm | hen1.wss, hen2.wss, hen3.wss | raw | 120 | 0.55 | [P] BIKI Sound Files |
 | farm | dog1.wss to dog4.wss | raw | 120 | 0.60 | [P] BIKI Sound Files |
 | coast | seagul_1.wss | raw | 120 | 0.60 | [P] BIKI Sound Files |
@@ -35,6 +39,20 @@ Sourcing key: **[P]** primary document read. **[P-W]** primary via Wayback.
 
 All raw paths are under `a3\sounds_f\ambient\animals\`, except the sheep set
 under `a3\animals_f_beta\sheep\data\sound\`.
+
+### Forest and open ground
+
+The day context splits on vegetation. The kernel reads the vegetation score
+from the published `aee_environmental_terrainSignals`, whose second element is
+a HashMap of Koppen code to indicator vote weight from the terrain scan. It
+takes the strongest single vote and clamps it to 0..1: a map with no
+classified tree or bush yields an empty map, so the score is 0 on open ground,
+and any classified indicator species is 0.5 or more. A score of 0.5 or more
+selects the `day_<family>_forest` key. A lower score, or no signal, stays on
+the `day_<family>` key, which is the open-ground context. Water and night take
+precedence over the vegetation split. Both row sets reuse the same vanilla
+bird files. The forest rows carry the higher base gain, because a wooded bed
+is denser than the open field in the same climate.
 
 ## Requested-context coverage
 
@@ -152,6 +170,9 @@ The sound runtime constants are modelling choices, UNSOURCED.
 | Wildlife simulation tick budget | 2 ms per call | Modelling, the core gate is 5 ms | [UNSOURCED] |
 | One-shot sound max distance | 120 m | `playSound3D` distance argument | [P] |
 | Rain bed gain factor | Up to 1.5 times at rain 1 | Modelling, the engine `rain` input | [UNSOURCED] |
+| Vegetation score source | Max `vegVotes` weight, clamped 0..1 | `aee_environmental_terrainSignals` element 1, the terrain scan HashMap | [PROJECT] |
+| Forest vegetation threshold | 0.5 | Modelling, at or above is the `day_<family>_forest` context | [UNSOURCED] |
+| Forest bed gain premium | +0.15 on the matching open row | Modelling, a wooded bed is denser than the open field | [UNSOURCED] |
 | Wet-ground bed damping | Up to 0.3 of the gain | Modelling, damp ground muffles the bed | [UNSOURCED] |
 | Soil moisture input | Default 0.2 | `aee_core_soilMoisture` from `fnc_updateSoilMoisture` | [PROJECT] |
 | Surface wetness input | Default 0 | `aee_core_surfaceWetness` from `fnc_calculateSurfaceWetness` | [PROJECT] |

@@ -112,10 +112,29 @@ if (_hasUnit) then {
     };
 };
 
+// The vegetation signal from aee_environmental_terrainSignals.  The shape is
+// [surfaceVotes, vegVotes, structureVotes, waterFrac, meanElevM, maxElevM].
+// vegVotes is a HashMap biome code -> indicator vote weight, published by the
+// terrain scan.  The strongest single vote is the vegetation score, clamped
+// to 0..1.  Max rather than sum: one tree votes for several Koppen codes, so
+// a sum double-counts one species.  A map with no classified tree or bush
+// yields an empty map and therefore an open-ground score of 0.
+private _signals = [QEGVAR(environmental,terrainSignals), [], 3] call EFUNC(core,readState);
+private _vegScore = 0;
+if ((count _signals) >= 2) then {
+    private _votes = _signals select 1;
+    if (_votes isEqualType createHashMap) then {
+        {
+            if (_x > _vegScore) then { _vegScore = _x; };
+        } forEach (values _votes);
+    };
+};
+_vegScore = ((_vegScore max 0) min 1);
+
 private _manifest = missionNamespace getVariable [GVAR(manifest), []];
 if !(_manifest isEqualType []) then { _manifest = []; };
 
-private _bed = [_biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount] call FUNC(soundBedForContext);
+private _bed = [_biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount, _vegScore] call FUNC(soundBedForContext);
 private _bedKey = _bed select 0;
 private _bedGain = _bed select 1;
 
