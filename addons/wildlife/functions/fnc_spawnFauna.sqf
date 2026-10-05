@@ -47,8 +47,7 @@ private _density = missionNamespace getVariable [QGVAR(density), 1.0];
 if !(_density isEqualType 0) then { _density = 1.0; };
 if (_density <= 0) exitWith { [] };
 
-private _biome = missionNamespace getVariable [QEGVAR(environmental,localBiome), ""];
-if !(_biome isEqualType "") then { _biome = ""; };
+private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(core,readState);
 private _isNight = sunOrMoon < 0.5;
 
 private _waterFrac = 0;

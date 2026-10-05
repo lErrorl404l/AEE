@@ -38,8 +38,7 @@ if ((count _position) < 2) then {
 };
 
 // Guarded reads: a nil read that falls through to a default is the #154 bug.
-private _biome = missionNamespace getVariable [QEGVAR(environmental,localBiome), ""];
-if !(_biome isEqualType "") then { _biome = ""; };
+private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(core,readState);
 
 private _forceBiome = missionNamespace getVariable ["aee_wildlife_forceBiome", ""];
 if !(_forceBiome isEqualType "") then { _forceBiome = ""; };
@@ -60,6 +59,15 @@ if (_hasUnit) then {
 private _windVector = wind;
 private _wind = (((_windVector select 0) ^ 2) + ((_windVector select 1) ^ 2)) ^ 0.5;
 
+private _rain = rain;
+if !(_rain isEqualType 0) then { _rain = 0; };
+private _rainAmount = ((_rain max 0) min 1);
+
+// The published soil and surface facts.  Wet ground damps the bed, so a damp
+// soundscape is muffled.  readState is the guarded read from the core.
+private _soil = [QEGVAR(core,soilMoisture), 0.2, 1] call EFUNC(core,readState);
+private _wetness = [QEGVAR(core,surfaceWetness), 0, 1] call EFUNC(core,readState);
+
 private _field = missionNamespace getVariable [QEGVAR(ai,disturbance), []];
 if !(_field isEqualType []) then { _field = []; };
 
@@ -67,23 +75,47 @@ private _now = CBA_missionTime;
 private _key = [_position] call EFUNC(ai,disturbanceKey);
 private _disturbance = [_field, _key, _now, 45] call EFUNC(ai,disturbanceSample);
 
-// Raise the field from the listener's own movement.  A quiet walk leaves no
-// trace.  This runs only with a live local unit and only outside dry run.
+// Raise the field from soldier traffic.  A quiet walk leaves no trace; a run
+// leaves more.  The local unit's stance scales its own trace.  The nearby
+// units the client can sense contribute at their own cells.  The scan is
+// bounded to a small radius and a fixed unit count so the tick stays flat.
+// This runs only with a live local unit and only outside dry run.
 if (_hasUnit) then {
     if (!_dryRun) then {
         private _speed = speed _unit;
         if (_speed > 1.5) then {
             private _magnitude = ((_speed / 8) max 0) min 1;
+            private _stance = stance _unit;
+            if (_stance == "CROUCH") then { _magnitude = _magnitude * 0.75; };
+            if (_stance == "PRONE") then { _magnitude = _magnitude * 0.5; };
             _field = [_field, _key, _magnitude, _now] call EFUNC(ai,disturbanceApply);
-            missionNamespace setVariable [QEGVAR(ai,disturbance), _field];
         };
+
+        private _traffic = _position nearEntities [["CAManBase"], 60];
+        private _sensed = 0;
+        {
+            if (_sensed < 8) then {
+                private _other = _x;
+                if ((!isNull _other) && (_other != _unit)) then {
+                    private _otherSpeed = speed _other;
+                    if (_otherSpeed > 1.5) then {
+                        private _otherMagnitude = ((_otherSpeed / 8) max 0) min 1;
+                        private _otherKey = [getPos _other] call EFUNC(ai,disturbanceKey);
+                        _field = [_field, _otherKey, _otherMagnitude, _now] call EFUNC(ai,disturbanceApply);
+                        _sensed = _sensed + 1;
+                    };
+                };
+            };
+        } forEach _traffic;
+
+        missionNamespace setVariable [QEGVAR(ai,disturbance), _field];
     };
 };
 
 private _manifest = missionNamespace getVariable [GVAR(manifest), []];
 if !(_manifest isEqualType []) then { _manifest = []; };
 
-private _bed = [_biome, _isNight, _nearWater, _wind, _disturbance, _manifest] call FUNC(soundBedForContext);
+private _bed = [_biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount] call FUNC(soundBedForContext);
 private _bedKey = _bed select 0;
 private _bedGain = _bed select 1;
 
@@ -96,6 +128,11 @@ if !(_forceSilence isEqualType 0) then { _forceSilence = -1; };
 if (_forceSilence >= 0) then { _silence = ((_forceSilence max 0) min 1); };
 
 private _gain = ((_bedGain * _silence) max 0) min 1;
+
+// Wet ground damps the bed: saturated soil and standing surface water muffle
+// the soundscape, so a damp cell is quieter than a dry one.
+private _damp = 1 - ((((_soil max _wetness) max 0) min 1) * 0.3);
+_gain = ((_gain * _damp) max 0) min 1;
 
 private _spook = false;
 private _spookPosition = _position;
