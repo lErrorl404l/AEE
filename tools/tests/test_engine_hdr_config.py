@@ -43,6 +43,82 @@ def _number(body: str, key: str) -> float | None:
     return float(match.group(1)) if match else None
 
 
+def _array(body: str, key: str) -> list:
+    """Return a ``key[] = {...}`` array as scalars and float tuples."""
+    match = re.search(rf"\b{re.escape(key)}\[\]\s*=\s*\{{", body)
+    if not match:
+        return []
+    start = match.end() - 1
+    depth = 0
+    inner = ""
+    for i in range(start, len(body)):
+        if body[i] == "{":
+            depth += 1
+        elif body[i] == "}":
+            depth -= 1
+            if depth == 0:
+                inner = body[start + 1 : i]
+                break
+    if not inner:
+        return []
+    elements = []
+    token = ""
+    depth = 0
+    for ch in inner:
+        if ch == "{":
+            depth += 1
+            token += ch
+        elif ch == "}":
+            depth -= 1
+            token += ch
+        elif ch == "," and depth == 0:
+            elements.append(token.strip())
+            token = ""
+        else:
+            token += ch
+    if token.strip():
+        elements.append(token.strip())
+    parsed: list = []
+    for element in elements:
+        if element.startswith("{"):
+            parsed.append(tuple(float(v) for v in element[1:-1].split(",")))
+        else:
+            parsed.append(float(element))
+    return parsed
+
+
+BRIGHT_ALMOST_DEEP = [
+    -15.0,
+    (0.0049, 0.0098, 0.0098),
+    (0.0, 0.002, 0.003),
+    (0.0, 0.0, 0.0),
+    (0.0, 0.0, 0.0),
+    (0.0, 0.002, 0.003),
+    (0.0, 0.002, 0.003),
+    0.0,
+]
+BRIGHT_ALMOST_FULL = [
+    -5.0,
+    (0.182, 0.213, 0.25),
+    (0.05, 0.111, 0.221),
+    (0.039, 0.034, 0.004),
+    (0.04, 0.049, 0.072),
+    (0.082, 0.128, 0.185),
+    (0.283, 0.35, 0.431),
+    0.0,
+]
+RAINY_FULL = [
+    -5.0,
+    (0.023, 0.023, 0.023),
+    (0.02, 0.02, 0.02),
+    (0.023, 0.023, 0.023),
+    (0.02, 0.02, 0.02),
+    (0.0098, 0.0098, 0.02),
+    (0.08, 0.059, 0.059),
+    0.0,
+]
+
+
 class TestEngineHdrKeys(unittest.TestCase):
     def setUp(self) -> None:
         self.hdr = _class_body(SRC, "HDRNewPars")
@@ -110,6 +186,24 @@ class TestEngineHdrKeys(unittest.TestCase):
             places=5,
             msg="starEmissivity must sit on DefaultLighting at 40",
         )
+
+    def test_deep_night_and_full_night_arrays(self) -> None:
+        bright = _class_body(SRC, "DayLightingBrightAlmost")
+        rainy = _class_body(SRC, "DayLightingRainy")
+        self.assertTrue(bright, "DayLightingBrightAlmost block missing")
+        self.assertTrue(rainy, "DayLightingRainy block missing")
+        bright_deep = _array(bright, "deepNight")
+        bright_full = _array(bright, "fullNight")
+        rainy_deep = _array(rainy, "deepNight")
+        rainy_full = _array(rainy, "fullNight")
+        self.assertEqual(len(bright_deep), 8, "deepNight must carry 8 elements")
+        self.assertEqual(len(bright_full), 8, "fullNight must carry 8 elements")
+        self.assertEqual(bright_deep[0], -15.0)
+        self.assertEqual(bright_full[0], -5.0)
+        self.assertEqual(bright_deep, BRIGHT_ALMOST_DEEP)
+        self.assertEqual(bright_full, BRIGHT_ALMOST_FULL)
+        self.assertEqual(rainy_deep, BRIGHT_ALMOST_DEEP)
+        self.assertEqual(rainy_full, RAINY_FULL)
 
 
 if __name__ == "__main__":
