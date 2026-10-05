@@ -28,6 +28,10 @@ AEE_SETTING_SLIDER(SnowAccretionRate,"AEE Environmental","Hydrology",0,0.1,0.01,
 AEE_SETTING_SLIDER(MaxSnowDepth,"AEE Environmental","Hydrology",0.5,10,3.0,1);
 
 // ── Severe Weather ─────────────────────────────────────────────────────────
+// Per-lever ownership.  Off by default: AEE keeps reading engine weather.
+// When on, the server writes gusts and humidity from AEE's computed state.
+AEE_SETTING_CHECKBOX(weatherOwnership,"AEE Environmental","Weather",false);
+
 AEE_SETTING_SLIDER(SandstormWindThreshold,"AEE Environmental","Weather",5,25,10,0);
 
 AEE_SETTING_SLIDER(BlowingSnowWindThreshold,"AEE Environmental","Weather",5,20,8,0);

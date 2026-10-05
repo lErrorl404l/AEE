@@ -284,6 +284,8 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_biome` | environmental | Koppen biome code (map climate class) |
 | `aee_environmental_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
 | `aee_environmental_localBiomeName` | environmental | Display name for `aee_environmental_localBiome` |
+| `aee_environmental_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
+| `aee_environmental_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
 
 ### Maritime
 
@@ -440,6 +442,15 @@ console may set any of them directly.
 Every `logDebug` switch registers under **AEE Debug > <component>**. The
 coverage-gaps release added one to every addon that declares settings, so
 all nineteen sit in one place, grouped by the owning component.
+
+### Environmental weather ownership
+
+AEE reads engine weather by default. The server writes gusts and humidity only
+when this switch is on.
+
+| Variable | Purpose |
+|---|---|
+| `aee_environmental_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
 
 ### Human-vision model (perception)
 

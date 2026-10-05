@@ -185,5 +185,13 @@
             <Original>Slab Depth</Original>
             <English>Slab Depth</English>
         </Key>
+        <Key ID="STR_AEE_Environmental_weatherOwnership_Description">
+            <Original>Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather.</Original>
+            <English>Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather.</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_weatherOwnership_Name">
+            <Original>Weather Ownership</Original>
+            <English>Weather Ownership</English>
+        </Key>
     </Package>
 </Project>

@@ -64,3 +64,6 @@ PREPS(astronomy,starMagnitude);
 PREPS(astronomy,updateAurora);
 PREPS(astronomy,updateMilkyWay);
 PREPS(astronomy,updateMeteors);
+PREPS(lighting,worldLightingClass);
+PREPS(lighting,worldLightingProfile);
+PREPS(lighting,applyWorldLighting);
