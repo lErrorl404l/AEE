@@ -145,10 +145,11 @@ the speed with velocity, the published air density, and the per-vehicle
 overrides.  A wing uses the drag power 0.5 rho (Cd S) v^3, so the plume grows
 with the CUBE of airspeed; a rotor uses the ideal induced hover power
 W^1.5 / sqrt (2 rho A), which is a stated lower bound.  The rated power is
-read from the same optional aee_engineRatedPowerW the ground term uses, and
-the drag area and rotor disc area from optional aee_engineDragAreaM2 and
-aee_engineRotorDiscAreaM2, else the kernel defaults.  All three are DECLARED
-DEFAULTS, not measurements.
+read from the optional aee_engineRatedPowerW the ground term uses, then the
+aircraft catalogue under data/aircraft/ through the generated getAircraftData
+lookup, then the declared defaults.  The drag area and the rotor disc area
+follow the same order from aee_engineDragAreaM2 and aee_engineRotorDiscAreaM2.
+The declared defaults are the empty-row fallback, not measurements.
 
 THE READER IS COMPILED AT RUN TIME, BECAUSE THE ENGINE COMMAND SET DIFFERS
 BETWEEN BUILDS.  The fixed-wing reader throttleRTD is present in the game
@@ -313,16 +314,40 @@ private _deriveGroundPower = {
 private _deriveAirPower = {
     params ["_veh", "_idlePower"];
     private _speed = vectorMagnitude (velocity _veh);
-    private _rated = _veh getVariable ["aee_engineRatedPowerW", 150000];
-    if !(_rated isEqualType 0) then { _rated = 150000; };
-    private _dragArea = _veh getVariable ["aee_engineDragAreaM2", 0.7];
-    if !(_dragArea isEqualType 0) then { _dragArea = 0.7; };
-    private _discArea = _veh getVariable ["aee_engineRotorDiscAreaM2", 50];
-    if !(_discArea isEqualType 0) then { _discArea = 50; };
+
+    // The four flight-model scalars come from the aircraft corpus under
+    // data/aircraft/ through the generated lookup. A per-vehicle override
+    // wins, then the catalogue row, then the declared default. The corpus
+    // row holds [mass kg, rated power W, drag area m2, rotor disc area m2];
+    // an absent field is a labelled zero. See gen_aircraft_data.py.
+    private _row = [typeOf _veh] call EFUNC(mobility,getAircraftData);
+    private _rowHeld = _row isEqualType [] && {count _row == 4};
+    private _corpusMass = if (_rowHeld) then { _row select 0 } else { 0 };
+    private _corpusRated = if (_rowHeld) then { _row select 1 } else { 0 };
+    private _corpusDrag = if (_rowHeld) then { _row select 2 } else { 0 };
+    private _corpusDisc = if (_rowHeld) then { _row select 3 } else { 0 };
+
+    private _mass = if (_corpusMass > 0) then { _corpusMass } else { getMass _veh };
+
+    private _rated = _veh getVariable ["aee_engineRatedPowerW", 0];
+    if !(_rated isEqualType 0) then { _rated = 0; };
+    if (_rated <= 0) then { _rated = _corpusRated; };
+    if (_rated <= 0) then { _rated = 150000; };
+
+    private _dragArea = _veh getVariable ["aee_engineDragAreaM2", 0];
+    if !(_dragArea isEqualType 0) then { _dragArea = 0; };
+    if (_dragArea <= 0) then { _dragArea = _corpusDrag; };
+    if (_dragArea <= 0) then { _dragArea = 0.7; };
+
+    private _discArea = _veh getVariable ["aee_engineRotorDiscAreaM2", 0];
+    if !(_discArea isEqualType 0) then { _discArea = 0; };
+    if (_discArea <= 0) then { _discArea = _corpusDisc; };
+    if (_discArea <= 0) then { _discArea = 50; };
+
     private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
     if !(_rho isEqualType 0) then { _rho = 1.225; };
 
-    [getMass _veh, _speed, typeOf _veh, _rated, _dragArea, _discArea, _idlePower, _rho] call EFUNC(mobility,calculateAirEngineLoad)
+    [_mass, _speed, typeOf _veh, _rated, _dragArea, _discArea, _idlePower, _rho] call EFUNC(mobility,calculateAirEngineLoad)
 };
 
 // ─── Power resolution ──────────────────────────────────────────────────────
