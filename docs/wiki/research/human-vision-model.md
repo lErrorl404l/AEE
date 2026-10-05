@@ -78,6 +78,31 @@ photopic fraction m gates this. The model uses m to desaturate and to tint
 toward the scotopic hue. The exact desaturation and tint amplitudes are
 UNSOURCED.
 
+## The base anchor and the small bound
+
+The normal-vision grade is anchored to the base game's own default grade. AEE
+reads the class `CfgPostProcessTemplates >> Default >> colorCorrections` from
+`a3\functions_f\config.cpp` line 3553 of `functions_f.pbo` (build 2025-08-11) at
+run time. The read runs once per session and the result is cached. The value is
+neutral: brightness 1, contrast 1, offset 0. AEE keeps the scalar triple
+`[1, 1, 0]`. AEE never ships or copies the full vanilla array. The weight array
+and the colorize array are AEE's own.
+
+The grade is the anchor plus a small bounded deviation, computed in
+`fnc_perceptionBaseGrade`. The bounds are contrast +0.00 to +0.08, offset -0.02
+to 0.00, brightness -0.03 to +0.03 and a desaturation alpha 0 to 0.10. The
+default tone strength is 0.25. On the neutral vanilla anchor the default grade
+is about contrast 1.04, brightness 1.0, offset -0.008 and colorize
+`[1, 1, 1, 0]`.
+
+The default path ships no tint. `visionPurkinjeStrength` defaults to 0,
+`visionMesopicDesaturation` defaults to 0 and `visionWhiteBalance` defaults to
+false. At those defaults the mesopic kernel returns `[1, 1, 1, 0]` for every
+mesopic fraction, and the blend stays `[0, 0, 0, 0]`. The mesopic, illuminant
+and chromatic-adaptation kernels stay as the opt-in experimental path. The
+mesopic band is 0.005 to 5.0 cd/m2 (CIE 191:2010). The Purkinje hue direction
+is blue-green toward 507 nm (CIE 1951).
+
 ## Per-constant source register
 
 Every new constant is listed with its source, or marked UNSOURCED. The code
@@ -126,6 +151,16 @@ carries it too.
 | White-balance blend cap | 0.25 | 0 to 0.25 | UNSOURCED. A blend toward a solid colour washes out the image. |
 | Display-RGB diagonal gain | clamp(2 - illuminant, 0, 1) | fixed | UNSOURCED. The engine has no cone matrix, so the display diagonal is a stand-in. |
 | Illuminant luma floor | small positive | fixed | UNSOURCED. A guard against a divide by zero. |
+| Vanilla default anchor | `[1, 1, 0]` | fixed | SOURCED: `functions_f.pbo`, `a3\functions_f\config.cpp` line 3553, class `CfgPostProcessTemplates >> Default >> colorCorrections`, build 2025-08-11. Neutral scalar triple only. The full vanilla array is not shipped or copied. |
+| Anchor fallback | `[1, 1, 0]` | fixed | SOURCED: the same as the vanilla default anchor. Used when the raw array is absent, malformed or out of range. |
+| Contrast delta bound | `+0.00` to `+0.08` above the anchor | fixed | UNSOURCED: a small contrast lift. Operator-tunable by the clamp. |
+| Offset delta bound | `-0.02` to `0.00` from the anchor | fixed | UNSOURCED: a small black-point deepen. |
+| Brightness delta bound | `-0.03` to `+0.03` from the anchor | fixed | UNSOURCED: a small exposure nudge. |
+| Desaturation alpha bound | `0` to `0.10` | fixed | SOURCED direction: the engine desaturates only (BIKI). The amplitude is UNSOURCED. |
+| Default tone strength | `0.25` | 0 to 1 | UNSOURCED: scales the tone kernel into the bound. |
+| Default white balance | `false` | bool | UNSOURCED: the engine ambient is green-biased, so full adaptation ships a cast. |
+| Default mesopic desaturation | `0` | 0 to 0.5 | UNSOURCED: the operator rejects the tint. |
+| Default Purkinje strength | `0` | 0 to 1 | UNSOURCED: the operator rejects the tint. The hue direction is SOURCED: CIE 1951. |
 
 ## The honest engine ceiling
 
@@ -178,6 +213,30 @@ exponent and sigma, the exact Weber fraction, the Purkinje tint and
 desaturation amplitudes, the tone calibration gain, the tone contrast and
 offset clamps, the white-balance blend cap, the display-RGB diagonal gain and
 the illuminant luma floor.
+
+## Follow-up: base-game lighting gaps (not implemented)
+
+A survey of six Workshop lighting mods found gaps in the AEE environment
+configuration. The items below are ideas re-implemented from mods with no
+licence. They are not copied code. None is implemented. They are candidates for
+a follow-up plan. No file under `addons/environmental` is changed here.
+
+(a) Complete `HDRNewPars` globally. The AEE override in
+`addons/environmental/config.cpp` sets only `nvg*` and `DOFPars`. The complete
+world tone map is the largest single gap. It covers bloom, the tone map,
+`eyeAdaptFactorLight`, `eyeAdaptFactorDark`, `nightShift*`, `starEmissivity`
+and `dynLightMinBrightness*`.
+
+(b) `starEmissivity`. The surveyed mods use 30 to 60. A first try is 40.
+
+(c) The Star Light brightness coefficient. The star catalogue and the
+limiting-magnitude model need the moon phase, `getLighting` element 1, the
+count of nearby houses, and the overcast and fog fades.
+
+(d) `DayLighting >> deepNight` and `DayLighting >> fullNight` keyframes. These
+are the only lever on night darkness.
+
+(e) Rain-scaled film grain. Low priority.
 
 ## References
 
