@@ -38,15 +38,20 @@ TEST_MANIFEST = [
     ["water", "Sound_Stream", 120, 0.8],
     ["night", "Owl", 120, 0.6],
     ["day_temperate", "a3\\sounds_f\\ambient\\animals\\birds1.wss", 120, 0.7],
+    ["day_temperate_forest", "a3\\sounds_f\\ambient\\animals\\birds1.wss", 120, 0.9],
     ["day_arid", "a3\\sounds_f\\ambient\\animals\\birds3.wss", 120, 0.5],
+    ["day_arid_forest", "a3\\sounds_f\\ambient\\animals\\birds3.wss", 120, 0.7],
 ]
 
 
-def sound_bed(biome, is_night, near_water, wind, disturbance, manifest=None, rain=0):
+def sound_bed(
+    biome, is_night, near_water, wind, disturbance, manifest=None, rain=0, veg=0
+):
     if manifest is None:
         manifest = TEST_MANIFEST
     return run_sqf(
-        SOUND_BED, [biome, is_night, near_water, wind, disturbance, manifest, rain]
+        SOUND_BED,
+        [biome, is_night, near_water, wind, disturbance, manifest, rain, veg],
     )
 
 
@@ -147,6 +152,35 @@ class TestSoundBedForContext(unittest.TestCase):
         _key, dry = sound_bed("Cfb", False, 0, 0, 0.0, rain=0.0)
         _key, wet = sound_bed("Cfb", False, 0, 0, 0.0, rain=1.0)
         self.assertGreater(wet, dry)
+
+    def test_vegetation_selects_a_forest_context_apart_from_open_ground(self):
+        # Same biome, night, water, wind and rain.  The only change is the
+        # vegetation score, so any difference is the forest/open distinction.
+        open_key, open_gain = sound_bed("Cfb", False, 0.1, 0, 0.0, rain=0.0, veg=0.0)
+        forest_key, forest_gain = sound_bed(
+            "Cfb", False, 0.1, 0, 0.0, rain=0.0, veg=1.0
+        )
+        self.assertNotEqual(forest_key, open_key)
+        self.assertEqual(open_key, "day_temperate")
+        self.assertEqual(forest_key, "day_temperate_forest")
+        self.assertGreater(forest_gain, open_gain)
+
+    def test_the_forest_key_follows_the_biome_family(self):
+        self.assertEqual(
+            sound_bed("BWh", False, 0, 0, 0, veg=1.0)[0], "day_arid_forest"
+        )
+        self.assertEqual(
+            sound_bed("Dfb", False, 0, 0, 0, veg=1.0)[0], "day_cold_forest"
+        )
+
+    def test_vegetation_does_not_override_water_or_night(self):
+        self.assertEqual(sound_bed("Cfb", False, 0.9, 0, 0, veg=1.0)[0], "water")
+        self.assertEqual(sound_bed("Cfb", True, 0.1, 0, 0, veg=1.0)[0], "night")
+
+    def test_below_the_vegetation_threshold_stays_open(self):
+        self.assertEqual(
+            sound_bed("Cfb", False, 0.1, 0, 0, veg=0.49)[0], "day_temperate"
+        )
 
 
 class TestSpookRange(unittest.TestCase):
@@ -349,6 +383,17 @@ class TestWildlifeSourceContracts(unittest.TestCase):
         self.assertIn("rain", text)
         self.assertIn("soilMoisture", text)
         self.assertIn("surfaceWetness", text)
+
+    def test_tick_reads_the_vegetation_signal_and_passes_it_to_the_bed(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("QEGVAR(environmental,terrainSignals)", text)
+        self.assertIn("EFUNC(core,readState)", text)
+        self.assertIn("_vegScore", text)
+        # The score is the appended 8th argument to the bed selector.
+        self.assertIn("_rainAmount, _vegScore] call FUNC(soundBedForContext)", text)
+        kernel = (FUNCS / "fnc_soundBedForContext.sqf").read_text(encoding="utf-8")
+        self.assertIn('["_vegScore", 0, [0]]', kernel)
+        self.assertIn("_forest", kernel)
 
     def test_tick_senses_nearby_units_and_stance(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")

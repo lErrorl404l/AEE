@@ -7,10 +7,12 @@ Pure: no missionNamespace, no GVAR or EGVAR, no engine command, no sound
 path.  Picks the context key from the world facts and returns a gain for it.
 Water wins, then night, then the biome family.  The gain is the base gain of
 the matching manifest row, scaled down by the disturbance and up by the wind
-and the rain.
+and the rain.  When a day context stands and the vegetation score is high, the
+key gains the _forest suffix, so a forest sounds apart from the open ground in
+the same biome.
 
 The context key is one of: water, night, day_tropical, day_arid,
-day_temperate or day_cold.
+day_temperate, day_cold, or a day key with the _forest suffix.
 
 Arguments:
   0: String - the Koppen biome code
@@ -20,6 +22,7 @@ Arguments:
   4: Number - the disturbance at the listener, 0 to 1
   5: Array  - the manifest rows [contextKey, source, maxDistance, baseGain]
   6: Number - the rain, 0 to 1
+  7: Number - the vegetation score, 0 to 1 (0.5 or more is forest)
 
 Returns:
   Array - [contextKey, gain]
@@ -32,7 +35,8 @@ params [
     ["_wind", 0, [0]],
     ["_disturbance", 0, [0]],
     ["_manifest", [], [[]]],
-    ["_rain", 0, [0]]
+    ["_rain", 0, [0]],
+    ["_vegScore", 0, [0]]
 ];
 
 private _key = "day_temperate";
@@ -56,6 +60,12 @@ if (_nearWater > 0.5) then {
                     _key = "day_cold";
                 };
             };
+        };
+        // Vegetation splits the day context: a high score is a forest, a low
+        // score is the open ground already chosen.  The threshold is the
+        // documented modelling constant (dossier register).
+        if (_vegScore >= 0.5) then {
+            _key = _key + "_forest";
         };
     };
 };
