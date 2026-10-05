@@ -22,24 +22,28 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 
-// ─── CfgWorlds NVG / DOF overrides ────────────────────────────────────────
-// Replaces the engine defaults with values calibrated to real NVG optics.
+// ─── CfgWorlds engine pipeline overrides ──────────────────────────────────
+// The HDRNewPars block is the engine HDR pipeline, read at world load.  Its
+// values are re-derived from the public config of Real Lighting and Weather
+// (Workshop 2809399991) and Fluffys (Workshop 3704702374, 3737586377).  No
+// mod code or content is copied.  The base game config is read at run time
+// and is not shipped.
 //
-// NVG objectives are fixed-aperture (f/1.2, MIL-PRF-49427C).  The engine
-// simulates variable aperture which NVGs do not have.  Locking
-// nvgApertureMin = Standard = Max at 7 removes the engine's artificial
-// aperture dimming.
+// starEmissivity scales the engine star draw.  It is set on DefaultLighting,
+// the class every world's Lighting inherits, so it reaches all worlds.  40
+// sits mid-band between Fluffys (30) and Real Lighting (60).
 //
-// nvgLightGain = 80 (below default 100).  Real NVGs are dim devices:
-// phosphor screen output is 6.9-14.4 cd/m² (Elbit MX-10160).  A lower
-// engine gain lets the AEE tube model ppEffects control brightness
-// without fighting the engine's built-in amplification.
+// The NVG keys keep their calibration.  NVG objectives are fixed-aperture
+// (f/1.2, MIL-PRF-49427C); the engine simulates variable aperture, so
+// locking nvgApertureMin = Standard = Max at 7 removes the artificial
+// dimming.  nvgLightGain = 80 (below the default 100) keeps the phosphor dim
+// (Elbit MX-10160, 6.9-14.4 cd/m²) so the AEE tube model controls brightness.
 //
-// DOFPars: NVG objectives focus at ~10-15 m (27 mm EFL, MIL-PRF-49427C).
-// Objects beyond ~15 m are progressively softer.  focusDistance = 12 m
-// places the focal plane at typical NVG usage range.  farOnly = 1 blurs
-// only distant objects, keeping near objects sharp.
+// DOFPars places the NVG focal plane at ~12 m (27 mm EFL, MIL-PRF-49427C).
 class CfgWorlds {
+    class DefaultLighting {
+        starEmissivity = 40;
+    };
     class HDRNewPars {
         nvgApertureMin = 7;
         nvgApertureStandard = 7;
@@ -49,6 +53,31 @@ class CfgWorlds {
         nvgTransition = 1;
         nvgTransitionCoefOn = 40.0;
         nvgTransitionCoefOff = 0.01;
+        minAperture = 1e-005;
+        maxAperture = 256;
+        apertureRatioMax = 4;
+        apertureRatioMin = 10;
+        bloomImageScale = 1;
+        bloomScale = 0.09;
+        bloomExponent = 0.75;
+        bloomLuminanceOffset = 0.4;
+        bloomLuminanceScale = 0.15;
+        bloomLuminanceExponent = 0.25;
+        tonemapMethod = 1;
+        tonemapShoulderStrength = 0.22;
+        tonemapLinearStrength = 0.12;
+        tonemapLinearAngle = 0.1;
+        tonemapToeStrength = 0.2;
+        tonemapToeNumerator = 0.022;
+        tonemapToeDenominator = 0.2;
+        tonemapLinearWhite = 11.2;
+        tonemapExposureBias = 1;
+        eyeAdaptFactorLight = 3.3;
+        eyeAdaptFactorDark = 0.75;
+        nightShiftMinAperture = 0;
+        nightShiftMaxAperture = 0.002;
+        nightShiftMaxEffect = 0.6;
+        nightShiftLuminanceScale = 600;
     };
     class DOFPars {
         focusDistance = 12.0;
