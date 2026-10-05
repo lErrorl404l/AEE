@@ -258,8 +258,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_optics_visionAdaptationDegree` | SLIDER | `1.0` | yes | optics | Degree of chromatic adaptation D of the human-vision model, range 0 to 1. CIECAM02 defines D = F times (1 - (1/3.6) times exp((-LA - 42) / 92)); F is 0.8 for a dim surround, 0.9 average, 1.0 dark. SOURCED: CIE 159:2004. The default 1.0 is a full adaptation. |
-| `aee_optics_visionMesopicDesaturation` | SLIDER | `0.3` | yes | optics | Maximum desaturation of the human-vision model in a scotopic scene, range 0 to 0.5. The mesopic-colour kernel raises the ColorCorrections colorize alpha toward this value as the CIE 191:2010 photopic fraction falls. The engine can only desaturate. The exact amplitude is UNSOURCED. |
-| `aee_optics_visionPurkinjeStrength` | SLIDER | `0.5` | yes | optics | Strength of the Purkinje shift of the human-vision model, range 0 to 1. It scales the move of the colorize colour toward the scotopic blue-green hue (507 nm, CIE 1951) as the CIE 191:2010 photopic fraction falls. The tint amplitude is UNSOURCED. |
+| `aee_optics_visionMesopicDesaturation` | SLIDER | `0` | yes | optics | Maximum desaturation of the human-vision model in a scotopic scene, range 0 to 0.5. Default 0, so the default path ships no tint. The engine ambient is green-biased and the operator rejects the tint. Raise it in AEE Experimental to opt in to the experimental mesopic path. The engine can only desaturate. The exact amplitude is UNSOURCED. |
+| `aee_optics_visionPurkinjeStrength` | SLIDER | `0` | yes | optics | Strength of the Purkinje shift of the human-vision model, range 0 to 1. Default 0, so the default path ships no tint. The engine ambient is green-biased and the operator rejects the tint. Raise it in AEE Experimental to opt in to the experimental mesopic path. The hue direction is SOURCED to CIE 1951. The tint amplitude is UNSOURCED. |
 
 ## AEE FX → Events
 
@@ -478,8 +478,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_visionContrastScale` | SLIDER | `1.0` | yes | optics | Contrast scale on the human-vision tone stage, range 0.5 to 1.5. It scales the display contrast the Naka-Rushton and CIE L* tangent derives. The exact calibration gain is UNSOURCED. |
 | `aee_optics_visionModelEnabled` | CHECKBOX | `true` | yes | optics | Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. Default on. Disable it to fall back to the aesthetic base grade. |
 | `aee_optics_visionToneEnabled` | CHECKBOX | `true` | yes | optics | Enable the tone and contrast stage of the human-vision model. It derives the display brightness, contrast and black point from the adapted scene luminance. The form is SOURCED to Naka and Rushton 1966 and CIE 15:2004. |
-| `aee_optics_visionToneStrength` | SLIDER | `1.0` | yes | optics | Strength of the human-vision tone stage, range 0 to 1. At 0 the stage is the identity and the image is unchanged. The exact value is UNSOURCED. |
-| `aee_optics_visionWhiteBalance` | CHECKBOX | `true` | yes | optics | Enable the partial von Kries white balance of the human-vision model. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED. |
+| `aee_optics_visionToneStrength` | SLIDER | `0.25` | yes | optics | Strength of the human-vision tone stage, range 0 to 1. Default 0.25. The stage is a small bounded rise over the base game's neutral default grade. The anchor clamp keeps the image within a small deviation of that grade. At 0 the stage is the identity. The exact value is UNSOURCED. |
+| `aee_optics_visionWhiteBalance` | CHECKBOX | `false` | yes | optics | Enable the partial von Kries white balance of the human-vision model. Default off. The engine ambient under vegetation is green-biased, so full adaptation ships a cast. Turn it on to opt in to the experimental white-balance path. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED. |
 
 ## AEE Physiology → Cold Weather
 

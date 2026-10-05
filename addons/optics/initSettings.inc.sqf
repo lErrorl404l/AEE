@@ -109,16 +109,16 @@ AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Optics","Image",true);
 // description.
 AEE_SETTING_CHECKBOX(visionModelEnabled,"AEE Optics","Vision",true);
 AEE_SETTING_CHECKBOX(visionToneEnabled,"AEE Optics","Vision",true);
-AEE_SETTING_SLIDER(visionToneStrength,"AEE Optics","Vision",0,1,1.0,0.05);
+AEE_SETTING_SLIDER(visionToneStrength,"AEE Optics","Vision",0,1,0.25,0.05);
 AEE_SETTING_SLIDER(visionContrastScale,"AEE Optics","Vision",0.5,1.5,1.0,0.05);
-AEE_SETTING_CHECKBOX(visionWhiteBalance,"AEE Optics","Vision",true);
+AEE_SETTING_CHECKBOX(visionWhiteBalance,"AEE Optics","Vision",false);
 
 // Colour-stage calibration (AEE Experimental > Vision).  The degree of
 // adaptation D is CIECAM02 (CIE 159:2004).  The mesopic desaturation amplitude
 // and the Purkinje tint amplitude are UNSOURCED.
 AEE_SETTING_SLIDER(visionAdaptationDegree,"AEE Experimental","Vision",0,1,1.0,0.05);
-AEE_SETTING_SLIDER(visionMesopicDesaturation,"AEE Experimental","Vision",0,0.5,0.3,0.05);
-AEE_SETTING_SLIDER(visionPurkinjeStrength,"AEE Experimental","Vision",0,1,0.5,0.05);
+AEE_SETTING_SLIDER(visionMesopicDesaturation,"AEE Experimental","Vision",0,0.5,0,0.05);
+AEE_SETTING_SLIDER(visionPurkinjeStrength,"AEE Experimental","Vision",0,1,0,0.05);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
