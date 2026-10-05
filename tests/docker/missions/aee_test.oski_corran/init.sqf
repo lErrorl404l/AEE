@@ -226,6 +226,8 @@ if (_p10Fail == 0) then {
     // (issue #184), so read the classification cache instead.
     private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", "<none>"];
     diag_log text format ["[BIOME] %1=%2", worldName, _mapBiome];
+    // World lighting matcher: classify the loaded world, no per-map entry.
+    execVM "aee_p84b_world_lighting_probe.sqf";
 
     // -- PHASE 8b: the biome owner and its scope ----------------------------
     // aee_core_biome is the MAP climate class, owned by fnc_getBiome. It is
