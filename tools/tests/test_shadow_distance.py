@@ -32,6 +32,10 @@ OPTICS = REPO / "addons" / "optics"
 VISION = OPTICS / "functions" / "vision"
 PATTERN = VISION / "fnc_shadowSamplePattern.sqf"
 CLASSIFY = VISION / "fnc_shadowClassifyScene.sqf"
+TARGET = VISION / "fnc_shadowTargetDistance.sqf"
+SMOOTH = VISION / "fnc_shadowSmoothDistance.sqf"
+GOVERNOR = VISION / "fnc_shadowFpsGovernor.sqf"
+STABILIZE = VISION / "fnc_shadowStabilizeDepth.sqf"
 PREP = OPTICS / "XEH_PREP.hpp"
 
 
@@ -214,6 +218,88 @@ def classify(
     )
 
 
+def target(
+    depth=0,
+    effective_min=0,
+    effective_max=500,
+    turn_level=0,
+    scene_state="OUTSIDE",
+    speed=0,
+    in_vehicle=False,
+    optics=False,
+    margins=None,
+):
+    if margins is None:
+        margins = [12, 0.6, 1.25, 0, 0]
+    return run_sqf(
+        TARGET,
+        [
+            depth,
+            effective_min,
+            effective_max,
+            turn_level,
+            scene_state,
+            speed,
+            in_vehicle,
+            optics,
+            margins,
+        ],
+    )
+
+
+def smooth(
+    target_value=0, current=0, delta_time=0.1, increase=2000, decrease=1000, fast=False
+):
+    return run_sqf(
+        SMOOTH, [target_value, current, delta_time, increase, decrease, fast]
+    )
+
+
+def governor(
+    fps_smooth=60,
+    fps_raw=60,
+    target_fps=0,
+    deadband=3,
+    ceiling=500,
+    effective_min=0,
+    effective_max=500,
+    delta_time=0.1,
+    smoothing_time=0.5,
+):
+    return run_sqf(
+        GOVERNOR,
+        [
+            fps_smooth,
+            fps_raw,
+            target_fps,
+            deadband,
+            ceiling,
+            effective_min,
+            effective_max,
+            delta_time,
+            smoothing_time,
+        ],
+    )
+
+
+def stabilize(
+    raw_depth=0,
+    scene="NEAR",
+    now=0,
+    interior=0,
+    opening=0,
+    sensitivity=12,
+    decrease_delay=0.3,
+    state=None,
+):
+    if state is None:
+        state = ["OUTSIDE", 0, 0, 0, "NEAR", "", -1, 0]
+    return run_sqf(
+        STABILIZE,
+        [raw_depth, scene, now, interior, opening, sensitivity, decrease_delay, state],
+    )
+
+
 def sky_samples(count: int = 9, distance: float = 200.0):
     points = pattern(count, False)
     return [[distance, p[2], p[0], p[1], 2] for p in points]
@@ -374,8 +460,138 @@ class TestShadowClassifyScene(unittest.TestCase):
 
     def test_prep_entries_exist(self) -> None:
         prep = PREP.read_text(encoding="utf-8")
-        self.assertIn("PREPS(vision,shadowSamplePattern)", prep)
-        self.assertIn("PREPS(vision,shadowClassifyScene)", prep)
+        for entry in (
+            "PREPS(vision,shadowSamplePattern)",
+            "PREPS(vision,shadowClassifyScene)",
+            "PREPS(vision,shadowTargetDistance)",
+            "PREPS(vision,shadowSmoothDistance)",
+            "PREPS(vision,shadowFpsGovernor)",
+            "PREPS(vision,shadowStabilizeDepth)",
+        ):
+            with self.subTest(entry=entry):
+                self.assertIn(entry, prep)
+
+
+class TestShadowTargetDistance(unittest.TestCase):
+    def test_margin_adds_to_depth(self) -> None:
+        self.assertAlmostEqual(target(200, 0, 500, margins=[12, 0, 0, 0, 0]), 212)
+
+    def test_enclosed_scales_the_margins(self) -> None:
+        outside = target(
+            200, 0, 500, turn_level=1, scene_state="OUTSIDE", margins=[12, 0, 0, 100, 0]
+        )
+        enclosed = target(
+            200,
+            0,
+            500,
+            turn_level=1,
+            scene_state="ENCLOSED",
+            margins=[12, 0, 0, 100, 0],
+        )
+        self.assertAlmostEqual(outside, 312)
+        # 12 + (100 * 1 * 0.25) = 37
+        self.assertAlmostEqual(enclosed, 237)
+
+    def test_movement_vehicle_and_optics_margins(self) -> None:
+        # speed 10, movement 0.6 -> 6; vehicle 1.25 -> 12.5; optics 30.
+        got = target(
+            0,
+            0,
+            500,
+            speed=10,
+            in_vehicle=True,
+            optics=True,
+            margins=[12, 0.6, 1.25, 0, 30],
+        )
+        self.assertAlmostEqual(got, 12 + 6 + 12.5 + 30)
+
+    def test_clamped_to_min_and_max(self) -> None:
+        self.assertAlmostEqual(target(10, 100, 500, margins=[12, 0, 0, 0, 0]), 100)
+        self.assertAlmostEqual(target(900, 0, 500, margins=[12, 0, 0, 0, 0]), 500)
+        self.assertEqual(target(200, 0, 0, margins=[12, 0, 0, 0, 0]), 0)
+
+
+class TestShadowSmoothDistance(unittest.TestCase):
+    def test_increase_and_decrease_are_rate_limited(self) -> None:
+        # increase 2000 m/s over 0.1 s = 200 m
+        self.assertAlmostEqual(smooth(1000, 0, 0.1, 2000, 1000), 200)
+        # decrease 1000 m/s over 0.1 s = 100 m
+        self.assertAlmostEqual(smooth(0, 1000, 0.1, 2000, 1000), 900)
+        # fast decrease multiplies the decrease by 1.35 -> 135 m
+        self.assertAlmostEqual(smooth(0, 1000, 0.1, 2000, 1000, True), 865)
+
+    def test_close_target_snaps(self) -> None:
+        self.assertAlmostEqual(smooth(1000, 999.995, 0.1), 1000)
+
+    def test_step_never_overshoots(self) -> None:
+        self.assertAlmostEqual(smooth(5, 0, 1.0, 2000, 1000), 5)
+
+
+class TestShadowFpsGovernor(unittest.TestCase):
+    def test_governor_lowers_the_ceiling_below_target_fps(self) -> None:
+        smooth_fps, ceiling = governor(60, 20, 60, 3, 500, 0, 500, 0.1, 0.5)
+        self.assertLess(smooth_fps, 60)
+        self.assertLess(ceiling, 500)
+        self.assertGreaterEqual(ceiling, 0)
+
+    def test_governor_recovers_above_target_fps(self) -> None:
+        _, ceiling = governor(60, 120, 60, 3, 200, 0, 500, 0.1, 0.5)
+        # recovery 120 m/s over 0.1 s = 12 m
+        self.assertAlmostEqual(ceiling, 212)
+
+    def test_governor_off_returns_the_effective_max(self) -> None:
+        _, ceiling = governor(60, 120, 0, 3, 200, 0, 500, 0.1, 0.5)
+        self.assertEqual(ceiling, 500)
+
+    def test_governor_never_goes_below_the_minimum(self) -> None:
+        _, ceiling = governor(60, 1, 60, 3, 50, 50, 500, 1.0, 0.5)
+        self.assertGreaterEqual(ceiling, 50)
+
+
+class TestShadowStabilizeDepth(unittest.TestCase):
+    def test_first_call_holds_the_raw_depth(self) -> None:
+        depth, state, fast, _ = stabilize(120, "NEAR", 0, 0, 0)
+        self.assertAlmostEqual(depth, 120)
+        self.assertEqual(state, "OUTSIDE")
+        self.assertFalse(fast)
+
+    def test_enclosed_needs_two_entries(self) -> None:
+        depth, state, fast, st = stabilize(20, "INTERIOR", 0, 0.9, 0.0)
+        self.assertEqual(state, "ENTERING")
+        self.assertFalse(fast)
+        depth, state, fast, st = stabilize(20, "INTERIOR", 0.1, 0.9, 0.0, state=st)
+        self.assertEqual(state, "ENCLOSED")
+        self.assertTrue(fast)
+        self.assertAlmostEqual(depth, 20)
+
+    def test_state_round_trips(self) -> None:
+        _, _, _, st = stabilize(100, "OPEN", 0, 0, 1.0)
+        self.assertEqual(len(st), 8)
+        self.assertEqual(st[0], "OUTSIDE")
+
+
+class TestShadowKernelPurityAndMarking(unittest.TestCase):
+    def test_kernels_are_pure(self) -> None:
+        for path in (TARGET, SMOOTH, GOVERNOR, STABILIZE):
+            text = live_source(path)
+            for token in (
+                "missionNamespace",
+                "GVAR(",
+                "EGVAR(",
+                "diag_fps",
+                "getShadowDistance",
+                "setVariable",
+            ):
+                with self.subTest(path=path.name, token=token):
+                    self.assertNotIn(token, text)
+
+    def test_headers_carry_the_source_marking(self) -> None:
+        for path in (TARGET, SMOOTH, GOVERNOR, STABILIZE):
+            text = path.read_text(encoding="utf-8")
+            self.assertIn("3792830104", text)
+            self.assertIn("no licence", text)
+            self.assertIn("No mod content is copied", text)
+            self.assertIn("UNSOURCED", text)
 
 
 if __name__ == "__main__":
