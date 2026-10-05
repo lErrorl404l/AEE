@@ -179,6 +179,28 @@ class TestDefaultPathColorizeAlpha(unittest.TestCase):
         cc, _ = run_sqf(BASE_KERNEL, [])
         self.assertEqual(cc[4][3], 0, "the default path desaturates")
 
+    def test_base_grade_acuity_grain_is_colour_not_monochrome(self):
+        # BIKI capture 20240220225631: the Arma 3 FilmGrain monochromatic
+        # parameter is 0 monochrome, any other value colour.  0 drains normal
+        # vision to grey while the base grade is enabled.
+        _, grain = run_sqf(BASE_KERNEL, [])
+        self.assertEqual(len(grain), 6)
+        self.assertNotEqual(grain[5], 0, "the acuity grain is monochrome")
+
+    def test_default_perception_compose_keeps_the_mesopic_colour_identity(self):
+        # The live driver passes desatMax 0, Purkinje 0 and desatAlpha 0; the
+        # eye model publishes a mesopic fraction below 1 at dusk (RPT 0.983).
+        # The colour stage must stay the identity on that branch.
+        cc, _ = compose(
+            [50, 0.98, [1, 1, 1], True, False, 0.25, 1, 0.9, 0, 0, [1, 1, 0], 0]
+        )
+        self.assertEqual(cc[4], [1, 1, 1, 0], "the default mesopic path desaturates")
+
+    def test_perception_acuity_grain_is_colour_not_monochrome(self):
+        _, grain = compose([])
+        self.assertEqual(len(grain), 6)
+        self.assertNotEqual(grain[5], 0, "the acuity grain is monochrome")
+
     def test_neutral_fixture_matches_the_shipped_default(self):
         self.assertEqual(NEUTRAL_FIXTURE[4][3], 0)
         self.assertEqual(NEUTRAL_FIXTURE[5], REC709_WEIGHTS)
@@ -336,6 +358,11 @@ class TestPerceptionMesopicColor(unittest.TestCase):
 
     def test_photopic_is_the_identity(self):
         self.assertEqual(run_sqf(MESOPIC_KERNEL, [1]), [1, 1, 1, 0])
+
+    def test_kernel_defaults_are_the_identity(self):
+        # The latent parameter defaults must not desaturate a bare caller.
+        # With the old defaults 0.3 / 0.5 this returns alpha 0.15.
+        self.assertEqual(run_sqf(MESOPIC_KERNEL, [0.5]), [1, 1, 1, 0])
 
     def test_scotopic_raises_the_alpha_to_the_maximum(self):
         _r, _g, _b, alpha = run_sqf(MESOPIC_KERNEL, [0, 0.3, 0.5])

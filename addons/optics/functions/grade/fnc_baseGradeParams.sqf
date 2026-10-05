@@ -51,7 +51,8 @@ Per-constant source register (UNSOURCED values are marked beside the clamp):
   grain       0.006, range 0 to 0.05.  BIKI FilmGrain intensity, default 0.005.
   grain size  2.01, range 1 to 8.  BIKI FilmGrain, default 2.01.
   intensityX  0.75, 1.0, BIKI FilmGrain defaults.
-  monochrome  0, BIKI FilmGrain Arma 3, 0 colour, 1 monochrome.
+  monochrome  1 (colour), BIKI FilmGrain Arma 3: 0 is monochrome, any
+              other value is colour.  0 desaturates normal vision.
 
 Arguments:
   0: Number - display contrast (0.8 to 1.6)
@@ -90,6 +91,6 @@ private _cc = [
     [0.2126, 0.7152, 0.0722, 0],
     [-1, -1, 0, 0, 0, 0, 0]
 ];
-private _grainParams = [_grain, _sharpness, 2.01, 0.75, 1.0, 0];
+private _grainParams = [_grain, _sharpness, 2.01, 0.75, 1.0, 1];
 
 [_cc, _grainParams]
