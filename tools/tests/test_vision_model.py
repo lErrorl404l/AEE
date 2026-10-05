@@ -448,6 +448,7 @@ def compose(args):
             CHROMA_KERNEL, list(a)
         ),
         "__FUNC__perceptionMesopicColor": lambda *a: run_sqf(MESOPIC_KERNEL, list(a)),
+        "__FUNC__perceptionBaseGrade": lambda *a: run_sqf(BASE_ANCHOR_KERNEL, list(a)),
     }
     return run_sqf(COMPOSE_KERNEL, args, globals_)
 
@@ -504,9 +505,14 @@ class TestPerceptionColourComposition(unittest.TestCase):
         self.assertEqual(cc, NEUTRAL_FIXTURE)
 
     def test_scotopic_raises_the_colorize_alpha(self):
-        cc, _ = compose([1, 0, [1, 1, 1], True, False, 1, 1])
+        # desatAlpha 0.08 drives the bounded colorize alpha; the anchor is
+        # appended before it.
+        cc, _ = compose(
+            [1, 0, [1, 1, 1], True, False, 1, 1, 0.9, 0.3, 0.5, [1, 1, 0], 0.08]
+        )
         self.assertGreater(cc[4][3], 0)
         self.assertLessEqual(cc[4][3], 0.5)
+        self.assertAlmostEqual(cc[4][3], 0.08, places=9)
 
     def test_warm_illuminant_with_white_balance_raises_the_blend_alpha(self):
         cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, True, 1, 1])
