@@ -46,6 +46,9 @@ PREPS(vision,dtvHostStop);
 PREPS(vision,calculateViewDistance);
 PREPS(vision,ppEffectCreate);
 PREPS(vision,destroyBasePostProcess);
+PREPS(vision,weatherGrainParams);
+PREPS(vision,applyWeatherGrain);
+PREPS(vision,initWeatherGrain);
 
 // Grade (image realism): the normal-vision base grade and acuity pass.
 PREPS(grade,baseGradeParams);

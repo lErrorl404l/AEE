@@ -185,6 +185,8 @@ if (hasInterface) then {
     [] call FUNC(initEyeAdaptation);
     // Normal-vision base grade and acuity pass (image realism).
     [] call FUNC(initBaseGrade);
+    // Rain-scaled film grain (aee-workshop-copy item 5).
+    [] call FUNC(initWeatherGrain);
 };
 
 
