@@ -3133,6 +3133,12 @@ private _p29Pass = 0;
     // hasInterface exit, so a dedicated server can still observe the resolved
     // anchor and the default composed grade.  It renders nothing.
     execVM "aee_p83_grade_probe.sqf";
+    // PHASE 84 lives in aee_p84_hdr_probe.sqf: the engine HDR and
+    // night-darkness values are read from the loaded config, which a script
+    // cannot change at run time.  A dedicated server reads the same config,
+    // so the probe asserts bloom, tonemap, night shift, starEmissivity and
+    // the DayLighting arrays directly.  It renders nothing.
+    execVM "aee_p84_hdr_probe.sqf";
     // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
     // surface (scalar keys, no thermalProperties) and the TI command contract
     // resolve headless, so a dedicated server verifies what the StageTI
