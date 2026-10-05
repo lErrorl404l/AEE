@@ -403,6 +403,18 @@ class TestPerceptionBaseAnchor(unittest.TestCase):
         self.assertAlmostEqual(b_hi, 1.03, places=9)
         self.assertAlmostEqual(b_lo, 0.97, places=9)
 
+    def test_brightness_lower_bound_holds_beyond_the_boundary(self):
+        # db = (0.5 - 1) * 1 = -0.5, far below the -0.03 bound.  Only the lower
+        # clamp keeps the result at the bound; removing it returns 0.5 here.
+        _b, _c, _o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[0.5, 1, 0], [1, 1, 0], 1, 0])
+        self.assertAlmostEqual(_b, 0.97, places=9)
+
+    def test_offset_lower_bound_holds_beyond_the_boundary(self):
+        # do = -0.5 * 1 = -0.5, far below the -0.02 bound.  Only the lower
+        # clamp keeps the result at the bound; removing it returns -0.5 here.
+        _b, _c, o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, -0.5], [1, 1, 0], 1, 0])
+        self.assertAlmostEqual(o, -0.02, places=9)
+
     def test_alpha_clamps_to_the_upper_bound(self):
         _b, _c, _o, a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1, 1, 0], 1, 0.10])
         _b, _c, _o, a_over = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1, 1, 0], 1, 0.5])
@@ -431,6 +443,34 @@ class TestPerceptionBaseAnchor(unittest.TestCase):
             run_sqf(BASE_ANCHOR_KERNEL, ["x", [1, 2], 1, 0]),
             [1, 1, 0, 0],
         )
+
+    def test_absent_anchor_keeps_the_neutral_default(self):
+        # One argument: the tone only.  The anchor parameter default is the
+        # neutral triple, so the result is the identity grade.
+        self.assertEqual(run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0]]), [1, 1, 0, 0])
+
+    def test_non_numeric_anchor_falls_back(self):
+        self.assertEqual(
+            run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], ["x", 1, 0], 1, 0]),
+            [1, 1, 0, 0],
+        )
+
+    def test_short_anchor_falls_back(self):
+        self.assertEqual(
+            run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1, 2], 1, 0]),
+            [1, 1, 0, 0],
+        )
+
+    def test_driver_normalises_the_anchor_range(self):
+        # The kernel guards the anchor type and length.  The driver owns the
+        # numeric range: an out-of-range raw scalar falls back to the neutral
+        # triple at run time.  This is the out-of-range half of the anchor
+        # normalise contract; the absent half is the kernel fallback above.
+        code = _code(DRIVER)
+        self.assertIn("(_b >= 0) && (_b <= 4)", code)
+        self.assertIn("(_c >= 0) && (_c <= 4)", code)
+        self.assertIn("(_o >= -1) && (_o <= 1)", code)
+        self.assertIn("_anchor = [1, 1, 0]", code)
 
     def test_a_non_neutral_anchor_shifts_the_bounds(self):
         b, c, o, _a = run_sqf(BASE_ANCHOR_KERNEL, [[1, 1, 0], [1.1, 1.2, -0.05], 1, 0])
@@ -506,13 +546,17 @@ class TestPerceptionColourComposition(unittest.TestCase):
 
     def test_scotopic_raises_the_colorize_alpha(self):
         # desatAlpha 0.08 drives the bounded colorize alpha; the anchor is
-        # appended before it.
+        # appended before it.  The colorize RGB is the mesopic kernel output, so
+        # it must be non-neutral and blue-shifted.  A neutral RGB would prove
+        # the mesopic branch did not run.
         cc, _ = compose(
             [1, 0, [1, 1, 1], True, False, 1, 1, 0.9, 0.3, 0.5, [1, 1, 0], 0.08]
         )
         self.assertGreater(cc[4][3], 0)
         self.assertLessEqual(cc[4][3], 0.5)
         self.assertAlmostEqual(cc[4][3], 0.08, places=9)
+        self.assertNotEqual(cc[4][:3], [1, 1, 1], "the mesopic kernel did not run")
+        self.assertGreater(cc[4][2], cc[4][0], "the colorize is not blue-shifted")
 
     def test_warm_illuminant_with_white_balance_raises_the_blend_alpha(self):
         cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, True, 1, 1])
@@ -562,6 +606,23 @@ class TestPerceptionDriverContract(unittest.TestCase):
 
     def test_driver_reads_the_force_illuminant_hook(self):
         self.assertIn("visionForceIlluminant", _code(DRIVER))
+
+    def test_driver_caches_the_anchor_above_the_first_adjust(self):
+        code = _code(DRIVER)
+        # The anchor is read from the loaded config exactly once per session and
+        # cached.  A second read, or a read below the first adjust, fails.
+        self.assertEqual(code.count("getArray"), 1, "the anchor is read more than once")
+        self.assertIn(
+            "isNil QGVAR(visionBaseAnchor)", code, "the cache guard is missing"
+        )
+        self.assertIn(
+            "setVariable [QGVAR(visionBaseAnchor)", code, "the anchor is not cached"
+        )
+        self.assertLess(
+            code.index("getArray"),
+            code.index("ppEffectAdjust"),
+            "the anchor read is not above the first post-process adjust",
+        )
 
     def test_driver_passes_the_colour_calibration_settings(self):
         code = _code(DRIVER)
@@ -632,11 +693,22 @@ class TestPerceptionColourContracts(unittest.TestCase):
     def test_composition_calls_each_colour_kernel(self):
         code = _code(COMPOSE_KERNEL)
         for name in (
+            "perceptionBaseGrade",
             "perceptionIlluminant",
             "perceptionChromaticAdaptation",
             "perceptionMesopicColor",
         ):
             self.assertIn(f"FUNC({name})", code, f"the composition omits {name}")
+
+    def test_composition_calls_the_anchor_clamp(self):
+        # The composition must route the tone triple through the anchor clamp.
+        # The behavioural proof is in TestPerceptionSmallBound: bypassing this
+        # call returns the raw tone contrast, which reaches 1.6.
+        self.assertIn(
+            "call FUNC(perceptionBaseGrade)",
+            _code(COMPOSE_KERNEL),
+            "the composition does not clamp the grade to the anchor",
+        )
 
     def test_composition_sets_the_blend_and_colorize_slots(self):
         code = _code(COMPOSE_KERNEL)
@@ -674,6 +746,71 @@ class TestPerceptionColourContracts(unittest.TestCase):
             self.assertAlmostEqual(got, want, places=9)
 
 
+class TestPerceptionSmallBound(unittest.TestCase):
+    """The composed grade never leaves the small bound around the anchor.
+
+    The default tone strength 0.25 folds the tone kernel into a bounded
+    deviation from the vanilla anchor.  Over a luminance sweep the grade must
+    stay inside contrast +0.00..+0.08, offset -0.02..0.00, brightness +/-0.03
+    and a desaturation alpha 0..0.10.  The sweep also proves the composition
+    calls the anchor clamp: bypassing FUNC(perceptionBaseGrade) returns the raw
+    tone triple, whose contrast reaches 1.6 at the sweep ends.
+    """
+
+    LUM_SWEEP = [1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100, 1000, 1e4, 1e5]
+    ANCHOR = [1, 1, 0]
+
+    def _compose_at(self, lum, desat_alpha=0.0):
+        return compose(
+            [
+                lum,
+                1,
+                [1, 1, 1],
+                True,
+                False,
+                0.25,
+                1,
+                0.9,
+                0,
+                0,
+                self.ANCHOR,
+                desat_alpha,
+            ]
+        )[0]
+
+    def test_composed_grade_stays_within_the_small_bound_over_the_sweep(self):
+        b0, c0, o0 = self.ANCHOR
+        for lum in self.LUM_SWEEP:
+            cc = self._compose_at(lum)
+            self.assertGreaterEqual(
+                cc[0], b0 - 0.03, f"brightness below bound at {lum}"
+            )
+            self.assertLessEqual(cc[0], b0 + 0.03, f"brightness above bound at {lum}")
+            self.assertGreaterEqual(cc[1], c0, f"contrast below the anchor at {lum}")
+            self.assertLessEqual(cc[1], c0 + 0.08, f"contrast above bound at {lum}")
+            self.assertGreaterEqual(cc[2], o0 - 0.02, f"offset below bound at {lum}")
+            self.assertLessEqual(cc[2], o0, f"offset above the anchor at {lum}")
+            self.assertGreaterEqual(cc[4][3], 0, f"alpha below bound at {lum}")
+            self.assertLessEqual(cc[4][3], 0.10, f"alpha above bound at {lum}")
+
+    def test_composed_alpha_clamps_to_the_upper_bound(self):
+        for lum in self.LUM_SWEEP:
+            alpha = self._compose_at(lum, desat_alpha=0.5)[4][3]
+            self.assertGreaterEqual(alpha, 0)
+            self.assertLessEqual(alpha, 0.10)
+
+    def test_kernel_grade_stays_within_the_small_bound_over_the_sweep(self):
+        for lum in self.LUM_SWEEP:
+            tone = run_sqf(TONE_KERNEL, [lum, 100, 0.25, 1])
+            b, c, o, _a = run_sqf(BASE_ANCHOR_KERNEL, [tone, self.ANCHOR, 0.25, 0])
+            self.assertGreaterEqual(b, 0.97)
+            self.assertLessEqual(b, 1.03)
+            self.assertGreaterEqual(c, 1.0)
+            self.assertLessEqual(c, 1.08)
+            self.assertGreaterEqual(o, -0.02)
+            self.assertLessEqual(o, 0.0)
+
+
 class TestPerceptionDebugHooks(unittest.TestCase):
     """Each vision hook is read, and none is registered as a CBA setting."""
 
@@ -682,6 +819,7 @@ class TestPerceptionDebugHooks(unittest.TestCase):
         "visionForceLux",
         "visionForceMesopic",
         "visionForceIlluminant",
+        "visionForceBase",
     ]
 
     def test_each_hook_is_read(self):
@@ -822,6 +960,22 @@ class TestPerceptionNoTintAtDefaults(unittest.TestCase):
     def test_mesopic_kernel_is_the_identity_for_every_fraction(self):
         for mesopic_w in (0, 0.25, 0.5, 0.75, 1):
             self.assertEqual(run_sqf(MESOPIC_KERNEL, [mesopic_w, 0, 0]), [1, 1, 1, 0])
+
+    def test_zero_desaturation_stays_neutral_at_the_old_purkinje_default(self):
+        # The old Purkinje default is 0.5.  Zero desaturation must dominate:
+        # the composition gates the colour on the mesopic alpha, so a
+        # zero-alpha grade keeps the neutral colorize even at a full Purkinje
+        # strength.  Removing that guard (the pre-change composition) tints
+        # the RGB toward [0.75, 1, 1] and fails here.
+        args = list(self.DEFAULTS)
+        args[1] = 0  # scotopic, so the mesopic path runs
+        args[9] = 0.5  # the old default Purkinje strength
+        cc = compose(args)[0]
+        self.assertEqual(
+            cc[4],
+            [1, 1, 1, 0],
+            "a full Purkinje strength tinted a zero-desaturation grade",
+        )
 
     def test_no_Green_cast_at_the_defaults(self):
         # The capital G keeps this test selectable by `-k Green`.
