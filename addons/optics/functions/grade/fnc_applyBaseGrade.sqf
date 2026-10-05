@@ -199,6 +199,9 @@ if (_useModel isEqualTo true) then {
     private _adaptDegree = missionNamespace getVariable [QGVAR(visionAdaptationDegree), 0.9];
     private _desatMax = missionNamespace getVariable [QGVAR(visionMesopicDesaturation), 0.3];
     private _purkinje = missionNamespace getVariable [QGVAR(visionPurkinjeStrength), 0.5];
+    // Bounded desaturation: the mesopic setting scales with the scotopic
+    // fraction, then clamps to the 0 to 0.10 bound the anchor clamp enforces.
+    private _desatAlpha = (((_desatMax * (1 - _mesopicW)) max 0) min 0.10);
 
     // The scene illuminant: the engine ambient colour, one engine read per
     // tick.  Element 0 is the ambient light colour (BIKI capture
@@ -232,7 +235,9 @@ if (_useModel isEqualTo true) then {
         _contrastScale,
         _adaptDegree,
         _desatMax,
-        _purkinje
+        _purkinje,
+        _baseAnchor,
+        _desatAlpha
     ] call FUNC(perceptionParams);
 } else {
     _params = [

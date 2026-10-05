@@ -15,7 +15,9 @@ identity alpha is 0.  The weight array (slot 5) is the Rec.709 luma
 (0.2126, 0.7152, 0.0722), its fourth value fixed 0.
 
 Tone stage: fnc_perceptionToneResponse maps the adapted scene luminance to the
-display brightness, contrast and black point.
+display brightness, contrast and black point.  fnc_perceptionBaseGrade then
+clamps that triple to the vanilla base-grade anchor plus a small bounded
+deviation, so the default image never pushes an extreme look.
 
 Colour stage: when white balance is on, fnc_perceptionIlluminant normalises the
 scene illuminant and fnc_perceptionChromaticAdaptation derives the blend slot.
@@ -39,6 +41,8 @@ Arguments:
   7: Number - adaptation degree D, 0 to 1
   8: Number - maximum mesopic desaturation alpha, 0 to 0.5
   9: Number - Purkinje tint strength, 0 to 1
+  10: Array - vanilla base-grade anchor [brightness, contrast, offset]
+  11: Number - bounded desaturation alpha, 0 to 0.10
 
 Returns:
   Array - [ColorCorrections array, FilmGrain array]
@@ -54,7 +58,9 @@ params [
     ["_contrastScale", 1, [0]],
     ["_adaptDegree", 0.9, [0]],
     ["_desatMax", 0.3, [0]],
-    ["_purkinjeStrength", 0.5, [0]]
+    ["_purkinjeStrength", 0.5, [0]],
+    ["_anchor", [1, 1, 0], [[]]],
+    ["_desatAlpha", 0, [0]]
 ];
 
 private _tone = [1, 1, 0];
@@ -62,18 +68,21 @@ if (_toneEnabled) then {
     _tone = [_adaptedLum, 100, _strength, _contrastScale] call FUNC(perceptionToneResponse);
 };
 
-private _brightness = _tone select 0;
-private _contrast = _tone select 1;
-private _offset = _tone select 2;
+// Clamp the tone triple to the vanilla anchor plus a small bounded deviation.
+private _grade = [_tone, _anchor, _strength, _desatAlpha] call FUNC(perceptionBaseGrade);
+private _brightness = _grade select 0;
+private _contrast = _grade select 1;
+private _offset = _grade select 2;
+private _alpha = _grade select 3;
 
 // The colour stage is off when white balance is off and the scene is photopic,
 // so the array stays the identity.
 private _blend = [0, 0, 0, 0];
-private _colorize = [1, 1, 1, 0];
+private _colorize = [1, 1, 1, _alpha];
 if (_whiteBalance || (_mesopicW < 1)) then {
     private _meso = [_mesopicW, _desatMax, _purkinjeStrength] call FUNC(perceptionMesopicColor);
     if ((_meso select 3) > 0) then {
-        _colorize = _meso;
+        _colorize = [_meso select 0, _meso select 1, _meso select 2, _alpha];
     };
     if (_whiteBalance) then {
         private _illum = [_illuminant] call FUNC(perceptionIlluminant);
