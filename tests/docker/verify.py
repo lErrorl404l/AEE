@@ -98,6 +98,16 @@ if _debug_missing:
     for m in _debug_missing:
         print(f"  missing: {m}")
 
+# The consolidated wildlife state line is emitted at INFO on the first tick
+# even with tracing off.  Its absence means the logger is not wired into the
+# tick, so the run proves the line end to end.
+_state_line = "[AEE][wildlife][INFO] wildlife state |"
+_state_missing = [] if _state_line in text else [_state_line]
+if _state_missing:
+    print(f"wildlife state line: {len(_state_missing)} expected line(s) absent")
+    for m in _state_missing:
+        print(f"  missing: {m}")
+
 # The mission probes report with their own tag, not [PHASEn], because they
 # run on a separate thread loaded by execVM. The fails regex above matches
 # [PHASE\d+] only, so a probe failure or a probe that never ran was INVISIBLE
@@ -156,6 +166,7 @@ if (
     or errors
     or warnings
     or _debug_missing
+    or _state_missing
     or _probe_missing
     or _probe_failed
 ):

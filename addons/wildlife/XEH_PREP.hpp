@@ -12,6 +12,7 @@ PREP(disturbanceSilence);
 PREP(playOneShot);
 PREP(playAmbientBed);
 PREP(spookWave);
+PREP(logWildlifeState);
 PREP(wildlifeTick);
 PREP(initWildlife);
 PREP(teardownWildlife);

@@ -21,7 +21,7 @@ params [
     ["_anchor", [], [[]]],
     ["_dryRun", false, [false]]
 ];
-
+private _tickStart = if (AEE_TRACE_ON) then { diag_tickTime } else { 0 };
 private _unit = objNull;
 if (hasInterface) then {
     _unit = call CBA_fnc_currentUnit;
@@ -177,6 +177,10 @@ if (_spook) then {
 
 private _state = [_bedKey, _gain, _disturbance, _spook, _spookRange];
 
+// The consolidated line.  It emits INFO on the first call and DEBUG after,
+// and its own guard makes the call one statement when tracing is off.
+[_state] call FUNC(logWildlifeState);  // fnc_logWildlifeState
+
 if (_dryRun) exitWith { _state };
 if (!_hasUnit) exitWith { _state };
 
@@ -191,8 +195,6 @@ if !(_ambient isEqualType true) then { _ambient = true; };
 // share one guarded read.
 private _animals = missionNamespace getVariable [QGVAR(animalsEnabled), false];
 if !(_animals isEqualType true) then { _animals = false; };
-private _density = missionNamespace getVariable [QGVAR(density), 1.0];
-if !(_density isEqualType 0) then { _density = 1.0; };
 
 if (_spook) then {
     [_spookPosition, 0.9] call FUNC(spookWave);
@@ -241,7 +243,11 @@ if (_animals) then {
     [_position] call FUNC(cullFauna);
 };
 
-private _logMsg = format ["bed %1 gain %2 disturbance %3 spook %4 animals %5 density %6", _bedKey, _gain, _disturbance, _spook, _animals, _density];
-AEE_LOG_DEBUG(_logMsg);
+// The tick duration is recorded only inside the trace gate, so the
+// production cost stays zero with tracing off.  The state line reads the
+// value on the next tick.
+if (AEE_TRACE_ON) then {
+    missionNamespace setVariable [QGVAR(lastTickMs), (diag_tickTime - _tickStart) * 1000];
+};
 
 _state
