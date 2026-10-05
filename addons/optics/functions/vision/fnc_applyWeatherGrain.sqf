@@ -12,8 +12,7 @@ ever hands back a handle another scope already holds.
 The kernel FUNC(weatherGrainParams) picks the six-element FilmGrain array
 from rain and sunOrMoon.  This driver scales its intensity by two factors:
 
-  aee_optics_weatherGrainIntensity  operator setting (promoted in T8); the
-                                    module constant below is the interim value
+  aee_optics_weatherGrainIntensity  operator setting, range 0 to 1
   aee_environmental_worldLighting   element 2, the matcher grain scale
                                     (default 1 when the matcher has not run)
 
@@ -62,13 +61,18 @@ if ((_profile isEqualType []) && {(count _profile) > 2}) then {
 };
 if !(_grainScale isEqualType 0) then { _grainScale = 1; };
 
+private _intensitySetting = missionNamespace getVariable [QGVAR(weatherGrainIntensity), 0.5];
+if !(_intensitySetting isEqualType 0) then { _intensitySetting = 0.5; };
+private _rainThreshold = missionNamespace getVariable [QGVAR(weatherGrainRainThreshold), 0.2];
+if !(_rainThreshold isEqualType 0) then { _rainThreshold = 0.2; };
+
 private _params = [_rain, _sunOrMoon] call FUNC(weatherGrainParams);
-private _intensity = ((_params select 0) * AEE_WEATHER_GRAIN_INTENSITY) * _grainScale;
+private _intensity = ((_params select 0) * _intensitySetting) * _grainScale;
 private _sharpness = _params select 1;
 private _size = _params select 2;
 
-private _on = _rain > AEE_WEATHER_GRAIN_RAIN_ON;
-private _off = _rain < AEE_WEATHER_GRAIN_RAIN_OFF;
+private _on = _rain > _rainThreshold;
+private _off = _rain < (_rainThreshold * 0.5);
 
 if (_on) then {
     if (_hGrain >= 0) then {

@@ -3149,6 +3149,11 @@ private _p29Pass = 0;
     // light pollution, the coefficient rises with moon phase and the weather
     // fade falls under high overcast.  It renders nothing.
     execVM "aee_p85_star_probe.sqf";
+    // PHASE 86 lives in aee_p86_grain_probe.sqf: the rain-scaled film grain
+    // kernel is pure, so the probe drives it at the four branches and asserts
+    // the exact arrays and the colour invariant (the sixth element is 1).  It
+    // renders nothing.
+    execVM "aee_p86_grain_probe.sqf";
     // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
     // surface (scalar keys, no thermalProperties) and the TI command contract
     // resolve headless, so a dedicated server verifies what the StageTI
