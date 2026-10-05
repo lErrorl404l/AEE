@@ -788,6 +788,34 @@ class TestResourceScore(unittest.TestCase):
         self.assertNotEqual(water, food)
 
 
+class TestNeedsRateWiring(unittest.TestCase):
+    """The behaviour callback passes the operator rates to fnc_needsTick.
+
+    The rates are declared settings (aee_wildlife_hungerRate / thirstRate).
+    Before this wiring the callback passed the literals 0.02 and 0.03, so the
+    settings were dead.  Reverting the callback to the literals fails these
+    tests and makes tools/validation/validate_cba_settings.py report two dead
+    settings again.
+    """
+
+    def setUp(self):
+        src = WILDLIFE / "functions" / "fnc_applyAnimalBehaviour.sqf"
+        self.src = src.read_text(encoding="utf-8")
+
+    def test_reads_both_rate_settings(self):
+        self.assertIn("QGVAR(hungerRate)", self.src)
+        self.assertIn("QGVAR(thirstRate)", self.src)
+
+    def test_passes_the_rates_not_literals(self):
+        self.assertIn(
+            "[_hunger, _thirst, 1, _hungerRate, _thirstRate] call FUNC(needsTick)",
+            self.src,
+        )
+        self.assertNotIn(
+            "[_hunger, _thirst, 1, 0.02, 0.03] call FUNC(needsTick)", self.src
+        )
+
+
 class TestWildlifeSettingsStrings(unittest.TestCase):
     """Every wildlife setting declares both stringtable keys."""
 

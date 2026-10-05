@@ -97,7 +97,13 @@ private _callback = {
     private _thirst = _agent getVariable [QGVAR(thirst), 0.1];
     if !(_thirst isEqualType 0) then { _thirst = 0.1; };
 
-    private _needs = [_hunger, _thirst, 1, 0.02, 0.03] call FUNC(needsTick);
+    // The hunger and thirst rates are operator settings.  Read them each
+    // callback with the module's guarded read, so a missing or malformed
+    // setting falls back to the kernel default.
+    private _hungerRate = [QGVAR(hungerRate), 0.02, 1] call EFUNC(core,readState);
+    private _thirstRate = [QGVAR(thirstRate), 0.03, 1] call EFUNC(core,readState);
+
+    private _needs = [_hunger, _thirst, 1, _hungerRate, _thirstRate] call FUNC(needsTick);
     _hunger = _needs select 0;
     _thirst = _needs select 1;
     private _goal = _needs select 2;

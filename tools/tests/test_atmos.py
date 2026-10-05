@@ -10,6 +10,17 @@ Run: python3 -m unittest tools/tests/test_atmos.py
 """
 
 import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+ICING_SRC = (
+    ROOT
+    / "addons"
+    / "atmos"
+    / "functions"
+    / "physics"
+    / "fnc_calculateAirframeIcing.sqf"
+)
 
 
 def icing_efficiency(temp_c):
@@ -350,6 +361,25 @@ class TestHumidityDiurnal(unittest.TestCase):
     def test_clamped(self):
         self.assertEqual(rh_diurnal(100, 20, 10), 100)
         self.assertEqual(rh_diurnal(10, 20, 40), 0)
+
+
+class TestAirframeIcingDetectedConsumer(unittest.TestCase):
+    """The published detection flag has a consumer on the atmos debug gate.
+
+    fnc_calculateAirframeIcing publishes airframeIcingDetected.  Before this
+    consumer nothing read it.  Removing the debug line fails these tests and
+    makes validate_cba_settings.py report the name as an orphan write again.
+    """
+
+    def setUp(self):
+        self.src = ICING_SRC.read_text(encoding="utf-8")
+
+    def test_reads_the_published_flag(self):
+        self.assertIn("getVariable [QGVAR(airframeIcingDetected)", self.src)
+
+    def test_the_consumer_is_gated_on_the_trace_switch(self):
+        self.assertIn("if (AEE_TRACE_ON) then", self.src)
+        self.assertIn("airframe icing | detected=", self.src)
 
 
 if __name__ == "__main__":

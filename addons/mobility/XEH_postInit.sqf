@@ -186,3 +186,15 @@ if (GVAR(vehicleCouplingEnabled)) then {
 
     AEE_LOG_INFO("vehicle coupling PFH started");
 };
+
+// The applied airframe penalties were published with no consumer.  This state
+// line is the consumer: it reports the four applied values under the mobility
+// debug gate, which the operator forces with aee_mobility_logDebug or the
+// global aee_core_logDebug.  It runs at 1 Hz, not the 20 Hz load rate, so a
+// forced trace does not flood the RPT.  The file already returned on a
+// dedicated server, so this block is client-only like the load loop.
+if (GVAR(flightAeroPenalty)) then {
+    [{
+        [] call FUNC(logAirframeState);
+    }, 1.0] call CBA_fnc_addPerFrameHandler;
+};
