@@ -42,11 +42,11 @@ TEST_MANIFEST = [
 ]
 
 
-def sound_bed(biome, is_night, near_water, wind, disturbance, manifest=None):
+def sound_bed(biome, is_night, near_water, wind, disturbance, manifest=None, rain=0):
     if manifest is None:
         manifest = TEST_MANIFEST
     return run_sqf(
-        SOUND_BED, [biome, is_night, near_water, wind, disturbance, manifest]
+        SOUND_BED, [biome, is_night, near_water, wind, disturbance, manifest, rain]
     )
 
 
@@ -142,6 +142,11 @@ class TestSoundBedForContext(unittest.TestCase):
         _key, quiet = sound_bed("Cfb", False, 0, 0, 0.0)
         _key, loud = sound_bed("Cfb", False, 0, 0, 0.8)
         self.assertLess(loud, quiet)
+
+    def test_gain_rises_with_rain(self):
+        _key, dry = sound_bed("Cfb", False, 0, 0, 0.0, rain=0.0)
+        _key, wet = sound_bed("Cfb", False, 0, 0, 0.0, rain=1.0)
+        self.assertGreater(wet, dry)
 
 
 class TestSpookRange(unittest.TestCase):
@@ -329,6 +334,21 @@ class TestWildlifeSourceContracts(unittest.TestCase):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
         self.assertIn("hasInterface", text)
         self.assertIn("CBA_fnc_currentUnit", text)
+
+    def test_tick_reads_rain_and_the_soil_facts(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("rain", text)
+        self.assertIn("soilMoisture", text)
+        self.assertIn("surfaceWetness", text)
+
+    def test_tick_senses_nearby_units_and_stance(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("nearEntities", text)
+        self.assertIn("stance", text)
+
+    def test_spawn_reads_the_biome_through_the_guarded_helper(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("EFUNC(core,readState)", text)
 
     def test_dry_run_is_the_last_tick_parameter(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")

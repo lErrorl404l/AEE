@@ -206,15 +206,16 @@ if (_p10Fail == 0) then {
 
 // -- PHASE 11: wildlife simulation budget ----------------------------------
 // The wildlife client tick runs client-local at the tickInterval setting.
-// The probe calls it with no arguments on the dedicated server, where it
-// computes the state and then stops before any sound or object.  The
-// dry-run path is safe and machine-agnostic.  Budget 2 ms/call, warm-up
-// plus best of three, exactly like PHASE10.
+// The probe calls it with a synthetic anchor and dry run true, so the
+// documented dry-run path is measured: the state is computed and the tick
+// stops before any sound or object.  The dry-run path is machine-agnostic and
+// safe on a dedicated server.  Budget 2 ms/call, warm-up plus best of three,
+// exactly like PHASE10.
 private _p11Pass = 0;
 private _p11Fail = 0;
 
 private _perfTests11 = [
-    ["aee_wildlife_fnc_wildlifeTick", [], 100, 0.002]
+    ["aee_wildlife_fnc_wildlifeTick", [[0, 0, 0], true], 100, 0.002]
 ];
 
 {
