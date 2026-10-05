@@ -3117,6 +3117,10 @@ private _p29Pass = 0;
     // mode cycle and the ungated AGC/solver freshness. The final render is
     // client-only and is the operator's in-game gate, not this probe.
     execVM "aee_p80_fusion_probe.sqf";
+    // PHASE 81 lives in aee_p81_wildlife_edge_probe.sqf for the same reason:
+    // the ambient bed and species kernels are pure, so the dedicated server
+    // measures the edge behaviour directly. It renders nothing.
+    execVM "aee_p81_wildlife_edge_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
