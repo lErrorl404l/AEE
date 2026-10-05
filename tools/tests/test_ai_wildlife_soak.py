@@ -158,11 +158,13 @@ class TestFieldBoundSoak(unittest.TestCase):
 
     def test_the_aged_cells_are_dropped(self):
         field, _max_count = field_bound_run()
-        kept = {int(entry[0][0]) for entry in field}
+        kept = {(round(entry[0][0]), round(entry[0][1])) for entry in field}
         # Every old cell is older than the horizon at the final time, so the
-        # age prune drops it.  Only recent cells survive.
+        # age prune drops it.  Build each old key with the real key kernel and
+        # assert the full key is absent, not just its x index.
         for cell in range(OLD_STIMULI):
-            self.assertNotIn(cell, kept)
+            old_key = run_sqf(KEY, [[cell * CELL_SIZE, 0, 0], CELL_SIZE])
+            self.assertNotIn((round(old_key[0]), round(old_key[1])), kept)
 
     def test_the_bound_depends_on_the_prune(self):
         # The apply kernel alone does not bound the field.  Applying one more

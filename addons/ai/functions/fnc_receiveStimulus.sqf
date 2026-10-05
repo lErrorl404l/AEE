@@ -26,5 +26,5 @@ if (isDedicated) exitWith {};
 private _key = [_pos] call FUNC(disturbanceKey);
 private _field = missionNamespace getVariable [QGVAR(disturbance), []];
 _field = [_field, _key, _magnitude, _time] call FUNC(disturbanceApply);
-_field = [_field, _time, AI_CELL_CAP, AI_CELL_HORIZON] call FUNC(disturbancePrune);
+_field = [_field, CBA_missionTime, AI_CELL_CAP, AI_CELL_HORIZON] call FUNC(disturbancePrune);
 missionNamespace setVariable [QGVAR(disturbance), _field];

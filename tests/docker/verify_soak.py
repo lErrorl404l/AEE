@@ -12,13 +12,33 @@ so the same engine noise is ignored by both gates.
 
 import re
 import sys
+from pathlib import Path
 
 LOG = sys.argv[1] if len(sys.argv) > 1 else "tests/docker/run.soak.log"
 
-# The field, sound and fauna caps.  The first two are the model constants.
-AI_CELL_CAP = 256
-WILDLIFE_SOUND_INSTANCE_CAP = 8
-WILDLIFE_ANIMAL_CAP = 16
+# The field, sound and fauna caps.  The field cap and the age horizon come
+# from AI_CELL_CAP and AI_CELL_HORIZON in the ai header.  The sound and fauna
+# caps come from the wildlife header.  Parse them so the gate cannot pass
+# against a stale literal copy.
+ROOT = Path(__file__).resolve().parents[2]
+AI_HEADER = ROOT / "addons" / "ai" / "script_component.hpp"
+WILDLIFE_HEADER = ROOT / "addons" / "wildlife" / "script_component.hpp"
+
+
+def _define(path, name):
+    """The integer value of a #define in a component header.  A missing
+    define stops the gate, so the parse never falls back to a stale value."""
+    text = path.read_text(encoding="utf-8")
+    match = re.search(rf"^#define\s+{name}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
+    if not match:
+        raise SystemExit(f"verify_soak: {name} is not defined in {path}")
+    return int(float(match.group(1)))
+
+
+AI_CELL_CAP = _define(AI_HEADER, "AI_CELL_CAP")
+AI_CELL_HORIZON = _define(AI_HEADER, "AI_CELL_HORIZON")
+WILDLIFE_SOUND_INSTANCE_CAP = _define(WILDLIFE_HEADER, "WILDLIFE_SOUND_INSTANCE_CAP")
+WILDLIFE_ANIMAL_CAP = _define(WILDLIFE_HEADER, "WILDLIFE_ANIMAL_CAP")
 
 with open(LOG, encoding="utf-8", errors="replace") as f:
     text = f.read()
@@ -97,6 +117,7 @@ sound_over = [v for v in sound_values if v > WILDLIFE_SOUND_INSTANCE_CAP]
 fauna_over = [v for v in fauna_values if v > WILDLIFE_ANIMAL_CAP]
 
 print(f"soak samples: {sample_count}")
+print(f"field cap {AI_CELL_CAP}, horizon {AI_CELL_HORIZON}")
 print(
     f"field samples: {len(field_values)} max={max(field_values) if field_values else 'none'}"
 )
