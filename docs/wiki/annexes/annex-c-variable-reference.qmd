@@ -207,6 +207,13 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_soilBearing` | mobility | Soil bearing strength |
 | `aee_mobility_tractionModifier` | mobility | Traction modifier |
 | `aee_mobility_turbulencePFH` | mobility | Turbulence PFH handle |
+| `aee_mobility_airframeLoadPFH` | mobility | Airframe density/icing PFH handle |
+| `aee_mobility_airframeVehicles` | mobility | Cached aircraft list for the airframe load loop |
+| `aee_mobility_airframeRefresh` | mobility | Time of the last airframe-list refresh |
+| `aee_mobility_airLiftLoss` | mobility | Applied lift-loss fraction from density and icing, 0..0.45 |
+| `aee_mobility_airDragRise` | mobility | Applied drag-rise fraction from icing, 0..0.5 |
+| `aee_mobility_airIceMassKg` | mobility | Ice mass applied to the airframe with setMass, kg |
+| `aee_mobility_airLiftRatioApplied` | mobility | Lift ratio used for the applied lift loss |
 | `aee_mobility_rolloverPFH` | mobility | Vehicle rollover PFH handle (#108) |
 | `aee_mobility_isReady` | mobility | Mobility module ready flag |
 | `aee_mobility_crankSuccess` | mobility | Cold-start crank probability 0..1 |

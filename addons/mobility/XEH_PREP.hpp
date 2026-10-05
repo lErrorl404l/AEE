@@ -1,4 +1,8 @@
 PREP(applyFlightTurbulence);
+PREP(applyAirframeLoad);
+PREP(resolveFlightModel);
+PREP(calculateTurbulenceForce);
+PREP(calculateAeroPenalty);
 PREP(applyRollover);
 PREP(calculateAirEngineLoad);
 PREP(calculateEnginePower);

@@ -186,6 +186,14 @@
       "reason": "no positive ground class-table row"
     },
     {
+      "token": "ParachuteBase",
+      "kind": "engine_base",
+      "is_ground": false,
+      "state": "excluded_non_ground",
+      "variant": null,
+      "reason": "no positive ground class-table row"
+    },
+    {
       "token": "Plane",
       "kind": "engine_base",
       "is_ground": false,
