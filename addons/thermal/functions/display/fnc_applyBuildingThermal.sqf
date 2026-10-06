@@ -312,8 +312,8 @@ if (_unsolved isNotEqualTo []) then {
 
 // Diagnostic: confirms the physics baseline applies in-game.
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
-    diag_log text format ["[AEE] Building thermal: %1 found, %2 selections painted (T=%3)",
-        count _objects, _applied, round _airTemp];
+    AEE_LOG_DEBUG(format ["Building thermal: %1 found, %2 selections painted (T=%3)",
+        count _objects, _applied, round _airTemp]);
 };
 
 missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];

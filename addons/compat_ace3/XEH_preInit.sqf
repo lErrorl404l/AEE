@@ -38,7 +38,7 @@ if (isClass (configFile >> "CfgPatches" >> "ace_weather")) then {
     ace_weather_enableRain      = false;
     ace_weather_enableFog       = false;
     ace_weather_enableOvercast  = false;
-    diag_log "[AEE][ACE3 Compat] ACE3 weather simulation disabled - AEE controls weather state";
+    AEE_LOG_INFO("[ACE3 Compat] ACE3 weather simulation disabled - AEE controls weather state");
 };
 
 // Runs on every machine (server and clients): the weather state must be
