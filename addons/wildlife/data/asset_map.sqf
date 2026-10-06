@@ -41,7 +41,7 @@ this table.
     ["sound", "night_insect", "CONFIRMED", [], [], ""],
     ["sound", "none", "UNKNOWN", [], [], ""],
     ["sound", "owl", "CONFIRMED", ["a3\sounds_f\ambient\animals\owl1.wss", "a3\sounds_f\ambient\animals\owl2.wss", "a3\sounds_f\ambient\animals\owl3.wss", "Owl"], [], ""],
-    ["sound", "sarance", "UNKNOWN", ["a3\sounds_f\ambient\animals\sarance1.wss", "a3\sounds_f\ambient\animals\sarance2.wss", "a3\sounds_f\ambient\animals\sarance3.wss", "a3\sounds_f\ambient\animals\sarance4.wss"], [], ""],
+    ["sound", "sarance", "CONFIRMED", ["a3\sounds_f\ambient\animals\sarance1.wss", "a3\sounds_f\ambient\animals\sarance2.wss", "a3\sounds_f\ambient\animals\sarance3.wss", "a3\sounds_f\ambient\animals\sarance4.wss"], [], ""],
     ["sound", "sheep", "UNCONFIRMED", ["a3\animals_f_beta\sheep\data\sound\sheep1.wss", "a3\animals_f_beta\sheep\data\sound\sheep2.wss", "a3\animals_f_beta\sheep\data\sound\sheep3.wss", "a3\animals_f_beta\sheep\data\sound\sheep4.wss", "a3\animals_f_beta\sheep\data\sound\sheep5.wss"], [], ""],
     ["sound", "songbird", "CONFIRMED", ["a3\sounds_f\ambient\animals\birds1.wss", "a3\sounds_f\ambient\animals\birds2.wss", "a3\sounds_f\ambient\animals\birds3.wss", "a3\sounds_f\ambient\animals\birds4.wss", "a3\sounds_f\ambient\animals\birds5.wss"], [], ""],
     ["sound", "water", "CONFIRMED", ["Sound_Stream"], [], ""],

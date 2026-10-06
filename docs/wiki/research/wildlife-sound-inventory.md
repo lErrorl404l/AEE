@@ -4,8 +4,9 @@ Committed research for the wildlife ecology plan. Sourcing key for this
 dossier: **[CONFIG]** a class or path in a shipped config. **[AUDIO]** decoded
 and measured. **[PATH]** folder convention only. **[NONE]** name only. In the
 plan's common key, [CONFIG] and [AUDIO] are [S], and [PATH] and [NONE] are
-[U]. No recording is given a species unless a shipped config names it. Every
-UNKNOWN and UNCONFIRMED entry stays marked.
+[U]. No recording is given a species unless a shipped config names it. A
+byte-identical md5 match to a named recording also settles an identity at [S].
+Every UNKNOWN and UNCONFIRMED entry stays marked.
 
 Read-only research (2026-10-06). Ground truth is the shipped Arma 3 config and
 PBO contents at `/ext/SteamLibrary/steamapps/common/Arma 3`, extracted with
@@ -57,9 +58,11 @@ These are the only shipped definitions that attach a name to an animal sound.
 | `CfgNonAiVehicles.Crowe: SeaGull` | `animals_f/.../Seagull/config.cpp:54` | - | `...\Seagull\Data\crowe` | Crow call |
 | `CfgSounds.Sheep_IdleComm` | `animals_f_beta/.../Sheep/config.cpp:456` | `$STR_A3_titles_sheep_communication` | `A3\sounds_f\dummysound` | Sheep comms, dummy payload |
 
-There is **no** `CfgSFX` or `CfgSounds` class for hen, dog, sarance,
-chicken_grill, or the raw ambient birds. Those files are only ever named as
-file paths, never as a class target in any extracted config.
+There is **no** `CfgSFX` or `CfgSounds` class for hen, dog, chicken_grill, or
+the raw ambient birds. Those files are only ever named as file paths, never as
+a class target in any extracted config. `sarance1..4` is the case the name
+alone cannot settle: it is byte-identical by md5 to the vanilla cricket set, so
+its identity is a cricket and not a config class.
 
 ## 3. Sound inventory with identities
 
@@ -82,7 +85,7 @@ decoded files are 44.1 kHz.
 | `ambient/animals/hen3.wss` | **none** | Hen/chicken | **UNCONFIRMED, probable hen** | 3.83 / 1 |
 | `ambient/animals/dog1.wss` | **none** | Dog (name only) | **UNCONFIRMED, probable dog** | 2.79 / 1 |
 | `ambient/animals/dog2..4.wss` | **none** | Dog | **UNCONFIRMED, probable dog** | 2.08 / 4.79 / 5.45, 1 ch |
-| `ambient/animals/sarance1..4.wss` | **none** | Not identifiable | **UNKNOWN.** "sarance" is not an English animal or a config class. Do not assume a species. | 3.40 / 1 |
+| `ambient/animals/sarance1..4.wss` | **none** | Cricket/grasshopper stridulation (Orthoptera) | **CONFIRMED cricket by md5.** sarance1..4 are byte-identical (md5) to `environment/animals/insect/cricket1..4.wss`. The species is not pinned below the order. | 3.40 / 1 |
 | `ambient/animals/chicken_grill_1..2.wss` | **none** | Not identifiable | **UNKNOWN.** The name reads as a recording/asset label, not an animal. | 5.97 / 1 |
 | `ambient/animals/Seagul_1.wss` | **none** (config gull is `...\birds\seagul1`, different md5) | Gull (name only) | **UNCONFIRMED gull; NOT the seagull unit call** | 2.17 / 1 |
 | `animals_f_beta/.../Sheep/Data/sound/sheep1..5.wss` | **none** (`Sheep_IdleComm` is a dummy) | Sheep (name + path convention) | **UNCONFIRMED, probable sheep** | 2.85 / 0.92 / 0.98 / 1.16 / 1.12, 1 ch |
@@ -232,8 +235,10 @@ are unreachable given how the selector works.
    songbird chorus with no biome or species marker in config. The biome
    assignment has no supporting evidence.
 9. **`hen`/`dog`/`Seagul_1` are orphans.** No config class names them. Using
-   them trusts the file name. `sarance1-4` and `chicken_grill_1-2` are
-   genuinely UNKNOWN and must not be given a species.
+   them trusts the file name. `chicken_grill_1-2` is genuinely UNKNOWN and must
+   not be given a species. `sarance1-4` is no longer unknown: it is
+   byte-identical by md5 to the vanilla cricket set, so it is a confirmed
+   cricket.
 10. **The coastal gull is an unverified recording.** AEE uses
     `ambient/animals/Seagul_1.wss`; the config-confirmed gull call is
     `environment/animals/birds/seagul1` (different md5). AEE's gull is not the

@@ -47,8 +47,13 @@ ALLOWED_GREGARIOUSNESS = {
 ALLOWED_CFGSFX = {"Owl", "Sound_Stream"}
 ALLOWED_EXTENSIONS = {".wss", ".ogg", ".wav"}
 
-# The recordings that must never be given a species.
+# The recordings that must never be given a species. sarance is a confirmed
+# cricket set, but the species is not pinned below the order, so it carries a
+# taxon and never a species.
 NEVER_SPECIES = {"sarance", "chicken_grill", "hen", "dog", "seagul_1", "sheep"}
+
+# The ranks a species anchor may carry.
+ALLOWED_RANKS = {"species", "subspecies", "genus", "family", "order", "suborder"}
 
 REQUIRED_FAMILIES = {"tropical", "arid", "temperate", "cold", "water", "settlement"}
 REQUIRED_FIELDS = [
@@ -251,6 +256,34 @@ def check_no_species(asset_map: dict) -> list[str]:
     return errors
 
 
+def check_anchors(asset_map: dict, sources: list) -> list[str]:
+    """Every species anchor carries a graded taxon and a registered source."""
+    errors: list[str] = []
+    source_ids = {s.get("source_id") for s in sources if isinstance(s, dict)}
+    seen: set[tuple[object, object]] = set()
+    for anchor in asset_map.get("species_anchors", []):
+        if not isinstance(anchor, dict):
+            errors.append("a species anchor is not an object")
+            continue
+        cls = anchor.get("class")
+        if not isinstance(cls, str) or not cls:
+            errors.append("a species anchor has no class")
+            continue
+        key = (cls, anchor.get("variant", ""))
+        if key in seen:
+            errors.append(f"{cls}: duplicate species anchor")
+        seen.add(key)
+        if not isinstance(anchor.get("taxon"), str) or not anchor["taxon"]:
+            errors.append(f"{cls}: taxon is not a non-empty string")
+        if anchor.get("rank") not in ALLOWED_RANKS:
+            errors.append(f"{cls}: bad rank {anchor.get('rank')}")
+        if anchor.get("grade") not in ALLOWED_GRADES:
+            errors.append(f"{cls}: bad grade {anchor.get('grade')}")
+        if anchor.get("source") not in source_ids:
+            errors.append(f"{cls}: source {anchor.get('source')} is not registered")
+    return errors
+
+
 def main(argv: Sequence[str]) -> int:
     data_dir = DEFAULT_DATA
     if "--data-dir" in argv:
@@ -259,6 +292,7 @@ def main(argv: Sequence[str]) -> int:
             data_dir = Path(argv[index + 1])
 
     ecology, asset_map = _load(data_dir)
+    sources = json.loads((data_dir / "sources.json").read_text(encoding="utf-8"))
 
     checks = [
         ("families present", check_families(ecology)),
@@ -266,6 +300,7 @@ def main(argv: Sequence[str]) -> int:
         ("sound groups exist", check_sound_map(ecology, asset_map)),
         ("media rules", check_media(asset_map)),
         ("no species on unverified", check_no_species(asset_map)),
+        ("species anchors", check_anchors(asset_map, sources)),
     ]
     group_errors: list[str] = []
     for family in ecology.get("families", []):

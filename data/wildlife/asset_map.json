@@ -272,7 +272,7 @@
     },
     {
       "sound_group": "sarance",
-      "identity": "UNKNOWN",
+      "identity": "CONFIRMED",
       "media": [
         {
           "path": "a3\\sounds_f\\ambient\\animals\\sarance1.wss"
@@ -289,7 +289,13 @@
       ],
       "fauna_classes": [],
       "species": null,
-      "note": "UNKNOWN. sarance is not an English animal or a config class. Never given a species."
+      "taxon": "Orthoptera",
+      "rank": "order",
+      "media_class": "cricket",
+      "evidence": "md5-identical to the vanilla cricket set: sarance1..4 = 34dd7f9d8cdc3131ca7a716dbf943a0a, 57a556d371b0874eca01d0891e88669f, ee85ee5dc1a35f14a6c30d5507ee6a0b, 681578b02314092aad4c168110f507e8 = environment/animals/insect/cricket1..4.wss.",
+      "source": "aee_animal_species_briefing",
+      "grade": "S",
+      "note": "CONFIRMED cricket/grasshopper stridulation (Orthoptera). sarance1..4 are byte-identical by md5 to the vanilla environment/animals/insect/cricket1..4 set, so the identity carries. The species is not pinned below the order, so this recording is never given a species."
     },
     {
       "sound_group": "chicken_grill",
@@ -314,6 +320,395 @@
       "species": null,
       "anchor": {},
       "note": "No known call. A mostly-silent group. Not a media source."
+    }
+  ],
+  "species_anchors": [
+    {
+      "class": "Eagle_F",
+      "taxon": "Accipitridae",
+      "rank": "family",
+      "common_name": "eagle",
+      "confidence": "medium",
+      "evidence": "module animalType; sound A3\\data_f_curator\\sound\\cfgNonAiVehicles\\eagle_f_3",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "SeaGull",
+      "taxon": "Laridae",
+      "rank": "family",
+      "common_name": "gull",
+      "confidence": "medium",
+      "evidence": "CfgNonAiVehicles.SeaGull; model Seagull.p3d; singSound seagul1",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Crowe",
+      "taxon": "Corvus",
+      "rank": "genus",
+      "common_name": "crow",
+      "confidence": "medium",
+      "evidence": "CfgNonAiVehicles.Crowe: SeaGull; model Crowe.p3d; sound crowe",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Kestrel_Random_F",
+      "taxon": "Falco tinnunculus",
+      "rank": "species",
+      "common_name": "common kestrel",
+      "confidence": "medium-high",
+      "evidence": "CfgNonAiVehicles; model kestrel_F.p3d; singSound dummysound",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Rabbit_F",
+      "taxon": "Leporidae",
+      "rank": "family",
+      "common_name": "rabbit or hare",
+      "confidence": "low",
+      "evidence": "CfgVehicles.Rabbit_F; model Rabbit_F.p3d; display Rabbit",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Turtle_F",
+      "taxon": "Testudines",
+      "rank": "order",
+      "common_name": "freshwater terrapin",
+      "confidence": "low-medium",
+      "evidence": "CfgVehicles.Turtle_F; model Turtle_F.p3d; land and swim animations",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Snake_random_F",
+      "variant": "Snake_Dice",
+      "taxon": "Natrix tessellata",
+      "rank": "species",
+      "common_name": "dice snake",
+      "confidence": "medium-high",
+      "evidence": "model Snake_F.p3d; texture Snake_Dice",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Snake_random_F",
+      "variant": "Snake_Leopard",
+      "taxon": "Zamenis situla",
+      "rank": "species",
+      "common_name": "leopard snake",
+      "confidence": "medium-high",
+      "evidence": "model Snake_F.p3d; texture Snake_Leopard",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Snake_vipera_random_F",
+      "taxon": "Vipera",
+      "rank": "genus",
+      "common_name": "viper",
+      "confidence": "medium",
+      "evidence": "texture Snake_Vipera_CO.paa",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Hen_random_F",
+      "taxon": "Gallus gallus domesticus",
+      "rank": "subspecies",
+      "common_name": "domestic chicken, hen",
+      "confidence": "high",
+      "evidence": "model Hen_F.p3d; texture Hen_CO",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Cock_random_F",
+      "taxon": "Gallus gallus domesticus",
+      "rank": "subspecies",
+      "common_name": "domestic chicken, cock",
+      "confidence": "high",
+      "evidence": "model Cock_F.p3d; textures kohout_*",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Cock_white_F",
+      "taxon": "Gallus gallus domesticus",
+      "rank": "subspecies",
+      "common_name": "domestic chicken, cock",
+      "confidence": "high",
+      "evidence": "model Cock_F.p3d; textures kohout_*",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Goat_random_F",
+      "taxon": "Capra hircus",
+      "rank": "species",
+      "common_name": "domestic goat",
+      "confidence": "high",
+      "evidence": "goat textures; CfgVehicles.Goat_random_F",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Sheep_random_F",
+      "taxon": "Ovis aries",
+      "rank": "species",
+      "common_name": "domestic sheep",
+      "confidence": "high",
+      "evidence": "sheep textures; CfgVehicles.Sheep_random_F",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Alsatian_Random_F",
+      "taxon": "Canis lupus familiaris",
+      "rank": "subspecies",
+      "common_name": "German Shepherd",
+      "confidence": "high",
+      "evidence": "pastor_* textures; BIKI display Alsatian",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Alsatian_Black_F",
+      "taxon": "Canis lupus familiaris",
+      "rank": "subspecies",
+      "common_name": "German Shepherd",
+      "confidence": "high",
+      "evidence": "pastor_* textures; BIKI display Alsatian",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Fin_random_F",
+      "taxon": "Canis lupus familiaris",
+      "rank": "subspecies",
+      "common_name": "dog, breed not pinned",
+      "confidence": "high",
+      "evidence": "Dog_* textures; BIKI display Dog",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Fin_sand_F",
+      "taxon": "Canis lupus familiaris",
+      "rank": "subspecies",
+      "common_name": "dog, breed not pinned",
+      "confidence": "high",
+      "evidence": "Dog_* textures; BIKI display Dog",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "CatShark_F",
+      "taxon": "Scyliorhinidae",
+      "rank": "family",
+      "common_name": "catshark",
+      "confidence": "medium",
+      "evidence": "model Catshark_F.p3d; Catshark textures",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Mackerel_F",
+      "taxon": "Scomber",
+      "rank": "genus",
+      "common_name": "mackerel",
+      "confidence": "medium",
+      "evidence": "model Mackerel_F.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Tuna_F",
+      "taxon": "Thunnus",
+      "rank": "genus",
+      "common_name": "tuna",
+      "confidence": "medium",
+      "evidence": "model Tuna_F.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Mullet_F",
+      "taxon": "Mugilidae",
+      "rank": "family",
+      "common_name": "mullet",
+      "confidence": "medium",
+      "evidence": "model Mullet_F.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Ornate_random_F",
+      "taxon": "Thalassoma pavo",
+      "rank": "species",
+      "common_name": "ornate wrasse",
+      "confidence": "medium",
+      "evidence": "model Ornate_F.p3d; Mediterranean context",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Salema_F",
+      "taxon": "Sarpa salpa",
+      "rank": "species",
+      "common_name": "salema porgy",
+      "confidence": "high",
+      "evidence": "model Salema_Porgy_F.p3d; material salema_porgy.rvmat",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "ButterFly_random",
+      "variant": "aglais_urticae",
+      "taxon": "Aglais urticae",
+      "rank": "species",
+      "common_name": "small tortoiseshell",
+      "confidence": "medium",
+      "evidence": "texture aglais_urticae_*; BIKI model aglais_urticae.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "ButterFly_random",
+      "variant": "Butterfly_Swallow",
+      "taxon": "Papilio machaon",
+      "rank": "species",
+      "common_name": "swallowtail",
+      "confidence": "medium",
+      "evidence": "texture Butterfly_Swallow",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "ButterFly_random",
+      "variant": "Butterfly_Tortoise",
+      "taxon": "Nymphalis",
+      "rank": "genus",
+      "common_name": "tortoiseshell",
+      "confidence": "medium",
+      "evidence": "texture Butterfly_Tortoise",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "ButterFly_random",
+      "variant": "Butterfly_White",
+      "taxon": "Pieris",
+      "rank": "genus",
+      "common_name": "white",
+      "confidence": "medium",
+      "evidence": "texture Butterfly_White",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "ButterFly_random",
+      "variant": "Butterfly_Pasha",
+      "taxon": "Charaxes jasius",
+      "rank": "species",
+      "common_name": "two-tailed pasha",
+      "confidence": "medium",
+      "evidence": "texture Butterfly_Pasha",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "HoneyBee",
+      "taxon": "Apis mellifera",
+      "rank": "species",
+      "common_name": "honey bee",
+      "confidence": "high",
+      "evidence": "model honeybee.p3d; class name",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "HouseFly",
+      "taxon": "Musca domestica",
+      "rank": "species",
+      "common_name": "house fly",
+      "confidence": "high",
+      "evidence": "model fly.p3d; class name",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Mosquito",
+      "taxon": "Culicidae",
+      "rank": "family",
+      "common_name": "mosquito",
+      "confidence": "medium",
+      "evidence": "model mosquito.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "DragonFly",
+      "taxon": "Anisoptera",
+      "rank": "suborder",
+      "common_name": "dragonfly",
+      "confidence": "medium",
+      "evidence": "model dragonfly.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "FireFly",
+      "taxon": "Lampyridae",
+      "rank": "family",
+      "common_name": "firefly",
+      "confidence": "medium",
+      "evidence": "model firefly.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Moth",
+      "taxon": "Lepidoptera",
+      "rank": "order",
+      "common_name": "moth",
+      "confidence": "medium",
+      "evidence": "model moth.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Cicada",
+      "taxon": "Cicadidae",
+      "rank": "family",
+      "common_name": "cicada",
+      "confidence": "medium",
+      "evidence": "model Cicada.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "Beetle",
+      "taxon": "Coleoptera",
+      "rank": "order",
+      "common_name": "beetle",
+      "confidence": "low",
+      "evidence": "model beetle.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
+    },
+    {
+      "class": "LadyBug",
+      "taxon": "Coccinellidae",
+      "rank": "family",
+      "common_name": "ladybird",
+      "confidence": "medium",
+      "evidence": "model ladybug.p3d",
+      "source": "aee_animal_species_briefing",
+      "grade": "R"
     }
   ],
   "faunal_groups": [

@@ -219,5 +219,18 @@
     "retrieved": "2026-10-06",
     "url": "",
     "note": "A repository research note. It is a compilation, so every value from it is grade R or weaker."
+  },
+  {
+    "source_id": "aee_animal_species_briefing",
+    "tier": 5,
+    "type": "compilation",
+    "title": "AEE vanilla animal species and sound identity",
+    "edition": "",
+    "identifier": "the shipped Arma 3 install at /ext/SteamLibrary/steamapps/common/Arma 3",
+    "locator": "section 1, the animal class to species table; section 2, the sound to identity table; the method note",
+    "published": "",
+    "retrieved": "2026-10-06",
+    "url": "",
+    "note": "A repository research note. It is a compilation, so every species anchor from it is grade R. The sarance md5 was measured again this session from the shipped media, so that field is grade S."
   }
 ]
