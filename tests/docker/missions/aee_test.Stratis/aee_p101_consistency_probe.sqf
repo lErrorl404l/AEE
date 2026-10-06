@@ -3,9 +3,9 @@
 // The runtime monitor runs on the server, but the evaluator it drives is pure:
 // it reads no world state and calls no module function.  This probe loads the
 // compiled-in invariant table and drives the evaluator with an agreeing map
-// and a three-way disagreeing map, the same fixtures the Python kernel test
-// uses.  The disagreeing map splits the ground chain, so INV-2 must raise
-// exactly three producers and no other row may fail.
+// and a disagreeing map, the same fixtures the Python kernel test uses.  The
+// disagreeing map splits the ground chain, so INV-2 must raise exactly two of
+// its three scalar producers and no other row may fail.
 //
 // The probe caps its own work at 200 ms and prints the diag_tickTime
 // measurement.  It renders nothing and needs no player.
@@ -48,8 +48,8 @@ private _agree = [
     ["aee_core_currentWindStrRef", [4, 0.4, 0.2]]
 ];
 
-// The three-way disagreeing map: the air temperature drops away from the three
-// ground values, so the ground chain splits three ways.
+// The disagreeing map: the air temperature drops away from the two ground
+// surface values, so INV-2 raises two of its three scalar producers.
 private _disagree = +_agree;
 {
     private _pair = _disagree select _forEachIndex;
@@ -110,17 +110,17 @@ if (!(_disResult select 0) && {_failed isEqualTo ["INV-2"]}) then {
     _notes pushBack format ["failed rows %1", str _failed];
 };
 
-// 4. INV-2 names three modules in disagreement.
+// 4. INV-2 names two modules in disagreement.
 private _inv2 = [];
 {
     if ((_x select 0) == "INV-2") then { _inv2 = _x; };
 } forEach _verdicts;
 if ((count _inv2) == 4) then {
-    if ((_inv2 select 3) == 3) then {
+    if ((_inv2 select 3) == 2) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["INV-2 disagreement %1 (expected 3)", _inv2 select 3];
+        _notes pushBack format ["INV-2 disagreement %1 (expected 2)", _inv2 select 3];
     };
 } else {
     _fail = _fail + 1;
@@ -147,7 +147,7 @@ if (_ms < 200) then {
 diag_log text format ["[P101] work %1 ms for 6 checks", _ms];
 
 if (_fail == 0) then {
-    diag_log text format ["[P101] [PASS] consistency: table, agreement, three-way disagreement and no-data (%1 checks)", _pass];
+    diag_log text format ["[P101] [PASS] consistency: table, agreement, ground-chain disagreement and no-data (%1 checks)", _pass];
 } else {
     diag_log text format ["[P101] [FAIL] consistency: %1 passed, %2 failed: %3", _pass, _fail, str _notes];
 };

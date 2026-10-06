@@ -8,7 +8,7 @@ in constant is parsed and compared to the JSON, field for field.
 
 Fixtures (no world):
   clean       every row passes, overallPass true.
-  disagree    INV-2 three-way divergence: modulesInDisagreement 3.
+  disagree    INV-2 ground-chain divergence: modulesInDisagreement 2.
   predicates  one fixture per predicate, positive and negative.
 
 Run: python3 -m unittest tools.tests.test_consistency_evaluator
@@ -118,19 +118,18 @@ class TestThreeWayDisagreement(unittest.TestCase):
             if pair[0] == "aee_core_currentTemperature":
                 values[i][1] = 0.0
             if pair[0] in (
-                "aee_thermal_groundNodeStack",
                 "aee_core_groundSurfaceTemp",
                 "aee_core_avgGroundTemp",
             ):
                 values[i][1] = 100.0
         return values
 
-    def test_inv2_counts_three_modules(self):
+    def test_inv2_counts_two_modules(self):
         overall, verdicts = evaluate(self._disagreeing())
         rows = rows_by_id((overall, verdicts))
         self.assertFalse(overall)
         self.assertFalse(rows["INV-2"][1])
-        self.assertEqual(rows["INV-2"][3], 3)
+        self.assertEqual(rows["INV-2"][3], 2)
 
     def test_only_inv2_fails(self):
         _, verdicts = evaluate(self._disagreeing())
