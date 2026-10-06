@@ -83,6 +83,10 @@ jobs:
         run: python3 tools/validation/gen_mgrs_tables.py --check
       - name: MGRS table and anchor validation
         run: python3 tools/validation/validate_mgrs.py
+      - name: Wildlife ecology projection freshness check
+        run: python3 tools/validation/gen_wildlife_ecology.py --check
+      - name: Wildlife ecology corpus validation
+        run: python3 tools/validation/validate_wildlife_ecology.py
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:
