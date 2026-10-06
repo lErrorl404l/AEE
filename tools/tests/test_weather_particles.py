@@ -20,6 +20,7 @@ Run: python3 -m unittest tools.tests.test_weather_particles -v
 
 from __future__ import annotations
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -213,6 +214,32 @@ class TestWeatherWiring(unittest.TestCase):
         self.assertIn("FUNC(heatHazeAlpha)", live)
         self.assertIn("FUNC(heatHazeSize)", live)
         self.assertIn("ambientTemperature", live)
+
+    def test_haze_scale_guards_a_zero_reference(self) -> None:
+        """H1: heatHazeMaxAlpha 0 makes the 20 C reference 0, so the raw
+        ratio divides by zero.  The guard returns the neutral scale 1."""
+        live = live_source(SHIMMER)
+        self.assertIn("_hazeRef > 0", live)
+        self.assertRegex(
+            live,
+            re.compile(
+                r"if \(_hazeRef > 0\) then \{.*?\} else \{\s*1\s*\};",
+                re.DOTALL,
+            ),
+        )
+
+    def test_shimmer_consumes_the_matcher_haze_scale(self) -> None:
+        """GAP-2: fnc_worldLightingProfile returns element 3 (the haze
+        scale) and it must have a consumer.  The shimmer reads it the way the
+        grain path reads element 2."""
+        live = live_source(SHIMMER)
+        self.assertRegex(
+            live,
+            r"_worldProfile\s*=\s*missionNamespace getVariable "
+            r"\[QEGVAR\(environmental,worldLighting\)",
+        )
+        self.assertIn("_worldProfile select 3", live)
+        self.assertIn("_hazeWorldScale", live)
 
     def test_no_engine_weather_write(self) -> None:
         # The change reads engine weather and never writes it.
