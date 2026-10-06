@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "..\..\script_component.hpp"
 /*
  * aee_core_fnc_getGeoAnchor
  *
@@ -14,7 +14,7 @@
  * Return: the 9-element anchor.
  */
 private _cached = missionNamespace getVariable [QGVAR(geoAnchor), []];
-if !(_cached isEqualTo []) exitWith { _cached };
+if (_cached isNotEqualTo []) exitWith { _cached };
 
 private _cfg = configFile >> "CfgWorlds" >> worldName;
 private _mapSize = getNumber (_cfg >> "mapSize");
