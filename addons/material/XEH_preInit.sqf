@@ -5,6 +5,7 @@ AEE_MODULE_PRE_INIT
 ADDON = false;
 
 #include "XEH_PREP.hpp"
+#include "initSettings.inc.sqf"
 
 // Preload the vanilla bisurf cache (layer 2/3).
 call FUNC(initMaterialCache);
