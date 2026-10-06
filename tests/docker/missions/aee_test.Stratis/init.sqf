@@ -3206,6 +3206,23 @@ private _p29Pass = 0;
     // plus best of three, and asserts the pass stays a small fraction of a
     // frame.  It renders nothing.
     execVM "aee_p99_thermal_budget_probe.sqf";
+    // PHASE 102 lives in aee_p102_environment_probe.sqf: the neighbourhood
+    // sampler is budgeted and re-queues its unsampled cells, and the pure
+    // cache kernel ages and caps the per-cell store.  It samples terrain, so
+    // it runs on a dedicated server.  It renders nothing.
+    execVM "aee_p102_environment_probe.sqf";
+    // PHASE 103 lives in aee_p103_cognition_probe.sqf: the ecology tick is
+    // client-only, so the probe drives the pure budget kernel and confirms
+    // the tick honours the client gate headlessly.  It renders nothing.
+    execVM "aee_p103_cognition_probe.sqf";
+    // PHASE 104 lives in aee_p104_call_probe.sqf: the call emit, receive and
+    // heard-call bus kernels are pure, so the probe drives them with
+    // fixtures.  It renders nothing.
+    execVM "aee_p104_call_probe.sqf";
+    // PHASE 105 lives in aee_p105_sound_schedule_probe.sqf: the call-pattern
+    // and emission-scheduler kernels are pure, so the probe drives a
+    // simulated day.  It plays nothing.
+    execVM "aee_p105_sound_schedule_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
