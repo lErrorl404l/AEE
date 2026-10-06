@@ -3206,6 +3206,17 @@ private _p29Pass = 0;
     // plus best of three, and asserts the pass stays a small fraction of a
     // frame.  It renders nothing.
     execVM "aee_p99_thermal_budget_probe.sqf";
+    // PHASE 100 lives in aee_p100_perception_probe.sqf: the perception driver
+    // is client-only, but the aggregate and deviation kernels it calls are
+    // pure, so a dedicated server drives them with fixed fixtures and asserts
+    // the schema, the clean view and the discolouration and blindness flags,
+    // plus the runtime module-health report.  It renders nothing.
+    execVM "aee_p100_perception_probe.sqf";
+    // PHASE 101 lives in aee_p101_consistency_probe.sqf: the cross-module
+    // evaluator is pure, so a dedicated server loads the invariant table and
+    // drives an agreeing map and a three-way disagreeing map.  It renders
+    // nothing and needs no player.
+    execVM "aee_p101_consistency_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
