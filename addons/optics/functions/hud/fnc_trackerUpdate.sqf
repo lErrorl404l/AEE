@@ -9,8 +9,9 @@
  *   aee_optics_trackerTracks     array of track records (see below)
  *   aee_optics_trackerR95        the largest error radius in the group, metres
  *   aee_optics_trackerFix        the worst fix quality in the group
- *   aee_optics_trackerActive     true while a track is published
- *   aee_optics_trackerSuppressed true while the engine icons are suppressed
+ *   aee_optics_trackerPrev       per-unit fix state for the next survey
+ *   aee_optics_trackerTime       diag_tickTime of the last survey
+ *   aee_optics_trackerLogAt      diag_tickTime of the next log line
  *
  * Track record: [unit, exactPos, displayedPos, ellipse, trackAge, quality,
  *                linkState, suppressed]

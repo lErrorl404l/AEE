@@ -157,15 +157,27 @@ the register. The evidence holds the same register with the full detail.
 | tracker | error composition | R95 + datalink + lag | the three kernel outputs | derived |
 | tracker | phase step | 137.508 degrees (golden angle) | none | UNSOURCED |
 | tracker | displacement sum and bearing | none | none | UNSOURCED |
+| tracker driver | humidity to atmosphere index | humidity / 100, default 50 | none | UNSOURCED |
+| tracker driver | canopy probe height | +40 m vertical ray | none | UNSOURCED |
+| tracker driver | urban survey radius | 50 m | none | UNSOURCED |
+| tracker driver | urban saturation | 8 buildings | none | UNSOURCED |
+| tracker driver | canopy signal gain | 0.5 per fraction | none | UNSOURCED |
+| tracker driver | urban signal gain | 0.3 per fraction | none | UNSOURCED |
+| tracker driver | DOP | 1.0 | none | UNSOURCED |
+| tracker driver | receiver quality | 1.0 | none | UNSOURCED |
 | anchor | mapArea element order | lon, lat pairs | BIS fn_posDegtoWorld.sqf | sourced |
 | anchor | latitude sign inversion | positive is south | BIS CfgWorlds convention | sourced |
 | anchor | fallback centre | 40 N, 0 E | prior reader fallback | UNSOURCED |
 
-The register holds 61 constants. Twenty-three are sourced, 6 are derived and
-32 are UNSOURCED. The UNSOURCED group is the canopy, urban and jamming gains,
-the fix lag and stutter, the datalink masks and losses, the tracker phase step
-and the tangent-plane fallback. Each UNSOURCED shape is marked in its kernel
-header and in the sensor value audit.
+The register holds 69 constants. Twenty-three are sourced, 6 are derived and
+40 are UNSOURCED. The register covers the pure kernels and the tracker driver
+(`${PREFIX}optics_fnc_trackerUpdate`). The UNSOURCED group is the canopy, urban
+and jamming gains, the fix lag and stutter, the datalink masks and losses, the
+tracker phase step, the tracker driver sampling constants (the
+humidity-to-atmosphere index, the canopy probe height, the urban survey radius
+and saturation, the canopy and urban signal gains, the DOP and the receiver
+quality) and the tangent-plane fallback. Each UNSOURCED shape is marked in its
+kernel header and in the sensor value audit.
 
 ## Alternatives rejected
 
