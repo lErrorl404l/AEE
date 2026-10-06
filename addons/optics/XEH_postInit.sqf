@@ -187,6 +187,9 @@ if (hasInterface) then {
     [] call FUNC(initBaseGrade);
     // Rain-scaled film grain (aee-workshop-copy item 5).
     [] call FUNC(initWeatherGrain);
+    // Player-perception monitor: reconstruct and publish the view state.
+    // It self-gates on a living local player, so a server pays one tick.
+    [FUNC(perceptionUpdate), 0.5] call CBA_fnc_addPerFrameHandler;
 };
 
 
