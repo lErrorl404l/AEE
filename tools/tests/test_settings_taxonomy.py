@@ -174,7 +174,10 @@ class TestWildlifeTaxonomy(unittest.TestCase):
 
 EXPECTED_DEBUG = {
     ("AEE Debug", "AI"): {"aee_ai_logDebug"},
-    ("AEE Debug", "Wildlife"): {"aee_wildlife_logDebug"},
+    ("AEE Debug", "Wildlife"): {
+        "aee_wildlife_logDebug",
+        "aee_wildlife_environmentDebug",
+    },
     ("AEE Debug", "Core"): {"aee_core_diagnostic", "aee_core_logDebug"},
     ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},
     ("AEE Debug", "Environmental"): {"aee_environmental_logDebug"},

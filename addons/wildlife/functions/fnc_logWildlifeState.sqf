@@ -126,14 +126,21 @@ if (AEE_TRACE_ON) then {
     };
 };
 
+private _envStore = missionNamespace getVariable [QGVAR(environment), []];
+if !(_envStore isEqualType []) then { _envStore = []; };
+private _envLastMs = missionNamespace getVariable [QGVAR(environmentLastMs), -1];
+if !(_envLastMs isEqualType 0) then { _envLastMs = -1; };
+private _envField = "-";
+if (_envLastMs >= 0) then { _envField = round (_envLastMs * 100) / 100; };
+
 private _logMsg = format [
-    "wildlife state | ai=agents:%1 field=%2 max=%3 decide=%4 | bed=%5 gain=%6 disturbance=%7 spook=%8 range=%9 | fauna=%10/%11 sound=%12/%13 ambient=%14 | gates=on=%15 ambient=%16 animals=%17 density=%18 | forces=biome=%19 night=%20 silence=%21 spook=%22 species=%23 | tick=%24ms",
+    "wildlife state | ai=agents:%1 field=%2 max=%3 decide=%4 | bed=%5 gain=%6 disturbance=%7 spook=%8 range=%9 | fauna=%10/%11 sound=%12/%13 ambient=%14 | gates=on=%15 ambient=%16 animals=%17 density=%18 | forces=biome=%19 night=%20 silence=%21 spook=%22 species=%23 | tick=%24ms env=%25/%26lastms",
     count _agents, _fieldCount, round (_fieldMax * 100) / 100, round _forceDecide,
     _bedKey, round (_gain * 100) / 100, round (_disturbance * 100) / 100, _spook, round _spookRange,
     _faunaLive, _faunaCap, _soundLive, WILDLIFE_SOUND_INSTANCE_CAP, _ambientPresent,
     _enabled, _ambient, _animals, round (_density * 100) / 100,
     _forceBiome, _forceNight, round (_forceSilence * 100) / 100, _forceSpook, _forceSpecies,
-    _tickField
+    _tickField, count _envStore, _envField
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

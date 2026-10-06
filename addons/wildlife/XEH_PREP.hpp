@@ -3,6 +3,7 @@ PREP(getCallPattern);
 PREP(getSeason);
 PREP(sampleNeighbourhood);
 PREP(environmentSuitability);
+PREP(environmentGrid);
 PREP(habitatBoundary);
 PREP(speciesDeprecation);
 PREP(speciesForBiome);
