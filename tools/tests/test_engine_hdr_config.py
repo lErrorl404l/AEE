@@ -244,21 +244,23 @@ class TestAnchorIsInTheWorldChain(unittest.TestCase):
                     f"{world} DayLightingRainy differs from CAWorld",
                 )
 
-    def test_every_world_sets_star_emissivity_40(self) -> None:
+    def test_every_world_sets_star_emissivity_25(self) -> None:
+        # 25 is the vanilla world value (Altis starEmissivity = 25), restored
+        # after the lighting review against Workshop 3587581054.
         ca_light = _class_body(CA_WORLD, "Lighting")
-        self.assertAlmostEqual(_number(ca_light, "starEmissivity"), 40.0, places=5)
+        self.assertAlmostEqual(_number(ca_light, "starEmissivity"), 25.0, places=5)
         for world in WORLDS:
             light = _class_body(_class_body(CFG_WORLDS, world), "Lighting")
             self.assertAlmostEqual(
                 _number(light, "starEmissivity"),
-                40.0,
+                25.0,
                 places=5,
-                msg=f"{world} Lighting.starEmissivity must be 40",
+                msg=f"{world} Lighting.starEmissivity must be 25",
             )
 
-    def test_default_lighting_reopen_is_40(self) -> None:
+    def test_default_lighting_reopen_is_25(self) -> None:
         light = _class_body(CFG_WORLDS, "DefaultLighting")
-        self.assertAlmostEqual(_number(light, "starEmissivity"), 40.0, places=5)
+        self.assertAlmostEqual(_number(light, "starEmissivity"), 25.0, places=5)
 
 
 class TestEngineHdrKeys(unittest.TestCase):

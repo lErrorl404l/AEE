@@ -40,7 +40,7 @@ if (_nightShift == 600) then {
 };
 
 private _starEmissivity = getNumber (_lighting >> "starEmissivity");
-if (_starEmissivity == 40) then {
+if (_starEmissivity == 25) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;

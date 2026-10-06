@@ -38,13 +38,13 @@ class CfgPatches {
 // Weather (Workshop 2809399991) and Fluffys (Workshop 3704702374,
 // 3737586377).  No mod code or content is copied.
 //
-// starEmissivity 40 is the shared default on DefaultLighting.  The engine
-// core declares DefaultLighting with access 3 and starEmissivity 0.3; a
-// re-open merges and propagates, but a world that sets its own starEmissivity
-// shadows it, so CAWorld's Lighting and each stock world's Lighting carry the
-// same 40.  A custom world that sets its own keeps it, and AEE compensates at
-// run time through fnc_applyWorldLighting.  40 sits mid-band between Fluffys
-// (30) and Real Lighting (60).
+// starEmissivity 25 is the shared default on DefaultLighting.  This is the
+// vanilla world value (Altis starEmissivity = 25), restored after the review
+// against Workshop 3587581054.  The engine core declares DefaultLighting with
+// access 3 and starEmissivity 0.3; a re-open merges and propagates, but a world
+// that sets its own starEmissivity shadows it, so CAWorld's Lighting and each
+// stock world's Lighting carry the same 25.  A custom world keeps its own, and
+// AEE compensates at run time through fnc_applyWorldLighting.
 //
 // The NVG keys keep their calibration.  NVG objectives are fixed-aperture
 // (f/1.2, MIL-PRF-49427C); the engine simulates variable aperture, so
@@ -64,7 +64,7 @@ class CfgWorlds {
     // Vanilla defines it in the engine core without a base, so a re-open
     // without a base merges and propagates the value.
     class DefaultLighting {
-        starEmissivity = 40;
+        starEmissivity = 25;
     };
     // Vanilla declares the DayLighting keyframes here, then defines them in
     // CAWorld and in each world.  DOFPars is defined here by the engine, so a
@@ -124,7 +124,7 @@ class CfgWorlds {
             fullNight[] = {-5,{0.023,0.023,0.023},{0.02,0.02,0.02},{0.023,0.023,0.023},{0.02,0.02,0.02},{0.0098,0.0098,0.02},{0.08,0.059,0.059},0};
         };
         class Lighting: DefaultLighting {
-            starEmissivity = 40;
+            starEmissivity = 25;
         };
     };
     class Stratis: CAWorld {
@@ -172,7 +172,7 @@ class CfgWorlds {
             fullNight[] = {-5,{0.023,0.023,0.023},{0.02,0.02,0.02},{0.023,0.023,0.023},{0.02,0.02,0.02},{0.0098,0.0098,0.02},{0.08,0.059,0.059},0};
         };
         class Lighting: DefaultLighting {
-            starEmissivity = 40;
+            starEmissivity = 25;
         };
     };
     class Altis: CAWorld {
@@ -220,7 +220,7 @@ class CfgWorlds {
             fullNight[] = {-5,{0.023,0.023,0.023},{0.02,0.02,0.02},{0.023,0.023,0.023},{0.02,0.02,0.02},{0.0098,0.0098,0.02},{0.08,0.059,0.059},0};
         };
         class Lighting: DefaultLighting {
-            starEmissivity = 40;
+            starEmissivity = 25;
         };
     };
     class Malden: CAWorld {
@@ -268,7 +268,7 @@ class CfgWorlds {
             fullNight[] = {-5,{0.023,0.023,0.023},{0.02,0.02,0.02},{0.023,0.023,0.023},{0.02,0.02,0.02},{0.0098,0.0098,0.02},{0.08,0.059,0.059},0};
         };
         class Lighting: DefaultLighting {
-            starEmissivity = 40;
+            starEmissivity = 25;
         };
     };
     class Tanoa: CAWorld {
@@ -316,7 +316,7 @@ class CfgWorlds {
             fullNight[] = {-5,{0.023,0.023,0.023},{0.02,0.02,0.02},{0.023,0.023,0.023},{0.02,0.02,0.02},{0.0098,0.0098,0.02},{0.08,0.059,0.059},0};
         };
         class Lighting: DefaultLighting {
-            starEmissivity = 40;
+            starEmissivity = 25;
         };
     };
     class Enoch: CAWorld {
@@ -364,7 +364,7 @@ class CfgWorlds {
             fullNight[] = {-5,{0.023,0.023,0.023},{0.02,0.02,0.02},{0.023,0.023,0.023},{0.02,0.02,0.02},{0.0098,0.0098,0.02},{0.08,0.059,0.059},0};
         };
         class Lighting: DefaultLighting {
-            starEmissivity = 40;
+            starEmissivity = 25;
         };
     };
 };
