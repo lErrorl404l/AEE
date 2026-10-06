@@ -16,7 +16,7 @@ file, so the two entry points live in two generated files.
 The row is family-aware. It carries the device id, the family, the mapped
 class names, the aliases, the keywords, the record source and the value
 row. A tube row holds the four image-intensifier fields. A thermal row
-holds the six detector fields. An optic row holds the six sight fields.
+holds the seven detector fields. An optic row holds the six sight fields.
 
 The matcher reads the generated table and the class displayName only. It
 reads no source registry and no config value as a figure. A row is emitted
@@ -101,7 +101,7 @@ A row has seven columns:
 
 value_row, nvg      [output_colour, resolution_lpmm, snr, halo_mm]
 value_row, thermal  [netd_c, resolution_x, resolution_y, refresh_hz,
-                     cooled, weight_kg]
+                     cooled, weight_kg, band]
 value_row, optic    [magnification, objective_mm, fov_deg, weight_kg,
                      exit_pupil_mm, active]
 
@@ -258,7 +258,7 @@ knows the device family passes it, so a class that two families share
 resolves to the row the caller wants.
 
 The value row is the runtime set of the family. A tube row holds the four
-image-intensifier fields. A thermal row holds the six detector fields. An
+image-intensifier fields. A thermal row holds the seven detector fields. An
 optic row holds the six sight fields. The lookup reads no config value and
 no source registry. It returns no default.
 

@@ -5571,9 +5571,362 @@ class TestAtmosphericTransmissionKernel(unittest.TestCase):
 
     def test_source_three_term_form(self):
         rc = self.radiance_code
-        self.assertIn("_tau * (_eps * _wObj + (1 - _eps) * _wRefl)", rc)
+        self.assertIn("_tau * (_eps * _wObj + (1 - _eps) * _wRefl + _wSolar)", rc)
         self.assertIn("(1 - _tau) * _wAtm", rc)
-        self.assertIn("_tPathK call _fnRad", rc)
+        self.assertIn(
+            "[_tPathK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance)", rc
+        )
+
+
+_PLANCK_KERNEL = _THERMAL / "solver" / "fnc_planckBandRadiance.sqf"
+_RESOLVE_BAND_KERNEL = _THERMAL / "solver" / "fnc_resolveThermalBand.sqf"
+_SKY_KERNEL = _THERMAL / "solver" / "fnc_calculateSkyRadiance.sqf"
+
+
+def _run_resolve_band(token):
+    return run_sqf(_RESOLVE_BAND_KERNEL, [token])
+
+
+def _run_planck(t_k, lambda1_m=8e-6, lambda2_m=14e-6):
+    return run_sqf(_PLANCK_KERNEL, [t_k, lambda1_m, lambda2_m])
+
+
+def _run_sky(band, t_air_c, humidity_pct, overcast):
+    return run_sqf(
+        _SKY_KERNEL,
+        [band, t_air_c, humidity_pct, overcast],
+        {
+            "__FUNC__resolveThermalBand": _run_resolve_band,
+            "__FUNC__planckBandRadiance": _run_planck,
+        },
+    )
+
+
+def _radiance_globals():
+    """The injected function globals for the radiance kernel (T3)."""
+    return {
+        "overcast": 0.0,
+        "diag_tickTime": 0.0,
+        "__FUNC__planckBandRadiance": _run_planck,
+        "__FUNC__calculateSkyRadiance": _run_sky,
+    }
+
+
+class TestBandParameterisedRadiance(unittest.TestCase):
+    """The Planck band integral is band-parameterised (T2).
+
+    fnc_calculateBandRadiance takes optional _lambda1M and _lambda2M after
+    the trace flag.  The default path is the LWIR 8-14 um pair and is
+    bit-identical to the pre-change result.  A band whose first edge is not
+    positive or whose second edge is not longer is refused with -1.  The
+    kernel is executed from its real SQF, not a Python mirror.
+    """
+
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
+
+    def _rad(
+        self,
+        band=None,
+        t_surf=37.0,
+        eps=0.92,
+        t_air=15.0,
+        f_ground=0.5,
+        t_ground=15.0,
+        tau=1.0,
+        t_path=15.0,
+    ):
+        args = [t_surf, eps, t_air, f_ground, t_ground, tau, t_path, False]
+        if band is not None:
+            args.extend(band)
+        return run_sqf(self._KERNEL, args, _radiance_globals())
+
+    def test_the_lwir_default_pins_the_band_parameterisation(self):
+        # The default band path, with the T3 sky model live.  The value is
+        # recomputed from the mirror, so the pin tracks the sky model and
+        # still catches a band-edge mutation.
+        self.assertAlmostEqual(
+            self._rad(),
+            band_radiance_atm(37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0),
+            places=9,
+        )
+
+    def test_the_default_equals_the_explicit_lwir_pair(self):
+        self.assertEqual(self._rad(), self._rad([8e-6, 14e-6]))
+
+    def test_the_lwir_default_matches_the_python_mirror(self):
+        self.assertAlmostEqual(
+            self._rad(),
+            band_radiance_atm(37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0),
+            places=9,
+        )
+
+    def test_mwir_is_positive_at_300_k(self):
+        # 300 K is 26.85 C.
+        value = self._rad([3e-6, 5e-6], t_surf=26.85)
+        self.assertGreater(value, 0.0)
+
+    def test_mwir_is_monotone_in_temperature(self):
+        values = [self._rad([3e-6, 5e-6], t_surf=t) for t in (20.0, 26.85, 60.0, 120.0)]
+        for a, b in zip(values, values[1:]):
+            self.assertLess(a, b)
+
+    def test_mwir_differs_from_lwir(self):
+        self.assertNotEqual(self._rad([3e-6, 5e-6]), self._rad([8e-6, 14e-6]))
+
+    def test_a_bad_band_is_refused(self):
+        self.assertEqual(self._rad([0.0, 14e-6]), -1)
+        self.assertEqual(self._rad([-1e-6, 14e-6]), -1)
+        self.assertEqual(self._rad([8e-6, 5e-6]), -1)
+        self.assertEqual(self._rad([8e-6, 8e-6]), -1)
+
+    def test_the_source_declares_the_band_parameters(self):
+        code = _code_only(self._KERNEL.read_text(encoding="utf-8"))
+        self.assertIn('["_lambda1M", 8e-6, [0]]', code)
+        self.assertIn('["_lambda2M", 14e-6, [0]]', code)
+        self.assertIn(
+            "if (_lambda1M <= 0 || _lambda2M <= _lambda1M) exitWith { -1 };", code
+        )
+        # The shared integrand is the one home of the series and the edges.
+        planck = _code_only(
+            (_THERMAL / "solver" / "fnc_planckBandRadiance.sqf").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertIn("_lambda1M * _tk", planck)
+        self.assertIn("_lambda2M * _tk", planck)
+        self.assertIn("2.779416505e-9", planck)
+        self.assertIn("1.438776877e-2", planck)
+
+
+class TestBandSkyModel(unittest.TestCase):
+    """The band sky model replaces the fixed offset (T3).
+
+    The kernel is executed from its real SQF.  The 15 C and 50 percent
+    humidity clear-sky band temperature must sit inside the Tebo 1965
+    depression envelope and within 5 K of the retired fixed offset, so night
+    cold-sky contrast does not regress.
+    """
+
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateSkyRadiance.sqf"
+    _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
+
+    def _sky(self, band="lwir", t_air=15.0, rh=50.0, oc=0.0):
+        return _run_sky(band, t_air, rh, oc)
+
+    def test_the_reference_condition_is_within_5k_of_the_old_offset(self):
+        # The retired fixed offset was T_air - 35 = -20 C at 15 C.
+        self.assertAlmostEqual(self._sky("lwir", 15.0, 50.0, 0.0), -20.0, delta=5.0)
+
+    def test_the_reference_condition_is_within_the_tebo_depression(self):
+        # Tebo 1965 measured a band depression of 21 to 45 K over the
+        # water-vapour range.  The clear-sky reference must sit inside it.
+        depression = 15.0 - self._sky("lwir", 15.0, 50.0, 0.0)
+        self.assertGreaterEqual(depression, 21.0)
+        self.assertLessEqual(depression, 45.0)
+
+    def test_the_result_warms_monotonically_with_humidity(self):
+        # Sample inside the Tebo slope (4 < eHPa < 15, about 24 to 88 percent
+        # at 15 C); the depression is flat outside it.
+        values = [self._sky("lwir", 15.0, rh, 0.0) for rh in (25, 40, 55, 70, 85)]
+        for a, b in zip(values, values[1:]):
+            self.assertLess(a, b)
+
+    def test_the_result_warms_monotonically_with_air_temperature(self):
+        values = [self._sky("lwir", t, 50.0, 0.0) for t in (-10.0, 0.0, 15.0, 30.0)]
+        for a, b in zip(values, values[1:]):
+            self.assertLess(a, b)
+
+    def test_overcast_lifts_the_sky_toward_air(self):
+        clear = self._sky("lwir", 15.0, 50.0, 0.0)
+        overcast = self._sky("lwir", 15.0, 50.0, 1.0)
+        self.assertGreater(overcast, clear)
+        self.assertAlmostEqual(overcast, 15.0, delta=0.5)
+
+    def test_the_sky_is_colder_than_the_air(self):
+        self.assertLess(self._sky("mwir", 15.0, 50.0, 0.0), 15.0)
+        self.assertLess(self._sky("lwir", 15.0, 50.0, 0.0), 15.0)
+
+    def test_the_kernel_matches_the_python_mirror(self):
+        for band in ("lwir", "mwir"):
+            with self.subTest(band=band):
+                self.assertAlmostEqual(
+                    self._sky(band, 15.0, 50.0, 0.0),
+                    sky_temperature_c(band, 15.0, 50.0, 0.0),
+                    places=6,
+                )
+
+    def test_the_radiance_kernel_uses_the_sky_kernel(self):
+        code = _code_only(self._RADIANCE.read_text(encoding="utf-8"))
+        self.assertIn("FUNC(calculateSkyRadiance)", code)
+        # No retired fixed offset and no wrong citation anywhere in the file.
+        self.assertNotIn("-35", code)
+        self.assertNotIn("Aase", self._RADIANCE.read_text(encoding="utf-8"))
+
+    def test_the_source_cites_the_right_identities(self):
+        header = self._KERNEL.read_text(encoding="utf-8")
+        self.assertIn("Idso 1981", header)
+        self.assertIn("Tebo 1965", header)
+        self.assertNotIn("Aase & Idso 1981", header)
+
+    def test_both_kernels_are_prep_registered(self):
+        prep = (_REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PREPS(solver,calculateSkyRadiance);", prep)
+        self.assertIn("PREPS(solver,planckBandRadiance);", prep)
+
+
+class TestReflectedSolarBand(unittest.TestCase):
+    """The MWIR reflected-solar term (T4).
+
+    The kernel is executed from its real SQF.  The MWIR top-of-atmosphere
+    band irradiance is pinned to within one percent of an independent
+    computation, and the term is zero for LWIR and at night.
+    """
+
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateReflectedSolarBand.sqf"
+    _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
+
+    def _solar(self, band, eps, elev):
+        return run_sqf(
+            self._KERNEL,
+            [band, eps, elev],
+            {
+                "__FUNC__resolveThermalBand": _run_resolve_band,
+                "__FUNC__planckBandRadiance": _run_planck,
+            },
+        )
+
+    def _rad(self, w_solar, band=False):
+        l1, l2, token = (3e-6, 5e-6, "mwir") if band else (8e-6, 14e-6, "lwir")
+        args = [37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0, False]
+        args.extend([l1, l2, 50.0, token, w_solar])
+        return run_sqf(self._RADIANCE, args, _radiance_globals())
+
+    # ── Zero cases ──
+    def test_lwir_is_zero(self):
+        self.assertEqual(self._solar("lwir", 0.95, 45.0), 0)
+        self.assertEqual(self._solar("lwir", 0.10, 90.0), 0)
+
+    def test_night_and_horizon_are_zero(self):
+        for elev in (-90.0, -10.0, 0.0):
+            with self.subTest(elev=elev):
+                self.assertEqual(self._solar("mwir", 0.95, elev), 0)
+
+    # ── The derived magnitude ──
+    def test_mwir_is_positive_by_day(self):
+        self.assertGreater(self._solar("mwir", 0.95, 45.0), 0.0)
+
+    def test_the_top_of_atmosphere_irradiance_within_one_percent(self):
+        # At eps = 0 and elevation 90 deg, W_solar = E_sunBand / pi.
+        e_sqf = self._solar("mwir", 0.0, 90.0) * math.pi
+        e_ref = _solar_band_irradiance(3e-6, 5e-6)
+        self.assertAlmostEqual(e_sqf / e_ref, 1.0, delta=0.01)
+
+    def test_the_term_scales_with_surface_reflectance(self):
+        full = self._solar("mwir", 0.0, 45.0)
+        half = self._solar("mwir", 0.5, 45.0)
+        self.assertAlmostEqual(half, full * 0.5, places=9)
+
+    def test_the_term_scales_with_the_sine_of_elevation(self):
+        high = self._solar("mwir", 0.95, 90.0)
+        low = self._solar("mwir", 0.95, 30.0)
+        self.assertAlmostEqual(low, high * math.sin(math.radians(30.0)), places=9)
+
+    def test_emissivity_is_clamped(self):
+        # eps >= 1 gives no reflection, eps <= 0 gives the full reflection.
+        self.assertEqual(self._solar("mwir", 2.0, 90.0), 0)
+        self.assertAlmostEqual(
+            self._solar("mwir", -1.0, 90.0),
+            self._solar("mwir", 0.0, 90.0),
+            places=9,
+        )
+
+    # ── Wiring ──
+    def test_the_radiance_kernel_takes_the_solar_term(self):
+        code = _code_only(self._RADIANCE.read_text(encoding="utf-8"))
+        self.assertIn('["_wSolar", 0, [0]]', code)
+        self.assertIn("+ _wSolar", code)
+
+    def test_the_solar_term_enters_the_surface_radiance(self):
+        # tau = 1, so a supplied W_solar adds exactly.
+        base = self._rad(0.0)
+        with_solar = self._rad(5.0)
+        self.assertAlmostEqual(with_solar - base, 5.0, places=9)
+
+    def test_the_kernel_is_prep_registered(self):
+        prep = (_REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PREPS(solver,calculateReflectedSolarBand);", prep)
+
+
+class TestBandAtmosphericTransmission(unittest.TestCase):
+    """The band-resolved atmospheric transmission (T5).
+
+    The kernel is executed from its real SQF.  LWIR keeps the three
+    published Minkina and Klecha 2016 anchors.  MWIR is the declared
+    ceiling: the clear-air return is exactly 1, and only fog and rain
+    attenuate it.
+    """
+
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
+
+    def _tau(self, range_m, band="lwir", rh=50.0, t=15.0, fog=0.0, rain=0.0, rho=1.225):
+        return run_sqf(self._KERNEL, [range_m, rh, t, fog, rain, rho, band])
+
+    def test_lwir_anchors_reproduce_to_1e_4(self):
+        # The LWIR model is unchanged, so each published anchor range matches
+        # the pre-change model mirror to within 1e-4.  The 5000 m published
+        # figure (0.5724) is the rounded print; the exact form is 0.572533.
+        for d in (100, 1000, 5000):
+            with self.subTest(d=d):
+                self.assertAlmostEqual(
+                    self._tau(d, "lwir"), atmospheric_transmission(d), delta=1e-4
+                )
+
+    def test_lwir_published_anchors_still_hold(self):
+        for d, want in ((100, 0.9306), (1000, 0.7828), (5000, 0.5724)):
+            with self.subTest(d=d):
+                self.assertAlmostEqual(self._tau(d, "lwir"), want, delta=1e-3)
+
+    def test_lwir_default_is_the_explicit_lwir_token(self):
+        self.assertEqual(self._tau(1000), self._tau(1000, "lwir"))
+
+    def test_mwir_clear_air_is_exactly_one(self):
+        self.assertEqual(self._tau(0, "mwir"), 1)
+        for d in (100, 1000, 5000):
+            with self.subTest(d=d):
+                self.assertEqual(self._tau(d, "mwir"), 1)
+
+    def test_mwir_stays_in_range_and_is_monotone_in_range(self):
+        # Fog makes the range term active, because clear-air is the ceiling.
+        values = [self._tau(d, "mwir", fog=0.5) for d in range(0, 6000, 500)]
+        for v in values:
+            self.assertGreaterEqual(v, 0.0)
+            self.assertLessEqual(v, 1.0)
+        for a, b in zip(values, values[1:]):
+            self.assertLessEqual(b, a)
+
+    def test_mwir_fog_and_rain_attenuate(self):
+        self.assertLess(self._tau(5000, "mwir", fog=1.0), 1.0)
+        self.assertLess(self._tau(5000, "mwir", rain=1.0), 1.0)
+
+    def test_the_band_parameter_is_declared(self):
+        code = _code_only(self._KERNEL.read_text(encoding="utf-8"))
+        self.assertIn('["_bandToken", "lwir", [""]]', code)
+        self.assertIn('if ((toLower _bandToken) == "mwir") then', code)
+        self.assertIn("_alphaEff = 0;", code)
+
+    def test_the_python_mirror_agrees(self):
+        for band in ("lwir", "mwir"):
+            for d in (0, 100, 1000, 5000):
+                with self.subTest(band=band, d=d):
+                    self.assertAlmostEqual(
+                        self._tau(d, band),
+                        atmospheric_transmission(d, band=band),
+                        places=9,
+                    )
 
 
 if __name__ == "__main__":
@@ -5581,13 +5934,15 @@ if __name__ == "__main__":
 
 
 def atmospheric_transmission(
-    range_m, rh_pct=50.0, t_c=15.0, fog=0.0, rain=0.0, rho=1.225
+    range_m, rh_pct=50.0, t_c=15.0, fog=0.0, rain=0.0, rho=1.225, band="lwir"
 ):
     """Mirror of fnc_calculateAtmosphericTransmission.sqf.
 
     Returns -1 for an unusable input, matching the SQF refusal.  The
     square-root form is deliberate: one constant extinction cannot meet all
     three published anchors, because the implied extinction falls with range.
+    The MWIR band is the declared ceiling: the clear-air extinction is zero,
+    so the clear-air return is exactly 1, and only fog and rain attenuate.
     """
     for value in (range_m, rh_pct, t_c, fog, rain, rho):
         if not isinstance(value, (int, float)) or not math.isfinite(value):
@@ -5618,6 +5973,8 @@ def atmospheric_transmission(
     beta_clean = co2_km + a_foreign * e_torr * rho_rel + b_self * e_torr * e_torr
     beta_ref = co2_km + a_foreign * e_ref + b_self * e_ref * e_ref
     alpha_eff = alpha_ref * (beta_clean / beta_ref)
+    if band == "mwir":
+        alpha_eff = 0.0  # declared clear-air ceiling (UNSOURCED)
     beta_extra_km = fog_km * fog + rain_km * rain
     sqrt_part = max(math.sqrt(range_m) - math.sqrt(d_cal), 0.0)
     linear_part = max((range_m - d_cal) / 1000.0, 0.0)
@@ -5632,7 +5989,8 @@ def band_radiance_atm(
 
     W = eps*tau*W_obj + (1-eps)*tau*W_refl + (1-tau)*W_atm.  The path radiance
     W_atm is the Planck band radiance at the path temperature, the isothermal
-    homogeneous-layer solution of the Schwarzschild transfer equation.
+    homogeneous-layer solution of the Schwarzschild transfer equation.  The
+    sky now follows the weather through the T3 band sky model.
     """
     eps = max(0.05, min(1.0, eps))
     if t_ground_c is None:
@@ -5641,7 +5999,7 @@ def band_radiance_atm(
     t_surf_k = t_surf_c + 273.15
     t_air_k = max(200.0, min(350.0, t_air_c + 273.15))
     t_ground_k = t_ground_c + 273.15
-    sky_k = t_air_k - 35.0  # clear-sky 8-14 um band (Tebo 1965)
+    sky_k = sky_temperature_c("lwir", t_air_c, 50.0, 0.0) + 273.15
     t_refl_k = f_ground * t_ground_k + (1 - f_ground) * sky_k
     w_obj = planck_band_radiance(t_surf_k)
     w_refl = planck_band_radiance(t_refl_k)
@@ -5650,14 +6008,14 @@ def band_radiance_atm(
     return tau * (eps * w_obj + (1 - eps) * w_refl) + (1 - tau) * w_atm
 
 
-def planck_band_radiance(t_k):
-    """Exact Planck integral over 8-14 um (CODATA 2022); mirror of the SQF
-    cumulative-blackbody series in fnc_calculateBandRadiance."""
+def planck_band_radiance(t_k, lambda1_m=8e-6, lambda2_m=14e-6):
+    """Exact Planck band integral (CODATA 2022); mirror of the SQF
+    cumulative-blackbody series in fnc_planckBandRadiance."""
     c2 = 1.438776877e-2
     c_planck = 2.779416505e-9
-    t_k = max(100.0, min(2000.0, t_k))
-    z1 = c2 / (8e-6 * t_k)
-    z2 = c2 / (14e-6 * t_k)
+    t_k = max(100.0, min(10000.0, t_k))
+    z1 = c2 / (lambda1_m * t_k)
+    z2 = c2 / (lambda2_m * t_k)
 
     def cumulative(z):
         total = 0.0
@@ -5674,6 +6032,78 @@ def planck_band_radiance(t_k):
         return total
 
     return c_planck * t_k**4 * (cumulative(z2) - cumulative(z1))
+
+
+def sky_temperature_c(band="lwir", t_air_c=15.0, rh_pct=50.0, overcast=0.0):
+    """Python mirror of fnc_calculateSkyRadiance.sqf (T3).
+
+    The Tebo 1965 measured band depression is interpolated linearly in
+    log(eHPa), the band emissivity is the exact Planck radiance ratio, and
+    the band sky temperature is recovered by bisection.
+    """
+    l1, l2 = (3e-6, 5e-6) if band == "mwir" else (8e-6, 14e-6)
+    t_air_c = max(-80.0, min(60.0, t_air_c))
+    rh = max(0.0, min(100.0, rh_pct))
+    oc = max(0.0, min(1.0, overcast))
+    t_air_k = t_air_c + 273.15
+    e_hpa = _atmos_es_hpa(t_air_c) * (rh / 100.0)
+    eps_full = 0.70 + 5.95e-5 * e_hpa * math.exp(1500.0 / t_air_k)
+    if e_hpa <= 4.0:
+        dt = 45.0
+    elif e_hpa >= 15.0:
+        dt = 21.0
+    else:
+        f = (math.log(e_hpa) - math.log(4.0)) / (math.log(15.0) - math.log(4.0))
+        dt = 45.0 + (21.0 - 45.0) * f
+    dt *= 1.0 - oc
+    w_air = planck_band_radiance(t_air_k, l1, l2)
+    w_sky = planck_band_radiance(t_air_k - dt, l1, l2)
+    eps_band = min(w_sky / w_air, 1.0)
+    if oc <= 0.0:
+        eps_band = min(eps_band, eps_full)
+    target = eps_band * w_air
+    lo, hi = 1.0, t_air_k
+    for _ in range(40):
+        mid = (lo + hi) / 2
+        if planck_band_radiance(mid, l1, l2) < target:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2 - 273.15
+
+
+def _solar_band_irradiance(lambda1_m, lambda2_m, t_sun=5772.0, terms=200):
+    """Independent top-of-atmosphere band irradiance (T4 test reference).
+
+    E_sunBand = pi * B_band(T_sun) * (R_sun / AU)^2, computed from the
+    cumulative-blackbody series with many terms and no domain clamp.  It is a
+    reference for the SQF solar kernel, not a call into it.
+    """
+    c2 = 1.438776877e-2
+    c_planck = 2.779416505e-9
+
+    def cumulative(z):
+        total = 0.0
+        step = math.exp(-z)
+        weight = step
+        z_sq = z * z
+        z_cu = z_sq * z
+        for n in range(1, terms + 1):
+            n2 = n * n
+            n3 = n2 * n
+            n4 = n3 * n
+            total += weight * (z_cu / n + 3 * z_sq / n2 + 6 * z / n3 + 6 / n4)
+            weight *= step
+        return total
+
+    b = (
+        c_planck
+        * t_sun**4
+        * (cumulative(c2 / (lambda2_m * t_sun)) - cumulative(c2 / (lambda1_m * t_sun)))
+    )
+    r_sun = 6.957e8
+    au = 1.495978707e11
+    return math.pi * b * (r_sun / au) ** 2
 
 
 def _atmos_es_hpa(t_c):
@@ -5827,7 +6257,7 @@ class TestThermalResolvabilityWiring(unittest.TestCase):
         self.assertIn("FUNC(calculateSensorThreshold)", self.paint)
         self.assertIn("_threshold = 0.004349;", self.paint)
         device = _read_sqf("fnc_getThermalDeviceProperties.sqf", "thermal")
-        self.assertIn("[0.05, 640, 480, 1.5, 30, 0]", device)
+        self.assertIn('[0.05, 640, 480, 1.5, 30, 0, "lwir"]', device)
 
     def test_the_three_kernels_run_in_the_header_order(self):
         # Threshold from the device, then the edge, then the Johnson test.

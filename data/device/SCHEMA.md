@@ -128,6 +128,7 @@ The unit vocabulary is `enum`, `lp/mm`, `ratio`, `mm`, `C`, `count`,
 | `refresh_hz` | Hz | Frame rate. |
 | `cooled` | enum | `cooled` or `uncooled`. |
 | `weight_kg` | kg | Device weight. |
+| `band` | enum | Detector band: `lwir` (8-14 um) or `mwir` (3-5 um). A per-device value, sourced from the published detector class. It is not derived from `cooled`: a cooled MCT can be either band. |
 
 ### Optic fields
 
@@ -187,7 +188,7 @@ order below.
 | Family | Runtime fields, in projection order |
 |---|---|
 | `nvg` | `output_colour`, `resolution_lpmm`, `snr`, `halo_mm` |
-| `thermal` | `netd_c`, `resolution_x`, `resolution_y`, `refresh_hz`, `cooled`, `weight_kg` |
+| `thermal` | `netd_c`, `resolution_x`, `resolution_y`, `refresh_hz`, `cooled`, `weight_kg`, `band` |
 | `optic` | `magnification`, `objective_mm`, `fov_deg`, `weight_kg`, `exit_pupil_mm`, `active` |
 
 ## 9. The generated runtime projection
