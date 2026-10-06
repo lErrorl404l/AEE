@@ -47,3 +47,4 @@ PREP(emitterPlan);
 PREP(emitterClass);
 PREP(emitterSync);
 PREP(emitterRelease);
+PREP(callPitch);
