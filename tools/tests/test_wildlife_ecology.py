@@ -975,5 +975,72 @@ class TestPerceiveSourceContracts(unittest.TestCase):
         self.assertIn("acoustic", code.lower())
 
 
+THINK_SPECIES = [0.0]
+THINK_THRESHOLDS = [0.7, 0.3, 0.5, 0.2, 0.3]
+
+
+def think(perception, species=THINK_SPECIES, thresholds=THINK_THRESHOLDS):
+    return run_sqf(THINK, [perception, species, thresholds])
+
+
+class TestWildlifeThink(unittest.TestCase):
+    """fnc_wildlifeThink runs from the real SQF."""
+
+    def test_threat_above_flee_gives_flee(self):
+        out = think([0.9, 0.9, [0, 0], []])
+        self.assertEqual(out[0], 3)
+        self.assertEqual(out[1], "alarm")
+        self.assertEqual(out[2], 2)
+
+    def test_thirst_before_hunger(self):
+        out = think([0.9, 0.1, [0.5, 0.9], []])
+        self.assertEqual(out[0], 2)
+        self.assertEqual(out[2], 1)
+
+    def test_hunger_drinks_only_after_thirst(self):
+        out = think([0.9, 0.1, [0.8, 0.1], []])
+        self.assertEqual(out[0], 1)
+
+    def test_a_mid_threat_freezes(self):
+        out = think([0.9, 0.5, [0, 0], []])
+        self.assertEqual(out[0], 4)
+
+    def test_low_suitability_avoids(self):
+        out = think([0.1, 0.1, [0, 0], []])
+        self.assertEqual(out[2], 2)
+
+    def test_a_gregarious_rest_gives_contact(self):
+        out = think([0.9, 0.1, [0, 0], []], species=[0.8])
+        self.assertEqual(out[1], "contact")
+
+    def test_the_thresholds_are_arguments(self):
+        # A very low flee threshold flees on a mild threat.
+        out = think([0.9, 0.2, [0, 0], []], thresholds=[0.1, 0.05, 0.5, 0.2, 0.3])
+        self.assertEqual(out[0], 3)
+
+    def test_determinism(self):
+        perception = [0.5, 0.5, [0.5, 0.5], []]
+        self.assertEqual(think(perception), think(perception))
+
+
+class TestThinkSourceContracts(unittest.TestCase):
+    def test_the_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", THINK.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernel_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(wildlifeThink)", text)
+
+    def test_the_header_states_the_a_life_shape(self):
+        code = THINK.read_text(encoding="utf-8")
+        self.assertIn("A-Life", code)
+        self.assertIn("sense-think-act", code)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -33,3 +33,4 @@ PREP(acousticPublish);
 PREP(acousticSample);
 PREP(acousticOccluders);
 PREP(wildlifePerceive);
+PREP(wildlifeThink);
