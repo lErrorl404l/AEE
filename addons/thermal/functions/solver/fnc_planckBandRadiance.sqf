@@ -36,7 +36,7 @@ if !(finite _lambda1M) exitWith { -1 };
 if !(finite _lambda2M) exitWith { -1 };
 if (_lambda1M <= 0 || _lambda2M <= _lambda1M) exitWith { -1 };
 
-_tk = (_tk max 100) min 2000;   // numerical domain guard, not a physical clamp
+_tk = (_tk max 100) min 10000;   // numerical domain guard, not a physical clamp
 
 private _z1 = 1.438776877e-2 / (_lambda1M * _tk);
 private _z2 = 1.438776877e-2 / (_lambda2M * _tk);
