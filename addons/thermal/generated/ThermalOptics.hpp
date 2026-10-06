@@ -42,8 +42,12 @@ WITHHELD BINDINGS
   - none
 */
 class CfgWeapons {
-    class optic_Nightstalker {
-        class ItemInfo {
+    // External parents: the engine defines both.  The re-open below must name
+    // them, or the engine clears the optic's inheritance.
+    class ItemCore;
+    class InventoryOpticsItem_Base_F;
+    class optic_Nightstalker: ItemCore {
+        class ItemInfo: InventoryOpticsItem_Base_F {
             class OpticsModes {
                 class NCTALKEP {
                     thermalMode[] = {0, 1};
@@ -54,8 +58,8 @@ class CfgWeapons {
         };
     };
 
-    class optic_tws {
-        class ItemInfo {
+    class optic_tws: ItemCore {
+        class ItemInfo: InventoryOpticsItem_Base_F {
             class OpticsModes {
                 class TWS {
                     thermalMode[] = {0, 1};
@@ -66,8 +70,8 @@ class CfgWeapons {
         };
     };
 
-    class optic_tws_mg {
-        class ItemInfo {
+    class optic_tws_mg: ItemCore {
+        class ItemInfo: InventoryOpticsItem_Base_F {
             class OpticsModes {
                 class TWS {
                     thermalMode[] = {0, 1};

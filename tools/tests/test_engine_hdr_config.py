@@ -105,6 +105,16 @@ def _normalise(body: str) -> str:
     return re.sub(r"\s+", " ", _code_only(body)).strip()
 
 
+def _direct_child_classes(body: str) -> list[str]:
+    """Return the names of classes declared at the top level of ``body``."""
+    names: list[str] = []
+    for match in re.finditer(r"\bclass\s+(\w+)\s*(?::\s*\w+)?\s*([;{])", body):
+        depth = body.count("{", 0, match.start()) - body.count("}", 0, match.start())
+        if depth == 0:
+            names.append(match.group(1))
+    return names
+
+
 CFG_WORLDS = _class_body(SRC, "CfgWorlds")
 CA_WORLD = _class_body(CFG_WORLDS, "CAWorld")
 
@@ -143,7 +153,7 @@ RAINY_FULL = [
 class TestAnchorIsInTheWorldChain(unittest.TestCase):
     def test_anchor_is_in_the_world_chain(self) -> None:
         cfg = _code_only(CFG_WORLDS)
-        self.assertIn("class DefaultWorld;", cfg, "DefaultWorld must be declared")
+        self.assertRegex(cfg, r"class\s+DefaultWorld\b", "DefaultWorld must be present")
         self.assertRegex(
             cfg,
             r"class\s+CAWorld\s*:\s*DefaultWorld",
@@ -155,15 +165,18 @@ class TestAnchorIsInTheWorldChain(unittest.TestCase):
                 rf"class\s+{world}\s*:\s*CAWorld",
                 f"{world} must chain from CAWorld",
             )
-        # No inert direct child: every anchor class must use the explicit base.
+        # The anchor classes must not be direct CfgWorlds children: a direct
+        # child is an unreferenced sibling and inert.
+        direct = _direct_child_classes(CFG_WORLDS)
         for name in (
             "HDRNewPars",
             "DOFPars",
             "DayLightingBrightAlmost",
             "DayLightingRainy",
         ):
-            self.assertIsNone(
-                re.search(rf"\bclass\s+{name}\s*\{{", cfg),
+            self.assertNotIn(
+                name,
+                direct,
                 f"class {name} must not be a direct CfgWorlds child",
             )
 
@@ -173,9 +186,38 @@ class TestAnchorIsInTheWorldChain(unittest.TestCase):
         # Apex map is not loaded, and a warning fails the run gate.
         self.assertIn('"A3_Data_F_Decade_Loadorder"', SRC)
 
-    def test_ca_world_hdr_inherits(self) -> None:
-        self.assertRegex(CA_WORLD, r"class\s+HDRNewPars\s*:\s*HDRNewPars\s*\{")
+    def test_ca_world_blocks_present(self) -> None:
+        # HDRNewPars carries no base: vanilla defines it per world with an
+        # empty base, and a re-open must not rebase it.
+        self.assertRegex(CA_WORLD, r"class\s+HDRNewPars\s*\{")
+        # DOFPars inherits the engine's DefaultWorld/DOFPars so the water keys
+        # the engine reads are kept.
         self.assertRegex(CA_WORLD, r"class\s+DOFPars\s*:\s*DOFPars\s*\{")
+        # The DayLighting keyframes and Lighting name their vanilla base.
+        self.assertRegex(
+            CA_WORLD,
+            r"class\s+DayLightingBrightAlmost\s*:\s*DayLightingBrightAlmost\s*\{",
+        )
+        self.assertRegex(
+            CA_WORLD, r"class\s+DayLightingRainy\s*:\s*DayLightingRainy\s*\{"
+        )
+        self.assertRegex(CA_WORLD, r"class\s+Lighting\s*:\s*DefaultLighting\s*\{")
+
+    def test_no_root_scope_forward_declaration(self) -> None:
+        # A file-root forward declaration makes the engine create an empty
+        # class and re-parent every map onto it.  The external bases live in
+        # the world chain instead.
+        for name in (
+            "HDRNewPars",
+            "DOFPars",
+            "DayLightingBrightAlmost",
+            "DayLightingRainy",
+            "DefaultLighting",
+        ):
+            self.assertIsNone(
+                re.search(rf"(?m)^class\s+{name}\s*;", _code_only(SRC)),
+                f"root-scope declaration of class {name} re-creates the defect",
+            )
 
     def test_per_world_blocks_carry_the_shared_values(self) -> None:
         ca_hdr = _normalise(_class_body(CA_WORLD, "HDRNewPars"))
