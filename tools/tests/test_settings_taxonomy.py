@@ -44,6 +44,17 @@ EXPECTED_HUD = {
     "aee_nightvision_ltmDaylightFade",
 }
 
+EXPECTED_HUD_TRACKER = {
+    "aee_optics_trackerEnabled",
+    "aee_optics_trackerInterval",
+    "aee_optics_trackerSuppressIcons",
+}
+
+# Every AEE HUD name, across all subcategories.  The unknown-setting guard
+# reads this union; the Displays exact test reads EXPECTED_HUD alone, so the
+# Tracker group stays separate.
+EXPECTED_HUD_ALL = EXPECTED_HUD | EXPECTED_HUD_TRACKER
+
 
 class TestSettingsTaxonomy(unittest.TestCase):
     """AEE HUD holds exactly the on-screen displays."""
@@ -52,10 +63,14 @@ class TestSettingsTaxonomy(unittest.TestCase):
         groups = taxonomy_groups({"AEE HUD"})
         self.assertEqual(groups.get(("AEE HUD", "Displays")), EXPECTED_HUD)
 
+    def test_hud_tracker_group_is_exact(self):
+        groups = taxonomy_groups({"AEE HUD"})
+        self.assertEqual(groups.get(("AEE HUD", "Tracker")), EXPECTED_HUD_TRACKER)
+
     def test_no_unknown_setting_uses_a_taxonomy_category(self):
         for setting in gen.collect_settings():
             if setting.category == "AEE HUD":
-                self.assertIn(setting.name, EXPECTED_HUD)
+                self.assertIn(setting.name, EXPECTED_HUD_ALL)
 
 
 EXPECTED_EXPERIMENTAL_FUSION = {

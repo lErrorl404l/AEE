@@ -60,6 +60,18 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentLightningRisk` | atmos | Lightning risk 0..1 |
 | `aee_core_currentSolarRadiation` | core | Solar radiation factor 0..1 |
 
+### Positioning consistency
+
+The consistency monitor (aee-mgrs-and-positioning task 14) publishes these
+values. The per-frame handler id is state; the divergence flag and the
+verdict list are the API a mission or a probe reads.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_core_consistencyPFH` | core | Position-consistency monitor per-frame handler id |
+| `aee_core_positionDivergence` | core | True when a position invariant diverges |
+| `aee_core_positionVerdicts` | core | Per-invariant consistency verdicts |
+
 ### Engine environment bridges
 
 These variables back the local engine bridges (issue #141). Each bridge is

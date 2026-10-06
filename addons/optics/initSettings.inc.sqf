@@ -107,6 +107,22 @@ AEE_SETTING_CHECKBOX(mgrsEnabled,"AEE HUD","Displays",true);
     {}
 ] call CBA_fnc_addSetting;
 
+// ── Signal-dependent tracker (task 13) ────────────────────────────────────
+// Replaces the arcade exact friendly position with a modelled one: the three
+// aee GNSS kernels (error ellipse, fix state, datalink) applied to the exact
+// group positions.  Default OFF; the driver and the draw gate on it each tick.
+AEE_SETTING_CHECKBOX(trackerEnabled,"AEE HUD","Tracker",false);
+
+// Suppress the engine friendly map indicators where the engine allows it.
+// The suppression is a LOCAL disableMapIndicators call (Arma 3 1.82+) that
+// acts only when the difficulty exposes "extended map content".  The tracker
+// draws its own fuzzy markers regardless.
+AEE_SETTING_CHECKBOX(trackerSuppressIcons,"AEE HUD","Tracker",false);
+
+// Seconds between tracker model updates for the local group.  A longer
+// interval is cheaper and ages the tracks more.
+AEE_SETTING_SLIDER(trackerInterval,"AEE HUD","Tracker",0.2,5,1.0,1);
+
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
 // Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
 // pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).

@@ -7,9 +7,9 @@
  * aee_optics_mgrsEnabled setting is on.  The engine GPS readout is fixed, so
  * this is the aee MGRS surface for the device.
  *
- * The fix quality and the error ellipse fields are placeholders until the
- * tracker driver (task 13) publishes them.  They show an explicit unknown,
- * never an invented value.
+ * The fix quality and the error radius are read from the tracker driver
+ * (task 13).  Before the tracker runs they show an explicit unknown, never an
+ * invented value.
  *
  * Returns: nothing.
  */
@@ -46,7 +46,15 @@ private _setText = {
     if (!isNull _ctrl) then { _ctrl ctrlSetText _text; };
 };
 
+// The fix quality and the error radius come from the signal-dependent tracker
+// driver (task 13).  They read an explicit unknown until the tracker runs, so
+// the readout never shows an invented value.
+private _fix = missionNamespace getVariable [QGVAR(trackerFix), "--"];
+if !(_fix isEqualType "") then { _fix = "--"; };
+private _r95 = missionNamespace getVariable [QGVAR(trackerR95), 0];
+if !(_r95 isEqualType 0) then { _r95 = 0; };
+
 [_display, 9020, _grid] call _setText;
 [_display, 9021, "PREC " + (str _precision) + " DIGITS"] call _setText;
-[_display, 9022, "FIX --"] call _setText;
-[_display, 9023, "ERR --"] call _setText;
+[_display, 9022, "FIX " + (toUpper _fix)] call _setText;
+[_display, 9023, "ERR " + (str (round _r95)) + " m"] call _setText;

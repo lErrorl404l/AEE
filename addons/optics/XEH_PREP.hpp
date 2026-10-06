@@ -91,3 +91,6 @@ PREPS(hud,hudUpdate);
 PREP(dumpState);
 PREPS(hud,mgrsMapDraw);
 PREPS(hud,mgrsMarkerText);
+PREPS(hud,trackerDraw);
+PREPS(hud,trackerProject);
+PREPS(hud,trackerUpdate);
