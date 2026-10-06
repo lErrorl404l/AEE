@@ -81,8 +81,18 @@ private _matches = [
 ] call FUNC(getSpeciesMatch);
 
 // The local environment sample gates the spawn: a group below the suitability
-// floor is not spawned here.
-private _environment = [_position] call FUNC(sampleNeighbourhood);
+// floor is not spawned here.  The environment layer is a sub-switch, and the
+// cell size and the millisecond budget come from the operator settings.
+private _envEnabled = missionNamespace getVariable [QGVAR(environmentEnabled), true];
+if !(_envEnabled isEqualType true) then { _envEnabled = true; };
+private _environment = [];
+if (_envEnabled) then {
+    private _cellSize = missionNamespace getVariable [QGVAR(environmentCellSize), 25];
+    if !(_cellSize isEqualType 0) then { _cellSize = 25; };
+    private _budgetMs = missionNamespace getVariable [QGVAR(environmentBudgetMs), 2.0];
+    if !(_budgetMs isEqualType 0) then { _budgetMs = 2.0; };
+    _environment = [_position, _cellSize, 5, 12, _budgetMs] call FUNC(sampleNeighbourhood);
+};
 
 // Map each matched group to the vanilla fauna classes of its family.  The
 // group id carries the family as its first token ("temperate_bird_dawn").
@@ -103,7 +113,7 @@ for "_m" from 0 to ((count _matches) - 1) do {
         };
     };
 
-    if (([_environment, _habitat] call FUNC(environmentSuitability)) >= WILDLIFE_SUITABILITY_MIN) then {
+    if (!_envEnabled || (([_environment, _habitat] call FUNC(environmentSuitability)) >= WILDLIFE_SUITABILITY_MIN)) then {
         private _family = (_groupId splitString "_") select 0;
         private _count = 1 + (floor ((_match select 1) * 4));
         for "_a" from 0 to ((count _assetMap) - 1) do {
