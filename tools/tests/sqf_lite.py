@@ -176,7 +176,14 @@ BINARY_COMMANDS = {
     # y atan2 x returns DEGREES; pos1 distance pos2 returns metres.
     "atan2",
     "distance",
+    # Object class test used by the wildlife neighbourhood sampler.  In the
+    # harness the objects are strings, so this is an equality test.
+    "isKindOf",
 }
+
+
+def _sqf_isKindOf(obj: Any, cls: Any) -> bool:
+    return obj == cls
 
 
 def _sqf_isEqualTo(a: Any, b: Any) -> bool:
@@ -239,6 +246,13 @@ UNARY_COMMANDS = {
     "vectorNormalized",
     # str X - SQF number/other to display string (HUD heading/grid).
     "str",
+    # Engine terrain and object queries used by the wildlife neighbourhood
+    # sampler.  The runtime supplies them through `globals_`; without a stub
+    # the call is an error, so a test must bind them.
+    "surfaceType",
+    "surfaceIsWater",
+    "getTerrainHeightASL",
+    "nearestTerrainObjects",
 }
 
 
@@ -323,6 +337,7 @@ BUILTINS: dict[str, Any] = {
     "isEqualTo": _sqf_isEqualTo,
     "isEqualType": _sqf_isEqualType,
     "isNotEqualTo": _sqf_isNotEqualTo,
+    "isKindOf": _sqf_isKindOf,
     "vectorDiff": _sqf_vectorDiff,
     "vectorAdd": _sqf_vectorAdd,
     "vectorMultiply": _sqf_vectorMultiply,
@@ -792,6 +807,22 @@ class SqfParser:
                 fn_name = self.next()
                 self.expect(")")
                 return Var(f"__EFUNC__{mod.value}_{fn_name.value}")
+            if t.value in ("QGVAR", "QEGVAR"):
+                # QGVAR(name) is a namespaced variable name.  The harness
+                # cannot resolve the addon prefix, so it returns a stable
+                # placeholder string.  A caller that reads and writes the same
+                # QGVAR in one run still agrees, because the placeholder is
+                # deterministic.
+                self.expect("(")
+                if t.value == "QGVAR":
+                    name = self.next()
+                    self.expect(")")
+                    return Str(f"__QGVAR__{name.value}")
+                mod = self.next()
+                self.expect(",")
+                name = self.next()
+                self.expect(")")
+                return Str(f"__QEGVAR__{mod.value}_{name.value}")
             return Var(t.value)
         raise SyntaxError(f"unexpected token {t.value} @ {t.pos}")
 
@@ -970,6 +1001,17 @@ class SqfRuntime:
                 if mag == 0:
                     return [0.0, 0.0, 0.0]
                 return [value[0] / mag, value[1] / mag, value[2] / mag]
+            # Engine terrain and object queries: supplied by the caller through
+            # globals_.  A test that exercises the wildlife sampler binds them.
+            if node.op in (
+                "surfaceType",
+                "surfaceIsWater",
+                "getTerrainHeightASL",
+                "nearestTerrainObjects",
+            ):
+                fn = self.globals.get(node.op)
+                if callable(fn):
+                    return fn(value)
             raise ValueError(f"unknown unary command {node.op}")
         if isinstance(node, Each):
             arr = self.eval(node.arr)
