@@ -54,7 +54,7 @@ private _e6 = _e4 * _e2;
 private _N = _a / (sqrt (1 - _e2 * _sinPhi * _sinPhi));
 private _T = _tanPhi * _tanPhi;
 private _C = _ep2 * _cosPhi * _cosPhi;
-private _A = (_lonDeg - _lon0) * (pi / 180) * _cosPhi;
+private _Aterm = (_lonDeg - _lon0) * (pi / 180) * _cosPhi;
 
 private _M = _a * (
     (1 - _e2 / 4 - 3 * _e4 / 64 - 5 * _e6 / 256) * _phiRad
@@ -64,15 +64,15 @@ private _M = _a * (
 );
 
 private _easting = _fe + _k0 * _N * (
-    _A + (1 - _T + _C) * (_A ^ 3) / 6
-    + (5 - 18 * _T + _T * _T + 72 * _C - 58 * _ep2) * (_A ^ 5) / 120
+    _Aterm + (1 - _T + _C) * (_Aterm ^ 3) / 6
+    + (5 - 18 * _T + _T * _T + 72 * _C - 58 * _ep2) * (_Aterm ^ 5) / 120
 );
 
 private _northing = _k0 * (
     _M + _N * _tanPhi * (
-        (_A * _A) / 2
-        + (5 - _T + 9 * _C + 4 * _C * _C) * (_A ^ 4) / 24
-        + (61 - 58 * _T + _T * _T + 600 * _C - 330 * _ep2) * (_A ^ 6) / 720
+        (_Aterm * _Aterm) / 2
+        + (5 - _T + 9 * _C + 4 * _C * _C) * (_Aterm ^ 4) / 24
+        + (61 - 58 * _T + _T * _T + 600 * _C - 330 * _ep2) * (_Aterm ^ 6) / 720
     )
 );
 
