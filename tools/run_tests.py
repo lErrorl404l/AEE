@@ -48,6 +48,7 @@ def main():
         "tools/tests/test_visual_pipeline_audit.py",
         "tools/tests/test_astronomical.py",
         "tools/tests/test_docker_isolation.py",
+        "tools/tests/test_p79_probe_contract.py",
         "tools/tests/test_biome.py",
         "tools/tests/test_biome_dynamic.py",
         "tools/tests/test_propellant_temp.py",
