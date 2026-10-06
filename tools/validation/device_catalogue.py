@@ -56,6 +56,7 @@ RUNTIME_FIELD_UNITS: dict[str, str] = {
     "refresh_hz": "Hz",
     "cooled": "enum",
     "weight_kg": "kg",
+    "band": "enum",
     "magnification": "ratio",
     "objective_mm": "mm",
     "fov_deg": "deg",
@@ -75,6 +76,7 @@ REQUIRED_RUNTIME_BY_FAMILY: dict[str, tuple[str, ...]] = {
         "refresh_hz",
         "cooled",
         "weight_kg",
+        "band",
     ),
     "optic": (
         "magnification",
@@ -87,7 +89,7 @@ REQUIRED_RUNTIME_BY_FAMILY: dict[str, tuple[str, ...]] = {
 }
 
 # The runtime fields that carry a word, not a number.
-TEXT_RUNTIME_FIELDS = frozenset({"output_colour", "cooled", "active"})
+TEXT_RUNTIME_FIELDS = frozenset({"output_colour", "cooled", "active", "band"})
 
 _NON_KEY = re.compile(r"[^a-z0-9]+")
 

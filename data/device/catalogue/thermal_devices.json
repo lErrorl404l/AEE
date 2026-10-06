@@ -67,6 +67,14 @@
           "locator": "thermal device table, Catherine-MP row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Catherine-MP LW detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -134,6 +142,14 @@
           "locator": "thermal device table, Sophie Ultima row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "mwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie Ultima detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -200,6 +216,14 @@
           "source": "aee_sensor_device_library",
           "locator": "thermal device table, Recon V row, weight column",
           "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "band": {
+          "value": "mwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, FLIR Recon V detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
           "grade": "claimed"
         }
       }
@@ -269,6 +293,14 @@
           "locator": "thermal device table, JIM LR row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "mwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Safran JIM LR detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -336,6 +368,14 @@
           "source": "aee_sensor_device_library",
           "locator": "thermal device table, PAS-13E(V)1 row, weight column",
           "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, AN/PAS-13E(V)1 LWTS detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
           "grade": "claimed"
         }
       }
@@ -405,6 +445,14 @@
           "locator": "thermal device table, PAS-13E(V)2 row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, AN/PAS-13E(V)2 MWTS detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -473,6 +521,14 @@
           "locator": "thermal device table, PAS-13E(V)3 row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, AN/PAS-13E(V)3 HWTS detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -535,6 +591,14 @@
           "source": "aee_sensor_device_library",
           "locator": "thermal device table, PAS-13E(V)2 row, weight column",
           "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, AN/PAS-13 detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
           "grade": "claimed"
         }
       }
@@ -606,6 +670,14 @@
           "locator": "thermal device table, COTI row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, AN/PAS-29 COTI detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -656,6 +728,14 @@
           "source": "safran_ecoti_datasheet",
           "locator": "weight line: 125 g",
           "state": "as published on the E-COTI Data Sheet",
+          "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Safran Optics 1 ECOTI detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
           "grade": "claimed"
         }
       }
@@ -726,6 +806,14 @@
           "locator": "thermal device table, ENVG-B row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, ENVG-B thermal channel detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -792,6 +880,14 @@
           "source": "aee_sensor_device_library",
           "locator": "thermal device table, Sophie row, weight column",
           "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Thales Sophie detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
           "grade": "claimed"
         }
       }
@@ -865,6 +961,14 @@
           "locator": "thermal device table, Shakhin row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, 1PN139 / 1PN140 Shakhin detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -934,6 +1038,14 @@
           "locator": "thermal device table, Mowgli-2M row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, 1PN97 Mowgli-2M detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -1000,6 +1112,14 @@
           "source": "aee_sensor_device_library",
           "locator": "thermal device table, Thermion XP50 row, weight column",
           "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Pulsar Thermion XP50 detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
           "grade": "claimed"
         }
       }
@@ -1068,6 +1188,14 @@
           "locator": "thermal device table, Helion row, weight column",
           "state": "as published in the compilation",
           "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Pulsar Helion detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
+          "grade": "claimed"
         }
       }
     },
@@ -1134,6 +1262,14 @@
           "source": "aee_sensor_device_library",
           "locator": "thermal device table, Scout III 640 row, weight column",
           "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "band": {
+          "value": "lwir",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, FLIR Scout III 640 detector class",
+          "state": "band implied by the published detector class (uncooled microbolometer/VOx = LWIR; cooled InSb/MCT = per-device row)",
           "grade": "claimed"
         }
       }

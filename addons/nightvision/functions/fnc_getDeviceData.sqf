@@ -14,7 +14,7 @@ knows the device family passes it, so a class that two families share
 resolves to the row the caller wants.
 
 The value row is the runtime set of the family. A tube row holds the four
-image-intensifier fields. A thermal row holds the six detector fields. An
+image-intensifier fields. A thermal row holds the seven detector fields. An
 optic row holds the six sight fields. The lookup reads no config value and
 no source registry. It returns no default.
 
