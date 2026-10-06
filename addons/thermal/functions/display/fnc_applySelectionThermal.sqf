@@ -251,6 +251,10 @@ if (_mode == "EXIT") then {
     private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
     private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
     private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+    // Surface wetness drives the effective emissivity (fnc_getEffectiveEmissivity).
+    // Read once per object; the blend runs per selection below.
+    private _surfaceWetness = missionNamespace getVariable [QEGVAR(core,surfaceWetness), 0];
+    if !(_surfaceWetness isEqualType 0) then { _surfaceWetness = 0; };
     private _rangeM = if (isNull _viewer) then { 0 } else { _obj distance _viewer };
     private _tau = [_rangeM, _humidity, _tAir, _fog, rain, _airDensity] call FUNC(calculateAtmosphericTransmission);
     if (_tau < 0) then { _tau = 1; };   // unusable input: transmissive fallback
@@ -676,6 +680,10 @@ if (_mode == "EXIT") then {
         private _selMatClass = [_obj, _sel] call FUNC(getSelectionMaterials);
         private _mat = _selMatClass call FUNC(getMaterialThermal);
         private _eps = _mat select 0;
+        // A rain-wetted surface emits toward the liquid-water value.  The
+        // selection is an exposed exterior surface; the wet blend never
+        // exceeds 1 (fnc_getEffectiveEmissivity clamps).
+        _eps = [_eps, _surfaceWetness] call FUNC(getEffectiveEmissivity);
         // Publish the selection's OWN emissivity for the AGC.  selTemperature
         // keeps its "object|selection" keys; this parallel map lets the AGC
         // window be built from the real materials, not one painted-surface

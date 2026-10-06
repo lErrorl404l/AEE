@@ -170,6 +170,13 @@ replaced the engine view-distance proxy.
 | 640 detector reference | resolution scaling | uncooled reference class | ✅ derived |
 | humidity coefficient 0.5 | water-vapour noise | none | ⚠️ UNSOURCED |
 | range squared | path noise growth | scintillation/absorption | ⚠️ UNSOURCED |
+
+## Wet-surface emissivity (fnc_getEffectiveEmissivity.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| WATER_EPS 0.96 | liquid-water LWIR emissivity | Incropera; Hale and Querry 1973 DOI 10.1364/AO.12.000555; Downing and Williams 1975 DOI 10.1029/JC080i012p01656 | ✅ sourced |
+| linear film blend | wetness interpolation | convergence only: Lavielle et al. 2024 DOI 10.1002/adfm.202403316 | ⚠️ UNSOURCED |
 ## Illuminance layer (fnc_calculateIlluminance.sqf)
 
 The shared light-data source consumed by NVG, thermal and glare.  Two
