@@ -71,6 +71,12 @@ Arguments:
   7: trace flag (BOOL) - the hoisted module trace switch
   8: band short edge (NUMBER, m) - default 8e-6, the LWIR window start
   9: band long edge (NUMBER, m) - default 14e-6, the LWIR window end
+ 10: relative humidity (NUMBER, percent) - the band sky model input,
+     default 50, the reference condition of the transmission kernel
+ 11: band token (STRING) - "lwir" (default) or "mwir", for the band sky
+ 12: reflected-solar band radiance (NUMBER, W/m2/sr) - from
+     fnc_calculateReflectedSolarBand; default 0 keeps every LWIR caller
+     bit-identical
 
 Return Value:
   NUMBER - apparent band radiance (W/m2/sr), the value a FLIR sensor
@@ -128,7 +134,6 @@ _tau = (_tau max 0) min 1;
 // Clamp the physical inputs: emissivity 0..1, temps sane.
 _eps = (_eps max 0.05) min 1;
 private _tSurfK = _tSurf + 273.15;
-private _tAirK = (_tAir + 273.15) max 200 min 350;
 private _tGroundK = _tGround + 273.15;
 
 // ─── Sky temperature for the sensor band ──────────────────────────────────

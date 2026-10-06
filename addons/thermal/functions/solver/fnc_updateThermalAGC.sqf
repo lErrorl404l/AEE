@@ -75,6 +75,24 @@ missionNamespace setVariable [QGVAR(agcLastT), _agcNow];
 // it for every selection.
 private _traceOn = AEE_TRACE_ON;
 
+// The detector band (T16): the mounted device's band, default lwir.  A
+// device that cannot be read keeps the LWIR default, so the no-device path
+// reproduces the old LWIR result bit for bit.  getThermalDeviceProperties
+// returns the LWIR default for a null unit, so a dedicated server is safe.
+private _band = ([player] call FUNC(getThermalDeviceProperties)) param [6, "lwir"];
+if !(_band isEqualType "") then { _band = "lwir"; };
+private _bandEdges = [_band] call FUNC(resolveThermalBand);
+private _lambda1M = _bandEdges select 0;
+private _lambda2M = _bandEdges select 1;
+// Humidity for the band sky model, and the sun elevation for the MWIR
+// reflected-solar term (zero for LWIR and at night).
+private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+if !(_humidity isEqualType 0) then { _humidity = 50; };
+private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+if !(_sunElev isEqualType 0) then { _sunElev = -90; };
+private _surfaceWetness = missionNamespace getVariable [QEGVAR(core,surfaceWetness), 0];
+if !(_surfaceWetness isEqualType 0) then { _surfaceWetness = 0; };
+
 private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), -1];
 if (_selTemps isEqualType 0) then {
     _selTemps = createHashMap;
@@ -104,6 +122,8 @@ if (_selEps isEqualType 0) then {
     missionNamespace setVariable [QGVAR(selEmissivity), _selEps];
 };
 private _groundEps = (["ground"] call FUNC(getMaterialThermal)) select 0;
+// A rain-wetted ground emits toward the liquid-water value (T9).
+_groundEps = [_groundEps, _surfaceWetness] call FUNC(getEffectiveEmissivity);
 // The AGC anchors are scene-level calibration references, not targets, so
 // they carry no path length: tau = 1 (unit range).  Each selection's own
 // range attenuation is applied in applySelectionThermal.  A uniformly
@@ -121,7 +141,8 @@ private _objRads = createHashMap;
     if !(_t isEqualType 0 && {finite _t}) then { continue; };
     private _eps = _selEps getOrDefault [_x, _groundEps];
     if !(_eps isEqualType 0) then { _eps = _groundEps; };
-    private _rad = [_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance);
+    private _wSolar = [_band, _eps, _sunElev] call FUNC(calculateReflectedSolarBand);
+    private _rad = [_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
     _rads pushBack _rad;
     private _oKey = (_x splitString "|") select 0;
     private _oList = _objRads getOrDefault [_oKey, []];
@@ -133,7 +154,8 @@ private _objRads = createHashMap;
 // in every pass anchors the window when the per-selection sample set changes.
 // The 1 percent tail cut is a no-op below about 50 samples, so this anchor is
 // what stops the window hunting.
-_rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance));
+private _groundWSolar = [_band, _groundEps, _sunElev] call FUNC(calculateReflectedSolarBand);
+_rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance));
 
 // ─── Tail rejection (FLIR: <1% so real content is not clipped) ────────────
 // Sort the radiances, cut the top and bottom 1%, and take the window.
@@ -168,8 +190,8 @@ private _manMaxC = missionNamespace getVariable [QGVAR(thermalManualMaxC), 120];
 if !(_manMinC isEqualType 0) then { _manMinC = -40; };
 if !(_manMaxC isEqualType 0) then { _manMaxC = 120; };
 if (_manMaxC <= _manMinC) then { _manMaxC = _manMinC + 1; };
-private _fullMin = [_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance);
-private _fullMax = [_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance);
+private _fullMin = [_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance);
+private _fullMax = [_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance);
 private _fullSpan = (_fullMax - _fullMin) max 1e-6;
 // Published so the display pass can convert the radiance window to its
 // equivalent temperature span for the FPN amplitude (fnc_applyThermalVision).

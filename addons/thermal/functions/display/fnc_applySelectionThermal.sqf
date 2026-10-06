@@ -252,8 +252,14 @@ if (_mode == "EXIT") then {
     private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
     private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
     private _rangeM = if (isNull _viewer) then { 0 } else { _obj distance _viewer };
-    private _tau = [_rangeM, _humidity, _tAir, _fog, rain, _airDensity] call FUNC(calculateAtmosphericTransmission);
-    if (_tau < 0) then { _tau = 1; };   // unusable input: transmissive fallback
+    // The detector band (T16): default lwir, replaced by the mounted device's
+    // band below.  A device that cannot be read keeps the LWIR default, so the
+    // no-device path reproduces the old LWIR result bit for bit.
+    private _band = "lwir";
+    // Sun elevation in degrees, published by the environmental solar model.
+    // The reflected-solar term is zero for LWIR and at night.
+    private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+    if !(_sunElev isEqualType 0) then { _sunElev = -90; };
 
     // Original textures: while thermal paint is active getObjectTextures
     // returns a procedural colour, so the saved original is the solar
@@ -380,8 +386,21 @@ if (_mode == "EXIT") then {
             private _devRes = _device select 1;
             if ((_devNetd isEqualType 0) && (_devNetd > 0) && {finite _devNetd}) then { _netdC = _devNetd; };
             if ((_devRes isEqualType 0) && (_devRes > 0) && {finite _devRes}) then { _resX = _devRes; };
+            // Index 6 is the detector band (T1).  A device row without it
+            // leaves the LWIR default in place.
+            private _devBand = _device param [6, "lwir"];
+            if (_devBand isEqualType "") then { _band = _devBand; };
         };
     };
+
+    // The band edges and the band-resolved path transmission, resolved once
+    // per object.  The band defaults to lwir, so a device that cannot be read
+    // reproduces the old LWIR result bit for bit.
+    private _bandEdges = [_band] call FUNC(resolveThermalBand);
+    private _lambda1M = _bandEdges select 0;
+    private _lambda2M = _bandEdges select 1;
+    private _tau = [_rangeM, _humidity, _tAir, _fog, rain, _airDensity, _band] call FUNC(calculateAtmosphericTransmission);
+    if (_tau < 0) then { _tau = 1; };   // unusable input: transmissive fallback
 
     // The threshold.  A device the matcher cannot identify is the documented
     // uncooled 0.05 C microbolometer fallback, NOT a disabled model.  If the
@@ -673,6 +692,9 @@ if (_mode == "EXIT") then {
         private _surfaceWetness = missionNamespace getVariable [QEGVAR(core,surfaceWetness), 0];
         if !(_surfaceWetness isEqualType 0) then { _surfaceWetness = 0; };
         _eps = [_eps, _surfaceWetness] call FUNC(getEffectiveEmissivity);
+        // Reflected-solar band radiance (T4): zero for LWIR and at night, so
+        // every LWIR caller stays bit-identical.
+        private _wSolar = [_band, _eps, _sunElev] call FUNC(calculateReflectedSolarBand);
         // Publish the selection's OWN emissivity for the AGC.  selTemperature
         // keeps its "object|selection" keys; this parallel map lets the AGC
         // window be built from the real materials, not one painted-surface
@@ -684,7 +706,7 @@ if (_mode == "EXIT") then {
         };
         _epsMap set [_stateKey, _eps];
         missionNamespace setVariable [QGVAR(selEmissivity), _epsMap];
-        private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn] call FUNC(calculateBandRadiance);
+        private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
         private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
         private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
         // Manual window and the no-AGC fallback.  The manual span is a
@@ -704,8 +726,8 @@ if (_mode == "EXIT") then {
             _agcValid = true;
         };
         if ((_displayMode == 1) || !_agcValid) then {
-            _agcMin = [_manMinC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn] call FUNC(calculateBandRadiance);
-            _agcMax = [_manMaxC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn] call FUNC(calculateBandRadiance);
+            _agcMin = [_manMinC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
+            _agcMax = [_manMaxC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
         };
         // Local display mode (2): replace the scene/manual window with this
         // object's own selection window from fnc_updateThermalAGC.  It widens
