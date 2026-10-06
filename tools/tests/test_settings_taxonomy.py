@@ -150,8 +150,17 @@ EXPECTED_WILDLIFE = {
         "aee_wildlife_hungerRate",
         "aee_wildlife_thirstRate",
         "aee_wildlife_herdSize",
+    },
+    ("AEE Wildlife", "Environment"): {
+        "aee_wildlife_environmentEnabled",
+        "aee_wildlife_environmentCellSize",
+        "aee_wildlife_environmentBudgetMs",
+    },
+    ("AEE Wildlife", "Cognition"): {
         "aee_wildlife_cognitionEnabled",
         "aee_wildlife_cognitionBudgetMs",
+    },
+    ("AEE Wildlife", "Communication"): {
         "aee_wildlife_communicationEnabled",
         "aee_wildlife_callRange",
         "aee_wildlife_callBudget",
@@ -182,6 +191,8 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Wildlife"): {
         "aee_wildlife_logDebug",
         "aee_wildlife_environmentDebug",
+        "aee_wildlife_cognitionDebug",
+        "aee_wildlife_communicationDebug",
     },
     ("AEE Debug", "Core"): {"aee_core_diagnostic", "aee_core_logDebug"},
     ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},

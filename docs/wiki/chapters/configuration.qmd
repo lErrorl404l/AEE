@@ -218,6 +218,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_wildlife_cognitionDebug` | CHECKBOX | `false` | yes | wildlife | Log the cognition tick budget and the perceive-think-act counts to the RPT |
+| `aee_wildlife_communicationDebug` | CHECKBOX | `false` | yes | wildlife | Log the heard-call bus size and the emitted and decoded calls to the RPT |
 | `aee_wildlife_environmentDebug` | CHECKBOX | `false` | yes | wildlife | Log the environment grid cache size and sample cost to the RPT |
 | `aee_wildlife_logDebug` | CHECKBOX | `false` | yes | wildlife | Log wildlife diagnostics to the RPT. Turn this on before reporting a fault |
 
@@ -679,16 +681,34 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_wildlife_callBudget` | SLIDER | `256` | yes | wildlife | Cap on the heard calls the bus holds at once |
-| `aee_wildlife_callRange` | SLIDER | `200` | yes | wildlife | Distance over which an animal hears a conspecific call |
-| `aee_wildlife_cognitionBudgetMs` | SLIDER | `1.0` | yes | wildlife | Millisecond budget for one cognition tick before it re-queues |
-| `aee_wildlife_cognitionEnabled` | CHECKBOX | `false` | yes | wildlife | Run the budgeted perceive-think-act ecology over the animals |
-| `aee_wildlife_communicationEnabled` | CHECKBOX | `false` | yes | wildlife | Let an animal's call reach and move a nearby conspecific |
 | `aee_wildlife_herdSize` | SLIDER | `4` | yes | wildlife | Target number of animals of one species in a herd |
 | `aee_wildlife_hungerRate` | SLIDER | `0.02` | yes | wildlife | How fast an animal becomes hungry, per second |
 | `aee_wildlife_silenceDecay` | SLIDER | `0.05` | yes | wildlife | How strongly recent disturbance silences the ambient bed |
 | `aee_wildlife_spookSensitivity` | SLIDER | `1.0` | yes | wildlife | Multiplier on the flight-initiation distance of a spooked animal |
 | `aee_wildlife_thirstRate` | SLIDER | `0.03` | yes | wildlife | How fast an animal becomes thirsty, per second |
+
+## AEE Wildlife → Cognition
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_cognitionBudgetMs` | SLIDER | `1.0` | yes | wildlife | Millisecond budget for one cognition tick before it re-queues |
+| `aee_wildlife_cognitionEnabled` | CHECKBOX | `false` | yes | wildlife | Run the budgeted perceive-think-act ecology over the animals |
+
+## AEE Wildlife → Communication
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_callBudget` | SLIDER | `256` | yes | wildlife | Cap on the heard calls the bus holds at once |
+| `aee_wildlife_callRange` | SLIDER | `200` | yes | wildlife | Distance over which an animal hears a conspecific call |
+| `aee_wildlife_communicationEnabled` | CHECKBOX | `false` | yes | wildlife | Let an animal's call reach and move a nearby conspecific |
+
+## AEE Wildlife → Environment
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_environmentBudgetMs` | SLIDER | `2.0` | yes | wildlife | Millisecond budget for one environment sample before it re-queues the rest |
+| `aee_wildlife_environmentCellSize` | SLIDER | `25` | yes | wildlife | Grid cell size in metres for the neighbourhood environment sampler |
+| `aee_wildlife_environmentEnabled` | CHECKBOX | `true` | yes | wildlife | Sample the local environment grid so animals spawn and move by their habitat suitability |
 
 ## AEE Wildlife → Fauna
 
