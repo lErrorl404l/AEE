@@ -265,6 +265,30 @@
             <Original>Mirage Onset Temperature</Original>
             <English>Mirage Onset Temperature</English>
         </Key>
+        <Key ID="STR_AEE_Optics_perceptionHud_Description">
+            <Original>Show the one-line perception state on screen while the monitor runs. The overlay is a debug surface, so it ships off. No unit.</Original>
+            <English>Show the one-line perception state on screen while the monitor runs. The overlay is a debug surface, so it ships off. No unit.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_perceptionHud_Name">
+            <Original>Perception HUD</Original>
+            <English>Perception HUD</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_perceptionInterval_Description">
+            <Original>Minimum seconds between perception samples, range 0.1 to 2.0. The monitor runs in a per-frame handler at 0.5 s, so the effective floor is 0.5 s. Default 0.5. UNSOURCED.</Original>
+            <English>Minimum seconds between perception samples, range 0.1 to 2.0. The monitor runs in a per-frame handler at 0.5 s, so the effective floor is 0.5 s. Default 0.5. UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_perceptionInterval_Name">
+            <Original>Perception Interval</Original>
+            <English>Perception Interval</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_perceptionMonitor_Description">
+            <Original>Publish and log the reconstructed player view state each tick. The monitor reads state other modules already publish and writes the aee_optics_perception variables; it reads no pixels. Default on. The sample cadence is the perception interval. UNSOURCED that a 0.5 s sample is the right cadence.</Original>
+            <English>Publish and log the reconstructed player view state each tick. The monitor reads state other modules already publish and writes the aee_optics_perception variables; it reads no pixels. Default on. The sample cadence is the perception interval. UNSOURCED that a 0.5 s sample is the right cadence.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_perceptionMonitor_Name">
+            <Original>Perception Monitor</Original>
+            <English>Perception Monitor</English>
+        </Key>
         <Key ID="STR_AEE_Optics_rainAccumRate_Description">
             <Original>Droplet build-up speed per tick during rain</Original>
             <English>Droplet build-up speed per tick during rain</English>

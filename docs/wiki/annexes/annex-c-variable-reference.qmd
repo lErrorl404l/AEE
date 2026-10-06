@@ -152,6 +152,12 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_eyeRawEngineLum` | optics | Engine `apertureParams` estimated luminance, no unit |
 | `aee_optics_eyeRawBlinding` | optics | Engine `apertureParams` blinding term, no unit |
 | `aee_optics_eyeRawSky` | optics | Open-sky fraction before the scene combine, 0 to 1 |
+| `aee_optics_perceptionState` | optics | Perception monitor aggregate: the 14-field perceptionSample schema (scene lux, adapted lux, aperture, pupil, mesopic, grade, tint, NVG, thermal, UV, stress, injury, effects, eye adaptation) |
+| `aee_optics_perceptionLine` | optics | Perception monitor one-line human readout of the view state |
+| `aee_optics_perceptionLux` | optics | Perception monitor scene illuminance, lx |
+| `aee_optics_perceptionAperture` | optics | Perception monitor applied aperture |
+| `aee_optics_perceptionGrade` | optics | Perception monitor applied grade channels [brightness, contrast, offset, alpha] |
+| `aee_optics_perceptionFlags` | optics | Perception monitor deviation flags [discolouration, blindness, gradeMismatch, stuckAdaptation, detail] |
 
 ### Physiology
 

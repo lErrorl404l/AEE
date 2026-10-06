@@ -106,3 +106,11 @@ aee_wildlife_forceSpook  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSilence  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSpecies  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_firedManEH  core player engine handler key passed to installPlayerEngineHandler; a string identifier, not a variable
+aee_optics_eyeAdaptTargetLux  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
+aee_optics_eyeAdaptDirection  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
+aee_optics_eyeAdaptTau  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
+aee_optics_eyeAdaptTimeToAdapt  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
+aee_optics_perceptionForceLux  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_optics_perceptionForceGrade  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_optics_perceptionForceNvg  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_optics_perceptionForceThermal  debug console knob (documented in fnc_perceptionUpdate.sqf)
