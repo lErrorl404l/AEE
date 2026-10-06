@@ -12,6 +12,8 @@ PREP(dumpPerformanceCounters);
 PREP(getWorldLocation);
 PREPS(geo,buildGeoAnchor);
 PREPS(geo,getGeoAnchor);
+PREPS(geo,latLonToUtm);
+PREPS(geo,utmToLatLon);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
