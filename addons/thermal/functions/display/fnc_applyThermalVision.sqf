@@ -88,6 +88,28 @@ if !([_player] call FUNC(isThermalHostActive)) exitWith {
     };
 };
 
+// ─── Optic capability probe (issue #196) ─────────────────────────────────
+// The DTV host runs the thermal stack on the engine day channel, which does
+// not by itself prove the optic declares a thermal mode.  Read the optic's
+// own config and apply the stack only when it truly supports native thermal.
+// FUNC(isThermalHostActive) keeps its host ownership; this gate is separate.
+// The vanilla host (engine thermal channel) already proves the optic, so the
+// probe is not applied there.
+private _base = missionNamespace getVariable [QGVAR(thermalBaseChannel), 0];
+private _opticName = currentWeapon _veh;
+private _opticCfg = configNull;
+if (_base == 1 && _opticName != "") then {
+    _opticCfg = configFile >> "CfgWeapons" >> _opticName;
+};
+private _capable = true;
+if (!isNull _opticCfg) then {
+    _capable = [
+        _opticCfg >> "visionMode",
+        _opticCfg >> "thermalMode"
+    ] call FUNC(probeThermalCapability);
+};
+if (!_capable) exitWith { false };
+
 // ─── Effective contrast ───────────────────────────────────────────────────
 // Defensive: a nil or non-numeric stored contrast (bad variable state)
 // must not propagate into ppEffectAdjust — "Type Number, expected Number"
