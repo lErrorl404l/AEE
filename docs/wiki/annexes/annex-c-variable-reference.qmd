@@ -134,6 +134,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_eyeRawLocal` | optics | Raw local-light input to the eye model, lx |
 | `aee_optics_eyeRawCoreLocal` | optics | Core dynamic-lux input to the eye model, lx |
 | `aee_optics_eyeRawEngineAmbient` | optics | Engine `getLightingAt` ambient element, no unit |
+| `aee_optics_eyeRawSunElev` | optics | Sun elevation at the sample, degrees (gates the ambient source) |
 | `aee_optics_eyeRawEngineLocal` | optics | Engine `getLightingAt` dynamic element, no unit |
 | `aee_optics_eyeRawEngineLum` | optics | Engine `apertureParams` estimated luminance, no unit |
 | `aee_optics_eyeRawBlinding` | optics | Engine `apertureParams` blinding term, no unit |

@@ -33,6 +33,7 @@ PUPIL_STEADY = EYE / "fnc_eyePupilSteady.sqf"
 PUPIL_STEP = EYE / "fnc_eyePupilStep.sqf"
 ADAPT_STEP = EYE / "fnc_eyeAdaptStep.sqf"
 SCENE_LUX = EYE / "fnc_eyeSceneLux.sqf"
+AMBIENT = EYE / "fnc_eyeAmbientLux.sqf"
 SKY_FRACTION = EYE / "fnc_eyeSkyFraction.sqf"
 SKY_CAST = EYE / "fnc_eyeSkyCast.sqf"
 APERTURE = EYE / "fnc_eyeAperture.sqf"
@@ -432,6 +433,72 @@ class TestEyeFlash(unittest.TestCase):
         # into the engine dynamic term.
         text = DRIVER.read_text(encoding="utf-8")
         self.assertIn("_sceneLux + _flashLux", text)
+
+
+class TestEyeAmbientLux(unittest.TestCase):
+    """The night ambient comes from the physical sky, not the engine.
+
+    Regression for the operator report (night too dim, local lights
+    imperceptible).  The engine ambient brightness is a render artifact at an
+    indoor scale at night (~51 lx in the report), two orders of magnitude
+    above the real night sky.  It must not override the physical
+    starlight/moon/twilight model at or below the horizon.
+    """
+
+    def test_night_uses_the_physical_sky(self):
+        # Physical moonlit sky 0.25 lx; engine ambient 51 (indoor scale).
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [0.25, 51, 1, -10]), 0.25, places=6
+        )
+
+    def test_starlight_floor_is_kept(self):
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [0.001, 51, 1, -40]), 0.001, places=6
+        )
+
+    def test_twilight_uses_the_physical_glow(self):
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [6.3, 51, 1, -6]), 6.3, places=6
+        )
+
+    def test_day_uses_the_engine_ambient(self):
+        # The physical model has no daylight term; the engine supplies it.
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [0.001, 84987, 1, 30]), 84987, places=3
+        )
+
+    def test_horizon_hands_over_to_the_engine(self):
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [398, 5000, 1, 0.5]), 5000, places=3
+        )
+
+
+class TestEyeNightAndDayAperture(unittest.TestCase):
+    """The aperture the eye pins at a real night and at noon."""
+
+    def test_moonlit_night_is_wide(self):
+        # 0.25 lx moonlit night -> a wide aperture, not the indoor value (~33).
+        v = run_sqf(APERTURE, [0.25])
+        self.assertGreater(v, 15)
+        self.assertLess(v, 25)
+
+    def test_starlight_is_the_night_anchor(self):
+        self.assertAlmostEqual(run_sqf(APERTURE, [0.001]), 8, places=6)
+
+    def test_noon_is_the_daylight_anchor(self):
+        # RPT day adaptedLux 68036 -> ~49 (BIKI daylight outdoor 50).
+        v = run_sqf(APERTURE, [68036])
+        self.assertGreater(v, 48.5)
+        self.assertLess(v, 50.5)
+
+    def test_a_local_light_raises_the_adapted_aperture(self):
+        # A 50 lx lamp on a 0.25 lx night must visibly raise the adaptation.
+        dark = run_sqf(SCENE_LUX, [0.25, 0, 0.8])
+        lit = run_sqf(SCENE_LUX, [0.25, 50, 0.8])
+        self.assertLess(dark, lit)
+        self.assertGreater(
+            run_sqf(APERTURE, [lit]), run_sqf(APERTURE, [dark]) + 5
+        )
 
 
 if __name__ == "__main__":

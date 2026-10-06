@@ -56,7 +56,11 @@ if ((_params isEqualType []) && {(count _params) >= 10}) then {
     if !(_blinding isEqualType 0) then { _blinding = 0; };
 };
 
-private _ambient = _physAmbient max (_engAmbient * GVAR(eyeAmbientLuxScale));
+// The ambient source is the physical night-sky model at or below the horizon
+// and the engine ambient brightness in daylight.  See fnc_eyeAmbientLux.
+private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+if !(_sunElev isEqualType 0) then { _sunElev = -90; };
+private _ambient = [_physAmbient, _engAmbient, GVAR(eyeAmbientLuxScale), _sunElev] call FUNC(eyeAmbientLux);
 private _local = _coreLocal max ((_engLocal * GVAR(eyeLocalLuxScale)) + (_blinding * GVAR(eyeBlindingLuxScale)));
 
 // Sky directions: straight up plus four at 45 degrees, one per compass
@@ -80,6 +84,7 @@ missionNamespace setVariable [QGVAR(eyeRawAmbient), _ambient];
 missionNamespace setVariable [QGVAR(eyeRawLocal), _local];
 missionNamespace setVariable [QGVAR(eyeRawCoreLocal), _coreLocal];
 missionNamespace setVariable [QGVAR(eyeRawEngineAmbient), _engAmbient];
+missionNamespace setVariable [QGVAR(eyeRawSunElev), _sunElev];
 missionNamespace setVariable [QGVAR(eyeRawEngineLocal), _engLocal];
 missionNamespace setVariable [QGVAR(eyeRawEngineLum), _engineLum];
 missionNamespace setVariable [QGVAR(eyeRawBlinding), _blinding];
