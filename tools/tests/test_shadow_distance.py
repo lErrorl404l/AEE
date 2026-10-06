@@ -661,6 +661,33 @@ class TestShadowDriverContract(unittest.TestCase):
         live = live_source(DRIVER)
         self.assertIn("visibleMap", live)
 
+    def test_driver_applies_the_shadow_target_on_its_own_trigger(self) -> None:
+        """C2: the shadow target must reach the engine outside the object
+        deadband block.  The object deadband is 200 m, so if the only apply
+        site sits inside the ``_newObj != _objCurrent`` block the scene-aware
+        value is inert in steady state.  An independent apply site is
+        required."""
+        live = live_source(DRIVER)
+        start = live.index("if (_newObj != _objCurrent) then {")
+        open_brace = live.index("{", start)
+        depth = 0
+        end = None
+        for i in range(open_brace, len(live)):
+            char = live[i]
+            if char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth == 0:
+                    end = i
+                    break
+        self.assertIsNotNone(end, "the object deadband block is not closed")
+        assert end is not None
+        outside = live[:start] + live[end + 1 :]
+        # The independent apply writes the second element only.
+        self.assertIn("round _shadowTarget", outside)
+        self.assertIn("setObjectViewDistance", outside)
+
 
 SHADOW_SETTINGS = (
     ("shadowAdaptiveEnabled", "CHECKBOX", "true"),
