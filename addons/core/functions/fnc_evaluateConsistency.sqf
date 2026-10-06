@@ -50,8 +50,11 @@ params [
     ["_values", [], [[]]]
 ];
 
-// No-data marker.  A producer value is present when it is not a string, so a
-// missing producer cannot be confused with a real value.
+// No-data marker.  A producer value is present only when it is a scalar
+// (NUMBER or BOOL).  A missing producer resolves to this string, and a
+// container (for example the per-cell aee_thermal_groundNodeStack HashMap) is
+// treated the same way, so a non-scalar value can never reach a numeric
+// comparison and the evaluator never throws on it.
 private _missing = "__aee_no_data__";
 
 // Look up a named value in the [name, value] pair list.  A small linear scan
@@ -103,7 +106,7 @@ while { _r < _rowCount } do {
     while { _p < _producerCount } do {
         private _pair = _producers select _p;
         private _v = [_values, _pair select 1, _missing] call _lookup;
-        if !(_v isEqualType "") then { _vals pushBack _v; };
+        if ((_v isEqualType 0) || {_v isEqualType true}) then { _vals pushBack _v; };
         _p = _p + 1;
     };
 

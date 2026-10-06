@@ -36,14 +36,18 @@ Example: [] call aee_core_fnc_runConsistencyCheck
 private _table = [] call FUNC(consistencyLoadTable);
 
 // ── Value map from the published producers ─────────────────────────────────
-// A string value is the no-data marker; a real producer value is never a
-// string, so the evaluator can tell an absent producer from a real one.
+// Only scalars (NUMBER or BOOL) enter the map.  A missing producer resolves to
+// the no-data string, and a container (for example the per-cell
+// aee_thermal_groundNodeStack HashMap) is dropped, so the evaluator never
+// compares a non-scalar and the monitor never throws.
 private _values = [];
 {
     private _producers = _x select 2;
     {
         private _v = missionNamespace getVariable [_x select 1, "__aee_no_data__"];
-        if !(_v isEqualType "") then { _values pushBack [(_x select 1), _v]; };
+        if ((_v isEqualType 0) || {_v isEqualType true}) then {
+            _values pushBack [(_x select 1), _v];
+        };
     } forEach _producers;
 } forEach _table;
 
