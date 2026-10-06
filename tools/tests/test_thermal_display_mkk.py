@@ -139,13 +139,13 @@ class TestMKKDisplayWiring(unittest.TestCase):
 
     def test_wet_distortion_is_created(self):
         self.assertIn(
-            '["WetDistortion",   1150, QGVAR(ppHandle_Thermal_WetDistortion)]',
+            '["WetDistortion",    305, QGVAR(ppHandle_Thermal_WetDistortion)]',
             self.vision,
         )
 
     def test_resolution_is_created(self):
         self.assertIn(
-            '["Resolution",      6700, QGVAR(ppHandle_Thermal_Resolution)]',
+            '["Resolution",      3000, QGVAR(ppHandle_Thermal_Resolution)]',
             self.vision,
         )
 

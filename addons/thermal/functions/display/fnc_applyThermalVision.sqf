@@ -195,8 +195,11 @@ if (_rainS > 0.1) then {
 // only recreated when the engine killed them (alt-tab, resize, AT sights).
 // Never on a timer — rebuilding live effects every tick leaves stale
 // handles, climbs priorities, and spams "Invalid post effect handle".
-// Priorities sit above the NVG handles so the two never collide.
-// A -1 handle (priority taken) bumps until it succeeds.
+// Priorities adopt the proven per-type A3TI/MKK ladder (see
+// docs/wiki/research/engine-thermal-mechanisms.md): each effect type keeps
+// its own band with a large gap to the next, so no two AEE modules can
+// share a priority.  A -1 handle (priority taken) still bumps until it
+// succeeds, which covers any residual clash.
 private _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
 private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Chroma), -1];
 private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
@@ -251,33 +254,43 @@ if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv 
         // [0.001,0.001,true] BEFORE its ColorCorrections (workshop
         // 3725008325 fn_ppEffects.sqf case 0), so it sits below the thermal
         // CC here.  It is the lens colour fringing of the thermal objective,
-        // the one WHOT effect this stack did not already carry.
-        ["ChromAberration", 1400, QGVAR(ppHandle_Thermal_Chroma)],
-        ["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)],
-        ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)],
-        ["FilmGrain",       6500, QGVAR(ppHandle_Thermal_Grain)],
-        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)],
+        // the one WHOT effect this stack did not already carry.  Priority
+        // 205 is the proven A3TI/MKK band for this effect type.
+        ["ChromAberration",  205, QGVAR(ppHandle_Thermal_Chroma)],
+        // RadialBlur: the vignette/edge falloff, the proven MKK value 1000.
+        ["RadialBlur",      1000, QGVAR(ppHandle_Thermal_Vignette)],
+        // DynamicBlur: the proven defocus band value 505.
+        ["DynamicBlur",      505, QGVAR(ppHandle_Thermal_Blur)],
+        // FilmGrain: the proven sensor-noise band.  The plan named 2005,
+        // but the fusion stack already holds 2005, so this stack takes the
+        // other proven value 2000 (the A3TI variant) and the two
+        // thermal-owned stacks never share a priority.
+        ["FilmGrain",       2000, QGVAR(ppHandle_Thermal_Grain)],
+        // ColorCorrections: the proven grade band.  The plan named 2505,
+        // but fusion holds 2505, so this stack takes the other proven value
+        // 2500.
+        ["ColorCorrections", 2500, QGVAR(ppHandle_Thermal_CC)],
         // ColorInversion: the proven BHOT mechanism (A3TI 2501, MKK 2510,
         // workshop 2041057379 / 3753145363).  Inverts the WHOLE rendered
         // frame - hot becomes black, cold becomes white - which the old
         // `_b = 1-_b` band flip never achieved for StageTI-baked objects.
         // Created unconditionally; enabled only when thermalPolarity == 1
-        // (see the adjust section).  Priority 6600, above the thermal CC
-        // (5200) so it inverts the graded image, below nothing else uses.
-        ["ColorInversion", 6600, QGVAR(ppHandle_Thermal_Inversion)],
+        // (see the adjust section).  Priority 2510 is the proven BHOT band,
+        // above the thermal CC (2500) so it inverts the graded image.
+        ["ColorInversion", 2510, QGVAR(ppHandle_Thermal_Inversion)],
         // WetDistortion: rain on the objective lens (MKK thermal_improvement
         // workshop 3753145363 fnc_applyVisionEffects.sqf:158-166, priority
-        // 305 there).  It sits at 1150, below every other AEE thermal effect,
+        // 305 there).  It sits at 305, below every other AEE thermal effect,
         // so the lens film distorts the frame before the grade.  Enabled
         // only when AEE's rain/fog makes the lens wet.
-        ["WetDistortion",   1150, QGVAR(ppHandle_Thermal_WetDistortion)],
+        ["WetDistortion",    305, QGVAR(ppHandle_Thermal_WetDistortion)],
         // Resolution: sensor pixelation (MKK fnc_applyVisionEffects.sqf:124,
-        // priority 3000 there).  It sits at 6700, above the ColorInversion,
+        // priority 3000 there).  It sits at 3000, above the ColorInversion,
         // so the detector grid quantises the finished frame.  Enabled only
         // when the operator turns on thermalPixelation.  AEE does NOT drive
         // the engine-global setTIParameter MaxResolution (see
         // fnc_thermalResolutionParams).
-        ["Resolution",      6700, QGVAR(ppHandle_Thermal_Resolution)]
+        ["Resolution",      3000, QGVAR(ppHandle_Thermal_Resolution)]
     ];
     _handles params ["_hChroma", "_hVig", "_hBlur", "_hGrain", "_hCC", "_hInv", "_hWet", "_hReso"];
     private _logMsg = format ["thermal ppEffects created: chroma=%1 vig=%2 blur=%3 grain=%4 CC=%5 inv=%6 wet=%7 reso=%8", _hChroma, _hVig, _hBlur, _hGrain, _hCC, _hInv, _hWet, _hReso];

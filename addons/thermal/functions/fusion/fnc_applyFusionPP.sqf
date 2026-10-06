@@ -21,8 +21,9 @@
  * stacks):
  *   ChromAberration 1905, FilmGrain 2005, DynamicBlur 2105, CC 2505.
  * The NVG tube model uses 1200-6000 (RadialBlur 1200, DynamicBlur 4100,
- * CC 5100, FilmGrain 6000); optics 3000/4000/5000; thermal
- * 1300/4200/6500/5200.  Fusion's 1905/2005/2105/2505 are free.
+ * CC 5100, FilmGrain 6000); optics 210/410/1510; the thermal vision stack
+ * uses 205/305/505/1000/2000/2500/2510/3000.  Fusion holds
+ * 1905/2005/2105/2505, which stay clear of every one of them.
  *
  * Params:
  *   0: _player (OBJECT, default player)
