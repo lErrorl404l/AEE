@@ -151,11 +151,29 @@ Rules:
 
 - A media path begins with `a3\`. No path begins with `x\` or `z\`.
 - A CfgSFX class is `Owl` or `Sound_Stream`, the two the manifest confirms.
-- `sarance` and `chicken_grill` are UNKNOWN. They are never given a species.
+- `sarance` is CONFIRMED cricket stridulation (Orthoptera). Its four files are
+  byte-identical by md5 to the vanilla cricket set, so its `media_class` is
+  `cricket`. The species is not pinned below the order, so it carries a `taxon`
+  and never a `species`.
+- `chicken_grill` is UNKNOWN. It is never given a species.
 - `hen`, `dog`, `seagul_1` and `sheep` are UNCONFIRMED name-only. They are
   never given a species.
 - A sound group with no pinned media carries an empty `media` list and an
   `anchor` note. No path is invented.
+
+The map also holds `species_anchors`. This list is the animal-class species
+identity. It is separate from the sound-identity grades. One entry carries
+`class`, an optional `variant`, `taxon`, `rank`, `common_name`, `confidence`,
+`evidence`, `source` and `grade`.
+
+- `rank` is one of `species`, `subspecies`, `genus`, `family`, `order` or
+  `suborder`. The rank states the confidence of the identity. A family or a
+  genus is never written as a species.
+- A `class` with several texture identities carries one entry per `variant`.
+- A `grade` of `R` means the anchor rests on the shipped model, texture or
+  config. A `grade` of `S` means the identity was measured this session.
+- A sound recording stays UNCONFIRMED even when its animal class has a species
+  anchor. The two layers are independent.
 
 ## 10. The generated runtime projection
 
