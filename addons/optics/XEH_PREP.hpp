@@ -79,6 +79,8 @@ PREPS(perception,perceptionUpdate);
 PREPS(perception,perceptionDetectDeviation);
 
 PREPS(hud,formatGridDisplay);
+PREPS(hud,gpsBuild);
+PREPS(hud,gpsUpdate);
 PREPS(hud,hudBuild);
 PREPS(hud,hudFormatGrid);
 PREPS(hud,hudFormatHeading);

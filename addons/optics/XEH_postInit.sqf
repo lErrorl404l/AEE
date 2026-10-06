@@ -184,6 +184,9 @@ if (hasInterface) then {
     // when the map opens.  Read-only, no marker is created or edited.
     [] call FUNC(mgrsMapDraw);
     [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
+    // MGRS GPS device readout: raised only while the player carries an
+    // ItemGPS and the aee_optics_mgrsEnabled setting is on.
+    [FUNC(gpsUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
     // Eye adaptation: AEE owns the camera aperture and its rate (issue #141).
     [] call FUNC(initEyeAdaptation);
     // Normal-vision base grade and acuity pass (image realism).

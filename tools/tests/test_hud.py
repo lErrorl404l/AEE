@@ -37,6 +37,8 @@ GRID_DISPLAY_KERNEL = HUD / "fnc_formatGridDisplay.sqf"
 RANGE_KERNEL = HUD / "fnc_hudFormatRange.sqf"
 MGRS_MAP_KERNEL = HUD / "fnc_mgrsMapDraw.sqf"
 MGRS_MARKER_KERNEL = HUD / "fnc_mgrsMarkerText.sqf"
+GPS_BUILD_KERNEL = HUD / "fnc_gpsBuild.sqf"
+GPS_UPDATE_KERNEL = HUD / "fnc_gpsUpdate.sqf"
 
 HUD_FILE = OPTICS / "RscTitles.hpp"
 BUILD_SRC = (HUD / "fnc_hudBuild.sqf").read_text(encoding="utf-8")
@@ -46,6 +48,8 @@ MARKERS_SRC = (HUD / "fnc_hudMarkers.sqf").read_text(encoding="utf-8")
 FORMAT_DISPLAY_SRC = (HUD / "fnc_formatGridDisplay.sqf").read_text(encoding="utf-8")
 MGRS_MAP_SRC = MGRS_MAP_KERNEL.read_text(encoding="utf-8")
 MGRS_MARKER_SRC = MGRS_MARKER_KERNEL.read_text(encoding="utf-8")
+GPS_BUILD_SRC = GPS_BUILD_KERNEL.read_text(encoding="utf-8")
+GPS_UPDATE_SRC = GPS_UPDATE_KERNEL.read_text(encoding="utf-8")
 HUD_CLASS_SRC = HUD_FILE.read_text(encoding="utf-8")
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
@@ -62,6 +66,8 @@ ALL_HUD_SRC = "\n".join(
         FORMAT_DISPLAY_SRC,
         MGRS_MAP_SRC,
         MGRS_MARKER_SRC,
+        GPS_BUILD_SRC,
+        GPS_UPDATE_SRC,
     ]
 )
 
@@ -252,6 +258,25 @@ class TestHudMgrsMarkerText(unittest.TestCase):
             mgrs_marker_text("Alpha", [0, 0, 0], [0] * 9, 10, ""),
             "Alpha",
         )
+
+
+class TestHudGpsReadout(unittest.TestCase):
+    """The GVAR(gps) display, its idcs and the ItemGPS gate."""
+
+    def test_the_gps_display_exists_with_a_free_idd(self):
+        self.assertIn("class GVAR(gps)", HUD_CLASS_SRC)
+        self.assertIn("idd = 10783;", HUD_CLASS_SRC)
+
+    def test_the_gps_fields_have_free_idcs(self):
+        for idc in (9020, 9021, 9022, 9023):
+            self.assertIn(f"idc = {idc};", HUD_CLASS_SRC, idc)
+
+    def test_the_update_gates_on_holding_an_itemgps(self):
+        self.assertIn("ItemGPS", GPS_UPDATE_SRC)
+        self.assertIn("assignedItems", GPS_UPDATE_SRC)
+
+    def test_the_update_gates_on_the_mgrs_setting(self):
+        self.assertIn("QGVAR(mgrsEnabled)", GPS_UPDATE_SRC)
 
 
 class TestHudSourceContract(unittest.TestCase):
