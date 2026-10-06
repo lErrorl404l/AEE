@@ -1,0 +1,127 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "The shipped CfgWorlds world list and its raw geographic keys, read from the base configs with extractpbo on 2026-10-06. The generator tools/validation/gen_mgrs_tables.py resolves one anchor per world from these raw values with the same rule as the pure builder aee_core_fnc_buildGeoAnchor, and writes the anchor back into this file. mapArea is read in the authoritative BIS order [lonWest, latSouth, lonEast, latNorth]. A world whose mapArea is absent, empty, out of range or of zero area falls back to the CfgWorlds keys, and the latitude key is negated because BIS stores it inverted. The anchor is written as [latCentre, lonCentre, zone, mapSize, lonWest, latSouth, lonEast, latNorth, sourceToken].",
+  "sources": [],
+  "worlds": [
+    {
+      "world": "Altis",
+      "config": "map_altis",
+      "mapSize": 30720,
+      "mapZone": 35,
+      "mapArea": [
+        25.011957,
+        39.718452,
+        25.481527,
+        40.094578
+      ],
+      "latitude": -35.152,
+      "longitude": 16.661,
+      "anchor": [
+        39.906515,
+        25.246741999999998,
+        35,
+        30720,
+        25.011957,
+        39.718452,
+        25.481527,
+        40.094578,
+        "mapArea"
+      ],
+      "anchor_source": "mapArea"
+    },
+    {
+      "world": "Stratis",
+      "config": "map_stratis",
+      "mapSize": 8192,
+      "mapZone": 35,
+      "mapArea": [],
+      "latitude": -35.097,
+      "longitude": 16.482,
+      "anchor": [
+        35.097,
+        16.482,
+        35,
+        8192,
+        0,
+        0,
+        0,
+        0,
+        "cfgworlds"
+      ],
+      "anchor_source": "cfgworlds"
+    },
+    {
+      "world": "Malden",
+      "config": "map_malden",
+      "mapSize": 12800,
+      "mapZone": 35,
+      "mapArea": [
+        25.011957,
+        39.718452,
+        25.481527,
+        40.094578
+      ],
+      "latitude": -38.8,
+      "longitude": -20.7,
+      "anchor": [
+        39.906515,
+        25.246741999999998,
+        35,
+        12800,
+        25.011957,
+        39.718452,
+        25.481527,
+        40.094578,
+        "mapArea"
+      ],
+      "anchor_source": "mapArea"
+    },
+    {
+      "world": "Tanoa",
+      "config": "map_tanoabuka",
+      "mapSize": 15360,
+      "mapZone": 60,
+      "mapArea": [
+        -20.267975,
+        174.00284,
+        -20.135265,
+        174.14566
+      ],
+      "latitude": 17.698,
+      "longitude": 178.783,
+      "anchor": [
+        -17.698,
+        178.783,
+        60,
+        15360,
+        0,
+        0,
+        0,
+        0,
+        "cfgworlds"
+      ],
+      "anchor_source": "cfgworlds"
+    },
+    {
+      "world": "Enoch",
+      "config": "map_enoch",
+      "mapSize": 12800,
+      "mapZone": 34,
+      "mapArea": [],
+      "latitude": -54,
+      "longitude": 23,
+      "anchor": [
+        54,
+        23,
+        34,
+        12800,
+        0,
+        0,
+        0,
+        0,
+        "cfgworlds"
+      ],
+      "anchor_source": "cfgworlds"
+    }
+  ]
+}
