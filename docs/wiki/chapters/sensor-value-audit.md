@@ -158,6 +158,18 @@ fnc_calculateAtmosphericTransmission.
 | heat threshold 35 / span 10 / factor 0.7 | gradient flatten | none | ⚠️ UNSOURCED |
 | cold threshold 5 / factor 1.2 | gap widen | none | ⚠️ UNSOURCED |
 | rain × 0.4 / fog × 0.6 / humidity × 0.3 | removed | double-counted transmission | removed |
+
+## Thermal noise (fnc_calculateThermalNoise.sqf)
+
+The noise floor is a pure kernel driven by a REAL sensor-to-target range. It
+replaced the engine view-distance proxy.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| range 1000 m fallback | no-target range | none (device corpus holds no detection range) | ⚠️ UNSOURCED |
+| 640 detector reference | resolution scaling | uncooled reference class | ✅ derived |
+| humidity coefficient 0.5 | water-vapour noise | none | ⚠️ UNSOURCED |
+| range squared | path noise growth | scintillation/absorption | ⚠️ UNSOURCED |
 ## Illuminance layer (fnc_calculateIlluminance.sqf)
 
 The shared light-data source consumed by NVG, thermal and glare.  Two

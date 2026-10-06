@@ -209,9 +209,9 @@ def thermal_contrast(air_temp=15.0, surface_temp=None):
 
 
 def netd_noise(view_distance, humidity=0.0):
-    """Mirror of the NETD noise floor.
-
-    SQF: _noise = 0.05 * ((_range / 1000) ^ 2) * (1 + _humidity * 0.5)
+    """Retired mirror.  The noise floor is now the pure kernel
+    fnc_calculateThermalNoise.sqf, executed directly by TestThermalNoise, so
+    the hand-transcribed mirror is gone.
     """
     return 0.05 * ((view_distance / 1000) ** 2) * (1 + humidity * 0.5)
 
@@ -1265,30 +1265,45 @@ class TestThermalContrast(unittest.TestCase):
         self.assertLessEqual(thermal_contrast(air_temp=-40.0), 1.0)
 
 
-class TestNETDNoise(unittest.TestCase):
-    """NETD-based sensor noise floor."""
+class TestThermalNoise(unittest.TestCase):
+    """The pure NETD noise floor (fnc_calculateThermalNoise.sqf).
 
-    def test_noise_at_1km(self):
-        # At 1000m: noise = 0.05 × 1² = 0.05.
-        self.assertAlmostEqual(netd_noise(1000), 0.05, places=4)
+    Executes the shipped SQF through the shared interpreter, so the formula
+    is proven, not mirrored.  Range is a REAL sensor-to-target range.
+    """
 
-    def test_noise_at_500m(self):
-        # At 500m: noise = 0.05 × 0.25 = 0.0125.
-        self.assertAlmostEqual(netd_noise(500), 0.0125, places=4)
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateThermalNoise.sqf"
+
+    def _noise(self, netd, rng, resx=640, hum=0.0):
+        return run_sqf(self._KERNEL, [netd, rng, resx, hum])
+
+    def test_noise_at_1km_uncooled_dry(self):
+        # 0.05 × 1² × 1 × 1 = 0.05 at zero humidity.
+        self.assertAlmostEqual(self._noise(0.05, 1000), 0.05, places=6)
+
+    def test_noise_monotone_in_range(self):
+        # A real range drives the term: more path, more noise.
+        n500 = self._noise(0.05, 500)
+        n1000 = self._noise(0.05, 1000)
+        self.assertGreater(n1000, n500)
 
     def test_noise_scales_with_range_squared(self):
-        # Double the range → 4× the noise.
-        n1 = netd_noise(500)
-        n2 = netd_noise(1000)
+        n1 = self._noise(0.05, 500)
+        n2 = self._noise(0.05, 1000)
         self.assertAlmostEqual(n2 / n1, 4.0, places=2)
 
     def test_humidity_increases_noise(self):
-        # High humidity adds noise.
-        self.assertGreater(netd_noise(1000, 0.8), netd_noise(1000, 0))
+        wet = self._noise(0.05, 1000, 640, 80)
+        dry = self._noise(0.05, 1000, 640, 0)
+        self.assertGreater(wet, dry)
 
-    def test_noise_finite_at_extremes(self):
-        self.assertTrue(math.isfinite(netd_noise(100, 0)))
-        self.assertTrue(math.isfinite(netd_noise(5000, 1.0)))
+    def test_resolution_scales_noise(self):
+        # A 320-wide detector doubles the 640 reference term.
+        self.assertAlmostEqual(self._noise(0.05, 1000, 320), 0.1, places=6)
+
+    def test_clamped_to_unit(self):
+        self.assertEqual(self._noise(0.5, 5000, 160, 100), 1.0)
+        self.assertGreaterEqual(self._noise(0.0, 1000), 0.0)
 
 
 class TestThermalBlur(unittest.TestCase):
@@ -3069,13 +3084,18 @@ class TestSQFSync(unittest.TestCase):
         self.assertNotIn("avgGroundTemp", code)
         self.assertIn("private _contrast = 1.0", code)
 
-    def test_netd_constants(self):
+    def test_netd_noise_kernel_constants(self):
+        # The noise floor moved to the pure kernel, where the range is a real
+        # argument.  The contrast kernel no longer computes it.
         self._assert_in_sqf(
-            "fnc_calculateThermalContrast.sqf",
-            ["0.05", "/ 1000", "5000", "humidity * 0.5"],
+            "fnc_calculateThermalNoise.sqf",
+            ["640 / _res", "(1 + (_hum / 100) * 0.5)", "_noise max 0", "_rangeM"],
             "NETD noise floor",
             addon="thermal",
         )
+        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
+        self.assertNotIn("currentThermalNoise", code)
+        self.assertNotIn("viewDistance", code)
 
     # ── Thermal vision (fnc_applyThermalVision.sqf) ──
     def test_thermal_blur_constants(self):
@@ -4950,7 +4970,7 @@ class TestThermalEdgeKernel(unittest.TestCase):
             self.fail("the threshold default is not declared in the kernel")
         return float(m.group(1))
 
-    def _edge(self, signal, background, threshold=None):
+    def _edge(self, signal, background, threshold=None, noise=0.0):
         # Mirror of the kernel body, pinned by test_source_guards_present.  The
         # finite guard runs first, exactly as the kernel orders it: SQF max/min
         # cannot clamp NaN, so the refusal must come before the arithmetic.
@@ -4960,6 +4980,7 @@ class TestThermalEdgeKernel(unittest.TestCase):
             math.isfinite(signal)
             and math.isfinite(background)
             and math.isfinite(threshold)
+            and math.isfinite(noise)
         ):
             return False, -1
         if background <= 0:
@@ -4967,11 +4988,18 @@ class TestThermalEdgeKernel(unittest.TestCase):
         contrast = min(1.0, max(0.0, (signal - background) / background))
         if not math.isfinite(contrast):
             return False, -1
-        # The threshold is clamped to the 0..1 contrast scale, NOT floored at
-        # the 1/16 display band.  The band floor was the DISPLAY quantity the
-        # sensor decision must not use.
-        threshold = min(1.0, max(0.0, threshold))
+        # The threshold plus the range-derived sensor noise floor is clamped
+        # to the 0..1 contrast scale, NOT floored at the 1/16 display band.
+        # The band floor was the DISPLAY quantity the sensor decision must not
+        # use.  A higher noise floor hides more, never less.
+        threshold = min(1.0, max(0.0, threshold + noise))
         return contrast >= threshold, contrast
+
+    def test_the_noise_floor_raises_the_threshold(self):
+        # A weak contrast (1%) resolves with no noise and fails once the
+        # noise floor rises above it.
+        self.assertEqual(self._edge(0.0101, 0.01, 0.004349, 0.0)[0], True)
+        self.assertEqual(self._edge(0.0101, 0.01, 0.004349, 0.02)[0], False)
 
     def test_source_guards_present(self):
         code = self.code
@@ -4981,10 +5009,10 @@ class TestThermalEdgeKernel(unittest.TestCase):
         self.assertIn("if (_background <= 0) exitWith { [false, -1] };", code)
         # The non-finite signal guard.
         self.assertIn("if !(finite _signal) exitWith { [false, -1] };", code)
-        # The threshold is clamped to the 0..1 scale, NOT floored at the
-        # 1/16 display band.  The band floor was the conflated quantity this
-        # sensor decision must not use.
-        self.assertIn("_threshold max 0 min 1", code)
+        # The threshold plus the range-derived noise floor is clamped to the
+        # 0..1 scale, NOT floored at the 1/16 display band.  The band floor
+        # was the conflated quantity this sensor decision must not use.
+        self.assertIn("(_threshold + _noise) max 0 min 1", code)
         self.assertNotIn("_bandStep", code)
         # The refusal is not a contrast in 0..1.
         self.assertIn("[false, -1]", code)
