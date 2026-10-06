@@ -112,6 +112,42 @@ decision is in ADR-014.
 | `perceptionParams` | Compose the tone and colour stages into the display arrays |
 | `perceptionToneResponse` | Derive display brightness, contrast and offset from the adapted luminance |
 
+### Weather grain and scene-aware shadow distance
+
+Item 5 and item 6 of the aee-workshop-copy plan add a rain-scaled film grain
+and a scene-aware shadow distance on the optics view distance. The design
+decision is in ADR-016.
+
+| Function | Purpose |
+| --- | --- |
+| `applyWeatherGrain` | Drive the rain-scaled film grain each tick |
+| `initWeatherGrain` | Create the weather-grain ppEffect |
+| `weatherGrainParams` | Derive the grain parameters from overcast, rain and the world profile |
+| `shadowClassifyScene` | Classify the scene: open, urban or forest |
+| `shadowFpsGovernor` | Hold the shadow distance down when the frame rate falls |
+| `shadowSamplePattern` | Take the screen-space pattern sample |
+| `shadowSmoothDistance` | Smooth the distance response over time |
+| `shadowStabilizeDepth` | Stabilise the depth reading |
+| `shadowTargetDistance` | Compute the target shadow distance from the scene and margins |
+
+## nightvision
+
+Night-vision tube model, laser target marker and grain. The design decisions
+are in ADR-009 and ADR-016.
+
+| Function | Purpose |
+| --- | --- |
+| `applyNightGrain` | Apply the night-vision grain |
+| `applyNVGTubeModel` | Apply the tube model to the NVG display |
+| `ltmCreate` | Create the laser target marker |
+| `ltmDaylightAlpha` | Fade the laser marker by day, alpha `1.2 - sunOrMoon` |
+| `ltmDraw` | Draw the laser target marker |
+| `nvgAgcBreathing` | Automatic-gain-control breathing |
+| `nvgBlemishField` | Blemishes on the tube |
+| `nvgBlindingEnvelope` | Bright-source blinding envelope |
+| `nvgScintillation` | Scintillation noise |
+| `nvgTierIndex` | Map the device tier to the tube parameters |
+
 ## mobility
 
 Vehicle and ground mobility.
@@ -158,6 +194,7 @@ Environmental and seasonal effects.
 | `getBiome` | Get the current biome |
 | `getClimateNormals` | Get the climate normals |
 | `getStarCatalog` | Build the visible-star catalogue |
+| `lightPollutionPenalty` | Compute the skyglow magnitude penalty from the nearby house count |
 | `meteorRate` | Calculate the expected meteor rate |
 | `meteorShowers` | Provide the IMO meteor shower data |
 | `meteorState` | Combine the meteor kernels into the current shower state |
@@ -166,14 +203,28 @@ Environmental and seasonal effects.
 | `renderMeteors` | Register the client meteor renderer |
 | `showerIsActive` | Test whether a meteor shower is active |
 | `siderealTime` | Calculate the local sidereal time |
+| `starBrightnessCoefficient` | Compute the star render scale from moon phase, ambient and light pollution |
 | `starCatalogData` | Provide the generated BSC5 star catalogue |
 | `starDirection` | Convert star altitude and azimuth to a direction vector |
 | `starLightsSync` | Reconcile the star light emitters |
 | `starMagnitude` | Convert a star magnitude to render size and brightness |
+| `starWeatherFade` | Fade the star render scale by overcast and fog |
 | `updateMeteors` | Update the drawn meteors each tick |
 | `updateSeasonalFoliage` | Update seasonal foliage |
 | `updateSoilMoisture` | Update soil moisture and evaporation |
 | `updateSoundPropagation` | Update sound propagation |
+
+### World lighting matcher
+
+The matcher classifies each world from published facts and drives the star
+render scale, the night factor, the grain scale and the haze scale. It consults
+no map name. The design decision is in ADR-016.
+
+| Function | Purpose |
+| --- | --- |
+| `applyWorldLighting` | Run the matcher once per environment tick and publish the profile |
+| `worldLightingClass` | Derive the climate class from biome, latitude and terrain signals |
+| `worldLightingProfile` | Derive the four bounded scales from the class and the weather |
 
 ## maritime
 
@@ -276,7 +327,10 @@ Visual and audio effects.
 | `applyWindNoise` | Apply wind noise |
 | `calculateLightningStrikeEffects` | Roll lightning fire ignition and publish the strike position |
 | `checkParticleBudget` | Check the particle source budget |
+| `heatHazeAlpha` | Scale the exhaust heat-haze alpha by the ambient temperature |
+| `heatHazeSize` | Scale the exhaust heat-haze size by the ambient temperature |
 | `registerParticleSource` | Register a particle source with the budget tracker |
+| `weatherParticleAlpha` | Scale the particle alpha by overcast plus humidity |
 | `triggerLightning` | Trigger lightning |
 | `triggerSevereWeatherFX` | Trigger severe weather effects |
 
