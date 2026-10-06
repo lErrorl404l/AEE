@@ -288,6 +288,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_biome` | environmental | Koppen biome code (map climate class) |
 | `aee_environmental_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
 | `aee_environmental_localBiomeName` | environmental | Display name for `aee_environmental_localBiome` |
+| `aee_environmental_terrainSignals` | environmental | Terrain facts the world lighting matcher reads: water fraction and mean elevation |
 | `aee_environmental_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
 | `aee_environmental_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
 
@@ -471,6 +472,15 @@ temperature. The kernels are pure and the coupling is gated.
 | `aee_fx_heatHazeEnabled` | AEE FX > Particles | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
 | `aee_fx_heatHazeMaxAlpha` | AEE FX > Particles | Upper bound on the ambient-temperature heat-haze alpha |
 
+### Night-vision display
+
+The **AEE HUD > Displays** category holds the on-screen night-vision readouts.
+
+| Variable | Category | Purpose |
+| --- | --- | --- |
+| `aee_nightvision_ltmEnabled` | AEE HUD > Displays | Draw the NVG laser target marker |
+| `aee_nightvision_ltmDaylightFade` | AEE HUD > Displays | Fade the laser marker by day, alpha `1.2 - sunOrMoon` |
+
 ### Human-vision model (perception)
 
 The human-vision model registers its operator switches under **AEE Optics >
@@ -521,10 +531,11 @@ if it brightens and darkens as the hot source fills the view, the engine is
 auto-exposing.  `aee_thermal_agcPinned = false` restores the automatic
 window.
 
-277 settings register in the CBA settings interface. Three categories carry
+305 settings register in the CBA settings interface. Three categories carry
 the diagnostics and the experimental work: **AEE Experimental > Fusion**
-(the four thermal-fusion knobs), **AEE HUD > Displays** (the four on-screen
-displays, including the NVG laser target marker), and **AEE Debug >
+(the four thermal-fusion knobs), **AEE HUD > Displays** (the five on-screen
+displays, including the NVG laser target marker and the laser daylight fade),
+and **AEE Debug >
 component** (every diagnostic switch, grouped by the owning component,
 including the new AI and Wildlife subcategories). The
 remaining categories are one per module: AEE (core), AEE Optics, AEE
