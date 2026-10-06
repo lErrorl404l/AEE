@@ -27,3 +27,8 @@ PREP(wildlifeTickPFH);
 PREP(initWildlife);
 PREP(teardownWildlife);
 PREP(monitorWildlife);
+PREP(acousticLevel);
+PREP(acousticSourceDb);
+PREP(acousticPublish);
+PREP(acousticSample);
+PREP(acousticOccluders);
