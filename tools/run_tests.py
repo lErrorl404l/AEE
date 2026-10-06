@@ -12,10 +12,19 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Every external command is bounded so a hung suite fails fast instead of
+# blocking the sweep forever.  Override with AEE_TEST_TIMEOUT when a suite
+# legitimately needs longer than the default.
+CMD_TIMEOUT_S = float(os.environ.get("AEE_TEST_TIMEOUT", "1800"))
+
 
 def run(cmd, cwd=ROOT):
-    print(f"$ {cmd}")
-    result = subprocess.run(cmd, shell=True, cwd=cwd)
+    print(f"$ {cmd}", flush=True)
+    try:
+        result = subprocess.run(cmd, shell=True, cwd=cwd, timeout=CMD_TIMEOUT_S)
+    except subprocess.TimeoutExpired:
+        print(f"TIMEOUT after {CMD_TIMEOUT_S:.0f}s: {cmd}")
+        return 124
     return result.returncode
 
 
@@ -160,6 +169,8 @@ def main():
         "tools/tests/test_perception_adaptation.py",
         "tools/tests/test_perception_deviation.py",
         "tools/tests/test_perception_contracts.py",
+        # The runner itself bounds every command (test_run_tests_timeout.py).
+        "tools/tests/test_run_tests_timeout.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
