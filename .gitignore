@@ -41,6 +41,8 @@ __pycache__/
 # Fallback server install dir
 /tests/docker/server/
 /tests/docker/run.*.log
+# Per-run directories written by --isolate/--parallel (logs, server.cfg, overlays)
+/tests/docker/runs/
 
 # Quarto build output
 /docs/wiki/_site/
