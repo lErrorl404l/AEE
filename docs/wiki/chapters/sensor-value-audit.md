@@ -177,6 +177,94 @@ replaced the engine view-distance proxy.
 |---|---|---|---|
 | WATER_EPS 0.96 | liquid-water LWIR emissivity | Incropera; Hale and Querry 1973 DOI 10.1364/AO.12.000555; Downing and Williams 1975 DOI 10.1029/JC080i012p01656 | ✅ sourced |
 | linear film blend | wetness interpolation | convergence only: Lavielle et al. 2024 DOI 10.1002/adfm.202403316 | ⚠️ UNSOURCED |
+
+## Detector bands (fnc_resolveThermalBand.sqf)
+
+The band is a per-device corpus field, not a derived flag.  Both edge pairs
+are declared, not fitted.  An unknown token returns the LWIR pair.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| LWIR band 8e-6 / 14e-6 m | band edges | detector class in sensor-device-library.md | ✅ verified |
+| MWIR band 3e-6 / 5e-6 m | band edges | cooled InSb and cooled MWIR MCT detector classes in sensor-device-library.md | ✅ verified |
+
+## Planck band integral (fnc_planckBandRadiance.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| C 2.779416505e-9 W/m2/sr/K4 | radiance scale | CODATA 2022 (2 k^4 / h^3 c^2) | ✅ verified |
+| c2 1.438776877e-2 m K | band exponent | CODATA 2022 (h c / k) | ✅ verified |
+| domain guard 100..10000 K | numerical bound | admits the solar temperature 5772 K | ✅ derived |
+
+## Band sky temperature (fnc_calculateSkyRadiance.sqf)
+
+The fixed 35 K offset is retired.  The band emissivity is the exact Planck
+radiance ratio at the depressed temperature, not the Stefan-Boltzmann
+quartic.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| Magnus 6.112 / 17.67 / 243.5 | water-vapour partial pressure | Bolton 1980 | ✅ verified |
+| full-spectrum eps 0.70 + 5.95e-5 e exp(1500/T_K) | clear-sky emissivity | Idso 1981, Water Resources Research 17(2):295-304, DOI 10.1029/WR017i002p00295 | ✅ verified |
+| band depression 45 K at eHPa <= 4 | measured band envelope | Tebo 1965, Effective Clear Sky Temperatures in the 8- to 14-Micron Band | ✅ derived |
+| band depression 21 K at eHPa >= 15 | measured band envelope | Tebo 1965 | ✅ derived |
+| log(eHPa) interpolation between 4 and 15 hPa | intermediate depression | none | ⚠️ UNSOURCED |
+| band emissivity B_band(T_sky) / B_band(T_air) | exact Planck radiance ratio | derived-from-measurement (Tebo 1965 envelope, Planck function) | ✅ derived |
+| overcast blend (1 - overcast) | cloud fills the window | Tebo 1965 envelope limit, no cloud model | ⚠️ UNSOURCED |
+| bisection 40 iterations, T in 1..T_air | band sky inversion | convergence bound, not physics | ✅ derived |
+
+## Reflected-solar band radiance (fnc_calculateReflectedSolarBand.sqf)
+
+MWIR only.  Zero for LWIR and zero when the sun is at or below the horizon.
+The whole term is derived from the Planck function and the solar constant.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| T_sun 5772 K | solar effective temperature | IAU 2015 Resolution B3 nominal solar effective temperature | ✅ verified |
+| R_sun 6.957e8 m, AU 1.495978707e11 m | top-of-atmosphere geometry | IAU 2015 Resolution B3 nominal values | ✅ verified |
+| E_sunBand ~21.7 W/m2 (MWIR) | band irradiance | derived: pi B_band(T_sun) (R_sun / AU)^2 | ✅ derived |
+| W_solar = (1-eps) E_sunBand sin(elev) / pi | reflected radiance | derived (Lambertian surface, Kirchhoff reflectance) | ✅ derived |
+
+## Band atmospheric transmission (fnc_calculateAtmosphericTransmission.sqf)
+
+The LWIR path is Minkina and Klecha 2016 and is unchanged.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| MWIR clear-air extinction 0 (transmission 1) | clear-air ceiling | no machine-readable 2-5 um band transmittance curve is held | ⚠️ UNSOURCED |
+
+## Active-IR illuminator (ir/fnc_startActiveIR.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| #lightreflector with setLightIR true | IR-only illuminator | none (workshop idea re-implemented) | ⚠️ UNSOURCED |
+| ambient 0.02, colour 0.15, brightness 0.25 | light tuning | none | ⚠️ UNSOURCED |
+| attach offset [0, 0, 0.1] m | light placement | none | ⚠️ UNSOURCED |
+
+## Post-process priority ladder (fnc_applyThermalVision.sqf)
+
+Each priority is one engine band.  The union of every AEE handle is globally
+unique, enforced by test_thermal_optics.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| WetDistortion 305 | priority | workshop 3753145363 proven band | ✅ derived |
+| ChromAberration 205 | priority | A3TI and MKK proven band | ✅ derived |
+| DynamicBlur 505 | priority | proven defocus band | ✅ derived |
+| RadialBlur 1000 | priority | MKK proven value | ✅ derived |
+| FilmGrain 2000 | priority | A3TI variant; fusion holds 2005 | ✅ derived |
+| ColorCorrections 2500 | priority | proven grade band; fusion holds 2505 | ✅ derived |
+| ColorInversion 2510 | priority | A3TI 2501 and MKK 2510 proven BHOT band | ✅ derived |
+| Resolution 3000 | priority | A3TI proven value | ✅ derived |
+
+## Per-optic thermal config (generated/ThermalOptics.hpp)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| thermalMode[] {0,1} | WHOT and BHOT palette pair | engine-minimum pair, engine-thermal-mechanisms.md | ✅ verified |
+| thermalNoise[] {netd_c} | detector noise | corpus field netd_c | ✅ derived |
+| thermalResolution[] {resX, resY} | detector pixel array | corpus fields resolution_x and resolution_y | ✅ derived |
+
 ## Illuminance layer (fnc_calculateIlluminance.sqf)
 
 The shared light-data source consumed by NVG, thermal and glare.  Two

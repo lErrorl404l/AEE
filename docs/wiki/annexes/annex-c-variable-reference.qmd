@@ -459,6 +459,15 @@ description.
 | `aee_optics_visionMesopicDesaturation` | Experimental > Vision | Maximum mesopic desaturation, 0 to 0.5 |
 | `aee_optics_visionPurkinjeStrength` | Experimental > Vision | Purkinje tint strength, 0 to 1 |
 
+### Thermal model (band and sensor)
+
+The thermal-realism work adds one operator setting and one runtime variable.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_thermal_activeIR` | thermal | Registered setting under **AEE Thermal > Sensor**: enable the active-IR illuminator (client-local, default off) |
+| `aee_thermal_activeIRLight` | thermal | The active-IR light object while the illuminator runs; `objNull` when it is off |
+
 ### Exposure pin test (thermal)
 
 `aee_thermal_agcPinned` is a debug-console switch, not a registered
