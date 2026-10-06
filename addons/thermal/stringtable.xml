@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Thermal">
+        <Key ID="STR_AEE_Thermal_activeIRToggle">
+            <Original>Toggle Active IR</Original>
+            <English>Toggle Active IR</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_activeIR_Description">
+            <Original>Run a local infrared illuminator at the operator, so a night-vision or infrared optic sees it and the unaided eye does not. A workshop idea re-implemented as AEE code; the mechanism has no published source. Local to the operator.</Original>
+            <English>Run a local infrared illuminator at the operator, so a night-vision or infrared optic sees it and the unaided eye does not. A workshop idea re-implemented as AEE code; the mechanism has no published source. Local to the operator.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_activeIR_Name">
+            <Original>Active IR Illuminator</Original>
+            <English>Active IR Illuminator</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_fusionAlwaysOn_Description">
             <Original>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</Original>
             <English>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</English>

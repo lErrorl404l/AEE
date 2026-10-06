@@ -31,3 +31,19 @@ if (hasInterface && {isNil QGVAR(outlineEH)}) then {
     private _logMsg = "fusion display: Draw3D worker and HUD tape registered";
     AEE_LOG_INFO(_logMsg);
 };
+
+// ── Active IR illuminator (issue #196) ────────────────────────────────────
+// The keybind flips the CBA setting; the per-second driver owns the light.
+// UNSOURCED mechanism: a workshop idea re-implemented as AEE code.
+["AEE", "ActiveIRToggle", [LLSTRING(activeIRToggle), "Toggle the active-IR illuminator"], {
+    private _on = missionNamespace getVariable [QGVAR(activeIR), false];
+    [QGVAR(activeIR), !_on, 0, "client", true] call CBA_settings_fnc_set;
+}, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
+
+if (hasInterface) then {
+    // Death and respawn destroy the light, so it never survives a unit change.
+    // The per-second driver detects both as well, so a missed event cannot leak.
+    player addEventHandler ["Killed", { [] call FUNC(stopActiveIR); }];
+    player addEventHandler ["Respawn", { [] call FUNC(stopActiveIR); }];
+    [FUNC(applyActiveIR), 1] call CBA_fnc_addPerFrameHandler;
+};
