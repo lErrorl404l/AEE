@@ -22,6 +22,20 @@
 #define WILDLIFE_PITCH_JITTER 0.04
 #define WILDLIFE_PITCH_RATE_COUPLING 0.25
 
+// Shot-audio policy (task T26).  The speed of sound against temperature is
+// SOURCED (20.05*sqrt(T_K), the same convention as the ballistics drag and
+// Mach-cone kernels).  The report reference, the pitch slope, and the crack,
+// snap and ricochet levels and geometry bounds are UNSOURCED.
+#define WILDLIFE_SHOT_REPORT_DB 160
+#define WILDLIFE_SHOT_REPORT_REF_MV 900
+#define WILDLIFE_SHOT_PITCH_PER_MACH 0.15
+#define WILDLIFE_SHOT_CRACK_DB 150
+#define WILDLIFE_SHOT_SNAP_RADIUS_M 5
+#define WILDLIFE_SHOT_SNAP_DB 140
+#define WILDLIFE_SHOT_RICOCHET_DB 130
+#define WILDLIFE_SHOT_RICOCHET_ANGLE_DEG 30
+#define WILDLIFE_SHOT_RICOCHET_REF_J 500
+
 // The disturbance field policy is owned by aee_ai.  The wildlife tick is the
 // only cross-addon consumer, so the cap and the horizon are mirrored here
 // rather than reaching into the aee_ai header.  Keep them in step with

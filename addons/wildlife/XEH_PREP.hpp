@@ -48,3 +48,4 @@ PREP(emitterClass);
 PREP(emitterSync);
 PREP(emitterRelease);
 PREP(callPitch);
+PREP(shotAudio);

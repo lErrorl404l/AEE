@@ -37,6 +37,7 @@ MONITOR = FUNCS / "fnc_monitorWildlife.sqf"
 EMITTER_PLAN = FUNCS / "fnc_emitterPlan.sqf"
 EMITTER_CLASS = FUNCS / "fnc_emitterClass.sqf"
 CALL_PITCH = FUNCS / "fnc_callPitch.sqf"
+SHOT_AUDIO = FUNCS / "fnc_shotAudio.sqf"
 
 # A tiny manifest for the pure kernel tests.  The real manifest has the same
 # row shape.
@@ -1476,6 +1477,102 @@ class TestPitchSourceContracts(unittest.TestCase):
             self.assertIn(name, constants, name)
         preps = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(callPitch)", preps)
+
+
+SHOT_GLOBALS = {
+    "WILDLIFE_SHOT_REPORT_DB": 160,
+    "WILDLIFE_SHOT_REPORT_REF_MV": 900,
+    "WILDLIFE_SHOT_PITCH_PER_MACH": 0.15,
+    "WILDLIFE_SHOT_CRACK_DB": 150,
+    "WILDLIFE_SHOT_SNAP_RADIUS_M": 5,
+    "WILDLIFE_SHOT_SNAP_DB": 140,
+    "WILDLIFE_SHOT_RICOCHET_DB": 130,
+    "WILDLIFE_SHOT_RICOCHET_ANGLE_DEG": 30,
+    "WILDLIFE_SHOT_RICOCHET_REF_J": 500,
+}
+
+
+def speed_of_sound(temperature_c):
+    return 20.05 * math.sqrt(temperature_c + 273.15)
+
+
+def shot_audio(
+    caliber=7.62,
+    muzzle_v=900,
+    current_v=None,
+    temp=15,
+    distance=15,
+    closest=-1,
+    angle=-1,
+    energy=0,
+):
+    if current_v is None:
+        current_v = muzzle_v
+    return run_sqf(
+        SHOT_AUDIO,
+        [caliber, muzzle_v, current_v, temp, distance, closest, angle, energy],
+        globals_=SHOT_GLOBALS,
+    )
+
+
+class TestShotAudio(unittest.TestCase):
+    """The ballistics-coupled shot-audio kernel (task 26) runs from the real SQF."""
+
+    def test_a_supersonic_round_has_a_crack(self):
+        self.assertTrue(shot_audio(current_v=speed_of_sound(15) + 50)[2])
+
+    def test_a_subsonic_round_has_no_crack(self):
+        self.assertFalse(shot_audio(current_v=speed_of_sound(15) - 50)[2])
+
+    def test_a_hot_day_raises_the_crack_threshold(self):
+        # 345 m/s is supersonic at 15 C (c=340) and subsonic at 40 C (c=356).
+        self.assertTrue(shot_audio(current_v=345, temp=15)[2])
+        self.assertFalse(shot_audio(current_v=345, temp=40)[2])
+
+    def test_the_report_pitch_rises_with_velocity(self):
+        slow = shot_audio(muzzle_v=300)[1]
+        fast = shot_audio(muzzle_v=1100)[1]
+        self.assertGreater(fast, slow)
+
+    def test_a_near_pass_has_a_snap(self):
+        self.assertGreater(shot_audio(closest=1)[4], 0)
+        self.assertEqual(shot_audio(closest=50)[4], 0)
+
+    def test_a_grazing_impact_ricochets(self):
+        self.assertGreater(shot_audio(angle=5, energy=500)[5], 0)
+        self.assertEqual(shot_audio(angle=80, energy=500)[5], 0)
+
+    def test_same_inputs_give_the_same_result(self):
+        self.assertEqual(shot_audio(), shot_audio())
+
+
+class TestShotAudioSourceContracts(unittest.TestCase):
+    """The ballistics reuse and the constants (task 26)."""
+
+    def test_the_shot_kernel_is_prepped(self):
+        preps = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(shotAudio)", preps)
+
+    def test_the_shot_constants_are_declared(self):
+        constants = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
+        for name in (
+            "WILDLIFE_SHOT_REPORT_DB",
+            "WILDLIFE_SHOT_CRACK_DB",
+            "WILDLIFE_SHOT_SNAP_RADIUS_M",
+            "WILDLIFE_SHOT_RICOCHET_ANGLE_DEG",
+        ):
+            self.assertIn(name, constants, name)
+
+    def test_the_fired_handler_reuses_the_ballistics_kernel(self):
+        text = (FUNCS / "fnc_initWildlife.sqf").read_text(encoding="utf-8")
+        self.assertIn("EFUNC(ballistics,getLoadData)", text)
+        self.assertIn("EFUNC(ballistics,parseCaliber)", text)
+        self.assertIn("FUNC(shotAudio)", text)
+
+    def test_the_kernel_names_the_ballistics_reuse(self):
+        text = (FUNCS / "fnc_shotAudio.sqf").read_text(encoding="utf-8")
+        self.assertIn("fnc_calculateBallisticDrag.sqf", text)
+        self.assertIn("fnc_parseCaliber.sqf", text)
 
 
 if __name__ == "__main__":
