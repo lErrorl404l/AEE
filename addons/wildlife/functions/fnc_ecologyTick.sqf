@@ -71,8 +71,10 @@ private _propIndex = missionNamespace getVariable [QEGVAR(environmental,currentS
 if !(_propIndex isEqualType 0) then { _propIndex = 1; };
 private _store = missionNamespace getVariable [QGVAR(environment), []];
 if !(_store isEqualType []) then { _store = []; };
-private _outbox = missionNamespace getVariable [QGVAR(callOutbox), []];
-if !(_outbox isEqualType []) then { _outbox = []; };
+private _comm = missionNamespace getVariable [QGVAR(communicationEnabled), false];
+if !(_comm isEqualType true) then { _comm = false; };
+private _bus = missionNamespace getVariable [QGVAR(callBus), []];
+if !(_bus isEqualType []) then { _bus = []; };
 
 private _solved = 0;
 private _remainder = [];
@@ -142,17 +144,14 @@ for "_i" from 0 to ((count _pending) - 1) do {
         private _species = _anchor getVariable [QGVAR(speciesRules), [1, 0.4, 0.6, 1]];
         if !(_species isEqualType []) then { _species = [1, 0.4, 0.6, 1]; };
 
-        // Sample the heard-call relay at the animal's cell.  The naive relay
-        // is replaced by the bounded, decayed bus in the next change.
+        // Sample the heard-call bus at the animal's cell.  The receiver is a
+        // conspecific at no distance: the bus is keyed by cell, so a call
+        // from the same cell is heard at full strength.
         private _heard = [];
-        for "_o" from 0 to ((count _outbox) - 1) do {
-            private _relay = _outbox select _o;
-            if ((_relay isEqualType []) && ((count _relay) >= 4)) then {
-                private _relayPos = _relay select 0;
-                private _relayKey = [_relayPos] call EFUNC(ai,disturbanceKey);
-                if (((_relayKey select 0) == (_key select 0)) && ((_relayKey select 1) == (_key select 1))) then {
-                    _heard = [_relay select 1, _relay select 2, (_relayPos distance _pos), 0];
-                };
+        if (_comm) then {
+            private _sampled = [_bus, _key, _now] call FUNC(callSample);
+            if ((count _sampled) >= 2) then {
+                _heard = [_sampled select 0, _sampled select 1, 0, 0];
             };
         };
         _anchor setVariable [QGVAR(heardCall), _heard];
@@ -178,19 +177,5 @@ for "_i" from 0 to ((count _pending) - 1) do {
 // The unsolved remainder stays at the FRONT for the next call: nothing is
 // dropped and nothing starves.
 missionNamespace setVariable [QGVAR(ecologyPending), _remainder];
-
-// Drop stale relay entries and cap the store, so the naive relay stays
-// bounded until the bounded, decayed bus lands.
-private _fresh = [];
-for "_o" from 0 to ((count _outbox) - 1) do {
-    private _relay = _outbox select _o;
-    if ((_relay isEqualType []) && ((count _relay) >= 4)) then {
-        if ((_now - (_relay select 3)) <= WILDLIFE_CALL_HORIZON) then { _fresh pushBack _relay; };
-    };
-};
-if ((count _fresh) > WILDLIFE_CALL_BUDGET) then {
-    _fresh = _fresh select [((count _fresh) - WILDLIFE_CALL_BUDGET), WILDLIFE_CALL_BUDGET];
-};
-missionNamespace setVariable [QGVAR(callOutbox), _fresh];
 
 _solved

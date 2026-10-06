@@ -176,48 +176,70 @@ private _callback = {
     };
 
     // Calls.  The think plan is [action, callPlan, movement]; the call plan is
-    // a call type or -1.  Emit through the call-emit kernel and react to a
-    // heard call through the call-receive kernel.  The ecology tick sets the
-    // perception, the state and the heard call on the anchor.
+    // a call type or -1.  Emit through the call-emit kernel and publish to
+    // the heard-call bus, and react to a heard call through the call-receive
+    // kernel.  The ecology tick sets the perception, the state and the heard
+    // call on the anchor.
     private _callPlan = -1;
     if ((count _plan) >= 2) then { _callPlan = _plan select 1; };
 
-    if (_callPlan isEqualType "") then {
-        private _trigger = "";
-        if (_callPlan == "alarm") then { _trigger = "predator"; };
-        if (_callPlan == "contact") then { _trigger = "cohesion"; };
-        if (_trigger != "") then {
-            private _perception = _agent getVariable [QGVAR(perception), []];
-            private _ecologyState = _agent getVariable [QGVAR(ecologyState), []];
-            private _speciesEmit = _agent getVariable [QGVAR(speciesEmit), [0.5, true]];
-            if !(_speciesEmit isEqualType []) then { _speciesEmit = [0.5, true]; };
-            private _call = [_speciesEmit, _perception, _ecologyState, _trigger] call FUNC(callEmit);
-            if ((count _call) >= 2) then {
-                // The relay is the naive heard-call store; the bounded,
-                // decayed bus in the next change replaces it.
-                private _outbox = missionNamespace getVariable [QGVAR(callOutbox), []];
-                if !(_outbox isEqualType []) then { _outbox = []; };
-                _outbox pushBack [getPos _agent, _call select 0, _call select 1, CBA_missionTime];
-                missionNamespace setVariable [QGVAR(callOutbox), _outbox];
+    private _comm = missionNamespace getVariable [QGVAR(communicationEnabled), false];
+    if !(_comm isEqualType true) then { _comm = false; };
+
+    if (_comm) then {
+        if (_callPlan isEqualType "") then {
+            private _trigger = "";
+            if (_callPlan == "alarm") then { _trigger = "predator"; };
+            if (_callPlan == "contact") then { _trigger = "cohesion"; };
+            if (_trigger != "") then {
+                private _perception = _agent getVariable [QGVAR(perception), []];
+                private _ecologyState = _agent getVariable [QGVAR(ecologyState), []];
+                private _speciesEmit = _agent getVariable [QGVAR(speciesEmit), [0.5, true]];
+                if !(_speciesEmit isEqualType []) then { _speciesEmit = [0.5, true]; };
+                private _call = [_speciesEmit, _perception, _ecologyState, _trigger] call FUNC(callEmit);
+                if ((count _call) >= 2) then {
+                    private _bus = missionNamespace getVariable [QGVAR(callBus), []];
+                    if !(_bus isEqualType []) then { _bus = []; };
+                    private _key = [getPos _agent] call EFUNC(ai,disturbanceKey);
+                    private _speciesGroup = _agent getVariable [QGVAR(speciesGroup), ""];
+                    if !(_speciesGroup isEqualType "") then { _speciesGroup = ""; };
+                    _bus = [
+                        _bus, _key, _call select 0, _call select 1, _speciesGroup, CBA_missionTime
+                    ] call FUNC(callPublish);
+                    private _budget = missionNamespace getVariable [QGVAR(callBudget), WILDLIFE_CALL_BUDGET];
+                    if !(_budget isEqualType 0) then { _budget = WILDLIFE_CALL_BUDGET; };
+                    if ((count _bus) > _budget) then {
+                        _bus = _bus select [((count _bus) - _budget), _budget];
+                    };
+                    missionNamespace setVariable [QGVAR(callBus), _bus];
+                };
             };
         };
-    };
 
-    // React to a heard call.  The ecology tick stores the decoded
-    // [callType, urgency, distance, relation] on the anchor.
-    private _heard = _agent getVariable [QGVAR(heardCall), []];
-    if ((count _heard) >= 4) then {
-        private _reaction = [
-            _heard select 0, _heard select 1, _heard select 2, _heard select 3,
-            [WILDLIFE_CALL_RANGE, 0.5]
-        ] call FUNC(callReceive);
-        private _response = _reaction select 0;
-        if (_response == 2) then { _action = 3; };
-        if (_response == 3) then {
-            private _herd = _agent getVariable [QGVAR(herdAnchor), _position];
-            if !(_herd isEqualType []) then { _herd = _position; };
-            _agent moveTo [_herd select 0, _herd select 1, 0];
-            _recovery = 4;
+        // React to a heard call.  The ecology tick stores the decoded
+        // [callType, urgency, distance, relation] on the anchor.
+        private _heard = _agent getVariable [QGVAR(heardCall), []];
+        if ((count _heard) >= 4) then {
+            private _range = missionNamespace getVariable [QGVAR(callRange), WILDLIFE_CALL_RANGE];
+            if !(_range isEqualType 0) then { _range = WILDLIFE_CALL_RANGE; };
+            private _speciesHear = _agent getVariable [QGVAR(speciesEmit), [0.5, true]];
+            private _gregariousness = 0.5;
+            if ((_speciesHear isEqualType []) && ((count _speciesHear) >= 1)) then {
+                private _group = _speciesHear select 0;
+                if (_group isEqualType 0) then { _gregariousness = (_group max 0) min 1; };
+            };
+            private _reaction = [
+                _heard select 0, _heard select 1, _heard select 2, _heard select 3,
+                [_range, _gregariousness]
+            ] call FUNC(callReceive);
+            private _response = _reaction select 0;
+            if (_response == 2) then { _action = 3; };
+            if (_response == 3) then {
+                private _herd = _agent getVariable [QGVAR(herdAnchor), _position];
+                if !(_herd isEqualType []) then { _herd = _position; };
+                _agent moveTo [_herd select 0, _herd select 1, 0];
+                _recovery = 4;
+            };
         };
     };
 
@@ -229,6 +251,7 @@ private _callback = {
 _agent setVariable [QGVAR(speciesRules), [1, 0.4, 0.6, 1]];
 _agent setVariable [QGVAR(habitatWeights), [0, 0, 0, 0]];
 _agent setVariable [QGVAR(speciesEmit), [0.5, true]];
+_agent setVariable [QGVAR(speciesGroup), _species];
 
 [_id, _agent, [40], [0.6, 0.3, 0.5, 0.2], _callback, 2] call EFUNC(ai,agentRegister);
 
