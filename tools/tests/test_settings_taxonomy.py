@@ -10,6 +10,7 @@ Run: python3 -m unittest tools.tests.test_settings_taxonomy -v
 
 from __future__ import annotations
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -191,6 +192,142 @@ class TestDebugTaxonomy(unittest.TestCase):
         for setting in gen.collect_settings():
             if setting.category == "AEE Debug":
                 self.assertIn(setting.name, known)
+
+
+# The 7th SLIDER argument is CBA's _trailingDecimals, not a step.  A fractional
+# value is floored by toFixed, CBA_fnc_formatNumber's "." search then fails, and
+# the leading-zero padding loop prints the literal string "000" or "001" on the
+# slider.  These two maps lock the corrected values so the defect cannot return.
+EXPECTED_SLIDER_DECIMALS = {
+    "aee_ballistics_ammoHeatPerShotJ": 4,  # was 6
+    "aee_fx_exhaustShimmerAlpha": 2,  # was 0
+    "aee_mobility_bedSlope": 4,  # was 5
+    "aee_nightvision_fogGrainMax": 2,  # was 0
+    "aee_nightvision_nightGrainMax": 1,  # was 0
+    "aee_nightvision_nvgAgcBreathing": 2,  # was 0.05
+    "aee_nightvision_nvgBlemishStrength": 2,  # was 0.05
+    "aee_nightvision_nvgBlindingStrength": 2,  # was 0.05
+    "aee_nightvision_nvgEdgeDistortion": 2,  # was 0.05
+    "aee_nightvision_nvgImperfectionStrength": 2,  # was 0.05
+    "aee_nightvision_nvgReticulationStrength": 2,  # was 0.05
+    "aee_nightvision_nvgScintillationStrength": 2,  # was 0.05
+    "aee_nightvision_nvgVeilingGlare": 4,  # was 0.001
+    "aee_nightvision_rainGrainMax": 1,  # was 0
+    "aee_optics_baseGradeBlackPoint": 3,  # was 0.005
+    "aee_optics_baseGradeBrightness": 2,  # was 0.05
+    "aee_optics_baseGradeContrast": 2,  # was 0.05
+    "aee_optics_baseGradeGrain": 3,  # was 0.001
+    "aee_optics_baseGradeSaturation": 2,  # was 0.05
+    "aee_optics_chromaCap": 2,  # was 0
+    "aee_optics_dewAccumRate": 2,  # was 0
+    "aee_optics_dewBlurMax": 1,  # was 0
+    "aee_optics_dewDecayRate": 2,  # was 0
+    "aee_optics_eyeAmbientLuxScale": 3,  # was 0
+    "aee_optics_eyeFastBlend": 2,  # was 0
+    "aee_optics_eyeLocalLuxScale": 3,  # was 0
+    "aee_optics_eyeMesopicHigh": 1,  # was 0
+    "aee_optics_eyeMesopicLow": 3,  # was 0
+    "aee_optics_eyePupilTauConstrict": 2,  # was 0
+    "aee_optics_eyePupilTauDilate": 3,  # was 0
+    "aee_optics_eyeReflectance": 2,  # was 0
+    "aee_optics_eyeTauLight": 1,  # was 0
+    "aee_optics_glareBlurMax": 1,  # was 0
+    "aee_optics_heatShimmerIntensity": 2,  # was 0
+    "aee_optics_mirageDensity": 2,  # was 0
+    "aee_optics_rainAccumRate": 2,  # was 0
+    "aee_optics_rainBlurScale": 1,  # was 0
+    "aee_optics_rainDecayRate": 2,  # was 0
+    "aee_optics_seeingFXIntensity": 2,  # was 0
+    "aee_optics_smokePersistenceScale": 1,  # was 0
+    "aee_optics_snowBlindnessBase": 1,  # was 0
+    "aee_optics_snowVisibilityPenalty": 1,  # was 0
+    "aee_optics_vehicleShimmerBase": 1,  # was 0
+    "aee_optics_visionAdaptationDegree": 2,  # was 0.05
+    "aee_optics_visionContrastScale": 2,  # was 0.05
+    "aee_optics_visionMesopicDesaturation": 2,  # was 0.05
+    "aee_optics_visionPurkinjeStrength": 2,  # was 0.05
+    "aee_optics_visionToneStrength": 2,  # was 0.05
+    "aee_thermal_thermalAgcHunt": 3,  # was 0.005
+    "aee_thermal_thermalHotBloom": 2,  # was 0.01
+    "aee_thermal_thermalManualMaxC": 0,  # was 5
+    "aee_thermal_thermalNucDrift": 2,  # was 0.05
+    "aee_thermal_thermalTemporalNoise": 1,  # was 0.1
+    "aee_wildlife_density": 2,  # was 0.05
+    "aee_wildlife_despawnRadius": 0,  # was 10
+    "aee_wildlife_hungerRate": 3,  # was 0.001
+    "aee_wildlife_silenceDecay": 3,  # was 0.005
+    "aee_wildlife_spawnRadius": 0,  # was 10
+    "aee_wildlife_spookSensitivity": 2,  # was 0.05
+    "aee_wildlife_thirstRate": 3,  # was 0.001
+    "aee_wildlife_tickInterval": 1,  # was 0.1
+}
+
+_SLIDER_MACRO = re.compile(r"AEE_SETTING_SLIDER\s*\((?P<args>[^)]*)\)")
+_ADD_SETTING = re.compile(r"call CBA_fnc_addSetting")
+_QGVAR = re.compile(r"QGVAR\((\w+)\)")
+
+
+def _iter_sliders():
+    """(name, default, trailing_decimals_text) for every SLIDER, both forms.
+
+    The macro valueInfo is [min, max, default, trailingDecimals]; the explicit
+    block keeps the same order.  Names are aee_<addon>_<key>.
+    """
+    for init_path in sorted(gen.ADDONS.rglob("initSettings.inc.sqf")):
+        addon = init_path.parent.name
+        text = gen.strip_comments(init_path.read_text(encoding="utf-8"))
+        for match in _SLIDER_MACRO.finditer(text):
+            args = gen.split_top_level(match.group("args"))
+            if len(args) != 7:
+                continue
+            yield f"aee_{addon}_{args[0]}", float(args[5]), args[6]
+        for match in _ADD_SETTING.finditer(text):
+            body = gen.bracket_before(text, match.start())
+            if body is None:
+                continue
+            parts = gen.split_top_level(body)
+            if len(parts) < 6 or gen.unquote(parts[1]) != "SLIDER":
+                continue
+            name_match = _QGVAR.search(parts[0])
+            if name_match is None:
+                continue
+            info = gen.split_top_level(parts[4].strip().strip("[]"))
+            if len(info) < 3:
+                continue
+            decimals = info[3].strip() if len(info) >= 4 else "2"
+            yield f"aee_{addon}_{name_match.group(1)}", float(info[2]), decimals
+
+
+class TestSliderTrailingDecimals(unittest.TestCase):
+    """Every slider passes an integer trailingDecimals CBA can render."""
+
+    def test_trailing_decimals_is_a_non_negative_integer(self):
+        bad = {
+            name: dec
+            for name, _default, dec in _iter_sliders()
+            if re.fullmatch(r"\d+", dec) is None
+        }
+        self.assertEqual(bad, {}, f"fractional trailingDecimals: {bad}")
+
+    def test_default_is_representable_in_its_decimals(self):
+        # The rendered default must equal the default exactly; a default that
+        # needs more places than it declares prints a rounded or padded number.
+        unrepresentable = {
+            name: (default, dec)
+            for name, default, dec in _iter_sliders()
+            if abs(round(default, int(dec)) - default) > 1e-9
+        }
+        self.assertEqual(
+            unrepresentable, {}, f"default needs more decimals: {unrepresentable}"
+        )
+
+    def test_corrected_values_are_pinned(self):
+        actual = {name: dec for name, _default, dec in _iter_sliders()}
+        for name, expected in EXPECTED_SLIDER_DECIMALS.items():
+            self.assertIn(name, actual, f"{name} disappeared")
+            self.assertEqual(
+                int(actual[name]), expected, f"{name} regressed to {actual[name]}"
+            )
 
 
 if __name__ == "__main__":

@@ -8,48 +8,48 @@
 // that only pays off at 50+ settings.
 
 // ── Optics / Visibility ─────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(seeingFXIntensity,"AEE Optics","Intensity",0,0.1,0.02,0);
+AEE_SETTING_SLIDER(seeingFXIntensity,"AEE Optics","Intensity",0,0.1,0.02,2);
 
 
 
 
 AEE_SETTING_SLIDER(mirageIntensity,"AEE Optics","Intensity",0,2,1.0,0);
 
-AEE_SETTING_SLIDER(mirageDensity,"AEE Optics","Intensity",0.01,0.5,0.08,0);
+AEE_SETTING_SLIDER(mirageDensity,"AEE Optics","Intensity",0.01,0.5,0.08,2);
 
 AEE_SETTING_SLIDER(solarGlareIntensity,"AEE Optics","Intensity",0,2,1.0,0);
 
-AEE_SETTING_SLIDER(glareBlurMax,"AEE Optics","Intensity",0,1,0.2,0);
+AEE_SETTING_SLIDER(glareBlurMax,"AEE Optics","Intensity",0,1,0.2,1);
 
-AEE_SETTING_SLIDER(heatShimmerIntensity,"AEE Optics","Intensity",0,0.2,0.04,0);
+AEE_SETTING_SLIDER(heatShimmerIntensity,"AEE Optics","Intensity",0,0.2,0.04,2);
 
-AEE_SETTING_SLIDER(dewBlurMax,"AEE Optics","Intensity",0,1,0.4,0);
+AEE_SETTING_SLIDER(dewBlurMax,"AEE Optics","Intensity",0,1,0.4,1);
 
 AEE_SETTING_SLIDER(snowBlindnessIntensity,"AEE Optics","Intensity",0,2,1.0,0);
 
-AEE_SETTING_SLIDER(rainBlurScale,"AEE Optics","Intensity",0,1,0.3,0);
+AEE_SETTING_SLIDER(rainBlurScale,"AEE Optics","Intensity",0,1,0.3,1);
 
 AEE_SETTING_SLIDER(mirageOnsetTemp,"AEE Optics","Thresholds",20,50,35,0);
 
 AEE_SETTING_SLIDER(mirageMinSunElev,"AEE Optics","Thresholds",0,30,15,0);
 
-AEE_SETTING_SLIDER(smokePersistenceScale,"AEE Optics","Atmosphere",0.2,3,1.0,0);
+AEE_SETTING_SLIDER(smokePersistenceScale,"AEE Optics","Atmosphere",0.2,3,1.0,1);
 
-AEE_SETTING_SLIDER(snowVisibilityPenalty,"AEE Optics","Atmosphere",0.3,1,0.7,0);
+AEE_SETTING_SLIDER(snowVisibilityPenalty,"AEE Optics","Atmosphere",0.3,1,0.7,1);
 
-AEE_SETTING_SLIDER(vehicleShimmerBase,"AEE Optics","Thresholds",0,1,0.3,0);
+AEE_SETTING_SLIDER(vehicleShimmerBase,"AEE Optics","Thresholds",0,1,0.3,1);
 
-AEE_SETTING_SLIDER(snowBlindnessBase,"AEE Optics","Thresholds",0,0.5,0.1,0);
+AEE_SETTING_SLIDER(snowBlindnessBase,"AEE Optics","Thresholds",0,0.5,0.1,1);
 
-AEE_SETTING_SLIDER(dewAccumRate,"AEE Optics","Particles",0,0.2,0.05,0);
+AEE_SETTING_SLIDER(dewAccumRate,"AEE Optics","Particles",0,0.2,0.05,2);
 
-AEE_SETTING_SLIDER(dewDecayRate,"AEE Optics","Particles",0,0.1,0.02,0);
+AEE_SETTING_SLIDER(dewDecayRate,"AEE Optics","Particles",0,0.1,0.02,2);
 
-AEE_SETTING_SLIDER(rainAccumRate,"AEE Optics","Particles",0,0.05,0.01,0);
+AEE_SETTING_SLIDER(rainAccumRate,"AEE Optics","Particles",0,0.05,0.01,2);
 
-AEE_SETTING_SLIDER(rainDecayRate,"AEE Optics","Particles",0,0.1,0.02,0);
+AEE_SETTING_SLIDER(rainDecayRate,"AEE Optics","Particles",0,0.1,0.02,2);
 
-AEE_SETTING_SLIDER(chromaCap,"AEE Optics","Intensity",0,0.2,0.06,0);
+AEE_SETTING_SLIDER(chromaCap,"AEE Optics","Intensity",0,0.2,0.06,2);
 
 // ── Weather film grain (aee-workshop-copy item 5) ─────────────────────────
 // The rain-scaled grain is re-derived from Real Lighting and Weather (Workshop
@@ -98,17 +98,17 @@ AEE_SETTING_CHECKBOX(hudEnabled,"AEE HUD","Displays",false);
 // stringtable description and beside the constant in the kernel.
 AEE_SETTING_CHECKBOX(eyeAdaptationEnabled,"AEE Optics","Eye Adaptation",true);
 
-AEE_SETTING_SLIDER(eyeReflectance,"AEE Optics","Eye Adaptation",0.05,0.5,0.18,0);
-AEE_SETTING_SLIDER(eyeTauLight,"AEE Optics","Eye Adaptation",0.2,30,2.0,0);
+AEE_SETTING_SLIDER(eyeReflectance,"AEE Optics","Eye Adaptation",0.05,0.5,0.18,2);
+AEE_SETTING_SLIDER(eyeTauLight,"AEE Optics","Eye Adaptation",0.2,30,2.0,1);
 AEE_SETTING_SLIDER(eyeTauDarkCone,"AEE Optics","Eye Adaptation",10,600,120,0);
 AEE_SETTING_SLIDER(eyeTauDarkRod,"AEE Optics","Eye Adaptation",60,1800,400,0);
-AEE_SETTING_SLIDER(eyePupilTauConstrict,"AEE Optics","Eye Adaptation",0.05,1,0.25,0);
-AEE_SETTING_SLIDER(eyePupilTauDilate,"AEE Optics","Eye Adaptation",0.1,2,0.475,0);
-AEE_SETTING_SLIDER(eyeMesopicLow,"AEE Optics","Eye Adaptation",0.001,0.1,0.005,0);
-AEE_SETTING_SLIDER(eyeMesopicHigh,"AEE Optics","Eye Adaptation",0.5,20,5,0);
-AEE_SETTING_SLIDER(eyeFastBlend,"AEE Optics","Eye Adaptation",0,1,0.35,0);
-AEE_SETTING_SLIDER(eyeAmbientLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,0);
-AEE_SETTING_SLIDER(eyeLocalLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,0);
+AEE_SETTING_SLIDER(eyePupilTauConstrict,"AEE Optics","Eye Adaptation",0.05,1,0.25,2);
+AEE_SETTING_SLIDER(eyePupilTauDilate,"AEE Optics","Eye Adaptation",0.1,2,0.475,3);
+AEE_SETTING_SLIDER(eyeMesopicLow,"AEE Optics","Eye Adaptation",0.001,0.1,0.005,3);
+AEE_SETTING_SLIDER(eyeMesopicHigh,"AEE Optics","Eye Adaptation",0.5,20,5,1);
+AEE_SETTING_SLIDER(eyeFastBlend,"AEE Optics","Eye Adaptation",0,1,0.35,2);
+AEE_SETTING_SLIDER(eyeAmbientLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,3);
+AEE_SETTING_SLIDER(eyeLocalLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,3);
 AEE_SETTING_SLIDER(eyeBlindingLuxScale,"AEE Optics","Eye Adaptation",0,100000,0,0);
 
 // ── Base grade and acuity (image realism) ─────────────────────────────────
@@ -118,12 +118,12 @@ AEE_SETTING_SLIDER(eyeBlindingLuxScale,"AEE Optics","Eye Adaptation",0,100000,0,
 // normal vision only and owns its own effects, so it never fights the
 // single-slot weather ColorCorrections.
 AEE_SETTING_CHECKBOX(baseGradeEnabled,"AEE Optics","Image",true);
-AEE_SETTING_SLIDER(baseGradeContrast,"AEE Optics","Image",0.8,1.6,1.15,0.05);
-AEE_SETTING_SLIDER(baseGradeBrightness,"AEE Optics","Image",0.7,1.3,1.0,0.05);
-AEE_SETTING_SLIDER(baseGradeBlackPoint,"AEE Optics","Image",-0.1,0.1,-0.02,0.005);
-AEE_SETTING_SLIDER(baseGradeSaturation,"AEE Optics","Image",0,0.5,0,0.05);
+AEE_SETTING_SLIDER(baseGradeContrast,"AEE Optics","Image",0.8,1.6,1.15,2);
+AEE_SETTING_SLIDER(baseGradeBrightness,"AEE Optics","Image",0.7,1.3,1.0,2);
+AEE_SETTING_SLIDER(baseGradeBlackPoint,"AEE Optics","Image",-0.1,0.1,-0.02,3);
+AEE_SETTING_SLIDER(baseGradeSaturation,"AEE Optics","Image",0,0.5,0,2);
 AEE_SETTING_SLIDER(baseGradeSharpness,"AEE Optics","Image",1,20,4,1);
-AEE_SETTING_SLIDER(baseGradeGrain,"AEE Optics","Image",0,0.05,0.006,0.001);
+AEE_SETTING_SLIDER(baseGradeGrain,"AEE Optics","Image",0,0.05,0.006,3);
 AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Optics","Image",true);
 
 // ── Human-vision model (perception) ───────────────────────────────────────
@@ -133,16 +133,16 @@ AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Optics","Image",true);
 // description.
 AEE_SETTING_CHECKBOX(visionModelEnabled,"AEE Optics","Vision",true);
 AEE_SETTING_CHECKBOX(visionToneEnabled,"AEE Optics","Vision",true);
-AEE_SETTING_SLIDER(visionToneStrength,"AEE Optics","Vision",0,1,0.25,0.05);
-AEE_SETTING_SLIDER(visionContrastScale,"AEE Optics","Vision",0.5,1.5,1.0,0.05);
+AEE_SETTING_SLIDER(visionToneStrength,"AEE Optics","Vision",0,1,0.25,2);
+AEE_SETTING_SLIDER(visionContrastScale,"AEE Optics","Vision",0.5,1.5,1.0,2);
 AEE_SETTING_CHECKBOX(visionWhiteBalance,"AEE Optics","Vision",false);
 
 // Colour-stage calibration (AEE Experimental > Vision).  The degree of
 // adaptation D is CIECAM02 (CIE 159:2004).  The mesopic desaturation amplitude
 // and the Purkinje tint amplitude are UNSOURCED.
-AEE_SETTING_SLIDER(visionAdaptationDegree,"AEE Experimental","Vision",0,1,1.0,0.05);
-AEE_SETTING_SLIDER(visionMesopicDesaturation,"AEE Experimental","Vision",0,0.5,0,0.05);
-AEE_SETTING_SLIDER(visionPurkinjeStrength,"AEE Experimental","Vision",0,1,0,0.05);
+AEE_SETTING_SLIDER(visionAdaptationDegree,"AEE Experimental","Vision",0,1,1.0,2);
+AEE_SETTING_SLIDER(visionMesopicDesaturation,"AEE Experimental","Vision",0,0.5,0,2);
+AEE_SETTING_SLIDER(visionPurkinjeStrength,"AEE Experimental","Vision",0,1,0,2);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
