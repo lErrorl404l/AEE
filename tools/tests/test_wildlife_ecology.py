@@ -663,7 +663,8 @@ class TestEnvironmentConsumptionContracts(unittest.TestCase):
 
     def test_the_tick_still_passes_the_veg_score_to_the_bed(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
-        self.assertIn("_rainAmount, _vegScore] call FUNC(soundBedForContext)", text)
+        self.assertIn("_vegScore, _settlement, _coastal", text)
+        self.assertIn("call FUNC(soundBedForContext)", text)
 
 
 ACOUSTIC = FUNCS / "fnc_acousticLevel.sqf"
