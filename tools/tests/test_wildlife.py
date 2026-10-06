@@ -848,5 +848,99 @@ class TestWildlifeSettingsStrings(unittest.TestCase):
                 self.assertIn(f"STR_AEE_Wildlife_{name}_Description", strings)
 
 
+ASSET_MAP = DATA / "asset_map.sqf"
+SPECIES_SOUND = FUNCS / "fnc_speciesSound.sqf"
+MEDIA_EXTENSIONS = {".wss", ".ogg", ".wav"}
+
+
+def load_asset_map():
+    """The generated sound and fauna identity rows."""
+    return run_sqf(ASSET_MAP, [])
+
+
+def species_sound(group, platforms=None):
+    """Run fnc_speciesSound against the real asset map."""
+    if platforms is None:
+        platforms = []
+    return run_sqf(SPECIES_SOUND, [group, platforms, load_asset_map()])
+
+
+class TestSpeciesSound(unittest.TestCase):
+    """fnc_speciesSound runs from the real SQF against the real asset map."""
+
+    def test_owl_resolves_to_the_raw_paths_not_the_cfg_sfx_class(self):
+        media, gap = species_sound("owl", ["enoch"])
+        self.assertFalse(gap)
+        self.assertEqual(
+            [path.rsplit("\\", 1)[-1] for path in media],
+            ["owl1.wss", "owl2.wss", "owl3.wss"],
+        )
+        self.assertNotIn("Owl", media)
+
+    def test_songbird_resolves_to_the_five_bird_files(self):
+        media, gap = species_sound("songbird", ["enoch"])
+        self.assertFalse(gap)
+        self.assertEqual(len(media), 5)
+        self.assertTrue(all("birds" in path for path in media))
+
+    def test_fear_resolves_to_the_seven_distress_clips(self):
+        media, gap = species_sound("fear", [])
+        self.assertFalse(gap)
+        self.assertEqual(len(media), 7)
+
+    def test_deer_and_wolf_resolve_only_with_the_enoch_platform(self):
+        deer, deer_gap = species_sound("deer", ["enoch"])
+        self.assertFalse(deer_gap)
+        self.assertEqual(len(deer), 11)
+        self.assertTrue(all("sounds_f_enoch" in path.lower() for path in deer))
+        wolf, wolf_gap = species_sound("wolf", ["enoch"])
+        self.assertFalse(wolf_gap)
+        self.assertEqual(len(wolf), 6)
+
+    def test_deer_and_wolf_fall_back_to_the_base_night_bed_without_enoch(self):
+        deer, deer_gap = species_sound("deer", [])
+        self.assertTrue(deer_gap)
+        self.assertGreater(len(deer), 0)
+        self.assertTrue(all("sounds_f_enoch" not in path.lower() for path in deer))
+        wolf, wolf_gap = species_sound("wolf", [])
+        self.assertTrue(wolf_gap)
+        self.assertGreater(len(wolf), 0)
+        self.assertTrue(all("sounds_f_enoch" not in path.lower() for path in wolf))
+
+    def test_the_water_group_never_resolves_to_the_silent_stream(self):
+        media, gap = species_sound("water", [])
+        self.assertEqual(media, [])
+        self.assertTrue(gap)
+        self.assertNotIn("Sound_Stream", media)
+
+    def test_an_unknown_recording_is_never_mapped(self):
+        for group in ("chicken_grill", "cicada", "frog", "none"):
+            with self.subTest(group=group):
+                media, _gap = species_sound(group, ["enoch"])
+                self.assertEqual(media, [])
+
+    def test_cricket_resolves_to_the_legacy_sarance_set(self):
+        media, gap = species_sound("cricket", [])
+        self.assertFalse(gap)
+        self.assertEqual(len(media), 4)
+        self.assertTrue(all("sarance" in path for path in media))
+
+    def test_every_returned_path_passes_the_media_rules(self):
+        groups = [row[1] for row in load_asset_map() if row[0] == "sound"]
+        for group in groups:
+            for platforms in ([], ["enoch"]):
+                media, _gap = species_sound(group, platforms)
+                for path in media:
+                    self.assertTrue(path.lower().startswith("a3\\"), path)
+                    extension = path[path.rfind(".") :].lower()
+                    self.assertIn(extension, MEDIA_EXTENSIONS, path)
+
+    def test_the_enoch_paths_are_all_under_the_enoch_prefix(self):
+        asset_rows = load_asset_map()
+        deer = [r for r in asset_rows if r[0] == "sound" and r[1] == "deer"][0]
+        self.assertGreater(len(deer[3]), 0)
+        self.assertTrue(all("sounds_f_enoch" in p.lower() for p in deer[3]))
+
+
 if __name__ == "__main__":
     unittest.main()

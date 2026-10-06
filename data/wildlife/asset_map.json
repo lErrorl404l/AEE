@@ -24,14 +24,16 @@
         },
         {
           "path": "a3\\sounds_f\\ambient\\animals\\owl3.wss"
-        },
-        {
-          "cfg_sfx": "Owl"
         }
       ],
       "fauna_classes": [],
       "species": null,
-      "note": "CfgSFX.Owl names owl1-3. One generic owl bank. Species not pinned."
+      "anchor": {
+        "pbo": "a3\\sounds_f",
+        "config": "CfgSFX.Owl",
+        "files": "owl1..3.wss"
+      },
+      "note": "CfgSFX.Owl names owl1-3. One generic owl bank. Species not pinned. The class is an identity anchor; a CfgSFX class is not a playback source, so the media are the three raw files."
     },
     {
       "sound_group": "songbird",
@@ -90,19 +92,44 @@
     {
       "sound_group": "water",
       "identity": "CONFIRMED",
-      "media": [
-        {
-          "cfg_sfx": "Sound_Stream"
-        }
-      ],
+      "media": [],
       "fauna_classes": [],
       "species": null,
-      "note": "CfgVehicles.Sound_Stream points at CfgSFX.StreamSfx, whose sample is a dummy. The class is confirmed and the payload is silent."
+      "anchor": {
+        "pbo": "a3\\sounds_f",
+        "config": "CfgVehicles.Sound_Stream",
+        "files": "dummysound.wss"
+      },
+      "note": "FINDING: CfgVehicles.Sound_Stream plays CfgSFX.StreamSfx, whose only sample is dummysound. The water bed is silent and vanilla ships no confirmed non-silent stream recording, so this group maps to no media."
     },
     {
       "sound_group": "night_insect",
       "identity": "CONFIRMED",
-      "media": [],
+      "media": [
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_nowinds1.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_nowinds2.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_nowinds3.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_nowinds4.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_nowinds5.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_winds1.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_winds2.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_winds3.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_winds4.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_birds_winds5.wss"},
+        {"path": "a3\\sounds_f\\ambient\\basics\\night_insects_nowinds6.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_01.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_02.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_03.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_04.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_05.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_06.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_07.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_08.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_09.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Night_10.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Raspy_01.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Insects\\Insect_Raspy_02.wss"}
+      ],
       "fauna_classes": [],
       "species": null,
       "anchor": {
@@ -110,20 +137,25 @@
         "config": "ambient/basics",
         "files": "night_insects_birds_*"
       },
-      "note": "Real engine bed content. The exact path is not pinned in the inventory, so no path is committed."
+      "note": "The base-game night bed (a3\\sounds_f\\ambient\\basics) plus the Enoch night insect set (A3\\Sounds_F_Enoch). The Enoch paths need the Enoch platform and are gated by the sound map."
     },
     {
       "sound_group": "cricket",
       "identity": "CONFIRMED",
-      "media": [],
+      "media": [
+        {"path": "a3\\sounds_f\\ambient\\animals\\sarance1.wss"},
+        {"path": "a3\\sounds_f\\ambient\\animals\\sarance2.wss"},
+        {"path": "a3\\sounds_f\\ambient\\animals\\sarance3.wss"},
+        {"path": "a3\\sounds_f\\ambient\\animals\\sarance4.wss"}
+      ],
       "fauna_classes": [],
       "species": null,
       "anchor": {
-        "pbo": "a3\\sounds_f_environment",
-        "config": "environment/animals/insect",
-        "files": "cricket1..2.wss"
+        "pbo": "a3\\sounds_f",
+        "config": "ambient/animals (legacy name sarance)",
+        "files": "sarance1..4.wss"
       },
-      "note": "Real cricket recordings. The exact path is not pinned in the inventory, so no path is committed."
+      "note": "The legacy sarance1-4 files are byte-identical by md5 to the vanilla cricket recordings, so the cricket group resolves to them. The species is not pinned below the order."
     },
     {
       "sound_group": "cicada",
@@ -146,7 +178,19 @@
     {
       "sound_group": "deer",
       "identity": "CONFIRMED",
-      "media": [],
+      "media": [
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_01.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_02.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_03.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_04.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_05.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_06.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_07.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_08.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_09.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_10.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Deer_Call_11.wss"}
+      ],
       "fauna_classes": [],
       "species": null,
       "anchor": {
@@ -154,12 +198,19 @@
         "config": "Deercall_Forest_Night_SoundSet",
         "files": "Deer_Call_01..11.wss"
       },
-      "note": "Enoch media. The subfolder is not pinned in the inventory, so no path is committed. It needs the Enoch platform."
+      "note": "Enoch media, pinned from CfgSoundShaders.Deercall_Forest_Night_SoundShader. It needs the Enoch platform; a base-game install falls back to the base night bed."
     },
     {
       "sound_group": "wolf",
       "identity": "CONFIRMED",
-      "media": [],
+      "media": [
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Wolves_01.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Wolves_02.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Wolves_03.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Wolves_04.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Wolves_05.wss"},
+        {"path": "A3\\Sounds_F_Enoch\\Assets\\Environment\\SpotFx\\Fauna\\Animals\\Wolves_06.wss"}
+      ],
       "fauna_classes": [],
       "species": null,
       "anchor": {
@@ -167,7 +218,7 @@
         "config": "Wolves_Night_SoundSet",
         "files": "Wolves_01..06.wss"
       },
-      "note": "Enoch media. The subfolder is not pinned in the inventory, so no path is committed. It needs the Enoch platform."
+      "note": "Enoch media, pinned from CfgSoundShaders.Wolves_Night_SoundShader. It needs the Enoch platform; a base-game install falls back to the base night bed."
     },
     {
       "sound_group": "chicken",
