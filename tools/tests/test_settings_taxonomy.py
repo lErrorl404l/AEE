@@ -239,6 +239,7 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_optics_eyeReflectance": 2,  # was 0
     "aee_optics_eyeTauLight": 1,  # was 0
     "aee_optics_glareBlurMax": 1,  # was 0
+    "aee_optics_perceptionInterval": 1,  # was 0.1
     "aee_optics_heatShimmerIntensity": 2,  # was 0
     "aee_optics_mirageDensity": 2,  # was 0
     "aee_optics_rainAccumRate": 2,  # was 0
