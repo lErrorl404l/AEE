@@ -87,3 +87,10 @@ class CfgVehicles {
         tBody = 32;
     };
 };
+
+// ─── Per-optic thermal keys (issue #196, aee-thermal-realism T11) ──────────
+// The generated header carries the per-optic thermalMode[], thermalNoise[]
+// and thermalResolution[] block, derived from the device corpus and the
+// authored class bindings. It is a separate class CfgWeapons block. Regenerate
+// with tools/validation/gen_thermal_optics.py.
+#include "generated/ThermalOptics.hpp"

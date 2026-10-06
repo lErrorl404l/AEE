@@ -1,0 +1,26 @@
+[
+  {
+    "game_class": "optic_Nightstalker",
+    "catalogue_id": "envg_thermal",
+    "optic_mode": "NCTALKEP",
+    "identity_source": "authored_engine_config",
+    "identity_evidence": "optic_Nightstalker is the Arma 3 fused night scope. The derap /tmp/opencode/ti-research/v2/weapons_f/acc/config.cpp line 986 declares CfgWeapons >> optic_Nightstalker >> ItemInfo >> OpticsModes >> NCTALKEP with visionMode {\"Normal\",\"NVG\",\"Ti\"} and thermalMode {5,6}. Its thermal channel is an uncooled LWIR detector, the detector class of the ENVG-B fused device (envg_thermal, uncooled VOx LWIR 640x480, corpus netd_c 0.04).",
+    "grade": "authored"
+  },
+  {
+    "game_class": "optic_tws",
+    "catalogue_id": "pas13_base",
+    "optic_mode": "TWS",
+    "identity_source": "authored_engine_config",
+    "identity_evidence": "optic_tws is the Arma 3 Thermal Weapon Sight. The derap /tmp/opencode/ti-research/v2/weapons_f/acc/config.cpp line 1026 declares CfgWeapons >> optic_tws >> ItemInfo >> OpticsModes >> TWS with visionMode {\"Ti\",\"Normal\"} and thermalMode {0,1}. Its detector is an uncooled LWIR thermal weapon sight, the detector class of the AN/PAS-13 (pas13_base, uncooled VOx LWIR 640x480, corpus netd_c 0.05).",
+    "grade": "authored"
+  },
+  {
+    "game_class": "optic_tws_mg",
+    "catalogue_id": "pas13_base",
+    "optic_mode": "TWS",
+    "identity_source": "authored_engine_config",
+    "identity_evidence": "optic_tws_mg is the Arma 3 Thermal Weapon Sight machine-gun variant. The derap /tmp/opencode/ti-research/v2/weapons_f/acc/config.cpp line 1069 declares CfgWeapons >> optic_tws_mg >> ItemInfo >> OpticsModes >> TWS with visionMode {\"Ti\",\"Normal\"} and thermalMode {0,1}. Its detector is the same uncooled LWIR thermal weapon sight class as optic_tws, the AN/PAS-13 (pas13_base, uncooled VOx LWIR 640x480, corpus netd_c 0.05).",
+    "grade": "authored"
+  }
+]
