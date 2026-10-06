@@ -455,9 +455,9 @@ class TestWorldLatitudePattern(unittest.TestCase):
     def test_magnitude_consumers_use_shared_source(self):
         from pathlib import Path
 
-        solar = Path("addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf").read_text(
-            encoding="utf-8"
-        )
+        solar = Path(
+            "addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf"
+        ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", solar)
         self.assertIn("select 1", solar)  # magnitude
 
@@ -481,18 +481,27 @@ class TestWorldLatitudePattern(unittest.TestCase):
         # No direct CfgWorlds latitude read may remain outside the source.
         self.assertNotIn('>> "latitude"', star)
 
-    def test_only_one_direct_latitude_read(self):
-        # #179: the ONLY direct CfgWorlds latitude read is the shared
-        # source itself.  Count across all addons.
+    def test_direct_latitude_read_confined_to_core_source(self):
+        # #179: the direct CfgWorlds latitude read lives ONLY in the core
+        # location source, never in a consumer.  The sourced geo anchor
+        # (addons/core/functions/geo/) is the new source of truth; the legacy
+        # reader keeps its own read until the geolocation migration lands,
+        # after which only the geo anchor reader remains.
         from pathlib import Path
 
-        count = 0
-        for fn in Path("addons").rglob("*.sqf"):
-            text = fn.read_text(encoding="utf-8", errors="replace")
-            if '>> "latitude"' in text:
-                count += 1
+        hits = {
+            fn
+            for fn in Path("addons").rglob("*.sqf")
+            if '>> "latitude"' in fn.read_text(encoding="utf-8", errors="replace")
+        }
+        allowed = {
+            Path("addons/core/functions/fnc_getWorldLocation.sqf"),
+            Path("addons/core/functions/geo/fnc_getGeoAnchor.sqf"),
+        }
         self.assertEqual(
-            count, 1, "exactly one direct CfgWorlds latitude read (getWorldLocation)"
+            hits,
+            allowed,
+            "direct CfgWorlds latitude read confined to the core source",
         )
 
 
