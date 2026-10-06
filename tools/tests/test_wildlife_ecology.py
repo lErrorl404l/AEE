@@ -666,5 +666,244 @@ class TestEnvironmentConsumptionContracts(unittest.TestCase):
         self.assertIn("_rainAmount, _vegScore] call FUNC(soundBedForContext)", text)
 
 
+ACOUSTIC = FUNCS / "fnc_acousticLevel.sqf"
+ACOUSTIC_SOURCE = FUNCS / "fnc_acousticSourceDb.sqf"
+ACOUSTIC_PUBLISH = FUNCS / "fnc_acousticPublish.sqf"
+ACOUSTIC_SAMPLE = FUNCS / "fnc_acousticSample.sqf"
+PERCEIVE = FUNCS / "fnc_wildlifePerceive.sqf"
+THINK = FUNCS / "fnc_wildlifeThink.sqf"
+
+
+def _acoustic_kernel():
+    """The acoustic kernel bound as a FUNC for the sample kernel to call."""
+    return _kernel(ACOUSTIC)
+
+
+ACOUSTIC_GLOBALS = {
+    "WILDLIFE_ACOUSTIC_OCCLUSION_DB": 6,
+    "WILDLIFE_ACOUSTIC_OCCLUSION_RADIUS_M": 2.5,
+    "WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB": 30,
+    "WILDLIFE_ACOUSTIC_LOUD_DB": 140,
+    "WILDLIFE_ACOUSTIC_EVENT_CAP": 64,
+    "WILDLIFE_ACOUSTIC_EVENT_HORIZON": 3,
+}
+ACOUSTIC_GLOBALS["__FUNC__acousticLevel"] = _acoustic_kernel()
+
+
+def acoustic(events, listener, index=1.0, occluders=None):
+    if occluders is None:
+        occluders = []
+    return run_sqf(
+        ACOUSTIC, [events, listener, index, occluders], globals_=ACOUSTIC_GLOBALS
+    )
+
+
+def level_at(distance, source_db=160, index=1.0, kind="gunshot", occluders=None):
+    return acoustic(
+        [[[0, 0, 0], source_db, kind]],
+        [distance, 0, 0],
+        index=index,
+        occluders=occluders,
+    )[0][1]
+
+
+class TestAcousticLevel(unittest.TestCase):
+    """fnc_acousticLevel runs from the real SQF."""
+
+    def test_the_level_falls_smoothly_with_distance(self):
+        near = level_at(10)
+        mid = level_at(100)
+        far = level_at(1000)
+        self.assertGreater(near, mid)
+        self.assertGreater(mid, far)
+
+    def test_the_level_never_hard_cuts_at_a_radius(self):
+        # No fixed radius: the level keeps falling but stays positive well
+        # beyond the old 120 m gate.
+        at_500 = level_at(500)
+        at_5000 = level_at(5000)
+        self.assertGreater(at_500, 0)
+        self.assertGreater(at_5000, 0)
+        self.assertGreater(at_500, at_5000)
+
+    def test_an_occluder_lowers_the_level(self):
+        clear = level_at(500, occluders=[])
+        blocked = level_at(500, occluders=[[250, 0, 0]])
+        self.assertLess(blocked, clear)
+
+    def test_an_occluder_off_the_line_does_not_block(self):
+        clear = level_at(500)
+        off = level_at(500, occluders=[[250, 500, 0]])
+        self.assertEqual(off, clear)
+
+    def test_the_same_cell_is_the_strongest(self):
+        self.assertEqual(level_at(0), 1)
+        self.assertLess(level_at(200), level_at(0))
+
+    def test_a_suppressed_source_is_inaudible_far_away(self):
+        self.assertEqual(level_at(50000, source_db=100), 0)
+        self.assertGreater(level_at(50, source_db=100), 0)
+
+    def test_the_weather_index_extends_the_range(self):
+        good = level_at(2000, index=2.0)
+        bad = level_at(2000, index=0.3)
+        self.assertGreater(good, bad)
+
+    def test_the_stimulus_is_bounded(self):
+        self.assertLessEqual(level_at(0, source_db=400), 1)
+        self.assertGreaterEqual(level_at(1e7, source_db=1), 0)
+
+    def test_same_inputs_are_deterministic(self):
+        self.assertEqual(level_at(300), level_at(300))
+
+    def test_the_kind_is_passed_through(self):
+        rows = acoustic([[[0, 0, 0], 160, "vehicle"]], [10, 0, 0])
+        self.assertEqual(rows[0][0], "vehicle")
+
+
+class TestAcousticSourceDb(unittest.TestCase):
+    """fnc_acousticSourceDb runs from the real SQF."""
+
+    def test_every_named_kind_has_a_level(self):
+        for kind in (
+            "gunshot",
+            "suppressed",
+            "explosion",
+            "grenade",
+            "aircraft",
+            "vehicle",
+            "footstep",
+        ):
+            self.assertGreater(run_sqf(ACOUSTIC_SOURCE, [kind]), 0, kind)
+
+    def test_an_unknown_kind_is_silent(self):
+        self.assertEqual(run_sqf(ACOUSTIC_SOURCE, [""]), 0)
+        self.assertEqual(run_sqf(ACOUSTIC_SOURCE, ["warp"]), 0)
+
+    def test_the_loudness_order_holds(self):
+        self.assertGreater(
+            run_sqf(ACOUSTIC_SOURCE, ["explosion"]),
+            run_sqf(ACOUSTIC_SOURCE, ["gunshot"]),
+        )
+        self.assertGreater(
+            run_sqf(ACOUSTIC_SOURCE, ["vehicle"]),
+            run_sqf(ACOUSTIC_SOURCE, ["footstep"]),
+        )
+
+
+class TestAcousticBus(unittest.TestCase):
+    """fnc_acousticPublish and fnc_acousticSample run from the real SQF."""
+
+    def publish(self, events, now, pos=(0, 0, 0), db=160, kind="gunshot"):
+        return run_sqf(
+            ACOUSTIC_PUBLISH,
+            [events, list(pos), db, kind, now],
+            globals_=ACOUSTIC_GLOBALS,
+        )
+
+    def test_a_new_event_is_appended(self):
+        bus = self.publish([], 10)
+        self.assertEqual(len(bus), 1)
+        self.assertEqual(bus[0][2], "gunshot")
+
+    def test_a_stale_event_is_dropped(self):
+        bus = self.publish([], 10)
+        bus = self.publish(bus, 20)
+        self.assertEqual(len(bus), 1)
+        self.assertEqual(bus[0][3], 20)
+
+    def test_the_bus_is_capped_keeping_the_newest(self):
+        bus = []
+        for i in range(200):
+            bus = self.publish(bus, i * 0.01)
+        self.assertEqual(len(bus), ACOUSTIC_GLOBALS["WILDLIFE_ACOUSTIC_EVENT_CAP"])
+
+    def test_the_strongest_event_is_returned(self):
+        bus = self.publish([], 10, pos=(100, 0, 0), db=160, kind="gunshot")
+        bus = self.publish(bus, 10, pos=(10, 0, 0), db=100, kind="vehicle")
+        level, kind = run_sqf(
+            ACOUSTIC_SAMPLE,
+            [bus, [0, 0, 0], 10, 3, 1.0, []],
+            globals_=ACOUSTIC_GLOBALS,
+        )
+        self.assertEqual(kind, "gunshot")
+        self.assertGreater(level, 0)
+
+    def test_a_stale_event_is_ignored(self):
+        bus = self.publish([], 0)
+        level, _kind = run_sqf(
+            ACOUSTIC_SAMPLE,
+            [bus, [0, 0, 0], 100, 3, 1.0, []],
+            globals_=ACOUSTIC_GLOBALS,
+        )
+        self.assertEqual(level, 0)
+
+    def test_an_empty_bus_is_silent(self):
+        level, kind = run_sqf(
+            ACOUSTIC_SAMPLE,
+            [[], [0, 0, 0], 10, 3, 1.0, []],
+            globals_=ACOUSTIC_GLOBALS,
+        )
+        self.assertEqual(level, 0)
+        self.assertEqual(kind, "")
+
+
+class TestAcousticSourceContracts(unittest.TestCase):
+    def _pure(self, path):
+        code = re.sub(
+            r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernels_are_pure(self):
+        for path in (ACOUSTIC, ACOUSTIC_SOURCE, ACOUSTIC_PUBLISH, ACOUSTIC_SAMPLE):
+            self._pure(path)
+
+    def test_the_kernels_are_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        for name in (
+            "acousticLevel",
+            "acousticSourceDb",
+            "acousticPublish",
+            "acousticSample",
+            "acousticOccluders",
+        ):
+            self.assertIn(f"PREP({name})", text, name)
+
+    def test_the_constants_are_declared(self):
+        text = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
+        for name in (
+            "WILDLIFE_ACOUSTIC_EVENT_CAP",
+            "WILDLIFE_ACOUSTIC_OCCLUSION_DB",
+            "WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB",
+            "WILDLIFE_SPOOK_ACOUSTIC_MIN",
+        ):
+            self.assertIn(name, text, name)
+
+    def test_the_fired_handler_propagates_a_source_level(self):
+        text = (FUNCS / "fnc_initWildlife.sqf").read_text(encoding="utf-8")
+        self.assertIn("FUNC(acousticPublish)", text)
+        self.assertIn("FUNC(acousticSourceDb)", text)
+        # The old fixed magnitude report is removed.
+        self.assertNotIn("[getPos _unit, 1] call EFUNC(ai,reportStimulus)", text)
+
+    def test_the_tick_consumes_the_propagated_level(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("FUNC(acousticSample)", text)
+        self.assertIn("FUNC(acousticOccluders)", text)
+        self.assertIn("currentSoundPropagation", text)
+        self.assertIn("_acousticLevel > WILDLIFE_SPOOK_ACOUSTIC_MIN", text)
+
+    def test_the_event_kinds_are_covered(self):
+        text = (FUNCS / "fnc_initWildlife.sqf").read_text(encoding="utf-8")
+        tick = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn('"explosion"', text)
+        self.assertIn('"footstep"', tick)
+        self.assertIn('"vehicle"', tick)
+        self.assertIn('"aircraft"', tick)
+
+
 if __name__ == "__main__":
     unittest.main()

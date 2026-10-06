@@ -108,12 +108,70 @@ if (_hasUnit) then {
             };
         } forEach _traffic;
 
+        // Continuous sources: the local unit's movement and the nearby
+        // vehicle and aircraft engines.  Each is a sound event at its own
+        // position, so the same propagation kernel carries it.  The scan is
+        // bounded by the radius and the engine count.
+        private _soundEvents = missionNamespace getVariable [QGVAR(soundEvents), []];
+        if !(_soundEvents isEqualType []) then { _soundEvents = []; };
+
+        private _walk = speed _unit;
+        if (_walk > 1.5) then {
+            private _walkStrength = ((_walk / 8) max 0.01) min 1;
+            private _footDb = (["footstep"] call FUNC(acousticSourceDb)) + (20 * (log _walkStrength));
+            _soundEvents = [
+                _soundEvents, getPosASL _unit, _footDb, "footstep", _now,
+                WILDLIFE_ACOUSTIC_EVENT_CAP, WILDLIFE_ACOUSTIC_EVENT_HORIZON
+            ] call FUNC(acousticPublish);
+        };
+
+        private _engines = 0;
+        private _engineSources = [];
+        { _engineSources pushBack [_x, "vehicle"]; } forEach (_position nearEntities ["LandVehicle", 200]);
+        { _engineSources pushBack [_x, "aircraft"]; } forEach (_position nearEntities ["Air", 200]);
+        { _engineSources pushBack [_x, "vehicle"]; } forEach (_position nearEntities ["Ship", 200]);
+
+        {
+            if (_engines < 8) then {
+                private _vehicle = _x select 0;
+                private _kind = _x select 1;
+                if ((!isNull _vehicle) && (isEngineOn _vehicle)) then {
+                    _soundEvents = [
+                        _soundEvents, getPosASL _vehicle,
+                        ([_kind] call FUNC(acousticSourceDb)), _kind, _now,
+                        WILDLIFE_ACOUSTIC_EVENT_CAP, WILDLIFE_ACOUSTIC_EVENT_HORIZON
+                    ] call FUNC(acousticPublish);
+                    _engines = _engines + 1;
+                };
+            };
+        } forEach _engineSources;
+
+        missionNamespace setVariable [QGVAR(soundEvents), _soundEvents];
+
         // Bound the field before it is published: drop stale cells, then cap
         // by decayed magnitude.  The prune kernel owns the policy.
         _field = [_field, _now, AI_CELL_CAP, AI_CELL_HORIZON] call EFUNC(ai,disturbancePrune);
         missionNamespace setVariable [QEGVAR(ai,disturbance), _field];
     };
 };
+
+// The auditory stimulus is the propagated sound level at the listener, not a
+// fixed range.  The bus holds the recent sound events; fnc_acousticLevel
+// spreads, absorbs and occludes them.  The occluder list is bounded by
+// fnc_acousticOccluders, and the propagation index is AEE's published
+// currentSoundPropagation, so this reuses the existing weather absorption.
+private _propIndex = missionNamespace getVariable [QEGVAR(environmental,currentSoundPropagation), 1];
+if !(_propIndex isEqualType 0) then { _propIndex = 1; };
+private _listenerAsl = _position;
+if (_hasUnit) then { _listenerAsl = getPosASL _unit; };
+private _occluders = [_position] call FUNC(acousticOccluders);
+private _soundEvents = missionNamespace getVariable [QGVAR(soundEvents), []];
+if !(_soundEvents isEqualType []) then { _soundEvents = []; };
+private _acoustic = [
+    _soundEvents, _listenerAsl, _now, WILDLIFE_ACOUSTIC_EVENT_HORIZON,
+    _propIndex, _occluders
+] call FUNC(acousticSample);
+private _acousticLevel = _acoustic select 0;
 
 // The vegetation signal from aee_environmental_terrainSignals.  The shape is
 // [surfaceVotes, vegVotes, structureVotes, waterFrac, meanElevM, maxElevM].
@@ -157,6 +215,7 @@ if (_forceSpook isEqualType []) then {
     };
 } else {
     if (_disturbance > 0.6) then { _spook = true; };
+    if (_acousticLevel > WILDLIFE_SPOOK_ACOUSTIC_MIN) then { _spook = true; };
 };
 
 private _spookRange = 0;

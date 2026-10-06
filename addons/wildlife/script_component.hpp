@@ -27,3 +27,18 @@
 
 // The spawn suitability floor.  A group below it is not spawned.  UNSOURCED.
 #define WILDLIFE_SUITABILITY_MIN 0.2
+
+// Acoustic propagation policy (task T25).  The spreading law is the SOURCED
+// inverse-square law: a point source loses 20*log10(d) dB, so 6 dB per
+// doubling of distance.  The occlusion loss and radius, the hearing floor and
+// the loud reference are UNSOURCED modelling choices.  The source levels live
+// in fnc_acousticSourceDb.sqf.  See the per-constant register in the dossier.
+#define WILDLIFE_ACOUSTIC_EVENT_CAP 64
+#define WILDLIFE_ACOUSTIC_EVENT_HORIZON 3
+#define WILDLIFE_ACOUSTIC_OCCLUSION_DB 6
+#define WILDLIFE_ACOUSTIC_OCCLUSION_RADIUS_M 2.5
+#define WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB 30
+#define WILDLIFE_ACOUSTIC_LOUD_DB 140
+
+// The spook threshold on the propagated level, 0 to 1.  UNSOURCED.
+#define WILDLIFE_SPOOK_ACOUSTIC_MIN 0.5
