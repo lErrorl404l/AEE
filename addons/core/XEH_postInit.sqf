@@ -22,3 +22,8 @@ if (is3DEN) exitWith {};
     [_unit, _selection, _damage, _source, _projectile, _hitIndex,
      _instigator, _hitPoint] call FUNC(handleCollisionDamage);
 }, QGVAR(collisionDamage)] call EFUNC(core,installObjectEngineHandler);
+
+// Emit the core state line once at INFO, then per second at DEBUG (see
+// fnc_dumpState).  A new registration keeps the dump out of the environment
+// tick.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;

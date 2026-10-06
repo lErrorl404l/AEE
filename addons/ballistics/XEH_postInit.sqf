@@ -122,3 +122,8 @@ ADDON = false;
 AEE_LOG_INFO("ballistics module post-init complete");
 
 ADDON = true;
+
+// Emit the module state line once at INFO, then per second at DEBUG (see
+// fnc_dumpState).  The per-frame registration is in fnc_startStateDump, kept
+// out of this file because the supersonic trace kernel is Fired-path only.
+[] call FUNC(startStateDump);

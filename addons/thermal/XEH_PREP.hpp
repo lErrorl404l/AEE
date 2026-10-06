@@ -104,3 +104,4 @@ PREPS(ir,startActiveIR);
 PREPS(ir,stopActiveIR);
 PREPS(ir,activeIRGate);
 PREPS(sensor,probeThermalCapability);
+PREP(dumpState);

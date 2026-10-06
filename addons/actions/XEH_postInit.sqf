@@ -48,3 +48,8 @@ AEE_MODULE_POST_INIT
     _d = (_d + 1) min 300;
     missionNamespace setVariable [QEGVAR(nightvision,dofManualDist), _d];
 }, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
+
+// Emit the module state line once at INFO, then per second at DEBUG (see
+// fnc_dumpState).  A new registration keeps the dump out of every other
+// module's tick.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;

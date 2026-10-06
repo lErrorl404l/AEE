@@ -21,3 +21,4 @@ PREPS(physics,hailDamage);
 PREPS(physics,calculateHaze);
 PREPS(physics,calculateRefraction);
 PREPS(wind,getLocalWind);
+PREP(dumpState);

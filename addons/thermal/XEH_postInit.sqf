@@ -47,3 +47,6 @@ if (hasInterface) then {
     player addEventHandler ["Respawn", { [] call FUNC(stopActiveIR); }];
     [FUNC(applyActiveIR), 1] call CBA_fnc_addPerFrameHandler;
 };
+
+// Uniform per-module state dump, one line a second.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;

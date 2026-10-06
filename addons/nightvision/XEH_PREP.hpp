@@ -19,3 +19,4 @@ PREPS(ltm,ltmPFH);
 PREPS(ltm,ltmToggle);
 PREPS(ltm,ltmToggleMode);
 PREPS(ltm,ltmInit);
+PREP(dumpState);

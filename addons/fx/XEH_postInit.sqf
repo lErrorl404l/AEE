@@ -107,3 +107,6 @@ if (isNil "_fnBlastOverpressure" || isNil "_fnBlastInjury") exitWith {};
 
     [_projectile, _ammo] call FUNC(renderSupersonicTrace);
 }, QGVAR(supersonicTrace)] call EFUNC(core,installPlayerEngineHandler);
+
+// Uniform per-module state dump, one line a second.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
