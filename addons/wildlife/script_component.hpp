@@ -24,3 +24,6 @@
 #define WILDLIFE_ENVIRONMENT_CAP 256
 #define WILDLIFE_ENVIRONMENT_HORIZON 120
 #define WILDLIFE_ENVIRONMENT_HALF_LIFE 45
+
+// The spawn suitability floor.  A group below it is not spawned.  UNSOURCED.
+#define WILDLIFE_SUITABILITY_MIN 0.2
