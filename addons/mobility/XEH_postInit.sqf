@@ -19,8 +19,10 @@ if (GVAR(flightTurbulence)) then {
         BEGIN_COUNTER(applyFlightTurbulence);
 call FUNC(applyFlightTurbulence);
 END_COUNTER(applyFlightTurbulence);
-        private _perfMsg = format ["flightTurbulence %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["flightTurbulence %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("flight turbulence PFH started");
@@ -54,8 +56,10 @@ if (GVAR(flightAeroPenalty)) then {
             [_x] call FUNC(applyAirframeLoad);
             END_COUNTER(applyAirframeLoad);
         } forEach GVAR(airframeVehicles);
-        private _perfMsg = format ["airframeLoad %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(airframeVehicles)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["airframeLoad %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(airframeVehicles)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("airframe density/icing PFH started");
@@ -95,8 +99,10 @@ if (GVAR(rolloverEnabled)) then {
 [_x] call FUNC(applyRollover);
 END_COUNTER(applyRollover);
         } forEach GVAR(rolloverVehicles);
-        private _perfMsg = format ["rollover %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(rolloverVehicles)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["rollover %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(rolloverVehicles)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("vehicle rollover PFH started");
@@ -133,8 +139,10 @@ if (GVAR(terrainDragEnabled)) then {
 [_x] call FUNC(applyTerrainDrag);
 END_COUNTER(applyTerrainDrag);
         } forEach GVAR(terrainVehicles);
-        private _perfMsg = format ["terrainDrag %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(terrainVehicles)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["terrainDrag %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(terrainVehicles)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("terrain drag PFH started");
@@ -180,8 +188,10 @@ if (GVAR(vehicleCouplingEnabled)) then {
             [_x] call FUNC(applyGripLoss);
             END_COUNTER(applyGripLoss);
         } forEach GVAR(couplingVehicles);
-        private _perfMsg = format ["vehicleCoupling %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(couplingVehicles)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["vehicleCoupling %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(couplingVehicles)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("vehicle coupling PFH started");

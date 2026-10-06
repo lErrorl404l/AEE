@@ -402,8 +402,10 @@ private _drawn = 0;
 
 ["set", _soft + _core] call FUNC(outlineCanvas);
 
-private _logMsg = format [
-    "fusion outline %1 ms (targets %2, segments %3, drawn %4, half %5 deg)",
-    round ((diag_tickTime - _perfT0) * 1000), count _hot, count (_soft + _core), _drawn, _halfAngleDeg
-];
-AEE_LOG_DEBUG(_logMsg);
+if (AEE_TRACE_ON) then {
+    private _logMsg = format [
+        "fusion outline %1 ms (targets %2, segments %3, drawn %4, half %5 deg)",
+        round ((diag_tickTime - _perfT0) * 1000), count _hot, count (_soft + _core), _drawn, _halfAngleDeg
+    ];
+    AEE_LOG_DEBUG(_logMsg);
+};

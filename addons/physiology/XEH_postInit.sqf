@@ -63,8 +63,10 @@ END_COUNTER(updateDiveState);
                 missionNamespace setVariable [QGVAR(diveStates), _state];
             };
         };
-        private _perfMsg = format ["diveState %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["diveState %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 1, player] call CBA_fnc_addPerFrameHandler;
 };
 
@@ -126,8 +128,10 @@ END_COUNTER(calculateGLOC);
         missionNamespace setVariable [QGVAR(gLocStage), _stage];
         missionNamespace setVariable [QGVAR(altitudeDCSRisk), _dcsRisk];
         missionNamespace setVariable [QGVAR(gLocTolerance), _glocRes select 2];
-        private _perfMsg = format ["gloc %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["gloc %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 1, player] call CBA_fnc_addPerFrameHandler;
 };
 
@@ -140,8 +144,10 @@ if (hasInterface) then {
         BEGIN_COUNTER(applyMovementSpeed);
 [player] call FUNC(applyMovementSpeed);
 END_COUNTER(applyMovementSpeed);
-        private _perfMsg = format ["movementSpeed %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
-        AEE_LOG_DEBUG(_perfMsg);
+        if (AEE_TRACE_ON) then {
+            private _perfMsg = format ["movementSpeed %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+            AEE_LOG_DEBUG(_perfMsg);
+        };
     }, 1] call CBA_fnc_addPerFrameHandler;
 };
 

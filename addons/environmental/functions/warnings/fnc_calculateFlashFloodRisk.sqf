@@ -55,7 +55,7 @@ _risk = _risk max 0 min 1;
 missionNamespace setVariable [QGVAR(flashFloodRisk), _risk];
 
 if (_risk > 0.6 && (missionNamespace getVariable [QEGVAR(core,diagnostic), false])) then {
-    diag_log text "[AEE] HIGH FLASH FLOOD RISK — reduce vehicle movement, monitor low-lying areas";
+    AEE_LOG_WARN("HIGH FLASH FLOOD RISK — reduce vehicle movement, monitor low-lying areas");
 };
 
 _risk

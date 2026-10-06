@@ -200,11 +200,11 @@ missionNamespace setVariable [QEGVAR(core,biome), _bestCode];
 missionNamespace setVariable [QEGVAR(core,biomeName), _bestName];
 
 if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
-    diag_log text format [
-        "[AEE] Biome dynamic: %1 (%2) lat=%3 water=%4 elev=%5 | climate=%6 veg=%7",
+    AEE_LOG_INFO(format [
+        "Biome dynamic: %1 (%2) lat=%3 water=%4 elev=%5 | climate=%6 veg=%7",
         _bestCode, _bestName, _lat, _waterFrac, _meanElev,
         _climateBiome, count _vegScores
-    ];
+    ]);
 };
 
 missionNamespace setVariable [QGVAR(biomeCached), _bestCode];
