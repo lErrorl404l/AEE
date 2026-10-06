@@ -25,6 +25,22 @@
             <Original>Exhaust Shimmer Alpha</Original>
             <English>Exhaust Shimmer Alpha</English>
         </Key>
+        <Key ID="STR_AEE_FX_heatHazeEnabled_Description">
+            <Original>Couple the exhaust heat-shimmer alpha and size to the ambient temperature</Original>
+            <English>Couple the exhaust heat-shimmer alpha and size to the ambient temperature</English>
+        </Key>
+        <Key ID="STR_AEE_FX_heatHazeEnabled_Name">
+            <Original>Heat Haze</Original>
+            <English>Heat Haze</English>
+        </Key>
+        <Key ID="STR_AEE_FX_heatHazeMaxAlpha_Description">
+            <Original>Upper bound on the ambient-temperature heat-haze alpha</Original>
+            <English>Upper bound on the ambient-temperature heat-haze alpha</English>
+        </Key>
+        <Key ID="STR_AEE_FX_heatHazeMaxAlpha_Name">
+            <Original>Heat Haze Max Alpha</Original>
+            <English>Heat Haze Max Alpha</English>
+        </Key>
         <Key ID="STR_AEE_FX_lightningBrightness_Description">
             <Original>Brightness of the lightning flash lightpoint</Original>
             <English>Brightness of the lightning flash lightpoint</English>
@@ -96,6 +112,14 @@
         <Key ID="STR_AEE_FX_vehicleDustIntensity_Name">
             <Original>Vehicle Dust Intensity</Original>
             <English>Vehicle Dust Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_FX_weatherAlphaEnabled_Description">
+            <Original>Scale the blast, refract and weather particle alpha by overcast plus humidity</Original>
+            <English>Scale the blast, refract and weather particle alpha by overcast plus humidity</English>
+        </Key>
+        <Key ID="STR_AEE_FX_weatherAlphaEnabled_Name">
+            <Original>Weather Particle Alpha</Original>
+            <English>Weather Particle Alpha</English>
         </Key>
         <Key ID="STR_AEE_FX_windNoiseVolume_Description">
             <Original>Wind ambience volume scale</Original>

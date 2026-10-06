@@ -78,7 +78,17 @@ if ((_row getOrDefault ["attach", true]) && {!isNull _emitter}) then {
     _source attachTo [_emitter, [0, 0, 0]];
 };
 
+// The emitted particle colour alpha scales with overcast plus humidity
+// (aee-workshop-copy item 7, part 2), re-derived from Better Visuals
+// fn_blastWaveEffectMedium.  This is the shared particle-colour path for the
+// blast, fire and weather family; the engine overcast and the published
+// humidity are read here and the kernel stays pure.
 private _alpha = (_intensity min 1) * 0.6;
+if (missionNamespace getVariable [QGVAR(weatherAlphaEnabled), true]) then {
+    private _humidityPercent = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+    if !(_humidityPercent isEqualType 0) then { _humidityPercent = 50; };
+    _alpha = [_alpha, overcast, _humidityPercent, 1] call FUNC(weatherParticleAlpha);
+};
 private _rgb = [_colour select 0, _colour select 1, _colour select 2];
 private _params = [
     ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 9, 0],

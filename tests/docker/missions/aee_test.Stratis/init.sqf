@@ -3160,6 +3160,11 @@ private _p29Pass = 0;
     // the published target is bounded and never exceeds the object target.
     // It renders nothing.
     execVM "aee_p87_shadow_probe.sqf";
+    // PHASE 88 lives in aee_p88_particle_probe.sqf: the weather particle and
+    // heat-haze kernels are pure, so a dedicated server drives them with fixed
+    // overcast and humidity and asserts the registered settings.  It renders
+    // nothing and writes no engine weather.
+    execVM "aee_p88_particle_probe.sqf";
     // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
     // surface (scalar keys, no thermalProperties) and the TI command contract
     // resolve headless, so a dedicated server verifies what the StageTI

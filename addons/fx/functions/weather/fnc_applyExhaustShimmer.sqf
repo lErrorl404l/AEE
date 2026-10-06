@@ -452,8 +452,32 @@ private _maxMag = _prevMag * 0.5;
 // The render alpha is the declared ceiling scaled by the contrast.  It is read
 // here, before the plan, so the diagnostic can report the alpha the renderer
 // will draw.  It stays the ONLY free visibility lever.  See the header.
-private _alphaMax = missionNamespace getVariable [QGVAR(exhaustShimmerAlpha), 0.15];
-if !(_alphaMax isEqualType 0) then { _alphaMax = 0.15; };
+private _alphaSetting = missionNamespace getVariable [QGVAR(exhaustShimmerAlpha), 0.15];
+if !(_alphaSetting isEqualType 0) then { _alphaSetting = 0.15; };
+
+// Heat haze (aee-workshop-copy item 7, part 2).  The ambient temperature
+// scales the peak alpha, re-derived from Better Visuals fn_heatHaze.  The
+// kernel is pure and takes the temperature NUMBER (ambientTemperature
+// element 0), the floor 0.15 and the ceiling from the heatHazeMaxAlpha
+// setting.  A 20 C reference keeps the default look unchanged, so the change
+// is temperature coupling and not a blanket dimming.  See fnc_heatHazeAlpha.
+private _heatHazeEnabled = missionNamespace getVariable [QGVAR(heatHazeEnabled), true];
+private _heatHazeMax = missionNamespace getVariable [QGVAR(heatHazeMaxAlpha), 0.45];
+if !(_heatHazeMax isEqualType 0) then { _heatHazeMax = 0.45; };
+private _airTempC = 20;
+if (ambientTemperature isEqualType []) then {
+    if ((count ambientTemperature) > 0) then {
+        private _firstTemp = ambientTemperature select 0;
+        if (_firstTemp isEqualType 0) then { _airTempC = _firstTemp; };
+    };
+};
+private _hazeAlpha = [_airTempC, 0.15, _heatHazeMax] call FUNC(heatHazeAlpha);
+private _hazeScale = 1;
+if (_heatHazeEnabled) then {
+    private _hazeRef = [20, 0.15, _heatHazeMax] call FUNC(heatHazeAlpha);
+    _hazeScale = ((_hazeAlpha / _hazeRef) max 0.2) min 1.5;
+};
+private _alphaMax = _alphaSetting * _hazeScale;
 
 // The diagnostic throttle.  One batch per _LOG_INTERVAL, timed on diag_tickTime
 // because the caller drives this on the environment tick, not per frame.
@@ -481,6 +505,20 @@ if (_logNow) then {
     if (_gasOverride isEqualType 0 && _gasOverride > 0) then { _gasC = _gasOverride; };
     private _depthOverride = _cand getVariable ["aee_exhaustPlumeM", -1];
     if (_depthOverride isEqualType 0 && _depthOverride > 0) then { _depth = _depthOverride; };
+
+    // Heat-haze sprite size (aee-workshop-copy item 7, part 2).  One draw per
+    // vehicle, held on the vehicle, so the sprite size is stable across
+    // ticks.  The kernel is pure; 1.0 is the identity, and the pending
+    // overdraw budget recomputes from the scaled depth.  See fnc_heatHazeSize.
+    if (_heatHazeEnabled) then {
+        private _hazeRng = _cand getVariable ["aee_exhaustHazeRng", -1];
+        if !(_hazeRng isEqualType 0) then { _hazeRng = -1; };
+        if (_hazeRng < 0) then {
+            _hazeRng = random 1;
+            _cand setVariable ["aee_exhaustHazeRng", _hazeRng];
+        };
+        _depth = _depth * ([_hazeRng] call FUNC(heatHazeSize));
+    };
 
     private _contrast = [_gasC, _airC, _rhoRel] call EFUNC(mobility,calculateThermalRefraction);
     private _mag = abs _contrast;

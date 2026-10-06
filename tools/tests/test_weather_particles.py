@@ -31,10 +31,18 @@ from sqf_lite import run_sqf  # noqa: E402
 
 FX = REPO / "addons" / "fx"
 PARTICLE = FX / "functions" / "particle"
+WEATHER = FX / "functions" / "weather"
 ALPHA = PARTICLE / "fnc_weatherParticleAlpha.sqf"
 HAZE_ALPHA = PARTICLE / "fnc_heatHazeAlpha.sqf"
 HAZE_SIZE = PARTICLE / "fnc_heatHazeSize.sqf"
 PREP = FX / "XEH_PREP.hpp"
+TRACE = PARTICLE / "fnc_renderSupersonicTrace.sqf"
+EMIT = PARTICLE / "fnc_particlePipelineEmit.sqf"
+SHIMMER = WEATHER / "fnc_applyExhaustShimmer.sqf"
+INIT_SETTINGS = FX / "initSettings.inc.sqf"
+STRINGTABLE = FX / "stringtable.xml"
+CONFIG_DOCS = REPO / "docs" / "wiki" / "chapters" / "configuration.qmd"
+CHANGED_FX = (TRACE, EMIT, SHIMMER)
 
 
 # ─── Python mirror of the kernel spec ───────────────────────────────────────
@@ -186,6 +194,74 @@ class TestPrepEntries(unittest.TestCase):
         ):
             with self.subTest(entry=entry):
                 self.assertIn(entry, prep)
+
+
+class TestWeatherWiring(unittest.TestCase):
+    def test_blast_alpha_uses_overcast_and_humidity(self) -> None:
+        # The shared particle-colour path (the blast, fire and weather family)
+        # and the refract shock trace both call the kernel with the engine
+        # overcast and the published humidity.
+        for path in (TRACE, EMIT):
+            live = live_source(path)
+            with self.subTest(path=path.name):
+                self.assertIn("FUNC(weatherParticleAlpha)", live)
+                self.assertIn("overcast", live)
+                self.assertIn("QEGVAR(core,currentHumidity)", live)
+
+    def test_heat_haze_is_wired_to_the_exhaust_shimmer(self) -> None:
+        live = live_source(SHIMMER)
+        self.assertIn("FUNC(heatHazeAlpha)", live)
+        self.assertIn("FUNC(heatHazeSize)", live)
+        self.assertIn("ambientTemperature", live)
+
+    def test_no_engine_weather_write(self) -> None:
+        # The change reads engine weather and never writes it.
+        banned = ("setOvercast", "setRain", "setFog", "setHumidity", "setWind")
+        for path in CHANGED_FX:
+            live = live_source(path)
+            for token in banned:
+                with self.subTest(path=path.name, token=token):
+                    self.assertNotIn(token, live)
+
+
+class TestWeatherSettings(unittest.TestCase):
+    def test_settings_register_in_the_fx_particles_group(self) -> None:
+        live = live_source(INIT_SETTINGS)
+        self.assertRegex(
+            live,
+            r'AEE_SETTING_CHECKBOX\(weatherAlphaEnabled,"AEE FX","Particles",true\)',
+        )
+        self.assertRegex(
+            live,
+            r'AEE_SETTING_CHECKBOX\(heatHazeEnabled,"AEE FX","Particles",true\)',
+        )
+        self.assertRegex(
+            live,
+            r'AEE_SETTING_SLIDER\(heatHazeMaxAlpha,"AEE FX","Particles",0,0\.45,0\.45,2\)',
+        )
+
+    def test_stringtable_carries_the_keys(self) -> None:
+        text = STRINGTABLE.read_text(encoding="utf-8")
+        for key in (
+            "STR_AEE_FX_weatherAlphaEnabled_Name",
+            "STR_AEE_FX_weatherAlphaEnabled_Description",
+            "STR_AEE_FX_heatHazeEnabled_Name",
+            "STR_AEE_FX_heatHazeEnabled_Description",
+            "STR_AEE_FX_heatHazeMaxAlpha_Name",
+            "STR_AEE_FX_heatHazeMaxAlpha_Description",
+        ):
+            with self.subTest(key=key):
+                self.assertIn(key, text)
+
+    def test_configuration_docs_are_regenerated(self) -> None:
+        doc = CONFIG_DOCS.read_text(encoding="utf-8")
+        for name in (
+            "aee_fx_weatherAlphaEnabled",
+            "aee_fx_heatHazeEnabled",
+            "aee_fx_heatHazeMaxAlpha",
+        ):
+            with self.subTest(name=name):
+                self.assertIn(name, doc)
 
 
 if __name__ == "__main__":

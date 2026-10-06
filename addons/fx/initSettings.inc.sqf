@@ -12,6 +12,18 @@ AEE_SETTING_SLIDER(vehicleDustDensity,"AEE FX","Particles",0.01,0.2,0.08,2);
 // ── Exhaust ─────────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(exhaustShimmerAlpha,"AEE FX","Particles",0,0.5,0.15,0);
 
+// ── Weather coupling (aee-workshop-copy item 7, part 2) ─────────────────────
+// The weather alpha multiplies the blast, refract and weather particle
+// colours by (overcast + humidity / 100).  The heat haze couples the exhaust
+// shimmer to the ambient temperature, with its own alpha ceiling.
+// NOTE: the plan writes the typo weatherAlphalEnabled; the shipped name is
+// weatherAlphaEnabled.
+AEE_SETTING_CHECKBOX(weatherAlphaEnabled,"AEE FX","Particles",true);
+
+AEE_SETTING_CHECKBOX(heatHazeEnabled,"AEE FX","Particles",true);
+
+AEE_SETTING_SLIDER(heatHazeMaxAlpha,"AEE FX","Particles",0,0.45,0.45,2);
+
 // ── Rain ────────────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(rainDropDensity,"AEE FX","Particles",0.001,0.02,0.006,3);
 
