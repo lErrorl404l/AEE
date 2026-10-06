@@ -143,7 +143,10 @@ private _callback = {
             };
             private _index = (_sum mod (count _fearMedia));
             private _fearSound = _fearMedia select _index;
-            [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE] call FUNC(playOneShot);
+            // The emitter is the fleeing animal itself, so the fear call
+            // tracks the animal as it runs.  Generic: whatever the fauna
+            // object is, the sound follows it.
+            [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE, _agent] call FUNC(playOneShot);
         };
         _recovery = 6;
     } else {

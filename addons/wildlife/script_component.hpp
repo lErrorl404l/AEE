@@ -8,6 +8,12 @@
 #define WILDLIFE_SOUND_MAX_DISTANCE 120
 #define WILDLIFE_ANIMAL_CAP 16
 
+// Attached emitter policy (task T27).  The cap bounds the attached looping
+// sources and the radius bounds which animals are near enough to carry one,
+// so the attachment cost is flat.  Both are UNSOURCED modelling choices.
+#define WILDLIFE_EMITTER_CAP 8
+#define WILDLIFE_EMITTER_RADIUS 150
+
 // The disturbance field policy is owned by aee_ai.  The wildlife tick is the
 // only cross-addon consumer, so the cap and the horizon are mirrored here
 // rather than reaching into the aee_ai header.  Keep them in step with
