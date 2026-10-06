@@ -1,4 +1,6 @@
 PREP(getSpeciesMatch);
+PREP(getCallPattern);
+PREP(getSeason);
 PREP(speciesDeprecation);
 PREP(speciesForBiome);
 PREP(spawnBudget);

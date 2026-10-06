@@ -22,6 +22,8 @@ FUNCS = WILDLIFE / "functions"
 DATA = WILDLIFE / "data"
 
 MATCH = FUNCS / "fnc_getSpeciesMatch.sqf"
+CALL_PATTERN = FUNCS / "fnc_getCallPattern.sqf"
+SEASON = FUNCS / "fnc_getSeason.sqf"
 CORPUS = DATA / "ecology_corpus.sqf"
 
 
@@ -148,6 +150,149 @@ class TestSpeciesMatchSourceContracts(unittest.TestCase):
         text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(getSpeciesMatch)", text)
         self.assertIn("PREP(speciesDeprecation)", text)
+
+
+def call_pattern(
+    group_id,
+    sun_elevation,
+    hour,
+    month,
+    temperature,
+    wind=0,
+    rain=0,
+    pattern=None,
+):
+    if pattern is None:
+        pattern = [0.6, 1, 0.5, 0.05, 0.05, 0.4, 0]
+    return run_sqf(
+        CALL_PATTERN,
+        [group_id, sun_elevation, hour, month, temperature, wind, rain, pattern],
+    )
+
+
+def get_season(month, koppen="Cfb"):
+    return run_sqf(SEASON, [month, koppen])
+
+
+CALL_PATTERN_BIRD = "temperate_bird_dawn"
+CALL_PATTERN_CRICKET = [0.3, 0, 0, 0, 0, 0.6, 1]
+
+
+class TestGetCallPattern(unittest.TestCase):
+    """fnc_getCallPattern runs from the real SQF."""
+
+    def test_the_dawn_chorus_exceeds_midday(self):
+        predawn = call_pattern(CALL_PATTERN_BIRD, -6, 5, 6, 10)
+        midday = call_pattern(CALL_PATTERN_BIRD, 60, 12, 6, 10)
+        self.assertGreater(predawn, midday)
+        self.assertGreater(predawn, 0)
+
+    def test_the_cricket_is_positive_at_ten_celsius(self):
+        value = call_pattern(
+            "temperate_insect_cricket", -30, 22, 6, 10, pattern=CALL_PATTERN_CRICKET
+        )
+        self.assertGreater(value, 0)
+
+    def test_the_cricket_is_zero_below_the_dolbear_floor(self):
+        value = call_pattern(
+            "temperate_insect_cricket", -30, 22, 6, 2, pattern=CALL_PATTERN_CRICKET
+        )
+        self.assertEqual(value, 0)
+
+    def test_rain_suppresses_the_call(self):
+        dry = call_pattern(CALL_PATTERN_BIRD, -6, 5, 6, 10, rain=0)
+        wet = call_pattern(CALL_PATTERN_BIRD, -6, 5, 6, 10, rain=1)
+        self.assertLess(wet, dry)
+
+    def test_wind_suppresses_the_call(self):
+        calm = call_pattern(CALL_PATTERN_BIRD, -6, 5, 6, 10, wind=0)
+        windy = call_pattern(CALL_PATTERN_BIRD, -6, 5, 6, 10, wind=20)
+        self.assertLess(windy, calm)
+
+    def test_the_cicada_is_silent_below_the_horizon(self):
+        value = call_pattern("temperate_insect_cicada", -30, 12, 6, 25)
+        self.assertEqual(value, 0)
+
+    def test_the_amphibian_chorus_is_gated_by_rain(self):
+        dry = call_pattern(
+            "temperate_amphibian",
+            -30,
+            22,
+            6,
+            10,
+            rain=0,
+            pattern=[0.4, 0.1, 0, 0, 0, 0.5, 0.9],
+        )
+        wet = call_pattern(
+            "temperate_amphibian",
+            -30,
+            22,
+            6,
+            10,
+            rain=0.6,
+            pattern=[0.4, 0.1, 0, 0, 0, 0.5, 0.9],
+        )
+        self.assertLess(dry, wet)
+
+    def test_the_probability_is_bounded(self):
+        value = call_pattern(CALL_PATTERN_BIRD, 0, 6, 6, 10, rain=0, wind=0)
+        self.assertGreaterEqual(value, 0)
+        self.assertLessEqual(value, 1)
+
+
+class TestGetSeason(unittest.TestCase):
+    """fnc_getSeason runs from the real SQF."""
+
+    def test_each_month_returns_a_stable_enum_and_factor(self):
+        for month in range(1, 13):
+            first = get_season(month)
+            second = get_season(month)
+            self.assertEqual(first, second)
+            self.assertIn(first[0], (0, 1, 2, 3), month)
+            self.assertGreaterEqual(first[1], 0)
+            self.assertLessEqual(first[1], 1)
+
+    def test_the_seasons_map_to_the_months(self):
+        self.assertEqual(get_season(4)[0], 1)
+        self.assertEqual(get_season(7)[0], 2)
+        self.assertEqual(get_season(10)[0], 3)
+
+    def test_winter_is_december_january_february(self):
+        self.assertEqual(get_season(1)[0], 0)
+        self.assertEqual(get_season(12)[0], 0)
+
+    def test_the_tropics_swing_less(self):
+        self.assertLess(get_season(7, "Af")[1], get_season(7, "Cfb")[1])
+
+
+class TestTemporalSourceContracts(unittest.TestCase):
+    """The wiring the harness cannot execute."""
+
+    def test_the_call_pattern_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", CALL_PATTERN.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_season_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", SEASON.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_temporal_kernels_are_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(getCallPattern)", text)
+        self.assertIn("PREP(getSeason)", text)
+
+    def test_the_dolbear_inverse_is_stated_with_its_band(self):
+        code = CALL_PATTERN.read_text(encoding="utf-8")
+        self.assertIn("7 * T_C - 30", code)
+        self.assertIn("5 to 30 C", code)
 
 
 if __name__ == "__main__":
