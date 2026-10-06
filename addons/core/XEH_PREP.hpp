@@ -18,6 +18,7 @@ PREPS(geo,formatMgrs);
 PREPS(geo,parseMgrs);
 PREPS(geo,worldToMgrs);
 PREPS(geo,mgrsToWorld);
+PREPS(geo,gnssErrorEllipse);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
