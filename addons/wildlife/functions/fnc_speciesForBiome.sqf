@@ -1,18 +1,18 @@
 #include "..\script_component.hpp"
 
 /*
-Biome species selector kernel (wildlife ecology).
+Biome species selector (DEPRECATED).
 
-Pure: no missionNamespace, no GVAR or EGVAR, no engine command, no random.
-It turns the biome, the time of day, the water signal, the vegetation score
-and a mission seed into a deterministic array of [class, count] rows.  Two
-clients at the same cell and time get the same mix.  The count scales with
-the vegetation score, so a zero density and a zero vegetation score return
-nothing.
+Deprecated: use aee_wildlife_fnc_getSpeciesMatch, which reads the true sun
+elevation, the air temperature and the month.  This shim keeps the old
+signature and the old [class, count] output for the callers that still use
+it.  It describes the legacy table as one group per family and forwards the
+family, overlay, season, temperature and activity decision to the matcher,
+then maps the surviving families back to the legacy classes.  The single INFO
+deprecation is emitted by fnc_speciesDeprecation.
 
-The hashed count uses a small integer hash of the seed and the class index,
-so a one-step seed change moves the mix.  The hash stays inside the exactly
-representable integer range, so it is identical on every machine.
+Pure: no engine command and no random.  The fixed temperature and month stand
+in for inputs the legacy callers never passed.
 
 Arguments:
   0: String - the Koppen biome code
@@ -38,63 +38,43 @@ params [
 if (_table isEqualTo []) exitWith { [] };
 if (_vegScore <= 0) exitWith { [] };
 
-private _family = "temperate";
-private _first = "";
-if (_biome isNotEqualTo "") then {
-    _first = toLower (_biome select [0, 1]);
-};
-if (_first == "a") then {
-    _family = "tropical";
-} else {
-    if (_first == "b") then {
-        _family = "arid";
-    } else {
-        if ((_first == "d") || (_first == "e")) then {
-            _family = "cold";
-        };
-    };
+[] call FUNC(speciesDeprecation);
+
+// Describe the legacy table as one open group per family, so the matcher owns
+// the family, overlay, season, temperature and activity decision.
+private _corpus = [];
+for "_t" from 0 to ((count _table) - 1) do {
+    private _family = (_table select _t) select 0;
+    _corpus pushBack [
+        _family, _family, [], "diurnal",
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], [-60, 60],
+        [100, 0], [1, 0, false], "mixed",
+        [0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1], false, "none", "R"
+    ];
 };
 
-private _keys = [_family];
-if (_waterFrac > 0.5) then {
-    _keys pushBack "water";
-};
+private _sunElevationDeg = 30;
+if (_isNight) then { _sunElevationDeg = -20; };
 
-// Collect the classes for every selected overlay, without duplicates.
-private _classes = [];
-for "_k" from 0 to ((count _keys) - 1) do {
-    private _key = _keys select _k;
-    for "_t" from 0 to ((count _table) - 1) do {
-        private _row = _table select _t;
-        if ((_row select 0) == _key) then {
-            private _list = _row select 1;
-            for "_c" from 0 to ((count _list) - 1) do {
-                private _cls = _list select _c;
-                private _seen = false;
-                for "_s" from 0 to ((count _classes) - 1) do {
-                    if ((_classes select _s) == _cls) then { _seen = true; };
-                };
-                if (!_seen) then { _classes pushBack _cls; };
-            };
-        };
-    };
-};
+private _matches = [
+    _biome, _sunElevationDeg, 18, 6, _waterFrac, _vegScore,
+    "ground", 0, [0, 0, 0], _seed, _corpus
+] call FUNC(getSpeciesMatch);
 
 private _span = 1 + (floor ((_vegScore max 0) * 2));
 private _out = [];
-for "_i" from 0 to ((count _classes) - 1) do {
-    private _cls = _classes select _i;
-    private _active = true;
-    if (_isNight) then {
-        if ((_cls == "Hen_random_F") || (_cls == "Cock_random_F") || (_cls == "Cock_white_F")) then {
-            _active = false;
+for "_m" from 0 to ((count _matches) - 1) do {
+    private _family = (_matches select _m) select 0;
+    for "_t" from 0 to ((count _table) - 1) do {
+        if (((_table select _t) select 0) == _family) then {
+            private _classes = (_table select _t) select 1;
+            for "_c" from 0 to ((count _classes) - 1) do {
+                private _class = _classes select _c;
+                private _hash = ((_seed * 101) + ((_c + 1) * 37) + ((_t + 1) * 53)) mod 997;
+                if (_hash < 0) then { _hash = -_hash; };
+                _out pushBack [_class, 1 + (_hash mod _span)];
+            };
         };
-    };
-    if (_active) then {
-        private _hash = ((_seed * 101) + ((_i + 1) * 37)) mod 997;
-        if (_hash < 0) then { _hash = -_hash; };
-        private _count = 1 + (_hash mod _span);
-        _out pushBack [_cls, _count];
     };
 };
 

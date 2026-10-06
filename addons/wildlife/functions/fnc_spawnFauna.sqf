@@ -39,16 +39,15 @@ private _animals = missionNamespace getVariable [QGVAR(animalsEnabled), false];
 if !(_animals isEqualType true) then { _animals = false; };
 if (!_animals) exitWith { [] };
 
-private _table = missionNamespace getVariable [QGVAR(speciesTable), []];
-if !(_table isEqualType []) then { _table = []; };
-if (_table isEqualTo []) exitWith { [] };
+private _ecologyCorpus = missionNamespace getVariable [QGVAR(ecologyCorpus), []];
+if !(_ecologyCorpus isEqualType []) then { _ecologyCorpus = []; };
+if (_ecologyCorpus isEqualTo []) exitWith { [] };
 
 private _density = missionNamespace getVariable [QGVAR(density), 1.0];
 if !(_density isEqualType 0) then { _density = 1.0; };
 if (_density <= 0) exitWith { [] };
 
 private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(core,readState);
-private _isNight = sunOrMoon < 0.5;
 
 private _waterFrac = 0;
 private _coast = [_position, 200] call EFUNC(environmental,getCoastDistance);
@@ -66,8 +65,49 @@ if (_signals isEqualType []) then {
 };
 private _vegScore = _veg * _density;
 
+// The matcher reads the true conditions, not a night boolean.  The sun
+// elevation, the air temperature and the month come from the core state.
+private _sunElevation = [QEGVAR(core,currentSunElevation), 30, 1] call EFUNC(core,readState);
+private _temperature = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+private _month = date select 1;
+
+private _structureFrac = 0;
+if ((count _signals) >= 3) then {
+    private _structVotes = _signals select 2;
+    if (_structVotes isEqualType 0) then { _structureFrac = ((_structVotes max 0) min 1); };
+};
+
+private _assetMap = missionNamespace getVariable [QGVAR(assetMap), []];
+if !(_assetMap isEqualType []) then { _assetMap = []; };
+
 private _seed = (floor (_position select 0)) + ((floor (_position select 1)) * 31) + (floor CBA_missionTime);
-private _species = [_biome, _isNight, _waterFrac, _vegScore, _seed, _table] call FUNC(speciesForBiome);
+private _matches = [
+    _biome, _sunElevation, _temperature, _month, _waterFrac, _vegScore,
+    "ground", _structureFrac, [0, 0], _seed, _ecologyCorpus
+] call FUNC(getSpeciesMatch);
+
+// Map each matched group to the vanilla fauna classes of its family.  The
+// group id carries the family as its first token ("temperate_bird_dawn").
+private _species = [];
+for "_m" from 0 to ((count _matches) - 1) do {
+    private _match = _matches select _m;
+    private _family = ((_match select 0) splitString "_") select 0;
+    private _count = 1 + (floor ((_match select 1) * 4));
+    for "_a" from 0 to ((count _assetMap) - 1) do {
+        private _assetRow = _assetMap select _a;
+        if (((_assetRow select 0) == "fauna") && ((_assetRow select 1) == _family)) then {
+            private _classes = _assetRow select 4;
+            for "_c" from 0 to ((count _classes) - 1) do {
+                private _class = _classes select _c;
+                private _seen = false;
+                for "_s" from 0 to ((count _species) - 1) do {
+                    if (((_species select _s) select 0) == _class) then { _seen = true; };
+                };
+                if (!_seen) then { _species pushBack [_class, _count]; };
+            };
+        };
+    };
+};
 
 private _forceSpecies = missionNamespace getVariable ["aee_wildlife_forceSpecies", ""];
 if !(_forceSpecies isEqualType "") then { _forceSpecies = ""; };
