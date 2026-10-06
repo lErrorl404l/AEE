@@ -88,6 +88,7 @@ def main():
         "tools/tests/test_geolocation.py",
         "tools/tests/test_geo_positioning.py",
         "tools/tests/test_mgrs.py",
+        "tools/tests/test_gnss.py",
         "tools/tests/test_material.py",
         "tools/tests/test_equipment_classifier.py",
         "tools/tests/test_device_values.py",
