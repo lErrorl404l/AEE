@@ -16,6 +16,8 @@ PREPS(geo,latLonToUtm);
 PREPS(geo,utmToLatLon);
 PREPS(geo,formatMgrs);
 PREPS(geo,parseMgrs);
+PREPS(geo,worldToMgrs);
+PREPS(geo,mgrsToWorld);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
