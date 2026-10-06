@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
-LWIR band radiance (FLIR measurement equation, issue #196).
+Band-limited thermal radiance (FLIR measurement equation, issue #196).
 
 Real FLIR does not render temperature - it measures RADIANCE integrated
 over the LWIR band, and the apparent radiance reaching the sensor has
@@ -31,8 +31,13 @@ reflection term, and it cannot represent the night behaviour that makes
 real imagery look right: a low-emissivity surface (bare metal, eps ~0.1)
 reflects the cold sky and reads DARK even when physically warm.
 
-Band: the sim integrates over 8-14 um, spanning the fielded LWIR systems
-(FLIR Tau 2: 7.5-13.5 um; AN/PAS-13C/E: 8-12 um; NETD < 50 mK).
+Band: the integral is parameterised by two band edges in metres.  The
+default is the LWIR 8-14 um window, spanning the fielded LWIR systems
+(FLIR Tau 2: 7.5-13.5 um; AN/PAS-13C/E: 8-12 um; NETD < 50 mK).  A caller
+passes the MWIR 3-5 um pair for a cooled InSb or MWIR MCT detector.  The
+band edges come from fnc_resolveThermalBand, which reads the per-device
+band token.  Only the integration limits change; the Planck integrand is
+unchanged.
 
 The reflection temperature is the sky/ground mix the surface sees: a
 horizontal panel sees the sky dome above and the ground below, weighted
@@ -63,11 +68,15 @@ Arguments:
   6: path temperature (NUMBER, C) - air temperature along the path, for
      the isothermal path radiance W_atm; default 15, and inert while the
      transmission default of 1 holds
+  7: trace flag (BOOL) - the hoisted module trace switch
+  8: band short edge (NUMBER, m) - default 8e-6, the LWIR window start
+  9: band long edge (NUMBER, m) - default 14e-6, the LWIR window end
 
 Return Value:
   NUMBER - apparent band radiance (W/m2/sr), the value a FLIR sensor
   reads.  Monotonic in surface temperature for fixed environment, so it
-  maps cleanly through the scene AGC.
+  maps cleanly through the scene AGC.  A band whose short edge is not
+  positive or whose long edge is not longer is refused with -1.
 */
 private _perfT0 = diag_tickTime;
 params [
@@ -82,8 +91,32 @@ params [
     // to three namespace lookups, so this kernel is called per selection and
     // must not evaluate it per selection.  A caller that omits it keeps the
     // old behaviour (trace on).
-    ["_traceOn", true]
+    ["_traceOn", true],
+    // Band edges in metres.  The LWIR 8-14 um default keeps every existing
+    // caller bit-identical.  A caller resolves the per-device band token with
+    // fnc_resolveThermalBand and passes the pair here.
+    ["_lambda1M", 8e-6, [0]],
+    ["_lambda2M", 14e-6, [0]],
+    // Relative humidity, percent, for the band sky model (T3).  Default 50
+    // matches the reference condition of the transmission kernel.
+    ["_humidityPct", 50, [0]],
+    // The per-device band token for the band sky model (T3).  Default lwir.
+    ["_bandToken", "lwir", [""]],
+    // Reflected-solar band radiance W/m2/sr (T4).  It already carries the
+    // surface reflectance (1 - eps).  The default 0 keeps every LWIR caller
+    // bit-identical.  A caller passes the result of
+    // fnc_calculateReflectedSolarBand, which is zero for LWIR and at night.
+    ["_wSolar", 0, [0]]
 ];
+
+// A band must be a positive, increasing pair.  Refuse a bad one with -1, the
+// same refusal discipline the other kernels use.  SQF NaN compares false
+// against everything, so finite is checked before the arithmetic.
+if !(_lambda1M isEqualType 0) exitWith { -1 };
+if !(_lambda2M isEqualType 0) exitWith { -1 };
+if !(finite _lambda1M) exitWith { -1 };
+if !(finite _lambda2M) exitWith { -1 };
+if (_lambda1M <= 0 || _lambda2M <= _lambda1M) exitWith { -1 };
 
 // Transmission is clamped to the physical 0..1 range; a non-finite value
 // falls back to 1, the old close-range behaviour, rather than poisoning the
@@ -98,69 +131,28 @@ private _tSurfK = _tSurf + 273.15;
 private _tAirK = (_tAir + 273.15) max 200 min 350;
 private _tGroundK = _tGround + 273.15;
 
-// ─── Sky temperature for the 8-14 um sensor band ──────────────────────────
-// The sensor sees the ATMOSPHERIC WINDOW (8-14 um), which is
-// semi-transparent - the sky in that band is FAR colder than the
-// total-longwave sky.  Measured values: Tebo (1965), "Effective Clear
-// Sky Temperatures in the 8-to 14-Micron Band", Flagstaff AZ, found
-// whole-sky band temperatures of about -21 to -82 C; Aase & Idso (1981)
-// give explicit 8-14 um band emissivity equations.  The total-longwave
-// Swinbank correlation (T_sky = 0.0552*T^1.5, ~-3 C at 15 C air) is NOT
-// applicable to the band: it overestimates the reflected-sky term by
-// 20-50 %.  A clear-sky band temperature ~35 K below air is the
-// temperate-condition mid-range of the Tebo measurements; overcast
-// lifts it toward air temperature (cloud fills the window).
+// ─── Sky temperature for the sensor band ──────────────────────────────────
+// The sensor sees the ATMOSPHERIC WINDOW, which is semi-transparent, so the
+// sky in the band is far colder than the total-longwave sky.  The band sky
+// model fnc_calculateSkyRadiance follows the air temperature, the humidity
+// and the overcast.  It replaces the retired fixed offset.  At 15 C and
+// 50 percent humidity the clear-sky band temperature is about -16 C, within
+// 5 K of the old offset, so night cold-sky contrast does not regress.
 private _overcast = overcast max 0 min 1;
-private _tSkyK = _tAirK - 35;
-_tSkyK = _tSkyK + (_tAirK - _tSkyK) * _overcast;
+private _tSkyC = [_bandToken, _tAir, _humidityPct, _overcast] call FUNC(calculateSkyRadiance);
+private _tSkyK = _tSkyC + 273.15;
 
 // ─── Reflected environment: sky/ground mix by view factor ────────────────
 private _tReflK = _fGround * _tGroundK + (1 - _fGround) * _tSkyK;
 
-// ─── Planck band integral (8-14 um), exact ───────────────────────────────
-// L_band = C * T^4 * [I(z1) - I(z2)],  z_i = c2 / (lambda_i * T),
-// I(z) = sum_n exp(-n z) (z^3/n + 3 z^2/n^2 + 6 z/n^3 + 6/n^4).
-// C = 2 k^4 / (h^3 c^2) = 2.779416505e-9 W m^-2 sr^-1 K^-4 and
-// c2 = h c / k = 1.438776877e-2 m K, both from CODATA 2022.
-private _fnRad = {
-    params ["_tk"];
-    _tk = (_tk max 100) min 2000;   // numerical domain guard, not a physical clamp
-    private _z1 = 1.438776877e-2 / (8e-6 * _tk);
-    private _z2 = 1.438776877e-2 / (14e-6 * _tk);
-    private _z1s = _z1 * _z1;
-    private _z1c = _z1s * _z1;
-    private _z2s = _z2 * _z2;
-    private _z2c = _z2s * _z2;
-    private _b1 = exp (-_z1);
-    private _b2 = exp (-_z2);
-    private _e1 = _b1;
-    private _e2 = _b2;
-    private _i1 = 0;
-    private _i2 = 0;
-    for "_n" from 1 to 8 do {
-        private _n2 = _n * _n;
-        private _n3 = _n2 * _n;
-        private _n4 = _n3 * _n;
-        _i1 = _i1 + _e1 * (_z1c / _n + 3 * _z1s / _n2 + 6 * _z1 / _n3 + 6 / _n4);
-        _i2 = _i2 + _e2 * (_z2c / _n + 3 * _z2s / _n2 + 6 * _z2 / _n3 + 6 / _n4);
-        _e1 = _e1 * _b1;
-        _e2 = _e2 * _b2;
-    };
-    2.779416505e-9 * (_tk ^ 4) * (_i2 - _i1)
-};
-
-// ─── FLIR 3-term radiance ─────────────────────────────────────────────────
-// The object and reflection terms are multiplied by the transmission tau,
-// and the path term (1 - tau) * W_atm is added.  With the default tau = 1
-// the path term is exactly zero and the result is the old two-term value.
-// The reflected term is (1-eps) * W(T_refl): a low-eps surface reflects the
-// environment (cold sky at night) more than it emits - the physics behind
-// "bare metal reads dark at night".
-private _wObj = _tSurfK call _fnRad;
-private _wRefl = _tReflK call _fnRad;
+// ─── Planck band integral, exact ──────────────────────────────────────────
+// The integral lives once, in fnc_planckBandRadiance.  See that kernel for
+// the cumulative-blackbody series and the CODATA 2022 constants.
+private _wObj = [_tSurfK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
+private _wRefl = [_tReflK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
 private _tPathK = (_tPath + 273.15) max 200 min 350;
-private _wAtm = _tPathK call _fnRad;
-private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl);
+private _wAtm = [_tPathK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
+private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl + _wSolar);
 private _wBand = _wTransmitted + (1 - _tau) * _wAtm;
 if (_traceOn) then {
     // The clock read above is deliberate and unconditional.  One engine call
