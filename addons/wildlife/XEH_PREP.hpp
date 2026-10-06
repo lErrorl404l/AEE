@@ -1,6 +1,7 @@
 PREP(getSpeciesMatch);
 PREP(speciesSound);
 PREP(pickBedSource);
+PREP(soundTick);
 PREP(getCallPattern);
 PREP(getSeason);
 PREP(vegScore);

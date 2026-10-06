@@ -8,6 +8,7 @@ read the engine wiring, which the harness cannot execute.
 Run: python3 -m unittest tools.tests.test_wildlife -v
 """
 
+import math
 import re
 import sys
 import unittest
@@ -1110,6 +1111,116 @@ class TestSoundDefectFixes(unittest.TestCase):
         self.assertIn("call FUNC(pickBedSource)", text)
         for _key, source, _distance, _gain in load_manifest():
             self.assertIn(".", source, source)
+
+
+PICK_BED = FUNCS / "fnc_pickBedSource.sqf"
+SOUND_TICK = FUNCS / "fnc_soundTick.sqf"
+CALL_PATTERN = FUNCS / "fnc_getCallPattern.sqf"
+
+# The corpus temporal bins for the two groups the day fixture drives:
+# pre_dawn, dawn, morning, midday, afternoon, dusk, night.
+BIRD_BINS = [0.6, 1, 0.5, 0.05, 0.05, 0.4, 0]
+CRICKET_BINS = [0.3, 0, 0, 0, 0, 0.6, 1]
+
+
+def sun_elevation(hour):
+    """A simple diurnal sun elevation, degrees, for the day fixture."""
+    if 6 <= hour < 18:
+        return 60.0 * math.sin(math.pi * (hour - 6) / 12)
+    return -30.0
+
+
+def sound_tick(hour, sun_elev, month, temp, wind, rain, gain, mix, seed=7):
+    """Run fnc_soundTick over the real asset map with the real pattern kernel."""
+    return run_sqf(
+        SOUND_TICK,
+        [
+            hour,
+            sun_elev,
+            month,
+            temp,
+            wind,
+            rain,
+            gain,
+            mix,
+            load_asset_map(),
+            [],
+            seed,
+        ],
+        globals_={
+            "__FUNC__getCallPattern": lambda *a: run_sqf(CALL_PATTERN, list(a)),
+            "__FUNC__speciesSound": lambda *a: run_sqf(SPECIES_SOUND, list(a)),
+        },
+    )
+
+
+class TestSoundTick(unittest.TestCase):
+    """fnc_soundTick runs from the real SQF over a simulated day."""
+
+    def test_the_bird_emission_count_peaks_at_dawn_and_lulls_midday(self):
+        counts = []
+        for hour in range(24):
+            mix = [["temperate_bird_dawn", "songbird", 1.0, BIRD_BINS]]
+            emitted = sound_tick(hour, sun_elevation(hour), 6, 18, 0, 0, 1.0, mix)
+            counts.append(len(emitted))
+        peak = max(range(24), key=lambda h: counts[h])
+        self.assertIn(peak, (5, 6, 7, 8), counts)
+        self.assertGreater(counts[peak], 0)
+        # The mid-day lull is near silence against the dawn peak.
+        self.assertLess(counts[13], counts[peak] / 10)
+
+    def test_a_cricket_at_10c_emits_at_the_dolbear_rate_and_at_2c_is_silent(self):
+        mix = lambda: [["temperate_insect_cricket", "cricket", 1.0, CRICKET_BINS]]
+        hot = sound_tick(23, -30, 6, 10, 0, 0, 1.0, mix())
+        cold = sound_tick(23, -30, 6, 2, 0, 0, 1.0, mix())
+        mild = sound_tick(23, -30, 6, 6, 0, 0, 1.0, mix())
+        self.assertGreater(len(hot), 0)
+        self.assertEqual(len(cold), 0)
+        # The Dolbear rate rises with the temperature.
+        self.assertGreater(len(hot), len(mild))
+        self.assertGreater(len(mild), 0)
+
+    def test_rain_suppresses_the_emissions(self):
+        mix = [["temperate_bird_dawn", "songbird", 1.0, BIRD_BINS]]
+        dry = sound_tick(7, 30, 6, 18, 0, 0, 1.0, mix)
+        wet = sound_tick(7, 30, 6, 18, 0, 1.0, 1.0, mix)
+        self.assertGreater(len(dry), len(wet))
+
+    def test_a_fixed_seed_gives_the_same_schedule(self):
+        mix = [["temperate_bird_dawn", "songbird", 1.0, BIRD_BINS]]
+        self.assertEqual(
+            sound_tick(7, 30, 6, 18, 0, 0, 1.0, mix, 42),
+            sound_tick(7, 30, 6, 18, 0, 0, 1.0, mix, 42),
+        )
+
+    def test_a_group_with_zero_weight_emits_nothing(self):
+        # The alarm gate: a group whose call did not fire carries weight zero.
+        mix = [["temperate_bird_dawn", "songbird", 0.0, BIRD_BINS]]
+        self.assertEqual(sound_tick(7, 30, 6, 18, 0, 0, 1.0, mix), [])
+
+    def test_a_silent_listener_emits_nothing(self):
+        mix = [["temperate_bird_dawn", "songbird", 1.0, BIRD_BINS]]
+        self.assertEqual(sound_tick(7, 30, 6, 18, 0, 0, 0.0, mix), [])
+
+    def test_a_group_without_confirmed_media_emits_nothing(self):
+        # The frog sound group is UNKNOWN in vanilla, so the amphibian chorus
+        # produces no emission even when the pattern allows it.
+        mix = [["temperate_amphibian", "frog", 1.0, [0.4, 0.1, 0, 0, 0, 0.5, 0.9]]]
+        self.assertEqual(sound_tick(23, -30, 6, 20, 0, 1.0, 1.0, mix), [])
+
+    def test_the_emitted_volume_carries_the_silence_gain(self):
+        mix = [["temperate_bird_dawn", "songbird", 1.0, BIRD_BINS]]
+        loud = sound_tick(7, 30, 6, 18, 0, 0, 1.0, mix)
+        quiet = sound_tick(7, 30, 6, 18, 0, 0, 0.5, mix)
+        self.assertGreater(len(loud), 0)
+        self.assertTrue(all(row[2] == 1.0 for row in loud))
+        self.assertTrue(all(row[2] == 0.5 for row in quiet))
+
+    def test_the_tick_wires_the_scheduler(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("call FUNC(soundTick)", text)
+        self.assertIn("call FUNC(getSpeciesMatch)", text)
+        self.assertIn("QGVAR(soundSchedule)", text)
 
 
 if __name__ == "__main__":
