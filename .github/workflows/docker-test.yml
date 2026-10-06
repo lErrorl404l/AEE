@@ -67,6 +67,7 @@ jobs:
           path: |
             tests/docker/run.log
             tests/docker/run.*.log
+            tests/docker/runs/**
           if-no-files-found: ignore
 
   soak:

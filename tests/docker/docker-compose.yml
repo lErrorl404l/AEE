@@ -7,7 +7,11 @@ services:
       - ARMA3_CONFIG_FILE=/arma3/config.toml
       - ARMA3_SERVER__SKIP_INSTALL=true
       - ARMA3_SERVER__CONFIG=server.cfg
-      - ARMA3_SERVER__PROFILE=aeetest
+      # Per-run profile and port.  Two concurrent runs get a unique compose
+      # project (COMPOSE_PROJECT_NAME) and a unique port block, so they never
+      # share a container or a socket.  The defaults keep the historical run.
+      - ARMA3_SERVER__PROFILE=${AEE_PROFILE:-aeetest}
+      - ARMA3_SERVER__PORT=${AEE_GAME_PORT:-2302}
       - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3
       - ARMA3_HEADLESS__CLIENTS=0
       - ARMA3_MODS__LOCAL=false
@@ -18,7 +22,9 @@ services:
     volumes:
       - ./config.toml:/arma3/config.toml
       - ./entrypoint.sh:/arma3/entrypoint.sh
-      - ./configs:/arma3/server/configs
+      # The server.cfg directory is per run, so a concurrent run cannot
+      # overwrite this run's mission list.  Defaults preserve the old layout.
+      - ${AEE_CONFIGS_DIR:-./configs}:/arma3/server/configs
       - ./mods:/arma3/server/mods
       - ./missions:/arma3/server/mpmissions
       - ${ARMA3_SERVER_ROOT:-./server}:/arma3/server
