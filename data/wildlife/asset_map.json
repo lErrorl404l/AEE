@@ -1,0 +1,395 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "The wildlife identity map. One entry per sound group and per faunal group. A media entry carries a raw a3 path or a confirmed CfgSFX class. An UNKNOWN or UNCONFIRMED recording is never given a species.",
+  "sources": [],
+  "constants": [
+    {
+      "name": "sound_group_identity_grades",
+      "value": "CONFIRMED/UNCONFIRMED/UNKNOWN",
+      "unit": "enum",
+      "grade": "U",
+      "note": "The identity grade vocabulary. The grade is a transcript of the sound inventory, not a measurement."
+    }
+  ],
+  "sound_groups": [
+    {
+      "sound_group": "owl",
+      "identity": "CONFIRMED",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\owl1.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\owl2.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\owl3.wss"
+        },
+        {
+          "cfg_sfx": "Owl"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "CfgSFX.Owl names owl1-3. One generic owl bank. Species not pinned."
+    },
+    {
+      "sound_group": "songbird",
+      "identity": "CONFIRMED",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\birds1.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\birds2.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\birds3.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\birds4.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\birds5.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "CfgSFX.Birds names birds1-5. One generic songbird chorus. Species not pinned."
+    },
+    {
+      "sound_group": "fear",
+      "identity": "CONFIRMED",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\scared_animal1.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\scared_animal2.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\scared_animal3.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\scared_animal4.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\scared_animal5.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\scared_animal6.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\scared_animal7.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "CfgSounds.Scared_Animal1-7. Generic distress cry. Species not pinned."
+    },
+    {
+      "sound_group": "water",
+      "identity": "CONFIRMED",
+      "media": [
+        {
+          "cfg_sfx": "Sound_Stream"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "CfgVehicles.Sound_Stream points at CfgSFX.StreamSfx, whose sample is a dummy. The class is confirmed and the payload is silent."
+    },
+    {
+      "sound_group": "night_insect",
+      "identity": "CONFIRMED",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {
+        "pbo": "a3\\sounds_f",
+        "config": "ambient/basics",
+        "files": "night_insects_birds_*"
+      },
+      "note": "Real engine bed content. The exact path is not pinned in the inventory, so no path is committed."
+    },
+    {
+      "sound_group": "cricket",
+      "identity": "CONFIRMED",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {
+        "pbo": "a3\\sounds_f_environment",
+        "config": "environment/animals/insect",
+        "files": "cricket1..2.wss"
+      },
+      "note": "Real cricket recordings. The exact path is not pinned in the inventory, so no path is committed."
+    },
+    {
+      "sound_group": "cicada",
+      "identity": "UNKNOWN",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {},
+      "note": "No confirmed vanilla cicada recording. The species group is real; the media is absent."
+    },
+    {
+      "sound_group": "frog",
+      "identity": "UNKNOWN",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {},
+      "note": "No confirmed vanilla frog recording. The species group is real; the media is absent."
+    },
+    {
+      "sound_group": "deer",
+      "identity": "CONFIRMED",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {
+        "pbo": "a3\\sounds_f_enoch",
+        "config": "Deercall_Forest_Night_SoundSet",
+        "files": "Deer_Call_01..11.wss"
+      },
+      "note": "Enoch media. The subfolder is not pinned in the inventory, so no path is committed. It needs the Enoch platform."
+    },
+    {
+      "sound_group": "wolf",
+      "identity": "CONFIRMED",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {
+        "pbo": "a3\\sounds_f_enoch",
+        "config": "Wolves_Night_SoundSet",
+        "files": "Wolves_01..06.wss"
+      },
+      "note": "Enoch media. The subfolder is not pinned in the inventory, so no path is committed. It needs the Enoch platform."
+    },
+    {
+      "sound_group": "chicken",
+      "identity": "CONFIRMED",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {
+        "pbo": "a3\\sounds_f_environment",
+        "config": "environment/animals/Chickens",
+        "files": "Chicken_01..20.wss"
+      },
+      "note": "Current chicken recordings. The exact path is not pinned in the inventory, so no path is committed."
+    },
+    {
+      "sound_group": "goat",
+      "identity": "CONFIRMED",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {
+        "pbo": "a3\\sounds_f_environment",
+        "config": "environment/animals/Goats",
+        "files": "Goat_01..18.wss"
+      },
+      "note": "Current goat recordings. The exact path is not pinned in the inventory, so no path is committed."
+    },
+    {
+      "sound_group": "gull",
+      "identity": "UNCONFIRMED",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\Seagul_1.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "Name only. No config class names it. It differs from the config gull call seagul1. Never given a species."
+    },
+    {
+      "sound_group": "hen",
+      "identity": "UNCONFIRMED",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\hen1.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\hen2.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\hen3.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "Name only. No config class names it. Never given a species."
+    },
+    {
+      "sound_group": "dog",
+      "identity": "UNCONFIRMED",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\dog1.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\dog2.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\dog3.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\dog4.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "Name only. No config class names it. Never given a species."
+    },
+    {
+      "sound_group": "sheep",
+      "identity": "UNCONFIRMED",
+      "media": [
+        {
+          "path": "a3\\animals_f_beta\\sheep\\data\\sound\\sheep1.wss"
+        },
+        {
+          "path": "a3\\animals_f_beta\\sheep\\data\\sound\\sheep2.wss"
+        },
+        {
+          "path": "a3\\animals_f_beta\\sheep\\data\\sound\\sheep3.wss"
+        },
+        {
+          "path": "a3\\animals_f_beta\\sheep\\data\\sound\\sheep4.wss"
+        },
+        {
+          "path": "a3\\animals_f_beta\\sheep\\data\\sound\\sheep5.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "Name and path convention only. Sheep_IdleComm is a dummy. Never given a species."
+    },
+    {
+      "sound_group": "sarance",
+      "identity": "UNKNOWN",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\sarance1.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\sarance2.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\sarance3.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\sarance4.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "UNKNOWN. sarance is not an English animal or a config class. Never given a species."
+    },
+    {
+      "sound_group": "chicken_grill",
+      "identity": "UNKNOWN",
+      "media": [
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\chicken_grill_1.wss"
+        },
+        {
+          "path": "a3\\sounds_f\\ambient\\animals\\chicken_grill_2.wss"
+        }
+      ],
+      "fauna_classes": [],
+      "species": null,
+      "note": "UNKNOWN. The name reads as a recording label, not an animal. Never given a species."
+    },
+    {
+      "sound_group": "none",
+      "identity": "UNKNOWN",
+      "media": [],
+      "fauna_classes": [],
+      "species": null,
+      "anchor": {},
+      "note": "No known call. A mostly-silent group. Not a media source."
+    }
+  ],
+  "faunal_groups": [
+    {
+      "fauna_group": "cold",
+      "classes": [
+        "Sheep_random_F",
+        "Goat_random_F",
+        "Rabbit_F"
+      ],
+      "identity": "CONFIRMED",
+      "note": "Confirmed vanilla CfgVehicles Animals classes, from species_table.sqf."
+    },
+    {
+      "fauna_group": "temperate",
+      "classes": [
+        "Sheep_random_F",
+        "Goat_random_F",
+        "Hen_random_F",
+        "Cock_random_F",
+        "Cock_white_F",
+        "Rabbit_F",
+        "Snake_random_F",
+        "Fin_random_F",
+        "Alsatian_Random_F"
+      ],
+      "identity": "CONFIRMED",
+      "note": "Confirmed vanilla CfgVehicles Animals classes, from species_table.sqf."
+    },
+    {
+      "fauna_group": "arid",
+      "classes": [
+        "Goat_random_F",
+        "Snake_vipera_random_F",
+        "Snake_random_F",
+        "Rabbit_F"
+      ],
+      "identity": "CONFIRMED",
+      "note": "Confirmed vanilla CfgVehicles Animals classes, from species_table.sqf."
+    },
+    {
+      "fauna_group": "tropical",
+      "classes": [
+        "Snake_random_F",
+        "Snake_vipera_random_F",
+        "Hen_random_F",
+        "Cock_random_F",
+        "Turtle_F"
+      ],
+      "identity": "CONFIRMED",
+      "note": "Confirmed vanilla CfgVehicles Animals classes, from species_table.sqf."
+    },
+    {
+      "fauna_group": "water",
+      "classes": [
+        "Turtle_F",
+        "Salema_F",
+        "Ornate_random_F",
+        "Mackerel_F",
+        "Tuna_F",
+        "Mullet_F",
+        "CatShark_F"
+      ],
+      "identity": "CONFIRMED",
+      "note": "Confirmed vanilla CfgVehicles Animals classes, from species_table.sqf."
+    },
+    {
+      "fauna_group": "settlement",
+      "classes": [
+        "Hen_random_F",
+        "Cock_random_F",
+        "Fin_sand_F",
+        "Alsatian_Black_F"
+      ],
+      "identity": "CONFIRMED",
+      "note": "Confirmed vanilla CfgVehicles Animals classes, from species_table.sqf."
+    }
+  ]
+}
