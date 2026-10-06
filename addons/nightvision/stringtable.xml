@@ -17,6 +17,14 @@
             <Original>Night Vision Debug Log</Original>
             <English>Night Vision Debug Log</English>
         </Key>
+        <Key ID="STR_AEE_NightVision_ltmDaylightFade_Description">
+            <Original>Fade the laser target marker in daylight. Off holds the marker at full strength.</Original>
+            <English>Fade the laser target marker in daylight. Off holds the marker at full strength.</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_ltmDaylightFade_Name">
+            <Original>Laser Daylight Fade</Original>
+            <English>Laser Daylight Fade</English>
+        </Key>
         <Key ID="STR_AEE_NightVision_ltmEnabled_Description">
             <Original>Show the laser target marker beam through night vision (aircraft only)</Original>
             <English>Show the laser target marker beam through night vision (aircraft only)</English>

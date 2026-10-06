@@ -33,9 +33,18 @@ private _steady = ((_unit getVariable [QGVAR(ltmMode), LTM_MODE_BLINK]) isEqualT
 private _visible = _steady || ((time mod LTM_BLINK_INTERVAL) < (LTM_BLINK_INTERVAL * 0.5));
 if (!_visible) exitWith {};
 
-private _colour = [0.10, 1.00, 0.20, 1.00];
+// The marker fades in daylight (item 8).  The kernel clamps 1.2 - sunOrMoon
+// to 0..1: alpha 1 at night, 0.2 at full day.  The operator can hold the
+// marker at full strength by turning the fade off.  Only the alpha changes;
+// the hue is fixed so the green blink and the steady white are unchanged.
+private _alpha = 1;
+if (missionNamespace getVariable [QGVAR(ltmDaylightFade), true]) then {
+    _alpha = [sunOrMoon] call FUNC(ltmDaylightAlpha);
+};
+
+private _colour = [0.10, 1.00, 0.20, _alpha];
 if (_steady) then {
-    _colour = [1.00, 1.00, 1.00, 1.00];
+    _colour = [1.00, 1.00, 1.00, _alpha];
 };
 
 {

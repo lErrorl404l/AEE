@@ -128,6 +128,7 @@ def main():
         "tools/tests/test_weather_particles.py",
         "tools/tests/test_settings_taxonomy.py",
         "tools/tests/test_ltm.py",
+        "tools/tests/test_film_grain_invariant.py",
         "tools/tests/test_hud.py",
         "tools/tests/test_fusion_hud.py",
         "tools/tests/test_fusion_display_guard.py",

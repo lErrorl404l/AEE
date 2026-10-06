@@ -30,6 +30,7 @@ from sqf_lite import run_sqf  # noqa: E402
 
 LTM = REPO / "addons" / "nightvision" / "functions" / "ltm"
 SEGMENT_KERNEL = LTM / "fnc_ltmBeamSegments.sqf"
+DAYLIGHT_KERNEL = LTM / "fnc_ltmDaylightAlpha.sqf"
 SEGMENT_SRC = SEGMENT_KERNEL.read_text(encoding="utf-8")
 CREATE_SRC = (LTM / "fnc_ltmCreate.sqf").read_text(encoding="utf-8")
 DRAW_SRC = (LTM / "fnc_ltmDraw.sqf").read_text(encoding="utf-8")
@@ -213,6 +214,47 @@ class TestLtmWiring(unittest.TestCase):
         self.assertIn("CBA_fnc_addKeybind", POSTINIT_SRC)
         self.assertIn('"LTMToggle"', POSTINIT_SRC)
         self.assertIn('"LTMToggleMode"', POSTINIT_SRC)
+
+
+class TestLtmDaylightAlpha(unittest.TestCase):
+    """fnc_ltmDaylightAlpha, executed: the daylight marker fade (item 8)."""
+
+    def _alpha(self, sun):
+        return run_sqf(DAYLIGHT_KERNEL, [sun], {})
+
+    def test_laser_alpha_follows_sun_or_moon(self):
+        self.assertAlmostEqual(self._alpha(0.0), 1.0, places=6)
+        self.assertAlmostEqual(self._alpha(1.0), 0.2, places=6)
+        self.assertAlmostEqual(self._alpha(0.5), 0.7, places=6)
+
+    def test_alpha_is_clamped_to_zero_and_one(self):
+        self.assertAlmostEqual(self._alpha(-1.0), 1.0, places=6)
+        self.assertAlmostEqual(self._alpha(2.0), 0.0, places=6)
+
+    def test_the_draw_reads_the_setting_and_the_kernel(self):
+        self.assertIn(
+            "missionNamespace getVariable [QGVAR(ltmDaylightFade), true]", DRAW_SRC
+        )
+        self.assertIn("call FUNC(ltmDaylightAlpha)", DRAW_SRC)
+
+    def test_only_the_alpha_element_changes(self):
+        # The hue is fixed.  The green blink and the steady white keep their
+        # RGB triples; only the fourth (alpha) element is the kernel output.
+        self.assertIn("[0.10, 1.00, 0.20, _alpha]", DRAW_SRC)
+        self.assertIn("[1.00, 1.00, 1.00, _alpha]", DRAW_SRC)
+
+    def test_the_kernel_is_registered(self):
+        self.assertIn("PREPS(ltm,ltmDaylightAlpha);", PREP_SRC)
+
+    def test_the_setting_is_registered_default_on(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(ltmDaylightFade,"AEE HUD","Displays",true)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_stringtable_keys_exist(self):
+        for key in ("ltmDaylightFade_Name", "ltmDaylightFade_Description"):
+            self.assertIn(f"STR_AEE_NightVision_{key}", STRINGTABLE_SRC)
 
 
 if __name__ == "__main__":

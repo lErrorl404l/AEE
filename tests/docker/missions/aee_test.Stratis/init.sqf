@@ -3165,6 +3165,11 @@ private _p29Pass = 0;
     // overcast and humidity and asserts the registered settings.  It renders
     // nothing and writes no engine weather.
     execVM "aee_p88_particle_probe.sqf";
+    // PHASE 89 lives in aee_p89_laser_probe.sqf: the laser daylight alpha
+    // kernel is pure, so a dedicated server drives it and asserts alpha 1 at
+    // night and 0.2 at full day, plus the 0..1 clamp and the setting default.
+    // It renders nothing.
+    execVM "aee_p89_laser_probe.sqf";
     // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
     // surface (scalar keys, no thermalProperties) and the TI command contract
     // resolve headless, so a dedicated server verifies what the StageTI
