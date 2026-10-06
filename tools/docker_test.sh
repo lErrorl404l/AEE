@@ -349,7 +349,7 @@ services:
       - ARMA3_SERVER__MISSION=compat_host.Stratis
 YAMLEOF
         docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.$host.yml" up -d --force-recreate
-        for _ in $(seq 1 36); do
+        for _ in $(seq 1 60); do
             if docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.$host.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
             sleep 5
         done
@@ -526,7 +526,7 @@ class Missions {
 CFGEOF
         clean_profiles
         docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.$world.yml" up -d --force-recreate
-        for _ in $(seq 1 36); do
+        for _ in $(seq 1 60); do
             if docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.$world.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
             sleep 5
         done
@@ -672,8 +672,8 @@ fi
 echo "==> docker compose up"
 docker compose "${COMPOSE_FILES[@]}" up -d --force-recreate
 
-echo "==> waiting for results (up to 180 s)"
-for _ in $(seq 1 36); do
+echo "==> waiting for results (up to 300 s)"
+for _ in $(seq 1 60); do
     if docker compose "${COMPOSE_FILES[@]}" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then
         break
     fi

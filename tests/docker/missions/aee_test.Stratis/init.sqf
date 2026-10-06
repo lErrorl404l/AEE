@@ -3220,8 +3220,10 @@ private _p29Pass = 0;
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
-    // fleet scan needs about 45 s after its ~30 s setup, so 35 s was too tight.
-    [{diag_log text "[AEE-TEST] DONE";}, [], 75] call CBA_fnc_waitAndExecute;
+    // fleet scan needs about 45 s after its ~30 s setup, so 35 s was too tight
+    // and 75 s left no margin when the scan ran slow.  110 s covers a loaded
+    // host.  The harness waits up to 300 s for this line.
+    [{diag_log text "[AEE-TEST] DONE";}, [], 110] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
 }, [], 30] call CBA_fnc_waitAndExecute;
