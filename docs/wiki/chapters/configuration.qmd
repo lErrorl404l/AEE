@@ -167,6 +167,14 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_optics_logDebug` | CHECKBOX | `false` | yes | optics | Log optics diagnostics to the RPT. Turn this on before reporting a fault. |
 
+## AEE Debug → Perception
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_perceptionHud` | CHECKBOX | `false` | yes | optics | Show the one-line perception state on screen while the monitor runs. The overlay is a debug surface, so it ships off. No unit. |
+| `aee_optics_perceptionInterval` | SLIDER | `0.5` | yes | optics | Minimum seconds between perception samples, range 0.1 to 2.0. The monitor runs in a per-frame handler at 0.5 s, so the effective floor is 0.5 s. Default 0.5. UNSOURCED. |
+| `aee_optics_perceptionMonitor` | CHECKBOX | `true` | yes | optics | Publish and log the reconstructed player view state each tick. The monitor reads state other modules already publish and writes the aee_optics_perception variables; it reads no pixels. Default on. The sample cadence is the perception interval. UNSOURCED that a 0.5 s sample is the right cadence. |
+
 ## AEE Debug → Physiology
 
 | Setting | Type | Default | Global | Addon | Purpose |
