@@ -1,0 +1,53 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "The MGRS lettering tables. The band letters, the 100 km column sets, the row letters and the AA-scheme row offset are defined by DMA TM 8358.1 (the lettering figures), DMA TM 8358.2 'The Universal Grids: UTM and UPS' Ed.1 1989, and the NGA MGRS guidance (Modified February 2009). No letter is invented: every letter here is one of those sources. The generated runtime projection is addons/core/data/mgrs_tables.sqf.",
+  "datum": "WGS84",
+  "scheme": "AA",
+  "sources": [
+    "dma_tm_8358_1",
+    "dma_tm_8358_2",
+    "nga_mgrs_2009"
+  ],
+  "tables": {
+    "band_letters": {
+      "letters": ["C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X"],
+      "count": 20,
+      "south_limit_deg": -80,
+      "band_height_deg": 8,
+      "north_band_height_deg": 12,
+      "grade": "S",
+      "note": "Beginning at 80 S and proceeding northward, the 20 bands are lettered C through X, omitting I and O. Every band is 8 degrees high except band X, which is 12 degrees high. NGA MGRS guidance (Modified February 2009)."
+    },
+    "column_sets": {
+      "sets": [
+        ["A", "B", "C", "D", "E", "F", "G", "H"],
+        ["J", "K", "L", "M", "N", "P", "Q", "R"],
+        ["S", "T", "U", "V", "W", "X", "Y", "Z"]
+      ],
+      "zone_cycle": 3,
+      "grade": "S",
+      "note": "The 100 km column letters cycle every three zones: set 1 for zones 1, 4, 7 ... (A to H), set 2 for zones 2, 5, 8 ... (J to R, omitting O), set 3 for zones 3, 6, 9 ... (S to Z). The set index is (zone - 1) mod 3. DMA TM 8358.1 and the NGA MGRS guidance."
+    },
+    "row_letters": {
+      "letters": ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V"],
+      "count": 20,
+      "grade": "S",
+      "note": "The 100 km row letters run A to V, omitting I and O, in a 20-row cycle. The row index is (northing / 100000) mod 20, shifted by the AA offset in even zones. DMA TM 8358.1 and the NGA MGRS guidance."
+    },
+    "even_zone_row_offset": {
+      "value": 5,
+      "grade": "S",
+      "note": "AA scheme (MGRS-New, WGS84): the first row letter just north of the equator is A in odd-numbered zones and F in even-numbered zones. F is index 5 of the row letters, so an even zone adds 5 to the row index mod 20. The older AL scheme (odd L, even R) is for local datums and is not used here. NGA MGRS guidance (Modified February 2009)."
+    },
+    "zone_strings": {
+      "strings": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60"],
+      "grade": "S",
+      "note": "The UTM zone number as two characters. Leading zeroes are included so that zone 9 is 09. NGA MGRS guidance (Modified February 2009)."
+    },
+    "digit_characters": {
+      "characters": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      "grade": "S",
+      "note": "The decimal digits, indexed by value. The formatter builds the easting and northing digit groups from this table so the runtime never calls a string-to-number command."
+    }
+  }
+}

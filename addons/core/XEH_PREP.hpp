@@ -14,6 +14,8 @@ PREPS(geo,buildGeoAnchor);
 PREPS(geo,getGeoAnchor);
 PREPS(geo,latLonToUtm);
 PREPS(geo,utmToLatLon);
+PREPS(geo,formatMgrs);
+PREPS(geo,parseMgrs);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);

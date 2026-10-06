@@ -27,7 +27,11 @@ ROOT = Path(__file__).resolve().parents[2]
 GEO = ROOT / "addons" / "core" / "functions" / "geo"
 FORWARD = GEO / "fnc_latLonToUtm.sqf"
 INVERSE = GEO / "fnc_utmToLatLon.sqf"
+FORMAT = GEO / "fnc_formatMgrs.sqf"
+PARSE = GEO / "fnc_parseMgrs.sqf"
 PREP = ROOT / "addons" / "core" / "XEH_PREP.hpp"
+PREINIT = ROOT / "addons" / "core" / "XEH_preInit.sqf"
+TABLES = ROOT / "addons" / "core" / "data" / "mgrs_tables.sqf"
 
 
 def forward(lat, lon):
@@ -126,6 +130,132 @@ class TestUtmSourceContract(unittest.TestCase):
         self.assertIn("298.257223563", src)
         self.assertIn("0.9996", src)
         self.assertIn("500000", src)
+
+
+def mgrs_globals():
+    """The real generated letter tables and the real inverse UTM kernel."""
+    return {
+        "aee_core_mgrsTables": run_sqf(TABLES, []),
+        "__FUNC__utmToLatLon": lambda e, n, z, h: run_sqf(INVERSE, [e, n, z, h]),
+    }
+
+
+def format_mgrs(easting, northing, zone, precision, latitude):
+    return run_sqf(
+        FORMAT, [easting, northing, zone, precision, latitude], mgrs_globals()
+    )
+
+
+def parse_mgrs(text):
+    return run_sqf(PARSE, [text], mgrs_globals())
+
+
+# MGRS vectors.  (easting, northing, zone, latitude, MGRS string)
+#
+# Vector 1 is the figure example published in the NGA MGRS guidance
+# (Modified February 2009): 15SWC8081751205 at one-metre refinement.  Its
+# latitude comes from PROJ cs2cs, which maps 580817 4251205, zone 15N, to
+# 38.405426 N.
+#
+# Vector 2 is the same guidance's published UTM pair for 92 W 38 N:
+# 587798 m E, 4206287 m N, zone 15.  PROJ cs2cs maps that pair back to
+# 38.000002 N, 92.000005 W, confirming the pair.  The string is the
+# published lettering applied to the published UTM.
+#
+# Vectors 3 and 4 are independent: the UTM is from PROJ cs2cs, the MGRS
+# string is from the NGA GeoTrans implementation (the `mgrs` Python package,
+# MGRSPrecision=5), a separate oracle.  Vector 4 (New York) is an EVEN zone,
+# so it is the vector that proves the AA even-zone row offset of five.
+NGA_FIGURE = (580817, 4251205, 15, 38.405426, "15SWC8081751205")
+NGA_92W38N = (587798, 4206287, 15, 38.000002, "15SWC8779806287")
+ALTIS_CENTRE_MGRS = (350134.3482, 4418852.6483, 35, 39.906515, "35SLE5013418852")
+NYC_MGRS = (583959.3723, 4507350.9982, 18, 40.7128, "18TWL8395907350")
+MGRS_VECTORS = [NGA_FIGURE, NGA_92W38N, ALTIS_CENTRE_MGRS, NYC_MGRS]
+
+
+class TestFormatMgrs(unittest.TestCase):
+    def test_known_mgrs_vectors(self):
+        for easting, northing, zone, latitude, expected in MGRS_VECTORS:
+            got = format_mgrs(easting, northing, zone, 10, latitude)
+            self.assertEqual(got, expected, f"{easting},{northing} zone {zone}")
+
+    def test_even_zone_uses_row_offset_five(self):
+        # New York is zone 18 (even).  Its 100 km row is L, which is A + 10:
+        # the row index 5 shifted by the AA offset of 5.  Without the offset
+        # the square would be WF, not WL.
+        easting, northing, zone, latitude, expected = NYC_MGRS
+        got = format_mgrs(easting, northing, zone, 10, latitude)
+        self.assertEqual(got[3:5], "WL")
+        self.assertEqual(got, expected)
+
+    def test_truncates_and_never_rounds(self):
+        # Within square WC: easting 580899.0 and northing 4251299.0.  At 100 m
+        # precision the digit groups are 808 and 512, the TRUNCATED values.
+        # A rounding formatter would give 809 and 513.
+        got = format_mgrs(580899, 4251299, 15, 6, 38.405426)
+        self.assertEqual(got, "15SWC808512")
+        self.assertNotEqual(got, "15SWC809513")
+
+    def test_precision_digit_counts(self):
+        # 2/4/6/8/10 digits is 10 km / 1 km / 100 m / 10 m / 1 m.
+        for precision in (2, 4, 6, 8, 10):
+            got = format_mgrs(580817, 4251205, 15, precision, 38.405426)
+            self.assertEqual(len(got), 5 + precision)
+            self.assertTrue(got.startswith("15SWC"))
+
+    def test_out_of_range_returns_empty(self):
+        self.assertEqual(format_mgrs(580817, 4251205, 0, 10, 38.0), "")
+        self.assertEqual(format_mgrs(580817, 4251205, 61, 10, 38.0), "")
+        self.assertEqual(format_mgrs(580817, 4251205, 15, 7, 38.0), "")
+
+
+class TestParseMgrs(unittest.TestCase):
+    def test_known_mgrs_vectors(self):
+        for easting, northing, zone, _latitude, text in MGRS_VECTORS:
+            got = parse_mgrs(text)
+            self.assertEqual(got[2], zone)
+            self.assertAlmostEqual(got[0], easting, delta=1.0)
+            self.assertAlmostEqual(got[1], northing, delta=1.0)
+
+    def test_parse_returns_band(self):
+        self.assertEqual(parse_mgrs("15SWC8081751205")[3], "S")
+        self.assertEqual(parse_mgrs("18TWL8395907350")[3], "T")
+
+    def test_round_trip_through_parse(self):
+        for easting, northing, zone, latitude, text in MGRS_VECTORS:
+            got = format_mgrs(*parse_mgrs(text)[:3], 10, latitude)
+            self.assertEqual(got, text)
+
+    def test_malformed_returns_empty(self):
+        self.assertEqual(parse_mgrs(""), [])
+        self.assertEqual(parse_mgrs("15S"), [])
+        self.assertEqual(parse_mgrs("15SWC123"), [])
+        self.assertEqual(parse_mgrs("99SWC8081751205"), [])
+
+
+class TestMgrsSourceContract(unittest.TestCase):
+    def test_preps_registration(self):
+        prep = PREP.read_text(encoding="utf-8")
+        self.assertIn("PREPS(geo,formatMgrs)", prep)
+        self.assertIn("PREPS(geo,parseMgrs)", prep)
+
+    def test_preinit_loads_the_generated_table(self):
+        preinit = PREINIT.read_text(encoding="utf-8")
+        self.assertIn("mgrs_tables.sqf", preinit)
+        self.assertIn("aee_core_mgrsTables", preinit)
+
+    def test_format_records_the_latitude_deviation(self):
+        src = FORMAT.read_text(encoding="utf-8")
+        self.assertIn("DESIGN DEVIATION", src)
+        self.assertIn("_latitude", src)
+        # The digits label the south-west corner and are truncated.
+        self.assertIn("TRUNCATED", src)
+
+    def test_parse_calls_the_inverse_utm_kernel(self):
+        src = PARSE.read_text(encoding="utf-8")
+        # Assert the CALL FORM, not the bare name, which also sits in comments.
+        self.assertIn("call FUNC(utmToLatLon)", src)
+        self.assertIn("aee_core_mgrsTables", src)
 
 
 if __name__ == "__main__":
