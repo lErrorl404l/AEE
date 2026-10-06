@@ -12,10 +12,16 @@ latitude convention is INVERTED (positive = south), so the fallback negates
 it and consumers see the true geographic sign (positive = north).
 """
 
+import sys
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sqf_lite import run_sqf  # noqa: E402
+
+BUILD = ROOT / "addons" / "core" / "functions" / "geo" / "fnc_buildGeoAnchor.sqf"
 
 # Known CfgWorlds anchors (re-read from the installed configs, 2026-10-06).
 # BIS CfgWorlds latitude: negative = north, positive = south.
@@ -179,6 +185,36 @@ class TestSolarHourAngle(unittest.TestCase):
         # this asserts the corrected formula actually moves the peak.
         # At 12:00 on a 5.22 W map the old angle was 0; new is -2.22.
         self.assertNotEqual(solar_hour_angle(12, -5.22, 30), 0)
+
+
+class TestRealAnchorMatchesMirror(unittest.TestCase):
+    """The Python mirror must match the shipped pure builder (issue #179).
+
+    The mirror is only trustworthy while it agrees with the REAL kernel.
+    This runs fnc_buildGeoAnchor.sqf through the harness for every shipped
+    world and compares the anchor centre to both the mirror and the known
+    true coordinate.
+    """
+
+    def test_builder_matches_mirror_for_every_shipped_world(self):
+        for name, (
+            cfg_lat,
+            cfg_lon,
+            zone,
+            map_area,
+            true_lat,
+            true_lon,
+        ) in WORLD_ANCHORS.items():
+            anchor = run_sqf(BUILD, [30720, zone, map_area or [], cfg_lat, cfg_lon])
+            mirror = get_world_location(cfg_lat, cfg_lon, zone, map_area)
+            self.assertAlmostEqual(anchor[0], mirror[0], places=6, msg=f"{name} lat")
+            self.assertAlmostEqual(anchor[1], mirror[2], places=6, msg=f"{name} lon")
+            self.assertAlmostEqual(
+                anchor[0], true_lat, places=3, msg=f"{name} true lat"
+            )
+            self.assertAlmostEqual(
+                anchor[1], true_lon, places=3, msg=f"{name} true lon"
+            )
 
 
 if __name__ == "__main__":

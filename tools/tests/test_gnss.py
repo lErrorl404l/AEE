@@ -95,7 +95,10 @@ class TestGnssErrorEllipseSourceContract(unittest.TestCase):
         src = ELLIPSE.read_text(encoding="utf-8")
         self.assertIn("3.6", src)
         self.assertIn("2.0", src)
-        self.assertIn("13 / 8", src)
+        # The sourced derivation is written "13/8" in the header; the runtime
+        # constant is "13 / 8".  Assert the header derivation, so mutating the
+        # runtime constant fails only the behaviour test.
+        self.assertIn("13/8", src)
         self.assertIn("Standard Positioning Service", src)
 
     def test_unsourced_shapes_are_marked(self):
