@@ -49,3 +49,13 @@ if (is3DEN) exitWith {};
         [] call FUNC(runConsistencyCheck);
     };
 }, 1] call CBA_fnc_addPerFrameHandler;
+
+// ─── Positional consistency monitor (task 14) ─────────────────────────────
+// Throttled to the environment tick.  Read-only: it reads the published
+// anchor and world location, never the player or another module.  The
+// monitor is geometry-only, so it runs on every machine.  Placed last so
+// the vehicle-class token above keeps its line number and the derived
+// vehicle inventory does not churn.
+GVAR(consistencyPFH) = [{
+    call FUNC(runGeoConsistency);
+}, GVAR(updateInterval)] call CBA_fnc_addPerFrameHandler;

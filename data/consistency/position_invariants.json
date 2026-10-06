@@ -1,0 +1,52 @@
+{
+  "schema": "aee-core-position-invariants",
+  "version": 1,
+  "source": "DMA TM 8358.2, The Universal Grids: UTM and UPS, Ed.1 18 Sep 1989; NGA MGRS guidance, modified February 2009; JSP 945 (configuration management)",
+  "note": "Canonical declaration of the positional consistency invariants. FUNC(runGeoConsistency) carries the same rows as an SQF literal; the contract test asserts the ids, predicates and input keys agree. Row element order in SQF is [id, name, predicate, inputs, pairs, tolerance, severity, grade, note].",
+  "rows": [
+    {
+      "id": "GRID-AGREE",
+      "name": "engine_grid_agrees_with_mgrs",
+      "predicate": "pairs_equal",
+      "inputs": ["engineGridCentre", "engineGridFromMgrs"],
+      "pairs": [["engineGridCentre", "engineGridFromMgrs"]],
+      "tolerance": null,
+      "severity": "warn",
+      "grade": "derived",
+      "note": "The engine map grid is world X/Y; MGRS encodes UTM. The engine grid strings of the anchor centre and of the world position decoded from that centre's MGRS must match. Matching at the engine grid precision proves the two sources agree on the same world frame. An empty engine grid on a UI-less machine leaves both sides empty and the row passes vacuously."
+    },
+    {
+      "id": "ANCHOR-CENTRE",
+      "name": "anchor_centre_maps_to_anchor",
+      "predicate": "agree_within",
+      "inputs": ["anchorLat", "anchorLon", "projectedLat", "projectedLon"],
+      "pairs": [["anchorLat", "projectedLat"], ["anchorLon", "projectedLon"]],
+      "tolerance": 0.000001,
+      "severity": "warn",
+      "grade": "derived",
+      "note": "The world centre projected through the anchor box to latitude and longitude must equal the anchor centre. Tolerance 1e-6 degrees is the float resolution of the box centre."
+    },
+    {
+      "id": "WORLDLOC-ANCHOR",
+      "name": "world_location_equals_anchor",
+      "predicate": "agree_within",
+      "inputs": ["anchorLat", "anchorLon", "worldLocationLat", "worldLocationLon"],
+      "pairs": [["anchorLat", "worldLocationLat"], ["anchorLon", "worldLocationLon"]],
+      "tolerance": 0.000001,
+      "severity": "error",
+      "grade": "derived",
+      "note": "aee_core_worldLocation is derived from the anchor, so its latitude and longitude must equal the anchor centre. Tolerance 1e-6 degrees, as above."
+    },
+    {
+      "id": "MGRS-ROUNDTRIP",
+      "name": "mgrs_round_trips",
+      "predicate": "agree_within",
+      "inputs": ["centreX", "centreY", "roundtripX", "roundtripY", "easting", "northing", "parsedEasting", "parsedNorthing"],
+      "pairs": [["centreX", "roundtripX"], ["centreY", "roundtripY"], ["easting", "parsedEasting"], ["northing", "parsedNorthing"]],
+      "tolerance": 1.0,
+      "severity": "error",
+      "grade": "derived",
+      "note": "world -> MGRS -> world and format -> parse agree. MGRS labels the south-west corner of the square with truncated digits, so the residual is below one metre at ten digits (one metre precision)."
+    }
+  ]
+}

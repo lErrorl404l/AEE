@@ -21,6 +21,8 @@ PREPS(geo,mgrsToWorld);
 PREPS(geo,gnssErrorEllipse);
 PREPS(geo,gnssFixState);
 PREPS(geo,datalinkState);
+PREPS(geo,evaluateGeoConsistency);
+PREPS(geo,runGeoConsistency);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
