@@ -580,14 +580,15 @@ missionNamespace setVariable [QGVAR(agcHunt), _agcHunt];
 missionNamespace setVariable [QGVAR(nucDrift), _nucDrift];
 missionNamespace setVariable [QGVAR(temporalNoise), _temporalNoise];
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
-    AEE_LOG_DEBUG(format ["Thermal imperfections | bloom=%1 agcHunt=%2 nucDrift=%3 temporalNoise=%4 burst=%5 | hooks bloom=%6 hunt=%7 nuc=%8 noise=%9", _bloom, _agcHunt, _nucDrift, _temporalNoise, _burst, _bloomForce, _huntForce, _nucForce, _noiseForce]);
+    private _logMsg = format ["Thermal imperfections | bloom=%1 agcHunt=%2 nucDrift=%3 temporalNoise=%4 burst=%5 | hooks bloom=%6 hunt=%7 nuc=%8 noise=%9", _bloom, _agcHunt, _nucDrift, _temporalNoise, _burst, _bloomForce, _huntForce, _nucForce, _noiseForce];
+    AEE_LOG_DEBUG(_logMsg);
 };
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]
     && {[_player] call FUNC(isThermalHostActive)}) then {
-    AEE_LOG_DEBUG(format [
+    private _logMsg = format [
         "Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 wet=%10 reso=%11 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,
         _contrast,
@@ -600,7 +601,8 @@ if (missionNamespace getVariable [QGVAR(thermalDebug), false]
         _blur,
         _hWet,
         _hReso
-    ]);
+    ];
+    AEE_LOG_DEBUG(_logMsg);
 };
 
 // ─── Eye accommodation (exposure) ───────────────────────────────────────

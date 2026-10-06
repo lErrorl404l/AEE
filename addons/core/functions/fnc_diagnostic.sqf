@@ -7,7 +7,7 @@ private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _biome = GVAR(biome);
 private _biomeName = GVAR(biomeName);
 
-AEE_LOG_INFO(format [
+private _logMsg = format [
     "Biome: %1 (%2) | Temp: %3 C | Pressure: %4 hPa | RH: %5%% | Density: %6 kg/m3",
     _biomeName, _biome,
     [_T, 1] call CBA_fnc_formatNumber,
@@ -17,4 +17,5 @@ AEE_LOG_INFO(format [
     // Passing 4 as the 2nd arg padded the integer to 4 digits ("0001");
     // the density needs 4 DECIMAL places (issue #177).
     [_rho, 0, 4] call CBA_fnc_formatNumber
-]);
+];
+AEE_LOG_INFO(_logMsg);

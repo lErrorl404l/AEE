@@ -37,22 +37,25 @@ if (_zone > 0) then {
     private _zoneMeridian = (_zone - 1) * 6 - 177;
     private _lonDiff = abs (_lon - _zoneMeridian);
     if (_lonDiff > 6) then {
-        AEE_LOG_INFO(format [
+        private _logMsg = format [
             "mapZone %1 (meridian %2) sits %3 deg from longitude %4 (CfgWorlds %5); the solar model uses the declared zone meridian",
             _zone, _zoneMeridian, _lonDiff, _lon, worldName
-        ]);
+        ];
+        AEE_LOG_INFO(_logMsg);
     };
 };
 if ((abs _latSigned) > 90) then {
-    AEE_LOG_WARN(format [
+    private _logMsg = format [
         "latitude %1 out of range for %2 (CfgWorlds)",
         _latSigned, worldName
-    ]);
+    ];
+    AEE_LOG_WARN(_logMsg);
 };
-AEE_LOG_INFO(format [
+private _logMsg = format [
     "Geolocation: %1 lat=%2 lon=%3 zone=%4",
     worldName, _latSigned, _lon, _zone
-]);
+];
+AEE_LOG_INFO(_logMsg);
 
 // Register the local environment PFH.
 // Runs on every machine. Core atmospheric state is deterministic (position,
@@ -80,4 +83,5 @@ GVAR(updatePFH) = [{
 // not per tick.  The function self-gates on hasInterface.
 [] call EFUNC(atmos,updateSimulWeatherLayers);
 
-AEE_LOG_INFO(format ["Local environment PFH started. Base biome: %1", GVAR(biomeName)]);
+private _logMsg = format ["Local environment PFH started. Base biome: %1", GVAR(biomeName)];
+AEE_LOG_INFO(_logMsg);

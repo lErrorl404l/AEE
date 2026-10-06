@@ -202,7 +202,7 @@ class TestHighFrequencySweepsAreBounded(unittest.TestCase):
         code = _code(
             REPO / "addons/thermal/functions/display/fnc_applySelectionThermal.sqf"
         )
-        at = code.index('AEE_LOG_TRACE(format [\n                "obj=%1 sel=%2')
+        at = code.index('private _logMsg = format [\n                "obj=%1 sel=%2')
         window = code[max(0, at - 400) : at]
         self.assertIn("thermalDebug", window, "the substrate trace log is ungated")
 
