@@ -14,7 +14,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from sqf_lite import run_sqf  # noqa: E402
+from sqf_lite import Lambda, Params, load_sqf, run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 WILDLIFE = ROOT / "addons" / "wildlife"
@@ -24,7 +24,18 @@ DATA = WILDLIFE / "data"
 MATCH = FUNCS / "fnc_getSpeciesMatch.sqf"
 CALL_PATTERN = FUNCS / "fnc_getCallPattern.sqf"
 SEASON = FUNCS / "fnc_getSeason.sqf"
+GRID = FUNCS / "fnc_environmentGrid.sqf"
 CORPUS = DATA / "ecology_corpus.sqf"
+
+
+def _kernel(path):
+    """A callable Lambda built from a real kernel file, params pre-bound."""
+    stmts = load_sqf(path)
+    params, body = [], stmts
+    if stmts and isinstance(stmts[0], Params):
+        params = [name for name, _default in stmts[0].specs]
+        body = stmts[1:]
+    return Lambda(params, body, {})
 
 
 def load_corpus():
@@ -337,8 +348,10 @@ def sample(
         "getTerrainHeightASL": lambda p: 10.0,
         "nearestTerrainObjects": _nearest,
         "__EFUNC__material_classifyBySurfaceType": lambda s: "concrete",
+        "__FUNC__environmentGrid": _kernel(GRID),
         "WILDLIFE_ENVIRONMENT_CAP": 256,
         "WILDLIFE_ENVIRONMENT_QUERY_CAP": 64,
+        "WILDLIFE_ENVIRONMENT_HORIZON": 120,
     }
     result = run_sqf(
         SAMPLER,
@@ -522,6 +535,72 @@ class TestBoundarySourceContracts(unittest.TestCase):
     def test_the_kernel_is_prepped(self):
         text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(habitatBoundary)", text)
+
+
+def grid(store, now):
+    return run_sqf(
+        GRID,
+        [store, now],
+        globals_={
+            "WILDLIFE_ENVIRONMENT_CAP": 256,
+            "WILDLIFE_ENVIRONMENT_HORIZON": 120,
+        },
+    )
+
+
+class TestEnvironmentGrid(unittest.TestCase):
+    """fnc_environmentGrid runs from the real SQF."""
+
+    def test_a_fresh_entry_is_kept(self):
+        store = [[[0, 0], [0.5, [], 0, 0, 10], 100.0]]
+        self.assertEqual(len(grid(store, 110)), 1)
+
+    def test_a_stale_entry_is_dropped(self):
+        store = [[[0, 0], [0.5, [], 0, 0, 10], 0.0]]
+        self.assertEqual(grid(store, 200), [])
+
+    def test_the_store_is_capped_keeping_the_newest(self):
+        store = [[[i, 0], [0.5, [], 0, 0, 10], 1000.0 - (i * 0.01)] for i in range(300)]
+        out = grid(store, 1000)
+        self.assertEqual(len(out), 256)
+        self.assertGreater(out[0][2], 999.0)
+
+    def test_an_empty_store_is_empty(self):
+        self.assertEqual(grid([], 10), [])
+
+
+class TestEnvironmentGridSourceContracts(unittest.TestCase):
+    def test_the_cap_and_horizon_match_the_ai_values(self):
+        wild = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
+        ai = (ROOT / "addons" / "ai" / "script_component.hpp").read_text(
+            encoding="utf-8"
+        )
+
+        def value(text, name):
+            match = re.search(rf"#define\s+{name}\s+([0-9]+)", text)
+            self.assertIsNotNone(match, name)
+            return int(match.group(1))
+
+        self.assertEqual(
+            value(wild, "WILDLIFE_ENVIRONMENT_CAP"), value(ai, "AI_CELL_CAP")
+        )
+        self.assertEqual(
+            value(wild, "WILDLIFE_ENVIRONMENT_HORIZON"), value(ai, "AI_CELL_HORIZON")
+        )
+
+    def test_the_state_line_reports_the_cache(self):
+        text = (FUNCS / "fnc_logWildlifeState.sqf").read_text(encoding="utf-8")
+        self.assertIn("env=%25/%26", text)
+        self.assertIn("QGVAR(environment)", text)
+
+    def test_the_environment_debug_switch_exists(self):
+        text = (WILDLIFE / "initSettings.inc.sqf").read_text(encoding="utf-8")
+        self.assertIn("environmentDebug", text)
+        self.assertIn('"AEE Debug"', text)
+
+    def test_the_sampler_reads_the_grid(self):
+        text = (FUNCS / "fnc_sampleNeighbourhood.sqf").read_text(encoding="utf-8")
+        self.assertIn("FUNC(environmentGrid)", text)
 
 
 if __name__ == "__main__":

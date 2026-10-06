@@ -17,6 +17,10 @@
 
 // Neighbourhood environment sampler policy.  Modelling choices, UNSOURCED.
 // The query cap bounds the object queries per call; the cell cap bounds the
-// cached per-cell sample store.
+// cached per-cell sample store.  The horizon mirrors AI_CELL_HORIZON and the
+// half-life mirrors AI_STIMULUS_HALF_LIFE, so the environment cache ages like
+// the disturbance field.
 #define WILDLIFE_ENVIRONMENT_QUERY_CAP 64
 #define WILDLIFE_ENVIRONMENT_CAP 256
+#define WILDLIFE_ENVIRONMENT_HORIZON 120
+#define WILDLIFE_ENVIRONMENT_HALF_LIFE 45

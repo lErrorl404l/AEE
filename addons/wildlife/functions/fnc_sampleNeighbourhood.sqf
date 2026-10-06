@@ -150,8 +150,10 @@ for "_i" from 0 to ((count _pending) - 1) do {
     };
 };
 
+_store = [_store, _now] call FUNC(environmentGrid);
 missionNamespace setVariable [QGVAR(environment), _store];
 missionNamespace setVariable [QGVAR(environmentPending), _unsampled];
+missionNamespace setVariable [QGVAR(environmentLastMs), ((diag_tickTime - _t0) * 1000)];
 
 private _denom = _sampleCount max 1;
 
