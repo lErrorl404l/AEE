@@ -241,6 +241,19 @@ read them. The variables below are grouped by subsystem.
 | `aee_optics_snowBlindnessCC` | The snow blindness colour correction parameters |
 | `aee_core_opticsEnabled` | Whether optics simulation is enabled |
 
+## MGRS and positioning
+
+| Variable | Purpose |
+|---|---|
+| `aee_core_geoAnchor` | The world geographic anchor, read once from `CfgWorlds` |
+| `aee_core_mgrsTables` | The MGRS letter tables, loaded once at preInit |
+| `aee_optics_trackerTracks` | The per-track records of the signal tracker |
+| `aee_optics_trackerR95` | The largest tracker error radius in the group, metres |
+| `aee_optics_trackerFix` | The worst tracker fix quality in the group |
+| `aee_core_positionDivergence` | True when a position invariant diverges |
+| `aee_core_positionVerdicts` | The per-invariant position consistency verdicts |
+| `aee_core_consistencyPFH` | The position-consistency monitor handler id |
+
 ## Physiology
 
 | Variable | Purpose |

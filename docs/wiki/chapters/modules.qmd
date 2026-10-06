@@ -144,6 +144,34 @@ decision is in ADR-016.
 | `shadowStabilizeDepth` | Stabilise the depth reading |
 | `shadowTargetDistance` | Compute the target shadow distance from the scene and margins |
 
+### MGRS positioning and the signal tracker
+
+The MGRS layer maps a world position to a full grid reference. The anchor is
+read once from `CfgWorlds` and cached. The chain is world position to the
+anchor box, then to UTM, then to MGRS. The HUD grid line, the map overlay and
+the GPS readout consume the same kernel.
+
+The signal tracker replaces the exact friendly position with a modelled one.
+It applies the GNSS error-ellipse, fix-state and datalink kernels to the
+local group, then draws fuzzy markers with an uncertainty ellipse. The design
+decision is recorded in ADR-023.
+
+| Function | Purpose |
+|---|---|
+| `formatGridDisplay` | Return the MGRS grid line, or the legacy numeric grid |
+| `mgrsMapDraw` | Label the map and the AEE-owned markers with MGRS |
+| `mgrsMarkerText` | Format a marker position as MGRS for the diary text |
+| `gpsBuild` / `gpsUpdate` | Draw the GPS device readout, gated on an `ItemGPS` item |
+| `trackerProject` | Displace the exact position by the modelled error |
+| `trackerUpdate` | Survey the group and publish the tracker state |
+| `trackerDraw` | Draw the fuzzy markers and the error ellipse |
+
+The tracker probes what engine icon suppression allows. The
+`disableMapIndicators` call is local and suppresses the engine friendly map
+indicators only where the difficulty exposes extended map content. The
+`setGroupIconsVisible` call affects only the High Command icons and never the
+default engine markers. The tracker draws its own markers in both cases.
+
 ## nightvision
 
 Night-vision tube model, laser target marker and grain. The design decisions

@@ -9,12 +9,19 @@ This chapter describes how AEE is verified.
 ## Unit tests
 
 The SQF physics models are mirrored in Python and validated with `unittest`.
-Six suites cover 170 tests across every module: ballistics, thermal
+The suites cover every module: ballistics, thermal
 (air density, WBGT, heat index, wind chill), mobility (SAE J1349 power,
 slip traction, Nash cascade, NRMM, compass), physiology (hypoxia TUC, UV),
 radio (Friis, ITU-R P.531), environmental (Q10 CBRN, Rothermel, Stefan),
 and atmos (LWC icing, CAPE, EDR, WMO trend). Each test covers reference
 values, edge cases (zero, extremes, clamp bounds), and monotonicity.
+
+The MGRS and positioning work adds four suites. `test_mgrs` covers the
+letter-table round trip. `test_geolocation` runs the real anchor builder
+against its Python mirror for each world. `test_geo_positioning` covers the
+consistency evaluator and the anchor contract. `test_gnss` covers the
+error-ellipse, fix-state and datalink kernels. Each suite runs the real SQF
+kernel through the `sqf_lite` harness where the kernel is pure.
 
 The single-command runner executes every suite plus the physics validation
 harness:
