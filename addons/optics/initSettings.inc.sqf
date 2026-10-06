@@ -157,4 +157,4 @@ AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Optics",false);
 // HUD is the noisy surface and ships OFF.
 AEE_SETTING_CHECKBOX(perceptionMonitor,"AEE Debug","Perception",true);
 AEE_SETTING_CHECKBOX(perceptionHud,"AEE Debug","Perception",false);
-AEE_SETTING_SLIDER(perceptionInterval,"AEE Debug","Perception",0.1,2.0,0.5,0.1);
+AEE_SETTING_SLIDER(perceptionInterval,"AEE Debug","Perception",0.1,2.0,0.5,1);
