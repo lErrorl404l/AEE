@@ -227,6 +227,21 @@ if !(_deviceNetd isEqualType 0) then { _deviceNetd = 0.05; };
 if (_deviceNetd <= 0) then { _deviceNetd = 0.05; };
 if !(_deviceResX isEqualType 0) then { _deviceResX = 640; };
 if (_deviceResX <= 0) then { _deviceResX = 640; };
+// The detector band (T16): index 6 of the thermal row, default lwir.  A
+// device that cannot be read keeps the LWIR default, so the no-device path
+// reproduces the old LWIR result bit for bit.
+private _band = _deviceRow param [6, "lwir"];
+if !(_band isEqualType "") then { _band = "lwir"; };
+private _bandEdges = [_band] call FUNC(resolveThermalBand);
+private _lambda1M = _bandEdges select 0;
+private _lambda2M = _bandEdges select 1;
+// Sun elevation in degrees, published by the environmental solar model.
+// The reflected-solar term is zero for LWIR and at night.
+private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+if !(_sunElev isEqualType 0) then { _sunElev = -90; };
+// Surface wetness drives the wet-emissivity blend at the selection point.
+private _surfaceWetness = missionNamespace getVariable [QEGVAR(core,surfaceWetness), 0];
+if !(_surfaceWetness isEqualType 0) then { _surfaceWetness = 0; };
 // ─── The fusion field-of-view frame ────────────────────────────────────────
 // A thin rectangular border at the thermal channel's half-angle, so the
 // operator can see where the fused image is actually bounded.  It is a HUD
@@ -410,7 +425,7 @@ private _paintedCount = 0;
     // per selection.  A refused kernel result (-1) falls back to no
     // attenuation so a bad input cannot black out the edge.
     private _range = _player distance _obj;
-    private _tau = [_range, _humidity, _tAir, _fog, _rain, _airDensity] call FUNC(calculateAtmosphericTransmission);
+    private _tau = [_range, _humidity, _tAir, _fog, _rain, _airDensity, _band] call FUNC(calculateAtmosphericTransmission);
     if !(_tau isEqualType 0) then { _tau = 1; };
     if (_tau < 0) then { _tau = 1; };
     if !(finite _tau) then { _tau = 1; };
@@ -497,6 +512,10 @@ private _paintedCount = 0;
         if (_tNew <= -900) then { continue; };
         private _mat = ([_obj, _selName] call FUNC(getSelectionMaterials)) call FUNC(getMaterialThermal);
         private _eps = _mat select 0;
+        // A rain-wetted surface emits toward the liquid-water value (T9).
+        _eps = [_eps, _surfaceWetness] call FUNC(getEffectiveEmissivity);
+        // Reflected-solar band radiance (T4): zero for LWIR and at night.
+        private _wSolar = [_band, _eps, _sunElev] call FUNC(calculateReflectedSolarBand);
         // The ambient background temperature is resolved once per tick
         // above the object loop, and it drives the radiance and the
         // sensor threshold alike.
@@ -506,15 +525,15 @@ private _paintedCount = 0;
         private _fGround = 0.5;
         // Brightness-ladder radiance: no atmosphere, so the 256-band material
         // slot does not move with range.  This is the DISPLAY quantity.
-        private _rad = [_tNew, _eps, _tAir, _fGround, _tNew] call FUNC(calculateBandRadiance);
+        private _rad = [_tNew, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
         // Edge radiance: the SAME selection seen through the path, so the
         // emitted and reflected terms carry tau and the path term is added.
         // The target and its local background share the range, so they share
         // tau and the same W_atm, and the difference carries tau alone.
-        private _edgeRad = [_tNew, _eps, _tAir, _fGround, _tNew, _tau, _tAir] call FUNC(calculateBandRadiance);
+        private _edgeRad = [_tNew, _eps, _tAir, _fGround, _tNew, _tau, _tAir, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
         if (!(_agcMin isEqualType 0) || !(_agcMax isEqualType 0) || _agcMin >= _agcMax) then {
-            _agcMin = [-40, _eps, _tAir, _fGround, _tNew] call FUNC(calculateBandRadiance);
-            _agcMax = [150, _eps, _tAir, _fGround, _tNew] call FUNC(calculateBandRadiance);
+            _agcMin = [-40, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
+            _agcMax = [150, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
         };
         _solved pushBack [_idx, _stateKey, _rad, _edgeRad];
     } forEach _selIdxs;
