@@ -1042,5 +1042,79 @@ class TestThinkSourceContracts(unittest.TestCase):
         self.assertIn("sense-think-act", code)
 
 
+CALL_EMIT = FUNCS / "fnc_callEmit.sqf"
+
+
+def emit(species, perception, state, trigger):
+    return run_sqf(CALL_EMIT, [species, perception, state, trigger])
+
+
+class TestCallEmit(unittest.TestCase):
+    """fnc_callEmit runs from the real SQF."""
+
+    def test_a_perceived_predator_emits_a_high_alarm(self):
+        out = emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "predator")
+        self.assertEqual(out[0], "alarm")
+        self.assertGreater(out[1], 0.5)
+
+    def test_a_gregarious_group_emits_a_contact(self):
+        out = emit([0.9, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "cohesion")
+        self.assertEqual(out[0], "contact")
+        self.assertGreater(out[1], 0)
+
+    def test_a_solitary_group_does_not_emit_a_contact(self):
+        out = emit([0.2, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "cohesion")
+        self.assertEqual(out, [])
+
+    def test_an_active_season_emits_mating(self):
+        out = emit([0.5, True], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "season")
+        self.assertEqual(out[0], "mating")
+
+    def test_an_inactive_season_emits_nothing(self):
+        out = emit([0.5, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "season")
+        self.assertEqual(out, [])
+
+    def test_a_heard_conspecific_emits_territorial(self):
+        out = emit([0.5, False], [0.9, 0.5, [0, 0], []], [0.1, 0.1, 0.5, 5, 0, 0], "conspecific")
+        self.assertEqual(out[0], "territorial")
+
+    def test_a_resource_emits_food(self):
+        out = emit([0.5, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "resource")
+        self.assertEqual(out[0], "food")
+
+    def test_no_trigger_emits_no_call(self):
+        self.assertEqual(emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], ""), [])
+
+    def test_an_unknown_trigger_emits_no_call(self):
+        self.assertEqual(emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "warp"), [])
+
+    def test_the_urgency_is_bounded(self):
+        out = emit([1.0, True], [1.0, 1.0, [0, 0], []], [0, 0, 1, 5, 0, 0], "predator")
+        self.assertLessEqual(out[1], 1)
+        self.assertGreaterEqual(out[1], 0)
+
+    def test_same_inputs_are_deterministic(self):
+        args = [[0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "predator"]
+        self.assertEqual(emit(*args), emit(*args))
+
+
+class TestCallEmitSourceContracts(unittest.TestCase):
+    def test_the_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", CALL_EMIT.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernel_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(callEmit)", text)
+
+    def test_the_emit_header_states_conditional_emission(self):
+        code = CALL_EMIT.read_text(encoding="utf-8")
+        self.assertIn("no trigger means no call", code)
+
+
 if __name__ == "__main__":
     unittest.main()
