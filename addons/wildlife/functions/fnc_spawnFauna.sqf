@@ -55,15 +55,9 @@ if (_coast isEqualType 0) then {
     _waterFrac = 1 - ((_coast / 200) min 1);
 };
 
-private _veg = 0;
 private _signals = missionNamespace getVariable [QEGVAR(environmental,terrainSignals), []];
-if (_signals isEqualType []) then {
-    if ((count _signals) >= 2) then {
-        private _votes = _signals select 1;
-        if (_votes isEqualType 0) then { _veg = ((_votes max 0) min 1); };
-    };
-};
-private _vegScore = _veg * _density;
+if !(_signals isEqualType []) then { _signals = []; };
+private _vegScore = ([_signals] call FUNC(vegScore)) * _density;
 
 // The matcher reads the true conditions, not a night boolean.  The sun
 // elevation, the air temperature and the month come from the core state.
@@ -86,24 +80,40 @@ private _matches = [
     "ground", _structureFrac, [0, 0], _seed, _ecologyCorpus
 ] call FUNC(getSpeciesMatch);
 
+// The local environment sample gates the spawn: a group below the suitability
+// floor is not spawned here.
+private _environment = [_position] call FUNC(sampleNeighbourhood);
+
 // Map each matched group to the vanilla fauna classes of its family.  The
 // group id carries the family as its first token ("temperate_bird_dawn").
 private _species = [];
 for "_m" from 0 to ((count _matches) - 1) do {
     private _match = _matches select _m;
-    private _family = ((_match select 0) splitString "_") select 0;
-    private _count = 1 + (floor ((_match select 1) * 4));
-    for "_a" from 0 to ((count _assetMap) - 1) do {
-        private _assetRow = _assetMap select _a;
-        if (((_assetRow select 0) == "fauna") && ((_assetRow select 1) == _family)) then {
-            private _classes = _assetRow select 4;
-            for "_c" from 0 to ((count _classes) - 1) do {
-                private _class = _classes select _c;
-                private _seen = false;
-                for "_s" from 0 to ((count _species) - 1) do {
-                    if (((_species select _s) select 0) == _class) then { _seen = true; };
+    private _groupId = _match select 0;
+
+    // The group habitat weights from the corpus row.
+    private _habitat = [];
+    for "_r" from 0 to ((count _ecologyCorpus) - 1) do {
+        if (((_ecologyCorpus select _r) select 1) == _groupId) then {
+            _habitat = (_ecologyCorpus select _r) select 9;
+        };
+    };
+
+    if (([_environment, _habitat] call FUNC(environmentSuitability)) >= WILDLIFE_SUITABILITY_MIN) then {
+        private _family = (_groupId splitString "_") select 0;
+        private _count = 1 + (floor ((_match select 1) * 4));
+        for "_a" from 0 to ((count _assetMap) - 1) do {
+            private _assetRow = _assetMap select _a;
+            if (((_assetRow select 0) == "fauna") && ((_assetRow select 1) == _family)) then {
+                private _classes = _assetRow select 4;
+                for "_c" from 0 to ((count _classes) - 1) do {
+                    private _class = _classes select _c;
+                    private _seen = false;
+                    for "_s" from 0 to ((count _species) - 1) do {
+                        if (((_species select _s) select 0) == _class) then { _seen = true; };
+                    };
+                    if (!_seen) then { _species pushBack [_class, _count]; };
                 };
-                if (!_seen) then { _species pushBack [_class, _count]; };
             };
         };
     };

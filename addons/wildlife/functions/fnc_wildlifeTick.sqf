@@ -123,16 +123,7 @@ if (_hasUnit) then {
 // a sum double-counts one species.  A map with no classified tree or bush
 // yields an empty map and therefore an open-ground score of 0.
 private _signals = [QEGVAR(environmental,terrainSignals), [], 3] call EFUNC(core,readState);
-private _vegScore = 0;
-if ((count _signals) >= 2) then {
-    private _votes = _signals select 1;
-    if (_votes isEqualType createHashMap) then {
-        {
-            if (_x > _vegScore) then { _vegScore = _x; };
-        } forEach (values _votes);
-    };
-};
-_vegScore = ((_vegScore max 0) min 1);
+private _vegScore = [_signals] call FUNC(vegScore);
 
 private _manifest = missionNamespace getVariable [QGVAR(manifest), []];
 if !(_manifest isEqualType []) then { _manifest = []; };

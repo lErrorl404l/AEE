@@ -1,6 +1,7 @@
 PREP(getSpeciesMatch);
 PREP(getCallPattern);
 PREP(getSeason);
+PREP(vegScore);
 PREP(sampleNeighbourhood);
 PREP(environmentSuitability);
 PREP(environmentGrid);

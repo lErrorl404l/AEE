@@ -253,6 +253,8 @@ UNARY_COMMANDS = {
     "surfaceIsWater",
     "getTerrainHeightASL",
     "nearestTerrainObjects",
+    # HashMap value list used by the wildlife vegetation-score helper.
+    "values",
 }
 
 
@@ -1008,6 +1010,7 @@ class SqfRuntime:
                 "surfaceIsWater",
                 "getTerrainHeightASL",
                 "nearestTerrainObjects",
+                "values",
             ):
                 fn = self.globals.get(node.op)
                 if callable(fn):

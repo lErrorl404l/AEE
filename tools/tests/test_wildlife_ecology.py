@@ -603,5 +603,68 @@ class TestEnvironmentGridSourceContracts(unittest.TestCase):
         self.assertIn("FUNC(environmentGrid)", text)
 
 
+VEG_SCORE = FUNCS / "fnc_vegScore.sqf"
+
+
+def veg_score(signals, values_fn=None):
+    globals_ = {}
+    if values_fn is not None:
+        globals_["values"] = values_fn
+    return run_sqf(VEG_SCORE, [signals], globals_=globals_)
+
+
+class TestVegScore(unittest.TestCase):
+    """fnc_vegScore runs from the real SQF."""
+
+    def test_a_legacy_number_is_clamped(self):
+        self.assertAlmostEqual(veg_score([0, 0.8]), 0.8)
+
+    def test_a_negative_number_clamps_to_zero(self):
+        self.assertEqual(veg_score([0, -1]), 0)
+
+    def test_a_number_above_one_clamps_to_one(self):
+        self.assertEqual(veg_score([0, 2]), 1)
+
+    def test_short_signals_are_zero(self):
+        self.assertEqual(veg_score([]), 0)
+
+    def test_the_hashmap_shape_takes_the_strongest_vote(self):
+        value = veg_score(
+            [0, {"Cfb": 0.4, "Dfb": 0.9}], values_fn=lambda d: list(d.values())
+        )
+        self.assertAlmostEqual(value, 0.9)
+
+
+class TestEnvironmentConsumptionContracts(unittest.TestCase):
+    """The wiring the harness cannot execute."""
+
+    def test_all_three_vegetation_readers_call_the_helper(self):
+        for name in (
+            "fnc_wildlifeTick.sqf",
+            "fnc_spawnFauna.sqf",
+            "fnc_applyAnimalBehaviour.sqf",
+        ):
+            text = (FUNCS / name).read_text(encoding="utf-8")
+            self.assertIn("FUNC(vegScore)", text, name)
+
+    def test_the_veg_score_kernel_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(vegScore)", text)
+
+    def test_spawn_gates_on_the_environment_suitability(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("FUNC(sampleNeighbourhood)", text)
+        self.assertIn("FUNC(environmentSuitability)", text)
+        self.assertIn("WILDLIFE_SUITABILITY_MIN", text)
+
+    def test_movement_respects_the_habitat_boundary(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("FUNC(habitatBoundary)", text)
+
+    def test_the_tick_still_passes_the_veg_score_to_the_bed(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("_rainAmount, _vegScore] call FUNC(soundBedForContext)", text)
+
+
 if __name__ == "__main__":
     unittest.main()
