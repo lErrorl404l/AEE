@@ -49,6 +49,9 @@ lint:
 	python3 tools/validation/gen_vehicle_mass_model.py --check
 	python3 tools/validation/validate_vehicle_mass_model.py
 	python3 tools/validation/validate_mass_calibration.py
+	python3 tools/validation/gen_aircraft_data.py --check
+	python3 tools/validation/gen_aircraft_coverage.py --check
+	python3 tools/validation/validate_aircraft_data.py
 	python3 tools/validation/gen_thermal_optics.py --check
 
 # Fail when the lint target and the CI workflow disagree, so a new CI check
