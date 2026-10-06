@@ -81,15 +81,15 @@ missionNamespace setVariable [QEGVAR(core,snowDepth_m), _depth];
 missionNamespace setVariable [QGVAR(snowDriftIntensity), _drift];
 
 if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
-    diag_log text format [
-        "[AEE] SnowAccum: depth=%1 m drift=%2 (T=%3 °C, wind=%4 m/s)",
+    AEE_LOG_INFO(format [
+        "SnowAccum: depth=%1 m drift=%2 (T=%3 °C, wind=%4 m/s)",
         // CBA_fnc_formatNumber is [number, integerWidth, decimalPlaces]:
         // the 2nd arg is integer width, so 0.5 m showed as "00" (issue #177).
         [_depth, 0, 2] call CBA_fnc_formatNumber,
         [_drift, 0, 3] call CBA_fnc_formatNumber,
         [_T, 1] call CBA_fnc_formatNumber,
         [_windSpd, 1] call CBA_fnc_formatNumber
-    ];
+    ]);
 };
 
 _depth

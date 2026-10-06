@@ -70,15 +70,15 @@ missionNamespace setVariable [QGVAR(enginePowerModifier), _power];
 missionNamespace setVariable [QGVAR(engineTurboModifier), _turbo];
 
 if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
-    diag_log text format [
-        "[AEE] EnginePower: NA=%1 Turbo=%2 Crank=%3 (alt=%4 m, T=%5 °C, bat=%6)",
+    AEE_LOG_INFO(format [
+        "EnginePower: NA=%1 Turbo=%2 Crank=%3 (alt=%4 m, T=%5 °C, bat=%6)",
         [_power, 2] call CBA_fnc_formatNumber,
         [_turbo, 2] call CBA_fnc_formatNumber,
         [_crankSuccess, 2] call CBA_fnc_formatNumber,
         [_alt, 0] call CBA_fnc_formatNumber,
         [_T, 1] call CBA_fnc_formatNumber,
         [_batteryDerate, 2] call CBA_fnc_formatNumber
-    ];
+    ]);
 };
 
 _power

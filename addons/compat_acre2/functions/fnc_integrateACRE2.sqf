@@ -46,4 +46,4 @@ private _callback = compile '
 
 [_callback] call acre_api_fnc_setCustomSignalFunc;
 
-diag_log "[AEE][ACRE2] Custom signal function registered (propagation index → ±8 dB shift)";
+AEE_LOG_INFO("[ACRE2] Custom signal function registered (propagation index → ±8 dB shift)");

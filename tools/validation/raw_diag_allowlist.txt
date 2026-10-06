@@ -1,0 +1,17 @@
+# Raw diag_log sites kept by design.
+#
+# Every diag_log in addons/**/*.sqf must go through an AEE_LOG_* macro, or be
+# listed here with a reason.  tools/tests/raw_diag_allowlist.py enforces this.
+#
+# Format: <path>:<line> <reason>
+#
+# The performance-counter dump is an explicit, operator-invoked RPT report
+# (issue #97).  It exists only in a counter build and writes a greppable
+# banner, so it stays on raw diag_log rather than the module tag.
+addons/core/functions/fnc_dumpPerformanceCounters.sqf:21 deliberate banner: registered-PFH report header (issue #97, counter build only)
+addons/core/functions/fnc_dumpPerformanceCounters.sqf:27 deliberate banner: registered-PFH report row (issue #97, counter build only)
+addons/core/functions/fnc_dumpPerformanceCounters.sqf:36 deliberate banner: registered-PFH report footer (issue #97, counter build only)
+addons/core/functions/fnc_dumpPerformanceCounters.sqf:41 deliberate banner: performance-counter dump unavailable notice (issue #97, counter build only)
+addons/core/functions/fnc_dumpPerformanceCounters.sqf:44 deliberate banner: counter-results report header (issue #97, counter build only)
+addons/core/functions/fnc_dumpPerformanceCounters.sqf:72 deliberate banner: counter-results report row (issue #97, counter build only)
+addons/core/functions/fnc_dumpPerformanceCounters.sqf:75 deliberate banner: counter-results report footer (issue #97, counter build only)

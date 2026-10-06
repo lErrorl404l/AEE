@@ -642,10 +642,10 @@ if (_mode == "EXIT") then {
         // returned nil upstream (the #189 class).  Log the inputs so a
         // recurrence is diagnosable, then fall back to ambient.
         if !(finite _tNew) then {
-            diag_log format [
-                "[AEE] NaN tNew: obj=%1 sel=%2 tAir=%3 tCurrent=%4 qInternal=%5 mode=%6",
+            AEE_LOG_ERROR(format [
+                "NaN tNew: obj=%1 sel=%2 tAir=%3 tCurrent=%4 qInternal=%5 mode=%6",
                 _obj, _sel, _tAir, _tCurrent, _qInternal, _mode
-            ];
+            ]);
             _tNew = _tAir;
         };
         if !(finite _tCoreNew) then { _tCoreNew = _tAir; };
@@ -773,10 +773,10 @@ if (_mode == "EXIT") then {
         if (_n < 20 && {missionNamespace getVariable [QGVAR(thermalDebug), false]}) then {
             _traceN set [_traceKey, _n + 1];
             missionNamespace setVariable [QGVAR(traceCount), _traceN];
-            diag_log format [
-                "[AEE][TRACE] obj=%1 sel=%2 mat=%3 eps=%4 tNew=%5 rad=%6 agc=%7..%8 b=%9 qInt=%10 finite_b=%11",
+            AEE_LOG_TRACE(format [
+                "obj=%1 sel=%2 mat=%3 eps=%4 tNew=%5 rad=%6 agc=%7..%8 b=%9 qInt=%10 finite_b=%11",
                 _obj, _sel, _mat, _eps, _tNew, _rad, _agcMin, _agcMax, _b, _qInternal, finite _b
-            ];
+            ]);
         };
         // NaN guard: SQF NaN comparisons are false (NaN != NaN is also
         // false in SQF), so max/min AND a self-compare CANNOT clamp a
@@ -785,10 +785,10 @@ if (_mode == "EXIT") then {
         // only reliable check.  A NaN here means a state read returned
         // nil upstream (the #189 class); fall back to ambient.
         if !(finite _b) then {
-            diag_log format [
-                "[AEE] NaN brightness: obj=%1 sel=%2 tNew=%3 eps=%4 rad=%5",
+            AEE_LOG_ERROR(format [
+                "NaN brightness: obj=%1 sel=%2 tNew=%3 eps=%4 rad=%5",
                 _obj, _sel, _tNew, _eps, _rad
-            ];
+            ]);
             _b = 0;
         };
 
