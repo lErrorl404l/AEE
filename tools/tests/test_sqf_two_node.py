@@ -62,6 +62,10 @@ _GLOBALS = {
     "__FUNC__getMaterialThermal": lambda c: _REGISTRY.get(c, _REGISTRY["ground"]),
     "overcast": 0.0,
     "diag_deltaTime": 0.1,
+    # The solver publishes aee_thermal_humanCoreTempC (task 14).  sqf_lite has
+    # no namespace, so the write resolves against inert stubs.
+    "missionNamespace": {},
+    "setVariable": lambda *args: None,
 }
 
 
