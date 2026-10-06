@@ -233,6 +233,22 @@
             <Original>Optics Debug Log</Original>
             <English>Optics Debug Log</English>
         </Key>
+        <Key ID="STR_AEE_Optics_mgrsEnabled_Description">
+            <Original>Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on.</Original>
+            <English>Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mgrsEnabled_Name">
+            <Original>MGRS Grid</Original>
+            <English>MGRS Grid</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mgrsPrecision_Description">
+            <Original>Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10.</Original>
+            <English>Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mgrsPrecision_Name">
+            <Original>MGRS Precision</Original>
+            <English>MGRS Precision</English>
+        </Key>
         <Key ID="STR_AEE_Optics_mirageDensity_Description">
             <Original>Particle density of the heat-haze field</Original>
             <English>Particle density of the heat-haze field</English>

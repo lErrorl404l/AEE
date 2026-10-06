@@ -63,9 +63,25 @@ class RscTitles {
                 h = "0.025 * safezoneH";
             };
 
+            // Retired in place.  The grid line moved to AEEMgrs (idc 9015)
+            // so one control carries either the MGRS reference or the legacy
+            // numeric grid; the idc stays assigned and the text stays empty.
             class AEEGrid: AEETextHud {
                 idc = 9004;
-                text = "0000 - 0000";
+                text = "";
+                style = 0x02;
+                sizeEx = "0.018 * safezoneH";
+                x = "0.40 * safezoneW + safezoneX";
+                y = "0.165 * safezoneH + safezoneY";
+                w = "0.20 * safezoneW";
+                h = "0.035 * safezoneH";
+            };
+
+            // MGRS grid readout (aee_optics_mgrsEnabled).  Sits on the retired
+            // AEEGrid line so the HUD does not move when MGRS is switched off.
+            class AEEMgrs: AEETextHud {
+                idc = 9015;
+                text = "";
                 style = 0x02;
                 sizeEx = "0.018 * safezoneH";
                 x = "0.40 * safezoneW + safezoneX";

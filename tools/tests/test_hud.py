@@ -33,6 +33,7 @@ OPTICS = REPO / "addons" / "optics"
 HUD = OPTICS / "functions" / "hud"
 HEADING_KERNEL = HUD / "fnc_hudFormatHeading.sqf"
 GRID_KERNEL = HUD / "fnc_hudFormatGrid.sqf"
+GRID_DISPLAY_KERNEL = HUD / "fnc_formatGridDisplay.sqf"
 RANGE_KERNEL = HUD / "fnc_hudFormatRange.sqf"
 
 HUD_FILE = OPTICS / "RscTitles.hpp"
@@ -40,6 +41,7 @@ BUILD_SRC = (HUD / "fnc_hudBuild.sqf").read_text(encoding="utf-8")
 UPDATE_SRC = (HUD / "fnc_hudUpdate.sqf").read_text(encoding="utf-8")
 RANGE_SRC = (HUD / "fnc_hudRangefinder.sqf").read_text(encoding="utf-8")
 MARKERS_SRC = (HUD / "fnc_hudMarkers.sqf").read_text(encoding="utf-8")
+FORMAT_DISPLAY_SRC = (HUD / "fnc_formatGridDisplay.sqf").read_text(encoding="utf-8")
 HUD_CLASS_SRC = HUD_FILE.read_text(encoding="utf-8")
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
@@ -53,6 +55,7 @@ ALL_HUD_SRC = "\n".join(
         UPDATE_SRC,
         RANGE_SRC,
         MARKERS_SRC,
+        FORMAT_DISPLAY_SRC,
     ]
 )
 
@@ -77,6 +80,24 @@ def grid(raw):
 
 def rng(distance):
     return run_sqf(RANGE_KERNEL, [distance], {})
+
+
+def grid_display(position, anchor, precision, grid_raw, enabled, mgrs):
+    """Run the real selector with the real legacy formatter and a stub worldToMgrs."""
+    globals_ = {
+        "__EFUNC__core_worldToMgrs": lambda _p, _a, _prec: [
+            mgrs,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0,
+        ],
+        "__FUNC__hudFormatGrid": lambda raw: run_sqf(GRID_KERNEL, [raw], {}),
+    }
+    return run_sqf(
+        GRID_DISPLAY_KERNEL, [position, anchor, precision, grid_raw, enabled], globals_
+    )
 
 
 class TestHudHeading(unittest.TestCase):
@@ -168,8 +189,40 @@ class TestHudRange(unittest.TestCase):
         self.assertEqual(rng(999.4), "999m")
 
 
+class TestHudGridDisplay(unittest.TestCase):
+    """fnc_formatGridDisplay, executed: MGRS when on, the legacy grid when off."""
+
+    def test_mgrs_is_returned_when_the_setting_is_on(self):
+        self.assertEqual(
+            grid_display([0, 0, 0], [0] * 9, 10, "12345678", True, "35SLE5013418852"),
+            "35SLE5013418852",
+        )
+
+    def test_the_legacy_grid_is_returned_when_the_setting_is_off(self):
+        self.assertEqual(
+            grid_display([0, 0, 0], [0] * 9, 10, "12345678", False, "35SLE5013418852"),
+            "1234 - 5678",
+        )
+
+    def test_it_falls_back_to_the_legacy_grid_when_mgrs_is_empty(self):
+        self.assertEqual(
+            grid_display([0, 0, 0], [0] * 9, 10, "123456", True, ""),
+            "0123 - 0456",
+        )
+
+
 class TestHudSourceContract(unittest.TestCase):
     """The engine readers carry the source's mechanisms."""
+
+    def test_the_mgrs_control_uses_a_free_idc(self):
+        self.assertIn("idc = 9015;", HUD_CLASS_SRC)
+
+    def test_the_update_calls_the_grid_selector(self):
+        self.assertIn("call FUNC(formatGridDisplay)", UPDATE_SRC)
+
+    def test_the_update_supplies_the_position_and_the_anchor(self):
+        self.assertIn("getPosASL _player", UPDATE_SRC)
+        self.assertIn("EFUNC(core,getGeoAnchor)", UPDATE_SRC)
 
     def test_the_hud_class_exists(self):
         self.assertIn("class GVAR(hud)", HUD_CLASS_SRC)
@@ -229,6 +282,7 @@ class TestHudWiring(unittest.TestCase):
 
     def test_prep_registers_every_hud_function(self):
         for name in (
+            "formatGridDisplay",
             "hudBuild",
             "hudFormatGrid",
             "hudFormatHeading",
@@ -247,6 +301,27 @@ class TestHudWiring(unittest.TestCase):
 
     def test_the_stringtable_keys_exist(self):
         for key in ("hudEnabled_Name", "hudEnabled_Description"):
+            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+
+    def test_the_mgrs_setting_is_registered_default_on(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(mgrsEnabled,"AEE HUD","Displays",true)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_mgrs_precision_setting_is_a_list_default_ten(self):
+        self.assertIn("QGVAR(mgrsPrecision),", SETTINGS_SRC)
+        self.assertIn('"LIST",', SETTINGS_SRC)
+        self.assertIn("[[4, 6, 8, 10]", SETTINGS_SRC)
+        self.assertIn('"10 (1 m)"', SETTINGS_SRC)
+
+    def test_the_mgrs_stringtable_keys_exist(self):
+        for key in (
+            "mgrsEnabled_Name",
+            "mgrsEnabled_Description",
+            "mgrsPrecision_Name",
+            "mgrsPrecision_Description",
+        ):
             self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
 
     def test_the_postinit_has_the_module_guard(self):

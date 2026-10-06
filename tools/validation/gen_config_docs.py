@@ -222,6 +222,19 @@ def explicit_default(stype: str, raw: str) -> str:
     if stype == "SLIDER" and len(parts) >= 3:
         return parts[2]
     if stype == "LIST" and parts:
+        # CBA LIST value is [[values], [labels], defaultIndex].  Resolve the
+        # default index to the value it selects, so the document shows the
+        # stored value and not the index.  A non-integer last part (the
+        # two-array form some settings use) is returned unchanged.
+        options = parts[0].strip()
+        try:
+            index = int(parts[-1])
+        except ValueError:
+            return parts[-1]
+        if options.startswith("[") and options.endswith("]"):
+            values = split_top_level(options[1:-1])
+            if 0 <= index < len(values):
+                return values[index]
         return parts[-1]
     return raw
 

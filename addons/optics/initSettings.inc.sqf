@@ -88,6 +88,25 @@ AEE_SETTING_CHECKBOX(viewDistanceEnabled,"AEE Optics","Visibility",true);
 // live.
 AEE_SETTING_CHECKBOX(hudEnabled,"AEE HUD","Displays",false);
 
+// MGRS grid readout in the HUD (task 7).  On: the grid line carries the
+// aee worldToMgrs reference.  Off: the legacy numeric grid from
+// FUNC(hudFormatGrid).  Default on; the formatter falls back to the legacy
+// grid on its own when MGRS is unavailable.
+AEE_SETTING_CHECKBOX(mgrsEnabled,"AEE HUD","Displays",true);
+
+// MGRS precision: the total digit count.  A LIST, because only these counts
+// are valid MGRS references (an arbitrary even count is not one).  Four
+// digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m.  Default 10.
+[
+    QGVAR(mgrsPrecision),
+    "LIST",
+    [LLSTRING(mgrsPrecision_Name), LLSTRING(mgrsPrecision_Description)],
+    ["AEE HUD", "Displays"],
+    [[4, 6, 8, 10], ["4 (1 km)", "6 (100 m)", "8 (10 m)", "10 (1 m)"], 3],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
 // Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
 // pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).

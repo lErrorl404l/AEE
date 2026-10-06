@@ -46,7 +46,21 @@ if (_enabled) then {
     };
     private _heading = [(_bearing mod 360)] call FUNC(hudFormatHeading);
 
-    private _grid = [mapGridPosition _player] call FUNC(hudFormatGrid);
+    // The grid line: an MGRS reference when the setting is on, else the
+    // legacy numeric grid.  FUNC(formatGridDisplay) owns that choice; the
+    // position, the anchor and the setting value are all passed in.
+    private _mgrsEnabled = missionNamespace getVariable [QGVAR(mgrsEnabled), true];
+    if !(_mgrsEnabled isEqualType true) then { _mgrsEnabled = true; };
+    private _mgrsPrecision = missionNamespace getVariable [QGVAR(mgrsPrecision), 10];
+    if !(_mgrsPrecision isEqualType 0) then { _mgrsPrecision = 10; };
+
+    private _grid = [
+        getPosASL _player,
+        call EFUNC(core,getGeoAnchor),
+        _mgrsPrecision,
+        mapGridPosition _player,
+        _mgrsEnabled
+    ] call FUNC(formatGridDisplay);
     private _altitude = round ((getPosASL _player) select 2);
     private _clock = [dayTime, "HH:MM"] call BIS_fnc_timeToString;
 
@@ -64,7 +78,7 @@ if (_enabled) then {
 
     [_display, 9010, _heading select 0] call _setText;
     [_display, 9003, _heading select 1] call _setText;
-    [_display, 9004, _grid] call _setText;
+    [_display, 9015, _grid] call _setText;
     [_display, 9005, (str _altitude) + "m"] call _setText;
     [_display, 9006, _clock] call _setText;
     [_display, 9012, (str _temperature) + " C"] call _setText;
