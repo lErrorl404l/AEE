@@ -52,7 +52,7 @@ if ((isNil "_temp")
     || !(_humidity isEqualType 0) || (_humidity < 0) || (_humidity > 100)
     || !(_pressure isEqualType 0) || (_pressure < 850) || (_pressure > 1085)
     || !(_overcast isEqualType 0) || (_overcast < 0) || (_overcast > 1)
-) exitWith { diag_log "[AEE][RealWeather] weather.json rejected: out-of-range or invalid value"; };
+) exitWith { AEE_LOG_ERROR("[RealWeather] weather.json rejected: out-of-range or invalid value"); };
 
 missionNamespace setVariable [QEGVAR(core,currentTemperature), _temp];
 missionNamespace setVariable [QEGVAR(core,currentHumidity), _humidity];

@@ -1599,8 +1599,8 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     if (missionNamespace getVariable [QGVAR(nvgImperfectionDebug), false]) then {
         _impPart = format [" | imp on=%1 str=%2 blemFade=%3 retFade=%4 breath=%5 blind=%6 scint=%7 edge=%8 glare=%9 alpha=%10", _ioOn, _ioStr, _blemishFade, _reticuleFade, _breathing, _blindStr, _scintStr, _edgeStr, _glare, 1 - _blemishFade];
     };
-    diag_log text (format [
-        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focus=%18 settled=%19 raw=%20 pending=%21",
+    AEE_LOG_DEBUG(format [
+        "NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focus=%18 settled=%19 raw=%20 pending=%21",
         _tier,
         _moonLight,
         _lux,

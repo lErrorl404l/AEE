@@ -3812,7 +3812,7 @@ class TestSQFSync(unittest.TestCase):
                 "QGVAR(vehicleHeatState)",
                 "QGVAR(engineBodyTempC)",
                 "QGVAR(vehicleHeatTrend)",
-                "[AEE][HEAT]",
+                "[HEAT]",
                 "COMSOL",
                 "Heat Generation in a Disc Brake",
                 "P = m*a*v",

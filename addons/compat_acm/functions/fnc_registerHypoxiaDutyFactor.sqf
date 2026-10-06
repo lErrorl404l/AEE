@@ -34,4 +34,4 @@ private _dutyFactor = {
 
 [QGVAR(hypoxiaDutyFactor), _dutyFactor] call ace_medical_vitals_fnc_addSpO2DutyFactor;
 
-diag_log "[AEE][ACM] Hypoxia duty factor registered (engages above risk 0.8)";
+AEE_LOG_INFO("[ACM] Hypoxia duty factor registered (engages above risk 0.8)");

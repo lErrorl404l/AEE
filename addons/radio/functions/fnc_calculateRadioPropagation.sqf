@@ -185,14 +185,14 @@ _index = _index max 0.3 min _propRange;
 missionNamespace setVariable [QGVAR(radioPropagationIndex), _index];
 
 if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
-    diag_log text format [
-        "[AEE] RadioPropagation: %1 (FSPL %2 dB | duct %3 dB | terrain %4 dB | link %5 dBm)",
+    AEE_LOG_INFO(format [
+        "RadioPropagation: %1 (FSPL %2 dB | duct %3 dB | terrain %4 dB | link %5 dBm)",
         [_index, 2] call CBA_fnc_formatNumber,
         [_fspl, 1] call CBA_fnc_formatNumber,
         [_ductBonus, 1] call CBA_fnc_formatNumber,
         [_terrainLoss, 1] call CBA_fnc_formatNumber,
         [_linkBudget, 1] call CBA_fnc_formatNumber
-    ];
+    ]);
 };
 
 _index
