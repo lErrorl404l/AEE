@@ -72,6 +72,24 @@ verdict list are the API a mission or a probe reads.
 | `aee_core_positionDivergence` | core | True when a position invariant diverges |
 | `aee_core_positionVerdicts` | core | Per-invariant consistency verdicts |
 
+### MGRS grid and the signal tracker
+
+The world geographic anchor is read once from `CfgWorlds` and cached. The
+MGRS letter tables load once at preInit. The signal tracker replaces the
+exact friendly position with a modelled one, and it publishes the per-track
+records that the draw function and the GPS readout consume.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_core_geoAnchor` | core | World geographic anchor: [latitude, longitude, zone, mapSize, lonWest, latSouth, lonEast, latNorth, sourceToken] |
+| `aee_core_mgrsTables` | core | MGRS letter tables loaded at preInit: bands, column sets, rows, even-zone offset, zone strings and digit characters |
+| `aee_optics_trackerTracks` | optics | Per-track records: displayed position, ellipse, track age and fix quality |
+| `aee_optics_trackerR95` | optics | The largest error radius in the group, metres |
+| `aee_optics_trackerFix` | optics | The worst fix quality in the group (`none`, `degraded` or `ok`) |
+| `aee_optics_trackerPrev` | optics | Per-unit previous fix state for the continuity kernel |
+| `aee_optics_trackerTime` | optics | Mission time of the last tracker survey, seconds |
+| `aee_optics_trackerLogAt` | optics | Mission time of the next suppression log line, seconds |
+
 ### Engine environment bridges
 
 These variables back the local engine bridges (issue #141). Each bridge is
@@ -544,6 +562,19 @@ The **AEE HUD > Displays** category holds the on-screen night-vision readouts.
 | `aee_nightvision_ltmEnabled` | AEE HUD > Displays | Draw the NVG laser target marker |
 | `aee_nightvision_ltmDaylightFade` | AEE HUD > Displays | Fade the laser marker by day, alpha `1.2 - sunOrMoon` |
 
+### MGRS grid and the signal tracker
+
+The MGRS grid settings sit in **AEE HUD > Displays**. The tracker settings sit
+in **AEE HUD > Tracker**. Each stated default is the shipped value.
+
+| Variable | Category | Purpose |
+| --- | --- | --- |
+| `aee_optics_mgrsEnabled` | AEE HUD > Displays | Show the MGRS grid in place of the legacy numeric grid (default on) |
+| `aee_optics_mgrsPrecision` | AEE HUD > Displays | MGRS digit count, one of 4, 6, 8 or 10 (default 10) |
+| `aee_optics_trackerEnabled` | AEE HUD > Tracker | Replace the exact friendly position with the modelled tracker (default off) |
+| `aee_optics_trackerSuppressIcons` | AEE HUD > Tracker | Suppress the engine friendly map indicators where the difficulty allows (default off) |
+| `aee_optics_trackerInterval` | AEE HUD > Tracker | Seconds between tracker surveys, 0.2 to 5 (default 1.0) |
+
 ### Human-vision model (perception)
 
 The human-vision model registers its operator switches under **AEE Optics >
@@ -594,11 +625,11 @@ if it brightens and darkens as the hot source fills the view, the engine is
 auto-exposing.  `aee_thermal_agcPinned = false` restores the automatic
 window.
 
-305 settings register in the CBA settings interface. Three categories carry
+311 settings register in the CBA settings interface. Three categories carry
 the diagnostics and the experimental work: **AEE Experimental > Fusion**
-(the four thermal-fusion knobs), **AEE HUD > Displays** (the five on-screen
-displays, including the NVG laser target marker and the laser daylight fade),
-and **AEE Debug >
+(the four thermal-fusion knobs), **AEE HUD > Displays** (the on-screen
+displays, the MGRS grid settings, the NVG laser target marker and the laser
+daylight fade), and **AEE Debug >
 component** (every diagnostic switch, grouped by the owning component,
 including the new AI and Wildlife subcategories). The
 remaining categories are one per module: AEE (core), AEE Optics, AEE

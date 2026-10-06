@@ -132,7 +132,7 @@ multipliers, not physical units.  Each is documented with its reference.
    True player-view DoF is not scriptable (camSetFocus is camera-only);
    RadialBlur approximates focus behaviour.
 6. **Fiber cell counts** (28/42).  SCHOTT datasheet bundle sizes, mapped
-   to screen pixels — the mapping constant is calibration.
+   to screen pixels, so the mapping constant is calibration.
 
 ## Thermal values (fnc_applyThermalVision.sqf)
 
@@ -272,14 +272,14 @@ engine commands feed it, verified by docker probe (PHASE12):
 
 | Value | Source | Engine proof |
 |---|---|---|
-| lightDirection / azimuth / elevation | `getLighting` (no-arg) | docker probe: `[color, 84987.1, [0.0255,0.472,-0.881], 0]` — 4 elements on dedicated server |
+| lightDirection / azimuth / elevation | `getLighting` (no-arg) | docker probe: `[color, 84987.1, [0.0255,0.472,-0.881], 0]`, 4 elements on dedicated server |
 | starsVisibility | `getLighting` (no-arg) | same probe |
 | ambient lux (moon model) | moonIntensity/overcast/rain | physics model, validated |
 | dynamic lux (client) | `getLightingAt _unit` | probe: works on a UNIT, returns [] on a logic |
 
 Engine caveats discovered by probe (documented, not guessed):
 - `getLighting` ambientBrightness is FROZEN on a headless server (lighting
-  advances only per client camera) — NOT usable as the lux source there.
+  advances only per client camera), and it is NOT usable as the lux source there.
 - `getLightingAt` requires a real unit, and is client-NV dependent
   (BIS tracker T156930).
 - The engine vector points FROM the light: elevation is negated for the
@@ -314,3 +314,117 @@ consistency harness therefore reads the map, not a single number, and takes
 the surface layer (index 0) as the ground-surface estimate for INV-2.  Its
 Annex C row is added by task 18.
 
+## MGRS and positioning constants
+
+The aee-mgrs-and-positioning work adds the geographic anchor, the MGRS
+kernels, the GNSS kernels and the tracker projector. Sources:
+- **TM8358.2**: DMA TM 8358.2, "The Universal Grids: UTM and UPS", Ed.1 1989
+- **TM8358.1**: DMA TM 8358.1, the MGRS lettering figures
+- **MGRS2009**: NGA MGRS guidance, Modified February 2009
+- **WGS84**: NIMA TR8350.2, the WGS84 ellipsoid
+- **SPS**: GPS Standard Positioning Service Performance Standard, 5th ed, April 2020 (gps.gov)
+
+### UTM projection (fnc_latLonToUtm.sqf, fnc_utmToLatLon.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| a 6378137 m, 1/f 298.257223563 | WGS84 ellipsoid | WGS84 (NIMA TR8350.2) | ✅ sourced |
+| k0 0.9996 | UTM scale factor | TM8358.2 ch.2-3 | ✅ sourced |
+| false easting 500000 m | UTM easting origin | TM8358.2 ch.2-3 | ✅ sourced |
+| false northing 10000000 m south | UTM southern origin | TM8358.2 ch.2-3 | ✅ sourced |
+| forward and inverse transverse Mercator series | UTM projection | TM8358.2 ch.2-3 | ✅ sourced |
+| zone number from longitude | UTM zone | TM8358.2 | ✅ sourced |
+| zone clamp 1..60 | valid zone bound | UTM definition | ✅ derived |
+
+### MGRS letter tables (fnc_formatMgrs.sqf, fnc_parseMgrs.sqf)
+
+The tables live in the generated file `addons/core/data/mgrs_tables.sqf`.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| latitude band letters, 8 degree steps | Grid Zone Designation | MGRS2009; TM8358.1 figure | ✅ sourced |
+| band X 12 degrees high, north to 84 | band set | MGRS2009 | ✅ sourced |
+| column letter sets, 3 sets of 8 | 100 km square column | MGRS2009; TM8358.1 | ✅ sourced |
+| row letters, 20 rows | 100 km square row | MGRS2009; TM8358.1 | ✅ sourced |
+| even-zone row offset 5 | row cycle | MGRS2009; TM8358.1 | ✅ sourced |
+| digits truncated, south-west corner | MGRS reference | MGRS2009 | ✅ sourced |
+| 2000000 m northing cycle | southern hemisphere cycle | MGRS2009 | ✅ sourced |
+| precision one of 2, 4, 6, 8, 10 | valid digit count | MGRS2009 | ✅ sourced |
+
+### World-to-MGRS local projection (fnc_worldToMgrs.sqf, fnc_mgrsToWorld.sqf)
+
+The anchor box maps the world square linearly to the geographic box. When the
+anchor has no usable box, the fallback is a local tangent plane at the anchor
+centre. The tangent plane is an approximation, not a projection.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| WGS84 a 6378137 m, 1/f 298.257223563 | meridian radius of curvature | WGS84 | ✅ sourced |
+| M = a(1-e2)/(1-e2 sin2)^1.5 | metres per degree of latitude | WGS84 ellipsoid | ✅ derived |
+| longitude scale cos(latitude) | metres per degree of longitude | local tangent plane | ✅ derived |
+| linear anchor-box mapping | world square to geographic box | the design choice | ⚠️ UNSOURCED approximation |
+| tangent-plane fallback | world position to lat/lon | the design choice | ⚠️ UNSOURCED approximation |
+
+### GNSS error ellipse (fnc_gnssErrorEllipse.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| UERE 3.6 m RMS | 1-sigma range error | SPS App. A.4 | ✅ sourced |
+| horizontal 8 m, vertical 13 m at 95 percent | accuracy standard | SPS App. A.4 | ✅ sourced |
+| 13/8 = 1.625 | vertical-to-horizontal 1-sigma ratio | derived from SPS | ✅ derived |
+| sigma = DOP x UERE | 1-sigma horizontal error | SPS App. A.8.2 | ✅ sourced |
+| R95 = 2.0 x DRMS | 2DRMS radius | SPS App. A.8.2 | ✅ sourced |
+| atmosphere gain 0.5 per index | sigma gain | none | ⚠️ UNSOURCED |
+| canopy gain 1.0 per fraction | sigma gain | none | ⚠️ UNSOURCED |
+| urban gain 1.5 per fraction | sigma gain | none | ⚠️ UNSOURCED |
+| urban anisotropy 2 | east-west axis stretch | none | ⚠️ UNSOURCED |
+| jam gain 20, on jammer^1.5 | sigma gain | none | ⚠️ UNSOURCED |
+| receiver max penalty 2 | sigma gain | none | ⚠️ UNSOURCED |
+| CEP coefficient 0.589 | elliptical CEP | none | ⚠️ UNSOURCED |
+
+### GNSS fix continuity (fnc_gnssFixState.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| availability then a non-zero re-acquisition | continuity mechanism | SPS s.3.6 and App. A.8 | ✅ sourced |
+| effective-signal acquire floor 0.3 | fix gate | none | ⚠️ UNSOURCED |
+| re-acquisition rate 0.25 per second | recovery ramp | none | ⚠️ UNSOURCED |
+| decay rate 1.0 per second | progress loss | none | ⚠️ UNSOURCED |
+| jamming removes the received signal | effective signal | none | ⚠️ UNSOURCED |
+| lag 2 m per second since the fix | lag offset | none | ⚠️ UNSOURCED |
+| lag 40 m at zero progress | lag offset | none | ⚠️ UNSOURCED |
+| stutter envelope 0.5 | jitter amplitude | none | ⚠️ UNSOURCED |
+
+### Datalink falloff (fnc_datalinkState.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| FSPL = 20log10(d) + 20log10(f) - 147.55 | range falloff shape | Friis, reused from the radio module | ✅ derived |
+| reference range 5000 m | usable range | none | ⚠️ UNSOURCED |
+| reference carrier 3e8 Hz | falloff | none | ⚠️ UNSOURCED |
+| terrain range fraction 0.6 | range loss | none | ⚠️ UNSOURCED |
+| urban range fraction 0.3 | range loss | none | ⚠️ UNSOURCED |
+| jamming range fraction 0.9 | range loss | none | ⚠️ UNSOURCED |
+| terrain loss 12 dB | signal loss | none | ⚠️ UNSOURCED |
+| urban loss 6 dB | signal loss | none | ⚠️ UNSOURCED |
+| jamming loss 30 dB | signal loss | none | ⚠️ UNSOURCED |
+| base interval 1.0 s, reference bandwidth 100 | update interval | none | ⚠️ UNSOURCED |
+| track age 30 s at zero signal | track age | none | ⚠️ UNSOURCED |
+| added error 25 m at zero signal | position error | none | ⚠️ UNSOURCED |
+| lost-link error penalty 15 m | position error | none | ⚠️ UNSOURCED |
+
+### Tracker projection (fnc_trackerProject.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| error term = ellipse R95 + datalink error + fix lag | displacement magnitude | the three kernel outputs | ✅ derived |
+| phase step 137.508 degrees, the golden angle | per-track bearing | the golden-angle constant | ⚠️ UNSOURCED mapping |
+| displacement sum and bearing choice | displayed position | none | ⚠️ UNSOURCED mapping |
+
+### Geographic anchor (fnc_buildGeoAnchor.sqf, fnc_getGeoAnchor.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| mapArea order [lonWest, latSouth, lonEast, latNorth] | anchor box | BIS `fn_posDegtoWorld.sqf` | ✅ verified |
+| CfgWorlds latitude sign inverted, positive is south | anchor centre | BIS CfgWorlds convention | ✅ verified |
+| fallback 40 N, 0 longitude | anchor without a box | the prior latitude reader fallback | ⚠️ UNSOURCED |
