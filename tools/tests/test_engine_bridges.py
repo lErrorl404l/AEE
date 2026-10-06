@@ -55,8 +55,7 @@ _SIMUL = _read(SIMUL_SQF)
 
 MAX_SUN_ELEV = _const(_RAINBOW, "maxSunElev")
 FULL_SCALE_M = _const(_WAVES, "fullScaleMetres")
-MIN_LUX = _const(_APERTURE, "minLux")
-MAX_LUX = _const(_APERTURE, "maxLux")
+APERTURE_RHO = _const(_APERTURE, "rho")
 NIGHT_STANDARD = _const(_APERTURE, "nightStandard")
 DAY_STANDARD = _const(_APERTURE, "dayStandard")
 GRAVITY = _const(_LOCAL_WIND, "g")
@@ -100,9 +99,12 @@ def aperture_params(lux):
     AEE pins the aperture with min = standard = maximum, so all three
     elements are the same value and the engine cannot adapt inside a range.
     """
-    lux = max(MIN_LUX, min(MAX_LUX, lux))
-    ev = math.log10(lux)
-    standard = linear_conversion(-3, 5, ev, NIGHT_STANDARD, DAY_STANDARD, True)
+    lum = APERTURE_RHO * max(1e-9, lux) / math.pi
+    b = lum / 3.183
+    x = 0.4 * (math.log10(b) + 0.5)
+    d = max(1.9, min(8.0, 4.9 - 3.0 * math.tanh(x)))
+    t = max(0.0, min(1.0, (d - 1.9) / (8.0 - 1.9)))
+    standard = DAY_STANDARD + t * (NIGHT_STANDARD - DAY_STANDARD)
     return standard, standard, standard
 
 
@@ -195,9 +197,10 @@ class TestAperture(unittest.TestCase):
             prev = std
 
     def test_wiki_night_anchor(self):
-        # The night standard is the wiki's 8 at the starlight floor.
-        _, std, _ = aperture_params(MIN_LUX)
-        self.assertAlmostEqual(std, NIGHT_STANDARD, places=6)
+        # At the dark end the curve approaches the wiki night standard (8).
+        _, std, _ = aperture_params(1e-9)
+        self.assertGreater(std, NIGHT_STANDARD - 1.0)
+        self.assertLess(std, NIGHT_STANDARD + 1.0)
 
     def test_stands_down_while_a_vision_sensor_is_active(self):
         """The naked-eye aperture must not fight the sensor's fixed exposure.
@@ -258,8 +261,9 @@ class TestAperture(unittest.TestCase):
         )
         self.assertIn("FUNC(eyeAperture)", _DRIVER)
 
-        _, std, _ = aperture_params(MAX_LUX)
-        self.assertAlmostEqual(std, DAY_STANDARD, places=6)
+        _, std, _ = aperture_params(100000.0)
+        self.assertGreater(std, DAY_STANDARD - 3.0)
+        self.assertLessEqual(std, DAY_STANDARD)
 
     def test_missing_producer_stands_down(self):
         """A missing aee_core_ambientLux must not pin an extreme value.

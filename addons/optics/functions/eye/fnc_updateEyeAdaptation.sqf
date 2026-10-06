@@ -62,6 +62,7 @@ private _sample = call FUNC(eyeSampleScene);
 if (_sample isEqualTo []) exitWith {};
 
 private _sceneLux = _sample select 0;
+private _localLux = _sample select 1;
 private _sky = _sample select 2;
 
 private _forceLux = missionNamespace getVariable [QGVAR(eyeForceLux), 0];
@@ -84,6 +85,7 @@ if ((_flashUntil isEqualType 0) && CBA_missionTime < _flashUntil) then {
     };
 };
 
+private _rawSceneLux = _sceneLux;
 _sceneLux = _sceneLux max 1e-6;
 
 // Reflectance assumption rho: luminance = rho * E / pi (mid-grey, UNSOURCED).
@@ -103,9 +105,26 @@ private _u = ((4.9 - _d) / 3.0) max (-0.999) min 0.999;
 private _logB = ((0.5 * (ln ((1 + _u) / (1 - _u)))) / 0.4) - 0.5;
 private _xFast = log (3.183 * (10 ^ _logB));
 
-// Slow pools.
+// Slow pools.  On the first VALID sample the eye arrives ADAPTED: a night
+// start is already dark-adapted and a day start light-adapted, so the state
+// is the scene's own log-luminance and there is no warm-up from a fixed
+// default (the operator requirement).  A zero scene means the illuminance
+// layer has not published yet, so wait for a valid sample rather than
+// initialise dark at noon.
 private _state = missionNamespace getVariable [QGVAR(eyeAdaptState), []];
-if (!(_state isEqualType []) || {(count _state) != 2}) then { _state = [_xTarget, _xTarget]; };
+private _initialised = missionNamespace getVariable [QGVAR(eyeAdaptInitialised), false];
+if (!_initialised) then {
+    if ((_state isEqualType []) && {(count _state) == 2}) then {
+        _initialised = true;
+    } else {
+        if (_rawSceneLux > 0) then {
+            _state = [_xTarget] call FUNC(eyeAdaptInit);
+            _initialised = true;
+        };
+    };
+};
+if (!_initialised) exitWith {};
+missionNamespace setVariable [QGVAR(eyeAdaptInitialised), _initialised];
 private _step = [_state, _xTarget, _dt, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod), 0] call FUNC(eyeAdaptStep);
 
 // The freeze hook holds the adapted state while the scene moves.
@@ -141,9 +160,35 @@ GVAR(eyeAdaptState) = _step;
 GVAR(eyePupil) = _d;
 GVAR(eyeFast) = _xFast;
 
+// Publish the adaptation state for the player-perception monitor: the level
+// and the target, the direction, the effective tau and the time to adapt.
+private _adaptState = [_step, _xTarget, _w, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod)] call FUNC(eyeAdaptState);
+
+// Human-vision limits: the scotopic acuity and colour loss, the dark noise and
+// the scattered glare.  Published for the render and the perception monitor.
+// The glare angle is the angle from the view to the primary light source, and
+// the fog drives the atmospheric in-scatter.  A local-source angle (headlights
+// off to the side) needs the light scan to return the brightest direction; the
+// sun/moon angle is available now.
+private _viewAz = getDirVisual _player;
+private _srcAz = missionNamespace getVariable [QEGVAR(core,lightAzimuth), _viewAz];
+private _srcAngle = abs(_viewAz - _srcAz);
+if (_srcAngle > 180) then { _srcAngle = 360 - _srcAngle; };
+private _fogNow = ([] call EFUNC(core,getSmoothedWeather)) select 2;
+if !(_fogNow isEqualType 0) then { _fogNow = 0; };
+private _limits = [_adaptedLux, _w, _localLux, _srcAngle, _fogNow] call FUNC(eyeLimits);
+
 missionNamespace setVariable [QGVAR(eyeSceneLux), _sceneLux];
 missionNamespace setVariable [QGVAR(eyeAdaptedLux), _adaptedLux];
 missionNamespace setVariable [QGVAR(eyeAperture), _v];
 missionNamespace setVariable [QGVAR(eyePupilMm), _d];
 missionNamespace setVariable [QGVAR(eyeMesopic), _w];
 missionNamespace setVariable [QGVAR(eyeSkyFraction), _sky];
+missionNamespace setVariable [QGVAR(eyeAdaptTargetLux), _sceneLux];
+missionNamespace setVariable [QGVAR(eyeAdaptDirection), _adaptState select 0];
+missionNamespace setVariable [QGVAR(eyeAdaptTau), _adaptState select 1];
+missionNamespace setVariable [QGVAR(eyeAdaptTimeToAdapt), _adaptState select 2];
+missionNamespace setVariable [QGVAR(eyeAcuity), _limits select 0];
+missionNamespace setVariable [QGVAR(eyeColourLoss), _limits select 1];
+missionNamespace setVariable [QGVAR(eyeDarkNoise), _limits select 2];
+missionNamespace setVariable [QGVAR(eyeGlare), _limits select 3];
