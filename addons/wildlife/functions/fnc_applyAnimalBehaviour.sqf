@@ -125,8 +125,26 @@ private _callback = {
         ];
         _agent moveTo _away;
         _agent setDestination [_away, "LEADER PLANNED", false];
-        private _fearSound = "a3\sounds_f\ambient\animals\scared_animal1.wss";
-        [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE] call FUNC(playOneShot);
+        // A species-appropriate fear source from the asset map.  The vanilla
+        // clips are generic, so the choice is a deterministic draw seeded by
+        // the species class, not a species-specific recording.
+        private _assetMap = missionNamespace getVariable [QGVAR(assetMap), []];
+        if !(_assetMap isEqualType []) then { _assetMap = []; };
+        private _fear = ["fear", [], _assetMap] call FUNC(speciesSound);
+        private _fearMedia = _fear select 0;
+        if !(_fearMedia isEqualType []) then { _fearMedia = []; };
+        if ((count _fearMedia) > 0) then {
+            private _speciesGroup = _agent getVariable [QGVAR(speciesGroup), ""];
+            if !(_speciesGroup isEqualType "") then { _speciesGroup = ""; };
+            private _sum = 0;
+            private _chars = toArray _speciesGroup;
+            for "_ci" from 0 to ((count _chars) - 1) do {
+                _sum = _sum + (_chars select _ci);
+            };
+            private _index = (_sum mod (count _fearMedia));
+            private _fearSound = _fearMedia select _index;
+            [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE] call FUNC(playOneShot);
+        };
         _recovery = 6;
     } else {
         if ((_goal > 0) || (_action == 2) || (_action == 1)) then {

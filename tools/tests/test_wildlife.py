@@ -47,13 +47,33 @@ TEST_MANIFEST = [
 
 
 def sound_bed(
-    biome, is_night, near_water, wind, disturbance, manifest=None, rain=0, veg=0
+    biome,
+    is_night,
+    near_water,
+    wind,
+    disturbance,
+    manifest=None,
+    rain=0,
+    veg=0,
+    settlement=0,
+    coastal=False,
 ):
     if manifest is None:
         manifest = TEST_MANIFEST
     return run_sqf(
         SOUND_BED,
-        [biome, is_night, near_water, wind, disturbance, manifest, rain, veg],
+        [
+            biome,
+            is_night,
+            near_water,
+            wind,
+            disturbance,
+            manifest,
+            rain,
+            veg,
+            settlement,
+            coastal,
+        ],
     )
 
 
@@ -391,8 +411,10 @@ class TestWildlifeSourceContracts(unittest.TestCase):
         self.assertIn("QEGVAR(environmental,terrainSignals)", text)
         self.assertIn("EFUNC(core,readState)", text)
         self.assertIn("_vegScore", text)
-        # The score is the appended 8th argument to the bed selector.
-        self.assertIn("_rainAmount, _vegScore] call FUNC(soundBedForContext)", text)
+        # The score and the settlement and coastal overlays are appended to
+        # the bed selector.
+        self.assertIn("_vegScore, _settlement, _coastal", text)
+        self.assertIn("call FUNC(soundBedForContext)", text)
         kernel = (FUNCS / "fnc_soundBedForContext.sqf").read_text(encoding="utf-8")
         self.assertIn('["_vegScore", 0, [0]]', kernel)
         self.assertIn("_forest", kernel)
@@ -940,6 +962,154 @@ class TestSpeciesSound(unittest.TestCase):
         deer = [r for r in asset_rows if r[0] == "sound" and r[1] == "deer"][0]
         self.assertGreater(len(deer[3]), 0)
         self.assertTrue(all("sounds_f_enoch" in p.lower() for p in deer[3]))
+
+
+PICK_BED = FUNCS / "fnc_pickBedSource.sqf"
+
+
+def pick_bed_source(manifest, key, seed):
+    """Run fnc_pickBedSource against a manifest."""
+    return run_sqf(PICK_BED, [manifest, key, seed])
+
+
+def produced_bed_keys():
+    """Every context key the selector can emit, plus the fear key."""
+    keys = set()
+    for biome in ("Cfb", "BWh", "Af", "Dfc", ""):
+        for night in (False, True):
+            for water in (0.0, 0.3, 0.9):
+                for veg in (0.0, 0.8):
+                    for settle in (0.0, 0.8):
+                        for coastal in (False, True):
+                            key, _gain = sound_bed(
+                                biome,
+                                night,
+                                water,
+                                0,
+                                0,
+                                rain=0,
+                                veg=veg,
+                                settlement=settle,
+                                coastal=coastal,
+                            )
+                            keys.add(key)
+    keys.add("fear")
+    return keys
+
+
+class TestSoundBedOverlays(unittest.TestCase):
+    """The farm and coast overlays the old selector could never return."""
+
+    def test_the_settlement_overlay_selects_farm(self):
+        self.assertEqual(sound_bed("Cfb", False, 0.1, 0, 0, settlement=0.8)[0], "farm")
+
+    def test_the_coastal_overlay_selects_coast(self):
+        self.assertEqual(sound_bed("Cfb", False, 0.3, 0, 0, coastal=True)[0], "coast")
+
+    def test_water_and_night_still_win_over_the_overlays(self):
+        self.assertEqual(
+            sound_bed("Cfb", False, 0.9, 0, 0, settlement=0.9, coastal=True)[0],
+            "water",
+        )
+        self.assertEqual(
+            sound_bed("Cfb", True, 0.1, 0, 0, settlement=0.9, coastal=True)[0],
+            "night",
+        )
+
+
+class TestPickBedSource(unittest.TestCase):
+    """fnc_pickBedSource runs from the real SQF."""
+
+    def test_a_key_with_no_rows_returns_empty(self):
+        self.assertEqual(pick_bed_source(load_manifest(), "no_such_key", 1), "")
+
+    def test_the_same_seed_returns_the_same_source(self):
+        manifest = load_manifest()
+        self.assertEqual(
+            pick_bed_source(manifest, "farm", 42),
+            pick_bed_source(manifest, "farm", 42),
+        )
+
+    def test_a_multi_row_key_reaches_every_row(self):
+        manifest = load_manifest()
+        reached = {pick_bed_source(manifest, "farm", s) for s in range(1000)}
+        rows = {row[1] for row in manifest if row[0] == "farm"}
+        self.assertEqual(reached, rows)
+        self.assertGreater(len(rows), 1)
+
+    def test_a_higher_gain_row_is_drawn_more_often(self):
+        # Two rows, gains 1 and 3: the heavier row takes three of every four
+        # draws, so a 1000-seed sweep counts it about three times as often.
+        manifest = [
+            ["k", "light", 120, 1.0],
+            ["k", "heavy", 120, 3.0],
+        ]
+        counts = {"light": 0, "heavy": 0}
+        for seed in range(1000):
+            counts[pick_bed_source(manifest, "k", seed)] += 1
+        self.assertGreater(counts["heavy"], counts["light"])
+
+
+class TestSoundDefectFixes(unittest.TestCase):
+    """Every manifest row is reachable and the six named defects are fixed."""
+
+    def test_the_weighted_pick_covers_every_manifest_row(self):
+        # Defect 1: the first-match scan is replaced by the weighted pick.
+        tick = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("call FUNC(pickBedSource)", tick)
+        self.assertNotIn("if ((_row select 0) == _bedKey) then", tick)
+        manifest = load_manifest()
+        keys = produced_bed_keys()
+        for row in manifest:
+            with self.subTest(row=row):
+                self.assertIn(row[0], keys)
+                reached = {
+                    pick_bed_source(manifest, row[0], seed) for seed in range(1000)
+                }
+                self.assertIn(row[1], reached)
+
+    def test_no_manifest_row_is_a_cfg_sfx_class(self):
+        # Defect 4: every played source is a raw path, never a CfgSFX name.
+        for _key, source, _distance, _gain in load_manifest():
+            self.assertIn(".", source, source)
+
+    def test_the_silent_water_row_is_gone(self):
+        # Defect 3: the water bed was the silent Sound_Stream dummy.
+        sources = [row[1] for row in load_manifest()]
+        self.assertNotIn("Sound_Stream", sources)
+        self.assertFalse(any("dummysound" in s.lower() for s in sources))
+
+    def test_there_is_no_grass_key_and_sheep_are_livestock(self):
+        # Defect 5: sheep are livestock, so they sit under the farm key.
+        manifest = load_manifest()
+        keys = {row[0] for row in manifest}
+        self.assertNotIn("grass", keys)
+        sheep = [row for row in manifest if "sheep" in row[1].lower()]
+        self.assertGreater(len(sheep), 0)
+        self.assertTrue(all(row[0] == "farm" for row in sheep))
+
+    def test_farm_and_coast_rows_are_not_dead(self):
+        # Defect 2: the selector now returns farm and coast.
+        keys = produced_bed_keys()
+        self.assertIn("farm", keys)
+        self.assertIn("coast", keys)
+        manifest = load_manifest()
+        self.assertTrue(any(row[0] == "farm" for row in manifest))
+        self.assertTrue(any(row[0] == "coast" for row in manifest))
+
+    def test_the_fear_source_is_chosen_per_species(self):
+        # Defect 6: the hardcoded scared_animal1 is replaced by the map.
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn('["fear", [], _assetMap] call FUNC(speciesSound)', text)
+        self.assertIn("speciesGroup", text)
+        self.assertNotIn("scared_animal1", text)
+
+    def test_no_cfg_sfx_name_is_passed_to_create_sound_source_local(self):
+        # Defect 4 at the call site: a CfgSFX class has no CfgVehicles wrapper.
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("call FUNC(pickBedSource)", text)
+        for _key, source, _distance, _gain in load_manifest():
+            self.assertIn(".", source, source)
 
 
 if __name__ == "__main__":

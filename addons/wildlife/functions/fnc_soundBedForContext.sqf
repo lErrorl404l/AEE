@@ -5,13 +5,13 @@ Ambient sound-bed selector kernel (wildlife ecology).
 
 Pure: no missionNamespace, no GVAR or EGVAR, no engine command, no sound
 path.  Picks the context key from the world facts and returns a gain for it.
-Water wins, then night, then the biome family.  The gain is the base gain of
-the matching manifest row, scaled down by the disturbance and up by the wind
-and the rain.  When a day context stands and the vegetation score is high, the
-key gains the _forest suffix, so a forest sounds apart from the open ground in
-the same biome.
+Water wins, then night, then the coastal and farm overlays, then the biome
+family.  The gain is the base gain of the matching manifest row, scaled down
+by the disturbance and up by the wind and the rain.  When a day context stands
+and the vegetation score is high, the key gains the _forest suffix, so a
+forest sounds apart from the open ground in the same biome.
 
-The context key is one of: water, night, day_tropical, day_arid,
+The context key is one of: water, night, coast, farm, day_tropical, day_arid,
 day_temperate, day_cold, or a day key with the _forest suffix.
 
 Arguments:
@@ -23,6 +23,8 @@ Arguments:
   5: Array  - the manifest rows [contextKey, source, maxDistance, baseGain]
   6: Number - the rain, 0 to 1
   7: Number - the vegetation score, 0 to 1 (0.5 or more is forest)
+  8: Number - the settlement score, 0 to 1 (0.5 or more is the farm context)
+  9: Bool   - the coastal flag, near the shore but not on the water
 
 Returns:
   Array - [contextKey, gain]
@@ -36,7 +38,9 @@ params [
     ["_disturbance", 0, [0]],
     ["_manifest", [], [[]]],
     ["_rain", 0, [0]],
-    ["_vegScore", 0, [0]]
+    ["_vegScore", 0, [0]],
+    ["_settlement", 0, [0]],
+    ["_coastal", false, [false]]
 ];
 
 private _key = "day_temperate";
@@ -46,26 +50,34 @@ if (_nearWater > 0.5) then {
     if (_isNight) then {
         _key = "night";
     } else {
-        private _family = "";
-        if (_biome isNotEqualTo "") then {
-            _family = toLower (_biome select [0, 1]);
-        };
-        if (_family == "a") then {
-            _key = "day_tropical";
+        if (_coastal) then {
+            _key = "coast";
         } else {
-            if (_family == "b") then {
-                _key = "day_arid";
+            if (_settlement >= 0.5) then {
+                _key = "farm";
             } else {
-                if ((_family == "d") || (_family == "e")) then {
-                    _key = "day_cold";
+                private _family = "";
+                if (_biome isNotEqualTo "") then {
+                    _family = toLower (_biome select [0, 1]);
+                };
+                if (_family == "a") then {
+                    _key = "day_tropical";
+                } else {
+                    if (_family == "b") then {
+                        _key = "day_arid";
+                    } else {
+                        if ((_family == "d") || (_family == "e")) then {
+                            _key = "day_cold";
+                        };
+                    };
+                };
+                // Vegetation splits the day context: a high score is a forest, a
+                // low score is the open ground already chosen.  The threshold is
+                // the documented modelling constant (dossier register).
+                if (_vegScore >= 0.5) then {
+                    _key = _key + "_forest";
                 };
             };
-        };
-        // Vegetation splits the day context: a high score is a forest, a low
-        // score is the open ground already chosen.  The threshold is the
-        // documented modelling constant (dossier register).
-        if (_vegScore >= 0.5) then {
-            _key = _key + "_forest";
         };
     };
 };

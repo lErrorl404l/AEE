@@ -183,10 +183,34 @@ private _acousticLevel = _acoustic select 0;
 private _signals = [QEGVAR(environmental,terrainSignals), [], 3] call EFUNC(core,readState);
 private _vegScore = [_signals] call FUNC(vegScore);
 
+// The settlement overlay.  Element 2 of the terrain signals carries the
+// structure votes, the same shape as the vegetation votes, so the strongest
+// single vote is the settlement score (max, not sum).  The coastal flag is
+// the near-water signal below the water threshold.
+private _settlement = 0;
+if ((count _signals) >= 3) then {
+    private _structVotes = _signals select 2;
+    if (_structVotes isEqualType 0) then {
+        _settlement = ((_structVotes max 0) min 1);
+    } else {
+        if (_structVotes isEqualType createHashMap) then {
+            private _structList = values _structVotes;
+            for "_s" from 0 to ((count _structList) - 1) do {
+                private _vote = _structList select _s;
+                if ((_vote isEqualType 0) && (_vote > _settlement)) then { _settlement = _vote; };
+            };
+        };
+    };
+};
+private _coastal = (_nearWater > 0.2);
+
 private _manifest = missionNamespace getVariable [QGVAR(manifest), []];
 if !(_manifest isEqualType []) then { _manifest = []; };
 
-private _bed = [_biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount, _vegScore] call FUNC(soundBedForContext);
+private _bed = [
+    _biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount,
+    _vegScore, _settlement, _coastal
+] call FUNC(soundBedForContext);
 private _bedKey = _bed select 0;
 private _bedGain = _bed select 1;
 
@@ -252,13 +276,10 @@ if (_spook) then {
 
 if (_ambient) then {
     if (_gain > 0.01) then {
-        private _source = "";
-        for "_i" from 0 to ((count _manifest) - 1) do {
-            private _row = _manifest select _i;
-            if ((_row select 0) == _bedKey) then {
-                if (_source == "") then { _source = _row select 1; };
-            };
-        };
+        // A deterministic weighted draw over every row with the bed key, so
+        // a multi-file context varies instead of playing only its first row.
+        private _seed = round (_now * 100);
+        private _source = [_manifest, _bedKey, _seed] call FUNC(pickBedSource);
         if (_source != "") then {
             [_source, _position, _gain] call FUNC(playAmbientBed);
         };
