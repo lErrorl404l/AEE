@@ -1053,40 +1053,62 @@ class TestCallEmit(unittest.TestCase):
     """fnc_callEmit runs from the real SQF."""
 
     def test_a_perceived_predator_emits_a_high_alarm(self):
-        out = emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "predator")
+        out = emit(
+            [0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "predator"
+        )
         self.assertEqual(out[0], "alarm")
         self.assertGreater(out[1], 0.5)
 
     def test_a_gregarious_group_emits_a_contact(self):
-        out = emit([0.9, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "cohesion")
+        out = emit(
+            [0.9, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "cohesion"
+        )
         self.assertEqual(out[0], "contact")
         self.assertGreater(out[1], 0)
 
     def test_a_solitary_group_does_not_emit_a_contact(self):
-        out = emit([0.2, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "cohesion")
+        out = emit(
+            [0.2, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "cohesion"
+        )
         self.assertEqual(out, [])
 
     def test_an_active_season_emits_mating(self):
-        out = emit([0.5, True], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "season")
+        out = emit(
+            [0.5, True], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "season"
+        )
         self.assertEqual(out[0], "mating")
 
     def test_an_inactive_season_emits_nothing(self):
-        out = emit([0.5, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "season")
+        out = emit(
+            [0.5, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "season"
+        )
         self.assertEqual(out, [])
 
     def test_a_heard_conspecific_emits_territorial(self):
-        out = emit([0.5, False], [0.9, 0.5, [0, 0], []], [0.1, 0.1, 0.5, 5, 0, 0], "conspecific")
+        out = emit(
+            [0.5, False],
+            [0.9, 0.5, [0, 0], []],
+            [0.1, 0.1, 0.5, 5, 0, 0],
+            "conspecific",
+        )
         self.assertEqual(out[0], "territorial")
 
     def test_a_resource_emits_food(self):
-        out = emit([0.5, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "resource")
+        out = emit(
+            [0.5, False], [0.9, 0.1, [0, 0], []], [0.1, 0.1, 0.1, 5, 0, 0], "resource"
+        )
         self.assertEqual(out[0], "food")
 
     def test_no_trigger_emits_no_call(self):
-        self.assertEqual(emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], ""), [])
+        self.assertEqual(
+            emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], ""), []
+        )
 
     def test_an_unknown_trigger_emits_no_call(self):
-        self.assertEqual(emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "warp"), [])
+        self.assertEqual(
+            emit([0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "warp"),
+            [],
+        )
 
     def test_the_urgency_is_bounded(self):
         out = emit([1.0, True], [1.0, 1.0, [0, 0], []], [0, 0, 1, 5, 0, 0], "predator")
@@ -1094,7 +1116,12 @@ class TestCallEmit(unittest.TestCase):
         self.assertGreaterEqual(out[1], 0)
 
     def test_same_inputs_are_deterministic(self):
-        args = [[0.5, True], [0.9, 0.9, [0, 0], []], [0.1, 0.1, 0.9, 5, 0, 0], "predator"]
+        args = [
+            [0.5, True],
+            [0.9, 0.9, [0, 0], []],
+            [0.1, 0.1, 0.9, 5, 0, 0],
+            "predator",
+        ]
         self.assertEqual(emit(*args), emit(*args))
 
 
@@ -1114,6 +1141,78 @@ class TestCallEmitSourceContracts(unittest.TestCase):
     def test_the_emit_header_states_conditional_emission(self):
         code = CALL_EMIT.read_text(encoding="utf-8")
         self.assertIn("no trigger means no call", code)
+
+
+CALL_RECEIVE = FUNCS / "fnc_callReceive.sqf"
+
+
+def receive(call_type, urgency, distance, relation, receiver_state):
+    return run_sqf(
+        CALL_RECEIVE,
+        [call_type, urgency, distance, relation, receiver_state],
+    )
+
+
+class TestCallReceive(unittest.TestCase):
+    """fnc_callReceive runs from the real SQF."""
+
+    def test_a_conspecific_alarm_flees_or_gathers(self):
+        response = receive("alarm", 0.9, 20, 0, [200, 0.2])[0]
+        self.assertIn(response, (2, 3))
+
+    def test_a_gregarious_conspecific_alarm_gathers(self):
+        self.assertEqual(receive("alarm", 0.9, 20, 0, [200, 0.9])[0], 3)
+
+    def test_a_neutral_relation_ignores_the_alarm(self):
+        self.assertEqual(receive("alarm", 0.9, 20, 3, [200, 0.5]), [0, 0])
+
+    def test_a_neutral_relation_ignores_a_contact(self):
+        self.assertEqual(receive("contact", 0.9, 20, 3, [200, 0.5]), [0, 0])
+
+    def test_a_prey_flees_and_a_predator_investigates(self):
+        self.assertEqual(receive("alarm", 0.9, 20, 2, [200, 0.2])[0], 2)
+        self.assertEqual(receive("alarm", 0.9, 20, 1, [200, 0.2])[0], 5)
+
+    def test_a_territorial_call_draws_a_reply(self):
+        self.assertEqual(receive("territorial", 0.5, 20, 0, [200, 0.5])[0], 4)
+
+    def test_an_urgent_alarm_is_stronger_than_a_low_one(self):
+        high = receive("alarm", 0.9, 20, 0, [200, 0.2])[1]
+        low = receive("alarm", 0.1, 20, 0, [200, 0.2])[1]
+        self.assertGreater(high, low)
+
+    def test_a_call_beyond_range_is_ignored(self):
+        self.assertEqual(receive("alarm", 0.9, 500, 0, [200, 0.5]), [0, 0])
+
+    def test_distance_attenuates_the_strength(self):
+        near = receive("alarm", 0.9, 10, 0, [200, 0.2])[1]
+        far = receive("alarm", 0.9, 150, 0, [200, 0.2])[1]
+        self.assertGreater(near, far)
+
+    def test_an_empty_type_is_ignored(self):
+        self.assertEqual(receive("", 0.9, 20, 0, [200, 0.5]), [0, 0])
+
+    def test_same_inputs_are_deterministic(self):
+        args = ["alarm", 0.9, 20, 0, [200, 0.2]]
+        self.assertEqual(receive(*args), receive(*args))
+
+
+class TestCallReceiveSourceContracts(unittest.TestCase):
+    def test_the_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", CALL_RECEIVE.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernel_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(callReceive)", text)
+
+    def test_the_receive_header_states_the_relation_rule(self):
+        code = CALL_RECEIVE.read_text(encoding="utf-8")
+        self.assertIn("neutral relation does not decode", code)
 
 
 if __name__ == "__main__":
