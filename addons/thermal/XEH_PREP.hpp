@@ -97,3 +97,4 @@ PREPS(ir,applyActiveIR);
 PREPS(ir,startActiveIR);
 PREPS(ir,stopActiveIR);
 PREPS(ir,activeIRGate);
+PREPS(sensor,probeThermalCapability);

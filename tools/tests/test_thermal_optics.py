@@ -6575,3 +6575,43 @@ class TestActiveIR(unittest.TestCase):
         self.assertIn("call FUNC(activeIRGate)", code)
         self.assertIn("call FUNC(stopActiveIR)", code)
         self.assertIn("call FUNC(startActiveIR)", code)
+
+
+class TestThermalCapabilityProbe(unittest.TestCase):
+    """Runtime thermal capability probe (T15).
+
+    The pure kernel is executed from the shipped SQF.  It is config-driven:
+    the caller supplies the optic's visionMode and thermalMode arrays, or the
+    optic config's sub-configs, which the kernel reads with getArray.  The
+    session entry gates the DTV host on it and leaves the host ownership with
+    fnc_isThermalHostActive.
+    """
+
+    _PROBE = _THERMAL / "sensor" / "fnc_probeThermalCapability.sqf"
+    _VISION = _THERMAL / "display" / "fnc_applyThermalVision.sqf"
+    _PREP = _REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp"
+
+    def _probe(self, vision_mode, thermal_mode):
+        return run_sqf(self._PROBE, [vision_mode, thermal_mode])
+
+    def test_a_ti_optic_with_a_thermal_mode_is_capable(self):
+        self.assertTrue(self._probe(["Ti", "Normal"], [0]))
+
+    def test_a_non_ti_optic_is_not_capable(self):
+        self.assertFalse(self._probe(["Normal"], [0]))
+
+    def test_ti_without_a_thermal_mode_is_not_capable(self):
+        self.assertFalse(self._probe(["Ti", "Normal"], []))
+
+    def test_uppercase_ti_is_accepted(self):
+        self.assertTrue(self._probe(["TI", "NVG"], [0]))
+
+    def test_the_kernel_is_registered(self):
+        prep = self._PREP.read_text(encoding="utf-8")
+        self.assertIn("PREPS(sensor,probeThermalCapability);", prep)
+
+    def test_the_session_entry_calls_the_probe(self):
+        code = _code_only(self._VISION.read_text(encoding="utf-8"))
+        self.assertIn("call FUNC(probeThermalCapability)", code)
+        # The host ownership stays with fnc_isThermalHostActive.
+        self.assertIn("call FUNC(isThermalHostActive)", code)
