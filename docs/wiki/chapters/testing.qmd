@@ -71,6 +71,44 @@ tools/docker_test.sh
 The script builds the mod, assembles `@aee`, downloads CBA if needed, runs
 the server, captures the RPT output, and verifies the phase results.
 
+## Concurrent and isolated runs
+
+Every run uses a unique Docker compose project, so two runs never capture the
+same container. A single run keeps the historical log path
+`tests/docker/run.log` and port 2302.
+
+For several runs at once, add `--isolate`. Each run then gets a unique run
+directory under `tests/docker/runs/<id>/` and a free game-port block.
+
+```bash
+tools/docker_test.sh --isolate          # run.log moves to runs/<id>/
+tools/docker_test.sh --run-id suite-a --isolate
+```
+
+The `--parallel` mode runs several suite modes at once and aggregates one
+verdict. The parent builds once. Each child then skips the build and reuses
+the assembled `@aee`.
+
+```bash
+tools/docker_test.sh --parallel                        # default maps
+tools/docker_test.sh --parallel --jobs "default maps hosts"
+tools/docker_test.sh --parallel default default        # two suites at once
+tools/docker_test.sh --parallel maps:Tanoa maps:Enoch  # two worlds at once
+```
+
+A `maps` job may name one or more rotation worlds after a colon. Each named
+world then runs as its own isolated job, so the rotation is split across
+concurrent containers. A filter that names no runnable world fails the run.
+
+The parent prints one PASS or FAIL line per job and one combined verdict. A
+non-zero verdict fails the run. The derivation lives in
+`tools/docker_run_isolation.py` and is unit-tested by
+`tools/tests/test_docker_isolation.py`.
+
+Environment overrides: `AEE_RUN_ID`, `AEE_RUN_DIR`, `AEE_GAME_PORT`,
+`AEE_PROFILE`, `COMPOSE_PROJECT_NAME`, `AEE_PORT_SLOT`, `AEE_SKIP_BUILD` and
+`AEE_PARALLEL_JOBS`.
+
 ## Engine mass census
 
 The engine config `mass` and `getMass` are engine tuning values, never a
