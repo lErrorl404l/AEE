@@ -150,6 +150,11 @@ EXPECTED_WILDLIFE = {
         "aee_wildlife_hungerRate",
         "aee_wildlife_thirstRate",
         "aee_wildlife_herdSize",
+        "aee_wildlife_cognitionEnabled",
+        "aee_wildlife_cognitionBudgetMs",
+        "aee_wildlife_communicationEnabled",
+        "aee_wildlife_callRange",
+        "aee_wildlife_callBudget",
     },
 }
 
