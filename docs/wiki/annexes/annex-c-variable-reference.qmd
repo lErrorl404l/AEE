@@ -158,6 +158,13 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_perceptionAperture` | optics | Perception monitor applied aperture |
 | `aee_optics_perceptionGrade` | optics | Perception monitor applied grade channels [brightness, contrast, offset, alpha] |
 | `aee_optics_perceptionFlags` | optics | Perception monitor deviation flags [discolouration, blindness, gradeMismatch, stuckAdaptation, detail] |
+| `aee_optics_perceptionForceLux` | optics | Perception force hook: replaces the sampled scene lux. A debug-console value on `missionNamespace`, not a CBA setting |
+| `aee_optics_perceptionForceGrade` | optics | Perception force hook: replaces the applied grade array |
+| `aee_optics_perceptionForceNvg` | optics | Perception force hook: replaces the NVG state array |
+| `aee_optics_perceptionForceThermal` | optics | Perception force hook: replaces the thermal state array |
+| `aee_optics_perceptionMonitor` | optics | Registered setting under **AEE Debug > Perception**: publish and log the perception state (default on) |
+| `aee_optics_perceptionHud` | optics | Registered setting under **AEE Debug > Perception**: show the perception overlay (default off) |
+| `aee_optics_perceptionInterval` | optics | Registered setting under **AEE Debug > Perception**: minimum seconds between samples, 0.1 to 2.0 (default 0.5) |
 
 ### Physiology
 
@@ -183,6 +190,18 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_physiology_diveStates` | physiology | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
 | `aee_physiology_diveMix` | physiology | External breathing-gas hook (issue #118): [fN2, fHe, fO2] set by diving addons |
 | `aee_physiology_diveGradientFactor` | physiology | Buhlmann gradient factor (CBA setting, 0.5-1.0) |
+| `aee_core_coreBodyTemp` | core | Core body temperature in C from the physiology heat balance (`fnc_coreBodyTemp`): a 37 C baseline plus a WBGT heat gain minus a wind-chill and hypothermia loss. Grade: baseline sourced; coefficients UNSOURCED |
+
+### Thermal
+
+The thermal solver publishes its cross-module state for the consistency
+harness and the KAT integration. Each row states its grade.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_thermal_humanCoreTempC` | thermal | Human core temperature from the two-node solver: 0.1 skin + 0.9 core (Gagge 1986). Published for a human selection only. Grade: derived |
+| `aee_thermal_skyBandTempC` | thermal | Last computed band sky temperature in C, from the Tebo 1965 8-14 um envelope applied by `fnc_calculateSkyRadiance`. Grade: derived-from-measurement |
+| `aee_thermal_groundNodeStack` | thermal | Four-layer ground node-stack state, a HashMap keyed by grid cell and material. The value is six elements: four layer temperatures at node depths 0.05 / 0.25 / 0.70 / 1.50 m (C), the deep-soil TBOT anchor (C), and the last-advance tick. A water cell stores the water temperature six times |
 
 ### Radio
 
@@ -375,18 +394,19 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_qnh` | core | QNH pressure setting |
 | `aee_core_pressureAltitude_m` | core | Pressure altitude in metres |
 | `aee_core_isReady` | core | Core module ready flag |
-| `aee_core_moduleHealth` | core | Runtime module-health report: an array of `[component, preInit, postInit]` per module, read back by the debug index and the P100 probe. The report writes it once, 10 s after core postInit |
 | `aee_core_lastStrikePos` | core | Last lightning strike position |
 | `aee_core_lightningIgnition` | core | Lightning ignition flag |
 
-### Cross-module consistency
+### Core diagnostics
 
-The throttled consistency monitor publishes its verdict each sample. The
-producer variables it reads are declared in `data/consistency/invariants.json`
-and documented with their own modules.
+The core module reports its own health and the cross-module consistency
+verdict. The throttled consistency monitor publishes its verdict each
+sample. The producer variables it reads are declared in
+`data/consistency/invariants.json` and documented with their own modules.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
+| `aee_core_moduleHealth` | core | Runtime module-health report: an array of `[component, preInit, postInit]` per module, read back by the debug index and the P100 probe. The report writes it once, 10 s after core postInit |
 | `aee_core_consistencyState` | core | Consistency verdict `[overallPass, per-row verdicts, modulesInDisagreement]` from `fnc_evaluateConsistency`. Read back by the monitor to detect its first run |
 | `aee_core_consistencyFailures` | core | One failure message per failing invariant, the same payload the monitor logs at WARN |
 | `aee_core_consistencyLast` | core | Mission time of the last consistency sample, the throttle cursor |
@@ -474,6 +494,9 @@ console may set any of them directly.
 | `aee_compat_realweather_logDebug` | Trace the Real Weather integration |
 | `aee_compat_tfar_logDebug` | Trace the TFAR integration |
 | `aee_thermal_agcPinned` | Debug only: suspend the AGC and the engine-window writer so the operator can pin the engine TI window by hand (exposure pin test) |
+| `aee_core_consistencyCheck` | Run the cross-module consistency monitor (default on) |
+| `aee_core_consistencyInterval` | Seconds between consistency samples, 1 to 60 (default 10) |
+| `aee_core_consistencyStrict` | Warn on drift as well as on a hard failure (default off) |
 
 Every `logDebug` switch registers under **AEE Debug > <component>**. The
 coverage-gaps release added one to every addon that declares settings, so
