@@ -16,6 +16,7 @@ All constants sourced; nothing invented.
 
 import math
 import unittest
+from pathlib import Path
 
 # ─── Constants (sourced) ────────────────────────────────────────────────────
 L_VAP = 2.26e6  # J/kg, latent heat of vaporisation of water
@@ -172,6 +173,52 @@ class TestWaterPhysics(unittest.TestCase):
         half = evaporative_flux(10.0, 30.0, 20.0, 0.2, 0.5)
         full = evaporative_flux(10.0, 30.0, 20.0, 0.2, 1.0)
         self.assertAlmostEqual(full, 2 * half, places=3)
+
+
+from tools.tests.sqf_lite import run_sqf
+
+_REPO = Path(__file__).resolve().parents[2]
+
+
+class TestEffectiveEmissivity(unittest.TestCase):
+    """Wet-surface effective LWIR emissivity (fnc_getEffectiveEmissivity.sqf).
+
+    Executes the shipped SQF, so the blend is proven, not mirrored.  A dry
+    surface keeps its registry value; a fully wet surface converges to the
+    liquid-water value 0.96.
+    """
+
+    _KERNEL = (
+        _REPO
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "surface"
+        / "fnc_getEffectiveEmissivity.sqf"
+    )
+    _GLOBALS = {"WATER_EPS": 0.96}
+
+    def _eps(self, eps_dry, wetness):
+        return run_sqf(self._KERNEL, [eps_dry, wetness], self._GLOBALS)
+
+    def test_dry_surface_keeps_its_value(self):
+        self.assertAlmostEqual(self._eps(0.88, 0.0), 0.88, places=9)
+        self.assertAlmostEqual(self._eps(0.92, 0.0), 0.92, places=9)
+
+    def test_fully_wet_surface_converges_to_water(self):
+        self.assertAlmostEqual(self._eps(0.88, 1.0), 0.96, places=9)
+
+    def test_monotone_in_wetness(self):
+        values = [self._eps(0.88, w) for w in (0.0, 0.25, 0.5, 0.75, 1.0)]
+        self.assertEqual(values, sorted(values))
+        self.assertGreater(values[-1], values[0])
+
+    def test_wetness_is_clamped(self):
+        self.assertAlmostEqual(self._eps(0.88, 5.0), 0.96, places=9)
+        self.assertAlmostEqual(self._eps(0.88, -3.0), 0.88, places=9)
+
+    def test_never_exceeds_one(self):
+        self.assertLessEqual(self._eps(1.0, 1.0), 1.0)
 
 
 if __name__ == "__main__":

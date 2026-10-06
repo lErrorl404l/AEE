@@ -18,6 +18,7 @@ PREPS(environment,calculateMRT);
 PREPS(environment,calculateGlobeTemperature);
 PREPS(ground,calculateGroundNodeStack);
 PREPS(surface,isPositionShadowed);
+PREPS(surface,getEffectiveEmissivity);
 PREPS(ground,calculateGroundTemperature);
 PREPS(ground,calculateFrostState);
 PREPS(ground,addGroundStamp);
