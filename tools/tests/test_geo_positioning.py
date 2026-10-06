@@ -18,7 +18,9 @@ and parameter 1 is latitude.  Therefore
 Re-read from the installed world configs on 2026-10-06.
 """
 
+import json
 import math
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -31,6 +33,10 @@ GEO = ROOT / "addons" / "core" / "functions" / "geo"
 BUILD = GEO / "fnc_buildGeoAnchor.sqf"
 READER = GEO / "fnc_getGeoAnchor.sqf"
 PREP = ROOT / "addons" / "core" / "XEH_PREP.hpp"
+INVARIANTS = ROOT / "data" / "consistency" / "position_invariants.json"
+EVALUATOR = GEO / "fnc_evaluateGeoConsistency.sqf"
+MONITOR = GEO / "fnc_runGeoConsistency.sqf"
+POSTINIT = ROOT / "addons" / "core" / "XEH_postInit.sqf"
 LATLON = GEO / "fnc_latLonToUtm.sqf"
 UTM2LL = GEO / "fnc_utmToLatLon.sqf"
 FORMAT = GEO / "fnc_formatMgrs.sqf"
@@ -220,6 +226,217 @@ class TestWorldToMgrsSourceContract(unittest.TestCase):
         src = MGRS2WORLD.read_text(encoding="utf-8")
         self.assertIn("call FUNC(parseMgrs)", src)
         self.assertIn("call FUNC(utmToLatLon)", src)
+
+
+# ── Position consistency table and evaluator (task 14) ─────────────────────
+
+ALLOWED_PREDICATES = {"pairs_equal", "agree_within"}
+
+
+def load_invariants_json():
+    return json.loads(INVARIANTS.read_text(encoding="utf-8"))
+
+
+def table_for_sqf(data):
+    """The JSON rows in the SQF row order the evaluator reads."""
+    rows = []
+    for row in data["rows"]:
+        rows.append(
+            [
+                row["id"],
+                row["name"],
+                row["predicate"],
+                row["inputs"],
+                row["pairs"],
+                row["tolerance"] if row["tolerance"] is not None else 0,
+                row["severity"],
+                row["grade"],
+                row["note"],
+            ]
+        )
+    return rows
+
+
+def evaluate(values, table=None):
+    """Run the REAL pure evaluator through the harness."""
+    if table is None:
+        table = table_for_sqf(load_invariants_json())
+    return run_sqf(EVALUATOR, [table, values])
+
+
+def monitor_supplied_keys():
+    """The value-map keys the monitor supplies (keys bound to a variable)."""
+    src = MONITOR.read_text(encoding="utf-8")
+    block = src.split("private _values = [", 1)[1].split("\n];", 1)[0]
+    return set(re.findall(r'\["([A-Za-z0-9_]+)",\s*_', block))
+
+
+def strip_sqf_comments(text):
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
+    return re.sub(r"//[^\n]*", "", text)
+
+
+CONSISTENT_VALUES = [
+    ["engineGridCentre", "024577"],
+    ["engineGridFromMgrs", "024577"],
+    ["anchorLat", 39.906515],
+    ["anchorLon", 25.246742],
+    ["projectedLat", 39.906515],
+    ["projectedLon", 25.246742],
+    ["worldLocationLat", 39.906515],
+    ["worldLocationLon", 25.246742],
+    ["centreX", 15360.0],
+    ["centreY", 15360.0],
+    ["roundtripX", 15360.0],
+    ["roundtripY", 15360.0],
+    ["easting", 501341.0],
+    ["northing", 4418852.0],
+    ["parsedEasting", 501341.0],
+    ["parsedNorthing", 4418852.0],
+]
+
+
+def divergent_values():
+    values = [list(pair) for pair in CONSISTENT_VALUES]
+    for pair in values:
+        if pair[0] == "roundtripX":
+            pair[1] = 99999.0
+        elif pair[0] == "engineGridFromMgrs":
+            pair[1] = "099999"
+        elif pair[0] == "worldLocationLat":
+            pair[1] = 40.5
+    return values
+
+
+class TestPositionInvariantTable(unittest.TestCase):
+    """Every row and every referenced variable (task 14 acceptance)."""
+
+    def test_four_invariants_declared(self):
+        data = load_invariants_json()
+        ids = [row["id"] for row in data["rows"]]
+        self.assertEqual(
+            ids, ["GRID-AGREE", "ANCHOR-CENTRE", "WORLDLOC-ANCHOR", "MGRS-ROUNDTRIP"]
+        )
+
+    def test_every_row_has_all_fields(self):
+        for row in load_invariants_json()["rows"]:
+            for field in (
+                "id",
+                "name",
+                "predicate",
+                "inputs",
+                "pairs",
+                "tolerance",
+                "severity",
+                "grade",
+                "note",
+            ):
+                self.assertIn(field, row, f"{row.get('id')} missing {field}")
+
+    def test_every_predicate_is_allowed(self):
+        for row in load_invariants_json()["rows"]:
+            self.assertIn(row["predicate"], ALLOWED_PREDICATES, row["id"])
+
+    def test_every_input_key_is_wellformed_and_pairs_reference_inputs(self):
+        for row in load_invariants_json()["rows"]:
+            for key in row["inputs"]:
+                self.assertRegex(key, r"^[A-Za-z][A-Za-z0-9_]*$", row["id"])
+            for key_a, key_b in row["pairs"]:
+                self.assertIn(key_a, row["inputs"], row["id"])
+                self.assertIn(key_b, row["inputs"], row["id"])
+
+    def test_ids_are_unique(self):
+        ids = [row["id"] for row in load_invariants_json()["rows"]]
+        self.assertEqual(len(ids), len(set(ids)))
+
+    def test_tolerance_is_number_or_null(self):
+        for row in load_invariants_json()["rows"]:
+            self.assertTrue(
+                row["tolerance"] is None or isinstance(row["tolerance"], (int, float)),
+                row["id"],
+            )
+
+    def test_every_referenced_variable_is_supplied_by_monitor(self):
+        declared = set()
+        for row in load_invariants_json()["rows"]:
+            declared.update(row["inputs"])
+        self.assertEqual(declared, monitor_supplied_keys())
+
+    def test_monitor_carries_every_row_id_and_predicate(self):
+        src = MONITOR.read_text(encoding="utf-8")
+        for row in load_invariants_json()["rows"]:
+            self.assertIn(f'"{row["id"]}"', src)
+            self.assertIn(f'"{row["predicate"]}"', src)
+
+
+class TestGeoConsistencyEvaluatorContract(unittest.TestCase):
+    """The evaluator is pure; the monitor publishes and is wired."""
+
+    def test_evaluator_reads_no_mission_state(self):
+        src = strip_sqf_comments(EVALUATOR.read_text(encoding="utf-8"))
+        # The call form, not a bare name in a comment.
+        self.assertNotIn("missionNamespace", src)
+        self.assertNotIn("getVariable", src)
+
+    def test_evaluator_takes_table_and_values(self):
+        src = EVALUATOR.read_text(encoding="utf-8")
+        self.assertIn('["_table", [], [[]]]', src)
+        self.assertIn('["_values", [], [[]]]', src)
+
+    def test_preps_registration(self):
+        prep = PREP.read_text(encoding="utf-8")
+        self.assertIn("PREPS(geo,evaluateGeoConsistency)", prep)
+        self.assertIn("PREPS(geo,runGeoConsistency)", prep)
+
+    def test_monitor_calls_the_evaluator(self):
+        src = MONITOR.read_text(encoding="utf-8")
+        self.assertIn("call FUNC(evaluateGeoConsistency)", src)
+
+    def test_monitor_publishes_the_flag(self):
+        src = MONITOR.read_text(encoding="utf-8")
+        self.assertIn('"aee_core_positionDivergence"', src)
+
+    def test_monitor_is_wired_into_postinit(self):
+        src = POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("call FUNC(runGeoConsistency)", src)
+
+
+class TestGeoConsistencyEvaluatorBehaviour(unittest.TestCase):
+    """Per-row verdicts from the real evaluator."""
+
+    def test_consistent_map_passes_with_no_divergence(self):
+        divergence, verdicts = evaluate(CONSISTENT_VALUES)
+        self.assertFalse(divergence)
+        self.assertEqual(len(verdicts), 4)
+        for verdict in verdicts:
+            self.assertTrue(verdict[1], f"{verdict[0]} should pass: {verdict[2]}")
+
+    def test_divergent_map_flags_and_names_the_failing_rows(self):
+        divergence, verdicts = evaluate(divergent_values())
+        self.assertTrue(divergence)
+        failed = {v[0] for v in verdicts if not v[1]}
+        self.assertEqual(failed, {"GRID-AGREE", "WORLDLOC-ANCHOR", "MGRS-ROUNDTRIP"})
+        # The agreeing row stays green.
+        for verdict in verdicts:
+            if verdict[0] == "ANCHOR-CENTRE":
+                self.assertTrue(verdict[1])
+
+    def test_single_divergent_pair_fails_exactly_one_row(self):
+        values = [list(pair) for pair in CONSISTENT_VALUES]
+        for pair in values:
+            if pair[0] == "roundtripY":
+                pair[1] = 20000.0
+        divergence, verdicts = evaluate(values)
+        self.assertTrue(divergence)
+        failed = [v[0] for v in verdicts if not v[1]]
+        self.assertEqual(failed, ["MGRS-ROUNDTRIP"])
+
+    def test_missing_value_is_a_divergence(self):
+        values = [pair for pair in CONSISTENT_VALUES if pair[0] != "northing"]
+        divergence, verdicts = evaluate(values)
+        self.assertTrue(divergence)
+        failed = {v[0] for v in verdicts if not v[1]}
+        self.assertIn("MGRS-ROUNDTRIP", failed)
 
 
 if __name__ == "__main__":
