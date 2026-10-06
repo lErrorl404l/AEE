@@ -1223,5 +1223,27 @@ class TestSoundTick(unittest.TestCase):
         self.assertIn("QGVAR(soundSchedule)", text)
 
 
+class TestBedStability(unittest.TestCase):
+    """The ambient bed is stable across ticks (task 21)."""
+
+    def test_the_bed_recreates_only_on_a_key_change(self):
+        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        # The recreate is guarded by the stored key.
+        self.assertIn("QGVAR(ambientKey)", text)
+        self.assertIn("_key == _source", text)
+        # Exactly one delete and one create, delete first, guard before both.
+        self.assertEqual(text.count("deleteVehicle"), 1)
+        self.assertEqual(text.count("createSoundSourceLocal"), 1)
+        self.assertLess(text.index("_key == _source"), text.index("deleteVehicle"))
+        self.assertLess(
+            text.index("deleteVehicle"), text.index("createSoundSourceLocal")
+        )
+
+    def test_the_bed_documents_the_cfg_sfx_gain_limit(self):
+        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        self.assertIn("takes no gain", text)
+        self.assertIn("playOneShot", text)
+
+
 if __name__ == "__main__":
     unittest.main()
