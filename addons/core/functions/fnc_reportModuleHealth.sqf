@@ -25,14 +25,15 @@ Example: [] call aee_core_fnc_reportModuleHealth
 // The static module list.  Each name is the component the AEE_MODULE_* macros
 // expand against, so the flag names are aee_<component>_preInit and
 // aee_<component>_postInit.  A new module with init flags adds its component.
+// The compat_* modules are conditionally loaded by their host mod and are
+// covered by their own compat probes, so they are excluded here: on a host
+// without the mod the engine skips the addon and its flags stay false.
 private _components = [
     "actions",
     "ai",
     "armour",
     "atmos",
     "ballistics",
-    "compat_ace3",
-    "compat_realweather",
     "core",
     "environmental",
     "fx",
