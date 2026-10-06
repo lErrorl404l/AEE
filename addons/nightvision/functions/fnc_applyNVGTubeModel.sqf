@@ -631,33 +631,55 @@ private _viewDir = _eyeState select 1;
 // The config lookup uses configOf (the object's own config) so it works
 // for ANY class — vanilla or modded.  (sqflint cannot parse configOf and
 // reports a false positive; HEMTT's linter requires configOf over typeOf.)
-private _brightSources = nearestObjects [_eye, [], 150];
+// Performance: the O(n) engine scan and the per-object config traversal
+// below are the dominant per-tick cost of this model.  Bright sources
+// change slowly (a lamp switches on, a vehicle light comes on), and the
+// part that must stay fresh every tick is the view-angle and occlusion
+// test.  Classify the sources once and cache the list, refreshing it at
+// most every 0.5 s or when the eye has moved more than 25 m.  The
+// auto-gating hold is 0.4 s and the FOV hysteresis is 20-25 deg, so the
+// refresh is below the visible response.
+private _scanTime = missionNamespace getVariable [QGVAR(nvgBrightScanTime), -1];
+private _scanPos = missionNamespace getVariable [QGVAR(nvgBrightScanPos), [0, 0, 0]];
+private _brightSources = missionNamespace getVariable [QGVAR(nvgBrightSources), []];
+if ((diag_tickTime - _scanTime > 0.5) || ((_eye distance _scanPos) > 25)) then {
+    private _classified = [];
+    {
+        private _sim = getText ((configOf _x) >> "simulation");
+        private _isBright = false;
+        // Spectral weight: the photocathode is a near-IR device (600-900 nm
+        // peak, ELBIT/TNVC datasheets).  IR-rich sources excite it MORE than
+        // their photopic (green-weighted) luminous output suggests.  Muzzle
+        // flash (hot flame: strong IR), IR strobes/markers (785-850 nm), and
+        // vehicle IR lights are the military's "IR signature" exploit, a
+        // source the naked eye sees dimly can saturate the tube.
+        private _spectralWeight = 1.0;
+        if (_sim == "Lamps" || _sim == "nvmarker") then {
+            _isBright = true;
+            if (_sim == "nvmarker") then { _spectralWeight = 1.8; };  // IR strobe/marker
+        };
+        if (isLightOn _x) then { _isBright = true; };
+        if (_x isKindOf "F_40_White") then {
+            _isBright = true;
+            _spectralWeight = 1.4;   // muzzle/explosive flame: strong IR
+        };
+        // Vehicle IR lights (headlights in IR mode) are lamps in the IR band.
+        if (_sim == "Lamps" && {getNumber ((configOf _x) >> "irLight") == 1}) then {
+            _spectralWeight = 1.6;
+        };
+        if (_isBright) then { _classified pushBack [_x, _spectralWeight]; };
+    } forEach (nearestObjects [_eye, [], 150]);
+    _brightSources = _classified;
+    missionNamespace setVariable [QGVAR(nvgBrightSources), _classified];
+    missionNamespace setVariable [QGVAR(nvgBrightScanTime), diag_tickTime];
+    missionNamespace setVariable [QGVAR(nvgBrightScanPos), _eye];
+};
+// A cached source may have been deleted since the scan; drop the nulls.
+_brightSources = _brightSources select { !isNull (_x select 0) };
 private _blowoutNow = 0;
 {
-    private _sim = getText ((configOf _x) >> "simulation");
-    private _isBright = false;
-    // Spectral weight: the photocathode is a near-IR device (600-900 nm
-    // peak, ELBIT/TNVC datasheets).  IR-rich sources excite it MORE than
-    // their photopic (green-weighted) luminous output suggests.  Muzzle
-    // flash (hot flame: strong IR), IR strobes/markers (785-850 nm), and
-    // vehicle IR lights are the military's "IR signature" exploit — a
-    // source the naked eye sees dimly can saturate the tube.
-    private _spectralWeight = 1.0;
-    if (_sim == "Lamps" || _sim == "nvmarker") then {
-        _isBright = true;
-        if (_sim == "nvmarker") then { _spectralWeight = 1.8; };  // IR strobe/marker
-    };
-    if (isLightOn _x) then { _isBright = true; };
-    if (_x isKindOf "F_40_White") then {
-        _isBright = true;
-        _spectralWeight = 1.4;   // muzzle/explosive flame: strong IR
-    };
-    // Vehicle IR lights (headlights in IR mode) are lamps in the IR band.
-    if (_sim == "Lamps" && {getNumber ((configOf _x) >> "irLight") == 1}) then {
-        _spectralWeight = 1.6;
-    };
-    if (_isBright) then {
-        private _srcPos = getPosASL _x;
+    _x params ["_src", "_spectralWeight"];
+    private _srcPos = getPosASL _src;
         private _dirTo = _eye vectorFromTo _srcPos;
         private _ang = acos ((_viewDir vectorDotProduct _dirTo) max -1 min 1);
         // Occlusion: the light must physically reach the photocathode.
@@ -668,7 +690,7 @@ private _blowoutNow = 0;
         // ray must be clear of blocking geometry.
         private _clear = true;
         private _occHits = lineIntersectsSurfaces [
-            _eye, _srcPos, _player, _x, true, 1, "FIRE", "NONE"
+            _eye, _srcPos, _player, _src, true, 1, "FIRE", "NONE"
         ];
         if (count _occHits > 0) then { _clear = false; };
         // Gate triggers when the source enters the tube's FOV.  AN/AVS-9
@@ -708,7 +730,6 @@ private _blowoutNow = 0;
                 _blowoutNow = _intensity;
             };
         };
-    };
 } forEach _brightSources;
 
 // ─── Rain: Mie scattering + auto-gating feedback loop ────────────────────

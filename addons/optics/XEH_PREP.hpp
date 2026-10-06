@@ -24,6 +24,7 @@ PREPS(eye,eyePupilSteady);
 PREPS(eye,eyePupilStep);
 PREPS(eye,eyeAdaptStep);
 PREPS(eye,eyeSceneLux);
+PREPS(eye,eyeAmbientLux);
 PREPS(eye,eyeSkyFraction);
 PREPS(eye,eyeSkyCast);
 PREPS(eye,eyeAperture);

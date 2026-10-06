@@ -33,6 +33,7 @@ PUPIL_STEADY = EYE / "fnc_eyePupilSteady.sqf"
 PUPIL_STEP = EYE / "fnc_eyePupilStep.sqf"
 ADAPT_STEP = EYE / "fnc_eyeAdaptStep.sqf"
 SCENE_LUX = EYE / "fnc_eyeSceneLux.sqf"
+AMBIENT = EYE / "fnc_eyeAmbientLux.sqf"
 SKY_FRACTION = EYE / "fnc_eyeSkyFraction.sqf"
 SKY_CAST = EYE / "fnc_eyeSkyCast.sqf"
 APERTURE = EYE / "fnc_eyeAperture.sqf"
@@ -223,11 +224,19 @@ class TestEyeSkyFraction(unittest.TestCase):
 
 
 def aperture(lux):
-    """Mirror of fnc_eyeAperture: log-lux -> aperture (higher is wider)."""
+    """Mirror of fnc_eyeAperture: log-lux -> aperture.
+
+    The aperture value is LIGHT INTAKE: a lower value is a wider aperture and
+    a brighter image, so the map ascends from the wide night anchor (8) to the
+    narrow daylight anchor (50).  Anchors: BI wiki setApertureNew night
+    example [2, 8, 14], and the BI wiki setAperture Namikaze calibration
+    (50 = daylight outdoor, 30 = indoor, below 20 = very bright, closer to 0
+    lets in more light).
+    """
     lux = max(0.001, min(100000.0, lux))
     ev = math.log10(lux)
     t = max(0.0, min(1.0, (ev - (-3)) / (5 - (-3))))
-    return 8 + t * (0.2 - 8)
+    return 8 + t * (50 - 8)
 
 
 class TestEyeAperture(unittest.TestCase):
@@ -237,19 +246,36 @@ class TestEyeAperture(unittest.TestCase):
         self.assertAlmostEqual(run_sqf(APERTURE, [0.001]), 8, places=6)
 
     def test_day_anchor(self):
-        self.assertAlmostEqual(run_sqf(APERTURE, [100000]), 0.2, places=6)
+        # Regression: the day anchor is the daylight outdoor value (50), not
+        # the scenario-less setApertureNew Example 1 value 0.2.  A 0.2 anchor
+        # is close to 0, so it pinned a near-maximum light intake at noon and
+        # over-exposed normal vision (the daytime blowout report).
+        self.assertAlmostEqual(run_sqf(APERTURE, [100000]), 50, places=6)
 
-    def test_monotonic_decreasing(self):
+    def test_map_ascends_from_night_to_day(self):
+        # A lower value is more light, so a brighter scene must map to a
+        # HIGHER (narrower) value.  This fails if the anchors are inverted.
+        self.assertGreater(run_sqf(APERTURE, [100000]), run_sqf(APERTURE, [0.001]))
+
+    def test_monotonic_increasing(self):
         prev = None
         for lux in [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000]:
             got = run_sqf(APERTURE, [lux])
             if prev is not None:
-                self.assertLessEqual(got, prev)
+                self.assertGreaterEqual(got, prev)
             prev = got
 
     def test_clamps_outside_the_domain(self):
         self.assertAlmostEqual(run_sqf(APERTURE, [1e-9]), 8, places=6)
-        self.assertAlmostEqual(run_sqf(APERTURE, [1e9]), 0.2, places=6)
+        self.assertAlmostEqual(run_sqf(APERTURE, [1e9]), 50, places=6)
+
+    def test_day_anchor_is_a_daylight_value(self):
+        # Source contract: the day anchor must sit above the BI wiki "very
+        # bright" ceiling (20), or it over-exposes a daylit scene.
+        text = APERTURE.read_text(encoding="utf-8")
+        match = re.search(r"_dayStandard\s*=\s*([0-9.]+)", text)
+        self.assertIsNotNone(match, "no _dayStandard found in fnc_eyeAperture")
+        self.assertGreater(float(match.group(1)), 20)
 
     def test_matches_the_mirror(self):
         for lux in [0.005, 0.5, 50, 5000]:
@@ -407,6 +433,72 @@ class TestEyeFlash(unittest.TestCase):
         # into the engine dynamic term.
         text = DRIVER.read_text(encoding="utf-8")
         self.assertIn("_sceneLux + _flashLux", text)
+
+
+class TestEyeAmbientLux(unittest.TestCase):
+    """The night ambient comes from the physical sky, not the engine.
+
+    Regression for the operator report (night too dim, local lights
+    imperceptible).  The engine ambient brightness is a render artifact at an
+    indoor scale at night (~51 lx in the report), two orders of magnitude
+    above the real night sky.  It must not override the physical
+    starlight/moon/twilight model at or below the horizon.
+    """
+
+    def test_night_uses_the_physical_sky(self):
+        # Physical moonlit sky 0.25 lx; engine ambient 51 (indoor scale).
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [0.25, 51, 1, -10]), 0.25, places=6
+        )
+
+    def test_starlight_floor_is_kept(self):
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [0.001, 51, 1, -40]), 0.001, places=6
+        )
+
+    def test_twilight_uses_the_physical_glow(self):
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [6.3, 51, 1, -6]), 6.3, places=6
+        )
+
+    def test_day_uses_the_engine_ambient(self):
+        # The physical model has no daylight term; the engine supplies it.
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [0.001, 84987, 1, 30]), 84987, places=3
+        )
+
+    def test_horizon_hands_over_to_the_engine(self):
+        self.assertAlmostEqual(
+            run_sqf(AMBIENT, [398, 5000, 1, 0.5]), 5000, places=3
+        )
+
+
+class TestEyeNightAndDayAperture(unittest.TestCase):
+    """The aperture the eye pins at a real night and at noon."""
+
+    def test_moonlit_night_is_wide(self):
+        # 0.25 lx moonlit night -> a wide aperture, not the indoor value (~33).
+        v = run_sqf(APERTURE, [0.25])
+        self.assertGreater(v, 15)
+        self.assertLess(v, 25)
+
+    def test_starlight_is_the_night_anchor(self):
+        self.assertAlmostEqual(run_sqf(APERTURE, [0.001]), 8, places=6)
+
+    def test_noon_is_the_daylight_anchor(self):
+        # RPT day adaptedLux 68036 -> ~49 (BIKI daylight outdoor 50).
+        v = run_sqf(APERTURE, [68036])
+        self.assertGreater(v, 48.5)
+        self.assertLess(v, 50.5)
+
+    def test_a_local_light_raises_the_adapted_aperture(self):
+        # A 50 lx lamp on a 0.25 lx night must visibly raise the adaptation.
+        dark = run_sqf(SCENE_LUX, [0.25, 0, 0.8])
+        lit = run_sqf(SCENE_LUX, [0.25, 50, 0.8])
+        self.assertLess(dark, lit)
+        self.assertGreater(
+            run_sqf(APERTURE, [lit]), run_sqf(APERTURE, [dark]) + 5
+        )
 
 
 if __name__ == "__main__":

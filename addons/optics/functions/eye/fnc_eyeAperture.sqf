@@ -4,12 +4,20 @@
 Camera aperture from the adapted scene luminance (issue #141).
 
 The eye model computes an adapted scene luminance. This maps that luminance
-to the aperture value the engine expects. Higher value = wider aperture, so
-the map descends: the night anchor is the wide value and the day anchor is
-the narrow one.
+to the aperture value the engine expects. The value is LIGHT INTAKE: the
+closer it is to 0, the wider the aperture and the brighter the image (BIS
+wiki setAperture, Namikaze calibration). The map therefore ASCENDS from the
+wide night anchor to the narrow daylight anchor.
 
-Anchors 8 (night) and 0.2 (day) are the BI wiki setApertureNew examples.
-The domain is base-10 log lux from -3 (starlight) to 5 (full sun).
+Anchors. 8 is the BI wiki setApertureNew night example, the standard of the
+[2, 8, 14] night range. 50 is the BI wiki setAperture Namikaze calibration
+for daylight outdoor, the same calibration already cited in
+addons/nightvision/functions/fnc_applyNVGTubeModel.sqf (50 outdoor, 30
+indoor, below 20 a very bright scene suitable for night). A previous revision
+used 0.2 for the day anchor, taken from the scenario-less setApertureNew
+Example 1; 0.2 is close to 0, so it pinned a near-maximum intake at noon and
+over-exposed the day scene. The domain is base-10 log lux from -3 (starlight)
+to 5 (full sun).
 
 The driver pins the standard with the four-element form [min, standard,
 maximum, luminance] with min = standard = maximum, so the engine cannot
@@ -30,8 +38,8 @@ params [["_adaptedLux", 0, [0]]];
 
 private _minLux = 0.001;         // starlight floor
 private _maxLux = 100000;        // full sun
-private _nightStandard = 8;      // BI wiki setApertureNew night example
-private _dayStandard = 0.2;      // BI wiki setApertureNew day example
+private _nightStandard = 8;      // BI wiki setApertureNew night example, the [2, 8, 14] standard
+private _dayStandard = 50;       // BI wiki setAperture Namikaze calibration: 50 = daylight outdoor
 
 _adaptedLux = (_adaptedLux max _minLux) min _maxLux;
 
