@@ -191,7 +191,21 @@ if (_hsCache isEqualType 0) then {
 private _solarRadiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
 
+// ─── Per-frame solve budget ───────────────────────────────────────────────
+// The sweep is bounded by OBJECT COUNT (sweepBudget), but one object can
+// carry many selections and the per-selection two-node solve is the measured
+// cost, so a count bound alone still stalled a frame.  Stop solving once the
+// elapsed time passes the budget and re-queue the unsolved remainder at the
+// FRONT of the pending list: nothing is dropped and nothing starves.
+private _paintBudgetMs = missionNamespace getVariable [QGVAR(paintBudgetMs), 2.0];
+if !(_paintBudgetMs isEqualType 0) then { _paintBudgetMs = 2.0; };
+private _paintT0 = diag_tickTime;
+private _paintAll = _objects + ([_objects] call FUNC(collectThermalNestedObjects));
+private _unsolved = [];
 {
+    if (((diag_tickTime - _paintT0) * 1000) >= _paintBudgetMs) exitWith {
+        _unsolved = _paintAll select [_forEachIndex];
+    };
     if (isNull _x) then { continue; };
     private _obj = _x;
 
@@ -287,7 +301,14 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
         [_obj, _selName, "", _qInternal * _waveHeat, _fGround] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selNamesResolved;
-} forEach (_objects + ([_objects] call FUNC(collectThermalNestedObjects)));
+} forEach _paintAll;
+// Carry the unsolved objects into the next pass.  The pending list already
+// holds the untaken sweep; the budgeted remainder goes in front so the tail
+// cannot starve behind fresh discoveries.
+if (_unsolved isNotEqualTo []) then {
+    _pending = _unsolved + _pending;
+    missionNamespace setVariable [QGVAR(tiBldgPending), _pending];
+};
 
 // Diagnostic: confirms the physics baseline applies in-game.
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {

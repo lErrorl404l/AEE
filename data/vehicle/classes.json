@@ -257,8 +257,8 @@
       "provenance": [
         "addons/armour/functions/fnc_penetrationGate.sqf:47",
         "addons/armour/functions/fnc_penetrationGate.sqf:76",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:222",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:230",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:236",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:244",
         "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:119",
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:68",
         "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:55",

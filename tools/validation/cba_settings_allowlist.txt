@@ -66,6 +66,7 @@ aee_exhaustAfterburner  per-vehicle contract, read with default false at fnc_app
 aee_exhaustGasTempC  per-vehicle contract, read with default -1 at fnc_applyExhaustShimmer.sqf:455, no addon writer
 aee_exhaustPlumeM  per-vehicle contract, read with default -1 at fnc_applyExhaustShimmer.sqf:457, no addon writer
 aee_thermal_sweepBudget  runtime sweep-budget knob, read with default 16 at fnc_applyBuildingThermal.sqf:135, no addon writer
+aee_thermal_paintBudgetMs  runtime paint-budget knob, read with default 2.0 at fnc_applyBuildingThermal.sqf:200, no addon writer
 
 # Eye adaptation debug knobs and handler id (issue #141).
 aee_optics_eyeFlash  handler id passed as the _key value argument, not read as a variable
