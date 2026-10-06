@@ -3087,25 +3087,25 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_thermal_post_process_layering(self):
-        # The ppEffect stack must mirror the real FLIR sensor chain
+        # The ppEffect stack mirrors the real FLIR sensor chain
         # (issue #196): atmospheric blur applies first, sensor noise
         # (NETD grain) second, display gain/contrast last.  Lower
-        # priority = applied first (BIS wiki base order).  The old order
-        # put grain BELOW blur, so DynamicBlur smeared the sensor noise.
-        # Issue #204: thermal FilmGrain was at 5100, colliding with the
-        # NVG ColorCorrections at 5100 ("Cannot create custom post
-        # effect(type: 7), PE with same priority(5100) already exist" in
-        # the RPT) - whichever module created second failed and its
-        # adjust loop spammed "Invalid post effect handle".  Moved to
-        # 6500, above the NVG band (1200-6000), so every effect type has
-        # its own priority band (the A3TI/MKK proven ladder pattern).
+        # priority = applied first (BIS wiki base order).
+        # Issue #204: a shared priority made whichever module created
+        # second fail ("PE with same priority(5100) already exist") and
+        # spam "Invalid post effect handle".  The stack now adopts the
+        # proven A3TI/MKK per-type ladder (docs/wiki/research/
+        # engine-thermal-mechanisms.md).  The plan named FilmGrain 2005
+        # and CC 2505, but the fusion stack holds both, so the other
+        # proven values 2000 and 2500 keep the two thermal-owned stacks
+        # from sharing a priority.
         self._assert_in_sqf(
             "fnc_applyThermalVision.sqf",
             [
-                '["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)]',
-                '["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]',
-                '["FilmGrain",       6500, QGVAR(ppHandle_Thermal_Grain)]',
-                '["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]',
+                '["RadialBlur",      1000, QGVAR(ppHandle_Thermal_Vignette)]',
+                '["DynamicBlur",      505, QGVAR(ppHandle_Thermal_Blur)]',
+                '["FilmGrain",       2000, QGVAR(ppHandle_Thermal_Grain)]',
+                '["ColorCorrections", 2500, QGVAR(ppHandle_Thermal_CC)]',
                 "ppEffectForceInNVG true",
             ],
             "FLIR layering: blur -> grain -> CC, vignette below, grain ABOVE blur",
@@ -3113,12 +3113,11 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_thermal_priority_no_collision_with_nvg(self):
-        # Issue #204: the NVG ColorCorrections (5100) and the thermal
-        # FilmGrain (5100) collided - "PE with same priority(5100)
-        # already exist" - breaking whichever module created second and
-        # spamming "Invalid post effect handle".  Every ppEffect priority
-        # across optics (210/410/1510), NVG (1200/4100/5100/6000/868)
-        # and thermal (1300/4200/6500/5200) must be unique.
+        # Issue #204: a shared priority made whichever module created
+        # second fail - "PE with same priority(5100) already exist" -
+        # and spam "Invalid post effect handle".  Every ppEffect priority
+        # across optics (210/410/1510), NVG (1200/3050/4100/5100/6000/868)
+        # and thermal (205/305/505/1000/2000/2500/2510/3000) must be unique.
         import re
 
         root = Path(__file__).resolve().parents[2]
@@ -3284,7 +3283,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyThermalVision.sqf",
             [
                 "ColorInversion",
-                "6600",
+                "2510",
                 "ppHandle_Thermal_Inversion",
                 "_polarity == 1",
                 "_hInv ppEffectEnable true",
@@ -6486,3 +6485,102 @@ class TestThermalBaseChannel(unittest.TestCase):
     def test_optics_wires_the_host_setting(self):
         text = self._POSTINIT.read_text(encoding="utf-8")
         self.assertIn("call FUNC(updateThermalHostSetting)", text)
+
+
+class TestThermalPostProcessLadder(unittest.TestCase):
+    """Source contract for the thermal post-process priority ladder (T14).
+
+    The proven A3TI/MKK ladder keeps each effect type in its own band with
+    large gaps, so no two AEE modules create at one priority (issue #204).
+    The plan named FilmGrain 2005 and ColorCorrections 2505, but the fusion
+    stack already holds both, so this stack takes the other proven values
+    2000 and 2500.  Reference:
+    docs/wiki/research/engine-thermal-mechanisms.md.
+    """
+
+    # The reconciled thermal vision ladder: effect -> priority.
+    LADDER = {
+        "ChromAberration": 205,
+        "WetDistortion": 305,
+        "DynamicBlur": 505,
+        "RadialBlur": 1000,
+        "FilmGrain": 2000,
+        "ColorCorrections": 2500,
+        "ColorInversion": 2510,
+        "Resolution": 3000,
+    }
+
+    # The fusion stack keeps its proven, disjoint priorities.
+    FUSION = {
+        "ChromAberration": 1905,
+        "FilmGrain": 2005,
+        "DynamicBlur": 2105,
+        "ColorCorrections": 2505,
+    }
+
+    @staticmethod
+    def _qgvar_entries(text):
+        """Effect -> priority from a `["Effect", N, QGVAR(...)]` entry."""
+        return {
+            m.group(1): int(m.group(2))
+            for m in re.finditer(r'\["(\w+)",\s*(\d+),\s*QGVAR', text)
+        }
+
+    @staticmethod
+    def _bare_entries(text):
+        """Effect -> priority from a `["Effect", N]` entry."""
+        return {
+            m.group(1): int(m.group(2))
+            for m in re.finditer(r'\["(\w+)",\s*(\d+)\]', text)
+        }
+
+    def test_ladder_matches_the_proven_values(self):
+        found = self._qgvar_entries(_read_sqf("fnc_applyThermalVision.sqf", "thermal"))
+        self.assertEqual(found, self.LADDER)
+
+    def test_ladder_values_are_unique(self):
+        self.assertEqual(
+            len(self.LADDER),
+            len(set(self.LADDER.values())),
+            "the thermal ladder has a duplicate priority",
+        )
+
+    def test_fusion_stack_is_unchanged_and_disjoint(self):
+        fusion = _read_sqf("fnc_applyFusionPP.sqf", "thermal")
+        vision = _read_sqf("fnc_applyThermalVision.sqf", "thermal")
+        self.assertEqual(self._bare_entries(fusion), self.FUSION)
+        self.assertFalse(
+            set(self._bare_entries(fusion).values())
+            & set(self._qgvar_entries(vision).values()),
+            "a thermal and a fusion handle share a priority",
+        )
+
+    def test_no_priority_is_shared_with_another_stack(self):
+        # Key by module and effect, not by effect alone: the same effect
+        # name appears in several stacks and a name-keyed map would drop
+        # all but the last.
+        vision = _read_sqf("fnc_applyThermalVision.sqf", "thermal")
+        nvg = _read_sqf("fnc_applyNVGTubeModel.sqf", "nightvision")
+        others = [
+            (f"fusion:{k}", v)
+            for k, v in self._bare_entries(
+                _read_sqf("fnc_applyFusionPP.sqf", "thermal")
+            ).items()
+        ]
+        others += [
+            (f"optics:{k}", v)
+            for k, v in self._bare_entries(
+                _read_sqf("fnc_ppEffectCreate.sqf", "optics")
+            ).items()
+        ]
+        others += [(f"nvg:{k}", v) for k, v in self._qgvar_entries(nvg).items()]
+        for m in re.finditer(r"private _(?:prio|dofPrio) = (\d+)", nvg):
+            others.append((f"nvg_local_{m.start()}", int(m.group(1))))
+        by_priority = {priority: label for label, priority in others}
+        for effect, priority in self._qgvar_entries(vision).items():
+            self.assertNotIn(
+                priority,
+                by_priority,
+                f"thermal {effect} at {priority} collides with "
+                f"{by_priority.get(priority)}",
+            )
