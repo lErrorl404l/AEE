@@ -29,7 +29,25 @@ if (isNil "_aperture" || isNil "_compose") then {
         _notes pushBack format ["day aperture %1 night %2", _dayAperture, _nightAperture];
     };
 
-    // 2. Per-tick budget: warm-up then best of three.  Ten iterations of the
+    // 2. The night ambient comes from the physical sky, not the engine.  The
+    //    engine ambient brightness is an indoor-scale render artifact at night
+    //    (~51 lx) and must not override the real night sky (~0.25 lx moonlit).
+    private _ambientKernel = missionNamespace getVariable ["aee_optics_fnc_eyeAmbientLux", nil];
+    if (isNil "_ambientKernel") then {
+        _fail = _fail + 1;
+        _notes pushBack "eyeAmbientLux kernel not compiled";
+    } else {
+        private _nightAmbient = [0.25, 51, 1, -10] call _ambientKernel;
+        private _dayAmbient = [0.001, 84987, 1, 30] call _ambientKernel;
+        if ((_nightAmbient < 0.5) && (_dayAmbient > 80000)) then {
+            _pass = _pass + 1;
+        } else {
+            _fail = _fail + 1;
+            _notes pushBack format ["night %1 day %2", _nightAmbient, _dayAmbient];
+        };
+    };
+
+    // 3. Per-tick budget: warm-up then best of three.  Ten iterations of the
     //    two pure kernels the optics tick composes (20 calls).  The budget is
     //    generous: it exists to catch an accidental per-call engine read or a
     //    kernel rebuild, not to benchmark the CPU.
