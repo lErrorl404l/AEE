@@ -56,6 +56,7 @@ lint:
 	python3 tools/validation/gen_aircraft_data.py --check
 	python3 tools/validation/gen_aircraft_coverage.py --check
 	python3 tools/validation/validate_aircraft_data.py
+	python3 tools/validation/gen_debug_index.py --check
 
 # Fail when the lint target and the CI workflow disagree, so a new CI check
 # cannot be added without a matching local one.
