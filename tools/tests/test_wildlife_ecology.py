@@ -8,6 +8,8 @@ the engine wiring, which the harness cannot execute.
 Run: python3 -m unittest tools.tests.test_wildlife_ecology -v
 """
 
+import contextlib
+import io
 import re
 import sys
 import unittest
@@ -17,6 +19,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import Lambda, Params, load_sqf, run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
+from tools.validation import gen_wildlife_ecology as gen  # noqa: E402
+
 WILDLIFE = ROOT / "addons" / "wildlife"
 FUNCS = WILDLIFE / "functions"
 DATA = WILDLIFE / "data"
@@ -1404,6 +1410,32 @@ class TestCallBusSourceContracts(unittest.TestCase):
         code = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
         self.assertIn("call FUNC(callPublish)", code)
         self.assertIn("QGVAR(callBus)", code)
+
+
+class TestCorpusPinning(unittest.TestCase):
+    """The committed generated SQF is pinned to the JSON corpus.
+
+    A change to data/wildlife/ecology.json or asset_map.json without a
+    regeneration makes the fresh render differ from the committed file, so
+    test_the_committed_corpus_equals_a_fresh_render goes red.
+    """
+
+    def test_the_committed_corpus_equals_a_fresh_render(self):
+        ecology, asset_map = gen.load_corpus(gen.DEFAULT_DATA)
+        self.assertEqual(
+            CORPUS.read_text(encoding="utf-8"),
+            gen.render_ecology(ecology),
+            "ecology_corpus.sqf is stale; run gen_wildlife_ecology.py",
+        )
+        self.assertEqual(
+            (DATA / "asset_map.sqf").read_text(encoding="utf-8"),
+            gen.render_asset(asset_map),
+            "asset_map.sqf is stale; run gen_wildlife_ecology.py",
+        )
+
+    def test_the_freshness_gate_passes(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(gen.check_outputs(gen.DEFAULT_DATA), 0)
 
 
 if __name__ == "__main__":
