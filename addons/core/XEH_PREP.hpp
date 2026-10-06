@@ -23,3 +23,5 @@ PREP(installPlayerEngineHandler);
 PREP(readState);
 PREP(calculateIlluminance);
 PREP(coreBodyTemp);
+PREP(evaluateConsistency);
+PREP(consistencyLoadTable);
