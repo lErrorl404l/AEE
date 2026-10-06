@@ -32,3 +32,4 @@ PREP(acousticSourceDb);
 PREP(acousticPublish);
 PREP(acousticSample);
 PREP(acousticOccluders);
+PREP(wildlifePerceive);

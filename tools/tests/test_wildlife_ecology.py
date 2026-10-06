@@ -905,5 +905,75 @@ class TestAcousticSourceContracts(unittest.TestCase):
         self.assertIn('"aircraft"', tick)
 
 
+PERCEIVE_ENV = [0.5, [], 0, 0, 10]
+PERCEIVE_SPECIES = [1, 0.4, 0.6, 1]
+
+
+def perceive(
+    habitat, state, heard=None, environment=PERCEIVE_ENV, species=PERCEIVE_SPECIES
+):
+    if heard is None:
+        heard = []
+    return run_sqf(PERCEIVE, [environment, habitat, species, state, heard])
+
+
+class TestWildlifePerceive(unittest.TestCase):
+    """fnc_wildlifePerceive runs from the real SQF."""
+
+    def test_a_high_threat_is_a_high_threat(self):
+        out = perceive(0.9, [0.1, 0.1, 0.9, 5, [0, 0, 0], 0])
+        self.assertEqual(out[1], 0.9)
+
+    def test_hunger_above_the_threshold_gives_need(self):
+        out = perceive(0.9, [0.8, 0.1, 0, 5, [0, 0, 0], 0])
+        self.assertGreater(out[2][0], 0)
+        self.assertEqual(out[2][1], 0)
+
+    def test_hunger_below_the_threshold_gives_no_need(self):
+        out = perceive(0.9, [0.2, 0.1, 0, 5, [0, 0, 0], 0])
+        self.assertEqual(out[2][0], 0)
+
+    def test_a_decoded_alarm_raises_threat(self):
+        quiet = perceive(0.9, [0.1, 0.1, 0, 5, [0, 0, 0], 0])
+        alarmed = perceive(0.9, [0.1, 0.1, 0, 5, [0, 0, 0], 0], heard=["alarm", 0.8])
+        self.assertGreater(alarmed[1], quiet[1])
+
+    def test_a_loud_acoustic_level_raises_threat(self):
+        quiet = perceive(0.9, [0.1, 0.1, 0, 5, [0, 0, 0], 0.1])
+        loud = perceive(0.9, [0.1, 0.1, 0, 5, [0, 0, 0], 0.9])
+        self.assertGreater(loud[1], quiet[1])
+        self.assertEqual(quiet[1], 0.1)
+
+    def test_no_environment_gives_zero_suitability(self):
+        out = perceive(0.9, [0.1, 0.1, 0, 5, [0, 0, 0], 0], environment=[])
+        self.assertEqual(out[0], 0)
+
+    def test_the_heard_call_is_passed_through(self):
+        out = perceive(0.9, [0.1, 0.1, 0, 5, [0, 0, 0], 0], heard=["contact", 0.4])
+        self.assertEqual(out[3], ["contact", 0.4])
+
+    def test_identical_inputs_are_identical(self):
+        state = [0.5, 0.5, 0.5, 5, [0, 0, 0], 0.5]
+        self.assertEqual(perceive(0.9, state), perceive(0.9, state))
+
+
+class TestPerceiveSourceContracts(unittest.TestCase):
+    def test_the_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", PERCEIVE.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernel_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(wildlifePerceive)", text)
+
+    def test_the_acoustic_level_feeds_the_threat(self):
+        code = PERCEIVE.read_text(encoding="utf-8")
+        self.assertIn("acoustic", code.lower())
+
+
 if __name__ == "__main__":
     unittest.main()
