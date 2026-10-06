@@ -78,6 +78,7 @@ PREPS(perception,perceptionAdaptState);
 PREPS(perception,perceptionUpdate);
 PREPS(perception,perceptionDetectDeviation);
 
+PREPS(hud,formatGridDisplay);
 PREPS(hud,hudBuild);
 PREPS(hud,hudFormatGrid);
 PREPS(hud,hudFormatHeading);

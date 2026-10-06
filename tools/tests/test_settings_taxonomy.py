@@ -37,6 +37,8 @@ def taxonomy_groups(prefixes):
 EXPECTED_HUD = {
     "aee_thermal_fusionHud",
     "aee_optics_hudEnabled",
+    "aee_optics_mgrsEnabled",
+    "aee_optics_mgrsPrecision",
     "aee_physiology_HUDWarningThreshold",
     "aee_nightvision_ltmEnabled",
     "aee_nightvision_ltmDaylightFade",
@@ -44,7 +46,7 @@ EXPECTED_HUD = {
 
 
 class TestSettingsTaxonomy(unittest.TestCase):
-    """AEE HUD holds exactly the four on-screen displays."""
+    """AEE HUD holds exactly the on-screen displays."""
 
     def test_hud_group_is_exact(self):
         groups = taxonomy_groups({"AEE HUD"})
