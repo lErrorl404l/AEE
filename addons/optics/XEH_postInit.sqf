@@ -180,6 +180,9 @@ END_COUNTER(applyNVGTubeModel);
 if (hasInterface) then {
     [] call FUNC(hudRangefinder);
     [] call FUNC(hudMarkers);
+    // MGRS map overlay: attaches a Draw handler to the engine map control
+    // when the map opens.  Read-only, no marker is created or edited.
+    [] call FUNC(mgrsMapDraw);
     [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
     // Eye adaptation: AEE owns the camera aperture and its rate (issue #141).
     [] call FUNC(initEyeAdaptation);
