@@ -591,6 +591,7 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_thermal_activeIR` | CHECKBOX | `false` | no | thermal | Run a local infrared illuminator at the operator, so a night-vision or infrared optic sees it and the unaided eye does not. A workshop idea re-implemented as AEE code; the mechanism has no published source. Local to the operator. |
 | `aee_thermal_thermalAgcHunt` | SLIDER | `0.05` | yes | thermal | Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED. |
 | `aee_thermal_thermalAgcHuntPeriod` | SLIDER | `4` | yes | thermal | Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it. |
 | `aee_thermal_thermalHotBloom` | SLIDER | `0.08` | yes | thermal | Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo. |

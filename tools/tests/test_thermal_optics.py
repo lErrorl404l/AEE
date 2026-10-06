@@ -6584,3 +6584,132 @@ class TestThermalPostProcessLadder(unittest.TestCase):
                 f"thermal {effect} at {priority} collides with "
                 f"{by_priority.get(priority)}",
             )
+
+
+class TestActiveIR(unittest.TestCase):
+    """Active-IR illuminator (T13).
+
+    The gate kernel is executed from the shipped SQF, not a Python mirror.
+    The light lifecycle is a source contract: the light is created with
+    setLightIR true and destroyed on stop.  The mechanism is UNSOURCED, so a
+    guard also asserts the surveyed mod's tuning values were not copied.
+    """
+
+    _GATE = _THERMAL / "ir" / "fnc_activeIRGate.sqf"
+    _START = _THERMAL / "ir" / "fnc_startActiveIR.sqf"
+    _STOP = _THERMAL / "ir" / "fnc_stopActiveIR.sqf"
+    _APPLY = _THERMAL / "ir" / "fnc_applyActiveIR.sqf"
+    _PREP = _REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp"
+    _SETTINGS = _REPO_ROOT / "addons" / "thermal" / "initSettings.inc.sqf"
+    _POSTINIT = _REPO_ROOT / "addons" / "thermal" / "XEH_postInit.sqf"
+    _STRINGS = _REPO_ROOT / "addons" / "thermal" / "stringtable.xml"
+
+    def _gate(self, setting_on, has_interface, unit_null, unit_alive):
+        return run_sqf(self._GATE, [setting_on, has_interface, unit_null, unit_alive])
+
+    def test_gate_runs_on_a_live_client_with_the_setting_on(self):
+        self.assertTrue(self._gate(True, True, False, True))
+
+    def test_gate_refuses_without_the_setting(self):
+        self.assertFalse(self._gate(False, True, False, True))
+
+    def test_gate_refuses_on_a_dedicated_server(self):
+        # No interface, a dedicated server with no player, must never run it.
+        self.assertFalse(self._gate(True, False, False, True))
+
+    def test_gate_refuses_a_null_or_dead_unit(self):
+        self.assertFalse(self._gate(True, True, True, True))
+        self.assertFalse(self._gate(True, True, False, False))
+
+    def test_light_is_created_with_setlightir_true(self):
+        code = _code_only(self._START.read_text(encoding="utf-8"))
+        self.assertIn('"#lightreflector" createVehicleLocal', code)
+        self.assertIn("setLightIR true", code)
+
+    def test_light_is_destroyed_on_stop(self):
+        code = _code_only(self._STOP.read_text(encoding="utf-8"))
+        self.assertIn("deleteVehicle _light", code)
+        self.assertIn("detach _light", code)
+        self.assertIn("QGVAR(activeIRLight), objNull", code)
+
+    def test_no_surveyed_mod_tuning_values_are_copied(self):
+        # The surveyed KettweaK values (brightness 400, colour [0.3,0.2,0.6],
+        # attenuation [0.5,1,2,0.5]) must not appear.
+        code = _code_only(self._START.read_text(encoding="utf-8"))
+        self.assertNotIn("400", code)
+        self.assertNotIn("0.3, 0.2, 0.6", code)
+        self.assertNotIn("0.5, 1, 2, 0.5", code)
+
+    def test_the_four_functions_are_registered(self):
+        prep = self._PREP.read_text(encoding="utf-8")
+        for name in ("applyActiveIR", "startActiveIR", "stopActiveIR", "activeIRGate"):
+            self.assertIn(f"PREPS(ir,{name});", prep)
+
+    def test_one_setting_under_thermal_sensor(self):
+        text = self._SETTINGS.read_text(encoding="utf-8")
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX_LOCAL(activeIR,"AEE Thermal","Sensor",false);',
+            text,
+        )
+
+    def test_setting_strings_and_keybind_exist(self):
+        text = self._STRINGS.read_text(encoding="utf-8")
+        self.assertIn("STR_AEE_Thermal_activeIR_Name", text)
+        self.assertIn("STR_AEE_Thermal_activeIR_Description", text)
+        self.assertIn("STR_AEE_Thermal_activeIRToggle", text)
+        post = self._POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("CBA_fnc_addKeybind", post)
+        self.assertIn("ActiveIRToggle", post)
+
+    def test_cleanup_is_wired_on_death_respawn_and_tick(self):
+        post = self._POSTINIT.read_text(encoding="utf-8")
+        self.assertIn('addEventHandler ["Killed"', post)
+        self.assertIn('addEventHandler ["Respawn"', post)
+        self.assertIn("FUNC(stopActiveIR)", post)
+        self.assertIn("FUNC(applyActiveIR)", post)
+
+    def test_the_driver_runs_the_gate_and_stops_on_failure(self):
+        code = _code_only(self._APPLY.read_text(encoding="utf-8"))
+        self.assertIn("call FUNC(activeIRGate)", code)
+        self.assertIn("call FUNC(stopActiveIR)", code)
+        self.assertIn("call FUNC(startActiveIR)", code)
+
+
+class TestThermalCapabilityProbe(unittest.TestCase):
+    """Runtime thermal capability probe (T15).
+
+    The pure kernel is executed from the shipped SQF.  It is config-driven:
+    the caller supplies the optic's visionMode and thermalMode arrays, or the
+    optic config's sub-configs, which the kernel reads with getArray.  The
+    session entry gates the DTV host on it and leaves the host ownership with
+    fnc_isThermalHostActive.
+    """
+
+    _PROBE = _THERMAL / "sensor" / "fnc_probeThermalCapability.sqf"
+    _VISION = _THERMAL / "display" / "fnc_applyThermalVision.sqf"
+    _PREP = _REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp"
+
+    def _probe(self, vision_mode, thermal_mode):
+        return run_sqf(self._PROBE, [vision_mode, thermal_mode])
+
+    def test_a_ti_optic_with_a_thermal_mode_is_capable(self):
+        self.assertTrue(self._probe(["Ti", "Normal"], [0]))
+
+    def test_a_non_ti_optic_is_not_capable(self):
+        self.assertFalse(self._probe(["Normal"], [0]))
+
+    def test_ti_without_a_thermal_mode_is_not_capable(self):
+        self.assertFalse(self._probe(["Ti", "Normal"], []))
+
+    def test_uppercase_ti_is_accepted(self):
+        self.assertTrue(self._probe(["TI", "NVG"], [0]))
+
+    def test_the_kernel_is_registered(self):
+        prep = self._PREP.read_text(encoding="utf-8")
+        self.assertIn("PREPS(sensor,probeThermalCapability);", prep)
+
+    def test_the_session_entry_calls_the_probe(self):
+        code = _code_only(self._VISION.read_text(encoding="utf-8"))
+        self.assertIn("call FUNC(probeThermalCapability)", code)
+        # The host ownership stays with fnc_isThermalHostActive.
+        self.assertIn("call FUNC(isThermalHostActive)", code)
