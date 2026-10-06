@@ -44,14 +44,8 @@ private _waterProvider = {
 private _vegProvider = {
     params ["_point"];
     private _signals = missionNamespace getVariable [QEGVAR(environmental,terrainSignals), []];
-    private _veg = 0;
-    if (_signals isEqualType []) then {
-        if ((count _signals) >= 2) then {
-            private _votes = _signals select 1;
-            if (_votes isEqualType 0) then { _veg = ((_votes max 0) min 1); };
-        };
-    };
-    _veg
+    if !(_signals isEqualType []) then { _signals = []; };
+    [_signals] call FUNC(vegScore)
 };
 missionNamespace setVariable [QGVAR(waterProvider), _waterProvider];
 missionNamespace setVariable [QGVAR(vegProvider), _vegProvider];
@@ -141,7 +135,16 @@ private _callback = {
                 _position, _wantWater, 100, 25, _waterProvider, _vegProvider
             ] call FUNC(pickResourceTarget);
 
-            if (((_target select 0) != 0) || ((_target select 1) != 0)) then {
+            private _hereVeg = [_position] call _vegProvider;
+            private _ring = [];
+            for "_b" from 0 to 3 do {
+                private _ang = _b * 90;
+                _ring pushBack ([(_position select 0) + (20 * (sin _ang)), (_position select 1) + (20 * (cos _ang)), 0] call _vegProvider);
+            };
+            private _boundary = [_hereVeg, _ring, 0.2, (round CBA_missionTime), 0.02] call FUNC(habitatBoundary);
+            private _leave = ((_boundary select 0) == 2);
+
+            if ((((_target select 0) != 0) || ((_target select 1) != 0)) && !_leave) then {
                 _agent moveTo _target;
                 _agent setDestination [_target, "LEADER PLANNED", false];
                 _recovery = 8;
