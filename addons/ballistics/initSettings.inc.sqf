@@ -9,7 +9,7 @@
 // two settings tune the model.
 AEE_SETTING_SLIDER(ammoTempTimeConstant,"AEE Ballistics","Ammo Temperature",30,3600,600,0);
 
-AEE_SETTING_SLIDER(ammoHeatPerShotJ,"AEE Ballistics","Ammo Temperature",0,0.001,0.0001,6);
+AEE_SETTING_SLIDER(ammoHeatPerShotJ,"AEE Ballistics","Ammo Temperature",0,0.001,0.0001,4);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name

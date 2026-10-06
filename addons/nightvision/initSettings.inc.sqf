@@ -7,11 +7,11 @@ AEE_SETTING_CHECKBOX(nvgBatteryEnabled,"AEE Night Vision","Intensity",false);
 // ── NVG grain maximum (issue #203) ─────────────────────────────────────────
 // Grain intensity ceilings by condition.  Moved here from aee_optics so the
 // nightvision module is self-contained (standalone-distributable).
-AEE_SETTING_SLIDER(nightGrainMax,"AEE Night Vision","Intensity",0,1,0.7,0);
+AEE_SETTING_SLIDER(nightGrainMax,"AEE Night Vision","Intensity",0,1,0.7,1);
 
-AEE_SETTING_SLIDER(rainGrainMax,"AEE Night Vision","Intensity",0,1,0.4,0);
+AEE_SETTING_SLIDER(rainGrainMax,"AEE Night Vision","Intensity",0,1,0.4,1);
 
-AEE_SETTING_SLIDER(fogGrainMax,"AEE Night Vision","Intensity",0,1,0.15,0);
+AEE_SETTING_SLIDER(fogGrainMax,"AEE Night Vision","Intensity",0,1,0.15,2);
 
 // ── Laser target marker ────────────────────────────────────────────────────
 // A display aid that marks a laser-designated target through night vision.
@@ -32,14 +32,14 @@ AEE_SETTING_CHECKBOX(ltmDaylightFade,"AEE HUD","Displays",true);
 // its own strength.  nvgVeilingGlare default 0.0213 is the MIL-I-49428
 // section 3.6.15.2 value.
 AEE_SETTING_CHECKBOX(nvgImperfectionsEnabled,"AEE Night Vision","Imperfections",true);
-AEE_SETTING_SLIDER(nvgImperfectionStrength,"AEE Night Vision","Imperfections",0,2,1.0,0.05);
-AEE_SETTING_SLIDER(nvgBlemishStrength,"AEE Night Vision","Imperfections",0,1,0.5,0.05);
-AEE_SETTING_SLIDER(nvgReticulationStrength,"AEE Night Vision","Imperfections",0,1,0.4,0.05);
-AEE_SETTING_SLIDER(nvgAgcBreathing,"AEE Night Vision","Imperfections",0,1,0.4,0.05);
-AEE_SETTING_SLIDER(nvgBlindingStrength,"AEE Night Vision","Imperfections",0,2,1.0,0.05);
-AEE_SETTING_SLIDER(nvgScintillationStrength,"AEE Night Vision","Imperfections",0,2,1.0,0.05);
-AEE_SETTING_SLIDER(nvgEdgeDistortion,"AEE Night Vision","Imperfections",0,1,0.5,0.05);
-AEE_SETTING_SLIDER(nvgVeilingGlare,"AEE Night Vision","Imperfections",0,0.05,0.0213,0.001);
+AEE_SETTING_SLIDER(nvgImperfectionStrength,"AEE Night Vision","Imperfections",0,2,1.0,2);
+AEE_SETTING_SLIDER(nvgBlemishStrength,"AEE Night Vision","Imperfections",0,1,0.5,2);
+AEE_SETTING_SLIDER(nvgReticulationStrength,"AEE Night Vision","Imperfections",0,1,0.4,2);
+AEE_SETTING_SLIDER(nvgAgcBreathing,"AEE Night Vision","Imperfections",0,1,0.4,2);
+AEE_SETTING_SLIDER(nvgBlindingStrength,"AEE Night Vision","Imperfections",0,2,1.0,2);
+AEE_SETTING_SLIDER(nvgScintillationStrength,"AEE Night Vision","Imperfections",0,2,1.0,2);
+AEE_SETTING_SLIDER(nvgEdgeDistortion,"AEE Night Vision","Imperfections",0,1,0.5,2);
+AEE_SETTING_SLIDER(nvgVeilingGlare,"AEE Night Vision","Imperfections",0,0.05,0.0213,4);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name

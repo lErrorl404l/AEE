@@ -102,9 +102,17 @@
 // absent for the same reason: aee_core_biomeOverride is a LIST and
 // aee_core_diagnostic is the only non-global CHECKBOX, so no non-global slider
 // exists and the variant would have zero call sites.
+// The 7th SLIDER argument is CBA's _trailingDecimals, NOT a step.  CBA's
+// SLIDER valueInfo order is [min, max, default, trailingDecimals, isPercentage]
+// (fnc_init.sqf) and the GUI formats the shown value with
+// [value, 1, trailingDecimals] call CBA_fnc_formatNumber, which calls toFixed.
+// A fractional value here is floored by toFixed, the "." search then fails,
+// and the leading-zero padding emits the literal strings "000" or "001" on the
+// slider.  Pass the number of decimal places the setting needs: a small
+// non-negative integer.  Something requiring six places wants 4, not 6.
 #define AEE_SETTING_TITLE(h) [LLSTRING(DOUBLES(h,Name)), LLSTRING(DOUBLES(h,Description))]
 #define AEE_SETTING_CHECKBOX(h,cat,subcat,def) [QGVAR(h), "CHECKBOX", AEE_SETTING_TITLE(h), [cat, subcat], def, true, {}] call CBA_fnc_addSetting
-#define AEE_SETTING_SLIDER(h,cat,subcat,mn,mx,def,stp) [QGVAR(h), "SLIDER", AEE_SETTING_TITLE(h), [cat, subcat], [mn, mx, def, stp], true, {}] call CBA_fnc_addSetting
+#define AEE_SETTING_SLIDER(h,cat,subcat,mn,mx,def,dec) [QGVAR(h), "SLIDER", AEE_SETTING_TITLE(h), [cat, subcat], [mn, mx, def, dec], true, {}] call CBA_fnc_addSetting
 #define AEE_SETTING_CHECKBOX_LOCAL(h,cat,subcat,def) [QGVAR(h), "CHECKBOX", AEE_SETTING_TITLE(h), [cat, subcat], def, false, {}] call CBA_fnc_addSetting
 
 // ── Module init guard: the one line every XEH init file starts with ─────────

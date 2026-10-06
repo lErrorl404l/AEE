@@ -10,7 +10,7 @@ AEE_SETTING_SLIDER(vehicleDustIntensity,"AEE FX","Particles",0,2,1.0,1);
 AEE_SETTING_SLIDER(vehicleDustDensity,"AEE FX","Particles",0.01,0.2,0.08,2);
 
 // ── Exhaust ─────────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(exhaustShimmerAlpha,"AEE FX","Particles",0,0.5,0.15,0);
+AEE_SETTING_SLIDER(exhaustShimmerAlpha,"AEE FX","Particles",0,0.5,0.15,2);
 
 // ── Weather coupling (aee-workshop-copy item 7, part 2) ─────────────────────
 // The weather alpha multiplies the blast, refract and weather particle

@@ -67,7 +67,7 @@ AEE_SETTING_SLIDER(baseflowRate_perDay,"AEE Mobility","Hydrology",0.01,1,0.2,2);
 
 AEE_SETTING_SLIDER(catchmentArea_m2,"AEE Mobility","Hydrology",10000,5000000,250000,0);
 
-AEE_SETTING_SLIDER(bedSlope,"AEE Mobility","Hydrology",0.0001,0.05,0.001,5);
+AEE_SETTING_SLIDER(bedSlope,"AEE Mobility","Hydrology",0.0001,0.05,0.001,4);
 
 AEE_SETTING_SLIDER(manningN,"AEE Mobility","Hydrology",0.01,0.1,0.035,3);
 
