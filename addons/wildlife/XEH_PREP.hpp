@@ -36,3 +36,5 @@ PREP(wildlifePerceive);
 PREP(wildlifeThink);
 PREP(callEmit);
 PREP(callReceive);
+PREP(ecologyBudget);
+PREP(ecologyTick);

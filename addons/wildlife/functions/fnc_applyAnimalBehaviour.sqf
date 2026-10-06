@@ -83,7 +83,7 @@ if (!_found) then {
 _agent setVariable [QGVAR(herdAnchor), _herdAnchor];
 
 private _callback = {
-    params ["_agent", "_action", "_state"];
+    params ["_agent", "_action", "_state", ["_plan", [], [[]]]];
     if (isNull _agent) exitWith { 0 };
 
     private _hunger = _agent getVariable [QGVAR(hunger), 0.1];
@@ -175,8 +175,60 @@ private _callback = {
         };
     };
 
+    // Calls.  The think plan is [action, callPlan, movement]; the call plan is
+    // a call type or -1.  Emit through the call-emit kernel and react to a
+    // heard call through the call-receive kernel.  The ecology tick sets the
+    // perception, the state and the heard call on the anchor.
+    private _callPlan = -1;
+    if ((count _plan) >= 2) then { _callPlan = _plan select 1; };
+
+    if (_callPlan isEqualType "") then {
+        private _trigger = "";
+        if (_callPlan == "alarm") then { _trigger = "predator"; };
+        if (_callPlan == "contact") then { _trigger = "cohesion"; };
+        if (_trigger != "") then {
+            private _perception = _agent getVariable [QGVAR(perception), []];
+            private _ecologyState = _agent getVariable [QGVAR(ecologyState), []];
+            private _speciesEmit = _agent getVariable [QGVAR(speciesEmit), [0.5, true]];
+            if !(_speciesEmit isEqualType []) then { _speciesEmit = [0.5, true]; };
+            private _call = [_speciesEmit, _perception, _ecologyState, _trigger] call FUNC(callEmit);
+            if ((count _call) >= 2) then {
+                // The relay is the naive heard-call store; the bounded,
+                // decayed bus in the next change replaces it.
+                private _outbox = missionNamespace getVariable [QGVAR(callOutbox), []];
+                if !(_outbox isEqualType []) then { _outbox = []; };
+                _outbox pushBack [getPos _agent, _call select 0, _call select 1, CBA_missionTime];
+                missionNamespace setVariable [QGVAR(callOutbox), _outbox];
+            };
+        };
+    };
+
+    // React to a heard call.  The ecology tick stores the decoded
+    // [callType, urgency, distance, relation] on the anchor.
+    private _heard = _agent getVariable [QGVAR(heardCall), []];
+    if ((count _heard) >= 4) then {
+        private _reaction = [
+            _heard select 0, _heard select 1, _heard select 2, _heard select 3,
+            [WILDLIFE_CALL_RANGE, 0.5]
+        ] call FUNC(callReceive);
+        private _response = _reaction select 0;
+        if (_response == 2) then { _action = 3; };
+        if (_response == 3) then {
+            private _herd = _agent getVariable [QGVAR(herdAnchor), _position];
+            if !(_herd isEqualType []) then { _herd = _position; };
+            _agent moveTo [_herd select 0, _herd select 1, 0];
+            _recovery = 4;
+        };
+    };
+
     _recovery
 };
+
+// The ecology tick reads these.  The defaults are UNSOURCED modelling
+// choices; a species-specific row is a later refinement.
+_agent setVariable [QGVAR(speciesRules), [1, 0.4, 0.6, 1]];
+_agent setVariable [QGVAR(habitatWeights), [0, 0, 0, 0]];
+_agent setVariable [QGVAR(speciesEmit), [0.5, true]];
 
 [_id, _agent, [40], [0.6, 0.3, 0.5, 0.2], _callback, 2] call EFUNC(ai,agentRegister);
 

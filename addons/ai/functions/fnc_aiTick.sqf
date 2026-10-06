@@ -39,6 +39,14 @@ for "_i" from 0 to ((count _agents) - 1) do {
     private _playerDistance = 1e10;
     private _isObject = (_anchor isEqualType objNull);
 
+    // An ecology-driven animal is owned by the wildlife ecology tick, so the
+    // generic substrate does not drive it too.  The flag is absent until the
+    // ecology tick sets it, so existing callers are unchanged.
+    if (_isObject && {!isNull _anchor}) then {
+        private _ecology = _anchor getVariable [QGVAR(ecologyDriven), false];
+        if ((_ecology isEqualType true) && _ecology) then { continue; };
+    };
+
     if (_isObject && {!isNull _anchor}) then {
         _anchorPos = getPos _anchor;
     } else {

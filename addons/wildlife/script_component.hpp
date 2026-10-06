@@ -42,3 +42,12 @@
 
 // The spook threshold on the propagated level, 0 to 1.  UNSOURCED.
 #define WILDLIFE_SPOOK_ACOUSTIC_MIN 0.5
+
+// Cognition policy (tasks T16 and T17).  UNSOURCED modelling choices: the
+// count budget caps the animals visited per ecology tick; the call bus cap
+// and horizon mirror the disturbance field so the bus ages like the field.
+#define WILDLIFE_COGNITION_BATCH 8
+#define WILDLIFE_CALL_RANGE 200
+#define WILDLIFE_CALL_BUDGET 256
+#define WILDLIFE_CALL_HORIZON 120
+#define WILDLIFE_CALL_HALF_LIFE 45

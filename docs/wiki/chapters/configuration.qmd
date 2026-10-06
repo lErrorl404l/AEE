@@ -679,6 +679,11 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_wildlife_callBudget` | SLIDER | `256` | yes | wildlife | Cap on the heard calls the bus holds at once |
+| `aee_wildlife_callRange` | SLIDER | `200` | yes | wildlife | Distance over which an animal hears a conspecific call |
+| `aee_wildlife_cognitionBudgetMs` | SLIDER | `1.0` | yes | wildlife | Millisecond budget for one cognition tick before it re-queues |
+| `aee_wildlife_cognitionEnabled` | CHECKBOX | `false` | yes | wildlife | Run the budgeted perceive-think-act ecology over the animals |
+| `aee_wildlife_communicationEnabled` | CHECKBOX | `false` | yes | wildlife | Let an animal's call reach and move a nearby conspecific |
 | `aee_wildlife_herdSize` | SLIDER | `4` | yes | wildlife | Target number of animals of one species in a herd |
 | `aee_wildlife_hungerRate` | SLIDER | `0.02` | yes | wildlife | How fast an animal becomes hungry, per second |
 | `aee_wildlife_silenceDecay` | SLIDER | `0.05` | yes | wildlife | How strongly recent disturbance silences the ambient bed |

@@ -17,6 +17,46 @@
             <Original>Animals</Original>
             <English>Animals</English>
         </Key>
+        <Key ID="STR_AEE_Wildlife_callBudget_Description">
+            <Original>Cap on the heard calls the bus holds at once</Original>
+            <English>Cap on the heard calls the bus holds at once</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_callBudget_Name">
+            <Original>Call Bus Cap</Original>
+            <English>Call Bus Cap</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_callRange_Description">
+            <Original>Distance over which an animal hears a conspecific call</Original>
+            <English>Distance over which an animal hears a conspecific call</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_callRange_Name">
+            <Original>Call Range</Original>
+            <English>Call Range</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_cognitionBudgetMs_Description">
+            <Original>Millisecond budget for one cognition tick before it re-queues</Original>
+            <English>Millisecond budget for one cognition tick before it re-queues</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_cognitionBudgetMs_Name">
+            <Original>Cognition Budget (ms)</Original>
+            <English>Cognition Budget (ms)</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_cognitionEnabled_Description">
+            <Original>Run the budgeted perceive-think-act ecology over the animals</Original>
+            <English>Run the budgeted perceive-think-act ecology over the animals</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_cognitionEnabled_Name">
+            <Original>Cognition</Original>
+            <English>Cognition</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_communicationEnabled_Description">
+            <Original>Let an animal's call reach and move a nearby conspecific</Original>
+            <English>Let an animal's call reach and move a nearby conspecific</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_communicationEnabled_Name">
+            <Original>Communication</Original>
+            <English>Communication</English>
+        </Key>
         <Key ID="STR_AEE_Wildlife_density_Description">
             <Original>Multiplier on the animal density for the biome and terrain</Original>
             <English>Multiplier on the animal density for the biome and terrain</English>
