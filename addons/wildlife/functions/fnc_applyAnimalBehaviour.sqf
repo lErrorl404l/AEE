@@ -145,8 +145,19 @@ private _callback = {
             private _fearSound = _fearMedia select _index;
             // The emitter is the fleeing animal itself, so the fear call
             // tracks the animal as it runs.  Generic: whatever the fauna
-            // object is, the sound follows it.
-            [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE, _agent] call FUNC(playOneShot);
+            // object is, the sound follows it.  The pitch carries the seeded
+            // per-call jitter and the Doppler shift from the flee velocity.
+            private _radial = 0;
+            if (!isNull _unit) then {
+                private _toListener = (getPosASL _unit) vectorDiff (getPosASL _agent);
+                private _separation = vectorMagnitude _toListener;
+                if (_separation > 0.01) then {
+                    _radial = (velocity _agent) vectorDotProduct (_toListener vectorMultiply (1 / _separation));
+                };
+            };
+            private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+            private _callPitch = [round CBA_missionTime, _speciesGroup, _callTemp, _radial] call FUNC(callPitch);
+            [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE, _agent, _callPitch] call FUNC(playOneShot);
         };
         _recovery = 6;
     } else {

@@ -30,14 +30,15 @@ Returns:
 params [
     ["_source", "", [""]],
     ["_position", [0, 0, 0], [[]]],
-    ["_gain", 1, [0]]
+    ["_gain", 1, [0]],
+    ["_pitch", 1, [0]]
 ];
 
 if (!hasInterface) exitWith {};
 if (_source == "") exitWith {};
 
 if ((_source find ".") >= 0) then {
-    [_source, _position, _gain, WILDLIFE_SOUND_MAX_DISTANCE] call FUNC(playOneShot);
+    [_source, _position, _gain, WILDLIFE_SOUND_MAX_DISTANCE, objNull, _pitch] call FUNC(playOneShot);
 } else {
     // Recreate the looping source only on a key change.  The same key with a
     // live source leaves the bed running, so the class carries its own repeat.

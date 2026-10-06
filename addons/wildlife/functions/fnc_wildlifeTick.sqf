@@ -276,12 +276,16 @@ if (_spook) then {
 
 if (_ambient) then {
     private _seed = round (_now * 100);
+    // The call pitch carries the seeded jitter, the temperature (cricket
+    // stridulation) and, for a moving source, the Doppler shift.
+    private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
     if (_gain > 0.01) then {
         // A deterministic weighted draw over every row with the bed key, so
         // a multi-file context varies instead of playing only its first row.
         private _source = [_manifest, _bedKey, _seed] call FUNC(pickBedSource);
         if (_source != "") then {
-            [_source, _position, _gain] call FUNC(playAmbientBed);
+            private _bedPitch = [_seed, "", _callTemp, 0] call FUNC(callPitch);
+            [_source, _position, _gain, _bedPitch] call FUNC(playAmbientBed);
         };
     };
 
@@ -340,7 +344,10 @@ if (_ambient) then {
     if (_total > 0) then {
         for "_k" from 0 to (WILDLIFE_SOUND_INSTANCE_CAP - 1) do {
             private _emission = _emissions select ((_cursor + _k) mod _total);
-            [_emission select 1, _position, _emission select 2, WILDLIFE_SOUND_MAX_DISTANCE] call FUNC(playOneShot);
+            // The species call carries the seeded jitter and the temperature
+            // term; the ambient layer has no radial velocity, so no Doppler.
+            private _emissionPitch = [(_seed + _k), (_emission select 0), _callTemp, 0] call FUNC(callPitch);
+            [_emission select 1, _position, _emission select 2, WILDLIFE_SOUND_MAX_DISTANCE, objNull, _emissionPitch] call FUNC(playOneShot);
         };
         _cursor = (_cursor + WILDLIFE_SOUND_INSTANCE_CAP) mod _total;
     };
