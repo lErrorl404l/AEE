@@ -1,0 +1,73 @@
+[
+  {
+    "id": "INV-1",
+    "name": "illuminance_chain",
+    "producers": [
+      ["core", "aee_core_illuminanceLux"],
+      ["optics", "aee_optics_eyeAdaptedLux"],
+      ["optics", "aee_optics_eyeAperture"]
+    ],
+    "predicate": "aperture_matches_lux",
+    "tolerance": 0.5,
+    "severity": "warn",
+    "grade": "derived",
+    "note": "The adapted luminance tracks the scene illuminance and the eye aperture lies on the supplied lux-to-aperture line. Tolerance is a relative fraction."
+  },
+  {
+    "id": "INV-2",
+    "name": "thermal_ground_chain",
+    "producers": [
+      ["core", "aee_core_currentTemperature"],
+      ["thermal", "aee_thermal_groundNodeStack"],
+      ["core", "aee_core_groundSurfaceTemp"],
+      ["core", "aee_core_avgGroundTemp"]
+    ],
+    "predicate": "agree_within",
+    "tolerance": 15.0,
+    "severity": "warn",
+    "grade": "derived",
+    "note": "Air, ground-surface and average-ground temperatures agree within 15 C. aee_thermal_groundNodeStack is a HashMap; the harness supplies its surface layer."
+  },
+  {
+    "id": "INV-3",
+    "name": "wind_scent_turbulence",
+    "producers": [
+      ["core", "aee_core_currentWindStr"],
+      ["environmental", "aee_environmental_scentDispersionIntensity"],
+      ["core", "aee_core_currentTurbulence"]
+    ],
+    "predicate": "monotone_with_wind",
+    "tolerance": 0.05,
+    "severity": "warn",
+    "grade": "derived",
+    "note": "A stronger wind raises or holds the scent dispersion and the turbulence. The harness supplies the prior sample as the reference."
+  },
+  {
+    "id": "INV-4",
+    "name": "body_temperature",
+    "producers": [
+      ["thermal", "aee_thermal_humanCoreTempC"],
+      ["core", "aee_core_coreBodyTemp"]
+    ],
+    "predicate": "agree_within",
+    "tolerance": 2.0,
+    "severity": "warn",
+    "grade": "derived",
+    "note": "The thermal two-node human core temperature and the core physiology heat balance agree within 2 C. The physiology coefficients are UNSOURCED."
+  },
+  {
+    "id": "INV-5",
+    "name": "solar_sky_eye",
+    "producers": [
+      ["core", "aee_core_currentSunElevation"],
+      ["thermal", "aee_thermal_skyBandTempC"],
+      ["core", "aee_core_lightIsNight"],
+      ["environmental", "aee_environmental_nightClassification"]
+    ],
+    "predicate": "daynight_consistent",
+    "tolerance": 1.0,
+    "severity": "warn",
+    "grade": "derived",
+    "note": "The night flag and the DEF Stan 61-027 night classification agree with the sun elevation. Tolerance is the twilight margin in degrees."
+  }
+]
