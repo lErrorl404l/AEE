@@ -170,5 +170,57 @@ class TestGnssFixStateSourceContract(unittest.TestCase):
         self.assertIn("per-constant register", src)
 
 
+class TestDatalinkState(unittest.TestCase):
+    def test_near_clear_link_is_received(self):
+        state, interval, track_age, error = datalink(1000.0)
+        self.assertEqual(state, "received")
+        self.assertGreater(interval, 0)
+        self.assertLess(track_age, 1.0)
+        self.assertLess(error, 5.0)
+        self.assertIn(state, ("received", "lost"))
+
+    def test_far_blocked_link_is_lost_and_ages(self):
+        near = datalink(1000.0)
+        far = datalink(12000.0, terrain=0.8, urban=0.5, jammer=0.0)
+        self.assertEqual(near[0], "received")
+        self.assertEqual(far[0], "lost")
+        self.assertEqual(far[1], 0)
+        self.assertGreater(far[2], near[2])
+        self.assertGreater(far[3], near[3])
+
+    def test_track_age_rises_with_distance(self):
+        ages = [datalink(d)[2] for d in (1000.0, 4000.0, 8000.0, 16000.0)]
+        for a, b in zip(ages, ages[1:]):
+            self.assertLessEqual(a, b)
+        self.assertLess(ages[0], ages[-1])
+
+    def test_bandwidth_shortens_the_update_interval(self):
+        slow = datalink(2000.0, bandwidth=50.0)
+        fast = datalink(2000.0, bandwidth=400.0)
+        self.assertEqual(slow[0], "received")
+        self.assertEqual(fast[0], "received")
+        self.assertGreater(slow[1], fast[1])
+
+
+class TestDatalinkStateSourceContract(unittest.TestCase):
+    def test_preps_registration(self):
+        prep = PREP.read_text(encoding="utf-8")
+        self.assertIn("PREPS(geo,datalinkState)", prep)
+
+    def test_header_records_the_friis_shape_and_the_unsourced_shapes(self):
+        src = DATALINK.read_text(encoding="utf-8")
+        self.assertIn("Friis", src)
+        self.assertIn("fnc_calculateRadioPropagation", src)
+        self.assertIn("UNSOURCED", src)
+        self.assertIn("per-constant register", src)
+
+    def test_kernel_has_no_runtime_radio_dependency(self):
+        # A pure kernel must not call the radio module or read mission state.
+        src = DATALINK.read_text(encoding="utf-8")
+        self.assertNotIn("call FUNC(", src)
+        self.assertNotIn("call EFUNC(", src)
+        self.assertNotIn("missionNamespace", src)
+
+
 if __name__ == "__main__":
     unittest.main()
