@@ -93,9 +93,13 @@ Arguments:
   1: _background (NUMBER) local background band radiance, W/m2/sr, > 0
   2: _threshold  (NUMBER) sensor-derived minimum resolvable contrast, 0..1
                  (default: the uncooled 0.05 C reference, 0.004349)
+  3: _noise      (NUMBER) range-derived sensor noise floor, 0..1 (default 0)
 
 Return Value: ARRAY [edge (BOOL), contrast (NUMBER)].  The contrast is 0..1.
 On an unusable input the kernel returns the refusal [false, -1].
+The caller raises the threshold by the sensor noise floor from
+fnc_calculateThermalNoise, which grows with the sensor-to-target range; the
+range is never read from the engine.
 Example: [52.4, 41.0] call aee_thermal_fnc_evaluateThermalEdge
 Public: No
 */
@@ -103,7 +107,8 @@ Public: No
 params [
     ["_signal", 0, [0]],
     ["_background", 0, [0]],
-    ["_threshold", 0.004349, [0]]
+    ["_threshold", 0.004349, [0]],
+    ["_noise", 0, [0]]
 ];
 
 // A non-Number must not reach the arithmetic.  The typed params entries
@@ -112,12 +117,14 @@ params [
 if !(_signal isEqualType 0) exitWith { [false, -1] };
 if !(_background isEqualType 0) exitWith { [false, -1] };
 if !(_threshold isEqualType 0) exitWith { [false, -1] };
+if !(_noise isEqualType 0) exitWith { [false, -1] };
 
 // A non-finite input poisons the contrast.  SQF NaN compares false against
 // everything, so max/min cannot clamp it out; refuse before the arithmetic.
 if !(finite _signal) exitWith { [false, -1] };
 if !(finite _background) exitWith { [false, -1] };
 if !(finite _threshold) exitWith { [false, -1] };
+if !(finite _noise) exitWith { [false, -1] };
 
 // The background is the divisor.  A zero or negative background has no
 // contrast to resolve, so it is refused rather than divided by.
@@ -137,7 +144,7 @@ if !(finite _contrast) exitWith { [false, -1] };
 // not a floor, because a band floor would hide the per-device sensitivity
 // and make every device equally blind.  The band floor is deliberately NOT
 // applied here.
-private _thresholdClamped = _threshold max 0 min 1;
+private _thresholdClamped = (_threshold + _noise) max 0 min 1;
 
 private _edge = _contrast >= _thresholdClamped;
 

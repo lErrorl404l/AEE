@@ -220,5 +220,51 @@ class TestSourceWiring(unittest.TestCase):
         self.assertIn("_pos distance _source", code)
 
 
+class TestCrossoverSurfaceStack(unittest.TestCase):
+    """The crossover surface temperature comes from the ground node stack.
+
+    The kernel takes the FIRST LAYER of fnc_calculateGroundNodeStack, so for
+    any fixed non-empty stack the crossover surface equals layer 0.  The
+    ground-state switch survives only as the empty-stack fallback.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(_sqf("fnc_calculateThermalCrossover.sqf"))
+
+    def test_reads_the_ground_node_stack_once(self):
+        # One call per tick: the stack is time-integrated.
+        self.assertEqual(self.code.count("FUNC(calculateGroundNodeStack)"), 1)
+
+    def test_surface_temperature_is_the_first_layer(self):
+        # For a fixed synthetic stack [t1, t2, t3, t4, tBot, now] the
+        # crossover surface temperature is t1.
+        self.assertIn("_surfaceTemp = _stack select 0;", self.code)
+        self.assertNotIn("_stack select 1", self.code)
+        self.assertNotIn("_stack select 2", self.code)
+
+    def test_fallback_switch_is_guarded_by_an_empty_stack(self):
+        self.assertIn("if (_stack isEqualTo []) then {", self.code)
+        # The fallback names every old ground state, but only inside the guard.
+        guard_at = self.code.index("if (_stack isEqualTo []) then {")
+        default_at = self.code.index(
+            "default        { _airTemp + 2 * (1 - _overcast) }"
+        )
+        self.assertLess(guard_at, default_at)
+
+    def test_resolves_position_like_the_node_stack(self):
+        self.assertIn("getPosASL _unit", self.code)
+        self.assertIn("_pos = [0, 0, 0];", self.code)
+
+    def test_keeps_the_surface_temperature_publish(self):
+        # fnc_calculatePrecipitationPhase reads this.
+        self.assertIn("EGVAR(core,surfaceTemperature)", self.code)
+
+    def test_keeps_the_twilight_gate_and_timer(self):
+        self.assertIn("_inTwilight && _delta <= 1.5", self.code)
+        self.assertIn("_timer = _timer + 1;", self.code)
+        self.assertIn("_timer = _timer - 1;", self.code)
+
+
 if __name__ == "__main__":
     unittest.main()

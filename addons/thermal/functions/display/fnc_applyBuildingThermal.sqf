@@ -241,6 +241,9 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
         // vehicle heat reaches this part's skin.
         private _matClass = [_obj, _selName] call FUNC(getSelectionMaterials);
         private _matDef = _matClass call FUNC(getMaterialThermal);
+        // The surface emissivity (and its wet blend) is resolved in the
+        // delegated FUNC(applySelectionThermal) call below, which is the one
+        // emission/reflection path for every building selection.
         private _k = _matDef select 4;
         if !(_k isEqualType 0) then { _k = 0; };
 

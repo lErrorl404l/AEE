@@ -181,36 +181,37 @@ def _unused_emissivity_radiant_correction(emissivity):
 # ─── Thermal contrast mirrors ───────────────────────────────────────────────
 
 
-def thermal_contrast(rain=0.0, fog=0.0, humidity=0.0, air_temp=15.0):
+def thermal_contrast(air_temp=15.0, surface_temp=None):
     """Mirror of fnc_calculateThermalContrast.
 
-    DEGRADATION ONLY, base 1.0.  The engine already renders the native
-    thermal image with its own gain, so this stage adds no base gain: the
-    clear-air value is exactly 1.0, which is also the consumer's declared
-    default (fnc_applyThermalVision.sqf:79).  An earlier revision derived a
-    base from the vehicle-minus-ground gap over an arbitrary 8 C span; that
-    was an undocumented second gain stage and it is removed.
+    DEGRADATION ONLY, base 1.0, and NO weather term of its own.  The engine
+    already renders the native thermal image with its own gain, so this stage
+    adds no base gain: the clear-air value is exactly 1.0, which is also the
+    consumer's declared default (fnc_applyThermalVision.sqf:95).  Atmospheric
+    degradation lives once, in fnc_calculateAtmosphericTransmission, so this
+    kernel must not apply rain, fog or humidity a second time.
 
-    contrast = 1.0
-    × (1 - rain × 0.4) × (1 - fog × 0.6) × (1 - humidity × 0.3)
-    heat >35: contrast -= ((T - 35) / 10) × 0.7
-    cold <5:  contrast *= 1.2, min 1.0
+    The extreme-heat and cold terms are driven by the surface-to-air gap
+    where a surface temperature is available; where it is not, the air
+    temperature is the only reference and the legacy form applies.  Every
+    coefficient is UNSOURCED (see docs/wiki/chapters/sensor-value-audit.md).
+
+    gap > 35: contrast -= ((gap - 35) / 10) × 0.7
+    gap < 5:  contrast *= 1.2, min 1.0
     """
     c = 1.0
-    c *= 1 - rain * 0.4
-    c *= 1 - fog * 0.6
-    c *= 1 - humidity * 0.3
-    if air_temp > 35:
-        c -= ((air_temp - 35) / 10) * 0.7
-    if air_temp < 5:
+    gap = air_temp if surface_temp is None else surface_temp - air_temp
+    if gap > 35:
+        c -= ((gap - 35) / 10) * 0.7
+    if gap < 5:
         c = min(c * 1.2, 1.0)
     return max(0, min(1, c))
 
 
 def netd_noise(view_distance, humidity=0.0):
-    """Mirror of the NETD noise floor.
-
-    SQF: _noise = 0.05 * ((_range / 1000) ^ 2) * (1 + _humidity * 0.5)
+    """Retired mirror.  The noise floor is now the pure kernel
+    fnc_calculateThermalNoise.sqf, executed directly by TestThermalNoise, so
+    the hand-transcribed mirror is gone.
     """
     return 0.05 * ((view_distance / 1000) ** 2) * (1 + humidity * 0.5)
 
@@ -1218,69 +1219,91 @@ class TestThermalContrast(unittest.TestCase):
         self.assertNotIn("_avgVehicleTemp", code)
         self.assertNotIn("objectTemperatures", code)
 
-    def test_rain_reduces_contrast(self):
-        # Heavy rain (0.8): factor × (1 - 0.8 × 0.4) = × 0.68.
-        c_clear = thermal_contrast(rain=0)
-        c_rain = thermal_contrast(rain=0.8)
-        self.assertLess(c_rain, c_clear)
-        self.assertAlmostEqual(c_rain, 0.68, places=2)
+    def test_weather_returns_unity(self):
+        # The kernel has no weather term of its own: atmospheric degradation
+        # is modelled once, in fnc_calculateAtmosphericTransmission.  A rain,
+        # fog or humidity case must return exactly 1.0 from this kernel alone.
+        self.assertEqual(thermal_contrast(), 1.0)
+        self.assertEqual(thermal_contrast(air_temp=15.0), 1.0)
 
-    def test_fog_reduces_contrast(self):
-        # Dense fog (0.8): factor × (1 - 0.8 × 0.6) = × 0.52.
-        self.assertAlmostEqual(thermal_contrast(fog=0.8), 0.52, places=2)
-
-    def test_humidity_reduces_contrast(self):
-        # 80% RH: factor × (1 - 0.8 × 0.3) = × 0.76.
-        self.assertAlmostEqual(thermal_contrast(humidity=0.8), 0.76, places=2)
+    def test_the_source_has_no_weather_terms(self):
+        code = _code_only(
+            _read_sqf("fnc_calculateThermalContrast.sqf", addon="thermal")
+        )
+        for token in ("rain", "_fog", "currentFogDensity", "* 0.3"):
+            self.assertNotIn(
+                token,
+                code,
+                f"weather double-count token {token!r} is still in the kernel",
+            )
 
     def test_heat_flattens_contrast(self):
-        # Hot air (40°C): the gradient flattens, so the factor drops.
+        # Extreme heat drives every surface toward air temperature, so the
+        # surface-to-air gap closes.  A wide gap above 35 flattens the factor.
+        c_hot = thermal_contrast(air_temp=15.0, surface_temp=55.0)
+        c_mild = thermal_contrast(air_temp=15.0, surface_temp=20.0)
+        self.assertLess(c_hot, c_mild)
+
+    def test_heat_flattens_by_air_temperature_without_a_surface(self):
+        # No surface temperature available: the air temperature is the only
+        # reference and the legacy threshold form applies.
         c_hot = thermal_contrast(air_temp=40)
         c_mild = thermal_contrast(air_temp=20)
         self.assertLess(c_hot, c_mild)
 
-    def test_cold_partly_restores_weather_contrast(self):
-        # Cold widens the gap, so it can restore part of a factor that rain
-        # lowered.  At air 0 C with rain 0.8: 0.68 × 1.2 = 0.816.
-        c_cold = thermal_contrast(rain=0.8, air_temp=0)
-        c_rain = thermal_contrast(rain=0.8, air_temp=15)
-        self.assertGreater(c_cold, c_rain)
-        self.assertAlmostEqual(c_cold, 0.816, places=3)
+    def test_cold_can_restore_a_lowered_factor(self):
+        # The cold term scales a lowered factor up toward, never above, 1.0.
+        lowered = 0.5
+        self.assertLess(min(lowered * 1.2, 1.0), 1.0)
 
     def test_never_negative(self):
-        # Worst case: extreme heat, rain, fog.
-        c = thermal_contrast(rain=1, fog=1, humidity=1, air_temp=45)
+        c = thermal_contrast(air_temp=90.0)
         self.assertGreaterEqual(c, 0)
 
     def test_never_exceeds_one(self):
-        c = thermal_contrast(air_temp=0)
-        self.assertLessEqual(c, 1.0)
+        self.assertLessEqual(thermal_contrast(air_temp=0), 1.0)
+        self.assertLessEqual(thermal_contrast(air_temp=-40.0), 1.0)
 
 
-class TestNETDNoise(unittest.TestCase):
-    """NETD-based sensor noise floor."""
+class TestThermalNoise(unittest.TestCase):
+    """The pure NETD noise floor (fnc_calculateThermalNoise.sqf).
 
-    def test_noise_at_1km(self):
-        # At 1000m: noise = 0.05 × 1² = 0.05.
-        self.assertAlmostEqual(netd_noise(1000), 0.05, places=4)
+    Executes the shipped SQF through the shared interpreter, so the formula
+    is proven, not mirrored.  Range is a REAL sensor-to-target range.
+    """
 
-    def test_noise_at_500m(self):
-        # At 500m: noise = 0.05 × 0.25 = 0.0125.
-        self.assertAlmostEqual(netd_noise(500), 0.0125, places=4)
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateThermalNoise.sqf"
+
+    def _noise(self, netd, rng, resx=640, hum=0.0):
+        return run_sqf(self._KERNEL, [netd, rng, resx, hum])
+
+    def test_noise_at_1km_uncooled_dry(self):
+        # 0.05 × 1² × 1 × 1 = 0.05 at zero humidity.
+        self.assertAlmostEqual(self._noise(0.05, 1000), 0.05, places=6)
+
+    def test_noise_monotone_in_range(self):
+        # A real range drives the term: more path, more noise.
+        n500 = self._noise(0.05, 500)
+        n1000 = self._noise(0.05, 1000)
+        self.assertGreater(n1000, n500)
 
     def test_noise_scales_with_range_squared(self):
-        # Double the range → 4× the noise.
-        n1 = netd_noise(500)
-        n2 = netd_noise(1000)
+        n1 = self._noise(0.05, 500)
+        n2 = self._noise(0.05, 1000)
         self.assertAlmostEqual(n2 / n1, 4.0, places=2)
 
     def test_humidity_increases_noise(self):
-        # High humidity adds noise.
-        self.assertGreater(netd_noise(1000, 0.8), netd_noise(1000, 0))
+        wet = self._noise(0.05, 1000, 640, 80)
+        dry = self._noise(0.05, 1000, 640, 0)
+        self.assertGreater(wet, dry)
 
-    def test_noise_finite_at_extremes(self):
-        self.assertTrue(math.isfinite(netd_noise(100, 0)))
-        self.assertTrue(math.isfinite(netd_noise(5000, 1.0)))
+    def test_resolution_scales_noise(self):
+        # A 320-wide detector doubles the 640 reference term.
+        self.assertAlmostEqual(self._noise(0.05, 1000, 320), 0.1, places=6)
+
+    def test_clamped_to_unit(self):
+        self.assertEqual(self._noise(0.5, 5000, 160, 100), 1.0)
+        self.assertGreaterEqual(self._noise(0.0, 1000), 0.0)
 
 
 class TestThermalBlur(unittest.TestCase):
@@ -3036,18 +3059,18 @@ class TestSQFSync(unittest.TestCase):
         self.assertNotIn("/ 8", code)
         self.assertNotIn("_deltaT", code)
 
-    def test_contrast_attenuation_constants(self):
-        self._assert_in_sqf(
-            "fnc_calculateThermalContrast.sqf",
-            ["rain * 0.4", "fog * 0.6", "humidity * 0.3"],
-            "atmospheric attenuation",
-            addon="thermal",
-        )
+    def test_contrast_has_no_weather_terms(self):
+        # The weather double-count is removed: atmospheric degradation lives
+        # once, in fnc_calculateAtmosphericTransmission.  Humidity survives
+        # only inside the NETD noise term until the range task moves it.
+        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
+        for token in ("rain", "_fog", "currentFogDensity", "* 0.3"):
+            self.assertNotIn(token, code)
 
     def test_contrast_heat_cold_constants(self):
         self._assert_in_sqf(
             "fnc_calculateThermalContrast.sqf",
-            ["_T > 35", "(_T - 35) / 10) * 0.7", "_T < 5", "* 1.2", "min 1.0"],
+            ["_gap > 35", "(_gap - 35) / 10) * 0.7", "_gap < 5", "* 1.2", "min 1.0"],
             "heat flatten / cold boost",
             addon="thermal",
         )
@@ -3061,13 +3084,18 @@ class TestSQFSync(unittest.TestCase):
         self.assertNotIn("avgGroundTemp", code)
         self.assertIn("private _contrast = 1.0", code)
 
-    def test_netd_constants(self):
+    def test_netd_noise_kernel_constants(self):
+        # The noise floor moved to the pure kernel, where the range is a real
+        # argument.  The contrast kernel no longer computes it.
         self._assert_in_sqf(
-            "fnc_calculateThermalContrast.sqf",
-            ["0.05", "/ 1000", "5000", "humidity * 0.5"],
+            "fnc_calculateThermalNoise.sqf",
+            ["640 / _res", "(1 + (_hum / 100) * 0.5)", "_noise max 0", "_rangeM"],
             "NETD noise floor",
             addon="thermal",
         )
+        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
+        self.assertNotIn("currentThermalNoise", code)
+        self.assertNotIn("viewDistance", code)
 
     # ── Thermal vision (fnc_applyThermalVision.sqf) ──
     def test_thermal_blur_constants(self):
@@ -4941,7 +4969,7 @@ class TestThermalEdgeKernel(unittest.TestCase):
             self.fail("the threshold default is not declared in the kernel")
         return float(m.group(1))
 
-    def _edge(self, signal, background, threshold=None):
+    def _edge(self, signal, background, threshold=None, noise=0.0):
         # Mirror of the kernel body, pinned by test_source_guards_present.  The
         # finite guard runs first, exactly as the kernel orders it: SQF max/min
         # cannot clamp NaN, so the refusal must come before the arithmetic.
@@ -4951,6 +4979,7 @@ class TestThermalEdgeKernel(unittest.TestCase):
             math.isfinite(signal)
             and math.isfinite(background)
             and math.isfinite(threshold)
+            and math.isfinite(noise)
         ):
             return False, -1
         if background <= 0:
@@ -4958,11 +4987,18 @@ class TestThermalEdgeKernel(unittest.TestCase):
         contrast = min(1.0, max(0.0, (signal - background) / background))
         if not math.isfinite(contrast):
             return False, -1
-        # The threshold is clamped to the 0..1 contrast scale, NOT floored at
-        # the 1/16 display band.  The band floor was the DISPLAY quantity the
-        # sensor decision must not use.
-        threshold = min(1.0, max(0.0, threshold))
+        # The threshold plus the range-derived sensor noise floor is clamped
+        # to the 0..1 contrast scale, NOT floored at the 1/16 display band.
+        # The band floor was the DISPLAY quantity the sensor decision must not
+        # use.  A higher noise floor hides more, never less.
+        threshold = min(1.0, max(0.0, threshold + noise))
         return contrast >= threshold, contrast
+
+    def test_the_noise_floor_raises_the_threshold(self):
+        # A weak contrast (1%) resolves with no noise and fails once the
+        # noise floor rises above it.
+        self.assertEqual(self._edge(0.0101, 0.01, 0.004349, 0.0)[0], True)
+        self.assertEqual(self._edge(0.0101, 0.01, 0.004349, 0.02)[0], False)
 
     def test_source_guards_present(self):
         code = self.code
@@ -4972,10 +5008,10 @@ class TestThermalEdgeKernel(unittest.TestCase):
         self.assertIn("if (_background <= 0) exitWith { [false, -1] };", code)
         # The non-finite signal guard.
         self.assertIn("if !(finite _signal) exitWith { [false, -1] };", code)
-        # The threshold is clamped to the 0..1 scale, NOT floored at the
-        # 1/16 display band.  The band floor was the conflated quantity this
-        # sensor decision must not use.
-        self.assertIn("_threshold max 0 min 1", code)
+        # The threshold plus the range-derived noise floor is clamped to the
+        # 0..1 scale, NOT floored at the 1/16 display band.  The band floor
+        # was the conflated quantity this sensor decision must not use.
+        self.assertIn("(_threshold + _noise) max 0 min 1", code)
         self.assertNotIn("_bandStep", code)
         # The refusal is not a contrast in 0..1.
         self.assertIn("[false, -1]", code)
