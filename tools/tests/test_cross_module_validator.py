@@ -120,5 +120,59 @@ class TestDirectAssignmentDeclaration(_Tree):
         self.assertNotIn("alpha", v.scan_declarations().get("state", set()))
 
 
+class TestXehDeclarationCoverage(_Tree):
+    """The addon-root XEH_*.sqf files declare module state.
+
+    ballistics publishes QGVAR(supersonicTrace) from XEH_postInit.sqf and fx
+    publishes the same bare leaf.  A declaration scan limited to the functions
+    tree saw only fx, so ballistics' own read was flagged as a scope bug.
+    """
+
+    def _write_xeh(self, addon: str, name: str, body: str) -> None:
+        target = self.root / "addons" / addon
+        target.mkdir(parents=True, exist_ok=True)
+        (target / name).write_text(body, encoding="utf-8")
+
+    def test_xeh_postinit_declaration_is_an_owner(self):
+        self._write_xeh(
+            "ballistics",
+            "XEH_postInit.sqf",
+            "missionNamespace setVariable [QGVAR(trace), 1];\n",
+        )
+        _write(
+            self.root,
+            "ballistics",
+            "fnc_dump.sqf",
+            "private _t = missionNamespace getVariable [QGVAR(trace), 0];\n",
+        )
+        _write(
+            self.root,
+            "fx",
+            "fnc_render.sqf",
+            "missionNamespace setVariable [QGVAR(trace), 2];\n",
+        )
+        self.assertIn("ballistics", v.scan_declarations().get("trace", set()))
+        rc, out = self._main()
+        self.assertEqual(rc, 0, out)
+        self.assertIn("clean", out)
+
+    def test_xeh_coverage_does_not_hide_a_foreign_read(self):
+        """A real cross-module read is still flagged when only another owns it."""
+        self._write_xeh(
+            "beta",
+            "XEH_postInit.sqf",
+            "missionNamespace setVariable [QGVAR(shared), 1];\n",
+        )
+        _write(
+            self.root,
+            "alpha",
+            "fnc_a.sqf",
+            "private _s = missionNamespace getVariable [QGVAR(shared), 0];\n",
+        )
+        rc, out = self._main()
+        self.assertEqual(rc, 1, out)
+        self.assertIn("alpha: QGVAR(shared)", out)
+
+
 if __name__ == "__main__":
     unittest.main()
