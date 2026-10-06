@@ -166,6 +166,11 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Ballistics"): {"aee_ballistics_logDebug"},
     ("AEE Debug", "Armour"): {"aee_armour_penetrationDebug", "aee_armour_logDebug"},
     ("AEE Debug", "Optics"): {"aee_optics_logDebug"},
+    ("AEE Debug", "Perception"): {
+        "aee_optics_perceptionHud",
+        "aee_optics_perceptionInterval",
+        "aee_optics_perceptionMonitor",
+    },
     ("AEE Debug", "Night Vision"): {"aee_nightvision_logDebug"},
     ("AEE Debug", "Mobility"): {"aee_mobility_logDebug"},
     ("AEE Debug", "Maritime"): {"aee_maritime_logDebug"},
@@ -183,7 +188,7 @@ EXPECTED_DEBUG = {
 
 
 class TestDebugTaxonomy(unittest.TestCase):
-    """AEE Debug holds exactly the 27 diagnostic switches, by component."""
+    """AEE Debug holds exactly the diagnostic switches, by component."""
 
     def test_debug_groups_are_exact(self):
         groups = taxonomy_groups({"AEE Debug"})
