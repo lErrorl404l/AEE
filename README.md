@@ -115,13 +115,15 @@ Event FX (lightning, dust, sound) vary cosmetically per machine.
 
 ## Limitations
 
-The environment model is a physical layer over the engine, not a replacement for it. Four limits follow from that.
+The environment model is a physical layer over the engine, not a replacement for it. Five limits follow from that.
 
 **Projectile trajectory.** The engine reads `CfgAmmo airFriction` and `CfgAmmo coefGravity` when it creates a projectile. No script command changes either value after firing. Therefore air density and wind do not change the engine's projectile path. AEE corrects the muzzle velocity from propellant temperature, computes a real drag kernel at the muzzle, and hands per-projectile drag to ACE3 advanced ballistics when that mod is present. A bullet that flies under air density alone needs a solver that owns the projectile, which AEE does not ship.
 
 **Engine power.** A ground vehicle's power band is PhysX configuration. The engine exposes no command to change it at run time, so a static configuration value cannot carry an environment-dependent derate.
 
 **Ground and sky.** The engine has no sub-surface terrain model and no radiative sky interface. AEE emulates both from surface classification and published sky models, and labels them as emulation.
+
+**Thermal imaging.** The engine renders thermal from a per-object simulated temperature model. AEE drives the render heat keys and the AI infrared keys as load-time config, and generates the per-optic thermal arrays. Terrain, vegetation and rock heat are engine-baked, so only the existing second sun reaches them. The MWIR clear-air transmission has no sourced closed form, so AEE returns a clear-air transmission of 1 and states the ceiling. A headless probe cannot read pixels, so the rendered look is an operator-only observation.
 
 **Configuration overrides.** The `aee_mobility` addon overrides engine configuration at load. A configuration value cannot change at run time, so the PBO is the on-off switch: remove it to disable every override.
 

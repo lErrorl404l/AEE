@@ -26,6 +26,12 @@ engine-ceiling knowledge is not re-learned the hard way.
 | `"rt" setPiPEffect [3, ...]` | Render-to-texture with FULL custom colour-correction | Yes - the PIP track (#204 Track A) | NOT BUILT (fusion uses ppEffectForceInNVG instead) | Dossier section 4.2 |
 | `disableTIEquipment` | Kill TI capability | Yes - on/off | NOT BUILT | BI reference |
 | `getTIParameters` / `getVehicleTIPars` | Read-back | - | NOT USED (state tracked in AEE variables) | - |
+| Render heat keys `htMin`, `htMax`, `afMax`, `mfMax`, `mFact`, `tBody` | Per-object simulated temperature model (the StageTI channel coefficients) | Yes - object heat | IMPLEMENTED (load-time config in the single `CfgVehicles` block) | BIKI "Thermal Imaging Maps" oldid 155895; P91 config probe |
+| AI IR keys `irTarget`, `irTargetSize`, `irScanRangeMin`, `irScanRangeMax`, `irScanToEyeFactor`, `irScanGround` | AI infrared detection model | No - separate from the rendered image | IMPLEMENTED (load-time config) | Vanilla samples in the base config |
+| Per-optic `thermalMode[]`, `thermalNoise[]`, `thermalResolution[]` | Optic thermal palette, noise and resolution | Yes - optic thermal keys | IMPLEMENTED (generated `CfgWeapons` block) | Vanilla `optic_tws` mode `TWS`, `ItemInfo >> OpticsModes` |
+| `#lightreflector` with `setLightIR true` | Active-IR illuminator | Yes - an IR optic sees it, the eye does not | IMPLEMENTED (`fnc_startActiveIR`, setting-gated) | Mechanism UNSOURCED; workshop idea re-implemented |
+| `BettIR_Config` class | Declares AEE thermal optics compatible with BettIR | - | IMPLEMENTED (interop declaration) | Interop contract |
+| `visionMode[]` and `thermalMode[]` probe | Runtime native-thermal capability read | - | IMPLEMENTED (`fnc_probeThermalCapability`, pure) | Pure kernel, source-contract tested |
 
 ## The baked / immutable layers (the engine ceiling)
 
