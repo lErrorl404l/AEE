@@ -98,6 +98,21 @@ def _all_sqf() -> list[Path]:
     return result
 
 
+def _declaration_sqf() -> list[Path]:
+    """Every .sqf that can DECLARE module state: the functions tree plus the
+    addon-root XEH_*.sqf files.
+
+    The XEH files run at module load and publish state.  For example
+    ballistics' XEH_postInit.sqf sets QGVAR(supersonicTrace).  A declaration
+    scan that skipped those files left the module's own read of that name
+    flagged as a cross-module scope bug, because only the other module that
+    publishes the same bare leaf (fx) was visible."""
+    result = _all_sqf()
+    for xeh in ADDONS.glob("*/XEH_*.sqf"):
+        result.append(xeh)
+    return result
+
+
 def scan_declarations() -> dict[str, set[str]]:
     """name -> set of modules where it is DECLARED."""
     declared: dict[str, set[str]] = {}
@@ -109,7 +124,7 @@ def scan_declarations() -> dict[str, set[str]]:
     #    ONLY names appearing as the third element of the effect tuples
     #    are declarations - NOT every QGVAR in the file (a file that
     #    happens to also have setVariable [_store, _handle] somewhere).
-    for sqf in _all_sqf():
+    for sqf in _declaration_sqf():
         text = strip_comments(sqf.read_text(encoding="utf-8"))
         mod = module_of(sqf)
         # match ["EffectType", priority, QGVAR(store)] tuples
@@ -119,7 +134,7 @@ def scan_declarations() -> dict[str, set[str]]:
         ):
             add(m.group(1), mod)
     # 2. literal setVariable declarations (missionNamespace / uiNamespace)
-    for sqf in _all_sqf():
+    for sqf in _declaration_sqf():
         text = strip_comments(sqf.read_text(encoding="utf-8"))
         mod = module_of(sqf)
         for m in re.finditer(
@@ -178,7 +193,7 @@ def scan_declarations() -> dict[str, set[str]]:
     #    writing QEGVAR(optics,severeWeatherBlur) leaves optics' own
     #    QGVAR(severeWeatherBlur) read flagged as a false positive - the
     #    write INTO optics scope is exactly what makes it optics-owned.
-    for sqf in _all_sqf():
+    for sqf in _declaration_sqf():
         text = strip_comments(sqf.read_text(encoding="utf-8"))
         for m in re.finditer(
             r"(?:missionNamespace|uiNamespace)\s+setVariable\s*\[QEGVAR\((\w+),\s*(\w+)\)",
