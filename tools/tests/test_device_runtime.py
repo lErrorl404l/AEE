@@ -21,6 +21,9 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(Path(__file__).parent))
+
+from sqf_lite import run_sqf  # noqa: E402
 
 from tools.validation import device_catalogue as catalogue  # noqa: E402
 from tools.validation import gen_device_data as gen  # noqa: E402
@@ -545,7 +548,7 @@ class TestUnmatchedThermalFallback(unittest.TestCase):
         self.assertIn("if (_match isEqualTo []) exitWith { _fallback };", THERMAL)
 
     def test_a_missing_field_falls_back_per_field(self):
-        for field in ("_netd", "_resX", "_resY", "_refresh", "_weight"):
+        for field in ("_netd", "_resX", "_resY", "_refresh", "_weight", "_band"):
             self.assertIn(f"{field} = _fallback select", THERMAL)
 
     def test_the_cooled_enum_maps_to_the_numeric_contract(self):
@@ -565,15 +568,22 @@ class TestThermalCorpusParity(unittest.TestCase):
         raise AssertionError(f"no thermal row for {device_id}")
 
     def test_the_row_order_is_the_document_contract(self):
-        # [netd_c, resolution_x, resolution_y, refresh_hz, cooled, weight_kg]
+        # [netd_c, resolution_x, resolution_y, refresh_hz, cooled, weight_kg, band]
         self.assertEqual(
             self.thermal_values("catherine"),
-            [0.025, 1280, 1024, 50, "cooled", 7.9],
+            [0.025, 1280, 1024, 50, "cooled", 7.9, "lwir"],
         )
         self.assertEqual(
             self.thermal_values("flir_scout"),
-            [0.05, 640, 512, 30, "uncooled", 0.34],
+            [0.05, 640, 512, 30, "uncooled", 0.34, "lwir"],
         )
+
+    def test_the_band_is_per_device_and_can_be_mwir(self):
+        # A cooled MCT can be either band, so the band cannot be derived from
+        # the cooled flag.  Catherine-MP LW is cooled and LWIR; Sophie Ultima
+        # is cooled and MWIR.
+        self.assertEqual(self.thermal_values("catherine")[6], "lwir")
+        self.assertEqual(self.thermal_values("sophie_ultima")[6], "mwir")
 
     def test_every_thermal_value_this_release_holds_is_claimed(self):
         # Every thermal field this release holds is a claimed sourced figure.
@@ -595,6 +605,52 @@ class TestThermalCorpusParity(unittest.TestCase):
                         self.assertEqual(field.grade, "absent")
                     else:
                         self.assertEqual(field.grade, "claimed")
+
+
+class TestThermalBandResolver(unittest.TestCase):
+    """The band resolver kernel maps a band token to its edges (T1).
+
+    The kernel is executed from its real SQF, so a drift in the source
+    breaks the test.  It is pure and reads no config or corpus.
+    """
+
+    _KERNEL = (
+        REPO
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "solver"
+        / "fnc_resolveThermalBand.sqf"
+    )
+
+    def _resolve(self, token):
+        return run_sqf(self._KERNEL, [token])
+
+    def test_lwir_returns_the_8_to_14_um_pair(self):
+        self.assertEqual(self._resolve("lwir"), [8e-6, 14e-6])
+
+    def test_mwir_returns_the_3_to_5_um_pair(self):
+        self.assertEqual(self._resolve("mwir"), [3e-6, 5e-6])
+
+    def test_the_token_is_case_insensitive(self):
+        self.assertEqual(self._resolve("MWIR"), [3e-6, 5e-6])
+        self.assertEqual(self._resolve("Lwir"), [8e-6, 14e-6])
+
+    def test_an_unknown_token_returns_the_lwir_pair(self):
+        # LWIR is the sane default and the honest one.
+        self.assertEqual(self._resolve("nonsense"), [8e-6, 14e-6])
+        self.assertEqual(self._resolve(""), [8e-6, 14e-6])
+
+    def test_the_second_edge_is_the_longer_wavelength(self):
+        for token in ("lwir", "mwir"):
+            pair = self._resolve(token)
+            self.assertLess(pair[0], pair[1])
+
+    def test_the_kernel_is_prep_registered(self):
+        prep = (REPO / "addons" / "thermal" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PREPS(solver,resolveThermalBand);", prep)
 
 
 if __name__ == "__main__":
