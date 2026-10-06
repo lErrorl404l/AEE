@@ -22,6 +22,7 @@ import re
 import shutil
 import subprocess
 import sys
+import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -109,6 +110,13 @@ def main():
 
     print(f"raw_diag_allowlist: PASS ({len(sites)} allowlisted raw diag_log site(s))")
     return 0
+
+
+class TestRawDiagAllowlist(unittest.TestCase):
+    """The standalone scan, runnable through the unittest suite."""
+
+    def test_every_raw_diag_is_allowlisted(self):
+        self.assertEqual(main(), 0)
 
 
 if __name__ == "__main__":
