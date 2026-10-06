@@ -1215,5 +1215,96 @@ class TestCallReceiveSourceContracts(unittest.TestCase):
         self.assertIn("neutral relation does not decode", code)
 
 
+ECOLOGY_BUDGET = FUNCS / "fnc_ecologyBudget.sqf"
+ECOLOGY_TICK = FUNCS / "fnc_ecologyTick.sqf"
+
+
+class TestEcologyBudget(unittest.TestCase):
+    """fnc_ecologyBudget runs from the real SQF."""
+
+    def test_the_first_animal_is_always_allowed(self):
+        self.assertTrue(run_sqf(ECOLOGY_BUDGET, [0, 1, 1000, 0]))
+
+    def test_the_count_budget_stops_the_sweep(self):
+        self.assertTrue(run_sqf(ECOLOGY_BUDGET, [1, 2, 0, 100]))
+        self.assertFalse(run_sqf(ECOLOGY_BUDGET, [2, 2, 0, 100]))
+
+    def test_the_millisecond_budget_stops_the_sweep(self):
+        self.assertTrue(run_sqf(ECOLOGY_BUDGET, [1, 100, 0, 1]))
+        self.assertFalse(run_sqf(ECOLOGY_BUDGET, [1, 100, 5, 1]))
+
+    def test_a_zero_ms_budget_completes_over_several_calls(self):
+        # 40 agents, 0 ms budget: each call solves at least one, so no agent
+        # is skipped.
+        total = 40
+        solved = 0
+        calls = 0
+        while (solved < total) and (calls < 100):
+            processed = 0
+            while ((solved + processed) < total) and run_sqf(
+                ECOLOGY_BUDGET, [processed, total, 0, 0]
+            ):
+                processed += 1
+            solved += processed
+            calls += 1
+        self.assertEqual(solved, total)
+        self.assertGreater(calls, 1)
+
+    def test_same_inputs_are_deterministic(self):
+        self.assertEqual(
+            run_sqf(ECOLOGY_BUDGET, [1, 3, 0, 1]),
+            run_sqf(ECOLOGY_BUDGET, [1, 3, 0, 1]),
+        )
+
+
+class TestEcologyTickSourceContracts(unittest.TestCase):
+    def test_the_budget_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/",
+            "",
+            ECOLOGY_BUDGET.read_text(encoding="utf-8"),
+            flags=re.DOTALL,
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernels_are_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        for name in ("ecologyBudget", "ecologyTick"):
+            self.assertIn(f"PREP({name})", text, name)
+
+    def test_the_tick_requeues_the_remainder_at_the_front(self):
+        code = ECOLOGY_TICK.read_text(encoding="utf-8")
+        self.assertIn("_remainder = _pending select [_i]", code)
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(ecologyPending), _remainder]", code
+        )
+
+    def test_the_tick_runs_perceive_think_and_the_callback(self):
+        code = ECOLOGY_TICK.read_text(encoding="utf-8")
+        self.assertIn("call FUNC(wildlifePerceive)", code)
+        self.assertIn("call FUNC(wildlifeThink)", code)
+        self.assertIn("call _callback", code)
+
+    def test_the_tick_is_gated_on_cognition(self):
+        code = ECOLOGY_TICK.read_text(encoding="utf-8")
+        self.assertIn("QGVAR(cognitionEnabled)", code)
+        self.assertIn("setVariable [QEGVAR(ai,ecologyDriven), nil]", code)
+
+    def test_the_substrate_skips_an_ecology_driven_agent(self):
+        code = (ROOT / "addons" / "ai" / "functions" / "fnc_aiTick.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("QGVAR(ecologyDriven)", code)
+        self.assertIn("continue", code)
+
+    def test_the_callback_consumes_the_plan_and_the_call_kernels(self):
+        code = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("_plan", code)
+        self.assertIn("call FUNC(callEmit)", code)
+        self.assertIn("call FUNC(callReceive)", code)
+
+
 if __name__ == "__main__":
     unittest.main()

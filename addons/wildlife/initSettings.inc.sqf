@@ -33,6 +33,16 @@ AEE_SETTING_SLIDER(thirstRate,"AEE Wildlife","Behaviour",0.001,0.2,0.03,3);
 
 AEE_SETTING_SLIDER(herdSize,"AEE Wildlife","Behaviour",1,12,4,1);
 
+AEE_SETTING_CHECKBOX(cognitionEnabled,"AEE Wildlife","Behaviour",false);
+
+AEE_SETTING_SLIDER(cognitionBudgetMs,"AEE Wildlife","Behaviour",0,8,1.0,2);
+
+AEE_SETTING_CHECKBOX(communicationEnabled,"AEE Wildlife","Behaviour",false);
+
+AEE_SETTING_SLIDER(callRange,"AEE Wildlife","Behaviour",20,800,200,0);
+
+AEE_SETTING_SLIDER(callBudget,"AEE Wildlife","Behaviour",16,1024,256,0);
+
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Wildlife",false);
 
 AEE_SETTING_CHECKBOX(environmentDebug,"AEE Debug","Wildlife",false);
