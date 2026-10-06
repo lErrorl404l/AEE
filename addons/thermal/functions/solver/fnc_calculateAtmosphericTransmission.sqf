@@ -124,6 +124,13 @@ Arguments:
   3: _fogDensity  (NUMBER) engine fog density, 0..1
   4: _rainScalar  (NUMBER) engine rain scalar, 0..1
   5: _airDensity  (NUMBER) air density, kg/m^3, > 0
+  6: _bandToken   (STRING) "lwir" (default) or "mwir"
+
+The LWIR path is the Minkina and Klecha 2016 model and is unchanged.  The
+MWIR path is the declared ceiling: the clear-air extinction is zero, so the
+clear-air return is exactly 1, while the fog and rain linear terms stay.  No
+machine-readable sea-level 2-5 um band-averaged transmittance curve is held,
+so the MWIR clear-air extinction is UNSOURCED.
 
 Return Value: NUMBER, the path transmission in 0..1, or -1 when an input is
 unusable.
@@ -137,7 +144,10 @@ params [
     ["_tAirC", 15, [0]],
     ["_fogDensity", 0, [0]],
     ["_rainScalar", 0, [0]],
-    ["_airDensity", 1.225, [0]]
+    ["_airDensity", 1.225, [0]],
+    // The detector band.  The LWIR default keeps every existing caller
+    // bit-identical.  "mwir" selects the declared clear-air ceiling.
+    ["_bandToken", "lwir", [""]]
 ];
 
 // A non-Number must not reach the arithmetic.  The typed params entries
@@ -160,7 +170,9 @@ if !(finite _airDensity) exitWith { -1 };
 
 // A negative path has no meaning, and a non-positive density is not a gas.
 if (_rangeM < 0) exitWith { -1 };
+if (_rainScalar < 0) exitWith { -1 };
 if (_airDensity <= 0) exitWith { -1 };
+if !(_bandToken isEqualType "") exitWith { -1 };
 
 // A zero-length path crosses no air, so it absorbs nothing.
 if (_rangeM == 0) exitWith { 1 };
@@ -201,6 +213,19 @@ private _betaRef = _co2Km + _aForeign * _eRefTorr + _bSelf * _eRefTorr * _eRefTo
 // ─── Effective square-root coefficient and the linear fog/rain extinction ─
 private _alphaEff = _alphaRef * (_betaClean / _betaRef);
 private _betaExtraKm = _fogKm * _fogDensity + _rainKm * _rainScalar;
+
+// ─── Band-resolved clear-air extinction (T5) ──────────────────────────────
+// LWIR keeps the Minkina and Klecha 2016 square-root term unchanged.
+// MWIR is the declared ceiling: no machine-readable sea-level 2-5 um
+// band-averaged transmittance curve is held.  The NASA 1967 report covers
+// 35,000 ft slant paths from solar spectra, and the NASA 1965 report is a
+// model-parameter paper.  The clear-air extinction is therefore set to zero,
+// so the clear-air return is exactly 1, and the fog and rain linear terms
+// remain.  The MWIR clear-air extinction is UNSOURCED, and the dominant
+// absorbers it omits are H2O, CO2 at 4.3 um, N2O and CO.
+if ((toLower _bandToken) == "mwir") then {
+    _alphaEff = 0;
+};
 
 // ─── Transmission ─────────────────────────────────────────────────────────
 // Both path terms are clamped at the calibration distance, so a path shorter
