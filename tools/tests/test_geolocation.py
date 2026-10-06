@@ -1,40 +1,71 @@
 """Geolocation physics mirror (issue #179).
 
 Mirrors the single-world-geolocation source:
-  fnc_getWorldLocation.sqf   -> get_world_location()      [lat, lon, zone]
-  fnc_calculateSolarRadiation.sqf hour-angle term        -> solar_hour_angle()
-  fnc_calculateCompassDeviation.sqf longitude source     -> WMM lookup (already
-                                                            mirrored in test_maritime)
+  fnc_getGeoAnchor.sqf + fnc_buildGeoAnchor.sqf -> get_world_location()
+  fnc_calculateSolarRadiation.sqf hour-angle term -> solar_hour_angle()
+  fnc_calculateCompassDeviation.sqf longitude source -> WMM lookup (already
+                                                          mirrored in test_maritime)
 
-The BIS CfgWorlds latitude convention is INVERTED (positive = south).
-get_world_location() negates it so consumers see the true geographic
-sign (positive = north), matching the SQF implementation.
+The sourced geo anchor takes the world centre from mapArea[] when a usable
+box is present, else from the CfgWorlds latitude/longitude keys.  The BIS
+latitude convention is INVERTED (positive = south), so the fallback negates
+it and consumers see the true geographic sign (positive = north).
 """
 
 import unittest
+from pathlib import Path
 
-# Known CfgWorlds anchors (verified from installed configs, 2026-09-19).
+ROOT = Path(__file__).resolve().parents[2]
+
+# Known CfgWorlds anchors (re-read from the installed configs, 2026-10-06).
 # BIS CfgWorlds latitude: negative = north, positive = south.
+# map_area is the raw mapArea[] value when the world ships a box, else None.
+# mapArea order is [lonWest, latSouth, lonEast, latNorth] per BIS
+# fn_posDegtoWorld; Tanoa ships its box in the opposite order, so it is not a
+# usable box and Tanoa falls back to the keys.
+ALTIS_MAPAREA = [25.011957, 39.718452, 25.481527, 40.094578]
+TANOA_MAPAREA = [-20.267975, 174.00284, -20.135265, 174.14566]
+
 WORLD_ANCHORS = {
-    # name: (cfg_lat, cfg_lon, zone, true_lat_expected)
-    "Stratis": (-35.097, 16.482, 35, 35.097),
-    "Altis": (-35.152, 16.661, 35, 35.152),
-    "Tanoa": (17.698, 178.783, 60, -17.698),
-    "Kerama": (-26.0, 127.0, 31, 26.0),
-    "tem_kujari": (-12.0, 13.0, 33, 12.0),
+    # name: (cfg_lat, cfg_lon, zone, map_area, true_lat, lon)
+    "Stratis": (-35.097, 16.482, 35, None, 35.097, 16.482),
+    "Altis": (-35.152, 16.661, 35, ALTIS_MAPAREA, 39.906515, 25.246742),
+    "Tanoa": (17.698, 178.783, 60, TANOA_MAPAREA, -17.698, 178.783),
+    "Kerama": (-26.0, 127.0, 31, None, 26.0, 127.0),
+    "tem_kujari": (-12.0, 13.0, 33, None, 12.0, 13.0),
 }
 
 
-def get_world_location(cfg_lat, cfg_lon, cfg_zone):
-    """Mirror of fnc_getWorldLocation.sqf.
+def _usable_box(map_area):
+    """Mirror of the mapArea validity rule in fnc_buildGeoAnchor.sqf."""
+    if not map_area or len(map_area) != 4:
+        return False
+    lon_w, lat_s, lon_e, lat_n = map_area
+    return (
+        lon_w < lon_e
+        and lat_s < lat_n
+        and -180 <= lon_w
+        and lon_e <= 180
+        and -90 <= lat_s
+        and lat_n <= 90
+    )
 
-    Returns [latSignedTrue, magnitudeDeg, lonDeg, mapZone] with the BIS
-    inverted sign corrected: positive latitude = north.
+
+def get_world_location(cfg_lat, cfg_lon, cfg_zone, map_area=None):
+    """Mirror of fnc_getWorldLocation.sqf via FUNC(getGeoAnchor).
+
+    Returns [latSignedTrue, magnitudeDeg, lonDeg, mapZone].  The centre
+    comes from a usable mapArea box, else the sign-corrected CfgWorlds key.
     """
-    signed = -cfg_lat  # BIS: negative = north -> negate to true sign
+    if _usable_box(map_area):
+        signed = (map_area[1] + map_area[3]) / 2
+        lon = (map_area[0] + map_area[2]) / 2
+    else:
+        signed = -cfg_lat  # BIS: negative = north -> negate to true sign
+        lon = cfg_lon
     if signed == 0:
         signed = 40  # missing/zero latitude -> temperate default (SQF parity)
-    return [signed, abs(signed), cfg_lon, cfg_zone]
+    return [signed, abs(signed), lon, cfg_zone]
 
 
 def solar_hour_angle(hour, lon, zone):
@@ -51,8 +82,15 @@ class TestGetWorldLocation(unittest.TestCase):
     """The shared source must return the TRUE geographic sign."""
 
     def test_bis_inverted_sign_corrected(self):
-        for name, (cfg_lat, _, _, true_lat) in WORLD_ANCHORS.items():
-            loc = get_world_location(cfg_lat, 0, 0)
+        for name, (
+            cfg_lat,
+            cfg_lon,
+            zone,
+            map_area,
+            true_lat,
+            _,
+        ) in WORLD_ANCHORS.items():
+            loc = get_world_location(cfg_lat, cfg_lon, zone, map_area)
             self.assertAlmostEqual(loc[0], true_lat, places=3, msg=f"{name} true sign")
             self.assertAlmostEqual(
                 loc[1], abs(true_lat), places=3, msg=f"{name} magnitude"
@@ -61,12 +99,14 @@ class TestGetWorldLocation(unittest.TestCase):
     def test_northern_maps_positive(self):
         # Stratis, Altis, Kerama are northern -> positive after correction.
         for name in ("Stratis", "Altis", "Kerama"):
-            loc = get_world_location(*WORLD_ANCHORS[name][:3])
+            row = WORLD_ANCHORS[name]
+            loc = get_world_location(*row[:3], row[3])
             self.assertGreater(loc[0], 0, f"{name} should be north-positive")
 
     def test_southern_map_negative(self):
         # Tanoa is southern -> negative after correction.
-        loc = get_world_location(*WORLD_ANCHORS["Tanoa"][:3])
+        row = WORLD_ANCHORS["Tanoa"]
+        loc = get_world_location(*row[:3], row[3])
         self.assertLess(loc[0], 0, "Tanoa should be south-negative")
 
     def test_zero_falls_back_temperate(self):
@@ -74,6 +114,39 @@ class TestGetWorldLocation(unittest.TestCase):
         loc = get_world_location(0, 0, 0)
         self.assertEqual(loc[0], 40)
         self.assertEqual(loc[1], 40)
+
+    def test_stale_keys_not_used_when_maparea_present(self):
+        # Altis's latitude/longitude keys are stale (35.152 N, 16.661 E).
+        # With a usable mapArea box the anchor takes the box centre instead.
+        row = WORLD_ANCHORS["Altis"]
+        loc = get_world_location(*row[:3], row[3])
+        self.assertAlmostEqual(loc[0], 39.906515, places=3)
+        self.assertAlmostEqual(loc[2], 25.246742, places=3)
+        self.assertNotAlmostEqual(loc[2], 16.661, places=3)
+
+    def test_maparea_centre_is_the_anchor(self):
+        # The box centre maps to the anchor latitude and longitude.
+        row = WORLD_ANCHORS["Altis"]
+        loc = get_world_location(*row[:3], row[3])
+        self.assertAlmostEqual(loc[0], (39.718452 + 40.094578) / 2, places=6)
+        self.assertAlmostEqual(loc[2], (25.011957 + 25.481527) / 2, places=6)
+
+    def test_unusable_maparea_falls_back_to_keys(self):
+        # Tanoa ships mapArea in [lat,lon] order; read in the authoritative
+        # [lon,lat] order the latitude is ~174, so it falls back to the keys.
+        row = WORLD_ANCHORS["Tanoa"]
+        loc = get_world_location(*row[:3], row[3])
+        self.assertAlmostEqual(loc[0], -17.698, places=3)
+        self.assertAlmostEqual(loc[2], 178.783, places=3)
+
+
+class TestGeolocationSourceContract(unittest.TestCase):
+    def test_getworldlocation_uses_geo_anchor(self):
+        src = (
+            ROOT / "addons" / "core" / "functions" / "fnc_getWorldLocation.sqf"
+        ).read_text(encoding="utf-8")
+        # The call form, not the bare name in a comment, proves the migration.
+        self.assertIn("call FUNC(getGeoAnchor)", src)
 
 
 class TestSolarHourAngle(unittest.TestCase):

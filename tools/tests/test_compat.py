@@ -425,10 +425,14 @@ class TestWorldLatitudePattern(unittest.TestCase):
         text = Path("addons/core/functions/fnc_getWorldLocation.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn("CfgWorlds", text)
+        # The single location source reshapes the sourced geo anchor.
+        self.assertIn("FUNC(getGeoAnchor)", text)
         self.assertIn("[_signed, abs _signed, _lon, _zone]", text)
-        # The BIS inverted convention must be corrected here (negate).
-        self.assertIn("-getNumber", text)
+        # The BIS inverted convention is corrected in the anchor (negate).
+        builder = Path("addons/core/functions/geo/fnc_buildGeoAnchor.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("-_latitude", builder)
 
     def test_old_latitude_function_removed(self):
         from pathlib import Path
@@ -483,10 +487,8 @@ class TestWorldLatitudePattern(unittest.TestCase):
 
     def test_direct_latitude_read_confined_to_core_source(self):
         # #179: the direct CfgWorlds latitude read lives ONLY in the core
-        # location source, never in a consumer.  The sourced geo anchor
-        # (addons/core/functions/geo/) is the new source of truth; the legacy
-        # reader keeps its own read until the geolocation migration lands,
-        # after which only the geo anchor reader remains.
+        # location source, never in a consumer.  After the geolocation
+        # migration the sourced geo anchor is the single reader.
         from pathlib import Path
 
         hits = {
@@ -494,10 +496,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
             for fn in Path("addons").rglob("*.sqf")
             if '>> "latitude"' in fn.read_text(encoding="utf-8", errors="replace")
         }
-        allowed = {
-            Path("addons/core/functions/fnc_getWorldLocation.sqf"),
-            Path("addons/core/functions/geo/fnc_getGeoAnchor.sqf"),
-        }
+        allowed = {Path("addons/core/functions/geo/fnc_getGeoAnchor.sqf")}
         self.assertEqual(
             hits,
             allowed,
