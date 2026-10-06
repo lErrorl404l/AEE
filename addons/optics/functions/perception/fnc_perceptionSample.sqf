@@ -108,7 +108,11 @@ private _defaults = [
     [0, 0, 0, 0]
 ];
 
-_schema apply {
+// forEach, not apply: only forEach provides _forEachIndex in the engine.
+// apply sets _x alone, so an _forEachIndex read there is undefined at run
+// time even though the pure kernel harness accepts it.
+private _result = [];
+{
     private _key = _x;
     private _index = _forEachIndex;
     // First pair whose key matches.  -1 when the key is absent.
@@ -124,9 +128,10 @@ _schema apply {
             false
         }
     };
-    if (_found >= 0) then {
+    _result pushBack (if (_found >= 0) then {
         (_map select _found) select 1
     } else {
         _defaults select _index
-    }
-};
+    });
+} forEach _schema;
+_result
