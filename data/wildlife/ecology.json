@@ -1,0 +1,2459 @@
+{
+  "retrieved": "2026-10-06",
+  "note": "The wildlife ecology corpus. One entry per Koppen family plus the water and settlement overlays, each holding real species groups with a behaviour rule, a habitat rule, a temporal pattern and a source grade per field. The Dolbear shortcut is the only cricket rate source.",
+  "sources": [],
+  "dolbear": {
+    "shortcut": "T_C = 5 + N8",
+    "rate_symbol": "N8",
+    "valid_min_c": 5,
+    "valid_max_c": 30,
+    "grade": "S",
+    "note": "Dolbear 1897. The only cricket rate source."
+  },
+  "constants": [
+    {
+      "name": "dolbear_shortcut",
+      "value": "T_C = 5 + N8",
+      "unit": "text",
+      "grade": "S",
+      "note": "Dolbear 1897. The only cricket rate source."
+    },
+    {
+      "name": "dolbear_valid_min_c",
+      "value": 5,
+      "unit": "C",
+      "grade": "S",
+      "note": "The shortcut is accurate from 5 C."
+    },
+    {
+      "name": "dolbear_valid_max_c",
+      "value": 30,
+      "unit": "C",
+      "grade": "S",
+      "note": "The shortcut is accurate to 30 C."
+    },
+    {
+      "name": "desert_cicada_cooling_c",
+      "value": 39,
+      "unit": "C",
+      "grade": "S",
+      "note": "Desert cicadas actively cool above about 39 C."
+    },
+    {
+      "name": "flight_initiation_small_bird",
+      "value": "8-25",
+      "unit": "m",
+      "grade": "S-lit",
+      "note": "Blumstein 2003; Ydenberg and Dill 1986."
+    },
+    {
+      "name": "family_temperature_bands",
+      "value": "per group",
+      "unit": "C",
+      "grade": "U",
+      "note": "A modelled thermal envelope. No published band."
+    },
+    {
+      "name": "wind_limit_and_suppression",
+      "value": "per group",
+      "unit": "mixed",
+      "grade": "U",
+      "note": "A modelled song-suppression rule."
+    },
+    {
+      "name": "rain_limit_and_suppression",
+      "value": "per group",
+      "unit": "mixed",
+      "grade": "U",
+      "note": "A modelled masking rule."
+    },
+    {
+      "name": "habitat_weights",
+      "value": "per group",
+      "unit": "ratio",
+      "grade": "U",
+      "note": "A modelled habitat preference."
+    },
+    {
+      "name": "temporal_bin_weights",
+      "value": "per group",
+      "unit": "ratio",
+      "grade": "U",
+      "note": "A modelled calling shape."
+    },
+    {
+      "name": "activity_sun_elevation_bands",
+      "value": "per group",
+      "unit": "deg",
+      "grade": "U",
+      "note": "A modelled sun-elevation window per activity class."
+    }
+  ],
+  "families": [
+    {
+      "family": "tropical",
+      "koppen_letters": [
+        "a"
+      ],
+      "overlay": false,
+      "groups": [
+        {
+          "group_id": "tropical_bird_dawn",
+          "family": "tropical",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "no cold-season gap in Af; wet-season peak in Aw"
+          },
+          "temperature_c": {
+            "min": 15,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.7,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "flocking",
+          "habitat": {
+            "foliage": 0.6,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.1
+          },
+          "temporal": {
+            "bins": [
+              0.6,
+              1.0,
+              0.5,
+              0.05,
+              0.05,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "tropical_bird_day",
+          "family": "tropical",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "year-round in Af; wet-season peak in Aw"
+          },
+          "temperature_c": {
+            "min": 15,
+            "max": 42
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.7,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "mixed",
+          "habitat": {
+            "foliage": 0.5,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.1
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.5,
+              0.7,
+              0.3,
+              0.4,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "tropical_bird_night",
+          "family": "tropical",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "nightjars and owls; some frogmouths in Australia"
+          },
+          "temperature_c": {
+            "min": 12,
+            "max": 35
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.4,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.3,
+              1.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "owl",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "tropical_insect_cicada",
+          "family": "tropical",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "year-round where warm; seasonal in Aw"
+          },
+          "temperature_c": {
+            "min": 20,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.6,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "chorus",
+          "habitat": {
+            "foliage": 0.5,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.0,
+              0.2,
+              0.5,
+              0.9,
+              0.9,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "cicada",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "tropical_insect_cricket",
+          "family": "tropical",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "year-round where warm"
+          },
+          "temperature_c": {
+            "min": 15,
+            "max": 35
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.6,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.3,
+            "surface": 0.6,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.3,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.6,
+              1.0
+            ],
+            "dolbear": true
+          },
+          "sound_group": "cricket",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "tropical_amphibian",
+          "family": "tropical",
+          "taxa": [
+            "Amphibia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "strongly nocturnal; rain-triggered; wet-season in Aw"
+          },
+          "temperature_c": {
+            "min": 18,
+            "max": 35
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 1.0,
+            "suppression": 0.0,
+            "triggers": true
+          },
+          "gregariousness": "chorus",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.0,
+            "water": 0.8,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.4,
+              0.1,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.9
+            ],
+            "dolbear": false
+          },
+          "sound_group": "frog",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "tropical_mammal",
+          "family": "tropical",
+          "taxa": [
+            "Mammalia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "bats mostly ultrasonic; social calls sparse"
+          },
+          "temperature_c": {
+            "min": 15,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 10.0,
+            "suppression": 0.5
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.5,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.8
+            ],
+            "dolbear": false
+          },
+          "sound_group": "none",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "U"
+          },
+          "grade": "R"
+        }
+      ]
+    },
+    {
+      "family": "arid",
+      "koppen_letters": [
+        "b"
+      ],
+      "overlay": false,
+      "groups": [
+        {
+          "group_id": "arid_bird_dawn",
+          "family": "arid",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "larks, wheatears; sandgrouse crepuscular"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 45
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.6,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "flocking",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.6,
+              1.0,
+              0.5,
+              0.05,
+              0.05,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "arid_bird_day",
+          "family": "arid",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "doves, raptors, bee-eaters, hoopoes"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 45
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.6,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "mixed",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.5,
+              0.7,
+              0.3,
+              0.4,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "arid_bird_night",
+          "family": "arid",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "little owl, eagle owl, Egyptian nightjar"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.4,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.3,
+              1.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "owl",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "arid_insect_cricket",
+          "family": "arid",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "strongly nocturnal; warm season"
+          },
+          "temperature_c": {
+            "min": 10,
+            "max": 45
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.4,
+            "suppression": 0.6,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.7,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.3,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.6,
+              1.0
+            ],
+            "dolbear": true
+          },
+          "sound_group": "cricket",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "arid_insect_grasshopper",
+          "family": "arid",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "diurnal stridulation; rain-linked in the ephemeral core"
+          },
+          "temperature_c": {
+            "min": 15,
+            "max": 45
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.4,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.7,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.0,
+              0.2,
+              0.5,
+              0.9,
+              0.9,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "cicada",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "U"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "arid_amphibian",
+          "family": "arid",
+          "taxa": [
+            "Amphibia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "spadefoot toads; explosive breeders after rain only"
+          },
+          "temperature_c": {
+            "min": 10,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 1.0,
+            "suppression": 0.0,
+            "triggers": true
+          },
+          "gregariousness": "chorus",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.9,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.4,
+              0.1,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.9
+            ],
+            "dolbear": false
+          },
+          "sound_group": "frog",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "arid_mammal",
+          "family": "arid",
+          "taxa": [
+            "Mammalia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "bats and foxes; gerbils and jerboas mostly silent"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 45
+          },
+          "wind": {
+            "limit_ms": 10.0,
+            "suppression": 0.5
+          },
+          "rain": {
+            "limit": 0.4,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.8
+            ],
+            "dolbear": false
+          },
+          "sound_group": "none",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "U"
+          },
+          "grade": "R"
+        }
+      ]
+    },
+    {
+      "family": "temperate",
+      "koppen_letters": [
+        "c"
+      ],
+      "overlay": false,
+      "groups": [
+        {
+          "group_id": "temperate_bird_dawn",
+          "family": "temperate",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "rule": "breeding season; strong spring dawn chorus"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 35
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.7,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "territorial",
+          "habitat": {
+            "foliage": 0.6,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.1
+          },
+          "temporal": {
+            "bins": [
+              0.6,
+              1.0,
+              0.5,
+              0.05,
+              0.05,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "temperate_bird_day",
+          "family": "temperate",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "rule": "breeding season; finches, tits, corvids"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 35
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.7,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "mixed",
+          "habitat": {
+            "foliage": 0.5,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.1
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.5,
+              0.7,
+              0.3,
+              0.4,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "temperate_bird_night",
+          "family": "temperate",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "tawny owl, little owl; nightjar; robin at night in lit areas"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 35
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.5,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.3,
+              1.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "owl",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "temperate_insect_cicada",
+          "family": "temperate",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              6,
+              7,
+              8
+            ],
+            "rule": "hot dry months; quiet in the cool wet season"
+          },
+          "temperature_c": {
+            "min": 18,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "chorus",
+          "habitat": {
+            "foliage": 0.5,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.0,
+              0.2,
+              0.5,
+              0.9,
+              0.9,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "cicada",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "temperate_insect_cricket",
+          "family": "temperate",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "rule": "adults in the warm season only"
+          },
+          "temperature_c": {
+            "min": 5,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.6,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.3,
+            "surface": 0.6,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.3,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.6,
+              1.0
+            ],
+            "dolbear": true
+          },
+          "sound_group": "cricket",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "temperate_amphibian",
+          "family": "temperate",
+          "taxa": [
+            "Amphibia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "rule": "spring breeding; winter-spring in the Mediterranean"
+          },
+          "temperature_c": {
+            "min": 2,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 1.0,
+            "suppression": 0.0,
+            "triggers": true
+          },
+          "gregariousness": "chorus",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.0,
+            "water": 0.8,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.4,
+              0.1,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.9
+            ],
+            "dolbear": false
+          },
+          "sound_group": "frog",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "temperate_mammal",
+          "family": "temperate",
+          "taxa": [
+            "Mammalia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "bats, fox, badger; mostly silent"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 35
+          },
+          "wind": {
+            "limit_ms": 10.0,
+            "suppression": 0.5
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.5,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.8
+            ],
+            "dolbear": false
+          },
+          "sound_group": "none",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "U"
+          },
+          "grade": "R"
+        }
+      ]
+    },
+    {
+      "family": "cold",
+      "koppen_letters": [
+        "d",
+        "e"
+      ],
+      "overlay": false,
+      "groups": [
+        {
+          "group_id": "cold_bird_dawn",
+          "family": "cold",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "rule": "very strong spring dawn chorus in Df"
+          },
+          "temperature_c": {
+            "min": -10,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.6,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "flocking",
+          "habitat": {
+            "foliage": 0.6,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.6,
+              1.0,
+              0.5,
+              0.05,
+              0.05,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "cold_bird_tundra",
+          "family": "cold",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              6,
+              7,
+              8
+            ],
+            "rule": "ET breeding shorebirds and buntings; sparse soundscape"
+          },
+          "temperature_c": {
+            "min": -20,
+            "max": 15
+          },
+          "wind": {
+            "limit_ms": 10.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "flocking",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.6,
+              1.0,
+              0.5,
+              0.05,
+              0.05,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "cold_insect_cricket",
+          "family": "cold",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              6,
+              7,
+              8
+            ],
+            "rule": "short warm season only; summer only in Df"
+          },
+          "temperature_c": {
+            "min": 5,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.7
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.6,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.3,
+            "surface": 0.6,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.3,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.6,
+              1.0
+            ],
+            "dolbear": true
+          },
+          "sound_group": "cricket",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "S"
+        },
+        {
+          "group_id": "cold_insect_mosquito",
+          "family": "cold",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "crepuscular",
+          "season": {
+            "months": [
+              6,
+              7,
+              8
+            ],
+            "rule": "Dfc and ET; brief warm season"
+          },
+          "temperature_c": {
+            "min": 5,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 4.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "swarm",
+          "habitat": {
+            "foliage": 0.3,
+            "surface": 0.0,
+            "water": 0.2,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.5,
+              0.4,
+              0.2,
+              0.1,
+              0.1,
+              0.5,
+              0.4
+            ],
+            "dolbear": false
+          },
+          "sound_group": "none",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "U"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "cold_amphibian",
+          "family": "cold",
+          "taxa": [
+            "Amphibia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "rule": "explosive spring breeding, then quiet"
+          },
+          "temperature_c": {
+            "min": 2,
+            "max": 28
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 1.0,
+            "suppression": 0.0,
+            "triggers": true
+          },
+          "gregariousness": "chorus",
+          "habitat": {
+            "foliage": 0.2,
+            "surface": 0.0,
+            "water": 0.8,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.4,
+              0.1,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.9
+            ],
+            "dolbear": false
+          },
+          "sound_group": "frog",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "cold_mammal_deer",
+          "family": "cold",
+          "taxa": [
+            "Mammalia"
+          ],
+          "activity": "crepuscular",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "alarm barks otherwise quiet; rut in autumn"
+          },
+          "temperature_c": {
+            "min": -20,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 10.0,
+            "suppression": 0.5
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "herd",
+          "habitat": {
+            "foliage": 0.8,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.8
+            ],
+            "dolbear": false
+          },
+          "sound_group": "deer",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "cold_mammal_wolf",
+          "family": "cold",
+          "taxa": [
+            "Mammalia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "howls at dusk and night; long range"
+          },
+          "temperature_c": {
+            "min": -25,
+            "max": 25
+          },
+          "wind": {
+            "limit_ms": 12.0,
+            "suppression": 0.4
+          },
+          "rain": {
+            "limit": 0.5,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "pack",
+          "habitat": {
+            "foliage": 0.7,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.8
+            ],
+            "dolbear": false
+          },
+          "sound_group": "wolf",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        }
+      ]
+    },
+    {
+      "family": "water",
+      "koppen_letters": [],
+      "overlay": true,
+      "groups": [
+        {
+          "group_id": "water_bird",
+          "family": "water",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "gulls, terns, waders, ducks, herons"
+          },
+          "temperature_c": {
+            "min": 2,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 10.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.8,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "flocking",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.9,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.4,
+              0.8,
+              0.6,
+              0.4,
+              0.4,
+              0.6,
+              0.2
+            ],
+            "dolbear": false
+          },
+          "sound_group": "gull",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "water_amphibian",
+          "family": "water",
+          "taxa": [
+            "Amphibia"
+          ],
+          "activity": "nocturnal",
+          "season": {
+            "months": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "rule": "breeding chorus; strongly seasonal and rain-dependent"
+          },
+          "temperature_c": {
+            "min": 2,
+            "max": 30
+          },
+          "wind": {
+            "limit_ms": 6.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 1.0,
+            "suppression": 0.0,
+            "triggers": true
+          },
+          "gregariousness": "chorus",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.9,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.4,
+              0.1,
+              0.0,
+              0.0,
+              0.0,
+              0.5,
+              0.9
+            ],
+            "dolbear": false
+          },
+          "sound_group": "frog",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "water_insect",
+          "family": "water",
+          "taxa": [
+            "Insecta"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              6,
+              7,
+              8
+            ],
+            "rule": "dragonflies mostly silent; some damselflies"
+          },
+          "temperature_c": {
+            "min": 12,
+            "max": 38
+          },
+          "wind": {
+            "limit_ms": 5.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.6,
+            "suppression": 0.5,
+            "triggers": false
+          },
+          "gregariousness": "solitary",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.9,
+            "structures": 0.0
+          },
+          "temporal": {
+            "bins": [
+              0.0,
+              0.2,
+              0.5,
+              0.9,
+              0.9,
+              0.4,
+              0.0
+            ],
+            "dolbear": false
+          },
+          "sound_group": "none",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "U"
+          },
+          "grade": "R"
+        }
+      ]
+    },
+    {
+      "family": "settlement",
+      "koppen_letters": [],
+      "overlay": true,
+      "groups": [
+        {
+          "group_id": "settlement_bird",
+          "family": "settlement",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "swallows, sparrows, starlings, pigeons, poultry"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.7,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "flocking",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.8
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.5,
+              0.6,
+              0.6,
+              0.6,
+              0.5,
+              0.1
+            ],
+            "dolbear": false
+          },
+          "sound_group": "songbird",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "S"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "settlement_bird_poultry",
+          "family": "settlement",
+          "taxa": [
+            "Aves"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "poultry and roosters at a farm"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 8.0,
+            "suppression": 0.6
+          },
+          "rain": {
+            "limit": 0.7,
+            "suppression": 0.4,
+            "triggers": false
+          },
+          "gregariousness": "flocking",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.9
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.5,
+              0.6,
+              0.6,
+              0.6,
+              0.5,
+              0.1
+            ],
+            "dolbear": false
+          },
+          "sound_group": "hen",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        },
+        {
+          "group_id": "settlement_mammal",
+          "family": "settlement",
+          "taxa": [
+            "Mammalia"
+          ],
+          "activity": "diurnal",
+          "season": {
+            "months": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "rule": "dogs bark in bursts, day and night"
+          },
+          "temperature_c": {
+            "min": 0,
+            "max": 40
+          },
+          "wind": {
+            "limit_ms": 10.0,
+            "suppression": 0.5
+          },
+          "rain": {
+            "limit": 0.7,
+            "suppression": 0.3,
+            "triggers": false
+          },
+          "gregariousness": "pair",
+          "habitat": {
+            "foliage": 0.1,
+            "surface": 0.0,
+            "water": 0.0,
+            "structures": 0.9
+          },
+          "temporal": {
+            "bins": [
+              0.2,
+              0.3,
+              0.4,
+              0.4,
+              0.4,
+              0.5,
+              0.4
+            ],
+            "dolbear": false
+          },
+          "sound_group": "dog",
+          "field_grades": {
+            "taxa": "R",
+            "activity": "R",
+            "season": "S",
+            "temperature_c": "U",
+            "wind": "U",
+            "rain": "U",
+            "gregariousness": "R",
+            "habitat": "U",
+            "temporal": "U",
+            "sound_group": "R"
+          },
+          "grade": "R"
+        }
+      ]
+    }
+  ]
+}
