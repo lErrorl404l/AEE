@@ -38,6 +38,7 @@ EXPECTED_HUD = {
     "aee_optics_hudEnabled",
     "aee_physiology_HUDWarningThreshold",
     "aee_nightvision_ltmEnabled",
+    "aee_nightvision_ltmDaylightFade",
 }
 
 

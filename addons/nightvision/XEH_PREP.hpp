@@ -13,6 +13,7 @@ PREP(nvgScintillation);
 PREP(nvgPincushion);
 PREPS(ltm,ltmBeamSegments);
 PREPS(ltm,ltmCreate);
+PREPS(ltm,ltmDaylightAlpha);
 PREPS(ltm,ltmDraw);
 PREPS(ltm,ltmPFH);
 PREPS(ltm,ltmToggle);

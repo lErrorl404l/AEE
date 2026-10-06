@@ -299,6 +299,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_nightvision_ltmDaylightFade` | CHECKBOX | `true` | yes | nightvision | Fade the laser target marker in daylight. Off holds the marker at full strength. |
 | `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
 | `aee_optics_hudEnabled` | CHECKBOX | `false` | yes | optics | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
 | `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |

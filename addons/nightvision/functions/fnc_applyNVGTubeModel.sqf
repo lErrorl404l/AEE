@@ -1615,7 +1615,7 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _hDoF,
         [_perceived, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight],
         _bloom,
-        [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 0],
+        [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 1],
         _blowout,
         _dofBlur,
         _focusDist,
@@ -1689,8 +1689,12 @@ if (_hVig >= 0) then {
 };
 
 // ─── FilmGrain (shot noise - the NVG aesthetic) ──────────────────────────
+// The sixth element is the monochromatic flag: BIKI Arma 3 gives 0 as
+// monochrome and any other value as colour.  A 0 drains the whole scene to
+// grey, the same defect fixed at c753730, so the tube grain ships colour 1.
+// The invariant is pinned by test_film_grain_invariant.py.
 if (_hGrain >= 0) then {
-    _hGrain ppEffectAdjust [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 0];
+    _hGrain ppEffectAdjust [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 1];
     _hGrain ppEffectCommit 0;
     _hGrain ppEffectEnable true;
     _hGrain ppEffectForceInNVG true;
