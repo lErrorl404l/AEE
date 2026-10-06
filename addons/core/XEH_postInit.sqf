@@ -57,5 +57,10 @@ if (is3DEN) exitWith {};
 // the vehicle-class token above keeps its line number and the derived
 // vehicle inventory does not churn.
 GVAR(consistencyPFH) = [{
-    call FUNC(runGeoConsistency);
+    // CBA calls a per-frame handler as [_args, _handle] call {code}.  A bare
+    // `call FUNC(runGeoConsistency)` inherits that array as _this, so the
+    // typed params would read an array for _force and error every tick.  Pass
+    // the argument explicitly (the P82 lesson: a registered entry must accept
+    // the handler array).
+    [false] call FUNC(runGeoConsistency);
 }, GVAR(updateInterval)] call CBA_fnc_addPerFrameHandler;

@@ -570,5 +570,4 @@ if (_fail == 0) then {
 
 [{
     diag_log text "[P65] report complete";
-    diag_log text "[AEE-TEST] DONE";
 }, [], 4] call CBA_fnc_waitAndExecute;

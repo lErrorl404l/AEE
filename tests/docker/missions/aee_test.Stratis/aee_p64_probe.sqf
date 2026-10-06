@@ -78,5 +78,4 @@ if ((_v1IdBefore >= 0) && {_v1IdAfter >= 0}) then {
 
 [{
     diag_log text "[P64] report complete";
-    diag_log text "[AEE-TEST] DONE";
 }, [], 5] call CBA_fnc_waitAndExecute;

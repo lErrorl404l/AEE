@@ -3048,9 +3048,11 @@ private _p29Pass = 0;
     // It was inline here and its FIRST parse error aborted init.sqf and
     // deleted phases 11 to 63, because Arma parses a script as it
     // executes it. exec moves the probe off the main thread, so a fault
-    // in it can no longer take the suite with it. The probe owns its own
-    // DONE at +3 s. This file emits one at +6 s so a dead probe FAILS the
-    // run instead of hanging it for the full 180 s.
+    // in it can no longer take the suite with it. This file owns the SINGLE
+    // [AEE-TEST] DONE (at +75 s), so a dead probe still FAILS the run instead
+    // of hanging it for the full 180 s. The probes must NOT emit their own
+    // DONE: an early DONE ends the harness capture before the slow fleet
+    // probe (P73) has finished, and its PASS line is then never read.
     // execVM, NOT exec. exec runs SQS, and the SQF preprocessor never
     // runs, so every "//" line in the probe is tokenised as CODE. That
     // produced exactly 40 comment errors for 40 comment lines, then a
@@ -3217,6 +3219,26 @@ private _p29Pass = 0;
     // drives an agreeing map and a three-way disagreeing map.  It renders
     // nothing and needs no player.
     execVM "aee_p101_consistency_probe.sqf";
+    // PHASE 106 lives in aee_p106_mgrs_anchor_probe.sqf: the geo anchor is
+    // read from the live world and the mapArea versus latitude/longitude
+    // divergence is checked through the REAL builder with the world-independent
+    // Altis box.  It renders nothing.
+    execVM "aee_p106_mgrs_anchor_probe.sqf";
+    // PHASE 107 lives in aee_p107_mgrs_roundtrip_probe.sqf: a world position is
+    // mapped to MGRS and back through the REAL kernels and must stay inside
+    // one metre, and the zone must follow the anchor centre.  It renders
+    // nothing.
+    execVM "aee_p107_mgrs_roundtrip_probe.sqf";
+    // PHASE 108 lives in aee_p108_consistency_probe.sqf: the live monitor must
+    // publish aee_core_positionDivergence and the REAL pure evaluator must
+    // return no divergence for a consistent set of sources.  It renders
+    // nothing.
+    execVM "aee_p108_consistency_probe.sqf";
+    // PHASE 109 lives in aee_p109_tracker_probe.sqf: the client tracker driver
+    // exits on a server, so the probe drives the REAL pure projector and the
+    // three GNSS kernels in a degraded state and asserts a non-zero error and
+    // a displaced display.  It renders nothing.
+    execVM "aee_p109_tracker_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
