@@ -201,16 +201,41 @@ Agent-verifiable (a machine proves it):
 - The HEMTT build and the pedantic check.
 - The headless dedicated-server phases in `tools/docker_test.sh`.
 - The nightly headless run on the self-hosted runner.
+- The perception kernel, the deviation flags and the module-health report
+  (Docker probe P100).
+- The consistency evaluator against an agreeing and a three-way disagreeing
+  fixture (Docker probe P101).
 
 Operator-only (only a game client proves it):
 
 - The starfield, aurora, Milky Way and meteor pixels.
 - The NVG overlay clipping, fades and per-tier washout.
 - The base grade and the felt sharpening.
-- The eye adaptation.
+- The felt eye adaptation and the perception overlay look.
 - The alt-tab recovery and the advanced-optic recovery.
 - The CBA settings menu. Open Addon Options: `AEE Experimental > Fusion`
   shows the four thermal-fusion knobs, `AEE HUD > Displays` shows the four
   on-screen display toggles, and `AEE Debug > <component>` shows the
   diagnostic switches. Every per-module `logDebug` switch sits under
   `AEE Debug`. Only the operator confirms the menu renders as intended.
+
+## Observability and consistency
+
+Two Docker probes verify the observability surface headless. Both are pure
+kernel probes and run on the dedicated server, so neither needs a local
+player.
+
+- **P100 - perception and module health.** Seeds a fixture value map, calls
+  `perceptionSample` and `perceptionDetectDeviation`, and checks the schema
+  length, the clean flags, the discolouration flag, the blindness flag and
+  the module-health report. Prints `[P100] [PASS]` or `[P100] [FAIL]`.
+- **P101 - consistency.** Loads the invariant table, seeds an agreeing map
+  and a three-way disagreeing map, calls `evaluateConsistency`, and checks
+  that the disagreeing map raises exactly the expected rows and names three
+  modules. Prints `[P101] [PASS]` or `[P101] [FAIL]`.
+
+The harness fails when either tag is missing from `tests/docker/run.log`.
+The two probes move the perception state, the deviation flags, the
+module-health report and the consistency verdict onto the agent-verifiable
+list. The felt eye adaptation and the perception overlay pixels stay
+operator-only.
