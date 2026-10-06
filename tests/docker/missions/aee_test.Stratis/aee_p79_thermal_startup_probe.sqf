@@ -100,22 +100,38 @@ private _selEps = createHashMap;
 missionNamespace setVariable ["aee_thermal_selTemperature", _selTemps];
 missionNamespace setVariable ["aee_thermal_selEmissivity", _selEps];
 
-// Reset the AGC state so the first pass is a true first publication. A state
-// left by an earlier phase would hide the seed.
-missionNamespace setVariable ["aee_thermal_agcLastT", -99];
-missionNamespace setVariable ["aee_thermal_agcRadMin", -1];
-missionNamespace setVariable ["aee_thermal_agcRadMax", -1];
-missionNamespace setVariable ["aee_thermal_agcAcceptMin", -1];
-missionNamespace setVariable ["aee_thermal_agcAcceptMax", -1];
-missionNamespace setVariable ["aee_thermal_agcAtFloor", true];
-
-// The first AGC pass. The throttle is forced by an old tick stamp. The IIR
-// step uses the engine frame delta, so the probe reports that delta.
-private _dt = diag_deltaTime;
-missionNamespace setVariable ["aee_thermal_agcLastT", diag_tickTime - 1];
-[] call _fnAGC;
-private _firstMin = missionNamespace getVariable ["aee_thermal_agcRadMin", -1];
-private _firstMax = missionNamespace getVariable ["aee_thermal_agcRadMax", -1];
+// Reset the AGC state and run the first pass in ONE unscheduled tick.  The
+// thermal pass is a live per-frame handler, and a per-frame handler is
+// unscheduled, so it cannot run inside another per-frame handler.  A direct
+// call from this scheduled script is preempted mid-function (the band-radiance
+// walk), the live pass then republishes the window, and the pass measured is a
+// warm window, not the first publication: the seed never runs and the
+// "first-pass jump" reads the stale window.  A one-shot handler owns the whole
+// reset and pass, so the live pass cannot intervene.
+private _first = [-1, -1, 0];
+[{
+    params ["_args", "_handle"];
+    _args params ["_fnAGC", "_out"];
+    missionNamespace setVariable ["aee_thermal_agcLastT", -99];
+    missionNamespace setVariable ["aee_thermal_agcRadMin", -1];
+    missionNamespace setVariable ["aee_thermal_agcRadMax", -1];
+    missionNamespace setVariable ["aee_thermal_agcAcceptMin", -1];
+    missionNamespace setVariable ["aee_thermal_agcAcceptMax", -1];
+    missionNamespace setVariable ["aee_thermal_agcAtFloor", true];
+    // Force the throttle with an old stamp; the IIR step uses the frame delta,
+    // so the pass reports that delta.
+    missionNamespace setVariable ["aee_thermal_agcLastT", diag_tickTime - 1];
+    [] call _fnAGC;
+    _out set [0, missionNamespace getVariable ["aee_thermal_agcRadMin", -1]];
+    _out set [1, missionNamespace getVariable ["aee_thermal_agcRadMax", -1]];
+    _out set [2, diag_deltaTime];
+    [_handle] call CBA_fnc_removePerFrameHandler;
+}, 0, [_fnAGC, _first]] call CBA_fnc_addPerFrameHandler;
+private _firstWait = diag_tickTime + 5;
+waitUntil { (_first select 0) >= 0 || {diag_tickTime > _firstWait} };
+private _dt = _first select 2;
+private _firstMin = _first select 0;
+private _firstMax = _first select 1;
 
 // Drive the AGC to its fixed point. With constant inputs the IIR converges to
 // the raw floor window, which is exactly what the pre-fix code published on
