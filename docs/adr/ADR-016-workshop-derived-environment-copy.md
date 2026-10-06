@@ -54,12 +54,13 @@ base values.
 Every block carries the same values. This is the engine structural
 requirement, not per-map tuning. No value is keyed by a map name.
 
-`starEmissivity` 40 is the shared default. The engine core declares
+`starEmissivity` 25 is the shared default. The engine core declares
 `DefaultLighting` with `starEmissivity` 0.3. A re-open of `DefaultLighting`
 merges and propagates. A world that sets its own `starEmissivity` shadows the
-default. `CAWorld` and each stock world therefore carry the same 40. A custom
-world that sets its own keeps it. AEE compensates at run time through the
-matcher.
+default. `CAWorld` and each stock world therefore carry the same 25, the
+vanilla world value. A custom world that sets its own keeps it. AEE compensates
+at run time through the matcher. The value was 40 before the lighting review,
+which restored 25 (see the revision below).
 
 `DayLighting` is re-homed into the chain in the same way.
 
@@ -82,7 +83,7 @@ The table states the ceiling for each plan item.
 | Item | Behaviour | Engine ceiling |
 | --- | --- | --- |
 | 1 | Complete `HDRNewPars` | Read at world load. No script command changes it |
-| 2 | `starEmissivity` 40 | Read at world load. A world that sets its own shadows the shared value |
+| 2 | `starEmissivity` 25 | Read at world load. A world that sets its own shadows the shared value |
 | 3 | Star brightness model | Run-time pure kernels. The star render scale is scriptable |
 | 4 | `DayLighting` night keyframes | Read at world load. No script command changes it |
 | 5 | Rain-scaled film grain | Run-time FilmGrain. The engine couples grain and sharpness |
@@ -91,6 +92,19 @@ The table states the ceiling for each plan item.
 | 8 | FilmGrain colour invariant and laser alpha | Run-time. The engine can desaturate only |
 | 9 | Video-option ceiling | Document only. A mod cannot set, force or read a video option |
 | 10 | Post-process template reference | Document only. AEE ships no template |
+
+## Revision: lighting reference review
+
+Date: 2026-10-06. AEE reviewed the stars, the `DayLighting` night floor and
+`SimulWeather` against Workshop 3587581054, "Highlights - HDR & Lighting Suite
+[HLS]", by Tyrr. The mod is a comparison only. AEE copies no value from it.
+
+The review restored `starEmissivity` from 40 to the vanilla 25. The 40 doubled
+the vanilla star draw and had no physical source. The review left the
+`DayLighting` night floor at vanilla, because AEE's values already match the
+vanilla keyframes to within 0.001. The review left `SimulWeather` at vanilla,
+because the reference change has no source and is not clearly warranted. The
+full review is in `lighting-reference-review.md`.
 
 ## Run-time ownership per lever
 

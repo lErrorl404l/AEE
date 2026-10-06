@@ -238,6 +238,10 @@ are the only lever on night darkness.
 
 (e) Rain-scaled film grain. Low priority.
 
+The shipped `starEmissivity` is the vanilla 25. Item (b) proposed 40 as a first
+try. The later review against Workshop 3587581054 restored 25. See
+`lighting-reference-review.md`.
+
 ## References
 
 - BIKI Post Process Effects, Wayback capture 20240220225631: the ColorCorrections and FilmGrain parameter tables.

@@ -34,9 +34,11 @@ run time. No `ppEffect` reaches the same stage.
 `starEmissivity` scales the engine star draw. The engine core declares
 `DefaultLighting` with `access = 3` and `starEmissivity = 0.3`. A re-open
 merges and propagates, but a world that sets its own `starEmissivity` shadows
-it. `CAWorld` and each stock world's `Lighting` therefore carry the same 40. A
-custom world that sets its own keeps it. 40 sits mid-band between Fluffys (30)
-and Real Lighting and Weather (60).
+it. `CAWorld` and each stock world's `Lighting` therefore carry the same 25,
+the vanilla world value (Altis `starEmissivity` = 25). A custom world that sets
+its own keeps it. The review against Workshop 3587581054 restored 25 from an
+earlier 40, which doubled the vanilla draw with no source. The review is in
+`lighting-reference-review.md`.
 
 ## DayLighting
 
