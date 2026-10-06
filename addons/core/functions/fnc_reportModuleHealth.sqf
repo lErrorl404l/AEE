@@ -63,14 +63,16 @@ missionNamespace setVariable [QGVAR(moduleHealth), _health];
 private _summary = _health apply {
     format ["%1=%2/%3", _x select 0, _x select 1, _x select 2]
 };
-AEE_LOG_INFO(format ["module health | %1", _summary joinString " "]);
+private _logMsg = format ["module health | %1", _summary joinString " "];
+AEE_LOG_INFO(_logMsg);
 
 {
     _x params ["_component", "_preInit", "_postInit"];
     if (!_preInit || {!_postInit}) then {
-        AEE_LOG_WARN(format [
+        private _logMsg = format [
             "module not initialised: %1 (preInit=%2 postInit=%3)",
             _component, _preInit, _postInit
-        ]);
+        ];
+        AEE_LOG_WARN(_logMsg);
     };
 } forEach _health;

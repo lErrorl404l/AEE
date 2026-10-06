@@ -201,10 +201,11 @@ if (_traceOn) then {
     private _lastLog = _vehicle getVariable [QGVAR(vehicleHeatLogT), -999];
     if (_now - _lastLog >= 5) then {
         _vehicle setVariable [QGVAR(vehicleHeatLogT), _now];
-        AEE_LOG_DEBUG(format [
+        private _logMsg = format [
             "[HEAT] %1 T=%2C heat=%3 tau=%4s engineOn=%5 speed=%6m/s",
             typeOf _vehicle, round _bodyTemp, _heat, round _tau, _engineRunning, round _speedMS
-        ]);
+        ];
+        AEE_LOG_DEBUG(_logMsg);
     };
 };
 

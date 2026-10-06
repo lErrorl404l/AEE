@@ -138,15 +138,17 @@ private _lastTrace = missionNamespace getVariable [QGVAR(sunTraceTime), -1];
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]
     && {diag_tickTime - _lastTrace > 5}) then {
     missionNamespace setVariable [QGVAR(sunTraceTime), diag_tickTime];
-    AEE_LOG_DEBUG(format ["SecondSun: rad=%1 bright=%2 dayTime=%3",
-        _radiation, _lightBrightness, dayTime]);
+    private _logMsg = format ["SecondSun: rad=%1 bright=%2 dayTime=%3",
+        _radiation, _lightBrightness, dayTime];
+    AEE_LOG_DEBUG(_logMsg);
 };
 
 // Debug: log the radiation and the scaled brightness the engine's sun term
 // sees, with dayTime, so day/night behaviour is traceable.
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
-    AEE_LOG_DEBUG(format ["SecondSun: rad=%1 brightness=%2 dayTime=%3 date=%4",
-        _radiation, _lightBrightness, dayTime, date]);
+    private _logMsg = format ["SecondSun: rad=%1 brightness=%2 dayTime=%3 date=%4",
+        _radiation, _lightBrightness, dayTime, date];
+    AEE_LOG_DEBUG(_logMsg);
 };
 
 _radiation

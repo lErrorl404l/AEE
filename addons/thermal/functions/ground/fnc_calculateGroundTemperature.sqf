@@ -117,10 +117,11 @@ if (_traceOn) then {
         missionNamespace setVariable [_traceKey, _nowT];
         private _stampCount = count (missionNamespace getVariable [QGVAR(groundStamps), []]);
         private _surfNow = surfaceType [_pos select 0, _pos select 1];
-        AEE_LOG_DEBUG(format [
+        private _logMsg = format [
             "[GROUND] surf=%1 mat=%2 tEq=%3 stamp=%4 (count %5) tFinal=%6",
             _surfNow, _material, _ts, _stampOffset, _stampCount, _result
-        ]);
+        ];
+        AEE_LOG_DEBUG(_logMsg);
     };
 };
 
