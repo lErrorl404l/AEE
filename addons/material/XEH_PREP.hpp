@@ -4,3 +4,4 @@ PREP(getObjectMaterial);
 PREP(getSurfaceMaterial);
 PREP(initMaterialCache);
 PREP(handleHitPart);
+PREP(dumpState);

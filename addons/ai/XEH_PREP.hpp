@@ -13,3 +13,4 @@ PREP(reportStimulus);
 PREP(receiveStimulus);
 PREP(initAI);
 PREP(teardownAI);
+PREP(dumpState);

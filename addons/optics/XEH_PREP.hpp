@@ -81,3 +81,4 @@ PREPS(hud,hudFormatRange);
 PREPS(hud,hudMarkers);
 PREPS(hud,hudRangefinder);
 PREPS(hud,hudUpdate);
+PREP(dumpState);

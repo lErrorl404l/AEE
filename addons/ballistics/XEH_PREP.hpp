@@ -27,3 +27,5 @@ PREP(calculateBallisticCoefficient);
 PREP(calculateInteriorBallistics);
 PREP(calculateMachCone);
 PREP(getEnvironmentState);
+PREP(dumpState);
+PREP(startStateDump);

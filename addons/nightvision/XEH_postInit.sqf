@@ -14,3 +14,6 @@ AEE_MODULE_POST_INIT
 ["AEE", "LTMToggleMode", [LLSTRING(ltmToggleMode), "Cycle the laser target marker blink and steady"], {
     [call CBA_fnc_currentUnit] call FUNC(ltmToggleMode);
 }, {}, [38, [false, true, false]]] call CBA_fnc_addKeybind;
+
+// Uniform per-module state dump, one line a second.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;

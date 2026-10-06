@@ -37,3 +37,4 @@ PREPS(weather,applyWindNoise);
 PREPS(weather,calculateLightningStrikeEffects);
 PREPS(weather,triggerLightning);
 PREPS(weather,triggerSevereWeatherFX);
+PREP(dumpState);

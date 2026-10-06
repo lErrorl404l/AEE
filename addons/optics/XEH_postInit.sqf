@@ -289,3 +289,6 @@ if (hasInterface) then {
 // transfers that heat into the surface.  Listener is cheap: one event
 // per impact, stamps only.
 
+// Uniform per-module state dump (plan T3): one state line per second.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
+

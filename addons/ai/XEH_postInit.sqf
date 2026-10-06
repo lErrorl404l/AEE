@@ -7,3 +7,6 @@ AEE_MODULE_POST_INIT
 if (hasInterface) then {
     [] call FUNC(initAI);
 };
+
+// Uniform per-module state dump (plan T3): one state line per second.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;

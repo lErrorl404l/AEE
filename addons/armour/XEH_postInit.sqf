@@ -24,3 +24,6 @@ if (is3DEN) exitWith {};
      _instigator, _hitPoint] call FUNC(penetrationGate);
 }, QGVAR(penetrationGateHandler)] call EFUNC(core,installObjectEngineHandler);
 
+// Uniform per-module state dump (plan T3): one state line per second.
+[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
+
