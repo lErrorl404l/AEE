@@ -14,6 +14,14 @@
 #define WILDLIFE_EMITTER_CAP 8
 #define WILDLIFE_EMITTER_RADIUS 150
 
+// Call-pitch policy (task T28): bounds, seeded jitter spread and the
+// stridulation coupling to the Dolbear rate.  All UNSOURCED; the speed of
+// sound against temperature is SOURCED in fnc_callPitch.
+#define WILDLIFE_PITCH_MIN 0.5
+#define WILDLIFE_PITCH_MAX 2.0
+#define WILDLIFE_PITCH_JITTER 0.04
+#define WILDLIFE_PITCH_RATE_COUPLING 0.25
+
 // The disturbance field policy is owned by aee_ai.  The wildlife tick is the
 // only cross-addon consumer, so the cap and the horizon are mirrored here
 // rather than reaching into the aee_ai header.  Keep them in step with

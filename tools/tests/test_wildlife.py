@@ -36,6 +36,7 @@ DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
 MONITOR = FUNCS / "fnc_monitorWildlife.sqf"
 EMITTER_PLAN = FUNCS / "fnc_emitterPlan.sqf"
 EMITTER_CLASS = FUNCS / "fnc_emitterClass.sqf"
+CALL_PITCH = FUNCS / "fnc_callPitch.sqf"
 
 # A tiny manifest for the pure kernel tests.  The real manifest has the same
 # row shape.
@@ -1347,7 +1348,8 @@ class TestEmitterSourceContracts(unittest.TestCase):
     def test_the_fear_call_passes_the_fleeing_agent(self):
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
         self.assertIn(
-            "WILDLIFE_SOUND_MAX_DISTANCE, _agent] call FUNC(playOneShot)", text
+            "WILDLIFE_SOUND_MAX_DISTANCE, _agent, _callPitch] call FUNC(playOneShot)",
+            text,
         )
 
     def test_the_emitter_functions_are_prepped(self):
@@ -1390,6 +1392,90 @@ class TestEmitterSourceContracts(unittest.TestCase):
         for name in ("fnc_emitterSync.sqf", "fnc_emitterRelease.sqf"):
             text = (FUNCS / name).read_text(encoding="utf-8")
             self.assertIn("hasInterface", text, name)
+
+
+PITCH_GLOBALS = {
+    "WILDLIFE_PITCH_JITTER": 0.04,
+    "WILDLIFE_PITCH_RATE_COUPLING": 0.25,
+    "WILDLIFE_PITCH_MIN": 0.5,
+    "WILDLIFE_PITCH_MAX": 2.0,
+}
+
+
+def call_pitch(seed, species, temperature, radial, base=1):
+    return run_sqf(
+        CALL_PITCH,
+        [seed, species, temperature, radial, base],
+        globals_=PITCH_GLOBALS,
+    )
+
+
+class TestCallPitch(unittest.TestCase):
+    """The call-pitch kernel (task 28) runs from the real SQF."""
+
+    def test_same_inputs_give_the_same_pitch(self):
+        self.assertEqual(call_pitch(42, "owl", 15, 0), call_pitch(42, "owl", 15, 0))
+
+    def test_a_new_seed_moves_the_pitch(self):
+        self.assertNotEqual(call_pitch(42, "owl", 15, 0), call_pitch(43, "owl", 15, 0))
+
+    def test_a_closing_source_is_higher_than_an_opening_source(self):
+        closing = call_pitch(42, "owl", 15, 40)
+        opening = call_pitch(42, "owl", 15, -40)
+        self.assertGreater(closing, opening)
+
+    def test_the_cricket_pitch_rises_with_temperature(self):
+        cold = call_pitch(42, "cricket", 10, 0)
+        mild = call_pitch(42, "cricket", 20, 0)
+        warm = call_pitch(42, "cricket", 30, 0)
+        self.assertLess(cold, mild)
+        self.assertLess(mild, warm)
+
+    def test_a_small_bird_is_higher_than_an_owl(self):
+        self.assertGreater(
+            call_pitch(42, "temperate_bird_dawn", 20, 0),
+            call_pitch(42, "owl", 20, 0),
+        )
+
+    def test_the_pitch_is_clamped(self):
+        # An extreme opening velocity is clamped to the pitch floor.
+        self.assertGreaterEqual(call_pitch(42, "owl", 50, -300), 0.5)
+        self.assertLessEqual(call_pitch(42, "owl", 50, 300), 2.0)
+
+
+class TestPitchSourceContracts(unittest.TestCase):
+    """No fixed pitch anywhere in the wildlife sound path (task 28)."""
+
+    def test_the_one_shot_uses_the_derived_pitch(self):
+        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        self.assertIn('["_pitch", 1, [0]]', text)
+        self.assertIn(", _volume, _pitch, _distance", text)
+
+    def test_the_bed_carries_the_pitch(self):
+        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        self.assertIn('["_pitch", 1, [0]]', text)
+        self.assertIn(", objNull, _pitch] call FUNC(playOneShot)", text)
+
+    def test_the_tick_derives_the_pitch(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("call FUNC(callPitch)", text)
+
+    def test_the_fear_call_derives_the_pitch(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("call FUNC(callPitch)", text)
+        self.assertIn("vectorDotProduct", text)
+
+    def test_the_pitch_constants_and_prep(self):
+        constants = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
+        for name in (
+            "WILDLIFE_PITCH_MIN",
+            "WILDLIFE_PITCH_MAX",
+            "WILDLIFE_PITCH_JITTER",
+            "WILDLIFE_PITCH_RATE_COUPLING",
+        ):
+            self.assertIn(name, constants, name)
+        preps = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(callPitch)", preps)
 
 
 if __name__ == "__main__":
