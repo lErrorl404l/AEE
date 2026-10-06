@@ -434,8 +434,10 @@ END_COUNTER(updateEnvironment);
 // section's counter is compiled out of a production build, so the entry has
 // no timer.  This is a real diag_tickTime read on the entry, logged at the
 // trace level so it costs nothing unless the operator turns the trace on.
-private _perfMsg = format ["updateEnvironment %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
-AEE_LOG_DEBUG(_perfMsg);
+if (AEE_TRACE_ON) then {
+    private _perfMsg = format ["updateEnvironment %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+    AEE_LOG_DEBUG(_perfMsg);
+};
 
     // AUTO-DUMP the performance counters every ~10 s (2 x the 5 s tick) when
     // they are compiled in.  The guard fires only in a counter build, so a

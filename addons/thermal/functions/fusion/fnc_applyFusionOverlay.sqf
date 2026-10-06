@@ -620,13 +620,15 @@ if (_logNow) then {
 // ladder, so an edge can never overwrite a selection's thermal shading.
 missionNamespace setVariable [QGVAR(selThermalEdge), _edgeMap];
 
-// Per-pass wall clock, emitted unconditionally through AEE_LOG_DEBUG (the
-// macro applies the debug setting).  This is the line the overlay lacked, and
+// Per-pass wall clock, built only when the debug switch is on (AEE_TRACE_ON)
+// and emitted through AEE_LOG_DEBUG.  This is the line the overlay lacked, and
 // it names the batch and the pending remainder so the bounded sweep can be
 // read straight from a performance run.
-private _perfMsg = format [
-    "fusion overlay %1 ms (batch %2, pending %3, candidates %4)",
-    round ((diag_tickTime - _perfT0) * 1000),
-    count _objects, count (_taken select 1), _objectCount
-];
-AEE_LOG_DEBUG(_perfMsg);
+if (AEE_TRACE_ON) then {
+    private _perfMsg = format [
+        "fusion overlay %1 ms (batch %2, pending %3, candidates %4)",
+        round ((diag_tickTime - _perfT0) * 1000),
+        count _objects, count (_taken select 1), _objectCount
+    ];
+    AEE_LOG_DEBUG(_perfMsg);
+};
