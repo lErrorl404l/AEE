@@ -35,6 +35,8 @@ HEADING_KERNEL = HUD / "fnc_hudFormatHeading.sqf"
 GRID_KERNEL = HUD / "fnc_hudFormatGrid.sqf"
 GRID_DISPLAY_KERNEL = HUD / "fnc_formatGridDisplay.sqf"
 RANGE_KERNEL = HUD / "fnc_hudFormatRange.sqf"
+MGRS_MAP_KERNEL = HUD / "fnc_mgrsMapDraw.sqf"
+MGRS_MARKER_KERNEL = HUD / "fnc_mgrsMarkerText.sqf"
 
 HUD_FILE = OPTICS / "RscTitles.hpp"
 BUILD_SRC = (HUD / "fnc_hudBuild.sqf").read_text(encoding="utf-8")
@@ -42,6 +44,8 @@ UPDATE_SRC = (HUD / "fnc_hudUpdate.sqf").read_text(encoding="utf-8")
 RANGE_SRC = (HUD / "fnc_hudRangefinder.sqf").read_text(encoding="utf-8")
 MARKERS_SRC = (HUD / "fnc_hudMarkers.sqf").read_text(encoding="utf-8")
 FORMAT_DISPLAY_SRC = (HUD / "fnc_formatGridDisplay.sqf").read_text(encoding="utf-8")
+MGRS_MAP_SRC = MGRS_MAP_KERNEL.read_text(encoding="utf-8")
+MGRS_MARKER_SRC = MGRS_MARKER_KERNEL.read_text(encoding="utf-8")
 HUD_CLASS_SRC = HUD_FILE.read_text(encoding="utf-8")
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
@@ -56,6 +60,8 @@ ALL_HUD_SRC = "\n".join(
         RANGE_SRC,
         MARKERS_SRC,
         FORMAT_DISPLAY_SRC,
+        MGRS_MAP_SRC,
+        MGRS_MARKER_SRC,
     ]
 )
 
@@ -98,6 +104,21 @@ def grid_display(position, anchor, precision, grid_raw, enabled, mgrs):
     return run_sqf(
         GRID_DISPLAY_KERNEL, [position, anchor, precision, grid_raw, enabled], globals_
     )
+
+
+def mgrs_marker_text(label, position, anchor, precision, mgrs):
+    """Run the real marker-text kernel with a stub worldToMgrs."""
+    globals_ = {
+        "__EFUNC__core_worldToMgrs": lambda _p, _a, _prec: [
+            mgrs,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0,
+        ],
+    }
+    return run_sqf(MGRS_MARKER_KERNEL, [label, position, anchor, precision], globals_)
 
 
 class TestHudHeading(unittest.TestCase):
@@ -211,8 +232,43 @@ class TestHudGridDisplay(unittest.TestCase):
         )
 
 
+class TestHudMgrsMarkerText(unittest.TestCase):
+    """fnc_mgrsMarkerText, executed: a marker position as an MGRS label."""
+
+    def test_a_label_is_prefixed_to_the_mgrs(self):
+        self.assertEqual(
+            mgrs_marker_text("Alpha", [0, 0, 0], [0] * 9, 10, "35SLE5013418852"),
+            "Alpha 35SLE5013418852",
+        )
+
+    def test_an_empty_label_returns_the_mgrs_alone(self):
+        self.assertEqual(
+            mgrs_marker_text("", [0, 0, 0], [0] * 9, 10, "35SLE5013418852"),
+            "35SLE5013418852",
+        )
+
+    def test_an_empty_mgrs_returns_the_label_alone(self):
+        self.assertEqual(
+            mgrs_marker_text("Alpha", [0, 0, 0], [0] * 9, 10, ""),
+            "Alpha",
+        )
+
+
 class TestHudSourceContract(unittest.TestCase):
     """The engine readers carry the source's mechanisms."""
+
+    def test_the_map_handler_draws_icons(self):
+        self.assertIn("_map drawIcon", MGRS_MAP_SRC)
+
+    def test_the_map_handler_cross_checks_the_engine_grid(self):
+        self.assertIn("mapGridPosition _player", MGRS_MAP_SRC)
+
+    def test_the_map_handler_attaches_a_draw_handler(self):
+        self.assertIn('ctrlAddEventHandler ["Draw"', MGRS_MAP_SRC)
+
+    def test_the_map_handler_creates_no_marker(self):
+        for writer in ("createMarker", "setMarkerPos", "setMarkerText", "deleteMarker"):
+            self.assertNotIn(writer, MGRS_MAP_SRC, writer)
 
     def test_the_mgrs_control_uses_a_free_idc(self):
         self.assertIn("idc = 9015;", HUD_CLASS_SRC)
@@ -290,6 +346,8 @@ class TestHudWiring(unittest.TestCase):
             "hudMarkers",
             "hudRangefinder",
             "hudUpdate",
+            "mgrsMapDraw",
+            "mgrsMarkerText",
         ):
             self.assertIn(f"PREPS(hud,{name});", PREP_SRC, name)
 
@@ -331,6 +389,9 @@ class TestHudWiring(unittest.TestCase):
         self.assertIn("FUNC(hudRangefinder)", POSTINIT_SRC)
         self.assertIn("FUNC(hudMarkers)", POSTINIT_SRC)
         self.assertIn("FUNC(hudUpdate)", POSTINIT_SRC)
+
+    def test_the_postinit_starts_the_mgrs_map_overlay(self):
+        self.assertIn("FUNC(mgrsMapDraw)", POSTINIT_SRC)
 
     def test_the_postinit_hud_is_client_side(self):
         self.assertIn("hasInterface", POSTINIT_SRC)
