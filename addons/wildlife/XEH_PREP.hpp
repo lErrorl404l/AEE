@@ -38,3 +38,5 @@ PREP(callEmit);
 PREP(callReceive);
 PREP(ecologyBudget);
 PREP(ecologyTick);
+PREP(callPublish);
+PREP(callSample);

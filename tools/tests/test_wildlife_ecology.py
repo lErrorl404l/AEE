@@ -1306,5 +1306,104 @@ class TestEcologyTickSourceContracts(unittest.TestCase):
         self.assertIn("call FUNC(callReceive)", code)
 
 
+CALL_PUBLISH = FUNCS / "fnc_callPublish.sqf"
+CALL_SAMPLE = FUNCS / "fnc_callSample.sqf"
+
+CALL_GLOBALS = {
+    "WILDLIFE_CALL_HORIZON": 120,
+    "WILDLIFE_CALL_BUDGET": 256,
+}
+
+
+def bus_publish(bus, key=(0, 0), call_type="alarm", urgency=0.9, species="bird", now=0):
+    return run_sqf(
+        CALL_PUBLISH,
+        [bus, list(key), call_type, urgency, species, now],
+        globals_=CALL_GLOBALS,
+    )
+
+
+def bus_sample(bus, key=(0, 0), now=0):
+    return run_sqf(CALL_SAMPLE, [bus, list(key), now], globals_=CALL_GLOBALS)
+
+
+class TestCallBus(unittest.TestCase):
+    """fnc_callPublish and fnc_callSample run from the real SQF."""
+
+    def test_a_published_call_is_appended(self):
+        bus = bus_publish([])
+        self.assertEqual(len(bus), 1)
+        self.assertEqual(bus[0][1], "alarm")
+
+    def test_the_bus_never_exceeds_its_cap(self):
+        bus = []
+        for i in range(400):
+            bus = bus_publish(bus, urgency=(i % 10) / 10.0, now=i * 0.001)
+        self.assertLessEqual(len(bus), CALL_GLOBALS["WILDLIFE_CALL_BUDGET"])
+
+    def test_an_expired_call_is_dropped_on_publish(self):
+        bus = bus_publish([], now=0)
+        bus = bus_publish(bus, call_type="contact", now=200)
+        types = [row[1] for row in bus]
+        self.assertNotIn("alarm", types)
+
+    def test_an_expired_call_is_never_sampled(self):
+        bus = bus_publish([], now=0)
+        self.assertEqual(bus_sample(bus, now=500), [])
+
+    def test_a_live_call_is_sampled_at_its_cell(self):
+        bus = bus_publish([], key=(0, 0), call_type="alarm", urgency=0.9, now=10)
+        self.assertEqual(bus_sample(bus, key=(0, 0), now=10)[0], "alarm")
+
+    def test_a_call_at_another_cell_is_not_sampled(self):
+        bus = bus_publish([], key=(0, 0), now=10)
+        self.assertEqual(bus_sample(bus, key=(5, 5), now=10), [])
+
+    def test_the_strongest_live_call_is_returned(self):
+        bus = bus_publish([], key=(0, 0), call_type="contact", urgency=0.1, now=10)
+        bus = bus_publish(bus, key=(0, 0), call_type="alarm", urgency=0.9, now=10)
+        self.assertEqual(bus_sample(bus, key=(0, 0), now=10)[0], "alarm")
+
+    def test_an_empty_bus_is_silent(self):
+        self.assertEqual(bus_sample([], now=0), [])
+
+    def test_same_inputs_are_deterministic(self):
+        self.assertEqual(bus_publish([], now=10), bus_publish([], now=10))
+        bus = bus_publish([], now=10)
+        self.assertEqual(bus_sample(bus, now=10), bus_sample(bus, now=10))
+
+    def test_a_published_alarm_is_decoded_by_a_conspecific(self):
+        bus = bus_publish([], key=(0, 0), call_type="alarm", urgency=0.9, now=10)
+        call = bus_sample(bus, key=(0, 0), now=10)
+        reaction = receive(call[0], call[1], 0, 0, [200, 0.2])
+        self.assertIn(reaction[0], (2, 3))
+
+
+class TestCallBusSourceContracts(unittest.TestCase):
+    def test_the_kernels_are_pure(self):
+        for path in (CALL_PUBLISH, CALL_SAMPLE):
+            code = re.sub(
+                r"/\*.*?\*/", "", path.read_text(encoding="utf-8"), flags=re.DOTALL
+            )
+            code = re.sub(r"//[^\n]*", "", code)
+            for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+                self.assertNotIn(banned, code, banned)
+
+    def test_the_kernels_are_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        for name in ("callPublish", "callSample"):
+            self.assertIn(f"PREP({name})", text, name)
+
+    def test_the_tick_samples_the_bus(self):
+        code = ECOLOGY_TICK.read_text(encoding="utf-8")
+        self.assertIn("call FUNC(callSample)", code)
+        self.assertIn("QGVAR(communicationEnabled)", code)
+
+    def test_the_callback_publishes_the_bus(self):
+        code = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("call FUNC(callPublish)", code)
+        self.assertIn("QGVAR(callBus)", code)
+
+
 if __name__ == "__main__":
     unittest.main()
