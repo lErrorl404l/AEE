@@ -60,16 +60,48 @@ class CfgPatches {
 // setObjectMaterial cannot touch them and the engine would otherwise bake
 // them hot.  htMin/htMax stay on vehicles only: the cooling-time keys have no
 // meaning at the root.
+//
+// ─── AI IR detection model (issue #196) ──────────────────────────────────
+// The ir* keys below drive the ENGINE'S AI INFRARED DETECTION MODEL.  That
+// model is separate from the rendered thermal image: it decides whether an AI
+// sensor acquires a target, not what the FLIR displays.  AEE sets these keys
+// so the AI IR model is aligned with AEE's own heat model, and so every AI
+// machine resolves the same heat state the player sees.
+//
+//   irTarget (0..1)       weight of this class as an IR target
+//   irScanRangeMin/Max(m) AI IR sensor scan range envelope
+//   irScanToEyeFactor     range scale between the sensor and the eye
+//   irScanGround (0/1)    sensor may scan ground targets
+//
+// Every value is a LOAD-TIME CONFIG OVERRIDE.  The source is the vanilla
+// sample: All/AllVehicles in the base config.bin (irTarget=1,
+// irScanRangeMin=0, irScanRangeMax=0, irScanToEyeFactor=1, irScanGround=1),
+// Tank (irScanRangeMin=500, irScanRangeMax=4000), Man (irTarget=0) and Air
+// (irScanRangeMin=2000, irScanRangeMax=10000, irScanToEyeFactor=2).  A
+// configuration value cannot change at run time, so these keys are not a
+// runtime control.
+//
+// SensorsManagerComponent and laserScanner are NOT declared here.  They grant
+// an AI sensor suite and a laser scanner to a class, so they belong only to a
+// laser-designator class.  No class in this block is a designator, and the
+// engine already declares the real designator classes; doing so here would
+// wrongly equip every vehicle.
 class CfgVehicles {
     class All {
         afMax = 70;         // map-wide cap, alive/engine-on surface temp (C)
         mfMax = 50;         // map-wide cap, moving surface temp (C)
+        irTarget = 1;             // vanilla sample: an IR target by default
+        irScanRangeMin = 0;       // vanilla sample: no minimum range
+        irScanRangeMax = 0;       // vanilla sample: no maximum range
+        irScanToEyeFactor = 1;    // vanilla sample: unity sensor-to-eye scale
+        irScanGround = 1;         // vanilla sample: ground scan enabled
     };
 
     class Land;
     class Man: Land {
         mFact = 1;          // full metabolism influence
         tBody = 32;         // skin surface temp (C), not the 36.8 C core
+        irTarget = 0;       // vanilla sample: infantry is not an AI IR target
     };
 
     class AllVehicles: All {
@@ -79,6 +111,18 @@ class CfgVehicles {
         mfMax = 50;         // moving max surface temp (kinetic, C)
         mFact = 0;          // no metabolism - parked = ambient
         tBody = 0;          // no resting heat
+    };
+
+    class LandVehicle;
+    class Tank: LandVehicle {
+        irScanRangeMin = 500;     // vanilla Tank sample
+        irScanRangeMax = 4000;    // vanilla Tank sample
+    };
+
+    class Air: AllVehicles {
+        irScanRangeMin = 2000;    // vanilla Air sample
+        irScanRangeMax = 10000;   // vanilla Air sample
+        irScanToEyeFactor = 2;    // vanilla Air sample
     };
 
     class Animal;
