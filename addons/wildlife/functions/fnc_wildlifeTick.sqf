@@ -275,15 +275,77 @@ if (_spook) then {
 };
 
 if (_ambient) then {
+    private _seed = round (_now * 100);
     if (_gain > 0.01) then {
         // A deterministic weighted draw over every row with the bed key, so
         // a multi-file context varies instead of playing only its first row.
-        private _seed = round (_now * 100);
         private _source = [_manifest, _bedKey, _seed] call FUNC(pickBedSource);
         if (_source != "") then {
             [_source, _position, _gain] call FUNC(playAmbientBed);
         };
     };
+
+    // The behaviour-gated species layer.  The scheduler returns the calls for
+    // the current hour; the tick plays a few each second and advances through
+    // the schedule, so the dawn chorus is dense and the midday lull is near
+    // silent.  The mix carries each group's corpus bins and its sound group.
+    private _hourKey = floor (_now / 3600);
+    private _schedule = missionNamespace getVariable [QGVAR(soundSchedule), []];
+    if !(_schedule isEqualType []) then { _schedule = []; };
+    if (((count _schedule) < 3) || ((_schedule select 0) != _hourKey)) then {
+        private _corpus = missionNamespace getVariable [QGVAR(ecologyCorpus), []];
+        if !(_corpus isEqualType []) then { _corpus = []; };
+        private _assetMap = missionNamespace getVariable [QGVAR(assetMap), []];
+        if !(_assetMap isEqualType []) then { _assetMap = []; };
+        private _sunElev = [QEGVAR(core,currentSunElevation), 45, 1] call EFUNC(core,readState);
+        private _temperature = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+        private _today = date;
+        private _month = 1;
+        private _hour = 12;
+        if ((count _today) >= 4) then {
+            _month = _today select 1;
+            _hour = _today select 3;
+        };
+        private _platforms = [];
+        if (isClass (configFile >> "CfgSoundShaders" >> "Deercall_Forest_Night_SoundShader")) then {
+            _platforms = ["enoch"];
+        };
+        private _matches = [
+            _biome, _sunElev, _temperature, _month, _nearWater, _vegScore,
+            "ground", _settlement, [_wind, _rainAmount], _seed, _corpus
+        ] call FUNC(getSpeciesMatch);
+        private _mix = [];
+        for "_m" from 0 to ((count _matches) - 1) do {
+            private _match = _matches select _m;
+            private _groupId = _match select 0;
+            for "_r" from 0 to ((count _corpus) - 1) do {
+                private _row = _corpus select _r;
+                if ((_row select 1) == _groupId) then {
+                    _mix pushBack [_groupId, _row select 12, _match select 1, _row select 10];
+                };
+            };
+        };
+        private _emissions = [
+            _hour, _sunElev, _month, _temperature, _wind, _rainAmount, _gain,
+            _mix, _assetMap, _platforms, _seed
+        ] call FUNC(soundTick);
+        _schedule = [_hourKey, _emissions, 0];
+    };
+
+    private _emissions = _schedule select 1;
+    if !(_emissions isEqualType []) then { _emissions = []; };
+    private _cursor = _schedule select 2;
+    if !(_cursor isEqualType 0) then { _cursor = 0; };
+    private _total = count _emissions;
+    if (_total > 0) then {
+        for "_k" from 0 to (WILDLIFE_SOUND_INSTANCE_CAP - 1) do {
+            private _emission = _emissions select ((_cursor + _k) mod _total);
+            [_emission select 1, _position, _emission select 2, WILDLIFE_SOUND_MAX_DISTANCE] call FUNC(playOneShot);
+        };
+        _cursor = (_cursor + WILDLIFE_SOUND_INSTANCE_CAP) mod _total;
+    };
+    _schedule set [2, _cursor];
+    missionNamespace setVariable [QGVAR(soundSchedule), _schedule];
 };
 
 // Fauna: spawn up to the remaining allowance, then cull what is out of range
