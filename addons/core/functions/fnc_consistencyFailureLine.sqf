@@ -44,8 +44,8 @@ private _tolerance = _row select 4;
 
 private _missing = "__aee_no_data__";
 
-// First matching pair.  A string value marks the producer absent, exactly as
-// the evaluator's own lookup does.
+// First matching pair.  A non-scalar value marks the producer absent, exactly
+// as the evaluator's own lookup does.
 private _lookup = {
     params ["_pairs", "_name", "_default"];
     private _out = _default;
@@ -59,11 +59,16 @@ private _lookup = {
     _out
 };
 
-// The producer entries that carry a value, in row order.
+// The producer entries that carry a scalar value (NUMBER or BOOL), in row
+// order.  A container (for example the per-cell aee_thermal_groundNodeStack
+// HashMap) is dropped, matching the evaluator, so the line never compares a
+// non-scalar.
 private _present = [];
 {
     private _v = [_values, _x select 1, _missing] call _lookup;
-    if !(_v isEqualType "") then { _present pushBack [_x select 0, _x select 1, _v]; };
+    if ((_v isEqualType 0) || {_v isEqualType true}) then {
+        _present pushBack [_x select 0, _x select 1, _v];
+    };
 } forEach _producers;
 
 private _ref = 0;
@@ -134,17 +139,23 @@ if (_predicate == "daynight_consistent") then {
 // A predicate that cannot localise the disagreement names every producer.
 if ((count _bad) == 0) then { _bad = _present; };
 
-// Drift is the spread of the present producer values.  A `for` loop, not a
-// forEach block: an assignment to a file-local must survive the loop.
+// Drift is the spread of the present NUMBER values; a BOOL (the INV-5 night
+// flag) carries no magnitude and is skipped.  A `for` loop, not a forEach
+// block: an assignment to a file-local must survive the loop.
 private _vmin = 0;
 private _vmax = 0;
-if ((count _present) > 0) then {
-    _vmin = (_present select 0) select 2;
-    _vmax = _vmin;
-    for "_i" from 0 to ((count _present) - 1) do {
-        private _v = (_present select _i) select 2;
-        if (_v < _vmin) then { _vmin = _v; };
-        if (_v > _vmax) then { _vmax = _v; };
+private _haveRange = false;
+for "_i" from 0 to ((count _present) - 1) do {
+    private _v = (_present select _i) select 2;
+    if (_v isEqualType 0) then {
+        if (!_haveRange) then {
+            _vmin = _v;
+            _vmax = _v;
+            _haveRange = true;
+        } else {
+            if (_v < _vmin) then { _vmin = _v; };
+            if (_v > _vmax) then { _vmax = _v; };
+        };
     };
 };
 private _drift = _vmax - _vmin;
