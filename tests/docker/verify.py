@@ -135,6 +135,12 @@ _probe_expected = (
     "[P83] [PASS]",
     "[P91] [PASS]",
     "[P92] [PASS]",
+    "[P93] [PASS]",
+    "[P94] [PASS]",
+    "[P95] [PASS]",
+    "[P96] [PASS]",
+    "[P97] [PASS]",
+    "[P98] [PASS]",
 )
 _probe_missing = [m for m in _probe_expected if m not in text]
 if _probe_missing:
@@ -144,7 +150,7 @@ if _probe_missing:
 _probe_failed = sorted(
     set(
         re.findall(
-            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|91|92)\] \[FAIL\][^\n]*",
+            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|91|92|93|94|95|96|97|98)\] \[FAIL\][^\n]*",
             text,
         )
     )
