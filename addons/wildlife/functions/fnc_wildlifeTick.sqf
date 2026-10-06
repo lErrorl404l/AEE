@@ -374,6 +374,13 @@ if (_animals) then {
     };
 
     [_position] call FUNC(cullFauna);
+
+    // Keep a sustained emitter attached to each active animal, bounded to the
+    // active fauna near the player.  The scheduler emits behaviour-gated
+    // one-shots against the animal object; this keeps a looping source
+    // attached where a species has one, and releases it on despawn or when
+    // the class changes, so an emitter cannot leak.
+    [_position] call FUNC(emitterSync);
 };
 
 // The tick duration is recorded only inside the trace gate, so the

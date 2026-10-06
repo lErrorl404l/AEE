@@ -34,6 +34,8 @@ SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
 SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
 DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
 MONITOR = FUNCS / "fnc_monitorWildlife.sqf"
+EMITTER_PLAN = FUNCS / "fnc_emitterPlan.sqf"
+EMITTER_CLASS = FUNCS / "fnc_emitterClass.sqf"
 
 # A tiny manifest for the pure kernel tests.  The real manifest has the same
 # row shape.
@@ -1243,6 +1245,151 @@ class TestBedStability(unittest.TestCase):
         text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
         self.assertIn("takes no gain", text)
         self.assertIn("playOneShot", text)
+
+
+class TestEmitterPlan(unittest.TestCase):
+    """The bounded attached-emitter registry (task 27) runs from the real SQF."""
+
+    def plan(self, registry, active, cap=8, radius=150):
+        return run_sqf(EMITTER_PLAN, [registry, active, cap, radius])
+
+    def test_a_new_animal_gets_an_emitter(self):
+        create, keep, release = self.plan([], [["a", "owl", 10]])
+        self.assertEqual(create, [["a", "owl"]])
+        self.assertEqual(keep, [])
+        self.assertEqual(release, [])
+
+    def test_an_unchanged_animal_is_kept(self):
+        create, keep, release = self.plan([["a", "owl"]], [["a", "owl", 10]])
+        self.assertEqual(create, [])
+        self.assertEqual(keep, ["a"])
+        self.assertEqual(release, [])
+
+    def test_a_despawn_releases_the_emitter(self):
+        # 'z' is gone from the active list, so its emitter is released.
+        create, keep, release = self.plan(
+            [["a", "owl"], ["z", "owl"]], [["a", "owl", 10]]
+        )
+        self.assertEqual(create, [])
+        self.assertEqual(keep, ["a"])
+        self.assertEqual(release, ["z"])
+
+    def test_a_key_change_recreates_the_emitter(self):
+        create, keep, release = self.plan([["a", "owl"]], [["a", "deer", 10]])
+        self.assertEqual(create, [["a", "deer"]])
+        self.assertEqual(keep, [])
+        self.assertEqual(release, ["a"])
+
+    def test_an_animal_beyond_the_radius_is_released(self):
+        create, keep, release = self.plan([["a", "owl"]], [["a", "owl", 200]])
+        self.assertEqual(create, [])
+        self.assertEqual(keep, [])
+        self.assertEqual(release, ["a"])
+
+    def test_the_cap_bounds_the_live_total(self):
+        registry = [["a", "owl"], ["b", "owl"], ["c", "owl"]]
+        active = [["a", "owl", 10], ["b", "owl", 20], ["c", "owl", 30]]
+        create, keep, release = self.plan(registry, active, cap=2)
+        self.assertEqual(create, [])
+        self.assertEqual(keep, ["a", "b"])
+        self.assertEqual(release, ["c"])
+
+    def test_the_nearest_animals_are_kept_first(self):
+        create, keep, release = self.plan(
+            [], [["a", "owl", 30], ["b", "owl", 10]], cap=1
+        )
+        self.assertEqual(create, [["b", "owl"]])
+
+    def test_an_empty_input_is_an_empty_plan(self):
+        create, keep, release = self.plan([], [])
+        self.assertEqual(create, [])
+        self.assertEqual(keep, [])
+        self.assertEqual(release, [])
+
+
+class TestEmitterClass(unittest.TestCase):
+    """fnc_emitterClass runs from the real SQF."""
+
+    ASSET_MAP = [
+        ["sound", "owl", "CONFIRMED", ["a3\\sounds_f\\animals\\owl1.wss"], []],
+        ["sound", "deer", "CONFIRMED", ["DeerCall", "Deer_Call.wss"], []],
+        ["sound", "water", "CONFIRMED", [], []],
+    ]
+
+    def test_a_class_entry_is_the_looping_source(self):
+        self.assertEqual(run_sqf(EMITTER_CLASS, ["deer", self.ASSET_MAP]), "DeerCall")
+
+    def test_a_raw_path_is_not_a_looping_source(self):
+        self.assertEqual(run_sqf(EMITTER_CLASS, ["owl", self.ASSET_MAP]), "")
+
+    def test_a_group_with_no_media_has_no_source(self):
+        self.assertEqual(run_sqf(EMITTER_CLASS, ["water", self.ASSET_MAP]), "")
+
+    def test_an_unknown_group_has_no_source(self):
+        self.assertEqual(run_sqf(EMITTER_CLASS, ["nope", self.ASSET_MAP]), "")
+
+    def test_an_empty_group_has_no_source(self):
+        self.assertEqual(run_sqf(EMITTER_CLASS, ["", self.ASSET_MAP]), "")
+
+
+class TestEmitterSourceContracts(unittest.TestCase):
+    """The engine wiring the harness cannot execute (task 27)."""
+
+    def test_the_one_shot_passes_the_emitter_object(self):
+        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        self.assertIn('["_attachTo", objNull, [objNull]]', text)
+        # The object branch takes the animal as the sound source.
+        self.assertIn("playSound3D [_source, _attachTo,", text)
+        self.assertIn("getPosASL _attachTo", text)
+        # The positional branch is kept for the ambient layer.
+        self.assertIn("playSound3D [_source, objNull,", text)
+
+    def test_the_fear_call_passes_the_fleeing_agent(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn(
+            "WILDLIFE_SOUND_MAX_DISTANCE, _agent] call FUNC(playOneShot)", text
+        )
+
+    def test_the_emitter_functions_are_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        for name in ("emitterPlan", "emitterClass", "emitterSync", "emitterRelease"):
+            self.assertIn(f"PREP({name})", text, name)
+
+    def test_the_emitter_constants_are_declared(self):
+        text = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
+        self.assertIn("WILDLIFE_EMITTER_CAP", text)
+        self.assertIn("WILDLIFE_EMITTER_RADIUS", text)
+
+    def test_the_sync_attaches_and_bounds_the_emitter(self):
+        text = (FUNCS / "fnc_emitterSync.sqf").read_text(encoding="utf-8")
+        self.assertIn("call FUNC(emitterPlan)", text)
+        self.assertIn("createSoundSourceLocal", text)
+        self.assertIn("attachTo [_agent", text)
+        self.assertIn("WILDLIFE_EMITTER_CAP", text)
+        self.assertIn("WILDLIFE_EMITTER_RADIUS", text)
+        self.assertIn("QGVAR(emitters)", text)
+
+    def test_a_culled_animal_releases_its_emitter(self):
+        text = (FUNCS / "fnc_cullFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("FUNC(emitterRelease)", text)
+
+    def test_a_teardown_releases_every_emitter(self):
+        text = (FUNCS / "fnc_teardownWildlife.sqf").read_text(encoding="utf-8")
+        self.assertIn("QGVAR(emitters)", text)
+        self.assertIn("deleteVehicle", text)
+
+    def test_the_tick_syncs_the_emitters(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("FUNC(emitterSync)", text)
+
+    def test_the_spawn_records_the_sound_group(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("QGVAR(soundGroup)", text)
+
+    def test_the_emitter_is_client_local(self):
+        for name in ("fnc_emitterSync.sqf", "fnc_emitterRelease.sqf"):
+            text = (FUNCS / name).read_text(encoding="utf-8")
+            self.assertIn("hasInterface", text, name)
 
 
 if __name__ == "__main__":
