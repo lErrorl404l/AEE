@@ -43,3 +43,7 @@ PREP(ecologyBudget);
 PREP(ecologyTick);
 PREP(callPublish);
 PREP(callSample);
+PREP(emitterPlan);
+PREP(emitterClass);
+PREP(emitterSync);
+PREP(emitterRelease);

@@ -91,11 +91,15 @@ for "_m" from 0 to ((count _matches) - 1) do {
     private _match = _matches select _m;
     private _groupId = _match select 0;
 
-    // The group habitat weights from the corpus row.
+    // The group habitat weights and the sound group from the corpus row.
+    // The sound group is stored on the agent so the emitter layer can resolve
+    // a looping source class for it without a per-species branch here.
     private _habitat = [];
+    private _soundGroup = "";
     for "_r" from 0 to ((count _ecologyCorpus) - 1) do {
         if (((_ecologyCorpus select _r) select 1) == _groupId) then {
             _habitat = (_ecologyCorpus select _r) select 9;
+            _soundGroup = (_ecologyCorpus select _r) select 12;
         };
     };
 
@@ -112,7 +116,7 @@ for "_m" from 0 to ((count _matches) - 1) do {
                     for "_s" from 0 to ((count _species) - 1) do {
                         if (((_species select _s) select 0) == _class) then { _seen = true; };
                     };
-                    if (!_seen) then { _species pushBack [_class, _count]; };
+                    if (!_seen) then { _species pushBack [_class, _count, _soundGroup]; };
                 };
             };
         };
@@ -122,7 +126,7 @@ for "_m" from 0 to ((count _matches) - 1) do {
 private _forceSpecies = missionNamespace getVariable ["aee_wildlife_forceSpecies", ""];
 if !(_forceSpecies isEqualType "") then { _forceSpecies = ""; };
 if (_forceSpecies != "") then {
-    _species = [[_forceSpecies, 1]];
+    _species = [[_forceSpecies, 1, ""]];
 };
 
 private _created = [];
@@ -132,6 +136,9 @@ for "_s" from 0 to ((count _species) - 1) do {
     private _row = _species select _s;
     private _cls = _row select 0;
     private _count = _row select 1;
+    private _group = "";
+    if ((count _row) >= 3) then { _group = _row select 2; };
+    if !(_group isEqualType "") then { _group = ""; };
     if !(_count isEqualType 0) then { _count = 1; };
 
     for "_j" from 1 to (round _count) do {
@@ -147,6 +154,9 @@ for "_s" from 0 to ((count _species) - 1) do {
             private _agent = createAgent [_cls, _spawnPos, [], 0, "NONE"];
             if (!isNull _agent) then {
                 _agent setVariable ["BIS_fnc_animalBehaviour_disable", true];
+                // The sound group lets the emitter layer resolve a looping
+                // source class for this animal, generically.
+                _agent setVariable [QGVAR(soundGroup), _group];
                 private _id = format ["wild_%1_%2", (round CBA_missionTime), (count _created)];
                 _created pushBack [_id, _agent, _cls, _spawnPos];
                 [_id, _agent, _cls] call FUNC(applyAnimalBehaviour);
