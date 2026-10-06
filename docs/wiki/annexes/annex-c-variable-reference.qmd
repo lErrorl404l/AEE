@@ -132,6 +132,15 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_eyeAdaptedLux` | optics | Adapted scene illuminance after the eye model, lx |
 | `aee_optics_eyeAperture` | optics | Aperture the eye model pinned, higher is wider |
 | `aee_optics_eyePupilMm` | optics | Pupil diameter the eye model carries, mm |
+| `aee_optics_eyeAdaptTargetLux` | optics | Scene illuminance the eye model is adapting toward, lx |
+| `aee_optics_eyeAdaptDirection` | optics | Adaptation direction: -1 dark-adapting, 0 settled, +1 light-adapting |
+| `aee_optics_eyeAdaptTau` | optics | Effective adaptation time constant of the slowest pool, s |
+| `aee_optics_eyeAdaptTimeToAdapt` | optics | Time to cover 95 percent of the remaining adaptation, s |
+| `aee_optics_eyeAdaptInitialised` | optics | True once the eye takes its initial state from the scene at spawn |
+| `aee_optics_eyeAcuity` | optics | Scotopic acuity factor, 1 daylight down to a dark floor |
+| `aee_optics_eyeColourLoss` | optics | Scotopic colour-loss factor, 0 photopic to 1 rod monochromacy |
+| `aee_optics_eyeDarkNoise` | optics | Scotopic dark-noise (visual grain) factor, 0 to 1 |
+| `aee_optics_eyeGlare` | optics | Veiling glare factor from a local source, 0 to 1 |
 | `aee_optics_eyeMesopic` | optics | CIE 191:2010 photopic fraction, 0 scotopic to 1 photopic |
 | `aee_optics_eyeSkyFraction` | optics | Open-sky fraction from the sky raycast, 0 to 1 |
 | `aee_optics_eyeRawAmbient` | optics | Raw ambient input to the eye model, lx |

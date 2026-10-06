@@ -34,6 +34,9 @@ PUPIL_STEP = EYE / "fnc_eyePupilStep.sqf"
 ADAPT_STEP = EYE / "fnc_eyeAdaptStep.sqf"
 SCENE_LUX = EYE / "fnc_eyeSceneLux.sqf"
 AMBIENT = EYE / "fnc_eyeAmbientLux.sqf"
+ADAPT_INIT = EYE / "fnc_eyeAdaptInit.sqf"
+ADAPT_STATE = EYE / "fnc_eyeAdaptState.sqf"
+LIMITS = EYE / "fnc_eyeLimits.sqf"
 SKY_FRACTION = EYE / "fnc_eyeSkyFraction.sqf"
 SKY_CAST = EYE / "fnc_eyeSkyCast.sqf"
 APERTURE = EYE / "fnc_eyeAperture.sqf"
@@ -223,6 +226,9 @@ class TestEyeSkyFraction(unittest.TestCase):
         self.assertEqual(run_sqf(SKY_FRACTION, [[False, False]]), 0)
 
 
+EYE_RHO = 0.18  # the driver eyeReflectance default
+
+
 def aperture(lux):
     """Mirror of fnc_eyeAperture: log-lux -> aperture.
 
@@ -233,24 +239,28 @@ def aperture(lux):
     (50 = daylight outdoor, 30 = indoor, below 20 = very bright, closer to 0
     lets in more light).
     """
-    lux = max(0.001, min(100000.0, lux))
-    ev = math.log10(lux)
-    t = max(0.0, min(1.0, (ev - (-3)) / (5 - (-3))))
-    return 8 + t * (50 - 8)
+    d = pupil_steady(EYE_RHO * max(1e-9, lux) / math.pi)
+    d = max(1.9, min(8.0, d))
+    t = max(0.0, min(1.0, (d - 1.9) / (8.0 - 1.9)))
+    return 50 + t * (8 - 50)
 
 
 class TestEyeAperture(unittest.TestCase):
     """fnc_eyeAperture runs from the real SQF and matches the wiki anchors."""
 
-    def test_night_anchor(self):
-        self.assertAlmostEqual(run_sqf(APERTURE, [0.001]), 8, places=6)
+    def test_starlight_is_near_the_night_end(self):
+        v = run_sqf(APERTURE, [0.001])
+        self.assertGreater(v, 8.0)
+        self.assertLess(v, 12.0)
 
-    def test_day_anchor(self):
-        # Regression: the day anchor is the daylight outdoor value (50), not
-        # the scenario-less setApertureNew Example 1 value 0.2.  A 0.2 anchor
-        # is close to 0, so it pinned a near-maximum light intake at noon and
+    def test_full_sun_is_near_the_day_end(self):
+        # Regression: at full sun the aperture is the daylight outdoor value
+        # (50), not the scenario-less setApertureNew Example 1 value 0.2.  A
+        # 0.2 anchor pinned a near-maximum light intake at noon and
         # over-exposed normal vision (the daytime blowout report).
-        self.assertAlmostEqual(run_sqf(APERTURE, [100000]), 50, places=6)
+        v = run_sqf(APERTURE, [100000])
+        self.assertGreater(v, 47.0)
+        self.assertLess(v, 50.5)
 
     def test_map_ascends_from_night_to_day(self):
         # A lower value is more light, so a brighter scene must map to a
@@ -266,8 +276,8 @@ class TestEyeAperture(unittest.TestCase):
             prev = got
 
     def test_clamps_outside_the_domain(self):
-        self.assertAlmostEqual(run_sqf(APERTURE, [1e-9]), 8, places=6)
-        self.assertAlmostEqual(run_sqf(APERTURE, [1e9]), 50, places=6)
+        self.assertLess(run_sqf(APERTURE, [1e-9]), 9.0)
+        self.assertGreater(run_sqf(APERTURE, [1e9]), 49.5)
 
     def test_day_anchor_is_a_daylight_value(self):
         # Source contract: the day anchor must sit above the BI wiki "very
@@ -479,16 +489,16 @@ class TestEyeNightAndDayAperture(unittest.TestCase):
     def test_moonlit_night_is_wide(self):
         # 0.25 lx moonlit night -> a wide aperture, not the indoor value (~33).
         v = run_sqf(APERTURE, [0.25])
-        self.assertGreater(v, 15)
-        self.assertLess(v, 25)
+        self.assertGreater(v, 12)
+        self.assertLess(v, 20)
 
-    def test_starlight_is_the_night_anchor(self):
-        self.assertAlmostEqual(run_sqf(APERTURE, [0.001]), 8, places=6)
+    def test_starlight_is_wide(self):
+        self.assertLess(run_sqf(APERTURE, [0.001]), 12)
 
     def test_noon_is_the_daylight_anchor(self):
-        # RPT day adaptedLux 68036 -> ~49 (BIKI daylight outdoor 50).
+        # RPT day adaptedLux 68036 -> near the BIKI daylight outdoor point.
         v = run_sqf(APERTURE, [68036])
-        self.assertGreater(v, 48.5)
+        self.assertGreater(v, 46.0)
         self.assertLess(v, 50.5)
 
     def test_a_local_light_raises_the_adapted_aperture(self):
@@ -499,6 +509,172 @@ class TestEyeNightAndDayAperture(unittest.TestCase):
         self.assertGreater(
             run_sqf(APERTURE, [lit]), run_sqf(APERTURE, [dark]) + 5
         )
+
+
+# ─── Driver default settings, mirrored for the transient simulation ─────────
+RHO = 0.18
+TAU_LIGHT = 2.0
+TAU_DARK_CONE = 120.0
+TAU_DARK_ROD = 400.0
+LN20 = math.log(20.0)
+
+
+def scene_target(scene_lux, rho=RHO):
+    """The driver's target log-luminance for a scene illuminance, lx."""
+    return math.log10(max(rho * scene_lux / math.pi, 1e-9))
+
+
+def pool_step(state, target, dt):
+    cone, rod = state
+    tau_c = TAU_LIGHT if target >= cone else TAU_DARK_CONE
+    tau_r = TAU_LIGHT if target >= rod else TAU_DARK_ROD
+    return [
+        cone + (target - cone) * (1 - math.exp(-dt / tau_c)),
+        rod + (target - rod) * (1 - math.exp(-dt / tau_r)),
+    ]
+
+
+def adapted_aperture(state, scene_lux, rho=RHO):
+    """The aperture the driver pins for a pool state and the current scene."""
+    lum = rho * scene_lux / math.pi
+    w = mesopic_weight(lum)
+    x = w * state[0] + (1 - w) * state[1]
+    return aperture((math.pi / rho) * (10 ** x))
+
+
+class TestEyeAdaptInit(unittest.TestCase):
+    """A night start is already dark-adapted, a day start light-adapted."""
+
+    def test_night_start_is_dark_adapted(self):
+        x = scene_target(0.1)  # a dark night
+        got = run_sqf(ADAPT_INIT, [x])
+        self.assertAlmostEqual(got[0], x, places=6)
+        self.assertAlmostEqual(got[1], x, places=6)
+
+    def test_day_start_is_light_adapted(self):
+        x = scene_target(10000.0)
+        got = run_sqf(ADAPT_INIT, [x])
+        self.assertAlmostEqual(got[0], x, places=6)
+        self.assertAlmostEqual(got[1], x, places=6)
+
+    def test_day_init_is_far_above_night_init(self):
+        night = run_sqf(ADAPT_INIT, [scene_target(0.1)])[0]
+        day = run_sqf(ADAPT_INIT, [scene_target(10000.0)])[0]
+        self.assertGreater(day, night + 3.0)
+
+
+class TestEyeAdaptState(unittest.TestCase):
+    """The published direction, effective tau and time to adapt."""
+
+    def test_settled_is_direction_zero(self):
+        self.assertEqual(run_sqf(ADAPT_STATE, [[0, 0], 0, 1, 2, 120, 400])[0], 0)
+
+    def test_light_adapting_uses_the_light_tau(self):
+        d, tau, t = run_sqf(ADAPT_STATE, [[-2, -2], 2, 1, 2, 120, 400])
+        self.assertEqual(d, 1)
+        self.assertAlmostEqual(tau, 2.0, places=6)
+        self.assertAlmostEqual(t, 2.0 * LN20, places=4)
+
+    def test_dark_adapting_uses_the_rod_tau(self):
+        d, tau, t = run_sqf(ADAPT_STATE, [[2, 2], -2, 1, 2, 120, 400])
+        self.assertEqual(d, -1)
+        self.assertAlmostEqual(tau, 400.0, places=6)
+        self.assertAlmostEqual(t, 400.0 * LN20, places=3)
+
+    def test_mesopic_level_weights_the_pools(self):
+        # Level = 0.5*(-4) + 0.5*(0) = -2, target +2 -> light-adapting.
+        d, _tau, _t = run_sqf(ADAPT_STATE, [[-4, 0], 2, 0.5, 2, 120, 400])
+        self.assertEqual(d, 1)
+
+
+class TestEyeAdaptationTransient(unittest.TestCase):
+    """The eye overshoots then settles.
+
+    Dark to bright is a brief over-brightness (the aperture is still wide), and
+    bright to dark is a brief under-brightness (the aperture is still narrow).
+    Simulated through the real pool kernel and the aperture mirror.
+    """
+
+    DARK = 0.1
+    BRIGHT = 10000.0
+    DT = 0.05
+
+    def _settle(self, scene_lux, seconds=4000.0):
+        state = run_sqf(ADAPT_INIT, [scene_target(scene_lux)])
+        for _ in range(int(seconds / self.DT)):
+            state = pool_step(state, scene_target(scene_lux), self.DT)
+        return state
+
+    def test_dark_to_bright_overshoots_bright_then_settles(self):
+        dark = self._settle(self.DARK)
+        transient = adapted_aperture(dark, self.BRIGHT)
+        settle = adapted_aperture(self._settle(self.BRIGHT), self.BRIGHT)
+        # The transient aperture is wider (less light intake) -> over-bright.
+        self.assertLess(transient, settle)
+        state = dark
+        for _ in range(int((10 * TAU_LIGHT) / self.DT)):
+            state = pool_step(state, scene_target(self.BRIGHT), self.DT)
+        self.assertAlmostEqual(adapted_aperture(state, self.BRIGHT), settle, delta=1.5)
+
+    def test_bright_to_dark_undershoots_dark_then_recovers(self):
+        bright = self._settle(self.BRIGHT)
+        transient = adapted_aperture(bright, self.DARK)
+        settle = adapted_aperture(self._settle(self.DARK), self.DARK)
+        # The transient aperture is narrower (more light intake) -> under-bright.
+        self.assertGreater(transient, settle)
+        # Dark adaptation is slow: after 30 s it is still clearly under-bright.
+        state = bright
+        for _ in range(int(30.0 / self.DT)):
+            state = pool_step(state, scene_target(self.DARK), self.DT)
+        self.assertGreater(adapted_aperture(state, self.DARK), settle + 1.0)
+
+
+class TestEyeLimits(unittest.TestCase):
+    """Human limits: scotopic acuity, colour loss, dark noise, scattered glare.
+
+    The glare term is angular scatter, not an on-axis-or-nothing cone: a source
+    off to the side is dimmer by angle but never zero, and fog adds in-scatter.
+    """
+
+    def test_photopic_is_unimpaired(self):
+        a, c, n, g = run_sqf(LIMITS, [100, 1, 0, 0, 0])
+        self.assertAlmostEqual(a, 1.0, places=6)
+        self.assertAlmostEqual(c, 0.0, places=6)
+        self.assertAlmostEqual(n, 0.0, places=6)
+        self.assertAlmostEqual(g, 0.0, places=6)
+
+    def test_scotopic_acuity_has_a_floor(self):
+        a, _c, _n, _g = run_sqf(LIMITS, [0.001, 0, 0, 0, 0])
+        self.assertAlmostEqual(a, 0.15, places=6)
+
+    def test_scotopic_is_achromatic(self):
+        _a, c, _n, _g = run_sqf(LIMITS, [0.001, 0, 0, 0, 0])
+        self.assertAlmostEqual(c, 1.0, places=6)
+
+    def test_dark_noise_rises_as_the_light_falls(self):
+        _a, _c, dim, _g = run_sqf(LIMITS, [0.01, 0, 0, 0, 0])
+        _a, _c, bright, _g = run_sqf(LIMITS, [10, 0, 0, 0, 0])
+        self.assertGreater(dim, bright)
+
+    def test_on_axis_source_scatters(self):
+        _a, _c, _n, g = run_sqf(LIMITS, [1, 1, 100, 0, 0])
+        self.assertGreater(g, 0.5)
+
+    def test_off_axis_source_is_not_zero(self):
+        # A headlight off to the side is dimmer but still visible.
+        _a, _c, _n, g = run_sqf(LIMITS, [1, 1, 100, 85, 0])
+        self.assertGreater(g, 0.0)
+
+    def test_scatter_decays_with_angle_but_never_reaches_zero(self):
+        _a, _c, _n, on = run_sqf(LIMITS, [1, 1, 100, 0, 0])
+        _a, _c, _n, far = run_sqf(LIMITS, [1, 1, 100, 179, 0])
+        self.assertGreater(on, far)
+        self.assertGreater(far, 0.0)
+
+    def test_fog_adds_in_scatter(self):
+        _a, _c, _n, clear = run_sqf(LIMITS, [1, 1, 100, 85, 0])
+        _a, _c, _n, foggy = run_sqf(LIMITS, [1, 1, 100, 85, 1])
+        self.assertGreater(foggy, clear)
 
 
 if __name__ == "__main__":
