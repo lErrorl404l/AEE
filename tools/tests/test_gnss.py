@@ -104,5 +104,71 @@ class TestGnssErrorEllipseSourceContract(unittest.TestCase):
         self.assertIn("per-constant register", src)
 
 
+class TestGnssFixState(unittest.TestCase):
+    def test_fresh_start_reports_a_good_fix(self):
+        quality, time_since, reacq, lag, stutter = fix_state(1.0, 1.0, 0.0, [])
+        self.assertEqual(quality, "ok")
+        self.assertEqual(time_since, 0)
+        self.assertEqual(reacq, 1)
+        self.assertEqual(lag, 0)
+        self.assertEqual(stutter, 0)
+
+    def test_signal_loss_clears_the_fix_and_ages_it(self):
+        quality, time_since, reacq, lag, _s = fix_state(1.0, 0.0, 0.0, [0, 1])
+        self.assertEqual(quality, "none")
+        self.assertEqual(reacq, 0)
+        self.assertEqual(time_since, 1.0)
+        self.assertGreater(lag, 0)
+
+    def test_return_proves_a_reacquisition_ramp_and_a_lagged_offset(self):
+        # Given a signal loss, when the signal returns, then the
+        # re-acquisition progress climbs over several steps and the lagged
+        # offset falls back to zero.  A lost fix leaves reacq at 0.
+        lost = fix_state(1.0, 0.0, 0.0, [0, 1])
+        self.assertEqual(lost[2], 0)
+
+        prev = [lost[1], lost[2]]
+        progress = []
+        lags = []
+        qualities = []
+        for _ in range(4):
+            out = fix_state(1.0, 1.0, 0.0, prev)
+            qualities.append(out[0])
+            progress.append(out[2])
+            lags.append(out[3])
+            prev = [out[1], out[2]]
+
+        # The first return step is degraded, not instantly re-acquired.
+        self.assertEqual(qualities[0], "degraded")
+        self.assertLess(progress[0], 1)
+        self.assertEqual(qualities[-1], "ok")
+        self.assertEqual(progress[-1], 1)
+
+        for a, b in zip(progress, progress[1:]):
+            self.assertLess(a, b)
+        for a, b in zip(lags, lags[1:]):
+            self.assertGreater(a, b)
+        self.assertGreater(lags[0], 0)
+        self.assertEqual(lags[-1], 0)
+
+    def test_jamming_removes_a_fix(self):
+        quality, _t, reacq, _lag, _s = fix_state(1.0, 1.0, 1.0, [0, 1])
+        self.assertEqual(quality, "none")
+        self.assertEqual(reacq, 0)
+
+
+class TestGnssFixStateSourceContract(unittest.TestCase):
+    def test_preps_registration(self):
+        prep = PREP.read_text(encoding="utf-8")
+        self.assertIn("PREPS(geo,gnssFixState)", prep)
+
+    def test_header_records_the_continuity_source_and_unsourced_shapes(self):
+        src = FIXSTATE.read_text(encoding="utf-8")
+        self.assertIn("Standard Positioning Service", src)
+        self.assertIn("Continuity", src)
+        self.assertIn("UNSOURCED", src)
+        self.assertIn("per-constant register", src)
+
+
 if __name__ == "__main__":
     unittest.main()
