@@ -475,9 +475,28 @@ private _hazeAlpha = [_airTempC, 0.15, _heatHazeMax] call FUNC(heatHazeAlpha);
 private _hazeScale = 1;
 if (_heatHazeEnabled) then {
     private _hazeRef = [20, 0.15, _heatHazeMax] call FUNC(heatHazeAlpha);
-    _hazeScale = ((_hazeAlpha / _hazeRef) max 0.2) min 1.5;
+    // Guard the reference: heatHazeMaxAlpha 0 makes the 20 C reference 0, so
+    // the raw ratio divides by zero.  A zero ceiling disables the temperature
+    // coupling, so the scale is the neutral 1.
+    _hazeScale = if (_hazeRef > 0) then {
+        ((_hazeAlpha / _hazeRef) max 0.2) min 1.5
+    } else {
+        1
+    };
 };
-private _alphaMax = _alphaSetting * _hazeScale;
+
+// The matcher publishes the per-world haze scale as element 3 of
+// aee_environmental_worldLighting.  Default 1 when it has not run.  The
+// grain path reads the same array (fnc_applyWeatherGrain reads element 2),
+// so the star, grain and haze elements all have a consumer.
+private _worldProfile = missionNamespace getVariable [QEGVAR(environmental,worldLighting), [1, 1, 1, 1]];
+private _hazeWorldScale = 1;
+if ((_worldProfile isEqualType []) && {(count _worldProfile) > 3}) then {
+    _hazeWorldScale = _worldProfile select 3;
+};
+if !(_hazeWorldScale isEqualType 0) then { _hazeWorldScale = 1; };
+
+private _alphaMax = _alphaSetting * _hazeScale * _hazeWorldScale;
 
 // The diagnostic throttle.  One batch per _LOG_INTERVAL, timed on diag_tickTime
 // because the caller drives this on the environment tick, not per frame.
