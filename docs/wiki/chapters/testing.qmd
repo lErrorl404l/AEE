@@ -22,6 +22,11 @@ against its Python mirror for each world. `test_geo_positioning` covers the
 consistency evaluator and the anchor contract. `test_gnss` covers the
 error-ellipse, fix-state and datalink kernels. Each suite runs the real SQF
 kernel through the `sqf_lite` harness where the kernel is pure.
+The wildlife ecology kernels add two suites: `test_wildlife_ecology` and
+`test_wildlife`. They run the real SQF kernels through the `sqf_lite`
+harness with fixtures, and they pin the corpus to a fresh render. Each pure
+kernel has a mutation proof: one edit makes exactly one test fail, then the
+restore makes it pass.
 
 The single-command runner executes every suite plus the physics validation
 harness:
@@ -115,6 +120,20 @@ non-zero verdict fails the run. The derivation lives in
 Environment overrides: `AEE_RUN_ID`, `AEE_RUN_DIR`, `AEE_GAME_PORT`,
 `AEE_PROFILE`, `COMPOSE_PROJECT_NAME`, `AEE_PORT_SLOT`, `AEE_SKIP_BUILD` and
 `AEE_PARALLEL_JOBS`.
+
+### Ecology probes
+
+The wildlife ecology layer adds four probes. Each drives a pure kernel with
+fixtures, or a kernel that reads the terrain only. No probe claims a rendered
+pixel or a played sample. The `init.sqf` owns the single `[AEE-TEST] DONE`
+line, and each probe emits its own `[P10n] [PASS]` or `[P10n] [FAIL]` line.
+
+| Probe | Checks |
+|---|---|
+| P102 | Environment sampler budget and re-queue, and the pure cache cap and age |
+| P103 | Ecology cognition tick budget, the front re-queue and the client gate |
+| P104 | Call emit and receive semantics, and the heard-call bus |
+| P105 | Sound emission schedule: dawn peak, mid-day lull, Dolbear duty cycle |
 
 ## Engine mass census
 

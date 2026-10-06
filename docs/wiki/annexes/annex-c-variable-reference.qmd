@@ -603,6 +603,26 @@ The thermal-realism work adds one operator setting and one runtime variable.
 | `aee_thermal_activeIR` | thermal | Registered setting under **AEE Thermal > Sensor**: enable the active-IR illuminator (client-local, default off) |
 | `aee_thermal_activeIRLight` | thermal | The active-IR light object while the illuminator runs; `objNull` when it is off |
 
+### Wildlife ecology settings
+
+The ecology layer adds three subcategories under **AEE Wildlife** and three
+debug switches under **AEE Debug > Wildlife**. Every numeric default mirrors
+the kernel default and the per-constant register.
+
+| Variable | Category | Purpose |
+|---|---|---|
+| `aee_wildlife_environmentEnabled` | Wildlife > Environment | Enable the budgeted neighbourhood grid sampler |
+| `aee_wildlife_environmentCellSize` | Wildlife > Environment | The grid cell size, metres |
+| `aee_wildlife_environmentBudgetMs` | Wildlife > Environment | The per-call millisecond budget |
+| `aee_wildlife_cognitionEnabled` | Wildlife > Cognition | Enable the budgeted ecology tick |
+| `aee_wildlife_cognitionBudgetMs` | Wildlife > Cognition | The per-call millisecond budget |
+| `aee_wildlife_communicationEnabled` | Wildlife > Communication | Enable the heard-call bus |
+| `aee_wildlife_callRange` | Wildlife > Communication | The audibility range, metres |
+| `aee_wildlife_callBudget` | Wildlife > Communication | The heard-call bus cap |
+| `aee_wildlife_environmentDebug` | Debug > Wildlife | Trace the environment sampler |
+| `aee_wildlife_cognitionDebug` | Debug > Wildlife | Trace the ecology tick |
+| `aee_wildlife_communicationDebug` | Debug > Wildlife | Trace the call bus |
+
 ### Exposure pin test (thermal)
 
 `aee_thermal_agcPinned` is a debug-console switch, not a registered
@@ -733,6 +753,35 @@ providers. The per-animal needs and herd anchor live on the agent object.
 | `aee_wildlife_hunger` | wildlife | Per-animal hunger, an object variable |
 | `aee_wildlife_thirst` | wildlife | Per-animal thirst, an object variable |
 | `aee_wildlife_herdAnchor` | wildlife | Per-animal herd leash centre, an object variable |
+
+## Wildlife ecology state
+
+The ecology layer publishes its corpus, its environment cache, its cognition
+queue and its communication buses. The per-animal rules, perception and heard
+call live on the agent object.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_wildlife_assetMap` | wildlife | The loaded species-to-sound asset map |
+| `aee_wildlife_ecologyCorpus` | wildlife | The loaded species ecology corpus |
+| `aee_wildlife_environment` | wildlife | The per-cell environment sample cache, bounded and aged |
+| `aee_wildlife_environmentPending` | wildlife | The unsampled grid cells, re-queued at the front |
+| `aee_wildlife_environmentLastMs` | wildlife | The elapsed milliseconds of the last sampler call |
+| `aee_wildlife_ecologyPending` | wildlife | The animals not yet solved this ecology cycle |
+| `aee_wildlife_callBus` | wildlife | The heard-call bus, bounded and decayed |
+| `aee_wildlife_soundEvents` | wildlife | The propagated sound-event bus |
+| `aee_wildlife_soundSchedule` | wildlife | The species emission schedule for the current hour |
+| `aee_wildlife_speciesEmit` | wildlife | The per-group emission gate state |
+| `aee_wildlife_emitters` | wildlife | The live attached 3D sound emitters |
+| `aee_wildlife_ambientKey` | wildlife | The ambient bed source key, for the recreate guard |
+| `aee_wildlife_lastTickMs` | wildlife | The elapsed milliseconds of the last wildlife tick |
+| `aee_wildlife_speciesRules` | wildlife | Per-animal species rules, an object variable |
+| `aee_wildlife_habitatWeights` | wildlife | Per-animal habitat weights, an object variable |
+| `aee_wildlife_soundGroup` | wildlife | Per-animal asset-map sound group, an object variable |
+| `aee_wildlife_speciesGroup` | wildlife | Per-animal ecology species group, an object variable |
+| `aee_wildlife_perception` | wildlife | Per-animal perception vector, an object variable |
+| `aee_wildlife_ecologyState` | wildlife | Per-animal ecology state vector, an object variable |
+| `aee_wildlife_heardCall` | wildlife | Per-animal last heard call, an object variable |
 
 ## Wildlife and AI debug hooks
 

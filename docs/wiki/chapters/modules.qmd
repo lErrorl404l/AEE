@@ -355,6 +355,74 @@ media only.
 | `teardownWildlife` | Stop the wildlife client tick |
 | `wildlifeTick` | The single wildlife client tick |
 
+### Wildlife ecology
+
+The ecology layer makes each animal read the real conditions around it and
+decide from them. It is client-local and reads published `aee_*` state only.
+The species rules are a cited data corpus under `data/wildlife/`, generated
+into `addons/wildlife/data/ecology_corpus.sqf` and matched, never branched in
+SQF. The per-constant register is
+`docs/wiki/research/wildlife-ecology-constants.md`.
+
+The layer has four parts.
+
+- **Match.** `getSpeciesMatch` matches the Koppen family, the true sun
+  elevation in degrees, the air temperature, the month, the water, the
+  vegetation, the surface material and the weather, and returns weighted
+  species-group rows. `getCallPattern` and `getSeason` give the temporal and
+  seasonal shape.
+- **Environment.** `sampleNeighbourhood` walks a budgeted local grid and
+  returns the foliage fraction, the surface votes, the water fraction, the
+  structure fraction and the mean elevation. `environmentSuitability` scores a
+  group against the sample. `habitatBoundary` keeps an animal in its patch with
+  a rare seeded excursion. `environmentGrid` owns the bounded, aged per-cell
+  cache.
+- **Cognition.** `wildlifePerceive`, `wildlifeThink` and `ecologyTick` run
+  perceive, think, act and recover over the `aee_ai` substrate on a count and
+  millisecond budget with a front re-queue.
+- **Communication.** `callEmit` types a call and gives it an urgency.
+  `callReceive` decodes a heard call into a response. `callPublish` and
+  `callSample` own the bounded, decayed heard-call bus.
+
+The acoustic layer models sound events, not the engine `Fired` flag.
+`acousticSourceDb` gives the source levels, `acousticLevel` propagates them
+with distance, occlusion and air absorption, and `acousticPublish` and
+`acousticSample` own the event bus. `shotAudio` derives the muzzle report, the
+supersonic crack, the near-pass snap and the ricochet from the real
+ballistics. `callPitch` gives the Doppler and species pitch, and `emitterPlan`
+keeps the attached emitters bounded.
+
+| Function | Purpose |
+|---|---|
+| `acousticLevel` | Propagate sound events to one listener as a continuous level |
+| `acousticOccluders` | Collect the bounded occluders on the source-listener line |
+| `acousticPublish` | Append a sound event to the bounded, aged event bus |
+| `acousticSample` | Read the propagated level of the live events at a listener |
+| `acousticSourceDb` | Map a sound-event kind to its source level |
+| `callEmit` | Type a call and give it an urgency from a condition |
+| `callPitch` | Return the Doppler and species pitch multiplier for a call |
+| `callPublish` | Append a heard call to the bounded, decayed bus |
+| `callReceive` | Decode a heard call into a conspecific response |
+| `callSample` | Read the strongest live call at a cell |
+| `ecologyBudget` | Decide whether another animal may be ticked this call |
+| `ecologyTick` | Run perceive, think, act and recover on a budget |
+| `emitterClass` | Resolve the looping source for one sound group |
+| `emitterPlan` | Choose which animals create, keep or release an emitter |
+| `emitterRelease` | Delete one attached emitter and free its source |
+| `emitterSync` | Attach and bound the emitters for the active animals |
+| `environmentGrid` | Age and cap the per-cell environment cache |
+| `environmentSuitability` | Score a species group against an environment sample |
+| `getCallPattern` | Return the calling probability for one time bin |
+| `getSeason` | Return the season enum and the seasonality factor |
+| `getSpeciesMatch` | Match species groups from the environment and the time |
+| `habitatBoundary` | Keep an animal in its patch with a rare seeded excursion |
+| `pickBedSource` | Draw one ambient bed source over all matching rows |
+| `shotAudio` | Derive the report, crack, snap and ricochet from the ballistics |
+| `soundTick` | Schedule the species calls for one time bin |
+| `speciesSound` | Map a species group to the vanilla media that exist |
+| `wildlifePerceive` | Fold the environment and the state into a perception vector |
+| `wildlifeThink` | Map the perception into an action, a call plan and a movement |
+
 ## fx
 
 Visual and audio effects.
