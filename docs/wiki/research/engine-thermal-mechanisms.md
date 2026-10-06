@@ -11,13 +11,41 @@ workshop PBOs):
 | 2494550406 | HMCS thermal edited | StageTI rvmats pointing at `default_hot_ti_ca.paa` |
 | 3759527903 | FPANO ECOTI | HUD overlay only (not thermal imaging) |
 
-## The definitive mechanism: StageTI texture = the thermal image
+## The definitive mechanism: StageTI supplies heat-source coefficients
 
-Every mod that renders thermal content into the engine's TI mode does
-the SAME thing: **point the rvmat's `class StageTI` at a texture, and
-the engine renders that texture as the object's thermal appearance.**
+The engine renders thermal imaging from a per-object temperature model,
+not from a texture blit. A material's `class StageTI` texture supplies
+the heat sources that feed that model, and the engine integrates them
+over time with config-supplied cooling constants before it paints the
+palette.
 
-The engine's own `data_f\default_TI.rvmat`:
+The primary source for the channel semantics is the BI Community Wiki
+page "Thermal Imaging Maps" (oldid 155895, last edit 2020-07-27,
+captured 2021-09-23). It states, word for word:
+
+> Red channel of a TI texture is always 100% white, this means unaltered
+> config values for half cooling time will be used. Red channel only
+> affects how much an object heats up from the SUN. Green channel
+> consists of base layers made of grey 3D noise and lightmaps, with
+> bright areas of heat sources (if present) that would heat up by just
+> having the vehicle active. Blue channel is 100% black with white areas
+> where moving parts are, like for example tyres. Alpha channel is
+> metabolism heat, used on people and for barrel heat on tanks/weapons.
+> It is similarly done as the Green channel.
+
+The four channels are therefore heat-source coefficients. R is solar
+gain, G is active (engine) heat, B is moving-part heat, A is metabolism.
+
+The engine's cooling model is the config scalar set. The derapped
+vanilla config holds no `thermalProperties` field (zero hits). The real
+keys are `htMin` and `htMax` (half-cooling time in seconds), `afMax` and
+`mfMax` (capped surface temperature when active and when moving),
+`mFact` (metabolism influence) and `tBody` (metabolism surface
+temperature). A time-integrated model needs exactly these keys. A
+texture blit would need none of them.
+
+The engine's own `data_f\default_TI.rvmat` points its `StageTI` at a
+texture:
 
 ```
 ambient[] = {1,1,1,1};
@@ -28,25 +56,42 @@ class StageTI {
 };
 ```
 
-Decoded engine TI textures (flat colours — NOT coefficient masks):
+The decoded vanilla TI textures are consistent with the channel model,
+not with a direct blit:
 
-| Texture | RGBA mean | Appearance |
+| Texture | RGBA mean | Reading under the channel model |
 |---|---|---|
-| `default_ti_ca.paa` | R=255 G=0 B=0 A=0 | pure red (hot) |
-| `default_vehicle_ti_ca.paa` | R=145 G=46 B=0 A=0 | orange (warm) |
-| `default_glass_ti_ca.paa` | R=0 G=0 B=0 A=0 | black (cold) |
-| character `*_ti_ca.paa` | R=255 G=0 B=0, A varies | red with alpha = heat map |
-| HMCS `hm_burner.rvmat` | StageTI = `default_hot_ti_ca.paa` | renders hot |
+| `default_ti_ca.paa` | R=255 G=0 B=0 A=0 | full solar gain only, no active, moving or metabolic heat |
+| `default_vehicle_ti_ca.paa` | R=145 G=46 B=0 A=0 | partial solar gain plus one active-heat source |
+| `default_glass_ti_ca.paa` | R=0 G=0 B=0 A=0 | no heat source at all, a cold material |
+| character `*_ti_ca.paa` | R=255 G=0 B=0, A varies | full solar gain plus a metabolism map in alpha |
+| HMCS `hm_burner.rvmat` | StageTI = `default_hot_ti_ca.paa` | a strong heat source |
 
-**Our earlier conclusion that "StageTI is a heat-receptiveness
-COEFFICIENT mask (R=sun/G=engine/B=friction/A=metabolism)" was
-WRONG.** The BIKI "Thermal Imaging Maps" page describes the colour
-channels of the TI TEXTURES (what the model painter encodes), not a
-runtime heat model.  The engine renders the StageTI texture directly.
+CORRECTION. An earlier AEE conclusion in this file read the flat decoded
+colours as proof that the engine "renders the StageTI texture directly",
+and dismissed the channel model as wrong. That reading is incorrect. A
+flat red texture (R=255, G=B=A=0) is the maximum solar coefficient with
+no other heat source, which is exactly the generic static object. The
+channel model explains every decoded value. A direct blit does not
+explain why every generic texture is flat while only characters carry a
+varying alpha.
 
-**The alpha channel is the heat map**: characters use R=255 fixed red
-with alpha varying per region (face high alpha = hot, clothing lower).
-The TI pass blends the texture RGB by its alpha into the TI image.
+What AEE's engine-native work rests on:
+
+- The render heat keys `htMin`, `htMax`, `afMax`, `mfMax`, `mFact` and
+  `tBody` tune the engine's simulated object temperature. AEE declares
+  them once in `addons/thermal/config.cpp`. They are load-time config and
+  have no runtime control.
+- The StageTI texture is per-material and engine-baked. AEE ships no
+  texture and cannot repaint an arbitrary object. This is the honest
+  ceiling: terrain, vegetation and rock stay engine-baked.
+- The AI IR keys `irTarget`, `irTargetSize`, `irScanRangeMin`,
+  `irScanRangeMax`, `irScanToEyeFactor` and `irScanGround` drive the
+  separate AI sensor model, which reads the real heat signature and not
+  pixels.
+- The live thermal image is a compiled engine pass. AEE's moddable path
+  to a live image remains the shipped display track: the fusion overlay
+  and the second sun.
 
 ## Why vanilla TI looks "orange"
 

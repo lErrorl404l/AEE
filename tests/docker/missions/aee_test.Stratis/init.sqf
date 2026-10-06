@@ -3133,6 +3133,11 @@ private _p29Pass = 0;
     // hasInterface exit, so a dedicated server can still observe the resolved
     // anchor and the default composed grade.  It renders nothing.
     execVM "aee_p83_grade_probe.sqf";
+    // PHASE 91 lives in aee_p91_stageti_probe.sqf: the engine heat-model
+    // surface (scalar keys, no thermalProperties) and the TI command contract
+    // resolve headless, so a dedicated server verifies what the StageTI
+    // verdict rests on without reading pixels.  It renders nothing.
+    execVM "aee_p91_stageti_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
