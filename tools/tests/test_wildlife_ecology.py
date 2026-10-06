@@ -409,5 +409,70 @@ class TestSamplerSourceContracts(unittest.TestCase):
         self.assertIn("nearestTerrainObjects", code)
 
 
+SUITABILITY = FUNCS / "fnc_environmentSuitability.sqf"
+
+WOODLAND_RULE = [0.6, 0, 0, 0.1]
+CRICKET_RULE = [0.3, 0.6, 0, 0]
+SHOREBIRD_RULE = [0.1, 0, 0.9, 0]
+
+
+def suitability(environment, rule):
+    return run_sqf(SUITABILITY, [environment, rule])
+
+
+class TestEnvironmentSuitability(unittest.TestCase):
+    """fnc_environmentSuitability runs from the real SQF."""
+
+    def test_a_woodland_bird_scores_low_on_concrete(self):
+        value = suitability([0.0, [["concrete", 1]], 0, 0.9, 10], WOODLAND_RULE)
+        self.assertLess(value, 0.3)
+
+    def test_a_woodland_bird_scores_high_in_forest(self):
+        value = suitability([0.9, [["vegetation", 1]], 0, 0.1, 10], WOODLAND_RULE)
+        self.assertGreater(value, 0.7)
+
+    def test_a_cricket_scores_zero_on_concrete(self):
+        self.assertEqual(
+            suitability([0.0, [["concrete", 1]], 0, 0, 10], CRICKET_RULE), 0
+        )
+
+    def test_a_cricket_scores_on_a_warm_surface(self):
+        warm = suitability([0.0, [["rock", 1]], 0, 0, 10], CRICKET_RULE)
+        cold = suitability([0.0, [["concrete", 1]], 0, 0, 10], CRICKET_RULE)
+        self.assertGreater(warm, cold)
+
+    def test_a_shorebird_scores_on_water(self):
+        self.assertGreater(suitability([0.0, [], 0.9, 0, 10], SHOREBIRD_RULE), 0.7)
+
+    def test_a_missing_factor_field_is_zero_weight(self):
+        # Only the foliage weight is present, so the score is the foliage.
+        self.assertAlmostEqual(suitability([0.8, [], 0, 0, 10], [0.5]), 0.8)
+
+    def test_the_result_is_clamped(self):
+        value = suitability([2.0, [], 2.0, 2.0, 10], [1, 1, 1, 1])
+        self.assertGreaterEqual(value, 0)
+        self.assertLessEqual(value, 1)
+
+    def test_an_empty_environment_is_zero(self):
+        self.assertEqual(suitability([], WOODLAND_RULE), 0)
+
+    def test_an_all_zero_rule_is_zero(self):
+        self.assertEqual(suitability([0.8, [], 0, 0, 10], [0, 0, 0, 0]), 0)
+
+
+class TestSuitabilitySourceContracts(unittest.TestCase):
+    def test_the_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", SUITABILITY.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernel_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(environmentSuitability)", text)
+
+
 if __name__ == "__main__":
     unittest.main()
