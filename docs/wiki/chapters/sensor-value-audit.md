@@ -421,6 +421,19 @@ centre. The tangent plane is an approximation, not a projection.
 | phase step 137.508 degrees, the golden angle | per-track bearing | the golden-angle constant | ⚠️ UNSOURCED mapping |
 | displacement sum and bearing choice | displayed position | none | ⚠️ UNSOURCED mapping |
 
+### Tracker driver (fnc_trackerUpdate.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| humidity to atmosphere index, humidity / 100, default 50 | ellipse atmosphere input | none | ⚠️ UNSOURCED |
+| canopy probe height +40 m vertical ray | canopy mask | none | ⚠️ UNSOURCED |
+| urban survey radius 50 m | urban mask | none | ⚠️ UNSOURCED |
+| urban saturation 8 buildings | urban fraction cap | none | ⚠️ UNSOURCED |
+| canopy signal gain 0.5 per fraction | effective signal | none | ⚠️ UNSOURCED |
+| urban signal gain 0.3 per fraction | effective signal | none | ⚠️ UNSOURCED |
+| DOP 1.0 | ellipse sigma | none | ⚠️ UNSOURCED |
+| receiver quality 1.0 | ellipse sigma | none | ⚠️ UNSOURCED |
+
 ### Geographic anchor (fnc_buildGeoAnchor.sqf, fnc_getGeoAnchor.sqf)
 
 | Value | Used | Source | Status |
