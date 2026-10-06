@@ -3133,6 +3133,10 @@ private _p29Pass = 0;
     // hasInterface exit, so a dedicated server can still observe the resolved
     // anchor and the default composed grade.  It renders nothing.
     execVM "aee_p83_grade_probe.sqf";
+    // PHASE 92 lives in aee_p92_optics_budget_probe.sqf: the client optics
+    // PFH exits at hasInterface on a server, so the per-tick budget is measured
+    // on the pure optics kernels and the eye-aperture day anchor is asserted.
+    execVM "aee_p92_optics_budget_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.

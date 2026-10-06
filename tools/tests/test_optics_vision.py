@@ -286,5 +286,50 @@ class TestSensorSessionLifecycle(unittest.TestCase):
         )
 
 
+NVG_MODEL = Path(__file__).resolve().parents[2] / (
+    "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf"
+)
+
+
+class TestNvgBrightSourceScanCache(unittest.TestCase):
+    """The NVG bright-source scan is cached, not run every tick (perf).
+
+    The O(n) nearestObjects scan plus the per-object config traversal is the
+    dominant per-tick cost of the tube model.  It must be guarded by a
+    time/distance cache so it does not run at the full PFH rate; the view
+    angle and occlusion test stays per tick.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = NVG_MODEL.read_text(encoding="utf-8")
+
+    def test_scan_result_is_cached(self):
+        self.assertIn("QGVAR(nvgBrightSources)", self.code)
+        self.assertIn("QGVAR(nvgBrightScanTime)", self.code)
+        self.assertIn("QGVAR(nvgBrightScanPos)", self.code)
+
+    def test_scan_is_guarded_by_time_and_distance(self):
+        m = re.search(
+            r"if\s*\(\(diag_tickTime - _scanTime > ([0-9.]+)\)"
+            r"\s*\|\|\s*\(\(_eye distance _scanPos\) > ([0-9.]+)\)\)",
+            self.code,
+        )
+        self.assertIsNotNone(m, "no scan refresh guard found")
+        self.assertLessEqual(float(m.group(1)), 1.0, "refresh longer than 1 s")
+        self.assertLessEqual(float(m.group(2)), 50.0, "movement guard too loose")
+
+    def test_nearest_objects_runs_once_and_behind_the_guard(self):
+        self.assertEqual(self.code.count("nearestObjects"), 1)
+        guard = self.code.index("_scanTime")
+        scan = self.code.index("nearestObjects")
+        loop = self.code.index("} forEach _brightSources;")
+        self.assertLess(guard, scan, "the guard must precede the scan")
+        self.assertLess(scan, loop, "the scan must feed the cached loop")
+
+    def test_loop_iterates_the_cached_list(self):
+        self.assertIn("_x params [\"_src\", \"_spectralWeight\"]", self.code)
+
+
 if __name__ == "__main__":
     unittest.main()

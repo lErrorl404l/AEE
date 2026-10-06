@@ -169,7 +169,7 @@ class TestLightnings(unittest.TestCase):
 
 
 class TestAperture(unittest.TestCase):
-    """min <= standard <= max for every illuminance, night wider than day."""
+    """min <= standard <= max for every illuminance; night is wider than day."""
 
     def test_ordering_never_inverts(self):
         sweep = [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000]
@@ -178,18 +178,20 @@ class TestAperture(unittest.TestCase):
             self.assertLessEqual(lo, std, f"min > standard at {lux} lux")
             self.assertLessEqual(std, hi, f"standard > max at {lux} lux")
 
-    def test_night_wider_than_day(self):
-        # Higher aperture value = wider (wiki night example [2, 8, 14]).
+    def test_night_is_wider_than_day(self):
+        # A lower aperture value is a wider aperture (more light), so the
+        # night standard is LOWER than the day standard (wiki calibration:
+        # night standard 8 of [2, 8, 14]; daylight outdoor 50).
         _, night_std, _ = aperture_params(0.001)
         _, day_std, _ = aperture_params(100000)
-        self.assertGreater(night_std, day_std)
+        self.assertLess(night_std, day_std)
 
     def test_standard_is_monotonic(self):
         prev = None
         for lux in [0.001, 0.1, 10, 1000, 100000]:
             _, std, _ = aperture_params(lux)
             if prev is not None:
-                self.assertLessEqual(std, prev)
+                self.assertGreaterEqual(std, prev)
             prev = std
 
     def test_wiki_night_anchor(self):

@@ -223,11 +223,19 @@ class TestEyeSkyFraction(unittest.TestCase):
 
 
 def aperture(lux):
-    """Mirror of fnc_eyeAperture: log-lux -> aperture (higher is wider)."""
+    """Mirror of fnc_eyeAperture: log-lux -> aperture.
+
+    The aperture value is LIGHT INTAKE: a lower value is a wider aperture and
+    a brighter image, so the map ascends from the wide night anchor (8) to the
+    narrow daylight anchor (50).  Anchors: BI wiki setApertureNew night
+    example [2, 8, 14], and the BI wiki setAperture Namikaze calibration
+    (50 = daylight outdoor, 30 = indoor, below 20 = very bright, closer to 0
+    lets in more light).
+    """
     lux = max(0.001, min(100000.0, lux))
     ev = math.log10(lux)
     t = max(0.0, min(1.0, (ev - (-3)) / (5 - (-3))))
-    return 8 + t * (0.2 - 8)
+    return 8 + t * (50 - 8)
 
 
 class TestEyeAperture(unittest.TestCase):
@@ -237,19 +245,36 @@ class TestEyeAperture(unittest.TestCase):
         self.assertAlmostEqual(run_sqf(APERTURE, [0.001]), 8, places=6)
 
     def test_day_anchor(self):
-        self.assertAlmostEqual(run_sqf(APERTURE, [100000]), 0.2, places=6)
+        # Regression: the day anchor is the daylight outdoor value (50), not
+        # the scenario-less setApertureNew Example 1 value 0.2.  A 0.2 anchor
+        # is close to 0, so it pinned a near-maximum light intake at noon and
+        # over-exposed normal vision (the daytime blowout report).
+        self.assertAlmostEqual(run_sqf(APERTURE, [100000]), 50, places=6)
 
-    def test_monotonic_decreasing(self):
+    def test_map_ascends_from_night_to_day(self):
+        # A lower value is more light, so a brighter scene must map to a
+        # HIGHER (narrower) value.  This fails if the anchors are inverted.
+        self.assertGreater(run_sqf(APERTURE, [100000]), run_sqf(APERTURE, [0.001]))
+
+    def test_monotonic_increasing(self):
         prev = None
         for lux in [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000]:
             got = run_sqf(APERTURE, [lux])
             if prev is not None:
-                self.assertLessEqual(got, prev)
+                self.assertGreaterEqual(got, prev)
             prev = got
 
     def test_clamps_outside_the_domain(self):
         self.assertAlmostEqual(run_sqf(APERTURE, [1e-9]), 8, places=6)
-        self.assertAlmostEqual(run_sqf(APERTURE, [1e9]), 0.2, places=6)
+        self.assertAlmostEqual(run_sqf(APERTURE, [1e9]), 50, places=6)
+
+    def test_day_anchor_is_a_daylight_value(self):
+        # Source contract: the day anchor must sit above the BI wiki "very
+        # bright" ceiling (20), or it over-exposes a daylit scene.
+        text = APERTURE.read_text(encoding="utf-8")
+        match = re.search(r"_dayStandard\s*=\s*([0-9.]+)", text)
+        self.assertIsNotNone(match, "no _dayStandard found in fnc_eyeAperture")
+        self.assertGreater(float(match.group(1)), 20)
 
     def test_matches_the_mirror(self):
         for lux in [0.005, 0.5, 50, 5000]:
