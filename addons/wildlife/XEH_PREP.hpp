@@ -1,3 +1,5 @@
+PREP(getSpeciesMatch);
+PREP(speciesDeprecation);
 PREP(speciesForBiome);
 PREP(spawnBudget);
 PREP(needsTick);

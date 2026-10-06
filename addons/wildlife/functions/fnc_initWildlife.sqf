@@ -26,6 +26,14 @@ missionNamespace setVariable [QGVAR(manifest), _manifest];
 private _speciesTable = call (compile preprocessFileLineNumbers QPATHTOF(data\species_table.sqf));
 missionNamespace setVariable [QGVAR(speciesTable), _speciesTable];
 
+// The ecology corpus and the asset map feed the pure species matcher.  They
+// are generated from data/wildlife/ by tools/validation/gen_wildlife_ecology.py.
+private _ecologyCorpus = call (compile preprocessFileLineNumbers QPATHTOF(data\ecology_corpus.sqf));
+missionNamespace setVariable [QGVAR(ecologyCorpus), _ecologyCorpus];
+
+private _assetMap = call (compile preprocessFileLineNumbers QPATHTOF(data\asset_map.sqf));
+missionNamespace setVariable [QGVAR(assetMap), _assetMap];
+
 GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHandler;
 
 // The gunfire report rides the core player engine handler: a raw BIS "Fired"

@@ -14,7 +14,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from sqf_lite import run_sqf  # noqa: E402
+from sqf_lite import Lambda, Params, load_sqf, run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 WILDLIFE = ROOT / "addons" / "wildlife"
@@ -24,6 +24,7 @@ MANIFEST = DATA / "sound_manifest.sqf"
 SPECIES_TABLE = DATA / "species_table.sqf"
 
 SPECIES_FOR_BIOME = FUNCS / "fnc_speciesForBiome.sqf"
+SPECIES_MATCH = FUNCS / "fnc_getSpeciesMatch.sqf"
 SPAWN_BUDGET = FUNCS / "fnc_spawnBudget.sqf"
 NEEDS_TICK = FUNCS / "fnc_needsTick.sqf"
 RESOURCE_SCORE = FUNCS / "fnc_resourceScore.sqf"
@@ -638,9 +639,26 @@ def load_species_table():
     return run_sqf(SPECIES_TABLE, [])
 
 
+def _kernel(path):
+    """A callable Lambda built from a real kernel file, params pre-bound."""
+    stmts = load_sqf(path)
+    params, body = [], stmts
+    if stmts and isinstance(stmts[0], Params):
+        params = [name for name, _default in stmts[0].specs]
+        body = stmts[1:]
+    return Lambda(params, body, {})
+
+
 def species_for_biome(biome, is_night, water_frac, veg_score, seed, table):
+    # The shim forwards to the matcher and logs through the deprecation helper.
+    # Both are bound here so the kernel runs from its real source.
     return run_sqf(
-        SPECIES_FOR_BIOME, [biome, is_night, water_frac, veg_score, seed, table]
+        SPECIES_FOR_BIOME,
+        [biome, is_night, water_frac, veg_score, seed, table],
+        globals_={
+            "__FUNC__getSpeciesMatch": _kernel(SPECIES_MATCH),
+            "__FUNC__speciesDeprecation": lambda: None,
+        },
     )
 
 
