@@ -6510,7 +6510,108 @@ class TestThermalTraceGateHoist(unittest.TestCase):
         ):
             code = _code_only(_read_sqf(name, addon="thermal"))
             with self.subTest(function=name):
-                self.assertIn("_traceOn] call FUNC(calculateBandRadiance)", code)
+                # The hoisted flag still travels as argument 7; the band terms
+                # (T16) follow it in the tail of the call.
+                self.assertIn(
+                    "_traceOn, _lambda1M, _lambda2M, _humidity, _band",
+                    code,
+                )
+
+
+class TestCallerBandWiring(unittest.TestCase):
+    """The detector band and the new terms reach every caller (T16).
+
+    Each caller resolves the mounted device's band, resolves the edges with
+    fnc_resolveThermalBand, and passes the band sky inputs, the MWIR
+    reflected-solar term and the band-resolved transmission.  A caller that
+    cannot read a device keeps the LWIR default, so the no-device path
+    reproduces the old LWIR result bit for bit.
+    """
+
+    _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
+    _TRANSMISSION = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
+
+    _RAD_CALL = re.compile(r"\[([^\[\]]*?)\] call FUNC\(calculateBandRadiance\)")
+    _TAU_CALL = re.compile(
+        r"\[([^\[\]]*?)\] call FUNC\(calculateAtmosphericTransmission\)"
+    )
+
+    _CALLERS = (
+        "fnc_updateThermalAGC.sqf",
+        "fnc_applySelectionThermal.sqf",
+        "fnc_applyFusionOverlay.sqf",
+    )
+
+    def _code(self, name):
+        return _code_only(_read_sqf(name, addon="thermal"))
+
+    def test_each_caller_resolves_the_band(self):
+        for name in self._CALLERS:
+            with self.subTest(function=name):
+                self.assertIn("call FUNC(resolveThermalBand)", self._code(name))
+
+    def test_each_caller_reads_the_device_band_index(self):
+        # The band is index 6 of the device tuple (T1).  The AGC resolves the
+        # device directly; the other two read the row they already hold.
+        self.assertIn('param [6, "lwir"]', self._code("fnc_updateThermalAGC.sqf"))
+        self.assertIn('param [6, "lwir"]', self._code("fnc_applySelectionThermal.sqf"))
+        self.assertIn('param [6, "lwir"]', self._code("fnc_applyFusionOverlay.sqf"))
+
+    def test_each_caller_passes_the_band_to_the_radiance_kernel(self):
+        # Every band-radiance call in a caller must carry the resolved band.
+        # A per-call parse catches a missing band on any one call, not only a
+        # call site where the substring happens to survive elsewhere.
+        for name in self._CALLERS:
+            calls = self._RAD_CALL.findall(self._code(name))
+            self.assertTrue(calls, name)
+            for args in calls:
+                with self.subTest(function=name, args=args):
+                    self.assertIn("_band", args)
+
+    def test_each_transmission_caller_passes_the_band(self):
+        for name in (
+            "fnc_applySelectionThermal.sqf",
+            "fnc_applyFusionOverlay.sqf",
+        ):
+            calls = self._TAU_CALL.findall(self._code(name))
+            self.assertTrue(calls, name)
+            for args in calls:
+                with self.subTest(function=name, args=args):
+                    self.assertIn("_band", args)
+
+    def test_each_caller_applies_the_wet_emissivity(self):
+        for name in self._CALLERS:
+            with self.subTest(function=name):
+                self.assertIn("call FUNC(getEffectiveEmissivity)", self._code(name))
+
+    def test_each_caller_passes_the_reflected_solar_term(self):
+        for name in self._CALLERS:
+            with self.subTest(function=name):
+                self.assertIn(
+                    "call FUNC(calculateReflectedSolarBand)", self._code(name)
+                )
+
+    def test_the_no_device_radiance_path_reproduces_the_lwir_default(self):
+        base = [37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0, False]
+        bare = run_sqf(self._RADIANCE, base, _radiance_globals())
+        explicit = run_sqf(
+            self._RADIANCE,
+            base + [8e-6, 14e-6, 50.0, "lwir", 0.0],
+            _radiance_globals(),
+        )
+        self.assertEqual(bare, explicit)
+
+    def test_the_no_device_transmission_path_reproduces_the_lwir_default(self):
+        args = [1000.0, 50.0, 15.0, 0.0, 0.0, 1.225]
+        bare = run_sqf(self._TRANSMISSION, args)
+        explicit = run_sqf(self._TRANSMISSION, args + ["lwir"])
+        self.assertEqual(bare, explicit)
+
+    def test_the_radiance_header_documents_the_new_arguments(self):
+        text = self._RADIANCE.read_text(encoding="utf-8")
+        self.assertIn("10: relative humidity", text)
+        self.assertIn("11: band token", text)
+        self.assertIn("12: reflected-solar band radiance", text)
 
 
 class TestThermalAgcWindowDeadband(unittest.TestCase):
