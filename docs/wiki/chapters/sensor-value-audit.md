@@ -145,6 +145,19 @@ multipliers, not physical units.  Each is documented with its reference.
 | grain 0.08..0.6 | sensor noise | A3TI 0.5 default | ⚠️ judgment |
 | blur 0..0.35 | IR scatter | A3TI 0.25 | ⚠️ judgment |
 | crossover twilight <10° | isothermal gate | solar model | ✅ derived |
+
+## Thermal contrast (fnc_calculateThermalContrast.sqf)
+
+The kernel is a display-degradation factor with no base gain and no weather
+term of its own. Atmospheric degradation is modelled once, in
+fnc_calculateAtmosphericTransmission.
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| contrast base 1.0 | no display gain | engine renders the native image | ✅ derived |
+| heat threshold 35 / span 10 / factor 0.7 | gradient flatten | none | ⚠️ UNSOURCED |
+| cold threshold 5 / factor 1.2 | gap widen | none | ⚠️ UNSOURCED |
+| rain × 0.4 / fog × 0.6 / humidity × 0.3 | removed | double-counted transmission | removed |
 ## Illuminance layer (fnc_calculateIlluminance.sqf)
 
 The shared light-data source consumed by NVG, thermal and glare.  Two

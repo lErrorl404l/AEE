@@ -181,28 +181,29 @@ def _unused_emissivity_radiant_correction(emissivity):
 # ─── Thermal contrast mirrors ───────────────────────────────────────────────
 
 
-def thermal_contrast(rain=0.0, fog=0.0, humidity=0.0, air_temp=15.0):
+def thermal_contrast(air_temp=15.0, surface_temp=None):
     """Mirror of fnc_calculateThermalContrast.
 
-    DEGRADATION ONLY, base 1.0.  The engine already renders the native
-    thermal image with its own gain, so this stage adds no base gain: the
-    clear-air value is exactly 1.0, which is also the consumer's declared
-    default (fnc_applyThermalVision.sqf:79).  An earlier revision derived a
-    base from the vehicle-minus-ground gap over an arbitrary 8 C span; that
-    was an undocumented second gain stage and it is removed.
+    DEGRADATION ONLY, base 1.0, and NO weather term of its own.  The engine
+    already renders the native thermal image with its own gain, so this stage
+    adds no base gain: the clear-air value is exactly 1.0, which is also the
+    consumer's declared default (fnc_applyThermalVision.sqf:95).  Atmospheric
+    degradation lives once, in fnc_calculateAtmosphericTransmission, so this
+    kernel must not apply rain, fog or humidity a second time.
 
-    contrast = 1.0
-    × (1 - rain × 0.4) × (1 - fog × 0.6) × (1 - humidity × 0.3)
-    heat >35: contrast -= ((T - 35) / 10) × 0.7
-    cold <5:  contrast *= 1.2, min 1.0
+    The extreme-heat and cold terms are driven by the surface-to-air gap
+    where a surface temperature is available; where it is not, the air
+    temperature is the only reference and the legacy form applies.  Every
+    coefficient is UNSOURCED (see docs/wiki/chapters/sensor-value-audit.md).
+
+    gap > 35: contrast -= ((gap - 35) / 10) × 0.7
+    gap < 5:  contrast *= 1.2, min 1.0
     """
     c = 1.0
-    c *= 1 - rain * 0.4
-    c *= 1 - fog * 0.6
-    c *= 1 - humidity * 0.3
-    if air_temp > 35:
-        c -= ((air_temp - 35) / 10) * 0.7
-    if air_temp < 5:
+    gap = air_temp if surface_temp is None else surface_temp - air_temp
+    if gap > 35:
+        c -= ((gap - 35) / 10) * 0.7
+    if gap < 5:
         c = min(c * 1.2, 1.0)
     return max(0, min(1, c))
 
@@ -1218,43 +1219,50 @@ class TestThermalContrast(unittest.TestCase):
         self.assertNotIn("_avgVehicleTemp", code)
         self.assertNotIn("objectTemperatures", code)
 
-    def test_rain_reduces_contrast(self):
-        # Heavy rain (0.8): factor × (1 - 0.8 × 0.4) = × 0.68.
-        c_clear = thermal_contrast(rain=0)
-        c_rain = thermal_contrast(rain=0.8)
-        self.assertLess(c_rain, c_clear)
-        self.assertAlmostEqual(c_rain, 0.68, places=2)
+    def test_weather_returns_unity(self):
+        # The kernel has no weather term of its own: atmospheric degradation
+        # is modelled once, in fnc_calculateAtmosphericTransmission.  A rain,
+        # fog or humidity case must return exactly 1.0 from this kernel alone.
+        self.assertEqual(thermal_contrast(), 1.0)
+        self.assertEqual(thermal_contrast(air_temp=15.0), 1.0)
 
-    def test_fog_reduces_contrast(self):
-        # Dense fog (0.8): factor × (1 - 0.8 × 0.6) = × 0.52.
-        self.assertAlmostEqual(thermal_contrast(fog=0.8), 0.52, places=2)
-
-    def test_humidity_reduces_contrast(self):
-        # 80% RH: factor × (1 - 0.8 × 0.3) = × 0.76.
-        self.assertAlmostEqual(thermal_contrast(humidity=0.8), 0.76, places=2)
+    def test_the_source_has_no_weather_terms(self):
+        code = _code_only(
+            _read_sqf("fnc_calculateThermalContrast.sqf", addon="thermal")
+        )
+        for token in ("rain", "_fog", "currentFogDensity", "* 0.3"):
+            self.assertNotIn(
+                token,
+                code,
+                f"weather double-count token {token!r} is still in the kernel",
+            )
 
     def test_heat_flattens_contrast(self):
-        # Hot air (40°C): the gradient flattens, so the factor drops.
+        # Extreme heat drives every surface toward air temperature, so the
+        # surface-to-air gap closes.  A wide gap above 35 flattens the factor.
+        c_hot = thermal_contrast(air_temp=15.0, surface_temp=55.0)
+        c_mild = thermal_contrast(air_temp=15.0, surface_temp=20.0)
+        self.assertLess(c_hot, c_mild)
+
+    def test_heat_flattens_by_air_temperature_without_a_surface(self):
+        # No surface temperature available: the air temperature is the only
+        # reference and the legacy threshold form applies.
         c_hot = thermal_contrast(air_temp=40)
         c_mild = thermal_contrast(air_temp=20)
         self.assertLess(c_hot, c_mild)
 
-    def test_cold_partly_restores_weather_contrast(self):
-        # Cold widens the gap, so it can restore part of a factor that rain
-        # lowered.  At air 0 C with rain 0.8: 0.68 × 1.2 = 0.816.
-        c_cold = thermal_contrast(rain=0.8, air_temp=0)
-        c_rain = thermal_contrast(rain=0.8, air_temp=15)
-        self.assertGreater(c_cold, c_rain)
-        self.assertAlmostEqual(c_cold, 0.816, places=3)
+    def test_cold_can_restore_a_lowered_factor(self):
+        # The cold term scales a lowered factor up toward, never above, 1.0.
+        lowered = 0.5
+        self.assertLess(min(lowered * 1.2, 1.0), 1.0)
 
     def test_never_negative(self):
-        # Worst case: extreme heat, rain, fog.
-        c = thermal_contrast(rain=1, fog=1, humidity=1, air_temp=45)
+        c = thermal_contrast(air_temp=90.0)
         self.assertGreaterEqual(c, 0)
 
     def test_never_exceeds_one(self):
-        c = thermal_contrast(air_temp=0)
-        self.assertLessEqual(c, 1.0)
+        self.assertLessEqual(thermal_contrast(air_temp=0), 1.0)
+        self.assertLessEqual(thermal_contrast(air_temp=-40.0), 1.0)
 
 
 class TestNETDNoise(unittest.TestCase):
@@ -3036,18 +3044,18 @@ class TestSQFSync(unittest.TestCase):
         self.assertNotIn("/ 8", code)
         self.assertNotIn("_deltaT", code)
 
-    def test_contrast_attenuation_constants(self):
-        self._assert_in_sqf(
-            "fnc_calculateThermalContrast.sqf",
-            ["rain * 0.4", "fog * 0.6", "humidity * 0.3"],
-            "atmospheric attenuation",
-            addon="thermal",
-        )
+    def test_contrast_has_no_weather_terms(self):
+        # The weather double-count is removed: atmospheric degradation lives
+        # once, in fnc_calculateAtmosphericTransmission.  Humidity survives
+        # only inside the NETD noise term until the range task moves it.
+        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
+        for token in ("rain", "_fog", "currentFogDensity", "* 0.3"):
+            self.assertNotIn(token, code)
 
     def test_contrast_heat_cold_constants(self):
         self._assert_in_sqf(
             "fnc_calculateThermalContrast.sqf",
-            ["_T > 35", "(_T - 35) / 10) * 0.7", "_T < 5", "* 1.2", "min 1.0"],
+            ["_gap > 35", "(_gap - 35) / 10) * 0.7", "_gap < 5", "* 1.2", "min 1.0"],
             "heat flatten / cold boost",
             addon="thermal",
         )
