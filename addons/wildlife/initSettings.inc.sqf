@@ -34,3 +34,5 @@ AEE_SETTING_SLIDER(thirstRate,"AEE Wildlife","Behaviour",0.001,0.2,0.03,3);
 AEE_SETTING_SLIDER(herdSize,"AEE Wildlife","Behaviour",1,12,4,1);
 
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Wildlife",false);
+
+AEE_SETTING_CHECKBOX(environmentDebug,"AEE Debug","Wildlife",false);
