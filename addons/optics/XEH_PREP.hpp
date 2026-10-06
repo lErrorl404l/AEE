@@ -70,6 +70,7 @@ PREPS(perception,perceptionChromaticAdaptation);
 PREPS(perception,perceptionMesopicColor);
 PREPS(perception,perceptionBaseGrade);
 PREPS(perception,perceptionParams);
+PREPS(perception,perceptionSample);
 
 PREPS(hud,hudBuild);
 PREPS(hud,hudFormatGrid);
