@@ -128,6 +128,12 @@ private _shadowTurnProtection = missionNamespace getVariable [QGVAR(shadowCamera
 private _shadowOpticsProtection = missionNamespace getVariable [QGVAR(shadowOpticsProtection), 0];
 private _shadowTargetFPS = missionNamespace getVariable [QGVAR(shadowTargetFPS), 0];
 
+// Context probe constants for the classifier (aee-workshop-copy item 6).  A
+// hit at or below the close range counts as a close hit; the ceiling probe is
+// ONE upward lineIntersectsSurfaces of this length.  UNSOURCED heuristics.
+private _CONTEXT_CLOSE_M = 12;
+private _CONTEXT_CEILING_M = 30;
+
 private _effectiveShadowMax = ((_shadowMaxSetting max 0) min 2000) min (_objTarget max 0);
 private _effectiveShadowMin = (_shadowMinSetting max 0) min _effectiveShadowMax;
 
@@ -203,6 +209,50 @@ if (_shadowEnabled && _effectiveShadowMax > 1) then {
                         };
                     };
                 };
+            };
+
+            // Populate the classifier context from the sample pass.  The hit
+            // count and the close-hit count come free from the samples already
+            // cast; the ceiling test is ONE upward lineIntersectsSurfaces.
+            // The shape and the semantics match fnc_shadowClassifyScene:
+            // [ceilingHit, horizontalHits, closeHits, averageContextDistance,
+            // probeCount].  Populating it removes the dead interior branch the
+            // earlier empty context left in the classifier.
+            if (_samples isNotEqualTo []) then {
+                private _hitCount = 0;
+                private _closeHits = 0;
+                private _hitDistanceSum = 0;
+                for "_i" from 0 to ((count _samples) - 1) do {
+                    private _sample = _samples select _i;
+                    private _kind = _sample select 4;
+                    if (_kind == 0 || _kind == 1) then {
+                        private _distance = _sample select 0;
+                        _hitCount = _hitCount + 1;
+                        _hitDistanceSum = _hitDistanceSum + _distance;
+                        if (_distance <= _CONTEXT_CLOSE_M) then {
+                            _closeHits = _closeHits + 1;
+                        };
+                    };
+                };
+                private _averageContext = if (_hitCount > 0) then {
+                    _hitDistanceSum / _hitCount
+                } else {
+                    _CONTEXT_CLOSE_M
+                };
+                private _ceilingHit = false;
+                if (hasInterface && {!isNull player}) then {
+                    private _upFrom = AGLToASL (positionCameraToWorld [0, 0, 0]);
+                    private _upTo = _upFrom vectorAdd [0, 0, _CONTEXT_CEILING_M];
+                    private _upHits = lineIntersectsSurfaces [
+                        _upFrom, _upTo, player, objNull,
+                        true, 1, "VIEW", "NONE", true
+                    ];
+                    _ceilingHit = count _upHits > 0;
+                };
+                _context = [
+                    _ceilingHit, _hitCount, _closeHits, _averageContext,
+                    count _samples
+                ];
             };
 
             // Classify the scene.
@@ -317,8 +367,9 @@ if (_new != _current) then {
 // to 1/3 to 1/2 of terrain view distance.  AEE drives terrain distance
 // from physics (above); this drives object distance to follow, so the
 // engine does not render object detail the eye cannot resolve anyway.
-// The two-parameter form also sets the shadow distance from the scene-aware
-// target computed above.
+// The object ramp preserves the engine's own shadow element, because the
+// shadow distance has its own trigger below and this ramp must not clobber
+// it with a stale value.
 private _objCurrent = getObjectViewDistance select 0;
 private _newObj = if ((abs (_objTarget - _objCurrent)) > 200) then {
     _objCurrent + ((_objTarget - _objCurrent) min 200 max -200)
@@ -326,19 +377,38 @@ private _newObj = if ((abs (_objTarget - _objCurrent)) > 200) then {
     _objCurrent
 };
 if (_newObj != _objCurrent) then {
-    [_newObj, _shadowTarget] spawn {
-        params ["_to", "_shadow"];
+    [_newObj] spawn {
+        params ["_to"];
         private _from = getObjectViewDistance select 0;
         private _t = 0;
         while {_t < 4} do {
             setObjectViewDistance [
                 round (_from + ((_to - _from) * (_t / 4))),
-                round _shadow
+                round ((getObjectViewDistance) select 1)
             ];
             sleep 0.1;
             _t = _t + 0.1;
         };
-        setObjectViewDistance [round _to, round _shadow];
+        setObjectViewDistance [
+            round _to, round ((getObjectViewDistance) select 1)
+        ];
+    };
+};
+
+// ─── Scene-aware shadow distance apply ───────────────────────────────────
+// The shadow target has its OWN trigger, independent of the 200 m object
+// deadband.  Without this the engine kept the previous shadow distance for
+// the whole object deadband, so the scene-aware value was inert in steady
+// state.  Only the second element is written and setViewDistance is never
+// called from the shadow path.  When the feature is off this block is
+// skipped, so the engine value is left in place and off restores the
+// engine default.
+if (_shadowEnabled) then {
+    private _shadowCurrent = (getObjectViewDistance) select 1;
+    if (abs (_shadowTarget - _shadowCurrent) > 25) then {
+        setObjectViewDistance [
+            ((getObjectViewDistance) select 0), round _shadowTarget
+        ];
     };
 };
 
