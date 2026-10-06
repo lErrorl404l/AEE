@@ -474,5 +474,55 @@ class TestSuitabilitySourceContracts(unittest.TestCase):
         self.assertIn("PREP(environmentSuitability)", text)
 
 
+BOUNDARY = FUNCS / "fnc_habitatBoundary.sqf"
+
+
+def boundary(here, neighbours, threshold=0.6, seed=42, rate=0.02):
+    return run_sqf(BOUNDARY, [here, neighbours, threshold, seed, rate])
+
+
+class TestHabitatBoundary(unittest.TestCase):
+    """fnc_habitatBoundary runs from the real SQF."""
+
+    def test_a_high_here_score_stays(self):
+        self.assertEqual(boundary(0.9, [0.8, 0.7])[0], 0)
+
+    def test_a_higher_neighbour_moves(self):
+        self.assertEqual(boundary(0.2, [0.9, 0.3])[0], 1)
+
+    def test_a_lower_neighbour_is_avoided(self):
+        self.assertEqual(boundary(0.2, [0.1, 0.15])[0], 2)
+
+    def test_same_inputs_are_deterministic(self):
+        self.assertEqual(
+            boundary(0.9, [0.8, 0.7], seed=42), boundary(0.9, [0.8, 0.7], seed=42)
+        )
+
+    def test_a_zero_exception_rate_never_excurses(self):
+        for seed in range(1000):
+            self.assertFalse(boundary(0.9, [0.8, 0.7], seed=seed, rate=0.0)[1])
+
+    def test_the_default_exception_rate_is_rare(self):
+        count = sum(
+            1 for seed in range(1000) if boundary(0.9, [0.8, 0.7], seed=seed)[1]
+        )
+        self.assertGreater(count, 0)
+        self.assertLess(count, 100)
+
+
+class TestBoundarySourceContracts(unittest.TestCase):
+    def test_the_kernel_is_pure(self):
+        code = re.sub(
+            r"/\*.*?\*/", "", BOUNDARY.read_text(encoding="utf-8"), flags=re.DOTALL
+        )
+        code = re.sub(r"//[^\n]*", "", code)
+        for banned in ("missionNamespace", "GVAR(", "random", "diag_"):
+            self.assertNotIn(banned, code, banned)
+
+    def test_the_kernel_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(habitatBoundary)", text)
+
+
 if __name__ == "__main__":
     unittest.main()
