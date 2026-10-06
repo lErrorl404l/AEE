@@ -5609,6 +5609,10 @@ def _radiance_globals():
         "diag_tickTime": 0.0,
         "__FUNC__planckBandRadiance": _run_planck,
         "__FUNC__calculateSkyRadiance": _run_sky,
+        # The kernel publishes aee_thermal_skyBandTempC (task 14).  sqf_lite
+        # has no namespace, so the write resolves against inert stubs.
+        "missionNamespace": {},
+        "setVariable": lambda *args: None,
     }
 
 

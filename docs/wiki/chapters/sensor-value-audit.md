@@ -287,3 +287,30 @@ Engine caveats discovered by probe (documented, not guessed):
 
 Glare now consumes the engine sun vector (lightAzimuth/lightElevation)
 with a dayTime-sine fallback if the illuminance layer has not run yet.
+
+## Cross-module consistency producers
+
+The consistency harness (INV-1 to INV-5) reads these published values.  Each
+one states its grade.
+
+| Value | Used | Source | Grade |
+|---|---|---|---|
+| `aee_thermal_humanCoreTempC` | body-temperature invariant INV-4 | Gagge 1986 body-temperature weighting, 0.1 skin + 0.9 core.  Published from `fnc_solveTwoNodeSelection.sqf` for a human selection only. | derived |
+| `aee_core_coreBodyTemp` | body-temperature invariant INV-4; KAT circulation | Physiology heat balance in `fnc_coreBodyTemp.sqf`.  The 37 C baseline is sourced (normal resting human core temperature).  The heat threshold (28 C WBGT), the heat gain (0.05), the cold threshold (10 C wind chill), the cold gain (0.10) and the hypothermia loss (4.0) are UNSOURCED modelling choices. | baseline sourced; coefficients UNSOURCED |
+| `aee_thermal_skyBandTempC` | solar/sky invariant INV-5 | The Tebo 1965 8-14 um band envelope applied by `fnc_calculateSkyRadiance.sqf`; published from `fnc_calculateBandRadiance.sqf`. | derived-from-measurement |
+
+## Ground node stack shape (aee_thermal_groundNodeStack)
+
+The producer `fnc_calculateGroundNodeStack.sqf` publishes
+`aee_thermal_groundNodeStack` as a HashMap, not a scalar.  The key is a
+position grid cell and material (`floor(x/5)_floor(y/5)_<material>`) and the
+value is a six-element array: the four layer temperatures at node depths
+0.05 / 0.25 / 0.70 / 1.50 m (C), the deep-soil TBOT anchor (C), and the last
+advance tick (`diag_tickTime`).  A water position stores the same six values
+all set to the water temperature, so one shape covers land and water.  The
+stack has memory: a caller advances it by the real elapsed time since the
+last advance, and later callers in the same tick read the same state.  The
+consistency harness therefore reads the map, not a single number, and takes
+the surface layer (index 0) as the ground-surface estimate for INV-2.  Its
+Annex C row is added by task 18.
+

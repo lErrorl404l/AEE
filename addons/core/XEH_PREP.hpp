@@ -24,3 +24,6 @@ PREP(readState);
 PREP(calculateIlluminance);
 PREP(dumpState);
 PREP(reportModuleHealth);
+PREP(coreBodyTemp);
+PREP(evaluateConsistency);
+PREP(consistencyLoadTable);
