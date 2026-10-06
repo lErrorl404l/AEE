@@ -129,8 +129,16 @@ class TestSourcedConstants(unittest.TestCase):
         text = Path(
             "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn("8 °C", text)  # delta-T display gain, not a figure of merit
-        self.assertIn("0.05", text)  # microbolometer NETD
+        # The kernel is a display degradation factor, not a FLIR figure of
+        # merit, and its coefficients are declared UNSOURCED.
+        self.assertIn("DISPLAY DEGRADATION FACTOR", text)
+        self.assertIn("UNSOURCED", text)
+        # The NETD noise floor moved to the pure kernel; the microbolometer
+        # NETD default lives there now.
+        kernel = Path(
+            "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("0.05", kernel)  # microbolometer NETD default
 
     def test_smoke_taylor_and_kohler(self):
         text = Path(
