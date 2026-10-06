@@ -42,20 +42,24 @@ private _evenOffset = _tables select 3;
 private _digitChars = _tables select 5;
 
 // Decimal value of a digit string, or the index of a single character in an
-// array of characters.  A character that is not in the array gives -1.
+// array of characters.  A character that is not in the array makes the whole
+// result -1: a malformed group must never accumulate a partial value.
 private _valueOf = {
     params ["_str", "_chars"];
     private _result = 0;
     private _char = "";
     private _hit = -1;
+    private _malformed = false;
     for "_i" from 0 to ((count _str) - 1) do {
         _char = _str select [_i, 1];
         _hit = -1;
         for "_j" from 0 to ((count _chars) - 1) do {
             if (_char == (_chars select _j)) then { _hit = _j; };
         };
+        if (_hit < 0) then { _malformed = true; };
         _result = (_result * 10) + _hit;
     };
+    if (_malformed) then { _result = -1; };
     _result
 };
 
@@ -84,8 +88,14 @@ if ((_zone mod 2) == 0) then {
 };
 
 private _scale = 10 ^ (5 - _perAxis);
-private _east = (_e100k * 100000) + (([_eastStr, _digitChars] call _valueOf) * _scale);
-private _northLow = (_rowBase * 100000) + (([_northStr, _digitChars] call _valueOf) * _scale);
+private _eastValue = [_eastStr, _digitChars] call _valueOf;
+private _northValue = [_northStr, _digitChars] call _valueOf;
+// Every character of the digit groups must be a digit.  _valueOf returns -1
+// for a group that holds any non-digit, so a malformed reference returns []
+// rather than a wrong coordinate.
+if ((_eastValue < 0) || (_northValue < 0)) exitWith { [] };
+private _east = (_e100k * 100000) + (_eastValue * _scale);
+private _northLow = (_rowBase * 100000) + (_northValue * _scale);
 
 // Resolve the 2,000,000 m northing cycle with the latitude band.
 private _latSouth = -80 + (_bandIndex * 8);

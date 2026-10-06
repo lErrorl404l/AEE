@@ -66,15 +66,17 @@ if ((_lonEast > _lonWest) && (_latNorth > _latSouth) && (_mapSize > 0)) then {
     _x = ((_lon - _lonWest) / (_lonEast - _lonWest)) * _mapSize;
     _y = ((_lat - _latSouth) / (_latNorth - _latSouth)) * _mapSize;
 } else {
-    // No box: invert the tangent plane at the anchor centre.
+    // No box: invert the tangent plane at the anchor centre.  The world
+    // centre maps back to the anchor centre, the same convention as the box
+    // branch.
     private _a = 6378137;
     private _invF = 298.257223563;
     private _e2 = (1 / _invF) * (2 - (1 / _invF));
     private _sinLat = sin _latCentre;
     private _meridianRadius = _a * (1 - _e2) / ((1 - (_e2 * _sinLat * _sinLat)) ^ 1.5);
     private _metresPerDegLat = _meridianRadius * pi / 180;
-    _y = (_lat - _latCentre) * _metresPerDegLat;
-    _x = (_lon - _lonCentre) * _metresPerDegLat * (cos _latCentre);
+    _y = ((_lat - _latCentre) * _metresPerDegLat) + (_mapSize / 2);
+    _x = ((_lon - _lonCentre) * _metresPerDegLat * (cos _latCentre)) + (_mapSize / 2);
 };
 
 [_x, _y, 0]

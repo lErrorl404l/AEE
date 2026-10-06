@@ -242,6 +242,14 @@ class TestParseMgrs(unittest.TestCase):
         self.assertEqual(parse_mgrs("15SWC123"), [])
         self.assertEqual(parse_mgrs("99SWC8081751205"), [])
 
+    def test_letter_inside_the_digits_returns_empty(self):
+        # A letter inside the east or north digit group must be malformed
+        # input, not a wrong coordinate.  The old accumulator returned a
+        # coordinate for each of these.
+        self.assertEqual(parse_mgrs("15SWCABCDE12345"), [])
+        self.assertEqual(parse_mgrs("15SWC12345ABCDE"), [])
+        self.assertEqual(parse_mgrs("15SWC12A45B7890"), [])
+
 
 class TestMgrsSourceContract(unittest.TestCase):
     def test_preps_registration(self):

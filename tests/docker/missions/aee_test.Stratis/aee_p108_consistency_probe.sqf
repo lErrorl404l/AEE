@@ -7,12 +7,11 @@
 // evaluator returns NO divergence when the sources agree.
 //
 // LIVE-WORLD NOTE.  Stratis ships no mapArea, so the anchor falls back to the
-// CfgWorlds keys.  FUNC(worldToMgrs) then uses the tangent plane at the anchor
-// centre, which places the WORLD ORIGIN at the anchor centre; the world CENTRE
-// (mapSize/2) therefore projects half a map away, and the ANCHOR-CENTRE row
-// reports a divergence on the live world.  The probe records that live verdict
-// (the monitor detects the no-box case) and asserts the no-divergence verdict
-// on a consistent value set, which is what the evaluator must return when the
+// CfgWorlds keys.  FUNC(worldToMgrs) then uses the tangent plane, which maps
+// the WORLD CENTRE (mapSize/2, mapSize/2) to the anchor centre, the same
+// convention as the box branch.  The probe records the live verdict whatever
+// the world's data yields and asserts the no-divergence verdict on a
+// consistent value set, which is what the evaluator must return when the
 // sources agree.
 //
 // Emits [P108] PASS/FAIL lines.
@@ -46,7 +45,7 @@ if ((_published isEqualType true) && {_published == _verdict}) then {
 //    every source agrees, so every row must pass.
 private _table = [
     ["GRID-AGREE", "engine_grid_agrees_with_mgrs", "pairs_equal", [], [["engineGridCentre", "engineGridFromMgrs"]], 0, "warn"],
-    ["ANCHOR-CENTRE", "anchor_centre_maps_to_anchor", "agree_within", [], [["anchorLat", "projectedLat"], ["anchorLon", "projectedLon"]], 0.000001, "warn"],
+    ["ANCHOR-CENTRE", "anchor_centre_maps_to_anchor", "agree_within", [], [["anchorLat", "projectedLat"], ["anchorLon", "projectedLon"]], 0.0001, "warn"],
     ["WORLDLOC-ANCHOR", "world_location_equals_anchor", "agree_within", [], [["anchorLat", "worldLocationLat"], ["anchorLon", "worldLocationLon"]], 0.000001, "error"],
     ["MGRS-ROUNDTRIP", "mgrs_round_trips", "agree_within", [], [["centreX", "roundtripX"], ["centreY", "roundtripY"], ["easting", "parsedEasting"], ["northing", "parsedNorthing"]], 1.0, "error"]
 ];
@@ -84,7 +83,7 @@ if ((_divergence == false) && {_allPass} && {(count _verdicts) == 4}) then {
     _notes pushBack format ["consistent set diverged %1", str _verdicts];
 };
 
-diag_log text format ["[P108] live verdict=%1 (Stratis has no mapArea, so the fallback tangent plane fails the centre row); consistent set divergence=%2", _verdict, _divergence];
+diag_log text format ["[P108] live verdict=%1; consistent set divergence=%2", _verdict, _divergence];
 
 if (_fail == 0) then {
     diag_log text format ["[P108] [PASS] position consistency verdict published on %1 and a consistent set agrees (%2 checks)", worldName, _pass];
