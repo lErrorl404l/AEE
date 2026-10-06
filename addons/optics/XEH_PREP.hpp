@@ -72,6 +72,7 @@ PREPS(perception,perceptionBaseGrade);
 PREPS(perception,perceptionParams);
 PREPS(perception,perceptionSample);
 PREPS(perception,perceptionAdaptState);
+PREPS(perception,perceptionUpdate);
 
 PREPS(hud,hudBuild);
 PREPS(hud,hudFormatGrid);
