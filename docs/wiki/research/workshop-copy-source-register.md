@@ -2,10 +2,10 @@
 
 This register records the source of every idea that AEE re-implements from the
 Workshop mods surveyed for the `aee-workshop-copy` plan. It holds one row per
-item. No mod publishes a licence, so AEE copies no code, array, texture or
-content. AEE re-derives each numeric constant or re-implements each kernel
-against its own patterns. The base game config is read at run time and is
-never shipped.
+item. No mod publishes a licence, so AEE copies no content (textures, sky
+paths, models). Numeric parameter arrays are re-derived and disclosed in each
+kernel header. AEE re-implements each kernel against its own patterns. The base
+game config is read at run time and is never shipped.
 
 The State column marks an item that ships. All ten items now ship or are
 recorded.

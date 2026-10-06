@@ -17,8 +17,10 @@ redeclares the class: `Stratis`, `Altis`, `Malden`, `Tanoa` and `Enoch`. Each
 block uses the explicit base form `class X: X`, so the engine merges the
 values instead of replacing the class. Every block carries the same values.
 This is the engine's structural requirement, not per-map tuning, so no value
-is keyed by a map name. The `requiredAddons` list names the map addons so AEE
-loads on top of them.
+is keyed by a map name. The `requiredAddons` list names
+`A3_Data_F_Decade_Loadorder`, not the per-map addons. The per-map names tripped
+the engine warning "requires addon A3_Map_Tanoa" when the Apex addons were
+absent, and the run gate treats a warning as an error.
 
 ## HDRNewPars and DOFPars
 

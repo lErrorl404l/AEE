@@ -8,8 +8,10 @@ cross-check them against a Python mirror of the same spec.  They also hold the
 source contracts that keep the matcher map-free and the config table-free.
 
 MUTATION PROOF (executed by hand at commit time):
-  - add ``class Stratis {...}`` inside CfgWorlds in config.cpp ->
-    ``test_config_has_no_per_world_lighting_table`` fails; restore -> OK.
+  - add ``class Stratis {...}`` inside CfgWorlds in config.cpp with a
+    different HDRNewPars body ->
+    ``test_engine_hdr_config.test_per_world_blocks_carry_the_shared_values``
+    fails; restore -> OK.
   - change the unknown-group branch in fnc_worldLightingClass.sqf to return
     "POLAR" -> ``test_unknown_world_falls_back_to_temperate`` fails; restore.
 
