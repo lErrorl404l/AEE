@@ -157,8 +157,13 @@ class TestGeoAnchorSourceContract(unittest.TestCase):
 
     def test_reader_publishes_anchor_and_calls_builder(self):
         src = READER.read_text(encoding="utf-8")
-        self.assertIn("FUNC(buildGeoAnchor)", src)
-        self.assertIn("aee_core_geoAnchor", src)
+        # Assert the CALL FORM, not the bare name, which also sits in comments.
+        self.assertIn("call FUNC(buildGeoAnchor)", src)
+        # Assert the PUBLISH FORM, not the bare name, which also sits in the
+        # header comment ("published as aee_core_geoAnchor").
+        self.assertIn('setVariable ["aee_core_geoAnchor"', src)
+        # The anchor is cached under QGVAR(geoAnchor) so the reads happen once.
+        self.assertIn("QGVAR(geoAnchor)", src)
         self.assertIn('configFile >> "CfgWorlds" >> worldName', src)
 
 

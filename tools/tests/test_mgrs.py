@@ -95,12 +95,11 @@ class TestForwardKernel(unittest.TestCase):
 
 class TestInverseKernel(unittest.TestCase):
     def test_round_trip_within_1mm(self):
+        # The northern hemisphere and the equator.
         for lat, lon in [
             (40.7128, -74.0060),
-            (-33.8688, 151.2093),
             (39.906515, 25.246742),
             (0.0, 0.0),
-            (-17.698, 178.783),
             (54.0, 23.0),
         ]:
             e, n, zone, hemi = forward(lat, lon)
@@ -112,6 +111,17 @@ class TestInverseKernel(unittest.TestCase):
             )
 
     def test_southern_round_trip(self):
+        # The southern hemisphere carries the 10000000 false northing.
+        for lat, lon in [(-33.8688, 151.2093), (-17.698, 178.783)]:
+            e, n, zone, hemi = forward(lat, lon)
+            self.assertEqual(hemi, "south")
+            back_lat, back_lon = inverse(e, n, zone, hemi)
+            self.assertLess(
+                metres_between(lat, lon, back_lat, back_lon),
+                0.001,
+                f"southern round-trip {lat},{lon} drifted",
+            )
+        # The Sydney fixture also holds to the strict 1e-7 degree tolerance.
         e, n, zone, hemi = forward(SYDNEY[0], SYDNEY[1])
         back_lat, back_lon = inverse(e, n, zone, hemi)
         self.assertAlmostEqual(back_lat, SYDNEY[0], places=7)
@@ -256,6 +266,44 @@ class TestMgrsSourceContract(unittest.TestCase):
         # Assert the CALL FORM, not the bare name, which also sits in comments.
         self.assertIn("call FUNC(utmToLatLon)", src)
         self.assertIn("aee_core_mgrsTables", src)
+
+
+class TestMgrsTableIntegrity(unittest.TestCase):
+    """The generated letter table equals the published MGRS lettering.
+
+    Each row of addons/core/data/mgrs_tables.sqf is one table.  The
+    published sets are from DMA TM 8358.1, DMA TM 8358.2 and the NGA MGRS
+    guidance (Modified February 2009).  One test per table row, so a
+    mutation of one row turns exactly one test red.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        # Run the REAL generated table through the harness.  A letter
+        # outside the published set would break the MGRS kernels.
+        cls.tables = run_sqf(TABLES, [])
+
+    def test_band_letters_row_is_the_published_set(self):
+        self.assertEqual(self.tables[0], list("CDEFGHJKLMNPQRSTUVWX"))
+
+    def test_column_sets_row_is_the_published_sets(self):
+        self.assertEqual(
+            self.tables[1],
+            [list("ABCDEFGH"), list("JKLMNPQR"), list("STUVWXYZ")],
+        )
+
+    def test_row_letters_row_is_the_published_set(self):
+        self.assertEqual(self.tables[2], list("ABCDEFGHJKLMNPQRSTUV"))
+
+    def test_even_zone_row_offset_row_is_the_aa_offset(self):
+        # The AA scheme (WGS84) starts even zones at F, index 5.
+        self.assertEqual(self.tables[3], 5)
+
+    def test_zone_strings_row_is_01_to_60(self):
+        self.assertEqual(self.tables[4], [f"{zone:02d}" for zone in range(1, 61)])
+
+    def test_digit_characters_row_is_0_to_9(self):
+        self.assertEqual(self.tables[5], list("0123456789"))
 
 
 if __name__ == "__main__":
