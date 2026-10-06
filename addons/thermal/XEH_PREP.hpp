@@ -32,6 +32,7 @@ PREPS(solver,calculateSensorThreshold);
 PREPS(solver,resolveThermalTarget);
 PREPS(solver,resolveThermalVisibility);
 PREPS(solver,updateThermalAGC);
+PREPS(solver,calculateThermalNoise);
 PREPS(display,applyThermalVision);
 PREPS(display,applyEngineThermal);
 PREPS(display,isThermalHostActive);

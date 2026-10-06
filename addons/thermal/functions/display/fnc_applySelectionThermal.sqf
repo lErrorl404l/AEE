@@ -394,6 +394,15 @@ if (_mode == "EXIT") then {
         _threshold = 0.004349;
     };
 
+    // The sensor noise floor.  The range is the REAL sensor-to-selection
+    // distance; a display-only tick or a dedicated server has no target, so
+    // the declared default 1000 m is used.  That default is UNSOURCED: the
+    // device corpus holds no detection range.  The noise raises the contrast
+    // a selection must show to resolve (fnc_calculateThermalNoise).
+    private _noiseRange = if (_rangeM > 0.001) then { _rangeM } else { 1000 };
+    private _noiseFloor = [_netdC, _noiseRange, _resX, _humidity] call FUNC(calculateThermalNoise);
+    if !((_noiseFloor isEqualType 0) && {finite _noiseFloor}) then { _noiseFloor = 0; };
+
     // The object's local background: the mean band radiance of its OTHER
     // selections, from the previous pass.  The paint is driven one selection
     // per call, so the object's selection NAMES are accumulated in a map and
@@ -789,7 +798,7 @@ if (_mode == "EXIT") then {
 
         private _vis = 1;
         if (_thermalOn && (_bgRad > 0) && (_rangeM > 0.001)) then {
-            private _edge = [_rad, _bgRad, _threshold] call FUNC(evaluateThermalEdge);
+            private _edge = [_rad, _bgRad, _threshold, _noiseFloor] call FUNC(evaluateThermalEdge);
             if ((_edge isEqualType []) && {(count _edge) >= 2}) then {
                 private _contrast = _edge select 1;
                 // Angular size: the object's largest bounding-box extent at
