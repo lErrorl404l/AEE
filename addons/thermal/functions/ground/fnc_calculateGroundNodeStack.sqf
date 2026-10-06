@@ -122,6 +122,13 @@ private _dz = [0.10, 0.30, 0.60, 1.00];
 // gradient the land-surface literature requires.
 private _props = [_material] call FUNC(getMaterialThermal);
 _props params ["_eps", "_alphaSurf", "_rho", "_cp", "_kDry", "_phi"];
+
+// A wet soil surface emits toward the liquid-water value.  The water branch
+// above already returned, so this is an exposed land surface; the blend is
+// skipped for a submerged body and never exceeds 1.
+private _wetness = missionNamespace getVariable [QEGVAR(core,surfaceWetness), 0];
+if !(_wetness isEqualType 0) then { _wetness = 0; };
+_eps = [_eps, _wetness] call FUNC(getEffectiveEmissivity);
 private _kSat = 2.14;  // saturated soil k (de Vries / Wessolek 2022)
 private _moistTop = missionNamespace getVariable [QEGVAR(core,soilMoisture), 0.2];
 if !(_moistTop isEqualType 0) then { _moistTop = 0.2; };

@@ -8,6 +8,12 @@ When ambient air temperature and ground surface temperature converge within
 A sustained timer (~1 tick ≈ 5 s) prevents brief fluctuations from
 triggering false positives.
 
+The surface temperature is the FIRST LAYER of the four-layer ground node
+stack (fnc_calculateGroundNodeStack, issue #198), so crossover reads the
+same surface every other thermal consumer exchanges with.  The ground-state
+offsets below are a fallback only, for the impossible empty stack, and are
+UNSOURCED.
+
 Stored in GVAR(thermalCrossoverActive) (bool) and GVAR(surfaceTemperature).
 */
 
@@ -15,13 +21,28 @@ private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature)
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _overcast = overcast;
 
-// ─── Estimate surface temperature from ground state ─────────────────────
-private _surfaceTemp = switch (_groundState) do {
-    case "Snow":   { _airTemp - 2 };
-    case "Mud":    { _airTemp - 1 };
-    case "Dusty":  { _airTemp + 5 };
-    case "Frozen": { _airTemp - 3 };
-    default        { _airTemp + 2 * (1 - _overcast) }; // Normal: solar heating
+// ─── Surface temperature from the four-layer ground node stack ───────────
+// Resolve the position the way the node stack does: the current unit's ASL
+// position, else the map origin.  One stack call per tick, so the
+// time-integrated state advances once.
+private _pos = [];
+private _unit = call CBA_fnc_currentUnit;
+if (!isNil "_unit" && {!isNull _unit}) then { _pos = getPosASL _unit; };
+if (count _pos < 2) then { _pos = [0, 0, 0]; };
+
+private _stack = [_pos] call FUNC(calculateGroundNodeStack);
+private _surfaceTemp = _stack select 0;
+
+// Fallback for the impossible empty stack.  The ground-state offsets are
+// UNSOURCED and a normal run never reaches them.
+if (_stack isEqualTo []) then {
+    _surfaceTemp = switch (_groundState) do {
+        case "Snow":   { _airTemp - 2 };
+        case "Mud":    { _airTemp - 1 };
+        case "Dusty":  { _airTemp + 5 };
+        case "Frozen": { _airTemp - 3 };
+        default        { _airTemp + 2 * (1 - _overcast) }; // Normal: solar heating
+    };
 };
 
 // ─── Crossover only in the twilight window ─────────────────────────────
