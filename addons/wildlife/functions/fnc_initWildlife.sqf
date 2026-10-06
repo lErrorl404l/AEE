@@ -56,6 +56,32 @@ GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHa
     };
     private _sourceDb = ([_kind] call FUNC(acousticSourceDb)) + (20 * (log _audible));
 
+    // Task T26: couple the report to the real ballistics.  The muzzle
+    // velocity comes from the ballistics load resolver, or the ammo config
+    // where no load record is held; the calibre comes from the ballistics
+    // parser.  The kernel owns the local speed of sound and the Mach
+    // threshold, so a hot day raises the crack threshold.
+    if (_kind == "gunshot") then {
+        private _muzzleVelocity = getNumber (configFile >> "CfgAmmo" >> _ammo >> "typicalSpeed");
+        private _load = [_ammo] call EFUNC(ballistics,getLoadData);
+        if ((_load isEqualType []) && ((count _load) >= 3)) then {
+            private _service = _load select 2;
+            if ((_service isEqualType 0) && (_service > 0)) then { _muzzleVelocity = _service; };
+        };
+        private _caliberMm = 7.62;
+        private _parsedCaliber = [_ammo] call EFUNC(ballistics,parseCaliber);
+        if ((_parsedCaliber isEqualType []) && ((count _parsedCaliber) >= 1)) then {
+            private _diameter = _parsedCaliber select 0;
+            if ((_diameter isEqualType 0) && (_diameter > 0)) then { _caliberMm = _diameter; };
+        };
+        private _airTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+        private _shot = [
+            _caliberMm, _muzzleVelocity, _muzzleVelocity, _airTemp, 0, -1, -1, 0
+        ] call FUNC(shotAudio);
+        private _reportDb = _shot select 0;
+        if (_reportDb > _sourceDb) then { _sourceDb = _reportDb; };
+    };
+
     private _events = missionNamespace getVariable [QGVAR(soundEvents), []];
     if !(_events isEqualType []) then { _events = []; };
     _events = [
