@@ -4,11 +4,12 @@ Status: Accepted
 Date: 2026-10-06
 Decision: AEE re-implements the environment, optics and effects ideas from the
 eleven Workshop mods surveyed for `aee-workshop-copy` as its own behaviour. AEE
-copies no code, array, texture or content and ships no base-game config data.
-AEE re-homes the engine config anchor into the world class chain at load time
-and reads the base-game config at run time. A world lighting matcher classifies
-every world from published facts and drives the run-time levers the engine
-exposes. This record supersedes the "not implemented" follow-up in
+copies no content (textures, sky paths, models); numeric parameter arrays are
+re-derived and disclosed in each kernel header. AEE ships no base-game config
+data. AEE re-homes the engine config anchor into the world class chain at load
+time and reads the base-game config at run time. A world lighting matcher
+classifies every world from published facts and drives the run-time levers the
+engine exposes. This record supersedes the "not implemented" follow-up in
 `human-vision-model.md`.
 
 ## Context
@@ -25,10 +26,11 @@ post-process templates.
 
 ## Licence stance
 
-No surveyed mod publishes a licence. AEE therefore copies no mod code, no
-array, no texture, no model and no PBO content. AEE re-derives each numeric
-constant or re-implements each kernel against its own patterns. AEE reads the
-base-game config at run time and never ships base-game config data.
+No surveyed mod publishes a licence. AEE therefore copies no content
+(textures, sky paths, models) and no PBO content. Numeric parameter arrays are
+re-derived and disclosed in each kernel header. AEE re-implements each kernel
+against its own patterns. AEE reads the base-game config at run time and never
+ships base-game config data.
 
 Each value in the source register carries the source mod, the Workshop id and
 the line "no licence published; re-implemented, not copied". A value with no
@@ -63,9 +65,13 @@ matcher.
 
 ## Load order
 
-`requiredAddons` names the map addons `A3_Map_Stratis`, `A3_Map_Altis`,
-`A3_Map_Malden`, `A3_Map_Tanoa` and `A3_Map_Enoch`. The engine loads AEE on top
-of the map addons. A competing mod that loads later can still win the class.
+`requiredAddons` names `A3_Data_F_Decade_Loadorder`, not the per-map addons
+`A3_Map_Stratis`, `A3_Map_Altis`, `A3_Map_Malden`, `A3_Map_Tanoa` and
+`A3_Map_Enoch`. The per-map names tripped the engine warning "requires addon
+A3_Map_Tanoa" when the Apex addons were absent, and the run gate treats a
+warning as an error. `A3_Data_F_Decade_Loadorder` is present in every supported
+build, so the anchor loads without the warning. The engine loads AEE on top of
+the base-game data. A competing mod that loads later can still win the class.
 The load order decides among competing mods. AEE records this caveat and makes
 no claim to the last word.
 
