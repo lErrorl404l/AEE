@@ -295,5 +295,119 @@ class TestTemporalSourceContracts(unittest.TestCase):
         self.assertIn("5 to 30 C", code)
 
 
+SAMPLER = FUNCS / "fnc_sampleNeighbourhood.sqf"
+
+
+def sample(
+    centre=(0, 0, 0),
+    water=False,
+    foliage=None,
+    buildings=None,
+    cell_size=25,
+    cells_per_axis=5,
+    max_objects=12,
+    budget_ms=2.0,
+    store=None,
+    queries=None,
+):
+    if foliage is None:
+        foliage = ["Tree", "Bush"]
+    if buildings is None:
+        buildings = ["Building"]
+    if store is None:
+        store = {}
+    if queries is None:
+        queries = []
+
+    def _nearest(payload):
+        queries.append(payload)
+        types = payload[1]
+        for t in types:
+            if t in ("Tree", "Bush"):
+                return foliage
+        return buildings
+
+    globals_ = {
+        "missionNamespace": store,
+        "getVariable": lambda n, s: n.get(s[0], s[1]),
+        "setVariable": lambda n, s: n.__setitem__(s[0], s[1]),
+        "diag_tickTime": 100.0,
+        "surfaceIsWater": lambda p: water,
+        "surfaceType": lambda p: "GdtConcrete",
+        "getTerrainHeightASL": lambda p: 10.0,
+        "nearestTerrainObjects": _nearest,
+        "__EFUNC__material_classifyBySurfaceType": lambda s: "concrete",
+        "WILDLIFE_ENVIRONMENT_CAP": 256,
+        "WILDLIFE_ENVIRONMENT_QUERY_CAP": 64,
+    }
+    result = run_sqf(
+        SAMPLER,
+        [list(centre), cell_size, cells_per_axis, max_objects, budget_ms],
+        globals_=globals_,
+    )
+    return result, store, queries
+
+
+class TestSampleNeighbourhood(unittest.TestCase):
+    """fnc_sampleNeighbourhood runs from the real SQF with engine stubs."""
+
+    def test_a_concrete_cell_has_no_foliage(self):
+        result, _store, _q = sample(foliage=[], buildings=[])
+        self.assertEqual(result[0], 0)
+        self.assertEqual(result[2], 0)
+        self.assertEqual(result[3], 0)
+        self.assertIn(["concrete", 25.0], result[1])
+
+    def test_a_wooded_cell_has_foliage(self):
+        result, _store, _q = sample(foliage=["Tree", "Tree", "Bush"], buildings=[])
+        self.assertGreater(result[0], 0)
+
+    def test_a_water_cell_is_water(self):
+        result, _store, _q = sample(water=True, foliage=[], buildings=[])
+        self.assertEqual(result[2], 1)
+
+    def test_the_mean_elevation_is_returned(self):
+        result, _store, _q = sample(foliage=[], buildings=[])
+        self.assertEqual(result[4], 10.0)
+
+    def test_the_foliage_fraction_is_bounded(self):
+        result, _store, _q = sample(foliage=["Tree"] * 50, buildings=[], max_objects=12)
+        self.assertLessEqual(result[0], 1)
+
+    def test_a_zero_budget_requeues_and_the_next_call_progresses(self):
+        result0, store, _q = sample(foliage=["Tree"], buildings=[], budget_ms=0)
+        self.assertEqual(result0[0], 0)
+        self.assertEqual(len(store.get("__QGVAR__environmentPending", [])), 25)
+        result1, store, _q = sample(
+            foliage=["Tree"], buildings=[], budget_ms=2.0, store=store
+        )
+        self.assertGreater(result1[0], 0)
+        self.assertEqual(len(store.get("__QGVAR__environmentPending", [])), 0)
+
+    def test_a_second_call_uses_the_cache_and_queries_nothing(self):
+        first, store, queries1 = sample()
+        self.assertGreater(len(queries1), 0)
+        second, store, queries2 = sample(store=store)
+        self.assertEqual(len(queries2), 0)
+        self.assertEqual(first, second)
+
+
+class TestSamplerSourceContracts(unittest.TestCase):
+    def test_the_sampler_is_prepped(self):
+        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(sampleNeighbourhood)", text)
+
+    def test_the_policy_defines_exist(self):
+        text = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
+        self.assertIn("WILDLIFE_ENVIRONMENT_QUERY_CAP", text)
+        self.assertIn("WILDLIFE_ENVIRONMENT_CAP", text)
+
+    def test_the_sampler_requeues_at_the_front(self):
+        code = SAMPLER.read_text(encoding="utf-8")
+        self.assertIn("environmentPending", code)
+        self.assertIn("classifyBySurfaceType", code)
+        self.assertIn("nearestTerrainObjects", code)
+
+
 if __name__ == "__main__":
     unittest.main()

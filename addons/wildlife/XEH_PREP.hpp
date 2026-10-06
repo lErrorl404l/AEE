@@ -1,6 +1,7 @@
 PREP(getSpeciesMatch);
 PREP(getCallPattern);
 PREP(getSeason);
+PREP(sampleNeighbourhood);
 PREP(speciesDeprecation);
 PREP(speciesForBiome);
 PREP(spawnBudget);

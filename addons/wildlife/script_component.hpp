@@ -14,3 +14,9 @@
 // addons/ai/script_component.hpp and the per-constant register.
 #define AI_CELL_CAP 256
 #define AI_CELL_HORIZON 120
+
+// Neighbourhood environment sampler policy.  Modelling choices, UNSOURCED.
+// The query cap bounds the object queries per call; the cell cap bounds the
+// cached per-cell sample store.
+#define WILDLIFE_ENVIRONMENT_QUERY_CAP 64
+#define WILDLIFE_ENVIRONMENT_CAP 256
