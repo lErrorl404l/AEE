@@ -16,6 +16,12 @@ radio (Friis, ITU-R P.531), environmental (Q10 CBRN, Rothermel, Stefan),
 and atmos (LWC icing, CAPE, EDR, WMO trend). Each test covers reference
 values, edge cases (zero, extremes, clamp bounds), and monotonicity.
 
+The wildlife ecology kernels add two suites: `test_wildlife_ecology` and
+`test_wildlife`. They run the real SQF kernels through the `sqf_lite`
+harness with fixtures, and they pin the corpus to a fresh render. Each pure
+kernel has a mutation proof: one edit makes exactly one test fail, then the
+restore makes it pass.
+
 The single-command runner executes every suite plus the physics validation
 harness:
 
@@ -70,6 +76,20 @@ tools/docker_test.sh
 
 The script builds the mod, assembles `@aee`, downloads CBA if needed, runs
 the server, captures the RPT output, and verifies the phase results.
+
+### Ecology probes
+
+The wildlife ecology layer adds four probes. Each drives a pure kernel with
+fixtures, or a kernel that reads the terrain only. No probe claims a rendered
+pixel or a played sample. The `init.sqf` owns the single `[AEE-TEST] DONE`
+line, and each probe emits its own `[P10n] [PASS]` or `[P10n] [FAIL]` line.
+
+| Probe | Checks |
+|---|---|
+| P102 | Environment sampler budget and re-queue, and the pure cache cap and age |
+| P103 | Ecology cognition tick budget, the front re-queue and the client gate |
+| P104 | Call emit and receive semantics, and the heard-call bus |
+| P105 | Sound emission schedule: dawn peak, mid-day lull, Dolbear duty cycle |
 
 ## Engine mass census
 
