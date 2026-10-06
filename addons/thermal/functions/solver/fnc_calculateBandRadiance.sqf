@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
-LWIR band radiance (FLIR measurement equation, issue #196).
+Band-limited thermal radiance (FLIR measurement equation, issue #196).
 
 Real FLIR does not render temperature - it measures RADIANCE integrated
 over the LWIR band, and the apparent radiance reaching the sensor has
@@ -31,8 +31,13 @@ reflection term, and it cannot represent the night behaviour that makes
 real imagery look right: a low-emissivity surface (bare metal, eps ~0.1)
 reflects the cold sky and reads DARK even when physically warm.
 
-Band: the sim integrates over 8-14 um, spanning the fielded LWIR systems
-(FLIR Tau 2: 7.5-13.5 um; AN/PAS-13C/E: 8-12 um; NETD < 50 mK).
+Band: the integral is parameterised by two band edges in metres.  The
+default is the LWIR 8-14 um window, spanning the fielded LWIR systems
+(FLIR Tau 2: 7.5-13.5 um; AN/PAS-13C/E: 8-12 um; NETD < 50 mK).  A caller
+passes the MWIR 3-5 um pair for a cooled InSb or MWIR MCT detector.  The
+band edges come from fnc_resolveThermalBand, which reads the per-device
+band token.  Only the integration limits change; the Planck integrand is
+unchanged.
 
 The reflection temperature is the sky/ground mix the surface sees: a
 horizontal panel sees the sky dome above and the ground below, weighted
@@ -63,11 +68,15 @@ Arguments:
   6: path temperature (NUMBER, C) - air temperature along the path, for
      the isothermal path radiance W_atm; default 15, and inert while the
      transmission default of 1 holds
+  7: trace flag (BOOL) - the hoisted module trace switch
+  8: band short edge (NUMBER, m) - default 8e-6, the LWIR window start
+  9: band long edge (NUMBER, m) - default 14e-6, the LWIR window end
 
 Return Value:
   NUMBER - apparent band radiance (W/m2/sr), the value a FLIR sensor
   reads.  Monotonic in surface temperature for fixed environment, so it
-  maps cleanly through the scene AGC.
+  maps cleanly through the scene AGC.  A band whose short edge is not
+  positive or whose long edge is not longer is refused with -1.
 */
 private _perfT0 = diag_tickTime;
 params [
@@ -82,8 +91,22 @@ params [
     // to three namespace lookups, so this kernel is called per selection and
     // must not evaluate it per selection.  A caller that omits it keeps the
     // old behaviour (trace on).
-    ["_traceOn", true]
+    ["_traceOn", true],
+    // Band edges in metres.  The LWIR 8-14 um default keeps every existing
+    // caller bit-identical.  A caller resolves the per-device band token with
+    // fnc_resolveThermalBand and passes the pair here.
+    ["_lambda1M", 8e-6, [0]],
+    ["_lambda2M", 14e-6, [0]]
 ];
+
+// A band must be a positive, increasing pair.  Refuse a bad one with -1, the
+// same refusal discipline the other kernels use.  SQF NaN compares false
+// against everything, so finite is checked before the arithmetic.
+if !(_lambda1M isEqualType 0) exitWith { -1 };
+if !(_lambda2M isEqualType 0) exitWith { -1 };
+if !(finite _lambda1M) exitWith { -1 };
+if !(finite _lambda2M) exitWith { -1 };
+if (_lambda1M <= 0 || _lambda2M <= _lambda1M) exitWith { -1 };
 
 // Transmission is clamped to the physical 0..1 range; a non-finite value
 // falls back to 1, the old close-range behaviour, rather than poisoning the
@@ -125,8 +148,8 @@ private _tReflK = _fGround * _tGroundK + (1 - _fGround) * _tSkyK;
 private _fnRad = {
     params ["_tk"];
     _tk = (_tk max 100) min 2000;   // numerical domain guard, not a physical clamp
-    private _z1 = 1.438776877e-2 / (8e-6 * _tk);
-    private _z2 = 1.438776877e-2 / (14e-6 * _tk);
+    private _z1 = 1.438776877e-2 / (_lambda1M * _tk);
+    private _z2 = 1.438776877e-2 / (_lambda2M * _tk);
     private _z1s = _z1 * _z1;
     private _z1c = _z1s * _z1;
     private _z2s = _z2 * _z2;

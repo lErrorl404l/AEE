@@ -5541,6 +5541,80 @@ class TestAtmosphericTransmissionKernel(unittest.TestCase):
         self.assertIn("_tPathK call _fnRad", rc)
 
 
+class TestBandParameterisedRadiance(unittest.TestCase):
+    """The Planck band integral is band-parameterised (T2).
+
+    fnc_calculateBandRadiance takes optional _lambda1M and _lambda2M after
+    the trace flag.  The default path is the LWIR 8-14 um pair and is
+    bit-identical to the pre-change result.  A band whose first edge is not
+    positive or whose second edge is not longer is refused with -1.  The
+    kernel is executed from its real SQF, not a Python mirror.
+    """
+
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
+    _GLOBALS = {"overcast": 0.0, "diag_tickTime": 0.0}
+
+    def _rad(
+        self,
+        band=None,
+        t_surf=37.0,
+        eps=0.92,
+        t_air=15.0,
+        f_ground=0.5,
+        t_ground=15.0,
+        tau=1.0,
+        t_path=15.0,
+    ):
+        args = [t_surf, eps, t_air, f_ground, t_ground, tau, t_path, False]
+        if band is not None:
+            args.extend(band)
+        return run_sqf(self._KERNEL, args, dict(self._GLOBALS))
+
+    def test_the_lwir_default_is_the_pinned_pre_change_value(self):
+        # Captured from the kernel before the band parameters were added:
+        # [37, 0.92, 15, 0.5, 15, 1, 15, false] -> 61.411614652735...
+        self.assertAlmostEqual(self._rad(), 61.411614652735594, places=9)
+
+    def test_the_default_equals_the_explicit_lwir_pair(self):
+        self.assertEqual(self._rad(), self._rad([8e-6, 14e-6]))
+
+    def test_the_lwir_default_matches_the_python_mirror(self):
+        self.assertAlmostEqual(
+            self._rad(),
+            band_radiance_atm(37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0),
+            places=9,
+        )
+
+    def test_mwir_is_positive_at_300_k(self):
+        # 300 K is 26.85 C.
+        value = self._rad([3e-6, 5e-6], t_surf=26.85)
+        self.assertGreater(value, 0.0)
+
+    def test_mwir_is_monotone_in_temperature(self):
+        values = [self._rad([3e-6, 5e-6], t_surf=t) for t in (20.0, 26.85, 60.0, 120.0)]
+        for a, b in zip(values, values[1:]):
+            self.assertLess(a, b)
+
+    def test_mwir_differs_from_lwir(self):
+        self.assertNotEqual(self._rad([3e-6, 5e-6]), self._rad([8e-6, 14e-6]))
+
+    def test_a_bad_band_is_refused(self):
+        self.assertEqual(self._rad([0.0, 14e-6]), -1)
+        self.assertEqual(self._rad([-1e-6, 14e-6]), -1)
+        self.assertEqual(self._rad([8e-6, 5e-6]), -1)
+        self.assertEqual(self._rad([8e-6, 8e-6]), -1)
+
+    def test_the_source_declares_the_band_parameters(self):
+        code = _code_only(self._KERNEL.read_text(encoding="utf-8"))
+        self.assertIn('["_lambda1M", 8e-6, [0]]', code)
+        self.assertIn('["_lambda2M", 14e-6, [0]]', code)
+        self.assertIn("_lambda1M * _tk", code)
+        self.assertIn("_lambda2M * _tk", code)
+        self.assertIn(
+            "if (_lambda1M <= 0 || _lambda2M <= _lambda1M) exitWith { -1 };", code
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -5792,7 +5866,7 @@ class TestThermalResolvabilityWiring(unittest.TestCase):
         self.assertIn("FUNC(calculateSensorThreshold)", self.paint)
         self.assertIn("_threshold = 0.004349;", self.paint)
         device = _read_sqf("fnc_getThermalDeviceProperties.sqf", "thermal")
-        self.assertIn("[0.05, 640, 480, 1.5, 30, 0]", device)
+        self.assertIn('[0.05, 640, 480, 1.5, 30, 0, "lwir"]', device)
 
     def test_the_three_kernels_run_in_the_header_order(self):
         # Threshold from the device, then the edge, then the Johnson test.
