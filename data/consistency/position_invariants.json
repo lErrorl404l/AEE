@@ -21,10 +21,10 @@
       "predicate": "agree_within",
       "inputs": ["anchorLat", "anchorLon", "projectedLat", "projectedLon"],
       "pairs": [["anchorLat", "projectedLat"], ["anchorLon", "projectedLon"]],
-      "tolerance": 0.000001,
+      "tolerance": 0.0001,
       "severity": "warn",
       "grade": "derived",
-      "note": "The world centre projected through the anchor box to latitude and longitude must equal the anchor centre. Tolerance 1e-6 degrees is the float resolution of the box centre."
+      "note": "The world centre projected through the anchor box to latitude and longitude must equal the anchor centre. The builder computes (latSouth+latNorth)/2 and the projector computes latSouth + 0.5*(latNorth-latSouth). The two are algebraically equal but about one ULP apart on the engine's 32-bit floats (about 2e-6 degrees at latitude 40), so the tolerance is 1e-4 degrees, the demonstrated safe margin. A 1e-6 tolerance was falsely RED on a correctly mapped world."
     },
     {
       "id": "WORLDLOC-ANCHOR",

@@ -52,17 +52,19 @@ if ((_lonEast > _lonWest) && (_latNorth > _latSouth) && (_mapSize > 0)) then {
     _lon = _lonWest + ((_x / _mapSize) * (_lonEast - _lonWest));
     _lat = _latSouth + ((_y / _mapSize) * (_latNorth - _latSouth));
 } else {
-    // No box: a local tangent plane at the anchor centre.  The WGS84
-    // meridian radius of curvature M = a(1-e2)/(1-e2 sin2)^1.5 is the source
-    // of metres per degree of latitude; longitude scales by cos(latitude).
+    // No box: a local tangent plane at the anchor centre.  The world centre
+    // (mapSize/2, mapSize/2) maps to the anchor centre, the same convention
+    // as the box branch.  The WGS84 meridian radius of curvature
+    // M = a(1-e2)/(1-e2 sin2)^1.5 is the source of metres per degree of
+    // latitude; longitude scales by cos(latitude).
     private _a = 6378137;
     private _invF = 298.257223563;
     private _e2 = (1 / _invF) * (2 - (1 / _invF));
     private _sinLat = sin _latCentre;
     private _meridianRadius = _a * (1 - _e2) / ((1 - (_e2 * _sinLat * _sinLat)) ^ 1.5);
     private _metresPerDegLat = _meridianRadius * pi / 180;
-    _lat = _latCentre + (_y / _metresPerDegLat);
-    _lon = _lonCentre + (_x / (_metresPerDegLat * (cos _latCentre)));
+    _lat = _latCentre + ((_y - (_mapSize / 2)) / _metresPerDegLat);
+    _lon = _lonCentre + ((_x - (_mapSize / 2)) / (_metresPerDegLat * (cos _latCentre)));
 };
 
 private _utm = [_lat, _lon] call FUNC(latLonToUtm);

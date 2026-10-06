@@ -54,10 +54,10 @@ private _table = [
         "agree_within",
         ["anchorLat", "anchorLon", "projectedLat", "projectedLon"],
         [["anchorLat", "projectedLat"], ["anchorLon", "projectedLon"]],
-        0.000001,
+        0.0001,
         "warn",
         "derived",
-        "The world centre projected through the anchor box must equal the anchor centre; tolerance 1e-6 deg is the float resolution of the box centre."
+        "The world centre projected through the anchor box must equal the anchor centre.  The builder computes (latSouth+latNorth)/2 and the projector computes latSouth + 0.5*(latNorth-latSouth); the two are algebraically equal but about one ULP apart on the engine's 32-bit floats (about 2e-6 deg at lat 40), so the tolerance is 1e-4 deg, the demonstrated safe margin."
     ],
     [
         "WORLDLOC-ANCHOR",
@@ -99,8 +99,14 @@ private _roundtrip = [_mgrs, _anchor] call FUNC(mgrsToWorld);
 private _engineGridFromMgrs = mapGridPosition _roundtrip;
 
 private _parsed = [_mgrs] call FUNC(parseMgrs);
-private _parsedEasting = _parsed select 0;
-private _parsedNorthing = _parsed select 1;
+// A malformed format result near a zone edge leaves fewer than four elements.
+// Treat it as a reported divergence, not a raw index error each PFH tick.
+private _parsedEasting = -1;
+private _parsedNorthing = -1;
+if ((count _parsed) >= 4) then {
+    _parsedEasting = _parsed select 0;
+    _parsedNorthing = _parsed select 1;
+};
 
 private _values = [
     ["engineGridCentre", _engineGridCentre],

@@ -204,15 +204,26 @@ class TestWorldToMgrs(unittest.TestCase):
                 f"round trip {x},{y} drifted to {back[0]},{back[1]}",
             )
 
-    def test_no_box_anchor_uses_the_tangent_plane(self):
+    def test_no_box_anchor_maps_world_centre_to_anchor_centre(self):
         # A usable box is absent, so the tangent plane at the centre applies.
+        # The fallback uses the SAME convention as the box branch: the world
+        # centre (mapSize/2, mapSize/2) maps to the anchor centre.  The old
+        # origin convention put every fallback world out by mapSize/2 metres.
         anchor = build(8192, 35, [], -35.097, 16.482)
-        result = world_to_mgrs([0, 0, 0], anchor)
+        result = world_to_mgrs([anchor[3] / 2, anchor[3] / 2, 0], anchor)
         self.assertEqual(len(result), 6)
         self.assertIsInstance(result[0], str)
-        # The origin is the tangent-plane centre.
         self.assertAlmostEqual(result[1], anchor[0], places=6)
         self.assertAlmostEqual(result[2], anchor[1], places=6)
+
+    def test_no_box_anchor_round_trips_the_world_centre(self):
+        # The forward and inverse tangent planes apply the same offset, so the
+        # world centre round-trips inside the MGRS square diagonal.
+        anchor = build(8192, 35, [], -35.097, 16.482)
+        centre = [anchor[3] / 2, anchor[3] / 2, 0]
+        written = world_to_mgrs(centre, anchor)
+        back = mgrs_to_world(written[0], anchor)
+        self.assertLess(math.dist((centre[0], centre[1]), (back[0], back[1])), 1.5)
 
 
 class TestWorldToMgrsSourceContract(unittest.TestCase):
@@ -274,6 +285,14 @@ def monitor_supplied_keys():
     src = MONITOR.read_text(encoding="utf-8")
     block = src.split("private _values = [", 1)[1].split("\n];", 1)[0]
     return set(re.findall(r'\["([A-Za-z0-9_]+)",\s*_', block))
+
+
+def monitor_row_tolerance(row_id):
+    """The tolerance literal of one monitor table row, read from the SQF."""
+    src = MONITOR.read_text(encoding="utf-8")
+    after = src.split(f'"{row_id}"', 1)[1]
+    match = re.search(r"\n\s*([0-9]+\.[0-9]+),", after)
+    return float(match.group(1))
 
 
 def strip_sqf_comments(text):
@@ -361,6 +380,24 @@ class TestPositionInvariantTable(unittest.TestCase):
                 row["id"],
             )
 
+    def test_anchor_centre_tolerance_covers_the_32_bit_float_error(self):
+        # The builder computes (latSouth+latNorth)/2 and the projector computes
+        # latSouth + 0.5*(latNorth-latSouth).  Algebraically equal, but the
+        # engine's 32-bit floats leave them about one ULP apart, ~2e-6 deg at
+        # latitude 40.  A 1e-6 tolerance is falsely RED on a correctly mapped
+        # world (Altis too), so the row carries the demonstrated 1e-4 margin.
+        data = load_invariants_json()
+        row = next(r for r in data["rows"] if r["id"] == "ANCHOR-CENTRE")
+        self.assertGreaterEqual(row["tolerance"], 1e-4)
+        self.assertEqual(monitor_row_tolerance("ANCHOR-CENTRE"), row["tolerance"])
+
+    def test_world_location_tolerance_stays_at_the_anchor_resolution(self):
+        # WORLDLOC-ANCHOR compares two values written from the same anchor, so
+        # it is bit-identical and keeps the 1e-6 resolution.
+        data = load_invariants_json()
+        row = next(r for r in data["rows"] if r["id"] == "WORLDLOC-ANCHOR")
+        self.assertEqual(row["tolerance"], 1e-6)
+
     def test_every_referenced_variable_is_supplied_by_monitor(self):
         declared = set()
         for row in load_invariants_json()["rows"]:
@@ -435,6 +472,17 @@ class TestGeoConsistencyEvaluatorBehaviour(unittest.TestCase):
         self.assertTrue(divergence)
         failed = [v[0] for v in verdicts if not v[1]]
         self.assertEqual(failed, ["MGRS-ROUNDTRIP"])
+
+    def test_anchor_centre_passes_at_the_32_bit_float_offset(self):
+        # Simulate the engine's 32-bit centre difference of about 2e-6 degrees.
+        # The old 1e-6 tolerance made this correctly mapped row falsely RED.
+        values = [list(pair) for pair in CONSISTENT_VALUES]
+        for pair in values:
+            if pair[0] == "projectedLat":
+                pair[1] = pair[1] - 0.000002
+        divergence, verdicts = evaluate(values)
+        row = next(v for v in verdicts if v[0] == "ANCHOR-CENTRE")
+        self.assertTrue(row[1], row[2])
 
     def test_missing_value_is_a_divergence(self):
         values = [pair for pair in CONSISTENT_VALUES if pair[0] != "northing"]
