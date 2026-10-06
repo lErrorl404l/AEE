@@ -41,20 +41,24 @@ class TestNvgWiring(unittest.TestCase):
 
 
 class TestThermalWiring(unittest.TestCase):
-    FNC = (
-        REPO / "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
+    PAINT = (
+        REPO / "addons/thermal/functions/display/fnc_applySelectionThermal.sqf"
+    ).read_text(encoding="utf-8")
+    KERNEL = (
+        REPO / "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
     ).read_text(encoding="utf-8")
 
     def test_netd_from_device(self):
-        # The noise floor reads the device NETD (0.025 cooled / 0.05
-        # uncooled).
-        self.assertIn("getThermalDeviceProperties", self.FNC)
-        self.assertIn("private _netd = _dev select 0", self.FNC)
+        # The selection caller resolves the device NETD and feeds the pure
+        # noise kernel (0.025 cooled / 0.05 uncooled).
+        self.assertIn("getThermalDeviceProperties", self.PAINT)
+        self.assertIn("FUNC(calculateThermalNoise)", self.PAINT)
+        self.assertIn("_netdDegC", self.KERNEL)
 
     def test_resolution_scales_noise(self):
         # A low-res detector adds spatial noise (640x480 reference).
-        self.assertIn("private _resX = _dev select 1", self.FNC)
-        self.assertIn("640 / (_resX max 1)", self.FNC)
+        self.assertIn("640 / _res", self.KERNEL)
+        self.assertIn("_netdC, _noiseRange, _resX, _humidity", self.PAINT)
 
 
 class TestOpticKnowledgeLayer(unittest.TestCase):

@@ -251,10 +251,6 @@ if (_mode == "EXIT") then {
     private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
     private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
     private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-    // Surface wetness drives the effective emissivity (fnc_getEffectiveEmissivity).
-    // Read once per object; the blend runs per selection below.
-    private _surfaceWetness = missionNamespace getVariable [QEGVAR(core,surfaceWetness), 0];
-    if !(_surfaceWetness isEqualType 0) then { _surfaceWetness = 0; };
     private _rangeM = if (isNull _viewer) then { 0 } else { _obj distance _viewer };
     private _tau = [_rangeM, _humidity, _tAir, _fog, rain, _airDensity] call FUNC(calculateAtmosphericTransmission);
     if (_tau < 0) then { _tau = 1; };   // unusable input: transmissive fallback
@@ -397,15 +393,6 @@ if (_mode == "EXIT") then {
     if !((_threshold isEqualType 0) && (_threshold > 0) && {finite _threshold}) then {
         _threshold = 0.004349;
     };
-
-    // The sensor noise floor.  The range is the REAL sensor-to-selection
-    // distance; a display-only tick or a dedicated server has no target, so
-    // the declared default 1000 m is used.  That default is UNSOURCED: the
-    // device corpus holds no detection range.  The noise raises the contrast
-    // a selection must show to resolve (fnc_calculateThermalNoise).
-    private _noiseRange = if (_rangeM > 0.001) then { _rangeM } else { 1000 };
-    private _noiseFloor = [_netdC, _noiseRange, _resX, _humidity] call FUNC(calculateThermalNoise);
-    if !((_noiseFloor isEqualType 0) && {finite _noiseFloor}) then { _noiseFloor = 0; };
 
     // The object's local background: the mean band radiance of its OTHER
     // selections, from the previous pass.  The paint is driven one selection
@@ -683,6 +670,8 @@ if (_mode == "EXIT") then {
         // A rain-wetted surface emits toward the liquid-water value.  The
         // selection is an exposed exterior surface; the wet blend never
         // exceeds 1 (fnc_getEffectiveEmissivity clamps).
+        private _surfaceWetness = missionNamespace getVariable [QEGVAR(core,surfaceWetness), 0];
+        if !(_surfaceWetness isEqualType 0) then { _surfaceWetness = 0; };
         _eps = [_eps, _surfaceWetness] call FUNC(getEffectiveEmissivity);
         // Publish the selection's OWN emissivity for the AGC.  selTemperature
         // keeps its "object|selection" keys; this parallel map lets the AGC
@@ -805,6 +794,14 @@ if (_mode == "EXIT") then {
         _radMap set [_stateKey, _rad];
 
         private _vis = 1;
+        // The sensor noise floor.  The range is the REAL sensor-to-selection
+        // distance; a display-only tick or a dedicated server has no target,
+        // so the declared default 1000 m is used.  That default is UNSOURCED:
+        // the device corpus holds no detection range.  The noise raises the
+        // contrast a selection must show to resolve (fnc_calculateThermalNoise).
+        private _noiseRange = [1000, _rangeM] select (_rangeM > 0.001);
+        private _noiseFloor = [_netdC, _noiseRange, _resX, _humidity] call FUNC(calculateThermalNoise);
+        if !((_noiseFloor isEqualType 0) && {finite _noiseFloor}) then { _noiseFloor = 0; };
         if (_thermalOn && (_bgRad > 0) && (_rangeM > 0.001)) then {
             private _edge = [_rad, _bgRad, _threshold, _noiseFloor] call FUNC(evaluateThermalEdge);
             if ((_edge isEqualType []) && {(count _edge) >= 2}) then {
