@@ -101,7 +101,12 @@ params [
     // matches the reference condition of the transmission kernel.
     ["_humidityPct", 50, [0]],
     // The per-device band token for the band sky model (T3).  Default lwir.
-    ["_bandToken", "lwir", [""]]
+    ["_bandToken", "lwir", [""]],
+    // Reflected-solar band radiance W/m2/sr (T4).  It already carries the
+    // surface reflectance (1 - eps).  The default 0 keeps every LWIR caller
+    // bit-identical.  A caller passes the result of
+    // fnc_calculateReflectedSolarBand, which is zero for LWIR and at night.
+    ["_wSolar", 0, [0]]
 ];
 
 // A band must be a positive, increasing pair.  Refuse a bad one with -1, the
@@ -147,7 +152,7 @@ private _wObj = [_tSurfK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
 private _wRefl = [_tReflK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
 private _tPathK = (_tPath + 273.15) max 200 min 350;
 private _wAtm = [_tPathK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
-private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl);
+private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl + _wSolar);
 private _wBand = _wTransmitted + (1 - _tau) * _wAtm;
 if (_traceOn) then {
     // The clock read above is deliberate and unconditional.  One engine call

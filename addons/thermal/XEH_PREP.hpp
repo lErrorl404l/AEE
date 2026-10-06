@@ -30,6 +30,7 @@ PREPS(solver,calculateBandRadiance);
 PREPS(solver,resolveThermalBand);
 PREPS(solver,planckBandRadiance);
 PREPS(solver,calculateSkyRadiance);
+PREPS(solver,calculateReflectedSolarBand);
 PREPS(solver,evaluateThermalEdge);
 PREPS(solver,calculateSensorThreshold);
 PREPS(solver,resolveThermalTarget);

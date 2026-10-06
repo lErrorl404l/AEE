@@ -5536,7 +5536,7 @@ class TestAtmosphericTransmissionKernel(unittest.TestCase):
 
     def test_source_three_term_form(self):
         rc = self.radiance_code
-        self.assertIn("_tau * (_eps * _wObj + (1 - _eps) * _wRefl)", rc)
+        self.assertIn("_tau * (_eps * _wObj + (1 - _eps) * _wRefl + _wSolar)", rc)
         self.assertIn("(1 - _tau) * _wAtm", rc)
         self.assertIn(
             "[_tPathK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance)", rc
@@ -5741,6 +5741,91 @@ class TestBandSkyModel(unittest.TestCase):
         self.assertIn("PREPS(solver,planckBandRadiance);", prep)
 
 
+class TestReflectedSolarBand(unittest.TestCase):
+    """The MWIR reflected-solar term (T4).
+
+    The kernel is executed from its real SQF.  The MWIR top-of-atmosphere
+    band irradiance is pinned to within one percent of an independent
+    computation, and the term is zero for LWIR and at night.
+    """
+
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateReflectedSolarBand.sqf"
+    _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
+
+    def _solar(self, band, eps, elev):
+        return run_sqf(
+            self._KERNEL,
+            [band, eps, elev],
+            {
+                "__FUNC__resolveThermalBand": _run_resolve_band,
+                "__FUNC__planckBandRadiance": _run_planck,
+            },
+        )
+
+    def _rad(self, w_solar, band=False):
+        l1, l2, token = (3e-6, 5e-6, "mwir") if band else (8e-6, 14e-6, "lwir")
+        args = [37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0, False]
+        args.extend([l1, l2, 50.0, token, w_solar])
+        return run_sqf(self._RADIANCE, args, _radiance_globals())
+
+    # ── Zero cases ──
+    def test_lwir_is_zero(self):
+        self.assertEqual(self._solar("lwir", 0.95, 45.0), 0)
+        self.assertEqual(self._solar("lwir", 0.10, 90.0), 0)
+
+    def test_night_and_horizon_are_zero(self):
+        for elev in (-90.0, -10.0, 0.0):
+            with self.subTest(elev=elev):
+                self.assertEqual(self._solar("mwir", 0.95, elev), 0)
+
+    # ── The derived magnitude ──
+    def test_mwir_is_positive_by_day(self):
+        self.assertGreater(self._solar("mwir", 0.95, 45.0), 0.0)
+
+    def test_the_top_of_atmosphere_irradiance_within_one_percent(self):
+        # At eps = 0 and elevation 90 deg, W_solar = E_sunBand / pi.
+        e_sqf = self._solar("mwir", 0.0, 90.0) * math.pi
+        e_ref = _solar_band_irradiance(3e-6, 5e-6)
+        self.assertAlmostEqual(e_sqf / e_ref, 1.0, delta=0.01)
+
+    def test_the_term_scales_with_surface_reflectance(self):
+        full = self._solar("mwir", 0.0, 45.0)
+        half = self._solar("mwir", 0.5, 45.0)
+        self.assertAlmostEqual(half, full * 0.5, places=9)
+
+    def test_the_term_scales_with_the_sine_of_elevation(self):
+        high = self._solar("mwir", 0.95, 90.0)
+        low = self._solar("mwir", 0.95, 30.0)
+        self.assertAlmostEqual(low, high * math.sin(math.radians(30.0)), places=9)
+
+    def test_emissivity_is_clamped(self):
+        # eps >= 1 gives no reflection, eps <= 0 gives the full reflection.
+        self.assertEqual(self._solar("mwir", 2.0, 90.0), 0)
+        self.assertAlmostEqual(
+            self._solar("mwir", -1.0, 90.0),
+            self._solar("mwir", 0.0, 90.0),
+            places=9,
+        )
+
+    # ── Wiring ──
+    def test_the_radiance_kernel_takes_the_solar_term(self):
+        code = _code_only(self._RADIANCE.read_text(encoding="utf-8"))
+        self.assertIn('["_wSolar", 0, [0]]', code)
+        self.assertIn("+ _wSolar", code)
+
+    def test_the_solar_term_enters_the_surface_radiance(self):
+        # tau = 1, so a supplied W_solar adds exactly.
+        base = self._rad(0.0)
+        with_solar = self._rad(5.0)
+        self.assertAlmostEqual(with_solar - base, 5.0, places=9)
+
+    def test_the_kernel_is_prep_registered(self):
+        prep = (_REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PREPS(solver,calculateReflectedSolarBand);", prep)
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -5821,7 +5906,7 @@ def planck_band_radiance(t_k, lambda1_m=8e-6, lambda2_m=14e-6):
     cumulative-blackbody series in fnc_planckBandRadiance."""
     c2 = 1.438776877e-2
     c_planck = 2.779416505e-9
-    t_k = max(100.0, min(2000.0, t_k))
+    t_k = max(100.0, min(10000.0, t_k))
     z1 = c2 / (lambda1_m * t_k)
     z2 = c2 / (lambda2_m * t_k)
 
@@ -5878,6 +5963,40 @@ def sky_temperature_c(band="lwir", t_air_c=15.0, rh_pct=50.0, overcast=0.0):
         else:
             hi = mid
     return (lo + hi) / 2 - 273.15
+
+
+def _solar_band_irradiance(lambda1_m, lambda2_m, t_sun=5772.0, terms=200):
+    """Independent top-of-atmosphere band irradiance (T4 test reference).
+
+    E_sunBand = pi * B_band(T_sun) * (R_sun / AU)^2, computed from the
+    cumulative-blackbody series with many terms and no domain clamp.  It is a
+    reference for the SQF solar kernel, not a call into it.
+    """
+    c2 = 1.438776877e-2
+    c_planck = 2.779416505e-9
+
+    def cumulative(z):
+        total = 0.0
+        step = math.exp(-z)
+        weight = step
+        z_sq = z * z
+        z_cu = z_sq * z
+        for n in range(1, terms + 1):
+            n2 = n * n
+            n3 = n2 * n
+            n4 = n3 * n
+            total += weight * (z_cu / n + 3 * z_sq / n2 + 6 * z / n3 + 6 / n4)
+            weight *= step
+        return total
+
+    b = (
+        c_planck
+        * t_sun**4
+        * (cumulative(c2 / (lambda2_m * t_sun)) - cumulative(c2 / (lambda1_m * t_sun)))
+    )
+    r_sun = 6.957e8
+    au = 1.495978707e11
+    return math.pi * b * (r_sun / au) ** 2
 
 
 def _atmos_es_hpa(t_c):
