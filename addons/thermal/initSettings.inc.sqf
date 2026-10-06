@@ -175,3 +175,11 @@ AEE_SETTING_SLIDER(thermalAgcHuntPeriod,"AEE Thermal","Sensor",1,20,4,1);
 AEE_SETTING_SLIDER(thermalNucDrift,"AEE Thermal","Sensor",0,0.3,0.15,0.05);
 AEE_SETTING_SLIDER(thermalHotBloom,"AEE Thermal","Sensor",0,0.15,0.08,0.01);
 AEE_SETTING_CHECKBOX(thermalImperfectionsEnabled,"AEE Thermal","Sensor",true);
+
+// ── Active IR illuminator (issue #196) ────────────────────────────────────
+// One operator switch for the active-IR illuminator.  The mechanism is
+// UNSOURCED: a workshop idea re-implemented as AEE code, no mod content
+// copied.  On: a local "#lightreflector" light with setLightIR true sits at
+// the operator, so a real NVG or IR optic sees it and the unaided eye does
+// not.  Local, because the light itself is local.
+AEE_SETTING_CHECKBOX_LOCAL(activeIR,"AEE Thermal","Sensor",false);

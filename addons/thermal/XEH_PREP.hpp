@@ -93,3 +93,7 @@ PREPS(outline,outlineDraw);
 PREPS(outline,outlineToggle);
 PREP(handleImpactHeat);
 PREP(calculateBatteryTemperatureDerating);
+PREPS(ir,applyActiveIR);
+PREPS(ir,startActiveIR);
+PREPS(ir,stopActiveIR);
+PREPS(ir,activeIRGate);
