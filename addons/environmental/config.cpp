@@ -54,18 +54,28 @@ class CfgPatches {
 //
 // DOFPars places the NVG focal plane at ~12 m (27 mm EFL, MIL-PRF-49427C).
 //
-// The base game owns these classes.  The declaration below makes the base
-// class resolve at build time; HEMTT requires it for the `: X` form.
-class HDRNewPars;
-class DOFPars;
-class DayLightingBrightAlmost;
-class DayLightingRainy;
-class DefaultLighting;
-
+// The base game owns these classes.  Declare each external base in an ANCESTOR
+// scope of its re-open (HEMTT rejects a declaration and a re-open in the same
+// scope as a duplicate).  A file-root declaration makes the engine log
+// "declared, but definition was not found. Creating empty class" and re-parent
+// every map onto that empty class, which empties the tone curve.
 class CfgWorlds {
-    class DefaultWorld;
+    // Shared default for any world that does not set its own starEmissivity.
+    // Vanilla defines it in the engine core without a base, so a re-open
+    // without a base merges and propagates the value.
+    class DefaultLighting {
+        starEmissivity = 40;
+    };
+    // Vanilla declares the DayLighting keyframes here, then defines them in
+    // CAWorld and in each world.  DOFPars is defined here by the engine, so a
+    // re-open in CAWorld inherits the water keys the engine reads.
+    class DefaultWorld {
+        class DayLightingBrightAlmost;
+        class DayLightingRainy;
+        class DOFPars;
+    };
     class CAWorld: DefaultWorld {
-        class HDRNewPars: HDRNewPars {
+        class HDRNewPars {
             nvgApertureMin = 7;
             nvgApertureStandard = 7;
             nvgApertureMax = 7;
@@ -117,12 +127,8 @@ class CfgWorlds {
             starEmissivity = 40;
         };
     };
-    // Shared default for any world that does not set its own starEmissivity.
-    class DefaultLighting: DefaultLighting {
-        starEmissivity = 40;
-    };
     class Stratis: CAWorld {
-        class HDRNewPars: HDRNewPars {
+        class HDRNewPars {
             nvgApertureMin = 7;
             nvgApertureStandard = 7;
             nvgApertureMax = 7;
@@ -170,7 +176,7 @@ class CfgWorlds {
         };
     };
     class Altis: CAWorld {
-        class HDRNewPars: HDRNewPars {
+        class HDRNewPars {
             nvgApertureMin = 7;
             nvgApertureStandard = 7;
             nvgApertureMax = 7;
@@ -218,7 +224,7 @@ class CfgWorlds {
         };
     };
     class Malden: CAWorld {
-        class HDRNewPars: HDRNewPars {
+        class HDRNewPars {
             nvgApertureMin = 7;
             nvgApertureStandard = 7;
             nvgApertureMax = 7;
@@ -266,7 +272,7 @@ class CfgWorlds {
         };
     };
     class Tanoa: CAWorld {
-        class HDRNewPars: HDRNewPars {
+        class HDRNewPars {
             nvgApertureMin = 7;
             nvgApertureStandard = 7;
             nvgApertureMax = 7;
@@ -314,7 +320,7 @@ class CfgWorlds {
         };
     };
     class Enoch: CAWorld {
-        class HDRNewPars: HDRNewPars {
+        class HDRNewPars {
             nvgApertureMin = 7;
             nvgApertureStandard = 7;
             nvgApertureMax = 7;

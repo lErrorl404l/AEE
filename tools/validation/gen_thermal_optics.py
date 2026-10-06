@@ -50,6 +50,14 @@ OUT = ROOT / "addons" / "thermal" / "generated" / "ThermalOptics.hpp"
 # mode table in docs/wiki/research/engine-thermal-mechanisms.md.
 THERMAL_MODE_PAIR = (0, 1)
 
+# The vanilla parents of the bound optics, read from the base game config
+# (weapons_f.pbo: acc/config.bin, class optic_tws: ItemCore line 895,
+# optic_Nightstalker: ItemCore line 844, optic_tws_mg: ItemCore line 934).
+# A re-open must name the parent or the engine clears the optic's inheritance
+# and logs "Updating base class 'ItemCore'->''".
+OPTIC_BASE = "ItemCore"
+ITEM_INFO_BASE = "InventoryOpticsItem_Base_F"
+
 # The corpus figures a declaration needs. A missing figure fails closed.
 REQUIRED_FIGURES = ("netd_c", "resolution_x", "resolution_y")
 
@@ -171,8 +179,8 @@ def build_declaration(
 
     mode = ", ".join(str(item) for item in THERMAL_MODE_PAIR)
     lines = [
-        f"    class {binding.game_class} {{",
-        "        class ItemInfo {",
+        f"    class {binding.game_class}: {OPTIC_BASE} {{",
+        f"        class ItemInfo: {ITEM_INFO_BASE} {{",
         "            class OpticsModes {",
         f"                class {binding.optic_mode} {{",
         f"                    thermalMode[] = {{{mode}}};",
@@ -268,6 +276,10 @@ WITHHELD BINDINGS
 {skipped_lines}
 */
 class CfgWeapons {{
+    // External parents: the engine defines both.  The re-open below must name
+    // them, or the engine clears the optic's inheritance.
+    class {OPTIC_BASE};
+    class {ITEM_INFO_BASE};
 {body}
 }};
 """
