@@ -10,6 +10,8 @@ PREP(deterministicRandom);
 PREP(diagnostic);
 PREP(dumpPerformanceCounters);
 PREP(getWorldLocation);
+PREPS(geo,buildGeoAnchor);
+PREPS(geo,getGeoAnchor);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
