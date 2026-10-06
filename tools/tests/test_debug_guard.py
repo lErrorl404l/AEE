@@ -19,6 +19,7 @@ Runs standalone: rc 0 on pass, rc 1 when an unguarded site is found.
 import os
 import re
 import sys
+import unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ADDONS = os.path.join(ROOT, "addons")
@@ -206,6 +207,13 @@ def main():
         f"{len(failures)} unguarded site(s); wrap in `if (AEE_TRACE_ON) then {{ ... }};`"
     )
     return 1
+
+
+class TestDebugGuard(unittest.TestCase):
+    """The standalone scan, runnable through the unittest suite."""
+
+    def test_every_expensive_debug_message_is_guarded(self):
+        self.assertEqual(main(), 0)
 
 
 if __name__ == "__main__":

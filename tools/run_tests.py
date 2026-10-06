@@ -143,6 +143,18 @@ def main():
         "tools/tests/test_pfh_contract.py",
         "tools/tests/test_flight_physics.py",
         "tools/tests/test_mobility_pfh.py",
+        # Observability and perception (aee-observability-and-perception).
+        "tools/tests/test_debug_index.py",
+        "tools/tests/raw_diag_allowlist.py",
+        "tools/tests/test_debug_guard.py",
+        "tools/tests/test_dump_state_contract.py",
+        "tools/tests/test_invariant_table.py",
+        "tools/tests/test_consistency_evaluator.py",
+        "tools/tests/test_producer_contract.py",
+        "tools/tests/test_perception_sample.py",
+        "tools/tests/test_perception_adaptation.py",
+        "tools/tests/test_perception_deviation.py",
+        "tools/tests/test_perception_contracts.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
