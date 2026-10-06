@@ -241,8 +241,8 @@ Agent-verifiable (a machine proves it):
 - The nightly headless run on the self-hosted runner.
 - The perception kernel, the deviation flags and the module-health report
   (Docker probe P100).
-- The consistency evaluator against an agreeing and a three-way disagreeing
-  fixture (Docker probe P101).
+- The consistency evaluator against an agreeing and a ground-chain
+  disagreeing fixture (Docker probe P101).
 
 Operator-only (only a game client proves it):
 
@@ -268,9 +268,9 @@ player.
   length, the clean flags, the discolouration flag, the blindness flag and
   the module-health report. Prints `[P100] [PASS]` or `[P100] [FAIL]`.
 - **P101 - consistency.** Loads the invariant table, seeds an agreeing map
-  and a three-way disagreeing map, calls `evaluateConsistency`, and checks
-  that the disagreeing map raises exactly the expected rows and names three
-  modules. Prints `[P101] [PASS]` or `[P101] [FAIL]`.
+  and a ground-chain disagreeing map, calls `evaluateConsistency`, and checks
+  that the disagreeing map raises exactly the expected rows and names the two
+  scalar producers that diverge. Prints `[P101] [PASS]` or `[P101] [FAIL]`.
 
 The harness fails when either tag is missing from `tests/docker/run.log`.
 The two probes move the perception state, the deviation flags, the
