@@ -20,6 +20,7 @@ PREPS(geo,worldToMgrs);
 PREPS(geo,mgrsToWorld);
 PREPS(geo,gnssErrorEllipse);
 PREPS(geo,gnssFixState);
+PREPS(geo,datalinkState);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
