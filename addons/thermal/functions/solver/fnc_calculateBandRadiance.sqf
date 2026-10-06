@@ -145,6 +145,11 @@ private _tGroundK = _tGround + 273.15;
 // 5 K of the old offset, so night cold-sky contrast does not regress.
 private _overcast = overcast max 0 min 1;
 private _tSkyC = [_bandToken, _tAir, _humidityPct, _overcast] call FUNC(calculateSkyRadiance);
+// Published for the cross-module solar/sky invariant INV-5.  Grade:
+// derived-from-measurement, the Tebo 1965 8-14 um band envelope that
+// fnc_calculateSkyRadiance applies.  This is the last computed band sky
+// temperature; the solver arithmetic is unchanged.
+missionNamespace setVariable ["aee_thermal_skyBandTempC", _tSkyC];
 private _tSkyK = _tSkyC + 273.15;
 
 // ─── Reflected environment: sky/ground mix by view factor ────────────────

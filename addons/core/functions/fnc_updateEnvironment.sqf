@@ -199,6 +199,12 @@ if (GVAR(physiologyEnabled)) then {
     END_COUNTER(physiology);
 };
 
+// ─── Core body temperature ─────────────────────────────────────────────────
+// Derived from the WBGT heat gain, the wind-chill cold loss and the
+// hypothermia risk, all published above.  Fixes the orphan read at
+// addons/compat_kat/functions/fnc_integrateKAT.sqf:37, which had no producer.
+[] call FUNC(coreBodyTemp);
+
 // ─── Sensor / Optics ───────────────────────────────────────────────────────
 // Shared illuminance layer: the engine's real scene light (getLightingAt)
 // sampled at the player position.  Runs unconditionally so NVG, thermal,
