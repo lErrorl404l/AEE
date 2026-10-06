@@ -129,6 +129,14 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_compat_tfar_logDebug` | CHECKBOX | `false` | yes | compat_tfar | Log TFAR compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
 
+## AEE Debug → Consistency
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_consistencyCheck` | CHECKBOX | `true` | yes | core | Read the published producer variables and warn when two modules disagree. Read-only and deterministic, so it runs on every machine. Default on. UNSOURCED that a cross-module disagreement is always a fault. |
+| `aee_core_consistencyInterval` | SLIDER | `10` | yes | core | Seconds between consistency samples, range 1 to 60. Default 10. The monitor runs in a per-frame handler and throttles itself to this interval. UNSOURCED. |
+| `aee_core_consistencyStrict` | CHECKBOX | `false` | yes | core | Also warn on an invariant that passes but whose producers are not exactly equal (a drift inside the tolerance). Default off. UNSOURCED. |
+
 ## AEE Debug → Core
 
 | Setting | Type | Default | Global | Addon | Purpose |

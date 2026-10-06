@@ -152,6 +152,10 @@ class Assign:
 
 BINARY_COMMANDS = {
     "getVariable",
+    # NS setVariable [k, v] - the write twin of getVariable.  The consistency
+    # monitor publishes its state this way; without it the command parses as a
+    # bare identifier and the write is silently dropped.
+    "setVariable",
     "isEqualType",
     "isEqualTo",
     "isNotEqualTo",

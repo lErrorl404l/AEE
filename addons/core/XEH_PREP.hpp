@@ -27,3 +27,6 @@ PREP(reportModuleHealth);
 PREP(coreBodyTemp);
 PREP(evaluateConsistency);
 PREP(consistencyLoadTable);
+PREP(consistencyFailureLine);
+PREP(consistencyLog);
+PREP(runConsistencyCheck);

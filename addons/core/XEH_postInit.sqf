@@ -33,3 +33,19 @@ if (is3DEN) exitWith {};
 [{
     [] call FUNC(reportModuleHealth);
 }, [], 10] call CBA_fnc_waitAndExecute;
+
+// The throttled cross-module consistency monitor.  A separate per-frame
+// handler, independent of the environment tick and of the module-health
+// report.  It gates on the setting and on the interval, so the check itself
+// runs at the configured cadence, never per frame.
+[{
+    if !(missionNamespace getVariable [QGVAR(consistencyCheck), true]) exitWith {};
+    private _interval = missionNamespace getVariable [QGVAR(consistencyInterval), 10];
+    if !(_interval isEqualType 0) then { _interval = 10; };
+    private _last = missionNamespace getVariable [QGVAR(consistencyLast), -1];
+    if !(_last isEqualType 0) then { _last = -1; };
+    if ((_last < 0) || {CBA_missionTime - _last >= _interval}) then {
+        missionNamespace setVariable [QGVAR(consistencyLast), CBA_missionTime];
+        [] call FUNC(runConsistencyCheck);
+    };
+}, 1] call CBA_fnc_addPerFrameHandler;

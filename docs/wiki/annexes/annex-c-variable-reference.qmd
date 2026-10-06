@@ -379,6 +379,18 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_lastStrikePos` | core | Last lightning strike position |
 | `aee_core_lightningIgnition` | core | Lightning ignition flag |
 
+### Cross-module consistency
+
+The throttled consistency monitor publishes its verdict each sample. The
+producer variables it reads are declared in `data/consistency/invariants.json`
+and documented with their own modules.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_core_consistencyState` | core | Consistency verdict `[overallPass, per-row verdicts, modulesInDisagreement]` from `fnc_evaluateConsistency`. Read back by the monitor to detect its first run |
+| `aee_core_consistencyFailures` | core | One failure message per failing invariant, the same payload the monitor logs at WARN |
+| `aee_core_consistencyLast` | core | Mission time of the last consistency sample, the throttle cursor |
+
 ### Night-sky render state
 
 The night-sky renderers publish their per-frame state for the consolidated
