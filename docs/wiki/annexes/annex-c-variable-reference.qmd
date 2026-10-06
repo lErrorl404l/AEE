@@ -459,6 +459,18 @@ when this switch is on.
 |---|---|
 | `aee_environmental_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
 
+### Particle and heat-haze coupling
+
+Item 7 of the aee-workshop-copy plan couples the particle alpha to the engine
+overcast and the published humidity, and the exhaust heat haze to the ambient
+temperature. The kernels are pure and the coupling is gated.
+
+| Variable | Category | Purpose |
+|---|---|---|
+| `aee_fx_weatherAlphaEnabled` | AEE FX > Particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
+| `aee_fx_heatHazeEnabled` | AEE FX > Particles | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
+| `aee_fx_heatHazeMaxAlpha` | AEE FX > Particles | Upper bound on the ambient-temperature heat-haze alpha |
+
 ### Human-vision model (perception)
 
 The human-vision model registers its operator switches under **AEE Optics >

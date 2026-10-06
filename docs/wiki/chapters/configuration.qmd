@@ -280,9 +280,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_fx_atmosphericDustIntensity` | SLIDER | `0.08` | yes | fx | Alpha of airborne dust particles |
 | `aee_fx_exhaustShimmerAlpha` | SLIDER | `0.15` | yes | fx | Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area |
+| `aee_fx_heatHazeEnabled` | CHECKBOX | `true` | yes | fx | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
+| `aee_fx_heatHazeMaxAlpha` | SLIDER | `0.45` | yes | fx | Upper bound on the ambient-temperature heat-haze alpha |
 | `aee_fx_rainDropDensity` | SLIDER | `0.006` | yes | fx | Rain-splash particle density (drop interval at light rain) |
 | `aee_fx_vehicleDustDensity` | SLIDER | `0.08` | yes | fx | Vehicle dust particle density (drop interval at low speed) |
 | `aee_fx_vehicleDustIntensity` | SLIDER | `1.0` | yes | fx | Alpha scale on vehicle dust kickup |
+| `aee_fx_weatherAlphaEnabled` | CHECKBOX | `true` | yes | fx | Scale the blast, refract and weather particle alpha by overcast plus humidity |
 
 ## AEE FX → Sound
 

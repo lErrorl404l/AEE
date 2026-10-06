@@ -262,6 +262,19 @@ AEE_LOG_DEBUG(_logMsg);
         private _legibility = linearConversion [0, 8, _contrast, 0, 1, true];
         _legibility = _legibility max 0;
 
+        // Weather-coupled alpha (aee-workshop-copy item 7, part 2).  The
+        // blast and refract particle colours scale with overcast plus
+        // humidity, re-derived from Better Visuals fn_blastWaveEffectMedium.
+        // The engine overcast and the published humidity are read here; the
+        // kernel stays pure.  The setting gates the coupling.
+        private _baseAlpha = 0.20 + (0.55 * _legibility);
+        private _alpha = _baseAlpha;
+        if (missionNamespace getVariable [QGVAR(weatherAlphaEnabled), true]) then {
+            private _humidityPercent = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+            if !(_humidityPercent isEqualType 0) then { _humidityPercent = 50; };
+            _alpha = [_baseAlpha, overcast, _humidityPercent, 1] call FUNC(weatherParticleAlpha);
+        };
+
         // The drop interval comes from the round's SPEED, not from a fixed
         // time.  A fixed interval is wrong at every speed: at 474 m/s the
         // old 0.162 s interval put a 0.49 m sprite every 77 m, which covers
@@ -291,7 +304,7 @@ AEE_LOG_DEBUG(_logMsg);
             [_spriteShape, 1, 0, 0, 0], "", "Billboard",
             1, _ttl, [0, 0, 0], [0, 0, 0], 0, 0, 0.02, 0.02,
             [_size, _size],
-            [[1, 1, 1, 0], [1, 1, 1, 0.20 + (0.55 * _legibility)], [1, 1, 1, 0]],
+            [[1, 1, 1, 0], [1, 1, 1, _alpha], [1, 1, 1, 0]],
             [1000], 0.05, 0.02, "", "", _source
         ];
         _source setDropInterval _drop;
