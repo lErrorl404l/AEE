@@ -39,6 +39,9 @@ MGRS_MAP_KERNEL = HUD / "fnc_mgrsMapDraw.sqf"
 MGRS_MARKER_KERNEL = HUD / "fnc_mgrsMarkerText.sqf"
 GPS_BUILD_KERNEL = HUD / "fnc_gpsBuild.sqf"
 GPS_UPDATE_KERNEL = HUD / "fnc_gpsUpdate.sqf"
+TRACKER_UPDATE_KERNEL = HUD / "fnc_trackerUpdate.sqf"
+TRACKER_DRAW_KERNEL = HUD / "fnc_trackerDraw.sqf"
+TRACKER_PROJECT_KERNEL = HUD / "fnc_trackerProject.sqf"
 
 HUD_FILE = OPTICS / "RscTitles.hpp"
 BUILD_SRC = (HUD / "fnc_hudBuild.sqf").read_text(encoding="utf-8")
@@ -50,6 +53,9 @@ MGRS_MAP_SRC = MGRS_MAP_KERNEL.read_text(encoding="utf-8")
 MGRS_MARKER_SRC = MGRS_MARKER_KERNEL.read_text(encoding="utf-8")
 GPS_BUILD_SRC = GPS_BUILD_KERNEL.read_text(encoding="utf-8")
 GPS_UPDATE_SRC = GPS_UPDATE_KERNEL.read_text(encoding="utf-8")
+TRACKER_UPDATE_SRC = TRACKER_UPDATE_KERNEL.read_text(encoding="utf-8")
+TRACKER_DRAW_SRC = TRACKER_DRAW_KERNEL.read_text(encoding="utf-8")
+TRACKER_PROJECT_SRC = TRACKER_PROJECT_KERNEL.read_text(encoding="utf-8")
 HUD_CLASS_SRC = HUD_FILE.read_text(encoding="utf-8")
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
@@ -68,6 +74,9 @@ ALL_HUD_SRC = "\n".join(
         MGRS_MARKER_SRC,
         GPS_BUILD_SRC,
         GPS_UPDATE_SRC,
+        TRACKER_UPDATE_SRC,
+        TRACKER_DRAW_SRC,
+        TRACKER_PROJECT_SRC,
     ]
 )
 
@@ -125,6 +134,11 @@ def mgrs_marker_text(label, position, anchor, precision, mgrs):
         ],
     }
     return run_sqf(MGRS_MARKER_KERNEL, [label, position, anchor, precision], globals_)
+
+
+def tracker_project(position, ellipse, fix, link, seed):
+    """Run the real pure tracker projector."""
+    return run_sqf(TRACKER_PROJECT_KERNEL, [position, ellipse, fix, link, seed], {})
 
 
 class TestHudHeading(unittest.TestCase):
@@ -432,6 +446,147 @@ class TestHudLogging(unittest.TestCase):
     def test_the_update_has_a_windowed_log(self):
         self.assertIn("environment HUD update:", UPDATE_SRC)
         self.assertIn("AEE_LOG_DEBUG", UPDATE_SRC)
+
+
+class TestHudTrackerProject(unittest.TestCase):
+    """fnc_trackerProject, executed: the exact position plus the modelled error."""
+
+    def test_a_zero_error_keeps_the_exact_position(self):
+        shown = tracker_project(
+            [100, 200, 5],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            ["ok", 0, 1, 0, 0],
+            ["received", 1, 0, 0],
+            0.5,
+        )
+        self.assertEqual(shown[0], [100, 200, 5])
+        self.assertEqual(shown[5], 0.0)
+
+    def test_a_nonzero_error_displaces_the_displayed_position(self):
+        shown = tracker_project(
+            [100, 200, 5],
+            [3.6, 3.6, 5.85, 3.6, 3.6, 0, 4.2, 7.2],
+            ["degraded", 0, 0.5, 20, 0.25],
+            ["received", 1, 0, 0],
+            0.5,
+        )
+        self.assertNotEqual(shown[0], [100, 200, 5])
+        # The displacement magnitude is R95 7.2 + added 0 + lag 20.
+        self.assertAlmostEqual(shown[5], 27.2, places=6)
+
+    def test_the_ellipse_and_the_track_age_pass_through(self):
+        shown = tracker_project(
+            [0, 0, 0],
+            [3.6, 3.6, 5.85, 3.6, 2.0, 90, 4.2, 7.2],
+            ["ok", 0, 1, 0, 0],
+            ["received", 1, 12.5, 0],
+            0.0,
+        )
+        self.assertAlmostEqual(shown[1], 3.6, places=6)
+        self.assertAlmostEqual(shown[2], 2.0, places=6)
+        self.assertAlmostEqual(shown[3], 90, places=6)
+        self.assertAlmostEqual(shown[4], 12.5, places=6)
+
+    def test_the_lag_alone_displaces(self):
+        shown = tracker_project(
+            [0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            ["degraded", 0, 0.5, 40, 0.25],
+            ["lost", 0, 0, 0],
+            0.0,
+        )
+        self.assertAlmostEqual(shown[5], 40.0, places=6)
+        self.assertNotEqual(shown[0], [0, 0, 0])
+
+
+class TestHudTrackerContract(unittest.TestCase):
+    """The driver calls the three kernels and applies the offset."""
+
+    def test_the_driver_calls_the_error_kernel(self):
+        self.assertIn("call EFUNC(core,gnssErrorEllipse)", TRACKER_UPDATE_SRC)
+
+    def test_the_driver_calls_the_fix_kernel(self):
+        self.assertIn("call EFUNC(core,gnssFixState)", TRACKER_UPDATE_SRC)
+
+    def test_the_driver_calls_the_datalink_kernel(self):
+        self.assertIn("call EFUNC(core,datalinkState)", TRACKER_UPDATE_SRC)
+
+    def test_the_driver_applies_the_offset(self):
+        self.assertIn("call FUNC(trackerProject)", TRACKER_UPDATE_SRC)
+
+    def test_the_projector_displaces_by_the_total_error(self):
+        self.assertIn("(sin _rad) * _totalError", TRACKER_PROJECT_SRC)
+        self.assertIn("(cos _rad) * _totalError", TRACKER_PROJECT_SRC)
+
+    def test_the_driver_reads_the_local_group_exact_positions(self):
+        self.assertIn("units (group _player)", TRACKER_UPDATE_SRC)
+        self.assertIn("getPosASL _unit", TRACKER_UPDATE_SRC)
+
+    def test_the_driver_publishes_the_track_state(self):
+        self.assertIn("setVariable [QGVAR(trackerTracks)", TRACKER_UPDATE_SRC)
+        self.assertIn("setVariable [QGVAR(trackerR95)", TRACKER_UPDATE_SRC)
+        self.assertIn("setVariable [QGVAR(trackerFix)", TRACKER_UPDATE_SRC)
+
+    def test_the_driver_never_public_variables(self):
+        self.assertNotIn("publicVariable", TRACKER_UPDATE_SRC)
+        self.assertNotIn("publicVariable", TRACKER_DRAW_SRC)
+
+    def test_the_suppression_uses_the_allowed_command(self):
+        self.assertIn(
+            "disableMapIndicators [true, false, false, false]", TRACKER_UPDATE_SRC
+        )
+
+    def test_the_source_records_the_suppression_ceiling(self):
+        self.assertIn("setGroupIconsVisible", TRACKER_UPDATE_SRC)
+        self.assertIn("extended map content", TRACKER_UPDATE_SRC)
+
+    def test_the_draw_renders_the_ellipse_and_the_label(self):
+        self.assertIn("drawEllipse", TRACKER_DRAW_SRC)
+        self.assertIn("_map drawIcon", TRACKER_DRAW_SRC)
+        self.assertIn("drawIcon3D", TRACKER_DRAW_SRC)
+
+    def test_the_draw_creates_no_marker(self):
+        for writer in ("createMarker", "setMarkerPos", "setMarkerText", "deleteMarker"):
+            self.assertNotIn(writer, TRACKER_DRAW_SRC, writer)
+
+    def test_the_gps_readout_consumes_the_tracker_state(self):
+        self.assertIn("QGVAR(trackerFix)", GPS_UPDATE_SRC)
+        self.assertIn("QGVAR(trackerR95)", GPS_UPDATE_SRC)
+
+
+class TestHudTrackerWiring(unittest.TestCase):
+    """The tracker PREP entries, settings, stringtable and postInit wiring."""
+
+    def test_prep_registers_the_tracker_functions(self):
+        for name in ("trackerDraw", "trackerProject", "trackerUpdate"):
+            self.assertIn(f"PREPS(hud,{name});", PREP_SRC, name)
+
+    def test_the_tracker_setting_is_registered_default_off(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(trackerEnabled,"AEE HUD","Tracker",false)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_suppression_setting_is_registered_default_off(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(trackerSuppressIcons,"AEE HUD","Tracker",false)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_tracker_stringtable_keys_exist(self):
+        for key in (
+            "trackerEnabled_Name",
+            "trackerEnabled_Description",
+            "trackerSuppressIcons_Name",
+            "trackerSuppressIcons_Description",
+            "trackerInterval_Name",
+            "trackerInterval_Description",
+        ):
+            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+
+    def test_the_postinit_starts_the_tracker(self):
+        self.assertIn("FUNC(trackerUpdate)", POSTINIT_SRC)
+        self.assertIn("FUNC(trackerDraw)", POSTINIT_SRC)
 
 
 if __name__ == "__main__":

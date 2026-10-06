@@ -335,6 +335,14 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
 | `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 
+## AEE HUD → Tracker
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_trackerEnabled` | CHECKBOX | `false` | yes | optics | Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off. |
+| `aee_optics_trackerInterval` | SLIDER | `1.0` | yes | optics | Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0. |
+| `aee_optics_trackerSuppressIcons` | CHECKBOX | `false` | yes | optics | Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off. |
+
 ## AEE Maritime → Sea
 
 | Setting | Type | Default | Global | Addon | Purpose |

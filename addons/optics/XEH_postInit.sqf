@@ -187,6 +187,11 @@ if (hasInterface) then {
     // MGRS GPS device readout: raised only while the player carries an
     // ItemGPS and the aee_optics_mgrsEnabled setting is on.
     [FUNC(gpsUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
+    // Signal-dependent tracker: the driver publishes the per-track state and
+    // the draw layer renders it on the map and the HUD.  Both gate on the
+    // aee_optics_trackerEnabled setting each tick.
+    [] call FUNC(trackerDraw);
+    [FUNC(trackerUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
     // Eye adaptation: AEE owns the camera aperture and its rate (issue #141).
     [] call FUNC(initEyeAdaptation);
     // Normal-vision base grade and acuity pass (image realism).

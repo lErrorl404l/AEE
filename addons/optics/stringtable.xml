@@ -465,6 +465,30 @@
             <Original>Solar Glare Intensity</Original>
             <English>Solar Glare Intensity</English>
         </Key>
+        <Key ID="STR_AEE_Optics_trackerEnabled_Description">
+            <Original>Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off.</Original>
+            <English>Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_trackerEnabled_Name">
+            <Original>Signal Tracker</Original>
+            <English>Signal Tracker</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_trackerInterval_Description">
+            <Original>Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0.</Original>
+            <English>Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_trackerInterval_Name">
+            <Original>Tracker Update Interval</Original>
+            <English>Tracker Update Interval</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_trackerSuppressIcons_Description">
+            <Original>Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off.</Original>
+            <English>Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_trackerSuppressIcons_Name">
+            <Original>Suppress Engine Markers</Original>
+            <English>Suppress Engine Markers</English>
+        </Key>
         <Key ID="STR_AEE_Optics_vehicleShimmerBase_Description">
             <Original>Idle-engine shimmer floor</Original>
             <English>Idle-engine shimmer floor</English>
