@@ -1,0 +1,41 @@
+[
+  {
+    "source_id": "dma_tm_8358_1",
+    "tier": 1,
+    "type": "primary",
+    "title": "Datums, Ellipsoids, Grids, and Grid References",
+    "edition": "",
+    "identifier": "DMA TM 8358.1",
+    "locator": "The lettering figures for the UTM 100,000-metre grid square designators. The NGA MGRS guidance names TM 8358.1 as the authoritative definition of UTM.",
+    "published": "",
+    "retrieved": "2026-10-06",
+    "url": "",
+    "note": "Cited by the NGA MGRS guidance as the authoritative definition of UTM. No local copy; the edition and year are not confirmed here, so they are left blank rather than invented."
+  },
+  {
+    "source_id": "dma_tm_8358_2",
+    "tier": 1,
+    "type": "primary",
+    "title": "The Universal Grids: Universal Transverse Mercator (UTM) and Universal Polar Stereographic (UPS)",
+    "edition": "Ed. 1, 18 September 1989",
+    "identifier": "DMA TM 8358.2, DTIC ADA266497",
+    "locator": "Chapters 2 and 3, the transverse Mercator forward and inverse series; the MGRS section on the lettering schemes.",
+    "published": "1989-09-18",
+    "retrieved": "2026-10-06",
+    "url": "https://apps.dtic.mil/sti/citations/ADA266497",
+    "note": "The series source for the WGS84 / UTM forward and inverse kernels. Local copy at /tmp/opencode/mgrs/tm8358_2.pdf."
+  },
+  {
+    "source_id": "nga_mgrs_2009",
+    "tier": 1,
+    "type": "reference",
+    "title": "The Military Grid Reference System (MGRS)",
+    "edition": "Modified February 2009",
+    "identifier": "NGA Office of GEOINT Sciences guidance",
+    "locator": "Band letters C through X omitting I and O, the 100,000-metre square designators, the two lettering schemes, the precision levels and the truncation rule, and the worked example 15SWC8081751205.",
+    "published": "2009-02",
+    "retrieved": "2026-10-06",
+    "url": "",
+    "note": "The source of the band letters, the precision levels and the truncation rule. No stable public URL confirmed, so the url is left blank; local copy at /tmp/opencode/mgrs/nga_mgrs.pdf."
+  }
+]
