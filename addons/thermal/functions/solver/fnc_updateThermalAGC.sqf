@@ -176,7 +176,8 @@ private _bandSig = format ["%1|%2|%3", _band, _lambda1M, _lambda2M];
 private _prevBandSig = missionNamespace getVariable [QGVAR(agcBandSig), ""];
 if !(_prevBandSig isEqualType "") then { _prevBandSig = ""; };
 if (_prevBandSig != _bandSig) then {
-    _radCache clear;
+    _radCache = createHashMap;
+    missionNamespace setVariable [QGVAR(agcSelRad), _radCache];
     missionNamespace setVariable [QGVAR(agcSceneAnchor), []];
     missionNamespace setVariable [QGVAR(agcBandSig), _bandSig];
 };
