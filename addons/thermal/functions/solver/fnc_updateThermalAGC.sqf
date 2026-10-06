@@ -136,26 +136,123 @@ private _rads = [];
 // calls.  The key is "<str object>|<selection>", and a selection name never
 // contains "|", so the split is unambiguous.
 private _objRads = createHashMap;
+// ─── Cached scene sweep ───────────────────────────────────────────────────
+// The band-radiance kernel is the measured cost of this pass: the sky
+// bisection it runs inside every call dominated the 9.0 ms client RPT figure.
+// The scene temperatures move on 600 s time constants, so a selection's
+// radiance is unchanged from pass to pass.  Hold each selection's radiance
+// with the inputs it was computed from and reuse it while those inputs are
+// unchanged: at a fixed scene the held value IS the freshly computed value,
+// so the published window is bit-identical.  Only a real move recomputes.
+// The recompute count is capped per pass, which spreads a scene-wide change
+// across passes instead of stalling one frame; a key beyond the cap keeps its
+// held value until a later pass.  The cap is a count, not a time, because the
+// per-call dispatch dominates the arithmetic.
+private _manMinC = missionNamespace getVariable [QGVAR(thermalManualMinC), -40];
+private _manMaxC = missionNamespace getVariable [QGVAR(thermalManualMaxC), 120];
+if !(_manMinC isEqualType 0) then { _manMinC = -40; };
+if !(_manMaxC isEqualType 0) then { _manMaxC = 120; };
+if (_manMaxC <= _manMinC) then { _manMaxC = _manMinC + 1; };
+
+private _radCache = missionNamespace getVariable [QGVAR(agcSelRad), -1];
+if (_radCache isEqualType 0) then {
+    _radCache = createHashMap;
+    missionNamespace setVariable [QGVAR(agcSelRad), _radCache];
+};
+// The reuse tolerances sit far below the 1 percent tail cut and the 8 percent
+// dead-band, so a reused value that drifted by less than this is invisible.
+// At a fixed scene the drift is zero and the reuse is exact.  The ambient and
+// ground tolerances cover the environment tick and the time-integrated ground
+// node stack, which move a fraction of a kelvin between AGC passes.
+private _AGC_REUSE_K = 0.05;
+private _AGC_REUSE_AIR_K = 0.5;
+private _AGC_REUSE_GROUND_K = 0.5;
+private _AGC_REUSE_OVERCAST = 0.05;
+private _AGC_RECOMPUTE_CAP = 48;
+// A device switch changes the band, which changes every radiance, and the
+// cache entries do not carry the band.  Clear both caches when it moves so a
+// new optic never reads the previous band's window.
+private _bandSig = format ["%1|%2|%3", _band, _lambda1M, _lambda2M];
+private _prevBandSig = missionNamespace getVariable [QGVAR(agcBandSig), ""];
+if !(_prevBandSig isEqualType "") then { _prevBandSig = ""; };
+if (_prevBandSig != _bandSig) then {
+    _radCache clear;
+    missionNamespace setVariable [QGVAR(agcSceneAnchor), []];
+    missionNamespace setVariable [QGVAR(agcBandSig), _bandSig];
+};
+private _recompute = 0;
 {
-    private _t = _selTemps get _x;
-    if !(_t isEqualType 0 && {finite _t}) then { continue; };
-    private _eps = _selEps getOrDefault [_x, _groundEps];
+    private _k = _x;
+    private _t = _selTemps get _k;
+    if !(_t isEqualType 0 && {finite _t}) then { _radCache deleteAt _k; continue; };
+    private _eps = _selEps getOrDefault [_k, _groundEps];
     if !(_eps isEqualType 0) then { _eps = _groundEps; };
-    private _wSolar = [_band, _eps, _sunElev] call FUNC(calculateReflectedSolarBand);
-    private _rad = [_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
-    _rads pushBack _rad;
-    private _oKey = (_x splitString "|") select 0;
-    private _oList = _objRads getOrDefault [_oKey, []];
-    _oList pushBack _rad;
-    _objRads set [_oKey, _oList];
+    private _entry = _radCache getOrDefault [_k, []];
+    private _rad = -1;
+    private _fresh = false;
+    if ((_entry isEqualType []) && {(count _entry) == 6}) then {
+        if ((abs ((_entry select 0) - _t) <= _AGC_REUSE_K)
+            && {(_entry select 1) == _eps}
+            && {(abs ((_entry select 2) - _airTemp)) <= _AGC_REUSE_AIR_K}
+            && {(abs ((_entry select 3) - _groundTemp)) <= _AGC_REUSE_GROUND_K}
+            && {(abs ((_entry select 4) - overcast)) <= _AGC_REUSE_OVERCAST}) then {
+            _rad = _entry select 5;
+            _fresh = true;
+        };
+    };
+    if (!_fresh) then {
+        if (_recompute < _AGC_RECOMPUTE_CAP) then {
+            private _wSolar = [_band, _eps, _sunElev] call FUNC(calculateReflectedSolarBand);
+            _rad = [_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
+            _radCache set [_k, [_t, _eps, _airTemp, _groundTemp, overcast, _rad]];
+            _recompute = _recompute + 1;
+        } else {
+            // Cap reached: keep the held value this pass.
+            if ((_entry isEqualType []) && {(count _entry) == 6}) then { _rad = _entry select 5; };
+        };
+    };
+    if (_rad isEqualType 0 && _rad >= 0) then {
+        _rads pushBack _rad;
+        private _oKey = (_k splitString "|") select 0;
+        private _oList = _objRads getOrDefault [_oKey, []];
+        _oList pushBack _rad;
+        _objRads set [_oKey, _oList];
+    };
 } forEach (keys _selTemps);
-// The ground is the background every object sits against and the one sample
-// that is always present, even before the first selection solves.  Keeping it
-// in every pass anchors the window when the per-selection sample set changes.
-// The 1 percent tail cut is a no-op below about 50 samples, so this anchor is
-// what stops the window hunting.
-private _groundWSolar = [_band, _groundEps, _sunElev] call FUNC(calculateReflectedSolarBand);
-_rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance));
+
+// The ground sample and the two manual-window anchors are scene-level
+// constants for a pass.  Cache them with the inputs that define them and
+// recompute only when one moves; at a fixed scene they are free.
+private _anchor = missionNamespace getVariable [QGVAR(agcSceneAnchor), []];
+private _anchorOk = false;
+if ((_anchor isEqualType []) && {(count _anchor) == 9}) then {
+    if ((abs ((_anchor select 0) - _groundTemp) <= _AGC_REUSE_GROUND_K)
+        && {(_anchor select 1) == _groundEps}
+        && {(abs ((_anchor select 2) - _airTemp)) <= _AGC_REUSE_AIR_K}
+        && {(abs ((_anchor select 3) - overcast)) <= _AGC_REUSE_OVERCAST}
+        && {(_anchor select 4) == _manMinC}
+        && {(_anchor select 5) == _manMaxC}) then { _anchorOk = true; };
+};
+private _groundRad = 0;
+private _fullMin = 0;
+private _fullMax = 0;
+if (_anchorOk) then {
+    _groundRad = _anchor select 6;
+    _fullMin = _anchor select 7;
+    _fullMax = _anchor select 8;
+} else {
+    // The ground is the background every object sits against and the one
+    // sample that is always present, even before the first selection solves.
+    // Keeping it in every pass anchors the window when the per-selection
+    // sample set changes.  The 1 percent tail cut is a no-op below about 50
+    // samples, so this anchor is what stops the window hunting.
+    private _groundWSolar = [_band, _groundEps, _sunElev] call FUNC(calculateReflectedSolarBand);
+    _groundRad = [_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance);
+    _fullMin = [_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance);
+    _fullMax = [_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance);
+    missionNamespace setVariable [QGVAR(agcSceneAnchor), [_groundTemp, _groundEps, _airTemp, overcast, _manMinC, _manMaxC, _groundRad, _fullMin, _fullMax]];
+};
+_rads pushBack _groundRad;
 
 // ─── Tail rejection (FLIR: <1% so real content is not clipped) ────────────
 // Sort the radiances, cut the top and bottom 1%, and take the window.
@@ -185,13 +282,6 @@ if (_rads isNotEqualTo []) then {
 // is the radiance of the manual/device window, so gain 1 reproduces that
 // window exactly.  The window is a setting: the device library publishes
 // no span.
-private _manMinC = missionNamespace getVariable [QGVAR(thermalManualMinC), -40];
-private _manMaxC = missionNamespace getVariable [QGVAR(thermalManualMaxC), 120];
-if !(_manMinC isEqualType 0) then { _manMinC = -40; };
-if !(_manMaxC isEqualType 0) then { _manMaxC = 120; };
-if (_manMaxC <= _manMinC) then { _manMaxC = _manMinC + 1; };
-private _fullMin = [_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance);
-private _fullMax = [_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn, _lambda1M, _lambda2M, _humidity, _band, _groundWSolar] call FUNC(calculateBandRadiance);
 private _fullSpan = (_fullMax - _fullMin) max 1e-6;
 // Published so the display pass can convert the radiance window to its
 // equivalent temperature span for the FPN amplitude (fnc_applyThermalVision).

@@ -6930,6 +6930,45 @@ class TestThermalSweepBudget(unittest.TestCase):
         )
 
 
+class TestThermalPassBudget(unittest.TestCase):
+    """The mode-2 thermal pass amortises its scene sweep (P1).
+
+    fnc_updateThermalAGC walks every solved selection to build the scene
+    histogram, and the band-radiance kernel it calls runs the Planck sky
+    bisection.  The pass measured 9.0 ms in the client RPT (debug on).  The
+    fix holds each selection's radiance with the inputs it was computed from
+    and reuses it while those inputs are unchanged, so a fixed scene is
+    bit-identical and only a real move recomputes; the per-pass recompute is
+    capped.  The ground sample and the two manual-window anchors are cached
+    the same way.  The paint batch carries a time budget.
+    """
+
+    _AGC = _THERMAL / "solver" / "fnc_updateThermalAGC.sqf"
+    _BUILDING = _THERMAL / "display" / "fnc_applyBuildingThermal.sqf"
+
+    def test_agc_holds_the_radiance_with_its_inputs(self):
+        code = _code_only(self._AGC.read_text(encoding="utf-8"))
+        self.assertIn("QGVAR(agcSelRad)", code)
+        self.assertIn("QGVAR(agcSceneAnchor)", code)
+        self.assertIn("_AGC_RECOMPUTE_CAP", code)
+        self.assertIn("_AGC_REUSE_K", code)
+
+    def test_agc_reuses_before_it_recomputes(self):
+        # The reuse test must run before the band-radiance call, or the cache
+        # is decorative and the sweep is unamortised.
+        code = _code_only(self._AGC.read_text(encoding="utf-8"))
+        self.assertLess(
+            code.index("_fresh = true"),
+            code.index("call FUNC(calculateBandRadiance)"),
+        )
+
+    def test_building_paint_has_a_time_budget(self):
+        code = _code_only(self._BUILDING.read_text(encoding="utf-8"))
+        self.assertIn("QGVAR(paintBudgetMs)", code)
+        self.assertIn("_paintAll", code)
+        self.assertIn("_unsolved = _paintAll select [_forEachIndex]", code)
+
+
 class TestThermalVehicleSpread(unittest.TestCase):
     """The vehicle list is solved on a spread cadence, not every pass.
 

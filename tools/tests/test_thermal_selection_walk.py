@@ -464,9 +464,13 @@ class TestNestedObjectPaint(unittest.TestCase):
         code = _code_only(_APPLY_BUILDING.read_text(encoding="utf-8"))
         self.assertIn("FUNC(collectThermalNestedObjects)", code)
         # The nested objects join the SAME per-object loop, so they get the
-        # same discovery + paint as a parent.
-        self.assertIn("([_objects] call FUNC(collectThermalNestedObjects))", code)
-        self.assertIn("} forEach (_objects +", code)
+        # same discovery + paint as a parent.  The loop set is built once into
+        # _paintAll so the per-frame time budget can re-queue its unsolved tail.
+        self.assertIn(
+            "_paintAll = _objects + ([_objects] call FUNC(collectThermalNestedObjects))",
+            code,
+        )
+        self.assertIn("} forEach _paintAll;", code)
         # The parent path is unchanged: level-0 discovery and the per-selection
         # paint are still the calls the loop already made.
         self.assertIn("FUNC(getThermalSelections)", code)

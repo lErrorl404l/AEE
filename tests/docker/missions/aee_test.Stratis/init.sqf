@@ -3200,6 +3200,12 @@ private _p29Pass = 0;
     // config-driven and pure, so a dedicated server checks it against the
     // optic config.
     execVM "aee_p98_capability_probe.sqf";
+    // PHASE 99 lives in aee_p99_thermal_budget_probe.sqf: the mode-2 thermal
+    // pass amortises its scene sweep, so the probe measures the budgeted AGC
+    // pass and the pure paint kernels headlessly with tracing OFF, warm-up
+    // plus best of three, and asserts the pass stays a small fraction of a
+    // frame.  It renders nothing.
+    execVM "aee_p99_thermal_budget_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
