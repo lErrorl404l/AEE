@@ -96,7 +96,12 @@ params [
     // caller bit-identical.  A caller resolves the per-device band token with
     // fnc_resolveThermalBand and passes the pair here.
     ["_lambda1M", 8e-6, [0]],
-    ["_lambda2M", 14e-6, [0]]
+    ["_lambda2M", 14e-6, [0]],
+    // Relative humidity, percent, for the band sky model (T3).  Default 50
+    // matches the reference condition of the transmission kernel.
+    ["_humidityPct", 50, [0]],
+    // The per-device band token for the band sky model (T3).  Default lwir.
+    ["_bandToken", "lwir", [""]]
 ];
 
 // A band must be a positive, increasing pair.  Refuse a bad one with -1, the
@@ -121,68 +126,27 @@ private _tSurfK = _tSurf + 273.15;
 private _tAirK = (_tAir + 273.15) max 200 min 350;
 private _tGroundK = _tGround + 273.15;
 
-// ─── Sky temperature for the 8-14 um sensor band ──────────────────────────
-// The sensor sees the ATMOSPHERIC WINDOW (8-14 um), which is
-// semi-transparent - the sky in that band is FAR colder than the
-// total-longwave sky.  Measured values: Tebo (1965), "Effective Clear
-// Sky Temperatures in the 8-to 14-Micron Band", Flagstaff AZ, found
-// whole-sky band temperatures of about -21 to -82 C; Aase & Idso (1981)
-// give explicit 8-14 um band emissivity equations.  The total-longwave
-// Swinbank correlation (T_sky = 0.0552*T^1.5, ~-3 C at 15 C air) is NOT
-// applicable to the band: it overestimates the reflected-sky term by
-// 20-50 %.  A clear-sky band temperature ~35 K below air is the
-// temperate-condition mid-range of the Tebo measurements; overcast
-// lifts it toward air temperature (cloud fills the window).
+// ─── Sky temperature for the sensor band ──────────────────────────────────
+// The sensor sees the ATMOSPHERIC WINDOW, which is semi-transparent, so the
+// sky in the band is far colder than the total-longwave sky.  The band sky
+// model fnc_calculateSkyRadiance follows the air temperature, the humidity
+// and the overcast.  It replaces the retired fixed offset.  At 15 C and
+// 50 percent humidity the clear-sky band temperature is about -16 C, within
+// 5 K of the old offset, so night cold-sky contrast does not regress.
 private _overcast = overcast max 0 min 1;
-private _tSkyK = _tAirK - 35;
-_tSkyK = _tSkyK + (_tAirK - _tSkyK) * _overcast;
+private _tSkyC = [_bandToken, _tAir, _humidityPct, _overcast] call FUNC(calculateSkyRadiance);
+private _tSkyK = _tSkyC + 273.15;
 
 // ─── Reflected environment: sky/ground mix by view factor ────────────────
 private _tReflK = _fGround * _tGroundK + (1 - _fGround) * _tSkyK;
 
-// ─── Planck band integral (8-14 um), exact ───────────────────────────────
-// L_band = C * T^4 * [I(z1) - I(z2)],  z_i = c2 / (lambda_i * T),
-// I(z) = sum_n exp(-n z) (z^3/n + 3 z^2/n^2 + 6 z/n^3 + 6/n^4).
-// C = 2 k^4 / (h^3 c^2) = 2.779416505e-9 W m^-2 sr^-1 K^-4 and
-// c2 = h c / k = 1.438776877e-2 m K, both from CODATA 2022.
-private _fnRad = {
-    params ["_tk"];
-    _tk = (_tk max 100) min 2000;   // numerical domain guard, not a physical clamp
-    private _z1 = 1.438776877e-2 / (_lambda1M * _tk);
-    private _z2 = 1.438776877e-2 / (_lambda2M * _tk);
-    private _z1s = _z1 * _z1;
-    private _z1c = _z1s * _z1;
-    private _z2s = _z2 * _z2;
-    private _z2c = _z2s * _z2;
-    private _b1 = exp (-_z1);
-    private _b2 = exp (-_z2);
-    private _e1 = _b1;
-    private _e2 = _b2;
-    private _i1 = 0;
-    private _i2 = 0;
-    for "_n" from 1 to 8 do {
-        private _n2 = _n * _n;
-        private _n3 = _n2 * _n;
-        private _n4 = _n3 * _n;
-        _i1 = _i1 + _e1 * (_z1c / _n + 3 * _z1s / _n2 + 6 * _z1 / _n3 + 6 / _n4);
-        _i2 = _i2 + _e2 * (_z2c / _n + 3 * _z2s / _n2 + 6 * _z2 / _n3 + 6 / _n4);
-        _e1 = _e1 * _b1;
-        _e2 = _e2 * _b2;
-    };
-    2.779416505e-9 * (_tk ^ 4) * (_i2 - _i1)
-};
-
-// ─── FLIR 3-term radiance ─────────────────────────────────────────────────
-// The object and reflection terms are multiplied by the transmission tau,
-// and the path term (1 - tau) * W_atm is added.  With the default tau = 1
-// the path term is exactly zero and the result is the old two-term value.
-// The reflected term is (1-eps) * W(T_refl): a low-eps surface reflects the
-// environment (cold sky at night) more than it emits - the physics behind
-// "bare metal reads dark at night".
-private _wObj = _tSurfK call _fnRad;
-private _wRefl = _tReflK call _fnRad;
+// ─── Planck band integral, exact ──────────────────────────────────────────
+// The integral lives once, in fnc_planckBandRadiance.  See that kernel for
+// the cumulative-blackbody series and the CODATA 2022 constants.
+private _wObj = [_tSurfK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
+private _wRefl = [_tReflK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
 private _tPathK = (_tPath + 273.15) max 200 min 350;
-private _wAtm = _tPathK call _fnRad;
+private _wAtm = [_tPathK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
 private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl);
 private _wBand = _wTransmitted + (1 - _tau) * _wAtm;
 if (_traceOn) then {
