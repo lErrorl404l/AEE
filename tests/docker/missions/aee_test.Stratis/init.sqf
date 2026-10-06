@@ -3219,6 +3219,23 @@ private _p29Pass = 0;
     // drives an agreeing map and a three-way disagreeing map.  It renders
     // nothing and needs no player.
     execVM "aee_p101_consistency_probe.sqf";
+    // PHASE 102 lives in aee_p102_environment_probe.sqf: the neighbourhood
+    // sampler is budgeted and re-queues its unsampled cells, and the pure
+    // cache kernel ages and caps the per-cell store.  It samples terrain, so
+    // it runs on a dedicated server.  It renders nothing.
+    execVM "aee_p102_environment_probe.sqf";
+    // PHASE 103 lives in aee_p103_cognition_probe.sqf: the ecology tick is
+    // client-only, so the probe drives the pure budget kernel and confirms
+    // the tick honours the client gate headlessly.  It renders nothing.
+    execVM "aee_p103_cognition_probe.sqf";
+    // PHASE 104 lives in aee_p104_call_probe.sqf: the call emit, receive and
+    // heard-call bus kernels are pure, so the probe drives them with
+    // fixtures.  It renders nothing.
+    execVM "aee_p104_call_probe.sqf";
+    // PHASE 105 lives in aee_p105_sound_schedule_probe.sqf: the call-pattern
+    // and emission-scheduler kernels are pure, so the probe drives a
+    // simulated day.  It plays nothing.
+    execVM "aee_p105_sound_schedule_probe.sqf";
     // PHASE 106 lives in aee_p106_mgrs_anchor_probe.sqf: the geo anchor is
     // read from the live world and the mapArea versus latitude/longitude
     // divergence is checked through the REAL builder with the world-independent
