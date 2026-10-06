@@ -177,11 +177,13 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Compat - KAT"): {"aee_compat_kat_logDebug"},
     ("AEE Debug", "Compat - Real Weather"): {"aee_compat_realweather_logDebug"},
     ("AEE Debug", "Compat - TFAR"): {"aee_compat_tfar_logDebug"},
+    ("AEE Debug", "Actions"): {"aee_actions_logDebug"},
+    ("AEE Debug", "Material"): {"aee_material_logDebug"},
 }
 
 
 class TestDebugTaxonomy(unittest.TestCase):
-    """AEE Debug holds exactly the 25 diagnostic switches, by component."""
+    """AEE Debug holds exactly the 27 diagnostic switches, by component."""
 
     def test_debug_groups_are_exact(self):
         groups = taxonomy_groups({"AEE Debug"})

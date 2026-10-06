@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Material">
+        <Key ID="STR_AEE_MATERIAL_logDebug_Description">
+            <Original>Write the surface classification diagnostics to the RPT</Original>
+            <English>Write the surface classification diagnostics to the RPT</English>
+        </Key>
+        <Key ID="STR_AEE_MATERIAL_logDebug_Name">
+            <Original>Log Debug Output</Original>
+            <English>Log Debug Output</English>
+        </Key>
+    </Package>
+</Project>
