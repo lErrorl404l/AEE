@@ -13,6 +13,11 @@ This page lists the addons that carry module functions. Each function file is
 The orchestrator. It initialises the mod, registers the EDEN module, updates
 the environment, and reports diagnostics.
 
+It also reports module health and runs the throttled cross-module
+consistency monitor. The monitor reads the published producer values, calls
+the pure `evaluateConsistency` kernel and logs one warning per failing
+invariant. The design decision is in ADR-021.
+
 | Function | Purpose |
 |---|---|
 | `calculateSeededWeatherProgression` | Compute a deterministic weather quality factor from a seeded LCG |
@@ -103,6 +108,15 @@ The model derives the normal-vision tone, contrast, white balance and mesopic
 tint from published human-vision science. It subsumes the aesthetic base grade
 in place and reuses the registry keys `BaseGrade` and `BaseAcuity`. The design
 decision is in ADR-014.
+
+The perception monitor folds the published view state into one fixed schema.
+`perceptionSample` is a pure kernel that reads no world state, so the local
+driver and an AI caller use the same entry point. The client driver
+`perceptionUpdate` reads the state each half second, publishes the aggregate
+and its named fields, emits one human line, and calls `perceptionDetectDeviation`
+to set the deviation flags. The monitor is client only. It self-gates on
+`hasInterface` and on a living local player, so a dedicated server publishes
+nothing. The design decision is in ADR-021.
 
 | Function | Purpose |
 |---|---|
