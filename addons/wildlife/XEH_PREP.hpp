@@ -2,6 +2,7 @@ PREP(getSpeciesMatch);
 PREP(getCallPattern);
 PREP(getSeason);
 PREP(sampleNeighbourhood);
+PREP(environmentSuitability);
 PREP(speciesDeprecation);
 PREP(speciesForBiome);
 PREP(spawnBudget);
