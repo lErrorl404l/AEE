@@ -27,3 +27,9 @@ if (is3DEN) exitWith {};
 // fnc_dumpState).  A new registration keeps the dump out of the environment
 // tick.
 [FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
+
+// The runtime module-health report reads every module's init flags once the
+// mission has had 10 s to bring the modules up.  It runs once, never per tick.
+[{
+    [] call FUNC(reportModuleHealth);
+}, [], 10] call CBA_fnc_waitAndExecute;

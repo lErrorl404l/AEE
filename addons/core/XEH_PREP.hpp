@@ -23,3 +23,4 @@ PREP(installPlayerEngineHandler);
 PREP(readState);
 PREP(calculateIlluminance);
 PREP(dumpState);
+PREP(reportModuleHealth);
