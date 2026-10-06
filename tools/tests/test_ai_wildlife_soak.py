@@ -35,6 +35,7 @@ PRUNE = AI_FUNCS / "fnc_disturbancePrune.sqf"
 SPAWN_BUDGET = WILDLIFE_FUNCS / "fnc_spawnBudget.sqf"
 NEEDS_TICK = WILDLIFE_FUNCS / "fnc_needsTick.sqf"
 SPECIES_FOR_BIOME = WILDLIFE_FUNCS / "fnc_speciesForBiome.sqf"
+SPECIES_MATCH = WILDLIFE_FUNCS / "fnc_getSpeciesMatch.sqf"
 PLAY_ONE_SHOT = WILDLIFE_FUNCS / "fnc_playOneShot.sqf"
 SPECIES_TABLE = WILDLIFE / "data" / "species_table.sqf"
 
@@ -326,9 +327,24 @@ def load_species_table():
     return run_sqf(SPECIES_TABLE, [])
 
 
+def _kernel(path):
+    """A callable Lambda built from a real kernel file, params pre-bound."""
+    stmts = load_sqf(path)
+    params, body = [], stmts
+    if stmts and isinstance(stmts[0], Params):
+        params = [name for name, _default in stmts[0].specs]
+        body = stmts[1:]
+    return Lambda(params, body, {})
+
+
 def species_for_biome(biome, is_night, water_frac, veg_score, seed, table):
     return run_sqf(
-        SPECIES_FOR_BIOME, [biome, is_night, water_frac, veg_score, seed, table]
+        SPECIES_FOR_BIOME,
+        [biome, is_night, water_frac, veg_score, seed, table],
+        globals_={
+            "__FUNC__getSpeciesMatch": _kernel(SPECIES_MATCH),
+            "__FUNC__speciesDeprecation": lambda: None,
+        },
     )
 
 
