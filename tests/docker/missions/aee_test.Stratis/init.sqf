@@ -3138,6 +3138,27 @@ private _p29Pass = 0;
     // resolve headless, so a dedicated server verifies what the StageTI
     // verdict rests on without reading pixels.  It renders nothing.
     execVM "aee_p91_stageti_probe.sqf";
+    // PHASE 93 lives in aee_p93_band_probe.sqf: the detector band resolver is
+    // pure, so a dedicated server checks the MWIR and LWIR pairs and the
+    // LWIR default without rendering.
+    execVM "aee_p93_band_probe.sqf";
+    // PHASE 94 lives in aee_p94_bandsky_probe.sqf: the band sky temperature is
+    // pure, so a dedicated server checks its monotone humidity response.
+    execVM "aee_p94_bandsky_probe.sqf";
+    // PHASE 95 lives in aee_p95_weteps_probe.sqf: the wet-surface emissivity
+    // blend is pure, so a dedicated server checks the 0.96 water limit.
+    execVM "aee_p95_weteps_probe.sqf";
+    // PHASE 96 lives in aee_p96_crossover_probe.sqf: the crossover surface is
+    // the ground node stack first layer, so a dedicated server compares the
+    // published value against a direct stack read.
+    execVM "aee_p96_crossover_probe.sqf";
+    // PHASE 97 lives in aee_p97_noise_probe.sqf: the noise kernel is pure, so
+    // a dedicated server checks the monotone range response.
+    execVM "aee_p97_noise_probe.sqf";
+    // PHASE 98 lives in aee_p98_capability_probe.sqf: the capability kernel is
+    // config-driven and pure, so a dedicated server checks it against the
+    // optic config.
+    execVM "aee_p98_capability_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
