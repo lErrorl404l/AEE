@@ -369,6 +369,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_qnh` | core | QNH pressure setting |
 | `aee_core_pressureAltitude_m` | core | Pressure altitude in metres |
 | `aee_core_isReady` | core | Core module ready flag |
+| `aee_core_moduleHealth` | core | Runtime module-health report: an array of `[component, preInit, postInit]` per module, read back by the debug index and the P100 probe. The report writes it once, 10 s after core postInit |
 | `aee_core_lastStrikePos` | core | Last lightning strike position |
 | `aee_core_lightningIgnition` | core | Lightning ignition flag |
 
