@@ -24,12 +24,16 @@ class RscTitles {
 
         class controls {
             // Local base for every text line; the source RscText block.
+            // The AEE font is a load-time config font.  The operator
+            // procedure in docs/wiki/research/arma-font-surface.md produces
+            // the AEEFont glyph set.  Until it exists the engine falls back
+            // to its default font, so the default state is unchanged.
             class AEETextHud {
                 type = 0;
                 idc = -1;
                 style = 0;
                 shadow = 1;
-                font = "PuristaMedium";
+                font = "AEEFont";
                 sizeEx = "0.016 * safezoneH";
                 text = "";
                 colorText[] = {1, 1, 1, 1};
@@ -190,7 +194,7 @@ class RscTitles {
                 idc = 10811;
                 style = 0;
                 shadow = 1;
-                font = "PuristaMedium";
+                font = "AEEFont";
                 sizeEx = "0.016 * safezoneH";
                 text = "";
                 colorText[] = {1, 1, 1, 1};
@@ -222,12 +226,14 @@ class RscTitles {
         class controls {
             // Local base for the GPS text lines.  The device green marks it as
             // an instrument, not the environment HUD.
+            // The MGRS device readout uses the monospaced companion, so the
+            // coordinate columns do not jitter as the digits change.
             class AEEGpsText {
                 type = 0;
                 idc = -1;
                 style = 0;
                 shadow = 1;
-                font = "PuristaMedium";
+                font = "AEEFontMono";
                 sizeEx = "0.016 * safezoneH";
                 text = "";
                 colorText[] = {0.55, 1, 0.55, 1};

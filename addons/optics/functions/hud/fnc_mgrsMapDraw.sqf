@@ -45,6 +45,16 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
         params ["_map"];
         if (!(missionNamespace getVariable [QGVAR(mgrsEnabled), true])) exitWith {};
 
+        // The MGRS readout uses the monospaced companion, gated on the
+        // symbologyFont setting.  The engine font is the fallback when the
+        // AEEFontMono family is unavailable.
+        private _font = "PuristaMedium";
+        if (missionNamespace getVariable [QGVAR(symbologyFont), true]) then {
+            if (isClass (configFile >> "CfgFontFamilies" >> "AEEFontMono")) then {
+                _font = "AEEFontMono";
+            };
+        };
+
         private _anchor = call EFUNC(core,getGeoAnchor);
         private _precision = missionNamespace getVariable [QGVAR(mgrsPrecision), 10];
         private _player = call CBA_fnc_currentUnit;
@@ -59,7 +69,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
         ] call FUNC(mgrsMarkerText);
         _map drawIcon [
             "", [0.75, 1, 1, 1], getPos _player, 0, 0, 0,
-            _playerText, 1, 0.024, "PuristaMedium", "center"
+            _playerText, 1, 0.024, _font, "center"
         ];
 
         {
@@ -73,7 +83,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 ] call FUNC(mgrsMarkerText);
                 _map drawIcon [
                     "", [0.75, 1, 1, 0.9], getMarkerPos _x, 0, 0, 0,
-                    _label, 1, 0.020, "PuristaMedium", "center"
+                    _label, 1, 0.020, _font, "center"
                 ];
             };
         } forEach allMapMarkers;
@@ -121,7 +131,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                     if (_major) then { _size = 0.022; };
                     _map drawIcon [
                         "", [0.60, 1, 1, 0.85], _pos, 0, 0, 0,
-                        _label, 1, _size, "PuristaMedium", "center"
+                        _label, 1, _size, _font, "center"
                     ];
                 } forEach _labels;
             };
@@ -178,7 +188,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                     if ((count _draw) >= 2) then {
                         _map drawIcon [
                             "", [1, 1, 1, 1], _draw, 0, 0, 0,
-                            _cursorText, 1, 0.022, "PuristaMedium", "left"
+                            _cursorText, 1, 0.022, _font, "left"
                         ];
                     };
                 };

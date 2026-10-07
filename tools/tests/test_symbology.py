@@ -49,6 +49,12 @@ HUD_MARKERS_SRC = (OPTICS / "functions" / "hud" / "fnc_hudMarkers.sqf").read_tex
     encoding="utf-8"
 )
 POSTINIT_SRC = (OPTICS / "XEH_postInit.sqf").read_text(encoding="utf-8")
+CONFIG_SRC = (OPTICS / "config.cpp").read_text(encoding="utf-8")
+RSCTITLES_SRC = (OPTICS / "RscTitles.hpp").read_text(encoding="utf-8")
+MGRS_MAP_SRC = (OPTICS / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
+    encoding="utf-8"
+)
+FONTS = OPTICS / "data" / "fonts"
 
 
 def palette(affiliation, pal):
@@ -571,6 +577,65 @@ class TestSymbolPrep(unittest.TestCase):
             "symbologyPaletteFriendly",
         ):
             self.assertIn(f"PREPS(symbology,{name})", PREP_SRC)
+
+
+class TestSymbologyFontWiring(unittest.TestCase):
+    """The AEE font is wired into the config and the draw layer."""
+
+    def test_the_font_families_are_declared(self):
+        self.assertIn("class CfgFontFamilies {", CONFIG_SRC)
+        self.assertIn("class AEEFont {", CONFIG_SRC)
+        self.assertIn("class AEEFontMono {", CONFIG_SRC)
+
+    def test_the_families_carry_a_fonts_list_and_a_space_width(self):
+        self.assertIn("fonts[] = {", CONFIG_SRC)
+        self.assertIn("spaceWidth = 0.9;", CONFIG_SRC)
+        self.assertIn("spaceWidth = 0.5;", CONFIG_SRC)
+
+    def test_the_map_grid_font_is_repointed_at_load_time(self):
+        self.assertIn("class RscMapControl {", CONFIG_SRC)
+        self.assertIn('fontGrid = "AEEFont";', CONFIG_SRC)
+
+    def test_the_referenced_paths_carry_no_extension(self):
+        # A fonts[] entry names a path with no extension; the engine appends
+        # the .fxy and the .paa.
+        self.assertIn(
+            "z\\aee\\addons\\optics\\data\\fonts\\rajdhani\\AEEFont9", CONFIG_SRC
+        )
+        self.assertIn(
+            "z\\aee\\addons\\optics\\data\\fonts\\b612mono\\AEEFontMono9", CONFIG_SRC
+        )
+        for line in CONFIG_SRC.splitlines():
+            stripped = line.strip()
+            if stripped.startswith('"z\\aee\\addons\\optics\\data\\fonts\\'):
+                self.assertFalse(stripped.endswith('.fxy",'))
+                self.assertFalse(stripped.endswith('.paa",'))
+
+    def test_the_draw_functions_gate_the_font_on_the_setting(self):
+        self.assertIn("QGVAR(symbologyFont)", SYM_MAP_SRC)
+        self.assertIn("QGVAR(symbologyFont)", SYM_WORLD_SRC)
+
+    def test_the_mgrs_readout_uses_the_monospaced_family(self):
+        self.assertIn("AEEFontMono", MGRS_MAP_SRC)
+        self.assertIn("QGVAR(symbologyFont)", MGRS_MAP_SRC)
+
+    def test_the_hud_controls_name_the_aee_families(self):
+        self.assertIn('font = "AEEFont";', RSCTITLES_SRC)
+        self.assertIn('font = "AEEFontMono";', RSCTITLES_SRC)
+
+    def test_the_ofl_text_and_the_ttf_are_committed_for_each_family(self):
+        for family in ("rajdhani", "b612mono"):
+            with self.subTest(family=family):
+                self.assertTrue((FONTS / family / "OFL.txt").is_file())
+        self.assertTrue((FONTS / "rajdhani" / "Rajdhani-Regular.ttf").is_file())
+        self.assertTrue((FONTS / "rajdhani" / "Rajdhani-Bold.ttf").is_file())
+        self.assertTrue((FONTS / "b612mono" / "B612Mono-Regular.ttf").is_file())
+
+    def test_every_ofl_file_carries_the_licence(self):
+        for family in ("rajdhani", "b612mono"):
+            with self.subTest(family=family):
+                text = (FONTS / family / "OFL.txt").read_text(encoding="utf-8")
+                self.assertIn("SIL OPEN FONT LICENSE Version 1.1", text)
 
 
 if __name__ == "__main__":
