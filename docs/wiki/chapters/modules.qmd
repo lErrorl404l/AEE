@@ -174,6 +174,32 @@ indicators only where the difficulty exposes extended map content. The
 `setGroupIconsVisible` call affects only the High Command icons and never the
 default engine markers. The tracker draws its own markers in both cases.
 
+### NATO/OPFOR map symbology
+
+The symbology layer replaces the engine map markers and unit icons with NATO
+APP-6(C) symbols. The frame shape and the colour show the affiliation, the
+dimension modifier shows the battle dimension, and the inner glyph shows the
+function. The design decision is in ADR-024.
+
+| Function | Purpose |
+|---|---|
+| `symbolCategory` | Map an engine marker type or vehicle class to a class category |
+| `symbolPalette` | Map an affiliation and the palette to the Table 1-4 colour |
+| `symbolFrame` | Build the frame outline for an affiliation and a dimension |
+| `symbolIcon` | Build the inner glyph for a class category |
+| `symbolResolve` | Resolve the inputs to one symbol specification |
+| `symbolDrawPlan` | Turn a specification into the ordered draw primitives |
+| `symbologyMarkerCategory` | Read a marker and map it to a class category |
+| `symbologyUnitCategory` | Read a unit and map it to a class category |
+| `symbologyAffiliation` | Read a marker colour and resolve the affiliation |
+| `symbologyPaletteFriendly` | Resolve the Auto palette against the local side |
+| `symbologyMapDraw` | Draw the symbols on the map control |
+| `symbologyWorldDraw` | Draw the symbols in the 3D world |
+
+The engine 3D unit icons cannot be suppressed, so the world layer draws over
+them and states the ceiling. The map layer hides the engine mission markers
+locally and restores them when the map closes.
+
 ## nightvision
 
 Night-vision tube model, laser target marker and grain. The design decisions
