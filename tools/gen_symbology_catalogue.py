@@ -209,53 +209,78 @@ def write_config(pairs: list[tuple[str, dict[str, Any]]]) -> None:
 # The engine's own NATO marker families.  AEE overwrites the icon of each so the
 # base Arma marker renders the AEE symbol.  Arma merges addon configs and the
 # later-loaded mod value wins, so re-declaring the class overrides the engine
-# field (BIKI Addon configuration).  Family letter -> the APP-6 affiliation.
-ENGINE_FAMILY_AFFIL = {
-    "b": "Friend",
-    "o": "Hostile",
-    "n": "Neutral",
-    "c": "Unspecified",
+# field (BIKI Addon configuration).
+#
+# The engine class is pinned to the EXACT APP-6 function it means.  A loose
+# keyword match is not used: "armour" is a substring of "armoured", so a keyword
+# lookup once pinned b_armor to the anti-tank glyph and b_plane to an engineer
+# glyph.  The family letter gives the affiliation; the stem is the catalogue
+# function without the affiliation prefix.
+ENGINE_FAMILY_AFFIL = {"b": "Friendly", "o": "Hostile", "n": "Neutral"}
+ENGINE_GLYPH_STEM = {
+    "inf": "Unit Infantry",
+    "motor_inf": "Unit Infantry - Motorized",
+    "armor": "Unit Armour",
+    "recon": "Unit Reconnaissance",
+    "plane": "Unit Aviation - Fixed Wing",
+    "uav": "Unit Unmanned Aerial Vehicles",
+    "med": "Unit Medical",
+    "art": "Unit Artillery",
+    "mortar": "Unit Mortars",
+    "hq": "Unit Headquarters Unit",
+    "support": "Unit CSS - Combat Service Support",
+    "maint": "Unit CSS - Maintenance",
+    "service": "Unit CSS - Supply",
+    "antiair": "Unit Air Defence",
 }
-ENGINE_GLYPH_KEYWORD = {
-    "unknown": "Unknown",
-    "inf": "Infantry",
-    "motor_inf": "Motor",
-    "mech_inf": "Mechanized Infantry",
-    "armor": "Armour",
-    "recon": "Reconnaissance",
-    "air": "Army Aviation",
-    "plane": "Air Force",
-    "uav": "Unmanned",
-    "naval": "Navy",
-    "med": "Medical",
-    "art": "Artillery",
-    "mortar": "Mortar",
-    "hq": "Headquarters",
-    "support": "Combat Service Support",
-    "maint": "Maintenance",
-    "service": "Supply",
-    "installation": "Installation",
-    "antiair": "Air Defence",
-}
-# The engine families and their glyphs (Addons/ui_f CfgMarkers NATO block).
+# The engine families and the glyphs AEE overwrites (Addons/ui_f CfgMarkers).
+# The engine also ships b_/o_/n_ air, mech_inf, naval, installation and unknown
+# plus c_ car, ship and unknown; those are not overwritten here and are recorded
+# as a gap in the register.
 ENGINE_FAMILIES = {
-    "b": list(ENGINE_GLYPH_KEYWORD),
-    "o": list(ENGINE_GLYPH_KEYWORD),
-    "n": list(ENGINE_GLYPH_KEYWORD),
-    "c": ["air", "car", "plane", "ship", "unknown"],
+    "b": list(ENGINE_GLYPH_STEM),
+    "o": list(ENGINE_GLYPH_STEM),
+    "n": [glyph for glyph in ENGINE_GLYPH_STEM if glyph != "plane"],
 }
+# The c_ family is the engine's own civil/unknown set.  AEE pins the two classes
+# it has an exact symbol for.
+ENGINE_C_EXACT = {"c_air": "APP-6 Army Aviation", "c_plane": "APP-6 Air Force"}
+# Where the catalogue holds no single-image symbol for an engine class, the
+# interim exact symbol is named here and the deviation is recorded.  The
+# composed cross-product supplies the true symbol.
+ENGINE_FALLBACK = {"n_motor_inf": "Neutral Unit Infantry"}
 
 
-def _find_asset(
-    pairs: list[tuple[str, dict[str, Any]]], affil: str, keyword: str
-) -> str | None:
+def _find_exact(pairs: list[tuple[str, dict[str, Any]]], func: str) -> str | None:
     for name, entry in pairs:
-        if (
-            entry.get("affil") == affil
-            and keyword.lower() in str(entry.get("func", "")).lower()
-        ):
+        if entry.get("func") == func:
             return name
     return None
+
+
+def engine_overrides(
+    pairs: list[tuple[str, dict[str, Any]]],
+) -> list[tuple[str, str | None, str, bool]]:
+    """Resolve each engine class to its exact catalogue marker.
+
+    Returns (engine class, marker name or None, exact function, deviated).
+    """
+    out: list[tuple[str, str | None, str, bool]] = []
+    for fam, glyphs in ENGINE_FAMILIES.items():
+        affil = ENGINE_FAMILY_AFFIL[fam]
+        for glyph in glyphs:
+            cls = f"{fam}_{glyph}"
+            func = f"{affil} {ENGINE_GLYPH_STEM[glyph]}"
+            name = _find_exact(pairs, func)
+            deviated = False
+            if name is None:
+                fallback = ENGINE_FALLBACK.get(cls)
+                name = _find_exact(pairs, fallback) if fallback else None
+                deviated = name is not None
+            out.append((cls, name, func, deviated))
+    for cls, func in ENGINE_C_EXACT.items():
+        out.append((cls, _find_exact(pairs, func), func, False))
+    return out
 
 
 def render_engine_overrides(pairs: list[tuple[str, dict[str, Any]]]) -> str:
@@ -264,21 +289,20 @@ def render_engine_overrides(pairs: list[tuple[str, dict[str, Any]]]) -> str:
         "// Overwrite the engine's own NATO marker families, so the base Arma",
         "// marker renders the AEE symbol and no engine mark shows beside it.",
         "// A mod may re-declare an engine class; Arma merges the configs and the",
-        "// later-loaded value wins (BIKI Addon configuration).",
+        "// later-loaded value wins (BIKI Addon configuration).  Each class is",
+        "// pinned to its exact APP-6 symbol by tools/gen_symbology_catalogue.py.",
     ]
-    for fam, glyphs in ENGINE_FAMILIES.items():
-        affil = ENGINE_FAMILY_AFFIL[fam]
-        for glyph in glyphs:
-            keyword = ENGINE_GLYPH_KEYWORD.get(glyph)
-            if not keyword:
-                continue
-            asset = _find_asset(pairs, affil, keyword)
-            if asset is None:
-                continue
-            icon = f"{ADDON_PREFIX}\\{asset}.paa"
+    for cls, name, func, deviated in engine_overrides(pairs):
+        if name is None:
+            lines.append(f"    // {cls}: no exact catalogue symbol for {func!r}")
+            continue
+        if deviated:
             lines.append(
-                f'    class {fam}_{glyph} {{ icon = "{icon}"; texture = "{icon}"; }};'
+                f"    // {cls}: catalogue lacks {func!r}; using {name} "
+                "(composed cross-product supplies the exact symbol)"
             )
+        icon = f"{ADDON_PREFIX}\\{name}.paa"
+        lines.append(f'    class {cls} {{ icon = "{icon}"; texture = "{icon}"; }};')
     return "\n".join(lines) + "\n"
 
 
