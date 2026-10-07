@@ -103,3 +103,4 @@ PREPS(symbology,symbolPalette);
 PREPS(symbology,symbolFrame);
 PREPS(symbology,symbolIcon);
 PREPS(symbology,symbolResolve);
+PREPS(symbology,symbolCategory);
