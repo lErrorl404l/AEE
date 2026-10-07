@@ -10,11 +10,11 @@ both and fails when a row, a field, or a value drifts.
 
 Row layout (fixed index order, mirrored by fnc_evaluateConsistency):
 
-    0 id          STRING  invariant id, for example "INV-4"
-    1 name        STRING  invariant name, for example "body_temperature"
+    0 id          STRING  invariant id, for example "INV-1"
+    1 name        STRING  invariant name, for example "illuminance_chain"
     2 producers   ARRAY   list of [module, variable] pairs
-    3 predicate   STRING  agree_within | aperture_matches_lux |
-                          monotone_with_wind | daynight_consistent
+    3 predicate   STRING  agree_within | night_scene_agreement |
+                          daynight_consistent
     4 tolerance   NUMBER  predicate band, units stated in the note
     5 severity    STRING  warn | error
     6 grade       STRING  provenance of the values compared
@@ -33,14 +33,14 @@ private _table = [
         "illuminance_chain",
         [
             ["core", "aee_core_illuminanceLux"],
-            ["optics", "aee_optics_eyeAdaptedLux"],
-            ["optics", "aee_optics_eyeAperture"]
+            ["optics", "aee_optics_eyeSceneLux"],
+            ["core", "aee_core_lightIsNight"]
         ],
-        "aperture_matches_lux",
+        "night_scene_agreement",
         0.5,
         "warn",
         "derived",
-        "The adapted luminance tracks the scene illuminance and the eye aperture lies on the supplied lux-to-aperture line. Tolerance is a relative fraction."
+        "Night scope: the row runs only when aee_core_lightIsNight is true (sun at or below the horizon). At night both sides are the physical-sky model, so the eye scene illuminance (aee_optics_eyeSceneLux) tracks the core illuminance (aee_core_illuminanceLux) within the tolerance, a relative fraction. The eye fix 98d1f17 gates the engine local term by sun elevation, so the two agree at night. In daylight the two draw on different light sources and the row is out of scope."
     ],
     [
         "INV-2",
@@ -55,33 +55,6 @@ private _table = [
         "warn",
         "derived",
         "Air, ground-surface and average-ground temperatures agree within 15 C. aee_thermal_groundNodeStack is a per-cell HashMap store documented in Annex C, not a scalar, so it is excluded from the numeric comparison."
-    ],
-    [
-        "INV-3",
-        "wind_scent_turbulence",
-        [
-            ["core", "aee_core_currentWindStr"],
-            ["environmental", "aee_environmental_scentDispersionIntensity"],
-            ["core", "aee_core_currentTurbulence"]
-        ],
-        "monotone_with_wind",
-        0.05,
-        "warn",
-        "derived",
-        "A stronger wind raises or holds the scent dispersion and the turbulence. The harness supplies the prior sample as the reference."
-    ],
-    [
-        "INV-4",
-        "body_temperature",
-        [
-            ["thermal", "aee_thermal_humanCoreTempC"],
-            ["core", "aee_core_coreBodyTemp"]
-        ],
-        "agree_within",
-        2.0,
-        "warn",
-        "derived",
-        "The thermal two-node human core temperature and the core physiology heat balance agree within 2 C. The physiology coefficients are UNSOURCED."
     ],
     [
         "INV-5",

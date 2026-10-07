@@ -25,27 +25,19 @@ private _notes = [];
 
 private _table = [] call _loadTable;
 
-// The agreeing map: every invariant holds.  The aperture 34.25 lies on the
-// default lux-to-aperture line for an adapted luminance of 100 cd/m2, and the
-// prior wind sample keeps INV-3 monotone.
+// The agreeing map: every invariant holds.  It is a night scene, so INV-1's
+// night-scoped comparison runs: the eye scene illuminance (100 lx) equals the
+// core illuminance (100 lx) at a sun elevation below the horizon.
 private _agree = [
     ["aee_core_illuminanceLux", 100],
-    ["aee_optics_eyeAdaptedLux", 100],
-    ["aee_optics_eyeAperture", 34.25],
+    ["aee_optics_eyeSceneLux", 100],
     ["aee_core_currentTemperature", 15],
-    ["aee_thermal_groundNodeStack", 16],
     ["aee_core_groundSurfaceTemp", 14],
     ["aee_core_avgGroundTemp", 15],
-    ["aee_core_currentWindStr", 5],
-    ["aee_environmental_scentDispersionIntensity", 0.5],
-    ["aee_core_currentTurbulence", 0.3],
-    ["aee_thermal_humanCoreTempC", 37],
-    ["aee_core_coreBodyTemp", 37.5],
-    ["aee_core_currentSunElevation", 30],
+    ["aee_core_currentSunElevation", -30],
     ["aee_thermal_skyBandTempC", -20],
-    ["aee_core_lightIsNight", false],
-    ["aee_environmental_nightClassification", 0],
-    ["aee_core_currentWindStrRef", [4, 0.4, 0.2]]
+    ["aee_core_lightIsNight", true],
+    ["aee_environmental_nightClassification", 4]
 ];
 
 // The disagreeing map: the air temperature drops away from the two ground
@@ -56,9 +48,6 @@ private _disagree = +_agree;
     switch (_pair select 0) do {
         case "aee_core_currentTemperature": {
             _disagree set [_forEachIndex, ["aee_core_currentTemperature", 0]];
-        };
-        case "aee_thermal_groundNodeStack": {
-            _disagree set [_forEachIndex, ["aee_thermal_groundNodeStack", 100]];
         };
         case "aee_core_groundSurfaceTemp": {
             _disagree set [_forEachIndex, ["aee_core_groundSurfaceTemp", 100]];

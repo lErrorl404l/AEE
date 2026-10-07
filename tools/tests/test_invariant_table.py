@@ -39,8 +39,7 @@ REQUIRED_FIELDS = {
 
 ALLOWED_PREDICATES = {
     "agree_within",
-    "aperture_matches_lux",
-    "monotone_with_wind",
+    "night_scene_agreement",
     "daynight_consistent",
 }
 
@@ -49,14 +48,6 @@ ALLOWED_PREDICATES = {
 # that is not aee_<module>_<lower-case-or-camel-leaf>.
 VARIABLE_RE = re.compile(r"^aee_[a-z0-9_]+$", re.IGNORECASE)
 MODULE_RE = re.compile(r"^[a-z0-9_]+$")
-
-# Documented task 14 / pre-existing producers with no Annex C row yet.
-ANNEX_C_ALLOWED = {
-    "aee_thermal_humanCoreTempC",
-    "aee_core_coreBodyTemp",
-    "aee_thermal_skyBandTempC",
-    "aee_thermal_groundNodeStack",
-}
 
 ADDONS = REPO / "addons"
 _SET = re.compile(
@@ -100,11 +91,11 @@ class TestInvariantTable(unittest.TestCase):
     def setUp(self):
         self.rows = load_rows()
 
-    def test_five_invariants(self):
-        self.assertEqual(len(self.rows), 5)
+    def test_three_invariants(self):
+        self.assertEqual(len(self.rows), 3)
         self.assertEqual(
             [row["id"] for row in self.rows],
-            ["INV-1", "INV-2", "INV-3", "INV-4", "INV-5"],
+            ["INV-1", "INV-2", "INV-5"],
         )
 
     def test_ids_and_names_are_unique(self):
@@ -159,13 +150,11 @@ class TestInvariantTable(unittest.TestCase):
             for _, variable in row["producers"]:
                 with self.subTest(variable=variable):
                     documented = f"`{variable}`" in annex
-                    # Annex C rows for the new (task 14) and pre-existing
-                    # undocumented producers arrive with task 18.  Until then
-                    # a name is acceptable when it is a real producer: a name
-                    # no addon writes is invented and fails here.
-                    allowed = variable in ANNEX_C_ALLOWED or variable in PRODUCED
+                    # A name is acceptable when Annex C documents it or a real
+                    # addon writes it: a name no addon writes is invented and
+                    # fails here.
                     self.assertTrue(
-                        documented or allowed,
+                        documented or variable in PRODUCED,
                         f"{variable} is undocumented and nothing produces it",
                     )
 

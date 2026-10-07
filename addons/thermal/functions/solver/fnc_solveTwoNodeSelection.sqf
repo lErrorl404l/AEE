@@ -332,7 +332,6 @@ for "_i" from 1 to 12 do {
         // E_rsw = 0.68 * m_rsw; m_rsw = 170*max(0,Tb-36.49)*exp(max(0,Tsk-33.7)/10.7)
         // E_max = (p_sk - p_a)/(r_ea + r_ecl), w = 0.06 + 0.94*(E_rsw/E_max)
         private _tBody = 0.1 * _tSk + 0.9 * _tCr;
-        // Published for the cross-module body-temperature invariant INV-4.
         // Grade: derived.  The formula is the Gagge 1986 body-temperature
         // weighting above (0.1 skin + 0.9 core); this line only publishes
         // the value the solver already computed.  Human selection only.
