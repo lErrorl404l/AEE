@@ -30,9 +30,16 @@ FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
 RESOLVE_KERNEL = SYM / "fnc_symbolResolve.sqf"
 CATEGORY_KERNEL = SYM / "fnc_symbolCategory.sqf"
+MARKER_CAT_KERNEL = SYM / "fnc_symbologyMarkerCategory.sqf"
+UNIT_CAT_KERNEL = SYM / "fnc_symbologyUnitCategory.sqf"
+AFFILIATION_KERNEL = SYM / "fnc_symbologyAffiliation.sqf"
+PALETTE_FRIENDLY_KERNEL = SYM / "fnc_symbologyPaletteFriendly.sqf"
 TABLES_SQF = OPTICS / "data" / "symbology_tables.sqf"
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SYM_TABLES = run_sqf(TABLES_SQF, [])
+MARKER_CAT_SRC = MARKER_CAT_KERNEL.read_text(encoding="utf-8")
+UNIT_CAT_SRC = UNIT_CAT_KERNEL.read_text(encoding="utf-8")
+AFFILIATION_SRC = AFFILIATION_KERNEL.read_text(encoding="utf-8")
 
 
 def palette(affiliation, pal):
@@ -62,6 +69,24 @@ def category(value, kind="marker"):
     return run_sqf(
         CATEGORY_KERNEL, [value, kind], {"aee_optics_symbologyTables": SYM_TABLES}
     )
+
+
+def marker_category(marker_type):
+    """Run the real marker adapter with the real category kernel injected."""
+    globals_ = {
+        "__FUNC__symbolCategory": lambda value, kind: run_sqf(
+            CATEGORY_KERNEL, [value, kind], {"aee_optics_symbologyTables": SYM_TABLES}
+        ),
+    }
+    return run_sqf(MARKER_CAT_KERNEL, ["", marker_type], globals_)
+
+
+def affiliation(colour, friendly):
+    return run_sqf(AFFILIATION_KERNEL, ["", colour, friendly], {})
+
+
+def palette_friendly(pal, local_side):
+    return run_sqf(PALETTE_FRIENDLY_KERNEL, [pal, local_side], {})
 
 
 class TestSymbolPalette(unittest.TestCase):
@@ -270,6 +295,58 @@ class TestSymbolCategory(unittest.TestCase):
         self.assertEqual(category("Bogus", "class"), "unknown")
 
 
+class TestSymbolAdapters(unittest.TestCase):
+    """The engine adapters, executed through their test seams."""
+
+    def test_the_marker_adapter_maps_the_shipped_types(self):
+        for marker_type, expected in (
+            ("b_inf", "infantry"),
+            ("o_armor", "armour"),
+            ("n_inf", "infantry"),
+            ("hd_dot", "waypoint"),
+        ):
+            with self.subTest(marker_type=marker_type):
+                self.assertEqual(marker_category(marker_type), expected)
+
+    def test_the_affiliation_adapter_maps_the_colour_classes(self):
+        self.assertEqual(affiliation("ColorWEST", "WEST"), "friend")
+        self.assertEqual(affiliation("ColorEAST", "WEST"), "hostile")
+        self.assertEqual(affiliation("ColorGUER", "WEST"), "neutral")
+        self.assertEqual(affiliation("ColorCIV", "WEST"), "neutral")
+        self.assertEqual(affiliation("ColorUNKNOWN", "WEST"), "unknown")
+
+    def test_the_affiliation_follows_the_friendly_side(self):
+        self.assertEqual(affiliation("ColorWEST", "EAST"), "hostile")
+        self.assertEqual(affiliation("ColorEAST", "EAST"), "friend")
+
+    def test_the_palette_friendly_adapter_resolves_the_side(self):
+        self.assertEqual(palette_friendly("NATO", "EAST"), "WEST")
+        self.assertEqual(palette_friendly("OPFOR", "WEST"), "EAST")
+        self.assertEqual(palette_friendly("Auto", "EAST"), "EAST")
+        self.assertEqual(palette_friendly("Auto", "WEST"), "WEST")
+
+
+class TestSymbolAdapterContracts(unittest.TestCase):
+    """The engine adapters carry the engine reads and call the pure kernels."""
+
+    def test_the_marker_adapter_reads_marker_type(self):
+        self.assertIn("markerType", MARKER_CAT_SRC)
+
+    def test_the_marker_adapter_calls_the_category_kernel(self):
+        self.assertIn("call FUNC(symbolCategory)", MARKER_CAT_SRC)
+
+    def test_the_affiliation_adapter_reads_get_marker_colour(self):
+        self.assertIn("getMarkerColor", AFFILIATION_SRC)
+
+    def test_the_unit_adapter_reads_the_vehicle_class(self):
+        self.assertIn("typeOf", UNIT_CAT_SRC)
+        self.assertIn("vehicleClass", UNIT_CAT_SRC)
+        self.assertIn("unitClass", UNIT_CAT_SRC)
+
+    def test_the_unit_adapter_calls_the_category_kernel(self):
+        self.assertIn("call FUNC(symbolCategory)", UNIT_CAT_SRC)
+
+
 class TestSymbolPrep(unittest.TestCase):
     """Every symbology kernel is registered for CBA_fnc_prep."""
 
@@ -287,6 +364,15 @@ class TestSymbolPrep(unittest.TestCase):
 
     def test_the_category_prep_entry_exists(self):
         self.assertIn("PREPS(symbology,symbolCategory)", PREP_SRC)
+
+    def test_the_adapter_prep_entries_exist(self):
+        for name in (
+            "symbologyMarkerCategory",
+            "symbologyUnitCategory",
+            "symbologyAffiliation",
+            "symbologyPaletteFriendly",
+        ):
+            self.assertIn(f"PREPS(symbology,{name})", PREP_SRC)
 
 
 if __name__ == "__main__":

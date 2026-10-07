@@ -104,3 +104,7 @@ PREPS(symbology,symbolFrame);
 PREPS(symbology,symbolIcon);
 PREPS(symbology,symbolResolve);
 PREPS(symbology,symbolCategory);
+PREPS(symbology,symbologyMarkerCategory);
+PREPS(symbology,symbologyUnitCategory);
+PREPS(symbology,symbologyAffiliation);
+PREPS(symbology,symbologyPaletteFriendly);
