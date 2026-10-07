@@ -14,6 +14,7 @@ PREPS(geo,buildGeoAnchor);
 PREPS(geo,getGeoAnchor);
 PREPS(geo,latLonToUtm);
 PREPS(geo,utmToLatLon);
+PREPS(geo,utmToWorld);
 PREPS(geo,formatMgrs);
 PREPS(geo,parseMgrs);
 PREPS(geo,worldToMgrs);

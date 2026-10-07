@@ -37,7 +37,9 @@ def taxonomy_groups(prefixes):
 EXPECTED_HUD = {
     "aee_thermal_fusionHud",
     "aee_optics_hudEnabled",
+    "aee_optics_mgrsCursorReadout",
     "aee_optics_mgrsEnabled",
+    "aee_optics_mgrsMapGrid",
     "aee_optics_mgrsPrecision",
     "aee_physiology_HUDWarningThreshold",
     "aee_nightvision_ltmEnabled",

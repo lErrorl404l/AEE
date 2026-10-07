@@ -570,6 +570,8 @@ in **AEE HUD > Tracker**. Each stated default is the shipped value.
 | Variable | Category | Purpose |
 | --- | --- | --- |
 | `aee_optics_mgrsEnabled` | AEE HUD > Displays | Show the MGRS grid in place of the legacy numeric grid (default on) |
+| `aee_optics_mgrsMapGrid` | AEE HUD > Displays | Draw the MGRS grid overlay on the map (default on) |
+| `aee_optics_mgrsCursorReadout` | AEE HUD > Displays | Show the MGRS reference and elevation at the map cursor (default on) |
 | `aee_optics_mgrsPrecision` | AEE HUD > Displays | MGRS digit count, one of 4, 6, 8 or 10 (default 10) |
 | `aee_optics_trackerEnabled` | AEE HUD > Tracker | Replace the exact friendly position with the modelled tracker (default off) |
 | `aee_optics_trackerSuppressIcons` | AEE HUD > Tracker | Suppress the engine friendly map indicators where the difficulty allows (default off) |

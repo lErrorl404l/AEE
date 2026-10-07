@@ -3256,6 +3256,11 @@ private _p29Pass = 0;
     // three GNSS kernels in a degraded state and asserts a non-zero error and
     // a displaced display.  It renders nothing.
     execVM "aee_p109_tracker_probe.sqf";
+    // PHASE 110 lives in aee_p110_mgrs_grid_probe.sqf: the map grid planner
+    // and the cursor readout exist only on a client, so the probe drives the
+    // REAL pure kernels with the live anchor (utmToWorld round trip,
+    // mgrsGridLines lines and labels, mgrsCursorText).  It renders nothing.
+    execVM "aee_p110_mgrs_grid_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

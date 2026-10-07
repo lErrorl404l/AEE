@@ -90,6 +90,8 @@ PREPS(hud,hudMarkers);
 PREPS(hud,hudRangefinder);
 PREPS(hud,hudUpdate);
 PREP(dumpState);
+PREPS(hud,mgrsCursorText);
+PREPS(hud,mgrsGridLines);
 PREPS(hud,mgrsMapDraw);
 PREPS(hud,mgrsMarkerText);
 PREPS(hud,trackerDraw);

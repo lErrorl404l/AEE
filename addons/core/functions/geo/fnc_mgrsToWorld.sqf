@@ -48,35 +48,6 @@ if (_bandIndex < 0) exitWith { [0, 0, 0] };
 private _hemisphere = "north";
 if (_bandIndex < 10) then { _hemisphere = "south"; };
 
-private _latLon = [_easting, _northing, _zone, _hemisphere] call FUNC(utmToLatLon);
-private _lat = _latLon select 0;
-private _lon = _latLon select 1;
-
-private _latCentre = _anchor select 0;
-private _lonCentre = _anchor select 1;
-private _mapSize = _anchor select 3;
-private _lonWest = _anchor select 4;
-private _latSouth = _anchor select 5;
-private _lonEast = _anchor select 6;
-private _latNorth = _anchor select 7;
-
-private _x = 0;
-private _y = 0;
-if ((_lonEast > _lonWest) && (_latNorth > _latSouth) && (_mapSize > 0)) then {
-    _x = ((_lon - _lonWest) / (_lonEast - _lonWest)) * _mapSize;
-    _y = ((_lat - _latSouth) / (_latNorth - _latSouth)) * _mapSize;
-} else {
-    // No box: invert the tangent plane at the anchor centre.  The world
-    // centre maps back to the anchor centre, the same convention as the box
-    // branch.
-    private _a = 6378137;
-    private _invF = 298.257223563;
-    private _e2 = (1 / _invF) * (2 - (1 / _invF));
-    private _sinLat = sin _latCentre;
-    private _meridianRadius = _a * (1 - _e2) / ((1 - (_e2 * _sinLat * _sinLat)) ^ 1.5);
-    private _metresPerDegLat = _meridianRadius * pi / 180;
-    _y = ((_lat - _latCentre) * _metresPerDegLat) + (_mapSize / 2);
-    _x = ((_lon - _lonCentre) * _metresPerDegLat * (cos _latCentre)) + (_mapSize / 2);
-};
-
-[_x, _y, 0]
+// The projection and the anchor-box inverse are shared with the grid
+// overlay, so the two cannot drift.  FUNC(utmToWorld) owns that tail.
+[_easting, _northing, _zone, _hemisphere, _anchor] call FUNC(utmToWorld)
