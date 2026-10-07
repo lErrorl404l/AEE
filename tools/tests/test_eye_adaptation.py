@@ -34,6 +34,7 @@ PUPIL_STEP = EYE / "fnc_eyePupilStep.sqf"
 ADAPT_STEP = EYE / "fnc_eyeAdaptStep.sqf"
 SCENE_LUX = EYE / "fnc_eyeSceneLux.sqf"
 AMBIENT = EYE / "fnc_eyeAmbientLux.sqf"
+LOCAL = EYE / "fnc_eyeLocalLux.sqf"
 ADAPT_INIT = EYE / "fnc_eyeAdaptInit.sqf"
 ADAPT_STATE = EYE / "fnc_eyeAdaptState.sqf"
 LIMITS = EYE / "fnc_eyeLimits.sqf"
@@ -457,30 +458,99 @@ class TestEyeAmbientLux(unittest.TestCase):
 
     def test_night_uses_the_physical_sky(self):
         # Physical moonlit sky 0.25 lx; engine ambient 51 (indoor scale).
-        self.assertAlmostEqual(
-            run_sqf(AMBIENT, [0.25, 51, 1, -10]), 0.25, places=6
-        )
+        self.assertAlmostEqual(run_sqf(AMBIENT, [0.25, 51, 1, -10]), 0.25, places=6)
 
     def test_starlight_floor_is_kept(self):
-        self.assertAlmostEqual(
-            run_sqf(AMBIENT, [0.001, 51, 1, -40]), 0.001, places=6
-        )
+        self.assertAlmostEqual(run_sqf(AMBIENT, [0.001, 51, 1, -40]), 0.001, places=6)
 
     def test_twilight_uses_the_physical_glow(self):
-        self.assertAlmostEqual(
-            run_sqf(AMBIENT, [6.3, 51, 1, -6]), 6.3, places=6
-        )
+        self.assertAlmostEqual(run_sqf(AMBIENT, [6.3, 51, 1, -6]), 6.3, places=6)
 
     def test_day_uses_the_engine_ambient(self):
         # The physical model has no daylight term; the engine supplies it.
-        self.assertAlmostEqual(
-            run_sqf(AMBIENT, [0.001, 84987, 1, 30]), 84987, places=3
-        )
+        self.assertAlmostEqual(run_sqf(AMBIENT, [0.001, 84987, 1, 30]), 84987, places=3)
 
     def test_horizon_hands_over_to_the_engine(self):
+        self.assertAlmostEqual(run_sqf(AMBIENT, [398, 5000, 1, 0.5]), 5000, places=3)
+
+
+class TestEyeLocalLux(unittest.TestCase):
+    """The night local light is the physical scan, not the engine.
+
+    Regression for the operator report.  The engine getLightingAt dynamic term
+    reads an indoor-scale value at night (~46 lx in the RPT) with no physical
+    meaning, and it moves with the camera, so any movement moved the aperture
+    target.  The gate discards it at or below the horizon, exactly as
+    fnc_eyeAmbientLux discards the engine ambient.
+    """
+
+    def test_night_uses_the_physical_local(self):
+        # Physical local 0 lx (no lamp); engine dynamic 46.45 (RPT night value).
         self.assertAlmostEqual(
-            run_sqf(AMBIENT, [398, 5000, 1, 0.5]), 5000, places=3
+            run_sqf(LOCAL, [0, 46.4537, 1, 0, 0, -31.35]), 0, places=9
         )
+
+    def test_night_keeps_a_real_local_light(self):
+        # A physical lamp (aee_core_dynamicLux) is not gated.
+        self.assertAlmostEqual(
+            run_sqf(LOCAL, [50, 46.4537, 1, 0, 0, -31.35]), 50, places=6
+        )
+
+    def test_starlight_floor_is_kept(self):
+        self.assertAlmostEqual(run_sqf(LOCAL, [0.01, 51, 1, 0, 0, -40]), 0.01, places=6)
+
+    def test_day_uses_the_engine_local(self):
+        self.assertAlmostEqual(run_sqf(LOCAL, [0, 300, 1, 0, 0, 30]), 300, places=3)
+
+    def test_horizon_hands_over_to_the_engine(self):
+        self.assertAlmostEqual(run_sqf(LOCAL, [0.2, 300, 1, 0, 0, 0.5]), 300, places=3)
+
+    def test_blinding_is_gated_with_the_engine_term(self):
+        # The blinding term rides the same gate; a zero scale keeps it out.
+        self.assertAlmostEqual(run_sqf(LOCAL, [0, 0, 1, 900, 0, -20]), 0, places=9)
+        # Above the horizon it adds at its scale.
+        self.assertAlmostEqual(run_sqf(LOCAL, [0, 0, 1, 900, 0.01, 30]), 9, places=3)
+
+
+class TestEyeSceneComposition(unittest.TestCase):
+    """The gated scene composition: a movement flicker cannot move it at night.
+
+    The RPT night scene read 46.45 lx against a physical ambient of 0.143 lx,
+    so the eye sat at an indoor aperture (32.8).  With the engine local term
+    gated, the night scene is the physical sky, and the movement swing in the
+    engine value no longer moves the target.
+    """
+
+    def _scene(self, phys_ambient, eng_ambient, phys_local, eng_local, sun_elev, sky):
+        ambient = run_sqf(AMBIENT, [phys_ambient, eng_ambient, 1, sun_elev])
+        local = run_sqf(LOCAL, [phys_local, eng_local, 1, 0, 0, sun_elev])
+        return run_sqf(SCENE_LUX, [ambient, local, sky])
+
+    def test_night_scene_is_the_physical_sky(self):
+        # RPT values: ambient 0.142886 lx, engine ambient 51, engine local
+        # 46.4537, sun -31.35 deg, open sky.
+        scene = self._scene(0.142886, 51, 0, 46.4537, -31.35, 1)
+        self.assertAlmostEqual(scene, 0.142886, places=5)
+
+    def test_night_aperture_opens(self):
+        # The night aperture moves from the indoor RPT value (32.8) to the
+        # physical-sky value, wide open.  A lower aperture is more light.
+        scene = self._scene(0.142886, 51, 0, 46.4537, -31.35, 1)
+        v = run_sqf(APERTURE, [scene])
+        self.assertLess(v, 20)
+        self.assertGreater(run_sqf(APERTURE, [46.4537]), v)
+
+    def test_movement_flicker_does_not_move_the_night_scene(self):
+        # The engine local value swings with the camera in the RPT (11.6 to
+        # 189.6).  Both ends give the same physical night scene.
+        low = self._scene(0.142886, 51, 0, 11.58, -31.35, 1)
+        high = self._scene(0.142886, 51, 0, 189.55, -31.35, 1)
+        self.assertAlmostEqual(low, high, places=9)
+        self.assertAlmostEqual(low, 0.142886, places=5)
+
+    def test_a_real_night_light_still_raises_the_scene(self):
+        lit = self._scene(0.142886, 51, 50, 46.4537, -31.35, 1)
+        self.assertAlmostEqual(lit, 50.142886, places=4)
 
 
 class TestEyeNightAndDayAperture(unittest.TestCase):
@@ -506,9 +576,7 @@ class TestEyeNightAndDayAperture(unittest.TestCase):
         dark = run_sqf(SCENE_LUX, [0.25, 0, 0.8])
         lit = run_sqf(SCENE_LUX, [0.25, 50, 0.8])
         self.assertLess(dark, lit)
-        self.assertGreater(
-            run_sqf(APERTURE, [lit]), run_sqf(APERTURE, [dark]) + 5
-        )
+        self.assertGreater(run_sqf(APERTURE, [lit]), run_sqf(APERTURE, [dark]) + 5)
 
 
 # ─── Driver default settings, mirrored for the transient simulation ─────────
@@ -539,7 +607,14 @@ def adapted_aperture(state, scene_lux, rho=RHO):
     lum = rho * scene_lux / math.pi
     w = mesopic_weight(lum)
     x = w * state[0] + (1 - w) * state[1]
-    return aperture((math.pi / rho) * (10 ** x))
+    return aperture((math.pi / rho) * (10**x))
+
+
+def pupil_implied_loglum(d):
+    """Mirror of the driver's inversion of the pupil fit to a log-luminance."""
+    u = max(-0.999, min(0.999, (4.9 - d) / 3.0))
+    log_b = (0.5 * math.log((1 + u) / (1 - u))) / 0.4 - 0.5
+    return math.log10(3.183 * (10**log_b))
 
 
 class TestEyeAdaptInit(unittest.TestCase):
@@ -627,6 +702,107 @@ class TestEyeAdaptationTransient(unittest.TestCase):
         for _ in range(int(30.0 / self.DT)):
             state = pool_step(state, scene_target(self.DARK), self.DT)
         self.assertGreater(adapted_aperture(state, self.DARK), settle + 1.0)
+
+
+class TestEyeApertureResponse(unittest.TestCase):
+    """The closing response to a whole-scene step is not instant.
+
+    Regression for the operator report: the aperture "closed very quickly when
+    moving".  The aperture must follow the neural light adaptation (seconds),
+    not the 0.25 s pupil reflex alone.  The opening side (dark adaptation) is
+    minutes and must stay that way.  Simulated through the real pupil, pool and
+    aperture kernels, with the driver's fast/slow blend.
+    """
+
+    DT = 0.25
+    DARK = 0.1
+    BRIGHT = 1000.0
+    KP = 0.35  # the driver eyeFastBlend default
+
+    def _step(self, pools, pupil, scene_lux):
+        lum = RHO * scene_lux / math.pi
+        d_steady = run_sqf(PUPIL_STEADY, [lum])
+        pupil = run_sqf(PUPIL_STEP, [pupil, d_steady, self.DT, 0.25, 0.475])
+        pools = run_sqf(
+            ADAPT_STEP,
+            [
+                pools,
+                scene_target(scene_lux),
+                self.DT,
+                TAU_LIGHT,
+                TAU_DARK_CONE,
+                TAU_DARK_ROD,
+                0,
+            ],
+        )
+        return pools, pupil
+
+    def _settle(self, scene_lux, seconds=200.0):
+        pools = run_sqf(ADAPT_INIT, [scene_target(scene_lux)])
+        pupil = run_sqf(PUPIL_STEADY, [RHO * scene_lux / math.pi])
+        for _ in range(int(seconds / self.DT)):
+            pools, pupil = self._step(pools, pupil, scene_lux)
+        return pools, pupil
+
+    def _aperture(self, pools, pupil, scene_lux):
+        lum = RHO * scene_lux / math.pi
+        w = mesopic_weight(lum)
+        x_slow = w * pools[0] + (1 - w) * pools[1]
+        x = (1 - self.KP) * x_slow + self.KP * pupil_implied_loglum(pupil)
+        return run_sqf(APERTURE, [(math.pi / RHO) * (10**x)])
+
+    def _run(self, pools, pupil, scene_lux, seconds):
+        for _ in range(int(seconds / self.DT)):
+            pools, pupil = self._step(pools, pupil, scene_lux)
+        return pools, pupil
+
+    def test_closing_step_is_not_instant(self):
+        pools, pupil = self._settle(self.DARK)
+        start = self._aperture(pools, pupil, self.BRIGHT)
+        settled = self._aperture(*self._settle(self.BRIGHT), self.BRIGHT)
+        pools, pupil = self._step(pools, pupil, self.BRIGHT)
+        after_one_tick = self._aperture(pools, pupil, self.BRIGHT)
+        # One 0.25 s tick moves the aperture, but well short of the settled
+        # value: the pupil reflex alone must not snap it shut.
+        self.assertGreater(after_one_tick, start)
+        self.assertLess(after_one_tick - start, 0.5 * (settled - start))
+
+    def test_closing_reaches_the_settled_value_in_seconds(self):
+        pools, pupil = self._settle(self.DARK)
+        settled = self._aperture(*self._settle(self.BRIGHT), self.BRIGHT)
+        pools, pupil = self._run(pools, pupil, self.BRIGHT, 6.0)
+        self.assertAlmostEqual(
+            self._aperture(pools, pupil, self.BRIGHT), settled, delta=2.0
+        )
+
+    def test_opening_side_is_unchanged(self):
+        # Bright to dark: the rod pool is minutes, so after 30 s the aperture
+        # is still far from the settled dark value.
+        pools, pupil = self._settle(self.BRIGHT)
+        settled = self._aperture(*self._settle(self.DARK), self.DARK)
+        pools, pupil = self._run(pools, pupil, self.DARK, 30.0)
+        self.assertGreater(self._aperture(pools, pupil, self.DARK), settled + 1.0)
+
+    def test_closing_is_faster_than_opening(self):
+        # The physiological asymmetry is kept: a whole-scene brightening
+        # settles in seconds, a darkening in minutes.
+        close_start_state = self._settle(self.DARK)
+        close_start = self._aperture(*close_start_state, self.BRIGHT)
+        close_settled = self._aperture(*self._settle(self.BRIGHT), self.BRIGHT)
+        c = self._run(*close_start_state, self.BRIGHT, 6.0)
+        close_frac = (self._aperture(*c, self.BRIGHT) - close_start) / (
+            close_settled - close_start
+        )
+
+        open_start_state = self._settle(self.BRIGHT)
+        open_start = self._aperture(*open_start_state, self.DARK)
+        open_settled = self._aperture(*self._settle(self.DARK), self.DARK)
+        o = self._run(*open_start_state, self.DARK, 6.0)
+        open_frac = (open_start - self._aperture(*o, self.DARK)) / (
+            open_start - open_settled
+        )
+
+        self.assertGreater(close_frac, open_frac)
 
 
 class TestEyeLimits(unittest.TestCase):
