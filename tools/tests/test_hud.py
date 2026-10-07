@@ -451,6 +451,19 @@ class TestHudMapGridContract(unittest.TestCase):
     def test_the_map_handler_reads_the_cursor(self):
         self.assertIn("getMousePosition", MGRS_MAP_SRC)
 
+    def test_the_map_handler_hides_the_engine_readout(self):
+        # The engine readout is the map display's RscMapControlTooltip
+        # control (idc 2350).  The overlay hides it so the map shows one
+        # readout, the aee MGRS one.
+        self.assertIn("displayCtrl 2350", MGRS_MAP_SRC)
+        self.assertIn("ctrlShow false", MGRS_MAP_SRC)
+
+    def test_the_map_handler_reads_the_engine_readout_rect(self):
+        # The engine moves the tooltip to the cursor, so its rectangle is
+        # where the aee readout is drawn.
+        self.assertIn("ctrlPosition _engineReadout", MGRS_MAP_SRC)
+        self.assertIn("_readoutPos", MGRS_MAP_SRC)
+
     def test_the_map_handler_calls_the_cursor_kernel(self):
         self.assertIn("call FUNC(mgrsCursorText)", MGRS_MAP_SRC)
 

@@ -16,10 +16,11 @@
  *
  * The engine map grid stays numeric.  The CfgWorlds Grid class formats
  * numbers only and no script command writes it, so the overlay draws the
- * MGRS lines over it.  The vanilla cursor tooltip is engine-side and cannot
- * be replaced, so the cursor readout is drawn adjacent to it.  The player's
- * engine mapGridPosition is read as a cross-check and shown when the aee
- * MGRS conversion yields nothing.
+ * MGRS lines over it.  The engine cursor tooltip is the map display's
+ * Tooltip control of class RscMapControlTooltip (idc 2350), so the overlay
+ * hides that control and draws the aee MGRS readout in its place.  The
+ * player's engine mapGridPosition is read as a cross-check and shown when
+ * the aee MGRS conversion yields nothing.
  *
  * The map control exists only while the map is open, so the Draw handler is
  * attached from the "Map" mission event on open.  The handler technique
@@ -126,9 +127,24 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
             };
         };
 
+        // ── Engine cursor tooltip ─────────────────────────────────────
+        // The engine readout is the map display's Tooltip control of class
+        // RscMapControlTooltip (idc 2350).  The engine moves it to the
+        // cursor and fills it with the six-figure grid and the elevation.
+        // Read its rectangle first: that is the readout's old position.
+        // Then hide it, so the map shows one readout, ours.
+        private _display = ctrlParent _map;
+        private _readoutPos = [];
+        if (!isNull _display) then {
+            private _engineReadout = _display displayCtrl 2350;
+            if (!isNull _engineReadout) then {
+                _readoutPos = ctrlPosition _engineReadout;
+                _engineReadout ctrlShow false;
+            };
+        };
+
         // ── Cursor readout ────────────────────────────────────────────
-        // The vanilla cursor tooltip is engine-side and cannot be
-        // replaced, so this readout is drawn adjacent to the cursor.
+        // Draw the aee MGRS readout in the engine readout's old position.
         if (missionNamespace getVariable [QGVAR(mgrsCursorReadout), true]) then {
             private _mouse = getMousePosition;
             private _cp = ctrlPosition _map;
@@ -146,13 +162,22 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                     ] call FUNC(mgrsMarkerText);
                     private _elev = getTerrainHeightASL [_world select 0, _world select 1];
                     private _cursorText = [_ref, _elev] call FUNC(mgrsCursorText);
-                    private _offset = _map ctrlMapScreenToWorld [
+                    // Prefer the engine readout's rectangle.  When the
+                    // engine has not positioned it yet, sit just below
+                    // and right of the cursor.
+                    private _anchorScreen = [
                         (_mouse select 0) + 0.012,
                         (_mouse select 1) - 0.022
                     ];
-                    if ((count _offset) >= 2) then {
+                    if ((count _readoutPos) >= 2
+                        && {(_readoutPos select 0) >= 0}
+                        && {(_readoutPos select 1) >= 0}) then {
+                        _anchorScreen = [_readoutPos select 0, _readoutPos select 1];
+                    };
+                    private _draw = _map ctrlMapScreenToWorld _anchorScreen;
+                    if ((count _draw) >= 2) then {
                         _map drawIcon [
-                            "", [1, 1, 1, 1], _offset, 0, 0, 0,
+                            "", [1, 1, 1, 1], _draw, 0, 0, 0,
                             _cursorText, 1, 0.022, "PuristaMedium", "left"
                         ];
                     };
