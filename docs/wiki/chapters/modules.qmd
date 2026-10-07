@@ -159,7 +159,9 @@ decision is recorded in ADR-023.
 | Function | Purpose |
 |---|---|
 | `formatGridDisplay` | Return the MGRS grid line, or the legacy numeric grid |
-| `mgrsMapDraw` | Label the map and the AEE-owned markers with MGRS |
+| `mgrsGridLines` | Plan the MGRS grid overlay for a visible world rectangle |
+| `mgrsCursorText` | Format the MGRS reference and elevation at the map cursor |
+| `mgrsMapDraw` | Draw the MGRS grid, the cursor readout, the player and the AEE-owned markers |
 | `mgrsMarkerText` | Format a marker position as MGRS for the diary text |
 | `gpsBuild` / `gpsUpdate` | Draw the GPS device readout, gated on an `ItemGPS` item |
 | `trackerProject` | Displace the exact position by the modelled error |

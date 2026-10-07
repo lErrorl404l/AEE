@@ -179,6 +179,30 @@ and saturation, the canopy and urban signal gains, the DOP and the receiver
 quality) and the tangent-plane fallback. Each UNSOURCED shape is marked in its
 kernel header and in the sensor value audit.
 
+### The map grid overlay and the cursor readout
+
+The engine map draws its own grid lines and labels them with numbers. The
+`CfgWorlds` `Grid` class formats numbers only (`format = "XY"`, numeric
+`formatX` and `formatY`), no script command writes it, and the override is a
+config patch at load. So the engine lines cannot be relabelled in place. AEE
+draws its own MGRS grid over them: the map control is hookable
+(`findDisplay 12 displayCtrl 51`, `ctrlAddEventHandler ["Draw", ...]`), and
+`drawLine` and `drawIcon` are valid on it. One pure kernel,
+`fnc_mgrsGridLines`, plans the lines and their labels from the visible world
+rectangle, reusing the core `worldToMgrs`, `utmToWorld` and `formatMgrs`
+kernels. The interval follows the zoom.
+
+The vanilla map cursor tooltip shows a six-figure grid and the elevation. It
+is engine-side and no command or config field repoints it. AEE draws its own
+readout adjacent to the cursor instead: `fnc_mgrsCursorText` joins the MGRS
+reference and the terrain elevation, and the draw handler places it near the
+cursor. The engine tooltip stays.
+
+The map control is not fullscreen, so the visible rectangle comes from
+`ctrlMapScreenToWorld` at the control corners (`ctrlPosition`), not from the
+screen corners. The grid plan is cached on the rounded rectangle, so a static
+map does not re-run the conversion on every draw.
+
 ## Alternatives rejected
 
 - A second latitude read in the new code. It repeats the defect of issue #154.

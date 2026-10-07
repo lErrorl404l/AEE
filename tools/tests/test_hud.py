@@ -42,6 +42,15 @@ GPS_UPDATE_KERNEL = HUD / "fnc_gpsUpdate.sqf"
 TRACKER_UPDATE_KERNEL = HUD / "fnc_trackerUpdate.sqf"
 TRACKER_DRAW_KERNEL = HUD / "fnc_trackerDraw.sqf"
 TRACKER_PROJECT_KERNEL = HUD / "fnc_trackerProject.sqf"
+GRID_LINES_KERNEL = HUD / "fnc_mgrsGridLines.sqf"
+CURSOR_TEXT_KERNEL = HUD / "fnc_mgrsCursorText.sqf"
+CORE_GEO = REPO / "addons" / "core" / "functions" / "geo"
+CORE_LATLON = CORE_GEO / "fnc_latLonToUtm.sqf"
+CORE_UTM2LL = CORE_GEO / "fnc_utmToLatLon.sqf"
+CORE_UTM2WORLD = CORE_GEO / "fnc_utmToWorld.sqf"
+CORE_FORMAT = CORE_GEO / "fnc_formatMgrs.sqf"
+CORE_W2M = CORE_GEO / "fnc_worldToMgrs.sqf"
+CORE_TABLES = REPO / "addons" / "core" / "data" / "mgrs_tables.sqf"
 
 HUD_FILE = OPTICS / "RscTitles.hpp"
 BUILD_SRC = (HUD / "fnc_hudBuild.sqf").read_text(encoding="utf-8")
@@ -51,6 +60,8 @@ MARKERS_SRC = (HUD / "fnc_hudMarkers.sqf").read_text(encoding="utf-8")
 FORMAT_DISPLAY_SRC = (HUD / "fnc_formatGridDisplay.sqf").read_text(encoding="utf-8")
 MGRS_MAP_SRC = MGRS_MAP_KERNEL.read_text(encoding="utf-8")
 MGRS_MARKER_SRC = MGRS_MARKER_KERNEL.read_text(encoding="utf-8")
+GRID_LINES_SRC = GRID_LINES_KERNEL.read_text(encoding="utf-8")
+CURSOR_TEXT_SRC = CURSOR_TEXT_KERNEL.read_text(encoding="utf-8")
 GPS_BUILD_SRC = GPS_BUILD_KERNEL.read_text(encoding="utf-8")
 GPS_UPDATE_SRC = GPS_UPDATE_KERNEL.read_text(encoding="utf-8")
 TRACKER_UPDATE_SRC = TRACKER_UPDATE_KERNEL.read_text(encoding="utf-8")
@@ -72,6 +83,8 @@ ALL_HUD_SRC = "\n".join(
         FORMAT_DISPLAY_SRC,
         MGRS_MAP_SRC,
         MGRS_MARKER_SRC,
+        GRID_LINES_SRC,
+        CURSOR_TEXT_SRC,
         GPS_BUILD_SRC,
         GPS_UPDATE_SRC,
         TRACKER_UPDATE_SRC,
@@ -134,6 +147,56 @@ def mgrs_marker_text(label, position, anchor, precision, mgrs):
         ],
     }
     return run_sqf(MGRS_MARKER_KERNEL, [label, position, anchor, precision], globals_)
+
+
+ALTIS_ANCHOR = [
+    39.906515,
+    25.246742,
+    35,
+    30720,
+    25.011957,
+    39.718452,
+    25.481527,
+    40.094578,
+    "mapArea",
+]
+
+
+def _core_globals():
+    """The real core geo kernels, for the optics grid kernel to call."""
+    g = {"aee_core_mgrsTables": run_sqf(CORE_TABLES, [])}
+    g["__FUNC__latLonToUtm"] = lambda lat, lon: run_sqf(CORE_LATLON, [lat, lon])
+    g["__FUNC__utmToLatLon"] = lambda e, n, z, h: run_sqf(CORE_UTM2LL, [e, n, z, h])
+    g["__FUNC__utmToWorld"] = lambda e, n, z, h, a: run_sqf(
+        CORE_UTM2WORLD, [e, n, z, h, a], _core_globals()
+    )
+    g["__FUNC__formatMgrs"] = lambda e, n, z, p, lat: run_sqf(
+        CORE_FORMAT, [e, n, z, p, lat], _core_globals()
+    )
+    g["__FUNC__worldToMgrs"] = lambda p, a, prec: run_sqf(
+        CORE_W2M, [p, a, prec], _core_globals()
+    )
+    return g
+
+
+def grid_lines(anchor, rect):
+    """Run the real grid kernel against the real core conversions."""
+    g = _core_globals()
+    g["__EFUNC__core_worldToMgrs"] = lambda p, a, prec: run_sqf(
+        CORE_W2M, [p, a, prec], _core_globals()
+    )
+    g["__EFUNC__core_utmToWorld"] = lambda e, n, z, h, a: run_sqf(
+        CORE_UTM2WORLD, [e, n, z, h, a], _core_globals()
+    )
+    g["__EFUNC__core_formatMgrs"] = lambda e, n, z, p, lat: run_sqf(
+        CORE_FORMAT, [e, n, z, p, lat], _core_globals()
+    )
+    return run_sqf(GRID_LINES_KERNEL, [anchor, rect], g)
+
+
+def cursor_text(mgrs, elevation):
+    """Run the real cursor-readout kernel."""
+    return run_sqf(CURSOR_TEXT_KERNEL, [mgrs, elevation], {})
 
 
 def tracker_project(position, ellipse, fix, link, seed):
@@ -372,6 +435,45 @@ class TestHudSourceContract(unittest.TestCase):
             self.assertNotIn(token, ALL_HUD_SRC, token)
 
 
+class TestHudMapGridContract(unittest.TestCase):
+    """The map draw path carries the grid overlay and the cursor readout."""
+
+    def test_the_map_handler_draws_grid_lines(self):
+        self.assertIn("_map drawLine", MGRS_MAP_SRC)
+
+    def test_the_map_handler_calls_the_grid_kernel(self):
+        self.assertIn("call FUNC(mgrsGridLines)", MGRS_MAP_SRC)
+
+    def test_the_map_handler_converts_the_control_rect(self):
+        self.assertIn("ctrlMapScreenToWorld", MGRS_MAP_SRC)
+        self.assertIn("ctrlPosition _map", MGRS_MAP_SRC)
+
+    def test_the_map_handler_reads_the_cursor(self):
+        self.assertIn("getMousePosition", MGRS_MAP_SRC)
+
+    def test_the_map_handler_calls_the_cursor_kernel(self):
+        self.assertIn("call FUNC(mgrsCursorText)", MGRS_MAP_SRC)
+
+    def test_the_map_handler_reads_the_terrain_height(self):
+        self.assertIn("getTerrainHeightASL", MGRS_MAP_SRC)
+
+    def test_the_map_handler_gates_the_grid_and_cursor(self):
+        self.assertIn("QGVAR(mgrsMapGrid)", MGRS_MAP_SRC)
+        self.assertIn("QGVAR(mgrsCursorReadout)", MGRS_MAP_SRC)
+
+    def test_the_grid_plan_is_cached_on_the_visible_rectangle(self):
+        self.assertIn("QGVAR(mgrsGridCache)", MGRS_MAP_SRC)
+
+    def test_the_grid_kernel_creates_no_marker(self):
+        for writer in ("createMarker", "setMarkerPos", "setMarkerText", "deleteMarker"):
+            self.assertNotIn(writer, GRID_LINES_SRC, writer)
+
+    def test_the_grid_kernel_reuses_the_core_kernels(self):
+        self.assertIn("EFUNC(core,worldToMgrs)", GRID_LINES_SRC)
+        self.assertIn("EFUNC(core,utmToWorld)", GRID_LINES_SRC)
+        self.assertIn("EFUNC(core,formatMgrs)", GRID_LINES_SRC)
+
+
 class TestHudWiring(unittest.TestCase):
     """The setting, PREP entries and postInit wiring exist."""
 
@@ -385,6 +487,8 @@ class TestHudWiring(unittest.TestCase):
             "hudMarkers",
             "hudRangefinder",
             "hudUpdate",
+            "mgrsCursorText",
+            "mgrsGridLines",
             "mgrsMapDraw",
             "mgrsMarkerText",
         ):
@@ -418,6 +522,27 @@ class TestHudWiring(unittest.TestCase):
             "mgrsEnabled_Description",
             "mgrsPrecision_Name",
             "mgrsPrecision_Description",
+        ):
+            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+
+    def test_the_mgrs_map_grid_setting_is_registered_default_on(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(mgrsMapGrid,"AEE HUD","Displays",true)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_mgrs_cursor_setting_is_registered_default_on(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(mgrsCursorReadout,"AEE HUD","Displays",true)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_map_grid_stringtable_keys_exist(self):
+        for key in (
+            "mgrsMapGrid_Name",
+            "mgrsMapGrid_Description",
+            "mgrsCursorReadout_Name",
+            "mgrsCursorReadout_Description",
         ):
             self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
 

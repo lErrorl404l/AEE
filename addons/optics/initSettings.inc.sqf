@@ -107,6 +107,17 @@ AEE_SETTING_CHECKBOX(mgrsEnabled,"AEE HUD","Displays",true);
     {}
 ] call CBA_fnc_addSetting;
 
+// Draw the aee MGRS grid over the engine map.  The engine grid stays
+// numeric: the CfgWorlds Grid class formats numbers only and no script
+// command writes it, so the aee overlay draws its own MGRS lines and their
+// labels.  The interval follows the zoom.  Default on.
+AEE_SETTING_CHECKBOX(mgrsMapGrid,"AEE HUD","Displays",true);
+
+// Show the aee MGRS reference and the terrain elevation at the map cursor.
+// The vanilla cursor tooltip is engine-side and cannot be replaced, so the
+// aee readout is drawn adjacent to it.  Default on.
+AEE_SETTING_CHECKBOX(mgrsCursorReadout,"AEE HUD","Displays",true);
+
 // ── Signal-dependent tracker (task 13) ────────────────────────────────────
 // Replaces the arcade exact friendly position with a modelled one: the three
 // aee GNSS kernels (error ellipse, fix state, datalink) applied to the exact

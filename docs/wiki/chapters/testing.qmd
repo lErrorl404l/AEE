@@ -135,6 +135,20 @@ line, and each probe emits its own `[P10n] [PASS]` or `[P10n] [FAIL]` line.
 | P104 | Call emit and receive semantics, and the heard-call bus |
 | P105 | Sound emission schedule: dawn peak, mid-day lull, Dolbear duty cycle |
 
+### MGRS map grid and cursor probes
+
+The MGRS map grid and cursor work adds probe P110. The map control and the
+cursor exist only on a client, so the probe drives the real pure kernels with
+the live anchor. It renders nothing.
+
+| Probe | Checks |
+|---|---|
+| P110 | The UTM-to-world inverse round trip, the grid planner lines and labels, the interval, and the cursor readout |
+
+The engine map grid stays numeric and the vanilla cursor tooltip stays
+engine-side. Both are operator-only, so no probe claims a relabelled grid or a
+replaced tooltip.
+
 ## Engine mass census
 
 The engine config `mass` and `getMass` are engine tuning values, never a

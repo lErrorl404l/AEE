@@ -43,6 +43,7 @@ FORMAT = GEO / "fnc_formatMgrs.sqf"
 PARSE = GEO / "fnc_parseMgrs.sqf"
 WORLD2MGRS = GEO / "fnc_worldToMgrs.sqf"
 MGRS2WORLD = GEO / "fnc_mgrsToWorld.sqf"
+UTM2WORLD = GEO / "fnc_utmToWorld.sqf"
 TABLES = ROOT / "addons" / "core" / "data" / "mgrs_tables.sqf"
 
 # Shipped mapArea values, re-read from the installed game on 2026-10-06.
@@ -64,6 +65,9 @@ def geo_globals():
         FORMAT, [e, n, z, p, lat], geo_globals()
     )
     g["__FUNC__parseMgrs"] = lambda text: run_sqf(PARSE, [text], geo_globals())
+    g["__FUNC__utmToWorld"] = lambda e, n, z, h, a: run_sqf(
+        UTM2WORLD, [e, n, z, h, a], geo_globals()
+    )
     return g
 
 
@@ -226,11 +230,46 @@ class TestWorldToMgrs(unittest.TestCase):
         self.assertLess(math.dist((centre[0], centre[1]), (back[0], back[1])), 1.5)
 
 
+class TestUtmToWorld(unittest.TestCase):
+    """fnc_utmToWorld, executed: a UTM coordinate to world through the box."""
+
+    def test_world_to_utm_to_world_round_trips(self):
+        anchor = ALTIS_ANCHOR
+        hemisphere = "north" if anchor[0] >= 0 else "south"
+        for x, y in [
+            (15360, 15360),
+            (10000, 20000),
+            (20000, 5000),
+            (7840, 22000),
+        ]:
+            written = world_to_mgrs([x, y, 0], anchor)
+            back = run_sqf(
+                UTM2WORLD,
+                [written[3], written[4], written[5], hemisphere, anchor],
+                geo_globals(),
+            )
+            self.assertLess(
+                math.dist((x, y), (back[0], back[1])),
+                0.001,
+                f"utm round trip {x},{y} drifted",
+            )
+
+    def test_a_bad_anchor_returns_the_origin(self):
+        back = run_sqf(UTM2WORLD, [350134.0, 4418852.0, 35, "north", []], geo_globals())
+        self.assertEqual(back, [0, 0, 0])
+
+
 class TestWorldToMgrsSourceContract(unittest.TestCase):
     def test_preps_registration(self):
         prep = PREP.read_text(encoding="utf-8")
         self.assertIn("PREPS(geo,worldToMgrs)", prep)
         self.assertIn("PREPS(geo,mgrsToWorld)", prep)
+        self.assertIn("PREPS(geo,utmToWorld)", prep)
+
+    def test_mgrs_to_world_reuses_the_utm_kernel(self):
+        src = MGRS2WORLD.read_text(encoding="utf-8")
+        # The box inverse is shared, so the two conversions cannot drift.
+        self.assertIn("call FUNC(utmToWorld)", src)
 
     def test_world_to_mgrs_chains_the_kernels(self):
         src = WORLD2MGRS.read_text(encoding="utf-8")
@@ -241,7 +280,7 @@ class TestWorldToMgrsSourceContract(unittest.TestCase):
     def test_mgrs_to_world_reverses_the_chain(self):
         src = MGRS2WORLD.read_text(encoding="utf-8")
         self.assertIn("call FUNC(parseMgrs)", src)
-        self.assertIn("call FUNC(utmToLatLon)", src)
+        self.assertIn("call FUNC(utmToWorld)", src)
 
 
 # ── Position consistency table and evaluator (task 14) ─────────────────────
