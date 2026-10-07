@@ -12,10 +12,12 @@ world. A commander therefore cannot read a formation at a glance.
 The operator asked for NATO and OPFOR symbology on the map and in the world,
 with a selectable affiliation, and for the AEE font on the labels.
 
-AEE draws its own symbols. The engine marker and icon surface has limits, and
-this record states them. The engine 3D unit icon cannot be removed. The full
-APP-6 icon library holds thousands of glyphs. AEE draws a curated vector set
-instead and states the ceiling.
+AEE registers its own real map markers. Each marker is a CfgMarkers entry with
+a real `.paa` icon, so it is selectable in the marker dialog, placeable in
+Eden and drawn by the engine marker layer. The engine marker and icon surface
+has limits, and this record states them. The engine 3D unit icon cannot be
+removed. The full APP-6 icon library holds thousands of glyphs. AEE ships a
+curated set instead and states the ceiling.
 
 The symbology uses published standards. The frame grammar and the colours come
 from NATO APP-6(C) of May 2011. STANAG 2019 Edition 7 of October 2017 encloses
@@ -63,19 +65,24 @@ before the pure call, so the kernel stays pure.
 
 ### The pure kernels and the resolver
 
-Five pure kernels carry the grammar. Each takes its inputs as arguments and
+Six pure kernels carry the grammar. Each takes its inputs as arguments and
 reads no setting, no marker, no unit and no world.
 
-- `fnc_symbolPalette` maps an affiliation and a palette to a colour.
+- `fnc_symbolPalette` maps an affiliation and a palette to the Table 1-4 colour.
 - `fnc_symbolFrame` maps an affiliation and a dimension to the frame polylines.
 - `fnc_symbolIcon` maps an icon id to a list of vector primitives.
+- `fnc_symbologyMarkerType` maps an affiliation and a category to the CfgMarkers
+  type.
+- `fnc_symbologyMarkerColor` maps an affiliation and a palette to the
+  CfgMarkerColors class.
 - `fnc_symbolResolve` maps the inputs to one symbol specification.
-- `fnc_symbolDrawPlan` turns a specification into an ordered primitive list.
 
-`fnc_symbolResolve` returns `[affiliation, frameShape, dimension, colourRGBA,
-iconId, echelon]`. The side argument is carried, not read, because the
-affiliation is already resolved. `fnc_symbolDrawPlan` calls the pure frame and
-icon kernels only, so it reads no engine draw command.
+`fnc_symbolResolve` returns `[affiliation, markerType, markerColourClass,
+echelon]`. The side argument is carried, not read, because the affiliation is
+already resolved. The marker type is `AEE_<family>_<glyph>`, where the family
+is the affiliation and the glyph is the class category. `fnc_symbolFrame` and
+`fnc_symbolIcon` feed the texture generator, so the drawn symbol and the marker
+texture share one source of truth.
 
 The category table `aee_optics_symbologyTables` is generated from
 `data/symbology/symbology_tables.json`. The generator
@@ -89,33 +96,63 @@ reads `markerType`. `fnc_symbologyUnitCategory` reads `typeOf` and the vehicle
 class. `fnc_symbologyAffiliation` reads `getMarkerColor` and maps the colour
 class to an affiliation.
 
-### The draw plan
+### The real marker registration
 
-`fnc_symbolDrawPlan` orders the primitives. The frame outline comes first, the
-inner glyph next, the echelon marks third and the label anchors last. Each
-primitive is `[kind, points, colourHint]`. The colourHint is `frame` or `icon`.
-The draw layer applies the RGBA from the specification, so geometry and colour
-stay separate. A label anchor is a one-point poly, so the draw layer branches on
-the point count.
+The layer registers real engine markers. `CfgMarkerClasses` adds one group,
+`AEE_Symbology`, so the set has its own named category in the marker dialog.
+`CfgMarkers` adds a base class `AEE_MarkerBase` with `scope = 0`, so the base
+is never a usable icon, and one `scope = 2` child per symbol. Each child sets
+`size = 32`, `shadow = 0`, `color[] = {0, 0, 0, 1}` and `side`.
 
-### The hide-and-redraw mechanism
+The marker name is `AEE_<family>_<glyph>`. The family is the affiliation: `b`
+friend, `o` hostile, `n` neutral and `u` unknown. The glyph is the class
+category, for example `inf` for infantry. The family and glyph tables are
+generated into `aee_optics_symbologyTables`.
 
-The map layer hooks the map control at `findDisplay 12 displayCtrl 51` with
-`ctrlAddEventHandler ["Draw", ...]`. It hides the engine mission markers
-locally. It walks `allMapMarkers`, records the original `markerAlpha` and calls
-`setMarkerAlphaLocal 0`. It restores the recorded alpha when the map closes.
-It calls no global marker command, so a multiplayer session is not disturbed.
+### The icon textures
 
-The layer suppresses the engine unit indicators with
-`disableMapIndicators [true, true, true, true]` where the difficulty exposes
-extended map content. The suppression is local. The map geometry converts
-through `ctrlMapWorldToScreen` and `ctrlMapScreenToWorld`, then draws with
-`drawPolygon`, `drawLine`, `drawEllipse` and `drawIcon`. The label draws with an
-empty texture, so no image is vendored.
+Where the engine's own NATO texture carries the symbol, the class references
+it, for example `\A3\ui_f\data\map\markers\nato\b_inf.paa`. The `b_`, `o_` and
+`n_` families are the real NATO-style marker images. The engine ships no `u_`
+family and no engineer, signal, supply, subsurface or waypoint glyph, so AEE
+produces those 35 textures under `addons/optics/data/markers/`.
 
-The world layer is a `Draw3D` handler. It draws the frame and the glyph with
-`drawLine3D` and the label with `drawIcon3D`. It rebuilds the unit list at most
-once a second and draws out to a set range.
+The generator `tools/gen_symbology_markers.py` renders each produced texture
+from the pure frame and icon kernels, evaluated through
+`tools/tests/sqf_lite.py`, so the texture and the drawn symbol share one source
+of truth. The texture is white on transparent, so the engine marker colour
+tints it the way it tints the vanilla NATO markers. The generator converts the
+render to a PAA with `hemtt utils paa convert`. Its `--check` mode re-renders
+and compares.
+
+No workshop-mod `.paa` is copied. The three studied mods forbid reuse. The
+engine `.paa` are referenced, not copied. The produced `.paa` are AEE's own
+rendering of the public geometry.
+
+### The marker application
+
+The map layer registers one `"Map"` mission event handler. On map open it
+applies the symbols as real markers, client-local and reversible:
+
+1. when the suppression setting is on, `disableMapIndicators [true, true,
+   true, true]` hides the engine indicators where the difficulty exposes them;
+2. every mission marker not tagged AEE gets `setMarkerTypeLocal` and
+   `setMarkerColorLocal` to the AEE symbol, and its original type and colour
+   are recorded in a local cache;
+3. the player and each in-range unit get a real local marker.
+
+On map close every recorded marker gets its type and colour back and every AEE
+unit marker is deleted locally. No global marker command is called, so a
+mission marker is never broadcast, moved, recoloured or deleted. A one-second
+re-scan runs on a CBA per-frame handler, so a marker that appears while the map
+is open is converted too.
+
+There is no symbol Draw event handler. The symbols are real markers drawn by
+the engine marker layer, so nothing is painted on the map control.
+
+The world layer is a `Draw3D` handler. It draws the real marker texture with
+`drawIcon3D`, so the world symbol and the map marker share one asset. It
+rebuilds the unit list at most once a second and draws out to a set range.
 
 ### The font
 
@@ -162,12 +199,16 @@ Every new numeric is sourced, derived, or marked UNSOURCED.
 | frame | neutral half-extents | 0.7 by 0.7 | unit-box fit | derived |
 | icon | glyph coordinates | about 20 classes | none | UNSOURCED |
 | resolve | dimension per category | land, air, sea, subsurface, installation | APP-6(C) dimension grammar | derived |
-| draw-plan | echelon mark row | 0.8 | above the frame | derived |
-| draw-plan | echelon mark shapes | dot, bar, X | APP-6(C) Table 3-7 | derived |
-| draw-plan | label anchors | `[0, 1]` and `[0, -1]` | APP-6(C) Table 3-2 | derived |
+| marker type | family tokens | b, o, n, u | Arma 3 NATO families; AEE unknown family | derived |
+| marker type | glyph tokens | inf, armor, motor_inf, art, ... | Arma 3 b_ families; AEE produced set | derived |
+| marker colour | affiliation to class | ColorWEST, ColorEAST, ColorGUER, ColorUNKNOWN | Arma 3 CfgMarkerColors | sourced |
+| config | marker size | 32 | Arma 3 vanilla marker size | derived |
+| config | marker colour default | `{0, 0, 0, 1}` | none | UNSOURCED |
+| texture | vanilla family coverage | b_, o_, n_ | Arma 3 ui_f CfgMarkers | sourced |
+| texture | produced set | 35 textures | AEE rendering of the spec geometry | derived |
 | world | draw range | a set metre range | none | UNSOURCED |
 | world | rebuild interval | 1 second | none | UNSOURCED |
-| map | hidden marker alpha | 0 | engine local hide | derived |
+| map | rescan interval | 1 second | none | UNSOURCED |
 
 The Table 1-4 colours and the frame grammar are sourced. The glyph coordinates
 are UNSOURCED vector approximations. Each UNSOURCED shape is marked in its
@@ -176,8 +217,10 @@ kernel header.
 ## Alternatives rejected
 
 - A vendored texture library. The three studied Workshop marker mods do not
-  permit reuse, and a `.paa` set is large. AEE draws its own vector glyphs
-  instead.
+  permit reuse, and a `.paa` set is large. AEE references the engine's own
+  textures where they fit and produces the rest from its own geometry.
+- A drawn overlay on the map control. The operator direction is real markers.
+  The drawn overlay is superseded, so no symbol Draw event handler remains.
 - A new PBO. The layer lives in `addons/optics`, so no new addon and no new load
   order is needed.
 - The engine unit icons. The engine 3D unit icon has no per-object script
@@ -194,13 +237,17 @@ kernel header.
   suppressed. No script command and no config field removes it. The world layer
   draws its symbol over the engine icon and states this ceiling.
 - **The glyph set is curated.** APP-6 holds thousands of function glyphs. AEE
-  draws about twenty vector classes and states the ceiling. Anything outside the
-  set falls back to the engine icon texture in the map layer.
+  ships about twenty classes and states the ceiling. A category outside the set
+  maps to the unknown glyph.
 - **The frame arcs are derived.** The standard gives no curve equation. The dome
   and the curved bottom edge are parabola approximations, marked UNSOURCED.
-- **The marker suppression is partial.** The local hide covers the mission
-  markers only. The unit indicator suppression needs the difficulty to expose
-  extended map content. The engine 3D icon stays in every case.
+- **The marker conversion is partial.** The local conversion covers the mission
+  markers and the in-range units. The unit indicator suppression needs the
+  difficulty to expose extended map content. The engine 3D icon stays in every
+  case.
+- **The texture licence is clean.** The engine `.paa` are referenced, not
+  copied. The produced `.paa` are AEE's own rendering of the public geometry.
+  No workshop-mod `.paa` is reused.
 - **The font needs an operator step.** The TTF to `.fxy` and `.tga` conversion
   needs the Windows FontToTGA tool. The `.tga` to `.paa` step runs in the
   repository. Until the operator runs step 1, the engine font is used.

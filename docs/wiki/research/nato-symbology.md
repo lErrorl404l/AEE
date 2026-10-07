@@ -105,6 +105,33 @@ Two honesty notes.
    arc where APP-6 gives a closed frame. AEE follows APP-6 and labels the arc
    variant per-2525.
 2. The function glyph geometry is not transcribable from text. The standard
-   names the function icons. It gives no coordinates. AEE draws a curated
-   vector set of about twenty glyphs and marks each glyph derived or
-   UNSOURCED.
+   names the function icons. It gives no coordinates. AEE ships a curated set
+   of about twenty glyphs and marks each glyph derived or UNSOURCED.
+
+## 7. Marker asset sources
+
+The symbols are real engine map markers. Every marker is a `CfgMarkers` entry
+with a real `.paa` icon. The assets come from two sources.
+
+The engine's own NATO textures, referenced and not copied, under
+`\A3\ui_f\data\map\markers\nato\`. The `b_`, `o_` and `n_` families carry the
+friend, hostile and neutral frames. The engine ships these glyphs per family:
+`unknown`, `inf`, `motor_inf`, `mech_inf`, `armor`, `recon`, `air`, `plane`,
+`uav`, `naval`, `med`, `art`, `mortar`, `hq`, `support`, `maint`, `service`,
+`installation`, `antiair`. The reference is a load-time path, so no engine file
+is redistributed.
+
+The AEE produced textures, under `addons/optics/data/markers/`, for the
+symbols the engine set does not carry: the whole unknown-affiliation `u_`
+family, and the engineer, signal, supply, subsurface and waypoint glyphs. That
+is 35 files. The generator `tools/gen_symbology_markers.py` renders each one
+from the pure frame and icon kernels through `tools/tests/sqf_lite.py`, so the
+texture and the drawn symbol share one source of truth. The texture is white on
+transparent, so the engine marker colour tints it the way it tints the vanilla
+NATO markers. The generator converts the render to a PAA with
+`hemtt utils paa convert`.
+
+Licence. No `.paa` from a Workshop mod is used. The three studied mods do not
+permit reuse. The engine `.paa` are referenced, not copied. The produced `.paa`
+are AEE's own rendering of the public geometry. The MIL-STD-2525 frame and
+glyph geometry is US Government work and is public domain.
