@@ -135,6 +135,12 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_shadowTarget` | optics | Scene-aware shadow distance target in metres (aee-workshop-copy item 6) |
 | `aee_optics_shadowScene` | optics | Scene classifier state for the shadow distance (aee-workshop-copy item 6) |
 | `aee_optics_shadowCoverage` | optics | Opening coverage from the shadow classifier (aee-workshop-copy item 6) |
+| `aee_optics_symbologyEnabled` | optics | Registered setting under **AEE HUD > Symbology**: draw the NATO APP-6(C) map and world symbols (default off) |
+| `aee_optics_symbologyPalette` | optics | Registered setting under **AEE HUD > Symbology**: the affiliation palette NATO, OPFOR or Auto (default Auto) |
+| `aee_optics_symbologyUnits` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the in-range units (default on) |
+| `aee_optics_symbologyMarkers` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the engine map markers (default on) |
+| `aee_optics_symbologySuppress` | optics | Registered setting under **AEE HUD > Symbology**: suppress the engine indicators and hide the mission markers locally (default on) |
+| `aee_optics_symbologyFont` | optics | Registered setting under **AEE HUD > Symbology**: use the AEE font for the symbology labels (default on) |
 | `aee_thermal_currentThermalNoise` | thermal | Thermal noise floor (NETD-based), produced by fnc_calculateThermalContrast |
 | `aee_core_dynamicLux` | core | Dynamic lux contribution |
 | `aee_core_irLightLux` | core | IR light lux |
