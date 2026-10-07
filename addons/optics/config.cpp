@@ -91,6 +91,11 @@ class CfgMarkers {
     // by tools/gen_symbology_catalogue.py.  Do not edit by hand.
 #include "config_markers.hpp"
 
+    // The composed APP-6 cross-product: each real function glyph re-framed in
+    // the four affiliation frames AEE draws from the APP-6 geometry, generated
+    // by tools/gen_symbology_crossproduct.py.  Do not edit by hand.
+#include "config_crossproduct.hpp"
+
     // Friendly family (side 1).
     class AEE_b_inf: AEE_MarkerBase {
         name = "AEE Friendly Infantry";

@@ -135,17 +135,19 @@ def is_symbol(title: str, path: Path) -> tuple[bool, str]:
 
 
 def frame_affiliation(title: str, svg: str) -> str:
+    name = title.replace("File:", "")
+    # The CdnMCG title names the affiliation as a word ("Hostile Unit"), which is
+    # the uploader's intent and stronger than the frame name ("1.5x1" -> friend).
+    for rx, affil in TITLE_AFFIL:
+        if rx.search(name):
+            return affil
     for fid, affil in FRAME_ID_AFFIL.items():
         if f'id="{fid}"' in svg:
-            return affil
-    name = title.replace("File:", "")
-    for rx, affil in FRAME_AFFIL:
-        if rx.search(name):
             return affil
     for code, affil in CODE_AFFIL.items():
         if re.match(rf"^{code} ", name):
             return affil
-    for rx, affil in TITLE_AFFIL:
+    for rx, affil in FRAME_AFFIL:
         if rx.search(name):
             return affil
     if "Military Symbol" in name:

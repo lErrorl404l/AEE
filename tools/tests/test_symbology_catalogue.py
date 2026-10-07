@@ -65,8 +65,8 @@ ENGINE_OVERRIDE = {
     "n_maint": "AEE_NL_Neutral_Unit_CSS_Maintenance",
     "n_service": "AEE_NL_Neutral_Unit_CSS_Supply",
     "n_antiair": "AEE_NL_Neutral_Unit_Air_Defence",
-    "c_air": "AEE_VA_APP_6_Army_Aviation",
-    "c_plane": "AEE_VL_APP_6_Air_Force",
+    "c_air": "AEE_FA_APP_6_Army_Aviation",
+    "c_plane": "AEE_FL_APP_6_Air_Force",
 }
 
 # The engine class family -> the affiliation the override must resolve to.
