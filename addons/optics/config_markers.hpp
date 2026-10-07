@@ -3,6 +3,20 @@
 // images.  Each icon is a real .paa under data/markers.  markerClass and
 // size/shadow come from AEE_MarkerBase in config.cpp.
 
+    class AEE_FA_APP_6_Aerial_Refuel: AEE_MarkerBase {
+        name = "AEE Friend Air/Space APP-6 Aerial Refuel";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Aerial_Refuel.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Aerial_Refuel.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FA_APP_6_Army_Aviation: AEE_MarkerBase {
+        name = "AEE Friend Air/Space APP-6 Army Aviation";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Army_Aviation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Army_Aviation.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FA_Friendly_Unit_Airborne_Forces: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Airborne Forces";
         icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Airborne_Forces.paa";
@@ -206,10 +220,598 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FL_AFD_AIR: AEE_MarkerBase {
+        name = "AEE Friend Land AFD AIR";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_AIR.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_AIR.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Air_Defence: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Air Defence";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_Defence.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_Defence.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Air_Force: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Air Force";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_Force.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_Force.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Air_transportable: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Air-transportable";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_transportable.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_transportable.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Airmobile: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Airmobile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Airmobile_Infantry: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Airmobile Infantry";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Infantry.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Infantry.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Airmobile_Mod: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Airmobile Mod";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Mod.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Mod.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Airmobile_Mortar: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Airmobile Mortar";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Mortar.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Mortar.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Airmobile_Supply_Transport: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Airmobile Supply Transport";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Supply_Transport.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Airmobile_Supply_Transport.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Ammunition: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Ammunition";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Ammunition.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Ammunition.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Amphibious: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Amphibious";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Amphibious.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Amphibious.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Amphibious_Mechanized_Infa: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Amphibious Mechanized Infantry";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Amphibious_Mechanized_Infa.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Amphibious_Mechanized_Infa.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Anti_Tank: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Anti Tank";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Anti_Tank_Artillery: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Anti Tank Artillery";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank_Artillery.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank_Artillery.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Anti_Tank_Helicopter: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Anti Tank Helicopter";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank_Helicopter.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank_Helicopter.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Anti_Tank_Missile: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Anti Tank Missile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank_Missile.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Anti_Tank_Missile.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Armored: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Armored";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Armored_Artillery: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Armored Artillery";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored_Artillery.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored_Artillery.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Armored_Engineer: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Armored Engineer";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored_Engineer.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored_Engineer.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Armored_Reconnaissance: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Armored Reconnaissance";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored_Reconnaissance.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Armored_Reconnaissance.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Artillery: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Artillery";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Artillery.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Artillery.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Basic: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Basic";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Basic.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Basic.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Bridging: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Bridging";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Bridging.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Bridging.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Combat_Service_Support: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Combat Service Support";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Combat_Service_Support.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Combat_Service_Support.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Combat_Supply: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Combat Supply";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Combat_Supply.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Combat_Supply.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Electronic_Warfare: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Electronic Warfare";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Electronic_Warfare.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Electronic_Warfare.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Engineer: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Engineer";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Engineer.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Engineer.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Engineer_Construction: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Engineer Construction";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Engineer_Construction.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Engineer_Construction.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_HQ_Support: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 HQ Support";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_HQ_Support.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_HQ_Support.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Infantry: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Infantry";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Infantry_Mechanized_IFV: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Infantry Mechanized IFV";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry_Mechanized_IFV.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry_Mechanized_IFV.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Infantry_Motorised: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Infantry Motorised";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry_Motorised.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry_Motorised.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Infantry_Wheeled_Mechanize: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Infantry Wheeled Mechanized IFV";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry_Wheeled_Mechanize.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Infantry_Wheeled_Mechanize.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_MLRS: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 MLRS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_MLRS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_MLRS.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_MP: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 MP";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_MP.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_MP.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Machine_Gun: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Machine Gun";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Machine_Gun.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Machine_Gun.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Machine_Gun_Heavy: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Machine Gun Heavy";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Machine_Gun_Heavy.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Machine_Gun_Heavy.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Maintenance: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Maintenance";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Maintenance.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Maintenance.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Mechanized_Infantry: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mechanized Infantry";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mechanized_Infantry.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mechanized_Infantry.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Medical: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Medical";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Medical.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Medical.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Meteorological: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Meteorological";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Meteorological.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Meteorological.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Missile: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Missile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Missile.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Missile.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mod Motorcycle";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mod_Motorcycle.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mod_Motorcycle.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Modifier_01: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Modifier 01";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_01.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_01.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Modifier_02: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Modifier 02";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_02.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_02.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Modifier_02_Transparent: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Modifier 02 Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_02_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_02_Transparent.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Mortar: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mortar";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mortar.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mortar.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Mortar_SP_Mechanized: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mortar SP Mechanized";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mortar_SP_Mechanized.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mortar_SP_Mechanized.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Motorised: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Motorised";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Motorised.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Motorised.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Mountain: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mountain";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mountain.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mountain.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Mountain_Artillery: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mountain Artillery";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mountain_Artillery.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mountain_Artillery.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Mountain_Infantry: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mountain Infantry";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mountain_Infantry.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mountain_Infantry.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_NBC: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 NBC";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_NBC.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_NBC.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Navy: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Navy";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Navy.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Navy.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Ordnance: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Ordnance";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Ordnance.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Ordnance.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_PYSOPS: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 PYSOPS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_PYSOPS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_PYSOPS.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Parachute: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Parachute";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Parachute.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Parachute.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Parachute_Infantry: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Parachute Infantry";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Parachute_Infantry.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Parachute_Infantry.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Quartermaster: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Quartermaster";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Quartermaster.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Quartermaster.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Radar: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Radar";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Radar.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Radar.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Reconnaissance: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Reconnaissance";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Reconnaissance.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Reconnaissance.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Reconnaissance_Wheeled: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Reconnaissance Wheeled";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Reconnaissance_Wheeled.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Reconnaissance_Wheeled.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Refuel: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Refuel";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Refuel.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Refuel.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Rocket: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Rocket";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Rocket.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Rocket.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Signals: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Signals";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Signals.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Signals.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Special_Forces: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Special Forces";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Special_Forces.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Special_Forces.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Special_Operations_Forces: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Special Operations Forces";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Special_Operations_Forces.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Special_Operations_Forces.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Tank_Destroyer: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Tank Destroyer";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Tank_Destroyer.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Tank_Destroyer.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Topographical: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Topographical";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Topographical.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Topographical.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Transport_Helicopter: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Transport Helicopter";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Transport_Helicopter.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Transport_Helicopter.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Transportation: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Transportation";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Transportation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Transportation.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Unmanned_Air_Recon: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Unmanned Air Recon";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Unmanned_Air_Recon.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Unmanned_Air_Recon.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Wheeled: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Wheeled";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Wheeled_Armored_Reconnaiss: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Wheeled Armored Reconnaissance";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Armored_Reconnaiss.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Armored_Reconnaiss.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Wheeled_MLRS: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Wheeled MLRS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_MLRS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_MLRS.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Wheeled_Mechanized_Infantr: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Wheeled Mechanized Infantry";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Mechanized_Infantr.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Mechanized_Infantr.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Wheeled_Tank: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Wheeled Tank";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Tank.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Tank.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_battalion: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 battalion";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_battalion.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_battalion.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_company: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 company";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_company.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_company.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_regiment: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 regiment";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_regiment.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_regiment.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_FRD_AIR: AEE_MarkerBase {
+        name = "AEE Friend Land FRD AIR";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_AIR.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_AIR.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_FRD_SUB: AEE_MarkerBase {
+        name = "AEE Friend Land FRD SUB";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_SUB.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_SUB.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FL_Friendly_Unit_B_W: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit - B&W";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_B_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_B_W.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Unit_Opaque: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Unit - Opaque";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Opaque.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Opaque.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Solid.paa";
         side = 1;
         scope = 2;
     };
@@ -1851,6 +2453,13 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FU_Friendly_Sub_surface_Sea_Unit_So: AEE_MarkerBase {
+        name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_HA_Hostile_Unit_Airborne_Forces: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Airborne Forces";
         icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Airborne_Forces.paa";
@@ -3384,6 +3993,20 @@
         side = 0;
         scope = 2;
     };
+    class AEE_NA_Neutral_Air_Unit: AEE_MarkerBase {
+        name = "AEE Neutral Air/Space Neutral Air Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Air_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Air_Unit.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NA_Neutral_Air_or_Space_Unit: AEE_MarkerBase {
+        name = "AEE Neutral Air/Space Neutral Air or Space Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Air_or_Space_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Air_or_Space_Unit.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_NA_Neutral_Unit_Airborne_Forces: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Airborne Forces";
         icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Airborne_Forces.paa";
@@ -4399,6 +5022,27 @@
         side = 2;
         scope = 2;
     };
+    class AEE_NL_Neutral_or_Unaligned_Headquarter: AEE_MarkerBase {
+        name = "AEE Neutral Land Neutral or Unaligned Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_or_Unaligned_Headquarter.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_or_Unaligned_Headquarter.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Neutral_or_Unaligned_or_Unallied: AEE_MarkerBase {
+        name = "AEE Neutral Land Neutral or Unaligned or Unallied Unit - B&W";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_or_Unaligned_or_Unallied.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_or_Unaligned_or_Unallied.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Neutral_or_Unaligned_or_Unallied_2: AEE_MarkerBase {
+        name = "AEE Neutral Land Neutral or Unaligned or Unallied Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_or_Unaligned_or_Unallied_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_or_Unaligned_or_Unallied_2.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L: AEE_MarkerBase {
         name = "AEE Neutral Sea Surface Neutral Unit Air Naval Gunfire Liaison Company (USMC)";
         icon = "\z\aee\addons\optics\data\markers\AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L.paa";
@@ -4417,6 +5061,13 @@
         name = "AEE Neutral Sea Surface Neutral Unit Naval";
         icon = "\z\aee\addons\optics\data\markers\AEE_NS_Neutral_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_NS_Neutral_Unit_Naval.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NU_Neutral_Sub_surface_Sea_Unit: AEE_MarkerBase {
+        name = "AEE Neutral Subsurface Neutral Sub-surface Sea Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NU_Neutral_Sub_surface_Sea_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NU_Neutral_Sub_surface_Sea_Unit.paa";
         side = 2;
         scope = 2;
     };
@@ -4445,6 +5096,20 @@
         name = "AEE Unknown Air/Space Unknown Aligned Unit Unmanned Aerial Vehicles";
         icon = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Aligned_Unit_Unmanned_Ae.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Aligned_Unit_Unmanned_Ae.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UA_Unknown_Allegiance_Air_or_Space: AEE_MarkerBase {
+        name = "AEE Unknown Air/Space Unknown Allegiance Air or Space Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UA_Unknown_Allegiance_Air_or_Space_2: AEE_MarkerBase {
+        name = "AEE Unknown Air/Space Unknown Allegiance Air or Space Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space_2.paa";
         side = 2;
         scope = 2;
     };
@@ -4756,6 +5421,20 @@
         side = 2;
         scope = 2;
     };
+    class AEE_UL_Unknown_Allegiance_Headquarters: AEE_MarkerBase {
+        name = "AEE Unknown Land Unknown Allegiance Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Unknown_Allegiance_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Unknown_Allegiance_Headquarters.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Unknown_Allegiance_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Unknown Land Unknown Allegiance Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Unknown_Allegiance_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Unknown_Allegiance_Unit_Solid.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_US_Unknown_Aligned_Unit_Naval: AEE_MarkerBase {
         name = "AEE Unknown Sea Surface Unknown Aligned Unit Naval";
         icon = "\z\aee\addons\optics\data\markers\AEE_US_Unknown_Aligned_Unit_Naval.paa";
@@ -4763,878 +5442,17 @@
         side = 2;
         scope = 2;
     };
-    class AEE_VA_APP_6_Aerial_Refuel: AEE_MarkerBase {
-        name = "AEE Unspecified Air/Space APP-6 Aerial Refuel";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Aerial_Refuel.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Aerial_Refuel.paa";
+    class AEE_UU_Unknown_Allegiance_Sub_Surface_S: AEE_MarkerBase {
+        name = "AEE Unknown Subsurface Unknown Allegiance Sub-Surface Sea Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UU_Unknown_Allegiance_Sub_Surface_S.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UU_Unknown_Allegiance_Sub_Surface_S.paa";
         side = 2;
         scope = 2;
     };
-    class AEE_VA_APP_6_Army_Aviation: AEE_MarkerBase {
-        name = "AEE Unspecified Air/Space APP-6 Army Aviation";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Army_Aviation.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Army_Aviation.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_0_Inst_Grundzeichen: AEE_MarkerBase {
-        name = "AEE Unspecified Land 0-Inst Grundzeichen";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_0_Inst_Grundzeichen.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_0_Inst_Grundzeichen.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_1973_sinai_war_maps: AEE_MarkerBase {
-        name = "AEE Unspecified Land 1973 sinai war maps";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_1973_sinai_war_maps.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_1973_sinai_war_maps.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_21st_Army_Group_during_Market_Ga: AEE_MarkerBase {
-        name = "AEE Unspecified Land 21st Army Group during Market Garden";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_21st_Army_Group_during_Market_Ga.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_21st_Army_Group_during_Market_Ga.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_4_GebJgBtl233: AEE_MarkerBase {
-        name = "AEE Unspecified Land 4. GebJgBtl233";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_4_GebJgBtl233.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_4_GebJgBtl233.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_A_1_21_Unit_Symbol_2: AEE_MarkerBase {
-        name = "AEE Unspecified Land A 1-21 Unit Symbol 2";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_A_1_21_Unit_Symbol_2.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_A_1_21_Unit_Symbol_2.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_A_1_21IN_Unit_Symbol: AEE_MarkerBase {
-        name = "AEE Unspecified Land A 1-21IN Unit Symbol";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_A_1_21IN_Unit_Symbol.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_A_1_21IN_Unit_Symbol.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_AFD_AIR: AEE_MarkerBase {
-        name = "AEE Unspecified Land AFD AIR";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_AFD_AIR.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_AFD_AIR.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_06_EDE_V2_E: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-06 EDE V2 E";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_06_EDE_V2_E.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_06_EDE_V2_E.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Air_Defence: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Air Defence";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Defence.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Defence.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Air_Force: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Air Force";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Force.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Force.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Air_transportable: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Air-transportable";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_transportable.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_transportable.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Airmobile: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Airmobile";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Airmobile_Infantry: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Airmobile Infantry";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Infantry.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Infantry.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Airmobile_Mod: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Airmobile Mod";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Mod.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Mod.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Airmobile_Mortar: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Airmobile Mortar";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Mortar.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Mortar.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Airmobile_Supply_Transport: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Airmobile Supply Transport";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Supply_Transport.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Airmobile_Supply_Transport.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Ammunition: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Ammunition";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Ammunition.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Ammunition.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Amphibious: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Amphibious";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Amphibious.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Amphibious.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Amphibious_Mechanized_Infa: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Amphibious Mechanized Infantry";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Amphibious_Mechanized_Infa.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Amphibious_Mechanized_Infa.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Anti_Tank: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Anti Tank";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Anti_Tank_Artillery: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Anti Tank Artillery";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank_Artillery.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank_Artillery.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Anti_Tank_Helicopter: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Anti Tank Helicopter";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank_Helicopter.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank_Helicopter.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Anti_Tank_Missile: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Anti Tank Missile";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank_Missile.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Anti_Tank_Missile.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Armored: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Armored";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Armored_Artillery: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Armored Artillery";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored_Artillery.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored_Artillery.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Armored_Engineer: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Armored Engineer";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored_Engineer.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored_Engineer.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Armored_Reconnaissance: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Armored Reconnaissance";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored_Reconnaissance.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Armored_Reconnaissance.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Artillery: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Artillery";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Artillery.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Artillery.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Basic: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Basic";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Basic.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Basic.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Bridging: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Bridging";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Bridging.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Bridging.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Combat_Service_Support: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Combat Service Support";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Combat_Service_Support.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Combat_Service_Support.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Combat_Service_Support_US: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Combat Service Support US";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Combat_Service_Support_US.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Combat_Service_Support_US.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Combat_Supply: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Combat Supply";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Combat_Supply.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Combat_Supply.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Electronic_Warfare: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Electronic Warfare";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Electronic_Warfare.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Electronic_Warfare.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Engineer: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Engineer";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Engineer.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Engineer.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Engineer_Construction: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Engineer Construction";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Engineer_Construction.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Engineer_Construction.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_HQ_Support: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 HQ Support";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_HQ_Support.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_HQ_Support.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Infantry: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Infantry";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Infantry_Mechanized_IFV: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Infantry Mechanized IFV";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry_Mechanized_IFV.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry_Mechanized_IFV.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Infantry_Motorised: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Infantry Motorised";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry_Motorised.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry_Motorised.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Infantry_Wheeled_Mechanize: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Infantry Wheeled Mechanized IFV";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry_Wheeled_Mechanize.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Infantry_Wheeled_Mechanize.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_MLRS: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 MLRS";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_MLRS.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_MLRS.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_MP: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 MP";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_MP.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_MP.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Machine_Gun: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Machine Gun";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Machine_Gun.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Machine_Gun.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Machine_Gun_Heavy: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Machine Gun Heavy";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Machine_Gun_Heavy.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Machine_Gun_Heavy.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Maintenance: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Maintenance";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Maintenance.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Maintenance.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Mechanized_Infantry: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Mechanized Infantry";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mechanized_Infantry.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mechanized_Infantry.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Medical: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Medical";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Medical.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Medical.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Meteorological: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Meteorological";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Meteorological.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Meteorological.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Missile: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Missile";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Missile.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Missile.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Mod Motorcycle";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mod_Motorcycle.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mod_Motorcycle.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Modifier_01: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Modifier 01";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Modifier_01.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Modifier_01.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Modifier_02: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Modifier 02";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Modifier_02.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Modifier_02.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Modifier_02_Transparent: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Modifier 02 Transparent";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Modifier_02_Transparent.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Modifier_02_Transparent.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Mortar: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Mortar";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mortar.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mortar.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Mortar_SP_Mechanized: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Mortar SP Mechanized";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mortar_SP_Mechanized.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mortar_SP_Mechanized.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Motorised: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Motorised";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Motorised.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Motorised.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Mountain: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Mountain";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mountain.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mountain.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Mountain_Artillery: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Mountain Artillery";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mountain_Artillery.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mountain_Artillery.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Mountain_Infantry: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Mountain Infantry";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mountain_Infantry.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Mountain_Infantry.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_NBC: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 NBC";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_NBC.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_NBC.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Navy: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Navy";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Navy.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Navy.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Ordnance: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Ordnance";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Ordnance.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Ordnance.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_PYSOPS: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 PYSOPS";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_PYSOPS.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_PYSOPS.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Parachute: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Parachute";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Parachute.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Parachute.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Parachute_Infantry: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Parachute Infantry";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Parachute_Infantry.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Parachute_Infantry.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Quartermaster: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Quartermaster";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Quartermaster.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Quartermaster.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Radar: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Radar";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Radar.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Radar.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Reconnaissance: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Reconnaissance";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Reconnaissance.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Reconnaissance.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Reconnaissance_Wheeled: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Reconnaissance Wheeled";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Reconnaissance_Wheeled.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Reconnaissance_Wheeled.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Refuel: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Refuel";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Refuel.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Refuel.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Rocket: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Rocket";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Rocket.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Rocket.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Signals: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Signals";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Signals.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Signals.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Special_Forces: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Special Forces";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Special_Forces.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Special_Forces.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Special_Operations_Forces: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Special Operations Forces";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Special_Operations_Forces.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Special_Operations_Forces.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Tank_Destroyer: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Tank Destroyer";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Tank_Destroyer.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Tank_Destroyer.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Topographical: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Topographical";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Topographical.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Topographical.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Transport_Helicopter: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Transport Helicopter";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Transport_Helicopter.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Transport_Helicopter.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Transportation: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Transportation";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Transportation.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Transportation.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Unmanned_Air_Recon: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Unmanned Air Recon";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Unmanned_Air_Recon.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Unmanned_Air_Recon.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Wheeled: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Wheeled";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Wheeled_Armored_Reconnaiss: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Wheeled Armored Reconnaissance";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_Armored_Reconnaiss.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_Armored_Reconnaiss.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Wheeled_MLRS: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Wheeled MLRS";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_MLRS.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_MLRS.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Wheeled_Mechanized_Infantr: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Wheeled Mechanized Infantry";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_Mechanized_Infantr.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_Mechanized_Infantr.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_Wheeled_Tank: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 Wheeled Tank";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_Tank.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Wheeled_Tank.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_battalion: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 battalion";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_battalion.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_battalion.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_company: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 company";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_company.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_company.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6_regiment: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6 regiment";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_regiment.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_regiment.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6a_Example1_Higher: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6a Example1 - Higher";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6a_Example1_Higher.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6a_Example1_Higher.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6a_Example1_Self: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6a Example1 - Self";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6a_Example1_Self.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6a_Example1_Self.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_APP_6a_Example2: AEE_MarkerBase {
-        name = "AEE Unspecified Land APP-6a Example2";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6a_Example2.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6a_Example2.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Commons_logo: AEE_MarkerBase {
-        name = "AEE Unspecified Land Commons-logo";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Commons_logo.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Commons_logo.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_FRD_AIR: AEE_MarkerBase {
-        name = "AEE Unspecified Land FRD AIR";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_FRD_AIR.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_FRD_AIR.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_FRD_SUB: AEE_MarkerBase {
-        name = "AEE Unspecified Land FRD SUB";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_FRD_SUB.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_FRD_SUB.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_I_Marine_Expeditionary_Force_Org: AEE_MarkerBase {
-        name = "AEE Unspecified Land I Marine Expeditionary Force - Organization 2025";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_I_Marine_Expeditionary_Force_Org.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_I_Marine_Expeditionary_Force_Org.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Latvian_Mechanized_Infantry_Brig: AEE_MarkerBase {
-        name = "AEE Unspecified Land Latvian Mechanized Infantry Brigade in year 2019";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Latvian_Mechanized_Infantry_Brig.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Latvian_Mechanized_Infantry_Brig.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_MapTeranoevensmaller: AEE_MarkerBase {
-        name = "AEE Unspecified Land MapTeranoevensmaller";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_MapTeranoevensmaller.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_MapTeranoevensmaller.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Medak_pocket_battle_map: AEE_MarkerBase {
-        name = "AEE Unspecified Land Medak pocket battle map";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Medak_pocket_battle_map.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Medak_pocket_battle_map.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Military_Map_Symbol_Unit_Size_Da: AEE_MarkerBase {
-        name = "AEE Unspecified Land Military Map Symbol - Unit Size - Dark Blue - 080 - Brigade";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Map_Symbol_Unit_Size_Da.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Map_Symbol_Unit_Size_Da.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Military_Map_Symbol_Unit_Size_Li: AEE_MarkerBase {
-        name = "AEE Unspecified Land Military Map Symbol - Unit Size - Light Blue - 090 - Division";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Map_Symbol_Unit_Size_Li.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Map_Symbol_Unit_Size_Li.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Military_Map_Symbol_Unit_Size_Li_2: AEE_MarkerBase {
-        name = "AEE Unspecified Land Military Map Symbol - Unit Size - Light Red - 090 - Division";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Map_Symbol_Unit_Size_Li_2.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Map_Symbol_Unit_Size_Li_2.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Military_Symbology_Guide: AEE_MarkerBase {
-        name = "AEE Unspecified Land Military Symbology Guide";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Symbology_Guide.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Military_Symbology_Guide.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Symbol_Size_boundary: AEE_MarkerBase {
-        name = "AEE Unspecified Land Symbol Size boundary";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Symbol_Size_boundary.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Symbol_Size_boundary.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Text_document_with_red_question: AEE_MarkerBase {
-        name = "AEE Unspecified Land Text document with red question mark";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Text_document_with_red_question.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Text_document_with_red_question.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Army: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Army";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Army.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Army.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Army_Group: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Army Group";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Army_Group.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Army_Group.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Battalion: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Battalion";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Battalion.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Battalion.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Battlegroup_or_Battali: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Battlegroup or Battalion Group";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Battlegroup_or_Battali.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Battlegroup_or_Battali.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Brigade: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Brigade";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Brigade.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Brigade.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Brigade_Group_or_Briga: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Brigade Group or Brigade Combat Team";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Brigade_Group_or_Briga.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Brigade_Group_or_Briga.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Combat_Team_or_Company: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Combat Team or Company Group";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Combat_Team_or_Company.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Combat_Team_or_Company.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Company_or_Squadron_or: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Company or Squadron or Battery";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Company_or_Squadron_or.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Company_or_Squadron_or.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Corps: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Corps";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Corps.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Corps.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Corps_Expiditionary_Fo: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Corps Expiditionary Force";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Corps_Expiditionary_Fo.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Corps_Expiditionary_Fo.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Detachment_or_Squad: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Detachment or Squad";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Detachment_or_Squad.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Detachment_or_Squad.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Division: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Division";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Division.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Division.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Platoon_or_Troop: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Platoon or Troop";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Platoon_or_Troop.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Platoon_or_Troop.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Regiment_Combat_Team: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Regiment Combat Team";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Regiment_Combat_Team.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Regiment_Combat_Team.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Regiment_or_Group: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Regiment or Group";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Regiment_or_Group.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Regiment_or_Group.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Region_or_Front: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Region or Front";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Region_or_Front.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Region_or_Front.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Section: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Section";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Section.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Section.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Staffel_Echelon_German: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Staffel (Echelon) - Germany";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Staffel_Echelon_German.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Staffel_Echelon_German.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_VL_Unit_Size_Team_or_Crew: AEE_MarkerBase {
-        name = "AEE Unspecified Land Unit Size - Team or Crew";
-        icon = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Team_or_Crew.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_VL_Unit_Size_Team_or_Crew.paa";
+    class AEE_UU_Unknown_Allegiance_Sub_Surface_S_2: AEE_MarkerBase {
+        name = "AEE Unknown Subsurface Unknown Allegiance Sub-Surface Sea Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UU_Unknown_Allegiance_Sub_Surface_S_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UU_Unknown_Allegiance_Sub_Surface_S_2.paa";
         side = 2;
         scope = 2;
     };
@@ -5687,5 +5505,5 @@
     class n_maint { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_CSS_Maintenance.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_CSS_Maintenance.paa"; };
     class n_service { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_CSS_Supply.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_CSS_Supply.paa"; };
     class n_antiair { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Air_Defence.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Air_Defence.paa"; };
-    class c_air { icon = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Army_Aviation.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Army_Aviation.paa"; };
-    class c_plane { icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Force.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Force.paa"; };
+    class c_air { icon = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Army_Aviation.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Army_Aviation.paa"; };
+    class c_plane { icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_Force.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Air_Force.paa"; };
