@@ -36,8 +36,13 @@ ADAPT = (
 TAU_95 = math.log(20)
 
 
-def adapt(state, target_lux, mesopic=1.0, direction=0.0, tau=0.0, time=0.0):
-    return run_sqf(ADAPT, [state, target_lux, mesopic, direction, tau, time])
+def adapt(state, target_lux, mesopic=1.0, direction=0.0, tau=0.0, time=0.0, rho=0.18):
+    return run_sqf(ADAPT, [state, target_lux, mesopic, direction, tau, time, rho])
+
+
+def target_lux_for_level(level, rho=0.18):
+    """The scene lux whose rho * E / pi luminance log equals the level."""
+    return (10.0**level) * math.pi / rho
 
 
 class TestDirection(unittest.TestCase):
@@ -83,8 +88,34 @@ class TestPublishedWins(unittest.TestCase):
         self.assertEqual(result[3], 3.5)
 
     def test_settled_level_reports_no_direction(self):
-        # level equals the target log10, so the fallback stays settled.
-        result = adapt([0.0, 0.0], 1.0)
+        # The level (log10 cd/m2) equals the target's luminance log, so the
+        # fallback stays settled.  The target arrives in lux, so it is the
+        # luminance-equivalent lux, not the raw lux log.
+        result = adapt([0.0, 0.0], target_lux_for_level(0.0))
+        self.assertEqual(result[2], 0)
+
+    def test_settled_uses_the_luminance_conversion_not_the_raw_lux(self):
+        # Regression for the false stuckAdaptation flag.  The level is log10
+        # cd/m2; a raw log of the target lux sits log10(pi / rho) high, about
+        # 1.24, which always read as "brighter" and forced direction +1 on a
+        # settled eye.  A settled level must stay settled when the target's
+        # luminance log matches it, and the same raw lux must NOT read settled.
+        settled = adapt([0.0, 0.0], target_lux_for_level(0.0))
+        self.assertEqual(settled[2], 0)
+        # 1 lux is luminance 0.0573 cd/m2 (log -1.24), well below a level of 0.
+        raw = adapt([0.0, 0.0], 1.0)
+        self.assertEqual(raw[2], -1)
+
+    def test_fallback_gap_is_taken_in_the_luminance_unit(self):
+        # Level -1 (log10 cd/m2); the luminance-equivalent target is level 0,
+        # one log unit brighter, so the fallback reports +1.
+        result = adapt([-1.0, -1.0], target_lux_for_level(0.0))
+        self.assertEqual(result[2], 1)
+
+    def test_fallback_honours_a_custom_reflectance(self):
+        # A different rho shifts the luminance conversion; the settled target
+        # follows it.
+        result = adapt([0.0, 0.0], target_lux_for_level(0.0, rho=0.5), rho=0.5)
         self.assertEqual(result[2], 0)
 
     def test_target_is_returned_unchanged(self):
