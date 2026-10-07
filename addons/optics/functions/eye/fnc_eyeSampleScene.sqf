@@ -61,7 +61,9 @@ if ((_params isEqualType []) && {(count _params) >= 10}) then {
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 if !(_sunElev isEqualType 0) then { _sunElev = -90; };
 private _ambient = [_physAmbient, _engAmbient, GVAR(eyeAmbientLuxScale), _sunElev] call FUNC(eyeAmbientLux);
-private _local = _coreLocal max ((_engLocal * GVAR(eyeLocalLuxScale)) + (_blinding * GVAR(eyeBlindingLuxScale)));
+// The local source follows the same gate: the physical local light at or below
+// the horizon, the engine dynamic light above it.  See fnc_eyeLocalLux.
+private _local = [_coreLocal, _engLocal, GVAR(eyeLocalLuxScale), _blinding, GVAR(eyeBlindingLuxScale), _sunElev] call FUNC(eyeLocalLux);
 
 // Sky directions: straight up plus four at 45 degrees, one per compass
 // quadrant. The 200 m range is UNSOURCED; it only has to clear the geometry
