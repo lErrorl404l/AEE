@@ -16,6 +16,13 @@ adapt are read from the published state.  A defensive fallback derives them
 from the level and the target when the published direction reports settled
 but the log gap does not.
 
+The fallback must compare like with like.  The level is log10 cd/m2, so the
+target lux is converted with the driver reflectance rho (luminance = rho * E /
+pi, the fnc_updateEyeAdaptation conversion) before the gap is taken.  A direct
+log of the lux is wrong by a constant log10(pi / rho), about 1.24: it always
+exceeds the settled tolerance and forced direction +1 on a settled eye, which
+raised a false stuckAdaptation flag.
+
 Pure: no missionNamespace, no GVAR or EGVAR, no engine command.  The
 perception driver reads the published values and calls this.
 
@@ -43,6 +50,7 @@ Arguments:
   3: Number - published direction, -1, 0 or +1
   4: Number - effective tau, s
   5: Number - published time to adapt, s
+  6: Number - driver reflectance rho (luminance = rho * E / pi)
 
 Returns:
   Array - [level, target, direction, timeToAdapt]
@@ -54,7 +62,8 @@ params [
     ["_mesopic", 1, [0]],
     ["_direction", 0, [0]],
     ["_tau", 0, [0]],
-    ["_timeToAdapt", 0, [0]]
+    ["_timeToAdapt", 0, [0]],
+    ["_rho", 0.18, [0]]
 ];
 
 private _cone = 0;
@@ -75,12 +84,19 @@ if !(_targetLux isEqualType 0) then { _targetLux = 1; };
 private _level = (_w * _cone) + ((1 - _w) * _rod);
 
 // The published direction is authoritative.  Derive it only when the
-// published value reports settled and the log gap says it is not.
+// published value reports settled and the log gap says it is not.  The gap is
+// taken in the level's own unit (log10 cd/m2), so the target lux is converted
+// with rho first.  A direct log of the lux would sit log10(pi / rho) high and
+// always read as "brighter", raising a false stuckAdaptation flag.
 private _dir = _direction;
 if !(_dir isEqualType 0) then { _dir = 0; };
 _dir = (round _dir) max -1 min 1;
 if (_dir == 0) then {
-    private _targetLog = log ((_targetLux max 1e-9) min 1e12);
+    private _rhoSafe = _rho;
+    if !(_rhoSafe isEqualType 0) then { _rhoSafe = 0.18; };
+    _rhoSafe = _rhoSafe max 1e-6;
+    private _targetLum = (_rhoSafe * (_targetLux max 1e-9)) / pi;
+    private _targetLog = log ((_targetLum max 1e-9) min 1e12);
     private _gap = _targetLog - _level;
     if (_gap > 0.05) then { _dir = 1; };
     if (_gap < -0.05) then { _dir = -1; };

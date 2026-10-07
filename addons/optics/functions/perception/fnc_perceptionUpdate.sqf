@@ -130,7 +130,8 @@ private _adaptTau = missionNamespace getVariable [QGVAR(eyeAdaptTau), 0];
 private _adaptTime = missionNamespace getVariable [QGVAR(eyeAdaptTimeToAdapt), 0];
 private _adaptState = [
     _adaptRaw, _adaptTargetLux, _mesopic,
-    _adaptDirection, _adaptTau, _adaptTime
+    _adaptDirection, _adaptTau, _adaptTime,
+    GVAR(eyeReflectance)
 ] call FUNC(perceptionAdaptState);
 
 // ── NVG and thermal state ───────────────────────────────────────────────────
