@@ -201,7 +201,85 @@ def render_config(pairs: list[tuple[str, dict[str, Any]]]) -> str:
 
 
 def write_config(pairs: list[tuple[str, dict[str, Any]]]) -> None:
-    CONFIG_OUT.write_text(render_config(pairs), encoding="utf-8")
+    CONFIG_OUT.write_text(
+        render_config(pairs) + "\n" + render_engine_overrides(pairs), encoding="utf-8"
+    )
+
+
+# The engine's own NATO marker families.  AEE overwrites the icon of each so the
+# base Arma marker renders the AEE symbol.  Arma merges addon configs and the
+# later-loaded mod value wins, so re-declaring the class overrides the engine
+# field (BIKI Addon configuration).  Family letter -> the APP-6 affiliation.
+ENGINE_FAMILY_AFFIL = {
+    "b": "Friend",
+    "o": "Hostile",
+    "n": "Neutral",
+    "c": "Unspecified",
+}
+ENGINE_GLYPH_KEYWORD = {
+    "unknown": "Unknown",
+    "inf": "Infantry",
+    "motor_inf": "Motor",
+    "mech_inf": "Mechanized Infantry",
+    "armor": "Armour",
+    "recon": "Reconnaissance",
+    "air": "Army Aviation",
+    "plane": "Air Force",
+    "uav": "Unmanned",
+    "naval": "Navy",
+    "med": "Medical",
+    "art": "Artillery",
+    "mortar": "Mortar",
+    "hq": "Headquarters",
+    "support": "Combat Service Support",
+    "maint": "Maintenance",
+    "service": "Supply",
+    "installation": "Installation",
+    "antiair": "Air Defence",
+}
+# The engine families and their glyphs (Addons/ui_f CfgMarkers NATO block).
+ENGINE_FAMILIES = {
+    "b": list(ENGINE_GLYPH_KEYWORD),
+    "o": list(ENGINE_GLYPH_KEYWORD),
+    "n": list(ENGINE_GLYPH_KEYWORD),
+    "c": ["air", "car", "plane", "ship", "unknown"],
+}
+
+
+def _find_asset(
+    pairs: list[tuple[str, dict[str, Any]]], affil: str, keyword: str
+) -> str | None:
+    for name, entry in pairs:
+        if (
+            entry.get("affil") == affil
+            and keyword.lower() in str(entry.get("func", "")).lower()
+        ):
+            return name
+    return None
+
+
+def render_engine_overrides(pairs: list[tuple[str, dict[str, Any]]]) -> str:
+    lines = [
+        "",
+        "// Overwrite the engine's own NATO marker families, so the base Arma",
+        "// marker renders the AEE symbol and no engine mark shows beside it.",
+        "// A mod may re-declare an engine class; Arma merges the configs and the",
+        "// later-loaded value wins (BIKI Addon configuration).",
+    ]
+    for fam, glyphs in ENGINE_FAMILIES.items():
+        affil = ENGINE_FAMILY_AFFIL[fam]
+        for glyph in glyphs:
+            keyword = ENGINE_GLYPH_KEYWORD.get(glyph)
+            if not keyword:
+                continue
+            asset = _find_asset(pairs, affil, keyword)
+            if asset is None:
+                continue
+            icon = f"{ADDON_PREFIX}\\{asset}.paa"
+            lines.append(
+                f'    class {fam}_{glyph} {{ icon = "{icon}"; texture = "{icon}"; }};'
+            )
+    return "\n".join(lines) + "\n"
 
 
 def render_attribution(pairs: list[tuple[str, dict[str, Any]]]) -> str:
@@ -248,7 +326,9 @@ def check() -> int:
             convert(tga, fresh)
             if committed.read_bytes() != fresh.read_bytes():
                 stale.append(f"{name}.paa is stale")
-    if CONFIG_OUT.read_text(encoding="utf-8") != render_config(pairs):
+    if CONFIG_OUT.read_text(encoding="utf-8") != (
+        render_config(pairs) + "\n" + render_engine_overrides(pairs)
+    ):
         stale.append("config_markers.hpp is stale")
     if ATTRIB_OUT.read_text(encoding="utf-8") != render_attribution(pairs):
         stale.append("ATTRIBUTION.md is stale")

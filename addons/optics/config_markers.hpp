@@ -5638,3 +5638,52 @@
         side = 2;
         scope = 2;
     };
+
+
+// Overwrite the engine's own NATO marker families, so the base Arma
+// marker renders the AEE symbol and no engine mark shows beside it.
+// A mod may re-declare an engine class; Arma merges the configs and the
+// later-loaded value wins (BIKI Addon configuration).
+    class b_inf { icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Infantry_Airborne.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Infantry_Airborne.paa"; };
+    class b_motor_inf { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Motorize.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Motorize.paa"; };
+    class b_armor { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Armoured.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Armoured.paa"; };
+    class b_recon { icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Aviation_Reconnais.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Aviation_Reconnais.paa"; };
+    class b_plane { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_20.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_20.paa"; };
+    class b_uav { icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve.paa"; };
+    class b_med { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Medical.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Medical.paa"; };
+    class b_art { icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Artillery_Airborne.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Artillery_Airborne.paa"; };
+    class b_mortar { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Artillery_Target_A.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Artillery_Target_A.paa"; };
+    class b_hq { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Headquarters_Unit.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Headquarters_Unit.paa"; };
+    class b_support { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_CSS_Combat_Service.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_CSS_Combat_Service.paa"; };
+    class b_maint { icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_CSS_Aviation_Maint.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_CSS_Aviation_Maint.paa"; };
+    class b_service { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_CSS_Supply.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_CSS_Supply.paa"; };
+    class b_antiair { icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Air_Defence.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Unit_Air_Defence.paa"; };
+    class o_inf { icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Infantry_Airborne.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Infantry_Airborne.paa"; };
+    class o_motor_inf { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Motorized.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Motorized.paa"; };
+    class o_armor { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Armoured.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Armoured.paa"; };
+    class o_recon { icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Aviation_Reconnaiss.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Aviation_Reconnaiss.paa"; };
+    class o_plane { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_17.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_17.paa"; };
+    class o_uav { icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh.paa"; };
+    class o_med { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Medical.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Medical.paa"; };
+    class o_art { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Artille.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Artille.paa"; };
+    class o_mortar { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Artillery_Target_Ac.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Artillery_Target_Ac.paa"; };
+    class o_hq { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Headquarters_Servic.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Headquarters_Servic.paa"; };
+    class o_support { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Combat_Service_Support.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Combat_Service_Support.paa"; };
+    class o_maint { icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_CSS_Aviation_Mainte.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_CSS_Aviation_Mainte.paa"; };
+    class o_service { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_CSS_Supply.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_CSS_Supply.paa"; };
+    class o_antiair { icon = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Air_Defence.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_HL_Hostile_Unit_Air_Defence.paa"; };
+    class n_inf { icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Infantry_Airborne.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Infantry_Airborne.paa"; };
+    class n_motor_inf { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Motorized.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Motorized.paa"; };
+    class n_armor { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Armoured.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Armoured.paa"; };
+    class n_recon { icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Aviation_Reconnaiss.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Aviation_Reconnaiss.paa"; };
+    class n_uav { icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh.paa"; };
+    class n_med { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Medical.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Medical.paa"; };
+    class n_art { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Artille.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Artille.paa"; };
+    class n_mortar { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Artillery_Target_Ac.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Artillery_Target_Ac.paa"; };
+    class n_hq { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Headquarters_Servic.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Headquarters_Servic.paa"; };
+    class n_support { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Combat_Service_Support.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Combat_Service_Support.paa"; };
+    class n_maint { icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_CSS_Aviation_Mainte.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_CSS_Aviation_Mainte.paa"; };
+    class n_service { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_CSS_Supply.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_CSS_Supply.paa"; };
+    class n_antiair { icon = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Air_Defence.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_NL_Neutral_Unit_Air_Defence.paa"; };
+    class c_air { icon = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Army_Aviation.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_VA_APP_6_Army_Aviation.paa"; };
+    class c_plane { icon = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Force.paa"; texture = "\z\aee\addons\optics\data\markers\AEE_VL_APP_6_Air_Force.paa"; };

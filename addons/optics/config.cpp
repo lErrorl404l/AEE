@@ -65,6 +65,17 @@ class CfgMarkerClasses {
     };
 };
 
+// The affiliation colours.  APP-6(C) Table 1-4: friend cyan, hostile red,
+// neutral green, unknown yellow.  The engine classes carry the same display
+// colours; AEE re-declares them so the standard is the single source.
+class CfgMarkerColors {
+    class ColorWEST { color[] = {0, 1, 1, 1}; };
+    class ColorEAST { color[] = {1, 0, 0, 1}; };
+    class ColorGUER { color[] = {0, 1, 0, 1}; };
+    class ColorCIV { color[] = {0, 1, 0, 1}; };
+    class ColorUNKNOWN { color[] = {1, 1, 0, 1}; };
+};
+
 class CfgMarkers {
     // Building block.  scope = 0, so it is never a usable icon on its own.
     class AEE_MarkerBase {
