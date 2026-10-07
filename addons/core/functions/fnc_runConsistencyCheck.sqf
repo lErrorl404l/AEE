@@ -45,7 +45,7 @@ private _values = [];
     private _producers = _x select 2;
     {
         private _v = missionNamespace getVariable [_x select 1, "__aee_no_data__"];
-        if ((_v isEqualType 0) || {_v isEqualType true}) then {
+        if (_v isEqualTypeAny [0, true]) then {
             _values pushBack [(_x select 1), _v];
         };
     } forEach _producers;
@@ -66,7 +66,7 @@ private _unhealthy = [];
     if (!(_x select 1) || {!(_x select 2)}) then { _unhealthy pushBack (_x select 0); };
 } forEach _health;
 private _healthSuffix = " | health all-up";
-if ((count _unhealthy) > 0) then {
+if (_unhealthy isNotEqualTo []) then {
     _healthSuffix = " | health";
     for "_i" from 0 to ((count _unhealthy) - 1) do {
         _healthSuffix = _healthSuffix + " " + (_unhealthy select _i);
@@ -83,7 +83,7 @@ for "_r" from 0 to ((count _rows) - 1) do {
     private _count = _verdict select 3;
     private _report = [_table select _r, _values, _verdict] call FUNC(consistencyFailureLine);
     private _drift = _report select 1;
-    if ((!_rowPass) || {_strict && {_drift > 0}}) then {
+    if ((!_rowPass) || {_strict && _drift > 0}) then {
         private _line = _report select 0;
         if (_firstLine) then {
             _line = _line + _healthSuffix;
@@ -100,7 +100,7 @@ for "_r" from 0 to ((count _rows) - 1) do {
 // A healthy first run still emits one line, so the module health is always
 // reported once by the monitor.
 private _prev = missionNamespace getVariable ["aee_core_consistencyState", []];
-if (((count _prev) == 0) && {_firstLine}) then {
+if (((count _prev) == 0) && _firstLine) then {
     private _summary = "consistency: pass=" + (str _pass) + " rows=" + (str (count _rows)) + _healthSuffix;
     [_summary, "INFO"] call FUNC(consistencyLog);
 };

@@ -100,8 +100,8 @@ if (_appliedOk && {(_expected isEqualType [])} && {(count _expected) >= 3}) then
 // ── Blindness ───────────────────────────────────────────────────────────────
 private _pupilClamped = (_pupilMm <= (_pupilMin + _pupilEps)) || {_pupilMm >= (_pupilMax - _pupilEps)};
 private _aperturePinned = (_aperture <= (_apertureMin + _apertureEps)) || {_aperture >= (_apertureMax - _apertureEps)};
-private _luxExtreme = (_sceneLux <= _luxFloor) || {_adaptedLux <= _luxFloor};
-private _blindness = _pupilClamped && {_aperturePinned} && {_luxExtreme};
+private _luxExtreme = (_sceneLux <= _luxFloor) || (_adaptedLux <= _luxFloor);
+private _blindness = _pupilClamped && _aperturePinned && _luxExtreme;
 
 // ── Stuck adaptation ────────────────────────────────────────────────────────
 private _stuckAdaptation = false;
@@ -110,7 +110,7 @@ if ((_adaptedState isEqualType []) && {(count _adaptedState) >= 4}) then {
     private _time = _adaptedState select 3;
     if !(_dir isEqualType 0) then { _dir = 0; };
     if !(_time isEqualType 0) then { _time = 0; };
-    if ((_dir != 0) && {(_prevTimeToAdapt isEqualType 0)} && {_prevTimeToAdapt >= 0}) then {
+    if ((_dir != 0) && (_prevTimeToAdapt isEqualType 0) && (_prevTimeToAdapt >= 0)) then {
         if ((_prevTimeToAdapt - _time) < _stuckTol) then { _stuckAdaptation = true; };
     };
 };

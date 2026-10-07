@@ -113,6 +113,30 @@
             <Original>Work Distribution</Original>
             <English>Work Distribution</English>
         </Key>
+        <Key ID="STR_AEE_Core_consistencyCheck_Description">
+            <Original>Read the published producer variables and warn when two modules disagree. Read-only and deterministic, so it runs on every machine. Default on. UNSOURCED that a cross-module disagreement is always a fault.</Original>
+            <English>Read the published producer variables and warn when two modules disagree. Read-only and deterministic, so it runs on every machine. Default on. UNSOURCED that a cross-module disagreement is always a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_consistencyCheck_Name">
+            <Original>Cross-Module Consistency Monitor</Original>
+            <English>Cross-Module Consistency Monitor</English>
+        </Key>
+        <Key ID="STR_AEE_Core_consistencyInterval_Description">
+            <Original>Seconds between consistency samples, range 1 to 60. Default 10. The monitor runs in a per-frame handler and throttles itself to this interval. UNSOURCED.</Original>
+            <English>Seconds between consistency samples, range 1 to 60. Default 10. The monitor runs in a per-frame handler and throttles itself to this interval. UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_consistencyInterval_Name">
+            <Original>Consistency Interval</Original>
+            <English>Consistency Interval</English>
+        </Key>
+        <Key ID="STR_AEE_Core_consistencyStrict_Description">
+            <Original>Also warn on an invariant that passes but whose producers are not exactly equal (a drift inside the tolerance). Default off. UNSOURCED.</Original>
+            <English>Also warn on an invariant that passes but whose producers are not exactly equal (a drift inside the tolerance). Default off. UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_consistencyStrict_Name">
+            <Original>Strict Consistency</Original>
+            <English>Strict Consistency</English>
+        </Key>
         <Key ID="STR_AEE_Core_diagnostic_Description">
             <Original>Enable verbose diagnostic logging (diag_log) for environment state changes</Original>
             <English>Enable verbose diagnostic logging (diag_log) for environment state changes</English>
@@ -328,30 +352,6 @@
         <Key ID="STR_AEE_Core_windTerrainInfluence_Name">
             <Original>Terrain Wind Influence</Original>
             <English>Terrain Wind Influence</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyCheck_Description">
-            <Original>Read the published producer variables and warn when two modules disagree. Read-only and deterministic, so it runs on every machine. Default on. UNSOURCED that a cross-module disagreement is always a fault.</Original>
-            <English>Read the published producer variables and warn when two modules disagree. Read-only and deterministic, so it runs on every machine. Default on. UNSOURCED that a cross-module disagreement is always a fault.</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyCheck_Name">
-            <Original>Cross-Module Consistency Monitor</Original>
-            <English>Cross-Module Consistency Monitor</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyInterval_Description">
-            <Original>Seconds between consistency samples, range 1 to 60. Default 10. The monitor runs in a per-frame handler and throttles itself to this interval. UNSOURCED.</Original>
-            <English>Seconds between consistency samples, range 1 to 60. Default 10. The monitor runs in a per-frame handler and throttles itself to this interval. UNSOURCED.</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyInterval_Name">
-            <Original>Consistency Interval</Original>
-            <English>Consistency Interval</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyStrict_Description">
-            <Original>Also warn on an invariant that passes but whose producers are not exactly equal (a drift inside the tolerance). Default off. UNSOURCED.</Original>
-            <English>Also warn on an invariant that passes but whose producers are not exactly equal (a drift inside the tolerance). Default off. UNSOURCED.</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyStrict_Name">
-            <Original>Strict Consistency</Original>
-            <English>Strict Consistency</English>
         </Key>
     </Package>
 </Project>

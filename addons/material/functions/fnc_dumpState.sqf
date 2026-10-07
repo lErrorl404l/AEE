@@ -20,7 +20,7 @@ if (!(AEE_TRACE_ON) && {missionNamespace getVariable [QGVAR(stateLogStarted), fa
 
 // The published player-attach hook (a code value, set in XEH_preInit).
 private _hook = missionNamespace getVariable [QGVAR(attachSurfaceHook), {}];
-private _hookPresent = !(_hook isEqualTo {});
+private _hookPresent = _hook isNotEqualTo {};
 
 // The preloaded vanilla bisurf cache and the per-class learned cache.
 private _materialCache = missionNamespace getVariable [QGVAR(materialCache), createHashMap];

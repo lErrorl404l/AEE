@@ -83,5 +83,5 @@ GVAR(updatePFH) = [{
 // not per tick.  The function self-gates on hasInterface.
 [] call EFUNC(atmos,updateSimulWeatherLayers);
 
-private _logMsg = format ["Local environment PFH started. Base biome: %1", GVAR(biomeName)];
-AEE_LOG_INFO(_logMsg);
+private _pfhMsg = format ["Local environment PFH started. Base biome: %1", GVAR(biomeName)];
+AEE_LOG_INFO(_pfhMsg);
