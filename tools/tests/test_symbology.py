@@ -51,10 +51,58 @@ HUD_MARKERS_SRC = (OPTICS / "functions" / "hud" / "fnc_hudMarkers.sqf").read_tex
 POSTINIT_SRC = (OPTICS / "XEH_postInit.sqf").read_text(encoding="utf-8")
 CONFIG_SRC = (OPTICS / "config.cpp").read_text(encoding="utf-8")
 RSCTITLES_SRC = (OPTICS / "RscTitles.hpp").read_text(encoding="utf-8")
+SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
+STRINGTABLE_SRC = (OPTICS / "stringtable.xml").read_text(encoding="utf-8")
 MGRS_MAP_SRC = (OPTICS / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
     encoding="utf-8"
 )
 FONTS = OPTICS / "data" / "fonts"
+
+# Every committed symbology source, for the provenance guard.
+ALL_SYM_SRC = "\n".join(
+    [
+        PALETTE_KERNEL.read_text(encoding="utf-8"),
+        FRAME_KERNEL.read_text(encoding="utf-8"),
+        ICON_KERNEL.read_text(encoding="utf-8"),
+        RESOLVE_KERNEL.read_text(encoding="utf-8"),
+        DRAW_PLAN_KERNEL.read_text(encoding="utf-8"),
+        CATEGORY_KERNEL.read_text(encoding="utf-8"),
+        MARKER_CAT_SRC,
+        UNIT_CAT_SRC,
+        AFFILIATION_SRC,
+        PALETTE_FRIENDLY_KERNEL.read_text(encoding="utf-8"),
+        SYM_MAP_SRC,
+        SYM_WORLD_SRC,
+        TABLES_SQF.read_text(encoding="utf-8"),
+        HUD_MARKERS_SRC,
+        POSTINIT_SRC,
+        CONFIG_SRC,
+        RSCTITLES_SRC,
+        MGRS_MAP_SRC,
+        SETTINGS_SRC,
+        STRINGTABLE_SRC,
+    ]
+)
+
+FORBIDDEN_PROVENANCE = (
+    "Agent:",
+    "opencode",
+    "claude",
+    "anthropic",
+    "openai",
+    "deepseek",
+    "hephaestus",
+)
+
+# The six symbology settings and their group, default and subcategory.
+SYMBOLOGY_SETTINGS = (
+    ("symbologyEnabled", "AEE HUD", "Symbology", "false"),
+    ("symbologyPalette", "AEE HUD", "Symbology", None),
+    ("symbologyUnits", "AEE HUD", "Symbology", "true"),
+    ("symbologyMarkers", "AEE HUD", "Symbology", "true"),
+    ("symbologySuppress", "AEE HUD", "Symbology", "true"),
+    ("symbologyFont", "AEE HUD", "Symbology", "true"),
+)
 
 
 def palette(affiliation, pal):
@@ -213,6 +261,11 @@ class TestSymbolIcon(unittest.TestCase):
         out = icon("infantry")
         self.assertEqual(len(out), 2)
         self.assertTrue(all(prim[0] == "line" for prim in out))
+        # The name says crossed: one line rises, the other falls.  A saltire.
+        rising = [prim for prim in out if prim[1][1][1] > prim[1][0][1]]
+        falling = [prim for prim in out if prim[1][1][1] < prim[1][0][1]]
+        self.assertEqual(len(rising), 1)
+        self.assertEqual(len(falling), 1)
 
     def test_armour_is_one_ellipse(self):
         out = icon("armour")
@@ -636,6 +689,45 @@ class TestSymbologyFontWiring(unittest.TestCase):
             with self.subTest(family=family):
                 text = (FONTS / family / "OFL.txt").read_text(encoding="utf-8")
                 self.assertIn("SIL OPEN FONT LICENSE Version 1.1", text)
+
+
+class TestSymbologySettingsContract(unittest.TestCase):
+    """The six symbology settings and their stringtable keys exist."""
+
+    def test_every_setting_is_registered_in_the_symbology_group(self):
+        for name, category, subcategory, default in SYMBOLOGY_SETTINGS:
+            with self.subTest(setting=name):
+                self.assertIn(f'"{category}", "{subcategory}"', SETTINGS_SRC, name)
+
+    def test_every_checkbox_carries_its_default(self):
+        for name, _category, _subcategory, default in SYMBOLOGY_SETTINGS:
+            if default is None:
+                continue
+            with self.subTest(setting=name):
+                self.assertIn(
+                    f'AEE_SETTING_CHECKBOX({name},"AEE HUD","Symbology",{default})',
+                    SETTINGS_SRC,
+                    name,
+                )
+
+    def test_the_palette_setting_is_a_list_of_three(self):
+        self.assertIn("QGVAR(symbologyPalette),", SETTINGS_SRC)
+        self.assertIn('"LIST",', SETTINGS_SRC)
+        self.assertIn('[["NATO", "OPFOR", "Auto"]', SETTINGS_SRC)
+
+    def test_every_setting_has_a_stringtable_name_and_description(self):
+        for name, _category, _subcategory, _default in SYMBOLOGY_SETTINGS:
+            for suffix in ("_Name", "_Description"):
+                with self.subTest(setting=name, suffix=suffix):
+                    self.assertIn(f"STR_AEE_Optics_{name}{suffix}", STRINGTABLE_SRC)
+
+
+class TestSymbologyProvenanceGuard(unittest.TestCase):
+    """No agent, model or tooling provenance is committed in the layer."""
+
+    def test_no_provenance_leaked(self):
+        for token in FORBIDDEN_PROVENANCE:
+            self.assertNotIn(token, ALL_SYM_SRC, token)
 
 
 if __name__ == "__main__":
