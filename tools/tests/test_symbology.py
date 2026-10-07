@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """AEE NATO/OPFOR map symbology kernel tests.
 
-Executes the REAL pure kernels through tools/tests/sqf_lite.py:
+Executes the REAL pure kernels through tools/tests/sqf_lite.py and pins the
+real CfgMarkers registration in addons/optics/config.cpp:
 
   addons/optics/functions/symbology/fnc_symbolPalette.sqf
   addons/optics/functions/symbology/fnc_symbolFrame.sqf
+  addons/optics/functions/symbology/fnc_symbolIcon.sqf
+  addons/optics/functions/symbology/fnc_symbolResolve.sqf
+  addons/optics/functions/symbology/fnc_symbologyMarkerType.sqf
+  addons/optics/functions/symbology/fnc_symbologyMarkerColor.sqf
 
-Each kernel is argument-driven, so a fixture call proves it with no engine.
+The symbols are real engine map markers, so the map layer applies them with
+the local marker commands and draws nothing on the map control.
 
 Run: python3 -m unittest tools.tests.test_symbology -v
 """
@@ -29,20 +35,26 @@ PALETTE_KERNEL = SYM / "fnc_symbolPalette.sqf"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
 RESOLVE_KERNEL = SYM / "fnc_symbolResolve.sqf"
-DRAW_PLAN_KERNEL = SYM / "fnc_symbolDrawPlan.sqf"
+MARKER_TYPE_KERNEL = SYM / "fnc_symbologyMarkerType.sqf"
+MARKER_COLOR_KERNEL = SYM / "fnc_symbologyMarkerColor.sqf"
 CATEGORY_KERNEL = SYM / "fnc_symbolCategory.sqf"
 MARKER_CAT_KERNEL = SYM / "fnc_symbologyMarkerCategory.sqf"
 UNIT_CAT_KERNEL = SYM / "fnc_symbologyUnitCategory.sqf"
 AFFILIATION_KERNEL = SYM / "fnc_symbologyAffiliation.sqf"
 PALETTE_FRIENDLY_KERNEL = SYM / "fnc_symbologyPaletteFriendly.sqf"
 TABLES_SQF = OPTICS / "data" / "symbology_tables.sqf"
+MARKERS = OPTICS / "data" / "markers"
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SYM_TABLES = run_sqf(TABLES_SQF, [])
+FAMILIES = SYM_TABLES[4]
+GLYPHS = SYM_TABLES[5]
 MARKER_CAT_SRC = MARKER_CAT_KERNEL.read_text(encoding="utf-8")
 UNIT_CAT_SRC = UNIT_CAT_KERNEL.read_text(encoding="utf-8")
 AFFILIATION_SRC = AFFILIATION_KERNEL.read_text(encoding="utf-8")
-SYM_MAP_KERNEL = SYM / "fnc_symbologyMapDraw.sqf"
-SYM_MAP_SRC = SYM_MAP_KERNEL.read_text(encoding="utf-8")
+SYM_MARKERS_KERNEL = SYM / "fnc_symbologyMarkers.sqf"
+SYM_MARKERS_SRC = SYM_MARKERS_KERNEL.read_text(encoding="utf-8")
+SYM_APPLY_SRC = (SYM / "fnc_symbologyMarkersApply.sqf").read_text(encoding="utf-8")
+SYM_RESTORE_SRC = (SYM / "fnc_symbologyMarkersRestore.sqf").read_text(encoding="utf-8")
 SYM_WORLD_KERNEL = SYM / "fnc_symbologyWorldDraw.sqf"
 SYM_WORLD_SRC = SYM_WORLD_KERNEL.read_text(encoding="utf-8")
 HUD_MARKERS_SRC = (OPTICS / "functions" / "hud" / "fnc_hudMarkers.sqf").read_text(
@@ -65,13 +77,16 @@ ALL_SYM_SRC = "\n".join(
         FRAME_KERNEL.read_text(encoding="utf-8"),
         ICON_KERNEL.read_text(encoding="utf-8"),
         RESOLVE_KERNEL.read_text(encoding="utf-8"),
-        DRAW_PLAN_KERNEL.read_text(encoding="utf-8"),
+        MARKER_TYPE_KERNEL.read_text(encoding="utf-8"),
+        MARKER_COLOR_KERNEL.read_text(encoding="utf-8"),
         CATEGORY_KERNEL.read_text(encoding="utf-8"),
         MARKER_CAT_SRC,
         UNIT_CAT_SRC,
         AFFILIATION_SRC,
         PALETTE_FRIENDLY_KERNEL.read_text(encoding="utf-8"),
-        SYM_MAP_SRC,
+        SYM_MARKERS_SRC,
+        SYM_APPLY_SRC,
+        SYM_RESTORE_SRC,
         SYM_WORLD_SRC,
         TABLES_SQF.read_text(encoding="utf-8"),
         HUD_MARKERS_SRC,
@@ -104,6 +119,32 @@ SYMBOLOGY_SETTINGS = (
     ("symbologyFont", "AEE HUD", "Symbology", "true"),
 )
 
+# The engine's own NATO glyphs per b_ / o_ / n_ family, from the shipped
+# config (Addons/ui_f.pbo config.cpp).  The produced AEE textures are the rest.
+VANILLA_GLYPHS = frozenset(
+    {
+        "unknown",
+        "inf",
+        "motor_inf",
+        "mech_inf",
+        "armor",
+        "recon",
+        "air",
+        "plane",
+        "uav",
+        "naval",
+        "med",
+        "art",
+        "mortar",
+        "hq",
+        "support",
+        "maint",
+        "service",
+        "installation",
+        "antiair",
+    }
+)
+
 
 def palette(affiliation, pal):
     return run_sqf(PALETTE_KERNEL, [affiliation, pal], {})
@@ -117,23 +158,34 @@ def icon(icon_id):
     return run_sqf(ICON_KERNEL, [icon_id], {})
 
 
+def marker_type(affiliation, category, dimension="land", echelon="unknown", pal="NATO"):
+    """Run the real marker-type kernel against the real generated table."""
+    return run_sqf(
+        MARKER_TYPE_KERNEL,
+        [affiliation, category, dimension, echelon, pal],
+        {"aee_optics_symbologyTables": SYM_TABLES},
+    )
+
+
+def marker_color(affiliation, pal):
+    return run_sqf(MARKER_COLOR_KERNEL, [affiliation, pal], {})
+
+
 def resolve(side, category, affiliation, echelon, pal):
-    """Run the real resolver with the real colour kernel injected."""
+    """Run the real resolver with the real marker kernels injected."""
     globals_ = {
-        "__FUNC__symbolPalette": lambda aff, p: run_sqf(PALETTE_KERNEL, [aff, p], {}),
+        "__FUNC__symbologyMarkerType": lambda aff, cat, dim, ech, p: run_sqf(
+            MARKER_TYPE_KERNEL,
+            [aff, cat, dim, ech, p],
+            {"aee_optics_symbologyTables": SYM_TABLES},
+        ),
+        "__FUNC__symbologyMarkerColor": lambda aff, p: run_sqf(
+            MARKER_COLOR_KERNEL, [aff, p], {}
+        ),
     }
     return run_sqf(
         RESOLVE_KERNEL, [side, category, affiliation, echelon, pal], globals_
     )
-
-
-def draw_plan(spec):
-    """Run the real draw-plan kernel with the real frame and icon kernels."""
-    globals_ = {
-        "__FUNC__symbolFrame": lambda aff, dim: run_sqf(FRAME_KERNEL, [aff, dim], {}),
-        "__FUNC__symbolIcon": lambda icon_id: run_sqf(ICON_KERNEL, [icon_id], {}),
-    }
-    return run_sqf(DRAW_PLAN_KERNEL, [spec], globals_)
 
 
 def category(value, kind="marker"):
@@ -143,14 +195,14 @@ def category(value, kind="marker"):
     )
 
 
-def marker_category(marker_type):
+def marker_category(marker_type_name):
     """Run the real marker adapter with the real category kernel injected."""
     globals_ = {
         "__FUNC__symbolCategory": lambda value, kind: run_sqf(
             CATEGORY_KERNEL, [value, kind], {"aee_optics_symbologyTables": SYM_TABLES}
         ),
     }
-    return run_sqf(MARKER_CAT_KERNEL, ["", marker_type], globals_)
+    return run_sqf(MARKER_CAT_KERNEL, ["", marker_type_name], globals_)
 
 
 def affiliation(colour, friendly):
@@ -222,10 +274,10 @@ class TestSymbolFrame(unittest.TestCase):
         self.assertTrue(any(point[1] < -0.6 for point in bottom))
 
     def test_every_frame_point_stays_in_the_unit_box(self):
-        for affiliation in ("friend", "hostile", "neutral", "unknown"):
+        for affiliation_name in ("friend", "hostile", "neutral", "unknown"):
             for dimension in ("land", "air", "subsurface"):
-                with self.subTest(affiliation=affiliation, dimension=dimension):
-                    for polyline in frame(affiliation, dimension):
+                with self.subTest(affiliation=affiliation_name, dimension=dimension):
+                    for polyline in frame(affiliation_name, dimension):
                         for point in polyline:
                             self.assertLessEqual(abs(point[0]), 1.0)
                             self.assertLessEqual(abs(point[1]), 1.0)
@@ -261,7 +313,6 @@ class TestSymbolIcon(unittest.TestCase):
         out = icon("infantry")
         self.assertEqual(len(out), 2)
         self.assertTrue(all(prim[0] == "line" for prim in out))
-        # The name says crossed: one line rises, the other falls.  A saltire.
         rising = [prim for prim in out if prim[1][1][1] > prim[1][0][1]]
         falling = [prim for prim in out if prim[1][1][1] < prim[1][0][1]]
         self.assertEqual(len(rising), 1)
@@ -294,60 +345,86 @@ class TestSymbolIcon(unittest.TestCase):
                             self.assertLessEqual(abs(y), 0.55 + 1e-9)
 
 
-class TestSymbolResolve(unittest.TestCase):
-    """fnc_symbolResolve, executed: inputs -> one symbol specification."""
+class TestSymbolMarkerType(unittest.TestCase):
+    """fnc_symbologyMarkerType, executed: affiliation + category -> type."""
 
-    def test_a_hostile_armour_symbol_is_a_red_diamond(self):
+    def test_the_family_follows_the_affiliation(self):
+        self.assertEqual(marker_type("friend", "infantry"), "AEE_b_inf")
+        self.assertEqual(marker_type("hostile", "armour"), "AEE_o_armor")
+        self.assertEqual(marker_type("neutral", "rotary"), "AEE_n_air")
+        self.assertEqual(marker_type("unknown", "medical"), "AEE_u_med")
+
+    def test_an_unknown_category_is_the_unknown_glyph(self):
+        self.assertEqual(marker_type("friend", "bogus"), "AEE_b_unknown")
+
+    def test_every_category_has_a_glyph_token(self):
+        for category_name, glyph, _grade, _source in GLYPHS:
+            with self.subTest(category=category_name):
+                self.assertEqual(marker_type("friend", category_name), f"AEE_b_{glyph}")
+
+    def test_the_type_names_a_registered_marker_class(self):
+        for _affiliation_name, family, _grade, _source in FAMILIES:
+            for category_name, glyph, _grade2, _source2 in GLYPHS:
+                with self.subTest(family=family, category=category_name):
+                    self.assertIn(
+                        f"class AEE_{family}_{glyph}: AEE_MarkerBase {{", CONFIG_SRC
+                    )
+
+
+class TestSymbolMarkerColor(unittest.TestCase):
+    """fnc_symbologyMarkerColor, executed: affiliation + palette -> class."""
+
+    def test_the_nato_set(self):
+        self.assertEqual(marker_color("friend", "NATO"), "ColorWEST")
+        self.assertEqual(marker_color("hostile", "NATO"), "ColorEAST")
+        self.assertEqual(marker_color("neutral", "NATO"), "ColorGUER")
+        self.assertEqual(marker_color("unknown", "NATO"), "ColorUNKNOWN")
+
+    def test_the_opfor_palette_swaps_friend_and_hostile(self):
+        self.assertEqual(marker_color("friend", "OPFOR"), "ColorEAST")
+        self.assertEqual(marker_color("hostile", "OPFOR"), "ColorWEST")
+
+    def test_auto_is_nato_here_and_resolved_by_the_caller(self):
+        self.assertEqual(marker_color("friend", "Auto"), "ColorWEST")
+
+
+class TestSymbolResolve(unittest.TestCase):
+    """fnc_symbolResolve, executed: inputs -> marker type and colour."""
+
+    def test_a_hostile_armour_symbol_is_a_red_opfor_marker(self):
         spec = resolve("east", "armour", "hostile", "squad", "NATO")
         self.assertEqual(spec[0], "hostile")
-        self.assertEqual(spec[1], "diamond")
-        self.assertEqual(spec[2], "land")
-        self.assertEqual(spec[3], [1, 0, 0, 1])
-        self.assertEqual(spec[4], "armour")
-        self.assertEqual(spec[5], "squad")
+        self.assertEqual(spec[1], "AEE_o_armor")
+        self.assertEqual(spec[2], "ColorEAST")
+        self.assertEqual(spec[3], "squad")
 
-    def test_a_friendly_infantry_symbol_is_a_rectangle(self):
+    def test_a_friendly_infantry_symbol_is_a_blue_blufor_marker(self):
         spec = resolve("west", "infantry", "friend", "company", "NATO")
-        self.assertEqual(spec[1], "rect")
-        self.assertEqual(spec[3], [0, 1, 1, 1])
-        self.assertEqual(spec[4], "infantry")
+        self.assertEqual(spec[1], "AEE_b_inf")
+        self.assertEqual(spec[2], "ColorWEST")
 
     def test_the_palette_swap_flips_the_friendly_colour(self):
         spec = resolve("west", "infantry", "friend", "company", "OPFOR")
-        self.assertEqual(spec[3], [1, 0, 0, 1])
+        self.assertEqual(spec[2], "ColorEAST")
 
-    def test_neutral_is_a_square_and_unknown_is_a_quatrefoil(self):
+    def test_neutral_is_green_and_unknown_is_unknown(self):
         self.assertEqual(
-            resolve("", "infantry", "neutral", "team", "NATO")[1], "square"
+            resolve("", "infantry", "neutral", "team", "NATO")[2], "ColorGUER"
         )
         self.assertEqual(
-            resolve("", "infantry", "unknown", "team", "NATO")[1], "quatrefoil"
+            resolve("", "infantry", "unknown", "team", "NATO")[2], "ColorUNKNOWN"
         )
 
-    def test_the_dimension_follows_the_category(self):
-        for category, dimension in (
-            ("armour", "land"),
-            ("fixed_wing", "air"),
-            ("rotary", "air"),
-            ("uav", "air"),
-            ("sea_surface", "sea"),
-            ("subsurface", "subsurface"),
-            ("installation", "installation"),
-        ):
-            with self.subTest(category=category):
-                spec = resolve("", category, "friend", "squad", "NATO")
-                self.assertEqual(spec[2], dimension)
-
-    def test_an_unknown_category_falls_back_to_the_empty_icon(self):
+    def test_an_unknown_category_falls_back_to_the_unknown_glyph(self):
         spec = resolve("", "bogus", "friend", "squad", "NATO")
-        self.assertEqual(spec[4], "unknown")
+        self.assertEqual(spec[1], "AEE_b_unknown")
 
 
 class TestSymbolCategory(unittest.TestCase):
     """fnc_symbolCategory, executed: engine name -> class category."""
 
     def test_the_shipped_marker_types_map(self):
-        for marker_type, expected in (
+        for marker_type_name, expected in (
             ("b_inf", "infantry"),
             ("o_armor", "armour"),
             ("n_inf", "infantry"),
@@ -357,8 +434,8 @@ class TestSymbolCategory(unittest.TestCase):
             ("flag_NATO", "unknown"),
             ("GroundSupport_CAS_WEST", "support"),
         ):
-            with self.subTest(marker_type=marker_type):
-                self.assertEqual(category(marker_type), expected)
+            with self.subTest(marker_type=marker_type_name):
+                self.assertEqual(category(marker_type_name), expected)
 
     def test_an_unknown_marker_type_is_unknown(self):
         self.assertEqual(category("bogus_marker"), "unknown")
@@ -376,14 +453,14 @@ class TestSymbolAdapters(unittest.TestCase):
     """The engine adapters, executed through their test seams."""
 
     def test_the_marker_adapter_maps_the_shipped_types(self):
-        for marker_type, expected in (
+        for marker_type_name, expected in (
             ("b_inf", "infantry"),
             ("o_armor", "armour"),
             ("n_inf", "infantry"),
             ("hd_dot", "waypoint"),
         ):
-            with self.subTest(marker_type=marker_type):
-                self.assertEqual(marker_category(marker_type), expected)
+            with self.subTest(marker_type=marker_type_name):
+                self.assertEqual(marker_category(marker_type_name), expected)
 
     def test_the_affiliation_adapter_maps_the_colour_classes(self):
         self.assertEqual(affiliation("ColorWEST", "WEST"), "friend")
@@ -424,139 +501,146 @@ class TestSymbolAdapterContracts(unittest.TestCase):
         self.assertIn("call FUNC(symbolCategory)", UNIT_CAT_SRC)
 
 
-class TestSymbolDrawPlan(unittest.TestCase):
-    """fnc_symbolDrawPlan, executed: spec -> ordered draw primitives."""
+class TestSymbologyMarkerConfig(unittest.TestCase):
+    """The real CfgMarkers registration, pinned against the table."""
 
-    SPEC = ["friend", "rect", "land", [0, 1, 1, 1], "infantry", "squad"]
+    def test_the_marker_class_group_is_declared(self):
+        self.assertIn("class CfgMarkerClasses {", CONFIG_SRC)
+        self.assertIn("class AEE_Symbology {", CONFIG_SRC)
+        self.assertIn('displayName = "AEE Symbology";', CONFIG_SRC)
 
-    def test_the_frame_primitives_come_first(self):
-        plan = draw_plan(self.SPEC)
-        self.assertEqual(plan[0][0], "poly")
-        self.assertEqual(plan[0][2], "frame")
-        self.assertEqual(plan[0][1], [[-1, -0.6], [1, -0.6], [1, 0.6], [-1, 0.6]])
+    def test_the_base_class_is_not_a_usable_icon(self):
+        self.assertIn("class AEE_MarkerBase {", CONFIG_SRC)
+        self.assertIn("scope = 0;", CONFIG_SRC)
+        self.assertIn('markerClass = "AEE_Symbology";', CONFIG_SRC)
 
-    def test_the_icon_primitives_come_next(self):
-        plan = draw_plan(self.SPEC)
-        icon_prims = [prim for prim in plan if prim[2] == "icon"]
-        self.assertEqual(len(icon_prims), 2)
-        self.assertTrue(all(prim[0] == "line" for prim in icon_prims))
+    def test_every_family_glyph_pair_is_registered_selectable(self):
+        for _affiliation_name, family, _grade, _source in FAMILIES:
+            for category_name, glyph, _grade2, _source2 in GLYPHS:
+                with self.subTest(family=family, category=category_name):
+                    self.assertIn(
+                        f"class AEE_{family}_{glyph}: AEE_MarkerBase {{", CONFIG_SRC
+                    )
+        pairs = len(FAMILIES) * len(GLYPHS)
+        self.assertEqual(CONFIG_SRC.count("scope = 2;"), pairs)
 
-    def test_the_plan_has_a_closed_rectangle_and_two_crossed_lines(self):
-        plan = draw_plan(self.SPEC)
-        rect = plan[0][1]
-        self.assertEqual(len(rect), 4)
-        crossed = [prim for prim in plan if prim[2] == "icon"]
-        self.assertEqual(len(crossed), 2)
-        # One line rises left to right, the other falls: a saltire.
-        self.assertGreater(crossed[0][1][1][1] - crossed[0][1][0][1], 0)
-        self.assertLess(crossed[1][1][1][1] - crossed[1][1][0][1], 0)
+    def test_every_marker_carries_the_size_shadow_and_side(self):
+        self.assertIn("size = 32;", CONFIG_SRC)
+        self.assertIn("shadow = 0;", CONFIG_SRC)
+        self.assertIn("color[] = {0, 0, 0, 1};", CONFIG_SRC)
+        for side in ("side = 0;", "side = 1;", "side = 2;"):
+            self.assertIn(side, CONFIG_SRC)
 
-    def test_every_primitive_kind_is_drawable(self):
-        for spec in (
-            self.SPEC,
-            ["hostile", "diamond", "air", [1, 0, 0, 1], "armour", "company"],
-            ["unknown", "quatrefoil", "land", [1, 1, 0, 1], "bogus", "corps"],
-        ):
-            with self.subTest(spec=spec):
-                for kind, points, hint in draw_plan(spec):
-                    self.assertIn(kind, ("line", "poly", "ellipse"))
-                    self.assertIn(hint, ("frame", "icon"))
-                    self.assertIsInstance(points, list)
-
-    def test_a_squad_adds_one_echelon_dot(self):
-        plan = draw_plan(self.SPEC)
-        dots = [prim for prim in plan if prim[0] == "ellipse" and prim[2] == "frame"]
-        self.assertEqual(len(dots), 1)
-
-    def test_an_unknown_echelon_adds_no_mark(self):
-        plan = draw_plan(
-            ["friend", "rect", "land", [0, 1, 1, 1], "infantry", "unknown"]
+    def test_the_vanilla_families_reference_the_engine_textures(self):
+        self.assertIn(
+            'icon = "\\A3\\ui_f\\data\\map\\markers\\nato\\b_inf.paa";', CONFIG_SRC
         )
-        marks = [
-            prim
-            for prim in plan
-            if prim[2] == "frame" and prim[1] != plan[0][1] and len(prim[1]) != 1
+        self.assertIn(
+            'texture = "\\A3\\ui_f\\data\\map\\markers\\nato\\o_armor.paa";', CONFIG_SRC
+        )
+
+    def test_the_produced_textures_reference_the_aee_data_dir(self):
+        for family in ("b", "o", "n", "u"):
+            for _category_name, glyph, _grade, _source in GLYPHS:
+                if family in ("b", "o", "n") and glyph in VANILLA_GLYPHS:
+                    continue
+                with self.subTest(family=family, glyph=glyph):
+                    self.assertIn(
+                        f'icon = "\\z\\aee\\addons\\optics\\data\\markers\\'
+                        f'AEE_{family}_{glyph}.paa";',
+                        CONFIG_SRC,
+                    )
+
+    def test_every_referenced_produced_texture_exists(self):
+        produced = [
+            line
+            for line in CONFIG_SRC.splitlines()
+            if line.strip().startswith("icon = ")
+            and "\\z\\aee\\addons\\optics\\data\\markers\\" in line
         ]
-        self.assertEqual(marks, [])
-
-    def test_label_anchors_are_single_point_polys(self):
-        plan = draw_plan(self.SPEC)
-        anchors = [prim for prim in plan if prim[0] == "poly" and len(prim[1]) == 1]
-        self.assertEqual(len(anchors), 2)
-
-    def test_the_kernel_calls_no_engine_draw_command(self):
-        src = DRAW_PLAN_KERNEL.read_text(encoding="utf-8")
-        for forbidden in ("drawLine", "drawPolygon", "drawEllipse", "drawIcon"):
-            self.assertNotIn(forbidden, src)
+        self.assertTrue(produced)
+        for line in produced:
+            path = line.split('"')[1]
+            parts = path.lstrip("\\").split("\\")
+            self.assertTrue((REPO.joinpath(*parts[2:])).is_file(), path)
 
 
-class TestSymbologyMapDrawContract(unittest.TestCase):
-    """fnc_symbologyMapDraw carries the engine wiring and the local restore."""
+class TestSymbologyMarkersContract(unittest.TestCase):
+    """The map layer applies real markers and draws nothing on the control."""
 
-    def test_the_draw_handler_is_attached_to_the_map_control(self):
-        self.assertIn('ctrlAddEventHandler ["Draw"', SYM_MAP_SRC)
-        self.assertIn("findDisplay 12", SYM_MAP_SRC)
-        self.assertIn("displayCtrl 51", SYM_MAP_SRC)
+    def test_the_map_event_is_hooked(self):
+        self.assertIn('addMissionEventHandler ["Map"', SYM_MARKERS_SRC)
 
     def test_the_engine_indicators_are_suppressed_where_allowed(self):
-        self.assertIn("disableMapIndicators [true, true, true, true]", SYM_MAP_SRC)
+        self.assertIn("disableMapIndicators [true, true, true, true]", SYM_APPLY_SRC)
 
-    def test_every_marker_is_hidden_locally(self):
-        self.assertIn("allMapMarkers", SYM_MAP_SRC)
-        self.assertIn("setMarkerAlphaLocal 0", SYM_MAP_SRC)
+    def test_the_mission_markers_are_converted_locally(self):
+        self.assertIn("allMapMarkers", SYM_APPLY_SRC)
+        self.assertIn("setMarkerTypeLocal", SYM_APPLY_SRC)
+        self.assertIn("setMarkerColorLocal", SYM_APPLY_SRC)
 
-    def test_the_original_alpha_is_recorded_and_restored(self):
-        self.assertIn("markerAlpha _name", SYM_MAP_SRC)
-        self.assertIn("setMarkerAlphaLocal (_x select 1)", SYM_MAP_SRC)
+    def test_the_original_type_and_colour_are_recorded_and_restored(self):
+        self.assertIn("markerType _name", SYM_APPLY_SRC)
+        self.assertIn("markerColor _name", SYM_APPLY_SRC)
+        self.assertIn("setMarkerTypeLocal _type", SYM_RESTORE_SRC)
+        self.assertIn("setMarkerColorLocal _colour", SYM_RESTORE_SRC)
 
-    def test_the_geometry_is_converted_from_the_unit_box(self):
-        self.assertIn("ctrlMapWorldToScreen", SYM_MAP_SRC)
-        self.assertIn("ctrlMapScreenToWorld", SYM_MAP_SRC)
-
-    def test_the_frame_icon_and_label_are_drawn(self):
-        self.assertIn("drawPolygon", SYM_MAP_SRC)
-        self.assertIn("drawLine", SYM_MAP_SRC)
-        self.assertIn("drawEllipse", SYM_MAP_SRC)
-        self.assertIn("drawIcon", SYM_MAP_SRC)
+    def test_the_unit_markers_are_created_and_deleted_locally(self):
+        self.assertIn("createMarkerLocal", SYM_APPLY_SRC)
+        self.assertIn("setMarkerPosLocal", SYM_APPLY_SRC)
+        self.assertIn("deleteMarkerLocal", SYM_APPLY_SRC)
+        self.assertIn("deleteMarkerLocal", SYM_RESTORE_SRC)
 
     def test_no_global_marker_command_is_called(self):
         for forbidden in (
-            "setMarkerAlpha(",
-            "setMarkerColor",
-            "setMarkerText",
-            "setMarkerPos",
-            "deleteMarker",
+            " setMarkerType ",
+            " setMarkerColor ",
+            " setMarkerText ",
+            " setMarkerPos ",
+            " setMarkerAlpha ",
+            " deleteMarker ",
+            " setMarkerType(",
+            " setMarkerColor(",
         ):
-            self.assertNotIn(forbidden, SYM_MAP_SRC)
+            self.assertNotIn(forbidden, SYM_APPLY_SRC, forbidden)
+            self.assertNotIn(forbidden, SYM_RESTORE_SRC, forbidden)
 
-    def test_no_texture_path_is_drawn(self):
-        self.assertIn('drawIcon [\n                    "", _colour', SYM_MAP_SRC)
+    def test_there_is_no_symbol_draw_handler(self):
+        # The symbols are real markers, so nothing is painted on the control.
+        for forbidden in ('ctrlAddEventHandler ["Draw"', "drawPolygon", "drawLine"):
+            self.assertNotIn(forbidden, SYM_MARKERS_SRC, forbidden)
+            self.assertNotIn(forbidden, SYM_APPLY_SRC, forbidden)
 
-    def test_the_label_carries_the_font_parameter(self):
-        self.assertIn('_font, "center"', SYM_MAP_SRC)
+    def test_the_rescan_is_a_one_second_per_frame_handler(self):
+        self.assertIn("CBA_fnc_addPerFrameHandler", SYM_MARKERS_SRC)
+        self.assertIn("CBA_fnc_removePerFrameHandler", SYM_MARKERS_SRC)
 
-    def test_the_markers_player_and_units_are_drawn(self):
+    def test_the_symbols_are_built_from_the_resolver(self):
         for adapter in (
             "FUNC(symbologyMarkerCategory)",
             "FUNC(symbologyAffiliation)",
             "FUNC(symbolResolve)",
-            "FUNC(symbolDrawPlan)",
             "FUNC(symbologyUnitCategory)",
         ):
-            self.assertIn(adapter, SYM_MAP_SRC)
+            self.assertIn(adapter, SYM_APPLY_SRC, adapter)
 
 
 class TestSymbologyWorldDrawContract(unittest.TestCase):
-    """fnc_symbologyWorldDraw carries the Draw3D wiring and the range gate."""
+    """fnc_symbologyWorldDraw draws the real texture and gates the range."""
 
     def test_the_worker_is_a_draw3d_handler(self):
         self.assertIn('addMissionEventHandler ["Draw3D"', SYM_WORLD_SRC)
 
-    def test_the_frame_and_glyph_are_drawn_as_3d_lines(self):
-        self.assertIn("drawLine3D", SYM_WORLD_SRC)
+    def test_the_real_marker_texture_is_drawn(self):
+        self.assertIn("drawIcon3D", SYM_WORLD_SRC)
+        self.assertIn('configFile >> "CfgMarkers"', SYM_WORLD_SRC)
+        self.assertIn(">> _markerType >>", SYM_WORLD_SRC)
+
+    def test_the_worker_no_longer_draws_vector_lines(self):
+        self.assertNotIn("drawLine3D", SYM_WORLD_SRC)
+        self.assertNotIn("FUNC(symbolDrawPlan)", SYM_WORLD_SRC)
 
     def test_the_label_carries_the_font_parameter(self):
-        self.assertIn("drawIcon3D", SYM_WORLD_SRC)
         self.assertIn('_font, "center"', SYM_WORLD_SRC)
 
     def test_the_symbols_are_drawn_out_to_a_set_range(self):
@@ -569,25 +653,25 @@ class TestSymbologyWorldDrawContract(unittest.TestCase):
         self.assertIn("allUnits", SYM_WORLD_SRC)
 
     def test_the_worker_states_the_engine_icons_cannot_be_suppressed(self):
-        # The honest ceiling is recorded, so the worker makes no false claim
-        # to remove the engine's own 3D unit icons.
         self.assertIn("cannot be suppressed", SYM_WORLD_SRC)
 
-    def test_the_worker_calls_the_resolver_and_the_draw_plan(self):
+    def test_the_worker_calls_the_resolver(self):
         self.assertIn("FUNC(symbolResolve)", SYM_WORLD_SRC)
-        self.assertIn("FUNC(symbolDrawPlan)", SYM_WORLD_SRC)
 
 
 class TestHudMarkersFrameContract(unittest.TestCase):
-    """fnc_hudMarkers draws the symbol frame in front of its text label."""
+    """fnc_hudMarkers draws the real marker texture in front of its label."""
 
-    def test_the_frame_is_built_from_the_draw_plan(self):
-        self.assertIn("FUNC(symbolDrawPlan)", HUD_MARKERS_SRC)
+    def test_the_texture_is_read_from_the_marker_type(self):
+        self.assertIn("FUNC(symbolResolve)", HUD_MARKERS_SRC)
+        self.assertIn('configFile >> "CfgMarkers"', HUD_MARKERS_SRC)
+        self.assertIn("drawIcon3D", HUD_MARKERS_SRC)
 
-    def test_the_frame_is_drawn_as_3d_lines(self):
-        self.assertIn("drawLine3D", HUD_MARKERS_SRC)
+    def test_the_frame_no_longer_draws_vector_lines(self):
+        self.assertNotIn("drawLine3D", HUD_MARKERS_SRC)
+        self.assertNotIn("FUNC(symbolDrawPlan)", HUD_MARKERS_SRC)
 
-    def test_the_frame_is_gated_on_the_symbology_setting(self):
+    def test_the_texture_is_gated_on_the_symbology_setting(self):
         self.assertIn("symbologyEnabled", HUD_MARKERS_SRC)
 
 
@@ -595,7 +679,7 @@ class TestSymbolPostInit(unittest.TestCase):
     """The map and world workers are wired from postInit."""
 
     def test_the_map_worker_is_wired(self):
-        self.assertIn("[] call FUNC(symbologyMapDraw)", POSTINIT_SRC)
+        self.assertIn("[] call FUNC(symbologyMarkers)", POSTINIT_SRC)
 
     def test_the_world_worker_is_wired(self):
         self.assertIn("[] call FUNC(symbologyWorldDraw)", POSTINIT_SRC)
@@ -616,8 +700,9 @@ class TestSymbolPrep(unittest.TestCase):
     def test_the_resolve_prep_entry_exists(self):
         self.assertIn("PREPS(symbology,symbolResolve)", PREP_SRC)
 
-    def test_the_draw_plan_prep_entry_exists(self):
-        self.assertIn("PREPS(symbology,symbolDrawPlan)", PREP_SRC)
+    def test_the_marker_type_and_colour_prep_entries_exist(self):
+        self.assertIn("PREPS(symbology,symbologyMarkerType)", PREP_SRC)
+        self.assertIn("PREPS(symbology,symbologyMarkerColor)", PREP_SRC)
 
     def test_the_category_prep_entry_exists(self):
         self.assertIn("PREPS(symbology,symbolCategory)", PREP_SRC)
@@ -630,6 +715,19 @@ class TestSymbolPrep(unittest.TestCase):
             "symbologyPaletteFriendly",
         ):
             self.assertIn(f"PREPS(symbology,{name})", PREP_SRC)
+
+    def test_the_marker_layer_prep_entries_exist(self):
+        for name in (
+            "symbologyMarkers",
+            "symbologyMarkersApply",
+            "symbologyMarkersRestore",
+            "symbologyWorldDraw",
+        ):
+            self.assertIn(f"PREPS(symbology,{name})", PREP_SRC)
+
+    def test_the_removed_kernels_have_no_prep_entry(self):
+        self.assertNotIn("PREPS(symbology,symbolDrawPlan)", PREP_SRC)
+        self.assertNotIn("PREPS(symbology,symbologyMapDraw)", PREP_SRC)
 
 
 class TestSymbologyFontWiring(unittest.TestCase):
@@ -650,8 +748,6 @@ class TestSymbologyFontWiring(unittest.TestCase):
         self.assertIn('fontGrid = "AEEFont";', CONFIG_SRC)
 
     def test_the_referenced_paths_carry_no_extension(self):
-        # A fonts[] entry names a path with no extension; the engine appends
-        # the .fxy and the .paa.
         self.assertIn(
             "z\\aee\\addons\\optics\\data\\fonts\\rajdhani\\AEEFont9", CONFIG_SRC
         )
@@ -664,8 +760,7 @@ class TestSymbologyFontWiring(unittest.TestCase):
                 self.assertFalse(stripped.endswith('.fxy",'))
                 self.assertFalse(stripped.endswith('.paa",'))
 
-    def test_the_draw_functions_gate_the_font_on_the_setting(self):
-        self.assertIn("QGVAR(symbologyFont)", SYM_MAP_SRC)
+    def test_the_world_draw_gates_the_font_on_the_setting(self):
         self.assertIn("QGVAR(symbologyFont)", SYM_WORLD_SRC)
 
     def test_the_mgrs_readout_uses_the_monospaced_family(self):
@@ -695,9 +790,9 @@ class TestSymbologySettingsContract(unittest.TestCase):
     """The six symbology settings and their stringtable keys exist."""
 
     def test_every_setting_is_registered_in_the_symbology_group(self):
-        for name, category, subcategory, default in SYMBOLOGY_SETTINGS:
+        for name, category_name, subcategory, _default in SYMBOLOGY_SETTINGS:
             with self.subTest(setting=name):
-                self.assertIn(f'"{category}", "{subcategory}"', SETTINGS_SRC, name)
+                self.assertIn(f'"{category_name}", "{subcategory}"', SETTINGS_SRC, name)
 
     def test_every_checkbox_carries_its_default(self):
         for name, _category, _subcategory, default in SYMBOLOGY_SETTINGS:

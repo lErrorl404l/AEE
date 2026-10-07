@@ -4,9 +4,10 @@
 /*
  * aee_optics_fnc_symbologyWorldDraw
  *
- * Draw3D worker for the NATO APP-6(C) symbols in the 3D view.  It draws the
- * AEE frame and inner glyph as 3D lines and the label as 3D text, for the
- * player and each in-range unit, out to a set range.
+ * Draw3D worker for the AEE symbols in the 3D view.  It draws the real
+ * CfgMarkers texture for each in-range unit with drawIcon3D, so the world
+ * symbol and the map marker share one asset.  The texture path is read from
+ * the marker type in CfgMarkers; the colour is FUNC(symbolPalette).
  *
  * The engine's own in-world unit icons cannot be suppressed: they are driven
  * by the difficulty preset and no script command removes them.  This worker
@@ -55,74 +56,25 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
         missionNamespace setVariable [QGVAR(symbologyWorldTime), _now];
     };
 
-    // ── Draw one symbol above a unit. ────────────────────────────────────
+    // ── Draw one real marker texture above a unit. ───────────────────────
     private _drawWorld = {
         params ["_unit", "_spec", "_label"];
         private _base = getPos _unit;
         private _origin = [
             _base select 0, _base select 1, (_base select 2) + 2.5
         ];
-        private _scale = 1.5;
-        private _colour = _spec select 3;
-        private _z = _origin select 2;
-
-        {
-            private _prim = _x;
-            private _kind = _prim select 0;
-            private _points = _prim select 1;
-            if (_kind isEqualTo "ellipse") then {
-                // A ring sampled as line segments; drawEllipse3D does not exist.
-                private _boxCentre = _points select 0;
-                private _axes = _points select 1;
-                private _cx = (_origin select 0) + ((_boxCentre select 0) * _scale);
-                private _cy = (_origin select 1) + ((_boxCentre select 1) * _scale);
-                private _steps = 12;
-                for "_i" from 0 to (_steps - 1) do {
-                    private _a0 = 360 * _i / _steps;
-                    private _a1 = 360 * (_i + 1) / _steps;
-                    drawLine3D [
-                        [
-                            _cx + ((_axes select 0) * _scale * (cos _a0)),
-                            _cy + ((_axes select 1) * _scale * (sin _a0)),
-                            _z
-                        ],
-                        [
-                            _cx + ((_axes select 0) * _scale * (cos _a1)),
-                            _cy + ((_axes select 1) * _scale * (sin _a1)),
-                            _z
-                        ],
-                        _colour
-                    ];
-                };
-            } else {
-                if ((count _points) > 1) then {
-                    for "_i" from 0 to ((count _points) - 2) do {
-                        private _pA = _points select _i;
-                        private _pB = _points select (_i + 1);
-                        drawLine3D [
-                            [
-                                (_origin select 0) + ((_pA select 0) * _scale),
-                                (_origin select 1) + ((_pA select 1) * _scale),
-                                _z
-                            ],
-                            [
-                                (_origin select 0) + ((_pB select 0) * _scale),
-                                (_origin select 1) + ((_pB select 1) * _scale),
-                                _z
-                            ],
-                            _colour
-                        ];
-                    };
-                };
-            };
-        } forEach ([_spec] call FUNC(symbolDrawPlan));
-
-        if (_label isNotEqualTo "") then {
-            drawIcon3D [
-                "", _colour, _origin, 0, 0, 0,
-                _label, 2, 0.024, _font, "center"
-            ];
-        };
+        private _markerType = _spec select 1;
+        private _texture = getText (
+            configFile >> "CfgMarkers" >> _markerType >> "texture"
+        );
+        if (_texture isEqualTo "") exitWith {};
+        private _colour = [
+            _spec select 0, missionNamespace getVariable [QGVAR(symbologyPalette), "NATO"]
+        ] call FUNC(symbolPalette);
+        drawIcon3D [
+            _texture, _colour, _origin, 1.5, 1.5, 0,
+            _label, 2, 0.024, _font, "center"
+        ];
     };
 
     // ── The player ───────────────────────────────────────────────────────
