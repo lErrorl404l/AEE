@@ -52,10 +52,19 @@ EXPECTED_HUD_TRACKER = {
     "aee_optics_trackerSuppressIcons",
 }
 
+EXPECTED_HUD_SYMBOLOGY = {
+    "aee_optics_symbologyEnabled",
+    "aee_optics_symbologyFont",
+    "aee_optics_symbologyMarkers",
+    "aee_optics_symbologyPalette",
+    "aee_optics_symbologySuppress",
+    "aee_optics_symbologyUnits",
+}
+
 # Every AEE HUD name, across all subcategories.  The unknown-setting guard
 # reads this union; the Displays exact test reads EXPECTED_HUD alone, so the
-# Tracker group stays separate.
-EXPECTED_HUD_ALL = EXPECTED_HUD | EXPECTED_HUD_TRACKER
+# Tracker and Symbology groups stay separate.
+EXPECTED_HUD_ALL = EXPECTED_HUD | EXPECTED_HUD_TRACKER | EXPECTED_HUD_SYMBOLOGY
 
 
 class TestSettingsTaxonomy(unittest.TestCase):
@@ -68,6 +77,10 @@ class TestSettingsTaxonomy(unittest.TestCase):
     def test_hud_tracker_group_is_exact(self):
         groups = taxonomy_groups({"AEE HUD"})
         self.assertEqual(groups.get(("AEE HUD", "Tracker")), EXPECTED_HUD_TRACKER)
+
+    def test_hud_symbology_group_is_exact(self):
+        groups = taxonomy_groups({"AEE HUD"})
+        self.assertEqual(groups.get(("AEE HUD", "Symbology")), EXPECTED_HUD_SYMBOLOGY)
 
     def test_no_unknown_setting_uses_a_taxonomy_category(self):
         for setting in gen.collect_settings():

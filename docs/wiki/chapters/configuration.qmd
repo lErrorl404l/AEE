@@ -340,6 +340,17 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
 | `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 
+## AEE HUD → Symbology
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_symbologyEnabled` | CHECKBOX | `false` | yes | optics | Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off. |
+| `aee_optics_symbologyFont` | CHECKBOX | `true` | yes | optics | Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on. |
+| `aee_optics_symbologyMarkers` | CHECKBOX | `true` | yes | optics | Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on. |
+| `aee_optics_symbologyPalette` | LIST | `"Auto"` | yes | optics | Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto. |
+| `aee_optics_symbologySuppress` | CHECKBOX | `true` | yes | optics | Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on. |
+| `aee_optics_symbologyUnits` | CHECKBOX | `true` | yes | optics | Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on. |
+
 ## AEE HUD → Tracker
 
 | Setting | Type | Default | Global | Addon | Purpose |
