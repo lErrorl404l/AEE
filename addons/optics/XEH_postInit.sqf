@@ -183,10 +183,10 @@ if (hasInterface) then {
     // MGRS map overlay: attaches a Draw handler to the engine map control
     // when the map opens.  Read-only, no marker is created or edited.
     [] call FUNC(mgrsMapDraw);
-    // NATO/OPFOR map symbols: hides the engine markers locally and draws the
-    // AEE symbols in their place.  Read-only apart from the reversible hide.
-    [] call FUNC(symbologyMapDraw);
-    // NATO/OPFOR 3D world symbols: draws the AEE frame and glyph in the 3D
+    // NATO/OPFOR map symbols: applies the AEE symbols as real engine markers
+    // while the map is open, client-local and reversible.
+    [] call FUNC(symbologyMarkers);
+    // NATO/OPFOR 3D world symbols: draws the real AEE marker texture in the 3D
     // view.  The engine's own unit icons remain; this worker does not remove
     // them.
     [] call FUNC(symbologyWorldDraw);
