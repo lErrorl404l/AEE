@@ -103,6 +103,7 @@ PREPS(symbology,symbolPalette);
 PREPS(symbology,symbolFrame);
 PREPS(symbology,symbolIcon);
 PREPS(symbology,symbolResolve);
+PREPS(symbology,symbolDrawPlan);
 PREPS(symbology,symbolCategory);
 PREPS(symbology,symbologyMarkerCategory);
 PREPS(symbology,symbologyUnitCategory);
