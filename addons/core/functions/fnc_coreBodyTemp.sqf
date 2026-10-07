@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-Core body temperature (cross-module consistency producer INV-4).
+Core body temperature from the physiology heat balance.
 
 Physiology heat balance.  A 37 C baseline plus a heat gain from the wet
 bulb globe temperature above a threshold, minus a cold loss from the wind

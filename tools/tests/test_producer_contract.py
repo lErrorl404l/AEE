@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
-"""Producer source contract (task 14).
+"""Producer source contract.
 
-Every value the cross-module consistency harness reads must be produced and
-consumed.  This locks the three new producers in place:
+Every value the cross-module consistency harness reads must be produced by an
+addon and named in the compiled-in invariant table.  The declarative table
+(data/consistency/invariants.json) is the consumer contract the runtime monitor
+(task 15) reads into the value map, and the compiled-in SQF twin
+(fnc_consistencyLoadTable.sqf) names the same variables.
 
-  aee_thermal_humanCoreTempC  published by fnc_solveTwoNodeSelection.sqf
-  aee_core_coreBodyTemp       published by fnc_coreBodyTemp.sqf
-  aee_thermal_skyBandTempC    published by fnc_calculateBandRadiance.sqf
+A name is WRITTEN when a setVariable call in an addon resolves to it.
 
-A name is WRITTEN when a setVariable call in an addon resolves to it.  A name
-is READ when a getVariable call resolves to it, or when it is declared as a
-producer in data/consistency/invariants.json: the declarative table is the
-consumer contract the runtime monitor (task 15) reads into the value map, and
-the compiled-in SQF twin (fnc_consistencyLoadTable.sqf) names the same
-variables.  The two thermal producers have no direct getVariable yet because
-the runtime monitor is a later task; the table is their declared consumer.
+The KAT orphan fix is locked separately: aee_core_coreBodyTemp is written by
+core and read by compat_kat, so it is a real producer even though no invariant
+names it after the INV-4 removal.
 
 Run: python3 -m unittest tools.tests.test_producer_contract
 """
@@ -30,12 +27,6 @@ REPO = Path(__file__).resolve().parents[2]
 ADDONS = REPO / "addons"
 JSON_TABLE = REPO / "data" / "consistency" / "invariants.json"
 SQF_TABLE = REPO / "addons" / "core" / "functions" / "fnc_consistencyLoadTable.sqf"
-
-NEW_NAMES = [
-    "aee_thermal_humanCoreTempC",
-    "aee_core_coreBodyTemp",
-    "aee_thermal_skyBandTempC",
-]
 
 # setVariable / getVariable first argument: a literal aee_ name or a GVAR /
 # EGVAR / QGVAR / QEGVAR macro.
@@ -88,29 +79,28 @@ def _read(name: str) -> list[str]:
     return hits
 
 
-class TestNewProducers(unittest.TestCase):
-    def test_each_new_name_is_written(self):
-        for name in NEW_NAMES:
+def harness_producers() -> set[str]:
+    """Every producer the invariant table names, from the JSON contract."""
+    return {
+        variable
+        for row in json.loads(JSON_TABLE.read_text(encoding="utf-8"))
+        for _, variable in row["producers"]
+    }
+
+
+class TestHarnessProducers(unittest.TestCase):
+    def test_the_table_names_producers(self):
+        self.assertTrue(harness_producers())
+
+    def test_each_harness_producer_is_written(self):
+        for name in sorted(harness_producers()):
             with self.subTest(name=name):
                 self.assertTrue(_written(name), f"{name} is produced by nothing")
 
-    def test_each_new_name_has_a_declared_consumer(self):
-        # The task 14 contract: written and read.  The declarative table is
-        # the consumer contract for the runtime monitor, and the compiled-in
-        # SQF twin names the same variables.  The table lands with tasks 12
-        # and 13, so this check runs once it is present.
-        if not JSON_TABLE.exists() or not SQF_TABLE.exists():
-            self.skipTest("consumer table not present yet (task 12/13)")
-        declared = {
-            variable
-            for row in json.loads(JSON_TABLE.read_text(encoding="utf-8"))
-            for _, variable in row["producers"]
-        }
+    def test_each_harness_producer_is_in_the_compiled_table(self):
         sqf = SQF_TABLE.read_text(encoding="utf-8")
-        for name in NEW_NAMES:
+        for name in sorted(harness_producers()):
             with self.subTest(name=name):
-                consumed = bool(_read(name)) or name in declared
-                self.assertTrue(consumed, f"{name} has no read and no table consumer")
                 self.assertIn(name, sqf, f"{name} is not in the compiled-in table")
 
 

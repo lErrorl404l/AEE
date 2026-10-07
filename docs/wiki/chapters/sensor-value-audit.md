@@ -290,13 +290,12 @@ with a dayTime-sine fallback if the illuminance layer has not run yet.
 
 ## Cross-module consistency producers
 
-The consistency harness (INV-1 to INV-5) reads these published values.  Each
-one states its grade.
+The consistency harness (INV-1, INV-2 and INV-5) reads these published values.
+Each one states its grade.
 
 | Value | Used | Source | Grade |
 |---|---|---|---|
-| `aee_thermal_humanCoreTempC` | body-temperature invariant INV-4 | Gagge 1986 body-temperature weighting, 0.1 skin + 0.9 core.  Published from `fnc_solveTwoNodeSelection.sqf` for a human selection only. | derived |
-| `aee_core_coreBodyTemp` | body-temperature invariant INV-4; KAT circulation | Physiology heat balance in `fnc_coreBodyTemp.sqf`.  The 37 C baseline is sourced (normal resting human core temperature).  The heat threshold (28 C WBGT), the heat gain (0.05), the cold threshold (10 C wind chill), the cold gain (0.10) and the hypothermia loss (4.0) are UNSOURCED modelling choices. | baseline sourced; coefficients UNSOURCED |
+| `aee_core_coreBodyTemp` | KAT circulation | Physiology heat balance in `fnc_coreBodyTemp.sqf`.  The 37 C baseline is sourced (normal resting human core temperature).  The heat threshold (28 C WBGT), the heat gain (0.05), the cold threshold (10 C wind chill), the cold gain (0.10) and the hypothermia loss (4.0) are UNSOURCED modelling choices. | baseline sourced; coefficients UNSOURCED |
 | `aee_thermal_skyBandTempC` | solar/sky invariant INV-5 | The Tebo 1965 8-14 um band envelope applied by `fnc_calculateSkyRadiance.sqf`; published from `fnc_calculateBandRadiance.sqf`. | derived-from-measurement |
 
 ## Ground node stack shape (aee_thermal_groundNodeStack)

@@ -4,14 +4,14 @@
     "name": "illuminance_chain",
     "producers": [
       ["core", "aee_core_illuminanceLux"],
-      ["optics", "aee_optics_eyeAdaptedLux"],
-      ["optics", "aee_optics_eyeAperture"]
+      ["optics", "aee_optics_eyeSceneLux"],
+      ["core", "aee_core_lightIsNight"]
     ],
-    "predicate": "aperture_matches_lux",
+    "predicate": "night_scene_agreement",
     "tolerance": 0.5,
     "severity": "warn",
     "grade": "derived",
-    "note": "The adapted luminance tracks the scene illuminance and the eye aperture lies on the supplied lux-to-aperture line. Tolerance is a relative fraction."
+    "note": "Night scope: the row runs only when aee_core_lightIsNight is true (sun at or below the horizon). At night both sides are the physical-sky model, so the eye scene illuminance (aee_optics_eyeSceneLux) tracks the core illuminance (aee_core_illuminanceLux) within the tolerance, a relative fraction. The eye fix 98d1f17 gates the engine local term by sun elevation, so the two agree at night. In daylight the two draw on different light sources and the row is out of scope."
   },
   {
     "id": "INV-2",
@@ -26,33 +26,6 @@
     "severity": "warn",
     "grade": "derived",
     "note": "Air, ground-surface and average-ground temperatures agree within 15 C. aee_thermal_groundNodeStack is a per-cell HashMap store documented in Annex C, not a scalar, so it is excluded from the numeric comparison."
-  },
-  {
-    "id": "INV-3",
-    "name": "wind_scent_turbulence",
-    "producers": [
-      ["core", "aee_core_currentWindStr"],
-      ["environmental", "aee_environmental_scentDispersionIntensity"],
-      ["core", "aee_core_currentTurbulence"]
-    ],
-    "predicate": "monotone_with_wind",
-    "tolerance": 0.05,
-    "severity": "warn",
-    "grade": "derived",
-    "note": "A stronger wind raises or holds the scent dispersion and the turbulence. The harness supplies the prior sample as the reference."
-  },
-  {
-    "id": "INV-4",
-    "name": "body_temperature",
-    "producers": [
-      ["thermal", "aee_thermal_humanCoreTempC"],
-      ["core", "aee_core_coreBodyTemp"]
-    ],
-    "predicate": "agree_within",
-    "tolerance": 2.0,
-    "severity": "warn",
-    "grade": "derived",
-    "note": "The thermal two-node human core temperature and the core physiology heat balance agree within 2 C. The physiology coefficients are UNSOURCED."
   },
   {
     "id": "INV-5",

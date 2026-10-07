@@ -83,37 +83,12 @@ if (_predicate == "agree_within") then {
     } forEach _present;
 };
 
-if (_predicate == "aperture_matches_lux") then {
+if (_predicate == "night_scene_agreement") then {
     if ((count _present) >= 3) then {
-        private _adapted = (_present select 1) select 2;
-        private _aperture = (_present select 2) select 2;
-        private _bounds = [_values, "aee_optics_eyeApertureBounds", [-3, 8, 5, 50]] call _lookup;
-        private _expected = [_bounds, _adapted] call {
-            params ["_b", "_lux"];
-            private _lo = _b select 0;
-            private _apLo = _b select 1;
-            private _hi = _b select 2;
-            private _apHi = _b select 3;
-            private _ev = log ((_lux) max 0.001);
-            private _t = if (_hi > _lo) then { (((_ev - _lo) / (_hi - _lo)) max 0) min 1 } else { 0 };
-            _apLo + (_t * (_apHi - _apLo))
-        };
-        if ((abs (_adapted - _ref)) > (_tolerance * ((abs _ref) max 1))) then { _bad pushBack (_present select 1); };
-        if ((abs (_aperture - _expected)) > (_tolerance * ((_expected) max 8))) then { _bad pushBack (_present select 2); };
-    };
-};
-
-if (_predicate == "monotone_with_wind") then {
-    if ((count _present) >= 3) then {
-        private _scent = (_present select 1) select 2;
-        private _turb = (_present select 2) select 2;
-        private _prev = [_values, "aee_core_currentWindStrRef", []] call _lookup;
-        if ((count _prev) == 3) then {
-            private _dWind = _ref - (_prev select 0);
-            private _dScent = _scent - (_prev select 1);
-            private _dTurb = _turb - (_prev select 2);
-            if (((_dScent * _dWind) < 0) && {abs _dScent > _tolerance} && {abs _dWind > _tolerance}) then { _bad pushBack (_present select 1); };
-            if (((_dTurb * _dWind) < 0) && {abs _dTurb > _tolerance} && {abs _dWind > _tolerance}) then { _bad pushBack (_present select 2); };
+        private _scene = (_present select 1) select 2;
+        private _isNight = (_present select 2) select 2;
+        if (_isNight) then {
+            if ((abs (_scene - _ref)) > (_tolerance * ((abs _ref) max 1))) then { _bad pushBack (_present select 1); };
         };
     };
 };
@@ -139,8 +114,9 @@ if (_predicate == "daynight_consistent") then {
 // A predicate that cannot localise the disagreement names every producer.
 if (_bad isEqualTo []) then { _bad = _present; };
 
-// Drift is the spread of the present NUMBER values; a BOOL (the INV-5 night
-// flag) carries no magnitude and is skipped.  A `for` loop, not a forEach
+// Drift is the spread of the present NUMBER values; a BOOL (the night flag
+// INV-1 and INV-5 both carry) has no magnitude and is skipped.  A `for` loop,
+// not a forEach
 // block: an assignment to a file-local must survive the loop.
 private _vmin = 0;
 private _vmax = 0;

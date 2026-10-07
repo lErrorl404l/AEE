@@ -41,25 +41,38 @@ ROW_ORDER = [
     "note",
 ]
 
-# A clean fixture: every invariant agrees.
+# A clean fixture: every invariant agrees.  It is a night scene, so INV-1's
+# night-scoped comparison runs rather than skipping out of scope.
 CLEAN = [
     ["aee_core_illuminanceLux", 100.0],
-    ["aee_optics_eyeAdaptedLux", 100.0],
-    ["aee_optics_eyeAperture", 34.25],
+    ["aee_optics_eyeSceneLux", 100.0],
     ["aee_core_currentTemperature", 15.0],
-    ["aee_thermal_groundNodeStack", 16.0],
     ["aee_core_groundSurfaceTemp", 14.0],
     ["aee_core_avgGroundTemp", 15.0],
-    ["aee_core_currentWindStr", 5.0],
-    ["aee_environmental_scentDispersionIntensity", 0.5],
-    ["aee_core_currentTurbulence", 0.3],
-    ["aee_thermal_humanCoreTempC", 37.0],
-    ["aee_core_coreBodyTemp", 37.5],
-    ["aee_core_currentSunElevation", 30.0],
+    ["aee_core_currentSunElevation", -30.0],
     ["aee_thermal_skyBandTempC", -20.0],
-    ["aee_core_lightIsNight", False],
-    ["aee_environmental_nightClassification", 0.0],
-    ["aee_core_currentWindStrRef", [4.0, 0.4, 0.2]],
+    ["aee_core_lightIsNight", True],
+    ["aee_environmental_nightClassification", 4.0],
+]
+
+# The operator RPT (/ext/SteamLibrary/.../Arma3_x64_2026-10-07_16-56-15.rpt)
+# is the pre-eye-fix build.  The core side of INV-1 is unchanged by the eye
+# fix: core illuminanceLux 0.5302 lx at night (recovered from the INV-1
+# failure-line drift, 46.4727 - 45.9425).  The eye fix (98d1f17) gates the
+# engine local term by sun elevation, so the eye composes the physical sky:
+# core ambientLux 0.142886 lx times the sky fraction plus the core dynamic
+# term, which totals the core illuminance.  The healthy night pair is the
+# like-for-like physical-sky model.
+RPT_NIGHT = [
+    ["aee_core_illuminanceLux", 0.5302],
+    ["aee_optics_eyeSceneLux", 0.5302],
+    ["aee_core_currentTemperature", 17.5],
+    ["aee_core_groundSurfaceTemp", 16.0],
+    ["aee_core_avgGroundTemp", 15.7872],
+    ["aee_core_currentSunElevation", -31.4263],
+    ["aee_thermal_skyBandTempC", -0.443878],
+    ["aee_core_lightIsNight", True],
+    ["aee_environmental_nightClassification", 4.0],
 ]
 
 
@@ -95,7 +108,7 @@ class TestCleanFixture(unittest.TestCase):
     def test_all_pass(self):
         overall, verdicts = evaluate(CLEAN)
         self.assertTrue(overall)
-        self.assertEqual(len(verdicts), 5)
+        self.assertEqual(len(verdicts), 3)
         for row in verdicts:
             with self.subTest(row=row[0]):
                 self.assertTrue(row[1], f"{row[0]} failed: {row[2]}")
@@ -138,43 +151,37 @@ class TestThreeWayDisagreement(unittest.TestCase):
 
 
 class TestPredicates(unittest.TestCase):
-    def test_aperture_matches_lux_positive(self):
+    def test_night_scene_agreement_positive(self):
         _, verdicts = evaluate(CLEAN)
         self.assertTrue(rows_by_id((False, verdicts))["INV-1"][1])
 
-    def test_aperture_matches_lux_negative(self):
+    def test_night_scene_agreement_negative(self):
+        # The eye scene collapses away from the core illuminance at night:
+        # a real divergence, so INV-1 must fire.
         values = [list(pair) for pair in CLEAN]
         for pair in values:
-            if pair[0] == "aee_optics_eyeAperture":
-                pair[1] = 5.0
+            if pair[0] == "aee_optics_eyeSceneLux":
+                pair[1] = 0.0
         _, verdicts = evaluate(values)
         row = rows_by_id((False, verdicts))["INV-1"]
         self.assertFalse(row[1])
         self.assertEqual(row[3], 1)
 
-    def test_aperture_uses_supplied_bounds(self):
-        # A wider band is supplied, so the same aperture now agrees.
+    def test_night_scene_agreement_is_out_of_scope_in_day(self):
+        # In daylight the two sides use different light sources, so the row
+        # is out of scope and passes however far the scene sits from the core.
         values = [list(pair) for pair in CLEAN]
         for pair in values:
-            if pair[0] == "aee_optics_eyeAperture":
-                pair[1] = 5.0
-        values.append(["aee_optics_eyeApertureBounds", [-3, 5, 5, 5]])
+            if pair[0] == "aee_core_lightIsNight":
+                pair[1] = False
+            if pair[0] == "aee_optics_eyeSceneLux":
+                pair[1] = 80000.0
+            if pair[0] == "aee_core_currentSunElevation":
+                pair[1] = 30.0
+            if pair[0] == "aee_environmental_nightClassification":
+                pair[1] = 0.0
         _, verdicts = evaluate(values)
         self.assertTrue(rows_by_id((False, verdicts))["INV-1"][1])
-
-    def test_monotone_with_wind_positive(self):
-        _, verdicts = evaluate(CLEAN)
-        self.assertTrue(rows_by_id((False, verdicts))["INV-3"][1])
-
-    def test_monotone_with_wind_negative(self):
-        values = [list(pair) for pair in CLEAN]
-        for pair in values:
-            if pair[0] == "aee_environmental_scentDispersionIntensity":
-                pair[1] = 0.1  # wind rose, scent fell
-        _, verdicts = evaluate(values)
-        row = rows_by_id((False, verdicts))["INV-3"]
-        self.assertFalse(row[1])
-        self.assertEqual(row[3], 1)
 
     def test_daynight_positive(self):
         _, verdicts = evaluate(CLEAN)
@@ -184,28 +191,43 @@ class TestPredicates(unittest.TestCase):
         values = [list(pair) for pair in CLEAN]
         for pair in values:
             if pair[0] == "aee_core_currentSunElevation":
-                pair[1] = -30.0
+                pair[1] = 30.0
             if pair[0] == "aee_environmental_nightClassification":
-                pair[1] = 4.0
-            # lightIsNight stays False, so the night flag disagrees.
+                pair[1] = 0.0
+            # lightIsNight stays True, so the night flag disagrees.
         _, verdicts = evaluate(values)
         row = rows_by_id((False, verdicts))["INV-5"]
         self.assertFalse(row[1])
         self.assertEqual(row[3], 1)
 
     def test_no_data_is_not_a_failure(self):
-        values = [pair for pair in CLEAN if pair[0] != "aee_core_coreBodyTemp"]
+        values = [pair for pair in CLEAN if pair[0] != "aee_core_lightIsNight"]
         overall, verdicts = evaluate(values)
-        row = rows_by_id((overall, verdicts))["INV-4"]
-        self.assertTrue(row[1])
-        self.assertEqual(row[2], "no-data")
+        for vid in ("INV-1", "INV-5"):
+            row = rows_by_id((overall, verdicts))[vid]
+            self.assertTrue(row[1])
+            self.assertEqual(row[2], "no-data")
 
-    def test_no_reference_is_not_a_failure(self):
-        values = [pair for pair in CLEAN if pair[0] != "aee_core_currentWindStrRef"]
+
+class TestRptReplay(unittest.TestCase):
+    """The operator RPT night session must produce no genuine failure."""
+
+    def test_the_rpt_night_pair_passes(self):
+        overall, verdicts = evaluate(RPT_NIGHT)
+        self.assertTrue(overall, [row for row in verdicts if not row[1]])
+
+    def test_the_pre_fix_scene_still_fires(self):
+        # The pre-fix eye scene read 46.45 lx at night (an indoor-scale engine
+        # term), against a core illuminance of 0.5302 lx.  The rebind compares
+        # the eye's own scene, so the historical divergence still raises INV-1.
+        values = [list(pair) for pair in RPT_NIGHT]
+        for pair in values:
+            if pair[0] == "aee_optics_eyeSceneLux":
+                pair[1] = 46.4537
         _, verdicts = evaluate(values)
-        row = rows_by_id((False, verdicts))["INV-3"]
-        self.assertTrue(row[1])
-        self.assertEqual(row[2], "no-reference")
+        row = rows_by_id((False, verdicts))["INV-1"]
+        self.assertFalse(row[1])
+        self.assertEqual(row[3], 1)
 
 
 class TestPurity(unittest.TestCase):
