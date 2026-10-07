@@ -7,19 +7,27 @@ them.  Where the engine set genuinely lacks a symbol (the whole unknown-
 affiliation u_ family, and the engineer, signal, supply, subsurface and
 waypoint glyphs) AEE renders its own texture here.
 
-The geometry is NOT invented.  The generator evaluates the committed pure
-kernels
+Each produced texture has two layers.
 
-  addons/optics/functions/symbology/fnc_symbolFrame.sqf
-  addons/optics/functions/symbology/fnc_symbolIcon.sqf
+  * The frame.  AEE draws the affiliation frame from its own spec geometry in
+    addons/optics/functions/symbology/fnc_symbolFrame.sqf, so the frame stays
+    inside the unit box and the dimension modifier is applied.
 
-through tools/tests/sqf_lite.py, so the texture and the drawn symbol share one
-source of truth.  The frame is stroked and the inner glyph is stroked, in
-white on transparent, so the engine marker colour tints the texture the way it
-tints the vanilla NATO markers.
+  * The inner glyph.  Where a matching public-domain APP-6 function glyph
+    exists in addons/optics/data/markers/src/, the generator rasterises it
+    (rsvg-convert), drops the friendly frame rectangle that the source file
+    carries, and composites the glyph onto the AEE frame.  Where no matching
+    public-domain glyph exists, the generator draws AEE's own glyph geometry
+    from fnc_symbolIcon.sqf.  The per-marker source is reported by --table.
+
+The AEE kernels are evaluated through tools/tests/sqf_lite.py, so the texture
+and the drawn symbol share one source of truth.  The result is white on
+transparent, so the engine marker colour tints the texture the way it tints
+the vanilla NATO markers.
 
 Run:  python3 tools/gen_symbology_markers.py
       python3 tools/gen_symbology_markers.py --check
+      python3 tools/gen_symbology_markers.py --table
 
 The conversion is hemtt's: TGA with alpha -> DXT5 PAA (hemtt 1.22.0).  It is
 byte-deterministic, so --check re-renders and compares.
@@ -28,6 +36,7 @@ byte-deterministic, so --check re-renders and compares.
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -38,6 +47,7 @@ from typing import Any
 ROOT = Path(__file__).parents[1]
 SOURCE_JSON = ROOT / "data" / "symbology" / "symbology_tables.json"
 MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
+GLYPH_SRC = MARKERS_OUT / "src"
 SYM = ROOT / "addons" / "optics" / "functions" / "symbology"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
@@ -77,6 +87,37 @@ SIZE = 64
 STROKE = 3
 WHITE = (255, 255, 255, 255)
 
+# The AEE class category -> the public-domain APP-6 function glyph file under
+# src/.  The match is by function.  A category that is absent here has no
+# matching public-domain glyph, so the generator draws AEE's own geometry from
+# fnc_symbolIcon.sqf and --table reports it.
+PD_GLYPH = {
+    "armour": "APP-6 Armored.svg",
+    "motorised": "APP-6 Infantry Motorised.svg",
+    "artillery": "APP-6 Artillery.svg",
+    "engineer": "APP-6 Engineer.svg",
+    "signal": "APP-6 Signals.svg",
+    "medical": "APP-6 Medical.svg",
+    "supply": "APP-6 Combat Supply.svg",
+    "support": "APP-6 Combat Service Support.svg",
+    "recon": "APP-6 Reconnaissance.svg",
+    "air_defence": "APP-6 Air Defence.svg",
+    "rotary": "APP-6 Army Aviation.svg",
+    "uav": "APP-6 Unmanned Air Recon.svg",
+    "sea_surface": "APP-6 Navy.svg",
+}
+
+# The inner glyph box in the unit box.  The frame kernel stays inside [-1, 1];
+# this box keeps the glyph clear of every affiliation frame.
+INNER = 0.55
+
+# The source art strokes its paths at 3 units on a 170-unit canvas.  Once the
+# glyph is scaled into the 64 px marker that is about 0.6 px, which is too thin
+# next to the 3 px AEE frame.  The generator multiplies each source stroke width
+# by this factor so the glyph line weight matches the frame.  The glyph geometry
+# is unchanged.  Only the line weight is scaled.
+GLYPH_STROKE_SCALE = 3.0
+
 
 def load_source() -> dict[str, Any]:
     return json.loads(SOURCE_JSON.read_text(encoding="utf-8"))
@@ -99,6 +140,12 @@ def _px(x: float, y: float) -> tuple[float, float]:
     return ((x + 1.0) * 0.5 * (SIZE - 1), (1.0 - y) * 0.5 * (SIZE - 1))
 
 
+def _inner_box() -> tuple[float, float, float, float]:
+    x0, y0 = _px(-INNER, INNER)
+    x1, y1 = _px(INNER, -INNER)
+    return x0, y0, x1, y1
+
+
 def _stroke_polyline(draw: Any, points: list[list[float]], closed: bool) -> None:
     pixel = [_px(point[0], point[1]) for point in points]
     if closed and len(pixel) > 2:
@@ -107,15 +154,65 @@ def _stroke_polyline(draw: Any, points: list[list[float]], closed: bool) -> None
         draw.line(pixel, fill=WHITE, width=STROKE, joint="curve")
 
 
-def render(affiliation: str, dimension: str, category: str, path: Path) -> None:
-    from PIL import Image, ImageDraw
+def _rasterise_glyph(svg_path: Path) -> Any:
+    """Rasterise a source SVG to a white-on-transparent mask.
 
-    image = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
+    The source files carry the friendly frame as a full-canvas <rect>.  AEE
+    draws its own frame, so the rect is removed and only the inner function
+    glyph is kept.
+    """
+    from PIL import Image
 
-    for polyline in run_sqf(FRAME_KERNEL, [affiliation, dimension], {}):
-        _stroke_polyline(draw, polyline, closed=True)
+    svg = svg_path.read_text(encoding="utf-8")
+    svg = re.sub(r"<rect\b[^>]*?/>", "", svg)
+    svg = re.sub(r"<rect\b[^>]*?>.*?</rect>", "", svg, flags=re.DOTALL)
+    svg = re.sub(
+        r'stroke-width="([0-9.]+)"',
+        lambda m: f'stroke-width="{float(m.group(1)) * GLYPH_STROKE_SCALE:g}"',
+        svg,
+    )
 
+    rsvg = shutil.which("rsvg-convert")
+    if rsvg is None:
+        raise SystemExit("gen_symbology_markers: rsvg-convert not found on PATH")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        src = Path(tmp) / "glyph.svg"
+        out = Path(tmp) / "glyph.png"
+        src.write_text(svg, encoding="utf-8")
+        result = subprocess.run(
+            [rsvg, "-w", "340", str(src), "-o", str(out)],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            raise SystemExit(
+                f"gen_symbology_markers: rsvg-convert failed for {svg_path.name}\n"
+                f"{result.stderr}"
+            )
+        rgba = Image.open(out).convert("RGBA")
+
+    mask = rgba.getchannel("A")
+    white = Image.new("RGBA", rgba.size, (255, 255, 255, 0))
+    white.putalpha(mask)
+    return white
+
+
+def _composite_pd_glyph(image: Any, svg_path: Path) -> None:
+    from PIL import Image
+
+    raster = _rasterise_glyph(svg_path)
+    x0, y0, x1, y1 = _inner_box()
+    scale = min((x1 - x0) / raster.width, (y1 - y0) / raster.height)
+    width = max(1, round(raster.width * scale))
+    height = max(1, round(raster.height * scale))
+    glyph = raster.resize((width, height), Image.LANCZOS)
+    left = round((x0 + x1) / 2.0 - width / 2.0)
+    top = round((y0 + y1) / 2.0 - height / 2.0)
+    image.alpha_composite(glyph, (left, top))
+
+
+def _draw_aee_glyph(draw: Any, category: str) -> None:
     for kind, points in run_sqf(ICON_KERNEL, [category], {}):
         if kind == "ellipse":
             centre, axes, _angle = points
@@ -130,6 +227,22 @@ def render(affiliation: str, dimension: str, category: str, path: Path) -> None:
         else:
             _stroke_polyline(draw, points, closed=False)
 
+
+def render(affiliation: str, dimension: str, category: str, path: Path) -> None:
+    from PIL import Image, ImageDraw
+
+    image = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(image)
+
+    for polyline in run_sqf(FRAME_KERNEL, [affiliation, dimension], {}):
+        _stroke_polyline(draw, polyline, closed=True)
+
+    svg_name = PD_GLYPH.get(category)
+    if svg_name is not None:
+        _composite_pd_glyph(image, GLYPH_SRC / svg_name)
+    else:
+        _draw_aee_glyph(draw, category)
+
     path.parent.mkdir(parents=True, exist_ok=True)
     image.save(path)
 
@@ -138,6 +251,10 @@ def convert(tga: Path, paa: Path) -> None:
     hemtt = shutil.which("hemtt")
     if hemtt is None:
         raise SystemExit("gen_symbology_markers: hemtt not found on PATH")
+    # hemtt paa convert leaves an existing destination untouched.  Without this
+    # unlink a re-render after a kernel change would keep the old texture and
+    # --check would compare against it.
+    paa.unlink(missing_ok=True)
     result = subprocess.run(
         [hemtt, "utils", "paa", "convert", str(tga), str(paa)],
         capture_output=True,
@@ -169,6 +286,28 @@ def _dimension(source: dict[str, Any], category: str) -> str:
     raise SystemExit(f"gen_symbology_markers: no glyph row for {category!r}")
 
 
+def source_table(source: dict[str, Any]) -> list[dict[str, str]]:
+    """Per produced marker: the glyph source, the frame source and the licence."""
+    rows: list[dict[str, str]] = []
+    for family, glyph, affiliation, category in produced_set(source):
+        svg_name = PD_GLYPH.get(category)
+        rows.append(
+            {
+                "marker": f"AEE_{family}_{glyph}",
+                "affiliation": affiliation,
+                "dimension": _dimension(source, category),
+                "glyph_source": svg_name
+                if svg_name
+                else "AEE geometry (fnc_symbolIcon.sqf)",
+                "frame_source": "AEE kernel (fnc_symbolFrame.sqf)",
+                "licence": "Public domain"
+                if svg_name
+                else "AEE own work (GPL-2.0-or-later)",
+            }
+        )
+    return rows
+
+
 def check(source: dict[str, Any]) -> int:
     stale: list[str] = []
     with tempfile.TemporaryDirectory() as tmp:
@@ -198,6 +337,13 @@ def main(argv: list[str]) -> int:
     source = load_source()
     if "--check" in argv:
         return check(source)
+    if "--table" in argv:
+        for row in source_table(source):
+            print(
+                f"{row['marker']}\t{row['affiliation']}\t{row['dimension']}\t"
+                f"{row['glyph_source']}\t{row['frame_source']}\t{row['licence']}"
+            )
+        return 0
     written = build(source, MARKERS_OUT)
     print(f"symbology markers: {len(written)} textures written to {MARKERS_OUT}")
     return 0
