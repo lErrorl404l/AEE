@@ -28,6 +28,7 @@ SYM = OPTICS / "functions" / "symbology"
 PALETTE_KERNEL = SYM / "fnc_symbolPalette.sqf"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
+RESOLVE_KERNEL = SYM / "fnc_symbolResolve.sqf"
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 
 
@@ -41,6 +42,16 @@ def frame(affiliation, dimension):
 
 def icon(icon_id):
     return run_sqf(ICON_KERNEL, [icon_id], {})
+
+
+def resolve(side, category, affiliation, echelon, pal):
+    """Run the real resolver with the real colour kernel injected."""
+    globals_ = {
+        "__FUNC__symbolPalette": lambda aff, p: run_sqf(PALETTE_KERNEL, [aff, p], {}),
+    }
+    return run_sqf(
+        RESOLVE_KERNEL, [side, category, affiliation, echelon, pal], globals_
+    )
 
 
 class TestSymbolPalette(unittest.TestCase):
@@ -171,6 +182,55 @@ class TestSymbolIcon(unittest.TestCase):
                             self.assertLessEqual(abs(y), 0.55 + 1e-9)
 
 
+class TestSymbolResolve(unittest.TestCase):
+    """fnc_symbolResolve, executed: inputs -> one symbol specification."""
+
+    def test_a_hostile_armour_symbol_is_a_red_diamond(self):
+        spec = resolve("east", "armour", "hostile", "squad", "NATO")
+        self.assertEqual(spec[0], "hostile")
+        self.assertEqual(spec[1], "diamond")
+        self.assertEqual(spec[2], "land")
+        self.assertEqual(spec[3], [1, 0, 0, 1])
+        self.assertEqual(spec[4], "armour")
+        self.assertEqual(spec[5], "squad")
+
+    def test_a_friendly_infantry_symbol_is_a_rectangle(self):
+        spec = resolve("west", "infantry", "friend", "company", "NATO")
+        self.assertEqual(spec[1], "rect")
+        self.assertEqual(spec[3], [0, 1, 1, 1])
+        self.assertEqual(spec[4], "infantry")
+
+    def test_the_palette_swap_flips_the_friendly_colour(self):
+        spec = resolve("west", "infantry", "friend", "company", "OPFOR")
+        self.assertEqual(spec[3], [1, 0, 0, 1])
+
+    def test_neutral_is_a_square_and_unknown_is_a_quatrefoil(self):
+        self.assertEqual(
+            resolve("", "infantry", "neutral", "team", "NATO")[1], "square"
+        )
+        self.assertEqual(
+            resolve("", "infantry", "unknown", "team", "NATO")[1], "quatrefoil"
+        )
+
+    def test_the_dimension_follows_the_category(self):
+        for category, dimension in (
+            ("armour", "land"),
+            ("fixed_wing", "air"),
+            ("rotary", "air"),
+            ("uav", "air"),
+            ("sea_surface", "sea"),
+            ("subsurface", "subsurface"),
+            ("installation", "installation"),
+        ):
+            with self.subTest(category=category):
+                spec = resolve("", category, "friend", "squad", "NATO")
+                self.assertEqual(spec[2], dimension)
+
+    def test_an_unknown_category_falls_back_to_the_empty_icon(self):
+        spec = resolve("", "bogus", "friend", "squad", "NATO")
+        self.assertEqual(spec[4], "unknown")
+
+
 class TestSymbolPrep(unittest.TestCase):
     """Every symbology kernel is registered for CBA_fnc_prep."""
 
@@ -179,6 +239,12 @@ class TestSymbolPrep(unittest.TestCase):
 
     def test_the_frame_prep_entry_exists(self):
         self.assertIn("PREPS(symbology,symbolFrame)", PREP_SRC)
+
+    def test_the_icon_prep_entry_exists(self):
+        self.assertIn("PREPS(symbology,symbolIcon)", PREP_SRC)
+
+    def test_the_resolve_prep_entry_exists(self):
+        self.assertIn("PREPS(symbology,symbolResolve)", PREP_SRC)
 
 
 if __name__ == "__main__":
