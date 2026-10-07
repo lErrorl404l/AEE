@@ -101,3 +101,4 @@ PREPS(hud,trackerUpdate);
 // NATO/OPFOR map symbology: the pure symbol kernels and the engine adapters.
 PREPS(symbology,symbolPalette);
 PREPS(symbology,symbolFrame);
+PREPS(symbology,symbolIcon);
