@@ -153,5 +153,42 @@ class TestEngineOverrideMapping(unittest.TestCase):
                 )
 
 
+class TestCatalogueEncoding(unittest.TestCase):
+    """The asset prefix {fam}{dim} matches the symbol's affiliation and dimension.
+
+    The operator's rule: an AEE_FA_* asset must be friend + air, an AEE_HL_* one
+    hostile + land, and so on.  This is the truth table the prefix must obey.
+    """
+
+    AFFIL_LETTER = {"Friend": "F", "Hostile": "H", "Neutral": "N", "Unknown": "U"}
+    DIM_LETTER = {"Land": "L", "Air/Space": "A", "Sea Surface": "S"}
+
+    def test_every_symbol_entry_encodes_its_affiliation_and_dimension(self):
+        import sys
+
+        sys.path.insert(0, str(REPO))
+        from tools import gen_symbology_catalogue as gen
+
+        seen: set[str] = set()
+        for entry in gen.symbol_entries():
+            name = gen.marker_name(entry, seen)
+            prefix = name.split("_")[1]
+            with self.subTest(asset=name):
+                self.assertEqual(prefix[0], self.AFFIL_LETTER[entry["affil"]])
+                self.assertEqual(prefix[1], self.DIM_LETTER[entry["dim"]])
+
+    def test_every_symbol_is_registered(self):
+        import sys
+
+        sys.path.insert(0, str(REPO))
+        from tools import gen_symbology_catalogue as gen
+
+        seen: set[str] = set()
+        for entry in gen.symbol_entries():
+            name = gen.marker_name(entry, seen)
+            with self.subTest(asset=name):
+                self.assertIn(f"class {name}: AEE_MarkerBase {{", CONFIG_MARKERS)
+
+
 if __name__ == "__main__":
     unittest.main()
