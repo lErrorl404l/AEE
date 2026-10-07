@@ -29,7 +29,10 @@ PALETTE_KERNEL = SYM / "fnc_symbolPalette.sqf"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
 RESOLVE_KERNEL = SYM / "fnc_symbolResolve.sqf"
+CATEGORY_KERNEL = SYM / "fnc_symbolCategory.sqf"
+TABLES_SQF = OPTICS / "data" / "symbology_tables.sqf"
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
+SYM_TABLES = run_sqf(TABLES_SQF, [])
 
 
 def palette(affiliation, pal):
@@ -51,6 +54,13 @@ def resolve(side, category, affiliation, echelon, pal):
     }
     return run_sqf(
         RESOLVE_KERNEL, [side, category, affiliation, echelon, pal], globals_
+    )
+
+
+def category(value, kind="marker"):
+    """Run the real category kernel against the real generated table."""
+    return run_sqf(
+        CATEGORY_KERNEL, [value, kind], {"aee_optics_symbologyTables": SYM_TABLES}
     )
 
 
@@ -231,6 +241,35 @@ class TestSymbolResolve(unittest.TestCase):
         self.assertEqual(spec[4], "unknown")
 
 
+class TestSymbolCategory(unittest.TestCase):
+    """fnc_symbolCategory, executed: engine name -> class category."""
+
+    def test_the_shipped_marker_types_map(self):
+        for marker_type, expected in (
+            ("b_inf", "infantry"),
+            ("o_armor", "armour"),
+            ("n_inf", "infantry"),
+            ("c_air", "rotary"),
+            ("hd_dot", "waypoint"),
+            ("group_3", "unknown"),
+            ("flag_NATO", "unknown"),
+            ("GroundSupport_CAS_WEST", "support"),
+        ):
+            with self.subTest(marker_type=marker_type):
+                self.assertEqual(category(marker_type), expected)
+
+    def test_an_unknown_marker_type_is_unknown(self):
+        self.assertEqual(category("bogus_marker"), "unknown")
+
+    def test_a_vehicle_class_maps(self):
+        self.assertEqual(category("Men", "class"), "infantry")
+        self.assertEqual(category("Armored", "class"), "armour")
+        self.assertEqual(category("Air", "class"), "rotary")
+
+    def test_an_unknown_vehicle_class_is_unknown(self):
+        self.assertEqual(category("Bogus", "class"), "unknown")
+
+
 class TestSymbolPrep(unittest.TestCase):
     """Every symbology kernel is registered for CBA_fnc_prep."""
 
@@ -245,6 +284,9 @@ class TestSymbolPrep(unittest.TestCase):
 
     def test_the_resolve_prep_entry_exists(self):
         self.assertIn("PREPS(symbology,symbolResolve)", PREP_SRC)
+
+    def test_the_category_prep_entry_exists(self):
+        self.assertIn("PREPS(symbology,symbolCategory)", PREP_SRC)
 
 
 if __name__ == "__main__":

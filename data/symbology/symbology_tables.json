@@ -1,0 +1,83 @@
+{
+  "retrieved": "2026-10-07",
+  "note": "The Arma 3 CfgMarkers type families and the CfgVehicles vehicleClass and unitClass tokens mapped to the NATO APP-6(C) class categories. Every row is sourced or derived and carries its source.",
+  "sources": [
+    "APP-6(C) May 2011",
+    "Arma 3 CfgMarkers and CfgVehicles conventions"
+  ],
+  "categories": [
+    "infantry",
+    "armour",
+    "motorised",
+    "artillery",
+    "engineer",
+    "signal",
+    "medical",
+    "supply",
+    "support",
+    "recon",
+    "air_defence",
+    "fixed_wing",
+    "rotary",
+    "uav",
+    "sea_surface",
+    "subsurface",
+    "installation",
+    "hq",
+    "waypoint",
+    "unknown"
+  ],
+  "prefixes": [
+    {"name": "b_", "category": "unknown", "grade": "derived", "source": "Arma 3 CfgMarkers BLUFOR family; the suffix selects the category"},
+    {"name": "o_", "category": "unknown", "grade": "derived", "source": "Arma 3 CfgMarkers OPFOR family; the suffix selects the category"},
+    {"name": "n_", "category": "unknown", "grade": "derived", "source": "Arma 3 CfgMarkers Independent family; the suffix selects the category"},
+    {"name": "c_", "category": "unknown", "grade": "derived", "source": "Arma 3 CfgMarkers Civilian family; the suffix selects the category"},
+    {"name": "hd_", "category": "waypoint", "grade": "derived", "source": "Arma 3 CfgMarkers header and objective family; a point marker"},
+    {"name": "flag_", "category": "unknown", "grade": "derived", "source": "Arma 3 CfgMarkers national and faction flags; no function glyph"},
+    {"name": "Contact_", "category": "unknown", "grade": "derived", "source": "Arma 3 Contact DLC draw shapes; no function glyph"},
+    {"name": "GroundSupport_", "category": "support", "grade": "derived", "source": "Arma 3 CfgMarkers fire-support family"},
+    {"name": "group_", "category": "unknown", "grade": "derived", "source": "Arma 3 CfgMarkers group-size family; no function glyph"},
+    {"name": "loc_", "category": "installation", "grade": "derived", "source": "Arma 3 CfgMarkers location family; a place marker"}
+  ],
+  "suffixes": [
+    {"name": "inf", "category": "infantry", "grade": "sourced", "source": "APP-6(C) infantry; Arma 3 b_inf family"},
+    {"name": "armor", "category": "armour", "grade": "sourced", "source": "APP-6(C) armour; Arma 3 b_armor family"},
+    {"name": "mech_inf", "category": "armour", "grade": "derived", "source": "mechanised infantry; a tracked carrier, APP-6(C) armour"},
+    {"name": "motor_inf", "category": "motorised", "grade": "derived", "source": "motorised infantry; wheeled, APP-6(C) motorised"},
+    {"name": "art", "category": "artillery", "grade": "sourced", "source": "APP-6(C) artillery; Arma 3 b_art family"},
+    {"name": "air", "category": "rotary", "grade": "derived", "source": "Arma 3 generic air marker, drawn as a helicopter"},
+    {"name": "plane", "category": "fixed_wing", "grade": "derived", "source": "Arma 3 b_plane family; a fixed-wing aircraft"},
+    {"name": "heli", "category": "rotary", "grade": "derived", "source": "Arma 3 b_heli family; a rotary-wing aircraft"},
+    {"name": "naval", "category": "sea_surface", "grade": "derived", "source": "Arma 3 b_naval family; a surface vessel"},
+    {"name": "installation", "category": "installation", "grade": "sourced", "source": "APP-6(C) installation; Arma 3 b_installation family"},
+    {"name": "hq", "category": "hq", "grade": "sourced", "source": "APP-6(C) headquarters; Arma 3 b_hq family"},
+    {"name": "med", "category": "medical", "grade": "sourced", "source": "APP-6(C) medical; Arma 3 b_med family"},
+    {"name": "recon", "category": "recon", "grade": "derived", "source": "APP-6(C) reconnaissance"},
+    {"name": "support", "category": "support", "grade": "derived", "source": "APP-6(C) support"},
+    {"name": "unknown", "category": "unknown", "grade": "derived", "source": "APP-6(C) unknown; Arma 3 b_unknown family"},
+    {"name": "dot", "category": "waypoint", "grade": "derived", "source": "Arma 3 hd_dot; a generic point marker"}
+  ],
+  "exact": [
+    {"name": "Empty", "category": "unknown", "grade": "derived", "source": "Arma 3 empty marker class"},
+    {"name": "EmptyIcon", "category": "unknown", "grade": "derived", "source": "Arma 3 empty icon marker class"},
+    {"name": "Flag", "category": "unknown", "grade": "derived", "source": "Arma 3 base flag marker class"},
+    {"name": "KIA", "category": "unknown", "grade": "derived", "source": "Arma 3 KIA marker class"}
+  ],
+  "classes": [
+    {"name": "Men", "category": "infantry", "grade": "derived", "source": "Arma 3 vehicleClass Men; dismounted infantry"},
+    {"name": "Car", "category": "motorised", "grade": "derived", "source": "Arma 3 vehicleClass Car; a wheeled vehicle"},
+    {"name": "Armored", "category": "armour", "grade": "derived", "source": "Arma 3 vehicleClass Armored; a tracked vehicle"},
+    {"name": "Air", "category": "rotary", "grade": "derived", "source": "Arma 3 vehicleClass Air; drawn as a helicopter"},
+    {"name": "Ship", "category": "sea_surface", "grade": "derived", "source": "Arma 3 vehicleClass Ship; a surface vessel"},
+    {"name": "Submarine", "category": "subsurface", "grade": "derived", "source": "Arma 3 vehicleClass Submarine"},
+    {"name": "Support", "category": "support", "grade": "derived", "source": "Arma 3 vehicleClass Support"},
+    {"name": "Static", "category": "artillery", "grade": "derived", "source": "Arma 3 vehicleClass Static; a static weapon"},
+    {"name": "Structures", "category": "installation", "grade": "derived", "source": "Arma 3 vehicleClass Structures"},
+    {"name": "Strategic", "category": "installation", "grade": "derived", "source": "Arma 3 vehicleClass Strategic"},
+    {"name": "Ammo", "category": "supply", "grade": "derived", "source": "Arma 3 vehicleClass Ammo"},
+    {"name": "Reammo", "category": "supply", "grade": "derived", "source": "Arma 3 vehicleClass Reammo"},
+    {"name": "Repair", "category": "support", "grade": "derived", "source": "Arma 3 vehicleClass Repair"},
+    {"name": "Fuel", "category": "supply", "grade": "derived", "source": "Arma 3 vehicleClass Fuel"},
+    {"name": "Mines", "category": "unknown", "grade": "derived", "source": "Arma 3 vehicleClass Mines"}
+  ]
+}

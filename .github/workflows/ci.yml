@@ -83,6 +83,10 @@ jobs:
         run: python3 tools/validation/gen_mgrs_tables.py --check
       - name: MGRS table and anchor validation
         run: python3 tools/validation/validate_mgrs.py
+      - name: Symbology table freshness check
+        run: python3 tools/validation/gen_symbology_tables.py --check
+      - name: Symbology table and kernel validation
+        run: python3 tools/validation/validate_symbology.py
       - name: Wildlife ecology projection freshness check
         run: python3 tools/validation/gen_wildlife_ecology.py --check
       - name: Wildlife ecology corpus validation
