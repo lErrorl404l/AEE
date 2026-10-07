@@ -76,6 +76,10 @@ class CfgMarkers {
         showEditorMarkerColor = 1;
     };
 
+    // The complete AEE APP-6 marker set, generated from the pulled catalogue
+    // by tools/gen_symbology_catalogue.py.  Do not edit by hand.
+#include "config_markers.hpp"
+
     // Friendly family (side 1).
     class AEE_b_inf: AEE_MarkerBase {
         name = "AEE Friendly Infantry";

@@ -61,6 +61,8 @@ lint:
 	python3 tools/validation/validate_mgrs.py
 	python3 tools/validation/gen_symbology_tables.py --check
 	python3 tools/validation/validate_symbology.py
+	python3 tools/gen_symbology_markers.py --check
+	python3 tools/gen_symbology_catalogue.py --check
 	python3 tools/validation/gen_wildlife_ecology.py --check
 	python3 tools/validation/validate_wildlife_ecology.py
 
