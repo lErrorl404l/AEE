@@ -19,6 +19,7 @@ Run: python3 -m unittest tools.tests.test_symbology -v
 
 from __future__ import annotations
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -815,6 +816,13 @@ class TestSymbologySettingsContract(unittest.TestCase):
             for suffix in ("_Name", "_Description"):
                 with self.subTest(setting=name, suffix=suffix):
                     self.assertIn(f"STR_AEE_Optics_{name}{suffix}", STRINGTABLE_SRC)
+
+    def test_the_stringtable_keys_are_sorted(self):
+        keys = re.findall(r'<Key ID="(STR_AEE_Optics_\w+)"', STRINGTABLE_SRC)
+        self.assertEqual(keys, sorted(keys), "stringtable keys are not sorted")
+        symbology_keys = [key for key in keys if "symbology" in key.lower()]
+        self.assertTrue(symbology_keys, "no symbology stringtable keys")
+        self.assertEqual(symbology_keys, sorted(symbology_keys))
 
 
 class TestSymbologyProvenanceGuard(unittest.TestCase):
