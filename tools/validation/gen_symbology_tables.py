@@ -28,7 +28,7 @@ ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "symbology_tables.json"
 TABLES_OUT = ROOT / "addons" / "optics" / "data" / "symbology_tables.sqf"
 
-SECTIONS = ("prefixes", "suffixes", "exact", "classes")
+SECTIONS = ("prefixes", "suffixes", "exact", "classes", "families", "glyphs")
 
 TABLES_TEMPLATE = """/*
 NATO/OPFOR symbology category tables (generated).
@@ -37,16 +37,19 @@ This file is GENERATED. The generator tools/validation/gen_symbology_tables.py
 writes it from the validated source data/symbology/symbology_tables.json. Do
 not edit it by hand. Edit the source and regenerate it.
 
-The four sections are, in order:
+The six sections are, in order:
 
   0  marker type prefixes -> the family default category
   1  marker type suffixes -> the category
   2  exact marker names -> the category
   3  CfgVehicles vehicleClass and unitClass values -> the category
+  4  affiliation -> the CfgMarkers family token (b, o, n, u)
+  5  class category -> the CfgMarkers glyph token (inf, armor, ...)
 
-Each row is [name, category, grade, source]. The categories are the NATO
-APP-6(C) frame grammar classes. No category is invented: every row is
-sourced or derived and carries its source.
+Each row is [name, category, grade, source]. For sections 0 to 3 the category
+is one of the NATO APP-6(C) frame grammar classes. For section 4 the category
+is a family token and for section 5 a glyph token. No value is invented: every
+row is sourced or derived and carries its source.
 */
 [
 __SECTIONS__

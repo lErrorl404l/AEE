@@ -5,16 +5,19 @@ This file is GENERATED. The generator tools/validation/gen_symbology_tables.py
 writes it from the validated source data/symbology/symbology_tables.json. Do
 not edit it by hand. Edit the source and regenerate it.
 
-The four sections are, in order:
+The six sections are, in order:
 
   0  marker type prefixes -> the family default category
   1  marker type suffixes -> the category
   2  exact marker names -> the category
   3  CfgVehicles vehicleClass and unitClass values -> the category
+  4  affiliation -> the CfgMarkers family token (b, o, n, u)
+  5  class category -> the CfgMarkers glyph token (inf, armor, ...)
 
-Each row is [name, category, grade, source]. The categories are the NATO
-APP-6(C) frame grammar classes. No category is invented: every row is
-sourced or derived and carries its source.
+Each row is [name, category, grade, source]. For sections 0 to 3 the category
+is one of the NATO APP-6(C) frame grammar classes. For section 4 the category
+is a family token and for section 5 a glyph token. No value is invented: every
+row is sourced or derived and carries its source.
 */
 [
     [
@@ -69,5 +72,33 @@ sourced or derived and carries its source.
         ["Repair", "support", "derived", "Arma 3 vehicleClass Repair"],
         ["Fuel", "supply", "derived", "Arma 3 vehicleClass Fuel"],
         ["Mines", "unknown", "derived", "Arma 3 vehicleClass Mines"]
+    ],
+    [
+        ["friend", "b", "derived", "Arma 3 CfgMarkers NATO BLUFOR family b_; icon \A3\ui_f\data\map\markers\nato\b_*.paa"],
+        ["hostile", "o", "derived", "Arma 3 CfgMarkers NATO OPFOR family o_; icon \A3\ui_f\data\map\markers\nato\o_*.paa"],
+        ["neutral", "n", "derived", "Arma 3 CfgMarkers NATO Independent family n_; icon \A3\ui_f\data\map\markers\nato\n_*.paa"],
+        ["unknown", "u", "derived", "AEE unknown-affiliation family; Arma 3 ships no u_ family, so the AEE u_ textures are produced"]
+    ],
+    [
+        ["infantry", "inf", "sourced", "APP-6(C) infantry; Arma 3 b_inf"],
+        ["armour", "armor", "sourced", "APP-6(C) armour; Arma 3 b_armor"],
+        ["motorised", "motor_inf", "derived", "APP-6(C) motorised; Arma 3 b_motor_inf"],
+        ["artillery", "art", "sourced", "APP-6(C) artillery; Arma 3 b_art"],
+        ["engineer", "eng", "derived", "APP-6(C) engineer; no Arma 3 glyph, AEE produces AEE_*_eng.paa"],
+        ["signal", "sig", "derived", "APP-6(C) signal; no Arma 3 glyph, AEE produces AEE_*_sig.paa"],
+        ["medical", "med", "sourced", "APP-6(C) medical; Arma 3 b_med"],
+        ["supply", "sup", "derived", "APP-6(C) supply; no Arma 3 glyph, AEE produces AEE_*_sup.paa"],
+        ["support", "support", "derived", "APP-6(C) support; Arma 3 b_support"],
+        ["recon", "recon", "derived", "APP-6(C) reconnaissance; Arma 3 b_recon"],
+        ["air_defence", "antiair", "derived", "APP-6(C) air defence; Arma 3 b_antiair"],
+        ["fixed_wing", "plane", "derived", "APP-6(C) fixed wing; Arma 3 b_plane"],
+        ["rotary", "air", "derived", "APP-6(C) rotary wing; Arma 3 generic b_air"],
+        ["uav", "uav", "derived", "APP-6(C) unmanned aerial; Arma 3 b_uav"],
+        ["sea_surface", "naval", "derived", "APP-6(C) sea surface; Arma 3 b_naval"],
+        ["subsurface", "sub", "derived", "APP-6(C) subsurface; no Arma 3 glyph, AEE produces AEE_*_sub.paa"],
+        ["installation", "installation", "sourced", "APP-6(C) installation; Arma 3 b_installation"],
+        ["hq", "hq", "sourced", "APP-6(C) headquarters; Arma 3 b_hq"],
+        ["waypoint", "dot", "derived", "AEE waypoint; no Arma 3 NATO glyph, AEE produces AEE_*_dot.paa"],
+        ["unknown", "unknown", "derived", "APP-6(C) unknown; Arma 3 b_unknown"]
     ]
 ]
