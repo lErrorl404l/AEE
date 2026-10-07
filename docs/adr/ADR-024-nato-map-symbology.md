@@ -220,7 +220,13 @@ kernel header.
   permit reuse, and a `.paa` set is large. AEE references the engine's own
   textures where they fit and produces the rest from its own geometry.
 - A drawn overlay on the map control. The operator direction is real markers.
-  The drawn overlay is superseded, so no symbol Draw event handler remains.
+  The symbol Draw event handler was dropped, because the real markers carry
+  the symbols and the engine draws them.
+- A Wikimedia Commons image. The NATO symbol set is CC-BY-SA, so a vendored
+  image would carry a share-alike obligation. It was a visual cross-check
+  only, and no image is used.
+- A workshop-mod `.paa`. The three studied mods forbid reuse in their
+  licences, so no such texture is copied.
 - A new PBO. The layer lives in `addons/optics`, so no new addon and no new load
   order is needed.
 - The engine unit icons. The engine 3D unit icon has no per-object script

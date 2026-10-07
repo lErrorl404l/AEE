@@ -205,6 +205,10 @@ The engine 3D unit icons cannot be suppressed, so the world layer draws over
 them and states the ceiling. The map layer converts the engine mission markers
 to AEE markers locally and restores them when the map closes.
 
+The engine's own NATO texture is referenced where it fits
+(`\A3\ui_f\data\map\markers\nato\b_inf.paa`). AEE produces the rest under
+`addons/optics/data/markers/`, so no third-party texture is vendored.
+
 ## nightvision
 
 Night-vision tube model, laser target marker and grain. The design decisions

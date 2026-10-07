@@ -151,13 +151,13 @@ replaced tooltip.
 
 ### Symbology probe
 
-The NATO/OPFOR symbology work adds probe P111. The map and world draw layers
+The NATO/OPFOR symbology work adds probe P111. The map and world marker layers
 exist only on a client, so the probe drives the real pure kernels with
 fixtures. It renders nothing and calls no engine draw command.
 
 | Probe | Checks |
 |---|---|
-| P111 | The palette Table 1-4 and the OPFOR swap, the frame grammar, the inner glyphs, the resolver and the category table |
+| P111 | The palette Table 1-4 and the OPFOR swap, the marker-type kernel, the marker-colour kernel and the category table |
 
 The engine 3D unit icons cannot be suppressed, so no probe claims to remove
 them. The visible symbol result needs one operator run.
