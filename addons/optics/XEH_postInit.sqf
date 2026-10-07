@@ -183,6 +183,9 @@ if (hasInterface) then {
     // MGRS map overlay: attaches a Draw handler to the engine map control
     // when the map opens.  Read-only, no marker is created or edited.
     [] call FUNC(mgrsMapDraw);
+    // NATO/OPFOR map symbols: hides the engine markers locally and draws the
+    // AEE symbols in their place.  Read-only apart from the reversible hide.
+    [] call FUNC(symbologyMapDraw);
     [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
     // MGRS GPS device readout: raised only while the player carries an
     // ItemGPS and the aee_optics_mgrsEnabled setting is on.

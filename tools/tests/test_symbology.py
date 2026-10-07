@@ -41,6 +41,9 @@ SYM_TABLES = run_sqf(TABLES_SQF, [])
 MARKER_CAT_SRC = MARKER_CAT_KERNEL.read_text(encoding="utf-8")
 UNIT_CAT_SRC = UNIT_CAT_KERNEL.read_text(encoding="utf-8")
 AFFILIATION_SRC = AFFILIATION_KERNEL.read_text(encoding="utf-8")
+SYM_MAP_KERNEL = SYM / "fnc_symbologyMapDraw.sqf"
+SYM_MAP_SRC = SYM_MAP_KERNEL.read_text(encoding="utf-8")
+POSTINIT_SRC = (OPTICS / "XEH_postInit.sqf").read_text(encoding="utf-8")
 
 
 def palette(affiliation, pal):
@@ -421,6 +424,62 @@ class TestSymbolDrawPlan(unittest.TestCase):
         src = DRAW_PLAN_KERNEL.read_text(encoding="utf-8")
         for forbidden in ("drawLine", "drawPolygon", "drawEllipse", "drawIcon"):
             self.assertNotIn(forbidden, src)
+
+
+class TestSymbologyMapDrawContract(unittest.TestCase):
+    """fnc_symbologyMapDraw carries the engine wiring and the local restore."""
+
+    def test_the_draw_handler_is_attached_to_the_map_control(self):
+        self.assertIn('ctrlAddEventHandler ["Draw"', SYM_MAP_SRC)
+        self.assertIn("findDisplay 12", SYM_MAP_SRC)
+        self.assertIn("displayCtrl 51", SYM_MAP_SRC)
+
+    def test_the_engine_indicators_are_suppressed_where_allowed(self):
+        self.assertIn("disableMapIndicators [true, true, true, true]", SYM_MAP_SRC)
+
+    def test_every_marker_is_hidden_locally(self):
+        self.assertIn("allMapMarkers", SYM_MAP_SRC)
+        self.assertIn("setMarkerAlphaLocal 0", SYM_MAP_SRC)
+
+    def test_the_original_alpha_is_recorded_and_restored(self):
+        self.assertIn("markerAlpha _name", SYM_MAP_SRC)
+        self.assertIn("setMarkerAlphaLocal (_x select 1)", SYM_MAP_SRC)
+
+    def test_the_geometry_is_converted_from_the_unit_box(self):
+        self.assertIn("ctrlMapWorldToScreen", SYM_MAP_SRC)
+        self.assertIn("ctrlMapScreenToWorld", SYM_MAP_SRC)
+
+    def test_the_frame_icon_and_label_are_drawn(self):
+        self.assertIn("drawPolygon", SYM_MAP_SRC)
+        self.assertIn("drawLine", SYM_MAP_SRC)
+        self.assertIn("drawEllipse", SYM_MAP_SRC)
+        self.assertIn("drawIcon", SYM_MAP_SRC)
+
+    def test_no_global_marker_command_is_called(self):
+        for forbidden in (
+            "setMarkerAlpha(",
+            "setMarkerColor",
+            "setMarkerText",
+            "setMarkerPos",
+            "deleteMarker",
+        ):
+            self.assertNotIn(forbidden, SYM_MAP_SRC)
+
+    def test_no_texture_path_is_drawn(self):
+        self.assertIn('drawIcon [\n                    "", _colour', SYM_MAP_SRC)
+
+    def test_the_label_carries_the_font_parameter(self):
+        self.assertIn('_font, "center"', SYM_MAP_SRC)
+
+    def test_the_markers_player_and_units_are_drawn(self):
+        for adapter in (
+            "FUNC(symbologyMarkerCategory)",
+            "FUNC(symbologyAffiliation)",
+            "FUNC(symbolResolve)",
+            "FUNC(symbolDrawPlan)",
+            "FUNC(symbologyUnitCategory)",
+        ):
+            self.assertIn(adapter, SYM_MAP_SRC)
 
 
 class TestSymbolPrep(unittest.TestCase):
