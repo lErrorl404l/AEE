@@ -29,6 +29,7 @@ PALETTE_KERNEL = SYM / "fnc_symbolPalette.sqf"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
 RESOLVE_KERNEL = SYM / "fnc_symbolResolve.sqf"
+DRAW_PLAN_KERNEL = SYM / "fnc_symbolDrawPlan.sqf"
 CATEGORY_KERNEL = SYM / "fnc_symbolCategory.sqf"
 MARKER_CAT_KERNEL = SYM / "fnc_symbologyMarkerCategory.sqf"
 UNIT_CAT_KERNEL = SYM / "fnc_symbologyUnitCategory.sqf"
@@ -62,6 +63,15 @@ def resolve(side, category, affiliation, echelon, pal):
     return run_sqf(
         RESOLVE_KERNEL, [side, category, affiliation, echelon, pal], globals_
     )
+
+
+def draw_plan(spec):
+    """Run the real draw-plan kernel with the real frame and icon kernels."""
+    globals_ = {
+        "__FUNC__symbolFrame": lambda aff, dim: run_sqf(FRAME_KERNEL, [aff, dim], {}),
+        "__FUNC__symbolIcon": lambda icon_id: run_sqf(ICON_KERNEL, [icon_id], {}),
+    }
+    return run_sqf(DRAW_PLAN_KERNEL, [spec], globals_)
 
 
 def category(value, kind="marker"):
@@ -347,6 +357,72 @@ class TestSymbolAdapterContracts(unittest.TestCase):
         self.assertIn("call FUNC(symbolCategory)", UNIT_CAT_SRC)
 
 
+class TestSymbolDrawPlan(unittest.TestCase):
+    """fnc_symbolDrawPlan, executed: spec -> ordered draw primitives."""
+
+    SPEC = ["friend", "rect", "land", [0, 1, 1, 1], "infantry", "squad"]
+
+    def test_the_frame_primitives_come_first(self):
+        plan = draw_plan(self.SPEC)
+        self.assertEqual(plan[0][0], "poly")
+        self.assertEqual(plan[0][2], "frame")
+        self.assertEqual(plan[0][1], [[-1, -0.6], [1, -0.6], [1, 0.6], [-1, 0.6]])
+
+    def test_the_icon_primitives_come_next(self):
+        plan = draw_plan(self.SPEC)
+        icon_prims = [prim for prim in plan if prim[2] == "icon"]
+        self.assertEqual(len(icon_prims), 2)
+        self.assertTrue(all(prim[0] == "line" for prim in icon_prims))
+
+    def test_the_plan_has_a_closed_rectangle_and_two_crossed_lines(self):
+        plan = draw_plan(self.SPEC)
+        rect = plan[0][1]
+        self.assertEqual(len(rect), 4)
+        crossed = [prim for prim in plan if prim[2] == "icon"]
+        self.assertEqual(len(crossed), 2)
+        # One line rises left to right, the other falls: a saltire.
+        self.assertGreater(crossed[0][1][1][1] - crossed[0][1][0][1], 0)
+        self.assertLess(crossed[1][1][1][1] - crossed[1][1][0][1], 0)
+
+    def test_every_primitive_kind_is_drawable(self):
+        for spec in (
+            self.SPEC,
+            ["hostile", "diamond", "air", [1, 0, 0, 1], "armour", "company"],
+            ["unknown", "quatrefoil", "land", [1, 1, 0, 1], "bogus", "corps"],
+        ):
+            with self.subTest(spec=spec):
+                for kind, points, hint in draw_plan(spec):
+                    self.assertIn(kind, ("line", "poly", "ellipse"))
+                    self.assertIn(hint, ("frame", "icon"))
+                    self.assertIsInstance(points, list)
+
+    def test_a_squad_adds_one_echelon_dot(self):
+        plan = draw_plan(self.SPEC)
+        dots = [prim for prim in plan if prim[0] == "ellipse" and prim[2] == "frame"]
+        self.assertEqual(len(dots), 1)
+
+    def test_an_unknown_echelon_adds_no_mark(self):
+        plan = draw_plan(
+            ["friend", "rect", "land", [0, 1, 1, 1], "infantry", "unknown"]
+        )
+        marks = [
+            prim
+            for prim in plan
+            if prim[2] == "frame" and prim[1] != plan[0][1] and len(prim[1]) != 1
+        ]
+        self.assertEqual(marks, [])
+
+    def test_label_anchors_are_single_point_polys(self):
+        plan = draw_plan(self.SPEC)
+        anchors = [prim for prim in plan if prim[0] == "poly" and len(prim[1]) == 1]
+        self.assertEqual(len(anchors), 2)
+
+    def test_the_kernel_calls_no_engine_draw_command(self):
+        src = DRAW_PLAN_KERNEL.read_text(encoding="utf-8")
+        for forbidden in ("drawLine", "drawPolygon", "drawEllipse", "drawIcon"):
+            self.assertNotIn(forbidden, src)
+
+
 class TestSymbolPrep(unittest.TestCase):
     """Every symbology kernel is registered for CBA_fnc_prep."""
 
@@ -361,6 +437,9 @@ class TestSymbolPrep(unittest.TestCase):
 
     def test_the_resolve_prep_entry_exists(self):
         self.assertIn("PREPS(symbology,symbolResolve)", PREP_SRC)
+
+    def test_the_draw_plan_prep_entry_exists(self):
+        self.assertIn("PREPS(symbology,symbolDrawPlan)", PREP_SRC)
 
     def test_the_category_prep_entry_exists(self):
         self.assertIn("PREPS(symbology,symbolCategory)", PREP_SRC)
