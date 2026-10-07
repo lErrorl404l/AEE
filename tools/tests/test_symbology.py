@@ -43,6 +43,11 @@ UNIT_CAT_SRC = UNIT_CAT_KERNEL.read_text(encoding="utf-8")
 AFFILIATION_SRC = AFFILIATION_KERNEL.read_text(encoding="utf-8")
 SYM_MAP_KERNEL = SYM / "fnc_symbologyMapDraw.sqf"
 SYM_MAP_SRC = SYM_MAP_KERNEL.read_text(encoding="utf-8")
+SYM_WORLD_KERNEL = SYM / "fnc_symbologyWorldDraw.sqf"
+SYM_WORLD_SRC = SYM_WORLD_KERNEL.read_text(encoding="utf-8")
+HUD_MARKERS_SRC = (OPTICS / "functions" / "hud" / "fnc_hudMarkers.sqf").read_text(
+    encoding="utf-8"
+)
 POSTINIT_SRC = (OPTICS / "XEH_postInit.sqf").read_text(encoding="utf-8")
 
 
@@ -480,6 +485,61 @@ class TestSymbologyMapDrawContract(unittest.TestCase):
             "FUNC(symbologyUnitCategory)",
         ):
             self.assertIn(adapter, SYM_MAP_SRC)
+
+
+class TestSymbologyWorldDrawContract(unittest.TestCase):
+    """fnc_symbologyWorldDraw carries the Draw3D wiring and the range gate."""
+
+    def test_the_worker_is_a_draw3d_handler(self):
+        self.assertIn('addMissionEventHandler ["Draw3D"', SYM_WORLD_SRC)
+
+    def test_the_frame_and_glyph_are_drawn_as_3d_lines(self):
+        self.assertIn("drawLine3D", SYM_WORLD_SRC)
+
+    def test_the_label_carries_the_font_parameter(self):
+        self.assertIn("drawIcon3D", SYM_WORLD_SRC)
+        self.assertIn('_font, "center"', SYM_WORLD_SRC)
+
+    def test_the_symbols_are_drawn_out_to_a_set_range(self):
+        self.assertIn("#define SYMBOLOGY_WORLD_RANGE", SYM_WORLD_SRC)
+        self.assertIn("<= SYMBOLOGY_WORLD_RANGE", SYM_WORLD_SRC)
+
+    def test_the_unit_list_is_rebuilt_at_most_once_a_second(self):
+        self.assertIn("symbologyWorldTime", SYM_WORLD_SRC)
+        self.assertIn("(_now - _last) > 1", SYM_WORLD_SRC)
+        self.assertIn("allUnits", SYM_WORLD_SRC)
+
+    def test_the_worker_states_the_engine_icons_cannot_be_suppressed(self):
+        # The honest ceiling is recorded, so the worker makes no false claim
+        # to remove the engine's own 3D unit icons.
+        self.assertIn("cannot be suppressed", SYM_WORLD_SRC)
+
+    def test_the_worker_calls_the_resolver_and_the_draw_plan(self):
+        self.assertIn("FUNC(symbolResolve)", SYM_WORLD_SRC)
+        self.assertIn("FUNC(symbolDrawPlan)", SYM_WORLD_SRC)
+
+
+class TestHudMarkersFrameContract(unittest.TestCase):
+    """fnc_hudMarkers draws the symbol frame in front of its text label."""
+
+    def test_the_frame_is_built_from_the_draw_plan(self):
+        self.assertIn("FUNC(symbolDrawPlan)", HUD_MARKERS_SRC)
+
+    def test_the_frame_is_drawn_as_3d_lines(self):
+        self.assertIn("drawLine3D", HUD_MARKERS_SRC)
+
+    def test_the_frame_is_gated_on_the_symbology_setting(self):
+        self.assertIn("symbologyEnabled", HUD_MARKERS_SRC)
+
+
+class TestSymbolPostInit(unittest.TestCase):
+    """The map and world workers are wired from postInit."""
+
+    def test_the_map_worker_is_wired(self):
+        self.assertIn("[] call FUNC(symbologyMapDraw)", POSTINIT_SRC)
+
+    def test_the_world_worker_is_wired(self):
+        self.assertIn("[] call FUNC(symbologyWorldDraw)", POSTINIT_SRC)
 
 
 class TestSymbolPrep(unittest.TestCase):

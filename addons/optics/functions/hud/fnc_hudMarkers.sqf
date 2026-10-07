@@ -34,7 +34,7 @@ missionNamespace setVariable [QGVAR(hudMarkersEH), addMissionEventHandler ["Draw
             private _pos = getMarkerPos _x;
             if (_text isNotEqualTo "" && _type isNotEqualTo "") then {
                 if ((_pos select 0) isNotEqualTo 0 || (_pos select 1) isNotEqualTo 0) then {
-                    _cache pushBack [_text, _pos];
+                    _cache pushBack [_text, _pos, _x, _type];
                 };
             };
         } forEach allMapMarkers;
@@ -44,9 +44,40 @@ missionNamespace setVariable [QGVAR(hudMarkersEH), addMissionEventHandler ["Draw
 
     private _player = call CBA_fnc_currentUnit;
     {
-        _x params ["_text", "_pos"];
+        _x params ["_text", "_pos", "_name", "_type"];
         private _dist = _player distance _pos;
         if (_dist <= 2500) then {
+            // The AEE symbol frame in front of the text label.  It is the
+            // first draw-plan primitive, the frame outline, in 3D.
+            if (missionNamespace getVariable [QGVAR(symbologyEnabled), false]) then {
+                private _category = [_name, _type] call FUNC(symbologyMarkerCategory);
+                private _affiliation = [_name] call FUNC(symbologyAffiliation);
+                private _spec = [
+                    sideUnknown, _category, _affiliation, "unknown", "Auto"
+                ] call FUNC(symbolResolve);
+                private _colour = _spec select 3;
+                private _plan = [_spec] call FUNC(symbolDrawPlan);
+                private _frame = (_plan select 0) select 1;
+                private _scale = 1.2;
+                private _z = (_pos select 2) + 1.0;
+                for "_i" from 0 to ((count _frame) - 1) do {
+                    private _pA = _frame select _i;
+                    private _pB = _frame select ((_i + 1) mod (count _frame));
+                    drawLine3D [
+                        [
+                            (_pos select 0) + ((_pA select 0) * _scale),
+                            (_pos select 1) + ((_pA select 1) * _scale),
+                            _z
+                        ],
+                        [
+                            (_pos select 0) + ((_pB select 0) * _scale),
+                            (_pos select 1) + ((_pB select 1) * _scale),
+                            _z
+                        ],
+                        _colour
+                    ];
+                };
+            };
             drawIcon3D [
                 "", [0.75, 1, 1, 0.9], _pos, 0, 0, 0,
                 _text, 2, 0.024, "PuristaMedium", "center"

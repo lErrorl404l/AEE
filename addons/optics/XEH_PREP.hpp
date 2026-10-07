@@ -110,3 +110,4 @@ PREPS(symbology,symbologyUnitCategory);
 PREPS(symbology,symbologyAffiliation);
 PREPS(symbology,symbologyPaletteFriendly);
 PREPS(symbology,symbologyMapDraw);
+PREPS(symbology,symbologyWorldDraw);

@@ -186,6 +186,10 @@ if (hasInterface) then {
     // NATO/OPFOR map symbols: hides the engine markers locally and draws the
     // AEE symbols in their place.  Read-only apart from the reversible hide.
     [] call FUNC(symbologyMapDraw);
+    // NATO/OPFOR 3D world symbols: draws the AEE frame and glyph in the 3D
+    // view.  The engine's own unit icons remain; this worker does not remove
+    // them.
+    [] call FUNC(symbologyWorldDraw);
     [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
     // MGRS GPS device readout: raised only while the player carries an
     // ItemGPS and the aee_optics_mgrsEnabled setting is on.
