@@ -150,7 +150,7 @@ if (_selTempRaw isEqualType 0) then {
     _selTempC = _selTempRaw;
 } else {
     private _vals = values _selTempRaw;
-    if ((_vals isEqualType []) && ((count _vals) > 0)) then {
+    if ((_vals isEqualType []) && (_vals isNotEqualTo [])) then {
         private _sum = 0;
         private _n = 0;
         { if (_x isEqualType 0) then { _sum = _sum + _x; _n = _n + 1; }; } forEach _vals;
@@ -237,11 +237,11 @@ missionNamespace setVariable [QGVAR(perceptionFlags), _flags];
 // One INFO line on the first sample, DEBUG after.  AEE_LOG_DEBUG is gated by
 // the module trace switch.
 private _logged = missionNamespace getVariable [QGVAR(perceptionLogged), false];
-if (!_logged) then {
+if (_logged) then {
+    AEE_LOG_DEBUG(_line);
+} else {
     missionNamespace setVariable [QGVAR(perceptionLogged), true];
     AEE_LOG_INFO(_line);
-} else {
-    AEE_LOG_DEBUG(_line);
 };
 
 // ── Debug HUD ───────────────────────────────────────────────────────────────

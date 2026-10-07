@@ -157,6 +157,7 @@ BINARY_COMMANDS = {
     # bare identifier and the write is silently dropped.
     "setVariable",
     "isEqualType",
+    "isEqualTypeAny",
     "isEqualTo",
     "isNotEqualTo",
     "pushBack",
@@ -211,6 +212,13 @@ def _sqf_type_tag(value: Any) -> str:
 
 def _sqf_isEqualType(a: Any, b: Any) -> bool:
     return _sqf_type_tag(a) == _sqf_type_tag(b)
+
+
+def _sqf_isEqualTypeAny(value: Any, types: Any) -> bool:
+    """SQF `value isEqualTypeAny array`: true when the type of `value`
+    matches the type of any element of `types`."""
+    tag = _sqf_type_tag(value)
+    return any(_sqf_type_tag(t) == tag for t in types)
 
 
 # Unary commands applied to a following expression.  Without these the
@@ -338,6 +346,7 @@ BUILTINS: dict[str, Any] = {
     "sort": _sqf_sort,
     "isEqualTo": _sqf_isEqualTo,
     "isEqualType": _sqf_isEqualType,
+    "isEqualTypeAny": _sqf_isEqualTypeAny,
     "isNotEqualTo": _sqf_isNotEqualTo,
     "isKindOf": _sqf_isKindOf,
     "vectorDiff": _sqf_vectorDiff,

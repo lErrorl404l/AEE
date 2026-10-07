@@ -66,13 +66,13 @@ private _lookup = {
 private _present = [];
 {
     private _v = [_values, _x select 1, _missing] call _lookup;
-    if ((_v isEqualType 0) || {_v isEqualType true}) then {
+    if (_v isEqualTypeAny [0, true]) then {
         _present pushBack [_x select 0, _x select 1, _v];
     };
 } forEach _producers;
 
 private _ref = 0;
-if ((count _present) > 0) then { _ref = (_present select 0) select 2; };
+if (_present isNotEqualTo []) then { _ref = (_present select 0) select 2; };
 
 // The producers that disagree with the row expectation.
 private _bad = [];
@@ -137,7 +137,7 @@ if (_predicate == "daynight_consistent") then {
 };
 
 // A predicate that cannot localise the disagreement names every producer.
-if ((count _bad) == 0) then { _bad = _present; };
+if (_bad isEqualTo []) then { _bad = _present; };
 
 // Drift is the spread of the present NUMBER values; a BOOL (the INV-5 night
 // flag) carries no magnitude and is skipped.  A `for` loop, not a forEach
@@ -148,13 +148,13 @@ private _haveRange = false;
 for "_i" from 0 to ((count _present) - 1) do {
     private _v = (_present select _i) select 2;
     if (_v isEqualType 0) then {
-        if (!_haveRange) then {
+        if (_haveRange) then {
+            if (_v < _vmin) then { _vmin = _v; };
+            if (_v > _vmax) then { _vmax = _v; };
+        } else {
             _vmin = _v;
             _vmax = _v;
             _haveRange = true;
-        } else {
-            if (_v < _vmin) then { _vmin = _v; };
-            if (_v > _vmax) then { _vmax = _v; };
         };
     };
 };

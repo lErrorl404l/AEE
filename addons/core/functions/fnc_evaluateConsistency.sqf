@@ -106,7 +106,7 @@ while { _r < _rowCount } do {
     while { _p < _producerCount } do {
         private _pair = _producers select _p;
         private _v = [_values, _pair select 1, _missing] call _lookup;
-        if ((_v isEqualType 0) || {_v isEqualType true}) then { _vals pushBack _v; };
+        if (_v isEqualTypeAny [0, true]) then { _vals pushBack _v; };
         _p = _p + 1;
     };
 
