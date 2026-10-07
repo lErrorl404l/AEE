@@ -1,8 +1,22 @@
 {
  "source": "/tmp/opencode/nato-symbols (Commons gallery + en.wikipedia + category tree)",
- "count": 786,
- "dropped": 684,
+ "count": 803,
+ "dropped": 667,
  "entries": [
+  {
+   "file": "NATO Map Symbol - Unit Size - 900 - Installation or Facility or Base.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/NATO_Map_Symbol_-_Unit_Size_-_900_-_Installation_or_Facility_or_Base.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "echelon",
+   "affil": "",
+   "dim": "",
+   "func": "Unit Size - 900 - Installation or Facility or Base",
+   "frame": "",
+   "src": "commons-category"
+  },
   {
    "file": "NATO Map Symbol - Unit Size - Army.svg",
    "dir": "ccbysa",
@@ -184,6 +198,20 @@
    "func": "Unit Size - Division",
    "frame": "",
    "src": "en-wiki-article"
+  },
+  {
+   "file": "NATO Map Symbol - Unit Size - Division Expiditionary Force.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/NATO_Map_Symbol_-_Unit_Size_-_Division_Expiditionary_Force.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "echelon",
+   "affil": "",
+   "dim": "",
+   "func": "Unit Size - Division Expiditionary Force",
+   "frame": "",
+   "src": "commons-category"
   },
   {
    "file": "Military Map Symbol - Unit Size - Light Blue - 090 - Division.svg",
@@ -1906,6 +1934,34 @@
    "func": "Friendly Unit - B&W",
    "frame": "",
    "src": "en-wiki-article"
+  },
+  {
+   "file": "NATO Map Symbol - Friendly Unit - Opaque.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/NATO_Map_Symbol_-_Friendly_Unit_-_Opaque.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Friend",
+   "dim": "Land",
+   "func": "Friendly Unit - Opaque",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
+   "file": "NATO Map Symbol - Friendly Unit - Solid.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/NATO_Map_Symbol_-_Friendly_Unit_-_Solid.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Friend",
+   "dim": "Land",
+   "func": "Friendly Unit - Solid",
+   "frame": "",
+   "src": "commons-category"
   },
   {
    "file": "Military Symbol - Friendly Unit (Bichrome 1.5x1 Frame)- Air Defence (NATO APP-6A).svg",
@@ -5086,34 +5142,6 @@
    "src": "en-wiki-article"
   },
   {
-   "file": "Military Symbol - Hostile Unit (Monochrome Light 1.5x1 Frame)- Armour (NATO APP-6).svg",
-   "dir": "ccbysa",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Military_Symbol_-_Hostile_Unit_%28Monochrome_Light_1.5x1_Frame%29-_Armour_%28NATO_APP-6%29.svg",
-   "license": "CC BY-SA 4.0",
-   "artist": "CdnMCG",
-   "mime": "image/svg+xml",
-   "kind": "symbol",
-   "affil": "Friend",
-   "dim": "Land",
-   "func": "Hostile Unit Armour",
-   "frame": "Monochrome Light 1.5x1 Frame",
-   "src": "en-wiki-article"
-  },
-  {
-   "file": "Military Symbol - Hostile Unit (Monochrome Dark 1.6x1 Frame)- Unspecified or Composite All-Arms (NATO APP-6).svg",
-   "dir": "ccbysa",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Military_Symbol_-_Hostile_Unit_%28Monochrome_Dark_1.6x1_Frame%29-_Unspecified_or_Composite_All-Arms_%28NATO_APP-6%29.svg",
-   "license": "CC BY-SA 4.0",
-   "artist": "CdnMCG",
-   "mime": "image/svg+xml",
-   "kind": "symbol",
-   "affil": "Friend",
-   "dim": "Land",
-   "func": "Hostile Unit Unspecified or Composite All-Arms",
-   "frame": "Monochrome Dark 1.6x1 Frame",
-   "src": "en-wiki-article"
-  },
-  {
    "file": "Military Symbol - Friendly Unit (Bichrome 1.5x1 Frame)- Air Naval Gunfire Liaison Company (USMC) (NATO APP-6A).svg",
    "dir": "ccbysa",
    "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Military_Symbol_-_Friendly_Unit_%28Bichrome_1.5x1_Frame%29-_Air_Naval_Gunfire_Liaison_Company_%28USMC%29_%28NATO_APP-6A%29.svg",
@@ -5210,6 +5238,20 @@
    "func": "Friendly Unit Special Operations Force - Naval",
    "frame": "Bichrome 1.5x1 Frame",
    "src": "commons-gallery"
+  },
+  {
+   "file": "NATO Map Symbol - Friendly Sub-surface Sea Unit - Solid.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/NATO_Map_Symbol_-_Friendly_Sub-surface_Sea_Unit_-_Solid.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Friend",
+   "dim": "Subsurface",
+   "func": "Friendly Sub-surface Sea Unit - Solid",
+   "frame": "",
+   "src": "commons-category"
   },
   {
    "file": "Military Symbol - Hostile Unit (Bichrome Diamond Frame)- Airborne Forces (NATO APP-6).svg",
@@ -5839,6 +5881,20 @@
    "dim": "Land",
    "func": "Hostile Unit Armour",
    "frame": "Solid Diamond Frame",
+   "src": "en-wiki-article"
+  },
+  {
+   "file": "Military Symbol - Hostile Unit (Monochrome Light 1.5x1 Frame)- Armour (NATO APP-6).svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Military_Symbol_-_Hostile_Unit_%28Monochrome_Light_1.5x1_Frame%29-_Armour_%28NATO_APP-6%29.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Hostile",
+   "dim": "Land",
+   "func": "Hostile Unit Armour",
+   "frame": "Monochrome Light 1.5x1 Frame",
    "src": "en-wiki-article"
   },
   {
@@ -8124,6 +8180,20 @@
    "src": "en-wiki-article"
   },
   {
+   "file": "Military Symbol - Hostile Unit (Monochrome Dark 1.6x1 Frame)- Unspecified or Composite All-Arms (NATO APP-6).svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Military_Symbol_-_Hostile_Unit_%28Monochrome_Dark_1.6x1_Frame%29-_Unspecified_or_Composite_All-Arms_%28NATO_APP-6%29.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Hostile",
+   "dim": "Land",
+   "func": "Hostile Unit Unspecified or Composite All-Arms",
+   "frame": "Monochrome Dark 1.6x1 Frame",
+   "src": "en-wiki-article"
+  },
+  {
    "file": "Military Symbol - Hostile Unit (Monochrome Light Diamond Frame)- Unspecified or Composite All-Arms (NATO APP-6A).svg",
    "dir": "ccbysa",
    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Military_Symbol_-_Hostile_Unit_%28Monochrome_Light_Diamond_Frame%29-_Unspecified_or_Composite_All-Arms_%28NATO_APP-6A%29.svg",
@@ -8248,6 +8318,34 @@
    "func": "Hostile Unit Special Operations Force - Naval",
    "frame": "Bichrome Diamond Frame",
    "src": "commons-gallery"
+  },
+  {
+   "file": "NATO Map Symbol - Neutral Air Unit (APP-6B).svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/NATO_Map_Symbol_-_Neutral_Air_Unit_%28APP-6B%29.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Neutral",
+   "dim": "Air/Space",
+   "func": "Neutral Air Unit",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
+   "file": "NATO Map Symbol - Neutral Air or Space Unit.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/NATO_Map_Symbol_-_Neutral_Air_or_Space_Unit.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Neutral",
+   "dim": "Air/Space",
+   "func": "Neutral Air or Space Unit",
+   "frame": "",
+   "src": "commons-category"
   },
   {
    "file": "Military Symbol - Neutral Unit (Bichrome 1.05x1.05 Frame)- Airborne Forces (NATO APP-6).svg",
@@ -10280,6 +10378,48 @@
    "src": "en-wiki-article"
   },
   {
+   "file": "NATO Map Symbol - Neutral or Unaligned Headquarters.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/NATO_Map_Symbol_-_Neutral_or_Unaligned_Headquarters.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Neutral",
+   "dim": "Land",
+   "func": "Neutral or Unaligned Headquarters",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
+   "file": "NATO Map Symbol - Neutral or Unaligned or Unallied Unit - B&W.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/NATO_Map_Symbol_-_Neutral_or_Unaligned_or_Unallied_Unit_-_B%26W.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Neutral",
+   "dim": "Land",
+   "func": "Neutral or Unaligned or Unallied Unit - B&W",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
+   "file": "NATO Map Symbol - Neutral or Unaligned or Unallied Unit - Solid.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/NATO_Map_Symbol_-_Neutral_or_Unaligned_or_Unallied_Unit_-_Solid.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Neutral",
+   "dim": "Land",
+   "func": "Neutral or Unaligned or Unallied Unit - Solid",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
    "file": "Military Symbol - Neutral Unit (Bichrome 1.05x1.05 Frame)- Air Naval Gunfire Liaison Company (USMC) (NATO APP-6A).svg",
    "dir": "ccbysa",
    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Military_Symbol_-_Neutral_Unit_%28Bichrome_1.05x1.05_Frame%29-_Air_Naval_Gunfire_Liaison_Company_%28USMC%29_%28NATO_APP-6A%29.svg",
@@ -10320,6 +10460,20 @@
    "func": "Neutral Unit Naval",
    "frame": "Bichrome 1.05x1.05 Frame",
    "src": "en-wiki-article"
+  },
+  {
+   "file": "NATO Map Symbol - Neutral Sub-surface Sea Unit.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/NATO_Map_Symbol_-_Neutral_Sub-surface_Sea_Unit.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Neutral",
+   "dim": "Subsurface",
+   "func": "Neutral Sub-surface Sea Unit",
+   "frame": "",
+   "src": "commons-category"
   },
   {
    "file": "Military Symbol - Unknown Aligned Unit (Solid Quatrefoil Frame)- Aviation (NATO APP-6).svg",
@@ -10376,6 +10530,34 @@
    "func": "Unknown Aligned Unit Unmanned Aerial Vehicles",
    "frame": "Solid Quatrefoil Frame",
    "src": "en-wiki-article"
+  },
+  {
+   "file": "NATO Map Symbol - Unknown Allegiance Air or Space Unit.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/NATO_Map_Symbol_-_Unknown_Allegiance_Air_or_Space_Unit.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Unknown",
+   "dim": "Air/Space",
+   "func": "Unknown Allegiance Air or Space Unit",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
+   "file": "NATO Map Symbol - Unknown Allegiance Air or Space Unit - Solid.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/NATO_Map_Symbol_-_Unknown_Allegiance_Air_or_Space_Unit_-_Solid.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Unknown",
+   "dim": "Air/Space",
+   "func": "Unknown Allegiance Air or Space Unit - Solid",
+   "frame": "",
+   "src": "commons-category"
   },
   {
    "file": "Military Symbol - Unknown Aligned Unit (Solid Quatrefoil Frame)- Air Defence (NATO APP-6B).svg",
@@ -10994,6 +11176,34 @@
    "src": "en-wiki-article"
   },
   {
+   "file": "NATO Map Symbol - Unknown Allegiance Headquarters.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/NATO_Map_Symbol_-_Unknown_Allegiance_Headquarters.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Unknown",
+   "dim": "Land",
+   "func": "Unknown Allegiance Headquarters",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
+   "file": "NATO Map Symbol - Unknown Allegiance Unit - Solid.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/NATO_Map_Symbol_-_Unknown_Allegiance_Unit_-_Solid.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Unknown",
+   "dim": "Land",
+   "func": "Unknown Allegiance Unit - Solid",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
    "file": "Military Symbol - Unknown Aligned Unit (Bichrome Quatrefoil Frame)- Naval (NATO APP-6A).svg",
    "dir": "ccbysa",
    "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Military_Symbol_-_Unknown_Aligned_Unit_%28Bichrome_Quatrefoil_Frame%29-_Naval_%28NATO_APP-6A%29.svg",
@@ -11006,6 +11216,34 @@
    "func": "Unknown Aligned Unit Naval",
    "frame": "Bichrome Quatrefoil Frame",
    "src": "en-wiki-article"
+  },
+  {
+   "file": "NATO Map Symbol - Unknown Allegiance Sub-Surface Sea Unit.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/NATO_Map_Symbol_-_Unknown_Allegiance_Sub-Surface_Sea_Unit.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Unknown",
+   "dim": "Subsurface",
+   "func": "Unknown Allegiance Sub-Surface Sea Unit",
+   "frame": "",
+   "src": "commons-category"
+  },
+  {
+   "file": "NATO Map Symbol - Unknown Allegiance Sub-Surface Sea Unit - Solid.svg",
+   "dir": "ccbysa",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/NATO_Map_Symbol_-_Unknown_Allegiance_Sub-Surface_Sea_Unit_-_Solid.svg",
+   "license": "CC BY-SA 4.0",
+   "artist": "CdnMCG",
+   "mime": "image/svg+xml",
+   "kind": "symbol",
+   "affil": "Unknown",
+   "dim": "Subsurface",
+   "func": "Unknown Allegiance Sub-Surface Sea Unit - Solid",
+   "frame": "",
+   "src": "commons-category"
   }
  ]
 }
