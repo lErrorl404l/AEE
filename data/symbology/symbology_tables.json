@@ -79,5 +79,33 @@
     {"name": "Repair", "category": "support", "grade": "derived", "source": "Arma 3 vehicleClass Repair"},
     {"name": "Fuel", "category": "supply", "grade": "derived", "source": "Arma 3 vehicleClass Fuel"},
     {"name": "Mines", "category": "unknown", "grade": "derived", "source": "Arma 3 vehicleClass Mines"}
+  ],
+  "families": [
+    {"name": "friend", "category": "b", "grade": "derived", "source": "Arma 3 CfgMarkers NATO BLUFOR family b_; icon \\A3\\ui_f\\data\\map\\markers\\nato\\b_*.paa"},
+    {"name": "hostile", "category": "o", "grade": "derived", "source": "Arma 3 CfgMarkers NATO OPFOR family o_; icon \\A3\\ui_f\\data\\map\\markers\\nato\\o_*.paa"},
+    {"name": "neutral", "category": "n", "grade": "derived", "source": "Arma 3 CfgMarkers NATO Independent family n_; icon \\A3\\ui_f\\data\\map\\markers\\nato\\n_*.paa"},
+    {"name": "unknown", "category": "u", "grade": "derived", "source": "AEE unknown-affiliation family; Arma 3 ships no u_ family, so the AEE u_ textures are produced"}
+  ],
+  "glyphs": [
+    {"name": "infantry", "category": "inf", "dimension": "land", "grade": "sourced", "source": "APP-6(C) infantry; Arma 3 b_inf"},
+    {"name": "armour", "category": "armor", "dimension": "land", "grade": "sourced", "source": "APP-6(C) armour; Arma 3 b_armor"},
+    {"name": "motorised", "category": "motor_inf", "dimension": "land", "grade": "derived", "source": "APP-6(C) motorised; Arma 3 b_motor_inf"},
+    {"name": "artillery", "category": "art", "dimension": "land", "grade": "sourced", "source": "APP-6(C) artillery; Arma 3 b_art"},
+    {"name": "engineer", "category": "eng", "dimension": "land", "grade": "derived", "source": "APP-6(C) engineer; no Arma 3 glyph, AEE produces AEE_*_eng.paa"},
+    {"name": "signal", "category": "sig", "dimension": "land", "grade": "derived", "source": "APP-6(C) signal; no Arma 3 glyph, AEE produces AEE_*_sig.paa"},
+    {"name": "medical", "category": "med", "dimension": "land", "grade": "sourced", "source": "APP-6(C) medical; Arma 3 b_med"},
+    {"name": "supply", "category": "sup", "dimension": "land", "grade": "derived", "source": "APP-6(C) supply; no Arma 3 glyph, AEE produces AEE_*_sup.paa"},
+    {"name": "support", "category": "support", "dimension": "land", "grade": "derived", "source": "APP-6(C) support; Arma 3 b_support"},
+    {"name": "recon", "category": "recon", "dimension": "land", "grade": "derived", "source": "APP-6(C) reconnaissance; Arma 3 b_recon"},
+    {"name": "air_defence", "category": "antiair", "dimension": "land", "grade": "derived", "source": "APP-6(C) air defence; Arma 3 b_antiair"},
+    {"name": "fixed_wing", "category": "plane", "dimension": "air", "grade": "derived", "source": "APP-6(C) fixed wing; Arma 3 b_plane"},
+    {"name": "rotary", "category": "air", "dimension": "air", "grade": "derived", "source": "APP-6(C) rotary wing; Arma 3 generic b_air"},
+    {"name": "uav", "category": "uav", "dimension": "air", "grade": "derived", "source": "APP-6(C) unmanned aerial; Arma 3 b_uav"},
+    {"name": "sea_surface", "category": "naval", "dimension": "sea", "grade": "derived", "source": "APP-6(C) sea surface; Arma 3 b_naval"},
+    {"name": "subsurface", "category": "sub", "dimension": "subsurface", "grade": "derived", "source": "APP-6(C) subsurface; no Arma 3 glyph, AEE produces AEE_*_sub.paa"},
+    {"name": "installation", "category": "installation", "dimension": "installation", "grade": "sourced", "source": "APP-6(C) installation; Arma 3 b_installation"},
+    {"name": "hq", "category": "hq", "dimension": "land", "grade": "sourced", "source": "APP-6(C) headquarters; Arma 3 b_hq"},
+    {"name": "waypoint", "category": "dot", "dimension": "land", "grade": "derived", "source": "AEE waypoint; no Arma 3 NATO glyph, AEE produces AEE_*_dot.paa"},
+    {"name": "unknown", "category": "unknown", "dimension": "land", "grade": "derived", "source": "APP-6(C) unknown; Arma 3 b_unknown"}
   ]
 }

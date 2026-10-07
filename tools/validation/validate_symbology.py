@@ -36,8 +36,12 @@ sys.path.insert(0, str(ROOT / "tools" / "validation"))
 from gen_symbology_tables import render_tables  # noqa: E402
 from sqf_lite import run_sqf  # noqa: E402
 
-SECTIONS = ("prefixes", "suffixes", "exact", "classes")
+SECTIONS = ("prefixes", "suffixes", "exact", "classes", "families", "glyphs")
+# The sections whose "category" field is a class category.  In the families and
+# glyphs sections the field carries a family or glyph token instead.
+CATEGORY_SECTIONS = ("prefixes", "suffixes", "exact", "classes")
 GRADES = ("sourced", "derived", "UNSOURCED")
+REQUIRED_FAMILIES = ("friend", "hostile", "neutral", "unknown")
 
 # The shipped Arma 3 CfgMarkers families and the exact marker names.
 REQUIRED_PREFIXES = (
@@ -115,7 +119,7 @@ def check_categories(source: dict, errors: list[str]) -> None:
     if not allowed:
         errors.append("symbology_tables.json: no category list")
         return
-    for section in SECTIONS:
+    for section in CATEGORY_SECTIONS:
         for row in source.get(section, []):
             category = row.get("category")
             if category not in allowed:
@@ -123,6 +127,28 @@ def check_categories(source: dict, errors: list[str]) -> None:
                     f"{section}: {row.get('name')} category {category!r} is "
                     f"not an APP-6(C) class category"
                 )
+
+
+def check_families_glyphs(source: dict, errors: list[str]) -> None:
+    """Every affiliation has one family token and every category one glyph."""
+    families = {
+        row.get("name"): row.get("category") for row in source.get("families", [])
+    }
+    for affiliation in REQUIRED_FAMILIES:
+        token = families.get(affiliation)
+        if not token:
+            errors.append(f"the affiliation {affiliation!r} has no family token")
+    tokens = [row.get("category") for row in source.get("families", [])]
+    if len(tokens) != len(set(tokens)):
+        errors.append("the family tokens are not unique")
+    categories = set(source.get("categories", []))
+    glyphs = {row.get("name"): row.get("category") for row in source.get("glyphs", [])}
+    for category in categories:
+        if not glyphs.get(category):
+            errors.append(f"the category {category!r} has no glyph token")
+    seen = [row.get("category") for row in source.get("glyphs", [])]
+    if len(seen) != len(set(seen)):
+        errors.append("the glyph tokens are not unique")
 
 
 def check_coverage(source: dict, errors: list[str]) -> None:
@@ -170,6 +196,7 @@ def main() -> int:
     errors: list[str] = []
     check_schema(source, errors)
     check_categories(source, errors)
+    check_families_glyphs(source, errors)
     check_coverage(source, errors)
     check_freshness(source, errors)
     check_kernel(source, errors)
