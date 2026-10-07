@@ -152,10 +152,18 @@ def convert(tga: Path, paa: Path) -> None:
         raise SystemExit(f"paa convert failed for {paa.name}\n{result.stderr}")
 
 
+def symbol_entries() -> list[dict[str, Any]]:
+    return [e for e in load() if e.get("kind", "symbol") == "symbol"]
+
+
+def modifier_entries() -> list[dict[str, Any]]:
+    return [e for e in load() if e.get("kind") == "echelon"]
+
+
 def entries() -> list[tuple[str, dict[str, Any]]]:
     seen: set[str] = set()
     out: list[tuple[str, dict[str, Any]]] = []
-    for entry in load():
+    for entry in symbol_entries():
         out.append((marker_name(entry, seen), entry))
     return out
 
