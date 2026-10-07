@@ -27,6 +27,7 @@ OPTICS = REPO / "addons" / "optics"
 SYM = OPTICS / "functions" / "symbology"
 PALETTE_KERNEL = SYM / "fnc_symbolPalette.sqf"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
+ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
 PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
 
 
@@ -36,6 +37,10 @@ def palette(affiliation, pal):
 
 def frame(affiliation, dimension):
     return run_sqf(FRAME_KERNEL, [affiliation, dimension], {})
+
+
+def icon(icon_id):
+    return run_sqf(ICON_KERNEL, [icon_id], {})
 
 
 class TestSymbolPalette(unittest.TestCase):
@@ -106,6 +111,64 @@ class TestSymbolFrame(unittest.TestCase):
                         for point in polyline:
                             self.assertLessEqual(abs(point[0]), 1.0)
                             self.assertLessEqual(abs(point[1]), 1.0)
+
+
+class TestSymbolIcon(unittest.TestCase):
+    """fnc_symbolIcon, executed: icon id -> vector primitives."""
+
+    ICON_IDS = (
+        "infantry",
+        "armour",
+        "motorised",
+        "artillery",
+        "engineer",
+        "signal",
+        "medical",
+        "supply",
+        "support",
+        "recon",
+        "air_defence",
+        "fixed_wing",
+        "rotary",
+        "uav",
+        "sea_surface",
+        "subsurface",
+        "installation",
+        "hq",
+        "waypoint",
+        "unknown",
+    )
+
+    def test_infantry_is_two_crossed_lines(self):
+        out = icon("infantry")
+        self.assertEqual(len(out), 2)
+        self.assertTrue(all(prim[0] == "line" for prim in out))
+
+    def test_armour_is_one_ellipse(self):
+        out = icon("armour")
+        self.assertEqual(len(out), 1)
+        self.assertEqual(out[0][0], "ellipse")
+
+    def test_unknown_is_empty(self):
+        self.assertEqual(icon("unknown"), [])
+
+    def test_every_curated_class_returns_primitives(self):
+        for icon_id in self.ICON_IDS:
+            with self.subTest(icon_id=icon_id):
+                self.assertIsInstance(icon(icon_id), list)
+
+    def test_every_primitive_stays_in_the_inner_box(self):
+        for icon_id in self.ICON_IDS:
+            for kind, points in icon(icon_id):
+                with self.subTest(icon_id=icon_id, kind=kind):
+                    if kind == "ellipse":
+                        centre, axes, _angle = points
+                        self.assertLessEqual(abs(centre[0]) + axes[0], 0.55 + 1e-9)
+                        self.assertLessEqual(abs(centre[1]) + axes[1], 0.55 + 1e-9)
+                    else:
+                        for x, y in points:
+                            self.assertLessEqual(abs(x), 0.55 + 1e-9)
+                            self.assertLessEqual(abs(y), 0.55 + 1e-9)
 
 
 class TestSymbolPrep(unittest.TestCase):
