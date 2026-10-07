@@ -16,8 +16,8 @@ AEE registers its own real map markers. Each marker is a CfgMarkers entry with
 a real `.paa` icon, so it is selectable in the marker dialog, placeable in
 Eden and drawn by the engine marker layer. The engine marker and icon surface
 has limits, and this record states them. The engine 3D unit icon cannot be
-removed. The full APP-6 icon library holds thousands of glyphs. AEE ships a
-curated set instead and states the ceiling.
+removed. AEE registers the complete APP-6(C) marker set from the pulled NATO
+symbol catalogue and states the ceiling.
 
 The symbology uses published standards. The frame grammar and the colours come
 from NATO APP-6(C) of May 2011. STANAG 2019 Edition 7 of October 2017 encloses
@@ -33,8 +33,10 @@ a derived or UNSOURCED approximation and is marked as such.
 The layer follows APP-6(C) as the primary standard. It names the frame grammar,
 the dimension modifiers and the Table 1-4 display colours. STANAG 2019 and
 MIL-STD-2525E align on the same grammar, so the layer also serves a force that
-uses either document. The Wikimedia Commons NATO symbol set was a visual
-cross-check only. No image is vendored.
+uses either document. The symbol designs are a standard, not an artwork: the
+MIL-STD-2525 symbols are a US Government work and APP-6 is the NATO
+equivalent, so nobody owns the frame shapes or the function glyphs. The pulled
+catalogue images are the uploaders' SVG traces of that standard.
 
 ### The frame grammar
 
@@ -111,23 +113,48 @@ generated into `aee_optics_symbologyTables`.
 
 ### The icon textures
 
-Where the engine's own NATO texture carries the symbol, the class references
+AEE ships the complete APP-6(C) marker set. The generator
+`tools/gen_symbology_catalogue.py` reads `data/symbology/nato_catalogue.json`,
+the record of every symbol pulled from the three operator sources, rasterises
+each real image (rsvg-convert for SVG, Pillow for PNG and JPEG) into a 64 px
+white-on-transparent mask, and converts it to a `.paa` with
+`hemtt utils paa convert`. The white mask lets the engine marker colour tint
+the texture the way it tints the vanilla NATO markers. The generator also
+emits the `CfgMarkers` block `addons/optics/config_markers.hpp` and the
+attribution file `addons/optics/data/markers/ATTRIBUTION.md`. Its `--check`
+mode re-renders and compares.
+
+Where the engine's own NATO texture carries a symbol the class may reference
 it, for example `\A3\ui_f\data\map\markers\nato\b_inf.paa`. The `b_`, `o_` and
 `n_` families are the real NATO-style marker images. The engine ships no `u_`
-family and no engineer, signal, supply, subsurface or waypoint glyph, so AEE
-produces those 35 textures under `addons/optics/data/markers/`.
-
-The generator `tools/gen_symbology_markers.py` renders each produced texture
-from the pure frame and icon kernels, evaluated through
-`tools/tests/sqf_lite.py`, so the texture and the drawn symbol share one source
-of truth. The texture is white on transparent, so the engine marker colour
-tints it the way it tints the vanilla NATO markers. The generator converts the
-render to a PAA with `hemtt utils paa convert`. Its `--check` mode re-renders
-and compares.
+family and no engineer, signal, supply, subsurface or waypoint glyph, so the
+seed generator `tools/gen_symbology_markers.py` renders those 35 textures from
+the pure frame and icon kernels, evaluated through `tools/tests/sqf_lite.py`.
 
 No workshop-mod `.paa` is copied. The three studied mods forbid reuse. The
-engine `.paa` are referenced, not copied. The produced `.paa` are AEE's own
-rendering of the public geometry.
+produced `.paa` are AEE's rendering of the catalogue images and of the
+standard geometry.
+
+### The symbol image licence
+
+The symbol designs are a standard, not an artwork. MIL-STD-2525 is a US
+Government work and APP-6 is the NATO equivalent, so the frame shapes and the
+function glyphs are not owned. The licence tags on the Commons files are the
+uploaders' licences on their own SVG traces.
+
+AEE is GPL-2.0-or-later. The alternatives were checked against primary
+sources. The Bohemia Interactive Arma Public License Share Alike
+(`bohemia.net/community/licenses/arma-public-license-share-alike`) adds
+Noncommercial and Arma-Only terms and cites CC BY-NC-SA 4.0. It is not on the
+Creative Commons BY-SA-compatible list
+(`creativecommons.org/compatible-licenses`), so CC BY-SA 4.0 material cannot be
+relicensed under it. MIT is not BY-SA-compatible either, and it does not remove
+the share-alike on the images. AEE keeps GPL-2.0-or-later. CC BY-SA 4.0 is
+one-way compatible with GPLv3 (Creative Commons, 8 October 2015;
+`wiki.creativecommons.org/wiki/ShareAlike_compatibility:_GPLv3`; FSF), so the
+combined distribution is GPLv3 by the "or later" route. Each converted `.paa`
+of a CC BY-SA file remains CC BY-SA 4.0, and `ATTRIBUTION.md` records the
+source URL, the licence and the author of every file.
 
 ### The marker application
 
@@ -222,9 +249,10 @@ kernel header.
 - A drawn overlay on the map control. The operator direction is real markers.
   The symbol Draw event handler was dropped, because the real markers carry
   the symbols and the engine draws them.
-- A Wikimedia Commons image. The NATO symbol set is CC-BY-SA, so a vendored
-  image would carry a share-alike obligation. It was a visual cross-check
-  only, and no image is used.
+- A visual cross-check only. The Commons catalogue is the source of the real
+  images, used with attribution, because the symbol designs are a standard and
+  CC BY-SA 4.0 is one-way compatible with GPLv3. See the symbol image licence
+  section.
 - A workshop-mod `.paa`. The three studied mods forbid reuse in their
   licences, so no such texture is copied.
 - A new PBO. The layer lives in `addons/optics`, so no new addon and no new load
@@ -242,9 +270,10 @@ kernel header.
 - **The engine 3D unit icons remain.** The engine 3D unit icon cannot be
   suppressed. No script command and no config field removes it. The world layer
   draws its symbol over the engine icon and states this ceiling.
-- **The glyph set is curated.** APP-6 holds thousands of function glyphs. AEE
-  ships about twenty classes and states the ceiling. A category outside the set
-  maps to the unknown glyph.
+- **The glyph set is the pulled catalogue.** AEE registers the complete set
+  pulled from the three operator sources, 805 markers. APP-6 holds thousands of
+  function glyphs, so the catalogue is the reachable set, not every glyph. A
+  category outside the set maps to the unknown glyph.
 - **The frame arcs are derived.** The standard gives no curve equation. The dome
   and the curved bottom edge are parabola approximations, marked UNSOURCED.
 - **The marker conversion is partial.** The local conversion covers the mission
@@ -260,3 +289,49 @@ kernel header.
 - **The visual result is operator-only.** A headless server has no local player.
   The Docker probe P111 tests the pure kernels with fixtures. The visible map,
   the visible world symbol and the visible font each need one operator run.
+
+## The engine surface checklist
+
+AEE treats the map symbology as a replacement of the engine map system. Every
+engine surface is listed with its status.
+
+| Surface | Status | Mechanism |
+|---|---|---|
+| Engine `CfgMarkers` `b_`, `o_`, `n_`, `c_` families | overhauled | re-declared with the AEE `.paa` icon; Arma merges the configs and the mod value wins |
+| `CfgMarkerColors` | overhauled | re-declared to the APP-6 Table 1-4 colours |
+| `hd_` header, waypoint and leader markers | AEE set available | AEE marker class; the engine types remain unless the mission uses AEE |
+| `flag_`, `group_`, `loc_`, `Contact_`, `GroundSupport_`, `Empty`, `EmptyIcon`, `Flag`, `KIA` | AEE set available | AEE marker class; not re-pointed, because they are not affiliation symbols |
+| Engine unit map indicators | hidden where exposed | `disableMapIndicators [true, true, true, true]` |
+| Mission and editor markers | hidden | `allMapMarkers` plus `setMarkerAlphaLocal 0`, original alpha recorded and restored |
+| Group icons | ceiling | `setGroupIconsVisible` acts on `addGroupIcon` icons; no per-icon repoint found |
+| Briefing map | same control | the briefing uses `RscMapControl`, so the same apply path covers it |
+| Eden editor map | same control | the editor map uses `RscMapControl`, so the same apply path covers it |
+| 3D world unit icons | ceiling | driven by `CfgDifficultyPresets`, no per-object script surface |
+
+The engine 3D unit icon is the one recorded ceiling. Every other surface is
+either overhauled at load or hidden on the client.
+
+## The colour table
+
+| Affiliation | Colour | RGBA | Source |
+|---|---|---|---|
+| friend | cyan | `[0, 1, 1, 1]` | APP-6(C) Table 1-4 |
+| hostile | red | `[1, 0, 0, 1]` | APP-6(C) Table 1-4 |
+| neutral | green | `[0, 1, 0, 1]` | APP-6(C) Table 1-4 |
+| unknown | yellow | `[1, 1, 0, 1]` | APP-6(C) Table 1-4 |
+
+The palette setting chooses the player's own side colour. NATO makes the own
+side cyan and the enemy red. OPFOR makes the own side red and the enemy cyan.
+Auto derives it from the local side.
+
+## The side mapping
+
+| Engine side | Colour class | Affiliation |
+|---|---|---|
+| WEST | `ColorWEST` | friend |
+| EAST | `ColorEAST` | hostile |
+| GUER / Independent | `ColorGUER` | neutral |
+| CIVILIAN | `ColorCIV` | neutral |
+| UNKNOWN | `ColorUNKNOWN` | unknown |
+
+The engine has no `g_` marker family; Independent uses `n_`.
