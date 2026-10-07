@@ -57,10 +57,23 @@ events for interactive controls, so a Draw handler poll is the robust route.
 ## 4. The vanilla cursor readout
 
 The default `RscMapControl` config exposes styling only: `fontGrid`,
-`sizeExGrid`, `colorGrid`, `colorMap` and a `Legend` class. No command and no
-config field was found that replaces, repoints or hides the cursor coordinate
-and elevation readout. UNKNOWN whether any exists. This matches the MGRS
-close-out record: the `ItemGPS` readout is engine-hardcoded.
+`sizeExGrid`, `colorGrid`, `colorMap` and a `Legend` class. The readout is
+drawn by the map display, not by the map control. The map display
+`RscDisplayMainMap` (idd 12) declares `class Tooltip: RscMapControlTooltip`,
+and `RscMapControlTooltip` carries `idc = 2350`. The engine moves that
+control to the cursor and fills its `Info` child (`idc 235002`) with the
+six-figure grid and the elevation. The class `CA_MouseOver` (`idc 1016`) is
+the object-name label. Source: the shipped `ui_f` config
+(`Addons/ui_f/config.cpp`, `RscMapControlTooltip` and `RscDisplayMainMap`),
+derapified with HEMTT.
+
+The control is therefore hideable. `findDisplay 12 displayCtrl 2350
+ctrlShow false` blanks the engine readout. This replaces the earlier
+UNKNOWN: the readout is not pure engine C++.
+
+The related editor map confirms the pattern: `RscDisplayArcadeMap` populates
+cursor readout controls `1010` (grid), `1012` (X), `1014` (Y) and `1016`
+(Z) from a `mousemoving` handler (`scripts/GUI/RscDisplayArcadeMap_Layout_*.sqf`).
 
 ## 5. The CfgWorlds Grid class
 
@@ -104,6 +117,7 @@ Source: BIKI Arma 3: Mission Event Handlers.
 ## Result for AEE
 
 The map grid lines cannot be relabelled in place, so AEE draws its own MGRS
-grid over them. The vanilla cursor tooltip cannot be replaced, so AEE draws
-its own readout adjacent to it. Both are operator-only, so no headless probe
-claims a relabelled grid or a replaced tooltip.
+grid over them. The engine cursor readout is the map display's `Tooltip`
+control (`RscMapControlTooltip`, `idc 2350`), so AEE hides that control and
+draws its own MGRS readout in the control's rectangle. Both are operator-only,
+so no headless probe claims a relabelled grid or a replaced tooltip.
