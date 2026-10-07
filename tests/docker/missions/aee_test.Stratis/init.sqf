@@ -3261,10 +3261,10 @@ private _p29Pass = 0;
     // REAL pure kernels with the live anchor (utmToWorld round trip,
     // mgrsGridLines lines and labels, mgrsCursorText).  It renders nothing.
     execVM "aee_p110_mgrs_grid_probe.sqf";
-    // PHASE 111 lives in aee_p111_symbology_probe.sqf: the map and world draw
-    // layers exist only on a client, so the probe drives the REAL pure
+    // PHASE 111 lives in aee_p111_symbology_probe.sqf: the map and world
+    // marker layers exist only on a client, so the probe drives the REAL pure
     // kernels with fixtures (the palette Table 1-4 and the OPFOR swap, the
-    // frame grammar, the inner glyphs, the resolver and the category table).
+    // marker-type kernel, the marker-colour kernel and the category table).
     // It renders nothing.
     execVM "aee_p111_symbology_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
