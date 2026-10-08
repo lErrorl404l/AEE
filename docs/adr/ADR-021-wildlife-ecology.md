@@ -136,5 +136,12 @@ UNSOURCED and stay UNSOURCED.
   and the probe drives the pure kernels instead.
 - A headless probe cannot read a pixel or hear a sample. The audible and
   visual result is an operator-only check and is recorded as UNVERIFIED.
+- The one-shot species layer caps at three concurrent calls, and the attached
+  emitter layer at three live emitters. The acoustic niche hypothesis (Krause
+  1987; Pijanowski et al. 2011, BioScience 61(3):203-216) holds that species
+  partition the auditory spectrum in time and frequency, so a real soundscape
+  has few overlapping calls. No published simultaneous-caller count exists, so
+  three is a stated ceiling. The measured density was eight of eight slots busy
+  at once, which reads as a disturbed soundscape.
 - Several constants are UNSOURCED modelling choices and are stated as such
   in the register.
