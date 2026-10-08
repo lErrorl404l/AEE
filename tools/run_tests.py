@@ -153,6 +153,7 @@ def main():
         "tools/tests/test_ai.py",
         "tools/tests/test_wildlife.py",
         "tools/tests/test_wildlife_ecology.py",
+        "tools/tests/test_rpt_regressions.py",
         "tools/tests/test_ai_wildlife_soak.py",
         "tools/tests/test_sqf_nil_reads.py",
         "tools/tests/test_pfh_contract.py",

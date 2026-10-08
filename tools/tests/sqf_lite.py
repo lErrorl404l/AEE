@@ -51,6 +51,7 @@ TOKEN_RE = re.compile(
   | [a-zA-Z_][a-zA-Z0-9_]*               # identifier / command
   | &&|\|\|                             # logical operators (before singles)
   | <=|>=|==|!=                         # comparison operators (before singles)
+  | >>                                  # config-path operator (before single >)
   | \[|\]|\{|\}|\(|\)|,|;                # punctuation
   | [+\-*/^<>=!&|]                       # operators
     """,
@@ -77,7 +78,7 @@ def tokenize(text: str) -> list[Tok]:
             toks.append(Tok("str", s[1:-1], m.start()))
         elif re.fullmatch(r"\d+\.\d+(?:[eE][+-]?\d+)?|\d+(?:[eE][+-]?\d+)?", s):
             toks.append(Tok("num", float(s), m.start()))
-        elif s in ("&&", "||"):
+        elif s in ("&&", "||", ">>"):
             toks.append(Tok("punct", s, m.start()))
         elif s in "[]{}();,+-*/^<>=!&|":
             toks.append(Tok("punct", s, m.start()))
@@ -263,6 +264,8 @@ UNARY_COMMANDS = {
     "nearestTerrainObjects",
     # HashMap value list used by the wildlife vegetation-score helper.
     "values",
+    # isClass X - config class-existence test used by fnc_wildlifeTick.
+    "isClass",
 }
 
 
@@ -437,6 +440,19 @@ class FindIf:
 @dataclass
 class Continue:
     """SQF `continue` - skip to the next loop iteration."""
+
+
+@dataclass
+class Destructure:
+    """SQF `array params ["_a", "_b"]` - the array-destructuring form.
+
+    Distinct from the leading `params [..]` statement (the function's own
+    argument declaration): this form binds names from an arbitrary array.
+    The harness added it for the RPT regression test, which executes the
+    real cache-read block ending in `_plan params ["_segments", "_labels"]`."""
+
+    arr: Any
+    names: list
 
 
 class ContinueSignal(Exception):
@@ -670,7 +686,7 @@ class SqfParser:
 
     def parse_mul(self):
         left = self.parse_pow()
-        while self.peekv() in ("*", "/"):
+        while self.peekv() in ("*", "/", ">>"):
             op = self.next().value
             right = self.parse_pow()
             left = Bin(op, left, right)
@@ -753,6 +769,12 @@ class SqfParser:
                 cmd = self.next().value
                 right = self.parse_postfix()
                 left = Call(Var(cmd), Arr([left, right]))
+            elif t.value == "params":
+                # array-destructuring form: _plan params ["_a", "_b"].  The
+                # leading `params [..]` statement (function args) is handled
+                # in parse_stmt; this form follows an expression.
+                self.next()
+                left = Destructure(left, self.parse_lambda_params())
             else:
                 return left
 
@@ -907,6 +929,16 @@ class SqfRuntime:
                 self.pop()
                 return r
             return None
+        if isinstance(node, Destructure):
+            # array params [names]: bind each name from the array in the
+            # CURRENT scope.  A short array binds None, matching the engine's
+            # "0 elements provided, N expected" guard boundary.
+            arr = self.eval(node.arr)
+            if not isinstance(arr, list):
+                arr = []
+            for i, name in enumerate(node.names):
+                self.set(name, arr[i] if i < len(arr) else None)
+            return None
         if isinstance(node, Bin):
             if node.op == "neg":
                 return -self.eval(node.right)
@@ -947,6 +979,11 @@ class SqfRuntime:
                 return bool(left) and bool(right)
             if node.op == "||":
                 return bool(left) or bool(right)
+            if node.op == ">>":
+                # config path operator: configFile >> "CfgX" >> "Y".
+                # The harness has no config tree, so the path joins into a
+                # stable string; isClass/config tests stub the lookup.
+                return f"{left}/{right}"
             raise ValueError(f"unknown op {node.op}")
         if isinstance(node, MaxMin):
             left = self.eval(node.left)
@@ -1020,6 +1057,7 @@ class SqfRuntime:
                 "getTerrainHeightASL",
                 "nearestTerrainObjects",
                 "values",
+                "isClass",
             ):
                 fn = self.globals.get(node.op)
                 if callable(fn):

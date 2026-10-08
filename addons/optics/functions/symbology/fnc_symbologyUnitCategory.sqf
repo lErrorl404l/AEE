@@ -7,12 +7,12 @@
  * The vehicleClass is tried first; the unitClass is the fallback.
  *
  * Arguments:
- *   0: _unit <STRING> the unit (an object in the engine)
+ *   0: _unit <OBJECT> the unit object
  *
  * Return: <STRING> a class category.
  */
 params [
-    ["_unit", "", [""]]
+    ["_unit", objNull, [objNull]]
 ];
 
 private _class = typeOf _unit;
