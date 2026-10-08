@@ -9,14 +9,16 @@
  * main map display).  The handler is read-only: it creates no marker and
  * edits none.  It draws four things:
  *
- *   1. the MGRS grid overlay, at a decimal interval chosen for the zoom;
+ *   1. the cardinal grid overlay, at a decimal interval chosen for the zoom;
  *   2. the cursor readout, our MGRS reference and terrain elevation;
  *   3. the player position, labelled with its MGRS reference;
  *   4. each AEE-owned marker, labelled with its MGRS reference.
  *
  * The engine map grid stays numeric.  The CfgWorlds Grid class formats
- * numbers only and no script command writes it, so the overlay draws the
- * MGRS lines over it.  The engine cursor tooltip is the map display's
+ * numbers only and no script command writes it, so the overlay draws its own
+ * CARDINAL lines over it (ADR-030 records the choice: the map is north up, so
+ * a cardinal grid matches the compass, a real paper map and the base engine).
+ * The engine cursor tooltip is the map display's
  * Tooltip control of class RscMapControlTooltip (idc 2350), so the overlay
  * hides that control and draws the aee MGRS readout in its place.  The
  * player's engine mapGridPosition is read as a cross-check and shown when
@@ -152,9 +154,10 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 // line is darker and thicker than a minor one.
                 //
                 // Each segment is one whole grid line: FUNC(mgrsGridLines)
-                // emits a single chord per line, so there is no interior joint
-                // to bead and the segment reads as one straight stroke at every
-                // zoom.  Line weight: the engine's script drawLine default is 3
+                // emits one axis-aligned segment per line, and the map control
+                // maps world to screen linearly, so the segment is straight by
+                // construction and has no interior joint to bead.  Line weight:
+                // the engine's script drawLine default is 3
                 // (BIKI), and the operator reports the old 1 px line as "very
                 // very thin", so the minor line matches the default and the
                 // index (major) line is heavier.

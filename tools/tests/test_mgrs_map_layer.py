@@ -295,95 +295,90 @@ class TestDefect3PrecisionByScale(unittest.TestCase):
 
 
 class TestDefect5Straightness(unittest.TestCase):
-    """A drawn grid line is one straight chord.
+    """A drawn grid line is cardinal: axis-aligned and straight.
 
-    Each line is a straight UTM line (constant easting or constant northing)
-    mapped to the world by the inverse projection.  The exact series bows by
-    under a map pixel at every zoom and every world size, so the two-point
-    chord is faithful and has no interior joint to bead.  The live engine adds
-    a per-sample conversion jitter (measured by probe P127), which is why
-    densifying the line added joints rather than removing the bend.
+    The grid is the map-axis grid, not the true MGRS grid.  A vertical line
+    sits at one constant world x and a horizontal line at one constant world
+    y.  The map control maps world to screen with a LINEAR transform, so an
+    axis-aligned world line is a straight screen line by construction, with
+    zero tilt from the cardinal axes.  ADR-030 records the switch from the
+    true MGRS grid and the operator's reason: the map is north up, the compass
+    and a real paper map read cardinal, and the base engine's own grid is
+    cardinal.
     """
 
-    def _zone(self, anchor):
-        return max(1, min(60, math.floor((anchor[1] + 180) / 6) + 1))
+    def _plan(self):
+        c = ALTIS[3] / 2
+        return grid(ALTIS, [c - 1000, c - 1000, c + 1000, c + 1000])
 
-    def _centre_utm(self, anchor):
-        c = anchor[3] / 2
-        conv = _world_to_mgrs([c, c, 0], anchor, 10)
-        return conv[3], conv[4]
+    def test_the_emitted_lines_are_axis_aligned(self):
+        segments, _labels, _interval = self._plan()
+        self.assertGreater(len(segments), 4)
+        vertical = horizontal = 0
+        for a, b, _major in segments:
+            dx = b[0] - a[0]
+            dy = b[1] - a[1]
+            if abs(dx) < 1e-6:
+                self.assertGreater(abs(dy), 1e-6, f"degenerate vertical line {a}")
+                vertical += 1
+            else:
+                self.assertEqual(dy, 0.0, f"line is not cardinal: {a} -> {b}")
+                horizontal += 1
+        self.assertGreater(vertical, 0, "no vertical line")
+        self.assertGreater(horizontal, 0, "no horizontal line")
 
-    def _vcurve(self, anchor, e, n_lo, n_hi, samples=129):
-        z = self._zone(anchor)
-        return [
-            _utm_to_world(
-                e, n_lo + (n_hi - n_lo) * k / (samples - 1), z, "north", anchor
+    def test_the_lines_have_zero_tilt_from_the_cardinal_axes(self):
+        # The tilt is the off-axis component of the line direction.  A
+        # vertical line has no x-component and a horizontal line no
+        # y-component, so the tilt is zero on both.  Red-before: the true MGRS
+        # line was tilted by the grid convergence (+0.85 deg on Stratis).
+        segments, _labels, _interval = self._plan()
+        for a, b, _major in segments:
+            dx = b[0] - a[0]
+            dy = b[1] - a[1]
+            tilt = abs(dx) if abs(dx) < 1e-6 else abs(dy)
+            self.assertEqual(tilt, 0.0, f"nonzero tilt on {a} -> {b}")
+
+    def test_the_interval_is_a_world_metre_step(self):
+        # The lines land on whole world-metre steps, so the grid is cardinal
+        # in world coordinates, not projected from UTM.
+        segments, _labels, interval = self._plan()
+        self.assertIn(interval, (10, 100, 1000, 10000, 100000))
+        for a, b, _major in segments:
+            dx = b[0] - a[0]
+            coord = a[0] if abs(dx) < 1e-6 else a[1]
+            self.assertAlmostEqual(coord / interval, round(coord / interval), places=6)
+
+    def test_each_line_carries_its_positional_mgrs_label(self):
+        # A cardinal line has no single grid value, so the label is positional:
+        # the MGRS digit group at a fixed point of the line.  Every line gets
+        # one, and the digit count matches the interval.
+        segments, labels, interval = self._plan()
+        per_axis = round(5 - math.log10(interval))
+        self.assertEqual(len(labels), len(segments))
+        for pos, text, _major in labels:
+            self.assertEqual(len(pos), 3, pos)
+            self.assertTrue(text.isdigit(), f"label {text!r} is not digits")
+            self.assertEqual(
+                len(text), per_axis, f"label {text!r} must be {per_axis} digits"
             )
-            for k in range(samples)
-        ]
 
-    def _hcurve(self, anchor, n, e_lo, e_hi, samples=129):
-        z = self._zone(anchor)
-        return [
-            _utm_to_world(
-                e_lo + (e_hi - e_lo) * k / (samples - 1), n, z, "north", anchor
-            )
-            for k in range(samples)
-        ]
-
-    def _deviation(self, pts):
-        a, b = pts[0], pts[-1]
-        dx, dy = b[0] - a[0], b[1] - a[1]
-        length = math.hypot(dx, dy)
-        if length == 0:
-            return 0.0
-        return max(
-            abs(dx * (p[1] - a[1]) - dy * (p[0] - a[0])) / length for p in pts[1:-1]
+    def test_the_planner_draws_one_segment_per_line(self):
+        # Red-before: the planner projected each line through FUNC(utmToWorld)
+        # and split it on a measured bend.  A cardinal line needs neither.
+        self.assertNotIn("utmToWorld", GRID_SRC)
+        self.assertNotIn("_samples", GRID_SRC)
+        self.assertNotIn("_dev > _pixel", GRID_SRC)
+        self.assertIn(
+            "_segments pushBack [[_line, _yMin, 0], [_line, _yMax, 0], _major];",
+            GRID_SRC,
         )
 
-    def test_the_exact_curve_bows_by_under_a_map_pixel(self):
-        # The whole zoom and world-size range: 200 m to the full world, both a
-        # box world (Altis) and a tangent-plane world (Stratis), and five line
-        # positions across the view.  One pixel is span/1024, the same
-        # conservative pixel the planner uses, so the two-point chord is
-        # faithful by more than an order of magnitude everywhere.
-        for anchor in (ALTIS, STRATIS):
-            size = anchor[3]
-            e_c, n_c = self._centre_utm(anchor)
-            for span in (200, 500, 1000, 2048, 4096, 8192, size):
-                if span > size:
-                    continue
-                pixel = span / 1024
-                for off in (-0.5, -0.25, 0.0, 0.25, 0.5):
-                    v = self._vcurve(
-                        anchor, e_c + off * span, n_c - span / 2, n_c + span / 2
-                    )
-                    h = self._hcurve(
-                        anchor, n_c + off * span, e_c - span / 2, e_c + span / 2
-                    )
-                    for curve, kind in ((v, "vertical"), (h, "horizontal")):
-                        dev = self._deviation(curve)
-                        self.assertLess(
-                            dev,
-                            pixel,
-                            f"{kind} chord bows {dev:.4f} m over a {span:.0f} m "
-                            f"span (pixel {pixel:.3f} m)",
-                        )
-
-    def test_the_planner_draws_one_chord_per_line(self):
-        # Red-before: the planner densified every line with a sample count and
-        # emitted N-1 chords per line.
-        self.assertNotIn("sqrt (_span / 40)", GRID_SRC)
-        self.assertNotIn("_samples", GRID_SRC)
-        self.assertIn("_dev > _pixel", GRID_SRC)
-
     def test_the_emitted_plan_has_no_interior_joint(self):
-        c = ALTIS[3] / 2
-        rect = [c - 1000, c - 1000, c + 1000, c + 1000]
-        segments, _labels, _interval = grid(ALTIS, rect)
+        segments, _labels, _interval = self._plan()
         self.assertGreater(len(segments), 4)
         # An interior joint is a shared endpoint between consecutive segments
-        # of one line.  A single chord per line has none, so nothing beads.
+        # of one line.  One axis-aligned segment per line has none.
         joins = sum(
             1
             for i in range(len(segments) - 1)

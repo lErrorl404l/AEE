@@ -2,37 +2,38 @@
 /*
  * aee_optics_fnc_mgrsGridLines
  *
- * Compute the MGRS grid overlay for a visible world rectangle.  PURE: the
+ * Compute the cardinal grid overlay for a visible world rectangle.  PURE: the
  * anchor and the rectangle arrive as arguments, so the kernel reads no map
- * control, no cursor and no engine grid.  It reuses the core conversion
- * kernels: FUNC(worldToMgrs) gives the visible easting and northing range,
- * FUNC(utmToWorld) gives the line geometry and FUNC(formatMgrs) gives the
- * labels.
+ * control, no cursor and no engine grid.
+ *
+ * CARDINAL GRID.  Each line follows a map axis: a vertical line sits at one
+ * constant world x and a horizontal line at one constant world y.  The map
+ * control maps world to screen with a LINEAR transform, so a line along a
+ * world axis is a straight screen line by construction, with no per-point
+ * conversion and no chord to fit.  This is a DELIBERATE design change from a
+ * true MGRS grid, which is aligned to UTM grid north and so tilted from the
+ * map axes by the grid convergence (+0.85 degrees on Stratis).  ADR-030
+ * records the reason: the map is north up, the compass and a real paper map
+ * read cardinal, and the base engine's own grid is cardinal.
  *
  * The engine map grid stays numeric.  The CfgWorlds Grid class formats
- * numbers only and no script command writes it, so this overlay draws the
- * MGRS lines over it instead of relabelling them in place.
+ * numbers only and no script command writes it, so this overlay draws its own
+ * lines over it.
  *
- * The interval is a decimal MGRS step chosen so the line count stays small:
- * 10 m, 100 m, 1 km, 10 km or 100 km.  The label carries the digit group
- * that matches the interval, so a 1 km line is labelled with its two-digit
- * easting or northing.
+ * LABELS.  A cardinal line has NO single MGRS value, because the MGRS easting
+ * and northing vary along it.  The label is therefore POSITIONAL by design:
+ * FUNC(worldToMgrs) gives the MGRS reference at a fixed point of the line (a
+ * vertical line at its north end, a horizontal line at its east end), and the
+ * label carries the digit group that matches the interval.  A 1 km line is
+ * labelled with its three-digit easting or northing at that point.
  *
- * STRAIGHTNESS.  Each grid line is a straight UTM line (a constant easting
- * or a constant northing) mapped to the world by the inverse projection.
- * The exact series bows by under a millimetre at a 2 km view and by under a
- * map pixel at the widest zoom, so a two-point chord IS the line: it is
- * straight by construction and has no interior joint to bead.  A midpoint
- * splits the chord only when its measured deviation from the chord exceeds
- * one map pixel, which no shipped world or zoom reaches (the bound is proved
- * with the exact series in tools/tests/test_mgrs_map_layer.py).  A correct
- * MGRS line is aligned to UTM grid north, so it is tilted from the map's
- * cardinal axes by the grid convergence; that tilt is not a defect and is
- * reported by probe P127.
+ * The interval is a decimal world-metre step chosen so the line count stays
+ * small: 10 m, 100 m, 1 km, 10 km or 100 km.
  *
  * Arguments:
- *   0: _anchor <ARRAY> the 9-element anchor from EFUNC(core,getGeoAnchor)
- *   1: _rect   <ARRAY> [xMin, yMin, xMax, yMax] world metres
+ *   0: _anchor       <ARRAY>  the 9-element anchor from EFUNC(core,getGeoAnchor)
+ *   1: _rect         <ARRAY>  [xMin, yMin, xMax, yMax] world metres
+ *   2: _baseInterval <NUMBER> the finest step in metres, 0 for the default
  *
  * Return: [_segments, _labels, _interval]
  *   _segments <ARRAY> each [pointA, pointB, major], world [x, y, 0]
@@ -54,48 +55,11 @@ private _xMax = _rect select 2;
 private _yMax = _rect select 3;
 if ((_xMax <= _xMin) || (_yMax <= _yMin)) exitWith { [[], [], 0] };
 
-// The world sits in one UTM zone.  Take the zone from the anchor centre
-// longitude and the hemisphere from the anchor centre latitude, so every
-// line is projected the same way.
-private _latCentre = _anchor select 0;
-private _lonCentre = _anchor select 1;
-private _zone = (floor ((_lonCentre + 180) / 6)) + 1;
-if (_zone < 1) then { _zone = 1; };
-if (_zone > 60) then { _zone = 60; };
-private _hemisphere = "north";
-if (_latCentre < 0) then { _hemisphere = "south"; };
-
-// The visible easting and northing bounds come from the four corners.
-private _corners = [[_xMin, _yMin], [_xMax, _yMin], [_xMin, _yMax], [_xMax, _yMax]];
-private _eMin = 99999999;
-private _eMax = -99999999;
-private _nMin = 99999999;
-private _nMax = -99999999;
-private _conv = [];
-private _e = 0;
-private _n = 0;
-{
-    _conv = [_x + [0], _anchor, 10] call EFUNC(core,worldToMgrs);
-    if ((count _conv) >= 5) then {
-        _e = _conv select 3;
-        _n = _conv select 4;
-        if (_e < _eMin) then { _eMin = _e; };
-        if (_e > _eMax) then { _eMax = _e; };
-        if (_n < _nMin) then { _nMin = _n; };
-        if (_n > _nMax) then { _nMax = _n; };
-    };
-} forEach _corners;
-
-if ((_eMax <= _eMin) || (_nMax <= _nMin)) exitWith { [[], [], 0] };
-
-// Interval: the smallest decimal step at or above the world's finest step
-// (arg 2) that keeps the line count at or below 24 per axis.  The world size
-// sets the floor, the zoom sets the step.  The count falls by ten each step.
-private _span = (_eMax - _eMin) max (_nMax - _nMin);
-
-// One map pixel in world metres.  The main map control spans the visible
-// rectangle across about a thousand pixels, so this is a conservative pixel.
-private _pixel = _span / 1024;
+// Interval: the smallest decimal step at or above the floor (arg 2) that
+// keeps the line count at or below 24 per axis.  The visible span sets the
+// step.  The count falls by ten each step.  The step is in world metres, the
+// same unit as the line positions, so a line lands on a whole step.
+private _span = (_xMax - _xMin) max (_yMax - _yMin);
 
 private _floor = 10;
 if ((_baseInterval isEqualType 0) && (_baseInterval >= 10) && (_baseInterval <= 100000)) then {
@@ -116,72 +80,40 @@ private _precision = _perAxis * 2;
 
 private _segments = [];
 private _labels = [];
-private _pA = [];
-private _pB = [];
-private _pM = [];
-private _vx = 0;
-private _vy = 0;
-private _len = 0;
-private _dev = 0;
 private _major = false;
 private _full = "";
+private _conv = [];
 
-// Vertical lines: constant easting.  The chord runs the full visible
-// northing range; the midpoint is tested only for a genuine bend.
-private _line = (ceil (_eMin / _interval)) * _interval;
-private _end = (floor (_eMax / _interval)) * _interval;
+// Vertical lines: constant world x.  The segment runs the full visible y
+// range, so it is vertical by construction.  The label sits at the north end
+// and carries the MGRS easting at that point.
+private _line = (ceil (_xMin / _interval)) * _interval;
+private _end = (floor (_xMax / _interval)) * _interval;
 while { _line <= _end } do {
-    _pA = [_line, _nMin, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
-    _pB = [_line, _nMax, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
-    _pM = [_line, (_nMin + _nMax) / 2, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
     _major = (((_line / _interval) mod 10) == 0);
-    _vx = (_pB select 0) - (_pA select 0);
-    _vy = (_pB select 1) - (_pA select 1);
-    _len = sqrt ((_vx * _vx) + (_vy * _vy));
-    _dev = 0;
-    if (_len > 0) then {
-        _dev = abs (((_pM select 0) - (_pA select 0)) * _vy - ((_pM select 1) - (_pA select 1)) * _vx) / _len;
-    };
-    if (_dev > _pixel) then {
-        _segments pushBack [_pA, _pM, _major];
-        _segments pushBack [_pM, _pB, _major];
-    } else {
-        _segments pushBack [_pA, _pB, _major];
-    };
+    _segments pushBack [[_line, _yMin, 0], [_line, _yMax, 0], _major];
     if ((_perAxis >= 1) && (_perAxis <= 5)) then {
-        _full = [_line, _nMax, _zone, _precision, _latCentre] call EFUNC(core,formatMgrs);
+        _conv = [[_line, _yMax, 0], _anchor, _precision] call EFUNC(core,worldToMgrs);
+        _full = _conv select 0;
         if ((count _full) >= (5 + _precision)) then {
-            _labels pushBack [_pB, _full select [5, _perAxis], _major];
+            _labels pushBack [[_line, _yMax, 0], _full select [5, _perAxis], _major];
         };
     };
     _line = _line + _interval;
 };
 
-// Horizontal lines: constant northing.
-_line = (ceil (_nMin / _interval)) * _interval;
-_end = (floor (_nMax / _interval)) * _interval;
+// Horizontal lines: constant world y.  The label sits at the east end and
+// carries the MGRS northing at that point.
+_line = (ceil (_yMin / _interval)) * _interval;
+_end = (floor (_yMax / _interval)) * _interval;
 while { _line <= _end } do {
-    _pA = [_eMin, _line, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
-    _pB = [_eMax, _line, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
-    _pM = [(_eMin + _eMax) / 2, _line, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
     _major = (((_line / _interval) mod 10) == 0);
-    _vx = (_pB select 0) - (_pA select 0);
-    _vy = (_pB select 1) - (_pA select 1);
-    _len = sqrt ((_vx * _vx) + (_vy * _vy));
-    _dev = 0;
-    if (_len > 0) then {
-        _dev = abs (((_pM select 0) - (_pA select 0)) * _vy - ((_pM select 1) - (_pA select 1)) * _vx) / _len;
-    };
-    if (_dev > _pixel) then {
-        _segments pushBack [_pA, _pM, _major];
-        _segments pushBack [_pM, _pB, _major];
-    } else {
-        _segments pushBack [_pA, _pB, _major];
-    };
+    _segments pushBack [[_xMin, _line, 0], [_xMax, _line, 0], _major];
     if ((_perAxis >= 1) && (_perAxis <= 5)) then {
-        _full = [_eMax, _line, _zone, _precision, _latCentre] call EFUNC(core,formatMgrs);
+        _conv = [[_xMax, _line, 0], _anchor, _precision] call EFUNC(core,worldToMgrs);
+        _full = _conv select 0;
         if ((count _full) >= (5 + _precision)) then {
-            _labels pushBack [_pB, _full select [(5 + _perAxis), _perAxis], _major];
+            _labels pushBack [[_xMax, _line, 0], _full select [(5 + _perAxis), _perAxis], _major];
         };
     };
     _line = _line + _interval;
