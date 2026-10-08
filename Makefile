@@ -63,6 +63,8 @@ lint: lint-parity
 	python3 tools/validation/validate_symbology.py || rc=1; \
 	python3 tools/validation/validate_symbology_colour.py || rc=1; \
 	python3 tools/gen_symbology_catalogue.py --check || rc=1; \
+	python3 tools/gen_symbology_catalogue.py --verify-svg || rc=1; \
+	python3 tools/validation/validate_symbology_catalogue.py || rc=1; \
 	python3 tools/validation/gen_terrain_tables.py --check || rc=1; \
 	python3 tools/validation/validate_terrain.py || rc=1; \
 	python3 tools/gen_terrain_symbols.py --check || rc=1; \

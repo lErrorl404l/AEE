@@ -245,5 +245,38 @@ class TestCatalogueFreshness(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
 
 
+class TestCommittedSources(unittest.TestCase):
+    """Every catalogue source drawing and render is committed in the repository.
+
+    The generator --check reproduces each .paa from the committed render.  This
+    proves the sources it reads are present, so a missing source cannot pass.
+    """
+
+    def test_every_entry_has_a_committed_source_svg(self):
+        import json
+
+        catalogue = json.loads(CATALOGUE.read_text(encoding="utf-8"))
+        root = REPO / "data" / "symbology" / "sources" / "svg"
+        for entry in catalogue["entries"]:
+            with self.subTest(file=entry.get("file")):
+                path = root / str(entry["dir"]) / str(entry["file"])
+                self.assertTrue(path.is_file(), f"source SVG not committed: {path}")
+
+    def test_every_symbol_has_a_committed_render(self):
+        import sys
+
+        sys.path.insert(0, str(REPO))
+        from tools import gen_symbology_catalogue as gen
+
+        root = REPO / "data" / "symbology" / "sources" / "render"
+        seen: set[str] = set()
+        for entry in gen.symbol_entries():
+            name = gen.marker_name(entry, seen)
+            with self.subTest(marker=name):
+                self.assertTrue(
+                    (root / f"{name}.png").is_file(), f"render missing: {name}"
+                )
+
+
 if __name__ == "__main__":
     unittest.main()

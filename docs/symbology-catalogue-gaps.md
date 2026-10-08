@@ -53,3 +53,25 @@ AEE draws from the APP-6 geometry.  It does not emit a blind cartesian product.
 Sources: MIL-STD-2525D (10 June 2014, US Government public domain);
 `/tmp/opencode/app6-grammar-reference.md`, `/tmp/opencode/app6-modifiers-reference.md`,
 `/tmp/opencode/app6-catalogue-reference.md`.  Per JSP 945.
+
+## 5. Committed sources and what CI verifies
+
+The catalogue sources are committed under `data/symbology/sources`: the 1092
+source SVGs (`svg/<dir>/<file>.svg`) and the 903 rendered 64 px canvases
+(`render/<marker>.png`). The render is not reproducible across machines, so the
+render output is pinned rather than the renderer. See
+`data/symbology/sources/README.md` and ADR-023.
+
+CI verifies for the marker set:
+
+| Check | What it proves |
+|---|---|
+| `gen_symbology_catalogue.py --check` | every `.paa` reproduces its committed render byte for byte, with no renderer; the `CfgMarkers` block and `ATTRIBUTION.md` are fresh |
+| `gen_symbology_catalogue.py --verify-svg` | every committed render is the render of its committed source SVG, structurally |
+| `validate_symbology_catalogue.py` | every entry has a committed source SVG, an open licence and a source URL, and every symbol has a committed render |
+
+CI cannot verify the SVG to render step byte for byte: it depends on the
+librsvg version and the installed font. The residual is 9 of 903 renders
+(font-variant glyphs) that are structurally identical but not byte identical,
+and the `--verify-svg` tolerance (changed fraction at most 0.15,
+painted-geometry IoU at least 0.60) is sized for that.

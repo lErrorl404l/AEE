@@ -115,14 +115,42 @@ generated into `aee_optics_symbologyTables`.
 
 AEE ships the complete APP-6(C) marker set. The generator
 `tools/gen_symbology_catalogue.py` reads `data/symbology/nato_catalogue.json`,
-the record of every symbol pulled from the three operator sources, rasterises
-each real image (rsvg-convert for SVG, Pillow for PNG and JPEG) into a 64 px
-white-on-transparent mask, and converts it to a `.paa` with
-`hemtt utils paa convert`. The white mask lets the engine marker colour tint
-the texture the way it tints the vanilla NATO markers. The generator also
-emits the `CfgMarkers` block `addons/optics/config_markers.hpp` and the
-attribution file `addons/optics/data/markers/ATTRIBUTION.md`. Its `--check`
-mode re-renders and compares.
+the record of every symbol, and cuts each marker's 64 px canvas to a `.paa`
+with `hemtt utils paa convert`. The canvas keeps the source's own colours, so
+the texture carries the affiliation frame colour and the black glyph, and the
+engine tint stays neutral. The generator also emits the `CfgMarkers` block
+`addons/optics/config_markers.hpp` and the attribution file
+`addons/optics/data/markers/ATTRIBUTION.md`.
+
+The catalogue sources are committed under `data/symbology/sources`: the 1092
+source SVGs (`sources/svg/<dir>/<file>.svg`, for provenance) and the 903
+rendered 64 px canvases (`sources/render/<marker>.png`). The render is not
+reproducible across machines, because librsvg encodes the same pixels into
+different PNG bytes and 166 of the source drawings render `<text>` with a
+`font-family`, so the glyph depends on the installed font. No distribution
+ships librsvg 2.62.4 (the version that cut the shipped `.paa`), and the font
+stack cannot be pinned exactly, so the render OUTPUT is pinned instead of the
+renderer. The committed 64 px canvas is the source of truth for the texture.
+
+CI therefore verifies three things:
+
+  * `gen_symbology_catalogue.py --check` reproduces each `.paa` from its
+    committed render byte for byte, with no renderer, and proves the
+    `CfgMarkers` block and `ATTRIBUTION.md` are fresh;
+  * `gen_symbology_catalogue.py --verify-svg` proves each committed render is
+    the render of its committed source SVG, structurally, across the librsvg
+    version and the font;
+  * `validate_symbology_catalogue.py` proves every entry has a committed source
+    SVG, an open licence and a source URL, and every symbol has a committed
+    render.
+
+CI cannot verify the SVG to render step byte for byte, because that step
+depends on the renderer and the font. The `--verify-svg` compare is structural
+with a stated tolerance (changed fraction at most 0.15, painted-geometry IoU at
+least 0.60). With the pinned CI font (fonts-noto-core) 894 of 903 renders are
+pixel identical; the 9 that differ are a font-variant glyph (Arial or a
+sans-serif variant) whose painted geometry is identical. A wrong glyph, a
+re-colour, a plate crop or a missing render still fails.
 
 Where the engine's own NATO texture carries a symbol the class may reference
 it, for example `\A3\ui_f\data\map\markers\nato\b_inf.paa`. The `b_`, `o_` and
