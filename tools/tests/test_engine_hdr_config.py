@@ -341,5 +341,96 @@ class TestEngineHdrKeys(unittest.TestCase):
         self.assertEqual(rainy_full, RAINY_FULL)
 
 
+def _array_keys(body: str) -> list:
+    """Return the ``key[] = {...}`` names declared directly in ``body``."""
+    return re.findall(r"\b(\w+)\[\]\s*=", _code_only(body))
+
+
+class TestDayLightingOverrideIsNightOnly(unittest.TestCase):
+    """AEE's DayLighting override covers only the night keyframes.
+
+    The operator report (the sky and horizon read too bright after a time
+    skip) asks whether AEE's CfgWorlds DayLighting is the cause.  AEE re-opens
+    DayLightingBrightAlmost and DayLightingRainy with the deepNight (-15 deg)
+    and fullNight (-5 deg) keys only.  Every keyframe the engine interpolates
+    above -5 deg (dawn, day, dusk) is vanilla, so the daylight sky and horizon
+    are engine-owned: AEE's config cannot be the cause of a daytime sky
+    brightness.  A new daylight keyframe in the override re-creates the doubt.
+    """
+
+    SCOPES = ("CAWorld",) + WORLDS
+
+    def _override(self, scope: str, name: str) -> str:
+        body = CA_WORLD if scope == "CAWorld" else _class_body(CFG_WORLDS, scope)
+        return _class_body(body, name)
+
+    def test_bright_almost_override_is_night_only(self) -> None:
+        for scope in self.SCOPES:
+            with self.subTest(scope=scope):
+                body = self._override(scope, "DayLightingBrightAlmost")
+                self.assertTrue(body, f"{scope} DayLightingBrightAlmost missing")
+                self.assertEqual(
+                    _array_keys(body),
+                    ["deepNight", "fullNight"],
+                    "the DayLighting override declares a keyframe above the night",
+                )
+
+    def test_rainy_override_is_night_only(self) -> None:
+        for scope in self.SCOPES:
+            with self.subTest(scope=scope):
+                body = self._override(scope, "DayLightingRainy")
+                self.assertTrue(body, f"{scope} DayLightingRainy missing")
+                self.assertEqual(
+                    _array_keys(body),
+                    ["deepNight", "fullNight"],
+                    "the DayLighting override declares a keyframe above the night",
+                )
+
+    def test_override_keyframes_sit_at_or_below_the_horizon(self) -> None:
+        # deepNight -15 deg and fullNight -5 deg: both below the horizon, so
+        # the override cannot touch a sunlit sky.
+        for scope in self.SCOPES:
+            for name in ("DayLightingBrightAlmost", "DayLightingRainy"):
+                with self.subTest(scope=scope, name=name):
+                    body = self._override(scope, name)
+                    self.assertEqual(_array(body, "deepNight")[0], -15.0)
+                    self.assertEqual(_array(body, "fullNight")[0], -5.0)
+
+
+class TestAeeDrivesNoEngineSky(unittest.TestCase):
+    """AEE's runtime lighting writes no engine sky or ambient value.
+
+    fnc_applyWorldLighting publishes a four-element profile consumed by the
+    star scale, the weather grain and the exhaust shimmer.  It calls no engine
+    sky setter, so AEE cannot drive the sky or horizon brightness at run time;
+    only compat_realweather writes overcast, and only on the server.
+    """
+
+    BINDER = (
+        Path(__file__).parents[2]
+        / "addons"
+        / "environmental"
+        / "functions"
+        / "lighting"
+        / "fnc_applyWorldLighting.sqf"
+    )
+
+    def test_binder_calls_no_engine_sky_setter(self) -> None:
+        code = _code_only(self.BINDER.read_text(encoding="utf-8"))
+        for command in (
+            "setLightingAt",
+            "setAmbientLight",
+            "setOvercast",
+            "forceWeatherChange",
+        ):
+            self.assertNotIn(
+                command, code, f"AEE calls {command}: it would drive the sky"
+            )
+
+    def test_binder_publishes_a_four_element_profile(self) -> None:
+        code = _code_only(self.BINDER.read_text(encoding="utf-8"))
+        self.assertIn("FUNC(worldLightingProfile)", code)
+
+
 if __name__ == "__main__":
     unittest.main()
