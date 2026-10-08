@@ -281,10 +281,14 @@ class TestSpawnBudgetAtTheCap(unittest.TestCase):
 
 
 class TestSoundInstanceCapInvariant(unittest.TestCase):
-    """The playOneShot source keeps the instance cap at 8 and expires by time."""
+    """The playOneShot source keeps the instance cap at the density target."""
 
-    def test_the_instance_cap_constant_is_eight(self):
-        self.assertEqual(SOUND_INSTANCE_CAP, 8)
+    def test_the_instance_cap_constant_is_the_density_target(self):
+        # The measured density was eight of eight slots busy at once, which
+        # reads as a disturbed soundscape.  The acoustic niche hypothesis
+        # (Krause 1987; Pijanowski et al. 2011) puts the realistic ceiling at
+        # three concurrent calls.  See the wildlife ambience dossier.
+        self.assertEqual(SOUND_INSTANCE_CAP, 3)
 
     def test_the_kernel_refuses_at_the_cap(self):
         text = PLAY_ONE_SHOT.read_text(encoding="utf-8")

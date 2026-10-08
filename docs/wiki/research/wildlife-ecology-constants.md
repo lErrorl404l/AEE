@@ -70,7 +70,7 @@ weather model (0.3 to 2.0), not a new constant. It scales the effective range.
 
 | Constant | Value | Grade | Formula or basis |
 |---|---|---|---|
-| `WILDLIFE_EMITTER_CAP` | 8 | U | live attached emitters |
+| `WILDLIFE_EMITTER_CAP` | 3 | U | live attached emitters; the same density target as the one-shot cap |
 | `WILDLIFE_EMITTER_RADIUS` | 150 m | U | animals near enough to carry an emitter |
 
 ## Call pitch (task T28)
@@ -200,6 +200,6 @@ wildlife-ambience dossier.
 
 | Constant | Value | Grade | Formula or basis |
 |---|---|---|---|
-| `WILDLIFE_SOUND_INSTANCE_CAP` | 8 | U | live one-shots |
+| `WILDLIFE_SOUND_INSTANCE_CAP` | 3 | U | live one-shots; the ANH density cap, see the ambience dossier |
 | `WILDLIFE_SOUND_MAX_DISTANCE` | 120 m | U | one-shot range |
 | `WILDLIFE_ANIMAL_CAP` | 16 | U | live animals |

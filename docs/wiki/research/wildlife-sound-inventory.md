@@ -143,10 +143,10 @@ Format `{file, volume, pitch, maxDistance}`. SeaGull uses
   Positional and looping, using the CfgSFX's own params (1000 m for Owl).
   The AEE `_gain` is **not passed** (see mismatch 5).
 - Loop: the one-shot path does not loop. It replays a 2-3 s clip on every
-  tick, capped at 8 live instances that expire after 3 s
-  (`fnc_playOneShot.sqf:45-50`).
+  tick, capped at 3 live instances that expire after 3 s (the acoustic niche
+  density target; `fnc_playOneShot.sqf:45-50`).
 - Constants (`script_component.hpp:7-8`):
-  `WILDLIFE_SOUND_INSTANCE_CAP = 8`, `WILDLIFE_SOUND_MAX_DISTANCE = 120`.
+  `WILDLIFE_SOUND_INSTANCE_CAP = 3`, `WILDLIFE_SOUND_MAX_DISTANCE = 120`.
   The dossier records both as UNSOURCED modelling choices.
 
 ## 5. AEE integration map
