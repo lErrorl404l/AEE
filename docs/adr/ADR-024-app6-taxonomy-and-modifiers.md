@@ -1,4 +1,4 @@
-# ADR-025: The MIL-STD-2525 taxonomy marker layer and the missing modifiers
+# ADR-024: The MIL-STD-2525 taxonomy marker layer and the missing modifiers
 
 Status: accepted.
 
