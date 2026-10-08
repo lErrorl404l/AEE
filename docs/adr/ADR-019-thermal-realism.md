@@ -1,4 +1,4 @@
-# ADR-020: Thermal realism - the second band, the sourced sky, and the engine-native surface
+# ADR-019: Thermal realism - the second band, the sourced sky, and the engine-native surface
 
 Status: Accepted
 

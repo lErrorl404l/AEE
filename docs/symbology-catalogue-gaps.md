@@ -1,6 +1,6 @@
 # AEE map symbology catalogue: dropped entries and non-emitted combinations
 
-Companion to `docs/adr/ADR-024-nato-map-symbology.md`.  Records what the
+Companion to `docs/adr/ADR-023-nato-map-symbology.md`.  Records what the
 catalogue build drops and why, so the counts stay honest.
 
 Source of truth: `data/symbology/nato_catalogue.json`, built by

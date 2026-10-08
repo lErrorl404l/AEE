@@ -1,4 +1,4 @@
-# ADR-023: MGRS and positioning - the sourced anchor, the MGRS kernel and the tracker ceiling
+# ADR-022: MGRS and positioning - the sourced anchor, the MGRS kernel and the tracker ceiling
 
 Status: Accepted
 
