@@ -22,8 +22,11 @@ WORKFLOW = REPO / ".github" / "workflows" / "ci.yml"
 MAKEFILE = REPO / "Makefile"
 
 # Only the validator-style invocations matter. A step that sets up a
-# toolchain or uploads an artefact is not a gate.
-PATTERN = re.compile(r"python3\s+(tools/[\w./-]+\.py)((?:\s+--?[\w-]+)*)")
+# toolchain or uploads an artefact is not a gate.  The argument group captures
+# EVERY following token (flags and positional paths alike), so a scope change
+# such as `sqf_validator.py addons/` versus a bare `sqf_validator.py` is
+# visible: dropping positional arguments made the two look identical.
+PATTERN = re.compile(r"python3[ \t]+(tools/[\w./-]+\.py)((?:[ \t]+[\w./=-]+)*)")
 
 
 # These are not gates. An SBOM is generated output, and the parity check

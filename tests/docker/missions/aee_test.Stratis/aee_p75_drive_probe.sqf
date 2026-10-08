@@ -19,6 +19,16 @@
 //
 // The start is found by scanning for paved cells, so the vehicle runs on the
 // airfield. Emits: [P75] [PASS] / [P75] [FAIL] lines.
+//
+// KNOWN FLAKE (recorded 2026-10-08). The assertion below is at the theoretical
+// boundary: the grip force F = d_mu * m * g is constant while wet, so the
+// measured extra loss is ~equal to dv_min = F_min * dt / m, and engine
+// integration jitter over the 1.5 s window can push the measured value a
+// fraction below the bound. The probe then reports FAIL on one run and PASS on
+// the next for an identical tree. This is a QA noise source, not a physics
+// regression: P74 (the force computation) and the mobility unit suite are the
+// deterministic gates. A fix needs a live Docker re-run to calibrate a timing
+// tolerance on the bound.
 
 private _seed = {
     params ["_wet"];

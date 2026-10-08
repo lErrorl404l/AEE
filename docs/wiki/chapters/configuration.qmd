@@ -218,9 +218,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_wildlife_cognitionDebug` | CHECKBOX | `false` | yes | wildlife | Log the cognition tick budget and the perceive-think-act counts to the RPT |
-| `aee_wildlife_communicationDebug` | CHECKBOX | `false` | yes | wildlife | Log the heard-call bus size and the emitted and decoded calls to the RPT |
-| `aee_wildlife_environmentDebug` | CHECKBOX | `false` | yes | wildlife | Log the environment grid cache size and sample cost to the RPT |
 | `aee_wildlife_logDebug` | CHECKBOX | `false` | yes | wildlife | Log wildlife diagnostics to the RPT. Turn this on before reporting a fault |
 
 ## AEE Environmental → Display

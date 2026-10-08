@@ -33,7 +33,7 @@ PROVENANCE_RE = re.compile(r"^(?P<path>.+):(?P<line>[0-9]+)$")
 
 
 def _by_token(payload):
-    return {entry["token"]: entry for entry in payload["tokens"]}
+    return {entry["class"]: entry for entry in payload["tokens"]}
 
 
 class TestClassInventory(unittest.TestCase):

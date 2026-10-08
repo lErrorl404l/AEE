@@ -1,4 +1,4 @@
-# ADR-024: NATO map symbology - the sourced frame grammar, the pure kernels and the ceiling
+# ADR-023: NATO map symbology - the sourced frame grammar, the pure kernels and the ceiling
 
 Status: Accepted
 

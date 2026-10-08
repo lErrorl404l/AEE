@@ -62,7 +62,7 @@ class RscMapControl {
 #include "config_mapdisplays.hpp"
 #include "config_curator.hpp"
 
-// ─── NATO/OPFOR map symbology markers (ADR-024) ──────────────────────────
+// ─── NATO/OPFOR map symbology markers (ADR-023) ──────────────────────────
 // Real engine map markers.  Every AEE symbol is a CfgMarkers entry whose
 // icon is a real .paa, so it is selectable in the marker dialog, placeable
 // in Eden and drawn by the engine marker layer.  The name is

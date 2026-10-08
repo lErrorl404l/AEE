@@ -16,7 +16,7 @@ the environment, and reports diagnostics.
 It also reports module health and runs the throttled cross-module
 consistency monitor. The monitor reads the published producer values, calls
 the pure `evaluateConsistency` kernel and logs one warning per failing
-invariant. The design decision is in ADR-021.
+invariant. The design decision is in ADR-020.
 
 | Function | Purpose |
 |---|---|
@@ -116,7 +116,7 @@ driver and an AI caller use the same entry point. The client driver
 and its named fields, emits one human line, and calls `perceptionDetectDeviation`
 to set the deviation flags. The monitor is client only. It self-gates on
 `hasInterface` and on a living local player, so a dedicated server publishes
-nothing. The design decision is in ADR-021.
+nothing. The design decision is in ADR-020.
 
 | Function | Purpose |
 |---|---|
@@ -154,7 +154,7 @@ the GPS readout consume the same kernel.
 The signal tracker replaces the exact friendly position with a modelled one.
 It applies the GNSS error-ellipse, fix-state and datalink kernels to the
 local group, then draws fuzzy markers with an uncertainty ellipse. The design
-decision is recorded in ADR-023.
+decision is recorded in ADR-022.
 
 | Function | Purpose |
 |---|---|
@@ -181,7 +181,7 @@ The symbology layer registers real engine map markers. Each symbol is a
 dialog, placeable in Eden and drawn by the engine marker layer. The frame shape
 and the colour show the affiliation, the dimension modifier shows the battle
 dimension, and the inner glyph shows the function. The design decision is in
-ADR-024.
+ADR-023.
 
 | Function | Purpose |
 |---|---|

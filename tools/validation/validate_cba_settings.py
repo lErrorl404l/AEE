@@ -46,6 +46,10 @@ _CALL = re.compile(
 # aee_<component>_logDebug is recognised as a producer rather than
 # reported as a write with no reader.
 _FORMAT_TEMPLATE = re.compile(r'format\s*\[\s*"(?P<lit>' + PREFIX + r'_\w*%1\w*)"')
+# A bare global assignment `aee_x = ...` is a producer.  The
+# getVariable/setVariable and macro scans miss it, so a registry written that
+# way looked unproduced and a test probe reading it was reported as stale.
+_DIRECT_ASSIGN = re.compile(r"(?<![\w.])(" + PREFIX + r"_\w+)\s*=(?!=)")
 _MACRO = re.compile(r"\b(?:Q?GVAR|Q?EGVAR)\([^)]*\)")
 _MACRO_NAME = re.compile(r"\bQ?EGVAR\(([^,)]+),([^)]+)\)|\bQ?GVAR\(([^)]+)\)")
 _DECL = re.compile(r"\bQGVAR\((\w+)\)")
@@ -138,6 +142,12 @@ def scan():
         # the setting that writes it is not reported as a dead write.
         for lit in _FORMAT_TEMPLATE.findall(text):
             writes.setdefault(lit, []).append(rel)
+
+        # Bare global assignments: `aee_optics_terrainTables = call (...)`.
+        for name in _DIRECT_ASSIGN.findall(text):
+            if "_fnc_" in name:
+                continue
+            writes.setdefault(name, []).append(rel)
 
         # Bare-form macros (not the first argument of get/setVariable):
         # an assignment like "GVAR(x) = ..." writes; a value use like
