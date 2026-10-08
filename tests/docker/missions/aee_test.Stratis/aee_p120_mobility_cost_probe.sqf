@@ -101,7 +101,11 @@ private _logOffMs = ((diag_tickTime - _t) * 1000) / _NLog;
 
 // The guard must short-circuit: with the switch off the line is neither built
 // nor written, so the per-pass cost collapses.
-if (_logOffMs < _logOnMs) then {
+// The guard must short-circuit: with the switch off the line is neither built
+// nor written, so the per-pass cost collapses.  The comparison is NON-STRICT:
+// the on path is never cheaper than the off path, and on a fast host both
+// round to 0 ms, so a strict `<` would flake with the host speed.
+if (_logOffMs <= _logOnMs) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
