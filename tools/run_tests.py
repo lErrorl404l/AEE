@@ -233,6 +233,8 @@ def main():
         # Conformance meta-gates (ADR-031): suite registration and ADR numbering.
         "tools/tests/test_suite_registration.py",
         "tools/tests/test_adr_numbers.py",
+        # Engine reference: the docs/engine index and its portability rule.
+        "tools/tests/test_engine_docs.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
