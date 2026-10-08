@@ -109,9 +109,9 @@ jobs:
           key: hemtt-${{ hashFiles('.hemtt/**/*') }}
           restore-keys: hemtt-
       - name: Run HEMTT check
-        run: hemtt check -p -e
+        run: tools/hemtt.sh check -p -e
       - name: Run HEMTT build
-        run: hemtt build
+        run: tools/hemtt.sh build
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -136,7 +136,7 @@ jobs:
           key: hemtt-${{ hashFiles('.hemtt/**/*') }}
           restore-keys: hemtt-
       - name: Build signed release
-        run: hemtt release
+        run: tools/hemtt.sh release
       - name: Generate SBOM
         run: python3 tools/make_sbom.py sbom.cdx.json
       - name: Upload Release
