@@ -3,6 +3,12 @@ services:
     image: ghcr.io/brettmayson/arma3server/arma3server:v3
     platform: linux/amd64
     network_mode: host
+    # The container default soft nofile is 2048.  Raise it so the server and
+    # any in-container tooling never hit `os error 24`.
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576
     environment:
       - ARMA3_CONFIG_FILE=/arma3/config.toml
       - ARMA3_SERVER__SKIP_INSTALL=true
