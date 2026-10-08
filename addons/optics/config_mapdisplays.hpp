@@ -23,6 +23,12 @@
 class RscDisplayStrategicMap {
     class controlsBackground {
         class Map {
+            // The engine numeric grid is removed here too: this control is a
+            // separate override target, so it does not inherit the RscMapControl
+            // grid fields.  AEE draws the MGRS grid instead (ADR-028).
+            colorGrid[] = {0, 0, 0, 0};
+            colorGridMap[] = {0, 0, 0, 0};
+            sizeExGrid = 0;
             colorLevels[] = {0.70, 0.48, 0.32, 1};
             colorMainCountlines[] = {0.55, 0.35, 0.20, 1};
             colorCountlines[] = {0.70, 0.48, 0.32, 1};
@@ -38,6 +44,12 @@ class RscDisplayStrategicMap {
 // ctrlMapMain and ctrlMapEmpty inherit ctrlMap, so this reaches them.
 class ctrlDefault;
 class ctrlMap: ctrlDefault {
+    // The engine numeric grid is removed here too: the Eden map is ctrlMap, not
+    // RscMapControl, so it needs its own grid fields.  AEE draws the MGRS grid
+    // instead (ADR-028).
+    colorGrid[] = {0, 0, 0, 0};
+    colorGridMap[] = {0, 0, 0, 0};
+    sizeExGrid = 0;
     colorLevels[] = {0.70, 0.48, 0.32, 1};
     colorMainCountlines[] = {0.55, 0.35, 0.20, 1};
     colorCountlines[] = {0.70, 0.48, 0.32, 1};

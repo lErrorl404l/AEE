@@ -119,6 +119,7 @@ PREPS(symbology,symbologyPaletteFriendly);
 PREPS(symbology,symbologyDimension);
 PREPS(symbology,symbologyEchelon);
 PREPS(symbology,symbologyEchelonMarker);
+PREPS(symbology,symbologyEchelonSize);
 PREPS(symbology,symbologyMarkers);
 PREPS(symbology,symbologyMarkersApply);
 PREPS(symbology,symbologyMarkersRestore);
