@@ -66,7 +66,8 @@ if (missionNamespace getVariable [QGVAR(agcPinned), false]) exitWith { 0 };
 // by 60%.  A FORCE caller is unaffected because nothing forces the AGC.
 private _agcNow = diag_tickTime;
 private _agcLast = missionNamespace getVariable [QGVAR(agcLastT), -99];
-if ((_agcNow - _agcLast) < 0.25) exitWith { 0 };
+private _agcDt = _agcNow - _agcLast;
+if (_agcDt < 0.25) exitWith { 0 };
 missionNamespace setVariable [QGVAR(agcLastT), _agcNow];
 
 // The module trace switch, resolved ONCE for the whole pass.  AEE_TRACE_ON
@@ -383,6 +384,14 @@ missionNamespace setVariable [QGVAR(objAgcRad), _objWindows];
 // ─── IIR temporal smoothing (FLIR AGC filter) ─────────────────────────────
 // n' = n * alpha + n'prev * (1 - alpha), alpha from the tick interval.
 // ~0.5 s time constant: the mapping tracks the scene without hunting.
+//
+// The interval is the WALL-CLOCK gap since the last pass, not diag_deltaTime.
+// CBA_fnc_addPerFrameHandler passes no delta, and diag_deltaTime is the last
+// RENDERED FRAME duration, so the old step made the filter time constant
+// depend on the frame rate (the same defect class the eye driver was fixed
+// for).  The throttle guarantees _agcDt >= 0.25 s here, so the published
+// window is now frame-rate independent and converged to the same value on
+// every run.
 private _prevMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
 private _prevMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
 if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevMax) then {
@@ -395,8 +404,8 @@ if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevM
     _prevMin = _fullMin;
     _prevMax = _fullMax;
 };
-if (diag_deltaTime > 0) then {
-    private _a = diag_deltaTime / (diag_deltaTime + 0.5);
+if (_agcDt > 0) then {
+    private _a = _agcDt / (_agcDt + 0.5);
     _radMin = _prevMin + (_radMin - _prevMin) * _a;
     _radMax = _prevMax + (_radMax - _prevMax) * _a;
 };
