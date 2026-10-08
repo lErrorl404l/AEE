@@ -41,14 +41,6 @@
             <Original>Cognition Budget (ms)</Original>
             <English>Cognition Budget (ms)</English>
         </Key>
-        <Key ID="STR_AEE_Wildlife_cognitionDebug_Description">
-            <Original>Log the cognition tick budget and the perceive-think-act counts to the RPT</Original>
-            <English>Log the cognition tick budget and the perceive-think-act counts to the RPT</English>
-        </Key>
-        <Key ID="STR_AEE_Wildlife_cognitionDebug_Name">
-            <Original>Cognition Debug</Original>
-            <English>Cognition Debug</English>
-        </Key>
         <Key ID="STR_AEE_Wildlife_cognitionEnabled_Description">
             <Original>Run the budgeted perceive-think-act ecology over the animals</Original>
             <English>Run the budgeted perceive-think-act ecology over the animals</English>
@@ -56,14 +48,6 @@
         <Key ID="STR_AEE_Wildlife_cognitionEnabled_Name">
             <Original>Cognition</Original>
             <English>Cognition</English>
-        </Key>
-        <Key ID="STR_AEE_Wildlife_communicationDebug_Description">
-            <Original>Log the heard-call bus size and the emitted and decoded calls to the RPT</Original>
-            <English>Log the heard-call bus size and the emitted and decoded calls to the RPT</English>
-        </Key>
-        <Key ID="STR_AEE_Wildlife_communicationDebug_Name">
-            <Original>Communication Debug</Original>
-            <English>Communication Debug</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_communicationEnabled_Description">
             <Original>Let an animal's call reach and move a nearby conspecific</Original>
@@ -112,14 +96,6 @@
         <Key ID="STR_AEE_Wildlife_environmentCellSize_Name">
             <Original>Environment Cell Size</Original>
             <English>Environment Cell Size</English>
-        </Key>
-        <Key ID="STR_AEE_Wildlife_environmentDebug_Description">
-            <Original>Log the environment grid cache size and sample cost to the RPT</Original>
-            <English>Log the environment grid cache size and sample cost to the RPT</English>
-        </Key>
-        <Key ID="STR_AEE_Wildlife_environmentDebug_Name">
-            <Original>Environment Grid Debug</Original>
-            <English>Environment Grid Debug</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_environmentEnabled_Description">
             <Original>Sample the local environment grid so animals spawn and move by their habitat suitability</Original>

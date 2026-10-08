@@ -139,7 +139,7 @@ AEE_SETTING_CHECKBOX(trackerSuppressIcons,"AEE HUD","Tracker",false);
 // interval is cheaper and ages the tracks more.
 AEE_SETTING_SLIDER(trackerInterval,"AEE HUD","Tracker",0.2,5,1.0,1);
 
-// ── NATO/OPFOR map symbology (ADR-024) ────────────────────────────────────
+// ── NATO/OPFOR map symbology (ADR-023) ────────────────────────────────────
 // The map and world symbols follow NATO APP-6(C).  The layer draws the frame
 // grammar, the affiliation colours and a curated set of inner glyphs.  The
 // master switch ships OFF; each toggle gates one surface.

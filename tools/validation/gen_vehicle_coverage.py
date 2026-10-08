@@ -238,7 +238,7 @@ def _coverage_row(
     reason: str,
 ) -> JsonObject:
     return {
-        "token": token,
+        "class": token,
         "kind": kind,
         "is_ground": is_ground,
         "state": state,
@@ -260,7 +260,7 @@ def build_coverage(
     """
     rows: list[object] = []
     for entry in entries(classes_payload):
-        token = _as_str(entry.get("token"))
+        token = _as_str(entry.get("class"))
         kind = _as_str(entry.get("kind"))
         if entry.get("is_ground") is not True:
             reason = entry.get("exclusion_reason")
@@ -328,7 +328,7 @@ def coverage_errors(
 
     known: dict[str, JsonObject] = {}
     for entry in entries(classes_payload):
-        token = entry.get("token")
+        token = entry.get("class")
         if isinstance(token, str) and token:
             known[token] = entry
 
@@ -338,7 +338,7 @@ def coverage_errors(
         if row is None:
             errors.append("coverage row: must be an object")
             continue
-        token = row.get("token")
+        token = row.get("class")
         if not isinstance(token, str) or not token:
             errors.append("coverage row: token is required")
             continue
@@ -470,7 +470,7 @@ def build_coverage_report(
         "|---|---|---|---|---|---|",
     ]
     for row in ground:
-        token = str(row.get("token", ""))
+        token = str(row.get("class", ""))
         mapped = _mapped_entries(token, load)
         mapped_text = ", ".join(f"`{item}`" for item in mapped) if mapped else "none"
         runtime_row = "yes" if row.get("state") == "recorded" else "no"
@@ -487,7 +487,7 @@ def build_coverage_report(
         "|---|---|",
     ]
     for row in excluded:
-        lines.append(f"| `{row.get('token', '')}` | {row.get('reason', '')} |")
+        lines.append(f"| `{row.get('class', '')}` | {row.get('reason', '')} |")
 
     lines.append("")
     return "\n".join(lines)
@@ -575,7 +575,7 @@ def build_class_mapping_report(
 ) -> str:
     """Render data/vehicle/CLASS_MAPPING_GAPS.md."""
     ground_tokens = [
-        _as_str(entry.get("token"))
+        _as_str(entry.get("class"))
         for entry in entries(classes)
         if entry.get("is_ground") is True
     ]

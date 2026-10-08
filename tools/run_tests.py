@@ -177,6 +177,7 @@ def main():
         "tools/tests/test_run_tests_timeout.py",
         # Terrain and map-feature symbols (aee-map-feature-overhaul).
         "tools/tests/test_terrain.py",
+        "tools/tests/test_cba_settings.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]

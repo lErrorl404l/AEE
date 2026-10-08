@@ -1,4 +1,4 @@
-# ADR-022: Wildlife ecology - a mind that reads the world, not a looping sound
+# ADR-021: Wildlife ecology - a mind that reads the world, not a looping sound
 
 Status: Accepted
 

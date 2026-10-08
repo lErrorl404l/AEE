@@ -62,7 +62,7 @@ def _live_rows(payload: JsonObject) -> list[JsonObject]:
 
 def _row(coverage: JsonObject, token: str) -> JsonObject:
     for row in _live_rows(coverage):
-        if row.get("token") == token:
+        if row.get("class") == token:
             return row
     raise AssertionError(f"no coverage row for {token}")
 
@@ -74,7 +74,7 @@ def _token(
     kind: str = "engine_base",
 ) -> JsonObject:
     return {
-        "token": token,
+        "class": token,
         "kind": kind,
         "is_ground": is_ground,
         "exclusion_reason": exclusion_reason,
@@ -199,7 +199,7 @@ class CoverageGuardTest(unittest.TestCase):
     def test_a_dropped_token_is_reported_by_name(self) -> None:
         classes, coverage = self._classes_and_coverage()
         coverage["tokens"] = [
-            row for row in _entries(coverage) if row.get("token") != "Tank"
+            row for row in _entries(coverage) if row.get("class") != "Tank"
         ]
         errors = g.coverage_errors(classes, coverage, {})
         self.assertTrue(
@@ -321,8 +321,8 @@ class RealCorpusCoverageTest(unittest.TestCase):
         self.coverage = g.load_coverage(DATA)
 
     def test_the_committed_table_holds_every_token(self) -> None:
-        inventory = [str(entry.get("token")) for entry in _entries(self.classes)]
-        rows = [str(row.get("token")) for row in _entries(self.coverage)]
+        inventory = [str(entry.get("class")) for entry in _entries(self.classes)]
+        rows = [str(row.get("class")) for row in _entries(self.coverage)]
         self.assertEqual(
             len(rows), len(set(rows)), "coverage.json has a duplicate token"
         )
@@ -359,23 +359,23 @@ class RealCorpusCoverageTest(unittest.TestCase):
         # hold an emitted row and a class-map binding, so the committed table
         # records them and carries no bare lead. The lead render path stays
         # covered by CoverageBuildTest.
-        rows = {row.get("token"): row for row in _entries(self.coverage)}
+        rows = {row.get("class"): row for row in _entries(self.coverage)}
         for token in g.LEAD_CANDIDATES:
             self.assertEqual("recorded", rows[token]["state"], token)
         leads = [token for token, row in rows.items() if row["state"] == "lead"]
         self.assertEqual([], leads)
 
     def test_every_ground_token_is_recorded_lead_or_no_source(self) -> None:
-        rows = {row.get("token"): row for row in _entries(self.coverage)}
+        rows = {row.get("class"): row for row in _entries(self.coverage)}
         for entry in _entries(self.classes):
             if entry.get("is_ground") is not True:
                 continue
-            row = rows[str(entry.get("token"))]
+            row = rows[str(entry.get("class"))]
             self.assertIn(row["state"], ("recorded", "lead", g.GROUND_ABSENT_STATE))
 
     def test_the_ground_set_matches_the_inventory(self) -> None:
         ground = [
-            entry.get("token")
+            entry.get("class")
             for entry in _entries(self.classes)
             if entry.get("is_ground") is True
         ]
@@ -405,7 +405,7 @@ class GeneratedArtefactTest(unittest.TestCase):
 
     def test_the_audit_has_a_row_for_every_token(self) -> None:
         for row in _entries(self.coverage):
-            self.assertIn(f"`{row.get('token')}`", self.audit)
+            self.assertIn(f"`{row.get('class')}`", self.audit)
 
     def test_the_audit_counts_the_recorded_rows(self) -> None:
         # Six class-map bindings each have an emitted runtime row.
@@ -453,7 +453,7 @@ class GeneratedArtefactTest(unittest.TestCase):
         for entry in _entries(self.classes):
             if entry.get("is_ground") is not True:
                 continue
-            self.assertIn(f"| `{entry.get('token')}` |", self.mapping)
+            self.assertIn(f"| `{entry.get('class')}` |", self.mapping)
 
     def test_class_mapping_gaps_names_the_mapping_source_class(self) -> None:
         self.assertIn(g.CLASS_MAP_SOURCE_CLASS, self.mapping)

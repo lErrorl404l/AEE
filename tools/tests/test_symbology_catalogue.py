@@ -12,6 +12,8 @@ Run: python3 -m unittest tools.tests.test_symbology_catalogue -v
 from __future__ import annotations
 
 import re
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -220,6 +222,27 @@ class TestNoDuplicateClasses(unittest.TestCase):
                 names = self._classes(header)
                 dupes = [n for n in set(names) if names.count(n) > 1]
                 self.assertEqual(dupes, [], f"{header} defines {dupes} twice")
+
+
+class TestCatalogueFreshness(unittest.TestCase):
+    """The committed marker textures must match a fresh render from the sources.
+
+    The generator is the only writer.  A stale committed set (a source re-emit
+    without a re-render) passes every source-level test but ships the wrong
+    texture, so this runs the generator's own --check, the same gate CI runs.
+    """
+
+    def test_committed_textures_match_a_fresh_render(self):
+        proc = subprocess.run(
+            [
+                sys.executable,
+                str(REPO / "tools" / "gen_symbology_catalogue.py"),
+                "--check",
+            ],
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
 
 
 if __name__ == "__main__":

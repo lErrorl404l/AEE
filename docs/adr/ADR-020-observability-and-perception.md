@@ -1,4 +1,4 @@
-# ADR-021: Observability and perception - the debug index, the perception monitor and the consistency harness
+# ADR-020: Observability and perception - the debug index, the perception monitor and the consistency harness
 
 Status: Accepted
 
