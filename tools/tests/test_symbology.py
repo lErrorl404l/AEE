@@ -533,15 +533,45 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
 
     def test_the_marker_tint_is_neutral(self):
         # Every AEE texture carries its own colours, so the engine tint is
-        # white.  ColorAEE is the neutral class the kernels select.  It also
-        # declares a scope: ColorAEE is a new CfgMarkerColors class with no
-        # vanilla parent, so it inherits no scope, and the engine logs
-        # "No entry '.../ColorAEE.scope'" and "'/' is not a value" without it.
-        self.assertIn(
-            "class ColorAEE { scope = 1; color[] = {1, 1, 1, 1}; };", CONFIG_SRC
-        )
+        # white.  ColorAEE is the neutral class the kernels select.
+        self.assertIn("class ColorAEE: Default {", CONFIG_SRC)
+        self.assertIn("color[] = {1, 1, 1, 1};", CONFIG_SRC)
         for side in ("side = 0;", "side = 1;", "side = 2;"):
             self.assertIn(side, FAMILY_SRC)
+
+    def test_every_marker_colour_restates_the_default_parent(self):
+        # A parentless reopen of a CfgMarkerColors class makes the engine log
+        # "Updating base class 'Default'->''" and drop the inherited name and
+        # scope, which breaks the map marker colour picker.  Every AEE colour
+        # must restate the real Default parent.
+        block = re.search(r"class CfgMarkerColors \{(.*?)\n\};", CONFIG_SRC, re.DOTALL)
+        self.assertIsNotNone(block, "CfgMarkerColors block")
+        colours = re.findall(r"class (\w+)(?::\s*(\w+))?\s*\{", block.group(1))
+        self.assertTrue(colours, "no CfgMarkerColors classes")
+        for cls, parent in colours:
+            self.assertEqual(parent, "Default", f"{cls} is reopened without Default")
+
+    def test_color_aee_carries_a_scope(self):
+        # ColorAEE is a new class with no own scope, so without it the engine
+        # logs "No entry '.../ColorAEE.scope'" and "'/' is not a value".
+        self.assertRegex(CONFIG_SRC, r"class ColorAEE: Default \{ scope = 1;")
+
+    def test_the_editor_visible_marker_count_is_pinned(self):
+        # Every AEE marker is editor-visible: the catalogue, the cross-product,
+        # the taxonomy and the modifiers set scope = 2, and every runtime family
+        # alias inherits a visible parent.  Pin the count the engine lists in
+        # the marker picker, so a change that floods or empties it is caught.
+        explicit = sum(
+            (OPTICS / name).read_text(encoding="utf-8").count("scope = 2;")
+            for name in (
+                "config_markers.hpp",
+                "config_crossproduct.hpp",
+                "config_taxonomy.hpp",
+                "config_modifiers.hpp",
+            )
+        )
+        family = FAMILY_SRC.count("class AEE_")
+        self.assertEqual(explicit + family, 5612)
 
     def test_no_marker_points_at_an_engine_texture(self):
         # Every AEE marker texture is a real .paa under data/markers.  A

@@ -152,7 +152,7 @@ class CfgLocationTypes {
     class ViewPoint: Hill {
         texture = "\z\aee\addons\optics\data\terrain\monument.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 16;
         shadow = 0;
     };
     class RockArea: Hill {
@@ -166,7 +166,7 @@ class CfgLocationTypes {
     class BorderCrossing: Hill {
         texture = "\z\aee\addons\optics\data\terrain\border_crossing.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 16;
         shadow = 0;
     };
 
@@ -174,25 +174,25 @@ class CfgLocationTypes {
     class VegetationBroadleaf: Hill {
         texture = "\z\aee\addons\optics\data\terrain\deciduous.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 18;
         shadow = 0;
     };
     class VegetationFir: Hill {
         texture = "\z\aee\addons\optics\data\terrain\coniferous.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 18;
         shadow = 0;
     };
     class VegetationPalm: Hill {
         texture = "\z\aee\addons\optics\data\terrain\palm.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 18;
         shadow = 0;
     };
     class VegetationVineyard: Hill {
         texture = "\z\aee\addons\optics\data\terrain\vineyard.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 16;
         shadow = 0;
     };
 

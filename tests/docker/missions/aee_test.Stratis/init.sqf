@@ -3328,6 +3328,13 @@ private _p29Pass = 0;
     // grid lines are off while the numbers return.  It renders nothing.
     execVM "aee_p121_map_legibility_probe.sqf";
 
+    // PHASE 124 lives in aee_p124_map_symbols_probe.sqf: the terrain symbol
+    // size and the marker palette are engine config, so the probe reads the
+    // merged config live and confirms the vanilla location/object sizes, the
+    // marker colour scope and the AEE editor-visible marker set.  It renders
+    // nothing.
+    execVM "aee_p124_map_symbols_probe.sqf";
+
     // PHASE 125 lives in aee_p125_eye_time_skip_probe.sqf: the eye adaptation
     // driver is client-only, so the probe drives the REAL kernels with fixtures
     // and proves a world-clock skip is detected and the eye re-seeds adapted

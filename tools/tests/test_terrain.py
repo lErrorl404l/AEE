@@ -112,6 +112,54 @@ class TestTerrainTable(unittest.TestCase):
         table_sqf = TABLE_SQF.read_text(encoding="utf-8")
         self.assertIn("GENERATED", table_sqf)
 
+    def test_the_table_sizes_match_the_vanilla_engine_values(self):
+        # The runtime table mirrors the config; both must carry the vanilla
+        # engine size, or the map symbol draws at the wrong size.
+        locations = {
+            "Hill": 14,
+            "ViewPoint": 16,
+            "RockArea": 12,
+            "BorderCrossing": 16,
+            "VegetationBroadleaf": 18,
+            "VegetationFir": 18,
+            "VegetationPalm": 18,
+            "VegetationVineyard": 16,
+        }
+        objects = {
+            "Bush": 7,
+            "SmallTree": 12,
+            "Tree": 12,
+            "Rock": 12,
+            "church": 24,
+            "Chapel": 24,
+            "Cross": 24,
+            "Ruin": 16,
+            "hospital": 24,
+            "fuelstation": 24,
+            "Stack": 16,
+            "transmitter": 24,
+            "watertower": 24,
+            "lighthouse": 24,
+            "power": 24,
+            "powersolar": 24,
+            "powerwind": 24,
+            "powerwave": 24,
+            "Fountain": 11,
+            "Tourism": 16,
+            "ViewTower": 16,
+            "busstop": 24,
+            "quay": 24,
+            "Shipwreck": 24,
+            "Bunker": 14,
+            "Fortress": 16,
+        }
+        by_class = {row["class"]: row for row in TABLE["locations"]}
+        for cls, size in locations.items():
+            self.assertEqual(by_class[cls]["size"], size, cls)
+        by_class = {row["class"]: row for row in TABLE["objects"]}
+        for cls, size in objects.items():
+            self.assertEqual(by_class[cls]["size"], size, cls)
+
 
 class TestTerrainLocationConfig(unittest.TestCase):
     def test_all_25_location_classes_are_declared(self):
@@ -147,6 +195,27 @@ class TestTerrainLocationConfig(unittest.TestCase):
     def test_no_drawstyle_is_set(self):
         self.assertIsNone(re.search(r"drawStyle\s*=", LOC_SRC))
 
+    def test_the_icon_classes_carry_the_vanilla_size(self):
+        # The map symbol size is the vanilla engine value: Dta/bin.pbo holds the
+        # location icons, and ui_f overrides ViewPoint to 16.  A smaller size
+        # draws the terrain symbol too small on the map.
+        expected = {
+            "Hill": 14,
+            "ViewPoint": 16,
+            "RockArea": 12,
+            "BorderCrossing": 16,
+            "VegetationBroadleaf": 18,
+            "VegetationFir": 18,
+            "VegetationPalm": 18,
+            "VegetationVineyard": 16,
+        }
+        for cls, size in expected.items():
+            block = re.search(
+                rf"class {cls}(?::\s*\w+)?\s*\{{(.*?)\n    \}}", LOC_SRC, re.DOTALL
+            )
+            self.assertIsNotNone(block, cls)
+            self.assertRegex(block.group(1), rf"\bsize = {size};", cls)
+
 
 class TestTerrainObjectConfig(unittest.TestCase):
     def test_all_26_object_classes_are_declared(self):
@@ -168,6 +237,42 @@ class TestTerrainObjectConfig(unittest.TestCase):
             self.assertIsNotNone(block, cls)
             self.assertIn("coefMin", block.group(1), cls)
             self.assertIn("coefMax", block.group(1), cls)
+
+    def test_every_object_icon_keeps_the_vanilla_size(self):
+        # The vanilla ui_f RscMapControl object-icon size draws the icon at the
+        # map scale a player expects.  A shrunken size draws it too small.
+        expected = {
+            "Bush": 7,
+            "SmallTree": 12,
+            "Tree": 12,
+            "Rock": 12,
+            "church": 24,
+            "Chapel": 24,
+            "Cross": 24,
+            "Ruin": 16,
+            "hospital": 24,
+            "fuelstation": 24,
+            "Stack": 16,
+            "transmitter": 24,
+            "watertower": 24,
+            "lighthouse": 24,
+            "power": 24,
+            "powersolar": 24,
+            "powerwind": 24,
+            "powerwave": 24,
+            "Fountain": 11,
+            "Tourism": 16,
+            "ViewTower": 16,
+            "busstop": 24,
+            "quay": 24,
+            "Shipwreck": 24,
+            "Bunker": 14,
+            "Fortress": 16,
+        }
+        for cls, size in expected.items():
+            block = re.search(rf"class {cls} \{{(.*?)\n    \}}", OBJ_SRC, re.DOTALL)
+            self.assertIsNotNone(block, cls)
+            self.assertRegex(block.group(1), rf"\bsize = {size};", cls)
 
 
 class TestTerrainTextures(unittest.TestCase):
