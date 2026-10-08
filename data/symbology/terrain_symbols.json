@@ -420,7 +420,7 @@
       ],
       "section": "19",
       "grade": "sourced",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0140 ChristianCathedralP"
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0140 ChristianChurchP"
     },
     {
       "id": "chapel",
@@ -574,7 +574,7 @@
       ],
       "section": "21",
       "grade": "derived",
-      "source": "DGIWG Symbol Register, symbol SO_0001 SolarPanelP; no dedicated register glyph, nearest register drawing used"
+      "source": "DGIWG Symbol Register, symbol SO_0001 SolarPanelP; the register publishes no dedicated solar glyph, its generic point symbol used"
     },
     {
       "id": "wind",
@@ -602,7 +602,7 @@
       ],
       "section": "21",
       "grade": "derived",
-      "source": "DGIWG Symbol Register, symbol SO_0001 TidalWaterA; no dedicated register glyph, nearest register drawing used"
+      "source": "DGIWG Symbol Register, symbol SO_0005 ElectricPowerStationP; no dedicated wave-power glyph, the register's generic electric power station used"
     },
     {
       "id": "fuel_station",
@@ -700,7 +700,7 @@
       ],
       "section": "21",
       "grade": "derived",
-      "source": "DGIWG Symbol Register, symbol SO_0001 AmusementParkAttractionP; no dedicated register glyph, nearest register drawing used"
+      "source": "DGIWG Symbol Register, symbol SO_0001 AmusementParkAttractionP; the register publishes no dedicated attraction glyph, its generic point symbol used"
     },
     {
       "id": "view_tower",
@@ -1204,7 +1204,7 @@
       "textSize": 0.05,
       "shadow": 0,
       "grade": "derived",
-      "source": "CfgLocationTypes BorderCrossing, drawStyle icon; DGIWG SO_0153 GateBorderCrossingP"
+      "source": "CfgLocationTypes BorderCrossing, drawStyle icon; DGIWG SO_0153 CheckpointP"
     },
     {
       "class": "VegetationBroadleaf",
@@ -1400,7 +1400,7 @@
       "size": 12,
       "importance": 1,
       "grade": "derived",
-      "source": "RscMapControl busstop; DGIWG SO_0153 TransportationStationCheckpointNonObstructionIntactP"
+      "source": "RscMapControl busstop; DGIWG SO_0153 CheckpointP"
     },
     {
       "class": "fuelstation",
@@ -1445,7 +1445,7 @@
       "size": 14,
       "importance": 1,
       "grade": "derived",
-      "source": "RscMapControl church; DGIWG SO_0140 ChristianCathedralP"
+      "source": "RscMapControl church; DGIWG SO_0140 ChristianChurchP"
     },
     {
       "class": "lighthouse",
@@ -1505,7 +1505,7 @@
       "size": 14,
       "importance": 1,
       "grade": "derived",
-      "source": "RscMapControl powerwave; DGIWG SO_0001 TidalWaterA"
+      "source": "RscMapControl powerwave; DGIWG SO_0005 ElectricPowerStationP"
     },
     {
       "class": "powerwind",
@@ -1535,7 +1535,7 @@
       "size": 12,
       "importance": 1,
       "grade": "derived",
-      "source": "RscMapControl quay; USGS (2005) pier symbol, PD"
+      "source": "RscMapControl quay; USGS (2005) pier symbol, PD, PD"
     },
     {
       "class": "transmitter",

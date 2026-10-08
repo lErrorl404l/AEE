@@ -176,7 +176,11 @@ class TestTerrainTextures(unittest.TestCase):
             self.assertTrue(
                 "public domain" in licence or "cc by" in licence, entry["id"]
             )
-            self.assertIn(entry.get("grade"), ("sourced", "derived"), entry["id"])
+            self.assertIn(
+                entry.get("grade"),
+                ("specific", "generic", "substituted", "non_register"),
+                entry["id"],
+            )
 
     def test_every_register_symbol_names_a_dgiwg_symbol_and_concept(self):
         entries = {e["id"]: e for e in MANIFEST["entries"]}
@@ -184,12 +188,20 @@ class TestTerrainTextures(unittest.TestCase):
             entry = entries[symbol]
             if entry.get("dgiwg"):
                 self.assertRegex(entry["dgiwg"], r"^SO_\d{4}$", symbol)
-                self.assertTrue(entry.get("concept", "").strip(), symbol)
+                concept = entry.get("concept") or entry.get("glyph_concept")
+                self.assertTrue(
+                    (concept and concept.strip())
+                    or entry.get("grade") == "substituted",
+                    symbol,
+                )
                 self.assertTrue((SRC / entry["svg"]).is_file(), symbol)
 
     def test_every_non_register_symbol_is_recorded(self):
         entries = {e["id"]: e for e in MANIFEST["entries"]}
-        recorded = {e["id"] for e in MANIFEST.get("no_register_source", [])}
+        recorded = {e["id"] for e in MANIFEST.get("substituted", [])}
+        recorded |= {
+            e["id"] for e in MANIFEST["entries"] if e.get("grade") == "non_register"
+        }
         for symbol in REFERENCED:
             if not entries[symbol].get("dgiwg"):
                 self.assertIn(symbol, recorded)

@@ -1,0 +1,5864 @@
+[
+{
+"id": "SO_0001",
+"geom": "Point",
+"concepts": [
+"AmusementParkAttractionKnownNonObstructionP",
+"AmusementParkAttractionLandmarkNonObstructionP",
+"AmusementParkAttractionNonObstructionP",
+"AmusementParkAttractionP",
+"AmusementParkAttractionUnknownNonObstructionP",
+"ApproachLightingSystemP",
+"ArchaeologicalSiteNonObstructionP",
+"ArchaeologicalSiteP",
+"BlastFurnaceLandmarkNonObstructionP",
+"BlastFurnaceNonObstructionP",
+"BlastFurnaceP",
+"BridgePierP",
+"ConveyorNonObstructionP",
+"ConveyorP",
+"ExcavatingMachineNonObstructionP",
+"ExcavatingMachineP",
+"FiringRangeIntactP",
+"FiringRangeNotIntactP",
+"FiringRangeP",
+"FlagpoleNonObstructionP",
+"GrainElevatorNonObstructionIntactP",
+"GrainElevatorNonObstructionNotIntactP",
+"GrainElevatorNonObstructionP",
+"GrainElevatorP",
+"GrainStorageStructureNonObstructionIntactP",
+"GrainStorageStructureNonObstructionNotIntactP",
+"GrainStorageStructureNonObstructionP",
+"GrainStorageStructureP",
+"HulkLandmarkNonObstructionP",
+"HulkNonLandmarkNonObstructionP",
+"HulkP",
+"LaunchPadNonObstructionIntactP",
+"LaunchPadNonObstructionNotIntactP",
+"LaunchPadNonObstructionP",
+"LaunchPadP",
+"MarketP",
+"MinefieldP",
+"MineralPileKnownProductNonObstructionP",
+"MineralPileNonObstructionP",
+"MineralPileP",
+"MissileSiteP",
+"PicnicSiteP",
+"PublicSquareP",
+"PumpP",
+"PylonNonObstructionP",
+"RailwayYardIntactP",
+"RailwayYardNotIntactP",
+"RailwayYardP",
+"RetailstandP",
+"ShipElevatorNonObstructionP",
+"ShipElevatorP",
+"SolarPanelP",
+"TowerControlTowerNonObstructionIntactP",
+"TowerControlTowerNonObstructionNotIntactP",
+"TowerControlTowerNonObstructionP",
+"TowerControlTowerP",
+"VehicleLotgeneralAutomotiveP",
+"VehicleLotP",
+"WasteHeapNonObstructionP",
+"WasteHeapP"
+]
+},
+{
+"id": "SO_0002",
+"geom": "Point",
+"concepts": [
+"AeronauticalRadioNavigationServiceP"
+]
+},
+{
+"id": "SO_0003",
+"geom": "Area",
+"concepts": [
+"AccommodationsNonObstructionIntactA",
+"AcousticStationA",
+"AdministrationGovernmentNonObstructionIntactA",
+"AdministrationNGONonObstructionIntactA",
+"AdministrationNonObstructionIntactA",
+"AdministrationUNNonObstructionIntactA",
+"AgricultureNonObstructionIntactA",
+"AircraftHangarA",
+"AircraftHangarIntactA",
+"AircraftHangarNonObstructionA",
+"AircraftHangarNonObstructionIntactA",
+"AirTransportAirTrafficControlNonObstructionIntactA",
+"ApparelManufactureNonObstructionIntactA",
+"ArmoryMaritimeDefenceMilitaryRecruitmentMilitaryReserveNonObstructionIntactA",
+"AstronomicalObservatoryA",
+"AstronomicalObservatoryIntactA",
+"AstronomicalObservatoryNonObstructionA",
+"AstronomicalObservatoryNonObstructionIntactA",
+"BandshellA",
+"BarnA",
+"BarnIntactA",
+"BarnNonObstructionA",
+"BarnNonObstructionIntactA",
+"BeverageDrinkManufactureNonObstructionIntactA",
+"BuildingA",
+"BuildingFortifiedBuildingNonObstructionA",
+"BuildingNonObstructionA",
+"BuildingNonObstructionIntactA",
+"BuildingNonObstructionIntactNotImportantA",
+"BusinessServicesNonObstructionIntactA",
+"CastleA",
+"CastleNonObstructionA",
+"CastleNonObstructionIntactA",
+"CheckpointNonObstructionIntactA",
+"ChemicalManufactureNonObstructionIntactA",
+"CivilMeetingPlacesNonObstructionIntactA",
+"CommerceNonObstructionIntactA",
+"CourthouseNonObstructionIntactA",
+"DeathCareNonObstructionIntactA",
+"EducationAuditoriumScientificResearchLibraryNonObstructionIntactA",
+"ElectronicAndElectricalEquipmentManufactureNonObstructionIntactA",
+"EngineTestCellA",
+"EngineTestCellNonObstructionA",
+"EngineTestCellNonObstructionIntactA",
+"FerryStationA",
+"FerryStationNonObstructionA",
+"FerryStationNonObstructionIntactA",
+"FinancialServicesNonObstructionIntactA",
+"FireRescueStationNonObstructionIntactA",
+"FoodProductManufactureFoodProcessingMeatProcessingSeafoodNonObstructionProcessingOilmillDairyingGrainMillingBakingBakingSugarManufactureSugarMillingSugarRefiningConfectionManufacturePastaManufaIntactA",
+"FoodSaleNonObstructionIntactA",
+"FoodServicesNonObstructionIntactA",
+"FortifiedBuildingA",
+"FortifiedBuildingIntactA",
+"FurnitureManufactureNonObstructionIntactA",
+"GeneralRepairNonObstructionIntactA",
+"GovernmentNonObstructionIntactA",
+"GrainElevatorA",
+"GrainElevatorNonObstructionA",
+"GrainElevatorNonObstructionIntactA",
+"GrainStorageStructureA",
+"GrainStorageStructureNonObstructionA",
+"GrainStorageStructureNonObstructionIntactA",
+"GuardNonObstructionIntactA",
+"HarbourAndPortControlPilotageNonObstructionIntactA",
+"HardenedAircraftShelterA",
+"HardenedAircraftShelterNonObstructionA",
+"HardenedAircraftShelterNonObstructionIntactA",
+"HouseofWorshipGenericNonObstructionIntactA",
+"HouseofWorshipNamedNonObstructionIntactA",
+"HouseofWorshipTypeKnownNonObstructionIntactA",
+"HouseofWorshipTypeUnknownNonObstructionIntactA",
+"HQNonObstructionIntactA",
+"ImportantMGCPNonObstructionIntactA",
+"ImportantNonObstructionIntactA",
+"IndustrialFurnaceA",
+"IndustrialFurnaceNonObstructionA",
+"IndustrialFurnaceNonObstructionIntactA",
+"JewelleryMusicalInstrumentsSportsgoodsGamesToysNonObstructionIntactA",
+"LawEnforcementNonObstructionIntactA",
+"LessSignificantEntertainmentNonObstructionIntactA",
+"MachineryManufactureNonObstructionIntactA",
+"MailAndPackagingPostalCourierNonObstructionIntactA",
+"MaritimeSignalStationA",
+"MaritimeSignalStationKnownTypeIntactA",
+"MaritimeSignalStationNonObstructionA",
+"MaritimeSignalStationNonObstructionIntactA",
+"MaritimeSignalStationNonObstructionNotIntactA",
+"MaritimeSignalStationUnknownTypeIntactA",
+"MedicalAndOrDentalEquipmentManufactureNonObstructionIntactA",
+"MemorialMonumentNonObstructionA",
+"MemorialMonumentNonObstructionIntactA",
+"MetalProductionSteelMillMetalRefiningFounDryNonObstructionIntactA",
+"MetalProductManufacturingStructuralAndFabricatedNonObstructionIntactA",
+"MilitaryNonObstructionIntactA",
+"MinaretNonObstructionIntactA",
+"MonumentA",
+"MonumentLandmarkNonObstructionA",
+"MotorVehicleParkingNonObstructionIntactA",
+"MunitionManufactureNonObstructionIntactA",
+"NonmetallicMineralProductManufacturingNonObstructionIntactA",
+"NuclearReactorContainmentA",
+"NuclearReactorContainmentNonObstructionA",
+"NuclearReactorContainmentNonObstructionIntactA",
+"PaperMillNonObstructionIntactA",
+"ParkingGarageA",
+"ParkingGarageAboveGroundNonObstructionIntactA",
+"ParkingGarageNonObstructionA",
+"ParkingGarageNonObstructionIntactA",
+"ParkingGarageOnSurfaceNonObstructionIntactA",
+"ParkingGarageUndergroundNonObstructionIntactA",
+"PedestrianRoadFreightRoadPassengerTransportNonObstructionIntactA",
+"PetrolSaleIntactA",
+"PharmacyNonObstructionIntactA",
+"PlasticProductManufactureNonObstructionIntactA",
+"PoliceNonObstructionIntactA",
+"PollingStationNonObstructionIntactA",
+"PowerGenerationNonObstructionIntactA",
+"PrintingNonObstructionIntactA",
+"PrintPublishingNonObstructionIntactA",
+"PrisonNonObstructionIntactA",
+"PublicOrderNonObstructionIntactA",
+"PublicRecordsNonObstructionIntactA",
+"PublicSafetyNonObstructionIntactA",
+"PumpingPipelinesNonObstructionIntactA",
+"RadioandTelevisionBroadcastingNonObstructionIntactA",
+"RailStationNonObstructionIntactA",
+"RailTransportRailwayPassengersNonObstructionIntactA",
+"RefiningPetrolNonObstructionIntactA",
+"RefuellingStationNonObstructionIntactA",
+"ReligiousUseNonObstructionIntactA",
+"ResidenceNonObstructionIntactA",
+"RetailNonObstructionIntactA",
+"RoundhouseA",
+"RoundhouseNonObstructionA",
+"RoundhouseNonObstructionIntactA",
+"RubberProductManufactureNonObstructionIntactA",
+"SatelliteGroundControlNonObstructionIntactA",
+"ScientificResearchNonObstructionIntactA",
+"SecurityServicesNonObstructionIntactA",
+"ShedA",
+"ShedNonObstructionA",
+"ShedNonObstructionIntactA",
+"SignificantEntertainmentBuildingsNonObstructionIntactA",
+"SigningNonObstructionIntactA",
+"SocialWorkNonObstructionIntactA",
+"SportsCentreNonObstructionIntactA",
+"StableA",
+"StorageTankA",
+"StorageTankElevatedNonObstructionIntactA",
+"StorageTankNonObstructionA",
+"StorageTankNonObstructionIntactA",
+"StorageTankNotElevatedNonObstructionIntactA",
+"StorageTankWatertowerNonObstructionIntactA",
+"TelephoneExchangesRepeatersNonObstructionIntactA",
+"TobaccoProductManufactureNonObstructionIntactA",
+"TollBoothNonObstructionIntactA",
+"TombA",
+"TowerControlTowerA",
+"TowerControlTowerIntactA",
+"TowerControlTowerNonObstructionA",
+"TowerCoolingTowerA",
+"TowerCoolingTowerNonObstructionA",
+"TowerCoolingTowerNonObstructionIntactA",
+"TowerLighthouseA",
+"TowerLighthouseNonObstructionA",
+"TowerLighthouseNonObstructionIntactA",
+"TransportationHubstationStopTerminalTransferHubNonObstructionIntactA",
+"TransportationNavigationMaintenanceWarehousesCargoInspectionNonObstructionIntactA",
+"TransportationRouteProtectionStructureA",
+"TransportManufactureA",
+"VehicleRepairNonObstructionIntactA",
+"WarehouseNonObstructionIntactA",
+"WasteDisposalNonObstructionIntactA",
+"WaterMillA",
+"WaterMillNonObstructionA",
+"WaterMillNonObstructionIntactA",
+"WaterSupplyWaterTreatmentWaterDistributionNonObstructionIntactA",
+"WaterTransportInlandWaterCanalNonObstructionIntactA",
+"WindmillA",
+"WindmillNonObstructionA",
+"WindmillNonObstructionIntactA",
+"WoodBasedManufacturingNonObstructionIntactA",
+"YachtclubNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0004",
+"geom": "Area",
+"concepts": [
+"AircraftHangarNonObstructionNotIntactA",
+"AircraftHangarNotIntactA",
+"AstronomicalObservatoryNonObstructionNotIntactA",
+"AstronomicalObservatoryNotIntactA",
+"BarnNonObstructionNotIntactA",
+"BarnNotIntactA",
+"BuildingLandmarkNonObstructionNotIntactA",
+"BuildingNonLandmarkNonObstructionNotIntactA",
+"BuildingNonObstructionNotIntactA",
+"CastleNonObstructionNotIntactA",
+"ControlTowerNonObstructionNotIntactA",
+"CoolingTowerNonObstructionNotIntactA",
+"EngineTestCellNonObstructionNotIntactA",
+"FerryStationNonObstructionNotIntactA",
+"FortifiedBuildingNonObstructionNotIntactA",
+"GrainElevatorNonObstructionNotIntactA",
+"GrainStorageStructureNonObstructionNotIntactA",
+"HardenedAircraftShelterNonObstructionNotIntactA",
+"IndustrialFurnaceNonObstructionNotIntactA",
+"LighthouseNonObstructionNotIntactA",
+"MemorialMonumentNonObstructionNotIntactA",
+"MotorVehicleStationNonObstructionNotIntactA",
+"NuclearReactorContainmentNonObstructionNotIntactA",
+"ParkingGarageNonObstructionNotIntactA",
+"RoundhouseNonObstructionNotIntactA",
+"ShedNonObstructionNotIntactA",
+"StorageTankNonObstructionNotIntactA",
+"WaterMillNonObstructionNotIntactA",
+"WindmillNonObstructionNotIntactA"
+]
+},
+{
+"id": "SO_0005",
+"geom": "Point",
+"concepts": [
+"AccommodationsNonObstructionIntactP",
+"AccommodationsNonObstructionIntactP",
+"AcousticStationP",
+"AdministrationGovernmentNonObstructionIntactP",
+"AdministrationGovernmentNonObstructionIntactP",
+"AdministrationNGONonObstructionIntactP",
+"AdministrationNGONonObstructionIntactP",
+"AdministrationNonObstructionIntactP",
+"AdministrationNonObstructionIntactP",
+"AdministrationUNNonObstructionIntactP",
+"AdministrationUNNonObstructionIntactP",
+"AerialFarmNonObstructionIntactP",
+"AerialFarmNonObstructionP",
+"AerialFarmP",
+"AgricultureNonObstructionIntactP",
+"AgricultureNonObstructionIntactP",
+"AircraftHangarIntactP",
+"AircraftHangarNonObstructionIntactP",
+"AircraftHangarNonObstructionP",
+"AircraftHangarP",
+"AirTransportAirTrafficControlNonObstructionIntactP",
+"AirTransportAirTrafficControlNonObstructionIntactP",
+"AmphitheatreIntactP",
+"AmphitheatreNonObstructionIntactP",
+"AmphitheatreNonObstructionP",
+"AmphitheatreP",
+"AmusementParkIntactP",
+"AmusementParkNonObstructionIntactP",
+"AmusementParkNonObstructionP",
+"AmusementParkP",
+"ArcadeP",
+"ArmoryMaritimeDefenceMilitaryRecruitmentMilitaryReserveNonObstructionIntactP",
+"ArmoryMaritimeDefenceMilitaryRecruitmentMilitaryReserveNonObstructionIntactP",
+"AstronomicalObservatoryIntactP",
+"AstronomicalObservatoryNonObstructionIntactP",
+"AstronomicalObservatoryNonObstructionP",
+"AstronomicalObservatoryP",
+"BandshellP",
+"BarnIntactP",
+"BarnNonObstructionIntactP",
+"BarnNonObstructionP",
+"BarnP",
+"BerthP",
+"BeverageManufactureNonObstructionIntactP",
+"BeverageManufactureNonObstructionIntactP",
+"BillboardP",
+"BlastFurnaceNonLandmarkNonObstructionP",
+"BoreholeP",
+"BuildingNonObstructionIntactNotImportantP",
+"BuildingNonObstructionIntactP",
+"BuildingNonObstructionP",
+"BuildingP",
+"BuoyP",
+"BusinessServicesNonObstructionIntactP",
+"BusinessServicesNonObstructionIntactP",
+"CaravanParkIntactP",
+"CaravanParkP",
+"CastleComplexP",
+"CatalyticCrackerNonObstructionIntactP",
+"CatalyticCrackerNonObstructionP",
+"CatalyticCrackerP",
+"ChemicalManufactureNonObstructionIntactP",
+"ChemicalManufactureNonObstructionIntactP",
+"ChristianCathedralP",
+"ChristianChurchP",
+"ChristianMissionP",
+"ChristianMonasteryP",
+"ChristianNonObstructionIntactP",
+"ChristianNovitiateP",
+"ChristianReligiousCommunityP",
+"ChristianRetreatP",
+"ChristianSeminaryP",
+"ChristianShrineNonObstructionIntactP",
+"ChristianShrineP",
+"ChristianTempleP",
+"ChristianUnknownBuildingP",
+"CivilMeetingPlacesNonObstructionIntactP",
+"CivilMeetingPlacesNonObstructionIntactP",
+"CommerceNonObstructionIntactP",
+"CommerceNonObstructionIntactP",
+"CoolingFacilityIntactP",
+"CoolingFacilityNonObstructionP",
+"CoolingFacilityP",
+"CraneNonObstructionP",
+"CraneP",
+"DeathCareNonObstructionIntactP",
+"DeathCareNonObstructionIntactP",
+"DiplomaticConsulMissionEmbassyNonObstructionIntactP",
+"DiplomaticConsulMissionEmbassyNonObstructionIntactP",
+"DiplomaticNonObstructionIntactP",
+"DiplomaticNonObstructionIntactP",
+"DriveInTheatreIntactP",
+"DriveInTheatreP",
+"DryOtherShorelineConstructionNotLabbeledA",
+"DryOtherShorelineConstructionNotLabelledL",
+"EducationalSchoolNonObstructionIntactP",
+"EducationalSchoolNonObstructionIntactP",
+"EducationAuditoriumScientificResearchLibraryNonObstructionIntactP",
+"EducationAuditoriumScientificResearchLibraryNonObstructionIntactP",
+"EducationPrimarySecondaryVocationalHigherNonObstructionIntactP",
+"EducationPrimarySecondaryVocationalHigherNonObstructionIntactP",
+"ElectricPowerStationIntactP",
+"ElectricPowerStationNonObstructionP",
+"ElectricPowerStationP",
+"ElectronicAndElectricalEquipmentManufactureNonObstructionIntactP",
+"ElectronicAndElectricalEquipmentManufactureNonObstructionIntactP",
+"EngineTestCellIntactP",
+"EngineTestCellNonObstructionP",
+"EngineTestCellP",
+"FacilityHouseofWorshipIslamMosqueNonObstructionIntactP",
+"FacilityImportantMGCPP",
+"FacilityImportantP",
+"FacilityLandmarkNonObstructionNotIntactP",
+"FacilityMilitaryIntactP",
+"FacilityNonLandmarkNonObstructionNotIntactP",
+"FacilityNonObstructionIntactP",
+"FacilityNonObstructionP",
+"FacilityNotImportantP",
+"FacilityNotIntactP",
+"FacilityP",
+"FacilityProcessingFacilityNonObstructionIntactP",
+"FacilityProcessingFacilityNonObstructionNotIntactP",
+"FacilityProcessingFacilityNonObstructionP",
+"FacilityProcessingFacilityP",
+"FacilityProcessingProductKnownNonObstructionIntactP",
+"FacilityProcessingProductUnknownNonObstructionIntactP",
+"FacilitystupaNonObstructionIntactP",
+"FairgroundNonObstructionIntactP",
+"FairgroundNonObstructionP",
+"FairgroundP",
+"FerryStationNonObstructionIntactP",
+"FerryStationNonObstructionP",
+"FerryStationP",
+"FinancialServicesNonObstructionIntactP",
+"FinancialServicesNonObstructionIntactP",
+"FireRescueStationNonObstructionIntactP",
+"FirestationNonObstructionIntactP",
+"FishFarmFacilityIntactP",
+"FishFarmFacilityP",
+"FoodProductManufactureFoodProcessingMeatProcessingSeafoodNonObstructionProcessingOilmillDairyingGrainMillingBakingBakingSugarManufactureSugarMillingSugarRefiningConfectionManufacturePastaManufaIntactP",
+"FoodProductManufactureProcessingProcessingNonObstructionIntactP",
+"FoodSaleNonObstructionIntactP",
+"FoodSaleNonObstructionIntactP",
+"FoodServicesNonObstructionIntactP",
+"FoodServicesNonObstructionIntactP",
+"FortifiedBuildingNonObstructionIntactP",
+"FortifiedBuildingNonObstructionP",
+"FortifiedBuildingP",
+"FuelStorageFacilityIntactP",
+"FuelStorageFacilityNonObstructionNotIntactP",
+"FuelStorageFacilityP",
+"FurnitureManufactureNonObstructionIntactP",
+"FurnitureManufactureNonObstructionIntactP",
+"GaugingStationP",
+"GeneralRepairNonObstructionIntactP",
+"GeneralRepairNonObstructionIntactP",
+"GovernmentNonObstructionIntactP",
+"GovernmentNonObstructionIntactP",
+"GrandstandA",
+"GuardNonObstructionIntactP",
+"GuardNonObstructionIntactP",
+"HarbourAndPortControlPilotageNonObstructionIntactP",
+"HarbourAndPortControlPilotageNonObstructionIntactP",
+"HardenedAircraftShelterNonObstructionIntactP",
+"HardenedAircraftShelterNonObstructionP",
+"HardenedAircraftShelterP",
+"HealthOfficeNonObstructionIntactP",
+"HealthOfficeNonObstructionIntactP",
+"HealthOfficeNonObstructionIntactP",
+"HeathCareNonObstructionIntactP",
+"HeathCareNonObstructionIntactP",
+"HeatingFacilityNonObstructionIntactP",
+"HeatingFacilityNonObstructionP",
+"HeatingFacilityP",
+"HigherEducationNonObstructionIntactP",
+"HigherEducationNonObstructionIntactP",
+"HouseofWorshipChristianChurchNonObstructionIntactP",
+"HouseOfWorshipChristianChurchNonObstructionIntactP",
+"houseofworshipGenericNonObstructionIntactP",
+"HouseOfWorshipGenericNonObstructionIntactP",
+"HouseofWorshipIslamMosqueNonObstructionIntactP",
+"HouseofWorshipJudaismSynagogueNonObstructionIntactP",
+"HouseOfWorshipJudaismSynagogueNonObstructionIntactP",
+"HouseofWorshipNamedNonObstructionIntactP",
+"HouseofWorshipTempleNonObstructionIntactP",
+"HouseOfWorshipTempleNonObstructionIntactP",
+"HouseofWorshipTypeKnownNonObstructionIntactP",
+"HouseofWorshipTypeUnknownNonObstructionIntactP",
+"HQNonObstructionIntactP",
+"HQNonObstructionIntactP",
+"HumanCoveringsNonObstructionIntactP",
+"HumanCoveringsNonObstructionIntactP",
+"HydroCarbonProductsFacilityNonObstructionIntactP",
+"HydroCarbonProductsFacilityNonObstructionP",
+"HydroCarbonProductsFacilityP",
+"ImportantNonObstructionIntactP",
+"IndustrialFurnaceNonObstructionIntactP",
+"IndustrialFurnaceNonObstructionP",
+"IndustrialFurnaceP",
+"IndustrialParkP",
+"IntactNonObstructionCourthouseBuildingP",
+"IntactNonObstructionIslamicMinaretP",
+"IslamicHermitageP",
+"IslamicMaraboutP",
+"IslamicMissionP",
+"IslamicMonasteryP",
+"IslamicMosqueP",
+"IslamicNovitiateP",
+"IslamicReligiousCommunityP",
+"IslamicRetreatP",
+"IslamicSeminaryP",
+"IslamicShrineNonObstructionIntactP",
+"IslamicShrineNonObstructionIntactP",
+"IslamicShrineP",
+"IslamicTempleP",
+"IslamicUnknownBuildingP",
+"JewelleryMusicalInstrumentsSportsGoodsGamesToysNonObstructionIntactP",
+"JewelleryMusicalInstrumentsSportsgoodsGamesToysNonObstructionIntactP",
+"JewishHermitageP",
+"JewishMissionP",
+"JewishMonasteryP",
+"JewishNovitiateP",
+"JewishReligiousCommunityP",
+"JewishRetreatP",
+"JewishSeminaryP",
+"JewishShrineP",
+"JewishSynagogueP",
+"JewishTempleP",
+"JewishUnknownBuildingP",
+"LawEnforcementNonObstructionIntactP",
+"LawenforcementNonObstructionIntactP",
+"LessSignificanttEntertainmentNonObstructionIntactP",
+"LessSignificanttEntertainmentNonObstructionIntactP",
+"LightVesselP",
+"LookoutP",
+"MachineryManufactureNonObstructionIntactP",
+"MachineryManufactureNonObstructionIntactP",
+"MailAndPackagingPostalCourierNonObstructionIntactP",
+"MailAndPackagingPostalCourierNonObstructionIntactP",
+"ManufacturedHomeParkIntactP",
+"ManufacturedHomeParkP",
+"MaricultureSiteIntactP",
+"MaricultureSiteP",
+"MaritimeSignalStationKnownTypeIntactP",
+"MaritimeSignalStationNonObstructionIntactP",
+"MaritimeSignalStationNonObstructionP",
+"MaritimeSignalStationP",
+"MaritimeSignalStationUnknownTypeIntactP",
+"MedicalAndOrDentalEquipmentManufactureNonObstructionIntactP",
+"MedicalAndOrDentalEquipmentManufactureNonObstructionIntactP",
+"MetalProductionSteelMillMetalRefiningFounDryNonObstructionIntactP",
+"MetalProductionSteelMillMetalRefiningFounDryNonObstructionIntactP",
+"MetalProductManufacturingNonObstructionIntactP",
+"MetalProductManufacturingStructuralAndFabricatedNonObstructionIntactP",
+"MilitaryInstallationIntactP",
+"MilitaryInstallationP",
+"MinaretNonObstructionIntactP",
+"MotorVehicleParkingNonObstructionIntactP",
+"MotorVehicleParkingNonObstructionIntactP",
+"MotorVehicleStationNonObstructionIntactP",
+"MotorVehicleStationNonObstructionP",
+"MotorVehicleStationP",
+"MunitionManufactureNonObstructionIntactP",
+"MunitionManufactureNonObstructionIntactP",
+"MunitionStorageFacilityIntactP",
+"MunitionStorageFacilityP",
+"NonBuildingStructureNonObstructionP",
+"NonBuildingStructureP",
+"NonmetallicMineralProductManufacturingNonObstructionIntactP",
+"NonmetallicMineralProductManufacturingNonObstructionIntactP",
+"NonObstructionIntactStupaP",
+"NotDryOtherShorelineConstructionNotLabelledA",
+"NotDryOtherShorelineConstructionNotLabelledL",
+"OfficeParkP",
+"PagodaNonObstructionIntactP",
+"PaperMillNonObstructionIntactP",
+"PaperMillNonObstructionIntactP",
+"ParkingGarageAboveGroundNonObstructionIntactP",
+"ParkingGarageNonObstructionIntactP",
+"ParkingGarageNonObstructionP",
+"ParkingGarageOnSurfaceNonObstructionIntactP",
+"ParkingGarageP",
+"ParkingGarageUndergroundNonObstructionIntactP",
+"PedestrianRoadFreightRoadPassengerTransportNonObstructionIntactP",
+"PedestrianRoadFreightRoadPassengerTransportNonObstructionIntactP",
+"PetrolRefiningNonObstructionIntactP",
+"PetrolRefiningNonObstructionIntactP",
+"PetrolSaleIntactP",
+"PharmacyNonObstructionIntactP",
+"PharmacyNonObstructionIntactP",
+"PlasticProductManufactureNonObstructionIntactP",
+"PlasticProductManufactureNonObstructionIntactP",
+"PollingStationNonObstructionIntactP",
+"PollingStationNonObstructionIntactP",
+"PortIntactP",
+"PortP",
+"PowerGenerationNonObstructionIntactP",
+"PowerGenerationNonObstructionIntactP",
+"PrintingNonObstructionIntactP",
+"PrintingNonObstructionIntactP",
+"PrintPublishingNonObstructionIntactP",
+"PrintPublishingNonObstructionIntactP",
+"PrisonNonObstructionIntactP",
+"PrisonNonObstructionIntactP",
+"ProcessingProductKnownNonObstructionIntactP",
+"ProcessingProductUnknownNonObstructionIntactP",
+"PublicOrderNonObstructionIntactP",
+"PublicOrderNonObstructionIntactP",
+"PublicRecordsNonObstructionIntactP",
+"PublicRecordsNonObstructionIntactP",
+"PublicSafetyNonObstructionIntactP",
+"PublicSafetyNonObstructionIntactP",
+"PumpingPipelinesNonObstructionIntactP",
+"PumpingPipelinesNonObstructionIntactP",
+"PumpingStationIntactP",
+"PumpingStationP",
+"RacetrackP",
+"RadarStationNonObstructionIntactP",
+"RadarStationNonObstructionP",
+"RadarStationP",
+"RadioandTelevisionBroadcastingNonObstructionIntactP",
+"RadioandTelevisionBroadcastingNonObstructionIntactP",
+"RailStationNonObstructionIntactP",
+"RailStationNonObstructionIntactP",
+"RailTransportRailwayPassengersNonObstructionIntactP",
+"RailTransportRailwayPassengersNonObstructionIntactP",
+"RecyclingSiteIntactP",
+"RecyclingSiteP",
+"RefuellingStationNonObstructionIntactP",
+"RefuellingStationNonObstructionIntactP",
+"ReligiousUseNonObstructionIntactP",
+"ReligiousUseNonObstructionIntactP",
+"ResidenceNonObstructionIntactP",
+"ResidenceNonObstructionIntactP",
+"RetailNonObstructionIntactP",
+"RetailNonObstructionIntactP",
+"RoadsideRestAreaIntactP",
+"RoadsideRestAreaP",
+"RubberProductManufactureNonObstructionIntactP",
+"RubberProductManufactureNonObstructionIntactP",
+"SatelliteGroundControlNonObstructionIntactP",
+"SatelliteGroundControlNonObstructionIntactP",
+"ScientificResearchNonObstructionIntactP",
+"ScientificResearchNonObstructionIntactP",
+"SecurityServicesNonObstructionIntactP",
+"SecurityServicesNonObstructionIntactP",
+"SewageTreatmentPlantIntactP",
+"SewageTreatmentPlantP",
+"ShedNonObstructionIntactP",
+"ShedNonObstructionP",
+"ShedP",
+"ShipyardIntactP",
+"ShipyardP",
+"ShoppingComplexNonObstructionIntactP",
+"ShoppingComplexNonObstructionP",
+"ShoppingComplexP",
+"SignificantEntertainmentNonObstructionIntactP",
+"SignificantEntertainmentNonObstructionIntactP",
+"SigningNonObstructionIntactP",
+"SigningNonObstructionIntactP",
+"SocialWorkNonObstructionIntactP",
+"SocialWorkNonObstructionIntactP",
+"SolarFarmIntactP",
+"SolarFarmP",
+"SpaceFacilityIntactP",
+"SpaceFacilityP",
+"SportsCentreNonObstructionIntactP",
+"SportsCentreNonObstructionIntactP",
+"StableP",
+"StadiumNonObstructionIntactP",
+"StadiumNonObstructionP",
+"StadiumP",
+"StationBuildingP",
+"StorageDepotIntactP",
+"StorageDepotOnSurfaceIntactP",
+"StorageDepotP",
+"StorageDepotUndergroundIntactP",
+"TankFarmIntactP",
+"TankFarmP",
+"TelephoneExchangesRepeatersNonObstructionIntactP",
+"TelephoneExchangesRepeatersNonObstructionIntactP",
+"TidalStreamObserveStationP",
+"TideGaugeStationP",
+"TobaccoProductManufactureNonObstructionIntactP",
+"TobaccoProductManufactureNonObstructionIntactP",
+"TollBoothNonObstructionIntactP",
+"TollBoothNonObstructionIntactP",
+"TrainingSiteIntactP",
+"TrainingSiteP",
+"TransportationHubstationStopTerminalTransferHubNonObstructionIntactP",
+"TransportationHubstationStopTerminalTransferHubNonObstructionIntactP",
+"TransportationNavigationMaintenanceWarehousesCargoInspectionNonObstructionIntactP",
+"TransportationNavigationMaintenanceWarehousesCargoInspectionNonObstructionIntactP",
+"TransportationRouteProtectionStructureP",
+"TransportationStationNonObstructionIntactP",
+"TransportationStationNonObstructionNotIntactP",
+"TransportationStationNonObstructionP",
+"TransportationStationOtherIntactP",
+"TransportationStationP",
+"TransportationStationRailwayNonObstructionIntactP",
+"TransportManufactureP",
+"TransportManufactureP",
+"UndergroundDwellingP",
+"VehicleRepairNonObstructionIntactP",
+"VehicleRepairNonObstructionIntactP",
+"WarehouseNonObstructionIntactP",
+"WarehouseNonObstructionIntactP",
+"WasteDisposalNonObstructionIntactP",
+"WasteDisposalNonObstructionIntactP",
+"WaterMeasurementLocationP",
+"WaterSupplyWaterTreatmentWaterDistributionNonObstructionIntactP",
+"WaterSupplyWaterTreatmentWaterDistributionNonObstructionIntactP",
+"WaterTransportInlandWaterCanalNonObstructionIntactP",
+"WaterTransportInlandWaterCanalNonObstructionIntactP",
+"WaterworkIntactP",
+"WaterworkP",
+"WeighStationP",
+"WindFarmP",
+"WoodBasedManufacturingNonObstructionIntactP",
+"WoodBasedManufacturingNonObstructionIntactP",
+"WreckP",
+"YachtclubNonObstructionIntactP",
+"YachtclubNonObstructionIntactP",
+"ZooIntactP",
+"ZooP"
+]
+},
+{
+"id": "SO_0006",
+"geom": "Point",
+"concepts": [
+"AerialFarmObstructionP",
+"AerialObstructionP",
+"AircraftHangarObstructionP",
+"AmphitheatreObstructionP",
+"AmusementParkAttractionObstructionP",
+"AmusementParkObstructionP",
+"ArchaeologicalSiteObstructionP",
+"AstronomicalObservatoryObstructionP",
+"BarnObstructionP",
+"BlastFurnaceObstructionP",
+"BridgeTowerObstructionP",
+"BuildingObstructionP",
+"BuildingSuperstructureObstructionP",
+"CastleObstructionP",
+"CatalyticCrackerObstructionP",
+"ConveyorObstructionP",
+"CoolingFacilityObstructionP",
+"CraneObstructionP",
+"DishAerialObstructionP",
+"ElectricPowerStationObstructionP",
+"EngineTestCellObstructionP",
+"ExcavatingMachineObstructionP",
+"FacilityObstructionP",
+"FacilityProcessingObstructionP",
+"FairgroundObstructionP",
+"FerryStationObstructionP",
+"FlarePipeObstructionP",
+"FortificationObstructionP",
+"FortifiedBuildingObstructionP",
+"FuelStorageFacilityObstructionP",
+"GrainElevatorObstructionP",
+"GrainStorageStructureObstructionP",
+"HardenedAircraftShelterObstructionP",
+"HeatingFacilityObstructionP",
+"HopperP",
+"HulkObstructionP",
+"HydroCarbonProductsFacilityObstructionP",
+"IndustrialFurnaceObstructionP",
+"LaunchPadObstructionP",
+"LighthouseObstructionP",
+"LightSupportStructureP",
+"LightVesselObstructionP",
+"MaritimeSignalStationObstructionP",
+"MemorialMonumentObstructionP",
+"MineralPileObstructionP",
+"MiscFeatureVerticalObstructionOnshoreP",
+"MiscFeatureVerticalObstructionP",
+"MooringMastObstructionP",
+"MotorVehicleStationObstructionP",
+"NonBuildingStructureObstructionP",
+"NuclearReactorContainmentObstructionP",
+"OffshoreConstructionObstructionP",
+"ParkingGarageObstructionP",
+"PylonObstructionP",
+"RadarStationObstructionP",
+"RigObstructionP",
+"RoundhouseObstructionP",
+"ShedObstructionP",
+"ShoppingComplexObstructionP",
+"SkiJumpObstructionP",
+"SmokestackObstructionP",
+"StadiumObstructionP",
+"StorageTankObstructionP",
+"TetheredBalloonP",
+"TowerControlTowerObstructionP",
+"TowerCoolingTowerObstructionP",
+"TowerObstructionP",
+"TowerWaterIntakeTowerObstructionP",
+"TowerWaterTowerObstructionP",
+"TransportationStationObstructionP",
+"WasteHeapObstructionP",
+"WaterMillObstructionP",
+"WindmillObstructionP",
+"WindTurbineObstructionP"
+]
+},
+{
+"id": "SO_0007",
+"geom": "Point",
+"concepts": [
+"AircraftHangarNonObstructionNotIntactP",
+"AircraftHangarNotIntactP",
+"AmphitheatreNonObstructionNotIntactP",
+"AmphitheatreNotIntactP",
+"AstronomicalObservatoryNonObstructionNotIntactP",
+"AstronomicalObservatoryNotIntactP",
+"BarnNonObstructionNotIntactP",
+"BarnNotIntactP",
+"BuildingNonObstructionNotIntactP",
+"CatalyticCrackerNonObstructionNotIntactP",
+"EngineTestCellNonObstructionNotIntactP",
+"FerryStationNonObstructionNotIntactP",
+"FortifiedBuildingNonObstructionNotIntactP",
+"HardenedAircraftShelterNonObstructionNotIntactP",
+"IndustrialFurnaceNonObstructionNotIntactP",
+"LandmarkNonObstructionNotIntactP",
+"MaritimeSignalStationNonObstructionNotIntactP",
+"MotorVehicleStationNonObstructionNotIntactP",
+"ParkingGarageNonObstructionNotIntactP",
+"RecyclingSiteNotIntactP",
+"ShedNonObstructionNotIntactP",
+"StadiumNonObstructionNotIntactP",
+"TransportationStationRailwayNonObstructionNotIntactP"
+]
+},
+{
+"id": "SO_0008",
+"geom": "Point",
+"concepts": [
+"AerialFarmNonObstructionNotIntactP",
+"AmusementParkNonObstructionNotIntactP",
+"AmusementParkNotIntactP",
+"CaravanParkNotIntactP",
+"CoolingFacilityNotIntactP",
+"DriveInTheatreNotIntactP",
+"ElectricPowerStationNotIntactP",
+"FairgroundNonObstructionNotIntactP",
+"FishFarmFacilityNotIntactP",
+"FuelStorageFacilityNotIntactP",
+"HeatingFacilityNonObstructionNotIntactP",
+"HydroCarbonProductsFacilityNonObstructionNotIntactP",
+"ManufacturedHomeParkNotIntactP",
+"MaricultureSiteNotIntactP",
+"MilitaryInstallationNotIntactP",
+"MunitionStorageFacilityNotIntactP",
+"PortNotIntactP",
+"PumpingStationNotIntactP",
+"RadarStationNonObstructionNotIntactP",
+"RoadsideRestAreaNotIntactP",
+"SewageTreatmentPlantNotIntactP",
+"ShipyardNotIntactP",
+"ShoppingComplexNonObstructionNotIntactP",
+"SolarFarmNotIntactP",
+"SpaceFacilityNotIntactP",
+"StorageDepotNotIntactP",
+"TankFarmNotIntactP",
+"TrainingSiteNotIntactP",
+"WaterworkNotIntactP",
+"ZooNotIntactP"
+]
+},
+{
+"id": "SO_0009",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0010",
+"geom": "Point",
+"concepts": [
+"MiscFeatureVerticalObstructionOffshoreP"
+]
+},
+{
+"id": "SO_0011",
+"geom": "Point",
+"concepts": [
+"BridgeSuperstructureObstructionL",
+"ConveyorObstructionP",
+"ShipElevatorObstructionP",
+"SkiJumpObstructionP"
+]
+},
+{
+"id": "SO_0012",
+"geom": "Point",
+"concepts": [
+"HutP"
+]
+},
+{
+"id": "SO_0013",
+"geom": "Point",
+"concepts": [
+"CoolingTowerNonObstructionIntactP",
+"CoolingTowerNonObstructionNotIntactP"
+]
+},
+{
+"id": "SO_0014",
+"geom": "Point",
+"concepts": [
+"WaterIntakeTowerNonObstructionP",
+"WaterIntakeTowerP"
+]
+},
+{
+"id": "SO_0015",
+"geom": "Point",
+"concepts": [
+"StorageTankWaterTowerNonObstructionIntactP",
+"TowerWaterNonObstructionP",
+"TowerWaterTowerNonObstructionP",
+"TowerWaterTowerP"
+]
+},
+{
+"id": "SO_0016",
+"geom": "Point",
+"concepts": [
+"AerationBasinP",
+"CisternP"
+]
+},
+{
+"id": "SO_0017",
+"geom": "Point",
+"concepts": [
+"HelipadA",
+"HelipadNonHospitalA",
+"HelipadNonHospitalIntactA",
+"HelipadNonHospitalIntactP",
+"HelipadNonHospitalNotIntactA",
+"HelipadNonHospitalNotIntactP",
+"HelipadNonHospitalP",
+"HelipadP"
+]
+},
+{
+"id": "SO_0018",
+"geom": "Point",
+"concepts": [
+"HelipadHospitalA",
+"HelipadHospitalIntactA",
+"HelipadHospitalIntactP",
+"HelipadHospitalNotIntactA",
+"HelipadHospitalNotIntactP",
+"HelipadHospitalP"
+]
+},
+{
+"id": "SO_0019",
+"geom": "Area",
+"concepts": [
+"RunwayA",
+"RunwayHardSurfaceIntactA",
+"RunwayIntactA",
+"RunwaySoftSurfaceIntactA",
+"RunwayUnknownSurfaceIntactA"
+]
+},
+{
+"id": "SO_0020",
+"geom": "Area",
+"concepts": [
+"RunwayHardSurfaceNotIntactA",
+"RunwayNotIntactA",
+"RunwaySoftSurfaceNotIntactA",
+"RunwayUnknownSurfaceNotIntactA"
+]
+},
+{
+"id": "SO_0021",
+"geom": "Area",
+"concepts": [
+"ApronA",
+"StopwayA",
+"TaxiwayA"
+]
+},
+{
+"id": "SO_0022",
+"geom": "Area",
+"concepts": [
+"AccessZoneA",
+"AccommodationsNonObstructionIntactA",
+"AdministrationGovernmentNonObstructionIntactA",
+"AdministrationNGONonObstructionIntactA",
+"AdministrationPublicA",
+"AdministrationUNNonObstructionIntactA",
+"AerialFarmA",
+"AerialFarmNonObstructionA",
+"AerialFarmNonObstructionIntactA",
+"AerialFarmNonObstructionNotIntactA",
+"AerodromeBoundaryA",
+"AgricultureNonObstructionIntactA",
+"AirTransportAirTrafficControlNonObstructionIntactA",
+"AmusementParkA",
+"AmusementParkIntactA",
+"AmusementParkNonObstructionA",
+"AmusementParkNonObstructionIntactA",
+"AmusementParkNonObstructionNotIntactA",
+"AmusementParkNotIntactA",
+"ArchaeologicalSiteA",
+"ArchaeologicalSiteNonObstructionA",
+"ArmoryMaritimeDefenceMilitaryRecruitmentMilitaryReserveA",
+"BeverageManufactureNonObstructionIntactA",
+"BusinessServicesNonObstructionIntactA",
+"CampA",
+"CampRefugeeA",
+"CantonmentAreaA",
+"CaravanParkA",
+"CaravanParkIntactA",
+"CaravanParkNotIntactA",
+"ChemicalManufactureNonObstructionIntactA",
+"ChristianNonObstructionIntactA",
+"CivilMeetingPlacesNonObstructionIntactA",
+"CommerceA",
+"ConservationAreaA",
+"CoolingFacilityA",
+"CoolingFacilityIntactA",
+"CoolingFacilityNonObstructionA",
+"CoolingFacilityNotIntactA",
+"DeathCareNonObstructionIntactA",
+"DiplomaticConsulMissionEmbassyNonObstructionIntactA",
+"DiplomaticNonObstructionIntactA",
+"DisposalSiteA",
+"DriveInTheatreA",
+"DriveInTheatreIntactA",
+"DriveInTheatreNotIntactA",
+"EducationalSchoolNonObstructionIntactA",
+"EducationAuditoriumScientificResearchLibraryNonObstructionIntactA",
+"EducationPrimarySecondaryVocationalHigherA",
+"ElectricPowerStationA",
+"ElectricPowerStationNonObstructionA",
+"ElectricPowerStationNonObstructionIntactA",
+"ElectricPowerStationNonObstructionNotIntactA",
+"ElectronicAndElectricalEquipmentManufactureNonObstructionIntactA",
+"FacilityA",
+"FacilityMilitaryIntactA",
+"FacilityNonObstructionA",
+"FacilityNonObstructionIntactA",
+"FacilityProcessingProductKnownNonObstructionIntactA",
+"FacilityProcessingProductKnownNonObstructionIntactA",
+"FacilityProcessingProductUnknownNonObstructionIntactA",
+"FacilityProcessingProductUnknownNonObstructionIntactA",
+"FairgroundA",
+"FairgroundIntactA",
+"FairgroundNonObstructionA",
+"FairgroundNotIntactA",
+"FinancialServicesNonObstructionIntactA",
+"FirestationNonObstructionIntactA",
+"FiringRangeA",
+"FiringRangeIntactA",
+"FiringRangeNotIntactA",
+"FishFarmFacilityA",
+"FishFarmFacilityIntactA",
+"FishFarmFacilityNotIntactA",
+"FoodProductManufactureFoodProcessingMeatProcessingSeafoodNonObstructionProcessingOilmillDairyingGrainMillingBakingBakingSugarManufactureSugarMillingSugarRefiningConfectionManufacturePastaManufaIntactA",
+"FoodSaleNonObstructionIntactA",
+"FoodServicesAndAccomodationA",
+"FuelStorageFacilityA",
+"FuelStorageFacilityIntactA",
+"FuelStorageFacilityNonObstructionNotIntactA",
+"FuelStorageFacilityNotIntactA",
+"FurnitureManufactureNonObstructionIntactA",
+"GeneralRepairNonObstructionIntactA",
+"GovernmentNonObstructionIntactA",
+"GuardNonObstructionIntactA",
+"HarbourA",
+"HarbourA",
+"HarbourAndPortControlPilotageNonObstructionIntactA",
+"HealthOfficeNonObstructionIntactA",
+"HeathCareNonObstructionIntactA",
+"HeatingFacilityA",
+"HeatingFacilityNonObstructionA",
+"HeatingFacilityNonObstructionIntactA",
+"HeatingFacilityNonObstructionNotIntactA",
+"HeliportA",
+"HeliportIntactA",
+"HeliportNotIntactA",
+"HigherEducationNonObstructionIntactA",
+"HouseofWorshipChristianChurchNonObstructionIntactA",
+"houseofworshipGenericNonObstructionIntactA",
+"HouseofWorshipIslamMosqueNonObstructionIntactA",
+"HouseofWorshipJudaismSynagogueNonObstructionIntactA",
+"HouseofWorshipTempleNonObstructionIntactA",
+"HQNonObstructionIntactA",
+"HumanCoveringsNonObstructionIntactA",
+"HumanHealthActivitiesA",
+"HydroCarbonProductsFacilityA",
+"HydroCarbonProductsFacilityNonObstructionA",
+"HydroCarbonProductsFacilityNonObstructionIntactA",
+"HydroCarbonProductsFacilityNonObstructionNotIntactA",
+"HydroCarbonsFieldA",
+"ImportantA",
+"ImportantMGCPA",
+"IndustrialParkA",
+"InstallationA",
+"IslamicNonObstructionIntactA",
+"JewelleryMusicalInstrumentsSportsGoodsGamesToysNonObstructionIntactA",
+"LandAerodromeA",
+"LandAerodromeIntactA",
+"LandAerodromeNotIntactA",
+"LandmarkNonObstructionNotIntactA",
+"LaunchPadA",
+"LaunchPadNonObstructionA",
+"LaunchPadNonObstructionIntactA",
+"LaunchPadNonObstructionNotIntactA",
+"LawEnforcementNonObstructionIntactA",
+"LessSignificanttEntertainmentNonObstructionIntactA",
+"MachineryManufactureNonObstructionIntactA",
+"MailAndPackagingPostalCourierNonObstructionIntactA",
+"ManufacturedHomeParkA",
+"ManufacturedHomeParkIntactA",
+"ManufacturedHomeParkNotIntactA",
+"MaricultureSiteA",
+"MaricultureSiteIntactA",
+"MaricultureSiteNotIntactA",
+"MarketA",
+"MedicalAndOrDentalEquipmentManufactureNonObstructionIntactA",
+"MetalProductionSteelMillMetalRefiningFounDryNonObstructionIntactA",
+"MetalProductManufacturingNonObstructionIntactA",
+"MinefieldA",
+"MineralPileA",
+"MineralPileKnownProductNonObstructionA",
+"MineralPileNonObstructionA",
+"MineralPileUnknownProductNonObstructionA",
+"MissileSiteA",
+"MotorVehicleParkingNonObstructionIntactA",
+"MunitionManufactureNonObstructionIntactA",
+"MunitionStorageFacilityA",
+"MunitionStorageFacilityIntactP",
+"MunitionStorageFacilityNotIntactP",
+"NonLandmarkNonObstructionNotIntactA",
+"NonmetallicMineralProductManufacturingNonObstructionIntactA",
+"OfficeParkA",
+"PaperMillNonObstructionIntactA",
+"ParticleAcceleratorA",
+"PedestrianRoadFreightRoadPassengerTransportNonObstructionIntactA",
+"PetrolRefiningNonObstructionIntactA",
+"PharmacyNonObstructionIntactA",
+"PlasticProductManufactureNonObstructionIntactA",
+"PollingStationNonObstructionIntactA",
+"PortA",
+"PortIntactA",
+"PortNotIntactA",
+"PowerGenerationNonObstructionIntactA",
+"PrintingNonObstructionIntactA",
+"PrintPublishingNonObstructionIntactA",
+"PrisonNonObstructionIntactA",
+"ProcessingFacilityA",
+"ProcessingFacilityNonObstructionA",
+"ProcessingFacilityNonObstructionIntactA",
+"ProcessingFacilityNonObstructionNotIntactA",
+"PublicOrderNonObstructionIntactA",
+"PublicRecordsNonObstructionIntactA",
+"PublicSafetyNonObstructionIntactA",
+"PumpingPipelinesNonObstructionIntactA",
+"PumpingStationA",
+"PumpingStationIntactA",
+"PumpingStationNotIntactA",
+"RadarStationA",
+"RadarStationNonObstructionA",
+"RadarStationNonObstructionIntactA",
+"RadarStationNonObstructionNotIntactA",
+"RadioandTelevisionBroadcastingNonObstructionIntactA",
+"RailStationNonObstructionIntactA",
+"RailTransportRailwayPassengersNonObstructionIntactA",
+"RailwayYardA",
+"RailwayYardIntactA",
+"RailwayYardNotIntactA",
+"RecyclingSiteA",
+"RecyclingSiteIntactA",
+"RecyclingSiteNotIntactA",
+"RefuellingStationNonObstructionIntactA",
+"ReligiousUseA",
+"ResidenceNonObstructionIntactA",
+"RetailNonObstructionIntactA",
+"RoadsideRestAreaA",
+"RoadsideRestAreaIntactA",
+"RoadsideRestAreaNotIntactA",
+"RubberProductManufactureNonObstructionIntactA",
+"RuinsNonObstructionA",
+"SatelliteGroundControlNonObstructionIntactA",
+"SatelliteGroundControlNonObstructionIntactA",
+"ScientificResearchNonObstructionIntactA",
+"SecurityServicesNonObstructionIntactA",
+"SewageTreatmentPlantA",
+"SewageTreatmentPlantIntactA",
+"SewageTreatmentPlantNotIntactA",
+"ShippingContainersA",
+"ShipyardA",
+"ShipyardIntactA",
+"ShipyardNotIntactA",
+"ShoppingComplexA",
+"ShoppingComplexNonObstructionA",
+"ShoppingComplexNonObstructionIntactA",
+"ShoppingComplexNonObstructionNotIntactA",
+"SignificantEntertainmentNonObstructionIntactA",
+"SigningNonObstructionIntactA",
+"SocialWorkNonObstructionIntactA",
+"SolarFarmA",
+"SolarFarmIntactA",
+"SolarFarmNotIntactA",
+"SolarPanelA",
+"SpaceFacilityA",
+"SpaceFacilityIntactA",
+"SpaceFacilityNotIntactA",
+"SportsCentreNonObstructionIntactA",
+"StorageDepotA",
+"StorageDepotIntactA",
+"StorageDepotNotIntactA",
+"StorageDepotOnSurfaceIntactA",
+"StorageDepotUndergroundIntactA",
+"StorageFacilityA",
+"stupaNonObstructionIntactA",
+"TankFarmA",
+"TankFarmIntactA",
+"TankFarmNotIntactA",
+"TelephoneExchangesRepeatersNonObstructionIntactA",
+"TestSiteA",
+"TobaccoProductManufactureNonObstructionIntactA",
+"TollBoothNonObstructionIntactA",
+"TrainingSiteA",
+"TrainingSiteIntactA",
+"TrainingSiteNotIntactA",
+"TransportationHubstationStopTerminalTransferHubNonObstructionIntactA",
+"TransportationNavigationMaintenanceWarehousesCargoInspectionNonObstructionIntactA",
+"TransportationStationA",
+"TransportationStationCheckpointNonObstructionIntactA",
+"TransportationStationIntactA",
+"TransportationStationNonObstructionA",
+"TransportationStationNonObstructionIntactA",
+"TransportationStationNotIntactA",
+"TransportationStationOtherIntactA",
+"TransportationStationRailwayNonObstructionIntactA",
+"TransportationStationRailwayNonObstructionNotIntactA",
+"TransportManufactureA",
+"VehicleRepairNonObstructionIntactA",
+"VoidCollectionAreaA",
+"WarehouseNonObstructionIntactA",
+"WasteDisposalNonObstructionIntactA",
+"WasteHeapA",
+"WasteHeapNonObstructionA",
+"WaterSupplyWaterTreatmentWaterDistributionNonObstructionIntactA",
+"WaterTransportInlandWaterCanalNonObstructionIntactA",
+"WaterworkA",
+"WaterworkIntactA",
+"WaterworkNotIntactA",
+"WoodBasedManufacturingNonObstructionIntactA",
+"YachtclubNonObstructionNotIntactA",
+"ZooA",
+"ZooIntactA",
+"ZooNotIntactA"
+]
+},
+{
+"id": "SO_0023",
+"geom": "Area",
+"concepts": [
+"WaterAerodromeA",
+"WaterAerodromeIntactA",
+"WaterAerodromeNotIntactA"
+]
+},
+{
+"id": "SO_0024",
+"geom": "Point",
+"concepts": [
+"LandAerodromeIntactP",
+"LandAerodromeNotIntactP",
+"LandAerodromeP",
+"WaterAerodromeIntactP",
+"WaterAerodromeNotIntactP",
+"WaterAerodromeP"
+]
+},
+{
+"id": "SO_0025",
+"geom": "Area",
+"concepts": [
+"SeaplaneRunA"
+]
+},
+{
+"id": "SO_0026",
+"geom": "Point",
+"concepts": [
+"WindmillNonObstructionIntactP",
+"WindmillNonObstructionNotIntactP",
+"WindmillNonObstructionP",
+"WindmillP"
+]
+},
+{
+"id": "SO_0027",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0028",
+"geom": "Point",
+"concepts": [
+"GreenhouseP"
+]
+},
+{
+"id": "SO_0029",
+"geom": "Area",
+"concepts": [
+"CaneA",
+"PlantationIndustrialFarmCaneA"
+]
+},
+{
+"id": "SO_0030",
+"geom": "Area",
+"concepts": [
+"CroplandDryCropsNotTerracedA",
+"CroplandDryCropsTerracedA",
+"PlantationIndustrialFarmA",
+"VegetatedAreaCroplandA",
+"VegetatedAreaCroplandA"
+]
+},
+{
+"id": "SO_0031",
+"geom": "Area",
+"concepts": [
+"GroveA",
+"PlantationOrchardA",
+"PlantationOrchardA",
+"PlantationOrchardA",
+"PlantationPlantNurseryA"
+]
+},
+{
+"id": "SO_0032",
+"geom": "Area",
+"concepts": [
+"HoldingPenA"
+]
+},
+{
+"id": "SO_0033",
+"geom": "Point",
+"concepts": [
+"HoldingPenP"
+]
+},
+{
+"id": "SO_0034",
+"geom": "Area",
+"concepts": [
+"HopFieldA",
+"PlantationVineyardA"
+]
+},
+{
+"id": "SO_0036",
+"geom": "Area",
+"concepts": [
+"BotanicGardenA",
+"GolfCourseA",
+"GolfCourseA",
+"GolfCourseNamedA",
+"GolfCourseNamedA",
+"GolfDrivingRangeA",
+"GolfDrivingRangeA",
+"InterestSiteA",
+"ParkA",
+"PicnicSiteA"
+]
+},
+{
+"id": "SO_0037",
+"geom": "Area",
+"concepts": [
+"OasisA"
+]
+},
+{
+"id": "SO_0038",
+"geom": "Area",
+"concepts": [
+"ForestWoodA",
+"ForestWoodUnknownNotScatteredA"
+]
+},
+{
+"id": "SO_0039",
+"geom": "Area",
+"concepts": [
+"ForestWoodDeciduousNotScatteredA"
+]
+},
+{
+"id": "SO_0040",
+"geom": "Area",
+"concepts": [
+"ForestWoodEvergreenNotScatteredA"
+]
+},
+{
+"id": "SO_0041",
+"geom": "Area",
+"concepts": [
+"ForestWoodMixedNotScatteredA"
+]
+},
+{
+"id": "SO_0042",
+"geom": "Area",
+"concepts": [
+"ForestWoodScatteredA"
+]
+},
+{
+"id": "SO_0043",
+"geom": "Line",
+"concepts": [
+"ForestWoodL"
+]
+},
+{
+"id": "SO_0044",
+"geom": "Point",
+"concepts": [
+"ForestWoodOtherP",
+"TreeLandmarkP",
+"TreeP"
+]
+},
+{
+"id": "SO_0046",
+"geom": "Point",
+"concepts": [
+"TreeDeciduousP"
+]
+},
+{
+"id": "SO_0047",
+"geom": "Point",
+"concepts": [
+"TreeEvergreenP"
+]
+},
+{
+"id": "SO_0048",
+"geom": "Area",
+"concepts": [
+"BrushA",
+"ShrublandA",
+"ThicketA"
+]
+},
+{
+"id": "SO_0049",
+"geom": "Area",
+"concepts": [
+"GrasslandA",
+"GrasslandNotTropicalNotAridA"
+]
+},
+{
+"id": "SO_0050",
+"geom": "Area",
+"concepts": [
+"GrasslandTropicalA"
+]
+},
+{
+"id": "SO_0051",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0052",
+"geom": "Area",
+"concepts": [
+"BogA",
+"BogCranberryA",
+"BogNotCranberryOrPeatA",
+"BogPeatA",
+"MarshA"
+]
+},
+{
+"id": "SO_0053",
+"geom": "Area",
+"concepts": [
+"HummockA"
+]
+},
+{
+"id": "SO_0054",
+"geom": "Area",
+"concepts": [
+"SwampCypressA"
+]
+},
+{
+"id": "SO_0055",
+"geom": "Area",
+"concepts": [
+"SwampA",
+"SwampMangroveA",
+"WetlandNotNipaOrMangroveA"
+]
+},
+{
+"id": "SO_0056",
+"geom": "Area",
+"concepts": [
+"SwampNipaA"
+]
+},
+{
+"id": "SO_0057",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0058",
+"geom": "Area",
+"concepts": [
+"LockA",
+"LockBasinA"
+]
+},
+{
+"id": "SO_0059",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0060",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0061",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0062",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0063",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0064",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0065",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0066",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0067",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0068",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0069",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0070",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0071",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0072",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0073",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0074",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0075",
+"geom": "Point",
+"concepts": [
+"EntranceAndOrExitP",
+"TunnelMouthP"
+]
+},
+{
+"id": "SO_0076",
+"geom": "Point",
+"concepts": [
+"PointOfChangeP"
+]
+},
+{
+"id": "SO_0077",
+"geom": "Area",
+"concepts": [
+"DemilitarizedZoneA",
+"GeopoliticalEntityA",
+"GeopoliticalEntityOtherA",
+"GeopoliticalEntityZoneOfOccupationA"
+]
+},
+{
+"id": "SO_0078",
+"geom": "Point",
+"concepts": [
+"DishAerialNonObstructionP",
+"DishAerialP"
+]
+},
+{
+"id": "SO_0079",
+"geom": "Point",
+"concepts": [
+"TowerNonObstructionP",
+"TowerOtherP",
+"TowerP"
+]
+},
+{
+"id": "SO_0080",
+"geom": "Point",
+"concepts": [
+"LighthouseNonObstructionIntactP",
+"LighthouseNonObstructionNotIntactP",
+"LighthouseNonObstructionP",
+"LighthouseP",
+"TowerLightNonObstructionP"
+]
+},
+{
+"id": "SO_0083",
+"geom": "Point",
+"concepts": [
+"FlarePipeNonObstructionP",
+"FlarePipeOffshoreNonObstructionP",
+"FlarePipeOnshoreNonObstructionP",
+"FlarePipeP"
+]
+},
+{
+"id": "SO_0084",
+"geom": "Point",
+"concepts": [
+"BridgeSuperstructureL",
+"BridgeSuperstructureNonObstructionL",
+"BridgeTowerNonObstructionP",
+"BridgeTowerP",
+"CraneOffshoreNonObstructionP",
+"RigOffshoreNonObstructionP",
+"WindTurbineOffshoreNonObstructionP"
+]
+},
+{
+"id": "SO_0085",
+"geom": "Point",
+"concepts": [
+"RigNonObstructionP",
+"RigOnshoreNonObstructionP",
+"RigP"
+]
+},
+{
+"id": "SO_0086",
+"geom": "Area",
+"concepts": [
+"ExtractionMineA",
+"ExtractionMineNotPeatIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownNamedIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownUnnamedIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownNamedIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownUnnamedIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownNamedIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownUnnamedIntactA",
+"ExtractionMineProductUnknownNotPeatTypeUnknownNamedIntactA",
+"QuarryA",
+"QuarryIntactA",
+"QuarryProductKnownNamedIntactA",
+"QuarryProductKnownUnnamedIntactA",
+"QuarryProductUnknownIntactNamedA",
+"QuarryProductUnknownUnnamedIntactA"
+]
+},
+{
+"id": "SO_0087",
+"geom": "Area",
+"concepts": [
+"ExtractionMineNotPeatNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownNamedNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownUnnamedNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownNamedNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownUnnamedNotIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownNamedNotIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownUnnamedNotIntactA",
+"ExtractionMineProductUnknownNotPeatTypeUnknownNamedNotIntactA",
+"QuarryNotIntactA",
+"QuarryProductKnownNamedNotIntactA",
+"QuarryProductKnownUnnamedNotIntactA",
+"QuarryProductUnknownNamedNotIntactA",
+"QuarryProductUnknownUnnamedNotIntactA"
+]
+},
+{
+"id": "SO_0088",
+"geom": "Point",
+"concepts": [
+"ExtractionMineNotPeatP",
+"ExtractionMineP",
+"ExtractionMineProductKnownNotPeatTypeKnownNamedIntactP",
+"ExtractionMineProductKnownNotPeatTypeKnownUnNamedIntactP",
+"ExtractionMineProductKnownNotPeatTypeUnknownNamedIntactP",
+"ExtractionMineProductKnownNotPeatTypeUnknownUnNamedIntactP",
+"ExtractionMineProductUnknownNotPeatTypeKnownNamedIntactP",
+"ExtractionMineProductUnknownNotPeatTypeKnownUnNamedIntactP",
+"ExtractionMineProductUnknownNotPeatTypeUnknownNamedIntactP",
+"QuarryIntactP",
+"QuarryIntactP",
+"QuarryProductKnownNamedIntactP",
+"QuarryProductKnownUnNamedIntactP",
+"QuarryProductUnknownNamedIntactP",
+"QuarryProductUnknownUnNamedIntactP"
+]
+},
+{
+"id": "SO_0089",
+"geom": "Point",
+"concepts": [
+"ExtractionMineNotPeatNotIntactP",
+"ExtractionMineProductKnownNotPeatTypeKnownNamedNotIntactP",
+"ExtractionMineProductKnownNotPeatTypeKnownUnNamedNotIntactP",
+"ExtractionMineProductKnownNotPeatTypeUnknownNamedNotIntactP",
+"ExtractionMineProductKnownNotPeatTypeUnknownUnNamedNotIntactP",
+"ExtractionMineProductUnknownNotPeatTypeKnownNamedNotIntactP",
+"ExtractionMineProductUnknownNotPeatTypeKnownUnNamedNotIntactP",
+"ExtractionMineProductUnknownNotPeatTypeUnknownNamedNotIntactP",
+"QuarryNotIntactP",
+"QuarryProductKnownNamedNotIntactP",
+"QuarryProductKnownUnNamedNotIntactP",
+"QuarryProductUnknownNamedNotIntactP",
+"QuarryProductUnknownUnNamedNotIntactP"
+]
+},
+{
+"id": "SO_0090",
+"geom": "Area",
+"concepts": [
+"ExtractionMinePeatA"
+]
+},
+{
+"id": "SO_0091",
+"geom": "Point",
+"concepts": [
+"ExtractionMinePeatP"
+]
+},
+{
+"id": "SO_0092",
+"geom": "Point",
+"concepts": [
+"NonWaterWellGasIntactP",
+"NonWaterWellGasNotIntactP",
+"NonWaterWellIntactP",
+"NonWaterWellNotIntactP",
+"NonWaterWellOilIntactP",
+"NonWaterWellOilNotIntactP",
+"NonWaterWellP",
+"WellP"
+]
+},
+{
+"id": "SO_0093",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0094",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0095",
+"geom": "Point",
+"concepts": [
+"NuclearReactorContainmentNonObstructionNotIntactP",
+"RoundhouseNonObstructionNotIntactP",
+"StorageTankNonObstructionNotIntactP"
+]
+},
+{
+"id": "SO_0096",
+"geom": "Point",
+"concepts": [
+"NuclearReactorContainmentNonObstructionIntactP",
+"NuclearReactorContainmentNonObstructionP",
+"NuclearReactorContainmentP",
+"RoundhouseNonObstructionIntactP",
+"RoundhouseNonObstructionP",
+"RoundhouseP",
+"StorageTankElevatedNonObstructionIntactP",
+"StorageTankNonObstructionIntactP",
+"StorageTankNonObstructionP",
+"StorageTankNotElevatedNonObstructionIntactP",
+"StorageTankP"
+]
+},
+{
+"id": "SO_0097",
+"geom": "Point",
+"concepts": [
+"SurveyPointGeodeticHighestP",
+"SurveyPointGeodeticNormalP",
+"SurveyPointGeodeticP"
+]
+},
+{
+"id": "SO_0098",
+"geom": "Area",
+"concepts": [
+"FortificationA",
+"FortificationNonObstructionA",
+"FortificationNonObstructionIntactA",
+"FortificationNonObstructionNotIntactA"
+]
+},
+{
+"id": "SO_0099",
+"geom": "Point",
+"concepts": [
+"FortificationNonObstructionIntactP",
+"FortificationNonObstructionNotIntactP",
+"FortificationNonObstructionP",
+"FortificationP"
+]
+},
+{
+"id": "SO_0100",
+"geom": "Point",
+"concepts": [
+"MooringMastNonObstructionP",
+"MooringMastP"
+]
+},
+{
+"id": "SO_0101",
+"geom": "Point",
+"concepts": [
+"AerodromeBeaconFixedP",
+"AerodromeBeaconFlashingP",
+"AerodromeBeaconP"
+]
+},
+{
+"id": "SO_0102",
+"geom": "Point",
+"concepts": [
+"RuinsNonObstructionP"
+]
+},
+{
+"id": "SO_0103",
+"geom": "Point",
+"concepts": [
+"CairnP"
+]
+},
+{
+"id": "SO_0104",
+"geom": "Point",
+"concepts": [
+"MemorialMonumentNonObstructionIntactP",
+"MemorialMonumentNonObstructionNotIntactP",
+"MemorialMonumentNonObstructionP",
+"MonumentNonObstructionLandmarkP",
+"MonumentP"
+]
+},
+{
+"id": "SO_0105",
+"geom": "Point",
+"concepts": [
+"BotanicGardenP",
+"InterestSiteP",
+"ParkP"
+]
+},
+{
+"id": "SO_0106",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0107",
+"geom": "Point",
+"concepts": [
+"SkiJumpNonObstructionP",
+"SkiJumpP"
+]
+},
+{
+"id": "SO_0108",
+"geom": "Area",
+"concepts": [
+"CampSiteA"
+]
+},
+{
+"id": "SO_0109",
+"geom": "Point",
+"concepts": [
+"CampP",
+"CampRefugeeP",
+"CampSiteP"
+]
+},
+{
+"id": "SO_0110",
+"geom": "Line",
+"concepts": [
+"RacetrackA",
+"RacetrackL"
+]
+},
+{
+"id": "SO_0111",
+"geom": "Area",
+"concepts": [
+"StadiumA",
+"StadiumNonObstructionIntactA",
+"StadiumNonObstructionNotIntactA",
+"StadiumObstructionA"
+]
+},
+{
+"id": "SO_0112",
+"geom": "Area",
+"concepts": [
+"SportsGroundA",
+"TennisCourtA"
+]
+},
+{
+"id": "SO_0113",
+"geom": "Point",
+"concepts": [
+"SportsGroundP"
+]
+},
+{
+"id": "SO_0114",
+"geom": "Area",
+"concepts": [
+"OffshoreConstructionA",
+"OffshoreConstructionNonObstructionA",
+"OffshoreConstructionNonPlatformNonObstructionA",
+"OffshoreConstructionPlatformNonObstructionA",
+"RampP",
+"ShorelineConstructionA",
+"ShorelineConstructionBreakWaterA",
+"ShorelineConstructionBreakWaterDryA",
+"ShorelineConstructionDryA",
+"ShorelineConstructionGroinA",
+"ShorelineConstructionGroinDryA",
+"ShorelineConstructionRecreationalPierA",
+"ShorelineConstructionTrainingWallA",
+"ShorelineRampA",
+"ShorelineRampDryA",
+"SlipwayA",
+"SlipwayDryA",
+"SpillwayA",
+"TowerWaterIntakeTowerA",
+"TowerWaterIntakeTowerNonObstructionA"
+]
+},
+{
+"id": "SO_0116",
+"geom": "Area",
+"concepts": [
+"ForeshoreA",
+"SnagA",
+"SnagExposedA",
+"SnagNonExposedA",
+"StructuralPileA"
+]
+},
+{
+"id": "SO_0117",
+"geom": "Area",
+"concepts": [
+"CemeteryA",
+"CemeteryBuddhismA",
+"CemeteryChristianA",
+"CemeteryHinduA",
+"CemeteryIslamA",
+"CemeteryJudaismA",
+"CemeteryOtherA",
+"CemeteryShintoA",
+"TombBuddhismA",
+"TombChristianA",
+"TombIslamA",
+"TombJudaismA",
+"TombOtherA",
+"TombShintoA"
+]
+},
+{
+"id": "SO_0118",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0119",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0120",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0121",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0123",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0124",
+"geom": "Point",
+"concepts": [
+"CemeteryBuddhismP",
+"CemeteryChristianP",
+"CemeteryHinduP",
+"CemeteryIslamP",
+"CemeteryJudaismP",
+"CemeteryOtherP",
+"CemeteryP",
+"CemeteryShintoP",
+"GraveMarkerP",
+"GraveP",
+"TombBuddhismP",
+"TombChristianP",
+"TombIslamP",
+"TombJudaismP",
+"TombOtherP",
+"TombP",
+"TombShintoP"
+]
+},
+{
+"id": "SO_0125",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0126",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0127",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0128",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0129",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0130",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0131",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0132",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0133",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0134",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0135",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0136",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0137",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0138",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0139",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0140",
+"geom": "Point",
+"concepts": [
+"ChristianCathedralP",
+"ChristianChurchP",
+"ChristianMissionP",
+"ChristianMonasteryP",
+"ChristianNovitiateP",
+"ChristianReligiousCommunityP",
+"ChristianRetreatP",
+"ChristianSeminaryP",
+"ChristianShrineNonObstructionIntactP",
+"ChristianShrineP",
+"ChristianTempleP",
+"ChristianUnknownBuildingP",
+"DryOtherShorelineConstructionNotLabbeledA",
+"DryOtherShorelineConstructionNotLabelledL",
+"HouseofWorshipChristianChurchNonObstructionIntactP",
+"NotDryOtherShorelineConstructionNotLabelledA",
+"NotDryOtherShorelineConstructionNotLabelledL"
+]
+},
+{
+"id": "SO_0141",
+"geom": "Point",
+"concepts": [
+"DiplomaticConsulMissionEmbassyNonObstructionIntactP",
+"DiplomaticNonObstructionIntactP"
+]
+},
+{
+"id": "SO_0142",
+"geom": "Point",
+"concepts": [
+"EducationalSchoolNonObstructionIntactP"
+]
+},
+{
+"id": "SO_0143",
+"geom": "Point",
+"concepts": [
+"HouseofWorshipIslamMosqueNonObstructionIntactP",
+"IntactNonObstructionIslamicMinaretP",
+"IslamicHermitageP",
+"IslamicMaraboutP",
+"IslamicMissionP",
+"IslamicMonasteryP",
+"IslamicMosqueP",
+"IslamicNovitiateP",
+"IslamicReligiousCommunityP",
+"IslamicRetreatP",
+"IslamicSeminaryP",
+"IslamicShrineNonObstructionIntactP",
+"IslamicShrineP",
+"IslamicTempleP",
+"IslamicUnknownBuildingP"
+]
+},
+{
+"id": "SO_0144",
+"geom": "Point",
+"concepts": [
+"HouseofWorshipJudaismSynagogueNonObstructionIntactP",
+"JewishHermitageP",
+"JewishMissionP",
+"JewishMonasteryP",
+"JewishNovitiateP",
+"JewishReligiousCommunityP",
+"JewishRetreatP",
+"JewishSeminaryP",
+"JewishShrineP",
+"JewishSynagogueP",
+"JewishTempleP",
+"JewishUnknownBuildingP",
+"StationBuildingP"
+]
+},
+{
+"id": "SO_0145",
+"geom": "Point",
+"concepts": [
+"PagodaNonObstructionIntactP"
+]
+},
+{
+"id": "SO_0146",
+"geom": "Point",
+"concepts": [
+"MotorVehicleStationNonObstructionIntactP",
+"MotorVehicleStationNonObstructionP",
+"MotorVehicleStationP",
+"PetrolSaleIntactP"
+]
+},
+{
+"id": "SO_0147",
+"geom": "Point",
+"concepts": [
+"RailStationNonObstructionIntactP",
+"TransportationStationRailwayNonObstructionIntactP"
+]
+},
+{
+"id": "SO_0148",
+"geom": "Point",
+"concepts": [
+"NonObstructionIntactStupaP"
+]
+},
+{
+"id": "SO_0149",
+"geom": "Point",
+"concepts": [
+"HouseofWorshipTempleNonObstructionIntactP"
+]
+},
+{
+"id": "SO_0150",
+"geom": "Point",
+"concepts": [
+"CraneNonObstructionP",
+"CraneP"
+]
+},
+{
+"id": "SO_0151",
+"geom": "Point",
+"concepts": [
+"HospitalNonObstructionIntactP",
+"IntactNonObstructionHospitalBuildingP"
+]
+},
+{
+"id": "SO_0152",
+"geom": "Point",
+"concepts": [
+"MinaretNonObstructionIntactP"
+]
+},
+{
+"id": "SO_0153",
+"geom": "Point",
+"concepts": [
+"CheckpointNonObstructionIntactP",
+"CheckpointP",
+"TransportationStationCheckpointNonObstructionIntactP"
+]
+},
+{
+"id": "SO_0154",
+"geom": "Area",
+"concepts": [
+"PowerSubstationA",
+"PowerSubstationIntactA",
+"PowerSubstationNotIntactA"
+]
+},
+{
+"id": "SO_0155",
+"geom": "Point",
+"concepts": [
+"PowerSubstationIntactP",
+"PowerSubstationNotIntactP",
+"PowerSubstationP"
+]
+},
+{
+"id": "SO_0156",
+"geom": "Point",
+"concepts": [
+"SmokestackNonObstructionP",
+"SmokestackP"
+]
+},
+{
+"id": "SO_0157",
+"geom": "Point",
+"concepts": [
+"WindTurbineNonObstructionP",
+"WindTurbineOnshoreNonObstructionP",
+"WindTurbineP"
+]
+},
+{
+"id": "SO_0158",
+"geom": "Point",
+"concepts": [
+"LightVesselNonObstructionP",
+"LightVesselP"
+]
+},
+{
+"id": "SO_0160",
+"geom": "Point",
+"concepts": [
+"WreckAlwaysSubmergedP",
+"WreckNotAlwaysSubmergedP",
+"WreckP"
+]
+},
+{
+"id": "SO_0161",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0162",
+"geom": "Point",
+"concepts": [
+"SaltEvaporatorP"
+]
+},
+{
+"id": "SO_0163",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0164",
+"geom": "Point",
+"concepts": [
+"SettlingPondP"
+]
+},
+{
+"id": "SO_0165",
+"geom": "Point",
+"concepts": [
+"WaterMillNonObstructionIntactP",
+"WaterMillNonObstructionNotIntactP",
+"WaterMillNonObstructionP",
+"WaterMillP"
+]
+},
+{
+"id": "SO_0166",
+"geom": "Point",
+"concepts": [
+"RailwayTurntableP"
+]
+},
+{
+"id": "SO_0167",
+"geom": "Line",
+"concepts": [
+"BasinGateKnownL",
+"BasinGateL",
+"BasinGateUnknownL",
+"DamHardIntactL",
+"DamHardL",
+"DamL",
+"DamLooseIntactL",
+"DamNoTransportationHardIntactL",
+"DamNoTransportationHardL",
+"DamNoTransportationHardNotIntactL",
+"DisplaySignL",
+"FishWeirL",
+"FloodControlStructureL",
+"OutdoorTheatreScreenL",
+"VolcanicDykeL",
+"WaterbodyDividerL"
+]
+},
+{
+"id": "SO_0168",
+"geom": "Line",
+"concepts": [
+"DamHardNotIntactL",
+"DamLooseL",
+"DamLooseNotIntactL",
+"DamNoTransportationLooseIntactL",
+"DamNoTransportationLooseL",
+"DamNoTransportationLooseNotIntactL"
+]
+},
+{
+"id": "SO_0169",
+"geom": "Line",
+"concepts": [
+"DamTransportationHardIntactL",
+"DamTransportationHardL",
+"DamTransportationHardNotIntactL"
+]
+},
+{
+"id": "SO_0170",
+"geom": "Line",
+"concepts": [
+"DamTransportationLooseIntactL",
+"DamTransportationLooseL",
+"DamTransportationLooseNotIntactL"
+]
+},
+{
+"id": "SO_0171",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0172",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0173",
+"geom": "Area",
+"concepts": [
+"DamA",
+"DamHardA",
+"DamHardIntactA",
+"DamHardNotIntactA",
+"DamNoTransportationHardA",
+"DamTransportationHardA"
+]
+},
+{
+"id": "SO_0174",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0175",
+"geom": "Line",
+"concepts": [
+"CausewayStructureL"
+]
+},
+{
+"id": "SO_0176",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceIntermediateGreaterThanZeroL",
+"ElevationContourSnowIceIntermediateL",
+"ElevationContourSnowIceIntermediateMinusL",
+"ElevationContourSnowIceIntermediateZeroL",
+"InlandWatercourseDitchL",
+"InlandWatercourseDitchPerennialL",
+"LeaderLineCyanL"
+]
+},
+{
+"id": "SO_0177",
+"geom": "Line",
+"concepts": [
+"InlandWatercourseDitchDryL",
+"InlandWatercourseDitchIntermittentDryL",
+"InlandWatercourseDitchIntermittentL"
+]
+},
+{
+"id": "SO_0178",
+"geom": "Point",
+"concepts": [
+"WaterWellP",
+"WaterWellPerennialAlkalineIntactP",
+"WaterWellPerennialAlkalineNotIntactP",
+"WaterWellPerennialOtherIntactP",
+"WaterWellPerennialOtherNotIntactP",
+"WaterWellPerennialP",
+"WaterWellPerennialSaltIntactP",
+"WaterWellPerennialSaltNotIntactP"
+]
+},
+{
+"id": "SO_0179",
+"geom": "Point",
+"concepts": [
+"QanatShaftP",
+"WaterWellDryP",
+"WaterWellIntermittentDryAlkalineIntactP",
+"WaterWellIntermittentDryAlkalineNotIntactP",
+"WaterWellIntermittentDryOtherIntactP",
+"WaterWellIntermittentDryOtherNotIntactP",
+"WaterWellIntermittentDryP",
+"WaterWellIntermittentDrySaltIntactP",
+"WaterWellIntermittentDrySaltNotIntactP",
+"WaterWellIntermittentP"
+]
+},
+{
+"id": "SO_0180",
+"geom": "Point",
+"concepts": [
+"FountainP"
+]
+},
+{
+"id": "SO_0181",
+"geom": "Line",
+"concepts": [
+"HedgerowL"
+]
+},
+{
+"id": "SO_0182",
+"geom": "Line",
+"concepts": [
+"AdministrativeBoundaryL",
+"AdministrativeBoundaryOtherNotInternationalL",
+"AdministrativeBoundaryOtherSeparationKnownDefiniteL",
+"AdministrativeBoundaryOtherSeparationKnownIndefiniteInDisputeL",
+"AdministrativeBoundaryOtherSeparationUnknownDefiniteL",
+"AdministrativeBoundaryOtherSeparationUnknownIndefiniteInDisputeL",
+"ArmisticeLineL",
+"CeaseFireLineL",
+"ClaimLineL",
+"ConventionLineL",
+"DemarcationLineL",
+"GenericAdministrativeBoundaryL",
+"IntercolonialLineL",
+"InterentityLineL",
+"LineOfAdjacencyL",
+"LineOfControlL",
+"LineOfConvenienceL",
+"LineOfWithdrawalL",
+"MilitaryDisengagementLineL",
+"ProvisionalAdministrativeLineL",
+"SupraNationalEntityA",
+"TreatyLineL",
+"UnclosClaimBoundaryL"
+]
+},
+{
+"id": "SO_0183",
+"geom": "Line",
+"concepts": [
+"AdministrativeDivisionA",
+"AdministrativeDivisionFirstOrderA"
+]
+},
+{
+"id": "SO_0184",
+"geom": "Line",
+"concepts": [
+"AdministrativeDivisionSecondOrderA"
+]
+},
+{
+"id": "SO_0185",
+"geom": "Line",
+"concepts": [
+"AdministrativeDivisionOtherA"
+]
+},
+{
+"id": "SO_0186",
+"geom": "Line",
+"concepts": [
+"AdministrativeBoundaryInternationalDefiniteL",
+"AdministrativeBoundaryInternationalIndefiniteInDisputeL",
+"AdministrativeBoundaryInternationalL"
+]
+},
+{
+"id": "SO_0187",
+"geom": "Line",
+"concepts": [
+"GeopoliticalEntityBufferZoneA"
+]
+},
+{
+"id": "SO_0188",
+"geom": "Line",
+"concepts": [
+"CableCommunicationLineObstructionL",
+"CableObstructionL",
+"CablePowerlineObstructionL",
+"CablewayObstructionL",
+"ConveyorObstructionL",
+"ShipElevatorObstructionL",
+"SkiJumpObstructionL"
+]
+},
+{
+"id": "SO_0189",
+"geom": "Line",
+"concepts": [
+"CablewayL",
+"CablewayNonObstructionL",
+"CablewayTypeKnownNonObstructionL",
+"CablewayTypeUnknownNonObstructionL",
+"ConveyorBucketElevatorL",
+"ConveyorL",
+"ConveyorNonObstructionL",
+"GantryL",
+"IceRouteL",
+"ShipElevatorL",
+"ShipElevatorNonObstructionL",
+"SkiJumpL",
+"SkiJumpNonObstructionL"
+]
+},
+{
+"id": "SO_0190",
+"geom": "Line",
+"concepts": [
+"FerryCrossingL",
+"ShorelineConstructionBreakWaterNotDryL",
+"ShorelineConstructionGroinNotDryL",
+"ShorelineConstructionNotDryL",
+"ShorelineRampNotDryL"
+]
+},
+{
+"id": "SO_0191",
+"geom": "Line",
+"concepts": [
+"TrailAllWeatherL",
+"TrailFairWeatherL",
+"TrailL",
+"TrailWinterOnlyL"
+]
+},
+{
+"id": "SO_0192",
+"geom": "Line",
+"concepts": [
+"CartTrackAllWeatherL",
+"CartTrackL",
+"CartTrackWinterOnlyL"
+]
+},
+{
+"id": "SO_0193",
+"geom": "Line",
+"concepts": [
+"CableCommunicationLineL"
+]
+},
+{
+"id": "SO_0194",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0195",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0196",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0197",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0198",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0199",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0200",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0201",
+"geom": "Line",
+"concepts": [
+"RailwayBroadElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayBroadElectrifiedOneTrackIntactL",
+"RailwayBroadElectrifiedTwoTracksIntactL",
+"RailwayBroadNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayBroadNonElectrifiedOneTrackIntactL",
+"RailwayBroadNonElectrifiedTwoTracksIntactL",
+"RailwayBroadStandardElectrifiedMultipleIntactL",
+"RailwayBroadStandardElectrifiedSingleIntactL",
+"RailwayBroadStandardIntactL",
+"RailwayBroadStandardNonElectrifiedMultipleIntactL",
+"RailwayBroadStandardNonElectrifiedSingleIntactL",
+"RailwayCarlineIntactL",
+"RailwayElectricIntactL",
+"RailwayElectricOverheadIntactL",
+"RailwayIntactL",
+"RailwayL",
+"RailwayMonorailElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayMonorailElectrifiedOneTrackIntactL",
+"RailwayMonorailElectrifiedTwoTracksIntactL",
+"RailwayMonorailNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayMonorailNonElectrifiedOneTrackIntactL",
+"RailwayMonorailNonElectrifiedTwoTracksIntactL",
+"RailwayMultipleIntactL",
+"RailwayNarrowElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayNarrowElectrifiedMultipleIntactL",
+"RailwayNarrowElectrifiedSingleIntactL",
+"RailwayNarrowElectrifiedTwoTracksIntactL",
+"RailwayNarrowIntactL",
+"RailwayNarrowNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayNarrowNonElectrifiedMultipleIntactL",
+"RailwayNarrowNonElectrifiedSingleIntactL",
+"RailwayNarrowNonElectrifiedTwoTracksIntactL",
+"RailwayNonElectrifiedIntactL",
+"RailwayRailwayInRoadIntactL",
+"RailwaySingleIntactL",
+"RailwayStandardElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayStandardElectrifiedOneTrackIntactL",
+"RailwayStandardElectrifiedTwoTracksIntactL",
+"RailwayStandardNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayStandardNonElectrifiedOneTrackIntactL",
+"RailwayStandardNonElectrifiedTwoTracksIntactL"
+]
+},
+{
+"id": "SO_0202",
+"geom": "Line",
+"concepts": [
+"RailwayCarlineIntactL"
+]
+},
+{
+"id": "SO_0203",
+"geom": "Line",
+"concepts": [
+"RailwayCarlineNotIntactL"
+]
+},
+{
+"id": "SO_0204",
+"geom": "Line",
+"concepts": [
+"RailwayRailwayInRoadIntactL",
+"RailwaySidetrackRailwayInRoadIntactL"
+]
+},
+{
+"id": "SO_0205",
+"geom": "Line",
+"concepts": [
+"RailwayBroadElectrifiedGreaterThanTwoNotIntactL",
+"RailwayBroadElectrifiedOneTrackNotIntactL",
+"RailwayBroadElectrifiedTwoTracksNotIntactL",
+"RailwayBroadNonElectrifiedGreaterThanTwoNotIntactL",
+"RailwayBroadNonElectrifiedOneTrackNotIntactL",
+"RailwayBroadNonElectrifiedTwoTracksNotIntactL",
+"RailwayBroadStandardElectrifiedMultipleNotIntactL",
+"RailwayBroadStandardElectrifiedSingleNotIntactL",
+"RailwayBroadStandardNonElectrifiedMultipleNotIntactL",
+"RailwayBroadStandardNonElectrifiedSingleNotIntactL",
+"RailwayMonorailElectrifiedGreaterThanTwoNotIntactL",
+"RailwayMonorailElectrifiedOneTrackNotIntactL",
+"RailwayMonorailElectrifiedTwoTracksNotIntactL",
+"RailwayMonorailNonElectrifiedGreaterThanTwoTracksNotIntactL",
+"RailwayMonorailNonElectrifiedOneTrackNotIntactL",
+"RailwayMonorailNonElectrifiedTwoTracksNotIntactL",
+"RailwayNarrowElectrifiedGreaterThanTwoTracksNotIntactL",
+"RailwayNarrowElectrifiedMultipleNotIntactL",
+"RailwayNarrowElectrifiedSingleNotIntactL",
+"RailwayNarrowElectrifiedTwoTracksNotIntactL",
+"RailwayNarrowNonElectrifiedGreaterThanTwoTracksNotIntactL",
+"RailwayNarrowNonElectrifiedMultipleNotIntactL",
+"RailwayNarrowNonElectrifiedSingleNotIntactL",
+"RailwayNarrowNonElectrifiedTwoTracksNotIntactL",
+"RailwayNotIntactL",
+"RailwayRailwayInRoadNotIntactL",
+"RailwayStandardElectrifiedGreaterThanTwoNotIntactL",
+"RailwayStandardElectrifiedOneTrackNotIntactL",
+"RailwayStandardElectrifiedTwoTracksTracksNotIntactL",
+"RailwayStandardNonElectrifiedGreaterThanTwoNotIntactL",
+"RailwayStandardNonElectrifiedOneNotIntactL",
+"RailwayStandardNonElectrifiedTwoTracksNotIntactL"
+]
+},
+{
+"id": "SO_0206",
+"geom": "Line",
+"concepts": [
+"RailwayBroadElectrifiedOneTrackIntactL",
+"RailwayBroadStandardElectrifiedSingleIntactL",
+"RailwayElectricIntactL",
+"RailwayElectricOverheadIntactL",
+"RailwayStandardElectrifiedOneTrackIntactL"
+]
+},
+{
+"id": "SO_0207",
+"geom": "Line",
+"concepts": [
+"RailwayBroadNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayBroadNonElectrifiedTwoTracksIntactL",
+"RailwayBroadStandardNonElectrifiedMultipleIntactL",
+"RailwayMultipleIntactL",
+"RailwayStandardNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayStandardNonElectrifiedTwoTracksIntactL"
+]
+},
+{
+"id": "SO_0208",
+"geom": "Line",
+"concepts": [
+"RailwayBroadNonElectrifiedGreaterThanTwoNotIntactL",
+"RailwayBroadNonElectrifiedTwoTracksNotIntactL",
+"RailwayBroadStandardNonElectrifiedMultipleNotIntactL",
+"RailwayStandardNonElectrifiedGreaterThanTwoNotIntactL",
+"RailwayStandardNonElectrifiedTwoTracksNotIntactL"
+]
+},
+{
+"id": "SO_0209",
+"geom": "Line",
+"concepts": [
+"RailwayDismantledDestroyedL"
+]
+},
+{
+"id": "SO_0210",
+"geom": "Line",
+"concepts": [
+"RailwayBroadElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayBroadElectrifiedTwoTracksIntactL",
+"RailwayBroadStandardElectrifiedMultipleIntactL",
+"RailwayStandardElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayStandardElectrifiedTwoTracksIntactL"
+]
+},
+{
+"id": "SO_0211",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayMonorailElectrifiedTwoTracksIntactL",
+"RailwayNarrowElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayNarrowElectrifiedMultipleIntactL",
+"RailwayNarrowElectrifiedTwoTracksIntactL"
+]
+},
+{
+"id": "SO_0212",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailElectrifiedOneTrackIntactL",
+"RailwayNarrowElectrifiedSingleIntactL"
+]
+},
+{
+"id": "SO_0213",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayMonorailNonElectrifiedTwoTracksIntactL",
+"RailwayNarrowNonElectrifiedGreaterThanTwoTracksIntactL",
+"RailwayNarrowNonElectrifiedMultipleIntactL",
+"RailwayNarrowNonElectrifiedTwoTracksIntactL"
+]
+},
+{
+"id": "SO_0214",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailNonElectrifiedOneTrackIntactL",
+"RailwayNarrowIntactL",
+"RailwayNarrowNonElectrifiedSingleIntactL"
+]
+},
+{
+"id": "SO_0215",
+"geom": "Line",
+"concepts": [
+"RailwayRailwayInRoadNotIntactL",
+"RailwaySidetrackRailwayInRoadNotIntactL"
+]
+},
+{
+"id": "SO_0216",
+"geom": "Line",
+"concepts": [
+"RailwayBroadElectrifiedOneTrackNotIntactL",
+"RailwayBroadStandardElectrifiedSingleNotIntactL",
+"RailwayStandardElectrifiedOneTrackNotIntactL"
+]
+},
+{
+"id": "SO_0217",
+"geom": "Line",
+"concepts": [
+"RailwayBroadElectrifiedGreaterThanTwoNotIntactL",
+"RailwayBroadElectrifiedTwoTracksNotIntactL",
+"RailwayBroadStandardElectrifiedMultipleNotIntactL",
+"RailwayStandardElectrifiedGreaterThanTwoNotIntactL",
+"RailwayStandardElectrifiedTwoTracksTracksNotIntactL"
+]
+},
+{
+"id": "SO_0218",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailNonElectrifiedOneTrackNotIntactL",
+"RailwayNarrowNonElectrifiedSingleNotIntactL"
+]
+},
+{
+"id": "SO_0219",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailElectrifiedGreaterThanTwoNotIntactL",
+"RailwayMonorailElectrifiedTwoTracksNotIntactL",
+"RailwayNarrowElectrifiedGreaterThanTwoTracksNotIntactL",
+"RailwayNarrowElectrifiedMultipleNotIntactL",
+"RailwayNarrowElectrifiedTwoTracksNotIntactL"
+]
+},
+{
+"id": "SO_0220",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailElectrifiedOneTrackNotIntactL",
+"RailwayNarrowElectrifiedSingleNotIntactL"
+]
+},
+{
+"id": "SO_0221",
+"geom": "Line",
+"concepts": [
+"RailwayMonorailNonElectrifiedGreaterThanTwoTracksNotIntactL",
+"RailwayMonorailNonElectrifiedTwoTracksNotIntactL",
+"RailwayNarrowNonElectrifiedGreaterThanTwoTracksNotIntactL",
+"RailwayNarrowNonElectrifiedMultipleNotIntactL",
+"RailwayNarrowNonElectrifiedTwoTracksNotIntactL"
+]
+},
+{
+"id": "SO_0222",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackBroadStandardElectricL",
+"RailwaySidetrackBroadStandardNonElectrifiedL",
+"RailwaySidetrackElectricIntactL",
+"RailwaySidetrackElectricNarrowL",
+"RailwaySidetrackElectricOverheadIntactL",
+"RailwaySidetrackIntactL",
+"RailwaySidetrackL",
+"RailwaySidetrackNarrowIntactL",
+"RailwaySidetrackNonElectrifiedNarrowL",
+"RailwaySidetrackRailwayInRoadIntactL",
+"RailwaySidetrackSingleIntactL"
+]
+},
+{
+"id": "SO_0223",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackElectricBroadStandardNotIntactL",
+"RailwaySidetrackElectrifiedNarrowNotIntactL",
+"RailwaySidetrackNonElectrifiedBroadStandardNotIntactL",
+"RailwaySidetrackNonElectrifiedNarrowNotIntactL",
+"RailwaySidetrackNotIntactL",
+"RailwaySidetrackRailwayInRoadNotIntactL"
+]
+},
+{
+"id": "SO_0224",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackDismantledDestroyedL"
+]
+},
+{
+"id": "SO_0225",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackBroadStandardElectricL",
+"RailwaySidetrackElectricIntactL"
+]
+},
+{
+"id": "SO_0226",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackNarrowIntactL",
+"RailwaySidetrackNonElectrifiedNarrowL"
+]
+},
+{
+"id": "SO_0227",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackElectricNarrowL"
+]
+},
+{
+"id": "SO_0228",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackElectricBroadStandardNotIntactL"
+]
+},
+{
+"id": "SO_0229",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackElectrifiedNarrowNotIntactL"
+]
+},
+{
+"id": "SO_0230",
+"geom": "Line",
+"concepts": [
+"RailwaySidetrackNonElectrifiedNarrowNotIntactL"
+]
+},
+{
+"id": "SO_0231",
+"geom": "Line",
+"concepts": [
+"WallL"
+]
+},
+{
+"id": "SO_0232",
+"geom": "Line",
+"concepts": [
+"FenceL"
+]
+},
+{
+"id": "SO_0233",
+"geom": "Line",
+"concepts": [
+"GeophysicalDataTrackLineL"
+]
+},
+{
+"id": "SO_0234",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandIntermediateGreaterThanZeroL",
+"ElevationContourLandIntermediateL",
+"ElevationContourLandIntermediateMinusL",
+"ElevationContourLandIntermediateZeroL"
+]
+},
+{
+"id": "SO_0235",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandHalfAuxiliaryGreaterThanZeroL",
+"ElevationContourLandHalfAuxiliaryL",
+"ElevationContourLandHalfAuxiliaryMinusL",
+"ElevationContourLandHalfAuxiliaryZeroL"
+]
+},
+{
+"id": "SO_0236",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandIntermediateApproximateL",
+"ElevationContourLandIntermediateGreaterThanZeroApproximateL",
+"ElevationContourLandIntermediateMinusApproximateL",
+"ElevationContourLandIntermediateZeroApproximateL"
+]
+},
+{
+"id": "SO_0237",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandQuarterAuxiliaryGreaterThanZeroL",
+"ElevationContourLandQuarterAuxiliaryL",
+"ElevationContourLandQuarterAuxiliaryMinusL",
+"ElevationContourLandQuarterAuxiliaryZeroL"
+]
+},
+{
+"id": "SO_0238",
+"geom": "Line",
+"concepts": [
+"ElevationContourL",
+"ElevationContourLandIndexGreaterThanZeroL",
+"ElevationContourLandIndexL",
+"ElevationContourLandIndexMinusL",
+"ElevationContourLandIndexZeroL",
+"ElevationContourLandL",
+"EskerL",
+"GeologicFaultL"
+]
+},
+{
+"id": "SO_0239",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandIndexApproximateGreaterThanZeroL",
+"ElevationContourLandIndexApproximateL",
+"ElevationContourLandIndexApproximateMinusL",
+"ElevationContourLandIndexApproximateZeroL"
+]
+},
+{
+"id": "SO_0240",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandMoundIntermediateGreaterThanZeroL",
+"ElevationContourLandMoundIntermediateL",
+"ElevationContourLandMoundIntermediateMinusL",
+"ElevationContourLandMoundIntermediateZeroL"
+]
+},
+{
+"id": "SO_0241",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandMoundIndexGreaterThanZeroL",
+"ElevationContourLandMoundIndexL",
+"ElevationContourLandMoundIndexMinusL",
+"ElevationContourLandMoundIndexZeroL"
+]
+},
+{
+"id": "SO_0242",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandDepressionAuxiliaryGreaterThanZeroL",
+"ElevationContourLandDepressionAuxiliaryL",
+"ElevationContourLandDepressionAuxiliaryMinusL",
+"ElevationContourLandDepressionAuxiliaryZeroL"
+]
+},
+{
+"id": "SO_0243",
+"geom": "Line",
+"concepts": [
+"ElevationContourLandDepressionIntermediateGreaterThanZeroL",
+"ElevationContourLandDepressionIntermediateL",
+"ElevationContourLandDepressionIntermediateMinusL",
+"ElevationContourLandDepressionIntermediateZeroL"
+]
+},
+{
+"id": "SO_0244",
+"geom": "Line",
+"concepts": [
+"DepressionA",
+"ElevationContourLandDepressionIndexGreaterThanZeroL",
+"ElevationContourLandDepressionIndexL",
+"ElevationContourLandDepressionIndexMinusL",
+"ElevationContourLandDepressionIndexZeroL"
+]
+},
+{
+"id": "SO_0245",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceIntermediateApproximateGreaterThanZeroL",
+"ElevationContourSnowIceIntermediateApproximateL",
+"ElevationContourSnowIceIntermediateApproximateMinusL",
+"ElevationContourSnowIceIntermediateApproximateZeroL"
+]
+},
+{
+"id": "SO_0246",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceHalfAuxiliaryGreaterThanZeroL",
+"ElevationContourSnowIceHalfAuxiliaryL",
+"ElevationContourSnowIceHalfAuxiliaryMinusL",
+"ElevationContourSnowIceHalfAuxiliaryZeroL"
+]
+},
+{
+"id": "SO_0247",
+"geom": "Line",
+"concepts": [
+"DepthContourL",
+"DepthCurveL",
+"ElevationContourSnowIceIndexGreaterThanZeroL",
+"ElevationContourSnowIceIndexL",
+"ElevationContourSnowIceIndexMinusL",
+"ElevationContourSnowIceIndexZeroL",
+"ElevationContourSnowL",
+"InlandWatercourseRiverL",
+"InlandWatercourseRiverPerennialL",
+"LandWaterBoundaryL",
+"LandWaterBoundaryNotMangroveNotMarshL",
+"ShorelineL",
+"WaterfallL"
+]
+},
+{
+"id": "SO_0248",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceQuarterAuxiliaryGreaterThanZeroL",
+"ElevationContourSnowIceQuarterAuxiliaryL",
+"ElevationContourSnowIceQuarterAuxiliaryMinusL",
+"ElevationContourSnowIceQuarterAuxiliaryZeroL"
+]
+},
+{
+"id": "SO_0249",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceIndexApproximateGreaterThanZeroL",
+"ElevationContourSnowIceIndexApproximateL",
+"ElevationContourSnowIceIndexApproximateMinusL",
+"ElevationContourSnowIceIndexApproximateZeroL"
+]
+},
+{
+"id": "SO_0250",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceMoundIntermediateGreaterThanZeroL",
+"ElevationContourSnowIceMoundIntermediateL",
+"ElevationContourSnowIceMoundIntermediateMinusL",
+"ElevationContourSnowIceMoundIntermediateZeroL"
+]
+},
+{
+"id": "SO_0251",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceMoundIndexGreaterThanZeroL",
+"ElevationContourSnowIceMoundIndexL",
+"ElevationContourSnowIceMoundIndexMinusL",
+"ElevationContourSnowIceMoundIndexZeroL"
+]
+},
+{
+"id": "SO_0252",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceDepressionAuxiliaryGreaterThanZeroL",
+"ElevationContourSnowIceDepressionAuxiliaryL",
+"ElevationContourSnowIceDepressionAuxiliaryMinusL",
+"ElevationContourSnowIceDepressionAuxiliaryZeroL"
+]
+},
+{
+"id": "SO_0253",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceDepressionIndexGreaterThanZeroL",
+"ElevationContourSnowIceDepressionIndexL",
+"ElevationContourSnowIceDepressionIndexMinusL",
+"ElevationContourSnowIceDepressionIndexZeroL"
+]
+},
+{
+"id": "SO_0254",
+"geom": "Line",
+"concepts": [
+"ElevationContourSnowIceDepressionIntermediateGreaterThanZeroL",
+"ElevationContourSnowIceDepressionIntermediateL",
+"ElevationContourSnowIceDepressionIntermediateMinusL",
+"ElevationContourSnowIceDepressionIntermediateZeroL"
+]
+},
+{
+"id": "SO_0255",
+"geom": "Line",
+"concepts": [
+"RoadFairWeatherIntactL",
+"RoadStreetIntactL"
+]
+},
+{
+"id": "SO_0256",
+"geom": "Line",
+"concepts": [
+"RoadMedianConstructionNotIntactL",
+"RoadMedianDamagedNotIntactL",
+"RoadMedianNotIntactL"
+]
+},
+{
+"id": "SO_0257",
+"geom": "Line",
+"concepts": [
+"RoadFairWeatherClosedInWinterIntactL",
+"RoadNoMedianConstructionNotIntactL",
+"RoadNoMedianDamagedNotIntactL",
+"RoadNoMedianNotIntactL",
+"RoadNotIntactL"
+]
+},
+{
+"id": "SO_0258",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherHardSurfaceNoMedianThreeLanesClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianThreeLanesIntactL",
+"RoadAllWeatherHardSurfaceNoMedianThreeLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianThreeLanesPrimaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoLanesClosedInWinterL",
+"RoadAllWeatherHardSurfaceNoMedianTwoLanesIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoLanesPrimaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoOrThreeLanesIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoOrThreeLanesPrimaryIntactL",
+"RoadTwoOrThreeLanesIntactL"
+]
+},
+{
+"id": "SO_0259",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherLooseSurfaceNoMedianOneLaneClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianOneLaneSecondaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianOneLaneSecondaryIntactL"
+]
+},
+{
+"id": "SO_0260",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherLooseSurfaceNoMedianThreeLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianThreeLanesSecondaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoLanesSecondaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoOrThreeLanesIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoOrThreeLanesSecondaryIntactL"
+]
+},
+{
+"id": "SO_0261",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherHardSurfaceNoMedianFourLanesClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianFourLanesIntactL",
+"RoadAllWeatherHardSurfaceNoMedianFourLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianFourLanesPrimaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanFourLanesClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanFourLanesIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanFourLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanOrEqualToFourLanesIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanOrEqualToFourLanesPrimaryIntactL",
+"RoadGreaterThanOrEqualToFourLanesIntactL"
+]
+},
+{
+"id": "SO_0262",
+"geom": "Line",
+"concepts": [
+"RoadDividedVeryWideMedianGreaterThanFourLanesClosedInWinterIntactL",
+"RoadDividedVeryWideMedianGreaterThanFourLanesIntactL",
+"RoadDividedVeryWideMedianLessThanOrEqualToFourLanesClosedInWinterIntactL"
+]
+},
+{
+"id": "SO_0264",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherLooseSurfaceNoMedianFourLanesClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianFourLanesIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianFourLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianFourLanesPrimaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanFourLanesClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanFourLanesIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanFourLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanFourLanesPrimaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanOrEqualToFourLanesIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanOrEqualToFourLanesPrimaryIntactL"
+]
+},
+{
+"id": "SO_0265",
+"geom": "Line",
+"concepts": [
+"LandTransportationWayL",
+"RoadAllWeatherHardSurfaceIntactL",
+"RoadAllWeatherHardSurfaceNoMedianOneLaneClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianOneLaneIntactL",
+"RoadAllWeatherHardSurfaceNoMedianOneLanePrimaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianOneLanePrimaryIntactL",
+"RoadIntactL",
+"RoadL",
+"RoadOneLaneIntactL"
+]
+},
+{
+"id": "SO_0266",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherHardSurfaceNoMedianThreeLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianThreeLanesSecondaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoLanesSecondaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianTwoOrThreeLanesSecondaryIntactL"
+]
+},
+{
+"id": "SO_0267",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherHardSurfaceNoMedianOneLaneNonPrimaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianOneLaneSecondaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianSecondaryIntactL"
+]
+},
+{
+"id": "SO_0268",
+"geom": "Line",
+"concepts": [
+"RoadDividedNarrowMedianGreaterThanFourLanesIntactL",
+"RoadDividedNarrowMedianGreaterThanFourLanesIntactL",
+"RoadDividedNarrowMedianIntactL",
+"RoadDividedNarrowMedianLessThanOrEqualToFourLanesIntactL",
+"RoadDividedNarrowMedianLessThanOrEqualToFourLanesIntactL"
+]
+},
+{
+"id": "SO_0269",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherLooseSurfaceIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianOneLaneIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianOneLanePrimaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianOneLanePrimaryIntactL"
+]
+},
+{
+"id": "SO_0270",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherLooseSurfaceNoMedianThreeLanesClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianThreeLanesIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianThreeLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianThreeLanesPrimaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoLanesClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoLanesIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoLanesPrimaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoLanesPrimaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianTwoOrThreeLanesPrimaryIntactL"
+]
+},
+{
+"id": "SO_0271",
+"geom": "Line",
+"concepts": [
+"RoadDividedWideMedianGreaterThanFourLanesIntactL",
+"RoadDividedWideMedianGreaterThanFourLanesIntactL",
+"RoadDividedWideMedianIntactL",
+"RoadDividedWideMedianLessThanOrEqualToFourLanesIntactL",
+"RoadDividedWideMedianLessThanOrEqualToFourLanesIntactL"
+]
+},
+{
+"id": "SO_0272",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherLooseSurfaceNoMedianFourLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianFourLanesSecondaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanFourLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanFourLanesSecondaryIntactL",
+"RoadAllWeatherLooseSurfaceNoMedianGreaterThanOrEqualToFourLanesSecondaryIntactL"
+]
+},
+{
+"id": "SO_0273",
+"geom": "Line",
+"concepts": [
+"RoadAllWeatherHardSurfaceNoMedianFourLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianFourLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianFourLanesSecondaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanFourLanesSecondaryClosedInWinterIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanFourLanesSecondaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanOrEqualToFourLanesPrimaryIntactL",
+"RoadAllWeatherHardSurfaceNoMedianGreaterThanOrEqualToFourLanesSecondaryIntactL"
+]
+},
+{
+"id": "SO_0274",
+"geom": "Point",
+"concepts": [
+"TransportationRouteProtectionStructureL"
+]
+},
+{
+"id": "SO_0275",
+"geom": "Line",
+"concepts": [
+"LandAerodromeA"
+]
+},
+{
+"id": "SO_0276",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0277",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0278",
+"geom": "Area",
+"concepts": [
+"AqueductA",
+"AqueductElevatedIntactA",
+"AqueductIntactA",
+"AqueductOnSurfaceOnGroundIntactA",
+"AqueductUndergroundIntactA",
+"AqueductUndergroundWithQanatShaftsIntactA",
+"CanalA",
+"CanalPerennialElevatedIntactA",
+"CanalPerennialIntactA",
+"CanalPerennialOnGroundIntactA",
+"CanalPerennialUndergroundIntactA",
+"InlandWaterbodyA",
+"InlandWatercourseDitchA",
+"InlandWatercourseDitchPerennialA",
+"LakeA",
+"LakeDryA",
+"LakePerennialA",
+"LakePerennialFreshA",
+"LakePerennialSaltA",
+"RiverA",
+"RiverPerennialA"
+]
+},
+{
+"id": "SO_0279",
+"geom": "Area",
+"concepts": [
+"AqueductElevatedNotIntactA",
+"AqueductNotIntactA",
+"AqueductOnSurfaceOnGroundNotIntactA",
+"AqueductUndergroundNotIntactA",
+"AqueductUndergroundWithoutQanatShaftsIntactA",
+"AqueductUndergroundWithoutQanatShaftsNotIntactA",
+"CanalElevatedNotIntactA",
+"CanalNotIntactA",
+"CanalOnGroundNotIntactA",
+"CanalUndergroundNotIntactA"
+]
+},
+{
+"id": "SO_0280",
+"geom": "Line",
+"concepts": [
+"AqueductElevatedIntactL",
+"AqueductElevatedNotIntactL",
+"AqueductIntactL",
+"AqueductL",
+"AqueductNotIntactL",
+"AqueductOnSurfaceOnGroundIntactL",
+"FlumeAboveSurfaceL",
+"FlumeL",
+"FlumeOnSurfaceL",
+"PenstockAboveSurfaceL",
+"PenstockL",
+"PenstockOnSurfaceL",
+"WaterRaceAboveSurfaceL",
+"WaterRaceL",
+"WaterRaceOnSurfaceL"
+]
+},
+{
+"id": "SO_0282",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0283",
+"geom": "Line",
+"concepts": [
+"AqueductOnSurfaceOnGroundNotIntactL",
+"AqueductUndergroundIntactL",
+"AqueductUndergroundNotIntactL",
+"AqueductUndergroundWithoutQanatShaftsIntactL",
+"AqueductUndergroundWithoutQanatShaftsNotIntactL",
+"FlumeBelowSurfaceL",
+"PenstockBelowGroundSurfaceL",
+"WaterRaceBelowSurfaceL"
+]
+},
+{
+"id": "SO_0284",
+"geom": "Line",
+"concepts": [
+"LandWaterBoundaryMangroveMarshL",
+"RiverDryL",
+"RiverIntermittentDryL",
+"RiverIntermittentL"
+]
+},
+{
+"id": "SO_0285",
+"geom": "Line",
+"concepts": [
+"CanalDryL",
+"CanalElevatedNotIntactL",
+"CanalIntermittentDryNotIntactL",
+"CanalIntermittentDryUndergroundIntactL",
+"CanalIntermittentL",
+"CanalNotIntactL",
+"CanalOnGroundNotIntactL",
+"CanalUndergroundNotIntactL"
+]
+},
+{
+"id": "SO_0286",
+"geom": "Line",
+"concepts": [
+"AqueductUndergroundWithQanatShaftsL"
+]
+},
+{
+"id": "SO_0287",
+"geom": "Line",
+"concepts": [
+"CanalIntermittentDryElevatedIntactL",
+"CanalIntermittentDryOnGroundIntactL",
+"CanalL",
+"CanalPerennialElevatedIntactL",
+"CanalPerennialL",
+"CanalPerennialOnGroundIntactL",
+"CanalPerennialUndergroundIntactL",
+"MoatL",
+"MoatPerennialL"
+]
+},
+{
+"id": "SO_0288",
+"geom": "Area",
+"concepts": [
+"ReservoirA",
+"ReservoirIntactA",
+"ReservoirPerennialIntactA",
+"SettlingPondA",
+"SpaP",
+"SwimmingPoolA",
+"SwimmingPoolP",
+"WaterTreatmentBedA",
+"WaterTreatmentBedA"
+]
+},
+{
+"id": "SO_0289",
+"geom": "Area",
+"concepts": [
+"MoatDryA",
+"MoatIntermittentA",
+"MoatIntermittentDryA"
+]
+},
+{
+"id": "SO_0290",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0291",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0292",
+"geom": "Area",
+"concepts": [
+"ReservoirDryIntactA",
+"ReservoirIntermittentIntactA",
+"ReservoirIntermittentOrDryIntactA"
+]
+},
+{
+"id": "SO_0293",
+"geom": "Area",
+"concepts": [
+"ReservoirDryNotIntactA",
+"ReservoirIntermittentNotIntactA",
+"ReservoirIntermittentOrDryNotIntactA",
+"ReservoirNotIntactA"
+]
+},
+{
+"id": "SO_0294",
+"geom": "Area",
+"concepts": [
+"InundatedLandA",
+"LandSubjectToInundationA",
+"LandSubjectToInundationControlledA"
+]
+},
+{
+"id": "SO_0295",
+"geom": "Area",
+"concepts": [
+"LandSubjectToInundationNotControlledA"
+]
+},
+{
+"id": "SO_0296",
+"geom": "Point",
+"concepts": [
+"NaturalPoolP",
+"NaturalPoolPerennialP"
+]
+},
+{
+"id": "SO_0297",
+"geom": "Point",
+"concepts": [
+"NaturalPoolDryP",
+"NaturalPoolIntermittentDryP",
+"NaturalPoolIntermittentP"
+]
+},
+{
+"id": "SO_0298",
+"geom": "Area",
+"concepts": [
+"RapidsA",
+"WaterTurbulenceA"
+]
+},
+{
+"id": "SO_0299",
+"geom": "Line",
+"concepts": [
+"RapidsL"
+]
+},
+{
+"id": "SO_0300",
+"geom": "Point",
+"concepts": [
+"RapidsP"
+]
+},
+{
+"id": "SO_0301",
+"geom": "Area",
+"concepts": [
+"RiceFieldA"
+]
+},
+{
+"id": "SO_0302",
+"geom": "Area",
+"concepts": [
+"CanalDryIntactA",
+"CanalIntermittentDryElevatedIntactA",
+"CanalIntermittentDryIntactA",
+"CanalIntermittentDryUndergroundIntactA",
+"CanalIntermittentIntactA",
+"CanalOnGroundIntermittentDryIntactA",
+"InlandWatercourseDitchDryA",
+"InlandWatercourseDitchIntermittentA",
+"InlandWatercourseDitchIntermittentDryA",
+"RiverDryA",
+"RiverIntermittentA",
+"RiverIntermittentDryA"
+]
+},
+{
+"id": "SO_0303",
+"geom": "Point",
+"concepts": [
+"VanishingPointDisappearingP",
+"VanishingPointP"
+]
+},
+{
+"id": "SO_0304",
+"geom": "Point",
+"concepts": [
+"VanishingPointDissipatingP"
+]
+},
+{
+"id": "SO_0306",
+"geom": "Point",
+"concepts": [
+"WaterfallP"
+]
+},
+{
+"id": "SO_0307",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0308",
+"geom": "Line",
+"concepts": [
+"ParticleAcceleratorL"
+]
+},
+{
+"id": "SO_0309",
+"geom": "Line",
+"concepts": [
+"ShorelineConstructionBreakWaterDryL",
+"ShorelineConstructionBreakWaterL",
+"ShorelineConstructionDryL",
+"ShorelineConstructionGroinDryL",
+"ShorelineConstructionGroinL",
+"ShorelineConstructionL",
+"ShorelineConstructionRecreationalPierL",
+"ShorelineConstructionSeawallL",
+"ShorelineConstructionTrainingWallL",
+"ShorelineRampDryL",
+"ShorelineRampL",
+"SluiceGateL",
+"WaterGateL"
+]
+},
+{
+"id": "SO_0310",
+"geom": "Line",
+"concepts": [
+"SpillwayL"
+]
+},
+{
+"id": "SO_0311",
+"geom": "Point",
+"concepts": [
+"InlandWaterbodyP"
+]
+},
+{
+"id": "SO_0312",
+"geom": "Area",
+"concepts": [
+"GlacierA",
+"IceShelfA"
+]
+},
+{
+"id": "SO_0313",
+"geom": "Line",
+"concepts": [
+"IceCliffL"
+]
+},
+{
+"id": "SO_0314",
+"geom": "Point",
+"concepts": [
+"IcePeakFrozenWaterP",
+"IcePeakP"
+]
+},
+{
+"id": "SO_0315",
+"geom": "Point",
+"concepts": [
+"IcePeakNonFrozenWaterP"
+]
+},
+{
+"id": "SO_0316",
+"geom": "Area",
+"concepts": [
+"IceCapA",
+"PackIceA",
+"PermanentSnowIceA",
+"PolarIceA"
+]
+},
+{
+"id": "SO_0317",
+"geom": "Area",
+"concepts": [
+"GeoThermalOutletA"
+]
+},
+{
+"id": "SO_0318",
+"geom": "Point",
+"concepts": [
+"GeoThermalOutletP"
+]
+},
+{
+"id": "SO_0319",
+"geom": "Point",
+"concepts": [
+"VolcanoP"
+]
+},
+{
+"id": "SO_0320",
+"geom": "Area",
+"concepts": [
+"CrevasseA"
+]
+},
+{
+"id": "SO_0321",
+"geom": "Point",
+"concepts": [
+"CastleComplexA",
+"CastleNonObstructionIntactP",
+"CastleNonObstructionNotIntactP",
+"CastleNonObstructionP",
+"CastleP"
+]
+},
+{
+"id": "SO_0323",
+"geom": "Area",
+"concepts": [
+"MilitaryInstallationA",
+"MilitaryInstallationIntactA",
+"MilitaryInstallationNotIntactA"
+]
+},
+{
+"id": "SO_0325",
+"geom": "Point",
+"concepts": [
+"DefensiveRevetmentP"
+]
+},
+{
+"id": "SO_0326",
+"geom": "Area",
+"concepts": [
+"DragonsTeethA"
+]
+},
+{
+"id": "SO_0327",
+"geom": "Line",
+"concepts": [
+"DragonsTeethL"
+]
+},
+{
+"id": "SO_0328",
+"geom": "Area",
+"concepts": [
+"AmphitheatreA",
+"AmphitheatreIntactA",
+"AmphitheatreNonObstructionA",
+"AmphitheatreNonObstructionIntactA",
+"AmphitheatreNonObstructionNotIntactA",
+"AmphitheatreNotIntactA",
+"DryDockA",
+"DryDockIntactA",
+"DryDockNotIntactA",
+"EngineeredEarthworkNotTrenchOrParapetA",
+"EngineeredEarthworkRevetmentA",
+"FloatingDryDockA",
+"FloatingDryDockP",
+"FloodControlStructureA",
+"MilitaryParapetA",
+"MilitaryTrenchA"
+]
+},
+{
+"id": "SO_0329",
+"geom": "Line",
+"concepts": [
+"EngineeredEarthworkNotTrenchOrParapetL",
+"EngineeredEarthworkRevetmentL",
+"InlandWaterbodyMoatIntermittentL",
+"MilitaryParapetL",
+"MilitaryTrenchL",
+"MoatDryL",
+"MoatIntermittentDryL"
+]
+},
+{
+"id": "SO_0330",
+"geom": "Point",
+"concepts": [
+"SurfaceBunkerP"
+]
+},
+{
+"id": "SO_0331",
+"geom": "Point",
+"concepts": [
+"UndergroundBunkerP"
+]
+},
+{
+"id": "SO_0332",
+"geom": "Point",
+"concepts": [
+"RoadRouteMarkerP"
+]
+},
+{
+"id": "SO_0333",
+"geom": "Point",
+"concepts": [
+"RoadRouteMarkerInternationalP"
+]
+},
+{
+"id": "SO_0334",
+"geom": "Point",
+"concepts": [
+"RoadRouteMarkerLocalsecondaryP"
+]
+},
+{
+"id": "SO_0335",
+"geom": "Point",
+"concepts": [
+"RoadRouteMarkerNationalP"
+]
+},
+{
+"id": "SO_0336",
+"geom": "Point",
+"concepts": [
+"RoadRouteMarkerNationalMotorwayP"
+]
+},
+{
+"id": "SO_0337",
+"geom": "Point",
+"concepts": [
+"RoadRouteMarkerNationalMotorwayUSAP",
+"RoadRouteMarkerNationalUSAP"
+]
+},
+{
+"id": "SO_0339",
+"geom": "Area",
+"concepts": [
+"BerthA",
+"ShorelineConstructionBreakWaterNotDryA",
+"ShorelineConstructionGroinNotDryA",
+"ShorelineConstructionNotDryA",
+"ShorelineRampNotDryA",
+"SlipwayNotDryA"
+]
+},
+{
+"id": "SO_0343",
+"geom": "Point",
+"concepts": [
+"HazardousRockAlwaysSubmergedP",
+"HazardousRockNotAlwaysSubmergedP",
+"HazardousRockP",
+"ReefExposedP",
+"ReefP"
+]
+},
+{
+"id": "SO_0344",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0345",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0346",
+"geom": "Area",
+"concepts": [
+"AquaticVegetationA"
+]
+},
+{
+"id": "SO_0347",
+"geom": "Area",
+"concepts": [
+"ReefA",
+"ReefExposedA"
+]
+},
+{
+"id": "SO_0348",
+"geom": "Line",
+"concepts": [
+"ReefExposedL",
+"ReefL"
+]
+},
+{
+"id": "SO_0349",
+"geom": "Area",
+"concepts": [
+"TidalWaterA"
+]
+},
+{
+"id": "SO_0350",
+"geom": "Point",
+"concepts": [
+"OasisP"
+]
+},
+{
+"id": "SO_0351",
+"geom": "Area",
+"concepts": [
+"SabkhaA"
+]
+},
+{
+"id": "SO_0353",
+"geom": "Area",
+"concepts": [
+"BeachA",
+"BeachSandA",
+"SandDunesA",
+"SandDunesUnknownA"
+]
+},
+{
+"id": "SO_0354",
+"geom": "Area",
+"concepts": [
+"SandDunesCrescentA"
+]
+},
+{
+"id": "SO_0355",
+"geom": "Area",
+"concepts": [
+"SandDunesDomeA"
+]
+},
+{
+"id": "SO_0356",
+"geom": "Area",
+"concepts": [
+"SandDunesLinearA"
+]
+},
+{
+"id": "SO_0357",
+"geom": "Area",
+"concepts": [
+"SandDunesRippleA"
+]
+},
+{
+"id": "SO_0358",
+"geom": "Area",
+"concepts": [
+"SandDunesStarA"
+]
+},
+{
+"id": "SO_0359",
+"geom": "Area",
+"concepts": [
+"SandDunesTransverseA"
+]
+},
+{
+"id": "SO_0361",
+"geom": "Area",
+"concepts": [
+"AsphaltLakeA"
+]
+},
+{
+"id": "SO_0364",
+"geom": "Point",
+"concepts": [
+"RockFormationP"
+]
+},
+{
+"id": "SO_0365",
+"geom": "Area",
+"concepts": [
+"DistortedSurfaceBouldersA",
+"DistortedSurfaceLavaA",
+"DistortedSurfaceRockyA",
+"LandslideMassA",
+"SoilSurfaceRegionNumerousOtherA"
+]
+},
+{
+"id": "SO_0366",
+"geom": "Area",
+"concepts": [
+"BeachPebbleA",
+"GravelA",
+"MoraineA"
+]
+},
+{
+"id": "SO_0368",
+"geom": "Point",
+"concepts": [
+"CaveMouthP",
+"MountainPassP"
+]
+},
+{
+"id": "SO_0369",
+"geom": "Point",
+"concepts": [
+"MountainPassP"
+]
+},
+{
+"id": "SO_0370",
+"geom": "Area",
+"concepts": [
+"CreviceA"
+]
+},
+{
+"id": "SO_0371",
+"geom": "Line",
+"concepts": [
+"ShearWallL",
+"SteepTerrainFaceGreaterThanOrEqualContourL",
+"SteepTerrainFaceL",
+"SteepTerrainFaceLessThanContourIntervalL"
+]
+},
+{
+"id": "SO_0372",
+"geom": "Line",
+"concepts": [
+"CreviceL"
+]
+},
+{
+"id": "SO_0373",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0374",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0375",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0376",
+"geom": "Line",
+"concepts": [
+"CutL"
+]
+},
+{
+"id": "SO_0377",
+"geom": "Line",
+"concepts": [
+"CutLineGreaterThanOrEqualToContourIntervalL",
+"CutLineL",
+"CutLineLessThanContourIntervalL"
+]
+},
+{
+"id": "SO_0378",
+"geom": "Area",
+"concepts": [
+"AnchorageA"
+]
+},
+{
+"id": "SO_0379",
+"geom": "Point",
+"concepts": [
+"AnchorageP",
+"AnchorP"
+]
+},
+{
+"id": "SO_0380",
+"geom": "Area",
+"concepts": [
+"EmbankmentA",
+"EmbankmentFillA",
+"EmbankmentWithoutTransportationA",
+"EmbankmentWithTransportationA"
+]
+},
+{
+"id": "SO_0381",
+"geom": "Line",
+"concepts": [
+"EmbankmentNonFillWithTransportationL"
+]
+},
+{
+"id": "SO_0382",
+"geom": "Line",
+"concepts": [
+"EmbankmentFillWithoutTransportationL",
+"EmbankmentL",
+"EmbankmentNonFillWithoutTransportationL"
+]
+},
+{
+"id": "SO_0383",
+"geom": "Line",
+"concepts": [
+"EmbankmentFillWithoutTransportationL"
+]
+},
+{
+"id": "SO_0384",
+"geom": "Area",
+"concepts": [
+"PublicSquareA"
+]
+},
+{
+"id": "SO_0385",
+"geom": "Area",
+"concepts": [
+"BuiltUpAreaA",
+"BuiltUpAreaDenseIntactA",
+"BuiltUpAreaIntactA"
+]
+},
+{
+"id": "SO_0386",
+"geom": "Area",
+"concepts": [
+"BuiltUpAreaDestroyedA",
+"BuiltUpAreaNotIntactA"
+]
+},
+{
+"id": "SO_0387",
+"geom": "Area",
+"concepts": [
+"BuiltUpAreaModerateIntactA",
+"BuiltUpAreaSparseIntactA",
+"BuiltUpAreaSparseOrModerateIntactA"
+]
+},
+{
+"id": "SO_0388",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0390",
+"geom": "Area",
+"concepts": [
+"ShantyTownA"
+]
+},
+{
+"id": "SO_0391",
+"geom": "Area",
+"concepts": [
+"ConservationAreaWorldHeritageSiteA"
+]
+},
+{
+"id": "SO_0392",
+"geom": "Point",
+"concepts": [
+"ConservationAreaWorldHeritageSiteP"
+]
+},
+{
+"id": "SO_0393",
+"geom": "Point",
+"concepts": [
+"OffshoreConstructionNonObstructionP",
+"OffshoreConstructionNonPlatformNonObstructionP",
+"OffshoreConstructionP",
+"OffshoreConstructionPlatformNonObstructionP"
+]
+},
+{
+"id": "SO_0394",
+"geom": "Point",
+"concepts": [
+"BoundaryMonumentP"
+]
+},
+{
+"id": "SO_0395",
+"geom": "Line",
+"concepts": [
+"ConservationAreaP"
+]
+},
+{
+"id": "SO_0397",
+"geom": "Area",
+"concepts": [
+"CroplandIrrigatedCropsA",
+"CroplandIrrigatedCropsNotTerracedA",
+"CroplandIrrigatedCropsTerracedA"
+]
+},
+{
+"id": "SO_0398",
+"geom": "Line",
+"concepts": [
+"LeaderLineAeroBlueL"
+]
+},
+{
+"id": "SO_0399",
+"geom": "Line",
+"concepts": [
+"LeaderLineBlackL",
+"LeaderLineL"
+]
+},
+{
+"id": "SO_0400",
+"geom": "Line",
+"concepts": [
+"FishLadderL",
+"MoatA",
+"MoatPerennialA"
+]
+},
+{
+"id": "SO_0401",
+"geom": "Point",
+"concepts": [
+"DolphinP",
+"SnagExposedP",
+"SnagNonexposedP",
+"SnagP",
+"StructuralPileP"
+]
+},
+{
+"id": "SO_0402",
+"geom": "Area",
+"concepts": [
+"VehicleLotA",
+"VehicleLotgeneralAutomotiveA"
+]
+},
+{
+"id": "SO_0403",
+"geom": "Point",
+"concepts": [
+"PylonP"
+]
+},
+{
+"id": "SO_0404",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0405",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0407",
+"geom": "Line",
+"concepts": [
+"CableL",
+"CableNonObstructionL",
+"CableNotCommunicationNonObstructionL",
+"CableNotKnownNonObstructionL"
+]
+},
+{
+"id": "SO_0408",
+"geom": "Line",
+"concepts": [
+"CrevasseL"
+]
+},
+{
+"id": "SO_0414",
+"geom": "Point",
+"concepts": [
+"SpotElevationNotWaterLandHighestOnSheetP",
+"SpotElevationNotWaterLandNormalP",
+"SpotElevationNotWaterP",
+"SpotElevationNotWaterSnowIceHighestOnSheetP",
+"SpotElevationNotWaterSnowIceNormalP",
+"SpotElevationP",
+"SurveyPointNonGeodeticBenchmarkHighestP",
+"SurveyPointNonGeodeticBenchmarkNormalP",
+"SurveyPointNonGeodeticKnownHighestP",
+"SurveyPointNonGeodeticKnownNormalP",
+"SurveyPointNonGeodeticP",
+"SurveyPointNonGeodeticUnknownHighestP",
+"SurveyPointNonGeodeticUnknownNormalP",
+"SurveyPointP"
+]
+},
+{
+"id": "SO_0415",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0416",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0500",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0501",
+"geom": "Line",
+"concepts": [
+"InternationalDateLineL"
+]
+},
+{
+"id": "SO_0502",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0503",
+"geom": "Line",
+"concepts": [
+"ForestClearingA"
+]
+},
+{
+"id": "SO_0504",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0600",
+"geom": "Point",
+"concepts": [
+"AerialNonObstructionP",
+"AerialP",
+"TowerCommunicationNonObstructionP"
+]
+},
+{
+"id": "SO_0601",
+"geom": "Point",
+"concepts": [
+"CoolingTowerNonObstructionIntactP",
+"CoolingTowerNonObstructionNotIntactP",
+"CoolingTowerNonObstructionP",
+"CoolingTowerP",
+"DishAerialNonObstructionP",
+"DishAerialP",
+"FlarePipeNonObstructionP",
+"FlarePipeOffshoreNonObstructionP",
+"FlarePipeOnshoreNonObstructionP",
+"FlarePipeP",
+"LighthouseNonObstructionIntactP",
+"LighthouseNonObstructionNotIntactP",
+"LighthouseNonObstructionP",
+"LighthouseP",
+"SmokestackNonObstructionP",
+"SmokestackP",
+"TowerLightNonObstructionP",
+"TowerNonObstructionP",
+"TowerOtherP",
+"TowerP",
+"WaterIntakeTowerNonObstructionP",
+"WaterIntakeTowerP",
+"WindTurbineNonObstructionP",
+"WindTurbineOnshoreNonObstructionP",
+"WindTurbineP"
+]
+},
+{
+"id": "SO_0602",
+"geom": "Point",
+"concepts": [
+"StorageTankWaterTowerNonObstructionIntactP",
+"TowerWaterNonObstructionP",
+"TowerWaterTowerNonObstructionP",
+"TowerWaterTowerP"
+]
+},
+{
+"id": "SO_0603",
+"geom": "Area",
+"concepts": [
+"WaterAerodromeA",
+"WaterAerodromeIntactA",
+"WaterAerodromeNotIntactA"
+]
+},
+{
+"id": "SO_0604",
+"geom": "Point",
+"concepts": [
+"WindmillNonObstructionIntactP",
+"WindmillNonObstructionNotIntactP",
+"WindmillNonObstructionP",
+"WindmillP"
+]
+},
+{
+"id": "SO_0605",
+"geom": "Area",
+"concepts": [
+"GreenhouseA"
+]
+},
+{
+"id": "SO_0606",
+"geom": "Line",
+"concepts": [
+"ForestWoodL"
+]
+},
+{
+"id": "SO_0607",
+"geom": "Point",
+"concepts": [
+"ForestWoodOtherP",
+"TreeDeciduousP",
+"TreeEvergreenP",
+"TreeLandmarkP",
+"TreeP"
+]
+},
+{
+"id": "SO_0609",
+"geom": "Point",
+"concepts": [
+"BasinGateKnownP",
+"BasinGateP",
+"BasinGateUnknownP",
+"BridgeFixedNonPedestrianIntactP",
+"BridgeFixedNonPedestrianNotIntactP",
+"BridgeFixedNonPedestrianP",
+"BridgeIntactP",
+"BridgeNonFixedNonPedestrianIntactP",
+"BridgeNonFixedNonPedestrianP",
+"BridgeNotIntactP",
+"BridgeP",
+"BridgePedestrianIntactP",
+"CulvertP",
+"DamHardNoTransportationIntactP",
+"DamHardNoTransportationNotIntactP",
+"DamHardNoTransportationP",
+"DamHardP",
+"DamHardTransportationIntactP",
+"DamHardTransportationNotIntactP",
+"DamP",
+"DamTransportationHardP",
+"FishWeirP",
+"GateBorderCrossingP",
+"GateP",
+"LockP",
+"PontoonP",
+"SluiceGateP",
+"WaterGateP"
+]
+},
+{
+"id": "SO_0610",
+"geom": "Line",
+"concepts": [
+"BridgeFixedNonPedestrianIntactNonObstructionL",
+"BridgeFixedNonPedestrianL",
+"BridgeFixedNonPedestrianNotIntactL",
+"BridgeIntactL",
+"BridgeL",
+"BridgeNonFixedNonPedestrianL",
+"BridgeNonFixedNonPedestrianNotIntactL",
+"BridgeNotIntactL",
+"BridgespanIntactL",
+"BridgeSpanL"
+]
+},
+{
+"id": "SO_0611",
+"geom": "Line",
+"concepts": [
+"BridgeFixedNonPedestrianIntactNonObstructionL",
+"BridgeFixedNonPedestrianL",
+"BridgeFixedNonPedestrianNotIntactL",
+"BridgeIntactL",
+"BridgeL",
+"BridgeNonFixedNonPedestrianIntactL",
+"BridgeNonFixedNonPedestrianL",
+"BridgeNonFixedNonPedestrianNotIntactL",
+"BridgeNotIntactL",
+"BridgePedestrianIntactL",
+"BridgespanNotIntactL",
+"PontoonA"
+]
+},
+{
+"id": "SO_0613",
+"geom": "Line",
+"concepts": [
+"TunnelInlandWaterwayNarrowIntactL",
+"TunnelInlandWaterwayNarrowL",
+"TunnelInlandWaterwayNarrowNotIntactL",
+"TunnelInlandWaterwayWideIntactL",
+"TunnelInlandWaterwayWideL",
+"TunnelInlandWaterwayWideNotIntactL"
+]
+},
+{
+"id": "SO_0614",
+"geom": "Area",
+"concepts": [
+"AnchorageA",
+"CampSiteA",
+"CemeteryA",
+"CemeteryBuddhismA",
+"CemeteryChristianA",
+"CemeteryHinduA",
+"CemeteryIslamA",
+"CemeteryJudaismA",
+"CemeteryOtherA",
+"CemeteryShintoA",
+"ExtractionMineA",
+"ExtractionMineNotPeatIntactA",
+"ExtractionMineNotPeatNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownNamedIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownNamedNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownUnnamedIntactA",
+"ExtractionMineProductKnownNotPeatTypeKnownUnnamedNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownNamedIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownNamedNotIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownUnnamedIntactA",
+"ExtractionMineProductKnownNotPeatTypeUnknownUnnamedNotIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownNamedIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownNamedNotIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownUnnamedIntactA",
+"ExtractionMineProductUnknownNotPeatTypeKnownUnnamedNotIntactA",
+"ExtractionMineProductUnknownNotPeatTypeUnknownNamedIntactA",
+"ExtractionMineProductUnknownNotPeatTypeUnknownNamedNotIntactA",
+"FortificationA",
+"FortificationNonObstructionA",
+"FortificationNonObstructionIntactA",
+"FortificationNonObstructionNotIntactA",
+"PowerSubstationA",
+"PowerSubstationIntactA",
+"PowerSubstationNotIntactA",
+"QuarryA",
+"QuarryIntactA",
+"QuarryNotIntactA",
+"QuarryProductKnownNamedIntactA",
+"QuarryProductKnownNamedNotIntactA",
+"QuarryProductKnownUnnamedIntactA",
+"QuarryProductKnownUnnamedNotIntactA",
+"QuarryProductUnknownIntactNamedA",
+"QuarryProductUnknownNamedNotIntactA",
+"QuarryProductUnknownUnnamedIntactA",
+"QuarryProductUnknownUnnamedNotIntactA",
+"TombBuddhismA",
+"TombChristianA",
+"TombIslamA",
+"TombJudaismA",
+"TombOtherA",
+"TombShintoA",
+"VehicleLotA",
+"VehicleLotgeneralAutomotiveA"
+]
+},
+{
+"id": "SO_0615",
+"geom": "Area",
+"concepts": [
+"DiplomaticNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0617",
+"geom": "Area",
+"concepts": [
+"HealthOfficeNonObstructionIntactA",
+"HeathCareNonObstructionIntactA",
+"HospitalNonObstructionIntactA",
+"HospitalNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0618",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0619",
+"geom": "Area",
+"concepts": [
+"ChristianCathedralNonObstructionIntactA",
+"ChristianChapelNonObstructionIntactA",
+"ChristianChurchNonObstructionIntactA",
+"ChristianConventNonObstructionIntactA",
+"ChristianHermitageNonObstructionIntactA",
+"ChristianMissionNonObstructionIntactA",
+"ChristianMonasteryNonObstructionIntactA",
+"ChristianNovitiateNonObstructionIntactA",
+"ChristianReligiousCommunityNonObstructionIntactA",
+"ChristianRetreatNonObstructionIntactA",
+"ChristianSeminaryNonObstructionIntactA",
+"ChristianShrineNonObstructionIntactA",
+"ChristianShrineNonObstructionIntactA",
+"ChristianTabernacleNonObstructionIntactA",
+"ChristianTempleNonObstructionIntactA",
+"ChristianUnknownBuildingNonObstructionIntactA",
+"HouseofWorshipChristianChurchNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0620",
+"geom": "Area",
+"concepts": [
+"HouseofWorshipIslamMosqueNonObstructionIntactA",
+"IslamicHermitageNonObstructionIntactA",
+"IslamicMaraboutNonObstructionIntactA",
+"IslamicMinaretNonObstructionIntactA",
+"IslamicMissionNonObstructionIntactA",
+"IslamicMonasteryNonObstructionIntactA",
+"IslamicMosqueNonObstructionIntactA",
+"IslamicNovitiateNonObstructionIntactA",
+"IslamicReligiousCommunityNonObstructionIntactA",
+"IslamicRetreatNonObstructionIntactA",
+"IslamicSeminaryNonObstructionIntactA",
+"IslamicShrineNonObstructionIntactA",
+"IslamicShrineNonObstructionIntactA",
+"IslamicTempleNonObstructionIntactA",
+"IslamicUnknownBuildingNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0621",
+"geom": "Area",
+"concepts": [
+"BuildingGenericOtherIntactA",
+"HouseofWorshipJudaismSynagogueNonObstructionIntactA",
+"JewishHermitageNonObstructionIntactA",
+"JewishMissionNonObstructionIntactA",
+"JewishMonasteryNonObstructionIntactA",
+"JewishNovitiateNonObstructionIntactA",
+"JewishReligiousCommunityNonObstructionIntactA",
+"JewishRetreatNonObstructionIntactA",
+"JewishSeminaryNonObstructionIntactA",
+"JewishShrineNonObstructionIntactA",
+"JewishSynagogueNonObstructionIntactA",
+"JewishTempleNonObstructionIntactA",
+"JewishUnknownBuildingNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0622",
+"geom": "Area",
+"concepts": [
+"PagodaNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0623",
+"geom": "Area",
+"concepts": [
+"BuildingMotorVehicleStationA",
+"BuildingMotorVehicleStationNonObstructionA",
+"BuildingMotorVehicleStationNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0624",
+"geom": "Area",
+"concepts": [
+"BuildingstupaNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0625",
+"geom": "Area",
+"concepts": [
+"BuildingHouseofWorshipTempleNonObstructionIntactA"
+]
+},
+{
+"id": "SO_0626",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0627",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0628",
+"geom": "Line",
+"concepts": [
+"HedgerowL"
+]
+},
+{
+"id": "SO_0629",
+"geom": "Line",
+"concepts": [
+"CablePowerTransmissionL",
+"CablePowerTransmissionLineNonObstructionIntactL",
+"CablePowerTransmissionLineNonObstructionNotIntactL"
+]
+},
+{
+"id": "SO_0630",
+"geom": "Area",
+"concepts": [
+"SportsGroundA"
+]
+},
+{
+"id": "SO_0631",
+"geom": "Point",
+"concepts": [
+"SportsGroundP"
+]
+},
+{
+"id": "SO_0633",
+"geom": "Point",
+"concepts": [
+"DamLooseNoTransportationIntactP",
+"DamLooseNoTransportationNotIntactP",
+"DamLooseNoTransportationP",
+"DamLooseP",
+"DamLooseTransportationIntactP",
+"DamLooseTransportationNotIntactP",
+"DamLooseTransportationP"
+]
+},
+{
+"id": "SO_0634",
+"geom": "Area",
+"concepts": [
+"AerationBasinA",
+"SaltEvaporatorA"
+]
+},
+{
+"id": "SO_0635",
+"geom": "Area",
+"concepts": [
+"AerialFarmObstructionA",
+"AircraftHangarObstructionA",
+"AmphitheatreObstructionA",
+"AmusementParkObstructionA",
+"ArchaeologicalSiteObstructionA",
+"AstronomicalObservatoryObstructionA",
+"BarnObstructionA",
+"CastleObstructionA",
+"ControlTowerObstructionA",
+"CoolingFacilityObstructionA",
+"CoolingTowerObstructionA",
+"ElectricPowerStationObstructionA",
+"EngineTestCellObstructionA",
+"FacilityObstructionA",
+"FairgroundObstructionA",
+"FerryStationObstructionA",
+"FortificationObstructionA",
+"FortifiedBuildingObstructionA",
+"FuelStorageFacilityObstructionA",
+"GrainElevatorObstructionA",
+"GrainStorageStructureObstructionA",
+"HardenedAircraftShelterObstructionA",
+"HeatingFacilityObstructionA",
+"HydroCarbonProductsFacilityObstructionA",
+"IndustrialFurnaceObstructionA",
+"LaunchPadObstructionA",
+"LighthouseObstructionA",
+"MaritimeSignalStationObstructionA",
+"MemorialMonumentObstructionA",
+"MineralPileObstructionA",
+"MotorVehicleStationObstructionA",
+"NuclearReactorContainmentObstructionA",
+"ObstructionA",
+"OffshoreConstructionObstructionA",
+"ParkingGarageObstructionA",
+"ProcessingFacilityObstructionA",
+"RadarStationObstructionA",
+"RoundhouseObstructionA",
+"ShedObstructionA",
+"ShoppingComplexObstructionA",
+"StadiumNonObstructionA",
+"StorageTankObstructionA",
+"TransportationStationObstructionA",
+"WasteHeapObstructionA",
+"WaterIntakeTowerObstructionA",
+"WaterMillObstructionA",
+"WindmillObstructionA"
+]
+},
+{
+"id": "SO_0636",
+"geom": "Area",
+"concepts": [
+"BankVegetationZoneA"
+]
+},
+{
+"id": "SO_0637",
+"geom": "Point",
+"concepts": [
+"BuiltUpAreaDenseP",
+"BuiltUpAreaDestroyedP",
+"BuiltUpAreaIntactP",
+"BuiltUpAreaModerateP",
+"BuiltUpAreaNotIntactP",
+"BuiltUpAreaP",
+"BuiltUpAreaSparseOrModerateP",
+"BuiltUpAreaSparseP",
+"BuiltUpAreaUndestroyedP"
+]
+},
+{
+"id": "SO_0638",
+"geom": "Point",
+"concepts": [
+"CraterA",
+"CraterP"
+]
+},
+{
+"id": "SO_0643",
+"geom": "Point",
+"concepts": [
+"FogSignalP"
+]
+},
+{
+"id": "SO_0644",
+"geom": "Area",
+"concepts": [
+"MassGraveA",
+"MassGraveP"
+]
+},
+{
+"id": "SO_0645",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0650",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0651",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0652",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0653",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0654",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0655",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0656",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0657",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0658",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0659",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0660",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0661",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0662",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0663",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0664",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0666",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0667",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0668",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0669",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0670",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0673",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0674",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0675",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0676",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0677",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0678",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0679",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0680",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0681",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0682",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0684",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0685",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0686",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0687",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0688",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0689",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0690",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0695",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0697",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0698",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0699",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0701",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0702",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0703",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0705",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0706",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0707",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0708",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0711",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0714",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0715",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0716",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0717",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0719",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0721",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0722",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0723",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0726",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0727",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0728",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0729",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0730",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0731",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0733",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0734",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0735",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0736",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0737",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0738",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0739",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0740",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0741",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0742",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0743",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0744",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0746",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0749",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0750",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0751",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0752",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0753",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0754",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0755",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0766",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0767",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0768",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0769",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0770",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0771",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0772",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0773",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0774",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0775",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0776",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0777",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0778",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0779",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0780",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0781",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0782",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0783",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0784",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0785",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0786",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0787",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0788",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0789",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0790",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0791",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0792",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0793",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0794",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0795",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0796",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0797",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0798",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0799",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0800",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0801",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0802",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0803",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0804",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0805",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0807",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0808",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0809",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0810",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0811",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0812",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0813",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0814",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0815",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0816",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0817",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0818",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0819",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0820",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0822",
+"geom": "Line",
+"concepts": []
+},
+{
+"id": "SO_0823",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0824",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0825",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0826",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0827",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0828",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0829",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0830",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0831",
+"geom": "Area",
+"concepts": []
+},
+{
+"id": "SO_0832",
+"geom": "Point",
+"concepts": []
+},
+{
+"id": "SO_0833",
+"geom": "Area",
+"concepts": []
+}
+]

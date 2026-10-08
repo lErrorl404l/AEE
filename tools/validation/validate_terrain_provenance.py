@@ -124,7 +124,11 @@ def main() -> int:
     doc = json.loads(SOURCE_JSON.read_text(encoding="utf-8"))
     manifest = json.loads(MANIFEST_JSON.read_text(encoding="utf-8"))
     entries = {e["id"]: e for e in manifest.get("entries", [])}
-    recorded = {e["id"] for e in manifest.get("no_register_source", [])}
+    # A feature with no register drawing is recorded: a substituted glyph for a
+    # feature the register does not publish, or a non-register public-domain
+    # source.  Both are listed, so an unrecorded substitution fails here.
+    recorded = {e["id"] for e in manifest.get("substituted", [])}
+    recorded |= {e["id"] for e in entries.values() if e.get("grade") == "non_register"}
     refs = referenced(doc)
 
     rsvg = shutil.which("rsvg-convert")
@@ -153,8 +157,12 @@ def main() -> int:
 
             licence = str(entry.get("licence", "")).lower()
             if entry.get("dgiwg"):
-                if not entry.get("concept"):
-                    errors.append(f"{symbol}: register entry has no concept name")
+                if not (entry.get("concept") or entry.get("glyph_concept")):
+                    # A recorded substitution (grade substituted) may have no
+                    # register concept when the register publishes none for the
+                    # feature; it is gated by the catalogue substitution test.
+                    if entry.get("grade") != "substituted":
+                        errors.append(f"{symbol}: register entry has no concept name")
                 if "cc by" not in licence:
                     errors.append(f"{symbol}: register entry licence is not CC BY")
                 svg_name = entry.get("svg")
