@@ -4,14 +4,23 @@
 #include "\z\aee\addons\main\script_macros.hpp"
 
 // Modelling constants, UNSOURCED.  See the wildlife-ambience dossier.
-#define WILDLIFE_SOUND_INSTANCE_CAP 8
+//
+// The concurrent one-shot cap is a density choice.  The acoustic niche
+// hypothesis (Krause 1987; Pijanowski et al. 2011, BioScience 61(3):203-216)
+// holds that species partition the auditory spectrum in time and frequency, so
+// a real forest has few overlapping calls.  No published figure gives a
+// simultaneous-caller count, so the cap is a stated choice: 3, the number of
+// species groups active in the densest corpus bin.  The measured density was
+// 8 of 8 slots busy at once, which reads as a disturbed soundscape.
+#define WILDLIFE_SOUND_INSTANCE_CAP 3
 #define WILDLIFE_SOUND_MAX_DISTANCE 120
 #define WILDLIFE_ANIMAL_CAP 16
 
 // Attached emitter policy (task T27).  The cap bounds the attached looping
 // sources and the radius bounds which animals are near enough to carry one,
-// so the attachment cost is flat.  Both are UNSOURCED modelling choices.
-#define WILDLIFE_EMITTER_CAP 8
+// so the attachment cost is flat.  Both are UNSOURCED modelling choices.  The
+// cap is the same density target as the one-shot layer above.
+#define WILDLIFE_EMITTER_CAP 3
 #define WILDLIFE_EMITTER_RADIUS 150
 
 // Call-pitch policy (task T28): bounds, seeded jitter spread and the
