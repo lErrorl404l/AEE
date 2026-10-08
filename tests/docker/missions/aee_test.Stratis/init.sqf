@@ -3284,6 +3284,12 @@ private _p29Pass = 0;
     // the label font) and confirms the terrain registry loaded.  It renders
     // nothing.
     execVM "aee_p113_terrain_probe.sqf";
+    // PHASE 115 lives in aee_p115_eye_adapt_probe.sqf: the eye adaptation
+    // driver is client-only, so the probe drives the REAL pure kernel
+    // fnc_eyeAdaptState with fixtures and asserts the settled-eye and
+    // falling-time contract (a settled eye reports no pending adaptation and
+    // an adapting eye reports a time that falls).  It renders nothing.
+    execVM "aee_p115_eye_adapt_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

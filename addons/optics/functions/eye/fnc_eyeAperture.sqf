@@ -11,11 +11,15 @@ daylight outdoor, 8 = the night standard, below 20 a very bright scene, closer
 to 0 lets in more light) are the two ends of the pupil range the curve runs
 across.
 
-Pupil: the de Groot and Gebhard (1952) JOSA 42(7):492 fit, the same formula as
-fnc_eyePupilSteady, inlined here so this kernel stays pure and
-sqf_lite-executable:
+Pupil: the Moon and Spencer (1944) tanh, quoted by de Groot and Gebhard
+(1952) JOSA 42(7):492, the same formula as fnc_eyePupilSteady, inlined here
+so this kernel stays pure and sqf_lite-executable:
 
   d = 4.9 - 3.0 * tanh(0.4 * (log10(B_mL) + 0.5)),  B_mL = (rho * E / pi) / 3.183
+
+1 mL = 10/pi cd/m2 = 3.1831 cd/m2 (a millilambert is a thousandth of a
+lambert, which is 10000/pi cd/m2).  The /3.183 and the +0.5 are coupled:
+change both together or neither.
 
 The luminance is the driver's rho * E / pi conversion (rho = the driver
 eyeReflectance default, kept in step).
