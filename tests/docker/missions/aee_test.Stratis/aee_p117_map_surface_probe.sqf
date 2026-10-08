@@ -11,8 +11,9 @@ private _pass = 0;
 private _fail = 0;
 private _notes = [];
 
-// ── DEFECT 1: exactly one grid.  The engine numeric grid is removed on every
-// map target, so the AEE MGRS grid is the only grid. ───────────────────────
+// ── DEFECT 1: exactly one LINE grid.  The engine numeric LINES are removed on
+// every map target, so the AEE MGRS grid is the only line grid.  The engine
+// numeric NUMBERS return as the readable vanilla grid reference (ADR-029). ──
 private _gridTargets = [
     ["RscMapControl", configFile >> "RscMapControl"],
     ["RscDisplayStrategicMap.Map", configFile >> "RscDisplayStrategicMap" >> "controlsBackground" >> "Map"],
@@ -25,7 +26,7 @@ private _gridTargets = [
     private _size = getNumber (_cfg >> "sizeExGrid");
     private _lineOff = ((count _lines) >= 4) && {(_lines select 3) == 0};
     private _mapOff = ((count _linesMap) >= 4) && {(_linesMap select 3) == 0};
-    if (_lineOff && {_mapOff} && {_size == 0}) then {
+    if (_lineOff && {_mapOff} && {_size > 0}) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;

@@ -97,7 +97,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
             _precision
         ] call FUNC(mgrsMarkerText);
         _map drawIcon [
-            "", [0.75, 1, 1, 1], getPos _player, 0, 0, 0,
+            "", [0.05, 0.05, 0.05, 1], getPos _player, 0, 0, 0,
             _playerText, 1, 0.024, _font, "center"
         ];
 
@@ -111,7 +111,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                     _precision
                 ] call FUNC(mgrsMarkerText);
                 _map drawIcon [
-                    "", [0.75, 1, 1, 0.9], getMarkerPos _x, 0, 0, 0,
+                    "", [0.05, 0.05, 0.05, 1], getMarkerPos _x, 0, 0, 0,
                     _label, 1, 0.020, _font, "center"
                 ];
             };
@@ -145,22 +145,27 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 };
                 if !(_plan isEqualType []) then { _plan = []; };
                 _plan params ["_segments", "_labels"];
+                // The linework is DARK, to read against the light topographic
+                // ground (colorBackground {0.90,0.88,0.80}) the way the map
+                // labels do (colorNames {0.10,0.10,0.10,0.90}).  The old light
+                // cyan at alpha 0.30 read as grey and was hard to see.  A major
+                // line is darker and thicker than a minor one.
                 {
                     _x params ["_pA", "_pB", "_major"];
-                    private _colour = [0.45, 0.95, 0.95, 0.30];
+                    private _colour = [0.08, 0.08, 0.10, 0.55];
                     private _width = 1;
                     if (_major) then {
-                        _colour = [0.45, 0.95, 0.95, 0.55];
+                        _colour = [0.03, 0.03, 0.05, 0.90];
                         _width = 2;
                     };
                     _map drawLine [_pA, _pB, _colour, _width];
                 } forEach _segments;
                 {
                     _x params ["_pos", "_label", "_major"];
-                    private _size = 0.018;
-                    if (_major) then { _size = 0.022; };
+                    private _size = 0.022;
+                    if (_major) then { _size = 0.026; };
                     _map drawIcon [
-                        "", [0.60, 1, 1, 0.85], _pos, 0, 0, 0,
+                        "", [0.05, 0.05, 0.05, 1], _pos, 0, 0, 0,
                         _label, 1, _size, _font, "center"
                     ];
                 } forEach _labels;
@@ -234,7 +239,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                     private _draw = _map ctrlMapScreenToWorld _anchorScreen;
                     if ((count _draw) >= 2) then {
                         _map drawIcon [
-                            "", [1, 1, 1, 1], _draw, 0, 0, 0,
+                            "", [0.05, 0.05, 0.05, 1], _draw, 0, 0, 0,
                             _cursorText, 1, 0.022, _font, "left"
                         ];
                     };
