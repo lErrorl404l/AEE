@@ -13,7 +13,7 @@ private _notes = [];
 
 // ── DEFECT 1: exactly one LINE grid.  The engine numeric LINES are removed on
 // every map target, so the AEE MGRS grid is the only line grid.  The engine
-// numeric NUMBERS return as the readable vanilla grid reference (ADR-029). ──
+// numeric NUMBERS return as the readable vanilla grid reference (ADR-030). ──
 private _gridTargets = [
     ["RscMapControl", configFile >> "RscMapControl"],
     ["RscDisplayStrategicMap.Map", configFile >> "RscDisplayStrategicMap" >> "controlsBackground" >> "Map"],

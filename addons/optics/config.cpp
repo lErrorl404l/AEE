@@ -61,7 +61,7 @@ class CfgFontFamilies {
 // while the engine LINES stay off (colorGrid/colorGridMap alpha 0).  That leaves
 // exactly ONE line grid, the AEE MGRS overlay (FUNC(mgrsMapDraw)), with the
 // engine numeric labels as the familiar reference.  The two coexist: numbers
-// from the engine, lines from AEE.  See ADR-029.
+// from the engine, lines from AEE.  See ADR-030.
 class RscMapControl {
 #include "config_mapcolors.hpp"
 #include "config_mapicons.hpp"
