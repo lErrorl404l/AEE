@@ -27,6 +27,7 @@ Run: python3 -m unittest tools.tests.test_mgrs_map_layer -v
 """
 
 import math
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -244,15 +245,23 @@ class TestDefect2CursorReadout(unittest.TestCase):
     def test_cursor_readout_is_never_empty(self):
         self.assertEqual(cursor_text("", 12), "ELEV 12 m")
 
-    def test_the_engine_readout_is_hidden(self):
+    def test_the_engine_readout_is_hidden_with_its_children(self):
+        # The engine tooltip group (idc 2350) and its Info child (idc 235002)
+        # are hidden so only the aee readout shows.
         self.assertIn("displayCtrl 2350", MGRS_MAP_SRC)
+        self.assertIn("displayCtrl 235002", MGRS_MAP_SRC)
         self.assertIn("ctrlShow false", MGRS_MAP_SRC)
 
-    def test_the_readout_is_drawn_in_the_engine_rect(self):
-        self.assertIn("ctrlPosition _engineReadout", MGRS_MAP_SRC)
-        self.assertIn("_readoutPos", MGRS_MAP_SRC)
+    def test_the_readout_is_drawn_at_the_cursor(self):
+        self.assertIn("_map ctrlMapScreenToWorld _mouse", MGRS_MAP_SRC)
         self.assertIn("call FUNC(mgrsMarkerText)", MGRS_MAP_SRC)
         self.assertIn("call FUNC(mgrsCursorText)", MGRS_MAP_SRC)
+
+    def test_the_gps_readout_is_drawn_on_the_map(self):
+        # The hand-held GPS readout is covered by the open map display, so the
+        # overlay draws the MGRS reference on the map when an ItemGPS is held.
+        self.assertIn('"ItemGPS" in (assignedItems _player)', MGRS_MAP_SRC)
+        self.assertIn('"GPS  " + _gpsRef', MGRS_MAP_SRC)
 
 
 class TestDefect3PrecisionByScale(unittest.TestCase):
@@ -279,6 +288,41 @@ class TestDefect3PrecisionByScale(unittest.TestCase):
     def test_the_precision_kernel_cites_the_standard(self):
         self.assertIn("NGA MGRS", PRECISION_SRC)
         self.assertIn("FM 3-25.26", PRECISION_SRC)
+
+
+class TestDefect5Straightness(unittest.TestCase):
+    """The drawn grid line is straight.  The projection is affine (measured to
+    better than 0.13 m over 8 km), so the planner densifies each line and the
+    segments of one line are collinear."""
+
+    def test_the_planner_densifies_each_line_with_the_visible_span(self):
+        # The count is adaptive so the joint deviation stays under a map pixel
+        # at every zoom; the old fixed single-step chord is gone.
+        self.assertIn("sqrt (_span / 40)", GRID_SRC)
+        self.assertNotIn("private _samples = 3;", GRID_SRC)
+
+    def test_consecutive_segments_of_a_line_are_collinear(self):
+        c = ALTIS[3] / 2
+        rect = [c - 1000, c - 1000, c + 1000, c + 1000]
+        segments, _labels, _interval = grid(ALTIS, rect)
+        self.assertGreater(len(segments), 4)
+        joins = 0
+        for i in range(len(segments) - 1):
+            a0, a1, _am = segments[i]
+            b0, b1, _bm = segments[i + 1]
+            if a1[:2] != b0[:2]:
+                continue  # the next segment starts a new line
+            v1 = (a1[0] - a0[0], a1[1] - a0[1])
+            v2 = (b1[0] - b0[0], b1[1] - b0[1])
+            cross = abs(v1[0] * v2[1] - v1[1] * v2[0])
+            # the lateral offset at the join, in metres; sub-pixel at every
+            # zoom (the main map is about 0.03 m per pixel at maximum zoom)
+            deviation = cross / min(math.hypot(*v1), math.hypot(*v2))
+            self.assertLess(
+                deviation, 0.02, f"kink of {deviation:.5f} m at segment {i}"
+            )
+            joins += 1
+        self.assertGreater(joins, 0, "no join points found")
 
 
 class TestWiring(unittest.TestCase):
