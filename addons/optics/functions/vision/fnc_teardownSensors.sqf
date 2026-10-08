@@ -29,6 +29,14 @@ returns.
 // it is safe to call when no sensor ever ran.
 setAperture -1;
 
+// Release the eye driver's pin so it re-claims the aperture on the next
+// normal-vision tick.  While a sensor owns the exposure the eye driver stands
+// down without writing, and its 0.02 change gate then suppresses the re-write
+// on return, so a pin left set across the session leaves the camera on the
+// sensor's exposure: the operator report that the view stays dark after NVG
+// or thermal.  Releasing the pin hands the aperture back to the eye model.
+GVAR(eyePinned) = nil;
+
 // Fusion teardown, BEFORE the idempotency exit below, so an exit with the
 // sensor handler already gone still restores.  The forced 0 destroys the
 // fusion PP handles and must not LATCH; the value restored is the reader's

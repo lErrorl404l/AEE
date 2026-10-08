@@ -932,5 +932,67 @@ class TestEyeTimeSkip(unittest.TestCase):
         self.assertFalse(run_sqf(TIME_SKIP, [0.0, 1.0, 2.0]))
 
 
+VISION = ROOT / "addons" / "optics" / "functions" / "vision"
+TEARDOWN = VISION / "fnc_teardownSensors.sqf"
+EXIT_THERMAL = VISION / "fnc_exitThermalSensors.sqf"
+
+
+class TestSensorApertureRestore(unittest.TestCase):
+    """A sensor exit hands the aperture back to the eye model.
+
+    While a vision sensor owns the exposure the eye driver stands down without
+    writing, and its 0.02 change gate then suppresses the re-write on return.
+    A pin left set across the sensor session therefore leaves the camera on the
+    sensor's exposure: the operator report that the view stays dark after NVG
+    or thermal.  Every sensor exit that restores the engine aperture with
+    setAperture -1 must also release the eye pin, so the next normal-vision
+    tick re-claims the eye model's value.
+    """
+
+    @staticmethod
+    def _code(path):
+        text = path.read_text(encoding="utf-8")
+        return text[text.index("*/") + 2 :] if "*/" in text else text
+
+    def test_teardown_releases_the_eye_pin(self):
+        self.assertIn(
+            "GVAR(eyePinned) = nil",
+            self._code(TEARDOWN),
+            "fnc_teardownSensors does not release the eye pin on exit",
+        )
+
+    def test_teardown_releases_before_the_idempotency_exit(self):
+        # The aperture restore sits before the idempotency exit on purpose, so
+        # the pin release must too: an exit with the sensor handler already
+        # gone is exactly the case the restore exists for.
+        code = self._code(TEARDOWN)
+        release = code.index("GVAR(eyePinned) = nil")
+        idempotency = code.index("if (isNil QGVAR(sensorPFH)) exitWith")
+        self.assertLess(
+            release, idempotency, "the pin release is gated on a live handler"
+        )
+
+    def test_exit_thermal_releases_the_eye_pin(self):
+        self.assertIn(
+            "GVAR(eyePinned) = nil",
+            self._code(EXIT_THERMAL),
+            "fnc_exitThermalSensors does not release the eye pin on exit",
+        )
+
+    def test_every_aperture_restore_releases_the_pin(self):
+        # The invariant: wherever a sensor exit restores the engine aperture
+        # with setAperture -1, it also releases the eye pin within the next few
+        # lines.  A new restore site without the release re-creates the defect.
+        for path in (TEARDOWN, EXIT_THERMAL):
+            code = self._code(path)
+            for match in re.finditer(r"setAperture\s+-1\s*;", code):
+                window = code[match.end() : match.end() + 900]
+                self.assertIn(
+                    "GVAR(eyePinned) = nil",
+                    window,
+                    f"{path.name}: a setAperture -1 restore has no pin release",
+                )
+
+
 if __name__ == "__main__":
     unittest.main()
