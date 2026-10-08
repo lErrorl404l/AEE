@@ -424,6 +424,30 @@ class TestNumericalSimulation(unittest.TestCase):
         self.assertGreater(drop_table, -15.0)
 
 
+class TestResolveShotArity(unittest.TestCase):
+    """fnc_resolveShot returns the documented 10 elements on every path."""
+
+    def test_the_empty_ammo_guard_returns_ten_elements(self):
+        src = (REPO / "addons/ballistics/functions/fnc_resolveShot.sqf").read_text(
+            encoding="utf-8"
+        )
+        guard = next(
+            line
+            for line in src.splitlines()
+            if "exitWith" in line and '_ammo == ""' in line
+        )
+        array = guard.split("exitWith", 1)[1]
+        self.assertEqual(
+            array.count(","), 9, f"the guard must return 10 elements: {guard}"
+        )
+
+    def test_the_postinit_does_not_reinclude_prep(self):
+        post = (REPO / "addons/ballistics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        pre = (REPO / "addons/ballistics/XEH_preInit.sqf").read_text(encoding="utf-8")
+        self.assertNotIn('#include "XEH_PREP.hpp"', post)
+        self.assertIn('#include "XEH_PREP.hpp"', pre)
+
+
 class TestSqfKernelStructure(unittest.TestCase):
     def test_kernel_registered(self):
         prep = (REPO / "addons/ballistics/XEH_PREP.hpp").read_text(encoding="utf-8")

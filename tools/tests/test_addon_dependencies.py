@@ -114,3 +114,37 @@ class TestAiWildlifeDirection(unittest.TestCase):
             dependencies("ai"),
             "aee_ai reaches into aee_wildlife: the dependency cycle is back",
         )
+
+
+REQUIRED_BLOCK = re.compile(r"requiredAddons\[\]\s*=\s*\{(.*?)\}", re.DOTALL)
+
+
+def required_addons(addon):
+    """The addon names declared in the addon's CfgPatches requiredAddons."""
+    text = (ADDONS / addon / "config.cpp").read_text(encoding="utf-8", errors="replace")
+    match = REQUIRED_BLOCK.search(text)
+    if not match:
+        return set()
+    return set(re.findall(r'"([^"]+)"', match.group(1)))
+
+
+class TestRequiredAddonsComplete(unittest.TestCase):
+    """Every cross-addon call is declared in CfgPatches requiredAddons.
+
+    Scoped to the three addons the optics/combat QA named.  The repo-wide
+    graph still has pre-existing gaps in other addons, so this pins the three
+    that were fixed and guards them against a new undeclared call.
+    """
+
+    ADDONS_UNDER_TEST = ("optics", "ballistics", "wildlife")
+
+    def test_every_dependency_is_declared(self):
+        for addon in self.ADDONS_UNDER_TEST:
+            declared = required_addons(addon)
+            for dep in sorted(dependencies(addon)):
+                self.assertIn(
+                    f"aee_{dep}",
+                    declared,
+                    f"{addon} calls into {dep} but does not list "
+                    f"aee_{dep} in requiredAddons",
+                )

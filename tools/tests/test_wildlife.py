@@ -1575,5 +1575,14 @@ class TestShotAudioSourceContracts(unittest.TestCase):
         self.assertIn("fnc_parseCaliber.sqf", text)
 
 
+class TestWildlifeTeardownWiring(unittest.TestCase):
+    """The wildlife teardown is wired on mission end."""
+
+    def test_the_ended_handler_calls_the_teardown(self):
+        post = (WILDLIFE / "XEH_postInit.sqf").read_text(encoding="utf-8")
+        self.assertIn('addMissionEventHandler ["Ended"', post)
+        self.assertIn("[] call FUNC(teardownWildlife)", post)
+
+
 if __name__ == "__main__":
     unittest.main()
