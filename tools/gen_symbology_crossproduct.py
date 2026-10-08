@@ -44,7 +44,14 @@ GLYPH_BOX = 44  # the glyph fits this box inside the 64 px marker
 AFFIL_LETTER = {"Friend": "F", "Hostile": "H", "Neutral": "N", "Unknown": "U"}
 AFFIL_SIDE = {"Friend": 1, "Hostile": 0, "Neutral": 2, "Unknown": 2}
 AFFIL_ORDER = ["Friend", "Hostile", "Neutral", "Unknown"]
-DIM_LETTER = {"Land": "L", "Air/Space": "A", "Sea Surface": "S"}
+DIM_LETTER = {
+    "Land": "L",
+    "Air/Space": "A",
+    "Sea Surface": "S",
+    "Subsurface": "U",
+    "Installation": "I",
+    "Equipment": "E",
+}
 
 
 def _slug(text: str, limit: int = 30) -> str:
@@ -181,10 +188,17 @@ def distinct_glyphs() -> dict[str, dict[str, Any]]:
 
 def crossproduct_names() -> list[tuple[str, dict[str, Any], str]]:
     out: list[tuple[str, dict[str, Any], str]] = []
+    seen: set[str] = set()
     for func, entry in sorted(distinct_glyphs().items()):
         dim = entry["dim"]
         for affil in AFFIL_ORDER:
-            name = f"AEE_X{AFFIL_LETTER[affil]}{DIM_LETTER[dim]}_{_slug(func)}"
+            base = f"AEE_X{AFFIL_LETTER[affil]}{DIM_LETTER[dim]}_{_slug(func)}"
+            name = base
+            n = 2
+            while name in seen:
+                name = f"{base}_{n}"
+                n += 1
+            seen.add(name)
             out.append((name, entry, affil))
     return out
 

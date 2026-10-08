@@ -17,6 +17,34 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FA_Friendly_Air_Unit: AEE_MarkerBase {
+        name = "AEE Friend Air/Space Friendly Air Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_Unit.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FA_Friendly_Air_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Friend Air/Space Friendly Air Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_Unit_Solid.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FA_Friendly_Air_or_Space_Unit: AEE_MarkerBase {
+        name = "AEE Friend Air/Space Friendly Air or Space Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_or_Space_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_or_Space_Unit.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FA_Friendly_Air_or_Space_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Friend Air/Space Friendly Air or Space Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_or_Space_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Air_or_Space_Unit_Solid.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FA_Friendly_Unit_Airborne_Forces: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Airborne Forces";
         icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Airborne_Forces.paa";
@@ -514,6 +542,13 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FL_APP_6_Mod_Bicycle: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mod Bicycle";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mod_Bicycle.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mod_Bicycle.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mod Motorcycle";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Mod_Motorcycle.paa";
@@ -525,6 +560,13 @@
         name = "AEE Friend Land APP-6 Modifier 01";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_01.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_01.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Modifier 01 Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_01_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Modifier_01_Transparent.paa";
         side = 1;
         scope = 2;
     };
@@ -759,6 +801,13 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Wheeled Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_Wheeled_Transparent.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FL_APP_6_battalion: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 battalion";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6_battalion.paa";
@@ -791,6 +840,55 @@
         name = "AEE Friend Land FRD SUB";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_SUB.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_SUB.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Brigade_Group_Combined: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Brigade Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Brigade_Group_Combined.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Brigade_Group_Combined.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Brigade_or_Wing_Combine: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Brigade or Wing Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Brigade_or_Wing_Combine.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Brigade_or_Wing_Combine.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Headquarters: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Headquarters.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Regiment_or_Group_Combi: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Regiment or Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Regiment_or_Group_Combi.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Regiment_or_Group_Combi.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Soldier_Dismounted: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Soldier Dismounted";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Soldier_Dismounted.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Soldier_Dismounted.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Space_Unit: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Space Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Space_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Space_Unit.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Friendly_Space_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Space Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Space_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Friendly_Space_Unit_Solid.paa";
         side = 1;
         scope = 2;
     };
@@ -2404,6 +2502,20 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FS_Friendly_Sea_Surface_Unit: AEE_MarkerBase {
+        name = "AEE Friend Sea Surface Friendly Sea Surface Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Sea_Surface_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Sea_Surface_Unit.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FS_Friendly_Sea_Surface_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Friend Sea Surface Friendly Sea Surface Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Sea_Surface_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Sea_Surface_Unit_Solid.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FS_Friendly_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Air Naval Gunfire Liaison Company (USMC)";
         icon = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Unit_Air_Naval_Gunfire.paa";
@@ -2453,11 +2565,60 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FU_Friendly_Sub_surface_Sea_Unit: AEE_MarkerBase {
+        name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FU_Friendly_Sub_surface_Sea_Unit_2: AEE_MarkerBase {
+        name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_2.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FU_Friendly_Sub_surface_Sea_Unit_So: AEE_MarkerBase {
         name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit - Solid";
         icon = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So.paa";
         side = 1;
+        scope = 2;
+    };
+    class AEE_FU_Friendly_Sub_surface_Sea_Unit_So_2: AEE_MarkerBase {
+        name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So_2.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_HA_Enemy_Air_Unit: AEE_MarkerBase {
+        name = "AEE Hostile Air/Space Enemy Air Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_Unit.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HA_Enemy_Air_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Hostile Air/Space Enemy Air Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_Unit_Solid.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HA_Enemy_Air_or_Space_Unit: AEE_MarkerBase {
+        name = "AEE Hostile Air/Space Enemy Air or Space Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_or_Space_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_or_Space_Unit.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HA_Enemy_Air_or_Space_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Hostile Air/Space Enemy Air or Space Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_or_Space_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_or_Space_Unit_Solid.paa";
+        side = 0;
         scope = 2;
     };
     class AEE_HA_Hostile_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -2618,6 +2779,55 @@
         name = "AEE Hostile Air/Space Hostile Unit Unmanned Aerial Vehicles";
         icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh_2.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Enemy_Headquarters: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Headquarters.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Enemy_Space_Unit: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Space Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Space_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Space_Unit.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Enemy_Space_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Space Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Space_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Space_Unit_Solid.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Enemy_Unit: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Enemy_Unit_B_W: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Unit - B&W";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_B_W.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_B_W.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Enemy_Unit_Opaque: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Unit - Opaque";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_Opaque.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_Opaque.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Enemy_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_Solid.paa";
         side = 0;
         scope = 2;
     };
@@ -3993,6 +4203,34 @@
         side = 0;
         scope = 2;
     };
+    class AEE_HU_Enemy_Sub_surface_Sea_Unit: AEE_MarkerBase {
+        name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HU_Enemy_Sub_surface_Sea_Unit_2: AEE_MarkerBase {
+        name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_2.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid: AEE_MarkerBase {
+        name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid_2: AEE_MarkerBase {
+        name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit - Solid";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid_2.paa";
+        side = 0;
+        scope = 2;
+    };
     class AEE_NA_Neutral_Air_Unit: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Air Unit";
         icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Air_Unit.paa";
@@ -5110,6 +5348,27 @@
         name = "AEE Unknown Air/Space Unknown Allegiance Air or Space Unit - Solid";
         icon = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
+        name = "AEE Unknown Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Unknown Unframed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat - Engineer - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee_2.paa";
         side = 2;
         scope = 2;
     };

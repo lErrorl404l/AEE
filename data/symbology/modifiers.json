@@ -1,0 +1,513 @@
+{
+  "generated_by": "tools/gen_symbology_modifiers.py",
+  "license": "GPL-2.0-or-later",
+  "geometry_license": "AEE own work, GPL-2.0-or-later; the symbol geometry is MIL-STD-2525 (US Government work, public domain)",
+  "echelon_layering": "AEE layers the echelon at runtime; it is not baked into the frame .paa. Each AEE_Ech_* texture is 64 x 128 with the ticks in the top band and transparent below, so it sits above a frame marker placed at the same position. The canvas is 64 x 128 (not 64 x 96) because Arma and hemtt require power-of-two texture dimensions.",
+  "counts": {
+    "mission_task": 33,
+    "modifier": 11,
+    "echelon": 13
+  },
+  "markers": [
+    {
+      "name": "AEE_MT_Block",
+      "kind": "mission_task",
+      "title": "Block",
+      "description": "Line perpendicular to the avenue of approach, with a tick from its midpoint.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340100",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Breach",
+      "kind": "mission_task",
+      "title": "Breach",
+      "description": "Two arms enclosing the breach location, opening toward the enemy.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340200",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Bypass",
+      "kind": "mission_task",
+      "title": "Bypass",
+      "description": "Arms on both sides of the bypassed item.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340300",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Canalize",
+      "kind": "mission_task",
+      "title": "Canalize",
+      "description": "Arms converging to restrict the enemy to a narrow zone.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340400",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Clear",
+      "kind": "mission_task",
+      "title": "Clear",
+      "description": "Arrows joined by the limit-of-advance bar.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340500",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Counterattack",
+      "kind": "mission_task",
+      "title": "Counterattack",
+      "description": "Arrow toward the enemy.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340600",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Counterattack_by_Fire",
+      "kind": "mission_task",
+      "title": "Counterattack by Fire",
+      "description": "Counterattack arrow with the firing bar at its base.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340700",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Delay",
+      "kind": "mission_task",
+      "title": "Delay",
+      "description": "Arrow with a 180 degree arc at the base.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340800",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Destroy",
+      "kind": "mission_task",
+      "title": "Destroy",
+      "description": "Dashed crossing lines over the target.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340900",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Disrupt",
+      "kind": "mission_task",
+      "title": "Disrupt",
+      "description": "Baseline with parallel arrows of varying length.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341000",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Fix",
+      "kind": "mission_task",
+      "title": "Fix",
+      "description": "Zigzag arrow holding the enemy in place.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341100",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Follow_and_Assume",
+      "kind": "mission_task",
+      "title": "Follow and Assume",
+      "description": "Arrow following the lead force.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341200",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Follow_and_Support",
+      "kind": "mission_task",
+      "title": "Follow and Support",
+      "description": "Arrow with a support bar at its base.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341300",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Interdict",
+      "kind": "mission_task",
+      "title": "Interdict",
+      "description": "Two arrows with 45 degree angular separation.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341400",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Isolate",
+      "kind": "mission_task",
+      "title": "Isolate",
+      "description": "Circle with a 30 degree opening and inward tics.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341500",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Neutralize",
+      "kind": "mission_task",
+      "title": "Neutralize",
+      "description": "Two lines crossing the target.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341600",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Occupy",
+      "kind": "mission_task",
+      "title": "Occupy",
+      "description": "Circle with an opening crossed by the occupying force.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341700",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Penetrate",
+      "kind": "mission_task",
+      "title": "Penetrate",
+      "description": "Vertical line with an arrow from its midpoint.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341800",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Relief_in_Place",
+      "kind": "mission_task",
+      "title": "Relief in Place",
+      "description": "Two arrows connected by a smooth curve.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 341900",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Retire",
+      "kind": "mission_task",
+      "title": "Retire",
+      "description": "Arrow pointing away with a 180 degree arc at the base.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342000",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Secure",
+      "kind": "mission_task",
+      "title": "Secure",
+      "description": "Circle with an opening and an arrow, tics on the perimeter.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342100",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Security_Cover",
+      "kind": "mission_task",
+      "title": "Security Cover",
+      "description": "Security arc with an arrow at each end.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342201",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Security_Guard",
+      "kind": "mission_task",
+      "title": "Security Guard",
+      "description": "Security arc with a centred arrow.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342202",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Security_Screen",
+      "kind": "mission_task",
+      "title": "Security Screen",
+      "description": "Straight security line with a centred arrow.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342203",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Seize",
+      "kind": "mission_task",
+      "title": "Seize",
+      "description": "Looped arrow to the objective.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342300",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Withdraw",
+      "kind": "mission_task",
+      "title": "Withdraw",
+      "description": "Arrow pointing rearward with a 180 degree arc at the base.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342400",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Under_Pressure",
+      "kind": "mission_task",
+      "title": "Under Pressure",
+      "description": "Withdraw arrow crossed by the pressure bar.",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 342500",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Attack_by_Fire",
+      "kind": "mission_task",
+      "title": "Attack by Fire",
+      "description": "Arrow to the target with the base at the firing position.",
+      "source": "FM 3-90 figure B-2; MIL-STD-2525D code 152000",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Ambush",
+      "kind": "mission_task",
+      "title": "Ambush",
+      "description": "Arrow with a curved back side over the ambush position.",
+      "source": "MIL-STD-2525D TABLE H-XII code 141700",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Contain",
+      "kind": "mission_task",
+      "title": "Contain",
+      "description": "Semicircle enclosing the enemy with tics and an arrow.",
+      "source": "FM 3-90 figure B-18; MIL-STD-2525D code 151204",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Retain",
+      "kind": "mission_task",
+      "title": "Retain",
+      "description": "Circle with an opening and inward tics.",
+      "source": "FM 3-90 figure B-10; MIL-STD-2525D code 151205",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Support_by_Fire",
+      "kind": "mission_task",
+      "title": "Support by Fire",
+      "description": "Two diverging arrows from the firing position.",
+      "source": "FM 3-90 figure B-13; MIL-STD-2525D code 152100",
+      "side": 2
+    },
+    {
+      "name": "AEE_MT_Turn",
+      "kind": "mission_task",
+      "title": "Turn",
+      "description": "Rounded 90 degree turn arrow.",
+      "source": "MIL-STD-2525D TABLE H-XIX code 270504; FM 3-90 figure B-27",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Strength_Reinforced",
+      "kind": "modifier",
+      "title": "Strength Reinforced",
+      "description": "Reinforced amplifier, a plus sign in the right-hand column.",
+      "source": "MIL-STD-2525D Table VII field F",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Strength_Reduced",
+      "kind": "modifier",
+      "title": "Strength Reduced",
+      "description": "Reduced amplifier, a minus sign in the right-hand column.",
+      "source": "MIL-STD-2525D Table VII field F",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Strength_Both",
+      "kind": "modifier",
+      "title": "Strength Both",
+      "description": "Reinforced and reduced amplifier.",
+      "source": "MIL-STD-2525D Table VII field F",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Feint_Dummy",
+      "kind": "modifier",
+      "title": "Feint Dummy",
+      "description": "Dashed inverted V above the frame.",
+      "source": "MIL-STD-2525D 5.3.6.4 field AB",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Task_Force_Bracket",
+      "kind": "modifier",
+      "title": "Task Force Bracket",
+      "description": "Standalone task-force bracket above the frame.",
+      "source": "MIL-STD-2525D 5.3.6.3 field D",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_HQ_Staff",
+      "kind": "modifier",
+      "title": "HQ Staff",
+      "description": "Staff line descending from the frame's lower left.",
+      "source": "MIL-STD-2525D 5.3.6.5 field S",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Installation",
+      "kind": "modifier",
+      "title": "Installation",
+      "description": "Filled bar that sits atop the frame.",
+      "source": "MIL-STD-2525D 5.3.6.2 field AC",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Planned_Friend",
+      "kind": "modifier",
+      "title": "Planned Friend",
+      "description": "Planned status: dashed friendly rectangle.",
+      "source": "MIL-STD-2525D 5.3.6 status; APP-6C frame grammar",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Planned_Hostile",
+      "kind": "modifier",
+      "title": "Planned Hostile",
+      "description": "Planned status: dashed hostile diamond.",
+      "source": "MIL-STD-2525D 5.3.6 status; APP-6C frame grammar",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Planned_Neutral",
+      "kind": "modifier",
+      "title": "Planned Neutral",
+      "description": "Planned status: dashed neutral square.",
+      "source": "MIL-STD-2525D 5.3.6 status; APP-6C frame grammar",
+      "side": 2
+    },
+    {
+      "name": "AEE_MOD_Planned_Unknown",
+      "kind": "modifier",
+      "title": "Planned Unknown",
+      "description": "Planned status: dashed unknown quatrefoil.",
+      "source": "MIL-STD-2525D 5.3.6 status; APP-6C frame grammar",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Team",
+      "kind": "echelon",
+      "title": "Team",
+      "description": "Team or crew: circle with a slash.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Squad",
+      "kind": "echelon",
+      "title": "Squad",
+      "description": "Squad: one dot.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Section",
+      "kind": "echelon",
+      "title": "Section",
+      "description": "Section: two dots.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Platoon",
+      "kind": "echelon",
+      "title": "Platoon",
+      "description": "Platoon: three dots.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Company",
+      "kind": "echelon",
+      "title": "Company",
+      "description": "Company or battery: one tick.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Battalion",
+      "kind": "echelon",
+      "title": "Battalion",
+      "description": "Battalion or squadron: two ticks.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Regiment",
+      "kind": "echelon",
+      "title": "Regiment",
+      "description": "Regiment or group: three ticks.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Brigade",
+      "kind": "echelon",
+      "title": "Brigade",
+      "description": "Brigade: one X.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Division",
+      "kind": "echelon",
+      "title": "Division",
+      "description": "Division: two X.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Corps",
+      "kind": "echelon",
+      "title": "Corps",
+      "description": "Corps: three X.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Army",
+      "kind": "echelon",
+      "title": "Army",
+      "description": "Army: four X.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Army_Group",
+      "kind": "echelon",
+      "title": "Army Group",
+      "description": "Army group: five X.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    },
+    {
+      "name": "AEE_Ech_Region",
+      "kind": "echelon",
+      "title": "Region",
+      "description": "Region or theatre: six X.",
+      "source": "MIL-STD-2525D Table D-III",
+      "side": 2
+    }
+  ],
+  "unavailable": [
+    {
+      "name": "AEE_MT_Mission_Tasks",
+      "kind": "mission_task",
+      "title": "Mission Tasks (base)",
+      "source": "MIL-STD-2525D TABLE H-XXIV code 340000",
+      "reason": "The base symbol has no template and no draw rule (both are N/A in the standard). It is a category header, not a graphic."
+    },
+    {
+      "name": "AEE_MT_Escort",
+      "kind": "mission_task",
+      "title": "Escort",
+      "source": "MIL-STD-2525D code 110132; FM 3-90 Appendix B",
+      "reason": "Code 110132 is an entity subtype of a fixed-wing aircraft (role), not a mission-task graphic. FM 3-90 Appendix B does not list Escort. No standard graphic exists."
+    },
+    {
+      "name": "AEE_MT_Exfiltrate",
+      "kind": "mission_task",
+      "title": "Exfiltrate",
+      "source": "FM 3-90 Appendix B",
+      "reason": "FM 3-90 Appendix B defines Exfiltrate but gives no tactical mission graphic, and MIL-STD-2525D has no mission-task symbol for it."
+    },
+    {
+      "name": "AEE_MT_Pursuit",
+      "kind": "mission_task",
+      "title": "Pursuit",
+      "source": "FM 3-90 Appendix B",
+      "reason": "Absent from MIL-STD-2525D and FM 3-90 Appendix B. No standard graphic exists."
+    },
+    {
+      "name": "AEE_MT_Reduce",
+      "kind": "mission_task",
+      "title": "Reduce",
+      "source": "FM 3-90 Appendix B",
+      "reason": "FM 3-90 Appendix B states 'No tactical mission graphic.'"
+    },
+    {
+      "name": "AEE_MT_Suppress",
+      "kind": "mission_task",
+      "title": "Suppress",
+      "source": "FM 3-90 Appendix B",
+      "reason": "No mission-task graphic in MIL-STD-2525D or FM 3-90; the only 'Suppress' entry (Suppression of Enemy Air Defense, 110130) is a different symbol."
+    }
+  ]
+}

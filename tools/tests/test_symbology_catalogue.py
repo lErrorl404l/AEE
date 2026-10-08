@@ -161,7 +161,14 @@ class TestCatalogueEncoding(unittest.TestCase):
     """
 
     AFFIL_LETTER = {"Friend": "F", "Hostile": "H", "Neutral": "N", "Unknown": "U"}
-    DIM_LETTER = {"Land": "L", "Air/Space": "A", "Sea Surface": "S"}
+    DIM_LETTER = {
+        "Land": "L",
+        "Air/Space": "A",
+        "Sea Surface": "S",
+        "Subsurface": "U",
+        "Installation": "I",
+        "Equipment": "E",
+    }
 
     def test_every_symbol_entry_encodes_its_affiliation_and_dimension(self):
         import sys
@@ -188,6 +195,31 @@ class TestCatalogueEncoding(unittest.TestCase):
             name = gen.marker_name(entry, seen)
             with self.subTest(asset=name):
                 self.assertIn(f"class {name}: AEE_MarkerBase {{", CONFIG_MARKERS)
+
+
+class TestNoDuplicateClasses(unittest.TestCase):
+    """Every generated header defines each class exactly once.
+
+    Two catalogue functions can slug to the same marker name ("Sub surface" and
+    "Sub-surface"); the generator must suffix the collision, not emit the class
+    twice, or hemtt fails with L-C03.
+    """
+
+    def _classes(self, name: str) -> list[str]:
+        text = (REPO / "addons" / "optics" / name).read_text(encoding="utf-8")
+        return re.findall(r"^\s*class (AEE_\w+): AEE_MarkerBase", text, re.M)
+
+    def test_no_duplicate_class_names(self):
+        for header in (
+            "config_markers.hpp",
+            "config_crossproduct.hpp",
+            "config_taxonomy.hpp",
+            "config_modifiers.hpp",
+        ):
+            with self.subTest(header=header):
+                names = self._classes(header)
+                dupes = [n for n in set(names) if names.count(n) > 1]
+                self.assertEqual(dupes, [], f"{header} defines {dupes} twice")
 
 
 if __name__ == "__main__":
