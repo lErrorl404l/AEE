@@ -86,6 +86,14 @@ Place the **AEE Environment Config** module in the editor to customise settings.
 - Client-local animals by biome, terrain and water, with hunger and thirst.
 - Reactive spooks and a decaying disturbance field from movement and gunfire.
 
+### Map symbology and terrain
+
+- NATO APP-6(C) unit and equipment markers, drawn from the standard's taxonomy.
+- Terrain and map-feature symbols from the topographic standard (STANAG 3675 and the DGIWG Symbol Register, with FM 21-31 and the USGS sheet as the public-domain drawings): hills, rock, woodland, vineyards, churches, lighthouses, radio masts and the rest.
+- The map colour palette follows the same standard: relief brown, water blue, vegetation green, roads red and white.
+- One load-time config re-declare reaches the main map, the briefing, the GPS, the minimap, the airborne minimap, Eden and Zeus. Eden and Zeus also carry the real NATO side symbols.
+- The layer is a re-texture of the engine's own location and object classes, so the engine draws it and no overlay is stacked on the marker layer. The engine owns the contour, road, rail and satellite geometry.
+
 ---
 
 ## Compatibility

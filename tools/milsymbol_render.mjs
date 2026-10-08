@@ -2,7 +2,10 @@
 //
 // milsymbol (https://github.com/spatialillusions/milsymbol, MIT) draws the
 // standard's own geometry: the frame for the affiliation and battle dimension,
-// and the function glyph.  Monochrome so the engine marker colour tints it.
+// and the function glyph.  It is rendered in COLOUR (milsymbol's standard
+// MIL-STD-2525 palette: the affiliation frame colour, the black glyph and the
+// standard fills).  The texture carries the colour; the engine tint is neutral,
+// so no monoColor override is set.
 //
 // usage: node tools/milsymbol_render.mjs <manifest.json>
 //   manifest: [ { "sidc": "SFGPUCI-------", "out": "/abs/out.svg" }, ... ]
@@ -20,7 +23,6 @@ const manifest = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
 for (const job of manifest) {
   const symbol = new ms.Symbol(job.sidc, {
     size: job.size || 256,
-    monoColor: "#FFFFFF",
     infoFields: false,
   });
   fs.mkdirSync(path.dirname(job.out), { recursive: true });

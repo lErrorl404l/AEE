@@ -7,9 +7,10 @@ battle dimension, function, frame, licence, author and source URL.
 
 For each catalogue symbol this generator:
 
-  * rasterises the real image (rsvg-convert for SVG, Pillow for PNG/JPEG) into a
-    64 px white-on-transparent mask, so the engine marker colour tints it the
-    way it tints the vanilla NATO markers,
+  * rasterises the real image (rsvg-convert for SVG, Pillow for PNG/JPEG) to a
+    64 px canvas on a transparent background, keeping the source's own colours
+    (the affiliation frame colour and the black glyph), so the texture carries
+    the colour and the engine tint stays neutral,
   * converts the mask to a .paa with `hemtt utils paa convert`,
   * emits one CfgMarkers child into addons/optics/config_markers.hpp, and
   * emits addons/optics/data/markers/ATTRIBUTION.md with the per-file source
@@ -44,6 +45,7 @@ ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers"
 
 SIZE = 64
 ART = 58  # the art box inside the 64 px marker, leaving a small margin
+RENDER = 256  # the SVG is rasterised at this size, then reduced to ART
 
 AFFIL_LETTER = {
     "Friend": "F",
@@ -100,8 +102,15 @@ def _source_path(entry: dict[str, Any]) -> Path:
 
 
 def _rasterise(src: Path) -> Any:
-    """Rasterise a source image into a 64 px white-on-transparent mask."""
-    from PIL import Image, ImageChops
+    """Rasterise a source image to a 64 px canvas, keeping its own colours.
+
+    The source drawing is the record.  It is rendered on a transparent
+    background with its colours preserved: the frame keeps the affiliation
+    colour the standard gives it and the glyph stays black.  The texture is not
+    reduced to a white mask, because the engine tint is neutral and the colour
+    must live in the texture.
+    """
+    from PIL import Image
 
     if src.suffix.lower() == ".svg":
         rsvg = shutil.which("rsvg-convert")
@@ -113,9 +122,9 @@ def _rasterise(src: Path) -> Any:
                 [
                     rsvg,
                     "-w",
-                    str(ART),
+                    str(RENDER),
                     "-h",
-                    str(ART),
+                    str(RENDER),
                     "--keep-aspect-ratio",
                     str(src),
                     "-o",
@@ -129,19 +138,10 @@ def _rasterise(src: Path) -> Any:
             art = Image.open(png).convert("RGBA")
     else:
         art = Image.open(src).convert("RGBA")
-        art.thumbnail((ART, ART), Image.LANCZOS)
 
-    # Ink mask: dark strokes become opaque white, light background becomes
-    # transparent.  Source alpha is respected so a transparent-background file
-    # keeps its transparency.
-    lum = art.convert("L")
-    ink = ImageChops.invert(lum)
-    alpha = ImageChops.multiply(ink, art.getchannel("A"))
-
+    art.thumbnail((ART, ART), Image.LANCZOS)
     canvas = Image.new("RGBA", (SIZE, SIZE), (255, 255, 255, 0))
-    white = Image.new("RGBA", art.size, (255, 255, 255, 0))
-    white.putalpha(alpha)
-    canvas.alpha_composite(white, ((SIZE - art.width) // 2, (SIZE - art.height) // 2))
+    canvas.alpha_composite(art, ((SIZE - art.width) // 2, (SIZE - art.height) // 2))
     return canvas
 
 
