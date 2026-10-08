@@ -1,0 +1,1858 @@
+{
+  "retrieved": "2026-10-08",
+  "note": "The terrain and map-feature symbols for the Arma 3 map. The authority is STANAG 3675, succeeded by the DGIWG Symbol Register (the DTM50 product), with the US Army FM 21-31 and the USGS Topographic Map Symbols sheet as the public-domain fallback. AEE draws the standard's geometry itself. Every row is sourced or derived and carries its source. Relief is brown, water is blue, vegetation is green, roads are red and built-up areas are black, per the USGS and FM 21-31 palette.",
+  "sources": [
+    "STANAG 3675 Edition 2 (15 June 2000), Symbols on Land Maps, Aeronautical and Special Naval Charts",
+    "DGIWG Symbol Register, product Defence Topographic Map (DTM50), DGIWG 252-3",
+    "FM 21-31 Topographic Symbols (19 June 1961, Change 1 31 December 1968), US public domain",
+    "USGS Topographic Map Symbols, USGS Unnumbered Series GIP (2005), US public domain"
+  ],
+  "grades": [
+    "sourced",
+    "derived",
+    "UNSOURCED"
+  ],
+  "categories": [
+    "relief",
+    "vegetation",
+    "hydrography",
+    "populated",
+    "works",
+    "transport",
+    "boundary",
+    "control",
+    "military"
+  ],
+  "palette": {
+    "relief_brown": [
+      0.7,
+      0.48,
+      0.32,
+      1
+    ],
+    "relief_brown_dark": [
+      0.55,
+      0.35,
+      0.2,
+      1
+    ],
+    "vegetation_green": [
+      0.0,
+      0.5,
+      0.0,
+      1
+    ],
+    "water_blue": [
+      0.0,
+      0.5,
+      0.75,
+      1
+    ],
+    "populated_black": [
+      0.15,
+      0.15,
+      0.15,
+      1
+    ],
+    "works_black": [
+      0.1,
+      0.1,
+      0.1,
+      1
+    ],
+    "transport_red": [
+      0.8,
+      0.1,
+      0.1,
+      1
+    ],
+    "boundary_black": [
+      0.0,
+      0.0,
+      0.0,
+      1
+    ],
+    "control_black": [
+      0.0,
+      0.0,
+      0.0,
+      1
+    ],
+    "military_green": [
+      0.1,
+      0.4,
+      0.1,
+      1
+    ]
+  },
+  "symbols": [
+    {
+      "id": "hill",
+      "category": "relief",
+      "dimension": "point",
+      "colour": [
+        0.7,
+        0.48,
+        0.32,
+        1
+      ],
+      "section": "10",
+      "grade": "derived",
+      "source": "FM 21-31 section 10 relief; a hill is a closed contour, drawn here as an open hachured mound"
+    },
+    {
+      "id": "mountain",
+      "category": "relief",
+      "dimension": "point",
+      "colour": [
+        0.7,
+        0.48,
+        0.32,
+        1
+      ],
+      "section": "10",
+      "grade": "derived",
+      "source": "FM 21-31 section 10 relief; a mountain is a summit, drawn as a peak"
+    },
+    {
+      "id": "rock",
+      "category": "relief",
+      "dimension": "point",
+      "colour": [
+        0.7,
+        0.48,
+        0.32,
+        1
+      ],
+      "section": "10",
+      "grade": "derived",
+      "source": "USGS Topographic Map Symbols; rock outcrop"
+    },
+    {
+      "id": "depression",
+      "category": "relief",
+      "dimension": "point",
+      "colour": [
+        0.7,
+        0.48,
+        0.32,
+        1
+      ],
+      "section": "10",
+      "grade": "derived",
+      "source": "FM 21-31 section 10 relief; a depression is a hachured closed contour with the ticks inward"
+    },
+    {
+      "id": "spot_height",
+      "category": "control",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.0,
+        0.0,
+        1
+      ],
+      "section": "22",
+      "grade": "derived",
+      "source": "FM 21-31 section 22 control points and elevations; spot height is a dot with a value"
+    },
+    {
+      "id": "triangulation_point",
+      "category": "control",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.0,
+        0.0,
+        1
+      ],
+      "section": "22",
+      "grade": "derived",
+      "source": "FM 21-31 section 22; a triangulation point is a triangle"
+    },
+    {
+      "id": "benchmark",
+      "category": "control",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.0,
+        0.0,
+        1
+      ],
+      "section": "22",
+      "grade": "derived",
+      "source": "FM 21-31 section 22; a benchmark is a levelling mark"
+    },
+    {
+      "id": "deciduous",
+      "category": "vegetation",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.0,
+        1
+      ],
+      "section": "11",
+      "grade": "derived",
+      "source": "FM 21-31 section 11 vegetation; deciduous woodland is a broad canopy"
+    },
+    {
+      "id": "coniferous",
+      "category": "vegetation",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.0,
+        1
+      ],
+      "section": "11",
+      "grade": "derived",
+      "source": "FM 21-31 section 11 vegetation; coniferous woodland is a conical canopy"
+    },
+    {
+      "id": "mixed_forest",
+      "category": "vegetation",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.0,
+        1
+      ],
+      "section": "11",
+      "grade": "derived",
+      "source": "FM 21-31 section 11 vegetation; mixed forest is the two canopies together"
+    },
+    {
+      "id": "orchard",
+      "category": "vegetation",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.0,
+        1
+      ],
+      "section": "11",
+      "grade": "derived",
+      "source": "FM 21-31 section 11 vegetation; an orchard is a regular row of trees"
+    },
+    {
+      "id": "vineyard",
+      "category": "vegetation",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.0,
+        1
+      ],
+      "section": "11",
+      "grade": "derived",
+      "source": "FM 21-31 section 11 vegetation; a vineyard is a regular row of vines"
+    },
+    {
+      "id": "brushwood",
+      "category": "vegetation",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.0,
+        1
+      ],
+      "section": "11",
+      "grade": "derived",
+      "source": "FM 21-31 section 11 vegetation; brushwood is low scattered growth"
+    },
+    {
+      "id": "palm",
+      "category": "vegetation",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.0,
+        1
+      ],
+      "section": "11",
+      "grade": "derived",
+      "source": "FM 21-31 section 11 vegetation; a palm is a fronded tree"
+    },
+    {
+      "id": "stream",
+      "category": "hydrography",
+      "dimension": "line",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "9",
+      "grade": "derived",
+      "source": "FM 21-31 section 9 drainage; a perennial stream is a continuous line"
+    },
+    {
+      "id": "intermittent_stream",
+      "category": "hydrography",
+      "dimension": "line",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "9",
+      "grade": "derived",
+      "source": "FM 21-31 section 9 drainage; an intermittent stream is a dashed line"
+    },
+    {
+      "id": "lake",
+      "category": "hydrography",
+      "dimension": "area",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "9",
+      "grade": "derived",
+      "source": "FM 21-31 section 9 drainage; a lake is a closed water body"
+    },
+    {
+      "id": "marsh",
+      "category": "hydrography",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "9",
+      "grade": "derived",
+      "source": "FM 21-31 section 9 drainage; a marsh is a grass tuft over water"
+    },
+    {
+      "id": "spring",
+      "category": "hydrography",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "9",
+      "grade": "derived",
+      "source": "FM 21-31 section 9 drainage; a spring is a source point"
+    },
+    {
+      "id": "city",
+      "category": "populated",
+      "dimension": "point",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "section": "20",
+      "grade": "derived",
+      "source": "FM 21-31 section 20 populated places; a city is a large built-up block"
+    },
+    {
+      "id": "town",
+      "category": "populated",
+      "dimension": "point",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "section": "20",
+      "grade": "derived",
+      "source": "FM 21-31 section 20 populated places; a town is a medium built-up block"
+    },
+    {
+      "id": "village",
+      "category": "populated",
+      "dimension": "point",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "section": "20",
+      "grade": "derived",
+      "source": "FM 21-31 section 20 populated places; a village is a small built-up block"
+    },
+    {
+      "id": "built_up_area",
+      "category": "populated",
+      "dimension": "area",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "section": "19",
+      "grade": "derived",
+      "source": "FM 21-31 section 19 buildings and populated places; a built-up area is a hatched block"
+    },
+    {
+      "id": "church",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "19",
+      "grade": "derived",
+      "source": "FM 21-31 section 19; a church carries a cross"
+    },
+    {
+      "id": "chapel",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "19",
+      "grade": "derived",
+      "source": "FM 21-31 section 19; a chapel carries a cross"
+    },
+    {
+      "id": "cross",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "19",
+      "grade": "derived",
+      "source": "FM 21-31 section 19; a cross is a religious monument"
+    },
+    {
+      "id": "ruin",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "19",
+      "grade": "derived",
+      "source": "FM 21-31 section 19; a ruin is a broken building"
+    },
+    {
+      "id": "hospital",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21 industrial and public works; a hospital carries a cross in a frame"
+    },
+    {
+      "id": "monument",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a monument is an obelisk on a base"
+    },
+    {
+      "id": "radio_tower",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21 industrial works; radio and television broadcasting (DGIWG DTM PO_0409)"
+    },
+    {
+      "id": "telephone_exchange",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; telephone exchanges and repeaters (DGIWG DTM PO_0454)"
+    },
+    {
+      "id": "lighthouse",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "12",
+      "grade": "derived",
+      "source": "FM 21-31 section 12 coastal hydrography; a lighthouse (DGIWG DTM PO_1399)"
+    },
+    {
+      "id": "water_tower",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a water tower is a tank on legs"
+    },
+    {
+      "id": "power_plant",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a power plant is a building with a stack"
+    },
+    {
+      "id": "solar",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a solar works is a tilted panel"
+    },
+    {
+      "id": "wind",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a wind works is a turbine"
+    },
+    {
+      "id": "wave",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a wave works is a sea wave"
+    },
+    {
+      "id": "fuel_station",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a fuel station is a pump"
+    },
+    {
+      "id": "factory",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a factory is a building with a sawtooth roof"
+    },
+    {
+      "id": "quarry",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a quarry is an open pit"
+    },
+    {
+      "id": "stack",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a stack is a tall chimney"
+    },
+    {
+      "id": "water_tank",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a water tank is a tank on the ground"
+    },
+    {
+      "id": "fountain",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a fountain is a basin with a jet"
+    },
+    {
+      "id": "tourism",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a tourism or viewpoint point is a sight point"
+    },
+    {
+      "id": "view_tower",
+      "category": "works",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "21",
+      "grade": "derived",
+      "source": "FM 21-31 section 21; a viewing tower is a tower with a platform"
+    },
+    {
+      "id": "shipwreck",
+      "category": "hydrography",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "12",
+      "grade": "derived",
+      "source": "FM 21-31 section 12 coastal hydrography; a wreck is a broken hull"
+    },
+    {
+      "id": "bunker",
+      "category": "military",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.4,
+        0.1,
+        1
+      ],
+      "section": "19",
+      "grade": "derived",
+      "source": "FM 21-31 section 19 structures; a bunker is a low block with a slit"
+    },
+    {
+      "id": "fortress",
+      "category": "military",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.4,
+        0.1,
+        1
+      ],
+      "section": "19",
+      "grade": "derived",
+      "source": "FM 21-31 section 19 structures; a fortress is a block with battlements"
+    },
+    {
+      "id": "airfield",
+      "category": "transport",
+      "dimension": "point",
+      "colour": [
+        0.8,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "15",
+      "grade": "derived",
+      "source": "FM 21-31 section 15 roads small scale; an airfield is crossed runways"
+    },
+    {
+      "id": "bus_stop",
+      "category": "transport",
+      "dimension": "point",
+      "colour": [
+        0.8,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "16",
+      "grade": "derived",
+      "source": "FM 21-31 section 16 related road features; a bus stop is a stop mark"
+    },
+    {
+      "id": "quay",
+      "category": "transport",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "12",
+      "grade": "derived",
+      "source": "FM 21-31 section 12 coastal hydrography; a quay is a wharf"
+    },
+    {
+      "id": "bridge",
+      "category": "transport",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "18",
+      "grade": "derived",
+      "source": "FM 21-31 section 18 crossings; a bridge passes over water"
+    },
+    {
+      "id": "tunnel",
+      "category": "transport",
+      "dimension": "point",
+      "colour": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "section": "16",
+      "grade": "derived",
+      "source": "FM 21-31 section 16; a tunnel is an arch"
+    },
+    {
+      "id": "ford",
+      "category": "transport",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "section": "18",
+      "grade": "derived",
+      "source": "FM 21-31 section 18 crossings; a ford is a crossing on water"
+    },
+    {
+      "id": "railway",
+      "category": "transport",
+      "dimension": "line",
+      "colour": [
+        0.0,
+        0.0,
+        0.0,
+        1
+      ],
+      "section": "17",
+      "grade": "derived",
+      "source": "FM 21-31 section 17 railroads; a railway is a line with cross-ties"
+    },
+    {
+      "id": "international_boundary",
+      "category": "boundary",
+      "dimension": "line",
+      "colour": [
+        0.0,
+        0.0,
+        0.0,
+        1
+      ],
+      "section": "23",
+      "grade": "derived",
+      "source": "FM 21-31 section 23 boundaries; an international boundary is a dash-dot-dot line"
+    },
+    {
+      "id": "provincial_boundary",
+      "category": "boundary",
+      "dimension": "line",
+      "colour": [
+        0.0,
+        0.0,
+        0.0,
+        1
+      ],
+      "section": "23",
+      "grade": "derived",
+      "source": "FM 21-31 section 23 boundaries; a provincial boundary is a dashed line"
+    },
+    {
+      "id": "border_crossing",
+      "category": "boundary",
+      "dimension": "point",
+      "colour": [
+        0.0,
+        0.0,
+        0.0,
+        1
+      ],
+      "section": "23",
+      "grade": "derived",
+      "source": "FM 21-31 section 23 boundaries; a border crossing is a gate"
+    }
+  ],
+  "locations": [
+    {
+      "class": "Mount",
+      "symbol": null,
+      "category": "relief",
+      "colour": [
+        0.7,
+        0.48,
+        0.32,
+        1
+      ],
+      "size": 18,
+      "font": "AEEFont",
+      "textSize": 0.09,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes Mount, drawStyle mount; the engine draws the relief, the colour is the standard relief brown"
+    },
+    {
+      "class": "Name",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 12,
+      "font": "AEEFont",
+      "textSize": 0.06,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes Name, drawStyle name; a place label"
+    },
+    {
+      "class": "Strategic",
+      "symbol": null,
+      "category": "military",
+      "colour": [
+        0.8,
+        0.1,
+        0.1,
+        1
+      ],
+      "size": 16,
+      "font": "AEEFont",
+      "textSize": 0.08,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes Strategic, drawStyle area; a strategic area"
+    },
+    {
+      "class": "StrongpointArea",
+      "symbol": null,
+      "category": "military",
+      "colour": [
+        0.8,
+        0.1,
+        0.1,
+        1
+      ],
+      "size": 14,
+      "font": "AEEFont",
+      "textSize": 0.07,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes StrongpointArea, drawStyle area"
+    },
+    {
+      "class": "FlatArea",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 14,
+      "font": "AEEFont",
+      "textSize": 0.07,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes FlatArea, drawStyle area"
+    },
+    {
+      "class": "FlatAreaCity",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 14,
+      "font": "AEEFont",
+      "textSize": 0.07,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes FlatAreaCity, drawStyle area"
+    },
+    {
+      "class": "FlatAreaCitySmall",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 12,
+      "font": "AEEFont",
+      "textSize": 0.06,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes FlatAreaCitySmall, drawStyle area"
+    },
+    {
+      "class": "CityCenter",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 16,
+      "font": "AEEFont",
+      "textSize": 0.08,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes CityCenter, drawStyle area; a city centre area"
+    },
+    {
+      "class": "Airport",
+      "symbol": null,
+      "category": "transport",
+      "colour": [
+        0.8,
+        0.1,
+        0.1,
+        1
+      ],
+      "size": 16,
+      "font": "AEEFont",
+      "textSize": 0.07,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes Airport, drawStyle area; an airport area"
+    },
+    {
+      "class": "NameMarine",
+      "symbol": null,
+      "category": "hydrography",
+      "colour": [
+        0.0,
+        0.5,
+        0.75,
+        1
+      ],
+      "size": 12,
+      "font": "AEEFont",
+      "textSize": 0.06,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes NameMarine, drawStyle name; a marine place label"
+    },
+    {
+      "class": "NameCityCapital",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 14,
+      "font": "AEEFont",
+      "textSize": 0.09,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes NameCityCapital, drawStyle name"
+    },
+    {
+      "class": "NameCity",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 13,
+      "font": "AEEFont",
+      "textSize": 0.075,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes NameCity, drawStyle name"
+    },
+    {
+      "class": "NameVillage",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 11,
+      "font": "AEEFont",
+      "textSize": 0.06,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes NameVillage, drawStyle name"
+    },
+    {
+      "class": "NameLocal",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 10,
+      "font": "AEEFont",
+      "textSize": 0.05,
+      "shadow": 1,
+      "grade": "derived",
+      "source": "CfgLocationTypes NameLocal, drawStyle name"
+    },
+    {
+      "class": "Hill",
+      "symbol": "hill",
+      "category": "relief",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes Hill, drawStyle icon; relief prints brown"
+    },
+    {
+      "class": "ViewPoint",
+      "symbol": "monument",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes ViewPoint, drawStyle icon; a sight point"
+    },
+    {
+      "class": "RockArea",
+      "symbol": "rock",
+      "category": "relief",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes RockArea, drawStyle icon; a rock outcrop"
+    },
+    {
+      "class": "BorderCrossing",
+      "symbol": "border_crossing",
+      "category": "boundary",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes BorderCrossing, drawStyle icon; a boundary gate"
+    },
+    {
+      "class": "VegetationBroadleaf",
+      "symbol": "deciduous",
+      "category": "vegetation",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes VegetationBroadleaf, drawStyle icon; vegetation prints green"
+    },
+    {
+      "class": "VegetationFir",
+      "symbol": "coniferous",
+      "category": "vegetation",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes VegetationFir, drawStyle icon; a conical canopy"
+    },
+    {
+      "class": "VegetationPalm",
+      "symbol": "palm",
+      "category": "vegetation",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes VegetationPalm, drawStyle icon; a fronded tree"
+    },
+    {
+      "class": "VegetationVineyard",
+      "symbol": "vineyard",
+      "category": "vegetation",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "font": null,
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes VegetationVineyard, drawStyle icon; a row of vines"
+    },
+    {
+      "class": "fakeTown",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 12,
+      "font": "AEEFont",
+      "textSize": 0.06,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes fakeTown, drawStyle area"
+    },
+    {
+      "class": "Area",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "size": 12,
+      "font": "AEEFont",
+      "textSize": 0.06,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes Area, drawStyle area"
+    },
+    {
+      "class": "Flag",
+      "symbol": null,
+      "category": "populated",
+      "colour": [
+        0.8,
+        0.1,
+        0.1,
+        1
+      ],
+      "size": 12,
+      "font": "AEEFont",
+      "textSize": 0.05,
+      "shadow": 0,
+      "grade": "derived",
+      "source": "CfgLocationTypes Flag, drawStyle icon"
+    }
+  ],
+  "objects": [
+    {
+      "class": "Bush",
+      "symbol": "brushwood",
+      "category": "vegetation",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 10,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Bush; low growth, FM 21-31 section 11"
+    },
+    {
+      "class": "Rock",
+      "symbol": "rock",
+      "category": "relief",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Rock; a rock outcrop"
+    },
+    {
+      "class": "SmallTree",
+      "symbol": "deciduous",
+      "category": "vegetation",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 10,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl SmallTree; FM 21-31 section 11"
+    },
+    {
+      "class": "Tree",
+      "symbol": "deciduous",
+      "category": "vegetation",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Tree; FM 21-31 section 11"
+    },
+    {
+      "class": "busstop",
+      "symbol": "bus_stop",
+      "category": "transport",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl busstop; FM 21-31 section 16"
+    },
+    {
+      "class": "fuelstation",
+      "symbol": "fuel_station",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl fuelstation; FM 21-31 section 21"
+    },
+    {
+      "class": "hospital",
+      "symbol": "hospital",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl hospital; FM 21-31 section 21"
+    },
+    {
+      "class": "church",
+      "symbol": "church",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl church; FM 21-31 section 19"
+    },
+    {
+      "class": "lighthouse",
+      "symbol": "lighthouse",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl lighthouse; FM 21-31 section 12"
+    },
+    {
+      "class": "power",
+      "symbol": "power_plant",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl power; FM 21-31 section 21"
+    },
+    {
+      "class": "powersolar",
+      "symbol": "solar",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl powersolar; FM 21-31 section 21"
+    },
+    {
+      "class": "powerwave",
+      "symbol": "wave",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl powerwave; FM 21-31 section 21"
+    },
+    {
+      "class": "powerwind",
+      "symbol": "wind",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl powerwind; FM 21-31 section 21"
+    },
+    {
+      "class": "quay",
+      "symbol": "quay",
+      "category": "transport",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl quay; FM 21-31 section 12"
+    },
+    {
+      "class": "transmitter",
+      "symbol": "radio_tower",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl transmitter; FM 21-31 section 21 and DGIWG DTM PO_0409"
+    },
+    {
+      "class": "watertower",
+      "symbol": "water_tower",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl watertower; FM 21-31 section 21"
+    },
+    {
+      "class": "Cross",
+      "symbol": "cross",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Cross; FM 21-31 section 19"
+    },
+    {
+      "class": "Chapel",
+      "symbol": "chapel",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Chapel; FM 21-31 section 19"
+    },
+    {
+      "class": "Shipwreck",
+      "symbol": "shipwreck",
+      "category": "hydrography",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Shipwreck; FM 21-31 section 12"
+    },
+    {
+      "class": "Bunker",
+      "symbol": "bunker",
+      "category": "military",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Bunker; FM 21-31 section 19"
+    },
+    {
+      "class": "Fortress",
+      "symbol": "fortress",
+      "category": "military",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 16,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Fortress; FM 21-31 section 19"
+    },
+    {
+      "class": "Fountain",
+      "symbol": "fountain",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Fountain; FM 21-31 section 21"
+    },
+    {
+      "class": "Ruin",
+      "symbol": "ruin",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Ruin; FM 21-31 section 19"
+    },
+    {
+      "class": "Stack",
+      "symbol": "stack",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Stack; FM 21-31 section 21"
+    },
+    {
+      "class": "Tourism",
+      "symbol": "tourism",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 12,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl Tourism; FM 21-31 section 21"
+    },
+    {
+      "class": "ViewTower",
+      "symbol": "view_tower",
+      "category": "works",
+      "colour": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "size": 14,
+      "importance": 1,
+      "grade": "derived",
+      "source": "RscMapControl ViewTower; FM 21-31 section 21"
+    }
+  ],
+  "map_colours": {
+    "note": "The RscMapControl palette. Relief brown, water blue, vegetation green, roads red and white, per the USGS and FM 21-31 palette. Each value is derived from the standard palette.",
+    "colorLevels": [
+      0.7,
+      0.48,
+      0.32,
+      1
+    ],
+    "colorMainCountlines": [
+      0.55,
+      0.35,
+      0.2,
+      1
+    ],
+    "colorCountlines": [
+      0.7,
+      0.48,
+      0.32,
+      1
+    ],
+    "colorMainCountlinesWater": [
+      0.0,
+      0.5,
+      0.75,
+      1
+    ],
+    "colorCountlinesWater": [
+      0.3,
+      0.6,
+      0.8,
+      1
+    ],
+    "colorRoads": [
+      0.8,
+      0.1,
+      0.1,
+      1
+    ],
+    "colorRoadsFill": [
+      0.95,
+      0.9,
+      0.8,
+      1
+    ],
+    "colorMainRoads": [
+      0.7,
+      0.0,
+      0.0,
+      1
+    ],
+    "colorMainRoadsFill": [
+      0.95,
+      0.9,
+      0.8,
+      1
+    ],
+    "colorRailWay": [
+      0.0,
+      0.0,
+      0.0,
+      1
+    ],
+    "colorPowerLines": [
+      0.0,
+      0.0,
+      0.0,
+      1
+    ],
+    "colorTracks": [
+      0.4,
+      0.3,
+      0.2,
+      1
+    ],
+    "colorTracksFill": [
+      0.9,
+      0.85,
+      0.75,
+      1
+    ],
+    "colorTrails": [
+      0.4,
+      0.3,
+      0.2,
+      1
+    ],
+    "colorTrailsFill": [
+      0.9,
+      0.85,
+      0.75,
+      1
+    ],
+    "colorSea": [
+      0.55,
+      0.7,
+      0.85,
+      1
+    ],
+    "colorForest": [
+      0.65,
+      0.8,
+      0.6,
+      1
+    ],
+    "colorForestBorder": [
+      0.0,
+      0.5,
+      0.0,
+      1
+    ],
+    "colorRocks": [
+      0.75,
+      0.7,
+      0.6,
+      1
+    ],
+    "colorRocksBorder": [
+      0.5,
+      0.45,
+      0.4,
+      1
+    ],
+    "colorBackground": [
+      0.9,
+      0.88,
+      0.8,
+      1
+    ]
+  },
+  "map_display": {
+    "note": "The map display levers. maxSatelliteAlpha fades the baked satellite texture so the vector linework reads. showCountourInterval shows the contour interval label. Both are engine fields; the values are a model choice with no standard.",
+    "maxSatelliteAlpha": 0.35,
+    "showCountourInterval": 1,
+    "grade": "UNSOURCED",
+    "source": "A model choice. Prior art BHC Map Contour (maxSatelliteAlpha 0.5) and Enhanced Map (showCountourInterval 1); no standard fixes the value"
+  },
+  "unavailable": []
+}

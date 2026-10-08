@@ -87,6 +87,16 @@ jobs:
         run: python3 tools/validation/gen_symbology_tables.py --check
       - name: Symbology table and kernel validation
         run: python3 tools/validation/validate_symbology.py
+      - name: Terrain table freshness check
+        run: python3 tools/validation/gen_terrain_tables.py --check
+      - name: Terrain table and registry validation
+        run: python3 tools/validation/validate_terrain.py
+      - name: Terrain symbol texture freshness check
+        run: python3 tools/gen_terrain_symbols.py --check
+      - name: Terrain symbol texture and provenance validation
+        run: python3 tools/validation/validate_terrain_symbols.py
+      - name: Terrain symbol alpha validation
+        run: python3 tools/validation/validate_terrain_alpha.py
       - name: Wildlife ecology projection freshness check
         run: python3 tools/validation/gen_wildlife_ecology.py --check
       - name: Wildlife ecology corpus validation
