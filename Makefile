@@ -6,13 +6,13 @@ data:
 	tools/build_ballistics_data.sh
 
 check:
-	hemtt check -p -e
+	tools/hemtt.sh check -p -e
 
 build:
-	hemtt build
+	tools/hemtt.sh build
 
 release:
-	hemtt release
+	tools/hemtt.sh release
 
 test:
 	python3 -m unittest discover -s tools/tests

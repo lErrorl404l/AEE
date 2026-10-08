@@ -263,7 +263,7 @@ if [ "${AEE_SKIP_BUILD:-0}" != "1" ]; then
     echo "==> hemtt build (clean — removes the incremental cache so a stale"
     echo "    PBO can never slip into the test or a release)"
     rm -rf "$ROOT/.hemttout/build" "$ROOT/.hemttout/bincache" "$ROOT/.hemttout/last_build.hsb"
-    (cd "$ROOT" && hemtt build >/dev/null)
+    (cd "$ROOT" && "$ROOT/tools/hemtt.sh" build >/dev/null)
 
     echo "==> assemble @aee"
     rm -rf "$MODS/@aee"
