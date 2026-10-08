@@ -25,7 +25,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_FL_AFD_SUB | Friend | Land | AFD SUB | none | Public domain | Urhixidur |
 | AEE_FL_AFD_UNK | Friend | Land | AFD UNK | none | Public domain | Urhixidur |
 | AEE_FL_APP_6_Air_Defence | Friend | Land | APP-6 Air Defence | none | Public domain | APP-6 and myow nwork |
-| AEE_FL_APP_6_Air_Force | Friend | Land | APP-6 Air Force | c_plane | Public domain | Original: noclador , vectorized by Chabacano . |
+| AEE_FL_APP_6_Air_Force | Friend | Land | APP-6 Air Force | none | Public domain | Original: noclador , vectorized by Chabacano . |
 | AEE_FL_APP_6_Air_transportable | Friend | Land | APP-6 Air-transportable | none | Public domain | Original: noclador , vectorized by Chabacano . |
 | AEE_FL_APP_6_Airmobile | Friend | Land | APP-6 Airmobile | none | Public domain | Original: noclador , vectorized by Chabacano . |
 | AEE_FL_APP_6_Airmobile_Infantry | Friend | Land | APP-6 Airmobile Infantry | none | Public domain | Original: noclador , vectorized by Chabacano . |
@@ -145,7 +145,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des_2 | Friend | Land | Friendly Unit Anti-Tank - Tank Destroyers - Wheeled Agile | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des_3 | Friend | Land | Friendly Unit Anti-Tank - Tank Destroyers - Wheeled Agile | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FL_Friendly_Unit_Anti_Tank_Artiller | Friend | Land | Friendly Unit Anti-Tank Artillery | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_FL_Friendly_Unit_Armour | Friend | Land | Friendly Unit Armour | b_armor | CC BY-SA 4.0 | CdnMCG |
+| AEE_FL_Friendly_Unit_Armour | Friend | Land | Friendly Unit Armour | b_armor, b_mech_inf | CC BY-SA 4.0 | CdnMCG |
 | AEE_FL_Friendly_Unit_Armour_2 | Friend | Land | Friendly Unit Armour | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FL_Friendly_Unit_Armour_Amphibious | Friend | Land | Friendly Unit Armour - Amphibious | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FL_Friendly_Unit_Armour_Amphibious_2 | Friend | Land | Friendly Unit Armour - Amphibious | none | CC BY-SA 4.0 | CdnMCG |
@@ -366,7 +366,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | id | affiliation | dimension | function | used_for | licence | author |
 |---|---|---|---|---|---|---|
 | AEE_FA_APP_6_Aerial_Refuel | Friend | Air/Space | APP-6 Aerial Refuel | none | Public domain | Original: noclador , vectorized by Chabacano . |
-| AEE_FA_APP_6_Army_Aviation | Friend | Air/Space | APP-6 Army Aviation | c_air | Public domain | Original: noclador , vectorized by Chabacano . |
+| AEE_FA_APP_6_Army_Aviation | Friend | Air/Space | APP-6 Army Aviation | none | Public domain | Original: noclador , vectorized by Chabacano . |
 | AEE_FA_Friendly_Air_Unit | Friend | Air/Space | Friendly Air Unit | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FA_Friendly_Air_Unit_Solid | Friend | Air/Space | Friendly Air Unit - Solid | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FA_Friendly_Air_or_Space_Unit | Friend | Air/Space | Friendly Air or Space Unit | none | CC BY-SA 4.0 | CdnMCG |
@@ -374,7 +374,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_FA_Friendly_Unit_Airborne_Forces | Friend | Air/Space | Friendly Unit Airborne Forces | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FA_Friendly_Unit_Anti_tank_Aviation | Friend | Air/Space | Friendly Unit Anti-tank Aviation | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FA_Friendly_Unit_Artillery_Airborne | Friend | Air/Space | Friendly Unit Artillery - Airborne | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_FA_Friendly_Unit_Aviation | Friend | Air/Space | Friendly Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
+| AEE_FA_Friendly_Unit_Aviation | Friend | Air/Space | Friendly Unit Aviation | b_air | CC BY-SA 4.0 | CdnMCG |
 | AEE_FA_Friendly_Unit_Aviation_2 | Friend | Air/Space | Friendly Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FA_Friendly_Unit_Aviation_3 | Friend | Air/Space | Friendly Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FA_Friendly_Unit_Aviation_Attack | Friend | Air/Space | Friendly Unit Aviation - Attack | none | CC BY-SA 4.0 | CdnMCG |
@@ -415,7 +415,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_FS_Friendly_Unit_Infantry_Naval_Inf | Friend | Sea Surface | Friendly Unit Infantry - Naval Infantry | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FS_Friendly_Unit_Infantry_Naval_Inf_2 | Friend | Sea Surface | Friendly Unit Infantry - Naval Infantry - Mechanized - Heavy | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_FS_Friendly_Unit_Military_Engineers | Friend | Sea Surface | Friendly Unit Military Engineers - Construction Engineers - Naval | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_FS_Friendly_Unit_Naval | Friend | Sea Surface | Friendly Unit Naval | none | CC BY-SA 4.0 | CdnMCG |
+| AEE_FS_Friendly_Unit_Naval | Friend | Sea Surface | Friendly Unit Naval | b_naval | CC BY-SA 4.0 | CdnMCG |
 | AEE_FS_Friendly_Unit_Special_Operations | Friend | Sea Surface | Friendly Unit Special Operations Force - Naval | none | CC BY-SA 4.0 | CdnMCG |
 
 ### Subsurface
@@ -488,7 +488,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_HL_Hostile_Unit_Anti_Tank_Tank_Dest | Hostile | Land | Hostile Unit Anti-Tank - Tank Destroyers | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HL_Hostile_Unit_Anti_Tank_Tank_Dest_2 | Hostile | Land | Hostile Unit Anti-Tank - Tank Destroyers - Wheeled Agile | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HL_Hostile_Unit_Anti_Tank_Artillery | Hostile | Land | Hostile Unit Anti-Tank Artillery | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_HL_Hostile_Unit_Armour | Hostile | Land | Hostile Unit Armour | o_armor | CC BY-SA 4.0 | CdnMCG |
+| AEE_HL_Hostile_Unit_Armour | Hostile | Land | Hostile Unit Armour | o_armor, o_mech_inf | CC BY-SA 4.0 | CdnMCG |
 | AEE_HL_Hostile_Unit_Armour_2 | Hostile | Land | Hostile Unit Armour | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HL_Hostile_Unit_Armour_3 | Hostile | Land | Hostile Unit Armour | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HL_Hostile_Unit_Armour_Amphibious | Hostile | Land | Hostile Unit Armour - Amphibious | none | CC BY-SA 4.0 | CdnMCG |
@@ -672,7 +672,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_HA_Ground_Track_Unit_Combat_Aviatio_3 | Hostile | Air/Space | Ground Track - Unit - Combat - Aviation - Rotary Wing - Hostile | none | Public domain | Urhixidur |
 | AEE_HA_Hostile_Unit_Airborne_Forces | Hostile | Air/Space | Hostile Unit Airborne Forces | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HA_Hostile_Unit_Anti_tank_Aviation | Hostile | Air/Space | Hostile Unit Anti-tank Aviation | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_HA_Hostile_Unit_Aviation | Hostile | Air/Space | Hostile Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
+| AEE_HA_Hostile_Unit_Aviation | Hostile | Air/Space | Hostile Unit Aviation | o_air | CC BY-SA 4.0 | CdnMCG |
 | AEE_HA_Hostile_Unit_Aviation_2 | Hostile | Air/Space | Hostile Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HA_Hostile_Unit_Aviation_3 | Hostile | Air/Space | Hostile Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HA_Hostile_Unit_Aviation_Attack | Hostile | Air/Space | Hostile Unit Aviation - Attack | none | CC BY-SA 4.0 | CdnMCG |
@@ -702,7 +702,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_HS_Hostile_Unit_Air_Naval_Gunfire_L_2 | Hostile | Sea Surface | Hostile Unit Air Naval Gunfire Liaison Company (USMC) (MCRP 5-2A) | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HS_Hostile_Unit_Infantry_Naval_Infa | Hostile | Sea Surface | Hostile Unit Infantry - Naval Infantry | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_HS_Hostile_Unit_Military_Engineers | Hostile | Sea Surface | Hostile Unit Military Engineers - Construction Engineers - Naval | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_HS_Hostile_Unit_Naval | Hostile | Sea Surface | Hostile Unit Naval | none | CC BY-SA 4.0 | CdnMCG |
+| AEE_HS_Hostile_Unit_Naval | Hostile | Sea Surface | Hostile Unit Naval | o_naval | CC BY-SA 4.0 | CdnMCG |
 | AEE_HS_Hostile_Unit_Special_Operations | Hostile | Sea Surface | Hostile Unit Special Operations Force - Naval | none | CC BY-SA 4.0 | CdnMCG |
 
 ### Subsurface
@@ -768,7 +768,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_NL_Neutral_Unit_Anti_Tank_Tank_Dest | Neutral | Land | Neutral Unit Anti-Tank - Tank Destroyers | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NL_Neutral_Unit_Anti_Tank_Tank_Dest_2 | Neutral | Land | Neutral Unit Anti-Tank - Tank Destroyers - Wheeled Agile | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NL_Neutral_Unit_Anti_Tank_Artillery | Neutral | Land | Neutral Unit Anti-Tank Artillery | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_NL_Neutral_Unit_Armour | Neutral | Land | Neutral Unit Armour | n_armor | CC BY-SA 4.0 | CdnMCG |
+| AEE_NL_Neutral_Unit_Armour | Neutral | Land | Neutral Unit Armour | n_armor, n_mech_inf | CC BY-SA 4.0 | CdnMCG |
 | AEE_NL_Neutral_Unit_Armour_2 | Neutral | Land | Neutral Unit Armour | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NL_Neutral_Unit_Armour_Amphibious | Neutral | Land | Neutral Unit Armour - Amphibious | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NL_Neutral_Unit_Armour_Amphibious_A | Neutral | Land | Neutral Unit Armour - Amphibious (ADRP 1-02 (2015 Dec 07)) | none | CC BY-SA 4.0 | CdnMCG |
@@ -889,7 +889,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 | AEE_NA_Neutral_Air_or_Space_Unit | Neutral | Air/Space | Neutral Air or Space Unit | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NA_Neutral_Unit_Airborne_Forces | Neutral | Air/Space | Neutral Unit Airborne Forces | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NA_Neutral_Unit_Anti_tank_Aviation | Neutral | Air/Space | Neutral Unit Anti-tank Aviation | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_NA_Neutral_Unit_Aviation | Neutral | Air/Space | Neutral Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
+| AEE_NA_Neutral_Unit_Aviation | Neutral | Air/Space | Neutral Unit Aviation | n_air | CC BY-SA 4.0 | CdnMCG |
 | AEE_NA_Neutral_Unit_Aviation_2 | Neutral | Air/Space | Neutral Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NA_Neutral_Unit_Aviation_3 | Neutral | Air/Space | Neutral Unit Aviation | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NA_Neutral_Unit_Aviation_Attack | Neutral | Air/Space | Neutral Unit Aviation - Attack | none | CC BY-SA 4.0 | CdnMCG |
@@ -913,7 +913,7 @@ Attribution: Contains NATO APP-6 and MIL-STD-2525 symbol designs pulled from Wik
 |---|---|---|---|---|---|---|
 | AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L | Neutral | Sea Surface | Neutral Unit Air Naval Gunfire Liaison Company (USMC) | none | CC BY-SA 4.0 | CdnMCG |
 | AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L_2 | Neutral | Sea Surface | Neutral Unit Air Naval Gunfire Liaison Company (USMC) (MCRP 5-2A) | none | CC BY-SA 4.0 | CdnMCG |
-| AEE_NS_Neutral_Unit_Naval | Neutral | Sea Surface | Neutral Unit Naval | none | CC BY-SA 4.0 | CdnMCG |
+| AEE_NS_Neutral_Unit_Naval | Neutral | Sea Surface | Neutral Unit Naval | n_naval | CC BY-SA 4.0 | CdnMCG |
 
 ### Subsurface
 

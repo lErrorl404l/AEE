@@ -29,7 +29,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/APP-6_Army_Aviation.svg",
       "licence": "Public domain",
       "author": "Original: noclador , vectorized by Chabacano .",
-      "used_for": "c_air",
+      "used_for": null,
       "preview": "addons/optics/data/markers/AEE_FA_APP_6_Army_Aviation.paa"
     },
     {
@@ -141,7 +141,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Military_Symbol_-_Friendly_Unit_%28Bichrome_1.5x1_Frame%29-_Aviation_%28NATO_APP-6_Alternate%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": null,
+      "used_for": "b_air",
       "preview": "addons/optics/data/markers/AEE_FA_Friendly_Unit_Aviation.paa"
     },
     {
@@ -701,7 +701,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/APP-6_Air_Force.svg",
       "licence": "Public domain",
       "author": "Original: noclador , vectorized by Chabacano .",
-      "used_for": "c_plane",
+      "used_for": null,
       "preview": "addons/optics/data/markers/AEE_FL_APP_6_Air_Force.paa"
     },
     {
@@ -2381,7 +2381,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Military_Symbol_-_Friendly_Unit_%28Bichrome_1.5x1_Frame%29-_Armour_%28NATO_APP-6%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": "b_armor",
+      "used_for": "b_armor, b_mech_inf",
       "preview": "addons/optics/data/markers/AEE_FL_Friendly_Unit_Armour.paa"
     },
     {
@@ -5489,7 +5489,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Military_Symbol_-_Friendly_Unit_%28Bichrome_1.5x1_Frame%29-_Naval_%28NATO_APP-6A%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": null,
+      "used_for": "b_naval",
       "preview": "addons/optics/data/markers/AEE_FS_Friendly_Unit_Naval.paa"
     },
     {
@@ -5699,7 +5699,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Military_Symbol_-_Hostile_Unit_%28Bichrome_Diamond_Frame%29-_Aviation_%28NATO_APP-6_Alternate%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": null,
+      "used_for": "o_air",
       "preview": "addons/optics/data/markers/AEE_HA_Hostile_Unit_Aviation.paa"
     },
     {
@@ -6623,7 +6623,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Military_Symbol_-_Hostile_Unit_%28Bichrome_Diamond_Frame%29-_Armour_%28NATO_APP-6%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": "o_armor",
+      "used_for": "o_armor, o_mech_inf",
       "preview": "addons/optics/data/markers/AEE_HL_Hostile_Unit_Armour.paa"
     },
     {
@@ -9059,7 +9059,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Military_Symbol_-_Hostile_Unit_%28Bichrome_Diamond_Frame%29-_Naval_%28NATO_APP-6A%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": null,
+      "used_for": "o_naval",
       "preview": "addons/optics/data/markers/AEE_HS_Hostile_Unit_Naval.paa"
     },
     {
@@ -9241,7 +9241,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Military_Symbol_-_Neutral_Unit_%28Bichrome_1.05x1.05_Frame%29-_Aviation_%28NATO_APP-6_Alternate%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": null,
+      "used_for": "n_air",
       "preview": "addons/optics/data/markers/AEE_NA_Neutral_Unit_Aviation.paa"
     },
     {
@@ -10011,7 +10011,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Military_Symbol_-_Neutral_Unit_%28Bichrome_1.05x1.05_Frame%29-_Armour_%28NATO_APP-6%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": "n_armor",
+      "used_for": "n_armor, n_mech_inf",
       "preview": "addons/optics/data/markers/AEE_NL_Neutral_Unit_Armour.paa"
     },
     {
@@ -11565,7 +11565,7 @@
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Military_Symbol_-_Neutral_Unit_%28Bichrome_1.05x1.05_Frame%29-_Naval_%28NATO_APP-6A%29.svg",
       "licence": "CC BY-SA 4.0",
       "author": "CdnMCG",
-      "used_for": null,
+      "used_for": "n_naval",
       "preview": "addons/optics/data/markers/AEE_NS_Neutral_Unit_Naval.paa"
     },
     {
