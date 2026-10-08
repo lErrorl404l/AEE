@@ -247,6 +247,10 @@ private _accMax1 = missionNamespace getVariable ["aee_thermal_agcAcceptMax", 0];
 private _accHeld = (abs (_accMin1 - _accMin0) + abs (_accMax1 - _accMax0)) < (_floorSpan * 0.01);
 diag_log text format ["[P79] DIAG jitter frac=%1 rads=%2 dT=%3 bandMoves=%4 acceptedHeld=%5",
     _JITTER_FRAC toFixed 3, _jitterRads toFixed 6, _jitterDT toFixed 6, _jitterMoves, _accHeld];
+diag_log text format ["[P79] DIAG jitter accepted acc0=[%1,%2] acc1=[%3,%4] span0=%5 band8=%6 atFloor=%7",
+    _accMin0 toFixed 6, _accMax0 toFixed 6, _accMin1 toFixed 6, _accMax1 toFixed 6,
+    (_accMax0 - _accMin0) toFixed 6, ((_accMax0 - _accMin0) * 0.08) toFixed 6,
+    (missionNamespace getVariable ["aee_thermal_agcAtFloor", true])];
 if ((_jitterMoves <= _STATED_JITTER_LEVELS) && _accHeld) then {
     diag_log text format ["[P79] [PASS] (2b) a %1 percent window swing moved b %2 level(s) (bound %3) and the accepted window held",
         (_JITTER_FRAC * 100) toFixed 0, _jitterMoves, _STATED_JITTER_LEVELS];
