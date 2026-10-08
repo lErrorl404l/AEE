@@ -599,9 +599,9 @@ class TestEnvironmentGridSourceContracts(unittest.TestCase):
         self.assertIn("env=%25/%26", text)
         self.assertIn("QGVAR(environment)", text)
 
-    def test_the_environment_debug_switch_exists(self):
+    def test_the_debug_switch_exists(self):
         text = (WILDLIFE / "initSettings.inc.sqf").read_text(encoding="utf-8")
-        self.assertIn("environmentDebug", text)
+        self.assertIn("logDebug", text)
         self.assertIn('"AEE Debug"', text)
 
     def test_the_sampler_reads_the_grid(self):

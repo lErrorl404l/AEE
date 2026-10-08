@@ -55,9 +55,3 @@ AEE_SETTING_SLIDER(callRange,"AEE Wildlife","Communication",20,800,200,0);
 AEE_SETTING_SLIDER(callBudget,"AEE Wildlife","Communication",16,1024,256,0);
 
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Wildlife",false);
-
-AEE_SETTING_CHECKBOX(environmentDebug,"AEE Debug","Wildlife",false);
-
-AEE_SETTING_CHECKBOX(cognitionDebug,"AEE Debug","Wildlife",false);
-
-AEE_SETTING_CHECKBOX(communicationDebug,"AEE Debug","Wildlife",false);
