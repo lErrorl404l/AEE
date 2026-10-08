@@ -1,0 +1,2537 @@
+{
+  "schema": "aee.symbology.engine_markers/1",
+  "note": "Resolved from the installed game config. Do not edit by hand.",
+  "resolved_from": "engine config.bin (hemtt pbo unpack + config derapify): config.cpp, ui_f.cpp",
+  "rows": [
+    {
+      "game_class": "Contact_arrow1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "arrow1"
+    },
+    {
+      "game_class": "Contact_arrow2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "arrow2"
+    },
+    {
+      "game_class": "Contact_arrow3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "arrow3"
+    },
+    {
+      "game_class": "Contact_arrowLeft",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "arrowLeft"
+    },
+    {
+      "game_class": "Contact_arrowRight",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "arrowRight"
+    },
+    {
+      "game_class": "Contact_arrowSmall1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "arrowSmall1"
+    },
+    {
+      "game_class": "Contact_arrowSmall2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "arrowSmall2"
+    },
+    {
+      "game_class": "Contact_art1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "art1"
+    },
+    {
+      "game_class": "Contact_art2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "art2"
+    },
+    {
+      "game_class": "Contact_circle1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "circle1"
+    },
+    {
+      "game_class": "Contact_circle2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "circle2"
+    },
+    {
+      "game_class": "Contact_circle3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "circle3"
+    },
+    {
+      "game_class": "Contact_circle4",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "circle4"
+    },
+    {
+      "game_class": "Contact_dashedLine1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dashedLine1"
+    },
+    {
+      "game_class": "Contact_dashedLine2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dashedLine2"
+    },
+    {
+      "game_class": "Contact_dashedLine3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dashedLine3"
+    },
+    {
+      "game_class": "Contact_defenseLine",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "defenseLine"
+    },
+    {
+      "game_class": "Contact_defenseLineOver",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "defenseLineOver"
+    },
+    {
+      "game_class": "Contact_dot1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dot1"
+    },
+    {
+      "game_class": "Contact_dot2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dot2"
+    },
+    {
+      "game_class": "Contact_dot3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dot3"
+    },
+    {
+      "game_class": "Contact_dot4",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dot4"
+    },
+    {
+      "game_class": "Contact_dot5",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "dot5"
+    },
+    {
+      "game_class": "Contact_pencilCircle1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilCircle1"
+    },
+    {
+      "game_class": "Contact_pencilCircle2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilCircle2"
+    },
+    {
+      "game_class": "Contact_pencilCircle3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilCircle3"
+    },
+    {
+      "game_class": "Contact_pencilDoodle1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilDoodle1"
+    },
+    {
+      "game_class": "Contact_pencilDoodle2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilDoodle2"
+    },
+    {
+      "game_class": "Contact_pencilDoodle3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilDoodle3"
+    },
+    {
+      "game_class": "Contact_pencilDot1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilDot1"
+    },
+    {
+      "game_class": "Contact_pencilDot2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilDot2"
+    },
+    {
+      "game_class": "Contact_pencilDot3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilDot3"
+    },
+    {
+      "game_class": "Contact_pencilTask1",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilTask1"
+    },
+    {
+      "game_class": "Contact_pencilTask2",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilTask2"
+    },
+    {
+      "game_class": "Contact_pencilTask3",
+      "parent_class": "Flag",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Contact",
+      "name_key": "pencilTask3"
+    },
+    {
+      "game_class": "Empty",
+      "parent_class": "",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "0",
+      "side": null,
+      "marker_class": "System",
+      "name_key": "$STR_CFG_MARKERS_EMPTY"
+    },
+    {
+      "game_class": "EmptyIcon",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": null,
+      "name_key": "$STR_CFG_MARKERS_FLAG"
+    },
+    {
+      "game_class": "Flag",
+      "parent_class": "",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": null,
+      "name_key": "$STR_CFG_MARKERS_FLAG"
+    },
+    {
+      "game_class": "GroundSupport_ARTY_EAST",
+      "parent_class": "GroundSupport_ARTY_WEST",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "29",
+      "side": "1",
+      "marker_class": "GroundSupport_ARTY_EAST",
+      "name_key": "GroundSupport_ARTY_EAST"
+    },
+    {
+      "game_class": "GroundSupport_ARTY_RESISTANCE",
+      "parent_class": "GroundSupport_ARTY_WEST",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "29",
+      "side": "1",
+      "marker_class": "GroundSupport_ARTY_RESISTANCE",
+      "name_key": "GroundSupport_ARTY_RESISTANCE"
+    },
+    {
+      "game_class": "GroundSupport_ARTY_WEST",
+      "parent_class": "GroundSupport_CAS_WEST",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "29",
+      "side": "1",
+      "marker_class": "GroundSupport_ARTY_WEST",
+      "name_key": "GroundSupport_ARTY_WEST"
+    },
+    {
+      "game_class": "GroundSupport_CAS_EAST",
+      "parent_class": "GroundSupport_CAS_WEST",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "29",
+      "side": "1",
+      "marker_class": "GroundSupport_CAS_EAST",
+      "name_key": "GroundSupport_CAS_EAST"
+    },
+    {
+      "game_class": "GroundSupport_CAS_RESISTANCE",
+      "parent_class": "GroundSupport_CAS_WEST",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "29",
+      "side": "1",
+      "marker_class": "GroundSupport_CAS_RESISTANCE",
+      "name_key": "GroundSupport_CAS_RESISTANCE"
+    },
+    {
+      "game_class": "GroundSupport_CAS_WEST",
+      "parent_class": "",
+      "source": "config.cpp",
+      "scope": "0",
+      "size": "29",
+      "side": "1",
+      "marker_class": "GroundSupport_CAS_WEST",
+      "name_key": "GroundSupport_CAS_WEST"
+    },
+    {
+      "game_class": "Select",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "System",
+      "name_key": "$STR_CFG_MARKERS_SELECT"
+    },
+    {
+      "game_class": "b_air",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_air"
+    },
+    {
+      "game_class": "b_antiair",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_antiair"
+    },
+    {
+      "game_class": "b_armor",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_armor"
+    },
+    {
+      "game_class": "b_art",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_art"
+    },
+    {
+      "game_class": "b_hq",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_hq"
+    },
+    {
+      "game_class": "b_inf",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_inf"
+    },
+    {
+      "game_class": "b_installation",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_installation"
+    },
+    {
+      "game_class": "b_maint",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_maint"
+    },
+    {
+      "game_class": "b_mech_inf",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_mech_inf"
+    },
+    {
+      "game_class": "b_med",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_med"
+    },
+    {
+      "game_class": "b_mortar",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_mortar"
+    },
+    {
+      "game_class": "b_motor_inf",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_motor_inf"
+    },
+    {
+      "game_class": "b_naval",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_naval"
+    },
+    {
+      "game_class": "b_plane",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_plane"
+    },
+    {
+      "game_class": "b_recon",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_recon"
+    },
+    {
+      "game_class": "b_service",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_service"
+    },
+    {
+      "game_class": "b_support",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_support"
+    },
+    {
+      "game_class": "b_uav",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_uav"
+    },
+    {
+      "game_class": "b_unknown",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_BLUFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_unknown"
+    },
+    {
+      "game_class": "c_air",
+      "parent_class": "c_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Civilian",
+      "name_key": "$STR_DN_HELICOPTER"
+    },
+    {
+      "game_class": "c_car",
+      "parent_class": "c_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Civilian",
+      "name_key": "$STR_DN_CAR"
+    },
+    {
+      "game_class": "c_plane",
+      "parent_class": "c_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Civilian",
+      "name_key": "$STR_DN_PLANE"
+    },
+    {
+      "game_class": "c_ship",
+      "parent_class": "c_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Civilian",
+      "name_key": "$STR_DN_SHIP"
+    },
+    {
+      "game_class": "c_unknown",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Civilian",
+      "name_key": "$STR_A3_CfgMarkers_NATO_unknown"
+    },
+    {
+      "game_class": "flag_AAF",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_AAF"
+    },
+    {
+      "game_class": "flag_Altis",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Altis"
+    },
+    {
+      "game_class": "flag_AltisColonial",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_AltisColonial"
+    },
+    {
+      "game_class": "flag_Astra",
+      "parent_class": "flag_NATO",
+      "source": "config.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_C_CfgMarkers_flag_Astra0"
+    },
+    {
+      "game_class": "flag_Belgium",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Belgium"
+    },
+    {
+      "game_class": "flag_CSAT",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_CSAT"
+    },
+    {
+      "game_class": "flag_Canada",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Canada"
+    },
+    {
+      "game_class": "flag_Catalonia",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Catalonia"
+    },
+    {
+      "game_class": "flag_Croatia",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Croatia"
+    },
+    {
+      "game_class": "flag_CzechRepublic",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_CzechRepublic"
+    },
+    {
+      "game_class": "flag_Denmark",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Denmark"
+    },
+    {
+      "game_class": "flag_EAF",
+      "parent_class": "flag_NATO",
+      "source": "config.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_C_CfgMarkers_flag_EAF0"
+    },
+    {
+      "game_class": "flag_EU",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_EU"
+    },
+    {
+      "game_class": "flag_Enoch",
+      "parent_class": "flag_NATO",
+      "source": "config.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_C_CfgMarkers_flag_Enoch0"
+    },
+    {
+      "game_class": "flag_EnochLooters",
+      "parent_class": "flag_NATO",
+      "source": "config.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_C_CfgMarkers_flag_EnochLooters0"
+    },
+    {
+      "game_class": "flag_FIA",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_FIA"
+    },
+    {
+      "game_class": "flag_France",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_France"
+    },
+    {
+      "game_class": "flag_Georgia",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Georgia"
+    },
+    {
+      "game_class": "flag_Germany",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Germany"
+    },
+    {
+      "game_class": "flag_Greece",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Greece"
+    },
+    {
+      "game_class": "flag_Hungary",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Hungary"
+    },
+    {
+      "game_class": "flag_Iceland",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Iceland"
+    },
+    {
+      "game_class": "flag_Italy",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Italy"
+    },
+    {
+      "game_class": "flag_Luxembourg",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Luxembourg"
+    },
+    {
+      "game_class": "flag_NATO",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_NATO"
+    },
+    {
+      "game_class": "flag_Netherlands",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Netherlands"
+    },
+    {
+      "game_class": "flag_Norway",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Norway"
+    },
+    {
+      "game_class": "flag_Poland",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Poland"
+    },
+    {
+      "game_class": "flag_Portugal",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Portugal"
+    },
+    {
+      "game_class": "flag_Russia",
+      "parent_class": "flag_NATO",
+      "source": "config.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_C_CfgMarkers_flag_Russia0"
+    },
+    {
+      "game_class": "flag_Slovakia",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Slovakia"
+    },
+    {
+      "game_class": "flag_Slovenia",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Slovenia"
+    },
+    {
+      "game_class": "flag_Spain",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_Spain"
+    },
+    {
+      "game_class": "flag_Spetsnaz",
+      "parent_class": "flag_NATO",
+      "source": "config.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_C_CfgMarkers_flag_Spetsnaz0"
+    },
+    {
+      "game_class": "flag_UK",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_UK"
+    },
+    {
+      "game_class": "flag_UN",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_UN"
+    },
+    {
+      "game_class": "flag_USA",
+      "parent_class": "flag_NATO",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Flags",
+      "name_key": "$STR_A3_CfgMarkers_flag_USA"
+    },
+    {
+      "game_class": "group_0",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_0"
+    },
+    {
+      "game_class": "group_1",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_1"
+    },
+    {
+      "game_class": "group_10",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_10"
+    },
+    {
+      "game_class": "group_11",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_11"
+    },
+    {
+      "game_class": "group_2",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_2"
+    },
+    {
+      "game_class": "group_3",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_3"
+    },
+    {
+      "game_class": "group_4",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_4"
+    },
+    {
+      "game_class": "group_5",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_5"
+    },
+    {
+      "game_class": "group_6",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_6"
+    },
+    {
+      "game_class": "group_7",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_7"
+    },
+    {
+      "game_class": "group_8",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_8"
+    },
+    {
+      "game_class": "group_9",
+      "parent_class": "group_0",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Sizes",
+      "name_key": "$STR_A3_CfgMarkers_NATO_size_9"
+    },
+    {
+      "game_class": "hd_ambush",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_ambush"
+    },
+    {
+      "game_class": "hd_ambush_noShadow",
+      "parent_class": "hd_ambush",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_ambush"
+    },
+    {
+      "game_class": "hd_arrow",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_arrow"
+    },
+    {
+      "game_class": "hd_arrow_noShadow",
+      "parent_class": "hd_arrow",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_arrow"
+    },
+    {
+      "game_class": "hd_destroy",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_destroy"
+    },
+    {
+      "game_class": "hd_destroy_noShadow",
+      "parent_class": "hd_destroy",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_destroy"
+    },
+    {
+      "game_class": "hd_dot",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_DOT"
+    },
+    {
+      "game_class": "hd_dot_noShadow",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_DOT"
+    },
+    {
+      "game_class": "hd_end",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_end"
+    },
+    {
+      "game_class": "hd_end_noShadow",
+      "parent_class": "hd_end",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_end"
+    },
+    {
+      "game_class": "hd_flag",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_flag"
+    },
+    {
+      "game_class": "hd_flag_noShadow",
+      "parent_class": "hd_flag",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_flag"
+    },
+    {
+      "game_class": "hd_join",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_join"
+    },
+    {
+      "game_class": "hd_join_noShadow",
+      "parent_class": "hd_join",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_join"
+    },
+    {
+      "game_class": "hd_objective",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_objective"
+    },
+    {
+      "game_class": "hd_objective_noShadow",
+      "parent_class": "hd_objective",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_objective"
+    },
+    {
+      "game_class": "hd_pickup",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_pickup"
+    },
+    {
+      "game_class": "hd_pickup_noShadow",
+      "parent_class": "hd_pickup",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_pickup"
+    },
+    {
+      "game_class": "hd_start",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_start"
+    },
+    {
+      "game_class": "hd_start_noShadow",
+      "parent_class": "hd_start",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_start"
+    },
+    {
+      "game_class": "hd_unknown",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_unknown"
+    },
+    {
+      "game_class": "hd_unknown_noShadow",
+      "parent_class": "hd_unknown",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_unknown"
+    },
+    {
+      "game_class": "hd_warning",
+      "parent_class": "hd_dot",
+      "source": "ui_f.cpp",
+      "scope": "2",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_warning"
+    },
+    {
+      "game_class": "hd_warning_noShadow",
+      "parent_class": "hd_warning",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "draw",
+      "name_key": "$STR_CFG_MARKERS_warning"
+    },
+    {
+      "game_class": "loc_Bunker",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "14",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Bunker"
+    },
+    {
+      "game_class": "loc_BusStop",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_BusStop"
+    },
+    {
+      "game_class": "loc_Bush",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "7",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Bush"
+    },
+    {
+      "game_class": "loc_Chapel",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Chapel"
+    },
+    {
+      "game_class": "loc_Church",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Church"
+    },
+    {
+      "game_class": "loc_Cross",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Cross"
+    },
+    {
+      "game_class": "loc_Fortress",
+      "parent_class": "loc_Bunker",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "14",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Bunker"
+    },
+    {
+      "game_class": "loc_Fountain",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "11",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Fountain"
+    },
+    {
+      "game_class": "loc_Fuelstation",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Fuelstation"
+    },
+    {
+      "game_class": "loc_Hospital",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Hospital"
+    },
+    {
+      "game_class": "loc_Lighthouse",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Lighthouse"
+    },
+    {
+      "game_class": "loc_Power",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Power"
+    },
+    {
+      "game_class": "loc_PowerSolar",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_PowerSolar"
+    },
+    {
+      "game_class": "loc_PowerWave",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_PowerWave"
+    },
+    {
+      "game_class": "loc_PowerWind",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_PowerWind"
+    },
+    {
+      "game_class": "loc_Quay",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Quay"
+    },
+    {
+      "game_class": "loc_Rock",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "12",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Rock"
+    },
+    {
+      "game_class": "loc_Ruin",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "16",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Ruin"
+    },
+    {
+      "game_class": "loc_SmallTree",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "12",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_SmallTree"
+    },
+    {
+      "game_class": "loc_Stack",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "20",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Stack"
+    },
+    {
+      "game_class": "loc_Tourism",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "16",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Tourism"
+    },
+    {
+      "game_class": "loc_Transmitter",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Transmitter"
+    },
+    {
+      "game_class": "loc_Tree",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "12",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_Tree"
+    },
+    {
+      "game_class": "loc_ViewTower",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "16",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_ViewTower"
+    },
+    {
+      "game_class": "loc_WaterTower",
+      "parent_class": "loc_Tree",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "24",
+      "side": null,
+      "marker_class": "Locations",
+      "name_key": "$STR_A3_CfgMarkers_loc_WaterTower"
+    },
+    {
+      "game_class": "mil_ambush",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_ambush"
+    },
+    {
+      "game_class": "mil_ambush_noShadow",
+      "parent_class": "mil_ambush",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_ambush"
+    },
+    {
+      "game_class": "mil_arrow",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_arrow"
+    },
+    {
+      "game_class": "mil_arrow2",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_arrow2"
+    },
+    {
+      "game_class": "mil_arrow2_noShadow",
+      "parent_class": "mil_arrow2",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_arrow2"
+    },
+    {
+      "game_class": "mil_arrow_noShadow",
+      "parent_class": "mil_arrow",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_arrow"
+    },
+    {
+      "game_class": "mil_box",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_box"
+    },
+    {
+      "game_class": "mil_box_noShadow",
+      "parent_class": "mil_box",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_box"
+    },
+    {
+      "game_class": "mil_circle",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_circle"
+    },
+    {
+      "game_class": "mil_circle_noShadow",
+      "parent_class": "mil_circle",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_circle"
+    },
+    {
+      "game_class": "mil_destroy",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_destroy"
+    },
+    {
+      "game_class": "mil_destroy_noShadow",
+      "parent_class": "mil_destroy",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_destroy"
+    },
+    {
+      "game_class": "mil_dot",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_dot"
+    },
+    {
+      "game_class": "mil_dot_noShadow",
+      "parent_class": "mil_dot",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_dot"
+    },
+    {
+      "game_class": "mil_end",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_end"
+    },
+    {
+      "game_class": "mil_end_noShadow",
+      "parent_class": "mil_end",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_end"
+    },
+    {
+      "game_class": "mil_flag",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_flag"
+    },
+    {
+      "game_class": "mil_flag_noShadow",
+      "parent_class": "mil_flag",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_flag"
+    },
+    {
+      "game_class": "mil_join",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_join"
+    },
+    {
+      "game_class": "mil_join_noShadow",
+      "parent_class": "mil_join",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_join"
+    },
+    {
+      "game_class": "mil_marker",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_marker"
+    },
+    {
+      "game_class": "mil_marker_noShadow",
+      "parent_class": "mil_marker",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_marker"
+    },
+    {
+      "game_class": "mil_objective",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_OBJECTIVE"
+    },
+    {
+      "game_class": "mil_objective_noShadow",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_OBJECTIVE"
+    },
+    {
+      "game_class": "mil_pickup",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_pickup"
+    },
+    {
+      "game_class": "mil_pickup_noShadow",
+      "parent_class": "mil_pickup",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_pickup"
+    },
+    {
+      "game_class": "mil_start",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_start"
+    },
+    {
+      "game_class": "mil_start_noShadow",
+      "parent_class": "mil_start",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_start"
+    },
+    {
+      "game_class": "mil_triangle",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_triangle"
+    },
+    {
+      "game_class": "mil_triangle_noShadow",
+      "parent_class": "mil_triangle",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_triangle"
+    },
+    {
+      "game_class": "mil_unknown",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_unknown"
+    },
+    {
+      "game_class": "mil_unknown_noShadow",
+      "parent_class": "mil_unknown",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_unknown"
+    },
+    {
+      "game_class": "mil_warning",
+      "parent_class": "mil_objective",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_warning"
+    },
+    {
+      "game_class": "mil_warning_noShadow",
+      "parent_class": "mil_warning",
+      "source": "ui_f.cpp",
+      "scope": "0",
+      "size": "32",
+      "side": null,
+      "marker_class": "Military",
+      "name_key": "$STR_CFG_MARKERS_warning"
+    },
+    {
+      "game_class": "n_air",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_air"
+    },
+    {
+      "game_class": "n_antiair",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_antiair"
+    },
+    {
+      "game_class": "n_armor",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_armor"
+    },
+    {
+      "game_class": "n_art",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_art"
+    },
+    {
+      "game_class": "n_hq",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_hq"
+    },
+    {
+      "game_class": "n_inf",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_inf"
+    },
+    {
+      "game_class": "n_installation",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_installation"
+    },
+    {
+      "game_class": "n_maint",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_maint"
+    },
+    {
+      "game_class": "n_mech_inf",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_mech_inf"
+    },
+    {
+      "game_class": "n_med",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_med"
+    },
+    {
+      "game_class": "n_mortar",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_mortar"
+    },
+    {
+      "game_class": "n_motor_inf",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_motor_inf"
+    },
+    {
+      "game_class": "n_naval",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_naval"
+    },
+    {
+      "game_class": "n_plane",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_plane"
+    },
+    {
+      "game_class": "n_recon",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_recon"
+    },
+    {
+      "game_class": "n_service",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_service"
+    },
+    {
+      "game_class": "n_support",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_support"
+    },
+    {
+      "game_class": "n_uav",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_uav"
+    },
+    {
+      "game_class": "n_unknown",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_unknown"
+    },
+    {
+      "game_class": "o_air",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_air"
+    },
+    {
+      "game_class": "o_antiair",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_antiair"
+    },
+    {
+      "game_class": "o_armor",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_armor"
+    },
+    {
+      "game_class": "o_art",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_art"
+    },
+    {
+      "game_class": "o_hq",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_hq"
+    },
+    {
+      "game_class": "o_inf",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_inf"
+    },
+    {
+      "game_class": "o_installation",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_installation"
+    },
+    {
+      "game_class": "o_maint",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_maint"
+    },
+    {
+      "game_class": "o_mech_inf",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_mech_inf"
+    },
+    {
+      "game_class": "o_med",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_med"
+    },
+    {
+      "game_class": "o_mortar",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_mortar"
+    },
+    {
+      "game_class": "o_motor_inf",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_motor_inf"
+    },
+    {
+      "game_class": "o_naval",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_naval"
+    },
+    {
+      "game_class": "o_plane",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_plane"
+    },
+    {
+      "game_class": "o_recon",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_recon"
+    },
+    {
+      "game_class": "o_service",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_service"
+    },
+    {
+      "game_class": "o_support",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_support"
+    },
+    {
+      "game_class": "o_uav",
+      "parent_class": "o_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_uav"
+    },
+    {
+      "game_class": "o_unknown",
+      "parent_class": "b_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "0",
+      "marker_class": "NATO_OPFOR",
+      "name_key": "$STR_A3_CfgMarkers_NATO_unknown"
+    },
+    {
+      "game_class": "respawn_air",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_air"
+    },
+    {
+      "game_class": "respawn_armor",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_armor"
+    },
+    {
+      "game_class": "respawn_inf",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_inf"
+    },
+    {
+      "game_class": "respawn_motor",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_motor"
+    },
+    {
+      "game_class": "respawn_naval",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_naval"
+    },
+    {
+      "game_class": "respawn_para",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_para"
+    },
+    {
+      "game_class": "respawn_plane",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_plane"
+    },
+    {
+      "game_class": "respawn_unknown",
+      "parent_class": "Flag",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "32",
+      "side": null,
+      "marker_class": "NATO_Respawn",
+      "name_key": "$STR_A3_CfgMarkers_NATO_respawn_unknown"
+    },
+    {
+      "game_class": "selector_selectable",
+      "parent_class": "waypoint",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": null,
+      "marker_class": null,
+      "name_key": "$STR_A3_CfgMarkers_selector_selectable_0"
+    },
+    {
+      "game_class": "selector_selectedEnemy",
+      "parent_class": "waypoint",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": null,
+      "marker_class": null,
+      "name_key": "$STR_A3_CfgMarkers_selector_selectedEnemy_0"
+    },
+    {
+      "game_class": "selector_selectedFriendly",
+      "parent_class": "waypoint",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": null,
+      "marker_class": null,
+      "name_key": "$STR_A3_CfgMarkers_selector_selectedFriendly_0"
+    },
+    {
+      "game_class": "selector_selectedMission",
+      "parent_class": "waypoint",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": null,
+      "marker_class": null,
+      "name_key": "$STR_A3_CfgMarkers_selector_selectedMission_0"
+    },
+    {
+      "game_class": "u_installation",
+      "parent_class": "n_unknown",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": "1",
+      "marker_class": "NATO_Independent",
+      "name_key": "$STR_A3_CfgMarkers_NATO_installation"
+    },
+    {
+      "game_class": "waypoint",
+      "parent_class": "",
+      "source": "ui_f.cpp",
+      "scope": "1",
+      "size": "29",
+      "side": null,
+      "marker_class": null,
+      "name_key": "$STR_A3_CfgMarkers_waypoint_0"
+    }
+  ]
+}

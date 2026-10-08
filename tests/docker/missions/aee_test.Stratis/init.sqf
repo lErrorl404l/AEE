@@ -3308,6 +3308,12 @@ private _p29Pass = 0;
     // probe addon is loaded it reports the merge winner instead (used by
     // docker_test.sh --merge-order). It renders nothing.
     execVM "aee_p118_ownership_probe.sqf";
+    // PHASE 119 lives in aee_p119_marker_inheritance_probe.sqf: the engine
+    // marker classes AEE re-declares keep their vanilla scope, draw the real
+    // AEE .paa and the friendly markers carry the Friend category (ADR-029).
+    // It reads the merged config and renders nothing.
+    execVM "aee_p119_marker_inheritance_probe.sqf";
+
     // PHASE 120 lives in aee_p120_mobility_cost_probe.sqf: the five mobility
     // handlers run at 20 Hz on the client, so a dedicated server cannot
     // register them, but the per-frame loop body and the per-tick log line the
