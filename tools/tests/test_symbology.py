@@ -63,6 +63,8 @@ HUD_MARKERS_SRC = (OPTICS / "functions" / "hud" / "fnc_hudMarkers.sqf").read_tex
 )
 POSTINIT_SRC = (OPTICS / "XEH_postInit.sqf").read_text(encoding="utf-8")
 CONFIG_SRC = (OPTICS / "config.cpp").read_text(encoding="utf-8")
+FAMILY_SRC = (OPTICS / "config_family.hpp").read_text(encoding="utf-8")
+MARKERS_SRC = (OPTICS / "config_markers.hpp").read_text(encoding="utf-8")
 RSCTITLES_SRC = (OPTICS / "RscTitles.hpp").read_text(encoding="utf-8")
 SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
 STRINGTABLE_SRC = (OPTICS / "stringtable.xml").read_text(encoding="utf-8")
@@ -361,7 +363,7 @@ class TestSymbolMarkerType(unittest.TestCase):
             for category_name, glyph, _grade2, _source2 in GLYPHS:
                 with self.subTest(family=family, category=category_name):
                     self.assertIn(
-                        f"class AEE_{family}_{glyph}: AEE_MarkerBase {{", CONFIG_SRC
+                        f"class AEE_{family}_{glyph}:", FAMILY_SRC
                     )
 
 
@@ -510,23 +512,23 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
 
     def test_the_marker_class_group_is_declared(self):
         self.assertIn("class CfgMarkerClasses {", CONFIG_SRC)
-        self.assertIn("class AEE_Symbology {", CONFIG_SRC)
-        self.assertIn('displayName = "AEE Symbology";', CONFIG_SRC)
+        self.assertIn("class AEE_Friend_Land {", CONFIG_SRC)
+        self.assertIn('displayName = "AEE Friend - Land";', CONFIG_SRC)
 
     def test_the_base_class_is_not_a_usable_icon(self):
         self.assertIn("class AEE_MarkerBase {", CONFIG_SRC)
         self.assertIn("scope = 0;", CONFIG_SRC)
-        self.assertIn('markerClass = "AEE_Symbology";', CONFIG_SRC)
+        self.assertIn('markerClass = "AEE_Unknown_Other";', CONFIG_SRC)
 
     def test_every_family_glyph_pair_is_registered_selectable(self):
         for _affiliation_name, family, _grade, _source in FAMILIES:
             for category_name, glyph, _grade2, _source2 in GLYPHS:
                 with self.subTest(family=family, category=category_name):
                     self.assertIn(
-                        f"class AEE_{family}_{glyph}: AEE_MarkerBase {{", CONFIG_SRC
+                        f"class AEE_{family}_{glyph}:", FAMILY_SRC
                     )
         pairs = len(FAMILIES) * len(GLYPHS)
-        self.assertEqual(CONFIG_SRC.count("scope = 2;"), pairs)
+        self.assertEqual(FAMILY_SRC.count("class AEE_"), pairs)
 
     def test_every_marker_carries_the_size_shadow_and_side(self):
         self.assertIn("size = 32;", CONFIG_SRC)
@@ -538,32 +540,33 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
         # white.  ColorAEE is the neutral class the kernels select.
         self.assertIn("class ColorAEE { color[] = {1, 1, 1, 1}; };", CONFIG_SRC)
         for side in ("side = 0;", "side = 1;", "side = 2;"):
-            self.assertIn(side, CONFIG_SRC)
+            self.assertIn(side, FAMILY_SRC)
 
-    def test_the_vanilla_families_reference_the_engine_textures(self):
-        self.assertIn(
-            'icon = "\\A3\\ui_f\\data\\map\\markers\\nato\\b_inf.paa";', CONFIG_SRC
-        )
-        self.assertIn(
-            'texture = "\\A3\\ui_f\\data\\map\\markers\\nato\\o_armor.paa";', CONFIG_SRC
-        )
+    def test_no_marker_points_at_an_engine_texture(self):
+        # Every AEE marker texture is a real .paa under data/markers.  A
+        # pointer at an engine texture loses the symbol the engine ships.
+        for source in (CONFIG_SRC, FAMILY_SRC, MARKERS_SRC):
+            self.assertNotIn("\\A3\\ui_f\\data\\map\\markers", source)
 
     def test_the_produced_textures_reference_the_aee_data_dir(self):
+        # The five glyphs the catalogue does not publish inherit AEE_MarkerBase
+        # and point at the AEE-produced texture under data/markers.
         for family in ("b", "o", "n", "u"):
             for _category_name, glyph, _grade, _source in GLYPHS:
-                if family in ("b", "o", "n") and glyph in VANILLA_GLYPHS:
+                if glyph not in ("eng", "sig", "sup", "sub", "dot"):
                     continue
                 with self.subTest(family=family, glyph=glyph):
                     self.assertIn(
                         f'icon = "\\z\\aee\\addons\\optics\\data\\markers\\'
                         f'AEE_{family}_{glyph}.paa";',
-                        CONFIG_SRC,
+                        FAMILY_SRC,
                     )
 
     def test_every_referenced_produced_texture_exists(self):
         produced = [
             line
-            for line in CONFIG_SRC.splitlines()
+            for source in (MARKERS_SRC, FAMILY_SRC)
+            for line in source.splitlines()
             if line.strip().startswith("icon = ")
             and "\\z\\aee\\addons\\optics\\data\\markers\\" in line
         ]
