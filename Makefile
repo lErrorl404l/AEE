@@ -61,6 +61,7 @@ lint:
 	python3 tools/validation/validate_mgrs.py
 	python3 tools/validation/gen_symbology_tables.py --check
 	python3 tools/validation/validate_symbology.py
+	python3 tools/validation/validate_symbology_colour.py
 	python3 tools/validation/gen_terrain_tables.py --check
 	python3 tools/validation/validate_terrain.py
 	python3 tools/gen_terrain_symbols.py --check

@@ -24,44 +24,24 @@
   "reason": "not a symbol (\\.(jpg|jpeg|png)$)"
  },
  {
-  "title": "File:AFD EQP+SRF.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:AFD GND.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:AFD INS.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:AFD SUB.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:AFD UNK.svg",
-  "reason": "not downloaded"
- },
- {
   "title": "File:ANU AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:ANU GND+EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:ANU INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:ANU SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:ANU UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:APP-06 EDE V2 E.png",
@@ -70,10 +50,6 @@
  {
   "title": "File:APP-6 Combat Service Support US.png",
   "reason": "not a symbol (\\.(jpg|jpeg|png)$)"
- },
- {
-  "title": "File:APP-6A Field positions.svg",
-  "reason": "not downloaded"
  },
  {
   "title": "File:APP-6a Air Assault.png",
@@ -98,10 +74,6 @@
  {
   "title": "File:APP-6a Armour.png",
   "reason": "not a symbol (\\.(jpg|jpeg|png)$)"
- },
- {
-  "title": "File:APP-6a Armour.svg",
-  "reason": "not downloaded"
  },
  {
   "title": "File:APP-6a Artillery.png",
@@ -237,7 +209,7 @@
  },
  {
   "title": "File:Brigade Task Force.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Cavalry MGRS-Mapper.svg",
@@ -261,47 +233,31 @@
  },
  {
   "title": "File:FD FRD+AFD+JKR+FKR EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:FKR AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:FKR EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:FKR GND.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:FKR INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:FKR SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:FKR UNK.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:FRD EQP+SRF.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:FRD GND.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:FRD INS.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:FRD UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Facheinheit iuk sign.svg",
@@ -320,252 +276,8 @@
   "reason": "no APP-6 symbol series and no frame"
  },
  {
-  "title": "File:Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Friendly Framed.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Friendly Unframed.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Hostile Framed.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Hostile Unframed.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Neutral Framed.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Neutral Unframed.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Unknown Framed.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Installation - Military Mat\u00e9riel Facility - Engineering Equipment Production - Bridge - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Installation - Military Mat\u00e9riel Facility - Engineering Equipment Production - Bridge - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Installation - Military Mat\u00e9riel Facility - Engineering Equipment Production - Bridge - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Installation - Military Mat\u00e9riel Facility - Engineering Equipment Production - Bridge - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Air Defence - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Air Defence - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Air Defence - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Air Defence - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Anti-Armour - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Anti-Armour - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Anti-Armour - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Anti-Armour - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Armour - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Armour - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Armour - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Armour - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Fixed Wing - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Fixed Wing - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Fixed Wing - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Fixed Wing - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Rotary Wing - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Rotary Wing - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Rotary Wing - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Rotary Wing - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Aviation - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
   "title": "File:Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked).svg",
   "reason": "frame affiliation could not be resolved"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Engineer - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Engineer - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Engineer - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Field Artillery - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Field Artillery - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Field Artillery - Howitzer+Gun - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat - Field Artillery - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Supply - Class III - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Supply - Class III - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Supply - Class III - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Supply - Class III - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Service Support - Unknown.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Friendly.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Hostile.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Neutral.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Unknown.svg",
-  "reason": "not downloaded"
  },
  {
   "title": "File:Gruppe Grundmuster.png",
@@ -574,26 +286,6 @@
  {
   "title": "File:Gruppenf\u00fchrer allgemein nach DV 102.svg",
   "reason": "no APP-6 symbol series and no frame"
- },
- {
-  "title": "File:HOS AIR.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:HOS GND+EQP+SRF.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:HOS INS.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:HOS SUB.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:HOS UNK.svg",
-  "reason": "not downloaded"
  },
  {
   "title": "File:I Marine Expeditionary Force - Organization 2025.png",
@@ -693,27 +385,27 @@
  },
  {
   "title": "File:JKR AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:JKR EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:JKR GND.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:JKR INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:JKR SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:JKR UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Jednostka - znak podstawowy.jpg",
@@ -729,7 +421,7 @@
  },
  {
   "title": "File:Jednostka zdolna do cz\u0119\u015bciowej mobilizacji - znak podstawowy.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Jednostka zdolna do pe\u0142nej mobilizacji - znak podstawowy.jpg",
@@ -737,7 +429,7 @@
  },
  {
   "title": "File:Jednostka zdolna do pe\u0142nej mobilizacji - znak podstawowy.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Kolory 1 - znak taktyczny - przyk\u0142ad.jpg",
@@ -805,47 +497,47 @@
  },
  {
   "title": "File:MOB 01F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 02F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 03F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 04F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 05F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 06F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 07F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 08F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 09.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 10F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:MOB 11F.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:Map Symbol Frame Guide.svg",
@@ -865,59 +557,59 @@
  },
  {
   "title": "File:MilSymb ABCAbw.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Art.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Aufkl.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb CSS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Drehfl\u00fcgler.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Drehfl\u00fcglerH.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb EloKa.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb FJg.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Fla.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb FschJg.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb F\u00fcUstg.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb GebJg.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Inst.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Jg.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb LogZ.svg",
@@ -925,51 +617,51 @@
  },
  {
   "title": "File:MilSymb Mus.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Nsch.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Pi.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Pz.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb PzArt.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb PzGren.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb PzPi.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb San.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb SpezKr.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Starrfl\u00fcgler.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb Trsp.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:MilSymb VersBtl.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Military Symbology Guide.svg",
@@ -1100,26 +792,6 @@
   "reason": "frame affiliation could not be resolved"
  },
  {
-  "title": "File:NEU AIR.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:NEU GND+EQP+SRF.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:NEU INS.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:NEU SUB.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:NEU UNK.svg",
-  "reason": "not downloaded"
- },
- {
   "title": "File:Nederlandse militairen op een tank, ingegraven tijdens een oefening, Bestanddeelnr 932-7087.jpg",
   "reason": "not a symbol (\\.(jpg|jpeg|png)$)"
  },
@@ -1133,23 +805,23 @@
  },
  {
   "title": "File:PND AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:PND GND+EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:PND INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:PND SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:PND UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Pluton piechoty - znak taktyczny.jpg",
@@ -1161,23 +833,23 @@
  },
  {
   "title": "File:SUS AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:SUS GND+EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:SUS INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:SUS SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:SUS UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Schlacht und untersuchungsgruppe sign.svg",
@@ -1237,11 +909,11 @@
  },
  {
   "title": "File:TZ AirborneINF.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:TZ Army Bands.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:TZ BAT.svg",
@@ -1349,11 +1021,11 @@
  },
  {
   "title": "File:TZ MtnINF.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:TZ NBC Defense.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:TZ PART.svg",
@@ -1409,7 +1081,7 @@
  },
  {
   "title": "File:TZ SpecialForces.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:TZ TRNS.svg",
@@ -1421,7 +1093,7 @@
  },
  {
   "title": "File:TZ VB.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:TZ VET.svg",
@@ -1605,7 +1277,7 @@
  },
  {
   "title": "File:Taktisches Zeichen (angeschlagen).svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Taktisches Zeichen Einsatzabschnittsleitung.svg",
@@ -1649,7 +1321,7 @@
  },
  {
   "title": "File:TaktischesZeichen Zugf\u00fchrer.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:TaktischesZeichen-Verletzenablage.svg",
@@ -1657,7 +1329,7 @@
  },
  {
   "title": "File:Teilzerst\u00f6rt vector.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Teilzerst\u00f6rt.png",
@@ -1673,7 +1345,7 @@
  },
  {
   "title": "File:Totalzerst\u00f6rt vector.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Totalzerst\u00f6rt.png",
@@ -1688,44 +1360,24 @@
   "reason": "not a symbol (\\.(jpg|jpeg|png)$)"
  },
  {
-  "title": "File:UNK AIR.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:UNK GND+EQP+SRF.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:UNK INS.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:UNK SUB.svg",
-  "reason": "not downloaded"
- },
- {
-  "title": "File:UNK UNK.svg",
-  "reason": "not downloaded"
- },
- {
   "title": "File:Veterinaerzug sign.svg",
   "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XAF AIR.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XAF EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XAF GND.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XAF INS.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XAF SUB.svg",
@@ -1733,119 +1385,119 @@
  },
  {
   "title": "File:XAF UNK.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XAN AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XAN GND+EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XAN INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XAN SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XAN UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XFD AIR.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XFD EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XFD GND.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XFD INS.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XFD SUB.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XFD UNK.svg",
-  "reason": "not downloaded"
+  "reason": "frame affiliation could not be resolved"
  },
  {
   "title": "File:XNU AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XNU GND+EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XNU INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XNU SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XNU UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XPD AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XPD GND+EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XPD INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XPD SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XPD UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XTAL SRF FRD.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XTAS SRF FRD.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XUK AIR.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XUK GND+EQP+SRF.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XUK INS.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XUK SUB.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:XUK UNK.svg",
-  "reason": "not downloaded"
+  "reason": "no APP-6 symbol series and no frame"
  },
  {
   "title": "File:Zug Grundmuster.png",

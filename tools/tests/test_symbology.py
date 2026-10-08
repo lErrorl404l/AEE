@@ -215,32 +215,22 @@ def palette_friendly(pal, local_side):
 
 
 class TestSymbolPalette(unittest.TestCase):
-    """fnc_symbolPalette, executed: affiliation and palette -> RGBA."""
+    """fnc_symbolPalette, executed: the draw tint is neutral.
 
-    def test_hostile_nato_is_red(self):
-        self.assertEqual(palette("hostile", "NATO"), [1, 0, 0, 1])
+    Every AEE texture carries its own colour, so the tint must leave it
+    untouched.  The affiliation and the palette are carried but do not change
+    the tint; the affiliation colour is applied through the marker type.
+    """
 
-    def test_friend_nato_is_cyan(self):
-        self.assertEqual(palette("friend", "NATO"), [0, 1, 1, 1])
+    def test_the_tint_is_neutral_for_every_affiliation(self):
+        for affiliation_name in ("friend", "hostile", "neutral", "unknown"):
+            with self.subTest(affiliation=affiliation_name):
+                self.assertEqual(palette(affiliation_name, "NATO"), [1, 1, 1, 1])
 
-    def test_neutral_nato_is_green(self):
-        self.assertEqual(palette("neutral", "NATO"), [0, 1, 0, 1])
-
-    def test_unknown_nato_is_yellow(self):
-        self.assertEqual(palette("unknown", "NATO"), [1, 1, 0, 1])
-
-    def test_friend_opfor_is_red(self):
-        self.assertEqual(palette("friend", "OPFOR"), [1, 0, 0, 1])
-
-    def test_hostile_opfor_is_cyan(self):
-        self.assertEqual(palette("hostile", "OPFOR"), [0, 1, 1, 1])
-
-    def test_auto_returns_the_nato_set(self):
-        self.assertEqual(palette("friend", "Auto"), [0, 1, 1, 1])
-        self.assertEqual(palette("hostile", "Auto"), [1, 0, 0, 1])
-
-    def test_an_unknown_palette_falls_back_to_nato(self):
-        self.assertEqual(palette("friend", "bogus"), [0, 1, 1, 1])
+    def test_the_palette_does_not_change_the_tint(self):
+        for pal in ("NATO", "OPFOR", "Auto", "bogus"):
+            with self.subTest(palette=pal):
+                self.assertEqual(palette("hostile", pal), [1, 1, 1, 1])
 
 
 class TestSymbolFrame(unittest.TestCase):
@@ -373,47 +363,51 @@ class TestSymbolMarkerType(unittest.TestCase):
 
 
 class TestSymbolMarkerColor(unittest.TestCase):
-    """fnc_symbologyMarkerColor, executed: affiliation + palette -> class."""
+    """fnc_symbologyMarkerColor, executed: the class is neutral.
 
-    def test_the_nato_set(self):
-        self.assertEqual(marker_color("friend", "NATO"), "ColorWEST")
-        self.assertEqual(marker_color("hostile", "NATO"), "ColorEAST")
-        self.assertEqual(marker_color("neutral", "NATO"), "ColorGUER")
-        self.assertEqual(marker_color("unknown", "NATO"), "ColorUNKNOWN")
+    Every AEE texture carries its own colour, so the CfgMarkerColors class is
+    ColorAEE (white), which leaves the texture untouched.  The affiliation
+    colour is carried by the texture, selected by the marker type.
+    """
 
-    def test_the_opfor_palette_swaps_friend_and_hostile(self):
-        self.assertEqual(marker_color("friend", "OPFOR"), "ColorEAST")
-        self.assertEqual(marker_color("hostile", "OPFOR"), "ColorWEST")
+    def test_the_class_is_neutral_for_every_affiliation(self):
+        for affiliation_name in ("friend", "hostile", "neutral", "unknown"):
+            with self.subTest(affiliation=affiliation_name):
+                self.assertEqual(marker_color(affiliation_name, "NATO"), "ColorAEE")
 
-    def test_auto_is_nato_here_and_resolved_by_the_caller(self):
-        self.assertEqual(marker_color("friend", "Auto"), "ColorWEST")
+    def test_the_palette_does_not_change_the_class(self):
+        for pal in ("NATO", "OPFOR", "Auto", "bogus"):
+            with self.subTest(palette=pal):
+                self.assertEqual(marker_color("friend", pal), "ColorAEE")
 
 
 class TestSymbolResolve(unittest.TestCase):
     """fnc_symbolResolve, executed: inputs -> marker type and colour."""
 
-    def test_a_hostile_armour_symbol_is_a_red_opfor_marker(self):
+    def test_a_hostile_armour_symbol_is_the_hostile_texture(self):
         spec = resolve("east", "armour", "hostile", "squad", "NATO")
         self.assertEqual(spec[0], "hostile")
         self.assertEqual(spec[1], "AEE_o_armor")
-        self.assertEqual(spec[2], "ColorEAST")
+        self.assertEqual(spec[2], "ColorAEE")
         self.assertEqual(spec[3], "squad")
 
-    def test_a_friendly_infantry_symbol_is_a_blue_blufor_marker(self):
+    def test_a_friendly_infantry_symbol_is_the_friendly_texture(self):
         spec = resolve("west", "infantry", "friend", "company", "NATO")
         self.assertEqual(spec[1], "AEE_b_inf")
-        self.assertEqual(spec[2], "ColorWEST")
+        self.assertEqual(spec[2], "ColorAEE")
 
-    def test_the_palette_swap_flips_the_friendly_colour(self):
+    def test_the_palette_no_longer_flips_the_marker_colour(self):
+        # The affiliation colour lives in the texture; the palette only picks
+        # the friendly side, which the caller resolves before this call.
         spec = resolve("west", "infantry", "friend", "company", "OPFOR")
-        self.assertEqual(spec[2], "ColorEAST")
+        self.assertEqual(spec[2], "ColorAEE")
 
-    def test_neutral_is_green_and_unknown_is_unknown(self):
+    def test_neutral_and_unknown_carry_the_neutral_class(self):
         self.assertEqual(
-            resolve("", "infantry", "neutral", "team", "NATO")[2], "ColorGUER"
+            resolve("", "infantry", "neutral", "team", "NATO")[2], "ColorAEE"
         )
         self.assertEqual(
-            resolve("", "infantry", "unknown", "team", "NATO")[2], "ColorUNKNOWN"
+            resolve("", "infantry", "unknown", "team", "NATO")[2], "ColorAEE"
         )
 
     def test_an_unknown_category_falls_back_to_the_unknown_glyph(self):
@@ -528,7 +522,12 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
     def test_every_marker_carries_the_size_shadow_and_side(self):
         self.assertIn("size = 32;", CONFIG_SRC)
         self.assertIn("shadow = 0;", CONFIG_SRC)
-        self.assertIn("color[] = {0, 0, 0, 1};", CONFIG_SRC)
+        self.assertIn("color[] = {1, 1, 1, 1};", CONFIG_SRC)
+
+    def test_the_marker_tint_is_neutral(self):
+        # Every AEE texture carries its own colours, so the engine tint is
+        # white.  ColorAEE is the neutral class the kernels select.
+        self.assertIn("class ColorAEE { color[] = {1, 1, 1, 1}; };", CONFIG_SRC)
         for side in ("side = 0;", "side = 1;", "side = 2;"):
             self.assertIn(side, CONFIG_SRC)
 
@@ -831,6 +830,107 @@ class TestSymbologyProvenanceGuard(unittest.TestCase):
     def test_no_provenance_leaked(self):
         for token in FORBIDDEN_PROVENANCE:
             self.assertNotIn(token, ALL_SYM_SRC, token)
+
+
+class TestMarkerTexturesCarryColour(unittest.TestCase):
+    """The marker textures keep their own colour; a white mask must fail.
+
+    The defect was every texture flattened to a monochrome white mask, so the
+    frame and the glyph were one colour.  These tests prove the catalogue
+    rasteriser keeps the source colour and that a committed .paa is not a white
+    mask.
+    """
+
+    # A six-digit hex colour in a source SVG.
+    HEX = re.compile(r"#([0-9a-fA-F]{6})")
+
+    def _coloured_source(self, affiliation):
+        """A catalogue source for the affiliation whose SVG carries a hue."""
+        import json
+
+        catalogue = json.loads(
+            (REPO / "data" / "symbology" / "nato_catalogue.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        root = Path("/tmp/opencode/nato-symbols")
+        for entry in catalogue["entries"]:
+            if entry.get("affil") != affiliation:
+                continue
+            src = root / str(entry["dir"]) / str(entry["file"])
+            if not src.is_file():
+                continue
+            text = src.read_text(encoding="utf-8", errors="replace")
+            for token in self.HEX.findall(text):
+                r, g, b = (int(token[i : i + 2], 16) for i in (0, 2, 4))
+                if max(r, g, b) - min(r, g, b) > 40:
+                    return src
+        return None
+
+    def test_the_catalogue_rasteriser_keeps_the_source_colour(self):
+        sys.path.insert(0, str(REPO))
+        from tools import gen_symbology_catalogue as gen
+
+        for affiliation in ("Friend", "Hostile", "Neutral", "Unknown"):
+            src = self._coloured_source(affiliation)
+            if src is None:
+                self.skipTest(f"no coloured {affiliation} source in the pull")
+            with self.subTest(affiliation=affiliation):
+                art = gen._rasterise(src).convert("RGBA")
+                opaque = [px[:3] for px in art.getdata() if px[3] >= 128]
+                self.assertTrue(opaque, "the render is empty")
+                self.assertFalse(
+                    all(min(px) >= 200 for px in opaque),
+                    "the render is a monochrome white mask",
+                )
+                self.assertTrue(
+                    any(max(px) - min(px) > 24 for px in opaque),
+                    "the render lost its colour",
+                )
+
+    def test_a_committed_texture_is_not_a_white_mask(self):
+        import json
+        import shutil
+        import subprocess
+        import tempfile
+
+        from PIL import Image
+
+        hemtt = shutil.which("hemtt")
+        if hemtt is None:
+            self.skipTest("hemtt not on PATH")
+
+        catalogue_config = (OPTICS / "config_markers.hpp").read_text(encoding="utf-8")
+        names = re.findall(
+            r"^\s*class (AEE_\w+): AEE_MarkerBase", catalogue_config, re.M
+        )
+        picked: dict[str, str] = {}
+        for name in names:
+            token = name.split("_")[1] if "_" in name else ""
+            if token.startswith("X"):
+                token = token[1:]
+            if token and token[0] in "FHNU" and token[0] not in picked:
+                picked[token[0]] = name
+        self.assertEqual(sorted(picked), ["F", "H", "N", "U"], "affiliations missing")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            for aff, name in picked.items():
+                paa = MARKERS / f"{name}.paa"
+                self.assertTrue(paa.is_file(), f"{name}.paa missing")
+                out = Path(tmp) / f"{name}.png"
+                result = subprocess.run(
+                    [hemtt, "utils", "paa", "convert", str(paa), str(out)],
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertEqual(result.returncode, 0, f"paa convert failed: {name}")
+                image = Image.open(out).convert("RGBA")
+                opaque = [px[:3] for px in image.getdata() if px[3] >= 128]
+                self.assertTrue(opaque, f"{name}: no opaque pixels")
+                self.assertFalse(
+                    all(min(px) >= 200 for px in opaque),
+                    f"{name}: monochrome white mask",
+                )
 
 
 if __name__ == "__main__":

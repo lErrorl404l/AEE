@@ -9,8 +9,10 @@ independent, so the same glyph is a real symbol in every affiliation frame.
 This generator extracts the function glyph from each real symbol (the source
 SVG with its frame element removed), then re-frames that glyph in all four
 affiliation frames.  The frames are drawn by AEE from the APP-6 geometry
-(rectangle friend, diamond hostile, square neutral, quatrefoil unknown), which
-keeps the output ours and completes the set the uploaders did not draw.
+(rectangle friend, diamond hostile, square neutral, quatrefoil unknown), filled
+with the affiliation colour and outlined black, which keeps the output ours and
+completes the set the uploaders did not draw.  The glyph keeps its own colour
+(black).  The texture carries the colour, so the engine tint is neutral.
 
 Only combinations the standard defines are emitted: a glyph that exists in one
 affiliation is a real symbol in the other three.  A combination with no glyph
@@ -44,6 +46,14 @@ GLYPH_BOX = 44  # the glyph fits this box inside the 64 px marker
 AFFIL_LETTER = {"Friend": "F", "Hostile": "H", "Neutral": "N", "Unknown": "U"}
 AFFIL_SIDE = {"Friend": 1, "Hostile": 0, "Neutral": 2, "Unknown": 2}
 AFFIL_ORDER = ["Friend", "Hostile", "Neutral", "Unknown"]
+# The APP-6 / MIL-STD-2525 affiliation frame colours, as the source drawings
+# carry them: friend blue, hostile red, neutral green, unknown yellow.
+AFFIL_RGB = {
+    "Friend": (0, 0, 255),
+    "Hostile": (255, 0, 0),
+    "Neutral": (0, 175, 0),
+    "Unknown": (255, 255, 128),
+}
 DIM_LETTER = {
     "Land": "L",
     "Air/Space": "A",
@@ -93,34 +103,28 @@ def _frame_image(affil: str) -> Any:
 
     img = Image.new("RGBA", (SIZE, SIZE), (255, 255, 255, 0))
     d = ImageDraw.Draw(img)
-    ink = (255, 255, 255, 255)
+    fill = AFFIL_RGB[affil] + (255,)
+    ink = (0, 0, 0, 255)
     m = 4
     w = 3
     if affil == "Friend":
-        d.rectangle([m, m + 4, SIZE - m, SIZE - m - 4], outline=ink, width=w)
+        d.rectangle([m, m + 4, SIZE - m, SIZE - m - 4], fill=fill, outline=ink, width=w)
     elif affil == "Hostile":
-        d.polygon(
-            [(SIZE / 2, m), (SIZE - m, SIZE / 2), (SIZE / 2, SIZE - m), (m, SIZE / 2)],
-            outline=ink,
-        )
-        d.line(
-            [
-                (SIZE / 2, m),
-                (SIZE - m, SIZE / 2),
-                (SIZE / 2, SIZE - m),
-                (m, SIZE / 2),
-                (SIZE / 2, m),
-            ],
-            fill=ink,
-            width=w,
-        )
+        pts = [(SIZE / 2, m), (SIZE - m, SIZE / 2), (SIZE / 2, SIZE - m), (m, SIZE / 2)]
+        d.polygon(pts, fill=fill)
+        d.line(pts + [pts[0]], fill=ink, width=w)
     elif affil == "Neutral":
-        d.rectangle([m + 3, m + 3, SIZE - m - 3, SIZE - m - 3], outline=ink, width=w)
+        d.rectangle(
+            [m + 3, m + 3, SIZE - m - 3, SIZE - m - 3], fill=fill, outline=ink, width=w
+        )
     else:  # Unknown, the quatrefoil.
-        d.ellipse([m, m, SIZE / 2, SIZE / 2], outline=ink, width=w)
-        d.ellipse([SIZE / 2, m, SIZE - m, SIZE / 2], outline=ink, width=w)
-        d.ellipse([m, SIZE / 2, SIZE / 2, SIZE - m], outline=ink, width=w)
-        d.ellipse([SIZE / 2, SIZE / 2, SIZE - m, SIZE - m], outline=ink, width=w)
+        for box in (
+            [m, m, SIZE / 2, SIZE / 2],
+            [SIZE / 2, m, SIZE - m, SIZE / 2],
+            [m, SIZE / 2, SIZE / 2, SIZE - m],
+            [SIZE / 2, SIZE / 2, SIZE - m, SIZE - m],
+        ):
+            d.ellipse(box, fill=fill, outline=ink, width=w)
     return img
 
 
@@ -157,9 +161,11 @@ def _glyph_image(svg_text: str) -> Any | None:
     alpha = ImageChops.multiply(ink, art.getchannel("A"))
     if alpha.getbbox() is None:
         return None
-    white = Image.new("RGBA", art.size, (255, 255, 255, 0))
-    white.putalpha(alpha)
-    return white
+    # Keep the glyph's own colour (black); only the alpha comes from the ink
+    # mask, so a light background stays transparent.
+    glyph = art.copy()
+    glyph.putalpha(alpha)
+    return glyph
 
 
 def convert(tga: Path, paa: Path) -> None:

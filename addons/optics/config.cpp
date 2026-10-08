@@ -74,11 +74,14 @@ class CfgMarkerClasses {
     };
 };
 
-// The affiliation colours.  MIL-STD-2525D Table XVI (unfilled): friend cyan,
-// hostile red, neutral green, unknown yellow, civilian magenta.  The engine
-// classes carry the same display colours; AEE re-declares them so the standard
-// is the single source.
+// The marker colour classes.  Every AEE marker texture carries its OWN colour
+// (the affiliation frame, the black glyph and the standard fills), so the
+// engine tint must be NEUTRAL: ColorAEE is white and leaves the texture's
+// colours untouched.  The affiliation classes are kept because
+// FUNC(symbologyAffiliation) reads a mission marker's original colour through
+// them before AEE converts it.
 class CfgMarkerColors {
+    class ColorAEE { color[] = {1, 1, 1, 1}; };
     class ColorWEST { color[] = {0, 1, 1, 1}; };
     class ColorEAST { color[] = {1, 0, 0, 1}; };
     class ColorGUER { color[] = {0, 1, 0, 1}; };
@@ -93,7 +96,10 @@ class CfgMarkers {
         markerClass = "AEE_Symbology";
         size = 32;
         shadow = 0;
-        color[] = {0, 0, 0, 1};
+        // Neutral, so each texture shows its own colours (the colour IS the
+        // information).  The engine tint is applied by setMarkerColorLocal;
+        // ColorAEE is white.
+        color[] = {1, 1, 1, 1};
         showEditorMarkerColor = 1;
     };
 

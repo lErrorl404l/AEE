@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Generate the AEE APP-6 mission-task graphics, modifier glyphs and echelon overlays.
 
-This generator draws MIL-STD-2525D symbology geometry as 64 px white-on-transparent
+This generator draws MIL-STD-2525D symbology geometry as 64 px black-on-transparent
 masks, converts each mask to a .paa with `hemtt utils paa convert`, and registers one
 CfgMarkers child per marker in addons/optics/config_modifiers.hpp.
+
+The overlay is BLACK: APP-6 draws the modifiers, mission tasks and echelon ticks in
+black over the affiliation-coloured frame.  The engine tint is neutral, so the
+overlay supplies its own colour.
 
 Three marker groups are produced:
 
@@ -60,12 +64,12 @@ ECH_W, ECH_H = 64, 128
 TOP_BAND = 30  # echelon ticks live in y = 0 .. TOP_BAND; below is transparent
 SCALE = 4  # supersample factor for smooth strokes
 
-INK = (255, 255, 255, 255)
-CLEAR = (255, 255, 255, 0)
+INK = (0, 0, 0, 255)
+CLEAR = (0, 0, 0, 0)
 
 
 class Mask:
-    """A white-on-transparent drawing surface in final-pixel coordinates."""
+    """A black-on-transparent drawing surface in final-pixel coordinates."""
 
     def __init__(self, w: int = SIZE, h: int = SIZE) -> None:
         from PIL import Image, ImageDraw

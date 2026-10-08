@@ -87,6 +87,8 @@ jobs:
         run: python3 tools/validation/gen_symbology_tables.py --check
       - name: Symbology table and kernel validation
         run: python3 tools/validation/validate_symbology.py
+      - name: Symbology marker colour validation
+        run: python3 tools/validation/validate_symbology_colour.py
       - name: Terrain table freshness check
         run: python3 tools/validation/gen_terrain_tables.py --check
       - name: Terrain table and registry validation
