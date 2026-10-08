@@ -536,7 +536,7 @@ console may set any of them directly.
 | `aee_thermal_agcPinned` | Debug only: suspend the AGC and the engine-window writer so the operator can pin the engine TI window by hand (exposure pin test) |
 | `aee_core_consistencyCheck` | Run the cross-module consistency monitor (default on) |
 | `aee_core_consistencyInterval` | Seconds between consistency samples, 1 to 60 (default 10) |
-| `aee_core_consistencyStrict` | Warn on drift as well as on a hard failure (default off) |
+| `aee_core_consistencyStrict` | Report a passing invariant with a residual drift inside its tolerance, at INFO (default off) |
 
 Every `logDebug` switch registers under **AEE Debug > <component>**. The
 coverage-gaps release added one to every addon that declares settings, so

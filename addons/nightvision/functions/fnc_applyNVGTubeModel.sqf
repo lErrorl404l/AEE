@@ -1067,8 +1067,12 @@ missionNamespace setVariable [QGVAR(nvgImperfectionAlpha), 1 - _blemishFade];
 // DynamicBlur 400 < ColorCorrections 1500 < FilmGrain 2000.  Values are
 // offset into a free band so they never collide with the persistent
 // normal-vision handles (2000/3000/4000/5000) or thermal (1300/4200/5200).
-// ppEffectCreate returns -1 when a priority is taken (BIS wiki), so each
-// create bumps until it succeeds.
+// A live RPT shows the BIS wiki note "ppEffectCreate returns -1 when a
+// priority is taken" is WRONG: the engine hands back a POSITIVE handle that
+// another creator already holds, a shared handle.  Only a true -1 means the
+// effect type is unavailable on this build.  The bump loop below therefore
+// cannot see a collision; the priorities here must stay disjoint from every
+// other AEE creator (tools/tests/test_pp_handle_unique.py enforces that).
 //
 // Nightvision owns its own ChromAberration handle at priority 3050.  It
 // must not share the optics handle (priority 3000): the optics module
