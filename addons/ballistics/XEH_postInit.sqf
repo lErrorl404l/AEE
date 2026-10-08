@@ -4,7 +4,8 @@ AEE_MODULE_POST_INIT
 
 ADDON = false;
 
-#include "XEH_PREP.hpp"
+// XEH_PREP.hpp is included once, in XEH_preInit.sqf.  A second include here
+// compiled every function a second time.
 
 // ─── Fired EH: propellant-temperature MV correction per shot ──────────────
 // Tracks the weapon's ammo temperature (first-order relaxation toward

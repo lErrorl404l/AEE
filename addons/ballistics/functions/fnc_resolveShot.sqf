@@ -37,7 +37,7 @@ params [
     ["_tempC", 21, [0]],
     ["_rhoRel", 1.0, [0]]
 ];
-if (_ammo == "") exitWith { [0, 0, "", 0, 0, 0, "", "", ""] };
+if (_ammo == "") exitWith { [0, 0, "", 0, 0, 0, "", "", "", 0] };
 
 private _cartridge = [_ammo] call FUNC(getCartridgeData);
 private _projectile = [_ammo] call FUNC(getProjectileData);

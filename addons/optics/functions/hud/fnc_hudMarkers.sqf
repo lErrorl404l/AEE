@@ -43,6 +43,17 @@ missionNamespace setVariable [QGVAR(hudMarkersEH), addMissionEventHandler ["Draw
     };
 
     private _player = call CBA_fnc_currentUnit;
+    // The affiliation is computed against the palette-resolved friendly side,
+    // exactly as the map layer does.  Without it the third argument defaults
+    // to WEST and an EAST player reads every marker against WEST.
+    private _palette = missionNamespace getVariable [QGVAR(symbologyPalette), "Auto"];
+    private _localSide = "WEST";
+    if (playerSide isEqualTo east) then { _localSide = "EAST"; };
+    private _friendly = [_palette, _localSide] call FUNC(symbologyPaletteFriendly);
+    private _resolvedPalette = _palette;
+    if (_palette isEqualTo "Auto") then {
+        _resolvedPalette = ["NATO", "OPFOR"] select (_friendly isEqualTo "EAST");
+    };
     {
         _x params ["_text", "_pos", "_name", "_type"];
         private _dist = _player distance _pos;
@@ -50,9 +61,9 @@ missionNamespace setVariable [QGVAR(hudMarkersEH), addMissionEventHandler ["Draw
             // The real AEE marker texture in front of the text label.
             if (missionNamespace getVariable [QGVAR(symbologyEnabled), false]) then {
                 private _category = [_name, _type] call FUNC(symbologyMarkerCategory);
-                private _affiliation = [_name] call FUNC(symbologyAffiliation);
+                private _affiliation = [_name, "", _friendly] call FUNC(symbologyAffiliation);
                 private _spec = [
-                    sideUnknown, _category, _affiliation, "unknown", "Auto"
+                    sideUnknown, _category, _affiliation, "unknown", _resolvedPalette
                 ] call FUNC(symbolResolve);
                 private _texture = getText (
                     configFile >> "CfgMarkers" >> (_spec select 1) >> "texture"

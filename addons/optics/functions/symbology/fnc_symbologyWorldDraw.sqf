@@ -32,6 +32,12 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
     private _localSide = "WEST";
     if (playerSide isEqualTo east) then { _localSide = "EAST"; };
     private _friendly = [_palette, _localSide] call FUNC(symbologyPaletteFriendly);
+    // Resolve "Auto" before the resolver calls, as the map layer does, so the
+    // 3D layer and the map layer pass the same palette.
+    private _resolvedPalette = _palette;
+    if (_palette isEqualTo "Auto") then {
+        _resolvedPalette = ["NATO", "OPFOR"] select (_friendly isEqualTo "EAST");
+    };
 
     private _font = "PuristaMedium";
     if (missionNamespace getVariable [QGVAR(symbologyFont), true]) then {
@@ -67,7 +73,7 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
         );
         if (_texture isEqualTo "") exitWith {};
         private _colour = [
-            _spec select 0, missionNamespace getVariable [QGVAR(symbologyPalette), "NATO"]
+            _spec select 0, _resolvedPalette
         ] call FUNC(symbolPalette);
         drawIcon3D [
             _texture, _colour, _origin, 1.5, 1.5, 0,
@@ -91,7 +97,7 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
     private _playerDimension = [_player] call FUNC(symbologyUnitDimension);
     private _playerEchelon = [_player] call FUNC(symbologyUnitEchelon);
     private _playerSpec = [
-        playerSide, _playerCategory, "friend", _playerEchelon, _palette, _playerDimension
+        playerSide, _playerCategory, "friend", _playerEchelon, _resolvedPalette, _playerDimension
     ] call FUNC(symbolResolve);
     private _playerEchelonClass = [_playerEchelon] call FUNC(symbologyEchelonMarker);
     [_player, _playerSpec, name _player, _playerEchelonClass] call _drawWorld;
@@ -110,7 +116,7 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
             private _echelon = [_unit] call FUNC(symbologyUnitEchelon);
             private _dimension = [_unit] call FUNC(symbologyUnitDimension);
             private _spec = [
-                side _unit, _category, _affiliation, _echelon, _palette, _dimension
+                side _unit, _category, _affiliation, _echelon, _resolvedPalette, _dimension
             ] call FUNC(symbolResolve);
             private _echelonClass = [_echelon] call FUNC(symbologyEchelonMarker);
             [_unit, _spec, name _unit, _echelonClass] call _drawWorld;
