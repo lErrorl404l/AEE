@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (631)
+### Public functions (632)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -521,6 +521,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_symbologyDimension`
 - `aee_optics_fnc_symbologyEchelon`
 - `aee_optics_fnc_symbologyEchelonMarker`
+- `aee_optics_fnc_symbologyEchelonSize`
 - `aee_optics_fnc_symbologyMarkerCategory`
 - `aee_optics_fnc_symbologyMarkerColor`
 - `aee_optics_fnc_symbologyMarkerType`
@@ -825,7 +826,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 
 | Class | Declaring source |
 |---|---|
-| `AEE_Symbology` | `addons/optics/config.cpp` |
+| `AEE_Unknown_Other` | `addons/optics/config.cpp` |
 | `ColorAEE` | `addons/optics/config.cpp` |
 | `AEE_MarkerBase` | `addons/optics/config.cpp` |
 | `AEE_SandCloud` | `addons/core/config.cpp` |
