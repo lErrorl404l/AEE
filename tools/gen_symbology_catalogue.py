@@ -46,6 +46,7 @@ Run:  python3 tools/gen_symbology_catalogue.py
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -53,17 +54,60 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-from symbology_categories import marker_category
-
 ROOT = Path(__file__).parents[1]
+if str(Path(__file__).parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).parent))
+
+from symbology_categories import marker_category  # noqa: E402
+
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
 SOURCES = ROOT / "data" / "symbology" / "sources"
 SVG_ROOT = SOURCES / "svg"
 RENDER_ROOT = SOURCES / "render"
 MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
 CONFIG_OUT = ROOT / "addons" / "optics" / "config_markers.hpp"
+FAMILY_OUT = ROOT / "addons" / "optics" / "config_family.hpp"
 ATTRIB_OUT = MARKERS_OUT / "ATTRIBUTION.md"
 ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers"
+
+# The engine's own CfgMarkers, resolved once from the installed game config and
+# committed under data/symbology/.  Every engine class AEE re-declares reads its
+# REAL parent from here, so the re-declaration restates the parent and the
+# inherited vanilla values (scope, size, colour, markerClass) survive.  The
+# cache is resolved from a3\ui_f, a3\ui_f_enoch and a3\missions_f_heli, the
+# three engine configs that define the marker classes AEE touches.  Resolve it
+# with `python3 tools/gen_symbology_catalogue.py --resolve-engine <config.cpp>...`.
+ENGINE_MARKERS = ROOT / "data" / "symbology" / "engine_markers.json"
+ENGINE_MARKERS_SCHEMA = "aee.symbology.engine_markers/1"
+REGISTER_OUT = ROOT / "docs" / "wiki" / "research" / "marker-mapping-register.md"
+
+# The runtime family and glyph vocabulary, read from the committed table source
+# so the family aliases cannot drift from what fnc_symbologyMarkerType returns.
+_TABLES = json.loads(
+    (ROOT / "data" / "symbology" / "symbology_tables.json").read_text(encoding="utf-8")
+)
+FAMILY_AFFIL = {"b": "Friendly", "o": "Hostile", "n": "Neutral", "u": "Unknown"}
+FAMILY_SIDE = {"b": 1, "o": 0, "n": 2, "u": 2}
+FAMILIES = [str(row["category"]) for row in _TABLES["families"]]
+GLYPH_DIM = {str(row["category"]): str(row["dimension"]) for row in _TABLES["glyphs"]}
+GLYPH_NAME = {str(row["category"]): str(row["name"]) for row in _TABLES["glyphs"]}
+GLYPHS = [str(row["category"]) for row in _TABLES["glyphs"]]
+
+
+def installation_texture(family: str) -> str:
+    """The produced installation texture for a family.
+
+    The catalogue publishes no single generic installation symbol, so AEE
+    produces one per affiliation (AEE_FI_/HI_/NI_Installation).  The unknown
+    family ships no UI_Installation, so it shares AEE_u_installation.
+    """
+    token = FAMILY_AFFIL[family]
+    letter = AFFIL_LETTER["Friend" if token == "Friendly" else token]
+    candidate = f"AEE_{letter}I_Installation"
+    if (MARKERS_OUT / f"{candidate}.paa").is_file():
+        return candidate
+    return "AEE_u_installation"
+
 
 SIZE = 64
 ART = 58  # the art box inside the 64 px marker, leaving a small margin
@@ -327,6 +371,172 @@ def write_config(pairs: list[tuple[str, dict[str, Any]]]) -> None:
     CONFIG_OUT.write_text(
         render_config(pairs) + "\n" + render_engine_overrides(pairs), encoding="utf-8"
     )
+    FAMILY_OUT.write_text(render_family_aliases(pairs), encoding="utf-8")
+    REGISTER_OUT.write_text(render_register(pairs), encoding="utf-8")
+
+
+# ─── the engine's own CfgMarkers ──────────────────────────────────────────
+#
+# A mod that re-declares an engine class MUST restate the class parent.  A bare
+# reopen makes the engine log "Updating base class '<parent>'->''" and discard
+# every inherited value (scope, size, colour, markerClass), which is why the
+# vanilla b_/o_/n_ markers fell out of the marker picker.  The REAL parent for
+# each class is read from the engine's own config, resolved once and committed
+# under data/symbology/.  Nothing here is assumed.
+
+_ENGINE_FIELDS = ("scope", "size", "side", "markerClass", "name")
+
+
+def _parse_block(text: str, cfg_name: str) -> str | None:
+    match = re.search(r"\n\s*class\s+" + re.escape(cfg_name) + r"\s*\{", text)
+    if match is None:
+        return None
+    open_at = text.index("{", match.start())
+    depth = 1
+    index = open_at + 1
+    while index < len(text) and depth > 0:
+        char = text[index]
+        if char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+        index += 1
+    return text[open_at + 1 : index - 1]
+
+
+def _direct_children(body: str) -> list[tuple[str, str | None, str]]:
+    out: list[tuple[str, str | None, str]] = []
+    depth = 0
+    index = 0
+    length = len(body)
+    while index < length:
+        char = body[index]
+        if char == "{":
+            depth += 1
+            index += 1
+            continue
+        if char == "}":
+            depth -= 1
+            index += 1
+            continue
+        if depth == 0:
+            match = re.match(
+                r"class\s+([A-Za-z0-9_]+)\s*(?::\s*([A-Za-z0-9_]+))?\s*\{",
+                body[index:],
+            )
+            if match is not None:
+                open_at = body.index("{", index)
+                inner = 1
+                cursor = open_at + 1
+                while cursor < length and inner > 0:
+                    if body[cursor] == "{":
+                        inner += 1
+                    elif body[cursor] == "}":
+                        inner -= 1
+                    cursor += 1
+                out.append(
+                    (match.group(1), match.group(2), body[open_at + 1 : cursor - 1])
+                )
+                index = cursor
+                continue
+        index += 1
+    return out
+
+
+def _field(body: str, key: str) -> str | None:
+    match = re.search(
+        r"(?<![\w])" + re.escape(key) + r"\s*=\s*(\"?[^;]*?\"?)\s*;", body
+    )
+    if match is None:
+        return None
+    return match.group(1).strip().strip('"')
+
+
+def _engine_class_rows(
+    path: Path,
+) -> list[tuple[str, str | None, dict[str, str | None]]]:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    body = _parse_block(text, "CfgMarkers")
+    if body is None:
+        raise SystemExit(f"gen_symbology_catalogue: {path} holds no CfgMarkers block")
+    return [
+        (name, parent, {key: _field(inner, key) for key in _ENGINE_FIELDS})
+        for name, parent, inner in _direct_children(body)
+    ]
+
+
+def resolve_engine_markers(paths: list[Path]) -> int:
+    """Resolve the engine CfgMarkers tree from derapified configs and cache it.
+
+    The first definition of a class wins, so the base a3\\ui_f config is passed
+    before a DLC config.  A field is resolved through the parent chain, so the
+    cache holds the EFFECTIVE vanilla value, not only the declared one.
+    """
+    declared: dict[str, dict[str, Any]] = {}
+    for path in paths:
+        for name, parent, fields in _engine_class_rows(path):
+            if name in declared:
+                continue
+            declared[name] = {
+                "parent": parent or "",
+                "source": path.name,
+                "fields": fields,
+            }
+
+    def effective(name: str, key: str) -> str | None:
+        seen: set[str] = set()
+        current = name
+        while current and current in declared and current not in seen:
+            seen.add(current)
+            value = declared[current]["fields"].get(key)
+            if value is not None:
+                return value
+            current = declared[current]["parent"]
+        return None
+
+    rows = [
+        {
+            "game_class": name,
+            "parent_class": declared[name]["parent"],
+            "source": declared[name]["source"],
+            "scope": effective(name, "scope"),
+            "size": effective(name, "size"),
+            "side": effective(name, "side"),
+            "marker_class": effective(name, "markerClass"),
+            "name_key": effective(name, "name"),
+        }
+        for name in sorted(declared)
+    ]
+    sources = sorted({str(row["source"]) for row in rows})
+    payload = {
+        "schema": ENGINE_MARKERS_SCHEMA,
+        "note": "Resolved from the installed game config. Do not edit by hand.",
+        "resolved_from": "engine config.bin (hemtt pbo unpack + config derapify): "
+        + ", ".join(sources),
+        "rows": rows,
+    }
+    ENGINE_MARKERS.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    print(f"engine markers: {len(rows)} classes cached to {ENGINE_MARKERS}")
+    return 0
+
+
+def load_engine_markers() -> dict[str, dict[str, Any]]:
+    payload = json.loads(ENGINE_MARKERS.read_text(encoding="utf-8"))
+    if payload.get("schema") != ENGINE_MARKERS_SCHEMA:
+        raise SystemExit(f"gen_symbology_catalogue: {ENGINE_MARKERS} schema mismatch")
+    return {str(row["game_class"]): row for row in payload["rows"]}
+
+
+def engine_declaration(cls: str, cache: dict[str, dict[str, Any]]) -> str:
+    """The class declaration with the REAL engine parent restated."""
+    row = cache.get(cls)
+    if row is None:
+        raise SystemExit(
+            f"gen_symbology_catalogue: {cls} is re-declared but is not in the "
+            f"engine CfgMarkers cache ({ENGINE_MARKERS.name}); resolve it first"
+        )
+    parent = str(row.get("parent_class", ""))
+    return f"class {cls}: {parent}" if parent else f"class {cls}"
 
 
 # The engine's own NATO marker families.  AEE overwrites the icon of each so the
@@ -437,15 +647,16 @@ def engine_direct_overrides() -> list[tuple[str, str]]:
     # The affiliation glyphs the catalogue holds no exact symbol for.  Engineer,
     # signal and supply have a dedicated AEE texture; installation and unknown
     # map to the AEE unknown set.
+    # Engineer, signal and supply are NOT engine classes: the engine ships no
+    # b_eng/b_sig/b_sup, o_* or n_* (proved against the committed engine marker
+    # cache, which holds every CfgMarkers class from ui_f, ui_f_enoch and
+    # missions_f_heli).  AEE registers AEE_<fam>_eng/sig/sup as runtime family
+    # aliases, so re-declaring a b_eng here would invent a class.  Only
+    # installation and unknown are real engine classes with no catalogue
+    # function string.
     for fam in ("b", "o", "n"):
-        for eng, aee in (
-            ("eng", f"AEE_{fam}_eng"),
-            ("sig", f"AEE_{fam}_sig"),
-            ("sup", f"AEE_{fam}_sup"),
-            ("installation", "AEE_u_installation"),
-            ("unknown", "AEE_u_unknown"),
-        ):
-            out.append((f"{fam}_{eng}", aee))
+        out.append((f"{fam}_installation", installation_texture(fam)))
+        out.append((f"{fam}_unknown", "AEE_u_unknown"))
 
     # Header and military tactical graphics: an exact mission-task match where
     # the name matches, else the generic dot.
@@ -586,31 +797,174 @@ def engine_direct_overrides() -> list[tuple[str, str]]:
 
 
 def render_engine_overrides(pairs: list[tuple[str, dict[str, Any]]]) -> str:
-    lines = [
-        "",
-        "// Overwrite the engine's own NATO marker families, so the base Arma",
-        "// marker renders the AEE symbol and no engine mark shows beside it.",
-        "// A mod may re-declare an engine class; Arma merges the configs and the",
-        "// later-loaded value wins (BIKI Addon configuration).  Each class is",
-        "// pinned to its exact APP-6 symbol by tools/gen_symbology_catalogue.py.",
-    ]
+    cache = load_engine_markers()
+    notes: list[str] = []
+    targets: dict[str, str] = {}
+    order: list[str] = []
     for cls, name, func, deviated in engine_overrides(pairs):
         if name is None:
-            lines.append(f"    // {cls}: no exact catalogue symbol for {func!r}")
+            if cls in cache:
+                notes.append(f"// {cls}: no exact catalogue symbol for {func!r}")
             continue
         if deviated:
-            lines.append(
-                f"    // {cls}: catalogue lacks {func!r}; using {name} "
-                "(composed cross-product supplies the exact symbol)"
+            notes.append(
+                f"// {cls}: catalogue lacks {func!r}; using {name} "
+                "(the composed cross-product supplies the exact symbol)"
             )
-        icon = f"{ADDON_PREFIX}\\{name}.paa"
-        lines.append(f'    class {cls} {{ icon = "{icon}"; texture = "{icon}"; }};')
+        targets[cls] = name
+        order.append(cls)
     # The non-affiliation families, re-pointed straight at an AEE symbol.  The
     # national flag (flag_), location (loc_) and structural (Empty, EmptyIcon,
     # Flag, KIA) classes are NOT re-pointed; ADR-028 records the reason for each.
     for cls, name in engine_direct_overrides():
-        icon = f"{ADDON_PREFIX}\\{name}.paa"
-        lines.append(f'    class {cls} {{ icon = "{icon}"; texture = "{icon}"; }};')
+        targets[cls] = name
+        order.append(cls)
+
+    emitted = set(targets)
+    externals = sorted(
+        {
+            str(cache[cls]["parent_class"])
+            for cls in emitted
+            if cache[cls]["parent_class"] and cache[cls]["parent_class"] not in emitted
+        }
+    )
+
+    # Parents before children.  A parent must be declared first and an engine
+    # parent AEE does not re-declare must be forward declared, else HEMTT fails
+    # L-C03/L-C04.
+    sorted_cls: list[str] = []
+    placed: set[str] = set()
+
+    def place(cls: str, stack: frozenset[str]) -> None:
+        if cls in placed:
+            return
+        parent = str(cache[cls]["parent_class"])
+        if (
+            parent
+            and parent in emitted
+            and parent not in placed
+            and parent not in stack
+        ):
+            place(parent, stack | {cls})
+        placed.add(cls)
+        sorted_cls.append(cls)
+
+    for cls in order:
+        place(cls, frozenset())
+
+    lines = [
+        "",
+        "// Overwrite the engine's own NATO marker families, so the base Arma",
+        "// marker renders the AEE symbol and no engine mark shows beside it.",
+        "// A mod re-declares an engine class; Arma merges the configs and the",
+        "// later-loaded value wins (BIKI Addon configuration).  Each class RESTATES",
+        "// its REAL parent, read from the engine's own config and committed to",
+        "// data/symbology/engine_markers.json, so the inherited scope, size, colour",
+        "// and markerClass survive and only the texture is AEE's.  A bare reopen",
+        "// would make the engine strip the inheritance (ADR-029).  Parents precede",
+        "// their children and an engine parent AEE does not redefine is forward",
+        "// declared.",
+    ]
+    lines += [f"    {note}" for note in notes]
+    lines += [f"    class {parent};" for parent in externals]
+    for cls in sorted_cls:
+        icon = f"{ADDON_PREFIX}\\{targets[cls]}.paa"
+        lines.append(
+            f"    {engine_declaration(cls, cache)} "
+            f'{{ icon = "{icon}"; texture = "{icon}"; }};'
+        )
+    return "\n".join(lines) + "\n"
+
+
+def render_family_aliases(pairs: list[tuple[str, dict[str, Any]]]) -> str:
+    """The AEE runtime marker families, each inheriting the real APP-6 symbol.
+
+    fnc_symbologyMarkerType returns AEE_<family>_<glyph>.  Each such class
+    INHERITS the catalogue marker that resolves to the same affiliation,
+    dimension and function, so its real .paa, side, category and scope come from
+    the catalogue and are never retyped.  Where the catalogue holds no
+    single-image symbol (engineer, signal, supply, subsurface, waypoint) the
+    class inherits AEE_MarkerBase and points at the AEE-produced texture
+    AEE_<family>_<glyph>.paa under data/markers.
+    """
+    lines = [
+        "// Generated by tools/gen_symbology_catalogue.py.  Do not edit by hand.",
+        "// The AEE runtime marker families returned by fnc_symbologyMarkerType.",
+        "// Each inherits the real APP-6 catalogue symbol, so its texture, side,",
+        "// category and scope survive; only the five glyphs the catalogue does",
+        "// not publish inherit AEE_MarkerBase and the produced AEE texture.",
+        "",
+    ]
+    engine_target = {cls: name for cls, name, _func, _dev in engine_overrides(pairs)}
+    direct_target = dict(engine_direct_overrides())
+    for family in sorted(FAMILIES, key=lambda name: name != "u"):
+        affil = FAMILY_AFFIL[family]
+        for glyph in GLYPHS:
+            cls = f"AEE_{family}_{glyph}"
+            stem = ENGINE_GLYPH_STEM.get(glyph)
+            target = None
+            if glyph not in ("installation", "unknown"):
+                target = (
+                    (_find_exact(pairs, f"{affil} {stem}") if stem else None)
+                    or engine_target.get(f"{family}_{glyph}")
+                    or direct_target.get(f"{family}_{glyph}")
+                )
+            if target is not None:
+                lines.append(f"    class {cls}: {target} {{}};")
+                continue
+            if glyph == "installation":
+                icon = f"{ADDON_PREFIX}\\{installation_texture(family)}.paa"
+            elif glyph == "unknown":
+                icon = f"{ADDON_PREFIX}\\AEE_u_unknown.paa"
+            else:
+                icon = f"{ADDON_PREFIX}\\{cls}.paa"
+            lines += [
+                f"    class {cls}: AEE_MarkerBase {{",
+                f'        name = "AEE {affil} {GLYPH_NAME[glyph]}";',
+                f'        icon = "{icon}";',
+                f'        texture = "{icon}";',
+                f"        side = {FAMILY_SIDE[family]};",
+                f'        markerClass = "{marker_category(affil, GLYPH_DIM[glyph])}";',
+                "        scope = 2;",
+                "    };",
+            ]
+    return "\n".join(lines) + "\n"
+
+
+def render_register(pairs: list[tuple[str, dict[str, Any]]]) -> str:
+    """The mapping register: every engine class, its real parent and its symbol."""
+    cache = load_engine_markers()
+    lines = [
+        "# Engine marker mapping register",
+        "",
+        "Generated by tools/gen_symbology_catalogue.py. Do not edit by hand.",
+        "",
+        "Every engine CfgMarkers class AEE re-declares, its REAL parent read from",
+        "the engine's own config (data/symbology/engine_markers.json, resolved from",
+        "a3\\ui_f, a3\\ui_f_enoch and a3\\missions_f_heli), and the APP-6 catalogue",
+        "symbol it is pinned to. A class the catalogue holds no exact symbol for is",
+        "recorded with its reason.",
+        "",
+        "| Engine class | Real parent | Catalogue symbol | Verdict |",
+        "|---|---|---|---|",
+    ]
+    for cls, name, func, deviated in engine_overrides(pairs):
+        if cls not in cache:
+            continue
+        parent = str(cache[cls]["parent_class"]) or "(root)"
+        if name is None:
+            verdict = f"no exact catalogue symbol for {func!r}; the AEE family alias carries it"
+        elif deviated:
+            verdict = f"deviation: catalogue lacks {func!r}; nearest symbol used"
+        else:
+            verdict = "exact"
+        lines.append(f"| {cls} | {parent} | {name or '(none)'} | {verdict} |")
+    for cls, name in engine_direct_overrides():
+        parent = str(cache[cls]["parent_class"]) or "(root)"
+        lines.append(
+            f"| {cls} | {parent} | {name} | direct: no affiliation symbol; "
+            "pinned to the named AEE symbol |"
+        )
     return "\n".join(lines) + "\n"
 
 
@@ -671,6 +1025,10 @@ def check() -> int:
         render_config(pairs) + "\n" + render_engine_overrides(pairs)
     ):
         stale.append("config_markers.hpp is stale")
+    if FAMILY_OUT.read_text(encoding="utf-8") != render_family_aliases(pairs):
+        stale.append("config_family.hpp is stale")
+    if REGISTER_OUT.read_text(encoding="utf-8") != render_register(pairs):
+        stale.append("marker-mapping-register.md is stale")
     if ATTRIB_OUT.read_text(encoding="utf-8") != render_attribution(pairs):
         stale.append("ATTRIBUTION.md is stale")
     if stale:
@@ -727,6 +1085,13 @@ def main(argv: list[str]) -> int:
         return verify_svg()
     if "--render" in argv:
         return render_all()
+    if "--resolve-engine" in argv:
+        paths = [Path(arg) for arg in argv[argv.index("--resolve-engine") + 1 :]]
+        if not paths:
+            raise SystemExit(
+                "gen_symbology_catalogue: --resolve-engine needs a config.cpp"
+            )
+        return resolve_engine_markers(paths)
     if "--table" in argv:
         for name, entry in entries():
             print(

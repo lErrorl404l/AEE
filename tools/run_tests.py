@@ -183,6 +183,9 @@ def main():
         "tools/tests/test_run_tests_timeout.py",
         # Terrain and map-feature symbols (aee-map-feature-overhaul).
         "tools/tests/test_terrain.py",
+        # Map symbology: the derived engine marker mapping (ADR-029).
+        "tools/tests/test_symbology.py",
+        "tools/tests/test_marker_derivation.py",
         "tools/tests/test_cba_settings.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
