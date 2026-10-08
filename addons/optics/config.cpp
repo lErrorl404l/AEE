@@ -55,16 +55,19 @@ class CfgFontFamilies {
 // family whose glyph files are absent, so the engine font stays until the AEE
 // glyphs ship.  Re-point fontGrid and fontNames at AEEFont then.
 //
-// The engine numeric grid is REMOVED here.  AEE draws the MGRS grid instead
-// (FUNC(mgrsMapDraw)); two grids on one map is one too many.  CfgWorlds >> Grid
-// can only relabel and respace, so the presentation fields are the only lever:
-// the lines are colour fields, the numbers are the grid font size.  See ADR-028.
+// The engine numeric grid LINES stay removed and the engine NUMBERS return.
+// The operator asked for a readable grid reference "the way vanilla did it", so
+// the engine numeric labels come back (sizeExGrid = the engine default 0.02)
+// while the engine LINES stay off (colorGrid/colorGridMap alpha 0).  That leaves
+// exactly ONE line grid, the AEE MGRS overlay (FUNC(mgrsMapDraw)), with the
+// engine numeric labels as the familiar reference.  The two coexist: numbers
+// from the engine, lines from AEE.  See ADR-029.
 class RscMapControl {
 #include "config_mapcolors.hpp"
 #include "config_mapicons.hpp"
     colorGrid[] = {0, 0, 0, 0};
     colorGridMap[] = {0, 0, 0, 0};
-    sizeExGrid = 0;
+    sizeExGrid = 0.02;
 };
 
 #include "config_locationtypes.hpp"
