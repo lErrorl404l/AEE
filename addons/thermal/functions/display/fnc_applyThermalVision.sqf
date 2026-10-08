@@ -4,10 +4,13 @@
 Thermal vision model — physics-coupled FLIR behaviour for the thermal
 view (vision mode 2).
 
-Architecture: recreate ALL ppEffect handles every tick. This matches
-ACE3's pattern (addons/nightvision/functions/fnc_pfeh.sqf). Arma 3
-kills ppEffects on alt-tab, resize, AT sights. Without recreation
-the effects stay dead. ACE3's comment: "This is hacky but... works."
+Architecture: the eight ppEffect handles are created once, off the entry
+path, by FUNC(createThermalPPEffects) and pre-warmed by
+FUNC(warmThermalPPEffects) at postInit.  This tick only adjusts live
+handles and re-enables them; it never creates.  Arma 3 kills ppEffects
+on alt-tab, resize and AT sights, so a missing handle is recreated by the
+idempotent create guard.  Creating and building the chains on the entry
+tick cost a measured 907 ms; the pre-warm pays that on an idle tick.
 
 Physics: FLIR/thermal cameras image long-wave infrared (8-14 µm LWIR).
 Thermal contrast is the normalised object-background temperature gap:
@@ -31,7 +34,7 @@ becomes a flat grey — AGC cannot create contrast that does not exist.
 
 Gate:    vision mode 2
 Reads:   GVAR(currentThermalContrast), EGVAR(core,thermalCrossoverActive)
-Sets:    QGVAR(thermalActive), three ppEffects (client-side only)
+Sets:    QGVAR(thermalActive), eight ppEffects (client-side only)
 
 Debug hooks (set on missionNamespace; debug console only, no CBA setting):
   aee_thermal_bloomForce          Number: override the hot-source bloom base.
@@ -58,18 +61,17 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 if !([_player] call FUNC(isThermalHostActive)) exitWith {
     private _active = missionNamespace getVariable [QGVAR(thermalActive), false];
     if (_active) then {
-        // Destroy handles on exit and reset to -1.  The engine can kill
-        // ppEffects (alt-tab, resize) leaving stale positive handle
-        // numbers; those then fail every subsequent call with "Invalid
-        // post effect handle".  Resetting to -1 forces a clean recreate
-        // on next entry.
+        // Disable the handles on exit, do NOT destroy them.  Destroying
+        // forced FUNC(createThermalPPEffects) to rebuild every effect on
+        // the next entry, and the engine built each enabled chain on the
+        // tick after that: the measured 907 ms first-entry hitch.  The
+        // handles stay live and disabled, so re-entry only re-enables and
+        // adjusts them.  If the engine killed a handle (alt-tab, resize,
+        // AT sights) the create guard replaces the missing one.
         {
             private _h = missionNamespace getVariable [_x, -1];
             if (_h >= 0) then {
-                ppEffectDestroy _h;
-                missionNamespace setVariable [_x, -1];
-                private _logMsg = format ["thermal exit: destroyed %1 (was %2)", _x, _h];
-                AEE_LOG_DEBUG(_logMsg);
+                _h ppEffectEnable false;
             };
         } forEach [
             QGVAR(ppHandle_Thermal_Vignette),
@@ -81,7 +83,14 @@ if !([_player] call FUNC(isThermalHostActive)) exitWith {
             QGVAR(ppHandle_Thermal_WetDistortion),
             QGVAR(ppHandle_Thermal_Resolution)
         ];
-        AEE_LOG_INFO("thermal effects torn down (vision mode left)");
+        AEE_LOG_INFO("thermal effects disabled (vision mode left)");
+
+        // The change-gate cache keys on the handle and the last committed
+        // parameters.  Because the handles now survive the exit, a stale
+        // entry with the same parameters would make the next entry SKIP its
+        // commit and leave the effect disabled.  Clear it so re-entry writes
+        // and re-enables every effect.
+        missionNamespace setVariable [QGVAR(ppLastParams), createHashMap];
 
         missionNamespace setVariable [QGVAR(imperfectionStart), -1];
         missionNamespace setVariable [QGVAR(thermalActive), false];
@@ -212,127 +221,25 @@ if (_rainS > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 1.0, _rainS, 0.0, 0.15, true];
 };
 
-// ─── Thermal handles (create once, recreate only when missing) ───────────
-// Same pattern as the NVG model: handles are created once on entry and
-// only recreated when the engine killed them (alt-tab, resize, AT sights).
-// Never on a timer — rebuilding live effects every tick leaves stale
-// handles, climbs priorities, and spams "Invalid post effect handle".
-// Priorities adopt the proven per-type A3TI/MKK ladder (see
-// docs/wiki/research/engine-thermal-mechanisms.md): each effect type keeps
-// its own band with a large gap to the next, so no two AEE modules can
-// share a priority.  A -1 handle (priority taken) still bumps until it
-// succeeds, which covers any residual clash.
+// ─── Thermal handles (created once, off the entry path) ──────────────────
+// FUNC(createThermalPPEffects) is idempotent: it creates the eight effects
+// only when a handle is missing.  The handles are pre-warmed at postInit
+// (fnc_warmThermalPPEffects), which also pays the engine-side chain build,
+// so the first entry adjusts live handles instead of creating them and
+// building their chains on the entry tick.  This call is the fallback for a
+// handle the engine killed (alt-tab, resize, AT sights).
+// Re-read at function scope after the call: missionNamespace is the single
+// source of truth.
+[] call FUNC(createThermalPPEffects);
+
 private _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
 private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Chroma), -1];
-private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
-private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
+private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
+private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 private _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
 private _hWet   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_WetDistortion), -1];
 private _hReso  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Resolution), -1];
-
-if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0 || _hWet < 0 || _hReso < 0) then {
-    // A fresh effect must always receive its parameters, even when the engine
-    // hands back a handle NUMBER it used earlier.  Clearing here is the one
-    // choke point every new effect passes through, because each destroy path
-    // resets its handle to -1 and the test above then recreates it.
-    missionNamespace setVariable [QGVAR(ppLastParams), createHashMap];
-
-    {
-        private _h = missionNamespace getVariable [_x, -1];
-        if (_h >= 0) then {
-            ppEffectDestroy _h;
-            missionNamespace setVariable [_x, -1];
-            private _logMsg = format ["thermal recreate: destroyed %1 (was %2)", _x, _h];
-            AEE_LOG_DEBUG(_logMsg);
-        };
-    } forEach [
-        QGVAR(ppHandle_Thermal_Vignette),
-        QGVAR(ppHandle_Thermal_Chroma),
-        QGVAR(ppHandle_Thermal_CC),
-        QGVAR(ppHandle_Thermal_Grain),
-        QGVAR(ppHandle_Thermal_Blur),
-        QGVAR(ppHandle_Thermal_Inversion),
-        QGVAR(ppHandle_Thermal_WetDistortion),
-        QGVAR(ppHandle_Thermal_Resolution)
-    ];
-
-    private _handles = [];
-    {
-        _x params ["_name", "_priority", "_store"];
-        private _handle = ppEffectCreate [_name, _priority];
-        private _guard = 0;
-        while {_handle < 0 && _guard < 100} do {
-            _priority = _priority + 1;
-            _handle = ppEffectCreate [_name, _priority];
-            _guard = _guard + 1;
-        };
-        missionNamespace setVariable [_store, _handle];
-        _handles pushBack _handle;
-        private _logMsg = format ["created thermal %1 priority=%2 handle=%3", _name, _priority, _handle];
-        AEE_LOG_DEBUG(_logMsg);
-    } forEach [
-        // ChromAberration: the A3TI WHOT branch applies it at
-        // [0.001,0.001,true] BEFORE its ColorCorrections (workshop
-        // 3725008325 fn_ppEffects.sqf case 0), so it sits below the thermal
-        // CC here.  It is the lens colour fringing of the thermal objective,
-        // the one WHOT effect this stack did not already carry.  Priority
-        // 205 is the proven A3TI/MKK band for this effect type.
-        ["ChromAberration",  205, QGVAR(ppHandle_Thermal_Chroma)],
-        // RadialBlur: the vignette/edge falloff, the proven MKK value 1000.
-        ["RadialBlur",      1000, QGVAR(ppHandle_Thermal_Vignette)],
-        // DynamicBlur: the proven defocus band value 505.
-        ["DynamicBlur",      505, QGVAR(ppHandle_Thermal_Blur)],
-        // FilmGrain: the proven sensor-noise band.  The plan named 2005,
-        // but the fusion stack already holds 2005, so this stack takes the
-        // other proven value 2000 (the A3TI variant) and the two
-        // thermal-owned stacks never share a priority.
-        ["FilmGrain",       2000, QGVAR(ppHandle_Thermal_Grain)],
-        // ColorCorrections: the proven grade band.  The plan named 2505,
-        // but fusion holds 2505, so this stack takes the other proven value
-        // 2500.
-        ["ColorCorrections", 2500, QGVAR(ppHandle_Thermal_CC)],
-        // ColorInversion: the proven BHOT mechanism (A3TI 2501, MKK 2510,
-        // workshop 2041057379 / 3753145363).  Inverts the WHOLE rendered
-        // frame - hot becomes black, cold becomes white - which the old
-        // `_b = 1-_b` band flip never achieved for StageTI-baked objects.
-        // Created unconditionally; enabled only when thermalPolarity == 1
-        // (see the adjust section).  Priority 2510 is the proven BHOT band,
-        // above the thermal CC (2500) so it inverts the graded image.
-        ["ColorInversion", 2510, QGVAR(ppHandle_Thermal_Inversion)],
-        // WetDistortion: rain on the objective lens (MKK thermal_improvement
-        // workshop 3753145363 fnc_applyVisionEffects.sqf:158-166, priority
-        // 305 there).  It sits at 305, below every other AEE thermal effect,
-        // so the lens film distorts the frame before the grade.  Enabled
-        // only when AEE's rain/fog makes the lens wet.
-        ["WetDistortion",    305, QGVAR(ppHandle_Thermal_WetDistortion)],
-        // Resolution: sensor pixelation (MKK fnc_applyVisionEffects.sqf:124,
-        // priority 3000 there).  It sits at 3000, above the ColorInversion,
-        // so the detector grid quantises the finished frame.  Enabled only
-        // when the operator turns on thermalPixelation.  AEE does NOT drive
-        // the engine-global setTIParameter MaxResolution (see
-        // fnc_thermalResolutionParams).
-        ["Resolution",      3000, QGVAR(ppHandle_Thermal_Resolution)]
-    ];
-    _handles params ["_hChroma", "_hVig", "_hBlur", "_hGrain", "_hCC", "_hInv", "_hWet", "_hReso"];
-    private _logMsg = format ["thermal ppEffects created: chroma=%1 vig=%2 blur=%3 grain=%4 CC=%5 inv=%6 wet=%7 reso=%8", _hChroma, _hVig, _hBlur, _hGrain, _hCC, _hInv, _hWet, _hReso];
-    AEE_LOG_INFO(_logMsg);
-};
-
-// Re-read the handles from missionNamespace at FUNCTION scope.  The
-// `_handles params` above runs inside the if-block, whose scope shadows
-// the function-scope locals — the adjust section below would otherwise
-// read stale -1 values and throw "Invalid post effect handle".  This is
-// the NVG model's pattern (missionNamespace is the single source of
-// truth after the create block).
-_hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
-_hChroma = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Chroma), -1];
-_hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
-_hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
-_hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
-_hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
-_hWet   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_WetDistortion), -1];
-_hReso  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Resolution), -1];
 
 // ─── Post-process kill switch (operator bisect) ───────────────────────────
 // The five thermal effects are FULL-SCREEN passes (ColorCorrections,
@@ -347,6 +254,9 @@ if (!_ppOn) exitWith {
     {
         if (_x >= 0) then { _x ppEffectEnable false; };
     } forEach [_hVig, _hChroma, _hCC, _hGrain, _hBlur, _hInv, _hWet, _hReso];
+    // Same stale-cache hazard as the exit path: the handles are disabled but
+    // survive, so clear the change-gate cache.
+    missionNamespace setVariable [QGVAR(ppLastParams), createHashMap];
     setAperture 15;
     missionNamespace setVariable [QGVAR(thermalActive), true];
     AEE_LOG_DEBUG("thermal ppEffect chain DISABLED by setting (thermalPPEffects=false)");

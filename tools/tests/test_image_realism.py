@@ -270,6 +270,8 @@ DRIVER = GRADE / "fnc_applyBaseGrade.sqf"
 INIT = GRADE / "fnc_initBaseGrade.sqf"
 TEARDOWN = GRADE / "fnc_teardownBaseGrade.sqf"
 THERMAL_DISPLAY = THERMAL / "functions" / "display" / "fnc_applyThermalVision.sqf"
+# The create table moved off the per-entry path into its own function.
+THERMAL_CREATE = THERMAL / "functions" / "display" / "fnc_createThermalPPEffects.sqf"
 OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
 OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
 OPTICS_SETTINGS = OPTICS / "initSettings.inc.sqf"
@@ -343,22 +345,24 @@ class TestBaseGradeDriverContract(unittest.TestCase):
     def test_stand_down_neutral_is_the_contract_identity(self):
         code = _code(DRIVER)
         self.assertIn(
-            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], "
-            "[-1,-1,0,0,0,0,0]]",
+            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], [-1,-1,0,0,0,0,0]]",
             code,
             "the stand-down neutral is not the contract identity",
         )
-        self.assertNotIn("[0.2126,0.7152,0.0722,0]", code, "the stand-down still desaturates")
+        self.assertNotIn(
+            "[0.2126,0.7152,0.0722,0]", code, "the stand-down still desaturates"
+        )
 
     def test_teardown_neutral_is_the_contract_identity(self):
         code = _code(TEARDOWN)
         self.assertIn(
-            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], "
-            "[-1,-1,0,0,0,0,0]]",
+            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], [-1,-1,0,0,0,0,0]]",
             code,
             "the teardown neutral is not the contract identity",
         )
-        self.assertNotIn("[0.2126,0.7152,0.0722,0]", code, "the teardown still desaturates")
+        self.assertNotIn(
+            "[0.2126,0.7152,0.0722,0]", code, "the teardown still desaturates"
+        )
 
     def test_reads_the_eight_image_settings(self):
         code = _code(DRIVER)
@@ -383,7 +387,8 @@ class TestThermalIntegrationContract(unittest.TestCase):
     def test_adds_no_new_pp_effect(self):
         # The display already owns a recreate loop; the integration must add
         # no new effect, so every create must draw its name from the table.
-        code = _code(THERMAL_DISPLAY)
+        # The table now lives in fnc_createThermalPPEffects; scan both files.
+        code = _code(THERMAL_DISPLAY) + _code(THERMAL_CREATE)
         creates = list(re.finditer(r"ppEffectCreate\s*\[([^\]]*)\]", code))
         self.assertGreaterEqual(len(creates), 1)
         for match in creates:

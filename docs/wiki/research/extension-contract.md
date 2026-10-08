@@ -630,6 +630,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_calculateWBGT`
 - `aee_thermal_fnc_calculateWaterTemperature`
 - `aee_thermal_fnc_collectThermalNestedObjects`
+- `aee_thermal_fnc_createThermalPPEffects`
 - `aee_thermal_fnc_cycleFusionMode`
 - `aee_thermal_fnc_dumpState`
 - `aee_thermal_fnc_evaluateThermalEdge`
@@ -693,6 +694,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_updateFusionFrame`
 - `aee_thermal_fnc_updateTemperature`
 - `aee_thermal_fnc_updateThermalAGC`
+- `aee_thermal_fnc_warmThermalPPEffects`
 - `aee_wildlife_fnc_acousticLevel`
 - `aee_wildlife_fnc_acousticOccluders`
 - `aee_wildlife_fnc_acousticPublish`

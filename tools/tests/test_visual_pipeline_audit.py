@@ -42,6 +42,15 @@ REPO = Path(__file__).resolve().parents[2]
 SQF = (
     REPO / "addons" / "thermal" / "functions" / "display" / "fnc_applyThermalVision.sqf"
 )
+# The effect create table moved off the per-entry path into its own function.
+SQF_CREATE = (
+    REPO
+    / "addons"
+    / "thermal"
+    / "functions"
+    / "display"
+    / "fnc_createThermalPPEffects.sqf"
+)
 
 CC_NEUTRAL = {
     "brightness": 1.16,
@@ -83,7 +92,9 @@ class TestVisualPipelineTripleAudit(unittest.TestCase):
         self.assertLess(adj, dis)
 
     def test_sqf_priorities_unique(self):
-        text = SQF.read_text(encoding="utf-8")
+        # The create table is in fnc_createThermalPPEffects now; the driver
+        # only adjusts live handles.  Scan both.
+        text = SQF.read_text(encoding="utf-8") + SQF_CREATE.read_text(encoding="utf-8")
         # The ppEffect create list: ["EffectType", priority, QGVAR(...)]
         prios = [
             int(m.group(2))

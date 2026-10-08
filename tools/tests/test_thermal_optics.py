@@ -2206,7 +2206,14 @@ class TestSelectionThermalTexture(unittest.TestCase):
         self.assertNotIn("1 - _b", code)
         self.assertNotIn("ColorInversion", code)
         vision = _code_only(_read_sqf("fnc_applyThermalVision.sqf", addon="thermal"))
-        self.assertIn('"ColorInversion"', vision)
+        # The driver owns the polarity, but the ColorInversion effect is
+        # created in its own function now.
+        create = _code_only(
+            _read_sqf("fnc_createThermalPPEffects.sqf", addon="thermal")
+        )
+        self.assertNotIn('"ColorInversion"', vision)
+        self.assertIn('"ColorInversion"', create)
+        self.assertIn("_hInv ppEffectAdjust [0, 0, 0]", vision)
 
 
 class TestLocalDisplayMode(unittest.TestCase):
@@ -3128,15 +3135,20 @@ class TestSQFSync(unittest.TestCase):
         # proven values 2000 and 2500 keep the two thermal-owned stacks
         # from sharing a priority.
         self._assert_in_sqf(
-            "fnc_applyThermalVision.sqf",
+            "fnc_createThermalPPEffects.sqf",
             [
                 '["RadialBlur",      1000, QGVAR(ppHandle_Thermal_Vignette)]',
                 '["DynamicBlur",      505, QGVAR(ppHandle_Thermal_Blur)]',
                 '["FilmGrain",       2000, QGVAR(ppHandle_Thermal_Grain)]',
                 '["ColorCorrections", 2500, QGVAR(ppHandle_Thermal_CC)]',
-                "ppEffectForceInNVG true",
             ],
-            "FLIR layering: blur -> grain -> CC, vignette below, grain ABOVE blur",
+            "FLIR layering: blur -> grain -> CC, vignette below, grain ABOVE blur (create table)",
+            addon="thermal",
+        )
+        self._assert_in_sqf(
+            "fnc_applyThermalVision.sqf",
+            ["ppEffectForceInNVG true"],
+            "FLIR layering: the live adjust pass sets the NVG force flag",
             addon="thermal",
         )
 
@@ -6712,6 +6724,32 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
         )
 
 
+class TestThermalAgcTimebase(unittest.TestCase):
+    """The AGC IIR must integrate on the wall clock, not diag_deltaTime.
+
+    CBA_fnc_addPerFrameHandler passes no delta, and diag_deltaTime is the last
+    RENDERED FRAME duration.  A throttled 0.25 s pass that integrates on it
+    under-integrates by the frame rate (the same defect the eye driver had, and
+    the SWsim brief names it), so the published window depends on FPS and the
+    headless P79 probe read a different first-pass jump every run.  The step
+    must use the wall-clock gap since the last pass.
+    """
+
+    _F = _THERMAL / "solver" / "fnc_updateThermalAGC.sqf"
+
+    @classmethod
+    def setUpClass(cls):
+        # _code_only strips comments, so a remaining hit is code, not prose.
+        cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
+
+    def test_the_iir_step_uses_the_wall_clock_gap(self):
+        self.assertIn("_agcDt", self.code)
+        self.assertIn("_a = _agcDt / (_agcDt + 0.5)", self.code)
+
+    def test_the_iir_does_not_use_diag_deltaTime(self):
+        self.assertNotIn("diag_deltaTime", self.code)
+
+
 class TestThermalAgcRegimeHysteresis(unittest.TestCase):
     """The AGC max-gain floor regime must be sticky.
 
@@ -7145,7 +7183,10 @@ class TestThermalPostProcessLadder(unittest.TestCase):
         }
 
     def test_ladder_matches_the_proven_values(self):
-        found = self._qgvar_entries(_read_sqf("fnc_applyThermalVision.sqf", "thermal"))
+        # The create ladder moved off the per-entry path into its own function.
+        found = self._qgvar_entries(
+            _read_sqf("fnc_createThermalPPEffects.sqf", "thermal")
+        )
         self.assertEqual(found, self.LADDER)
 
     def test_ladder_values_are_unique(self):
@@ -7157,11 +7198,11 @@ class TestThermalPostProcessLadder(unittest.TestCase):
 
     def test_fusion_stack_is_unchanged_and_disjoint(self):
         fusion = _read_sqf("fnc_applyFusionPP.sqf", "thermal")
-        vision = _read_sqf("fnc_applyThermalVision.sqf", "thermal")
+        create = _read_sqf("fnc_createThermalPPEffects.sqf", "thermal")
         self.assertEqual(self._bare_entries(fusion), self.FUSION)
         self.assertFalse(
             set(self._bare_entries(fusion).values())
-            & set(self._qgvar_entries(vision).values()),
+            & set(self._qgvar_entries(create).values()),
             "a thermal and a fusion handle share a priority",
         )
 
@@ -7169,7 +7210,7 @@ class TestThermalPostProcessLadder(unittest.TestCase):
         # Key by module and effect, not by effect alone: the same effect
         # name appears in several stacks and a name-keyed map would drop
         # all but the last.
-        vision = _read_sqf("fnc_applyThermalVision.sqf", "thermal")
+        create = _read_sqf("fnc_createThermalPPEffects.sqf", "thermal")
         nvg = _read_sqf("fnc_applyNVGTubeModel.sqf", "nightvision")
         others = [
             (f"fusion:{k}", v)
@@ -7187,7 +7228,7 @@ class TestThermalPostProcessLadder(unittest.TestCase):
         for m in re.finditer(r"private _(?:prio|dofPrio) = (\d+)", nvg):
             others.append((f"nvg_local_{m.start()}", int(m.group(1))))
         by_priority = {priority: label for label, priority in others}
-        for effect, priority in self._qgvar_entries(vision).items():
+        for effect, priority in self._qgvar_entries(create).items():
             self.assertNotIn(
                 priority,
                 by_priority,

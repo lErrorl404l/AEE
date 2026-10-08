@@ -48,5 +48,16 @@ if (hasInterface) then {
     [FUNC(applyActiveIR), 1] call CBA_fnc_addPerFrameHandler;
 };
 
+// ── Thermal post-process pre-warm ─────────────────────────────────────────
+// The first thermal entry used to create the eight effects and build their
+// engine chains on the entry tick: a measured 907 ms hitch.  FUNC(warm...)
+// creates them now, on an idle client tick, commits a neutral frame so the
+// engine builds every chain, then disables them again.  The entry path is
+// left to adjust live handles.  FUNC(warm...) is a no-op on a dedicated
+// server and while a thermal host is already active.
+if (hasInterface) then {
+    [{ [] call FUNC(warmThermalPPEffects); }, [], 0.5] call CBA_fnc_waitAndExecute;
+};
+
 // Uniform per-module state dump, one line a second.
 [FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
