@@ -78,6 +78,8 @@ def main():
         "tools/tests/test_compat_directions.py",
         "tools/tests/test_ownership_sentinels.py",
         "tools/tests/test_extension_contract.py",
+        "tools/tests/test_engine_overrides.py",
+        "tools/tests/test_probe_numbers.py",
         "tools/tests/test_optics_vision.py",
         "tools/tests/test_blast.py",
         "tools/tests/test_diving.py",
