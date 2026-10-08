@@ -26,6 +26,26 @@ The engine's own `setApertureNew` also reacts to the rendered scene: the less sk
 
 5. The operator tunes the model from CBA settings under `AEE Optics` > `Eye Adaptation`. Debug hooks on `missionNamespace` force a scene luminance (`aee_optics_eyeForceLux`), freeze the state (`aee_optics_eyeFreeze`), and force a day or night target (`aee_optics_eyeForceMode`). A muzzle flash adds a separate transient term through `aee_optics_eyeFlashLux` and `aee_optics_eyeFlashUntil`.
 
+## Time base and time skips
+
+The driver integrates the adaptation from the tick step. The step is the REAL
+elapsed time between driver ticks, from the `diag_tickTime` delta, not
+`diag_deltaTime`. The driver runs on a 0.1 s per-frame handler and the
+scheduler services it at its own cadence, so the frame delta is smaller than
+the tick interval. Using it under-integrated the adaptation and the eye ran
+about 8x slower than its taus. The operator report is in the RPT: after a
+12 h skip the aperture tracked the noon scene over tens of seconds, not the
+configured seconds.
+
+A time skip (`skipTime`, `setDate`, an Eden time change) moves the world clock
+but not the real clock, so the step above cannot see it. The driver watches
+`daytime` through the pure kernel `fnc_eyeTimeSkip`. On a skip it drops the
+adapted state and re-seeds it with `eyeAdaptInit` at the new scene: the eye
+arrives adapted, the same rule the mission start uses. Without this the eye
+chased the jumped scene over the slow dark tau and the aperture was wrong for
+minutes (the operator report: noon very bright, midnight very dark, after a
+skip).
+
 ## Local-light sensing limits
 
 - `getLightingAt` folds local dynamic light, but it returns `[]` on a logic, it is off on a dedicated server, and it is gated by the local player's night-vision state. It is therefore client-only and enters the model only through a tunable scale.

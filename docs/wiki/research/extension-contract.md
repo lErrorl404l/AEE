@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (632)
+### Public functions (633)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -471,6 +471,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_eyeSceneLux`
 - `aee_optics_fnc_eyeSkyCast`
 - `aee_optics_fnc_eyeSkyFraction`
+- `aee_optics_fnc_eyeTimeSkip`
 - `aee_optics_fnc_fontFamilyUsable`
 - `aee_optics_fnc_formatGridDisplay`
 - `aee_optics_fnc_getOpticProperties`
