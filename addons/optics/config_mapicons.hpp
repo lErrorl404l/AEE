@@ -13,7 +13,9 @@
  * visibility coefficients (coefMin, coefMax) cannot be inherited.  AEE
  * restates them from the engine's own config, so the re-declare keeps the
  * vanilla draw behaviour and overrides only the icon, the colour, the size
- * and the importance.  The values are the ui_f ones (ui_f_x2/config.cpp:1402).
+ * and the importance.  The values are the vanilla ui_f ones (ui_f.pbo,
+ * RscMapControl icon classes); a size below the vanilla value draws the icon
+ * too small on the map, so the vanilla size is kept.
  *
  * The engine ceiling: the object-to-icon routing is engine-internal.  Arma
  * config class names resolve case-insensitively, so the engine core names
@@ -33,7 +35,7 @@
     class Bush {
         icon = "\z\aee\addons\optics\data\terrain\brushwood.paa";
         color[] = {1, 1, 1, 1};
-        size = 10;
+        size = 7;
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -41,7 +43,7 @@
     class SmallTree {
         icon = "\z\aee\addons\optics\data\terrain\deciduous.paa";
         color[] = {1, 1, 1, 1};
-        size = 10;
+        size = 12;
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -69,7 +71,7 @@
     class church {
         icon = "\z\aee\addons\optics\data\terrain\church.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -77,7 +79,7 @@
     class Chapel {
         icon = "\z\aee\addons\optics\data\terrain\chapel.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -85,7 +87,7 @@
     class Cross {
         icon = "\z\aee\addons\optics\data\terrain\cross.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -93,7 +95,7 @@
     class Ruin {
         icon = "\z\aee\addons\optics\data\terrain\ruin.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 16;
         importance = 1;
         coefMin = 1;
         coefMax = 4;
@@ -101,7 +103,7 @@
     class hospital {
         icon = "\z\aee\addons\optics\data\terrain\hospital.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -109,7 +111,7 @@
     class fuelstation {
         icon = "\z\aee\addons\optics\data\terrain\fuel_station.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -117,7 +119,7 @@
     class Stack {
         icon = "\z\aee\addons\optics\data\terrain\stack.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 16;
         importance = 1;
         coefMin = 0.4;
         coefMax = 2;
@@ -125,7 +127,7 @@
     class transmitter {
         icon = "\z\aee\addons\optics\data\terrain\radio_tower.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -133,7 +135,7 @@
     class watertower {
         icon = "\z\aee\addons\optics\data\terrain\water_tower.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -141,7 +143,7 @@
     class lighthouse {
         icon = "\z\aee\addons\optics\data\terrain\lighthouse.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -149,7 +151,7 @@
     class power {
         icon = "\z\aee\addons\optics\data\terrain\power_plant.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -157,7 +159,7 @@
     class powersolar {
         icon = "\z\aee\addons\optics\data\terrain\solar.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -165,7 +167,7 @@
     class powerwind {
         icon = "\z\aee\addons\optics\data\terrain\wind.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -173,7 +175,7 @@
     class powerwave {
         icon = "\z\aee\addons\optics\data\terrain\wave.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -181,7 +183,7 @@
     class Fountain {
         icon = "\z\aee\addons\optics\data\terrain\fountain.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 11;
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -189,7 +191,7 @@
     class Tourism {
         icon = "\z\aee\addons\optics\data\terrain\tourism.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 16;
         importance = 1;
         coefMin = 0.7;
         coefMax = 4;
@@ -197,7 +199,7 @@
     class ViewTower {
         icon = "\z\aee\addons\optics\data\terrain\view_tower.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 16;
         importance = 1;
         coefMin = 0.5;
         coefMax = 4;
@@ -207,7 +209,7 @@
     class busstop {
         icon = "\z\aee\addons\optics\data\terrain\bus_stop.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -215,7 +217,7 @@
     class quay {
         icon = "\z\aee\addons\optics\data\terrain\quay.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -223,7 +225,7 @@
     class Shipwreck {
         icon = "\z\aee\addons\optics\data\terrain\shipwreck.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = 24;
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
