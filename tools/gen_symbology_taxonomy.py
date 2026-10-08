@@ -36,6 +36,8 @@ import sys
 import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+
+from symbology_categories import marker_category
 from typing import Any
 
 ROOT = Path(__file__).parents[1]
@@ -271,6 +273,7 @@ def render_config(items: list[dict[str, Any]]) -> str:
             f'        icon = "{icon}";',
             f'        texture = "{icon}";',
             f"        side = {AFFIL_SIDE[it['affil']]};",
+            f'        markerClass = "{marker_category(it["affil"], it["dim"])}";',
             "        scope = 2;",
             "    };",
         ]

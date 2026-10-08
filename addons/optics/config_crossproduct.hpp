@@ -7,6 +7,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Air_Defence.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Air_Defence: AEE_MarkerBase {
@@ -14,6 +15,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Air_Defence.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Air_Defence: AEE_MarkerBase {
@@ -21,6 +23,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Air_Defence: AEE_MarkerBase {
@@ -28,6 +31,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Air_Force: AEE_MarkerBase {
@@ -35,6 +39,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Air_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Air_Force.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Air_Force: AEE_MarkerBase {
@@ -42,6 +47,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Air_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Air_Force.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Air_Force: AEE_MarkerBase {
@@ -49,6 +55,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Air_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Air_Force.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Air_Force: AEE_MarkerBase {
@@ -56,6 +63,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Air_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Air_Force.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Air_transportable: AEE_MarkerBase {
@@ -63,6 +71,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Air_transportable.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Air_transportable.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Air_transportable: AEE_MarkerBase {
@@ -70,6 +79,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Air_transportable.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Air_transportable.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Air_transportable: AEE_MarkerBase {
@@ -77,6 +87,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Air_transportable.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Air_transportable.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Air_transportable: AEE_MarkerBase {
@@ -84,6 +95,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Air_transportable.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Air_transportable.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Airmobile: AEE_MarkerBase {
@@ -91,6 +103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Airmobile: AEE_MarkerBase {
@@ -98,6 +111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Airmobile: AEE_MarkerBase {
@@ -105,6 +119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Airmobile: AEE_MarkerBase {
@@ -112,6 +127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Airmobile_Infantry: AEE_MarkerBase {
@@ -119,6 +135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Airmobile_Infantry: AEE_MarkerBase {
@@ -126,6 +143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Airmobile_Infantry: AEE_MarkerBase {
@@ -133,6 +151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Airmobile_Infantry: AEE_MarkerBase {
@@ -140,6 +159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Airmobile_Mod: AEE_MarkerBase {
@@ -147,6 +167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Mod.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Mod.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Airmobile_Mod: AEE_MarkerBase {
@@ -154,6 +175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Mod.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Mod.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Airmobile_Mod: AEE_MarkerBase {
@@ -161,6 +183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Mod.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Mod.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Airmobile_Mod: AEE_MarkerBase {
@@ -168,6 +191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Mod.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Mod.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Airmobile_Mortar: AEE_MarkerBase {
@@ -175,6 +199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Mortar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Airmobile_Mortar: AEE_MarkerBase {
@@ -182,6 +207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Mortar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Airmobile_Mortar: AEE_MarkerBase {
@@ -189,6 +215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Mortar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Airmobile_Mortar: AEE_MarkerBase {
@@ -196,6 +223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Mortar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Airmobile_Supply_Transpo: AEE_MarkerBase {
@@ -203,6 +231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Supply_Transpo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Airmobile_Supply_Transpo.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Airmobile_Supply_Transpo: AEE_MarkerBase {
@@ -210,6 +239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Supply_Transpo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Airmobile_Supply_Transpo.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Airmobile_Supply_Transpo: AEE_MarkerBase {
@@ -217,6 +247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Supply_Transpo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Airmobile_Supply_Transpo.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Airmobile_Supply_Transpo: AEE_MarkerBase {
@@ -224,6 +255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Supply_Transpo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Airmobile_Supply_Transpo.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Ammunition: AEE_MarkerBase {
@@ -231,6 +263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Ammunition.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Ammunition: AEE_MarkerBase {
@@ -238,6 +271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Ammunition.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Ammunition: AEE_MarkerBase {
@@ -245,6 +279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Ammunition: AEE_MarkerBase {
@@ -252,6 +287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Amphibious: AEE_MarkerBase {
@@ -259,6 +295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Amphibious.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Amphibious: AEE_MarkerBase {
@@ -266,6 +303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Amphibious.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Amphibious: AEE_MarkerBase {
@@ -273,6 +311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Amphibious.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Amphibious: AEE_MarkerBase {
@@ -280,6 +319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Amphibious.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Amphibious_Mechanized_In: AEE_MarkerBase {
@@ -287,6 +327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Amphibious_Mechanized_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Amphibious_Mechanized_In.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Amphibious_Mechanized_In: AEE_MarkerBase {
@@ -294,6 +335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Amphibious_Mechanized_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Amphibious_Mechanized_In.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Amphibious_Mechanized_In: AEE_MarkerBase {
@@ -301,6 +343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Amphibious_Mechanized_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Amphibious_Mechanized_In.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Amphibious_Mechanized_In: AEE_MarkerBase {
@@ -308,6 +351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Amphibious_Mechanized_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Amphibious_Mechanized_In.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Anti_Tank: AEE_MarkerBase {
@@ -315,6 +359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Anti_Tank: AEE_MarkerBase {
@@ -322,6 +367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Anti_Tank: AEE_MarkerBase {
@@ -329,6 +375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Anti_Tank: AEE_MarkerBase {
@@ -336,6 +383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Anti_Tank_Artillery: AEE_MarkerBase {
@@ -343,6 +391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Anti_Tank_Artillery: AEE_MarkerBase {
@@ -350,6 +399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Anti_Tank_Artillery: AEE_MarkerBase {
@@ -357,6 +407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Anti_Tank_Artillery: AEE_MarkerBase {
@@ -364,6 +415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Anti_Tank_Helicopter: AEE_MarkerBase {
@@ -371,6 +423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank_Helicopter.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Anti_Tank_Helicopter: AEE_MarkerBase {
@@ -378,6 +431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank_Helicopter.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Anti_Tank_Helicopter: AEE_MarkerBase {
@@ -385,6 +439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank_Helicopter.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Anti_Tank_Helicopter: AEE_MarkerBase {
@@ -392,6 +447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank_Helicopter.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Anti_Tank_Missile: AEE_MarkerBase {
@@ -399,6 +455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Anti_Tank_Missile.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Anti_Tank_Missile: AEE_MarkerBase {
@@ -406,6 +463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Anti_Tank_Missile.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Anti_Tank_Missile: AEE_MarkerBase {
@@ -413,6 +471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Anti_Tank_Missile.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Anti_Tank_Missile: AEE_MarkerBase {
@@ -420,6 +479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Anti_Tank_Missile.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Armored: AEE_MarkerBase {
@@ -427,6 +487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Armored: AEE_MarkerBase {
@@ -434,6 +495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Armored: AEE_MarkerBase {
@@ -441,6 +503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Armored: AEE_MarkerBase {
@@ -448,6 +511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Armored_Artillery: AEE_MarkerBase {
@@ -455,6 +519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Armored_Artillery: AEE_MarkerBase {
@@ -462,6 +527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Armored_Artillery: AEE_MarkerBase {
@@ -469,6 +535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Armored_Artillery: AEE_MarkerBase {
@@ -476,6 +543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Armored_Engineer: AEE_MarkerBase {
@@ -483,6 +551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored_Engineer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Armored_Engineer: AEE_MarkerBase {
@@ -490,6 +559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored_Engineer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Armored_Engineer: AEE_MarkerBase {
@@ -497,6 +567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Armored_Engineer: AEE_MarkerBase {
@@ -504,6 +575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Armored_Reconnaissance: AEE_MarkerBase {
@@ -511,6 +583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Armored_Reconnaissance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Armored_Reconnaissance: AEE_MarkerBase {
@@ -518,6 +591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Armored_Reconnaissance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Armored_Reconnaissance: AEE_MarkerBase {
@@ -525,6 +599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Armored_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Armored_Reconnaissance: AEE_MarkerBase {
@@ -532,6 +607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Armored_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_APP_6_Army_Aviation: AEE_MarkerBase {
@@ -539,6 +615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_APP_6_Army_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_APP_6_Army_Aviation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_APP_6_Army_Aviation: AEE_MarkerBase {
@@ -546,6 +623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_APP_6_Army_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_APP_6_Army_Aviation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_APP_6_Army_Aviation: AEE_MarkerBase {
@@ -553,6 +631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_APP_6_Army_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_APP_6_Army_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_APP_6_Army_Aviation: AEE_MarkerBase {
@@ -560,6 +639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_APP_6_Army_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_APP_6_Army_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_APP_6_Artillery: AEE_MarkerBase {
@@ -567,6 +647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Artillery: AEE_MarkerBase {
@@ -574,6 +655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Artillery: AEE_MarkerBase {
@@ -581,6 +663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Artillery: AEE_MarkerBase {
@@ -588,6 +671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Bridging: AEE_MarkerBase {
@@ -595,6 +679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Bridging.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Bridging.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Bridging: AEE_MarkerBase {
@@ -602,6 +687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Bridging.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Bridging.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Bridging: AEE_MarkerBase {
@@ -609,6 +695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Bridging.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Bridging.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Bridging: AEE_MarkerBase {
@@ -616,6 +703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Bridging.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Bridging.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Combat_Service_Support: AEE_MarkerBase {
@@ -623,6 +711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Combat_Service_Support.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Combat_Service_Support: AEE_MarkerBase {
@@ -630,6 +719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Combat_Service_Support.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Combat_Service_Support: AEE_MarkerBase {
@@ -637,6 +727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Combat_Service_Support.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Combat_Service_Support: AEE_MarkerBase {
@@ -644,6 +735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Combat_Service_Support.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Combat_Supply: AEE_MarkerBase {
@@ -651,6 +743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Combat_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Combat_Supply.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Combat_Supply: AEE_MarkerBase {
@@ -658,6 +751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Combat_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Combat_Supply.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Combat_Supply: AEE_MarkerBase {
@@ -665,6 +759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Combat_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Combat_Supply.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Combat_Supply: AEE_MarkerBase {
@@ -672,6 +767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Combat_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Combat_Supply.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Electronic_Warfare: AEE_MarkerBase {
@@ -679,6 +775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Electronic_Warfare.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Electronic_Warfare: AEE_MarkerBase {
@@ -686,6 +783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Electronic_Warfare.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Electronic_Warfare: AEE_MarkerBase {
@@ -693,6 +791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Electronic_Warfare.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Electronic_Warfare: AEE_MarkerBase {
@@ -700,6 +799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Electronic_Warfare.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Engineer: AEE_MarkerBase {
@@ -707,6 +807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Engineer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Engineer: AEE_MarkerBase {
@@ -714,6 +815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Engineer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Engineer: AEE_MarkerBase {
@@ -721,6 +823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Engineer: AEE_MarkerBase {
@@ -728,6 +831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Engineer_Construction: AEE_MarkerBase {
@@ -735,6 +839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Engineer_Construction.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Engineer_Construction.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Engineer_Construction: AEE_MarkerBase {
@@ -742,6 +847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Engineer_Construction.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Engineer_Construction.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Engineer_Construction: AEE_MarkerBase {
@@ -749,6 +855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Engineer_Construction.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Engineer_Construction.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Engineer_Construction: AEE_MarkerBase {
@@ -756,6 +863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Engineer_Construction.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Engineer_Construction.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_HQ_Support: AEE_MarkerBase {
@@ -763,6 +871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_HQ_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_HQ_Support.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_HQ_Support: AEE_MarkerBase {
@@ -770,6 +879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_HQ_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_HQ_Support.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_HQ_Support: AEE_MarkerBase {
@@ -777,6 +887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_HQ_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_HQ_Support.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_HQ_Support: AEE_MarkerBase {
@@ -784,6 +895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_HQ_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_HQ_Support.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Infantry: AEE_MarkerBase {
@@ -791,6 +903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Infantry: AEE_MarkerBase {
@@ -798,6 +911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Infantry: AEE_MarkerBase {
@@ -805,6 +919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Infantry: AEE_MarkerBase {
@@ -812,6 +927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Infantry_Mechanized_IFV: AEE_MarkerBase {
@@ -819,6 +935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry_Mechanized_IFV.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry_Mechanized_IFV.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Infantry_Mechanized_IFV: AEE_MarkerBase {
@@ -826,6 +943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry_Mechanized_IFV.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry_Mechanized_IFV.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Infantry_Mechanized_IFV: AEE_MarkerBase {
@@ -833,6 +951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry_Mechanized_IFV.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry_Mechanized_IFV.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Infantry_Mechanized_IFV: AEE_MarkerBase {
@@ -840,6 +959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry_Mechanized_IFV.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry_Mechanized_IFV.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Infantry_Motorised: AEE_MarkerBase {
@@ -847,6 +967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry_Motorised.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Infantry_Motorised: AEE_MarkerBase {
@@ -854,6 +975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry_Motorised.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Infantry_Motorised: AEE_MarkerBase {
@@ -861,6 +983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry_Motorised.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Infantry_Motorised: AEE_MarkerBase {
@@ -868,6 +991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry_Motorised.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Infantry_Wheeled_Mechani: AEE_MarkerBase {
@@ -875,6 +999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry_Wheeled_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Infantry_Wheeled_Mechani.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Infantry_Wheeled_Mechani: AEE_MarkerBase {
@@ -882,6 +1007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry_Wheeled_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Infantry_Wheeled_Mechani.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Infantry_Wheeled_Mechani: AEE_MarkerBase {
@@ -889,6 +1015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry_Wheeled_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Infantry_Wheeled_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Infantry_Wheeled_Mechani: AEE_MarkerBase {
@@ -896,6 +1023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry_Wheeled_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Infantry_Wheeled_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_MLRS: AEE_MarkerBase {
@@ -903,6 +1031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_MLRS.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_MLRS: AEE_MarkerBase {
@@ -910,6 +1039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_MLRS.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_MLRS: AEE_MarkerBase {
@@ -917,6 +1047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_MLRS.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_MLRS: AEE_MarkerBase {
@@ -924,6 +1055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_MLRS.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_MP: AEE_MarkerBase {
@@ -931,6 +1063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_MP.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_MP.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_MP: AEE_MarkerBase {
@@ -938,6 +1071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_MP.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_MP.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_MP: AEE_MarkerBase {
@@ -945,6 +1079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_MP.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_MP.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_MP: AEE_MarkerBase {
@@ -952,6 +1087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_MP.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_MP.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Machine_Gun: AEE_MarkerBase {
@@ -959,6 +1095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Machine_Gun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Machine_Gun.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Machine_Gun: AEE_MarkerBase {
@@ -966,6 +1103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Machine_Gun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Machine_Gun.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Machine_Gun: AEE_MarkerBase {
@@ -973,6 +1111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Machine_Gun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Machine_Gun.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Machine_Gun: AEE_MarkerBase {
@@ -980,6 +1119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Machine_Gun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Machine_Gun.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Machine_Gun_Heavy: AEE_MarkerBase {
@@ -987,6 +1127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Machine_Gun_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Machine_Gun_Heavy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Machine_Gun_Heavy: AEE_MarkerBase {
@@ -994,6 +1135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Machine_Gun_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Machine_Gun_Heavy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Machine_Gun_Heavy: AEE_MarkerBase {
@@ -1001,6 +1143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Machine_Gun_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Machine_Gun_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Machine_Gun_Heavy: AEE_MarkerBase {
@@ -1008,6 +1151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Machine_Gun_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Machine_Gun_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Maintenance: AEE_MarkerBase {
@@ -1015,6 +1159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Maintenance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Maintenance: AEE_MarkerBase {
@@ -1022,6 +1167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Maintenance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Maintenance: AEE_MarkerBase {
@@ -1029,6 +1175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Maintenance: AEE_MarkerBase {
@@ -1036,6 +1183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mechanized_Infantry: AEE_MarkerBase {
@@ -1043,6 +1191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mechanized_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mechanized_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mechanized_Infantry: AEE_MarkerBase {
@@ -1050,6 +1199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mechanized_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mechanized_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mechanized_Infantry: AEE_MarkerBase {
@@ -1057,6 +1207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mechanized_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mechanized_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mechanized_Infantry: AEE_MarkerBase {
@@ -1064,6 +1215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mechanized_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mechanized_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Medical: AEE_MarkerBase {
@@ -1071,6 +1223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Medical.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Medical: AEE_MarkerBase {
@@ -1078,6 +1231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Medical.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Medical: AEE_MarkerBase {
@@ -1085,6 +1239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Medical.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Medical: AEE_MarkerBase {
@@ -1092,6 +1247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Medical.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Meteorological: AEE_MarkerBase {
@@ -1099,6 +1255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Meteorological.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Meteorological.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Meteorological: AEE_MarkerBase {
@@ -1106,6 +1263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Meteorological.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Meteorological.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Meteorological: AEE_MarkerBase {
@@ -1113,6 +1271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Meteorological.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Meteorological.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Meteorological: AEE_MarkerBase {
@@ -1120,6 +1279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Meteorological.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Meteorological.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Missile: AEE_MarkerBase {
@@ -1127,6 +1287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Missile.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Missile: AEE_MarkerBase {
@@ -1134,6 +1295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Missile.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Missile: AEE_MarkerBase {
@@ -1141,6 +1303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Missile.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Missile: AEE_MarkerBase {
@@ -1148,6 +1311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Missile.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mod_Bicycle: AEE_MarkerBase {
@@ -1155,6 +1319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mod_Bicycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mod_Bicycle.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mod_Bicycle: AEE_MarkerBase {
@@ -1162,6 +1327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mod_Bicycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mod_Bicycle.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mod_Bicycle: AEE_MarkerBase {
@@ -1169,6 +1335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mod_Bicycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mod_Bicycle.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mod_Bicycle: AEE_MarkerBase {
@@ -1176,6 +1343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mod_Bicycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mod_Bicycle.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
@@ -1183,6 +1351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mod_Motorcycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mod_Motorcycle.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
@@ -1190,6 +1359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mod_Motorcycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mod_Motorcycle.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
@@ -1197,6 +1367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mod_Motorcycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mod_Motorcycle.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
@@ -1204,6 +1375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mod_Motorcycle.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mod_Motorcycle.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Modifier_01: AEE_MarkerBase {
@@ -1211,6 +1383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_01.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_01.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Modifier_01: AEE_MarkerBase {
@@ -1218,6 +1391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_01.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_01.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Modifier_01: AEE_MarkerBase {
@@ -1225,6 +1399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_01.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_01.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Modifier_01: AEE_MarkerBase {
@@ -1232,6 +1407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
@@ -1239,6 +1415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_01_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_01_Transparent.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
@@ -1246,6 +1423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_01_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_01_Transparent.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
@@ -1253,6 +1431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_01_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_01_Transparent.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
@@ -1260,6 +1439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01_Transparent.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Modifier_02: AEE_MarkerBase {
@@ -1267,6 +1447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_02.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_02.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Modifier_02: AEE_MarkerBase {
@@ -1274,6 +1455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_02.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_02.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Modifier_02: AEE_MarkerBase {
@@ -1281,6 +1463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_02.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_02.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Modifier_02: AEE_MarkerBase {
@@ -1288,6 +1471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_02.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_02.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Modifier_02_Transparent: AEE_MarkerBase {
@@ -1295,6 +1479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_02_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_02_Transparent.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Modifier_02_Transparent: AEE_MarkerBase {
@@ -1302,6 +1487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_02_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_02_Transparent.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Modifier_02_Transparent: AEE_MarkerBase {
@@ -1309,6 +1495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_02_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_02_Transparent.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Modifier_02_Transparent: AEE_MarkerBase {
@@ -1316,6 +1503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_02_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_02_Transparent.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mortar: AEE_MarkerBase {
@@ -1323,6 +1511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mortar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mortar: AEE_MarkerBase {
@@ -1330,6 +1519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mortar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mortar: AEE_MarkerBase {
@@ -1337,6 +1527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mortar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mortar: AEE_MarkerBase {
@@ -1344,6 +1535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mortar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mortar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mortar_SP_Mechanized: AEE_MarkerBase {
@@ -1351,6 +1543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mortar_SP_Mechanized.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mortar_SP_Mechanized.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mortar_SP_Mechanized: AEE_MarkerBase {
@@ -1358,6 +1551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mortar_SP_Mechanized.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mortar_SP_Mechanized.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mortar_SP_Mechanized: AEE_MarkerBase {
@@ -1365,6 +1559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mortar_SP_Mechanized.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mortar_SP_Mechanized.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mortar_SP_Mechanized: AEE_MarkerBase {
@@ -1372,6 +1567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mortar_SP_Mechanized.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mortar_SP_Mechanized.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Motorised: AEE_MarkerBase {
@@ -1379,6 +1575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Motorised.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Motorised: AEE_MarkerBase {
@@ -1386,6 +1583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Motorised.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Motorised: AEE_MarkerBase {
@@ -1393,6 +1591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Motorised.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Motorised: AEE_MarkerBase {
@@ -1400,6 +1599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Motorised.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Motorised.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mountain: AEE_MarkerBase {
@@ -1407,6 +1607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mountain.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mountain: AEE_MarkerBase {
@@ -1414,6 +1615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mountain.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mountain: AEE_MarkerBase {
@@ -1421,6 +1623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mountain: AEE_MarkerBase {
@@ -1428,6 +1631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mountain_Artillery: AEE_MarkerBase {
@@ -1435,6 +1639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mountain_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mountain_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mountain_Artillery: AEE_MarkerBase {
@@ -1442,6 +1647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mountain_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mountain_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mountain_Artillery: AEE_MarkerBase {
@@ -1449,6 +1655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mountain_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mountain_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mountain_Artillery: AEE_MarkerBase {
@@ -1456,6 +1663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mountain_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mountain_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Mountain_Infantry: AEE_MarkerBase {
@@ -1463,6 +1671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mountain_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mountain_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Mountain_Infantry: AEE_MarkerBase {
@@ -1470,6 +1679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mountain_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mountain_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Mountain_Infantry: AEE_MarkerBase {
@@ -1477,6 +1687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mountain_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mountain_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Mountain_Infantry: AEE_MarkerBase {
@@ -1484,6 +1695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mountain_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mountain_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_NBC: AEE_MarkerBase {
@@ -1491,6 +1703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_NBC.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_NBC.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_NBC: AEE_MarkerBase {
@@ -1498,6 +1711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_NBC.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_NBC.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_NBC: AEE_MarkerBase {
@@ -1505,6 +1719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_NBC.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_NBC.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_NBC: AEE_MarkerBase {
@@ -1512,6 +1727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_NBC.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_NBC.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Navy: AEE_MarkerBase {
@@ -1519,6 +1735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Navy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Navy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Navy: AEE_MarkerBase {
@@ -1526,6 +1743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Navy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Navy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Navy: AEE_MarkerBase {
@@ -1533,6 +1751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Navy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Navy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Navy: AEE_MarkerBase {
@@ -1540,6 +1759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Navy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Navy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Ordnance: AEE_MarkerBase {
@@ -1547,6 +1767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Ordnance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Ordnance: AEE_MarkerBase {
@@ -1554,6 +1775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Ordnance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Ordnance: AEE_MarkerBase {
@@ -1561,6 +1783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Ordnance: AEE_MarkerBase {
@@ -1568,6 +1791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_PYSOPS: AEE_MarkerBase {
@@ -1575,6 +1799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_PYSOPS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_PYSOPS.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_PYSOPS: AEE_MarkerBase {
@@ -1582,6 +1807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_PYSOPS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_PYSOPS.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_PYSOPS: AEE_MarkerBase {
@@ -1589,6 +1815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_PYSOPS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_PYSOPS.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_PYSOPS: AEE_MarkerBase {
@@ -1596,6 +1823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_PYSOPS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_PYSOPS.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Parachute: AEE_MarkerBase {
@@ -1603,6 +1831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Parachute.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Parachute: AEE_MarkerBase {
@@ -1610,6 +1839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Parachute.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Parachute: AEE_MarkerBase {
@@ -1617,6 +1847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Parachute: AEE_MarkerBase {
@@ -1624,6 +1855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Parachute_Infantry: AEE_MarkerBase {
@@ -1631,6 +1863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Parachute_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Parachute_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Parachute_Infantry: AEE_MarkerBase {
@@ -1638,6 +1871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Parachute_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Parachute_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Parachute_Infantry: AEE_MarkerBase {
@@ -1645,6 +1879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Parachute_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Parachute_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Parachute_Infantry: AEE_MarkerBase {
@@ -1652,6 +1887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Parachute_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Parachute_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Quartermaster: AEE_MarkerBase {
@@ -1659,6 +1895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Quartermaster.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Quartermaster.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Quartermaster: AEE_MarkerBase {
@@ -1666,6 +1903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Quartermaster.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Quartermaster.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Quartermaster: AEE_MarkerBase {
@@ -1673,6 +1911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Quartermaster.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Quartermaster.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Quartermaster: AEE_MarkerBase {
@@ -1680,6 +1919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Quartermaster.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Quartermaster.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Radar: AEE_MarkerBase {
@@ -1687,6 +1927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Radar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Radar: AEE_MarkerBase {
@@ -1694,6 +1935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Radar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Radar: AEE_MarkerBase {
@@ -1701,6 +1943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Radar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Radar: AEE_MarkerBase {
@@ -1708,6 +1951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Radar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Reconnaissance: AEE_MarkerBase {
@@ -1715,6 +1959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Reconnaissance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Reconnaissance: AEE_MarkerBase {
@@ -1722,6 +1967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Reconnaissance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Reconnaissance: AEE_MarkerBase {
@@ -1729,6 +1975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Reconnaissance: AEE_MarkerBase {
@@ -1736,6 +1983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Reconnaissance_Wheeled: AEE_MarkerBase {
@@ -1743,6 +1991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Reconnaissance_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Reconnaissance_Wheeled.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Reconnaissance_Wheeled: AEE_MarkerBase {
@@ -1750,6 +1999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Reconnaissance_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Reconnaissance_Wheeled.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Reconnaissance_Wheeled: AEE_MarkerBase {
@@ -1757,6 +2007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Reconnaissance_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Reconnaissance_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Reconnaissance_Wheeled: AEE_MarkerBase {
@@ -1764,6 +2015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Reconnaissance_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Reconnaissance_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Refuel: AEE_MarkerBase {
@@ -1771,6 +2023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Refuel.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Refuel.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Refuel: AEE_MarkerBase {
@@ -1778,6 +2031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Refuel.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Refuel.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Refuel: AEE_MarkerBase {
@@ -1785,6 +2039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Refuel.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Refuel.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Refuel: AEE_MarkerBase {
@@ -1792,6 +2047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Refuel.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Refuel.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Rocket: AEE_MarkerBase {
@@ -1799,6 +2055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Rocket.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Rocket: AEE_MarkerBase {
@@ -1806,6 +2063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Rocket.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Rocket: AEE_MarkerBase {
@@ -1813,6 +2071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Rocket: AEE_MarkerBase {
@@ -1820,6 +2079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Signals: AEE_MarkerBase {
@@ -1827,6 +2087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Signals.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Signals.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Signals: AEE_MarkerBase {
@@ -1834,6 +2095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Signals.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Signals.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Signals: AEE_MarkerBase {
@@ -1841,6 +2103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Signals.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Signals.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Signals: AEE_MarkerBase {
@@ -1848,6 +2111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Signals.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Signals.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Special_Forces: AEE_MarkerBase {
@@ -1855,6 +2119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Special_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Special_Forces.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Special_Forces: AEE_MarkerBase {
@@ -1862,6 +2127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Special_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Special_Forces.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Special_Forces: AEE_MarkerBase {
@@ -1869,6 +2135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Special_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Special_Forces.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Special_Forces: AEE_MarkerBase {
@@ -1876,6 +2143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Special_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Special_Forces.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Special_Operations_Force: AEE_MarkerBase {
@@ -1883,6 +2151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Special_Operations_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Special_Operations_Force.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Special_Operations_Force: AEE_MarkerBase {
@@ -1890,6 +2159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Special_Operations_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Special_Operations_Force.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Special_Operations_Force: AEE_MarkerBase {
@@ -1897,6 +2167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Special_Operations_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Special_Operations_Force.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Special_Operations_Force: AEE_MarkerBase {
@@ -1904,6 +2175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Special_Operations_Force.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Special_Operations_Force.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Tank_Destroyer: AEE_MarkerBase {
@@ -1911,6 +2183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Tank_Destroyer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Tank_Destroyer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Tank_Destroyer: AEE_MarkerBase {
@@ -1918,6 +2191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Tank_Destroyer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Tank_Destroyer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Tank_Destroyer: AEE_MarkerBase {
@@ -1925,6 +2199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Tank_Destroyer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Tank_Destroyer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Tank_Destroyer: AEE_MarkerBase {
@@ -1932,6 +2207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Tank_Destroyer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Tank_Destroyer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Topographical: AEE_MarkerBase {
@@ -1939,6 +2215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Topographical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Topographical.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Topographical: AEE_MarkerBase {
@@ -1946,6 +2223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Topographical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Topographical.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Topographical: AEE_MarkerBase {
@@ -1953,6 +2231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Topographical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Topographical.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Topographical: AEE_MarkerBase {
@@ -1960,6 +2239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Topographical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Topographical.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Transport_Helicopter: AEE_MarkerBase {
@@ -1967,6 +2247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Transport_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Transport_Helicopter.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Transport_Helicopter: AEE_MarkerBase {
@@ -1974,6 +2255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Transport_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Transport_Helicopter.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Transport_Helicopter: AEE_MarkerBase {
@@ -1981,6 +2263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Transport_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Transport_Helicopter.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Transport_Helicopter: AEE_MarkerBase {
@@ -1988,6 +2271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Transport_Helicopter.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Transport_Helicopter.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Transportation: AEE_MarkerBase {
@@ -1995,6 +2279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Transportation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Transportation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Transportation: AEE_MarkerBase {
@@ -2002,6 +2287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Transportation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Transportation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Transportation: AEE_MarkerBase {
@@ -2009,6 +2295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Transportation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Transportation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Transportation: AEE_MarkerBase {
@@ -2016,6 +2303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Transportation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Transportation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Unmanned_Air_Recon: AEE_MarkerBase {
@@ -2023,6 +2311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Unmanned_Air_Recon.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Unmanned_Air_Recon.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Unmanned_Air_Recon: AEE_MarkerBase {
@@ -2030,6 +2319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Unmanned_Air_Recon.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Unmanned_Air_Recon.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Unmanned_Air_Recon: AEE_MarkerBase {
@@ -2037,6 +2327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Unmanned_Air_Recon.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Unmanned_Air_Recon.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Unmanned_Air_Recon: AEE_MarkerBase {
@@ -2044,6 +2335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Unmanned_Air_Recon.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Unmanned_Air_Recon.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Wheeled: AEE_MarkerBase {
@@ -2051,6 +2343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Wheeled: AEE_MarkerBase {
@@ -2058,6 +2351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Wheeled: AEE_MarkerBase {
@@ -2065,6 +2359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Wheeled: AEE_MarkerBase {
@@ -2072,6 +2367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Wheeled_Armored_Reconnai: AEE_MarkerBase {
@@ -2079,6 +2375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Armored_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Armored_Reconnai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Wheeled_Armored_Reconnai: AEE_MarkerBase {
@@ -2086,6 +2383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Armored_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Armored_Reconnai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Wheeled_Armored_Reconnai: AEE_MarkerBase {
@@ -2093,6 +2391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Armored_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Armored_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Wheeled_Armored_Reconnai: AEE_MarkerBase {
@@ -2100,6 +2399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Armored_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Armored_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Wheeled_MLRS: AEE_MarkerBase {
@@ -2107,6 +2407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_MLRS.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Wheeled_MLRS: AEE_MarkerBase {
@@ -2114,6 +2415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_MLRS.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Wheeled_MLRS: AEE_MarkerBase {
@@ -2121,6 +2423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_MLRS.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Wheeled_MLRS: AEE_MarkerBase {
@@ -2128,6 +2431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_MLRS.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_MLRS.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Wheeled_Mechanized_Infan: AEE_MarkerBase {
@@ -2135,6 +2439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Mechanized_Infan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Mechanized_Infan.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Wheeled_Mechanized_Infan: AEE_MarkerBase {
@@ -2142,6 +2447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Mechanized_Infan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Mechanized_Infan.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Wheeled_Mechanized_Infan: AEE_MarkerBase {
@@ -2149,6 +2455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Mechanized_Infan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Mechanized_Infan.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Wheeled_Mechanized_Infan: AEE_MarkerBase {
@@ -2156,6 +2463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Mechanized_Infan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Mechanized_Infan.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Wheeled_Tank: AEE_MarkerBase {
@@ -2163,6 +2471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Tank.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Wheeled_Tank: AEE_MarkerBase {
@@ -2170,6 +2479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Tank.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Wheeled_Tank: AEE_MarkerBase {
@@ -2177,6 +2487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Tank.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Wheeled_Tank: AEE_MarkerBase {
@@ -2184,6 +2495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Tank.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
@@ -2191,6 +2503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Transparent.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
@@ -2198,6 +2511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Transparent.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
@@ -2205,6 +2519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Transparent.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
@@ -2212,6 +2527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Transparent.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Transparent.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_battalion: AEE_MarkerBase {
@@ -2219,6 +2535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_battalion.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_battalion.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_battalion: AEE_MarkerBase {
@@ -2226,6 +2543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_battalion.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_battalion.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_battalion: AEE_MarkerBase {
@@ -2233,6 +2551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_battalion.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_battalion.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_battalion: AEE_MarkerBase {
@@ -2240,6 +2559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_battalion.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_battalion.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_company: AEE_MarkerBase {
@@ -2247,6 +2567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_company.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_company.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_company: AEE_MarkerBase {
@@ -2254,6 +2575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_company.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_company.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_company: AEE_MarkerBase {
@@ -2261,6 +2583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_company.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_company.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_company: AEE_MarkerBase {
@@ -2268,6 +2591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_company.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_company.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6_regiment: AEE_MarkerBase {
@@ -2275,6 +2599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_regiment.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_regiment.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6_regiment: AEE_MarkerBase {
@@ -2282,6 +2607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_regiment.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_regiment.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6_regiment: AEE_MarkerBase {
@@ -2289,6 +2615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_regiment.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_regiment.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6_regiment: AEE_MarkerBase {
@@ -2296,6 +2623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_regiment.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_regiment.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_APP_6a_Armour: AEE_MarkerBase {
@@ -2303,6 +2631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6a_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6a_Armour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_APP_6a_Armour: AEE_MarkerBase {
@@ -2310,6 +2639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6a_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6a_Armour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_APP_6a_Armour: AEE_MarkerBase {
@@ -2317,6 +2647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6a_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6a_Armour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_APP_6a_Armour: AEE_MarkerBase {
@@ -2324,6 +2655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6a_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6a_Armour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Enemy_Headquarters: AEE_MarkerBase {
@@ -2331,6 +2663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Enemy_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Enemy_Headquarters.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Enemy_Headquarters: AEE_MarkerBase {
@@ -2338,6 +2671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Enemy_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Enemy_Headquarters.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Enemy_Headquarters: AEE_MarkerBase {
@@ -2345,6 +2679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Enemy_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Enemy_Headquarters.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Enemy_Headquarters: AEE_MarkerBase {
@@ -2352,6 +2687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Enemy_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Enemy_Headquarters.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
@@ -2359,6 +2695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_Group_Combine.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_Group_Combine.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
@@ -2366,6 +2703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_Group_Combine.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_Group_Combine.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
@@ -2373,6 +2711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_Group_Combine.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_Group_Combine.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
@@ -2380,6 +2719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_Group_Combine.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_Group_Combine.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
@@ -2387,6 +2727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_or_Wing_Combi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_or_Wing_Combi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
@@ -2394,6 +2735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_or_Wing_Combi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_or_Wing_Combi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
@@ -2401,6 +2743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_or_Wing_Combi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_or_Wing_Combi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
@@ -2408,6 +2751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_or_Wing_Combi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_or_Wing_Combi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Headquarters: AEE_MarkerBase {
@@ -2415,6 +2759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Headquarters.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Headquarters: AEE_MarkerBase {
@@ -2422,6 +2767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Headquarters.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Headquarters: AEE_MarkerBase {
@@ -2429,6 +2775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Headquarters.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Headquarters: AEE_MarkerBase {
@@ -2436,6 +2783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Headquarters.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Headquarters.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
@@ -2443,6 +2791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Regiment_or_Group_Com.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Regiment_or_Group_Com.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
@@ -2450,6 +2799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Regiment_or_Group_Com.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Regiment_or_Group_Com.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
@@ -2457,6 +2807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Regiment_or_Group_Com.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Regiment_or_Group_Com.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
@@ -2464,6 +2815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Regiment_or_Group_Com.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Regiment_or_Group_Com.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence: AEE_MarkerBase {
@@ -2471,6 +2823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence: AEE_MarkerBase {
@@ -2478,6 +2831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence: AEE_MarkerBase {
@@ -2485,6 +2839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence: AEE_MarkerBase {
@@ -2492,6 +2847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -2499,6 +2855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Anti.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -2506,6 +2863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Anti.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -2513,6 +2871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Anti.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -2520,6 +2879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Anti.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Clos: AEE_MarkerBase {
@@ -2527,6 +2887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Clos.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Clos.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Clos: AEE_MarkerBase {
@@ -2534,6 +2895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Clos.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Clos.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Clos: AEE_MarkerBase {
@@ -2541,6 +2903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Clos.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Clos.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Clos: AEE_MarkerBase {
@@ -2548,6 +2911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Clos.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Clos.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -2555,6 +2919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Guns.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -2562,6 +2927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Guns.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -2569,6 +2935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Guns.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -2576,6 +2943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Guns.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Mech: AEE_MarkerBase {
@@ -2583,6 +2951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Mech.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Mech.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Mech: AEE_MarkerBase {
@@ -2590,6 +2959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Mech.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Mech.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Mech: AEE_MarkerBase {
@@ -2597,6 +2967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Mech.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Mech.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Mech: AEE_MarkerBase {
@@ -2604,6 +2975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Mech.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Mech.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Mech_2: AEE_MarkerBase {
@@ -2611,6 +2983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Mech_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Mech_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Mech_2: AEE_MarkerBase {
@@ -2618,6 +2991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Mech_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Mech_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Mech_2: AEE_MarkerBase {
@@ -2625,6 +2999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Mech_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Mech_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Mech_2: AEE_MarkerBase {
@@ -2632,6 +3007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Mech_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Mech_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Miss: AEE_MarkerBase {
@@ -2639,6 +3015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Miss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Miss.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Miss: AEE_MarkerBase {
@@ -2646,6 +3023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Miss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Miss.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Miss: AEE_MarkerBase {
@@ -2653,6 +3031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Miss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Miss.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Miss: AEE_MarkerBase {
@@ -2660,6 +3039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Miss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Miss.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Miss_2: AEE_MarkerBase {
@@ -2667,6 +3047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Miss_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Miss_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Miss_2: AEE_MarkerBase {
@@ -2674,6 +3055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Miss_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Miss_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Miss_2: AEE_MarkerBase {
@@ -2681,6 +3063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Miss_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Miss_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Miss_2: AEE_MarkerBase {
@@ -2688,6 +3071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Miss_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Miss_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Air_Defence_Arti: AEE_MarkerBase {
@@ -2695,6 +3079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Arti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Air_Defence_Arti.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Air_Defence_Arti: AEE_MarkerBase {
@@ -2702,6 +3087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Arti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Air_Defence_Arti.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Air_Defence_Arti: AEE_MarkerBase {
@@ -2709,6 +3095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Arti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Air_Defence_Arti.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Air_Defence_Arti: AEE_MarkerBase {
@@ -2716,6 +3103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Arti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Air_Defence_Arti.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Friendly_Unit_Air_Naval_Gunfir: AEE_MarkerBase {
@@ -2723,6 +3111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Air_Naval_Gunfir.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Air_Naval_Gunfir.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Friendly_Unit_Air_Naval_Gunfir: AEE_MarkerBase {
@@ -2730,6 +3119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Air_Naval_Gunfir.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Air_Naval_Gunfir.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Friendly_Unit_Air_Naval_Gunfir: AEE_MarkerBase {
@@ -2737,6 +3127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Air_Naval_Gunfir.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Air_Naval_Gunfir.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Friendly_Unit_Air_Naval_Gunfir: AEE_MarkerBase {
@@ -2744,6 +3135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Air_Naval_Gunfir.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Air_Naval_Gunfir.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFS_Friendly_Unit_Air_Naval_Gunfir_2: AEE_MarkerBase {
@@ -2751,6 +3143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Friendly_Unit_Air_Naval_Gunfir_2: AEE_MarkerBase {
@@ -2758,6 +3151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Friendly_Unit_Air_Naval_Gunfir_2: AEE_MarkerBase {
@@ -2765,6 +3159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Friendly_Unit_Air_Naval_Gunfir_2: AEE_MarkerBase {
@@ -2772,6 +3167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Air_Naval_Gunfir_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -2779,6 +3175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Airborne_Forces.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -2786,6 +3183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Airborne_Forces.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -2793,6 +3191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Airborne_Forces.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -2800,6 +3199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Airborne_Forces.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Anti_Tank: AEE_MarkerBase {
@@ -2807,6 +3207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Anti_Tank: AEE_MarkerBase {
@@ -2814,6 +3215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Anti_Tank: AEE_MarkerBase {
@@ -2821,6 +3223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Anti_Tank: AEE_MarkerBase {
@@ -2828,6 +3231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Anti_Tank_Armour: AEE_MarkerBase {
@@ -2835,6 +3239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Armour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Anti_Tank_Armour: AEE_MarkerBase {
@@ -2842,6 +3247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Armour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Anti_Tank_Armour: AEE_MarkerBase {
@@ -2849,6 +3255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Armour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Anti_Tank_Armour: AEE_MarkerBase {
@@ -2856,6 +3263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Armour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Anti_Tank_Missil: AEE_MarkerBase {
@@ -2863,6 +3271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Missil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Missil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Anti_Tank_Missil: AEE_MarkerBase {
@@ -2870,6 +3279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Missil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Missil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Anti_Tank_Missil: AEE_MarkerBase {
@@ -2877,6 +3287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Missil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Missil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Anti_Tank_Missil: AEE_MarkerBase {
@@ -2884,6 +3295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Missil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Missil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Anti_Tank_Motori: AEE_MarkerBase {
@@ -2891,6 +3303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Motori.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Motori.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Anti_Tank_Motori: AEE_MarkerBase {
@@ -2898,6 +3311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Motori.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Motori.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Anti_Tank_Motori: AEE_MarkerBase {
@@ -2905,6 +3319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Motori.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Motori.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Anti_Tank_Motori: AEE_MarkerBase {
@@ -2912,6 +3327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Motori.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Motori.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Anti_Tank_Tank_D: AEE_MarkerBase {
@@ -2919,6 +3335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Anti_Tank_Tank_D: AEE_MarkerBase {
@@ -2926,6 +3343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Anti_Tank_Tank_D: AEE_MarkerBase {
@@ -2933,6 +3351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Anti_Tank_Tank_D: AEE_MarkerBase {
@@ -2940,6 +3359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Tank_D.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Anti_Tank_Tank_D_2: AEE_MarkerBase {
@@ -2947,6 +3367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Anti_Tank_Tank_D_2: AEE_MarkerBase {
@@ -2954,6 +3375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Anti_Tank_Tank_D_2: AEE_MarkerBase {
@@ -2961,6 +3383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Anti_Tank_Tank_D_2: AEE_MarkerBase {
@@ -2968,6 +3391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Tank_D_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Anti_Tank_Artill: AEE_MarkerBase {
@@ -2975,6 +3399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Artill.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Anti_Tank_Artill.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Anti_Tank_Artill: AEE_MarkerBase {
@@ -2982,6 +3407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Artill.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Anti_Tank_Artill.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Anti_Tank_Artill: AEE_MarkerBase {
@@ -2989,6 +3415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Artill.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Anti_Tank_Artill.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Anti_Tank_Artill: AEE_MarkerBase {
@@ -2996,6 +3423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Artill.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Anti_Tank_Artill.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Anti_tank_Aviati: AEE_MarkerBase {
@@ -3003,6 +3431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Anti_tank_Aviati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Anti_tank_Aviati.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Anti_tank_Aviati: AEE_MarkerBase {
@@ -3010,6 +3439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Anti_tank_Aviati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Anti_tank_Aviati.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Anti_tank_Aviati: AEE_MarkerBase {
@@ -3017,6 +3447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Anti_tank_Aviati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Anti_tank_Aviati.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Anti_tank_Aviati: AEE_MarkerBase {
@@ -3024,6 +3455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Anti_tank_Aviati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Anti_tank_Aviati.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armour: AEE_MarkerBase {
@@ -3031,6 +3463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armour: AEE_MarkerBase {
@@ -3038,6 +3471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armour: AEE_MarkerBase {
@@ -3045,6 +3479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armour: AEE_MarkerBase {
@@ -3052,6 +3487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armour_Amphibiou: AEE_MarkerBase {
@@ -3059,6 +3495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Amphibiou.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Amphibiou.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armour_Amphibiou: AEE_MarkerBase {
@@ -3066,6 +3503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Amphibiou.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Amphibiou.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armour_Amphibiou: AEE_MarkerBase {
@@ -3073,6 +3511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Amphibiou.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Amphibiou.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armour_Amphibiou: AEE_MarkerBase {
@@ -3080,6 +3519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Amphibiou.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Amphibiou.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -3087,6 +3527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Heavy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -3094,6 +3535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Heavy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -3101,6 +3543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -3108,6 +3551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armour_Light: AEE_MarkerBase {
@@ -3115,6 +3559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Light.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armour_Light: AEE_MarkerBase {
@@ -3122,6 +3567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Light.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armour_Light: AEE_MarkerBase {
@@ -3129,6 +3575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Light.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armour_Light: AEE_MarkerBase {
@@ -3136,6 +3583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Light.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armour_Medium: AEE_MarkerBase {
@@ -3143,6 +3591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Medium.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armour_Medium: AEE_MarkerBase {
@@ -3150,6 +3599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Medium.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armour_Medium: AEE_MarkerBase {
@@ -3157,6 +3607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Medium.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armour_Medium: AEE_MarkerBase {
@@ -3164,6 +3615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Medium.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armour_Wheeled_A: AEE_MarkerBase {
@@ -3171,6 +3623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Wheeled_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armour_Wheeled_A.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armour_Wheeled_A: AEE_MarkerBase {
@@ -3178,6 +3631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Wheeled_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armour_Wheeled_A.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armour_Wheeled_A: AEE_MarkerBase {
@@ -3185,6 +3639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Wheeled_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armour_Wheeled_A.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armour_Wheeled_A: AEE_MarkerBase {
@@ -3192,6 +3647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Wheeled_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armour_Wheeled_A.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armoured_Reconna: AEE_MarkerBase {
@@ -3199,6 +3655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armoured_Reconna: AEE_MarkerBase {
@@ -3206,6 +3663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armoured_Reconna: AEE_MarkerBase {
@@ -3213,6 +3671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armoured_Reconna: AEE_MarkerBase {
@@ -3220,6 +3679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armoured_Reconna_2: AEE_MarkerBase {
@@ -3227,6 +3687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armoured_Reconna_2: AEE_MarkerBase {
@@ -3234,6 +3695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armoured_Reconna_2: AEE_MarkerBase {
@@ -3241,6 +3703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armoured_Reconna_2: AEE_MarkerBase {
@@ -3248,6 +3711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armoured_Reconna_3: AEE_MarkerBase {
@@ -3255,6 +3719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armoured_Reconna_3: AEE_MarkerBase {
@@ -3262,6 +3727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armoured_Reconna_3: AEE_MarkerBase {
@@ -3269,6 +3735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armoured_Reconna_3: AEE_MarkerBase {
@@ -3276,6 +3743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Armoured_Reconna_4: AEE_MarkerBase {
@@ -3283,6 +3751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Armoured_Reconna_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Armoured_Reconna_4: AEE_MarkerBase {
@@ -3290,6 +3759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Armoured_Reconna_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Armoured_Reconna_4: AEE_MarkerBase {
@@ -3297,6 +3767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Armoured_Reconna_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Armoured_Reconna_4: AEE_MarkerBase {
@@ -3304,6 +3775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Armoured_Reconna_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery: AEE_MarkerBase {
@@ -3311,6 +3783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery: AEE_MarkerBase {
@@ -3318,6 +3791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery: AEE_MarkerBase {
@@ -3325,6 +3799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery: AEE_MarkerBase {
@@ -3332,6 +3807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Artillery_Airbor: AEE_MarkerBase {
@@ -3339,6 +3815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Artillery_Airbor.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Artillery_Airbor.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Artillery_Airbor: AEE_MarkerBase {
@@ -3346,6 +3823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Artillery_Airbor.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Artillery_Airbor.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Artillery_Airbor: AEE_MarkerBase {
@@ -3353,6 +3831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Artillery_Airbor.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Artillery_Airbor.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Artillery_Airbor: AEE_MarkerBase {
@@ -3360,6 +3839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Artillery_Airbor.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Artillery_Airbor.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Field: AEE_MarkerBase {
@@ -3367,6 +3847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Field.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Field.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Field: AEE_MarkerBase {
@@ -3374,6 +3855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Field.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Field.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Field: AEE_MarkerBase {
@@ -3381,6 +3863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Field.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Field.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Field: AEE_MarkerBase {
@@ -3388,6 +3871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Field.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Field.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Field_2: AEE_MarkerBase {
@@ -3395,6 +3879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Field_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Field_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Field_2: AEE_MarkerBase {
@@ -3402,6 +3887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Field_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Field_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Field_2: AEE_MarkerBase {
@@ -3409,6 +3895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Field_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Field_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Field_2: AEE_MarkerBase {
@@ -3416,6 +3903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Field_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Field_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -3423,6 +3911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Heavy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -3430,6 +3919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Heavy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -3437,6 +3927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -3444,6 +3935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Light: AEE_MarkerBase {
@@ -3451,6 +3943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Light.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Light: AEE_MarkerBase {
@@ -3458,6 +3951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Light.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Light: AEE_MarkerBase {
@@ -3465,6 +3959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Light.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Light: AEE_MarkerBase {
@@ -3472,6 +3967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Light.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Mechan: AEE_MarkerBase {
@@ -3479,6 +3975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Mechan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Mechan.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Mechan: AEE_MarkerBase {
@@ -3486,6 +3983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Mechan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Mechan.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Mechan: AEE_MarkerBase {
@@ -3493,6 +3991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Mechan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Mechan.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Mechan: AEE_MarkerBase {
@@ -3500,6 +3999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Mechan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Mechan.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -3507,6 +4007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Medium.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -3514,6 +4015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Medium.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -3521,6 +4023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Medium.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -3528,6 +4031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Medium.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Mounta: AEE_MarkerBase {
@@ -3535,6 +4039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Mounta.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Mounta.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Mounta: AEE_MarkerBase {
@@ -3542,6 +4047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Mounta.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Mounta.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Mounta: AEE_MarkerBase {
@@ -3549,6 +4055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Mounta.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Mounta.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Mounta: AEE_MarkerBase {
@@ -3556,6 +4063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Mounta.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Mounta.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Observ: AEE_MarkerBase {
@@ -3563,6 +4071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Observ.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Observ.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Observ: AEE_MarkerBase {
@@ -3570,6 +4079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Observ.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Observ.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Observ: AEE_MarkerBase {
@@ -3577,6 +4087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Observ.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Observ.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Observ: AEE_MarkerBase {
@@ -3584,6 +4095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Observ.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Observ.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Reconn: AEE_MarkerBase {
@@ -3591,6 +4103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Reconn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Reconn.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Reconn: AEE_MarkerBase {
@@ -3598,6 +4111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Reconn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Reconn.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Reconn: AEE_MarkerBase {
@@ -3605,6 +4119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Reconn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Reconn.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Reconn: AEE_MarkerBase {
@@ -3612,6 +4127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Reconn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Reconn.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -3619,6 +4135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Rocket.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -3626,6 +4143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Rocket.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -3633,6 +4151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -3640,6 +4159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -3647,6 +4167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Rocket_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -3654,6 +4175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Rocket_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -3661,6 +4183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Rocket_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -3668,6 +4191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Rocket_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -3675,6 +4199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Rocket_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -3682,6 +4207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Rocket_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -3689,6 +4215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Rocket_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -3696,6 +4223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Rocket_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Target: AEE_MarkerBase {
@@ -3703,6 +4231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Target.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Target: AEE_MarkerBase {
@@ -3710,6 +4239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Target.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Target: AEE_MarkerBase {
@@ -3717,6 +4247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Target.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Target: AEE_MarkerBase {
@@ -3724,6 +4255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Target.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -3731,6 +4263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Artillery_Target_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -3738,6 +4271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Artillery_Target_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -3745,6 +4279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Artillery_Target_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -3752,6 +4287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Artillery_Target_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation: AEE_MarkerBase {
@@ -3759,6 +4295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation: AEE_MarkerBase {
@@ -3766,6 +4303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation: AEE_MarkerBase {
@@ -3773,6 +4311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation: AEE_MarkerBase {
@@ -3780,6 +4319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -3787,6 +4327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Attack.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -3794,6 +4335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Attack.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -3801,6 +4343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Attack.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -3808,6 +4351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Attack.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -3815,6 +4359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Cargo.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -3822,6 +4367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Cargo.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -3829,6 +4375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Cargo.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -3836,6 +4383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Cargo.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Fixed_W: AEE_MarkerBase {
@@ -3843,6 +4391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Fixed_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Fixed_W.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Fixed_W: AEE_MarkerBase {
@@ -3850,6 +4399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Fixed_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Fixed_W.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Fixed_W: AEE_MarkerBase {
@@ -3857,6 +4407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Fixed_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Fixed_W.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Fixed_W: AEE_MarkerBase {
@@ -3864,6 +4415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Fixed_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Fixed_W.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Fixed_W_2: AEE_MarkerBase {
@@ -3871,6 +4423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Fixed_W_2: AEE_MarkerBase {
@@ -3878,6 +4431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Fixed_W_2: AEE_MarkerBase {
@@ -3885,6 +4439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Fixed_W_2: AEE_MarkerBase {
@@ -3892,6 +4447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Fixed_W_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Fixed_a: AEE_MarkerBase {
@@ -3899,6 +4455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Fixed_a.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Fixed_a.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Fixed_a: AEE_MarkerBase {
@@ -3906,6 +4463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Fixed_a.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Fixed_a.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Fixed_a: AEE_MarkerBase {
@@ -3913,6 +4471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Fixed_a.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Fixed_a.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Fixed_a: AEE_MarkerBase {
@@ -3920,6 +4479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Fixed_a.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Fixed_a.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Reconna: AEE_MarkerBase {
@@ -3927,6 +4487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Reconna.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Reconna: AEE_MarkerBase {
@@ -3934,6 +4495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Reconna.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Reconna: AEE_MarkerBase {
@@ -3941,6 +4503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Reconna: AEE_MarkerBase {
@@ -3948,6 +4511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -3955,6 +4519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Utility.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -3962,6 +4527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Utility.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -3969,6 +4535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Utility.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -3976,6 +4543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Utility.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Aviation_Utility_2: AEE_MarkerBase {
@@ -3983,6 +4551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Utility_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Aviation_Utility_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Aviation_Utility_2: AEE_MarkerBase {
@@ -3990,6 +4559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Utility_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Aviation_Utility_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Aviation_Utility_2: AEE_MarkerBase {
@@ -3997,6 +4567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Utility_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Aviation_Utility_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Aviation_Utility_2: AEE_MarkerBase {
@@ -4004,6 +4575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Utility_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Aviation_Utility_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CBRN: AEE_MarkerBase {
@@ -4011,6 +4583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CBRN.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CBRN: AEE_MarkerBase {
@@ -4018,6 +4591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CBRN.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CBRN: AEE_MarkerBase {
@@ -4025,6 +4599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CBRN: AEE_MarkerBase {
@@ -4032,6 +4607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -4039,6 +4615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Ammunition.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -4046,6 +4623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Ammunition.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -4053,6 +4631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -4060,6 +4639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_CSS_Aviation_Mai: AEE_MarkerBase {
@@ -4067,6 +4647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_CSS_Aviation_Mai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_CSS_Aviation_Mai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_CSS_Aviation_Mai: AEE_MarkerBase {
@@ -4074,6 +4655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_CSS_Aviation_Mai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_CSS_Aviation_Mai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_CSS_Aviation_Mai: AEE_MarkerBase {
@@ -4081,6 +4663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_CSS_Aviation_Mai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_CSS_Aviation_Mai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_CSS_Aviation_Mai: AEE_MarkerBase {
@@ -4088,6 +4671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_CSS_Aviation_Mai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_CSS_Aviation_Mai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Combat_Servi: AEE_MarkerBase {
@@ -4095,6 +4679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Combat_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Combat_Servi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Combat_Servi: AEE_MarkerBase {
@@ -4102,6 +4687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Combat_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Combat_Servi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Combat_Servi: AEE_MarkerBase {
@@ -4109,6 +4695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Combat_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Combat_Servi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Combat_Servi: AEE_MarkerBase {
@@ -4116,6 +4703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Combat_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Combat_Servi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Finance_or_P: AEE_MarkerBase {
@@ -4123,6 +4711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Finance_or_P.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Finance_or_P.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Finance_or_P: AEE_MarkerBase {
@@ -4130,6 +4719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Finance_or_P.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Finance_or_P.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Finance_or_P: AEE_MarkerBase {
@@ -4137,6 +4727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Finance_or_P.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Finance_or_P.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Finance_or_P: AEE_MarkerBase {
@@ -4144,6 +4735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Finance_or_P.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Finance_or_P.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Food_Service: AEE_MarkerBase {
@@ -4151,6 +4743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Food_Service.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Food_Service.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Food_Service: AEE_MarkerBase {
@@ -4158,6 +4751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Food_Service.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Food_Service.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Food_Service: AEE_MarkerBase {
@@ -4165,6 +4759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Food_Service.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Food_Service.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Food_Service: AEE_MarkerBase {
@@ -4172,6 +4767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Food_Service.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Food_Service.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Labour: AEE_MarkerBase {
@@ -4179,6 +4775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Labour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Labour: AEE_MarkerBase {
@@ -4186,6 +4783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Labour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Labour: AEE_MarkerBase {
@@ -4193,6 +4791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Labour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Labour: AEE_MarkerBase {
@@ -4200,6 +4799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Labour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Labour_Pione: AEE_MarkerBase {
@@ -4207,6 +4807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Labour_Pione.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Labour_Pione.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Labour_Pione: AEE_MarkerBase {
@@ -4214,6 +4815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Labour_Pione.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Labour_Pione.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Labour_Pione: AEE_MarkerBase {
@@ -4221,6 +4823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Labour_Pione.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Labour_Pione.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Labour_Pione: AEE_MarkerBase {
@@ -4228,6 +4831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Labour_Pione.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Labour_Pione.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Laundry_and: AEE_MarkerBase {
@@ -4235,6 +4839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Laundry_and.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Laundry_and.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Laundry_and: AEE_MarkerBase {
@@ -4242,6 +4847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Laundry_and.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Laundry_and.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Laundry_and: AEE_MarkerBase {
@@ -4249,6 +4855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Laundry_and.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Laundry_and.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Laundry_and: AEE_MarkerBase {
@@ -4256,6 +4863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Laundry_and.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Laundry_and.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Laundry_and_2: AEE_MarkerBase {
@@ -4263,6 +4871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Laundry_and_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Laundry_and_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Laundry_and_2: AEE_MarkerBase {
@@ -4270,6 +4879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Laundry_and_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Laundry_and_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Laundry_and_2: AEE_MarkerBase {
@@ -4277,6 +4887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Laundry_and_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Laundry_and_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Laundry_and_2: AEE_MarkerBase {
@@ -4284,6 +4895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Laundry_and_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Laundry_and_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -4291,6 +4903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Maintenance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -4298,6 +4911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Maintenance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -4305,6 +4919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -4312,6 +4927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -4319,6 +4935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Ordnance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -4326,6 +4943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Ordnance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -4333,6 +4951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -4340,6 +4959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Personnel_Se: AEE_MarkerBase {
@@ -4347,6 +4967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Personnel_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Personnel_Se.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Personnel_Se: AEE_MarkerBase {
@@ -4354,6 +4975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Personnel_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Personnel_Se.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Personnel_Se: AEE_MarkerBase {
@@ -4361,6 +4983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Personnel_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Personnel_Se.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Personnel_Se: AEE_MarkerBase {
@@ -4368,6 +4991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Personnel_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Personnel_Se.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Petroleum_Oi: AEE_MarkerBase {
@@ -4375,6 +4999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Petroleum_Oi: AEE_MarkerBase {
@@ -4382,6 +5007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Petroleum_Oi: AEE_MarkerBase {
@@ -4389,6 +5015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Petroleum_Oi: AEE_MarkerBase {
@@ -4396,6 +5023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Petroleum_Oi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Postal_Servi: AEE_MarkerBase {
@@ -4403,6 +5031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Postal_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Postal_Servi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Postal_Servi: AEE_MarkerBase {
@@ -4410,6 +5039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Postal_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Postal_Servi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Postal_Servi: AEE_MarkerBase {
@@ -4417,6 +5047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Postal_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Postal_Servi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Postal_Servi: AEE_MarkerBase {
@@ -4424,6 +5055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Postal_Servi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Postal_Servi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Supply: AEE_MarkerBase {
@@ -4431,6 +5063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Supply.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Supply: AEE_MarkerBase {
@@ -4438,6 +5071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Supply.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Supply: AEE_MarkerBase {
@@ -4445,6 +5079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Supply.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Supply: AEE_MarkerBase {
@@ -4452,6 +5087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Supply.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Supply_Trans: AEE_MarkerBase {
@@ -4459,6 +5095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Supply_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Supply_Trans.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Supply_Trans: AEE_MarkerBase {
@@ -4466,6 +5103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Supply_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Supply_Trans.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Supply_Trans: AEE_MarkerBase {
@@ -4473,6 +5111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Supply_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Supply_Trans.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Supply_Trans: AEE_MarkerBase {
@@ -4480,6 +5119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Supply_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Supply_Trans.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Supply_Petro: AEE_MarkerBase {
@@ -4487,6 +5127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Supply_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Supply_Petro.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Supply_Petro: AEE_MarkerBase {
@@ -4494,6 +5135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Supply_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Supply_Petro.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Supply_Petro: AEE_MarkerBase {
@@ -4501,6 +5143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Supply_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Supply_Petro.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Supply_Petro: AEE_MarkerBase {
@@ -4508,6 +5151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Supply_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Supply_Petro.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Transport: AEE_MarkerBase {
@@ -4515,6 +5159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Transport.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Transport: AEE_MarkerBase {
@@ -4522,6 +5167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Transport.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Transport: AEE_MarkerBase {
@@ -4529,6 +5175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Transport.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Transport: AEE_MarkerBase {
@@ -4536,6 +5183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Transport.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Transport_Am: AEE_MarkerBase {
@@ -4543,6 +5191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Transport_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Transport_Am.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Transport_Am: AEE_MarkerBase {
@@ -4550,6 +5199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Transport_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Transport_Am.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Transport_Am: AEE_MarkerBase {
@@ -4557,6 +5207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Transport_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Transport_Am.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Transport_Am: AEE_MarkerBase {
@@ -4564,6 +5215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Transport_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Transport_Am.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -4571,6 +5223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_CSS_Water_Supply.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -4578,6 +5231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_CSS_Water_Supply.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -4585,6 +5239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_CSS_Water_Supply.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -4592,6 +5247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_CSS_Water_Supply.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Combat_Support: AEE_MarkerBase {
@@ -4599,6 +5255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Combat_Support.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Combat_Support: AEE_MarkerBase {
@@ -4606,6 +5263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Combat_Support.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Combat_Support: AEE_MarkerBase {
@@ -4613,6 +5271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Combat_Support.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Combat_Support: AEE_MarkerBase {
@@ -4620,6 +5279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Combat_Support.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Combined_Manoeuv: AEE_MarkerBase {
@@ -4627,6 +5287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Combined_Manoeuv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Combined_Manoeuv.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Combined_Manoeuv: AEE_MarkerBase {
@@ -4634,6 +5295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Combined_Manoeuv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Combined_Manoeuv.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Combined_Manoeuv: AEE_MarkerBase {
@@ -4641,6 +5303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Combined_Manoeuv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Combined_Manoeuv.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Combined_Manoeuv: AEE_MarkerBase {
@@ -4648,6 +5311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Combined_Manoeuv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Combined_Manoeuv.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Electronic_Warfa: AEE_MarkerBase {
@@ -4655,6 +5319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Electronic_Warfa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Electronic_Warfa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Electronic_Warfa: AEE_MarkerBase {
@@ -4662,6 +5327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Electronic_Warfa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Electronic_Warfa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Electronic_Warfa: AEE_MarkerBase {
@@ -4669,6 +5335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Electronic_Warfa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Electronic_Warfa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Electronic_Warfa: AEE_MarkerBase {
@@ -4676,6 +5343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Electronic_Warfa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Electronic_Warfa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Electronic_Warfa_2: AEE_MarkerBase {
@@ -4683,6 +5351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Electronic_Warfa_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Electronic_Warfa_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Electronic_Warfa_2: AEE_MarkerBase {
@@ -4690,6 +5359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Electronic_Warfa_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Electronic_Warfa_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Electronic_Warfa_2: AEE_MarkerBase {
@@ -4697,6 +5367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Electronic_Warfa_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Electronic_Warfa_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Electronic_Warfa_2: AEE_MarkerBase {
@@ -4704,6 +5375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Electronic_Warfa_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Electronic_Warfa_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Explosive_Ordnan: AEE_MarkerBase {
@@ -4711,6 +5383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Explosive_Ordnan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Explosive_Ordnan.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Explosive_Ordnan: AEE_MarkerBase {
@@ -4718,6 +5391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Explosive_Ordnan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Explosive_Ordnan.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Explosive_Ordnan: AEE_MarkerBase {
@@ -4725,6 +5399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Explosive_Ordnan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Explosive_Ordnan.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Explosive_Ordnan: AEE_MarkerBase {
@@ -4732,6 +5407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Explosive_Ordnan.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Explosive_Ordnan.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Gendarmerie_or_I: AEE_MarkerBase {
@@ -4739,6 +5415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Gendarmerie_or_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Gendarmerie_or_I.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Gendarmerie_or_I: AEE_MarkerBase {
@@ -4746,6 +5423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Gendarmerie_or_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Gendarmerie_or_I.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Gendarmerie_or_I: AEE_MarkerBase {
@@ -4753,6 +5431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Gendarmerie_or_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Gendarmerie_or_I.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Gendarmerie_or_I: AEE_MarkerBase {
@@ -4760,6 +5439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Gendarmerie_or_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Gendarmerie_or_I.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Gendarmerie_or_I_2: AEE_MarkerBase {
@@ -4767,6 +5447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Gendarmerie_or_I_2: AEE_MarkerBase {
@@ -4774,6 +5455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Gendarmerie_or_I_2: AEE_MarkerBase {
@@ -4781,6 +5463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Gendarmerie_or_I_2: AEE_MarkerBase {
@@ -4788,6 +5471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Gendarmerie_or_I_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Headquarters_Uni: AEE_MarkerBase {
@@ -4795,6 +5479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Headquarters_Uni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Headquarters_Uni.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Headquarters_Uni: AEE_MarkerBase {
@@ -4802,6 +5487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Headquarters_Uni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Headquarters_Uni.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Headquarters_Uni: AEE_MarkerBase {
@@ -4809,6 +5495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Headquarters_Uni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Headquarters_Uni.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Headquarters_Uni: AEE_MarkerBase {
@@ -4816,6 +5503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Headquarters_Uni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Headquarters_Uni.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -4823,6 +5511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Horse_Cavalry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -4830,6 +5519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Horse_Cavalry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -4837,6 +5527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Horse_Cavalry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -4844,6 +5535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Horse_Cavalry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Horse_Reconnaiss: AEE_MarkerBase {
@@ -4851,6 +5543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Horse_Reconnaiss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Horse_Reconnaiss.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Horse_Reconnaiss: AEE_MarkerBase {
@@ -4858,6 +5551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Horse_Reconnaiss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Horse_Reconnaiss.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Horse_Reconnaiss: AEE_MarkerBase {
@@ -4865,6 +5559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Horse_Reconnaiss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Horse_Reconnaiss.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Horse_Reconnaiss: AEE_MarkerBase {
@@ -4872,6 +5567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Horse_Reconnaiss.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Horse_Reconnaiss.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry: AEE_MarkerBase {
@@ -4879,6 +5575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry: AEE_MarkerBase {
@@ -4886,6 +5583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry: AEE_MarkerBase {
@@ -4893,6 +5591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry: AEE_MarkerBase {
@@ -4900,6 +5599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Air_Ass: AEE_MarkerBase {
@@ -4907,6 +5607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Air_Ass.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Air_Ass: AEE_MarkerBase {
@@ -4914,6 +5615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Air_Ass.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Air_Ass: AEE_MarkerBase {
@@ -4921,6 +5623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Air_Ass.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Air_Ass: AEE_MarkerBase {
@@ -4928,6 +5631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Air_Ass.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Infantry_Airborn: AEE_MarkerBase {
@@ -4935,6 +5639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Infantry_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Infantry_Airborn.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Infantry_Airborn: AEE_MarkerBase {
@@ -4942,6 +5647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Infantry_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Infantry_Airborn.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Infantry_Airborn: AEE_MarkerBase {
@@ -4949,6 +5655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Infantry_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Infantry_Airborn.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Infantry_Airborn: AEE_MarkerBase {
@@ -4956,6 +5663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Infantry_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Infantry_Airborn.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Infantry_Airborn_2: AEE_MarkerBase {
@@ -4963,6 +5671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Infantry_Airborn_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Infantry_Airborn_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Infantry_Airborn_2: AEE_MarkerBase {
@@ -4970,6 +5679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Infantry_Airborn_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Infantry_Airborn_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Infantry_Airborn_2: AEE_MarkerBase {
@@ -4977,6 +5687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Infantry_Airborn_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Infantry_Airborn_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Infantry_Airborn_2: AEE_MarkerBase {
@@ -4984,6 +5695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Infantry_Airborn_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Infantry_Airborn_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Airmobi: AEE_MarkerBase {
@@ -4991,6 +5703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Airmobi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Airmobi: AEE_MarkerBase {
@@ -4998,6 +5711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Airmobi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Airmobi: AEE_MarkerBase {
@@ -5005,6 +5719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Airmobi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Airmobi: AEE_MarkerBase {
@@ -5012,6 +5727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Airmobi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Amphibi: AEE_MarkerBase {
@@ -5019,6 +5735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Amphibi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Amphibi: AEE_MarkerBase {
@@ -5026,6 +5743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Amphibi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Amphibi: AEE_MarkerBase {
@@ -5033,6 +5751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Amphibi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Amphibi: AEE_MarkerBase {
@@ -5040,6 +5759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Amphibi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -5047,6 +5767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Arctic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -5054,6 +5775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Arctic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -5061,6 +5783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -5068,6 +5791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Armoure: AEE_MarkerBase {
@@ -5075,6 +5799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Armoure.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Armoure: AEE_MarkerBase {
@@ -5082,6 +5807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Armoure.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Armoure: AEE_MarkerBase {
@@ -5089,6 +5815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Armoure.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Armoure: AEE_MarkerBase {
@@ -5096,6 +5823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Armoure.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Combat: AEE_MarkerBase {
@@ -5103,6 +5831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Combat.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Combat.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Combat: AEE_MarkerBase {
@@ -5110,6 +5839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Combat.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Combat.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Combat: AEE_MarkerBase {
@@ -5117,6 +5847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Combat.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Combat.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Combat: AEE_MarkerBase {
@@ -5124,6 +5855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Combat.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Combat.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Combat_2: AEE_MarkerBase {
@@ -5131,6 +5863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Combat_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Combat_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Combat_2: AEE_MarkerBase {
@@ -5138,6 +5871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Combat_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Combat_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Combat_2: AEE_MarkerBase {
@@ -5145,6 +5879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Combat_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Combat_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Combat_2: AEE_MarkerBase {
@@ -5152,6 +5887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Combat_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Combat_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Flame_W: AEE_MarkerBase {
@@ -5159,6 +5895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Flame_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Flame_W.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Flame_W: AEE_MarkerBase {
@@ -5166,6 +5903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Flame_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Flame_W.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Flame_W: AEE_MarkerBase {
@@ -5173,6 +5911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Flame_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Flame_W.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Flame_W: AEE_MarkerBase {
@@ -5180,6 +5919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Flame_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Flame_W.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Heavy_W: AEE_MarkerBase {
@@ -5187,6 +5927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Heavy_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Heavy_W.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Heavy_W: AEE_MarkerBase {
@@ -5194,6 +5935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Heavy_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Heavy_W.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Heavy_W: AEE_MarkerBase {
@@ -5201,6 +5943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Heavy_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Heavy_W.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Heavy_W: AEE_MarkerBase {
@@ -5208,6 +5951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Heavy_W.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Heavy_W.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Light_I: AEE_MarkerBase {
@@ -5215,6 +5959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Light_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Light_I.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Light_I: AEE_MarkerBase {
@@ -5222,6 +5967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Light_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Light_I.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Light_I: AEE_MarkerBase {
@@ -5229,6 +5975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Light_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Light_I.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Light_I: AEE_MarkerBase {
@@ -5236,6 +5983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Light_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Light_I.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Mechani: AEE_MarkerBase {
@@ -5243,6 +5991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Mechani: AEE_MarkerBase {
@@ -5250,6 +5999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Mechani: AEE_MarkerBase {
@@ -5257,6 +6007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Mechani: AEE_MarkerBase {
@@ -5264,6 +6015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Mechani_2: AEE_MarkerBase {
@@ -5271,6 +6023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Mechani_2: AEE_MarkerBase {
@@ -5278,6 +6031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Mechani_2: AEE_MarkerBase {
@@ -5285,6 +6039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Mechani_2: AEE_MarkerBase {
@@ -5292,6 +6047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Mechani_3: AEE_MarkerBase {
@@ -5299,6 +6055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Mechani_3: AEE_MarkerBase {
@@ -5306,6 +6063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Mechani_3: AEE_MarkerBase {
@@ -5313,6 +6071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Mechani_3: AEE_MarkerBase {
@@ -5320,6 +6079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Mechani_4: AEE_MarkerBase {
@@ -5327,6 +6087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mechani_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Mechani_4: AEE_MarkerBase {
@@ -5334,6 +6095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mechani_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Mechani_4: AEE_MarkerBase {
@@ -5341,6 +6103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mechani_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Mechani_4: AEE_MarkerBase {
@@ -5348,6 +6111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mechani_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Mortars: AEE_MarkerBase {
@@ -5355,6 +6119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mortars.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Mortars: AEE_MarkerBase {
@@ -5362,6 +6127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mortars.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Mortars: AEE_MarkerBase {
@@ -5369,6 +6135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Mortars: AEE_MarkerBase {
@@ -5376,6 +6143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Motoriz: AEE_MarkerBase {
@@ -5383,6 +6151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Motoriz.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Motoriz: AEE_MarkerBase {
@@ -5390,6 +6159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Motoriz.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Motoriz: AEE_MarkerBase {
@@ -5397,6 +6167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Motoriz: AEE_MarkerBase {
@@ -5404,6 +6175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Mountai: AEE_MarkerBase {
@@ -5411,6 +6183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mountai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Mountai: AEE_MarkerBase {
@@ -5418,6 +6191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mountai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Mountai: AEE_MarkerBase {
@@ -5425,6 +6199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Mountai: AEE_MarkerBase {
@@ -5432,6 +6207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -5439,6 +6215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Mounted.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -5446,6 +6223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Mounted.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -5453,6 +6231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Mounted.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -5460,6 +6239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Mounted.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Friendly_Unit_Infantry_Naval_I: AEE_MarkerBase {
@@ -5467,6 +6247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Infantry_Naval_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Infantry_Naval_I.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Friendly_Unit_Infantry_Naval_I: AEE_MarkerBase {
@@ -5474,6 +6255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Infantry_Naval_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Infantry_Naval_I.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Friendly_Unit_Infantry_Naval_I: AEE_MarkerBase {
@@ -5481,6 +6263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Infantry_Naval_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Infantry_Naval_I.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Friendly_Unit_Infantry_Naval_I: AEE_MarkerBase {
@@ -5488,6 +6271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Infantry_Naval_I.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Infantry_Naval_I.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFS_Friendly_Unit_Infantry_Naval_I_2: AEE_MarkerBase {
@@ -5495,6 +6279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Infantry_Naval_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Infantry_Naval_I_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Friendly_Unit_Infantry_Naval_I_2: AEE_MarkerBase {
@@ -5502,6 +6287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Infantry_Naval_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Infantry_Naval_I_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Friendly_Unit_Infantry_Naval_I_2: AEE_MarkerBase {
@@ -5509,6 +6295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Infantry_Naval_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Infantry_Naval_I_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Friendly_Unit_Infantry_Naval_I_2: AEE_MarkerBase {
@@ -5516,6 +6303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Infantry_Naval_I_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Infantry_Naval_I_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Pioneer: AEE_MarkerBase {
@@ -5523,6 +6311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Pioneer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Pioneer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Pioneer: AEE_MarkerBase {
@@ -5530,6 +6319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Pioneer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Pioneer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Pioneer: AEE_MarkerBase {
@@ -5537,6 +6327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Pioneer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Pioneer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Pioneer: AEE_MarkerBase {
@@ -5544,6 +6335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Pioneer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Pioneer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Pioneer_2: AEE_MarkerBase {
@@ -5551,6 +6343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Pioneer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Pioneer_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Pioneer_2: AEE_MarkerBase {
@@ -5558,6 +6351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Pioneer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Pioneer_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Pioneer_2: AEE_MarkerBase {
@@ -5565,6 +6359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Pioneer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Pioneer_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Pioneer_2: AEE_MarkerBase {
@@ -5572,6 +6367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Pioneer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Pioneer_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -5579,6 +6375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Infantry_Snipers.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -5586,6 +6383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Infantry_Snipers.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -5593,6 +6391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Infantry_Snipers.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -5600,6 +6399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Infantry_Snipers.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Marine_Air_Groun: AEE_MarkerBase {
@@ -5607,6 +6407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Marine_Air_Groun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Marine_Air_Groun.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Marine_Air_Groun: AEE_MarkerBase {
@@ -5614,6 +6415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Marine_Air_Groun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Marine_Air_Groun.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Marine_Air_Groun: AEE_MarkerBase {
@@ -5621,6 +6423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Marine_Air_Groun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Marine_Air_Groun.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Marine_Air_Groun: AEE_MarkerBase {
@@ -5628,6 +6431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Marine_Air_Groun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Marine_Air_Groun.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Marine_Air_Groun_2: AEE_MarkerBase {
@@ -5635,6 +6439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Marine_Air_Groun_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Marine_Air_Groun_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Marine_Air_Groun_2: AEE_MarkerBase {
@@ -5642,6 +6447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Marine_Air_Groun_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Marine_Air_Groun_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Marine_Air_Groun_2: AEE_MarkerBase {
@@ -5649,6 +6455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Marine_Air_Groun_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Marine_Air_Groun_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Marine_Air_Groun_2: AEE_MarkerBase {
@@ -5656,6 +6463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Marine_Air_Groun_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Marine_Air_Groun_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -5663,6 +6471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Marines_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -5670,6 +6479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Marines_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -5677,6 +6487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Marines_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -5684,6 +6495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Marines_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Medical: AEE_MarkerBase {
@@ -5691,6 +6503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Medical.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Medical: AEE_MarkerBase {
@@ -5698,6 +6511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Medical.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Medical: AEE_MarkerBase {
@@ -5705,6 +6519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Medical: AEE_MarkerBase {
@@ -5712,6 +6527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Medical_Dental: AEE_MarkerBase {
@@ -5719,6 +6535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Medical_Dental.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Medical_Dental: AEE_MarkerBase {
@@ -5726,6 +6543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Medical_Dental.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Medical_Dental: AEE_MarkerBase {
@@ -5733,6 +6551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Medical_Dental.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Medical_Dental: AEE_MarkerBase {
@@ -5740,6 +6559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Medical_Dental.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -5747,6 +6567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Medical_Hospital.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -5754,6 +6575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Medical_Hospital.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -5761,6 +6583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Medical_Hospital.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -5768,6 +6591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Medical_Hospital.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Meteorological_S: AEE_MarkerBase {
@@ -5775,6 +6599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Meteorological_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Meteorological_S.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Meteorological_S: AEE_MarkerBase {
@@ -5782,6 +6607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Meteorological_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Meteorological_S.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Meteorological_S: AEE_MarkerBase {
@@ -5789,6 +6615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Meteorological_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Meteorological_S.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Meteorological_S: AEE_MarkerBase {
@@ -5796,6 +6623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Meteorological_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Meteorological_S.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5803,6 +6631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5810,6 +6639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5817,6 +6647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5824,6 +6655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5831,6 +6663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Military_Enginee.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5838,6 +6671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Military_Enginee.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5845,6 +6679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Military_Enginee.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -5852,6 +6687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Military_Enginee.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_2: AEE_MarkerBase {
@@ -5859,6 +6695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_2: AEE_MarkerBase {
@@ -5866,6 +6703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_2: AEE_MarkerBase {
@@ -5873,6 +6711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_2: AEE_MarkerBase {
@@ -5880,6 +6719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_3: AEE_MarkerBase {
@@ -5887,6 +6727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_3: AEE_MarkerBase {
@@ -5894,6 +6735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_3: AEE_MarkerBase {
@@ -5901,6 +6743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_3: AEE_MarkerBase {
@@ -5908,6 +6751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_4: AEE_MarkerBase {
@@ -5915,6 +6759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_4: AEE_MarkerBase {
@@ -5922,6 +6767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_4: AEE_MarkerBase {
@@ -5929,6 +6775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_4: AEE_MarkerBase {
@@ -5936,6 +6783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_5: AEE_MarkerBase {
@@ -5943,6 +6791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_5.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_5: AEE_MarkerBase {
@@ -5950,6 +6799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_5.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_5: AEE_MarkerBase {
@@ -5957,6 +6807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_5.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_5: AEE_MarkerBase {
@@ -5964,6 +6815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_5.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_6: AEE_MarkerBase {
@@ -5971,6 +6823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_6.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_6: AEE_MarkerBase {
@@ -5978,6 +6831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_6.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_6: AEE_MarkerBase {
@@ -5985,6 +6839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_6.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_6: AEE_MarkerBase {
@@ -5992,6 +6847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_6.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_7: AEE_MarkerBase {
@@ -5999,6 +6855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_7.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_7: AEE_MarkerBase {
@@ -6006,6 +6863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_7.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_7: AEE_MarkerBase {
@@ -6013,6 +6871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_7.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_7: AEE_MarkerBase {
@@ -6020,6 +6879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_7.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_8: AEE_MarkerBase {
@@ -6027,6 +6887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_8.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_8: AEE_MarkerBase {
@@ -6034,6 +6895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_8.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_8: AEE_MarkerBase {
@@ -6041,6 +6903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_8.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_8: AEE_MarkerBase {
@@ -6048,6 +6911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_8.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_9: AEE_MarkerBase {
@@ -6055,6 +6919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_9.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_9: AEE_MarkerBase {
@@ -6062,6 +6927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_9.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_9: AEE_MarkerBase {
@@ -6069,6 +6935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_9.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_9: AEE_MarkerBase {
@@ -6076,6 +6943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_9.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_10: AEE_MarkerBase {
@@ -6083,6 +6951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_10.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_10: AEE_MarkerBase {
@@ -6090,6 +6959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_10.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_10: AEE_MarkerBase {
@@ -6097,6 +6967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_10.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_10: AEE_MarkerBase {
@@ -6104,6 +6975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_10.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_11: AEE_MarkerBase {
@@ -6111,6 +6983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_11.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_11: AEE_MarkerBase {
@@ -6118,6 +6991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_11.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_11: AEE_MarkerBase {
@@ -6125,6 +6999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_11.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_11: AEE_MarkerBase {
@@ -6132,6 +7007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_11.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_12: AEE_MarkerBase {
@@ -6139,6 +7015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_12.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_12: AEE_MarkerBase {
@@ -6146,6 +7023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_12.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_12: AEE_MarkerBase {
@@ -6153,6 +7031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_12.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_12: AEE_MarkerBase {
@@ -6160,6 +7039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_12.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_13: AEE_MarkerBase {
@@ -6167,6 +7047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_13.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_13: AEE_MarkerBase {
@@ -6174,6 +7055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_13.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_13: AEE_MarkerBase {
@@ -6181,6 +7063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_13.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_13: AEE_MarkerBase {
@@ -6188,6 +7071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_13.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_14: AEE_MarkerBase {
@@ -6195,6 +7079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_14.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_14: AEE_MarkerBase {
@@ -6202,6 +7087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_14.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_14: AEE_MarkerBase {
@@ -6209,6 +7095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_14.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_14: AEE_MarkerBase {
@@ -6216,6 +7103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_14.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_15: AEE_MarkerBase {
@@ -6223,6 +7111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_15.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_15: AEE_MarkerBase {
@@ -6230,6 +7119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_15.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_15: AEE_MarkerBase {
@@ -6237,6 +7127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_15.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_15: AEE_MarkerBase {
@@ -6244,6 +7135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_15.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_16: AEE_MarkerBase {
@@ -6251,6 +7143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_16.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_16: AEE_MarkerBase {
@@ -6258,6 +7151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_16.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_16: AEE_MarkerBase {
@@ -6265,6 +7159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_16.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_16: AEE_MarkerBase {
@@ -6272,6 +7167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_16.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -6279,6 +7175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Military_Enginee.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -6286,6 +7183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Military_Enginee.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -6293,6 +7191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Military_Enginee.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Friendly_Unit_Military_Enginee: AEE_MarkerBase {
@@ -6300,6 +7199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Military_Enginee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Military_Enginee.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_17: AEE_MarkerBase {
@@ -6307,6 +7207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_17.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_17: AEE_MarkerBase {
@@ -6314,6 +7215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_17.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_17: AEE_MarkerBase {
@@ -6321,6 +7223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_17.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_17: AEE_MarkerBase {
@@ -6328,6 +7231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_17.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_18: AEE_MarkerBase {
@@ -6335,6 +7239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_18.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_18: AEE_MarkerBase {
@@ -6342,6 +7247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_18.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_18: AEE_MarkerBase {
@@ -6349,6 +7255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_18.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_18: AEE_MarkerBase {
@@ -6356,6 +7263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_18.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_19: AEE_MarkerBase {
@@ -6363,6 +7271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_19.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_19: AEE_MarkerBase {
@@ -6370,6 +7279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_19.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_19: AEE_MarkerBase {
@@ -6377,6 +7287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_19.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_19: AEE_MarkerBase {
@@ -6384,6 +7295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_19.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_20: AEE_MarkerBase {
@@ -6391,6 +7303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_20.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_20: AEE_MarkerBase {
@@ -6398,6 +7311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_20.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_20: AEE_MarkerBase {
@@ -6405,6 +7319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_20.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_20: AEE_MarkerBase {
@@ -6412,6 +7327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_20.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_21: AEE_MarkerBase {
@@ -6419,6 +7335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_21.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_21: AEE_MarkerBase {
@@ -6426,6 +7343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_21.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_21: AEE_MarkerBase {
@@ -6433,6 +7351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_21.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_21: AEE_MarkerBase {
@@ -6440,6 +7359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_21.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_22: AEE_MarkerBase {
@@ -6447,6 +7367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_22.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_22: AEE_MarkerBase {
@@ -6454,6 +7375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_22.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_22: AEE_MarkerBase {
@@ -6461,6 +7383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_22.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_22: AEE_MarkerBase {
@@ -6468,6 +7391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_22.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_23: AEE_MarkerBase {
@@ -6475,6 +7399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_23.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_23: AEE_MarkerBase {
@@ -6482,6 +7407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_23.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_23: AEE_MarkerBase {
@@ -6489,6 +7415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_23.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_23: AEE_MarkerBase {
@@ -6496,6 +7423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_23.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Enginee_24: AEE_MarkerBase {
@@ -6503,6 +7431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Enginee_24.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Enginee_24: AEE_MarkerBase {
@@ -6510,6 +7439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Enginee_24.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Enginee_24: AEE_MarkerBase {
@@ -6517,6 +7447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Enginee_24.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Enginee_24: AEE_MarkerBase {
@@ -6524,6 +7455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Enginee_24.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Geomati: AEE_MarkerBase {
@@ -6531,6 +7463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Geomati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Geomati.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Geomati: AEE_MarkerBase {
@@ -6538,6 +7471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Geomati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Geomati.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Geomati: AEE_MarkerBase {
@@ -6545,6 +7479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Geomati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Geomati.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Geomati: AEE_MarkerBase {
@@ -6552,6 +7487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Geomati.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Geomati.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Intelli: AEE_MarkerBase {
@@ -6559,6 +7495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Intelli.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Intelli.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Intelli: AEE_MarkerBase {
@@ -6566,6 +7503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Intelli.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Intelli.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Intelli: AEE_MarkerBase {
@@ -6573,6 +7511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Intelli.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Intelli.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Intelli: AEE_MarkerBase {
@@ -6580,6 +7519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Intelli.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Intelli.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Military_Police: AEE_MarkerBase {
@@ -6587,6 +7527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Military_Police.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Military_Police: AEE_MarkerBase {
@@ -6594,6 +7535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Military_Police.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Military_Police: AEE_MarkerBase {
@@ -6601,6 +7543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Military_Police.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Military_Police: AEE_MarkerBase {
@@ -6608,6 +7551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Military_Police.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Missile_Surface: AEE_MarkerBase {
@@ -6615,6 +7559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Missile_Surface.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Missile_Surface.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Missile_Surface: AEE_MarkerBase {
@@ -6622,6 +7567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Missile_Surface.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Missile_Surface.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Missile_Surface: AEE_MarkerBase {
@@ -6629,6 +7575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Missile_Surface.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Missile_Surface.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Missile_Surface: AEE_MarkerBase {
@@ -6636,6 +7583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Missile_Surface.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Missile_Surface.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Air_Ass: AEE_MarkerBase {
@@ -6643,6 +7591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Air_Ass.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Air_Ass: AEE_MarkerBase {
@@ -6650,6 +7599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Air_Ass.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Air_Ass: AEE_MarkerBase {
@@ -6657,6 +7607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Air_Ass.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Air_Ass: AEE_MarkerBase {
@@ -6664,6 +7615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Air_Ass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Air_Ass.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Modifier_Airborn: AEE_MarkerBase {
@@ -6671,6 +7623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Modifier_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Modifier_Airborn.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Modifier_Airborn: AEE_MarkerBase {
@@ -6678,6 +7631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Modifier_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Modifier_Airborn.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Modifier_Airborn: AEE_MarkerBase {
@@ -6685,6 +7639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Modifier_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Modifier_Airborn.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Modifier_Airborn: AEE_MarkerBase {
@@ -6692,6 +7647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Modifier_Airborn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Modifier_Airborn.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Airmobi: AEE_MarkerBase {
@@ -6699,6 +7655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Airmobi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Airmobi: AEE_MarkerBase {
@@ -6706,6 +7663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Airmobi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Airmobi: AEE_MarkerBase {
@@ -6713,6 +7671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Airmobi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Airmobi: AEE_MarkerBase {
@@ -6720,6 +7679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Airmobi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Airmobi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Amphibi: AEE_MarkerBase {
@@ -6727,6 +7687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Amphibi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Amphibi: AEE_MarkerBase {
@@ -6734,6 +7695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Amphibi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Amphibi: AEE_MarkerBase {
@@ -6741,6 +7703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Amphibi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Amphibi: AEE_MarkerBase {
@@ -6748,6 +7711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Amphibi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Amphibi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Arctic: AEE_MarkerBase {
@@ -6755,6 +7719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Arctic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Arctic: AEE_MarkerBase {
@@ -6762,6 +7727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Arctic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Arctic: AEE_MarkerBase {
@@ -6769,6 +7735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Arctic: AEE_MarkerBase {
@@ -6776,6 +7743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Arctic_2: AEE_MarkerBase {
@@ -6783,6 +7751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Arctic_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Arctic_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Arctic_2: AEE_MarkerBase {
@@ -6790,6 +7759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Arctic_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Arctic_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Arctic_2: AEE_MarkerBase {
@@ -6797,6 +7767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Arctic_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Arctic_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Arctic_2: AEE_MarkerBase {
@@ -6804,6 +7775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Arctic_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Arctic_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Army_or: AEE_MarkerBase {
@@ -6811,6 +7783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Army_or.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Army_or.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Army_or: AEE_MarkerBase {
@@ -6818,6 +7791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Army_or.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Army_or.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Army_or: AEE_MarkerBase {
@@ -6825,6 +7799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Army_or.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Army_or.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Army_or: AEE_MarkerBase {
@@ -6832,6 +7807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Army_or.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Army_or.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Corps_A: AEE_MarkerBase {
@@ -6839,6 +7815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Corps_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Corps_A.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Corps_A: AEE_MarkerBase {
@@ -6846,6 +7823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Corps_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Corps_A.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Corps_A: AEE_MarkerBase {
@@ -6853,6 +7831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Corps_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Corps_A.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Corps_A: AEE_MarkerBase {
@@ -6860,6 +7839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Corps_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Corps_A.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Gun_Sys: AEE_MarkerBase {
@@ -6867,6 +7847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Gun_Sys.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Gun_Sys.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Gun_Sys: AEE_MarkerBase {
@@ -6874,6 +7855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Gun_Sys.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Gun_Sys.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Gun_Sys: AEE_MarkerBase {
@@ -6881,6 +7863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Gun_Sys.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Gun_Sys.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Gun_Sys: AEE_MarkerBase {
@@ -6888,6 +7871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Gun_Sys.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Gun_Sys.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Mobiliz: AEE_MarkerBase {
@@ -6895,6 +7879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Mobiliz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Mobiliz.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Mobiliz: AEE_MarkerBase {
@@ -6902,6 +7887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Mobiliz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Mobiliz.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Mobiliz: AEE_MarkerBase {
@@ -6909,6 +7895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Mobiliz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Mobiliz.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Mobiliz: AEE_MarkerBase {
@@ -6916,6 +7903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Mobiliz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Mobiliz.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Mobiliz_2: AEE_MarkerBase {
@@ -6923,6 +7911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Mobiliz_2: AEE_MarkerBase {
@@ -6930,6 +7919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Mobiliz_2: AEE_MarkerBase {
@@ -6937,6 +7927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Mobiliz_2: AEE_MarkerBase {
@@ -6944,6 +7935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Mobiliz_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Motoriz: AEE_MarkerBase {
@@ -6951,6 +7943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Motoriz.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Motoriz: AEE_MarkerBase {
@@ -6958,6 +7951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Motoriz.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Motoriz: AEE_MarkerBase {
@@ -6965,6 +7959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Motoriz: AEE_MarkerBase {
@@ -6972,6 +7967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Mountai: AEE_MarkerBase {
@@ -6979,6 +7975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Mountai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Mountai: AEE_MarkerBase {
@@ -6986,6 +7983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Mountai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Mountai: AEE_MarkerBase {
@@ -6993,6 +7991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Mountai: AEE_MarkerBase {
@@ -7000,6 +7999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Tracked: AEE_MarkerBase {
@@ -7007,6 +8007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Tracked.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Tracked.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Tracked: AEE_MarkerBase {
@@ -7014,6 +8015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Tracked.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Tracked.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Tracked: AEE_MarkerBase {
@@ -7021,6 +8023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Tracked.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Tracked.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Tracked: AEE_MarkerBase {
@@ -7028,6 +8031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Tracked.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Tracked.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -7035,6 +8039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Wheeled.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -7042,6 +8047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Wheeled.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -7049,6 +8055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -7056,6 +8063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Wheeled_2: AEE_MarkerBase {
@@ -7063,6 +8071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Wheeled_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Wheeled_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Wheeled_2: AEE_MarkerBase {
@@ -7070,6 +8079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Wheeled_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Wheeled_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Wheeled_2: AEE_MarkerBase {
@@ -7077,6 +8087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Wheeled_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Wheeled_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Wheeled_2: AEE_MarkerBase {
@@ -7084,6 +8095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Wheeled_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Wheeled_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Modifier_Wheeled_3: AEE_MarkerBase {
@@ -7091,6 +8103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Wheeled_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Modifier_Wheeled_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Modifier_Wheeled_3: AEE_MarkerBase {
@@ -7098,6 +8111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Wheeled_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Modifier_Wheeled_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Modifier_Wheeled_3: AEE_MarkerBase {
@@ -7105,6 +8119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Wheeled_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Modifier_Wheeled_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Modifier_Wheeled_3: AEE_MarkerBase {
@@ -7112,6 +8127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Wheeled_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Modifier_Wheeled_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Mortars: AEE_MarkerBase {
@@ -7119,6 +8135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Mortars.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Mortars: AEE_MarkerBase {
@@ -7126,6 +8143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Mortars.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Mortars: AEE_MarkerBase {
@@ -7133,6 +8151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Mortars: AEE_MarkerBase {
@@ -7140,6 +8159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Mortars_Air_Assa: AEE_MarkerBase {
@@ -7147,6 +8167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Mortars_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Mortars_Air_Assa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Mortars_Air_Assa: AEE_MarkerBase {
@@ -7154,6 +8175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Mortars_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Mortars_Air_Assa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Mortars_Air_Assa: AEE_MarkerBase {
@@ -7161,6 +8183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Mortars_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Mortars_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Mortars_Air_Assa: AEE_MarkerBase {
@@ -7168,6 +8191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Mortars_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Mortars_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Friendly_Unit_Naval: AEE_MarkerBase {
@@ -7175,6 +8199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Naval.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Friendly_Unit_Naval: AEE_MarkerBase {
@@ -7182,6 +8207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Naval.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Friendly_Unit_Naval: AEE_MarkerBase {
@@ -7189,6 +8215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Friendly_Unit_Naval: AEE_MarkerBase {
@@ -7196,6 +8223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Parachute: AEE_MarkerBase {
@@ -7203,6 +8231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Parachute.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Parachute: AEE_MarkerBase {
@@ -7210,6 +8239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Parachute.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Parachute: AEE_MarkerBase {
@@ -7217,6 +8247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Parachute: AEE_MarkerBase {
@@ -7224,6 +8255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Psychological_Op: AEE_MarkerBase {
@@ -7231,6 +8263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Psychological_Op.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Psychological_Op.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Psychological_Op: AEE_MarkerBase {
@@ -7238,6 +8271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Psychological_Op.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Psychological_Op.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Psychological_Op: AEE_MarkerBase {
@@ -7245,6 +8279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Psychological_Op.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Psychological_Op.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Psychological_Op: AEE_MarkerBase {
@@ -7252,6 +8287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Psychological_Op.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Psychological_Op.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Radar: AEE_MarkerBase {
@@ -7259,6 +8295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Radar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Radar: AEE_MarkerBase {
@@ -7266,6 +8303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Radar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Radar: AEE_MarkerBase {
@@ -7273,6 +8311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Radar: AEE_MarkerBase {
@@ -7280,6 +8319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Reconnaissance: AEE_MarkerBase {
@@ -7287,6 +8327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Reconnaissance: AEE_MarkerBase {
@@ -7294,6 +8335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Reconnaissance: AEE_MarkerBase {
@@ -7301,6 +8343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Reconnaissance: AEE_MarkerBase {
@@ -7308,6 +8351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7315,6 +8359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_A.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7322,6 +8367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_A.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7329,6 +8375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_A.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7336,6 +8383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_A.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7343,6 +8391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Reconnaissance_A.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7350,6 +8399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Reconnaissance_A.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7357,6 +8407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Reconnaissance_A.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Reconnaissance_A: AEE_MarkerBase {
@@ -7364,6 +8415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Reconnaissance_A.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Reconnaissance_A.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Reconnaissance_A_2: AEE_MarkerBase {
@@ -7371,6 +8423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_A_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_A_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Reconnaissance_A_2: AEE_MarkerBase {
@@ -7378,6 +8431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_A_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_A_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Reconnaissance_A_2: AEE_MarkerBase {
@@ -7385,6 +8439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_A_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_A_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Reconnaissance_A_2: AEE_MarkerBase {
@@ -7392,6 +8447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_A_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_A_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Reconnaissance_A_3: AEE_MarkerBase {
@@ -7399,6 +8455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_A_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_A_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Reconnaissance_A_3: AEE_MarkerBase {
@@ -7406,6 +8463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_A_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_A_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Reconnaissance_A_3: AEE_MarkerBase {
@@ -7413,6 +8471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_A_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_A_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Reconnaissance_A_3: AEE_MarkerBase {
@@ -7420,6 +8479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_A_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_A_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Reconnaissance_F: AEE_MarkerBase {
@@ -7427,6 +8487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_F.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_F.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Reconnaissance_F: AEE_MarkerBase {
@@ -7434,6 +8495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_F.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_F.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Reconnaissance_F: AEE_MarkerBase {
@@ -7441,6 +8503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_F.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_F.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Reconnaissance_F: AEE_MarkerBase {
@@ -7448,6 +8511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_F.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_F.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Reconnaissance_L: AEE_MarkerBase {
@@ -7455,6 +8519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_L.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_L.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Reconnaissance_L: AEE_MarkerBase {
@@ -7462,6 +8527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_L.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_L.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Reconnaissance_L: AEE_MarkerBase {
@@ -7469,6 +8535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_L.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_L.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Reconnaissance_L: AEE_MarkerBase {
@@ -7476,6 +8543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_L.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_L.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Reconnaissance_M: AEE_MarkerBase {
@@ -7483,6 +8551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_M.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Reconnaissance_M.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Reconnaissance_M: AEE_MarkerBase {
@@ -7490,6 +8559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_M.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Reconnaissance_M.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Reconnaissance_M: AEE_MarkerBase {
@@ -7497,6 +8567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_M.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Reconnaissance_M.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Reconnaissance_M: AEE_MarkerBase {
@@ -7504,6 +8575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_M.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Reconnaissance_M.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Signals_Electron: AEE_MarkerBase {
@@ -7511,6 +8583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Signals_Electron.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Signals_Electron.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Signals_Electron: AEE_MarkerBase {
@@ -7518,6 +8591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Signals_Electron.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Signals_Electron.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Signals_Electron: AEE_MarkerBase {
@@ -7525,6 +8599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Signals_Electron.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Signals_Electron.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Signals_Electron: AEE_MarkerBase {
@@ -7532,6 +8607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Signals_Electron.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Signals_Electron.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Signals_or_Commu: AEE_MarkerBase {
@@ -7539,6 +8615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Signals_or_Commu.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Signals_or_Commu.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Signals_or_Commu: AEE_MarkerBase {
@@ -7546,6 +8623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Signals_or_Commu.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Signals_or_Commu.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Signals_or_Commu: AEE_MarkerBase {
@@ -7553,6 +8631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Signals_or_Commu.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Signals_or_Commu.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Signals_or_Commu: AEE_MarkerBase {
@@ -7560,6 +8639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Signals_or_Commu.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Signals_or_Commu.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Sniper: AEE_MarkerBase {
@@ -7567,6 +8647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Sniper.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Sniper: AEE_MarkerBase {
@@ -7574,6 +8655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Sniper.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Sniper: AEE_MarkerBase {
@@ -7581,6 +8663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Sniper.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Sniper: AEE_MarkerBase {
@@ -7588,6 +8671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Sniper.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7595,6 +8679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Special_Operatio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7602,6 +8687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Special_Operatio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7609,6 +8695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Special_Operatio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7616,6 +8703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Special_Operatio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7623,6 +8711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7630,6 +8719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7637,6 +8727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7644,6 +8735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_2: AEE_MarkerBase {
@@ -7651,6 +8743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_2: AEE_MarkerBase {
@@ -7658,6 +8751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_2: AEE_MarkerBase {
@@ -7665,6 +8759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_2: AEE_MarkerBase {
@@ -7672,6 +8767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_3: AEE_MarkerBase {
@@ -7679,6 +8775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_3: AEE_MarkerBase {
@@ -7686,6 +8783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_3: AEE_MarkerBase {
@@ -7693,6 +8791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_3: AEE_MarkerBase {
@@ -7700,6 +8799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_4: AEE_MarkerBase {
@@ -7707,6 +8807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_4: AEE_MarkerBase {
@@ -7714,6 +8815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_4: AEE_MarkerBase {
@@ -7721,6 +8823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_4: AEE_MarkerBase {
@@ -7728,6 +8831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7735,6 +8839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Friendly_Unit_Special_Operatio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7742,6 +8847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Friendly_Unit_Special_Operatio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7749,6 +8855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Friendly_Unit_Special_Operatio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Friendly_Unit_Special_Operatio: AEE_MarkerBase {
@@ -7756,6 +8863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Special_Operatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Friendly_Unit_Special_Operatio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_5: AEE_MarkerBase {
@@ -7763,6 +8871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_5.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_5: AEE_MarkerBase {
@@ -7770,6 +8879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_5.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_5: AEE_MarkerBase {
@@ -7777,6 +8887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_5.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_5: AEE_MarkerBase {
@@ -7784,6 +8895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_5.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_6: AEE_MarkerBase {
@@ -7791,6 +8903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_6.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_6: AEE_MarkerBase {
@@ -7798,6 +8911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_6.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_6: AEE_MarkerBase {
@@ -7805,6 +8919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_6.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_6: AEE_MarkerBase {
@@ -7812,6 +8927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_6.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_7: AEE_MarkerBase {
@@ -7819,6 +8935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_7.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_7: AEE_MarkerBase {
@@ -7826,6 +8943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_7.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_7: AEE_MarkerBase {
@@ -7833,6 +8951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_7.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_7: AEE_MarkerBase {
@@ -7840,6 +8959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_7.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_8: AEE_MarkerBase {
@@ -7847,6 +8967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_8.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_8: AEE_MarkerBase {
@@ -7854,6 +8975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_8.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_8: AEE_MarkerBase {
@@ -7861,6 +8983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_8.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_8: AEE_MarkerBase {
@@ -7868,6 +8991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_8.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Friendly_Unit_Special_Operatio_9: AEE_MarkerBase {
@@ -7875,6 +8999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Unit_Special_Operatio_9.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Friendly_Unit_Special_Operatio_9: AEE_MarkerBase {
@@ -7882,6 +9007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Unit_Special_Operatio_9.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Friendly_Unit_Special_Operatio_9: AEE_MarkerBase {
@@ -7889,6 +9015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Unit_Special_Operatio_9.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Friendly_Unit_Special_Operatio_9: AEE_MarkerBase {
@@ -7896,6 +9023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Unit_Special_Operatio_9.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Friendly_Unit_Unmanned_Aerial: AEE_MarkerBase {
@@ -7903,6 +9031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Unmanned_Aerial.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Friendly_Unit_Unmanned_Aerial.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Friendly_Unit_Unmanned_Aerial: AEE_MarkerBase {
@@ -7910,6 +9039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Unmanned_Aerial.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Friendly_Unit_Unmanned_Aerial.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Friendly_Unit_Unmanned_Aerial: AEE_MarkerBase {
@@ -7917,6 +9047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Unmanned_Aerial.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Friendly_Unit_Unmanned_Aerial.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Friendly_Unit_Unmanned_Aerial: AEE_MarkerBase {
@@ -7924,6 +9055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Unmanned_Aerial.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Friendly_Unit_Unmanned_Aerial.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Combat_Service_Support: AEE_MarkerBase {
@@ -7931,6 +9063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Combat_Service_Support.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Combat_Service_Support: AEE_MarkerBase {
@@ -7938,6 +9071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Combat_Service_Support.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Combat_Service_Support: AEE_MarkerBase {
@@ -7945,6 +9079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Combat_Service_Support.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Combat_Service_Support: AEE_MarkerBase {
@@ -7952,6 +9087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Combat_Service_Support.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Explosive_Ordnance_Dis: AEE_MarkerBase {
@@ -7959,6 +9095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Explosive_Ordnance_Dis.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Explosive_Ordnance_Dis.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Explosive_Ordnance_Dis: AEE_MarkerBase {
@@ -7966,6 +9103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Explosive_Ordnance_Dis.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Explosive_Ordnance_Dis.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Explosive_Ordnance_Dis: AEE_MarkerBase {
@@ -7973,6 +9111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Explosive_Ordnance_Dis.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Explosive_Ordnance_Dis.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Explosive_Ordnance_Dis: AEE_MarkerBase {
@@ -7980,6 +9119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Explosive_Ordnance_Dis.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Explosive_Ordnance_Dis.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence: AEE_MarkerBase {
@@ -7987,6 +9127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence: AEE_MarkerBase {
@@ -7994,6 +9135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence: AEE_MarkerBase {
@@ -8001,6 +9143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence: AEE_MarkerBase {
@@ -8008,6 +9151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -8015,6 +9159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Anti.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -8022,6 +9167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Anti.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -8029,6 +9175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Anti.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -8036,6 +9183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Anti.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -8043,6 +9191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Close.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -8050,6 +9199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Close.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -8057,6 +9207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Close.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -8064,6 +9215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Close.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -8071,6 +9223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Guns.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -8078,6 +9231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Guns.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -8085,6 +9239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Guns.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -8092,6 +9247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Guns.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -8099,6 +9255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Mecha.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -8106,6 +9263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Mecha.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -8113,6 +9271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Mecha.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -8120,6 +9279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Mecha.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -8127,6 +9287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -8134,6 +9295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -8141,6 +9303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -8148,6 +9311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Mecha_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -8155,6 +9319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Missi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -8162,6 +9327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Missi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -8169,6 +9335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Missi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -8176,6 +9343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Missi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -8183,6 +9351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Missi_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -8190,6 +9359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Missi_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -8197,6 +9367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Missi_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -8204,6 +9375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Missi_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -8211,6 +9383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Air_Defence_Artil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -8218,6 +9391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Air_Defence_Artil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -8225,6 +9399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Air_Defence_Artil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -8232,6 +9407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Air_Defence_Artil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Hostile_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -8239,6 +9415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Air_Naval_Gunfire.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Hostile_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -8246,6 +9423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Air_Naval_Gunfire.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Hostile_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -8253,6 +9431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Air_Naval_Gunfire.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Hostile_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -8260,6 +9439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Air_Naval_Gunfire.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFS_Hostile_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -8267,6 +9447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Hostile_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -8274,6 +9455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Hostile_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -8281,6 +9463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Hostile_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -8288,6 +9471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Air_Naval_Gunfire_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -8295,6 +9479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Airborne_Forces.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -8302,6 +9487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Airborne_Forces.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -8309,6 +9495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Airborne_Forces.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -8316,6 +9503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Airborne_Forces.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Anti_Tank: AEE_MarkerBase {
@@ -8323,6 +9511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Anti_Tank: AEE_MarkerBase {
@@ -8330,6 +9519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Anti_Tank: AEE_MarkerBase {
@@ -8337,6 +9527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Anti_Tank: AEE_MarkerBase {
@@ -8344,6 +9535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -8351,6 +9543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Armoure.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -8358,6 +9551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Armoure.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -8365,6 +9559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Armoure.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -8372,6 +9567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Armoure.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -8379,6 +9575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Missile.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -8386,6 +9583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Missile.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -8393,6 +9591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Missile.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -8400,6 +9599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Missile.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -8407,6 +9607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -8414,6 +9615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -8421,6 +9623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -8428,6 +9631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -8435,6 +9639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -8442,6 +9647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -8449,6 +9655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -8456,6 +9663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Tank_De.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -8463,6 +9671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -8470,6 +9679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -8477,6 +9687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -8484,6 +9695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Tank_De_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -8491,6 +9703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Anti_Tank_Artille.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -8498,6 +9711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Anti_Tank_Artille.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -8505,6 +9719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Anti_Tank_Artille.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -8512,6 +9727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Anti_Tank_Artille.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -8519,6 +9735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Anti_tank_Aviatio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -8526,6 +9743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Anti_tank_Aviatio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -8533,6 +9751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Anti_tank_Aviatio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -8540,6 +9759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Anti_tank_Aviatio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armour: AEE_MarkerBase {
@@ -8547,6 +9767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armour: AEE_MarkerBase {
@@ -8554,6 +9775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armour: AEE_MarkerBase {
@@ -8561,6 +9783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armour: AEE_MarkerBase {
@@ -8568,6 +9791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -8575,6 +9799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Amphibious.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -8582,6 +9807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Amphibious.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -8589,6 +9815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Amphibious.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -8596,6 +9823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Amphibious.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -8603,6 +9831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Amphibious_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -8610,6 +9839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Amphibious_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -8617,6 +9847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Amphibious_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -8624,6 +9855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Amphibious_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -8631,6 +9863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Heavy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -8638,6 +9871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Heavy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -8645,6 +9879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -8652,6 +9887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armour_Light: AEE_MarkerBase {
@@ -8659,6 +9895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Light.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armour_Light: AEE_MarkerBase {
@@ -8666,6 +9903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Light.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armour_Light: AEE_MarkerBase {
@@ -8673,6 +9911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Light.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armour_Light: AEE_MarkerBase {
@@ -8680,6 +9919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Light.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armour_Medium: AEE_MarkerBase {
@@ -8687,6 +9927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Medium.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armour_Medium: AEE_MarkerBase {
@@ -8694,6 +9935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Medium.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armour_Medium: AEE_MarkerBase {
@@ -8701,6 +9943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Medium.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armour_Medium: AEE_MarkerBase {
@@ -8708,6 +9951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Medium.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -8715,6 +9959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -8722,6 +9967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -8729,6 +9975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -8736,6 +9983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armour_Wheeled_Ag.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -8743,6 +9991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -8750,6 +9999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -8757,6 +10007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -8764,6 +10015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -8771,6 +10023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -8778,6 +10031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -8785,6 +10039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -8792,6 +10047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -8799,6 +10055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -8806,6 +10063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -8813,6 +10071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -8820,6 +10079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -8827,6 +10087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Armoured_Reconnai_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -8834,6 +10095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Armoured_Reconnai_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -8841,6 +10103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Armoured_Reconnai_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -8848,6 +10111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Armoured_Reconnai_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery: AEE_MarkerBase {
@@ -8855,6 +10119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery: AEE_MarkerBase {
@@ -8862,6 +10127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery: AEE_MarkerBase {
@@ -8869,6 +10135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery: AEE_MarkerBase {
@@ -8876,6 +10143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -8883,6 +10151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Field_S.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -8890,6 +10159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Field_S.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -8897,6 +10167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Field_S.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -8904,6 +10175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Field_S.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -8911,6 +10183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Field_S_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -8918,6 +10191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Field_S_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -8925,6 +10199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Field_S_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -8932,6 +10207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Field_S_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -8939,6 +10215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Heavy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -8946,6 +10223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Heavy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -8953,6 +10231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -8960,6 +10239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Light: AEE_MarkerBase {
@@ -8967,6 +10247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Light.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Light: AEE_MarkerBase {
@@ -8974,6 +10255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Light.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Light: AEE_MarkerBase {
@@ -8981,6 +10263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Light.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Light: AEE_MarkerBase {
@@ -8988,6 +10271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Light.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -8995,6 +10279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Mechani.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -9002,6 +10287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Mechani.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -9009,6 +10295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -9016,6 +10303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -9023,6 +10311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Medium.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -9030,6 +10319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Medium.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -9037,6 +10327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Medium.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -9044,6 +10335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Medium.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -9051,6 +10343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Mountai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -9058,6 +10351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Mountai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -9065,6 +10359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -9072,6 +10367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -9079,6 +10375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Observa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -9086,6 +10383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Observa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -9093,6 +10391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Observa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -9100,6 +10399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Observa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -9107,6 +10407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Reconna.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -9114,6 +10415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Reconna.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -9121,6 +10423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -9128,6 +10431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -9135,6 +10439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Rocket.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -9142,6 +10447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Rocket.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -9149,6 +10455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -9156,6 +10463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -9163,6 +10471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Rocket_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -9170,6 +10479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Rocket_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -9177,6 +10487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Rocket_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -9184,6 +10495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Rocket_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -9191,6 +10503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Rocket_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -9198,6 +10511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Rocket_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -9205,6 +10519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Rocket_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -9212,6 +10527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Rocket_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Target: AEE_MarkerBase {
@@ -9219,6 +10535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Target.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Target: AEE_MarkerBase {
@@ -9226,6 +10543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Target.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Target: AEE_MarkerBase {
@@ -9233,6 +10551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Target.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Target: AEE_MarkerBase {
@@ -9240,6 +10559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Target.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -9247,6 +10567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Artillery_Target_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -9254,6 +10575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Artillery_Target_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -9261,6 +10583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Artillery_Target_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -9268,6 +10591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Artillery_Target_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation: AEE_MarkerBase {
@@ -9275,6 +10599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation: AEE_MarkerBase {
@@ -9282,6 +10607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation: AEE_MarkerBase {
@@ -9289,6 +10615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation: AEE_MarkerBase {
@@ -9296,6 +10623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -9303,6 +10631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Attack.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -9310,6 +10639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Attack.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -9317,6 +10647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Attack.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -9324,6 +10655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Attack.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -9331,6 +10663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Cargo.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -9338,6 +10671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Cargo.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -9345,6 +10679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Cargo.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -9352,6 +10687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Cargo.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -9359,6 +10695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -9366,6 +10703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -9373,6 +10711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -9380,6 +10719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Fixed_Wi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -9387,6 +10727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -9394,6 +10735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -9401,6 +10743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -9408,6 +10751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Fixed_Wi_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -9415,6 +10759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Fixed_an.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -9422,6 +10767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Fixed_an.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -9429,6 +10775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Fixed_an.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -9436,6 +10783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Fixed_an.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -9443,6 +10791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Reconnai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -9450,6 +10799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Reconnai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -9457,6 +10807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -9464,6 +10815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -9471,6 +10823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Aviation_Utility.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -9478,6 +10831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Aviation_Utility.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -9485,6 +10839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Aviation_Utility.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -9492,6 +10847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Aviation_Utility.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CBRN: AEE_MarkerBase {
@@ -9499,6 +10855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CBRN.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CBRN: AEE_MarkerBase {
@@ -9506,6 +10863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CBRN.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CBRN: AEE_MarkerBase {
@@ -9513,6 +10871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CBRN: AEE_MarkerBase {
@@ -9520,6 +10879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -9527,6 +10887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Ammunition.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -9534,6 +10895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Ammunition.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -9541,6 +10903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -9548,6 +10911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -9555,6 +10919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_CSS_Aviation_Main.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -9562,6 +10927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_CSS_Aviation_Main.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -9569,6 +10935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_CSS_Aviation_Main.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -9576,6 +10943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_CSS_Aviation_Main.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -9583,6 +10951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Combat_Servic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -9590,6 +10959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Combat_Servic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -9597,6 +10967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Combat_Servic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -9604,6 +10975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Combat_Servic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -9611,6 +10983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -9618,6 +10991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -9625,6 +10999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -9632,6 +11007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Finance_or_Pa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -9639,6 +11015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Food_Services.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -9646,6 +11023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Food_Services.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -9653,6 +11031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Food_Services.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -9660,6 +11039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Food_Services.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Labour: AEE_MarkerBase {
@@ -9667,6 +11047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Labour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Labour: AEE_MarkerBase {
@@ -9674,6 +11055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Labour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Labour: AEE_MarkerBase {
@@ -9681,6 +11063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Labour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Labour: AEE_MarkerBase {
@@ -9688,6 +11071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Labour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -9695,6 +11079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Labour_Pionee.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -9702,6 +11087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Labour_Pionee.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -9709,6 +11095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Labour_Pionee.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -9716,6 +11103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Labour_Pionee.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -9723,6 +11111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Laundry_and_B.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -9730,6 +11119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Laundry_and_B.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -9737,6 +11127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Laundry_and_B.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -9744,6 +11135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Laundry_and_B.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -9751,6 +11143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -9758,6 +11151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -9765,6 +11159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -9772,6 +11167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Laundry_and_B_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -9779,6 +11175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Maintenance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -9786,6 +11183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Maintenance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -9793,6 +11191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -9800,6 +11199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -9807,6 +11207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Ordnance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -9814,6 +11215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Ordnance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -9821,6 +11223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -9828,6 +11231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -9835,6 +11239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Personnel_Ser.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -9842,6 +11247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Personnel_Ser.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -9849,6 +11255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Personnel_Ser.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -9856,6 +11263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Personnel_Ser.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -9863,6 +11271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -9870,6 +11279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -9877,6 +11287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -9884,6 +11295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Petroleum_Oil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -9891,6 +11303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Postal_Servic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -9898,6 +11311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Postal_Servic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -9905,6 +11319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Postal_Servic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -9912,6 +11327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Postal_Servic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Supply: AEE_MarkerBase {
@@ -9919,6 +11335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Supply.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Supply: AEE_MarkerBase {
@@ -9926,6 +11343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Supply.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Supply: AEE_MarkerBase {
@@ -9933,6 +11351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Supply.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Supply: AEE_MarkerBase {
@@ -9940,6 +11359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Supply.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -9947,6 +11367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Supply_Transp.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -9954,6 +11375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Supply_Transp.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -9961,6 +11383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Supply_Transp.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -9968,6 +11391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Supply_Transp.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Transport: AEE_MarkerBase {
@@ -9975,6 +11399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Transport.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Transport: AEE_MarkerBase {
@@ -9982,6 +11407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Transport.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Transport: AEE_MarkerBase {
@@ -9989,6 +11415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Transport.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Transport: AEE_MarkerBase {
@@ -9996,6 +11423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Transport.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -10003,6 +11431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Transport_Amp.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -10010,6 +11439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Transport_Amp.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -10017,6 +11447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Transport_Amp.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -10024,6 +11455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Transport_Amp.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -10031,6 +11463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_CSS_Water_Supply.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -10038,6 +11471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_CSS_Water_Supply.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -10045,6 +11479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_CSS_Water_Supply.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -10052,6 +11487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_CSS_Water_Supply.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Combat_Support: AEE_MarkerBase {
@@ -10059,6 +11495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Combat_Support.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Combat_Support: AEE_MarkerBase {
@@ -10066,6 +11503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Combat_Support.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Combat_Support: AEE_MarkerBase {
@@ -10073,6 +11511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Combat_Support.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Combat_Support: AEE_MarkerBase {
@@ -10080,6 +11519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Combat_Support.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -10087,6 +11527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Combined_Manoeuvr.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -10094,6 +11535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Combined_Manoeuvr.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -10101,6 +11543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Combined_Manoeuvr.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -10108,6 +11551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Combined_Manoeuvr.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -10115,6 +11559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Electronic_Warfar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -10122,6 +11567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Electronic_Warfar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -10129,6 +11575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Electronic_Warfar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -10136,6 +11583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Electronic_Warfar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -10143,6 +11591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Electronic_Warfar_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -10150,6 +11599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Electronic_Warfar_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -10157,6 +11607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Electronic_Warfar_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -10164,6 +11615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Electronic_Warfar_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -10171,6 +11623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Explosive_Ordnanc.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -10178,6 +11631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Explosive_Ordnanc.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -10185,6 +11639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Explosive_Ordnanc.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -10192,6 +11647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Explosive_Ordnanc.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -10199,6 +11655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Gendarmerie_or_In.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -10206,6 +11663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Gendarmerie_or_In.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -10213,6 +11671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Gendarmerie_or_In.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -10220,6 +11679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Gendarmerie_or_In.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -10227,6 +11687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -10234,6 +11695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -10241,6 +11703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -10248,6 +11711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Gendarmerie_or_In_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -10255,6 +11719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Headquarters_Serv.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -10262,6 +11727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Headquarters_Serv.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -10269,6 +11735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Headquarters_Serv.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -10276,6 +11743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Headquarters_Serv.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -10283,6 +11751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Headquarters_Sign.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -10290,6 +11759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Headquarters_Sign.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -10297,6 +11767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Headquarters_Sign.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -10304,6 +11775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Headquarters_Sign.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -10311,6 +11783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Headquarters_Unit.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -10318,6 +11791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Headquarters_Unit.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -10325,6 +11799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Headquarters_Unit.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -10332,6 +11807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Headquarters_Unit.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -10339,6 +11815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Horse_Cavalry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -10346,6 +11823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Horse_Cavalry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -10353,6 +11831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Horse_Cavalry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -10360,6 +11839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Horse_Cavalry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -10367,6 +11847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Horse_Reconnaissa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -10374,6 +11855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Horse_Reconnaissa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -10381,6 +11863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Horse_Reconnaissa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -10388,6 +11871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Horse_Reconnaissa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry: AEE_MarkerBase {
@@ -10395,6 +11879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry: AEE_MarkerBase {
@@ -10402,6 +11887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry: AEE_MarkerBase {
@@ -10409,6 +11895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry: AEE_MarkerBase {
@@ -10416,6 +11903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -10423,6 +11911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Air_Assa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -10430,6 +11919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Air_Assa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -10437,6 +11927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -10444,6 +11935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -10451,6 +11943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Infantry_Airborne.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -10458,6 +11951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Infantry_Airborne.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -10465,6 +11959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Infantry_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -10472,6 +11967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Infantry_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -10479,6 +11975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Infantry_Airborne_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -10486,6 +11983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Infantry_Airborne_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -10493,6 +11991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Infantry_Airborne_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -10500,6 +11999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Infantry_Airborne_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -10507,6 +12007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Airmobil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -10514,6 +12015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Airmobil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -10521,6 +12023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -10528,6 +12031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -10535,6 +12039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Amphibio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -10542,6 +12047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Amphibio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -10549,6 +12055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -10556,6 +12063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -10563,6 +12071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Amphibio_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -10570,6 +12079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Amphibio_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -10577,6 +12087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Amphibio_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -10584,6 +12095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Amphibio_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -10591,6 +12103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Arctic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -10598,6 +12111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Arctic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -10605,6 +12119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -10612,6 +12127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -10619,6 +12135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Armoured.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -10626,6 +12143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Armoured.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -10633,6 +12151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Armoured.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -10640,6 +12159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Armoured.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -10647,6 +12167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Combat_S.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -10654,6 +12175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Combat_S.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -10661,6 +12183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Combat_S.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -10668,6 +12191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Combat_S.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -10675,6 +12199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Combat_S_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -10682,6 +12207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Combat_S_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -10689,6 +12215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Combat_S_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -10696,6 +12223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Combat_S_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -10703,6 +12231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Heavy_We.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -10710,6 +12239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Heavy_We.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -10717,6 +12247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Heavy_We.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -10724,6 +12255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Heavy_We.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Light_In: AEE_MarkerBase {
@@ -10731,6 +12263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Light_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Light_In.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Light_In: AEE_MarkerBase {
@@ -10738,6 +12271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Light_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Light_In.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Light_In: AEE_MarkerBase {
@@ -10745,6 +12279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Light_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Light_In.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Light_In: AEE_MarkerBase {
@@ -10752,6 +12287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Light_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Light_In.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Mechaniz: AEE_MarkerBase {
@@ -10759,6 +12295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Mechaniz: AEE_MarkerBase {
@@ -10766,6 +12303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Mechaniz: AEE_MarkerBase {
@@ -10773,6 +12311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Mechaniz: AEE_MarkerBase {
@@ -10780,6 +12319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Mechaniz_2: AEE_MarkerBase {
@@ -10787,6 +12327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Mechaniz_2: AEE_MarkerBase {
@@ -10794,6 +12335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Mechaniz_2: AEE_MarkerBase {
@@ -10801,6 +12343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Mechaniz_2: AEE_MarkerBase {
@@ -10808,6 +12351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Mechaniz_3: AEE_MarkerBase {
@@ -10815,6 +12359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Mechaniz_3: AEE_MarkerBase {
@@ -10822,6 +12367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Mechaniz_3: AEE_MarkerBase {
@@ -10829,6 +12375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Mechaniz_3: AEE_MarkerBase {
@@ -10836,6 +12383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Mechaniz_4: AEE_MarkerBase {
@@ -10843,6 +12391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Mechaniz_4: AEE_MarkerBase {
@@ -10850,6 +12399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Mechaniz_4: AEE_MarkerBase {
@@ -10857,6 +12407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Mechaniz_4: AEE_MarkerBase {
@@ -10864,6 +12415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mechaniz_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Motorize: AEE_MarkerBase {
@@ -10871,6 +12423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Motorize.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Motorize: AEE_MarkerBase {
@@ -10878,6 +12431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Motorize.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Motorize: AEE_MarkerBase {
@@ -10885,6 +12439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Motorize.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Motorize: AEE_MarkerBase {
@@ -10892,6 +12447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Motorize.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Mountain: AEE_MarkerBase {
@@ -10899,6 +12455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mountain.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Mountain: AEE_MarkerBase {
@@ -10906,6 +12463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mountain.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Mountain: AEE_MarkerBase {
@@ -10913,6 +12471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Mountain: AEE_MarkerBase {
@@ -10920,6 +12479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -10927,6 +12487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Mounted.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -10934,6 +12495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Mounted.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -10941,6 +12503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Mounted.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Mounted: AEE_MarkerBase {
@@ -10948,6 +12511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mounted.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Mounted.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Hostile_Unit_Infantry_Naval_In: AEE_MarkerBase {
@@ -10955,6 +12519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Infantry_Naval_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Infantry_Naval_In.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Hostile_Unit_Infantry_Naval_In: AEE_MarkerBase {
@@ -10962,6 +12527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Infantry_Naval_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Infantry_Naval_In.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Hostile_Unit_Infantry_Naval_In: AEE_MarkerBase {
@@ -10969,6 +12535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Infantry_Naval_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Infantry_Naval_In.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Hostile_Unit_Infantry_Naval_In: AEE_MarkerBase {
@@ -10976,6 +12543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Infantry_Naval_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Infantry_Naval_In.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Pioneers: AEE_MarkerBase {
@@ -10983,6 +12551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Pioneers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Pioneers.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Pioneers: AEE_MarkerBase {
@@ -10990,6 +12559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Pioneers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Pioneers.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Pioneers: AEE_MarkerBase {
@@ -10997,6 +12567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Pioneers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Pioneers.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Pioneers: AEE_MarkerBase {
@@ -11004,6 +12575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Pioneers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Pioneers.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Pioneers_2: AEE_MarkerBase {
@@ -11011,6 +12583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Pioneers_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Pioneers_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Pioneers_2: AEE_MarkerBase {
@@ -11018,6 +12591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Pioneers_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Pioneers_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Pioneers_2: AEE_MarkerBase {
@@ -11025,6 +12599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Pioneers_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Pioneers_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Pioneers_2: AEE_MarkerBase {
@@ -11032,6 +12607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Pioneers_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Pioneers_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -11039,6 +12615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Infantry_Snipers.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -11046,6 +12623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Infantry_Snipers.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -11053,6 +12631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Infantry_Snipers.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Infantry_Snipers: AEE_MarkerBase {
@@ -11060,6 +12639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Snipers.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Infantry_Snipers.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Marine_Air_Ground: AEE_MarkerBase {
@@ -11067,6 +12647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Marine_Air_Ground.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Marine_Air_Ground.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Marine_Air_Ground: AEE_MarkerBase {
@@ -11074,6 +12655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Marine_Air_Ground.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Marine_Air_Ground.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Marine_Air_Ground: AEE_MarkerBase {
@@ -11081,6 +12663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Marine_Air_Ground.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Marine_Air_Ground.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Marine_Air_Ground: AEE_MarkerBase {
@@ -11088,6 +12671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Marine_Air_Ground.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Marine_Air_Ground.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Marine_Air_Ground_2: AEE_MarkerBase {
@@ -11095,6 +12679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Marine_Air_Ground_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Marine_Air_Ground_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Marine_Air_Ground_2: AEE_MarkerBase {
@@ -11102,6 +12687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Marine_Air_Ground_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Marine_Air_Ground_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Marine_Air_Ground_2: AEE_MarkerBase {
@@ -11109,6 +12695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Marine_Air_Ground_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Marine_Air_Ground_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Marine_Air_Ground_2: AEE_MarkerBase {
@@ -11116,6 +12703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Marine_Air_Ground_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Marine_Air_Ground_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -11123,6 +12711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Marines_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -11130,6 +12719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Marines_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -11137,6 +12727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Marines_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Marines_Infantry: AEE_MarkerBase {
@@ -11144,6 +12735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Marines_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Marines_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Medical: AEE_MarkerBase {
@@ -11151,6 +12743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Medical.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Medical: AEE_MarkerBase {
@@ -11158,6 +12751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Medical.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Medical: AEE_MarkerBase {
@@ -11165,6 +12759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Medical: AEE_MarkerBase {
@@ -11172,6 +12767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Medical_Dental: AEE_MarkerBase {
@@ -11179,6 +12775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Medical_Dental.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Medical_Dental: AEE_MarkerBase {
@@ -11186,6 +12783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Medical_Dental.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Medical_Dental: AEE_MarkerBase {
@@ -11193,6 +12791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Medical_Dental.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Medical_Dental: AEE_MarkerBase {
@@ -11200,6 +12799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Medical_Dental.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Medical_Dental.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -11207,6 +12807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Medical_Hospital.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -11214,6 +12815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Medical_Hospital.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -11221,6 +12823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Medical_Hospital.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -11228,6 +12831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Medical_Hospital.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -11235,6 +12839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Meteorological_Se.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -11242,6 +12847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Meteorological_Se.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -11249,6 +12855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Meteorological_Se.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -11256,6 +12863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Meteorological_Se.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11263,6 +12871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11270,6 +12879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11277,6 +12887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11284,6 +12895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11291,6 +12903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Military_Engineer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11298,6 +12911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Military_Engineer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11305,6 +12919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11312,6 +12927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -11319,6 +12935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -11326,6 +12943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -11333,6 +12951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -11340,6 +12959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_3: AEE_MarkerBase {
@@ -11347,6 +12967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_3: AEE_MarkerBase {
@@ -11354,6 +12975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_3: AEE_MarkerBase {
@@ -11361,6 +12983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_3: AEE_MarkerBase {
@@ -11368,6 +12991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_4: AEE_MarkerBase {
@@ -11375,6 +12999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_4: AEE_MarkerBase {
@@ -11382,6 +13007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_4: AEE_MarkerBase {
@@ -11389,6 +13015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_4: AEE_MarkerBase {
@@ -11396,6 +13023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_5: AEE_MarkerBase {
@@ -11403,6 +13031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_5.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_5: AEE_MarkerBase {
@@ -11410,6 +13039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_5.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_5: AEE_MarkerBase {
@@ -11417,6 +13047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_5.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_5: AEE_MarkerBase {
@@ -11424,6 +13055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_5.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_6: AEE_MarkerBase {
@@ -11431,6 +13063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_6.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_6: AEE_MarkerBase {
@@ -11438,6 +13071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_6.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_6: AEE_MarkerBase {
@@ -11445,6 +13079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_6.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_6: AEE_MarkerBase {
@@ -11452,6 +13087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_6.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_7: AEE_MarkerBase {
@@ -11459,6 +13095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_7.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_7: AEE_MarkerBase {
@@ -11466,6 +13103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_7.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_7: AEE_MarkerBase {
@@ -11473,6 +13111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_7.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_7: AEE_MarkerBase {
@@ -11480,6 +13119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_7.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_8: AEE_MarkerBase {
@@ -11487,6 +13127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_8.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_8: AEE_MarkerBase {
@@ -11494,6 +13135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_8.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_8: AEE_MarkerBase {
@@ -11501,6 +13143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_8.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_8: AEE_MarkerBase {
@@ -11508,6 +13151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_8.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_8.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_9: AEE_MarkerBase {
@@ -11515,6 +13159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_9.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_9: AEE_MarkerBase {
@@ -11522,6 +13167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_9.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_9: AEE_MarkerBase {
@@ -11529,6 +13175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_9.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_9: AEE_MarkerBase {
@@ -11536,6 +13183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_9.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_9.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_10: AEE_MarkerBase {
@@ -11543,6 +13191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_10.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_10: AEE_MarkerBase {
@@ -11550,6 +13199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_10.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_10: AEE_MarkerBase {
@@ -11557,6 +13207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_10.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_10: AEE_MarkerBase {
@@ -11564,6 +13215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_10.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_10.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_11: AEE_MarkerBase {
@@ -11571,6 +13223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_11.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_11: AEE_MarkerBase {
@@ -11578,6 +13231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_11.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_11: AEE_MarkerBase {
@@ -11585,6 +13239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_11.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_11: AEE_MarkerBase {
@@ -11592,6 +13247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_11.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_11.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_12: AEE_MarkerBase {
@@ -11599,6 +13255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_12.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_12: AEE_MarkerBase {
@@ -11606,6 +13263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_12.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_12: AEE_MarkerBase {
@@ -11613,6 +13271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_12.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_12: AEE_MarkerBase {
@@ -11620,6 +13279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_12.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_12.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_13: AEE_MarkerBase {
@@ -11627,6 +13287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_13.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_13: AEE_MarkerBase {
@@ -11634,6 +13295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_13.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_13: AEE_MarkerBase {
@@ -11641,6 +13303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_13.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_13: AEE_MarkerBase {
@@ -11648,6 +13311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_13.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_13.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_14: AEE_MarkerBase {
@@ -11655,6 +13319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_14.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_14: AEE_MarkerBase {
@@ -11662,6 +13327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_14.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_14: AEE_MarkerBase {
@@ -11669,6 +13335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_14.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_14: AEE_MarkerBase {
@@ -11676,6 +13343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_14.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_14.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_15: AEE_MarkerBase {
@@ -11683,6 +13351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_15.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_15: AEE_MarkerBase {
@@ -11690,6 +13359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_15.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_15: AEE_MarkerBase {
@@ -11697,6 +13367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_15.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_15: AEE_MarkerBase {
@@ -11704,6 +13375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_15.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_15.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_16: AEE_MarkerBase {
@@ -11711,6 +13383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_16.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_16: AEE_MarkerBase {
@@ -11718,6 +13391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_16.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_16: AEE_MarkerBase {
@@ -11725,6 +13399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_16.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_16: AEE_MarkerBase {
@@ -11732,6 +13407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_16.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_16.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_17: AEE_MarkerBase {
@@ -11739,6 +13415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_17.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_17: AEE_MarkerBase {
@@ -11746,6 +13423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_17.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_17: AEE_MarkerBase {
@@ -11753,6 +13431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_17.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_17: AEE_MarkerBase {
@@ -11760,6 +13439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_17.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_17.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11767,6 +13447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Military_Engineer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11774,6 +13455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Military_Engineer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11781,6 +13463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Hostile_Unit_Military_Engineer: AEE_MarkerBase {
@@ -11788,6 +13471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_18: AEE_MarkerBase {
@@ -11795,6 +13479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_18.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_18: AEE_MarkerBase {
@@ -11802,6 +13487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_18.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_18: AEE_MarkerBase {
@@ -11809,6 +13495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_18.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_18: AEE_MarkerBase {
@@ -11816,6 +13503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_18.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_18.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_19: AEE_MarkerBase {
@@ -11823,6 +13511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_19.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_19: AEE_MarkerBase {
@@ -11830,6 +13519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_19.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_19: AEE_MarkerBase {
@@ -11837,6 +13527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_19.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_19: AEE_MarkerBase {
@@ -11844,6 +13535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_19.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_19.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_20: AEE_MarkerBase {
@@ -11851,6 +13543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_20.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_20: AEE_MarkerBase {
@@ -11858,6 +13551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_20.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_20: AEE_MarkerBase {
@@ -11865,6 +13559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_20.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_20: AEE_MarkerBase {
@@ -11872,6 +13567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_20.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_20.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_21: AEE_MarkerBase {
@@ -11879,6 +13575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_21.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_21: AEE_MarkerBase {
@@ -11886,6 +13583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_21.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_21: AEE_MarkerBase {
@@ -11893,6 +13591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_21.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_21: AEE_MarkerBase {
@@ -11900,6 +13599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_21.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_21.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_22: AEE_MarkerBase {
@@ -11907,6 +13607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_22.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_22: AEE_MarkerBase {
@@ -11914,6 +13615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_22.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_22: AEE_MarkerBase {
@@ -11921,6 +13623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_22.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_22: AEE_MarkerBase {
@@ -11928,6 +13631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_22.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_22.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_23: AEE_MarkerBase {
@@ -11935,6 +13639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_23.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_23: AEE_MarkerBase {
@@ -11942,6 +13647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_23.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_23: AEE_MarkerBase {
@@ -11949,6 +13655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_23.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_23: AEE_MarkerBase {
@@ -11956,6 +13663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_23.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_23.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_24: AEE_MarkerBase {
@@ -11963,6 +13671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_24.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_24: AEE_MarkerBase {
@@ -11970,6 +13679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_24.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_24: AEE_MarkerBase {
@@ -11977,6 +13687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_24.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_24: AEE_MarkerBase {
@@ -11984,6 +13695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_24.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_24.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Engineer_25: AEE_MarkerBase {
@@ -11991,6 +13703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_25.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Engineer_25.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Engineer_25: AEE_MarkerBase {
@@ -11998,6 +13711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_25.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Engineer_25.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Engineer_25: AEE_MarkerBase {
@@ -12005,6 +13719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_25.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Engineer_25.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Engineer_25: AEE_MarkerBase {
@@ -12012,6 +13727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_25.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Engineer_25.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -12019,6 +13735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Geomatic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -12026,6 +13743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Geomatic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -12033,6 +13751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Geomatic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -12040,6 +13759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Geomatic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Intellig: AEE_MarkerBase {
@@ -12047,6 +13767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Intellig.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Intellig.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Intellig: AEE_MarkerBase {
@@ -12054,6 +13775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Intellig.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Intellig.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Intellig: AEE_MarkerBase {
@@ -12061,6 +13783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Intellig.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Intellig.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Intellig: AEE_MarkerBase {
@@ -12068,6 +13791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Intellig.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Intellig.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Military_Police: AEE_MarkerBase {
@@ -12075,6 +13799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Military_Police.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Military_Police: AEE_MarkerBase {
@@ -12082,6 +13807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Military_Police.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Military_Police: AEE_MarkerBase {
@@ -12089,6 +13815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Military_Police.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Military_Police: AEE_MarkerBase {
@@ -12096,6 +13823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Military_Police.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -12103,6 +13831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Missile_Surface_t.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -12110,6 +13839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Missile_Surface_t.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -12117,6 +13847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Missile_Surface_t.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -12124,6 +13855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Missile_Surface_t.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -12131,6 +13863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Air_Assa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -12138,6 +13871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Air_Assa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -12145,6 +13879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -12152,6 +13887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -12159,6 +13895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Modifier_Airborne.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -12166,6 +13903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Modifier_Airborne.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -12173,6 +13911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Modifier_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -12180,6 +13919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Modifier_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -12187,6 +13927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Airmobil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -12194,6 +13935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Airmobil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -12201,6 +13943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -12208,6 +13951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -12215,6 +13959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Amphibio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -12222,6 +13967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Amphibio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -12229,6 +13975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -12236,6 +13983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -12243,6 +13991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Gun_Syst.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -12250,6 +13999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Gun_Syst.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -12257,6 +14007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Gun_Syst.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -12264,6 +14015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Gun_Syst.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -12271,6 +14023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Motorize.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -12278,6 +14031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Motorize.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -12285,6 +14039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Motorize.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -12292,6 +14047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Motorize.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -12299,6 +14055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Mountain.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -12306,6 +14063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Mountain.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -12313,6 +14071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -12320,6 +14079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -12327,6 +14087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Modifier_Wheeled.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -12334,6 +14095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Modifier_Wheeled.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -12341,6 +14103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Modifier_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -12348,6 +14111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Modifier_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Mortars: AEE_MarkerBase {
@@ -12355,6 +14119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Mortars.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Mortars: AEE_MarkerBase {
@@ -12362,6 +14127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Mortars.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Mortars: AEE_MarkerBase {
@@ -12369,6 +14135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Mortars: AEE_MarkerBase {
@@ -12376,6 +14143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Mortars_Air_Assau: AEE_MarkerBase {
@@ -12383,6 +14151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Mortars_Air_Assau.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Mortars_Air_Assau.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Mortars_Air_Assau: AEE_MarkerBase {
@@ -12390,6 +14159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Mortars_Air_Assau.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Mortars_Air_Assau.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Mortars_Air_Assau: AEE_MarkerBase {
@@ -12397,6 +14167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Mortars_Air_Assau.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Mortars_Air_Assau.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Mortars_Air_Assau: AEE_MarkerBase {
@@ -12404,6 +14175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Mortars_Air_Assau.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Mortars_Air_Assau.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Hostile_Unit_Naval: AEE_MarkerBase {
@@ -12411,6 +14183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Naval.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Hostile_Unit_Naval: AEE_MarkerBase {
@@ -12418,6 +14191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Naval.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Hostile_Unit_Naval: AEE_MarkerBase {
@@ -12425,6 +14199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Hostile_Unit_Naval: AEE_MarkerBase {
@@ -12432,6 +14207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Parachute: AEE_MarkerBase {
@@ -12439,6 +14215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Parachute.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Parachute: AEE_MarkerBase {
@@ -12446,6 +14223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Parachute.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Parachute: AEE_MarkerBase {
@@ -12453,6 +14231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Parachute: AEE_MarkerBase {
@@ -12460,6 +14239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -12467,6 +14247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Psychological_Ope.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -12474,6 +14255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Psychological_Ope.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -12481,6 +14263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Psychological_Ope.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -12488,6 +14271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Psychological_Ope.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Radar: AEE_MarkerBase {
@@ -12495,6 +14279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Radar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Radar: AEE_MarkerBase {
@@ -12502,6 +14287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Radar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Radar: AEE_MarkerBase {
@@ -12509,6 +14295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Radar: AEE_MarkerBase {
@@ -12516,6 +14303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Reconnaissance: AEE_MarkerBase {
@@ -12523,6 +14311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Reconnaissance: AEE_MarkerBase {
@@ -12530,6 +14319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Reconnaissance: AEE_MarkerBase {
@@ -12537,6 +14327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Reconnaissance: AEE_MarkerBase {
@@ -12544,6 +14335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12551,6 +14343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12558,6 +14351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12565,6 +14359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12572,6 +14367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12579,6 +14375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12586,6 +14383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12593,6 +14391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Reconnaissance_Ai: AEE_MarkerBase {
@@ -12600,6 +14399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Reconnaissance_Ai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Reconnaissance_Ai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Reconnaissance_Ai_2: AEE_MarkerBase {
@@ -12607,6 +14407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Reconnaissance_Ai_2: AEE_MarkerBase {
@@ -12614,6 +14415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Reconnaissance_Ai_2: AEE_MarkerBase {
@@ -12621,6 +14423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Reconnaissance_Ai_2: AEE_MarkerBase {
@@ -12628,6 +14431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Ai_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Reconnaissance_Am: AEE_MarkerBase {
@@ -12635,6 +14439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Am.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Reconnaissance_Am: AEE_MarkerBase {
@@ -12642,6 +14447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Am.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Reconnaissance_Am: AEE_MarkerBase {
@@ -12649,6 +14455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Am.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Reconnaissance_Am: AEE_MarkerBase {
@@ -12656,6 +14463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Am.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Am.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Reconnaissance_Fo: AEE_MarkerBase {
@@ -12663,6 +14471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Fo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Fo.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Reconnaissance_Fo: AEE_MarkerBase {
@@ -12670,6 +14479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Fo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Fo.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Reconnaissance_Fo: AEE_MarkerBase {
@@ -12677,6 +14487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Fo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Fo.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Reconnaissance_Fo: AEE_MarkerBase {
@@ -12684,6 +14495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Fo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Fo.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Reconnaissance_Li: AEE_MarkerBase {
@@ -12691,6 +14503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Li.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Li.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Reconnaissance_Li: AEE_MarkerBase {
@@ -12698,6 +14511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Li.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Li.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Reconnaissance_Li: AEE_MarkerBase {
@@ -12705,6 +14519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Li.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Li.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Reconnaissance_Li: AEE_MarkerBase {
@@ -12712,6 +14527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Li.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Li.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Reconnaissance_Mo: AEE_MarkerBase {
@@ -12719,6 +14535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Mo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Reconnaissance_Mo.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Reconnaissance_Mo: AEE_MarkerBase {
@@ -12726,6 +14543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Mo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Reconnaissance_Mo.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Reconnaissance_Mo: AEE_MarkerBase {
@@ -12733,6 +14551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Mo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Reconnaissance_Mo.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Reconnaissance_Mo: AEE_MarkerBase {
@@ -12740,6 +14559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Mo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Reconnaissance_Mo.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -12747,6 +14567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Signals_Electroni.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -12754,6 +14575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Signals_Electroni.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -12761,6 +14583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Signals_Electroni.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -12768,6 +14591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Signals_Electroni.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -12775,6 +14599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Signals_or_Commun.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -12782,6 +14607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Signals_or_Commun.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -12789,6 +14615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Signals_or_Commun.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -12796,6 +14623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Signals_or_Commun.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Sniper: AEE_MarkerBase {
@@ -12803,6 +14631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Sniper.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Sniper: AEE_MarkerBase {
@@ -12810,6 +14639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Sniper.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Sniper: AEE_MarkerBase {
@@ -12817,6 +14647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Sniper.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Sniper: AEE_MarkerBase {
@@ -12824,6 +14655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Sniper.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Sniper.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12831,6 +14663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Special_Operation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12838,6 +14671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Special_Operation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12845,6 +14679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12852,6 +14687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12859,6 +14695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12866,6 +14703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12873,6 +14711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12880,6 +14719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -12887,6 +14727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -12894,6 +14735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -12901,6 +14743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -12908,6 +14751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Special_Operation_3: AEE_MarkerBase {
@@ -12915,6 +14759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Special_Operation_3: AEE_MarkerBase {
@@ -12922,6 +14767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Special_Operation_3: AEE_MarkerBase {
@@ -12929,6 +14775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Special_Operation_3: AEE_MarkerBase {
@@ -12936,6 +14783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Special_Operation_4: AEE_MarkerBase {
@@ -12943,6 +14791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Special_Operation_4: AEE_MarkerBase {
@@ -12950,6 +14799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Special_Operation_4: AEE_MarkerBase {
@@ -12957,6 +14807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Special_Operation_4: AEE_MarkerBase {
@@ -12964,6 +14815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12971,6 +14823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Hostile_Unit_Special_Operation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12978,6 +14831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Hostile_Unit_Special_Operation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12985,6 +14839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Hostile_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Hostile_Unit_Special_Operation: AEE_MarkerBase {
@@ -12992,6 +14847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Hostile_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Special_Operation_5: AEE_MarkerBase {
@@ -12999,6 +14855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_5.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Special_Operation_5: AEE_MarkerBase {
@@ -13006,6 +14863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_5.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Special_Operation_5: AEE_MarkerBase {
@@ -13013,6 +14871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_5.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Special_Operation_5: AEE_MarkerBase {
@@ -13020,6 +14879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_5.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Special_Operation_6: AEE_MarkerBase {
@@ -13027,6 +14887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_6.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Special_Operation_6: AEE_MarkerBase {
@@ -13034,6 +14895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_6.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Special_Operation_6: AEE_MarkerBase {
@@ -13041,6 +14903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_6.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Special_Operation_6: AEE_MarkerBase {
@@ -13048,6 +14911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_6.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Hostile_Unit_Special_Operation_7: AEE_MarkerBase {
@@ -13055,6 +14919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Hostile_Unit_Special_Operation_7.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Hostile_Unit_Special_Operation_7: AEE_MarkerBase {
@@ -13062,6 +14927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Hostile_Unit_Special_Operation_7.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Hostile_Unit_Special_Operation_7: AEE_MarkerBase {
@@ -13069,6 +14935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Hostile_Unit_Special_Operation_7.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Hostile_Unit_Special_Operation_7: AEE_MarkerBase {
@@ -13076,6 +14943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Hostile_Unit_Special_Operation_7.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Hostile_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -13083,6 +14951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Hostile_Unit_Unmanned_Aerial_V.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Hostile_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -13090,6 +14959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Hostile_Unit_Unmanned_Aerial_V.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Hostile_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -13097,6 +14967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Hostile_Unit_Unmanned_Aerial_V.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Hostile_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -13104,6 +14975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Hostile_Unit_Unmanned_Aerial_V.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_Combat_Service_Support: AEE_MarkerBase {
@@ -13111,6 +14983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Combat_Service_Support.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Combat_Service_Support: AEE_MarkerBase {
@@ -13118,6 +14991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Combat_Service_Support.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Combat_Service_Support: AEE_MarkerBase {
@@ -13125,6 +14999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Combat_Service_Support.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Combat_Service_Support: AEE_MarkerBase {
@@ -13132,6 +15007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Combat_Service_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Combat_Service_Support.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Electronic_Warfare: AEE_MarkerBase {
@@ -13139,6 +15015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Electronic_Warfare.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Electronic_Warfare: AEE_MarkerBase {
@@ -13146,6 +15023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Electronic_Warfare.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Electronic_Warfare: AEE_MarkerBase {
@@ -13153,6 +15031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Electronic_Warfare.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Electronic_Warfare: AEE_MarkerBase {
@@ -13160,6 +15039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Electronic_Warfare.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Electronic_Warfare.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence: AEE_MarkerBase {
@@ -13167,6 +15047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence: AEE_MarkerBase {
@@ -13174,6 +15055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence: AEE_MarkerBase {
@@ -13181,6 +15063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence: AEE_MarkerBase {
@@ -13188,6 +15071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -13195,6 +15079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Anti.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -13202,6 +15087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Anti.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -13209,6 +15095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Anti.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Anti: AEE_MarkerBase {
@@ -13216,6 +15103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Anti.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Anti.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -13223,6 +15111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Close.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -13230,6 +15119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Close.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -13237,6 +15127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Close.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Close: AEE_MarkerBase {
@@ -13244,6 +15135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Close.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Close.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -13251,6 +15143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Guns.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -13258,6 +15151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Guns.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -13265,6 +15159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Guns.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Guns: AEE_MarkerBase {
@@ -13272,6 +15167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Guns.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Guns.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -13279,6 +15175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Mecha.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -13286,6 +15183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Mecha.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -13293,6 +15191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Mecha.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Mecha: AEE_MarkerBase {
@@ -13300,6 +15199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Mecha.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Mecha.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -13307,6 +15207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -13314,6 +15215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -13321,6 +15223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Mecha_2: AEE_MarkerBase {
@@ -13328,6 +15231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Mecha_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -13335,6 +15239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Missi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -13342,6 +15247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Missi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -13349,6 +15255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Missi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Missi: AEE_MarkerBase {
@@ -13356,6 +15263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Missi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Missi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -13363,6 +15271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Missi_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -13370,6 +15279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Missi_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -13377,6 +15287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Missi_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Missi_2: AEE_MarkerBase {
@@ -13384,6 +15295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Missi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Missi_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -13391,6 +15303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Air_Defence_Artil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -13398,6 +15311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Air_Defence_Artil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -13405,6 +15319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Air_Defence_Artil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Air_Defence_Artil: AEE_MarkerBase {
@@ -13412,6 +15327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Artil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Air_Defence_Artil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Neutral_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -13419,6 +15335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Neutral_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Neutral_Unit_Air_Naval_Gunfire.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Neutral_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -13426,6 +15343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Neutral_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Neutral_Unit_Air_Naval_Gunfire.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Neutral_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -13433,6 +15351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Neutral_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Neutral_Unit_Air_Naval_Gunfire.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Neutral_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
@@ -13440,6 +15359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Neutral_Unit_Air_Naval_Gunfire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Neutral_Unit_Air_Naval_Gunfire.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFS_Neutral_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -13447,6 +15367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Neutral_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -13454,6 +15375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Neutral_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -13461,6 +15383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Neutral_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
@@ -13468,6 +15391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Neutral_Unit_Air_Naval_Gunfire_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -13475,6 +15399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Airborne_Forces.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -13482,6 +15407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Airborne_Forces.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -13489,6 +15415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Airborne_Forces.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Airborne_Forces: AEE_MarkerBase {
@@ -13496,6 +15423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Airborne_Forces.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Airborne_Forces.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Anti_Tank: AEE_MarkerBase {
@@ -13503,6 +15431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Anti_Tank: AEE_MarkerBase {
@@ -13510,6 +15439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Anti_Tank: AEE_MarkerBase {
@@ -13517,6 +15447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Anti_Tank: AEE_MarkerBase {
@@ -13524,6 +15455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -13531,6 +15463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Armoure.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -13538,6 +15471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Armoure.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -13545,6 +15479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Armoure.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Anti_Tank_Armoure: AEE_MarkerBase {
@@ -13552,6 +15487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Armoure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Armoure.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -13559,6 +15495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Missile.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -13566,6 +15503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Missile.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -13573,6 +15511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Missile.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Anti_Tank_Missile: AEE_MarkerBase {
@@ -13580,6 +15519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Missile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Missile.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -13587,6 +15527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -13594,6 +15535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -13601,6 +15543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Anti_Tank_Motoriz: AEE_MarkerBase {
@@ -13608,6 +15551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Motoriz.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -13615,6 +15559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -13622,6 +15567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -13629,6 +15575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Anti_Tank_Tank_De: AEE_MarkerBase {
@@ -13636,6 +15583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Tank_De.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -13643,6 +15591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -13650,6 +15599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -13657,6 +15607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Anti_Tank_Tank_De_2: AEE_MarkerBase {
@@ -13664,6 +15615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Tank_De_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -13671,6 +15623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Anti_Tank_Artille.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -13678,6 +15631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Anti_Tank_Artille.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -13685,6 +15639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Anti_Tank_Artille.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Anti_Tank_Artille: AEE_MarkerBase {
@@ -13692,6 +15647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Artille.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Anti_Tank_Artille.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -13699,6 +15655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Anti_tank_Aviatio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -13706,6 +15663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Anti_tank_Aviatio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -13713,6 +15671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Anti_tank_Aviatio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Anti_tank_Aviatio: AEE_MarkerBase {
@@ -13720,6 +15679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Anti_tank_Aviatio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Anti_tank_Aviatio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armour: AEE_MarkerBase {
@@ -13727,6 +15687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armour: AEE_MarkerBase {
@@ -13734,6 +15695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armour: AEE_MarkerBase {
@@ -13741,6 +15703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armour: AEE_MarkerBase {
@@ -13748,6 +15711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -13755,6 +15719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Amphibious.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -13762,6 +15727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Amphibious.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -13769,6 +15735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Amphibious.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armour_Amphibious: AEE_MarkerBase {
@@ -13776,6 +15743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Amphibious.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Amphibious.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -13783,6 +15751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Amphibious_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -13790,6 +15759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Amphibious_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -13797,6 +15767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Amphibious_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armour_Amphibious_2: AEE_MarkerBase {
@@ -13804,6 +15775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Amphibious_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Amphibious_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -13811,6 +15783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Heavy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -13818,6 +15791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Heavy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -13825,6 +15799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armour_Heavy: AEE_MarkerBase {
@@ -13832,6 +15807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armour_Light: AEE_MarkerBase {
@@ -13839,6 +15815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Light.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armour_Light: AEE_MarkerBase {
@@ -13846,6 +15823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Light.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armour_Light: AEE_MarkerBase {
@@ -13853,6 +15831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Light.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armour_Light: AEE_MarkerBase {
@@ -13860,6 +15839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Light.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armour_Medium: AEE_MarkerBase {
@@ -13867,6 +15847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Medium.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armour_Medium: AEE_MarkerBase {
@@ -13874,6 +15855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Medium.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armour_Medium: AEE_MarkerBase {
@@ -13881,6 +15863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Medium.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armour_Medium: AEE_MarkerBase {
@@ -13888,6 +15871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Medium.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -13895,6 +15879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -13902,6 +15887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -13909,6 +15895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armour_Wheeled_Ag: AEE_MarkerBase {
@@ -13916,6 +15903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armour_Wheeled_Ag.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -13923,6 +15911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -13930,6 +15919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -13937,6 +15927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armoured_Reconnai: AEE_MarkerBase {
@@ -13944,6 +15935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -13951,6 +15943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -13958,6 +15951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -13965,6 +15959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armoured_Reconnai_2: AEE_MarkerBase {
@@ -13972,6 +15967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -13979,6 +15975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -13986,6 +15983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -13993,6 +15991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armoured_Reconnai_3: AEE_MarkerBase {
@@ -14000,6 +15999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -14007,6 +16007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Armoured_Reconnai_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -14014,6 +16015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Armoured_Reconnai_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -14021,6 +16023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Armoured_Reconnai_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Armoured_Reconnai_4: AEE_MarkerBase {
@@ -14028,6 +16031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Armoured_Reconnai_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery: AEE_MarkerBase {
@@ -14035,6 +16039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery: AEE_MarkerBase {
@@ -14042,6 +16047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery: AEE_MarkerBase {
@@ -14049,6 +16055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery: AEE_MarkerBase {
@@ -14056,6 +16063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -14063,6 +16071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Field_S.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -14070,6 +16079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Field_S.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -14077,6 +16087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Field_S.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Field_S: AEE_MarkerBase {
@@ -14084,6 +16095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Field_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Field_S.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -14091,6 +16103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Field_S_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -14098,6 +16111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Field_S_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -14105,6 +16119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Field_S_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Field_S_2: AEE_MarkerBase {
@@ -14112,6 +16127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Field_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Field_S_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -14119,6 +16135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Heavy.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -14126,6 +16143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Heavy.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -14133,6 +16151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Heavy: AEE_MarkerBase {
@@ -14140,6 +16159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Heavy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Heavy.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Light: AEE_MarkerBase {
@@ -14147,6 +16167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Light.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Light: AEE_MarkerBase {
@@ -14154,6 +16175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Light.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Light: AEE_MarkerBase {
@@ -14161,6 +16183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Light.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Light: AEE_MarkerBase {
@@ -14168,6 +16191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Light.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Light.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -14175,6 +16199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Mechani.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -14182,6 +16207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Mechani.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -14189,6 +16215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Mechani: AEE_MarkerBase {
@@ -14196,6 +16223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Mechani.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Mechani.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -14203,6 +16231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Medium.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -14210,6 +16239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Medium.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -14217,6 +16247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Medium.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Medium: AEE_MarkerBase {
@@ -14224,6 +16255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Medium.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Medium.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -14231,6 +16263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Mountai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -14238,6 +16271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Mountai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -14245,6 +16279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Mountai: AEE_MarkerBase {
@@ -14252,6 +16287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Mountai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Mountai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -14259,6 +16295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Observa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -14266,6 +16303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Observa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -14273,6 +16311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Observa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Observa: AEE_MarkerBase {
@@ -14280,6 +16319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Observa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Observa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -14287,6 +16327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Reconna.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -14294,6 +16335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Reconna.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -14301,6 +16343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Reconna: AEE_MarkerBase {
@@ -14308,6 +16351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Reconna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Reconna.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -14315,6 +16359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Rocket.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -14322,6 +16367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Rocket.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -14329,6 +16375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Rocket: AEE_MarkerBase {
@@ -14336,6 +16383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Rocket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Rocket.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -14343,6 +16391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Rocket_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -14350,6 +16399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Rocket_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -14357,6 +16407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Rocket_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Rocket_2: AEE_MarkerBase {
@@ -14364,6 +16415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Rocket_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Rocket_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -14371,6 +16423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Rocket_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -14378,6 +16431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Rocket_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -14385,6 +16439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Rocket_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Rocket_3: AEE_MarkerBase {
@@ -14392,6 +16447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Rocket_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Rocket_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Target: AEE_MarkerBase {
@@ -14399,6 +16455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Target.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Target: AEE_MarkerBase {
@@ -14406,6 +16463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Target.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Target: AEE_MarkerBase {
@@ -14413,6 +16471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Target.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Target: AEE_MarkerBase {
@@ -14420,6 +16479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Target.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Target.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -14427,6 +16487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Artillery_Target_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -14434,6 +16495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Artillery_Target_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -14441,6 +16503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Artillery_Target_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Artillery_Target_2: AEE_MarkerBase {
@@ -14448,6 +16511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Target_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Artillery_Target_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation: AEE_MarkerBase {
@@ -14455,6 +16519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation: AEE_MarkerBase {
@@ -14462,6 +16527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation: AEE_MarkerBase {
@@ -14469,6 +16535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation: AEE_MarkerBase {
@@ -14476,6 +16543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -14483,6 +16551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Attack.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -14490,6 +16559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Attack.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -14497,6 +16567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Attack.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation_Attack: AEE_MarkerBase {
@@ -14504,6 +16575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Attack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Attack.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -14511,6 +16583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Cargo.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -14518,6 +16591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Cargo.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -14525,6 +16599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Cargo.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation_Cargo: AEE_MarkerBase {
@@ -14532,6 +16607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Cargo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Cargo.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -14539,6 +16615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -14546,6 +16623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -14553,6 +16631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation_Fixed_Wi: AEE_MarkerBase {
@@ -14560,6 +16639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Fixed_Wi.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -14567,6 +16647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -14574,6 +16655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -14581,6 +16663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation_Fixed_Wi_2: AEE_MarkerBase {
@@ -14588,6 +16671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Fixed_Wi_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -14595,6 +16679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Fixed_an.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -14602,6 +16687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Fixed_an.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -14609,6 +16695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Fixed_an.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation_Fixed_an: AEE_MarkerBase {
@@ -14616,6 +16703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Fixed_an.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Fixed_an.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -14623,6 +16711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Reconnai.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -14630,6 +16719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Reconnai.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -14637,6 +16727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation_Reconnai: AEE_MarkerBase {
@@ -14644,6 +16735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Reconnai.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Reconnai.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -14651,6 +16743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Aviation_Utility.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -14658,6 +16751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Aviation_Utility.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -14665,6 +16759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Aviation_Utility.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Aviation_Utility: AEE_MarkerBase {
@@ -14672,6 +16767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Utility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Aviation_Utility.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CBRN: AEE_MarkerBase {
@@ -14679,6 +16775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CBRN.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CBRN: AEE_MarkerBase {
@@ -14686,6 +16783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CBRN.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CBRN: AEE_MarkerBase {
@@ -14693,6 +16791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CBRN: AEE_MarkerBase {
@@ -14700,6 +16799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -14707,6 +16807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Ammunition.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -14714,6 +16815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Ammunition.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -14721,6 +16823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Ammunition: AEE_MarkerBase {
@@ -14728,6 +16831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Ammunition.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Ammunition.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -14735,6 +16839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_CSS_Aviation_Main.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -14742,6 +16847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_CSS_Aviation_Main.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -14749,6 +16855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_CSS_Aviation_Main.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_CSS_Aviation_Main: AEE_MarkerBase {
@@ -14756,6 +16863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_CSS_Aviation_Main.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_CSS_Aviation_Main.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -14763,6 +16871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Combat_Servic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -14770,6 +16879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Combat_Servic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -14777,6 +16887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Combat_Servic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Combat_Servic: AEE_MarkerBase {
@@ -14784,6 +16895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Combat_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Combat_Servic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -14791,6 +16903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -14798,6 +16911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -14805,6 +16919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Finance_or_Pa: AEE_MarkerBase {
@@ -14812,6 +16927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Finance_or_Pa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -14819,6 +16935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Food_Services.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -14826,6 +16943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Food_Services.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -14833,6 +16951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Food_Services.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Food_Services: AEE_MarkerBase {
@@ -14840,6 +16959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Food_Services.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Food_Services.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Labour: AEE_MarkerBase {
@@ -14847,6 +16967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Labour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Labour: AEE_MarkerBase {
@@ -14854,6 +16975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Labour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Labour: AEE_MarkerBase {
@@ -14861,6 +16983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Labour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Labour: AEE_MarkerBase {
@@ -14868,6 +16991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Labour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Labour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -14875,6 +16999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Labour_Pionee.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -14882,6 +17007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Labour_Pionee.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -14889,6 +17015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Labour_Pionee.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Labour_Pionee: AEE_MarkerBase {
@@ -14896,6 +17023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Labour_Pionee.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Labour_Pionee.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -14903,6 +17031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Laundry_and_B.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -14910,6 +17039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Laundry_and_B.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -14917,6 +17047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Laundry_and_B.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Laundry_and_B: AEE_MarkerBase {
@@ -14924,6 +17055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Laundry_and_B.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Laundry_and_B.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -14931,6 +17063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -14938,6 +17071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -14945,6 +17079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Laundry_and_B_2: AEE_MarkerBase {
@@ -14952,6 +17087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Laundry_and_B_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -14959,6 +17095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Maintenance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -14966,6 +17103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Maintenance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -14973,6 +17111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Maintenance: AEE_MarkerBase {
@@ -14980,6 +17119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Maintenance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Maintenance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -14987,6 +17127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Ordnance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -14994,6 +17135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Ordnance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -15001,6 +17143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Ordnance: AEE_MarkerBase {
@@ -15008,6 +17151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Ordnance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Ordnance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -15015,6 +17159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Personnel_Ser.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -15022,6 +17167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Personnel_Ser.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -15029,6 +17175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Personnel_Ser.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Personnel_Ser: AEE_MarkerBase {
@@ -15036,6 +17183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Personnel_Ser.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Personnel_Ser.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -15043,6 +17191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -15050,6 +17199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -15057,6 +17207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
@@ -15064,6 +17215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Petroleum_Oil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -15071,6 +17223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Postal_Servic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -15078,6 +17231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Postal_Servic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -15085,6 +17239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Postal_Servic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Postal_Servic: AEE_MarkerBase {
@@ -15092,6 +17247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Postal_Servic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Postal_Servic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Supply: AEE_MarkerBase {
@@ -15099,6 +17255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Supply.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Supply: AEE_MarkerBase {
@@ -15106,6 +17263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Supply.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Supply: AEE_MarkerBase {
@@ -15113,6 +17271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Supply.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Supply: AEE_MarkerBase {
@@ -15120,6 +17279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Supply.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -15127,6 +17287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Supply_Transp.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -15134,6 +17295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Supply_Transp.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -15141,6 +17303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Supply_Transp.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Supply_Transp: AEE_MarkerBase {
@@ -15148,6 +17311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Supply_Transp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Supply_Transp.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Transport: AEE_MarkerBase {
@@ -15155,6 +17319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Transport.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Transport: AEE_MarkerBase {
@@ -15162,6 +17327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Transport.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Transport: AEE_MarkerBase {
@@ -15169,6 +17335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Transport.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Transport: AEE_MarkerBase {
@@ -15176,6 +17343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Transport.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Transport.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -15183,6 +17351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Transport_Amp.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -15190,6 +17359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Transport_Amp.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -15197,6 +17367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Transport_Amp.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Transport_Amp: AEE_MarkerBase {
@@ -15204,6 +17375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Transport_Amp.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Transport_Amp.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -15211,6 +17383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_CSS_Water_Supply.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -15218,6 +17391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_CSS_Water_Supply.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -15225,6 +17399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_CSS_Water_Supply.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_CSS_Water_Supply: AEE_MarkerBase {
@@ -15232,6 +17407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Water_Supply.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_CSS_Water_Supply.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Civil_Police: AEE_MarkerBase {
@@ -15239,6 +17415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Civil_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Civil_Police.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Civil_Police: AEE_MarkerBase {
@@ -15246,6 +17423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Civil_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Civil_Police.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Civil_Police: AEE_MarkerBase {
@@ -15253,6 +17431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Civil_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Civil_Police.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Civil_Police: AEE_MarkerBase {
@@ -15260,6 +17439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Civil_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Civil_Police.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Combat_Support: AEE_MarkerBase {
@@ -15267,6 +17447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Combat_Support.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Combat_Support: AEE_MarkerBase {
@@ -15274,6 +17455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Combat_Support.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Combat_Support: AEE_MarkerBase {
@@ -15281,6 +17463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Combat_Support.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Combat_Support: AEE_MarkerBase {
@@ -15288,6 +17471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Combat_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Combat_Support.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -15295,6 +17479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Combined_Manoeuvr.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -15302,6 +17487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Combined_Manoeuvr.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -15309,6 +17495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Combined_Manoeuvr.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Combined_Manoeuvr: AEE_MarkerBase {
@@ -15316,6 +17503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Combined_Manoeuvr.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Combined_Manoeuvr.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -15323,6 +17511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Electronic_Warfar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -15330,6 +17519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Electronic_Warfar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -15337,6 +17527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Electronic_Warfar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Electronic_Warfar: AEE_MarkerBase {
@@ -15344,6 +17535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Electronic_Warfar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Electronic_Warfar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -15351,6 +17543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Electronic_Warfar_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -15358,6 +17551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Electronic_Warfar_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -15365,6 +17559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Electronic_Warfar_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Electronic_Warfar_2: AEE_MarkerBase {
@@ -15372,6 +17567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Electronic_Warfar_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Electronic_Warfar_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -15379,6 +17575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Explosive_Ordnanc.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -15386,6 +17583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Explosive_Ordnanc.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -15393,6 +17591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Explosive_Ordnanc.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Explosive_Ordnanc: AEE_MarkerBase {
@@ -15400,6 +17599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Explosive_Ordnanc.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Explosive_Ordnanc.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -15407,6 +17607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Gendarmerie_or_In.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -15414,6 +17615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Gendarmerie_or_In.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -15421,6 +17623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Gendarmerie_or_In.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Gendarmerie_or_In: AEE_MarkerBase {
@@ -15428,6 +17631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Gendarmerie_or_In.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Gendarmerie_or_In.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -15435,6 +17639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -15442,6 +17647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -15449,6 +17655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Gendarmerie_or_In_2: AEE_MarkerBase {
@@ -15456,6 +17663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Gendarmerie_or_In_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -15463,6 +17671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Headquarters_Serv.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -15470,6 +17679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Headquarters_Serv.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -15477,6 +17687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Headquarters_Serv.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Headquarters_Serv: AEE_MarkerBase {
@@ -15484,6 +17695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Headquarters_Serv.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Headquarters_Serv.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -15491,6 +17703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Headquarters_Sign.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -15498,6 +17711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Headquarters_Sign.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -15505,6 +17719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Headquarters_Sign.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Headquarters_Sign: AEE_MarkerBase {
@@ -15512,6 +17727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Headquarters_Sign.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Headquarters_Sign.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -15519,6 +17735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Headquarters_Unit.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -15526,6 +17743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Headquarters_Unit.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -15533,6 +17751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Headquarters_Unit.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Headquarters_Unit: AEE_MarkerBase {
@@ -15540,6 +17759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Headquarters_Unit.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Headquarters_Unit.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -15547,6 +17767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Horse_Cavalry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -15554,6 +17775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Horse_Cavalry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -15561,6 +17783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Horse_Cavalry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Horse_Cavalry: AEE_MarkerBase {
@@ -15568,6 +17791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Horse_Cavalry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Horse_Cavalry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -15575,6 +17799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Horse_Reconnaissa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -15582,6 +17807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Horse_Reconnaissa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -15589,6 +17815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Horse_Reconnaissa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Horse_Reconnaissa: AEE_MarkerBase {
@@ -15596,6 +17823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Horse_Reconnaissa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Horse_Reconnaissa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry: AEE_MarkerBase {
@@ -15603,6 +17831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry: AEE_MarkerBase {
@@ -15610,6 +17839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry: AEE_MarkerBase {
@@ -15617,6 +17847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry: AEE_MarkerBase {
@@ -15624,6 +17855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -15631,6 +17863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Air_Assa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -15638,6 +17871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Air_Assa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -15645,6 +17879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Air_Assa: AEE_MarkerBase {
@@ -15652,6 +17887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -15659,6 +17895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Infantry_Airborne.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -15666,6 +17903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Infantry_Airborne.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -15673,6 +17911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Infantry_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Infantry_Airborne: AEE_MarkerBase {
@@ -15680,6 +17919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Infantry_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Infantry_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -15687,6 +17927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Infantry_Airborne_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -15694,6 +17935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Infantry_Airborne_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -15701,6 +17943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Infantry_Airborne_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Infantry_Airborne_2: AEE_MarkerBase {
@@ -15708,6 +17951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Infantry_Airborne_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Infantry_Airborne_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -15715,6 +17959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Airmobil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -15722,6 +17967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Airmobil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -15729,6 +17975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Airmobil: AEE_MarkerBase {
@@ -15736,6 +17983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -15743,6 +17991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Amphibio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -15750,6 +17999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Amphibio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -15757,6 +18007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Amphibio: AEE_MarkerBase {
@@ -15764,6 +18015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -15771,6 +18023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Amphibio_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -15778,6 +18031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Amphibio_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -15785,6 +18039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Amphibio_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Amphibio_2: AEE_MarkerBase {
@@ -15792,6 +18047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Amphibio_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Amphibio_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -15799,6 +18055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Arctic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -15806,6 +18063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Arctic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -15813,6 +18071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Arctic: AEE_MarkerBase {
@@ -15820,6 +18079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Arctic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Arctic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -15827,6 +18087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Armoured.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -15834,6 +18095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Armoured.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -15841,6 +18103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Armoured.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Armoured: AEE_MarkerBase {
@@ -15848,6 +18111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Armoured.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Armoured.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -15855,6 +18119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Combat_S.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -15862,6 +18127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Combat_S.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -15869,6 +18135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Combat_S.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Combat_S: AEE_MarkerBase {
@@ -15876,6 +18143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Combat_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Combat_S.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -15883,6 +18151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Combat_S_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -15890,6 +18159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Combat_S_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -15897,6 +18167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Combat_S_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Combat_S_2: AEE_MarkerBase {
@@ -15904,6 +18175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Combat_S_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Combat_S_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -15911,6 +18183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Infantry_Heavy_We.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -15918,6 +18191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Infantry_Heavy_We.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -15925,6 +18199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Infantry_Heavy_We.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Infantry_Heavy_We: AEE_MarkerBase {
@@ -15932,6 +18207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Heavy_We.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Infantry_Heavy_We.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Medical: AEE_MarkerBase {
@@ -15939,6 +18215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Medical.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Medical: AEE_MarkerBase {
@@ -15946,6 +18223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Medical.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Medical: AEE_MarkerBase {
@@ -15953,6 +18231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Medical: AEE_MarkerBase {
@@ -15960,6 +18239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -15967,6 +18247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Medical_Hospital.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -15974,6 +18255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Medical_Hospital.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -15981,6 +18263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Medical_Hospital.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Medical_Hospital: AEE_MarkerBase {
@@ -15988,6 +18271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Medical_Hospital.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Medical_Hospital.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -15995,6 +18279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Meteorological_Se.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -16002,6 +18287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Meteorological_Se.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -16009,6 +18295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Meteorological_Se.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Meteorological_Se: AEE_MarkerBase {
@@ -16016,6 +18303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Meteorological_Se.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Meteorological_Se.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Military_Engineer: AEE_MarkerBase {
@@ -16023,6 +18311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Engineer.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Military_Engineer: AEE_MarkerBase {
@@ -16030,6 +18319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Engineer.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Military_Engineer: AEE_MarkerBase {
@@ -16037,6 +18327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Military_Engineer: AEE_MarkerBase {
@@ -16044,6 +18335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Engineer.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Engineer.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -16051,6 +18343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Engineer_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -16058,6 +18351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Engineer_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -16065,6 +18359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Engineer_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Military_Engineer_2: AEE_MarkerBase {
@@ -16072,6 +18367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Engineer_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Engineer_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -16079,6 +18375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Geomatic.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -16086,6 +18383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Geomatic.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -16093,6 +18391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Geomatic.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Military_Geomatic: AEE_MarkerBase {
@@ -16100,6 +18399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Geomatic.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Geomatic.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Military_Police: AEE_MarkerBase {
@@ -16107,6 +18407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Military_Police.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Military_Police: AEE_MarkerBase {
@@ -16114,6 +18415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Military_Police.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Military_Police: AEE_MarkerBase {
@@ -16121,6 +18423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Military_Police.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Military_Police: AEE_MarkerBase {
@@ -16128,6 +18431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Police.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Military_Police.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -16135,6 +18439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Missile_Surface_t.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -16142,6 +18447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Missile_Surface_t.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -16149,6 +18455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Missile_Surface_t.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Missile_Surface_t: AEE_MarkerBase {
@@ -16156,6 +18463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Missile_Surface_t.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Missile_Surface_t.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -16163,6 +18471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Air_Assa.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -16170,6 +18479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Air_Assa.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -16177,6 +18487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Modifier_Air_Assa: AEE_MarkerBase {
@@ -16184,6 +18495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Air_Assa.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Air_Assa.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -16191,6 +18503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Modifier_Airborne.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -16198,6 +18511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Modifier_Airborne.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -16205,6 +18519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Modifier_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Modifier_Airborne: AEE_MarkerBase {
@@ -16212,6 +18527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Modifier_Airborne.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Modifier_Airborne.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -16219,6 +18535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Airmobil.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -16226,6 +18543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Airmobil.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -16233,6 +18551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Modifier_Airmobil: AEE_MarkerBase {
@@ -16240,6 +18559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Airmobil.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Airmobil.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -16247,6 +18567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Amphibio.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -16254,6 +18575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Amphibio.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -16261,6 +18583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Modifier_Amphibio: AEE_MarkerBase {
@@ -16268,6 +18591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Amphibio.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Amphibio.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -16275,6 +18599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Gun_Syst.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -16282,6 +18607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Gun_Syst.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -16289,6 +18615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Gun_Syst.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Modifier_Gun_Syst: AEE_MarkerBase {
@@ -16296,6 +18623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Gun_Syst.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Gun_Syst.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -16303,6 +18631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Motorize.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -16310,6 +18639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Motorize.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -16317,6 +18647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Motorize.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Modifier_Motorize: AEE_MarkerBase {
@@ -16324,6 +18655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Motorize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Motorize.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -16331,6 +18663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Mountain.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -16338,6 +18671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Mountain.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -16345,6 +18679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Modifier_Mountain: AEE_MarkerBase {
@@ -16352,6 +18687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Mountain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Mountain.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -16359,6 +18695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Modifier_Wheeled.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -16366,6 +18703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Modifier_Wheeled.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -16373,6 +18711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Modifier_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Modifier_Wheeled: AEE_MarkerBase {
@@ -16380,6 +18719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Wheeled.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Modifier_Wheeled.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Mortars: AEE_MarkerBase {
@@ -16387,6 +18727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Mortars.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Mortars: AEE_MarkerBase {
@@ -16394,6 +18735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Mortars.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Mortars: AEE_MarkerBase {
@@ -16401,6 +18743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Mortars: AEE_MarkerBase {
@@ -16408,6 +18751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Neutral_Unit_Naval: AEE_MarkerBase {
@@ -16415,6 +18759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Neutral_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Neutral_Unit_Naval.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Neutral_Unit_Naval: AEE_MarkerBase {
@@ -16422,6 +18767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Neutral_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Neutral_Unit_Naval.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Neutral_Unit_Naval: AEE_MarkerBase {
@@ -16429,6 +18775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Neutral_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Neutral_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Neutral_Unit_Naval: AEE_MarkerBase {
@@ -16436,6 +18783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Neutral_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Neutral_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Parachute: AEE_MarkerBase {
@@ -16443,6 +18791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Parachute.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Parachute: AEE_MarkerBase {
@@ -16450,6 +18799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Parachute.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Parachute: AEE_MarkerBase {
@@ -16457,6 +18807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Parachute: AEE_MarkerBase {
@@ -16464,6 +18815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -16471,6 +18823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Psychological_Ope.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -16478,6 +18831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Psychological_Ope.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -16485,6 +18839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Psychological_Ope.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Psychological_Ope: AEE_MarkerBase {
@@ -16492,6 +18847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Psychological_Ope.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Psychological_Ope.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Radar: AEE_MarkerBase {
@@ -16499,6 +18855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Radar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Radar: AEE_MarkerBase {
@@ -16506,6 +18863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Radar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Radar: AEE_MarkerBase {
@@ -16513,6 +18871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Radar: AEE_MarkerBase {
@@ -16520,6 +18879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Reconnaissance: AEE_MarkerBase {
@@ -16527,6 +18887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Reconnaissance.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Reconnaissance: AEE_MarkerBase {
@@ -16534,6 +18895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Reconnaissance.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Reconnaissance: AEE_MarkerBase {
@@ -16541,6 +18903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Reconnaissance: AEE_MarkerBase {
@@ -16548,6 +18911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Reconnaissance.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Reconnaissance.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -16555,6 +18919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Signals_Electroni.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -16562,6 +18927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Signals_Electroni.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -16569,6 +18935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Signals_Electroni.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Signals_Electroni: AEE_MarkerBase {
@@ -16576,6 +18943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Signals_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Signals_Electroni.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -16583,6 +18951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Signals_or_Commun.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -16590,6 +18959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Signals_or_Commun.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -16597,6 +18967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Signals_or_Commun.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Signals_or_Commun: AEE_MarkerBase {
@@ -16604,6 +18975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Signals_or_Commun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Signals_or_Commun.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Special_Operation: AEE_MarkerBase {
@@ -16611,6 +18983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Special_Operation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Special_Operation: AEE_MarkerBase {
@@ -16618,6 +18991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Special_Operation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Special_Operation: AEE_MarkerBase {
@@ -16625,6 +18999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Special_Operation: AEE_MarkerBase {
@@ -16632,6 +19007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Special_Operation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Special_Operation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Neutral_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -16639,6 +19015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_Unit_Special_Operation_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -16646,6 +19023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_Unit_Special_Operation_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -16653,6 +19031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_Unit_Special_Operation_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_Unit_Special_Operation_2: AEE_MarkerBase {
@@ -16660,6 +19039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Special_Operation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_Unit_Special_Operation_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Neutral_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -16667,6 +19047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Neutral_Unit_Unmanned_Aerial_V.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Neutral_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -16674,6 +19055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Neutral_Unit_Unmanned_Aerial_V.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Neutral_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -16681,6 +19063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Neutral_Unit_Unmanned_Aerial_V.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Neutral_Unit_Unmanned_Aerial_V: AEE_MarkerBase {
@@ -16688,6 +19071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Unmanned_Aerial_V.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Neutral_Unit_Unmanned_Aerial_V.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Neutral_or_Unaligned_Headquart: AEE_MarkerBase {
@@ -16695,6 +19079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_or_Unaligned_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Neutral_or_Unaligned_Headquart.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Neutral_or_Unaligned_Headquart: AEE_MarkerBase {
@@ -16702,6 +19087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_or_Unaligned_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Neutral_or_Unaligned_Headquart.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Neutral_or_Unaligned_Headquart: AEE_MarkerBase {
@@ -16709,6 +19095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_or_Unaligned_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Neutral_or_Unaligned_Headquart.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Neutral_or_Unaligned_Headquart: AEE_MarkerBase {
@@ -16716,6 +19103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_or_Unaligned_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Neutral_or_Unaligned_Headquart.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Air_Defen: AEE_MarkerBase {
@@ -16723,6 +19111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Air_Defen.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Air_Defen.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Air_Defen: AEE_MarkerBase {
@@ -16730,6 +19119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Air_Defen.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Air_Defen.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Air_Defen: AEE_MarkerBase {
@@ -16737,6 +19127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Air_Defen.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Air_Defen.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Air_Defen: AEE_MarkerBase {
@@ -16744,6 +19135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Air_Defen.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Air_Defen.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Anti_Tank: AEE_MarkerBase {
@@ -16751,6 +19143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Anti_Tank.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Anti_Tank: AEE_MarkerBase {
@@ -16758,6 +19151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Anti_Tank.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Anti_Tank: AEE_MarkerBase {
@@ -16765,6 +19159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Anti_Tank: AEE_MarkerBase {
@@ -16772,6 +19167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Anti_Tank.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Anti_Tank.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Armour: AEE_MarkerBase {
@@ -16779,6 +19175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Armour.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Armour: AEE_MarkerBase {
@@ -16786,6 +19183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Armour.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Armour: AEE_MarkerBase {
@@ -16793,6 +19191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Armour: AEE_MarkerBase {
@@ -16800,6 +19199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Armour.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Armour.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Artillery: AEE_MarkerBase {
@@ -16807,6 +19207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Artillery.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Artillery: AEE_MarkerBase {
@@ -16814,6 +19215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Artillery.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Artillery: AEE_MarkerBase {
@@ -16821,6 +19223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Artillery: AEE_MarkerBase {
@@ -16828,6 +19231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Artillery.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Artillery.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Unknown_Aligned_Unit_Aviation: AEE_MarkerBase {
@@ -16835,6 +19239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Aviation.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Unknown_Aligned_Unit_Aviation: AEE_MarkerBase {
@@ -16842,6 +19247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Aviation.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Unknown_Aligned_Unit_Aviation: AEE_MarkerBase {
@@ -16849,6 +19255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Unknown_Aligned_Unit_Aviation: AEE_MarkerBase {
@@ -16856,6 +19263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Aviation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Aviation.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFA_Unknown_Aligned_Unit_Aviation_2: AEE_MarkerBase {
@@ -16863,6 +19271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Aviation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Aviation_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Unknown_Aligned_Unit_Aviation_2: AEE_MarkerBase {
@@ -16870,6 +19279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Aviation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Aviation_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Unknown_Aligned_Unit_Aviation_2: AEE_MarkerBase {
@@ -16877,6 +19287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Aviation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Aviation_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Unknown_Aligned_Unit_Aviation_2: AEE_MarkerBase {
@@ -16884,6 +19295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Aviation_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Aviation_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CBRN: AEE_MarkerBase {
@@ -16891,6 +19303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CBRN.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CBRN: AEE_MarkerBase {
@@ -16898,6 +19311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CBRN.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CBRN: AEE_MarkerBase {
@@ -16905,6 +19319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CBRN: AEE_MarkerBase {
@@ -16912,6 +19327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CBRN.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CBRN.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CSS_Ammun: AEE_MarkerBase {
@@ -16919,6 +19335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CSS_Ammun: AEE_MarkerBase {
@@ -16926,6 +19343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CSS_Ammun: AEE_MarkerBase {
@@ -16933,6 +19351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CSS_Ammun: AEE_MarkerBase {
@@ -16940,6 +19359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Ammun.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CSS_Comba: AEE_MarkerBase {
@@ -16947,6 +19367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Comba.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Comba.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CSS_Comba: AEE_MarkerBase {
@@ -16954,6 +19375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Comba.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Comba.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CSS_Comba: AEE_MarkerBase {
@@ -16961,6 +19383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Comba.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Comba.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CSS_Comba: AEE_MarkerBase {
@@ -16968,6 +19391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Comba.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Comba.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CSS_Maint: AEE_MarkerBase {
@@ -16975,6 +19399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Maint.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Maint.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CSS_Maint: AEE_MarkerBase {
@@ -16982,6 +19407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Maint.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Maint.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CSS_Maint: AEE_MarkerBase {
@@ -16989,6 +19415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Maint.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Maint.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CSS_Maint: AEE_MarkerBase {
@@ -16996,6 +19423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Maint.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Maint.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CSS_Ordna: AEE_MarkerBase {
@@ -17003,6 +19431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CSS_Ordna: AEE_MarkerBase {
@@ -17010,6 +19439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CSS_Ordna: AEE_MarkerBase {
@@ -17017,6 +19447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CSS_Ordna: AEE_MarkerBase {
@@ -17024,6 +19455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Ordna.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CSS_Petro: AEE_MarkerBase {
@@ -17031,6 +19463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Petro.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CSS_Petro: AEE_MarkerBase {
@@ -17038,6 +19471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Petro.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CSS_Petro: AEE_MarkerBase {
@@ -17045,6 +19479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Petro.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CSS_Petro: AEE_MarkerBase {
@@ -17052,6 +19487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Petro.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Petro.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CSS_Suppl: AEE_MarkerBase {
@@ -17059,6 +19495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CSS_Suppl: AEE_MarkerBase {
@@ -17066,6 +19503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CSS_Suppl: AEE_MarkerBase {
@@ -17073,6 +19511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CSS_Suppl: AEE_MarkerBase {
@@ -17080,6 +19519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Suppl.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_CSS_Trans: AEE_MarkerBase {
@@ -17087,6 +19527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_CSS_Trans.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_CSS_Trans: AEE_MarkerBase {
@@ -17094,6 +19535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_CSS_Trans.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_CSS_Trans: AEE_MarkerBase {
@@ -17101,6 +19543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_CSS_Trans.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_CSS_Trans: AEE_MarkerBase {
@@ -17108,6 +19551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Trans.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_CSS_Trans.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Combined: AEE_MarkerBase {
@@ -17115,6 +19559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Combined.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Combined.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Combined: AEE_MarkerBase {
@@ -17122,6 +19567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Combined.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Combined.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Combined: AEE_MarkerBase {
@@ -17129,6 +19575,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Combined.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Combined.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Combined: AEE_MarkerBase {
@@ -17136,6 +19583,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Combined.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Combined.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Electroni: AEE_MarkerBase {
@@ -17143,6 +19591,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Electroni.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Electroni: AEE_MarkerBase {
@@ -17150,6 +19599,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Electroni.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Electroni: AEE_MarkerBase {
@@ -17157,6 +19607,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Electroni.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Electroni: AEE_MarkerBase {
@@ -17164,6 +19615,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Electroni.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Electroni.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Explosive: AEE_MarkerBase {
@@ -17171,6 +19623,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Explosive.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Explosive.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Explosive: AEE_MarkerBase {
@@ -17178,6 +19631,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Explosive.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Explosive.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Explosive: AEE_MarkerBase {
@@ -17185,6 +19639,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Explosive.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Explosive.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Explosive: AEE_MarkerBase {
@@ -17192,6 +19647,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Explosive.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Explosive.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Headquart: AEE_MarkerBase {
@@ -17199,6 +19655,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Headquart.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Headquart: AEE_MarkerBase {
@@ -17206,6 +19663,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Headquart.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Headquart: AEE_MarkerBase {
@@ -17213,6 +19671,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Headquart.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Headquart: AEE_MarkerBase {
@@ -17220,6 +19679,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Headquart.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Headquart.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Infantry: AEE_MarkerBase {
@@ -17227,6 +19687,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Infantry.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Infantry: AEE_MarkerBase {
@@ -17234,6 +19695,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Infantry.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Infantry: AEE_MarkerBase {
@@ -17241,6 +19703,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Infantry: AEE_MarkerBase {
@@ -17248,6 +19711,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Infantry.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Infantry.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Medical: AEE_MarkerBase {
@@ -17255,6 +19719,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Medical.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Medical: AEE_MarkerBase {
@@ -17262,6 +19727,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Medical.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Medical: AEE_MarkerBase {
@@ -17269,6 +19735,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Medical: AEE_MarkerBase {
@@ -17276,6 +19743,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Medical.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Medical.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Medical_H: AEE_MarkerBase {
@@ -17283,6 +19751,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Medical_H.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Medical_H.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Medical_H: AEE_MarkerBase {
@@ -17290,6 +19759,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Medical_H.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Medical_H.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Medical_H: AEE_MarkerBase {
@@ -17297,6 +19767,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Medical_H.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Medical_H.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Medical_H: AEE_MarkerBase {
@@ -17304,6 +19775,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Medical_H.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Medical_H.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Meteorolo: AEE_MarkerBase {
@@ -17311,6 +19783,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Meteorolo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Meteorolo.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Meteorolo: AEE_MarkerBase {
@@ -17318,6 +19791,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Meteorolo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Meteorolo.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Meteorolo: AEE_MarkerBase {
@@ -17325,6 +19799,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Meteorolo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Meteorolo.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Meteorolo: AEE_MarkerBase {
@@ -17332,6 +19807,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Meteorolo.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Meteorolo.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Military: AEE_MarkerBase {
@@ -17339,6 +19815,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Military: AEE_MarkerBase {
@@ -17346,6 +19823,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Military: AEE_MarkerBase {
@@ -17353,6 +19831,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Military: AEE_MarkerBase {
@@ -17360,6 +19839,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Military_2: AEE_MarkerBase {
@@ -17367,6 +19847,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Military_2: AEE_MarkerBase {
@@ -17374,6 +19855,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Military_2: AEE_MarkerBase {
@@ -17381,6 +19863,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Military_2: AEE_MarkerBase {
@@ -17388,6 +19871,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Military_3: AEE_MarkerBase {
@@ -17395,6 +19879,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Military_3: AEE_MarkerBase {
@@ -17402,6 +19887,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Military_3: AEE_MarkerBase {
@@ -17409,6 +19895,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Military_3: AEE_MarkerBase {
@@ -17416,6 +19903,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Military_4: AEE_MarkerBase {
@@ -17423,6 +19911,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Military_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Military_4: AEE_MarkerBase {
@@ -17430,6 +19919,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Military_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Military_4: AEE_MarkerBase {
@@ -17437,6 +19927,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Military_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Military_4: AEE_MarkerBase {
@@ -17444,6 +19935,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Military_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Missile_S: AEE_MarkerBase {
@@ -17451,6 +19943,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Missile_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Missile_S.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Missile_S: AEE_MarkerBase {
@@ -17458,6 +19951,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Missile_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Missile_S.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Missile_S: AEE_MarkerBase {
@@ -17465,6 +19959,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Missile_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Missile_S.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Missile_S: AEE_MarkerBase {
@@ -17472,6 +19967,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Missile_S.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Missile_S.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17479,6 +19975,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17486,6 +19983,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17493,6 +19991,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17500,6 +19999,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17507,6 +20007,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Modifier.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17514,6 +20015,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Modifier.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17521,6 +20023,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Modifier.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Unknown_Aligned_Unit_Modifier: AEE_MarkerBase {
@@ -17528,6 +20031,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Modifier.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Modifier.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Modifier_2: AEE_MarkerBase {
@@ -17535,6 +20039,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Modifier_2: AEE_MarkerBase {
@@ -17542,6 +20047,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Modifier_2: AEE_MarkerBase {
@@ -17549,6 +20055,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Modifier_2: AEE_MarkerBase {
@@ -17556,6 +20063,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Modifier_3: AEE_MarkerBase {
@@ -17563,6 +20071,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_3.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Modifier_3: AEE_MarkerBase {
@@ -17570,6 +20079,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_3.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Modifier_3: AEE_MarkerBase {
@@ -17577,6 +20087,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_3.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Modifier_3: AEE_MarkerBase {
@@ -17584,6 +20095,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_3.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_3.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Modifier_4: AEE_MarkerBase {
@@ -17591,6 +20103,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_4.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Modifier_4: AEE_MarkerBase {
@@ -17598,6 +20111,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_4.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Modifier_4: AEE_MarkerBase {
@@ -17605,6 +20119,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_4.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Modifier_4: AEE_MarkerBase {
@@ -17612,6 +20127,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_4.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_4.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Modifier_5: AEE_MarkerBase {
@@ -17619,6 +20135,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_5.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Modifier_5: AEE_MarkerBase {
@@ -17626,6 +20143,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_5.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Modifier_5: AEE_MarkerBase {
@@ -17633,6 +20151,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_5.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Modifier_5: AEE_MarkerBase {
@@ -17640,6 +20159,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_5.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_5.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Modifier_6: AEE_MarkerBase {
@@ -17647,6 +20167,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_6.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Modifier_6: AEE_MarkerBase {
@@ -17654,6 +20175,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_6.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Modifier_6: AEE_MarkerBase {
@@ -17661,6 +20183,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_6.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Modifier_6: AEE_MarkerBase {
@@ -17668,6 +20191,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_6.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_6.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Modifier_7: AEE_MarkerBase {
@@ -17675,6 +20199,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Modifier_7.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Modifier_7: AEE_MarkerBase {
@@ -17682,6 +20207,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Modifier_7.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Modifier_7: AEE_MarkerBase {
@@ -17689,6 +20215,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Modifier_7.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Modifier_7: AEE_MarkerBase {
@@ -17696,6 +20223,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_7.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Modifier_7.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Mortars: AEE_MarkerBase {
@@ -17703,6 +20231,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Mortars.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Mortars: AEE_MarkerBase {
@@ -17710,6 +20239,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Mortars.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Mortars: AEE_MarkerBase {
@@ -17717,6 +20247,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Mortars: AEE_MarkerBase {
@@ -17724,6 +20255,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Mortars.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Mortars.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFS_Unknown_Aligned_Unit_Naval: AEE_MarkerBase {
@@ -17731,6 +20263,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFS_Unknown_Aligned_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFS_Unknown_Aligned_Unit_Naval.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XHS_Unknown_Aligned_Unit_Naval: AEE_MarkerBase {
@@ -17738,6 +20271,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHS_Unknown_Aligned_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHS_Unknown_Aligned_Unit_Naval.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Sea";
         scope = 2;
     };
     class AEE_XNS_Unknown_Aligned_Unit_Naval: AEE_MarkerBase {
@@ -17745,6 +20279,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNS_Unknown_Aligned_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNS_Unknown_Aligned_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Sea";
         scope = 2;
     };
     class AEE_XUS_Unknown_Aligned_Unit_Naval: AEE_MarkerBase {
@@ -17752,6 +20287,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUS_Unknown_Aligned_Unit_Naval.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUS_Unknown_Aligned_Unit_Naval.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Sea";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Parachute: AEE_MarkerBase {
@@ -17759,6 +20295,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Parachute.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Parachute: AEE_MarkerBase {
@@ -17766,6 +20303,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Parachute.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Parachute: AEE_MarkerBase {
@@ -17773,6 +20311,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Parachute: AEE_MarkerBase {
@@ -17780,6 +20319,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Parachute.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Parachute.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Psycholog: AEE_MarkerBase {
@@ -17787,6 +20327,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Psycholog.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Psycholog.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Psycholog: AEE_MarkerBase {
@@ -17794,6 +20335,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Psycholog.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Psycholog.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Psycholog: AEE_MarkerBase {
@@ -17801,6 +20343,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Psycholog.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Psycholog.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Psycholog: AEE_MarkerBase {
@@ -17808,6 +20351,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Psycholog.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Psycholog.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Radar: AEE_MarkerBase {
@@ -17815,6 +20359,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Radar.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Radar: AEE_MarkerBase {
@@ -17822,6 +20367,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Radar.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Radar: AEE_MarkerBase {
@@ -17829,6 +20375,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Radar: AEE_MarkerBase {
@@ -17836,6 +20383,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Radar.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Radar.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Reconnais: AEE_MarkerBase {
@@ -17843,6 +20391,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Reconnais.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Reconnais.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Reconnais: AEE_MarkerBase {
@@ -17850,6 +20399,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Reconnais.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Reconnais.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Reconnais: AEE_MarkerBase {
@@ -17857,6 +20407,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Reconnais.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Reconnais.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Reconnais: AEE_MarkerBase {
@@ -17864,6 +20415,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Reconnais.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Reconnais.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Signals_E: AEE_MarkerBase {
@@ -17871,6 +20423,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Signals_E.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Signals_E.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Signals_E: AEE_MarkerBase {
@@ -17878,6 +20431,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Signals_E.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Signals_E.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Signals_E: AEE_MarkerBase {
@@ -17885,6 +20439,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Signals_E.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Signals_E.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Signals_E: AEE_MarkerBase {
@@ -17892,6 +20447,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Signals_E.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Signals_E.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Signals_o: AEE_MarkerBase {
@@ -17899,6 +20455,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Signals_o.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Signals_o.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Signals_o: AEE_MarkerBase {
@@ -17906,6 +20463,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Signals_o.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Signals_o.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Signals_o: AEE_MarkerBase {
@@ -17913,6 +20471,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Signals_o.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Signals_o.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Signals_o: AEE_MarkerBase {
@@ -17920,6 +20479,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Signals_o.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Signals_o.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Special_O: AEE_MarkerBase {
@@ -17927,6 +20487,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Special_O.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Special_O.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Special_O: AEE_MarkerBase {
@@ -17934,6 +20495,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Special_O.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Special_O.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Special_O: AEE_MarkerBase {
@@ -17941,6 +20503,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Special_O.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Special_O.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Special_O: AEE_MarkerBase {
@@ -17948,6 +20511,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Special_O.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Special_O.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFL_Unknown_Aligned_Unit_Special_O_2: AEE_MarkerBase {
@@ -17955,6 +20519,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Special_O_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Unknown_Aligned_Unit_Special_O_2.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XHL_Unknown_Aligned_Unit_Special_O_2: AEE_MarkerBase {
@@ -17962,6 +20527,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Special_O_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Unknown_Aligned_Unit_Special_O_2.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Land";
         scope = 2;
     };
     class AEE_XNL_Unknown_Aligned_Unit_Special_O_2: AEE_MarkerBase {
@@ -17969,6 +20535,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Special_O_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Unknown_Aligned_Unit_Special_O_2.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Land";
         scope = 2;
     };
     class AEE_XUL_Unknown_Aligned_Unit_Special_O_2: AEE_MarkerBase {
@@ -17976,6 +20543,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Special_O_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Unknown_Aligned_Unit_Special_O_2.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Land";
         scope = 2;
     };
     class AEE_XFA_Unknown_Aligned_Unit_Unmanned: AEE_MarkerBase {
@@ -17983,6 +20551,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Unmanned.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XFA_Unknown_Aligned_Unit_Unmanned.paa";
         side = 1;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };
     class AEE_XHA_Unknown_Aligned_Unit_Unmanned: AEE_MarkerBase {
@@ -17990,6 +20559,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Unmanned.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XHA_Unknown_Aligned_Unit_Unmanned.paa";
         side = 0;
+        markerClass = "AEE_Hostile_Air";
         scope = 2;
     };
     class AEE_XNA_Unknown_Aligned_Unit_Unmanned: AEE_MarkerBase {
@@ -17997,6 +20567,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Unmanned.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XNA_Unknown_Aligned_Unit_Unmanned.paa";
         side = 2;
+        markerClass = "AEE_Neutral_Air";
         scope = 2;
     };
     class AEE_XUA_Unknown_Aligned_Unit_Unmanned: AEE_MarkerBase {
@@ -18004,5 +20575,6 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Unmanned.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUA_Unknown_Aligned_Unit_Unmanned.paa";
         side = 2;
+        markerClass = "AEE_Unknown_Air";
         scope = 2;
     };

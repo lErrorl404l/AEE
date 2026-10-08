@@ -31,6 +31,8 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+from symbology_categories import marker_category
 from typing import Any
 
 ROOT = Path(__file__).parents[1]
@@ -247,6 +249,7 @@ def build() -> int:
                 f'        icon = "{icon}";',
                 f'        texture = "{icon}";',
                 f"        side = {side};",
+                f'        markerClass = "{marker_category(affil, entry["dim"])}";',
                 "        scope = 2;",
                 "    };",
             ]

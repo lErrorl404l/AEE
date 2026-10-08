@@ -16,6 +16,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Block.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Block.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Breach: AEE_MarkerBase {
@@ -23,6 +24,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Breach.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Breach.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Bypass: AEE_MarkerBase {
@@ -30,6 +32,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Bypass.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Bypass.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Canalize: AEE_MarkerBase {
@@ -37,6 +40,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Canalize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Canalize.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Clear: AEE_MarkerBase {
@@ -44,6 +48,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Clear.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Clear.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Counterattack: AEE_MarkerBase {
@@ -51,6 +56,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Counterattack.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Counterattack.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Counterattack_by_Fire: AEE_MarkerBase {
@@ -58,6 +64,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Counterattack_by_Fire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Counterattack_by_Fire.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Delay: AEE_MarkerBase {
@@ -65,6 +72,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Delay.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Delay.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Destroy: AEE_MarkerBase {
@@ -72,6 +80,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Destroy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Destroy.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Disrupt: AEE_MarkerBase {
@@ -79,6 +88,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Disrupt.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Disrupt.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Fix: AEE_MarkerBase {
@@ -86,6 +96,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Fix.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Fix.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Follow_and_Assume: AEE_MarkerBase {
@@ -93,6 +104,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Follow_and_Assume.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Follow_and_Assume.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Follow_and_Support: AEE_MarkerBase {
@@ -100,6 +112,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Follow_and_Support.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Follow_and_Support.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Interdict: AEE_MarkerBase {
@@ -107,6 +120,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Interdict.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Interdict.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Isolate: AEE_MarkerBase {
@@ -114,6 +128,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Isolate.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Isolate.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Neutralize: AEE_MarkerBase {
@@ -121,6 +136,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Neutralize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Neutralize.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Occupy: AEE_MarkerBase {
@@ -128,6 +144,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Occupy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Occupy.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Penetrate: AEE_MarkerBase {
@@ -135,6 +152,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Penetrate.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Penetrate.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Relief_in_Place: AEE_MarkerBase {
@@ -142,6 +160,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Relief_in_Place.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Relief_in_Place.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Retire: AEE_MarkerBase {
@@ -149,6 +168,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Retire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Retire.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Secure: AEE_MarkerBase {
@@ -156,6 +176,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Secure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Secure.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Security_Cover: AEE_MarkerBase {
@@ -163,6 +184,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Security_Cover.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Security_Cover.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Security_Guard: AEE_MarkerBase {
@@ -170,6 +192,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Security_Guard.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Security_Guard.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Security_Screen: AEE_MarkerBase {
@@ -177,6 +200,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Security_Screen.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Security_Screen.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Seize: AEE_MarkerBase {
@@ -184,6 +208,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Seize.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Seize.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Withdraw: AEE_MarkerBase {
@@ -191,6 +216,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Withdraw.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Withdraw.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Under_Pressure: AEE_MarkerBase {
@@ -198,6 +224,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Under_Pressure.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Under_Pressure.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Attack_by_Fire: AEE_MarkerBase {
@@ -205,6 +232,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Attack_by_Fire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Attack_by_Fire.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Ambush: AEE_MarkerBase {
@@ -212,6 +240,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Ambush.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Ambush.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Contain: AEE_MarkerBase {
@@ -219,6 +248,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Contain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Contain.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Retain: AEE_MarkerBase {
@@ -226,6 +256,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Retain.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Retain.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Support_by_Fire: AEE_MarkerBase {
@@ -233,6 +264,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Support_by_Fire.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Support_by_Fire.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MT_Turn: AEE_MarkerBase {
@@ -240,6 +272,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MT_Turn.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MT_Turn.paa";
         side = 2;
+        markerClass = "AEE_Mission_Tasks";
         scope = 2;
     };
     class AEE_MOD_Strength_Reinforced: AEE_MarkerBase {
@@ -247,6 +280,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Strength_Reinforced.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Strength_Reinforced.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Strength_Reduced: AEE_MarkerBase {
@@ -254,6 +288,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Strength_Reduced.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Strength_Reduced.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Strength_Both: AEE_MarkerBase {
@@ -261,6 +296,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Strength_Both.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Strength_Both.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Feint_Dummy: AEE_MarkerBase {
@@ -268,6 +304,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Feint_Dummy.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Feint_Dummy.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Task_Force_Bracket: AEE_MarkerBase {
@@ -275,6 +312,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Task_Force_Bracket.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Task_Force_Bracket.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_HQ_Staff: AEE_MarkerBase {
@@ -282,6 +320,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_HQ_Staff.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_HQ_Staff.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Installation: AEE_MarkerBase {
@@ -289,6 +328,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Installation.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Installation.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Planned_Friend: AEE_MarkerBase {
@@ -296,6 +336,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Friend.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Friend.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Planned_Hostile: AEE_MarkerBase {
@@ -303,6 +344,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Hostile.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Hostile.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Planned_Neutral: AEE_MarkerBase {
@@ -310,6 +352,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Neutral.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Neutral.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_MOD_Planned_Unknown: AEE_MarkerBase {
@@ -317,6 +360,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Unknown.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_MOD_Planned_Unknown.paa";
         side = 2;
+        markerClass = "AEE_Modifiers";
         scope = 2;
     };
     class AEE_Ech_Team: AEE_MarkerBase {
@@ -324,6 +368,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Team.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Team.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Squad: AEE_MarkerBase {
@@ -331,6 +376,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Squad.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Squad.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Section: AEE_MarkerBase {
@@ -338,6 +384,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Section.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Section.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Platoon: AEE_MarkerBase {
@@ -345,6 +392,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Platoon.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Platoon.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Company: AEE_MarkerBase {
@@ -352,6 +400,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Company.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Company.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Battalion: AEE_MarkerBase {
@@ -359,6 +408,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Battalion.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Battalion.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Regiment: AEE_MarkerBase {
@@ -366,6 +416,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Regiment.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Regiment.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Brigade: AEE_MarkerBase {
@@ -373,6 +424,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Brigade.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Brigade.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Division: AEE_MarkerBase {
@@ -380,6 +432,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Division.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Division.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Corps: AEE_MarkerBase {
@@ -387,6 +440,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Corps.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Corps.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Army: AEE_MarkerBase {
@@ -394,6 +448,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Army.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Army.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Army_Group: AEE_MarkerBase {
@@ -401,6 +456,7 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Army_Group.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Army_Group.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };
     class AEE_Ech_Region: AEE_MarkerBase {
@@ -408,5 +464,6 @@
         icon = "\z\aee\addons\optics\data\markers\AEE_Ech_Region.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_Ech_Region.paa";
         side = 2;
+        markerClass = "AEE_Echelon";
         scope = 2;
     };

@@ -100,8 +100,14 @@ private _echelonLive = [];
     _markerName setMarkerTypeLocal (_spec select 1);
     _markerName setMarkerColorLocal (_spec select 2);
     _live pushBack _markerName;
-    // The echelon overlay is created after the frame marker, so the overlay
-    // draws on top of the frame at the same position.
+    // The echelon overlay is a 64 x 128 texture with the ticks in the top band.
+    // The engine STRETCHES a marker texture into its box and does not keep the
+    // aspect (feedback T170754), so a square marker squashes the 2:1 texture and
+    // the ticks land inside the frame.  A 1:2 marker size keeps the texture
+    // undistorted and the ticks sit ABOVE the frame, per APP-6 field B.  The
+    // frame width is read back so the two boxes stay aligned.
+    private _frameSize = markerSize _markerName;
+    private _halfWidth = _frameSize select 0;
     private _echelonName = "AEE_ECH_" + (netId _unit);
     if (!(_echelonName in _echelonCreated)) then {
         _echelonName = createMarkerLocal [_echelonName, getPos _unit];
@@ -110,6 +116,7 @@ private _echelonLive = [];
     _echelonName setMarkerPosLocal (getPos _unit);
     _echelonName setMarkerTypeLocal ([_echelon] call FUNC(symbologyEchelonMarker));
     _echelonName setMarkerColorLocal (_spec select 2);
+    _echelonName setMarkerSize ([_halfWidth] call FUNC(symbologyEchelonSize));
     _echelonLive pushBack _echelonName;
 } forEach _units;
 

@@ -3297,6 +3297,10 @@ private _p29Pass = 0;
     // values loaded AND that restating the parent kept the vanilla
     // inheritance.  It renders nothing.
     execVM "aee_p116_engine_override_probe.sqf";
+    // PHASE 117 lives in aee_p117_map_surface_probe.sqf: the engine map grid,
+    // the marker families and the marker classes are all engine config, so the
+    // probe reads the merged config live and reports it.  It renders nothing.
+    execVM "aee_p117_map_surface_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
