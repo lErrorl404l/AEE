@@ -47,12 +47,52 @@ if !(_realWeather isEqualType false) then { _realWeather = false; };
 private _isReady = missionNamespace getVariable [QGVAR(isReady), false];
 if !(_isReady isEqualType false) then { _isReady = false; };
 
+// Ownership sentinels (ADR-027). Read each declared property from the live
+// config tree and compare it to AEE's value. A mismatch is the silent loss:
+// another mod loaded after AEE and won the config merge for a class AEE owns.
+// Read only; the config tree is never written here.
+private _sentinels = missionNamespace getVariable [QGVAR(ownershipSentinels), []];
+if !(_sentinels isEqualType []) then { _sentinels = []; };
+private _mismatches = [];
+{
+    _x params [["_id", ""], ["_path", []], ["_prop", ""], ["_type", ""], ["_expected", 0]];
+    private _cfg = configFile;
+    { _cfg = _cfg >> _x; } forEach _path;
+    private _entry = _cfg >> _prop;
+    private _live = switch (_type) do {
+        case "number": { getNumber _entry };
+        case "array": { getArray _entry };
+        case "text": { getText _entry };
+        default { nil };
+    };
+    private _ok = if (isNull _entry) then { false } else {
+        switch (_type) do {
+            case "number": { abs (_live - _expected) <= (0.000001 + abs (_expected) * 0.000001) };
+            case "array": { _live isEqualTo _expected };
+            case "text": { _live isEqualTo _expected };
+            default { false };
+        };
+    };
+    if !(_ok) then {
+        _mismatches pushBack format ["%1=%2(want %3)", _id, _live, _expected];
+    };
+} forEach _sentinels;
+
+private _ownership = if (_mismatches isEqualTo []) then { "ok" } else { format ["MISMATCH(%1)", count _mismatches] };
+if (_mismatches isNotEqualTo []) then {
+    private _ownershipWarn = format [
+        "ownership sentinels: %1 - a later-loading mod won the config merge for a class AEE owns",
+        _mismatches joinString ", "
+    ];
+    AEE_LOG_WARN(_ownershipWarn);
+};
+
 private _logMsg = format [
-    "core state | weather=temp:%1C press:%2hPa rh:%3%% rho:%4 overcast:%5 sunElev:%6 | light=lux:%7 ambient:%8 night:%9 | progression=seed:%10 realWeather:%11 | ready:%12",
+    "core state | weather=temp:%1C press:%2hPa rh:%3%% rho:%4 overcast:%5 sunElev:%6 | light=lux:%7 ambient:%8 night:%9 | progression=seed:%10 realWeather:%11 | ready:%12 | ownership:%13",
     round (_tempC * 100) / 100, round (_pressHPa * 100) / 100, round _humidity,
     round (_rho * 10000) / 10000, round (_overcast * 1000) / 1000, round (_sunElev * 100) / 100,
     round _lux, round _ambientLux, _night,
-    _seed, _realWeather, _isReady
+    _seed, _realWeather, _isReady, _ownership
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

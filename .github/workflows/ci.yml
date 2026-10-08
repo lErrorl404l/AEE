@@ -121,6 +121,12 @@ jobs:
         run: python3 tools/gen_terrain_catalogue.py --check
       - name: APP-6 catalogue freshness check
         run: python3 tools/gen_app6_catalogue.py --check
+      - name: Compat direction split freshness check
+        run: python3 tools/gen_compat_directions.py --check
+      - name: Ownership sentinel freshness check
+        run: python3 tools/gen_ownership_sentinels.py --check
+      - name: Extension contract freshness check
+        run: python3 tools/gen_extension_contract.py --check
       - name: Wildlife ecology projection freshness check
         run: python3 tools/validation/gen_wildlife_ecology.py --check
       - name: Wildlife ecology corpus validation

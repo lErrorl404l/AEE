@@ -9,6 +9,10 @@ ADDON = false;
 
 if (is3DEN) exitWith {};
 
+// ─── ADAPTATION: ACE owns the subsystem, AEE publishes into its API ───────
+// The direction is declared per function in addons/compat_ace3/directions.json
+// and audited by tools/gen_compat_directions.py --check (ADR-027).
+//
 // ACE's own kit carries a published mass the core library cannot know: its
 // classnames hold no engine item category, so the core resolver returns 0
 // and the item would weigh nothing. Register this resolver so the load walk
@@ -26,6 +30,7 @@ private _classifiers = missionNamespace getVariable ["aee_physiology_categoryRes
 _classifiers pushBackUnique FUNC(isAceMedicalItem);
 missionNamespace setVariable ["aee_physiology_categoryResolvers", _classifiers];
 
+// ─── OWNERSHIP CLAIM: AEE is the declared authority, the host stands down ──
 // AEE owns the weather state. Disable ACE3's own weather simulation so the
 // two models do not fight. Verified against ACE3 source: ace_weather_enabled
 // gates the server update tick (XEH_postServerInit); the enableWind/Rain/Fog/

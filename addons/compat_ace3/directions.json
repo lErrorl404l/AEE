@@ -1,0 +1,51 @@
+{
+  "addon": "compat_ace3",
+  "host": "ACE3",
+  "note": "Every function under addons/compat_ace3/functions declares its direction (ADR-027). ownership-claim means AEE is the declared authority and the host stands down. adaptation means the host owns the subsystem and AEE publishes into the host's public API. diagnostics means the function reads AEE state only and touches no host API. tools/gen_compat_directions.py audits this file and renders the table in docs/wiki/chapters/integrations.qmd; a function with no entry fails the gate.",
+  "functions": {
+    "fnc_integrateKestrel": {
+      "direction": "ownership-claim",
+      "domain": "weather",
+      "host_api": [
+        "ace_weather_enabled",
+        "ace_weather_windSimulation",
+        "ace_weather_currentTemperature",
+        "ace_weather_currentHumidity",
+        "ace_weather_currentOvercast"
+      ],
+      "reason": "AEE owns the weather simulation. It disables ACE3's own weather tick (ace_weather_enabled = false, re-asserted each tick) and publishes AEE state into the ace_weather_current* variables ACE consumers read. The host stands down."
+    },
+    "fnc_integrateMedical": {
+      "direction": "adaptation",
+      "domain": "medical",
+      "host_api": [
+        "ace_medical_status_fnc_addMedicationAdjustment",
+        "ace_medical_status_fnc_setCardiacArrestState",
+        "ace_medical_fnc_addDamageToUnit"
+      ],
+      "reason": "ACE owns medical vitals. AEE maps its WBGT, dehydration and heat-exposure state onto ACE's public medical API. AEE takes over no ACE function; it publishes into the host's API."
+    },
+    "fnc_getAceItemMass": {
+      "direction": "adaptation",
+      "domain": "physiology",
+      "host_api": [
+        "aee_physiology_massResolvers"
+      ],
+      "reason": "ACE owns its item classnames and their mass. AEE registers a resolver into its own physiology mass-resolver registry, which aee_core reads. The core never names ACE; the direction inverts onto the AEE registry."
+    },
+    "fnc_isAceMedicalItem": {
+      "direction": "adaptation",
+      "domain": "physiology",
+      "host_api": [
+        "aee_physiology_categoryResolvers"
+      ],
+      "reason": "ACE marks its own medical items. AEE registers a category classifier into its own registry, which aee_core reads. The core never names ACE."
+    },
+    "fnc_dumpState": {
+      "direction": "diagnostics",
+      "domain": "diagnostics",
+      "host_api": [],
+      "reason": "Reads AEE state and the registry counts only. It touches no host API, so it is neither an ownership claim nor an adaptation."
+    }
+  }
+}
