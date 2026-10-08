@@ -170,6 +170,7 @@ def main():
         "tools/tests/test_debug_index.py",
         "tools/tests/raw_diag_allowlist.py",
         "tools/tests/test_debug_guard.py",
+        "tools/tests/test_per_frame_log_guard.py",
         "tools/tests/test_dump_state_contract.py",
         "tools/tests/test_invariant_table.py",
         "tools/tests/test_consistency_evaluator.py",
