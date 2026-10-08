@@ -55,19 +55,21 @@ class CfgFontFamilies {
 // family whose glyph files are absent, so the engine font stays until the AEE
 // glyphs ship.  Re-point fontGrid and fontNames at AEEFont then.
 //
-// The engine numeric grid LINES stay removed and the engine NUMBERS return.
-// The operator asked for a readable grid reference "the way vanilla did it", so
-// the engine numeric labels come back (sizeExGrid = the engine default 0.02)
-// while the engine LINES stay off (colorGrid/colorGridMap alpha 0).  That leaves
-// exactly ONE line grid, the AEE MGRS overlay (FUNC(mgrsMapDraw)), with the
-// engine numeric labels as the familiar reference.  The two coexist: numbers
-// from the engine, lines from AEE.  See ADR-029.
+// The engine grid fields SPLIT: colorGrid colours the EDGE COORDINATE NUMBERS
+// and colorGridMap colours the in-map grid LINES (engine source: Poseidon
+// UIMap.cpp, CStaticMap::DrawGrid - DrawText uses colorGrid, DrawLine uses
+// colorGridMap).  The operator asked for the vanilla grid reference back, so the
+// engine NUMBERS return (colorGrid visible, the engine default sizeExGrid 0.04)
+// while the engine LINES stay off (colorGridMap alpha 0).  That leaves exactly
+// ONE line grid, the AEE MGRS overlay (FUNC(mgrsMapDraw)), with the engine
+// numeric labels as the familiar reference.  The two coexist: numbers from the
+// engine, lines from AEE.
 class RscMapControl {
 #include "config_mapcolors.hpp"
 #include "config_mapicons.hpp"
-    colorGrid[] = {0, 0, 0, 0};
+    colorGrid[] = {0.15, 0.15, 0.05, 0.9};
     colorGridMap[] = {0, 0, 0, 0};
-    sizeExGrid = 0.02;
+    sizeExGrid = 0.04;
 };
 
 #include "config_locationtypes.hpp"

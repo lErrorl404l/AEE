@@ -23,10 +23,16 @@ class RscDisplayStrategicMap {
     class controlsBackground {
         class Map {
 #include "config_mapcolors.hpp"
-            // Engine numeric LINES off, engine NUMBERS on (ADR-029).
-            colorGrid[] = {0, 0, 0, 0};
+            // The engine grid fields are SPLIT: colorGrid is the colour of the
+            // EDGE COORDINATE NUMBERS and colorGridMap is the colour of the
+            // in-map grid LINES (engine source: Poseidon UIMap.cpp,
+            // CStaticMap::DrawGrid - DrawText uses colorGrid, DrawLine uses
+            // colorGridMap).  So the numbers return and the engine LINES stay
+            // off, and the AEE MGRS overlay is the single line grid.  sizeExGrid
+            // is the engine default: it sizes the edge numbers only.
+            colorGrid[] = {0.15, 0.15, 0.05, 0.9};
             colorGridMap[] = {0, 0, 0, 0};
-            sizeExGrid = 0.02;
+            sizeExGrid = 0.04;
         };
     };
 };
@@ -36,8 +42,12 @@ class RscDisplayStrategicMap {
 class ctrlDefault;
 class ctrlMap: ctrlDefault {
 #include "config_mapcolors.hpp"
-    // Engine numeric LINES off, engine NUMBERS on (ADR-029).
-    colorGrid[] = {0, 0, 0, 0};
+    // The engine grid fields are SPLIT: colorGrid is the colour of the EDGE
+    // COORDINATE NUMBERS and colorGridMap is the colour of the in-map grid
+    // LINES (engine source: Poseidon UIMap.cpp, CStaticMap::DrawGrid).  The
+    // numbers return and the engine LINES stay off.  sizeExGrid is the engine
+    // default: it sizes the edge numbers only.
+    colorGrid[] = {0.15, 0.15, 0.05, 0.9};
     colorGridMap[] = {0, 0, 0, 0};
-    sizeExGrid = 0.02;
+    sizeExGrid = 0.04;
 };

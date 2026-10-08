@@ -24,7 +24,7 @@
  *         Contour (1364777346).  No mod value, config or texture is copied.
  *
  * tools/tests/test_terrain.py pins the palette, the scalars and the fonts to
- * data/symbology/terrain_symbols.json.  Engine ceilings are in ADR-029.
+ * data/symbology/terrain_symbols.json.  Engine ceilings are in ADR-030.
  */
 
     // ── Paper and the void ───────────────────────────────────────────────
