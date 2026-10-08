@@ -120,6 +120,9 @@ the register. The evidence holds the same register with the full detail.
 | world to MGRS | longitude scale | cos(latitude) | local tangent plane | derived |
 | world to MGRS | anchor-box mapping | linear | none | UNSOURCED |
 | world to MGRS | tangent-plane fallback | none | none | UNSOURCED |
+| map overlay | precision to scale | 8 digits at 1/8 world, else 6 | NGA MGRS 2009 ladder; FM 3-25.26 ch4 scale limit | derived |
+| map overlay | world-size to digits | large world 8, small world 6 | none | UNSOURCED |
+| map overlay | font family fallback | AEE when glyphs exist, else engine family | engine ceiling | derived |
 | GNSS ellipse | UERE | 3.6 m RMS | GPS SPS PS 5th ed | sourced |
 | GNSS ellipse | accuracy at 95 percent | 8 m H, 13 m V | GPS SPS PS 5th ed | sourced |
 | GNSS ellipse | vertical to horizontal ratio | 13/8 = 1.625 | derived from SPS | derived |
@@ -193,10 +196,28 @@ rectangle, reusing the core `worldToMgrs`, `utmToWorld` and `formatMgrs`
 kernels. The interval follows the zoom.
 
 The vanilla map cursor tooltip shows a six-figure grid and the elevation. It
-is engine-side and no command or config field repoints it. AEE draws its own
-readout adjacent to the cursor instead: `fnc_mgrsCursorText` joins the MGRS
-reference and the terrain elevation, and the draw handler places it near the
-cursor. The engine tooltip stays.
+is engine-side and no command or config field repoints it. The tooltip is the
+map display's `RscMapControlTooltip` control (idc 2350), so the overlay hides
+that control each draw and draws the AEE readout in its rectangle:
+`fnc_mgrsCursorText` joins the MGRS reference and the terrain elevation.
+
+The precision follows the displayed scale. `fnc_mgrsMapPrecision` takes the
+world `mapSize` and the visible map span, and returns the digit count and the
+matching interval: a view at an eighth of the world or closer gives eight
+digits (10 m), a wider view six (100 m). With no map view (the HUD and GPS
+readouts) the world size alone applies. The digit to resolution ladder is the
+NGA MGRS guidance (Modified February 2009). The scale to digit thresholds
+have no standard basis, so they are an engineering choice, UNSOURCED below.
+The operator can pin the digits through the `mgrsPrecisionAuto` and
+`mgrsPrecision` settings.
+
+The AEE font families (`AEEFont`, `AEEFontMono`) need the FontToTGA operator
+step to produce their `.fxy` and `.paa` glyph files. The engine draws NO text
+for a family whose glyph files are absent. So the overlay picks the AEE family
+only when its glyph files exist (`fnc_fontFamilyUsable`), else an engine
+family, and the config does not point an engine surface (`fontGrid`,
+`fontNames`, the `CfgLocationTypes` font) at the AEE families. A missing
+optional font must never blank the map.
 
 The map control is not fullscreen, so the visible rectangle comes from
 `ctrlMapScreenToWorld` at the control corners (`ctrlPosition`), not from the

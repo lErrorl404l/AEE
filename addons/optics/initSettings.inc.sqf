@@ -107,6 +107,11 @@ AEE_SETTING_CHECKBOX(mgrsEnabled,"AEE HUD","Displays",true);
     {}
 ] call CBA_fnc_addSetting;
 
+// Scale the MGRS digit count with the world map size.  On: a small world gets
+// a six-figure reference (100 m) and a large world an eight-figure one
+// (10 m).  Off: the mgrsPrecision list applies.  Default on.
+AEE_SETTING_CHECKBOX(mgrsPrecisionAuto,"AEE HUD","Displays",true);
+
 // Draw the aee MGRS grid over the engine map.  The engine grid stays
 // numeric: the CfgWorlds Grid class formats numbers only and no script
 // command writes it, so the aee overlay draws its own MGRS lines and their

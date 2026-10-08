@@ -91,12 +91,17 @@ class TestMgrsMapDrawCacheRead(unittest.TestCase):
         program = (
             "private _rect = [100, 100, 300, 300];\n"
             "private _anchor = [0, 0, 0, 0, 0, 0, 0, 0, 0];\n"
+            "private _gridInterval = 0;\n"
             f"{block}\n"
             "[_segments, _labels]\n"
         )
         store = {}
         globs = mission_globals(store)
-        globs["__FUNC__mgrsGridLines"] = lambda anchor, rect: [[1, 2], [3, 4], 100]
+        globs["__FUNC__mgrsGridLines"] = lambda anchor, rect, base: [
+            [1, 2],
+            [3, 4],
+            100,
+        ]
         segments, labels = run_program(program, globs)
         self.assertEqual(segments, [1, 2])
         self.assertEqual(labels, [3, 4])
@@ -112,13 +117,14 @@ class TestMgrsMapDrawCacheRead(unittest.TestCase):
         program = (
             "private _rect = [100, 100, 300, 300];\n"
             "private _anchor = [0, 0, 0, 0, 0, 0, 0, 0, 0];\n"
+            "private _gridInterval = 0;\n"
             f"{block}\n"
             "[_segments, _labels]\n"
         )
         key = [10, 10, 30, 30]
         store = {"__QGVAR__mgrsGridCache": [key, ["CACHED_SEG", "CACHED_LBL"]]}
 
-        def never_rebuild(anchor, rect):
+        def never_rebuild(anchor, rect, base):
             raise AssertionError("cache hit expected, rebuild ran")
 
         globs = mission_globals(store)

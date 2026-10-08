@@ -59,8 +59,6 @@ class ctrlMap: ctrlDefault {
     colorRocks[] = {0.75, 0.70, 0.60, 1};
     colorRocksBorder[] = {0.50, 0.45, 0.40, 1};
     colorBackground[] = {0.90, 0.88, 0.80, 1};
-    fontGrid = "AEEFont";
-    fontNames = "AEEFont";
     maxSatelliteAlpha = 0.35;
     showCountourInterval = 1;
 };

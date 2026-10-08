@@ -29,7 +29,8 @@
  */
 params [
     ["_anchor", [], [[]]],
-    ["_rect", [0, 0, 0, 0], [[]]]
+    ["_rect", [0, 0, 0, 0], [[]]],
+    ["_baseInterval", 0, [0]]
 ];
 
 if ((count _anchor) < 9) exitWith { [[], [], 0] };
@@ -75,13 +76,18 @@ private _n = 0;
 
 if ((_eMax <= _eMin) || (_nMax <= _nMin)) exitWith { [[], [], 0] };
 
-// Interval: the smallest decimal step that keeps the line count at or below
-// 12 per axis.  The count falls by a factor of ten at each step.
+// Interval: the smallest decimal step at or above the world's finest step
+// (arg 2) that keeps the line count at or below 24 per axis.  The world size
+// sets the floor, the zoom sets the step.  The count falls by ten each step.
 private _span = (_eMax - _eMin) max (_nMax - _nMin);
+private _floor = 10;
+if ((_baseInterval isEqualType 0) && (_baseInterval >= 10) && (_baseInterval <= 100000)) then {
+    _floor = _baseInterval;
+};
 private _interval = 100000;
 private _found = false;
 {
-    if (!_found && ((_span / _x) <= 12)) then {
+    if (!_found && (_x >= _floor) && ((_span / _x) <= 24)) then {
         _interval = _x;
         _found = true;
     };

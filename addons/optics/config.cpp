@@ -45,13 +45,13 @@ class CfgFontFamilies {
     };
 };
 
-// Repoint the map grid labels at the AEE font at load time.  No runtime
-// command repoints fontGrid, so this override is the only route.  The map
-// terrain palette and the object icons are included inside this block so the
-// engine class is not declared twice.
+// The map terrain palette and the object icons are included inside this block
+// so the engine class is not declared twice.  The map grid font is NOT
+// repointed here.  The AEE fonts need the FontToTGA operator step (see
+// docs/wiki/research/arma-font-surface.md), and the engine draws no text for a
+// family whose glyph files are absent, so the engine font stays until the AEE
+// glyphs ship.  Re-point fontGrid and fontNames at AEEFont then.
 class RscMapControl {
-    fontGrid = "AEEFont";
-    fontNames = "AEEFont";
 #include "config_mapcolors.hpp"
 #include "config_mapicons.hpp"
 };

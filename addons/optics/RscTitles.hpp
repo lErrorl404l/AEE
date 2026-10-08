@@ -33,7 +33,7 @@ class RscTitles {
                 idc = -1;
                 style = 0;
                 shadow = 1;
-                font = "AEEFont";
+                font = "RobotoCondensed";
                 sizeEx = "0.016 * safezoneH";
                 text = "";
                 colorText[] = {1, 1, 1, 1};
@@ -194,7 +194,7 @@ class RscTitles {
                 idc = 10811;
                 style = 0;
                 shadow = 1;
-                font = "AEEFont";
+                font = "RobotoCondensed";
                 sizeEx = "0.016 * safezoneH";
                 text = "";
                 colorText[] = {1, 1, 1, 1};
@@ -233,7 +233,7 @@ class RscTitles {
                 idc = -1;
                 style = 0;
                 shadow = 1;
-                font = "AEEFontMono";
+                font = "EtelkaMonospacePro";
                 sizeEx = "0.016 * safezoneH";
                 text = "";
                 colorText[] = {0.55, 1, 0.55, 1};
