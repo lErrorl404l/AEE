@@ -152,11 +152,15 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 // line is darker and thicker than a minor one.
                 {
                     _x params ["_pA", "_pB", "_major"];
-                    private _colour = [0.08, 0.08, 0.10, 0.55];
-                    private _width = 1;
+                    // Line weight.  The engine's script drawLine default is 3
+                    // (BIKI), and the operator reports the old 1 px line as
+                    // "very very thin", so the minor line matches the default
+                    // and the index (major) line is heavier.
+                    private _colour = [0.08, 0.08, 0.10, 0.85];
+                    private _width = 3;
                     if (_major) then {
-                        _colour = [0.03, 0.03, 0.05, 0.90];
-                        _width = 2;
+                        _colour = [0.02, 0.02, 0.04, 1];
+                        _width = 5;
                     };
                     _map drawLine [_pA, _pB, _colour, _width];
                 } forEach _segments;
@@ -173,40 +177,39 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
         };
 
         // ── Engine cursor tooltip ─────────────────────────────────────
-        // The engine readout is the map display's Tooltip control of class
-        // RscMapControlTooltip (idc 2350).  The engine moves it to the
-        // cursor and fills it with the six-figure grid and the elevation.
-        // Read its rectangle first: that is the readout's old position.
-        // The engine readout is hidden ONLY while the aee readout replaces
-        // it, so with the aee readout off the engine readout stays and the
-        // map is never left with no cursor readout at all.
+        // The engine readout is the map display's Tooltip control group of
+        // class RscMapControlTooltip (idc 2350) whose Info child (idc 235002)
+        // the engine fills with the six-figure grid and the elevation.  The
+        // operator reports it still visible beside the aee readout, so the
+        // group AND its visible children are hidden here, on every draw, and
+        // handed back only when the aee readout is turned off.  The engine
+        // tooltip idc and structure are pinned in
+        // docs/wiki/research/map-grid-and-cursor-surface.md.
         private _display = ctrlParent _map;
-        private _readoutPos = [];
         private _engineReadout = controlNull;
+        private _engineInfo = controlNull;
+        private _engineInfoBg = controlNull;
         if (!isNull _display) then {
             _engineReadout = _display displayCtrl 2350;
-            if (!isNull _engineReadout) then {
-                _readoutPos = ctrlPosition _engineReadout;
-            };
+            _engineInfo = _display displayCtrl 235002;
+            _engineInfoBg = _display displayCtrl 235001;
         };
         private _cursorReadout = missionNamespace getVariable [QGVAR(mgrsCursorReadout), true];
         if (!isNull _engineReadout) then {
-            private _tooltipHidden = missionNamespace getVariable [QGVAR(mgrsTooltipHidden), false];
             if (_cursorReadout) then {
                 _engineReadout ctrlShow false;
-                missionNamespace setVariable [QGVAR(mgrsTooltipHidden), true];
+                if (!isNull _engineInfo) then { _engineInfo ctrlShow false; };
+                if (!isNull _engineInfoBg) then { _engineInfoBg ctrlShow false; };
             } else {
-                // The setting turned off with the map open: hand the readout
-                // back to the engine exactly once, so it is not left hidden.
-                if (_tooltipHidden) then {
-                    _engineReadout ctrlShow true;
-                    missionNamespace setVariable [QGVAR(mgrsTooltipHidden), false];
-                };
+                _engineReadout ctrlShow true;
+                if (!isNull _engineInfo) then { _engineInfo ctrlShow true; };
+                if (!isNull _engineInfoBg) then { _engineInfoBg ctrlShow true; };
             };
         };
 
         // ── Cursor readout ────────────────────────────────────────────
-        // Draw the aee MGRS readout in the engine readout's old position.
+        // Draw the aee MGRS readout at the cursor.  It shows OUR MGRS at the
+        // displayed precision, so its digit group matches the drawn grid line.
         if (_cursorReadout) then {
             private _mouse = getMousePosition;
             private _cp = ctrlPosition _map;
@@ -224,18 +227,10 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                     ] call FUNC(mgrsMarkerText);
                     private _elev = getTerrainHeightASL [_world select 0, _world select 1];
                     private _cursorText = [_ref, _elev] call FUNC(mgrsCursorText);
-                    // Prefer the engine readout's rectangle.  When the
-                    // engine has not positioned it yet, sit just below
-                    // and right of the cursor.
                     private _anchorScreen = [
                         (_mouse select 0) + 0.012,
                         (_mouse select 1) - 0.022
                     ];
-                    if ((count _readoutPos) >= 2
-                        && {(_readoutPos select 0) >= 0}
-                        && {(_readoutPos select 1) >= 0}) then {
-                        _anchorScreen = [_readoutPos select 0, _readoutPos select 1];
-                    };
                     private _draw = _map ctrlMapScreenToWorld _anchorScreen;
                     if ((count _draw) >= 2) then {
                         _map drawIcon [
@@ -246,10 +241,30 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 };
             };
         };
+
+        // ── GPS device readout on the map ─────────────────────────────
+        // The hand-held GPS readout is a HUD element on the RscTitles layer,
+        // which the open map display covers, so it is not visible on the map.
+        // When the player carries an ItemGPS, draw the MGRS reference on the
+        // map, so the grid can be read with the device while the map is open.
+        if (("ItemGPS" in (assignedItems _player)) || ("ItemGPS" in (items _player))) then {
+            private _cp = ctrlPosition _map;
+            private _gpsScreen = [
+                (_cp select 0) + ((_cp select 2) * 0.62),
+                (_cp select 1) + ((_cp select 3) * 0.94)
+            ];
+            private _gpsWorld = _map ctrlMapScreenToWorld _gpsScreen;
+            if ((count _gpsWorld) >= 2) then {
+                private _gpsRef = ["", getPos _player, _anchor, _precision] call FUNC(mgrsMarkerText);
+                if (_gpsRef isNotEqualTo "") then {
+                    _map drawIcon [
+                        "", [0.05, 0.05, 0.05, 1], _gpsWorld, 0, 0, 0,
+                        "GPS  " + _gpsRef, 1, 0.024, _font, "left"
+                    ];
+                };
+            };
+        };
     }];
 
     _mapCtrl setVariable [QGVAR(mgrsMapReady), true];
-    // The map control is rebuilt on each open, so the engine tooltip starts
-    // visible again; clear the flag the Draw handler uses to restore it.
-    missionNamespace setVariable [QGVAR(mgrsTooltipHidden), false];
 }];

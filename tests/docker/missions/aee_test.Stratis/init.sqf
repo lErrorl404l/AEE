@@ -3327,6 +3327,12 @@ private _p29Pass = 0;
     // drawStyle survived, both object name sets are AEE-textured and the engine
     // grid lines are off while the numbers return.  It renders nothing.
     execVM "aee_p121_map_legibility_probe.sqf";
+    // PHASE 123 lives in aee_p123_map_grid_readout_probe.sqf: the edge-number
+    // colours, the MGRS line geometry and the readout kernels are asserted
+    // live.  The engine grid colour mapping (colorGrid = the edge numbers,
+    // colorGridMap = the in-map lines) and the collinear line plan are both
+    // measurable headless.  It renders nothing.
+    execVM "aee_p123_map_grid_readout_probe.sqf";
 
     // PHASE 125 lives in aee_p125_eye_time_skip_probe.sqf: the eye adaptation
     // driver is client-only, so the probe drives the REAL kernels with fixtures

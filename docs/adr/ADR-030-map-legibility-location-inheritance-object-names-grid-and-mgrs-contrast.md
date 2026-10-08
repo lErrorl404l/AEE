@@ -69,17 +69,22 @@ the lines looked grey.
 Decision - how the two grids coexist. The engine numeric grid supplies the
 NUMBERS and the AEE overlay supplies the LINES.
 
-- The engine numeric LINES stay off: `colorGrid[]` and `colorGridMap[]` keep
-  alpha 0 on `RscMapControl`, `RscDisplayStrategicMap >> controlsBackground >>
-  Map` and the Eden `ctrlMap`.
-- The engine NUMBERS return: `sizeExGrid` returns to the engine default 0.02
-  on the same three targets. That is the familiar vanilla numeric grid
-  reference the operator asked for.
-- The AEE MGRS overlay is the only line grid, and its linework is now DARK and
-  high contrast: the minor line is `{0.08, 0.08, 0.10, 0.55}`, the major line
-  `{0.03, 0.03, 0.05, 0.90}`, and the labels `{0.05, 0.05, 0.05, 1}`. The old
-  light cyan at alpha 0.30 read as grey. The dark colour matches the map label
-  colour `colorNames` `{0.10, 0.10, 0.10, 0.90}`. Source: AEE's own palette.
+- The engine grid fields are SPLIT. `colorGrid` is the colour of the EDGE
+  COORDINATE NUMBERS and `colorGridMap` is the colour of the in-map grid LINES
+  (engine source: the open-sourced Poseidon engine, `UIMap.cpp`,
+  `CStaticMap::DrawGrid` - `DrawText` uses `colorGrid`, `DrawLine` uses
+  `colorGridMap`).
+- The engine NUMBERS return: `colorGrid` is the engine default
+  `{0.15, 0.15, 0.05, 0.9}` and `sizeExGrid` is the engine default 0.04, on
+  `RscMapControl`, `RscDisplayStrategicMap >> controlsBackground >> Map` and
+  the Eden `ctrlMap`.
+- The engine numeric LINES stay off: `colorGridMap[]` keeps alpha 0 on the
+  same three targets.
+- The AEE MGRS overlay is the only line grid, and its linework is DARK and
+  high contrast. The first round set the minor line `{0.08, 0.08, 0.10, 0.55}`
+  and the major line `{0.03, 0.03, 0.05, 0.90}`; the second round raises the
+  weight and the alpha (see the second-round record below). The dark colour
+  matches the map label colour `colorNames` `{0.10, 0.10, 0.10, 0.90}`.
 
 The player, marker and cursor labels use the same dark colour.
 
@@ -109,8 +114,11 @@ value, texture or code.
 - `CfgLocationTypes` `drawStyle` is a fixed enum (`name`, `icon`, `area`,
   `mount`). A mod changes the texture, colour, size, font, shadow and
   importance only.
-- The engine grid numbers have no separate config colour field. AEE restores
-  `sizeExGrid` and keeps `colorGrid` alpha 0.
+- The engine grid colours are split: `colorGrid` is the EDGE NUMBER colour and
+  `colorGridMap` is the in-map LINE colour (engine source: the open-sourced
+  Poseidon engine, `UIMap.cpp`, `CStaticMap::DrawGrid`). The edge numbers
+  cannot be read while `colorGrid` alpha is 0, so AEE sets `colorGrid` to a
+  visible colour and keeps the engine lines off with `colorGridMap` alpha 0.
 - The contour geometry and the contour interval are engine-derived from the
   elevation data. No config field sets either.
 - The satellite land texture is baked into the map layers. Only
