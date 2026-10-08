@@ -176,7 +176,7 @@ def report(rows: Sequence[FleetRow], bindings: set[str], emitted: set[str]) -> s
     if classified:
         routes = Counter(row.cby for row in classified)
         catalogue = routes.get("corpus", 0) + routes.get("band", 0)
-        token_only = routes.get("token", 0)
+        token_only = routes.get("class", 0)
         none = routes.get("none", 0)
         lines.append(
             f"classifier: {catalogue} catalogue entries "

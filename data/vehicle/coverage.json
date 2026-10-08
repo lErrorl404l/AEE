@@ -2,7 +2,7 @@
   "schema": "aee.vehicle.coverage/1",
   "tokens": [
     {
-      "token": "APC_Tracked_01_base_F",
+      "class": "APC_Tracked_01_base_F",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -10,7 +10,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "APC_Tracked_02_base_F",
+      "class": "APC_Tracked_02_base_F",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -18,7 +18,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "APC_Tracked_03_base_F",
+      "class": "APC_Tracked_03_base_F",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -26,7 +26,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "APC_Wheeled_01_base_F",
+      "class": "APC_Wheeled_01_base_F",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -34,7 +34,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "APC_Wheeled_02_base_F",
+      "class": "APC_Wheeled_02_base_F",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -42,7 +42,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "APC_Wheeled_03_base_F",
+      "class": "APC_Wheeled_03_base_F",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -50,7 +50,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Air",
+      "class": "Air",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -58,7 +58,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "AllVehicles",
+      "class": "AllVehicles",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -66,7 +66,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Animal",
+      "class": "Animal",
       "kind": "mod_token",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -74,7 +74,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Building",
+      "class": "Building",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -82,7 +82,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Bush",
+      "class": "Bush",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -90,7 +90,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "CAManBase",
+      "class": "CAManBase",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -98,7 +98,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Car",
+      "class": "Car",
       "kind": "engine_base",
       "is_ground": true,
       "state": "recorded",
@@ -106,7 +106,7 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
-      "token": "F_40_Green",
+      "class": "F_40_Green",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -114,7 +114,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "F_40_Red",
+      "class": "F_40_Red",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -122,7 +122,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "F_40_White",
+      "class": "F_40_White",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -130,7 +130,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "F_40_Yellow",
+      "class": "F_40_Yellow",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -138,7 +138,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Helicopter",
+      "class": "Helicopter",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -146,7 +146,7 @@
       "reason": "class-table row marks the token non-ground (zero value)"
     },
     {
-      "token": "House",
+      "class": "House",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -154,7 +154,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "LandVehicle",
+      "class": "LandVehicle",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -162,7 +162,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "MRAP",
+      "class": "MRAP",
       "kind": "mod_token",
       "is_ground": true,
       "state": "recorded",
@@ -170,7 +170,7 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
-      "token": "Man",
+      "class": "Man",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -178,7 +178,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Motorcycle",
+      "class": "Motorcycle",
       "kind": "mod_token",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -186,7 +186,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "ParachuteBase",
+      "class": "ParachuteBase",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -194,7 +194,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Plane",
+      "class": "Plane",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -202,7 +202,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "ReammoBox",
+      "class": "ReammoBox",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -210,7 +210,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Ruins",
+      "class": "Ruins",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -218,7 +218,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Ship",
+      "class": "Ship",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -226,7 +226,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Static",
+      "class": "Static",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -234,7 +234,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "StaticWeapon",
+      "class": "StaticWeapon",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -242,7 +242,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Tank",
+      "class": "Tank",
       "kind": "engine_base",
       "is_ground": true,
       "state": "recorded",
@@ -250,7 +250,7 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
-      "token": "Tracked_APC",
+      "class": "Tracked_APC",
       "kind": "engine_base",
       "is_ground": true,
       "state": "recorded",
@@ -258,7 +258,7 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
-      "token": "Tree",
+      "class": "Tree",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -266,7 +266,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Truck",
+      "class": "Truck",
       "kind": "engine_base",
       "is_ground": true,
       "state": "recorded",
@@ -274,7 +274,7 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
-      "token": "UAV",
+      "class": "UAV",
       "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
@@ -282,7 +282,7 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "token": "Wheeled_APC",
+      "class": "Wheeled_APC",
       "kind": "mod_token",
       "is_ground": true,
       "state": "recorded",
@@ -290,7 +290,7 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
-      "token": "Wheeled_APC_F",
+      "class": "Wheeled_APC_F",
       "kind": "mod_token",
       "is_ground": true,
       "state": "no_source",

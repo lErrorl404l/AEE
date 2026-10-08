@@ -214,7 +214,7 @@ def build_inventory(root: Path) -> Inventory:
         )
         tokens.append(
             {
-                "token": token,
+                "class": token,
                 "kind": "engine_base" if ref["kindof"] else "mod_token",
                 "is_ground": ground,
                 "provenance": provenance,
