@@ -3273,6 +3273,12 @@ private _p29Pass = 0;
     // confirms the re-pointed simple classes resolve to a dimension-correct
     // texture in the live config.
     execVM "aee_p112_symbology_live_probe.sqf";
+    // PHASE 113 lives in aee_p113_terrain_probe.sqf: the terrain layer is a
+    // load-time config re-declare, so the probe reads the merged config (a
+    // location icon, an object icon, the sea fill, the satellite opacity and
+    // the label font) and confirms the terrain registry loaded.  It renders
+    // nothing.
+    execVM "aee_p113_terrain_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

@@ -46,10 +46,19 @@ class CfgFontFamilies {
 };
 
 // Repoint the map grid labels at the AEE font at load time.  No runtime
-// command repoints fontGrid, so this override is the only route.
+// command repoints fontGrid, so this override is the only route.  The map
+// terrain palette and the object icons are included inside this block so the
+// engine class is not declared twice.
 class RscMapControl {
     fontGrid = "AEEFont";
+    fontNames = "AEEFont";
+#include "config_mapcolors.hpp"
+#include "config_mapicons.hpp"
 };
+
+#include "config_locationtypes.hpp"
+#include "config_mapdisplays.hpp"
+#include "config_curator.hpp"
 
 // ─── NATO/OPFOR map symbology markers (ADR-024) ──────────────────────────
 // Real engine map markers.  Every AEE symbol is a CfgMarkers entry whose
