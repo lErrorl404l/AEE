@@ -3,13 +3,14 @@
 
 AEE ships no cropped plate scan.  Every register entry must carry a DGIWG
 Symbol Register id, a concept name, and a committed SVG whose render is the
-committed source PNG byte for byte.  Every non-register entry must be recorded
+committed source PNG.  The compare is structural, not byte-for-byte, so it
+holds across librsvg versions.  Every non-register entry must be recorded
 in `no_register_source` with a public-domain or CC BY licence.
 
 This fails when:
   - a referenced symbol has no manifest entry;
-  - a register entry has no SVG, or its source PNG is not the exact render of
-    that SVG (a crop, a re-colour, or a stale file);
+  - a register entry has no SVG, or its source PNG is not the render of
+    that SVG (a crop, a re-colour, a wrong source, or a stale file);
   - a register entry's licence is not CC BY;
   - a non-register entry is not recorded, or its licence is not open;
   - any source image is plate-sized (a scan crop is about 1200 px wide; a
@@ -37,6 +38,68 @@ SRC_DIR = TERRAIN_DIR / "src"
 # A register render is 128 px.  A scanned plate crop is far larger.
 MAX_SOURCE_PX = 256
 RENDER_ARGS = ["--keep-aspect-ratio", "-w", "128", "-h", "128"]
+
+# A librsvg release encodes the same pixels into different PNG bytes, so a
+# byte-for-byte compare of a source PNG against a fresh render is
+# environment-dependent: a PNG cut with librsvg 2.62 fails the same check on a
+# runner that ships 2.58.  Compare the decoded RGBA structure instead, within a
+# tolerance that absorbs encoder and antialiasing noise but still rejects a
+# plate crop, a re-colour, a wrong source or a stale file.
+MAX_CHANNEL_DELTA = 64  # a pixel this far off is a content change, not noise
+MAX_CHANGED_FRACTION = 0.05  # antialiasing moves a few edge pixels, not five percent
+NOISE_DELTA = 8  # per-channel differences at or below this are noise
+MIN_INK_IOU = 0.98  # the painted (alpha) region must overlap the render
+
+
+def svg_render_mismatch(committed: Path, fresh: Path) -> str | None:
+    """Return why the committed PNG is not the SVG render, or None when it is.
+
+    A byte compare cannot cross a librsvg version.  This compares structure:
+    the size, a real alpha channel, the colour content and the painted
+    geometry, each within a tolerance.
+    """
+    from PIL import Image, ImageChops
+
+    with Image.open(committed) as c_img, Image.open(fresh) as f_img:
+        if c_img.size != f_img.size:
+            return f"size {c_img.size} != SVG render {f_img.size}"
+        committed_has_alpha = "A" in c_img.getbands()
+        committed_rgba = c_img.convert("RGBA")
+        fresh_rgba = f_img.convert("RGBA")
+
+    # A point or line symbol renders on a transparent ground.  A source that
+    # dropped the alpha channel is a flat plate crop, not that render.
+    render_transparent = fresh_rgba.getchannel("A").getextrema()[0] < 255
+    if render_transparent and not committed_has_alpha:
+        return "source has no alpha channel (a flat crop, not the SVG render)"
+
+    diff = ImageChops.difference(committed_rgba, fresh_rgba)
+    worst = max(band[1] for band in diff.getextrema())
+    if worst > MAX_CHANNEL_DELTA:
+        return f"colour differs from the SVG render by {worst} (a re-colour or another glyph)"
+
+    def above_noise(band):
+        return band.point(lambda value: 255 if value > NOISE_DELTA else 0)
+
+    marked = above_noise(diff.getchannel("R"))
+    for channel in ("G", "B", "A"):
+        marked = ImageChops.lighter(marked, above_noise(diff.getchannel(channel)))
+    changed = marked.histogram()[255]
+    total = committed_rgba.width * committed_rgba.height
+    if changed > MAX_CHANGED_FRACTION * total:
+        return f"{changed} of {total} pixels differ from the SVG render"
+
+    committed_ink = committed_rgba.getchannel("A").point(
+        lambda v: 255 if v > 127 else 0
+    )
+    fresh_ink = fresh_rgba.getchannel("A").point(lambda v: 255 if v > 127 else 0)
+    union = ImageChops.lighter(committed_ink, fresh_ink).histogram()[255]
+    if union:
+        overlap = ImageChops.multiply(committed_ink, fresh_ink).histogram()[255]
+        iou = overlap / union
+        if iou < MIN_INK_IOU:
+            return f"painted geometry differs from the SVG render (IoU {iou:.3f})"
+    return None
 
 
 def referenced(doc: dict) -> list[str]:
@@ -111,10 +174,11 @@ def main() -> int:
                 if result.returncode != 0 or not fresh.is_file():
                     errors.append(f"{symbol}: rsvg-convert failed for {svg_name}")
                     continue
-                if src.read_bytes() != fresh.read_bytes():
+                mismatch = svg_render_mismatch(src, fresh)
+                if mismatch:
                     errors.append(
-                        f"{symbol}: source PNG is not the exact render of {svg_name} "
-                        f"(a crop, a re-colour, or a stale file)"
+                        f"{symbol}: source PNG is not the render of {svg_name} "
+                        f"({mismatch})"
                     )
             else:
                 if symbol not in recorded:
