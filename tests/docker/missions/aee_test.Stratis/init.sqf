@@ -3290,6 +3290,13 @@ private _p29Pass = 0;
     // falling-time contract (a settled eye reports no pending adaptation and
     // an adapting eye reports a time that falls).  It renders nothing.
     execVM "aee_p115_eye_adapt_probe.sqf";
+
+    // PHASE 116 lives in aee_p116_engine_override_probe.sqf: the generated
+    // CfgMagazines initSpeed and CfgAmmo airFriction are load-time config
+    // re-declares, so the probe reads the merged config and confirms the
+    // values loaded AND that restating the parent kept the vanilla
+    // inheritance.  It renders nothing.
+    execVM "aee_p116_engine_override_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

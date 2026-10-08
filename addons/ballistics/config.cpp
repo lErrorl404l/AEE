@@ -22,3 +22,8 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+// Load-time engine overrides generated from the verified database; the
+// verdict per class is in docs/wiki/research/engine-override-register.md.
+#include "generated/CfgMagazines.hpp"
+#include "generated/CfgAmmo.hpp"

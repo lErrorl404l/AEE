@@ -83,6 +83,10 @@ jobs:
         run: python3 tools/validation/validate_aircraft_data.py
       - name: Thermal optics config freshness check
         run: python3 tools/validation/gen_thermal_optics.py --check
+      - name: Engine override freshness check
+        run: python3 tools/validation/gen_engine_overrides.py --check
+      - name: Engine override register and header validation
+        run: python3 tools/validation/validate_engine_overrides.py
       - name: Debug index freshness check
         run: python3 tools/validation/gen_debug_index.py --check
       - name: MGRS table freshness check
