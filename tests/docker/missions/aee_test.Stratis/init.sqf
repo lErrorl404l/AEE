@@ -3301,6 +3301,13 @@ private _p29Pass = 0;
     // the marker families and the marker classes are all engine config, so the
     // probe reads the merged config live and reports it.  It renders nothing.
     execVM "aee_p117_map_surface_probe.sqf";
+
+    // PHASE 118 lives in aee_p118_ownership_probe.sqf: the ownership sentinels
+    // are a load-time config read, so the probe reads each declared value from
+    // the merged config and confirms AEE's value won. When the merge-order
+    // probe addon is loaded it reports the merge winner instead (used by
+    // docker_test.sh --merge-order). It renders nothing.
+    execVM "aee_p118_ownership_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

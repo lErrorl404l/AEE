@@ -127,6 +127,21 @@ if (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
         } else {
             diag_log text format ["[HOST] [FAIL] ACE3 temperature not synced: ace=%1 aee=%2", isNil "_aceTemp", isNil "_aeeTemp"];
         };
+
+        // ADR-027 direction split. The weather bridge is an OWNERSHIP CLAIM:
+        // AEE owns the weather simulation and ACE stands down, so
+        // ace_weather_enabled is false. The physiology resolver registration
+        // is an ADAPTATION: AEE publishes into its own registry, which the
+        // core reads without ever naming ACE.
+        private _aceWeatherEnabled = missionNamespace getVariable ["ace_weather_enabled", true];
+        private _claimOk = (_aceWeatherEnabled isEqualType false) && {!_aceWeatherEnabled};
+        private _massResolvers = missionNamespace getVariable ["aee_physiology_massResolvers", []];
+        private _adaptOk = (_massResolvers isEqualType []) && {count _massResolvers > 0};
+        if (_claimOk && _adaptOk) then {
+            diag_log text "[DIR] [PASS] claim=weather adapt=physiology";
+        } else {
+            diag_log text format ["[DIR] [FAIL] claim=weather(%1) adapt=physiology(%2)", _claimOk, _adaptOk];
+        };
     };
     diag_log text "[AEE-TEST] DONE";
 }, [], 35] call CBA_fnc_waitAndExecute;

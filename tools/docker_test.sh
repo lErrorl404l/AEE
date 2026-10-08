@@ -14,6 +14,8 @@
 #   --soak            long AI/wildlife soak (--soak-min N, default 20)
 #   --stress          soak plus the saturation burst and agent churn
 #   --parallel        run several modes at once and aggregate the verdict
+#   --merge-order     prove the config merge is last-loaded-wins (ADR-027)
+#   --direction       exercise the compat direction split with a stand-in host
 #
 # Isolation options:
 #   --run-id ID       name this run (default: <worktree>-<pid>)
@@ -53,6 +55,8 @@ while [ $# -gt 0 ]; do
     --soak) MODE="soak" ;;
     --stress) MODE="stress" ;;
     --parallel) MODE="parallel" ;;
+    --merge-order) MODE="merge_order" ;;
+    --direction) MODE="direction" ;;
     --isolate) ISOLATE=1 ;;
     --soak-min)
         shift
@@ -365,7 +369,12 @@ YAMLEOF
             echo "  FAIL: $host - see tests/docker/run.$host.log"
             FAILED=1
         elif grep -q "\[HOST\] \[PASS\] $hostname" "$RUN_DIR/run.$host.log" 2>/dev/null; then
-            echo "  PASS: $host compat integration"
+            if [ "$host" = "ace" ] && ! grep -q "\[DIR\] \[PASS\]" "$RUN_DIR/run.$host.log" 2>/dev/null; then
+                echo "  FAIL: $host - direction split not asserted (ADR-027)"
+                FAILED=1
+            else
+                echo "  PASS: $host compat integration"
+            fi
         else
             echo "  FAIL: $host - no result (see tests/docker/run.$host.log)"
             FAILED=1
@@ -400,6 +409,112 @@ CFGEOF
     fi
     echo "==> host compat PASS"
     exit 0
+fi
+
+if [ "$MODE" = "merge_order" ]; then
+    echo "==> merge-order probe (ADR-027: the config merge is last-loaded-wins)"
+    PROBE_DIR="$ROOT/tests/docker/probe_owner"
+    if [ "${AEE_SKIP_BUILD:-0}" != "1" ]; then
+        echo "==> build merge-order probe addon"
+        (cd "$PROBE_DIR" && "$ROOT/tools/hemtt.sh" build >/dev/null)
+    fi
+    rm -rf "$MODS/@probe_before" "$MODS/@probe_after"
+    mkdir -p "$MODS/@probe_before/addons" "$MODS/@probe_after/addons"
+    cp "$PROBE_DIR"/.hemttout/build/addons/probe_owner_probe_before.pbo "$MODS/@probe_before/addons/"
+    cp "$PROBE_DIR"/.hemttout/build/addons/probe_owner_probe_after.pbo "$MODS/@probe_after/addons/"
+
+    run_order() {
+        local label="$1" modparam="$2" expect="$3"
+        local overlay="$RUN_DIR/docker-compose.merge.$label.yml"
+        cat >"$overlay" <<YAMLEOF
+services:
+  aee-test:
+    environment:
+      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=$modparam
+YAMLEOF
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$overlay" up -d --force-recreate
+        for _ in $(seq 1 60); do
+            if docker compose -f "$DOCKER/docker-compose.yml" -f "$overlay" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
+            sleep 5
+        done
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$overlay" logs >"$RUN_DIR/run.merge.$label.log" 2>&1
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$overlay" down 2>/dev/null || true
+        rm -f "$overlay"
+        if grep -q "winner=$expect " "$RUN_DIR/run.merge.$label.log" 2>/dev/null; then
+            echo "  PASS: $label run - winner=$expect"
+            return 0
+        fi
+        echo "  FAIL: $label run - expected winner=$expect"
+        grep -o "\[P118\] [^\n]*" "$RUN_DIR/run.merge.$label.log" | tail -2 || true
+        return 1
+    }
+
+    MERGE_RC=0
+    # probe_after requires aee_mobility, so it loads AFTER AEE and wins the
+    # merge: a mod that names AEE and loads after it takes the class (ceiling).
+    run_order after "mods/@aee;mods/@cba_a3;mods/@probe_after" probe || MERGE_RC=1
+    # probe_before declares no requiredAddons, so it loads BEFORE AEE: AEE
+    # loads last and wins the merge.
+    run_order before "mods/@probe_before;mods/@aee;mods/@cba_a3" aee || MERGE_RC=1
+    clean_profiles
+    if [ "$MERGE_RC" -ne 0 ]; then
+        echo "==> merge-order FAIL"
+        exit 1
+    fi
+    echo "==> merge-order PASS"
+    exit 0
+fi
+
+if [ "$MODE" = "direction" ]; then
+    echo "==> direction-split probe (ADR-027: stand-in host, not ACE3)"
+    HOST_DIR="$ROOT/tests/docker/probe_host"
+    if [ "${AEE_SKIP_BUILD:-0}" != "1" ]; then
+        echo "==> build direction probe host"
+        (cd "$HOST_DIR" && "$ROOT/tools/hemtt.sh" build >/dev/null)
+    fi
+    rm -rf "$MODS/@probe_host"
+    mkdir -p "$MODS/@probe_host"
+    cp -a "$HOST_DIR/.hemttout/build/." "$MODS/@probe_host/"
+
+    cat >"$CONFIGS/server.cfg" <<CFGEOF
+hostname = "AEE Test";
+password = "";
+passwordAdmin = "";
+maxPlayers = 8;
+persistent = 1;
+loopback = 1;
+kickDuplicate = 0;
+BattlEye = 0;
+verifySignatures = 0;
+class Missions {
+    class AEETest {
+        template = "compat_host.Stratis";
+        difficulty = "custom";
+    };
+};
+CFGEOF
+    cat >"$RUN_DIR/docker-compose.direction.yml" <<YAMLEOF
+services:
+  aee-test:
+    environment:
+      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3;mods/@probe_host
+      - ARMA3_SERVER__MISSION=compat_host.Stratis
+YAMLEOF
+    docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.direction.yml" up -d --force-recreate
+    for _ in $(seq 1 60); do
+        if docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.direction.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
+        sleep 5
+    done
+    docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.direction.yml" logs >"$RUN_DIR/run.direction.log" 2>&1
+    docker compose -f "$DOCKER/docker-compose.yml" -f "$RUN_DIR/docker-compose.direction.yml" down 2>/dev/null || true
+    clean_profiles
+    if grep -q "\[DIR\] \[PASS\]" "$RUN_DIR/run.direction.log" 2>/dev/null; then
+        echo "==> direction-split PASS"
+        exit 0
+    fi
+    echo "==> direction-split FAIL"
+    grep -o "\[DIR\] [^\n]*" "$RUN_DIR/run.direction.log" | tail -3 || true
+    exit 1
 fi
 
 if [ "$MODE" = "maps" ]; then
