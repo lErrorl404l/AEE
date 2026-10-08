@@ -21,3 +21,9 @@ private _created = missionNamespace getVariable [QGVAR(symbologyUnitMarkers), []
     deleteMarkerLocal _x;
 } forEach _created;
 missionNamespace setVariable [QGVAR(symbologyUnitMarkers), []];
+
+private _echelon = missionNamespace getVariable [QGVAR(symbologyUnitEchelonMarkers), []];
+{
+    deleteMarkerLocal _x;
+} forEach _echelon;
+missionNamespace setVariable [QGVAR(symbologyUnitEchelonMarkers), []];

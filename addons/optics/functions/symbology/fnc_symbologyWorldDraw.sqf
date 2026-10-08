@@ -58,7 +58,7 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
 
     // ── Draw one real marker texture above a unit. ───────────────────────
     private _drawWorld = {
-        params ["_unit", "_spec", "_label"];
+        params ["_unit", "_spec", "_label", "_echelonClass"];
         private _base = getPos _unit;
         private _origin = [
             _base select 0, _base select 1, (_base select 2) + 2.5
@@ -75,14 +75,28 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
             _texture, _colour, _origin, 1.5, 1.5, 0,
             _label, 2, 0.024, _font, "center"
         ];
+        // The echelon overlay is a 64 x 128 texture with the ticks in the top
+        // band, so it sits above the frame at the same origin.
+        private _echelonTexture = getText (
+            configFile >> "CfgMarkers" >> _echelonClass >> "texture"
+        );
+        if (_echelonTexture isNotEqualTo "") then {
+            drawIcon3D [
+                _echelonTexture, _colour, _origin, 1.5, 3.0, 0,
+                "", 2, 0.024, _font, "center"
+            ];
+        };
     };
 
     // ── The player ───────────────────────────────────────────────────────
     private _playerCategory = [_player] call FUNC(symbologyUnitCategory);
+    private _playerDimension = [_player] call FUNC(symbologyUnitDimension);
+    private _playerEchelon = [_player] call FUNC(symbologyUnitEchelon);
     private _playerSpec = [
-        playerSide, _playerCategory, "friend", "unknown", _palette
+        playerSide, _playerCategory, "friend", _playerEchelon, _palette, _playerDimension
     ] call FUNC(symbolResolve);
-    [_player, _playerSpec, name _player] call _drawWorld;
+    private _playerEchelonClass = [_playerEchelon] call FUNC(symbologyEchelonMarker);
+    [_player, _playerSpec, name _player, _playerEchelonClass] call _drawWorld;
 
     // ── The in-range units ───────────────────────────────────────────────
     {
@@ -95,10 +109,13 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
             if (side _unit isEqualTo resistance) then { _colourName = "ColorGUER"; };
             if (side _unit isEqualTo civilian) then { _colourName = "ColorCIV"; };
             private _affiliation = ["", _colourName, _friendly] call FUNC(symbologyAffiliation);
+            private _echelon = [_unit] call FUNC(symbologyUnitEchelon);
+            private _dimension = [_unit] call FUNC(symbologyUnitDimension);
             private _spec = [
-                side _unit, _category, _affiliation, "unknown", _palette
+                side _unit, _category, _affiliation, _echelon, _palette, _dimension
             ] call FUNC(symbolResolve);
-            [_unit, _spec, name _unit] call _drawWorld;
+            private _echelonClass = [_echelon] call FUNC(symbologyEchelonMarker);
+            [_unit, _spec, name _unit, _echelonClass] call _drawWorld;
         };
     } forEach (missionNamespace getVariable [QGVAR(symbologyWorldUnits), []]);
 }];

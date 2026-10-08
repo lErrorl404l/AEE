@@ -11,8 +11,10 @@
  * The type is "AEE_<family>_<glyph>".  The family is the affiliation: b for
  * friend, o for hostile, n for neutral and u for unknown.  The glyph is the
  * class category's marker token, for example "inf" for infantry.  The
- * dimension, the echelon and the palette are carried for the caller's
- * symmetry; they do not change the type today.
+ * dimension, the echelon and the palette are carried: they do not change the
+ * type.  The frame a symbol draws is selected by the CfgMarkers class's
+ * texture, not by the type name, so a caller that needs an air, sea or
+ * installation frame must point the class at a dimension-correct texture.
  *
  * Arguments:
  *   0: _affiliation <STRING> "friend", "hostile", "neutral" or "unknown"

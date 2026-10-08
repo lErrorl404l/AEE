@@ -102,6 +102,12 @@ class CfgMarkers {
     // Do not edit by hand.
 #include "config_taxonomy.hpp"
 
+    // The APP-6 mission-task graphics, the amplifier modifiers and the
+    // echelon overlays, rendered by tools/gen_symbology_modifiers.py.  The
+    // echelon overlay classes are selected at run time by the marker layer.
+    // Do not edit by hand.
+#include "config_modifiers.hpp"
+
     // Friendly family (side 1).
     class AEE_b_inf: AEE_MarkerBase {
         name = "AEE Friendly Infantry";
@@ -182,29 +188,29 @@ class CfgMarkers {
     };
     class AEE_b_plane: AEE_MarkerBase {
         name = "AEE Friendly Fixed Wing";
-        icon = "\A3\ui_f\data\map\markers\nato\b_plane.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\b_plane.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Aviation_Fixed_Win.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Aviation_Fixed_Win.paa";
         side = 1;
         scope = 2;
     };
     class AEE_b_air: AEE_MarkerBase {
         name = "AEE Friendly Rotary";
-        icon = "\A3\ui_f\data\map\markers\nato\b_air.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\b_air.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Army_Aviation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_APP_6_Army_Aviation.paa";
         side = 1;
         scope = 2;
     };
     class AEE_b_uav: AEE_MarkerBase {
         name = "AEE Friendly Uav";
-        icon = "\A3\ui_f\data\map\markers\nato\b_uav.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\b_uav.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve.paa";
         side = 1;
         scope = 2;
     };
     class AEE_b_naval: AEE_MarkerBase {
         name = "AEE Friendly Sea Surface";
-        icon = "\A3\ui_f\data\map\markers\nato\b_naval.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\b_naval.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Unit_Naval.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Unit_Naval.paa";
         side = 1;
         scope = 2;
     };
@@ -217,8 +223,8 @@ class CfgMarkers {
     };
     class AEE_b_installation: AEE_MarkerBase {
         name = "AEE Friendly Installation";
-        icon = "\A3\ui_f\data\map\markers\nato\b_installation.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\b_installation.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FI_Installation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FI_Installation.paa";
         side = 1;
         scope = 2;
     };
@@ -324,29 +330,29 @@ class CfgMarkers {
     };
     class AEE_o_plane: AEE_MarkerBase {
         name = "AEE Hostile Fixed Wing";
-        icon = "\A3\ui_f\data\map\markers\nato\o_plane.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\o_plane.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Aviation_Fixed_Wing.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Aviation_Fixed_Wing.paa";
         side = 0;
         scope = 2;
     };
     class AEE_o_air: AEE_MarkerBase {
         name = "AEE Hostile Rotary";
-        icon = "\A3\ui_f\data\map\markers\nato\o_air.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\o_air.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Aviation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Aviation.paa";
         side = 0;
         scope = 2;
     };
     class AEE_o_uav: AEE_MarkerBase {
         name = "AEE Hostile Uav";
-        icon = "\A3\ui_f\data\map\markers\nato\o_uav.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\o_uav.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh.paa";
         side = 0;
         scope = 2;
     };
     class AEE_o_naval: AEE_MarkerBase {
         name = "AEE Hostile Sea Surface";
-        icon = "\A3\ui_f\data\map\markers\nato\o_naval.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\o_naval.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HS_Hostile_Unit_Naval.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HS_Hostile_Unit_Naval.paa";
         side = 0;
         scope = 2;
     };
@@ -359,8 +365,8 @@ class CfgMarkers {
     };
     class AEE_o_installation: AEE_MarkerBase {
         name = "AEE Hostile Installation";
-        icon = "\A3\ui_f\data\map\markers\nato\o_installation.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\o_installation.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HI_Installation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HI_Installation.paa";
         side = 0;
         scope = 2;
     };
@@ -466,29 +472,29 @@ class CfgMarkers {
     };
     class AEE_n_plane: AEE_MarkerBase {
         name = "AEE Neutral Fixed Wing";
-        icon = "\A3\ui_f\data\map\markers\nato\n_plane.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\n_plane.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Aviation_Fixed_Wing.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Aviation_Fixed_Wing.paa";
         side = 2;
         scope = 2;
     };
     class AEE_n_air: AEE_MarkerBase {
         name = "AEE Neutral Rotary";
-        icon = "\A3\ui_f\data\map\markers\nato\n_air.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\n_air.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Aviation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Aviation.paa";
         side = 2;
         scope = 2;
     };
     class AEE_n_uav: AEE_MarkerBase {
         name = "AEE Neutral Uav";
-        icon = "\A3\ui_f\data\map\markers\nato\n_uav.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\n_uav.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh.paa";
         side = 2;
         scope = 2;
     };
     class AEE_n_naval: AEE_MarkerBase {
         name = "AEE Neutral Sea Surface";
-        icon = "\A3\ui_f\data\map\markers\nato\n_naval.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\n_naval.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NS_Neutral_Unit_Naval.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NS_Neutral_Unit_Naval.paa";
         side = 2;
         scope = 2;
     };
@@ -501,8 +507,8 @@ class CfgMarkers {
     };
     class AEE_n_installation: AEE_MarkerBase {
         name = "AEE Neutral Installation";
-        icon = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
-        texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NI_Installation.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NI_Installation.paa";
         side = 2;
         scope = 2;
     };

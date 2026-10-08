@@ -19,6 +19,7 @@
  *   2: _affiliation <STRING> "friend", "hostile", "neutral" or "unknown"
  *   3: _echelon     <STRING> an echelon token, for example "squad"
  *   4: _palette     <STRING> "NATO", "OPFOR" or "Auto"
+ *   5: _dimension   <STRING> a dimension token, for example "air"
  *
  * Return: <ARRAY> [affiliation, markerType, markerColourClass, echelon]
  */
@@ -27,11 +28,12 @@ params [
     ["_category", "unknown", [""]],
     ["_affiliation", "friend", [""]],
     ["_echelon", "unknown", [""]],
-    ["_palette", "NATO", [""]]
+    ["_palette", "NATO", [""]],
+    ["_dimension", "land", [""]]
 ];
 
 private _markerType = [
-    _affiliation, _category, "land", _echelon, _palette
+    _affiliation, _category, _dimension, _echelon, _palette
 ] call FUNC(symbologyMarkerType);
 private _markerColour = [_affiliation, _palette] call FUNC(symbologyMarkerColor);
 
