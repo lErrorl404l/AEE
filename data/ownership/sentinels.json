@@ -69,7 +69,7 @@
       "type": "array",
       "expected": [1, 1, 1, 1],
       "source": "addons/optics/config.cpp",
-      "evidence": "class ColorAEE { color[] = {1, 1, 1, 1}; };"
+      "evidence": "class ColorAEE { scope = 1; color[] = {1, 1, 1, 1}; };"
     },
     {
       "id": "marker-base-size",

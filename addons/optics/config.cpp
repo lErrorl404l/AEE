@@ -129,7 +129,7 @@ class CfgMarkerClasses {
 // FUNC(symbologyAffiliation) reads a mission marker's original colour through
 // them before AEE converts it.
 class CfgMarkerColors {
-    class ColorAEE { color[] = {1, 1, 1, 1}; };
+    class ColorAEE { scope = 1; color[] = {1, 1, 1, 1}; };
     class ColorWEST { color[] = {0, 1, 1, 1}; };
     class ColorEAST { color[] = {1, 0, 0, 1}; };
     class ColorGUER { color[] = {0, 1, 0, 1}; };

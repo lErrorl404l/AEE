@@ -362,9 +362,7 @@ class TestSymbolMarkerType(unittest.TestCase):
         for _affiliation_name, family, _grade, _source in FAMILIES:
             for category_name, glyph, _grade2, _source2 in GLYPHS:
                 with self.subTest(family=family, category=category_name):
-                    self.assertIn(
-                        f"class AEE_{family}_{glyph}:", FAMILY_SRC
-                    )
+                    self.assertIn(f"class AEE_{family}_{glyph}:", FAMILY_SRC)
 
 
 class TestSymbolMarkerColor(unittest.TestCase):
@@ -524,9 +522,7 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
         for _affiliation_name, family, _grade, _source in FAMILIES:
             for category_name, glyph, _grade2, _source2 in GLYPHS:
                 with self.subTest(family=family, category=category_name):
-                    self.assertIn(
-                        f"class AEE_{family}_{glyph}:", FAMILY_SRC
-                    )
+                    self.assertIn(f"class AEE_{family}_{glyph}:", FAMILY_SRC)
         pairs = len(FAMILIES) * len(GLYPHS)
         self.assertEqual(FAMILY_SRC.count("class AEE_"), pairs)
 
@@ -537,8 +533,13 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
 
     def test_the_marker_tint_is_neutral(self):
         # Every AEE texture carries its own colours, so the engine tint is
-        # white.  ColorAEE is the neutral class the kernels select.
-        self.assertIn("class ColorAEE { color[] = {1, 1, 1, 1}; };", CONFIG_SRC)
+        # white.  ColorAEE is the neutral class the kernels select.  It also
+        # declares a scope: ColorAEE is a new CfgMarkerColors class with no
+        # vanilla parent, so it inherits no scope, and the engine logs
+        # "No entry '.../ColorAEE.scope'" and "'/' is not a value" without it.
+        self.assertIn(
+            "class ColorAEE { scope = 1; color[] = {1, 1, 1, 1}; };", CONFIG_SRC
+        )
         for side in ("side = 0;", "side = 1;", "side = 2;"):
             self.assertIn(side, FAMILY_SRC)
 
