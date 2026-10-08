@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
 """Generate the AEE terrain and map-feature symbol textures.
 
-Every AEE terrain symbol is a REAL public-domain drawing, re-textured to a
-.paa.  The drawings come from the US Army FM 21-31 "Topographic Symbols"
-(1961, public domain) and the USGS "Topographic Map Symbols" sheet (2005,
-public domain), cropped by the extraction step and committed under
-addons/optics/data/terrain/src/.  AEE does NOT hand-draw a terrain symbol.
+Every AEE terrain symbol is cut from the standard's own VECTOR source.  The
+DGIWG Symbol Register serves one SVG per symbol at
+https://portal.dgiwg.org/public_dgiwg/portrayal/graphics/SO_####.svg.  Each
+referenced SVG is rendered with
 
-This generator reads data/symbology/terrain_sources.json (the per-symbol
-provenance manifest), rasterises each source to a white-on-transparent 64 px
-mask so the engine location and object colour tints it, and converts it to a
-.paa with `hemtt utils paa convert`.
+    rsvg-convert --keep-aspect-ratio -w 128 -h 128 -o OUT.png IN.svg
+
+so the symbol keeps the register's own colours on a transparent ground.  This
+generator normalises that render to a 64 px RGBA icon (colour and alpha kept
+as they are) and converts it to a .paa with `hemtt utils paa convert`.
+
+The one non-register symbol (quay) is the USGS public-domain vector symbol,
+already transparent.  AEE does not hand-draw a terrain symbol and does not
+crop a scanned plate.
 
 The authority is STANAG 3675, succeeded by the DGIWG Symbol Register (the
-DTM50 product), with FM 21-31 and the USGS sheet as the public-domain
-fallback.  See docs/wiki/research/terrain-symbols.md.
+DTM50 product).  See docs/wiki/research/terrain-symbols.md.
 
 Run:  python3 tools/gen_terrain_symbols.py
       python3 tools/gen_terrain_symbols.py --check
       python3 tools/gen_terrain_symbols.py --table
+      python3 tools/gen_terrain_symbols.py --render      (re-cut the src PNGs)
+      python3 tools/gen_terrain_symbols.py --verify-svg  (prove src == SVG)
 """
 
 from __future__ import annotations
@@ -38,7 +43,7 @@ TERRAIN_OUT = ROOT / "addons" / "optics" / "data" / "terrain"
 SRC_DIR = TERRAIN_OUT / "src"
 
 SIZE = 64
-WHITE = (255, 255, 255, 255)
+RENDER_ARGS = ["--keep-aspect-ratio", "-w", "128", "-h", "128"]
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -61,37 +66,38 @@ def manifest_entries() -> dict[str, dict[str, Any]]:
     return {entry["id"]: entry for entry in doc.get("entries", [])}
 
 
-def _mask_from_source(path: Path) -> Any:
-    """Return (rgb, alpha) for a source drawing.
-
-    The symbol keeps its own colours.  Only the background becomes
-    transparent.  A source with a real alpha channel carries the symbol in
-    that channel (a DGIWG register graphic).  An opaque source (an FM 21-31 or
-    USGS crop) has its light ground keyed out by inverting the luminance, so
-    the ink stays and the ground clears.
-    """
-    from PIL import Image, ImageOps
-
-    image = Image.open(path).convert("RGBA")
-    alpha = image.getchannel("A")
-    rgb = image.convert("RGB")
-    low, _high = alpha.getextrema()
-    if low >= 250:
-        # Opaque ground: key it out by luminance, keep the ink.
-        alpha = ImageOps.invert(image.convert("L"))
-    return rgb, alpha
+def rsvg() -> str:
+    tool = shutil.which("rsvg-convert")
+    if tool is None:
+        raise SystemExit("gen_terrain_symbols: rsvg-convert not found on PATH")
+    return tool
 
 
-def render(symbol_id: str, src: Path, path: Path) -> None:
+def render_svg(svg: Path, out: Path) -> None:
+    """Render a register SVG to a transparent PNG with the standard command."""
+    out.unlink(missing_ok=True)
+    result = subprocess.run(
+        [rsvg(), *RENDER_ARGS, "-o", str(out), str(svg)],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0 or not out.is_file():
+        raise SystemExit(
+            f"gen_terrain_symbols: rsvg-convert failed for {svg}\n{result.stderr}"
+        )
+
+
+def normalise(png: Path, tga: Path) -> None:
+    """Scale a source drawing to a 64 px icon, keeping colour and alpha."""
     from PIL import Image
 
-    rgb, alpha = _mask_from_source(src)
-    scale = (SIZE - 2) / max(alpha.width, alpha.height)
-    width = max(1, round(alpha.width * scale))
-    height = max(1, round(alpha.height * scale))
-    size = (width, height)
-    rgb = rgb.resize(size, Image.LANCZOS)
-    alpha = alpha.resize(size, Image.LANCZOS)
+    image = Image.open(png).convert("RGBA")
+    scale = (SIZE - 2) / max(image.width, image.height)
+    width = max(1, round(image.width * scale))
+    height = max(1, round(image.height * scale))
+    image = image.resize((width, height), Image.LANCZOS)
+    rgb = image.convert("RGB")
+    alpha = image.getchannel("A")
     # Stretch the ALPHA only, so the ground is fully transparent and the ink
     # is fully opaque.  The RGB is untouched, so the symbol keeps its colour.
     low, high = alpha.getextrema()
@@ -101,8 +107,8 @@ def render(symbol_id: str, src: Path, path: Path) -> None:
     layer = Image.merge("RGBA", (*rgb.split(), alpha))
     canvas = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     canvas.alpha_composite(layer, ((SIZE - width) // 2, (SIZE - height) // 2))
-    path.parent.mkdir(parents=True, exist_ok=True)
-    canvas.save(path)
+    tga.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(tga)
 
 
 def convert(tga: Path, paa: Path) -> None:
@@ -119,6 +125,21 @@ def convert(tga: Path, paa: Path) -> None:
         raise SystemExit(f"gen_terrain_symbols: paa convert failed\n{result.stderr}")
 
 
+def _cut(entry: dict[str, Any], tmp_dir: Path, symbol_id: str, paa: Path) -> None:
+    """Cut one texture from the entry's source (SVG render, else committed PNG)."""
+    tga = tmp_dir / f"{symbol_id}.tga"
+    svg_name = entry.get("svg")
+    if svg_name:
+        png = tmp_dir / f"{symbol_id}.png"
+        render_svg(SRC_DIR / svg_name, png)
+    else:
+        png = SRC_DIR / entry["file"]
+        if not png.is_file():
+            raise SystemExit(f"gen_terrain_symbols: source image missing: {png}")
+    normalise(png, tga)
+    convert(tga, paa)
+
+
 def build() -> list[Path]:
     source = load_json(SOURCE_JSON)
     entries = manifest_entries()
@@ -132,14 +153,23 @@ def build() -> list[Path]:
                 raise SystemExit(
                     f"gen_terrain_symbols: no source manifest entry for {symbol_id!r}"
                 )
-            src = SRC_DIR / entry["file"]
-            if not src.is_file():
-                raise SystemExit(f"gen_terrain_symbols: source image missing: {src}")
-            tga = tmp_dir / f"{symbol_id}.tga"
-            render(symbol_id, src, tga)
             paa = TERRAIN_OUT / f"{symbol_id}.paa"
-            convert(tga, paa)
+            _cut(entry, tmp_dir, symbol_id, paa)
             written.append(paa)
+    return written
+
+
+def render_sources() -> list[Path]:
+    """Re-cut every register src PNG from its SVG with the standard command."""
+    entries = manifest_entries()
+    written: list[Path] = []
+    for symbol_id, entry in entries.items():
+        svg_name = entry.get("svg")
+        if not svg_name:
+            continue
+        out = SRC_DIR / entry["file"]
+        render_svg(SRC_DIR / svg_name, out)
+        written.append(out)
     return written
 
 
@@ -155,14 +185,8 @@ def check() -> int:
                 stale.append(f"{symbol_id}.paa is missing")
                 continue
             entry = entries.get(symbol_id, {})
-            src = SRC_DIR / entry.get("file", "")
-            if not src.is_file():
-                stale.append(f"{symbol_id}: source image missing")
-                continue
-            tga = tmp_dir / f"{symbol_id}.tga"
-            render(symbol_id, src, tga)
             fresh = tmp_dir / f"{symbol_id}.paa"
-            convert(tga, fresh)
+            _cut(entry, tmp_dir, symbol_id, fresh)
             if committed.read_bytes() != fresh.read_bytes():
                 stale.append(f"{symbol_id}.paa is stale")
     if stale:
@@ -176,16 +200,46 @@ def check() -> int:
     return 0
 
 
+def verify_svg() -> int:
+    """Prove every committed src PNG is exactly the render of its register SVG."""
+    entries = manifest_entries()
+    bad: list[str] = []
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp_dir = Path(tmp)
+        for symbol_id, entry in entries.items():
+            svg_name = entry.get("svg")
+            if not svg_name:
+                continue
+            committed = SRC_DIR / entry["file"]
+            fresh = tmp_dir / f"{symbol_id}.png"
+            render_svg(SRC_DIR / svg_name, fresh)
+            if not committed.is_file() or committed.read_bytes() != fresh.read_bytes():
+                bad.append(f"{symbol_id}: src PNG is not the SVG render")
+    if bad:
+        print(f"terrain symbols: SVG provenance FAIL ({len(bad)})")
+        for line in bad:
+            print(f"  {line}")
+        return 1
+    print(f"terrain symbols: {len(entries)} src PNGs are exact SVG renders")
+    return 0
+
+
 def main(argv: list[str]) -> int:
     if "--check" in argv:
         return check()
+    if "--verify-svg" in argv:
+        return verify_svg()
+    if "--render" in argv:
+        written = render_sources()
+        print(f"terrain symbols: {len(written)} source PNGs re-cut from SVG")
+        return 0
     if "--table" in argv:
         entries = manifest_entries()
         for symbol_id in referenced_symbols(load_json(SOURCE_JSON)):
             entry = entries.get(symbol_id, {})
             print(
-                f"{symbol_id}\t{entry.get('file', '?')}\t{entry.get('source', '?')}\t"
-                f"{entry.get('licence', '?')}"
+                f"{symbol_id}\t{entry.get('dgiwg') or '-'}\t{entry.get('concept', '?')}\t"
+                f"{entry.get('file', '?')}\t{entry.get('licence', '?')}"
             )
         return 0
     written = build()
