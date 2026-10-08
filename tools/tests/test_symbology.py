@@ -909,7 +909,7 @@ class TestMarkerTexturesCarryColour(unittest.TestCase):
                 encoding="utf-8"
             )
         )
-        root = Path("/tmp/opencode/nato-symbols")
+        root = REPO / "data" / "symbology" / "sources" / "svg"
         for entry in catalogue["entries"]:
             if entry.get("affil") != affiliation:
                 continue

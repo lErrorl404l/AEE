@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   id="NATO Map Symbol"
+   height="375"
+   width="600">
+  <path
+     id="Engr"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4"
+     d="M 300,258.72455 299.47177,129.02318 M 150,258.72455 v -130 h 150 150 v 130" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:10"
+     id="Track"
+     d="m 175.36164,355.72449 c -9.55923,0 -19.05954,-3.93607 -25.81782,-10.69658 -6.75828,-6.76051 -10.69121,-16.26213 -10.68805,-25.82136 -0.003,-9.55923 3.92977,-19.06085 10.68805,-25.82136 6.75828,-6.76051 16.25859,-10.69658 25.81782,-10.69658 h 124.65173 l 124.65178,-0.0105 c 9.56098,0 19.06299,3.93758 25.82154,10.7003 6.75854,6.76273 10.69024,16.26718 10.68432,25.82816 0.006,9.56098 -3.92578,19.06543 -10.68432,25.82816 -6.75855,6.76272 -16.26056,10.7003 -25.82154,10.7003 l -124.65178,-0.0105 z" />
+  <path
+     id="Friendly Frame"
+     d="M 5,5 H 595 V 370 H 5 Z"
+     style="fill:none;stroke:#0000ff;stroke-width:10;stroke-linejoin:miter;stroke-miterlimit:4" />
+</svg>

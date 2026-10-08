@@ -16,7 +16,7 @@ jobs:
       - name: Install test dependencies
         run: |
           pip install numpy pillow
-          sudo apt-get update && sudo apt-get install -y librsvg2-bin
+          sudo apt-get update && sudo apt-get install -y librsvg2-bin fonts-noto-core
       - name: Lint parity check
         run: python3 tools/validation/check_lint_parity.py
       - name: Validate SQF
@@ -97,6 +97,10 @@ jobs:
         run: python3 tools/validation/validate_symbology_colour.py
       - name: Symbology catalogue texture freshness check
         run: python3 tools/gen_symbology_catalogue.py --check
+      - name: Symbology catalogue SVG provenance check
+        run: python3 tools/gen_symbology_catalogue.py --verify-svg
+      - name: Symbology catalogue provenance validation
+        run: python3 tools/validation/validate_symbology_catalogue.py
       - name: Terrain table freshness check
         run: python3 tools/validation/gen_terrain_tables.py --check
       - name: Terrain table and registry validation

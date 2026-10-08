@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="600"
+   height="400"
+   id="NATO Map Symbol">
+  <path
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#000000;stroke-width:9.51774883;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
+     id="ARMOUR"
+     d="m 215.11625,212.17558 c -51.65912,0 -93.5371,-41.87798 -93.5371,-93.5371 0,-51.659117 41.87798,-93.537107 93.5371,-93.537107 h 169.7675 c 51.65912,0 93.5371,41.87799 93.5371,93.537107 0,51.65912 -41.87798,93.5371 -93.5371,93.5371 z" />
+  <g
+     id="Bridge">
+  <path
+       d="M 160.51324,66.947631 207.00882,101.4275 H 392.99117 L 439.48676,66.947631"
+       id="path2-1"
+       style="fill:none;stroke:#000000;stroke-width:9.51774883;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+       d="m 160.51324,170.32932 46.49558,-34.47987 h 185.98235 l 46.49559,34.47987"
+       id="path2-2"
+       style="fill:none;stroke:#000000;stroke-width:9.51774883;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <path
+     d="M 300.00065,379.47867 299.48963,240.87148 M 154.96147,379.47867 V 240.87148 h 144.01778 144.01778 l 2.04281,138.60719"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:24.27025986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="ENGR" />
+  <path
+     id="Friendly Frame"
+     d="M 5,5 H 595 V 395 H 5 Z"
+     style="fill:none;stroke:#0000ff;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+</svg>

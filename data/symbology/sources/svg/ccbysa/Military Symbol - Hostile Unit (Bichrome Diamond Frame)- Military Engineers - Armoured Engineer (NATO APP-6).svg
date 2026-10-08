@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="NATO Map Symbol"
+   height="600"
+   width="600"
+   version="1.1">
+  <g
+     id="ICON"
+	 transform="translate(0 100)">
+  <path
+     id="ARMOUR"
+     d="m 215.40054,292.5 c -51.4861,0 -93.22383,-41.01389 -93.22383,-92.5 0,-51.4861 41.73773,-92.5 93.22383,-92.5 h 169.19892 c 51.4861,0 93.22383,41.0139 93.22383,92.5 0,51.48611 -41.73773,92.5 -93.22383,92.5 z"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
+  <path
+     id="ENGR" 
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:21.11420059;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 300.00074,258.69133 299.55387,151.68955 M 173.17303,258.69133 V 151.68955 h 125.93456 125.93456 l 1.7863,107.00178"/>
+  </g>
+  <path
+     id="Hostile Frame"
+     style="fill:none;stroke:#ff0000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1"
+     d="M 7,300 300,7 593,300 300,593 Z" />
+</svg>

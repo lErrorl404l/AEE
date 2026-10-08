@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="170.02298"
+   height="105.69199"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="APP-6 Air Force.svg"
+   sodipodi:docbase="/home/mandibula/Desktop/imágenes/wiki/app-6a"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata2913">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="975"
+     inkscape:window-width="1280"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="5.0287322"
+     inkscape:cx="85.011487"
+     inkscape:cy="52.845999"
+     inkscape:window-x="0"
+     inkscape:window-y="22"
+     inkscape:current-layer="layer1"
+     width="180px"
+     height="130px"
+     borderlayer="true"
+     showgrid="true"
+     inkscape:grid-points="false"
+     inkscape:grid-bbox="false"
+     inkscape:showpageshadow="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3166"
+       visible="true"
+       enabled="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 52.849651 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="169.97537 : 52.849651 : 1"
+       inkscape:persp3d-origin="84.987686 : 35.233101 : 1"
+       id="perspective11" />
+    <inkscape:perspective
+       id="perspective2444"
+       inkscape:persp3d-origin="84.987686 : 35.233101 : 1"
+       inkscape:vp_z="169.97537 : 52.849651 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 52.849651 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <g
+     id="layer1"
+     transform="matrix(2.386666,0,0,2.579998,-1.0891261,-0.9238116)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.20897067;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect3320"
+       width="69.981712"
+       height="39.803127"
+       x="1.0848297"
+       y="0.9394626" />
+    <path
+       id="path3867"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.1327976;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 36.094381,21.265047 C 46.516518,27.178315 47.551338,27.695725 49.473149,27.695725 C 51.39496,27.695725 54.721174,26.513071 54.721174,21.265047 C 54.721174,16.017021 51.39496,14.834367 49.473149,14.834367 C 47.551338,14.834367 46.516518,15.351779 36.094381,21.265047 z M 35.946548,21.265047 C 25.524414,27.178315 24.489591,27.695725 22.567781,27.695725 C 20.645969,27.695725 17.319757,26.513071 17.319757,21.265047 C 17.319757,16.017021 20.645969,14.834367 22.567781,14.834367 C 24.489591,14.834367 25.524414,15.351779 35.946548,21.265047 z"
+       sodipodi:nodetypes="cscsccscsc" />
+  </g>
+</svg>

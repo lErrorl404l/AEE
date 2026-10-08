@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="600"
+   height="400"
+   id="NATO Map Symbol">
+  <path
+     d="M 300.00069,374.88973 299.46377,229.2595 M 147.61257,374.88973 V 229.2595 h 151.31496 151.31496 l 2.14632,145.63023"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:25.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="ENGR" />
+  <g
+     transform="translate(616.91033,8.493429)"
+     id="g949">
+  <path
+       d="m -247.05713,90.282148 c 0,9.644714 -1.95465,18.832902 -5.48941,27.190022 -3.53477,8.35712 -8.64965,15.88319 -14.97012,22.20365 -6.32047,6.32048 -13.84653,11.43536 -22.20365,14.97012 -8.35712,3.53476 -17.5453,5.48941 -27.19002,5.48941 -9.64472,0 -18.8329,-1.95465 -27.19003,-5.48942 -8.35712,-3.53475 -15.88317,-8.64964 -22.20364,-14.97011 -6.32048,-6.32046 -11.43536,-13.84653 -14.97011,-22.20365 -3.53477,-8.35712 -5.48942,-17.545308 -5.48942,-27.190022 0,-9.644714 1.95465,-18.832896 5.48942,-27.190017 3.53475,-8.357121 8.64963,-15.883182 14.97011,-22.203652 12.64094,-12.640943 30.10423,-20.459528 49.39367,-20.459528 19.28943,0 36.75272,7.81858 49.39367,20.459528 6.32047,6.32047 11.43535,13.846531 14.97012,22.203652 3.53476,8.357121 5.48941,17.545303 5.48941,27.190017 z"
+       id="path3049"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
+  <path
+       d="m -268.31934,90.282148 a 48.59098,48.59098 0 1 1 -97.18196,0 48.59098,48.59098 0 1 1 97.18196,0 z"
+       id="path3049-1"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
+  <path
+       d="m -252.54654,117.47217 h 23.85813 V 63.092131 h -23.85813"
+       id="path3838"
+       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+       d="m -381.27411,117.47217 h -23.85813 V 63.092132 h 23.85813"
+       id="path3838-4"
+       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+       d="m -344.10035,154.64593 -15.37762,28.25174 h 85.13527 l -15.37762,-28.25174"
+       id="path3838-0"
+       style="fill:none;stroke:#000000;stroke-width:8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <path
+     id="Friendly Frame"
+     d="M 5,5 H 595 V 395 H 5 Z"
+     style="fill:none;stroke:#0000ff;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+</svg>

@@ -1,17 +1,33 @@
 #!/usr/bin/env python3
-"""Generate the complete AEE APP-6 marker set from the pulled catalogue.
+"""Generate the complete AEE APP-6 marker set from the committed catalogue.
 
 The catalogue (data/symbology/nato_catalogue.json) records every NATO / APP-6
-map symbol image pulled from the three operator sources, with its affiliation,
-battle dimension, function, frame, licence, author and source URL.
+map symbol image, with its affiliation, battle dimension, function, frame,
+licence, author and source URL.
+
+The catalogue images are COMMITTED under data/symbology/sources:
+
+  * sources/svg/<dir>/<file>.svg  -- the 1092 source drawings, exactly as
+    pulled, for provenance (Wikimedia Commons CC BY-SA 4.0 / CC BY / public
+    domain; see sources/README.md).
+  * sources/render/<marker>.png   -- the 903 rendered 64 px RGBA canvases, the
+    exact input to `hemtt utils paa convert`.
+
+Why the renders are committed.  The render is not reproducible across
+machines.  librsvg encodes the same pixels into different PNG bytes, and 166
+of the source drawings carry `<text>` with a `font-family`, so the glyph
+depends on the installed font: the local render resolves `sans-serif` to Noto
+Sans, a bare runner resolves it to DejaVu Sans, and 162 of 903 markers then
+differ.  No distribution ships librsvg 2.62.4 (the version that cut the
+shipped .paa) and the font stack cannot be pinned exactly, so the render
+OUTPUT is pinned instead of the renderer.  The committed 64 px canvas is the
+source of truth for the texture, and CI reproduces each .paa from it byte for
+byte with no renderer dependency.  The SVG -> render step is proved
+structurally by --verify-svg.
 
 For each catalogue symbol this generator:
 
-  * rasterises the real image (rsvg-convert for SVG, Pillow for PNG/JPEG) to a
-    64 px canvas on a transparent background, keeping the source's own colours
-    (the affiliation frame colour and the black glyph), so the texture carries
-    the colour and the engine tint stays neutral,
-  * converts the mask to a .paa with `hemtt utils paa convert`,
+  * cuts the committed 64 px render to a .paa with `hemtt utils paa convert`,
   * emits one CfgMarkers child into addons/optics/config_markers.hpp, and
   * emits addons/optics/data/markers/ATTRIBUTION.md with the per-file source
     URL, licence and author.
@@ -22,6 +38,8 @@ grammar is selectable in Eden and drawn by the engine marker layer.
 
 Run:  python3 tools/gen_symbology_catalogue.py
       python3 tools/gen_symbology_catalogue.py --check
+      python3 tools/gen_symbology_catalogue.py --verify-svg
+      python3 tools/gen_symbology_catalogue.py --render   (re-cut the renders)
       python3 tools/gen_symbology_catalogue.py --table
 """
 
@@ -37,7 +55,9 @@ from typing import Any
 
 ROOT = Path(__file__).parents[1]
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
-SOURCE_ROOT = Path("/tmp/opencode/nato-symbols")
+SOURCES = ROOT / "data" / "symbology" / "sources"
+SVG_ROOT = SOURCES / "svg"
+RENDER_ROOT = SOURCES / "render"
 MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
 CONFIG_OUT = ROOT / "addons" / "optics" / "config_markers.hpp"
 ATTRIB_OUT = MARKERS_OUT / "ATTRIBUTION.md"
@@ -46,6 +66,17 @@ ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers"
 SIZE = 64
 ART = 58  # the art box inside the 64 px marker, leaving a small margin
 RENDER = 256  # the SVG is rasterised at this size, then reduced to ART
+
+# The SVG -> render compare in --verify-svg is structural, not byte-for-byte,
+# because the render depends on the librsvg version and on the installed font.
+# The tolerance is calibrated on the observed drift: with the pinned font
+# (fonts-noto-core) 894/903 renders are pixel identical and the 9 that differ
+# are a font-variant glyph (ink IoU 1.0); without the pinned font the worst
+# case is ink IoU 0.647.  A wrong glyph, a re-colour, a plate crop or a
+# missing render still fails.
+MAX_CHANGED_FRACTION = 0.15  # antialiasing and a font variant move a few percent
+NOISE_DELTA = 8  # per-channel differences at or below this are noise
+MIN_INK_IOU = 0.60  # the painted (alpha) region must overlap the SVG render
 
 AFFIL_LETTER = {
     "Friend": "F",
@@ -97,8 +128,22 @@ def marker_name(entry: dict[str, Any], seen: set[str]) -> str:
     return name
 
 
-def _source_path(entry: dict[str, Any]) -> Path:
-    return SOURCE_ROOT / str(entry["dir"]) / str(entry["file"])
+def _source_svg(entry: dict[str, Any]) -> Path:
+    return SVG_ROOT / str(entry["dir"]) / str(entry["file"])
+
+
+def _render_path(name: str) -> Path:
+    return RENDER_ROOT / f"{name}.png"
+
+
+def _load_render(name: str) -> Any:
+    """The committed 64 px canvas, the pinned input to `hemtt utils paa convert`."""
+    from PIL import Image
+
+    path = _render_path(name)
+    if not path.is_file():
+        raise SystemExit(f"gen_symbology_catalogue: render {path} not found")
+    return Image.open(path).convert("RGBA")
 
 
 def _rasterise(src: Path) -> Any:
@@ -145,6 +190,54 @@ def _rasterise(src: Path) -> Any:
     return canvas
 
 
+def render_mismatch(committed: Path, fresh: Path) -> str | None:
+    """Return why the committed render is not the SVG render, or None when it is.
+
+    A byte compare cannot cross a librsvg version or a font, so this compares
+    structure: the size, a real alpha channel, the fraction of changed pixels
+    and the painted (alpha) geometry, each within a tolerance.
+    """
+    from PIL import Image, ImageChops
+
+    with Image.open(committed) as c_img, Image.open(fresh) as f_img:
+        if c_img.size != f_img.size:
+            return f"size {c_img.size} != SVG render {f_img.size}"
+        committed_has_alpha = "A" in c_img.getbands()
+        committed_rgba = c_img.convert("RGBA")
+        fresh_rgba = f_img.convert("RGBA")
+
+    # A point or line symbol renders on a transparent ground.  A source that
+    # dropped the alpha channel is a flat plate crop, not that render.
+    render_transparent = fresh_rgba.getchannel("A").getextrema()[0] < 255
+    if render_transparent and not committed_has_alpha:
+        return "render has no alpha channel (a flat crop, not the SVG render)"
+
+    diff = ImageChops.difference(committed_rgba, fresh_rgba)
+
+    def above_noise(band):
+        return band.point(lambda value: 255 if value > NOISE_DELTA else 0)
+
+    marked = above_noise(diff.getchannel("R"))
+    for channel in ("G", "B", "A"):
+        marked = ImageChops.lighter(marked, above_noise(diff.getchannel(channel)))
+    changed = marked.histogram()[255]
+    total = committed_rgba.width * committed_rgba.height
+    if changed > MAX_CHANGED_FRACTION * total:
+        return f"{changed} of {total} pixels differ from the SVG render"
+
+    committed_ink = committed_rgba.getchannel("A").point(
+        lambda v: 255 if v > 127 else 0
+    )
+    fresh_ink = fresh_rgba.getchannel("A").point(lambda v: 255 if v > 127 else 0)
+    union = ImageChops.lighter(committed_ink, fresh_ink).histogram()[255]
+    if union:
+        overlap = ImageChops.multiply(committed_ink, fresh_ink).histogram()[255]
+        iou = overlap / union
+        if iou < MIN_INK_IOU:
+            return f"painted geometry differs from the SVG render (IoU {iou:.3f})"
+    return None
+
+
 def convert(tga: Path, paa: Path) -> None:
     hemtt = shutil.which("hemtt")
     if hemtt is None:
@@ -163,10 +256,6 @@ def symbol_entries() -> list[dict[str, Any]]:
     return [e for e in load() if e.get("kind", "symbol") == "symbol"]
 
 
-def modifier_entries() -> list[dict[str, Any]]:
-    return [e for e in load() if e.get("kind") == "echelon"]
-
-
 def entries() -> list[tuple[str, dict[str, Any]]]:
     seen: set[str] = set()
     out: list[tuple[str, dict[str, Any]]] = []
@@ -182,11 +271,26 @@ def build() -> int:
         tmp_dir = Path(tmp)
         for name, entry in pairs:
             tga = tmp_dir / f"{name}.tga"
-            _rasterise(_source_path(entry)).save(tga)
+            _load_render(name).save(tga)
             convert(tga, MARKERS_OUT / f"{name}.paa")
     write_config(pairs)
     write_attribution(pairs)
     print(f"symbology catalogue: {len(pairs)} markers written")
+    return 0
+
+
+def render_all() -> int:
+    """Re-cut the committed 64 px renders from the committed source SVGs.
+
+    This is the only step that needs rsvg-convert and the render font, so it
+    runs on the machine that cut the textures, not in CI.  See the module
+    docstring for why the renders are committed.
+    """
+    RENDER_ROOT.mkdir(parents=True, exist_ok=True)
+    pairs = entries()
+    for name, entry in pairs:
+        _rasterise(_source_svg(entry)).save(_render_path(name))
+    print(f"symbology catalogue: {len(pairs)} renders written to {RENDER_ROOT}")
     return 0
 
 
@@ -350,15 +454,14 @@ def write_attribution(pairs: list[tuple[str, dict[str, Any]]]) -> None:
 
 
 def check() -> int:
+    """Reproduce each committed .paa from its committed render, byte for byte.
+
+    The committed 64 px render is the pinned texture input, so this needs no
+    renderer and runs in CI.  A stale .paa, a missing render, or a stale
+    config or attribution file fails.
+    """
     pairs = entries()
     stale: list[str] = []
-    # The marker source SVGs are a local pull cache (tools/build_symbology_catalogue.py
-    # --pull /tmp/opencode/nato-symbols); the repository commits the rendered .paa,
-    # not the sources.  Re-render and compare only when the cache is present.
-    # Without it the texture compare cannot run, and a librsvg version difference
-    # changes the render anyway, so a byte compare is meaningful only on the
-    # machine that cut the textures.  The skip is reported, never silent.
-    sources_present = SOURCE_ROOT.is_dir()
     with tempfile.TemporaryDirectory() as tmp:
         tmp_dir = Path(tmp)
         for name, entry in pairs:
@@ -366,10 +469,11 @@ def check() -> int:
             if not committed.is_file():
                 stale.append(f"{name}.paa is missing")
                 continue
-            if not sources_present:
+            if not _render_path(name).is_file():
+                stale.append(f"{name}.png render is missing")
                 continue
             tga = tmp_dir / f"{name}.tga"
-            _rasterise(_source_path(entry)).save(tga)
+            _load_render(name).save(tga)
             fresh = tmp_dir / f"{name}.paa"
             convert(tga, fresh)
             if committed.read_bytes() != fresh.read_bytes():
@@ -385,19 +489,55 @@ def check() -> int:
         for line in stale:
             print(f"  {line}")
         return 1
-    if sources_present:
-        print(f"symbology catalogue: {len(pairs)} markers fresh")
-    else:
-        print(
-            f"symbology catalogue: {len(pairs)} markers present, config and "
-            f"attribution fresh; texture re-render skipped ({SOURCE_ROOT} absent)"
-        )
+    print(
+        f"symbology catalogue: {len(pairs)} .paa reproduce their committed "
+        f"renders; config and attribution fresh"
+    )
+    return 0
+
+
+def verify_svg() -> int:
+    """Prove every committed render is the render of its committed source SVG.
+
+    The compare is structural, not byte-for-byte, so it holds across the
+    librsvg version and the render font.  See render_mismatch.
+    """
+    bad: list[str] = []
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp_dir = Path(tmp)
+        for name, entry in entries():
+            committed = _render_path(name)
+            if not committed.is_file():
+                bad.append(f"{name}: render is missing")
+                continue
+            svg = _source_svg(entry)
+            if not svg.is_file():
+                bad.append(f"{name}: source SVG {svg.name} is missing")
+                continue
+            fresh = tmp_dir / f"{name}.png"
+            _rasterise(svg).save(fresh)
+            mismatch = render_mismatch(committed, fresh)
+            if mismatch:
+                bad.append(f"{name}: render is not the SVG render ({mismatch})")
+    if bad:
+        print(f"symbology catalogue: SVG provenance FAIL ({len(bad)})")
+        for line in bad:
+            print(f"  {line}")
+        return 1
+    print(
+        f"symbology catalogue: {len(entries())} committed renders match their "
+        f"source SVGs"
+    )
     return 0
 
 
 def main(argv: list[str]) -> int:
     if "--check" in argv:
         return check()
+    if "--verify-svg" in argv:
+        return verify_svg()
+    if "--render" in argv:
+        return render_all()
     if "--table" in argv:
         for name, entry in entries():
             print(

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="600"
+   height="600"
+   id="NATO Map Symbol">
+  <g
+     id="ICON"
+	 transform="translate(0 100)">
+  <path
+     id="Wave" 
+     d="m 155.96153,349.12221 c 6.68196,-15.60778 13.36304,-31.29587 27.53553,-31.61714 v 0 c 28.3521,0 29.88029,62.75237 58.2324,62.75237 28.35209,0 29.88029,-62.75237 58.23239,-62.75237 28.35209,0 29.88029,62.75237 58.23239,62.75237 28.3521,0 29.88029,-62.75237 58.23238,-62.75237 14.17606,0 20.85713,15.6881 27.53822,31."
+     style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+  <g
+     id="Tpt">
+    <path
+       style="fill:none;stroke:#010101;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3007"
+       d="m 383.1667,200 a 83.166707,83.143921 0 1 1 -166.3334,0 83.166707,83.143921 0 1 1 166.3334,0 z" />
+    <path
+       style="fill:none;stroke:#010101;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3787"
+       d="M 216.8333,200 H 383.16669" />
+    <path
+       style="fill:none;stroke:#010101;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3787-1"
+       d="M 241.19226,258.79162 358.80773,141.20838" />
+    <path
+       style="fill:none;stroke:#010101;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3787-7"
+       d="M 300,116.85609 V 283.14391" />
+    <path
+       style="fill:none;stroke:#010101;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3787-1-8"
+       d="M 241.19226,141.20838 358.80773,258.79162" />
+  </g>
+  </g>
+  <path
+     id="Hostile Frame"
+     style="fill:none;stroke:#ff0000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1"
+     d="M 7,300 300,7 593,300 300,593 Z" />
+</svg>

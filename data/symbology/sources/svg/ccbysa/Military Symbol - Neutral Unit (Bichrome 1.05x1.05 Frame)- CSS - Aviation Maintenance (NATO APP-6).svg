@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+   width="600"
+   height="420"
+   id="NATO Map Symbol">
+  <g
+     id="ICON"
+	 transform="translate(0 10)">
+  <path
+     d="M 480,211.19662 V 55.386824 L 120,211.19661 V 55.386824 Z"
+     id="AVN"
+     style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     style="stroke-width:17.09043833;stroke-miterlimit:4;stroke-dasharray:none"
+     id="g3792"
+     transform="matrix(0.5851225,0,0,0.5851225,145.69694,144.73233)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:17.09043833;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3012"
+       d="M 101.55491,254.22409 H 425.91225" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:17.09043833;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3800"
+       d="m 40.480113,195.03232 c 32.69071,0 59.19176,26.50106 59.19176,59.19177 0,32.6907 -26.50105,59.19176 -59.19176,59.19176" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:17.09043833;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3800-1"
+       d="m 486.98705,195.03232 c -32.69071,0 -59.19176,26.50106 -59.19176,59.19177 0,32.69071 26.50105,59.19176 59.19176,59.19176" />
+  </g>
+  </g>
+  <path
+     id="Neutral Frame"
+     style="opacity:1;fill:none;fill-opacity:1;stroke:#00af00;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     d="M 95,5 H 505 V 415 H 95 Z" />
+</svg>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+   id="NATO Map Symbol"
+   height="420"
+   width="600">
+  <path
+     id="GunSys"
+     d="M 165,5 V 430"
+     style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     id="AirDef"
+     style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 95,415 c 0,-58.17296 94.82884,-104.46797 205,-104.46797 110.17117,0 205,46.29501 205,104.46797" />
+  <g
+     id="ICON"
+	 transform="translate(0 10)">
+  <path
+     style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path2986"
+     d="M 261.08026,302.13184 V 153.46842 c 0,-23.2091 25.32375,-56.147794 38.91974,-56.147794 13.59598,0 38.91974,32.938694 38.91974,56.147794 v 146.55243" />
+  </g>
+  <path
+     id="Neutral Frame"
+     style="opacity:1;fill:none;fill-opacity:1;stroke:#00af00;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     d="M 95,5 H 505 V 415 H 95 Z" />
+</svg>

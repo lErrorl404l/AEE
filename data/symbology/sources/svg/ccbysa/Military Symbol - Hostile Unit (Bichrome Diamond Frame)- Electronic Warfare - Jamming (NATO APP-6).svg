@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="NATO Map Symbol"
+   height="600"
+   width="600"
+   version="1.1">
+  <g
+     id="ICON"
+	 transform="translate(0 100)">
+  <text
+     style="font-style:normal;font-weight:normal;font-size:175px;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+     x="294"
+     y="300"
+     id="EW"
+     xml:space="preserve">EW</text>
+  <path
+     d="M 119.03616,85.360012 152.27712,154.71802 201.51808,69.360012 250.75904,154.71802 300,69.360012 l 49.24096,85.358008 49.24097,-85.358008 49.24096,85.358008 33.24096,-67.358008"
+     id="Jammer-2"
+     style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     d="M 132.65663,70.683948 152.27712,109.36296 201.51808,24.004937 250.75904,109.36296 300,24.004937 l 49.24096,85.358023 49.24097,-85.358023 45.24096,89.358023 23.62048,-42.679012"
+     id="Jammer-1"
+     style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <path
+     id="Hostile Frame"
+     style="fill:none;stroke:#ff0000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1"
+     d="M 7,300 300,7 593,300 300,593 Z" />
+</svg>

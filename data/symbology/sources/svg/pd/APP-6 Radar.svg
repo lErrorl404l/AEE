@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="170.02298"
+   height="105.69199"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="APP-6_Radar.svg"
+   sodipodi:docbase="/home/mandibula/Desktop/imágenes/wiki/app-6a"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata2913">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="975"
+     inkscape:window-width="1280"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="5.0287322"
+     inkscape:cx="85.011487"
+     inkscape:cy="52.845999"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:current-layer="layer1"
+     width="180px"
+     height="130px"
+     borderlayer="true"
+     showgrid="false"
+     inkscape:grid-points="false"
+     inkscape:grid-bbox="false"
+     inkscape:showpageshadow="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3166"
+       visible="true"
+       enabled="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 52.849651 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="169.97537 : 52.849651 : 1"
+       inkscape:persp3d-origin="84.987686 : 35.233101 : 1"
+       id="perspective11" />
+    <inkscape:perspective
+       id="perspective2447"
+       inkscape:persp3d-origin="35.589291 : 13.94 : 1"
+       inkscape:vp_z="71.178581 : 20.91 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 20.91 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <g
+     id="layer1"
+     transform="matrix(2.386666,0,0,2.579998,-1.0891261,-0.9238116)">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.20897067;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect3320"
+       width="69.981712"
+       height="39.803127"
+       x="1.0848297"
+       y="0.9394626" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.20897067;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       d="M 26.343389,10.757404 C 26.343389,10.757404 16.727658,36.840711 41.825054,30.4555"
+       id="path2401"
+       sodipodi:nodetypes="cc" />
+    <rect
+       style="fill:#ffffff;display:inline"
+       id="rect2429"
+       width="2.6337616"
+       height="2.7905333"
+       x="32.894325"
+       y="22.114376" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.20897067;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 25.361454,25.011824 L 36.826888,13.524791 L 36.735988,23.644373 L 46.600692,13.601699"
+       id="path3238"
+       sodipodi:nodetypes="cccc" />
+  </g>
+</svg>
