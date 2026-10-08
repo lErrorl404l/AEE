@@ -1,0 +1,747 @@
+{
+  "note": "The AEE terrain symbol catalogue, a map legend for the terrain and map-feature textures. The mapping is data driven from the DGIWG Symbol Register concept index: each feature names the register concept it needs, and the SO_#### the register publishes for that concept. A feature that has no dedicated register glyph is recorded, never silently substituted.",
+  "attribution": "Contains DGIWG Symbol Register data, (C) DGIWG, CC BY 2.0",
+  "source": "STANAG 3675 Edition 2, succeeded by the DGIWG Symbol Register (DTM50, DGIWG 252-3); USGS Topographic Map Symbols (2005) for the one public-domain fallback.",
+  "register": "data/symbology/dgiwg_concepts.json",
+  "count": 31,
+  "entries": [
+    {
+      "id": "hill",
+      "name": "Hill (spot height)",
+      "category": "relief",
+      "depicts": "a geodetic survey point at the highest elevation, a triangle with a central dot",
+      "concept": "SurveyPointGeodeticHighestP",
+      "glyph_concept": "SurveyPointGeodeticHighestP",
+      "grade": "specific",
+      "register_id": "SO_0097",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0097 SurveyPointGeodeticHighestP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "Hill"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/hill.paa",
+      "shared_with": []
+    },
+    {
+      "id": "rock",
+      "name": "Rock formation",
+      "category": "relief",
+      "depicts": "a rock formation, an open irregular outline",
+      "concept": "RockFormationP",
+      "glyph_concept": "RockFormationP",
+      "grade": "specific",
+      "register_id": "SO_0364",
+      "geom": "Point",
+      "register_concept_count": 1,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0364 RockFormationP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "RockArea"
+        },
+        {
+          "kind": "RscMapControl",
+          "class": "Rock"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/rock.paa",
+      "shared_with": []
+    },
+    {
+      "id": "deciduous",
+      "name": "Deciduous tree",
+      "category": "vegetation",
+      "depicts": "a deciduous tree, a rounded crown on a stem",
+      "concept": "TreeDeciduousP",
+      "glyph_concept": "TreeDeciduousP",
+      "grade": "specific",
+      "register_id": "SO_0046",
+      "geom": "Point",
+      "register_concept_count": 1,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0046 TreeDeciduousP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "VegetationBroadleaf"
+        },
+        {
+          "kind": "RscMapControl",
+          "class": "SmallTree"
+        },
+        {
+          "kind": "RscMapControl",
+          "class": "Tree"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/deciduous.paa",
+      "shared_with": []
+    },
+    {
+      "id": "coniferous",
+      "name": "Coniferous tree",
+      "category": "vegetation",
+      "depicts": "an evergreen tree, a pointed crown on a stem",
+      "concept": "TreeEvergreenP",
+      "glyph_concept": "TreeEvergreenP",
+      "grade": "specific",
+      "register_id": "SO_0047",
+      "geom": "Point",
+      "register_concept_count": 1,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0047 TreeEvergreenP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "VegetationFir"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/coniferous.paa",
+      "shared_with": []
+    },
+    {
+      "id": "palm",
+      "name": "Palm tree",
+      "category": "vegetation",
+      "depicts": "other forest or wood, a generic tree symbol",
+      "concept": null,
+      "glyph_concept": "ForestWoodOtherP",
+      "grade": "substituted",
+      "register_id": "SO_0044",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0044 ForestWoodOtherP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "VegetationPalm"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/palm.paa",
+      "shared_with": []
+    },
+    {
+      "id": "vineyard",
+      "name": "Vineyard",
+      "category": "vegetation",
+      "depicts": "a vineyard, an area of vine rows",
+      "concept": "PlantationVineyardA",
+      "glyph_concept": "PlantationVineyardA",
+      "grade": "specific",
+      "register_id": "SO_0034",
+      "geom": "Area",
+      "register_concept_count": 2,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0034 PlantationVineyardA",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "VegetationVineyard"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/vineyard.paa",
+      "shared_with": []
+    },
+    {
+      "id": "brushwood",
+      "name": "Brushwood (scrub)",
+      "category": "vegetation",
+      "depicts": "brush or scrub, an area of small tufts",
+      "concept": "BrushA",
+      "glyph_concept": "BrushA",
+      "grade": "specific",
+      "register_id": "SO_0048",
+      "geom": "Area",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0048 BrushA",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Bush"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/brushwood.paa",
+      "shared_with": []
+    },
+    {
+      "id": "church",
+      "name": "Church",
+      "category": "works",
+      "depicts": "a Christian church, a building with a cross",
+      "concept": "ChristianChurchP",
+      "glyph_concept": "ChristianChurchP",
+      "grade": "specific",
+      "register_id": "SO_0140",
+      "geom": "Point",
+      "register_concept_count": 17,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0140 ChristianChurchP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "church"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/church.paa",
+      "shared_with": []
+    },
+    {
+      "id": "chapel",
+      "name": "Chapel",
+      "category": "works",
+      "depicts": "a Christian chapel, a small building with a cross",
+      "concept": "ChristianChapelNonObstructionIntactA",
+      "glyph_concept": "ChristianChapelNonObstructionIntactA",
+      "grade": "specific",
+      "register_id": "SO_0619",
+      "geom": "Area",
+      "register_concept_count": 17,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0619 ChristianChapelNonObstructionIntactA",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Chapel"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/chapel.paa",
+      "shared_with": []
+    },
+    {
+      "id": "cross",
+      "name": "Cemetery cross",
+      "category": "works",
+      "depicts": "a Christian cemetery, a cross on a grave",
+      "concept": "CemeteryChristianP",
+      "glyph_concept": "CemeteryChristianP",
+      "grade": "specific",
+      "register_id": "SO_0124",
+      "geom": "Point",
+      "register_concept_count": 17,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0124 CemeteryChristianP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Cross"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/cross.paa",
+      "shared_with": []
+    },
+    {
+      "id": "ruin",
+      "name": "Ruins",
+      "category": "works",
+      "depicts": "ruins, a broken outline",
+      "concept": "RuinsNonObstructionP",
+      "glyph_concept": "RuinsNonObstructionP",
+      "grade": "specific",
+      "register_id": "SO_0102",
+      "geom": "Point",
+      "register_concept_count": 1,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0102 RuinsNonObstructionP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Ruin"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/ruin.paa",
+      "shared_with": []
+    },
+    {
+      "id": "hospital",
+      "name": "Hospital",
+      "category": "works",
+      "depicts": "a hospital, a building with a cross",
+      "concept": "HospitalNonObstructionIntactP",
+      "glyph_concept": "HospitalNonObstructionIntactP",
+      "grade": "specific",
+      "register_id": "SO_0151",
+      "geom": "Point",
+      "register_concept_count": 2,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0151 HospitalNonObstructionIntactP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "hospital"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/hospital.paa",
+      "shared_with": []
+    },
+    {
+      "id": "monument",
+      "name": "Monument",
+      "category": "works",
+      "depicts": "a monument, a pillar on a base",
+      "concept": "MonumentP",
+      "glyph_concept": "MonumentP",
+      "grade": "specific",
+      "register_id": "SO_0104",
+      "geom": "Point",
+      "register_concept_count": 5,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0104 MonumentP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "ViewPoint"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/monument.paa",
+      "shared_with": []
+    },
+    {
+      "id": "radio_tower",
+      "name": "Radio mast",
+      "category": "works",
+      "depicts": "a communication tower, a lattice mast",
+      "concept": "TowerCommunicationNonObstructionP",
+      "glyph_concept": "TowerCommunicationNonObstructionP",
+      "grade": "specific",
+      "register_id": "SO_0600",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0600 TowerCommunicationNonObstructionP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "transmitter"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/radio_tower.paa",
+      "shared_with": []
+    },
+    {
+      "id": "lighthouse",
+      "name": "Lighthouse",
+      "category": "works",
+      "depicts": "a lighthouse, a tower with a light",
+      "concept": "LighthouseP",
+      "glyph_concept": "LighthouseP",
+      "grade": "specific",
+      "register_id": "SO_0080",
+      "geom": "Point",
+      "register_concept_count": 5,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0080 LighthouseP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "lighthouse"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/lighthouse.paa",
+      "shared_with": []
+    },
+    {
+      "id": "water_tower",
+      "name": "Water tower",
+      "category": "works",
+      "depicts": "a water tower, a tank on a stem",
+      "concept": "TowerWaterTowerP",
+      "glyph_concept": "TowerWaterTowerP",
+      "grade": "specific",
+      "register_id": "SO_0015",
+      "geom": "Point",
+      "register_concept_count": 4,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0015 TowerWaterTowerP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "watertower"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/water_tower.paa",
+      "shared_with": []
+    },
+    {
+      "id": "power_plant",
+      "name": "Power plant",
+      "category": "works",
+      "depicts": "a power substation, a transformer symbol",
+      "concept": "PowerSubstationP",
+      "glyph_concept": "PowerSubstationP",
+      "grade": "specific",
+      "register_id": "SO_0155",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0155 PowerSubstationP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "power"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/power_plant.paa",
+      "shared_with": []
+    },
+    {
+      "id": "solar",
+      "name": "Solar power plant",
+      "category": "works",
+      "depicts": "the register's generic point symbol, a ring and a dot; the register publishes no dedicated solar-panel glyph",
+      "concept": "SolarPanelP",
+      "glyph_concept": "SolarPanelP",
+      "grade": "generic",
+      "register_id": "SO_0001",
+      "geom": "Point",
+      "register_concept_count": 60,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0001 SolarPanelP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "powersolar"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/solar.paa",
+      "shared_with": [
+        "tourism",
+        "wave"
+      ]
+    },
+    {
+      "id": "wind",
+      "name": "Wind turbine",
+      "category": "works",
+      "depicts": "a wind turbine, a rotor on a mast",
+      "concept": "WindTurbineP",
+      "glyph_concept": "WindTurbineP",
+      "grade": "specific",
+      "register_id": "SO_0157",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0157 WindTurbineP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "powerwind"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/wind.paa",
+      "shared_with": []
+    },
+    {
+      "id": "wave",
+      "name": "Wave power plant",
+      "category": "works",
+      "depicts": "the register's generic point symbol, a ring and a dot; the register publishes no wave-power glyph",
+      "concept": null,
+      "glyph_concept": null,
+      "grade": "substituted",
+      "register_id": "SO_0001",
+      "geom": "Point",
+      "register_concept_count": 60,
+      "register_concept_published": false,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), generic point symbol SO_0001",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "powerwave"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/wave.paa",
+      "shared_with": [
+        "solar",
+        "tourism"
+      ]
+    },
+    {
+      "id": "fuel_station",
+      "name": "Fuel station",
+      "category": "works",
+      "depicts": "a motor vehicle station, a fuel pump",
+      "concept": "MotorVehicleStationP",
+      "glyph_concept": "MotorVehicleStationP",
+      "grade": "specific",
+      "register_id": "SO_0146",
+      "geom": "Point",
+      "register_concept_count": 4,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0146 MotorVehicleStationP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "fuelstation"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/fuel_station.paa",
+      "shared_with": []
+    },
+    {
+      "id": "bus_stop",
+      "name": "Bus stop",
+      "category": "transport",
+      "depicts": "a checkpoint, a barrier gate",
+      "concept": null,
+      "glyph_concept": "CheckpointP",
+      "grade": "substituted",
+      "register_id": "SO_0153",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0153 CheckpointP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "busstop"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/bus_stop.paa",
+      "shared_with": [
+        "border_crossing"
+      ]
+    },
+    {
+      "id": "quay",
+      "name": "Quay",
+      "category": "transport",
+      "depicts": "a quay, a pier symbol",
+      "concept": null,
+      "glyph_concept": null,
+      "grade": "non_register",
+      "register_id": null,
+      "geom": null,
+      "register_concept_count": 0,
+      "register_concept_published": false,
+      "source": "USGS Topographic Map Symbols (2005), unnumbered series GIP, pier symbol",
+      "licence": "public domain, US Government work",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "quay"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/quay.paa",
+      "shared_with": []
+    },
+    {
+      "id": "border_crossing",
+      "name": "Border crossing",
+      "category": "boundary",
+      "depicts": "a checkpoint, a barrier gate",
+      "concept": "GateBorderCrossingP",
+      "glyph_concept": "CheckpointP",
+      "grade": "substituted",
+      "register_id": "SO_0153",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0153 CheckpointP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "CfgLocationTypes",
+          "class": "BorderCrossing"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/border_crossing.paa",
+      "shared_with": [
+        "bus_stop"
+      ]
+    },
+    {
+      "id": "fountain",
+      "name": "Fountain",
+      "category": "works",
+      "depicts": "a fountain, a jet of water",
+      "concept": "FountainP",
+      "glyph_concept": "FountainP",
+      "grade": "specific",
+      "register_id": "SO_0180",
+      "geom": "Point",
+      "register_concept_count": 1,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0180 FountainP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Fountain"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/fountain.paa",
+      "shared_with": []
+    },
+    {
+      "id": "shipwreck",
+      "name": "Shipwreck",
+      "category": "hydrography",
+      "depicts": "a wreck, a hull shape",
+      "concept": "WreckP",
+      "glyph_concept": "WreckP",
+      "grade": "specific",
+      "register_id": "SO_0160",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0160 WreckP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Shipwreck"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/shipwreck.paa",
+      "shared_with": []
+    },
+    {
+      "id": "bunker",
+      "name": "Bunker",
+      "category": "military",
+      "depicts": "a surface bunker, a low structure",
+      "concept": "SurfaceBunkerP",
+      "glyph_concept": "SurfaceBunkerP",
+      "grade": "specific",
+      "register_id": "SO_0330",
+      "geom": "Point",
+      "register_concept_count": 1,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0330 SurfaceBunkerP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Bunker"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/bunker.paa",
+      "shared_with": []
+    },
+    {
+      "id": "fortress",
+      "name": "Fortress",
+      "category": "military",
+      "depicts": "a fortification, a walled outline",
+      "concept": "FortificationP",
+      "glyph_concept": "FortificationP",
+      "grade": "specific",
+      "register_id": "SO_0099",
+      "geom": "Point",
+      "register_concept_count": 4,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0099 FortificationP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Fortress"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/fortress.paa",
+      "shared_with": []
+    },
+    {
+      "id": "stack",
+      "name": "Smokestack",
+      "category": "works",
+      "depicts": "a smokestack, a tall chimney",
+      "concept": "SmokestackP",
+      "glyph_concept": "SmokestackP",
+      "grade": "specific",
+      "register_id": "SO_0156",
+      "geom": "Point",
+      "register_concept_count": 2,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0156 SmokestackP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Stack"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/stack.paa",
+      "shared_with": []
+    },
+    {
+      "id": "tourism",
+      "name": "Tourist attraction",
+      "category": "works",
+      "depicts": "the register's generic point symbol, a ring and a dot; the register publishes no dedicated attraction glyph",
+      "concept": "AmusementParkAttractionP",
+      "glyph_concept": "AmusementParkAttractionP",
+      "grade": "generic",
+      "register_id": "SO_0001",
+      "geom": "Point",
+      "register_concept_count": 60,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0001 AmusementParkAttractionP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "Tourism"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/tourism.paa",
+      "shared_with": [
+        "solar",
+        "wave"
+      ]
+    },
+    {
+      "id": "view_tower",
+      "name": "Viewing tower",
+      "category": "works",
+      "depicts": "another tower, a generic tower",
+      "concept": "TowerOtherP",
+      "glyph_concept": "TowerOtherP",
+      "grade": "specific",
+      "register_id": "SO_0079",
+      "geom": "Point",
+      "register_concept_count": 3,
+      "register_concept_published": true,
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0079 TowerOtherP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "used_for": [
+        {
+          "kind": "RscMapControl",
+          "class": "ViewTower"
+        }
+      ],
+      "preview": "addons/optics/data/terrain/view_tower.paa",
+      "shared_with": []
+    }
+  ]
+}
