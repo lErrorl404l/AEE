@@ -1,0 +1,871 @@
+{
+  "schema": "aee.engine.magazine_bindings/1",
+  "note": "Resolved from the installed game config. Do not edit by hand.",
+  "resolved_from": "weapons_f.pbo config.bin (hemtt pbo extract + config derapify)",
+  "rows": [
+    {
+      "game_class": "30Rnd_556x45_Stanag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_556x45_Ball",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_green",
+      "parent_class": "30Rnd_556x45_Stanag",
+      "ammo_class": "B_556x45_Ball_Tracer_Green",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_red",
+      "parent_class": "30Rnd_556x45_Stanag",
+      "ammo_class": "B_556x45_Ball_Tracer_Red",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Tracer_Red",
+      "parent_class": "30Rnd_556x45_Stanag",
+      "ammo_class": "B_556x45_Ball_Tracer_Red",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Tracer_Green",
+      "parent_class": "30Rnd_556x45_Stanag",
+      "ammo_class": "B_556x45_Ball_Tracer_Green",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Tracer_Yellow",
+      "parent_class": "30Rnd_556x45_Stanag",
+      "ammo_class": "B_556x45_Ball_Tracer_Yellow",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Sand_green",
+      "parent_class": "30Rnd_556x45_Stanag_Sand",
+      "ammo_class": "B_556x45_Ball_Tracer_Green",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Sand_red",
+      "parent_class": "30Rnd_556x45_Stanag_Sand",
+      "ammo_class": "B_556x45_Ball_Tracer_Red",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Sand_Tracer_Red",
+      "parent_class": "30Rnd_556x45_Stanag_Sand",
+      "ammo_class": "B_556x45_Ball_Tracer_Red",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Sand_Tracer_Green",
+      "parent_class": "30Rnd_556x45_Stanag_Sand_Tracer_Red",
+      "ammo_class": "B_556x45_Ball_Tracer_Green",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_556x45_Stanag_Sand_Tracer_Yellow",
+      "parent_class": "30Rnd_556x45_Stanag_Sand_Tracer_Red",
+      "ammo_class": "B_556x45_Ball_Tracer_Yellow",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "20Rnd_556x45_UW_mag",
+      "parent_class": "30Rnd_556x45_Stanag",
+      "ammo_class": "B_556x45_dual",
+      "cartridge_id": "556x45_nato"
+    },
+    {
+      "game_class": "30Rnd_65x39_caseless_mag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_65x39_Caseless",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "30Rnd_65x39_caseless_green",
+      "parent_class": "30Rnd_65x39_caseless_mag",
+      "ammo_class": "B_65x39_Caseless_green",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "20Rnd_762x51_Mag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_762x51_Ball",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "7Rnd_408_Mag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_408_Ball",
+      "cartridge_id": "408_chey_tac"
+    },
+    {
+      "game_class": "5Rnd_127x108_Mag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_127x108_Ball",
+      "cartridge_id": "12_7_x_108"
+    },
+    {
+      "game_class": "100Rnd_65x39_caseless_mag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_65x39_Caseless",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "200Rnd_65x39_cased_Box",
+      "parent_class": "100Rnd_65x39_caseless_mag",
+      "ammo_class": "B_65x39_Caseless_yellow",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "200Rnd_65x39_cased_Box_Red",
+      "parent_class": "100Rnd_65x39_caseless_mag",
+      "ammo_class": "B_65x39_Caseless",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "200Rnd_65x39_cased_Box_Tracer_Red",
+      "parent_class": "200Rnd_65x39_cased_Box",
+      "ammo_class": "B_65x39_Caseless",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "30Rnd_9x21_Mag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_9x21_Ball",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "30Rnd_9x21_Red_Mag",
+      "parent_class": "30Rnd_9x21_Mag",
+      "ammo_class": "B_9x21_Ball_Tracer_Red",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "30Rnd_9x21_Yellow_Mag",
+      "parent_class": "30Rnd_9x21_Mag",
+      "ammo_class": "B_9x21_Ball_Tracer_Yellow",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "30Rnd_9x21_Green_Mag",
+      "parent_class": "30Rnd_9x21_Mag",
+      "ammo_class": "B_9x21_Ball_Tracer_Green",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "30Rnd_9x21_Mag_SMG_02_Tracer_Red",
+      "parent_class": "30Rnd_9x21_Mag_SMG_02",
+      "ammo_class": "B_9x21_Ball_Tracer_Red",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",
+      "parent_class": "30Rnd_9x21_Mag_SMG_02",
+      "ammo_class": "B_9x21_Ball_Tracer_Yellow",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "30Rnd_9x21_Mag_SMG_02_Tracer_Green",
+      "parent_class": "30Rnd_9x21_Mag_SMG_02",
+      "ammo_class": "B_9x21_Ball_Tracer_Green",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "16Rnd_9x21_red_Mag",
+      "parent_class": "16Rnd_9x21_Mag",
+      "ammo_class": "B_9x21_Ball_Tracer_Red",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "16Rnd_9x21_green_Mag",
+      "parent_class": "16Rnd_9x21_Mag",
+      "ammo_class": "B_9x21_Ball_Tracer_Green",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "16Rnd_9x21_yellow_Mag",
+      "parent_class": "16Rnd_9x21_Mag",
+      "ammo_class": "B_9x21_Ball_Tracer_Yellow",
+      "cartridge_id": "9_x_21"
+    },
+    {
+      "game_class": "1Rnd_HE_Grenade_shell",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "G_40mm_HE",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "1Rnd_Smoke_Grenade_shell",
+      "parent_class": "1Rnd_HE_Grenade_shell",
+      "ammo_class": "G_40mm_Smoke",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "1Rnd_SmokeRed_Grenade_shell",
+      "parent_class": "1Rnd_Smoke_Grenade_shell",
+      "ammo_class": "G_40mm_SmokeRed",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "1Rnd_SmokeGreen_Grenade_shell",
+      "parent_class": "1Rnd_Smoke_Grenade_shell",
+      "ammo_class": "G_40mm_SmokeGreen",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "1Rnd_SmokeYellow_Grenade_shell",
+      "parent_class": "1Rnd_Smoke_Grenade_shell",
+      "ammo_class": "G_40mm_SmokeYellow",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "1Rnd_SmokePurple_Grenade_shell",
+      "parent_class": "1Rnd_Smoke_Grenade_shell",
+      "ammo_class": "G_40mm_SmokePurple",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "1Rnd_SmokeBlue_Grenade_shell",
+      "parent_class": "1Rnd_Smoke_Grenade_shell",
+      "ammo_class": "G_40mm_SmokeBlue",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "1Rnd_SmokeOrange_Grenade_shell",
+      "parent_class": "1Rnd_Smoke_Grenade_shell",
+      "ammo_class": "G_40mm_SmokeOrange",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "200Rnd_65x39_Belt",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "B_65x39_Caseless",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "200Rnd_65x39_Belt_Tracer_Red",
+      "parent_class": "200Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Caseless",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "200Rnd_65x39_Belt_Tracer_Green",
+      "parent_class": "200Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Case_green",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "200Rnd_65x39_Belt_Tracer_Yellow",
+      "parent_class": "200Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Case_yellow",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "1000Rnd_65x39_Belt_Tracer_Red",
+      "parent_class": "1000Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Caseless",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "1000Rnd_65x39_Belt_Green",
+      "parent_class": "1000Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Case_green",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "1000Rnd_65x39_Belt_Yellow",
+      "parent_class": "1000Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Case_Yellow",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "2000Rnd_65x39_Belt_Tracer_Red",
+      "parent_class": "2000Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Minigun_Caseless_Red_splash",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "2000Rnd_65x39_Belt_Green",
+      "parent_class": "2000Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Case_Green",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "2000Rnd_65x39_Belt_Tracer_Green_Splash",
+      "parent_class": "2000Rnd_65x39_Belt_Tracer_Green",
+      "ammo_class": "B_65x39_Minigun_Caseless_Green_splash",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "2000Rnd_65x39_Belt_Yellow",
+      "parent_class": "2000Rnd_65x39_Belt",
+      "ammo_class": "B_65x39_Case_Yellow",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "2000Rnd_65x39_Belt_Tracer_Yellow_Splash",
+      "parent_class": "2000Rnd_65x39_Belt_Tracer_Yellow",
+      "ammo_class": "B_65x39_Minigun_Caseless_Yellow_splash",
+      "cartridge_id": "6_5_x_39"
+    },
+    {
+      "game_class": "5000Rnd_762x51_Belt",
+      "parent_class": "2000Rnd_65x39_Belt",
+      "ammo_class": "B_762x51_Minigun_Tracer_Red_splash",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "5000Rnd_762x51_Yellow_Belt",
+      "parent_class": "5000Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Minigun_Tracer_Yellow_splash",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "500Rnd_127x99_mag",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "B_127x99_Ball",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "500Rnd_127x99_mag_Tracer_Red",
+      "parent_class": "500Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Red",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "500Rnd_127x99_mag_Tracer_Green",
+      "parent_class": "500Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Green",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "500Rnd_127x99_mag_Tracer_Yellow",
+      "parent_class": "500Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Yellow",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "200Rnd_127x99_mag_Tracer_Red",
+      "parent_class": "200Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Red",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "200Rnd_127x99_mag_Tracer_Green",
+      "parent_class": "200Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Green",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "200Rnd_127x99_mag_Tracer_Yellow",
+      "parent_class": "200Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Yellow",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "100Rnd_127x99_mag_Tracer_Red",
+      "parent_class": "100Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Red",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "100Rnd_127x99_mag_Tracer_Green",
+      "parent_class": "100Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Green",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "100Rnd_127x99_mag_Tracer_Yellow",
+      "parent_class": "100Rnd_127x99_mag",
+      "ammo_class": "B_127x99_Ball_Tracer_Yellow",
+      "cartridge_id": "50_bmg"
+    },
+    {
+      "game_class": "450Rnd_127x108_Ball",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "B_127x108_Ball",
+      "cartridge_id": "12_7_x_108"
+    },
+    {
+      "game_class": "200Rnd_40mm_G_belt",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "G_40mm_HEDP",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "6Rnd_155mm_Mo_smoke",
+      "parent_class": "32Rnd_155mm_Mo_shells",
+      "ammo_class": "Smoke_120mm_AMOS_White",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "UGL_FlareWhite_F",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "F_40mm_White",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareWhite_Illumination_F",
+      "parent_class": "UGL_FlareWhite_F",
+      "ammo_class": "F_40mm_White_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "3rnd_UGL_FlareWhite_Illumination_F",
+      "parent_class": "3Rnd_UGL_FlareWhite_F",
+      "ammo_class": "F_40mm_White_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareGreen_F",
+      "parent_class": "UGL_FlareWhite_F",
+      "ammo_class": "F_40mm_Green",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareGreen_Illumination_F",
+      "parent_class": "UGL_FlareGreen_F",
+      "ammo_class": "F_40mm_Green_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "3rnd_UGL_FlareGreen_Illumination_F",
+      "parent_class": "3Rnd_UGL_FlareGreen_F",
+      "ammo_class": "F_40mm_Green_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareRed_F",
+      "parent_class": "UGL_FlareWhite_F",
+      "ammo_class": "F_40mm_Red",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareRed_Illumination_F",
+      "parent_class": "UGL_FlareRed_F",
+      "ammo_class": "F_40mm_Red_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "3rnd_UGL_FlareRed_Illumination_F",
+      "parent_class": "3Rnd_UGL_FlareRed_F",
+      "ammo_class": "F_40mm_Red_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareYellow_F",
+      "parent_class": "UGL_FlareWhite_F",
+      "ammo_class": "F_40mm_Yellow",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareYellow_Illumination_F",
+      "parent_class": "UGL_FlareYellow_F",
+      "ammo_class": "F_40mm_Yellow_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "3rnd_UGL_FlareYellow_Illumination_F",
+      "parent_class": "3Rnd_UGL_FlareYellow_F",
+      "ammo_class": "F_40mm_Yellow_Illumination",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "UGL_FlareCIR_F",
+      "parent_class": "UGL_FlareWhite_F",
+      "ammo_class": "F_40mm_CIR",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "30Rnd_45ACP_Mag_SMG_01",
+      "parent_class": "30Rnd_9x21_Mag",
+      "ammo_class": "B_45ACP_Ball",
+      "cartridge_id": "45_auto"
+    },
+    {
+      "game_class": "30Rnd_45ACP_Mag_SMG_01_Tracer_Green",
+      "parent_class": "30Rnd_45ACP_Mag_SMG_01",
+      "ammo_class": "B_45ACP_Ball_Green",
+      "cartridge_id": "45_auto"
+    },
+    {
+      "game_class": "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow",
+      "parent_class": "30Rnd_45ACP_Mag_SMG_01",
+      "ammo_class": "B_45ACP_Ball_Yellow",
+      "cartridge_id": "45_auto"
+    },
+    {
+      "game_class": "9Rnd_45ACP_Mag",
+      "parent_class": "30Rnd_45ACP_Mag_SMG_01",
+      "ammo_class": "B_45ACP_Ball_Green",
+      "cartridge_id": "45_auto"
+    },
+    {
+      "game_class": "150Rnd_762x51_Box",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_762x51_Tracer_Green",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "150Rnd_762x54_Box",
+      "parent_class": "150Rnd_762x51_Box",
+      "ammo_class": "B_762x54_Tracer_Green",
+      "cartridge_id": "7_62_x_54_r"
+    },
+    {
+      "game_class": "250Rnd_30mm_HE_shells",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "B_30mm_HE",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "250Rnd_30mm_HE_shells_Tracer_Red",
+      "parent_class": "250Rnd_30mm_HE_shells",
+      "ammo_class": "B_30mm_HE_Tracer_Red",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "250Rnd_30mm_HE_shells_Tracer_Green",
+      "parent_class": "250Rnd_30mm_HE_shells",
+      "ammo_class": "B_30mm_HE_Tracer_Green",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "250Rnd_30mm_APDS_shells",
+      "parent_class": "250Rnd_30mm_HE_shells",
+      "ammo_class": "B_30mm_AP",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "250Rnd_30mm_APDS_shells_Tracer_Red",
+      "parent_class": "250Rnd_30mm_APDS_shells",
+      "ammo_class": "B_30mm_AP_Tracer_Red",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "250Rnd_30mm_APDS_shells_Tracer_Green",
+      "parent_class": "250Rnd_30mm_APDS_shells",
+      "ammo_class": "B_30mm_AP_Tracer_Green",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "250Rnd_30mm_APDS_shells_Tracer_Yellow",
+      "parent_class": "250Rnd_30mm_APDS_shells",
+      "ammo_class": "B_30mm_AP_Tracer_Yellow",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "140Rnd_30mm_MP_shells",
+      "parent_class": "250Rnd_30mm_HE_shells",
+      "ammo_class": "B_30mm_MP",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "140Rnd_30mm_MP_shells_Tracer_Red",
+      "parent_class": "140Rnd_30mm_MP_shells",
+      "ammo_class": "B_30mm_MP_Tracer_Red",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "140Rnd_30mm_MP_shells_Tracer_Green",
+      "parent_class": "140Rnd_30mm_MP_shells_Tracer_Red",
+      "ammo_class": "B_30mm_MP_Tracer_Green",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "140Rnd_30mm_MP_shells_Tracer_Yellow",
+      "parent_class": "140Rnd_30mm_MP_shells_Tracer_Red",
+      "ammo_class": "B_30mm_MP_Tracer_Yellow",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "60Rnd_30mm_APFSDS_shells",
+      "parent_class": "250Rnd_30mm_HE_shells",
+      "ammo_class": "B_30mm_APFSDS",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "60Rnd_30mm_APFSDS_shells_Tracer_Red",
+      "parent_class": "60Rnd_30mm_APFSDS_shells",
+      "ammo_class": "B_30mm_APFSDS_Tracer_Red",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "60Rnd_30mm_APFSDS_shells_Tracer_Green",
+      "parent_class": "60Rnd_30mm_APFSDS_shells",
+      "ammo_class": "B_30mm_APFSDS_Tracer_Green",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "60Rnd_30mm_APFSDS_shells_Tracer_Yellow",
+      "parent_class": "60Rnd_30mm_APFSDS_shells",
+      "ammo_class": "B_30mm_APFSDS_Tracer_Yellow",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "60Rnd_40mm_GPR_shells",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "B_40mm_GPR",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "60Rnd_40mm_GPR_Tracer_Red_shells",
+      "parent_class": "60Rnd_40mm_GPR_shells",
+      "ammo_class": "B_40mm_GPR_Tracer_Red",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "60Rnd_40mm_GPR_Tracer_Green_shells",
+      "parent_class": "60Rnd_40mm_GPR_shells",
+      "ammo_class": "B_40mm_GPR_Tracer_Green",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "60Rnd_40mm_GPR_Tracer_Yellow_shells",
+      "parent_class": "60Rnd_40mm_GPR_shells",
+      "ammo_class": "B_40mm_GPR_Tracer_Yellow",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "40Rnd_40mm_APFSDS_shells",
+      "parent_class": "60Rnd_40mm_GPR_shells",
+      "ammo_class": "B_40mm_APFSDS",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "40Rnd_40mm_APFSDS_Tracer_Red_shells",
+      "parent_class": "40Rnd_40mm_APFSDS_shells",
+      "ammo_class": "B_40mm_APFSDS_Tracer_Red",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "40Rnd_40mm_APFSDS_Tracer_Green_shells",
+      "parent_class": "40Rnd_40mm_APFSDS_Tracer_Red_shells",
+      "ammo_class": "B_40mm_APFSDS_Tracer_Green",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "40Rnd_40mm_APFSDS_Tracer_Yellow_shells",
+      "parent_class": "40Rnd_40mm_APFSDS_Tracer_Red_shells",
+      "ammo_class": "B_40mm_APFSDS_Tracer_Yellow",
+      "cartridge_id": "40x46_sr"
+    },
+    {
+      "game_class": "30Rnd_120mm_HE_shells",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "Sh_120mm_HE",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "30Rnd_120mm_HE_shells_Tracer_Red",
+      "parent_class": "30Rnd_120mm_HE_shells",
+      "ammo_class": "Sh_120mm_HE_Tracer_Red",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "30Rnd_120mm_HE_shells_Tracer_Green",
+      "parent_class": "30Rnd_120mm_HE_shells",
+      "ammo_class": "Sh_120mm_HE_Tracer_Green",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "30Rnd_120mm_HE_shells_Tracer_Yellow",
+      "parent_class": "30Rnd_120mm_HE_shells",
+      "ammo_class": "Sh_120mm_HE_Tracer_Yellow",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "30Rnd_120mm_APFSDS_shells",
+      "parent_class": "30Rnd_120mm_HE_shells",
+      "ammo_class": "Sh_120mm_APFSDS",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "30Rnd_120mm_APFSDS_shells_Tracer_Red",
+      "parent_class": "30Rnd_120mm_APFSDS_shells",
+      "ammo_class": "Sh_120mm_APFSDS_Tracer_Red",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "30Rnd_120mm_APFSDS_shells_Tracer_Green",
+      "parent_class": "30Rnd_120mm_APFSDS_shells",
+      "ammo_class": "Sh_120mm_APFSDS_Tracer_Green",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "30Rnd_120mm_APFSDS_shells_Tracer_Yellow",
+      "parent_class": "30Rnd_120mm_APFSDS_shells",
+      "ammo_class": "Sh_120mm_APFSDS_Tracer_Yellow",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "20Rnd_120mm_HEAT_MP",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "Sh_120mm_HEAT_MP",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "20Rnd_120mm_HEAT_MP_T_Red",
+      "parent_class": "20Rnd_120mm_HEAT_MP",
+      "ammo_class": "Sh_120mm_HEAT_MP_T_Red",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "20Rnd_120mm_HEAT_MP_T_Green",
+      "parent_class": "20Rnd_120mm_HEAT_MP",
+      "ammo_class": "Sh_120mm_HEAT_MP_T_Green",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "20Rnd_120mm_HEAT_MP_T_Yellow",
+      "parent_class": "20Rnd_120mm_HEAT_MP",
+      "ammo_class": "Sh_120mm_HEAT_MP_T_Yellow",
+      "cartridge_id": "120mm_m256_smoothbore"
+    },
+    {
+      "game_class": "40Rnd_105mm_APFSDS",
+      "parent_class": "24Rnd_125mm_APFSDS",
+      "ammo_class": "Sh_105mm_APFSDS",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "40Rnd_105mm_APFSDS_T_Red",
+      "parent_class": "40Rnd_105mm_APFSDS",
+      "ammo_class": "Sh_105mm_APFSDS_T_Red",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "40Rnd_105mm_APFSDS_T_Green",
+      "parent_class": "40Rnd_105mm_APFSDS",
+      "ammo_class": "Sh_105mm_APFSDS_T_Green",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "40Rnd_105mm_APFSDS_T_Yellow",
+      "parent_class": "40Rnd_105mm_APFSDS",
+      "ammo_class": "Sh_105mm_APFSDS_T_Yellow",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "20Rnd_105mm_HEAT_MP",
+      "parent_class": "12Rnd_125mm_HEAT",
+      "ammo_class": "Sh_105mm_HEAT_MP",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "20Rnd_105mm_HEAT_MP_T_Red",
+      "parent_class": "20Rnd_105mm_HEAT_MP",
+      "ammo_class": "Sh_105mm_HEAT_MP_T_Red",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "20Rnd_105mm_HEAT_MP_T_Green",
+      "parent_class": "20Rnd_105mm_HEAT_MP",
+      "ammo_class": "Sh_105mm_HEAT_MP_T_Green",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "20Rnd_105mm_HEAT_MP_T_Yellow",
+      "parent_class": "20Rnd_105mm_HEAT_MP",
+      "ammo_class": "Sh_105mm_HEAT_MP_T_Yellow",
+      "cartridge_id": "105mm_m68"
+    },
+    {
+      "game_class": "11Rnd_45ACP_Mag",
+      "parent_class": "CA_Magazine",
+      "ammo_class": "B_45ACP_Ball",
+      "cartridge_id": "45_auto"
+    },
+    {
+      "game_class": "10Rnd_762x54_Mag",
+      "parent_class": "10Rnd_762x51_Mag",
+      "ammo_class": "B_762x54_Ball",
+      "cartridge_id": "7_62_x_54_r"
+    },
+    {
+      "game_class": "5Rnd_127x108_APDS_Mag",
+      "parent_class": "5Rnd_127x108_Mag",
+      "ammo_class": "B_127x108_APDS",
+      "cartridge_id": "12_7_x_108"
+    },
+    {
+      "game_class": "200Rnd_762x51_Belt",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "B_762x51_Ball",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "200Rnd_762x51_Belt_Red",
+      "parent_class": "200Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Red",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "200Rnd_762x51_Belt_Green",
+      "parent_class": "200Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Green",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "200Rnd_762x51_Belt_Yellow",
+      "parent_class": "200Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Yellow",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "1000Rnd_762x51_Belt_Red",
+      "parent_class": "1000Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Red",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "1000Rnd_762x51_Belt_Green",
+      "parent_class": "1000Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Green",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "1000Rnd_762x51_Belt_Yellow",
+      "parent_class": "1000Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Yellow",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "2000Rnd_762x51_Belt_Red",
+      "parent_class": "2000Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Red",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "2000Rnd_762x51_Belt_Green",
+      "parent_class": "2000Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Green",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "2000Rnd_762x51_Belt_Yellow",
+      "parent_class": "2000Rnd_762x51_Belt",
+      "ammo_class": "B_762x51_Tracer_Yellow",
+      "cartridge_id": "762x51_nato"
+    },
+    {
+      "game_class": "1000Rnd_Gatling_30mm_Plane_CAS_01_F",
+      "parent_class": "VehicleMagazine",
+      "ammo_class": "Gatling_30mm_HE_Plane_CAS_01_F",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "500Rnd_Cannon_30mm_Plane_CAS_02_F",
+      "parent_class": "1000Rnd_Gatling_30mm_Plane_CAS_01_F",
+      "ammo_class": "Cannon_30mm_HE_Plane_CAS_02_F",
+      "cartridge_id": "30x113"
+    },
+    {
+      "game_class": "PylonWeapon_500Rnd_127mm_HEIAP_belt_right",
+      "parent_class": "500Rnd_127x99_mag",
+      "ammo_class": "B_127x99_HEIAP_Tracer_Red",
+      "cartridge_id": "50_bmg"
+    }
+  ]
+}
