@@ -109,11 +109,24 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 ];
                 private _key = _rect apply { round (_x / 10) };
                 private _cache = missionNamespace getVariable [QGVAR(mgrsGridCache), []];
-                if ((count _cache) != 2 || ((_cache select 0) isNotEqualTo _key)) then {
-                    _cache = [_key, [_anchor, _rect] call FUNC(mgrsGridLines)];
-                    missionNamespace setVariable [QGVAR(mgrsGridCache), _cache];
+                // The cache is rebuilt on a miss.  Build the plan as the value
+                // of an if-expression so it is assigned at THIS scope level,
+                // never read back from a local written inside the nested
+                // rebuild block.  A short or malformed cache falls through to
+                // the rebuild, so a nil can never reach the params below.
+                private _hit = if ((_cache isEqualType []) && {((count _cache) == 2)}) then {
+                    (_cache select 0) isEqualTo _key
+                } else {
+                    false
                 };
-                private _plan = _cache select 1;
+                private _plan = if (_hit) then {
+                    _cache select 1
+                } else {
+                    private _fresh = [_anchor, _rect] call FUNC(mgrsGridLines);
+                    missionNamespace setVariable [QGVAR(mgrsGridCache), [_key, _fresh]];
+                    _fresh
+                };
+                if !(_plan isEqualType []) then { _plan = []; };
                 _plan params ["_segments", "_labels"];
                 {
                     _x params ["_pA", "_pB", "_major"];

@@ -294,9 +294,19 @@ if (_ambient) then {
     // the schedule, so the dawn chorus is dense and the midday lull is near
     // silent.  The mix carries each group's corpus bins and its sound group.
     private _hourKey = floor (_now / 3600);
-    private _schedule = missionNamespace getVariable [QGVAR(soundSchedule), []];
-    if !(_schedule isEqualType []) then { _schedule = []; };
-    if (((count _schedule) < 3) || ((_schedule select 0) != _hourKey)) then {
+    private _cached = missionNamespace getVariable [QGVAR(soundSchedule), []];
+    // The schedule is rebuilt on an hour change.  Build it as the value of an
+    // if-expression so the local is assigned at THIS scope level, never read
+    // back from a local written inside the nested rebuild block.  The hour
+    // test is gated, so a short or malformed cache falls through to rebuild.
+    private _cacheHit = if ((_cached isEqualType []) && {((count _cached) >= 3)}) then {
+        (_cached select 0) == _hourKey
+    } else {
+        false
+    };
+    private _schedule = if (_cacheHit) then {
+        _cached
+    } else {
         private _corpus = missionNamespace getVariable [QGVAR(ecologyCorpus), []];
         if !(_corpus isEqualType []) then { _corpus = []; };
         private _assetMap = missionNamespace getVariable [QGVAR(assetMap), []];
@@ -333,7 +343,9 @@ if (_ambient) then {
             _hour, _sunElev, _month, _temperature, _wind, _rainAmount, _gain,
             _mix, _assetMap, _platforms, _seed
         ] call FUNC(soundTick);
-        _schedule = [_hourKey, _emissions, 0];
+        private _fresh = [_hourKey, _emissions, 0];
+        missionNamespace setVariable [QGVAR(soundSchedule), _fresh];
+        _fresh
     };
 
     private _emissions = _schedule select 1;
