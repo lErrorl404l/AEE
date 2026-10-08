@@ -67,6 +67,10 @@ ALTIS = [
     "mapArea",
 ]
 
+# Stratis ships no usable mapArea box, so its anchor falls back to the
+# CfgWorlds keys and FUNC(utmToWorld) uses the local tangent plane.
+STRATIS = [35.097, 16.482, 35, 8192, 0, 0, 0, 0, "cfgworlds"]
+
 
 def _latlon(lat, lon):
     return run_sqf(GEO / "fnc_latLonToUtm.sqf", [lat, lon])
@@ -291,38 +295,101 @@ class TestDefect3PrecisionByScale(unittest.TestCase):
 
 
 class TestDefect5Straightness(unittest.TestCase):
-    """The drawn grid line is straight.  The projection is affine (measured to
-    better than 0.13 m over 8 km), so the planner densifies each line and the
-    segments of one line are collinear."""
+    """A drawn grid line is one straight chord.
 
-    def test_the_planner_densifies_each_line_with_the_visible_span(self):
-        # The count is adaptive so the joint deviation stays under a map pixel
-        # at every zoom; the old fixed single-step chord is gone.
-        self.assertIn("sqrt (_span / 40)", GRID_SRC)
-        self.assertNotIn("private _samples = 3;", GRID_SRC)
+    Each line is a straight UTM line (constant easting or constant northing)
+    mapped to the world by the inverse projection.  The exact series bows by
+    under a map pixel at every zoom and every world size, so the two-point
+    chord is faithful and has no interior joint to bead.  The live engine adds
+    a per-sample conversion jitter (measured by probe P127), which is why
+    densifying the line added joints rather than removing the bend.
+    """
 
-    def test_consecutive_segments_of_a_line_are_collinear(self):
+    def _zone(self, anchor):
+        return max(1, min(60, math.floor((anchor[1] + 180) / 6) + 1))
+
+    def _centre_utm(self, anchor):
+        c = anchor[3] / 2
+        conv = _world_to_mgrs([c, c, 0], anchor, 10)
+        return conv[3], conv[4]
+
+    def _vcurve(self, anchor, e, n_lo, n_hi, samples=129):
+        z = self._zone(anchor)
+        return [
+            _utm_to_world(
+                e, n_lo + (n_hi - n_lo) * k / (samples - 1), z, "north", anchor
+            )
+            for k in range(samples)
+        ]
+
+    def _hcurve(self, anchor, n, e_lo, e_hi, samples=129):
+        z = self._zone(anchor)
+        return [
+            _utm_to_world(
+                e_lo + (e_hi - e_lo) * k / (samples - 1), n, z, "north", anchor
+            )
+            for k in range(samples)
+        ]
+
+    def _deviation(self, pts):
+        a, b = pts[0], pts[-1]
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        length = math.hypot(dx, dy)
+        if length == 0:
+            return 0.0
+        return max(
+            abs(dx * (p[1] - a[1]) - dy * (p[0] - a[0])) / length for p in pts[1:-1]
+        )
+
+    def test_the_exact_curve_bows_by_under_a_map_pixel(self):
+        # The whole zoom and world-size range: 200 m to the full world, both a
+        # box world (Altis) and a tangent-plane world (Stratis), and five line
+        # positions across the view.  One pixel is span/1024, the same
+        # conservative pixel the planner uses, so the two-point chord is
+        # faithful by more than an order of magnitude everywhere.
+        for anchor in (ALTIS, STRATIS):
+            size = anchor[3]
+            e_c, n_c = self._centre_utm(anchor)
+            for span in (200, 500, 1000, 2048, 4096, 8192, size):
+                if span > size:
+                    continue
+                pixel = span / 1024
+                for off in (-0.5, -0.25, 0.0, 0.25, 0.5):
+                    v = self._vcurve(
+                        anchor, e_c + off * span, n_c - span / 2, n_c + span / 2
+                    )
+                    h = self._hcurve(
+                        anchor, n_c + off * span, e_c - span / 2, e_c + span / 2
+                    )
+                    for curve, kind in ((v, "vertical"), (h, "horizontal")):
+                        dev = self._deviation(curve)
+                        self.assertLess(
+                            dev,
+                            pixel,
+                            f"{kind} chord bows {dev:.4f} m over a {span:.0f} m "
+                            f"span (pixel {pixel:.3f} m)",
+                        )
+
+    def test_the_planner_draws_one_chord_per_line(self):
+        # Red-before: the planner densified every line with a sample count and
+        # emitted N-1 chords per line.
+        self.assertNotIn("sqrt (_span / 40)", GRID_SRC)
+        self.assertNotIn("_samples", GRID_SRC)
+        self.assertIn("_dev > _pixel", GRID_SRC)
+
+    def test_the_emitted_plan_has_no_interior_joint(self):
         c = ALTIS[3] / 2
         rect = [c - 1000, c - 1000, c + 1000, c + 1000]
         segments, _labels, _interval = grid(ALTIS, rect)
         self.assertGreater(len(segments), 4)
-        joins = 0
-        for i in range(len(segments) - 1):
-            a0, a1, _am = segments[i]
-            b0, b1, _bm = segments[i + 1]
-            if a1[:2] != b0[:2]:
-                continue  # the next segment starts a new line
-            v1 = (a1[0] - a0[0], a1[1] - a0[1])
-            v2 = (b1[0] - b0[0], b1[1] - b0[1])
-            cross = abs(v1[0] * v2[1] - v1[1] * v2[0])
-            # the lateral offset at the join, in metres; sub-pixel at every
-            # zoom (the main map is about 0.03 m per pixel at maximum zoom)
-            deviation = cross / min(math.hypot(*v1), math.hypot(*v2))
-            self.assertLess(
-                deviation, 0.02, f"kink of {deviation:.5f} m at segment {i}"
-            )
-            joins += 1
-        self.assertGreater(joins, 0, "no join points found")
+        # An interior joint is a shared endpoint between consecutive segments
+        # of one line.  A single chord per line has none, so nothing beads.
+        joins = sum(
+            1
+            for i in range(len(segments) - 1)
+            if segments[i][1][:2] == segments[i + 1][0][:2]
+        )
+        self.assertEqual(joins, 0, "an interior joint would bead at the seam")
 
 
 class TestWiring(unittest.TestCase):
