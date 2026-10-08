@@ -490,9 +490,12 @@ class TestHudMapGridContract(unittest.TestCase):
             self.assertNotIn(writer, GRID_LINES_SRC, writer)
 
     def test_the_grid_kernel_reuses_the_core_kernels(self):
+        # The cardinal planner derives its positional labels from the core
+        # conversion.  It no longer projects line geometry through
+        # FUNC(utmToWorld): a cardinal line follows a world axis, so it is
+        # straight by construction (ADR-030).
         self.assertIn("EFUNC(core,worldToMgrs)", GRID_LINES_SRC)
-        self.assertIn("EFUNC(core,utmToWorld)", GRID_LINES_SRC)
-        self.assertIn("EFUNC(core,formatMgrs)", GRID_LINES_SRC)
+        self.assertNotIn("EFUNC(core,utmToWorld)", GRID_LINES_SRC)
 
 
 class TestHudWiring(unittest.TestCase):

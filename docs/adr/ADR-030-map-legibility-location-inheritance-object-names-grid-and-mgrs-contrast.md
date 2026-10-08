@@ -104,6 +104,41 @@ value, texture or code.
 - The contour colours stay AEE's standard brown (FM 21-31). The mods use
   ad-hoc colours with no standard, so AEE does not copy them.
 
+### Defect 5 - the grid switches from true MGRS to cardinal
+
+Status: this DELIBERATE design change supersedes the grid-line geometry of
+Defect 3.
+
+A true MGRS grid is aligned to UTM grid north. On a north-up map that
+alignment is off the map's cardinal axes by the grid convergence: +0.85
+degrees on Stratis, about 121 m over the 8 km map. The overlay drew that
+tilted grid, and probe P127 measured the tilt.
+
+Decision. The overlay now draws a CARDINAL grid: a vertical line at one
+constant world x and a horizontal line at one constant world y. The map
+control maps world to screen with a LINEAR transform, so an axis-aligned world
+line is a straight screen line by construction, with zero tilt and no
+per-point conversion. The line geometry is therefore exact, and the
+per-sample conversion jitter that P127 measured on the projected grid is gone.
+
+Operator reason, verbatim: "Well arma maps are always north up, so unless we
+change that, I think cardinal is our best bet given compas use, real map use
+and base engine". The map is north up. A cardinal grid matches the compass, a
+real paper map, and the base engine's own grid, which is cardinal.
+
+Labels. A cardinal line has NO single grid value, because the MGRS easting and
+northing vary along it. The label is POSITIONAL by design: FUNC(worldToMgrs)
+gives the MGRS reference at a fixed point of the line (a vertical line at its
+north end, a horizontal line at its east end), and the label carries the digit
+group that matches the interval. The interval is now a world-metre step, so a
+line lands on a whole step.
+
+Superseded. `fnc_mgrsGridLines` no longer projects through FUNC(utmToWorld).
+`tools/tests/test_mgrs_map_layer.py` `TestDefect5Straightness` asserts the
+cardinal geometry, the world-metre interval and zero tilt. Probe `aee_p127`
+asserts the cardinal geometry, the world-metre interval and the positional
+MGRS labels live.
+
 ## Ceilings
 
 - The object-to-icon routing is engine-internal. No config field names the
