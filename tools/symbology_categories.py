@@ -23,7 +23,11 @@ MODIFIER_CATEGORIES = (
     ("AEE_Echelon", "AEE Echelon"),
 )
 
+# The catalogue stores the affiliation as "Friend" (nato_catalogue.json), while
+# the rendered function strings prefix it with "Friendly".  Both keys are held,
+# so marker_category maps either token to the same CfgMarkerClasses family.
 _AFFIL_TOKEN = {
+    "Friend": "Friend",
     "Friendly": "Friend",
     "Hostile": "Hostile",
     "Neutral": "Neutral",
