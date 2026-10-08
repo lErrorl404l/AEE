@@ -23,7 +23,7 @@ class RscDisplayStrategicMap {
     class controlsBackground {
         class Map {
 #include "config_mapcolors.hpp"
-            // Engine numeric LINES off, engine NUMBERS on (ADR-029).
+            // Engine numeric LINES off, engine NUMBERS on (ADR-030).
             colorGrid[] = {0, 0, 0, 0};
             colorGridMap[] = {0, 0, 0, 0};
             sizeExGrid = 0.02;
@@ -36,7 +36,7 @@ class RscDisplayStrategicMap {
 class ctrlDefault;
 class ctrlMap: ctrlDefault {
 #include "config_mapcolors.hpp"
-    // Engine numeric LINES off, engine NUMBERS on (ADR-029).
+    // Engine numeric LINES off, engine NUMBERS on (ADR-030).
     colorGrid[] = {0, 0, 0, 0};
     colorGridMap[] = {0, 0, 0, 0};
     sizeExGrid = 0.02;

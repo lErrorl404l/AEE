@@ -131,6 +131,10 @@ jobs:
         run: python3 tools/validation/gen_wildlife_ecology.py --check
       - name: Wildlife ecology corpus validation
         run: python3 tools/validation/validate_wildlife_ecology.py
+      - name: Test-suite registration check
+        run: python3 tools/tests/test_suite_registration.py
+      - name: ADR number check
+        run: python3 tools/tests/test_adr_numbers.py
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:

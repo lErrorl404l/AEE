@@ -80,6 +80,8 @@ lint: lint-parity
 	python3 tools/gen_extension_contract.py --check || rc=1; \
 	python3 tools/validation/gen_wildlife_ecology.py --check || rc=1; \
 	python3 tools/validation/validate_wildlife_ecology.py || rc=1; \
+	python3 tools/tests/test_suite_registration.py || rc=1; \
+	python3 tools/tests/test_adr_numbers.py || rc=1; \
 	if [ $$rc -ne 0 ]; then echo "LINT: one or more checks FAILED"; fi; \
 	exit $$rc
 

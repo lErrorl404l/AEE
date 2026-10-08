@@ -1,4 +1,4 @@
-# ADR-029: Map legibility - location inheritance, object names, grid reference and MGRS contrast
+# ADR-030: Map legibility - location inheritance, object names, grid reference and MGRS contrast
 
 Status: Accepted
 
