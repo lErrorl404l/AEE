@@ -66,9 +66,19 @@ private _dt = ((_now - _last) max 0.01) min 30;
 // the engine markers simply remain.  This is the honest ceiling.
 private _suppress = missionNamespace getVariable [QGVAR(trackerSuppressIcons), false];
 if !(_suppress isEqualType true) then { _suppress = false; };
+private _suppressWas = missionNamespace getVariable [QGVAR(trackerIndicatorsSuppressed), false];
+if !(_suppressWas isEqualType true) then { _suppressWas = false; };
 if (_suppress) then {
     disableMapIndicators [true, false, false, false];
+} else {
+    // The suppression is a persistent LOCAL effect, so it must be reversed
+    // when the operator turns the setting off, or the engine indicators stay
+    // hidden for the rest of the session.
+    if (_suppressWas) then {
+        disableMapIndicators [false, false, false, false];
+    };
 };
+missionNamespace setVariable [QGVAR(trackerIndicatorsSuppressed), _suppress];
 
 private _player = call CBA_fnc_currentUnit;
 private _units = units (group _player);

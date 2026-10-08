@@ -172,20 +172,37 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
         // RscMapControlTooltip (idc 2350).  The engine moves it to the
         // cursor and fills it with the six-figure grid and the elevation.
         // Read its rectangle first: that is the readout's old position.
-        // Then hide it, so the map shows one readout, ours.
+        // The engine readout is hidden ONLY while the aee readout replaces
+        // it, so with the aee readout off the engine readout stays and the
+        // map is never left with no cursor readout at all.
         private _display = ctrlParent _map;
         private _readoutPos = [];
+        private _engineReadout = controlNull;
         if (!isNull _display) then {
-            private _engineReadout = _display displayCtrl 2350;
+            _engineReadout = _display displayCtrl 2350;
             if (!isNull _engineReadout) then {
                 _readoutPos = ctrlPosition _engineReadout;
+            };
+        };
+        private _cursorReadout = missionNamespace getVariable [QGVAR(mgrsCursorReadout), true];
+        if (!isNull _engineReadout) then {
+            private _tooltipHidden = missionNamespace getVariable [QGVAR(mgrsTooltipHidden), false];
+            if (_cursorReadout) then {
                 _engineReadout ctrlShow false;
+                missionNamespace setVariable [QGVAR(mgrsTooltipHidden), true];
+            } else {
+                // The setting turned off with the map open: hand the readout
+                // back to the engine exactly once, so it is not left hidden.
+                if (_tooltipHidden) then {
+                    _engineReadout ctrlShow true;
+                    missionNamespace setVariable [QGVAR(mgrsTooltipHidden), false];
+                };
             };
         };
 
         // ── Cursor readout ────────────────────────────────────────────
         // Draw the aee MGRS readout in the engine readout's old position.
-        if (missionNamespace getVariable [QGVAR(mgrsCursorReadout), true]) then {
+        if (_cursorReadout) then {
             private _mouse = getMousePosition;
             private _cp = ctrlPosition _map;
             if ((_mouse select 0) >= (_cp select 0)
@@ -227,4 +244,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
     }];
 
     _mapCtrl setVariable [QGVAR(mgrsMapReady), true];
+    // The map control is rebuilt on each open, so the engine tooltip starts
+    // visible again; clear the flag the Draw handler uses to restore it.
+    missionNamespace setVariable [QGVAR(mgrsTooltipHidden), false];
 }];

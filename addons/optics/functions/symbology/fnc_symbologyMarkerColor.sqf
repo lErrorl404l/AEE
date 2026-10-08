@@ -20,7 +20,7 @@
  */
 params [
     ["_affiliation", "friend", [""]],
-    ["_palette", "NATO", ["Auto"]]
+    ["_palette", "NATO", [""]]
 ];
 
 "ColorAEE"

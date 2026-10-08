@@ -32,6 +32,12 @@ missionNamespace setVariable [QGVAR(isReady), true];
 addMissionEventHandler ["Ended", {
     call FUNC(destroyBasePostProcess);
     call FUNC(teardownBaseGrade);
+    // disableMapIndicators is a persistent LOCAL effect, not scoped to the
+    // map display, so the teardown must reverse it too.  The restore also
+    // deletes any AEE markers a map close did not already clear.
+    if (hasInterface) then {
+        [] call FUNC(symbologyMarkersRestore);
+    };
 }];
 
 AEE_LOG_INFO("optics module initialised");

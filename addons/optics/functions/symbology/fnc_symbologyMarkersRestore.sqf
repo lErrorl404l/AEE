@@ -4,7 +4,9 @@
  *
  * Reverses FUNC(symbologyMarkersApply) on map close.  Every converted mission
  * marker gets its recorded type and colour back with the local commands, and
- * every AEE unit marker is deleted locally.  Both caches are cleared.
+ * every AEE unit marker is deleted locally.  Both caches are cleared.  The
+ * engine indicator suppression is cleared too, because disableMapIndicators is
+ * a persistent LOCAL effect, not scoped to the map display.
  *
  * Returns: nothing.
  */
@@ -27,3 +29,9 @@ private _echelon = missionNamespace getVariable [QGVAR(symbologyUnitEchelonMarke
     deleteMarkerLocal _x;
 } forEach _echelon;
 missionNamespace setVariable [QGVAR(symbologyUnitEchelonMarkers), []];
+
+// disableMapIndicators is a persistent LOCAL effect, not scoped to the map
+// display, so the suppression FUNC(symbologyMarkersApply) set on map open
+// must be reversed here or the engine indicators stay hidden for the rest of
+// the session.  A no-op when the setting was off and nothing was suppressed.
+disableMapIndicators [false, false, false, false];

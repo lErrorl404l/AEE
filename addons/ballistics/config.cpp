@@ -9,6 +9,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "aee_main",
+            "aee_atmos",
             "aee_core",
             "cba_main",
             "cba_xeh"

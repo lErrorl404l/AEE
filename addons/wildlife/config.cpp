@@ -9,7 +9,9 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "aee_ai",
+            "aee_ballistics",
             "aee_environmental",
+            "aee_material",
             "aee_core",
             "aee_main",
             "cba_main",

@@ -23,7 +23,7 @@ private _aee = "AEEFont";
 private _candidates = ["PuristaMedium", "RobotoCondensed", "TahomaB"];
 if (_mono) then {
     _aee = "AEEFontMono";
-    _candidates = ["LucidaConsoleB", "TahomaB", "PuristaMedium"];
+    _candidates = ["EtelkaMonospacePro", "LucidaConsoleB", "TahomaB", "PuristaMedium"];
 };
 
 if ([_aee] call FUNC(fontFamilyUsable)) exitWith { _aee };
