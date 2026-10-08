@@ -26,14 +26,13 @@ private _gridTargets = [
     _x params ["_label", "_cfg"];
     private _numbers = getArray (_cfg >> "colorGrid");
     private _lines = getArray (_cfg >> "colorGridMap");
-    private _size = getNumber (_cfg >> "sizeExGrid");
-    private _numbersOn = ((count _numbers) >= 4) && {(_numbers select 3) > 0.5};
+    private _numbersOff = ((count _numbers) >= 4) && {(_numbers select 3) == 0};
     private _linesOff = ((count _lines) >= 4) && {(_lines select 3) == 0};
-    if (_numbersOn && {_linesOff} && {_size >= 0.04}) then {
+    if (_numbersOff && {_linesOff}) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3 sizeExGrid=%4", _label, str _numbers, str _lines, _size];
+        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3", _label, str _numbers, str _lines];
     };
 } forEach _gridTargets;
 

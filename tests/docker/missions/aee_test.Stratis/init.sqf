@@ -3361,6 +3361,14 @@ private _p29Pass = 0;
     // line is one straight chord and the per-sample conversion jitter is
     // measured against it.  It renders nothing.
     execVM "aee_p127_mgrs_straightness_probe.sqf";
+
+    // PHASE 128 lives in aee_p128_map_cursor_ruler_probe.sqf: the engine cursor
+    // tooltip is neutralised at the config (Info text and backdrop alpha 0) and
+    // the AEE edge ruler labels every line at both ends, so the left and right
+    // reference the engine clips at close zoom is supplied.  Both are merged
+    // config and a pure kernel, so they are measurable headless.  It renders
+    // nothing.
+    execVM "aee_p128_map_cursor_ruler_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
