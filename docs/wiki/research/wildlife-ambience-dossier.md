@@ -181,7 +181,7 @@ The soak runs for 20 min. The stress mode runs for 30 min. Both sample every
 The stress mode starts with a saturation burst. It seeds 4000 distinct cells
 and applies 100000 stimuli. It calls 100000 spooks and churns 64 agents. The
 burst sizes are UNSOURCED modelling choices. The sound cap
-`WILDLIFE_SOUND_INSTANCE_CAP` is 8. The animal cap `WILDLIFE_ANIMAL_CAP` is
+`WILDLIFE_SOUND_INSTANCE_CAP` is 3. The animal cap `WILDLIFE_ANIMAL_CAP` is
 16.
 
 One sample line has this format. `t` is the elapsed seconds. `tick` is the
@@ -233,7 +233,7 @@ The sound runtime constants are modelling choices, UNSOURCED.
 
 | Constant | Value | Source | State |
 | --- | --- | --- | --- |
-| Sound-instance cap per client | 8 | Modelling | [UNSOURCED] |
+| Sound-instance cap per client | 3 | Modelling. The acoustic niche hypothesis (Krause 1987; Pijanowski et al. 2011, BioScience 61(3):203-216) holds that species partition the auditory spectrum, so overlap is minimised. No published simultaneous-caller count exists, so three is a stated ceiling | [UNSOURCED] number |
 | Silence decay | 0.05 per disturbance unit | Modelling, the `aee_wildlife_silenceDecay` slider | [UNSOURCED] |
 | Wildlife simulation tick budget | 2 ms per call | Modelling, the core gate is 5 ms | [UNSOURCED] |
 | One-shot sound max distance | 120 m | `playSound3D` distance argument | [P] |

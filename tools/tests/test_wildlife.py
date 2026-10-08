@@ -1309,6 +1309,50 @@ class TestEmitterPlan(unittest.TestCase):
         self.assertEqual(release, [])
 
 
+# The concurrent animal-call density target.  The measured density was eight of
+# eight one-shot slots busy at once, which reads as a disturbed soundscape.  The
+# acoustic niche hypothesis (Krause 1987; Pijanowski et al. 2011, BioScience
+# 61(3):203-216) holds that species partition the auditory spectrum in time and
+# frequency, so a real forest has few overlapping calls.  No published figure
+# gives a simultaneous-caller count, so three is a stated ceiling.
+DENSITY_TARGET = 3
+
+
+class TestSoundDensityCap(unittest.TestCase):
+    """The concurrent animal-call density is capped at the stated target."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.header = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
+
+    def _define(self, name):
+        match = re.search(rf"#define\s+{name}\s+(\d+)", self.header)
+        self.assertIsNotNone(match, f"{name} is not defined")
+        return int(match.group(1))
+
+    def test_the_one_shot_cap_is_the_density_target(self):
+        self.assertEqual(self._define("WILDLIFE_SOUND_INSTANCE_CAP"), DENSITY_TARGET)
+
+    def test_the_emitter_cap_is_the_density_target(self):
+        self.assertEqual(self._define("WILDLIFE_EMITTER_CAP"), DENSITY_TARGET)
+
+    def test_the_one_shot_kernel_enforces_the_cap(self):
+        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        self.assertIn(">= WILDLIFE_SOUND_INSTANCE_CAP) exitWith { false }", text)
+
+    def test_the_tick_bounds_the_per_tick_top_up_by_the_cap(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn('for "_k" from 0 to (WILDLIFE_SOUND_INSTANCE_CAP - 1)', text)
+
+    def test_the_emitter_plan_defaults_to_the_cap(self):
+        text = (FUNCS / "fnc_emitterPlan.sqf").read_text(encoding="utf-8")
+        self.assertIn('["_cap", WILDLIFE_EMITTER_CAP, [0]]', text)
+
+    def test_the_state_line_reports_the_cap(self):
+        text = (FUNCS / "fnc_logWildlifeState.sqf").read_text(encoding="utf-8")
+        self.assertIn("_soundLive, WILDLIFE_SOUND_INSTANCE_CAP", text)
+
+
 class TestEmitterClass(unittest.TestCase):
     """fnc_emitterClass runs from the real SQF."""
 

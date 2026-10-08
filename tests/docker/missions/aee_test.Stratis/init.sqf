@@ -3327,6 +3327,14 @@ private _p29Pass = 0;
     // drawStyle survived, both object name sets are AEE-textured and the engine
     // grid lines are off while the numbers return.  It renders nothing.
     execVM "aee_p121_map_legibility_probe.sqf";
+
+    // PHASE 126 lives in aee_p126_density_probe.sqf: the one-shot animal-call
+    // cap is a density policy and the audible layer is client-only, so the
+    // probe reads the cap from the live monitor line, measures the emitter cap
+    // through the compiled plan default and mirrors the real play loop over the
+    // real schedule headless.  It reports the measured concurrency and plays
+    // nothing.
+    execVM "aee_p126_density_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
