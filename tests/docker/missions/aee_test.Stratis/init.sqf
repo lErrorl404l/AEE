@@ -3356,6 +3356,11 @@ private _p29Pass = 0;
     // real schedule headless.  It reports the measured concurrency and plays
     // nothing.
     execVM "aee_p126_density_probe.sqf";
+
+    // PHASE 127 lives in aee_p127_mgrs_straightness_probe.sqf: the MGRS grid
+    // line is one straight chord and the per-sample conversion jitter is
+    // measured against it.  It renders nothing.
+    execVM "aee_p127_mgrs_straightness_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

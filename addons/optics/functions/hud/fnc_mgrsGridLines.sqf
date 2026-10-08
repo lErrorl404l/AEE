@@ -18,6 +18,18 @@
  * that matches the interval, so a 1 km line is labelled with its two-digit
  * easting or northing.
  *
+ * STRAIGHTNESS.  Each grid line is a straight UTM line (a constant easting
+ * or a constant northing) mapped to the world by the inverse projection.
+ * The exact series bows by under a millimetre at a 2 km view and by under a
+ * map pixel at the widest zoom, so a two-point chord IS the line: it is
+ * straight by construction and has no interior joint to bead.  A midpoint
+ * splits the chord only when its measured deviation from the chord exceeds
+ * one map pixel, which no shipped world or zoom reaches (the bound is proved
+ * with the exact series in tools/tests/test_mgrs_map_layer.py).  A correct
+ * MGRS line is aligned to UTM grid north, so it is tilted from the map's
+ * cardinal axes by the grid convergence; that tilt is not a defect and is
+ * reported by probe P127.
+ *
  * Arguments:
  *   0: _anchor <ARRAY> the 9-element anchor from EFUNC(core,getGeoAnchor)
  *   1: _rect   <ARRAY> [xMin, yMin, xMax, yMax] world metres
@@ -81,12 +93,10 @@ if ((_eMax <= _eMin) || (_nMax <= _nMin)) exitWith { [[], [], 0] };
 // sets the floor, the zoom sets the step.  The count falls by ten each step.
 private _span = (_eMax - _eMin) max (_nMax - _nMin);
 
-// Sample count.  The projection maps a straight UTM line to a smooth world
-// curve, so an N-chord polyline has a joint deviation that falls as 1/N^2.
-// The live engine measures about 0.85 m at a 2 km view with 8 chords, so the
-// count scales with the visible span to hold the joint deviation under a map
-// pixel at every zoom and every world size.
-private _samples = (9 max (2 + (ceil (sqrt (_span / 40))))) min 41;
+// One map pixel in world metres.  The main map control spans the visible
+// rectangle across about a thousand pixels, so this is a conservative pixel.
+private _pixel = _span / 1024;
+
 private _floor = 10;
 if ((_baseInterval isEqualType 0) && (_baseInterval >= 10) && (_baseInterval <= 100000)) then {
     _floor = _baseInterval;
@@ -106,28 +116,42 @@ private _precision = _perAxis * 2;
 
 private _segments = [];
 private _labels = [];
-private _pts = [];
+private _pA = [];
+private _pB = [];
+private _pM = [];
+private _vx = 0;
+private _vy = 0;
+private _len = 0;
+private _dev = 0;
 private _major = false;
 private _full = "";
-private _sample = 0;
 
-// Vertical lines: constant easting.
+// Vertical lines: constant easting.  The chord runs the full visible
+// northing range; the midpoint is tested only for a genuine bend.
 private _line = (ceil (_eMin / _interval)) * _interval;
 private _end = (floor (_eMax / _interval)) * _interval;
 while { _line <= _end } do {
-    _pts = [];
-    for "_k" from 0 to (_samples - 1) do {
-        _sample = _nMin + (((_nMax - _nMin) * _k) / (_samples - 1));
-        _pts pushBack ([_line, _sample, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld));
-    };
+    _pA = [_line, _nMin, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
+    _pB = [_line, _nMax, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
+    _pM = [_line, (_nMin + _nMax) / 2, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
     _major = (((_line / _interval) mod 10) == 0);
-    for "_m" from 0 to (_samples - 2) do {
-        _segments pushBack [_pts select _m, _pts select (_m + 1), _major];
+    _vx = (_pB select 0) - (_pA select 0);
+    _vy = (_pB select 1) - (_pA select 1);
+    _len = sqrt ((_vx * _vx) + (_vy * _vy));
+    _dev = 0;
+    if (_len > 0) then {
+        _dev = abs (((_pM select 0) - (_pA select 0)) * _vy - ((_pM select 1) - (_pA select 1)) * _vx) / _len;
+    };
+    if (_dev > _pixel) then {
+        _segments pushBack [_pA, _pM, _major];
+        _segments pushBack [_pM, _pB, _major];
+    } else {
+        _segments pushBack [_pA, _pB, _major];
     };
     if ((_perAxis >= 1) && (_perAxis <= 5)) then {
         _full = [_line, _nMax, _zone, _precision, _latCentre] call EFUNC(core,formatMgrs);
         if ((count _full) >= (5 + _precision)) then {
-            _labels pushBack [_pts select (_samples - 1), _full select [5, _perAxis], _major];
+            _labels pushBack [_pB, _full select [5, _perAxis], _major];
         };
     };
     _line = _line + _interval;
@@ -137,19 +161,27 @@ while { _line <= _end } do {
 _line = (ceil (_nMin / _interval)) * _interval;
 _end = (floor (_nMax / _interval)) * _interval;
 while { _line <= _end } do {
-    _pts = [];
-    for "_k" from 0 to (_samples - 1) do {
-        _sample = _eMin + (((_eMax - _eMin) * _k) / (_samples - 1));
-        _pts pushBack ([_sample, _line, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld));
-    };
+    _pA = [_eMin, _line, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
+    _pB = [_eMax, _line, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
+    _pM = [(_eMin + _eMax) / 2, _line, _zone, _hemisphere, _anchor] call EFUNC(core,utmToWorld);
     _major = (((_line / _interval) mod 10) == 0);
-    for "_m" from 0 to (_samples - 2) do {
-        _segments pushBack [_pts select _m, _pts select (_m + 1), _major];
+    _vx = (_pB select 0) - (_pA select 0);
+    _vy = (_pB select 1) - (_pA select 1);
+    _len = sqrt ((_vx * _vx) + (_vy * _vy));
+    _dev = 0;
+    if (_len > 0) then {
+        _dev = abs (((_pM select 0) - (_pA select 0)) * _vy - ((_pM select 1) - (_pA select 1)) * _vx) / _len;
+    };
+    if (_dev > _pixel) then {
+        _segments pushBack [_pA, _pM, _major];
+        _segments pushBack [_pM, _pB, _major];
+    } else {
+        _segments pushBack [_pA, _pB, _major];
     };
     if ((_perAxis >= 1) && (_perAxis <= 5)) then {
         _full = [_eMax, _line, _zone, _precision, _latCentre] call EFUNC(core,formatMgrs);
         if ((count _full) >= (5 + _precision)) then {
-            _labels pushBack [_pts select (_samples - 1), _full select [(5 + _perAxis), _perAxis], _major];
+            _labels pushBack [_pB, _full select [(5 + _perAxis), _perAxis], _major];
         };
     };
     _line = _line + _interval;

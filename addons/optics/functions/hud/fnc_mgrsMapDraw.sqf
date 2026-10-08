@@ -150,12 +150,16 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 // labels do (colorNames {0.10,0.10,0.10,0.90}).  The old light
                 // cyan at alpha 0.30 read as grey and was hard to see.  A major
                 // line is darker and thicker than a minor one.
+                //
+                // Each segment is one whole grid line: FUNC(mgrsGridLines)
+                // emits a single chord per line, so there is no interior joint
+                // to bead and the segment reads as one straight stroke at every
+                // zoom.  Line weight: the engine's script drawLine default is 3
+                // (BIKI), and the operator reports the old 1 px line as "very
+                // very thin", so the minor line matches the default and the
+                // index (major) line is heavier.
                 {
                     _x params ["_pA", "_pB", "_major"];
-                    // Line weight.  The engine's script drawLine default is 3
-                    // (BIKI), and the operator reports the old 1 px line as
-                    // "very very thin", so the minor line matches the default
-                    // and the index (major) line is heavier.
                     private _colour = [0.08, 0.08, 0.10, 0.85];
                     private _width = 3;
                     if (_major) then {
