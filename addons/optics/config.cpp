@@ -129,12 +129,14 @@ class CfgMarkerClasses {
 // FUNC(symbologyAffiliation) reads a mission marker's original colour through
 // them before AEE converts it.
 class CfgMarkerColors {
-    class ColorAEE { scope = 1; color[] = {1, 1, 1, 1}; };
-    class ColorWEST { color[] = {0, 1, 1, 1}; };
-    class ColorEAST { color[] = {1, 0, 0, 1}; };
-    class ColorGUER { color[] = {0, 1, 0, 1}; };
-    class ColorCIV { color[] = {1, 0, 1, 1}; };
-    class ColorUNKNOWN { color[] = {1, 1, 0, 1}; };
+    // The vanilla Default parent is in ui_f; restate it so name and scope survive.
+    class Default;
+    class ColorAEE: Default { scope = 1; color[] = {1, 1, 1, 1}; };
+    class ColorWEST: Default { color[] = {0, 1, 1, 1}; };
+    class ColorEAST: Default { color[] = {1, 0, 0, 1}; };
+    class ColorGUER: Default { color[] = {0, 1, 0, 1}; };
+    class ColorCIV: Default { color[] = {1, 0, 1, 1}; };
+    class ColorUNKNOWN: Default { color[] = {1, 1, 0, 1}; };
 };
 
 class CfgMarkers {
