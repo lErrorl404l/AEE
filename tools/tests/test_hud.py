@@ -458,12 +458,11 @@ class TestHudMapGridContract(unittest.TestCase):
         self.assertIn("displayCtrl 2350", MGRS_MAP_SRC)
         self.assertIn("ctrlShow false", MGRS_MAP_SRC)
 
-    def test_the_engine_readout_is_hidden_only_when_the_aee_readout_draws(self):
-        # The hide must sit inside the aee-readout gate, or with the readout
-        # off the map is left with no cursor readout at all.
-        flat = " ".join(MGRS_MAP_SRC.split())
-        self.assertIn("if (_cursorReadout) then { _engineReadout ctrlShow false;", flat)
-        self.assertIn("_engineReadout ctrlShow true;", MGRS_MAP_SRC)
+    def test_the_engine_readout_is_hidden_unconditionally(self):
+        # The engine tooltip is neutralised at the config, so the script hide is
+        # a first line of defence and there is no readout to hand back.
+        self.assertIn("_engineReadout ctrlShow false;", MGRS_MAP_SRC)
+        self.assertNotIn("_engineReadout ctrlShow true;", MGRS_MAP_SRC)
 
     def test_the_map_handler_draws_the_readout_at_the_cursor(self):
         # The engine tooltip is hidden, so the aee readout is drawn just off

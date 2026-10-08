@@ -22,10 +22,18 @@
  *
  * LABELS.  A cardinal line has NO single MGRS value, because the MGRS easting
  * and northing vary along it.  The label is therefore POSITIONAL by design:
- * FUNC(worldToMgrs) gives the MGRS reference at a fixed point of the line (a
- * vertical line at its north end, a horizontal line at its east end), and the
- * label carries the digit group that matches the interval.  A 1 km line is
+ * FUNC(worldToMgrs) gives the MGRS reference at a fixed point of the line, and
+ * the label carries the digit group that matches the interval.  A 1 km line is
  * labelled with its three-digit easting or northing at that point.
+ *
+ * Every line is labelled at BOTH ends, so the easting reads at the top and the
+ * bottom and the northing at the left and the right.  The engine's own edge
+ * ruler (CStaticMap::DrawGrid) places each number half a grid spacing from its
+ * line and clips it to the control rect, and the northing spacing is
+ * wScreen/hScreen times the easting spacing, so at close zoom the engine's
+ * left and right numbers leave the control while its top and bottom numbers
+ * stay.  AEE cannot change DrawGrid, so it supplies the complete four-edge
+ * ruler itself.
  *
  * The interval is a decimal world-metre step chosen so the line count stays
  * small: 10 m, 100 m, 1 km, 10 km or 100 km.
@@ -96,7 +104,9 @@ while { _line <= _end } do {
         _conv = [[_line, _yMax, 0], _anchor, _precision] call EFUNC(core,worldToMgrs);
         _full = _conv select 0;
         if ((count _full) >= (5 + _precision)) then {
-            _labels pushBack [[_line, _yMax, 0], _full select [5, _perAxis], _major];
+            private _easting = _full select [5, _perAxis];
+            _labels pushBack [[_line, _yMax, 0], _easting, _major];
+            _labels pushBack [[_line, _yMin, 0], _easting, _major];
         };
     };
     _line = _line + _interval;
@@ -113,7 +123,9 @@ while { _line <= _end } do {
         _conv = [[_xMax, _line, 0], _anchor, _precision] call EFUNC(core,worldToMgrs);
         _full = _conv select 0;
         if ((count _full) >= (5 + _precision)) then {
-            _labels pushBack [[_xMax, _line, 0], _full select [(5 + _perAxis), _perAxis], _major];
+            private _northing = _full select [(5 + _perAxis), _perAxis];
+            _labels pushBack [[_xMax, _line, 0], _northing, _major];
+            _labels pushBack [[_xMin, _line, 0], _northing, _major];
         };
     };
     _line = _line + _interval;

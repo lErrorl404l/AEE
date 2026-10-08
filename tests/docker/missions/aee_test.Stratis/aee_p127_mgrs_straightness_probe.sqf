@@ -86,9 +86,9 @@ if (_onGrid && {_interval in [10, 100, 1000, 10000, 100000]}) then {
     _notes pushBack format ["interval %1 m not a world step", _interval];
 };
 
-// ── 3. the positional MGRS labels: digits, one per line, right length ──────
+// ── 3. the positional MGRS labels: digits, both ends of each line, length ──
 private _perAxis = round (5 - (log _interval));
-private _labelsOk = (_labelCount > 0) && {_labelCount == _segCount};
+private _labelsOk = (_labelCount > 0) && {_labelCount == (2 * _segCount)};
 {
     _x params ["_pos", "_text"];
     if !(_text isEqualType "") then { _labelsOk = false; };
