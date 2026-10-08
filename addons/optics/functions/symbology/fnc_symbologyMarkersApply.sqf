@@ -38,24 +38,28 @@ if (missionNamespace getVariable [QGVAR(symbologySuppress), true]) then {
 };
 
 // ── The mission markers ─────────────────────────────────────────────────
-private _cache = missionNamespace getVariable [QGVAR(symbologyMarkerCache), []];
-private _names = _cache apply { _x select 0 };
-{
-    private _name = _x;
-    private _tagged = (_name select [0, 4]) isEqualTo "AEE_";
-    if (!_tagged && !(_name in _names)) then {
-        private _category = [_name] call FUNC(symbologyMarkerCategory);
-        private _affiliation = [_name, "", _friendly] call FUNC(symbologyAffiliation);
-        private _spec = [
-            sideUnknown, _category, _affiliation, "unknown", _resolvedPalette
-        ] call FUNC(symbolResolve);
-        _cache pushBack [_name, markerType _name, markerColor _name];
-        _names pushBack _name;
-        _name setMarkerTypeLocal (_spec select 1);
-        _name setMarkerColorLocal (_spec select 2);
-    };
-} forEach allMapMarkers;
-missionNamespace setVariable [QGVAR(symbologyMarkerCache), _cache];
+// Gated on the map-marker toggle; the unit pass below is gated separately by
+// symbologyUnits.
+if (missionNamespace getVariable [QGVAR(symbologyMarkers), true]) then {
+    private _cache = missionNamespace getVariable [QGVAR(symbologyMarkerCache), []];
+    private _names = _cache apply { _x select 0 };
+    {
+        private _name = _x;
+        private _tagged = (_name select [0, 4]) isEqualTo "AEE_";
+        if (!_tagged && !(_name in _names)) then {
+            private _category = [_name] call FUNC(symbologyMarkerCategory);
+            private _affiliation = [_name, "", _friendly] call FUNC(symbologyAffiliation);
+            private _spec = [
+                sideUnknown, _category, _affiliation, "unknown", _resolvedPalette
+            ] call FUNC(symbolResolve);
+            _cache pushBack [_name, markerType _name, markerColor _name];
+            _names pushBack _name;
+            _name setMarkerTypeLocal (_spec select 1);
+            _name setMarkerColorLocal (_spec select 2);
+        };
+    } forEach allMapMarkers;
+    missionNamespace setVariable [QGVAR(symbologyMarkerCache), _cache];
+};
 
 // ── The player and the in-range units ───────────────────────────────────
 if (!(missionNamespace getVariable [QGVAR(symbologyUnits), true])) exitWith {};

@@ -7,13 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Setup HEMTT
+        uses: arma-actions/hemtt@v1
       - name: Setup Python
         uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install test dependencies
         run: |
-          pip install numpy
+          pip install numpy pillow
           sudo apt-get update && sudo apt-get install -y librsvg2-bin
       - name: Validate SQF
         run: python3 tools/sqf_validator.py
@@ -91,6 +93,8 @@ jobs:
         run: python3 tools/validation/validate_symbology.py
       - name: Symbology marker colour validation
         run: python3 tools/validation/validate_symbology_colour.py
+      - name: Symbology catalogue texture freshness check
+        run: python3 tools/gen_symbology_catalogue.py --check
       - name: Terrain table freshness check
         run: python3 tools/validation/gen_terrain_tables.py --check
       - name: Terrain table and registry validation
