@@ -39,6 +39,8 @@ PREPS(solver,resolveThermalVisibility);
 PREPS(solver,updateThermalAGC);
 PREPS(solver,calculateThermalNoise);
 PREPS(display,applyThermalVision);
+PREPS(display,createThermalPPEffects);
+PREPS(display,warmThermalPPEffects);
 PREPS(display,applyEngineThermal);
 PREPS(display,isThermalHostActive);
 PREPS(display,applySecondSun);

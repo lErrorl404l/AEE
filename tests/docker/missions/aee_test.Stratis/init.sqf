@@ -3320,13 +3320,14 @@ private _p29Pass = 0;
     // fix removed are both measurable headless.  It registers no handler and
     // renders nothing.
     execVM "aee_p120_mobility_cost_probe.sqf";
-
-    // PHASE 121 lives in aee_p121_map_legibility_probe.sqf: the location-class
-    // inheritance, the object-icon class names and the grid fields are all
-    // engine config, so the probe reads the merged config live and confirms
-    // drawStyle survived, both object name sets are AEE-textured and the engine
-    // grid lines are off while the numbers return.  It renders nothing.
     execVM "aee_p121_map_legibility_probe.sqf";
+    // PHASE 122 lives in aee_p122_thermal_entry_probe.sqf: the thermal
+    // first-entry stall fix moves the ppEffect create and its first-use
+    // engine build off the entry path.  A dedicated server cannot run the
+    // client PP chain, so the probe measures the per-selection solve cost,
+    // the create function's script cost and idempotency, and the warm
+    // client gate live.  It renders nothing.
+    execVM "aee_p122_thermal_entry_probe.sqf";
     // PHASE 123 lives in aee_p123_map_grid_readout_probe.sqf: the edge-number
     // colours, the MGRS line geometry and the readout kernels are asserted
     // live.  The engine grid colour mapping (colorGrid = the edge numbers,

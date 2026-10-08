@@ -24,6 +24,7 @@ _WET = _DISPLAY / "fnc_thermalWetDistortionParams.sqf"
 _RES = _DISPLAY / "fnc_thermalResolutionParams.sqf"
 _PALETTE = _DISPLAY / "fnc_thermalPalette.sqf"
 _VISION = _DISPLAY / "fnc_applyThermalVision.sqf"
+_CREATE = _DISPLAY / "fnc_createThermalPPEffects.sqf"
 _PREP = REPO / "addons" / "thermal" / "XEH_PREP.hpp"
 _SETTINGS = REPO / "addons" / "thermal" / "initSettings.inc.sqf"
 
@@ -134,19 +135,22 @@ class TestMKKDisplayWiring(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.vision = _VISION.read_text(encoding="utf-8")
+        # The create table moved off the per-entry path into its own function
+        # (the first-entry stall fix); read both so the wiring is checked.
+        cls.create = _CREATE.read_text(encoding="utf-8")
         cls.prep = _PREP.read_text(encoding="utf-8")
         cls.settings = _SETTINGS.read_text(encoding="utf-8")
 
     def test_wet_distortion_is_created(self):
         self.assertIn(
             '["WetDistortion",    305, QGVAR(ppHandle_Thermal_WetDistortion)]',
-            self.vision,
+            self.create,
         )
 
     def test_resolution_is_created(self):
         self.assertIn(
             '["Resolution",      3000, QGVAR(ppHandle_Thermal_Resolution)]',
-            self.vision,
+            self.create,
         )
 
     def test_kernels_are_called_from_the_driver(self):
@@ -164,15 +168,18 @@ class TestMKKDisplayWiring(unittest.TestCase):
 
     def test_new_handles_are_torn_down_and_reenabled(self):
         # Read, create, destroy-on-recreate, teardown and the ppOn disable
-        # list must all name the new handles.
-        self.assertGreaterEqual(self.vision.count("ppHandle_Thermal_WetDistortion"), 4)
-        self.assertGreaterEqual(self.vision.count("ppHandle_Thermal_Resolution"), 4)
+        # list must all name the new handles.  The create table now lives in
+        # fnc_createThermalPPEffects; the teardown and the ppOn list stay in
+        # the driver, so count across both files.
+        combined = self.create + self.vision
+        self.assertGreaterEqual(combined.count("ppHandle_Thermal_WetDistortion"), 4)
+        self.assertGreaterEqual(combined.count("ppHandle_Thermal_Resolution"), 4)
 
     def test_priorities_are_unique_across_the_stacks(self):
         files = [
             "addons/optics/functions/vision/fnc_managePostProcess.sqf",
             "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
-            "addons/thermal/functions/display/fnc_applyThermalVision.sqf",
+            "addons/thermal/functions/display/fnc_createThermalPPEffects.sqf",
         ]
         seen = {}
         for rel in files:
