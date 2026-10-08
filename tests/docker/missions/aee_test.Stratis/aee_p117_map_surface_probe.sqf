@@ -11,9 +11,12 @@ private _pass = 0;
 private _fail = 0;
 private _notes = [];
 
-// ── DEFECT 1: exactly one LINE grid.  The engine numeric LINES are removed on
-// every map target, so the AEE MGRS grid is the only line grid.  The engine
-// numeric NUMBERS return as the readable vanilla grid reference (ADR-029). ──
+// ── DEFECT 1: the edge NUMBERS return and the engine LINES stay off.  The
+// engine grid colours are SPLIT: colorGrid is the edge-number colour and
+// colorGridMap the in-map line colour (engine source: the open-sourced
+// Poseidon engine, UIMap.cpp, CStaticMap::DrawGrid).  So the AEE MGRS overlay
+// is the only line grid and the engine numeric labels are the readable vanilla
+// reference (ADR-030). ──────────────────────────────────────────────────────
 private _gridTargets = [
     ["RscMapControl", configFile >> "RscMapControl"],
     ["RscDisplayStrategicMap.Map", configFile >> "RscDisplayStrategicMap" >> "controlsBackground" >> "Map"],
@@ -21,16 +24,16 @@ private _gridTargets = [
 ];
 {
     _x params ["_label", "_cfg"];
-    private _lines = getArray (_cfg >> "colorGrid");
-    private _linesMap = getArray (_cfg >> "colorGridMap");
+    private _numbers = getArray (_cfg >> "colorGrid");
+    private _lines = getArray (_cfg >> "colorGridMap");
     private _size = getNumber (_cfg >> "sizeExGrid");
-    private _lineOff = ((count _lines) >= 4) && {(_lines select 3) == 0};
-    private _mapOff = ((count _linesMap) >= 4) && {(_linesMap select 3) == 0};
-    if (_lineOff && {_mapOff} && {_size > 0}) then {
+    private _numbersOn = ((count _numbers) >= 4) && {(_numbers select 3) > 0.5};
+    private _linesOff = ((count _lines) >= 4) && {(_lines select 3) == 0};
+    if (_numbersOn && {_linesOff} && {_size >= 0.04}) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3 sizeExGrid=%4", _label, str _lines, str _linesMap, _size];
+        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3 sizeExGrid=%4", _label, str _numbers, str _lines, _size];
     };
 } forEach _gridTargets;
 

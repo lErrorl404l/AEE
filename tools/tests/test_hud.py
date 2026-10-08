@@ -465,11 +465,12 @@ class TestHudMapGridContract(unittest.TestCase):
         self.assertIn("if (_cursorReadout) then { _engineReadout ctrlShow false;", flat)
         self.assertIn("_engineReadout ctrlShow true;", MGRS_MAP_SRC)
 
-    def test_the_map_handler_reads_the_engine_readout_rect(self):
-        # The engine moves the tooltip to the cursor, so its rectangle is
-        # where the aee readout is drawn.
-        self.assertIn("ctrlPosition _engineReadout", MGRS_MAP_SRC)
-        self.assertIn("_readoutPos", MGRS_MAP_SRC)
+    def test_the_map_handler_draws_the_readout_at_the_cursor(self):
+        # The engine tooltip is hidden, so the aee readout is drawn just off
+        # the cursor rather than inside a hidden engine rectangle.
+        self.assertIn("_map ctrlMapScreenToWorld _mouse", MGRS_MAP_SRC)
+        self.assertNotIn("ctrlPosition _engineReadout", MGRS_MAP_SRC)
+        self.assertNotIn("_readoutPos", MGRS_MAP_SRC)
 
     def test_the_map_handler_calls_the_cursor_kernel(self):
         self.assertIn("call FUNC(mgrsCursorText)", MGRS_MAP_SRC)

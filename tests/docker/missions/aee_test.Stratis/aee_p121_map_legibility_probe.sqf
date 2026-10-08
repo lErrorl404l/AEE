@@ -90,10 +90,12 @@ private _objects = [
     };
 } forEach _objects;
 
-// ── DEFECT C: the readable grid reference.  The engine numeric LINES stay off
-// (colorGrid/colorGridMap alpha 0), so exactly one line grid is drawn (the AEE
-// MGRS overlay), and the engine NUMBERS return (sizeExGrid > 0) as the vanilla
-// grid reference. ──────────────────────────────────────────────────────────
+// ── DEFECT C: the readable grid reference.  The engine grid colours are SPLIT:
+// colorGrid is the edge-number colour and colorGridMap the in-map line colour
+// (engine source: the open-sourced Poseidon engine, UIMap.cpp,
+// CStaticMap::DrawGrid).  The engine NUMBERS return (colorGrid alpha > 0, the
+// engine default sizeExGrid 0.04) and the engine LINES stay off (colorGridMap
+// alpha 0), so exactly one line grid is drawn (the AEE MGRS overlay). ───────
 private _gridTargets = [
     ["RscMapControl", configFile >> "RscMapControl"],
     ["RscDisplayStrategicMap.Map", configFile >> "RscDisplayStrategicMap" >> "controlsBackground" >> "Map"],
@@ -101,16 +103,16 @@ private _gridTargets = [
 ];
 {
     _x params ["_label", "_cfg"];
-    private _lines = getArray (_cfg >> "colorGrid");
-    private _linesMap = getArray (_cfg >> "colorGridMap");
+    private _numbers = getArray (_cfg >> "colorGrid");
+    private _lines = getArray (_cfg >> "colorGridMap");
     private _size = getNumber (_cfg >> "sizeExGrid");
-    private _lineOff = ((count _lines) >= 4) && {(_lines select 3) == 0};
-    private _mapOff = ((count _linesMap) >= 4) && {(_linesMap select 3) == 0};
-    if (_lineOff && {_mapOff} && {_size > 0}) then {
+    private _numbersOn = ((count _numbers) >= 4) && {(_numbers select 3) > 0.5};
+    private _linesOff = ((count _lines) >= 4) && {(_lines select 3) == 0};
+    if (_numbersOn && {_linesOff} && {_size >= 0.04}) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3 sizeExGrid=%4", _label, str _lines, str _linesMap, _size];
+        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3 sizeExGrid=%4", _label, str _numbers, str _lines, _size];
     };
 } forEach _gridTargets;
 

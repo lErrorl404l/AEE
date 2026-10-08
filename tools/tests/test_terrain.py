@@ -305,7 +305,14 @@ class TestTerrainDisplays(unittest.TestCase):
         # The AEE font families still ship no glyphs, so no AEE font is set.
         self.assertNotIn('fontGrid = "AEEFont";', DISP_SRC)
         self.assertNotIn('fontNames = "AEEFont";', DISP_SRC)
-        self.assertIn("sizeExGrid = 0.02;", DISP_SRC)
+        # The engine grid fields are split: colorGrid is the edge-number
+        # colour and colorGridMap the in-map line colour (engine source: the
+        # open-sourced Poseidon engine, UIMap.cpp, CStaticMap::DrawGrid).  The
+        # numbers return, the engine lines stay off, and sizeExGrid is the
+        # engine default.
+        self.assertIn("colorGrid[] = {0.15, 0.15, 0.05, 0.9};", DISP_SRC)
+        self.assertIn("colorGridMap[] = {0, 0, 0, 0};", DISP_SRC)
+        self.assertIn("sizeExGrid = 0.04;", DISP_SRC)
 
 
 class TestTerrainCurator(unittest.TestCase):
@@ -356,7 +363,7 @@ class TestTerrainWiring(unittest.TestCase):
 
 class TestTerrainInheritance(unittest.TestCase):
     """Every re-declared CfgLocationTypes class restates its vanilla parent, so
-    the engine Empty syntax cannot strip drawStyle or texture (ADR-029).  A bare
+    the engine Empty syntax cannot strip drawStyle or texture (ADR-030).  A bare
     reopen of a class that has a vanilla parent fails here."""
 
     # The vanilla parent of every re-declared class, read from the engine config:
@@ -414,7 +421,7 @@ class TestTerrainInheritance(unittest.TestCase):
 class TestTerrainMgrsContrast(unittest.TestCase):
     """The AEE MGRS overlay reads against the light topographic ground.  The
     old light cyan at alpha 0.30 read as grey; the linework and the labels are
-    now dark and high contrast (ADR-029)."""
+    now dark and high contrast (ADR-030)."""
 
     def _colours(self, pattern):
         return [[float(v) for v in m.groups()] for m in re.finditer(pattern, MGRS_DRAW)]
@@ -445,10 +452,36 @@ class TestTerrainMgrsContrast(unittest.TestCase):
             self.assertLess(max(r, g, b), 0.2)
             self.assertEqual(a, 1)
 
+    def test_the_edge_numbers_return_and_the_engine_lines_stay_off(self):
+        # colorGrid is the EDGE NUMBER colour and colorGridMap the in-map LINE
+        # colour (engine source: the open-sourced Poseidon engine, UIMap.cpp,
+        # CStaticMap::DrawGrid).  The numbers must be readable and the engine
+        # lines off, on all three targets, so the AEE MGRS overlay is the only
+        # line grid.
+        for name, src in (
+            ("config.cpp", CONFIG_SRC),
+            ("config_mapdisplays.hpp", DISP_SRC),
+        ):
+            with self.subTest(source=name):
+                self.assertNotIn("colorGrid[] = {0, 0, 0, 0};", src)
+                self.assertIn("colorGridMap[] = {0, 0, 0, 0};", src)
+                self.assertIn("colorGrid[] = {0.15, 0.15, 0.05, 0.9};", src)
+                self.assertIn("sizeExGrid = 0.04;", src)
+
+    def test_the_mgrs_lines_are_drawn_at_a_visible_weight(self):
+        # The operator reports the old 1 px line as "very very thin".  The minor
+        # line matches the engine drawLine default (3) and the index line is
+        # heavier.
+        widths = [int(m.group(1)) for m in re.finditer(r"_width = (\d+);", MGRS_DRAW)]
+        self.assertEqual(len(widths), 2, "expected a minor and a major width")
+        minor, major = widths
+        self.assertGreaterEqual(minor, 3)
+        self.assertGreater(major, minor)
+
 
 class TestTerrainRenderSurface(unittest.TestCase):
     """Every reachable RscMapControl render field is set from a cited value
-    (ADR-029).  The palette, the scalars and the fonts are pinned to the table."""
+    (ADR-030).  The palette, the scalars and the fonts are pinned to the table."""
 
     def test_every_display_scalar_matches_the_config(self):
         for field, value in TABLE["map_display"].items():
