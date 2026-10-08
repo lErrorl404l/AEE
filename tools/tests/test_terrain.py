@@ -420,12 +420,10 @@ class TestTerrainDisplays(unittest.TestCase):
         # The AEE font families still ship no glyphs, so no AEE font is set.
         self.assertNotIn('fontGrid = "AEEFont";', DISP_SRC)
         self.assertNotIn('fontNames = "AEEFont";', DISP_SRC)
-        # The engine grid fields are split: colorGrid is the edge-number
-        # colour and colorGridMap the in-map line colour (engine source: the
-        # open-sourced Poseidon engine, UIMap.cpp, CStaticMap::DrawGrid).  The
-        # numbers return, the engine lines stay off, and sizeExGrid is the
-        # engine default.
-        self.assertIn("colorGrid[] = {0.15, 0.15, 0.05, 0.9};", DISP_SRC)
+        # The engine grid fields are off: the engine edge ruler clips its left
+        # and right numbers at close zoom, so the AEE MGRS overlay is the single
+        # complete ruler (engine source: Poseidon UIMap.cpp, CStaticMap::DrawGrid).
+        self.assertIn("colorGrid[] = {0, 0, 0, 0};", DISP_SRC)
         self.assertIn("colorGridMap[] = {0, 0, 0, 0};", DISP_SRC)
         self.assertIn("sizeExGrid = 0.04;", DISP_SRC)
 
@@ -567,21 +565,18 @@ class TestTerrainMgrsContrast(unittest.TestCase):
             self.assertLess(max(r, g, b), 0.2)
             self.assertEqual(a, 1)
 
-    def test_the_edge_numbers_return_and_the_engine_lines_stay_off(self):
+    def test_the_engine_grid_fields_are_off_on_every_target(self):
         # colorGrid is the EDGE NUMBER colour and colorGridMap the in-map LINE
-        # colour (engine source: the open-sourced Poseidon engine, UIMap.cpp,
-        # CStaticMap::DrawGrid).  The numbers must be readable and the engine
-        # lines off, on all three targets, so the AEE MGRS overlay is the only
-        # line grid.
+        # colour (engine source: Poseidon UIMap.cpp, CStaticMap::DrawGrid).  Both
+        # are off: the engine ruler clips its left and right numbers at close
+        # zoom, so the AEE MGRS overlay is the single complete ruler.
         for name, src in (
             ("config.cpp", CONFIG_SRC),
             ("config_mapdisplays.hpp", DISP_SRC),
         ):
             with self.subTest(source=name):
-                self.assertNotIn("colorGrid[] = {0, 0, 0, 0};", src)
+                self.assertIn("colorGrid[] = {0, 0, 0, 0};", src)
                 self.assertIn("colorGridMap[] = {0, 0, 0, 0};", src)
-                self.assertIn("colorGrid[] = {0.15, 0.15, 0.05, 0.9};", src)
-                self.assertIn("sizeExGrid = 0.04;", src)
 
     def test_the_mgrs_lines_are_drawn_at_a_visible_weight(self):
         # The operator reports the old 1 px line as "very very thin".  The minor

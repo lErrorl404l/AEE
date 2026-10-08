@@ -27,7 +27,6 @@ Run: python3 -m unittest tools.tests.test_mgrs_map_layer -v
 """
 
 import math
-import re
 import sys
 import unittest
 from pathlib import Path
@@ -249,11 +248,10 @@ class TestDefect2CursorReadout(unittest.TestCase):
     def test_cursor_readout_is_never_empty(self):
         self.assertEqual(cursor_text("", 12), "ELEV 12 m")
 
-    def test_the_engine_readout_is_hidden_with_its_children(self):
-        # The engine tooltip group (idc 2350) and its Info child (idc 235002)
-        # are hidden so only the aee readout shows.
+    def test_the_engine_readout_is_hidden(self):
+        # The engine tooltip group (idc 2350) is hidden.  The config neutralises
+        # its render, so the hide is a first line of defence.
         self.assertIn("displayCtrl 2350", MGRS_MAP_SRC)
-        self.assertIn("displayCtrl 235002", MGRS_MAP_SRC)
         self.assertIn("ctrlShow false", MGRS_MAP_SRC)
 
     def test_the_readout_is_drawn_at_the_cursor(self):
@@ -352,10 +350,11 @@ class TestDefect5Straightness(unittest.TestCase):
     def test_each_line_carries_its_positional_mgrs_label(self):
         # A cardinal line has no single grid value, so the label is positional:
         # the MGRS digit group at a fixed point of the line.  Every line gets
-        # one, and the digit count matches the interval.
+        # one at BOTH ends (top and bottom, left and right), so the digit count
+        # matches the interval.
         segments, labels, interval = self._plan()
         per_axis = round(5 - math.log10(interval))
-        self.assertEqual(len(labels), len(segments))
+        self.assertEqual(len(labels), 2 * len(segments))
         for pos, text, _major in labels:
             self.assertEqual(len(pos), 3, pos)
             self.assertTrue(text.isdigit(), f"label {text!r} is not digits")
@@ -408,6 +407,171 @@ class TestWiring(unittest.TestCase):
     def test_the_stringtable_keys_exist(self):
         for key in ("mgrsPrecisionAuto_Name", "mgrsPrecisionAuto_Description"):
             self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+
+
+# ── The engine edge-number rule (CStaticMap::DrawGrid) ───────────────────────
+# Faithful transcription of the number placement in the open-sourced engine
+# (BohemiaInteractive/CWR, engine/Poseidon/UI/Map/UIMap.cpp:1971-2045).  The
+# control units are anisotropic: x/w are fractions of the screen WIDTH and y/h
+# of the screen HEIGHT, so the row (northing) spacing is wScreen/hScreen times
+# the column (easting) spacing.  Each number is drawn at half a grid spacing
+# from its line and clipped to the control rect, so it is visible only while
+# the spacing sits inside a band.  AEE cannot change DrawGrid; this pins the
+# rule that defect 2 follows from.
+
+
+def drawgrid_edge_numbers(
+    scale_x, w, h, size_grid, width, step, size_land, w_screen, h_screen
+):
+    """Return (x_fld, z_fld, row_visible, col_visible) for the first line.
+
+    The first grid line sits at the control edge (zBeg ~= _y), so the first
+    row number's top is 0.5*(zFld - size_grid) and the first column number's
+    left is 0.5*(xFld - width), each clipped to the control rect.
+    """
+    scale_y = (h_screen / w_screen) * scale_x  # Precalculate()
+    x_fld = abs((1.0 / scale_x) * (step / size_land))
+    z_fld = abs((1.0 / scale_y) * (step / size_land))
+    row_top = 0.5 * (z_fld - size_grid)
+    row_visible = row_top >= 0.0 and (row_top + size_grid) <= h
+    col_left = 0.5 * (x_fld - width)
+    col_visible = col_left >= 0.0 and (col_left + width) <= w
+    return x_fld, z_fld, row_visible, col_visible
+
+
+class TestDefect2EdgeNumberClip(unittest.TestCase):
+    """The engine clips its own northing numbers at close zoom.
+
+    CStaticMap::DrawGrid places each edge number at half a grid spacing from
+    its line and clips to the control rect.  Because the control units are
+    anisotropic (x/w = screen width, y/h = screen height), the row spacing is
+    wScreen/hScreen times the column spacing, so the northing (left/right)
+    numbers leave the control before the easting (top/bottom) ones.  That is
+    the operator's report: at close zoom the top and bottom numbers still show
+    and the left and right disappear.
+    """
+
+    W, H = 1.0, 0.9  # the map control, as screen fractions
+    SIZE_GRID = 0.04
+    WIDTH = 0.1  # a three-character "000" easting at sizeExGrid 0.04
+    STEP = 100.0  # Altis Grid Zoom1 stepX/stepY
+    SIZE_LAND = 30720.0  # Altis mapSize
+    WSCREEN, HSCREEN = 1920, 1080
+
+    def _visible(self, scale_x):
+        return drawgrid_edge_numbers(
+            scale_x,
+            self.W,
+            self.H,
+            self.SIZE_GRID,
+            self.WIDTH,
+            self.STEP,
+            self.SIZE_LAND,
+            self.WSCREEN,
+            self.HSCREEN,
+        )
+
+    def test_the_row_spacing_carries_the_screen_aspect(self):
+        # Precalculate() sets _scaleY = (hScreen/wScreen)*_scaleX, so for equal
+        # steps the row spacing is wScreen/hScreen times the column spacing.
+        x_fld, z_fld, _row, _col = self._visible(0.01)
+        self.assertAlmostEqual(z_fld / x_fld, self.WSCREEN / self.HSCREEN, places=6)
+
+    def test_both_axes_show_at_a_wide_zoom(self):
+        _x, _z, row, col = self._visible(0.02)
+        self.assertTrue(row, "northing numbers show when the rows are close")
+        self.assertTrue(col, "easting numbers show when the columns are close")
+
+    def test_the_operator_sees_easting_but_not_northing_at_close_zoom(self):
+        _x, _z, row, col = self._visible(0.003)
+        self.assertFalse(row, "northing (left/right) numbers clip at close zoom")
+        self.assertTrue(col, "easting (top/bottom) numbers still show")
+
+    def test_the_northing_band_ends_before_the_easting_band(self):
+        # The row band's upper limit, in xFld, precedes the column band's, so a
+        # zoom exists where only the easting numbers remain.  If the two bands
+        # ended together the defect could not happen.
+        row_limit = (2 * self.H - self.SIZE_GRID) * self.HSCREEN / self.WSCREEN
+        col_limit = 2 * self.W - self.WIDTH
+        self.assertLess(row_limit, col_limit)
+
+
+class TestDefect1TooltipNeutralised(unittest.TestCase):
+    """The engine cursor tooltip is neutralised at the config.
+
+    Closed engine C++ fills and shows RscMapControlTooltip after the map
+    control's Draw event, so the script hide loses the race.  The config makes
+    the Info text and its backdrop transparent, so nothing renders even when
+    the engine shows the control.
+    """
+
+    def test_the_tooltip_group_restates_its_parent(self):
+        # A bare reopen of a class that has a parent strips it.
+        self.assertIn(
+            "class RscMapControlTooltip: RscControlsGroupNoScrollbars", CONFIG_SRC
+        )
+
+    def test_the_tooltip_info_text_is_transparent(self):
+        flat = " ".join(CONFIG_SRC.split())
+        self.assertIn(
+            "class Info: RscStructuredText { colorText[] = {0, 0, 0, 0}; }", flat
+        )
+
+    def test_the_tooltip_box_is_transparent(self):
+        flat = " ".join(CONFIG_SRC.split())
+        self.assertIn(
+            "class Background: RscText { colorBackground[] = {0, 0, 0, 0}; }", flat
+        )
+
+    def test_the_tooltip_backdrop_is_transparent(self):
+        flat = " ".join(CONFIG_SRC.split())
+        self.assertIn(
+            "class InfoBackground: RscStructuredText { colorBackground[] = {0, 0, 0, 0}; }",
+            flat,
+        )
+
+    def test_the_runtime_hide_is_kept(self):
+        # The config neutralises the render; the runtime hide stays as the
+        # first line of defence.
+        self.assertIn("displayCtrl 2350", MGRS_MAP_SRC)
+        self.assertIn("_engineReadout ctrlShow false", MGRS_MAP_SRC)
+
+
+class TestDefect2EdgeRulerComplete(unittest.TestCase):
+    """The AEE ruler is complete at all four edges.
+
+    The engine's own DrawGrid clips its northing numbers at close zoom, so AEE
+    supplies the missing left and right reference by labelling every line at
+    both ends.
+    """
+
+    def _plan(self):
+        c = ALTIS[3] / 2
+        return grid(ALTIS, [c - 1000, c - 1000, c + 1000, c + 1000])
+
+    def test_the_kernel_labels_both_ends_of_every_line(self):
+        self.assertIn(
+            "_labels pushBack [[_line, _yMax, 0], _easting, _major];", GRID_SRC
+        )
+        self.assertIn(
+            "_labels pushBack [[_line, _yMin, 0], _easting, _major];", GRID_SRC
+        )
+        self.assertIn(
+            "_labels pushBack [[_xMax, _line, 0], _northing, _major];", GRID_SRC
+        )
+        self.assertIn(
+            "_labels pushBack [[_xMin, _line, 0], _northing, _major];", GRID_SRC
+        )
+
+    def test_every_line_end_carries_a_label(self):
+        # The easting reads at the top and bottom, the northing at the left and
+        # right, so a label sits at each endpoint of every emitted line.
+        segments, labels, _interval = self._plan()
+        ends = {(round(p[0], 3), round(p[1], 3)) for p, _t, _m in labels}
+        for a, b, _major in segments:
+            for end in (a, b):
+                key = (round(end[0], 3), round(end[1], 3))
+                self.assertIn(key, ends, f"line end {key} is unlabelled")
 
 
 if __name__ == "__main__":

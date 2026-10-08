@@ -184,34 +184,19 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
         };
 
         // ── Engine cursor tooltip ─────────────────────────────────────
-        // The engine readout is the map display's Tooltip control group of
-        // class RscMapControlTooltip (idc 2350) whose Info child (idc 235002)
-        // the engine fills with the six-figure grid and the elevation.  The
-        // operator reports it still visible beside the aee readout, so the
-        // group AND its visible children are hidden here, on every draw, and
-        // handed back only when the aee readout is turned off.  The engine
-        // tooltip idc and structure are pinned in
-        // docs/wiki/research/map-grid-and-cursor-surface.md.
+        // The engine readout is the map display's Tooltip control of class
+        // RscMapControlTooltip (idc 2350), filled and shown by closed engine
+        // C++ AFTER this Draw event, so the hide here loses the race.  The
+        // tooltip is neutralised at the config (config.cpp), and this hide is
+        // only a first line of defence; there is no readout to hand back.
         private _display = ctrlParent _map;
         private _engineReadout = controlNull;
-        private _engineInfo = controlNull;
-        private _engineInfoBg = controlNull;
         if (!isNull _display) then {
             _engineReadout = _display displayCtrl 2350;
-            _engineInfo = _display displayCtrl 235002;
-            _engineInfoBg = _display displayCtrl 235001;
         };
         private _cursorReadout = missionNamespace getVariable [QGVAR(mgrsCursorReadout), true];
         if (!isNull _engineReadout) then {
-            if (_cursorReadout) then {
-                _engineReadout ctrlShow false;
-                if (!isNull _engineInfo) then { _engineInfo ctrlShow false; };
-                if (!isNull _engineInfoBg) then { _engineInfoBg ctrlShow false; };
-            } else {
-                _engineReadout ctrlShow true;
-                if (!isNull _engineInfo) then { _engineInfo ctrlShow true; };
-                if (!isNull _engineInfoBg) then { _engineInfoBg ctrlShow true; };
-            };
+            _engineReadout ctrlShow false;
         };
 
         // ── Cursor readout ────────────────────────────────────────────
