@@ -1,5 +1,6 @@
 {
   "retrieved": "2026-10-08",
+  "size_scale": "Every location and object icon size is expressed in the user's interface scale. The config value is \"<size> / (safezoneH * 0.7)\", which is <size> at the Normal interface size (uiScale 0.7, safeZoneH 1.42857) and scales linearly with it (safeZoneH = 1/uiScale, BIKI Pixel Grid System). The engine draws the icon at (1/mapScale) * 0.05 * size in a fixed 640x480 space (engine source: the open-sourced Poseidon engine, UIMap.cpp, CStaticMap::DrawSign), so `size` is the only lever. The `size` recorded in each row is the base, the vanilla engine value.",
   "note": "The terrain and map-feature symbols for the Arma 3 map. The authority is STANAG 3675, succeeded by the DGIWG Symbol Register (the DTM50 product), with the US Army FM 21-31 and the USGS Topographic Map Symbols sheet as the public-domain fallback. AEE draws the standard's geometry itself. Every row is sourced or derived and carries its source. Relief is brown, water is blue, vegetation is green, roads are red and built-up areas are black, per the USGS and FM 21-31 palette.",
   "sources": [
     "STANAG 3675 Edition 2 (15 June 2000), Symbols on Land Maps, Aeronautical and Special Naval Charts",
@@ -1733,10 +1734,10 @@
       0.5
     ],
     "colorForestTextured": [
-      0.0,
-      0.5,
-      0.0,
-      0.0
+      0.45,
+      0.66,
+      0.34,
+      0.3
     ],
     "colorNames": [
       0.1,
@@ -1751,15 +1752,15 @@
       1
     ],
     "colorMainCountlines": [
-      0.55,
-      0.35,
-      0.2,
+      0.45,
+      0.26,
+      0.12,
       1
     ],
     "colorCountlines": [
-      0.7,
-      0.48,
-      0.32,
+      0.62,
+      0.42,
+      0.22,
       1
     ],
     "colorMainCountlinesWater": [
@@ -1841,9 +1842,9 @@
       1
     ],
     "colorForest": [
-      0.65,
-      0.8,
-      0.6,
+      0.55,
+      0.74,
+      0.44,
       1
     ],
     "colorForestBorder": [
@@ -1873,11 +1874,11 @@
     "sources": {
       "colorOutside": "USGS sheet margin is blank; matches colorBackground",
       "colorInactive": "ENG. Inactive marker tint",
-      "colorForestTextured": "ENG field; DGIWG vegetation green, alpha 0 lets the texture read",
+      "colorForestTextured": "OS MasterMap woodland #cee6bd and DGIWG vegetation green, 30% tint over the baked raster so vegetation reads",
       "colorNames": "FM s19 name text, near-black; USGS",
       "colorLevels": "FM s10 relief brown; USGS hypsometric tint",
-      "colorMainCountlines": "FM s10 index contour, dark brown",
-      "colorCountlines": "FM s10 intermediate contour, brown",
+      "colorMainCountlines": "FM 21-31 s10 / USGS: index contour is the heavier brown; AEE's own darker brown, darkened for legibility against the light ground",
+      "colorCountlines": "FM 21-31 s10 / USGS contour brown; AEE's own darker brown, darkened for legibility against the light ground",
       "colorMainCountlinesWater": "DGIWG water blue, index",
       "colorCountlinesWater": "DGIWG water blue, intermediate",
       "colorRoads": "FM s13 road red",
@@ -1891,7 +1892,7 @@
       "colorTrails": "FM s15 trail",
       "colorTrailsFill": "FM s15 trail casing",
       "colorSea": "DGIWG water blue fill",
-      "colorForest": "FM s11 vegetation green tint",
+      "colorForest": "OS MasterMap woodland fill #cee6bd and DGIWG vegetation green; AEE's own representation, deepened so vegetation reads",
       "colorForestBorder": "DGIWG vegetation green",
       "colorRocks": "FM s11 bare rock tint",
       "colorRocksBorder": "FM s11 rock border",
@@ -1904,7 +1905,7 @@
     "drawShaded": 0.15,
     "shadedSea": 1,
     "showCountourInterval": 1,
-    "sizeExLevel": 0.02,
+    "sizeExLevel": 0.04,
     "widthRailWay": 4,
     "ptsPerSquareSea": 5,
     "ptsPerSquareCLn": 10,
@@ -1920,7 +1921,7 @@
       "drawShaded": "IDEA. Enhanced Map hillshade; the field is real (ui_f_x2/config.cpp:50344)",
       "shadedSea": "IDEA. Enhanced Map water shading",
       "showCountourInterval": "ENG. Shows the contour interval label",
-      "sizeExLevel": "ENG. Contour elevation label size",
+      "sizeExLevel": "ENG field; doubled from the vanilla 0.02, which the operator reports as too small to read",
       "widthRailWay": "ENG. Rail line width",
       "ptsPerSquareSea": "ENG. Sea texture density",
       "ptsPerSquareCLn": "ENG. Contour line density",

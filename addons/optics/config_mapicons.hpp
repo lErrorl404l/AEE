@@ -17,6 +17,16 @@
  * RscMapControl icon classes); a size below the vanilla value draws the icon
  * too small on the map, so the vanilla size is kept.
  *
+ * The size is expressed in the user's interface scale, so a larger interface
+ * size gives larger symbols.  The engine draws the icon at
+ * (1/mapScale) * 0.05 * size in a fixed 640x480 space (engine source: the
+ * open-sourced Poseidon engine, UIMap.cpp, CStaticMap::DrawSign), so `size`
+ * is the only lever.  The interface scale is uiScale = 1/safeZoneH (BIKI
+ * Pixel Grid System: at 1080p/16:9 the interface size Normal is uiScale 0.7
+ * and safeZoneH 1.42857 = 1/0.7).  So the expression N / (safezoneH * 0.7)
+ * gives N at the Normal interface size and scales linearly with it.  The
+ * vanilla sizeEx* safezone idiom is a constant 0.04 and would not scale.
+ *
  * The engine ceiling: the object-to-icon routing is engine-internal.  Arma
  * config class names resolve case-insensitively, so the engine core names
  * (Dta/bin.pbo: `Church`, `Transmitter`, `Watertower` ...) and the ui_f names
@@ -35,7 +45,7 @@
     class Bush {
         icon = "\z\aee\addons\optics\data\terrain\brushwood.paa";
         color[] = {1, 1, 1, 1};
-        size = 7;
+        size = "7 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -43,7 +53,7 @@
     class SmallTree {
         icon = "\z\aee\addons\optics\data\terrain\deciduous.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = "12 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -51,7 +61,7 @@
     class Tree {
         icon = "\z\aee\addons\optics\data\terrain\deciduous.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = "12 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -61,7 +71,7 @@
     class Rock {
         icon = "\z\aee\addons\optics\data\terrain\rock.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = "12 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -71,7 +81,7 @@
     class church {
         icon = "\z\aee\addons\optics\data\terrain\church.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -79,7 +89,7 @@
     class Chapel {
         icon = "\z\aee\addons\optics\data\terrain\chapel.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -87,7 +97,7 @@
     class Cross {
         icon = "\z\aee\addons\optics\data\terrain\cross.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -95,7 +105,7 @@
     class Ruin {
         icon = "\z\aee\addons\optics\data\terrain\ruin.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 1;
         coefMax = 4;
@@ -103,7 +113,7 @@
     class hospital {
         icon = "\z\aee\addons\optics\data\terrain\hospital.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -111,7 +121,7 @@
     class fuelstation {
         icon = "\z\aee\addons\optics\data\terrain\fuel_station.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -119,7 +129,7 @@
     class Stack {
         icon = "\z\aee\addons\optics\data\terrain\stack.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.4;
         coefMax = 2;
@@ -127,7 +137,7 @@
     class transmitter {
         icon = "\z\aee\addons\optics\data\terrain\radio_tower.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -135,7 +145,7 @@
     class watertower {
         icon = "\z\aee\addons\optics\data\terrain\water_tower.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -143,7 +153,7 @@
     class lighthouse {
         icon = "\z\aee\addons\optics\data\terrain\lighthouse.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -151,7 +161,7 @@
     class power {
         icon = "\z\aee\addons\optics\data\terrain\power_plant.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -159,7 +169,7 @@
     class powersolar {
         icon = "\z\aee\addons\optics\data\terrain\solar.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -167,7 +177,7 @@
     class powerwind {
         icon = "\z\aee\addons\optics\data\terrain\wind.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -175,7 +185,7 @@
     class powerwave {
         icon = "\z\aee\addons\optics\data\terrain\wave.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -183,7 +193,7 @@
     class Fountain {
         icon = "\z\aee\addons\optics\data\terrain\fountain.paa";
         color[] = {1, 1, 1, 1};
-        size = 11;
+        size = "11 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -191,7 +201,7 @@
     class Tourism {
         icon = "\z\aee\addons\optics\data\terrain\tourism.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.7;
         coefMax = 4;
@@ -199,7 +209,7 @@
     class ViewTower {
         icon = "\z\aee\addons\optics\data\terrain\view_tower.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.5;
         coefMax = 4;
@@ -209,7 +219,7 @@
     class busstop {
         icon = "\z\aee\addons\optics\data\terrain\bus_stop.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -217,7 +227,7 @@
     class quay {
         icon = "\z\aee\addons\optics\data\terrain\quay.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -225,7 +235,7 @@
     class Shipwreck {
         icon = "\z\aee\addons\optics\data\terrain\shipwreck.paa";
         color[] = {1, 1, 1, 1};
-        size = 24;
+        size = "24 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.85;
         coefMax = 1;
@@ -235,7 +245,7 @@
     class Bunker {
         icon = "\z\aee\addons\optics\data\terrain\bunker.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = "14 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;
@@ -243,7 +253,7 @@
     class Fortress {
         icon = "\z\aee\addons\optics\data\terrain\fortress.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         importance = 1;
         coefMin = 0.25;
         coefMax = 4;

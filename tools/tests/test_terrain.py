@@ -59,6 +59,51 @@ for _section in ("locations", "objects"):
         if _row.get("symbol") and _row["symbol"] not in REFERENCED:
             REFERENCED.append(_row["symbol"])
 
+# The vanilla engine size of every icon class, read from the engine config
+# (Dta/bin.pbo holds the location icons, ui_f overrides ViewPoint to 16;
+# ui_f.pbo holds the object icons).  The config expresses each as
+# "<size> / (safezoneH * 0.7)", the base at the Normal interface size, so a
+# larger interface size gives a larger symbol (safeZoneH = 1/uiScale).
+LOCATION_ICON_SIZES = {
+    "Hill": 14,
+    "ViewPoint": 16,
+    "RockArea": 12,
+    "BorderCrossing": 16,
+    "VegetationBroadleaf": 18,
+    "VegetationFir": 18,
+    "VegetationPalm": 18,
+    "VegetationVineyard": 16,
+}
+OBJECT_ICON_SIZES = {
+    "Bush": 7,
+    "SmallTree": 12,
+    "Tree": 12,
+    "Rock": 12,
+    "church": 24,
+    "Chapel": 24,
+    "Cross": 24,
+    "Ruin": 16,
+    "hospital": 24,
+    "fuelstation": 24,
+    "Stack": 16,
+    "transmitter": 24,
+    "watertower": 24,
+    "lighthouse": 24,
+    "power": 24,
+    "powersolar": 24,
+    "powerwind": 24,
+    "powerwave": 24,
+    "Fountain": 11,
+    "Tourism": 16,
+    "ViewTower": 16,
+    "busstop": 24,
+    "quay": 24,
+    "Shipwreck": 24,
+    "Bunker": 14,
+    "Fortress": 16,
+}
+SIZE_SCALE = r"\s*/\s*\(safezoneH \* 0\.7\)"
+
 FORBIDDEN_PROVENANCE = (
     "Agent:",
     "opencode",
@@ -196,25 +241,16 @@ class TestTerrainLocationConfig(unittest.TestCase):
         self.assertIsNone(re.search(r"drawStyle\s*=", LOC_SRC))
 
     def test_the_icon_classes_carry_the_vanilla_size(self):
-        # The map symbol size is the vanilla engine value: Dta/bin.pbo holds the
-        # location icons, and ui_f overrides ViewPoint to 16.  A smaller size
-        # draws the terrain symbol too small on the map.
-        expected = {
-            "Hill": 14,
-            "ViewPoint": 16,
-            "RockArea": 12,
-            "BorderCrossing": 16,
-            "VegetationBroadleaf": 18,
-            "VegetationFir": 18,
-            "VegetationPalm": 18,
-            "VegetationVineyard": 16,
-        }
-        for cls, size in expected.items():
+        # The map symbol size is the vanilla engine value, expressed in the
+        # user's interface scale: "<size> / (safezoneH * 0.7)" is the base at
+        # the Normal interface size and grows with it.  Dta/bin.pbo holds the
+        # location icons, and ui_f overrides ViewPoint to 16.
+        for cls, size in LOCATION_ICON_SIZES.items():
             block = re.search(
                 rf"class {cls}(?::\s*\w+)?\s*\{{(.*?)\n    \}}", LOC_SRC, re.DOTALL
             )
             self.assertIsNotNone(block, cls)
-            self.assertRegex(block.group(1), rf"\bsize = {size};", cls)
+            self.assertRegex(block.group(1), rf'\bsize = "{size}{SIZE_SCALE}";', cls)
 
 
 class TestTerrainObjectConfig(unittest.TestCase):
@@ -240,39 +276,13 @@ class TestTerrainObjectConfig(unittest.TestCase):
 
     def test_every_object_icon_keeps_the_vanilla_size(self):
         # The vanilla ui_f RscMapControl object-icon size draws the icon at the
-        # map scale a player expects.  A shrunken size draws it too small.
-        expected = {
-            "Bush": 7,
-            "SmallTree": 12,
-            "Tree": 12,
-            "Rock": 12,
-            "church": 24,
-            "Chapel": 24,
-            "Cross": 24,
-            "Ruin": 16,
-            "hospital": 24,
-            "fuelstation": 24,
-            "Stack": 16,
-            "transmitter": 24,
-            "watertower": 24,
-            "lighthouse": 24,
-            "power": 24,
-            "powersolar": 24,
-            "powerwind": 24,
-            "powerwave": 24,
-            "Fountain": 11,
-            "Tourism": 16,
-            "ViewTower": 16,
-            "busstop": 24,
-            "quay": 24,
-            "Shipwreck": 24,
-            "Bunker": 14,
-            "Fortress": 16,
-        }
-        for cls, size in expected.items():
+        # map scale a player expects.  It is expressed in the user's interface
+        # scale ("<size> / (safezoneH * 0.7)"), so a larger interface size
+        # gives a larger symbol.
+        for cls, size in OBJECT_ICON_SIZES.items():
             block = re.search(rf"class {cls} \{{(.*?)\n    \}}", OBJ_SRC, re.DOTALL)
             self.assertIsNotNone(block, cls)
-            self.assertRegex(block.group(1), rf"\bsize = {size};", cls)
+            self.assertRegex(block.group(1), rf'\bsize = "{size}{SIZE_SCALE}";', cls)
 
 
 class TestTerrainTextures(unittest.TestCase):
@@ -626,6 +636,71 @@ class TestTerrainRenderSurface(unittest.TestCase):
         ):
             self.assertRegex(COL_SRC, rf"\b{field}\b", field)
         self.assertRegex(COL_SRC, r"\bfontLevel\s*=\s*\"[^\"]+\"\s*;")
+
+
+class TestTerrainLook(unittest.TestCase):
+    """The operator's terrain-look defects: darker contours, readable
+    vegetation and a larger contour height label."""
+
+    @staticmethod
+    def _luminance(rgb):
+        r, g, b = rgb[:3]
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+    def test_the_contours_are_darker_than_the_ground(self):
+        # Defect 1: the index contour is darker than the intermediate, and the
+        # intermediate stands out from the light ground.
+        ground = self._luminance(colour_of(COL_SRC, "colorBackground"))
+        main = self._luminance(colour_of(COL_SRC, "colorMainCountlines"))
+        inter = self._luminance(colour_of(COL_SRC, "colorCountlines"))
+        self.assertLess(
+            main, inter, "the index contour must be darker than the intermediate"
+        )
+        self.assertLess(
+            inter,
+            0.6 * ground,
+            "the intermediate contour must stand out from the ground",
+        )
+        self.assertLess(main, 0.35, "the index contour must be dark")
+
+    def test_the_forest_reads_as_vegetation(self):
+        # Defect 2: the flat fill is green, and the textured tint is green with
+        # a non-zero alpha so the raster reads as vegetation.
+        forest = colour_of(COL_SRC, "colorForest")
+        textured = colour_of(COL_SRC, "colorForestTextured")
+        self.assertGreater(forest[1], forest[0], "the forest fill must be green")
+        self.assertGreater(forest[1], forest[2], "the forest fill must be green")
+        self.assertGreater(textured[1], textured[0], "the textured tint must be green")
+        self.assertGreater(textured[3], 0.0, "the textured tint must be non-zero")
+
+    def test_the_height_label_is_raised(self):
+        # Defect 3: the contour elevation (height) label is the level font, and
+        # its size is raised above the vanilla 0.02.
+        m = re.search(r"\bsizeExLevel\s*=\s*([0-9.]+)\s*;", COL_SRC)
+        self.assertIsNotNone(m)
+        self.assertGreaterEqual(float(m.group(1)), 0.03)
+
+    def test_the_icon_sizes_scale_with_the_interface_size(self):
+        # Defect 4: every location and object icon size is the vanilla base
+        # over (safezoneH * 0.7), i.e. the base times uiScale/0.7, because
+        # safeZoneH = 1/uiScale (BIKI Pixel Grid System).  So a larger
+        # interface size gives a larger symbol, and the Normal interface size
+        # gives the vanilla base.  The vanilla sizeEx* safezone idiom is a
+        # constant 0.04 and would not scale.
+        for cls, size in LOCATION_ICON_SIZES.items():
+            block = re.search(
+                rf"class {cls}(?::\s*\w+)?\s*\{{(.*?)\n    \}}", LOC_SRC, re.DOTALL
+            )
+            self.assertIsNotNone(block, cls)
+            self.assertRegex(block.group(1), rf'\bsize = "{size}{SIZE_SCALE}";', cls)
+        for cls, size in OBJECT_ICON_SIZES.items():
+            block = re.search(rf"class {cls} \{{(.*?)\n    \}}", OBJ_SRC, re.DOTALL)
+            self.assertIsNotNone(block, cls)
+            self.assertRegex(block.group(1), rf'\bsize = "{size}{SIZE_SCALE}";', cls)
+        # Every object class is an icon, so no object class keeps a bare
+        # literal size.  The CfgLocationTypes name and area classes are text,
+        # not icons, and keep their vanilla literal size.
+        self.assertNotRegex(OBJ_SRC, r"\bsize = \d+;")
 
 
 class TestSuiteRegistration(unittest.TestCase):

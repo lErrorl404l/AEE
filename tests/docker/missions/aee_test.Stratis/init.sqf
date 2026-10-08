@@ -3361,6 +3361,12 @@ private _p29Pass = 0;
     // line is one straight chord and the per-sample conversion jitter is
     // measured against it.  It renders nothing.
     execVM "aee_p127_mgrs_straightness_probe.sqf";
+    // PHASE 129 lives in aee_p129_terrain_look_probe.sqf: the darkened
+    // contours, the readable vegetation, the raised height label and the
+    // interface-scaled icon sizes are engine config, so the probe reads the
+    // merged config live and recomputes the expected icon size from the live
+    // safeZoneH.  It renders nothing.
+    execVM "aee_p129_terrain_look_probe.sqf";
 
     // PHASE 130 lives in aee_p130_aperture_sky_probe.sqf: the aperture restore
     // after a sensor exit is proved by calling the REAL exit functions headless
