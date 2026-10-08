@@ -3308,6 +3308,12 @@ private _p29Pass = 0;
     // probe addon is loaded it reports the merge winner instead (used by
     // docker_test.sh --merge-order). It renders nothing.
     execVM "aee_p118_ownership_probe.sqf";
+    // PHASE 120 lives in aee_p120_mobility_cost_probe.sqf: the five mobility
+    // handlers run at 20 Hz on the client, so a dedicated server cannot
+    // register them, but the per-frame loop body and the per-tick log line the
+    // fix removed are both measurable headless.  It registers no handler and
+    // renders nothing.
+    execVM "aee_p120_mobility_cost_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
