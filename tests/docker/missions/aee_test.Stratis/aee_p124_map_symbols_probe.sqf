@@ -21,8 +21,11 @@ private _pass = 0;
 private _fail = 0;
 private _notes = [];
 
-// ── DEFECT 1A: the location icon size is the vanilla engine value.  The
-// parentless roots (Mount, Name) have no icon; the eight icon classes do. ───
+// ── DEFECT 1A: the location icon size is the vanilla engine value, expressed
+// in the interface scale: "<size> / (safezoneH * 0.7)" is <size> at the Normal
+// interface size (safeZoneH 1.42857) and scales with it.  The parentless
+// roots (Mount, Name) have no icon; the eight icon classes do. ─────────────
+private _iconScale = safeZoneH * 0.7;
 private _locationSizes = [
     ["Hill", 14], ["ViewPoint", 16], ["RockArea", 12], ["BorderCrossing", 16],
     ["VegetationBroadleaf", 18], ["VegetationFir", 18],
@@ -31,15 +34,16 @@ private _locationSizes = [
 {
     _x params ["_cls", "_size"];
     private _got = getNumber (configFile >> "CfgLocationTypes" >> _cls >> "size");
-    if (_got == _size) then {
+    if (abs (_got - _size / _iconScale) < 0.01) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["location %1 size=%2 want %3", _cls, _got, _size];
+        _notes pushBack format ["location %1 size=%2 want %3", _cls, _got, _size / _iconScale];
     };
 } forEach _locationSizes;
 
-// ── DEFECT 1B: the map object icon size is the vanilla ui_f value. ──────────
+// ── DEFECT 1B: the map object icon size is the vanilla ui_f value, expressed
+// in the interface scale. ──────────────────────────────────────────────────
 private _objectSizes = [
     ["Bush", 7], ["SmallTree", 12], ["Tree", 12], ["Rock", 12],
     ["church", 24], ["Chapel", 24], ["Cross", 24], ["Ruin", 16],
@@ -53,11 +57,11 @@ private _objectSizes = [
 {
     _x params ["_cls", "_size"];
     private _got = getNumber (configFile >> "RscMapControl" >> _cls >> "size");
-    if (_got == _size) then {
+    if (abs (_got - _size / _iconScale) < 0.01) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["object %1 size=%2 want %3", _cls, _got, _size];
+        _notes pushBack format ["object %1 size=%2 want %3", _cls, _got, _size / _iconScale];
     };
 } forEach _objectSizes;
 
