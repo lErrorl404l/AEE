@@ -3361,6 +3361,12 @@ private _p29Pass = 0;
     // line is one straight chord and the per-sample conversion jitter is
     // measured against it.  It renders nothing.
     execVM "aee_p127_mgrs_straightness_probe.sqf";
+    // PHASE 129 lives in aee_p129_terrain_look_probe.sqf: the darkened
+    // contours, the readable vegetation, the raised height label and the
+    // interface-scaled icon sizes are engine config, so the probe reads the
+    // merged config live and recomputes the expected icon size from the live
+    // safeZoneH.  It renders nothing.
+    execVM "aee_p129_terrain_look_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

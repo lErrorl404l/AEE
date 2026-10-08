@@ -44,20 +44,28 @@
     // ── Relief bands.  Hypsometric tint, relief brown.  FM s10. ─────────
     colorLevels[] = {0.70, 0.48, 0.32, 1};
 
-    // ── Contours.  Index dark, intermediate light.  FM s10. ─────────────
-    colorMainCountlines[] = {0.55, 0.35, 0.20, 1};
-    colorCountlines[] = {0.70, 0.48, 0.32, 1};
+    // ── Contours.  Index dark, intermediate mid.  FM s10; USGS "index
+    // contours are heavier".  Both darkened so the lines read against the
+    // light ground.  The published OS contour-family RGBs (Terrain 50
+    // #E0945E, Zoomstack Outdoor #857660) are lighter, so these are AEE's own
+    // darker brown representation of the standard's brown.
+    colorMainCountlines[] = {0.45, 0.26, 0.12, 1};
+    colorCountlines[] = {0.62, 0.42, 0.22, 1};
     // The contour elevation label.  ENG field, AEE label family.
     fontLevel = "RobotoCondensed";
-    sizeExLevel = 0.02;
+    // The contour elevation (height) label size.  Doubled from the vanilla
+    // 0.02, which the operator reports as too small to read.
+    sizeExLevel = 0.04;
     // Coordinates the contour line density.  ENG.
     ptsPerSquareCLn = 10;
 
     // ── Vegetation and rock tints.  FM s11; DGIWG green. ────────────────
-    colorForest[] = {0.65, 0.80, 0.60, 1};
+    colorForest[] = {0.55, 0.74, 0.44, 1};
     colorForestBorder[] = {0.00, 0.50, 0.00, 1};
-    // The tint over the baked vegetation texture; alpha 0 lets it read.  ENG.
-    colorForestTextured[] = {0.00, 0.50, 0.00, 0.00};
+    // The tint over the baked vegetation texture.  A green tint at 30% makes
+    // the raster read as vegetation, where alpha 0 left it untinted.  OS
+    // MasterMap woodland fill #cee6bd is the published reference.
+    colorForestTextured[] = {0.45, 0.66, 0.34, 0.30};
     colorRocks[] = {0.75, 0.70, 0.60, 1};
     colorRocksBorder[] = {0.50, 0.45, 0.40, 1};
     // Coordinates the forest and the rock density.  ENG.
