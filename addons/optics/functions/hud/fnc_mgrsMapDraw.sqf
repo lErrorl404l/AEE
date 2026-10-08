@@ -45,18 +45,47 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
         params ["_map"];
         if (!(missionNamespace getVariable [QGVAR(mgrsEnabled), true])) exitWith {};
 
-        // The MGRS readout uses the monospaced companion, gated on the
-        // symbologyFont setting.  The engine font is the fallback when the
-        // AEEFontMono family is unavailable.
+        // The overlay font.  FUNC(mgrsFontFamily) returns the AEE monospaced
+        // family only when its glyph files ship, else the engine family, so a
+        // missing optional font never blanks the map.  The setting gates it.
         private _font = "PuristaMedium";
         if (missionNamespace getVariable [QGVAR(symbologyFont), true]) then {
-            if (isClass (configFile >> "CfgFontFamilies" >> "AEEFontMono")) then {
-                _font = "AEEFontMono";
-            };
+            _font = [true] call FUNC(mgrsFontFamily);
         };
 
         private _anchor = call EFUNC(core,getGeoAnchor);
+
+        // The visible world rectangle and its span.  The span sets the
+        // displayed scale, and the grid overlay reuses the rectangle.
+        private _cp = ctrlPosition _map;
+        private _c0 = _map ctrlMapScreenToWorld [_cp select 0, _cp select 1];
+        private _c1 = _map ctrlMapScreenToWorld [
+            (_cp select 0) + (_cp select 2),
+            (_cp select 1) + (_cp select 3)
+        ];
+        private _rect = [];
+        private _span = 0;
+        if (((count _c0) >= 2) && ((count _c1) >= 2)) then {
+            _rect = [
+                (_c0 select 0) min (_c1 select 0),
+                (_c0 select 1) min (_c1 select 1),
+                (_c0 select 0) max (_c1 select 0),
+                (_c0 select 1) max (_c1 select 1)
+            ];
+            _span = ((_rect select 2) - (_rect select 0)) max ((_rect select 3) - (_rect select 1));
+        };
+
+        // The digit count and the finest grid step follow the displayed
+        // scale when the auto setting is on, else the manual mgrsPrecision
+        // list.
         private _precision = missionNamespace getVariable [QGVAR(mgrsPrecision), 10];
+        private _gridInterval = 0;
+        if (missionNamespace getVariable [QGVAR(mgrsPrecisionAuto), true]) then {
+            private _scale = [_anchor select 3, _span] call FUNC(mgrsMapPrecision);
+            _precision = _scale select 0;
+            _gridInterval = _scale select 1;
+        };
+        if !(_precision isEqualType 0) then { _precision = 10; };
         private _player = call CBA_fnc_currentUnit;
 
         // The engine grid is the cross-check: FUNC(mgrsMarkerText) shows it
@@ -94,19 +123,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
         // rectangle, so a static map does not re-run the conversion on
         // every draw.
         if (missionNamespace getVariable [QGVAR(mgrsMapGrid), true]) then {
-            private _cp = ctrlPosition _map;
-            private _c0 = _map ctrlMapScreenToWorld [_cp select 0, _cp select 1];
-            private _c1 = _map ctrlMapScreenToWorld [
-                (_cp select 0) + (_cp select 2),
-                (_cp select 1) + (_cp select 3)
-            ];
-            if (((count _c0) >= 2) && ((count _c1) >= 2)) then {
-                private _rect = [
-                    (_c0 select 0) min (_c1 select 0),
-                    (_c0 select 1) min (_c1 select 1),
-                    (_c0 select 0) max (_c1 select 0),
-                    (_c0 select 1) max (_c1 select 1)
-                ];
+            if ((count _rect) >= 4) then {
                 private _key = _rect apply { round (_x / 10) };
                 private _cache = missionNamespace getVariable [QGVAR(mgrsGridCache), []];
                 // The cache is rebuilt on a miss.  Build the plan as the value
@@ -122,7 +139,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 private _plan = if (_hit) then {
                     _cache select 1
                 } else {
-                    private _fresh = [_anchor, _rect] call FUNC(mgrsGridLines);
+                    private _fresh = [_anchor, _rect, _gridInterval] call FUNC(mgrsGridLines);
                     missionNamespace setVariable [QGVAR(mgrsGridCache), [_key, _fresh]];
                     _fresh
                 };

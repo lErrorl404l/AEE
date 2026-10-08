@@ -34,8 +34,7 @@ private _display = uiNamespace getVariable [QGVAR(gpsDisplay), displayNull];
 if (isNull _display) exitWith {};
 
 private _anchor = call EFUNC(core,getGeoAnchor);
-private _precision = missionNamespace getVariable [QGVAR(mgrsPrecision), 10];
-if !(_precision isEqualType 0) then { _precision = 10; };
+private _precision = [_anchor] call FUNC(mgrsEffectivePrecision);
 
 private _grid = ["", getPos _player, _anchor, _precision] call FUNC(mgrsMarkerText);
 

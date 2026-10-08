@@ -266,6 +266,11 @@ UNARY_COMMANDS = {
     "values",
     # isClass X - config class-existence test used by fnc_wildlifeTick.
     "isClass",
+    # Config font glyph check (fnc_fontFamilyUsable): getArray reads a
+    # CfgFontFamilies fonts[] list and fileExists tests the glyph .fxy.  Both
+    # are engine commands the caller binds through globals_.
+    "getArray",
+    "fileExists",
 }
 
 
@@ -1058,6 +1063,8 @@ class SqfRuntime:
                 "nearestTerrainObjects",
                 "values",
                 "isClass",
+                "getArray",
+                "fileExists",
             ):
                 fn = self.globals.get(node.op)
                 if callable(fn):
@@ -1071,13 +1078,25 @@ class SqfRuntime:
                 self.push()
                 self.set("_x", el)
                 self.set("_forEachIndex", float(i))
+                # Do NOT re-bind code.closure here: the block runs in the
+                # current scope chain, so outer variables are already visible.
+                # Re-binding a captured snapshot resets a variable that an
+                # earlier iteration wrote, so an accumulator never grows.
                 if isinstance(code, Lambda):
-                    for k, v in code.closure.items():
-                        if k not in self.scopes[-1]:
-                            self.scopes[-1].setdefault(k, v)
                     r = self.run(code.body)
                 else:
                     r = None
+                # SQF forEach shares the enclosing scope: an assignment to an
+                # outer variable inside the block is visible after the loop.
+                # Propagate those writes before the block scope is popped.
+                inner = self.scopes[-1]
+                for k, v in list(inner.items()):
+                    if k in ("_x", "_forEachIndex"):
+                        continue
+                    for outer in reversed(self.scopes[:-1]):
+                        if k in outer:
+                            outer[k] = v
+                            break
                 self.pop()
                 if not node.keep:
                     out.append(r)
@@ -1090,12 +1109,17 @@ class SqfRuntime:
                 self.set("_x", el)
                 self.set("_forEachIndex", float(i))
                 if isinstance(code, Lambda):
-                    for k, v in code.closure.items():
-                        if k not in self.scopes[-1]:
-                            self.scopes[-1].setdefault(k, v)
                     r = self.run(code.body)
                 else:
                     r = None
+                inner = self.scopes[-1]
+                for k, v in list(inner.items()):
+                    if k in ("_x", "_forEachIndex"):
+                        continue
+                    for outer in reversed(self.scopes[:-1]):
+                        if k in outer:
+                            outer[k] = v
+                            break
                 self.pop()
                 if r:
                     return float(i)

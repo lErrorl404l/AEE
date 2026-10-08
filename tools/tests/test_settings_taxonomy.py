@@ -41,6 +41,7 @@ EXPECTED_HUD = {
     "aee_optics_mgrsEnabled",
     "aee_optics_mgrsMapGrid",
     "aee_optics_mgrsPrecision",
+    "aee_optics_mgrsPrecisionAuto",
     "aee_physiology_HUDWarningThreshold",
     "aee_nightvision_ltmEnabled",
     "aee_nightvision_ltmDaylightFade",

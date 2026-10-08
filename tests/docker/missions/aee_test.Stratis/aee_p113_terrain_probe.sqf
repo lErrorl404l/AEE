@@ -57,9 +57,9 @@ if (_alpha > 0 && {_alpha < 1}) then {
     _notes pushBack format ["maxSatelliteAlpha unexpected: %1", _alpha];
 };
 
-// 6. the map label font reached the config
+// 6. the map label font is the engine family, not the glyphless AEE family
 private _font = getText (configFile >> "RscMapControl" >> "fontNames");
-if (_font isEqualTo "AEEFont") then {
+if (_font isEqualTo "RobotoCondensed") then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;

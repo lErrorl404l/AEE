@@ -314,5 +314,86 @@ class TestMgrsTableIntegrity(unittest.TestCase):
         self.assertEqual(self.tables[5], list("0123456789"))
 
 
+# ── The map-layer fix: font usability and world-size precision ──────────────
+OPTICS_HUD = ROOT / "addons" / "optics" / "functions" / "hud"
+MAP_PRECISION = OPTICS_HUD / "fnc_mgrsMapPrecision.sqf"
+EFFECTIVE_PRECISION = OPTICS_HUD / "fnc_mgrsEffectivePrecision.sqf"
+FONT_USABLE = OPTICS_HUD / "fnc_fontFamilyUsable.sqf"
+MGRS_FONT = OPTICS_HUD / "fnc_mgrsFontFamily.sqf"
+GRID_LINES = OPTICS_HUD / "fnc_mgrsGridLines.sqf"
+MAP_DRAW = OPTICS_HUD / "fnc_mgrsMapDraw.sqf"
+OPTICS_CONFIG = (ROOT / "addons" / "optics" / "config.cpp").read_text(encoding="utf-8")
+MAP_DISPLAYS = (ROOT / "addons" / "optics" / "config_mapdisplays.hpp").read_text(
+    encoding="utf-8"
+)
+PREP_SRC = (ROOT / "addons" / "optics" / "XEH_PREP.hpp").read_text(encoding="utf-8")
+SETTINGS = (ROOT / "addons" / "optics" / "initSettings.inc.sqf").read_text(
+    encoding="utf-8"
+)
+
+
+class TestMgrsMapPrecision(unittest.TestCase):
+    def test_a_small_world_is_six_digits_at_100_metres(self):
+        self.assertEqual(run_sqf(MAP_PRECISION, [1024], {}), [6.0, 100.0])
+
+    def test_a_large_world_is_eight_digits_at_10_metres(self):
+        self.assertEqual(run_sqf(MAP_PRECISION, [30720], {}), [8.0, 10.0])
+
+    def test_the_boundary_is_16_kilometres(self):
+        self.assertEqual(run_sqf(MAP_PRECISION, [16384], {}), [6.0, 100.0])
+        self.assertEqual(run_sqf(MAP_PRECISION, [16385], {}), [8.0, 10.0])
+
+    def test_a_non_number_falls_back_to_the_small_world(self):
+        self.assertEqual(run_sqf(MAP_PRECISION, ["x"], {}), [6.0, 100.0])
+
+
+class TestMgrsPrecisionContracts(unittest.TestCase):
+    def test_the_effective_precision_reads_the_auto_setting(self):
+        src = EFFECTIVE_PRECISION.read_text(encoding="utf-8")
+        self.assertIn("mgrsPrecisionAuto", src)
+        self.assertIn("mgrsMapPrecision", src)
+
+    def test_the_auto_setting_is_registered(self):
+        self.assertIn("mgrsPrecisionAuto", SETTINGS)
+
+    def test_the_grid_planner_takes_a_base_interval(self):
+        src = GRID_LINES.read_text(encoding="utf-8")
+        self.assertIn("_baseInterval", src)
+
+    def test_the_map_draw_passes_the_world_interval_to_the_planner(self):
+        src = MAP_DRAW.read_text(encoding="utf-8")
+        self.assertIn("[_anchor, _rect, _gridInterval] call FUNC(mgrsGridLines)", src)
+
+
+class TestMgrsFontContracts(unittest.TestCase):
+    def test_the_family_test_reads_the_glyph_file(self):
+        src = FONT_USABLE.read_text(encoding="utf-8")
+        self.assertIn("fileExists", src)
+        self.assertIn(".fxy", src)
+
+    def test_the_family_choice_falls_back_to_an_engine_font(self):
+        src = MGRS_FONT.read_text(encoding="utf-8")
+        self.assertIn("fontFamilyUsable", src)
+        self.assertIn("EtelkaMonospacePro", src)
+        self.assertIn("PuristaMedium", src)
+
+    def test_the_overlay_uses_the_family_choice(self):
+        self.assertIn("FUNC(mgrsFontFamily)", MAP_DRAW.read_text(encoding="utf-8"))
+
+    def test_the_config_does_not_repoint_the_grid_at_the_aee_font(self):
+        self.assertNotIn('fontGrid = "AEEFont"', OPTICS_CONFIG)
+        self.assertNotIn('fontNames = "AEEFont"', OPTICS_CONFIG)
+        self.assertNotIn('fontGrid = "AEEFont"', MAP_DISPLAYS)
+
+    def test_the_new_kernels_are_prepped(self):
+        for name in (
+            "fontFamilyUsable",
+            "mgrsFontFamily",
+            "mgrsEffectivePrecision",
+            "mgrsMapPrecision",
+        ):
+            self.assertIn(f"PREPS(hud,{name});", PREP_SRC)
+
+
 if __name__ == "__main__":
     unittest.main()

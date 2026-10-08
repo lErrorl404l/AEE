@@ -24,7 +24,7 @@ class CfgLocationTypes {
     class Mount {
         color[] = {0.70, 0.48, 0.32, 1};
         size = 18;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.09;
         shadow = 1;
     };
@@ -85,42 +85,42 @@ class CfgLocationTypes {
     class Name {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 12;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.06;
         shadow = 1;
     };
     class NameMarine {
         color[] = {0.00, 0.50, 0.75, 1};
         size = 12;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.06;
         shadow = 1;
     };
     class NameCityCapital {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 14;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.09;
         shadow = 1;
     };
     class NameCity {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 13;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.075;
         shadow = 1;
     };
     class NameVillage {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 11;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.06;
         shadow = 1;
     };
     class NameLocal {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 10;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.05;
         shadow = 1;
     };
@@ -129,70 +129,70 @@ class CfgLocationTypes {
     class Strategic {
         color[] = {0.80, 0.10, 0.10, 1};
         size = 16;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.08;
         shadow = 1;
     };
     class StrongpointArea {
         color[] = {0.80, 0.10, 0.10, 1};
         size = 14;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.07;
         shadow = 1;
     };
     class FlatArea {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 14;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.07;
         shadow = 0;
     };
     class FlatAreaCity {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 14;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.07;
         shadow = 0;
     };
     class FlatAreaCitySmall {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 12;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.06;
         shadow = 0;
     };
     class CityCenter {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 16;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.08;
         shadow = 1;
     };
     class Airport {
         color[] = {0.80, 0.10, 0.10, 1};
         size = 16;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.07;
         shadow = 1;
     };
     class fakeTown {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 12;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.06;
         shadow = 0;
     };
     class Area {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 12;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.06;
         shadow = 0;
     };
     class Flag {
         color[] = {0.80, 0.10, 0.10, 1};
         size = 12;
-        font = "AEEFont";
+        font = "RobotoCondensed";
         textSize = 0.05;
         shadow = 0;
     };

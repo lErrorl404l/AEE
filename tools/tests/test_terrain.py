@@ -132,9 +132,11 @@ class TestTerrainLocationConfig(unittest.TestCase):
             self.assertIn(f"{AEE_PREFIX}{symbol}.paa", block.group(1))
 
     def test_a_name_class_carries_the_label_font(self):
+        # The engine family until the AEE glyph files ship: the engine draws
+        # no text for a CfgFontFamilies family whose .fxy/.paa are absent.
         block = re.search(r"class Name \{(.*?)\n    \}", LOC_SRC, re.DOTALL)
         self.assertIsNotNone(block)
-        self.assertIn('font = "AEEFont";', block.group(1))
+        self.assertIn('font = "RobotoCondensed";', block.group(1))
         self.assertIn("textSize", block.group(1))
 
     def test_no_drawstyle_is_set(self):
@@ -265,12 +267,12 @@ class TestTerrainDisplays(unittest.TestCase):
         self.assertIn("class ctrlMap", DISP_SRC)
         self.assertIn("class ctrlDefault;", DISP_SRC)
 
-    def test_the_eden_map_carries_the_font_and_the_levers(self):
+    def test_the_eden_map_carries_the_levers_and_the_engine_font(self):
         m = re.search(r"class ctrlMap[^{]*\{(.*)", DISP_SRC, re.DOTALL)
         self.assertIsNotNone(m)
         block = m.group(1)
-        self.assertIn('fontGrid = "AEEFont";', block)
-        self.assertIn('fontNames = "AEEFont";', block)
+        self.assertNotIn('fontGrid = "AEEFont";', block)
+        self.assertNotIn('fontNames = "AEEFont";', block)
         self.assertIn("maxSatelliteAlpha", block)
         self.assertIn("showCountourInterval", block)
 
@@ -307,8 +309,8 @@ class TestTerrainWiring(unittest.TestCase):
         self.assertNotIn("terrainIcon", PREP_SRC)
         self.assertFalse((OPTICS / "functions" / "terrain").exists())
 
-    def test_the_map_font_is_wired(self):
-        self.assertIn('fontNames = "AEEFont";', CONFIG_SRC)
+    def test_the_map_font_is_left_to_the_engine_until_the_glyphs_ship(self):
+        self.assertNotIn('fontNames = "AEEFont";', CONFIG_SRC)
 
     def test_the_app6_marker_surfaces_are_untouched(self):
         self.assertIn('#include "config_markers.hpp"', CONFIG_SRC)

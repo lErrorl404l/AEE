@@ -3261,6 +3261,11 @@ private _p29Pass = 0;
     // REAL pure kernels with the live anchor (utmToWorld round trip,
     // mgrsGridLines lines and labels, mgrsCursorText).  It renders nothing.
     execVM "aee_p110_mgrs_grid_probe.sqf";
+    // PHASE 114 lives in aee_p114_mgrs_map_layer_probe.sqf: the overlay font
+    // fallback (the AEE glyph files are absent, so the engine family is used)
+    // and the precision rule by the displayed scale.  It reads the live config
+    // and drives the REAL pure kernels.  It renders nothing.
+    execVM "aee_p114_mgrs_map_layer_probe.sqf";
     // PHASE 111 lives in aee_p111_symbology_probe.sqf: the map and world
     // marker layers exist only on a client, so the probe drives the REAL pure
     // kernels with fixtures (the palette Table 1-4 and the OPFOR swap, the

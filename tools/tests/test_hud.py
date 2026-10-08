@@ -500,9 +500,13 @@ class TestHudWiring(unittest.TestCase):
             "hudMarkers",
             "hudRangefinder",
             "hudUpdate",
+            "fontFamilyUsable",
             "mgrsCursorText",
+            "mgrsEffectivePrecision",
+            "mgrsFontFamily",
             "mgrsGridLines",
             "mgrsMapDraw",
+            "mgrsMapPrecision",
             "mgrsMarkerText",
         ):
             self.assertIn(f"PREPS(hud,{name});", PREP_SRC, name)

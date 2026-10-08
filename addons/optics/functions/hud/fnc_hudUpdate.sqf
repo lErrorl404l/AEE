@@ -51,12 +51,12 @@ if (_enabled) then {
     // position, the anchor and the setting value are all passed in.
     private _mgrsEnabled = missionNamespace getVariable [QGVAR(mgrsEnabled), true];
     if !(_mgrsEnabled isEqualType true) then { _mgrsEnabled = true; };
-    private _mgrsPrecision = missionNamespace getVariable [QGVAR(mgrsPrecision), 10];
-    if !(_mgrsPrecision isEqualType 0) then { _mgrsPrecision = 10; };
+    private _anchor = call EFUNC(core,getGeoAnchor);
+    private _mgrsPrecision = [_anchor] call FUNC(mgrsEffectivePrecision);
 
     private _grid = [
         getPosASL _player,
-        call EFUNC(core,getGeoAnchor),
+        _anchor,
         _mgrsPrecision,
         mapGridPosition _player,
         _mgrsEnabled

@@ -69,6 +69,9 @@ STRINGTABLE_SRC = (OPTICS / "stringtable.xml").read_text(encoding="utf-8")
 MGRS_MAP_SRC = (OPTICS / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
     encoding="utf-8"
 )
+MGRS_FONT_SRC = (OPTICS / "functions" / "hud" / "fnc_mgrsFontFamily.sqf").read_text(
+    encoding="utf-8"
+)
 FONTS = OPTICS / "data" / "fonts"
 
 # Every committed symbology source, for the provenance guard.
@@ -743,9 +746,13 @@ class TestSymbologyFontWiring(unittest.TestCase):
         self.assertIn("spaceWidth = 0.9;", CONFIG_SRC)
         self.assertIn("spaceWidth = 0.5;", CONFIG_SRC)
 
-    def test_the_map_grid_font_is_repointed_at_load_time(self):
+    def test_the_map_grid_font_is_left_to_the_engine_until_the_glyphs_ship(self):
+        # The AEE fonts need the FontToTGA operator step.  Until the glyph
+        # files exist the engine draws no text, so the config must not point
+        # an engine surface at them.
         self.assertIn("class RscMapControl {", CONFIG_SRC)
-        self.assertIn('fontGrid = "AEEFont";', CONFIG_SRC)
+        self.assertNotIn('fontGrid = "AEEFont";', CONFIG_SRC)
+        self.assertNotIn('fontNames = "AEEFont";', CONFIG_SRC)
 
     def test_the_referenced_paths_carry_no_extension(self):
         self.assertIn(
@@ -764,12 +771,16 @@ class TestSymbologyFontWiring(unittest.TestCase):
         self.assertIn("QGVAR(symbologyFont)", SYM_WORLD_SRC)
 
     def test_the_mgrs_readout_uses_the_monospaced_family(self):
-        self.assertIn("AEEFontMono", MGRS_MAP_SRC)
+        self.assertIn("FUNC(mgrsFontFamily)", MGRS_MAP_SRC)
         self.assertIn("QGVAR(symbologyFont)", MGRS_MAP_SRC)
+        self.assertIn("AEEFontMono", MGRS_FONT_SRC)
 
-    def test_the_hud_controls_name_the_aee_families(self):
-        self.assertIn('font = "AEEFont";', RSCTITLES_SRC)
-        self.assertIn('font = "AEEFontMono";', RSCTITLES_SRC)
+    def test_the_hud_controls_use_the_engine_families_until_the_glyphs_ship(self):
+        # Same ceiling: no text renders in a family whose glyph files are
+        # absent, so the HUD controls use engine families for now.
+        self.assertNotIn('font = "AEEFont";', RSCTITLES_SRC)
+        self.assertNotIn('font = "AEEFontMono";', RSCTITLES_SRC)
+        self.assertIn('font = "RobotoCondensed";', RSCTITLES_SRC)
 
     def test_the_ofl_text_and_the_ttf_are_committed_for_each_family(self):
         for family in ("rajdhani", "b612mono"):

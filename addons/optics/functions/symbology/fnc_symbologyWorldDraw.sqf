@@ -35,9 +35,7 @@ GVAR(symbologyWorldEH) = addMissionEventHandler ["Draw3D", {
 
     private _font = "PuristaMedium";
     if (missionNamespace getVariable [QGVAR(symbologyFont), true]) then {
-        if (isClass (configFile >> "CfgFontFamilies" >> "AEEFont")) then {
-            _font = "AEEFont";
-        };
+        _font = [false] call FUNC(mgrsFontFamily);
     };
 
     // ── Rebuild the in-range unit list at most once a second. ────────────
