@@ -1,0 +1,14 @@
+<svg width="200" height="200" version="1.1" viewBox="0 0 200 200" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><title>SO_0151</title>
+<style type="text/css">
+	.st0{fill:#000000;}
+	.st1{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.7087;stroke-miterlimit:10;}
+</style>
+
+<symbol viewBox="-0.7 -0.7 1.4 1.4">
+	<rect x="-.7" y="-.7" width="1.4" height="1.4"/>
+</symbol>
+<g fill="#000000"><path class="st0" d="m175 100a75 75 0 0 0-75-75 75 75 0 0 0-75 75 75 75 0 0 0 75 75 75 75 0 0 0 75-75z" stroke-width="30"/><g transform="matrix(30,0,0,-30,100,100)">
+			<line class="st1" y1="1.8" y2="-1.8"/>
+			<line class="st1" x1="1.8" x2="-1.8"/>
+		</g></g>
+</svg>
