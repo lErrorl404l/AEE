@@ -641,25 +641,52 @@ class TestEyeAdaptInit(unittest.TestCase):
 class TestEyeAdaptState(unittest.TestCase):
     """The published direction, effective tau and time to adapt."""
 
-    def test_settled_is_direction_zero(self):
-        self.assertEqual(run_sqf(ADAPT_STATE, [[0, 0], 0, 1, 2, 120, 400])[0], 0)
+    def test_settled_reports_nothing_pending(self):
+        # A settled eye has no adaptation pending: direction 0, tau 0, time 0.
+        d, tau, t = run_sqf(ADAPT_STATE, [[0, 0], 0, 1, 2, 120, 400])
+        self.assertEqual(d, 0)
+        self.assertEqual(tau, 0)
+        self.assertEqual(t, 0)
+
+    def test_settled_pool_a_hair_above_target_still_reports_nothing(self):
+        # Regression for the RPT defect: a settled eye whose rod pool sits a
+        # floating-point hair above the target flipped the tau comparison to
+        # the 400 s rod dark branch and reported a ~20 minute time to adapt
+        # (adapt=[-1.54151,0.501617,0,1198.29]).  The settled guard must win.
+        target = -1.54151
+        d, tau, t = run_sqf(
+            ADAPT_STATE, [[target, target + 1e-9], target, 1, 2, 120, 400]
+        )
+        self.assertEqual(d, 0)
+        self.assertEqual(tau, 0)
+        self.assertEqual(t, 0)
 
     def test_light_adapting_uses_the_light_tau(self):
         d, tau, t = run_sqf(ADAPT_STATE, [[-2, -2], 2, 1, 2, 120, 400])
         self.assertEqual(d, 1)
         self.assertAlmostEqual(tau, 2.0, places=6)
-        self.assertAlmostEqual(t, 2.0 * LN20, places=4)
+        # delta is 4 log10; the time is tau * ln(delta / settled).
+        self.assertAlmostEqual(t, 2.0 * math.log(4.0 / 0.05), places=4)
 
     def test_dark_adapting_uses_the_rod_tau(self):
         d, tau, t = run_sqf(ADAPT_STATE, [[2, 2], -2, 1, 2, 120, 400])
         self.assertEqual(d, -1)
         self.assertAlmostEqual(tau, 400.0, places=6)
-        self.assertAlmostEqual(t, 400.0 * LN20, places=3)
+        self.assertAlmostEqual(t, 400.0 * math.log(4.0 / 0.05), places=3)
 
     def test_mesopic_level_weights_the_pools(self):
         # Level = 0.5*(-4) + 0.5*(0) = -2, target +2 -> light-adapting.
         d, _tau, _t = run_sqf(ADAPT_STATE, [[-4, 0], 2, 0.5, 2, 120, 400])
         self.assertEqual(d, 1)
+
+    def test_time_to_adapt_falls_as_the_eye_approaches(self):
+        # Regression for the false stuckAdaptation flag: the reported time must
+        # shrink as the remaining gap shrinks, or the monitor's "time did not
+        # fall" test fires on every adapting window.  Same pools, smaller gap.
+        _d, _tau, near = run_sqf(ADAPT_STATE, [[-2, -2], 0, 1, 2, 120, 400])
+        _d, _tau, far = run_sqf(ADAPT_STATE, [[-2, -2], 2, 1, 2, 120, 400])
+        self.assertLess(near, far)
+        self.assertGreater(near, 0)
 
 
 class TestEyeAdaptationTransient(unittest.TestCase):
