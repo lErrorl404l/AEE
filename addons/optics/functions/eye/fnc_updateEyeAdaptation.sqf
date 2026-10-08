@@ -56,7 +56,29 @@ if (!GVAR(eyeAdaptationEnabled)) exitWith {
     };
 };
 
+// The step is the REAL elapsed time between driver ticks.  The driver runs on
+// a 0.1 s PFH, and the scheduler services it at its own cadence, so
+// diag_deltaTime (the FRAME delta) is smaller than the tick interval and would
+// under-integrate the adaptation (the reported eye ran ~8x slower than its
+// taus).  diag_tickTime is the monotonic real clock, so its delta is the true
+// step.  It does NOT move on a skipTime, which the world clock below handles.
+private _now = diag_tickTime;
+private _lastTick = missionNamespace getVariable [QGVAR(eyeLastTick), -1];
 private _dt = (diag_deltaTime max 0.01) min 0.5;
+if ((_lastTick isEqualType 0) && (_lastTick >= 0)) then {
+    _dt = ((_now - _lastTick) max 0.01) min 0.5;
+};
+missionNamespace setVariable [QGVAR(eyeLastTick), _now];
+
+// A time skip (skipTime, setDate, an Eden time change) jumps the world clock
+// (dayTime) while the real clock and the mission `time` do not.  The eye must
+// ARRIVE adapted to the new scene,
+// exactly as at mission start (ADR-007), or it chases the jumped scene over the
+// slow dark tau and the aperture is wrong for minutes.
+private _hour = dayTime;
+private _lastHour = missionNamespace getVariable [QGVAR(eyeLastHour), -1];
+private _skipped = [_lastHour, _hour] call FUNC(eyeTimeSkip);
+missionNamespace setVariable [QGVAR(eyeLastHour), _hour];
 
 private _sample = call FUNC(eyeSampleScene);
 if (_sample isEqualTo []) exitWith {};
@@ -98,6 +120,9 @@ private _xTarget = log (_lumScene max 1e-9);
 private _dSteady = [_lumScene] call FUNC(eyePupilSteady);
 private _dPrev = missionNamespace getVariable [QGVAR(eyePupil), -1];
 if (!(_dPrev isEqualType 0) || _dPrev <= 0) then { _dPrev = _dSteady; };
+// A skip re-seeds the fast pupil branch with the eye, so the first frame after
+// the jump shows the new scene at its adapted diameter, not the old one.
+if (_skipped) then { _dPrev = _dSteady; };
 private _d = [_dPrev, _dSteady, _dt, GVAR(eyePupilTauConstrict), GVAR(eyePupilTauDilate)] call FUNC(eyePupilStep);
 
 // Invert the steady fit to read the luminance the pupil's diameter implies.
@@ -113,8 +138,17 @@ private _xFast = log (3.183 * (10 ^ _logB));
 // initialise dark at noon.
 private _state = missionNamespace getVariable [QGVAR(eyeAdaptState), []];
 private _initialised = missionNamespace getVariable [QGVAR(eyeAdaptInitialised), false];
+private _haveState = (_state isEqualType []) && {(count _state) == 2};
+// A skip invalidates the adapted state: drop it and fall through to the
+// arrive-adapted seed, the same rule the mission start uses (eyeAdaptInit).
+if (_skipped) then {
+    _state = [];
+    _haveState = false;
+    _initialised = false;
+    missionNamespace setVariable [QGVAR(eyeAdaptState), []];
+};
 if (!_initialised) then {
-    if ((_state isEqualType []) && {(count _state) == 2}) then {
+    if (_haveState) then {
         _initialised = true;
     } else {
         if (_rawSceneLux > 0) then {

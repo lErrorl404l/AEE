@@ -3327,6 +3327,13 @@ private _p29Pass = 0;
     // drawStyle survived, both object name sets are AEE-textured and the engine
     // grid lines are off while the numbers return.  It renders nothing.
     execVM "aee_p121_map_legibility_probe.sqf";
+
+    // PHASE 125 lives in aee_p125_eye_time_skip_probe.sqf: the eye adaptation
+    // driver is client-only, so the probe drives the REAL kernels with fixtures
+    // and proves a world-clock skip is detected and the eye re-seeds adapted
+    // (ADR-007), instead of chasing the jumped scene over the slow dark tau.
+    // It renders nothing.
+    execVM "aee_p125_eye_time_skip_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
