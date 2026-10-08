@@ -38,10 +38,15 @@ private _realWeather = missionNamespace getVariable [QEGVAR(core,realWeatherActi
 if (GVAR(icaoReferenceAlt) != 0) then {
     missionNamespace setVariable [QEGVAR(core,referenceAltitude), GVAR(icaoReferenceAlt)];
 } else {
-    missionNamespace setVariable [
-        QEGVAR(core,referenceAltitude),
+    // A dedicated server has no currentUnit, so _posASL arrives empty.  The
+    // terrain query needs a real position: an empty one returns 0 here rather
+    // than reaching getTerrainHeightASL with nothing to sample.
+    private _refAlt = if (count _posASL >= 2) then {
         getTerrainHeightASL (_posASL select [0, 2])
-    ];
+    } else {
+        0
+    };
+    missionNamespace setVariable [QEGVAR(core,referenceAltitude), _refAlt];
 };
 
 if (!_realWeather) then {

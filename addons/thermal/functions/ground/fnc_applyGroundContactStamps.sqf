@@ -66,14 +66,19 @@ if (_isVehicle) then {
     // A parked vehicle (no engine, no movement) still keeps its wheels
     // at tyre temperature; the stamp strength scales with how hot the
     // wheel selection is vs the ground.
-    private _wheelTemp = nil;
-    {
-        if ((["wheel", _x] call BIS_fnc_inString) && {(_selTemps getOrDefault [_key + "_" + _x, nil]) isNotEqualTo nil}) exitWith {
-            _wheelTemp = _selTemps getOrDefault [_key + "_" + _x, nil];
-        };
-    } forEach (selectionNames _obj);
+    // The wheel selection is found in ONE scope: findIf returns the index,
+    // and the temperature is read inside the same block that reads it.  A
+    // value written inside the forEach body would not reach this scope, which
+    // is the defect the MGRS and wildlife cache reads were fixed for.
+    private _wheelNames = selectionNames _obj;
+    private _wheelIdx = _wheelNames findIf {
+        ((["wheel", _x] call BIS_fnc_inString)
+            && {(_selTemps getOrDefault [_key + "_" + _x, nil]) isNotEqualTo nil})
+    };
 
-    if (!isNil "_wheelTemp") then {
+    if (_wheelIdx >= 0) then {
+        // findIf proved the key exists, so the sentinel default is never read.
+        private _wheelTemp = _selTemps getOrDefault [_key + "_" + (_wheelNames select _wheelIdx), -9999];
         private _delta = _wheelTemp - _groundT;
         if (_delta > 5) then {
             // Contact conduction: only a fraction of the tyre delta

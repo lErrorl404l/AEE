@@ -16,7 +16,9 @@ Author: [lErrorl404l](https://github.com/lErrorl404l). Licence: [GPL-2.0-or-late
 - Arma 3
 - [CBA A3](https://github.com/CBATeam/CBA_A3/releases) (latest version)
 
-The core addons are standalone. ACE3 is optional.
+The AEE addons load as one set: `aee_core` calls into the module addons
+(atmosphere, thermal, environmental, and the rest), so do not load `aee_core`
+on its own. The set requires only CBA A3. ACE3 is optional.
 
 ---
 

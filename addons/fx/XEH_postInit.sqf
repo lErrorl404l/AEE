@@ -53,8 +53,11 @@ if (isNil "_fnBlastOverpressure" || isNil "_fnBlastInjury") exitWith {};
     // AEE adds the pressure-channel damage (eardrum, lung) and the
     // tertiary throw.  The player's own ACE pain/hearing integration is
     // the intended consumer; without ACE the values are still published.
-    if (_eardrum > 0.5) then {
-        [_unit, "AEE_blastEardrum", 60] call ace_medical_fnc_addToLog;  // no-op without ACE
+    // ACE3 medical is optional for this addon.  The medical-log function lives
+    // in ace_medical_treatment (not ace_medical), so the guard tests the
+    // function itself: absent ACE leaves it nil and the call would throw.
+    if (_eardrum > 0.5 && {!isNil "ace_medical_treatment_fnc_addToLog"}) then {
+        [_unit, "AEE_blastEardrum", 60] call ace_medical_treatment_fnc_addToLog;
     };
 }, QGVAR(blast)] call EFUNC(core,installPlayerEngineHandler);
 
