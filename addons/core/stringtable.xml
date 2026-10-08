@@ -130,8 +130,8 @@
             <English>Consistency Interval</English>
         </Key>
         <Key ID="STR_AEE_Core_consistencyStrict_Description">
-            <Original>Also warn on an invariant that passes but whose producers are not exactly equal (a drift inside the tolerance). Default off. UNSOURCED.</Original>
-            <English>Also warn on an invariant that passes but whose producers are not exactly equal (a drift inside the tolerance). Default off. UNSOURCED.</English>
+            <Original>Also report an invariant that passes with a drift inside its tolerance and a full comparison. A no-data or out-of-scope row makes no comparison, so it is not reported. Reported at INFO, never a warning. Default off. UNSOURCED.</Original>
+            <English>Also report an invariant that passes with a drift inside its tolerance and a full comparison. A no-data or out-of-scope row makes no comparison, so it is not reported. Reported at INFO, never a warning. Default off. UNSOURCED.</English>
         </Key>
         <Key ID="STR_AEE_Core_consistencyStrict_Name">
             <Original>Strict Consistency</Original>
