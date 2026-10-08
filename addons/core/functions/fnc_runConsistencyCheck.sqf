@@ -80,20 +80,35 @@ private _firstLine = true;
 for "_r" from 0 to ((count _rows) - 1) do {
     private _verdict = _rows select _r;
     private _rowPass = _verdict select 1;
+    private _detail = _verdict select 2;
     private _count = _verdict select 3;
+    private _tolerance = (_table select _r) select 4;
     private _report = [_table select _r, _values, _verdict] call FUNC(consistencyFailureLine);
     private _drift = _report select 1;
-    if ((!_rowPass) || {_strict && _drift > 0}) then {
+    // Strict mode reports a residual: a row that PASSED with a drift inside
+    // its tolerance and a full comparison.  The failure-line drift is the
+    // spread of every present producer, so it is only a "residual" when the
+    // predicate compared those producers.  A no-data row (a missing producer)
+    // made no comparison, and an out-of-scope row (INV-1 in daylight) left the
+    // tolerance, so neither is a residual.  Gating on the tolerance is the
+    // difference between a diagnostic and the WARN flood the operator reported:
+    // without it strict logged every passing row every sample.
+    private _strictResidual = _strict && {_drift > 0} && {_drift <= _tolerance} && {_detail != "no-data"};
+    if ((!_rowPass) || {_strictResidual}) then {
         private _line = _report select 0;
         if (_firstLine) then {
             _line = _line + _healthSuffix;
             _firstLine = false;
         };
         if (!_rowPass) then {
+            // A failing invariant is a warning.
             _disagreeTotal = _disagreeTotal + _count;
             _failures pushBack _line;
+            [_line] call FUNC(consistencyLog);
+        } else {
+            // A passing invariant is informational, never a warning.
+            [_line, "INFO"] call FUNC(consistencyLog);
         };
-        [_line] call FUNC(consistencyLog);
     };
 };
 
