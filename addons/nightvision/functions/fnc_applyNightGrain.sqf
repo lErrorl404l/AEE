@@ -73,8 +73,14 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
 // Create the grain handle on first use.  The registry is idempotent, so a
 // later call returns the live handle instead of stacking a second FilmGrain
 // at the same priority.
+//
+// Priority 2001, not 2000.  The thermal vision stack creates its own FilmGrain
+// at 2000 (fnc_applyThermalVision.sqf), and the engine can hand two creators
+// that ask for one effect type at one priority a SINGLE shared handle.  At a
+// shared handle either teardown destroys the other owner's grain.  The
+// priorities must stay disjoint across every AEE creator.
 if (_hGrain < 0) then {
-    _hGrain = ["nightvision", "FilmGrain", "FilmGrain", 2000, QGVAR(ppHandle_FilmGrain)] call EFUNC(core,createPPEffect);
+    _hGrain = ["nightvision", "FilmGrain", "FilmGrain", 2001, QGVAR(ppHandle_FilmGrain)] call EFUNC(core,createPPEffect);
 };
 if (_hGrain < 0) exitWith {};
 
