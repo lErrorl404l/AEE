@@ -8,34 +8,25 @@
  * (RscDisplayCurator, IDC 50), the Zeus attribute map and the spectator.
  *
  * Two displays carry their own control and are SEPARATE override targets:
- * the strategic map (RscDisplayStrategicMap >> controlsBackground >> Map,
- * an RscMapControl that re-declares its colours) and the Eden editor map
- * (Display3DEN >> Map, which is the ctrlMap class, NOT RscMapControl, so an
- * RscMapControl re-declare does not reach Eden).  This file re-declares the
- * standard palette, the label font and the display levers on those two
- * targets so the palette is consistent.
+ * the strategic map (RscDisplayStrategicMap >> controlsBackground >> Map) and
+ * the Eden editor map (Display3DEN >> Map, the ctrlMap class, NOT
+ * RscMapControl).  Each re-declares the SAME topographic surface as
+ * RscMapControl, from config_mapcolors.hpp, so the palette, the shading
+ * levers and the grid contract reach the main map, the strategic map and the
+ * Eden map alike.  A target that re-declares a field wins for that display.
  *
- * The engine ceiling: a display that re-declares a field wins for that
- * display.  The minimap overrides maxSatelliteAlpha, alphaFade*, the
+ * Engine ceiling: the minimap overrides maxSatelliteAlpha, alphaFade*, the
  * ptsPerSquare* densities, colorSea, colorForest and drawShaded, so the
  * minimap keeps its own sea and forest fill and its satellite fade.
  */
 class RscDisplayStrategicMap {
     class controlsBackground {
         class Map {
-            // The engine numeric grid is removed here too: this control is a
-            // separate override target, so it does not inherit the RscMapControl
-            // grid fields.  AEE draws the MGRS grid instead (ADR-028).
+#include "config_mapcolors.hpp"
+            // Engine numeric LINES off, engine NUMBERS on (ADR-029).
             colorGrid[] = {0, 0, 0, 0};
             colorGridMap[] = {0, 0, 0, 0};
-            sizeExGrid = 0;
-            colorLevels[] = {0.70, 0.48, 0.32, 1};
-            colorMainCountlines[] = {0.55, 0.35, 0.20, 1};
-            colorCountlines[] = {0.70, 0.48, 0.32, 1};
-            colorRoads[] = {0.80, 0.10, 0.10, 1};
-            colorMainRoads[] = {0.70, 0.00, 0.00, 1};
-            colorSea[] = {0.55, 0.70, 0.85, 1};
-            colorForest[] = {0.65, 0.80, 0.60, 1};
+            sizeExGrid = 0.02;
         };
     };
 };
@@ -44,33 +35,9 @@ class RscDisplayStrategicMap {
 // ctrlMapMain and ctrlMapEmpty inherit ctrlMap, so this reaches them.
 class ctrlDefault;
 class ctrlMap: ctrlDefault {
-    // The engine numeric grid is removed here too: the Eden map is ctrlMap, not
-    // RscMapControl, so it needs its own grid fields.  AEE draws the MGRS grid
-    // instead (ADR-028).
+#include "config_mapcolors.hpp"
+    // Engine numeric LINES off, engine NUMBERS on (ADR-029).
     colorGrid[] = {0, 0, 0, 0};
     colorGridMap[] = {0, 0, 0, 0};
-    sizeExGrid = 0;
-    colorLevels[] = {0.70, 0.48, 0.32, 1};
-    colorMainCountlines[] = {0.55, 0.35, 0.20, 1};
-    colorCountlines[] = {0.70, 0.48, 0.32, 1};
-    colorMainCountlinesWater[] = {0.00, 0.50, 0.75, 1};
-    colorCountlinesWater[] = {0.30, 0.60, 0.80, 1};
-    colorRoads[] = {0.80, 0.10, 0.10, 1};
-    colorRoadsFill[] = {0.95, 0.90, 0.80, 1};
-    colorMainRoads[] = {0.70, 0.00, 0.00, 1};
-    colorMainRoadsFill[] = {0.95, 0.90, 0.80, 1};
-    colorRailWay[] = {0.00, 0.00, 0.00, 1};
-    colorPowerLines[] = {0.00, 0.00, 0.00, 1};
-    colorTracks[] = {0.40, 0.30, 0.20, 1};
-    colorTracksFill[] = {0.90, 0.85, 0.75, 1};
-    colorTrails[] = {0.40, 0.30, 0.20, 1};
-    colorTrailsFill[] = {0.90, 0.85, 0.75, 1};
-    colorSea[] = {0.55, 0.70, 0.85, 1};
-    colorForest[] = {0.65, 0.80, 0.60, 1};
-    colorForestBorder[] = {0.00, 0.50, 0.00, 1};
-    colorRocks[] = {0.75, 0.70, 0.60, 1};
-    colorRocksBorder[] = {0.50, 0.45, 0.40, 1};
-    colorBackground[] = {0.90, 0.88, 0.80, 1};
-    maxSatelliteAlpha = 0.35;
-    showCountourInterval = 1;
+    sizeExGrid = 0.02;
 };

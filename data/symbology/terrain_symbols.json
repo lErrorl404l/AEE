@@ -1719,7 +1719,31 @@
     }
   ],
   "map_colours": {
-    "note": "The RscMapControl palette. Relief brown, water blue, vegetation green, roads red and white, per the USGS and FM 21-31 palette. Each value is derived from the standard palette.",
+    "note": "The complete RscMapControl palette. The convention is USGS / FM 21-31 (relief brown, water blue, vegetation green, roads red, built-up black) and the DGIWG register for the water and vegetation tones. USGS and FM name the colours and publish no RGB, and DGIWG 131 (printing colours) is not openly published, so every RGB is AEE's own representation of the named colour, pinned here. Each value names its source in the sources map.",
+    "colorOutside": [
+      0.9,
+      0.88,
+      0.8,
+      1
+    ],
+    "colorInactive": [
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "colorForestTextured": [
+      0.0,
+      0.5,
+      0.0,
+      0.0
+    ],
+    "colorNames": [
+      0.1,
+      0.1,
+      0.1,
+      0.9
+    ],
     "colorLevels": [
       0.7,
       0.48,
@@ -1845,14 +1869,76 @@
       0.88,
       0.8,
       1
-    ]
+    ],
+    "sources": {
+      "colorOutside": "USGS sheet margin is blank; matches colorBackground",
+      "colorInactive": "ENG. Inactive marker tint",
+      "colorForestTextured": "ENG field; DGIWG vegetation green, alpha 0 lets the texture read",
+      "colorNames": "FM s19 name text, near-black; USGS",
+      "colorLevels": "FM s10 relief brown; USGS hypsometric tint",
+      "colorMainCountlines": "FM s10 index contour, dark brown",
+      "colorCountlines": "FM s10 intermediate contour, brown",
+      "colorMainCountlinesWater": "DGIWG water blue, index",
+      "colorCountlinesWater": "DGIWG water blue, intermediate",
+      "colorRoads": "FM s13 road red",
+      "colorRoadsFill": "FM s13 road casing, paper",
+      "colorMainRoads": "FM s13 main road red",
+      "colorMainRoadsFill": "FM s13 main road casing, paper",
+      "colorRailWay": "FM s16 rail black",
+      "colorPowerLines": "FM s16 power line black",
+      "colorTracks": "FM s14 track",
+      "colorTracksFill": "FM s14 track casing",
+      "colorTrails": "FM s15 trail",
+      "colorTrailsFill": "FM s15 trail casing",
+      "colorSea": "DGIWG water blue fill",
+      "colorForest": "FM s11 vegetation green tint",
+      "colorForestBorder": "DGIWG vegetation green",
+      "colorRocks": "FM s11 bare rock tint",
+      "colorRocksBorder": "FM s11 rock border",
+      "colorBackground": "USGS sheet ground, paper cream"
+    }
   },
   "map_display": {
-    "note": "The map display levers. maxSatelliteAlpha fades the baked satellite texture so the vector linework reads. showCountourInterval shows the contour interval label. Both are engine fields; the values are a model choice with no standard.",
-    "maxSatelliteAlpha": 0.35,
+    "note": "Every reachable RscMapControl scalar render field. ENG = the shipped engine default, read from bin_raw/bin/config.cpp:20117 and ui_f_x2/config.cpp:1272. IDEA = the adopted idea of Enhanced Map (2467589125) or BHC Map Contour (1364777346); no mod value, config or texture is copied. Every value names its source in the sources map.",
+    "maxSatelliteAlpha": 0.5,
+    "drawShaded": 0.15,
+    "shadedSea": 1,
     "showCountourInterval": 1,
-    "grade": "UNSOURCED",
-    "source": "A model choice. Prior art BHC Map Contour (maxSatelliteAlpha 0.5) and Enhanced Map (showCountourInterval 1); no standard fixes the value"
+    "sizeExLevel": 0.02,
+    "widthRailWay": 4,
+    "ptsPerSquareSea": 5,
+    "ptsPerSquareCLn": 10,
+    "ptsPerSquareFor": 9,
+    "ptsPerSquareForEdge": 9,
+    "ptsPerSquareRoad": 6,
+    "ptsPerSquareTxt": 20,
+    "ptsPerSquareObj": 9,
+    "alphaFadeStartScale": 2,
+    "alphaFadeEndScale": 2,
+    "sources": {
+      "maxSatelliteAlpha": "IDEA. Enhanced Map 1.0 and BHC Map Contour 0.5; AEE's own 0.5, between the old 0.35 and 1.0",
+      "drawShaded": "IDEA. Enhanced Map hillshade; the field is real (ui_f_x2/config.cpp:50344)",
+      "shadedSea": "IDEA. Enhanced Map water shading",
+      "showCountourInterval": "ENG. Shows the contour interval label",
+      "sizeExLevel": "ENG. Contour elevation label size",
+      "widthRailWay": "ENG. Rail line width",
+      "ptsPerSquareSea": "ENG. Sea texture density",
+      "ptsPerSquareCLn": "ENG. Contour line density",
+      "ptsPerSquareFor": "ENG. Forest density",
+      "ptsPerSquareForEdge": "ENG. Forest edge density",
+      "ptsPerSquareRoad": "ENG. Road density",
+      "ptsPerSquareTxt": "ENG. Label density",
+      "ptsPerSquareObj": "ENG. Object icon density",
+      "alphaFadeStartScale": "ENG. Satellite fade start",
+      "alphaFadeEndScale": "ENG. Satellite fade end"
+    }
+  },
+  "map_fonts": {
+    "note": "The map label and contour-level fonts. The AEE font families ship no glyph files yet, so the map uses the engine's shipped RobotoCondensed.",
+    "fontLevel": "RobotoCondensed",
+    "sources": {
+      "fontLevel": "ENG shipped font, pending the AEE glyph build"
+    }
   },
   "unavailable": []
 }

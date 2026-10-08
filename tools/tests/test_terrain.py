@@ -40,6 +40,9 @@ LOC_SRC = LOC_HPP.read_text(encoding="utf-8")
 OBJ_SRC = OBJ_HPP.read_text(encoding="utf-8")
 COL_SRC = COL_HPP.read_text(encoding="utf-8")
 DISP_SRC = DISP_HPP.read_text(encoding="utf-8")
+MGRS_DRAW = (OPTICS / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
+    encoding="utf-8"
+)
 RUN_TESTS_SRC = (REPO / "tools" / "run_tests.py").read_text(encoding="utf-8")
 TABLE = json.loads(TABLE_JSON.read_text(encoding="utf-8"))
 MANIFEST = json.loads(MANIFEST_JSON.read_text(encoding="utf-8"))
@@ -127,7 +130,9 @@ class TestTerrainLocationConfig(unittest.TestCase):
         }
         self.assertEqual(ICON_LOCATION_CLASSES, set(expected))
         for cls, symbol in expected.items():
-            block = re.search(rf"class {cls} \{{(.*?)\n    \}}", LOC_SRC, re.DOTALL)
+            block = re.search(
+                rf"class {cls}(?::\s*\w+)?\s*\{{(.*?)\n    \}}", LOC_SRC, re.DOTALL
+            )
             self.assertIsNotNone(block, cls)
             self.assertIn(f"{AEE_PREFIX}{symbol}.paa", block.group(1))
 
@@ -152,6 +157,17 @@ class TestTerrainObjectConfig(unittest.TestCase):
         self.assertEqual(len(icons), 26)
         for icon in icons:
             self.assertTrue(icon.startswith(AEE_PREFIX), icon)
+
+    def test_every_object_class_keeps_its_vanilla_visibility_coefficients(self):
+        # The operator directive: take the vanilla class and update it with our
+        # values.  The object icon classes are parentless, so the vanilla
+        # visibility coefficients cannot be inherited; AEE restates them.
+        # Values are the vanilla ui_f ones (ui_f_x2/config.cpp:1402-1609).
+        for cls in sorted(OBJECT_CLASSES):
+            block = re.search(rf"class {cls} \{{(.*?)\n    \}}", OBJ_SRC, re.DOTALL)
+            self.assertIsNotNone(block, cls)
+            self.assertIn("coefMin", block.group(1), cls)
+            self.assertIn("coefMax", block.group(1), cls)
 
 
 class TestTerrainTextures(unittest.TestCase):
@@ -239,7 +255,7 @@ class TestTerrainAlpha(unittest.TestCase):
 class TestTerrainMapColours(unittest.TestCase):
     def test_every_named_colour_matches_the_register(self):
         for field, value in TABLE["map_colours"].items():
-            if field == "note":
+            if field in ("note", "sources"):
                 continue
             self.assertEqual(colour_of(COL_SRC, field), value, field)
 
@@ -280,13 +296,16 @@ class TestTerrainDisplays(unittest.TestCase):
         self.assertIn("class ctrlDefault;", DISP_SRC)
 
     def test_the_eden_map_carries_the_levers_and_the_engine_font(self):
-        m = re.search(r"class ctrlMap[^{]*\{(.*)", DISP_SRC, re.DOTALL)
-        self.assertIsNotNone(m)
-        block = m.group(1)
-        self.assertNotIn('fontGrid = "AEEFont";', block)
-        self.assertNotIn('fontNames = "AEEFont";', block)
-        self.assertIn("maxSatelliteAlpha", block)
-        self.assertIn("showCountourInterval", block)
+        # Every display target carries the SAME render surface.  config.cpp
+        # includes it inside RscMapControl; the strategic map and the Eden map
+        # each include it here, so the palette, the shading levers and the grid
+        # contract reach all three.
+        self.assertIn('#include "config_mapcolors.hpp"', CONFIG_SRC)
+        self.assertEqual(DISP_SRC.count('#include "config_mapcolors.hpp"'), 2)
+        # The AEE font families still ship no glyphs, so no AEE font is set.
+        self.assertNotIn('fontGrid = "AEEFont";', DISP_SRC)
+        self.assertNotIn('fontNames = "AEEFont";', DISP_SRC)
+        self.assertIn("sizeExGrid = 0.02;", DISP_SRC)
 
 
 class TestTerrainCurator(unittest.TestCase):
@@ -333,6 +352,142 @@ class TestTerrainWiring(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             for bad in FORBIDDEN_PROVENANCE:
                 self.assertNotIn(bad, text, f"{path.name}: {bad}")
+
+
+class TestTerrainInheritance(unittest.TestCase):
+    """Every re-declared CfgLocationTypes class restates its vanilla parent, so
+    the engine Empty syntax cannot strip drawStyle or texture (ADR-029).  A bare
+    reopen of a class that has a vanilla parent fails here."""
+
+    # The vanilla parent of every re-declared class, read from the engine config:
+    # Dta/bin.pbo (bin_raw/bin/config.cpp:14800) holds the core graph, ui_f.pbo
+    # (ui_f_x2/config.cpp:81444) adds fakeTown, Area and Flag.
+    LOCATION_PARENT = {
+        "Strategic": "Name",
+        "StrongpointArea": "Strategic",
+        "FlatArea": "Strategic",
+        "FlatAreaCity": "FlatArea",
+        "FlatAreaCitySmall": "FlatAreaCity",
+        "CityCenter": "Strategic",
+        "Airport": "Strategic",
+        "NameMarine": "Name",
+        "NameCityCapital": "Name",
+        "NameCity": "Name",
+        "NameVillage": "Name",
+        "NameLocal": "Name",
+        "Hill": "Name",
+        "ViewPoint": "Hill",
+        "RockArea": "Hill",
+        "BorderCrossing": "Hill",
+        "VegetationBroadleaf": "Hill",
+        "VegetationFir": "Hill",
+        "VegetationPalm": "Hill",
+        "VegetationVineyard": "Hill",
+        "fakeTown": "Name",
+        "Flag": "Hill",
+    }
+    # The three parentless roots: no parent to restate, as ui_f declares them.
+    LOCATION_ROOTS = ("Mount", "Name", "Area")
+
+    def test_every_parented_location_class_restates_its_vanilla_parent(self):
+        for cls, parent in self.LOCATION_PARENT.items():
+            m = re.search(rf"class\s+{cls}\s*:\s*(\w+)\s*\{{", LOC_SRC)
+            self.assertIsNotNone(m, f"{cls} is reopened without its parent")
+            self.assertEqual(m.group(1), parent, cls)
+
+    def test_the_parentless_roots_stay_bare(self):
+        for cls in self.LOCATION_ROOTS:
+            self.assertRegex(LOC_SRC, rf"class\s+{cls}\s*\{{")
+            self.assertIsNone(re.search(rf"class\s+{cls}\s*:", LOC_SRC), cls)
+
+    def test_no_location_class_is_reopened_bare_with_a_vanilla_parent(self):
+        bare = set(re.findall(r"class\s+(\w+)\s*\{", LOC_SRC))
+        offenders = sorted(bare & set(self.LOCATION_PARENT))
+        self.assertEqual(
+            offenders,
+            [],
+            "these classes are reopened bare but have a vanilla parent: "
+            + ", ".join(f"{c}: {self.LOCATION_PARENT[c]}" for c in offenders),
+        )
+
+
+class TestTerrainMgrsContrast(unittest.TestCase):
+    """The AEE MGRS overlay reads against the light topographic ground.  The
+    old light cyan at alpha 0.30 read as grey; the linework and the labels are
+    now dark and high contrast (ADR-029)."""
+
+    def _colours(self, pattern):
+        return [[float(v) for v in m.groups()] for m in re.finditer(pattern, MGRS_DRAW)]
+
+    def test_the_old_faint_cyan_is_gone(self):
+        self.assertNotIn("[0.45, 0.95, 0.95", MGRS_DRAW)
+        self.assertNotIn("[0.60, 1, 1", MGRS_DRAW)
+        self.assertNotIn("[0.75, 1, 1", MGRS_DRAW)
+
+    def test_the_line_colours_are_dark_and_high_contrast(self):
+        colours = self._colours(
+            r"_colour = \[([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+)\]"
+        )
+        self.assertEqual(len(colours), 2, "expected a minor and a major colour")
+        minor, major = colours
+        self.assertLess(max(minor[:3]), 0.2)
+        self.assertGreater(minor[3], 0.4)
+        self.assertLess(max(major[:3]), 0.2)
+        self.assertGreater(major[3], 0.8)
+
+    def test_the_label_colours_are_dark_and_opaque(self):
+        colours = self._colours(
+            r'"", \[([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+)\], '
+            r"(?:getPos _player|getMarkerPos _x|_draw)"
+        )
+        self.assertEqual(len(colours), 3, "player, marker and cursor labels")
+        for r, g, b, a in colours:
+            self.assertLess(max(r, g, b), 0.2)
+            self.assertEqual(a, 1)
+
+
+class TestTerrainRenderSurface(unittest.TestCase):
+    """Every reachable RscMapControl render field is set from a cited value
+    (ADR-029).  The palette, the scalars and the fonts are pinned to the table."""
+
+    def test_every_display_scalar_matches_the_config(self):
+        for field, value in TABLE["map_display"].items():
+            if field in ("note", "sources"):
+                continue
+            m = re.search(rf"\b{re.escape(field)}\s*=\s*([0-9.]+)\s*;", COL_SRC)
+            self.assertIsNotNone(m, field)
+            self.assertEqual(float(m.group(1)), float(value), field)
+
+    def test_every_render_font_matches_the_config(self):
+        for field, value in TABLE["map_fonts"].items():
+            if field in ("note", "sources"):
+                continue
+            self.assertIn(f'{field} = "{value}";', COL_SRC, field)
+
+    def test_every_render_value_names_a_source(self):
+        for group in ("map_colours", "map_display", "map_fonts"):
+            sources = TABLE[group].get("sources", {})
+            for field in TABLE[group]:
+                if field in ("note", "sources"):
+                    continue
+                self.assertIn(field, sources, f"{group}.{field}")
+
+    def test_the_render_surface_covers_water_relief_contours_vegetation_and_rock(self):
+        for field in (
+            "colorSea",
+            "ptsPerSquareSea",
+            "colorLevels",
+            "colorMainCountlines",
+            "colorCountlines",
+            "colorMainCountlinesWater",
+            "colorCountlinesWater",
+            "fontLevel",
+            "sizeExLevel",
+            "colorForest",
+            "colorRocks",
+        ):
+            self.assertRegex(COL_SRC, rf"\b{field}\b", field)
+        self.assertRegex(COL_SRC, r"\bfontLevel\s*=\s*\"[^\"]+\"\s*;")
 
 
 class TestSuiteRegistration(unittest.TestCase):
