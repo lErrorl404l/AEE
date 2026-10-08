@@ -114,3 +114,7 @@ PREPS(symbology,symbologyMarkers);
 PREPS(symbology,symbologyMarkersApply);
 PREPS(symbology,symbologyMarkersRestore);
 PREPS(symbology,symbologyWorldDraw);
+
+// The terrain and map-feature symbols are real public-domain drawings
+// (FM 21-31, USGS) re-textured through config; no SQF kernel is needed.
+// The registry is loaded in XEH_preInit.sqf.

@@ -3267,6 +3267,12 @@ private _p29Pass = 0;
     // marker-type kernel, the marker-colour kernel and the category table).
     // It renders nothing.
     execVM "aee_p111_symbology_probe.sqf";
+    // PHASE 112 lives in aee_p112_terrain_probe.sqf: the terrain layer is a
+    // load-time config re-declare, so the probe reads the merged config (a
+    // location icon, an object icon, the sea fill, the satellite opacity and
+    // the label font) and confirms the terrain registry loaded.  It renders
+    // nothing.
+    execVM "aee_p112_terrain_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

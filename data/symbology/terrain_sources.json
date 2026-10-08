@@ -1,0 +1,254 @@
+{
+  "note": "One REAL public-domain or openly-licensed drawing per terrain symbol. DGIWG Symbol Register graphics are CC BY 2.0 (attribution); FM 21-31 and the USGS sheet are US public domain. AEE does not hand-draw a terrain symbol.",
+  "entries": [
+    {
+      "id": "hill",
+      "file": "hill.png",
+      "concept": "FM 21-31 Figure 040 Contours (relief)",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 040",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "rock",
+      "file": "rock.png",
+      "concept": "SO_0364 RockFormationP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "monument",
+      "file": "monument.png",
+      "concept": "SO_0104 MonumentP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "border_crossing",
+      "file": "border_crossing.png",
+      "concept": "SO_0394 BoundaryMonumentP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "deciduous",
+      "file": "deciduous.png",
+      "concept": "SO_0046 TreeDeciduousP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "coniferous",
+      "file": "coniferous.png",
+      "concept": "SO_0047 TreeEvergreenP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "palm",
+      "file": "palm.png",
+      "concept": "FM 21-31 Figure 080 Nipa (palm)",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 080",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "vineyard",
+      "file": "vineyard.png",
+      "concept": "FM 21-31 Figure 077 Vineyard",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 077",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "brushwood",
+      "file": "brushwood.png",
+      "concept": "SO_0048 BrushA",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "shipwreck",
+      "file": "shipwreck.png",
+      "concept": "SO_0160 WreckAlwaysSubmergedP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "church",
+      "file": "church.png",
+      "concept": "SO_0149 HouseofWorshipTempleNonObstructionIntactP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "chapel",
+      "file": "chapel.png",
+      "concept": "FM 21-31 Figure 161 Church",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 161",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "cross",
+      "file": "cross.png",
+      "concept": "FM 21-31 Figure 178 Cemetery",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 178",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "ruin",
+      "file": "ruin.png",
+      "concept": "SO_0102 RuinsNonObstructionP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "hospital",
+      "file": "hospital.png",
+      "concept": "SO_0151 HospitalNonObstructionIntactP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "radio_tower",
+      "file": "radio_tower.png",
+      "concept": "FM 21-31 Figure 281 Multiple Radio Facilities",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 281",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "water_tower",
+      "file": "water_tower.png",
+      "concept": "SO_0015 TowerWaterTowerP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "lighthouse",
+      "file": "lighthouse.png",
+      "concept": "SO_0080 LighthouseP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "power_plant",
+      "file": "power_plant.png",
+      "concept": "SO_0155 PowerSubstationIntactP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "solar",
+      "file": "solar.png",
+      "concept": "SO_0154 PowerSubstationA",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "wave",
+      "file": "wave.png",
+      "concept": "FM 21-31 Figure 190 Large Masonry Dam",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 190",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "wind",
+      "file": "wind.png",
+      "concept": "SO_0157 WindTurbineP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "fuel_station",
+      "file": "fuel_station.png",
+      "concept": "FM 21-31 Figure 205 Tank (oil, gas, water)",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 205",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "quay",
+      "file": "quay.png",
+      "concept": "FM 21-31 Figure 200 Large Pier, Dock or Wharf",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 200",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "stack",
+      "file": "stack.png",
+      "concept": "SO_0156 SmokestackP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "tourism",
+      "file": "tourism.png",
+      "concept": "SO_0001 AmusementParkAttractionP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "view_tower",
+      "file": "view_tower.png",
+      "concept": "SO_0079 TowerOtherP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "bunker",
+      "file": "bunker.png",
+      "concept": "SO_0330 SurfaceBunkerP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "fortress",
+      "file": "fortress.png",
+      "concept": "SO_0099 FortificationP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "bus_stop",
+      "file": "bus_stop.png",
+      "concept": "FM 21-31 Figure 141 Railroad Station",
+      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 141",
+      "licence": "US Government work, public domain",
+      "grade": "sourced"
+    },
+    {
+      "id": "fountain",
+      "file": "fountain.png",
+      "concept": "SO_0180 FountainP",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    }
+  ],
+  "unavailable": []
+}
