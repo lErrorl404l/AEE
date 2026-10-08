@@ -352,12 +352,21 @@ def write_attribution(pairs: list[tuple[str, dict[str, Any]]]) -> None:
 def check() -> int:
     pairs = entries()
     stale: list[str] = []
+    # The marker source SVGs are a local pull cache (tools/build_symbology_catalogue.py
+    # --pull /tmp/opencode/nato-symbols); the repository commits the rendered .paa,
+    # not the sources.  Re-render and compare only when the cache is present.
+    # Without it the texture compare cannot run, and a librsvg version difference
+    # changes the render anyway, so a byte compare is meaningful only on the
+    # machine that cut the textures.  The skip is reported, never silent.
+    sources_present = SOURCE_ROOT.is_dir()
     with tempfile.TemporaryDirectory() as tmp:
         tmp_dir = Path(tmp)
         for name, entry in pairs:
             committed = MARKERS_OUT / f"{name}.paa"
             if not committed.is_file():
                 stale.append(f"{name}.paa is missing")
+                continue
+            if not sources_present:
                 continue
             tga = tmp_dir / f"{name}.tga"
             _rasterise(_source_path(entry)).save(tga)
@@ -376,7 +385,13 @@ def check() -> int:
         for line in stale:
             print(f"  {line}")
         return 1
-    print(f"symbology catalogue: {len(pairs)} markers fresh")
+    if sources_present:
+        print(f"symbology catalogue: {len(pairs)} markers fresh")
+    else:
+        print(
+            f"symbology catalogue: {len(pairs)} markers present, config and "
+            f"attribution fresh; texture re-render skipped ({SOURCE_ROOT} absent)"
+        )
     return 0
 
 
