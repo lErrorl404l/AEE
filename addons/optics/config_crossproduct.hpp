@@ -1150,6 +1150,34 @@
         side = 2;
         scope = 2;
     };
+    class AEE_XFL_APP_6_Mod_Bicycle: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Mod Bicycle";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mod_Bicycle.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mod_Bicycle.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_APP_6_Mod_Bicycle: AEE_MarkerBase {
+        name = "AEE Hostile Land APP-6 Mod Bicycle";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mod_Bicycle.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Mod_Bicycle.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_APP_6_Mod_Bicycle: AEE_MarkerBase {
+        name = "AEE Neutral Land APP-6 Mod Bicycle";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mod_Bicycle.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Mod_Bicycle.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_APP_6_Mod_Bicycle: AEE_MarkerBase {
+        name = "AEE Unknown Land APP-6 Mod Bicycle";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mod_Bicycle.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Mod_Bicycle.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_XFL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mod Motorcycle";
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Mod_Motorcycle.paa";
@@ -1203,6 +1231,34 @@
         name = "AEE Unknown Land APP-6 Modifier 01";
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XFL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Modifier 01 Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_01_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Modifier_01_Transparent.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
+        name = "AEE Hostile Land APP-6 Modifier 01 Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_01_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Modifier_01_Transparent.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
+        name = "AEE Neutral Land APP-6 Modifier 01 Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_01_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Modifier_01_Transparent.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
+        name = "AEE Unknown Land APP-6 Modifier 01 Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Modifier_01_Transparent.paa";
         side = 2;
         scope = 2;
     };
@@ -2130,6 +2186,34 @@
         side = 2;
         scope = 2;
     };
+    class AEE_XFL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6 Wheeled Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_Wheeled_Transparent.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
+        name = "AEE Hostile Land APP-6 Wheeled Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6_Wheeled_Transparent.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
+        name = "AEE Neutral Land APP-6 Wheeled Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6_Wheeled_Transparent.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
+        name = "AEE Unknown Land APP-6 Wheeled Transparent";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Transparent.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_Wheeled_Transparent.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_XFL_APP_6_battalion: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 battalion";
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6_battalion.paa";
@@ -2211,6 +2295,146 @@
         name = "AEE Unknown Land APP-6 regiment";
         icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_regiment.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6_regiment.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XFL_Enemy_Headquarters: AEE_MarkerBase {
+        name = "AEE Friend Land Enemy Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Enemy_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Enemy_Headquarters.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_Enemy_Headquarters: AEE_MarkerBase {
+        name = "AEE Hostile Land Enemy Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Enemy_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Enemy_Headquarters.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_Enemy_Headquarters: AEE_MarkerBase {
+        name = "AEE Neutral Land Enemy Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Enemy_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Enemy_Headquarters.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_Enemy_Headquarters: AEE_MarkerBase {
+        name = "AEE Unknown Land Enemy Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Enemy_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Enemy_Headquarters.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XFL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Brigade Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_Group_Combine.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_Group_Combine.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
+        name = "AEE Hostile Land Friendly Brigade Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_Group_Combine.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_Group_Combine.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
+        name = "AEE Neutral Land Friendly Brigade Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_Group_Combine.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_Group_Combine.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_Friendly_Brigade_Group_Combine: AEE_MarkerBase {
+        name = "AEE Unknown Land Friendly Brigade Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_Group_Combine.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_Group_Combine.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XFL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Brigade or Wing Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_or_Wing_Combi.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Brigade_or_Wing_Combi.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
+        name = "AEE Hostile Land Friendly Brigade or Wing Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_or_Wing_Combi.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Brigade_or_Wing_Combi.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
+        name = "AEE Neutral Land Friendly Brigade or Wing Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_or_Wing_Combi.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Brigade_or_Wing_Combi.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_Friendly_Brigade_or_Wing_Combi: AEE_MarkerBase {
+        name = "AEE Unknown Land Friendly Brigade or Wing Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_or_Wing_Combi.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Brigade_or_Wing_Combi.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XFL_Friendly_Headquarters: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Headquarters.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_Friendly_Headquarters: AEE_MarkerBase {
+        name = "AEE Hostile Land Friendly Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Headquarters.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_Friendly_Headquarters: AEE_MarkerBase {
+        name = "AEE Neutral Land Friendly Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Headquarters.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_Friendly_Headquarters: AEE_MarkerBase {
+        name = "AEE Unknown Land Friendly Headquarters";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Headquarters.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Headquarters.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XFL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
+        name = "AEE Friend Land Friendly Regiment or Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Regiment_or_Group_Com.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_Friendly_Regiment_or_Group_Com.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
+        name = "AEE Hostile Land Friendly Regiment or Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Regiment_or_Group_Com.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_Friendly_Regiment_or_Group_Com.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
+        name = "AEE Neutral Land Friendly Regiment or Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Regiment_or_Group_Com.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_Friendly_Regiment_or_Group_Com.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_Friendly_Regiment_or_Group_Com: AEE_MarkerBase {
+        name = "AEE Unknown Land Friendly Regiment or Group Combined Manoeuvre Arms";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Regiment_or_Group_Com.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_Friendly_Regiment_or_Group_Com.paa";
         side = 2;
         scope = 2;
     };

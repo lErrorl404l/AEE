@@ -53,7 +53,14 @@ AFFIL_LETTER = {
     "Unspecified": "V",
 }
 AFFIL_SIDE = {"Friend": 1, "Hostile": 0, "Neutral": 2, "Unknown": 2, "Unspecified": 2}
-DIM_LETTER = {"Land": "L", "Air/Space": "A", "Sea Surface": "S"}
+DIM_LETTER = {
+    "Land": "L",
+    "Air/Space": "A",
+    "Sea Surface": "S",
+    "Subsurface": "U",
+    "Installation": "I",
+    "Equipment": "E",
+}
 
 
 def load() -> list[dict[str, Any]]:

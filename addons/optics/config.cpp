@@ -65,14 +65,15 @@ class CfgMarkerClasses {
     };
 };
 
-// The affiliation colours.  APP-6(C) Table 1-4: friend cyan, hostile red,
-// neutral green, unknown yellow.  The engine classes carry the same display
-// colours; AEE re-declares them so the standard is the single source.
+// The affiliation colours.  MIL-STD-2525D Table XVI (unfilled): friend cyan,
+// hostile red, neutral green, unknown yellow, civilian magenta.  The engine
+// classes carry the same display colours; AEE re-declares them so the standard
+// is the single source.
 class CfgMarkerColors {
     class ColorWEST { color[] = {0, 1, 1, 1}; };
     class ColorEAST { color[] = {1, 0, 0, 1}; };
     class ColorGUER { color[] = {0, 1, 0, 1}; };
-    class ColorCIV { color[] = {0, 1, 0, 1}; };
+    class ColorCIV { color[] = {1, 0, 1, 1}; };
     class ColorUNKNOWN { color[] = {1, 1, 0, 1}; };
 };
 
@@ -95,6 +96,11 @@ class CfgMarkers {
     // the four affiliation frames AEE draws from the APP-6 geometry, generated
     // by tools/gen_symbology_crossproduct.py.  Do not edit by hand.
 #include "config_crossproduct.hpp"
+
+    // The MIL-STD-2525 function glyphs the pulled catalogue does not hold,
+    // rendered from the standard taxonomy by tools/gen_symbology_taxonomy.py.
+    // Do not edit by hand.
+#include "config_taxonomy.hpp"
 
     // Friendly family (side 1).
     class AEE_b_inf: AEE_MarkerBase {
