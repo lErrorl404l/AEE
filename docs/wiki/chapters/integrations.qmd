@@ -30,6 +30,29 @@ extensions: stock ACE3 defines and reads neither.
 
 Verified against: ACE3 master.
 
+### compat_ace3 direction split
+
+AEE owns by declaration and load order, not by force (ADR-027). Every function
+in `compat_ace3` declares a direction. An **OWNERSHIP CLAIM** means AEE is the
+declared authority and the host stands down: the weather bridge disables ACE3's
+own simulation. An **ADAPTATION** means the host owns the subsystem and AEE
+publishes into the host's public API: the medical bridge and the two physiology
+resolvers. `fnc_dumpState` is diagnostics: it reads AEE state only and touches
+no host API. The split is audited by `tools/gen_compat_directions.py --check`;
+a function with no declared direction fails the gate.
+
+<!-- BEGIN GENERATED: compat_ace3 directions -->
+
+| Function | Direction | Domain | Host surface | Why |
+|---|---|---|---|---|
+| `fnc_dumpState` | diagnostics | diagnostics | none | Reads AEE state and the registry counts only. It touches no host API, so it is neither an ownership claim nor an adaptation. |
+| `fnc_getAceItemMass` | ADAPTATION | physiology | `aee_physiology_massResolvers` | ACE owns its item classnames and their mass. AEE registers a resolver into its own physiology mass-resolver registry, which aee_core reads. The core never names ACE; the direction inverts onto the AEE registry. |
+| `fnc_integrateKestrel` | OWNERSHIP CLAIM | weather | `ace_weather_enabled`, `ace_weather_windSimulation`, `ace_weather_currentTemperature`, `ace_weather_currentHumidity`, `ace_weather_currentOvercast` | AEE owns the weather simulation. It disables ACE3's own weather tick (ace_weather_enabled = false, re-asserted each tick) and publishes AEE state into the ace_weather_current* variables ACE consumers read. The host stands down. |
+| `fnc_integrateMedical` | ADAPTATION | medical | `ace_medical_status_fnc_addMedicationAdjustment`, `ace_medical_status_fnc_setCardiacArrestState`, `ace_medical_fnc_addDamageToUnit` | ACE owns medical vitals. AEE maps its WBGT, dehydration and heat-exposure state onto ACE's public medical API. AEE takes over no ACE function; it publishes into the host's API. |
+| `fnc_isAceMedicalItem` | ADAPTATION | physiology | `aee_physiology_categoryResolvers` | ACE marks its own medical items. AEE registers a category classifier into its own registry, which aee_core reads. The core never names ACE. |
+
+<!-- END GENERATED: compat_ace3 directions -->
+
 ## compat_acm
 
 compat_acm normalises `aee_core_cbrnPersistence` to a 0..1 contamination

@@ -75,6 +75,9 @@ lint: lint-parity
 	python3 tools/validation/validate_terrain_provenance.py || rc=1; \
 	python3 tools/gen_terrain_catalogue.py --check || rc=1; \
 	python3 tools/gen_app6_catalogue.py --check || rc=1; \
+	python3 tools/gen_compat_directions.py --check || rc=1; \
+	python3 tools/gen_ownership_sentinels.py --check || rc=1; \
+	python3 tools/gen_extension_contract.py --check || rc=1; \
 	python3 tools/validation/gen_wildlife_ecology.py --check || rc=1; \
 	python3 tools/validation/validate_wildlife_ecology.py || rc=1; \
 	if [ $$rc -ne 0 ]; then echo "LINT: one or more checks FAILED"; fi; \

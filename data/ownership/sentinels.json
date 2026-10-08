@@ -1,0 +1,105 @@
+{
+  "note": "One declared property per engine class AEE owns. tools/gen_ownership_sentinels.py emits addons/core/data/ownership_sentinels.sqf from this file. fnc_dumpState reads each live value and reports a mismatch when the value is not AEE's, which detects the silent loss where another mod loaded after AEE and won the config merge. The 'evidence' string must appear in 'source' so the expected value stays tied to the code. The world lighting sentinel reads CfgWorlds>>CAWorld>>Lighting, where AEE declares starEmissivity; the top-level DefaultLighting is shadowed by a later-loading world addon and is deliberately not used.",
+  "sentinels": [
+    {
+      "id": "env-world-lighting",
+      "addon": "environmental",
+      "path": ["CfgWorlds", "CAWorld", "Lighting"],
+      "property": "starEmissivity",
+      "type": "number",
+      "expected": 25,
+      "source": "addons/environmental/config.cpp",
+      "evidence": "class Lighting: DefaultLighting {"
+    },
+    {
+      "id": "core-sand-cloudlet",
+      "addon": "core",
+      "path": ["CfgCloudlets", "AEE_SandCloud"],
+      "property": "interval",
+      "type": "number",
+      "expected": 0.005,
+      "source": "addons/core/config.cpp",
+      "evidence": "interval = 0.005;"
+    },
+    {
+      "id": "core-snow-cloudlet",
+      "addon": "core",
+      "path": ["CfgCloudlets", "AEE_SnowCloud"],
+      "property": "interval",
+      "type": "number",
+      "expected": 0.01,
+      "source": "addons/core/config.cpp",
+      "evidence": "interval = 0.01;"
+    },
+    {
+      "id": "fx-supersonic-cloudlet",
+      "addon": "fx",
+      "path": ["CfgCloudlets", "AEE_SupersonicTrace"],
+      "property": "particleFSNtieth",
+      "type": "number",
+      "expected": 1,
+      "source": "addons/fx/config.cpp",
+      "evidence": "particleFSNtieth = 1;"
+    },
+    {
+      "id": "thermal-tws-noise",
+      "addon": "thermal",
+      "path": ["CfgWeapons", "optic_tws", "ItemInfo", "OpticsModes", "TWS"],
+      "property": "thermalNoise",
+      "type": "array",
+      "expected": [0.05],
+      "source": "addons/thermal/generated/ThermalOptics.hpp",
+      "evidence": "thermalNoise[] = {0.05};"
+    },
+    {
+      "id": "thermal-tws-resolution",
+      "addon": "thermal",
+      "path": ["CfgWeapons", "optic_tws", "ItemInfo", "OpticsModes", "TWS"],
+      "property": "thermalResolution",
+      "type": "array",
+      "expected": [640, 480],
+      "source": "addons/thermal/generated/ThermalOptics.hpp",
+      "evidence": "thermalResolution[] = {640, 480};"
+    },
+    {
+      "id": "marker-color-aee",
+      "addon": "optics",
+      "path": ["CfgMarkerColors", "ColorAEE"],
+      "property": "color",
+      "type": "array",
+      "expected": [1, 1, 1, 1],
+      "source": "addons/optics/config.cpp",
+      "evidence": "class ColorAEE { color[] = {1, 1, 1, 1}; };"
+    },
+    {
+      "id": "marker-base-size",
+      "addon": "optics",
+      "path": ["CfgMarkers", "AEE_MarkerBase"],
+      "property": "size",
+      "type": "number",
+      "expected": 32,
+      "source": "addons/optics/config.cpp",
+      "evidence": "size = 32;"
+    },
+    {
+      "id": "map-color-levels",
+      "addon": "optics",
+      "path": ["RscMapControl"],
+      "property": "colorLevels",
+      "type": "array",
+      "expected": [0.7, 0.48, 0.32, 1],
+      "source": "addons/optics/config_mapcolors.hpp",
+      "evidence": "colorLevels[] = {0.70, 0.48, 0.32, 1};"
+    },
+    {
+      "id": "mobility-mbt-mass",
+      "addon": "mobility",
+      "path": ["CfgVehicles", "B_MBT_01_cannon_F"],
+      "property": "mass",
+      "type": "number",
+      "expected": 62273.044493,
+      "source": "addons/mobility/generated/CfgVehicles.hpp",
+      "evidence": "mass = 62273.044493;"
+    }
+  ]
+}

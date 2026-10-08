@@ -20,13 +20,19 @@ The safe patterns, both accepted here:
   1. a non-nil default:  getVariable [key, 0]  (no nil is ever bound)
   2. an isNil guard before any read:  if (isNil "_x") then { ... }
 
-The test scans every SQF file in the repository, strips comments, finds each
-`private _v = <expression containing nil>`, and fails if `_v` is read before
-an `isNil "_v"` guard.  It carries a positive and a negative control so a
-broken matcher cannot pass vacuously.
+The test scans every TRACKED SQF file in the repository, strips comments,
+finds each `private _v = <expression containing nil>`, and fails if `_v` is
+read before an `isNil "_v"` guard.  It carries positive and negative controls
+so a broken matcher cannot pass vacuously.
+
+The scan is limited to tracked source.  An untracked clone of another mod
+dropped in the repo root (for example a `cba/` checkout left by a research
+study) is not AEE's source, and its own defensive style must not be judged by
+this gate.  Git tracking is the boundary: only what AEE ships is scanned.
 """
 
 import re
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -156,11 +162,43 @@ def find_nil_reads(text: str) -> list[tuple[int, str, str, str]]:
     return findings
 
 
+def _git_tracked_sqf() -> set[str] | None:
+    """Return the tracked *.sqf paths (repo-relative, POSIX), or None.
+
+    None means git could not run, so the caller falls back to a filesystem
+    walk.  An untracked clone placed in the repo root is absent from the
+    tracked set and is therefore never scanned.
+    """
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(REPO), "ls-files", "-z", "--", "*.sqf"],
+            capture_output=True,
+            check=True,
+            text=True,
+        ).stdout
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return {p for p in out.split("\0") if p}
+
+
+def _scannable(rel: str, tracked: set[str]) -> bool:
+    """True when a repo-relative *.sqf path is tracked and not in SKIP_DIRS."""
+    if rel not in tracked:
+        return False
+    return not any(part in SKIP_DIRS for part in Path(rel).parts)
+
+
 def _sqf_files():
-    for path in sorted(REPO.rglob("*.sqf")):
-        if any(part in SKIP_DIRS for part in path.relative_to(REPO).parts):
-            continue
-        yield path
+    tracked = _git_tracked_sqf()
+    if tracked is None:
+        for path in sorted(REPO.rglob("*.sqf")):
+            if any(part in SKIP_DIRS for part in path.relative_to(REPO).parts):
+                continue
+            yield path
+        return
+    for rel in sorted(tracked):
+        if _scannable(rel, tracked):
+            yield REPO / rel
 
 
 class TestNilDefaultedPrivateIsGuarded(unittest.TestCase):
@@ -185,6 +223,20 @@ class TestNilDefaultedPrivateIsGuarded(unittest.TestCase):
 
 class TestDetectorControls(unittest.TestCase):
     """Positive and negative controls: the matcher is not passing vacuously."""
+
+    def test_untracked_foreign_clone_is_not_scanned(self):
+        # A tracked AEE file is scannable; an untracked foreign clone in the
+        # repo root (the cba/ incident) is not, because it is not in the
+        # tracked set.
+        tracked = {"addons/core/functions/fnc_ok.sqf"}
+        self.assertTrue(_scannable("addons/core/functions/fnc_ok.sqf", tracked))
+        self.assertFalse(_scannable("cba/addons/optics/fnc_currentOptic.sqf", tracked))
+        self.assertFalse(_scannable("cba/addons/settings/fnc_priority.sqf", tracked))
+
+    def test_skip_dirs_remain_excluded(self):
+        tracked = {".hemttout/build/generated.sqf", "releases/legacy.sqf"}
+        self.assertFalse(_scannable(".hemttout/build/generated.sqf", tracked))
+        self.assertFalse(_scannable("releases/legacy.sqf", tracked))
 
     def test_the_live_defect_shape_is_detected(self):
         bad = (
