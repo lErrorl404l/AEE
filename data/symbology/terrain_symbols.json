@@ -1165,7 +1165,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 16,
       "font": null,
       "textSize": 0.05,
       "shadow": 0,
@@ -1199,7 +1199,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 16,
       "font": null,
       "textSize": 0.05,
       "shadow": 0,
@@ -1216,7 +1216,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 18,
       "font": null,
       "textSize": 0.05,
       "shadow": 0,
@@ -1233,7 +1233,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 18,
       "font": null,
       "textSize": 0.05,
       "shadow": 0,
@@ -1250,7 +1250,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 18,
       "font": null,
       "textSize": 0.05,
       "shadow": 0,
@@ -1267,7 +1267,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 16,
       "font": null,
       "textSize": 0.05,
       "shadow": 0,
@@ -1337,7 +1337,7 @@
         1,
         1
       ],
-      "size": 10,
+      "size": 7,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Bush; DGIWG SO_0048 BrushA"
@@ -1367,7 +1367,7 @@
         1,
         1
       ],
-      "size": 10,
+      "size": 12,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl SmallTree; DGIWG SO_0046 TreeDeciduousP"
@@ -1397,7 +1397,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl busstop; DGIWG SO_0153 CheckpointP"
@@ -1412,7 +1412,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl fuelstation; DGIWG SO_0146 MotorVehicleStationP"
@@ -1427,7 +1427,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl hospital; DGIWG SO_0151 HospitalNonObstructionIntactP"
@@ -1442,7 +1442,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl church; DGIWG SO_0140 ChristianChurchP"
@@ -1457,7 +1457,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl lighthouse; DGIWG SO_0080 LighthouseP"
@@ -1472,7 +1472,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl power; DGIWG SO_0155 PowerSubstationP"
@@ -1487,7 +1487,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl powersolar; DGIWG SO_0001 SolarPanelP"
@@ -1502,7 +1502,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl powerwave; DGIWG SO_0005 ElectricPowerStationP"
@@ -1517,7 +1517,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl powerwind; DGIWG SO_0157 WindTurbineP"
@@ -1532,7 +1532,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl quay; USGS (2005) pier symbol, PD, PD"
@@ -1547,7 +1547,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl transmitter; DGIWG SO_0600 TowerCommunicationNonObstructionP"
@@ -1562,7 +1562,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl watertower; DGIWG SO_0015 TowerWaterTowerP"
@@ -1577,7 +1577,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Cross; DGIWG SO_0124 CemeteryChristianP"
@@ -1592,7 +1592,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Chapel; DGIWG SO_0619 ChristianChapelNonObstructionIntactA"
@@ -1607,7 +1607,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 24,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Shipwreck; DGIWG SO_0160 WreckP"
@@ -1652,7 +1652,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 11,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Fountain; DGIWG SO_0180 FountainP"
@@ -1667,7 +1667,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 16,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Ruin; DGIWG SO_0102 RuinsNonObstructionP"
@@ -1682,7 +1682,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 16,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Stack; DGIWG SO_0156 SmokestackP"
@@ -1697,7 +1697,7 @@
         1,
         1
       ],
-      "size": 12,
+      "size": 16,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl Tourism; DGIWG SO_0001 AmusementParkAttractionP"
@@ -1712,7 +1712,7 @@
         1,
         1
       ],
-      "size": 14,
+      "size": 16,
       "importance": 1,
       "grade": "derived",
       "source": "RscMapControl ViewTower; DGIWG SO_0079 TowerOtherP"
