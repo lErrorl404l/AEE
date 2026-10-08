@@ -8,10 +8,14 @@ Surface, Subsurface and Space branches).  This generator fills that gap.
 
 The source is /tmp/opencode/symbol_army_rows.tsv: the full MIL-STD-2525C
 enumeration (877 rows, name + SIDC + hierarchy).  Each row's SIDC names one
-function.  The geometry is rendered by milsymbol (MIT), an open-source
-implementation of MIL-STD-2525 / APP-6, in monochrome so the engine marker
-colour tints the texture.  The symbol designs are the standard's own geometry
-(public domain); the milsymbol renderer is credited in ATTRIBUTION.md.
+function.  A row whose function a real catalogue image covers is skipped: a real
+image is always preferred over a render.  Only the remaining gaps are rendered
+by milsymbol (MIT), an open-source implementation of MIL-STD-2525 / APP-6, in
+COLOUR (milsymbol's standard palette: the affiliation frame colour, the black
+glyph and the standard fills).  Every rendered marker is recorded as a render
+(source_kind "render"), so a real image is never confused with a render.  The
+symbol designs are the standard's own geometry (public domain); the milsymbol
+renderer is credited in ATTRIBUTION.md.
 
 A row whose function is already covered by the pulled catalogue is skipped, so
 the real pulled image wins and this layer holds only the gap.
@@ -180,10 +184,8 @@ def _rasterise(svg: Path) -> Any:
         )
         if r.returncode != 0:
             raise SystemExit(f"rsvg-convert failed for {svg.name}\n{r.stderr}")
-        art = Image.open(png).convert("RGBA")
-    white = Image.new("RGBA", art.size, (255, 255, 255, 0))
-    white.putalpha(art.getchannel("A"))
-    return white
+        # Keep milsymbol's own colours; only the transparent background stays.
+        return Image.open(png).convert("RGBA")
 
 
 def convert(tga: Path, paa: Path) -> None:
@@ -229,17 +231,26 @@ def build() -> int:
         tmp_dir = Path(tmp)
         render_svgs(items, tmp_dir)
 
-        def one(it: dict[str, Any]) -> None:
-            svg = tmp_dir / f"{it['marker']}.svg"
+        def one(it: dict[str, Any]) -> tuple[dict[str, Any], bool]:
+            art = _rasterise(tmp_dir / f"{it['marker']}.svg")
+            # A category row with no glyph renders empty.  Skip it, so no
+            # invisible marker is registered.
+            if art.getchannel("A").getextrema()[1] < 16:
+                return (it, False)
             tga = tmp_dir / f"{it['marker']}.tga"
-            _rasterise(svg).save(tga)
+            art.save(tga)
             convert(tga, MARKERS_OUT / f"{it['marker']}.paa")
+            return (it, True)
 
         with ThreadPoolExecutor(max_workers=8) as pool:
-            list(pool.map(one, items))
-    write_config(items)
-    write_taxonomy(items)
-    print(f"taxonomy: {len(items)} markers written")
+            results = list(pool.map(one, items))
+    kept = [it for it, ok in results if ok]
+    degenerate = [it["marker"] for it, ok in results if not ok]
+    write_config(kept)
+    write_taxonomy(kept, degenerate)
+    print(
+        f"taxonomy: {len(kept)} markers written, {len(degenerate)} degenerate skipped"
+    )
     return 0
 
 
@@ -270,7 +281,7 @@ def write_config(items: list[dict[str, Any]]) -> None:
     CONFIG_OUT.write_text(render_config(items), encoding="utf-8")
 
 
-def write_taxonomy(items: list[dict[str, Any]]) -> None:
+def render_taxonomy(items: list[dict[str, Any]], degenerate: list[str]) -> str:
     entries = [
         {
             "marker": it["marker"],
@@ -282,47 +293,65 @@ def write_taxonomy(items: list[dict[str, Any]]) -> None:
             "source": "MIL-STD-2525 taxonomy (symbol.army 2525C enumeration)",
             "renderer": "milsymbol (MIT)",
             "licence": "MIT renderer; standard geometry is public domain",
+            # A render, not a real image.  Every entry here is one; a real
+            # catalogue image is preferred and skips this layer.
+            "source_kind": "render",
         }
         for it in items
     ]
-    TAXONOMY_OUT.write_text(
-        json.dumps(
-            {
-                "source": str(TSV),
-                "count": len(entries),
-                "entries": entries,
-            },
-            indent=1,
-        ),
-        encoding="utf-8",
+    return json.dumps(
+        {
+            "source": str(TSV),
+            "count": len(entries),
+            "render_count": len(entries),
+            "real_image_count": 0,
+            "degenerate": degenerate,
+            "entries": entries,
+        },
+        indent=1,
     )
+
+
+def write_taxonomy(items: list[dict[str, Any]], degenerate: list[str]) -> None:
+    TAXONOMY_OUT.write_text(render_taxonomy(items, degenerate), encoding="utf-8")
 
 
 def check() -> int:
     items = plan()
     stale: list[str] = []
+    kept: list[dict[str, Any]] = []
+    degenerate: list[str] = []
     with tempfile.TemporaryDirectory() as tmp:
         tmp_dir = Path(tmp)
         render_svgs(items, tmp_dir)
         for it in items:
+            art = _rasterise(tmp_dir / f"{it['marker']}.svg")
             committed = MARKERS_OUT / f"{it['marker']}.paa"
+            if art.getchannel("A").getextrema()[1] < 16:
+                degenerate.append(it["marker"])
+                if committed.is_file():
+                    stale.append(f"{it['marker']}.paa is a degenerate render")
+                continue
+            kept.append(it)
             if not committed.is_file():
                 stale.append(f"{it['marker']}.paa is missing")
                 continue
             tga = tmp_dir / f"{it['marker']}.tga"
-            _rasterise(tmp_dir / f"{it['marker']}.svg").save(tga)
+            art.save(tga)
             fresh = tmp_dir / f"{it['marker']}.paa"
             convert(tga, fresh)
             if committed.read_bytes() != fresh.read_bytes():
                 stale.append(f"{it['marker']}.paa is stale")
-    if CONFIG_OUT.read_text(encoding="utf-8") != render_config(items):
+    if CONFIG_OUT.read_text(encoding="utf-8") != render_config(kept):
         stale.append("config_taxonomy.hpp is stale")
+    if TAXONOMY_OUT.read_text(encoding="utf-8") != render_taxonomy(kept, degenerate):
+        stale.append("app6_taxonomy.json is stale")
     if stale:
         print(f"taxonomy: FAIL ({len(stale)})")
         for line in stale:
             print(f"  {line}")
         return 1
-    print(f"taxonomy: {len(items)} markers fresh")
+    print(f"taxonomy: {len(kept)} markers fresh, {len(degenerate)} degenerate")
     return 0
 
 

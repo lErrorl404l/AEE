@@ -21,9 +21,9 @@ Each produced texture has two layers.
     from fnc_symbolIcon.sqf.  The per-marker source is reported by --table.
 
 The AEE kernels are evaluated through tools/tests/sqf_lite.py, so the texture
-and the drawn symbol share one source of truth.  The result is white on
-transparent, so the engine marker colour tints the texture the way it tints
-the vanilla NATO markers.
+and the drawn symbol share one source of truth.  The frame is drawn in the
+affiliation colour and the glyph in black, on a transparent background, so the
+texture carries the colour and the engine tint is neutral.
 
 Run:  python3 tools/gen_symbology_markers.py
       python3 tools/gen_symbology_markers.py --check
@@ -85,7 +85,15 @@ VANILLA_GLYPHS = frozenset(
 FAMILY_AFFILIATION = {"b": "friend", "o": "hostile", "n": "neutral", "u": "unknown"}
 SIZE = 64
 STROKE = 3
-WHITE = (255, 255, 255, 255)
+# The glyph is black (APP-6).  The frame carries the affiliation colour, so the
+# texture keeps its own colours and the engine tint stays neutral.
+INK = (0, 0, 0, 255)
+AFFIL_RGB = {
+    "friend": (0, 0, 255),
+    "hostile": (255, 0, 0),
+    "neutral": (0, 175, 0),
+    "unknown": (255, 255, 128),
+}
 
 # The AEE class category -> the public-domain APP-6 function glyph file under
 # src/.  The match is by function.  A category that is absent here has no
@@ -146,12 +154,17 @@ def _inner_box() -> tuple[float, float, float, float]:
     return x0, y0, x1, y1
 
 
-def _stroke_polyline(draw: Any, points: list[list[float]], closed: bool) -> None:
+def _stroke_polyline(
+    draw: Any,
+    points: list[list[float]],
+    closed: bool,
+    colour: tuple[int, int, int, int] = INK,
+) -> None:
     pixel = [_px(point[0], point[1]) for point in points]
     if closed and len(pixel) > 2:
         pixel = pixel + [pixel[0]]
     if len(pixel) > 1:
-        draw.line(pixel, fill=WHITE, width=STROKE, joint="curve")
+        draw.line(pixel, fill=colour, width=STROKE, joint="curve")
 
 
 def _rasterise_glyph(svg_path: Path) -> Any:
@@ -193,9 +206,9 @@ def _rasterise_glyph(svg_path: Path) -> Any:
         rgba = Image.open(out).convert("RGBA")
 
     mask = rgba.getchannel("A")
-    white = Image.new("RGBA", rgba.size, (255, 255, 255, 0))
-    white.putalpha(mask)
-    return white
+    glyph = rgba.copy()
+    glyph.putalpha(mask)
+    return glyph
 
 
 def _composite_pd_glyph(image: Any, svg_path: Path) -> None:
@@ -220,7 +233,7 @@ def _draw_aee_glyph(draw: Any, category: str) -> None:
             ax = axes[0] * 0.5 * (SIZE - 1)
             ay = axes[1] * 0.5 * (SIZE - 1)
             draw.ellipse(
-                [cx - ax, cy - ay, cx + ax, cy + ay], outline=WHITE, width=STROKE
+                [cx - ax, cy - ay, cx + ax, cy + ay], outline=INK, width=STROKE
             )
         elif kind == "poly":
             _stroke_polyline(draw, points, closed=True)
@@ -235,7 +248,7 @@ def render(affiliation: str, dimension: str, category: str, path: Path) -> None:
     draw = ImageDraw.Draw(image)
 
     for polyline in run_sqf(FRAME_KERNEL, [affiliation, dimension], {}):
-        _stroke_polyline(draw, polyline, closed=True)
+        _stroke_polyline(draw, polyline, closed=True, colour=AFFIL_RGB[affiliation])
 
     svg_name = PD_GLYPH.get(category)
     if svg_name is not None:

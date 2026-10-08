@@ -248,10 +248,94 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
+        name = "AEE Friend Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
+        name = "AEE Friend Air/Space Ground Track - Unit - Combat - Aviation - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
+        name = "AEE Friend Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio_3.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio_3.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
+        name = "AEE Friend Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Friendly Framed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FE_Ground_Track_Equipment_Ground_Ve.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FE_Ground_Track_Equipment_Ground_Ve.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
+        name = "AEE Friend Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Friendly Unframed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FI_Ground_Track_Installation_Milita: AEE_MarkerBase {
+        name = "AEE Friend Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FI_Ground_Track_Installation_Milita.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FI_Ground_Track_Installation_Milita.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Friend Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FI_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FI_Ground_Track_Unit_Combat_Service.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FL_AFD_AIR: AEE_MarkerBase {
         name = "AEE Friend Land AFD AIR";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_AIR.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_AIR.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_AFD_EQP_SRF: AEE_MarkerBase {
+        name = "AEE Friend Land AFD EQP+SRF";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_EQP_SRF.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_EQP_SRF.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_AFD_GND: AEE_MarkerBase {
+        name = "AEE Friend Land AFD GND";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_GND.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_GND.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_AFD_INS: AEE_MarkerBase {
+        name = "AEE Friend Land AFD INS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_INS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_INS.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_AFD_SUB: AEE_MarkerBase {
+        name = "AEE Friend Land AFD SUB";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_SUB.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_SUB.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_AFD_UNK: AEE_MarkerBase {
+        name = "AEE Friend Land AFD UNK";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_UNK.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_AFD_UNK.paa";
         side = 1;
         scope = 2;
     };
@@ -829,6 +913,20 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FL_APP_6A_Field_positions: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6A Field positions";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6A_Field_positions.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6A_Field_positions.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_APP_6a_Armour: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6a Armour";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6a_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_APP_6a_Armour.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FL_FRD_AIR: AEE_MarkerBase {
         name = "AEE Friend Land FRD AIR";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_AIR.paa";
@@ -836,10 +934,38 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FL_FRD_EQP_SRF: AEE_MarkerBase {
+        name = "AEE Friend Land FRD EQP+SRF";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_EQP_SRF.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_EQP_SRF.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_FRD_GND: AEE_MarkerBase {
+        name = "AEE Friend Land FRD GND";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_GND.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_GND.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_FRD_INS: AEE_MarkerBase {
+        name = "AEE Friend Land FRD INS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_INS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_INS.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FL_FRD_SUB: AEE_MarkerBase {
         name = "AEE Friend Land FRD SUB";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_SUB.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_SUB.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_FRD_UNK: AEE_MarkerBase {
+        name = "AEE Friend Land FRD UNK";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_UNK.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_FRD_UNK.paa";
         side = 1;
         scope = 2;
     };
@@ -2502,6 +2628,69 @@
         side = 1;
         scope = 2;
     };
+    class AEE_FL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat - Air Defence - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Air_Def.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Air_Def.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat - Anti-Armour - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat - Armour - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Armour.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Enginee.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Enginee.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat - Engineer - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat - Field Artillery - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Field_A.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Field_A.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat Service Support - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Service.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat Service Support - Supply - Class III - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Service_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Service_2.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_FL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
+        name = "AEE Friend Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Friendly";
+        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Support.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Ground_Track_Unit_Combat_Support.paa";
+        side = 1;
+        scope = 2;
+    };
     class AEE_FS_Friendly_Sea_Surface_Unit: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Sea Surface Unit";
         icon = "\z\aee\addons\optics\data\markers\AEE_FS_Friendly_Sea_Surface_Unit.paa";
@@ -2618,6 +2807,27 @@
         name = "AEE Hostile Air/Space Enemy Air or Space Unit - Solid";
         icon = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_or_Space_Unit_Solid.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_HA_Enemy_Air_or_Space_Unit_Solid.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
+        name = "AEE Hostile Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
+        name = "AEE Hostile Air/Space Ground Track - Unit - Combat - Aviation - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
+        name = "AEE Hostile Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio_3.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio_3.paa";
         side = 0;
         scope = 2;
     };
@@ -2782,6 +2992,34 @@
         side = 0;
         scope = 2;
     };
+    class AEE_HE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
+        name = "AEE Hostile Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Hostile Framed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HE_Ground_Track_Equipment_Ground_Ve.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HE_Ground_Track_Equipment_Ground_Ve.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
+        name = "AEE Hostile Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Hostile Unframed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HI_Ground_Track_Installation_Milita: AEE_MarkerBase {
+        name = "AEE Hostile Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HI_Ground_Track_Installation_Milita.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HI_Ground_Track_Installation_Milita.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Hostile Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HI_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HI_Ground_Track_Unit_Combat_Service.paa";
+        side = 0;
+        scope = 2;
+    };
     class AEE_HL_Enemy_Headquarters: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Headquarters";
         icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Headquarters.paa";
@@ -2828,6 +3066,104 @@
         name = "AEE Hostile Land Enemy Unit - Solid";
         icon = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_Solid.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_HL_Enemy_Unit_Solid.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat - Air Defence - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Air_Def.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Air_Def.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat - Anti-Armour - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat - Armour - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Armour.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Enginee.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Enginee.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat - Engineer - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat - Field Artillery - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Field_A.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Field_A.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat Service Support - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Service.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat Service Support - Supply - Class III - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Service_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Service_2.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
+        name = "AEE Hostile Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Hostile";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Support.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Ground_Track_Unit_Combat_Support.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_HOS_AIR: AEE_MarkerBase {
+        name = "AEE Hostile Land HOS AIR";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_AIR.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_AIR.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_HOS_GND_EQP_SRF: AEE_MarkerBase {
+        name = "AEE Hostile Land HOS GND+EQP+SRF";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_GND_EQP_SRF.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_GND_EQP_SRF.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_HOS_INS: AEE_MarkerBase {
+        name = "AEE Hostile Land HOS INS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_INS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_INS.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_HOS_SUB: AEE_MarkerBase {
+        name = "AEE Hostile Land HOS SUB";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_SUB.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_SUB.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_HL_HOS_UNK: AEE_MarkerBase {
+        name = "AEE Hostile Land HOS UNK";
+        icon = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_UNK.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_HL_HOS_UNK.paa";
         side = 0;
         scope = 2;
     };
@@ -4231,6 +4567,27 @@
         side = 0;
         scope = 2;
     };
+    class AEE_NA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
+        name = "AEE Neutral Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
+        name = "AEE Neutral Air/Space Ground Track - Unit - Combat - Aviation - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
+        name = "AEE Neutral Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio_3.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio_3.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_NA_Neutral_Air_Unit: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Air Unit";
         icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Air_Unit.paa";
@@ -4375,6 +4732,132 @@
         name = "AEE Neutral Air/Space Neutral Unit Unmanned Aerial Vehicles";
         icon = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
+        name = "AEE Neutral Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Neutral Framed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NE_Ground_Track_Equipment_Ground_Ve.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NE_Ground_Track_Equipment_Ground_Ve.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
+        name = "AEE Neutral Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Neutral Unframed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NI_Ground_Track_Installation_Milita: AEE_MarkerBase {
+        name = "AEE Neutral Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NI_Ground_Track_Installation_Milita.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NI_Ground_Track_Installation_Milita.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Neutral Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NI_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NI_Ground_Track_Unit_Combat_Service.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat - Air Defence - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Air_Def.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Air_Def.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat - Anti-Armour - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat - Armour - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Armour.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Enginee.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Enginee.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat - Engineer - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat - Field Artillery - Howitzer+Gun - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Field_A.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Field_A.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat Service Support - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Service.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat Service Support - Supply - Class III - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Service_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Service_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
+        name = "AEE Neutral Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Neutral";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Support.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Ground_Track_Unit_Combat_Support.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_NEU_AIR: AEE_MarkerBase {
+        name = "AEE Neutral Land NEU AIR";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_AIR.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_AIR.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_NEU_GND_EQP_SRF: AEE_MarkerBase {
+        name = "AEE Neutral Land NEU GND+EQP+SRF";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_GND_EQP_SRF.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_GND_EQP_SRF.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_NEU_INS: AEE_MarkerBase {
+        name = "AEE Neutral Land NEU INS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_INS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_INS.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_NEU_SUB: AEE_MarkerBase {
+        name = "AEE Neutral Land NEU SUB";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_SUB.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_SUB.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_NL_NEU_UNK: AEE_MarkerBase {
+        name = "AEE Neutral Land NEU UNK";
+        icon = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_UNK.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_NL_NEU_UNK.paa";
         side = 2;
         scope = 2;
     };
@@ -5309,6 +5792,27 @@
         side = 2;
         scope = 2;
     };
+    class AEE_UA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
+        name = "AEE Unknown Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
+        name = "AEE Unknown Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
+        name = "AEE Unknown Air/Space Ground Track - Unit - Combat - Aviation - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio_3.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio_3.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_UA_Unknown_Aligned_Unit_Aviation: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Unknown Aligned Unit Aviation";
         icon = "\z\aee\addons\optics\data\markers\AEE_UA_Unknown_Aligned_Unit_Aviation.paa";
@@ -5352,9 +5856,51 @@
         scope = 2;
     };
     class AEE_UE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
-        name = "AEE Unknown Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Unknown Unframed";
+        name = "AEE Unknown Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Unknown Framed";
         icon = "\z\aee\addons\optics\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
+        name = "AEE Unknown Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Unknown Unframed";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UI_Ground_Track_Installation_Milita: AEE_MarkerBase {
+        name = "AEE Unknown Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UI_Ground_Track_Installation_Milita.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UI_Ground_Track_Installation_Milita.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Unknown Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UI_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UI_Ground_Track_Unit_Combat_Service.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat - Air Defence - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Air_Def.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Air_Def.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat - Anti-Armour - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Anti_Ar.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat - Armour - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Armour.paa";
         side = 2;
         scope = 2;
     };
@@ -5369,6 +5915,69 @@
         name = "AEE Unknown Land Ground Track - Unit - Combat - Engineer - Unknown";
         icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee_2.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat - Field Artillery - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Field_A.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Field_A.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat Service Support - Supply - Class III - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Service.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Service.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat Service Support - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Service_2.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Service_2.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
+        name = "AEE Unknown Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Unknown";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Support.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Ground_Track_Unit_Combat_Support.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_UNK_AIR: AEE_MarkerBase {
+        name = "AEE Unknown Land UNK AIR";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_AIR.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_AIR.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_UNK_GND_EQP_SRF: AEE_MarkerBase {
+        name = "AEE Unknown Land UNK GND+EQP+SRF";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_GND_EQP_SRF.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_GND_EQP_SRF.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_UNK_INS: AEE_MarkerBase {
+        name = "AEE Unknown Land UNK INS";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_INS.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_INS.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_UNK_SUB: AEE_MarkerBase {
+        name = "AEE Unknown Land UNK SUB";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_SUB.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_SUB.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_UL_UNK_UNK: AEE_MarkerBase {
+        name = "AEE Unknown Land UNK UNK";
+        icon = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_UNK.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_UL_UNK_UNK.paa";
         side = 2;
         scope = 2;
     };

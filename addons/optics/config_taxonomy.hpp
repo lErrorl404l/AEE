@@ -3,34 +3,6 @@
 // rendered from the standard taxonomy by milsymbol (MIT).  The symbol
 // designs are the standard's own geometry (public domain).
 
-    class AEE_FL_Warfighting_Symbols: AEE_MarkerBase {
-        name = "AEE Friend Land Warfighting Symbols";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Warfighting_Symbols.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Warfighting_Symbols.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HL_Warfighting_Symbols: AEE_MarkerBase {
-        name = "AEE Hostile Land Warfighting Symbols";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Warfighting_Symbols.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Warfighting_Symbols.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NL_Warfighting_Symbols: AEE_MarkerBase {
-        name = "AEE Neutral Land Warfighting Symbols";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Warfighting_Symbols.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Warfighting_Symbols.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UL_Warfighting_Symbols: AEE_MarkerBase {
-        name = "AEE Unknown Land Warfighting Symbols";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Warfighting_Symbols.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Warfighting_Symbols.paa";
-        side = 2;
-        scope = 2;
-    };
     class AEE_FP_Satellite: AEE_MarkerBase {
         name = "AEE Friend Space Satellite";
         icon = "\z\aee\addons\optics\data\markers\AEE_FP_Satellite.paa";
@@ -3083,34 +3055,6 @@
         side = 2;
         scope = 2;
     };
-    class AEE_FL_Howitzer_Gun: AEE_MarkerBase {
-        name = "AEE Friend Land Howitzer/Gun";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Howitzer_Gun.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Howitzer_Gun.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HL_Howitzer_Gun: AEE_MarkerBase {
-        name = "AEE Hostile Land Howitzer/Gun";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Howitzer_Gun.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Howitzer_Gun.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NL_Howitzer_Gun: AEE_MarkerBase {
-        name = "AEE Neutral Land Howitzer/Gun";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Howitzer_Gun.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Howitzer_Gun.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UL_Howitzer_Gun: AEE_MarkerBase {
-        name = "AEE Unknown Land Howitzer/Gun";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Howitzer_Gun.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Howitzer_Gun.paa";
-        side = 2;
-        scope = 2;
-    };
     class AEE_FL_Self_Propelled: AEE_MarkerBase {
         name = "AEE Friend Land Self-Propelled";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_Self_Propelled.paa";
@@ -4623,34 +4567,6 @@
         side = 2;
         scope = 2;
     };
-    class AEE_FL_Signal_Unit: AEE_MarkerBase {
-        name = "AEE Friend Land Signal Unit";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Signal_Unit.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Signal_Unit.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HL_Signal_Unit: AEE_MarkerBase {
-        name = "AEE Hostile Land Signal Unit";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Signal_Unit.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Signal_Unit.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NL_Signal_Unit: AEE_MarkerBase {
-        name = "AEE Neutral Land Signal Unit";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Signal_Unit.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Signal_Unit.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UL_Signal_Unit: AEE_MarkerBase {
-        name = "AEE Unknown Land Signal Unit";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Signal_Unit.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Signal_Unit.paa";
-        side = 2;
-        scope = 2;
-    };
     class AEE_FL_Area: AEE_MarkerBase {
         name = "AEE Friend Land Area";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_Area.paa";
@@ -5012,34 +4928,6 @@
         name = "AEE Unknown Land Relay";
         icon = "\z\aee\addons\optics\data\markers\AEE_UL_Relay.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UL_Relay.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_FL_Signal_Support: AEE_MarkerBase {
-        name = "AEE Friend Land Signal Support";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Signal_Support.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Signal_Support.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HL_Signal_Support: AEE_MarkerBase {
-        name = "AEE Hostile Land Signal Support";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Signal_Support.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Signal_Support.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NL_Signal_Support: AEE_MarkerBase {
-        name = "AEE Neutral Land Signal Support";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Signal_Support.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Signal_Support.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UL_Signal_Support: AEE_MarkerBase {
-        name = "AEE Unknown Land Signal Support";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Signal_Support.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Signal_Support.paa";
         side = 2;
         scope = 2;
     };
@@ -5435,34 +5323,6 @@
         side = 2;
         scope = 2;
     };
-    class AEE_FL_Medical_Treatment_Facility: AEE_MarkerBase {
-        name = "AEE Friend Land Medical Treatment Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Medical_Treatment_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Medical_Treatment_Facility.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HL_Medical_Treatment_Facility: AEE_MarkerBase {
-        name = "AEE Hostile Land Medical Treatment Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Medical_Treatment_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Medical_Treatment_Facility.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NL_Medical_Treatment_Facility: AEE_MarkerBase {
-        name = "AEE Neutral Land Medical Treatment Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Medical_Treatment_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Medical_Treatment_Facility.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UL_Medical_Treatment_Facility: AEE_MarkerBase {
-        name = "AEE Unknown Land Medical Treatment Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Medical_Treatment_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Medical_Treatment_Facility.paa";
-        side = 2;
-        scope = 2;
-    };
     class AEE_FL_Veterinary: AEE_MarkerBase {
         name = "AEE Friend Land Veterinary";
         icon = "\z\aee\addons\optics\data\markers\AEE_FL_Veterinary.paa";
@@ -5544,34 +5404,6 @@
         name = "AEE Unknown Land Class II";
         icon = "\z\aee\addons\optics\data\markers\AEE_UL_Class_II.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UL_Class_II.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_FL_Class_III: AEE_MarkerBase {
-        name = "AEE Friend Land Class III";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FL_Class_III.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FL_Class_III.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HL_Class_III: AEE_MarkerBase {
-        name = "AEE Hostile Land Class III";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HL_Class_III.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HL_Class_III.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NL_Class_III: AEE_MarkerBase {
-        name = "AEE Neutral Land Class III";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NL_Class_III.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NL_Class_III.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UL_Class_III: AEE_MarkerBase {
-        name = "AEE Unknown Land Class III";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UL_Class_III.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UL_Class_III.paa";
         side = 2;
         scope = 2;
     };
@@ -6692,34 +6524,6 @@
         name = "AEE Unknown Equipment Grenade Launcher";
         icon = "\z\aee\addons\optics\data\markers\AEE_UE_Grenade_Launcher.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UE_Grenade_Launcher.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_FE_Howitzer: AEE_MarkerBase {
-        name = "AEE Friend Equipment Howitzer";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FE_Howitzer.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FE_Howitzer.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HE_Howitzer: AEE_MarkerBase {
-        name = "AEE Hostile Equipment Howitzer";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HE_Howitzer.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HE_Howitzer.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NE_Howitzer: AEE_MarkerBase {
-        name = "AEE Neutral Equipment Howitzer";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NE_Howitzer.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NE_Howitzer.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UE_Howitzer: AEE_MarkerBase {
-        name = "AEE Unknown Equipment Howitzer";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UE_Howitzer.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UE_Howitzer.paa";
         side = 2;
         scope = 2;
     };
@@ -9047,34 +8851,6 @@
         side = 2;
         scope = 2;
     };
-    class AEE_FI_Installation: AEE_MarkerBase {
-        name = "AEE Friend Installation Installation";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FI_Installation.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FI_Installation.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HI_Installation: AEE_MarkerBase {
-        name = "AEE Hostile Installation Installation";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HI_Installation.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HI_Installation.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NI_Installation: AEE_MarkerBase {
-        name = "AEE Neutral Installation Installation";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NI_Installation.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NI_Installation.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UI_Installation: AEE_MarkerBase {
-        name = "AEE Unknown Installation Installation";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UI_Installation.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UI_Installation.paa";
-        side = 2;
-        scope = 2;
-    };
     class AEE_FI_Raw_Material_Production_Storag: AEE_MarkerBase {
         name = "AEE Friend Installation Raw Material Production / Storage";
         icon = "\z\aee\addons\optics\data\markers\AEE_FI_Raw_Material_Production_Storag.paa";
@@ -9831,34 +9607,6 @@
         side = 2;
         scope = 2;
     };
-    class AEE_FI_Engineering_Equipment_Producti: AEE_MarkerBase {
-        name = "AEE Friend Installation Engineering Equipment Production";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FI_Engineering_Equipment_Producti.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FI_Engineering_Equipment_Producti.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HI_Engineering_Equipment_Producti: AEE_MarkerBase {
-        name = "AEE Hostile Installation Engineering Equipment Production";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HI_Engineering_Equipment_Producti.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HI_Engineering_Equipment_Producti.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NI_Engineering_Equipment_Producti: AEE_MarkerBase {
-        name = "AEE Neutral Installation Engineering Equipment Production";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NI_Engineering_Equipment_Producti.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NI_Engineering_Equipment_Producti.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UI_Engineering_Equipment_Producti: AEE_MarkerBase {
-        name = "AEE Unknown Installation Engineering Equipment Production";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UI_Engineering_Equipment_Producti.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UI_Engineering_Equipment_Producti.paa";
-        side = 2;
-        scope = 2;
-    };
     class AEE_FI_Chem_Bio_Warfare_Prod: AEE_MarkerBase {
         name = "AEE Friend Installation Chem & Bio Warfare Prod.";
         icon = "\z\aee\addons\optics\data\markers\AEE_FI_Chem_Bio_Warfare_Prod.paa";
@@ -10080,34 +9828,6 @@
         name = "AEE Unknown Installation Transport Facility";
         icon = "\z\aee\addons\optics\data\markers\AEE_UI_Transport_Facility.paa";
         texture = "\z\aee\addons\optics\data\markers\AEE_UI_Transport_Facility.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_FI_Medical_Facility: AEE_MarkerBase {
-        name = "AEE Friend Installation Medical Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_FI_Medical_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_FI_Medical_Facility.paa";
-        side = 1;
-        scope = 2;
-    };
-    class AEE_HI_Medical_Facility: AEE_MarkerBase {
-        name = "AEE Hostile Installation Medical Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_HI_Medical_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_HI_Medical_Facility.paa";
-        side = 0;
-        scope = 2;
-    };
-    class AEE_NI_Medical_Facility: AEE_MarkerBase {
-        name = "AEE Neutral Installation Medical Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_NI_Medical_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_NI_Medical_Facility.paa";
-        side = 2;
-        scope = 2;
-    };
-    class AEE_UI_Medical_Facility: AEE_MarkerBase {
-        name = "AEE Unknown Installation Medical Facility";
-        icon = "\z\aee\addons\optics\data\markers\AEE_UI_Medical_Facility.paa";
-        texture = "\z\aee\addons\optics\data\markers\AEE_UI_Medical_Facility.paa";
         side = 2;
         scope = 2;
     };

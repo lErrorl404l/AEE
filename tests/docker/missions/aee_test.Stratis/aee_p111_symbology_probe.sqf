@@ -1,9 +1,10 @@
 // PHASE 111: the NATO/OPFOR symbology kernels on the live world.
 //
 // The map and world marker layers exist only on a client, so the probe drives
-// the REAL pure kernels with fixtures: the palette (Table 1-4 and the OPFOR
-// swap), the marker-type kernel, the marker-colour kernel and the category
-// table.  It renders nothing and calls no engine draw command.
+// the REAL pure kernels with fixtures: the palette (neutral, because every
+// texture carries its own colour), the marker-type kernel, the marker-colour
+// kernel and the category table.  It renders nothing and calls no engine draw
+// command.
 //
 // Emits one [P111] PASS/FAIL line.
 
@@ -19,12 +20,12 @@ private _pass = 0;
 private _fail = 0;
 private _notes = [];
 
-// 1. the Table 1-4 palette: friend cyan, hostile red, neutral green, unknown yellow
-private _nato = [
-    ["friend", [0, 1, 1, 1]],
-    ["hostile", [1, 0, 0, 1]],
-    ["neutral", [0, 1, 0, 1]],
-    ["unknown", [1, 1, 0, 1]]
+// 1. the draw tint is NEUTRAL: the texture carries the affiliation colour
+private _neutral = [
+    ["friend", [1, 1, 1, 1]],
+    ["hostile", [1, 1, 1, 1]],
+    ["neutral", [1, 1, 1, 1]],
+    ["unknown", [1, 1, 1, 1]]
 ];
 {
     _x params ["_aff", "_want"];
@@ -35,16 +36,16 @@ private _nato = [
         _fail = _fail + 1;
         _notes pushBack format ["palette %1 NATO=%2 want %3", _aff, _got, _want];
     };
-} forEach _nato;
+} forEach _neutral;
 
-// 2. the OPFOR palette swaps friend and hostile
+// 2. the palette no longer changes the tint (the colour lives in the texture)
 private _friendOpfor = ["friend", "OPFOR"] call _fnPalette;
 private _hostileOpfor = ["hostile", "OPFOR"] call _fnPalette;
-if (_friendOpfor isEqualTo [1, 0, 0, 1] && {_hostileOpfor isEqualTo [0, 1, 1, 1]}) then {
+if (_friendOpfor isEqualTo [1, 1, 1, 1] && {_hostileOpfor isEqualTo [1, 1, 1, 1]}) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
-    _notes pushBack format ["OPFOR swap unexpected: friend=%1 hostile=%2", _friendOpfor, _hostileOpfor];
+    _notes pushBack format ["OPFOR tint unexpected: friend=%1 hostile=%2", _friendOpfor, _hostileOpfor];
 };
 
 // 3. a hostile armour symbol is the real o_armor marker type
@@ -56,13 +57,13 @@ if (_armorType isEqualTo "AEE_o_armor") then {
     _notes pushBack format ["hostile armour marker type unexpected: %1", _armorType];
 };
 
-// 4. the marker colour class: hostile red, friend blue under NATO, swapped under OPFOR
+// 4. the marker colour class is NEUTRAL (ColorAEE) for every affiliation
 private _natoHostile = ["hostile", "NATO"] call _fnColour;
 private _natoFriend = ["friend", "NATO"] call _fnColour;
 private _opforFriend = ["friend", "OPFOR"] call _fnColour;
 private _opforHostile = ["hostile", "OPFOR"] call _fnColour;
-if (_natoHostile isEqualTo "ColorEAST" && {_natoFriend isEqualTo "ColorWEST"}
-    && {_opforFriend isEqualTo "ColorEAST"} && {_opforHostile isEqualTo "ColorWEST"}) then {
+if (_natoHostile isEqualTo "ColorAEE" && {_natoFriend isEqualTo "ColorAEE"}
+    && {_opforFriend isEqualTo "ColorAEE"} && {_opforHostile isEqualTo "ColorAEE"}) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;

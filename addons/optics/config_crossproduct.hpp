@@ -2298,6 +2298,34 @@
         side = 2;
         scope = 2;
     };
+    class AEE_XFL_APP_6a_Armour: AEE_MarkerBase {
+        name = "AEE Friend Land APP-6a Armour";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6a_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XFL_APP_6a_Armour.paa";
+        side = 1;
+        scope = 2;
+    };
+    class AEE_XHL_APP_6a_Armour: AEE_MarkerBase {
+        name = "AEE Hostile Land APP-6a Armour";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6a_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XHL_APP_6a_Armour.paa";
+        side = 0;
+        scope = 2;
+    };
+    class AEE_XNL_APP_6a_Armour: AEE_MarkerBase {
+        name = "AEE Neutral Land APP-6a Armour";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6a_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XNL_APP_6a_Armour.paa";
+        side = 2;
+        scope = 2;
+    };
+    class AEE_XUL_APP_6a_Armour: AEE_MarkerBase {
+        name = "AEE Unknown Land APP-6a Armour";
+        icon = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6a_Armour.paa";
+        texture = "\z\aee\addons\optics\data\markers\AEE_XUL_APP_6a_Armour.paa";
+        side = 2;
+        scope = 2;
+    };
     class AEE_XFL_Enemy_Headquarters: AEE_MarkerBase {
         name = "AEE Friend Land Enemy Headquarters";
         icon = "\z\aee\addons\optics\data\markers\AEE_XFL_Enemy_Headquarters.paa";
