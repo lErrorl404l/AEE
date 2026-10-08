@@ -383,6 +383,12 @@ class TestSymbolMarkerColor(unittest.TestCase):
             with self.subTest(palette=pal):
                 self.assertEqual(marker_color("friend", pal), "ColorAEE")
 
+    def test_the_param_type_sample_is_a_string(self):
+        # The rest of the tree uses [""] as the string sample, not ["Auto"].
+        src = MARKER_COLOR_KERNEL.read_text(encoding="utf-8")
+        self.assertIn('["_palette", "NATO", [""]]', src)
+        self.assertNotIn('["Auto"]', src)
+
 
 class TestSymbolResolve(unittest.TestCase):
     """fnc_symbolResolve, executed: inputs -> marker type and colour."""
@@ -577,6 +583,14 @@ class TestSymbologyMarkersContract(unittest.TestCase):
     def test_the_engine_indicators_are_suppressed_where_allowed(self):
         self.assertIn("disableMapIndicators [true, true, true, true]", SYM_APPLY_SRC)
 
+    def test_the_engine_indicators_are_restored_on_close(self):
+        # disableMapIndicators is a persistent LOCAL effect, not scoped to the
+        # map display, so the map close must reverse it or the engine
+        # indicators stay hidden for the rest of the session.
+        self.assertIn(
+            "disableMapIndicators [false, false, false, false]", SYM_RESTORE_SRC
+        )
+
     def test_the_mission_markers_are_converted_locally(self):
         self.assertIn("allMapMarkers", SYM_APPLY_SRC)
         self.assertIn("setMarkerTypeLocal", SYM_APPLY_SRC)
@@ -661,6 +675,18 @@ class TestSymbologyWorldDrawContract(unittest.TestCase):
     def test_the_worker_calls_the_resolver(self):
         self.assertIn("FUNC(symbolResolve)", SYM_WORLD_SRC)
 
+    def test_the_palette_is_resolved_before_the_resolver(self):
+        # "Auto" must resolve to NATO/OPFOR before the resolver calls, as the
+        # map layer does, so the 3D layer and the map layer pass the same
+        # palette.
+        self.assertIn("_resolvedPalette", SYM_WORLD_SRC)
+        self.assertIn(
+            '["NATO", "OPFOR"] select (_friendly isEqualTo "EAST")', SYM_WORLD_SRC
+        )
+        self.assertIn("_resolvedPalette, _playerDimension", SYM_WORLD_SRC)
+        self.assertIn("_resolvedPalette, _dimension", SYM_WORLD_SRC)
+        self.assertIn("_spec select 0, _resolvedPalette", SYM_WORLD_SRC)
+
 
 class TestHudMarkersFrameContract(unittest.TestCase):
     """fnc_hudMarkers draws the real marker texture in front of its label."""
@@ -677,6 +703,15 @@ class TestHudMarkersFrameContract(unittest.TestCase):
     def test_the_texture_is_gated_on_the_symbology_setting(self):
         self.assertIn("symbologyEnabled", HUD_MARKERS_SRC)
 
+    def test_the_affiliation_is_computed_against_the_palette_side(self):
+        # Without the friendly side the third argument defaults to WEST, so
+        # an EAST player read every marker against WEST.
+        self.assertIn("call FUNC(symbologyPaletteFriendly)", HUD_MARKERS_SRC)
+        self.assertIn(
+            '[_name, "", _friendly] call FUNC(symbologyAffiliation)', HUD_MARKERS_SRC
+        )
+        self.assertIn("_resolvedPalette", HUD_MARKERS_SRC)
+
 
 class TestSymbolPostInit(unittest.TestCase):
     """The map and world workers are wired from postInit."""
@@ -686,6 +721,16 @@ class TestSymbolPostInit(unittest.TestCase):
 
     def test_the_world_worker_is_wired(self):
         self.assertIn("[] call FUNC(symbologyWorldDraw)", POSTINIT_SRC)
+
+
+class TestSymbologyIndicatorTeardown(unittest.TestCase):
+    """The optics Ended teardown reverses the indicator suppression too."""
+
+    def test_the_ended_handler_calls_the_restore(self):
+        preinit = (OPTICS / "XEH_preInit.sqf").read_text(encoding="utf-8")
+        self.assertIn('addMissionEventHandler ["Ended"', preinit)
+        self.assertIn("[] call FUNC(symbologyMarkersRestore)", preinit)
+        self.assertIn("hasInterface", preinit)
 
 
 class TestSymbolPrep(unittest.TestCase):

@@ -458,6 +458,13 @@ class TestHudMapGridContract(unittest.TestCase):
         self.assertIn("displayCtrl 2350", MGRS_MAP_SRC)
         self.assertIn("ctrlShow false", MGRS_MAP_SRC)
 
+    def test_the_engine_readout_is_hidden_only_when_the_aee_readout_draws(self):
+        # The hide must sit inside the aee-readout gate, or with the readout
+        # off the map is left with no cursor readout at all.
+        flat = " ".join(MGRS_MAP_SRC.split())
+        self.assertIn("if (_cursorReadout) then { _engineReadout ctrlShow false;", flat)
+        self.assertIn("_engineReadout ctrlShow true;", MGRS_MAP_SRC)
+
     def test_the_map_handler_reads_the_engine_readout_rect(self):
         # The engine moves the tooltip to the cursor, so its rectangle is
         # where the aee readout is drawn.
@@ -677,6 +684,14 @@ class TestHudTrackerContract(unittest.TestCase):
         self.assertIn(
             "disableMapIndicators [true, false, false, false]", TRACKER_UPDATE_SRC
         )
+
+    def test_the_suppression_is_reversed_when_the_setting_turns_off(self):
+        # The suppression is a persistent LOCAL effect, so it must be reversed
+        # when the operator turns the setting off.
+        self.assertIn(
+            "disableMapIndicators [false, false, false, false]", TRACKER_UPDATE_SRC
+        )
+        self.assertIn("QGVAR(trackerIndicatorsSuppressed)", TRACKER_UPDATE_SRC)
 
     def test_the_source_records_the_suppression_ceiling(self):
         self.assertIn("setGroupIconsVisible", TRACKER_UPDATE_SRC)
