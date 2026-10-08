@@ -1,0 +1,25 @@
+{
+  "schema": "aee.engine.ammo_bindings/1",
+  "note": "Resolved from the installed game config. Do not edit by hand.",
+  "resolved_from": "weapons_f.pbo config.bin (hemtt pbo extract + config derapify)",
+  "rows": [
+    {
+      "game_class": "B_556x45_Ball",
+      "parent_class": "BulletBase",
+      "cartridge_id": "556x45_nato",
+      "projectile_id": "apg_m855"
+    },
+    {
+      "game_class": "B_762x51_Ball",
+      "parent_class": "BulletBase",
+      "cartridge_id": "762x51_nato",
+      "projectile_id": "apg_m80"
+    },
+    {
+      "game_class": "B_127x99_Ball",
+      "parent_class": "BulletBase",
+      "cartridge_id": "50_bmg",
+      "projectile_id": "apg_m33"
+    }
+  ]
+}

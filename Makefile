@@ -56,6 +56,8 @@ lint: lint-parity
 	python3 tools/validation/gen_aircraft_coverage.py --check || rc=1; \
 	python3 tools/validation/validate_aircraft_data.py || rc=1; \
 	python3 tools/validation/gen_thermal_optics.py --check || rc=1; \
+	python3 tools/validation/gen_engine_overrides.py --check || rc=1; \
+	python3 tools/validation/validate_engine_overrides.py || rc=1; \
 	python3 tools/validation/gen_debug_index.py --check || rc=1; \
 	python3 tools/validation/gen_mgrs_tables.py --check || rc=1; \
 	python3 tools/validation/validate_mgrs.py || rc=1; \
