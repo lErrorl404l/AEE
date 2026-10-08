@@ -1,253 +1,384 @@
 {
-  "note": "One REAL public-domain or openly-licensed drawing per terrain symbol. DGIWG Symbol Register graphics are CC BY 2.0 (attribution); FM 21-31 and the USGS sheet are US public domain. AEE does not hand-draw a terrain symbol.",
+  "note": "One REAL drawing per terrain symbol, cut from the standard's own vector source. Every register entry is rendered from the DGIWG Symbol Register SVG (SO_####.svg) with rsvg-convert, so the symbol keeps the standard's own colours on a transparent ground. The register is CC BY 2.0. The one non-register entry (quay) is the USGS public-domain vector symbol. AEE does not hand-draw and does not crop a scanned plate.",
+  "attribution": "Contains DGIWG Symbol Register data, (C) DGIWG, CC BY 2.0",
+  "render_command": "rsvg-convert --keep-aspect-ratio -w 128 -h 128 -o OUT.png IN.svg",
   "entries": [
     {
       "id": "hill",
       "file": "hill.png",
-      "concept": "FM 21-31 Figure 040 Contours (relief)",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 040",
-      "licence": "US Government work, public domain",
+      "svg": "svg/SO_0097.svg",
+      "dgiwg": "SO_0097",
+      "concept": "SurveyPointGeodeticHighestP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0097 SurveyPointGeodeticHighestP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "rock",
       "file": "rock.png",
-      "concept": "SO_0364 RockFormationP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
-      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
-      "grade": "sourced"
-    },
-    {
-      "id": "monument",
-      "file": "monument.png",
-      "concept": "SO_0104 MonumentP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
-      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
-      "grade": "sourced"
-    },
-    {
-      "id": "border_crossing",
-      "file": "border_crossing.png",
-      "concept": "SO_0394 BoundaryMonumentP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0364.svg",
+      "dgiwg": "SO_0364",
+      "concept": "RockFormationP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0364 RockFormationP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "deciduous",
       "file": "deciduous.png",
-      "concept": "SO_0046 TreeDeciduousP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0046.svg",
+      "dgiwg": "SO_0046",
+      "concept": "TreeDeciduousP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0046 TreeDeciduousP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "coniferous",
       "file": "coniferous.png",
-      "concept": "SO_0047 TreeEvergreenP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0047.svg",
+      "dgiwg": "SO_0047",
+      "concept": "TreeEvergreenP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0047 TreeEvergreenP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "palm",
       "file": "palm.png",
-      "concept": "FM 21-31 Figure 080 Nipa (palm)",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 080",
-      "licence": "US Government work, public domain",
-      "grade": "sourced"
+      "svg": "svg/SO_0044.svg",
+      "dgiwg": "SO_0044",
+      "concept": "ForestWoodOtherP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0044 ForestWoodOtherP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "derived",
+      "note": "no dedicated register glyph; nearest register drawing SO_0044 (ForestWoodOtherP)"
     },
     {
       "id": "vineyard",
       "file": "vineyard.png",
-      "concept": "FM 21-31 Figure 077 Vineyard",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 077",
-      "licence": "US Government work, public domain",
+      "svg": "svg/SO_0034.svg",
+      "dgiwg": "SO_0034",
+      "concept": "PlantationVineyardA",
+      "geom": "Area",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0034 PlantationVineyardA",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "brushwood",
       "file": "brushwood.png",
-      "concept": "SO_0048 BrushA",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
-      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
-      "grade": "sourced"
-    },
-    {
-      "id": "shipwreck",
-      "file": "shipwreck.png",
-      "concept": "SO_0160 WreckAlwaysSubmergedP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0048.svg",
+      "dgiwg": "SO_0048",
+      "concept": "BrushA",
+      "geom": "Area",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0048 BrushA",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "church",
       "file": "church.png",
-      "concept": "SO_0149 HouseofWorshipTempleNonObstructionIntactP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0140.svg",
+      "dgiwg": "SO_0140",
+      "concept": "ChristianCathedralP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0140 ChristianCathedralP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "chapel",
       "file": "chapel.png",
-      "concept": "FM 21-31 Figure 161 Church",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 161",
-      "licence": "US Government work, public domain",
+      "svg": "svg/SO_0619.svg",
+      "dgiwg": "SO_0619",
+      "concept": "ChristianChapelNonObstructionIntactA",
+      "geom": "Area",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0619 ChristianChapelNonObstructionIntactA",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "cross",
       "file": "cross.png",
-      "concept": "FM 21-31 Figure 178 Cemetery",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 178",
-      "licence": "US Government work, public domain",
+      "svg": "svg/SO_0124.svg",
+      "dgiwg": "SO_0124",
+      "concept": "CemeteryChristianP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0124 CemeteryChristianP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "ruin",
       "file": "ruin.png",
-      "concept": "SO_0102 RuinsNonObstructionP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0102.svg",
+      "dgiwg": "SO_0102",
+      "concept": "RuinsNonObstructionP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0102 RuinsNonObstructionP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "hospital",
       "file": "hospital.png",
-      "concept": "SO_0151 HospitalNonObstructionIntactP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0151.svg",
+      "dgiwg": "SO_0151",
+      "concept": "HospitalNonObstructionIntactP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0151 HospitalNonObstructionIntactP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "monument",
+      "file": "monument.png",
+      "svg": "svg/SO_0104.svg",
+      "dgiwg": "SO_0104",
+      "concept": "MonumentP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0104 MonumentP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "radio_tower",
       "file": "radio_tower.png",
-      "concept": "FM 21-31 Figure 281 Multiple Radio Facilities",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 281",
-      "licence": "US Government work, public domain",
-      "grade": "sourced"
-    },
-    {
-      "id": "water_tower",
-      "file": "water_tower.png",
-      "concept": "SO_0015 TowerWaterTowerP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0600.svg",
+      "dgiwg": "SO_0600",
+      "concept": "TowerCommunicationNonObstructionP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0600 TowerCommunicationNonObstructionP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "lighthouse",
       "file": "lighthouse.png",
-      "concept": "SO_0080 LighthouseP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0080.svg",
+      "dgiwg": "SO_0080",
+      "concept": "LighthouseP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0080 LighthouseP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "water_tower",
+      "file": "water_tower.png",
+      "svg": "svg/SO_0015.svg",
+      "dgiwg": "SO_0015",
+      "concept": "TowerWaterTowerP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0015 TowerWaterTowerP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "power_plant",
       "file": "power_plant.png",
-      "concept": "SO_0155 PowerSubstationIntactP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0155.svg",
+      "dgiwg": "SO_0155",
+      "concept": "PowerSubstationP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0155 PowerSubstationP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "solar",
       "file": "solar.png",
-      "concept": "SO_0154 PowerSubstationA",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0001.svg",
+      "dgiwg": "SO_0001",
+      "concept": "SolarPanelP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0001 SolarPanelP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "derived",
+      "note": "no dedicated register glyph; nearest register drawing SO_0001 (SolarPanelP)"
+    },
+    {
+      "id": "wind",
+      "file": "wind.png",
+      "svg": "svg/SO_0157.svg",
+      "dgiwg": "SO_0157",
+      "concept": "WindTurbineP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0157 WindTurbineP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "wave",
       "file": "wave.png",
-      "concept": "FM 21-31 Figure 190 Large Masonry Dam",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 190",
-      "licence": "US Government work, public domain",
-      "grade": "sourced"
-    },
-    {
-      "id": "wind",
-      "file": "wind.png",
-      "concept": "SO_0157 WindTurbineP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0001.svg",
+      "dgiwg": "SO_0001",
+      "concept": "TidalWaterA",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0001 TidalWaterA",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
-      "grade": "sourced"
+      "grade": "derived",
+      "note": "no dedicated register glyph; nearest register drawing SO_0001 (TidalWaterA)"
     },
     {
       "id": "fuel_station",
       "file": "fuel_station.png",
-      "concept": "FM 21-31 Figure 205 Tank (oil, gas, water)",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 205",
-      "licence": "US Government work, public domain",
+      "svg": "svg/SO_0146.svg",
+      "dgiwg": "SO_0146",
+      "concept": "MotorVehicleStationP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0146 MotorVehicleStationP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "quay",
       "file": "quay.png",
-      "concept": "FM 21-31 Figure 200 Large Pier, Dock or Wharf",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 200",
+      "svg": null,
+      "dgiwg": null,
+      "concept": "BreakwaterPierJettyOrWharf",
+      "geom": "Point",
+      "source": "USGS Topographic Map Symbols (2005), GIP unnumbered series, Breakwater pier jetty or wharf",
       "licence": "US Government work, public domain",
       "grade": "sourced"
     },
     {
       "id": "stack",
       "file": "stack.png",
-      "concept": "SO_0156 SmokestackP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0156.svg",
+      "dgiwg": "SO_0156",
+      "concept": "SmokestackP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0156 SmokestackP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "tourism",
       "file": "tourism.png",
-      "concept": "SO_0001 AmusementParkAttractionP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0001.svg",
+      "dgiwg": "SO_0001",
+      "concept": "AmusementParkAttractionP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0001 AmusementParkAttractionP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
-      "grade": "sourced"
+      "grade": "derived",
+      "note": "no dedicated register glyph; nearest register drawing SO_0001 (AmusementParkAttractionP)"
     },
     {
       "id": "view_tower",
       "file": "view_tower.png",
-      "concept": "SO_0079 TowerOtherP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0079.svg",
+      "dgiwg": "SO_0079",
+      "concept": "TowerOtherP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0079 TowerOtherP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "bunker",
       "file": "bunker.png",
-      "concept": "SO_0330 SurfaceBunkerP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0330.svg",
+      "dgiwg": "SO_0330",
+      "concept": "SurfaceBunkerP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0330 SurfaceBunkerP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "fortress",
       "file": "fortress.png",
-      "concept": "SO_0099 FortificationP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0099.svg",
+      "dgiwg": "SO_0099",
+      "concept": "FortificationP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0099 FortificationP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
     },
     {
       "id": "bus_stop",
       "file": "bus_stop.png",
-      "concept": "FM 21-31 Figure 141 Railroad Station",
-      "source": "FM 21-31 Topographic Symbols (US Army, 19 Jun 1961, Change 1 1968), Figure 141",
-      "licence": "US Government work, public domain",
-      "grade": "sourced"
+      "svg": "svg/SO_0153.svg",
+      "dgiwg": "SO_0153",
+      "concept": "TransportationStationCheckpointNonObstructionIntactP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0153 TransportationStationCheckpointNonObstructionIntactP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "derived",
+      "note": "no dedicated register glyph; nearest register drawing SO_0153 (TransportationStationCheckpointNonObstructionIntactP)"
     },
     {
       "id": "fountain",
       "file": "fountain.png",
-      "concept": "SO_0180 FountainP",
-      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675)",
+      "svg": "svg/SO_0180.svg",
+      "dgiwg": "SO_0180",
+      "concept": "FountainP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0180 FountainP",
       "licence": "CC BY 2.0, (C) DGIWG, attribution required",
       "grade": "sourced"
+    },
+    {
+      "id": "shipwreck",
+      "file": "shipwreck.png",
+      "svg": "svg/SO_0160.svg",
+      "dgiwg": "SO_0160",
+      "concept": "WreckP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0160 WreckP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "sourced"
+    },
+    {
+      "id": "border_crossing",
+      "file": "border_crossing.png",
+      "svg": "svg/SO_0153.svg",
+      "dgiwg": "SO_0153",
+      "concept": "GateBorderCrossingP",
+      "geom": "Point",
+      "source": "DGIWG Symbol Register (DTM50 / DGIWG 130 Web Symbology / STANAG 3675), symbol SO_0153 GateBorderCrossingP",
+      "licence": "CC BY 2.0, (C) DGIWG, attribution required",
+      "grade": "derived",
+      "note": "no dedicated register glyph; nearest register drawing SO_0153 (GateBorderCrossingP)"
+    }
+  ],
+  "no_register_source": [
+    {
+      "id": "palm",
+      "reason": "the register has no dedicated drawing; the nearest register point glyph SO_0044 (ForestWoodOtherP) is used"
+    },
+    {
+      "id": "solar",
+      "reason": "the register has no dedicated drawing; the nearest register point glyph SO_0001 (SolarPanelP) is used"
+    },
+    {
+      "id": "wave",
+      "reason": "the register has no dedicated drawing; the nearest register point glyph SO_0001 (TidalWaterA) is used"
+    },
+    {
+      "id": "quay",
+      "reason": "the register has no point symbol for a quay (only area/line pier and breakwater); the USGS sheet carries the clean vector symbol"
+    },
+    {
+      "id": "tourism",
+      "reason": "the register has no dedicated drawing; the nearest register point glyph SO_0001 (AmusementParkAttractionP) is used"
+    },
+    {
+      "id": "bus_stop",
+      "reason": "the register has no dedicated drawing; the nearest register point glyph SO_0153 (TransportationStationCheckpointNonObstructionIntactP) is used"
+    },
+    {
+      "id": "border_crossing",
+      "reason": "the register has no dedicated drawing; the nearest register point glyph SO_0153 (GateBorderCrossingP) is used"
     }
   ],
   "unavailable": []

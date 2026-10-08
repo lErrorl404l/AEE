@@ -12,7 +12,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install test dependencies
-        run: pip install numpy
+        run: |
+          pip install numpy
+          sudo apt-get update && sudo apt-get install -y librsvg2-bin
       - name: Validate SQF
         run: python3 tools/sqf_validator.py
       - name: Validate Config
@@ -97,6 +99,8 @@ jobs:
         run: python3 tools/validation/validate_terrain_symbols.py
       - name: Terrain symbol alpha validation
         run: python3 tools/validation/validate_terrain_alpha.py
+      - name: Terrain symbol provenance validation
+        run: python3 tools/validation/validate_terrain_provenance.py
       - name: Wildlife ecology projection freshness check
         run: python3 tools/validation/gen_wildlife_ecology.py --check
       - name: Wildlife ecology corpus validation

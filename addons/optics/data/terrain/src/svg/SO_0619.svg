@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="50"
+   height="24.999998"
+   version="1.1"
+   viewBox="0 0 50 24.999998"
+   id="svg17"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata
+     id="metadata23">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>SO_0619</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs21" />
+  <title
+     id="title2">SO_0619</title>
+  <rect
+     class="st2"
+     x="0"
+     y="0"
+     width="50"
+     height="24.999998"
+     fill="#000000"
+     stroke="#000000"
+     stroke-dasharray="1.25983, 0.629913"
+     stroke-width="0"
+     id="rect4" />
+  <path
+     id="path1926"
+     style="fill:#ffffff;stroke-width:0.0644013"
+     d="m 24.035781,7.519192 v 2.276627 h -2.502312 v 1.600693 h 2.502312 v 6.138428 h 1.803397 V 11.396512 H 28.4878 V 9.795819 H 25.839178 V 7.519192 Z" />
+</svg>

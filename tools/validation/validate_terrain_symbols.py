@@ -72,7 +72,7 @@ def main() -> int:
         if not (TERRAIN_DIR / f"{symbol}.paa").is_file():
             errors.append(f"{symbol}: produced texture is missing")
 
-    for orphan in sorted({p.stem for p in entries} - set(refs)):
+    for orphan in sorted(set(entries) - set(refs)):
         errors.append(f"{orphan}: manifest entry is not referenced")
 
     produced = (

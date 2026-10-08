@@ -176,6 +176,38 @@ class TestTerrainTextures(unittest.TestCase):
             )
             self.assertIn(entry.get("grade"), ("sourced", "derived"), entry["id"])
 
+    def test_every_register_symbol_names_a_dgiwg_symbol_and_concept(self):
+        entries = {e["id"]: e for e in MANIFEST["entries"]}
+        for symbol in REFERENCED:
+            entry = entries[symbol]
+            if entry.get("dgiwg"):
+                self.assertRegex(entry["dgiwg"], r"^SO_\d{4}$", symbol)
+                self.assertTrue(entry.get("concept", "").strip(), symbol)
+                self.assertTrue((SRC / entry["svg"]).is_file(), symbol)
+
+    def test_every_non_register_symbol_is_recorded(self):
+        entries = {e["id"]: e for e in MANIFEST["entries"]}
+        recorded = {e["id"] for e in MANIFEST.get("no_register_source", [])}
+        for symbol in REFERENCED:
+            if not entries[symbol].get("dgiwg"):
+                self.assertIn(symbol, recorded)
+
+    def test_no_plate_crop_source_remains(self):
+        for entry in MANIFEST["entries"]:
+            self.assertNotIn("fm 21-31", entry.get("source", "").lower(), entry["id"])
+
+    def test_every_source_image_is_a_svg_render(self):
+        proc = subprocess.run(
+            [
+                sys.executable,
+                str(REPO / "tools" / "gen_terrain_symbols.py"),
+                "--verify-svg",
+            ],
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+
 
 class TestTerrainAlpha(unittest.TestCase):
     def test_every_texture_is_a_transparent_mask(self):
