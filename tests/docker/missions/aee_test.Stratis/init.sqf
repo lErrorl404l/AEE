@@ -3328,6 +3328,13 @@ private _p29Pass = 0;
     // grid lines are off while the numbers return.  It renders nothing.
     execVM "aee_p121_map_legibility_probe.sqf";
 
+    // PHASE 125 lives in aee_p125_eye_time_skip_probe.sqf: the eye adaptation
+    // driver is client-only, so the probe drives the REAL kernels with fixtures
+    // and proves a world-clock skip is detected and the eye re-seeds adapted
+    // (ADR-007), instead of chasing the jumped scene over the slow dark tau.
+    // It renders nothing.
+    execVM "aee_p125_eye_time_skip_probe.sqf";
+
     // PHASE 126 lives in aee_p126_density_probe.sqf: the one-shot animal-call
     // cap is a density policy and the audible layer is client-only, so the
     // probe reads the cap from the live monitor line, measures the emitter cap

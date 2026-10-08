@@ -37,6 +37,7 @@ AMBIENT = EYE / "fnc_eyeAmbientLux.sqf"
 LOCAL = EYE / "fnc_eyeLocalLux.sqf"
 ADAPT_INIT = EYE / "fnc_eyeAdaptInit.sqf"
 ADAPT_STATE = EYE / "fnc_eyeAdaptState.sqf"
+TIME_SKIP = EYE / "fnc_eyeTimeSkip.sqf"
 LIMITS = EYE / "fnc_eyeLimits.sqf"
 SKY_FRACTION = EYE / "fnc_eyeSkyFraction.sqf"
 SKY_CAST = EYE / "fnc_eyeSkyCast.sqf"
@@ -343,6 +344,21 @@ class TestEyeDriverContract(unittest.TestCase):
         for hook in ["eyeForceLux", "eyeFreeze", "eyeForceMode"]:
             self.assertIn(hook, text, f"debug hook {hook} not read")
 
+    def test_driver_steps_on_the_real_clock(self):
+        # Regression: diag_deltaTime is the FRAME delta, smaller than the 0.1 s
+        # PFH tick, so the eye ran ~8x slower than its taus.
+        code = self._code(DRIVER)
+        self.assertIn("diag_tickTime", code)
+        self.assertIn("eyeLastTick", code)
+
+    def test_driver_detects_a_time_skip_and_re_seeds(self):
+        # A skip jumps the world clock; the eye must arrive adapted, not chase.
+        code = self._code(DRIVER)
+        self.assertIn("dayTime", code)
+        self.assertIn("FUNC(eyeTimeSkip)", code)
+        self.assertIn("eyeLastHour", code)
+        self.assertIn("if (_skipped) then", code)
+
 
 OPTICS = ROOT / "addons" / "optics"
 PREP = OPTICS / "XEH_PREP.hpp"
@@ -359,6 +375,7 @@ class TestEyeWiring(unittest.TestCase):
         "eyePupilSteady",
         "eyePupilStep",
         "eyeAdaptStep",
+        "eyeTimeSkip",
         "eyeSceneLux",
         "eyeSkyFraction",
         "eyeSkyCast",
@@ -878,6 +895,41 @@ class TestEyeLimits(unittest.TestCase):
         _a, _c, _n, clear = run_sqf(LIMITS, [1, 1, 100, 85, 0])
         _a, _c, _n, foggy = run_sqf(LIMITS, [1, 1, 100, 85, 1])
         self.assertGreater(foggy, clear)
+
+
+class TestEyeTimeSkip(unittest.TestCase):
+    """fnc_eyeTimeSkip runs from the real SQF.
+
+    A skipTime jumps the world clock so the eye can arrive adapted (ADR-007).
+    The threshold sits above the largest clock advance one tick can produce
+    under time acceleration, and below the smallest useful skip.
+    """
+
+    def test_first_sample_is_not_a_skip(self):
+        self.assertFalse(run_sqf(TIME_SKIP, [-1, 6.0]))
+
+    def test_a_normal_tick_is_not_a_skip(self):
+        # 0.1 s at 100x acceleration is 10 s of world time, about 0.0028 h.
+        self.assertFalse(run_sqf(TIME_SKIP, [6.0, 6.00278, 0.05]))
+
+    def test_a_forward_skip_is_detected(self):
+        self.assertTrue(run_sqf(TIME_SKIP, [0.0, 12.0, 0.05]))
+
+    def test_a_backward_skip_is_detected(self):
+        self.assertTrue(run_sqf(TIME_SKIP, [12.0, 0.0, 0.05]))
+
+    def test_the_midnight_wrap_is_the_short_way(self):
+        # 23.99 -> 0.01 is 0.02 h forward, not 23.98 h back.
+        self.assertFalse(run_sqf(TIME_SKIP, [23.99, 0.01, 0.05]))
+
+    def test_a_small_move_stays_below_the_threshold(self):
+        # 0.01 h is under the 0.05 h threshold; 0.06 h is over it.
+        self.assertFalse(run_sqf(TIME_SKIP, [1.0, 1.01, 0.05]))
+        self.assertTrue(run_sqf(TIME_SKIP, [1.0, 1.06, 0.05]))
+
+    def test_the_threshold_param_is_honoured(self):
+        self.assertTrue(run_sqf(TIME_SKIP, [0.0, 1.0, 0.05]))
+        self.assertFalse(run_sqf(TIME_SKIP, [0.0, 1.0, 2.0]))
 
 
 if __name__ == "__main__":
