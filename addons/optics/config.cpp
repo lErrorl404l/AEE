@@ -57,19 +57,50 @@ class CfgFontFamilies {
 //
 // The engine grid fields SPLIT: colorGrid colours the EDGE COORDINATE NUMBERS
 // and colorGridMap colours the in-map grid LINES (engine source: Poseidon
-// UIMap.cpp, CStaticMap::DrawGrid - DrawText uses colorGrid, DrawLine uses
-// colorGridMap).  The operator asked for the vanilla grid reference back, so the
-// engine NUMBERS return (colorGrid visible, the engine default sizeExGrid 0.04)
-// while the engine LINES stay off (colorGridMap alpha 0).  That leaves exactly
-// ONE line grid, the AEE MGRS overlay (FUNC(mgrsMapDraw)), with the engine
-// numeric labels as the familiar reference.  The two coexist: numbers from the
-// engine, lines from AEE.
+// UIMap.cpp, CStaticMap::DrawGrid).  The engine edge ruler is UNRELIABLE: it
+// places each number half a grid spacing from its line and clips it to the
+// control rect, and the northing spacing is wScreen/hScreen times the easting
+// spacing, so at close zoom the left and right numbers leave the control and
+// the operator sees them missing.  There is no per-axis toggle, so keeping the
+// engine numbers would double every edge the AEE ruler already labels.  Both
+// engine fields are off: the AEE MGRS overlay (FUNC(mgrsGridLines) and
+// FUNC(mgrsMapDraw)) is the SINGLE complete ruler, lines and four-edge numbers.
 class RscMapControl {
 #include "config_mapcolors.hpp"
 #include "config_mapicons.hpp"
-    colorGrid[] = {0.15, 0.15, 0.05, 0.9};
+    colorGrid[] = {0, 0, 0, 0};
     colorGridMap[] = {0, 0, 0, 0};
     sizeExGrid = 0.04;
+};
+
+// The engine cursor tooltip is filled and shown by closed engine C++ AFTER the
+// map Draw event, so the script hide in FUNC(mgrsMapDraw) loses the race.  Make
+// its text and every backdrop transparent at the config instead, so nothing
+// renders whichever child the engine shows.
+class RscControlsGroupNoScrollbars;
+class RscText;
+class RscStructuredText;
+class RscMapControlTooltip: RscControlsGroupNoScrollbars {
+    class Controls {
+        class Background: RscText {
+            colorBackground[] = {0, 0, 0, 0};
+        };
+        class InfoBackground: RscStructuredText {
+            colorBackground[] = {0, 0, 0, 0};
+        };
+        class Info: RscStructuredText {
+            colorText[] = {0, 0, 0, 0};
+        };
+        class AssetsBackground: RscStructuredText {
+            colorBackground[] = {0, 0, 0, 0};
+        };
+        class Assets: RscStructuredText {
+            colorText[] = {0, 0, 0, 0};
+        };
+        class PictureBackground: RscText {
+            colorBackground[] = {0, 0, 0, 0};
+        };
+    };
 };
 
 #include "config_locationtypes.hpp"

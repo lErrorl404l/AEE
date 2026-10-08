@@ -1,11 +1,12 @@
-// PHASE 123: the map grid readouts and the MGRS line geometry, asserted live.
+// PHASE 123: the map grid and the MGRS line geometry, asserted live.
 //
-// The edge-number colours are merged config, and the MGRS line plan is a pure
+// The engine grid colours are merged config, and the MGRS line plan is a pure
 // kernel, so both are measurable headless.  The engine edge NUMBERS are the
 // colour of `colorGrid` and the engine in-map LINES are the colour of
 // `colorGridMap` (engine source: the open-sourced Poseidon engine, UIMap.cpp,
-// CStaticMap::DrawGrid), so the numbers return when colorGrid alpha > 0 and the
-// engine lines stay off when colorGridMap alpha is 0.  It renders nothing.
+// CStaticMap::DrawGrid).  Both are off: the engine ruler clips its left and
+// right numbers at close zoom, so the AEE MGRS overlay is the single ruler.  It
+// renders nothing.
 //
 // Emits [P123] PASS/FAIL lines.
 
@@ -23,14 +24,13 @@ private _gridTargets = [
     _x params ["_label", "_cfg"];
     private _numbers = getArray (_cfg >> "colorGrid");
     private _lines = getArray (_cfg >> "colorGridMap");
-    private _size = getNumber (_cfg >> "sizeExGrid");
-    private _numbersOn = ((count _numbers) >= 4) && {(_numbers select 3) > 0.5};
+    private _numbersOff = ((count _numbers) >= 4) && {(_numbers select 3) == 0};
     private _linesOff = ((count _lines) >= 4) && {(_lines select 3) == 0};
-    if (_numbersOn && {_linesOff} && {_size >= 0.04}) then {
+    if (_numbersOff && {_linesOff}) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3 sizeExGrid=%4", _label, str _numbers, str _lines, _size];
+        _notes pushBack format ["grid %1: colorGrid=%2 colorGridMap=%3", _label, str _numbers, str _lines];
     };
 } forEach _gridTargets;
 
