@@ -61,14 +61,14 @@ def _live_rows(payload: JsonObject) -> list[JsonObject]:
 
 def _row(coverage: JsonObject, token: str) -> JsonObject:
     for row in _live_rows(coverage):
-        if row.get("token") == token:
+        if row.get("class") == token:
             return row
     raise AssertionError(f"no coverage row for {token}")
 
 
 def _token(token: str, is_air: bool, reason: str = "fixture reason") -> JsonObject:
     return {
-        "token": token,
+        "class": token,
         "kind": "engine_base",
         "is_ground": False,
         "exclusion_reason": reason,
@@ -124,7 +124,7 @@ class CoverageGuardTest(unittest.TestCase):
     def test_a_dropped_token_is_reported_by_name(self) -> None:
         classes, coverage = self._classes_and_coverage()
         coverage["tokens"] = [
-            row for row in _entries(coverage) if row.get("token") != "Plane"
+            row for row in _entries(coverage) if row.get("class") != "Plane"
         ]
         errors = g.coverage_errors(classes, coverage, {})
         self.assertTrue(
@@ -183,7 +183,7 @@ class RealCorpusCoverageTest(unittest.TestCase):
 
     def test_every_air_token_has_one_coverage_row(self) -> None:
         rows = _entries(self.coverage)
-        tokens = [str(row.get("token")) for row in rows]
+        tokens = [str(row.get("class")) for row in rows]
         self.assertEqual(len(tokens), len(set(tokens)), "duplicate coverage token")
         for token in g.AIR_TOKENS:
             self.assertEqual(
@@ -192,7 +192,7 @@ class RealCorpusCoverageTest(unittest.TestCase):
 
     def test_the_air_rows_are_exactly_the_four_tokens(self) -> None:
         air = {
-            str(row.get("token"))
+            str(row.get("class"))
             for row in _entries(self.coverage)
             if row.get("is_air")
         }
@@ -203,7 +203,7 @@ class RealCorpusCoverageTest(unittest.TestCase):
         for row in _entries(self.coverage):
             if row.get("state") != "recorded":
                 continue
-            token = str(row.get("token"))
+            token = str(row.get("class"))
             variants = self.recorded.get(token, set())
             self.assertTrue(variants, f"{token} is recorded without a binding")
             for variant in variants:
@@ -213,10 +213,10 @@ class RealCorpusCoverageTest(unittest.TestCase):
         for row in _entries(self.coverage):
             if row.get("state") != g.AIR_ABSENT_STATE:
                 continue
-            self.assertTrue(row.get("reason"), row.get("token"))
+            self.assertTrue(row.get("reason"), row.get("class"))
 
     def test_plane_and_helicopter_are_recorded(self) -> None:
-        rows = {row.get("token"): row for row in _entries(self.coverage)}
+        rows = {row.get("class"): row for row in _entries(self.coverage)}
         for token in ("Plane", "Helicopter"):
             self.assertEqual("recorded", rows[token]["state"], token)
 
@@ -233,7 +233,7 @@ class RealCorpusCoverageTest(unittest.TestCase):
         for row in _entries(self.coverage):
             if row.get("is_air") is not True:
                 continue
-            self.assertIn(row.get("state"), g.COVERAGE_STATES, row.get("token"))
+            self.assertIn(row.get("state"), g.COVERAGE_STATES, row.get("class"))
 
 
 class CoverageCheckModeTest(unittest.TestCase):
