@@ -27,6 +27,15 @@
  * colour.  The name and area classes carry the standard colour, size and
  * label font.
  *
+ * The icon `size` is expressed in the user's interface scale, so a larger
+ * interface size gives larger symbols.  The interface scale is
+ * uiScale = 1/safeZoneH (BIKI Pixel Grid System: at 1080p/16:9 the interface
+ * size Normal is uiScale 0.7 and safeZoneH 1.42857 = 1/0.7), so the
+ * expression N / (safezoneH * 0.7) gives N at Normal and scales linearly
+ * with it.  The vanilla sizeEx* safezone idiom is a constant 0.04 and would
+ * not scale.  The name and area classes carry no icon, so their size stays
+ * the vanilla value.
+ *
  * The authority is STANAG 3675, succeeded by the DGIWG Symbol Register (the
  * DTM50 product), with the US Army FM 21-31 and the USGS Topographic Map
  * Symbols sheet as the public-domain fallback.  The values are generated from
@@ -146,19 +155,19 @@ class CfgLocationTypes {
     class Hill: Name {
         texture = "\z\aee\addons\optics\data\terrain\hill.paa";
         color[] = {1, 1, 1, 1};
-        size = 14;
+        size = "14 / (safezoneH * 0.7)";
         shadow = 0;
     };
     class ViewPoint: Hill {
         texture = "\z\aee\addons\optics\data\terrain\monument.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         shadow = 0;
     };
     class RockArea: Hill {
         texture = "\z\aee\addons\optics\data\terrain\rock.paa";
         color[] = {1, 1, 1, 1};
-        size = 12;
+        size = "12 / (safezoneH * 0.7)";
         shadow = 0;
     };
 
@@ -166,7 +175,7 @@ class CfgLocationTypes {
     class BorderCrossing: Hill {
         texture = "\z\aee\addons\optics\data\terrain\border_crossing.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         shadow = 0;
     };
 
@@ -174,25 +183,25 @@ class CfgLocationTypes {
     class VegetationBroadleaf: Hill {
         texture = "\z\aee\addons\optics\data\terrain\deciduous.paa";
         color[] = {1, 1, 1, 1};
-        size = 18;
+        size = "18 / (safezoneH * 0.7)";
         shadow = 0;
     };
     class VegetationFir: Hill {
         texture = "\z\aee\addons\optics\data\terrain\coniferous.paa";
         color[] = {1, 1, 1, 1};
-        size = 18;
+        size = "18 / (safezoneH * 0.7)";
         shadow = 0;
     };
     class VegetationPalm: Hill {
         texture = "\z\aee\addons\optics\data\terrain\palm.paa";
         color[] = {1, 1, 1, 1};
-        size = 18;
+        size = "18 / (safezoneH * 0.7)";
         shadow = 0;
     };
     class VegetationVineyard: Hill {
         texture = "\z\aee\addons\optics\data\terrain\vineyard.paa";
         color[] = {1, 1, 1, 1};
-        size = 16;
+        size = "16 / (safezoneH * 0.7)";
         shadow = 0;
     };
 
