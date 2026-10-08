@@ -3267,6 +3267,12 @@ private _p29Pass = 0;
     // marker-type kernel, the marker-colour kernel and the category table).
     // It renders nothing.
     execVM "aee_p111_symbology_probe.sqf";
+    // PHASE 112 lives in aee_p112_symbology_live_probe.sqf: the live-marker
+    // kernels (the echelon ladder, the echelon token map and the class
+    // dimension map) are pure, so the probe drives them with fixtures and
+    // confirms the re-pointed simple classes resolve to a dimension-correct
+    // texture in the live config.
+    execVM "aee_p112_symbology_live_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

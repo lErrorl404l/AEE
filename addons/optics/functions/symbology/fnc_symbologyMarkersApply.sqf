@@ -12,7 +12,11 @@
  *   2. every mission marker not tagged AEE has its type and colour converted
  *      with setMarkerTypeLocal and setMarkerColorLocal to the AEE symbol, and
  *      its original type and colour are recorded in a local cache;
- *   3. the player and each in-range unit get a real local AEE marker.
+ *   3. the player and each in-range unit that is alive get a real local AEE
+ *      marker; a dead unit produces no marker, so the cleanup removes its
+ *      marker and the next scan re-creates it on revive;
+ *   4. each unit marker gets a companion echelon overlay marker at the same
+ *      position, created after the frame so the overlay draws on top.
  *
  * No global marker command is called, so a mission marker is never broadcast,
  * moved, recoloured or deleted on another machine.
@@ -59,23 +63,30 @@ if (!(missionNamespace getVariable [QGVAR(symbologyUnits), true])) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNull _player) exitWith {};
 
-private _units = [_player];
+private _units = [];
+if (alive _player) then {
+    _units pushBack _player;
+};
 {
-    if ((_player distance _x) <= SYMBOLOGY_UNIT_RANGE) then {
+    if ((alive _x) && {(_player distance _x) <= SYMBOLOGY_UNIT_RANGE}) then {
         _units pushBack _x;
     };
 } forEach allUnits;
 
 private _created = missionNamespace getVariable [QGVAR(symbologyUnitMarkers), []];
+private _echelonCreated = missionNamespace getVariable [QGVAR(symbologyUnitEchelonMarkers), []];
 private _live = [];
+private _echelonLive = [];
 {
     private _unit = _x;
     private _markerName = "AEE_UNIT_" + (netId _unit);
     private _category = [_unit] call FUNC(symbologyUnitCategory);
     private _colourName = [side _unit, true] call BIS_fnc_sideColor;
     private _affiliation = ["", _colourName, _friendly] call FUNC(symbologyAffiliation);
+    private _echelon = [_unit] call FUNC(symbologyUnitEchelon);
+    private _dimension = [_unit] call FUNC(symbologyUnitDimension);
     private _spec = [
-        side _unit, _category, _affiliation, "unknown", _resolvedPalette
+        side _unit, _category, _affiliation, _echelon, _resolvedPalette, _dimension
     ] call FUNC(symbolResolve);
     if (!(_markerName in _created)) then {
         _markerName = createMarkerLocal [_markerName, getPos _unit];
@@ -85,6 +96,17 @@ private _live = [];
     _markerName setMarkerTypeLocal (_spec select 1);
     _markerName setMarkerColorLocal (_spec select 2);
     _live pushBack _markerName;
+    // The echelon overlay is created after the frame marker, so the overlay
+    // draws on top of the frame at the same position.
+    private _echelonName = "AEE_ECH_" + (netId _unit);
+    if (!(_echelonName in _echelonCreated)) then {
+        _echelonName = createMarkerLocal [_echelonName, getPos _unit];
+        _echelonCreated pushBack _echelonName;
+    };
+    _echelonName setMarkerPosLocal (getPos _unit);
+    _echelonName setMarkerTypeLocal ([_echelon] call FUNC(symbologyEchelonMarker));
+    _echelonName setMarkerColorLocal (_spec select 2);
+    _echelonLive pushBack _echelonName;
 } forEach _units;
 
 // Remove the markers for the units that left the range.
@@ -95,3 +117,11 @@ private _live = [];
     };
 } forEach (_created + []);
 missionNamespace setVariable [QGVAR(symbologyUnitMarkers), _created];
+
+{
+    if (!(_x in _echelonLive)) then {
+        deleteMarkerLocal _x;
+        _echelonCreated deleteAt (_echelonCreated find _x);
+    };
+} forEach (_echelonCreated + []);
+missionNamespace setVariable [QGVAR(symbologyUnitEchelonMarkers), _echelonCreated];

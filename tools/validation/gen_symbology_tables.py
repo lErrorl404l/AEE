@@ -28,7 +28,15 @@ ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "symbology_tables.json"
 TABLES_OUT = ROOT / "addons" / "optics" / "data" / "symbology_tables.sqf"
 
-SECTIONS = ("prefixes", "suffixes", "exact", "classes", "families", "glyphs")
+SECTIONS = (
+    "prefixes",
+    "suffixes",
+    "exact",
+    "classes",
+    "families",
+    "glyphs",
+    "dimensions",
+)
 
 TABLES_TEMPLATE = """/*
 NATO/OPFOR symbology category tables (generated).
@@ -37,7 +45,7 @@ This file is GENERATED. The generator tools/validation/gen_symbology_tables.py
 writes it from the validated source data/symbology/symbology_tables.json. Do
 not edit it by hand. Edit the source and regenerate it.
 
-The six sections are, in order:
+The seven sections are, in order:
 
   0  marker type prefixes -> the family default category
   1  marker type suffixes -> the category
@@ -45,11 +53,13 @@ The six sections are, in order:
   3  CfgVehicles vehicleClass and unitClass values -> the category
   4  affiliation -> the CfgMarkers family token (b, o, n, u)
   5  class category -> the CfgMarkers glyph token (inf, armor, ...)
+  6  class category -> the battle dimension (land, air, sea, ...)
 
 Each row is [name, category, grade, source]. For sections 0 to 3 the category
 is one of the NATO APP-6(C) frame grammar classes. For section 4 the category
-is a family token and for section 5 a glyph token. No value is invented: every
-row is sourced or derived and carries its source.
+is a family token, for section 5 a glyph token and for section 6 a battle
+dimension. No value is invented: every row is sourced or derived and carries
+its source.
 */
 [
 __SECTIONS__
@@ -69,7 +79,21 @@ def _sqf(value: Any) -> str:
 
 
 def section_rows(source: dict[str, Any], section: str) -> list[list[str]]:
-    """One section as a list of [name, category, grade, source] rows."""
+    """One section as a list of [name, category, grade, source] rows.
+
+    The "dimensions" section is derived from the glyphs array: each row is
+    [categoryName, dimension, grade, source].
+    """
+    if section == "dimensions":
+        return [
+            [
+                str(entry["name"]),
+                str(entry["dimension"]),
+                str(entry["grade"]),
+                str(entry["source"]),
+            ]
+            for entry in source["glyphs"]
+        ]
     rows = []
     for entry in source[section]:
         rows.append(
@@ -81,6 +105,12 @@ def section_rows(source: dict[str, Any], section: str) -> list[list[str]]:
             ]
         )
     return rows
+
+
+def section_count(source: dict[str, Any], section: str) -> int:
+    """The row count of one section.  "dimensions" derives from glyphs."""
+    key = "glyphs" if section == "dimensions" else section
+    return len(source[key])
 
 
 def render_tables(source: dict[str, Any]) -> str:
@@ -101,7 +131,7 @@ def write_output() -> int:
     source = load_source()
     TABLES_OUT.parent.mkdir(parents=True, exist_ok=True)
     TABLES_OUT.write_text(render_tables(source), encoding="utf-8")
-    return sum(len(source[section]) for section in SECTIONS)
+    return sum(section_count(source, section) for section in SECTIONS)
 
 
 def check_output() -> int:
@@ -114,7 +144,7 @@ def check_output() -> int:
     if TABLES_OUT.read_text(encoding="utf-8") != expected:
         print(f"symbology tables: {TABLES_OUT} is stale; run the generator")
         return 1
-    count = sum(len(source[section]) for section in SECTIONS)
+    count = sum(section_count(source, section) for section in SECTIONS)
     print(f"symbology tables: {count} rows -> {TABLES_OUT.name} (fresh)")
     return 0
 
