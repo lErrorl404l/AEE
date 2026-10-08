@@ -113,6 +113,10 @@ jobs:
         run: python3 tools/validation/validate_terrain_alpha.py
       - name: Terrain symbol provenance validation
         run: python3 tools/validation/validate_terrain_provenance.py
+      - name: Terrain catalogue freshness check
+        run: python3 tools/gen_terrain_catalogue.py --check
+      - name: APP-6 catalogue freshness check
+        run: python3 tools/gen_app6_catalogue.py --check
       - name: Wildlife ecology projection freshness check
         run: python3 tools/validation/gen_wildlife_ecology.py --check
       - name: Wildlife ecology corpus validation
