@@ -42,7 +42,7 @@ END = "<!-- END GENERATED: extension contract -->"
 # declared with a literal `class <name>` in the named source.  Macro-built
 # classes (for example the EDEN modules) are not anchored by name.
 ANCHOR_CLASSES = {
-    "AEE_Symbology": "addons/optics/config.cpp",
+    "AEE_Unknown_Other": "addons/optics/config.cpp",
     "ColorAEE": "addons/optics/config.cpp",
     "AEE_MarkerBase": "addons/optics/config.cpp",
     "AEE_SandCloud": "addons/core/config.cpp",
