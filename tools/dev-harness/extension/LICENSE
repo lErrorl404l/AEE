@@ -1,0 +1,28 @@
+aee_dev - the AEE development extension
+Copyright (C) 2026 lErrorl404l
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program.  If not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+The full licence text is the repository root `LICENSE` file.  The SPDX
+identifier for this crate is GPL-2.0-or-later.
+
+Licence note on the `arma-rs` dependency
+----------------------------------------
+`arma-rs` 1.13.0 declares `license = "MIT"` in its crate `Cargo.toml`, while
+its upstream repository carries the GNU General Public License v2 as its
+`LICENSE` file.  The crate metadata and the repository licence therefore
+disagree.  This crate links `arma-rs` as an ordinary dependency and vendors
+none of its source.  The discrepancy is recorded here and in the evidence
+log; resolve it against the licence register before any public distribution.
