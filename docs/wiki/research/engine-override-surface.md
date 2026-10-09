@@ -12,7 +12,7 @@ that ADR-027 cites.
 The override is a **load-time, global substitution**. The engine reads the
 config when the PBO loads. Config cannot be gated at run time. The PBO is the
 only off switch. This is the same fact that the generated mobility header
-states (`addons/mobility/generated/CfgVehicles.hpp`, header comment).
+states (`addons/vehicles/generated/CfgVehicles.hpp`, header comment).
 
 ### The three override mechanisms (ADR-001)
 
@@ -226,8 +226,8 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
   downwash coupling), `size[]`, `color[]`, `animationSpeed[]`,
   `randomDirection*`, `onTimerScript`, `beforeDestroyScript`, `positionVar`,
   `MoveVelocityVar`.
-- **AEE status**: **ALREADY**. `addons/core/config.cpp` declares
-  `AEE_SandCloud` and `AEE_SnowCloud`; `addons/fx/config.cpp` declares
+- **AEE status**: **ALREADY**. `addons/particles/config.cpp` declares
+  `AEE_SandCloud` and `AEE_SnowCloud`; `addons/particles/config.cpp` also declares
   `AEE_SupersonicTrace`. Both forward-declare `class Default;` to avoid
   shadowing the vanilla base.
 - **Realistic value**: the particle physics and the wind/downwash coupling are
@@ -266,7 +266,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
   `maxBrakeTorque`, `suspensionTravel`, `wheelCircumference`, `turnCoef`,
   `terrainCoef`, `acceleration`, `thrustDelay`, `dampingRate`,
   `driveOnComponent`, `class complexGearbox { ... }`, `class Wheels { ... }`.
-- **AEE status**: **partly ALREADY**. `addons/mobility/generated/CfgVehicles.hpp`
+- **AEE status**: **partly ALREADY**. `addons/vehicles/generated/CfgVehicles.hpp`
   re-declares 18 classes with `maxSpeed` and `mass` only. Each class restates
   its immediate real parent. A bare reopen is forbidden.
 - **Realistic value**: `mass` is a calibrated scale of a held real mass from
@@ -331,7 +331,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
   `CfgMarkerColors >> <color>`.
 - **What overriding changes**: `name`, `icon`, `texture`, `color[]`, `size`,
   `shadow`, `scope`, `markerClass`, `showEditorMarkerColor`.
-- **AEE status**: **ALREADY**. `addons/optics/config.cpp` declares
+- **AEE status**: **ALREADY**. `addons/symbology/config.cpp` declares
   `AEE_Symbology`, `ColorAEE`, `AEE_MarkerBase` and the full APP-6 marker set.
   `ColorAEE` is white, so each texture shows its own colour.
 - **Realistic value**: APP-6 / MIL-STD-2525. Source:
@@ -391,7 +391,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
 
 - **Class path**: `CfgFontFamilies >> <family>`.
 - **What overriding changes**: `fonts[]` (per-size glyph files), `spaceWidth`.
-- **AEE status**: **ALREADY, but inert**. `addons/optics/config.cpp` declares
+- **AEE status**: **ALREADY, but inert**. `addons/cartography/config.cpp` declares
   `AEEFont` and `AEEFontMono`. No `.fxy`/`.paa` glyph files ship, so the engine
   draws no text for them. The config no longer sets `fontGrid`/`fontNames`/`font`.
 - **Realistic value**: a real typeface (Rajdhani, B612 Mono) rendered through
@@ -432,7 +432,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
 - **Class path**: `CfgClothing >> <uniformClass>`.
 - **What overriding changes**: AEE's own per-uniform fields: `clo`,
   `alphaSolar`, `nirReflectance`, `permeability`, `emissivity`.
-- **AEE status**: **ALREADY**. `addons/physiology/config.cpp` declares it;
+- **AEE status**: **ALREADY**. `addons/clothing/config.cpp` declares it;
   `fnc_getCamouflageProperties.sqf` reads it.
 - **Realistic value**: ASHRAE 55 / ISO 11079 clo, DLA NIR reflectance,
   colour-based solar absorptivity.
@@ -464,7 +464,7 @@ of work:
 
 The programme: pick a domain, name the control or standard that supplies the
 value, generate the override from the cited corpus, and pin it with a test.
-The existing generated configs (`addons/mobility/generated/CfgVehicles.hpp`,
+The existing generated configs (`addons/vehicles/generated/CfgVehicles.hpp`,
 `addons/thermal/generated/ThermalOptics.hpp`) are the template: a generator,
 a header that says "do not edit by hand", and a `--check` gate in the Makefile.
 

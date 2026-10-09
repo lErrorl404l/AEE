@@ -93,7 +93,7 @@ Procedure:
    font sheet carries an alpha channel, so the output is DXT5.
 
 3. Place the `.fxy` and the `.paa` set under `addons/cartography/data/fonts/`.
-   The `CfgFontFamilies` paths in `addons/optics/config.cpp` point at them
+   The `CfgFontFamilies` paths in `addons/cartography/config.cpp` point at them
    with no extension.
 
 `hemtt utils paa compress` is optional. It reduces the size of an
@@ -111,7 +111,7 @@ AEE commits the source TTF and the OFL text for each family. AEE does not
 commit a `.fxy`, a `.tga` or a `.paa`. Those files need the operator step in
 section 3, so AEE cannot produce them here.
 
-The wiring in `addons/optics/config.cpp` names the `AEEFont` and
+The wiring in `addons/cartography/config.cpp` names the `AEEFont` and
 `AEEFontMono` families. The draw code names the family when the family
 exists and the `symbologyFont` setting is on. The engine falls back to its
 default font when the family is unavailable. The default font is the

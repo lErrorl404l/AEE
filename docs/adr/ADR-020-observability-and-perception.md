@@ -10,7 +10,7 @@ a person could not read one line and see the whole module. A cross-module
 disagreement was invisible: two modules could compute the same quantity and
 disagree, and no code compared them.
 
-The human-vision model and the eye adaptation already lived in `addons/optics`.
+The human-vision model and the eye adaptation already lived in the optics module, now `addons/eye` and `addons/vision`.
 The observability work added a perception aggregate, a runtime monitor and a
 consistency harness. The work needed a home.
 
@@ -22,21 +22,21 @@ need that weight.
 
 ### No new PBO
 
-The perception work stays in `addons/optics`. The consistency and module-health
-work stays in `addons/core`. No new addon directory is created, so the release
+The perception work lives in `addons/vision`. The consistency and module-health
+work lives in `addons/diagnostics`. No new addon directory is created, so the release
 ships no new PBO.
 
 ### The optics home
 
-The perception state lives in `addons/optics`. The pure kernel
+The perception state lives in `addons/vision`. The pure kernel
 `perceptionSample` and the client driver `perceptionUpdate` sit under
-`functions/perception`. The driver publishes `aee_optics_perceptionState` and
+`functions/perception`. The driver publishes `aee_vision_perceptionState` and
 its named fields: line, lux, aperture, grade and flags. The debug surface adds
 the force hooks and the settings under **AEE Debug > Perception**.
 
 ### The core home
 
-The module-health report and the consistency monitor live in `addons/core`.
+The module-health report and the consistency monitor live in `addons/diagnostics`.
 The evaluator `evaluateConsistency` is a pure kernel. The invariant table is
 `data/consistency/invariants.json`. The monitor publishes
 `aee_core_consistencyState`, `aee_core_consistencyFailures` and
@@ -60,7 +60,7 @@ An AI has no render state and no camera. The AI calls
 `EFUNC(vision, perceptionSample)` with its own value map. The kernel returns
 the same fixed schema that the client driver reads. The AI path does not read
 the local player state, so it is valid on a server. This is the reason the
-kernel lives in `addons/optics` and not in a client-only display path.
+kernel lives in `addons/vision` and not in a client-only display path.
 
 ### The settings and the hooks
 
@@ -85,7 +85,7 @@ observation.
 
 ### The future split
 
-If the perception capability outgrows `addons/optics`, split a future
+If the perception capability outgrows `addons/vision`, split a future
 `addons/perception`. The pure-kernel boundary makes the move cheap, because
 the kernel reads no optics global and no engine command. The move is an open
 option, not a commitment.

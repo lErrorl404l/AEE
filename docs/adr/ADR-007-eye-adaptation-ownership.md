@@ -8,7 +8,7 @@ Decision: AEE computes the adapted scene luminance each frame and pins the camer
 
 The engine can be told an aperture range with `setApertureNew [minimum, standard, maximum, luminance]`, and it then adapts inside that range at its own rate. That rate is not human, and the operator reported that the eye adapts too fast.
 
-The retirement of `addons/atmos/functions/state/fnc_updateAperture.sqf` (issue #141) moved aperture ownership into `addons/optics`. The old bridge handed the engine a range, so the engine kept the rate. The engine exposes no command that controls the adaptation rate.
+The retirement of `addons/atmos/functions/state/fnc_updateAperture.sqf` (issue #141) moved aperture ownership into the eye model, now `addons/eye` (then `addons/optics`). The old bridge handed the engine a range, so the engine kept the rate. The engine exposes no command that controls the adaptation rate.
 
 Two engine facts shape the design. `getLightingAt <object>` returns `[ambientLightColor, ambientLightBrightness, dynamicLightColor, dynamicLightBrightness]` and is the only command that folds local dynamic light into one value. `apertureParams` returns the engine's own `estimatedLuminance` and `blinding`. Neither brightness element has a documented unit.
 
@@ -24,7 +24,7 @@ The engine's own `setApertureNew` also reacts to the rendered scene: the less sk
 
 4. Exactly one writer owns the camera. The eye model stands down while `currentVisionMode != 0`, because night vision goggles and thermal sights set their own fixed exposure. The stand-down writes `setAperture -1` to hand the camera back. No aperture write remains in `atmos`.
 
-5. The operator tunes the model from CBA settings under `AEE Optics` > `Eye Adaptation`. Debug hooks on `missionNamespace` force a scene luminance (`aee_optics_eyeForceLux`), freeze the state (`aee_optics_eyeFreeze`), and force a day or night target (`aee_optics_eyeForceMode`). A muzzle flash adds a separate transient term through `aee_optics_eyeFlashLux` and `aee_optics_eyeFlashUntil`.
+5. The operator tunes the model from CBA settings under `AEE Eye` > `Eye Adaptation`. Debug hooks on `missionNamespace` force a scene luminance (`aee_eye_eyeForceLux`), freeze the state (`aee_eye_eyeFreeze`), and force a day or night target (`aee_eye_eyeForceMode`). A muzzle flash adds a separate transient term through `aee_eye_eyeFlashLux` and `aee_eye_eyeFlashUntil`.
 
 ## Time base and time skips
 

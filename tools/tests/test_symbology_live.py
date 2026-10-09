@@ -30,15 +30,17 @@ sys.path.insert(0, str(REPO))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-OPTICS = REPO / "addons" / "optics"
-SYM = OPTICS / "functions" / "symbology"
+SYM_ADDON = REPO / "addons" / "symbology"
+SYM = SYM_ADDON / "functions" / "symbology"
 ECHELON_KERNEL = SYM / "fnc_symbologyEchelon.sqf"
 ECHELON_MARKER_KERNEL = SYM / "fnc_symbologyEchelonMarker.sqf"
 DIMENSION_KERNEL = SYM / "fnc_symbologyDimension.sqf"
-TABLES_SQF = OPTICS / "data" / "symbology_tables.sqf"
+TABLES_SQF = SYM_ADDON / "data" / "symbology_tables.sqf"
 TABLES_JSON = REPO / "data" / "symbology" / "symbology_tables.json"
-MODIFIERS_SRC = (OPTICS / "config_modifiers.hpp").read_text(encoding="utf-8")
-CONFIG_SRC = (OPTICS / "config.cpp").read_text(encoding="utf-8")
+MODIFIERS_SRC = (SYM_ADDON / "config_modifiers.hpp").read_text(encoding="utf-8")
+CONFIG_SRC = (SYM_ADDON / "config.cpp").read_text(encoding="utf-8")
+FAMILY_SRC = (SYM_ADDON / "config_family.hpp").read_text(encoding="utf-8")
+MARKERS_SRC = (SYM_ADDON / "config_markers.hpp").read_text(encoding="utf-8")
 APPLY_SRC = (SYM / "fnc_symbologyMarkersApply.sqf").read_text(encoding="utf-8")
 RESTORE_SRC = (SYM / "fnc_symbologyMarkersRestore.sqf").read_text(encoding="utf-8")
 WORLD_SRC = (SYM / "fnc_symbologyWorldDraw.sqf").read_text(encoding="utf-8")
@@ -76,10 +78,20 @@ ECHELON_TOKENS = (
 REPOINTED = ("plane", "uav", "air", "naval", "installation")
 DIMENSION_LETTER = {"air": "A", "sea": "S", "installation": "I"}
 
-CLASS_BLOCK_RE = re.compile(
+# The runtime family aliases live in the generated config_family.hpp, not in
+# config.cpp.  Each alias is either a one-line alias of a real catalogue
+# marker ("class AEE_b_plane: AEE_FA_... {};") or a full AEE_MarkerBase class
+# for the five glyphs the catalogue does not publish.
+ALIAS_RE = re.compile(r"class (AEE_\w+): ([A-Za-z0-9_]+) \{(.*?)\};", re.DOTALL)
+FAMILY_ALIASES = {
+    m.group(1): (m.group(2), m.group(3)) for m in ALIAS_RE.finditer(FAMILY_SRC)
+}
+# The catalogue marker blocks in config_markers.hpp carry the icon the
+# aliases inherit.
+MARKER_BLOCK_RE = re.compile(
     r"class (AEE_\w+): AEE_MarkerBase \{(.*?)\n    \};", re.DOTALL
 )
-CLASS_BLOCKS = {m.group(1): m.group(2) for m in CLASS_BLOCK_RE.finditer(CONFIG_SRC)}
+MARKER_BLOCKS = {m.group(1): m.group(2) for m in MARKER_BLOCK_RE.finditer(MARKERS_SRC)}
 
 
 def echelon(size):
@@ -236,7 +248,11 @@ class TestWorldContract(unittest.TestCase):
     """fnc_symbologyWorldDraw carries the dimension and the echelon overlay."""
 
     def test_the_resolver_call_carries_the_dimension(self):
-        self.assertIn("_palette, _dimension", WORLD_SRC)
+        # The draw worker resolves "Auto" to _resolvedPalette before the
+        # resolver calls (as the map layer does), so the dimension rides on
+        # the resolved palette, not on the raw _palette read at the top.
+        self.assertIn("_resolvedPalette, _dimension", WORLD_SRC)
+        self.assertIn("call FUNC(symbolResolve)", WORLD_SRC)
 
     def test_the_echelon_overlay_is_drawn(self):
         self.assertIn("_echelonClass", WORLD_SRC)
@@ -284,28 +300,48 @@ class TestRepointedFrames(unittest.TestCase):
     """Every re-pointed simple class uses a dimension-correct texture."""
 
     @staticmethod
-    def _icon(block):
+    def _resolved(glyph, family):
+        """Return (icon, direct) for AEE_<family>_<glyph>.
+
+        direct is True when the alias of an AEE_MarkerBase owns its icon
+        (the catalogue publishes no texture for that glyph).
+        """
+        class_name = f"AEE_{family}_{glyph}"
+        parent, body = FAMILY_ALIASES[class_name]
+        if parent == "AEE_MarkerBase":
+            block = body
+            direct = True
+        else:
+            block = MARKER_BLOCKS[parent]
+            direct = False
         match = re.search(r'icon = "([^"]+)"', block)
-        assert match is not None, "the class block carries no icon"
-        return match.group(1)
+        assert match is not None, f"{class_name} resolves to no icon"
+        return match.group(1), direct
 
     def test_repointed_classes_use_dimension_correct_textures(self):
+        prefix = "\\z\\aee\\addons\\symbology\\data\\markers\\"
         for glyph in REPOINTED:
             dimension_name = GLYPH_DIMENSION_BY_TOKEN[glyph]
             letter = DIMENSION_LETTER[dimension_name]
             for family in ("b", "o", "n"):
                 with self.subTest(glyph=glyph, family=family):
-                    class_name = f"AEE_{family}_{glyph}"
-                    self.assertIn(class_name, CLASS_BLOCKS)
-                    icon = self._icon(CLASS_BLOCKS[class_name])
-                    self.assertTrue(
-                        icon.startswith("\\z\\aee\\addons\\optics\\data\\markers\\"),
-                        icon,
-                    )
+                    self.assertIn(f"AEE_{family}_{glyph}", FAMILY_ALIASES)
+                    icon, direct = self._resolved(glyph, family)
+                    self.assertTrue(icon.startswith(prefix), icon)
                     basename = icon.rsplit("\\", 1)[-1]
-                    token_parts = basename.split("_")
-                    self.assertGreaterEqual(len(token_parts), 2)
-                    self.assertIn(letter, token_parts[1])
+                    if not direct:
+                        # A catalogue parent names the battle dimension in the
+                        # second token, e.g. AEE_FA_... for air and AEE_FS_...
+                        # for sea.
+                        token_parts = basename.split("_")
+                        self.assertGreaterEqual(len(token_parts), 2)
+                        self.assertIn(letter, token_parts[1])
+                    else:
+                        # installation travels as AEE_FI_/HI_/NI_Installation,
+                        # a family+dimension composite, so the standalone
+                        # dimension token is not asserted.  The directory and
+                        # the on-disk file are the honest checks.
+                        self.assertIn(basename.split("_")[1], {"FI", "HI", "NI"})
                     # The virtual path \z\aee\ maps to the repo root, so the
                     # first two components are dropped to reach the file.
                     path_parts = [
@@ -317,8 +353,11 @@ class TestRepointedFrames(unittest.TestCase):
         for glyph in REPOINTED:
             for family in ("b", "o", "n"):
                 with self.subTest(glyph=glyph, family=family):
-                    block = CLASS_BLOCKS[f"AEE_{family}_{glyph}"]
-                    self.assertNotIn("\\A3\\ui_f\\", block)
+                    class_name = f"AEE_{family}_{glyph}"
+                    parent, body = FAMILY_ALIASES[class_name]
+                    self.assertNotIn("\\A3\\ui_f\\", body)
+                    if parent != "AEE_MarkerBase":
+                        self.assertNotIn("\\A3\\ui_f\\", MARKER_BLOCKS[parent])
 
 
 if __name__ == "__main__":

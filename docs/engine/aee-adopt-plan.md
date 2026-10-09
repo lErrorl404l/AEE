@@ -8,7 +8,7 @@ Method: read the licence survey, unpacked all 20 mods' PBOs with `hemtt utils pb
 
 ## 0. Correction to the survey (acts before everything else)
 
-**Mod 3800537038 "ACE Environment Extended" is this project.** Its `mod.cpp` action and author are `https://github.com/lErrorl404l/AEE` and `lErrorl404l`. The AEE git remote is `git@github.com:lErrorl404l/AEE.git`. The mod ships the same 20 PBOs (`aee_atmos`, `aee_thermal`, `aee_mobility`, `aee_compat_ace3`, ...) under the same `z\aee\addons\*` prefix as this repo. The survey classified it GPL-3.0; its local `LICENSE` is GPL-2.0-or-later.
+**Mod 3800537038 "ACE Environment Extended" is this project.** Its `mod.cpp` action and author are `https://github.com/lErrorl404l/AEE` and `lErrorl404l`. The AEE git remote is `git@github.com:lErrorl404l/AEE.git`. The mod ships the same 45 PBOs (`aee_atmos`, `aee_thermal`, `aee_mobility`, `aee_compat_ace3`, ...) under the same `z\aee\addons\*` prefix as this repo. The survey classified it GPL-3.0; its local `LICENSE` is GPL-2.0-or-later.
 
 Consequence: 3800537038 is **not an external adoptable mod**. It is AEE's own Workshop distribution. There is nothing to lift and no attribution to add. Treat the adoptable set as **19 external mods**, not 20. The one real risk it carries is a hard namespace collision: two copies of the same `z\aee\` PBO set cannot load together. AEE must be the single source.
 
@@ -41,7 +41,7 @@ Each entry: what it does, the AEE module it overlaps, the specific lift (named p
   - **Treatment flow:** `ace_medical_treatment/functions/fnc_treatment.sqf`, `fnc_tourniquet.sqf`, `fnc_surgicalKitProgress.sqf`. Take the stage/progress model, not the ACE item UI.
   - **Interaction-menu extension points:** `ace_interact_menu/functions/fnc_addActionToClass.sqf` and the self/vehicle action registration surface.
   - **Ballistics cross-check values:** `ace_advanced_ballistics/functions/fnc_calculateAmmoTemperatureVelocityShift.sqf`, `fnc_calculateBarrelLengthVelocityShift.sqf`, `fnc_calculateRetardation.sqf`, `fnc_calculateStabilityFactor.sqf`. Use these to validate AEE's own `addons/ballistics/functions/` numbers, not to replace them.
-- **Where AEE is ahead:** `addons/ballistics` (drag tables, Coriolis, propellant sensitivity, interior ballistics), `addons/thermal` (two-band LWIR/MWIR, ADR-019), `addons/nightvision` (tube model, AGC, pincushion, scintillation, ADR-009), `addons/optics` (symbology, map, ADR-023/24/26/28/29), `addons/maritime`, `addons/wildlife`. Do not swap any of these for the ACE equivalent.
+- **Where AEE is ahead:** `addons/ballistics` (drag tables, Coriolis, propellant sensitivity, interior ballistics), `addons/thermal` (two-band LWIR/MWIR, ADR-019), `addons/nightvision` (tube model, AGC, pincushion, scintillation, ADR-009), `addons/symbology` and `addons/cartography` (symbology, map, ADR-023/24/26/28/29), `addons/maritime`, `addons/wildlife`. Do not swap any of these for the ACE equivalent.
 - **Attribution:** GPL-2.0. Each lifted file keeps GPL and gains a header naming ACE3, its Workshop id 463939057 and the upstream version (3.21.2.113).
 - **Do not copy:** `addons/apl/` (the Arma Public License is not a free licence and is not GPL-compatible), `addons/*/sounds/` under CC-BY-3.0 (fastroping/tagging), CC-BY-4.0 (refuel) and CC0 (wardrobe). Those keep their own terms and are outside the GPL grant.
 
@@ -72,7 +72,7 @@ Each entry: what it does, the AEE module it overlaps, the specific lift (named p
   - `emr_main/functions/fnc_canClimb.sqf`, `fnc_startClimbing.sqf`, `fnc_climb.sqf`, `fnc_updateWalkableSurface.sqf`, `fnc_addWalkableSurfaceExitCondition.sqf`.
   - `emr_main/functions/fnc_jump.sqf`, `fnc_getStamina.sqf`, `fnc_setStamina.sqf`.
   - `emr_main/CfgMoves.hpp` and `keybinding.hpp` for the animation bindings.
-- **Where AEE is ahead:** AEE's vehicle mobility (`addons/mobility/functions/calculateSoilBearingStrength.sqf`, `calculateRolloverThreshold.sqf`, `applyAccretionMass.sqf`) is far deeper than EMR. EMR is a separate, additive on-foot layer; it must not touch the vehicle model.
+- **Where AEE is ahead:** AEE's vehicle mobility (`addons/mobility/functions/fnc_calculateSoilBearingStrength.sqf`, `calculateRolloverThreshold.sqf`, `applyAccretionMass.sqf`) is far deeper than EMR. EMR is a separate, additive on-foot layer; it must not touch the vehicle model.
 - **Attribution:** GPL-2.0.
 
 ### 1.6 KAT Advanced Medical (2020940806, GPL-3.0) - verdict: MERGE
@@ -132,7 +132,7 @@ See section 0. Same project, same namespace, same author, same PBOs. Nothing to 
 ### 1.11 ArmaFPV (3045129955, code GPL-2.0) - verdict: MERGE
 
 - **What it does:** an FPV drone: camera, flight, signal/battery model, OSD, PP effects.
-- **AEE overlap:** none. AEE has `addons/fx` (blast/particle/weather) but no drone.
+- **AEE overlap:** none. AEE has `addons/particles`, `addons/weatherfx` and `addons/blast` (blast/particle/weather) but no drone.
 - **Specific lift - code only:**
   - `ArmaFPV/functions/fn_fpv_getSignal.sqf`, `fn_fpv_handleSignal.sqf`, `fn_fpv_onSignalLost.sqf` - the signal-loss model.
   - `ArmaFPV/functions/fn_fpv_handleBattery.sqf`, `fn_fpv_handleTime.sqf` - endurance model.
@@ -151,7 +151,7 @@ See section 0. Same project, same namespace, same author, same PBOs. Nothing to 
   - `bocr_main/functions/fnc_chestpackToHolder.sqf`, `fnc_chestpackLoadout.sqf`, `fnc_setBackpackLoadout.sqf` - cargo/loadout transfer.
   - `bocr_main/functions/fnc_chestpackAcreRadios.sqf` - variable preservation across the swap.
   - `bocr_main/functions/fnc_EHGetOut.sqf`, `fnc_EHGetIn.sqf`, `fnc_EHAnimDone.sqf` - the event hooks.
-- **Where AEE is ahead:** nothing to regress; orthogonal. AEE's `addons/compat_ace3/fnc_getAceItemMass.sqf` already concerns item mass, so the chestpack mass handling should reuse it.
+- **Where AEE is ahead:** nothing to regress; orthogonal. AEE's `addons/compat_ace3/functions/fnc_getAceItemMass.sqf` already concerns item mass, so the chestpack mass handling should reuse it.
 - **Dependency note:** hard-requires CBA and ACE3.
 - **Attribution:** MIT - include the copyright notice and the MIT text in AEE's third-party notices.
 
@@ -216,9 +216,9 @@ See section 0. Same project, same namespace, same author, same PBOs. Nothing to 
 ### 1.19 Dust Wind Effect (1342869619, author grant) - verdict: LIFT
 
 - **What it does:** a foliage/projectile dust blast by spawning and sweeping a hidden `WindSpawner` object upward, on a high-caliber fired event.
-- **AEE overlap:** `addons/fx` (blast/particle/weather).
+- **AEE overlap:** `addons/particles`, `addons/weatherfx` and `addons/blast` (blast/particle/weather).
 - **Specific lift:** `Dr_WindSpawner/DustWindEffect/fn_DustEffectFire.sqf` (~15 lines) and the `WindSpawner` vehicle class in `Dr_WindSpawner/config.bin`. The whole mod is one small function plus a vehicle class.
-- **Where AEE is ahead:** `addons/fx/functions/` (blast, particle, weather) already owns the effect pipeline; route the dust through it rather than a new PFH.
+- **Where AEE is ahead:** `addons/particles/functions/` (blast, particle, weather) already owns the effect pipeline; route the dust through it rather than a new PFH.
 - **Attribution:** author grant: "discontinued, feel free to use, modify and reupload" (Workshop page). Quote the grant text, the URL and the date in the third-party notices. Not a named licence.
 
 ### 1.20 TFN NVG Effects (3682613859, author grant) - verdict: MERGE (idea only; AEE is ahead)
@@ -282,7 +282,7 @@ Ranked by (realism gained x fit to an AEE module) / (effort x integration risk).
    The largest realism domain AEE does not model: wounds, cardiac arrest, treatment. Highest absolute realism return. Cost is the highest (a full state machine) and it depends on ACE, so it lands in `compat_ace3`/`compat_kat` and needs the guarded adapter. Pair ACE's `ace_medical_status` with KAT's deeper modules.
 
 4. **Dust Wind Effect + D.I.R.T Blood pattern (1342869619 grant, 3525653940 MIT) - LIFT. TOP FIVE.**
-   Tiny files (about 45 lines total), explicit permissive grants, immediate visual realism. Route both through `addons/fx` and `addons/material`. D.I.R.T Blood is pattern-only because its host framework is APL-SA.
+   Tiny files (about 45 lines total), explicit permissive grants, immediate visual realism. Route both through `addons/particles` and `addons/material`. D.I.R.T Blood is pattern-only because its host framework is APL-SA.
 
 5. **BackpackOnChest Redux (2372036642, MIT) - MERGE. TOP FIVE.**
    Clean MIT, small (one 99-line core plus helpers), orthogonal to every AEE module, and the ACRE/ACE variable-preservation pattern is reusable for any AEE inventory work. Cost is low; the only requirement is a thin ACE/CBA guard.

@@ -32,7 +32,7 @@ class TestRangeCostLever(unittest.TestCase):
 
     def test_shadow_fraction(self):
         # The two-param form sets shadow to 25% of object.
-        self.assertIn("_to * 0.25", FNC)
+        self.assertIn("_objTarget * 0.25", FNC)
 
     def test_verified_40000_max_in_doc(self):
         # The research corrected the scripted max: 40,000, not 12,000.
