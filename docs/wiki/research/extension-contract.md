@@ -94,6 +94,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_compat_realweather` | `compat_realweather` |
 | `aee_compat_tfar` | `compat_tfar` |
 | `aee_core` | `core` |
+| `aee_diagnostics` | `diagnostics` |
 | `aee_environmental` | `environmental` |
 | `aee_fx` | `fx` |
 | `aee_lib` | `lib` |
@@ -204,23 +205,23 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_compat_tfar_fnc_integrateTFAR`
 - `aee_core_fnc_calculateIlluminance`
 - `aee_core_fnc_calculateSeededWeatherProgression`
-- `aee_core_fnc_consistencyFailureLine`
-- `aee_core_fnc_consistencyLoadTable`
-- `aee_core_fnc_consistencyLog`
 - `aee_core_fnc_coreBodyTemp`
-- `aee_core_fnc_diagnostic`
-- `aee_core_fnc_dumpPerformanceCounters`
-- `aee_core_fnc_dumpState`
-- `aee_core_fnc_evaluateConsistency`
 - `aee_core_fnc_getEyeState`
 - `aee_core_fnc_getSmoothedWeather`
 - `aee_core_fnc_handleCollisionDamage`
 - `aee_core_fnc_init`
 - `aee_core_fnc_moduleInit`
 - `aee_core_fnc_moduleStormInit`
-- `aee_core_fnc_reportModuleHealth`
-- `aee_core_fnc_runConsistencyCheck`
 - `aee_core_fnc_updateEnvironment`
+- `aee_diagnostics_fnc_consistencyFailureLine`
+- `aee_diagnostics_fnc_consistencyLoadTable`
+- `aee_diagnostics_fnc_consistencyLog`
+- `aee_diagnostics_fnc_diagnostic`
+- `aee_diagnostics_fnc_dumpPerformanceCounters`
+- `aee_diagnostics_fnc_dumpState`
+- `aee_diagnostics_fnc_evaluateConsistency`
+- `aee_diagnostics_fnc_reportModuleHealth`
+- `aee_diagnostics_fnc_runConsistencyCheck`
 - `aee_environmental_fnc_applyWorldLighting`
 - `aee_environmental_fnc_calculateAvalancheRisk`
 - `aee_environmental_fnc_calculateBiologicalAmbient`
@@ -750,7 +751,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (59)
+### Public core state variables (55)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -762,7 +763,6 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_clothingInsulation`
 - `aee_core_consistencyFailures`
 - `aee_core_consistencyState`
-- `aee_core_consistencyStrict`
 - `aee_core_coreBodyTemp`
 - `aee_core_currentHeatIndex`
 - `aee_core_currentHumidity`
@@ -781,9 +781,6 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_ehId_`
 - `aee_core_enabled`
 - `aee_core_fnc_calculateSeededWeatherProgression`
-- `aee_core_fnc_dumpState`
-- `aee_core_fnc_reportModuleHealth`
-- `aee_core_fnc_runConsistencyCheck`
 - `aee_core_geoAnchor`
 - `aee_core_groundSurfaceTemp`
 - `aee_core_hailActive`
@@ -821,15 +818,15 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 | `AEE_Unknown_Other` | `addons/optics/config.cpp` |
 | `ColorAEE` | `addons/optics/config.cpp` |
 | `AEE_MarkerBase` | `addons/optics/config.cpp` |
-| `AEE_SandCloud` | `addons/core/config.cpp` |
-| `AEE_SnowCloud` | `addons/core/config.cpp` |
+| `AEE_SandCloud` | `addons/fx/config.cpp` |
+| `AEE_SnowCloud` | `addons/fx/config.cpp` |
 | `AEE_SupersonicTrace` | `addons/fx/config.cpp` |
 | `CfgClothing` | `addons/physiology/config.cpp` |
 
 Engine classes AEE re-declares:
 
 - `CfgWorlds` (`addons/environmental/config.cpp`)
-- `CfgCloudlets` (`addons/core/config.cpp`)
+- `CfgCloudlets` (`addons/fx/config.cpp`)
 - `CfgMarkers` (`addons/optics/config.cpp`)
 - `CfgMarkerColors` (`addons/optics/config.cpp`)
 - `CfgMarkerClasses` (`addons/optics/config.cpp`)

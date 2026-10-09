@@ -83,9 +83,6 @@ AEE_SETTING_SLIDER(clothingInsulation,"AEE","Thermal",0.5,2.0,1.0,1);
 // ── Mud Accretion ──────────────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(mudAccretionEnabled,"AEE","Mobility",true);
 
-// ── Diagnostic ─────────────────────────────────────────────────────────────
-AEE_SETTING_CHECKBOX_LOCAL(diagnostic,"AEE Debug","Core",false);
-
 // ── Radio / Comms ──────────────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(radioPropagationEnabled,"AEE","Radio",true);
 
@@ -172,12 +169,3 @@ AEE_SETTING_SLIDER(lightScanInterval,"AEE","Core",0,120,30,0);
     true,
     {}
 ] call CBA_fnc_addSetting;
-
-// ── Consistency monitor (AEE Debug > Consistency) ─────────────────────────
-// The cross-module consistency monitor reads the published producer variables
-// every consistencyInterval seconds and warns when a module disagrees.  The
-// check is read-only and deterministic, so it runs on every machine.  Strict
-// mode also warns on a row that passes but whose producers are not equal.
-AEE_SETTING_CHECKBOX(consistencyCheck,"AEE Debug","Consistency",true);
-AEE_SETTING_SLIDER(consistencyInterval,"AEE Debug","Consistency",1,60,10,0);
-AEE_SETTING_CHECKBOX(consistencyStrict,"AEE Debug","Consistency",false);

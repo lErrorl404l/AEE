@@ -79,6 +79,10 @@ SKIP_DIRS = frozenset(
 )
 SKIP_REL = frozenset({str(ADDON_MAP_REL), str(SETTINGS_MAP_REL)})
 SKIP_PREFIXES = ("tools/compartmentalise/",)
+# The per-module migration tables name the OLD setting on purpose; rewriting it
+# would turn every pair into [new, new] and lose the migration. The tables are
+# map-driven and never carry a path, so the whole file is skipped.
+SKIP_NAMES = frozenset({"settingsMigration.sqf"})
 
 # The nine migration steps (plan section 5), by the destination addon each
 # creates.  A rule is in a step when its destination is in the step's set.
@@ -328,6 +332,8 @@ def iter_text_files(root: Path):
         if any(part in SKIP_DIRS for part in rel.parts):
             continue
         if rel_s in SKIP_REL or rel_s.startswith(SKIP_PREFIXES):
+            continue
+        if path.name in SKIP_NAMES:
             continue
         if path.suffix.lower() not in TEXT_SUFFIXES:
             continue

@@ -21,7 +21,7 @@
  * the dump (it averages only closed samples).
  *
  * The macro namespace is AEE's (aee_ballistics_*counter etc via GVAR).
- * Dump with: [] call aee_core_fnc_dumpPerformanceCounters
+ * Dump with: [] call aee_diagnostics_fnc_dumpPerformanceCounters
  */
 
 //#define ENABLE_PERFORMANCE_COUNTERS

@@ -12,23 +12,23 @@
       "evidence": "class Lighting: DefaultLighting {"
     },
     {
-      "id": "core-sand-cloudlet",
-      "addon": "core",
+      "id": "fx-sand-cloudlet",
+      "addon": "fx",
       "path": ["CfgCloudlets", "AEE_SandCloud"],
       "property": "interval",
       "type": "number",
       "expected": 0.005,
-      "source": "addons/core/config.cpp",
+      "source": "addons/fx/config.cpp",
       "evidence": "interval = 0.005;"
     },
     {
-      "id": "core-snow-cloudlet",
-      "addon": "core",
+      "id": "fx-snow-cloudlet",
+      "addon": "fx",
       "path": ["CfgCloudlets", "AEE_SnowCloud"],
       "property": "interval",
       "type": "number",
       "expected": 0.01,
-      "source": "addons/core/config.cpp",
+      "source": "addons/fx/config.cpp",
       "evidence": "interval = 0.01;"
     },
     {

@@ -205,7 +205,14 @@ class TestWildlifeTaxonomy(unittest.TestCase):
 EXPECTED_DEBUG = {
     ("AEE Debug", "AI"): {"aee_ai_logDebug"},
     ("AEE Debug", "Wildlife"): {"aee_wildlife_logDebug"},
-    ("AEE Debug", "Core"): {"aee_core_diagnostic", "aee_core_logDebug"},
+    ("AEE Debug", "Core"): {"aee_core_logDebug"},
+    ("AEE Debug", "Diagnostics"): {
+        "aee_diagnostics_consistencyCheck",
+        "aee_diagnostics_consistencyInterval",
+        "aee_diagnostics_consistencyStrict",
+        "aee_diagnostics_diagnostic",
+        "aee_diagnostics_logDebug",
+    },
     ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},
     ("AEE Debug", "Environmental"): {"aee_environmental_logDebug"},
     ("AEE Debug", "Thermal"): {"aee_thermal_thermalDebug", "aee_thermal_logDebug"},
@@ -231,11 +238,6 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Compat - TFAR"): {"aee_compat_tfar_logDebug"},
     ("AEE Debug", "Actions"): {"aee_actions_logDebug"},
     ("AEE Debug", "Material"): {"aee_material_logDebug"},
-    ("AEE Debug", "Consistency"): {
-        "aee_core_consistencyCheck",
-        "aee_core_consistencyInterval",
-        "aee_core_consistencyStrict",
-    },
 }
 
 

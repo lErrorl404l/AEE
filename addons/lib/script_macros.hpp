@@ -100,7 +100,7 @@
 // The 22 settings that need a LIST type, a non-standard title key, or a real
 // _code block stay in the hand-written long form.  AEE_SETTING_SLIDER_LOCAL is
 // absent for the same reason: aee_core_biomeOverride is a LIST and
-// aee_core_diagnostic is the only non-global CHECKBOX, so no non-global slider
+// aee_diagnostics_diagnostic is the only non-global CHECKBOX, so no non-global slider
 // exists and the variant would have zero call sites.
 // The 7th SLIDER argument is CBA's _trailingDecimals, NOT a step.  CBA's
 // SLIDER valueInfo order is [min, max, default, trailingDecimals, isPercentage]

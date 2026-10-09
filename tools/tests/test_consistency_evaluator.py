@@ -26,8 +26,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
-EVAL = REPO / "addons" / "core" / "functions" / "fnc_evaluateConsistency.sqf"
-SQF_TABLE = REPO / "addons" / "core" / "functions" / "fnc_consistencyLoadTable.sqf"
+EVAL = REPO / "addons" / "diagnostics" / "functions" / "fnc_evaluateConsistency.sqf"
+SQF_TABLE = (
+    REPO / "addons" / "diagnostics" / "functions" / "fnc_consistencyLoadTable.sqf"
+)
 JSON_TABLE = REPO / "data" / "consistency" / "invariants.json"
 
 ROW_ORDER = [

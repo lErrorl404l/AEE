@@ -29,6 +29,13 @@ ALLOWLIST: dict[str, str] = {
     "module and no debug switch",
 }
 
+# addon -> the addon whose PREP(dumpState) dumps it.  Core publishes state but
+# its consolidated dump moved to diagnostics (step 2 split, ADR-032); the dump
+# reads the aee_core_* variables via EGVAR, so core still has one state dump.
+HOSTED_DUMPS: dict[str, str] = {
+    "core": "diagnostics",
+}
+
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR
 # form, optionally inside a format [] for a composed name.
 _WRITE = re.compile(
@@ -54,7 +61,8 @@ class TestDumpStateContract(unittest.TestCase):
         for addon, files in sorted(_publishing_addons().items()):
             if addon in ALLOWLIST:
                 continue
-            prep = ADDONS / addon / "XEH_PREP.hpp"
+            host = HOSTED_DUMPS.get(addon, addon)
+            prep = ADDONS / host / "XEH_PREP.hpp"
             src = prep.read_text(encoding="utf-8") if prep.exists() else ""
             if _PREP_DUMP.search(src) or _EXISTING_DUMP.search(src):
                 continue

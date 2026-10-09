@@ -6,8 +6,8 @@
 // Each entry: [id, config path, property, type, expected AEE value].
 [
     ["env-world-lighting", ["CfgWorlds", "CAWorld", "Lighting"], "starEmissivity", "number", 25],
-    ["core-sand-cloudlet", ["CfgCloudlets", "AEE_SandCloud"], "interval", "number", 0.005],
-    ["core-snow-cloudlet", ["CfgCloudlets", "AEE_SnowCloud"], "interval", "number", 0.01],
+    ["fx-sand-cloudlet", ["CfgCloudlets", "AEE_SandCloud"], "interval", "number", 0.005],
+    ["fx-snow-cloudlet", ["CfgCloudlets", "AEE_SnowCloud"], "interval", "number", 0.01],
     ["fx-supersonic-cloudlet", ["CfgCloudlets", "AEE_SupersonicTrace"], "particleFSNtieth", "number", 1],
     ["thermal-tws-noise", ["CfgWeapons", "optic_tws", "ItemInfo", "OpticsModes", "TWS"], "thermalNoise", "array", [0.05]],
     ["thermal-tws-resolution", ["CfgWeapons", "optic_tws", "ItemInfo", "OpticsModes", "TWS"], "thermalResolution", "array", [640, 480]],

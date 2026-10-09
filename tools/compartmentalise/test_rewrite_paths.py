@@ -341,6 +341,35 @@ class TestRewritePaths(unittest.TestCase):
             "addons/eye/functions/eye/fnc_eyeThing.sqf\n",
         )
 
+    def test_settings_migration_table_keeps_the_old_name(self) -> None:
+        # The migration table names the OLD setting on purpose; rewriting it
+        # would turn [old, new] into [new, new] and lose the migration.
+        addon_map = _maps(targets=["core", "diagnostics"])
+        settings_map = {
+            "settings": {
+                "aee_core_consistencyCheck": "aee_diagnostics_consistencyCheck"
+            }
+        }
+        table = (
+            "[\n"
+            '    ["aee_core_consistencyCheck", "aee_diagnostics_consistencyCheck"]\n'
+            "]\n"
+        )
+        _write_tree(
+            self.root,
+            addon_map,
+            settings_map,
+            {"addons/diagnostics/data/settingsMigration.sqf": table},
+            {"diagnostics"},
+        )
+
+        self.assertEqual(_run(self.root, apply=False), 0)
+        self.assertEqual(_run(self.root, apply=True), 0)
+        self.assertEqual(
+            _read(self.root, "addons/diagnostics/data/settingsMigration.sqf"),
+            table,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

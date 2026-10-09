@@ -21,7 +21,7 @@ class AEE_Preset {
         typeName = "SCALAR";
         force = 1;
     };
-    class aee_core_diagnostic {
+    class aee_diagnostics_diagnostic {
         value = 0;
         typeName = "BOOL";
         force = 1;
