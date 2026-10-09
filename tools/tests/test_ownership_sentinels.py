@@ -68,7 +68,7 @@ class TestSentinelRegistry(unittest.TestCase):
                     "property": "starEmissivity",
                     "type": "number",
                     "expected": 999,
-                    "source": "addons/environmental/config.cpp",
+                    "source": "addons/lighting/config.cpp",
                     "evidence": "starEmissivity = 999;",
                 }
             ]

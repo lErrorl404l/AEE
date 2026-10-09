@@ -13,7 +13,7 @@ The kernel FUNC(weatherGrainParams) picks the six-element FilmGrain array
 from rain and sunOrMoon.  This driver scales its intensity by two factors:
 
   aee_vision_weatherGrainIntensity  operator setting, range 0 to 1
-  aee_environmental_worldLighting   element 2, the matcher grain scale
+  aee_lighting_worldLighting   element 2, the matcher grain scale
                                     (default 1 when the matcher has not run)
 
 Lifecycle (the existing hysteresis pattern from fnc_managePostProcess):
@@ -53,8 +53,8 @@ private _sunOrMoon = sunOrMoon;
 if !(_sunOrMoon isEqualType 0) then { _sunOrMoon = 1; };
 
 // The matcher publishes the per-world grain scale as element 2 of
-// aee_environmental_worldLighting.  Default 1 when it has not run.
-private _profile = missionNamespace getVariable [QEGVAR(environmental,worldLighting), [1, 1, 1, 1]];
+// aee_lighting_worldLighting.  Default 1 when it has not run.
+private _profile = missionNamespace getVariable [QEGVAR(lighting,worldLighting), [1, 1, 1, 1]];
 private _grainScale = 1;
 if ((_profile isEqualType []) && {(count _profile) > 2}) then {
     _grainScale = _profile select 2;

@@ -97,7 +97,7 @@ class TestNoRadianConversionRemains(unittest.TestCase):
     """Source-lock: the degree-based form must not regress to radians."""
 
     SITES = {
-        "addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf": [
+        "addons/lighting/functions/astronomy/fnc_calculateSolarRadiation.sqf": [
             "_haRad",
             "_latRad",
             "_declRad",
@@ -108,15 +108,15 @@ class TestNoRadianConversionRemains(unittest.TestCase):
             "_azRad",
             "_elevRad",
         ],
-        "addons/environmental/functions/biome/fnc_getSmoothedBiome.sqf": [
+        "addons/weather/functions/biome/fnc_getSmoothedBiome.sqf": [
             "_rad =",
             "sin _rad",
             "cos _rad",
         ],
-        "addons/environmental/functions/warnings/fnc_calculateAvalancheRisk.sqf": [
+        "addons/persistence/functions/warnings/fnc_calculateAvalancheRisk.sqf": [
             "_psi"
         ],
-        "addons/environmental/functions/astronomy/fnc_getStarCatalog.sqf": [
+        "addons/lighting/functions/astronomy/fnc_getStarCatalog.sqf": [
             "_latRad",
             "_raRad",
             "_decRad",

@@ -3413,7 +3413,7 @@ class TestSQFSync(unittest.TestCase):
         cfg = (
             _REPO_ROOT
             / "addons"
-            / "environmental"
+            / "lighting"
             / "functions"
             / "astronomy"
             / "fnc_calculateSolarRadiation.sqf"
@@ -3729,7 +3729,7 @@ class TestSQFSync(unittest.TestCase):
         cfg = (
             _REPO_ROOT
             / "addons"
-            / "environmental"
+            / "lighting"
             / "functions"
             / "astronomy"
             / "fnc_calculateSolarRadiation.sqf"

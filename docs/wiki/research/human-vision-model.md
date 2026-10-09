@@ -222,7 +222,7 @@ licence. They are not copied code. None is implemented. They are candidates for
 a follow-up plan. No file under `addons/environmental` is changed here.
 
 (a) Complete `HDRNewPars` globally. The AEE override in
-`addons/environmental/config.cpp` sets only `nvg*` and `DOFPars`. The complete
+`addons/lighting/config.cpp` sets only `nvg*` and `DOFPars`. The complete
 world tone map is the largest single gap. It covers bloom, the tone map,
 `eyeAdaptFactorLight`, `eyeAdaptFactorDark`, `nightShift*`, `starEmissivity`
 and `dynLightMinBrightness*`.

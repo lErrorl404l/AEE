@@ -13,7 +13,7 @@ from pathlib import Path
 
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
-_ENV = _REPO_ROOT / "addons" / "environmental" / "functions"
+_ENV = _REPO_ROOT / "addons" / "weather" / "functions"
 
 
 def _read_recursive(base, name):

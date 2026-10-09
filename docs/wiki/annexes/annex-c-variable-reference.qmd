@@ -148,9 +148,9 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_core_irLightLux` | core | IR light lux |
 | `aee_core_lightDirection` | core | Light direction |
 | `aee_core_lightIsNight` | core | Night flag |
-| `aee_environmental_nightClassification` | environmental | Night class |
+| `aee_lighting_nightClassification` | environmental | Night class |
 | `aee_core_starsVisibility` | core | Star visibility |
-| `aee_environmental_visibleStars` | environmental | Visible star count |
+| `aee_lighting_visibleStars` | environmental | Visible star count |
 | `aee_nightvision_nvgNoise` | nightvision | NVG noise |
 | `aee_nightvision_nvgTubeTier` | nightvision | NVG tube tier |
 | `aee_nightvision_nvgWetness` | nightvision | NVG wetness |
@@ -219,9 +219,9 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_physiology_uvIndex` | physiology | UV index 0..13 |
 | `aee_core_currentUVIndex` | physiology | UV index (core alias) |
 | `aee_thermal_batteryTemperatureDerating` | thermal | Battery derating 0.3..1 |
-| `aee_environmental_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
+| `aee_weather_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
 | `aee_physiology_scentDispersionDir` | physiology | Scent downwind direction |
-| `aee_environmental_scentDispersionDir` | environmental | Scent downwind direction (re-homed from physiology by the module-hygiene cleanup) |
+| `aee_weather_scentDispersionDir` | environmental | Scent downwind direction (re-homed from physiology by the module-hygiene cleanup) |
 | `aee_physiology_amsRisk` | physiology | Acute mountain sickness risk |
 | `aee_physiology_sleepState` | physiology | Sleep state |
 | `aee_physiology_sleepiness` | physiology | Sleepiness 0..1 |
@@ -322,16 +322,16 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | Variable | Subsystem | Purpose |
 |---|---|---|
 | `aee_core_currentFireRisk` | environmental | Fire spread risk 0..1 |
-| `aee_environmental_fireSpreadRate_mps` | environmental | Fire spread rate in m/s |
-| `aee_environmental_fireArea_m2` | environmental | Fire area in m2 |
+| `aee_persistence_fireSpreadRate_mps` | environmental | Fire spread rate in m/s |
+| `aee_persistence_fireArea_m2` | environmental | Fire area in m2 |
 | `aee_core_currentFloodRisk` | environmental | Flash flood risk 0..1 |
 | `aee_core_currentAvalancheRisk` | environmental | Avalanche risk 0..1 |
-| `aee_environmental_currentAvalancheStability` | environmental | McClung stability index S (strength/shear stress) |
-| `aee_environmental_avalancheBurialSurvival` | environmental | Burial survival curve [[0,0.97],[15,0.93],[35,0.30],[90,0.03]] |
-| `aee_environmental_iceThicknessCm` | environmental | Stefan-grown ice thickness in cm |
-| `aee_environmental_iceSafeKg` | environmental | Gold safe load P = 3.5·h² in kg |
-| `aee_environmental_concealmentFactor` | environmental | Seasonal concealment 0..1 (foliage/crop/snow/stance) |
-| `aee_environmental_concealmentClass` | environmental | Concealment surface class (forest/crop/grass/marsh/snow/bare) |
+| `aee_persistence_currentAvalancheStability` | environmental | McClung stability index S (strength/shear stress) |
+| `aee_persistence_avalancheBurialSurvival` | environmental | Burial survival curve [[0,0.97],[15,0.93],[35,0.30],[90,0.03]] |
+| `aee_persistence_iceThicknessCm` | environmental | Stefan-grown ice thickness in cm |
+| `aee_persistence_iceSafeKg` | environmental | Gold safe load P = 3.5·h² in kg |
+| `aee_weather_concealmentFactor` | environmental | Seasonal concealment 0..1 (foliage/crop/snow/stance) |
+| `aee_weather_concealmentClass` | environmental | Concealment surface class (forest/crop/grass/marsh/snow/bare) |
 | `aee_core_snowDepth_m` | environmental | Snow depth in metres |
 | `aee_core_frozenDepth_m` | environmental | Frozen depth in metres |
 | `aee_core_thawDepth_m` | environmental | Thaw depth in metres |
@@ -341,28 +341,28 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_currentDustDevil` | environmental | Dust devil activity 0..1 |
 | `aee_core_currentBlowingSnow` | environmental | Blowing snow 0..1 |
 | `aee_core_cbrnPersistence` | environmental | CBRN persistence 0.225..2.1 |
-| `aee_environmental_solarFlareActive` | environmental | Solar flare flag |
-| `aee_environmental_spaceWeatherFlareValue` | environmental | Flare value |
-| `aee_environmental_auroraVisibility` | environmental | Aurora visibility |
-| `aee_environmental_auroraIntensity` | environmental | Aurora intensity 0..1 |
-| `aee_environmental_kpIndex` | environmental | Kp index |
-| `aee_environmental_solarActivity` | environmental | Solar activity |
-| `aee_environmental_geomagneticDescription` | environmental | Geomagnetic description |
-| `aee_environmental_spaceWeatherFlareTimer` | environmental | Flare timer |
-| `aee_environmental_flashFloodRisk` | environmental | Flash flood risk 0..1 |
-| `aee_environmental_groundFrostPresent` | environmental | Ground frost flag |
-| `aee_environmental_groundFrostIntensity` | environmental | Ground frost 0..1 |
-| `aee_environmental_snowDriftIntensity` | environmental | Snow drift 0..1 |
-| `aee_environmental_freezeThawDescription` | environmental | Freeze-thaw description |
-| `aee_environmental_currentAvalancheWarning` | environmental | Avalanche warning |
-| `aee_environmental_currentSoundPropagation` | environmental | Sound propagation 0..1 |
-| `aee_environmental_biologicalAmbientIntensity` | environmental | Biological ambient |
+| `aee_weather_solarFlareActive` | environmental | Solar flare flag |
+| `aee_weather_spaceWeatherFlareValue` | environmental | Flare value |
+| `aee_lighting_auroraVisibility` | environmental | Aurora visibility |
+| `aee_weather_auroraIntensity` | environmental | Aurora intensity 0..1 |
+| `aee_weather_kpIndex` | environmental | Kp index |
+| `aee_weather_solarActivity` | environmental | Solar activity |
+| `aee_weather_geomagneticDescription` | environmental | Geomagnetic description |
+| `aee_weather_spaceWeatherFlareTimer` | environmental | Flare timer |
+| `aee_persistence_flashFloodRisk` | environmental | Flash flood risk 0..1 |
+| `aee_persistence_groundFrostPresent` | environmental | Ground frost flag |
+| `aee_persistence_groundFrostIntensity` | environmental | Ground frost 0..1 |
+| `aee_weather_snowDriftIntensity` | environmental | Snow drift 0..1 |
+| `aee_persistence_freezeThawDescription` | environmental | Freeze-thaw description |
+| `aee_persistence_currentAvalancheWarning` | environmental | Avalanche warning |
+| `aee_weather_currentSoundPropagation` | environmental | Sound propagation 0..1 |
+| `aee_weather_biologicalAmbientIntensity` | environmental | Biological ambient |
 | `aee_core_biome` | environmental | Koppen biome code (map climate class) |
-| `aee_environmental_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
-| `aee_environmental_localBiomeName` | environmental | Display name for `aee_environmental_localBiome` |
-| `aee_environmental_terrainSignals` | environmental | Terrain facts the world lighting matcher reads: water fraction and mean elevation |
-| `aee_environmental_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
-| `aee_environmental_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
+| `aee_weather_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
+| `aee_weather_localBiomeName` | environmental | Display name for `aee_weather_localBiome` |
+| `aee_weather_terrainSignals` | environmental | Terrain facts the world lighting matcher reads: water fraction and mean elevation |
+| `aee_lighting_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
+| `aee_lighting_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
 
 ### Maritime
 
@@ -459,16 +459,16 @@ read them.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_environmental_auroraActive` | environmental | Whether the aurora curtain is drawn this frame |
-| `aee_environmental_auroraSourceCount` | environmental | Live aurora particle sources |
-| `aee_environmental_milkyWayActive` | environmental | Whether the Milky Way band is drawn this frame |
-| `aee_environmental_milkyWaySampleCount` | environmental | Milky Way band samples this frame |
-| `aee_environmental_faintStarCount` | environmental | Faint stars drawn by the immediate-mode layer |
-| `aee_environmental_effectiveNelm` | environmental | The limiting magnitude the starfield uses (forced when `aee_environmental_starsForce` is set) |
-| `aee_environmental_starEmitterCount` | environmental | Bright-star light emitters requested |
-| `aee_environmental_starBrightnessCoefficient` | environmental | Resolved star render scale 0..1 (moon, light pollution, weather and the world matcher) |
-| `aee_environmental_houseCount` | environmental | Nearby house count behind the light-pollution penalty (5 s cache) |
-| `aee_environmental_ambientBrightness` | environmental | Engine ambient brightness behind the star coefficient (5 s cache) |
+| `aee_lighting_auroraActive` | environmental | Whether the aurora curtain is drawn this frame |
+| `aee_lighting_auroraSourceCount` | environmental | Live aurora particle sources |
+| `aee_lighting_milkyWayActive` | environmental | Whether the Milky Way band is drawn this frame |
+| `aee_lighting_milkyWaySampleCount` | environmental | Milky Way band samples this frame |
+| `aee_lighting_faintStarCount` | environmental | Faint stars drawn by the immediate-mode layer |
+| `aee_lighting_effectiveNelm` | environmental | The limiting magnitude the starfield uses (forced when `aee_lighting_starsForce` is set) |
+| `aee_lighting_starEmitterCount` | environmental | Bright-star light emitters requested |
+| `aee_lighting_starBrightnessCoefficient` | environmental | Resolved star render scale 0..1 (moon, light pollution, weather and the world matcher) |
+| `aee_lighting_houseCount` | environmental | Nearby house count behind the light-pollution penalty (5 s cache) |
+| `aee_lighting_ambientBrightness` | environmental | Engine ambient brightness behind the star coefficient (5 s cache) |
 
 ### Night-sky debug hooks
 
@@ -477,30 +477,30 @@ consolidated line is greppable by `sky state`.
 
 | Hook | Type | Purpose |
 |---|---|---|
-| `aee_environmental_skyForce` | Boolean | Force the whole night sky on |
-| `aee_environmental_auroraForce` | Number | -1 off, 0..1 forces that aurora intensity |
-| `aee_environmental_milkyWayForce` | Boolean | Force the Milky Way on |
-| `aee_environmental_starsForce` | Number | Forced limiting magnitude (6.5 reveals the faint bulk) |
-| `aee_environmental_meteorForce` | String | One-shot shower code (spawns one meteor) |
+| `aee_lighting_skyForce` | Boolean | Force the whole night sky on |
+| `aee_lighting_auroraForce` | Number | -1 off, 0..1 forces that aurora intensity |
+| `aee_lighting_milkyWayForce` | Boolean | Force the Milky Way on |
+| `aee_lighting_starsForce` | Number | Forced limiting magnitude (6.5 reveals the faint bulk) |
+| `aee_lighting_meteorForce` | String | One-shot shower code (spawns one meteor) |
 
 Set a hook from the debug console with the `missionNamespace setVariable`
 form:
 
 ```
-missionNamespace setVariable ["aee_environmental_skyForce", true];
-missionNamespace setVariable ["aee_environmental_auroraForce", 0.8];
-missionNamespace setVariable ["aee_environmental_milkyWayForce", true];
-missionNamespace setVariable ["aee_environmental_starsForce", 6.5];
-missionNamespace setVariable ["aee_environmental_meteorForce", "GEM"];
+missionNamespace setVariable ["aee_lighting_skyForce", true];
+missionNamespace setVariable ["aee_lighting_auroraForce", 0.8];
+missionNamespace setVariable ["aee_lighting_milkyWayForce", true];
+missionNamespace setVariable ["aee_lighting_starsForce", 6.5];
+missionNamespace setVariable ["aee_lighting_meteorForce", "GEM"];
 ```
 
 Clear every hook and return to the physics:
 
 ```
-missionNamespace setVariable ["aee_environmental_skyForce", false];
-missionNamespace setVariable ["aee_environmental_auroraForce", -1];
-missionNamespace setVariable ["aee_environmental_milkyWayForce", false];
-missionNamespace setVariable ["aee_environmental_starsForce", 0];
+missionNamespace setVariable ["aee_lighting_skyForce", false];
+missionNamespace setVariable ["aee_lighting_auroraForce", -1];
+missionNamespace setVariable ["aee_lighting_milkyWayForce", false];
+missionNamespace setVariable ["aee_lighting_starsForce", 0];
 ```
 
 ## Settings
@@ -526,7 +526,7 @@ console may set any of them directly.
 | `aee_maritime_logDebug` | Trace the maritime model |
 | `aee_atmos_logDebug` | Trace the atmospheric events |
 | `aee_armour_logDebug` | Trace the armour ladder |
-| `aee_environmental_logDebug` | Trace the consolidated sky state |
+| `aee_weather_logDebug` | Trace the consolidated sky state |
 | `aee_compat_ace3_logDebug` | Trace the ACE3 integration |
 | `aee_compat_acm_logDebug` | Trace the ACM integration |
 | `aee_compat_acre2_logDebug` | Trace the ACRE2 integration |
@@ -549,7 +549,7 @@ when this switch is on.
 
 | Variable | Purpose |
 |---|---|
-| `aee_environmental_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
+| `aee_lighting_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
 
 ### Particle and heat-haze coupling
 

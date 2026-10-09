@@ -63,7 +63,7 @@ private _table = [
             ["core", "aee_core_currentSunElevation"],
             ["thermal", "aee_thermal_skyBandTempC"],
             ["core", "aee_core_lightIsNight"],
-            ["environmental", "aee_environmental_nightClassification"]
+            ["lighting", "aee_lighting_nightClassification"]
         ],
         "daynight_consistent",
         1.0,

@@ -174,7 +174,7 @@ class TestWeatherGrainWiring(unittest.TestCase):
             r'\["optics",\s*"WeatherGrain",\s*"FilmGrain",\s*1747,\s*""\]\s*call EFUNC\(lib,createPPEffect\)',
         )
         # The matcher grain scale is element 2 of the published profile.
-        self.assertIn("QEGVAR(environmental,worldLighting)", live)
+        self.assertIn("QEGVAR(lighting,worldLighting)", live)
         self.assertIn("select 2", live)
         self.assertIn("QGVAR(weatherGrainIntensity)", live)
         self.assertIn("QGVAR(weatherGrainRainThreshold)", live)

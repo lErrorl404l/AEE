@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Persistence">
+        <Key ID="STR_AEE_Persistence_DewRate_Description">
+            <Original>Dew contribution to surface wetness per tick</Original>
+            <English>Dew contribution to surface wetness per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_DewRate_Name">
+            <Original>Dew Rate</Original>
+            <English>Dew Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_FlashFloodThreshold_Description">
+            <Original>Rain rate (mm/h) that counts as flash-flood producing</Original>
+            <English>Rain rate (mm/h) that counts as flash-flood producing</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_FlashFloodThreshold_Name">
+            <Original>Flash Flood Threshold</Original>
+            <English>Flash Flood Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_FrostAccumRate_Description">
+            <Original>Frost build-up speed per tick</Original>
+            <English>Frost build-up speed per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_FrostAccumRate_Name">
+            <Original>Frost Accumulation Rate</Original>
+            <English>Frost Accumulation Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_FrostDecayRate_Description">
+            <Original>Frost melt speed per tick</Original>
+            <English>Frost melt speed per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_FrostDecayRate_Name">
+            <Original>Frost Decay Rate</Original>
+            <English>Frost Decay Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_GroundFrostEnabled_Description">
+            <Original>Enable ground frost detection on terrain surfaces</Original>
+            <English>Enable ground frost detection on terrain surfaces</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_GroundFrostEnabled_Name">
+            <Original>Ground Frost Enabled</Original>
+            <English>Ground Frost Enabled</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_WettingRate_Description">
+            <Original>Surface wetting speed per tick per unit rain</Original>
+            <English>Surface wetting speed per tick per unit rain</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_WettingRate_Name">
+            <Original>Surface Wetting Rate</Original>
+            <English>Surface Wetting Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_logDebug_Description">
+            <Original>Log the ground-state trace line every environment tick after the one startup line (AEE Debug &gt; Persistence)</Original>
+            <English>Log the ground-state trace line every environment tick after the one startup line (AEE Debug &gt; Persistence)</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_logDebug_Name">
+            <Original>Persistence State Trace</Original>
+            <English>Persistence State Trace</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_slabDensity_Description">
+            <Original>Snow slab density in kg/m3 for the McClung shear-stress model</Original>
+            <English>Snow slab density in kg/m3 for the McClung shear-stress model</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_slabDensity_Name">
+            <Original>Slab Density</Original>
+            <English>Slab Density</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_slabDepth_Description">
+            <Original>Snow slab depth in metres for the McClung shear-stress model</Original>
+            <English>Snow slab depth in metres for the McClung shear-stress model</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_slabDepth_Name">
+            <Original>Slab Depth</Original>
+            <English>Slab Depth</English>
+        </Key>
+    </Package>
+</Project>

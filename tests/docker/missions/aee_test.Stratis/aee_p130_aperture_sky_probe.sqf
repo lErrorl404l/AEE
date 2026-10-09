@@ -105,7 +105,7 @@ if ((_bloom == 0.09) && {_linearWhite == 11.2}) then {
 
 // AEE's only run-time lighting output is the four-element world profile,
 // consumed by the star scale, the weather grain and the exhaust shimmer.
-private _profile = missionNamespace getVariable ["aee_environmental_worldLighting", []];
+private _profile = missionNamespace getVariable ["aee_lighting_worldLighting", []];
 if ((_profile isEqualType []) && {(count _profile) == 4}) then {
     _pass = _pass + 1;
 } else {

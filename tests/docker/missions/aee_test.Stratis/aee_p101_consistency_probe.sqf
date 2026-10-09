@@ -37,7 +37,7 @@ private _agree = [
     ["aee_core_currentSunElevation", -30],
     ["aee_thermal_skyBandTempC", -20],
     ["aee_core_lightIsNight", true],
-    ["aee_environmental_nightClassification", 4]
+    ["aee_lighting_nightClassification", 4]
 ];
 
 // The disagreeing map: the air temperature drops away from the two ground

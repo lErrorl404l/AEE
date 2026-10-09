@@ -28,7 +28,7 @@ private _hazard = "ACM_CBRN_chemical_sarin_";
 // slots) blocks part of the agent: a full kit scales the exposure by
 // 0.05, no kit by 1.0.
 private _normalised = ((_contamination - 0.225) / (2.1 - 0.225)) max 0 min 1;
-private _protection = [_unit] call EFUNC(environmental,getCbrnProtection);
+private _protection = [_unit] call EFUNC(persistence,getCbrnProtection);
 _normalised = _normalised * (1 - _protection);
 
 if ((_normalised > (missionNamespace getVariable [QEGVAR(compat_acm,CBRNContamThreshold), 0.01]))) then {

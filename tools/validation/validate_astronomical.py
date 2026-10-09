@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Validation for the AEE astronomical models (lunar illumination, NELM).
 
-Checks the maths in addons/environmental/functions/climatology/fnc_calculateLunarIllumination.sqf
-and addons/environmental/functions/astronomy/fnc_calculateLimitingMagnitude.sqf against
+Checks the maths in addons/weather/functions/climatology/fnc_calculateLunarIllumination.sqf
+and addons/lighting/functions/astronomy/fnc_calculateLimitingMagnitude.sqf against
 published references:
 
   Verifiable (checked here):

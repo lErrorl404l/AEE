@@ -38,9 +38,9 @@ ADDONS = REPO / "addons"
 ADDON_MAP = REPO / "docs" / "architecture" / "addon-map.json"
 
 # Addons present on disk that the migration retires: `main` becomes `lib` at
-# step 1, `environmental` splits into weather/lighting/persistence at step 5,
-# and `fx` splits into particles/weatherfx/blast at step 9.
-PENDING_RETIREMENT = frozenset({"main", "environmental", "fx"})
+# step 1 and `fx` splits into particles/weatherfx/blast at step 9.  The
+# `environmental` split (weather/lighting/persistence, step 5) is done.
+PENDING_RETIREMENT = frozenset({"main", "fx"})
 
 # The pre-migration monolith: one strongly connected component of twelve
 # addons. The lib-kernel extraction and the splits must SHRINK this set. A
@@ -96,8 +96,16 @@ def target_addons():
 
 
 def present_addons():
-    """Every addon directory on disk, sorted."""
-    return sorted(d.name for d in ADDONS.iterdir() if d.is_dir())
+    """Every addon directory on disk that holds a file, sorted.
+
+    A retired addon can leave an empty directory tree behind, so only a
+    directory that contains at least one file counts as present.
+    """
+    return sorted(
+        d.name
+        for d in ADDONS.iterdir()
+        if d.is_dir() and any(p.is_file() for p in d.rglob("*"))
+    )
 
 
 def origins():
@@ -202,13 +210,19 @@ def new_couplings(adjacency):
 
 
 class TestNoCycle(unittest.TestCase):
-    def test_environmental_does_not_depend_on_thermal(self):
-        """The direction that closed the cycle must stay closed."""
-        self.assertNotIn(
-            "thermal",
-            dependencies("environmental"),
-            "environmental reaches into thermal again: the cycle is back",
-        )
+    def test_split_addons_do_not_depend_on_thermal(self):
+        """The direction that closed the cycle must stay closed.
+
+        The environmental split left weather, lighting and persistence; none
+        may reach into thermal.
+        """
+        for addon in ("weather", "lighting", "persistence"):
+            with self.subTest(addon=addon):
+                self.assertNotIn(
+                    "thermal",
+                    dependencies(addon),
+                    f"{addon} reaches into thermal: the cycle is back",
+                )
 
     def test_material_is_still_a_leaf(self):
         """The shared owner must depend on nothing but itself.
@@ -248,9 +262,9 @@ class TestNoCycle(unittest.TestCase):
     def test_callers_use_the_new_owner(self):
         """The call sites must name material, not thermal."""
         for name in ("fnc_calculateFreezeThawCycling.sqf", "fnc_calculateIceLoad.sqf"):
-            text = (
-                ADDONS / "environmental" / "functions" / "terrain" / name
-            ).read_text(encoding="utf-8")
+            text = (ADDONS / "persistence" / "functions" / "terrain" / name).read_text(
+                encoding="utf-8"
+            )
             self.assertIn("EFUNC(material,calculateStefanCoefficient)", text)
             self.assertNotIn("EFUNC(thermal,calculateStefanCoefficient)", text)
 
@@ -258,10 +272,10 @@ class TestNoCycle(unittest.TestCase):
 class TestAiWildlifeDirection(unittest.TestCase):
     """aee_wildlife consumes aee_ai, never the reverse."""
 
-    def test_wildlife_consumes_ai_and_environmental(self):
+    def test_wildlife_consumes_ai_and_weather(self):
         deps = dependencies("wildlife")
         self.assertIn("ai", deps)
-        self.assertIn("environmental", deps)
+        self.assertIn("weather", deps)
 
     def test_ai_does_not_reach_into_wildlife(self):
         self.assertNotIn(

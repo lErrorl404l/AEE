@@ -201,14 +201,14 @@ private _tSkyK = ((_tAir + (_tSkyClear - _tAir) * (1 - _overcast)) + 273.15);
 // Conductivity follows Sturm et al. 1997, J. Climate 10, 1267:
 //   k = 0.023 + 0.234*rho                 rho < 0.156 g/cm3
 //   k = 0.138 - 1.01*rho + 3.233*rho^2    0.156 <= rho <= 0.6
-// The density is the existing aee_environmental_slabDensity setting, in
+// The density is the existing aee_persistence_slabDensity setting, in
 // kg/m3 for the McClung avalanche model. It is the same snowpack, so one
 // setting serves both rather than a second value that could disagree. The
 // default 300 kg/m3 is settled mid-winter snow.
 private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 if !(_snowDepth isEqualType 0) then { _snowDepth = 0; };
 private _snowCovered = _snowDepth > 0.02;
-private _snowDensity = (missionNamespace getVariable [QEGVAR(environmental,slabDensity), 300]) / 1000;
+private _snowDensity = (missionNamespace getVariable [QEGVAR(persistence,slabDensity), 300]) / 1000;
 if !(_snowDensity isEqualType 0) then { _snowDensity = 0.3 };
 if (_snowCovered) then {
     private _kSnow = if (_snowDensity < 0.156) then {

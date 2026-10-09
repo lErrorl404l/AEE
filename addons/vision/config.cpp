@@ -11,7 +11,7 @@ class CfgPatches {
             "aee_lib",
             "aee_core",
             "aee_eye",
-            "aee_environmental",
+            "aee_lighting",
             "aee_nightvision",
             "aee_thermal",
             "cba_main",

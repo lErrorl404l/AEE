@@ -299,8 +299,8 @@ class TestFaunaSourceContracts(unittest.TestCase):
 
     def test_resource_providers_use_the_published_facts(self):
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
-        self.assertIn("EFUNC(environmental,getCoastDistance)", text)
-        self.assertIn("QEGVAR(environmental,terrainSignals)", text)
+        self.assertIn("EFUNC(weather,getCoastDistance)", text)
+        self.assertIn("QEGVAR(weather,terrainSignals)", text)
 
     def test_herd_anchor_is_recorded_and_leashed(self):
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
@@ -413,7 +413,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
 
     def test_tick_reads_the_vegetation_signal_and_passes_it_to_the_bed(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
-        self.assertIn("QEGVAR(environmental,terrainSignals)", text)
+        self.assertIn("QEGVAR(weather,terrainSignals)", text)
         self.assertIn("EFUNC(lib,readState)", text)
         self.assertIn("_vegScore", text)
         # The score and the settlement and coastal overlays are appended to

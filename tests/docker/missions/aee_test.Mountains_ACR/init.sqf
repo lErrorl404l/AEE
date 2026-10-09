@@ -30,7 +30,7 @@ if ((_enabledNum == 1) && (_interval == 5)) then {
 
 // -- PHASE 2: functions compiled and resolvable -----------------------------
 private _fnEnv = missionNamespace getVariable ["aee_core_fnc_updateEnvironment", nil];
-private _fnBiome = missionNamespace getVariable ["aee_environmental_fnc_getBiome", nil];
+private _fnBiome = missionNamespace getVariable ["aee_weather_fnc_getBiome", nil];
 private _fnTemp = missionNamespace getVariable ["aee_thermal_fnc_updateTemperature", nil];
 private _fnDust = missionNamespace getVariable ["aee_fx_fnc_applyAtmosphericDust", nil];
 private _fnRain = missionNamespace getVariable ["aee_fx_fnc_applyRainSurfaceDrops", nil];
@@ -45,7 +45,7 @@ if ((!isNil "_fnEnv") && (!isNil "_fnBiome") && (!isNil "_fnTemp") && (!isNil "_
 // -- diagnostic: does getBiome store a value? --------------------------------
 private _biomeBefore = missionNamespace getVariable ["aee_core_biome", "<missing>"];
 diag_log text format ["[AEE-TEST] biome before call: %1", _biomeBefore];
-[] call aee_environmental_fnc_getBiome;
+[] call aee_weather_fnc_getBiome;
 private _biomeAfter = missionNamespace getVariable ["aee_core_biome", "<missing>"];
 diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
 
@@ -77,7 +77,7 @@ private _p8Pass = 0;
 private _p8Fail = 0;
 {
     _x params ["_code", "_temps", "_precip"];
-    private _got = [_temps, _precip, 0] call aee_environmental_fnc_classifyBiome;
+    private _got = [_temps, _precip, 0] call aee_weather_fnc_classifyBiome;
     if (_got == _code) then {
         diag_log text format ["[PHASE8] [PASS] %1", _code];
         _p8Pass = _p8Pass + 1;
@@ -128,7 +128,7 @@ private _p9Fail = 0;
     [aee_optics_fnc_calculateSolarGlare, [nil]],
     [aee_optics_fnc_calculateSolarGlare, [objNull]],
     [aee_ballistics_fnc_calculateCrosswindBallistics, [nil]],
-    [aee_environmental_fnc_getBiome, []]
+    [aee_weather_fnc_getBiome, []]
 ];
 
 // 9c: extreme values — state should clamp, not explode
@@ -171,7 +171,7 @@ private _perfTests = [
     ["aee_optics_fnc_calculateSolarGlare", [player], 100, 0.001],
     ["aee_optics_fnc_calculateSnowBlindness", [player], 100, 0.001],
     ["aee_ballistics_fnc_calculateCrosswindBallistics", [player], 100, 0.001],
-    ["aee_environmental_fnc_getBiome", [], 100, 0.001]
+    ["aee_weather_fnc_getBiome", [], 100, 0.001]
 ];
 
 {
@@ -236,7 +236,7 @@ if (_p10Fail == 0) then {
     // Map-wide biome verdict from the getBiome cache.  aee_core_biome
     // is overwritten by per-position detection during the tick wait
     // (issue #184), so read the classification cache instead.
-    private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", "<none>"];
+    private _mapBiome = missionNamespace getVariable ["aee_weather_biomeCached", "<none>"];
     diag_log text format ["[BIOME] %1=%2", worldName, _mapBiome];
     // World lighting matcher: classify the loaded world, no per-map entry.
     execVM "aee_p84b_world_lighting_probe.sqf";
@@ -259,8 +259,8 @@ if (_p10Fail == 0) then {
     // detail may. This asserts both, so a future writer that reaches for
     // aee_core_biome from the position path fails here.
     if (!isNil "_biome") then {
-        private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", ""];
-        private _localBiome = missionNamespace getVariable ["aee_environmental_localBiome", ""];
+        private _mapBiome = missionNamespace getVariable ["aee_weather_biomeCached", ""];
+        private _localBiome = missionNamespace getVariable ["aee_weather_localBiome", ""];
         private _mapPlausible = true;
         if (_mapBiome != "") then {
             _mapPlausible = switch (true) do {
@@ -606,7 +606,7 @@ if (_p10Fail == 0) then {
     ];
     {
         _x params ["_elev", "_phase", "_expected"];
-        private _got = [_elev, _phase] call aee_environmental_fnc_classifyNight;
+        private _got = [_elev, _phase] call aee_lighting_fnc_classifyNight;
         if (_got == _expected) then {
             _p13Pass = _p13Pass + 1;
         } else {
@@ -616,8 +616,8 @@ if (_p10Fail == 0) then {
     } forEach _cases;
 
     // calculateLimitingMagnitude: known lux + seeing pairs
-    private _magStarlight = [0.001, 0.1] call aee_environmental_fnc_calculateLimitingMagnitude;
-    private _magFullMoon = [0.3, 0.1] call aee_environmental_fnc_calculateLimitingMagnitude;
+    private _magStarlight = [0.001, 0.1] call aee_lighting_fnc_calculateLimitingMagnitude;
+    private _magFullMoon = [0.3, 0.1] call aee_lighting_fnc_calculateLimitingMagnitude;
     if ((abs (_magStarlight - 6.3) < 0.2) && (abs (_magFullMoon - 3.8) < 0.2)) then {
         diag_log text format ["[PHASE13] [PASS] limiting magnitude: starlight=%1 fullMoon=%2", _magStarlight, _magFullMoon];
         _p13Pass = _p13Pass + 1;
@@ -627,7 +627,7 @@ if (_p10Fail == 0) then {
     };
 
     // getStarCatalog: Stratis position (lat 35 N) at night must return stars
-    private _catalog = [[7300, 7300, 0], [2024, 1, 11]] call aee_environmental_fnc_getStarCatalog;
+    private _catalog = [[7300, 7300, 0], [2024, 1, 11]] call aee_lighting_fnc_getStarCatalog;
     if (count _catalog > 0) then {
         diag_log text format ["[PHASE13] [PASS] star catalog: %1 stars visible", count _catalog];
         _p13Pass = _p13Pass + 1;
@@ -637,8 +637,8 @@ if (_p10Fail == 0) then {
     };
 
     // end-to-end: updateEnvironment wired values (checked after env tick)
-    private _nightClass = missionNamespace getVariable ["aee_environmental_nightClassification", -1];
-    private _limMag = missionNamespace getVariable ["aee_environmental_limitingMagnitude", -1];
+    private _nightClass = missionNamespace getVariable ["aee_lighting_nightClassification", -1];
+    private _limMag = missionNamespace getVariable ["aee_lighting_limitingMagnitude", -1];
     if ((_nightClass >= 0) && (_limMag > 0)) then {
         diag_log text format ["[PHASE13] [PASS] env wiring: nightClass=%1 limMag=%2", _nightClass, _limMag];
         _p13Pass = _p13Pass + 1;
@@ -1105,13 +1105,13 @@ if (_p10Fail == 0) then {
     // --- Tide + flash flood risk (compound flooding) ---
     // Seed rain rate to 0.8 (20 mm/h), accum to 0.5.
     // Override rain since engine rain is 0 in docker.
-    missionNamespace setVariable ["aee_environmental_rainRateOverride", 0.8];
-    missionNamespace setVariable ["aee_environmental_rainAccum", 0.5];
+    missionNamespace setVariable ["aee_persistence_rainRateOverride", 0.8];
+    missionNamespace setVariable ["aee_weather_rainAccum", 0.5];
     // Set flash flood threshold if not already set.
-    private _ffThresh = missionNamespace getVariable ["aee_environmental_FlashFloodThreshold", 15];
-    missionNamespace setVariable ["aee_environmental_FlashFloodThreshold", _ffThresh];
+    private _ffThresh = missionNamespace getVariable ["aee_persistence_FlashFloodThreshold", 15];
+    missionNamespace setVariable ["aee_persistence_FlashFloodThreshold", _ffThresh];
 
-    private _fnFlood = missionNamespace getVariable ["aee_environmental_fnc_calculateFlashFloodRisk", nil];
+    private _fnFlood = missionNamespace getVariable ["aee_persistence_fnc_calculateFlashFloodRisk", nil];
     if (isNil "_fnFlood") then {
         diag_log text "[PHASE20] [FAIL] flash flood risk function not compiled";
         _p20Fail = _p20Fail + 1;
@@ -1119,12 +1119,12 @@ if (_p10Fail == 0) then {
         // Case A: tide = 0 (no compound factor).  Risk = intensity/threshold * (1+accum) * terrain.
         missionNamespace setVariable ["aee_core_currentTideOffset_m", 0];
         [] call _fnFlood;
-        private _riskA = missionNamespace getVariable ["aee_environmental_flashFloodRisk", -1];
+        private _riskA = missionNamespace getVariable ["aee_persistence_flashFloodRisk", -1];
 
         // Case B: tide = 1.5 (compound factor ~1.4).  Risk should be higher.
         missionNamespace setVariable ["aee_core_currentTideOffset_m", 1.5];
         [] call _fnFlood;
-        private _riskB = missionNamespace getVariable ["aee_environmental_flashFloodRisk", -1];
+        private _riskB = missionNamespace getVariable ["aee_persistence_flashFloodRisk", -1];
 
         if (_riskB > _riskA && _riskB > 0 && _riskB <= 1) then {
             diag_log text format ["[PHASE20] [PASS] compound flooding: no-tide=%1, high-tide=%2", _riskA, _riskB];
@@ -1149,7 +1149,7 @@ if (_p10Fail == 0) then {
     // Seeds the environmental state and checks the four frost gates.
     private _p21Pass = 0;
     private _p21Fail = 0;
-    private _fnFrost = missionNamespace getVariable ["aee_environmental_fnc_detectGroundFrost", nil];
+    private _fnFrost = missionNamespace getVariable ["aee_persistence_fnc_detectGroundFrost", nil];
     if (isNil "_fnFrost") then {
         diag_log text "[PHASE21] [FAIL] ground frost function not compiled";
         _p21Fail = _p21Fail + 1;
@@ -1160,7 +1160,7 @@ if (_p10Fail == 0) then {
         missionNamespace setVariable ["aee_core_currentWindStr", 1];
         missionNamespace setVariable ["aee_core_overcast", 0];
         private _i1 = [] call _fnFrost;
-        private _present1 = missionNamespace getVariable ["aee_environmental_groundFrostPresent", false];
+        private _present1 = missionNamespace getVariable ["aee_persistence_groundFrostPresent", false];
         if (_i1 > 0.5 && _present1) then {
             diag_log text format ["[PHASE21] [PASS] frost at -5 degC/90%%RH/clear/calm = %1", _i1];
             _p21Pass = _p21Pass + 1;
@@ -1404,7 +1404,7 @@ if (_p10Fail == 0) then {
 
         // Case 3: hazards present -> report lists them.
         missionNamespace setVariable ["aee_core_currentAvalancheRisk", 0.8];
-        missionNamespace setVariable ["aee_environmental_flashFloodRisk", 0.7];
+        missionNamespace setVariable ["aee_persistence_flashFloodRisk", 0.7];
         private _r3 = [] call _fnReport;
         if (_r3 find "Hazards:" >= 0 && _r3 find "Avalanche Severe" >= 0 && _r3 find "Flash Flood Severe" >= 0) then {
             diag_log text "[PHASE24] [PASS] report lists hazards";
@@ -1717,7 +1717,7 @@ private _p29Pass = 0;
     // sub-auroral latitude, which is the CORRECT physics for Stratis).
     private _p30Pass = 0;
     private _p30Fail = 0;
-    private _fnSW = missionNamespace getVariable ["aee_environmental_fnc_calculateSpaceWeather", nil];
+    private _fnSW = missionNamespace getVariable ["aee_weather_fnc_calculateSpaceWeather", nil];
     if (isNil "_fnSW") then {
         diag_log text "[PHASE30] [FAIL] space weather function not compiled";
         _p30Fail = _p30Fail + 1;
@@ -1729,8 +1729,8 @@ private _p29Pass = 0;
         missionNamespace setVariable ["aee_core_overcast", 0];
         [] call _fnSW;
 
-        private _kp = missionNamespace getVariable ["aee_environmental_kpIndex", -1];
-        private _intensity = missionNamespace getVariable ["aee_environmental_auroraIntensity", -1];
+        private _kp = missionNamespace getVariable ["aee_weather_kpIndex", -1];
+        private _intensity = missionNamespace getVariable ["aee_weather_auroraIntensity", -1];
         if (_kp >= 0 && _kp <= 9) then {
             diag_log text format ["[PHASE30] [PASS] Kp index computed: %1", _kp];
             _p30Pass = _p30Pass + 1;
@@ -2200,7 +2200,7 @@ private _p29Pass = 0;
     // Gold ice load, which are pure functions of slope and thickness.
     private _p38Pass = 0;
     private _p38Fail = 0;
-    private _fnAval = missionNamespace getVariable ["aee_environmental_fnc_calculateAvalancheRisk", nil];
+    private _fnAval = missionNamespace getVariable ["aee_persistence_fnc_calculateAvalancheRisk", nil];
     if (isNil "_fnAval") then {
         diag_log text "[PHASE38] [FAIL] avalanche function not compiled";
         _p38Fail = _p38Fail + 1;
@@ -2253,7 +2253,7 @@ private _p29Pass = 0;
     // checks use the AI unit's own ground (Stratis grassland -> bare floor).
     private _p39Pass = 0;
     private _p39Fail = 0;
-    private _fnConceal = missionNamespace getVariable ["aee_environmental_fnc_calculateConcealment", nil];
+    private _fnConceal = missionNamespace getVariable ["aee_weather_fnc_calculateConcealment", nil];
     if (isNil "_fnConceal") then {
         diag_log text "[PHASE39] [FAIL] concealment function not compiled";
         _p39Fail = _p39Fail + 1;
@@ -2265,7 +2265,7 @@ private _p29Pass = 0;
         // The docker asserts what is surface-INDEPENDENT: the factor is a
         // bounded 0..1 and snow lowers it.
         [getPosASL _unit, "PRONE"] call _fnConceal;
-        private _c1 = missionNamespace getVariable ["aee_environmental_concealmentFactor", -1];
+        private _c1 = missionNamespace getVariable ["aee_weather_concealmentFactor", -1];
         if (_c1 >= 0.0 && _c1 <= 1.0) then {
             diag_log text format ["[PHASE39] [PASS] concealment bounded = %1", _c1];
             _p39Pass = _p39Pass + 1;
@@ -2276,10 +2276,10 @@ private _p29Pass = 0;
 
         // Snow penalty: seed snow depth, concealment must drop.
         [getPosASL _unit, "STAND"] call _fnConceal;
-        private _c0 = missionNamespace getVariable ["aee_environmental_concealmentFactor", -1];
+        private _c0 = missionNamespace getVariable ["aee_weather_concealmentFactor", -1];
         missionNamespace setVariable ["aee_core_snowDepth_m", 0.5];
         [getPosASL _unit, "STAND"] call _fnConceal;
-        private _cSnow = missionNamespace getVariable ["aee_environmental_concealmentFactor", -1];
+        private _cSnow = missionNamespace getVariable ["aee_weather_concealmentFactor", -1];
         missionNamespace setVariable ["aee_core_snowDepth_m", 0];
         if (_cSnow <= _c0 + 0.001) then {
             diag_log text format ["[PHASE39] [PASS] snow does not increase concealment: %1 -> %2", _c0, _cSnow];

@@ -39,6 +39,12 @@ HOSTED_DUMPS: dict[str, str] = {
     "symbology": "optics",
     "cartography": "optics",
     "hud": "optics",
+    # The environmental split (step 5, ADR-032) left one consolidated
+    # environment dump: `logSkyState` now lives in lighting.  weather and
+    # persistence publish into that same environment state, so they reuse it,
+    # exactly as the single `environmental` addon did before the split.
+    "weather": "lighting",
+    "persistence": "lighting",
 }
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR
@@ -83,7 +89,7 @@ class TestDumpStateContract(unittest.TestCase):
     def test_the_three_existing_dumps_are_still_prepped(self):
         for addon, name in (
             ("wildlife", "logWildlifeState"),
-            ("environmental", "logSkyState"),
+            ("lighting", "logSkyState"),
             ("mobility", "logAirframeState"),
         ):
             prep = ADDONS / addon / "XEH_PREP.hpp"

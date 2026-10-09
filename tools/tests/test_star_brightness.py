@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-ASTRONOMY = REPO / "addons" / "environmental" / "functions" / "astronomy"
+ASTRONOMY = REPO / "addons" / "lighting" / "functions" / "astronomy"
 BRIGHTNESS = ASTRONOMY / "fnc_starBrightnessCoefficient.sqf"
 FADE = ASTRONOMY / "fnc_starWeatherFade.sqf"
 PENALTY = ASTRONOMY / "fnc_lightPollutionPenalty.sqf"
@@ -178,7 +178,7 @@ class TestKernelPurity(unittest.TestCase):
                     self.assertNotIn(token, text)
 
     def test_prep_entries_exist(self) -> None:
-        prep = (REPO / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+        prep = (REPO / "addons" / "lighting" / "XEH_PREP.hpp").read_text(
             encoding="utf-8"
         )
         for entry in (

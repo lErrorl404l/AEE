@@ -37,13 +37,13 @@ if (_id == "") exitWith { false };
 // stored once so the out-of-scope callback can reach them.
 private _waterProvider = {
     params ["_point"];
-    private _coast = [_point, 200] call EFUNC(environmental,getCoastDistance);
+    private _coast = [_point, 200] call EFUNC(weather,getCoastDistance);
     if !(_coast isEqualType 0) then { _coast = 200; };
     1 - ((_coast / 200) min 1)
 };
 private _vegProvider = {
     params ["_point"];
-    private _signals = missionNamespace getVariable [QEGVAR(environmental,terrainSignals), []];
+    private _signals = missionNamespace getVariable [QEGVAR(weather,terrainSignals), []];
     if !(_signals isEqualType []) then { _signals = []; };
     [_signals] call FUNC(vegScore)
 };
@@ -184,7 +184,7 @@ private _callback = {
 
             // Arrival at the resource resets the matching need.
             if (_wantWater) then {
-                private _coast = [_position, 200] call EFUNC(environmental,getCoastDistance);
+                private _coast = [_position, 200] call EFUNC(weather,getCoastDistance);
                 if (_coast isEqualType 0) then {
                     if (_coast < 25) then { _agent setVariable [QGVAR(thirst), 0]; };
                 };

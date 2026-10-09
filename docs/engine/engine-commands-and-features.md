@@ -201,7 +201,7 @@ Altis values: `minAperture=0.00001`, `maxAperture=256`,
 `nightShiftMaxAperture=0.002`, `nvgApertureMin/Std/Max=10/12.5/16.5`,
 `nvgLightGain=320`. The engine default differs (`nvg* = 1/7/15`,
 `nvgLightGain=100`, `tonemapMethod=2` vs Altis 1). AEE restates the full block
-in `addons/environmental/config.cpp` and locks `nvgApertureMin=Standard=Max=7`
+in `addons/lighting/config.cpp` and locks `nvgApertureMin=Standard=Max=7`
 to remove the artificial NVG range.
 
 **Depth-of-field config [CFG].** `CfgWorlds >> CAWorld >> DOFPars`
@@ -271,7 +271,7 @@ per-vehicle (`CfgVehicles >> lightPoints` families); the light commands act on a
 **Gotcha [AEE].** AEE drives dynamic star and meteor lights with
 `setLightUseFlare` + `setLightFlareSize` + `setLightFlareMaxDistance` + a
 non-black colour, and keeps `setLightAmbient` black so the field stays dark
-([AEE `addons/environmental/functions/astronomy/fnc_starLightsSync.sqf`]). The
+([AEE `addons/lighting/functions/astronomy/fnc_starLightsSync.sqf`]). The
 flare path is BIKI "Light Source Tutorial"-derived, community-reported.
 
 ### 5. Particles
@@ -384,7 +384,7 @@ textures are selected from existing `.rvmat`/`.paa` assets only.
   `addons/eye/functions/eye/fnc_eyeSampleScene.sqf`,
   `addons/vision/functions/vision/fnc_runThermalPass.sqf`,
   `addons/nightvision/functions/fnc_applyNVGTubeModel.sqf`,
-  `addons/environmental/config.cpp`.
+  `addons/lighting/config.cpp`.
 
 ## AEE engine reference, section: simulation, scheduler, physics, animation, ballistics, damage
 

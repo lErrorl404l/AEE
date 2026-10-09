@@ -51,7 +51,7 @@ params [];
 // ─── Read the physics inputs ─────────────────────────────────────────────
 private _fog   = missionNamespace getVariable [QEGVAR(core,currentFogDensity),      0];
 private _haze  = missionNamespace getVariable [QEGVAR(core,currentHaze),             0];
-private _nelm  = missionNamespace getVariable [QEGVAR(environmental,limitingMagnitude),     6.5];
+private _nelm  = missionNamespace getVariable [QEGVAR(lighting,limitingMagnitude),     6.5];
 private _sunDown = (parseNumber (sunOrMoon < 0));
 
 // Rain rate from the engine weather (rain * 25 = mm/h, per the optics

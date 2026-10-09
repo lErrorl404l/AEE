@@ -209,7 +209,7 @@ AEE_SOAK_FINAL = {
         ["aee_optics_fnc_calculateSolarGlare", [player], 100, 0.001],
         ["aee_optics_fnc_calculateSnowBlindness", [player], 100, 0.001],
         ["aee_ballistics_fnc_calculateCrosswindBallistics", [player], 100, 0.001],
-        ["aee_environmental_fnc_getBiome", [], 100, 0.001]
+        ["aee_weather_fnc_getBiome", [], 100, 0.001]
     ];
 
     {

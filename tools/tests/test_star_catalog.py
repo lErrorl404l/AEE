@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "validation"))
 from gen_star_catalog import parse_all, V_CUTOFF  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-SENSOR = ROOT / "addons" / "environmental" / "functions" / "astronomy"
+SENSOR = ROOT / "addons" / "lighting" / "functions" / "astronomy"
 
 
 def near(a, b, tol):
@@ -66,13 +66,13 @@ class TestCatalogWiring(unittest.TestCase):
         self.assertIn("call FUNC(starCatalogData)", text)
 
     def test_prep_entry_exists(self):
-        prep = (ROOT / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+        prep = (ROOT / "addons" / "lighting" / "XEH_PREP.hpp").read_text(
             encoding="utf-8"
         )
         self.assertIn("PREPS(astronomy,starCatalogData)", prep)
 
     def test_render_is_bright_capped(self):
-        comp = (ROOT / "addons" / "environmental" / "script_component.hpp").read_text(
+        comp = (ROOT / "addons" / "lighting" / "script_component.hpp").read_text(
             encoding="utf-8"
         )
         sync = (SENSOR / "fnc_starLightsSync.sqf").read_text(encoding="utf-8")

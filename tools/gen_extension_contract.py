@@ -54,7 +54,7 @@ ANCHOR_CLASSES = {
 # The engine config classes AEE re-declares.  Each must be opened literally in
 # the named source.
 ANCHOR_ENGINE_CLASSES = {
-    "CfgWorlds": "addons/environmental/config.cpp",
+    "CfgWorlds": "addons/lighting/config.cpp",
     "CfgCloudlets": "addons/fx/config.cpp",
     "CfgMarkers": "addons/symbology/config.cpp",
     "CfgMarkerColors": "addons/symbology/config.cpp",

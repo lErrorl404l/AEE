@@ -137,14 +137,6 @@
             <Original>Rehydration Rate</Original>
             <English>Rehydration Rate</English>
         </Key>
-        <Key ID="STR_AEE_Physiology_ScentIntensity_Description">
-            <Original>Scale on scent detectability (0 = off, 1 = normal, 2 = strong)</Original>
-            <English>Scale on scent detectability (0 = off, 1 = normal, 2 = strong)</English>
-        </Key>
-        <Key ID="STR_AEE_Physiology_ScentIntensity_Name">
-            <Original>Scent Intensity</Original>
-            <English>Scent Intensity</English>
-        </Key>
         <Key ID="STR_AEE_Physiology_SeatReclined_Description">
             <Original>Reclined seat (adds 0.5 G tolerance)</Original>
             <English>Reclined seat (adds 0.5 G tolerance)</English>

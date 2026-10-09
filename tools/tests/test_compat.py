@@ -31,7 +31,7 @@ def _read_env_biome():
     """Read fnc_getBiome.sqf from its categorised subfolder (issue #203)."""
     from pathlib import Path
 
-    base = Path("addons/environmental/functions")
+    base = Path("addons/weather/functions")
     for f in base.rglob("fnc_getBiome.sqf"):
         return f.read_text(encoding="utf-8")
     raise FileNotFoundError("fnc_getBiome.sqf not found")
@@ -460,7 +460,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
         from pathlib import Path
 
         solar = Path(
-            "addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf"
+            "addons/lighting/functions/astronomy/fnc_calculateSolarRadiation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", solar)
         self.assertIn("select 1", solar)  # magnitude
@@ -469,7 +469,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
         self.assertIn("getWorldLocation", biome)
 
         space = Path(
-            "addons/environmental/functions/climatology/fnc_calculateSpaceWeather.sqf"
+            "addons/weather/functions/climatology/fnc_calculateSpaceWeather.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", space)
 
@@ -479,7 +479,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
         self.assertIn("getWorldLocation", compass)
 
         star = Path(
-            "addons/environmental/functions/astronomy/fnc_getStarCatalog.sqf"
+            "addons/lighting/functions/astronomy/fnc_getStarCatalog.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", star)
         # No direct CfgWorlds latitude read may remain outside the source.
