@@ -111,7 +111,7 @@ if (GVAR(windEnabled)) then {
 };
 if (GVAR(fxEnabled)) then {
     BEGIN_COUNTER(windNoise);
-    [] call EFUNC(fx,applyWindNoise);
+    [] call EFUNC(weatherfx,applyWindNoise);
     END_COUNTER(windNoise);
 };
 
@@ -307,9 +307,9 @@ if (GVAR(atmosphericEventsEnabled)) then {
 
     // ── FX triggers (visual/audio events also require FX enabled) ───────
     if (GVAR(fxEnabled)) then {
-        [] call EFUNC(fx,calculateLightningStrikeEffects);
-        [] call EFUNC(fx,triggerLightning);
-        [] call EFUNC(fx,triggerSevereWeatherFX);
+        [] call EFUNC(weatherfx,calculateLightningStrikeEffects);
+        [] call EFUNC(weatherfx,triggerLightning);
+        [] call EFUNC(weatherfx,triggerSevereWeatherFX);
     };
 };
 END_COUNTER(atmosEvents);
@@ -320,7 +320,7 @@ END_COUNTER(atmosEvents);
 // weather gates read the current sandstorm and blowing-snow state, and
 // after the phase model so snowfall sees the current phase.
 if (GVAR(fxEnabled)) then {
-    [] call EFUNC(fx,particlePipeline);
+    [] call EFUNC(particles,particlePipeline);
 };
 
 // ─── Hail damage (#151 follow-on) ─────────────────────────────────────────
@@ -391,7 +391,7 @@ if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateSeaState);
     // Engine wave rendering follows the sea state (issue #141).
     [] call EFUNC(maritime,updateEngineWaves);
-    [] call EFUNC(maritime,calculateCompassDeviation);
+    [] call EFUNC(magnetism,calculateCompassDeviation);
 };
 
 // ─── Visual / Gameplay ────────────────────────────────────────────────────
@@ -411,7 +411,7 @@ if (GVAR(opticsEnabled)) then {
 [] call EFUNC(optics,applyHeatShimmerFX);
 [] call EFUNC(nightvision,applyNightGrain);
 [] call EFUNC(optics,applyMirageFX);
-[] call EFUNC(fx,applyExhaustShimmer);
+[] call EFUNC(weatherfx,applyExhaustShimmer);
 [] call EFUNC(optics,applySolarGlareFX);
 [] call EFUNC(optics,applySnowBlindnessFX);
 [] call EFUNC(optics,applyDewOnOpticsFX);
@@ -423,9 +423,9 @@ if (GVAR(physiologyEnabled)) then {
 
 // ─── Breath condensation ───────────────────────────────────────────────────
 if (GVAR(fxEnabled)) then {
-    [] call EFUNC(fx,applyBreathCondensation);
-    [] call EFUNC(fx,applyRainVehicleSound);
-    [] call EFUNC(fx,applyRainSurfaceDrops);
+    [] call EFUNC(weatherfx,applyBreathCondensation);
+    [] call EFUNC(weatherfx,applyRainVehicleSound);
+    [] call EFUNC(weatherfx,applyRainSurfaceDrops);
 };
 
 if (EGVAR(diagnostics,diagnostic)) then {

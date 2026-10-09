@@ -31,17 +31,19 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 FX = REPO / "addons" / "fx"
-PARTICLE = FX / "functions" / "particle"
-WEATHER = FX / "functions" / "weather"
+PARTICLE = REPO / "addons" / "particles" / "functions" / "particle"
+WEATHER = REPO / "addons" / "weatherfx" / "functions" / "weather"
 ALPHA = PARTICLE / "fnc_weatherParticleAlpha.sqf"
 HAZE_ALPHA = PARTICLE / "fnc_heatHazeAlpha.sqf"
 HAZE_SIZE = PARTICLE / "fnc_heatHazeSize.sqf"
-PREP = FX / "XEH_PREP.hpp"
+PREP = REPO / "addons" / "particles" / "XEH_PREP.hpp"
 TRACE = PARTICLE / "fnc_renderSupersonicTrace.sqf"
 EMIT = PARTICLE / "fnc_particlePipelineEmit.sqf"
 SHIMMER = WEATHER / "fnc_applyExhaustShimmer.sqf"
-INIT_SETTINGS = FX / "initSettings.inc.sqf"
-STRINGTABLE = FX / "stringtable.xml"
+INIT_SETTINGS = REPO / "addons" / "particles" / "initSettings.inc.sqf"
+WEATHERFX_SETTINGS = REPO / "addons" / "weatherfx" / "initSettings.inc.sqf"
+PARTICLES_STRINGTABLE = REPO / "addons" / "particles" / "stringtable.xml"
+WEATHERFX_STRINGTABLE = REPO / "addons" / "weatherfx" / "stringtable.xml"
 CONFIG_DOCS = REPO / "docs" / "wiki" / "chapters" / "configuration.qmd"
 CHANGED_FX = (TRACE, EMIT, SHIMMER)
 
@@ -211,8 +213,8 @@ class TestWeatherWiring(unittest.TestCase):
 
     def test_heat_haze_is_wired_to_the_exhaust_shimmer(self) -> None:
         live = live_source(SHIMMER)
-        self.assertIn("FUNC(heatHazeAlpha)", live)
-        self.assertIn("FUNC(heatHazeSize)", live)
+        self.assertIn("EFUNC(particles,heatHazeAlpha)", live)
+        self.assertIn("EFUNC(particles,heatHazeSize)", live)
         self.assertIn("ambientTemperature", live)
 
     def test_haze_scale_guards_a_zero_reference(self) -> None:
@@ -252,40 +254,46 @@ class TestWeatherWiring(unittest.TestCase):
 
 
 class TestWeatherSettings(unittest.TestCase):
-    def test_settings_register_in_the_fx_particles_group(self) -> None:
-        live = live_source(INIT_SETTINGS)
+    def test_settings_register_in_the_particles_and_weatherfx_groups(self) -> None:
+        particles = live_source(INIT_SETTINGS)
+        weatherfx = live_source(WEATHERFX_SETTINGS)
         self.assertRegex(
-            live,
-            r'AEE_SETTING_CHECKBOX\(weatherAlphaEnabled,"AEE FX","Particles",true\)',
+            particles,
+            r'AEE_SETTING_CHECKBOX\(weatherAlphaEnabled,"AEE Particles","Particles",true\)',
         )
         self.assertRegex(
-            live,
-            r'AEE_SETTING_CHECKBOX\(heatHazeEnabled,"AEE FX","Particles",true\)',
+            weatherfx,
+            r'AEE_SETTING_CHECKBOX\(heatHazeEnabled,"AEE Weather FX","Particles",true\)',
         )
         self.assertRegex(
-            live,
-            r'AEE_SETTING_SLIDER\(heatHazeMaxAlpha,"AEE FX","Particles",0,0\.45,0\.45,2\)',
+            weatherfx,
+            r'AEE_SETTING_SLIDER\(heatHazeMaxAlpha,"AEE Weather FX","Particles",0,0\.45,0\.45,2\)',
         )
 
     def test_stringtable_carries_the_keys(self) -> None:
-        text = STRINGTABLE.read_text(encoding="utf-8")
+        particles = PARTICLES_STRINGTABLE.read_text(encoding="utf-8")
+        weatherfx = WEATHERFX_STRINGTABLE.read_text(encoding="utf-8")
         for key in (
-            "STR_AEE_FX_weatherAlphaEnabled_Name",
-            "STR_AEE_FX_weatherAlphaEnabled_Description",
-            "STR_AEE_FX_heatHazeEnabled_Name",
-            "STR_AEE_FX_heatHazeEnabled_Description",
-            "STR_AEE_FX_heatHazeMaxAlpha_Name",
-            "STR_AEE_FX_heatHazeMaxAlpha_Description",
+            "STR_AEE_Particles_weatherAlphaEnabled_Name",
+            "STR_AEE_Particles_weatherAlphaEnabled_Description",
         ):
             with self.subTest(key=key):
-                self.assertIn(key, text)
+                self.assertIn(key, particles)
+        for key in (
+            "STR_AEE_WeatherFX_heatHazeEnabled_Name",
+            "STR_AEE_WeatherFX_heatHazeEnabled_Description",
+            "STR_AEE_WeatherFX_heatHazeMaxAlpha_Name",
+            "STR_AEE_WeatherFX_heatHazeMaxAlpha_Description",
+        ):
+            with self.subTest(key=key):
+                self.assertIn(key, weatherfx)
 
     def test_configuration_docs_are_regenerated(self) -> None:
         doc = CONFIG_DOCS.read_text(encoding="utf-8")
         for name in (
-            "aee_fx_weatherAlphaEnabled",
-            "aee_fx_heatHazeEnabled",
-            "aee_fx_heatHazeMaxAlpha",
+            "aee_particles_weatherAlphaEnabled",
+            "aee_weatherfx_heatHazeEnabled",
+            "aee_weatherfx_heatHazeMaxAlpha",
         ):
             with self.subTest(name=name):
                 self.assertIn(name, doc)

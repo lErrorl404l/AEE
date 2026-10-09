@@ -22,7 +22,7 @@ from sqf_lite import run_sqf  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 ADDONS = ROOT / "addons"
 
-MAGNETIC = ADDONS / "maritime" / "functions" / "fnc_calculateMagneticAnomaly.sqf"
+MAGNETIC = ADDONS / "magnetism" / "functions" / "fnc_calculateMagneticAnomaly.sqf"
 ROLLOVER = ADDONS / "mobility" / "functions" / "fnc_calculateRolloverThreshold.sqf"
 
 
@@ -102,7 +102,7 @@ class TestNoRadianConversionRemains(unittest.TestCase):
             "_latRad",
             "_declRad",
         ],
-        "addons/maritime/functions/fnc_calculateMagneticAnomaly.sqf": ["_tiltRad"],
+        "addons/magnetism/functions/fnc_calculateMagneticAnomaly.sqf": ["_tiltRad"],
         "addons/thermal/functions/surface/fnc_isPositionShadowed.sqf": ["_azR", "_elR"],
         "addons/thermal/functions/display/fnc_getSelectionSunExposure.sqf": [
             "_azRad",

@@ -1,29 +1,8 @@
-// RscText needs a FULL base definition, not a forward declaration.  An
-// empty parent class gives the control no type, so it never renders (the
-// focus HUD was invisible for exactly this reason).  Definition mirrors
-// FPANO ECOTI's working HUD (workshop 3759527903) and the vanilla default.
-class RscText {
-    type = 0;
-    idc = -1;
-    style = 0;
-    shadow = 1;
-    font = "PuristaMedium";
-    sizeEx = "0.02 * safezoneH";
-    colorText[] = {1, 1, 1, 1};
-    colorBackground[] = {0, 0, 0, 0};
-};
-
-// RscPicture needs a FULL base definition (same reason as RscText above):
-// an empty parent gives the control no type, so it never renders.  style 48
-// is ST_PICTURE.
-class RscPicture {
-    type = 0;
-    idc = -1;
-    style = 48;
-    colorBackground[] = {0, 0, 0, 0};
-    colorText[] = {1, 1, 1, 1};
-    texture = "";
-};
+// The single full declaration of RscText/RscPicture is in lib
+// (config_controls.hpp, ADR-032 ceiling 2); a forward declaration here
+// resolves to it, and a second full body would cross the config-root ceiling.
+class RscText;
+class RscPicture;
 
 class RscTitles {
     class GVAR(nvgTitle) {

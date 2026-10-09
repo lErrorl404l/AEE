@@ -17,7 +17,7 @@ has six columns:
 
 A media string with a dot is a raw vanilla .wss file. A media string without
 a dot is a vanilla CfgSFX class. An UNKNOWN or UNCONFIRMED recording is
-never given a species. The sound map aee_wildlife_fnc_speciesSound reads
+never given a species. The sound map aee_ambience_fnc_speciesSound reads
 this table.
 */
 [

@@ -234,7 +234,7 @@ The sound runtime constants are modelling choices, UNSOURCED.
 | Constant | Value | Source | State |
 | --- | --- | --- | --- |
 | Sound-instance cap per client | 3 | Modelling. The acoustic niche hypothesis (Krause 1987; Pijanowski et al. 2011, BioScience 61(3):203-216) holds that species partition the auditory spectrum, so overlap is minimised. No published simultaneous-caller count exists, so three is a stated ceiling | [UNSOURCED] number |
-| Silence decay | 0.05 per disturbance unit | Modelling, the `aee_wildlife_silenceDecay` slider | [UNSOURCED] |
+| Silence decay | 0.05 per disturbance unit | Modelling, the `aee_ambience_silenceDecay` slider | [UNSOURCED] |
 | Wildlife simulation tick budget | 2 ms per call | Modelling, the core gate is 5 ms | [UNSOURCED] |
 | One-shot sound max distance | 120 m | `playSound3D` distance argument | [P] |
 | Rain bed gain factor | Up to 1.5 times at rain 1 | Modelling, the engine `rain` input | [UNSOURCED] |

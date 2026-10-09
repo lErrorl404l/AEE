@@ -33,7 +33,7 @@ private _imperfection = missionNamespace getVariable [QGVAR(nvgImperfectionAlpha
 if !(_imperfection isEqualType 0) then { _imperfection = 0; };
 private _nightGrain = missionNamespace getVariable [QGVAR(nightGrainActive), false];
 if !(_nightGrain isEqualType false) then { _nightGrain = false; };
-private _ltmPFH = missionNamespace getVariable [QGVAR(ltmPFH), -1];
+private _ltmPFH = missionNamespace getVariable [QEGVAR(ltm,ltmPFH), -1];
 if !(_ltmPFH isEqualType 0) then { _ltmPFH = -1; };
 
 private _logMsg = format [

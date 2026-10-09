@@ -37,7 +37,7 @@ nightly headless regression test.
 
 2. **AEE HUD > Displays** holds the four on-screen displays:
    `aee_thermal_display_fusionHud`, `aee_hud_hudEnabled`,
-   `aee_physiology_HUDWarningThreshold` and `aee_nightvision_ltmEnabled`
+   `aee_physiology_HUDWarningThreshold` and `aee_ltm_ltmEnabled`
    (the NVG laser target marker). Precedence rule: a setting that toggles an
    on-screen readout panel goes to HUD even when its code is fusion or ECOTI.
    `fusionFovFrame` and `fusionOutline` are render primitives on the fused

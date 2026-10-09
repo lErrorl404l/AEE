@@ -43,8 +43,8 @@ EXPECTED_HUD = {
     "aee_cartography_mgrsPrecision",
     "aee_cartography_mgrsPrecisionAuto",
     "aee_physiology_HUDWarningThreshold",
-    "aee_nightvision_ltmEnabled",
-    "aee_nightvision_ltmDaylightFade",
+    "aee_ltm_ltmEnabled",
+    "aee_ltm_ltmDaylightFade",
 }
 
 EXPECTED_HUD_TRACKER = {
@@ -158,11 +158,9 @@ EXPECTED_WILDLIFE_FAUNA = {
 
 EXPECTED_WILDLIFE = {
     ("AEE Wildlife", "General"): EXPECTED_WILDLIFE_GENERAL,
-    ("AEE Wildlife", "Ambient Sound"): {"aee_wildlife_ambientEnabled"},
     ("AEE Wildlife", "Fauna"): EXPECTED_WILDLIFE_FAUNA,
     ("AEE Wildlife", "Behaviour"): {
         "aee_wildlife_spookSensitivity",
-        "aee_wildlife_silenceDecay",
         "aee_wildlife_hungerRate",
         "aee_wildlife_thirstRate",
         "aee_wildlife_herdSize",
@@ -175,11 +173,6 @@ EXPECTED_WILDLIFE = {
     ("AEE Wildlife", "Cognition"): {
         "aee_wildlife_cognitionEnabled",
         "aee_wildlife_cognitionBudgetMs",
-    },
-    ("AEE Wildlife", "Communication"): {
-        "aee_wildlife_communicationEnabled",
-        "aee_wildlife_callRange",
-        "aee_wildlife_callBudget",
     },
 }
 
@@ -213,7 +206,7 @@ EXPECTED_DEBUG = {
         "aee_diagnostics_diagnostic",
         "aee_diagnostics_logDebug",
     },
-    ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},
+    ("AEE Debug", "FX"): {"aee_core_collisionDebug"},
     ("AEE Debug", "Environmental"): {"aee_weather_logDebug"},
     ("AEE Debug", "Lighting"): {"aee_lighting_logDebug"},
     ("AEE Debug", "Persistence"): {"aee_persistence_logDebug"},
@@ -252,6 +245,12 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Compat - TFAR"): {"aee_compat_tfar_logDebug"},
     ("AEE Debug", "Actions"): {"aee_actions_logDebug"},
     ("AEE Debug", "Material"): {"aee_material_logDebug"},
+    ("AEE Debug", "Particles"): {"aee_particles_logDebug"},
+    ("AEE Debug", "Weather FX"): {"aee_weatherfx_logDebug"},
+    ("AEE Debug", "Blast"): {"aee_blast_logDebug"},
+    ("AEE Debug", "Ambience"): {"aee_ambience_logDebug"},
+    ("AEE Debug", "LTM"): {"aee_ltm_logDebug"},
+    ("AEE Debug", "Magnetism"): {"aee_magnetism_logDebug"},
 }
 
 
@@ -275,7 +274,7 @@ class TestDebugTaxonomy(unittest.TestCase):
 # slider.  These two maps lock the corrected values so the defect cannot return.
 EXPECTED_SLIDER_DECIMALS = {
     "aee_ballistics_ammoHeatPerShotJ": 4,  # was 6
-    "aee_fx_exhaustShimmerAlpha": 2,  # was 0
+    "aee_weatherfx_exhaustShimmerAlpha": 2,  # was 0
     "aee_hydrology_bedSlope": 4,  # was 5
     "aee_nightvision_fogGrainMax": 2,  # was 0
     "aee_nightvision_nightGrainMax": 1,  # was 0
@@ -331,7 +330,7 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_wildlife_density": 2,  # was 0.05
     "aee_wildlife_despawnRadius": 0,  # was 10
     "aee_wildlife_hungerRate": 3,  # was 0.001
-    "aee_wildlife_silenceDecay": 3,  # was 0.005
+    "aee_ambience_silenceDecay": 3,  # was 0.005
     "aee_wildlife_spawnRadius": 0,  # was 10
     "aee_wildlife_spookSensitivity": 2,  # was 0.05
     "aee_wildlife_thirstRate": 3,  # was 0.001

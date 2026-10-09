@@ -118,11 +118,11 @@ if (_hasUnit) then {
         private _walk = speed _unit;
         if (_walk > 1.5) then {
             private _walkStrength = ((_walk / 8) max 0.01) min 1;
-            private _footDb = (["footstep"] call FUNC(acousticSourceDb)) + (20 * (log _walkStrength));
+            private _footDb = (["footstep"] call EFUNC(ambience,acousticSourceDb)) + (20 * (log _walkStrength));
             _soundEvents = [
                 _soundEvents, getPosASL _unit, _footDb, "footstep", _now,
                 WILDLIFE_ACOUSTIC_EVENT_CAP, WILDLIFE_ACOUSTIC_EVENT_HORIZON
-            ] call FUNC(acousticPublish);
+            ] call EFUNC(ambience,acousticPublish);
         };
 
         private _engines = 0;
@@ -138,9 +138,9 @@ if (_hasUnit) then {
                 if ((!isNull _vehicle) && (isEngineOn _vehicle)) then {
                     _soundEvents = [
                         _soundEvents, getPosASL _vehicle,
-                        ([_kind] call FUNC(acousticSourceDb)), _kind, _now,
+                        ([_kind] call EFUNC(ambience,acousticSourceDb)), _kind, _now,
                         WILDLIFE_ACOUSTIC_EVENT_CAP, WILDLIFE_ACOUSTIC_EVENT_HORIZON
-                    ] call FUNC(acousticPublish);
+                    ] call EFUNC(ambience,acousticPublish);
                     _engines = _engines + 1;
                 };
             };
@@ -164,13 +164,13 @@ private _propIndex = missionNamespace getVariable [QEGVAR(weather,currentSoundPr
 if !(_propIndex isEqualType 0) then { _propIndex = 1; };
 private _listenerAsl = _position;
 if (_hasUnit) then { _listenerAsl = getPosASL _unit; };
-private _occluders = [_position] call FUNC(acousticOccluders);
+private _occluders = [_position] call EFUNC(ambience,acousticOccluders);
 private _soundEvents = missionNamespace getVariable [QGVAR(soundEvents), []];
 if !(_soundEvents isEqualType []) then { _soundEvents = []; };
 private _acoustic = [
     _soundEvents, _listenerAsl, _now, WILDLIFE_ACOUSTIC_EVENT_HORIZON,
     _propIndex, _occluders
-] call FUNC(acousticSample);
+] call EFUNC(ambience,acousticSample);
 private _acousticLevel = _acoustic select 0;
 
 // The vegetation signal from aee_weather_terrainSignals.  The shape is
@@ -210,14 +210,14 @@ if !(_manifest isEqualType []) then { _manifest = []; };
 private _bed = [
     _biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount,
     _vegScore, _settlement, _coastal
-] call FUNC(soundBedForContext);
+] call EFUNC(ambience,soundBedForContext);
 private _bedKey = _bed select 0;
 private _bedGain = _bed select 1;
 
-private _decay = missionNamespace getVariable [QGVAR(silenceDecay), 0.05];
+private _decay = missionNamespace getVariable [QEGVAR(ambience,silenceDecay), 0.05];
 if !(_decay isEqualType 0) then { _decay = 0.05; };
 
-private _silence = [_disturbance, _decay] call FUNC(disturbanceSilence);
+private _silence = [_disturbance, _decay] call EFUNC(ambience,disturbanceSilence);
 private _forceSilence = missionNamespace getVariable ["aee_wildlife_forceSilence", -1];
 if !(_forceSilence isEqualType 0) then { _forceSilence = -1; };
 if (_forceSilence >= 0) then { _silence = ((_forceSilence max 0) min 1); };
@@ -262,7 +262,7 @@ private _enabled = missionNamespace getVariable [QGVAR(enabled), true];
 if !(_enabled isEqualType true) then { _enabled = true; };
 if (!_enabled) exitWith { _state };
 
-private _ambient = missionNamespace getVariable [QGVAR(ambientEnabled), true];
+private _ambient = missionNamespace getVariable [QEGVAR(ambience,ambientEnabled), true];
 if !(_ambient isEqualType true) then { _ambient = true; };
 
 // The fauna switches are read here so the slice-two runtime and the debug line
@@ -284,8 +284,8 @@ if (_ambient) then {
         // a multi-file context varies instead of playing only its first row.
         private _source = [_manifest, _bedKey, _seed] call FUNC(pickBedSource);
         if (_source != "") then {
-            private _bedPitch = [_seed, "", _callTemp, 0] call FUNC(callPitch);
-            [_source, _position, _gain, _bedPitch] call FUNC(playAmbientBed);
+            private _bedPitch = [_seed, "", _callTemp, 0] call EFUNC(ambience,callPitch);
+            [_source, _position, _gain, _bedPitch] call EFUNC(ambience,playAmbientBed);
         };
     };
 
@@ -342,7 +342,7 @@ if (_ambient) then {
         private _emissions = [
             _hour, _sunElev, _month, _temperature, _wind, _rainAmount, _gain,
             _mix, _assetMap, _platforms, _seed
-        ] call FUNC(soundTick);
+        ] call EFUNC(ambience,soundTick);
         private _fresh = [_hourKey, _emissions, 0];
         missionNamespace setVariable [QGVAR(soundSchedule), _fresh];
         _fresh
@@ -358,8 +358,8 @@ if (_ambient) then {
             private _emission = _emissions select ((_cursor + _k) mod _total);
             // The species call carries the seeded jitter and the temperature
             // term; the ambient layer has no radial velocity, so no Doppler.
-            private _emissionPitch = [(_seed + _k), (_emission select 0), _callTemp, 0] call FUNC(callPitch);
-            [_emission select 1, _position, _emission select 2, WILDLIFE_SOUND_MAX_DISTANCE, objNull, _emissionPitch] call FUNC(playOneShot);
+            private _emissionPitch = [(_seed + _k), (_emission select 0), _callTemp, 0] call EFUNC(ambience,callPitch);
+            [_emission select 1, _position, _emission select 2, WILDLIFE_SOUND_MAX_DISTANCE, objNull, _emissionPitch] call EFUNC(ambience,playOneShot);
         };
         _cursor = (_cursor + WILDLIFE_SOUND_INSTANCE_CAP) mod _total;
     };
@@ -399,7 +399,7 @@ if (_animals) then {
     // one-shots against the animal object; this keeps a looping source
     // attached where a species has one, and releases it on despawn or when
     // the class changes, so an emitter cannot leak.
-    [_position] call FUNC(emitterSync);
+    [_position] call EFUNC(ambience,emitterSync);
 };
 
 // The tick duration is recorded only inside the trace gate, so the

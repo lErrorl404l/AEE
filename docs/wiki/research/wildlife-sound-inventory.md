@@ -249,10 +249,10 @@ are unreachable given how the selector works.
 ## 7. Source list
 
 - `addons/wildlife/data/sound_manifest.sqf` (AEE, all rows)
-- `addons/wildlife/functions/fnc_soundBedForContext.sqf`
+- `addons/ambience/functions/fnc_soundBedForContext.sqf`
 - `addons/wildlife/functions/fnc_wildlifeTick.sqf`
-- `addons/wildlife/functions/fnc_playAmbientBed.sqf`
-- `addons/wildlife/functions/fnc_playOneShot.sqf`
+- `addons/ambience/functions/fnc_playAmbientBed.sqf`
+- `addons/ambience/functions/fnc_playOneShot.sqf`
 - `addons/wildlife/functions/fnc_applyAnimalBehaviour.sqf`
 - `addons/wildlife/functions/fnc_initWildlife.sqf`
 - `addons/wildlife/script_component.hpp`

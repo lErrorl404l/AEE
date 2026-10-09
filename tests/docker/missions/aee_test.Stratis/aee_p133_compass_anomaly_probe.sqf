@@ -11,7 +11,7 @@
 //
 // Emits [P133] PASS/FAIL lines.
 
-private _fnMag = missionNamespace getVariable ["aee_maritime_fnc_calculateMagneticAnomaly", nil];
+private _fnMag = missionNamespace getVariable ["aee_magnetism_fnc_calculateMagneticAnomaly", nil];
 if (isNil "_fnMag") exitWith {
     diag_log text "[P133] [FAIL] magnetic anomaly function not compiled";
 };

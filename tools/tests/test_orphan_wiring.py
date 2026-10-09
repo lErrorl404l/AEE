@@ -19,7 +19,7 @@ _REPO = Path(__file__).resolve().parents[2]
 _MOB = _REPO / "addons" / "mobility" / "functions"
 _VEH = _REPO / "addons" / "vehicles" / "functions"
 _RADIO = _REPO / "addons" / "radio" / "functions"
-_MAR = _REPO / "addons" / "maritime" / "functions"
+_MAR = _REPO / "addons" / "magnetism" / "functions"
 _BALL = _REPO / "addons" / "ballistics"
 _ENV = _REPO / "addons" / "persistence" / "functions"
 

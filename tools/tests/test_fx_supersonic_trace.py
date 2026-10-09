@@ -22,10 +22,10 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-RENDERER = REPO / "addons/fx/functions/particle/fnc_renderSupersonicTrace.sqf"
-FX_PREP = REPO / "addons/fx/XEH_PREP.hpp"
-FX_POST = REPO / "addons/fx/XEH_postInit.sqf"
-FX_CONFIG = REPO / "addons/fx/config.cpp"
+RENDERER = REPO / "addons/particles/functions/particle/fnc_renderSupersonicTrace.sqf"
+FX_PREP = REPO / "addons/particles/XEH_PREP.hpp"
+FX_POST = REPO / "addons/particles/XEH_postInit.sqf"
+FX_CONFIG = REPO / "addons/particles/config.cpp"
 KERNEL = REPO / "addons/ballistics/functions/fnc_calculateSupersonicTrace.sqf"
 ANNEX_C = REPO / "docs/wiki/annexes/annex-c-variable-reference.qmd"
 PHYSICS = REPO / "docs/wiki/chapters/physics.qmd"
@@ -198,7 +198,7 @@ class HonestyLabels(unittest.TestCase):
         self.assertIn("visual mapping", physics)
 
     def test_annex_row_keeps_the_same_labels(self) -> None:
-        row = re.search(r"`aee_fx_supersonicTrace`[^\n]*", prose(ANNEX_C))
+        row = re.search(r"`aee_particles_supersonicTrace`[^\n]*", prose(ANNEX_C))
         self.assertIsNotNone(row)
         text = row.group(0).lower()
         self.assertIn("upper bound", text)
@@ -223,7 +223,7 @@ class Diagnostics(unittest.TestCase):
     """A silent exit is the likeliest failure, so every refusal must log."""
 
     def test_debug_logging_is_gated_not_always_on(self) -> None:
-        # AEE_LOG_DEBUG is gated on aee_fx_logDebug, so per-tick output
+        # AEE_LOG_DEBUG is gated on aee_particles_logDebug, so per-tick output
         # costs nothing until the operator ticks the box.
         self.assertIn("AEE_LOG_DEBUG", SOURCE)
         self.assertNotIn("diag_log text", SOURCE)
@@ -281,7 +281,7 @@ class Diagnostics(unittest.TestCase):
 
     def test_debug_setting_exists_to_gate_it(self) -> None:
         # The setting must actually be declared, or the log never turns on.
-        settings = (REPO / "addons/fx/initSettings.inc.sqf").read_text(encoding="utf-8")
+        settings = (REPO / "addons/particles/initSettings.inc.sqf").read_text(encoding="utf-8")
         self.assertIn("QGVAR(logDebug)", settings)
 
     def test_diagnostics_name_the_cone_and_keep_the_labels(self) -> None:
@@ -314,7 +314,7 @@ class TestPostInitRegistrationIdempotence(unittest.TestCase):
     """
 
     _POST_INITS = (
-        REPO / "addons" / "fx" / "XEH_postInit.sqf",
+        REPO / "addons" / "particles" / "XEH_postInit.sqf",
         REPO / "addons" / "optics" / "XEH_postInit.sqf",
     )
     _MACROS = REPO / "addons" / "lib" / "script_macros.hpp"

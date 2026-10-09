@@ -28,6 +28,26 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_altitude_AMSOffsetAltitude` | SLIDER | `2500` | yes | altitude | Altitude (m) where acute mountain sickness risk starts |
 | `aee_altitude_RapidAscentThreshold` | SLIDER | `150` | yes | altitude | Climb rate (m per tick) that triggers acute mountain sickness |
 
+## AEE Ambience → Ambient Sound
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ambience_ambientEnabled` | CHECKBOX | `true` | yes | ambience | Play the biome, time, weather and disturbance aware ambient soundscape |
+
+## AEE Ambience → Behaviour
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ambience_silenceDecay` | SLIDER | `0.05` | yes | ambience | How strongly recent disturbance silences the ambient bed |
+
+## AEE Ambience → Communication
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ambience_callBudget` | SLIDER | `256` | yes | ambience | Cap on the heard calls the bus holds at once |
+| `aee_ambience_callRange` | SLIDER | `200` | yes | ambience | Distance over which an animal hears a conspecific call |
+| `aee_ambience_communicationEnabled` | CHECKBOX | `false` | yes | ambience | Let an animal's call reach and move a nearby conspecific |
+
 ## AEE Armour → Armour
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -84,6 +104,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_ballistics_ammoHeatPerShotJ` | SLIDER | `0.0001` | yes | ballistics | Propellant heat added per joule of round energy (degC per shot) |
 | `aee_ballistics_ammoTempTimeConstant` | SLIDER | `600` | yes | ballistics | Time constant of the per-weapon ammo temperature relaxation toward ambient (seconds) |
 
+## AEE Blast → Events
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_blast_blastInjuryEnabled` | CHECKBOX | `true` | yes | blast | Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw) |
+
 ## AEE Debug → Actions
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -101,6 +127,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_altitude_logDebug` | CHECKBOX | `false` | yes | altitude | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
+
+## AEE Debug → Ambience
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ambience_logDebug` | CHECKBOX | `false` | yes | ambience | Log Ambience diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Armour
 
@@ -120,6 +152,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_ballistics_logDebug` | CHECKBOX | `false` | yes | ballistics | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
+
+## AEE Debug → Blast
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_blast_logDebug` | CHECKBOX | `false` | yes | blast | Log Blast diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Cartography
 
@@ -208,7 +246,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_core_collisionDebug` | CHECKBOX | `false` | yes | core | Log vehicle collision impact energy and damage scaling to the RPT (issue #172) |
-| `aee_fx_logDebug` | CHECKBOX | `false` | yes | fx | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
 ## AEE Debug → HUD
 
@@ -227,6 +264,18 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_lighting_logDebug` | CHECKBOX | `false` | yes | lighting | Log the consolidated lighting state line every environment tick after the one startup line (AEE Debug > Lighting) |
+
+## AEE Debug → LTM
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ltm_logDebug` | CHECKBOX | `false` | yes | ltm | Log LTM diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Magnetism
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_magnetism_logDebug` | CHECKBOX | `false` | yes | magnetism | Log Magnetism diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Maritime
 
@@ -257,6 +306,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_optics_logDebug` | CHECKBOX | `false` | yes | optics | Log optics diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Particles
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_particles_logDebug` | CHECKBOX | `false` | yes | particles | Log particles diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Perception
 
@@ -320,6 +375,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_vision_logDebug` | CHECKBOX | `false` | yes | vision | Log post-process and human-vision diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Weather FX
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weatherfx_logDebug` | CHECKBOX | `false` | yes | weatherfx | Log Weather FX diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Wildlife
 
@@ -439,37 +500,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_flight_turbulenceRadius` | SLIDER | `2000` | yes | flight | Distance from the player or mission centre within which aircraft receive turbulence forces |
 | `aee_flight_turbulenceScale` | SLIDER | `1` | yes | flight | Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe) |
 
-## AEE FX → Events
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_fx_blastInjuryEnabled` | CHECKBOX | `true` | yes | fx | Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw) |
-| `aee_fx_lightningBrightness` | SLIDER | `1000` | yes | fx | Brightness of the lightning flash lightpoint |
-| `aee_fx_lightningFXChance` | SLIDER | `0.05` | yes | fx | Chance of a visual lightning strike per 5 s tick at high risk |
-| `aee_fx_lightningIgnitionChance` | SLIDER | `0.1` | yes | fx | Chance that a lightning strike starts a fire |
-| `aee_fx_severeWeatherBlur` | SLIDER | `1.0` | yes | fx | Blur intensity scale during severe weather |
-
-## AEE FX → Particles
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_fx_atmosphericDustIntensity` | SLIDER | `0.08` | yes | fx | Alpha of airborne dust particles |
-| `aee_fx_exhaustShimmerAlpha` | SLIDER | `0.15` | yes | fx | Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area |
-| `aee_fx_heatHazeEnabled` | CHECKBOX | `true` | yes | fx | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
-| `aee_fx_heatHazeMaxAlpha` | SLIDER | `0.45` | yes | fx | Upper bound on the ambient-temperature heat-haze alpha |
-| `aee_fx_rainDropDensity` | SLIDER | `0.006` | yes | fx | Rain-splash particle density (drop interval at light rain) |
-| `aee_fx_vehicleDustDensity` | SLIDER | `0.08` | yes | fx | Vehicle dust particle density (drop interval at low speed) |
-| `aee_fx_vehicleDustIntensity` | SLIDER | `1.0` | yes | fx | Alpha scale on vehicle dust kickup |
-| `aee_fx_weatherAlphaEnabled` | CHECKBOX | `true` | yes | fx | Scale the blast, refract and weather particle alpha by overcast plus humidity |
-
-## AEE FX → Sound
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_fx_rainVehicleSoundVolume` | SLIDER | `1.0` | yes | fx | Volume of rain-on-vehicle-roof ambience |
-| `aee_fx_thunderVolume` | SLIDER | `3.5` | yes | fx | Thunder volume |
-| `aee_fx_windNoiseVolume` | SLIDER | `1.0` | yes | fx | Wind ambience volume scale |
-
 ## AEE HUD → Displays
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -480,8 +510,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_cartography_mgrsPrecision` | LIST | `10` | yes | cartography | Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10. |
 | `aee_cartography_mgrsPrecisionAuto` | CHECKBOX | `true` | yes | cartography | Scale the MGRS digit count with the world map size. On: a small world gets a six-figure reference (100 m) and a large world an eight-figure one (10 m). Off: the MGRS Precision list applies. Default on. |
 | `aee_hud_hudEnabled` | CHECKBOX | `false` | yes | hud | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
-| `aee_nightvision_ltmDaylightFade` | CHECKBOX | `true` | yes | nightvision | Fade the laser target marker in daylight. Off holds the marker at full strength. |
-| `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
+| `aee_ltm_ltmDaylightFade` | CHECKBOX | `true` | yes | ltm | Fade the laser target marker in daylight. Off holds the marker at full strength. |
+| `aee_ltm_ltmEnabled` | CHECKBOX | `false` | yes | ltm | Show the laser target marker beam through night vision (aircraft only) |
 | `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
 | `aee_thermal_display_fusionHud` | CHECKBOX | `true` | yes | thermal_display | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 
@@ -628,6 +658,15 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_mirageOnsetTemp` | SLIDER | `35` | yes | optics | Surface temperature at which mirage starts, in degrees Celsius |
 | `aee_optics_snowBlindnessBase` | SLIDER | `0.1` | yes | optics | Base dazzle from bright snow |
 | `aee_optics_vehicleShimmerBase` | SLIDER | `0.3` | yes | optics | Idle-engine shimmer floor |
+
+## AEE Particles → Particles
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_particles_atmosphericDustIntensity` | SLIDER | `0.08` | yes | particles | Alpha of airborne dust particles |
+| `aee_particles_vehicleDustDensity` | SLIDER | `0.08` | yes | particles | Vehicle dust particle density (drop interval at low speed) |
+| `aee_particles_vehicleDustIntensity` | SLIDER | `1.0` | yes | particles | Alpha scale on vehicle dust kickup |
+| `aee_particles_weatherAlphaEnabled` | CHECKBOX | `true` | yes | particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
 
 ## AEE Physiology → Scent
 
@@ -802,11 +841,31 @@ registered.
 | `aee_vision_visionToneStrength` | SLIDER | `0.25` | yes | vision | Strength of the human-vision tone stage, range 0 to 1. Default 0.25. The stage is a small bounded rise over the base game's neutral default grade. The anchor clamp keeps the image within a small deviation of that grade. At 0 the stage is the identity. The exact value is UNSOURCED. |
 | `aee_vision_visionWhiteBalance` | CHECKBOX | `false` | yes | vision | Enable the partial von Kries white balance of the human-vision model. Default off. The engine ambient under vegetation is green-biased, so full adaptation ships a cast. Turn it on to opt in to the experimental white-balance path. It blends toward the display white D65 (CIE 15:2004) from the scene illuminant. The blend cap is UNSOURCED. |
 
-## AEE Wildlife → Ambient Sound
+## AEE Weather FX → Events
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_wildlife_ambientEnabled` | CHECKBOX | `true` | yes | wildlife | Play the biome, time, weather and disturbance aware ambient soundscape |
+| `aee_weatherfx_lightningBrightness` | SLIDER | `1000` | yes | weatherfx | Brightness of the lightning flash lightpoint |
+| `aee_weatherfx_lightningFXChance` | SLIDER | `0.05` | yes | weatherfx | Chance of a visual lightning strike per 5 s tick at high risk |
+| `aee_weatherfx_lightningIgnitionChance` | SLIDER | `0.1` | yes | weatherfx | Chance that a lightning strike starts a fire |
+| `aee_weatherfx_severeWeatherBlur` | SLIDER | `1.0` | yes | weatherfx | Blur intensity scale during severe weather |
+
+## AEE Weather FX → Particles
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weatherfx_exhaustShimmerAlpha` | SLIDER | `0.15` | yes | weatherfx | Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area |
+| `aee_weatherfx_heatHazeEnabled` | CHECKBOX | `true` | yes | weatherfx | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
+| `aee_weatherfx_heatHazeMaxAlpha` | SLIDER | `0.45` | yes | weatherfx | Upper bound on the ambient-temperature heat-haze alpha |
+| `aee_weatherfx_rainDropDensity` | SLIDER | `0.006` | yes | weatherfx | Rain-splash particle density (drop interval at light rain) |
+
+## AEE Weather FX → Sound
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weatherfx_rainVehicleSoundVolume` | SLIDER | `1.0` | yes | weatherfx | Volume of rain-on-vehicle-roof ambience |
+| `aee_weatherfx_thunderVolume` | SLIDER | `3.5` | yes | weatherfx | Thunder volume |
+| `aee_weatherfx_windNoiseVolume` | SLIDER | `1.0` | yes | weatherfx | Wind ambience volume scale |
 
 ## AEE Wildlife → Behaviour
 
@@ -814,7 +873,6 @@ registered.
 |---|---|---|---|---|---|
 | `aee_wildlife_herdSize` | SLIDER | `4` | yes | wildlife | Target number of animals of one species in a herd |
 | `aee_wildlife_hungerRate` | SLIDER | `0.02` | yes | wildlife | How fast an animal becomes hungry, per second |
-| `aee_wildlife_silenceDecay` | SLIDER | `0.05` | yes | wildlife | How strongly recent disturbance silences the ambient bed |
 | `aee_wildlife_spookSensitivity` | SLIDER | `1.0` | yes | wildlife | Multiplier on the flight-initiation distance of a spooked animal |
 | `aee_wildlife_thirstRate` | SLIDER | `0.03` | yes | wildlife | How fast an animal becomes thirsty, per second |
 
@@ -824,14 +882,6 @@ registered.
 |---|---|---|---|---|---|
 | `aee_wildlife_cognitionBudgetMs` | SLIDER | `1.0` | yes | wildlife | Millisecond budget for one cognition tick before it re-queues |
 | `aee_wildlife_cognitionEnabled` | CHECKBOX | `false` | yes | wildlife | Run the budgeted perceive-think-act ecology over the animals |
-
-## AEE Wildlife → Communication
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_wildlife_callBudget` | SLIDER | `256` | yes | wildlife | Cap on the heard calls the bus holds at once |
-| `aee_wildlife_callRange` | SLIDER | `200` | yes | wildlife | Distance over which an animal hears a conspecific call |
-| `aee_wildlife_communicationEnabled` | CHECKBOX | `false` | yes | wildlife | Let an animal's call reach and move a nearby conspecific |
 
 ## AEE Wildlife → Environment
 

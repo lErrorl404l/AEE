@@ -12,6 +12,7 @@ class CfgPatches {
             "aee_ballistics",
             "aee_weather",
             "aee_material",
+            "aee_ambience",
             "aee_core",
             "aee_lib",
             "cba_main",

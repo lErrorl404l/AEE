@@ -54,7 +54,7 @@ GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHa
         _kind = "explosion";
         _audible = 1;
     };
-    private _sourceDb = ([_kind] call FUNC(acousticSourceDb)) + (20 * (log _audible));
+    private _sourceDb = ([_kind] call EFUNC(ambience,acousticSourceDb)) + (20 * (log _audible));
 
     // Task T26: couple the report to the real ballistics.  The muzzle
     // velocity comes from the ballistics load resolver, or the ammo config
@@ -77,7 +77,7 @@ GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHa
         private _airTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
         private _shot = [
             _caliberMm, _muzzleVelocity, _muzzleVelocity, _airTemp, 0, -1, -1, 0
-        ] call FUNC(shotAudio);
+        ] call EFUNC(ambience,shotAudio);
         private _reportDb = _shot select 0;
         if (_reportDb > _sourceDb) then { _sourceDb = _reportDb; };
     };
@@ -87,7 +87,7 @@ GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHa
     _events = [
         _events, getPosASL _unit, _sourceDb, _kind, CBA_missionTime,
         WILDLIFE_ACOUSTIC_EVENT_CAP, WILDLIFE_ACOUSTIC_EVENT_HORIZON
-    ] call FUNC(acousticPublish);
+    ] call EFUNC(ambience,acousticPublish);
     missionNamespace setVariable [QGVAR(soundEvents), _events];
 
     // The disturbance field carries the normalised source strength, so the

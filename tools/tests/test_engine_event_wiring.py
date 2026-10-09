@@ -49,7 +49,7 @@ INLINED_LEAF = {"addons/material/XEH_preInit.sqf"}
 
 PLAYER_SCOPED = (
     "addons/ballistics/XEH_postInit.sqf",
-    "addons/fx/XEH_postInit.sqf",
+    "addons/particles/XEH_postInit.sqf",
     "addons/optics/XEH_postInit.sqf",
     "addons/material/XEH_preInit.sqf",
 )
@@ -214,7 +214,7 @@ class TestProbeKeepsMeasuring(unittest.TestCase):
         self.assertIn(bis, _raw(ROOT / "addons/ballistics/XEH_postInit.sqf"))
         # fx's trace renderer names only the slot it reads, so assert the
         # event name and that slot rather than the full seven-name list.
-        fx = _raw(ROOT / "addons/fx/XEH_postInit.sqf")
+        fx = _raw(ROOT / "addons/particles/XEH_postInit.sqf")
         self.assertIn('["Fired", {', fx)
         self.assertIn('params ["_unit", "", "", "", "", "", "_projectile"]', fx)
 

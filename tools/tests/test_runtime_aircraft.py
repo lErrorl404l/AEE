@@ -32,7 +32,7 @@ MATCH_PATH = REPO / "addons" / "flight" / "functions" / "fnc_getAircraftMatch.sq
 DATA_PATH = REPO / "addons" / "flight" / "functions" / "fnc_getAircraftData.sqf"
 PREP_PATH = REPO / "addons" / "flight" / "XEH_PREP.hpp"
 CALLER_PATH = (
-    REPO / "addons" / "fx" / "functions" / "weather" / "fnc_applyExhaustShimmer.sqf"
+    REPO / "addons" / "weatherfx" / "functions" / "weather" / "fnc_applyExhaustShimmer.sqf"
 )
 MATCH = MATCH_PATH.read_text(encoding="utf-8")
 DATA = DATA_PATH.read_text(encoding="utf-8")

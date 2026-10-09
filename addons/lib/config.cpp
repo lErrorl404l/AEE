@@ -31,3 +31,8 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+// The shared control bases (RscText/RscPicture) have their one full
+// declaration here, so the display owners (nightvision, cartography) inherit
+// a single home (ADR-032 ceiling 2).
+#include "config/config_controls.hpp"
