@@ -301,6 +301,9 @@ UNARY_COMMANDS = {
     # eval).
     "typeName",
     "compile",
+    # isNil "_name" - the dev dispatcher reports a nothing-returning operation
+    # as the text "nil" so the reply always marshals across the extension.
+    "isNil",
 }
 
 
@@ -1027,6 +1030,17 @@ class SqfRuntime:
         if isinstance(node, Exp):
             return math.exp(self.eval(node.arg))
         if isinstance(node, UnaryCmd):
+            if node.op == "isNil":
+                # SQF isNil takes a variable NAME (a string) or a value. A
+                # string operand names the variable to test; a missing variable
+                # and a nil value both read as nil.
+                arg = node.arg
+                if isinstance(arg, Str):
+                    try:
+                        return self.get(arg.v) is None
+                    except NameError:
+                        return True
+                return self.eval(arg) is None
             value = self.eval(node.arg)
             if node.op == "count":
                 return len(value)
