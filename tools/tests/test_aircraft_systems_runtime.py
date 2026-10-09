@@ -519,6 +519,27 @@ class TestEngineKernel(unittest.TestCase):
         result, _rec = run_engine_kernel(systems)
         self.assertFalse(result)
 
+    def test_an_over_limit_command_is_accepted(self) -> None:
+        # The kernel accepts a commanded ratio above the band and still
+        # publishes one spool state and the scripted readout.
+        result, rec = run_engine_kernel(ENGINE_SYSTEMS, wanted=2.0, stored_ng=IDLE_NG)
+        self.assertTrue(result)
+        self.assertGreater(rec.variables["__QGVAR__engineNg"], IDLE_NG)
+        self.assertEqual(
+            set(rec.variables),
+            {"__QGVAR__engineNg", "__QGVAR__engineTgtC", "__QGVAR__engineOilKpa"},
+        )
+
+    def test_a_single_engine_systems_row_publishes_one_spool_state(self) -> None:
+        # The kernel manages one local engine, so it publishes exactly the
+        # three engine variables for that one engine and nothing else.
+        result, rec = run_engine_kernel(ENGINE_SYSTEMS, wanted=1.0)
+        self.assertTrue(result)
+        self.assertEqual(
+            set(rec.variables),
+            {"__QGVAR__engineNg", "__QGVAR__engineTgtC", "__QGVAR__engineOilKpa"},
+        )
+
 
 class TestEngineKernelContract(unittest.TestCase):
     """The source contracts the harness cannot execute."""
@@ -534,6 +555,26 @@ class TestEngineKernelContract(unittest.TestCase):
         command = body.find("setWantedRPMRTD")
         self.assertNotEqual(guard, -1)
         self.assertLess(guard, command)
+
+    def test_the_rtd_guard_wraps_the_getter_and_the_command(self) -> None:
+        # The getter is compiled from a string and the command is issued only
+        # under the advanced flight model, so the guard precedes both.
+        body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
+        guard = body.find("difficultyEnabledRTD")
+        getter = body.find("compile _reader")
+        command = body.find("setWantedRPMRTD")
+        self.assertNotEqual(guard, -1)
+        self.assertNotEqual(getter, -1)
+        self.assertNotEqual(command, -1)
+        self.assertLess(guard, getter)
+        self.assertLess(guard, command)
+
+    def test_the_kernel_clamps_an_over_limit_command(self) -> None:
+        # The commanded ratio is clamped to the ratio range before it selects
+        # the sourced band, so an over-limit command cannot exceed the sourced
+        # maximum in the engine. The kernel carries no separate torque hook:
+        # the spool command is the limit.
+        self.assertIn("(_wanted max 0 min 1)", ENGINE_KERNEL_SRC)
 
     def test_the_kernel_reads_the_systems_row_and_both_pure_helpers(self) -> None:
         self.assertIn("FUNC(getAircraftSystems)", ENGINE_KERNEL_SRC)
