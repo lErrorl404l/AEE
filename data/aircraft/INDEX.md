@@ -143,11 +143,11 @@ type sets in `data/aircraft/SCHEMA.md` section 4.
 
 This document and the schema define the contract. The contract is complete.
 The corpus holds 52 catalogue entries: the first slice of 17, a modern set of
-19 and a historical set of 16. Seven entries are runtime-ready and the rest
-are leads. The registry holds 28 sources, 12 of them held. The class map holds
-two token bindings and the class bindings hold 17 concrete vanilla and DLC
-classes. The coverage guard records `Plane` and `Helicopter`; `Air` and `UAV`
-are `no_source`. The generated projection is current.
+19 and a historical set of 16. Ten entries are runtime-ready and the rest are
+leads. The registry holds 30 sources, 13 of them held. The class map holds two
+token bindings and the class bindings hold 19 concrete vanilla and DLC classes.
+The coverage guard records `Plane` and `Helicopter`; `Air` and `UAV` are
+`no_source`. The generated projection is current.
 
 The first slice names the four air tokens and the vanilla air classes. Each
 one maps to a real analogue and a sourced catalogue entry. A class name that

@@ -11,9 +11,9 @@ is a labelled zero, not a refusal.
 
 - Catalogue entries: 52
 - Emitted runtime rows: 52
-- Runtime-ready entries: 7
-- Entries with an absent runtime field: 45
-- Absent fields: 97
+- Runtime-ready entries: 10
+- Entries with an absent runtime field: 42
+- Absent fields: 92
 
 ## a10a_thunderbolt_ii - Fairchild A-10A Thunderbolt II (fixed_wing)
 
@@ -108,19 +108,13 @@ is a labelled zero, not a refusal.
 - Capture: `data/aircraft/catalogue/modern.json`
 - Required set: rotary_wing (3 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
-| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+| `operating_weight_kg` | derived | 15600 | `src_leonardo_aw101` | maximum gross weight 15,600 kg (34,390 lb) | derived operating weight from the maximum takeoff weight; no operating or empty weight is published, so the maximum is the basis |
+| `rated_power_w` | derived | 5652000.0 | `src_leonardo_aw101` | engine ratings 3 x CT7-8E, take-off power (5 min) 3 x 1,884 kW | derived rated power from the net power: rated_power_w = net_power_kw * 1000 |
+| `rotor_disc_area_m2` | derived | 271.716349 | `src_leonardo_aw101` | rotor diameter 18.60 m (61 ft 0 in) | derived rotor disc area from the rotor diameter 18.6 m: rotor_disc_area_m2 = pi * (rotor_diameter_m / 2)^2 |
 
 ## aw159_wildcat - AgustaWestland AW159 Wildcat (rotary_wing)
 
@@ -365,16 +359,12 @@ is a labelled zero, not a refusal.
 - Capture: `data/aircraft/catalogue/compilations_fw.json`
 - Required set: fixed_wing (2 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
 | `operating_weight_kg` | derived | 14288 | `src_fa18_natops` | basic weight 31,500 lb converted to kg | derived operating weight from the published empty weight; no operating weight is published, so the empty weight is the basis |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `rated_power_w` | derived | 66316756.798983 | `src_fa18_natops` | two F414-GE-400 engines, maximum afterburner thrust 20,700 lb class each, converted to kN | derived rated power from thrust: rated_power_w = thrust_kn * 1000 * reference_speed_ms; 184.156375 kN at 360.111111 m/s |
 
 ## fw190a8 - Focke-Wulf Fw 190 A-8 (fixed_wing)
 
@@ -398,16 +388,12 @@ is a labelled zero, not a refusal.
 - Capture: `data/aircraft/catalogue/saab_gripen_c.json`
 - Required set: fixed_wing (2 fields)
 - Runtime row: yes
-- Runtime-ready: no
+- Runtime-ready: yes
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
 | `operating_weight_kg` | derived | 14000 | `src_saab_gripen_c` | performance | derived operating weight from the maximum takeoff weight; no operating or empty weight is published, so the maximum is the basis |
-| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-
-| Absent field | Next source class |
-|---|---|
-| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `rated_power_w` | derived | 31305555.5645 | `src_saab_gripen_c` | powerplant | derived rated power from thrust: rated_power_w = thrust_kn * 1000 * reference_speed_ms; 80.5 kN at 388.888889 m/s |
 
 ## ka52_alligator - Kamov Ka-52 Alligator (rotary_wing)
 

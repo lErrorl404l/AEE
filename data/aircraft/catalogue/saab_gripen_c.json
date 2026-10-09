@@ -41,6 +41,14 @@
           "locator": "powerplant",
           "state": "RM12 thrust with afterburner stated on the Saab factsheet",
           "grade": "claimed"
+        },
+        "reference_speed_ms": {
+          "value": 388.888889,
+          "unit": "m/s",
+          "source": "src_saab_gripen_c",
+          "locator": "max speed at sea level, stated as more than 1400 km/h, converted to m/s",
+          "state": "Saab factsheet maximum speed at sea level, stated as more than 1400 km/h, converted to m/s at capture (1400 / 3.6); the basis for the rated power derivation",
+          "grade": "claimed"
         }
       }
     }

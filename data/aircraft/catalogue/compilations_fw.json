@@ -98,6 +98,22 @@
           "locator": "maximum gross weight 66,000 lb converted to kg",
           "state": "NATOPS maximum gross weight; pounds converted to kilograms at capture",
           "grade": "documented"
+        },
+        "thrust_kn": {
+          "value": 184.156375,
+          "unit": "kN",
+          "source": "src_fa18_natops",
+          "locator": "two F414-GE-400 engines, maximum afterburner thrust 20,700 lb class each, converted to kN",
+          "state": "NATOPS F414-GE-400 maximum afterburner thrust, stated in the 20,700 pound class per engine for two engines (41,400 lb total), converted to kN at capture",
+          "grade": "documented"
+        },
+        "reference_speed_ms": {
+          "value": 360.111111,
+          "unit": "m/s",
+          "source": "src_fa18_natops",
+          "locator": "airspeed limitation, avoid flight above 700 KCAS, converted to m/s",
+          "state": "NATOPS airspeed limitation of 700 KCAS at sea level, converted to m/s at capture (700 * 0.514444); the basis for the rated power derivation",
+          "grade": "documented"
         }
       }
     },

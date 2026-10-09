@@ -22,7 +22,7 @@ never leaves the inventory in silence.
 | Token | Kind | State | Mapped entries | Runtime row | Reason |
 |---|---|---|---|---|---|
 | `Air` | engine_base | no_source | none | no | no emitted runtime row and no class binding held |
-| `Helicopter` | engine_base | recorded | `aw159_wildcat`, `ch47_chinook`, `light_utility_rotary`, `md500`, `md500_civil`, `md530_defender`, `mi26_halo`, `mi28_havoc`, `rah66_comanche`, `uh60a_black_hawk` | yes | runtime row emitted and class binding held |
+| `Helicopter` | engine_base | recorded | `aw101_merlin`, `aw159_wildcat`, `ch47_chinook`, `light_utility_rotary`, `md500`, `md500_civil`, `md530_defender`, `mi26_halo`, `mi28_havoc`, `rah66_comanche`, `uh60a_black_hawk` | yes | runtime row emitted and class binding held |
 | `Plane` | engine_base | recorded | `a10a_thunderbolt_ii`, `cessna_172_skyhawk`, `fa18e_super_hornet`, `jas39c_gripen`, `l159_alca`, `su25_frogfoot`, `su57_felon` | yes | runtime row emitted and class binding held |
 | `UAV` | engine_base | no_source | none | no | no emitted runtime row and no class binding held |
 

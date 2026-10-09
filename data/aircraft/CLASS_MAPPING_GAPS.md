@@ -12,7 +12,7 @@ speed values that no binding reaches.
 - Air tokens: 4
 - Air tokens with a binding: 2
 - Air tokens without a binding: 2
-- Class bindings: 17
+- Class bindings: 19
 - Catalogue entries holding max_speed_kmh: 0
 - Of those with no class binding: 0
 
@@ -28,6 +28,7 @@ speed values that no binding reaches.
 | `C_Plane_Civil_01_F` | `Plane` | `cessna_172_skyhawk` | `aee_air_class_table` | claimed | C_Plane_Civil_01_F is an Arma 3 Plane class for the Cessna 172; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
 | `B_Plane_Fighter_01_F` | `Plane` | `fa18e_super_hornet` | `aee_air_class_table` | claimed | B_Plane_Fighter_01_F is an Arma 3 Plane class for the F/A-18 Super Hornet; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
 | `O_Plane_Fighter_02_F` | `Plane` | `su57_felon` | `aee_air_class_table` | claimed | O_Plane_Fighter_02_F is an Arma 3 Plane class for the Su-57 Felon; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
+| `I_Plane_Fighter_04_F` | `Plane` | `jas39c_gripen` | `src_armedassault_wiki` | claimed | I_Plane_Fighter_04_F is an Arma 3 Plane class for the A-149 Gryphon (Jets DLC); the Armed Assault Wiki names the A-149 Gryphon as the Saab JAS 39C Gripen, so the link is a claimed community identity lead and the corpus holds the Saab factsheet values. The class is a Jets DLC class; the vanilla air config verification is pending. |
 | `B_Heli_Light_01_F` | `Helicopter` | `md500` | `aee_air_class_table` | claimed | B_Heli_Light_01_F is an Arma 3 Helicopter class for the MH-9 Hummingbird; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
 | `B_Heli_Light_01_armed_F` | `Helicopter` | `md530_defender` | `aee_air_class_table` | claimed | B_Heli_Light_01_armed_F is an Arma 3 Helicopter class for the AH-9 Pawnee; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
 | `B_Heli_Attack_01_F` | `Helicopter` | `rah66_comanche` | `aee_air_class_table` | claimed | B_Heli_Attack_01_F is an Arma 3 Helicopter class for the AH-99 Blackfoot; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
@@ -35,7 +36,8 @@ speed values that no binding reaches.
 | `O_Heli_Light_02_F` | `Helicopter` | `light_utility_rotary` | `aee_air_class_table` | claimed | O_Heli_Light_02_F is an Arma 3 Helicopter class for the PO-30 Orca; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
 | `O_Heli_Attack_02_F` | `Helicopter` | `mi28_havoc` | `aee_air_class_table` | claimed | O_Heli_Attack_02_F is an Arma 3 Helicopter class for the Mi-48 Kajman; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
 | `I_Heli_light_03_F` | `Helicopter` | `aw159_wildcat` | `aee_air_class_table` | claimed | I_Heli_light_03_F is an Arma 3 Helicopter class for the WY-55 Hellcat; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
-| `I_Heli_Transport_02_F` | `Helicopter` | `ch47_chinook` | `aee_air_class_table` | claimed | I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
+| `B_Heli_Transport_03_F` | `Helicopter` | `ch47_chinook` | `src_armedassault_wiki` | claimed | B_Heli_Transport_03_F is an Arma 3 Helicopter class for the CH-67 Huron; the Armed Assault Wiki names the CH-67 Huron as the CH-47 Chinook analogue, so the link is a claimed community identity lead and the corpus holds the CH-47D values from TM 1-1520-240-10. |
+| `I_Heli_Transport_02_F` | `Helicopter` | `aw101_merlin` | `src_armedassault_wiki` | claimed | I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the Armed Assault Wiki names the CH-49 Mohawk as the AW101 Merlin, so the link is a claimed community identity lead and the corpus holds the AW101 values from the Leonardo brochure. |
 | `C_Heli_Light_01_civil_F` | `Helicopter` | `md500_civil` | `aee_air_class_table` | claimed | C_Heli_Light_01_civil_F is an Arma 3 Helicopter class for the MD 500 civil; the class name does not name the real aircraft, so the link stays class_only and grade claimed. |
 
 ## Air tokens without a binding
