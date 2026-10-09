@@ -24,6 +24,7 @@ PREP(classifyVehicle);
 PREP(getTerrainSpeedFactor);
 PREP(getAircraftData);
 PREP(getAircraftMatch);
+PREP(getAircraftSystems);
 PREP(getVehicleBands);
 PREP(getVehicleData);
 PREP(getVehicleGeometry);
