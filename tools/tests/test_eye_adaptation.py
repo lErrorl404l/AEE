@@ -46,6 +46,7 @@ SAMPLE = EYE / "fnc_eyeSampleScene.sqf"
 DRIVER = EYE / "fnc_updateEyeAdaptation.sqf"
 INIT = EYE / "fnc_initEyeAdaptation.sqf"
 FLASH = EYE / "fnc_eyeFlash.sqf"
+FLASH_SCENE = EYE / "fnc_eyeFlashScene.sqf"
 
 
 def mesopic_weight(lum):
@@ -456,11 +457,53 @@ class TestEyeFlash(unittest.TestCase):
         self.assertIn("eyeFlashLux", text)
         self.assertIn("eyeFlashUntil", text)
 
-    def test_driver_does_not_double_count_with_the_engine_term(self):
+    def test_the_flash_is_a_separate_additive_term(self):
         # The flash is a separate additive term on the scene lux, not folded
-        # into the engine dynamic term.
+        # into the engine dynamic term.  The split now lives in the kernel.
+        self.assertIn("_steadyLux + _flashLux", FLASH_SCENE.read_text(encoding="utf-8"))
+        self.assertIn("FUNC(eyeFlashScene)", DRIVER.read_text(encoding="utf-8"))
+
+    def test_driver_publishes_the_steady_scene_not_the_flash_scene(self):
+        # The published scene must be the pre-flash steady value: INV-1
+        # (night_scene_agreement) compares it against the core illuminance,
+        # which carries no muzzle flash.  A shot that reached the published
+        # scene raised the false warning in the operator RPT.
         text = DRIVER.read_text(encoding="utf-8")
-        self.assertIn("_sceneLux + _flashLux", text)
+        self.assertIn("setVariable [QGVAR(eyeSceneLux), _steadySceneLux]", text)
+        # The steady capture must precede the kernel call that folds the flash.
+        self.assertLess(
+            text.index("_steadySceneLux = _sceneLux"),
+            text.index("call FUNC(eyeFlashScene)"),
+        )
+
+
+class TestEyeFlashScene(unittest.TestCase):
+    """fnc_eyeFlashScene splits the published scene from the adaptation scene.
+
+    The muzzle flash is a transient the core illuminance model does not carry,
+    so it must raise only the luminance the eye adapts to, never the published
+    scene the cross-module invariant compares.
+    """
+
+    def test_published_scene_excludes_the_flash(self):
+        published, adapt = run_sqf(FLASH_SCENE, [0.500858, 4500, 10, 5])
+        self.assertAlmostEqual(published, 0.500858, places=9)
+        self.assertAlmostEqual(adapt, 4500.500858, places=6)
+
+    def test_the_operator_rpt_flash_is_the_divergence(self):
+        # The 2026-10-08 RPT published 4500.5 lx: the steady 0.500858 plus a
+        # 5.56 muzzle flash (visibleFire 3.0 at the 1500 lx/unit scale).  The
+        # published scene stays within the INV-1 tolerance of the core
+        # illuminance (0.530193); only the adaptation scene moves.
+        published, adapt = run_sqf(FLASH_SCENE, [0.500858, 4500, 10, 5])
+        self.assertLess(abs(published - 0.530193), 0.5)
+        self.assertGreater(abs(adapt - 0.530193), 0.5)
+
+    def test_closed_window_leaves_both_steady(self):
+        self.assertEqual(run_sqf(FLASH_SCENE, [0.5, 4500, 5, 10]), [0.5, 0.5])
+
+    def test_no_flash_leaves_both_steady(self):
+        self.assertEqual(run_sqf(FLASH_SCENE, [0.5, 0, 10, 5]), [0.5, 0.5])
 
 
 class TestEyeAmbientLux(unittest.TestCase):

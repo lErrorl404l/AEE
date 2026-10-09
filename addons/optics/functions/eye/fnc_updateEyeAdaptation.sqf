@@ -97,11 +97,18 @@ if ((_forceMode isEqualType "") && _forceMode != "") then {
 
 // Muzzle-flash term: a separate additive term while the window is open. It
 // is not folded into the engine dynamic term, so it cannot double-count.
+// The transient raises only the luminance the eye ADAPTS to.  It is not part
+// of the physical-sky model the core illuminance carries, so it stays OUT of
+// the PUBLISHED scene (aee_optics_eyeSceneLux).  The cross-module invariant
+// INV-1 (night_scene_agreement) compares the published scene against the core
+// illuminance, so a shot must not move it (a 5.56 flash of 4500 lx raised a
+// false warning: drift 4499.97 at a published scene of 4500.5 lx).
 private _flashUntil = missionNamespace getVariable [QGVAR(eyeFlashUntil), 0];
 private _flashLux = missionNamespace getVariable [QGVAR(eyeFlashLux), 0];
-if ((_flashUntil isEqualType 0) && CBA_missionTime < _flashUntil) then {
-    if (_flashLux isEqualType 0) then { _sceneLux = _sceneLux + _flashLux; };
-} else {
+private _steadySceneLux = _sceneLux;
+private _flashScene = [_sceneLux, _flashLux, _flashUntil, CBA_missionTime] call FUNC(eyeFlashScene);
+_sceneLux = _flashScene select 1;
+if ((_flashUntil isEqualType 0) && (CBA_missionTime >= _flashUntil)) then {
     if ((_flashLux isEqualType 0) && _flashLux != 0) then {
         missionNamespace setVariable [QGVAR(eyeFlashLux), 0];
     };
@@ -212,7 +219,7 @@ private _fogNow = ([] call EFUNC(core,getSmoothedWeather)) select 2;
 if !(_fogNow isEqualType 0) then { _fogNow = 0; };
 private _limits = [_adaptedLux, _w, _localLux, _srcAngle, _fogNow] call FUNC(eyeLimits);
 
-missionNamespace setVariable [QGVAR(eyeSceneLux), _sceneLux];
+missionNamespace setVariable [QGVAR(eyeSceneLux), _steadySceneLux];
 missionNamespace setVariable [QGVAR(eyeAdaptedLux), _adaptedLux];
 missionNamespace setVariable [QGVAR(eyeAperture), _v];
 missionNamespace setVariable [QGVAR(eyePupilMm), _d];
