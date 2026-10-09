@@ -3434,6 +3434,13 @@ private _p29Pass = 0;
     // nothing.  (P136 is the client probe, so the kernel probe takes the next
     // free number.)
     execVM "aee_p137_kernel_parity_probe.sqf";
+    // PHASE 138 lives in aee_p138_thermal_parity_probe.sqf: the two-node
+    // thermal solve is a pure server-callable kernel, so the dedicated server
+    // drives the native command and compares each element against the SQF
+    // reference kernel within the per-kernel bound (ADR-034).  When the dev
+    // extension is absent the probe records native-unavailable and asserts the
+    // SQF fallback.  It renders nothing.
+    execVM "aee_p138_thermal_parity_probe.sqf";
     // PHASE 136 lives in aee_p136_client_probe.sqf: it needs a non-dedicated
     // machine, so the dedicated server never runs it and can never claim it
     // passed. An optional headless client carries it (guard !isDedicated).

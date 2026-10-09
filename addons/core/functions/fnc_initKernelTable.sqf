@@ -23,7 +23,8 @@ private _table = createHashMapFromArray [
     ["thermalWetDistortionParams", ["aee_thermal_fnc_thermalWetDistortionParams", "kernel.thermalWetDistortionParams"]],
     ["calculateStationPressure", ["aee_atmos_fnc_calculateStationPressure", "kernel.calculateStationPressure"]],
     ["calculateRelativeHumidity", ["aee_atmos_fnc_calculateRelativeHumidity", "kernel.calculateRelativeHumidity"]],
-    ["calculateAirDensityKernel", ["aee_ballistics_fnc_calculateAirDensityKernel", "kernel.calculateAirDensityKernel"]]
+    ["calculateAirDensityKernel", ["aee_ballistics_fnc_calculateAirDensityKernel", "kernel.calculateAirDensityKernel"]],
+    ["solveTwoNodeKernel", ["aee_thermal_fnc_solveTwoNodeKernel", "kernel.solveTwoNodeKernel"]]
 ];
 
 missionNamespace setVariable [QGVAR(kernelTable), _table];

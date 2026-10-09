@@ -25,5 +25,6 @@ drift or on a kernel that contains an engine write.
 | `eyeTimeSkip` | optics | server | `_prevHour`, `_nowHour`, `_thresholdHours` | Boolean - true when the clock moved by more than the threshold in one step | - | yes |
 | `thermalImperfectionParams` | thermal | client | `_contrast`, `_time`, `_huntAmp`, `_huntPeriod`, `_nucAmp`, `_bloomBase`, `_hot`, `_settle` | Array - [bloom, agcHunt, nucDrift, temporalNoise] | - | yes |
 | `thermalWetDistortionParams` | thermal | client | `_wetness`, `_maxAmp` | ARRAY - the 15-element WetDistortion vector.  The first three elements are | - | yes |
+| `solveTwoNodeKernel` | thermal | server | `_tAir`, `_wind`, `_solar`, `_exposure`, `_mCore`, `_mSkin`, `_area`, `_lChar`, `_tCore0`, `_tSkin0`, `_qGen`, `_orientation`, `_rh`, `_mrtC`, `_isHuman`, `_evapOn`, `_dt`, `_waterSpeed`, `_tWater`, `_rain`, `_skinPerfusion`, `_clo`, `_cond`, `_skinEps`, `_skinAlpha` | [coreTempC, skinTempC, humanCoreTempC] - the human core temp is 0 for inert | solveTwoNode (6) | yes |
 
 <!-- END GENERATED: kernel table -->

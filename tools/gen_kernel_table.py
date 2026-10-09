@@ -53,6 +53,7 @@ KERNELS: tuple[str, ...] = (
     "addons/optics/functions/eye/fnc_eyeTimeSkip.sqf",
     "addons/thermal/functions/display/fnc_thermalImperfectionParams.sqf",
     "addons/thermal/functions/display/fnc_thermalWetDistortionParams.sqf",
+    "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf",
 )
 
 # Native-kernel metadata: the side the driver runs on (server or client), and
@@ -72,6 +73,7 @@ NATIVE: dict[str, tuple[str, str]] = {
     "eyeTimeSkip": ("server", "-"),
     "thermalImperfectionParams": ("client", "-"),
     "thermalWetDistortionParams": ("client", "-"),
+    "solveTwoNodeKernel": ("server", "solveTwoNode"),
 }
 
 # An engine write.  A pure kernel contains none of these.

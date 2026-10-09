@@ -85,5 +85,6 @@ holds every probe to a class and holds each class to its guard.
 ["P134", "headless", "aee_p134_map_density_probe.sqf"],
 ["P135", "headless", "aee_p135_sim_clock_rate_probe.sqf"],
 ["P136", "headless-client", "aee_p136_client_probe.sqf"],
-["P137", "headless", "aee_p137_kernel_parity_probe.sqf"]
+["P137", "headless", "aee_p137_kernel_parity_probe.sqf"],
+["P138", "headless", "aee_p138_thermal_parity_probe.sqf"]
 ]

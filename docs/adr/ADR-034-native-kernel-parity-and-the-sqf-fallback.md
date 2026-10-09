@@ -39,6 +39,7 @@ looser relative bound without a written reason.
 | `calculateStationPressure` | `kernel.calculateStationPressure` | `1e-6` | 0 | One `pow`; the f32 default. |
 | `calculateRelativeHumidity` | `kernel.calculateRelativeHumidity` | `1e-6` | `0.5` | The output is `round`ed to an integer, so the smallest meaningful bound is one rounding step (`0.5`). |
 | `calculateAirDensityKernel` | `kernel.calculateAirDensityKernel` | `1e-6` | 0 | One `exp`; the f32 default. |
+| `solveTwoNodeKernel` | `kernel.solveTwoNodeKernel` | `1e-3` | 0 | The 12-iteration nonlinear two-node fixed point amplifies one f32 engine rounding (about `6e-8`) by the Newton gain: the measured engine divergence is of order `1e-5` relative, so the `1e-6` default does not hold. `1e-3` is the ceiling with this written reason. The cargo vectors are f64-to-f64 and pass tighter. |
 
 The Rust `#[test]` `native_kernels_match_the_sqf_reference` reads vectors
 generated from the SQF reference by `tools/gen_kernel_vectors.py`. The
