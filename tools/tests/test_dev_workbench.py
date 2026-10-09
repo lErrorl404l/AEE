@@ -45,6 +45,7 @@ VERBS = FUNCS / "fnc_devVerbs.sqf"
 
 ADDONS = ROOT / "addons"
 ANNEX = ROOT / "docs" / "wiki" / "annexes" / "annex-d-debug-index.qmd"
+GUIDE = ROOT / "docs" / "wiki" / "chapters" / "operator-guide.qmd"
 
 
 def _code_only(text: str) -> str:
@@ -106,6 +107,27 @@ class TestWorkbenchKeybinds(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             self.assertNotIn(f'"{CATEGORY}"', text, str(path))
             self.assertNotIn("aee_dev_", text, str(path))
+
+
+class TestOperatorGuide(unittest.TestCase):
+    """The operator guide lists the keybinds the code registers, and the ceiling."""
+
+    def test_the_guide_names_every_keybind(self):
+        text = GUIDE.read_text(encoding="utf-8")
+        for name in KEYBINDS:
+            self.assertIn(name, text, name)
+
+    def test_the_guide_keybind_list_matches_the_code(self):
+        # The guide's keybind table lists exactly the action names the dev
+        # project registers: the same set KEYBINDS holds.
+        text = GUIDE.read_text(encoding="utf-8")
+        listed = set(re.findall(r"`(Dev[A-Za-z]+)`", text))
+        self.assertEqual(listed, set(KEYBINDS))
+
+    def test_the_guide_states_the_visual_check_is_manual(self):
+        text = GUIDE.read_text(encoding="utf-8").lower()
+        self.assertIn("manual", text)
+        self.assertIn("not an automated gate", text)
 
 
 class TestRuntimeReapply(unittest.TestCase):

@@ -177,6 +177,11 @@ AEE registers its settings at mission start with `CBA_fnc_addSetting`. Each addo
 
 Localisation uses a per-addon `stringtable.xml`. Keys use the form `STR_AEE_<Component>_<Key>`.
 
+### Dev console and workbench
+
+The dev console, the visual workbench and its four keybinds are documented in
+the [operator guide](docs/wiki/chapters/operator-guide.qmd).
+
 ---
 
 ## Build and Test
