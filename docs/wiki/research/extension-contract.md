@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (637)
+### Public functions (640)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -215,6 +215,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_destroyPPEffect`
 - `aee_core_fnc_deterministicRandom`
 - `aee_core_fnc_diagnostic`
+- `aee_core_fnc_dispatchKernel`
 - `aee_core_fnc_dumpPerformanceCounters`
 - `aee_core_fnc_dumpState`
 - `aee_core_fnc_evaluateConsistency`
@@ -228,6 +229,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_gnssFixState`
 - `aee_core_fnc_handleCollisionDamage`
 - `aee_core_fnc_init`
+- `aee_core_fnc_initKernelTable`
 - `aee_core_fnc_installObjectEngineHandler`
 - `aee_core_fnc_installPlayerEngineHandler`
 - `aee_core_fnc_latLonToUtm`
@@ -235,6 +237,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_moduleInit`
 - `aee_core_fnc_moduleStormInit`
 - `aee_core_fnc_parseMgrs`
+- `aee_core_fnc_probeExtension`
 - `aee_core_fnc_readState`
 - `aee_core_fnc_reportModuleHealth`
 - `aee_core_fnc_runConsistencyCheck`
