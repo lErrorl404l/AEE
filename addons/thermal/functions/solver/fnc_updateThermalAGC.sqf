@@ -397,7 +397,8 @@ missionNamespace setVariable [QGVAR(objAgcRad), _objWindows];
 // every run.
 private _prevMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
 private _prevMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
-if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevMax) then {
+private _firstPublication = !(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevMax;
+if (_firstPublication) then {
     // First publication: until now the display mapped through the no-AGC
     // fallback (the manual window _fullMin.._fullMax).  Seed the IIR from
     // that same window so the gain change to the max-gain floor ramps over
@@ -407,12 +408,18 @@ if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevM
     _prevMin = _fullMin;
     _prevMax = _fullMax;
 };
-// World-clock jump: the scene changed in one step, so snap the window to the
-// new scene instead of easing over the 0.5 s filter time constant.  The one
-// clock raises clockJump for this tick (fnc_updateSimClock).
-if (missionNamespace getVariable [QEGVAR(core,clockJump), false]) then {
-    _prevMin = _radMin;
-    _prevMax = _radMax;
+// World-clock jump: the scene changed in one step, so snap an ESTABLISHED
+// window to the new scene instead of easing over the 0.5 s filter time
+// constant.  A first publication is already seeded from the manual window
+// and ramps, so a jump coincident with it must NOT bypass that seed (the
+// P79 first-pass contract); the snap applies only to a live window.  The one
+// clock holds clockJump for a short window after a jump (fnc_updateSimClock),
+// so this throttled pass cannot miss it.
+if (!_firstPublication) then {
+    if (missionNamespace getVariable [QEGVAR(core,clockJump), false]) then {
+        _prevMin = _radMin;
+        _prevMax = _radMax;
+    };
 };
 if (_agcDt > 0) then {
     private _a = _agcDt / (_agcDt + 0.5);

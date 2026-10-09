@@ -32,11 +32,15 @@ missionNamespace setVariable [QGVAR(simTime), _now];
 // (dayTime) in one step; diag_tickTime does not.  Compare dayTime - NOT time,
 // which does not jump on skipTime - and wrap the 86400 s (24 h) day so a
 // midnight crossing is not read as a jump.  On a jump, raise
-// QGVAR(clockJump) for exactly one tick so the eye adaptation and the thermal
-// AGC re-seed (arrive adapted) instead of chasing the jumped scene.  The
-// 0.05 h threshold sits above the largest advance one frame can produce under
-// the 100x accTime clamp and below the smallest useful skip (the same bound
-// fnc_eyeTimeSkip uses).
+// QGVAR(clockJump) so the eye adaptation and the thermal AGC re-seed (arrive
+// adapted) instead of chasing the jumped scene.  The flag is STICKY: a
+// single-tick flag is missed by a throttled consumer, so the clock holds it
+// for a window longer than the slowest consumer's period (the thermal AGC
+// reads at 4 Hz, 0.25 s) and clears it when the window expires.  The clock
+// owns the clear, so one consumer cannot starve another of the same jump.
+// The 0.05 h threshold sits above the largest advance one frame can produce
+// under the 100x accTime clamp and below the smallest useful skip (the same
+// bound fnc_eyeTimeSkip uses).
 private _day = dayTime;
 private _prevDay = missionNamespace getVariable [QGVAR(clockLastDayTime), -1];
 private _jump = false;
@@ -49,4 +53,7 @@ if (_prevDay isEqualType 0) then {
     };
 };
 missionNamespace setVariable [QGVAR(clockLastDayTime), _day];
-missionNamespace setVariable [QGVAR(clockJump), _jump];
+private _jumpUntil = missionNamespace getVariable [QGVAR(clockJumpUntil), -1];
+if (_jump) then { _jumpUntil = _now + 0.5; };
+missionNamespace setVariable [QGVAR(clockJumpUntil), _jumpUntil];
+missionNamespace setVariable [QGVAR(clockJump), _now < _jumpUntil];
