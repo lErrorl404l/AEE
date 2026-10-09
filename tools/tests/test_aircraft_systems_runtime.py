@@ -68,6 +68,14 @@ NG_SRC = NG.read_text(encoding="utf-8")
 TGT_OIL_SRC = TGT_OIL.read_text(encoding="utf-8")
 ENGINE_KERNEL_SRC = ENGINE_KERNEL.read_text(encoding="utf-8")
 
+# Sentinel damage state. Distinct values so a swapped input is provable.
+DAMAGE_KERNEL = FUNCS / "fnc_updateDamageSystem.sqf"
+DAMAGE_KERNEL_SRC = DAMAGE_KERNEL.read_text(encoding="utf-8")
+DAMAGE_THRESHOLD = 0.1
+ENGINE_HIT_DAMAGE = 0.5
+FUEL_HIT_DAMAGE = 0.5
+ROTOR_HIT_DAMAGE = 0.5
+
 # The systems row carries the numeric fields first, in the generated order:
 # fuel (5), engine (5: idle Ng, max Ng, max Np, max torque, max TGT), oil (2),
 # then the remaining numeric fields and the three enum fields.
@@ -188,6 +196,81 @@ def run_engine_kernel(
         "__FUNC__calculateScriptedTgtOil": lambda *args: run_sqf(TGT_OIL, list(args)),
     }
     result = run_sqf(ENGINE_KERNEL, ["fixture_aircraft", wanted, delta_s], globals_)
+    return result, rec
+
+
+class DamageRecorder:
+    """The damage commands and variables the kernel writes, captured."""
+
+    def __init__(self) -> None:
+        self.variables: dict[str, object] = {}
+        self.fuel: float | None = None
+        self.hit_damage: list[tuple[object, object]] = []
+
+
+def run_damage_kernel(
+    systems: list[object],
+    hit_names: tuple[str, ...] = ("hitengine",),
+    hit_damages: tuple[float, ...] = (ENGINE_HIT_DAMAGE,),
+    fuel_fraction: float = 1.0,
+    delta_s: float = DELTA_S,
+    is_local: bool = True,
+    classes: tuple[str, ...] = ("Helicopter", "Air"),
+    enabled: bool = True,
+    alive: bool = True,
+    damage_allowed: bool = True,
+) -> tuple[object, DamageRecorder]:
+    """Run fnc_updateDamageSystem against a stub aircraft and systems row."""
+    rec = DamageRecorder()
+    mission_ns = object()
+    store: dict[str, object] = {}
+
+    def get_variable(ns: object, pair: list[object]) -> object:
+        name, default = pair[0], pair[1]
+        if ns is mission_ns:
+            return enabled if name == "__QEGVAR__core_enabled" else default
+        return store.get(name, default)
+
+    def set_variable(veh: object, pair: list[object]) -> None:
+        name, value = pair[0], pair[1]
+        store[name] = value
+        rec.variables[name] = value
+        return None
+
+    def get_hit_point_damage(veh: object, name: object) -> float:
+        target = str(name).lower()
+        for i, hp in enumerate(hit_names):
+            if hp.lower() == target:
+                return hit_damages[i]
+        return 0.0
+
+    def set_hit_point_damage(veh: object, pair: list[object]) -> None:
+        rec.hit_damage.append((pair[0], pair[1]))
+        return None
+
+    globals_: dict[str, object] = {
+        "missionNamespace": mission_ns,
+        "getVariable": get_variable,
+        "setVariable": set_variable,
+        "isNull": lambda v: v is None,
+        "alive": lambda v: alive,
+        "local": lambda v: is_local,
+        "typeOf": lambda v: "Helicopter",
+        "isKindOf": lambda obj, cls: cls in classes,
+        "diag_deltaTime": DELTA_S,
+        "isDamageAllowed": lambda v: damage_allowed,
+        "getAllHitPointsDamage": lambda v: [
+            list(hit_names),
+            ["" for _ in hit_names],
+            list(hit_damages),
+        ],
+        "getHitPointDamage": get_hit_point_damage,
+        "setHitPointDamage": set_hit_point_damage,
+        "fuel": lambda v: fuel_fraction,
+        "setFuel": lambda veh, value: setattr(rec, "fuel", value),
+        "__FUNC__getAircraftSystems": lambda name: systems,
+    }
+    result = run_sqf(DAMAGE_KERNEL, ["fixture_aircraft", delta_s], globals_)
     return result, rec
 
 
@@ -611,6 +694,50 @@ class TestEngineKernelContract(unittest.TestCase):
         ):
             hits = [line for line in PREP_SRC.splitlines() if name in line]
             self.assertEqual(len(hits), 1, hits)
+
+
+class TestDamageKernel(unittest.TestCase):
+    """The damage kernel, executed against a stub aircraft and systems row."""
+
+    def test_a_sentinel_engine_hit_reduces_the_power_fraction(self) -> None:
+        result, rec = run_damage_kernel(SYSTEMS)
+        self.assertTrue(result)
+        severity = (ENGINE_HIT_DAMAGE - DAMAGE_THRESHOLD) / (1 - DAMAGE_THRESHOLD)
+        self.assertAlmostEqual(
+            rec.variables["aee_enginePowerFraction"], 1 - severity, places=9
+        )
+
+    def test_a_damage_refusing_vehicle_is_suppressed(self) -> None:
+        result, rec = run_damage_kernel(SYSTEMS, damage_allowed=False)
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+        self.assertIsNone(rec.fuel)
+        self.assertEqual(rec.hit_damage, [])
+
+
+class TestDamageKernelContract(unittest.TestCase):
+    """The source contracts the harness cannot execute."""
+
+    def test_the_kernel_respects_the_damage_allowed_state(self) -> None:
+        self.assertIn("isDamageAllowed _veh", DAMAGE_KERNEL_SRC)
+        self.assertIn("setHitPointDamage", DAMAGE_KERNEL_SRC)
+
+    def test_the_kernel_reads_both_hit_point_commands(self) -> None:
+        self.assertIn("getAllHitPointsDamage", DAMAGE_KERNEL_SRC)
+        self.assertIn("getHitPointDamage", DAMAGE_KERNEL_SRC)
+
+    def test_the_kernel_writes_the_existing_power_fraction_variable(self) -> None:
+        self.assertIn("aee_enginePowerFraction", DAMAGE_KERNEL_SRC)
+
+    def test_the_header_states_the_damage_ceiling(self) -> None:
+        header = DAMAGE_KERNEL_SRC.split("*/", 1)[0]
+        self.assertIn("CONFIG-DRIVEN", header)
+        self.assertIn("EXTEND", header)
+        self.assertIn("REPLACE", header)
+
+    def test_the_function_is_registered_once(self) -> None:
+        hits = [line for line in PREP_SRC.splitlines() if "updateDamageSystem" in line]
+        self.assertEqual(len(hits), 1, hits)
 
 
 if __name__ == "__main__":
