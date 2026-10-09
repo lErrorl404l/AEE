@@ -20,8 +20,8 @@ if ((_enabledNum == 1) && (_interval == 5)) then {
 private _fnEnv = missionNamespace getVariable ["aee_core_fnc_updateEnvironment", nil];
 private _fnBiome = missionNamespace getVariable ["aee_weather_fnc_getBiome", nil];
 private _fnTemp = missionNamespace getVariable ["aee_thermal_fnc_updateTemperature", nil];
-private _fnDust = missionNamespace getVariable ["aee_fx_fnc_applyAtmosphericDust", nil];
-private _fnRain = missionNamespace getVariable ["aee_fx_fnc_applyRainSurfaceDrops", nil];
+private _fnDust = missionNamespace getVariable ["aee_weatherfx_fnc_applyAtmosphericDust", nil];
+private _fnRain = missionNamespace getVariable ["aee_weatherfx_fnc_applyRainSurfaceDrops", nil];
 private _fnGrain = missionNamespace getVariable ["aee_nightvision_fnc_applyNightGrain", nil];
 if ((!isNil "_fnEnv") && (!isNil "_fnBiome") && (!isNil "_fnTemp") && (!isNil "_fnDust") && (!isNil "_fnRain") && (!isNil "_fnGrain")) then {
     diag_log text "[PHASE2] [PASS] functions resolved (core, environmental, thermal, fx, optics)";
@@ -272,7 +272,7 @@ if (isNil "_wildlifeTickFn") then {
             if (!isNull (_x select 1)) then { _live = _live + 1; };
         } forEach _fauna;
     };
-    private _sounds = missionNamespace getVariable ["aee_wildlife_soundInstances", []];
+    private _sounds = missionNamespace getVariable ["aee_ambience_soundInstances", []];
     private _soundCount = 0;
     if (_sounds isEqualType []) then { _soundCount = count _sounds; };
     if ((_live == 0) && (_soundCount == 0)) then {
@@ -1081,7 +1081,7 @@ if (isNil "_wildlifeTickFn") then {
     // Verifies 1/r³ falloff and the dipole field pattern.
     private _p19Pass = 0;
     private _p19Fail = 0;
-    private _fnMag = missionNamespace getVariable ["aee_maritime_fnc_calculateMagneticAnomaly", nil];
+    private _fnMag = missionNamespace getVariable ["aee_magnetism_fnc_calculateMagneticAnomaly", nil];
     if (isNil "_fnMag") then {
         diag_log text "[PHASE19] [FAIL] magnetic anomaly function not compiled";
         _p19Fail = _p19Fail + 1;
@@ -1923,8 +1923,8 @@ private _p29Pass = 0;
     // The SQF functions are pure maths, deterministic headless.
     private _p33Pass = 0;
     private _p33Fail = 0;
-    private _fnOP = missionNamespace getVariable ["aee_fx_fnc_calculateBlastOverpressure", nil];
-    private _fnInj = missionNamespace getVariable ["aee_fx_fnc_calculateBlastInjury", nil];
+    private _fnOP = missionNamespace getVariable ["aee_blast_fnc_calculateBlastOverpressure", nil];
+    private _fnInj = missionNamespace getVariable ["aee_blast_fnc_calculateBlastInjury", nil];
     if (isNil "_fnOP" || isNil "_fnInj") then {
         diag_log text "[PHASE33] [FAIL] blast functions not compiled";
         _p33Fail = _p33Fail + 1;
@@ -2923,13 +2923,13 @@ private _p29Pass = 0;
     private _seen = [];
     {
         _x params ["_surface", "_expect"];
-        private _got = ([_surface] call aee_fx_fnc_surfaceMaterial) select 0;
+        private _got = ([_surface] call aee_particles_fnc_surfaceMaterial) select 0;
         _seen pushBack format ["%1->%2", _surface, _got];
         if (_got != _expect) then { _p60Ok = false; };
     } forEach _cases;
     // An unknown surface must still resolve (the ground-state fallback),
     // never return an empty material.
-    private _unknown = (["#NotASurface_zzz"] call aee_fx_fnc_surfaceMaterial) select 0;
+    private _unknown = (["#NotASurface_zzz"] call aee_particles_fnc_surfaceMaterial) select 0;
     if (_unknown == "") then { _p60Ok = false; };
     if (_p60Ok) then {
         diag_log text format ["[PHASE60] [PASS] surface material: %1 cases, unknown -> %2", count _cases, _unknown];
@@ -2942,10 +2942,10 @@ private _p29Pass = 0;
     // sand and snow like snow, and the environmental state scales it.
     // The engine is the solver, so the parameters must differ per material
     // and must move with air density and moisture.
-    private _sand = ["sand", 1.0, []] call aee_fx_fnc_kickupParams;
-    private _snow = ["snow", 0.55, []] call aee_fx_fnc_kickupParams;
-    private _mud = ["mud", 0.2, []] call aee_fx_fnc_kickupParams;
-    private _gravel = ["gravel", 0.6, []] call aee_fx_fnc_kickupParams;
+    private _sand = ["sand", 1.0, []] call aee_particles_fnc_kickupParams;
+    private _snow = ["snow", 0.55, []] call aee_particles_fnc_kickupParams;
+    private _mud = ["mud", 0.2, []] call aee_particles_fnc_kickupParams;
+    private _gravel = ["gravel", 0.6, []] call aee_particles_fnc_kickupParams;
     // Sand is heavier than snow and drags less (settles faster).
     private _sandHeavier = (_sand select 0) > (_snow select 0);
     private _sandLessDrag = (_sand select 1) < (_snow select 1);
@@ -2958,8 +2958,8 @@ private _p29Pass = 0;
     // ground's hue.  The sampled colour must equal what the classifier
     // returns for that surface, not a per-material default.
     private _pos = getPosASL player;
-    private _sampled = [_pos] call aee_fx_fnc_surfaceSample;
-    private _withPos = ["snow", 0.55, [], _pos] call aee_fx_fnc_kickupParams;
+    private _sampled = [_pos] call aee_particles_fnc_surfaceSample;
+    private _withPos = ["snow", 0.55, [], _pos] call aee_particles_fnc_kickupParams;
     private _colourFromGround = (_withPos select 4) isEqualTo (_sampled select 1);
     // The colour must be a valid RGBA (4 elements, 0..1).
     private _rgbaOk = (count (_sand select 4)) == 4
@@ -2990,13 +2990,13 @@ private _p29Pass = 0;
     private _heli = createVehicle ["B_Heli_Light_01_F", [0, 0, 3], [], 0, "NONE"];
     private _groundZ = getTerrainHeightASL (getPos _heli);
     _heli setPosASL [0, 0, _groundZ + 1];
-    private _dust = [_heli, "dust"] call aee_fx_fnc_calculateDownwash;
-    private _sand = [_heli, "sand"] call aee_fx_fnc_calculateDownwash;
-    private _gravel = [_heli, "gravel"] call aee_fx_fnc_calculateDownwash;
+    private _dust = [_heli, "dust"] call aee_particles_fnc_calculateDownwash;
+    private _sand = [_heli, "sand"] call aee_particles_fnc_calculateDownwash;
+    private _gravel = [_heli, "gravel"] call aee_particles_fnc_calculateDownwash;
     // The same aircraft high above the ground must entrain far less: the
     // ground-effect term is the difference, not a constant.
     _heli setPosASL [0, 0, _groundZ + 120];
-    private _high = [_heli, "dust"] call aee_fx_fnc_calculateDownwash;
+    private _high = [_heli, "dust"] call aee_particles_fnc_calculateDownwash;
     deleteVehicle _heli;
 
     // The SQF threshold must match Bagnold within 20 percent, per material.

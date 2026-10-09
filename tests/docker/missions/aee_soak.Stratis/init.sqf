@@ -361,7 +361,7 @@ AEE_SOAK_HANDLE = [{
         if (_fauna isEqualType []) then {
             { if (!isNull (_x select 1)) then { _live = _live + 1; }; } forEach _fauna;
         };
-        private _sounds = missionNamespace getVariable ["aee_wildlife_soundInstances", []];
+        private _sounds = missionNamespace getVariable ["aee_ambience_soundInstances", []];
         private _soundCount = 0;
         if (_sounds isEqualType []) then { _soundCount = count _sounds; };
         private _agents = missionNamespace getVariable ["aee_ai_agents", []];

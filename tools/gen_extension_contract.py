@@ -45,9 +45,9 @@ ANCHOR_CLASSES = {
     "AEE_Unknown_Other": "addons/symbology/config.cpp",
     "ColorAEE": "addons/symbology/config.cpp",
     "AEE_MarkerBase": "addons/symbology/config.cpp",
-    "AEE_SandCloud": "addons/fx/config.cpp",
-    "AEE_SnowCloud": "addons/fx/config.cpp",
-    "AEE_SupersonicTrace": "addons/fx/config.cpp",
+    "AEE_SandCloud": "addons/particles/config.cpp",
+    "AEE_SnowCloud": "addons/particles/config.cpp",
+    "AEE_SupersonicTrace": "addons/particles/config.cpp",
     "CfgClothing": "addons/clothing/config.cpp",
 }
 
@@ -55,7 +55,7 @@ ANCHOR_CLASSES = {
 # the named source.
 ANCHOR_ENGINE_CLASSES = {
     "CfgWorlds": "addons/lighting/config.cpp",
-    "CfgCloudlets": "addons/fx/config.cpp",
+    "CfgCloudlets": "addons/particles/config.cpp",
     "CfgMarkers": "addons/symbology/config.cpp",
     "CfgMarkerColors": "addons/symbology/config.cpp",
     "CfgMarkerClasses": "addons/symbology/config.cpp",

@@ -85,9 +85,11 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_actions` | `actions` |
 | `aee_ai` | `ai` |
 | `aee_altitude` | `altitude` |
+| `aee_ambience` | `ambience` |
 | `aee_armour` | `armour` |
 | `aee_atmos` | `atmos` |
 | `aee_ballistics` | `ballistics` |
+| `aee_blast` | `blast` |
 | `aee_cartography` | `cartography` |
 | `aee_clothing` | `clothing` |
 | `aee_compat_ace3` | `compat_ace3` |
@@ -101,16 +103,18 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_dive` | `dive` |
 | `aee_eye` | `eye` |
 | `aee_flight` | `flight` |
-| `aee_fx` | `fx` |
 | `aee_hud` | `hud` |
 | `aee_hydrology` | `hydrology` |
 | `aee_lib` | `lib` |
 | `aee_lighting` | `lighting` |
+| `aee_ltm` | `ltm` |
+| `aee_magnetism` | `magnetism` |
 | `aee_maritime` | `maritime` |
 | `aee_material` | `material` |
 | `aee_mobility` | `mobility` |
 | `aee_nightvision` | `nightvision` |
 | `aee_optics` | `optics` |
+| `aee_particles` | `particles` |
 | `aee_persistence` | `persistence` |
 | `aee_physiology` | `physiology` |
 | `aee_radio` | `radio` |
@@ -121,6 +125,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_vehicles` | `vehicles` |
 | `aee_vision` | `vision` |
 | `aee_weather` | `weather` |
+| `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
 ### Public functions (638)
@@ -153,6 +158,28 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_altitude_fnc_calculateGLOC`
 - `aee_altitude_fnc_calculateHypoxia`
 - `aee_altitude_fnc_calculateOxygenDelivery`
+- `aee_ambience_fnc_acousticLevel`
+- `aee_ambience_fnc_acousticOccluders`
+- `aee_ambience_fnc_acousticPublish`
+- `aee_ambience_fnc_acousticSample`
+- `aee_ambience_fnc_acousticSourceDb`
+- `aee_ambience_fnc_callEmit`
+- `aee_ambience_fnc_callPitch`
+- `aee_ambience_fnc_callPublish`
+- `aee_ambience_fnc_callReceive`
+- `aee_ambience_fnc_callSample`
+- `aee_ambience_fnc_disturbanceSilence`
+- `aee_ambience_fnc_emitterClass`
+- `aee_ambience_fnc_emitterPlan`
+- `aee_ambience_fnc_emitterRelease`
+- `aee_ambience_fnc_emitterSync`
+- `aee_ambience_fnc_getCallPattern`
+- `aee_ambience_fnc_playAmbientBed`
+- `aee_ambience_fnc_playOneShot`
+- `aee_ambience_fnc_shotAudio`
+- `aee_ambience_fnc_soundBedForContext`
+- `aee_ambience_fnc_soundTick`
+- `aee_ambience_fnc_speciesSound`
 - `aee_armour_fnc_deriveProtection`
 - `aee_armour_fnc_dumpState`
 - `aee_armour_fnc_getVehicleArmour`
@@ -212,6 +239,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ballistics_fnc_resolveShot`
 - `aee_ballistics_fnc_selectBand`
 - `aee_ballistics_fnc_startStateDump`
+- `aee_blast_fnc_calculateBlastInjury`
+- `aee_blast_fnc_calculateBlastOverpressure`
 - `aee_cartography_fnc_fontFamilyUsable`
 - `aee_cartography_fnc_formatGridDisplay`
 - `aee_cartography_fnc_gpsBuild`
@@ -305,38 +334,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_flight_fnc_logAirframeState`
 - `aee_flight_fnc_resolveFlightModel`
 - `aee_flight_fnc_resolveTurbulenceArea`
-- `aee_fx_fnc_applyAtmosphericDust`
-- `aee_fx_fnc_applyBreathCondensation`
-- `aee_fx_fnc_applyExhaustShimmer`
-- `aee_fx_fnc_applyFootfallDust`
-- `aee_fx_fnc_applyRainSurfaceDrops`
-- `aee_fx_fnc_applyRainVehicleSound`
-- `aee_fx_fnc_applyRotorWash`
-- `aee_fx_fnc_applyVehicleDust`
-- `aee_fx_fnc_applyWeatherParticles`
-- `aee_fx_fnc_applyWindNoise`
-- `aee_fx_fnc_calculateBlastInjury`
-- `aee_fx_fnc_calculateBlastOverpressure`
-- `aee_fx_fnc_calculateDownwash`
-- `aee_fx_fnc_calculateLightningStrikeEffects`
-- `aee_fx_fnc_dumpState`
-- `aee_fx_fnc_heatHazeAlpha`
-- `aee_fx_fnc_heatHazeSize`
-- `aee_fx_fnc_kickupParams`
-- `aee_fx_fnc_particleAllocate`
-- `aee_fx_fnc_particleEffectConfig`
-- `aee_fx_fnc_particleEmission`
-- `aee_fx_fnc_particleMaterial`
-- `aee_fx_fnc_particlePipeline`
-- `aee_fx_fnc_particlePipelineEmit`
-- `aee_fx_fnc_particleState`
-- `aee_fx_fnc_registerParticleSource`
-- `aee_fx_fnc_renderSupersonicTrace`
-- `aee_fx_fnc_surfaceMaterial`
-- `aee_fx_fnc_surfaceSample`
-- `aee_fx_fnc_triggerLightning`
-- `aee_fx_fnc_triggerSevereWeatherFX`
-- `aee_fx_fnc_weatherParticleAlpha`
 - `aee_hud_fnc_hudBuild`
 - `aee_hud_fnc_hudFormatHeading`
 - `aee_hud_fnc_hudFormatRange`
@@ -409,8 +406,16 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_lighting_fnc_updateMilkyWay`
 - `aee_lighting_fnc_worldLightingClass`
 - `aee_lighting_fnc_worldLightingProfile`
-- `aee_maritime_fnc_calculateCompassDeviation`
-- `aee_maritime_fnc_calculateMagneticAnomaly`
+- `aee_ltm_fnc_ltmBeamSegments`
+- `aee_ltm_fnc_ltmCreate`
+- `aee_ltm_fnc_ltmDaylightAlpha`
+- `aee_ltm_fnc_ltmDraw`
+- `aee_ltm_fnc_ltmInit`
+- `aee_ltm_fnc_ltmPFH`
+- `aee_ltm_fnc_ltmToggle`
+- `aee_ltm_fnc_ltmToggleMode`
+- `aee_magnetism_fnc_calculateCompassDeviation`
+- `aee_magnetism_fnc_calculateMagneticAnomaly`
 - `aee_maritime_fnc_calculateSeaState`
 - `aee_maritime_fnc_calculateSeaSurfaceTemperature`
 - `aee_maritime_fnc_calculateTidalPrediction`
@@ -446,14 +451,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_nightvision_fnc_getDeviceMatch`
 - `aee_nightvision_fnc_getNvgDeviceProperties`
 - `aee_nightvision_fnc_getNvgTubeModel`
-- `aee_nightvision_fnc_ltmBeamSegments`
-- `aee_nightvision_fnc_ltmCreate`
-- `aee_nightvision_fnc_ltmDaylightAlpha`
-- `aee_nightvision_fnc_ltmDraw`
-- `aee_nightvision_fnc_ltmInit`
-- `aee_nightvision_fnc_ltmPFH`
-- `aee_nightvision_fnc_ltmToggle`
-- `aee_nightvision_fnc_ltmToggleMode`
 - `aee_nightvision_fnc_nvgAgcBreathing`
 - `aee_nightvision_fnc_nvgBlemishField`
 - `aee_nightvision_fnc_nvgBlindingEnvelope`
@@ -480,6 +477,23 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_calculateVehicleHeatShimmer`
 - `aee_optics_fnc_dumpState`
 - `aee_optics_fnc_getOpticProperties`
+- `aee_particles_fnc_calculateDownwash`
+- `aee_particles_fnc_dumpState`
+- `aee_particles_fnc_heatHazeAlpha`
+- `aee_particles_fnc_heatHazeSize`
+- `aee_particles_fnc_kickupParams`
+- `aee_particles_fnc_particleAllocate`
+- `aee_particles_fnc_particleEffectConfig`
+- `aee_particles_fnc_particleEmission`
+- `aee_particles_fnc_particleMaterial`
+- `aee_particles_fnc_particlePipeline`
+- `aee_particles_fnc_particlePipelineEmit`
+- `aee_particles_fnc_particleState`
+- `aee_particles_fnc_registerParticleSource`
+- `aee_particles_fnc_renderSupersonicTrace`
+- `aee_particles_fnc_surfaceMaterial`
+- `aee_particles_fnc_surfaceSample`
+- `aee_particles_fnc_weatherParticleAlpha`
 - `aee_persistence_fnc_calculateAvalancheRisk`
 - `aee_persistence_fnc_calculateCBRNPersistence`
 - `aee_persistence_fnc_calculateFireSpreadRisk`
@@ -714,28 +728,25 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_weather_fnc_updateBiomePosition`
 - `aee_weather_fnc_updateSeasonalFoliage`
 - `aee_weather_fnc_updateSoundPropagation`
-- `aee_wildlife_fnc_acousticLevel`
-- `aee_wildlife_fnc_acousticOccluders`
-- `aee_wildlife_fnc_acousticPublish`
-- `aee_wildlife_fnc_acousticSample`
-- `aee_wildlife_fnc_acousticSourceDb`
+- `aee_weatherfx_fnc_applyAtmosphericDust`
+- `aee_weatherfx_fnc_applyBreathCondensation`
+- `aee_weatherfx_fnc_applyExhaustShimmer`
+- `aee_weatherfx_fnc_applyFootfallDust`
+- `aee_weatherfx_fnc_applyRainSurfaceDrops`
+- `aee_weatherfx_fnc_applyRainVehicleSound`
+- `aee_weatherfx_fnc_applyRotorWash`
+- `aee_weatherfx_fnc_applyVehicleDust`
+- `aee_weatherfx_fnc_applyWeatherParticles`
+- `aee_weatherfx_fnc_applyWindNoise`
+- `aee_weatherfx_fnc_calculateLightningStrikeEffects`
+- `aee_weatherfx_fnc_triggerLightning`
+- `aee_weatherfx_fnc_triggerSevereWeatherFX`
 - `aee_wildlife_fnc_applyAnimalBehaviour`
-- `aee_wildlife_fnc_callEmit`
-- `aee_wildlife_fnc_callPitch`
-- `aee_wildlife_fnc_callPublish`
-- `aee_wildlife_fnc_callReceive`
-- `aee_wildlife_fnc_callSample`
 - `aee_wildlife_fnc_cullFauna`
-- `aee_wildlife_fnc_disturbanceSilence`
 - `aee_wildlife_fnc_ecologyBudget`
 - `aee_wildlife_fnc_ecologyTick`
-- `aee_wildlife_fnc_emitterClass`
-- `aee_wildlife_fnc_emitterPlan`
-- `aee_wildlife_fnc_emitterRelease`
-- `aee_wildlife_fnc_emitterSync`
 - `aee_wildlife_fnc_environmentGrid`
 - `aee_wildlife_fnc_environmentSuitability`
-- `aee_wildlife_fnc_getCallPattern`
 - `aee_wildlife_fnc_getSeason`
 - `aee_wildlife_fnc_getSpeciesMatch`
 - `aee_wildlife_fnc_habitatBoundary`
@@ -745,18 +756,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_needsTick`
 - `aee_wildlife_fnc_pickBedSource`
 - `aee_wildlife_fnc_pickResourceTarget`
-- `aee_wildlife_fnc_playAmbientBed`
-- `aee_wildlife_fnc_playOneShot`
 - `aee_wildlife_fnc_resourceScore`
 - `aee_wildlife_fnc_sampleNeighbourhood`
-- `aee_wildlife_fnc_shotAudio`
-- `aee_wildlife_fnc_soundBedForContext`
-- `aee_wildlife_fnc_soundTick`
 - `aee_wildlife_fnc_spawnBudget`
 - `aee_wildlife_fnc_spawnFauna`
 - `aee_wildlife_fnc_speciesDeprecation`
 - `aee_wildlife_fnc_speciesForBiome`
-- `aee_wildlife_fnc_speciesSound`
 - `aee_wildlife_fnc_spookRange`
 - `aee_wildlife_fnc_spookWave`
 - `aee_wildlife_fnc_teardownWildlife`
@@ -833,15 +838,15 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 | `AEE_Unknown_Other` | `addons/symbology/config.cpp` |
 | `ColorAEE` | `addons/symbology/config.cpp` |
 | `AEE_MarkerBase` | `addons/symbology/config.cpp` |
-| `AEE_SandCloud` | `addons/fx/config.cpp` |
-| `AEE_SnowCloud` | `addons/fx/config.cpp` |
-| `AEE_SupersonicTrace` | `addons/fx/config.cpp` |
+| `AEE_SandCloud` | `addons/particles/config.cpp` |
+| `AEE_SnowCloud` | `addons/particles/config.cpp` |
+| `AEE_SupersonicTrace` | `addons/particles/config.cpp` |
 | `CfgClothing` | `addons/clothing/config.cpp` |
 
 Engine classes AEE re-declares:
 
 - `CfgWorlds` (`addons/lighting/config.cpp`)
-- `CfgCloudlets` (`addons/fx/config.cpp`)
+- `CfgCloudlets` (`addons/particles/config.cpp`)
 - `CfgMarkers` (`addons/symbology/config.cpp`)
 - `CfgMarkerColors` (`addons/symbology/config.cpp`)
 - `CfgMarkerClasses` (`addons/symbology/config.cpp`)

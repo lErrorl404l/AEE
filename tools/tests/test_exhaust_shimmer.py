@@ -37,7 +37,7 @@ LOAD = REPO / "addons/vehicles/functions/fnc_calculateEngineLoad.sqf"
 AIRLOAD = REPO / "addons/flight/functions/fnc_calculateAirEngineLoad.sqf"
 MIRAGE = REPO / "addons/optics/functions/fx/fnc_applyMirageFX.sqf"
 GLARE = REPO / "addons/optics/functions/fx/fnc_applySolarGlareFX.sqf"
-SHIMMER = REPO / "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf"
+SHIMMER = REPO / "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf"
 
 KERNEL_SRC = KERNEL.read_text(encoding="utf-8")
 PLUME_SRC = PLUME.read_text(encoding="utf-8")
@@ -661,7 +661,7 @@ class ExhaustWiring(unittest.TestCase):
         self.assertNotIn("PREP(calculateExhaustPlume);", prep)
 
     def test_renderer_is_registered_in_fx(self):
-        prep = (REPO / "addons/fx/XEH_PREP.hpp").read_text(encoding="utf-8")
+        prep = (REPO / "addons/weatherfx/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREPS(weather,applyExhaustShimmer);", prep)
 
     def test_renderer_is_not_registered_in_optics(self):
@@ -672,15 +672,15 @@ class ExhaustWiring(unittest.TestCase):
         tick = (REPO / "addons/core/functions/fnc_updateEnvironment.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn("EFUNC(fx,applyExhaustShimmer)", tick)
+        self.assertIn("EFUNC(weatherfx,applyExhaustShimmer)", tick)
         # It runs with the other optics FX, after the mirage call.
         self.assertLess(
             tick.find("EFUNC(optics,applyMirageFX)"),
-            tick.find("EFUNC(fx,applyExhaustShimmer)"),
+            tick.find("EFUNC(weatherfx,applyExhaustShimmer)"),
         )
 
     def test_setting_is_registered_in_fx(self):
-        settings = (REPO / "addons/fx/initSettings.inc.sqf").read_text(encoding="utf-8")
+        settings = (REPO / "addons/weatherfx/initSettings.inc.sqf").read_text(encoding="utf-8")
         self.assertIn("AEE_SETTING_SLIDER(exhaustShimmerAlpha", settings)
 
     def test_setting_is_not_registered_in_optics(self):
@@ -693,7 +693,7 @@ class ExhaustWiring(unittest.TestCase):
         config = (REPO / "docs/wiki/chapters/configuration.qmd").read_text(
             encoding="utf-8"
         )
-        self.assertIn("aee_fx_exhaustShimmerAlpha", config)
+        self.assertIn("aee_weatherfx_exhaustShimmerAlpha", config)
 
     def test_state_variables_doc_records_the_new_state(self):
         state = (REPO / "docs/wiki/chapters/state-variables.qmd").read_text(

@@ -68,7 +68,6 @@
         "addons/flight/XEH_postInit.sqf:43",
         "addons/flight/functions/fnc_applyAirframeLoad.sqf:43",
         "addons/flight/functions/fnc_applyFlightTurbulence.sqf:81",
-        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:401",
         "addons/mobility/XEH_postInit.sqf:104",
         "addons/mobility/XEH_postInit.sqf:33",
         "addons/mobility/XEH_postInit.sqf:68",
@@ -78,7 +77,8 @@
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",
         "addons/vehicles/functions/fnc_classifyVehicle.sqf:87",
-        "addons/vehicles/functions/fnc_getVehicleGeometry.sqf:74"
+        "addons/vehicles/functions/fnc_getVehicleGeometry.sqf:74",
+        "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:401"
       ]
     },
     {
@@ -200,12 +200,12 @@
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:35",
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:36",
         "addons/flight/functions/fnc_calculateAirEngineLoad.sqf:137",
-        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:256",
-        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:367",
-        "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
+        "addons/ltm/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/mobility/functions/fnc_calculateSSF.sqf:61",
-        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
+        "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:256",
+        "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:367",
+        "addons/weatherfx/functions/weather/fnc_applyRotorWash.sqf:27"
       ]
     },
     {
@@ -228,15 +228,15 @@
         "addons/core/XEH_postInit.sqf:21",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
-        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:389",
+        "addons/ltm/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/mobility/functions/fnc_applyAccretionMass.sqf:33",
         "addons/mobility/functions/fnc_applyGripLoss.sqf:38",
         "addons/mobility/functions/fnc_calculateRouteDegradation.sqf:47",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:87",
-        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:86"
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:86",
+        "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:389"
       ]
     },
     {
@@ -296,10 +296,10 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:262",
-        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:370",
-        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159"
+        "addons/ltm/functions/ltm/fnc_ltmToggle.sqf:24",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
+        "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:262",
+        "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:370"
       ]
     },
     {
@@ -410,7 +410,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24"
+        "addons/ltm/functions/ltm/fnc_ltmToggle.sqf:24"
       ]
     },
     {

@@ -62,6 +62,21 @@ HOSTED_DUMPS: dict[str, str] = {
     "mobility": "flight",
     "vehicles": "flight",
     "hydrology": "flight",
+    # The fx split (step 9, ADR-032) left one particle state dump in
+    # particles (fnc_dumpState); weatherfx and blast publish into the
+    # same effect state and reuse it.
+    "weatherfx": "particles",
+    "blast": "particles",
+    # The wildlife split (step 9, ADR-032) left one consolidated wildlife
+    # state dump in wildlife (fnc_logWildlifeState); ambience publishes
+    # into that same state and reuses it.
+    "ambience": "wildlife",
+    # The nightvision split (step 9, ADR-032) left one NVG state dump in
+    # nightvision; ltm publishes into that same state and reuses it.
+    "ltm": "nightvision",
+    # The maritime split (step 9, ADR-032) left one maritime state dump in
+    # maritime; magnetism publishes into that same state and reuses it.
+    "magnetism": "maritime",
 }
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR

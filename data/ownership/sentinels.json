@@ -17,7 +17,7 @@
     },
     {
       "id": "fx-sand-cloudlet",
-      "addon": "fx",
+      "addon": "particles",
       "path": [
         "CfgCloudlets",
         "AEE_SandCloud"
@@ -25,12 +25,12 @@
       "property": "interval",
       "type": "number",
       "expected": 0.005,
-      "source": "addons/fx/config.cpp",
+      "source": "addons/particles/config.cpp",
       "evidence": "interval = 0.005;"
     },
     {
       "id": "fx-snow-cloudlet",
-      "addon": "fx",
+      "addon": "particles",
       "path": [
         "CfgCloudlets",
         "AEE_SnowCloud"
@@ -38,12 +38,12 @@
       "property": "interval",
       "type": "number",
       "expected": 0.01,
-      "source": "addons/fx/config.cpp",
+      "source": "addons/particles/config.cpp",
       "evidence": "interval = 0.01;"
     },
     {
       "id": "fx-supersonic-cloudlet",
-      "addon": "fx",
+      "addon": "particles",
       "path": [
         "CfgCloudlets",
         "AEE_SupersonicTrace"
@@ -51,7 +51,7 @@
       "property": "particleFSNtieth",
       "type": "number",
       "expected": 1,
-      "source": "addons/fx/config.cpp",
+      "source": "addons/particles/config.cpp",
       "evidence": "particleFSNtieth = 1;"
     },
     {

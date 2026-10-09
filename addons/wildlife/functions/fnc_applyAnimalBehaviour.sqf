@@ -130,7 +130,7 @@ private _callback = {
         // the species class, not a species-specific recording.
         private _assetMap = missionNamespace getVariable [QGVAR(assetMap), []];
         if !(_assetMap isEqualType []) then { _assetMap = []; };
-        private _fear = ["fear", [], _assetMap] call FUNC(speciesSound);
+        private _fear = ["fear", [], _assetMap] call EFUNC(ambience,speciesSound);
         private _fearMedia = _fear select 0;
         if !(_fearMedia isEqualType []) then { _fearMedia = []; };
         if ((count _fearMedia) > 0) then {
@@ -156,8 +156,8 @@ private _callback = {
                 };
             };
             private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
-            private _callPitch = [round CBA_missionTime, _speciesGroup, _callTemp, _radial] call FUNC(callPitch);
-            [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE, _agent, _callPitch] call FUNC(playOneShot);
+            private _callPitch = [round CBA_missionTime, _speciesGroup, _callTemp, _radial] call EFUNC(ambience,callPitch);
+            [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE, _agent, _callPitch] call EFUNC(ambience,playOneShot);
         };
         _recovery = 6;
     } else {
@@ -215,7 +215,7 @@ private _callback = {
     private _callPlan = -1;
     if ((count _plan) >= 2) then { _callPlan = _plan select 1; };
 
-    private _comm = missionNamespace getVariable [QGVAR(communicationEnabled), false];
+    private _comm = missionNamespace getVariable [QEGVAR(ambience,communicationEnabled), false];
     if !(_comm isEqualType true) then { _comm = false; };
 
     if (_comm) then {
@@ -228,7 +228,7 @@ private _callback = {
                 private _ecologyState = _agent getVariable [QGVAR(ecologyState), []];
                 private _speciesEmit = _agent getVariable [QGVAR(speciesEmit), [0.5, true]];
                 if !(_speciesEmit isEqualType []) then { _speciesEmit = [0.5, true]; };
-                private _call = [_speciesEmit, _perception, _ecologyState, _trigger] call FUNC(callEmit);
+                private _call = [_speciesEmit, _perception, _ecologyState, _trigger] call EFUNC(ambience,callEmit);
                 if ((count _call) >= 2) then {
                     private _bus = missionNamespace getVariable [QGVAR(callBus), []];
                     if !(_bus isEqualType []) then { _bus = []; };
@@ -237,8 +237,8 @@ private _callback = {
                     if !(_speciesGroup isEqualType "") then { _speciesGroup = ""; };
                     _bus = [
                         _bus, _key, _call select 0, _call select 1, _speciesGroup, CBA_missionTime
-                    ] call FUNC(callPublish);
-                    private _budget = missionNamespace getVariable [QGVAR(callBudget), WILDLIFE_CALL_BUDGET];
+                    ] call EFUNC(ambience,callPublish);
+                    private _budget = missionNamespace getVariable [QEGVAR(ambience,callBudget), WILDLIFE_CALL_BUDGET];
                     if !(_budget isEqualType 0) then { _budget = WILDLIFE_CALL_BUDGET; };
                     if ((count _bus) > _budget) then {
                         _bus = _bus select [((count _bus) - _budget), _budget];
@@ -252,7 +252,7 @@ private _callback = {
         // [callType, urgency, distance, relation] on the anchor.
         private _heard = _agent getVariable [QGVAR(heardCall), []];
         if ((count _heard) >= 4) then {
-            private _range = missionNamespace getVariable [QGVAR(callRange), WILDLIFE_CALL_RANGE];
+            private _range = missionNamespace getVariable [QEGVAR(ambience,callRange), WILDLIFE_CALL_RANGE];
             if !(_range isEqualType 0) then { _range = WILDLIFE_CALL_RANGE; };
             private _speciesHear = _agent getVariable [QGVAR(speciesEmit), [0.5, true]];
             private _gregariousness = 0.5;
@@ -263,7 +263,7 @@ private _callback = {
             private _reaction = [
                 _heard select 0, _heard select 1, _heard select 2, _heard select 3,
                 [_range, _gregariousness]
-            ] call FUNC(callReceive);
+            ] call EFUNC(ambience,callReceive);
             private _response = _reaction select 0;
             if (_response == 2) then { _action = 3; };
             if (_response == 3) then {

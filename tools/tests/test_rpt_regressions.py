@@ -196,7 +196,7 @@ class TestWildlifeScheduleRead(unittest.TestCase):
                 "date": [2026, 10, 8, 12, 0, 0],
                 "__EFUNC__lib_readState": lambda key, default, type_: default,
                 "__FUNC__getSpeciesMatch": lambda *args: [],
-                "__FUNC__soundTick": lambda *args: [],
+                "__EFUNC__ambience_soundTick": lambda *args: [],
             }
         )
         hour_key, emissions, read_back = run_program(program, globs)

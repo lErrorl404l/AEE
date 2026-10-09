@@ -379,8 +379,8 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_maritime_seaSurfaceTemperature` | maritime | Sea-surface temperature (evaporation-duct feed) |
 | `aee_core_currentTideDescription` | maritime | Tide description |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
-| `aee_maritime_compassDeviation` | maritime | Compass deviation (maritime namespace) |
-| `aee_maritime_compassAnomalyNT` | maritime | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
+| `aee_magnetism_compassDeviation` | magnetism | Compass deviation (magnetism namespace) |
+| `aee_magnetism_compassAnomalyNT` | magnetism | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
 
 ### Aviation and severe weather
 
@@ -426,10 +426,10 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_fx_blastOverpressureKpa` | fx | Last explosion incident overpressure in kPa (Kingery-Bulmash) |
-| `aee_fx_blastInjury` | fx | Last explosion injury vector [eardrum, lungThresh, lung1, lung50, lung99, throw] |
-| `aee_fx_particleSources` | fx | Live particle source records: [source, effect, priority, particles, expiry, key, params] |
-| `aee_fx_supersonicTrace` | fx | Live refractive shock traces drawn on the local player's rounds. One record per trace, holding the particle source, the projectile, and the last kernel contrast in units of 1e-4. The renderer caps the list at 4 and skips a new shot at the cap. The drawn distortion is an upper bound on the refractive contrast. It is not a vapour trail and not a condensation trail |
+| `aee_blast_blastOverpressureKpa` | blast | Last explosion incident overpressure in kPa (Kingery-Bulmash) |
+| `aee_blast_blastInjury` | blast | Last explosion injury vector [eardrum, lungThresh, lung1, lung50, lung99, throw] |
+| `aee_particles_particleSources` | particles | Live particle source records: [source, effect, priority, particles, expiry, key, params] |
+| `aee_particles_supersonicTrace` | particles | Live refractive shock traces drawn on the local player's rounds. One record per trace, holding the particle source, the projectile, and the last kernel contrast in units of 1e-4. The renderer caps the list at 4 and skips a new shot at the cap. The drawn distortion is an upper bound on the refractive contrast. It is not a vapour trail and not a condensation trail |
 | `aee_core_moduleUpdateInterval` | core | EDEN update interval |
 | `aee_core_weatherProgressionSeed` | core | Seeded weather progression |
 | `aee_core_qnh` | core | QNH pressure setting |
@@ -513,7 +513,7 @@ missionNamespace setVariable ["aee_lighting_starsForce", 0];
 These registered settings gate the DEBUG and TRACE log lines. The
 `AEE_LOG_DEBUG` and `AEE_LOG_TRACE` macros test `aee_core_logDebug`, and
 per module the name built from the component (`aee_ballistics_logDebug`,
-`aee_physiology_logDebug`, `aee_fx_logDebug`). A mission or the debug
+`aee_physiology_logDebug`, `aee_particles_logDebug`). A mission or the debug
 console may set any of them directly.
 
 | Variable | Purpose |
@@ -521,7 +521,7 @@ console may set any of them directly.
 | `aee_core_logDebug` | Master switch for DEBUG and TRACE lines |
 | `aee_ballistics_logDebug` | Trace shot resolution alone |
 | `aee_physiology_logDebug` | Trace the carried load and the item masses |
-| `aee_fx_logDebug` | Trace the effect emitters |
+| `aee_particles_logDebug` | Trace the effect emitters |
 | `aee_thermal_logDebug` | Trace the thermal display chain |
 | `aee_optics_logDebug` | Trace the optics and eye-adaptation state |
 | `aee_nightvision_logDebug` | Trace the NVG tube model |
@@ -562,9 +562,9 @@ temperature. The kernels are pure and the coupling is gated.
 
 | Variable | Category | Purpose |
 |---|---|---|
-| `aee_fx_weatherAlphaEnabled` | AEE FX > Particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
-| `aee_fx_heatHazeEnabled` | AEE FX > Particles | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
-| `aee_fx_heatHazeMaxAlpha` | AEE FX > Particles | Upper bound on the ambient-temperature heat-haze alpha |
+| `aee_particles_weatherAlphaEnabled` | AEE FX > Particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
+| `aee_weatherfx_heatHazeEnabled` | AEE FX > Particles | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
+| `aee_weatherfx_heatHazeMaxAlpha` | AEE FX > Particles | Upper bound on the ambient-temperature heat-haze alpha |
 
 ### Night-vision display
 
@@ -572,8 +572,8 @@ The **AEE HUD > Displays** category holds the on-screen night-vision readouts.
 
 | Variable | Category | Purpose |
 | --- | --- | --- |
-| `aee_nightvision_ltmEnabled` | AEE HUD > Displays | Draw the NVG laser target marker |
-| `aee_nightvision_ltmDaylightFade` | AEE HUD > Displays | Fade the laser marker by day, alpha `1.2 - sunOrMoon` |
+| `aee_ltm_ltmEnabled` | AEE HUD > Displays | Draw the NVG laser target marker |
+| `aee_ltm_ltmDaylightFade` | AEE HUD > Displays | Fade the laser marker by day, alpha `1.2 - sunOrMoon` |
 
 ### MGRS grid and the signal tracker
 
@@ -631,9 +631,9 @@ the kernel default and the per-constant register.
 | `aee_wildlife_environmentBudgetMs` | Wildlife > Environment | The per-call millisecond budget |
 | `aee_wildlife_cognitionEnabled` | Wildlife > Cognition | Enable the budgeted ecology tick |
 | `aee_wildlife_cognitionBudgetMs` | Wildlife > Cognition | The per-call millisecond budget |
-| `aee_wildlife_communicationEnabled` | Wildlife > Communication | Enable the heard-call bus |
-| `aee_wildlife_callRange` | Wildlife > Communication | The audibility range, metres |
-| `aee_wildlife_callBudget` | Wildlife > Communication | The heard-call bus cap |
+| `aee_ambience_communicationEnabled` | Wildlife > Communication | Enable the heard-call bus |
+| `aee_ambience_callRange` | Wildlife > Communication | The audibility range, metres |
+| `aee_ambience_callBudget` | Wildlife > Communication | The heard-call bus cap |
 | `aee_wildlife_environmentDebug` | Debug > Wildlife | Trace the environment sampler |
 | `aee_wildlife_cognitionDebug` | Debug > Wildlife | Trace the ecology tick |
 | `aee_wildlife_communicationDebug` | Debug > Wildlife | Trace the call bus |
@@ -747,10 +747,10 @@ operator and the debug console.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_wildlife_soundInstances` | wildlife | The live one-shot expiry times, bounded by the instance cap |
-| `aee_wildlife_ambientSource` | wildlife | The current looping CfgSFX bed source |
+| `aee_ambience_soundInstances` | ambience | The live one-shot expiry times, bounded by the instance cap |
+| `aee_ambience_ambientSource` | ambience | The current looping CfgSFX bed source |
 | `aee_wildlife_manifest` | wildlife | The loaded vanilla sound manifest |
-| `aee_wildlife_ambientPFH` | wildlife | The wildlife client tick handle |
+| `aee_ambience_ambientPFH` | ambience | The wildlife client tick handle |
 | `aee_wildlife_firedManEH` | wildlife | The core player engine handler key for the gunfire report |
 
 ## Wildlife fauna state
@@ -784,11 +784,11 @@ call live on the agent object.
 | `aee_wildlife_environmentLastMs` | wildlife | The elapsed milliseconds of the last sampler call |
 | `aee_wildlife_ecologyPending` | wildlife | The animals not yet solved this ecology cycle |
 | `aee_wildlife_callBus` | wildlife | The heard-call bus, bounded and decayed |
-| `aee_wildlife_soundEvents` | wildlife | The propagated sound-event bus |
-| `aee_wildlife_soundSchedule` | wildlife | The species emission schedule for the current hour |
+| `aee_ambience_soundEvents` | ambience | The propagated sound-event bus |
+| `aee_ambience_soundSchedule` | ambience | The species emission schedule for the current hour |
 | `aee_wildlife_speciesEmit` | wildlife | The per-group emission gate state |
 | `aee_wildlife_emitters` | wildlife | The live attached 3D sound emitters |
-| `aee_wildlife_ambientKey` | wildlife | The ambient bed source key, for the recreate guard |
+| `aee_ambience_ambientKey` | ambience | The ambient bed source key, for the recreate guard |
 | `aee_wildlife_lastTickMs` | wildlife | The elapsed milliseconds of the last wildlife tick |
 | `aee_wildlife_speciesRules` | wildlife | Per-animal species rules, an object variable |
 | `aee_wildlife_habitatWeights` | wildlife | Per-animal habitat weights, an object variable |

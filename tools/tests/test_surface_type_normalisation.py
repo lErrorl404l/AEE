@@ -32,7 +32,7 @@ FILES = {
     / "fnc_calculateTurbulence.sqf",
     "classify": ADDON / "material" / "functions" / "fnc_classifyBySurfaceType.sqf",
     "surface_material": ADDON
-    / "fx"
+    / "particles"
     / "functions"
     / "particle"
     / "fnc_surfaceMaterial.sqf",

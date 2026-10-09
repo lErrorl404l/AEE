@@ -474,7 +474,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
         self.assertIn("getWorldLocation", space)
 
         compass = Path(
-            "addons/maritime/functions/fnc_calculateCompassDeviation.sqf"
+            "addons/magnetism/functions/fnc_calculateCompassDeviation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", compass)
 
