@@ -3,6 +3,7 @@ PREP(applyAirframeLoad);
 PREP(logAirframeState);
 PREP(resolveFlightModel);
 PREP(calculateTurbulenceForce);
+PREP(resolveTurbulenceArea);
 PREP(calculateAeroPenalty);
 PREP(applyRollover);
 PREP(calculateAirEngineLoad);

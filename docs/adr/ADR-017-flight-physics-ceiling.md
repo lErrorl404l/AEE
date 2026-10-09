@@ -20,7 +20,7 @@ The unused state. AEE computed the air density (`aee_core_currentAirDensity`), t
 
 1. The advanced-model gate is `difficultyEnabledRTD`, or the `RotorLibHelicopterProperties` class for a rotary airframe. The pure kernel `fnc_resolveFlightModel` is the executable truth table over the two booleans. The bogus class test is removed.
 
-2. Turbulence is a physical layer. An advanced-model or rotor-lib airframe receives a bounded `addForce` from `fnc_calculateTurbulenceForce`, plus a bounded `addTorque` nudge on a rotary airframe. The simple model keeps the local `setVelocity` path. Each application is gated to the machine that owns the object, so it is multiple-player safe and it never double-applies on a dedicated server. The per-frame `setVelocity` is no longer the only path.
+2. Turbulence is a physical layer. An advanced-model or rotor-lib airframe receives a bounded `addForce` from `fnc_calculateTurbulenceForce`, plus a bounded `addTorque` nudge on a rotary airframe. The force is aerodynamic and mass-aware: the dynamic pressure times the airframe's effective drag area, `F = 0.5 rho v^2 (Cd S)`, read from the aircraft corpus record. The force carries no mass, so the acceleration it realises is `F / mass`: a heavy airframe resists a gust and a light one is nudged. The simple model cannot integrate a PhysX force, so it takes the same acceleration as a local velocity delta and is weight-aware too. Each application is gated to the machine that owns the object, so it is multiple-player safe and it never double-applies on a dedicated server.
 
 3. Air density and icing are consumed in flight. The pure kernel `fnc_calculateAeroPenalty` turns the lift ratio and the icing severity into a bounded lift loss and drag rise. `fnc_applyAirframeLoad` applies the lift loss as a downward `addForce`, the drag rise as an `addForce` opposing the velocity, and the ice mass as a `setMass` delta. The combined lift loss is capped, so the layer can never stall the airframe.
 
@@ -32,7 +32,7 @@ The unused state. AEE computed the air density (`aee_core_currentAirDensity`), t
 
 - The advanced-model branch runs for the first time. Advanced-model helicopters and fixed-wing aircraft take a force, not a velocity overwrite.
 - The density and icing state now changes flight behaviour.
-- The UNSOURCED magnitudes are the turbulence force divisor (100), the turbulence force cap (0.25 of weight), the turbulence torque fraction (0.05), the density lift-loss maximum (0.6), the icing lift-loss maximum (0.35), the icing drag-rise maximum (0.5), the combined lift-loss cap (0.45) and the drag area (0.7 m2). Each is bounded and pinned by a test.
+- The turbulence force is aerodynamic and sourced. The unsourced divisor (100) is removed. The drag area is the record's `drag_area_m2` (Cd S, fixed-wing, `data/aircraft/SCHEMA.md` section 5) or `rotor_disc_area_m2` (the rotor disc, rotary-wing), and the kernel default 0.7 m2 stands when neither is held. The remaining UNSOURCED magnitudes are the turbulence force cap (0.25 of weight), the turbulence torque fraction (0.05), the density lift-loss maximum (0.6), the icing lift-loss maximum (0.35), the icing drag-rise maximum (0.5) and the combined lift-loss cap (0.45). Each is bounded and pinned by a test.
 - The ice mass is one global atmos value applied to every local airframe in range. That is an approximation, not a per-airframe accretion.
 - The turbulence and the airframe load are client effects. A dedicated server does not run them, so a server-owned AI airframe receives no scripted turbulence.
 - Alternatives: a runtime FDM swap was rejected because the engine resolves the FDM at config load. A blade-element replacement was rejected for the same reason.
@@ -40,8 +40,11 @@ The unused state. AEE computed the air density (`aee_core_currentAirDensity`), t
 ## References
 
 - `addons/mobility/functions/fnc_applyFlightTurbulence.sqf`, the gate and the physical layer.
+- `addons/mobility/functions/fnc_calculateTurbulenceForce.sqf`, the aerodynamic gust force.
+- `addons/mobility/functions/fnc_resolveTurbulenceArea.sqf`, the drag area from the corpus row.
 - `addons/mobility/functions/fnc_applyAirframeLoad.sqf`, the density and icing consumer.
 - `addons/mobility/script_component.hpp`, the bounded constants.
+- `data/aircraft/SCHEMA.md`, the drag area and rotor disc area derivations.
 - FAR 25 Appendix C, the airframe icing envelope.
 - ISO 2533, the standard atmosphere.
 - `docs/adr/ADR-001-engine-anchors.md`, the verify-against-the-engine rule.
