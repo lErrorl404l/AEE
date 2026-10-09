@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
-"""Aircraft systems config gate tests (task 6).
+"""Aircraft systems config gate tests (tasks 6 and 20).
 
-The aircraft fuel key is projected into the one ``CfgVehicles`` block by
-``tools/validation/gen_physics_config.py``. The build-time predicate admits
-the key only when the class identity grade AND the held value grade are both
+The aircraft keys are projected into the one ``CfgVehicles`` block by
+``tools/validation/gen_physics_config.py``. The build-time predicate admits a
+key only when the class identity grade AND the held value grade are both
 ``documented``.
 
-These tests prove three things:
+These tests prove:
 
   * POSITIVE: a sentinel class with a ``documented`` identity and a
     ``documented`` held ``fuel_capacity`` emits ``fuelCapacity`` beside the
     land keys in the same block, and the value equals the catalogue value.
+  * POSITIVE: the same class emits ``mass`` from the held
+    ``operating_weight_kg`` as the PhysX mass and ``centerOfMass`` from the
+    held ``cg_empty_m``.
+  * NEGATIVE: no moment-of-inertia key is emitted, because the engine has no
+    runtime inertia hook.
   * NEGATIVE: the same class at grade ``claimed`` emits no key and is
     recorded as a lead.
   * NON-REGRESSION: the shipped ``addons/mobility/generated/CfgVehicles.hpp``
     still carries one block, exactly eighteen land bodies and the keys
-    ``maxSpeed`` and ``mass``, and it holds no ``fuelCapacity`` key.
+    ``maxSpeed`` and ``mass``, and it holds no aircraft key.
 
 Run: python3 -m unittest tools.tests.test_aircraft_systems -v
 """
@@ -51,6 +56,8 @@ KEY_RE = re.compile(r"^[ \t]+(\w+) = ", re.M)
 SENTINEL_CLASS = "FIXTURE_SENTINEL_F"
 SENTINEL_PARENT = "Heli_Base"
 SENTINEL_VALUE = 1234
+SENTINEL_MASS_KG = 2345
+SENTINEL_CG_M = 1.25
 SENTINEL_ID = "fixture_sentinel"
 
 # The land corpus is un-gated and unchanged. The shipped file carries exactly
@@ -129,7 +136,23 @@ def _sentinel_corpus(root: Path, grade: str) -> tuple[Path, Path]:
                 "locator": "fixture only, no real locator",
                 "state": "fixture only, no real configuration",
                 "grade": grade,
-            }
+            },
+            "operating_weight_kg": {
+                "value": SENTINEL_MASS_KG,
+                "unit": "kg",
+                "source": "fixture_manual",
+                "locator": "fixture only, no real locator",
+                "state": "fixture only, no real configuration",
+                "grade": grade,
+            },
+            "cg_empty_m": {
+                "value": SENTINEL_CG_M,
+                "unit": "m",
+                "source": "fixture_manual",
+                "locator": "fixture only, no real locator",
+                "state": "fixture only, no real configuration",
+                "grade": grade,
+            },
         },
     }
     _write(
@@ -214,7 +237,36 @@ class AircraftFuelEmissionTest(unittest.TestCase):
         self.assertEqual(emissions[0].value, SENTINEL_VALUE)
         self.assertEqual(emissions[0].parent_class, SENTINEL_PARENT)
         self.assertEqual(emissions[0].unit, "L")
+        self.assertEqual(emissions[0].mass, SENTINEL_MASS_KG)
+        self.assertEqual(emissions[0].cg, SENTINEL_CG_M)
         self.assertEqual(leads, [])
+
+    def test_a_documented_sentinel_emits_the_mass_and_cg_keys(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            class_bindings, parents = _sentinel_corpus(root, "documented")
+            text = _generate(root, class_bindings, parents)
+        body = re.search(
+            rf"class {SENTINEL_CLASS}: {SENTINEL_PARENT} \{{(.*?)\n    \}};",
+            text,
+            re.S,
+        )
+        self.assertIsNotNone(body)
+        assert body is not None
+        # CfgVehicles mass is the PhysX mass from the sourced operating
+        # weight, and the centre of gravity is the sourced empty CG.
+        self.assertIn(f"mass = {SENTINEL_MASS_KG};", body.group(1))
+        self.assertIn(f"centerOfMass = {SENTINEL_CG_M};", body.group(1))
+
+    def test_no_inertia_key_is_emitted(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            class_bindings, parents = _sentinel_corpus(root, "documented")
+            text = _generate(root, class_bindings, parents)
+        # The engine has no runtime inertia hook, so no moment-of-inertia key
+        # is emitted. The header names the ceiling in prose, so test the
+        # emitted assignment form, not the raw string.
+        self.assertIsNone(re.search(r"^\s+inertia", text, re.M | re.I))
 
     def test_a_claimed_sentinel_emits_no_fuel_key(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -232,7 +284,7 @@ class AircraftFuelEmissionTest(unittest.TestCase):
         self.assertIsNone(re.search(r"^\s+fuelCapacity = ", text, re.M))
         self.assertIsNone(re.search(r"^\s+fuelConsumptionRate = ", text, re.M))
 
-    def test_a_documented_sentinel_projects_the_two_aircraft_keys(self) -> None:
+    def test_a_documented_sentinel_projects_the_aircraft_keys(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             class_bindings, parents = _sentinel_corpus(root, "documented")
@@ -250,11 +302,20 @@ class AircraftFuelEmissionTest(unittest.TestCase):
             sources.update(v.sources_by_id(root))
             errors = v.validate_bindings(records, catalogue_ids, class_map, sources)
         keys = {record["key"] for record in records}
-        self.assertEqual(keys, {"fuelCapacity", "fuelConsumptionRate"})
+        self.assertEqual(
+            keys, {"fuelCapacity", "fuelConsumptionRate", "mass", "centerOfMass"}
+        )
         burn = next(r for r in records if r["key"] == "fuelConsumptionRate")
         self.assertEqual(burn["value"], 0)
         self.assertEqual(burn["unit"], "unitless")
         self.assertEqual(burn["conversion"], "structural_zero")
+        mass = next(r for r in records if r["key"] == "mass")
+        self.assertEqual(mass["value"], SENTINEL_MASS_KG)
+        self.assertEqual(mass["unit"], "kg")
+        self.assertEqual(mass["conversion"], "identity")
+        cg = next(r for r in records if r["key"] == "centerOfMass")
+        self.assertEqual(cg["value"], SENTINEL_CG_M)
+        self.assertEqual(cg["unit"], "m")
         self.assertEqual(errors, [])
 
     def test_the_predicate_admits_both_documented_only(self) -> None:

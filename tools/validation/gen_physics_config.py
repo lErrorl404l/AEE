@@ -2,12 +2,23 @@
 """Generate the engine CfgVehicles override from the vehicle corpus.
 
 One CfgVehicles block carries the land keys and, only when the build-time
-gate passes, the aircraft fuel keys:
+gate passes, the aircraft keys:
 
   * ``maxSpeed`` from the held catalogue ``max_speed_kmh`` field;
-  * ``mass`` as a CALIBRATED scale of a held real mass;
+  * ``mass`` as a CALIBRATED scale of a held real mass for the land classes;
   * ``fuelCapacity`` from the held aircraft catalogue ``fuel_capacity`` field;
-  * ``fuelConsumptionRate`` as a STRUCTURAL ZERO for the same class.
+  * ``fuelConsumptionRate`` as a STRUCTURAL ZERO for the same class;
+  * ``mass`` from the held aircraft catalogue ``operating_weight_kg`` field,
+    as the PHYSX mass, for the same gated class;
+  * ``centerOfMass`` from the held aircraft catalogue ``cg_empty_m`` field,
+    where the engine accepts it, for the same gated class.
+
+``CfgVehicles mass`` is the PHYSX mass, NOT the RotorLib flight-dynamics
+mass. A RotorLib airframe carries a separate ``emptyMass`` and an RTD XML
+``Mass``, two different values. The land mass calibration is a ground fit
+over ground classes and is NEVER applied to an aircraft. Moments of inertia
+are REFERENCE ONLY: the engine has no runtime inertia hook, so no inertia
+key is emitted.
 
 ``fuelConsumptionRate = 0`` disables the engine's own burn, so the scripted
 burn from the sourced systems-row ``fuel_consumption_rate`` is authoritative
@@ -17,7 +28,9 @@ covers, so a class never has infinite fuel when the script is not running.
 
 The land keys are pre-existing and NOT identity-derived: maxSpeed comes from
 the held catalogue and mass from the approved mass calibration. The gate never
-retro-applies to them, and their output is unchanged by this version.
+retro-applies to them, and their output is unchanged by this version. The
+aircraft mass and centre of gravity are identity-derived and gated, and the
+land calibration is never applied to an aircraft.
 
 The aircraft keys are gated at BUILD TIME by ``emit_key``: a key is emitted
 only when the class identity grade (``data/aircraft/class_bindings.json``) AND
@@ -134,6 +147,25 @@ AIRCRAFT_BURN_UNIT = "unitless"
 AIRCRAFT_BURN_VALUE = 0
 AIRCRAFT_BURN_CONVERSION = "structural_zero"
 
+# The aircraft mass key. ``operating_weight_kg`` is the sourced operating
+# weight and projects to the engine ``mass`` key by the identity conversion.
+# ``CfgVehicles mass`` is the PHYSX mass, NOT the RotorLib flight-dynamics
+# mass: a RotorLib airframe carries a separate ``emptyMass`` and an RTD XML
+# ``Mass``, two different values. The land mass calibration is a ground fit
+# over ground classes and is NEVER applied to an aircraft.
+AIRCRAFT_MASS_KEY = "mass"
+AIRCRAFT_MASS_VALUE_FIELD = "operating_weight_kg"
+AIRCRAFT_MASS_UNIT = "kg"
+
+# The centre-of-gravity key. ``cg_empty_m`` is the sourced empty centre of
+# gravity and projects to the engine ``centerOfMass`` key by the identity
+# conversion. It is emitted only where the engine accepts it. Moments of
+# inertia are REFERENCE ONLY: the engine has no runtime inertia hook, so no
+# inertia key is emitted.
+AIRCRAFT_CG_KEY = "centerOfMass"
+AIRCRAFT_CG_VALUE_FIELD = "cg_empty_m"
+AIRCRAFT_CG_UNIT = "m"
+
 # The grade the build-time gate requires on both the class identity and the
 # held value. No other grade emits a key.
 DOCUMENTED = "documented"
@@ -180,6 +212,18 @@ HEADER = (
     "// The zero is emitted ONLY for a class the fuel driver covers, so a\n"
     "// class never has infinite fuel when the script is not running.\n"
     "//\n"
+    "// The aircraft mass key is gated the same way. CfgVehicles mass is the\n"
+    "// PHYSX mass, NOT the RotorLib flight-dynamics mass: a RotorLib airframe\n"
+    "// carries a separate emptyMass and an RTD XML Mass, two different\n"
+    "// values. The mass is the sourced operating_weight_kg. The land mass\n"
+    "// calibration is a ground fit over ground classes and is NEVER applied\n"
+    "// to an aircraft.\n"
+    "//\n"
+    "// The centre of gravity is emitted as centerOfMass only where the engine\n"
+    "// accepts it, from the sourced cg_empty_m, under the same build-time\n"
+    "// gate. Moments of inertia are REFERENCE ONLY: the engine has no runtime\n"
+    "// inertia hook, so no inertia key is emitted.\n"
+    "//\n"
     "// One block carries every key: the engine lint rejects a second\n"
     "// CfgVehicles block in the same addon.\n"
 )
@@ -209,15 +253,28 @@ class Emission:
 
 @dataclass(frozen=True)
 class AircraftEmission:
-    """One aircraft binding that passes the build-time gate and can be emitted."""
+    """One aircraft binding that passes the build-time gate and can be emitted.
+
+    Each key is gated on its own held value grade, so a class may carry the
+    mass or the centre of gravity without the fuel pair, or the reverse. A
+    key whose value is ``None`` emits nothing.
+    """
 
     game_class: str
     parent_class: str
-    value: object
+    value: object | None
     unit: str
-    source_id: str
-    locator: str
-    grade: str
+    source_id: str | None
+    locator: str | None
+    grade: str | None
+    mass: object | None = None
+    mass_source_id: str | None = None
+    mass_locator: str | None = None
+    mass_grade: str | None = None
+    cg: object | None = None
+    cg_source_id: str | None = None
+    cg_locator: str | None = None
+    cg_grade: str | None = None
 
 
 @dataclass(frozen=True)
@@ -231,13 +288,20 @@ class MassCalibration:
 
 @dataclass(frozen=True)
 class ClassBinding:
-    """One bare class body with the keys it holds."""
+    """One bare class body with the keys it holds.
+
+    ``mass`` is the land calibrated mass. ``aircraft_mass`` is the aircraft
+    PhysX mass from the sourced operating weight; the two never appear on the
+    same class and both render as the one ``mass`` key.
+    """
 
     game_class: str
     parent_class: str
     max_speed: object | None
     mass: float | None
     fuel_capacity: object | None = None
+    aircraft_mass: object | None = None
+    aircraft_cg: object | None = None
 
 
 def _mapping(value: object) -> dict[str, object] | None:
@@ -531,17 +595,51 @@ def build_class_bindings(
     return bindings
 
 
+def _gated_value(
+    entry: "catalogue.CatalogueEntry | None",
+    field: str,
+    unit: str,
+    where: str,
+) -> dict[str, object] | None:
+    """Return the held value object for one aircraft key, or None.
+
+    A held value with the wrong unit is an error: the config key is documented
+    in one unit and the generator emits no other. A held value with no source
+    or no locator is an error too, because the projection must trace it.
+    """
+    if entry is None:
+        return None
+    held = catalogue.held_value(entry.values, field)
+    if held is None:
+        return None
+    held_unit = _text(held.get("unit"))
+    if held_unit != unit:
+        raise ValueError(f"{where}: {field} is held in {held_unit}, the key is {unit}")
+    source_id = _text(held.get("source"))
+    locator = _text(held.get("locator"))
+    if source_id is None or locator is None:
+        raise ValueError(f"{where}: the held {field} value is incomplete")
+    return {
+        "value": held.get("value"),
+        "source_id": source_id,
+        "locator": locator,
+        "grade": _text(held.get("grade")),
+    }
+
+
 def build_aircraft_emissions(
     class_bindings_path: Path,
     aircraft_dir: Path,
     parents_path: Path,
 ) -> tuple[list[AircraftEmission], list[str]]:
-    """Return the gate-passing aircraft fuel emissions and the rejected leads.
+    """Return the gate-passing aircraft emissions and the rejected leads.
 
-    The class identity grade comes from the aircraft class binding and the
-    value grade from the held catalogue value object. ``emit_key`` admits a
-    key only when both are ``documented``. A class that fails the predicate is
-    a lead: it emits no key, needs no resolved parent and the build does not
+    The class identity grade comes from the aircraft class binding and each
+    key's value grade from its held catalogue value object. ``emit_key``
+    admits a key only when both are ``documented``. Each key is gated on its
+    own held value, so a class may carry the mass or the centre of gravity
+    without the fuel pair, or the reverse. A class that passes no key is a
+    lead: it emits nothing, needs no resolved parent and the build does not
     fail for it. A gate-passing class with no resolved parent is an error,
     because the generator emits no bare class.
     """
@@ -559,29 +657,16 @@ def build_aircraft_emissions(
         if catalogue_id is None:
             raise ValueError(f"{where}: catalogue_id must be a non-empty string")
         entry = entries.get(catalogue_id)
-        held = (
-            catalogue.held_value(entry.values, AIRCRAFT_VALUE_FIELD)
-            if entry is not None
-            else None
-        )
         identity_grade = record.get("grade")
-        value_grade = held.get("grade") if held is not None else None
-        if not emit_key(identity_grade, value_grade):
+        fuel = _gated_value(entry, AIRCRAFT_VALUE_FIELD, AIRCRAFT_KEY_UNIT, where)
+        mass = _gated_value(entry, AIRCRAFT_MASS_VALUE_FIELD, AIRCRAFT_MASS_UNIT, where)
+        cg = _gated_value(entry, AIRCRAFT_CG_VALUE_FIELD, AIRCRAFT_CG_UNIT, where)
+        fuel_ok = emit_key(identity_grade, fuel["grade"] if fuel is not None else None)
+        mass_ok = emit_key(identity_grade, mass["grade"] if mass is not None else None)
+        cg_ok = emit_key(identity_grade, cg["grade"] if cg is not None else None)
+        if not (fuel_ok or mass_ok or cg_ok):
             leads.append(game_class)
             continue
-        assert held is not None
-        unit = _text(held.get("unit"))
-        if unit != AIRCRAFT_KEY_UNIT:
-            raise ValueError(
-                f"{where}: {AIRCRAFT_VALUE_FIELD} is held in {unit}, "
-                f"the key is {AIRCRAFT_KEY_UNIT}"
-            )
-        source_id = _text(held.get("source"))
-        locator = _text(held.get("locator"))
-        if source_id is None or locator is None:
-            raise ValueError(
-                f"{where}: the held {AIRCRAFT_VALUE_FIELD} value is incomplete"
-            )
         parent = parents.get(game_class)
         if parent is None:
             raise ValueError(
@@ -592,11 +677,19 @@ def build_aircraft_emissions(
             AircraftEmission(
                 game_class=game_class,
                 parent_class=parent.parent_class,
-                value=held.get("value"),
+                value=fuel["value"] if fuel_ok else None,
                 unit=AIRCRAFT_KEY_UNIT,
-                source_id=source_id,
-                locator=locator,
-                grade=str(value_grade),
+                source_id=str(fuel["source_id"]) if fuel_ok else None,
+                locator=str(fuel["locator"]) if fuel_ok else None,
+                grade=str(fuel["grade"]) if fuel_ok else None,
+                mass=mass["value"] if mass_ok else None,
+                mass_source_id=str(mass["source_id"]) if mass_ok else None,
+                mass_locator=str(mass["locator"]) if mass_ok else None,
+                mass_grade=str(mass["grade"]) if mass_ok else None,
+                cg=cg["value"] if cg_ok else None,
+                cg_source_id=str(cg["source_id"]) if cg_ok else None,
+                cg_locator=str(cg["locator"]) if cg_ok else None,
+                cg_grade=str(cg["grade"]) if cg_ok else None,
             )
         )
     return emissions, leads
@@ -632,6 +725,8 @@ def build_all_bindings(
                 max_speed=None,
                 mass=None,
                 fuel_capacity=emission.value,
+                aircraft_mass=emission.mass,
+                aircraft_cg=emission.cg,
             )
         )
     return bindings, leads
@@ -651,6 +746,10 @@ def render_bindings(bindings: Sequence[ClassBinding]) -> str:
             lines.append(f"        {KEY} = {_render_value(binding.max_speed)};")
         if binding.mass is not None:
             lines.append(f"        {MASS_KEY} = {_render_value(binding.mass)};")
+        elif binding.aircraft_mass is not None:
+            lines.append(
+                f"        {MASS_KEY} = {_render_value(binding.aircraft_mass)};"
+            )
         if binding.fuel_capacity is not None:
             lines.append(
                 f"        {AIRCRAFT_KEY} = {_render_value(binding.fuel_capacity)};"
@@ -660,6 +759,10 @@ def render_bindings(bindings: Sequence[ClassBinding]) -> str:
             # covers and no covered class has infinite fuel.
             lines.append(
                 f"        {AIRCRAFT_BURN_KEY} = {_render_value(AIRCRAFT_BURN_VALUE)};"
+            )
+        if binding.aircraft_cg is not None:
+            lines.append(
+                f"        {AIRCRAFT_CG_KEY} = {_render_value(binding.aircraft_cg)};"
             )
         lines.append("    };")
     lines.append("};")
@@ -692,42 +795,79 @@ def aircraft_projection_records(
 ) -> list[dict[str, object]]:
     """Return the validator projection of the gate-passing aircraft emissions.
 
-    Each class carries two records: the held ``fuelCapacity`` by the identity
-    conversion, and the structural-zero ``fuelConsumptionRate``. The zero has
-    no held value of its own, so it traces to the held ``fuel_capacity`` that
-    qualifies the class. The sourced systems-row rate is never projected.
+    Each key is projected only when its held value passed the gate. The fuel
+    pair is the held ``fuelCapacity`` and the structural-zero
+    ``fuelConsumptionRate``: the zero has no held value of its own, so it
+    traces to the held ``fuel_capacity`` that qualifies the class. The sourced
+    systems-row rate is never projected. ``mass`` traces to the held
+    ``operating_weight_kg`` and ``centerOfMass`` to the held ``cg_empty_m``.
     """
     records: list[dict[str, object]] = []
     for emission in emissions:
-        source = {
-            "source_id": emission.source_id,
-            "locator": emission.locator,
-            "field": AIRCRAFT_VALUE_FIELD,
-        }
-        records.append(
-            {
-                "game_class": emission.game_class,
-                "config_class": CONFIG_CLASS,
-                "key": AIRCRAFT_KEY,
-                "value": emission.value,
-                "unit": emission.unit,
-                "value_source": dict(source),
-                "conversion": CONVERSION,
-                "grade": emission.grade,
+        if emission.value is not None:
+            source = {
+                "source_id": emission.source_id,
+                "locator": emission.locator,
+                "field": AIRCRAFT_VALUE_FIELD,
             }
-        )
-        records.append(
-            {
-                "game_class": emission.game_class,
-                "config_class": CONFIG_CLASS,
-                "key": AIRCRAFT_BURN_KEY,
-                "value": AIRCRAFT_BURN_VALUE,
-                "unit": AIRCRAFT_BURN_UNIT,
-                "value_source": dict(source),
-                "conversion": AIRCRAFT_BURN_CONVERSION,
-                "grade": "derived",
-            }
-        )
+            records.append(
+                {
+                    "game_class": emission.game_class,
+                    "config_class": CONFIG_CLASS,
+                    "key": AIRCRAFT_KEY,
+                    "value": emission.value,
+                    "unit": emission.unit,
+                    "value_source": dict(source),
+                    "conversion": CONVERSION,
+                    "grade": emission.grade,
+                }
+            )
+            records.append(
+                {
+                    "game_class": emission.game_class,
+                    "config_class": CONFIG_CLASS,
+                    "key": AIRCRAFT_BURN_KEY,
+                    "value": AIRCRAFT_BURN_VALUE,
+                    "unit": AIRCRAFT_BURN_UNIT,
+                    "value_source": dict(source),
+                    "conversion": AIRCRAFT_BURN_CONVERSION,
+                    "grade": "derived",
+                }
+            )
+        if emission.mass is not None:
+            records.append(
+                {
+                    "game_class": emission.game_class,
+                    "config_class": CONFIG_CLASS,
+                    "key": AIRCRAFT_MASS_KEY,
+                    "value": emission.mass,
+                    "unit": AIRCRAFT_MASS_UNIT,
+                    "value_source": {
+                        "source_id": emission.mass_source_id,
+                        "locator": emission.mass_locator,
+                        "field": AIRCRAFT_MASS_VALUE_FIELD,
+                    },
+                    "conversion": CONVERSION,
+                    "grade": emission.mass_grade,
+                }
+            )
+        if emission.cg is not None:
+            records.append(
+                {
+                    "game_class": emission.game_class,
+                    "config_class": CONFIG_CLASS,
+                    "key": AIRCRAFT_CG_KEY,
+                    "value": emission.cg,
+                    "unit": AIRCRAFT_CG_UNIT,
+                    "value_source": {
+                        "source_id": emission.cg_source_id,
+                        "locator": emission.cg_locator,
+                        "field": AIRCRAFT_CG_VALUE_FIELD,
+                    },
+                    "conversion": CONVERSION,
+                    "grade": emission.cg_grade,
+                }
+            )
     return records
 
 

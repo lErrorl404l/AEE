@@ -39,6 +39,18 @@
 // The zero is emitted ONLY for a class the fuel driver covers, so a
 // class never has infinite fuel when the script is not running.
 //
+// The aircraft mass key is gated the same way. CfgVehicles mass is the
+// PHYSX mass, NOT the RotorLib flight-dynamics mass: a RotorLib airframe
+// carries a separate emptyMass and an RTD XML Mass, two different
+// values. The mass is the sourced operating_weight_kg. The land mass
+// calibration is a ground fit over ground classes and is NEVER applied
+// to an aircraft.
+//
+// The centre of gravity is emitted as centerOfMass only where the engine
+// accepts it, from the sourced cg_empty_m, under the same build-time
+// gate. Moments of inertia are REFERENCE ONLY: the engine has no runtime
+// inertia hook, so no inertia key is emitted.
+//
 // One block carries every key: the engine lint rejects a second
 // CfgVehicles block in the same addon.
 
