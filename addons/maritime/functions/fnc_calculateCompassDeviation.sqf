@@ -46,7 +46,7 @@ if (isNull _unit) exitWith { 0 };
 // CfgWorlds longitude from fnc_getWorldLocation, the single source.
 // The per-position micro-offset is dropped - at the map's 1-40° scale
 // it is noise, and the anchor must come from CfgWorlds, not X.
-private _lonDeg = ([] call EFUNC(core,getWorldLocation)) select 2;
+private _lonDeg = ([] call EFUNC(lib,getWorldLocation)) select 2;
 if !(_lonDeg isEqualType 0) then { _lonDeg = 0; };
 
 // ─── Coarse WMM declination table (deg east vs longitude) ─────────────────
@@ -86,7 +86,7 @@ if (_lonDeg <= (_table#0)#0) then {
 
 // ─── Latitude adjustment — declination magnitude grows toward the poles ────
 // Weak effect: ±2° across the usable band, so the table values hold near 45 N.
-private _loc = [] call EFUNC(core,getWorldLocation);
+private _loc = [] call EFUNC(lib,getWorldLocation);
 private _latDeg = _loc select 1;   // magnitude from the shared source
 if (_latDeg == 0) then { _latDeg = 40; };  // temperate default
 _declination = _declination + ((_latDeg - 45) * 0.05);

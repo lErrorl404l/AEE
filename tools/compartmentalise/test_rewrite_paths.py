@@ -315,6 +315,32 @@ class TestRewritePaths(unittest.TestCase):
         self.assertEqual(cli("--apply"), 0)
         self.assertEqual(cli("--check"), 0)
 
+    def test_omo_evidence_tree_is_skipped(self) -> None:
+        addon_map = _maps(
+            files={
+                "addons/optics/functions/eye/fnc_eyeThing.sqf": "eye",
+            }
+        )
+        rewritten = "addons/optics/functions/eye/fnc_eyeThing.sqf\n"
+        _write_tree(
+            self.root,
+            addon_map,
+            {"settings": {}},
+            {
+                ".omo/evidence/note.txt": rewritten,
+                "addons/optics/consumer.sqf": rewritten,
+            },
+            {"eye"},
+        )
+
+        self.assertEqual(_run(self.root, apply=False), 1)
+        self.assertEqual(_run(self.root, apply=True), 0)
+        self.assertEqual(_read(self.root, ".omo/evidence/note.txt"), rewritten)
+        self.assertEqual(
+            _read(self.root, "addons/optics/consumer.sqf"),
+            "addons/eye/functions/eye/fnc_eyeThing.sqf\n",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

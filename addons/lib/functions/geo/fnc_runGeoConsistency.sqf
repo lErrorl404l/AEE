@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_runGeoConsistency
+ * aee_lib_fnc_runGeoConsistency
  *
  * Throttled positional consistency monitor.  It reads the published anchor
  * and world location, computes the remaining inputs through the core geo
@@ -132,7 +132,7 @@ private _divergence = _result select 0;
 private _verdicts = _result select 1;
 
 missionNamespace setVariable ["aee_core_positionDivergence", _divergence];
-missionNamespace setVariable [QGVAR(positionVerdicts), _verdicts];
+missionNamespace setVariable [QEGVAR(core,positionVerdicts), _verdicts];
 
 if (_force && !_divergence) then {
     private _okMsg = format ["position consistency: %1 sources agree", worldName];

@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_gnssErrorEllipse
+ * aee_lib_fnc_gnssErrorEllipse
  *
  * Pure, argument-driven GNSS position-error kernel.  It reads no world, no
  * config, no player and no engine state.  It models the horizontal and

@@ -70,7 +70,7 @@ a code path treats as "gate off", silently disabling a system).
 Use `aee_core_fnc_readState` for the guarded read:
 
 ```sqf
-private _heat = [QGVAR(barrelHeat), 0.3, 1, true] call EFUNC(core,readState);
+private _heat = [QGVAR(barrelHeat), 0.3, 1, true] call EFUNC(lib,readState);
 ```
 
 Arguments: key, default, type (0 any / 1 number / 2 string / 3 array /

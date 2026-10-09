@@ -1,7 +1,7 @@
 #define COMPONENT nightvision
 #define COMPONENT_BEAUTIFIED AEE Night Vision
-#include "\z\aee\addons\main\script_mod.hpp"
-#include "\z\aee\addons\main\script_macros.hpp"
+#include "\z\aee\addons\lib\script_mod.hpp"
+#include "\z\aee\addons\lib\script_macros.hpp"
 
 // ── Laser target marker (LTM) ──────────────────────────────────────────────
 // Ported from workshop 2041057379 A3TI/LTM.  The beam marks a laser

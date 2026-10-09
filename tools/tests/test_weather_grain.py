@@ -171,7 +171,7 @@ class TestWeatherGrainWiring(unittest.TestCase):
         live = live_source(APPLY)
         self.assertRegex(
             live,
-            r'\["optics",\s*"WeatherGrain",\s*"FilmGrain",\s*1747,\s*""\]\s*call EFUNC\(core,createPPEffect\)',
+            r'\["optics",\s*"WeatherGrain",\s*"FilmGrain",\s*1747,\s*""\]\s*call EFUNC\(lib,createPPEffect\)',
         )
         # The matcher grain scale is element 2 of the published profile.
         self.assertIn("QEGVAR(environmental,worldLighting)", live)

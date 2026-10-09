@@ -96,5 +96,5 @@ private _effects = [
         _name,
         _priority,
         format [QGVAR(ppHandle_%1), _name]
-    ] call EFUNC(core,createPPEffect);
+    ] call EFUNC(lib,createPPEffect);
 } forEach _effects;

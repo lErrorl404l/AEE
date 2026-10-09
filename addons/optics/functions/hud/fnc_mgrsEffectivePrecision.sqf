@@ -7,7 +7,7 @@
  * reader, so the map, the HUD and the GPS show the same digit count.
  *
  * Arguments:
- *   0: _anchor <ARRAY> the 9-element geo anchor from EFUNC(core,getGeoAnchor)
+ *   0: _anchor <ARRAY> the 9-element geo anchor from EFUNC(lib,getGeoAnchor)
  *
  * Return: <NUMBER> the total MGRS digit count
  */

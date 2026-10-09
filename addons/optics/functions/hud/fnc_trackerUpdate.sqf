@@ -127,7 +127,7 @@ for "_i" from 0 to ((count _units) - 1) do {
 
     // The kernels are called with every argument explicit; a nested call does
     // not evaluate the kernel defaults.
-    private _fixOut = [_dt, _signal, 0, _prevState] call EFUNC(core,gnssFixState);
+    private _fixOut = [_dt, _signal, 0, _prevState] call EFUNC(lib,gnssFixState);
     private _ellipse = [
         1.0,      // DOP: nominal geometry, UNSOURCED
         3.6,      // UERE: GPS SPS PS 5th ed, 3.6 m RMS
@@ -136,14 +136,14 @@ for "_i" from 0 to ((count _units) - 1) do {
         _urban,
         0,        // jamming: no jammer source is published
         1.0       // receiver quality: nominal, UNSOURCED
-    ] call EFUNC(core,gnssErrorEllipse);
+    ] call EFUNC(lib,gnssErrorEllipse);
     private _linkOut = [
         _distance,
         _terrain,
         _urban,
         0,        // jammer state
         100       // bandwidth: the kernel reference, UNSOURCED
-    ] call EFUNC(core,datalinkState);
+    ] call EFUNC(lib,datalinkState);
 
     private _seed = (((_i % 7) + 1) / 7);
     private _projected = [_exact, _ellipse, _fixOut, _linkOut, _seed] call FUNC(trackerProject);

@@ -55,7 +55,7 @@ missionNamespace setVariable [QGVAR(playerEngineHandlers), _kept];
 
 private _unit = call CBA_fnc_currentUnit;
 if (!isNull _unit) then {
-    [_unit, _eventName, _eventCode, _key] call EFUNC(core,attachObjectEngineHandler);
+    [_unit, _eventName, _eventCode, _key] call EFUNC(lib,attachObjectEngineHandler);
 };
 
 // One hook for every handler, so N handlers still cost a single player event.
@@ -65,8 +65,8 @@ if !(missionNamespace getVariable [QGVAR(playerEngineHandlersHooked), false]) th
         private _unit = call CBA_fnc_currentUnit;
         if (isNull _unit) exitWith {};
         {
-            [_unit, _x select 0, _x select 1, _x select 2] call EFUNC(core,attachObjectEngineHandler);
-        } forEach (missionNamespace getVariable [QEGVAR(core,playerEngineHandlers), []]);
+            [_unit, _x select 0, _x select 1, _x select 2] call EFUNC(lib,attachObjectEngineHandler);
+        } forEach (missionNamespace getVariable [QGVAR(playerEngineHandlers), []]);
     }] call CBA_fnc_addPlayerEventHandler;
 };
 

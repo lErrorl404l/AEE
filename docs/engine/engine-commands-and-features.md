@@ -124,7 +124,7 @@ apply order, higher applied later (on top). Base priorities: ColorInversion
 ChromAberration 200, RadialBlur 100, SSAO 0, Resolution 0. BIKI says "if there is
 another effect using the same priority, creation will fail", and shows a
 bump-the-priority loop. **Measured in AEE, this is wrong on at least one build
-[AEE `addons/core/functions/fnc_createPPEffect.sqf`]:** `ppEffectCreate` at an
+[AEE `addons/lib/functions/fnc_createPPEffect.sqf`]:** `ppEffectCreate` at an
 occupied priority returned a **POSITIVE** handle shared with the existing owner
 (RPT: `optics/FilmGrain handle=32 priority=2000` and
 `nightvision/FilmGrain handle=32 priority=2000`). So a negative-only return check
@@ -379,7 +379,7 @@ textures are selected from existing `.rvmat`/`.paa` assets only.
   CfgLights:4225, HDRNewPars:16928, NVGPars:16959, DOFPars:16970,
   CfgCameraEffects:14724); `the derapified map_altis.pbo config`
   (HDRNewPars:473, Lighting:510).
-- AEE (read-only): `addons/core/functions/fnc_createPPEffect.sqf`,
+- AEE (read-only): `addons/lib/functions/fnc_createPPEffect.sqf`,
   `addons/optics/functions/eye/fnc_eyeAperture.sqf`,
   `addons/optics/functions/eye/fnc_eyeSampleScene.sqf`,
   `addons/optics/functions/vision/fnc_runThermalPass.sqf`,

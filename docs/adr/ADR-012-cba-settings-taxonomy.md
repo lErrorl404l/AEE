@@ -73,7 +73,7 @@ nightly headless regression test.
 ## References
 
 - Plan: `.omo/plans/aee-settings-taxonomy.md`.
-- `addons/main/script_macros.hpp`: the macro signature that carries the
+- `addons/lib/script_macros.hpp`: the macro signature that carries the
   category and subcategory.
 - `tools/validation/gen_config_docs.py`: the settings parser and the chapter
   writer.

@@ -2,8 +2,8 @@
 """WGS84 / UTM kernel tests (MGRS wave 1, task 2).
 
 Runs the REAL forward and inverse kernels
-  addons/core/functions/geo/fnc_latLonToUtm.sqf
-  addons/core/functions/geo/fnc_utmToLatLon.sqf
+  addons/lib/functions/geo/fnc_latLonToUtm.sqf
+  addons/lib/functions/geo/fnc_utmToLatLon.sqf
 through tools/tests/sqf_lite.py.
 
 The series is the transverse Mercator expansion in DMA TM 8358.2 with the
@@ -24,12 +24,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-GEO = ROOT / "addons" / "core" / "functions" / "geo"
+GEO = ROOT / "addons" / "lib" / "functions" / "geo"
 FORWARD = GEO / "fnc_latLonToUtm.sqf"
 INVERSE = GEO / "fnc_utmToLatLon.sqf"
 FORMAT = GEO / "fnc_formatMgrs.sqf"
 PARSE = GEO / "fnc_parseMgrs.sqf"
-PREP = ROOT / "addons" / "core" / "XEH_PREP.hpp"
+PREP = ROOT / "addons" / "lib" / "XEH_PREP.hpp"
 PREINIT = ROOT / "addons" / "core" / "XEH_preInit.sqf"
 TABLES = ROOT / "addons" / "core" / "data" / "mgrs_tables.sqf"
 

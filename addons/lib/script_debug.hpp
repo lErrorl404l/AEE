@@ -1,7 +1,7 @@
 /*
  * Performance counter macros (issue #97).
  *
- * Copy of the ACE3 pattern (ACE3 addons/main/script_debug.hpp): compile-
+ * Copy of the ACE3 pattern (ACE3 addons/lib/script_debug.hpp): compile-
  * time gated, so a production build carries ZERO overhead.
  *
  * Enable for dev by uncommenting the define below (whole mod), or by

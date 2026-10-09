@@ -32,7 +32,7 @@ private _hour = dayTime;
 // source normalises the BIS inverted sign to the true geographic
 // convention, and the #123 RC2b Scottish Highlands case (CfgWorlds
 // latitude = -56.702) resolves to magnitude 56.7 N correctly.
-private _loc = [] call EFUNC(core,getWorldLocation);
+private _loc = [] call EFUNC(lib,getWorldLocation);
 private _lat = _loc select 1;  // magnitude
 if (_lat == 0) then { _lat = 40; };
 

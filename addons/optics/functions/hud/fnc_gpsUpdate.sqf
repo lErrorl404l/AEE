@@ -33,7 +33,7 @@ if (!_show) exitWith {
 private _display = uiNamespace getVariable [QGVAR(gpsDisplay), displayNull];
 if (isNull _display) exitWith {};
 
-private _anchor = call EFUNC(core,getGeoAnchor);
+private _anchor = call EFUNC(lib,getGeoAnchor);
 private _precision = [_anchor] call FUNC(mgrsEffectivePrecision);
 
 private _grid = ["", getPos _player, _anchor, _precision] call FUNC(mgrsMarkerText);

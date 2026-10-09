@@ -9,7 +9,7 @@
  *
  * Arguments:
  *   0: _position  <ARRAY>  world position of the player [x, y, z], metres
- *   1: _anchor    <ARRAY>  the 9-element geo anchor from EFUNC(core,getGeoAnchor)
+ *   1: _anchor    <ARRAY>  the 9-element geo anchor from EFUNC(lib,getGeoAnchor)
  *   2: _precision <NUMBER> MGRS total digits, 4, 6, 8 or 10
  *   3: _gridRaw   <STRING> mapGridPosition of the player (the legacy source)
  *   4: _enabled   <BOOL>   the aee_optics_mgrsEnabled setting value
@@ -27,7 +27,7 @@ params [
 
 private _mgrsText = "";
 if (_enabled) then {
-    private _converted = [_position, _anchor, _precision] call EFUNC(core,worldToMgrs);
+    private _converted = [_position, _anchor, _precision] call EFUNC(lib,worldToMgrs);
     if ((count _converted) >= 1) then {
         _mgrsText = _converted select 0;
     };

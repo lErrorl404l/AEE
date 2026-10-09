@@ -10,7 +10,7 @@
  * Arguments:
  *   0: _label     <STRING> optional label, for example a marker name
  *   1: _position  <ARRAY>  world position [x, y, z], metres
- *   2: _anchor    <ARRAY>  the 9-element geo anchor from EFUNC(core,getGeoAnchor)
+ *   2: _anchor    <ARRAY>  the 9-element geo anchor from EFUNC(lib,getGeoAnchor)
  *   3: _precision <NUMBER> MGRS total digits, one of 4, 6, 8 or 10
  *
  * Returns: <STRING> the label and the MGRS reference, or whichever is
@@ -24,7 +24,7 @@ params [
 ];
 
 private _mgrs = "";
-private _converted = [_position, _anchor, _precision] call EFUNC(core,worldToMgrs);
+private _converted = [_position, _anchor, _precision] call EFUNC(lib,worldToMgrs);
 if ((count _converted) >= 1) then {
     _mgrs = _converted select 0;
 };

@@ -74,7 +74,9 @@ TEXT_SUFFIXES = frozenset(
         ".sh",
     }
 )
-SKIP_DIRS = frozenset({".git", ".opencode", "__pycache__", "node_modules", ".venv"})
+SKIP_DIRS = frozenset(
+    {".git", ".opencode", ".omo", "__pycache__", "node_modules", ".venv"}
+)
 SKIP_REL = frozenset({str(ADDON_MAP_REL), str(SETTINGS_MAP_REL)})
 SKIP_PREFIXES = ("tools/compartmentalise/",)
 

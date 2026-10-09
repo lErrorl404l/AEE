@@ -65,7 +65,7 @@ if (_scope == "" || _key == "" || _effect == "") exitWith {
 
 // Eager-default allocation removed; the registry is written back below, so a
 // locally-created map still persists.
-private _registry = missionNamespace getVariable [QEGVAR(core,ppRegistry), -1];
+private _registry = missionNamespace getVariable [QEGVAR(lib,ppRegistry), -1];
 if (_registry isEqualType 0) then { _registry = createHashMap; };
 private _id = format ["%1|%2", _scope, _key];
 private _entry = _registry getOrDefault [_id, [-1, ""]];
@@ -112,7 +112,7 @@ if (_handle < 0) exitWith {
 };
 
 _registry set [_id, [_handle, _legacy]];
-missionNamespace setVariable [QEGVAR(core,ppRegistry), _registry];
+missionNamespace setVariable [QEGVAR(lib,ppRegistry), _registry];
 missionNamespace setVariable [format [QEGVAR(core,ppHandle_%1_%2), _scope, _key], _handle];
 if (_legacy != "") then { missionNamespace setVariable [_legacy, _handle] };
 private _logMsg = format ["ppEffect created %1/%2 %3 handle=%4 priority=%5", _scope, _key, _effect, _handle, _usedPriority];

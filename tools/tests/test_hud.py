@@ -44,7 +44,7 @@ TRACKER_DRAW_KERNEL = HUD / "fnc_trackerDraw.sqf"
 TRACKER_PROJECT_KERNEL = HUD / "fnc_trackerProject.sqf"
 GRID_LINES_KERNEL = HUD / "fnc_mgrsGridLines.sqf"
 CURSOR_TEXT_KERNEL = HUD / "fnc_mgrsCursorText.sqf"
-CORE_GEO = REPO / "addons" / "core" / "functions" / "geo"
+CORE_GEO = REPO / "addons" / "lib" / "functions" / "geo"
 CORE_LATLON = CORE_GEO / "fnc_latLonToUtm.sqf"
 CORE_UTM2LL = CORE_GEO / "fnc_utmToLatLon.sqf"
 CORE_UTM2WORLD = CORE_GEO / "fnc_utmToWorld.sqf"
@@ -119,7 +119,7 @@ def rng(distance):
 def grid_display(position, anchor, precision, grid_raw, enabled, mgrs):
     """Run the real selector with the real legacy formatter and a stub worldToMgrs."""
     globals_ = {
-        "__EFUNC__core_worldToMgrs": lambda _p, _a, _prec: [
+        "__EFUNC__lib_worldToMgrs": lambda _p, _a, _prec: [
             mgrs,
             0.0,
             0.0,
@@ -137,7 +137,7 @@ def grid_display(position, anchor, precision, grid_raw, enabled, mgrs):
 def mgrs_marker_text(label, position, anchor, precision, mgrs):
     """Run the real marker-text kernel with a stub worldToMgrs."""
     globals_ = {
-        "__EFUNC__core_worldToMgrs": lambda _p, _a, _prec: [
+        "__EFUNC__lib_worldToMgrs": lambda _p, _a, _prec: [
             mgrs,
             0.0,
             0.0,
@@ -182,13 +182,13 @@ def _core_globals():
 def grid_lines(anchor, rect):
     """Run the real grid kernel against the real core conversions."""
     g = _core_globals()
-    g["__EFUNC__core_worldToMgrs"] = lambda p, a, prec: run_sqf(
+    g["__EFUNC__lib_worldToMgrs"] = lambda p, a, prec: run_sqf(
         CORE_W2M, [p, a, prec], _core_globals()
     )
-    g["__EFUNC__core_utmToWorld"] = lambda e, n, z, h, a: run_sqf(
+    g["__EFUNC__lib_utmToWorld"] = lambda e, n, z, h, a: run_sqf(
         CORE_UTM2WORLD, [e, n, z, h, a], _core_globals()
     )
-    g["__EFUNC__core_formatMgrs"] = lambda e, n, z, p, lat: run_sqf(
+    g["__EFUNC__lib_formatMgrs"] = lambda e, n, z, p, lat: run_sqf(
         CORE_FORMAT, [e, n, z, p, lat], _core_globals()
     )
     return run_sqf(GRID_LINES_KERNEL, [anchor, rect], g)
@@ -380,7 +380,7 @@ class TestHudSourceContract(unittest.TestCase):
 
     def test_the_update_supplies_the_position_and_the_anchor(self):
         self.assertIn("getPosASL _player", UPDATE_SRC)
-        self.assertIn("EFUNC(core,getGeoAnchor)", UPDATE_SRC)
+        self.assertIn("EFUNC(lib,getGeoAnchor)", UPDATE_SRC)
 
     def test_the_hud_class_exists(self):
         self.assertIn("class GVAR(hud)", HUD_CLASS_SRC)
@@ -493,8 +493,8 @@ class TestHudMapGridContract(unittest.TestCase):
         # conversion.  It no longer projects line geometry through
         # FUNC(utmToWorld): a cardinal line follows a world axis, so it is
         # straight by construction (ADR-030).
-        self.assertIn("EFUNC(core,worldToMgrs)", GRID_LINES_SRC)
-        self.assertNotIn("EFUNC(core,utmToWorld)", GRID_LINES_SRC)
+        self.assertIn("EFUNC(lib,worldToMgrs)", GRID_LINES_SRC)
+        self.assertNotIn("EFUNC(lib,utmToWorld)", GRID_LINES_SRC)
 
 
 class TestHudWiring(unittest.TestCase):
@@ -655,13 +655,13 @@ class TestHudTrackerContract(unittest.TestCase):
     """The driver calls the three kernels and applies the offset."""
 
     def test_the_driver_calls_the_error_kernel(self):
-        self.assertIn("call EFUNC(core,gnssErrorEllipse)", TRACKER_UPDATE_SRC)
+        self.assertIn("call EFUNC(lib,gnssErrorEllipse)", TRACKER_UPDATE_SRC)
 
     def test_the_driver_calls_the_fix_kernel(self):
-        self.assertIn("call EFUNC(core,gnssFixState)", TRACKER_UPDATE_SRC)
+        self.assertIn("call EFUNC(lib,gnssFixState)", TRACKER_UPDATE_SRC)
 
     def test_the_driver_calls_the_datalink_kernel(self):
-        self.assertIn("call EFUNC(core,datalinkState)", TRACKER_UPDATE_SRC)
+        self.assertIn("call EFUNC(lib,datalinkState)", TRACKER_UPDATE_SRC)
 
     def test_the_driver_applies_the_offset(self):
         self.assertIn("call FUNC(trackerProject)", TRACKER_UPDATE_SRC)

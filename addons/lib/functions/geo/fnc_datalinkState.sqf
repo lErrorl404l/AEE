@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_datalinkState
+ * aee_lib_fnc_datalinkState
  *
  * Pure, argument-driven datalink kernel.  It reads no world, no config, no
  * player and no radio module.  It models the range falloff, the terrain and

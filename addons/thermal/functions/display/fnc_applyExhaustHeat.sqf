@@ -43,7 +43,7 @@ private _applied = 0;
 // muzzle - captured by the Fired EH from the projectile's position (the
 // round and the hot gas come from the same place).  Falls back to a
 // position in front of the player only if no shot was captured.
-private _weaponHeat = [QGVAR(barrelHeat), 0, 1] call EFUNC(core,readState);
+private _weaponHeat = [QGVAR(barrelHeat), 0, 1] call EFUNC(lib,readState);
 if (_weaponHeat > 0.1) then {
     private _muzzlePos = missionNamespace getVariable [QEGVAR(thermal,muzzlePos), []];
     private _muzzleT = missionNamespace getVariable [QEGVAR(thermal,muzzleTime), -999];

@@ -194,7 +194,7 @@ class TestWildlifeScheduleRead(unittest.TestCase):
                 "configFile": "config",
                 "isClass": lambda path: False,
                 "date": [2026, 10, 8, 12, 0, 0],
-                "__EFUNC__core_readState": lambda key, default, type_: default,
+                "__EFUNC__lib_readState": lambda key, default, type_: default,
                 "__FUNC__getSpeciesMatch": lambda *args: [],
                 "__FUNC__soundTick": lambda *args: [],
             }

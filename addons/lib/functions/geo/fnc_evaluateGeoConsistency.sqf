@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_evaluateGeoConsistency
+ * aee_lib_fnc_evaluateGeoConsistency
  *
  * PURE evaluator for the positional consistency table.  It takes the table
  * and a value map and returns one verdict per row plus an overall

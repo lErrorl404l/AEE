@@ -165,12 +165,12 @@ if (!_enabled) exitWith {
 // live registry entry first (a stale handle the engine killed on alt-tab must
 // not be handed back), then create a fresh one.
 if (_hCC < 0) then {
-    ["optics", "BaseGrade"] call EFUNC(core,destroyPPEffect);
-    _hCC = ["optics", "BaseGrade", "ColorCorrections", 1505, QGVAR(ppHandle_BaseGrade)] call EFUNC(core,createPPEffect);
+    ["optics", "BaseGrade"] call EFUNC(lib,destroyPPEffect);
+    _hCC = ["optics", "BaseGrade", "ColorCorrections", 1505, QGVAR(ppHandle_BaseGrade)] call EFUNC(lib,createPPEffect);
 };
 if (_hAcuity < 0) then {
-    ["optics", "BaseAcuity"] call EFUNC(core,destroyPPEffect);
-    _hAcuity = ["optics", "BaseAcuity", "FilmGrain", 2505, QGVAR(ppHandle_BaseAcuity)] call EFUNC(core,createPPEffect);
+    ["optics", "BaseAcuity"] call EFUNC(lib,destroyPPEffect);
+    _hAcuity = ["optics", "BaseAcuity", "FilmGrain", 2505, QGVAR(ppHandle_BaseAcuity)] call EFUNC(lib,createPPEffect);
 };
 
 // The physical human-vision model subsumes the aesthetic base grade in place.

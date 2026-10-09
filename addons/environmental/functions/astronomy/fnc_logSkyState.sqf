@@ -54,7 +54,7 @@ if !(_nelm isEqualType 0) then { _nelm = 6.5; };
 private _kp = missionNamespace getVariable [QGVAR(kpIndex), 0];
 if !(_kp isEqualType 0) then { _kp = 0; };
 private _daytime = dayTime;
-private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;
+private _lat = ([] call EFUNC(lib,getWorldLocation)) select 1;
 if !(_lat isEqualType 0) then { _lat = 45; };
 private _ovalLimit = 65 - ((_kp min 9) * 1.7);
 

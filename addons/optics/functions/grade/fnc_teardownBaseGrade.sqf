@@ -37,8 +37,8 @@ if (_hAcuity >= 0) then {
     _hAcuity ppEffectEnable false;
 };
 
-["optics", "BaseGrade"] call EFUNC(core,destroyPPEffect);
-["optics", "BaseAcuity"] call EFUNC(core,destroyPPEffect);
+["optics", "BaseGrade"] call EFUNC(lib,destroyPPEffect);
+["optics", "BaseAcuity"] call EFUNC(lib,destroyPPEffect);
 missionNamespace setVariable [QGVAR(baseGradeActive), false];
 
 AEE_LOG_INFO("base grade torn down")

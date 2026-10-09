@@ -59,7 +59,7 @@ if (isNil "_fnBlastOverpressure" || isNil "_fnBlastInjury") exitWith {};
     if (_eardrum > 0.5 && {!isNil "ace_medical_treatment_fnc_addToLog"}) then {
         [_unit, "AEE_blastEardrum", 60] call ace_medical_treatment_fnc_addToLog;
     };
-}, QGVAR(blast)] call EFUNC(core,installPlayerEngineHandler);
+}, QGVAR(blast)] call EFUNC(lib,installPlayerEngineHandler);
 
 // ─── Refractive shock trace renderer (issue #217 follow-on) ──────────────
 // Draws the bow-shock refractive contrast on the local player's own
@@ -109,7 +109,7 @@ if (isNil "_fnBlastOverpressure" || isNil "_fnBlastInjury") exitWith {};
     } forEach _this;
 
     [_projectile, _ammo] call FUNC(renderSupersonicTrace);
-}, QGVAR(supersonicTrace)] call EFUNC(core,installPlayerEngineHandler);
+}, QGVAR(supersonicTrace)] call EFUNC(lib,installPlayerEngineHandler);
 
 // Uniform per-module state dump, one line a second.
 [FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;

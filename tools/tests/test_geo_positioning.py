@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """World geographic anchor contract and kernel tests (MGRS wave 1, task 1).
 
-Runs the REAL addons/core/functions/geo/fnc_buildGeoAnchor.sqf through
+Runs the REAL addons/lib/functions/geo/fnc_buildGeoAnchor.sqf through
 tools/tests/sqf_lite.py with fixtures that supply the raw CfgWorlds values.
 
 The anchor schema is 9 elements:
@@ -29,10 +29,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-GEO = ROOT / "addons" / "core" / "functions" / "geo"
+GEO = ROOT / "addons" / "lib" / "functions" / "geo"
 BUILD = GEO / "fnc_buildGeoAnchor.sqf"
 READER = GEO / "fnc_getGeoAnchor.sqf"
-PREP = ROOT / "addons" / "core" / "XEH_PREP.hpp"
+PREP = ROOT / "addons" / "lib" / "XEH_PREP.hpp"
 INVARIANTS = ROOT / "data" / "consistency" / "position_invariants.json"
 EVALUATOR = GEO / "fnc_evaluateGeoConsistency.sqf"
 MONITOR = GEO / "fnc_runGeoConsistency.sqf"

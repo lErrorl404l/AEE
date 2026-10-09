@@ -46,22 +46,26 @@ PENDING_RETIREMENT = frozenset({"main", "environmental", "fx"})
 # addons. The lib-kernel extraction and the splits must SHRINK this set. A
 # coupling that is not within this component is a new cycle and fails the
 # guard. Do not loosen this to pass a migration step.
-KNOWN_COUPLINGS = frozenset({
-    frozenset({
-        "atmos",
-        "ballistics",
-        "core",
-        "environmental",
-        "fx",
-        "maritime",
-        "mobility",
-        "nightvision",
-        "optics",
-        "physiology",
-        "radio",
-        "thermal",
-    }),
-})
+KNOWN_COUPLINGS = frozenset(
+    {
+        frozenset(
+            {
+                "atmos",
+                "ballistics",
+                "core",
+                "environmental",
+                "fx",
+                "maritime",
+                "mobility",
+                "nightvision",
+                "optics",
+                "physiology",
+                "radio",
+                "thermal",
+            }
+        ),
+    }
+)
 
 # EFUNC(component,name) in a call, or EGVAR(component,name) in a variable
 # name, is the cross-addon edge.
@@ -103,11 +107,21 @@ def origins():
     came from. The map is the source of truth, so a node survives a rename.
     """
     data = json.loads(ADDON_MAP.read_text(encoding="utf-8"))
+    targets = set(data["target_addons"])
     table = {}
     for source, record in data["addons"].items():
         table.setdefault(source, set()).add(source)
         for destination in record.get("destinations", []):
             table.setdefault(destination, set()).add(source)
+    # An infrastructure destination can descend from both the addon it renames
+    # (main -> lib) and the addon it extracts kernels from (core -> lib).  A
+    # retired source contributes no cross-addon edges of its own, so prefer the
+    # retained source(s).  Without this the rename+extraction reads as a new
+    # coupling between two pre-migration monoliths and the ratchet moves.
+    for destination, sources in table.items():
+        retained = {source for source in sources if source in targets}
+        if retained:
+            table[destination] = retained
     return table
 
 

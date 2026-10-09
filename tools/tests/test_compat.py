@@ -422,14 +422,14 @@ class TestWorldLatitudePattern(unittest.TestCase):
     def test_shared_source_exists(self):
         from pathlib import Path
 
-        text = Path("addons/core/functions/fnc_getWorldLocation.sqf").read_text(
+        text = Path("addons/lib/functions/fnc_getWorldLocation.sqf").read_text(
             encoding="utf-8"
         )
         # The single location source reshapes the sourced geo anchor.
         self.assertIn("FUNC(getGeoAnchor)", text)
         self.assertIn("[_signed, abs _signed, _lon, _zone]", text)
         # The BIS inverted convention is corrected in the anchor (negate).
-        builder = Path("addons/core/functions/geo/fnc_buildGeoAnchor.sqf").read_text(
+        builder = Path("addons/lib/functions/geo/fnc_buildGeoAnchor.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("-_latitude", builder)
@@ -496,7 +496,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
             for fn in Path("addons").rglob("*.sqf")
             if '>> "latitude"' in fn.read_text(encoding="utf-8", errors="replace")
         }
-        allowed = {Path("addons/core/functions/geo/fnc_getGeoAnchor.sqf")}
+        allowed = {Path("addons/lib/functions/geo/fnc_getGeoAnchor.sqf")}
         self.assertEqual(
             hits,
             allowed,

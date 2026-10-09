@@ -414,7 +414,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
     def test_tick_reads_the_vegetation_signal_and_passes_it_to_the_bed(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
         self.assertIn("QEGVAR(environmental,terrainSignals)", text)
-        self.assertIn("EFUNC(core,readState)", text)
+        self.assertIn("EFUNC(lib,readState)", text)
         self.assertIn("_vegScore", text)
         # The score and the settlement and coastal overlays are appended to
         # the bed selector.
@@ -431,7 +431,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
 
     def test_spawn_reads_the_biome_through_the_guarded_helper(self):
         text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
-        self.assertIn("EFUNC(core,readState)", text)
+        self.assertIn("EFUNC(lib,readState)", text)
 
     def test_dry_run_is_the_last_tick_parameter(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")

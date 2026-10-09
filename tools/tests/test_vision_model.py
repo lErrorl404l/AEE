@@ -709,7 +709,7 @@ class TestPerceptionDriverContract(unittest.TestCase):
 
     def test_driver_creates_no_new_effect(self):
         code = _code(DRIVER)
-        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertIn("EFUNC(lib,createPPEffect)", code)
         self.assertNotIn("= ppEffectCreate", code, "the driver bypasses the registry")
 
     def test_vision_mode_gate_precedes_the_first_adjust(self):

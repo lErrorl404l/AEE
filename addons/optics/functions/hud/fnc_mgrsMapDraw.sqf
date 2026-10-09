@@ -55,7 +55,7 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
             _font = [true] call FUNC(mgrsFontFamily);
         };
 
-        private _anchor = call EFUNC(core,getGeoAnchor);
+        private _anchor = call EFUNC(lib,getGeoAnchor);
 
         // The visible world rectangle and its span.  The span sets the
         // displayed scale, and the grid overlay reuses the rectangle.

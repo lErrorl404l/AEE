@@ -51,7 +51,7 @@ if (_enabled) then {
     // position, the anchor and the setting value are all passed in.
     private _mgrsEnabled = missionNamespace getVariable [QGVAR(mgrsEnabled), true];
     if !(_mgrsEnabled isEqualType true) then { _mgrsEnabled = true; };
-    private _anchor = call EFUNC(core,getGeoAnchor);
+    private _anchor = call EFUNC(lib,getGeoAnchor);
     private _mgrsPrecision = [_anchor] call FUNC(mgrsEffectivePrecision);
 
     private _grid = [

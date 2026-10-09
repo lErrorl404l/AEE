@@ -63,7 +63,7 @@ python3 -m unittest discover -s tools/tests
 
 ## Versioning
 
-Version numbers live in `addons/main/script_version.hpp`. Bump them at
+Version numbers live in `addons/lib/script_version.hpp`. Bump them at
 release time. The pre-build hook writes the version into mod.cpp.
 
 ## Report a Vulnerability

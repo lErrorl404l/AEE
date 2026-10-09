@@ -66,7 +66,7 @@ private _thetaDeg = _thetaArc / 3600;
 // #179), not a direct CfgWorlds read or the position Y axis: map Y is
 // metres, not degrees.  The source normalises the BIS inverted sign and
 // returns the magnitude for consumers like this one.
-private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;
+private _lat = ([] call EFUNC(lib,getWorldLocation)) select 1;
 if (_lat == 0) then { _lat = 40; }; // fallback: temperate default
 
 // ─── Local sidereal time (degrees) ────────────────────────────────────────

@@ -44,7 +44,7 @@ if (!_active) exitWith {
 };
 
 private _lstDeg = [date] call FUNC(siderealTime);
-private _latDeg = ([] call EFUNC(core,getWorldLocation)) select 1;
+private _latDeg = ([] call EFUNC(lib,getWorldLocation)) select 1;
 if (_latDeg == 0) then { _latDeg = 40; };
 
 private _samples = [];

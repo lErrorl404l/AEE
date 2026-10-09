@@ -39,7 +39,7 @@
  * small: 10 m, 100 m, 1 km, 10 km or 100 km.
  *
  * Arguments:
- *   0: _anchor       <ARRAY>  the 9-element anchor from EFUNC(core,getGeoAnchor)
+ *   0: _anchor       <ARRAY>  the 9-element anchor from EFUNC(lib,getGeoAnchor)
  *   1: _rect         <ARRAY>  [xMin, yMin, xMax, yMax] world metres
  *   2: _baseInterval <NUMBER> the finest step in metres, 0 for the default
  *
@@ -101,7 +101,7 @@ while { _line <= _end } do {
     _major = (((_line / _interval) mod 10) == 0);
     _segments pushBack [[_line, _yMin, 0], [_line, _yMax, 0], _major];
     if ((_perAxis >= 1) && (_perAxis <= 5)) then {
-        _conv = [[_line, _yMax, 0], _anchor, _precision] call EFUNC(core,worldToMgrs);
+        _conv = [[_line, _yMax, 0], _anchor, _precision] call EFUNC(lib,worldToMgrs);
         _full = _conv select 0;
         if ((count _full) >= (5 + _precision)) then {
             private _easting = _full select [5, _perAxis];
@@ -120,7 +120,7 @@ while { _line <= _end } do {
     _major = (((_line / _interval) mod 10) == 0);
     _segments pushBack [[_xMin, _line, 0], [_xMax, _line, 0], _major];
     if ((_perAxis >= 1) && (_perAxis <= 5)) then {
-        _conv = [[_xMax, _line, 0], _anchor, _precision] call EFUNC(core,worldToMgrs);
+        _conv = [[_xMax, _line, 0], _anchor, _precision] call EFUNC(lib,worldToMgrs);
         _full = _conv select 0;
         if ((count _full) >= (5 + _precision)) then {
             private _northing = _full select [(5 + _perAxis), _perAxis];

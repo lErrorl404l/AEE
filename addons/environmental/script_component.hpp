@@ -1,7 +1,7 @@
 #define COMPONENT environmental
 #define COMPONENT_BEAUTIFIED AEE Environmental
-#include "\z\aee\addons\main\script_mod.hpp"
-#include "\z\aee\addons\main\script_macros.hpp"
+#include "\z\aee\addons\lib\script_mod.hpp"
+#include "\z\aee\addons\lib\script_macros.hpp"
 
 // ── Celestial render (issue #122) ────────────────────────────────────────
 // ── Dynamic starfield render (issue #122) ─────────────────────────────────

@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_buildGeoAnchor
+ * aee_lib_fnc_buildGeoAnchor
  *
  * Build the world geographic anchor from the RAW CfgWorlds values.
  * Pure: this function reads no config, no player and no world state.

@@ -41,7 +41,7 @@ private _severity  = "MODERATE";
 if (_timer > 0) then {
     // Active - decrement timer, keep wind speed
     _timer     = _timer - 1;
-    _windSpeed = missionNamespace getVariable [QGVAR(microburstWindSpeed), 15 + (15 * ([round (time * 10), 101] call EFUNC(core,deterministicRandom)))];
+    _windSpeed = missionNamespace getVariable [QGVAR(microburstWindSpeed), 15 + (15 * ([round (time * 10), 101] call EFUNC(lib,deterministicRandom)))];
     _severity  = missionNamespace getVariable [QGVAR(microburstSeverity), "MODERATE"];
 } else {
     // Check trigger conditions
@@ -50,15 +50,15 @@ if (_timer > 0) then {
         && (_temp > _tempThreshold)
         && (_RH > 70)
         && (_ambientWind < 3)
-        && ([round (time * 10), 102] call EFUNC(core,deterministicRandom)) < _chance
+        && ([round (time * 10), 102] call EFUNC(lib,deterministicRandom)) < _chance
     ) then {
         _timer = _duration;
         // Severity tier: a second roll below 0.5 gives a damaging gust.
-        if (([round (time * 10), 104] call EFUNC(core,deterministicRandom)) < 0.5) then {
-            _windSpeed = 26 + ((_gustMax - 26) * ([round (time * 10), 103] call EFUNC(core,deterministicRandom)));   // 26 m/s to configured ceiling
+        if (([round (time * 10), 104] call EFUNC(lib,deterministicRandom)) < 0.5) then {
+            _windSpeed = 26 + ((_gustMax - 26) * ([round (time * 10), 103] call EFUNC(lib,deterministicRandom)));   // 26 m/s to configured ceiling
             _severity  = "DAMAGING";
         } else {
-            _windSpeed = 15 + (15 * ([round (time * 10), 103] call EFUNC(core,deterministicRandom)));   // 15-30 m/s moderate
+            _windSpeed = 15 + (15 * ([round (time * 10), 103] call EFUNC(lib,deterministicRandom)));   // 15-30 m/s moderate
             _severity  = "MODERATE";
         };
     };

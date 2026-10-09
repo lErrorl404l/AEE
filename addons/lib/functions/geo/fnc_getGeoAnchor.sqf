@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_getGeoAnchor
+ * aee_lib_fnc_getGeoAnchor
  *
  * Read the world geographic anchor once and publish it.  This is the single
  * reader of the raw CfgWorlds keys; the pure builder FUNC(buildGeoAnchor)

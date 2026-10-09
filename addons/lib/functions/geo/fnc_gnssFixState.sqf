@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_gnssFixState
+ * aee_lib_fnc_gnssFixState
  *
  * Pure, argument-driven GNSS fix-continuity kernel.  It reads no world, no
  * config, no player and no engine state, and it holds no state outside the

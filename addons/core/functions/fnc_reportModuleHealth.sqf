@@ -4,7 +4,7 @@
 Runtime module-health report.
 
 Every AEE module sets a preInit flag and a postInit flag through the
-AEE_MODULE_PRE_INIT and AEE_MODULE_POST_INIT macros (addons/main/script_macros.hpp).
+AEE_MODULE_PRE_INIT and AEE_MODULE_POST_INIT macros (addons/lib/script_macros.hpp).
 A module whose init phase never ran keeps a false flag, so one read of every
 flag after a grace period is enough to name a module that did not come up.
 

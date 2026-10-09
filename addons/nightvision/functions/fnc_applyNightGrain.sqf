@@ -27,7 +27,7 @@ private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1];
 
 if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {
     if (_hGrain >= 0) then {
-        ["nightvision", "FilmGrain"] call EFUNC(core,destroyPPEffect);
+        ["nightvision", "FilmGrain"] call EFUNC(lib,destroyPPEffect);
     };
 };
 
@@ -60,11 +60,11 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
             [{
                 params ["_fadeHandle"];
                 if ((missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) == _fadeHandle) then {
-                    ["nightvision", "FilmGrain"] call EFUNC(core,destroyPPEffect);
+                    ["nightvision", "FilmGrain"] call EFUNC(lib,destroyPPEffect);
                 };
             }, [_fadeHandle], 1.5] call CBA_fnc_waitAndExecute;
         } else {
-            ["nightvision", "FilmGrain"] call EFUNC(core,destroyPPEffect);
+            ["nightvision", "FilmGrain"] call EFUNC(lib,destroyPPEffect);
         };
     };
     missionNamespace setVariable [QGVAR(nightGrainActive), false];
@@ -80,7 +80,7 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
 // shared handle either teardown destroys the other owner's grain.  The
 // priorities must stay disjoint across every AEE creator.
 if (_hGrain < 0) then {
-    _hGrain = ["nightvision", "FilmGrain", "FilmGrain", 2001, QGVAR(ppHandle_FilmGrain)] call EFUNC(core,createPPEffect);
+    _hGrain = ["nightvision", "FilmGrain", "FilmGrain", 2001, QGVAR(ppHandle_FilmGrain)] call EFUNC(lib,createPPEffect);
 };
 if (_hGrain < 0) exitWith {};
 

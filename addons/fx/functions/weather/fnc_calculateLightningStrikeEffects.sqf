@@ -15,7 +15,7 @@ private _ignitionChance = missionNamespace getVariable [QGVAR(lightningIgnitionC
 
 private _ignition = false;
 if (_strikeActive) then {
-    _ignition = ([round (time * 10), 501] call EFUNC(core,deterministicRandom)) < _ignitionChance;
+    _ignition = ([round (time * 10), 501] call EFUNC(lib,deterministicRandom)) < _ignitionChance;
 };
 
 missionNamespace setVariable [QEGVAR(core,lightningIgnition), _ignition];
