@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (644)
+### Public functions (645)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -692,6 +692,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_resolveThermalTarget`
 - `aee_thermal_fnc_resolveThermalVisibility`
 - `aee_thermal_fnc_solarElevation`
+- `aee_thermal_fnc_solveTwoNodeKernel`
 - `aee_thermal_fnc_solveTwoNodeSelection`
 - `aee_thermal_fnc_startActiveIR`
 - `aee_thermal_fnc_stopActiveIR`

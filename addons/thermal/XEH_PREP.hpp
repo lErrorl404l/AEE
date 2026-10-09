@@ -26,6 +26,7 @@ PREPS(ground,getGroundStampOffset);
 PREPS(ground,applyGroundContactStamps);
 PREPS(environment,solarElevation);
 PREPS(solver,solveTwoNodeSelection);
+PREPS(solver,solveTwoNodeKernel);
 PREPS(solver,calculateAtmosphericTransmission);
 PREPS(solver,calculateBandRadiance);
 PREPS(solver,resolveThermalBand);

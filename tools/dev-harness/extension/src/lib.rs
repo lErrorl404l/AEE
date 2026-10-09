@@ -53,6 +53,7 @@ fn init() -> Extension {
         .command("kernel.calculateStationPressure", kernel_station_pressure)
         .command("kernel.calculateRelativeHumidity", kernel_relative_humidity)
         .command("kernel.calculateAirDensityKernel", kernel_air_density)
+        .command("kernel.solveTwoNodeKernel", kernel_solve_two_node)
         .finish()
 }
 
@@ -147,6 +148,66 @@ fn kernel_air_density(t_c: f64, p_hpa: f64, rh: f64) -> String {
     kernels::air_density(t_c, p_hpa, rh).to_string()
 }
 
+/// Two-node thermal solve. Dispatcher name `kernel.solveTwoNodeKernel`. Returns
+/// `[core, skin, humanCore]` as an SQF array string. The driver normalises it.
+#[allow(clippy::too_many_arguments)]
+fn kernel_solve_two_node(
+    t_air: f64,
+    wind: f64,
+    solar: f64,
+    exposure: f64,
+    m_core: f64,
+    m_skin: f64,
+    area: f64,
+    l_char: f64,
+    t_core0: f64,
+    t_skin0: f64,
+    q_gen: f64,
+    orientation: String,
+    rh: f64,
+    mrt_c: f64,
+    is_human: bool,
+    evap_on: bool,
+    dt: f64,
+    water_speed: f64,
+    t_water: f64,
+    rain: f64,
+    skin_perfusion: f64,
+    clo: f64,
+    cond: f64,
+    skin_eps: f64,
+    skin_alpha: f64,
+) -> String {
+    let (core, skin, body) = kernels::solve_two_node(
+        t_air,
+        wind,
+        solar,
+        exposure,
+        m_core,
+        m_skin,
+        area,
+        l_char,
+        t_core0,
+        t_skin0,
+        q_gen,
+        &orientation,
+        rh,
+        mrt_c,
+        is_human,
+        evap_on,
+        dt,
+        water_speed,
+        t_water,
+        rain,
+        skin_perfusion,
+        clo,
+        cond,
+        skin_eps,
+        skin_alpha,
+    );
+    format!("[{core},{skin},{body}]")
+}
+
 fn reply_timeout() -> Duration {
     std::env::var("AEE_DEV_TIMEOUT_MS")
         .ok()
@@ -205,11 +266,12 @@ mod tests {
     }
 
     /// A parity vector for one native kernel, generated from the SQF reference
-    /// by `tools/gen_kernel_vectors.py`.
+    /// by `tools/gen_kernel_vectors.py`.  Arguments are mixed (numbers, strings,
+    /// booleans) and the expected value is a scalar or an array.
     #[derive(serde::Deserialize)]
     struct KernelVector {
-        args: Vec<f64>,
-        expected: f64,
+        args: Vec<serde_json::Value>,
+        expected: serde_json::Value,
     }
 
     /// One kernel's vectors and its justified parity bound (ADR-034).
@@ -229,6 +291,31 @@ mod tests {
 
     const KERNEL_VECTORS: &str = include_str!("../tests/vectors/kernels.json");
 
+    /// The SQF literal form of a generated argument, as `callExtension` passes
+    /// it to the extension.
+    fn arg_to_string(value: &serde_json::Value) -> String {
+        match value {
+            serde_json::Value::String(s) => s.clone(),
+            serde_json::Value::Bool(b) => b.to_string(),
+            other => other.to_string(),
+        }
+    }
+
+    /// Parse the SQF array string `[a,b,c]` the native array kernel returns.
+    fn parse_output_array(output: &str) -> Vec<f64> {
+        output
+            .trim()
+            .trim_start_matches('[')
+            .trim_end_matches(']')
+            .split(',')
+            .map(|item| {
+                item.trim()
+                    .parse::<f64>()
+                    .unwrap_or_else(|_| panic!("non-numeric array element {item:?}"))
+            })
+            .collect()
+    }
+
     /// Every native kernel matches its SQF reference on the generated vectors.
     #[test]
     fn native_kernels_match_the_sqf_reference() {
@@ -237,18 +324,37 @@ mod tests {
         assert!(!suite.kernels.is_empty(), "no kernel vectors found");
         for (name, kernel) in &suite.kernels {
             for case in &kernel.vectors {
-                let args: Vec<String> = case.args.iter().map(|value| value.to_string()).collect();
+                let args: Vec<String> = case.args.iter().map(arg_to_string).collect();
                 let (output, code) = init().testing().call(&kernel.command, Some(args));
                 assert_eq!(code, 0, "{name}: the native call failed");
-                let actual: f64 = output
-                    .parse()
-                    .unwrap_or_else(|_| panic!("{name}: non-numeric output {output}"));
-                let bound = kernel.tolerance_abs + kernel.tolerance_rel * case.expected.abs();
-                assert!(
-                    (case.expected - actual).abs() <= bound,
-                    "{name}: expected {}, got {actual} (bound {bound})",
-                    case.expected
-                );
+                match &case.expected {
+                    serde_json::Value::Number(_) => {
+                        let expected = case.expected.as_f64().expect("a number");
+                        let actual: f64 = output
+                            .parse()
+                            .unwrap_or_else(|_| panic!("{name}: non-numeric output {output}"));
+                        let bound = kernel.tolerance_abs + kernel.tolerance_rel * expected.abs();
+                        assert!(
+                            (expected - actual).abs() <= bound,
+                            "{name}: expected {expected}, got {actual} (bound {bound})"
+                        );
+                    }
+                    serde_json::Value::Array(items) => {
+                        let actuals = parse_output_array(&output);
+                        assert_eq!(actuals.len(), items.len(), "{name}: array length");
+                        for (index, expected_value) in items.iter().enumerate() {
+                            let expected = expected_value.as_f64().expect("a number");
+                            let actual = actuals[index];
+                            let bound =
+                                kernel.tolerance_abs + kernel.tolerance_rel * expected.abs();
+                            assert!(
+                                (expected - actual).abs() <= bound,
+                                "{name}[{index}]: expected {expected}, got {actual} (bound {bound})"
+                            );
+                        }
+                    }
+                    other => panic!("{name}: unexpected expected value {other}"),
+                }
             }
         }
     }
