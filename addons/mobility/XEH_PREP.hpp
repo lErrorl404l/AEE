@@ -40,6 +40,7 @@ PREP(applyAccretionMass);
 PREP(applyGripLoss);
 PREP(updateFuelSystem);
 PREP(updateEngineSystem);
+PREP(updateDamageSystem);
 PREP(updateGroundState);
 PREP(getVehicleMassModel);
 PREP(estimateVehicleMass);
