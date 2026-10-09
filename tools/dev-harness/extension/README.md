@@ -33,12 +33,19 @@ The asynchronous bridge ignores that cap: the reply travels as the
 
 ## Build
 
-Linux (the Docker harness):
+Linux (the Docker harness). `build.sh linux` runs the containerised build in
+`build-linux.sh`, because the server image's glibc is older than a typical
+host:
 
 ```sh
-./build.sh linux
+./build.sh linux        # wraps build-linux.sh
+./build-linux.sh        # containerised build only
 # -> dist/aee_dev_x64.so
 ```
+
+`build-linux.sh` builds inside `rust:bookworm` (Debian 12, glibc 2.36), the
+same glibc as the server image. Override the image with `AEE_DEV_BUILD_IMAGE`.
+The script reuses the host cargo registry when it exists.
 
 Windows 64-bit, cross-compiled with `cargo-xwin`:
 
@@ -76,10 +83,11 @@ BattlEye-on server path is a manual ceiling: it is not exercised by any gate.
 ## Linux compatibility
 
 The Linux `.so` links the glibc of the machine that builds it. The dedicated
-server image is Debian 12 (glibc 2.36); a `libaee_dev.so` built on a host with a
-newer glibc fails to load with `Call extension 'aee_dev' could not be loaded`.
-Build the extension inside a glibc-compatible environment (or with a matching
-sysroot) before the Docker harness can load it.
+server image is Debian 12 (glibc 2.36). A host with a newer glibc (for example
+glibc 2.39 or newer) emits a `GLIBC_2.39` requirement from the Rust standard
+library, and the server refuses the extension with `Call extension 'aee_dev'
+could not be loaded`. `build-linux.sh` builds inside a Debian 12 container, so
+the result needs no glibc newer than the server. `build.sh linux` calls it.
 
 ## Tests
 
