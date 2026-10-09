@@ -29,3 +29,5 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
+
+#include "CfgEventHandlers.hpp"
