@@ -19,6 +19,7 @@ plus `_F`. Every other member is a variant.
 - Rows: 139
 - Base members: 33
 - Variants: 106
+- no_source rows: 66
 - Tokens: Plane 40, Helicopter 88, UAV 11
 
 ## Roster
@@ -164,3 +165,77 @@ plus `_F`. Every other member is a variant.
 | `O_UAV_02_dynamicLoadout_F` | UAV | `UAV_02_dynamicLoadout_base_F` | `UAV_02` | variant |
 | `O_UAV_06_F` | Helicopter | `UAV_06_base_F` | `UAV_06` | base |
 | `O_UAV_06_medical_F` | Helicopter | `UAV_06_medical_base_F` | `UAV_06` | variant |
+
+## No-source classes
+
+A class with no real counterpart is `no_source`. It carries the reason
+in `roster.json`. No analogue is invented.
+
+| Game class | Variant family | Reason |
+|---|---|---|
+| `B_T_UAV_03_F` | `UAV_03` | fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source. |
+| `B_T_UAV_03_dynamicLoadout_F` | `UAV_03` | fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source. |
+| `B_T_VTOL_01_armed_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_armed_blue_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_armed_olive_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_infantry_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_infantry_blue_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_infantry_olive_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_vehicle_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_vehicle_blue_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_T_VTOL_01_vehicle_olive_F` | `VTOL_01` | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
+| `B_UAV_01_F` | `UAV_01` | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
+| `B_UAV_02_CAS_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `B_UAV_02_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `B_UAV_02_dynamicLoadout_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `B_UAV_05_F` | `UAV_05` | fictional unmanned combat air vehicle (UCAV Sentinel). The corpus holds no catalogue entry for the real type, so the class is no_source. |
+| `B_UAV_06_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `B_UAV_06_medical_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `C_IDAP_UAV_01_F` | `UAV_01` | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
+| `C_IDAP_UAV_06_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `C_IDAP_UAV_06_antimine_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `C_IDAP_UAV_06_medical_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `C_UAV_06_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `C_UAV_06_medical_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `I_E_UAV_01_F` | `UAV_01` | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
+| `I_E_UAV_06_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `I_E_UAV_06_medical_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `I_UAV_01_F` | `UAV_01` | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
+| `I_UAV_02_CAS_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `I_UAV_02_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `I_UAV_02_dynamicLoadout_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `I_UAV_06_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `I_UAV_06_medical_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `O_Heli_Transport_04_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_ammo_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_ammo_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_bench_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_bench_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_box_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_box_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_covered_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_covered_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_fuel_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_fuel_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_medevac_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_medevac_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_repair_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_repair_black_F` | `Heli_Transport_04` | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_T_UAV_04_CAS_F` | `UAV_04` | fictional unmanned combat air vehicle (KH-3A Fenghuang). The corpus holds no catalogue entry for the real type, so the class is no_source. |
+| `O_T_VTOL_02_infantry_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_infantry_dynamicLoadout_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_infantry_ghex_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_infantry_grey_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_infantry_hex_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_vehicle_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_vehicle_dynamicLoadout_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_vehicle_ghex_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_vehicle_grey_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_T_VTOL_02_vehicle_hex_F` | `VTOL_02` | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
+| `O_UAV_01_F` | `UAV_01` | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
+| `O_UAV_02_CAS_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `O_UAV_02_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `O_UAV_02_dynamicLoadout_F` | `UAV_02` | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
+| `O_UAV_06_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `O_UAV_06_medical_F` | `UAV_06` | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |

@@ -57,6 +57,57 @@ PARACHUTE_NAMES = frozenset(
     {"Parachute", "ParachuteWest", "ParachuteBase", "Paraglide"}
 )
 
+# A variant family with no real counterpart is recorded as ``no_source``.
+# The corpus holds no catalogue entry for the real type, and the class is a
+# fictional or toy-grade stand-in, so no binding is invented. The reason text
+# is attached to every roster row of the family. The list is keyed by the
+# variant family the roster derives, so a new class in a listed family is
+# covered without a second edit.
+NO_SOURCE_FAMILIES: dict[str, str] = {
+    "Heli_Transport_04": (
+        "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki "
+        "names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, "
+        "so there is no single real counterpart and no held catalogue entry."
+    ),
+    "UAV_01": (
+        "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart "
+        "with a held specification, so the class is no_source."
+    ),
+    "UAV_02": (
+        "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed "
+        "Assault Wiki names the MQ-9 as its basis, and the corpus holds no "
+        "catalogue entry, so the class is no_source."
+    ),
+    "UAV_03": (
+        "fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus "
+        "holds no catalogue entry for the real type, so the class is "
+        "no_source."
+    ),
+    "UAV_04": (
+        "fictional unmanned combat air vehicle (KH-3A Fenghuang). The corpus "
+        "holds no catalogue entry for the real type, so the class is "
+        "no_source."
+    ),
+    "UAV_05": (
+        "fictional unmanned combat air vehicle (UCAV Sentinel). The corpus "
+        "holds no catalogue entry for the real type, so the class is "
+        "no_source."
+    ),
+    "UAV_06": (
+        "fictional utility quadcopter (AL-6 Pelican). No real counterpart "
+        "with a held specification, so the class is no_source."
+    ),
+    "VTOL_01": (
+        "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names "
+        "an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so "
+        "there is no single real counterpart and no held catalogue entry."
+    ),
+    "VTOL_02": (
+        "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no "
+        "real counterpart, so the class is no_source."
+    ),
+}
+
 # A family or engine base class name.
 BASE_SUFFIX = re.compile(r"_base_[A-Za-z]+$", re.IGNORECASE)
 # The air addons. Only these packed addons are unpacked for the resolve.
@@ -358,16 +409,17 @@ def build_roster(inventory: JsonObject) -> list[JsonObject]:
             if index >= 0 and name[index:] == family + "_F":
                 is_base = True
         record = tree[name]
-        rows.append(
-            {
-                "game_class": name,
-                "class_token": token,
-                "base_class": record.get("parent_class"),
-                "variant_family": family,
-                "role": "base" if is_base else "variant",
-                "is_variant": not is_base,
-            }
-        )
+        row: JsonObject = {
+            "game_class": name,
+            "class_token": token,
+            "base_class": record.get("parent_class"),
+            "variant_family": family,
+            "role": "base" if is_base else "variant",
+            "is_variant": not is_base,
+        }
+        if family is not None and family in NO_SOURCE_FAMILIES:
+            row["no_source_reason"] = NO_SOURCE_FAMILIES[family]
+        rows.append(row)
     return rows
 
 
@@ -408,6 +460,35 @@ def roster_errors(inventory: JsonObject, roster: list[JsonObject]) -> list[str]:
     return errors
 
 
+def resolution_errors(
+    roster: list[JsonObject], bindings: list[JsonObject]
+) -> list[str]:
+    """Return every roster class that is neither bound nor no_source.
+
+    A roster class is resolved when a class binding names it, or when the
+    roster row carries a ``no_source_reason``. A class that is neither is an
+    unresolved gap and blocks the change.
+    """
+    bound = {
+        cast("str", binding["game_class"])
+        for binding in bindings
+        if isinstance(binding, dict) and "game_class" in binding
+    }
+    errors: list[str] = []
+    for row in roster:
+        if not isinstance(row, dict):
+            errors.append("roster row: must be an object")
+            continue
+        name = row.get("game_class")
+        if name in bound:
+            continue
+        reason = row.get("no_source_reason")
+        if isinstance(reason, str) and reason.strip():
+            continue
+        errors.append(f"roster class {name}: neither bound nor no_source")
+    return errors
+
+
 # --------------------------------------------------------------------------
 # Rendering
 # --------------------------------------------------------------------------
@@ -427,6 +508,7 @@ def build_roster_report(inventory: JsonObject, rows: list[JsonObject]) -> str:
     """Render data/aircraft/ROSTER.md."""
     bases = sum(1 for row in rows if row.get("role") == "base")
     variants = len(rows) - bases
+    no_source = sum(1 for row in rows if row.get("no_source_reason"))
     token_counts: dict[str, int] = {}
     for row in rows:
         token = cast("str", row.get("class_token"))
@@ -458,6 +540,7 @@ def build_roster_report(inventory: JsonObject, rows: list[JsonObject]) -> str:
         f"- Rows: {len(rows)}",
         f"- Base members: {bases}",
         f"- Variants: {variants}",
+        f"- no_source rows: {no_source}",
         f"- Tokens: {token_text}",
         "",
         "## Roster",
@@ -471,6 +554,23 @@ def build_roster_report(inventory: JsonObject, rows: list[JsonObject]) -> str:
             f"`{row.get('base_class', '')}` | `{row.get('variant_family', '')}` | "
             f"{row.get('role', '')} |"
         )
+    lines += [
+        "",
+        "## No-source classes",
+        "",
+        "A class with no real counterpart is `no_source`. It carries the reason",
+        "in `roster.json`. No analogue is invented.",
+        "",
+        "| Game class | Variant family | Reason |",
+        "|---|---|---|",
+    ]
+    for row in rows:
+        reason = row.get("no_source_reason")
+        if reason:
+            lines.append(
+                f"| `{row.get('game_class', '')}` | "
+                f"`{row.get('variant_family', '')}` | {reason} |"
+            )
     lines.append("")
     return "\n".join(lines)
 

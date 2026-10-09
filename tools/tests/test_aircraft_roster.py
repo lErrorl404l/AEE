@@ -25,6 +25,7 @@ REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
 
 from tools.validation import gen_aircraft_roster as g  # noqa: E402
+from tools.validation import vehicle_catalogue as vc  # noqa: E402
 
 DATA = REPO / "data" / "aircraft"
 INVENTORY = DATA / g.INVENTORY_OUT
@@ -153,6 +154,60 @@ class CommittedArtefactsTest(unittest.TestCase):
             shutil.copy(ROSTER, root / g.ROSTER_OUT)
             (root / g.ROSTER_REPORT).write_text("stale\n", encoding="utf-8")
             self.assertEqual(1, g.check_all(root))
+
+
+class ResolutionGuardTest(unittest.TestCase):
+    """Every roster class is bound or carries a no_source reason (task 10)."""
+
+    def _bindings(self) -> list[object]:
+        payload = _load(DATA / "class_bindings.json")
+        self.assertIsInstance(payload, list)
+        return list(payload)
+
+    def test_every_roster_class_is_bound_or_no_source(self) -> None:
+        errors = g.resolution_errors(_load(ROSTER), self._bindings())
+        self.assertEqual([], errors)
+
+    def test_a_no_source_family_carries_a_reason(self) -> None:
+        rows = [row for row in _load(ROSTER) if row.get("no_source_reason")]
+        self.assertTrue(rows)
+        for row in rows:
+            self.assertTrue(row.get("no_source_reason"))
+
+    def test_a_class_that_is_neither_bound_nor_no_source_is_reported(self) -> None:
+        roster = _load(ROSTER)
+        for row in roster:
+            row.pop("no_source_reason", None)
+        bindings = [
+            b for b in self._bindings() if b["game_class"] != "B_Heli_Attack_01_F"
+        ]
+        errors = g.resolution_errors(roster, bindings)
+        self.assertTrue(
+            any(
+                "B_Heli_Attack_01_F" in error and "neither" in error for error in errors
+            ),
+            errors,
+        )
+
+    def test_an_invented_analogue_is_rejected_by_the_validator(self) -> None:
+        # A binding to a fictional analogue names a catalogue id the corpus
+        # does not hold, so the loader reports an unknown catalogue_id.
+        bindings = self._bindings()
+        invented = dict(bindings[0])
+        invented["catalogue_id"] = "fixture_invented_analogue"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shutil.copytree(DATA / "catalogue", root / "catalogue")
+            shutil.copy(DATA / "sources.json", root / "sources.json")
+            (root / "class_bindings.json").write_text(
+                json.dumps([invented]), encoding="utf-8"
+            )
+            loaded = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertEqual([], loaded.bindings)
+        self.assertTrue(
+            any("unknown catalogue_id" in error for error in loaded.errors),
+            loaded.errors,
+        )
 
 
 if __name__ == "__main__":
