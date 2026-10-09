@@ -222,6 +222,24 @@ def _sqf_isEqualTypeAny(value: Any, types: Any) -> bool:
     return any(_sqf_type_tag(t) == tag for t in types)
 
 
+def _sqf_parse_simple_array(text: Any) -> list:
+    """SQF `parseSimpleArray`: parse an SQF literal and return its array.
+
+    The literal is parsed by the same tokeniser and parser, so a string, a
+    number or a bare identifier evaluates without executing code.  Anything
+    that is not a top-level array, or that raises while parsing or evaluating,
+    returns an empty array, matching the engine on malformed input.
+    """
+    if not isinstance(text, str):
+        return []
+    try:
+        stmts = SqfParser(tokenize(text)).parse_program()
+        value = SqfRuntime({}).run(stmts)
+    except Exception:
+        return []
+    return value if isinstance(value, list) else []
+
+
 # Unary commands applied to a following expression.  Without these the
 # parser reads the name as a variable and the operand as a new statement,
 # which is how `(count _v) == 0` raised "expected ), got _v".
@@ -271,6 +289,9 @@ UNARY_COMMANDS = {
     # are engine commands the caller binds through globals_.
     "getArray",
     "fileExists",
+    # parseSimpleArray "text" - the literal parser the dev dispatcher uses to
+    # read an extension request.  A non-array or unparsable text returns [].
+    "parseSimpleArray",
 }
 
 
@@ -1054,6 +1075,8 @@ class SqfRuntime:
                 if mag == 0:
                     return [0.0, 0.0, 0.0]
                 return [value[0] / mag, value[1] / mag, value[2] / mag]
+            if node.op == "parseSimpleArray":
+                return _sqf_parse_simple_array(value)
             # Engine terrain and object queries: supplied by the caller through
             # globals_.  A test that exercises the wildlife sampler binds them.
             if node.op in (
