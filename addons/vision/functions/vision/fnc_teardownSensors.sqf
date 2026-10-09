@@ -35,7 +35,7 @@ setAperture -1;
 // on return, so a pin left set across the session leaves the camera on the
 // sensor's exposure: the operator report that the view stays dark after NVG
 // or thermal.  Releasing the pin hands the aperture back to the eye model.
-GVAR(eyePinned) = nil;
+EGVAR(eye,eyePinned) = nil;
 
 // Fusion teardown, BEFORE the idempotency exit below, so an exit with the
 // sensor handler already gone still restores.  The forced 0 destroys the

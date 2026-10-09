@@ -57,7 +57,7 @@ CATALOGUE = json.loads(
     )
 )
 DATA_DIR = REPO / "data" / "device"
-OPTICS_POSTINIT_SRC = (REPO / "addons" / "optics" / "XEH_postInit.sqf").read_text(
+OPTICS_POSTINIT_SRC = (REPO / "addons" / "vision" / "XEH_postInit.sqf").read_text(
     encoding="utf-8"
 )
 

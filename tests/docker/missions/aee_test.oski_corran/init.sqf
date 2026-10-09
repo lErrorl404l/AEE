@@ -1824,7 +1824,7 @@ private _p29Pass = 0;
     // publishes the diagnostic targets without error.
     private _p32Pass = 0;
     private _p32Fail = 0;
-    private _fnVD = missionNamespace getVariable ["aee_optics_fnc_calculateViewDistance", nil];
+    private _fnVD = missionNamespace getVariable ["aee_vision_fnc_calculateViewDistance", nil];
     if (isNil "_fnVD") then {
         diag_log text "[PHASE32] [FAIL] view distance function not compiled";
         _p32Fail = _p32Fail + 1;
@@ -1839,7 +1839,7 @@ private _p29Pass = 0;
             _p32Fail = _p32Fail + 1;
         };
         // The diagnostics are published even when the driver no-ops.
-        private _target = missionNamespace getVariable ["aee_optics_viewDistanceTarget", nil];
+        private _target = missionNamespace getVariable ["aee_vision_viewDistanceTarget", nil];
         if (isNil "_target" || {_target isEqualType 0}) then {
             diag_log text format ["[PHASE32] [PASS] view distance target present: %1", _target];
             _p32Pass = _p32Pass + 1;

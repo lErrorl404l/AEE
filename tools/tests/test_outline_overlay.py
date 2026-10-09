@@ -52,7 +52,7 @@ RSC_SRC = (REPO / "addons" / "thermal" / "RscTitles.hpp").read_text(encoding="ut
 STRINGTABLE_SRC = (REPO / "addons" / "thermal" / "stringtable.xml").read_text(
     encoding="utf-8"
 )
-POSTINIT_SRC = (REPO / "addons" / "optics" / "XEH_postInit.sqf").read_text(
+POSTINIT_SRC = (REPO / "addons" / "vision" / "XEH_postInit.sqf").read_text(
     encoding="utf-8"
 )
 

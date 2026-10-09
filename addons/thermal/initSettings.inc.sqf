@@ -82,7 +82,7 @@ AEE_SETTING_CHECKBOX(thermalPPEffects,"AEE Thermal","Display",true);
     [[0, 1], ["Vanilla TI", "DTV"], 0],
     true,
     {
-        [] call EFUNC(optics,updateThermalHostSetting);
+        [] call EFUNC(vision,updateThermalHostSetting);
     }
 ] call CBA_fnc_addSetting;
 

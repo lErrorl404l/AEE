@@ -17,10 +17,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-OPTICS = ROOT / "addons" / "optics"
+VISION_ADDON = ROOT / "addons" / "vision"
 THERMAL = ROOT / "addons" / "thermal"
 
-GRADE = OPTICS / "functions" / "grade"
+GRADE = VISION_ADDON / "functions" / "grade"
 BASE_KERNEL = GRADE / "fnc_baseGradeParams.sqf"
 THERMAL_KERNEL = THERMAL / "functions" / "display" / "fnc_thermalImperfectionParams.sqf"
 
@@ -272,10 +272,10 @@ TEARDOWN = GRADE / "fnc_teardownBaseGrade.sqf"
 THERMAL_DISPLAY = THERMAL / "functions" / "display" / "fnc_applyThermalVision.sqf"
 # The create table moved off the per-entry path into its own function.
 THERMAL_CREATE = THERMAL / "functions" / "display" / "fnc_createThermalPPEffects.sqf"
-OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
-OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
-OPTICS_SETTINGS = OPTICS / "initSettings.inc.sqf"
-OPTICS_STRINGS = OPTICS / "stringtable.xml"
+VISION_PREP = VISION_ADDON / "XEH_PREP.hpp"
+VISION_POSTINIT = VISION_ADDON / "XEH_postInit.sqf"
+VISION_SETTINGS = VISION_ADDON / "initSettings.inc.sqf"
+VISION_STRINGS = VISION_ADDON / "stringtable.xml"
 THERMAL_SETTINGS = THERMAL / "initSettings.inc.sqf"
 THERMAL_STRINGS = THERMAL / "stringtable.xml"
 
@@ -415,20 +415,25 @@ class TestImageRealismWiring(unittest.TestCase):
     """Functions are prepped, started, wired, and documented."""
 
     def test_every_grade_function_is_prepped(self):
-        text = OPTICS_PREP.read_text(encoding="utf-8")
+        text = VISION_PREP.read_text(encoding="utf-8")
         for name in GRADE_FUNCTIONS:
             self.assertIn(f"PREPS(grade,{name});", text, f"{name} is not prepped")
 
     def test_postinit_starts_the_module_after_eye_adaptation(self):
-        text = OPTICS_POSTINIT.read_text(encoding="utf-8")
+        # initEyeAdaptation lives in aee_eye and initBaseGrade in aee_vision;
+        # the grade starts after the eye module because vision lists aee_eye
+        # in requiredAddons.
+        text = VISION_POSTINIT.read_text(encoding="utf-8")
         self.assertIn("FUNC(initBaseGrade)", text)
-        self.assertLess(
-            text.index("FUNC(initEyeAdaptation)"),
-            text.index("FUNC(initBaseGrade)"),
+        eye_post = (ROOT / "addons" / "eye" / "XEH_postInit.sqf").read_text(
+            encoding="utf-8"
         )
+        self.assertIn("FUNC(initEyeAdaptation)", eye_post)
+        cfg = (ROOT / "addons" / "vision" / "config.cpp").read_text(encoding="utf-8")
+        self.assertIn('"aee_eye"', cfg)
 
     def test_vision_mode_branch_applies_the_grade(self):
-        text = OPTICS_POSTINIT.read_text(encoding="utf-8")
+        text = VISION_POSTINIT.read_text(encoding="utf-8")
         self.assertIn("FUNC(applyBaseGrade)", text)
         self.assertLess(
             text.index("FUNC(managePostProcess)"),
@@ -441,20 +446,20 @@ class TestImageRealismWiring(unittest.TestCase):
         self.assertIn("QGVAR(baseGradePFH)", code)
 
     def test_settings_are_registered(self):
-        optics = OPTICS_SETTINGS.read_text(encoding="utf-8")
+        optics = VISION_SETTINGS.read_text(encoding="utf-8")
         for name in BASE_GRADE_SETTINGS:
             self.assertIn(name, optics, f"setting {name} is not registered")
-        self.assertIn('"AEE Optics","Image"', optics)
+        self.assertIn('"AEE Vision","Image"', optics)
         thermal = THERMAL_SETTINGS.read_text(encoding="utf-8")
         for name in THERMAL_SETTINGS_NAMES:
             self.assertIn(name, thermal, f"setting {name} is not registered")
         self.assertIn('"AEE Thermal","Sensor"', thermal)
 
     def test_every_setting_has_name_and_description(self):
-        optics = OPTICS_STRINGS.read_text(encoding="utf-8")
+        optics = VISION_STRINGS.read_text(encoding="utf-8")
         for name in BASE_GRADE_SETTINGS:
-            self.assertIn(f"STR_AEE_Optics_{name}_Name", optics)
-            self.assertIn(f"STR_AEE_Optics_{name}_Description", optics)
+            self.assertIn(f"STR_AEE_Vision_{name}_Name", optics)
+            self.assertIn(f"STR_AEE_Vision_{name}_Description", optics)
         thermal = THERMAL_STRINGS.read_text(encoding="utf-8")
         for name in THERMAL_SETTINGS_NAMES:
             self.assertIn(f"STR_AEE_Thermal_{name}_Name", thermal)
@@ -462,8 +467,8 @@ class TestImageRealismWiring(unittest.TestCase):
 
     def test_stringtable_keys_are_sorted(self):
         optics = re.findall(
-            r'<Key ID="(STR_AEE_Optics_\w+)"',
-            OPTICS_STRINGS.read_text(encoding="utf-8"),
+            r'<Key ID="(STR_AEE_Vision_\w+)"',
+            VISION_STRINGS.read_text(encoding="utf-8"),
         )
         self.assertEqual(optics, sorted(optics), "optics keys are not sorted")
         thermal = re.findall(
@@ -500,7 +505,7 @@ class TestImageRealismDebugHooks(unittest.TestCase):
             self.assertIn(hook, code, f"debug hook {hook} is not read")
 
     def test_hooks_are_not_cba_settings(self):
-        declared = OPTICS_SETTINGS.read_text(
+        declared = VISION_SETTINGS.read_text(
             encoding="utf-8"
         ) + THERMAL_SETTINGS.read_text(encoding="utf-8")
         for name in ["baseGradeForce", *self.THERMAL_HOOKS]:

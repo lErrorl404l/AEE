@@ -45,9 +45,9 @@ fnc_baseGradeParams.sqf and .omo/plans/aee-image-realism.md.
 
 Debug hooks (set on missionNamespace; debug console only, no CBA setting):
   aee_optics_baseGradeForce      Bool: force the grade on.
-  aee_optics_baseGradeContrast   Number: override the contrast setting.
-  aee_optics_baseGradeSharpness  Number: override the acuity sharpness setting.
-  aee_optics_baseGradeGrain      Number: override the acuity grain setting.
+  aee_vision_baseGradeContrast   Number: override the contrast setting.
+  aee_vision_baseGradeSharpness  Number: override the acuity sharpness setting.
+  aee_vision_baseGradeGrain      Number: override the acuity grain setting.
   aee_optics_visionForce         Bool: force the human-vision model on.
   aee_optics_visionForceLux      Number: override the adapted luminance, cd/m2.
   aee_optics_visionForceMesopic  Number: override the mesopic photopic fraction.
@@ -186,8 +186,8 @@ private _visionForce = missionNamespace getVariable [QGVAR(visionForce), false];
 if (_visionForce isEqualType true) then { _useModel = _useModel || _visionForce; };
 if (_visionForce isEqualType 0) then { _useModel = _useModel || (_visionForce > 0); };
 
-private _adaptedLux = missionNamespace getVariable [QGVAR(eyeAdaptedLux), 1];
-private _mesopicW = missionNamespace getVariable [QGVAR(eyeMesopic), 1];
+private _adaptedLux = missionNamespace getVariable [QEGVAR(eye,eyeAdaptedLux), 1];
+private _mesopicW = missionNamespace getVariable [QEGVAR(eye,eyeMesopic), 1];
 private _params = [];
 // Performance: the model runs in the existing 1.0 s client PFH started by
 // fnc_initBaseGrade.  It adds one ambient engine read per tick and the pure

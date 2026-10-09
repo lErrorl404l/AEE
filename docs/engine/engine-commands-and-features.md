@@ -162,7 +162,7 @@ effect type into the stack.
 
 **ppEffectForceInNVG [DB].** Forces an effect to render inside NVG. AEE uses the
 flag to make a thermal overlay survive the NVG channel
-([AEE `addons/optics/functions/vision/fnc_runThermalPass.sqf`]).
+([AEE `addons/vision/functions/vision/fnc_runThermalPass.sqf`]).
 
 **DepthOfField is a real ppEffect, unlisted [AEE].** The BIKI effect list omits
 it, but `ppEffectCreate ["DepthOfField", priority]` returns a live handle and
@@ -210,7 +210,7 @@ and water-goggles variants. AEE sets `focusDistance=12, blur=0.6, farOnly=1`.
 
 **`apertureParams` [AEE].** `apertureParams` returns the engine's own estimated
 luminance and a "blinding" term (element 9, no documented unit)
-([AEE `addons/optics/functions/eye/fnc_eyeSampleScene.sqf`,
+([AEE `addons/eye/functions/eye/fnc_eyeSampleScene.sqf`,
 `fnc_eyeLocalLux.sqf`]). AEE reads it and pins `setApertureNew` every frame so
 AEE owns the adaptation rate, not the engine. **Ceiling:** the engine's own
 adaptation rate is fixed by `eyeAdaptFactorLight/Dark`; a script can only
@@ -249,7 +249,7 @@ override the resulting aperture, not the internal luminance estimate.
 2 = thermal. AEE drives both an engine thermal channel (mode 2) and a day
 channel (mode 0 with native TI disabled) through one pass; the only host
 difference is the `ppEffectForceInNVG` flag
-([AEE `addons/optics/functions/vision/fnc_runThermalPass.sqf`]). **Ceiling:** the
+([AEE `addons/vision/functions/vision/fnc_runThermalPass.sqf`]). **Ceiling:** the
 engine thermal model is not replaceable; AEE overlays a `ppEffect`-based
 rendition and reads `apertureParams`, it does not change the engine's own
 radiance solver.
@@ -380,9 +380,9 @@ textures are selected from existing `.rvmat`/`.paa` assets only.
   CfgCameraEffects:14724); `the derapified map_altis.pbo config`
   (HDRNewPars:473, Lighting:510).
 - AEE (read-only): `addons/lib/functions/fnc_createPPEffect.sqf`,
-  `addons/optics/functions/eye/fnc_eyeAperture.sqf`,
-  `addons/optics/functions/eye/fnc_eyeSampleScene.sqf`,
-  `addons/optics/functions/vision/fnc_runThermalPass.sqf`,
+  `addons/eye/functions/eye/fnc_eyeAperture.sqf`,
+  `addons/eye/functions/eye/fnc_eyeSampleScene.sqf`,
+  `addons/vision/functions/vision/fnc_runThermalPass.sqf`,
   `addons/nightvision/functions/fnc_applyNVGTubeModel.sqf`,
   `addons/environmental/config.cpp`.
 

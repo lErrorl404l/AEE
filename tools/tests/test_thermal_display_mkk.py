@@ -177,7 +177,7 @@ class TestMKKDisplayWiring(unittest.TestCase):
 
     def test_priorities_are_unique_across_the_stacks(self):
         files = [
-            "addons/optics/functions/vision/fnc_managePostProcess.sqf",
+            "addons/vision/functions/vision/fnc_managePostProcess.sqf",
             "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
             "addons/thermal/functions/display/fnc_createThermalPPEffects.sqf",
         ]

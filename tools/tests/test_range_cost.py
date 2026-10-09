@@ -11,7 +11,7 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-FNC = (REPO / "addons/optics/functions/vision/fnc_calculateViewDistance.sqf").read_text(
+FNC = (REPO / "addons/vision/functions/vision/fnc_calculateViewDistance.sqf").read_text(
     encoding="utf-8"
 )
 DOC = (REPO / "docs/wiki/research/long-range-performance.md").read_text(

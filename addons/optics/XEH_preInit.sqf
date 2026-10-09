@@ -19,19 +19,7 @@ aee_optics_terrainTables = call (compile preprocessFileLineNumbers QPATHTOF(data
 
 missionNamespace setVariable [QGVAR(isReady), true];
 
-// Persistent ppEffect handles — Arma 2.22 requires the numeric handle
-// from ppEffectCreate (the string-LHS form throws "Type Number,
-// expected Number").  Create once here so every FX call uses the handle.
-[] call FUNC(ppEffectCreate);
-
-// The base effects are created once and adjusted thereafter, never rebuilt per
-// tick.  Before the shared registry they had no destroy path on any code path,
-// so a stacked second set from a repeat init stayed live for the rest of the
-// session.  Registered under the "optics" scope, so this one call frees all
-// four and resets their mirrored legacy names to -1.
 addMissionEventHandler ["Ended", {
-    call FUNC(destroyBasePostProcess);
-    call FUNC(teardownBaseGrade);
     // disableMapIndicators is a persistent LOCAL effect, not scoped to the
     // map display, so the teardown must reverse it too.  The restore also
     // deletes any AEE markers a map close did not already clear.

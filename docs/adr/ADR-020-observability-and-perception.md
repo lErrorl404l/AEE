@@ -57,7 +57,7 @@ in a headless probe. The kernel is testable without the engine.
 ### The AI entry point
 
 An AI has no render state and no camera. The AI calls
-`EFUNC(optics, perceptionSample)` with its own value map. The kernel returns
+`EFUNC(vision, perceptionSample)` with its own value map. The kernel returns
 the same fixed schema that the client driver reads. The AI path does not read
 the local player state, so it is valid on a server. This is the reason the
 kernel lives in `addons/optics` and not in a client-only display path.

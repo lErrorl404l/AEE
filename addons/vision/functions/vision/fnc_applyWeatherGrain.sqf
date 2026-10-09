@@ -12,7 +12,7 @@ ever hands back a handle another scope already holds.
 The kernel FUNC(weatherGrainParams) picks the six-element FilmGrain array
 from rain and sunOrMoon.  This driver scales its intensity by two factors:
 
-  aee_optics_weatherGrainIntensity  operator setting, range 0 to 1
+  aee_vision_weatherGrainIntensity  operator setting, range 0 to 1
   aee_environmental_worldLighting   element 2, the matcher grain scale
                                     (default 1 when the matcher has not run)
 

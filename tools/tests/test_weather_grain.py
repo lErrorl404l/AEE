@@ -33,12 +33,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-OPTICS = REPO / "addons" / "optics"
-KERNEL = OPTICS / "functions" / "vision" / "fnc_weatherGrainParams.sqf"
-APPLY = OPTICS / "functions" / "vision" / "fnc_applyWeatherGrain.sqf"
-INIT = OPTICS / "functions" / "vision" / "fnc_initWeatherGrain.sqf"
-PREP = OPTICS / "XEH_PREP.hpp"
-POSTINIT = OPTICS / "XEH_postInit.sqf"
+VISION_ADDON = REPO / "addons" / "vision"
+KERNEL = VISION_ADDON / "functions" / "vision" / "fnc_weatherGrainParams.sqf"
+APPLY = VISION_ADDON / "functions" / "vision" / "fnc_applyWeatherGrain.sqf"
+INIT = VISION_ADDON / "functions" / "vision" / "fnc_initWeatherGrain.sqf"
+PREP = VISION_ADDON / "XEH_PREP.hpp"
+POSTINIT = VISION_ADDON / "XEH_postInit.sqf"
 
 
 def mirror(rain: float, sun_or_moon: float) -> list[float]:
@@ -200,13 +200,13 @@ class TestWeatherGrainWiring(unittest.TestCase):
                 if int(m.group(2)) == 1747:
                     hits.append((m.group(1), str(sqf.relative_to(REPO))))
         expected = [
-            ("FilmGrain", "addons/optics/functions/vision/fnc_applyWeatherGrain.sqf")
+            ("FilmGrain", "addons/vision/functions/vision/fnc_applyWeatherGrain.sqf")
         ]
         self.assertEqual(sorted(hits), sorted(expected))
 
 
-INIT_SETTINGS = OPTICS / "initSettings.inc.sqf"
-STRINGTABLE = OPTICS / "stringtable.xml"
+INIT_SETTINGS = VISION_ADDON / "initSettings.inc.sqf"
+STRINGTABLE = VISION_ADDON / "stringtable.xml"
 CONFIG_DOCS = REPO / "docs" / "wiki" / "chapters" / "configuration.qmd"
 
 
@@ -215,11 +215,11 @@ class TestWeatherGrainSettings(unittest.TestCase):
         live = live_source(INIT_SETTINGS)
         self.assertRegex(
             live,
-            r'AEE_SETTING_SLIDER\(weatherGrainIntensity,"AEE Optics","Intensity",0,1,0\.5,2\)',
+            r'AEE_SETTING_SLIDER\(weatherGrainIntensity,"AEE Vision","Intensity",0,1,0\.5,2\)',
         )
         self.assertRegex(
             live,
-            r'AEE_SETTING_SLIDER\(weatherGrainRainThreshold,"AEE Optics","Intensity",0,1,0\.2,2\)',
+            r'AEE_SETTING_SLIDER\(weatherGrainRainThreshold,"AEE Vision","Intensity",0,1,0\.2,2\)',
         )
 
     def test_driver_reads_the_settings_not_constants(self) -> None:
@@ -233,10 +233,10 @@ class TestWeatherGrainSettings(unittest.TestCase):
     def test_stringtable_carries_the_keys(self) -> None:
         text = STRINGTABLE.read_text(encoding="utf-8")
         for key in (
-            "STR_AEE_Optics_weatherGrainIntensity_Name",
-            "STR_AEE_Optics_weatherGrainIntensity_Description",
-            "STR_AEE_Optics_weatherGrainRainThreshold_Name",
-            "STR_AEE_Optics_weatherGrainRainThreshold_Description",
+            "STR_AEE_Vision_weatherGrainIntensity_Name",
+            "STR_AEE_Vision_weatherGrainIntensity_Description",
+            "STR_AEE_Vision_weatherGrainRainThreshold_Name",
+            "STR_AEE_Vision_weatherGrainRainThreshold_Description",
         ):
             with self.subTest(key=key):
                 self.assertIn(key, text)
@@ -244,8 +244,8 @@ class TestWeatherGrainSettings(unittest.TestCase):
     def test_configuration_docs_are_regenerated(self) -> None:
         doc = CONFIG_DOCS.read_text(encoding="utf-8")
         for name in (
-            "aee_optics_weatherGrainIntensity",
-            "aee_optics_weatherGrainRainThreshold",
+            "aee_vision_weatherGrainIntensity",
+            "aee_vision_weatherGrainRainThreshold",
         ):
             with self.subTest(name=name):
                 self.assertIn(name, doc)

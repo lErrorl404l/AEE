@@ -26,10 +26,7 @@ from sqf_lite import run_sqf  # noqa: E402
 REPO = Path(__file__).resolve().parents[2]
 ADAPT = (
     REPO
-    / "addons"
-    / "optics"
-    / "functions"
-    / "perception"
+    / "addons" / "vision" / "functions" / "perception"
     / "fnc_perceptionAdaptState.sqf"
 )
 

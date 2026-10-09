@@ -7,8 +7,8 @@
 // that exit.  This probe drives the real driver and the real composition kernel
 // headlessly and asserts the anchor, the override and the identity at default.
 
-private _driver = missionNamespace getVariable ["aee_optics_fnc_applyBaseGrade", nil];
-private _compose = missionNamespace getVariable ["aee_optics_fnc_perceptionParams", nil];
+private _driver = missionNamespace getVariable ["aee_vision_fnc_applyBaseGrade", nil];
+private _compose = missionNamespace getVariable ["aee_vision_fnc_perceptionParams", nil];
 private _pass = 0;
 private _fail = 0;
 private _notes = [];
@@ -36,7 +36,7 @@ if (isNil "_driver" || isNil "_compose") then {
     //    to the vanilla anchor.
     missionNamespace setVariable ["aee_optics_visionForceBase", [1.1, 1.2, -0.05]];
     [] call _driver;
-    private _forced = missionNamespace getVariable ["aee_optics_visionBaseResolved", []];
+    private _forced = missionNamespace getVariable ["aee_vision_visionBaseResolved", []];
     private _forcedOk = false;
     if (_forced isEqualType []) then {
         if (_forced isEqualTo [1.1, 1.2, -0.05]) then { _forcedOk = true; };
@@ -49,7 +49,7 @@ if (isNil "_driver" || isNil "_compose") then {
     };
     missionNamespace setVariable ["aee_optics_visionForceBase", nil];
     [] call _driver;
-    private _reset = missionNamespace getVariable ["aee_optics_visionBaseResolved", []];
+    private _reset = missionNamespace getVariable ["aee_vision_visionBaseResolved", []];
     private _resetOk = false;
     if (_reset isEqualType []) then {
         if (_reset isEqualTo [1, 1, 0]) then { _resetOk = true; };

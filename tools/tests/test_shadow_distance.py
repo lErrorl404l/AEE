@@ -28,8 +28,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-OPTICS = REPO / "addons" / "optics"
-VISION = OPTICS / "functions" / "vision"
+VISION_ADDON = REPO / "addons" / "vision"
+VISION = VISION_ADDON / "functions" / "vision"
 PATTERN = VISION / "fnc_shadowSamplePattern.sqf"
 CLASSIFY = VISION / "fnc_shadowClassifyScene.sqf"
 TARGET = VISION / "fnc_shadowTargetDistance.sqf"
@@ -37,9 +37,9 @@ SMOOTH = VISION / "fnc_shadowSmoothDistance.sqf"
 GOVERNOR = VISION / "fnc_shadowFpsGovernor.sqf"
 STABILIZE = VISION / "fnc_shadowStabilizeDepth.sqf"
 DRIVER = VISION / "fnc_calculateViewDistance.sqf"
-PREP = OPTICS / "XEH_PREP.hpp"
-INIT_SETTINGS = OPTICS / "initSettings.inc.sqf"
-STRINGTABLE = OPTICS / "stringtable.xml"
+PREP = VISION_ADDON / "XEH_PREP.hpp"
+INIT_SETTINGS = VISION_ADDON / "initSettings.inc.sqf"
+STRINGTABLE = VISION_ADDON / "stringtable.xml"
 CONFIG_DOCS = REPO / "docs" / "wiki" / "chapters" / "configuration.qmd"
 
 
@@ -708,7 +708,7 @@ class TestShadowSettings(unittest.TestCase):
     def test_settings_register_in_the_shadows_group(self) -> None:
         live = live_source(INIT_SETTINGS)
         for name, kind, args in SHADOW_SETTINGS:
-            entry = f'AEE_SETTING_{kind}({name},"AEE Optics","Shadows",{args})'
+            entry = f'AEE_SETTING_{kind}({name},"AEE Vision","Shadows",{args})'
             with self.subTest(name=name):
                 self.assertIn(entry, live)
 
@@ -716,7 +716,7 @@ class TestShadowSettings(unittest.TestCase):
         text = STRINGTABLE.read_text(encoding="utf-8")
         for name, _kind, _args in SHADOW_SETTINGS:
             for suffix in ("Name", "Description"):
-                key = f"STR_AEE_Optics_{name}_{suffix}"
+                key = f"STR_AEE_Vision_{name}_{suffix}"
                 with self.subTest(key=key):
                     self.assertIn(key, text)
 
@@ -724,12 +724,12 @@ class TestShadowSettings(unittest.TestCase):
         doc = CONFIG_DOCS.read_text(encoding="utf-8")
         for name, _kind, _args in SHADOW_SETTINGS:
             with self.subTest(name=name):
-                self.assertIn(f"aee_optics_{name}", doc)
+                self.assertIn(f"aee_vision_{name}", doc)
 
     def test_no_new_top_level_category(self) -> None:
         live = live_source(INIT_SETTINGS)
         for name, kind, args in SHADOW_SETTINGS:
-            entry = f'AEE_SETTING_{kind}({name},"AEE Optics","Shadows",{args})'
+            entry = f'AEE_SETTING_{kind}({name},"AEE Vision","Shadows",{args})'
             with self.subTest(name=name):
                 self.assertIn(entry, live)
 

@@ -19,7 +19,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 STATE = REPO / "addons" / "atmos" / "functions" / "state"
-EYE = REPO / "addons" / "optics" / "functions" / "eye"
+EYE = REPO / "addons" / "eye" / "functions" / "eye"
 
 RAINBOW_SQF = STATE / "fnc_updateRainbow.sqf"
 WAVES_SQF = REPO / "addons" / "maritime" / "functions" / "fnc_updateEngineWaves.sqf"

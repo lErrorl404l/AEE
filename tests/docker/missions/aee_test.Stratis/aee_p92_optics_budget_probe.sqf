@@ -8,8 +8,8 @@
 // very bright scene; a value close to 0 pins a near-maximum light intake and
 // over-exposes a daylit scene (the operator's normal-vision blowout).
 
-private _aperture = missionNamespace getVariable ["aee_optics_fnc_eyeAperture", nil];
-private _compose = missionNamespace getVariable ["aee_optics_fnc_perceptionParams", nil];
+private _aperture = missionNamespace getVariable ["aee_eye_fnc_eyeAperture", nil];
+private _compose = missionNamespace getVariable ["aee_vision_fnc_perceptionParams", nil];
 private _pass = 0;
 private _fail = 0;
 private _notes = [];
@@ -32,7 +32,7 @@ if (isNil "_aperture" || isNil "_compose") then {
     // 2. The night ambient comes from the physical sky, not the engine.  The
     //    engine ambient brightness is an indoor-scale render artifact at night
     //    (~51 lx) and must not override the real night sky (~0.25 lx moonlit).
-    private _ambientKernel = missionNamespace getVariable ["aee_optics_fnc_eyeAmbientLux", nil];
+    private _ambientKernel = missionNamespace getVariable ["aee_eye_fnc_eyeAmbientLux", nil];
     if (isNil "_ambientKernel") then {
         _fail = _fail + 1;
         _notes pushBack "eyeAmbientLux kernel not compiled";

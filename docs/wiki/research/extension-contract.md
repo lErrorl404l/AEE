@@ -96,6 +96,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_core` | `core` |
 | `aee_diagnostics` | `diagnostics` |
 | `aee_environmental` | `environmental` |
+| `aee_eye` | `eye` |
 | `aee_fx` | `fx` |
 | `aee_lib` | `lib` |
 | `aee_maritime` | `maritime` |
@@ -106,6 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_physiology` | `physiology` |
 | `aee_radio` | `radio` |
 | `aee_thermal` | `thermal` |
+| `aee_vision` | `vision` |
 | `aee_wildlife` | `wildlife` |
 
 ### Public functions (638)
@@ -294,6 +296,25 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_environmental_fnc_updateSoundPropagation`
 - `aee_environmental_fnc_worldLightingClass`
 - `aee_environmental_fnc_worldLightingProfile`
+- `aee_eye_fnc_eyeAdaptInit`
+- `aee_eye_fnc_eyeAdaptState`
+- `aee_eye_fnc_eyeAdaptStep`
+- `aee_eye_fnc_eyeAmbientLux`
+- `aee_eye_fnc_eyeAperture`
+- `aee_eye_fnc_eyeFlash`
+- `aee_eye_fnc_eyeFlashScene`
+- `aee_eye_fnc_eyeLimits`
+- `aee_eye_fnc_eyeLocalLux`
+- `aee_eye_fnc_eyeMesopicWeight`
+- `aee_eye_fnc_eyePupilSteady`
+- `aee_eye_fnc_eyePupilStep`
+- `aee_eye_fnc_eyeSampleScene`
+- `aee_eye_fnc_eyeSceneLux`
+- `aee_eye_fnc_eyeSkyCast`
+- `aee_eye_fnc_eyeSkyFraction`
+- `aee_eye_fnc_eyeTimeSkip`
+- `aee_eye_fnc_initEyeAdaptation`
+- `aee_eye_fnc_updateEyeAdaptation`
 - `aee_fx_fnc_applyAtmosphericDust`
 - `aee_fx_fnc_applyBreathCondensation`
 - `aee_fx_fnc_applyExhaustShimmer`
@@ -432,15 +453,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_nightvision_fnc_nvgTierIndex`
 - `aee_nightvision_fnc_teardownNvgDoF`
 - `aee_optics_fnc_applyAtmosphericSeeingFX`
-- `aee_optics_fnc_applyBaseGrade`
 - `aee_optics_fnc_applyDewOnOpticsFX`
 - `aee_optics_fnc_applyHeatShimmerFX`
 - `aee_optics_fnc_applyMirageFX`
 - `aee_optics_fnc_applyRainOnOpticsFX`
 - `aee_optics_fnc_applySnowBlindnessFX`
 - `aee_optics_fnc_applySolarGlareFX`
-- `aee_optics_fnc_applyWeatherGrain`
-- `aee_optics_fnc_baseGradeParams`
 - `aee_optics_fnc_calculateAtmosphericSeeing`
 - `aee_optics_fnc_calculateAttenuation`
 - `aee_optics_fnc_calculateDewOnOptics`
@@ -451,31 +469,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_calculateSnowBlindness`
 - `aee_optics_fnc_calculateSolarGlare`
 - `aee_optics_fnc_calculateVehicleHeatShimmer`
-- `aee_optics_fnc_calculateViewDistance`
-- `aee_optics_fnc_destroyBasePostProcess`
-- `aee_optics_fnc_dtvHostStart`
-- `aee_optics_fnc_dtvHostStop`
-- `aee_optics_fnc_dtvHostTick`
 - `aee_optics_fnc_dumpState`
-- `aee_optics_fnc_enterThermalSensors`
-- `aee_optics_fnc_exitThermalSensors`
-- `aee_optics_fnc_eyeAdaptInit`
-- `aee_optics_fnc_eyeAdaptState`
-- `aee_optics_fnc_eyeAdaptStep`
-- `aee_optics_fnc_eyeAmbientLux`
-- `aee_optics_fnc_eyeAperture`
-- `aee_optics_fnc_eyeFlash`
-- `aee_optics_fnc_eyeFlashScene`
-- `aee_optics_fnc_eyeLimits`
-- `aee_optics_fnc_eyeLocalLux`
-- `aee_optics_fnc_eyeMesopicWeight`
-- `aee_optics_fnc_eyePupilSteady`
-- `aee_optics_fnc_eyePupilStep`
-- `aee_optics_fnc_eyeSampleScene`
-- `aee_optics_fnc_eyeSceneLux`
-- `aee_optics_fnc_eyeSkyCast`
-- `aee_optics_fnc_eyeSkyFraction`
-- `aee_optics_fnc_eyeTimeSkip`
 - `aee_optics_fnc_fontFamilyUsable`
 - `aee_optics_fnc_formatGridDisplay`
 - `aee_optics_fnc_getOpticProperties`
@@ -488,10 +482,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_hudMarkers`
 - `aee_optics_fnc_hudRangefinder`
 - `aee_optics_fnc_hudUpdate`
-- `aee_optics_fnc_initBaseGrade`
-- `aee_optics_fnc_initEyeAdaptation`
-- `aee_optics_fnc_initWeatherGrain`
-- `aee_optics_fnc_managePostProcess`
 - `aee_optics_fnc_mgrsCursorText`
 - `aee_optics_fnc_mgrsEffectivePrecision`
 - `aee_optics_fnc_mgrsFontFamily`
@@ -499,24 +489,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_mgrsMapDraw`
 - `aee_optics_fnc_mgrsMapPrecision`
 - `aee_optics_fnc_mgrsMarkerText`
-- `aee_optics_fnc_perceptionAdaptState`
-- `aee_optics_fnc_perceptionBaseGrade`
-- `aee_optics_fnc_perceptionChromaticAdaptation`
-- `aee_optics_fnc_perceptionDetectDeviation`
-- `aee_optics_fnc_perceptionIlluminant`
-- `aee_optics_fnc_perceptionMesopicColor`
-- `aee_optics_fnc_perceptionParams`
-- `aee_optics_fnc_perceptionSample`
-- `aee_optics_fnc_perceptionToneResponse`
-- `aee_optics_fnc_perceptionUpdate`
-- `aee_optics_fnc_ppEffectCreate`
-- `aee_optics_fnc_runThermalPass`
-- `aee_optics_fnc_shadowClassifyScene`
-- `aee_optics_fnc_shadowFpsGovernor`
-- `aee_optics_fnc_shadowSamplePattern`
-- `aee_optics_fnc_shadowSmoothDistance`
-- `aee_optics_fnc_shadowStabilizeDepth`
-- `aee_optics_fnc_shadowTargetDistance`
 - `aee_optics_fnc_symbolCategory`
 - `aee_optics_fnc_symbolFrame`
 - `aee_optics_fnc_symbolIcon`
@@ -538,15 +510,9 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_symbologyUnitDimension`
 - `aee_optics_fnc_symbologyUnitEchelon`
 - `aee_optics_fnc_symbologyWorldDraw`
-- `aee_optics_fnc_teardownBaseGrade`
-- `aee_optics_fnc_teardownSensors`
 - `aee_optics_fnc_trackerDraw`
 - `aee_optics_fnc_trackerProject`
 - `aee_optics_fnc_trackerUpdate`
-- `aee_optics_fnc_updateEyeAdaptation`
-- `aee_optics_fnc_updateThermalHost`
-- `aee_optics_fnc_updateThermalHostSetting`
-- `aee_optics_fnc_weatherGrainParams`
 - `aee_physiology_fnc_applyCrossSensitivity`
 - `aee_physiology_fnc_applyHeatStressHUD`
 - `aee_physiology_fnc_applyMovementSpeed`
@@ -699,6 +665,42 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_updateTemperature`
 - `aee_thermal_fnc_updateThermalAGC`
 - `aee_thermal_fnc_warmThermalPPEffects`
+- `aee_vision_fnc_applyBaseGrade`
+- `aee_vision_fnc_applyWeatherGrain`
+- `aee_vision_fnc_baseGradeParams`
+- `aee_vision_fnc_calculateViewDistance`
+- `aee_vision_fnc_destroyBasePostProcess`
+- `aee_vision_fnc_dtvHostStart`
+- `aee_vision_fnc_dtvHostStop`
+- `aee_vision_fnc_dtvHostTick`
+- `aee_vision_fnc_enterThermalSensors`
+- `aee_vision_fnc_exitThermalSensors`
+- `aee_vision_fnc_initBaseGrade`
+- `aee_vision_fnc_initWeatherGrain`
+- `aee_vision_fnc_managePostProcess`
+- `aee_vision_fnc_perceptionAdaptState`
+- `aee_vision_fnc_perceptionBaseGrade`
+- `aee_vision_fnc_perceptionChromaticAdaptation`
+- `aee_vision_fnc_perceptionDetectDeviation`
+- `aee_vision_fnc_perceptionIlluminant`
+- `aee_vision_fnc_perceptionMesopicColor`
+- `aee_vision_fnc_perceptionParams`
+- `aee_vision_fnc_perceptionSample`
+- `aee_vision_fnc_perceptionToneResponse`
+- `aee_vision_fnc_perceptionUpdate`
+- `aee_vision_fnc_ppEffectCreate`
+- `aee_vision_fnc_runThermalPass`
+- `aee_vision_fnc_shadowClassifyScene`
+- `aee_vision_fnc_shadowFpsGovernor`
+- `aee_vision_fnc_shadowSamplePattern`
+- `aee_vision_fnc_shadowSmoothDistance`
+- `aee_vision_fnc_shadowStabilizeDepth`
+- `aee_vision_fnc_shadowTargetDistance`
+- `aee_vision_fnc_teardownBaseGrade`
+- `aee_vision_fnc_teardownSensors`
+- `aee_vision_fnc_updateThermalHost`
+- `aee_vision_fnc_updateThermalHostSetting`
+- `aee_vision_fnc_weatherGrainParams`
 - `aee_wildlife_fnc_acousticLevel`
 - `aee_wildlife_fnc_acousticOccluders`
 - `aee_wildlife_fnc_acousticPublish`

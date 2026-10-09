@@ -47,7 +47,7 @@ ROW_ORDER = [
 # night-scoped comparison runs rather than skipping out of scope.
 CLEAN = [
     ["aee_core_illuminanceLux", 100.0],
-    ["aee_optics_eyeSceneLux", 100.0],
+    ["aee_eye_eyeSceneLux", 100.0],
     ["aee_core_currentTemperature", 15.0],
     ["aee_core_groundSurfaceTemp", 14.0],
     ["aee_core_avgGroundTemp", 15.0],
@@ -67,7 +67,7 @@ CLEAN = [
 # like-for-like physical-sky model.
 RPT_NIGHT = [
     ["aee_core_illuminanceLux", 0.5302],
-    ["aee_optics_eyeSceneLux", 0.5302],
+    ["aee_eye_eyeSceneLux", 0.5302],
     ["aee_core_currentTemperature", 17.5],
     ["aee_core_groundSurfaceTemp", 16.0],
     ["aee_core_avgGroundTemp", 15.7872],
@@ -162,7 +162,7 @@ class TestPredicates(unittest.TestCase):
         # a real divergence, so INV-1 must fire.
         values = [list(pair) for pair in CLEAN]
         for pair in values:
-            if pair[0] == "aee_optics_eyeSceneLux":
+            if pair[0] == "aee_eye_eyeSceneLux":
                 pair[1] = 0.0
         _, verdicts = evaluate(values)
         row = rows_by_id((False, verdicts))["INV-1"]
@@ -176,7 +176,7 @@ class TestPredicates(unittest.TestCase):
         for pair in values:
             if pair[0] == "aee_core_lightIsNight":
                 pair[1] = False
-            if pair[0] == "aee_optics_eyeSceneLux":
+            if pair[0] == "aee_eye_eyeSceneLux":
                 pair[1] = 80000.0
             if pair[0] == "aee_core_currentSunElevation":
                 pair[1] = 30.0
@@ -224,7 +224,7 @@ class TestRptReplay(unittest.TestCase):
         # the eye's own scene, so the historical divergence still raises INV-1.
         values = [list(pair) for pair in RPT_NIGHT]
         for pair in values:
-            if pair[0] == "aee_optics_eyeSceneLux":
+            if pair[0] == "aee_eye_eyeSceneLux":
                 pair[1] = 46.4537
         _, verdicts = evaluate(values)
         row = rows_by_id((False, verdicts))["INV-1"]
