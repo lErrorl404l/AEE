@@ -129,6 +129,16 @@ FIELD_UNITS: dict[str, str] = {
 # The systems registry is the field registry for the shared systems contract.
 FIELD_UNITS.update(vehicle_catalogue.SYSTEMS_FIELD_UNITS)
 
+# A gas-producer or power-turbine speed is a fraction of the design speed, so
+# it stays inside 2.0. A turbine temperature stays inside 1500 C.
+FIELD_BOUNDS: dict[str, tuple[float, float]] = {
+    "engine_idle_ng": (0.0, 2.0),
+    "engine_max_ng": (0.0, 2.0),
+    "engine_max_np": (0.0, 2.0),
+    "engine_max_tgt_c": (0.0, 1500.0),
+    "engine_max_itt_c": (0.0, 1500.0),
+}
+
 # The runtime-required inputs per aircraft type. The shared loader owns the
 # sets so the generator, the coverage guard and the validator resolve the same
 # fields in the same order.
@@ -422,6 +432,13 @@ def validate_value(
                 errors.append(f"{where}: value must be a word for unit {field_unit}")
         elif not _is_number(value):
             errors.append(f"{where}: value must be a number for unit {field_unit}")
+        else:
+            bound = FIELD_BOUNDS.get(field)
+            if bound is not None and not (bound[0] < float(value) <= bound[1]):
+                errors.append(
+                    f"{where}: value {value} is outside the allowed range "
+                    f"({bound[0]}, {bound[1]}]"
+                )
 
     if (
         field in ENUM_VALUES

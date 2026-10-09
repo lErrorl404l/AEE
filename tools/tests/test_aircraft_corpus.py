@@ -572,5 +572,86 @@ class ValidatorCliTest(unittest.TestCase):
         self.assertIn("aircraft data gate: FAIL", result.stdout)
 
 
+class EngineLimitFieldTest(unittest.TestCase):
+    """The engine limit field set and its range rule (task 18)."""
+
+    def test_the_validator_rejects_an_ng_ratio_above_two(self) -> None:
+        errors: list[str] = []
+        v.validate_value(
+            "fixture",
+            "engine_max_ng",
+            _value(2.5, "ratio", "fx_manual"),
+            _by_id(),
+            errors,
+            kind="catalogue",
+        )
+        self.assertTrue(any("outside the allowed range" in e for e in errors), errors)
+
+    def test_the_validator_accepts_an_ng_ratio_at_the_bound(self) -> None:
+        errors: list[str] = []
+        v.validate_value(
+            "fixture",
+            "engine_max_ng",
+            _value(2.0, "ratio", "fx_manual"),
+            _by_id(),
+            errors,
+            kind="catalogue",
+        )
+        self.assertEqual([], errors)
+
+    def test_the_validator_rejects_a_turbine_temperature_above_the_bound(self) -> None:
+        errors: list[str] = []
+        v.validate_value(
+            "fixture",
+            "engine_max_tgt_c",
+            _value(1600, "deg C", "fx_manual"),
+            _by_id(),
+            errors,
+            kind="catalogue",
+        )
+        self.assertTrue(any("outside the allowed range" in e for e in errors), errors)
+
+    def test_every_runtime_ready_entry_carries_the_engine_limits_in_its_row(
+        self,
+    ) -> None:
+        """The systems row carries each engine limit for a runtime-ready entry.
+
+        The engine limits are reference or status fields, so they never fill a
+        flight-model runtime input. The systems row carries each of them as a
+        held value or a labelled absent zero. An absent field is a lead.
+        """
+        load = catalogue.load(REAL_DATA, profile=catalogue.AIRCRAFT_PROFILE)
+        self.assertEqual([], load.errors, load.errors)
+        watched = (
+            "engine_max_ng",
+            "engine_max_tgt_c",
+            "engine_oil_pressure_min_kpa",
+            "engine_oil_pressure_max_kpa",
+        )
+        for entry in load.entries:
+            if entry.runtime_ready is not True:
+                continue
+            row = systems.resolve_row(entry.to_mapping())
+            self.assertIsNotNone(row, entry.catalogue_id)
+            assert row is not None
+            by_name = {field.name: field for field in row}
+            for name in watched:
+                self.assertIn(name, by_name, entry.catalogue_id)
+                self.assertIn(
+                    by_name[name].grade,
+                    catalogue.RESOLVED_GRADES,
+                    f"{entry.catalogue_id}.{name}",
+                )
+
+    def test_the_aw101_resolves_a_held_ng_and_turbine_limit(self) -> None:
+        load = catalogue.load(REAL_DATA, profile=catalogue.AIRCRAFT_PROFILE)
+        entry = next(e for e in load.entries if e.catalogue_id == "aw101_merlin")
+        for name in ("engine_max_ng", "engine_max_tgt_c", "engine_oil_capacity_l"):
+            field = catalogue.resolve_field(
+                entry.values, name, catalogue.AIRCRAFT_PROFILE
+            )
+            self.assertNotEqual("absent", field.grade, name)
+
+
 if __name__ == "__main__":
     unittest.main()

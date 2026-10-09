@@ -421,6 +421,38 @@
           "locator": "in four tanks of each 1 059 litres",
           "state": "EASA TCDS EASA.R.013 EH101-500 fuel tank capacity each",
           "grade": "documented"
+        },
+        "engine_max_ng": {
+          "value": 1.03,
+          "unit": "ratio",
+          "source": "src_easa_tcds_r013",
+          "locator": "5.3.1 Installed Engine Limitations and Transmission Torque Limits, OEI Rating 2.5 min, Ng 103 per cent (46 041 rpm)",
+          "state": "EASA TCDS EASA.R.013 EH101-500 gas producer speed limit 103 per cent at the OEI 2.5 minute rating",
+          "grade": "documented"
+        },
+        "engine_max_np": {
+          "value": 1.025,
+          "unit": "ratio",
+          "source": "src_easa_tcds_r013",
+          "locator": "5.3.1 Installed Engine Limitations and Transmission Torque Limits, output shaft speed Nf 102.5 per cent (20 974 rpm)",
+          "state": "EASA TCDS EASA.R.013 EH101-500 output shaft speed limit 102.5 per cent",
+          "grade": "documented"
+        },
+        "engine_max_tgt_c": {
+          "value": 964,
+          "unit": "deg C",
+          "source": "src_easa_tcds_r013",
+          "locator": "5.3.1 Installed Engine Limitations and Transmission Torque Limits, OEI Rating 2.5 min, TIT 964 C (1 767 F)",
+          "state": "EASA TCDS EASA.R.013 EH101-500 turbine inlet temperature limit 964 C at the OEI 2.5 minute rating",
+          "grade": "documented"
+        },
+        "engine_oil_capacity_l": {
+          "value": 6.2,
+          "unit": "L",
+          "source": "src_easa_tcds_r013",
+          "locator": "7.2 Oil, Engines: 6.2 litres per each engine, two tanks",
+          "state": "EASA TCDS EASA.R.013 EH101-500 engine oil capacity 6.2 litres per engine",
+          "grade": "documented"
         }
       }
     }
