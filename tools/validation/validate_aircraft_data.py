@@ -51,7 +51,15 @@ GRADES = frozenset({"standard", "documented", "claimed", "derived"})
 
 # Real-world evidence types, then the three engine types.
 REAL_SOURCE_TYPES = frozenset(
-    {"standard", "manual", "measurement", "manufacturer", "compilation"}
+    {
+        "standard",
+        "manual",
+        "poh",
+        "tcds",
+        "measurement",
+        "manufacturer",
+        "compilation",
+    }
 )
 ENGINE_SOURCE_TYPES = frozenset({"engine_geometry", "engine_config", "class_table"})
 SOURCE_TYPES = REAL_SOURCE_TYPES | ENGINE_SOURCE_TYPES
