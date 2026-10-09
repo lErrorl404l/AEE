@@ -98,8 +98,8 @@ to name its formula. It exits 1 on an error.
 | `data/aircraft/class_map.json` | map | The class-to-catalogue links. |
 | `data/aircraft/class_bindings.json` | map | The concrete game-class bindings. |
 | `data/aircraft/fixtures/` | entry | Deliberate invalid test fixtures. Never production entries. |
-| `data/aircraft/coverage.json` | coverage | A state for every air token. |
-| `data/aircraft/COVERAGE_AUDIT.md` | coverage | Generated per-token coverage. |
+| `data/aircraft/coverage.json` | coverage | A state for every air token and every roster class. |
+| `data/aircraft/COVERAGE_AUDIT.md` | coverage | Generated per-token and per-class coverage. |
 | `data/aircraft/SOURCE_GAPS.md` | coverage | Generated per-entry missing fields. |
 | `data/aircraft/CLASS_MAPPING_GAPS.md` | coverage | Generated unmapped classes and tokens. |
 | `data/aircraft/RESEARCH_GAPS.md` | entry | The hand-written lead and data-gap register. |
@@ -118,11 +118,18 @@ real held documents only.
 
 ## 4. Coverage table
 
-The coverage guard gives every air token in the inventory one state. The
-states are `recorded`, `lead`, `no_source` and `excluded_non_air`. A token
-never leaves the inventory in silence. A `recorded` token has an emitted
-runtime row and a class binding. The audit reports both the recorded count
-and the emitted runtime row count.
+The coverage guard gives every air token in the inventory one state and every
+roster class one state. The token states are `recorded`, `lead`, `no_source`
+and `excluded_non_ground`. A token never leaves the inventory in silence. A
+`recorded` token has an emitted runtime row and a class binding. The audit
+reports both the recorded count and the emitted runtime row count.
+
+The coverage payload holds two keyed tables. The `tokens` table is keyed by
+the engine class token. The `classes` table is keyed by the concrete game
+class in `data/aircraft/roster.json`. A class is `recorded` only when an
+emitted runtime row AND a class binding both hold. A class with a roster
+`no_source_reason` is `no_source`. Any other class is `lead`. Every roster
+class appears once, so no class leaves the report in silence.
 
 The table below is a stub. The coverage guard fills the rows. The stub names
 no class.
@@ -135,7 +142,8 @@ The expansion coverage target is every air class in the deployed
 inventory, matched to a real type with a sourced spec or recorded as
 `no_source` with a reason. A class with no real counterpart is recorded
 as `no_source`. No analogue is invented. The coverage artefact reports
-the target.
+the target. The count of `recorded` classes plus `no_source` classes
+equals the roster size.
 
 ## 5. Fail-closed summary
 
