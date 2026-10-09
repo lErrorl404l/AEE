@@ -41,9 +41,20 @@ private _notes = [];
     private _bound = _abs + (_rel * abs _expected);
 
     private _nativeOut = "aee_dev" callExtension [_nativeName, _args];
-    if ((_nativeOut isEqualType "") && {_nativeOut != ""}) then {
+    // arma-rs answers `callExtension [cmd, args]` with [output, errorCode, aux];
+    // an absent extension answers with "".  A successful native call needs a
+    // non-empty output and errorCode 0.
+    private _nativePayload = "";
+    private _nativeCode = 0;
+    if (_nativeOut isEqualType []) then {
+        _nativePayload = _nativeOut param [0, ""];
+        _nativeCode = _nativeOut param [1, -1];
+    } else {
+        if (_nativeOut isEqualType "") then { _nativePayload = _nativeOut; };
+    };
+    if ((_nativePayload isEqualType "") && {_nativePayload != ""} && {_nativeCode isEqualType 0} && {_nativeCode == 0}) then {
         _nativeChecked = _nativeChecked + 1;
-        private _actual = parseNumber _nativeOut;
+        private _actual = parseNumber _nativePayload;
         if ((abs (_expected - _actual)) <= _bound) then {
             _pass = _pass + 1;
         } else {
