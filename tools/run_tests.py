@@ -249,6 +249,8 @@ def main():
         "tools/tests/test_dev_harness_gate.py",
         "tools/tests/test_dev_harness_dispatch.py",
         "tools/tests/test_dev_console_contract.py",
+        # The console command contract doc is generated, never hand-synced.
+        "tools/tests/test_dev_console_contract_doc.py",
         # Probe batching: every probe has a run class, and every console fact
         # keeps a probe file behind it (ADR-033).
         "tools/tests/test_probe_classification.py",
