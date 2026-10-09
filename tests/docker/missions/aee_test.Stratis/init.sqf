@@ -3383,6 +3383,14 @@ private _p29Pass = 0;
     // config (AEE DayLighting is night-only; the daylight sky is engine-owned).
     // It renders nothing.
     execVM "aee_p130_aperture_sky_probe.sqf";
+
+    // PHASE 131 lives in aee_p131_flash_scene_probe.sqf: the muzzle-flash
+    // transient must not enter the published eye scene, or INV-1
+    // (night_scene_agreement) raises a false warning against the core
+    // illuminance, which carries no flash.  The probe drives the pure
+    // flash-scene kernel, the flash kernel and the real evaluator with the
+    // operator RPT values.  It renders nothing.
+    execVM "aee_p131_flash_scene_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
