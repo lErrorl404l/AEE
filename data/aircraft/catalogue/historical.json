@@ -235,7 +235,24 @@
       "aliases": [],
       "keywords": [],
       "runtime_ready": false,
-      "values": {}
+      "values": {
+        "engine_oil_pressure_min_kpa": {
+          "value": 172.4,
+          "unit": "kPa",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Chapter 2, caution panel, ENGINE OIL PRESS, engine oil pressure below 25 psi",
+          "state": "UH-1H operator's manual minimum engine oil pressure 25 psi converted to kPa, 25 * 6.894757 = 172.4",
+          "grade": "documented"
+        },
+        "engine_design_rpm": {
+          "value": 6600,
+          "unit": "rpm",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Chapter 7 torque charts and paragraph 5-6b, 324 rotor / 6600 engine rpm normal operating",
+          "state": "UH-1H operator's manual normal operating engine speed 6600 rpm",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "ah1g_cobra",

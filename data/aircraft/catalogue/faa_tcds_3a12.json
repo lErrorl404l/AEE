@@ -73,6 +73,38 @@
           "locator": "Total Capacity Each Tank: 28.0 U.S. gallons",
           "state": "Cessna 172S POH fuel tank capacity each, 28.0 US gallons (106 litres)",
           "grade": "documented"
+        },
+        "engine_design_rpm": {
+          "value": 2700,
+          "unit": "rpm",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Section 2 Limitations, Powerplant Limitations, Maximum Engine Speed: 2700 RPM",
+          "state": "Cessna 172S POH maximum engine speed 2700 RPM, the rated engine speed",
+          "grade": "documented"
+        },
+        "engine_oil_pressure_min_kpa": {
+          "value": 137.9,
+          "unit": "kPa",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Section 2 Limitations, Powerplant Limitations, Oil Pressure, Minimum: 20 PSI",
+          "state": "Cessna 172S POH minimum oil pressure 20 PSI converted to kPa, 20 * 6.894757 = 137.9",
+          "grade": "documented"
+        },
+        "engine_oil_pressure_max_kpa": {
+          "value": 792.9,
+          "unit": "kPa",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Section 2 Limitations, Powerplant Limitations, Oil Pressure, Maximum: 115 PSI",
+          "state": "Cessna 172S POH maximum oil pressure 115 PSI converted to kPa, 115 * 6.894757 = 792.9",
+          "grade": "documented"
+        },
+        "engine_oil_capacity_l": {
+          "value": 7.57,
+          "unit": "L",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Section 1 General, Oil Capacity, Sump: 8 U.S. Quarts",
+          "state": "Cessna 172S POH sump oil capacity 8 US quarts converted to litres, 8 * 0.946353 = 7.57",
+          "grade": "documented"
         }
       }
     }

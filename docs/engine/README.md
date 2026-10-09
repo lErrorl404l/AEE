@@ -37,6 +37,7 @@ line, and the override mechanisms are in
 | [topo-standards.md](topo-standards.md) | Published topographic colour values and contour intervals. |
 | [workshop-mod-licence-survey.md](workshop-mod-licence-survey.md) | Per-mod licence facts for the surveyed Workshop mods. |
 | [aee-adopt-plan.md](aee-adopt-plan.md) | The per-mod adopt decision that follows the survey. |
+| [engine-power-unit-resolution.md](engine-power-unit-resolution.md) | The `enginePower` unit verdict: a PhysX tuning value, with the probe evidence. |
 
 The machine companion is `engine-pbo-inventory.json`.
 

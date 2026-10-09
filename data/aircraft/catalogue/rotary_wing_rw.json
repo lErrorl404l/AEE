@@ -376,7 +376,24 @@
         "utility"
       ],
       "runtime_ready": false,
-      "values": {}
+      "values": {
+        "engine_oil_pressure_min_kpa": {
+          "value": 172.4,
+          "unit": "kPa",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Chapter 2, caution panel, ENGINE OIL PRESS, engine oil pressure below 25 psi",
+          "state": "UH-1H operator's manual minimum engine oil pressure 25 psi converted to kPa, 25 * 6.894757 = 172.4",
+          "grade": "documented"
+        },
+        "engine_design_rpm": {
+          "value": 6600,
+          "unit": "rpm",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Chapter 7 torque charts and paragraph 5-6b, 324 rotor / 6600 engine rpm normal operating",
+          "state": "UH-1H operator's manual normal operating engine speed 6600 rpm",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "uh1n_twin_huey",
@@ -442,7 +459,16 @@
         "recon"
       ],
       "runtime_ready": false,
-      "values": {}
+      "values": {
+        "engine_oil_capacity_l": {
+          "value": 5.3,
+          "unit": "L",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "Table 2-1 Servicing, Engine Oil 11.2 U.S. Pt",
+          "state": "OH-58 operator's manual engine oil capacity 11.2 US pints converted to litres, 11.2 * 0.473176 = 5.3",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "oh58c_kiowa",
@@ -464,7 +490,16 @@
         "recon"
       ],
       "runtime_ready": false,
-      "values": {}
+      "values": {
+        "engine_oil_capacity_l": {
+          "value": 5.3,
+          "unit": "L",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "Table 2-1 Servicing, Engine Oil 11.2 U.S. Pt",
+          "state": "OH-58 operator's manual engine oil capacity 11.2 US pints converted to litres, 11.2 * 0.473176 = 5.3",
+          "grade": "documented"
+        }
+      }
     },
     {
       "catalogue_id": "oh58d_kiowa_warrior",
