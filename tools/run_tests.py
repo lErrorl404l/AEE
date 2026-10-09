@@ -132,6 +132,7 @@ def main():
         "tools/tests/test_runtime_aircraft.py",
         "tools/tests/test_aircraft_corpus.py",
         "tools/tests/test_aircraft_coverage.py",
+        "tools/tests/test_aircraft_roster.py",
         "tools/tests/test_aircraft_systems.py",
         "tools/tests/test_aircraft_systems_lookup.py",
         "tools/tests/test_vehicle_mass_model.py",
