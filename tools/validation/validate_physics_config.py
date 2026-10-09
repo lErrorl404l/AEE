@@ -74,9 +74,44 @@ CONFIG_CLASSES = frozenset({"CfgVehicles"})
 # engine's own burn so the scripted burn is authoritative, and it is unitless.
 # ``mass`` is the aircraft PhysX mass from the sourced operating weight, in
 # kilograms. ``centerOfMass`` is the aircraft centre of gravity, in metres,
-# emitted only where the engine accepts it.
+# emitted only where the engine accepts it. The remaining keys are the land
+# carx/tankx/shipx physics surface from data/vehicle/SCHEMA.md section 17, each
+# emitted only from a documented class identity and a documented held value.
+# enginePower, peakTorque, torqueCurve and the gearbox ratios are deliberately
+# absent until the in-engine probe resolves the enginePower unit.
 CONFIG_KEYS = frozenset(
-    {"maxSpeed", "fuelCapacity", "fuelConsumptionRate", "mass", "centerOfMass"}
+    {
+        "maxSpeed",
+        "fuelCapacity",
+        "fuelConsumptionRate",
+        "mass",
+        "centerOfMass",
+        "idleRpm",
+        "redRpm",
+        "maxOmega",
+        "minOmega",
+        "engineMOI",
+        "clutchStrength",
+        "switchTime",
+        "changeGearType",
+        "driveString",
+        "neutralString",
+        "reverseString",
+        "moveOffGear",
+        "differentialType",
+        "frontRearSplit",
+        "MOI",
+        "maxBrakeTorque",
+        "maxHandBrakeTorque",
+        "maxCompression",
+        "maxDroop",
+        "sprungMass",
+        "springStrength",
+        "springDamperRate",
+        "longitudinalStiffnessPerUnitGravity",
+        "latStiffX",
+        "latStiffY",
+    }
 )
 
 # The documented config unit of each admitted key.
@@ -86,6 +121,31 @@ KEY_UNITS: dict[str, str] = {
     "fuelConsumptionRate": "unitless",
     "mass": "kg",
     "centerOfMass": "m",
+    "idleRpm": "rpm",
+    "redRpm": "rpm",
+    "maxOmega": "rad/s",
+    "minOmega": "rad/s",
+    "engineMOI": "kg m^2",
+    "clutchStrength": "unitless",
+    "switchTime": "s",
+    "changeGearType": "text",
+    "driveString": "text",
+    "neutralString": "text",
+    "reverseString": "text",
+    "moveOffGear": "count",
+    "differentialType": "text",
+    "frontRearSplit": "unitless",
+    "MOI": "kg m^2",
+    "maxBrakeTorque": "N m",
+    "maxHandBrakeTorque": "N m",
+    "maxCompression": "m",
+    "maxDroop": "m",
+    "sprungMass": "kg",
+    "springStrength": "N/m",
+    "springDamperRate": "N m s/rad",
+    "longitudinalStiffnessPerUnitGravity": "unitless",
+    "latStiffX": "unitless",
+    "latStiffY": "unitless",
 }
 
 # The grade vocabulary. A binding never carries ``absent``: a binding with no

@@ -170,6 +170,54 @@ AIRCRAFT_CG_UNIT = "m"
 # held value. No other grade emits a key.
 DOCUMENTED = "documented"
 
+# The land-vehicle carx/tankx/shipx physics surface. Each entry maps a config
+# key to its held catalogue field (``None`` when the physics DERIVES it) and
+# its documented unit. The surface is the one data/vehicle/SCHEMA.md section 17
+# declares. Every key is gated by ``emit_key`` on the class identity grade
+# (data/vehicle/class_bindings.json) and the held value grade, so a ``claimed``
+# land binding emits NO key. The engine-schema structural keys (dampingRate*,
+# the bias terms, antiRollbar*, terrainCoef and the rest) are engine tuning and
+# are never emitted. enginePower, peakTorque, torqueCurve and the gearbox
+# ratios are EXCLUDED until the Task 18 in-engine probe resolves the
+# enginePower unit and the drivability: data/vehicle/mass_model.json disabled
+# power-to-weight for the same reason.
+LAND_SURFACE_FIELDS: dict[str, tuple[str | None, str]] = {
+    # Engine.
+    "idleRpm": ("idle_rpm", "rpm"),
+    "redRpm": ("red_rpm", "rpm"),
+    "maxOmega": (None, "rad/s"),
+    "minOmega": (None, "rad/s"),
+    "engineMOI": (None, "kg m^2"),
+    # Transmission.
+    "clutchStrength": ("clutch_strength", "unitless"),
+    "switchTime": ("gear_shift_time_s", "s"),
+    "changeGearType": ("change_gear_type", "text"),
+    "driveString": ("drive_string", "text"),
+    "neutralString": ("neutral_string", "text"),
+    "reverseString": ("reverse_string", "text"),
+    "moveOffGear": (None, "count"),
+    # Differential.
+    "differentialType": ("differential_type", "text"),
+    "frontRearSplit": ("front_rear_split", "unitless"),
+    # Wheel.
+    "MOI": (None, "kg m^2"),
+    "maxBrakeTorque": ("max_brake_torque_nm", "N m"),
+    "maxHandBrakeTorque": ("max_hand_brake_torque_nm", "N m"),
+    # Suspension.
+    "maxCompression": ("max_compression_m", "m"),
+    "maxDroop": ("max_droop_m", "m"),
+    "sprungMass": (None, "kg"),
+    "springStrength": (None, "N/m"),
+    "springDamperRate": (None, "N m s/rad"),
+    # Tire.
+    "longitudinalStiffnessPerUnitGravity": (
+        "longitudinal_stiffness_per_unit_gravity",
+        "unitless",
+    ),
+    "latStiffX": ("lat_stiff_x", "unitless"),
+    "latStiffY": ("lat_stiff_y", "unitless"),
+}
+
 HEADER = (
     "/* SPDX-License-Identifier: GPL-2.0-or-later */\n"
     "// Generated engine config override. Do not edit by hand.\n"
@@ -223,6 +271,16 @@ HEADER = (
     "// accepts it, from the sourced cg_empty_m, under the same build-time\n"
     "// gate. Moments of inertia are REFERENCE ONLY: the engine has no runtime\n"
     "// inertia hook, so no inertia key is emitted.\n"
+    "//\n"
+    "// The land carx/tankx/shipx physics surface is gated the SAME way, on the\n"
+    "// class identity grade (data/vehicle/class_bindings.json) and the held\n"
+    "// value grade. EVERY land class binding is claimed today, so the predicate\n"
+    "// emits NO new land key and the surface is UNPROVEN this phase until a\n"
+    "// binding becomes documented. The engine-schema structural keys are engine\n"
+    "// tuning and are never emitted. enginePower, peakTorque, torqueCurve and\n"
+    "// the gearbox ratios are EXCLUDED until the in-engine probe resolves the\n"
+    "// enginePower unit and the drivability. This is the gate working, not a\n"
+    "// broken generator.\n"
     "//\n"
     "// One block carries every key: the engine lint rejects a second\n"
     "// CfgVehicles block in the same addon.\n"
@@ -287,6 +345,19 @@ class MassCalibration:
 
 
 @dataclass(frozen=True)
+class SurfaceEmission:
+    """One land carx/tankx/shipx key that passes the build-time gate."""
+
+    key: str
+    value: object
+    unit: str
+    source_id: str
+    locator: str
+    field: str
+    grade: str
+
+
+@dataclass(frozen=True)
 class ClassBinding:
     """One bare class body with the keys it holds.
 
@@ -302,6 +373,7 @@ class ClassBinding:
     fuel_capacity: object | None = None
     aircraft_mass: object | None = None
     aircraft_cg: object | None = None
+    land_surface: tuple[tuple[str, object], ...] = ()
 
 
 def _mapping(value: object) -> dict[str, object] | None:
@@ -547,6 +619,73 @@ def build(
     return emissions
 
 
+def build_land_surface(
+    class_bindings_path: Path, vehicle_dir: Path
+) -> dict[str, tuple[SurfaceEmission, ...]]:
+    """Return the gate-passing land surface keys per bound class.
+
+    The class identity grade comes from the land class binding and each key's
+    value grade from its held catalogue value object. ``emit_key`` admits a key
+    only when both are ``documented``. Every land class binding is ``claimed``
+    today, so the map is empty and no land surface key ships. A key whose
+    catalogue field is ``None`` is DERIVED by the physics and is not emitted
+    until its published inputs are held.
+    """
+    load = catalogue.load(vehicle_dir)
+    if load.errors:
+        raise ValueError(
+            f"{vehicle_dir}: the catalogue does not load: {load.errors[0]}"
+        )
+    entries = {entry.catalogue_id: entry for entry in load.entries}
+    surface: dict[str, tuple[SurfaceEmission, ...]] = {}
+    for index, record in enumerate(load_class_bindings(class_bindings_path)):
+        where = f"binding[{index}]"
+        game_class = _text(record.get("game_class"))
+        catalogue_id = _text(record.get("catalogue_id"))
+        if game_class is None:
+            raise ValueError(f"{where}: game_class must be a non-empty string")
+        if catalogue_id is None:
+            raise ValueError(f"{where}: catalogue_id must be a non-empty string")
+        entry = entries.get(catalogue_id)
+        identity_grade = record.get("grade")
+        keys: list[SurfaceEmission] = []
+        for key in sorted(LAND_SURFACE_FIELDS):
+            field, unit = LAND_SURFACE_FIELDS[key]
+            if field is None:
+                continue
+            held = (
+                catalogue.held_value(entry.values, field) if entry is not None else None
+            )
+            if held is None:
+                continue
+            held_unit = _text(held.get("unit"))
+            if held_unit != unit:
+                raise ValueError(
+                    f"{where}: {field} is held in {held_unit}, the key is {unit}"
+                )
+            value_grade = _text(held.get("grade"))
+            if not emit_key(identity_grade, value_grade):
+                continue
+            source_id = _text(held.get("source"))
+            locator = _text(held.get("locator"))
+            if source_id is None or locator is None:
+                raise ValueError(f"{where}: the held {field} value is incomplete")
+            keys.append(
+                SurfaceEmission(
+                    key=key,
+                    value=held.get("value"),
+                    unit=unit,
+                    source_id=source_id,
+                    locator=locator,
+                    field=field,
+                    grade=str(value_grade),
+                )
+            )
+        if keys:
+            surface[game_class] = tuple(keys)
+    return surface
+
+
 def build_class_bindings(
     class_bindings_path: Path,
     vehicle_dir: Path,
@@ -560,12 +699,15 @@ def build_class_bindings(
     approved calibration is an error, because the generator emits no invented
     mass. A bound class with no resolved parent is an error, because the
     generator emits no bare class. A class that also holds a maxSpeed value
-    carries both keys in its one body.
+    carries both keys in its one body. The gated land surface keys merge into
+    the same body: every land binding is ``claimed``, so the merge is empty
+    today.
     """
     max_speed = {
         emission.game_class: emission
         for emission in build(class_bindings_path, vehicle_dir, parents_path)
     }
+    surface = build_land_surface(class_bindings_path, vehicle_dir)
     calibration = load_mass_calibration(calibration_path)
     parents = load_parents(parents_path)
     bindings: list[ClassBinding] = []
@@ -590,6 +732,7 @@ def build_class_bindings(
                 parent_class=parent.parent_class,
                 max_speed=emission.value if emission is not None else None,
                 mass=value,
+                land_surface=surface.get(game_class, ()),
             )
         )
     return bindings
@@ -764,6 +907,8 @@ def render_bindings(bindings: Sequence[ClassBinding]) -> str:
             lines.append(
                 f"        {AIRCRAFT_CG_KEY} = {_render_value(binding.aircraft_cg)};"
             )
+        for surface in binding.land_surface:
+            lines.append(f"        {surface.key} = {_render_value(surface.value)};")
         lines.append("    };")
     lines.append("};")
     return "\n".join(lines) + "\n"
@@ -871,18 +1016,51 @@ def aircraft_projection_records(
     return records
 
 
+def land_surface_projection_records(
+    surface: dict[str, tuple[SurfaceEmission, ...]],
+) -> list[dict[str, object]]:
+    """Return the validator projection of the gate-passing land surface keys.
+
+    A key is projected only when its class identity grade and its held value
+    grade both passed the build-time gate. Every land binding is ``claimed``
+    today, so the map is empty and the projection carries no land surface key.
+    """
+    records: list[dict[str, object]] = []
+    for game_class in sorted(surface):
+        for emission in surface[game_class]:
+            records.append(
+                {
+                    "game_class": game_class,
+                    "config_class": CONFIG_CLASS,
+                    "key": emission.key,
+                    "value": emission.value,
+                    "unit": emission.unit,
+                    "value_source": {
+                        "source_id": emission.source_id,
+                        "locator": emission.locator,
+                        "field": emission.field,
+                    },
+                    "conversion": CONVERSION,
+                    "grade": emission.grade,
+                }
+            )
+    return records
+
+
 def render_projection(
     emissions: Sequence[Emission],
     aircraft_emissions: Sequence[AircraftEmission] = (),
+    land_surface: dict[str, tuple[SurfaceEmission, ...]] | None = None,
 ) -> str:
     """Return the exact on-disk text of the validator projection.
 
-    The land maxSpeed records are unchanged. The aircraft records are appended
-    only for a class that passes the build-time gate, so the projection agrees
-    with the emitted override.
+    The land maxSpeed records are unchanged. The aircraft records and the land
+    surface records are appended only for a class that passes the build-time
+    gate, so the projection agrees with the emitted override.
     """
     records = projection_records(emissions)
     records.extend(aircraft_projection_records(aircraft_emissions))
+    records.extend(land_surface_projection_records(land_surface or {}))
     return json.dumps(records, indent=2) + "\n"
 
 
@@ -920,6 +1098,7 @@ def write_outputs(
             build_aircraft_emissions(
                 aircraft_class_bindings, aircraft_dir, aircraft_parents
             )[0],
+            build_land_surface(class_bindings_path, vehicle_dir),
         ),
     )
     return len(bindings)
@@ -967,6 +1146,7 @@ def check_config(
             build_aircraft_emissions(
                 aircraft_class_bindings, aircraft_dir, aircraft_parents
             )[0],
+            build_land_surface(class_bindings_path, vehicle_dir),
         )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"physics config override: cannot build from the corpus: {exc}")
