@@ -39,7 +39,7 @@ if (profileNamespace getVariable [_flag, false]) exitWith { false };
     private _old = _x select 0;
     private _new = _x select 1;
     if (!(_old isEqualType "") || {!(_new isEqualType "")}) then { continue };
-    if (_old == "" || {_new == ""}) then { continue };
+    if (_old == "" || _new == "") then { continue };
 
     // Copy only when the new name is unset and the old name is set.  An
     // unset old name means the player never changed the setting, so the
@@ -47,7 +47,7 @@ if (profileNamespace getVariable [_flag, false]) exitWith { false };
     // migration never overwrites a value the player already saved.
     private _newSet = !(isNil { profileNamespace getVariable _new });
     private _oldSet = !(isNil { profileNamespace getVariable _old });
-    if (!_newSet && {_oldSet}) then {
+    if (!_newSet && _oldSet) then {
         profileNamespace setVariable [_new, profileNamespace getVariable _old];
     };
 } forEach _pairs;
