@@ -36,30 +36,30 @@ def taxonomy_groups(prefixes):
 
 EXPECTED_HUD = {
     "aee_thermal_fusionHud",
-    "aee_optics_hudEnabled",
-    "aee_optics_mgrsCursorReadout",
-    "aee_optics_mgrsEnabled",
-    "aee_optics_mgrsMapGrid",
-    "aee_optics_mgrsPrecision",
-    "aee_optics_mgrsPrecisionAuto",
+    "aee_hud_hudEnabled",
+    "aee_cartography_mgrsCursorReadout",
+    "aee_cartography_mgrsEnabled",
+    "aee_cartography_mgrsMapGrid",
+    "aee_cartography_mgrsPrecision",
+    "aee_cartography_mgrsPrecisionAuto",
     "aee_physiology_HUDWarningThreshold",
     "aee_nightvision_ltmEnabled",
     "aee_nightvision_ltmDaylightFade",
 }
 
 EXPECTED_HUD_TRACKER = {
-    "aee_optics_trackerEnabled",
-    "aee_optics_trackerInterval",
-    "aee_optics_trackerSuppressIcons",
+    "aee_hud_trackerEnabled",
+    "aee_hud_trackerInterval",
+    "aee_hud_trackerSuppressIcons",
 }
 
 EXPECTED_HUD_SYMBOLOGY = {
-    "aee_optics_symbologyEnabled",
-    "aee_optics_symbologyFont",
-    "aee_optics_symbologyMarkers",
-    "aee_optics_symbologyPalette",
-    "aee_optics_symbologySuppress",
-    "aee_optics_symbologyUnits",
+    "aee_symbology_symbologyEnabled",
+    "aee_symbology_symbologyFont",
+    "aee_symbology_symbologyMarkers",
+    "aee_symbology_symbologyPalette",
+    "aee_symbology_symbologySuppress",
+    "aee_symbology_symbologyUnits",
 }
 
 # Every AEE HUD name, across all subcategories.  The unknown-setting guard
@@ -220,6 +220,9 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Ballistics"): {"aee_ballistics_logDebug"},
     ("AEE Debug", "Armour"): {"aee_armour_penetrationDebug", "aee_armour_logDebug"},
     ("AEE Debug", "Optics"): {"aee_optics_logDebug"},
+    ("AEE Debug", "Symbology"): {"aee_symbology_logDebug"},
+    ("AEE Debug", "Cartography"): {"aee_cartography_logDebug"},
+    ("AEE Debug", "HUD"): {"aee_hud_logDebug"},
     ("AEE Debug", "Eye"): {"aee_eye_logDebug"},
     ("AEE Debug", "Vision"): {"aee_vision_logDebug"},
     ("AEE Debug", "Perception"): {

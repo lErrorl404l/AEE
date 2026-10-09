@@ -42,9 +42,9 @@ END = "<!-- END GENERATED: extension contract -->"
 # declared with a literal `class <name>` in the named source.  Macro-built
 # classes (for example the EDEN modules) are not anchored by name.
 ANCHOR_CLASSES = {
-    "AEE_Unknown_Other": "addons/optics/config.cpp",
-    "ColorAEE": "addons/optics/config.cpp",
-    "AEE_MarkerBase": "addons/optics/config.cpp",
+    "AEE_Unknown_Other": "addons/symbology/config.cpp",
+    "ColorAEE": "addons/symbology/config.cpp",
+    "AEE_MarkerBase": "addons/symbology/config.cpp",
     "AEE_SandCloud": "addons/fx/config.cpp",
     "AEE_SnowCloud": "addons/fx/config.cpp",
     "AEE_SupersonicTrace": "addons/fx/config.cpp",
@@ -56,9 +56,9 @@ ANCHOR_CLASSES = {
 ANCHOR_ENGINE_CLASSES = {
     "CfgWorlds": "addons/environmental/config.cpp",
     "CfgCloudlets": "addons/fx/config.cpp",
-    "CfgMarkers": "addons/optics/config.cpp",
-    "CfgMarkerColors": "addons/optics/config.cpp",
-    "CfgMarkerClasses": "addons/optics/config.cpp",
+    "CfgMarkers": "addons/symbology/config.cpp",
+    "CfgMarkerColors": "addons/symbology/config.cpp",
+    "CfgMarkerClasses": "addons/symbology/config.cpp",
 }
 
 PREP_RE = re.compile(r"\bPREP\(([A-Za-z0-9_]+)\)")

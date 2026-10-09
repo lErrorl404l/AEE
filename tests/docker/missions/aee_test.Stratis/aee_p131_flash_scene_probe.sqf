@@ -15,10 +15,10 @@
 //
 // Emits [P131] PASS/FAIL lines.
 
-private _flashScene = missionNamespace getVariable ["aee_optics_fnc_eyeFlashScene", nil];
-private _eyeFlash = missionNamespace getVariable ["aee_optics_fnc_eyeFlash", nil];
-private _loadTable = missionNamespace getVariable ["aee_core_fnc_consistencyLoadTable", nil];
-private _evaluate = missionNamespace getVariable ["aee_core_fnc_evaluateConsistency", nil];
+private _flashScene = missionNamespace getVariable ["aee_eye_fnc_eyeFlashScene", nil];
+private _eyeFlash = missionNamespace getVariable ["aee_eye_fnc_eyeFlash", nil];
+private _loadTable = missionNamespace getVariable ["aee_diagnostics_fnc_consistencyLoadTable", nil];
+private _evaluate = missionNamespace getVariable ["aee_diagnostics_fnc_evaluateConsistency", nil];
 
 if (isNil "_flashScene" || {isNil "_eyeFlash"} || {isNil "_loadTable"} || {isNil "_evaluate"}) exitWith {
     diag_log text "[P131] [FAIL] flash-scene kernels not compiled (eyeFlashScene/eyeFlash/consistency)";

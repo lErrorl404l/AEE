@@ -44,11 +44,11 @@ ALLOWLIST = {
         "optics perception worktree owns this file; the 0.1 s sensor PFH trace "
         "is tracked there"
     ),
-    "addons/optics/functions/hud/fnc_hudUpdate.sqf": (
+    "addons/hud/functions/hud/fnc_hudUpdate.sqf": (
         "optics perception worktree owns this file; the 0.1 s HUD trace is "
         "tracked there"
     ),
-    "addons/optics/functions/hud/fnc_trackerUpdate.sqf": (
+    "addons/hud/functions/hud/fnc_trackerUpdate.sqf": (
         "optics perception worktree owns this file; the 0.1 s tracker trace is "
         "tracked there"
     ),

@@ -172,7 +172,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
 - **AEE status**: **ALREADY**. `addons/environmental/config.cpp` re-declares
   `DefaultLighting`, `DefaultWorld`, `CAWorld`, `Stratis`; sets
   `starEmissivity = 25` (vanilla), the `HDRNewPars` block and the two
-  DayLighting keyframes. `addons/optics/config_mapdisplays.hpp` sets the map
+  DayLighting keyframes. `addons/cartography/config_mapdisplays.hpp` sets the map
   colours.
 - **Realistic value**: `starEmissivity` = vanilla 25 (the reference mod dims to
   20; AEE matched vanilla). The tone curve is global, so AEE treats it with
@@ -348,7 +348,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
 - **Class path**: `CfgLocationTypes >> <type>`, base in `ui_f`.
 - **What overriding changes**: `font`, `color[]`, `texture`, `size`,
   `textSize`, `name`, `shadow`.
-- **AEE status**: **ALREADY**. `addons/optics/config_locationtypes.hpp`
+- **AEE status**: **ALREADY**. `addons/cartography/config_locationtypes.hpp`
   re-declares the name, area and vegetation symbols with FM 21-31 and USGS
   colours.
 - **Realistic value**: FM 21-31 sections 9 to 21. Source:
@@ -366,7 +366,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
   `colorGrid`, `colorGridMap`, `fontGrid`, `fontNames`, `sizeExGrid`,
   `maxSatelliteAlpha`, `showCountourInterval`, `ptsPerSquare*`, `alphaFade*`,
   `drawShaded`.
-- **AEE status**: **ALREADY**. `addons/optics/config_mapcolors.hpp` and
+- **AEE status**: **ALREADY**. `addons/cartography/config_mapcolors.hpp` and
   `config_mapicons.hpp` are included inside the `RscMapControl` block.
   `config_mapdisplays.hpp` re-declares `RscDisplayStrategicMap` and `ctrlMap`.
 - **Realistic value**: USGS and FM 21-31 palette. Source:
@@ -382,7 +382,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
 - **Class path**: `CfgCurator >> DrawGroup` and `DrawGroup >> 3D / 2D`.
 - **What overriding changes**: `textureWest`, `textureEast`, `textureGuer`,
   `textureCivilian`, `textureUnknown`.
-- **AEE status**: **ALREADY**. `addons/optics/config_curator.hpp` re-declares
+- **AEE status**: **ALREADY**. `addons/cartography/config_curator.hpp` re-declares
   the five side textures and the 3D and 2D sub-blocks.
 - **Realistic value**: the real NATO affiliation frame per side. Source:
   ADR-023, `docs/wiki/research/nato-symbology.md`.

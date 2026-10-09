@@ -168,14 +168,14 @@ class TestMigrationLogic(unittest.TestCase):
     """The logic demo: seed an old name, migrate, then prove idempotence."""
 
     def test_seed_migrates_and_flag_is_set_once(self):
-        old, new = "aee_optics_hudEnabled", "aee_hud_hudEnabled"
+        old, new = "aee_hud_hudEnabled", "aee_hud_hudEnabled"
         profile = {old: True}
         self.assertTrue(migrate(profile, [(old, new)]))
         self.assertEqual(profile[new], True)
         self.assertEqual(profile[FLAG], True)
 
     def test_second_call_is_a_no_op(self):
-        old, new = "aee_optics_hudEnabled", "aee_hud_hudEnabled"
+        old, new = "aee_hud_hudEnabled", "aee_hud_hudEnabled"
         profile = {old: True}
         migrate(profile, [(old, new)])
         snapshot = dict(profile)
@@ -185,13 +185,13 @@ class TestMigrationLogic(unittest.TestCase):
     def test_unset_old_name_is_skipped(self):
         profile: dict = {}
         self.assertTrue(
-            migrate(profile, [("aee_optics_hudEnabled", "aee_hud_hudEnabled")])
+            migrate(profile, [("aee_hud_hudEnabled", "aee_hud_hudEnabled")])
         )
         self.assertNotIn("aee_hud_hudEnabled", profile)
         self.assertEqual(profile[FLAG], True)
 
     def test_set_new_name_wins(self):
-        old, new = "aee_optics_hudEnabled", "aee_hud_hudEnabled"
+        old, new = "aee_hud_hudEnabled", "aee_hud_hudEnabled"
         profile = {old: True, new: False}
         migrate(profile, [(old, new)])
         self.assertEqual(profile[new], False)

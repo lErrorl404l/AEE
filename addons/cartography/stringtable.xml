@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Cartography">
+        <Key ID="STR_AEE_Cartography_logDebug_Description">
+            <Original>Log cartography diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log cartography diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_logDebug_Name">
+            <Original>Cartography Debug Log</Original>
+            <English>Cartography Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsCursorReadout_Description">
+            <Original>Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on.</Original>
+            <English>Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsCursorReadout_Name">
+            <Original>MGRS Cursor Readout</Original>
+            <English>MGRS Cursor Readout</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsEnabled_Description">
+            <Original>Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on.</Original>
+            <English>Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsEnabled_Name">
+            <Original>MGRS Grid</Original>
+            <English>MGRS Grid</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsMapGrid_Description">
+            <Original>Draw the aee MGRS grid over the engine map: the grid lines and their MGRS labels at an interval that follows the zoom. The engine grid stays numeric because the CfgWorlds Grid class formats numbers only, so the aee overlay draws the MGRS lines over it. Default on.</Original>
+            <English>Draw the aee MGRS grid over the engine map: the grid lines and their MGRS labels at an interval that follows the zoom. The engine grid stays numeric because the CfgWorlds Grid class formats numbers only, so the aee overlay draws the MGRS lines over it. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsMapGrid_Name">
+            <Original>MGRS Map Grid</Original>
+            <English>MGRS Map Grid</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsPrecisionAuto_Description">
+            <Original>Scale the MGRS digit count with the world map size. On: a small world gets a six-figure reference (100 m) and a large world an eight-figure one (10 m). Off: the MGRS Precision list applies. Default on.</Original>
+            <English>Scale the MGRS digit count with the world map size. On: a small world gets a six-figure reference (100 m) and a large world an eight-figure one (10 m). Off: the MGRS Precision list applies. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsPrecisionAuto_Name">
+            <Original>MGRS Precision Auto</Original>
+            <English>MGRS Precision Auto</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsPrecision_Description">
+            <Original>Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10.</Original>
+            <English>Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mgrsPrecision_Name">
+            <Original>MGRS Precision</Original>
+            <English>MGRS Precision</English>
+        </Key>
+    </Package>
+</Project>

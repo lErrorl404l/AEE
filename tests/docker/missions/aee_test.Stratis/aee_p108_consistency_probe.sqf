@@ -16,8 +16,8 @@
 //
 // Emits [P108] PASS/FAIL lines.
 
-private _fnRun = missionNamespace getVariable ["aee_core_fnc_runGeoConsistency", nil];
-private _fnEval = missionNamespace getVariable ["aee_core_fnc_evaluateGeoConsistency", nil];
+private _fnRun = missionNamespace getVariable ["aee_lib_fnc_runGeoConsistency", nil];
+private _fnEval = missionNamespace getVariable ["aee_lib_fnc_evaluateGeoConsistency", nil];
 if (isNil "_fnRun" || {isNil "_fnEval"}) exitWith {
     diag_log text "[P108] [FAIL] consistency kernels not compiled (runGeoConsistency/evaluateGeoConsistency)";
 };

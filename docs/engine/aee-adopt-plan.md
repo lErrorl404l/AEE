@@ -240,7 +240,7 @@ See section 0. Same project, same namespace, same author, same PBOs. Nothing to 
 - **Custom permissive / no-port (Speshal family):** do not copy until the no-port clause is resolved. If copied, carry the clause text.
 - **Never:** APL/APL-SA/APL-ND/ADPL-SA/CC-BY-NC-ND/GRAD APL/custom all-rights. These are not GPL-compatible (ACE `addons/apl`, ArmaFPV assets, D.I.R.T core, most of the 160 no-licence mods).
 
-Existing attribution machinery to extend, not duplicate: `addons/optics/data/markers/ATTRIBUTION.md`, `docs/ATTRIBUTION-terrain.md`, `data/symbology/*.json`, and `tools/make_sbom.py`.
+Existing attribution machinery to extend, not duplicate: `addons/symbology/data/markers/ATTRIBUTION.md`, `docs/ATTRIBUTION-terrain.md`, `data/symbology/*.json`, and `tools/make_sbom.py`.
 
 ---
 

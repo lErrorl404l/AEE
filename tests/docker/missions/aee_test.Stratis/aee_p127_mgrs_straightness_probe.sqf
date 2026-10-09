@@ -17,8 +17,8 @@
 //
 // Emits [P127] PASS/FAIL lines.
 
-private _fnAnchor = missionNamespace getVariable ["aee_core_fnc_getGeoAnchor", nil];
-private _fnGrid = missionNamespace getVariable ["aee_optics_fnc_mgrsGridLines", nil];
+private _fnAnchor = missionNamespace getVariable ["aee_lib_fnc_getGeoAnchor", nil];
+private _fnGrid = missionNamespace getVariable ["aee_cartography_fnc_mgrsGridLines", nil];
 if (isNil "_fnAnchor" || {isNil "_fnGrid"}) exitWith {
     diag_log text "[P127] [FAIL] cardinal grid kernels not compiled";
 };

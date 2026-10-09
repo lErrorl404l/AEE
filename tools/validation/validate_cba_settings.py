@@ -143,7 +143,7 @@ def scan():
         for lit in _FORMAT_TEMPLATE.findall(text):
             writes.setdefault(lit, []).append(rel)
 
-        # Bare global assignments: `aee_optics_terrainTables = call (...)`.
+        # Bare global assignments: `aee_cartography_terrainTables = call (...)`.
         for name in _DIRECT_ASSIGN.findall(text):
             if "_fnc_" in name:
                 continue

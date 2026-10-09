@@ -16,10 +16,10 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 TAXONOMY = REPO / "data" / "symbology" / "app6_taxonomy.json"
-CONFIG = (REPO / "addons" / "optics" / "config_taxonomy.hpp").read_text(
+CONFIG = (REPO / "addons" / "symbology" / "config_taxonomy.hpp").read_text(
     encoding="utf-8"
 )
-MARKERS = REPO / "addons" / "optics" / "data" / "markers"
+MARKERS = REPO / "addons" / "symbology" / "data" / "markers"
 TSV = Path("/tmp/opencode/symbol_army_rows.tsv")
 
 AFFIL_LETTER = {"Friend": "F", "Hostile": "H", "Neutral": "N", "Unknown": "U"}

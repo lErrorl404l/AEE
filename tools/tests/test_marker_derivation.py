@@ -28,7 +28,7 @@ sys.path.insert(0, str(REPO / "tools"))
 import gen_symbology_catalogue as gen  # noqa: E402
 from symbology_categories import marker_category  # noqa: E402
 
-OPTICS = REPO / "addons" / "optics"
+OPTICS = REPO / "addons" / "symbology"
 CONFIG = (OPTICS / "config.cpp").read_text(encoding="utf-8")
 MARKERS = (OPTICS / "config_markers.hpp").read_text(encoding="utf-8")
 FAMILY = (OPTICS / "config_family.hpp").read_text(encoding="utf-8")
@@ -43,7 +43,7 @@ CLASS_RE = re.compile(r"^\s*class ([A-Za-z0-9_]+)(?::\s*([A-Za-z0-9_]+))?\s*\{",
 CATALOGUE_CLASS_RE = re.compile(r"class (\w+): AEE_MarkerBase \{(.*?)\};", re.S)
 MARKER_CLASS_RE = re.compile(r'markerClass = "([^"]+)"')
 TEXTURE_RE = re.compile(
-    r"\\z\\aee\\addons\\optics\\data\\markers\\([A-Za-z0-9_]+)\.paa"
+    r"\\z\\aee\\addons\\symbology\\data\\markers\\([A-Za-z0-9_]+)\.paa"
 )
 ENGINE_TEXTURE = "\\A3\\ui_f\\data\\map\\markers"
 

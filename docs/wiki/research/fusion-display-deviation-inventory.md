@@ -457,7 +457,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   temperature `9012` (`:117-127`), radio `9020` (`:129-143`). Fonts
   `PuristaMedium`, radio `EtelkaMonospacePro`; radio colour
   `[1.0,0.55,0.18,0.95]`.
-- Ours: `addons/optics/RscTitles.hpp`. `GVAR(hud)` idd `10781` (`:14-15`),
+- Ours: `addons/hud/RscTitles.hpp`. `GVAR(hud)` idd `10781` (`:14-15`),
   controls `9010` cardinal (`:44-53`), `9003` degrees (`:55-64`), `9004` grid
   (`:66-75`), `9005` altitude (`:77-85`), `9006` time (`:87-95`), labels
   `9011`/`9007` (`:97-117`), `9012` temperature (`:119-128`), plus EXTRA
@@ -477,7 +477,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   (`:72-82`); temperature from `ambientTemperature` (`:84-89`); time via
   `BIS_fnc_timeToString` (`:185`); altitude from `getPosASL` (`:184`); per-
   control show toggles (`:162-179`); radio comms text (`:189-226`).
-- Ours: `addons/optics/functions/hud/fnc_hudUpdate.sqf` (driver),
+- Ours: `addons/hud/functions/hud/fnc_hudUpdate.sqf` (driver),
   `fnc_hudFormatHeading.sqf` (cardinal/degrees), `fnc_hudFormatGrid.sqf`
   (grid split), `fnc_hudFormatRange.sqf` (distance).
 - Status: PARTIAL, REPLACED data.
@@ -499,7 +499,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   (`:239-336`); distances `MaxMarkerDist 2500`, `MaxVehicleDist 2000`,
   `MaxAirDist 3500`, `MaxUnitNameDist 120` (`:17-20`); raster icons
   (`:23-30`).
-- Ours: `addons/optics/functions/hud/fnc_hudMarkers.sqf`.
+- Ours: `addons/hud/functions/hud/fnc_hudMarkers.sqf`.
 - Status: PARTIAL.
 - Deviation: we port the marker scan and 3D label only (`:30-42`); the ally
   name and friendly vehicle passes are omitted, as is the filter-mode system
@@ -512,7 +512,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
 - Theirs: Draw3D reads a cached ping `FPANO_ECOTI_RangePing` set by a keybind
   (`:14-17`); draws the engine dot icon with distance
   (`:26-38`).
-- Ours: `addons/optics/functions/hud/fnc_hudRangefinder.sqf`.
+- Ours: `addons/hud/functions/hud/fnc_hudRangefinder.sqf`.
 - Status: REPLACED.
 - Deviation: our worker casts `lineIntersectsSurfaces` itself, throttled to
   0.5 s (`fnc_hudRangefinder.sqf:27-42`), instead of reading a keybind ping. We

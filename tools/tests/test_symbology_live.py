@@ -5,9 +5,9 @@ Executes the REAL pure kernels through tools/tests/sqf_lite.py and pins the
 contract of the map, 3D and restore layer and of the re-pointed CfgMarkers
 textures:
 
-  addons/optics/functions/symbology/fnc_symbologyEchelon.sqf
-  addons/optics/functions/symbology/fnc_symbologyEchelonMarker.sqf
-  addons/optics/functions/symbology/fnc_symbologyDimension.sqf
+  addons/symbology/functions/symbology/fnc_symbologyEchelon.sqf
+  addons/symbology/functions/symbology/fnc_symbologyEchelonMarker.sqf
+  addons/symbology/functions/symbology/fnc_symbologyDimension.sqf
 
 The executed-kernel tests are the regression test for this change: on the
 pre-change tree the three kernels do not exist, so run_sqf cannot read them
@@ -95,7 +95,7 @@ def echelon_marker(token):
 def dimension(category):
     """Run the real dimension kernel against the real generated table."""
     return run_sqf(
-        DIMENSION_KERNEL, [category], {"aee_optics_symbologyTables": SYM_TABLES}
+        DIMENSION_KERNEL, [category], {"aee_symbology_symbologyTables": SYM_TABLES}
     )
 
 

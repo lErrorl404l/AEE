@@ -36,6 +36,9 @@ HOSTED_DUMPS: dict[str, str] = {
     "core": "diagnostics",
     "eye": "optics",
     "vision": "optics",
+    "symbology": "optics",
+    "cartography": "optics",
+    "hud": "optics",
 }
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR

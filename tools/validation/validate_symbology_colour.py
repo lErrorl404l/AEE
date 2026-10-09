@@ -34,15 +34,15 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).parents[2]
-MARKERS = ROOT / "addons" / "optics" / "data" / "markers"
+MARKERS = ROOT / "addons" / "symbology" / "data" / "markers"
 
 # The registered marker layers.  The composed layers draw a filled affiliation
 # frame, so they always carry the affiliation colour.
 LAYERS = {
-    "catalogue": ROOT / "addons" / "optics" / "config_markers.hpp",
-    "crossproduct": ROOT / "addons" / "optics" / "config_crossproduct.hpp",
-    "taxonomy": ROOT / "addons" / "optics" / "config_taxonomy.hpp",
-    "modifier": ROOT / "addons" / "optics" / "config_modifiers.hpp",
+    "catalogue": ROOT / "addons" / "symbology" / "config_markers.hpp",
+    "crossproduct": ROOT / "addons" / "symbology" / "config_crossproduct.hpp",
+    "taxonomy": ROOT / "addons" / "symbology" / "config_taxonomy.hpp",
+    "modifier": ROOT / "addons" / "symbology" / "config_modifiers.hpp",
 }
 COMPOSED_LAYERS = ("crossproduct", "taxonomy")
 

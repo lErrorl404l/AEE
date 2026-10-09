@@ -50,7 +50,7 @@ if (isNil "_fn" || {isNil "_classFn"}) then {
     // 3. The published class equals the class the binder resolved.  Recompute
     //    the class from the same facts the binder reads, through the pure
     //    class kernel, so a drift between the binder and the kernel fails.
-    private _loc = [] call aee_core_fnc_getWorldLocation;
+    private _loc = [] call aee_lib_fnc_getWorldLocation;
     private _biome = missionNamespace getVariable ["aee_core_biome", "Cfb"];
     private _signals = missionNamespace getVariable ["aee_environmental_terrainSignals", []];
     private _waterFrac = 0;

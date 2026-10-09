@@ -10,11 +10,11 @@ waypoint glyphs) AEE renders its own texture here.
 Each produced texture has two layers.
 
   * The frame.  AEE draws the affiliation frame from its own spec geometry in
-    addons/optics/functions/symbology/fnc_symbolFrame.sqf, so the frame stays
+    addons/symbology/functions/symbology/fnc_symbolFrame.sqf, so the frame stays
     inside the unit box and the dimension modifier is applied.
 
   * The inner glyph.  Where a matching public-domain APP-6 function glyph
-    exists in addons/optics/data/markers/src/, the generator rasterises it
+    exists in addons/symbology/data/markers/src/, the generator rasterises it
     (rsvg-convert), drops the friendly frame rectangle that the source file
     carries, and composites the glyph onto the AEE frame.  Where no matching
     public-domain glyph exists, the generator draws AEE's own glyph geometry
@@ -46,9 +46,9 @@ from typing import Any
 
 ROOT = Path(__file__).parents[1]
 SOURCE_JSON = ROOT / "data" / "symbology" / "symbology_tables.json"
-MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
+MARKERS_OUT = ROOT / "addons" / "symbology" / "data" / "markers"
 GLYPH_SRC = MARKERS_OUT / "src"
-SYM = ROOT / "addons" / "optics" / "functions" / "symbology"
+SYM = ROOT / "addons" / "symbology" / "functions" / "symbology"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
 

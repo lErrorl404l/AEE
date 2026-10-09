@@ -35,7 +35,7 @@ SYMBOLS_JSON = ROOT / "data" / "symbology" / "terrain_symbols.json"
 OUT_JSON = ROOT / "data" / "symbology" / "terrain_catalogue.json"
 OUT_MD = ROOT / "docs" / "wiki" / "research" / "terrain-catalogue.md"
 OUT_SHEET = ROOT / "docs" / "wiki" / "research" / "terrain-catalogue-contact-sheet.png"
-TERRAIN_DIR = ROOT / "addons" / "optics" / "data" / "terrain"
+TERRAIN_DIR = ROOT / "addons" / "cartography" / "data" / "terrain"
 SRC_DIR = TERRAIN_DIR / "src"
 
 NOTE = (
@@ -142,7 +142,7 @@ def catalogue_rows() -> list[dict[str, Any]]:
             "source": entry.get("source", ""),
             "licence": entry.get("licence", ""),
             "used_for": usage.get(symbol_id, []),
-            "preview": f"addons/optics/data/terrain/{symbol_id}.paa",
+            "preview": f"addons/cartography/data/terrain/{symbol_id}.paa",
             "shared_with": [
                 s for s in shared.get(register_id or "", []) if s != symbol_id
             ],

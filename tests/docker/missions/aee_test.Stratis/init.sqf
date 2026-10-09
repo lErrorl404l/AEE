@@ -1648,7 +1648,7 @@ if (isNil "_wildlifeTickFn") then {
     // (test_perf_counters.py) and a manual hemtt check -D run.
     private _p27Pass = 0;
     private _p27Fail = 0;
-    private _fnDump = missionNamespace getVariable ["aee_core_fnc_dumpPerformanceCounters", nil];
+    private _fnDump = missionNamespace getVariable ["aee_diagnostics_fnc_dumpPerformanceCounters", nil];
     if (isNil "_fnDump") then {
         diag_log text "[PHASE27] [FAIL] dumpPerformanceCounters not compiled";
         _p27Fail = _p27Fail + 1;
@@ -2884,12 +2884,12 @@ private _p29Pass = 0;
     missionNamespace setVariable ["aee_test_stateZero", 0];
     missionNamespace setVariable ["aee_test_stateArr", [7]];
     missionNamespace setVariable ["aee_test_stateEmpty", []];
-    private _rNum = ["aee_test_stateNum", -1, 1, true] call aee_core_fnc_readState;
-    private _rZero = ["aee_test_stateZero", 42, 1, true] call aee_core_fnc_readState;
-    private _rArr = ["aee_test_stateArr", [], 3, true] call aee_core_fnc_readState;
-    private _rEmpty = ["aee_test_stateEmpty", [9], 3, true] call aee_core_fnc_readState;
-    private _rMissing = ["aee_test_stateMissing", 7, 1, true] call aee_core_fnc_readState;
-    private _rPlain = ["aee_test_stateNum", -1, 1] call aee_core_fnc_readState;
+    private _rNum = ["aee_test_stateNum", -1, 1, true] call aee_lib_fnc_readState;
+    private _rZero = ["aee_test_stateZero", 42, 1, true] call aee_lib_fnc_readState;
+    private _rArr = ["aee_test_stateArr", [], 3, true] call aee_lib_fnc_readState;
+    private _rEmpty = ["aee_test_stateEmpty", [9], 3, true] call aee_lib_fnc_readState;
+    private _rMissing = ["aee_test_stateMissing", 7, 1, true] call aee_lib_fnc_readState;
+    private _rPlain = ["aee_test_stateNum", -1, 1] call aee_lib_fnc_readState;
     {
         missionNamespace setVariable [_x, nil];
     } forEach ["aee_test_stateNum", "aee_test_stateZero", "aee_test_stateArr", "aee_test_stateEmpty"];

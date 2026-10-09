@@ -10,7 +10,6 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_lib",
             "aee_core",
-            "aee_optics",
             "aee_eye",
             "aee_environmental",
             "aee_nightvision",

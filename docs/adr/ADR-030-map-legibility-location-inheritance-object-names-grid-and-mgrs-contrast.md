@@ -36,7 +36,7 @@ classes and the engine's object routing reads one of them. AEE re-declared
 only the `ui_f` set, so an object the engine routes through the core name kept
 its vanilla icon.
 
-Fix. `addons/optics/config_mapicons.hpp` re-declares the eight engine-core
+Fix. `addons/cartography/config_mapicons.hpp` re-declares the eight engine-core
 names with the same AEE topographic texture, beside the eight `ui_f` names.
 The re-texture now reaches the object whichever name the routing uses.
 Source: the engine configs, read from `Dta/bin.pbo` and `ui_f.pbo`.

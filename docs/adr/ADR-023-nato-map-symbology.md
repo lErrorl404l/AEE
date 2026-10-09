@@ -59,7 +59,7 @@ values are APP-6(C) Table 1-4. Friend is cyan `[0, 1, 1, 1]`, hostile is red
 
 ### The palette affiliation switch
 
-The setting `aee_optics_symbologyPalette` chooses NATO, OPFOR or Auto. The NATO
+The setting `aee_symbology_symbologyPalette` chooses NATO, OPFOR or Auto. The NATO
 palette fixes WEST as friend. The OPFOR palette swaps the friend and the hostile
 colour, so a red OPFOR force reads as friendly. Auto follows the local side. The
 adapter `fnc_symbologyPaletteFriendly` resolves Auto against the local side
@@ -86,7 +86,7 @@ is the affiliation and the glyph is the class category. `fnc_symbolFrame` and
 `fnc_symbolIcon` feed the texture generator, so the drawn symbol and the marker
 texture share one source of truth.
 
-The category table `aee_optics_symbologyTables` is generated from
+The category table `aee_symbology_symbologyTables` is generated from
 `data/symbology/symbology_tables.json`. The generator
 `tools/validation/gen_symbology_tables.py` writes the SQF, and the validator
 `tools/validation/validate_symbology.py` checks it. The table maps an engine
@@ -109,7 +109,7 @@ is never a usable icon, and one `scope = 2` child per symbol. Each child sets
 The marker name is `AEE_<family>_<glyph>`. The family is the affiliation: `b`
 friend, `o` hostile, `n` neutral and `u` unknown. The glyph is the class
 category, for example `inf` for infantry. The family and glyph tables are
-generated into `aee_optics_symbologyTables`.
+generated into `aee_symbology_symbologyTables`.
 
 ### The icon textures
 
@@ -119,8 +119,8 @@ the record of every symbol, and cuts each marker's 64 px canvas to a `.paa`
 with `hemtt utils paa convert`. The canvas keeps the source's own colours, so
 the texture carries the affiliation frame colour and the black glyph, and the
 engine tint stays neutral. The generator also emits the `CfgMarkers` block
-`addons/optics/config_markers.hpp` and the attribution file
-`addons/optics/data/markers/ATTRIBUTION.md`.
+`addons/symbology/config_markers.hpp` and the attribution file
+`addons/symbology/data/markers/ATTRIBUTION.md`.
 
 The catalogue sources are committed under `data/symbology/sources`: the 1092
 source SVGs (`sources/svg/<dir>/<file>.svg`, for provenance) and the 903
@@ -214,7 +214,7 @@ rebuilds the unit list at most once a second and draws out to a set range.
 The layer uses the Rajdhani family for the labels and the B612 Mono family for
 the monospaced readout. Both are SIL Open Font License 1.1. The two `OFL.txt`
 files and the three TTF files are committed under
-`addons/optics/data/fonts/`.
+`addons/cartography/data/fonts/`.
 
 The engine loads converted `.fxy` glyph indices and `.paa` glyph atlases. It
 does not load a raw TTF. The conversion has two steps and the record states them
@@ -227,7 +227,7 @@ honestly.
 
 Until the operator runs step 1, the `.fxy` and `.paa` files do not exist. The
 engine then falls back to its default font, so the default state is unchanged.
-The setting `aee_optics_symbologyFont` gates the label font, with the engine
+The setting `aee_symbology_symbologyFont` gates the label font, with the engine
 font as the fallback.
 
 The config adds `CfgFontFamilies` classes `AEEFont` and `AEEFontMono`, and a
