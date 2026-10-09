@@ -21,7 +21,7 @@ if (is3DEN) exitWith {};
     if (!(_unit isKindOf "LandVehicle") && {!(_unit isKindOf "Air")}) exitWith { _damage };
     [_unit, _selection, _damage, _source, _projectile, _hitIndex,
      _instigator, _hitPoint] call FUNC(handleCollisionDamage);
-}, QGVAR(collisionDamage)] call EFUNC(core,installObjectEngineHandler);
+}, QGVAR(collisionDamage)] call EFUNC(lib,installObjectEngineHandler);
 
 // Emit the core state line once at INFO, then per second at DEBUG (see
 // fnc_dumpState).  A new registration keeps the dump out of the environment
@@ -62,5 +62,5 @@ GVAR(consistencyPFH) = [{
     // typed params would read an array for _force and error every tick.  Pass
     // the argument explicitly (the P82 lesson: a registered entry must accept
     // the handler array).
-    [false] call FUNC(runGeoConsistency);
+    [false] call EFUNC(lib,runGeoConsistency);
 }, GVAR(updateInterval)] call CBA_fnc_addPerFrameHandler;

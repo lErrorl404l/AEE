@@ -74,7 +74,7 @@ GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHa
             private _diameter = _parsedCaliber select 0;
             if ((_diameter isEqualType 0) && (_diameter > 0)) then { _caliberMm = _diameter; };
         };
-        private _airTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+        private _airTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
         private _shot = [
             _caliberMm, _muzzleVelocity, _muzzleVelocity, _airTemp, 0, -1, -1, 0
         ] call FUNC(shotAudio);
@@ -97,6 +97,6 @@ GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHa
         / (WILDLIFE_ACOUSTIC_LOUD_DB - WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB)
     ) max 0 min 1;
     [getPos _unit, _strength] call EFUNC(ai,reportStimulus);
-}, QGVAR(firedManEH)] call EFUNC(core,installPlayerEngineHandler);
+}, QGVAR(firedManEH)] call EFUNC(lib,installPlayerEngineHandler);
 
 AEE_LOG_INFO("wildlife client tick started")

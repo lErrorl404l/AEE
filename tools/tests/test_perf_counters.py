@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Performance counter logic tests (issue #97).
 
-The BEGIN/END_COUNTER macros (addons/main/script_debug.hpp) accumulate
+The BEGIN/END_COUNTER macros (addons/lib/script_debug.hpp) accumulate
 [lastStart, [start, stop], ...] pairs per counter; the dump function
 (addons/core/functions/fnc_dumpPerformanceCounters.sqf) skips the first
 2 entries (warm-up), averages the closed samples, and reports ms/call.
@@ -111,7 +111,7 @@ class TestZeroOverheadGate(unittest.TestCase):
         # still has the disabled branch intact.
         from pathlib import Path
 
-        hdr = Path("addons/main/script_debug.hpp").read_text(encoding="utf-8")
+        hdr = Path("addons/lib/script_debug.hpp").read_text(encoding="utf-8")
         self.assertIn("#else", hdr)
         self.assertIn("#define BEGIN_COUNTER(x) ; /* disabled */", hdr)
         # The enable define must be commented in the committed header.

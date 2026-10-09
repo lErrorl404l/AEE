@@ -4,7 +4,7 @@
 The settings sources are addons/*/initSettings.inc.sqf and their sibling
 stringtable.xml.  A setting registers in one of two ways:
 
-  1. an AEE_SETTING_* macro from addons/main/script_macros.hpp; or
+  1. an AEE_SETTING_* macro from addons/lib/script_macros.hpp; or
   2. an explicit `[QGVAR(x), "TYPE", ..., ] call CBA_fnc_addSetting` block.
 
 The tool parses both.  It must never drop a setting: a regression that

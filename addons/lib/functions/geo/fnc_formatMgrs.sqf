@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_formatMgrs
+ * aee_lib_fnc_formatMgrs
  *
  * Format a UTM coordinate as a full MGRS grid reference.  Pure and
  * argument-driven: it reads no world, no config and no player.  The lettering

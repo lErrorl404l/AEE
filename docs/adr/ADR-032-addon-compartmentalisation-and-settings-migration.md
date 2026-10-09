@@ -22,7 +22,7 @@ migration must not change a physics value, a default or a feature gate. The
 plan is `.omo/plans/aee-addon-compartmentalisation.md`.
 
 Settings are stored in `profileNamespace` under their exact name (ADR-012).
-CBA 3.19.0 has no alias facility: `addons/main/script_macros.hpp` records
+CBA 3.19.0 has no alias facility: `addons/lib/script_macros.hpp` records
 that CBA has no `addSettingSimple` and no macro parent. A rename therefore
 loses a stored value unless the value is copied.
 
@@ -153,5 +153,5 @@ prose; the tree wins.
 - ADR-012: CBA settings taxonomy and the `profileNamespace` storage fact.
 - ADR-027: ownership architecture, the config-root ceiling and declared
   sovereignty.
-- `addons/main/script_macros.hpp`: the `AEE_SETTING_*` definitions and the
+- `addons/lib/script_macros.hpp`: the `AEE_SETTING_*` definitions and the
   CBA no-alias note.

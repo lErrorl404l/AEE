@@ -21,7 +21,7 @@ Each entry: what it does, the AEE module it overlaps, the specific lift (named p
 ### 1.1 CBA_A3 (450814997, GPL-2.0) - verdict: KEEP AS DEPENDENCY, LIFT NOTHING
 
 - **What it does:** the compatibility base layer. The XEH pre-start/pre-init/post-init event chain, the function ownership primitive, the settings framework, keybinds, network events, state machines.
-- **AEE overlap:** every module. AEE already hard-requires CBA: `addons/main/config.cpp` lists `requiredAddons[] = {"A3_Data_F","cba_main","cba_xeh"}`, and every component uses the CBA macros.
+- **AEE overlap:** every module. AEE already hard-requires CBA: `addons/lib/config.cpp` lists `requiredAddons[] = {"A3_Data_F","cba_main","cba_xeh"}`, and every component uses the CBA macros.
 - **Specific lift:** none that is worth a fork. The only candidates are already consumed through the dependency:
   - `cba_xeh/script_macros_common.hpp` - `PREP`/`FUNC`/`EFUNC`/`PATHTO_FNC` (AEE uses these).
   - `cba_xeh/fnc_compileFunction.sqf` - the ownership primitive (AEE has its own `aee_core_ownershipSentinels`, ADR-027).
@@ -137,7 +137,7 @@ See section 0. Same project, same namespace, same author, same PBOs. Nothing to 
   - `ArmaFPV/functions/fn_fpv_getSignal.sqf`, `fn_fpv_handleSignal.sqf`, `fn_fpv_onSignalLost.sqf` - the signal-loss model.
   - `ArmaFPV/functions/fn_fpv_handleBattery.sqf`, `fn_fpv_handleTime.sqf` - endurance model.
   - `ArmaFPV/functions/fn_fpv_handleConnect.sqf`, `fn_fpv_createUavOnItemCheck.sqf`, `fn_fpv_addUavToInventory.sqf`.
-  - `ArmaFPV/functions/fn_fpv_ppfx_start.sqf`, `fn_fpv_ppfx_update.sqf`, `fn_fpv_ppfx_stop.sqf` - the camera PP effects (re-home onto AEE's `addons/core/functions/fnc_createPPEffect.sqf`).
+  - `ArmaFPV/functions/fn_fpv_ppfx_start.sqf`, `fn_fpv_ppfx_update.sqf`, `fn_fpv_ppfx_stop.sqf` - the camera PP effects (re-home onto AEE's `addons/lib/functions/fnc_createPPEffect.sqf`).
 - **Where AEE is ahead:** AEE's PP-effect lifecycle (`fnc_createPPEffect`/`fnc_destroyPPEffect`, ADR-010) must own the new effects.
 - **Attribution:** code GPL-2.0, citing `LICENSE` and `THIRD_PARTY_NOTICES.txt`. **Do not copy assets:** `ASSET_LICENSE.txt` is APL-SA and `optionals/` are separate.
 - **Do not:** copy the bundled CBA macros (`THIRD_PARTY_NOTICES.txt`); AEE already has CBA.
@@ -247,7 +247,7 @@ Existing attribution machinery to extend, not duplicate: `addons/optics/data/mar
 ## 3. Integration risk
 
 **ACE and CBA dependence.**
-- AEE already hard-requires CBA (`addons/main/config.cpp`). That is settled. Nothing new.
+- AEE already hard-requires CBA (`addons/lib/config.cpp`). That is settled. Nothing new.
 - AEE does **not** require ACE; it integrates through optional `compat_ace3` (ADR-027 direction split). Lifting ACE/KAT/ACRE/BOCR code must therefore land in `addons/compat_*` behind the `isClass (configFile >> "CfgPatches" >> "ace_common")` guard, exactly as ZEN does in `zen_attributes/initAttributes.inc.sqf` and BOCR in `fnc_chestpackAcreRadios.sqf`. Do not promote ACE code into an AEE core module, or ACE becomes a hard dependency and AEE stops loading standalone.
 - KAT, BOCR, ACRE2 and ACRE-Persistence all require ACE. LAMBS, EMR, Advanced Grappling, AUR and Towing require only CBA.
 

@@ -14,7 +14,7 @@ Called once per environment tick from fnc_updateEnvironment.
 Return: the profile [nightFactor, starScale, grainScale, hazeScale].
 */
 
-private _loc = [] call EFUNC(core,getWorldLocation);
+private _loc = [] call EFUNC(lib,getWorldLocation);
 private _latitude = _loc select 0;
 if !(_latitude isEqualType 0) then { _latitude = 40; };
 

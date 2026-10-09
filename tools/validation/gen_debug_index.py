@@ -39,7 +39,7 @@ DOC = REPO / "docs/wiki/annexes/annex-d-debug-index.qmd"
 # Modules that publish no debug switch, no state dump and no force hook, so
 # they do not earn a row.  The reason travels with the name.
 EXEMPTIONS: dict[str, str] = {
-    "main": "main holds macros and config only and publishes no state",
+    "lib": "lib holds macros and config only and publishes no state",
 }
 
 # Reuse the settings parser so the macro form and the long form both resolve.

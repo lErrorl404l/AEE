@@ -50,7 +50,7 @@ missionNamespace setVariable [QGVAR(objectEngineHandlerSpecs), _kept];
 // the whole map rather than only what spawns after it.
 {
     if (_x isKindOf _class) then {
-        [_x, _eventName, _eventCode, _key] call EFUNC(core,attachObjectEngineHandler);
+        [_x, _eventName, _eventCode, _key] call EFUNC(lib,attachObjectEngineHandler);
     };
 } forEach (entities [[], [], true, false]);
 
@@ -64,9 +64,9 @@ if !(missionNamespace getVariable [QGVAR(objectEngineHandlersHooked), false]) th
         if (isNull _object) exitWith {};
         {
             if (_object isKindOf (_x select 0)) then {
-                [_object, _x select 1, _x select 2, _x select 3] call EFUNC(core,attachObjectEngineHandler);
+                [_object, _x select 1, _x select 2, _x select 3] call EFUNC(lib,attachObjectEngineHandler);
             };
-        } forEach (missionNamespace getVariable [QEGVAR(core,objectEngineHandlerSpecs), []]);
+        } forEach (missionNamespace getVariable [QGVAR(objectEngineHandlerSpecs), []]);
     }, true, [], true] call CBA_fnc_addClassEventHandler;
 };
 

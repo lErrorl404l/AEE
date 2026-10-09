@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_utmToWorld
+ * aee_lib_fnc_utmToWorld
  *
  * Map a UTM coordinate to a world position through the anchor box.  PURE:
  * it reads no world, no config, no player and no engine grid.  It is the

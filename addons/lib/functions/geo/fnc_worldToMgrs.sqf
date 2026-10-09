@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_worldToMgrs
+ * aee_lib_fnc_worldToMgrs
  *
  * Map a world position to MGRS through the anchor box.  PURE: it reads no
  * world, no config, no player and no engine grid.  The anchor from task 1

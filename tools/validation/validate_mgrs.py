@@ -33,7 +33,7 @@ DATA = ROOT / "data" / "mgrs"
 TABLES_JSON = DATA / "mgrs_tables.json"
 GEO_JSON = DATA / "geo_sources.json"
 SOURCES_JSON = DATA / "sources.json"
-BUILDER = ROOT / "addons" / "core" / "functions" / "geo" / "fnc_buildGeoAnchor.sqf"
+BUILDER = ROOT / "addons" / "lib" / "functions" / "geo" / "fnc_buildGeoAnchor.sqf"
 
 sys.path.insert(0, str(ROOT / "tools" / "tests"))
 from sqf_lite import run_sqf  # noqa: E402

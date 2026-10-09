@@ -135,7 +135,7 @@ maps. A keyed table needs one row per map and fails on a map the author never
 saw.
 
 The matcher derives the class from facts AEE already publishes. It reads the
-latitude from `EFUNC(core,getWorldLocation)`, the biome from `aee_core_biome`,
+latitude from `EFUNC(lib,getWorldLocation)`, the biome from `aee_core_biome`,
 the terrain signals from `aee_environmental_terrainSignals` and the engine
 weather. It consults no map name and no per-map table. The class comes from the
 Koppen group, the water fraction and the mean elevation.

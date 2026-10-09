@@ -1,7 +1,7 @@
 #define COMPONENT wildlife
 #define COMPONENT_BEAUTIFIED AEE Wildlife
-#include "\z\aee\addons\main\script_mod.hpp"
-#include "\z\aee\addons\main\script_macros.hpp"
+#include "\z\aee\addons\lib\script_mod.hpp"
+#include "\z\aee\addons\lib\script_macros.hpp"
 
 // Modelling constants, UNSOURCED.  See the wildlife-ambience dossier.
 //

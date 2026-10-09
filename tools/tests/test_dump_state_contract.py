@@ -23,7 +23,11 @@ ADDONS = REPO / "addons"
 
 # addon -> reason.  An entry here is a deliberate exemption from the dump
 # contract.  Empty means every publishing addon must expose a dump.
-ALLOWLIST: dict[str, str] = {}
+ALLOWLIST: dict[str, str] = {
+    "lib": "infrastructure: the shared kernels hold private caches (PP "
+    "registry, geo anchor, engine-handler specs) with no togglable "
+    "module and no debug switch",
+}
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR
 # form, optionally inside a format [] for a composed name.

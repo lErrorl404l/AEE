@@ -80,12 +80,12 @@ _risk = _risk * _iceFactor;
 private _strike = false;
 private _strikePos = [];
 
-if ((_risk > 0.5) && (([round (time * 10), 301] call EFUNC(core,deterministicRandom)) < (_risk * _strikeChance))) then {
+if ((_risk > 0.5) && (([round (time * 10), 301] call EFUNC(lib,deterministicRandom)) < (_risk * _strikeChance))) then {
     private _player = call CBA_fnc_currentUnit;
     if (!isNil "_player" && alive _player) then {
         private _playerPos = getPos _player;
-        private _dist  = 50 + (250 * ([round (time * 10), 302] call EFUNC(core,deterministicRandom)));   // 50-300 m away
-        private _dir   = 360 * ([round (time * 10), 303] call EFUNC(core,deterministicRandom));
+        private _dist  = 50 + (250 * ([round (time * 10), 302] call EFUNC(lib,deterministicRandom)));   // 50-300 m away
+        private _dir   = 360 * ([round (time * 10), 303] call EFUNC(lib,deterministicRandom));
         private _testX = (_playerPos#0) + sin _dir * _dist;
         private _testY = (_playerPos#1) + cos _dir * _dist;
         private _testPos = [_testX, _testY];

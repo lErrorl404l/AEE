@@ -32,7 +32,7 @@ if (_scope == "") exitWith {
 
 // Eager-default allocation removed; an absent registry yields an empty map,
 // which the next line already treats as nothing to do.
-private _registry = missionNamespace getVariable [QEGVAR(core,ppRegistry), -1];
+private _registry = missionNamespace getVariable [QEGVAR(lib,ppRegistry), -1];
 if (_registry isEqualType 0) then { _registry = createHashMap; };
 if (count _registry == 0) exitWith { 0 };
 
@@ -66,7 +66,7 @@ private _released = 0;
     _registry deleteAt _id;
 } forEach _wanted;
 
-missionNamespace setVariable [QEGVAR(core,ppRegistry), _registry];
+missionNamespace setVariable [QEGVAR(lib,ppRegistry), _registry];
 private _logMsg = format ["ppEffect released %1 handle(s) for scope %2%3", _released, _scope, if (_key == "") then {" (all keys)"} else {format [" key=%1", _key]}];
 AEE_LOG_INFO(_logMsg);
 

@@ -68,7 +68,7 @@ _meteors = _alive;
 
 // ── Spawn new meteors at the expected rate. ──────────────────────────────
 private _date = date;
-private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;
+private _lat = ([] call EFUNC(lib,getWorldLocation)) select 1;
 if (_lat == 0) then { _lat = 40; };
 private _mLim = missionNamespace getVariable [QGVAR(limitingMagnitude), 6.5];
 private _eyePos = ((call CBA_fnc_currentUnit) call EFUNC(core,getEyeState)) select 0;

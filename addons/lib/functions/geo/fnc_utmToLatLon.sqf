@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_utmToLatLon
+ * aee_lib_fnc_utmToLatLon
  *
  * Inverse WGS84 / UTM projection.  Pure and argument-driven: it reads no
  * world, no config and no player.

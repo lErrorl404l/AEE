@@ -38,7 +38,7 @@ if ((count _position) < 2) then {
 };
 
 // Guarded reads: a nil read that falls through to a default is the #154 bug.
-private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(core,readState);
+private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(lib,readState);
 
 private _forceBiome = missionNamespace getVariable ["aee_wildlife_forceBiome", ""];
 if !(_forceBiome isEqualType "") then { _forceBiome = ""; };
@@ -65,8 +65,8 @@ private _rainAmount = ((_rain max 0) min 1);
 
 // The published soil and surface facts.  Wet ground damps the bed, so a damp
 // soundscape is muffled.  readState is the guarded read from the core.
-private _soil = [QEGVAR(core,soilMoisture), 0.2, 1] call EFUNC(core,readState);
-private _wetness = [QEGVAR(core,surfaceWetness), 0, 1] call EFUNC(core,readState);
+private _soil = [QEGVAR(core,soilMoisture), 0.2, 1] call EFUNC(lib,readState);
+private _wetness = [QEGVAR(core,surfaceWetness), 0, 1] call EFUNC(lib,readState);
 
 private _field = missionNamespace getVariable [QEGVAR(ai,disturbance), []];
 if !(_field isEqualType []) then { _field = []; };
@@ -180,7 +180,7 @@ private _acousticLevel = _acoustic select 0;
 // to 0..1.  Max rather than sum: one tree votes for several Koppen codes, so
 // a sum double-counts one species.  A map with no classified tree or bush
 // yields an empty map and therefore an open-ground score of 0.
-private _signals = [QEGVAR(environmental,terrainSignals), [], 3] call EFUNC(core,readState);
+private _signals = [QEGVAR(environmental,terrainSignals), [], 3] call EFUNC(lib,readState);
 private _vegScore = [_signals] call FUNC(vegScore);
 
 // The settlement overlay.  Element 2 of the terrain signals carries the
@@ -278,7 +278,7 @@ if (_ambient) then {
     private _seed = round (_now * 100);
     // The call pitch carries the seeded jitter, the temperature (cricket
     // stridulation) and, for a moving source, the Doppler shift.
-    private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+    private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
     if (_gain > 0.01) then {
         // A deterministic weighted draw over every row with the bed key, so
         // a multi-file context varies instead of playing only its first row.
@@ -311,8 +311,8 @@ if (_ambient) then {
         if !(_corpus isEqualType []) then { _corpus = []; };
         private _assetMap = missionNamespace getVariable [QGVAR(assetMap), []];
         if !(_assetMap isEqualType []) then { _assetMap = []; };
-        private _sunElev = [QEGVAR(core,currentSunElevation), 45, 1] call EFUNC(core,readState);
-        private _temperature = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+        private _sunElev = [QEGVAR(core,currentSunElevation), 45, 1] call EFUNC(lib,readState);
+        private _temperature = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
         private _today = date;
         private _month = 1;
         private _hour = 12;

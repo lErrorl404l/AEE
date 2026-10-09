@@ -46,9 +46,9 @@ private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5
 switch (_flareState) do {
     case "IDLE": {
         // Flare chance per tick to trigger when cycle > 0.6
-        if ((_solarCycle > 0.6) && (([round (time * 10), 401] call EFUNC(core,deterministicRandom)) < (GVAR(FlareChance) * (_interval / 5)))) then {
-            _flareValue = _solarCycle * (0.3 + (0.4 * ([round (time * 10), 402] call EFUNC(core,deterministicRandom))));
-            missionNamespace setVariable [QGVAR(spaceWeatherFlareEndTime), time + GVAR(FlareDuration) * (0.5 + ([round (time * 10), 403] call EFUNC(core,deterministicRandom)))];
+        if ((_solarCycle > 0.6) && (([round (time * 10), 401] call EFUNC(lib,deterministicRandom)) < (GVAR(FlareChance) * (_interval / 5)))) then {
+            _flareValue = _solarCycle * (0.3 + (0.4 * ([round (time * 10), 402] call EFUNC(lib,deterministicRandom))));
+            missionNamespace setVariable [QGVAR(spaceWeatherFlareEndTime), time + GVAR(FlareDuration) * (0.5 + ([round (time * 10), 403] call EFUNC(lib,deterministicRandom)))];
             _flareState = "ACTIVE";
         };
     };
@@ -80,7 +80,7 @@ private _flareTimer = switch (_flareState) do {
 
 // ─── Kp geomagnetic index (0–9) ──────────────────────────────────────────
 // Base 1 + 11-yr cycle contribution + flare contribution + noise
-private _kpRaw   = 1 + (_solarCycle * 4) + _flareValue + (-1 + (2 * ([round (time * 10), 404] call EFUNC(core,deterministicRandom))));
+private _kpRaw   = 1 + (_solarCycle * 4) + _flareValue + (-1 + (2 * ([round (time * 10), 404] call EFUNC(lib,deterministicRandom))));
 private _kpIndex = round (_kpRaw max 0 min 9);
 
 // ─── Geomagnetic description ──────────────────────────────────────────────
@@ -108,7 +108,7 @@ private _solarActivity = (_solarCycle + _flareValue) min 1;
 private _overcast = overcast;
 private _daytime  = dayTime;
 
-private _worldLat = ([] call EFUNC(core,getWorldLocation)) select 1;
+private _worldLat = ([] call EFUNC(lib,getWorldLocation)) select 1;
 private _latDeg = _worldLat;
 if (_latDeg == 0) then { _latDeg = 45; };  // fallback: temperate, aurora possible at storm level
 

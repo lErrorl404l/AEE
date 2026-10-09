@@ -37,7 +37,7 @@ from sqf_lite import run_sqf  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 OPTICS = ROOT / "addons" / "optics"
 HUD = OPTICS / "functions" / "hud"
-GEO = ROOT / "addons" / "core" / "functions" / "geo"
+GEO = ROOT / "addons" / "lib" / "functions" / "geo"
 
 MGRS_MAP_SRC = (HUD / "fnc_mgrsMapDraw.sqf").read_text(encoding="utf-8")
 GRID_SRC = (HUD / "fnc_mgrsGridLines.sqf").read_text(encoding="utf-8")
@@ -111,9 +111,9 @@ def grid(anchor, rect, base_interval=0):
         HUD / "fnc_mgrsGridLines.sqf",
         [anchor, rect, base_interval],
         {
-            "__EFUNC__core_worldToMgrs": _world_to_mgrs,
-            "__EFUNC__core_utmToWorld": _utm_to_world,
-            "__EFUNC__core_formatMgrs": _format_mgrs,
+            "__EFUNC__lib_worldToMgrs": _world_to_mgrs,
+            "__EFUNC__lib_utmToWorld": _utm_to_world,
+            "__EFUNC__lib_formatMgrs": _format_mgrs,
             "aee_core_mgrsTables": TABLES,
         },
     )

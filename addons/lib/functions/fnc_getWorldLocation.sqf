@@ -47,7 +47,7 @@ reader used.
 // The world does not change during a mission, so the result is computed
 // once and cached.  missionNamespace scopes the cache to the mission, so a
 // restart re-reads it rather than holding a stale world.
-private _cached = missionNamespace getVariable [QGVAR(worldLocation), []];
+private _cached = missionNamespace getVariable [QEGVAR(core,worldLocation), []];
 if (_cached isNotEqualTo []) exitWith { _cached };
 
 private _anchor = call FUNC(getGeoAnchor);
@@ -56,6 +56,6 @@ private _lon = _anchor select 1;     // lonCentre
 private _zone = _anchor select 2;    // mapZone
 
 private _result = [_signed, abs _signed, _lon, _zone];
-missionNamespace setVariable [QGVAR(worldLocation), _result];
+missionNamespace setVariable [QEGVAR(core,worldLocation), _result];
 
 _result

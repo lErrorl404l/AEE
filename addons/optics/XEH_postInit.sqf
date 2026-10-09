@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-#include "\z\aee\addons\main\script_debug.hpp"
+#include "\z\aee\addons\lib\script_debug.hpp"
 
 AEE_MODULE_POST_INIT
 
@@ -267,7 +267,7 @@ if (hasInterface) then {
     // Duration scales with flash intensity: brighter = longer window.
     private _duration = 0.15 + _visibleFire * 0.1;
     missionNamespace setVariable [QEGVAR(nightvision,nvgFlashUntil), CBA_missionTime + _duration];
-}, QGVAR(muzzleFlash)] call EFUNC(core,installPlayerEngineHandler);
+}, QGVAR(muzzleFlash)] call EFUNC(lib,installPlayerEngineHandler);
 
 // Eye muzzle-flash response (issue #141). Normal vision has no tube to bloom,
 // but the flash still raises the scene luminance for a moment. The eye model
@@ -285,7 +285,7 @@ if (hasInterface) then {
 
     missionNamespace setVariable [QGVAR(eyeFlashLux), _flashLux];
     missionNamespace setVariable [QGVAR(eyeFlashUntil), CBA_missionTime + (0.15 + _visibleFire * 0.1)];
-}, QGVAR(eyeFlash)] call EFUNC(core,installPlayerEngineHandler);
+}, QGVAR(eyeFlash)] call EFUNC(lib,installPlayerEngineHandler);
 
 // ─── Map-wide thermal boot pass ───────────────────────────────────────────
 // Pull EVERYTHING at mission start: one scan of all objects with material

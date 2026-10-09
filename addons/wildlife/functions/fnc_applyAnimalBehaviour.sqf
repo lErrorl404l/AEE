@@ -54,7 +54,7 @@ missionNamespace setVariable [QGVAR(vegProvider), _vegProvider];
 // animal of a species cluster sets the anchor.  A later animal joins the
 // first anchor of the same species that has room, else it starts a new herd.
 // The slot is released when an animal is culled, so the cap stays accurate.
-private _herdSize = [QGVAR(herdSize), 4, 1] call EFUNC(core,readState);
+private _herdSize = [QGVAR(herdSize), 4, 1] call EFUNC(lib,readState);
 _herdSize = (round _herdSize) max 1;
 
 private _herds = missionNamespace getVariable [QGVAR(herds), []];
@@ -94,8 +94,8 @@ private _callback = {
     // The hunger and thirst rates are operator settings.  Read them each
     // callback with the module's guarded read, so a missing or malformed
     // setting falls back to the kernel default.
-    private _hungerRate = [QGVAR(hungerRate), 0.02, 1] call EFUNC(core,readState);
-    private _thirstRate = [QGVAR(thirstRate), 0.03, 1] call EFUNC(core,readState);
+    private _hungerRate = [QGVAR(hungerRate), 0.02, 1] call EFUNC(lib,readState);
+    private _thirstRate = [QGVAR(thirstRate), 0.03, 1] call EFUNC(lib,readState);
 
     private _needs = [_hunger, _thirst, 1, _hungerRate, _thirstRate] call FUNC(needsTick);
     _hunger = _needs select 0;
@@ -155,7 +155,7 @@ private _callback = {
                     _radial = (velocity _agent) vectorDotProduct (_toListener vectorMultiply (1 / _separation));
                 };
             };
-            private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+            private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
             private _callPitch = [round CBA_missionTime, _speciesGroup, _callTemp, _radial] call FUNC(callPitch);
             [_fearSound, _position, 0.9, WILDLIFE_SOUND_MAX_DISTANCE, _agent, _callPitch] call FUNC(playOneShot);
         };

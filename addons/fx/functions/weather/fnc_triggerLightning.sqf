@@ -68,8 +68,8 @@ _light setLightAttenuation [0,0,0,0,500,1000];
         false,
         _pos,
         -1,                          // max-distance (unlimited)
-        _thunderVolume * (0.5 + ([round (time * 10), 201] call EFUNC(core,deterministicRandom))),  // volume
-        0.75 + (0.5 * ([round (time * 10), 202] call EFUNC(core,deterministicRandom))), // pitch
+        _thunderVolume * (0.5 + ([round (time * 10), 201] call EFUNC(lib,deterministicRandom))),  // volume
+        0.75 + (0.5 * ([round (time * 10), 202] call EFUNC(lib,deterministicRandom))), // pitch
         343                          // propagation speed (m/s)
     ];
 }, [_pos, _thunderVolume], 2] call CBA_fnc_waitAndExecute;

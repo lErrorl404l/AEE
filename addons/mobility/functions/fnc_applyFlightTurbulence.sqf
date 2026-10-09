@@ -89,7 +89,7 @@ if (_aircraft isEqualTo []) exitWith {};
 // ─── Wind-shear event — deterministic roll, salt 701 ───────────────────
 private _shearVec = [0, 0, 0];
 if (_gusts > 15) then {
-    private _roll = [round (time * 10), 701] call EFUNC(core,deterministicRandom);
+    private _roll = [round (time * 10), 701] call EFUNC(lib,deterministicRandom);
     private _lastShear = missionNamespace getVariable [QGVAR(turbulenceShearTime), -999];
     if ((_roll > 0.9) && ((time - _lastShear) > 10)) then {
         missionNamespace setVariable [QGVAR(turbulenceShearTime), time];

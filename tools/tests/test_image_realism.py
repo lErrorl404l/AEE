@@ -312,7 +312,7 @@ class TestBaseGradeDriverContract(unittest.TestCase):
 
     def test_recreation_goes_through_the_registry(self):
         code = _code(DRIVER)
-        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertIn("EFUNC(lib,createPPEffect)", code)
         self.assertNotIn("= ppEffectCreate", code, "the driver bypasses the registry")
 
     def test_owns_the_two_named_keys_at_the_registry_priorities(self):
@@ -437,7 +437,7 @@ class TestImageRealismWiring(unittest.TestCase):
 
     def test_teardown_releases_through_the_registry(self):
         code = _code(TEARDOWN)
-        self.assertIn("EFUNC(core,destroyPPEffect)", code)
+        self.assertIn("EFUNC(lib,destroyPPEffect)", code)
         self.assertIn("QGVAR(baseGradePFH)", code)
 
     def test_settings_are_registered(self):
@@ -525,8 +525,8 @@ class TestBaseGradeRegistryOwnership(unittest.TestCase):
 
     def test_teardown_releases_both_keys(self):
         code = (GRADE / "fnc_teardownBaseGrade.sqf").read_text(encoding="utf-8")
-        self.assertIn('["optics", "BaseGrade"] call EFUNC(core,destroyPPEffect)', code)
-        self.assertIn('["optics", "BaseAcuity"] call EFUNC(core,destroyPPEffect)', code)
+        self.assertIn('["optics", "BaseGrade"] call EFUNC(lib,destroyPPEffect)', code)
+        self.assertIn('["optics", "BaseAcuity"] call EFUNC(lib,destroyPPEffect)', code)
 
     def test_grade_priorities_are_at_their_declared_slots(self):
         code = (GRADE / "fnc_applyBaseGrade.sqf").read_text(encoding="utf-8")
@@ -582,22 +582,22 @@ class TestBaseGradeHandleLifecycle(unittest.TestCase):
         self.assertRegex(
             self.driver,
             r"if\s*\(_hCC\s*<\s*0\)\s*then\s*\{[^}]*"
-            r'\["optics",\s*"BaseGrade"\]\s*call\s*EFUNC\(core,destroyPPEffect\)'
-            r"[^}]*EFUNC\(core,createPPEffect\)[^}]*\}",
+            r'\["optics",\s*"BaseGrade"\]\s*call\s*EFUNC\(lib,destroyPPEffect\)'
+            r"[^}]*EFUNC\(lib,createPPEffect\)[^}]*\}",
         )
         self.assertRegex(
             self.driver,
             r"if\s*\(_hAcuity\s*<\s*0\)\s*then\s*\{[^}]*"
-            r'\["optics",\s*"BaseAcuity"\]\s*call\s*EFUNC\(core,destroyPPEffect\)'
-            r"[^}]*EFUNC\(core,createPPEffect\)[^}]*\}",
+            r'\["optics",\s*"BaseAcuity"\]\s*call\s*EFUNC\(lib,destroyPPEffect\)'
+            r"[^}]*EFUNC\(lib,createPPEffect\)[^}]*\}",
         )
 
     def test_registry_lifecycle_feeds_the_owner_record(self):
         create = (
-            ROOT / "addons" / "core" / "functions" / "fnc_createPPEffect.sqf"
+            ROOT / "addons" / "lib" / "functions" / "fnc_createPPEffect.sqf"
         ).read_text(encoding="utf-8")
         destroy = (
-            ROOT / "addons" / "core" / "functions" / "fnc_destroyPPEffect.sqf"
+            ROOT / "addons" / "lib" / "functions" / "fnc_destroyPPEffect.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn(
             "missionNamespace setVariable "

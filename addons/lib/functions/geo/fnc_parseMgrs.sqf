@@ -1,6 +1,6 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_core_fnc_parseMgrs
+ * aee_lib_fnc_parseMgrs
  *
  * Parse a full MGRS grid reference back to a UTM coordinate.  Pure and
  * argument-driven: it reads no world, no config and no player.  It reverses

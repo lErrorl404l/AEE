@@ -1,7 +1,7 @@
 #define COMPONENT thermal
 #define COMPONENT_BEAUTIFIED AEE Thermal
-#include "\z\aee\addons\main\script_mod.hpp"
-#include "\z\aee\addons\main\script_macros.hpp"
+#include "\z\aee\addons\lib\script_mod.hpp"
+#include "\z\aee\addons\lib\script_macros.hpp"
 
 // ── Fusion thermal-channel frame (issue #204, Track B ENVG-B) ───────────────
 // Below this fraction the frame is a genuine inset.  At or above it the bars

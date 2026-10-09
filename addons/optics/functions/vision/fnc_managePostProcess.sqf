@@ -90,7 +90,7 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {
     if (_owner < 0) then {
         private _logMsg = format ["optics|%1 has no registry handle, creating it", _name];
         AEE_LOG_WARN(_logMsg);
-        private _handle = ["optics", _name, _name, _priority, _legacy] call EFUNC(core,createPPEffect);
+        private _handle = ["optics", _name, _name, _priority, _legacy] call EFUNC(lib,createPPEffect);
         if (_handle >= 0) then { missionNamespace setVariable [_legacy, _handle]; };
     } else {
         if ((missionNamespace getVariable [_legacy, -1]) != _owner) then {

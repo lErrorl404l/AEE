@@ -9,7 +9,7 @@ Example: [] call aee_core_fnc_calculateSeededWeatherProgression
 Public: No
 */
 
-private _seed = [round (time * 60), 601] call FUNC(deterministicRandom);
+private _seed = [round (time * 60), 601] call EFUNC(lib,deterministicRandom);
 private _prev = missionNamespace getVariable [QEGVAR(core,weatherProgression), 0.5];
 
 private _progression = (_prev * 0.95) + (_seed * 0.05);

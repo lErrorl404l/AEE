@@ -29,7 +29,7 @@ if (!isNil QGVAR(updatePFH)) then {
 // cannot use the zone number alone - only the zone<->longitude band
 // cross-check is valid.  The Scottish Highlands bug (latitude = -56.702,
 // issue #123) is caught by the range check below.
-private _loc = [] call FUNC(getWorldLocation);
+private _loc = [] call EFUNC(lib,getWorldLocation);
 private _latSigned = _loc select 0;
 private _lon = _loc select 2;
 private _zone = _loc select 3;

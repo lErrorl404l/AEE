@@ -34,7 +34,7 @@ if (isNull _unit) exitWith {};
 private _standDown = (currentVisionMode _unit != 0)
     || {!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])};
 
-private _hGrain = ["optics", "WeatherGrain", "FilmGrain", 1747, ""] call EFUNC(core,createPPEffect);
+private _hGrain = ["optics", "WeatherGrain", "FilmGrain", 1747, ""] call EFUNC(lib,createPPEffect);
 
 private _active = missionNamespace getVariable [QGVAR(weatherGrainActive), false];
 

@@ -3,7 +3,7 @@
 Dump the performance counters to the RPT (issue #97).
 
 Reads aee_perfCounters (populated by the BEGIN/END_COUNTER macros in
-addons/main/script_debug.hpp, compile-time gated behind
+addons/lib/script_debug.hpp, compile-time gated behind
 ENABLE_PERFORMANCE_COUNTERS).  Skips the first 2 samples of each counter
 (warm-up), averages the closed samples, and prints ms per call plus the
 PFH registry (when the CBA_fnc_addPerFrameHandler override is active).

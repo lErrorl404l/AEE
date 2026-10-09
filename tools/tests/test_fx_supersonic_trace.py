@@ -317,7 +317,7 @@ class TestPostInitRegistrationIdempotence(unittest.TestCase):
         REPO / "addons" / "fx" / "XEH_postInit.sqf",
         REPO / "addons" / "optics" / "XEH_postInit.sqf",
     )
-    _MACROS = REPO / "addons" / "main" / "script_macros.hpp"
+    _MACROS = REPO / "addons" / "lib" / "script_macros.hpp"
 
     @staticmethod
     def _code_only(text):

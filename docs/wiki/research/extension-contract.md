@@ -21,7 +21,7 @@ class CfgPatches {
         // The addon init order is the requiredAddons order (the CfgPatches
         // class name, not the PBO name). AEE loads first, so my_mod loads
         // after AEE and merges over it.
-        requiredAddons[] = {"aee_core", "aee_main"};
+        requiredAddons[] = {"aee_core", "aee_lib"};
         skipWhenMissingDependencies = 1;
     };
 };
@@ -96,7 +96,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_core` | `core` |
 | `aee_environmental` | `environmental` |
 | `aee_fx` | `fx` |
-| `aee_main` | `main` |
+| `aee_lib` | `lib` |
 | `aee_maritime` | `maritime` |
 | `aee_material` | `material` |
 | `aee_mobility` | `mobility` |
@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (636)
+### Public functions (638)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -202,47 +202,25 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_compat_realweather_fnc_dumpState`
 - `aee_compat_realweather_fnc_integrateRealWeather`
 - `aee_compat_tfar_fnc_integrateTFAR`
-- `aee_core_fnc_attachObjectEngineHandler`
-- `aee_core_fnc_buildGeoAnchor`
 - `aee_core_fnc_calculateIlluminance`
 - `aee_core_fnc_calculateSeededWeatherProgression`
 - `aee_core_fnc_consistencyFailureLine`
 - `aee_core_fnc_consistencyLoadTable`
 - `aee_core_fnc_consistencyLog`
 - `aee_core_fnc_coreBodyTemp`
-- `aee_core_fnc_createPPEffect`
-- `aee_core_fnc_datalinkState`
-- `aee_core_fnc_destroyPPEffect`
-- `aee_core_fnc_deterministicRandom`
 - `aee_core_fnc_diagnostic`
 - `aee_core_fnc_dumpPerformanceCounters`
 - `aee_core_fnc_dumpState`
 - `aee_core_fnc_evaluateConsistency`
-- `aee_core_fnc_evaluateGeoConsistency`
-- `aee_core_fnc_formatMgrs`
 - `aee_core_fnc_getEyeState`
-- `aee_core_fnc_getGeoAnchor`
 - `aee_core_fnc_getSmoothedWeather`
-- `aee_core_fnc_getWorldLocation`
-- `aee_core_fnc_gnssErrorEllipse`
-- `aee_core_fnc_gnssFixState`
 - `aee_core_fnc_handleCollisionDamage`
 - `aee_core_fnc_init`
-- `aee_core_fnc_installObjectEngineHandler`
-- `aee_core_fnc_installPlayerEngineHandler`
-- `aee_core_fnc_latLonToUtm`
-- `aee_core_fnc_mgrsToWorld`
 - `aee_core_fnc_moduleInit`
 - `aee_core_fnc_moduleStormInit`
-- `aee_core_fnc_parseMgrs`
-- `aee_core_fnc_readState`
 - `aee_core_fnc_reportModuleHealth`
 - `aee_core_fnc_runConsistencyCheck`
-- `aee_core_fnc_runGeoConsistency`
 - `aee_core_fnc_updateEnvironment`
-- `aee_core_fnc_utmToLatLon`
-- `aee_core_fnc_utmToWorld`
-- `aee_core_fnc_worldToMgrs`
 - `aee_environmental_fnc_applyWorldLighting`
 - `aee_environmental_fnc_calculateAvalancheRisk`
 - `aee_environmental_fnc_calculateBiologicalAmbient`
@@ -347,7 +325,29 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_fx_fnc_triggerLightning`
 - `aee_fx_fnc_triggerSevereWeatherFX`
 - `aee_fx_fnc_weatherParticleAlpha`
-- `aee_main_fnc_migrateLegacySettings`
+- `aee_lib_fnc_attachObjectEngineHandler`
+- `aee_lib_fnc_buildGeoAnchor`
+- `aee_lib_fnc_createPPEffect`
+- `aee_lib_fnc_datalinkState`
+- `aee_lib_fnc_destroyPPEffect`
+- `aee_lib_fnc_deterministicRandom`
+- `aee_lib_fnc_evaluateGeoConsistency`
+- `aee_lib_fnc_formatMgrs`
+- `aee_lib_fnc_getGeoAnchor`
+- `aee_lib_fnc_getWorldLocation`
+- `aee_lib_fnc_gnssErrorEllipse`
+- `aee_lib_fnc_gnssFixState`
+- `aee_lib_fnc_installObjectEngineHandler`
+- `aee_lib_fnc_installPlayerEngineHandler`
+- `aee_lib_fnc_latLonToUtm`
+- `aee_lib_fnc_mgrsToWorld`
+- `aee_lib_fnc_migrateLegacySettings`
+- `aee_lib_fnc_parseMgrs`
+- `aee_lib_fnc_readState`
+- `aee_lib_fnc_runGeoConsistency`
+- `aee_lib_fnc_utmToLatLon`
+- `aee_lib_fnc_utmToWorld`
+- `aee_lib_fnc_worldToMgrs`
 - `aee_maritime_fnc_calculateCompassDeviation`
 - `aee_maritime_fnc_calculateMagneticAnomaly`
 - `aee_maritime_fnc_calculateSeaState`
@@ -405,6 +405,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_mobility_fnc_getVehicleMatch`
 - `aee_mobility_fnc_logAirframeState`
 - `aee_mobility_fnc_resolveFlightModel`
+- `aee_mobility_fnc_resolveTurbulenceArea`
 - `aee_mobility_fnc_routeRunoffD8`
 - `aee_mobility_fnc_updateGroundState`
 - `aee_nightvision_fnc_applyNVGTubeModel`
@@ -463,6 +464,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_eyeAmbientLux`
 - `aee_optics_fnc_eyeAperture`
 - `aee_optics_fnc_eyeFlash`
+- `aee_optics_fnc_eyeFlashScene`
 - `aee_optics_fnc_eyeLimits`
 - `aee_optics_fnc_eyeLocalLux`
 - `aee_optics_fnc_eyeMesopicWeight`
@@ -748,7 +750,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (73)
+### Public core state variables (59)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -778,24 +780,10 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_dynamicLux`
 - `aee_core_ehId_`
 - `aee_core_enabled`
-- `aee_core_fnc_buildGeoAnchor`
 - `aee_core_fnc_calculateSeededWeatherProgression`
-- `aee_core_fnc_datalinkState`
 - `aee_core_fnc_dumpState`
-- `aee_core_fnc_evaluateGeoConsistency`
-- `aee_core_fnc_formatMgrs`
-- `aee_core_fnc_getGeoAnchor`
-- `aee_core_fnc_gnssErrorEllipse`
-- `aee_core_fnc_gnssFixState`
-- `aee_core_fnc_latLonToUtm`
-- `aee_core_fnc_mgrsToWorld`
-- `aee_core_fnc_parseMgrs`
 - `aee_core_fnc_reportModuleHealth`
 - `aee_core_fnc_runConsistencyCheck`
-- `aee_core_fnc_runGeoConsistency`
-- `aee_core_fnc_utmToLatLon`
-- `aee_core_fnc_utmToWorld`
-- `aee_core_fnc_worldToMgrs`
 - `aee_core_geoAnchor`
 - `aee_core_groundSurfaceTemp`
 - `aee_core_hailActive`

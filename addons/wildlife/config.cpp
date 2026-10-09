@@ -13,7 +13,7 @@ class CfgPatches {
             "aee_environmental",
             "aee_material",
             "aee_core",
-            "aee_main",
+            "aee_lib",
             "cba_main",
             "cba_xeh"
         };

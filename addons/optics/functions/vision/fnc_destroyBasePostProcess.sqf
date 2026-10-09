@@ -17,4 +17,4 @@
  *
  * Returns: <NUMBER> how many handles were released.
  */
-["optics", ""] call EFUNC(core,destroyPPEffect)
+["optics", ""] call EFUNC(lib,destroyPPEffect)
