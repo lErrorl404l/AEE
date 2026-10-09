@@ -245,6 +245,7 @@ def main():
         # Dev harness release exclusion, part (a). Part (b) runs in the full
         # sweep only (see RELEASE_SUITES) because it needs a release tree.
         "tools/tests/test_dev_harness_release_exclusion.py",
+        "tools/tests/test_dev_harness_gate.py",
     ]
     # Part (b) needs a `hemtt release` tree, so it runs in the full sweep only.
     release_suites = [

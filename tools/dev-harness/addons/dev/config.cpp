@@ -16,3 +16,5 @@ class CfgPatches {
         versionAr[] = {1,0,0,0};
     };
 };
+
+#include "CfgEventHandlers.hpp"
