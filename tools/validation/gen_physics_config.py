@@ -76,7 +76,7 @@ DEFAULT_VEHICLE_DIR = REPO / "data" / "vehicle"
 DEFAULT_PARENTS = REPO / "data" / "vehicle" / "class_parents.json"
 DEFAULT_CALIBRATION = REPO / "data" / "physics" / "mass_calibration.json"
 DEFAULT_PROJECTION = REPO / "data" / "physics" / "config_bindings.json"
-DEFAULT_OUT = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
+DEFAULT_OUT = REPO / "addons" / "vehicles" / "generated" / "CfgVehicles.hpp"
 
 # This version emits one config class and two keys. The schema admits no other
 # pair, so a corpus record outside this pair is an error rather than a silent

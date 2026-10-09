@@ -244,10 +244,10 @@ if (missionNamespace getVariable [QEGVAR(vision,viewDistanceEnabled), true]) the
 // ─── Mobility / Operations ─────────────────────────────────────────────────
 BEGIN_COUNTER(mobility);
 [] call EFUNC(mobility,calculateTraction);
-[] call EFUNC(mobility,calculateHelicopterLift);
+[] call EFUNC(flight,calculateHelicopterLift);
 [] call EFUNC(persistence,calculateFireSpreadRisk);
 if (GVAR(enginePowerDegradationEnabled)) then {
-    [_posASL] call EFUNC(mobility,calculateEnginePower);
+    [_posASL] call EFUNC(vehicles,calculateEnginePower);
 };
 END_COUNTER(mobility);
 
@@ -336,7 +336,7 @@ if (GVAR(fxEnabled)) then {
 };
 
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
-[] call EFUNC(mobility,calculateRiverWaterLevel);
+[] call EFUNC(hydrology,calculateRiverWaterLevel);
 [] call EFUNC(weather,calculateCropState);
 [] call EFUNC(atmos,calculateCloudDevelopment);
 [] call EFUNC(atmos,calculatePressureTrend);

@@ -1,6 +1,6 @@
 // PHASE 77: a soldier is not a vehicle.
 //
-// WHY THIS EXISTS. aee_mobility_fnc_classifyVehicle used to resolve any class
+// WHY THIS EXISTS. aee_vehicles_fnc_classifyVehicle used to resolve any class
 // by corpus, band or token, so a soldier could band-match a light vehicle on
 // its own engine mass. The live case is the traction model, which reads
 // `vehicle _unit`. On a man on foot that returns the man. Commit c6e8b5e gates
@@ -25,9 +25,9 @@
 // Bounded and deterministic: one spawned soldier, one call, one delete.
 // Emits: [P77] [PASS] / [P77] [FAIL] <reason> lines.
 
-private _fnClassify = missionNamespace getVariable ["aee_mobility_fnc_classifyVehicle", nil];
+private _fnClassify = missionNamespace getVariable ["aee_vehicles_fnc_classifyVehicle", nil];
 if (isNil "_fnClassify") exitWith {
-    diag_log text "[P77] [FAIL] aee_mobility_fnc_classifyVehicle not compiled";
+    diag_log text "[P77] [FAIL] aee_vehicles_fnc_classifyVehicle not compiled";
 };
 
 private _grp = createGroup [west, true];

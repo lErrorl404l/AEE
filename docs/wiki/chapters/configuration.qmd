@@ -197,6 +197,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_eye_logDebug` | CHECKBOX | `false` | yes | eye | Log eye-adaptation diagnostics to the RPT. Turn this on before reporting a fault. |
 
+## AEE Debug → Flight
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_flight_logDebug` | CHECKBOX | `false` | yes | flight | Log flight diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE Debug → FX
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -209,6 +215,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_hud_logDebug` | CHECKBOX | `false` | yes | hud | Log HUD diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Hydrology
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_hydrology_logDebug` | CHECKBOX | `false` | yes | hydrology | Log hydrology diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Lighting
 
@@ -296,6 +308,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_thermal_display_logDebug` | CHECKBOX | `false` | yes | thermal_display | Log thermal display diagnostics to the RPT, including the wall-clock cost of each thermal display function. Turn this on before reporting a performance fault. |
+
+## AEE Debug → Vehicles
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_vehicles_logDebug` | CHECKBOX | `false` | yes | vehicles | Log vehicles diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Vision
 
@@ -406,6 +424,21 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_eye_eyeTauDarkRod` | SLIDER | `400` | yes | eye | Rod-pool dark adaptation time constant, seconds. TRACED: Rushton 1961 J Physiol 156:166, 400 s. |
 | `aee_eye_eyeTauLight` | SLIDER | `2.0` | yes | eye | Light-adaptation time constant, seconds. UNSOURCED: no single published perceptual value, operator-tunable, 2.0 s. |
 
+## AEE Flight → Flight
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_flight_airframeRadius` | SLIDER | `2000` | yes | flight | Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic. |
+| `aee_flight_flightAeroPenalty` | CHECKBOX | `true` | yes | flight | Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe. |
+
+## AEE Flight → Turbulence
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_flight_flightTurbulence` | CHECKBOX | `true` | yes | flight | Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft |
+| `aee_flight_turbulenceRadius` | SLIDER | `2000` | yes | flight | Distance from the player or mission centre within which aircraft receive turbulence forces |
+| `aee_flight_turbulenceScale` | SLIDER | `1` | yes | flight | Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe) |
+
 ## AEE FX → Events
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -471,6 +504,18 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_hud_trackerInterval` | SLIDER | `1.0` | yes | hud | Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0. |
 | `aee_hud_trackerSuppressIcons` | CHECKBOX | `false` | yes | hud | Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off. |
 
+## AEE Hydrology → Hydrology
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_hydrology_baseflowRate_perDay` | SLIDER | `0.2` | yes | hydrology | Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention. |
+| `aee_hydrology_bedSlope` | SLIDER | `0.001` | yes | hydrology | Bed slope in metres per metre. Manning rating sets the stage from the discharge, and a steeper bed carries the same flow at a lower stage. |
+| `aee_hydrology_catchmentArea_m2` | SLIDER | `250000` | yes | hydrology | Area in square metres draining to the river point. A river stage responds to everything upstream, so this is the contributing area rather than the routing cell. 250000 is a small stream catchment. |
+| `aee_hydrology_manningN` | SLIDER | `0.035` | yes | hydrology | Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth. |
+| `aee_hydrology_riverResponseRate` | SLIDER | `0.1` | yes | hydrology | Nash-cascade storage coefficient per 5 s tick; 1/k = reservoir time constant |
+| `aee_hydrology_riverSectionWidth_m` | SLIDER | `4` | yes | hydrology | Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise. |
+| `aee_hydrology_tidalReach_m` | SLIDER | `5000` | yes | hydrology | Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance. |
+
 ## AEE Maritime → Sea
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -479,27 +524,13 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
 
-## AEE Mobility → Flight
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_mobility_airframeRadius` | SLIDER | `2000` | yes | mobility | Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic. |
-| `aee_mobility_flightAeroPenalty` | CHECKBOX | `true` | yes | mobility | Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe. |
-
 ## AEE Mobility → Hydrology
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_mobility_baseflowRate_perDay` | SLIDER | `0.2` | yes | mobility | Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention. |
-| `aee_mobility_bedSlope` | SLIDER | `0.001` | yes | mobility | Bed slope in metres per metre. Manning rating sets the stage from the discharge, and a steeper bed carries the same flow at a lower stage. |
-| `aee_mobility_catchmentArea_m2` | SLIDER | `250000` | yes | mobility | Area in square metres draining to the river point. A river stage responds to everything upstream, so this is the contributing area rather than the routing cell. 250000 is a small stream catchment. |
-| `aee_mobility_manningN` | SLIDER | `0.035` | yes | mobility | Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth. |
 | `aee_mobility_mudAccretionRate` | SLIDER | `0.002` | yes | mobility | Mud build-up rate per 5 s tick while driving on muddy terrain |
 | `aee_mobility_mudDecayRate` | SLIDER | `0.99` | yes | mobility | Mud shedding factor per 5 s tick on hard surfaces (1 = no decay) |
 | `aee_mobility_rainAccumDecay` | SLIDER | `0.97` | yes | mobility | Rain-history decay factor per 5 s tick (lower = faster drying) |
-| `aee_mobility_riverResponseRate` | SLIDER | `0.1` | yes | mobility | Nash-cascade storage coefficient per 5 s tick; 1/k = reservoir time constant |
-| `aee_mobility_riverSectionWidth_m` | SLIDER | `4` | yes | mobility | Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise. |
-| `aee_mobility_tidalReach_m` | SLIDER | `5000` | yes | mobility | Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance. |
 
 ## AEE Mobility → Rollover
 
@@ -533,23 +564,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_mobility_brakeCoolingTau` | SLIDER | `450` | yes | mobility | Time constant of brake-rotor cooling toward ambient (seconds) |
 | `aee_mobility_brakeHeatFraction` | SLIDER | `0.6` | yes | mobility | Fraction of braking energy converted to rotor heat |
 | `aee_mobility_brakeRotorMassKg` | SLIDER | `16` | yes | mobility | Total brake rotor mass in kilograms |
-| `aee_mobility_minEnginePower` | SLIDER | `0.3` | yes | mobility | Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power) |
 | `aee_mobility_tractionScale` | SLIDER | `1.0` | yes | mobility | Multiplier on all surface traction coefficients |
-
-## AEE Mobility → Turbulence
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_mobility_flightTurbulence` | CHECKBOX | `true` | yes | mobility | Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft |
-| `aee_mobility_turbulenceRadius` | SLIDER | `2000` | yes | mobility | Distance from the player or mission centre within which aircraft receive turbulence forces |
-| `aee_mobility_turbulenceScale` | SLIDER | `1` | yes | mobility | Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe) |
-
-## AEE Mobility → Vehicle
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_mobility_estimateVehicleMassEnabled` | CHECKBOX | `false` | yes | mobility | Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight. |
-| `aee_mobility_vehicleCouplingEnabled` | CHECKBOX | `true` | yes | mobility | Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle. |
 
 ## AEE Night Vision → Imperfections
 
@@ -721,6 +736,19 @@ registered.
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_thermal_objectScanInterval` | SLIDER | `30` | yes | thermal | Seconds between object-temperature scans. Surface temperatures change on time constants of 600 seconds and longer, so a scan every tick is wasted work. 0 scans every tick. |
+
+## AEE Vehicles → Traction
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_vehicles_minEnginePower` | SLIDER | `0.3` | yes | vehicles | Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power) |
+
+## AEE Vehicles → Vehicle
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_vehicles_estimateVehicleMassEnabled` | CHECKBOX | `false` | yes | vehicles | Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight. |
+| `aee_vehicles_vehicleCouplingEnabled` | CHECKBOX | `true` | yes | vehicles | Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle. |
 
 ## AEE Vision → Image
 

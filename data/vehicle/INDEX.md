@@ -61,7 +61,7 @@ registry is an error. A compiled page is never marked primary.
 
 The generated runtime projection is an SQF matcher. The generator
 `tools/validation/gen_vehicle_data.py` writes
-`addons/mobility/functions/fnc_getVehicleData.sqf`. The file is never
+`addons/vehicles/functions/fnc_getVehicleData.sqf`. The file is never
 edited by hand. The header names the generator and states the unit of
 every column.
 

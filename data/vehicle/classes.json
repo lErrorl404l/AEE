@@ -65,20 +65,20 @@
         "addons/core/XEH_postInit.sqf:21",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
+        "addons/flight/XEH_postInit.sqf:43",
+        "addons/flight/functions/fnc_applyAirframeLoad.sqf:43",
+        "addons/flight/functions/fnc_applyFlightTurbulence.sqf:81",
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:401",
-        "addons/mobility/XEH_postInit.sqf:116",
-        "addons/mobility/XEH_postInit.sqf:152",
-        "addons/mobility/XEH_postInit.sqf:43",
-        "addons/mobility/XEH_postInit.sqf:81",
-        "addons/mobility/functions/fnc_applyAirframeLoad.sqf:43",
-        "addons/mobility/functions/fnc_applyFlightTurbulence.sqf:81",
+        "addons/mobility/XEH_postInit.sqf:104",
+        "addons/mobility/XEH_postInit.sqf:33",
+        "addons/mobility/XEH_postInit.sqf:68",
         "addons/mobility/functions/fnc_applyRollover.sqf:40",
         "addons/mobility/functions/fnc_applyTerrainDrag.sqf:41",
         "addons/mobility/functions/fnc_calculateSSF.sqf:86",
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:87",
-        "addons/mobility/functions/fnc_getVehicleGeometry.sqf:74",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292",
-        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43"
+        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:87",
+        "addons/vehicles/functions/fnc_getVehicleGeometry.sqf:74"
       ]
     },
     {
@@ -146,12 +146,12 @@
       "kind": "engine_base",
       "provenance": [
         "addons/armour/functions/fnc_deriveProtection.sqf:60",
-        "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
         "addons/mobility/functions/fnc_calculateSSF.sqf:116",
         "addons/mobility/functions/fnc_calculateSSF.sqf:62",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:78",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
-        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43"
+        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",
+        "addons/vehicles/functions/common/fnc_getNearbyVehicles.sqf:44"
       ]
     },
     {
@@ -199,10 +199,10 @@
       "provenance": [
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:35",
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:36",
+        "addons/flight/functions/fnc_calculateAirEngineLoad.sqf:137",
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:256",
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:367",
         "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
-        "addons/mobility/functions/fnc_calculateAirEngineLoad.sqf:137",
         "addons/mobility/functions/fnc_calculateSSF.sqf:61",
         "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159"
@@ -233,10 +233,10 @@
         "addons/mobility/functions/fnc_applyGripLoss.sqf:38",
         "addons/mobility/functions/fnc_calculateRouteDegradation.sqf:47",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:87",
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:86",
         "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
-        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
+        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:86"
       ]
     },
     {
@@ -276,8 +276,8 @@
       "is_ground": false,
       "kind": "mod_token",
       "provenance": [
-        "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
+        "addons/vehicles/functions/common/fnc_getNearbyVehicles.sqf:44"
       ]
     },
     {
@@ -286,8 +286,8 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/mobility/XEH_postInit.sqf:43",
-        "addons/mobility/functions/fnc_applyAirframeLoad.sqf:45"
+        "addons/flight/XEH_postInit.sqf:43",
+        "addons/flight/functions/fnc_applyAirframeLoad.sqf:45"
       ]
     },
     {
@@ -326,10 +326,10 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:88",
-        "addons/mobility/functions/fnc_getVehicleGeometry.sqf:74",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
-        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
+        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:88",
+        "addons/vehicles/functions/fnc_getVehicleGeometry.sqf:74"
       ]
     },
     {
@@ -347,9 +347,9 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:129",
         "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77",
-        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43"
+        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:129"
       ]
     },
     {
@@ -359,15 +359,15 @@
       "kind": "engine_base",
       "provenance": [
         "addons/armour/functions/fnc_deriveProtection.sqf:51",
-        "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
         "addons/mobility/functions/fnc_calculateSSF.sqf:114",
         "addons/mobility/functions/fnc_calculateSSF.sqf:59",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:110",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
-        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43"
+        "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",
+        "addons/vehicles/functions/common/fnc_getNearbyVehicles.sqf:44",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:110"
       ]
     },
     {
@@ -380,7 +380,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:60",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:77",
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:110"
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:110"
       ]
     },
     {

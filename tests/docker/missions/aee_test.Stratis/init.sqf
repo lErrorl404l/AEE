@@ -1146,10 +1146,10 @@ if (isNil "_wildlifeTickFn") then {
     // Seed tide offset to +1.5 m (spring high tide).
     missionNamespace setVariable ["aee_core_currentTideOffset_m", 1.5];
     // Seed river reservoirs to zero (dry baseline).
-    missionNamespace setVariable ["aee_mobility_riverReservoirs", [0, 0, 0]];
+    missionNamespace setVariable ["aee_hydrology_riverReservoirs", [0, 0, 0]];
 
     // Call river water level.
-    private _fnRiver = missionNamespace getVariable ["aee_mobility_fnc_calculateRiverWaterLevel", nil];
+    private _fnRiver = missionNamespace getVariable ["aee_hydrology_fnc_calculateRiverWaterLevel", nil];
     if (isNil "_fnRiver") then {
         diag_log text "[PHASE20] [FAIL] river water level function not compiled";
         _p20Fail = _p20Fail + 1;
@@ -1527,17 +1527,17 @@ if (isNil "_wildlifeTickFn") then {
 
     // Case 2: vehicle crank gate.  Derating 0.4 (severe cold-soak) must
     // zero the crank probability; 1.0 must give full crank.
-    private _fnEngine = missionNamespace getVariable ["aee_mobility_fnc_calculateEnginePower", nil];
+    private _fnEngine = missionNamespace getVariable ["aee_vehicles_fnc_calculateEnginePower", nil];
     if (isNil "_fnEngine") then {
         diag_log text "[PHASE25] [FAIL] engine power function not compiled";
         _p25Fail = _p25Fail + 1;
     } else {
         missionNamespace setVariable ["aee_thermal_batteryTemperatureDerating", 0.4];
         [] call _fnEngine;
-        private _crankCold = missionNamespace getVariable ["aee_mobility_crankSuccess", -1];
+        private _crankCold = missionNamespace getVariable ["aee_vehicles_crankSuccess", -1];
         missionNamespace setVariable ["aee_thermal_batteryTemperatureDerating", 1.0];
         [] call _fnEngine;
-        private _crankWarm = missionNamespace getVariable ["aee_mobility_crankSuccess", -1];
+        private _crankWarm = missionNamespace getVariable ["aee_vehicles_crankSuccess", -1];
         if (_crankCold == 0 && _crankWarm == 1.0) then {
             diag_log text format ["[PHASE25] [PASS] cold-soak fails cranking: %1 -> %2", _crankCold, _crankWarm];
             _p25Pass = _p25Pass + 1;

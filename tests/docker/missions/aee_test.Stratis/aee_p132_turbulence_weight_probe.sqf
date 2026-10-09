@@ -40,15 +40,15 @@ private _rho = 1.225;   // ISA sea-level density, kg/m^3
 // The operator's airframe from the run: B_Heli_Light_01_armed_F, the AH-9
 // Pawnee (the Littlebird airframe he named).  Its corpus record is md530f.
 private _lightClass = "B_Heli_Light_01_armed_F";
-private _lightRow = [_lightClass] call aee_mobility_fnc_getAircraftData;
+private _lightRow = [_lightClass] call aee_flight_fnc_getAircraftData;
 private _lightMass = if ((count _lightRow) > 0) then { _lightRow select 0 } else { 0 };
-private _lightArea = [_lightRow] call aee_mobility_fnc_resolveTurbulenceArea;
+private _lightArea = [_lightRow] call aee_flight_fnc_resolveTurbulenceArea;
 
 // A heavy airframe for the contrast: B_Heli_Transport_01_F, the UH-80.
 private _heavyClass = "B_Heli_Transport_01_F";
-private _heavyRow = [_heavyClass] call aee_mobility_fnc_getAircraftData;
+private _heavyRow = [_heavyClass] call aee_flight_fnc_getAircraftData;
 private _heavyMass = if ((count _heavyRow) > 0) then { _heavyRow select 0 } else { 0 };
-private _heavyArea = [_heavyRow] call aee_mobility_fnc_resolveTurbulenceArea;
+private _heavyArea = [_heavyRow] call aee_flight_fnc_resolveTurbulenceArea;
 
 // 1. The corpus resolves the AH-9 Pawnee and holds its operating weight.
 [_lightRow isEqualType [] && {(count _lightRow) == 4} && {abs (_lightMass - 782) < 1},
@@ -61,14 +61,14 @@ private _heavyArea = [_heavyRow] call aee_mobility_fnc_resolveTurbulenceArea;
 
 // 3. The force is mass-free: same drag area, gust and density, two masses,
 //    the same force.  The old model scaled the force with the mass.
-private _fLight = [_gust, _rho, _lightArea, _lightMass] call aee_mobility_fnc_calculateTurbulenceForce;
-private _fHeavySameArea = [_gust, _rho, _lightArea, _heavyMass] call aee_mobility_fnc_calculateTurbulenceForce;
+private _fLight = [_gust, _rho, _lightArea, _lightMass] call aee_flight_fnc_calculateTurbulenceForce;
+private _fHeavySameArea = [_gust, _rho, _lightArea, _heavyMass] call aee_flight_fnc_calculateTurbulenceForce;
 [abs (_fLight - _fHeavySameArea) < 0.001,
     format ["force is not mass-free: light %1 heavy %2", _fLight, _fHeavySameArea]] call _check;
 
 // 4. The acceleration is mass-aware: each airframe with its own drag area, the
 //    heavy one accelerates less.
-private _fHeavyOwnArea = [_gust, _rho, _heavyArea, _heavyMass] call aee_mobility_fnc_calculateTurbulenceForce;
+private _fHeavyOwnArea = [_gust, _rho, _heavyArea, _heavyMass] call aee_flight_fnc_calculateTurbulenceForce;
 private _aLight = _fLight / _lightMass;
 private _aHeavy = _fHeavyOwnArea / _heavyMass;
 [_aLight > _aHeavy,

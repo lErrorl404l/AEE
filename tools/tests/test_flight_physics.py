@@ -32,13 +32,13 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-MOBILITY = ROOT / "addons" / "mobility"
-FUNCS = MOBILITY / "functions"
-HEADER = MOBILITY / "script_component.hpp"
-POST_INIT = MOBILITY / "XEH_postInit.sqf"
-PREP = MOBILITY / "XEH_PREP.hpp"
-SETTINGS = MOBILITY / "initSettings.inc.sqf"
-STRINGTABLE = MOBILITY / "stringtable.xml"
+FLIGHT = ROOT / "addons" / "flight"
+FUNCS = FLIGHT / "functions"
+HEADER = FLIGHT / "script_component.hpp"
+POST_INIT = FLIGHT / "XEH_postInit.sqf"
+PREP = FLIGHT / "XEH_PREP.hpp"
+SETTINGS = FLIGHT / "initSettings.inc.sqf"
+STRINGTABLE = FLIGHT / "stringtable.xml"
 RUNNER = ROOT / "tools" / "run_tests.py"
 
 RESOLVE = FUNCS / "fnc_resolveFlightModel.sqf"
@@ -453,10 +453,10 @@ class TestWiring(unittest.TestCase):
     def test_stringtable_keys(self):
         st = STRINGTABLE.read_text(encoding="utf-8")
         for key in (
-            "STR_AEE_Mobility_flightAeroPenalty_Name",
-            "STR_AEE_Mobility_flightAeroPenalty_Description",
-            "STR_AEE_Mobility_airframeRadius_Name",
-            "STR_AEE_Mobility_airframeRadius_Description",
+            "STR_AEE_Flight_flightAeroPenalty_Name",
+            "STR_AEE_Flight_flightAeroPenalty_Description",
+            "STR_AEE_Flight_airframeRadius_Name",
+            "STR_AEE_Flight_airframeRadius_Description",
         ):
             self.assertEqual(st.count(f'ID="{key}"'), 1, key)
 

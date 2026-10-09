@@ -37,7 +37,7 @@ ECO_OUT = ROOT / "addons" / "wildlife" / "data" / "ecology_corpus.sqf"
 ASSET_OUT = ROOT / "addons" / "wildlife" / "data" / "asset_map.sqf"
 
 # The generated-file notice, copied from the shape at
-# addons/mobility/functions/fnc_getVehicleMatch.sqf:7-9.
+# addons/vehicles/functions/fnc_getVehicleMatch.sqf:7-9.
 ECO_TEMPLATE = """/*
 Wildlife ecology corpus (generated).
 

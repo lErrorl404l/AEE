@@ -171,7 +171,7 @@
   "aee_mobility_tractionScale": "aee_mobility_tractionScale",
   "aee_mobility_turbulenceRadius": "aee_flight_turbulenceRadius",
   "aee_mobility_turbulenceScale": "aee_flight_turbulenceScale",
-  "aee_mobility_vehicleCouplingEnabled": "aee_mobility_vehicleCouplingEnabled",
+  "aee_mobility_vehicleCouplingEnabled": "aee_vehicles_vehicleCouplingEnabled",
   "aee_nightvision_fogGrainMax": "aee_nightvision_fogGrainMax",
   "aee_nightvision_logDebug": "aee_nightvision_logDebug",
   "aee_nightvision_ltmDaylightFade": "aee_ltm_ltmDaylightFade",

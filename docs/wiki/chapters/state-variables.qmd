@@ -121,8 +121,8 @@ read them. The variables below are grouped by subsystem.
 | `aee_atmos_turbulenceClass` | The turbulence class |
 | `aee_mobility_turbulenceState` | The turbulence state |
 | `aee_mobility_turbulenceAircraft` | Whether aircraft turbulence is active |
-| `aee_mobility_turbulenceRadius` | The turbulence radius |
-| `aee_mobility_turbulenceScale` | The turbulence scale |
+| `aee_flight_turbulenceRadius` | The turbulence radius |
+| `aee_flight_turbulenceScale` | The turbulence scale |
 | `aee_mobility_turbulenceRefresh` | The turbulence refresh interval |
 | `aee_mobility_turbulenceShearTime` | The turbulence shear time |
 
@@ -305,7 +305,7 @@ read them. The variables below are grouped by subsystem.
 | `aee_mobility_routeDegradation` | The route degradation |
 | `aee_mobility_soilBearing` | The soil bearing strength |
 | `aee_mobility_currentLiftRatio` | The current helicopter lift ratio |
-| `aee_mobility_flightTurbulence` | The flight turbulence |
+| `aee_flight_flightTurbulence` | The flight turbulence |
 | `aee_mobility_isReady` | Whether the mobility addon is ready |
 | `aee_core_enginePowerDegradationEnabled` | Whether engine power degradation is enabled |
 | `aee_core_mudAccretionEnabled` | Whether mud accretion is enabled |

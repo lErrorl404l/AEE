@@ -35,7 +35,7 @@ GUARD = (
 MATCHERS = (
     (
         REPO / "tools/validation/gen_vehicle_data.py",
-        REPO / "addons/mobility/functions/fnc_getVehicleMatch.sqf",
+        REPO / "addons/vehicles/functions/fnc_getVehicleMatch.sqf",
         '_identity = _className + " " + _rawName + " " + _localName',
     ),
     (

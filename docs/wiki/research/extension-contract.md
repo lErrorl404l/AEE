@@ -100,8 +100,10 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_diagnostics` | `diagnostics` |
 | `aee_dive` | `dive` |
 | `aee_eye` | `eye` |
+| `aee_flight` | `flight` |
 | `aee_fx` | `fx` |
 | `aee_hud` | `hud` |
+| `aee_hydrology` | `hydrology` |
 | `aee_lib` | `lib` |
 | `aee_lighting` | `lighting` |
 | `aee_maritime` | `maritime` |
@@ -116,6 +118,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_symbology` | `symbology` |
 | `aee_thermal` | `thermal` |
 | `aee_thermal_display` | `thermal_display` |
+| `aee_vehicles` | `vehicles` |
 | `aee_vision` | `vision` |
 | `aee_weather` | `weather` |
 | `aee_wildlife` | `wildlife` |
@@ -291,6 +294,17 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_eye_fnc_eyeTimeSkip`
 - `aee_eye_fnc_initEyeAdaptation`
 - `aee_eye_fnc_updateEyeAdaptation`
+- `aee_flight_fnc_applyAirframeLoad`
+- `aee_flight_fnc_applyFlightTurbulence`
+- `aee_flight_fnc_calculateAeroPenalty`
+- `aee_flight_fnc_calculateAirEngineLoad`
+- `aee_flight_fnc_calculateHelicopterLift`
+- `aee_flight_fnc_calculateTurbulenceForce`
+- `aee_flight_fnc_getAircraftData`
+- `aee_flight_fnc_getAircraftMatch`
+- `aee_flight_fnc_logAirframeState`
+- `aee_flight_fnc_resolveFlightModel`
+- `aee_flight_fnc_resolveTurbulenceArea`
 - `aee_fx_fnc_applyAtmosphericDust`
 - `aee_fx_fnc_applyBreathCondensation`
 - `aee_fx_fnc_applyExhaustShimmer`
@@ -332,6 +346,13 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_hud_fnc_trackerDraw`
 - `aee_hud_fnc_trackerProject`
 - `aee_hud_fnc_trackerUpdate`
+- `aee_hydrology_fnc_calculateBaseflow`
+- `aee_hydrology_fnc_calculateDepressionStorage`
+- `aee_hydrology_fnc_calculateGreenAmptInfiltration`
+- `aee_hydrology_fnc_calculateRiverWaterLevel`
+- `aee_hydrology_fnc_calculateRunoffSCS`
+- `aee_hydrology_fnc_calculateThermalRefraction`
+- `aee_hydrology_fnc_routeRunoffD8`
 - `aee_lib_fnc_attachObjectEngineHandler`
 - `aee_lib_fnc_buildGeoAnchor`
 - `aee_lib_fnc_createPPEffect`
@@ -403,50 +424,20 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_material_fnc_handleHitPart`
 - `aee_material_fnc_initMaterialCache`
 - `aee_mobility_fnc_applyAccretionMass`
-- `aee_mobility_fnc_applyAirframeLoad`
-- `aee_mobility_fnc_applyFlightTurbulence`
 - `aee_mobility_fnc_applyGripLoss`
 - `aee_mobility_fnc_applyRollover`
 - `aee_mobility_fnc_applyTerrainDrag`
 - `aee_mobility_fnc_calculateAccretionMass`
-- `aee_mobility_fnc_calculateAeroPenalty`
-- `aee_mobility_fnc_calculateAirEngineLoad`
-- `aee_mobility_fnc_calculateBaseflow`
-- `aee_mobility_fnc_calculateDepressionStorage`
-- `aee_mobility_fnc_calculateEngineLoad`
-- `aee_mobility_fnc_calculateEnginePower`
-- `aee_mobility_fnc_calculateExhaustPlume`
-- `aee_mobility_fnc_calculateGreenAmptInfiltration`
-- `aee_mobility_fnc_calculateHelicopterLift`
 - `aee_mobility_fnc_calculateMudAccretion`
-- `aee_mobility_fnc_calculateRiverWaterLevel`
 - `aee_mobility_fnc_calculateRolloverThreshold`
 - `aee_mobility_fnc_calculateRouteDegradation`
-- `aee_mobility_fnc_calculateRunoffSCS`
 - `aee_mobility_fnc_calculateSSF`
 - `aee_mobility_fnc_calculateSoilBearingStrength`
 - `aee_mobility_fnc_calculateSoilStrength`
 - `aee_mobility_fnc_calculateTerrainLimits`
-- `aee_mobility_fnc_calculateThermalRefraction`
 - `aee_mobility_fnc_calculateTraction`
-- `aee_mobility_fnc_calculateTurbulenceForce`
 - `aee_mobility_fnc_calculateWetTraction`
-- `aee_mobility_fnc_classifyVehicle`
-- `aee_mobility_fnc_estimateVehicleMass`
-- `aee_mobility_fnc_estimateVehicleMassCore`
-- `aee_mobility_fnc_getAircraftData`
-- `aee_mobility_fnc_getAircraftMatch`
-- `aee_mobility_fnc_getNearbyVehicles`
 - `aee_mobility_fnc_getTerrainSpeedFactor`
-- `aee_mobility_fnc_getVehicleBands`
-- `aee_mobility_fnc_getVehicleData`
-- `aee_mobility_fnc_getVehicleGeometry`
-- `aee_mobility_fnc_getVehicleMassModel`
-- `aee_mobility_fnc_getVehicleMatch`
-- `aee_mobility_fnc_logAirframeState`
-- `aee_mobility_fnc_resolveFlightModel`
-- `aee_mobility_fnc_resolveTurbulenceArea`
-- `aee_mobility_fnc_routeRunoffD8`
 - `aee_mobility_fnc_updateGroundState`
 - `aee_nightvision_fnc_applyNVGTubeModel`
 - `aee_nightvision_fnc_applyNightGrain`
@@ -647,6 +638,18 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_takeThermalSweep`
 - `aee_thermal_fnc_updateTemperature`
 - `aee_thermal_fnc_updateThermalAGC`
+- `aee_vehicles_fnc_calculateEngineLoad`
+- `aee_vehicles_fnc_calculateEnginePower`
+- `aee_vehicles_fnc_calculateExhaustPlume`
+- `aee_vehicles_fnc_classifyVehicle`
+- `aee_vehicles_fnc_estimateVehicleMass`
+- `aee_vehicles_fnc_estimateVehicleMassCore`
+- `aee_vehicles_fnc_getNearbyVehicles`
+- `aee_vehicles_fnc_getVehicleBands`
+- `aee_vehicles_fnc_getVehicleData`
+- `aee_vehicles_fnc_getVehicleGeometry`
+- `aee_vehicles_fnc_getVehicleMassModel`
+- `aee_vehicles_fnc_getVehicleMatch`
 - `aee_vision_fnc_applyBaseGrade`
 - `aee_vision_fnc_applyWeatherGrain`
 - `aee_vision_fnc_baseGradeParams`

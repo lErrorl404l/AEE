@@ -449,7 +449,7 @@ record that misses a required field as an error. A lead emits no row.
 ## 11. The matcher result
 
 The generated file
-`addons/mobility/functions/fnc_getVehicleData.sqf` carries the table, the
+`addons/vehicles/functions/fnc_getVehicleData.sqf` carries the table, the
 normaliser, the index and the ladder. The generator
 `tools/validation/gen_vehicle_data.py` writes it. The runtime function
 `fnc_getVehicleMatch(className)` returns the full result. The function

@@ -85,7 +85,7 @@ private _spec = [0.40, 3.20, 0.76, 30];   // default: a light 4x4 / HMMWV
 // the class table stands for a row the corpus does not hold.
 private _clearanceM = 0;
 if (_vehicle isKindOf "LandVehicle") then {
-    private _valueRow = [typeOf _vehicle] call FUNC(getVehicleData);
+    private _valueRow = [typeOf _vehicle] call EFUNC(vehicles,getVehicleData);
     if ((_valueRow isEqualType []) && {count _valueRow >= 4}) then {
         private _clearanceMm = _valueRow select 3;
         if ((_clearanceMm isEqualType 0) && (_clearanceMm > 0)) then {
@@ -100,7 +100,7 @@ _spec params ["_clearance", "_wheelbase", "_fordDepth", "_sideLimit"];
 // readable (fnc_getVehicleGeometry): a measured wheelbase is real data, and
 // the breakover angle depends on it directly.  Clearance has no engine
 // source, so it stays on the class table.
-private _geo = [_vehicle] call FUNC(getVehicleGeometry);
+private _geo = [_vehicle] call EFUNC(vehicles,getVehicleGeometry);
 if ((_geo select 1) > 0) then { _wheelbase = _geo select 1; };
 
 // A sourced catalogue clearance overrides the class-table estimate.

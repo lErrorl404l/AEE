@@ -10,9 +10,12 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_lib",
             "aee_core",
-            "aee_diagnostics",
+            "aee_material",
+            "aee_persistence",
+            "aee_vehicles",
             "cba_main",
-            "cba_xeh"
+            "cba_xeh",
+            "cba_settings"
         };
         author = AUTHOR;
         authors[] = AUTHORS;
@@ -22,5 +25,3 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-
-#include "generated/CfgVehicles.hpp"

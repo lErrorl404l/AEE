@@ -258,8 +258,8 @@ harness and the KAT integration. Each row states its grade.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_mobility_enginePowerModifier` | mobility | NA engine power 0.3..1 |
-| `aee_mobility_engineTurboModifier` | mobility | Turbo engine power 0.3..1 |
+| `aee_vehicles_enginePowerModifier` | vehicles | NA engine power 0.3..1 |
+| `aee_vehicles_engineTurboModifier` | vehicles | Turbo engine power 0.3..1 |
 | `aee_mobility_tractionForce` | mobility | Traction force |
 | `aee_mobility_wheelSlip` | mobility | Wheel slip 0..1 |
 | `aee_mobility_mudAccretion` | mobility | Mud accretion |
@@ -286,8 +286,8 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_routeDegradation` | mobility | Route degradation |
 | `aee_mobility_soilBearing` | mobility | Soil bearing strength |
 | `aee_mobility_tractionModifier` | mobility | Traction modifier |
-| `aee_mobility_turbulencePFH` | mobility | Turbulence PFH handle |
-| `aee_mobility_airframeLoadPFH` | mobility | Airframe density/icing PFH handle |
+| `aee_flight_turbulencePFH` | flight | Turbulence PFH handle |
+| `aee_flight_airframeLoadPFH` | flight | Airframe density/icing PFH handle |
 | `aee_mobility_airframeVehicles` | mobility | Cached aircraft list for the airframe load loop |
 | `aee_mobility_airframeRefresh` | mobility | Time of the last airframe-list refresh |
 | `aee_mobility_airLiftLoss` | mobility | Applied lift-loss fraction from density and icing, 0..0.45 |
@@ -296,7 +296,7 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_airLiftRatioApplied` | mobility | Lift ratio used for the applied lift loss |
 | `aee_mobility_rolloverPFH` | mobility | Vehicle rollover PFH handle (#108) |
 | `aee_mobility_isReady` | mobility | Mobility module ready flag |
-| `aee_mobility_crankSuccess` | mobility | Cold-start crank probability 0..1 |
+| `aee_vehicles_crankSuccess` | vehicles | Cold-start crank probability 0..1 |
 | `aee_mobility_muSurface` | mobility | Combined wet/ice/brake surface friction 0..1 |
 | `aee_mobility_dryFrictionMu` | mobility | Dry reference friction coefficient from the wet/ice traction model (0.8) |
 | `aee_mobility_accretionMassKg` | mobility | Surface accretion mass applied to the bound vehicle with setMass (W2) |
@@ -306,13 +306,13 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_couplingPFH` | mobility | Runtime vehicle coupling PFH handle (W2) |
 | `aee_mobility_brakeTempC` | mobility | Brake rotor temperature in C |
 | `aee_mobility_brakeMu` | mobility | Brake friction coefficient (fade) 0..1 |
-| `aee_mobility_vehicleMassLowKg` | mobility | Vehicle mass estimate lower bound in kg, 0 when unavailable |
-| `aee_mobility_vehicleMassHighKg` | mobility | Vehicle mass estimate upper bound in kg, 0 when unavailable |
-| `aee_mobility_vehicleMassMethod` | mobility | Mass estimate method: `catalogue_row`, `geometry_material`, `geometry_material_power`, or `none` |
-| `aee_mobility_vehicleMassAssumptions` | mobility | Mass estimate assumption bitmask set by the model |
-| `aee_mobility_vehicleMassConfidence` | mobility | Mass estimate confidence: `documented`, `low`, `medium`, `high`, or `none` |
-| `aee_mobility_vehicleMassStatus` | mobility | Mass estimate status: `sourced`, `estimated`, or `unavailable` |
-| `aee_mobility_vehicleMassSource` | mobility | Source record id behind a sourced mass estimate |
+| `aee_vehicles_vehicleMassLowKg` | vehicles | Vehicle mass estimate lower bound in kg, 0 when unavailable |
+| `aee_vehicles_vehicleMassHighKg` | vehicles | Vehicle mass estimate upper bound in kg, 0 when unavailable |
+| `aee_vehicles_vehicleMassMethod` | vehicles | Mass estimate method: `catalogue_row`, `geometry_material`, `geometry_material_power`, or `none` |
+| `aee_vehicles_vehicleMassAssumptions` | vehicles | Mass estimate assumption bitmask set by the model |
+| `aee_vehicles_vehicleMassConfidence` | vehicles | Mass estimate confidence: `documented`, `low`, `medium`, `high`, or `none` |
+| `aee_vehicles_vehicleMassStatus` | vehicles | Mass estimate status: `sourced`, `estimated`, or `unavailable` |
+| `aee_vehicles_vehicleMassSource` | vehicles | Source record id behind a sourced mass estimate |
 
 The soil-strength model is fail-closed (#117). It publishes no numeric VCI or
 Mobility Index value while the vehicle records and the VCI50 source are
