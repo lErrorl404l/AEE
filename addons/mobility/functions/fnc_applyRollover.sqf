@@ -64,15 +64,24 @@ if (_state isEqualType 0) then {
 };
 private _prev = _state getOrDefault [_key, [-999, _heading, 0]];
 
-// One clock (Pillar 1): real elapsed time since this pass.  The 0.05 floor
-// keeps the first tick (and any zero-width tick) from dividing by zero.
+// One clock (Pillar 1): real elapsed time since THIS vehicle's last pass.
+// The handler runs once per vehicle inside one frame, so the last sample is
+// keyed by netId.  A single shared sample would give the first vehicle the
+// real delta and every later vehicle a floored 0.05, which is the frame-rate
+// coupling the clock migration removes.  The 0.05 floor keeps the first tick
+// (and any zero-width tick) from dividing by zero.
 private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
-private _lastSim = missionNamespace getVariable [QGVAR(rolloverLastSimTime), -1];
+private _lastTimes = missionNamespace getVariable [QGVAR(rolloverLastSimTime), -1];
+if (_lastTimes isEqualType 0) then {
+    _lastTimes = createHashMap;
+    missionNamespace setVariable [QGVAR(rolloverLastSimTime), _lastTimes];
+};
+private _lastSim = _lastTimes getOrDefault [_key, -1];
 private _dt = 0;
 if (_lastSim isEqualType 0) then {
     if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
 };
-missionNamespace setVariable [QGVAR(rolloverLastSimTime), _simNow];
+_lastTimes set [_key, _simNow];
 if (_dt <= 0) then { _dt = 0.05; };
 
 private _dHeading = _heading - (_prev select 1);
