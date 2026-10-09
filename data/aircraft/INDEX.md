@@ -74,6 +74,12 @@ The stages run in this order. Each stage writes one output.
 7. Generate the coverage and gap artefacts with
    `tools/validation/gen_aircraft_coverage.py`.
 8. Generate the projection with `tools/validation/gen_aircraft_data.py`.
+9. Generate the systems lookup with
+   `tools/validation/gen_aircraft_systems.py`.
+10. Project the load-time config with
+    `tools/validation/gen_physics_config.py`.
+11. Run the freshness gates. Each generated file has a `--check` mode and
+    exits 1 on a stale file.
 
 The validator is the gate. It rejects an unsourced value, a config-derived
 value, a missing unit, a missing state and a bad grade coupling. It rejects
@@ -97,6 +103,9 @@ to name its formula. It exits 1 on an error.
 | `data/aircraft/SOURCE_GAPS.md` | coverage | Generated per-entry missing fields. |
 | `data/aircraft/CLASS_MAPPING_GAPS.md` | coverage | Generated unmapped classes and tokens. |
 | `data/aircraft/RESEARCH_GAPS.md` | entry | The hand-written lead and data-gap register. |
+| `tools/validation/gen_aircraft_systems.py` | generator | Writes the systems lookup from the corpus. |
+| `addons/mobility/functions/fnc_getAircraftSystems.sqf` | generated | The fixed-order systems row. It returns `[]` for an unknown class. |
+| `addons/mobility/generated/CfgVehicles.hpp` | generated | The load-time config, the aircraft `fuelCapacity` and the land physics keys. |
 
 The `data/aircraft/fixtures/` layer holds a deliberate invalid pilot
 fixture. It is a negative-test and audit artefact. The validator must reject
@@ -121,6 +130,12 @@ no class.
 | Token | Kind | Air | State | Entry | Reason |
 |---|---|---|---|---|---|
 | | | | | | |
+
+The expansion coverage target is every air class in the deployed
+inventory, matched to a real type with a sourced spec or recorded as
+`no_source` with a reason. A class with no real counterpart is recorded
+as `no_source`. No analogue is invented. The coverage artefact reports
+the target.
 
 ## 5. Fail-closed summary
 
@@ -157,3 +172,26 @@ block the slice.
 The governing rules are JSP 945 for configuration management and
 Def Stan 05-138 for cyber security. The source order is UK MOD first, NATO
 second, US DOD last, then a manufacturer and then a compilation.
+
+## 7. The systems layers
+
+The systems fields extend the corpus. They do not change the layer model
+or the four-value runtime projection. The systems pieces are these.
+
+- The shared contract. `data/vehicle/SCHEMA.md` section 16 defines the
+  family-agnostic systems fields. Section 17 defines the land-vehicle
+  physics surface. `data/aircraft/SCHEMA.md` section 10 states only the
+  aircraft deltas.
+- The systems lookup. `tools/validation/gen_aircraft_systems.py` writes
+  `addons/mobility/functions/fnc_getAircraftSystems.sqf`. It returns a
+  fixed-order systems row for a known class and `[]` for an unknown class.
+  It reads no config value and no source registry at runtime.
+- The runtime kernels and driver. The kernel set holds the fuel burn and
+  the centre-of-gravity shift, the engine limits and the scripted turbine
+  temperature and oil readout, the damage on the engine hit points, and
+  the status-only readout. One per-frame driver schedules the four
+  kernels.
+- The status-only ceiling. Hydraulics, electrical and pressurisation are
+  absent from the engine. They are status only. A status-only value never
+  feeds the flight dynamics model. The aircraft engine ceiling is in
+  `data/aircraft/SCHEMA.md` section 10.
