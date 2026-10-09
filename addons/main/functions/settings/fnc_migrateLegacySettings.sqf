@@ -45,8 +45,8 @@ if (profileNamespace getVariable [_flag, false]) exitWith { false };
     // unset old name means the player never changed the setting, so the
     // new setting registers with its default.  A set new name wins: the
     // migration never overwrites a value the player already saved.
-    private _newSet = !(isNil { profileNamespace getVariable [_new, nil] });
-    private _oldSet = !(isNil { profileNamespace getVariable [_old, nil] });
+    private _newSet = !(isNil { profileNamespace getVariable [_new] });
+    private _oldSet = !(isNil { profileNamespace getVariable [_old] });
     if (!_newSet && {_oldSet}) then {
         profileNamespace setVariable [_new, profileNamespace getVariable _old];
     };
