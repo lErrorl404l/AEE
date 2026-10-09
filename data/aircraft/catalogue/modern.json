@@ -337,13 +337,44 @@
       "vehicle_type": "rotary_wing",
       "propulsion": "turboshaft",
       "role": "transport",
-      "class_token": "",
+      "class_token": "Helicopter",
       "country": "GB",
       "era": "modern",
-      "aliases": [],
-      "keywords": [],
-      "runtime_ready": false,
-      "values": {}
+      "aliases": [
+        "merlin",
+        "aw101"
+      ],
+      "keywords": [
+        "transport",
+        "heavy"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "max_takeoff_weight_kg": {
+          "value": 15600,
+          "unit": "kg",
+          "source": "src_leonardo_aw101",
+          "locator": "maximum gross weight 15,600 kg (34,390 lb)",
+          "state": "Leonardo AW101 brochure maximum gross weight",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 5652.0,
+          "unit": "kW",
+          "source": "src_leonardo_aw101",
+          "locator": "engine ratings 3 x CT7-8E, take-off power (5 min) 3 x 1,884 kW",
+          "state": "Leonardo AW101 brochure take-off power for three CT7-8E engines, 3 x 1,884 kW = 5,652 kW",
+          "grade": "claimed"
+        },
+        "rotor_diameter_m": {
+          "value": 18.6,
+          "unit": "m",
+          "source": "src_leonardo_aw101",
+          "locator": "rotor diameter 18.60 m (61 ft 0 in)",
+          "state": "Leonardo AW101 brochure main rotor diameter",
+          "grade": "claimed"
+        }
+      }
     }
   ]
 }

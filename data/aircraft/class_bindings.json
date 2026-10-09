@@ -64,6 +64,14 @@
     "grade": "claimed"
   },
   {
+    "game_class": "I_Plane_Fighter_04_F",
+    "class_token": "Plane",
+    "catalogue_id": "jas39c_gripen",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_Plane_Fighter_04_F is an Arma 3 Plane class for the A-149 Gryphon (Jets DLC); the Armed Assault Wiki names the A-149 Gryphon as the Saab JAS 39C Gripen, so the link is a claimed community identity lead and the corpus holds the Saab factsheet values. The class is a Jets DLC class; the vanilla air config verification is pending.",
+    "grade": "claimed"
+  },
+  {
     "game_class": "B_Heli_Light_01_F",
     "class_token": "Helicopter",
     "catalogue_id": "md500",
@@ -120,11 +128,19 @@
     "grade": "claimed"
   },
   {
-    "game_class": "I_Heli_Transport_02_F",
+    "game_class": "B_Heli_Transport_03_F",
     "class_token": "Helicopter",
     "catalogue_id": "ch47_chinook",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "B_Heli_Transport_03_F is an Arma 3 Helicopter class for the CH-67 Huron; the Armed Assault Wiki names the CH-67 Huron as the CH-47 Chinook analogue, so the link is a claimed community identity lead and the corpus holds the CH-47D values from TM 1-1520-240-10.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Heli_Transport_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw101_merlin",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the Armed Assault Wiki names the CH-49 Mohawk as the AW101 Merlin, so the link is a claimed community identity lead and the corpus holds the AW101 values from the Leonardo brochure.",
     "grade": "claimed"
   },
   {

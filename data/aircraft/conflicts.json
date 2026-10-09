@@ -1,0 +1,35 @@
+[
+  {
+    "entity": "su25_frogfoot",
+    "field": "identity",
+    "value_a": "Sukhoi Su-25; corpus binding O_Plane_CAS_02_F -> su25_frogfoot",
+    "source_a": "aee_air_class_table",
+    "value_b": "Yakovlev Yak-130; Armed Assault Wiki names the To-199 Neophron as the Yak-130",
+    "source_b": "src_armedassault_wiki",
+    "resolution": "keep both; the corpus binding stays su25_frogfoot until a tier 2 or tier 3 source names the To-199 Neophron; the wiki is a claimed identity lead only",
+    "rule_applied": "one source never displaces another for the same field; a tier 5 compilation is a lead, never a value",
+    "date": "2026-10-09"
+  },
+  {
+    "entity": "cessna_172_skyhawk",
+    "field": "identity",
+    "value_a": "Cessna 172 Skyhawk; corpus binding C_Plane_Civil_01_F -> cessna_172_skyhawk",
+    "source_a": "aee_air_class_table",
+    "value_b": "Cessna TTx; Armed Assault Wiki names the Caesar BTT as the Cessna TTx",
+    "source_b": "src_armedassault_wiki",
+    "resolution": "keep both; the corpus binding stays cessna_172_skyhawk until a tier 2 or tier 3 source names the Caesar BTT; the wiki is a claimed identity lead only",
+    "rule_applied": "one source never displaces another for the same field; a tier 5 compilation is a lead, never a value",
+    "date": "2026-10-09"
+  },
+  {
+    "entity": "light_utility_rotary",
+    "field": "identity",
+    "value_a": "Mil Mi-2 light utility; corpus binding O_Heli_Light_02_F -> light_utility_rotary",
+    "source_a": "aee_air_class_table",
+    "value_b": "Kamov Ka-60 Kasatka; Armed Assault Wiki names the PO-30 Orca as the Ka-60 Kasatka",
+    "source_b": "src_armedassault_wiki",
+    "resolution": "keep both; the corpus binding stays light_utility_rotary until a tier 2 or tier 3 source names the PO-30 Orca; the wiki is a claimed identity lead only",
+    "rule_applied": "one source never displaces another for the same field; a tier 5 compilation is a lead, never a value",
+    "date": "2026-10-09"
+  }
+]
