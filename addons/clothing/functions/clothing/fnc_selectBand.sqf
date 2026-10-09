@@ -3,7 +3,7 @@
 Property band selector (the clothing identity fallback).
 
 This is the shared rule behind the equipment band table. It mirrors the
-band route of aee_mobility_fnc_classifyVehicle: a generated table holds the
+band route of aee_vehicles_fnc_classifyVehicle: a generated table holds the
 properties that identify each catalogue record, and a live or held property
 selects at most one row.
 

@@ -3,7 +3,7 @@
 
 The band table is generated from the sourced catalogue by
 ``tools/validation/gen_vehicle_data.py``. The classifier
-``addons/mobility/functions/fnc_classifyVehicle.sqf`` reads the table and the
+``addons/vehicles/functions/fnc_classifyVehicle.sqf`` reads the table and the
 live engine properties. The engine calls cannot run in this harness, so the
 band selection and the tie rule are mirrored here in Python and pinned against
 the same table the SQF reads. The SQF source is checked structurally for the
@@ -32,12 +32,14 @@ sys.path.insert(0, str(REPO))
 
 from tools.validation import gen_vehicle_data as gen  # noqa: E402
 
-FUNCTIONS = REPO / "addons" / "mobility" / "functions"
+FUNCTIONS = REPO / "addons" / "vehicles" / "functions"
+# fnc_calculateTraction stays in mobility (ground) after the step-8 split.
+MOBILITY_FUNCTIONS = REPO / "addons" / "mobility" / "functions"
 BANDS_PATH = FUNCTIONS / "fnc_getVehicleBands.sqf"
 CLASSIFY_PATH = FUNCTIONS / "fnc_classifyVehicle.sqf"
 WRAPPER_PATH = FUNCTIONS / "fnc_estimateVehicleMass.sqf"
-TRACTION_PATH = FUNCTIONS / "fnc_calculateTraction.sqf"
-PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
+TRACTION_PATH = MOBILITY_FUNCTIONS / "fnc_calculateTraction.sqf"
+PREP_PATH = REPO / "addons" / "vehicles" / "XEH_PREP.hpp"
 EQUIPMENT_PATH = (
     REPO / "addons" / "clothing" / "functions" / "clothing" / "fnc_getItemMass.sqf"
 )
@@ -246,7 +248,7 @@ class GeneratedBandTableTest(unittest.TestCase):
     def test_the_table_is_marked_generated(self) -> None:
         self.assertIn("GENERATED", BANDS)
         self.assertIn("gen_vehicle_data.py", BANDS)
-        self.assertIn("aee_mobility_fnc_getVehicleBands", BANDS)
+        self.assertIn("aee_vehicles_fnc_getVehicleBands", BANDS)
 
     def test_the_header_states_the_column_contract(self) -> None:
         header = BANDS.split("*/", 1)[0]
@@ -433,7 +435,7 @@ class ClassifierSourceTest(unittest.TestCase):
     """The SQF source states the routes, the tie rule and the return shape."""
 
     def test_the_file_names_itself(self) -> None:
-        self.assertIn("aee_mobility_fnc_classifyVehicle", CLASSIFY)
+        self.assertIn("aee_vehicles_fnc_classifyVehicle", CLASSIFY)
 
     def test_the_return_is_the_documented_nine_element_array(self) -> None:
         self.assertIn(
@@ -527,7 +529,9 @@ class TractionConsumerTest(unittest.TestCase):
     """The traction model sources its tracked flag from the classifier."""
 
     def test_the_traction_selector_calls_the_classifier(self) -> None:
-        self.assertIn("([_veh] call FUNC(classifyVehicle)) select 2", TRACTION)
+        self.assertIn(
+            "([_veh] call EFUNC(vehicles,classifyVehicle)) select 2", TRACTION
+        )
 
     def test_the_traction_selector_drops_the_tank_only_test(self) -> None:
         # The Tank-only test gave a tracked APC the wheeled coefficient.

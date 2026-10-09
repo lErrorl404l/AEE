@@ -2,7 +2,7 @@
 //
 // WHY THIS EXISTS. The maxSpeed config override is a projection of the class
 // bindings in data/vehicle/class_bindings.json, and the runtime matcher
-// aee_mobility_fnc_getVehicleMatch resolves a game class to a catalogue entry
+// aee_vehicles_fnc_getVehicleMatch resolves a game class to a catalogue entry
 // on its own. Neither was exercised across the fleet: the mass census spawns
 // the bound classes only, so the coverage of every other ground vehicle was
 // never measured.
@@ -75,8 +75,8 @@ private _notes = [];
         // and the engine ground token for the coarse token route.
         private _cls = "-";
         private _cby = "-";
-        if (!isNil "aee_mobility_fnc_classifyVehicle") then {
-            private _classified = [_veh] call aee_mobility_fnc_classifyVehicle;
+        if (!isNil "aee_vehicles_fnc_classifyVehicle") then {
+            private _classified = [_veh] call aee_vehicles_fnc_classifyVehicle;
             if ((_classified isEqualType []) && {count _classified == 9}) then {
                 _cby = _classified select 8;
                 if (_cby != "none") then { _cls = _classified select 0; };
@@ -87,8 +87,8 @@ private _notes = [];
         private _cat = "-";
         private _conf = "-";
         private _by = "-";
-        if (!isNil "aee_mobility_fnc_getVehicleMatch") then {
-            private _match = [_name] call aee_mobility_fnc_getVehicleMatch;
+        if (!isNil "aee_vehicles_fnc_getVehicleMatch") then {
+            private _match = [_name] call aee_vehicles_fnc_getVehicleMatch;
             if ((_match isEqualType []) && {count _match == 7}) then {
                 _cat = _match select 0;
                 _conf = str (_match select 3);
@@ -98,8 +98,8 @@ private _notes = [];
         // The value row is the matcher's second product. A resolved class
         // returns its seven-field row; an unresolved class returns nothing.
         private _dataOk = 0;
-        if (!isNil "aee_mobility_fnc_getVehicleData") then {
-            private _data = [_name] call aee_mobility_fnc_getVehicleData;
+        if (!isNil "aee_vehicles_fnc_getVehicleData") then {
+            private _data = [_name] call aee_vehicles_fnc_getVehicleData;
             if ((_data isEqualType []) && {count _data == 7}) then { _dataOk = 1; };
         };
 
@@ -114,9 +114,9 @@ private _notes = [];
     };
 } forEach _classes;
 
-if (isNil "aee_mobility_fnc_getVehicleMatch") then {
+if (isNil "aee_vehicles_fnc_getVehicleMatch") then {
     _fail = _fail + 1;
-    _notes pushBack "aee_mobility_fnc_getVehicleMatch is not compiled";
+    _notes pushBack "aee_vehicles_fnc_getVehicleMatch is not compiled";
 };
 if ((count _classes) == 0) then {
     _fail = _fail + 1;

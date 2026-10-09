@@ -14,7 +14,7 @@
 //       those selections.
 //   (c) aee_thermal_display_fnc_thermalPalette returns different colours for those
 //       lags.
-//   (d) aee_mobility_fnc_getVehicleGeometry returns wheel_count > 0 for the
+//   (d) aee_vehicles_fnc_getVehicleGeometry returns wheel_count > 0 for the
 //       same vehicle. This is the runtime check for commit a2e2b4b, which the
 //       RPT cannot show because the geometry kernel emits no log.
 //
@@ -37,7 +37,7 @@
 private _fnSel = missionNamespace getVariable ["aee_thermal_fnc_getThermalSelections", nil];
 private _fnLag = missionNamespace getVariable ["aee_thermal_fnc_getThermalSelectionLag", nil];
 private _fnPal = missionNamespace getVariable ["aee_thermal_display_fnc_thermalPalette", nil];
-private _fnGeo = missionNamespace getVariable ["aee_mobility_fnc_getVehicleGeometry", nil];
+private _fnGeo = missionNamespace getVariable ["aee_vehicles_fnc_getVehicleGeometry", nil];
 
 if (isNil "_fnSel" || {isNil "_fnLag"} || {isNil "_fnPal"} || {isNil "_fnGeo"}) exitWith {
     diag_log text "[P76] [FAIL] kernel functions not compiled (selections/lag/palette/geometry)";

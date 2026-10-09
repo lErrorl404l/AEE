@@ -238,6 +238,9 @@ EXPECTED_DEBUG = {
     },
     ("AEE Debug", "Night Vision"): {"aee_nightvision_logDebug"},
     ("AEE Debug", "Mobility"): {"aee_mobility_logDebug"},
+    ("AEE Debug", "Flight"): {"aee_flight_logDebug"},
+    ("AEE Debug", "Vehicles"): {"aee_vehicles_logDebug"},
+    ("AEE Debug", "Hydrology"): {"aee_hydrology_logDebug"},
     ("AEE Debug", "Maritime"): {"aee_maritime_logDebug"},
     ("AEE Debug", "Radio"): {"aee_radio_logDebug"},
     ("AEE Debug", "Atmos"): {"aee_atmos_logDebug"},
@@ -273,7 +276,7 @@ class TestDebugTaxonomy(unittest.TestCase):
 EXPECTED_SLIDER_DECIMALS = {
     "aee_ballistics_ammoHeatPerShotJ": 4,  # was 6
     "aee_fx_exhaustShimmerAlpha": 2,  # was 0
-    "aee_mobility_bedSlope": 4,  # was 5
+    "aee_hydrology_bedSlope": 4,  # was 5
     "aee_nightvision_fogGrainMax": 2,  # was 0
     "aee_nightvision_nightGrainMax": 1,  # was 0
     "aee_nightvision_nvgAgcBreathing": 2,  # was 0.05

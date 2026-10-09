@@ -377,10 +377,10 @@ if (!isNil _CONE) then {
 // The renderer exits at hasInterface on a dedicated server, so the sprite
 // cannot be observed here.  This measures the decision leg: the pure kernel
 // and the area-derived live count, both of which run headless.
-private _EXHAUST = "aee_mobility_fnc_calculateExhaustPlume";
+private _EXHAUST = "aee_vehicles_fnc_calculateExhaustPlume";
 if (isNil _EXHAUST) then {
     _fail = _fail + 1;
-    _notes pushBack "exhaust kernel isNil: aee_mobility_fnc_calculateExhaustPlume is not compiled";
+    _notes pushBack "exhaust kernel isNil: aee_vehicles_fnc_calculateExhaustPlume is not compiled";
 } else {
     // [idleTempC, fullTempC, idleDepthM, fullDepthM], the four declared tiers.
     private _tiers = [
@@ -396,11 +396,11 @@ if (isNil _EXHAUST) then {
         _x params ["_iT", "_fT", "_iD", "_fD"];
         if (_iD < _sizeLo) then { _sizeLo = _iD; };
         if (_fD > _sizeHi) then { _sizeHi = _fD; };
-        private _p0 = [0, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
-        private _p1 = [1, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
-        private _ph = [0.5, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
-        private _pUp = [2, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
-        private _pDn = [-1, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+        private _p0 = [0, _iT, _fT, _iD, _fD] call aee_vehicles_fnc_calculateExhaustPlume;
+        private _p1 = [1, _iT, _fT, _iD, _fD] call aee_vehicles_fnc_calculateExhaustPlume;
+        private _ph = [0.5, _iT, _fT, _iD, _fD] call aee_vehicles_fnc_calculateExhaustPlume;
+        private _pUp = [2, _iT, _fT, _iD, _fD] call aee_vehicles_fnc_calculateExhaustPlume;
+        private _pDn = [-1, _iT, _fT, _iD, _fD] call aee_vehicles_fnc_calculateExhaustPlume;
         if (abs ((_p0 select 0) - _iT) > 0.0001) then { _exhaustBad pushBack format ["tier %1 idle temp %2 want %3", _x, (_p0 select 0), _iT]; };
         if (abs ((_p0 select 1) - _iD) > 0.0001) then { _exhaustBad pushBack format ["tier %1 idle depth %2 want %3", _x, (_p0 select 1), _iD]; };
         if (abs ((_p1 select 0) - _fT) > 0.0001) then { _exhaustBad pushBack format ["tier %1 full temp %2 want %3", _x, (_p1 select 0), _fT]; };
@@ -413,7 +413,7 @@ if (isNil _EXHAUST) then {
         private _prevD = -1;
         private _prevT = -1;
         while {_s <= 10} do {
-            private _r = [(_s / 10), _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+            private _r = [(_s / 10), _iT, _fT, _iD, _fD] call aee_vehicles_fnc_calculateExhaustPlume;
             if ((_r select 1) < (_prevD - 0.0001)) then { _exhaustBad pushBack format ["tier %1 depth fell at power %2", _x, (_s / 10)]; };
             if ((_r select 0) < (_prevT - 0.0001)) then { _exhaustBad pushBack format ["tier %1 temp fell at power %2", _x, (_s / 10)]; };
             _prevD = _r select 1;
@@ -423,9 +423,9 @@ if (isNil _EXHAUST) then {
     } forEach _tiers;
 
     // An inverted pair and a non-positive declaration are refused, not run.
-    private _inv = [0.5, 600, 400, 1.0, 0.5] call aee_mobility_fnc_calculateExhaustPlume;
+    private _inv = [0.5, 600, 400, 1.0, 0.5] call aee_vehicles_fnc_calculateExhaustPlume;
     if ((_inv select 1) != 0) then { _exhaustBad pushBack "an inverted pair was not refused"; };
-    private _neg = [0.5, -1, 400, 0.35, 0.6] call aee_mobility_fnc_calculateExhaustPlume;
+    private _neg = [0.5, -1, 400, 0.35, 0.6] call aee_vehicles_fnc_calculateExhaustPlume;
     if ((_neg select 1) != 0) then { _exhaustBad pushBack "a non-positive temperature was not refused"; };
     if (abs (_sizeLo - 0.35) > 0.0001) then { _exhaustBad pushBack format ["size floor %1 want 0.35", _sizeLo]; };
     if (abs (_sizeHi - 2.5) > 0.0001) then { _exhaustBad pushBack format ["size ceiling %1 want 2.5", _sizeHi]; };
@@ -485,8 +485,8 @@ diag_log text format ["[P65] reader: difficultyEnabledRTD %1, collectiveRTD %2 (
 // so the declared idle fraction (0.05) drives the plume.  The kernel is linear,
 // so the land row gives 0.35 + (0.60 - 0.35) * 0.05 = 0.3625 m at the idle
 // fraction and 0.60 m at full.
-private _idle = [0.05, 300, 480, 0.35, 0.60] call aee_mobility_fnc_calculateExhaustPlume;
-private _full = [1, 300, 480, 0.35, 0.60] call aee_mobility_fnc_calculateExhaustPlume;
+private _idle = [0.05, 300, 480, 0.35, 0.60] call aee_vehicles_fnc_calculateExhaustPlume;
+private _full = [1, 300, 480, 0.35, 0.60] call aee_vehicles_fnc_calculateExhaustPlume;
 if ((abs ((_idle select 1) - 0.3625) > 0.0001) || {abs ((_full select 1) - 0.60) > 0.0001}) then {
     _fail = _fail + 1;
     _notes pushBack format ["declared fallback wrong: idle %1 want 0.3625, full %2 want 0.60", _idle select 1, _full select 1];
@@ -502,10 +502,10 @@ if ((abs ((_idle select 1) - 0.3625) > 0.0001) || {abs ((_full select 1) - 0.60)
 // speed and asking the kernel for the fraction.  It does not assert over a
 // cartesian product of linked inputs, because that invents a bug the
 // renderer can never hit.
-private _LOAD = "aee_mobility_fnc_calculateEngineLoad";
+private _LOAD = "aee_vehicles_fnc_calculateEngineLoad";
 if (isNil _LOAD) then {
     _fail = _fail + 1;
-    _notes pushBack "engine load kernel isNil: aee_mobility_fnc_calculateEngineLoad is not compiled";
+    _notes pushBack "engine load kernel isNil: aee_vehicles_fnc_calculateEngineLoad is not compiled";
 } else {
     private _ratedW = 150000;
     private _idleF = 0.05;
@@ -515,7 +515,7 @@ if (isNil _LOAD) then {
     // Zero force, zero acceleration, zero speed reaches the idle floor and
     // not a hard zero.  The engine publishes no rpm for a road vehicle, so a
     // stationary engine at high rpm cannot be distinguished from idle.
-    private _still = [0, 0, 1500, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _still = [0, 0, 1500, 0, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
     if (abs (_still - _idleF) > 0.0001) then {
         _loadBad pushBack format ["still load %1 want idle %2", _still, _idleF];
     };
@@ -524,28 +524,28 @@ if (isNil _LOAD) then {
     // function of speed alone, so it is constant across a force sweep.
     private _speedF = 20;
     private _massF = 1500;
-    private _f1 = [1000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
-    private _f2 = [2000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
-    private _f3 = [3000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _f1 = [1000, _speedF, _massF, 0, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
+    private _f2 = [2000, _speedF, _massF, 0, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
+    private _f3 = [3000, _speedF, _massF, 0, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
     if ((_f2 - _f1) <= 0) then { _loadBad pushBack "force sweep did not rise"; };
     if (abs ((_f3 - _f2) - (_f2 - _f1)) > 0.0001) then { _loadBad pushBack "load not linear in force"; };
     _loadSweep = format ["force %1/%2/%3", _f1, _f2, _f3];
 
     // Linear in acceleration at fixed force and speed, and rising.
-    private _a1 = [1000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
-    private _a2 = [1000, _speedF, _massF, 1, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
-    private _a3 = [1000, _speedF, _massF, 2, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _a1 = [1000, _speedF, _massF, 0, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
+    private _a2 = [1000, _speedF, _massF, 1, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
+    private _a3 = [1000, _speedF, _massF, 2, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
     if ((_a2 - _a1) <= 0) then { _loadBad pushBack "acceleration sweep did not rise"; };
     if (abs ((_a3 - _a2) - (_a2 - _a1)) > 0.0001) then { _loadBad pushBack "load not linear in acceleration"; };
 
     // The clamp holds at the top: a huge force cannot exceed 1.
-    private _hot = [1000000000, 60, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _hot = [1000000000, 60, _massF, 0, _ratedW, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
     if (_hot > 1) then { _loadBad pushBack format ["load %1 above 1", _hot]; };
 
     // A non-positive rated power is refused with the -1 sentinel.
-    private _noPwr = [1000, _speedF, _massF, 0, 0, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _noPwr = [1000, _speedF, _massF, 0, 0, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
     if (_noPwr != -1) then { _loadBad pushBack format ["rated power 0 was not refused, got %1", _noPwr]; };
-    private _negPwr = [1000, _speedF, _massF, 0, -5000, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _negPwr = [1000, _speedF, _massF, 0, -5000, _idleF] call aee_vehicles_fnc_calculateEngineLoad;
     if (_negPwr != -1) then { _loadBad pushBack format ["negative rated power was not refused, got %1", _negPwr]; };
 
     if (_loadBad isEqualTo []) then {

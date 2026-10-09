@@ -162,7 +162,7 @@ server binary, but both readers take the same path so one binary change
 cannot break the file.  The RTD path is a game-only path; a server never
 reaches it.
 
-The mobility value aee_mobility_enginePowerModifier is NOT used, because it
+The mobility value aee_vehicles_enginePowerModifier is NOT used, because it
 is an air-density derate and not an engine power state.
 
 MEASURED PER-VEHICLE VALUES WIN OVER THE CLASS ROW.  The vehicle variables
@@ -303,7 +303,7 @@ private _deriveGroundPower = {
     private _rated = _veh getVariable ["aee_engineRatedPowerW", 150000];
     if !(_rated isEqualType 0) then { _rated = 150000; };
 
-    [_force, _speed, getMass _veh, _smooth, _rated, _idlePower, 0, _rho] call EFUNC(mobility,calculateEngineLoad)
+    [_force, _speed, getMass _veh, _smooth, _rated, _idlePower, 0, _rho] call EFUNC(vehicles,calculateEngineLoad)
 };
 
 // ─── Derived air-vehicle load ──────────────────────────────────────────────
@@ -320,7 +320,7 @@ private _deriveAirPower = {
     // wins, then the catalogue row, then the declared default. The corpus
     // row holds [mass kg, rated power W, drag area m2, rotor disc area m2];
     // an absent field is a labelled zero. See gen_aircraft_data.py.
-    private _row = [typeOf _veh] call EFUNC(mobility,getAircraftData);
+    private _row = [typeOf _veh] call EFUNC(flight,getAircraftData);
     private _rowHeld = _row isEqualType [] && {count _row == 4};
     private _corpusMass = if (_rowHeld) then { _row select 0 } else { 0 };
     private _corpusRated = if (_rowHeld) then { _row select 1 } else { 0 };
@@ -347,7 +347,7 @@ private _deriveAirPower = {
     private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
     if !(_rho isEqualType 0) then { _rho = 1.225; };
 
-    [_mass, _speed, typeOf _veh, _rated, _dragArea, _discArea, _idlePower, _rho] call EFUNC(mobility,calculateAirEngineLoad)
+    [_mass, _speed, typeOf _veh, _rated, _dragArea, _discArea, _idlePower, _rho] call EFUNC(flight,calculateAirEngineLoad)
 };
 
 // ─── Power resolution ──────────────────────────────────────────────────────
@@ -515,7 +515,7 @@ if (_logNow) then {
 
     // The power fraction drives the plume size, not the alpha.
     private _power = [_cand, _IDLE_POWER, _ACCEL_TAU] call _resolvePower;
-    private _profile = [_power, _idleT, _fullT, _idleD, _fullD] call EFUNC(mobility,calculateExhaustPlume);
+    private _profile = [_power, _idleT, _fullT, _idleD, _fullD] call EFUNC(vehicles,calculateExhaustPlume);
     private _gasC = _profile select 0;
     private _depth = _profile select 1;
 
@@ -539,7 +539,7 @@ if (_logNow) then {
         _depth = _depth * ([_hazeRng] call FUNC(heatHazeSize));
     };
 
-    private _contrast = [_gasC, _airC, _rhoRel] call EFUNC(mobility,calculateThermalRefraction);
+    private _contrast = [_gasC, _airC, _rhoRel] call EFUNC(hydrology,calculateThermalRefraction);
     private _mag = abs _contrast;
     if (_mag > _maxMag) then { _maxMag = _mag; };
 

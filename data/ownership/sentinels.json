@@ -141,7 +141,7 @@
     },
     {
       "id": "mobility-mbt-mass",
-      "addon": "mobility",
+      "addon": "vehicles",
       "path": [
         "CfgVehicles",
         "B_MBT_01_cannon_F"
@@ -149,7 +149,7 @@
       "property": "mass",
       "type": "number",
       "expected": 62273.044493,
-      "source": "addons/mobility/generated/CfgVehicles.hpp",
+      "source": "addons/vehicles/generated/CfgVehicles.hpp",
       "evidence": "mass = 62273.044493;"
     }
   ]

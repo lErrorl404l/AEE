@@ -37,7 +37,7 @@ private _player = call CBA_fnc_currentUnit;
 if (!isNil "_player" && {!isNull _player}) then {
     // Shared with fnc_calculateMudAccretion, which wants the same list in
     // the same tick. One engine walk, not two.
-    private _vehicles = [200, _player] call FUNC(getNearbyVehicles);
+    private _vehicles = [200, _player] call EFUNC(vehicles,getNearbyVehicles);
     {
         if (abs speed _x < 1) then { continue; };   // parked vehicles do not pass
         // Terrain and geometry limits: a vehicle that cannot cross the

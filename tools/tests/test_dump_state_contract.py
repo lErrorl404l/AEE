@@ -55,6 +55,13 @@ HOSTED_DUMPS: dict[str, str] = {
     # The thermal split (step 7, ADR-032) left one thermal state dump in
     # thermal; the display publishes into that same state and reuses it.
     "thermal_display": "thermal",
+    # The mobility split (step 8, ADR-032) left one consolidated mobility-family
+    # dump: `logAirframeState` now lives in flight.  mobility, vehicles and
+    # hydrology publish into that same state and reuse it, exactly as the single
+    # `mobility` addon did before the split.
+    "mobility": "flight",
+    "vehicles": "flight",
+    "hydrology": "flight",
 }
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR
@@ -100,7 +107,7 @@ class TestDumpStateContract(unittest.TestCase):
         for addon, name in (
             ("wildlife", "logWildlifeState"),
             ("lighting", "logSkyState"),
-            ("mobility", "logAirframeState"),
+            ("flight", "logAirframeState"),
         ):
             prep = ADDONS / addon / "XEH_PREP.hpp"
             src = prep.read_text(encoding="utf-8")

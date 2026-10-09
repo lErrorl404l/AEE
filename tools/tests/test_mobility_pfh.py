@@ -20,8 +20,10 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 _MOBILITY = REPO / "addons" / "mobility"
+_FLIGHT = REPO / "addons" / "flight"
 _POST_INIT = _MOBILITY / "XEH_postInit.sqf"
-_TURBULENCE = _MOBILITY / "functions" / "fnc_applyFlightTurbulence.sqf"
+_FLIGHT_POST_INIT = _FLIGHT / "XEH_postInit.sqf"
+_TURBULENCE = _FLIGHT / "functions" / "fnc_applyFlightTurbulence.sqf"
 
 
 def _code_only(text):
@@ -38,14 +40,24 @@ class TestPerFrameRadiusFiltering(unittest.TestCase):
 
     def setUp(self):
         self.post = _code_only(_POST_INIT.read_text(encoding="utf-8"))
+        self.flight = _code_only(_FLIGHT_POST_INIT.read_text(encoding="utf-8"))
         self.turb = _code_only(_TURBULENCE.read_text(encoding="utf-8"))
 
     def test_post_init_runs_five_per_frame_handlers(self):
-        """Guard the premise: these loops are the per-frame cost."""
-        count = len(
+        """Guard the premise: these loops are the per-frame cost.
+
+        The mobility split (step 8, ADR-032) moved the two flight loops into
+        aee_flight; the three ground loops stay in aee_mobility.
+        """
+        mobility = len(
             re.findall(r"\}, 0\.05\] call CBA_fnc_addPerFrameHandler", self.post)
         )
-        self.assertEqual(count, 5, f"expected 5 0.05 s handlers, found {count}")
+        flight = len(
+            re.findall(r"\}, 0\.05\] call CBA_fnc_addPerFrameHandler", self.flight)
+        )
+        self.assertEqual(mobility, 3, f"expected 3 mobility handlers, found {mobility}")
+        self.assertEqual(flight, 2, f"expected 2 flight handlers, found {flight}")
+        self.assertEqual(mobility + flight, 5, "expected 5 handlers in the family")
 
     def test_rollover_radius_is_in_the_refresh(self):
         refresh = self.post.index("if ((time - GVAR(rolloverRefresh)) > 1) then")

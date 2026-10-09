@@ -45,7 +45,7 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 DATA = REPO / "data" / "vehicle"
 MODEL_PATH = DATA / "mass_model.json"
 CALIBRATION_PATH = DATA / "mass_model_calibration.json"
-GENERATED = REPO / "addons" / "mobility" / "functions" / "fnc_getVehicleMassModel.sqf"
+GENERATED = REPO / "addons" / "vehicles" / "functions" / "fnc_getVehicleMassModel.sqf"
 VALIDATOR = REPO / "tools" / "validation" / "validate_vehicle_mass_model.py"
 GENERATOR = REPO / "tools" / "validation" / "gen_vehicle_mass_model.py"
 
@@ -112,9 +112,9 @@ DRIVING_FUNCTIONS = (
 )
 # References to the parameter table are allowed only in these files.
 ALLOWED_TABLE_REFERENCE = {
-    "addons/mobility/functions/fnc_getVehicleMassModel.sqf",
-    "addons/mobility/functions/fnc_estimateVehicleMass.sqf",
-    "addons/mobility/XEH_PREP.hpp",
+    "addons/vehicles/functions/fnc_getVehicleMassModel.sqf",
+    "addons/vehicles/functions/fnc_estimateVehicleMass.sqf",
+    "addons/vehicles/XEH_PREP.hpp",
 }
 
 
@@ -980,10 +980,16 @@ class SeparationTest(unittest.TestCase):
         )
 
     def test_no_driving_function_reads_the_estimate(self) -> None:
-        functions = REPO / "addons" / "mobility" / "functions"
+        # The mobility split (step 8, ADR-032) put the ground driving functions
+        # in mobility and the vehicle-data lookups in vehicles; both are driving
+        # functions for this contract.
+        function_dirs = (
+            REPO / "addons" / "mobility" / "functions",
+            REPO / "addons" / "vehicles" / "functions",
+        )
         for name in DRIVING_FUNCTIONS:
-            path = functions / name
-            self.assertTrue(path.is_file(), path)
+            path = next((d / name for d in function_dirs if (d / name).is_file()), None)
+            self.assertIsNotNone(path, name)
             text = _text(path)
             with self.subTest(function=name):
                 self.assertNotIn("estimateVehicleMass", text)
