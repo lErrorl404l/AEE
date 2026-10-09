@@ -41,6 +41,38 @@
           "locator": "engine",
           "state": "Lycoming IO-360-L2A rated 180 hp",
           "grade": "standard"
+        },
+        "fuel_capacity": {
+          "value": 212,
+          "unit": "L",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Fuel Capacity: Total Capacity: 56.0 U.S. gallons",
+          "state": "Cessna 172S POH total fuel capacity, 56.0 US gallons (212 litres)",
+          "grade": "documented"
+        },
+        "fuel_type": {
+          "value": "avgas_100ll",
+          "unit": "enum",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Approved Fuel Grades: 100LL",
+          "state": "Cessna 172S POH approved fuel grade",
+          "grade": "documented"
+        },
+        "fuel_tank_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Total Capacity Each Tank: 28.0 U.S. gallons",
+          "state": "Cessna 172S POH fuel tank count",
+          "grade": "documented"
+        },
+        "fuel_tank_capacity_l": {
+          "value": 106,
+          "unit": "L",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Total Capacity Each Tank: 28.0 U.S. gallons",
+          "state": "Cessna 172S POH fuel tank capacity each, 28.0 US gallons (106 litres)",
+          "grade": "documented"
         }
       }
     }

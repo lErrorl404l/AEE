@@ -81,6 +81,13 @@ RUNTIME_FIELD_UNITS: dict[str, str] = {
     "rated_power_w": "W",
     "drag_area_m2": "m^2",
     "rotor_disc_area_m2": "m^2",
+    # The fuel systems fields. They are reference only, so they never fill a
+    # runtime-required field. The unit map still resolves them for the systems
+    # row and for the fuel derivations.
+    "fuel_capacity": "L",
+    "fuel_consumption_rate": "kg/s",
+    "fuel_density_kg_l": "kg/L",
+    "fuel_burn_kg_s": "kg/s",
 }
 
 # The runtime inputs per vehicle family, in projection order. A wheeled set
@@ -165,6 +172,9 @@ AIRCRAFT_DERIVATION_STATE_MARKERS: dict[str, str] = {
     "rated_power_w": "derived rated power",
     "rotor_disc_area_m2": "derived rotor disc area",
     "drag_area_m2": "derived drag area",
+    "fuel_density_kg_l": "derived fuel density",
+    "fuel_lhv_mj_kg": "derived fuel lower heating value",
+    "fuel_burn_kg_s": "derived fuel burn",
 }
 AIRCRAFT_DERIVATION_FIELDS = frozenset(AIRCRAFT_DERIVATION_STATE_MARKERS)
 
@@ -333,6 +343,110 @@ STATUS_ONLY_SYSTEMS_FIELDS = frozenset(
 )
 
 HP_TO_W = HP_TO_KW * 1000.0
+
+# The standard fuel properties, keyed by the fuel type token. Each entry is
+# ``(density_kg_l, lhv_mj_kg, standard)``. The density is the standard value
+# at 15 C and the lower heating value is the standard net calorific value.
+# The standard is named in the derived state text, so the value is traceable.
+# The fuel type itself is a published field. This table only turns a published
+# token into the two standard properties the systems layer consumes.
+FUEL_PROPERTIES: dict[str, tuple[float, float, str]] = {
+    "avgas_100ll": (0.72, 43.5, "DEF STAN 91-90, Avgas 100LL"),
+    "avgas": (0.72, 43.5, "DEF STAN 91-90, Avgas 100LL"),
+    "jet_a": (0.80, 43.0, "DEF STAN 91-87, Avtur F-35 (Jet A-1)"),
+    "jet_a1": (0.80, 43.0, "DEF STAN 91-87, Avtur F-35 (Jet A-1)"),
+    "jp8": (0.80, 43.0, "MIL-DTL-83133, JP-8"),
+    "jp5": (0.81, 43.0, "MIL-DTL-5624, JP-5"),
+    "ts1": (0.80, 43.0, "GOST 10227, TS-1"),
+    "diesel": (0.84, 42.6, "EN 590, automotive diesel"),
+}
+
+# The joule count of one kilowatt hour. The fuel burn derivation divides the
+# specific fuel consumption by it: ``kg/kWh * W / 3.6e6 = kg/s``.
+JOULES_PER_KWH = 3.6e6
+
+
+def _derive_fuel_property(
+    values: dict[str, object], field: str
+) -> ResolvedField | None:
+    """Derive a standard fuel property from the published fuel type.
+
+    ``fuel_density_kg_l`` and ``fuel_lhv_mj_kg`` are standard values selected
+    by the fuel type. The state text names the standard. The source is the
+    source of the fuel type, so the derivation is traceable to a held document.
+    """
+    base = held_value(values, "fuel_type")
+    if base is None:
+        return None
+    fuel_type = base.get("value")
+    if not isinstance(fuel_type, str):
+        return None
+    prop = FUEL_PROPERTIES.get(fuel_type)
+    if prop is None:
+        return None
+    density, lhv, standard = prop
+    if field == "fuel_density_kg_l":
+        value: object = density
+        unit = "kg/L"
+        marker = "derived fuel density"
+        text = (
+            f"derived fuel density from the fuel type {fuel_type}: "
+            f"fuel_density_kg_l = {density} kg/L ({standard})"
+        )
+    else:
+        value = lhv
+        unit = "MJ/kg"
+        marker = "derived fuel lower heating value"
+        text = (
+            f"derived fuel lower heating value from the fuel type {fuel_type}: "
+            f"fuel_lhv_mj_kg = {lhv} MJ/kg ({standard})"
+        )
+    return ResolvedField(
+        name=field,
+        value=value,
+        unit=unit,
+        source=str(base.get("source", "")),
+        locator=str(base.get("locator", "")),
+        state=f"{marker}: {text}",
+        grade="derived",
+    )
+
+
+def _derive_fuel_burn(
+    values: dict[str, object], profile: Profile
+) -> ResolvedField | None:
+    """Derive the fuel burn rate from the specific fuel consumption and power.
+
+    ``fuel_burn_kg_s = sfc_kg_kwh * rated_power_w / 3.6e6``. The rated power
+    resolves through the same ladder as the runtime field, so a jet's derived
+    rated power is an input. The state text names the formula.
+    """
+    sfc = held_value(values, "sfc_kg_kwh")
+    if sfc is None:
+        return None
+    sfc_value = _number(sfc.get("value"))
+    if sfc_value is None:
+        return None
+    power = resolve_field(values, "rated_power_w", profile)
+    if power.grade == "absent":
+        return None
+    power_value = _number(power.value)
+    if power_value is None:
+        return None
+    burn = round(sfc_value * power_value / JOULES_PER_KWH, POWER_ROUND)
+    return ResolvedField(
+        name="fuel_burn_kg_s",
+        value=burn,
+        unit="kg/s",
+        source=str(sfc.get("source", "")),
+        locator=str(sfc.get("locator", "")),
+        state=(
+            "derived fuel burn from the specific fuel consumption and the "
+            "rated power: fuel_burn_kg_s = sfc_kg_kwh * rated_power_w / 3.6e6 "
+            f"= {sfc_value} * {power_value} / 3600000"
+        ),
+        grade="derived",
+    )
 
 
 @dataclass(frozen=True)
@@ -877,6 +991,10 @@ def _derive_field(
         return _derive_rotor_disc(values)
     if field == "drag_area_m2":
         return _derive_drag_area(values)
+    if field in ("fuel_density_kg_l", "fuel_lhv_mj_kg"):
+        return _derive_fuel_property(values, field)
+    if field == "fuel_burn_kg_s":
+        return _derive_fuel_burn(values, profile)
     return None
 
 
