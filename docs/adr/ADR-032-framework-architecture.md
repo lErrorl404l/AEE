@@ -95,6 +95,26 @@ compares `dayTime`, which jumps on `skipTime`, and handles the 86400 wrap.
 - Cost: an extra indirection per throttled model (one last-sample variable)
   and one scan. The scan pays this back by refusing a reintroduced read.
 
+## Manual ceilings
+
+A ceiling is a claim the harness cannot prove from a dedicated-server run. Each
+is recorded here so no run reports it as passed.
+
+- **The human eye on a client.** A dedicated server renders nothing, so the
+  rendered look is an operator-only observation.
+- **The 907 ms first-entry engine build.** The engine pays a one-off build cost
+  the first time a model runs. It is a first-entry cost, not a steady-state one.
+- **The engine's uncontrollable frame delivery.** A dev tool cannot force a
+  frame. The engine delivers frames on its own schedule.
+- **The BattlEye-on server path for the client kernels.** A production server
+  keeps BattlEye on, so the client kernels run dev-only with BattlEye off.
+- **Standards judgement.** A check proves a value carries a source; it cannot
+  prove the value is right. Physics fidelity and colour representation are human
+  calls.
+- **External-truth rebuilds.** A corpus built from the engine or the web needs
+  that source present. The gate proves it is unchanged since commit; it cannot
+  prove it is still correct without the source.
+
 ## References
 
 - `docs/engine/engine-commands-and-features.md` (the per-frame handler and the
