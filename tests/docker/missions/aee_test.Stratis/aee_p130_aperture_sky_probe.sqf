@@ -29,7 +29,7 @@ private _notes = [];
 // ── Part A: the aperture is handed back after a sensor exit ────────────────
 private _teardown = missionNamespace getVariable ["aee_optics_fnc_teardownSensors", nil];
 private _exitThermal = missionNamespace getVariable ["aee_optics_fnc_exitThermalSensors", nil];
-private _apFn = missionNamespace getVariable ["aee_optics_fnc_eyeAperture", nil];
+private _apFn = missionNamespace getVariable ["aee_eye_fnc_eyeAperture", nil];
 
 if (isNil "_teardown" || {isNil "_exitThermal"} || {isNil "_apFn"}) then {
     _fail = _fail + 1;

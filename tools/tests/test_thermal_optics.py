@@ -37,6 +37,8 @@ from tools.tests.test_sqf_two_node import _solve as _solve_two_node  # noqa: E40
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
+_VISION = _REPO_ROOT / "addons" / "vision" / "functions"
+_EYE = _REPO_ROOT / "addons" / "eye" / "functions"
 _THERMAL = _REPO_ROOT / "addons" / "thermal" / "functions"
 _NVG = _REPO_ROOT / "addons" / "nightvision" / "functions"
 _CORE = _REPO_ROOT / "addons" / "core" / "functions"
@@ -54,6 +56,10 @@ def _read_sqf(name, addon="optics"):
         base = _NVG
     elif addon == "core":
         base = _CORE
+    elif addon == "vision":
+        base = _VISION
+    elif addon == "eye":
+        base = _EYE
     else:
         base = _OPTICS
     if (base / name).exists():
@@ -2594,7 +2600,7 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         )
         self.assertIn("eyeStatePrev", eye_state)
 
-        post = Path("addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        post = Path("addons/vision/XEH_postInit.sqf").read_text(encoding="utf-8")
         # The duplicate droplet call in the thermal branch must be gone:
         # exactly ONE tick call (the unconditional one before the branches).
         self.assertEqual(
@@ -3162,7 +3168,7 @@ class TestSQFSync(unittest.TestCase):
 
         root = Path(__file__).resolve().parents[2]
         files = [
-            "addons/optics/functions/vision/fnc_managePostProcess.sqf",
+            "addons/vision/functions/vision/fnc_managePostProcess.sqf",
             "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
             "addons/thermal/functions/display/fnc_applyThermalVision.sqf",
         ]
@@ -3233,10 +3239,10 @@ class TestSQFSync(unittest.TestCase):
             2550,
         }
         manage = (
-            root / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+            root / "addons/vision/functions/vision/fnc_managePostProcess.sqf"
         ).read_text(encoding="utf-8")
         create = (
-            root / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
+            root / "addons/vision/functions/vision/fnc_ppEffectCreate.sqf"
         ).read_text(encoding="utf-8")
         applied = {
             m.group(1): int(m.group(2))
@@ -4594,7 +4600,7 @@ class TestPostProcessHandleOwnership(unittest.TestCase):
     def test_sensor_exit_deferred_disables_carry_a_generation_guard(self):
         # (d) Each of the three sensor-exit deferred disables captures the
         # effect generation and skips the disable when it changed.
-        text = _read_sqf("fnc_managePostProcess.sqf", "optics")
+        text = _read_sqf("fnc_managePostProcess.sqf", "vision")
         block = _sqf_block(text, "if (_visionMode == 1 || _visionMode == 2) exitWith")
         pairs = (
             ("chromaGen", "ppHandle_ChromAberration"),
@@ -7096,8 +7102,15 @@ class TestThermalBaseChannel(unittest.TestCase):
     _SETTINGS = _REPO_ROOT / "addons" / "thermal" / "initSettings.inc.sqf"
     _HOST = _THERMAL / "display" / "fnc_isThermalHostActive.sqf"
     _VISION = _THERMAL / "display" / "fnc_applyThermalVision.sqf"
-    _HOSTMGR = _OPTICS / "vision" / "fnc_updateThermalHost.sqf"
-    _POSTINIT = _REPO_ROOT / "addons" / "optics" / "XEH_postInit.sqf"
+    _HOSTMGR = (
+        _REPO_ROOT
+        / "addons"
+        / "vision"
+        / "functions"
+        / "vision"
+        / "fnc_updateThermalHost.sqf"
+    )
+    _POSTINIT = _REPO_ROOT / "addons" / "vision" / "XEH_postInit.sqf"
 
     def test_setting_defaults_to_vanilla_ti(self):
         text = self._SETTINGS.read_text(encoding="utf-8")
@@ -7221,7 +7234,7 @@ class TestThermalPostProcessLadder(unittest.TestCase):
         others += [
             (f"optics:{k}", v)
             for k, v in self._bare_entries(
-                _read_sqf("fnc_ppEffectCreate.sqf", "optics")
+                _read_sqf("fnc_ppEffectCreate.sqf", "vision")
             ).items()
         ]
         others += [(f"nvg:{k}", v) for k, v in self._qgvar_entries(nvg).items()]

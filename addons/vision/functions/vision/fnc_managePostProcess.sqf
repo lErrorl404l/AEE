@@ -205,23 +205,23 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
 // Defensive: a contributor that stores a string or nil (bad variable state)
 // must not propagate into ppEffectAdjust — "Type Number, expected Number"
 // otherwise fires every tick.  Coerce to numeric with a finite floor.
-private _seeingChroma  = missionNamespace getVariable [QGVAR(seeingChroma), 0];
-private _shimmerChroma = missionNamespace getVariable [QGVAR(shimmerChroma), 0];
+private _seeingChroma  = missionNamespace getVariable [QEGVAR(optics,seeingChroma), 0];
+private _shimmerChroma = missionNamespace getVariable [QEGVAR(optics,shimmerChroma), 0];
 if !(_seeingChroma isEqualType 0) then { _seeingChroma = 0; };
 if !(_shimmerChroma isEqualType 0) then { _shimmerChroma = 0; };
-private _dewBlur     = missionNamespace getVariable [QGVAR(dewBlur), 0];
-private _rainBlur    = missionNamespace getVariable [QGVAR(rainBlur), 0];
-private _glareBlur   = missionNamespace getVariable [QGVAR(glareBlur), 0];
-private _severeBlur  = missionNamespace getVariable [QGVAR(severeWeatherBlur), 0];
+private _dewBlur     = missionNamespace getVariable [QEGVAR(optics,dewBlur), 0];
+private _rainBlur    = missionNamespace getVariable [QEGVAR(optics,rainBlur), 0];
+private _glareBlur   = missionNamespace getVariable [QEGVAR(optics,glareBlur), 0];
+private _severeBlur  = missionNamespace getVariable [QEGVAR(optics,severeWeatherBlur), 0];
 if !(_dewBlur isEqualType 0) then { _dewBlur = 0; };
 if !(_rainBlur isEqualType 0) then { _rainBlur = 0; };
 if !(_glareBlur isEqualType 0) then { _glareBlur = 0; };
 if !(_severeBlur isEqualType 0) then { _severeBlur = 0; };
-private _severeCC    = missionNamespace getVariable [QGVAR(severeWeatherCC), []];
-private _snowCC      = missionNamespace getVariable [QGVAR(snowBlindnessCC), []];
+private _severeCC    = missionNamespace getVariable [QEGVAR(optics,severeWeatherCC), []];
+private _snowCC      = missionNamespace getVariable [QEGVAR(optics,snowBlindnessCC), []];
 
 // ─── Resolve per effect ────────────────────────────────────────────────────
-private _chromaCap = missionNamespace getVariable [QGVAR(chromaCap), 0.06];
+private _chromaCap = missionNamespace getVariable [QEGVAR(optics,chromaCap), 0.06];
 private _chroma = (_seeingChroma + _shimmerChroma) min _chromaCap;
 private _blur   = (_dewBlur max _rainBlur) max (_glareBlur max _severeBlur);
 

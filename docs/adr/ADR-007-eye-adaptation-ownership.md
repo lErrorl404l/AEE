@@ -66,7 +66,7 @@ The per-constant register is in the plan. The values marked UNSOURCED, and repea
 ## References
 
 - Issue #141: eye adaptation rate.
-- `addons/optics/functions/eye/`: the model, the driver and the debug hooks.
+- `addons/eye/functions/eye/`: the model, the driver and the debug hooks.
 - BI wiki: `setAperture`, `setApertureNew`, `getLightingAt`, `apertureParams`.
 - CIE 191:2010 (mesopic photometry); CIE 018:2019 (luminous efficacy).
 - de Groot and Gebhard 1952, JOSA 42(7):492 (pupil diameter fit).

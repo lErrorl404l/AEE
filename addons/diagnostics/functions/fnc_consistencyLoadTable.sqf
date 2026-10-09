@@ -33,14 +33,14 @@ private _table = [
         "illuminance_chain",
         [
             ["core", "aee_core_illuminanceLux"],
-            ["optics", "aee_optics_eyeSceneLux"],
+            ["eye", "aee_eye_eyeSceneLux"],
             ["core", "aee_core_lightIsNight"]
         ],
         "night_scene_agreement",
         0.5,
         "warn",
         "derived",
-        "Night scope: the row runs only when aee_core_lightIsNight is true (sun at or below the horizon). At night both sides are the physical-sky model, so the eye scene illuminance (aee_optics_eyeSceneLux) tracks the core illuminance (aee_core_illuminanceLux) within the tolerance, a relative fraction. The eye fix 98d1f17 gates the engine local term by sun elevation, so the two agree at night. In daylight the two draw on different light sources and the row is out of scope."
+        "Night scope: the row runs only when aee_core_lightIsNight is true (sun at or below the horizon). At night both sides are the physical-sky model, so the eye scene illuminance (aee_eye_eyeSceneLux) tracks the core illuminance (aee_core_illuminanceLux) within the tolerance, a relative fraction. The eye fix 98d1f17 gates the engine local term by sun elevation, so the two agree at night. In daylight the two draw on different light sources and the row is out of scope."
     ],
     [
         "INV-2",

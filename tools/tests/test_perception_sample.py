@@ -25,7 +25,7 @@ from sqf_lite import run_sqf  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
 SAMPLE = (
-    REPO / "addons" / "optics" / "functions" / "perception" / "fnc_perceptionSample.sqf"
+    REPO / "addons" / "vision" / "functions" / "perception" / "fnc_perceptionSample.sqf"
 )
 
 # The schema, in return order.  Asserted equal to the source list.

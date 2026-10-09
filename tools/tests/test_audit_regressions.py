@@ -305,11 +305,11 @@ class TestPPEffectRegistry(unittest.TestCase):
 
     _CREATE = REPO / "addons/lib/functions/fnc_createPPEffect.sqf"
     _DESTROY = REPO / "addons/lib/functions/fnc_destroyPPEffect.sqf"
-    _RELEASE = REPO / "addons/optics/functions/vision/fnc_destroyBasePostProcess.sqf"
+    _RELEASE = REPO / "addons/vision/functions/vision/fnc_destroyBasePostProcess.sqf"
     _PREP = REPO / "addons/lib/XEH_PREP.hpp"
-    _OPTICS_PREP = REPO / "addons/optics/XEH_PREP.hpp"
-    _OPTS = REPO / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
-    _PRE = REPO / "addons/optics/XEH_preInit.sqf"
+    VISION_PREP = REPO / "addons/vision/XEH_PREP.hpp"
+    _OPTS = REPO / "addons/vision/functions/vision/fnc_ppEffectCreate.sqf"
+    _PRE = REPO / "addons/vision/XEH_preInit.sqf"
 
     def test_both_halves_of_the_registry_exist_and_are_prepped(self):
         for f in (self._CREATE, self._DESTROY, self._RELEASE):
@@ -319,7 +319,7 @@ class TestPPEffectRegistry(unittest.TestCase):
         self.assertIn("PREP(destroyPPEffect);", prep)
         self.assertIn(
             "PREPS(vision,destroyBasePostProcess);",
-            self._OPTICS_PREP.read_text(encoding="utf-8"),
+            self.VISION_PREP.read_text(encoding="utf-8"),
         )
 
     def test_creation_is_idempotent_through_the_registry(self):
@@ -384,8 +384,8 @@ class TestPPEffectCrossScopeOwnership(unittest.TestCase):
     """
 
     _CREATE = REPO / "addons/lib/functions/fnc_createPPEffect.sqf"
-    _OPTS = REPO / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
-    _MGMT = REPO / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+    _OPTS = REPO / "addons/vision/functions/vision/fnc_ppEffectCreate.sqf"
+    _MGMT = REPO / "addons/vision/functions/vision/fnc_managePostProcess.sqf"
 
     def test_a_candidate_is_compared_against_every_owned_handle(self):
         code = _code(self._CREATE)
@@ -524,11 +524,11 @@ class TestPPEffectLifecycle(unittest.TestCase):
     addon that owns it, and the night grain read a handle that no code wrote.
     """
 
-    _MANAGE = REPO / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+    _MANAGE = REPO / "addons/vision/functions/vision/fnc_managePostProcess.sqf"
     # The nightvision DoF teardown call was extracted from optics/XEH_postInit.sqf
     # into fnc_runThermalPass.sqf so the DTV host can reuse the pass; the
     # teardown still goes through the owner, so this file carries the call.
-    _OPTICS_POST = REPO / "addons/optics/functions/vision/fnc_runThermalPass.sqf"
+    _OPTICS_POST = REPO / "addons/vision/functions/vision/fnc_runThermalPass.sqf"
     _NIGHT_GRAIN = REPO / "addons/nightvision/functions/fnc_applyNightGrain.sqf"
     _TEARDOWN = REPO / "addons/nightvision/functions/fnc_teardownNvgDoF.sqf"
     _ALLOWLIST = REPO / "tools/validation/cba_settings_allowlist.txt"

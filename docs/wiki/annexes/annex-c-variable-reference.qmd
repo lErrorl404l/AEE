@@ -131,10 +131,10 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_glareBlur` | optics | Glare blur |
 | `aee_optics_currentLaserAttenuation` | optics | Laser attenuation |
 | `aee_optics_currentVisibleAttenuation` | optics | Visible attenuation |
-| `aee_optics_weatherGrainActive` | optics | Rain-scaled film grain enabled, the hysteresis state |
-| `aee_optics_shadowTarget` | optics | Scene-aware shadow distance target in metres (aee-workshop-copy item 6) |
-| `aee_optics_shadowScene` | optics | Scene classifier state for the shadow distance (aee-workshop-copy item 6) |
-| `aee_optics_shadowCoverage` | optics | Opening coverage from the shadow classifier (aee-workshop-copy item 6) |
+| `aee_vision_weatherGrainActive` | vision | Rain-scaled film grain enabled, the hysteresis state |
+| `aee_vision_shadowTarget` | vision | Scene-aware shadow distance target in metres (aee-workshop-copy item 6) |
+| `aee_vision_shadowScene` | vision | Scene classifier state for the shadow distance (aee-workshop-copy item 6) |
+| `aee_vision_shadowCoverage` | vision | Opening coverage from the shadow classifier (aee-workshop-copy item 6) |
 | `aee_optics_symbologyEnabled` | optics | Registered setting under **AEE HUD > Symbology**: draw the NATO APP-6(C) map and world symbols (default off) |
 | `aee_optics_symbologyPalette` | optics | Registered setting under **AEE HUD > Symbology**: the affiliation palette NATO, OPFOR or Auto (default Auto) |
 | `aee_optics_symbologyUnits` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the in-range units (default on) |
@@ -162,47 +162,47 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_nightvision_ppHandle_NVG_Chroma` | nightvision | NVG-owned ChromAberration ppEffect handle (priority 3050), never shared with the optics handle |
 | `aee_nightvision_nvgBreathing` | nightvision | AGC breathing brightness factor this tick, in [-0.15, 0.15] |
 | `aee_nightvision_nvgImperfectionAlpha` | nightvision | Blemish overlay opacity this tick (1 - the control fade), 0..1 |
-| `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
-| `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
-| `aee_optics_dtvHostVehicle` | optics | Vehicle whose native TI the DTV base channel disabled; restored on exit or switch |
-| `aee_optics_dtvHostEntered` | optics | True while the DTV base channel has run its thermal sensor ENTER |
-| `aee_optics_eyeSceneLux` | optics | Scene illuminance the eye model sampled, lx |
-| `aee_optics_eyeAdaptedLux` | optics | Adapted scene illuminance after the eye model, lx |
-| `aee_optics_eyeAperture` | optics | Aperture the eye model pinned, higher is wider |
-| `aee_optics_eyePupilMm` | optics | Pupil diameter the eye model carries, mm |
-| `aee_optics_eyeAdaptTargetLux` | optics | Scene illuminance the eye model is adapting toward, lx |
-| `aee_optics_eyeAdaptDirection` | optics | Adaptation direction: -1 dark-adapting, 0 settled, +1 light-adapting |
-| `aee_optics_eyeAdaptTau` | optics | Effective adaptation time constant of the slowest pool, s |
-| `aee_optics_eyeAdaptTimeToAdapt` | optics | Time to cover 95 percent of the remaining adaptation, s |
-| `aee_optics_eyeAdaptInitialised` | optics | True once the eye takes its initial state from the scene at spawn |
-| `aee_optics_eyeAcuity` | optics | Scotopic acuity factor, 1 daylight down to a dark floor |
-| `aee_optics_eyeColourLoss` | optics | Scotopic colour-loss factor, 0 photopic to 1 rod monochromacy |
-| `aee_optics_eyeDarkNoise` | optics | Scotopic dark-noise (visual grain) factor, 0 to 1 |
-| `aee_optics_eyeGlare` | optics | Veiling glare factor from a local source, 0 to 1 |
-| `aee_optics_eyeMesopic` | optics | CIE 191:2010 photopic fraction, 0 scotopic to 1 photopic |
-| `aee_optics_eyeSkyFraction` | optics | Open-sky fraction from the sky raycast, 0 to 1 |
-| `aee_optics_eyeRawAmbient` | optics | Raw ambient input to the eye model, lx |
-| `aee_optics_eyeRawLocal` | optics | Raw local-light input to the eye model, lx |
-| `aee_optics_eyeRawCoreLocal` | optics | Core dynamic-lux input to the eye model, lx |
-| `aee_optics_eyeRawEngineAmbient` | optics | Engine `getLightingAt` ambient element, no unit |
-| `aee_optics_eyeRawSunElev` | optics | Sun elevation at the sample, degrees (gates the ambient source) |
-| `aee_optics_eyeRawEngineLocal` | optics | Engine `getLightingAt` dynamic element, no unit |
-| `aee_optics_eyeRawEngineLum` | optics | Engine `apertureParams` estimated luminance, no unit |
-| `aee_optics_eyeRawBlinding` | optics | Engine `apertureParams` blinding term, no unit |
-| `aee_optics_eyeRawSky` | optics | Open-sky fraction before the scene combine, 0 to 1 |
-| `aee_optics_perceptionState` | optics | Perception monitor aggregate: the 14-field perceptionSample schema (scene lux, adapted lux, aperture, pupil, mesopic, grade, tint, NVG, thermal, UV, stress, injury, effects, eye adaptation) |
-| `aee_optics_perceptionLine` | optics | Perception monitor one-line human readout of the view state |
-| `aee_optics_perceptionLux` | optics | Perception monitor scene illuminance, lx |
-| `aee_optics_perceptionAperture` | optics | Perception monitor applied aperture |
-| `aee_optics_perceptionGrade` | optics | Perception monitor applied grade channels [brightness, contrast, offset, alpha] |
-| `aee_optics_perceptionFlags` | optics | Perception monitor deviation flags [discolouration, blindness, gradeMismatch, stuckAdaptation, detail] |
-| `aee_optics_perceptionForceLux` | optics | Perception force hook: replaces the sampled scene lux. A debug-console value on `missionNamespace`, not a CBA setting |
-| `aee_optics_perceptionForceGrade` | optics | Perception force hook: replaces the applied grade array |
-| `aee_optics_perceptionForceNvg` | optics | Perception force hook: replaces the NVG state array |
-| `aee_optics_perceptionForceThermal` | optics | Perception force hook: replaces the thermal state array |
-| `aee_optics_perceptionMonitor` | optics | Registered setting under **AEE Debug > Perception**: publish and log the perception state (default on) |
-| `aee_optics_perceptionHud` | optics | Registered setting under **AEE Debug > Perception**: show the perception overlay (default off) |
-| `aee_optics_perceptionInterval` | optics | Registered setting under **AEE Debug > Perception**: minimum seconds between samples, 0.1 to 2.0 (default 0.5) |
+| `aee_vision_viewDistanceTarget` | vision | Vision-driven view distance target in metres (issue #138) |
+| `aee_vision_viewDistanceSigma` | vision | Total atmospheric extinction sigma for the view-distance driver |
+| `aee_vision_dtvHostVehicle` | vision | Vehicle whose native TI the DTV base channel disabled; restored on exit or switch |
+| `aee_vision_dtvHostEntered` | vision | True while the DTV base channel has run its thermal sensor ENTER |
+| `aee_eye_eyeSceneLux` | eye | Scene illuminance the eye model sampled, lx |
+| `aee_eye_eyeAdaptedLux` | eye | Adapted scene illuminance after the eye model, lx |
+| `aee_eye_eyeAperture` | eye | Aperture the eye model pinned, higher is wider |
+| `aee_eye_eyePupilMm` | eye | Pupil diameter the eye model carries, mm |
+| `aee_eye_eyeAdaptTargetLux` | eye | Scene illuminance the eye model is adapting toward, lx |
+| `aee_eye_eyeAdaptDirection` | eye | Adaptation direction: -1 dark-adapting, 0 settled, +1 light-adapting |
+| `aee_eye_eyeAdaptTau` | eye | Effective adaptation time constant of the slowest pool, s |
+| `aee_eye_eyeAdaptTimeToAdapt` | eye | Time to cover 95 percent of the remaining adaptation, s |
+| `aee_eye_eyeAdaptInitialised` | eye | True once the eye takes its initial state from the scene at spawn |
+| `aee_eye_eyeAcuity` | eye | Scotopic acuity factor, 1 daylight down to a dark floor |
+| `aee_eye_eyeColourLoss` | eye | Scotopic colour-loss factor, 0 photopic to 1 rod monochromacy |
+| `aee_eye_eyeDarkNoise` | eye | Scotopic dark-noise (visual grain) factor, 0 to 1 |
+| `aee_eye_eyeGlare` | eye | Veiling glare factor from a local source, 0 to 1 |
+| `aee_eye_eyeMesopic` | eye | CIE 191:2010 photopic fraction, 0 scotopic to 1 photopic |
+| `aee_eye_eyeSkyFraction` | eye | Open-sky fraction from the sky raycast, 0 to 1 |
+| `aee_eye_eyeRawAmbient` | eye | Raw ambient input to the eye model, lx |
+| `aee_eye_eyeRawLocal` | eye | Raw local-light input to the eye model, lx |
+| `aee_eye_eyeRawCoreLocal` | eye | Core dynamic-lux input to the eye model, lx |
+| `aee_eye_eyeRawEngineAmbient` | eye | Engine `getLightingAt` ambient element, no unit |
+| `aee_eye_eyeRawSunElev` | eye | Sun elevation at the sample, degrees (gates the ambient source) |
+| `aee_eye_eyeRawEngineLocal` | eye | Engine `getLightingAt` dynamic element, no unit |
+| `aee_eye_eyeRawEngineLum` | eye | Engine `apertureParams` estimated luminance, no unit |
+| `aee_eye_eyeRawBlinding` | eye | Engine `apertureParams` blinding term, no unit |
+| `aee_eye_eyeRawSky` | eye | Open-sky fraction before the scene combine, 0 to 1 |
+| `aee_vision_perceptionState` | optics | Perception monitor aggregate: the 14-field perceptionSample schema (scene lux, adapted lux, aperture, pupil, mesopic, grade, tint, NVG, thermal, UV, stress, injury, effects, eye adaptation) |
+| `aee_vision_perceptionLine` | optics | Perception monitor one-line human readout of the view state |
+| `aee_vision_perceptionLux` | optics | Perception monitor scene illuminance, lx |
+| `aee_vision_perceptionAperture` | optics | Perception monitor applied aperture |
+| `aee_vision_perceptionGrade` | optics | Perception monitor applied grade channels [brightness, contrast, offset, alpha] |
+| `aee_vision_perceptionFlags` | optics | Perception monitor deviation flags [discolouration, blindness, gradeMismatch, stuckAdaptation, detail] |
+| `aee_vision_perceptionForceLux` | optics | Perception force hook: replaces the sampled scene lux. A debug-console value on `missionNamespace`, not a CBA setting |
+| `aee_vision_perceptionForceGrade` | optics | Perception force hook: replaces the applied grade array |
+| `aee_vision_perceptionForceNvg` | optics | Perception force hook: replaces the NVG state array |
+| `aee_vision_perceptionForceThermal` | optics | Perception force hook: replaces the thermal state array |
+| `aee_vision_perceptionMonitor` | optics | Registered setting under **AEE Debug > Perception**: publish and log the perception state (default on) |
+| `aee_vision_perceptionHud` | optics | Registered setting under **AEE Debug > Perception**: show the perception overlay (default off) |
+| `aee_vision_perceptionInterval` | optics | Registered setting under **AEE Debug > Perception**: minimum seconds between samples, 0.1 to 2.0 (default 0.5) |
 
 ### Physiology
 
@@ -597,14 +597,14 @@ description.
 
 | Variable | Category | Purpose |
 |---|---|---|
-| `aee_optics_visionModelEnabled` | Optics > Vision | Enable the physical model for normal vision |
-| `aee_optics_visionToneEnabled` | Optics > Vision | Enable the tone and contrast stage |
-| `aee_optics_visionToneStrength` | Optics > Vision | Tone-stage strength, 0 to 1 |
-| `aee_optics_visionContrastScale` | Optics > Vision | Tone-stage contrast scale, 0.5 to 1.5 |
-| `aee_optics_visionWhiteBalance` | Optics > Vision | Enable the partial von Kries white balance |
-| `aee_optics_visionAdaptationDegree` | Experimental > Vision | Degree of chromatic adaptation D, 0 to 1 (CIE 159:2004) |
-| `aee_optics_visionMesopicDesaturation` | Experimental > Vision | Maximum mesopic desaturation, 0 to 0.5 |
-| `aee_optics_visionPurkinjeStrength` | Experimental > Vision | Purkinje tint strength, 0 to 1 |
+| `aee_vision_visionModelEnabled` | Optics > Vision | Enable the physical model for normal vision |
+| `aee_vision_visionToneEnabled` | Optics > Vision | Enable the tone and contrast stage |
+| `aee_vision_visionToneStrength` | Optics > Vision | Tone-stage strength, 0 to 1 |
+| `aee_vision_visionContrastScale` | Optics > Vision | Tone-stage contrast scale, 0.5 to 1.5 |
+| `aee_vision_visionWhiteBalance` | Optics > Vision | Enable the partial von Kries white balance |
+| `aee_vision_visionAdaptationDegree` | Experimental > Vision | Degree of chromatic adaptation D, 0 to 1 (CIE 159:2004) |
+| `aee_vision_visionMesopicDesaturation` | Experimental > Vision | Maximum mesopic desaturation, 0 to 0.5 |
+| `aee_vision_visionPurkinjeStrength` | Experimental > Vision | Purkinje tint strength, 0 to 1 |
 
 ### Thermal model (band and sensor)
 
@@ -693,11 +693,11 @@ state for the operator and for the debug console.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_optics_baseGradeActive` | optics | Normal-vision base grade currently applied |
-| `aee_optics_baseGradeCC` | optics | Base-grade ColorCorrections handle |
-| `aee_optics_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
-| `aee_optics_visionModelActive` | optics | True when the human-vision model owns the normal-vision grade this tick |
-| `aee_optics_visionBaseResolved` | optics | The resolved base-grade anchor: the cached config value plus any debug override, published above the client-only exit for a headless probe |
+| `aee_vision_baseGradeActive` | vision | Normal-vision base grade currently applied |
+| `aee_vision_baseGradeCC` | vision | Base-grade ColorCorrections handle |
+| `aee_vision_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
+| `aee_vision_visionModelActive` | vision | True when the human-vision model owns the normal-vision grade this tick |
+| `aee_vision_visionBaseResolved` | vision | The resolved base-grade anchor: the cached config value plus any debug override, published above the client-only exit for a headless probe |
 | `aee_thermal_bloom` | thermal | Hot-source bloom amplitude this tick |
 | `aee_thermal_agcHunt` | thermal | AGC hunt gain offset this tick |
 | `aee_thermal_nucDrift` | thermal | Non-uniformity (NUC) drift this tick |
@@ -712,9 +712,9 @@ owning function headers.
 | Hook | Type | Purpose |
 |---|---|---|
 | `aee_optics_baseGradeForce` | BOOL | Force the normal-vision base grade on |
-| `aee_optics_baseGradeContrast` | NUMBER | Override the base-grade contrast setting |
-| `aee_optics_baseGradeSharpness` | NUMBER | Override the acuity sharpness setting |
-| `aee_optics_baseGradeGrain` | NUMBER | Override the acuity grain setting |
+| `aee_vision_baseGradeContrast` | NUMBER | Override the base-grade contrast setting |
+| `aee_vision_baseGradeSharpness` | NUMBER | Override the acuity sharpness setting |
+| `aee_vision_baseGradeGrain` | NUMBER | Override the acuity grain setting |
 | `aee_optics_visionForce` | BOOL | Force the human-vision model on |
 | `aee_optics_visionForceLux` | NUMBER | Override the adapted luminance, cd/m2 |
 | `aee_optics_visionForceMesopic` | NUMBER | Override the mesopic photopic fraction |

@@ -97,9 +97,9 @@ EXPECTED_EXPERIMENTAL_FUSION = {
 }
 
 EXPECTED_EXPERIMENTAL_VISION = {
-    "aee_optics_visionAdaptationDegree",
-    "aee_optics_visionMesopicDesaturation",
-    "aee_optics_visionPurkinjeStrength",
+    "aee_vision_visionAdaptationDegree",
+    "aee_vision_visionMesopicDesaturation",
+    "aee_vision_visionPurkinjeStrength",
 }
 
 # Every AEE Experimental name, across all subcategories.  The unknown-setting
@@ -127,11 +127,11 @@ class TestExperimentalTaxonomy(unittest.TestCase):
 
 
 EXPECTED_OPTICS_VISION = {
-    "aee_optics_visionContrastScale",
-    "aee_optics_visionModelEnabled",
-    "aee_optics_visionToneEnabled",
-    "aee_optics_visionToneStrength",
-    "aee_optics_visionWhiteBalance",
+    "aee_vision_visionContrastScale",
+    "aee_vision_visionModelEnabled",
+    "aee_vision_visionToneEnabled",
+    "aee_vision_visionToneStrength",
+    "aee_vision_visionWhiteBalance",
 }
 
 
@@ -139,8 +139,8 @@ class TestOpticsVisionTaxonomy(unittest.TestCase):
     """AEE Optics > Vision holds exactly the five human-vision settings."""
 
     def test_optics_vision_group_is_exact(self):
-        groups = taxonomy_groups({"AEE Optics"})
-        self.assertEqual(groups.get(("AEE Optics", "Vision")), EXPECTED_OPTICS_VISION)
+        groups = taxonomy_groups({"AEE Vision"})
+        self.assertEqual(groups.get(("AEE Vision", "Vision")), EXPECTED_OPTICS_VISION)
 
 
 EXPECTED_WILDLIFE_GENERAL = {
@@ -220,10 +220,12 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Ballistics"): {"aee_ballistics_logDebug"},
     ("AEE Debug", "Armour"): {"aee_armour_penetrationDebug", "aee_armour_logDebug"},
     ("AEE Debug", "Optics"): {"aee_optics_logDebug"},
+    ("AEE Debug", "Eye"): {"aee_eye_logDebug"},
+    ("AEE Debug", "Vision"): {"aee_vision_logDebug"},
     ("AEE Debug", "Perception"): {
-        "aee_optics_perceptionHud",
-        "aee_optics_perceptionInterval",
-        "aee_optics_perceptionMonitor",
+        "aee_vision_perceptionHud",
+        "aee_vision_perceptionInterval",
+        "aee_vision_perceptionMonitor",
     },
     ("AEE Debug", "Night Vision"): {"aee_nightvision_logDebug"},
     ("AEE Debug", "Mobility"): {"aee_mobility_logDebug"},
@@ -274,26 +276,26 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_nightvision_nvgScintillationStrength": 2,  # was 0.05
     "aee_nightvision_nvgVeilingGlare": 4,  # was 0.001
     "aee_nightvision_rainGrainMax": 1,  # was 0
-    "aee_optics_baseGradeBlackPoint": 3,  # was 0.005
-    "aee_optics_baseGradeBrightness": 2,  # was 0.05
-    "aee_optics_baseGradeContrast": 2,  # was 0.05
-    "aee_optics_baseGradeGrain": 3,  # was 0.001
-    "aee_optics_baseGradeSaturation": 2,  # was 0.05
+    "aee_vision_baseGradeBlackPoint": 3,  # was 0.005
+    "aee_vision_baseGradeBrightness": 2,  # was 0.05
+    "aee_vision_baseGradeContrast": 2,  # was 0.05
+    "aee_vision_baseGradeGrain": 3,  # was 0.001
+    "aee_vision_baseGradeSaturation": 2,  # was 0.05
     "aee_optics_chromaCap": 2,  # was 0
     "aee_optics_dewAccumRate": 2,  # was 0
     "aee_optics_dewBlurMax": 1,  # was 0
     "aee_optics_dewDecayRate": 2,  # was 0
-    "aee_optics_eyeAmbientLuxScale": 3,  # was 0
-    "aee_optics_eyeFastBlend": 2,  # was 0
-    "aee_optics_eyeLocalLuxScale": 3,  # was 0
-    "aee_optics_eyeMesopicHigh": 1,  # was 0
-    "aee_optics_eyeMesopicLow": 3,  # was 0
-    "aee_optics_eyePupilTauConstrict": 2,  # was 0
-    "aee_optics_eyePupilTauDilate": 3,  # was 0
-    "aee_optics_eyeReflectance": 2,  # was 0
-    "aee_optics_eyeTauLight": 1,  # was 0
+    "aee_eye_eyeAmbientLuxScale": 3,  # was 0
+    "aee_eye_eyeFastBlend": 2,  # was 0
+    "aee_eye_eyeLocalLuxScale": 3,  # was 0
+    "aee_eye_eyeMesopicHigh": 1,  # was 0
+    "aee_eye_eyeMesopicLow": 3,  # was 0
+    "aee_eye_eyePupilTauConstrict": 2,  # was 0
+    "aee_eye_eyePupilTauDilate": 3,  # was 0
+    "aee_eye_eyeReflectance": 2,  # was 0
+    "aee_eye_eyeTauLight": 1,  # was 0
     "aee_optics_glareBlurMax": 1,  # was 0
-    "aee_optics_perceptionInterval": 1,  # was 0.1
+    "aee_vision_perceptionInterval": 1,  # was 0.1
     "aee_optics_heatShimmerIntensity": 2,  # was 0
     "aee_optics_mirageDensity": 2,  # was 0
     "aee_optics_rainAccumRate": 2,  # was 0
@@ -304,11 +306,11 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_optics_snowBlindnessBase": 1,  # was 0
     "aee_optics_snowVisibilityPenalty": 1,  # was 0
     "aee_optics_vehicleShimmerBase": 1,  # was 0
-    "aee_optics_visionAdaptationDegree": 2,  # was 0.05
-    "aee_optics_visionContrastScale": 2,  # was 0.05
-    "aee_optics_visionMesopicDesaturation": 2,  # was 0.05
-    "aee_optics_visionPurkinjeStrength": 2,  # was 0.05
-    "aee_optics_visionToneStrength": 2,  # was 0.05
+    "aee_vision_visionAdaptationDegree": 2,  # was 0.05
+    "aee_vision_visionContrastScale": 2,  # was 0.05
+    "aee_vision_visionMesopicDesaturation": 2,  # was 0.05
+    "aee_vision_visionPurkinjeStrength": 2,  # was 0.05
+    "aee_vision_visionToneStrength": 2,  # was 0.05
     "aee_thermal_thermalAgcHunt": 3,  # was 0.005
     "aee_thermal_thermalHotBloom": 2,  # was 0.01
     "aee_thermal_thermalManualMaxC": 0,  # was 5

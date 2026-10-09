@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Eye">
+        <Key ID="STR_AEE_Eye_eyeAdaptationEnabled_Description">
+            <Original>AEE pins the camera aperture and owns the eye adaptation rate. Off hands the camera back to the engine.</Original>
+            <English>AEE pins the camera aperture and owns the eye adaptation rate. Off hands the camera back to the engine.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeAdaptationEnabled_Name">
+            <Original>Eye Adaptation</Original>
+            <English>Eye Adaptation</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeAmbientLuxScale_Description">
+            <Original>Scale on the engine ambient term, no unit. UNSOURCED: getLightingAt has no documented unit.</Original>
+            <English>Scale on the engine ambient term, no unit. UNSOURCED: getLightingAt has no documented unit.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeAmbientLuxScale_Name">
+            <Original>Ambient Light Scale</Original>
+            <English>Ambient Light Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeBlindingLuxScale_Description">
+            <Original>Scale on the engine blinding term, no unit. UNSOURCED: apertureParams blinding has no documented unit. Default 0, off until tuned.</Original>
+            <English>Scale on the engine blinding term, no unit. UNSOURCED: apertureParams blinding has no documented unit. Default 0, off until tuned.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeBlindingLuxScale_Name">
+            <Original>Blinding Light Scale</Original>
+            <English>Blinding Light Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeFastBlend_Description">
+            <Original>Weight of the fast pupil branch in the adapted luminance, 0 to 1. UNSOURCED: operator-tunable.</Original>
+            <English>Weight of the fast pupil branch in the adapted luminance, 0 to 1. UNSOURCED: operator-tunable.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeFastBlend_Name">
+            <Original>Fast Pupil Blend</Original>
+            <English>Fast Pupil Blend</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeLocalLuxScale_Description">
+            <Original>Scale on the engine local term, no unit. UNSOURCED: getLightingAt has no documented unit.</Original>
+            <English>Scale on the engine local term, no unit. UNSOURCED: getLightingAt has no documented unit.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeLocalLuxScale_Name">
+            <Original>Local Light Scale</Original>
+            <English>Local Light Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeMesopicHigh_Description">
+            <Original>Photopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 5 cd/m2.</Original>
+            <English>Photopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 5 cd/m2.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeMesopicHigh_Name">
+            <Original>Mesopic Upper Bound</Original>
+            <English>Mesopic Upper Bound</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeMesopicLow_Description">
+            <Original>Scotopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 0.005 cd/m2.</Original>
+            <English>Scotopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 0.005 cd/m2.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeMesopicLow_Name">
+            <Original>Mesopic Lower Bound</Original>
+            <English>Mesopic Lower Bound</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyePupilTauConstrict_Description">
+            <Original>Pupil constriction time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, 0.25 s.</Original>
+            <English>Pupil constriction time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, 0.25 s.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyePupilTauConstrict_Name">
+            <Original>Pupil Constriction Time</Original>
+            <English>Pupil Constriction Time</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyePupilTauDilate_Description">
+            <Original>Pupil redilation time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, redilation 1.9 times the constriction.</Original>
+            <English>Pupil redilation time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, redilation 1.9 times the constriction.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyePupilTauDilate_Name">
+            <Original>Pupil Redilation Time</Original>
+            <English>Pupil Redilation Time</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeReflectance_Description">
+            <Original>Assumed scene reflectance for the luminance step, 0 to 1. UNSOURCED: mid-grey assumption, 0.18.</Original>
+            <English>Assumed scene reflectance for the luminance step, 0 to 1. UNSOURCED: mid-grey assumption, 0.18.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeReflectance_Name">
+            <Original>Scene Reflectance</Original>
+            <English>Scene Reflectance</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeTauDarkCone_Description">
+            <Original>Cone-pool dark adaptation time constant, seconds. UNSOURCED: derived to fit the cone-rod break at 5 to 8 min, Hecht, Haig and Chase 1937.</Original>
+            <English>Cone-pool dark adaptation time constant, seconds. UNSOURCED: derived to fit the cone-rod break at 5 to 8 min, Hecht, Haig and Chase 1937.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeTauDarkCone_Name">
+            <Original>Cone Dark Adaptation Time</Original>
+            <English>Cone Dark Adaptation Time</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeTauDarkRod_Description">
+            <Original>Rod-pool dark adaptation time constant, seconds. TRACED: Rushton 1961 J Physiol 156:166, 400 s.</Original>
+            <English>Rod-pool dark adaptation time constant, seconds. TRACED: Rushton 1961 J Physiol 156:166, 400 s.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeTauDarkRod_Name">
+            <Original>Rod Dark Adaptation Time</Original>
+            <English>Rod Dark Adaptation Time</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeTauLight_Description">
+            <Original>Light-adaptation time constant, seconds. UNSOURCED: no single published perceptual value, operator-tunable, 2.0 s.</Original>
+            <English>Light-adaptation time constant, seconds. UNSOURCED: no single published perceptual value, operator-tunable, 2.0 s.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeTauLight_Name">
+            <Original>Light Adaptation Time</Original>
+            <English>Light Adaptation Time</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_logDebug_Description">
+            <Original>Log eye-adaptation diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log eye-adaptation diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_logDebug_Name">
+            <Original>Eye Debug Log</Original>
+            <English>Eye Debug Log</English>
+        </Key>
+    </Package>
+</Project>

@@ -34,6 +34,8 @@ ALLOWLIST: dict[str, str] = {
 # reads the aee_core_* variables via EGVAR, so core still has one state dump.
 HOSTED_DUMPS: dict[str, str] = {
     "core": "diagnostics",
+    "eye": "optics",
+    "vision": "optics",
 }
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR

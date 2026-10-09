@@ -70,21 +70,21 @@ aee_thermal_sweepBudget  runtime sweep-budget knob, read with default 16 at fnc_
 aee_thermal_paintBudgetMs  runtime paint-budget knob, read with default 2.0 at fnc_applyBuildingThermal.sqf:200, no addon writer
 
 # Eye adaptation debug knobs and handler id (issue #141).
-aee_optics_eyeFlash  handler id passed as the _key value argument, not read as a variable
-aee_optics_eyeForceLux  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
-aee_optics_eyeForceMode  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
-aee_optics_eyeFreeze  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
+aee_eye_eyeFlash  handler id passed as the _key value argument, not read as a variable
+aee_eye_eyeForceLux  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
+aee_eye_eyeForceMode  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
+aee_eye_eyeFreeze  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
 
 # Image realism debug hooks (documented in the owning function headers).
-aee_optics_baseGradeForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_baseGradeContrast  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_baseGradeSharpness  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_baseGradeGrain  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceLux  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceMesopic  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceIlluminant  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceBase  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_baseGradeForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_baseGradeContrast  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_baseGradeSharpness  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_baseGradeGrain  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceLux  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceMesopic  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceIlluminant  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceBase  debug console knob (documented in fnc_applyBaseGrade.sqf)
 aee_thermal_bloomForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 aee_thermal_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 aee_thermal_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)
@@ -107,11 +107,7 @@ aee_wildlife_forceSpook  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSilence  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSpecies  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_firedManEH  core player engine handler key passed to installPlayerEngineHandler; a string identifier, not a variable
-aee_optics_eyeAdaptTargetLux  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_eyeAdaptDirection  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_eyeAdaptTau  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_eyeAdaptTimeToAdapt  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_perceptionForceLux  debug console knob (documented in fnc_perceptionUpdate.sqf)
-aee_optics_perceptionForceGrade  debug console knob (documented in fnc_perceptionUpdate.sqf)
-aee_optics_perceptionForceNvg  debug console knob (documented in fnc_perceptionUpdate.sqf)
-aee_optics_perceptionForceThermal  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceLux  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceGrade  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceNvg  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceThermal  debug console knob (documented in fnc_perceptionUpdate.sqf)

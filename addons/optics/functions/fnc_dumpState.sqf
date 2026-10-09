@@ -19,34 +19,34 @@ if (!(AEE_TRACE_ON) && {missionNamespace getVariable [QGVAR(stateLogStarted), fa
 private _isReady = missionNamespace getVariable [QGVAR(isReady), false];
 if !(_isReady isEqualType true) then { _isReady = false; };
 
-private _eyeSceneLux = missionNamespace getVariable [QGVAR(eyeSceneLux), 0];
+private _eyeSceneLux = missionNamespace getVariable [QEGVAR(eye,eyeSceneLux), 0];
 if !(_eyeSceneLux isEqualType 0) then { _eyeSceneLux = 0; };
 
-private _eyeAdaptedLux = missionNamespace getVariable [QGVAR(eyeAdaptedLux), 1];
+private _eyeAdaptedLux = missionNamespace getVariable [QEGVAR(eye,eyeAdaptedLux), 1];
 if !(_eyeAdaptedLux isEqualType 0) then { _eyeAdaptedLux = 1; };
 
-private _eyeAperture = missionNamespace getVariable [QGVAR(eyeAperture), 1];
+private _eyeAperture = missionNamespace getVariable [QEGVAR(eye,eyeAperture), 1];
 if !(_eyeAperture isEqualType 0) then { _eyeAperture = 1; };
 
-private _eyeMesopic = missionNamespace getVariable [QGVAR(eyeMesopic), 1];
+private _eyeMesopic = missionNamespace getVariable [QEGVAR(eye,eyeMesopic), 1];
 if !(_eyeMesopic isEqualType 0) then { _eyeMesopic = 1; };
 
-private _chromaActive = missionNamespace getVariable [QGVAR(chromaActive), false];
+private _chromaActive = missionNamespace getVariable [QEGVAR(vision,chromaActive), false];
 if !(_chromaActive isEqualType true) then { _chromaActive = false; };
 
-private _blurActive = missionNamespace getVariable [QGVAR(blurActive), false];
+private _blurActive = missionNamespace getVariable [QEGVAR(vision,blurActive), false];
 if !(_blurActive isEqualType true) then { _blurActive = false; };
 
-private _ccActive = missionNamespace getVariable [QGVAR(ccActive), false];
+private _ccActive = missionNamespace getVariable [QEGVAR(vision,ccActive), false];
 if !(_ccActive isEqualType true) then { _ccActive = false; };
 
-private _shadowScene = missionNamespace getVariable [QGVAR(shadowScene), "OUTSIDE"];
+private _shadowScene = missionNamespace getVariable [QEGVAR(vision,shadowScene), "OUTSIDE"];
 if !(_shadowScene isEqualType "") then { _shadowScene = "OUTSIDE"; };
 
-private _viewDistanceTarget = missionNamespace getVariable [QGVAR(viewDistanceTarget), 0];
+private _viewDistanceTarget = missionNamespace getVariable [QEGVAR(vision,viewDistanceTarget), 0];
 if !(_viewDistanceTarget isEqualType 0) then { _viewDistanceTarget = 0; };
 
-private _sensorPFH = missionNamespace getVariable [QGVAR(sensorPFH), -1];
+private _sensorPFH = missionNamespace getVariable [QEGVAR(vision,sensorPFH), -1];
 if !(_sensorPFH isEqualType 0) then { _sensorPFH = -1; };
 
 private _logMsg = format [

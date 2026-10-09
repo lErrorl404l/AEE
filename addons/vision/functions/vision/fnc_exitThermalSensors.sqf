@@ -19,4 +19,4 @@ setAperture -1;
 // 0.02 change gate suppresses the re-write and the camera stays on the sensor's
 // exposure (the operator report: dark view after NVG or thermal).  This is the
 // DTV host exit path; teardownSensors covers the engine thermal and NVG exits.
-GVAR(eyePinned) = nil;
+EGVAR(eye,eyePinned) = nil;

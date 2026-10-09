@@ -171,42 +171,9 @@ class RscTitles {
         };
     };
 
-    // The player-perception debug overlay: one line of reconstructed view
-    // state, gated by the aee_optics_perceptionHud setting.  The idd band
-    // above 10800 is fresh; it never collides with GVAR(hud) at 10781 or
-    // the thermal fusion display.
-    class GVAR(perceptionHud) {
-        idd = 10801;
-        movingEnable = 0;
-        enableSimulation = 0;
-        enableDisplay = 1;
-        onLoad = QUOTE(with uiNamespace do {GVAR(perceptionHudDisplay) = _this select 0};);
-        onUnload = QUOTE(with uiNamespace do {GVAR(perceptionHudDisplay) = displayNull};);
-        duration = 999999;
-        fadein = 0;
-        fadeout = 0;
-
-        class controls {
-            // Local base for the perception text line, so no class name
-            // clashes with an engine RscText.
-            class AEEPerceptionText {
-                type = 0;
-                idc = 10811;
-                style = 0;
-                shadow = 1;
-                font = "RobotoCondensed";
-                sizeEx = "0.016 * safezoneH";
-                text = "";
-                colorText[] = {1, 1, 1, 1};
-                colorBackground[] = {0, 0, 0, 0};
-                colorShadow[] = {0, 0, 0, 0.85};
-                x = "0.02 * safezoneW + safezoneX";
-                y = "0.30 * safezoneH + safezoneY";
-                w = "0.96 * safezoneW";
-                h = "0.025 * safezoneH";
-            };
-        };
-    };
+    // The player-perception debug overlay moved to aee_vision (RscTitles.hpp
+    // there), the destination addon for the post-process, base grade and
+    // human-vision model.
 
     // MGRS GPS device readout (task 9).  A dedicated display raised when the
     // player carries an ItemGPS and the aee_optics_mgrsEnabled setting is on.
