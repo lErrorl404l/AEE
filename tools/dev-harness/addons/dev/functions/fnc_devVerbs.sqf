@@ -10,6 +10,7 @@ four-layer gate already restricts to a dev host.
     "get",
     "set",
     "dump",
+    "dumpall",
     "eval",
     "callfunc",
     "batch",

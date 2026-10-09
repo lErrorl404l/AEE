@@ -81,4 +81,6 @@ if (_op == "remote") exitWith {
     [(_args select 0), (_args select 1)] call aee_dev_fnc_devRemote
 };
 
+if (_op == "dumpall") exitWith { [] call aee_dev_fnc_devDumpAll; };
+
 "error: unknown verb"
