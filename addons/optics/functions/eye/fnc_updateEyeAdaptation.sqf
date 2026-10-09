@@ -79,10 +79,13 @@ missionNamespace setVariable [QGVAR(eyeLastTick), _now];
 // slow dark tau and the aperture is wrong for minutes.
 private _hour = dayTime;
 private _lastHour = missionNamespace getVariable [QGVAR(eyeLastHour), -1];
-private _skipped = ["eyeTimeSkip", [_lastHour, _hour]] call EFUNC(core,dispatchKernel);
+private _skipped = ["eyeTimeSkip", [_lastHour, _hour, 0.05]] call EFUNC(core,dispatchKernel);
+// The dispatcher returns nil for a kernel id it does not hold; a caller that
+// then tests the result would raise an SQF type error, so bind a typed default.
+if (isNil "_skipped") then { _skipped = false; };
 if (_skipped isEqualType "") then { _skipped = (_skipped == "true"); };
-// The one clock owns the jump detector: when it raises clockJump for this
-// tick, the eye re-seeds even if its own sample missed the edge.
+// The one clock owns the jump detector: when it holds clockJump (for a short
+// window after a jump), the eye re-seeds even if its own sample missed the edge.
 if (missionNamespace getVariable [QEGVAR(core,clockJump), false]) then { _skipped = true; };
 missionNamespace setVariable [QGVAR(eyeLastHour), _hour];
 
