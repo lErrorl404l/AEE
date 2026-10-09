@@ -257,6 +257,9 @@ harness and the KAT integration. Each row states its grade.
 |---|---|---|
 | `aee_mobility_enginePowerModifier` | mobility | NA engine power 0.3..1 |
 | `aee_mobility_engineTurboModifier` | mobility | Turbo engine power 0.3..1 |
+| `aee_mobility_engineNg` | mobility | Gas-generator speed ratio published by the engine kernel (issue #117) |
+| `aee_mobility_engineTgtC` | mobility | Scripted turbine temperature in deg C, from the sourced limits, not engine-exposed (issue #117) |
+| `aee_mobility_engineOilKpa` | mobility | Scripted engine oil pressure in kPa, from the sourced limits, not engine-exposed (issue #117) |
 | `aee_mobility_tractionForce` | mobility | Traction force |
 | `aee_mobility_wheelSlip` | mobility | Wheel slip 0..1 |
 | `aee_mobility_mudAccretion` | mobility | Mud accretion |

@@ -77,6 +77,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:86",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:87",
         "addons/mobility/functions/fnc_getVehicleGeometry.sqf:74",
+        "addons/mobility/functions/fnc_updateEngineSystem.sqf:67",
         "addons/mobility/functions/fnc_updateFuelSystem.sqf:61",
         "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
@@ -289,6 +290,7 @@
       "provenance": [
         "addons/mobility/XEH_postInit.sqf:43",
         "addons/mobility/functions/fnc_applyAirframeLoad.sqf:45",
+        "addons/mobility/functions/fnc_updateEngineSystem.sqf:68",
         "addons/mobility/functions/fnc_updateFuelSystem.sqf:62"
       ]
     },
