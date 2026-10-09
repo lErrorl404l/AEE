@@ -224,10 +224,32 @@ class RealCorpusCoverageTest(unittest.TestCase):
         self.assertEqual(len(_entries(self.classes)), len(_entries(self.coverage)))
 
     def test_the_committed_table_matches_a_fresh_build(self) -> None:
+        roster = g.load_roster(DATA)
+        class_recorded = g.recorded_classes(g.load_catalogue(DATA))
         self.assertEqual(
-            g.build_coverage(self.classes, self.recorded, g.LEAD_CANDIDATES),
+            g.build_coverage(
+                self.classes,
+                self.recorded,
+                g.LEAD_CANDIDATES,
+                roster,
+                class_recorded,
+            ),
             self.coverage,
         )
+
+    def test_every_roster_class_has_a_coverage_entry_keyed_by_class(self) -> None:
+        roster = g.load_roster(DATA)
+        keyed = {
+            str(row.get("class"))
+            for row in _as_sequence(self.coverage.get("classes"))
+            if isinstance(row, dict)
+        }
+        missing = [
+            str(entry.get("game_class"))
+            for entry in roster
+            if entry.get("game_class") not in keyed
+        ]
+        self.assertEqual([], missing, f"coverage.json drops {missing}")
 
     def test_every_air_token_state_is_known(self) -> None:
         for row in _entries(self.coverage):
@@ -244,7 +266,12 @@ class CoverageCheckModeTest(unittest.TestCase):
         self.addCleanup(shutil.rmtree, tmp, ignore_errors=True)
         data = tmp / "aircraft"
         data.mkdir()
-        for name in ("sources.json", "class_map.json", "class_bindings.json"):
+        for name in (
+            "sources.json",
+            "class_map.json",
+            "class_bindings.json",
+            "roster.json",
+        ):
             shutil.copy(DATA / name, data / name)
         shutil.copytree(DATA / "catalogue", data / "catalogue")
         return data
