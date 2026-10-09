@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (640)
+### Public functions (641)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 

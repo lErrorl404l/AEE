@@ -46,6 +46,16 @@ Public: No
 if (!GVAR(flightTurbulence)) exitWith {};
 if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith {};
 
+// One clock (Pillar 1): this handler runs at 0.05 s, so the integration step
+// is the real elapsed clock time since the last pass, not the frame delta.
+// diag_deltaTime is the previous RENDERED frame - reading it here would make
+// the time constant depend on the frame rate (the P79 defect class).  The
+// first pass, and any zero-width pass, integrates nothing.
+private _nowSim = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
+private _lastSim = missionNamespace getVariable [QGVAR(turbulenceSimTime), _nowSim];
+private _dt = (_nowSim - _lastSim) max 0;
+missionNamespace setVariable [QGVAR(turbulenceSimTime), _nowSim];
+
 private _turbulence = missionNamespace getVariable [QEGVAR(core,currentTurbulence), 0];
 private _gusts = missionNamespace getVariable [QEGVAR(core,currentGusts), 0];
 
@@ -170,10 +180,10 @@ private _candidates = _aircraft select {
                 };
             } else {
                 // The simple model does not integrate a PhysX force, so apply
-                // the same acceleration over one frame as a local velocity
-                // delta.  The delta carries the mass through force / mass, so
-                // the simple model is weight-aware too.
-                private _deltaV = (_forceN / _mass) * diag_deltaTime;
+                // the same acceleration over the real clock delta as a local
+                // velocity delta.  The delta carries the mass through
+                // force / mass, so the simple model is weight-aware too.
+                private _deltaV = (_forceN / _mass) * _dt;
                 _veh setVelocity ((velocity _veh) vectorAdd (_forceDir vectorMultiply _deltaV));
             };
         };
