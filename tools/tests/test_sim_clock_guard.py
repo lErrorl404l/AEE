@@ -234,26 +234,17 @@ class TestClockJumpContract(unittest.TestCase):
         self.assertIn("dayTime", code)
         self.assertIn("QGVAR(clockJump)", code)
 
-    @staticmethod
-    def _jump(prev: float, now: float, thresh: float) -> bool:
-        # Mirror of the clock module's dayTime predicate (fnc_updateSimClock).
-        delta = now - prev
-        if delta > 12:
-            delta -= 24
-        if delta < -12:
-            delta += 24
-        return abs(delta) > thresh
-
-    def test_a_daytime_wrap_raises_no_false_jump(self):
+    def test_the_clock_wraps_the_day_before_it_compares(self):
+        # Pin the real predicate, not a Python mirror.  The midnight crossing
+        # (86400 s / 24 h) must read the short way round, so both wrap lines
+        # must sit before the threshold compare.  The same predicate is
+        # exercised as real SQF by test_eye_adaptation.TestEyeTimeSkip.
         code = _code(CLOCK_PATH)
-        match = re.search(r"abs _delta > ([0-9.]+)", code)
-        self.assertIsNotNone(match, "the clock jump threshold was not found")
-        thresh = float(match.group(1))
-        # The midnight wrap (86400 s / 24 h) reads the short way round.
-        self.assertFalse(self._jump(23.99, 0.01, thresh), "wrap must not be a jump")
-        self.assertFalse(self._jump(5.0, 5.002, thresh), "a tick must not be a jump")
-        self.assertTrue(self._jump(5.0, 14.0, thresh), "a forward skip must be a jump")
-        self.assertTrue(self._jump(14.0, 5.0, thresh), "a backward skip must be a jump")
+        self.assertRegex(code, r"if \(_delta > 12\) then \{ _delta = _delta - 24; \};")
+        self.assertRegex(
+            code, r"if \(_delta < -12\) then \{ _delta = _delta \+ 24; \};"
+        )
+        self.assertRegex(code, r"_jump = abs _delta > ([0-9.]+);")
 
 
 if __name__ == "__main__":

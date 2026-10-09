@@ -15,6 +15,7 @@ Run: python3 -m unittest tools.tests.test_kernel_split
 
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 import tempfile
@@ -132,17 +133,161 @@ class TestKernelDispatcher(unittest.TestCase):
         self.assertIn("QGVAR(extReady)", self.probe)
 
     def test_absence_of_the_extension_selects_sqf(self):
-        # Mirror of the dispatcher's decision: native only when ready AND the
-        # native return is a non-empty string (the extension's errorCode-0
-        # payload); otherwise the SQF reference kernel runs.
-        def choose(ext_ready: bool, native_out: object) -> str:
-            if ext_ready and isinstance(native_out, str) and native_out != "":
-                return "native"
-            return "sqf"
+        # Assert the REAL dispatcher conditions, not a Python mirror of them:
+        # native only when the output is a non-empty string with errorCode 0,
+        # and the SQF reference kernel is the fallback.
+        self.assertIn('{_output != ""}', self.dispatch)
+        self.assertIn("{_code == 0}", self.dispatch)
+        self.assertIn(
+            'if (_nativeOutput != "") exitWith { _nativeOutput };', self.dispatch
+        )
+        self.assertIn("call (missionNamespace getVariable [_sqfRef", self.dispatch)
 
-        self.assertEqual(choose(False, "payload"), "sqf")
-        self.assertEqual(choose(True, ""), "sqf")
-        self.assertEqual(choose(True, "1.0"), "native")
+
+LIB_RS = ROOT / "tools" / "dev-harness" / "extension" / "src" / "lib.rs"
+
+# A dispatch call site: ["kernel id", <args>] call EFUNC(core,dispatchKernel).
+# The args are a literal array or a variable that holds one.
+DISPATCH_RE = re.compile(
+    r'\["([A-Za-z0-9_]+)",\s*(\[[^\]]*\]|_[A-Za-z0-9_]+)\]\s*'
+    r"call\s+EFUNC\(core,\s*dispatchKernel\)",
+    re.S,
+)
+COMMAND_RE = re.compile(
+    r'\.command\(\s*"([^"]+)"\s*,\s*([A-Za-z0-9_]+)\s*,?\s*\)', re.S
+)
+FN_RE = re.compile(r"fn\s+([A-Za-z0-9_]+)\s*\(([^)]*)\)\s*->", re.S)
+TABLE_RE = re.compile(r'\["([A-Za-z0-9_]+)",\s*\["([^"]+)",\s*"([^"]+)"\]\]')
+
+
+def count_top_level(inner: str) -> int:
+    """Count non-empty comma-separated elements at bracket depth 0.
+
+    A trailing comma (Rust parameter lists end with one) does not add an
+    element.
+    """
+    depth = 0
+    segments: list[str] = []
+    current: list[str] = []
+    i = 0
+    n = len(inner)
+    while i < n:
+        ch = inner[i]
+        if ch == '"':
+            current.append(ch)
+            i += 1
+            while i < n:
+                current.append(inner[i])
+                if inner[i] == "\\":
+                    if i + 1 < n:
+                        current.append(inner[i + 1])
+                    i += 2
+                    continue
+                if inner[i] == '"':
+                    i += 1
+                    break
+                i += 1
+            continue
+        if ch in "([{":
+            depth += 1
+        elif ch in ")]}":
+            depth -= 1
+        if ch == "," and depth == 0:
+            segments.append("".join(current))
+            current = []
+        else:
+            current.append(ch)
+        i += 1
+    segments.append("".join(current))
+    return sum(1 for segment in segments if segment.strip())
+
+
+def variable_array(text: str, var: str, before: int) -> str | None:
+    """Return the literal array body last assigned to `var` before `before`."""
+    best: str | None = None
+    for match in re.finditer(rf"\bprivate\s+{re.escape(var)}\s*=\s*\[", text):
+        if match.start() > before:
+            continue
+        start = match.end() - 1
+        depth = 0
+        i = start
+        while i < len(text):
+            if text[i] == "[":
+                depth += 1
+            elif text[i] == "]":
+                depth -= 1
+                if depth == 0:
+                    break
+            i += 1
+        best = text[start + 1 : i]
+    return best
+
+
+class TestDispatchCallSiteArity(unittest.TestCase):
+    """Every dispatch call site passes exactly its native kernel's arity.
+
+    arma-rs rejects a call whose argument count does not match the Rust
+    handler signature, so a mismatch silently selects the SQF fallback and the
+    native path never runs (the eyeTimeSkip defect).  This scan pins each
+    call site to the native signature, so the two cannot drift apart again.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        lib = LIB_RS.read_text(encoding="utf-8")
+        cls.native_arity = {
+            fn: count_top_level(params) for fn, params in FN_RE.findall(lib)
+        }
+        cls.command_to_fn = dict(COMMAND_RE.findall(lib))
+        cls.kernel_to_command = {
+            kernel: command
+            for kernel, _sqf, command in TABLE_RE.findall(
+                gen.strip_comments(KERNEL_TABLE.read_text(encoding="utf-8"))
+            )
+        }
+
+    def _call_sites(self):
+        for path in sorted((ROOT / "addons").rglob("*.sqf")):
+            text = gen.strip_comments(path.read_text(encoding="utf-8"))
+            rel = path.relative_to(ROOT).as_posix()
+            for match in DISPATCH_RE.finditer(text):
+                kernel, args = match.group(1), match.group(2)
+                if args.startswith("["):
+                    arity = count_top_level(args[1:-1])
+                else:
+                    body = variable_array(text, args, match.start())
+                    self.assertIsNotNone(
+                        body, f"{rel}: cannot resolve {args} at the call site"
+                    )
+                    arity = count_top_level(body)
+                yield rel, kernel, arity
+
+    def test_every_call_site_matches_its_native_signature(self):
+        checked = 0
+        for rel, kernel, arity in self._call_sites():
+            command = self.kernel_to_command.get(kernel)
+            self.assertIsNotNone(
+                command, f"{rel}: kernel {kernel} is not in the kernel table"
+            )
+            fn = self.command_to_fn.get(command)
+            self.assertIsNotNone(
+                fn, f"{rel}: native command {command} is not registered in lib.rs"
+            )
+            expected = self.native_arity.get(fn)
+            self.assertIsNotNone(expected, f"{rel}: no Rust signature for {fn}")
+            self.assertEqual(
+                arity,
+                expected,
+                f"{rel}: {kernel} passes {arity} args, {command} takes {expected}",
+            )
+            checked += 1
+        self.assertGreater(checked, 0, "no dispatch call sites were found")
+
+    def test_the_scan_covers_the_fixed_defect_and_more(self):
+        # Guard the scan itself against passing vacuously.
+        kernels = {kernel for _rel, kernel, _arity in self._call_sites()}
+        self.assertIn("eyeTimeSkip", kernels)
+        self.assertGreater(len(kernels), 1)
 
 
 if __name__ == "__main__":
