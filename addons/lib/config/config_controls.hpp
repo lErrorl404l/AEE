@@ -34,6 +34,3 @@ class RscPicture {
     colorText[] = {1, 1, 1, 1};
     texture = "";
 };
-
-class RscStructuredText;
-class RscControlsGroupNoScrollbars;
