@@ -208,7 +208,9 @@ missionNamespace setVariable [QGVAR(thermalPrevDir), _dir];
 private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _lastSim = missionNamespace getVariable [QGVAR(thermalVisLastSimTime), -1];
 private _dt = 0;
-if ((_lastSim isEqualType 0) && {_lastSim >= 0}) then { _dt = _simNow - _lastSim; };
+if (_lastSim isEqualType 0) then {
+    if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
+};
 missionNamespace setVariable [QGVAR(thermalVisLastSimTime), _simNow];
 private _panSmear = if (_dt > 0) then {
     linearConversion [0, 90, _dirDelta / _dt, 0.0, 0.04, true]

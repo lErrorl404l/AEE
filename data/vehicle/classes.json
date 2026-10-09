@@ -87,7 +87,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:170",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:172",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:434",
         "addons/thermal/functions/surface/fnc_getHitPointMaterials.sqf:31",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:161"
@@ -150,7 +150,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:116",
         "addons/mobility/functions/fnc_calculateSSF.sqf:62",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:78",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:167",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
       ]
     },
@@ -179,7 +179,7 @@
       "kind": "engine_base",
       "provenance": [
         "addons/core/functions/fnc_calculateIlluminance.sqf:275",
-        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:669"
+        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:671"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "addons/mobility/functions/fnc_calculateAirEngineLoad.sqf:137",
         "addons/mobility/functions/fnc_calculateSSF.sqf:61",
         "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:167"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169"
       ]
     },
     {
@@ -277,7 +277,7 @@
       "kind": "mod_token",
       "provenance": [
         "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:167"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169"
       ]
     },
     {
@@ -299,7 +299,7 @@
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:262",
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:370",
         "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:167"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169"
       ]
     },
     {
@@ -328,7 +328,7 @@
       "provenance": [
         "addons/mobility/functions/fnc_classifyVehicle.sqf:88",
         "addons/mobility/functions/fnc_getVehicleGeometry.sqf:74",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:167",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
       ]
     },
@@ -365,7 +365,7 @@
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:110",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:167",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
         "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
       ]

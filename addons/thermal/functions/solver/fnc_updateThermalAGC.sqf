@@ -407,6 +407,13 @@ if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevM
     _prevMin = _fullMin;
     _prevMax = _fullMax;
 };
+// World-clock jump: the scene changed in one step, so snap the window to the
+// new scene instead of easing over the 0.5 s filter time constant.  The one
+// clock raises clockJump for this tick (fnc_updateSimClock).
+if (missionNamespace getVariable [QEGVAR(core,clockJump), false]) then {
+    _prevMin = _radMin;
+    _prevMax = _radMax;
+};
 if (_agcDt > 0) then {
     private _a = _agcDt / (_agcDt + 0.5);
     _radMin = _prevMin + (_radMin - _prevMin) * _a;
