@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (637)
+### Public functions (636)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -347,6 +347,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_fx_fnc_triggerLightning`
 - `aee_fx_fnc_triggerSevereWeatherFX`
 - `aee_fx_fnc_weatherParticleAlpha`
+- `aee_main_fnc_migrateLegacySettings`
 - `aee_maritime_fnc_calculateCompassDeviation`
 - `aee_maritime_fnc_calculateMagneticAnomaly`
 - `aee_maritime_fnc_calculateSeaState`
@@ -404,7 +405,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_mobility_fnc_getVehicleMatch`
 - `aee_mobility_fnc_logAirframeState`
 - `aee_mobility_fnc_resolveFlightModel`
-- `aee_mobility_fnc_resolveTurbulenceArea`
 - `aee_mobility_fnc_routeRunoffD8`
 - `aee_mobility_fnc_updateGroundState`
 - `aee_nightvision_fnc_applyNVGTubeModel`
@@ -463,7 +463,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_eyeAmbientLux`
 - `aee_optics_fnc_eyeAperture`
 - `aee_optics_fnc_eyeFlash`
-- `aee_optics_fnc_eyeFlashScene`
 - `aee_optics_fnc_eyeLimits`
 - `aee_optics_fnc_eyeLocalLux`
 - `aee_optics_fnc_eyeMesopicWeight`
