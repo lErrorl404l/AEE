@@ -38,8 +38,13 @@ KEYBINDS = {
 
 REAPPLY = FUNCS / "fnc_devReapplyVisual.sqf"
 SCREENSHOT = FUNCS / "fnc_devScreenshot.sqf"
+DUMPALL = FUNCS / "fnc_devDumpAll.sqf"
+OVERLAY = FUNCS / "fnc_devOverlayToggle.sqf"
+EXEC = FUNCS / "fnc_devExec.sqf"
+VERBS = FUNCS / "fnc_devVerbs.sqf"
 
 ADDONS = ROOT / "addons"
+ANNEX = ROOT / "docs" / "wiki" / "annexes" / "annex-d-debug-index.qmd"
 
 
 def _code_only(text: str) -> str:
@@ -176,6 +181,52 @@ class TestScreenshot(unittest.TestCase):
             text = path.read_text(encoding="utf-8", errors="replace")
             self.assertNotIn("devScreenshot", text, str(path))
             self.assertNotIn("aee_manual", text, str(path))
+
+
+def _annex_dumps() -> list[str]:
+    """The State dump column of the generated debug index annex."""
+    names: list[str] = []
+    for line in ANNEX.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("| `"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        names += re.findall(r"`(aee_[A-Za-z0-9_]+)`", cells[2])
+    return names
+
+
+class TestDumpAndOverlay(unittest.TestCase):
+    """dumpall covers the annex; the overlay reuses it and adds no state."""
+
+    def test_dumpall_is_a_console_verb_with_a_guard(self):
+        self.assertIn('"dumpall"', VERBS.read_text(encoding="utf-8"))
+        self.assertIn('_op == "dumpall"', EXEC.read_text(encoding="utf-8"))
+
+    def test_dumpall_calls_every_dump_the_annex_lists(self):
+        dumps = _annex_dumps()
+        self.assertTrue(dumps)
+        code = DUMPALL.read_text(encoding="utf-8")
+        missing = [name for name in dumps if name not in code]
+        self.assertEqual(missing, [], f"dumpall omits {missing}")
+
+    def test_dumpall_reports_a_missing_dump(self):
+        code = _code_only(DUMPALL.read_text(encoding="utf-8"))
+        self.assertIn("error: no dump", code)
+
+    def test_the_overlay_reuses_the_dump(self):
+        code = OVERLAY.read_text(encoding="utf-8")
+        self.assertIn("aee_dev_fnc_devDumpAll", code)
+
+    def test_the_overlay_defines_no_module_state(self):
+        # UI only: it writes no aee_<module>_* variable (the pfh handle and the
+        # dev function name are the only aee_ names allowed).
+        code = _code_only(OVERLAY.read_text(encoding="utf-8"))
+        offenders = re.findall(r"aee_(?!dev_(?:fnc_|overlay))[a-z0-9_]+", code)
+        self.assertEqual(offenders, [])
+
+    def test_the_overlay_is_compiled(self):
+        self.assertIn("fnc_devOverlayToggle", PRE.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
