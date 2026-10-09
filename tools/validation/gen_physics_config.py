@@ -1,10 +1,29 @@
 #!/usr/bin/env python3
 """Generate the engine CfgVehicles override from the vehicle corpus.
 
-One CfgVehicles block carries two keys:
+One CfgVehicles block carries the land keys and, only when the build-time
+gate passes, the aircraft fuel key:
 
   * ``maxSpeed`` from the held catalogue ``max_speed_kmh`` field;
-  * ``mass`` as a CALIBRATED scale of a held real mass.
+  * ``mass`` as a CALIBRATED scale of a held real mass;
+  * ``fuelCapacity`` from the held aircraft catalogue ``fuel_capacity`` field.
+
+The land keys are pre-existing and NOT identity-derived: maxSpeed comes from
+the held catalogue and mass from the approved mass calibration. The gate never
+retro-applies to them, and their output is unchanged by this version.
+
+The aircraft key is gated at BUILD TIME by ``emit_key``: a key is emitted only
+when the class identity grade (``data/aircraft/class_bindings.json``) AND the
+value grade (the held catalogue value object) are both ``documented``. Config
+is load-time and global, so the build-time predicate is the only gate: a
+runtime setting cannot gate it and the PBO is the only off switch. A
+``claimed`` identity, a missing grade or any other grade emits no key and the
+class is recorded as a lead.
+
+PRODUCTION EMITS ZERO NEW KEYS TODAY. Every aircraft class binding is
+``claimed``, so fail-closed means no ``fuelCapacity`` key ships yet. That is
+the gate working, not a broken generator. The emission path is proved by the
+sentinel fixture in ``tools/tests/test_aircraft_systems.py``.
 
 The class set is ``data/vehicle/class_bindings.json``. The maxSpeed value
 comes from the catalogue ``max_speed_kmh`` field. The mass value comes from
@@ -77,10 +96,13 @@ DEFAULT_PARENTS = REPO / "data" / "vehicle" / "class_parents.json"
 DEFAULT_CALIBRATION = REPO / "data" / "physics" / "mass_calibration.json"
 DEFAULT_PROJECTION = REPO / "data" / "physics" / "config_bindings.json"
 DEFAULT_OUT = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
+DEFAULT_AIRCRAFT_CLASS_BINDINGS = REPO / "data" / "aircraft" / "class_bindings.json"
+DEFAULT_AIRCRAFT_DIR = REPO / "data" / "aircraft"
+DEFAULT_AIRCRAFT_PARENTS = REPO / "data" / "aircraft" / "class_parents.json"
 
-# This version emits one config class and two keys. The schema admits no other
-# pair, so a corpus record outside this pair is an error rather than a silent
-# drop: the generator must not lose a binding it cannot represent.
+# This version emits one config class. The land pair is un-gated: the schema
+# admits no other land pair, so a corpus record outside this pair is an error
+# rather than a silent drop. The aircraft key is gated by ``emit_key``.
 CONFIG_CLASS = "CfgVehicles"
 KEY = "maxSpeed"
 MASS_KEY = "mass"
@@ -88,6 +110,16 @@ VALUE_FIELD = "max_speed_kmh"
 KEY_UNIT = "km/h"
 CONVERSION = "identity"
 MASS_SCHEMA = "aee.physics.mass_calibration/1"
+
+# The aircraft key. ``fuel_capacity`` is held in litres and projects to the
+# engine ``fuelCapacity`` key by the identity conversion.
+AIRCRAFT_KEY = "fuelCapacity"
+AIRCRAFT_VALUE_FIELD = "fuel_capacity"
+AIRCRAFT_KEY_UNIT = "L"
+
+# The grade the build-time gate requires on both the class identity and the
+# held value. No other grade emits a key.
+DOCUMENTED = "documented"
 
 HEADER = (
     "/* SPDX-License-Identifier: GPL-2.0-or-later */\n"
@@ -109,13 +141,22 @@ HEADER = (
     "// declaration alone does not carry the parent, so the child restates\n"
     "// it. The generator never emits a bare class.\n"
     "//\n"
-    "// It declares maxSpeed and mass and no other key. thermal and optics\n"
-    "// own htMin, htMax, afMax, mfMax, mFact and tBody; a redeclaration here\n"
-    "// would win and change the thermal model, so no thermal key is admitted.\n"
-    "// Each mass is a calibrated scale of a held real mass, never a copied\n"
-    "// engine number, from data/physics/mass_calibration.json.\n"
+    "// It declares maxSpeed and mass for the pre-existing land classes. Those\n"
+    "// keys are NOT identity-derived and the aircraft gate never\n"
+    "// retro-applies to them. thermal and optics own htMin, htMax, afMax,\n"
+    "// mfMax, mFact and tBody; a redeclaration here would win and change the\n"
+    "// thermal model, so no thermal key is admitted. Each mass is a\n"
+    "// calibrated scale of a held real mass, never a copied engine number,\n"
+    "// from data/physics/mass_calibration.json.\n"
     "//\n"
-    "// One block carries both keys: the engine lint rejects a second\n"
+    "// The aircraft fuel key is gated at BUILD TIME: it is emitted only\n"
+    "// when the class identity grade and the held value grade are both\n"
+    "// documented. Config is load-time and global, so the build-time\n"
+    "// predicate is the only gate. Every aircraft class binding is claimed\n"
+    "// today, so NO aircraft key ships yet. That is the gate working, not a\n"
+    "// broken generator.\n"
+    "//\n"
+    "// One block carries every key: the engine lint rejects a second\n"
     "// CfgVehicles block in the same addon.\n"
 )
 
@@ -143,6 +184,19 @@ class Emission:
 
 
 @dataclass(frozen=True)
+class AircraftEmission:
+    """One aircraft binding that passes the build-time gate and can be emitted."""
+
+    game_class: str
+    parent_class: str
+    value: object
+    unit: str
+    source_id: str
+    locator: str
+    grade: str
+
+
+@dataclass(frozen=True)
 class MassCalibration:
     """The approved calibration: one fitted scale and the held mass per class."""
 
@@ -159,6 +213,7 @@ class ClassBinding:
     parent_class: str
     max_speed: object | None
     mass: float | None
+    fuel_capacity: object | None = None
 
 
 def _mapping(value: object) -> dict[str, object] | None:
@@ -179,6 +234,16 @@ def _number(value: object) -> float | None:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         return None
     return float(value)
+
+
+def emit_key(identity_grade: object, value_grade: object) -> bool:
+    """True only when the class identity and the value grade are both documented.
+
+    Config is load-time and global, so the build-time predicate is the only
+    gate. A ``claimed`` identity, a missing grade or any other grade emits no
+    key.
+    """
+    return identity_grade == DOCUMENTED and value_grade == DOCUMENTED
 
 
 def load_class_bindings(path: Path) -> list[dict[str, object]]:
@@ -267,9 +332,8 @@ def _render_value(value: object) -> str:
     return repr(number)
 
 
-def load_parents(path: Path) -> dict[str, ParentRecord]:
-    """Read the resolved-parent cache. Raise ValueError on a malformed file."""
-    loaded: object = json.loads(path.read_text(encoding="utf-8"))
+def _parents_from_records(loaded: object, path: Path) -> dict[str, ParentRecord]:
+    """Parse the parent records. Raise ValueError on a malformed array."""
     if not isinstance(loaded, list):
         raise ValueError(f"{path}: the parent cache must be a top-level array")
     parents: dict[str, ParentRecord] = {}
@@ -291,6 +355,24 @@ def load_parents(path: Path) -> dict[str, ParentRecord]:
             source_locator=_text(record.get("source_locator")) or "",
         )
     return parents
+
+
+def load_parents(path: Path) -> dict[str, ParentRecord]:
+    """Read the resolved-parent cache. Raise ValueError on a malformed file."""
+    return _parents_from_records(json.loads(path.read_text(encoding="utf-8")), path)
+
+
+def load_aircraft_parents(path: Path) -> dict[str, ParentRecord]:
+    """Read the aircraft parent cache.
+
+    The committed cache is ``{}`` when no game install resolved a parent, so
+    an empty JSON object means no parents. Any other shape is the vehicle
+    cache shape and parses the same way.
+    """
+    loaded: object = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(loaded, dict) and not loaded:
+        return {}
+    return _parents_from_records(loaded, path)
 
 
 def load_mass_calibration(path: Path) -> MassCalibration:
@@ -425,6 +507,112 @@ def build_class_bindings(
     return bindings
 
 
+def build_aircraft_emissions(
+    class_bindings_path: Path,
+    aircraft_dir: Path,
+    parents_path: Path,
+) -> tuple[list[AircraftEmission], list[str]]:
+    """Return the gate-passing aircraft fuel emissions and the rejected leads.
+
+    The class identity grade comes from the aircraft class binding and the
+    value grade from the held catalogue value object. ``emit_key`` admits a
+    key only when both are ``documented``. A class that fails the predicate is
+    a lead: it emits no key, needs no resolved parent and the build does not
+    fail for it. A gate-passing class with no resolved parent is an error,
+    because the generator emits no bare class.
+    """
+    load = catalogue.load(aircraft_dir, profile=catalogue.AIRCRAFT_PROFILE)
+    entries = {entry.catalogue_id: entry for entry in load.entries}
+    parents = load_aircraft_parents(parents_path)
+    emissions: list[AircraftEmission] = []
+    leads: list[str] = []
+    for index, record in enumerate(load_class_bindings(class_bindings_path)):
+        where = f"binding[{index}]"
+        game_class = _text(record.get("game_class"))
+        catalogue_id = _text(record.get("catalogue_id"))
+        if game_class is None:
+            raise ValueError(f"{where}: game_class must be a non-empty string")
+        if catalogue_id is None:
+            raise ValueError(f"{where}: catalogue_id must be a non-empty string")
+        entry = entries.get(catalogue_id)
+        held = (
+            catalogue.held_value(entry.values, AIRCRAFT_VALUE_FIELD)
+            if entry is not None
+            else None
+        )
+        identity_grade = record.get("grade")
+        value_grade = held.get("grade") if held is not None else None
+        if not emit_key(identity_grade, value_grade):
+            leads.append(game_class)
+            continue
+        assert held is not None
+        unit = _text(held.get("unit"))
+        if unit != AIRCRAFT_KEY_UNIT:
+            raise ValueError(
+                f"{where}: {AIRCRAFT_VALUE_FIELD} is held in {unit}, "
+                f"the key is {AIRCRAFT_KEY_UNIT}"
+            )
+        source_id = _text(held.get("source"))
+        locator = _text(held.get("locator"))
+        if source_id is None or locator is None:
+            raise ValueError(
+                f"{where}: the held {AIRCRAFT_VALUE_FIELD} value is incomplete"
+            )
+        parent = parents.get(game_class)
+        if parent is None:
+            raise ValueError(
+                f"{game_class}: no resolved parent in {parents_path}; "
+                "run --resolve-aircraft-parents against the game install"
+            )
+        emissions.append(
+            AircraftEmission(
+                game_class=game_class,
+                parent_class=parent.parent_class,
+                value=held.get("value"),
+                unit=AIRCRAFT_KEY_UNIT,
+                source_id=source_id,
+                locator=locator,
+                grade=str(value_grade),
+            )
+        )
+    return emissions, leads
+
+
+def build_all_bindings(
+    class_bindings_path: Path,
+    vehicle_dir: Path,
+    parents_path: Path,
+    calibration_path: Path,
+    aircraft_class_bindings: Path,
+    aircraft_dir: Path,
+    aircraft_parents: Path,
+) -> tuple[list[ClassBinding], list[str]]:
+    """Return the one-block class bodies and the aircraft leads.
+
+    The land bodies are un-gated and their output is unchanged. Each
+    gate-passing aircraft binding appends one body that restates its parent
+    beside the land bodies in the same block. A rejected aircraft binding
+    emits nothing.
+    """
+    bindings = build_class_bindings(
+        class_bindings_path, vehicle_dir, parents_path, calibration_path
+    )
+    emissions, leads = build_aircraft_emissions(
+        aircraft_class_bindings, aircraft_dir, aircraft_parents
+    )
+    for emission in sorted(emissions, key=lambda item: item.game_class):
+        bindings.append(
+            ClassBinding(
+                game_class=emission.game_class,
+                parent_class=emission.parent_class,
+                max_speed=None,
+                mass=None,
+                fuel_capacity=emission.value,
+            )
+        )
+    return bindings, leads
+
+
 def render_bindings(bindings: Sequence[ClassBinding]) -> str:
     """Return the exact on-disk text for the emitted class bodies."""
     parents = sorted({binding.parent_class for binding in bindings})
@@ -439,6 +627,10 @@ def render_bindings(bindings: Sequence[ClassBinding]) -> str:
             lines.append(f"        {KEY} = {_render_value(binding.max_speed)};")
         if binding.mass is not None:
             lines.append(f"        {MASS_KEY} = {_render_value(binding.mass)};")
+        if binding.fuel_capacity is not None:
+            lines.append(
+                f"        {AIRCRAFT_KEY} = {_render_value(binding.fuel_capacity)};"
+            )
         lines.append("    };")
     lines.append("};")
     return "\n".join(lines) + "\n"
@@ -482,10 +674,19 @@ def write_outputs(
     out: Path,
     projection: Path,
     calibration_path: Path = DEFAULT_CALIBRATION,
+    aircraft_class_bindings: Path = DEFAULT_AIRCRAFT_CLASS_BINDINGS,
+    aircraft_dir: Path = DEFAULT_AIRCRAFT_DIR,
+    aircraft_parents: Path = DEFAULT_AIRCRAFT_PARENTS,
 ) -> int:
     """Write the header and the projection. Return the class-body count."""
-    bindings = build_class_bindings(
-        class_bindings_path, vehicle_dir, parents_path, calibration_path
+    bindings, _leads = build_all_bindings(
+        class_bindings_path,
+        vehicle_dir,
+        parents_path,
+        calibration_path,
+        aircraft_class_bindings,
+        aircraft_dir,
+        aircraft_parents,
     )
     _write(out, render_bindings(bindings))
     _write(
@@ -512,6 +713,9 @@ def check_config(
     out: Path,
     projection: Path,
     calibration_path: Path = DEFAULT_CALIBRATION,
+    aircraft_class_bindings: Path = DEFAULT_AIRCRAFT_CLASS_BINDINGS,
+    aircraft_dir: Path = DEFAULT_AIRCRAFT_DIR,
+    aircraft_parents: Path = DEFAULT_AIRCRAFT_PARENTS,
 ) -> int:
     """Return 0 when both committed artefacts match a fresh build.
 
@@ -519,8 +723,14 @@ def check_config(
     generated override fails the gate.
     """
     try:
-        bindings = build_class_bindings(
-            class_bindings_path, vehicle_dir, parents_path, calibration_path
+        bindings, _leads = build_all_bindings(
+            class_bindings_path,
+            vehicle_dir,
+            parents_path,
+            calibration_path,
+            aircraft_class_bindings,
+            aircraft_dir,
+            aircraft_parents,
         )
         text = render_bindings(bindings)
         expected = render_projection(
@@ -706,6 +916,18 @@ def write_parents(
     return len(records)
 
 
+def write_aircraft_parents(
+    game_root: Path,
+    class_bindings_path: Path,
+    aircraft_dir: Path,
+    parents_path: Path,
+) -> int:
+    """Resolve the aircraft parents and write the cache. Return the count."""
+    records = resolve_parents(game_root, class_bindings_path, aircraft_dir)
+    _write(parents_path, json.dumps(records, indent=2) + "\n")
+    return len(records)
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Generate the engine CfgVehicles override."
@@ -717,6 +939,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--calibration", type=Path, default=DEFAULT_CALIBRATION)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument(
+        "--aircraft-class-bindings",
+        type=Path,
+        default=DEFAULT_AIRCRAFT_CLASS_BINDINGS,
+    )
+    parser.add_argument("--aircraft-dir", type=Path, default=DEFAULT_AIRCRAFT_DIR)
+    parser.add_argument(
+        "--aircraft-parents", type=Path, default=DEFAULT_AIRCRAFT_PARENTS
+    )
+    parser.add_argument(
         "--check",
         action="store_true",
         help="Verify the committed artefacts are fresh. Write nothing.",
@@ -727,27 +958,44 @@ def main(argv: Sequence[str] | None = None) -> int:
         help="Resolve the bound class parents from the game install.",
     )
     parser.add_argument(
+        "--resolve-aircraft-parents",
+        action="store_true",
+        help="Resolve the aircraft class parents from the game install.",
+    )
+    parser.add_argument(
         "--game-root",
         type=Path,
         help="Path to the installed Arma 3 directory for --resolve-parents.",
     )
     args = parser.parse_args(argv)
 
-    if args.resolve_parents:
+    if args.resolve_parents or args.resolve_aircraft_parents:
         if args.game_root is None:
-            print("physics config override: --resolve-parents needs --game-root")
+            print("physics config override: resolving parents needs --game-root")
             return 2
         try:
-            count = write_parents(
-                args.game_root,
-                args.class_bindings,
-                args.vehicle_dir,
-                args.parents,
-            )
+            if args.resolve_aircraft_parents:
+                count = write_aircraft_parents(
+                    args.game_root,
+                    args.aircraft_class_bindings,
+                    args.aircraft_dir,
+                    args.aircraft_parents,
+                )
+                label = "aircraft parents"
+                target = args.aircraft_parents
+            else:
+                count = write_parents(
+                    args.game_root,
+                    args.class_bindings,
+                    args.vehicle_dir,
+                    args.parents,
+                )
+                label = "parents"
+                target = args.parents
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"physics config override: cannot resolve parents: {exc}")
             return 1
-        print(f"physics config parents: {count} records -> {args.parents}")
+        print(f"physics config {label}: {count} records -> {target}")
         return 0
 
     if args.check:
@@ -758,6 +1006,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             args.out,
             args.projection,
             args.calibration,
+            args.aircraft_class_bindings,
+            args.aircraft_dir,
+            args.aircraft_parents,
         )
     try:
         count = write_outputs(
@@ -767,6 +1018,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             args.out,
             args.projection,
             args.calibration,
+            args.aircraft_class_bindings,
+            args.aircraft_dir,
+            args.aircraft_parents,
         )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"physics config override: cannot build from the corpus: {exc}")
