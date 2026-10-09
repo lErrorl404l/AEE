@@ -108,3 +108,45 @@ it names its next source here. The next source is named per group.
   or maximum speed alongside the thrust.
 - The `rotor_disc_area_m2` of the AW159 needs a held rotor diameter. Next
   source: the Leonardo AW159 datasheet.
+
+## Rotary-wing expansion leads
+
+The rotary-wing expansion capture `data/aircraft/catalogue/rotary_wing_rw.json`
+records the real rotary types the roster helicopter and rotary UCAV families
+represent, one entry per real variant. Five entries hold real values from the
+held OPFOR Worldwide Equipment Guide and resolve their runtime fields. Every
+other entry is an identity lead. It holds no value, so it names its next source
+here.
+
+- Real-value entries (`mi8_hip`, `mi17_hip`, `mi24p_hind_f`, `ka50_hokum`,
+  `sa341_gazelle`). The held OPFOR Worldwide Equipment Guide states the empty
+  weight, the shaft horsepower per engine and the main rotor diameter. Each
+  entry therefore resolves `operating_weight_kg`, `rated_power_w` and
+  `rotor_disc_area_m2`.
+- US types (`uh1h_v`, `uh1n_twin_huey`, `uh1y_venom`, `oh58a_kiowa`,
+  `oh58c_kiowa`, `oh58d_kiowa_warrior`, `ah64a_apache`,
+  `ah64e_apache_guardian`, `ah1j_seacobra`, `ah1s_cobra`, `ah1w_super_cobra`,
+  `ah1z_viper`, `ah6_little_bird`, `mh6m_mission_enhanced`, `uh60l_black_hawk`,
+  `mh60r_seahawk`, `mh60g_pave_hawk`, `hh60g_pave_hawk`, `mh60s_knighthawk`,
+  `sh60b_seahawk`, `ch47a_chinook`, `ch47b_chinook`, `ch47c_chinook`,
+  `mh47g_chinook`, `ch53d_sea_stallion`, `ch53e_super_stallion`,
+  `mh53e_sea_dragon`, `ch53k_king_stallion`, `uh72a_lakota`, `th67_creek`,
+  `ch46_sea_knight`, `oh6a_cayuse`). Next source: a US Army operator's manual
+  such as TM 1-1520-237-10, an FAA type certificate data sheet, or a maker
+  datasheet.
+- Soviet and Russian types (`mi35m_hind_e`, `mi171_hip_h`, `mi6_hook`,
+  `mi14_haze`, `mi38_halo`, `mi24a_hind_a`, `ka27_helix`, `ka29_helix_b`,
+  `ka32_helix_c`, `ka60_kasatka`, `mi4_hound`, `mi10_harke`). Next source: the
+  held ODIN Worldwide Equipment Guide 2025, or a Russian flight manual.
+- European types (`sa342_gazelle`, `sa330_puma`, `as332_super_puma`,
+  `as532_cougar`, `as350_ecureuil`, `as355_twinstar`, `as365_dauphin`, `ec135`,
+  `ec145`, `ec155`, `ec225_super_puma`, `sa321_super_frelon`, `nh90_nfh`,
+  `ec665_tiger`, `lynx_has3`, `wg13_lynx`, `aw139`, `aw149`, `aw101_hm2`,
+  `bo105`, `bk117`, `w3_sokol`). Next source: an EASA type certificate data
+  sheet or a maker datasheet. The held EASA.R.013 already covers the AW101.
+- Chinese and other types (`z8_haoyang`, `z9_haitun`, `z10_thunderbolt`,
+  `z19_thunderbolt`, `z20_black_eagle`, `bell412`, `bell412ep`, `bell212`,
+  `bell205`, `bell206b_jetranger`, `bell407`, `bell429`, `bell525`, `s76`,
+  `s92`, `md902_explorer`, `mq8_fire_scout`, `mq8c_fire_scout`,
+  `rq8_fire_scout`, `camcopter_s100`). Next source: a maker datasheet or an
+  export operator's handbook.
