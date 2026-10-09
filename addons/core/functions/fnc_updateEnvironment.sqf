@@ -428,8 +428,8 @@ if (GVAR(fxEnabled)) then {
     [] call EFUNC(fx,applyRainSurfaceDrops);
 };
 
-if (GVAR(diagnostic)) then {
-    [] call FUNC(diagnostic);
+if (EGVAR(diagnostics,diagnostic)) then {
+    [] call EFUNC(diagnostics,diagnostic);
 };
 
 // Notify CBA local event subscribers that the environment state refreshed.
@@ -458,7 +458,7 @@ if (AEE_TRACE_ON) then {
         private _dumpN = (missionNamespace getVariable [QGVAR(counterDumpN), 0]) + 1;
         missionNamespace setVariable [QGVAR(counterDumpN), _dumpN];
         if ((_dumpN % 2) == 0) then {
-            [] call FUNC(dumpPerformanceCounters);
+            [] call EFUNC(diagnostics,dumpPerformanceCounters);
         };
     };
 

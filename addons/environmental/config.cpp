@@ -10,6 +10,7 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_lib",
             "aee_core",
+            "aee_diagnostics",
             "cba_main",
             "cba_xeh",
             "A3_Data_F_Decade_Loadorder"

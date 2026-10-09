@@ -69,7 +69,7 @@ if (_crankSuccess <= 0) then { _turbo = 0; };
 missionNamespace setVariable [QGVAR(enginePowerModifier), _power];
 missionNamespace setVariable [QGVAR(engineTurboModifier), _turbo];
 
-if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
+if (missionNamespace getVariable [QEGVAR(diagnostics,diagnostic), false]) then {
     private _logMsg = format [
         "EnginePower: NA=%1 Turbo=%2 Crank=%3 (alt=%4 m, T=%5 °C, bat=%6)",
         [_power, 2] call CBA_fnc_formatNumber,

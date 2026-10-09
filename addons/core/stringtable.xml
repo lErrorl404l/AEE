@@ -113,38 +113,6 @@
             <Original>Work Distribution</Original>
             <English>Work Distribution</English>
         </Key>
-        <Key ID="STR_AEE_Core_consistencyCheck_Description">
-            <Original>Read the published producer variables and warn when two modules disagree. Read-only and deterministic, so it runs on every machine. Default on. UNSOURCED that a cross-module disagreement is always a fault.</Original>
-            <English>Read the published producer variables and warn when two modules disagree. Read-only and deterministic, so it runs on every machine. Default on. UNSOURCED that a cross-module disagreement is always a fault.</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyCheck_Name">
-            <Original>Cross-Module Consistency Monitor</Original>
-            <English>Cross-Module Consistency Monitor</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyInterval_Description">
-            <Original>Seconds between consistency samples, range 1 to 60. Default 10. The monitor runs in a per-frame handler and throttles itself to this interval. UNSOURCED.</Original>
-            <English>Seconds between consistency samples, range 1 to 60. Default 10. The monitor runs in a per-frame handler and throttles itself to this interval. UNSOURCED.</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyInterval_Name">
-            <Original>Consistency Interval</Original>
-            <English>Consistency Interval</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyStrict_Description">
-            <Original>Also report an invariant that passes with a drift inside its tolerance and a full comparison. A no-data or out-of-scope row makes no comparison, so it is not reported. Reported at INFO, never a warning. Default off. UNSOURCED.</Original>
-            <English>Also report an invariant that passes with a drift inside its tolerance and a full comparison. A no-data or out-of-scope row makes no comparison, so it is not reported. Reported at INFO, never a warning. Default off. UNSOURCED.</English>
-        </Key>
-        <Key ID="STR_AEE_Core_consistencyStrict_Name">
-            <Original>Strict Consistency</Original>
-            <English>Strict Consistency</English>
-        </Key>
-        <Key ID="STR_AEE_Core_diagnostic_Description">
-            <Original>Enable verbose diagnostic logging (diag_log) for environment state changes</Original>
-            <English>Enable verbose diagnostic logging (diag_log) for environment state changes</English>
-        </Key>
-        <Key ID="STR_AEE_Core_diagnostic_Name">
-            <Original>Diagnostic Logging</Original>
-            <English>Diagnostic Logging</English>
-        </Key>
         <Key ID="STR_AEE_Core_enabled_Description">
             <Original>Master switch for the AEE environment simulation module</Original>
             <English>Master switch for the AEE environment simulation module</English>

@@ -143,7 +143,7 @@ class TestLogDebugSwitches(unittest.TestCase):
 
     def test_every_settings_addon_has_the_switch_and_keys(self) -> None:
         files = sorted((REPO / "addons").glob("*/initSettings.inc.sqf"))
-        self.assertEqual(len(files), 23)
+        self.assertEqual(len(files), 24)
         self.assertIn("core", {path.parent.name for path in files})
         for path in files:
             addon = path.parent

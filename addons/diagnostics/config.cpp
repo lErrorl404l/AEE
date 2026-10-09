@@ -10,9 +10,9 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_lib",
             "aee_core",
-            "aee_diagnostics",
             "cba_main",
-            "cba_xeh"
+            "cba_xeh",
+            "cba_settings"
         };
         author = AUTHOR;
         authors[] = AUTHORS;

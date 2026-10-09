@@ -30,7 +30,7 @@ Arguments: none.
 
 Returns: Nothing.
 Public: No
-Example: [] call aee_core_fnc_runConsistencyCheck
+Example: [] call aee_diagnostics_fnc_runConsistencyCheck
 */
 
 private _table = [] call FUNC(consistencyLoadTable);
@@ -56,7 +56,7 @@ private _result = [_table, _values] call FUNC(evaluateConsistency);
 private _pass = _result select 0;
 private _rows = _result select 1;
 
-private _strict = missionNamespace getVariable ["aee_core_consistencyStrict", false];
+private _strict = missionNamespace getVariable ["aee_diagnostics_consistencyStrict", false];
 if !(_strict isEqualType false) then { _strict = false; };
 
 // ── Module health (task 4), folded into the first line ─────────────────────

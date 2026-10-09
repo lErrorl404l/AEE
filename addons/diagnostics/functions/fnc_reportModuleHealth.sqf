@@ -19,7 +19,7 @@ Arguments: none.
 
 Return Value: Nothing.
 Public: No
-Example: [] call aee_core_fnc_reportModuleHealth
+Example: [] call aee_diagnostics_fnc_reportModuleHealth
 */
 
 // The static module list.  Each name is the component the AEE_MODULE_* macros
@@ -35,6 +35,7 @@ private _components = [
     "atmos",
     "ballistics",
     "core",
+    "diagnostics",
     "environmental",
     "fx",
     "maritime",
@@ -57,7 +58,7 @@ private _health = [];
     _health pushBack [_x, _preInit, _postInit];
 } forEach _components;
 
-missionNamespace setVariable [QGVAR(moduleHealth), _health];
+missionNamespace setVariable [QEGVAR(core,moduleHealth), _health];
 
 // One INFO line lists every module and both flags.  The WARN names only the
 // module that has not initialised, so a healthy mission logs one line.

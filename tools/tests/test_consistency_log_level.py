@@ -29,7 +29,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MONITOR = ROOT / "addons" / "core" / "functions" / "fnc_runConsistencyCheck.sqf"
+MONITOR = ROOT / "addons" / "diagnostics" / "functions" / "fnc_runConsistencyCheck.sqf"
 
 WARN_CALL = "[_line] call FUNC(consistencyLog);"
 INFO_CALL = '[_line, "INFO"] call FUNC(consistencyLog);'

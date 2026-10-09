@@ -3,7 +3,7 @@
 
 The BEGIN/END_COUNTER macros (addons/lib/script_debug.hpp) accumulate
 [lastStart, [start, stop], ...] pairs per counter; the dump function
-(addons/core/functions/fnc_dumpPerformanceCounters.sqf) skips the first
+(addons/diagnostics/functions/fnc_dumpPerformanceCounters.sqf) skips the first
 2 entries (warm-up), averages the closed samples, and reports ms/call.
 These tests mirror the dump arithmetic so the SQF aggregation logic is
 locked: a counter regression (wrong skip, wrong average) fails here.
@@ -121,7 +121,7 @@ class TestZeroOverheadGate(unittest.TestCase):
         # The dump guards on aee_perfCounters being nil (production).
         from pathlib import Path
 
-        dump = Path("addons/core/functions/fnc_dumpPerformanceCounters.sqf").read_text(
+        dump = Path("addons/diagnostics/functions/fnc_dumpPerformanceCounters.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn('isNil "aee_perfCounters"', dump)

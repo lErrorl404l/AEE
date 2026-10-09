@@ -154,7 +154,7 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_updateInterval` | The update interval |
 | `aee_core_enabled` | Whether the mod is enabled |
 | `aee_core_isReady` | Whether the mod is ready |
-| `aee_core_diagnostic` | Whether diagnostic reporting is enabled |
+| `aee_diagnostics_diagnostic` | Whether diagnostic reporting is enabled |
 | `aee_core_environmentalEnabled` | Whether environmental simulation is enabled |
 | `aee_core_atmosphericEventsEnabled` | Whether atmospheric events are enabled |
 | `aee_core_moduleUpdateInterval` | The update interval from the EDEN module |

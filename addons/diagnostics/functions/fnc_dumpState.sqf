@@ -17,7 +17,7 @@ Arguments: none.
 
 Return Value: Nothing.
 Public: No
-Example: [] call aee_core_fnc_dumpState
+Example: [] call aee_diagnostics_fnc_dumpState
 */
 
 if (!(AEE_TRACE_ON) && {missionNamespace getVariable [QGVAR(stateLogStarted), false]}) exitWith {};
@@ -44,14 +44,14 @@ private _seed = missionNamespace getVariable [QEGVAR(core,weatherProgressionSeed
 if !(_seed isEqualType 0) then { _seed = 0; };
 private _realWeather = missionNamespace getVariable [QEGVAR(core,realWeatherActive), false];
 if !(_realWeather isEqualType false) then { _realWeather = false; };
-private _isReady = missionNamespace getVariable [QGVAR(isReady), false];
+private _isReady = missionNamespace getVariable [QEGVAR(core,isReady), false];
 if !(_isReady isEqualType false) then { _isReady = false; };
 
 // Ownership sentinels (ADR-027). Read each declared property from the live
 // config tree and compare it to AEE's value. A mismatch is the silent loss:
 // another mod loaded after AEE and won the config merge for a class AEE owns.
 // Read only; the config tree is never written here.
-private _sentinels = missionNamespace getVariable [QGVAR(ownershipSentinels), []];
+private _sentinels = missionNamespace getVariable [QEGVAR(core,ownershipSentinels), []];
 if !(_sentinels isEqualType []) then { _sentinels = []; };
 private _mismatches = [];
 {
