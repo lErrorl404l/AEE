@@ -251,6 +251,22 @@
           "locator": "Chapter 7 torque charts and paragraph 5-6b, 324 rotor / 6600 engine rpm normal operating",
           "state": "UH-1H operator's manual normal operating engine speed 6600 rpm",
           "grade": "documented"
+        },
+        "generator_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "2-58 Main and Standby Starter-Generator, 30 volt 300 ampere main generator",
+          "state": "UH-1H operator's manual one main generator on the transmission",
+          "grade": "documented"
+        },
+        "bus_voltage_v": {
+          "value": 28,
+          "unit": "V",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "2-55 DC Power Supply System, 28 Vdc power to the power distribution system",
+          "state": "UH-1H operator's manual direct current bus 28 Vdc",
+          "grade": "documented"
         }
       }
     },
