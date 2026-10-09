@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (641)
+### Public functions (644)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -146,6 +146,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculatePrecipitationPhase`
 - `aee_atmos_fnc_calculatePressureTrend`
 - `aee_atmos_fnc_calculateRefraction`
+- `aee_atmos_fnc_calculateRelativeHumidity`
+- `aee_atmos_fnc_calculateStationPressure`
 - `aee_atmos_fnc_calculateTerrainWind`
 - `aee_atmos_fnc_calculateTurbulence`
 - `aee_atmos_fnc_dumpState`
@@ -160,6 +162,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_updateSimulWeatherLayers`
 - `aee_atmos_fnc_updateWind`
 - `aee_ballistics_fnc_calculateAirDensity`
+- `aee_ballistics_fnc_calculateAirDensityKernel`
 - `aee_ballistics_fnc_calculateAmmoTemperature`
 - `aee_ballistics_fnc_calculateBallisticCoefficient`
 - `aee_ballistics_fnc_calculateBallisticDrag`

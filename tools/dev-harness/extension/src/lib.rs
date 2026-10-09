@@ -26,6 +26,7 @@ use arma_rs::{arma, Context, Extension};
 
 pub mod bridge;
 pub mod http;
+pub mod kernels;
 
 use bridge::{Bridge, BridgeError, BridgeHandler, CallbackChannel, DEFAULT_TIMEOUT};
 use http::{DevConfig, DevServer, StartOutcome};
@@ -49,6 +50,9 @@ fn init() -> Extension {
         .command("stop", stop)
         .command("reply", reply)
         .command("reply_chunk", reply_chunk)
+        .command("kernel.calculateStationPressure", kernel_station_pressure)
+        .command("kernel.calculateRelativeHumidity", kernel_relative_humidity)
+        .command("kernel.calculateAirDensityKernel", kernel_air_density)
         .finish()
 }
 
@@ -118,6 +122,29 @@ fn reply_chunk(id: f64, index: f64, chunk: String, last: bool) -> String {
         Ok(()) => "ok".to_string(),
         Err(error) => format!("error: {error}"),
     }
+}
+
+/// Station pressure. The SQF dispatcher maps `kernel.calculateStationPressure`
+/// to [`kernels::station_pressure`]; the same call is the parity oracle.
+fn kernel_station_pressure(p_sea: f64, elevation: f64, lapse_rate: f64) -> String {
+    kernels::station_pressure(p_sea, elevation, lapse_rate).to_string()
+}
+
+/// Relative humidity. Dispatcher name `kernel.calculateRelativeHumidity`.
+fn kernel_relative_humidity(
+    rh_base: f64,
+    surface_mod: f64,
+    t_ref: f64,
+    t_now: f64,
+    overcast: f64,
+    rain: f64,
+) -> String {
+    kernels::relative_humidity(rh_base, surface_mod, t_ref, t_now, overcast, rain).to_string()
+}
+
+/// Air density. Dispatcher name `kernel.calculateAirDensity`.
+fn kernel_air_density(t_c: f64, p_hpa: f64, rh: f64) -> String {
+    kernels::air_density(t_c, p_hpa, rh).to_string()
 }
 
 fn reply_timeout() -> Duration {

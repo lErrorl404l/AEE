@@ -1,4 +1,5 @@
 PREP(calculateAirDensity);
+PREP(calculateAirDensityKernel);
 PREP(calculateAmmoTemperature);
 PREP(calculateCoriolisDeflection);
 PREP(calculateCrosswindBallistics);

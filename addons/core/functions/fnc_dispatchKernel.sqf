@@ -36,4 +36,5 @@ if (missionNamespace getVariable [QGVAR(extReady), false]) then {
 };
 
 // SQF reference kernel: the fallback and the parity oracle for the native path.
-[_args] call (missionNamespace getVariable [_sqfRef, { nil }]);
+// The arguments array is spread onto the kernel's positional params.
+_args call (missionNamespace getVariable [_sqfRef, { nil }]);
