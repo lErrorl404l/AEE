@@ -78,6 +78,10 @@ lint: lint-parity
 	python3 tools/gen_compat_directions.py --check || rc=1; \
 	python3 tools/gen_ownership_sentinels.py --check || rc=1; \
 	python3 tools/gen_extension_contract.py --check || rc=1; \
+	python3 tools/gen_dev_console_contract.py --check || rc=1; \
+	python3 tools/gen_kernel_table.py --check || rc=1; \
+	python3 tools/tests/test_sim_clock_guard.py || rc=1; \
+	python3 tools/tests/test_kernel_split.py || rc=1; \
 	python3 tools/validation/gen_wildlife_ecology.py --check || rc=1; \
 	python3 tools/validation/validate_wildlife_ecology.py || rc=1; \
 	python3 tools/tests/test_suite_registration.py || rc=1; \
