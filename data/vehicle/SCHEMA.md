@@ -72,9 +72,10 @@ exists. A compilation is never a primary source.
 ## 4. Source types and hard rules
 
 A source type is a real-world type or an engine type. The real-world
-types are `standard`, `manual`, `measurement`, `manufacturer` and
-`compilation`. The engine types are `engine_geometry`, `engine_config`
-and `class_table`.
+types are `standard`, `manual`, `poh`, `tcds`, `measurement`,
+`manufacturer` and `compilation`. The tier-2 real-world types are
+`manual`, `poh` and `tcds`. The engine types are `engine_geometry`,
+`engine_config` and `class_table`.
 
 The hard rules are these.
 
@@ -379,13 +380,17 @@ supply them is not runtime-ready.
 
 A unit is one exact string. The allowed strings are `kg`, `mm`, `kPa`,
 `kW`, `hp`, `L`, `N m`, `deg`, `km/h`, `km`, `m`, `count`, `ratio`,
-`enum` and `text`. The non-physical tokens mean this.
+`enum`, `text`, `rpm`, `MJ/kg`, `kg/L`, `kg/kWh`, `kg/s`, `deg C`, `Ah`,
+`V`, `kg m^2`, `W`, `list` and `mapping`. The non-physical tokens mean
+this.
 
 - `count`: a whole number of items.
 - `ratio`: a dimensionless ratio.
 - `enum`: one term from a stated controlled vocabulary.
 - `text`: a proper name or a published code, for example an engine model
   or a tyre size code.
+- `list`: an ordered set of names.
+- `mapping`: a field-to-value map.
 
 ## 10. Runtime-required sets
 
@@ -585,3 +590,111 @@ ambiguous variant, a tie and a missing required field.
 6. A class map needs a real-world mapping source. No category guess.
 7. Write only your own output file. Never edit another file and never
    commit.
+
+## 16. The systems field set
+
+This section defines the family-agnostic systems fields. It applies to an
+aircraft and to a land vehicle. The aircraft document adds its own deltas
+in `data/aircraft/SCHEMA.md`. A row below names the field, its unit, its
+source class, its published flag and its engine hook or marker.
+
+A `reference only` field documents the system. It never fills a runtime
+calculation input. A `status only` field reports a state. It never feeds
+the flight dynamics model.
+
+### Fuel
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `fuel_capacity` | L | manual / poh / tcds | yes | config `CfgVehicles >> fuelCapacity` |
+| `fuel_type` | enum | manual / poh | yes | reference only, selects the density |
+| `fuel_density_kg_l` | kg/L | standard | yes | derived consumer |
+| `fuel_mass_full_kg` | kg | derived | no | `setMass` delta and centre-of-gravity shift |
+| `fuel_consumption_rate` | kg/s | manual / poh | yes | systems row, the engine burn is zero |
+| `sfc_kg_kwh` | kg/kWh | manual | yes | burn derivation |
+| `fuel_burn_kg_s` | kg/s | derived | no | scripted `setFuel` |
+| `fuel_tank_count` | count | manual | yes | reference only, transfer |
+| `fuel_tank_capacity_l` | L | manual | yes | reference only |
+| `fuel_cg_arm_m` | m | manual (weight and balance) | yes | scripted `setCenterOfMass` |
+| `fuel_lhv_mj_kg` | MJ/kg | standard | yes | engine physics |
+
+### Engine
+
+Both families carry a rated power, an engine model, a design speed, a
+torque limit, oil and a main gearbox.
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `engine_model` | text | manual / manufacturer | yes | reference only |
+| `engine_count` | count | manual | yes | reference only |
+| `rated_power_w` | W | manual / manufacturer | yes | exists, the runtime `_ratedPowerW` |
+| `engine_design_rpm` | rpm | manual | yes | reference only |
+| `engine_max_torque_nm` | N m | manual | yes | scripted limit |
+| `engine_oil_pressure_min_kpa` | kPa | manual | yes | scripted status |
+| `engine_oil_pressure_max_kpa` | kPa | manual | yes | scripted status |
+| `engine_oil_capacity_l` | L | manual | yes | reference only |
+| `engine_oil_type` | enum | manual | yes | reference only |
+| `transmission_torque_limit_nm` | N m | manual | yes | scripted limit |
+| `transmission_gear_ratio_main` | ratio | manual | yes | reference only |
+
+The turbine terms are an aircraft delta. They are in
+`data/aircraft/SCHEMA.md`.
+
+### Mass, centre of gravity and inertia
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `empty_weight_kg` | kg | manual | yes | exists, derivation input |
+| `max_takeoff_weight_kg` | kg | manual | yes | exists |
+| `cg_empty_m` | m | manual (weight and balance) | yes | `setCenterOfMass` |
+| `cg_forward_limit_m` | m | manual | yes | reference only |
+| `cg_aft_limit_m` | m | manual | yes | reference only |
+| `inertia_xx_kgm2` | kg m^2 | manual / derived | yes | reference only, config |
+| `inertia_yy_kgm2` | kg m^2 | manual / derived | yes | reference only, config |
+| `inertia_zz_kgm2` | kg m^2 | manual / derived | yes | reference only, config |
+| `payload_kg` | kg | manual | yes | exists |
+
+### Damage
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `hitpoint_names` | list | manual (component breakdown) | yes | config `HitPoints`, `get` and `setHitPointDamage` |
+| `component_count` | count | manual | yes | scripted role model |
+| `crew_count` | count | manual | yes | reference only |
+| `damage_role_map` | mapping | structural reference | no | scripted layers |
+
+### Status systems
+
+Hydraulics and electrical are shared. Pressurisation is an aircraft delta.
+Every field below is `status only`. A status-only value never feeds the
+flight dynamics model.
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `hydraulic_system_count` | count | manual | yes | status only |
+| `hydraulic_pressure_kpa` | kPa | manual | yes | status only |
+| `generator_count` | count | manual | yes | status only |
+| `generator_power_kw` | kW | manual | yes | status only |
+| `bus_voltage_v` | V | manual | yes | status only |
+| `battery_capacity_ah` | Ah | manual | yes | status only |
+
+### The engine ceiling by system
+
+The engine ceiling is fixed at config load. It is stated here once.
+
+Fuel is built-in partial. The engine reads `fuelCapacity`,
+`fuelConsumptionRate` and `fuel`, and the script calls `setFuel`.
+Transfer, jettison and the centre-of-gravity shift are scripted.
+
+The engine is RTD-gated and partly absent. The real-time data interface
+exists only when `difficultyEnabledRTD` is true. The engine exposes no
+turbine temperature, no oil, no start and no wear. The script supplies
+the turbine-temperature and oil readout.
+
+Damage is built-in plus scripted layers. The engine reads `HitPoints`,
+`getHitPointDamage`, `setHitPointDamage`, `setDamage`, `allowDamage` and
+`CfgAmmo`. Per-system progressive damage is scripted.
+
+Hydraulics, electrical and pressurisation are absent. They are status
+only. A status-only value never feeds the flight dynamics model. The
+flight dynamics model is engine-fixed at config load (ADR-017).
