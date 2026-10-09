@@ -52,12 +52,18 @@ private _notes = [];
         };
     } else {
         _nativeUnavailable = _nativeUnavailable + 1;
-        private _fallback = if (isNil "_dispatch") then { nil } else { [_id, _args] call _dispatch };
-        if ((_fallback isEqualType 0) && {(abs (_expected - _fallback)) <= _bound}) then {
+        private _fallbackOk = false;
+        if (!isNil "_dispatch") then {
+            private _dispatched = [_id, _args] call _dispatch;
+            if ((_dispatched isEqualType 0) && {(abs (_expected - _dispatched)) <= _bound}) then {
+                _fallbackOk = true;
+            };
+        };
+        if (_fallbackOk) then {
             _pass = _pass + 1;
         } else {
             _fail = _fail + 1;
-            _notes pushBack format ["%1 fallback: expected %2 got %3", _id, _expected, _fallback];
+            _notes pushBack format ["%1 fallback: expected %2 (dispatch available %3)", _id, _expected, !isNil "_dispatch"];
         };
     };
 } forEach _cases;

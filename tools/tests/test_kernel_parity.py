@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[2]
 VECTORS = (
     ROOT / "tools" / "dev-harness" / "extension" / "tests" / "vectors" / "kernels.json"
 )
+MANIFEST = ROOT / "tools" / "conformance_manifest.json"
 
 
 def _check(script: str) -> subprocess.CompletedProcess[str]:
@@ -66,6 +67,39 @@ class TestKernelParity(unittest.TestCase):
         for name, kernel in suite.items():
             self.assertLessEqual(
                 kernel["tolerance_abs"], 0.5, f"{name}: absolute bound is too loose"
+            )
+
+    def test_the_kernel_table_renders_side_and_parity(self):
+        sys.path.insert(0, str(ROOT / "tools"))
+        import gen_kernel_table as gen
+
+        block = gen.build_block()
+        self.assertIn("| Side |", block, "the table must render the kernel side")
+        self.assertIn(
+            "| Parity vector |", block, "the table must render the parity vector"
+        )
+        for name, key in (
+            ("calculateStationPressure", "stationPressure"),
+            ("calculateRelativeHumidity", "relativeHumidity"),
+            ("calculateAirDensityKernel", "airDensity"),
+        ):
+            self.assertIn(f"`{name}`", block)
+            self.assertIn(f"{key} (", block, f"{name} has no rendered parity vector")
+
+    def test_the_conformance_manifest_lists_the_kernel_generators(self):
+        entries = json.loads(MANIFEST.read_text(encoding="utf-8"))["entries"]
+        ids = {entry["id"] for entry in entries}
+        self.assertEqual(ids, {"kernel_table", "kernel_coefficients", "kernel_vectors"})
+        for entry in entries:
+            for artifact in entry["artifacts"]:
+                self.assertTrue(
+                    (ROOT / artifact).is_file(),
+                    f"{entry['id']}: artifact {artifact} is missing",
+                )
+            script = entry["generator"].split()[1]
+            self.assertTrue(
+                (ROOT / script).is_file(),
+                f"{entry['id']}: generator {script} is missing",
             )
 
 
