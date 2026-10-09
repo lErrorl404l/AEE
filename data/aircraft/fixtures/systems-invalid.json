@@ -1,0 +1,49 @@
+{
+  "retrieved": "2026-10-09",
+  "note": "RED FIXTURE ONLY, not runtime data. The task 7 validator must reject this document through the record path. It holds no real aircraft value, no real class mapping and no held source. Every value is a sentinel. fuel_capacity carries the unlisted unit gal. fuel_mass_full_kg is graded derived but its state names no formula. The record is not runtime-ready. Do not promote this file to data/aircraft/catalogue/.",
+  "sources": [
+    {
+      "source_id": "fixture_systems_manual",
+      "tier": 2,
+      "type": "manual",
+      "title": "FIXTURE ONLY tier-2 manual, not a held document",
+      "identifier": "FIXTURE-SYSTEMS-MANUAL",
+      "retrieved": "2026-10-09",
+      "primary_held": true,
+      "sha256": ""
+    }
+  ],
+  "record": {
+    "catalogue_id": "fixture_systems_invalid",
+    "canonical_name": "FIXTURE",
+    "maker": "FIXTURE",
+    "model": "FIXTURE",
+    "variant": "FIXTURE",
+    "variant_id": "fixture_systems_invalid_variant",
+    "game_class": "FIXTURE_SYSTEMS_F",
+    "class_token": "Plane",
+    "identity_source": "fixture_systems_manual",
+    "country": "NONE",
+    "era": "none",
+    "vehicle_type": "fixed_wing",
+    "runtime_ready": false,
+    "values": {
+      "fuel_capacity": {
+        "value": 1000,
+        "unit": "gal",
+        "source": "fixture_systems_manual",
+        "locator": "fixture only, no real locator",
+        "state": "fixture state, not a real configuration",
+        "grade": "documented"
+      },
+      "fuel_mass_full_kg": {
+        "value": 800,
+        "unit": "kg",
+        "source": "fixture_systems_manual",
+        "locator": "fixture only, no real locator",
+        "state": "fixture state, not a real configuration",
+        "grade": "derived"
+      }
+    }
+  }
+}
