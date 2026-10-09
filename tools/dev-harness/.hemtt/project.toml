@@ -1,0 +1,11 @@
+name = "AEE Dev Harness"
+prefix = "aee"
+author = "lErrorl404l"
+mainprefix = "z"
+
+[version]
+path = "addons/dev/script_version.hpp"
+git_hash = 0
+
+[properties]
+url = "https://github.com/lErrorl404l/AEE"
