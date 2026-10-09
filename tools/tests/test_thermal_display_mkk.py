@@ -19,14 +19,14 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
-_DISPLAY = REPO / "addons" / "thermal" / "functions" / "display"
+_DISPLAY = REPO / "addons" / "thermal_display" / "functions" / "display"
 _WET = _DISPLAY / "fnc_thermalWetDistortionParams.sqf"
 _RES = _DISPLAY / "fnc_thermalResolutionParams.sqf"
 _PALETTE = _DISPLAY / "fnc_thermalPalette.sqf"
 _VISION = _DISPLAY / "fnc_applyThermalVision.sqf"
 _CREATE = _DISPLAY / "fnc_createThermalPPEffects.sqf"
-_PREP = REPO / "addons" / "thermal" / "XEH_PREP.hpp"
-_SETTINGS = REPO / "addons" / "thermal" / "initSettings.inc.sqf"
+_PREP = REPO / "addons" / "thermal_display" / "XEH_PREP.hpp"
+_SETTINGS = REPO / "addons" / "thermal_display" / "initSettings.inc.sqf"
 
 # The engine's fixed WetDistortion coefficients (BIKI Post Process Effects,
 # WetDistortion defaults), identical to the MKK vector tail.
@@ -179,7 +179,7 @@ class TestMKKDisplayWiring(unittest.TestCase):
         files = [
             "addons/vision/functions/vision/fnc_managePostProcess.sqf",
             "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
-            "addons/thermal/functions/display/fnc_createThermalPPEffects.sqf",
+            "addons/thermal_display/functions/display/fnc_createThermalPPEffects.sqf",
         ]
         seen = {}
         for rel in files:
@@ -198,8 +198,13 @@ class TestMKKDisplayWiring(unittest.TestCase):
         self.assertIn("thermalPixelation", self.settings)
 
     def test_palette_setting_offers_the_isotherm_modes(self):
-        self.assertIn("Isotherm red", self.settings)
-        self.assertIn("Sepia", self.settings)
+        # The palette setting stays with the physics in aee_thermal; the
+        # display addon reads it through EGVAR(thermal,thermalPalette).
+        thermal = (REPO / "addons" / "thermal" / "initSettings.inc.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("Isotherm red", thermal)
+        self.assertIn("Sepia", thermal)
 
     def test_no_mkk_binary_asset_is_referenced(self):
         for path in (_WET, _RES):

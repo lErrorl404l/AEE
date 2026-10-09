@@ -3,9 +3,9 @@
 
 Executes the REAL SQF kernels through sqf_lite:
 
-  addons/thermal/functions/fusion/fnc_fusionGateDecision.sqf
-  addons/thermal/functions/fusion/fnc_fusionThermalField.sqf
-  addons/thermal/functions/fusion/fnc_fusionBandIndex.sqf
+  addons/thermal_display/functions/fusion/fnc_fusionGateDecision.sqf
+  addons/thermal_display/functions/fusion/fnc_fusionThermalField.sqf
+  addons/thermal_display/functions/fusion/fnc_fusionBandIndex.sqf
 
 The engine-reading functions fnc_isFusionCapable, fnc_resolveFusionDevice and
 fnc_applyFusionOverlay cannot run without an engine, so their source contract
@@ -33,7 +33,7 @@ from sqf_lite import run_sqf  # noqa: E402
 
 from tools.validation import device_catalogue as catalogue  # noqa: E402
 
-FUSION = REPO / "addons" / "thermal" / "functions" / "fusion"
+FUSION = REPO / "addons" / "thermal_display" / "functions" / "fusion"
 GATE_KERNEL = FUSION / "fnc_fusionGateDecision.sqf"
 FIELD_KERNEL = FUSION / "fnc_fusionThermalField.sqf"
 BAND_KERNEL = FUSION / "fnc_fusionBandIndex.sqf"
@@ -43,12 +43,12 @@ RESOLVER_SRC = (FUSION / "fnc_resolveFusionDevice.sqf").read_text(encoding="utf-
 OVERLAY_SRC = (FUSION / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
 FILL_SRC = (FUSION / "fnc_applyFusionFill.sqf").read_text(encoding="utf-8")
 UPDATE_SRC = (FUSION / "fnc_updateFusionFrame.sqf").read_text(encoding="utf-8")
-PREP_SRC = (REPO / "addons" / "thermal" / "XEH_PREP.hpp").read_text(encoding="utf-8")
-SETTINGS_SRC = (REPO / "addons" / "thermal" / "initSettings.inc.sqf").read_text(
+PREP_SRC = (REPO / "addons" / "thermal_display" / "XEH_PREP.hpp").read_text(encoding="utf-8")
+SETTINGS_SRC = (REPO / "addons" / "thermal_display" / "initSettings.inc.sqf").read_text(
     encoding="utf-8"
 )
-RSC_SRC = (REPO / "addons" / "thermal" / "RscTitles.hpp").read_text(encoding="utf-8")
-STRINGTABLE_SRC = (REPO / "addons" / "thermal" / "stringtable.xml").read_text(
+RSC_SRC = (REPO / "addons" / "thermal_display" / "RscTitles.hpp").read_text(encoding="utf-8")
+STRINGTABLE_SRC = (REPO / "addons" / "thermal_display" / "stringtable.xml").read_text(
     encoding="utf-8"
 )
 CATALOGUE = json.loads(
@@ -305,7 +305,7 @@ class TestFusionFrameWiring(unittest.TestCase):
 
     def test_the_stringtable_keys_exist(self):
         for key in ("fusionFovFrame_Name", "fusionFovFrame_Description"):
-            self.assertIn(f"STR_AEE_Thermal_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Thermal_Display_{key}", STRINGTABLE_SRC)
 
     def test_the_overlay_drives_the_frame_from_the_resolved_angle(self):
         self.assertIn(
@@ -340,7 +340,7 @@ class TestFusionSolidFill(unittest.TestCase):
 
     def test_the_stringtable_keys_exist(self):
         for key in ("fusionSolidFill_Name", "fusionSolidFill_Description"):
-            self.assertIn(f"STR_AEE_Thermal_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Thermal_Display_{key}", STRINGTABLE_SRC)
 
     def test_prep_registers_the_fill(self):
         self.assertIn("PREPS(fusion,applyFusionFill);", PREP_SRC)
@@ -391,7 +391,7 @@ class TestFusionSolidFill(unittest.TestCase):
         # The fill branch must exit before the emissive sweep, so one body is
         # never painted by both the ladder and the solid texture.
         fill_at = OVERLAY_SRC.index("if (_fillOn) exitWith {")
-        sweep_at = OVERLAY_SRC.index("call FUNC(takeThermalSweep)")
+        sweep_at = OVERLAY_SRC.index("takeThermalSweep)")
         self.assertLess(fill_at, sweep_at)
 
 
@@ -412,8 +412,8 @@ class TestFusionRestoreOnGateOff(unittest.TestCase):
     """
 
     def test_the_dirty_test_reads_both_registries(self):
-        self.assertIn("QEGVAR(thermal,fusionFillReg)", OPTICS_POSTINIT_SRC)
-        self.assertIn("QEGVAR(thermal,fusionOverlaySaved)", OPTICS_POSTINIT_SRC)
+        self.assertIn("QEGVAR(thermal_display,fusionFillReg)", OPTICS_POSTINIT_SRC)
+        self.assertIn("QEGVAR(thermal_display,fusionOverlaySaved)", OPTICS_POSTINIT_SRC)
 
     def test_a_non_nvg_vision_mode_restores(self):
         # vision mode 2 (thermal) and any other non-NVG mode.
@@ -424,7 +424,7 @@ class TestFusionRestoreOnGateOff(unittest.TestCase):
         # device no longer fusion-capable.
         self.assertEqual(
             OPTICS_POSTINIT_SRC.count(
-                '[_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);'
+                '[_player, "EXIT"] call EFUNC(thermal_display,applyFusionOverlay);'
             ),
             3,
         )
@@ -432,8 +432,8 @@ class TestFusionRestoreOnGateOff(unittest.TestCase):
     def test_the_restore_is_not_reached_when_fusion_is_active(self):
         # The dirty restore must sit behind the active check, so a fused tick
         # is never torn down.  The vm==1 && capable && mode==1 path paints.
-        self.assertIn("[] call EFUNC(thermal,applyFusionOverlay);", OPTICS_POSTINIT_SRC)
-        self.assertIn("[true] call EFUNC(thermal,outlineToggle);", OPTICS_POSTINIT_SRC)
+        self.assertIn("[] call EFUNC(thermal_display,applyFusionOverlay);", OPTICS_POSTINIT_SRC)
+        self.assertIn("[true] call EFUNC(thermal_display,outlineToggle);", OPTICS_POSTINIT_SRC)
 
     def test_the_overlay_exit_is_the_single_restore_owner(self):
         # Both registries are restored by the one EXIT block: the fill by its

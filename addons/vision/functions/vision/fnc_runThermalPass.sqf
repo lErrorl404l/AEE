@@ -33,7 +33,7 @@ BEGIN_COUNTER(updateThermalAGC);
 [] call EFUNC(thermal,updateThermalAGC);
 END_COUNTER(updateThermalAGC);
 BEGIN_COUNTER(applyThermalVision);
-[] call EFUNC(thermal,applyThermalVision);
+[] call EFUNC(thermal_display,applyThermalVision);
 END_COUNTER(applyThermalVision);
 BEGIN_COUNTER(applyEngineThermal);
 [] call EFUNC(thermal,applyEngineThermal);

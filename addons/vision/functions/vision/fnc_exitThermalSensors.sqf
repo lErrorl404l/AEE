@@ -8,7 +8,7 @@ and the DTV day channel.  fnc_applyThermalVision owns the ppEffect teardown;
 it destroys the handles because isThermalHostActive now reports false.  The
 per-module EXIT calls then restore every swapped material.
 */
-[] call EFUNC(thermal,applyThermalVision);
+[] call EFUNC(thermal_display,applyThermalVision);
 ["EXIT"] call EFUNC(thermal,applySecondSun);
 ["EXIT"] call EFUNC(thermal,applyClothingThermal);
 ["EXIT"] call EFUNC(thermal,applyBuildingThermal);

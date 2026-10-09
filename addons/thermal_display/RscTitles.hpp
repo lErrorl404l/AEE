@@ -16,7 +16,7 @@ class RscTitles {
 
     // The fusion outline canvas (issue #204).  A full-screen transparent map
     // control; the outline is drawn on it with the Draw event handler and
-    // drawLine (see addons/thermal/functions/outline/fnc_outlineCanvas.sqf).
+    // drawLine (see addons/thermal_display/functions/outline/fnc_outlineCanvas.sqf).
     // The technique is copied from workshop 3811605241 whale_ecoti_llll
     // config.cpp, which declares the same RscMapControl base.
     class GVAR(fusionOutline) {

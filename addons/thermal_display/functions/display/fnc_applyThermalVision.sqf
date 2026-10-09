@@ -26,14 +26,14 @@ the environmental degradation the engine does not model:
   ChromAberration  - lens colour fringing (the A3TI WHOT branch, workshop
                      3725008325 fn_ppEffects.sqf case 0, [0.001,0.001,true])
 
-Contrast input: GVAR(currentThermalContrast) (0-1) from
+Contrast input: EGVAR(thermal,currentThermalContrast) (0-1) from
 fnc_calculateThermalContrast.  Heat (>35 °C), rain and fog degrade it;
 cold (<5 °C) boosts it.  At thermal crossover (ΔT < 1.5 °C, air ≈
 surface) EGVAR(core,thermalCrossoverActive) nullifies it: the image
 becomes a flat grey — AGC cannot create contrast that does not exist.
 
 Gate:    vision mode 2
-Reads:   GVAR(currentThermalContrast), EGVAR(core,thermalCrossoverActive)
+Reads:   EGVAR(thermal,currentThermalContrast), EGVAR(core,thermalCrossoverActive)
 Sets:    QGVAR(thermalActive), eight ppEffects (client-side only)
 
 Debug hooks (set on missionNamespace; debug console only, no CBA setting):
@@ -58,7 +58,7 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 // thermal channel (mode 2) under the default Vanilla TI setting, or the day
 // (DTV) channel under the DTV setting.  Leaving the host fades every thermal
 // effect to a neutral state and disables it.
-if !([_player] call FUNC(isThermalHostActive)) exitWith {
+if !([_player] call EFUNC(thermal,isThermalHostActive)) exitWith {
     private _active = missionNamespace getVariable [QGVAR(thermalActive), false];
     if (_active) then {
         // Disable the handles on exit, do NOT destroy them.  Destroying
@@ -101,10 +101,10 @@ if !([_player] call FUNC(isThermalHostActive)) exitWith {
 // The DTV host runs the thermal stack on the engine day channel, which does
 // not by itself prove the optic declares a thermal mode.  Read the optic's
 // own config and apply the stack only when it truly supports native thermal.
-// FUNC(isThermalHostActive) keeps its host ownership; this gate is separate.
+// EFUNC(thermal,isThermalHostActive) keeps its host ownership; this gate is separate.
 // The vanilla host (engine thermal channel) already proves the optic, so the
 // probe is not applied there.
-private _base = missionNamespace getVariable [QGVAR(thermalBaseChannel), 0];
+private _base = missionNamespace getVariable [QEGVAR(thermal,thermalBaseChannel), 0];
 private _opticName = currentWeapon _veh;
 private _opticCfg = configNull;
 if (_base == 1 && _opticName != "") then {
@@ -115,7 +115,7 @@ if (!isNull _opticCfg) then {
     _capable = [
         _opticCfg >> "visionMode",
         _opticCfg >> "thermalMode"
-    ] call FUNC(probeThermalCapability);
+    ] call EFUNC(thermal,probeThermalCapability);
 };
 if (!_capable) exitWith { false };
 
@@ -123,7 +123,7 @@ if (!_capable) exitWith { false };
 // Defensive: a nil or non-numeric stored contrast (bad variable state)
 // must not propagate into ppEffectAdjust — "Type Number, expected Number"
 // otherwise fires every tick.  Default to full contrast.
-private _contrast = missionNamespace getVariable [QGVAR(currentThermalContrast), 1];
+private _contrast = missionNamespace getVariable [QEGVAR(thermal,currentThermalContrast), 1];
 if !(_contrast isEqualType 0) then { _contrast = 1; };
 _contrast = 0 max _contrast min 1;
 
@@ -145,7 +145,7 @@ private _huntAmp = missionNamespace getVariable [QGVAR(thermalAgcHunt), 0.05];
 private _huntPeriod = missionNamespace getVariable [QGVAR(thermalAgcHuntPeriod), 4.0];
 private _nucAmp = missionNamespace getVariable [QGVAR(thermalNucDrift), 0.15];
 private _bloomBase = missionNamespace getVariable [QGVAR(thermalHotBloom), 0.08];
-private _temporalScale = missionNamespace getVariable [QGVAR(thermalTemporalNoise), 1.0];
+private _temporalScale = missionNamespace getVariable [QEGVAR(thermal,thermalTemporalNoise), 1.0];
 
 // Force hooks (debug console only; see the owning function header and Annex C).
 private _bloomForce = missionNamespace getVariable [QGVAR(bloomForce), -1];
@@ -266,7 +266,7 @@ if (!_ppOn) exitWith {
 // ppEffectForceInNVG flag is not set there.  It is kept on the engine
 // thermal channel, the pre-existing behaviour.  This is the only host
 // difference in the pass.
-private _forceNVG = (missionNamespace getVariable [QGVAR(thermalBaseChannel), 0]) == 0;
+private _forceNVG = (missionNamespace getVariable [QEGVAR(thermal,thermalBaseChannel), 0]) == 0;
 
 // ─── Post-process writes: change-gated ─────────────────────────────────────
 // Each ppEffectAdjust followed by ppEffectCommit is an engine call into the
@@ -365,7 +365,7 @@ if (_hCC >= 0) then {
 // the rendered image for StageTI-baked objects; the inversion inverts
 // the actual frame.  Enabled only when thermalPolarity == 1 (black
 // hot); disabled otherwise.
-private _polarity = missionNamespace getVariable [QGVAR(thermalPolarity), 0];
+private _polarity = missionNamespace getVariable [QEGVAR(thermal,thermalPolarity), 0];
 if (!(_polarity isEqualType 0)) then { _polarity = 0; };
 if (_hInv >= 0) then {
     if (_polarity == 1) then {
@@ -402,10 +402,10 @@ private _envNoise = linearConversion [1, 0, _effective, 0.05, 0.3, true];
 // The operator noise scale multiplies the environmental term; the kernel's
 // temporal term is a unit-scale jitter centred on 1.
 _envNoise = _envNoise * _temporalScale * (0.5 + _temporalNoise);
-private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
-private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
+private _agcMin = missionNamespace getVariable [QEGVAR(thermal,agcRadMin), -1];
+private _agcMax = missionNamespace getVariable [QEGVAR(thermal,agcRadMax), -1];
 private _agcWindowRad = if ((_agcMin isEqualType 0) && (_agcMax isEqualType 0)) then { _agcMax - _agcMin } else { 0 };
-private _agcFullSpan = missionNamespace getVariable [QGVAR(agcFullSpan), 0];
+private _agcFullSpan = missionNamespace getVariable [QEGVAR(thermal,agcFullSpan), 0];
 if !(_agcFullSpan isEqualType 0) then { _agcFullSpan = 0; };
 private _device = [_player, vehicle _player] call EFUNC(thermal,getThermalDeviceProperties);
 private _netd = _device select 0;
@@ -489,15 +489,15 @@ missionNamespace setVariable [QGVAR(bloom), _bloom];
 missionNamespace setVariable [QGVAR(agcHunt), _agcHunt];
 missionNamespace setVariable [QGVAR(nucDrift), _nucDrift];
 missionNamespace setVariable [QGVAR(temporalNoise), _temporalNoise];
-if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(thermal,thermalDebug), false]) then {
     private _logMsg = format ["Thermal imperfections | bloom=%1 agcHunt=%2 nucDrift=%3 temporalNoise=%4 burst=%5 | hooks bloom=%6 hunt=%7 nuc=%8 noise=%9", _bloom, _agcHunt, _nucDrift, _temporalNoise, _burst, _bloomForce, _huntForce, _nucForce, _noiseForce];
     AEE_LOG_DEBUG(_logMsg);
 };
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
-if (missionNamespace getVariable [QGVAR(thermalDebug), false]
-    && {[_player] call FUNC(isThermalHostActive)}) then {
+if (missionNamespace getVariable [QEGVAR(thermal,thermalDebug), false]
+    && {[_player] call EFUNC(thermal,isThermalHostActive)}) then {
     private _logMsg = format [
         "Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 wet=%10 reso=%11 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,

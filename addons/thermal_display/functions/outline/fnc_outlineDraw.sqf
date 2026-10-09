@@ -12,7 +12,7 @@
  * moving body.
  *
  * aee drives it: the hot list is FUNC(outlineCollect) (aee's own
- * QGVAR(selTemperature) against the ambient air temperature), the device bound
+ * QEGVAR(thermal,selTemperature) against the ambient air temperature), the device bound
  * is the thermal half-angle from FUNC(resolveFusionDevice) applied by
  * FUNC(fusionFovGate), and the canvas is FUNC(outlineCanvas).  No field of
  * view is hardcoded.  Two bounds are kept, and they are different things:

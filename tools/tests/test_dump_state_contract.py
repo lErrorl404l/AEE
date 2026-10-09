@@ -52,6 +52,9 @@ HOSTED_DUMPS: dict[str, str] = {
     "altitude": "physiology",
     "dive": "physiology",
     "clothing": "physiology",
+    # The thermal split (step 7, ADR-032) left one thermal state dump in
+    # thermal; the display publishes into that same state and reuses it.
+    "thermal_display": "thermal",
 }
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR

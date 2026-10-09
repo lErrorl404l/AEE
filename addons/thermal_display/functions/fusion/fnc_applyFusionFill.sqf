@@ -11,7 +11,7 @@
  * setObjectTexture, so it does not sync and does not write a save.
  *
  * The source's driving data is replaced, and the replacement is the point:
- *   - the hot list is FUNC(outlineCollect), aee's own QGVAR(selTemperature)
+ *   - the hot list is FUNC(outlineCollect), aee's own QEGVAR(thermal,selTemperature)
  *     against the ambient air temperature, not the source's CAManBase-only
  *     fn_collectHot;
  *   - the field is FUNC(fusionFovGate) at the half-angle FUNC(resolveFusionDevice)

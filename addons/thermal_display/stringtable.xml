@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Thermal Display">
+        <Key ID="STR_AEE_Thermal_Display_activeIRToggle">
+            <Original>Toggle Active IR</Original>
+            <English>Toggle Active IR</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionAlwaysOn_Description">
+            <Original>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</Original>
+            <English>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionAlwaysOn_Name">
+            <Original>Fusion Always On</Original>
+            <English>Fusion Always On</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionFovFrame_Description">
+            <Original>Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device.</Original>
+            <English>Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionFovFrame_Name">
+            <Original>Fusion Field-of-View Frame</Original>
+            <English>Fusion Field-of-View Frame</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionHud_Description">
+            <Original>The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout.</Original>
+            <English>The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionHud_Name">
+            <Original>Fusion Compass Tape</Original>
+            <English>Fusion Compass Tape</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionOutline_Description">
+            <Original>Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable.</Original>
+            <English>Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionOutline_Name">
+            <Original>Fusion Thermal Outline</Original>
+            <English>Fusion Thermal Outline</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionSolidFill_Description">
+            <Original>Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look.</Original>
+            <English>Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_fusionSolidFill_Name">
+            <Original>Fusion Solid Fill</Original>
+            <English>Fusion Solid Fill</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_logDebug_Description">
+            <Original>Log thermal display diagnostics to the RPT, including the wall-clock cost of each thermal display function. Turn this on before reporting a performance fault.</Original>
+            <English>Log thermal display diagnostics to the RPT, including the wall-clock cost of each thermal display function. Turn this on before reporting a performance fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_logDebug_Name">
+            <Original>Thermal Display Debug Log</Original>
+            <English>Thermal Display Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_repaintHz_Description">
+            <Original>Thermal selections repainted per second. The engine re-uploads a procedural texture for each one, and that cost lands on the render thread where no script timer sees it. The physics still solves every pass, so the image gain and every thermal coupling are unaffected.</Original>
+            <English>Thermal selections repainted per second. The engine re-uploads a procedural texture for each one, and that cost lands on the render thread where no script timer sees it. The physics still solves every pass, so the image gain and every thermal coupling are unaffected.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_repaintHz_Name">
+            <Original>Thermal Repaint Rate</Original>
+            <English>Thermal Repaint Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalAgcHuntPeriod_Description">
+            <Original>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</Original>
+            <English>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalAgcHuntPeriod_Name">
+            <Original>Thermal AGC Hunt Period</Original>
+            <English>Thermal AGC Hunt Period</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalAgcHunt_Description">
+            <Original>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</Original>
+            <English>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalAgcHunt_Name">
+            <Original>Thermal AGC Hunt</Original>
+            <English>Thermal AGC Hunt</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalFPN_Description">
+            <Original>Add fixed-pattern noise (static spatial mottle) over painted thermal objects - the perlinNoise detail stage real LWIR sensors show on top of the temporal FilmGrain.</Original>
+            <English>Add fixed-pattern noise (static spatial mottle) over painted thermal objects - the perlinNoise detail stage real LWIR sensors show on top of the temporal FilmGrain.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalFPN_Name">
+            <Original>Thermal Fixed-Pattern Noise</Original>
+            <English>Thermal Fixed-Pattern Noise</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalHotBloom_Description">
+            <Original>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</Original>
+            <English>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalHotBloom_Name">
+            <Original>Thermal Hot-Source Bloom</Original>
+            <English>Thermal Hot-Source Bloom</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalImperfectionsEnabled_Description">
+            <Original>Enable the thermal sensor imperfections: non-uniformity drift, temporal noise, AGC hunt and hot-source bloom. No unit. The existing fixed-pattern noise and NETD term is reused, not duplicated.</Original>
+            <English>Enable the thermal sensor imperfections: non-uniformity drift, temporal noise, AGC hunt and hot-source bloom. No unit. The existing fixed-pattern noise and NETD term is reused, not duplicated.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalImperfectionsEnabled_Name">
+            <Original>Thermal Imperfections</Original>
+            <English>Thermal Imperfections</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalNucDrift_Description">
+            <Original>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED.</Original>
+            <English>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalNucDrift_Name">
+            <Original>Thermal NUC Drift</Original>
+            <English>Thermal NUC Drift</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalPPEffects_Description">
+            <English>Applies the full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur, the ocular vignette, the rain lens film and the sensor pixelation. Turn OFF to isolate their render cost.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalPPEffects_Name">
+            <English>Thermal Post-Process Effects</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalPixelation_Description">
+            <Original>Quantise the thermal display to the fitted device's vertical detector resolution, so a low-resolution sensor shows the blocks its detector actually resolves. A sensor finer than the render shows none. The figure is the device's own; the engine clamps it.</Original>
+            <English>Quantise the thermal display to the fitted device's vertical detector resolution, so a low-resolution sensor shows the blocks its detector actually resolves. A sensor finer than the render shows none. The figure is the device's own; the engine clamps it.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalPixelation_Name">
+            <Original>Thermal Sensor Pixelation</Original>
+            <English>Thermal Sensor Pixelation</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalWetDistortion_Description">
+            <Original>Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing.</Original>
+            <English>Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_Display_thermalWetDistortion_Name">
+            <Original>Thermal Wet Distortion</Original>
+            <English>Thermal Wet Distortion</English>
+        </Key>
+    </Package>
+</Project>

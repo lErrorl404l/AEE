@@ -22,7 +22,7 @@ THERMAL = ROOT / "addons" / "thermal"
 
 GRADE = VISION_ADDON / "functions" / "grade"
 BASE_KERNEL = GRADE / "fnc_baseGradeParams.sqf"
-THERMAL_KERNEL = THERMAL / "functions" / "display" / "fnc_thermalImperfectionParams.sqf"
+THERMAL_KERNEL = ROOT / "addons" / "thermal_display" / "functions" / "display" / "fnc_thermalImperfectionParams.sqf"
 
 
 class TestBaseGradeParams(unittest.TestCase):
@@ -269,15 +269,17 @@ def _code(path):
 DRIVER = GRADE / "fnc_applyBaseGrade.sqf"
 INIT = GRADE / "fnc_initBaseGrade.sqf"
 TEARDOWN = GRADE / "fnc_teardownBaseGrade.sqf"
-THERMAL_DISPLAY = THERMAL / "functions" / "display" / "fnc_applyThermalVision.sqf"
+THERMAL_DISPLAY = ROOT / "addons" / "thermal_display" / "functions" / "display" / "fnc_applyThermalVision.sqf"
 # The create table moved off the per-entry path into its own function.
-THERMAL_CREATE = THERMAL / "functions" / "display" / "fnc_createThermalPPEffects.sqf"
+THERMAL_CREATE = ROOT / "addons" / "thermal_display" / "functions" / "display" / "fnc_createThermalPPEffects.sqf"
 VISION_PREP = VISION_ADDON / "XEH_PREP.hpp"
 VISION_POSTINIT = VISION_ADDON / "XEH_postInit.sqf"
 VISION_SETTINGS = VISION_ADDON / "initSettings.inc.sqf"
 VISION_STRINGS = VISION_ADDON / "stringtable.xml"
-THERMAL_SETTINGS = THERMAL / "initSettings.inc.sqf"
-THERMAL_STRINGS = THERMAL / "stringtable.xml"
+THERMAL_SETTINGS = ROOT / "addons" / "thermal" / "initSettings.inc.sqf"
+THERMAL_DISPLAY_SETTINGS = ROOT / "addons" / "thermal_display" / "initSettings.inc.sqf"
+THERMAL_STRINGS = ROOT / "addons" / "thermal" / "stringtable.xml"
+THERMAL_DISPLAY_STRINGS = ROOT / "addons" / "thermal_display" / "stringtable.xml"
 
 BASE_GRADE_SETTINGS = [
     "baseGradeEnabled",
@@ -450,7 +452,7 @@ class TestImageRealismWiring(unittest.TestCase):
         for name in BASE_GRADE_SETTINGS:
             self.assertIn(name, optics, f"setting {name} is not registered")
         self.assertIn('"AEE Vision","Image"', optics)
-        thermal = THERMAL_SETTINGS.read_text(encoding="utf-8")
+        thermal = THERMAL_SETTINGS.read_text(encoding="utf-8") + THERMAL_DISPLAY_SETTINGS.read_text(encoding="utf-8")
         for name in THERMAL_SETTINGS_NAMES:
             self.assertIn(name, thermal, f"setting {name} is not registered")
         self.assertIn('"AEE Thermal","Sensor"', thermal)
@@ -460,10 +462,14 @@ class TestImageRealismWiring(unittest.TestCase):
         for name in BASE_GRADE_SETTINGS:
             self.assertIn(f"STR_AEE_Vision_{name}_Name", optics)
             self.assertIn(f"STR_AEE_Vision_{name}_Description", optics)
-        thermal = THERMAL_STRINGS.read_text(encoding="utf-8")
+        thermal = THERMAL_STRINGS.read_text(encoding="utf-8") + THERMAL_DISPLAY_STRINGS.read_text(encoding="utf-8")
         for name in THERMAL_SETTINGS_NAMES:
-            self.assertIn(f"STR_AEE_Thermal_{name}_Name", thermal)
-            self.assertIn(f"STR_AEE_Thermal_{name}_Description", thermal)
+            found = any(
+                f"STR_AEE_Thermal_{prefix}{name}_{suffix}" in thermal
+                for prefix in ("", "Display_")
+                for suffix in ("Name", "Description")
+            )
+            self.assertTrue(found, f"setting {name} has no stringtable keys")
 
     def test_stringtable_keys_are_sorted(self):
         optics = re.findall(

@@ -5,7 +5,7 @@
  * Replaces workshop 3811605241 whale_ecoti_llll functions/fn_collectHot.sqf.
  * The source's filter is CAManBase-only and has no notion of heat; here aee's
  * own thermal state decides.  A target is hot when the MAX selection surface
- * temperature in QGVAR(selTemperature) exceeds the ambient air temperature by
+ * temperature in QEGVAR(thermal,selTemperature) exceeds the ambient air temperature by
  * a small margin.  The selection temperature is the same per-selection physics
  * state the thermal display and the fusion overlay already write, and the
  * selection names are resolved exactly as fnc_applyFusionOverlay does.
@@ -26,7 +26,7 @@ private _ttl = 0.25;
 private _now = diag_tickTime;
 private _center = positionCameraToWorld [0, 0, 0];
 
-private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+private _selMap = missionNamespace getVariable [QEGVAR(thermal,selTemperature), createHashMap];
 if !(_selMap isEqualType createHashMap) then { _selMap = createHashMap; };
 
 private _ambient = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
@@ -63,7 +63,7 @@ private _hot = [];
         continue;
     };
 
-    private _selIdxs = [_obj] call FUNC(getThermalSelections);
+    private _selIdxs = [_obj] call EFUNC(thermal,getThermalSelections);
     private _selNames = if (_obj isKindOf "Man") then {
         selectionNames _obj
     } else {

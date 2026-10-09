@@ -23,7 +23,11 @@ if (_mats isEqualTo []) then {
     for "_mi" from 0 to 255 do {
         private _mn = str _mi;
         while { count _mn < 3 } do { _mn = "0" + _mn; };
-        _mats pushBack format [QPATHTOF(data\fusion_emissive_%1.rvmat), _mn];
+        // The rvmat ladder stays with the physics data in aee_thermal (the
+        // addon-map keeps addons/thermal/data/** there), so name that addon's
+        // path directly rather than QPATHTOF, which would resolve against this
+        // display addon and miss the files.
+        _mats pushBack format ["\z\aee\addons\thermal\data\fusion_emissive_%1.rvmat", _mn];
     };
     missionNamespace setVariable [QGVAR(fusionEmissiveMats), _mats];
 };

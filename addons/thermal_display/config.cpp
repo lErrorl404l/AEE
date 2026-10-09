@@ -6,15 +6,11 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
-        requiredVersion = 2.04;
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "aee_lib",
             "aee_core",
-            "aee_eye",
-            "aee_lighting",
             "aee_nightvision",
-            "aee_thermal",
-            "aee_thermal_display",
             "cba_main",
             "cba_xeh",
             "cba_settings"

@@ -291,6 +291,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_thermal_logDebug` | CHECKBOX | `false` | yes | thermal | Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault. |
 | `aee_thermal_thermalDebug` | CHECKBOX | `false` | yes | thermal | Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's. |
 
+## AEE Debug → Thermal Display
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_display_logDebug` | CHECKBOX | `false` | yes | thermal_display | Log thermal display diagnostics to the RPT, including the wall-clock cost of each thermal display function. Turn this on before reporting a performance fault. |
+
 ## AEE Debug → Vision
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -369,10 +375,10 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_thermal_fusionAlwaysOn` | CHECKBOX | `false` | yes | thermal | Render the thermal fusion overlay over any NVG, even without a thermal-capable headset. |
-| `aee_thermal_fusionFovFrame` | CHECKBOX | `true` | yes | thermal | Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device. |
-| `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
-| `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
+| `aee_thermal_display_fusionAlwaysOn` | CHECKBOX | `false` | yes | thermal_display | Render the thermal fusion overlay over any NVG, even without a thermal-capable headset. |
+| `aee_thermal_display_fusionFovFrame` | CHECKBOX | `true` | yes | thermal_display | Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device. |
+| `aee_thermal_display_fusionOutline` | CHECKBOX | `true` | yes | thermal_display | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
+| `aee_thermal_display_fusionSolidFill` | CHECKBOX | `false` | yes | thermal_display | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
 
 ## AEE Experimental → Vision
 
@@ -444,7 +450,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_nightvision_ltmDaylightFade` | CHECKBOX | `true` | yes | nightvision | Fade the laser target marker in daylight. Off holds the marker at full strength. |
 | `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
 | `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
-| `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
+| `aee_thermal_display_fusionHud` | CHECKBOX | `true` | yes | thermal_display | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 
 ## AEE HUD → Symbology
 
@@ -672,32 +678,42 @@ registered.
 |---|---|---|---|---|---|
 | `aee_strain_HeatStrokeSensitivity` | SLIDER | `0.03` | yes | strain | Heat-stroke overlay strength per °C above the danger threshold |
 
+## AEE Thermal Display → Display
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_display_repaintHz` | SLIDER | `4` | yes | thermal_display | Thermal selections repainted per second. The engine re-uploads a procedural texture for each one, and that cost lands on the render thread where no script timer sees it. The physics still solves every pass, so the image gain and every thermal coupling are unaffected. |
+| `aee_thermal_display_thermalFPN` | CHECKBOX | `true` | yes | thermal_display | Add fixed-pattern noise (static spatial mottle) over painted thermal objects - the perlinNoise detail stage real LWIR sensors show on top of the temporal FilmGrain. |
+| `aee_thermal_display_thermalPPEffects` | CHECKBOX | `true` | yes | thermal_display | Applies the full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur, the ocular vignette, the rain lens film and the sensor pixelation. Turn OFF to isolate their render cost. |
+| `aee_thermal_display_thermalPixelation` | CHECKBOX | `false` | yes | thermal_display | Quantise the thermal display to the fitted device's vertical detector resolution, so a low-resolution sensor shows the blocks its detector actually resolves. A sensor finer than the render shows none. The figure is the device's own; the engine clamps it. |
+| `aee_thermal_display_thermalWetDistortion` | SLIDER | `0.08` | yes | thermal_display | Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing. |
+
+## AEE Thermal Display → Sensor
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_display_thermalAgcHunt` | SLIDER | `0.05` | yes | thermal_display | Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED. |
+| `aee_thermal_display_thermalAgcHuntPeriod` | SLIDER | `4` | yes | thermal_display | Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it. |
+| `aee_thermal_display_thermalHotBloom` | SLIDER | `0.08` | yes | thermal_display | Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo. |
+| `aee_thermal_display_thermalImperfectionsEnabled` | CHECKBOX | `true` | yes | thermal_display | Enable the thermal sensor imperfections: non-uniformity drift, temporal noise, AGC hunt and hot-source bloom. No unit. The existing fixed-pattern noise and NETD term is reused, not duplicated. |
+| `aee_thermal_display_thermalNucDrift` | SLIDER | `0.15` | yes | thermal_display | Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED. |
+
 ## AEE Thermal → Display
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_thermal_repaintHz` | SLIDER | `4` | yes | thermal | Thermal selections repainted per second. The engine re-uploads a procedural texture for each one, and that cost lands on the render thread where no script timer sees it. The physics still solves every pass, so the image gain and every thermal coupling are unaffected. |
 | `aee_thermal_thermalBaseChannel` | LIST | `0` | yes | thermal | The host channel for the thermal display. Vanilla TI runs the display on the engine's own thermal channel overlaid on the vehicle's native TI. DTV disables the vehicle's native TI and draws the display over the day channel instead, the route the proven A3TI and MKK thermal mods use, so the engine's TI pass cannot fight the mod's. DTV is vehicle-only: the player must be in a vehicle optic. It is a prototype for comparison and is the only channel that does not set the ppEffectForceInNVG flag. |
 | `aee_thermal_thermalDisplayMode` | LIST | `0` | yes | thermal | Automatic follows the scene radiance histogram (AGC). Manual uses the fixed window below, like the level and span control on a real thermography or thermal weapon sight. Local normalises each object to its own selection range: it widens that object's internal contrast, but it breaks comparison between objects because a hot and a cold object can map to the same ramp. The local gain is capped at 8 times, so a flat object is not given invented contrast. |
-| `aee_thermal_thermalFPN` | CHECKBOX | `true` | yes | thermal | Add fixed-pattern noise (static spatial mottle) over painted thermal objects - the perlinNoise detail stage real LWIR sensors show on top of the temporal FilmGrain. |
 | `aee_thermal_thermalManualMaxC` | SLIDER | `120` | yes | thermal | Hot end of the manual display window, in degrees Celsius. Set it high to keep fires and exhaust on scale. The device library publishes no span, so this window is a user setting, not a device figure. |
 | `aee_thermal_thermalManualMinC` | SLIDER | `-40` | yes | thermal | Cold end of the manual display window, in degrees Celsius. Used in manual display mode and as the fallback before the scene AGC is ready. The device library publishes no span, so this window is a user setting, not a device figure. |
-| `aee_thermal_thermalPPEffects` | CHECKBOX | `true` | yes | thermal | Applies the full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur, the ocular vignette, the rain lens film and the sensor pixelation. Turn OFF to isolate their render cost. |
 | `aee_thermal_thermalPalette` | LIST | `0` | yes | thermal | Ember interpolates the engine's own decoded thermal colours through a continuous ramp. White hot grey is the luminance form of the same ramp. The isotherm modes are the MKK thermal highlight colours as procedural two-tone ramps: a body below the display window midpoint stays cold, a body at or above it takes the mode hue (red, green, yellow, magenta or sepia). |
-| `aee_thermal_thermalPixelation` | CHECKBOX | `false` | yes | thermal | Quantise the thermal display to the fitted device's vertical detector resolution, so a low-resolution sensor shows the blocks its detector actually resolves. A sensor finer than the render shows none. The figure is the device's own; the engine clamps it. |
 | `aee_thermal_thermalPolarity` | LIST | `0` | yes | thermal | White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference |
-| `aee_thermal_thermalWetDistortion` | SLIDER | `0.08` | yes | thermal | Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing. |
 
 ## AEE Thermal → Sensor
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_thermal_activeIR` | CHECKBOX | `false` | no | thermal | Run a local infrared illuminator at the operator, so a night-vision or infrared optic sees it and the unaided eye does not. A workshop idea re-implemented as AEE code; the mechanism has no published source. Local to the operator. |
-| `aee_thermal_thermalAgcHunt` | SLIDER | `0.05` | yes | thermal | Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED. |
-| `aee_thermal_thermalAgcHuntPeriod` | SLIDER | `4` | yes | thermal | Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it. |
-| `aee_thermal_thermalHotBloom` | SLIDER | `0.08` | yes | thermal | Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo. |
-| `aee_thermal_thermalImperfectionsEnabled` | CHECKBOX | `true` | yes | thermal | Enable the thermal sensor imperfections: non-uniformity drift, temporal noise, AGC hunt and hot-source bloom. No unit. The existing fixed-pattern noise and NETD term is reused, not duplicated. |
-| `aee_thermal_thermalNucDrift` | SLIDER | `0.15` | yes | thermal | Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED. |
 | `aee_thermal_thermalTemporalNoise` | SLIDER | `1` | yes | thermal | Scale on the thermal temporal sensor noise, 0 to 2. Fixed-pattern and temporal noise are real sensor noise; FPN is DSNU plus PRNU, corrected by flat-field or NUC and drifting with temperature, integration time and gain (Wikipedia fixed-pattern noise; EMVA Standard 1288). |
 
 ## AEE Thermal → Solver

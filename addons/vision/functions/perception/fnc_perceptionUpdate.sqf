@@ -27,7 +27,7 @@ Published inputs, by module (each read with a safe default):
                aee_optics_dewOnOptics, aee_optics_rainOnOptics
   nightvision  aee_nightvision_nvgGain, aee_nightvision_nvgTubeTier,
                aee_nightvision_nvgPerceived, aee_nightvision_nvgGateActive
-  thermal      aee_thermal_thermalActive, aee_thermal_selTemperature
+  thermal      aee_thermal_display_thermalActive, aee_thermal_selTemperature
   eye fix      aee_optics_eyeAdaptState, aee_optics_eyeAdaptTargetLux,
                aee_optics_eyeAdaptDirection, aee_optics_eyeAdaptTau,
                aee_optics_eyeAdaptTimeToAdapt
@@ -144,7 +144,7 @@ private _nvgState = [_nvgActive, _nvgGain, _nvgTier, _nvgPerceived, _nvgGate];
 private _forceNvg = missionNamespace getVariable [QGVAR(perceptionForceNvg), []];
 if ((_forceNvg isEqualType []) && ((count _forceNvg) >= 5)) then { _nvgState = _forceNvg; };
 
-private _thermalActive = missionNamespace getVariable ["aee_thermal_thermalActive", false];
+private _thermalActive = missionNamespace getVariable ["aee_thermal_display_thermalActive", false];
 private _selTempRaw = missionNamespace getVariable ["aee_thermal_selTemperature", 0];
 private _selTempC = 0;
 if (_selTempRaw isEqualType 0) then {

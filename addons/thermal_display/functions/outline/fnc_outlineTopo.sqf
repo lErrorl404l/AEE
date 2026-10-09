@@ -14,7 +14,7 @@
  *
  * aee drives it: fnc_outlineDraw builds the capsule descriptors and the camera
  * basis from aee's own state, the hot list FUNC(outlineCollect) (which compares
- * QGVAR(selTemperature) against the ambient air temperature) and the resolved
+ * QEGVAR(thermal,selTemperature) against the ambient air temperature) and the resolved
  * device field FUNC(resolveFusionDevice)/FUNC(fusionFovGate).
  *
  * Pure: array and vector maths only, no engine state, so the harness runs it.
