@@ -4,7 +4,7 @@
  *
  * Shows and drives the thin rectangular border that marks the thermal
  * channel's half-angle over the NVG view.  The display class is
- * GVAR(fusionFrame) in addons/thermal/RscTitles.hpp, and the thermal fusion
+ * GVAR(fusionFrame) in addons/thermal_display/RscTitles.hpp, and the thermal fusion
  * path owns it.  It is a HUD aid and NOT optics: no mask and no tube
  * geometry.
  *

@@ -26,7 +26,7 @@
  *
  * The map control exists only while the map is open, so the Draw handler is
  * attached from the "Map" mission event on open.  The handler technique
- * follows addons/thermal/functions/outline/fnc_outlineCanvas.sqf:47.
+ * follows addons/thermal_display/functions/outline/fnc_outlineCanvas.sqf:47.
  *
  * Returns: nothing.
  */

@@ -50,10 +50,10 @@ AEE_MODULE_POST_INIT
         {
             missionNamespace setVariable [_x, -1];
         } forEach [
-            QEGVAR(thermal,ppHandle_Thermal_Vignette),
-            QEGVAR(thermal,ppHandle_Thermal_CC),
-            QEGVAR(thermal,ppHandle_Thermal_Grain),
-            QEGVAR(thermal,ppHandle_Thermal_Blur)
+            QEGVAR(thermal_display,ppHandle_Thermal_Vignette),
+            QEGVAR(thermal_display,ppHandle_Thermal_CC),
+            QEGVAR(thermal_display,ppHandle_Thermal_Grain),
+            QEGVAR(thermal_display,ppHandle_Thermal_Blur)
         ];
         [] call FUNC(enterThermalSensors);
     };
@@ -104,10 +104,10 @@ AEE_MODULE_POST_INIT
             // or a unit change by the guard above.  Two namespace reads when
             // nothing is painted; EXIT is idempotent.
             private _fusionDirty =
-                (missionNamespace getVariable [QEGVAR(thermal,fusionFillReg), []]) isNotEqualTo []
-                || {(missionNamespace getVariable [QEGVAR(thermal,fusionOverlaySaved), []]) isNotEqualTo []};
+                (missionNamespace getVariable [QEGVAR(thermal_display,fusionFillReg), []]) isNotEqualTo []
+                || {(missionNamespace getVariable [QEGVAR(thermal_display,fusionOverlaySaved), []]) isNotEqualTo []};
             if ((_vm != 1) && _fusionDirty) then {
-                [_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
+                [_player, "EXIT"] call EFUNC(thermal_display,applyFusionOverlay);
             };
             // Rain droplets on the objective: mode-independent physics (rain
             // lands on the lens whether it is NVG or thermal).  Run before
@@ -126,23 +126,23 @@ AEE_MODULE_POST_INIT
                 // renders fused until the operator presses the keybind or
                 // the fusionAlwaysOn setting forces it.  The overlay runs
                 // AFTER the tube model so it composites on top.
-                if ([] call EFUNC(thermal,isFusionCapable)) then {
-                    if (missionNamespace getVariable [QEGVAR(thermal,fusionAlwaysOn), false]) then {
-                        [1] call EFUNC(thermal,cycleFusionMode);
+                if ([] call EFUNC(thermal_display,isFusionCapable)) then {
+                    if (missionNamespace getVariable [QEGVAR(thermal_display,fusionAlwaysOn), false]) then {
+                        [1] call EFUNC(thermal_display,cycleFusionMode);
                     };
-                    if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 0] == 1) then {
-                        [] call EFUNC(thermal,applyFusionPP);
-                        ["ON"] call EFUNC(thermal,applyFusionSun);
-                        [] call EFUNC(thermal,applyFusionOverlay);
-                        [true] call EFUNC(thermal,outlineToggle);
+                    if (missionNamespace getVariable [QEGVAR(thermal_display,fusionMode), 0] == 1) then {
+                        [] call EFUNC(thermal_display,applyFusionPP);
+                        ["ON"] call EFUNC(thermal_display,applyFusionSun);
+                        [] call EFUNC(thermal_display,applyFusionOverlay);
+                        [true] call EFUNC(thermal_display,outlineToggle);
                     } else {
                         // Capable but the operator has not asked for fusion:
                         // restore anything a previous fused tick painted, then
                         // tear the outline down rather than leave it stale.
                         if (_fusionDirty) then {
-                            [_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
+                            [_player, "EXIT"] call EFUNC(thermal_display,applyFusionOverlay);
                         } else {
-                            [false] call EFUNC(thermal,outlineToggle);
+                            [false] call EFUNC(thermal_display,outlineToggle);
                         };
                     };
                 } else {
@@ -150,7 +150,7 @@ AEE_MODULE_POST_INIT
                     // stayed 1.  Restore the painted bodies and lower the
                     // outline, or both survive into the next device.
                     if (_fusionDirty) then {
-                        [_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
+                        [_player, "EXIT"] call EFUNC(thermal_display,applyFusionOverlay);
                     };
                 };
             };

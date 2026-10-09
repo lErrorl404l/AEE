@@ -16,7 +16,7 @@
  * Params:
  *   0: _visionMode (SCALAR) - currentVisionMode of the operator.
  *   1: _hasThermal (BOOL) - the HMD config exposes a thermal channel.
- *   2: _fusionAlwaysOn (BOOL) - the aee_thermal_fusionAlwaysOn setting.
+ *   2: _fusionAlwaysOn (BOOL) - the aee_thermal_display_fusionAlwaysOn setting.
  *
  * Returns: BOOL - true when the fusion overlay may render.
  */

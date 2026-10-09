@@ -14,6 +14,7 @@ class CfgPatches {
             "aee_lighting",
             "aee_nightvision",
             "aee_thermal",
+            "aee_thermal_display",
             "cba_main",
             "cba_xeh",
             "cba_settings"

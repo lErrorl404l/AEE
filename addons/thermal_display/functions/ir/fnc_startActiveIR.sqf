@@ -20,7 +20,7 @@ Returns: OBJECT - the light, or objNull when it did not start.
 */
 params [["_unit", objNull, [objNull]]];
 
-private _settingOn = missionNamespace getVariable [QGVAR(activeIR), false];
+private _settingOn = missionNamespace getVariable [QEGVAR(thermal,activeIR), false];
 private _canRun = [
     _settingOn,
     hasInterface,

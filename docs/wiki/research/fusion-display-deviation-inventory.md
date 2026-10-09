@@ -31,7 +31,7 @@ ours only, no source counterpart.
 - Theirs: raise via `cutRsc ["whale_ecoti_llll_overlay", "PLAIN DOWN"]`
   (`fn_showBox.sqf:15`); hide by wiping every control background/text
   (`fn_showBox.sqf:19-27`) then `cutText` (`fn_showBox.sqf:30`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeBuild.sqf:28-56` (raise
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeBuild.sqf:28-56` (raise
   `cutRsc` at `:30`; clear at `:40-51`; `allControls` wipe at `:44-49`;
   `cutText` at `:51`).
 - Status: PARTIAL. COPIED raise/clear/wipes.
@@ -49,7 +49,7 @@ ours only, no source counterpart.
   `whale_ecoti_llll_tintColor`, default `[0.55,0.08,0.05,0.30]`
   (`fn_boxOnLoad.sqf:34,37-40`).
 - Ours: the display onLoad stores the handle in RscTitles
-  (`addons/thermal/RscTitles.hpp:138`) and there is no glass control.
+  (`addons/thermal_display/RscTitles.hpp:138`) and there is no glass control.
 - Status: MISSING. No counterpart; the glass is deleted outright.
 - Deviation: our commit `286fbdd` removed the `whale_ecoti` glass (`idc 910001`)
   and its driver `fnc_hudTapeOnLoad.sqf`, because a translucent red-orange panel
@@ -65,7 +65,7 @@ ours only, no source counterpart.
 - Theirs: `nearEntities ["CAManBase", _radius]` only, humans and animals
   (`fn_collectHot.sqf:29`); `_radius` default 2000 (`:11`), `_maxN` 60 (`:12`),
   optional ignore-friendlies (`:13,24-25`); distance sort (`:44`); cap (`:48`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineCollect.sqf`. Search set
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineCollect.sqf`. Search set
   is `["CAManBase","Car","Tank","StaticWeapon","Air","Animal"]`
   (`fnc_outlineCollect.sqf:43`), default range 300 (`:22`); a target is hot
   when the maximum selection temperature exceeds ambient by 3 C (`:24,81`).
@@ -84,7 +84,7 @@ ours only, no source counterpart.
 - Theirs: screen-space convex hull by Andrew monotone chain
   (`fn_convexHull.sqf:29-73`).
 - Ours: MISSING. The earlier hull of the projected skeleton was removed; the
-  capsule-union topology replaces it (`addons/thermal/functions/outline/fnc_outlineDraw.sqf:8-11`).
+  capsule-union topology replaces it (`addons/thermal_display/functions/outline/fnc_outlineDraw.sqf:8-11`).
 - Status: MISSING. No counterpart file.
 - Deviation: intentional. Their file is dead weight in the newest mod; the
   capsule union is the live mechanism in both.
@@ -97,7 +97,7 @@ ours only, no source counterpart.
   topology pre-pass budget (`:229-248`), per-target topo cache `topo28`
   (`:419-477`), glow halo behind `_glowOn` (`:54,549`), clip to box
   (`:565-606`), canvas output (`:620-622`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineDraw.sqf` (worker),
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineDraw.sqf` (worker),
   `fnc_outlineTopo.sqf` (topology), `fnc_outlineSkeleton.sqf` (LOD table),
   `fnc_outlineSensorLod.sqf` (sensor LOD), `fnc_outlineCanvas.sqf` (draw).
 - Status: PARTIAL. Topology, sensor LOD, occlusion, canvas are COPIED. Several
@@ -140,7 +140,7 @@ geometry, explicit form.
   `_scl`/`_hudY` settings (`:48-49`); 13 labels `920011+` (`:145`), 25 ticks
   `920031+` (`:167`), 8 cardinals `920061+` (`:192`); colours from
   `rulerColor` default `[1.00,0.30,0.00,0.60]` (`:44`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeDraw.sqf`.
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeDraw.sqf`.
 - Status: COPIED. Same geometry, idc layout, change cache. Heading comes from
   `EFUNC(core,getEyeState)` instead of the camera pair (`fnc_hudTapeDraw.sqf:34-42`).
 - Deviation: our scale/span are compile-time macros `FUSION_HUD_SCALE 1.14`,
@@ -157,7 +157,7 @@ geometry, explicit form.
 - Theirs: top-left grid/position `920102`, top-right time `920101`. Position is
   an invented latitude/longitude from the map config via `fn_gridCal`
   (`fn_drawInfo.sqf:61-88`). Time from `daytime` (`:106`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeInfo.sqf`. Left control
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeInfo.sqf`. Left control
   `920102` prints `mapGridPosition` plus ASL height (`fnc_hudTapeInfo.sqf:56-64`).
 - Status: PARTIAL. Layout COPIED; the position source is REPLACED.
 - Deviation: no `fn_gridCal`; we print the engine grid string directly
@@ -175,7 +175,7 @@ geometry, explicit form.
   at 0.10 s and 0.40 s (`:50`); glass, HUD and info brightness
   (`:60-73,84-93`); writes `bootProfile` (3 channels, `:99`) and refreshes the
   glass (`:110-123`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeBoot.sqf`.
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeBoot.sqf`.
 - Status: PARTIAL. COPIED envelope: same durations
   (`FUSION_HUD_BOOT_ON 1.05`, `FUSION_HUD_BOOT_OFF 0.70`,
   `script_component.hpp:23-24`), same 0.10/0.40 flashes with exponent 0.55
@@ -193,7 +193,7 @@ geometry, explicit form.
 - Theirs: full-screen transparent `RscMapControl`, idc `930001`, placed in a
   corner at max zoom, hidden two frames, draw handler over
   `whale_ecoti_llll_mapSegs` (`fn_outlineMap.sqf:31-63`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineCanvas.sqf`. Same
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineCanvas.sqf`. Same
   mechanism; idc `1301` (`fnc_outlineCanvas.sqf:37`), segs `QGVAR(outlineSegs)`
   (`:30,49`), same two-frame hide and calibration (`:42-72`).
 - Status: COPIED.
@@ -209,7 +209,7 @@ geometry, explicit form.
 - Theirs: capsule-union topology, `[t,c,s]` polylines, adaptive sampling
   (`fn_outlineTopo.sqf:102-104`), bisection crossings (`:178-205`), straight-side
   merge (`:212-231`), Chaikin smoothing (`:233-250`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineTopo.sqf`.
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineTopo.sqf`.
 - Status: COPIED. Same algorithm and same sampling bounds `_m` 3..6, `_k` 1..4
   (`fnc_outlineTopo.sqf:124-125`; source `:103-104`), same merge and smoothing.
 - Deviation: ours reads capsule fields with `select` plus a count guard so the
@@ -293,7 +293,7 @@ geometry, explicit form.
   the box, starts the power-on animation (`:42-46`); on off, starts power-off
   and lets `fn_boot` finish it (`:28-33`).
 - Ours: split. `FUNC(outlineToggle)` raises/clears only the canvas
-  (`addons/thermal/functions/outline/fnc_outlineToggle.sqf:23-36`); the
+  (`addons/thermal_display/functions/outline/fnc_outlineToggle.sqf:23-36`); the
   fusion on/off gate and animation live in the optics dispatch and
   `FUNC(hudTapeBoot)` (`addons/optics/XEH_postInit.sqf:109-121`,
   `fnc_hudTapeBoot.sqf:33-45`).
@@ -312,7 +312,7 @@ geometry, explicit form.
   `920011-23` (`:117-129`); ticks `920031-55` (`:131-155`); cardinals
   `920061-68` (`:160-167`); canvas `ecoti_canvas` idc `930001` (`:177-217`).
   Font `EtelkaMonospaceProBold`; heading `sizeEx 0.009`, labels `0.006`.
-- Ours: `addons/thermal/RscTitles.hpp`. `GVAR(fusionHud)` idd `10782`
+- Ours: `addons/thermal_display/RscTitles.hpp`. `GVAR(fusionHud)` idd `10782`
   (`:133-134`); `GVAR(fusionOutline)` idd `10780` (`:22-23`); `GVAR(fusionFrame)`
   idd `10779` (`:80-81`). Tape controls keep the source idcs:
   heading `920001` (`:193-194`), mark `920002` (`:205-206`), labels
@@ -355,7 +355,7 @@ It has no `fn_outlineMap`, `fn_outlineTopo`, `fn_convexHull` or `fn_gridCal`.
   (`:58-60`). Slot count is the larger of live textures and config defaults,
   `12` for a man and `8` otherwise (`:107-123`). Restore drops empty saved
   strings (`:92`).
-- Ours: `addons/thermal/functions/fusion/fnc_applyFusionFill.sqf`.
+- Ours: `addons/thermal_display/functions/fusion/fnc_applyFusionFill.sqf`.
 - Status: COPIED mechanism, REPLACED driving data.
 - Deviation: our live list is `FUNC(outlineCollect)` filtered by
   `FUNC(fusionFovGate)` (`fnc_applyFusionFill.sqf:72,78-94`), not the source's
@@ -603,7 +603,7 @@ These have no counterpart in any of the four mods.
 ### 5.3 Fusion emissive ladder
 
 - Source: the whale_ecoti mods paint either a solid fill (W3/W4) or nothing.
-- Ours: `addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf` carries a
+- Ours: `addons/thermal_display/functions/fusion/fnc_applyFusionOverlay.sqf` carries a
   256-band emissive material ladder (header `:17-35`, files
   `data/fusion_emissive_000..255.rvmat`). The solid fill replaces it when the
   setting is on (`fnc_applyFusionFill.sqf:22-27`).

@@ -43,10 +43,10 @@ EGVAR(eye,eyePinned) = nil;
 // own default (0, I2-only).  The materials are restored by the mode "EXIT"
 // call, and the player is the FIRST parameter: a bare ["EXIT"] binds the
 // string to _player and is rejected, which is the documented restore leak.
-[0] call EFUNC(thermal,cycleFusionMode);
-missionNamespace setVariable [QEGVAR(thermal,fusionMode), 0];
-["EXIT"] call EFUNC(thermal,applyFusionSun);
-[call CBA_fnc_currentUnit, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
+[0] call EFUNC(thermal_display,cycleFusionMode);
+missionNamespace setVariable [QEGVAR(thermal_display,fusionMode), 0];
+["EXIT"] call EFUNC(thermal_display,applyFusionSun);
+[call CBA_fnc_currentUnit, "EXIT"] call EFUNC(thermal_display,applyFusionOverlay);
 
 if (isNil QGVAR(sensorPFH)) exitWith {};
 

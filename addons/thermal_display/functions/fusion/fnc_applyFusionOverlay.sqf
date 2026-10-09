@@ -23,7 +23,7 @@
  * 16-band set was a texture-count convenience about fourteen times coarser
  * than the sensor resolves.
  *
- * The overlay reads QGVAR(selTemperature) (the same per-selection
+ * The overlay reads QEGVAR(thermal,selTemperature) (the same per-selection
  * physics state the thermal display writes) and the AGC window
  * (QGVAR(agcRadMin/Max)), so fusion and thermal agree on what is hot.
  * This function is called from the sensor tick while in NVG mode 1
@@ -66,7 +66,7 @@
  * SPATIAL RESOLUTION IS THE MISSING OTHER HALF.  A strong contrast edge is
  * NECESSARY AND NOT SUFFICIENT: a selection can stand above its local
  * background and still be smaller than the device can resolve.
- * FUNC(resolveThermalTarget) applies the Johnson criteria (STANAG 4347
+ * EFUNC(thermal,resolveThermalTarget) applies the Johnson criteria (STANAG 4347
  * Ed. 1) to the target's angular size, the device resolution and the optic
  * magnification, and the published edge state is the contrast decision AND
  * the resolvability verdict.  The fused headset is a UNITY goggle, so the
@@ -180,9 +180,9 @@ private _perfT0 = diag_tickTime;
 
 // Reuse the exact band quantisation from the thermal display: the AGC
 // window and selection state are per-frame.
-private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
-private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
-private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
+private _selMap = missionNamespace getVariable [QEGVAR(thermal,selTemperature), createHashMap];
+private _agcMin = missionNamespace getVariable [QEGVAR(thermal,agcRadMin), -1];
+private _agcMax = missionNamespace getVariable [QEGVAR(thermal,agcRadMax), -1];
 // The edge state is SEPARATE from the brightness ladder.  The 256 emissive
 // materials are the brightness ladder and the material slot is theirs; an
 // edge must not write to that slot, or the selection loses its thermal
@@ -232,7 +232,7 @@ if (_deviceResX <= 0) then { _deviceResX = 640; };
 // reproduces the old LWIR result bit for bit.
 private _band = _deviceRow param [6, "lwir"];
 if !(_band isEqualType "") then { _band = "lwir"; };
-private _bandEdges = [_band] call FUNC(resolveThermalBand);
+private _bandEdges = [_band] call EFUNC(thermal,resolveThermalBand);
 private _lambda1M = _bandEdges select 0;
 private _lambda2M = _bandEdges select 1;
 // Sun elevation in degrees, published by the environmental solar model.
@@ -273,7 +273,7 @@ private _snrMultiple = 5;
 // band step: the selection path steps 1/31 and this fusion ladder 1/255, so
 // the two must not be conflated.  On this path the step is FINER than the
 // sensor.  The band step stays a display concern in the ladder below.
-private _sensorThreshold = [_deviceNetd, _snrMultiple, _tAir] call FUNC(calculateSensorThreshold);
+private _sensorThreshold = [_deviceNetd, _snrMultiple, _tAir] call EFUNC(thermal,calculateSensorThreshold);
 if (_sensorThreshold <= 0) then { _sensorThreshold = 0.004349; };
 
 // The 256-level emissive ladder.  The filenames are zero-padded to three
@@ -373,7 +373,7 @@ private _viewDir = _eyeState select 1;
 if !(_viewDir isEqualType [] && {count _viewDir == 3}) then { _viewDir = vectorDir _player; };
 
 private _visionMode = currentVisionMode _player;
-private _capable = [] call EFUNC(thermal,isFusionCapable);
+private _capable = [] call EFUNC(thermal_display,isFusionCapable);
 private _fusionMode = missionNamespace getVariable [QGVAR(fusionMode), 0];
 // ─── Bounded candidate sweep ──────────────────────────────────────────────
 // The previous line ran `_player nearObjects 300` on EVERY fusion tick at
@@ -385,7 +385,7 @@ private _fusionMode = missionNamespace getVariable [QGVAR(fusionMode), 0];
 // enters within about one second, and the queue drains at 16 objects per
 // pass.  `_objectCount` stays the whole candidate set, not the batch, so the
 // `objs=` gate field keeps its meaning.
-private _sweepBudget = missionNamespace getVariable [QGVAR(sweepBudget), 16];
+private _sweepBudget = missionNamespace getVariable [QEGVAR(thermal,sweepBudget), 16];
 if !(_sweepBudget isEqualType 0) then { _sweepBudget = 16; };
 private _pending = missionNamespace getVariable [QGVAR(fusionPending), []];
 if !(_pending isEqualType []) then { _pending = []; };
@@ -398,7 +398,7 @@ if ((_pending isEqualTo []) || ((diag_tickTime - _candT) > 1)) then {
 };
 private _objectCount = missionNamespace getVariable [QGVAR(fusionCandidatesCount), count _pending];
 if !(_objectCount isEqualType 0) then { _objectCount = count _pending; };
-private _taken = [_pending, _sweepBudget] call FUNC(takeThermalSweep);
+private _taken = [_pending, _sweepBudget] call EFUNC(thermal,takeThermalSweep);
 private _objects = _taken select 0;
 missionNamespace setVariable [QGVAR(fusionPending), _taken select 1];
 // Gate tallies for the diagnostic.  A gate whose effect cannot be read in a
@@ -416,7 +416,7 @@ private _paintedCount = 0;
     // Shared dynamic discovery (issue #204): Man = all texture slots,
     // vehicle = config override > textureSources > all-but-MFD.  The
     // single source of truth so fusion and thermal agree on every part.
-    private _selIdxs = [_obj] call FUNC(getThermalSelections);
+    private _selIdxs = [_obj] call EFUNC(thermal,getThermalSelections);
     private _hs = getArray (configOf _obj >> "hiddenSelections");
 
     // The path transmission for this object's range.  Range is the distance
@@ -425,7 +425,7 @@ private _paintedCount = 0;
     // per selection.  A refused kernel result (-1) falls back to no
     // attenuation so a bad input cannot black out the edge.
     private _range = _player distance _obj;
-    private _tau = [_range, _humidity, _tAir, _fog, _rain, _airDensity, _band] call FUNC(calculateAtmosphericTransmission);
+    private _tau = [_range, _humidity, _tAir, _fog, _rain, _airDensity, _band] call EFUNC(thermal,calculateAtmosphericTransmission);
     if !(_tau isEqualType 0) then { _tau = 1; };
     if (_tau < 0) then { _tau = 1; };
     if !(finite _tau) then { _tau = 1; };
@@ -510,12 +510,12 @@ private _paintedCount = 0;
         private _stateKey = format ["%1|%2", _obj, _selName];
         private _tNew = _selMap getOrDefault [_stateKey, -999];
         if (_tNew <= -900) then { continue; };
-        private _mat = ([_obj, _selName] call FUNC(getSelectionMaterials)) call FUNC(getMaterialThermal);
+        private _mat = ([_obj, _selName] call EFUNC(thermal,getSelectionMaterials)) call EFUNC(thermal,getMaterialThermal);
         private _eps = _mat select 0;
         // A rain-wetted surface emits toward the liquid-water value (T9).
-        _eps = [_eps, _surfaceWetness] call FUNC(getEffectiveEmissivity);
+        _eps = [_eps, _surfaceWetness] call EFUNC(thermal,getEffectiveEmissivity);
         // Reflected-solar band radiance (T4): zero for LWIR and at night.
-        private _wSolar = [_band, _eps, _sunElev] call FUNC(calculateReflectedSolarBand);
+        private _wSolar = [_band, _eps, _sunElev] call EFUNC(thermal,calculateReflectedSolarBand);
         // The ambient background temperature is resolved once per tick
         // above the object loop, and it drives the radiance and the
         // sensor threshold alike.
@@ -525,15 +525,15 @@ private _paintedCount = 0;
         private _fGround = 0.5;
         // Brightness-ladder radiance: no atmosphere, so the 256-band material
         // slot does not move with range.  This is the DISPLAY quantity.
-        private _rad = [_tNew, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
+        private _rad = [_tNew, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call EFUNC(thermal,calculateBandRadiance);
         // Edge radiance: the SAME selection seen through the path, so the
         // emitted and reflected terms carry tau and the path term is added.
         // The target and its local background share the range, so they share
         // tau and the same W_atm, and the difference carries tau alone.
-        private _edgeRad = [_tNew, _eps, _tAir, _fGround, _tNew, _tau, _tAir, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
+        private _edgeRad = [_tNew, _eps, _tAir, _fGround, _tNew, _tau, _tAir, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call EFUNC(thermal,calculateBandRadiance);
         if (!(_agcMin isEqualType 0) || !(_agcMax isEqualType 0) || _agcMin >= _agcMax) then {
-            _agcMin = [-40, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
-            _agcMax = [150, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call FUNC(calculateBandRadiance);
+            _agcMin = [-40, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call EFUNC(thermal,calculateBandRadiance);
+            _agcMax = [150, _eps, _tAir, _fGround, _tNew, 1, 15, true, _lambda1M, _lambda2M, _humidity, _band, _wSolar] call EFUNC(thermal,calculateBandRadiance);
         };
         _solved pushBack [_idx, _stateKey, _rad, _edgeRad];
     } forEach _selIdxs;
@@ -563,13 +563,13 @@ private _paintedCount = 0;
             };
         };
         private _localBg = if (_bgCount > 0) then { _bgSum / _bgCount } else { 0 };
-        private _edgeResult = [_entryRad, _localBg, _sensorThreshold] call FUNC(evaluateThermalEdge);
+        private _edgeResult = [_entryRad, _localBg, _sensorThreshold] call EFUNC(thermal,evaluateThermalEdge);
         // SPATIAL RESOLUTION: a CONTRAST edge is necessary and NOT
         // sufficient.  A selection can stand above its local background and
         // still be smaller than the device resolves, so the published edge
         // state is the contrast decision AND the Johnson-criteria verdict.
         // The kernel decides geometry only; it invents no range.
-        private _spatial = [_targetAngleRad, _deviceResX, _mag] call FUNC(resolveThermalTarget);
+        private _spatial = [_targetAngleRad, _deviceResX, _mag] call EFUNC(thermal,resolveThermalTarget);
         private _resolvable = _spatial select 0;
         _edgeMap set [_entryKey, (_edgeResult select 0) && _resolvable];
         private _b = ((_entryBright - _agcMin) / ((_agcMax - _agcMin) max 1e-6)) max 0 min 1;

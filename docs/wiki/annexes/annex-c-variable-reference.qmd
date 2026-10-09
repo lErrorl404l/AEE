@@ -240,6 +240,9 @@ harness and the KAT integration. Each row states its grade.
 | `aee_thermal_humanCoreTempC` | thermal | Human core temperature from the two-node solver: 0.1 skin + 0.9 core (Gagge 1986). Published for a human selection only. Grade: derived |
 | `aee_thermal_skyBandTempC` | thermal | Last computed band sky temperature in C, from the Tebo 1965 8-14 um envelope applied by `fnc_calculateSkyRadiance`. Grade: derived-from-measurement |
 | `aee_thermal_groundNodeStack` | thermal | Four-layer ground node-stack state, a HashMap keyed by grid cell and material. The value is six elements: four layer temperatures at node depths 0.05 / 0.25 / 0.70 / 1.50 m (C), the deep-soil TBOT anchor (C), and the last-advance tick. A water cell stores the water temperature six times |
+| `aee_thermal_display_agcHunt` | thermal_display | View-owned AGC-hunt telemetry written by `fnc_applyThermalVision`; no reader (debug readout) |
+| `aee_thermal_display_nucDrift` | thermal_display | View-owned NUC-drift telemetry written by `fnc_applyThermalVision`; no reader (debug readout) |
+| `aee_thermal_display_temporalNoise` | thermal_display | View-owned temporal-noise telemetry written by `fnc_applyThermalVision`; no reader (debug readout) |
 
 ### Radio
 

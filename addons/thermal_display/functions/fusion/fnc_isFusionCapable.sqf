@@ -16,7 +16,7 @@
  * The mode names are matched as case-insensitive substrings, because a mod
  * may spell the mode "TI", "TI_WHITE" or "Thermal".
  *
- * The CBA setting aee_thermal_fusionAlwaysOn forces fusion on any NVG
+ * The CBA setting aee_thermal_display_fusionAlwaysOn forces fusion on any NVG
  * (A3TI's approach - it offers fusion modes whenever the optic has thermal
  * AND the current vanilla mode is NVG).
  *

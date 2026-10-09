@@ -13,7 +13,7 @@ Returns: BOOL - true when the illuminator is running.
 */
 private _unit = call CBA_fnc_currentUnit;
 
-private _settingOn = missionNamespace getVariable [QGVAR(activeIR), false];
+private _settingOn = missionNamespace getVariable [QEGVAR(thermal,activeIR), false];
 private _canRun = [
     _settingOn,
     hasInterface,

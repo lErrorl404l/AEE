@@ -32,7 +32,7 @@ sys.path.insert(0, str(REPO))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-THERMAL = REPO / "addons" / "thermal"
+THERMAL = REPO / "addons" / "thermal_display"
 RSC = THERMAL / "RscTitles.hpp"
 SCRIPT_COMPONENT = THERMAL / "script_component.hpp"
 FUSION = THERMAL / "functions" / "fusion"

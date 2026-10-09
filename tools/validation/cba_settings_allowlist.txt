@@ -24,21 +24,21 @@ aee_radio_radioLinkRangeM  radio link range producer pending (issue #35 cross-ad
 aee_radio_sunspotNumber  sunspot producer pending (issue #35 cross-addon wiring)
 aee_compat_acm_hypoxiaDutyFactor  external API name passed to ACE3 addSpO2DutyFactor, not an AEE variable
 aee_nightvision_nvgTitle  RscTitles config class name, not a runtime variable
-aee_thermal_fusionFrame  RscTitles config class name used by cutRsc, not a runtime variable
+aee_thermal_display_fusionFrame  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
 aee_dive_diveMix  external breathing-gas hook (issue #118); set by diving addons (e.g. ADE) to [fN2, fHe, fO2]
 aee_nightvision_ppHandle_FilmGrain  written by the core registry (core fnc_createPPEffect) through the legacy variable passed as its fifth argument; the validator cannot trace the opaque write
 aee_nightvision_ppHandle_NVG_Bloom  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 961; the validator cannot trace the _store variable
 aee_nightvision_ppHandle_NVG_CC  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 962; the validator cannot trace the _store variable
 aee_nightvision_ppHandle_NVG_Grain  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 963; the validator cannot trace the _store variable
 aee_nightvision_ppHandle_NVG_Vignette  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 960; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Blur  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 195; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_CC  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 197; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Chroma  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 193; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Grain  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 196; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Vignette  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 194; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Inversion  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 205; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Resolution  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 218; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_WetDistortion  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 211; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Blur  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 195; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_CC  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 197; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Chroma  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 193; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Grain  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 196; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Vignette  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 194; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Inversion  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 205; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Resolution  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 218; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_WetDistortion  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 211; the validator cannot trace the _store variable
 aee_thermal_thermalSelectionsCache  dynamic cache key: written via format [QGVAR(thermalSelectionsCache_%1), typeOf] in fnc_getThermalSelections
 aee_thermal_hitPointMaterials  dynamic cache key: written via format [QGVAR(hitPointMaterials_%1), typeOf] in fnc_getHitPointMaterials
 aee_thermal_shadowCache  dynamic cache key: written via QGVAR(shadowCache) with per-cell keys in fnc_isPositionShadowed
@@ -52,8 +52,8 @@ aee_ballistics_shotTemp  handler id passed as the _key value argument, not read 
 aee_core_collisionDamage  handler id passed as the _key value argument, not read as a variable
 aee_fx_blast  handler id passed as the _key value argument, not read as a variable
 aee_optics_muzzleFlash  handler id passed as the _key value argument, not read as a variable
-aee_hud_hud  RscTitles config class name used by cutRsc, not a runtime variable
-aee_cartography_gps  RscTitles config class name used by cutRsc, not a runtime variable
+aee_hud_hud  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
+aee_cartography_gps  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
 
 # Per-vehicle engine and exhaust contract: read with an inline default, and no
 # addon writes them, so a mission or a vehicle config publishes them.  The
@@ -85,10 +85,10 @@ aee_vision_visionForceLux  debug console knob (documented in fnc_applyBaseGrade.
 aee_vision_visionForceMesopic  debug console knob (documented in fnc_applyBaseGrade.sqf)
 aee_vision_visionForceIlluminant  debug console knob (documented in fnc_applyBaseGrade.sqf)
 aee_vision_visionForceBase  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_thermal_bloomForce  debug console knob (documented in fnc_applyThermalVision.sqf)
-aee_thermal_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
-aee_thermal_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)
-aee_thermal_temporalNoiseForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_display_bloomForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_display_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_display_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_display_temporalNoiseForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 # NVG imperfection debug knobs (issue #215).
 aee_nightvision_nvgForceImperfections  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_nightvision_nvgForceBlemishes  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
@@ -96,7 +96,7 @@ aee_nightvision_nvgForceBreathing  debug console knob (documented in fnc_applyNV
 aee_nightvision_nvgForceBlowout  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_nightvision_nvgImperfectionDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_nightvision_imperfectionDisplay  display handle set by the RscTitles onLoad, read from uiNamespace
-aee_nightvision_nvgImperfections  RscTitles config class name used by cutRsc, not a runtime variable
+aee_nightvision_nvgImperfections  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
 
 # AI substrate and wildlife force hooks (documented in the owning headers).
 aee_ai_forceDecide  debug console knob (documented in fnc_aiTick.sqf)

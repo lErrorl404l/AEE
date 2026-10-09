@@ -2,7 +2,7 @@
 /*
  * Fusion outline on/off switch (issue #204).
  *
- * The display class is GVAR(fusionOutline) in addons/thermal/RscTitles.hpp.
+ * The display class is GVAR(fusionOutline) in addons/thermal_display/RscTitles.hpp.
  * cutRsc raises the display once; the RscTitles onLoad stores it in
  * uiNamespace as GVAR(outlineDisplay), where FUNC(outlineCanvas) finds it.
  * Toggle is idempotent: a call that matches the current state does nothing.

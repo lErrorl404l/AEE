@@ -35,7 +35,7 @@ def taxonomy_groups(prefixes):
 
 
 EXPECTED_HUD = {
-    "aee_thermal_fusionHud",
+    "aee_thermal_display_fusionHud",
     "aee_hud_hudEnabled",
     "aee_cartography_mgrsCursorReadout",
     "aee_cartography_mgrsEnabled",
@@ -90,10 +90,10 @@ class TestSettingsTaxonomy(unittest.TestCase):
 
 
 EXPECTED_EXPERIMENTAL_FUSION = {
-    "aee_thermal_fusionAlwaysOn",
-    "aee_thermal_fusionFovFrame",
-    "aee_thermal_fusionOutline",
-    "aee_thermal_fusionSolidFill",
+    "aee_thermal_display_fusionAlwaysOn",
+    "aee_thermal_display_fusionFovFrame",
+    "aee_thermal_display_fusionOutline",
+    "aee_thermal_display_fusionSolidFill",
 }
 
 EXPECTED_EXPERIMENTAL_VISION = {
@@ -218,6 +218,7 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Lighting"): {"aee_lighting_logDebug"},
     ("AEE Debug", "Persistence"): {"aee_persistence_logDebug"},
     ("AEE Debug", "Thermal"): {"aee_thermal_thermalDebug", "aee_thermal_logDebug"},
+    ("AEE Debug", "Thermal Display"): {"aee_thermal_display_logDebug"},
     ("AEE Debug", "Physiology"): {"aee_physiology_logDebug"},
     ("AEE Debug", "Strain"): {"aee_strain_logDebug"},
     ("AEE Debug", "Altitude"): {"aee_altitude_logDebug"},
@@ -319,10 +320,10 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_vision_visionMesopicDesaturation": 2,  # was 0.05
     "aee_vision_visionPurkinjeStrength": 2,  # was 0.05
     "aee_vision_visionToneStrength": 2,  # was 0.05
-    "aee_thermal_thermalAgcHunt": 3,  # was 0.005
-    "aee_thermal_thermalHotBloom": 2,  # was 0.01
+    "aee_thermal_display_thermalAgcHunt": 3,  # was 0.005
+    "aee_thermal_display_thermalHotBloom": 2,  # was 0.01
     "aee_thermal_thermalManualMaxC": 0,  # was 5
-    "aee_thermal_thermalNucDrift": 2,  # was 0.05
+    "aee_thermal_display_thermalNucDrift": 2,  # was 0.05
     "aee_thermal_thermalTemporalNoise": 1,  # was 0.1
     "aee_wildlife_density": 2,  # was 0.05
     "aee_wildlife_despawnRadius": 0,  # was 10

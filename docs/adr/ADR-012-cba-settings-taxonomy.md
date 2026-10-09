@@ -18,7 +18,7 @@ module owned it.
 
 The CBA settings menu is flat metadata. CBA stores each value in
 `profileNamespace` under the setting name, for example
-`aee_thermal_fusionAlwaysOn`. The category is display metadata only. A
+`aee_thermal_display_fusionAlwaysOn`. The category is display metadata only. A
 category move therefore keeps every stored value and every runtime
 behaviour.
 
@@ -28,15 +28,15 @@ nightly headless regression test.
 ## Decision
 
 1. **AEE Experimental > Fusion** holds the four thermal-fusion knobs:
-   `aee_thermal_fusionAlwaysOn`, `aee_thermal_fusionFovFrame`,
-   `aee_thermal_fusionOutline` and `aee_thermal_fusionSolidFill`. The move
+   `aee_thermal_display_fusionAlwaysOn`, `aee_thermal_display_fusionFovFrame`,
+   `aee_thermal_display_fusionOutline` and `aee_thermal_display_fusionSolidFill`. The move
    is a relabel. The recorded default is relabel only. To gate the feature,
    an owner changes the `fusionFovFrame` default from true to false and the
    `fusionOutline` default from true to false. That is a separate owner
    decision and is not in this record.
 
 2. **AEE HUD > Displays** holds the four on-screen displays:
-   `aee_thermal_fusionHud`, `aee_hud_hudEnabled`,
+   `aee_thermal_display_fusionHud`, `aee_hud_hudEnabled`,
    `aee_physiology_HUDWarningThreshold` and `aee_nightvision_ltmEnabled`
    (the NVG laser target marker). Precedence rule: a setting that toggles an
    on-screen readout panel goes to HUD even when its code is fusion or ECOTI.

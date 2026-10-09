@@ -139,7 +139,7 @@ if (_mode == "EXIT") then {
         missionNamespace setVariable [QGVAR(paintBands), _bands];
     };
     private _lastPaint = _gate getOrDefault [_gateKey, 0];
-    private _interval = 1 / (missionNamespace getVariable [QGVAR(repaintHz), 4]);
+    private _interval = 1 / (missionNamespace getVariable [QEGVAR(thermal_display,repaintHz), 4]);
     private _forced = (_mode == "FORCE");
     private _due = _forced || {(diag_tickTime - _lastPaint) >= _interval};
     if (!_due) exitWith { 0 };
@@ -203,7 +203,7 @@ if (_mode == "EXIT") then {
     // colour), and EXIT restores them.  Texture-only when FPN is off.
     private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
     private _alreadySaved = _saved findIf { (_x select 0) == _obj };
-    private _fpnEnabled = missionNamespace getVariable [QGVAR(thermalFPN), true];
+    private _fpnEnabled = missionNamespace getVariable [QEGVAR(thermal_display,thermalFPN), true];
     // Saving and the FPN material swap are both visual state, so they are
     // gated with the paint.  Saving in normal vision would also poison the
     // swap: the swap sits below and is skipped once a save exists, so an
@@ -920,7 +920,7 @@ if (_mode == "EXIT") then {
         // ColorInversion ppEffect in fnc_applyThermalVision.  The native
         // TI renderer (vision mode 2) does not apply ppEffects, so the
         // baked ramp is the polarity the operator sees there.
-        private _heatCol = [_qb, _palette, _polarity] call FUNC(thermalPalette);
+        private _heatCol = [_qb, _palette, _polarity] call EFUNC(thermal_display,thermalPalette);
         private _colour = format [
             "#(rgb,8,8,3)color(%1,%2,%3,1)",
             _heatCol select 0,

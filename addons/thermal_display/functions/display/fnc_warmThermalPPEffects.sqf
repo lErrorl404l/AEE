@@ -36,7 +36,7 @@ if (!hasInterface) exitWith { false };
 
 // If the thermal display already owns the view, the live pass owns the
 // handles; warming now would fight it.  Skip.
-if ([call CBA_fnc_currentUnit] call FUNC(isThermalHostActive)) exitWith { false };
+if ([call CBA_fnc_currentUnit] call EFUNC(thermal,isThermalHostActive)) exitWith { false };
 
 [] call FUNC(createThermalPPEffects);
 

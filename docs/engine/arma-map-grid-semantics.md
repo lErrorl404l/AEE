@@ -124,7 +124,7 @@ not visibility.
 
 AEE sets `colorGrid[] = {0,0,0,0}` at
 `addons/cartography/config_mapdisplays.hpp:27,40` and
-`addons/thermal/RscTitles.hpp:72`, with `sizeExGrid = 0.02`. If the CWR
+`addons/thermal_display/RscTitles.hpp:72`, with `sizeExGrid = 0.02`. If the CWR
 mapping holds for Arma 3, that alpha 0 hides the edge numbers as well as the
 lines. To restore the engine coordinate numbers while keeping the engine
 lines off, set `colorGrid` alpha > 0 and keep `colorGridMap` alpha 0.
