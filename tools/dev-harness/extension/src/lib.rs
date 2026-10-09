@@ -53,6 +53,15 @@ fn init() -> Extension {
         .command("kernel.calculateStationPressure", kernel_station_pressure)
         .command("kernel.calculateRelativeHumidity", kernel_relative_humidity)
         .command("kernel.calculateAirDensityKernel", kernel_air_density)
+        .command(
+            "kernel.calculateBallisticDrag",
+            kernel_calculate_ballistic_drag,
+        )
+        .command("kernel.eyeAdaptStep", kernel_eye_adapt_step)
+        .command("kernel.eyeMesopicWeight", kernel_eye_mesopic_weight)
+        .command("kernel.eyePupilSteady", kernel_eye_pupil_steady)
+        .command("kernel.eyePupilStep", kernel_eye_pupil_step)
+        .command("kernel.eyeTimeSkip", kernel_eye_time_skip)
         .command("kernel.solveTwoNodeKernel", kernel_solve_two_node)
         .finish()
 }
@@ -144,8 +153,71 @@ fn kernel_relative_humidity(
 }
 
 /// Air density. Dispatcher name `kernel.calculateAirDensity`.
+#[must_use]
 fn kernel_air_density(t_c: f64, p_hpa: f64, rh: f64) -> String {
     kernels::air_density(t_c, p_hpa, rh).to_string()
+}
+
+/// Ballistic drag. Dispatcher name `kernel.calculateBallisticDrag`. The
+/// driver forwards the resolved drag-model name; the SQF kernel stays the
+/// fallback and uppercases a string name the same way.
+fn kernel_calculate_ballistic_drag(
+    bc: f64,
+    velocity: f64,
+    drag_model: String,
+    rho_rel: f64,
+    air_temp_c: f64,
+) -> String {
+    kernels::calculate_ballistic_drag(bc, velocity, &drag_model, rho_rel, air_temp_c).to_string()
+}
+
+/// Eye adaptation step. Dispatcher name `kernel.eyeAdaptStep`. Returns
+/// `[cone, rod]` as an SQF array string.
+fn kernel_eye_adapt_step(
+    state: Vec<f64>,
+    target_log_lum: f64,
+    dt: f64,
+    tau_light: f64,
+    tau_dark_cone: f64,
+    tau_dark_rod: f64,
+    w: f64,
+) -> String {
+    let (cone, rod) = kernels::eye_adapt_step(
+        &state,
+        target_log_lum,
+        dt,
+        tau_light,
+        tau_dark_cone,
+        tau_dark_rod,
+        w,
+    );
+    format!("[{cone},{rod}]")
+}
+
+/// Eye mesopic photopic fraction. Dispatcher name `kernel.eyeMesopicWeight`.
+fn kernel_eye_mesopic_weight(lum: f64, lo: f64, hi: f64) -> String {
+    kernels::eye_mesopic_weight(lum, lo, hi).to_string()
+}
+
+/// Steady pupil diameter. Dispatcher name `kernel.eyePupilSteady`.
+fn kernel_eye_pupil_steady(lum: f64) -> String {
+    kernels::eye_pupil_steady(lum).to_string()
+}
+
+/// Pupil lag step. Dispatcher name `kernel.eyePupilStep`.
+fn kernel_eye_pupil_step(
+    d: f64,
+    d_target: f64,
+    dt: f64,
+    tau_constrict: f64,
+    tau_dilate: f64,
+) -> String {
+    kernels::eye_pupil_step(d, d_target, dt, tau_constrict, tau_dilate).to_string()
+}
+
+/// Clock-jump detector. Dispatcher name `kernel.eyeTimeSkip`.
+fn kernel_eye_time_skip(prev_hour: f64, now_hour: f64, threshold_hours: f64) -> String {
+    kernels::eye_time_skip(prev_hour, now_hour, threshold_hours).to_string()
 }
 
 /// Two-node thermal solve. Dispatcher name `kernel.solveTwoNodeKernel`. Returns
@@ -352,6 +424,17 @@ mod tests {
                                 "{name}[{index}]: expected {expected}, got {actual} (bound {bound})"
                             );
                         }
+                    }
+                    serde_json::Value::Bool(expected) => {
+                        // A boolean kernel (eyeTimeSkip) returns "true"/"false".
+                        let actual = output
+                            .trim()
+                            .parse::<bool>()
+                            .unwrap_or_else(|_| panic!("{name}: non-boolean output {output}"));
+                        assert_eq!(
+                            *expected, actual,
+                            "{name}: expected {expected}, got {actual}"
+                        );
                     }
                     other => panic!("{name}: unexpected expected value {other}"),
                 }

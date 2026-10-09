@@ -27,6 +27,15 @@
       "truth": "addons/**/functions/**",
       "truth_class": "repo-scan",
       "repair": "auto"
+    },
+    {
+      "id": "kernel_drag_tables",
+      "generator": "python3 tools/gen_kernel_drag_tables.py",
+      "check": "python3 tools/gen_kernel_drag_tables.py --check",
+      "artifacts": ["tools/dev-harness/extension/src/kernels/drag_tables.rs"],
+      "truth": "addons/ballistics/functions/fnc_getDragTables.sqf",
+      "truth_class": "repo-scan",
+      "repair": "auto"
     }
   ]
 }

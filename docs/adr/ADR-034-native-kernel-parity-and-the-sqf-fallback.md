@@ -40,13 +40,22 @@ looser relative bound without a written reason.
 | `calculateRelativeHumidity` | `kernel.calculateRelativeHumidity` | `1e-6` | `0.5` | The output is `round`ed to an integer, so the smallest meaningful bound is one rounding step (`0.5`). |
 | `calculateAirDensityKernel` | `kernel.calculateAirDensityKernel` | `1e-6` | 0 | One `exp`; the f32 default. |
 | `solveTwoNodeKernel` | `kernel.solveTwoNodeKernel` | `1e-3` | 0 | The 12-iteration nonlinear two-node fixed point amplifies one f32 engine rounding (about `6e-8`) by the Newton gain: the measured engine divergence is of order `1e-5` relative, so the `1e-6` default does not hold. `1e-3` is the ceiling with this written reason. The cargo vectors are f64-to-f64 and pass tighter. |
+| `calculateBallisticDrag` | `kernel.calculateBallisticDrag` | `1e-6` | 0 | One `sqrt` and a linear table interpolation; the f32 default. |
+| `eyeAdaptStep` | `kernel.eyeAdaptStep` | `1e-6` | 0 | Two `exp` chains; the f32 default. |
+| `eyeMesopicWeight` | `kernel.eyeMesopicWeight` | `1e-6` | 0 | Two `log` and a polynomial; the f32 default. |
+| `eyePupilSteady` | `kernel.eyePupilSteady` | `1e-6` | 0 | One `log` and one `exp`; the f32 default. |
+| `eyePupilStep` | `kernel.eyePupilStep` | `1e-6` | 0 | One `exp`; the f32 default. |
+| `eyeTimeSkip` | `kernel.eyeTimeSkip` | `1e-6` | 0 | Comparator only; exact in both paths. |
 
 The Rust `#[test]` `native_kernels_match_the_sqf_reference` reads vectors
 generated from the SQF reference by `tools/gen_kernel_vectors.py`. The
 interpreter evaluates in 64-bit, so the vectors are the exact formula values
-and the cargo test passes with margin. The Docker probe **P137** is the
-engine-truth cross-check: it compares the dispatcher's answer to the SQF
-reference in the running engine at the same per-kernel bound.
+and the cargo test passes with margin. The Docker probes **P137**, **P138** and
+**P139** are the engine-truth cross-check: each compares the dispatcher's
+answer to the SQF reference in the running engine at the same per-kernel bound.
+P139 drives the drag and eye pure kernels directly on the dedicated server,
+because a pure kernel needs no player. The kernel's real call sites are
+client-local and stay manual `interface` ceilings (ADR-033).
 
 `tools/tests/test_kernel_parity.py` fails when the generated coefficient or
 vector file is stale, or when a kernel's relative bound exceeds `1e-6`.

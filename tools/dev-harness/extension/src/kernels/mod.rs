@@ -8,9 +8,14 @@
 //! and the native return is non-empty with errorCode 0.
 
 mod coefficients;
+mod drag;
+mod drag_tables;
+mod eye;
 mod thermal;
 
 pub use coefficients::*;
+pub use drag::*;
+pub use eye::*;
 pub use thermal::*;
 
 /// Station pressure (hPa) from sea-level pressure, elevation and lapse rate.
