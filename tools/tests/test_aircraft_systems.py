@@ -33,8 +33,10 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 
 from tools.validation import gen_physics_config as gen  # noqa: E402
+from tools.validation import validate_physics_config as v  # noqa: E402
 
 GENERATED = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
+VEHICLE = REPO / "data" / "vehicle"
 
 # One `class CfgVehicles {` opener at column zero.
 BLOCK_RE = re.compile(r"^class CfgVehicles \{$", re.M)
@@ -195,6 +197,9 @@ class AircraftFuelEmissionTest(unittest.TestCase):
         self.assertIsNotNone(body)
         assert body is not None
         self.assertIn(f"fuelCapacity = {SENTINEL_VALUE};", body.group(1))
+        # The zero burn disables the engine's own burn, so the scripted burn
+        # from the sourced systems row is authoritative and never double-counts.
+        self.assertIn("fuelConsumptionRate = 0;", body.group(1))
 
     def test_a_documented_sentinel_value_equals_the_catalogue(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -222,7 +227,35 @@ class AircraftFuelEmissionTest(unittest.TestCase):
         self.assertEqual(emissions, [])
         self.assertEqual(leads, [SENTINEL_CLASS])
         self.assertNotIn(SENTINEL_CLASS, text)
-        self.assertNotIn("fuelCapacity", text)
+        # No emitted assignment for either aircraft key. The header comment
+        # names the keys, so test the emitted assignment form, not the string.
+        self.assertIsNone(re.search(r"^\s+fuelCapacity = ", text, re.M))
+        self.assertIsNone(re.search(r"^\s+fuelConsumptionRate = ", text, re.M))
+
+    def test_a_documented_sentinel_projects_the_two_aircraft_keys(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            class_bindings, parents = _sentinel_corpus(root, "documented")
+            emissions, _leads = gen.build_aircraft_emissions(
+                class_bindings, root, parents
+            )
+            records = gen.aircraft_projection_records(emissions)
+            catalogue_ids = v.catalogue_by_id(VEHICLE)
+            catalogue_ids.update(
+                v.catalogue_by_id(root, profile=v.catalogue.AIRCRAFT_PROFILE)
+            )
+            class_map = v.class_binding_map(VEHICLE)
+            class_map.update(v.class_binding_map(root))
+            sources = v.sources_by_id(VEHICLE)
+            sources.update(v.sources_by_id(root))
+            errors = v.validate_bindings(records, catalogue_ids, class_map, sources)
+        keys = {record["key"] for record in records}
+        self.assertEqual(keys, {"fuelCapacity", "fuelConsumptionRate"})
+        burn = next(r for r in records if r["key"] == "fuelConsumptionRate")
+        self.assertEqual(burn["value"], 0)
+        self.assertEqual(burn["unit"], "unitless")
+        self.assertEqual(burn["conversion"], "structural_zero")
+        self.assertEqual(errors, [])
 
     def test_the_predicate_admits_both_documented_only(self) -> None:
         self.assertTrue(gen.emit_key("documented", "documented"))

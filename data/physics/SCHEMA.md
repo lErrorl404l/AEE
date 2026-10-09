@@ -58,9 +58,9 @@ array. One record binds one key on one class.
 |---|---|---|
 | `game_class` | string | The exact concrete AEE game class. It must resolve in `data/vehicle/class_bindings.json`. |
 | `config_class` | string | The engine config class that owns the key. This version admits `CfgVehicles` only. |
-| `key` | string | The engine config key. This version seeds `maxSpeed` only. |
+| `key` | string | The engine config key. This version admits `maxSpeed`, `fuelCapacity` and `fuelConsumptionRate`. |
 | `value` | number | The projected config value. It must reproduce from the held field and the conversion. |
-| `unit` | string | The config unit. For `maxSpeed` it is `km/h`. |
+| `unit` | string | The config unit. `maxSpeed` is `km/h`, `fuelCapacity` is `L`, `fuelConsumptionRate` is `unitless`. |
 | `value_source` | object | The held field the value traces to. Section 4 defines it. |
 | `conversion` | string | One conversion name from the allowlist in section 5. |
 | `grade` | enum | The provenance grade. Section 6 defines it. |
@@ -103,6 +103,7 @@ The validator admits no other name.
 | `identity` | same as target | same as source | The value passes unchanged. This is the direct unit identity. |
 | `mph_to_kmh` | `mph` | `km/h` | `value * 1.609344`. |
 | `mps_to_kmh` | `m/s` | `km/h` | `value * 3.6`. |
+| `structural_zero` | none | none | The value is fixed at zero. `fuelConsumptionRate` is a structural zero: it disables the engine's own burn so the scripted burn from the sourced systems row is authoritative and the two never double-count. |
 
 Rules:
 

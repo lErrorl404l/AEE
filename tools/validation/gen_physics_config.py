@@ -2,23 +2,31 @@
 """Generate the engine CfgVehicles override from the vehicle corpus.
 
 One CfgVehicles block carries the land keys and, only when the build-time
-gate passes, the aircraft fuel key:
+gate passes, the aircraft fuel keys:
 
   * ``maxSpeed`` from the held catalogue ``max_speed_kmh`` field;
   * ``mass`` as a CALIBRATED scale of a held real mass;
-  * ``fuelCapacity`` from the held aircraft catalogue ``fuel_capacity`` field.
+  * ``fuelCapacity`` from the held aircraft catalogue ``fuel_capacity`` field;
+  * ``fuelConsumptionRate`` as a STRUCTURAL ZERO for the same class.
+
+``fuelConsumptionRate = 0`` disables the engine's own burn, so the scripted
+burn from the sourced systems-row ``fuel_consumption_rate`` is authoritative
+and the two never double-count. The sourced rate stays in the systems row and
+is NOT emitted to config. The zero is emitted ONLY for a class the fuel driver
+covers, so a class never has infinite fuel when the script is not running.
 
 The land keys are pre-existing and NOT identity-derived: maxSpeed comes from
 the held catalogue and mass from the approved mass calibration. The gate never
 retro-applies to them, and their output is unchanged by this version.
 
-The aircraft key is gated at BUILD TIME by ``emit_key``: a key is emitted only
-when the class identity grade (``data/aircraft/class_bindings.json``) AND the
-value grade (the held catalogue value object) are both ``documented``. Config
-is load-time and global, so the build-time predicate is the only gate: a
-runtime setting cannot gate it and the PBO is the only off switch. A
+The aircraft keys are gated at BUILD TIME by ``emit_key``: a key is emitted
+only when the class identity grade (``data/aircraft/class_bindings.json``) AND
+the value grade (the held catalogue value object) are both ``documented``.
+Config is load-time and global, so the build-time predicate is the only gate:
+a runtime setting cannot gate it and the PBO is the only off switch. A
 ``claimed`` identity, a missing grade or any other grade emits no key and the
-class is recorded as a lead.
+class is recorded as a lead. The zero burn is emitted under the SAME
+predicate, so the two aircraft keys always agree on the class set.
 
 PRODUCTION EMITS ZERO NEW KEYS TODAY. Every aircraft class binding is
 ``claimed``, so fail-closed means no ``fuelCapacity`` key ships yet. That is
@@ -117,6 +125,15 @@ AIRCRAFT_KEY = "fuelCapacity"
 AIRCRAFT_VALUE_FIELD = "fuel_capacity"
 AIRCRAFT_KEY_UNIT = "L"
 
+# The second aircraft key. ``fuelConsumptionRate`` is a STRUCTURAL ZERO: the
+# engine's own burn is disabled so the scripted burn from the sourced
+# systems-row ``fuel_consumption_rate`` is authoritative and the two never
+# double-count. The key has no held value and its documented unit is unitless.
+AIRCRAFT_BURN_KEY = "fuelConsumptionRate"
+AIRCRAFT_BURN_UNIT = "unitless"
+AIRCRAFT_BURN_VALUE = 0
+AIRCRAFT_BURN_CONVERSION = "structural_zero"
+
 # The grade the build-time gate requires on both the class identity and the
 # held value. No other grade emits a key.
 DOCUMENTED = "documented"
@@ -149,12 +166,19 @@ HEADER = (
     "// calibrated scale of a held real mass, never a copied engine number,\n"
     "// from data/physics/mass_calibration.json.\n"
     "//\n"
-    "// The aircraft fuel key is gated at BUILD TIME: it is emitted only\n"
-    "// when the class identity grade and the held value grade are both\n"
+    "// The aircraft fuel keys are gated at BUILD TIME: they are emitted\n"
+    "// only when the class identity grade and the held value grade are both\n"
     "// documented. Config is load-time and global, so the build-time\n"
     "// predicate is the only gate. Every aircraft class binding is claimed\n"
     "// today, so NO aircraft key ships yet. That is the gate working, not a\n"
     "// broken generator.\n"
+    "//\n"
+    "// fuelConsumptionRate = 0 is a STRUCTURAL ZERO. It disables the\n"
+    "// engine's own burn, so the scripted burn from the sourced systems-row\n"
+    "// fuel_consumption_rate is authoritative and the two never double-count.\n"
+    "// The sourced rate stays in the systems row and is never emitted here.\n"
+    "// The zero is emitted ONLY for a class the fuel driver covers, so a\n"
+    "// class never has infinite fuel when the script is not running.\n"
     "//\n"
     "// One block carries every key: the engine lint rejects a second\n"
     "// CfgVehicles block in the same addon.\n"
@@ -631,6 +655,12 @@ def render_bindings(bindings: Sequence[ClassBinding]) -> str:
             lines.append(
                 f"        {AIRCRAFT_KEY} = {_render_value(binding.fuel_capacity)};"
             )
+            # The zero burn is emitted under the SAME gate as the capacity, so
+            # the engine burn is disabled for exactly the classes the driver
+            # covers and no covered class has infinite fuel.
+            lines.append(
+                f"        {AIRCRAFT_BURN_KEY} = {_render_value(AIRCRAFT_BURN_VALUE)};"
+            )
         lines.append("    };")
     lines.append("};")
     return "\n".join(lines) + "\n"
@@ -657,9 +687,63 @@ def projection_records(emissions: Sequence[Emission]) -> list[dict[str, object]]
     ]
 
 
-def render_projection(emissions: Sequence[Emission]) -> str:
-    """Return the exact on-disk text of the validator projection."""
-    return json.dumps(projection_records(emissions), indent=2) + "\n"
+def aircraft_projection_records(
+    emissions: Sequence[AircraftEmission],
+) -> list[dict[str, object]]:
+    """Return the validator projection of the gate-passing aircraft emissions.
+
+    Each class carries two records: the held ``fuelCapacity`` by the identity
+    conversion, and the structural-zero ``fuelConsumptionRate``. The zero has
+    no held value of its own, so it traces to the held ``fuel_capacity`` that
+    qualifies the class. The sourced systems-row rate is never projected.
+    """
+    records: list[dict[str, object]] = []
+    for emission in emissions:
+        source = {
+            "source_id": emission.source_id,
+            "locator": emission.locator,
+            "field": AIRCRAFT_VALUE_FIELD,
+        }
+        records.append(
+            {
+                "game_class": emission.game_class,
+                "config_class": CONFIG_CLASS,
+                "key": AIRCRAFT_KEY,
+                "value": emission.value,
+                "unit": emission.unit,
+                "value_source": dict(source),
+                "conversion": CONVERSION,
+                "grade": emission.grade,
+            }
+        )
+        records.append(
+            {
+                "game_class": emission.game_class,
+                "config_class": CONFIG_CLASS,
+                "key": AIRCRAFT_BURN_KEY,
+                "value": AIRCRAFT_BURN_VALUE,
+                "unit": AIRCRAFT_BURN_UNIT,
+                "value_source": dict(source),
+                "conversion": AIRCRAFT_BURN_CONVERSION,
+                "grade": "derived",
+            }
+        )
+    return records
+
+
+def render_projection(
+    emissions: Sequence[Emission],
+    aircraft_emissions: Sequence[AircraftEmission] = (),
+) -> str:
+    """Return the exact on-disk text of the validator projection.
+
+    The land maxSpeed records are unchanged. The aircraft records are appended
+    only for a class that passes the build-time gate, so the projection agrees
+    with the emitted override.
+    """
+    records = projection_records(emissions)
+    records.extend(aircraft_projection_records(aircraft_emissions))
+    return json.dumps(records, indent=2) + "\n"
 
 
 def _write(path: Path, text: str) -> None:
@@ -691,7 +775,12 @@ def write_outputs(
     _write(out, render_bindings(bindings))
     _write(
         projection,
-        render_projection(build(class_bindings_path, vehicle_dir, parents_path)),
+        render_projection(
+            build(class_bindings_path, vehicle_dir, parents_path),
+            build_aircraft_emissions(
+                aircraft_class_bindings, aircraft_dir, aircraft_parents
+            )[0],
+        ),
     )
     return len(bindings)
 
@@ -734,7 +823,10 @@ def check_config(
         )
         text = render_bindings(bindings)
         expected = render_projection(
-            build(class_bindings_path, vehicle_dir, parents_path)
+            build(class_bindings_path, vehicle_dir, parents_path),
+            build_aircraft_emissions(
+                aircraft_class_bindings, aircraft_dir, aircraft_parents
+            )[0],
         )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"physics config override: cannot build from the corpus: {exc}")

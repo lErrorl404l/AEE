@@ -25,12 +25,19 @@
 // calibrated scale of a held real mass, never a copied engine number,
 // from data/physics/mass_calibration.json.
 //
-// The aircraft fuel key is gated at BUILD TIME: it is emitted only
-// when the class identity grade and the held value grade are both
+// The aircraft fuel keys are gated at BUILD TIME: they are emitted
+// only when the class identity grade and the held value grade are both
 // documented. Config is load-time and global, so the build-time
 // predicate is the only gate. Every aircraft class binding is claimed
 // today, so NO aircraft key ships yet. That is the gate working, not a
 // broken generator.
+//
+// fuelConsumptionRate = 0 is a STRUCTURAL ZERO. It disables the
+// engine's own burn, so the scripted burn from the sourced systems-row
+// fuel_consumption_rate is authoritative and the two never double-count.
+// The sourced rate stays in the systems row and is never emitted here.
+// The zero is emitted ONLY for a class the fuel driver covers, so a
+// class never has infinite fuel when the script is not running.
 //
 // One block carries every key: the engine lint rejects a second
 // CfgVehicles block in the same addon.
