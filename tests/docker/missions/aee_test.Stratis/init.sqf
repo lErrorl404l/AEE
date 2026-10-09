@@ -3426,6 +3426,12 @@ private _p29Pass = 0;
     // (P132 turbulence, P133 compass and P134 map-density were taken on this
     // base, so the clock probe takes the next free number.)
     execVM "aee_p135_sim_clock_rate_probe.sqf";
+    // PHASE 136 lives in aee_p136_client_probe.sqf: it needs a non-dedicated
+    // machine, so the dedicated server never runs it and can never claim it
+    // passed. An optional headless client carries it (guard !isDedicated).
+    if (!isDedicated) then {
+        execVM "aee_p136_client_probe.sqf";
+    };
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
