@@ -203,4 +203,53 @@ mod tests {
     fn reply_command_reports_an_unknown_id() {
         assert!(reply(9999.0, "x".to_string()).starts_with("error:"));
     }
+
+    /// A parity vector for one native kernel, generated from the SQF reference
+    /// by `tools/gen_kernel_vectors.py`.
+    #[derive(serde::Deserialize)]
+    struct KernelVector {
+        args: Vec<f64>,
+        expected: f64,
+    }
+
+    /// One kernel's vectors and its justified parity bound (ADR-034).
+    #[derive(serde::Deserialize)]
+    struct KernelSuite {
+        command: String,
+        tolerance_rel: f64,
+        tolerance_abs: f64,
+        vectors: Vec<KernelVector>,
+    }
+
+    /// The generated vector file.
+    #[derive(serde::Deserialize)]
+    struct KernelVectors {
+        kernels: std::collections::BTreeMap<String, KernelSuite>,
+    }
+
+    const KERNEL_VECTORS: &str = include_str!("../tests/vectors/kernels.json");
+
+    /// Every native kernel matches its SQF reference on the generated vectors.
+    #[test]
+    fn native_kernels_match_the_sqf_reference() {
+        let suite: KernelVectors =
+            serde_json::from_str(KERNEL_VECTORS).expect("the vector file parses");
+        assert!(!suite.kernels.is_empty(), "no kernel vectors found");
+        for (name, kernel) in &suite.kernels {
+            for case in &kernel.vectors {
+                let args: Vec<String> = case.args.iter().map(|value| value.to_string()).collect();
+                let (output, code) = init().testing().call(&kernel.command, Some(args));
+                assert_eq!(code, 0, "{name}: the native call failed");
+                let actual: f64 = output
+                    .parse()
+                    .unwrap_or_else(|_| panic!("{name}: non-numeric output {output}"));
+                let bound = kernel.tolerance_abs + kernel.tolerance_rel * case.expected.abs();
+                assert!(
+                    (case.expected - actual).abs() <= bound,
+                    "{name}: expected {}, got {actual} (bound {bound})",
+                    case.expected
+                );
+            }
+        }
+    }
 }

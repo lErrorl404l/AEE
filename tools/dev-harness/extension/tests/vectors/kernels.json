@@ -1,0 +1,204 @@
+{
+  "kernels": {
+    "airDensity": {
+      "command": "kernel.calculateAirDensityKernel",
+      "path": "addons/ballistics/functions/fnc_calculateAirDensityKernel.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            15.0,
+            1013.25,
+            50.0
+          ],
+          "expected": 1.2211035361594438
+        },
+        {
+          "args": [
+            0.0,
+            1013.25,
+            100.0
+          ],
+          "expected": 1.2893240073687018
+        },
+        {
+          "args": [
+            30.0,
+            1000.0,
+            80.0
+          ],
+          "expected": 1.1344072408514043
+        },
+        {
+          "args": [
+            -40.0,
+            900.0,
+            0.0
+          ],
+          "expected": 1.3447612812425465
+        },
+        {
+          "args": [
+            50.0,
+            1050.0,
+            20.0
+          ],
+          "expected": 1.1218743255325636
+        }
+      ]
+    },
+    "relativeHumidity": {
+      "command": "kernel.calculateRelativeHumidity",
+      "path": "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",
+      "tolerance_abs": 0.5,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            50.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.0
+          ],
+          "expected": 50.0
+        },
+        {
+          "args": [
+            50.0,
+            0.0,
+            20.0,
+            10.0,
+            0.0,
+            0.0
+          ],
+          "expected": 75.0
+        },
+        {
+          "args": [
+            80.0,
+            -15.0,
+            5.0,
+            25.0,
+            0.0,
+            0.0
+          ],
+          "expected": 0.0
+        },
+        {
+          "args": [
+            70.0,
+            10.0,
+            10.0,
+            20.0,
+            0.0,
+            0.0
+          ],
+          "expected": 40.0
+        },
+        {
+          "args": [
+            60.0,
+            0.0,
+            15.0,
+            15.0,
+            0.8,
+            0.0
+          ],
+          "expected": 100.0
+        },
+        {
+          "args": [
+            60.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.5
+          ],
+          "expected": 100.0
+        },
+        {
+          "args": [
+            0.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.0
+          ],
+          "expected": 0.0
+        },
+        {
+          "args": [
+            120.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.0
+          ],
+          "expected": 100.0
+        }
+      ]
+    },
+    "stationPressure": {
+      "command": "kernel.calculateStationPressure",
+      "path": "addons/atmos/functions/physics/fnc_calculateStationPressure.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            1013.25,
+            0.0,
+            6.5
+          ],
+          "expected": 1013.25
+        },
+        {
+          "args": [
+            1013.25,
+            1000.0,
+            6.5
+          ],
+          "expected": 898.7452152060672
+        },
+        {
+          "args": [
+            1013.25,
+            3000.0,
+            6.5
+          ],
+          "expected": 701.0842732351946
+        },
+        {
+          "args": [
+            1020.0,
+            500.0,
+            5.0
+          ],
+          "expected": 974.3382840593725
+        },
+        {
+          "args": [
+            900.0,
+            5000.0,
+            8.0
+          ],
+          "expected": 410.3096826978792
+        },
+        {
+          "args": [
+            1013.25,
+            20000.0,
+            6.5
+          ],
+          "expected": 43.28075972805034
+        }
+      ]
+    }
+  }
+}

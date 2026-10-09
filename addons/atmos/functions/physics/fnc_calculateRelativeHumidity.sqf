@@ -41,9 +41,9 @@ private _diurnalCoef = 0.05;
 private _overcastGate = 0.7;
 private _saturation = 100;
 
-private _rh = (_rhBase + _surfaceMod) max 0 min _saturation;
+private _rh = ((_rhBase + _surfaceMod) max 0) min _saturation;
 _rh = _rh * (1 + (_tRef - _tNow) * _diurnalCoef);
-_rh = _rh max 0 min _saturation;
+_rh = (_rh max 0) min _saturation;
 if (_overcast > _overcastGate || _rain > 0) then { _rh = _saturation; };
 
 round _rh
