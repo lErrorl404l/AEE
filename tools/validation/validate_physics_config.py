@@ -72,13 +72,20 @@ CONFIG_CLASSES = frozenset({"CfgVehicles"})
 # key. ``fuelCapacity`` is the aircraft fuel key, held in litres.
 # ``fuelConsumptionRate`` is the aircraft structural-zero key: it disables the
 # engine's own burn so the scripted burn is authoritative, and it is unitless.
-CONFIG_KEYS = frozenset({"maxSpeed", "fuelCapacity", "fuelConsumptionRate"})
+# ``mass`` is the aircraft PhysX mass from the sourced operating weight, in
+# kilograms. ``centerOfMass`` is the aircraft centre of gravity, in metres,
+# emitted only where the engine accepts it.
+CONFIG_KEYS = frozenset(
+    {"maxSpeed", "fuelCapacity", "fuelConsumptionRate", "mass", "centerOfMass"}
+)
 
 # The documented config unit of each admitted key.
 KEY_UNITS: dict[str, str] = {
     "maxSpeed": "km/h",
     "fuelCapacity": "L",
     "fuelConsumptionRate": "unitless",
+    "mass": "kg",
+    "centerOfMass": "m",
 }
 
 # The grade vocabulary. A binding never carries ``absent``: a binding with no
