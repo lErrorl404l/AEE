@@ -11,6 +11,8 @@
 
 use arma_rs::{arma, Extension};
 
+pub mod http;
+
 /// The extension name SQF addresses through `callExtension`.
 pub const NAME: &str = "aee_dev";
 
