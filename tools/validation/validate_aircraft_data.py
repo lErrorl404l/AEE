@@ -49,18 +49,10 @@ DEFAULT_DATA = Path(__file__).parents[2] / "data" / "aircraft"
 # One exact grade string per schema section 6.
 GRADES = frozenset({"standard", "documented", "claimed", "derived"})
 
-# Real-world evidence types, then the three engine types.
-REAL_SOURCE_TYPES = frozenset(
-    {
-        "standard",
-        "manual",
-        "poh",
-        "tcds",
-        "measurement",
-        "manufacturer",
-        "compilation",
-    }
-)
+# Real-world evidence types, then the three engine types. The real-world set
+# is the canonical vocabulary in the shared loader, so this module and the
+# loader cannot diverge on `poh` and `tcds`.
+REAL_SOURCE_TYPES = vehicle_catalogue.REAL_SOURCE_TYPES
 ENGINE_SOURCE_TYPES = frozenset({"engine_geometry", "engine_config", "class_table"})
 SOURCE_TYPES = REAL_SOURCE_TYPES | ENGINE_SOURCE_TYPES
 
@@ -69,28 +61,31 @@ IDENTITY_ONLY_TYPES = frozenset({"engine_config", "class_table"})
 
 # The unit vocabulary per schema section 9. The aircraft document adds W, kN,
 # m/s and m^2 to the inherited vehicle vocabulary.
-UNITS = frozenset(
-    {
-        "kg",
-        "mm",
-        "kPa",
-        "kW",
-        "hp",
-        "L",
-        "N m",
-        "deg",
-        "km/h",
-        "km",
-        "m",
-        "count",
-        "ratio",
-        "enum",
-        "text",
-        "W",
-        "kN",
-        "m/s",
-        "m^2",
-    }
+UNITS = (
+    frozenset(
+        {
+            "kg",
+            "mm",
+            "kPa",
+            "kW",
+            "hp",
+            "L",
+            "N m",
+            "deg",
+            "km/h",
+            "km",
+            "m",
+            "count",
+            "ratio",
+            "enum",
+            "text",
+            "W",
+            "kN",
+            "m/s",
+            "m^2",
+        }
+    )
+    | vehicle_catalogue.SYSTEMS_UNITS
 )
 NON_NUMERIC_UNITS = frozenset({"enum", "text"})
 
@@ -130,6 +125,9 @@ FIELD_UNITS: dict[str, str] = {
     "role": "enum",
     "propulsion": "enum",
 }
+
+# The systems registry is the field registry for the shared systems contract.
+FIELD_UNITS.update(vehicle_catalogue.SYSTEMS_FIELD_UNITS)
 
 # The runtime-required inputs per aircraft type. The shared loader owns the
 # sets so the generator, the coverage guard and the validator resolve the same
@@ -204,6 +202,20 @@ ENUM_VALUES: dict[str, frozenset[str]] = {
 
 # A value from a source with ``primary_held: false`` must name its lead state.
 UNSOURCED_MARKER = "UNSOURCED"
+
+# A class with no real counterpart is recorded as ``no_source``. A value that
+# carries this state never fills a runtime-required field, the same rule as
+# UNSOURCED.
+NO_SOURCE_MARKER = "no_source"
+
+# A derived value must name its formula in the state text. The named marker is
+# the strongest form. When no marker is registered for the field, the state
+# must still state that it is derived and show the formula.
+FORMULA_SIGN = "="
+
+
+def _state_names_formula(state: str) -> bool:
+    return "derived" in state.lower() and FORMULA_SIGN in state
 
 
 def _mapping(value: object) -> dict[str, object] | None:
@@ -341,9 +353,14 @@ def _check_grade_coupling(
     elif grade == "derived":
         marker = vehicle_catalogue.AIRCRAFT_PROFILE.derivation_markers.get(field)
         state = _text(entry.get("state")) or ""
-        if marker is None or marker not in state:
+        if marker is not None:
+            if marker not in state:
+                errors.append(
+                    f"{where}: grade derived needs the named derivation marker in the state text"
+                )
+        elif not _state_names_formula(state):
             errors.append(
-                f"{where}: grade derived needs the named derivation marker in the state text"
+                f"{where}: grade derived needs the state text to name its formula"
             )
 
 
@@ -491,6 +508,11 @@ def _reject_unsourced_runtime(
         if source is not None and source.get("primary_held") is False:
             errors.append(
                 f"{kind} {record_id}: runtime-required field {name} resolves from the unheld source {field.source}; an UNSOURCED value never fills a runtime field"
+            )
+        state = field.state
+        if state.startswith(UNSOURCED_MARKER) or state.startswith(NO_SOURCE_MARKER):
+            errors.append(
+                f"{kind} {record_id}: runtime-required field {name} carries an UNSOURCED or no_source state; such a value never fills a runtime field"
             )
 
 
@@ -858,6 +880,28 @@ def validate_conflict(
         errors.append(f"{where}: an averaged conflict is forbidden, keep both values")
 
 
+def systems_marker_errors() -> list[str]:
+    """Report a reference-only or status-only field that is runtime-required.
+
+    The shared contract marks a systems field reference only or status only.
+    Such a field may carry any grade, yet it never fills a runtime-required
+    field.
+    """
+    runtime: set[str] = set()
+    for fields in REQUIRED_RUNTIME_BY_TYPE.values():
+        runtime.update(fields)
+    overlap = (
+        vehicle_catalogue.REFERENCE_ONLY_SYSTEMS_FIELDS
+        | vehicle_catalogue.STATUS_ONLY_SYSTEMS_FIELDS
+    ) & runtime
+    if overlap:
+        return [
+            "systems marker: "
+            f"{sorted(overlap)} is reference or status only and must not be a runtime-required field"
+        ]
+    return []
+
+
 def validate_corpus(sources: object, records: object, conflicts: object) -> list[str]:
     """Validate a whole corpus of records. Return the list of errors."""
     errors: list[str] = []
@@ -933,6 +977,7 @@ def run(data_dir: Path) -> list[str]:
         ]
 
     errors: list[str] = []
+    errors.extend(systems_marker_errors())
     sources: list[object] = []
 
     registry = data_dir / "sources.json"
@@ -981,6 +1026,41 @@ def run(data_dir: Path) -> list[str]:
         errors.extend(validate_catalogue(catalogue, by_id))
     errors.extend(validate_class_map(class_map, catalogue_ids, by_id))
     errors.extend(validate_class_bindings(bindings, catalogue_ids, by_id))
+    return errors
+
+
+def validate_record_document(document: object, errors: list[str]) -> None:
+    """Validate one record document outside the fixtures-path rule.
+
+    The document is an object with an inline ``sources`` registry and one
+    ``record`` object. It applies the same value, grade, marker and runtime
+    rules as the corpus path, so a test can aim a negative fixture at the
+    record path directly and not only through the fixtures directory.
+    """
+    obj = _mapping(document)
+    if obj is None:
+        errors.append("record document: must be an object")
+        return
+    sources = _sequence(obj.get("sources"))
+    if sources is None:
+        errors.append("record document: sources must be an array")
+        sources = []
+    by_id = validate_sources(sources, errors)
+    seen: set[str] = set()
+    validate_record(obj.get("record"), by_id, seen, errors)
+
+
+def run_record(path: Path) -> list[str]:
+    """Read and validate one record document. Return every contract error.
+
+    The record path is separate from ``run``. It never treats the fixtures
+    directory as production, so a negative fixture can be aimed at it
+    directly.
+    """
+    errors: list[str] = []
+    loaded = _read_json(path, errors)
+    if loaded is not None:
+        validate_record_document(loaded, errors)
     return errors
 
 
@@ -1385,9 +1465,10 @@ def self_check() -> list[str]:
     return failures
 
 
-def _parse_args(argv: Sequence[str]) -> tuple[bool, str]:
+def _parse_args(argv: Sequence[str]) -> tuple[bool, str, str | None]:
     data_dir = str(DEFAULT_DATA)
     self_check_enabled = False
+    record_path: str | None = None
     index = 0
     while index < len(argv):
         arg = argv[index]
@@ -1398,17 +1479,27 @@ def _parse_args(argv: Sequence[str]) -> tuple[bool, str]:
             if index >= len(argv):
                 raise SystemExit("--data-dir needs a path")
             data_dir = argv[index]
+        elif arg == "--record":
+            index += 1
+            if index >= len(argv):
+                raise SystemExit("--record needs a path")
+            record_path = argv[index]
         elif arg in ("-h", "--help"):
-            print("usage: validate_aircraft_data.py [--data-dir PATH] [--self-check]")
+            print(
+                "usage: validate_aircraft_data.py "
+                "[--data-dir PATH] [--record PATH] [--self-check]"
+            )
             raise SystemExit(0)
         else:
             raise SystemExit(f"unknown argument: {arg}")
         index += 1
-    return self_check_enabled, data_dir
+    return self_check_enabled, data_dir, record_path
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    self_check_enabled, data_dir = _parse_args(sys.argv[1:] if argv is None else argv)
+    self_check_enabled, data_dir, record_path = _parse_args(
+        sys.argv[1:] if argv is None else argv
+    )
 
     if self_check_enabled:
         failures = self_check()
@@ -1418,6 +1509,16 @@ def main(argv: Sequence[str] | None = None) -> int:
                 print(f"  {failure}")
             return 1
         print("aircraft data gate: PASS (self-check)")
+        return 0
+
+    if record_path is not None:
+        errors = run_record(Path(record_path))
+        if errors:
+            print("aircraft data gate: FAIL")
+            for error in errors:
+                print(f"  {error}")
+            return 1
+        print(f"aircraft data gate: PASS (record {record_path})")
         return 0
 
     errors = run(Path(data_dir))

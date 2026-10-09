@@ -440,5 +440,86 @@ class TyreSizeParserTest(unittest.TestCase):
         self.assertIn("derived from the size code 130/80-16", field.state)
 
 
+class SystemsRegistryTest(unittest.TestCase):
+    """The shared registry for the systems fields, units and source types."""
+
+    def test_the_shared_source_types_include_poh_and_tcds(self) -> None:
+        self.assertIn("poh", vc.REAL_SOURCE_TYPES)
+        self.assertIn("tcds", vc.REAL_SOURCE_TYPES)
+
+    def test_the_systems_registry_covers_the_shared_and_aircraft_tables(
+        self,
+    ) -> None:
+        for name in (
+            "fuel_capacity",
+            "fuel_consumption_rate",
+            "fuel_lhv_mj_kg",
+            "engine_design_rpm",
+            "engine_max_torque_nm",
+            "engine_idle_ng",
+            "rotor_design_rpm",
+            "rotor_tip_speed_ms",
+            "cg_empty_m",
+            "inertia_xx_kgm2",
+            "vne_kmh",
+            "hitpoint_names",
+            "damage_role_map",
+            "hydraulic_pressure_kpa",
+            "battery_capacity_ah",
+            "cabin_pressure_max_kpa",
+            "oxygen_system",
+        ):
+            with self.subTest(field=name):
+                self.assertIn(name, vc.SYSTEMS_FIELD_UNITS)
+
+    def test_the_registry_carries_the_exact_field_units(self) -> None:
+        expected = {
+            "fuel_capacity": "L",
+            "fuel_consumption_rate": "kg/s",
+            "sfc_kg_kwh": "kg/kWh",
+            "fuel_lhv_mj_kg": "MJ/kg",
+            "fuel_density_kg_l": "kg/L",
+            "engine_design_rpm": "rpm",
+            "engine_max_tgt_c": "deg C",
+            "inertia_xx_kgm2": "kg m^2",
+            "bus_voltage_v": "V",
+            "battery_capacity_ah": "Ah",
+            "hitpoint_names": "list",
+            "damage_role_map": "mapping",
+        }
+        for name, unit in expected.items():
+            with self.subTest(field=name):
+                self.assertEqual(unit, vc.SYSTEMS_FIELD_UNITS[name])
+
+    def test_the_systems_units_are_registered(self) -> None:
+        for unit in (
+            "rpm",
+            "MJ/kg",
+            "kg/L",
+            "kg/kWh",
+            "kg/s",
+            "deg C",
+            "Ah",
+            "V",
+            "kg m^2",
+        ):
+            with self.subTest(unit=unit):
+                self.assertIn(unit, vc.SYSTEMS_UNITS)
+
+    def test_a_reference_or_status_field_is_never_runtime_required(self) -> None:
+        runtime: set[str] = set()
+        for fields in vc.AIRCRAFT_REQUIRED_RUNTIME_BY_TYPE.values():
+            runtime.update(fields)
+        marked = vc.REFERENCE_ONLY_SYSTEMS_FIELDS | vc.STATUS_ONLY_SYSTEMS_FIELDS
+        self.assertEqual(set(), marked & runtime)
+
+    def test_every_marked_field_is_a_known_systems_field(self) -> None:
+        marked = vc.REFERENCE_ONLY_SYSTEMS_FIELDS | vc.STATUS_ONLY_SYSTEMS_FIELDS
+        self.assertTrue(marked)
+        for name in marked:
+            with self.subTest(field=name):
+                self.assertIn(name, vc.SYSTEMS_FIELD_UNITS)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -37,8 +37,20 @@ from pathlib import Path
 from types import MappingProxyType
 
 # The real-world source types. Only these can be a class-map mapping source.
+# This set is the canonical source-type vocabulary: the aircraft validator
+# reads it, so the two definitions cannot diverge. `poh` and `tcds` are the
+# tier-2 pilot's operating handbook and type certificate data sheet classes
+# from `data/vehicle/SCHEMA.md` section 4.
 REAL_SOURCE_TYPES = frozenset(
-    {"standard", "manual", "measurement", "manufacturer", "compilation"}
+    {
+        "standard",
+        "manual",
+        "poh",
+        "tcds",
+        "measurement",
+        "manufacturer",
+        "compilation",
+    }
 )
 
 # The class-map grade set per schema section 7.
@@ -155,6 +167,170 @@ AIRCRAFT_DERIVATION_STATE_MARKERS: dict[str, str] = {
     "drag_area_m2": "derived drag area",
 }
 AIRCRAFT_DERIVATION_FIELDS = frozenset(AIRCRAFT_DERIVATION_STATE_MARKERS)
+
+# The systems field registry. It is the shared contract in
+# ``data/vehicle/SCHEMA.md`` section 16 together with the aircraft deltas in
+# ``data/aircraft/SCHEMA.md`` section 10. Each row gives one field and its
+# exact unit. The validator reads this registry, so a systems field is a known
+# field. Every field here is reference only, status only or derived. None of
+# the reference-only or status-only fields is a runtime calculation input, so
+# a reference-only or status-only value never fills a runtime-required field.
+SYSTEMS_FIELD_UNITS: dict[str, str] = {
+    # Fuel.
+    "fuel_capacity": "L",
+    "fuel_type": "enum",
+    "fuel_density_kg_l": "kg/L",
+    "fuel_mass_full_kg": "kg",
+    "fuel_consumption_rate": "kg/s",
+    "sfc_kg_kwh": "kg/kWh",
+    "fuel_burn_kg_s": "kg/s",
+    "fuel_tank_count": "count",
+    "fuel_tank_capacity_l": "L",
+    "fuel_cg_arm_m": "m",
+    "fuel_lhv_mj_kg": "MJ/kg",
+    # Engine.
+    "engine_model": "text",
+    "engine_count": "count",
+    "rated_power_w": "W",
+    "engine_design_rpm": "rpm",
+    "engine_max_torque_nm": "N m",
+    "engine_oil_pressure_min_kpa": "kPa",
+    "engine_oil_pressure_max_kpa": "kPa",
+    "engine_oil_capacity_l": "L",
+    "engine_oil_type": "enum",
+    "transmission_torque_limit_nm": "N m",
+    "transmission_gear_ratio_main": "ratio",
+    # Engine turbine terms, an aircraft delta.
+    "engine_idle_ng": "ratio",
+    "engine_max_ng": "ratio",
+    "engine_max_np": "ratio",
+    "engine_max_tgt_c": "deg C",
+    "engine_max_itt_c": "deg C",
+    "transmission_gear_ratio_tail": "ratio",
+    # Rotor geometry, an aircraft delta.
+    "rotor_radius_m": "m",
+    "rotor_diameter_m": "m",
+    "rotor_blade_count": "count",
+    "rotor_chord_m": "m",
+    "rotor_twist_deg": "deg",
+    "rotor_hinge_offset_m": "m",
+    "rotor_design_rpm": "rpm",
+    "rotor_tip_speed_ms": "m/s",
+    "tail_rotor_radius_m": "m",
+    "tail_rotor_blade_count": "count",
+    # Mass, centre of gravity and inertia.
+    "empty_weight_kg": "kg",
+    "max_takeoff_weight_kg": "kg",
+    "cg_empty_m": "m",
+    "cg_forward_limit_m": "m",
+    "cg_aft_limit_m": "m",
+    "inertia_xx_kgm2": "kg m^2",
+    "inertia_yy_kgm2": "kg m^2",
+    "inertia_zz_kgm2": "kg m^2",
+    "payload_kg": "kg",
+    # V-speeds, an aircraft delta and reference only.
+    "vne_kmh": "km/h",
+    "vmo_kmh": "km/h",
+    "vref_kmh": "km/h",
+    "vstall_kmh": "km/h",
+    "vy_kmh": "km/h",
+    "autorotation_speed_kmh": "km/h",
+    "service_ceiling_m": "m",
+    # Damage.
+    "hitpoint_names": "list",
+    "component_count": "count",
+    "crew_count": "count",
+    "damage_role_map": "mapping",
+    # Status systems.
+    "hydraulic_system_count": "count",
+    "hydraulic_pressure_kpa": "kPa",
+    "generator_count": "count",
+    "generator_power_kw": "kW",
+    "bus_voltage_v": "V",
+    "battery_capacity_ah": "Ah",
+    # Pressurisation, an aircraft delta and status only.
+    "cabin_pressure_max_kpa": "kPa",
+    "pressurisation_ceiling_m": "m",
+    "oxygen_system": "enum",
+}
+
+# The unit vocabulary the systems contract adds to the inherited vocabulary.
+# ``list`` and ``mapping`` are the non-physical tokens the damage fields use.
+SYSTEMS_UNITS = frozenset(
+    {
+        "rpm",
+        "MJ/kg",
+        "kg/L",
+        "kg/kWh",
+        "kg/s",
+        "deg C",
+        "Ah",
+        "V",
+        "kg m^2",
+        "list",
+        "mapping",
+    }
+)
+
+# The systems fields the schema marks reference only. A reference-only value
+# may carry any grade. It never fills a runtime-required field.
+REFERENCE_ONLY_SYSTEMS_FIELDS = frozenset(
+    {
+        "fuel_type",
+        "fuel_tank_count",
+        "fuel_tank_capacity_l",
+        "engine_model",
+        "engine_count",
+        "engine_design_rpm",
+        "engine_oil_capacity_l",
+        "engine_oil_type",
+        "transmission_gear_ratio_main",
+        "transmission_gear_ratio_tail",
+        "rotor_radius_m",
+        "rotor_blade_count",
+        "rotor_chord_m",
+        "rotor_twist_deg",
+        "rotor_hinge_offset_m",
+        "rotor_design_rpm",
+        "rotor_tip_speed_ms",
+        "tail_rotor_radius_m",
+        "tail_rotor_blade_count",
+        "cg_forward_limit_m",
+        "cg_aft_limit_m",
+        "inertia_xx_kgm2",
+        "inertia_yy_kgm2",
+        "inertia_zz_kgm2",
+        "vne_kmh",
+        "vmo_kmh",
+        "vref_kmh",
+        "vstall_kmh",
+        "vy_kmh",
+        "autorotation_speed_kmh",
+        "service_ceiling_m",
+        "crew_count",
+    }
+)
+
+# The systems fields the schema marks status only. A status-only value reports
+# a state. It never feeds the flight dynamics model.
+STATUS_ONLY_SYSTEMS_FIELDS = frozenset(
+    {
+        "engine_oil_pressure_min_kpa",
+        "engine_oil_pressure_max_kpa",
+        "engine_max_np",
+        "engine_max_tgt_c",
+        "engine_max_itt_c",
+        "hydraulic_system_count",
+        "hydraulic_pressure_kpa",
+        "generator_count",
+        "generator_power_kw",
+        "bus_voltage_v",
+        "battery_capacity_ah",
+        "cabin_pressure_max_kpa",
+        "pressurisation_ceiling_m",
+        "oxygen_system",
+    }
+)
 
 HP_TO_W = HP_TO_KW * 1000.0
 

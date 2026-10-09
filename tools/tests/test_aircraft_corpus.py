@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from typing import cast
@@ -35,6 +36,7 @@ REAL_DATA = REPO / "data" / "aircraft"
 FIXTURES = REAL_DATA / "fixtures"
 FIXTURE_CAPTURE = FIXTURES / "pilot-invalid.json"
 FIXTURE_SOURCES = FIXTURES / "sources.json"
+SYSTEMS_FIXTURE = FIXTURES / "systems-invalid.json"
 
 # A robust subset of the first-slice catalogue ids. The corpus may grow, so
 # the tests assert presence, never an exact count.
@@ -341,6 +343,122 @@ class FixtureRejectionTest(unittest.TestCase):
         self.assertTrue(
             any("forbidden for a value" in error for error in errors), errors
         )
+
+
+class SystemsGateTest(unittest.TestCase):
+    """The systems registry, the record path and the mutation audit (task 7)."""
+
+    def _valid_document(self) -> JsonObject:
+        """A valid systems record document. Fixture only, no real aircraft."""
+        return {
+            "retrieved": "2026-10-09",
+            "sources": [_source("fx_manual", 2, "manual", True)],
+            "record": {
+                "catalogue_id": "fixture_systems_ok",
+                "canonical_name": "FIXTURE",
+                "maker": "FIXTURE",
+                "model": "FIXTURE",
+                "variant": "FIXTURE",
+                "variant_id": "fixture_systems_ok_variant",
+                "game_class": "FIXTURE_SYSTEMS_OK_F",
+                "class_token": "Plane",
+                "identity_source": "fx_manual",
+                "country": "NONE",
+                "era": "none",
+                "vehicle_type": "fixed_wing",
+                "runtime_ready": False,
+                "values": {
+                    "fuel_capacity": _value(1000, "L", "fx_manual"),
+                    "fuel_type": _value("sentinel", "enum", "fx_manual"),
+                    "fuel_consumption_rate": _value(1.5, "kg/s", "fx_manual"),
+                    "sfc_kg_kwh": _value(0.3, "kg/kWh", "fx_manual"),
+                    "fuel_lhv_mj_kg": _value(43.0, "MJ/kg", "fx_manual"),
+                    "engine_design_rpm": _value(6000, "rpm", "fx_manual"),
+                    "engine_max_tgt_c": _value(800, "deg C", "fx_manual"),
+                    "inertia_xx_kgm2": _value(1000, "kg m^2", "fx_manual"),
+                    "bus_voltage_v": _value(28, "V", "fx_manual"),
+                    "battery_capacity_ah": _value(25, "Ah", "fx_manual"),
+                },
+            },
+        }
+
+    def test_the_record_path_accepts_a_valid_systems_record(self) -> None:
+        errors: list[str] = []
+        v.validate_record_document(self._valid_document(), errors)
+        self.assertEqual([], errors)
+
+    def test_the_record_path_rejects_the_systems_fixture(self) -> None:
+        document = json.loads(SYSTEMS_FIXTURE.read_text(encoding="utf-8"))
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertTrue(
+            any("unit gal is not in the vocabulary" in e for e in errors), errors
+        )
+        self.assertTrue(any("name its formula" in e for e in errors), errors)
+
+    def test_the_fixture_record_cli_fails(self) -> None:
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(VALIDATOR),
+                "--record",
+                str(SYSTEMS_FIXTURE),
+            ],
+            capture_output=True,
+            text=True,
+            cwd=str(REPO),
+            check=False,
+        )
+        self.assertEqual(1, result.returncode, result.stdout + result.stderr)
+        self.assertIn("aircraft data gate: FAIL", result.stdout)
+        self.assertIn("unit gal is not in the vocabulary", result.stdout)
+
+    def test_a_mutation_to_an_unlisted_unit_is_caught(self) -> None:
+        document = self._valid_document()
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertEqual([], errors, "the base record must be clean")
+
+        record = cast("JsonObject", document["record"])
+        values = cast("dict[str, object]", record["values"])
+        cast("JsonObject", values["fuel_capacity"])["unit"] = "gal"
+        mutated: list[str] = []
+        v.validate_record_document(document, mutated)
+        self.assertTrue(
+            any("unit gal is not in the vocabulary" in e for e in mutated), mutated
+        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "mutated.json"
+            path.write_text(json.dumps(document), encoding="utf-8")
+            errors: list[str] = []
+            v.validate_record_document(
+                json.loads(path.read_text(encoding="utf-8")), errors
+            )
+        self.assertTrue(errors)
+
+    def test_an_unknown_systems_field_is_an_error(self) -> None:
+        document = self._valid_document()
+        record = cast("JsonObject", document["record"])
+        values = cast("dict[str, object]", record["values"])
+        values["fuel_capacity_typo"] = _value(1, "L", "fx_manual")
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertTrue(any("unknown value field" in e for e in errors), errors)
+
+    def test_a_wrong_but_listed_systems_unit_is_an_error(self) -> None:
+        document = self._valid_document()
+        record = cast("JsonObject", document["record"])
+        values = cast("dict[str, object]", record["values"])
+        cast("JsonObject", values["fuel_capacity"])["unit"] = "kg"
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertTrue(
+            any("does not match the field unit L" in e for e in errors), errors
+        )
+
+    def test_the_systems_markers_are_disjoint_from_the_runtime_fields(self) -> None:
+        self.assertEqual([], v.systems_marker_errors())
 
 
 class ValidatorCliTest(unittest.TestCase):
