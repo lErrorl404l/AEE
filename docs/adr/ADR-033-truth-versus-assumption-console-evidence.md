@@ -105,6 +105,9 @@ proof runs as a CI/phase gate after `hemtt release`, not in the per-commit
 - A gating fact carries two artefacts: the console observation and the probe.
 - The dev surface cannot leak into a release: the exclusion is structural and
   proven on the release tree.
+- The manual ceilings are recorded below: the human eye, the 907 ms first-entry
+  build, the engine's frame delivery, the BattlEye-on server path, standards
+  judgement and external-truth rebuilds.
 
 ## Manual ceilings
 
@@ -117,6 +120,37 @@ The rendered look is a manual ceiling. A dedicated server renders nothing, and
 no automated gate reads a pixel. The operator presses the re-apply keybind,
 looks at the result and confirms the change. The screenshot is evidence for that
 manual check, not a gate.
+
+### The 907 ms first-entry engine build
+
+The engine pays a one-off build cost the first time a model runs (measured at
+about 907 ms for the thermal first entry). It is a first-entry cost, not a
+steady-state one. A timing probe must warm the first entry or exclude the first
+sample before it measures. The cost is a ceiling, not a defect.
+
+### The engine's uncontrollable frame delivery
+
+A dev tool cannot force a frame. The engine delivers frames on its own schedule,
+so a tool that needs a specific frame is out of scope. This is the same
+constraint that makes `diag_deltaTime` a previous-frame value and not a handler
+interval (ADR-032).
+
+### The BattlEye-on server path for the client kernels
+
+A production server keeps BattlEye on. The dev extension needs BattlEye off, so
+the client kernels run dev-only. The server path is the pure kernels on the
+dedicated server (P137, P138, P139); the client path is a manual ceiling.
+
+### Standards judgement
+
+A check proves a value carries a source and a grade. It cannot prove the value
+is right. Physics fidelity and colour representation are human calls.
+
+### External-truth rebuilds
+
+A corpus built from the engine or the web needs that source present. The gate
+proves the corpus is unchanged since commit. It cannot prove it is still correct
+without the source. That rebuild is a manual or Docker step.
 
 ### BattlEye-off client-kernel ceiling
 
