@@ -59,6 +59,45 @@ The remaining first-slice leads are `a10a_thunderbolt_ii`, `su25_frogfoot`,
   military flight manual (TO/TM), an FAA type certificate data sheet, or a
   public-domain DTIC report.
 
+## Fixed-wing expansion leads
+
+The fixed-wing expansion capture `data/aircraft/catalogue/fixed_wing_fw.json`
+records the real fixed-wing types the roster's plane families represent, one
+entry per real variant. Every entry is an identity lead: it holds no value, so
+it names its next source here. The next source is named per group.
+
+- US post-war and modern types (`f16a_block10`, `f16c_block52`, `f15a_eagle`,
+  `f15e_strike_eagle`, `f14b_tomcat`, `fa18a_hornet`, `fa18c_hornet`,
+  `fa18f_super_hornet`, `f4c_phantom_ii`, `f4j_phantom_ii`, `f5e_tiger_ii`,
+  `f104g_starfighter`, `f105d_thunderchief`, `f100d_super_sabre`,
+  `f86d_sabre`, `f84f_thunderstreak`, `f80c_shooting_star`, `a7d_corsair_ii`,
+  `f8e_crusader`, `a1h_skyraider`, `a6a_intruder`, `a4e_skyhawk`, `t38a_talon`,
+  `f111a_ardvark`, `b52h_stratofortress`). Next source: a US military flight
+  manual such as `TO 1F-16C-1` for the F-16 or `TO 1F-15A-1` for the F-15, or
+  an FAA type certificate data sheet.
+- Soviet and Russian types (`mig17f_fresco`, `mig19s_farmer`, `mig21bis`,
+  `mig21f13`, `mig23m_flogger`, `mig23ml_flogger`, `mig25_foxbat`,
+  `mig27_flogger_d`, `mig29a_fulcrum`, `mig35_fulcrum_f`, `su7b_fitter`,
+  `su17_fitter_c`, `su22_fitter_f`, `su24_fencer`, `su25sm_frogfoot`,
+  `su25t_frogfoot`, `su27sk_flanker_b`, `su30mki_flanker_h`, `su33_flanker_d`,
+  `su34_fullback`, `yak130_mitten`, `yak38_forger`, `mig31b_foxhound`). Next
+  source: a Russian flight manual or an export operator's handbook, for example
+  the Su-27SK flight manual.
+- European types (`mirage_iii_e`, `mirage_2000c`, `mirage_f1_cr`,
+  `sepecat_jaguar_gr1`, `panavia_tornado_gr4`, `harrier_gr9`, `bae_hawk_t1`,
+  `folland_gnat`, `alphajet_e`, `saab_37_viggen`, `saab_35_draken`,
+  `saab_105`, `aermacchi_mb339`, `amx_gibli`). Next source: a manufacturer
+  datasheet from Dassault, Saab, BAE Systems, Leonardo or Panavia.
+- Chinese types (`chengdu_j7_ii`, `shenyang_j8_ii`, `chengdu_j10a`). Next
+  source: a manufacturer datasheet or an export operator's flight manual.
+- Historical types (`hawker_hurricane_mk_i`, `hawker_typhoon_mk_ib`,
+  `dehavilland_mosquito_b`, `avro_lancaster_b1`, `messerschmitt_bf109e`,
+  `junkers_ju87d_stuka`, `focke_wulf_fw190d`, `messerschmitt_me262a`,
+  `mitsubishi_a6m2_zero`, `p38j_lightning`, `p40e_warhawk`,
+  `p61b_black_widow`, `b24j_liberator`, `b29_superfortress`, `f4u4_corsair`,
+  `f6f5_hellcat`). Next source: a period flight manual or an FAA type
+  certificate data sheet.
+
 ## Fields with no obtainable source
 
 - The fixed-wing `drag_area_m2` is rarely published. It is optional, so the
