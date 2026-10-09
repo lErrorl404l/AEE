@@ -248,6 +248,8 @@ def main():
         "tools/tests/test_dev_harness_gate.py",
         "tools/tests/test_dev_harness_dispatch.py",
         "tools/tests/test_dev_console_contract.py",
+        # Probe batching: every probe has a run class.
+        "tools/tests/test_probe_classification.py",
         # Visual workbench: keybinds, re-apply, screenshot and state dump.
         "tools/tests/test_dev_workbench.py",
     ]
