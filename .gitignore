@@ -44,6 +44,9 @@ __pycache__/
 # Per-run directories written by --isolate/--parallel (logs, server.cfg, overlays)
 /tests/docker/runs/
 
+# Docker verifier run directories (tools/docker_test.sh --run-dir)
+runs/
+
 # Quarto build output
 /docs/wiki/_site/
 /tests/docker/configs/profiles/

@@ -155,7 +155,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_environmental_logDebug` | CHECKBOX | `false` | yes | environmental | Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental > Diagnostics) |
+| `aee_weather_logDebug` | CHECKBOX | `false` | yes | weather | Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental > Diagnostics) |
 
 ## AEE Debug → Eye
 
@@ -175,6 +175,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_hud_logDebug` | CHECKBOX | `false` | yes | hud | Log HUD diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Lighting
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_lighting_logDebug` | CHECKBOX | `false` | yes | lighting | Log the consolidated lighting state line every environment tick after the one startup line (AEE Debug > Lighting) |
 
 ## AEE Debug → Maritime
 
@@ -213,6 +219,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_vision_perceptionHud` | CHECKBOX | `false` | yes | vision | Show the one-line perception state on screen while the monitor runs. The overlay is a debug surface, so it ships off. No unit. |
 | `aee_vision_perceptionInterval` | SLIDER | `0.5` | yes | vision | Minimum seconds between perception samples, range 0.1 to 2.0. The monitor runs in a per-frame handler at 0.5 s, so the effective floor is 0.5 s. Default 0.5. UNSOURCED. |
 | `aee_vision_perceptionMonitor` | CHECKBOX | `true` | yes | vision | Publish and log the reconstructed player view state each tick. The monitor reads state other modules already publish and writes the aee_optics_perception variables; it reads no pixels. Default on. The sample cadence is the perception interval. UNSOURCED that a 0.5 s sample is the right cadence. |
+
+## AEE Debug → Persistence
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_persistence_logDebug` | CHECKBOX | `false` | yes | persistence | Log the ground-state trace line every environment tick after the one startup line (AEE Debug > Persistence) |
 
 ## AEE Debug → Physiology
 
@@ -255,56 +267,56 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_environmental_dynamicAurora` | CHECKBOX | `true` | yes | environmental | Draw the physics-driven aurora as a client-side particle curtain (Kp index, observer latitude, night and cloud gate it; forceable) |
-| `aee_environmental_dynamicMeteors` | CHECKBOX | `true` | yes | environmental | Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate) |
-| `aee_environmental_dynamicMilkyWay` | CHECKBOX | `true` | yes | environmental | Draw the Milky Way as a faint client-side band along the galactic plane (night, cloud and limiting magnitude gate it; forceable) |
-| `aee_environmental_dynamicStars` | CHECKBOX | `true` | yes | environmental | Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright) |
-| `aee_environmental_starBrightnessScale` | SLIDER | `1.0` | yes | environmental | Multiplies the resolved star render scale (0..2), clamped to 0..1 |
-| `aee_environmental_starLightPollutionEnabled` | CHECKBOX | `true` | yes | environmental | Dim stars by nearby settlement skyglow; the house scan runs every 5 s |
+| `aee_lighting_dynamicAurora` | CHECKBOX | `true` | yes | lighting | Draw the physics-driven aurora as a client-side particle curtain (Kp index, observer latitude, night and cloud gate it; forceable) |
+| `aee_lighting_dynamicMeteors` | CHECKBOX | `true` | yes | lighting | Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate) |
+| `aee_lighting_dynamicMilkyWay` | CHECKBOX | `true` | yes | lighting | Draw the Milky Way as a faint client-side band along the galactic plane (night, cloud and limiting magnitude gate it; forceable) |
+| `aee_lighting_dynamicStars` | CHECKBOX | `true` | yes | lighting | Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright) |
+| `aee_lighting_starBrightnessScale` | SLIDER | `1.0` | yes | lighting | Multiplies the resolved star render scale (0..2), clamped to 0..1 |
+| `aee_lighting_starLightPollutionEnabled` | CHECKBOX | `true` | yes | lighting | Dim stars by nearby settlement skyglow; the house scan runs every 5 s |
 
 ## AEE Environmental → Fire
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_environmental_FlareChance` | SLIDER | `0.05` | yes | environmental | Solar-flare trigger chance per tick |
-| `aee_environmental_FlareDecayRate` | SLIDER | `0.05` | yes | environmental | Solar-flare decay speed per tick |
-| `aee_environmental_FlareDuration` | SLIDER | `10800` | yes | environmental | Solar-flare hold duration (s) |
+| `aee_weather_FlareChance` | SLIDER | `0.05` | yes | weather | Solar-flare trigger chance per tick |
+| `aee_weather_FlareDecayRate` | SLIDER | `0.05` | yes | weather | Solar-flare decay speed per tick |
+| `aee_weather_FlareDuration` | SLIDER | `10800` | yes | weather | Solar-flare hold duration (s) |
 
 ## AEE Environmental → Hydrology
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_environmental_DewRate` | SLIDER | `0.02` | yes | environmental | Dew contribution to surface wetness per tick |
-| `aee_environmental_FrostAccumRate` | SLIDER | `0.001` | yes | environmental | Frost build-up speed per tick |
-| `aee_environmental_FrostDecayRate` | SLIDER | `0.01` | yes | environmental | Frost melt speed per tick |
-| `aee_environmental_MaxSnowDepth` | SLIDER | `3.0` | yes | environmental | Maximum snow depth (m) |
-| `aee_environmental_SnowAccretionRate` | SLIDER | `0.01` | yes | environmental | Snow depth gain per tick per unit rain |
-| `aee_environmental_WettingRate` | SLIDER | `0.05` | yes | environmental | Surface wetting speed per tick per unit rain |
-| `aee_environmental_groundFrostEnabled` | CHECKBOX | `true` | yes | environmental | Enable ground frost detection on terrain surfaces |
+| `aee_persistence_DewRate` | SLIDER | `0.02` | yes | persistence | Dew contribution to surface wetness per tick |
+| `aee_persistence_FrostAccumRate` | SLIDER | `0.001` | yes | persistence | Frost build-up speed per tick |
+| `aee_persistence_FrostDecayRate` | SLIDER | `0.01` | yes | persistence | Frost melt speed per tick |
+| `aee_persistence_WettingRate` | SLIDER | `0.05` | yes | persistence | Surface wetting speed per tick per unit rain |
+| `aee_persistence_groundFrostEnabled` | CHECKBOX | `true` | yes | persistence | Enable ground frost detection on terrain surfaces |
+| `aee_weather_MaxSnowDepth` | SLIDER | `3.0` | yes | weather | Maximum snow depth (m) |
+| `aee_weather_SnowAccretionRate` | SLIDER | `0.01` | yes | weather | Snow depth gain per tick per unit rain |
 
 ## AEE Environmental → Snow
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_environmental_slabDensity` | SLIDER | `300` | yes | environmental | Snow slab density in kg/m3 for the McClung shear-stress model |
-| `aee_environmental_slabDepth` | SLIDER | `1.0` | yes | environmental | Snow slab depth in metres for the McClung shear-stress model |
+| `aee_persistence_slabDensity` | SLIDER | `300` | yes | persistence | Snow slab density in kg/m3 for the McClung shear-stress model |
+| `aee_persistence_slabDepth` | SLIDER | `1.0` | yes | persistence | Snow slab depth in metres for the McClung shear-stress model |
 
 ## AEE Environmental → Sound
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_environmental_SoundPropagationScale` | SLIDER | `1.0` | yes | environmental | Global sound-range multiplier |
+| `aee_weather_SoundPropagationScale` | SLIDER | `1.0` | yes | weather | Global sound-range multiplier |
 
 ## AEE Environmental → Weather
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_environmental_BlowingSnowWindThreshold` | SLIDER | `8` | yes | environmental | Wind speed (m/s) that triggers blowing snow |
-| `aee_environmental_DustDevilTempThreshold` | SLIDER | `30` | yes | environmental | Air temperature (°C) that allows dust devils |
-| `aee_environmental_FlashFloodThreshold` | SLIDER | `50` | yes | environmental | Rain rate (mm/h) that counts as flash-flood producing |
-| `aee_environmental_InversionBoost` | SLIDER | `0.6` | yes | environmental | Sound-range boost on clear calm nights |
-| `aee_environmental_SandstormWindThreshold` | SLIDER | `10` | yes | environmental | Wind speed (m/s) that triggers sandstorms |
-| `aee_environmental_weatherOwnership` | CHECKBOX | `false` | yes | environmental | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
+| `aee_lighting_weatherOwnership` | CHECKBOX | `false` | yes | lighting | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
+| `aee_persistence_FlashFloodThreshold` | SLIDER | `50` | yes | persistence | Rain rate (mm/h) that counts as flash-flood producing |
+| `aee_weather_BlowingSnowWindThreshold` | SLIDER | `8` | yes | weather | Wind speed (m/s) that triggers blowing snow |
+| `aee_weather_DustDevilTempThreshold` | SLIDER | `30` | yes | weather | Air temperature (°C) that allows dust devils |
+| `aee_weather_InversionBoost` | SLIDER | `0.6` | yes | weather | Sound-range boost on clear calm nights |
+| `aee_weather_SandstormWindThreshold` | SLIDER | `10` | yes | weather | Wind speed (m/s) that triggers sandstorms |
 
 ## AEE Experimental → Fusion
 
@@ -603,7 +615,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_physiology_ScentIntensity` | SLIDER | `1.0` | yes | physiology | Scale on scent detectability (0 = off, 1 = normal, 2 = strong) |
+| `aee_weather_ScentIntensity` | SLIDER | `1.0` | yes | weather | Scale on scent detectability (0 = off, 1 = normal, 2 = strong) |
 
 ## AEE Physiology → Stability
 

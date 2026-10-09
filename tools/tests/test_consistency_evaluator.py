@@ -54,7 +54,7 @@ CLEAN = [
     ["aee_core_currentSunElevation", -30.0],
     ["aee_thermal_skyBandTempC", -20.0],
     ["aee_core_lightIsNight", True],
-    ["aee_environmental_nightClassification", 4.0],
+    ["aee_lighting_nightClassification", 4.0],
 ]
 
 # The operator RPT (/ext/SteamLibrary/.../Arma3_x64_2026-10-07_16-56-15.rpt)
@@ -74,7 +74,7 @@ RPT_NIGHT = [
     ["aee_core_currentSunElevation", -31.4263],
     ["aee_thermal_skyBandTempC", -0.443878],
     ["aee_core_lightIsNight", True],
-    ["aee_environmental_nightClassification", 4.0],
+    ["aee_lighting_nightClassification", 4.0],
 ]
 
 
@@ -180,7 +180,7 @@ class TestPredicates(unittest.TestCase):
                 pair[1] = 80000.0
             if pair[0] == "aee_core_currentSunElevation":
                 pair[1] = 30.0
-            if pair[0] == "aee_environmental_nightClassification":
+            if pair[0] == "aee_lighting_nightClassification":
                 pair[1] = 0.0
         _, verdicts = evaluate(values)
         self.assertTrue(rows_by_id((False, verdicts))["INV-1"][1])
@@ -194,7 +194,7 @@ class TestPredicates(unittest.TestCase):
         for pair in values:
             if pair[0] == "aee_core_currentSunElevation":
                 pair[1] = 30.0
-            if pair[0] == "aee_environmental_nightClassification":
+            if pair[0] == "aee_lighting_nightClassification":
                 pair[1] = 0.0
             # lightIsNight stays True, so the night flag disagrees.
         _, verdicts = evaluate(values)

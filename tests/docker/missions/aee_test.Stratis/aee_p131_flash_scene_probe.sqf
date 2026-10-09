@@ -72,7 +72,7 @@ private _night = [
     ["aee_core_currentSunElevation", -31.38],
     ["aee_thermal_skyBandTempC", -0.443878],
     ["aee_core_lightIsNight", true],
-    ["aee_environmental_nightClassification", 4]
+    ["aee_lighting_nightClassification", 4]
 ];
 private _steadyResult = [_table, _night] call _evaluate;
 private _steadyOk = _steadyResult select 0;

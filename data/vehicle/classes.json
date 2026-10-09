@@ -108,9 +108,9 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162",
         "addons/material/functions/fnc_getObjectMaterial.sqf:30",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:90"
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:90",
+        "addons/weather/functions/biome/fnc_scanTerrainSignals.sqf:162"
       ]
     },
     {
@@ -119,7 +119,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:150"
+        "addons/weather/functions/biome/fnc_scanTerrainSignals.sqf:150"
       ]
     },
     {
@@ -214,7 +214,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162"
+        "addons/weather/functions/biome/fnc_scanTerrainSignals.sqf:162"
       ]
     },
     {
@@ -317,7 +317,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162"
+        "addons/weather/functions/biome/fnc_scanTerrainSignals.sqf:162"
       ]
     },
     {
@@ -389,7 +389,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:150"
+        "addons/weather/functions/biome/fnc_scanTerrainSignals.sqf:150"
       ]
     },
     {

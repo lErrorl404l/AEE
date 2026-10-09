@@ -37,7 +37,7 @@ FILES = {
     / "particle"
     / "fnc_surfaceMaterial.sqf",
     "concealment": ADDON
-    / "environmental"
+    / "weather"
     / "functions"
     / "terrain"
     / "fnc_calculateConcealment.sqf",
@@ -52,12 +52,12 @@ FILES = {
     / "sensor"
     / "fnc_calculateMirageIntensity.sqf",
     "scan_signals": ADDON
-    / "environmental"
+    / "weather"
     / "functions"
     / "biome"
     / "fnc_scanTerrainSignals.sqf",
     "biome_at_pos": ADDON
-    / "environmental"
+    / "weather"
     / "functions"
     / "biome"
     / "fnc_getBiomeAtPosition.sqf",

@@ -486,10 +486,10 @@ if (_heatHazeEnabled) then {
 };
 
 // The matcher publishes the per-world haze scale as element 3 of
-// aee_environmental_worldLighting.  Default 1 when it has not run.  The
+// aee_lighting_worldLighting.  Default 1 when it has not run.  The
 // grain path reads the same array (fnc_applyWeatherGrain reads element 2),
 // so the star, grain and haze elements all have a consumer.
-private _worldProfile = missionNamespace getVariable [QEGVAR(environmental,worldLighting), [1, 1, 1, 1]];
+private _worldProfile = missionNamespace getVariable [QEGVAR(lighting,worldLighting), [1, 1, 1, 1]];
 private _hazeWorldScale = 1;
 if ((_worldProfile isEqualType []) && {(count _worldProfile) > 3}) then {
     _hazeWorldScale = _worldProfile select 3;

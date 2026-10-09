@@ -16,7 +16,7 @@ if (!isNil QGVAR(updatePFH)) then {
 };
 
 // Detect base map biome once (first call caches in GVAR(biome))
-[] call EFUNC(environmental,getBiome);
+[] call EFUNC(weather,getBiome);
 
 // ─── Geolocation sanity check (issue #179) ────────────────────────────────
 // One load-time read of the world anchor.  A declared UTM zone whose

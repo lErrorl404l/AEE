@@ -167,7 +167,7 @@ Method: `hemtt utils pbo extract <pbo> config.bin <out>` then
   keyframes, `Lighting >> starEmissivity`, `Weather >> LightingNew` and
   `Overcast >> Weather1..6`, `DOFPars`, `Grid` (relabel respace shift),
   `DefaultClutter`.
-- **AEE status**: **ALREADY**. `addons/environmental/config.cpp` re-declares
+- **AEE status**: **ALREADY**. `addons/lighting/config.cpp` re-declares
   `DefaultLighting`, `DefaultWorld`, `CAWorld`, `Stratis`; sets
   `starEmissivity = 25` (vanilla), the `HDRNewPars` block and the two
   DayLighting keyframes. `addons/cartography/config_mapdisplays.hpp` sets the map

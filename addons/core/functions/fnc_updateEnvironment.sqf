@@ -61,7 +61,7 @@ if (!_realWeather) then {
     // surface type, latitude, and elevation at the player's position.
     BEGIN_COUNTER(biomePosition);
     if (GVAR(biomeEnabled)) then {
-        [_posASL] call EFUNC(environmental,updateBiomePosition);
+        [_posASL] call EFUNC(weather,updateBiomePosition);
     };
     END_COUNTER(biomePosition);
     private _biome = GVAR(biome);
@@ -73,15 +73,15 @@ if (!_realWeather) then {
         [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
     };
     [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
-    [] call EFUNC(environmental,calculateQNH);
+    [] call EFUNC(weather,calculateQNH);
     [] call EFUNC(physiology,calculateHypoxia);
     if (GVAR(humidityEnabled)) then {
         [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
     };
-    [] call EFUNC(environmental,updateSoilMoisture);
+    [] call EFUNC(persistence,updateSoilMoisture);
     [] call EFUNC(atmos,calculatePrecipitationPhase);
     [] call EFUNC(atmos,calculateHaze);
-    [] call EFUNC(environmental,calculateSurfaceWetness);
+    [] call EFUNC(persistence,calculateSurfaceWetness);
     END_COUNTER(thermoAtmos);
 
     if (GVAR(airDensityEnabled)) then {
@@ -96,7 +96,7 @@ if (!_realWeather) then {
 // anchor is read at world load, so this is where AEE adapts at run time.  Cheap
 // and safe headless.  Runs in both weather modes.
 BEGIN_COUNTER(worldLighting);
-[] call EFUNC(environmental,applyWorldLighting);
+[] call EFUNC(lighting,applyWorldLighting);
 END_COUNTER(worldLighting);
 
 // Wind runs in BOTH modes.  updateWind reads the engine wind command and
@@ -131,19 +131,19 @@ if (_modulePrecip != 1) then {
 };
 
 BEGIN_COUNTER(foliage);
-[] call EFUNC(environmental,updateSeasonalFoliage);
+[] call EFUNC(weather,updateSeasonalFoliage);
 END_COUNTER(foliage);
 if (GVAR(hydrologyEnabled)) then {
     BEGIN_COUNTER(freezeThaw);
-    call EFUNC(environmental,calculateFreezeThawCycling);
+    call EFUNC(persistence,calculateFreezeThawCycling);
     END_COUNTER(freezeThaw);
 };
 BEGIN_COUNTER(soundPropagation);
-[] call EFUNC(environmental,updateSoundPropagation);
+[] call EFUNC(weather,updateSoundPropagation);
 END_COUNTER(soundPropagation);
 BEGIN_COUNTER(fogChain);
 [] call EFUNC(atmos,updateFog);
-[] call EFUNC(environmental,calculateFogBaseAltitude);
+[] call EFUNC(weather,calculateFogBaseAltitude);
 END_COUNTER(fogChain);
 
 // ─── Thermal / Physiological ───────────────────────────────────────────────
@@ -166,7 +166,7 @@ BEGIN_COUNTER(waterTemp);
 [] call EFUNC(thermal,calculateWaterTemperature);
 END_COUNTER(waterTemp);
 BEGIN_COUNTER(frostWindscreens);
-[] call EFUNC(environmental,calculateFrostOnWindscreens);
+[] call EFUNC(persistence,calculateFrostOnWindscreens);
 END_COUNTER(frostWindscreens);
 BEGIN_COUNTER(objectScan);
 [] call EFUNC(thermal,calculateObjectTemperature);
@@ -217,7 +217,7 @@ if (GVAR(physiologyEnabled)) then {
 // Space weather must run BEFORE the illuminance layer: the aurora
 // intensity feeds the ambient lux the NVG chain consumes (issue #112).
 BEGIN_COUNTER(optics);
-[] call EFUNC(environmental,calculateSpaceWeather);
+[] call EFUNC(weather,calculateSpaceWeather);
 [_posASL] call EFUNC(core,calculateIlluminance);
 [] call EFUNC(thermal,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
@@ -245,7 +245,7 @@ if (missionNamespace getVariable [QEGVAR(vision,viewDistanceEnabled), true]) the
 BEGIN_COUNTER(mobility);
 [] call EFUNC(mobility,calculateTraction);
 [] call EFUNC(mobility,calculateHelicopterLift);
-[] call EFUNC(environmental,calculateFireSpreadRisk);
+[] call EFUNC(persistence,calculateFireSpreadRisk);
 if (GVAR(enginePowerDegradationEnabled)) then {
     [_posASL] call EFUNC(mobility,calculateEnginePower);
 };
@@ -277,9 +277,9 @@ if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateTidalPrediction);
 };
 if (GVAR(hydrologyEnabled)) then {
-    [] call EFUNC(environmental,calculateSnowAccumulation);
-    [] call EFUNC(environmental,calculateFlashFloodRisk);
-    [] call EFUNC(environmental,calculateDustSuppression);
+    [] call EFUNC(weather,calculateSnowAccumulation);
+    [] call EFUNC(persistence,calculateFlashFloodRisk);
+    [] call EFUNC(weather,calculateDustSuppression);
 };
 [] call EFUNC(mobility,calculateRouteDegradation);
 [] call EFUNC(mobility,calculateSoilBearingStrength);
@@ -294,14 +294,14 @@ if (GVAR(atmosphericEventsEnabled)) then {
     [] call EFUNC(atmos,calculateLightning);
     // Engine lightning rendering follows the strike risk (issue #141).
     [] call EFUNC(atmos,updateEngineLightnings);
-    [] call EFUNC(environmental,calculateSevereWeather);
+    [] call EFUNC(weather,calculateSevereWeather);
     [] call EFUNC(atmos,calculateMicroburst);
     [] call EFUNC(atmos,calculateTurbulence);
-    [_posASL] call EFUNC(environmental,calculateAvalancheRisk);
+    [_posASL] call EFUNC(persistence,calculateAvalancheRisk);
     // Seasonal concealment: foliage/crop/snow -> concealment factor,
     // published for the future camo (#119) and AI-detection (#74) links.
-    [_posASL, "STAND"] call EFUNC(environmental,calculateConcealment);
-    [_posASL] call EFUNC(environmental,calculateIceLoad);
+    [_posASL, "STAND"] call EFUNC(weather,calculateConcealment);
+    [_posASL] call EFUNC(persistence,calculateIceLoad);
     [] call EFUNC(atmos,calculateAirframeIcing);
     [] call EFUNC(optics,calculateAtmosphericSeeing);
 
@@ -337,18 +337,18 @@ if (GVAR(fxEnabled)) then {
 
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
 [] call EFUNC(mobility,calculateRiverWaterLevel);
-[] call EFUNC(environmental,calculateCropState);
+[] call EFUNC(weather,calculateCropState);
 [] call EFUNC(atmos,calculateCloudDevelopment);
 [] call EFUNC(atmos,calculatePressureTrend);
-[] call EFUNC(environmental,calculateLunarIllumination);
+[] call EFUNC(weather,calculateLunarIllumination);
 
 // ─── Night classification & star visibility (after lunar phase computed) ──
 // DEF Stan 61-027 night zones depend on sun elevation and moon phase.
 // calculateLunarIllumination stores moonPhase; sunElevation is set by
 // the solar model.  classifyNight must run after both are available.
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
-private _moonPhase = missionNamespace getVariable [QEGVAR(environmental,lunarPhase), 0];
-[_sunElev, _moonPhase] call EFUNC(environmental,classifyNight);
+private _moonPhase = missionNamespace getVariable [QEGVAR(weather,lunarPhase), 0];
+[_sunElev, _moonPhase] call EFUNC(lighting,classifyNight);
 private _ambientLux = missionNamespace getVariable [QEGVAR(core,ambientLux), 0.001];
 private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing), 0.5];
 
@@ -356,36 +356,36 @@ private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing)
 // share it with the star catalogue.  The NELM kernel stays pure; this tick is
 // the only place that reads the engine.  The operator switch gates the scan.
 private _houseKey = floor (diag_tickTime / 5);
-private _houseCache = missionNamespace getVariable [QEGVAR(environmental,houseCache), []];
+private _houseCache = missionNamespace getVariable [QEGVAR(lighting,houseCache), []];
 private _houseCount = 0;
 private _ambientBrightness = 0;
 if ((_houseCache isEqualType []) && {(count _houseCache) > 2} && {(_houseCache select 0) == _houseKey}) then {
     _houseCount = _houseCache select 1;
     _ambientBrightness = _houseCache select 2;
 } else {
-    if ((missionNamespace getVariable [QEGVAR(environmental,starLightPollutionEnabled), true]) && hasInterface) then {
+    if ((missionNamespace getVariable [QEGVAR(lighting,starLightPollutionEnabled), true]) && hasInterface) then {
         _houseCount = count (nearestTerrainObjects [positionCameraToWorld [0,0,0], ["HOUSE","LIGHTHOUSE"], 750, false, true]);
     };
     _ambientBrightness = getLighting select 1;
-    missionNamespace setVariable [QEGVAR(environmental,houseCache), [_houseKey, _houseCount, _ambientBrightness]];
+    missionNamespace setVariable [QEGVAR(lighting,houseCache), [_houseKey, _houseCount, _ambientBrightness]];
 };
-missionNamespace setVariable [QEGVAR(environmental,houseCount), _houseCount];
-missionNamespace setVariable [QEGVAR(environmental,ambientBrightness), _ambientBrightness];
-[_ambientLux, _seeing, _houseCount] call EFUNC(environmental,calculateLimitingMagnitude);
+missionNamespace setVariable [QEGVAR(lighting,houseCount), _houseCount];
+missionNamespace setVariable [QEGVAR(lighting,ambientBrightness), _ambientBrightness];
+[_ambientLux, _seeing, _houseCount] call EFUNC(lighting,calculateLimitingMagnitude);
 private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
-[_posASL2D, date] call EFUNC(environmental,getStarCatalog);
+[_posASL2D, date] call EFUNC(lighting,getStarCatalog);
 // One consolidated night-sky state line (INFO once, then DEBUG).
 // Reads the render registries the client workers publish, so it sits after
 // the star catalogue and the space-weather gates it reports.
-[] call EFUNC(environmental,logSkyState);
+[] call EFUNC(lighting,logSkyState);
 [] call EFUNC(atmos,calculateCloudCeiling);
 [] call EFUNC(radio,calculateIonosphericAbsorption);
 if (GVAR(environmentalEnabled)) then {
-    [] call EFUNC(environmental,calculateBiologicalAmbient);
-    [] call EFUNC(environmental,calculateCBRNPersistence);
+    [] call EFUNC(weather,calculateBiologicalAmbient);
+    [] call EFUNC(persistence,calculateCBRNPersistence);
 };
 if (GVAR(physiologyEnabled)) then {
-    [] call EFUNC(environmental,calculateScentDispersion);
+    [] call EFUNC(weather,calculateScentDispersion);
 };
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateSeaState);

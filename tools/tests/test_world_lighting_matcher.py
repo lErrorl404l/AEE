@@ -30,7 +30,7 @@ sys.path.insert(0, str(REPO))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-KERNELS = REPO / "addons" / "environmental" / "functions" / "lighting"
+KERNELS = REPO / "addons" / "lighting" / "functions" / "lighting"
 CLASS_KERNEL = KERNELS / "fnc_worldLightingClass.sqf"
 PROFILE_KERNEL = KERNELS / "fnc_worldLightingProfile.sqf"
 BINDER = KERNELS / "fnc_applyWorldLighting.sqf"

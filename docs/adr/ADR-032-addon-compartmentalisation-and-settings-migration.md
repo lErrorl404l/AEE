@@ -115,7 +115,7 @@ prose; the tree wins.
   to `diagnostics`.
 - `environmental`: section 3 gives no per-name list. The map assigns each
   setting from its consumer. Two settings are read across the new boundary:
-  `aee_physiology_ScentIntensity` is consumed by the scent-dispersion
+  `aee_weather_ScentIntensity` is consumed by the scent-dispersion
   function (now `weather`) and moves to `weather`; `slabDensity` is read by
   both `calculateSnowAccumulation` (`weather`) and `calculateAvalancheRisk`
   (`persistence`) and stays in `persistence`.

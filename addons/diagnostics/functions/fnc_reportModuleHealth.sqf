@@ -36,16 +36,18 @@ private _components = [
     "ballistics",
     "core",
     "diagnostics",
-    "environmental",
     "fx",
+    "lighting",
     "maritime",
     "material",
     "mobility",
     "nightvision",
     "optics",
+    "persistence",
     "physiology",
     "radio",
     "thermal",
+    "weather",
     "wildlife"
 ];
 

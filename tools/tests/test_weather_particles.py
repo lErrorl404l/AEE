@@ -236,7 +236,7 @@ class TestWeatherWiring(unittest.TestCase):
         self.assertRegex(
             live,
             r"_worldProfile\s*=\s*missionNamespace getVariable "
-            r"\[QEGVAR\(environmental,worldLighting\)",
+            r"\[QEGVAR\(lighting,worldLighting\)",
         )
         self.assertIn("_worldProfile select 3", live)
         self.assertIn("_hazeWorldScale", live)

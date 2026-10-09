@@ -38,7 +38,7 @@ if ((count _position) < 2) then {
 };
 
 // Guarded reads: a nil read that falls through to a default is the #154 bug.
-private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(lib,readState);
+private _biome = [QEGVAR(weather,localBiome), "", 2] call EFUNC(lib,readState);
 
 private _forceBiome = missionNamespace getVariable ["aee_wildlife_forceBiome", ""];
 if !(_forceBiome isEqualType "") then { _forceBiome = ""; };
@@ -50,7 +50,7 @@ if (_forceNight isEqualType false) then { _isNight = _forceNight; };
 
 private _nearWater = 0;
 if (_hasUnit) then {
-    private _coast = [_position, 200] call EFUNC(environmental,getCoastDistance);
+    private _coast = [_position, 200] call EFUNC(weather,getCoastDistance);
     if (_coast isEqualType 0) then {
         _nearWater = 1 - ((_coast / 200) min 1);
     };
@@ -160,7 +160,7 @@ if (_hasUnit) then {
 // spreads, absorbs and occludes them.  The occluder list is bounded by
 // fnc_acousticOccluders, and the propagation index is AEE's published
 // currentSoundPropagation, so this reuses the existing weather absorption.
-private _propIndex = missionNamespace getVariable [QEGVAR(environmental,currentSoundPropagation), 1];
+private _propIndex = missionNamespace getVariable [QEGVAR(weather,currentSoundPropagation), 1];
 if !(_propIndex isEqualType 0) then { _propIndex = 1; };
 private _listenerAsl = _position;
 if (_hasUnit) then { _listenerAsl = getPosASL _unit; };
@@ -173,14 +173,14 @@ private _acoustic = [
 ] call FUNC(acousticSample);
 private _acousticLevel = _acoustic select 0;
 
-// The vegetation signal from aee_environmental_terrainSignals.  The shape is
+// The vegetation signal from aee_weather_terrainSignals.  The shape is
 // [surfaceVotes, vegVotes, structureVotes, waterFrac, meanElevM, maxElevM].
 // vegVotes is a HashMap biome code -> indicator vote weight, published by the
 // terrain scan.  The strongest single vote is the vegetation score, clamped
 // to 0..1.  Max rather than sum: one tree votes for several Koppen codes, so
 // a sum double-counts one species.  A map with no classified tree or bush
 // yields an empty map and therefore an open-ground score of 0.
-private _signals = [QEGVAR(environmental,terrainSignals), [], 3] call EFUNC(lib,readState);
+private _signals = [QEGVAR(weather,terrainSignals), [], 3] call EFUNC(lib,readState);
 private _vegScore = [_signals] call FUNC(vegScore);
 
 // The settlement overlay.  Element 2 of the terrain signals carries the

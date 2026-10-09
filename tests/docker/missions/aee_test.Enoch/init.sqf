@@ -30,7 +30,7 @@ if ((_enabledNum == 1) && (_interval == 5)) then {
 
 // -- PHASE 2: functions compiled and resolvable -----------------------------
 private _fnEnv = missionNamespace getVariable ["aee_core_fnc_updateEnvironment", nil];
-private _fnBiome = missionNamespace getVariable ["aee_environmental_fnc_getBiome", nil];
+private _fnBiome = missionNamespace getVariable ["aee_weather_fnc_getBiome", nil];
 private _fnTemp = missionNamespace getVariable ["aee_thermal_fnc_updateTemperature", nil];
 if ((!isNil "_fnEnv") && (!isNil "_fnBiome") && (!isNil "_fnTemp")) then {
     diag_log text "[PHASE2] [PASS] functions resolved (core, environmental, thermal)";
@@ -42,7 +42,7 @@ if ((!isNil "_fnEnv") && (!isNil "_fnBiome") && (!isNil "_fnTemp")) then {
 // -- diagnostic: does getBiome store a value? --------------------------------
 private _biomeBefore = missionNamespace getVariable ["aee_core_biome", "<missing>"];
 diag_log text format ["[AEE-TEST] biome before call: %1", _biomeBefore];
-[] call aee_environmental_fnc_getBiome;
+[] call aee_weather_fnc_getBiome;
 private _biomeAfter = missionNamespace getVariable ["aee_core_biome", "<missing>"];
 diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
 
@@ -66,7 +66,7 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
     // Map-wide biome verdict from the getBiome cache.  aee_core_biome
     // is overwritten by per-position detection during the tick wait
     // (issue #184), so read the classification cache instead.
-    private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", "<none>"];
+    private _mapBiome = missionNamespace getVariable ["aee_weather_biomeCached", "<none>"];
     diag_log text format ["[BIOME] %1=%2", worldName, _mapBiome];
     // World lighting matcher: classify the loaded world, no per-map entry.
     execVM "aee_p84b_world_lighting_probe.sqf";

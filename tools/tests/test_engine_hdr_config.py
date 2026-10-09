@@ -22,7 +22,7 @@ import re
 import unittest
 from pathlib import Path
 
-CONFIG = Path(__file__).parents[2] / "addons" / "environmental" / "config.cpp"
+CONFIG = Path(__file__).parents[2] / "addons" / "lighting" / "config.cpp"
 SRC = CONFIG.read_text(encoding="utf-8")
 
 # The worlds whose config redeclares HDRNewPars (vanilla class chain).
@@ -409,7 +409,7 @@ class TestAeeDrivesNoEngineSky(unittest.TestCase):
     BINDER = (
         Path(__file__).parents[2]
         / "addons"
-        / "environmental"
+        / "lighting"
         / "functions"
         / "lighting"
         / "fnc_applyWorldLighting.sqf"

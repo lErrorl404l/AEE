@@ -96,21 +96,23 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_compat_tfar` | `compat_tfar` |
 | `aee_core` | `core` |
 | `aee_diagnostics` | `diagnostics` |
-| `aee_environmental` | `environmental` |
 | `aee_eye` | `eye` |
 | `aee_fx` | `fx` |
 | `aee_hud` | `hud` |
 | `aee_lib` | `lib` |
+| `aee_lighting` | `lighting` |
 | `aee_maritime` | `maritime` |
 | `aee_material` | `material` |
 | `aee_mobility` | `mobility` |
 | `aee_nightvision` | `nightvision` |
 | `aee_optics` | `optics` |
+| `aee_persistence` | `persistence` |
 | `aee_physiology` | `physiology` |
 | `aee_radio` | `radio` |
 | `aee_symbology` | `symbology` |
 | `aee_thermal` | `thermal` |
 | `aee_vision` | `vision` |
+| `aee_weather` | `weather` |
 | `aee_wildlife` | `wildlife` |
 
 ### Public functions (638)
@@ -239,78 +241,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_diagnostics_fnc_evaluateConsistency`
 - `aee_diagnostics_fnc_reportModuleHealth`
 - `aee_diagnostics_fnc_runConsistencyCheck`
-- `aee_environmental_fnc_applyWorldLighting`
-- `aee_environmental_fnc_calculateAvalancheRisk`
-- `aee_environmental_fnc_calculateBiologicalAmbient`
-- `aee_environmental_fnc_calculateBlowingSnowVisibility`
-- `aee_environmental_fnc_calculateCBRNPersistence`
-- `aee_environmental_fnc_calculateConcealment`
-- `aee_environmental_fnc_calculateCropState`
-- `aee_environmental_fnc_calculateDustSuppression`
-- `aee_environmental_fnc_calculateDustVisibility`
-- `aee_environmental_fnc_calculateFireSpreadRisk`
-- `aee_environmental_fnc_calculateFlashFloodRisk`
-- `aee_environmental_fnc_calculateFogBaseAltitude`
-- `aee_environmental_fnc_calculateFreezeThawCycling`
-- `aee_environmental_fnc_calculateFrostOnWindscreens`
-- `aee_environmental_fnc_calculateIceLoad`
-- `aee_environmental_fnc_calculateLimitingMagnitude`
-- `aee_environmental_fnc_calculateLunarIllumination`
-- `aee_environmental_fnc_calculateMicroclimate`
-- `aee_environmental_fnc_calculateQNH`
-- `aee_environmental_fnc_calculateScentDispersion`
-- `aee_environmental_fnc_calculateSevereWeather`
-- `aee_environmental_fnc_calculateSnowAccumulation`
-- `aee_environmental_fnc_calculateSolarRadiation`
-- `aee_environmental_fnc_calculateSpaceWeather`
-- `aee_environmental_fnc_calculateSurfaceWetness`
-- `aee_environmental_fnc_calculateUrbanHeatIsland`
-- `aee_environmental_fnc_calculateWaterInfluence`
-- `aee_environmental_fnc_classifyBiome`
-- `aee_environmental_fnc_classifyNight`
-- `aee_environmental_fnc_detectGroundFrost`
-- `aee_environmental_fnc_drawFaintStars`
-- `aee_environmental_fnc_drawMilkyWay`
-- `aee_environmental_fnc_galacticToEquatorial`
-- `aee_environmental_fnc_galacticToHorizontal`
-- `aee_environmental_fnc_getBiome`
-- `aee_environmental_fnc_getBiomeAtPosition`
-- `aee_environmental_fnc_getBiomeName`
-- `aee_environmental_fnc_getCbrnProtection`
-- `aee_environmental_fnc_getClimateNormals`
-- `aee_environmental_fnc_getCoastDistance`
-- `aee_environmental_fnc_getLatitudeClimate`
-- `aee_environmental_fnc_getSmoothedBiome`
-- `aee_environmental_fnc_getStarCatalog`
-- `aee_environmental_fnc_lightPollutionPenalty`
-- `aee_environmental_fnc_logSkyState`
-- `aee_environmental_fnc_meteorRate`
-- `aee_environmental_fnc_meteorShowers`
-- `aee_environmental_fnc_meteorState`
-- `aee_environmental_fnc_radiantHorizontal`
-- `aee_environmental_fnc_renderAurora`
-- `aee_environmental_fnc_renderDynamicStars`
-- `aee_environmental_fnc_renderMeteors`
-- `aee_environmental_fnc_renderMilkyWay`
-- `aee_environmental_fnc_scanTerrainSignals`
-- `aee_environmental_fnc_showerIsActive`
-- `aee_environmental_fnc_siderealTime`
-- `aee_environmental_fnc_skyGateReason`
-- `aee_environmental_fnc_starBrightnessCoefficient`
-- `aee_environmental_fnc_starCatalogData`
-- `aee_environmental_fnc_starDirection`
-- `aee_environmental_fnc_starLightsSync`
-- `aee_environmental_fnc_starMagnitude`
-- `aee_environmental_fnc_starWeatherFade`
-- `aee_environmental_fnc_updateAurora`
-- `aee_environmental_fnc_updateBiomePosition`
-- `aee_environmental_fnc_updateMeteors`
-- `aee_environmental_fnc_updateMilkyWay`
-- `aee_environmental_fnc_updateSeasonalFoliage`
-- `aee_environmental_fnc_updateSoilMoisture`
-- `aee_environmental_fnc_updateSoundPropagation`
-- `aee_environmental_fnc_worldLightingClass`
-- `aee_environmental_fnc_worldLightingProfile`
 - `aee_eye_fnc_eyeAdaptInit`
 - `aee_eye_fnc_eyeAdaptState`
 - `aee_eye_fnc_eyeAdaptStep`
@@ -394,6 +324,39 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_lib_fnc_utmToLatLon`
 - `aee_lib_fnc_utmToWorld`
 - `aee_lib_fnc_worldToMgrs`
+- `aee_lighting_fnc_applyWorldLighting`
+- `aee_lighting_fnc_calculateLimitingMagnitude`
+- `aee_lighting_fnc_calculateSolarRadiation`
+- `aee_lighting_fnc_classifyNight`
+- `aee_lighting_fnc_drawFaintStars`
+- `aee_lighting_fnc_drawMilkyWay`
+- `aee_lighting_fnc_galacticToEquatorial`
+- `aee_lighting_fnc_galacticToHorizontal`
+- `aee_lighting_fnc_getStarCatalog`
+- `aee_lighting_fnc_lightPollutionPenalty`
+- `aee_lighting_fnc_logSkyState`
+- `aee_lighting_fnc_meteorRate`
+- `aee_lighting_fnc_meteorShowers`
+- `aee_lighting_fnc_meteorState`
+- `aee_lighting_fnc_radiantHorizontal`
+- `aee_lighting_fnc_renderAurora`
+- `aee_lighting_fnc_renderDynamicStars`
+- `aee_lighting_fnc_renderMeteors`
+- `aee_lighting_fnc_renderMilkyWay`
+- `aee_lighting_fnc_showerIsActive`
+- `aee_lighting_fnc_siderealTime`
+- `aee_lighting_fnc_skyGateReason`
+- `aee_lighting_fnc_starBrightnessCoefficient`
+- `aee_lighting_fnc_starCatalogData`
+- `aee_lighting_fnc_starDirection`
+- `aee_lighting_fnc_starLightsSync`
+- `aee_lighting_fnc_starMagnitude`
+- `aee_lighting_fnc_starWeatherFade`
+- `aee_lighting_fnc_updateAurora`
+- `aee_lighting_fnc_updateMeteors`
+- `aee_lighting_fnc_updateMilkyWay`
+- `aee_lighting_fnc_worldLightingClass`
+- `aee_lighting_fnc_worldLightingProfile`
 - `aee_maritime_fnc_calculateCompassDeviation`
 - `aee_maritime_fnc_calculateMagneticAnomaly`
 - `aee_maritime_fnc_calculateSeaState`
@@ -495,6 +458,17 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_calculateVehicleHeatShimmer`
 - `aee_optics_fnc_dumpState`
 - `aee_optics_fnc_getOpticProperties`
+- `aee_persistence_fnc_calculateAvalancheRisk`
+- `aee_persistence_fnc_calculateCBRNPersistence`
+- `aee_persistence_fnc_calculateFireSpreadRisk`
+- `aee_persistence_fnc_calculateFlashFloodRisk`
+- `aee_persistence_fnc_calculateFreezeThawCycling`
+- `aee_persistence_fnc_calculateFrostOnWindscreens`
+- `aee_persistence_fnc_calculateIceLoad`
+- `aee_persistence_fnc_calculateSurfaceWetness`
+- `aee_persistence_fnc_detectGroundFrost`
+- `aee_persistence_fnc_getCbrnProtection`
+- `aee_persistence_fnc_updateSoilMoisture`
 - `aee_physiology_fnc_applyCrossSensitivity`
 - `aee_physiology_fnc_applyHeatStressHUD`
 - `aee_physiology_fnc_applyMovementSpeed`
@@ -704,6 +678,34 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_vision_fnc_updateThermalHost`
 - `aee_vision_fnc_updateThermalHostSetting`
 - `aee_vision_fnc_weatherGrainParams`
+- `aee_weather_fnc_calculateBiologicalAmbient`
+- `aee_weather_fnc_calculateBlowingSnowVisibility`
+- `aee_weather_fnc_calculateConcealment`
+- `aee_weather_fnc_calculateCropState`
+- `aee_weather_fnc_calculateDustSuppression`
+- `aee_weather_fnc_calculateDustVisibility`
+- `aee_weather_fnc_calculateFogBaseAltitude`
+- `aee_weather_fnc_calculateLunarIllumination`
+- `aee_weather_fnc_calculateMicroclimate`
+- `aee_weather_fnc_calculateQNH`
+- `aee_weather_fnc_calculateScentDispersion`
+- `aee_weather_fnc_calculateSevereWeather`
+- `aee_weather_fnc_calculateSnowAccumulation`
+- `aee_weather_fnc_calculateSpaceWeather`
+- `aee_weather_fnc_calculateUrbanHeatIsland`
+- `aee_weather_fnc_calculateWaterInfluence`
+- `aee_weather_fnc_classifyBiome`
+- `aee_weather_fnc_getBiome`
+- `aee_weather_fnc_getBiomeAtPosition`
+- `aee_weather_fnc_getBiomeName`
+- `aee_weather_fnc_getClimateNormals`
+- `aee_weather_fnc_getCoastDistance`
+- `aee_weather_fnc_getLatitudeClimate`
+- `aee_weather_fnc_getSmoothedBiome`
+- `aee_weather_fnc_scanTerrainSignals`
+- `aee_weather_fnc_updateBiomePosition`
+- `aee_weather_fnc_updateSeasonalFoliage`
+- `aee_weather_fnc_updateSoundPropagation`
 - `aee_wildlife_fnc_acousticLevel`
 - `aee_wildlife_fnc_acousticOccluders`
 - `aee_wildlife_fnc_acousticPublish`
@@ -830,7 +832,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 
 Engine classes AEE re-declares:
 
-- `CfgWorlds` (`addons/environmental/config.cpp`)
+- `CfgWorlds` (`addons/lighting/config.cpp`)
 - `CfgCloudlets` (`addons/fx/config.cpp`)
 - `CfgMarkers` (`addons/symbology/config.cpp`)
 - `CfgMarkerColors` (`addons/symbology/config.cpp`)

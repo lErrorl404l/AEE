@@ -46,9 +46,6 @@ AEE_SETTING_SLIDER(HypoxiaRecovery,"AEE Physiology","Rates",0,1,0.1,1);
     {}
 ] call CBA_fnc_addSetting;
 
-// ── Scent ──────────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(ScentIntensity,"AEE Physiology","Scent",0,2,1.0,1);
-
 // ── Fatigue / sleep ────────────────────────────────────────────────────────
 [
     QGVAR(fatigueEnabled),

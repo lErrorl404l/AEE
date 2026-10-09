@@ -47,15 +47,15 @@ private _density = missionNamespace getVariable [QGVAR(density), 1.0];
 if !(_density isEqualType 0) then { _density = 1.0; };
 if (_density <= 0) exitWith { [] };
 
-private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(lib,readState);
+private _biome = [QEGVAR(weather,localBiome), "", 2] call EFUNC(lib,readState);
 
 private _waterFrac = 0;
-private _coast = [_position, 200] call EFUNC(environmental,getCoastDistance);
+private _coast = [_position, 200] call EFUNC(weather,getCoastDistance);
 if (_coast isEqualType 0) then {
     _waterFrac = 1 - ((_coast / 200) min 1);
 };
 
-private _signals = missionNamespace getVariable [QEGVAR(environmental,terrainSignals), []];
+private _signals = missionNamespace getVariable [QEGVAR(weather,terrainSignals), []];
 if !(_signals isEqualType []) then { _signals = []; };
 private _vegScore = ([_signals] call FUNC(vegScore)) * _density;
 

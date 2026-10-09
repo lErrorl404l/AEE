@@ -20,7 +20,7 @@ _MOB = _REPO / "addons" / "mobility" / "functions"
 _RADIO = _REPO / "addons" / "radio" / "functions"
 _MAR = _REPO / "addons" / "maritime" / "functions"
 _BALL = _REPO / "addons" / "ballistics"
-_ENV = _REPO / "addons" / "environmental" / "functions"
+_ENV = _REPO / "addons" / "persistence" / "functions"
 
 
 def _candidates(root, name):
@@ -69,8 +69,8 @@ class TestGroundFrostWiring(unittest.TestCase):
         self.src = _sqf(_MOB, "fnc_updateGroundState.sqf")
 
     def test_consumer_calls_and_reads_frost(self):
-        self.assertIn("EFUNC(environmental,detectGroundFrost)", self.src)
-        self.assertIn("EGVAR(environmental,groundFrostPresent)", self.src)
+        self.assertIn("EFUNC(persistence,detectGroundFrost)", self.src)
+        self.assertIn("EGVAR(persistence,groundFrostPresent)", self.src)
         self.assertIn("|| _groundFrost", self.src)
 
     def test_frost_presence_changes_the_ground_state(self):

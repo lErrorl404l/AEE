@@ -17,7 +17,7 @@ import unittest
 from pathlib import Path
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
-_ENVIRONMENTAL = _REPO_ROOT / "addons" / "environmental" / "functions"
+_ENVIRONMENTAL = _REPO_ROOT / "addons" / "persistence" / "functions"
 
 
 def _read_env(name):

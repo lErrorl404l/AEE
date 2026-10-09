@@ -225,7 +225,7 @@ private _reachM = missionNamespace getVariable [QGVAR(tidalReach_m), 5000];
 if !(_reachM isEqualType 0) then { _reachM = 5000; };
 private _tideFactor = 0;
 if (_tideOffset != 0 && _reachM > 0) then {
-    private _coastDist = [_pos, _reachM] call EFUNC(environmental,getCoastDistance);
+    private _coastDist = [_pos, _reachM] call EFUNC(weather,getCoastDistance);
     _tideFactor = (1 - (_coastDist / _reachM)) max 0 min 1;
 };
 

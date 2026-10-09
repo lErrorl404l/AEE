@@ -12,7 +12,7 @@ Model, in order:
     the level falls 6 dB per doubling of distance.  SOURCED: the
     inverse-square law.  The 1 m floor keeps the source level at d = 0.
   - Air and weather absorption.  The engine of this term is AEE's published
-    sound-propagation index aee_environmental_currentSoundPropagation
+    sound-propagation index aee_weather_currentSoundPropagation
     (0.3 to 2.0), computed by fnc_updateSoundPropagation from the temperature
     inversion, the wind, the rain, the foliage and the snow.  It scales the
     effective range: an index above 1 carries the sound further, below 1

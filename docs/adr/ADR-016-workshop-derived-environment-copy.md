@@ -136,13 +136,13 @@ saw.
 
 The matcher derives the class from facts AEE already publishes. It reads the
 latitude from `EFUNC(lib,getWorldLocation)`, the biome from `aee_core_biome`,
-the terrain signals from `aee_environmental_terrainSignals` and the engine
+the terrain signals from `aee_weather_terrainSignals` and the engine
 weather. It consults no map name and no per-map table. The class comes from the
 Koppen group, the water fraction and the mean elevation.
 
 The kernels are `fnc_worldLightingClass` and `fnc_worldLightingProfile`. The
 binder `fnc_applyWorldLighting` runs once per environment tick. It publishes
-`aee_environmental_worldLighting` and `aee_environmental_worldLightingClass`.
+`aee_lighting_worldLighting` and `aee_lighting_worldLightingClass`.
 It drives the star render scale, the night factor, the grain scale and the haze
 scale.
 
