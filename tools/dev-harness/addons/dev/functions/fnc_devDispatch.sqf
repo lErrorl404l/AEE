@@ -29,4 +29,10 @@ if ((count _request) < 3) exitWith {
 
 private _result = [_request select 1, _request select 2] call aee_dev_fnc_devExec;
 
-["reply", [str (_request select 0), str _result]]
+// An operation that returns nothing yields nil, and a nil element cannot cross
+// the callExtension reply bridge: it is dropped from the argument array, the
+// extension stores no reply and the waiting request times out with a 504.
+// Report a nil result as the text "nil" so every operation answers.
+private _payload = if (isNil "_result") then { "nil" } else { str _result };
+
+["reply", [str (_request select 0), _payload]]
