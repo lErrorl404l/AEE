@@ -20,6 +20,8 @@ Run: python3 -m unittest tools.tests.test_aircraft_systems_runtime -v
 
 from __future__ import annotations
 
+import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -738,6 +740,139 @@ class TestDamageKernelContract(unittest.TestCase):
     def test_the_function_is_registered_once(self) -> None:
         hits = [line for line in PREP_SRC.splitlines() if "updateDamageSystem" in line]
         self.assertEqual(len(hits), 1, hits)
+
+
+class TestDamageEffects(unittest.TestCase):
+    """The per-system effects, executed against a stub aircraft and row."""
+
+    def test_the_kernel_maps_a_lowercase_engine_hit_to_the_engine_role(self) -> None:
+        # getAllHitPointsDamage returns lowercase names. The kernel must
+        # normalise to the map case and apply the engine effect.
+        result, rec = run_damage_kernel(SYSTEMS, hit_names=("hitengine",))
+        self.assertTrue(result)
+        self.assertIn("aee_enginePowerFraction", rec.variables)
+        self.assertLess(rec.variables["aee_enginePowerFraction"], 1.0)
+
+    def test_the_kernel_ignores_a_hit_point_outside_the_role_map(self) -> None:
+        # An unmapped name must not change the effect. The engine hit drives
+        # the fraction, so the unmapped high damage is ignored.
+        _result, mapped = run_damage_kernel(
+            SYSTEMS, hit_names=("hitengine",), hit_damages=(ENGINE_HIT_DAMAGE,)
+        )
+        _result2, extra = run_damage_kernel(
+            SYSTEMS,
+            hit_names=("hitengine", "hitsensor"),
+            hit_damages=(ENGINE_HIT_DAMAGE, 0.9),
+        )
+        self.assertEqual(
+            mapped.variables["aee_enginePowerFraction"],
+            extra.variables["aee_enginePowerFraction"],
+        )
+
+    def test_the_power_fraction_falls_as_engine_damage_rises(self) -> None:
+        _r1, light = run_damage_kernel(SYSTEMS, hit_damages=(0.3,))
+        _r2, heavy = run_damage_kernel(SYSTEMS, hit_damages=(0.9,))
+        light_fraction = light.variables["aee_enginePowerFraction"]
+        heavy_fraction = heavy.variables["aee_enginePowerFraction"]
+        self.assertLess(heavy_fraction, light_fraction)
+        self.assertGreater(light_fraction, 0.0)
+        self.assertLess(heavy_fraction, 1.0)
+
+    def test_a_sentinel_fuel_hit_leaks_the_sourced_rate(self) -> None:
+        result, rec = run_damage_kernel(
+            SYSTEMS, hit_names=("hitfuel",), hit_damages=(FUEL_HIT_DAMAGE,)
+        )
+        self.assertTrue(result)
+        assert rec.fuel is not None
+        severity = (FUEL_HIT_DAMAGE - DAMAGE_THRESHOLD) / (1 - DAMAGE_THRESHOLD)
+        leaked_kg = SOURCED_RATE * severity * DELTA_S
+        expected = (FULL_MASS_KG - leaked_kg) / FULL_MASS_KG
+        self.assertAlmostEqual(rec.fuel, expected, places=9)
+
+    def test_a_healthy_tank_does_not_leak(self) -> None:
+        result, rec = run_damage_kernel(
+            SYSTEMS, hit_names=("hitfuel",), hit_damages=(0.0,)
+        )
+        self.assertTrue(result)
+        self.assertIsNone(rec.fuel)
+
+    def test_a_sentinel_rotor_hit_publishes_an_imbalance(self) -> None:
+        result, rec = run_damage_kernel(
+            SYSTEMS, hit_names=("hitmainrotor",), hit_damages=(ROTOR_HIT_DAMAGE,)
+        )
+        self.assertTrue(result)
+        severity = (ROTOR_HIT_DAMAGE - DAMAGE_THRESHOLD) / (1 - DAMAGE_THRESHOLD)
+        self.assertAlmostEqual(
+            rec.variables["__QGVAR__rotorImbalance"], severity, places=9
+        )
+
+    def test_a_healthy_rotor_publishes_zero_imbalance(self) -> None:
+        result, rec = run_damage_kernel(
+            SYSTEMS, hit_names=("hitmainrotor",), hit_damages=(0.0,)
+        )
+        self.assertTrue(result)
+        self.assertEqual(rec.variables["__QGVAR__rotorImbalance"], 0.0)
+
+    def test_a_damaged_system_advances_progressively(self) -> None:
+        result, rec = run_damage_kernel(SYSTEMS, hit_damages=(ENGINE_HIT_DAMAGE,))
+        self.assertTrue(result)
+        self.assertEqual(len(rec.hit_damage), 1)
+        name, advanced = rec.hit_damage[0]
+        self.assertEqual(name, "HitEngine")
+        self.assertAlmostEqual(advanced, ENGINE_HIT_DAMAGE + 0.001 * DELTA_S, places=9)
+
+    def test_a_repaired_system_returns_to_healthy(self) -> None:
+        result, rec = run_damage_kernel(
+            SYSTEMS,
+            hit_names=("hitengine", "hitfuel", "hitmainrotor"),
+            hit_damages=(0.0, 0.0, 0.0),
+        )
+        self.assertTrue(result)
+        self.assertEqual(rec.variables["aee_enginePowerFraction"], 1.0)
+        self.assertEqual(rec.variables["__QGVAR__rotorImbalance"], 0.0)
+        self.assertIsNone(rec.fuel)
+        self.assertEqual(rec.hit_damage, [])
+
+    def test_the_suppression_stops_the_leak_and_the_imbalance(self) -> None:
+        result, rec = run_damage_kernel(
+            SYSTEMS,
+            hit_names=("hitfuel", "hitmainrotor"),
+            hit_damages=(FUEL_HIT_DAMAGE, ROTOR_HIT_DAMAGE),
+            damage_allowed=False,
+        )
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+        self.assertIsNone(rec.fuel)
+        self.assertEqual(rec.hit_damage, [])
+
+
+def kernel_role_map() -> dict[str, str]:
+    """The role map the kernel holds, read from its source arrays."""
+    names = re.search(r"_roleNames = \[(.*?)\]", DAMAGE_KERNEL_SRC, re.DOTALL)
+    tokens = re.search(r"_roleTokens = \[(.*?)\]", DAMAGE_KERNEL_SRC, re.DOTALL)
+    assert names is not None
+    assert tokens is not None
+    keys = re.findall(r'"([^"]+)"', names.group(1))
+    values = re.findall(r'"([^"]+)"', tokens.group(1))
+    return dict(zip(keys, values, strict=True))
+
+
+def damage_corpus() -> dict[str, object]:
+    """The damage role corpus, loaded from the JSON file."""
+    path = REPO / "data" / "aircraft" / "damage_roles.json"
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+class TestDamageRoleMap(unittest.TestCase):
+    """The role map the kernel holds must equal the JSON corpus."""
+
+    def test_the_kernel_role_map_matches_the_json_corpus(self) -> None:
+        self.assertEqual(kernel_role_map(), damage_corpus()["hit_points"])
+
+    def test_the_kernel_role_tokens_are_a_subset_of_the_roles(self) -> None:
+        corpus = damage_corpus()
+        roles = set(corpus["roles"])
+        self.assertTrue(set(kernel_role_map().values()) <= roles)
 
 
 if __name__ == "__main__":
