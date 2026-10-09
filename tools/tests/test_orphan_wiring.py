@@ -107,9 +107,9 @@ class TestCompassAnomalyWiring(unittest.TestCase):
 
     def test_anomaly_shifts_the_heading(self):
         def anomaly_nt(moment, r, cos_theta):
-            return (
-                (moment / (4 * math.pi * r**3)) * math.sqrt(1 + 3 * cos_theta**2) * 1e9
-            )
+            # SI flux density: B = (mu0/4pi) * M / r^3 * sqrt(1 + 3cos^2).
+            # mu0/4pi = 1e-7 T m / A.
+            return (1e-7 * moment / r**3) * math.sqrt(1 + 3 * cos_theta**2) * 1e9
 
         nt = anomaly_nt(1000.0, 5.0, 1.0)
         deg = (nt / 50000.0) * 57.2957795

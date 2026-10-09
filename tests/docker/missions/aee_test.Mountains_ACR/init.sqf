@@ -1023,9 +1023,9 @@ if (_p10Fail == 0) then {
         _p19Fail = _p19Fail + 1;
     } else {
         // Case 1: 10 m above a 1000 A·m² dipole (vehicle-sized).
-        // B = M/(4πr³) × √(1+3cos²θ).  Directly above: cosθ=1, √4=2.
+        // B = (mu0/4pi) * M / r^3 * sqrt(1+3cos^2).  Directly above: cos=1, sqrt=2.
         private _b1 = [[0, 0, 10], [0, 0, 0], 1000] call _fnMag;
-        private _expected1 = (1000 / (4 * pi * 1000)) * 2 * 1e9;
+        private _expected1 = (1e-7 * 1000 / 1000) * 2 * 1e9;  // mu0/4pi = 1e-7
         if (abs (_b1 - _expected1) < 1) then {
             diag_log text format ["[PHASE19] [PASS] 10 m dipole = %1 nT", _b1];
             _p19Pass = _p19Pass + 1;
@@ -1057,7 +1057,7 @@ if (_p10Fail == 0) then {
         // Case 4: Larger dipole (steel structure, 10000 A·m²) at 5 m.
         // cosθ=1, √4=2.
         private _b4 = [[0, 0, 5], [0, 0, 0], 10000] call _fnMag;
-        private _expected4 = (10000 / (4 * pi * 125)) * 2 * 1e9;
+        private _expected4 = (1e-7 * 10000 / 125) * 2 * 1e9;  // mu0/4pi = 1e-7
         if (abs (_b4 - _expected4) < 10) then {
             diag_log text format ["[PHASE19] [PASS] 5 m large dipole = %1 nT", _b4];
             _p19Pass = _p19Pass + 1;

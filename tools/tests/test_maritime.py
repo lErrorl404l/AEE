@@ -9,7 +9,25 @@ Run: python3 -m unittest tools/tests/test_maritime.py
 """
 
 import math
+import sys
 import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sqf_lite import run_sqf  # noqa: E402
+
+MAGNETIC = (
+    Path(__file__).resolve().parents[2]
+    / "addons"
+    / "maritime"
+    / "functions"
+    / "fnc_calculateMagneticAnomaly.sqf"
+)
+
+
+def dipole_flux_density_nt(moment, r, cos_theta):
+    """SI dipole flux density in nT: B = (mu0/4pi) M/r^3 sqrt(1+3cos^2)."""
+    return (1e-7 * moment / r**3) * math.sqrt(1 + 3 * cos_theta**2) * 1e9
 
 
 def tidal_height(hours_since_epoch):
@@ -161,6 +179,47 @@ class TestCompassDeclination(unittest.TestCase):
                 d = compass_declination(lon, lat)
                 self.assertLessEqual(d, 30)
                 self.assertGreaterEqual(d, -30)
+
+
+class TestCompassAnomalyScale(unittest.TestCase):
+    """The dipole kernel returns SI flux density in nT, not field strength.
+
+    fnc_calculateMagneticAnomaly omitted the vacuum permeability mu0, so it
+    returned the magnetic field strength H (A/m) instead of the flux density B
+    (tesla): ~795775x too large.  The operator RPT of 2026-10-08 logged an
+    anomaly of 8.22e7 nT (about 1700x Earth's 50000 nT field) and pinned the
+    compass deviation at the +10 deg clamp.  This suite runs the REAL SQF
+    kernel and asserts a physically bounded flux density.
+    """
+
+    def test_vehicle_at_50_m_is_a_few_nanotesla(self):
+        # Given a vehicle-scale dipole (1000 A m^2) 50 m above the sensor.
+        # When the real kernel runs.
+        got = run_sqf(MAGNETIC, [[0, 0, 50], [0, 0, 0], 1000, 0])
+        # Then the flux density is bounded (a few nT), not 1e8.
+        want = dipole_flux_density_nt(1000, 50, 1.0)
+        self.assertAlmostEqual(got, want, places=6)
+        self.assertLess(got, 10.0)
+
+    def test_matches_the_si_flux_density_not_field_strength(self):
+        # The pre-fix formula (missing mu0) is 1/(4pi*1e-7) = 795775x.
+        r = 10.0
+        got = run_sqf(MAGNETIC, [[0, 0, r], [0, 0, 0], 1000, 0])
+        field_strength_nt = (1000 / (4 * math.pi * r**3)) * 2 * 1e9
+        self.assertAlmostEqual(
+            field_strength_nt / got, 1 / (4 * math.pi * 1e-7), places=0
+        )
+
+    def test_deviation_never_reaches_the_clamp_at_50_m(self):
+        # deviation = anomaly/50000 * 57.2957795, clamped +/-10 deg.
+        anomaly_nt = run_sqf(MAGNETIC, [[0, 0, 50], [0, 0, 0], 1000, 0])
+        dev_deg = (anomaly_nt / 50000.0) * 57.2957795
+        self.assertLess(abs(dev_deg), 1.0)
+
+    def test_inverse_cube_falloff_holds(self):
+        b10 = run_sqf(MAGNETIC, [[0, 0, 10], [0, 0, 0], 1000, 0])
+        b20 = run_sqf(MAGNETIC, [[0, 0, 20], [0, 0, 0], 1000, 0])
+        self.assertAlmostEqual(b20, b10 / 8, places=6)
 
 
 if __name__ == "__main__":

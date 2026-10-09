@@ -37,9 +37,10 @@ def dipole_nanotesla(sensor, source, moment, tilt_deg):
     axis_z = math.cos(math.radians(tilt_deg))
     cos_theta = (dx * axis_x + dz * axis_z) / r
     r3 = r * r * r
-    return (
-        (moment / (4 * math.pi * r3)) * math.sqrt(1 + 3 * cos_theta * cos_theta) * 1e9
-    )
+    # SI flux density: B = (mu0/4pi) * M / r^3 * sqrt(1 + 3cos^2 theta).
+    # mu0/4pi = 1e-7 T m / A.  The mu0 factor is required: without it the
+    # expression is the magnetic field strength H (A/m), ~795775x too large.
+    return (1e-7 * moment / r3) * math.sqrt(1 + 3 * cos_theta * cos_theta) * 1e9
 
 
 def static_g(ssf, slope_deg):

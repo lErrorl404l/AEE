@@ -7,8 +7,9 @@
  * The anomaly is the deviation from Earth's background field caused by
  * ferrous objects (vehicles, structures, buried ordnance, mineral deposits).
  *
- * Dipole formula (Blakely 1995):
- *   B = M / (4pi r^3) * sqrt(1 + 3cos^2(theta))
+ * Dipole flux density (Blakely 1995, SI):
+ *   B = (mu0 / 4pi) * M / r^3 * sqrt(1 + 3cos^2(theta))
+ *   mu0 = 4pi * 1e-7 T m / A (vacuum permeability, CODATA)
  *
  * Where:
  *   M = magnetic dipole moment (A m^2)
@@ -65,10 +66,13 @@ private _axisZ = cos _tiltDeg;
 // cos(theta) = dot product of (unit sensor vector) and (dipole axis).
 private _cosTheta = (_dx * _axisX + _dz * _axisZ) / _r;
 
-// Dipole field magnitude: B = M / (4pi r^3) * sqrt(1 + 3cos^2(theta))
+// Dipole flux density: B = (mu0 / 4pi) * M / r^3 * sqrt(1 + 3cos^2(theta)).
+// The mu0 factor makes this a flux density (tesla), not the magnetic field
+// strength H (A/m); without it the result is ~795775x too large.
 // Result in tesla; convert to nanotesla (x 1e9).
 private _r3 = _r * _r * _r;
-private _bField = (_dipoleMoment / (4 * pi * _r3)) * sqrt(1 + 3 * _cosTheta * _cosTheta);
+private _mu0 = 4 * pi * 1e-7;   // vacuum permeability, T m / A (CODATA)
+private _bField = ((_mu0 / (4 * pi)) * _dipoleMoment / _r3) * sqrt(1 + 3 * _cosTheta * _cosTheta);
 
 // Convert to nanotesla.
 _bField * 1e9

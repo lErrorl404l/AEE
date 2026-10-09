@@ -1087,9 +1087,9 @@ if (isNil "_wildlifeTickFn") then {
         _p19Fail = _p19Fail + 1;
     } else {
         // Case 1: 10 m above a 1000 A·m² dipole (vehicle-sized).
-        // B = M/(4πr³) × √(1+3cos²θ).  Directly above: cosθ=1, √4=2.
+        // B = (mu0/4pi) * M / r^3 * sqrt(1+3cos^2).  Directly above: cos=1, sqrt=2.
         private _b1 = [[0, 0, 10], [0, 0, 0], 1000] call _fnMag;
-        private _expected1 = (1000 / (4 * pi * 1000)) * 2 * 1e9;
+        private _expected1 = (1e-7 * 1000 / 1000) * 2 * 1e9;  // mu0/4pi = 1e-7
         if (abs (_b1 - _expected1) < 1) then {
             diag_log text format ["[PHASE19] [PASS] 10 m dipole = %1 nT", _b1];
             _p19Pass = _p19Pass + 1;
@@ -1121,7 +1121,7 @@ if (isNil "_wildlifeTickFn") then {
         // Case 4: Larger dipole (steel structure, 10000 A·m²) at 5 m.
         // cosθ=1, √4=2.
         private _b4 = [[0, 0, 5], [0, 0, 0], 10000] call _fnMag;
-        private _expected4 = (10000 / (4 * pi * 125)) * 2 * 1e9;
+        private _expected4 = (1e-7 * 10000 / 125) * 2 * 1e9;  // mu0/4pi = 1e-7
         if (abs (_b4 - _expected4) < 10) then {
             diag_log text format ["[PHASE19] [PASS] 5 m large dipole = %1 nT", _b4];
             _p19Pass = _p19Pass + 1;
@@ -3391,13 +3391,19 @@ private _p29Pass = 0;
     // flash-scene kernel, the flash kernel and the real evaluator with the
     // operator RPT values.  It renders nothing.
     execVM "aee_p131_flash_scene_probe.sqf";
-
     // PHASE 132 lives in aee_p132_turbulence_weight_probe.sqf: the gust force
     // is now aerodynamic and mass-aware.  The probe reads the operator's
     // Littlebird record from the aircraft corpus, checks the drag area the
     // record holds, and proves the force is mass-free while the acceleration
     // is mass-aware against a heavy airframe.  It renders nothing.
     execVM "aee_p132_turbulence_weight_probe.sqf";
+
+    // PHASE 133 lives in aee_p133_compass_anomaly_probe.sqf: the dipole kernel
+    // must return the SI flux density in nT, not the magnetic field strength
+    // (mu0 omitted inflated it ~795775x, pinning the compass at the clamp).
+    // The probe drives the REAL kernel with an ordinary ground vehicle at 50 m.
+    // It renders nothing.
+    execVM "aee_p133_compass_anomaly_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
