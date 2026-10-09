@@ -698,3 +698,159 @@ Damage is built-in plus scripted layers. The engine reads `HitPoints`,
 Hydraulics, electrical and pressurisation are absent. They are status
 only. A status-only value never feeds the flight dynamics model. The
 flight dynamics model is engine-fixed at config load (ADR-017).
+
+## 17. The land-vehicle physics surface
+
+This section defines the complete carx, tankx and shipx `CfgVehicles`
+physics surface for a land vehicle. The engine reads it at load time. A
+land vehicle has no engine XML, so the engine reads no XML for it. The
+load-time `CfgVehicles` block is the only consumer.
+
+A row below names the field, its source class or its named derivation and
+its marker. The markers mean this.
+
+- `published`: the value comes from a held real-world source.
+- `derived`: the value is computed from published inputs by a named
+  formula.
+- `engine schema`: the key is structural. Its value is engine tuning, not
+  a real figure. The generator emits it only from a sourced or derived
+  input.
+
+The tyre and contact solver, the gearbox shift logic, the suspension and
+the engine-power curve are engine-owned. AEE never sets a velocity on a
+driven vehicle.
+
+### Engine
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `enginePower` | published, the BIKI kW unit is resolved before use | published |
+| `maxOmega` | derived, `engine_design_rpm` converted to rad/s | derived |
+| `minOmega` | derived, the idle engine speed converted to rad/s | derived |
+| `idleRpm` | published | published |
+| `redRpm` | published | published |
+| `peakTorque` | published | published |
+| `torqueCurve[<=8][2]` | published | published |
+| `engineMOI` | derived, one half of the mass times the radius squared | derived |
+| `dampingRateFullThrottle` | engine schema | engine schema |
+| `dampingRateZeroThrottleClutchEngaged` | engine schema | engine schema |
+| `dampingRateZeroThrottleClutchDisengaged` | engine schema | engine schema |
+
+### Transmission
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `clutchStrength` | published | published |
+| `latency` | engine schema | engine schema |
+| `switchTime` | published, the gear shift time | published |
+| `changeGearType` | published | published |
+| `changeGearMinEffectivity[]` | published | published |
+| `changeGearOmegaRatios[]` | published | published |
+| `GearboxRatios[]` | published | published |
+| `TransmissionRatios[]` | published | published |
+| `moveOffGear` | derived, the gear the vehicle moves off in | derived |
+| `driveString` | published, the forward gear names | published |
+| `neutralString` | published | published |
+| `reverseString` | published | published |
+
+### Differential
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `differentialType` | published | published |
+| `frontRearSplit` | published | published |
+| `frontBias` | engine schema | engine schema |
+| `rearBias` | engine schema | engine schema |
+| `centreBias` | engine schema | engine schema |
+
+### Wheel
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `boneName` | published, the wheel station name | published |
+| `steering` | published | published |
+| `side` | published | published |
+| `center` | published, the wheel centre position | published |
+| `boundary` | published | published |
+| `width` | published, the tyre width | published |
+| `mass` | published, the wheel mass | published |
+| `MOI` | derived, one half of the mass times the radius squared | derived |
+| `dampingRate` | engine schema | engine schema |
+| `dampingRateDamaged` | engine schema | engine schema |
+| `dampingRateDestroyed` | engine schema | engine schema |
+| `maxBrakeTorque` | published | published |
+| `maxHandBrakeTorque` | published | published |
+| `tireForceAppPointOffset` | engine schema | engine schema |
+
+### Suspension
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `dampersBumpCoef` | engine schema | engine schema |
+| `maxCompression` | published | published |
+| `maxDroop` | published | published |
+| `sprungMass` | derived, the sum equals the vehicle mass | derived |
+| `springStrength` | derived, the natural frequency squared times `sprungMass` | derived |
+| `springDamperRate` | derived, the damping ratio times two times the square root of `springStrength` times `sprungMass` | derived |
+| `suspTravelDirection` | engine schema | engine schema |
+| `suspForceAppPointOffset` | engine schema | engine schema |
+
+### Tire
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `longitudinalStiffnessPerUnitGravity` | published | published |
+| `latStiffX` | published | published |
+| `latStiffY` | published | published |
+| `frictionVsSlipGraph[3][2]` | published | published |
+
+### CarX
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `simulation` | engine schema, `carx` | engine schema |
+| `thrustDelay` | engine schema | engine schema |
+| `accelAidForceCoef` | engine schema | engine schema |
+| `accelAidForceSpd` | engine schema | engine schema |
+| `accelAidForceYOffset` | engine schema | engine schema |
+| `maxSpeed` | published | published |
+| `slowSpeedForwardCoef` | engine schema | engine schema |
+| `normalSpeedForwardCoef` | engine schema | engine schema |
+| `waterLeakiness` | engine schema | engine schema |
+| `brakeIdleSpeed` | engine schema | engine schema |
+| `antiRollbarForceCoef` | engine schema | engine schema |
+| `antiRollbarForceLimit` | engine schema | engine schema |
+| `antiRollbarSpeedMin` | engine schema | engine schema |
+| `antiRollbarSpeedMax` | engine schema | engine schema |
+| `terrainCoef` | engine schema | engine schema |
+| `turnCoef` | engine schema | engine schema |
+
+### TankX
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `simulation` | engine schema, `tankx` | engine schema |
+| `tankTurnForce` | engine schema | engine schema |
+| `tankTurnForceAngMinSpd` | engine schema | engine schema |
+| `tankTurnForceAngSpd` | engine schema | engine schema |
+
+The Wheel `boneName` is the damper bone.
+
+### ShipX
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `simulation` | engine schema, `shipx` | engine schema |
+
+### The derived physics fields
+
+Four fields are derived. Do not source them separately.
+
+1. `sprungMass`: the sum of the corner masses equals the vehicle mass.
+2. `springStrength`: the natural frequency squared times `sprungMass`.
+3. `springDamperRate`: the damping ratio times two times the square root
+   of `springStrength` times `sprungMass`.
+4. Wheel `MOI`: one half of the wheel mass times the wheel radius squared.
+
+The natural frequency, the damping ratio and the wheel radius are the
+published or measured inputs.
