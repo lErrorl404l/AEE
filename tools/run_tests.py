@@ -135,6 +135,7 @@ def main():
         "tools/tests/test_aircraft_roster.py",
         "tools/tests/test_aircraft_systems.py",
         "tools/tests/test_aircraft_systems_lookup.py",
+        "tools/tests/test_aircraft_systems_runtime.py",
         "tools/tests/test_vehicle_mass_model.py",
         "tools/tests/test_vehicle_mass_estimate.py",
         "tools/tests/test_vehicle_mass_separation.py",

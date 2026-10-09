@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (638)
+### Public functions (640)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -375,6 +375,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_mobility_fnc_calculateEngineLoad`
 - `aee_mobility_fnc_calculateEnginePower`
 - `aee_mobility_fnc_calculateExhaustPlume`
+- `aee_mobility_fnc_calculateFuelBurn`
 - `aee_mobility_fnc_calculateGreenAmptInfiltration`
 - `aee_mobility_fnc_calculateHelicopterLift`
 - `aee_mobility_fnc_calculateMudAccretion`
@@ -407,6 +408,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_mobility_fnc_resolveFlightModel`
 - `aee_mobility_fnc_resolveTurbulenceArea`
 - `aee_mobility_fnc_routeRunoffD8`
+- `aee_mobility_fnc_updateFuelSystem`
 - `aee_mobility_fnc_updateGroundState`
 - `aee_nightvision_fnc_applyNVGTubeModel`
 - `aee_nightvision_fnc_applyNightGrain`
