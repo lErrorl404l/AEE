@@ -76,6 +76,10 @@ if (_op == "probes") exitWith {
 
 if (_op == "remote") exitWith {
     if ((count _args) < 2) exitWith { "error: remote needs a verb and a name" };
+    if ((_args select 0) == "probecall") exitWith {
+        [(_args select 1)] remoteExecCall ["aee_dev_fnc_devClientProbe", -2];
+        "requested"
+    };
     [(_args select 0), (_args select 1)] call aee_dev_fnc_devRemote
 };
 

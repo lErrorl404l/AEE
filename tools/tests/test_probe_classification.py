@@ -99,6 +99,24 @@ class TestProbeClassification(unittest.TestCase):
                 problems.append(f"{tag}: {name} needs a hasInterface guard")
         self.assertEqual(problems, [], "; ".join(problems))
 
+    def test_the_default_harness_has_no_client_and_the_dev_config_has_one(self):
+        default = (REPO / "tests" / "docker" / "config.toml").read_text(
+            encoding="utf-8"
+        )
+        client = (REPO / "tests" / "docker" / "config.client.toml").read_text(
+            encoding="utf-8"
+        )
+        self.assertRegex(
+            default,
+            r"\[headless\]\s*\nclients\s*=\s*0",
+            "the default harness must stay at clients = 0",
+        )
+        self.assertRegex(
+            client,
+            r"\[headless\]\s*\nclients\s*=\s*1",
+            "the dev client config must set clients = 1",
+        )
+
     def test_the_runner_honours_the_class(self):
         text = RUNNER.read_text(encoding="utf-8")
         self.assertIn("headless-client", text, "the runner must know the client class")
