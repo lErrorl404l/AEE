@@ -3426,6 +3426,14 @@ private _p29Pass = 0;
     // (P132 turbulence, P133 compass and P134 map-density were taken on this
     // base, so the clock probe takes the next free number.)
     execVM "aee_p135_sim_clock_rate_probe.sqf";
+    // PHASE 137 lives in aee_p137_kernel_parity_probe.sqf: the pure native
+    // kernels are server-callable, so the dedicated server drives each one and
+    // compares the dispatcher's answer against the SQF reference within the
+    // per-kernel bound (ADR-034).  When the dev extension is absent the probe
+    // records native-unavailable and asserts the SQF fallback.  It renders
+    // nothing.  (P136 is the client probe, so the kernel probe takes the next
+    // free number.)
+    execVM "aee_p137_kernel_parity_probe.sqf";
     // PHASE 136 lives in aee_p136_client_probe.sqf: it needs a non-dedicated
     // machine, so the dedicated server never runs it and can never claim it
     // passed. An optional headless client carries it (guard !isDedicated).
