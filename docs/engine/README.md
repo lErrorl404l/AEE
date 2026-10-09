@@ -24,6 +24,18 @@ The full eight-step pattern, the config roots with their engine source and
 line, and the override mechanisms are in
 [engine-config-surface.md](engine-config-surface.md).
 
+## Dev tooling rule
+
+Before a change to a dev tool that touches the engine, read this reference
+first. The dev console, the dev harness and the native kernels read engine
+state and call engine commands, so they obey the same rule as a config
+change: read the engine first, then change.
+
+A dev tool holds no engine state. It observes the published state and calls
+published functions. The engine keeps the solver, the renderer and the
+physics step (ADR-017, ADR-032). A dev tool that needs a new engine anchor
+adds a ceiling here first.
+
 ## Index
 
 | Document | Covers |
