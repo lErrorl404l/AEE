@@ -43,6 +43,8 @@ website:
             href: chapters/development.qmd
           - text: Testing
             href: chapters/testing.qmd
+          - text: Dev console and workbench
+            href: chapters/dev-console.qmd
       - section: "Annexes"
         contents:
           - text: Formulas
