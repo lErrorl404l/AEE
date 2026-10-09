@@ -21,7 +21,7 @@ if (_op == "verbs") exitWith { aee_dev_verbs };
 
 if (_op == "get") exitWith {
     if ((count _args) < 1) exitWith { "error: get needs a name" };
-    str (missionNamespace getVariable [_args select 0, nil])
+    str (missionNamespace getVariable (_args select 0))
 };
 
 if (_op == "set") exitWith {
@@ -34,7 +34,7 @@ if (_op == "set") exitWith {
 
 if (_op == "dump") exitWith {
     if ((count _args) < 1) exitWith { "error: dump needs a component" };
-    private _fnc = missionNamespace getVariable ["aee_" + (_args select 0) + "_fnc_dumpState"];
+    private _fnc = missionNamespace getVariable ("aee_" + (_args select 0) + "_fnc_dumpState");
     if ((typeName _fnc) != "CODE") exitWith { "error: no dump for component" };
     str (nil call _fnc)
 };
@@ -50,7 +50,7 @@ if (_op == "callfunc") exitWith {
     private _allowed = false;
     { if (_x == _fncName) then { _allowed = true; }; } forEach aee_dev_funcs;
     if (!_allowed) exitWith { "error: function not whitelisted" };
-    private _fnc = missionNamespace getVariable [_fncName];
+    private _fnc = missionNamespace getVariable _fncName;
     if ((typeName _fnc) != "CODE") exitWith { "error: no such function" };
     private _fncArgs = if ((count _args) > 1) then { _args select 1 } else { [] };
     str (_fncArgs call _fnc)
@@ -64,16 +64,21 @@ if (_op == "batch") exitWith {
 
 if (_op == "scenario") exitWith {
     if ((count _args) < 1) exitWith { "error: scenario needs a name" };
-    private _fnc = missionNamespace getVariable ["aee_dev_scenario_" + (_args select 0)];
+    private _fnc = missionNamespace getVariable ("aee_dev_scenario_" + (_args select 0));
     if ((typeName _fnc) != "CODE") exitWith { "error: no such scenario" };
     str (nil call _fnc)
 };
 
 if (_op == "probes") exitWith {
     if ((count _args) < 1) exitWith { "error: probes needs a batch name" };
-    private _fnc = missionNamespace getVariable ["aee_dev_probes_" + (_args select 0)];
+    private _fnc = missionNamespace getVariable ("aee_dev_probes_" + (_args select 0));
     if ((typeName _fnc) != "CODE") exitWith { "error: no such probe batch" };
     nil call _fnc
+};
+
+if (_op == "remote") exitWith {
+    if ((count _args) < 2) exitWith { "error: remote needs a verb and a name" };
+    [(_args select 0), (_args select 1)] call aee_dev_fnc_devRemote
 };
 
 "error: unknown verb"

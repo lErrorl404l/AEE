@@ -16,3 +16,7 @@ addMissionEventHandler ["ExtensionCallback", {
         "aee_dev" callExtension _reply;
     };
 }];
+
+// Open the loopback listener. The extension refuses in a client build, so a
+// client never opens a dev port.
+"aee_dev" callExtension ["start", []];

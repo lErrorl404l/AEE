@@ -53,14 +53,44 @@ toolchain is recorded in the evidence log. A 32-bit Windows build additionally
 needs the `Win32.def` workaround for the 32-bit link; this crate targets 64-bit
 only.
 
+## Server build and client build
+
+The default build is the server build: it binds the loopback listener on
+`127.0.0.1:7788` and needs no BattlEye whitelist. A dedicated server runs it
+directly.
+
+A client build must not open a dev port. Enable the `client` feature and the
+listener refuses to bind:
+
+```sh
+cargo build --release --features client
+```
+
+`cargo test` proves the observable outcome in `tests/test_client_no_listener.rs`:
+the server build binds, the client build does not.
+
+A client extension is optional and needs BattlEye off. `hasInterface` is false
+on a headless client, so the client-local helpers are skipped there. The
+BattlEye-on server path is a manual ceiling: it is not exercised by any gate.
+
+## Linux compatibility
+
+The Linux `.so` links the glibc of the machine that builds it. The dedicated
+server image is Debian 12 (glibc 2.36); a `libaee_dev.so` built on a host with a
+newer glibc fails to load with `Call extension 'aee_dev' could not be loaded`.
+Build the extension inside a glibc-compatible environment (or with a matching
+sysroot) before the Docker harness can load it.
+
 ## Tests
 
 ```sh
 cargo test
 ```
 
-Unit tests cover the command surface, the HTTP listener and the bridge. They
-run on the host and do not need Arma.
+Unit tests cover the command surface, the HTTP listener and the bridge. The
+integration test builds the listener probe with and without the `client`
+feature and asserts whether the listener binds. They run on the host and do not
+need Arma.
 
 ## Licence
 

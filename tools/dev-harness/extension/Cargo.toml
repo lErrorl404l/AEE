@@ -7,7 +7,15 @@ description = "AEE development extension: loopback dev console and callback brid
 publish = false
 
 [lib]
-crate-type = ["cdylib"]
+# `rlib` lets the integration test and the listener probe link the crate; the
+# release artefact is still the `cdylib` (`libaee_dev.so` / `aee_dev.dll`).
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+# A client build must not open a dev loopback port. Enable this for the client
+# extension; the server build leaves it off and binds the listener.
+client = []
 
 [dependencies]
 arma-rs = "1.13.0"

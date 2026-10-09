@@ -41,6 +41,7 @@ OPS = (
     "batch",
     "scenario",
     "probes",
+    "remote",
     "verbs",
 )
 
@@ -74,8 +75,10 @@ def _code_only(text: str) -> str:
 def _globals(store: dict):
     return {
         "missionNamespace": "ns",
-        "getVariable": lambda _ns, spec: store.get(
-            spec[0], spec[1] if len(spec) > 1 else None
+        "getVariable": lambda _ns, spec: (
+            store.get(spec[0], spec[1] if len(spec) > 1 else None)
+            if isinstance(spec, list)
+            else store.get(spec)
         ),
         "setVariable": lambda _ns, spec: store.__setitem__(spec[0], spec[1]),
         "aee_dev_funcs": list(WHITELIST),
