@@ -17,13 +17,22 @@
 // declaration alone does not carry the parent, so the child restates
 // it. The generator never emits a bare class.
 //
-// It declares maxSpeed and mass and no other key. thermal and optics
-// own htMin, htMax, afMax, mfMax, mFact and tBody; a redeclaration here
-// would win and change the thermal model, so no thermal key is admitted.
-// Each mass is a calibrated scale of a held real mass, never a copied
-// engine number, from data/physics/mass_calibration.json.
+// It declares maxSpeed and mass for the pre-existing land classes. Those
+// keys are NOT identity-derived and the aircraft gate never
+// retro-applies to them. thermal and optics own htMin, htMax, afMax,
+// mfMax, mFact and tBody; a redeclaration here would win and change the
+// thermal model, so no thermal key is admitted. Each mass is a
+// calibrated scale of a held real mass, never a copied engine number,
+// from data/physics/mass_calibration.json.
 //
-// One block carries both keys: the engine lint rejects a second
+// The aircraft fuel key is gated at BUILD TIME: it is emitted only
+// when the class identity grade and the held value grade are both
+// documented. Config is load-time and global, so the build-time
+// predicate is the only gate. Every aircraft class binding is claimed
+// today, so NO aircraft key ships yet. That is the gate working, not a
+// broken generator.
+//
+// One block carries every key: the engine lint rejects a second
 // CfgVehicles block in the same addon.
 
 class CfgVehicles {

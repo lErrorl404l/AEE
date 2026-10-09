@@ -44,6 +44,7 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 ROOT = _REPO
 DEFAULT_DATA = ROOT / "data" / "physics"
 DEFAULT_VEHICLE_DATA = ROOT / "data" / "vehicle"
+DEFAULT_AIRCRAFT_DATA = ROOT / "data" / "aircraft"
 BINDINGS_NAME = "config_bindings.json"
 CLASS_BINDINGS_NAME = "class_bindings.json"
 SOURCES_NAME = "sources.json"
@@ -67,11 +68,12 @@ VALUE_SOURCE_FIELDS = ("source_id", "locator", "field")
 # identity only. It is never a value source.
 CONFIG_CLASSES = frozenset({"CfgVehicles"})
 
-# The engine config keys this schema version admits.
-CONFIG_KEYS = frozenset({"maxSpeed"})
+# The engine config keys this schema version admits. ``maxSpeed`` is a land
+# key. ``fuelCapacity`` is the aircraft fuel key, held in litres.
+CONFIG_KEYS = frozenset({"maxSpeed", "fuelCapacity"})
 
 # The documented config unit of each admitted key.
-KEY_UNITS: dict[str, str] = {"maxSpeed": "km/h"}
+KEY_UNITS: dict[str, str] = {"maxSpeed": "km/h", "fuelCapacity": "L"}
 
 # The grade vocabulary. A binding never carries ``absent``: a binding with no
 # held source value is omitted, not recorded.
@@ -186,9 +188,16 @@ def sources_by_id(vehicle_dir: Path) -> dict[str, dict[str, object]]:
     return registry
 
 
-def catalogue_by_id(vehicle_dir: Path) -> dict[str, catalogue.CatalogueEntry]:
-    """Return the catalogue corpus keyed by catalogue_id."""
-    load = catalogue.load(vehicle_dir)
+def catalogue_by_id(
+    data_dir: Path, *, profile: catalogue.Profile = catalogue.GROUND_PROFILE
+) -> dict[str, catalogue.CatalogueEntry]:
+    """Return the catalogue corpus keyed by catalogue_id.
+
+    ``profile`` selects the family contract. It defaults to the ground profile,
+    so every existing caller is unchanged. The aircraft corpus loads with the
+    aircraft profile.
+    """
+    load = catalogue.load(data_dir, profile=profile)
     return {entry.catalogue_id: entry for entry in load.entries}
 
 
@@ -406,18 +415,24 @@ def main(argv: Sequence[str] | None = None) -> int:
     paths = list(sys.argv[1:] if argv is None else argv)
     data_dir = DEFAULT_DATA
     vehicle_dir = DEFAULT_VEHICLE_DATA
+    aircraft_dir = DEFAULT_AIRCRAFT_DATA
     index = 0
     while index < len(paths):
         flag = paths[index]
-        if flag in ("--data-dir", "--vehicle-dir") and index + 1 < len(paths):
+        if flag in ("--data-dir", "--vehicle-dir", "--aircraft-dir") and (
+            index + 1 < len(paths)
+        ):
             if flag == "--data-dir":
                 data_dir = Path(paths[index + 1])
-            else:
+            elif flag == "--vehicle-dir":
                 vehicle_dir = Path(paths[index + 1])
+            else:
+                aircraft_dir = Path(paths[index + 1])
             index += 2
             continue
         print(
-            "usage: validate_physics_config.py [--data-dir PATH] [--vehicle-dir PATH]"
+            "usage: validate_physics_config.py "
+            "[--data-dir PATH] [--vehicle-dir PATH] [--aircraft-dir PATH]"
         )
         return 2
 
@@ -427,6 +442,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         catalogue_ids = catalogue_by_id(vehicle_dir)
         class_bindings = class_binding_map(vehicle_dir)
         sources = sources_by_id(vehicle_dir)
+        # The aircraft family shares the config-key contract. Merge its class
+        # bindings, sources and catalogue so a future aircraft fuelCapacity
+        # record is not rejected as an unknown game_class.
+        if aircraft_dir.is_dir():
+            catalogue_ids.update(
+                catalogue_by_id(aircraft_dir, profile=catalogue.AIRCRAFT_PROFILE)
+            )
+            class_bindings.update(class_binding_map(aircraft_dir))
+            sources.update(sources_by_id(aircraft_dir))
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"physics config bindings: FAIL\n  cannot read the corpus: {exc}")
         return 1

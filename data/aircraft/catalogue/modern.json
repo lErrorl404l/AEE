@@ -373,6 +373,22 @@
           "locator": "rotor diameter 18.60 m (61 ft 0 in)",
           "state": "Leonardo AW101 brochure main rotor diameter",
           "grade": "claimed"
+        },
+        "fuel_mass_full_kg": {
+          "value": 4108,
+          "unit": "kg",
+          "source": "src_leonardo_aw101",
+          "locator": "Fuel Capacity, Standard Internal Fuel Tanks, 4,108 kg (9,058 lb)",
+          "state": "Leonardo AW101 brochure standard internal fuel tank mass",
+          "grade": "claimed"
+        },
+        "service_ceiling_m": {
+          "value": 4570,
+          "unit": "m",
+          "source": "src_leonardo_aw101",
+          "locator": "Service Ceiling 4,570 m (15,000 ft)",
+          "state": "Leonardo AW101 brochure service ceiling",
+          "grade": "claimed"
         }
       }
     }
