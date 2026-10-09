@@ -38,6 +38,13 @@ CLASS_BINDINGS = VEHICLE / "class_bindings.json"
 PARENTS = VEHICLE / "class_parents.json"
 GENERATED = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
 
+
+def _write(path: Path, payload: object) -> None:
+    """Write one JSON artefact for the fixture corpus."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 # One emitted child body: `class X: Parent {` and its maxSpeed value.
 CHILD_RE = re.compile(
     r"^[ \t]+class (\w+): (\w+) \{\n[ \t]+maxSpeed = ([0-9.]+);", re.M
@@ -306,6 +313,137 @@ class PhysicsConfigGeneratorTest(unittest.TestCase):
             path.write_text(json.dumps({"game_class": "x"}), encoding="utf-8")
             with self.assertRaises(ValueError):
                 gen.load_class_bindings(path)
+
+
+class LandSurfaceGateTest(unittest.TestCase):
+    """The land surface key is admitted only on a documented binding.
+
+    A fixture corpus drives the SAME build-time predicate the aircraft keys
+    use. The fixture is not a real vehicle and must never ship.
+    """
+
+    def _fixture(self, root: Path, grade: str) -> Path:
+        _write(
+            root / "class_map.json",
+            [],
+        )
+        _write(
+            root / "sources.json",
+            [
+                {
+                    "source_id": "fixture_manual",
+                    "tier": 2,
+                    "type": "manual",
+                    "title": "FIXTURE ONLY tier-2 manual, not a held document",
+                    "identifier": "FIXTURE-LAND",
+                    "locator": "fixture only, no real locator",
+                    "published": "2026",
+                    "retrieved": "2026-10-10",
+                    "url": "",
+                    "licence": "fixture only",
+                    "primary_held": False,
+                    "sha256": "",
+                    "note": "FIXTURE ONLY, not a held document",
+                }
+            ],
+        )
+        class_bindings = root / "class_bindings.json"
+        _write(
+            class_bindings,
+            [
+                {
+                    "game_class": "FIXTURE_LAND_F",
+                    "class_token": "Tank",
+                    "catalogue_id": "fixture_land",
+                    "identity_source": "fixture_manual",
+                    "identity_evidence": "FIXTURE ONLY, no real identity",
+                    "grade": grade,
+                }
+            ],
+        )
+        _write(
+            root / "catalogue" / "fixture_land.json",
+            {
+                "retrieved": "2026-10-10",
+                "note": "FIXTURE ONLY, no real vehicle value",
+                "sources": [],
+                "entries": [
+                    {
+                        "catalogue_id": "fixture_land",
+                        "canonical_name": "FIXTURE",
+                        "maker": "FIXTURE",
+                        "model": "FIXTURE",
+                        "variant": "FIXTURE",
+                        "variant_id": "fixture_land_variant",
+                        "vehicle_type": "tracked",
+                        "class_token": "Tank",
+                        "country": "NONE",
+                        "era": "none",
+                        "aliases": [],
+                        "keywords": [],
+                        "runtime_ready": False,
+                        "values": {
+                            "max_brake_torque_nm": {
+                                "value": 54000,
+                                "unit": "N m",
+                                "source": "fixture_manual",
+                                "locator": "fixture only, no real locator",
+                                "state": "fixture only, no real configuration",
+                                "grade": grade,
+                            },
+                            "max_hand_brake_torque_nm": {
+                                "value": 12000,
+                                "unit": "N m",
+                                "source": "fixture_manual",
+                                "locator": "fixture only, no real locator",
+                                "state": "fixture only, no real configuration",
+                                "grade": grade,
+                            },
+                        },
+                    }
+                ],
+            },
+        )
+        return class_bindings
+
+    def test_every_land_surface_key_is_admitted(self) -> None:
+        self.assertEqual(set(gen.LAND_SURFACE_FIELDS) - v.CONFIG_KEYS, set())
+
+    def test_every_land_surface_unit_matches_the_validator(self) -> None:
+        for key, (_field, unit) in gen.LAND_SURFACE_FIELDS.items():
+            with self.subTest(key=key):
+                self.assertEqual(v.KEY_UNITS.get(key), unit)
+
+    def test_a_documented_fixture_emits_admitted_keys(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            class_bindings = self._fixture(root, "documented")
+            surface = gen.build_land_surface(class_bindings, root)
+        emitted = {emission.key for group in surface.values() for emission in group}
+        self.assertTrue(emitted, "a documented fixture must emit a land key")
+        self.assertLessEqual(emitted, v.CONFIG_KEYS)
+
+    def test_a_claimed_fixture_emits_no_key(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            class_bindings = self._fixture(root, "claimed")
+            surface = gen.build_land_surface(class_bindings, root)
+        self.assertEqual(surface, {})
+
+    def test_a_documented_fixture_projection_validates(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            class_bindings = self._fixture(root, "documented")
+            surface = gen.build_land_surface(class_bindings, root)
+            records = gen.land_surface_projection_records(surface)
+            self.assertTrue(records)
+            catalogue_ids = v.catalogue_by_id(root)
+            class_binding_map = v.class_binding_map(root)
+            sources = v.sources_by_id(root)
+        self.assertEqual(
+            v.validate_bindings(records, catalogue_ids, class_binding_map, sources),
+            [],
+        )
 
 
 if __name__ == "__main__":

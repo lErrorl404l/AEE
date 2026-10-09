@@ -51,6 +51,16 @@
 // gate. Moments of inertia are REFERENCE ONLY: the engine has no runtime
 // inertia hook, so no inertia key is emitted.
 //
+// The land carx/tankx/shipx physics surface is gated the SAME way, on the
+// class identity grade (data/vehicle/class_bindings.json) and the held
+// value grade. EVERY land class binding is claimed today, so the predicate
+// emits NO new land key and the surface is UNPROVEN this phase until a
+// binding becomes documented. The engine-schema structural keys are engine
+// tuning and are never emitted. enginePower, peakTorque, torqueCurve and
+// the gearbox ratios are EXCLUDED until the in-engine probe resolves the
+// enginePower unit and the drivability. This is the gate working, not a
+// broken generator.
+//
 // One block carries every key: the engine lint rejects a second
 // CfgVehicles block in the same addon.
 
