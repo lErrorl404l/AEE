@@ -15,5 +15,6 @@ four-layer gate already restricts to a dev host.
     "batch",
     "scenario",
     "probes",
+    "remote",
     "verbs"
 ]

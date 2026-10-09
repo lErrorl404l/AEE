@@ -284,6 +284,42 @@ fi
 # CBA is shared by every mode and every concurrent run, so fetch it once.
 ensure_cba
 
+# ── Dev console wiring (AEE_DEV=1) ──────────────────────────────────────────
+# Builds the standalone dev harness and the native extension, mounts both and
+# adds @aee_dev to the load order with -filePatching. The container runs
+# network_mode: host, so the host reaches the loopback listener at
+# 127.0.0.1:<AEE_DEV_PORT> directly. The sentinel file and aee_dev_allowServer
+# are the remaining gate layers; a production run has neither. The default
+# (production) run is unchanged.
+DEV_OVERLAY=""
+if [ "${AEE_DEV:-0}" = "1" ]; then
+    echo "==> dev console wiring"
+    if [ "${AEE_SKIP_BUILD:-0}" != "1" ]; then
+        bash "$ROOT/tools/dev-harness/build.sh" >/dev/null
+        bash "$ROOT/tools/dev-harness/extension/build.sh" linux >/dev/null
+    fi
+    DEV_TOKEN="${AEE_DEV_TOKEN:-aee-dev-token}"
+    DEV_PORT="${AEE_DEV_PORT:-7788}"
+    rm -rf "$MODS/@aee_dev"
+    mkdir -p "$MODS/@aee_dev"
+    cp -a "$ROOT/tools/dev-harness/@aee_dev/." "$MODS/@aee_dev/"
+    cp "$ROOT/tools/dev-harness/extension/dist/aee_dev_x64.so" "$MODS/@aee_dev/"
+    mkdir -p "$RUN_DIR/dev-sentinel/aee_dev"
+    : >"$RUN_DIR/dev-sentinel/aee_dev/enable.txt"
+    DEV_OVERLAY="$RUN_DIR/docker-compose.dev.yml"
+    cat >"$DEV_OVERLAY" <<YAMLEOF
+services:
+  aee-test:
+    environment:
+      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -filePatching -mod=mods/@aee;mods/@cba_a3;mods/@aee_dev
+      - AEE_DEV_PORT=$DEV_PORT
+      - AEE_DEV_TOKEN=$DEV_TOKEN
+    volumes:
+      - $RUN_DIR/dev-sentinel/aee_dev:/arma3/server/aee_dev
+      - $ROOT/tools/dev-harness/extension/dist/aee_dev_x64.so:/arma3/server/aee_dev_x64.so
+YAMLEOF
+fi
+
 # ── Parallel mode ───────────────────────────────────────────────────────────
 # Several suite modes run at once, each isolated, then aggregate one verdict.
 if [ "$MODE" = "parallel" ]; then
@@ -782,6 +818,9 @@ if [ "$MODE" = "baseline" ]; then
     BASELINE=1
     echo "==> baseline run (no AEE mod)"
     COMPOSE_FILES+=(-f "$DOCKER/docker-compose.baseline.yml")
+fi
+if [ -n "$DEV_OVERLAY" ]; then
+    COMPOSE_FILES+=(-f "$DEV_OVERLAY")
 fi
 
 echo "==> docker compose up"

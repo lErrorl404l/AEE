@@ -5,6 +5,11 @@
 
 diag_log text "[AEE-TEST] mission start";
 
+// The dev trust gate's host layer. A dedicated server is not a dev host unless
+// the mission says so. The dev Docker run (AEE_DEV=1) adds file patching and
+// the sentinel file; a production run has neither, so the gate stays shut.
+aee_dev_allowServer = true;
+
 // -- PHASE 1: settings registered by initSettings.inc.sqf ------------------
 private _enabled = missionNamespace getVariable ["aee_core_enabled", -1];
 private _interval = missionNamespace getVariable ["aee_core_updateInterval", -1];

@@ -209,6 +209,15 @@ impl Drop for Server {
     }
 }
 
+/// Whether this build may open the loopback dev listener.
+///
+/// The listener is a dev-server surface. A client build must not open a dev
+/// port, so it compiles the listener out under the `client` feature.
+#[must_use]
+pub const fn listener_supported() -> bool {
+    !cfg!(feature = "client")
+}
+
 /// The outcome of a start attempt.
 #[derive(Debug, Clone, Copy)]
 pub enum StartOutcome {
@@ -216,6 +225,8 @@ pub enum StartOutcome {
     Started(SocketAddr),
     /// The listener was already running; nothing changed.
     AlreadyRunning,
+    /// The listener is disabled in this build (a client build).
+    DisabledInClientBuild,
 }
 
 /// Owns the single persistent listener. The command that starts it builds the
@@ -244,6 +255,9 @@ impl DevServer {
     where
         F: FnOnce() -> Arc<dyn CommandHandler>,
     {
+        if !listener_supported() {
+            return Ok(StartOutcome::DisabledInClientBuild);
+        }
         let mut guard = self.lock();
         if guard.is_some() {
             return Ok(StartOutcome::AlreadyRunning);
@@ -435,6 +449,9 @@ mod tests {
         {
             StartOutcome::Started(addr) => addr,
             StartOutcome::AlreadyRunning => panic!("expected a start"),
+            StartOutcome::DisabledInClientBuild => {
+                panic!("the default test build must enable the listener")
+            }
         };
         post(addr, r#"{"op":"ping","token":"s3cret"}"#);
         post(addr, r#"{"op":"ping","token":"s3cret"}"#);

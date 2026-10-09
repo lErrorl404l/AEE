@@ -88,6 +88,9 @@ fn start(context: Context) -> String {
     }) {
         Ok(StartOutcome::Started(addr)) => format!("started {addr}"),
         Ok(StartOutcome::AlreadyRunning) => "already-running".to_string(),
+        Ok(StartOutcome::DisabledInClientBuild) => {
+            "error: dev listener disabled in a client build".to_string()
+        }
         Err(error) => format!("error: {error}"),
     }
 }
@@ -163,7 +166,10 @@ mod tests {
     fn reply_command_resolves_a_pending_id() {
         let (id, rx) = BRIDGE.open();
         assert_eq!(reply(id as f64, "engine-answer".to_string()), "ok");
-        assert_eq!(bridge::wait(&rx, DEFAULT_TIMEOUT).expect("wait"), "engine-answer");
+        assert_eq!(
+            bridge::wait(&rx, DEFAULT_TIMEOUT).expect("wait"),
+            "engine-answer"
+        );
     }
 
     #[test]

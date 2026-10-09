@@ -1,7 +1,8 @@
 //! The asynchronous callback request-response bridge.
 //!
 //! The HTTP handler allocates an id, stores a oneshot reply channel, calls
-//! `ctx.callback_data("aee_dev", "exec", json)` and waits with a timeout. The
+//! `ctx.callback_data("aee_dev", "exec", ...)` with an SQF-literal request and
+//! waits with a timeout. The
 //! SQF side replies with `"aee_dev" callExtension ["reply", [id, payload]]`;
 //! the extension stores the reply and unblocks the HTTP thread. The engine
 //! thread is never blocked: `arma-rs` raises the callback on its own worker
@@ -192,6 +193,42 @@ pub fn chunk_payload(payload: &str, bound: usize) -> Vec<String> {
     chunks
 }
 
+/// Builds the SQF-literal request the SQF dispatcher reads with
+/// `parseSimpleArray`: `[id, "op", [args...]]`. JSON would not parse, so the
+/// request never uses it.
+fn exec_request(id: u64, op: &str, args: &[serde_json::Value]) -> String {
+    let args = serde_json::Value::Array(args.to_vec());
+    format!(
+        "[{id},\"{}\",{}]",
+        op.replace('"', "\"\""),
+        to_sqf_literal(&args)
+    )
+}
+
+/// Renders a JSON value as an SQF literal. A JSON object has no SQF literal, so
+/// it renders as `nil`.
+fn to_sqf_literal(value: &serde_json::Value) -> String {
+    match value {
+        serde_json::Value::Null => "nil".to_string(),
+        serde_json::Value::Bool(flag) => flag.to_string(),
+        serde_json::Value::Number(number) => number.to_string(),
+        serde_json::Value::String(text) => format!("\"{}\"", text.replace('"', "\"\"")),
+        serde_json::Value::Array(items) => {
+            let inner: Vec<String> = items.iter().map(to_sqf_literal).collect();
+            format!("[{}]", inner.join(","))
+        }
+        serde_json::Value::Object(_) => "nil".to_string(),
+    }
+}
+
+/// Extracts the id from an SQF-literal exec request `[id, ...]`.
+#[cfg(test)]
+fn leading_id(request: &str) -> Option<u64> {
+    let rest = request.strip_prefix('[')?;
+    let end = rest.find(',')?;
+    rest[..end].trim().parse().ok()
+}
+
 /// The `POST /command` handler: open a bridge id, raise the `exec` callback,
 /// and wait for the reply. A timeout is a `504`.
 pub struct BridgeHandler {
@@ -215,12 +252,7 @@ impl BridgeHandler {
 impl CommandHandler for BridgeHandler {
     fn handle(&self, request: CommandRequest) -> HttpResponse {
         let (id, rx) = self.bridge.open();
-        let exec = serde_json::json!({
-            "id": id,
-            "op": request.op,
-            "args": request.args,
-        })
-        .to_string();
+        let exec = exec_request(id, &request.op, &request.args);
         if self.callback.exec(&exec).is_err() {
             self.bridge.abandon(id);
             return HttpResponse::text(502, "the extension callback channel is closed");
@@ -248,9 +280,7 @@ mod tests {
 
     impl CallbackChannel for Immediate {
         fn exec(&self, request: &str) -> Result<(), BridgeError> {
-            let parsed: serde_json::Value =
-                serde_json::from_str(request).map_err(|_| BridgeError::CallbackClosed)?;
-            let id = parsed["id"].as_u64().ok_or(BridgeError::CallbackClosed)?;
+            let id = leading_id(request).ok_or(BridgeError::CallbackClosed)?;
             self.bridge.reply(id, self.payload.clone())
         }
     }
@@ -271,9 +301,7 @@ mod tests {
 
     impl CallbackChannel for Chunked {
         fn exec(&self, request: &str) -> Result<(), BridgeError> {
-            let parsed: serde_json::Value =
-                serde_json::from_str(request).map_err(|_| BridgeError::CallbackClosed)?;
-            let id = parsed["id"].as_u64().ok_or(BridgeError::CallbackClosed)?;
+            let id = leading_id(request).ok_or(BridgeError::CallbackClosed)?;
             let payload = "y".repeat(CHUNK_BOUND + 10);
             let chunks = chunk_payload(&payload, CHUNK_BOUND);
             let count = chunks.len();
@@ -283,6 +311,13 @@ mod tests {
             }
             Ok(())
         }
+    }
+
+    #[test]
+    fn exec_request_is_an_sqf_literal_array() {
+        let request = exec_request(7, "get", &[serde_json::json!("aee_x")]);
+        assert_eq!(request, "[7,\"get\",[\"aee_x\"]]");
+        assert_eq!(leading_id(&request), Some(7));
     }
 
     #[test]

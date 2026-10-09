@@ -77,3 +77,6 @@ tools/weapon_worklist/
 # Cargo build output (the native dev extension) and its staged artefacts
 target/
 tools/dev-harness/extension/dist/
+
+# The dev Docker run directory (--run-dir .docker-run)
+.docker-run/
