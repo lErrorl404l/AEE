@@ -3404,6 +3404,14 @@ private _p29Pass = 0;
     // The probe drives the REAL kernel with an ordinary ground vehicle at 50 m.
     // It renders nothing.
     execVM "aee_p133_compass_anomaly_probe.sqf";
+
+    // PHASE 134 lives in aee_p134_map_density_probe.sqf: the map density
+    // constants (ptsPerSquare*) stride the per-frame terrain loops, and the
+    // shipped RscMapControl is declared twice (Dta/bin.pbo core, then the
+    // Addons/ui_f.pbo re-declare that wins).  AEE re-declares the ui_f values,
+    // so the probe asserts the merged config is at the shipped vanilla parity
+    // and that the engine grid stays off.  It renders nothing.
+    execVM "aee_p134_map_density_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
