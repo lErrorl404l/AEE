@@ -1,0 +1,7 @@
+// Compile the gate, its driver and the verb whitelist, and set the structural
+// marker (Layer 1). No logging.
+aee_dev_fnc_devGate = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devGate.sqf";
+aee_dev_fnc_devGateLive = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devGateLive.sqf";
+aee_dev_fnc_devVerbs = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devVerbs.sqf";
+
+aee_dev_present = true;
