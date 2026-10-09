@@ -248,6 +248,8 @@ def main():
         "tools/tests/test_dev_harness_gate.py",
         "tools/tests/test_dev_harness_dispatch.py",
         "tools/tests/test_dev_console_contract.py",
+        # Visual workbench: keybinds, re-apply, screenshot and state dump.
+        "tools/tests/test_dev_workbench.py",
     ]
     # Part (b) needs a `hemtt release` tree, so it runs in the full sweep only.
     release_suites = [
