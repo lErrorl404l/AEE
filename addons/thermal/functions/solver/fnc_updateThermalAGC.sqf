@@ -64,7 +64,10 @@ if (missionNamespace getVariable [QGVAR(agcPinned), false]) exitWith { 0 };
 // seconds timescale, and it is applied to the display as a gain, so recomputing
 // it at 4 Hz (the paint cadence) instead of 10 Hz is invisible and cuts the cost
 // by 60%.  A FORCE caller is unaffected because nothing forces the AGC.
-private _agcNow = diag_tickTime;
+// The one real-time clock (Pillar 1) is the AGC time base.  diag_deltaTime is
+// the last rendered frame, not the pass interval, so it would make the filter
+// time constant depend on the frame rate (the eye-driver defect class).
+private _agcNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _agcLast = missionNamespace getVariable [QGVAR(agcLastT), -99];
 private _agcDt = _agcNow - _agcLast;
 if (_agcDt < 0.25) exitWith { 0 };

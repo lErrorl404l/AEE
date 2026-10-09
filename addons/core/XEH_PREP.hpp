@@ -28,6 +28,7 @@ PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
 PREP(updateEnvironment);
+PREP(updateSimClock);
 PREP(getEyeState);
 PREP(getSmoothedWeather);
 PREP(handleCollisionDamage);

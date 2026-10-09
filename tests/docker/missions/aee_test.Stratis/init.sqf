@@ -3412,6 +3412,15 @@ private _p29Pass = 0;
     // so the probe asserts the merged config is at the shipped vanilla parity
     // and that the engine grid stays off.  It renders nothing.
     execVM "aee_p134_map_density_probe.sqf";
+
+    // PHASE 135 lives in aee_p135_sim_clock_rate_probe.sqf: the one real-time
+    // clock (aee_core_simTime) is the model time base.  A throttled first-order
+    // lag is integrated at two sample cadences (30 vs 300 steps) and each run
+    // must match its own analytic value within 2 percent; a frame-delta
+    // counterfactual shows the defect the clock removes.  It renders nothing.
+    // (P132 turbulence, P133 compass and P134 map-density were taken on this
+    // base, so the clock probe takes the next free number.)
+    execVM "aee_p135_sim_clock_rate_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

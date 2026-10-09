@@ -3471,7 +3471,7 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_applyNVGTubeModel.sqf",
             [
-                "_baseDrain * _gainRatio * _tempDrainFactor * diag_deltaTime",
+                "_baseDrain * _gainRatio * _tempDrainFactor * _dt",
                 "0.0000174",
                 "0.0000043",
                 "0.0000079",
@@ -3532,7 +3532,7 @@ class TestSQFSync(unittest.TestCase):
                 "thermalState",
                 "(_surfaceTemp - _airTemp) / 50",
                 "if (!alive _x) then { _sceneMax = 1",
-                "0.2 * (diag_deltaTime / 30)",
+                "0.2 * (_dt / 30)",
                 "nearEntities",
                 "str _x",
             ],

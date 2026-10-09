@@ -52,8 +52,15 @@ if (_ammo != "") then {
 // to air and the gun's own mass.  Exponential decay.
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player) exitWith { 0 };
-if (diag_deltaTime > 0) then {
-    _heat = _heat * exp (-diag_deltaTime / 90);
+// One clock (Pillar 1): real elapsed time since this pass.  First tick _dt = 0
+// (no integration).  diag_deltaTime is the FRAME delta, not the pass interval.
+private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
+private _lastSim = missionNamespace getVariable [QGVAR(barrelLastSimTime), -1];
+private _dt = 0;
+if ((_lastSim isEqualType 0) && {_lastSim >= 0}) then { _dt = _simNow - _lastSim; };
+missionNamespace setVariable [QGVAR(barrelLastSimTime), _simNow];
+if (_dt > 0) then {
+    _heat = _heat * exp (-_dt / 90);
     missionNamespace setVariable [QGVAR(barrelHeat), _heat];
 };
 
