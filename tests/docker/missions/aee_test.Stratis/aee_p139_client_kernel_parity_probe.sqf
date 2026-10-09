@@ -61,7 +61,10 @@ private _notes = [];
         if (_nativeOut isEqualType "") then { _payload = _nativeOut; };
     };
 
-    private _actual = nil;
+    // A non-nil sentinel: when neither the native path nor the fallback yields
+    // a result, `_actual` fails every type check below instead of being read as
+    // an engine nil (which is toxic to isEqualType).
+    private _actual = [];
     private _source = "";
     if ((_payload isEqualType "") && {_payload != ""} && {_code isEqualType 0} && {_code == 0}) then {
         _nativeChecked = _nativeChecked + 1;
