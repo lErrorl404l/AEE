@@ -312,4 +312,62 @@ ramp); custom hillshade — not available; satellite raster — baked into the
 world; legend body — must be scripted; grid geometry — `CfgWorlds`, only the
 colour is controllable.
 
+---
+
+## 6. The density constants (`ptsPerSquare*`) and the object gate
+
+Added 2026-10-09. No AEE value changed. This section records the shipped
+baseline so the next worker does not repeat a wrong premise.
+
+**The two shipped definitions.** The engine ships `RscMapControl` twice:
+
+- `Dta/bin.pbo` (core, loads first): `Sea 6, Txt 8, CLn 8, Exp 8, Cost 8,
+  For 4, ForEdge 10, Road 2, Obj 10`.
+- `Addons/ui_f.pbo` (loads after): `Sea 5, Txt 20, CLn 10, Exp 10, Cost 10,
+  For 9, ForEdge 9, Road 6, Obj 9`.
+
+The config merge is last-loaded-wins per property, and the core loads before
+the addons. So the ui_f re-declare WINS, and the in-game map uses its values.
+
+**AEE is at parity.** `addons/optics/config_mapcolors.hpp` sets exactly the
+ui_f values (`Sea 5, Txt 20, CLn 10, For 9, ForEdge 9, Road 6, Obj 9`, and it
+inherits `Exp 10, Cost 10`). It does not raise any density above the shipped
+vanilla. The `ENG` source label in that header is correct.
+
+**The direction is the opposite of the earlier note.** In
+`CStaticMap::DrawBackground` (CWR `engine/Poseidon/UI/Map/UIMap.cpp`) the loops
+stride by `iStep = toIntCeil(ptsPerSquareX * invPtsLand)` and advance by
+`xStep = iStep * invLandRange * invScaleX`. The cell count is `w / xStep`, so
+it is proportional to `1 / iStep`, that is `1 / ptsPerSquareX`. A HIGHER value
+is a LARGER stride and FEWER per-frame draw calls. The forest, road and object
+layers are gated the same way: `if (ptsLand >= ptsPerSquareFor)` draws only
+when zoomed in, so a higher threshold draws less. To make the map faster the
+values must go UP (coarser than vanilla), which is a quality tradeoff. Lowering
+them makes the map slower. The earlier note "lower = fewer iterations" is
+inverted.
+
+**The object gate `drawObjects`.** This field is not in the CWR ancestor
+source, where the object layer is gated only by `ptsLand >= ptsPerSquareObj`.
+The token is present in the Arma 3 binaries (`arma3_x64.exe`,
+`arma3server_x64.exe`). The shipped config sets it to `0` only on
+`RscDisplayStrategicMap >> controlsBackground >> Map`, a whole-island overview
+that must not draw scenery objects. The base `RscMapControl` does not carry
+the field, so it keeps the engine default. This is consistent with a gate on
+the scenery-object icon layer. The gate renders on the client only, so it
+cannot be confirmed headless.
+
+**The strategic map deviates (recorded, not changed).** AEE's shared include
+carries the main-map densities into the strategic map, which its own vanilla
+declaration sets to the coarse overview values (`Txt 20`, and `200` for
+`CLn, Cost, For, ForEdge, Road, Obj`). Under the direction above, AEE's
+strategic map is FINER than vanilla and so draws more per frame. The override
+is deliberate (commit `b7fd2d37` sets "the object and line densities" on the
+main map, the strategic map and the Eden map), so it is recorded here rather
+than changed. The Eden `ctrlMap` matches its vanilla values already.
+
+**Ceiling.** The map composite renders on the client. A headless server
+resolves the config and proves the values, but it cannot measure the per-frame
+cost. The operator is the only one who can judge the map look and the felt
+cost.
+
 Deliverable written: `topo-map-surface.md`.
