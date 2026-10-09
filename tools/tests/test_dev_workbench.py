@@ -37,6 +37,7 @@ KEYBINDS = {
 }
 
 REAPPLY = FUNCS / "fnc_devReapplyVisual.sqf"
+SCREENSHOT = FUNCS / "fnc_devScreenshot.sqf"
 
 ADDONS = ROOT / "addons"
 
@@ -144,6 +145,37 @@ class TestRuntimeReapply(unittest.TestCase):
         ):
             text = (ADDONS / rel).read_text(encoding="utf-8")
             self.assertIn("createPPEffect", text, rel)
+
+
+class TestScreenshot(unittest.TestCase):
+    """The labelled screenshot pairs the image with the AEE state."""
+
+    def test_the_screenshot_is_compiled(self):
+        self.assertIn("fnc_devScreenshot", PRE.read_text(encoding="utf-8"))
+
+    def test_the_screenshot_command_takes_a_labelled_name(self):
+        code = _code_only(SCREENSHOT.read_text(encoding="utf-8"))
+        self.assertIn("screenshot ", code)
+        self.assertIn('"aee_%1_%2"', code)
+
+    def test_a_paired_state_line_names_the_file(self):
+        code = _code_only(SCREENSHOT.read_text(encoding="utf-8"))
+        # The state (the core dump) is emitted with the file name.
+        self.assertIn("aee_core_fnc_dumpState", code)
+        self.assertIn("%1.png", code)
+        self.assertIn("diag_log", code)
+
+    def test_no_gate_references_the_image_file(self):
+        gates = [ROOT / "tools" / "run_tests.py"]
+        gates += [
+            p
+            for p in sorted((ROOT / "tools" / "tests").glob("*.py"))
+            if p.name != "test_dev_workbench.py"
+        ]
+        for path in gates:
+            text = path.read_text(encoding="utf-8", errors="replace")
+            self.assertNotIn("devScreenshot", text, str(path))
+            self.assertNotIn("aee_manual", text, str(path))
 
 
 if __name__ == "__main__":
