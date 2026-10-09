@@ -71,9 +71,7 @@ if (_op == "scenario") exitWith {
 
 if (_op == "probes") exitWith {
     if ((count _args) < 1) exitWith { "error: probes needs a batch name" };
-    private _fnc = missionNamespace getVariable ("aee_dev_probes_" + (_args select 0));
-    if (isNil "_fnc" || { (typeName _fnc) != "CODE" }) exitWith { "error: no such probe batch" };
-    [] call _fnc
+    [(_args select 0)] call aee_dev_fnc_devProbes
 };
 
 if (_op == "remote") exitWith {

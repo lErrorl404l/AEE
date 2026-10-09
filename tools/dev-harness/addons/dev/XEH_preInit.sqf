@@ -12,5 +12,7 @@ aee_dev_fnc_devReapplyVisual = compile preprocessFileLineNumbers "\z\aee\addons\
 aee_dev_fnc_devScreenshot = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devScreenshot.sqf";
 aee_dev_fnc_devDumpAll = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devDumpAll.sqf";
 aee_dev_fnc_devOverlayToggle = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devOverlayToggle.sqf";
+aee_dev_fnc_devProbeManifest = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devProbeManifest.sqf";
+aee_dev_fnc_devProbes = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devProbes.sqf";
 
 aee_dev_present = true;
