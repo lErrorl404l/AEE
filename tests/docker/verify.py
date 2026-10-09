@@ -203,6 +203,16 @@ if _probe_failed:
     for p in _probe_failed:
         print(f"  {p}")
 
+# The dev console must never appear in a production run.  The dev addon logs
+# nothing when the four-layer gate fails, so no [AEE][dev] line can legitimately
+# appear.  A present marker is a hard failure: the channel started when it must
+# not.  This is the run-time half of the release-exclusion proof.
+_dev_markers = [line for line in text.splitlines() if "[AEE][dev]" in line]
+if _dev_markers:
+    print(f"dev markers: {len(_dev_markers)} present (must be absent)")
+    for marker in _dev_markers[:10]:
+        print(f"  {marker}")
+
 if not done:
     print("  mission did not reach DONE")
 if errors:
@@ -223,6 +233,7 @@ if (
     or _state_missing
     or _probe_missing
     or _probe_failed
+    or _dev_markers
 ):
     print("RESULT: FAIL")
     sys.exit(1)

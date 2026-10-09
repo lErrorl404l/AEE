@@ -99,6 +99,10 @@ def _is_dev_artefact(path: Path) -> bool:
     name = path.name.lower()
     if name in DEV_PBO_NAMES:
         return True
+    # The dev mod folder itself is a dev artefact: a release tree must never
+    # carry @aee_dev (or a bare aee_dev) anywhere, at any depth.
+    if name in {"aee_dev", "@aee_dev"}:
+        return True
     if name.endswith((".so", ".dll", ".pbo")) and "aee_dev" in name:
         return True
     return name.startswith("libaee_dev") and name.endswith(".so")
@@ -161,6 +165,35 @@ class TestReleaseTree(unittest.TestCase):
             hits,
             [],
             "release tree carries a dev artefact:\n" + "\n".join(sorted(hits)),
+        )
+
+    def test_release_tree_carries_no_dev_marker(self):
+        tree = os.environ.get("AEE_RELEASE_TREE", "").strip()
+        require = os.environ.get("AEE_REQUIRE_RELEASE_TREE") == "1"
+
+        if not tree:
+            self._skip_or_fail(
+                "AEE_RELEASE_TREE is unset; run `hemtt release` and set it",
+                require,
+            )
+        root = Path(tree)
+        if not root.is_dir():
+            self._skip_or_fail(
+                f"AEE_RELEASE_TREE does not name a directory: {tree}",
+                require,
+            )
+
+        hits = []
+        for path in root.rglob("*"):
+            if not path.is_file() or not _is_text_file(path):
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if "[AEE][dev]" in text:
+                hits.append(str(path.relative_to(root)))
+        self.assertEqual(
+            hits,
+            [],
+            "release tree carries a dev marker:\n" + "\n".join(sorted(hits)),
         )
 
 
