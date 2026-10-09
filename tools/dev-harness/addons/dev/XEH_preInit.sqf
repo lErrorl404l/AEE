@@ -9,5 +9,6 @@ aee_dev_fnc_devExec = compile preprocessFileLineNumbers "\z\aee\addons\dev\funct
 aee_dev_fnc_devRemote = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devRemote.sqf";
 aee_dev_fnc_devClientReply = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devClientReply.sqf";
 aee_dev_fnc_devReapplyVisual = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devReapplyVisual.sqf";
+aee_dev_fnc_devScreenshot = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devScreenshot.sqf";
 
 aee_dev_present = true;
