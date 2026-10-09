@@ -61,7 +61,7 @@ if (isNil "_classify" || {isNil "_sampleFn"} || {isNil "_driver"}) then {
     // First driver call publishes the terrain target; derive the object
     // target from it.  Then push the shadow minimum above the object target
     // and call again: a present clamp keeps the target at or below it.
-    missionNamespace setVariable ["aee_optics_shadowLastUpdate", -1e9];
+    missionNamespace setVariable ["aee_vision_shadowLastUpdate", -1e9];
     [] call _driver;
     private _vd = missionNamespace getVariable ["aee_vision_viewDistanceTarget", nil];
     if (!isNil "_vd") then {
@@ -69,7 +69,7 @@ if (isNil "_classify" || {isNil "_sampleFn"} || {isNil "_driver"}) then {
     };
 
     missionNamespace setVariable ["aee_vision_shadowMinDistance", _objTarget + 500];
-    missionNamespace setVariable ["aee_optics_shadowLastUpdate", -1e9];
+    missionNamespace setVariable ["aee_vision_shadowLastUpdate", -1e9];
     [] call _driver;
 
     private _target = missionNamespace getVariable ["aee_vision_shadowTarget", nil];
