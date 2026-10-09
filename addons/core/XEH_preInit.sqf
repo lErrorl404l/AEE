@@ -18,7 +18,8 @@ aee_core_mgrsTables = call (compile preprocessFileLineNumbers QPATHTOF(data\mgrs
 missionNamespace setVariable [QGVAR(ownershipSentinels), call (compile preprocessFileLineNumbers QPATHTOF(data\ownership_sentinels.sqf))];
 
 // Kernel interface (Pillar 2): build the kernel registry and probe the native
-// dev extension ONCE here, at preInit, so the hot path never probes it.
+// dev extension ONCE here, at preInit.  The dispatcher re-probes once on the
+// first dispatch only if this verdict is false, so the hot path never probes.
 [] call FUNC(initKernelTable);
 [] call FUNC(probeExtension);
 
