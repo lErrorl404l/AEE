@@ -74,7 +74,7 @@ if (!_realWeather) then {
     };
     [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
     [] call EFUNC(weather,calculateQNH);
-    [] call EFUNC(physiology,calculateHypoxia);
+    [] call EFUNC(altitude,calculateHypoxia);
     if (GVAR(humidityEnabled)) then {
         [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
     };
@@ -172,19 +172,19 @@ BEGIN_COUNTER(objectScan);
 [] call EFUNC(thermal,calculateObjectTemperature);
 END_COUNTER(objectScan);
 if (GVAR(physiologyEnabled)) then {
-    [] call EFUNC(physiology,calculateUVIndex);
+    [] call EFUNC(strain,calculateUVIndex);
     [] call EFUNC(thermal,calculateBatteryTemperatureDerating);
-    [] call EFUNC(physiology,calculateDehydrationRisk);
-    [] call EFUNC(physiology,calculateAltitudeAcclimatization);
+    [] call EFUNC(strain,calculateDehydrationRisk);
+    [] call EFUNC(altitude,calculateAltitudeAcclimatization);
     // Cross-sensitivity runs after both accumulators have their current
     // values.  calculateHypoxia runs earlier in this tick (line 44), so
     // both raw risks are fresh here.  Neither accumulator reads its own
     // output risk, so writing the amplified value back is safe.
-    [] call EFUNC(physiology,applyCrossSensitivity);
+    [] call EFUNC(strain,applyCrossSensitivity);
     // Fatigue/sleep state (Borbely two-process model) accumulates on the
     // same tick cadence.  Guards on fatigueEnabled internally.
     BEGIN_COUNTER(physiology);
-    if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
+    if (missionNamespace getVariable [QEGVAR(strain,fatigueEnabled), true]) then {
         [] call EFUNC(physiology,updateFatigueState);
     };
     // Shooter stability index from cold/heat/fatigue.  Reads the fatigue
@@ -192,15 +192,15 @@ if (GVAR(physiologyEnabled)) then {
     // Crosswind is NOT a stability factor: it deflects the round, not the
     // shooter (handled by the ballistics module).  Stored for the ACE3
     // sway factor and for external consumers.
-    if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]
-        && {missionNamespace getVariable [QEGVAR(physiology,stabilityEnabled), true]}) then {
-        [] call EFUNC(physiology,calculateShooterStability);
+    if (missionNamespace getVariable [QEGVAR(strain,fatigueEnabled), true]
+        && {missionNamespace getVariable [QEGVAR(strain,stabilityEnabled), true]}) then {
+        [] call EFUNC(strain,calculateShooterStability);
     };
     // Cold-weather human performance (wind chill -> dexterity, frostbite
     // time, TB MED 508 category).  Reads the temperature + wind published
     // above, publishes the shared cold state the movement coupling and
     // weather report consume.  Gated internally by coldWeatherEnabled.
-    [] call EFUNC(physiology,calculateColdWeatherPerformance);
+    [] call EFUNC(strain,calculateColdWeatherPerformance);
     END_COUNTER(physiology);
 };
 

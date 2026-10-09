@@ -399,7 +399,7 @@ if (isNil "_wildlifeTickFn") then {
         ["aee_maritime_waveHeight_m",             0, 20,   "maritime/sea"],
         ["aee_core_currentTideOffset_m",      -10, 10, "maritime/tide"],
         ["aee_core_currentUVIndex",           0, 15,   "physiology/uv"],
-        ["aee_physiology_acclimatizationPercent", 0, 100, "physiology/acclim", "gated: needs elapsed exposure above sea level"],
+        ["aee_altitude_acclimatizationPercent", 0, 100, "physiology/acclim", "gated: needs elapsed exposure above sea level"],
         ["aee_optics_atmosphericSeeing",      0, 1,    "optics/seeing"],
         ["aee_optics_vehicleHeatShimmerIntensity", 0, 1, "optics/shimmer", "gated: needs a hot vehicle in view"],
         ["aee_mobility_currentTractionWheeled", 0, 1,  "mobility/traction"],
@@ -777,16 +777,16 @@ if (isNil "_wildlifeTickFn") then {
     // both at 100% clamp to 1.0, disabled = no change.
     private _p15Pass = 0;
     private _p15Fail = 0;
-    private _fnCross = missionNamespace getVariable ["aee_physiology_fnc_applyCrossSensitivity", nil];
+    private _fnCross = missionNamespace getVariable ["aee_strain_fnc_applyCrossSensitivity", nil];
     if (isNil "_fnCross") then {
         diag_log text "[PHASE15] [FAIL] applyCrossSensitivity not compiled";
         _p15Fail = _p15Fail + 1;
     } else {
         // Case 1: 50% dehydration + 50% hypoxia -> 56.25% hypoxia, 57.5% dehydration.
-        missionNamespace setVariable ["aee_physiology_dehydrationRisk", 0.5];
+        missionNamespace setVariable ["aee_strain_dehydrationRisk", 0.5];
         missionNamespace setVariable ["aee_core_currentHypoxiaRisk", 0.5];
         [] call _fnCross;
-        private _effDeh = missionNamespace getVariable ["aee_physiology_dehydrationRisk", -1];
+        private _effDeh = missionNamespace getVariable ["aee_strain_dehydrationRisk", -1];
         private _effHyp = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", -1];
         if (abs (_effHyp - 0.5625) < 0.01 && abs (_effDeh - 0.575) < 0.01) then {
             diag_log text format ["[PHASE15] [PASS] 50/50 coupling: hyp=%1 deh=%2", _effHyp, _effDeh];
@@ -798,7 +798,7 @@ if (isNil "_wildlifeTickFn") then {
         };
 
         // Case 2: 0% dehydration + 50% hypoxia -> no amplification.
-        missionNamespace setVariable ["aee_physiology_dehydrationRisk", 0];
+        missionNamespace setVariable ["aee_strain_dehydrationRisk", 0];
         missionNamespace setVariable ["aee_core_currentHypoxiaRisk", 0.5];
         [] call _fnCross;
         _effHyp = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", -1];
@@ -811,10 +811,10 @@ if (isNil "_wildlifeTickFn") then {
         };
 
         // Case 3: both at 100% -> both clamp to 1.0.
-        missionNamespace setVariable ["aee_physiology_dehydrationRisk", 1.0];
+        missionNamespace setVariable ["aee_strain_dehydrationRisk", 1.0];
         missionNamespace setVariable ["aee_core_currentHypoxiaRisk", 1.0];
         [] call _fnCross;
-        _effDeh = missionNamespace getVariable ["aee_physiology_dehydrationRisk", -1];
+        _effDeh = missionNamespace getVariable ["aee_strain_dehydrationRisk", -1];
         _effHyp = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", -1];
         if (abs (_effDeh - 1.0) < 0.01 && abs (_effHyp - 1.0) < 0.01) then {
             diag_log text "[PHASE15] [PASS] 100/100 coupling: both clamped to 1.0";
@@ -909,8 +909,8 @@ if (isNil "_wildlifeTickFn") then {
     // Dongen 2003 lapse threshold, Dawson & Reid 1997 BAC equivalence.
     private _p17Pass = 0;
     private _p17Fail = 0;
-    private _fnSP = missionNamespace getVariable ["aee_physiology_fnc_calculateSleepPressure", nil];
-    private _fnFF = missionNamespace getVariable ["aee_physiology_fnc_calculateFatigueFactor", nil];
+    private _fnSP = missionNamespace getVariable ["aee_strain_fnc_calculateSleepPressure", nil];
+    private _fnFF = missionNamespace getVariable ["aee_strain_fnc_calculateFatigueFactor", nil];
     if (isNil "_fnSP" || isNil "_fnFF") then {
         diag_log text "[PHASE17] [FAIL] sleep model functions not compiled";
         _p17Fail = _p17Fail + 1;
@@ -993,7 +993,7 @@ if (isNil "_wildlifeTickFn") then {
     // and checks the stability index against the literature anchors.
     private _p18Pass = 0;
     private _p18Fail = 0;
-    private _fnStab = missionNamespace getVariable ["aee_physiology_fnc_calculateShooterStability", nil];
+    private _fnStab = missionNamespace getVariable ["aee_strain_fnc_calculateShooterStability", nil];
     if (isNil "_fnStab") then {
         diag_log text "[PHASE18] [FAIL] shooter stability function not compiled";
         _p18Fail = _p18Fail + 1;
@@ -1053,7 +1053,7 @@ if (isNil "_wildlifeTickFn") then {
         // has no ACE3; the player's client does).  The function must
         // return false without erroring, and the ACE3 sway factor list
         // must stay untouched.
-        private _fnSway = missionNamespace getVariable ["aee_physiology_fnc_integrateSwayFactor", nil];
+        private _fnSway = missionNamespace getVariable ["aee_strain_fnc_integrateSwayFactor", nil];
         if (!isNil "_fnSway") then {
             private _registered = [] call _fnSway;
             private _swayFactors = missionNamespace getVariable ["ace_common_swayFactorsMultiplier", []];
@@ -1352,12 +1352,12 @@ if (isNil "_wildlifeTickFn") then {
     // checks the four published anchors.
     private _p23Pass = 0;
     private _p23Fail = 0;
-    private _fnCold = missionNamespace getVariable ["aee_physiology_fnc_calculateColdWeatherPerformance", nil];
+    private _fnCold = missionNamespace getVariable ["aee_strain_fnc_calculateColdWeatherPerformance", nil];
     if (isNil "_fnCold") then {
         diag_log text "[PHASE23] [FAIL] cold weather function not compiled";
         _p23Fail = _p23Fail + 1;
     } else {
-        missionNamespace setVariable ["aee_physiology_coldWeatherEnabled", true];
+        missionNamespace setVariable ["aee_strain_coldWeatherEnabled", true];
 
         // Case 1: mild cold.  T = 0, wind = 10 km/h -> WCT ~ -3,
         // dexterity > 80 %, frostbite > 60 min.
@@ -1688,13 +1688,13 @@ if (isNil "_wildlifeTickFn") then {
     // compiles and runs without error in the cold branch.
     private _p28Pass = 0;
     private _p28Fail = 0;
-    private _fnDehyd = missionNamespace getVariable ["aee_physiology_fnc_calculateDehydrationRisk", nil];
+    private _fnDehyd = missionNamespace getVariable ["aee_strain_fnc_calculateDehydrationRisk", nil];
     if (isNil "_fnDehyd") then {
         diag_log text "[PHASE28] [FAIL] calculateDehydrationRisk not compiled";
         _p28Fail = _p28Fail + 1;
     } else {
         missionNamespace setVariable ["aee_core_updateInterval", 5];
-        missionNamespace setVariable ["aee_physiology_dehydrationAccum", createHashMap];
+        missionNamespace setVariable ["aee_strain_dehydrationAccum", createHashMap];
 
         // Cold case: WBGT 8, T -20 -> cold branch must run clean.
         missionNamespace setVariable ["aee_core_currentWBGT", 8];
@@ -2187,7 +2187,7 @@ private _p29Pass = 0;
     private _p37Fail = 0;
 
     // Case 1: ICAO barometric pressure at 40,000 ft (~0.19 bar).
-    private _fnPress = missionNamespace getVariable ["aee_physiology_fnc_calculateBarometricPressure", nil];
+    private _fnPress = missionNamespace getVariable ["aee_altitude_fnc_calculateBarometricPressure", nil];
     if (isNil "_fnPress") then {
         diag_log text "[PHASE37] [FAIL] barometric pressure function not compiled";
         _p37Fail = _p37Fail + 1;
@@ -2207,7 +2207,7 @@ private _p29Pass = 0;
     // simulated moving body, which the headless server does not provide
     // (objects far from a player are not integrated) — the Gz maths is
     // locked by the Python mirror (test_gloc.py TestGLoadMeasurement).
-    private _fnG = missionNamespace getVariable ["aee_physiology_fnc_getGLoad", nil];
+    private _fnG = missionNamespace getVariable ["aee_strain_fnc_getGLoad", nil];
     if (isNil "_fnG") then {
         diag_log text "[PHASE37] [FAIL] getGLoad function not compiled";
         _p37Fail = _p37Fail + 1;
@@ -2227,7 +2227,7 @@ private _p29Pass = 0;
     // Case 3: G-LOC — AGSM raises tolerance, so the same 6G load is
     // LOC without AGSM and lower stage with it.  Signature:
     // [_g, _onsetRate, _agsm, _gsuit, _seat, _hypoxiaRisk] -> [stage, tLoc, 0].
-    private _fnGLOC = missionNamespace getVariable ["aee_physiology_fnc_calculateGLOC", nil];
+    private _fnGLOC = missionNamespace getVariable ["aee_altitude_fnc_calculateGLOC", nil];
     if (isNil "_fnGLOC") then {
         diag_log text "[PHASE37] [FAIL] calculateGLOC function not compiled";
         _p37Fail = _p37Fail + 1;
@@ -2484,7 +2484,7 @@ private _p29Pass = 0;
     };
 
     // -- PHASE 43: stamina-to-animation coupling (issue #212) ----------------
-    private _fnMove = missionNamespace getVariable ["aee_physiology_fnc_applyMovementSpeed", nil];
+    private _fnMove = missionNamespace getVariable ["aee_strain_fnc_applyMovementSpeed", nil];
     if (!isNil "_fnMove") then {
         diag_log text "[PHASE43] [PASS] movement-speed function resolved";
     } else {
@@ -2495,7 +2495,7 @@ private _p29Pass = 0;
     // Fresh state -> factor near 1.0; the coupling clamps to 0.75..1.0.
     missionNamespace setVariable ["aee_physiology_fatigueFactor", 1.0];
     missionNamespace setVariable ["aee_core_dexterityPercent", 1.0];
-    private _coef = [player] call aee_physiology_fnc_applyMovementSpeed;
+    private _coef = [player] call aee_strain_fnc_applyMovementSpeed;
     if (_coef isEqualType 0 && {_coef >= 0.75} && {_coef <= 1.0}) then {
         diag_log text format ["[PHASE44] [PASS] movement-speed factor in range: %1", _coef];
     } else {
@@ -2766,10 +2766,10 @@ private _p29Pass = 0;
     // The mass comes from the ballistics catalogue when it holds the
     // weapon, and from a family keyword tier otherwise. The carried total
     // is the sum over the primary weapon, the launcher and the handgun.
-    private _wMass = ["AEE_Test_M468"] call aee_physiology_fnc_getWeaponMass;
-    private _wFallback = ["AEE_hgun_test"] call aee_physiology_fnc_getWeaponMass;
-    private _wRifle = ["AEE_arifle_test"] call aee_physiology_fnc_getWeaponMass;
-    private _wLoad = [player] call aee_physiology_fnc_getWeaponLoad;
+    private _wMass = ["AEE_Test_M468"] call aee_clothing_fnc_getWeaponMass;
+    private _wFallback = ["AEE_hgun_test"] call aee_clothing_fnc_getWeaponMass;
+    private _wRifle = ["AEE_arifle_test"] call aee_clothing_fnc_getWeaponMass;
+    private _wLoad = [player] call aee_clothing_fnc_getWeaponLoad;
     private _wOk = (_wMass == 4.37)
         && {(_wFallback == 0.9)}
         && {(_wRifle == 3.5)}
@@ -2784,9 +2784,9 @@ private _p29Pass = 0;
     // A magazine classname carries the capacity and the chambering, so a
     // known magazine resolves to its maker-published mass, and an unknown
     // one falls back to the capacity tier.
-    private _magKnown = ["30Rnd_556x45_Stanag"] call aee_physiology_fnc_getMagazineMass;
-    private _magTier = ["75Rnd_545x39_RPK"] call aee_physiology_fnc_getMagazineMass;
-    private _magLoad = [player] call aee_physiology_fnc_getMagazineLoad;
+    private _magKnown = ["30Rnd_556x45_Stanag"] call aee_clothing_fnc_getMagazineMass;
+    private _magTier = ["75Rnd_545x39_RPK"] call aee_clothing_fnc_getMagazineMass;
+    private _magLoad = [player] call aee_clothing_fnc_getMagazineLoad;
     private _magOk = (_magKnown > 0.140) && {(_magKnown < 0.143)}
         && {(_magTier == 0.3)}
         && {(_magLoad >= 0)};
@@ -2833,26 +2833,26 @@ private _p29Pass = 0;
         } forEach ["NVGoggles", "ItemGPS", "ItemRadio"];
 
         // An unknown classname returns 0: the resolver never guesses.
-        private _unknown = ["AEE_Unknown_zzz_item"] call aee_physiology_fnc_getItemMass;
+        private _unknown = ["AEE_Unknown_zzz_item"] call aee_clothing_fnc_getItemMass;
 
         // Window A, kit items only: the combined load must move by exactly
         // the inventory walk, because no weapon and no magazine changed.
-        private _equip1 = [_invUnit] call aee_physiology_fnc_getEquipmentProperties;
-        private _walk1 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
+        private _equip1 = [_invUnit] call aee_clothing_fnc_getEquipmentProperties;
+        private _walk1 = [_invUnit] call aee_clothing_fnc_getInventoryLoad;
         _invUnit addItemToBackpack "FirstAidKit";
         _invUnit addItemToBackpack "FirstAidKit";
-        private _equip2 = [_invUnit] call aee_physiology_fnc_getEquipmentProperties;
-        private _walk2 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
+        private _equip2 = [_invUnit] call aee_clothing_fnc_getEquipmentProperties;
+        private _walk2 = [_invUnit] call aee_clothing_fnc_getInventoryLoad;
         private _walkDelta = _walk2 - _walk1;
         private _equipDelta = (_equip2 select 5 select 0) - (_equip1 select 5 select 0);
 
         // Window B, a spare magazine: it belongs to the magazine resolver
         // alone, so the item walk holds still while the magazine mass rises.
-        private _magWalk1 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
-        private _magMass1 = [_invUnit] call aee_physiology_fnc_getMagazineLoad;
+        private _magWalk1 = [_invUnit] call aee_clothing_fnc_getInventoryLoad;
+        private _magMass1 = [_invUnit] call aee_clothing_fnc_getMagazineLoad;
         _invUnit addMagazine "30Rnd_556x45_Stanag";
-        private _magWalk2 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
-        private _magMass2 = [_invUnit] call aee_physiology_fnc_getMagazineLoad;
+        private _magWalk2 = [_invUnit] call aee_clothing_fnc_getInventoryLoad;
+        private _magMass2 = [_invUnit] call aee_clothing_fnc_getMagazineLoad;
 
         // The engine ratio, for the record: a fraction, never a mass.
         private _loadRatio = load (unitBackpack _invUnit);
@@ -3031,12 +3031,12 @@ private _p29Pass = 0;
     // then asserts the DEBUG line reached the log, so a switch that does
     // not switch fails the gate.
     missionNamespace setVariable ["aee_core_logDebug", true];
-    private _itemMass = ["FirstAidKit"] call aee_physiology_fnc_getItemMass;
-    private _load = [player] call aee_physiology_fnc_getEquipmentProperties;
+    private _itemMass = ["FirstAidKit"] call aee_clothing_fnc_getItemMass;
+    private _load = [player] call aee_clothing_fnc_getEquipmentProperties;
     private _shot = ["B_556x45_Ball", "arifle_MX_F", 0.508, 15, 1] call aee_ballistics_fnc_resolveShot;
     missionNamespace setVariable ["aee_core_logDebug", false];
     // These two run again with the flag off: their traces must not appear.
-    ["FirstAidKit"] call aee_physiology_fnc_getItemMass;
+    ["FirstAidKit"] call aee_clothing_fnc_getItemMass;
     private _p63Ok = (_itemMass >= 0) && {count _load == 6};
     if (_p63Ok) then {
         diag_log text format ["[PHASE63] [PASS] debug switch: traced item %1 kg, load resolved, shot mv %2", _itemMass, round (_shot select 0)];

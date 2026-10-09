@@ -7,7 +7,7 @@ data/equipment/sources/. It is written by
 tools/validation/gen_equipment_data.py and must not be edited by hand.
 
 The band table is the property fallback of the item-mass resolver
-aee_physiology_fnc_getItemMass. An item whose identity text carries no
+aee_clothing_fnc_getItemMass. An item whose identity text carries no
 family keyword is matched by its own engine config mass against the
 researched family masses of its slot category. The category is the discrete
 token, the published family mass is the primary selector, and the number of

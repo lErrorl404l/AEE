@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reference checks for AEE's physiology models.
 
-Mirrors of the SQF implementations in addons/physiology: hypoxia (TUC
+Mirrors of the SQF implementations in the physiology family addons: hypoxia (TUC
 model) and UV index (ISO 17166 / CIE clear-sky model).
 
 Run: python3 -m unittest tools/tests/test_physiology.py
@@ -11,19 +11,16 @@ import math
 import unittest
 from pathlib import Path
 
-_PHYSIOLOGY = (
-    Path(__file__).resolve().parents[2] / "addons" / "physiology" / "functions"
-)
+_ADDONS = Path(__file__).resolve().parents[2] / "addons"
 
 
 def _read_physiology(name):
-    """Read an SQF function file, resolving categorised subfolders (issue
-    #203).  The function NAME is flat (aee_physiology_fnc_<name>)."""
-    if (_PHYSIOLOGY / name).exists():
-        return (_PHYSIOLOGY / name).read_text(encoding="utf-8")
-    for f in _PHYSIOLOGY.rglob(name):
+    """Read an SQF function file from the physiology family addons
+    (physiology, strain, altitude, dive, clothing), resolving categorised
+    subfolders (issue #203).  The function NAME is flat."""
+    for f in _ADDONS.rglob(name):
         return f.read_text(encoding="utf-8")
-    raise FileNotFoundError(f"{name} not found under {_PHYSIOLOGY}")
+    raise FileNotFoundError(f"{name} not found under {_ADDONS}")
 
 
 def equivalent_altitude(pressure_hpa):

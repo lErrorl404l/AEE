@@ -151,7 +151,7 @@ def gagge_blood_flow(t_sk, t_cr, blood_frac=1.0):
     Clipped [0.5, 90] L/(h·m2).
     Vasoconstriction axis (issue #196): blood loss scales skin perfusion
     on the ATLS class III boundary (30% loss = 0.70 fraction).  This
-    mirrors aee_physiology_fnc_calculateOxygenDelivery.  Oxidative
+    mirrors aee_altitude_fnc_calculateOxygenDelivery.  Oxidative
     metabolism is delivery-limited separately and is NOT this factor.
     Clipped [0.5, 90] L/(h·m2)."""
     warm_c = max(0.0, t_cr - T_CR_NEUTRAL)

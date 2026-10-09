@@ -128,7 +128,7 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         ["aee_maritime_waveHeight_m",             0, 20,   "maritime/sea"],
         ["aee_core_currentTideOffset_m",      -10, 10, "maritime/tide"],
         ["aee_core_currentUVIndex",           0, 15,   "physiology/uv"],
-        ["aee_physiology_acclimatizationPercent", 0, 100, "physiology/acclim", "gated: needs elapsed exposure above sea level"],
+        ["aee_altitude_acclimatizationPercent", 0, 100, "physiology/acclim", "gated: needs elapsed exposure above sea level"],
         ["aee_optics_atmosphericSeeing",      0, 1,    "optics/seeing"],
         ["aee_optics_vehicleHeatShimmerIntensity", 0, 1, "optics/shimmer", "gated: needs a hot vehicle in view"],
         ["aee_mobility_currentTractionWheeled", 0, 1,  "mobility/traction"],

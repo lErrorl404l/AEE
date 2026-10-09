@@ -20,7 +20,7 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-CLOTHING = REPO / "addons/physiology/functions/clothing"
+CLOTHING = REPO / "addons/clothing/functions/clothing"
 FNC_UNIFORM = (CLOTHING / "fnc_getUniformProperties.sqf").read_text(encoding="utf-8")
 FNC_VEST = (CLOTHING / "fnc_getVestProperties.sqf").read_text(encoding="utf-8")
 FNC_HELMET = (CLOTHING / "fnc_getHelmetProperties.sqf").read_text(encoding="utf-8")

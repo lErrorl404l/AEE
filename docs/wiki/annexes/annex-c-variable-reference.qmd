@@ -208,26 +208,26 @@ client-only and derives from deterministic state, so none is broadcast.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_physiology_dehydrationRisk` | physiology | Dehydration risk 0..1 |
+| `aee_strain_dehydrationRisk` | strain | Dehydration risk 0..1 |
 | `aee_core_currentHypoxiaRisk` | physiology | Hypoxia risk 0..1 |
-| `aee_physiology_hypoxiaTUC` | physiology | Time of useful consciousness in seconds |
-| `aee_physiology_acclimatizationPercent` | physiology | Altitude acclimatisation 0..100 |
-| `aee_physiology_gLoad` | physiology | Measured Gz load (1 = standing) |
-| `aee_physiology_gLocStage` | physiology | G-LOC stage 0 none / 1 greyout / 2 blackout / 3 LOC |
-| `aee_physiology_gLocTolerance` | physiology | Current G-LOC tolerance in G |
-| `aee_physiology_altitudeDCSRisk` | physiology | Altitude DCS risk 0..1 (ZH-L16C R-ratio) |
-| `aee_physiology_uvIndex` | physiology | UV index 0..13 |
+| `aee_altitude_hypoxiaTUC` | altitude | Time of useful consciousness in seconds |
+| `aee_altitude_acclimatizationPercent` | altitude | Altitude acclimatisation 0..100 |
+| `aee_altitude_gLoad` | altitude | Measured Gz load (1 = standing) |
+| `aee_altitude_gLocStage` | altitude | G-LOC stage 0 none / 1 greyout / 2 blackout / 3 LOC |
+| `aee_altitude_gLocTolerance` | altitude | Current G-LOC tolerance in G |
+| `aee_altitude_altitudeDCSRisk` | altitude | Altitude DCS risk 0..1 (ZH-L16C R-ratio) |
+| `aee_strain_uvIndex` | strain | UV index 0..13 |
 | `aee_core_currentUVIndex` | physiology | UV index (core alias) |
 | `aee_thermal_batteryTemperatureDerating` | thermal | Battery derating 0.3..1 |
 | `aee_weather_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
 | `aee_physiology_scentDispersionDir` | physiology | Scent downwind direction |
 | `aee_weather_scentDispersionDir` | environmental | Scent downwind direction (re-homed from physiology by the module-hygiene cleanup) |
-| `aee_physiology_amsRisk` | physiology | Acute mountain sickness risk |
+| `aee_altitude_amsRisk` | altitude | Acute mountain sickness risk |
 | `aee_physiology_sleepState` | physiology | Sleep state |
 | `aee_physiology_sleepiness` | physiology | Sleepiness 0..1 |
-| `aee_physiology_diveStates` | physiology | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
-| `aee_physiology_diveMix` | physiology | External breathing-gas hook (issue #118): [fN2, fHe, fO2] set by diving addons |
-| `aee_physiology_diveGradientFactor` | physiology | Buhlmann gradient factor (CBA setting, 0.5-1.0) |
+| `aee_dive_diveStates` | dive | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
+| `aee_dive_diveMix` | dive | External breathing-gas hook (issue #118): [fN2, fHe, fO2] set by diving addons |
+| `aee_dive_diveGradientFactor` | dive | Buhlmann gradient factor (CBA setting, 0.5-1.0) |
 | `aee_core_coreBodyTemp` | core | Core body temperature in C from the physiology heat balance (`fnc_coreBodyTemp`): a 37 C baseline plus a WBGT heat gain minus a wind-chill and hypothermia loss. Grade: baseline sourced; coefficients UNSOURCED |
 
 ### Thermal

@@ -16,7 +16,7 @@ computes the ceiling and NDL, and drives the consequences:
   - DCS accumulator: 0..1; crossing 1.0 triggers the DCS hit (damage via
     ACE medical when present, otherwise setDamage).
 
-State is per-UID in aee_physiology_diveStates (see fnc_getDiveState).
+State is per-UID in aee_dive_diveStates (see fnc_getDiveState).
 
 Input:  [_unit] - the unit to update (default: player)
 Output: the updated state array
@@ -39,7 +39,7 @@ private _pAmb = (_depthM / 10) + 1;
 // ─── Integrate one second ────────────────────────────────────────────────
 private _gf = missionNamespace getVariable [QGVAR(diveGradientFactor), 1.0];
 if !(_gf isEqualType 0) then { _gf = 1.0; };
-private _step = [_depthM, _fN2, _fHe, _tissues, _gf] call FUNC(zh16cStep);
+private _step = [_depthM, _fN2, _fHe, _tissues, _gf] call EFUNC(physiology,zh16cStep);
 private _newTissues = _step select 0;
 private _ceilingM = _step select 1;
 

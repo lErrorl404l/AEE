@@ -50,7 +50,7 @@ missionNamespace setVariable ["aee_physiology_massResolvers", _resolvers];
 AEE reads the registry and never names the extending mod:
 
 ```sqf
-// addons/physiology/functions/clothing/fnc_getInventoryLoad.sqf
+// addons/clothing/functions/clothing/fnc_getInventoryLoad.sqf
 private _resolvers = missionNamespace getVariable [QGVAR(massResolvers), []];
 ```
 
@@ -84,10 +84,12 @@ source by `tools/gen_extension_contract.py --check`.
 |---|---|
 | `aee_actions` | `actions` |
 | `aee_ai` | `ai` |
+| `aee_altitude` | `altitude` |
 | `aee_armour` | `armour` |
 | `aee_atmos` | `atmos` |
 | `aee_ballistics` | `ballistics` |
 | `aee_cartography` | `cartography` |
+| `aee_clothing` | `clothing` |
 | `aee_compat_ace3` | `compat_ace3` |
 | `aee_compat_acm` | `compat_acm` |
 | `aee_compat_acre2` | `compat_acre2` |
@@ -96,6 +98,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_compat_tfar` | `compat_tfar` |
 | `aee_core` | `core` |
 | `aee_diagnostics` | `diagnostics` |
+| `aee_dive` | `dive` |
 | `aee_eye` | `eye` |
 | `aee_fx` | `fx` |
 | `aee_hud` | `hud` |
@@ -109,6 +112,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_persistence` | `persistence` |
 | `aee_physiology` | `physiology` |
 | `aee_radio` | `radio` |
+| `aee_strain` | `strain` |
 | `aee_symbology` | `symbology` |
 | `aee_thermal` | `thermal` |
 | `aee_vision` | `vision` |
@@ -139,6 +143,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ai_fnc_reportStimulus`
 - `aee_ai_fnc_stimulusDecay`
 - `aee_ai_fnc_teardownAI`
+- `aee_altitude_fnc_calculateAltitudeAcclimatization`
+- `aee_altitude_fnc_calculateAltitudeDCS`
+- `aee_altitude_fnc_calculateBarometricPressure`
+- `aee_altitude_fnc_calculateGLOC`
+- `aee_altitude_fnc_calculateHypoxia`
+- `aee_altitude_fnc_calculateOxygenDelivery`
 - `aee_armour_fnc_deriveProtection`
 - `aee_armour_fnc_dumpState`
 - `aee_armour_fnc_getVehicleArmour`
@@ -210,6 +220,24 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_cartography_fnc_mgrsMapDraw`
 - `aee_cartography_fnc_mgrsMapPrecision`
 - `aee_cartography_fnc_mgrsMarkerText`
+- `aee_clothing_fnc_getCamouflageProperties`
+- `aee_clothing_fnc_getEquipmentBands`
+- `aee_clothing_fnc_getEquipmentProperties`
+- `aee_clothing_fnc_getGloveProperties`
+- `aee_clothing_fnc_getGoggleProperties`
+- `aee_clothing_fnc_getHelmetProperties`
+- `aee_clothing_fnc_getInventoryLoad`
+- `aee_clothing_fnc_getItemMass`
+- `aee_clothing_fnc_getMagazineLoad`
+- `aee_clothing_fnc_getMagazineMass`
+- `aee_clothing_fnc_getNirPerSelection`
+- `aee_clothing_fnc_getNvgContrast`
+- `aee_clothing_fnc_getPackProperties`
+- `aee_clothing_fnc_getUniformProperties`
+- `aee_clothing_fnc_getVestProperties`
+- `aee_clothing_fnc_getWeaponLoad`
+- `aee_clothing_fnc_getWeaponMass`
+- `aee_clothing_fnc_selectBand`
 - `aee_compat_ace3_fnc_dumpState`
 - `aee_compat_ace3_fnc_getAceItemMass`
 - `aee_compat_ace3_fnc_integrateKestrel`
@@ -241,6 +269,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_diagnostics_fnc_evaluateConsistency`
 - `aee_diagnostics_fnc_reportModuleHealth`
 - `aee_diagnostics_fnc_runConsistencyCheck`
+- `aee_dive_fnc_getDiveState`
+- `aee_dive_fnc_updateDiveState`
 - `aee_eye_fnc_eyeAdaptInit`
 - `aee_eye_fnc_eyeAdaptState`
 - `aee_eye_fnc_eyeAdaptStep`
@@ -469,49 +499,23 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_persistence_fnc_detectGroundFrost`
 - `aee_persistence_fnc_getCbrnProtection`
 - `aee_persistence_fnc_updateSoilMoisture`
-- `aee_physiology_fnc_applyCrossSensitivity`
 - `aee_physiology_fnc_applyHeatStressHUD`
-- `aee_physiology_fnc_applyMovementSpeed`
-- `aee_physiology_fnc_calculateAltitudeAcclimatization`
-- `aee_physiology_fnc_calculateAltitudeDCS`
-- `aee_physiology_fnc_calculateBarometricPressure`
-- `aee_physiology_fnc_calculateColdWeatherPerformance`
-- `aee_physiology_fnc_calculateDehydrationRisk`
-- `aee_physiology_fnc_calculateFatigueFactor`
-- `aee_physiology_fnc_calculateGLOC`
-- `aee_physiology_fnc_calculateHypoxia`
-- `aee_physiology_fnc_calculateOxygenDelivery`
-- `aee_physiology_fnc_calculateShooterStability`
-- `aee_physiology_fnc_calculateSleepPressure`
-- `aee_physiology_fnc_calculateUVIndex`
 - `aee_physiology_fnc_dumpState`
-- `aee_physiology_fnc_getCamouflageProperties`
-- `aee_physiology_fnc_getDiveState`
-- `aee_physiology_fnc_getEquipmentBands`
-- `aee_physiology_fnc_getEquipmentProperties`
-- `aee_physiology_fnc_getGLoad`
-- `aee_physiology_fnc_getGloveProperties`
-- `aee_physiology_fnc_getGoggleProperties`
-- `aee_physiology_fnc_getHelmetProperties`
-- `aee_physiology_fnc_getInventoryLoad`
-- `aee_physiology_fnc_getItemMass`
-- `aee_physiology_fnc_getMagazineLoad`
-- `aee_physiology_fnc_getMagazineMass`
-- `aee_physiology_fnc_getNirPerSelection`
-- `aee_physiology_fnc_getNvgContrast`
-- `aee_physiology_fnc_getPackProperties`
-- `aee_physiology_fnc_getUniformProperties`
-- `aee_physiology_fnc_getVestProperties`
-- `aee_physiology_fnc_getWeaponLoad`
-- `aee_physiology_fnc_getWeaponMass`
-- `aee_physiology_fnc_integrateSwayFactor`
-- `aee_physiology_fnc_selectBand`
-- `aee_physiology_fnc_updateDiveState`
 - `aee_physiology_fnc_updateFatigueState`
 - `aee_physiology_fnc_zh16cStep`
 - `aee_radio_fnc_calculateIonosphericAbsorption`
 - `aee_radio_fnc_calculateRadioPropagation`
 - `aee_radio_fnc_dumpState`
+- `aee_strain_fnc_applyCrossSensitivity`
+- `aee_strain_fnc_applyMovementSpeed`
+- `aee_strain_fnc_calculateColdWeatherPerformance`
+- `aee_strain_fnc_calculateDehydrationRisk`
+- `aee_strain_fnc_calculateFatigueFactor`
+- `aee_strain_fnc_calculateShooterStability`
+- `aee_strain_fnc_calculateSleepPressure`
+- `aee_strain_fnc_calculateUVIndex`
+- `aee_strain_fnc_getGLoad`
+- `aee_strain_fnc_integrateSwayFactor`
 - `aee_symbology_fnc_symbolCategory`
 - `aee_symbology_fnc_symbolFrame`
 - `aee_symbology_fnc_symbolIcon`
@@ -828,7 +832,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 | `AEE_SandCloud` | `addons/fx/config.cpp` |
 | `AEE_SnowCloud` | `addons/fx/config.cpp` |
 | `AEE_SupersonicTrace` | `addons/fx/config.cpp` |
-| `CfgClothing` | `addons/physiology/config.cpp` |
+| `CfgClothing` | `addons/clothing/config.cpp` |
 
 Engine classes AEE re-declares:
 

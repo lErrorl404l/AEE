@@ -119,7 +119,7 @@ Arguments:
       immersed; below -100 = no water
   24: rain rate (NUMBER, 0..1) - external wettedness driver
   25: skin perfusion index (NUMBER, 0..1) - shock vasoconstriction,
-      computed by aee_physiology_fnc_calculateOxygenDelivery (issue #196)
+      computed by aee_altitude_fnc_calculateOxygenDelivery (issue #196)
   26: clothing insulation (NUMBER, clo) - 0 = nude (no clothing term)
   27: solar absorptance (NUMBER, 0..1) - -1 = derive from skin material
 

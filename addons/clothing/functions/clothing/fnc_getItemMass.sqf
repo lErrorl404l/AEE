@@ -457,7 +457,7 @@ private _known = "";
 {
     _known = [_item] call _x;
     if (_known != "") exitWith {};
-} forEach (missionNamespace getVariable [QGVAR(categoryResolvers), []]);
+} forEach (missionNamespace getVariable [QEGVAR(physiology,categoryResolvers), []]);
 if (_known == "" && _allowed isNotEqualTo []) then { _known = _allowed select 0; };
 // Only a known category that the family contradicts is rejected.  An
 // empty family category means the row states none, which is not a

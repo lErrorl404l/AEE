@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Altitude">
+        <Key ID="STR_AEE_Altitude_AGSM_Description">
+            <Original>The pilot performs the anti-G straining maneuver (adds 3.1 G tolerance)</Original>
+            <English>The pilot performs the anti-G straining maneuver (adds 3.1 G tolerance)</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_AGSM_Name">
+            <Original>AGSM (Straining)</Original>
+            <English>AGSM (Straining)</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_AMSOffsetAltitude_Description">
+            <Original>Altitude (m) where acute mountain sickness risk starts</Original>
+            <English>Altitude (m) where acute mountain sickness risk starts</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_AMSOffsetAltitude_Name">
+            <Original>AMS Onset Altitude</Original>
+            <English>AMS Onset Altitude</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_GSuit_Description">
+            <Original>Pilot wears a G-suit (adds 1.5 G tolerance)</Original>
+            <English>Pilot wears a G-suit (adds 1.5 G tolerance)</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_GSuit_Name">
+            <Original>G-Suit</Original>
+            <English>G-Suit</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_GlocEnabled_Description">
+            <Original>Enable the G-LOC and altitude DCS physiology model</Original>
+            <English>Enable the G-LOC and altitude DCS physiology model</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_GlocEnabled_Name">
+            <Original>G-LOC and Altitude DCS</Original>
+            <English>G-LOC and Altitude DCS</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_HypoxiaRecovery_Description">
+            <Original>Residual-exposure recovery rate below 6000 m</Original>
+            <English>Residual-exposure recovery rate below 6000 m</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_HypoxiaRecovery_Name">
+            <Original>Hypoxia Recovery Rate</Original>
+            <English>Hypoxia Recovery Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_RapidAscentThreshold_Description">
+            <Original>Climb rate (m per tick) that triggers acute mountain sickness</Original>
+            <English>Climb rate (m per tick) that triggers acute mountain sickness</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_RapidAscentThreshold_Name">
+            <Original>Rapid Ascent Threshold</Original>
+            <English>Rapid Ascent Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_SeatReclined_Description">
+            <Original>Reclined seat (adds 0.5 G tolerance)</Original>
+            <English>Reclined seat (adds 0.5 G tolerance)</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_SeatReclined_Name">
+            <Original>Reclined Seat</Original>
+            <English>Reclined Seat</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_logDebug_Description">
+            <Original>Log this module DEBUG and TRACE lines to the RPT. Off by default.</Original>
+            <English>Log this module DEBUG and TRACE lines to the RPT. Off by default.</English>
+        </Key>
+        <Key ID="STR_AEE_Altitude_logDebug_Name">
+            <Original>Trace This Module</Original>
+            <English>Trace This Module</English>
+        </Key>
+    </Package>
+</Project>

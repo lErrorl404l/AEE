@@ -17,7 +17,7 @@ aee_nightvision_nvgDebug  debug console knob (documented in fnc_applyNVGTubeMode
 aee_thermal_rainDropColor  debug console knob (documented in fnc_applyRainDroplets.sqf)
 aee_core_starlightLux  tuning knob (documented in fnc_calculateIlluminance.sqf)
 aee_nightvision_titleDisplay  uiNamespace RscTitles display handle, written by the display layer
-aee_physiology_ozoneDU  ozone-column producer pending (issue #35 cross-addon wiring)
+aee_strain_ozoneDU  ozone-column producer pending (issue #35 cross-addon wiring)
 aee_radio_frequency  radio frequency producer pending (issue #35 cross-addon wiring)
 aee_radio_radioFrequencyHz  radio frequency producer pending (issue #35 cross-addon wiring)
 aee_radio_radioLinkRangeM  radio link range producer pending (issue #35 cross-addon wiring)
@@ -25,7 +25,7 @@ aee_radio_sunspotNumber  sunspot producer pending (issue #35 cross-addon wiring)
 aee_compat_acm_hypoxiaDutyFactor  external API name passed to ACE3 addSpO2DutyFactor, not an AEE variable
 aee_nightvision_nvgTitle  RscTitles config class name, not a runtime variable
 aee_thermal_fusionFrame  RscTitles config class name used by cutRsc, not a runtime variable
-aee_physiology_diveMix  external breathing-gas hook (issue #118); set by diving addons (e.g. ADE) to [fN2, fHe, fO2]
+aee_dive_diveMix  external breathing-gas hook (issue #118); set by diving addons (e.g. ADE) to [fN2, fHe, fO2]
 aee_nightvision_ppHandle_FilmGrain  written by the core registry (core fnc_createPPEffect) through the legacy variable passed as its fifth argument; the validator cannot trace the opaque write
 aee_nightvision_ppHandle_NVG_Bloom  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 961; the validator cannot trace the _store variable
 aee_nightvision_ppHandle_NVG_CC  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 962; the validator cannot trace the _store variable

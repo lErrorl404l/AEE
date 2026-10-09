@@ -65,7 +65,7 @@ private _ambientC  = missionNamespace getVariable [QEGVAR(core,currentTemperatur
 if !(_ambientC isEqualType 0) then { _ambientC = 15; };
 private _wbgt      = missionNamespace getVariable [QEGVAR(core,currentWBGT), 15];
 if !(_wbgt isEqualType 0) then { _wbgt = 15; };
-private _wakeHours = missionNamespace getVariable [QGVAR(wakefulnessHours), 0];
+private _wakeHours = missionNamespace getVariable [QEGVAR(physiology,wakefulnessHours), 0];
 if !(_wakeHours isEqualType 0) then { _wakeHours = 0; };
 
 // ─── Cold factor ──────────────────────────────────────────────────────────
