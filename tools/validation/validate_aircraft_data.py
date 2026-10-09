@@ -88,6 +88,12 @@ UNITS = (
     | vehicle_catalogue.SYSTEMS_UNITS
 )
 NON_NUMERIC_UNITS = frozenset({"enum", "text"})
+LIST_UNITS = frozenset({"list"})
+
+# The closed role vocabulary for the structural hit point role map.
+DAMAGE_ROLES = frozenset(
+    {"engine", "rotor", "fuel", "hydraulic", "electrical", "gearbox", "pilot"}
+)
 
 # The fixed unit of every aircraft value field per schema section 3.
 FIELD_UNITS: dict[str, str] = {
@@ -430,6 +436,15 @@ def validate_value(
         if field_unit in NON_NUMERIC_UNITS:
             if not isinstance(value, str):
                 errors.append(f"{where}: value must be a word for unit {field_unit}")
+        elif field_unit in LIST_UNITS:
+            if not isinstance(value, list) or not value:
+                errors.append(
+                    f"{where}: value must be a non-empty list for unit {field_unit}"
+                )
+            elif not all(isinstance(item, str) and item for item in value):
+                errors.append(
+                    f"{where}: every entry must be a non-empty string for unit {field_unit}"
+                )
         elif not _is_number(value):
             errors.append(f"{where}: value must be a number for unit {field_unit}")
         else:
@@ -988,6 +1003,69 @@ def _load_capture_records(
     return records, conflicts
 
 
+def validate_damage_roles(data_dir: Path, catalogue: Sequence[object]) -> list[str]:
+    """Check the structural hit point role map and its catalogue use.
+
+    The map is a structural artefact, not sourced data. It carries no grade
+    and no armour value. Every role must be one of the closed vocabulary. A
+    catalogue ``hitpoint_names`` entry must name a hit point the map holds.
+    """
+    errors: list[str] = []
+    path = data_dir / "damage_roles.json"
+    if not path.is_file():
+        return [f"missing damage role map: {path}"]
+
+    document = _mapping(_read_json(path, errors))
+    if document is None:
+        errors.append("damage_roles.json: must be an object")
+        return errors
+
+    roles_raw = _sequence(document.get("roles"))
+    if roles_raw is None:
+        errors.append("damage_roles.json: roles must be an array")
+    else:
+        roles = {role for role in roles_raw if isinstance(role, str)}
+        if len(roles) != len(roles_raw):
+            errors.append("damage_roles.json: every role must be a string")
+        if roles != DAMAGE_ROLES:
+            errors.append(
+                f"damage_roles.json: roles must be exactly {sorted(DAMAGE_ROLES)}"
+            )
+
+    hit_points = _mapping(document.get("hit_points"))
+    if hit_points is None or not hit_points:
+        errors.append("damage_roles.json: hit_points must be a non-empty object")
+        hit_points = {}
+
+    for name, role in hit_points.items():
+        if not isinstance(role, str) or role not in DAMAGE_ROLES:
+            errors.append(
+                f"damage_roles.json: hit point {name} role {role!r} is not one of "
+                f"{sorted(DAMAGE_ROLES)}"
+            )
+
+    for raw in catalogue:
+        entry = _mapping(raw)
+        if entry is None:
+            continue
+        cid = _text(entry.get("catalogue_id")) or "<none>"
+        values = _mapping(entry.get("values"))
+        if values is None:
+            continue
+        held = _mapping(values.get("hitpoint_names"))
+        if held is None:
+            continue
+        names = _sequence(held.get("value"))
+        if names is None:
+            continue
+        for name in names:
+            if isinstance(name, str) and name not in hit_points:
+                errors.append(
+                    f"catalogue {cid}: hitpoint_names {name} is not in the damage role map"
+                )
+    return errors
+
+
 def run(data_dir: Path) -> list[str]:
     """Read one corpus directory and return every contract error."""
     if _is_fixtures_path(data_dir):
@@ -1045,6 +1123,7 @@ def run(data_dir: Path) -> list[str]:
         errors.extend(validate_catalogue(catalogue, by_id))
     errors.extend(validate_class_map(class_map, catalogue_ids, by_id))
     errors.extend(validate_class_bindings(bindings, catalogue_ids, by_id))
+    errors.extend(validate_damage_roles(data_dir, catalogue))
     return errors
 
 

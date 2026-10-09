@@ -72,6 +72,34 @@
           "locator": "Fuel (liters): Internal: 445",
           "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP internal fuel capacity in litres",
           "grade": "documented"
+        },
+        "crew_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 3 (2x pilots, 1x flight engineer)",
+          "state": "OPFOR WEG Mi-8/HIP published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,700-shp Isotov TV2-117A",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,700-shp Isotov TV2-117A",
+          "state": "OPFOR WEG Mi-8/HIP component breakdown: three damageable component groups",
+          "grade": "documented"
         }
       }
     },
@@ -143,6 +171,34 @@
           "source": "src_opfor_weg",
           "locator": "Fuel (liters): Internal: 445",
           "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 3 (2x pilots, 1x flight engineer)",
+          "state": "OPFOR WEG Mi-17/HIP published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,950-shp Isotov TV3-117MT",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,950-shp Isotov TV3-117MT",
+          "state": "OPFOR WEG Mi-17/HIP component breakdown: three damageable component groups",
           "grade": "documented"
         }
       }
@@ -216,6 +272,34 @@
           "locator": "Fuel (liters): Internal: 1,840",
           "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND internal fuel capacity in litres",
           "grade": "documented"
+        },
+        "crew_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 2 (pilots in tandem cockpits)",
+          "state": "OPFOR WEG Mi-24/HIND published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 2,200-shp Klimov TV3-117VMA",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 2,200-shp Klimov TV3-117VMA",
+          "state": "OPFOR WEG Mi-24/HIND component breakdown: three damageable component groups",
+          "grade": "documented"
         }
       }
     },
@@ -279,6 +363,33 @@
           "source": "src_opfor_weg",
           "locator": "Main rotor: 6 (2 heads, 3 blades each)",
           "state": "OPFOR Worldwide Equipment Guide Ka-50/HOKUM main rotor blade count",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 1 (pilots, 2 in Ka-52)",
+          "state": "OPFOR WEG Ka-50/HOKUM published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 6 (2 heads, 3 blades each), Tail rotor: None, Engines: 2x 2,200-shp Klimov TV3-117VK",
+          "state": "OPFOR WEG component breakdown: the coaxial main rotor and the engines. The WEG records no tail rotor. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 6 (2 heads, 3 blades each), Tail rotor: None, Engines: 2x 2,200-shp Klimov TV3-117VK",
+          "state": "OPFOR WEG Ka-50/HOKUM component breakdown: two damageable component groups, no tail rotor",
           "grade": "documented"
         }
       }
@@ -351,6 +462,34 @@
           "source": "src_opfor_weg",
           "locator": "Fuel (liters): Internal: 445",
           "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 1 or 2 (pilots)",
+          "state": "OPFOR WEG SA-341/Gazelle crew: the two-seat configuration is recorded",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 3, Tail rotor: 13 (fenestron enclosed in tail), Engines: 1x 590-shp Turbomeca Astazou IIIB",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 3, Tail rotor: 13 (fenestron enclosed in tail), Engines: 1x 590-shp Turbomeca Astazou IIIB",
+          "state": "OPFOR WEG SA-341/Gazelle component breakdown: three damageable component groups",
           "grade": "documented"
         }
       }
