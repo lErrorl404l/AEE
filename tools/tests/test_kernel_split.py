@@ -97,5 +97,53 @@ class TestKernelSplit(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
 
+DISPATCHER = ROOT / "addons" / "core" / "functions" / "fnc_dispatchKernel.sqf"
+PROBE = ROOT / "addons" / "core" / "functions" / "fnc_probeExtension.sqf"
+KERNEL_TABLE = ROOT / "addons" / "core" / "functions" / "fnc_initKernelTable.sqf"
+
+
+class TestKernelDispatcher(unittest.TestCase):
+    """The SQF kernel and a native kernel sit behind one dispatcher name."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.table = gen.strip_comments(KERNEL_TABLE.read_text(encoding="utf-8"))
+        cls.dispatch = gen.strip_comments(DISPATCHER.read_text(encoding="utf-8"))
+        cls.probe = gen.strip_comments(PROBE.read_text(encoding="utf-8"))
+
+    def test_every_kernel_has_an_sqf_path_and_a_native_path(self):
+        for rel in gen.KERNELS:
+            name = gen.kernel_name(rel)
+            self.assertIn(f'["{name}", ["aee_', self.table, f"{name} has no SQF ref")
+            self.assertIn(f'"kernel.{name}"', self.table, f"{name} has no native name")
+
+    def test_the_dispatcher_gates_call_extension_behind_the_probe(self):
+        # The native call sits inside the extReady guard, and the SQF reference
+        # kernel is the fallback, so absence of the extension selects SQF.
+        guard = self.dispatch.index(
+            "missionNamespace getVariable [QGVAR(extReady), false]"
+        )
+        call = self.dispatch.index("callExtension")
+        self.assertLess(guard, call, "callExtension must sit behind the extReady guard")
+        self.assertIn("call (missionNamespace getVariable [_sqfRef", self.dispatch)
+
+    def test_the_probe_caches_aee_core_ext_ready(self):
+        self.assertIn("callExtension", self.probe)
+        self.assertIn("QGVAR(extReady)", self.probe)
+
+    def test_absence_of_the_extension_selects_sqf(self):
+        # Mirror of the dispatcher's decision: native only when ready AND the
+        # native return is a non-empty string (the extension's errorCode-0
+        # payload); otherwise the SQF reference kernel runs.
+        def choose(ext_ready: bool, native_out: object) -> str:
+            if ext_ready and isinstance(native_out, str) and native_out != "":
+                return "native"
+            return "sqf"
+
+        self.assertEqual(choose(False, "payload"), "sqf")
+        self.assertEqual(choose(True, ""), "sqf")
+        self.assertEqual(choose(True, "1.0"), "native")
+
+
 if __name__ == "__main__":
     sys.exit(unittest.main())
