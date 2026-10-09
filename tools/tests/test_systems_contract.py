@@ -179,9 +179,9 @@ class SharedSystemsContractTest(unittest.TestCase):
         self.assertIn("never feeds the flight dynamics model", self.text)
         self.assertIn("engine-fixed at config load", self.text)
 
-    def test_the_aircraft_schema_is_untouched_by_the_shared_contract(self) -> None:
-        # The aircraft deltas are a separate task. This file must not hold a
-        # shared table, so a systems row here is a contract error.
+    def test_the_aircraft_schema_holds_no_shared_systems_row(self) -> None:
+        # The aircraft document states only its deltas. Every systems-shaped
+        # row in it is a delta row and must satisfy the same contract.
         aircraft = AIRCRAFT_SCHEMA.read_text(encoding="utf-8")
         self.assertEqual([], systems_errors(aircraft))
 
@@ -218,6 +218,45 @@ class LandPhysicsSurfaceTest(unittest.TestCase):
 
     def test_the_no_xml_statement_is_present(self) -> None:
         self.assertIn("the engine reads no XML for it", self.text)
+
+
+class AircraftDeltasTest(unittest.TestCase):
+    """`data/aircraft/SCHEMA.md` section 10 states only the aircraft deltas."""
+
+    def setUp(self) -> None:
+        self.text = AIRCRAFT_SCHEMA.read_text(encoding="utf-8")
+
+    def test_the_aircraft_delta_tables_hold_rows(self) -> None:
+        self.assertTrue(systems_rows(self.text), "no aircraft delta table found")
+
+    def test_every_aircraft_delta_row_is_complete(self) -> None:
+        self.assertEqual([], systems_errors(self.text))
+
+    def test_the_delta_section_inherits_the_shared_contract(self) -> None:
+        section = _section(self.text, "10. The aircraft systems deltas")
+        first_paragraph = section.strip().split("\n\n", 1)[0]
+        self.assertIn("inherits", first_paragraph)
+        self.assertIn("data/vehicle/SCHEMA.md", first_paragraph)
+
+    def test_the_rtd_gate_is_named(self) -> None:
+        self.assertIn("difficultyEnabledRTD", self.text)
+
+    def test_the_delta_fields_are_present(self) -> None:
+        fields = {row[0] for row in systems_rows(self.text)}
+        for name in (
+            "`engine_idle_ng`",
+            "`rotor_radius_m`",
+            "`vne_kmh`",
+            "`cabin_pressure_max_kpa`",
+        ):
+            self.assertIn(name, fields, f"aircraft delta field missing: {name}")
+
+    def test_no_land_only_field_leaks_into_the_deltas(self) -> None:
+        fields = {row[0] for row in systems_rows(self.text)}
+        for name in ("`sprungMass`", "`springStrength`", "`springDamperRate`", "`MOI`"):
+            self.assertNotIn(
+                name, fields, f"land-only field in the aircraft deltas: {name}"
+            )
 
 
 if __name__ == "__main__":
