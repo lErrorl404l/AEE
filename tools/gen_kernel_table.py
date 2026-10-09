@@ -23,12 +23,16 @@ Run:
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
 DOC = ROOT / "docs" / "wiki" / "research" / "kernel-table.md"
+VECTORS = (
+    ROOT / "tools" / "dev-harness" / "extension" / "tests" / "vectors" / "kernels.json"
+)
 
 BEGIN = "<!-- BEGIN GENERATED: kernel table -->"
 END = "<!-- END GENERATED: kernel table -->"
@@ -50,6 +54,25 @@ KERNELS: tuple[str, ...] = (
     "addons/thermal/functions/display/fnc_thermalImperfectionParams.sqf",
     "addons/thermal/functions/display/fnc_thermalWetDistortionParams.sqf",
 )
+
+# Native-kernel metadata: the side the driver runs on (server or client), and
+# the generated parity vector key from tools/gen_kernel_vectors.py ("-" when the
+# kernel has no generated vector).  A pure kernel is server-callable whatever
+# its driver side; this column states the driver, per ADR-034.
+NATIVE: dict[str, tuple[str, str]] = {
+    "calculateHailEnergy": ("server", "-"),
+    "calculateStationPressure": ("server", "stationPressure"),
+    "calculateRelativeHumidity": ("server", "relativeHumidity"),
+    "calculateAirDensityKernel": ("server", "airDensity"),
+    "calculateBallisticDrag": ("server", "-"),
+    "eyeAdaptStep": ("server", "-"),
+    "eyeMesopicWeight": ("server", "-"),
+    "eyePupilSteady": ("server", "-"),
+    "eyePupilStep": ("server", "-"),
+    "eyeTimeSkip": ("server", "-"),
+    "thermalImperfectionParams": ("client", "-"),
+    "thermalWetDistortionParams": ("client", "-"),
+}
 
 # An engine write.  A pure kernel contains none of these.
 ENGINE_WRITE_TOKENS: tuple[str, ...] = (
@@ -187,18 +210,33 @@ def audit() -> list[str]:
     return errors
 
 
+def parity_cell(key: str) -> str:
+    """Render the parity-vector column from the generated vectors file."""
+    if key == "-":
+        return "-"
+    if not VECTORS.is_file():
+        return f"{key} (missing)"
+    data = json.loads(VECTORS.read_text(encoding="utf-8"))["kernels"]
+    entry = data.get(key)
+    if entry is None:
+        return f"{key} (missing)"
+    return f"{key} ({len(entry['vectors'])})"
+
+
 def build_block() -> str:
     lines = [
         BEGIN,
         "",
-        "| Kernel | Addon | Inputs | Outputs | Engine-write-free |",
-        "|---|---|---|---|---|",
+        "| Kernel | Addon | Side | Inputs | Outputs | Parity vector | Engine-write-free |",
+        "|---|---|---|---|---|---|---|",
     ]
     for rel in KERNELS:
         r = row(rel)
+        name = kernel_name(rel)
+        side, parity = NATIVE.get(name, ("?", "-"))
         lines.append(
-            f"| {r['name']} | {r['addon']} | {r['inputs']} | {r['outputs']} | "
-            f"{r['engine_write_free']} |"
+            f"| {r['name']} | {r['addon']} | {side} | {r['inputs']} | {r['outputs']} | "
+            f"{parity_cell(parity)} | {r['engine_write_free']} |"
         )
     lines.append("")
     lines.append(END)

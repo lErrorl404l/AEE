@@ -11,19 +11,19 @@ drift or on a kernel that contains an engine write.
 
 <!-- BEGIN GENERATED: kernel table -->
 
-| Kernel | Addon | Inputs | Outputs | Engine-write-free |
-|---|---|---|---|---|
-| `calculateHailEnergy` | atmos | `_capeProxy` | ARRAY [diameter_m, mass_kg, velocity_ms, energy_j] | yes |
-| `calculateStationPressure` | atmos | `_P_sea`, `_elevation`, `_lapseRate` | Number - station pressure, hPa (unrounded) | yes |
-| `calculateRelativeHumidity` | atmos | `_rhBase`, `_surfaceMod`, `_tRef`, `_tNow`, `_overcast`, `_rain` | Number - relative humidity, % (integer, 0 to 100) | yes |
-| `calculateAirDensityKernel` | ballistics | `_T_C`, `_P_hPa`, `_RH` | Number - air density, kg/m3 | yes |
-| `calculateBallisticDrag` | ballistics | `_bc`, `_velocity`, `_dragModel`, `_rhoRel`, `_airTempC` | expression | yes |
-| `eyeAdaptStep` | optics | `_state`, `_targetLogLum`, `_dt`, `_tauLight`, `_tauDarkCone`, `_tauDarkRod`, `_w` | Array - the two updated pool logs [coneLog, rodLog] | yes |
-| `eyeMesopicWeight` | optics | `_lum`, `_lo`, `_hi` | Number - photopic fraction in [0, 1]. 0 means the rods carry vision, | yes |
-| `eyePupilSteady` | optics | `_lum` | Number - steady pupil diameter in mm, clamped to [1.9, 8.0] | yes |
-| `eyePupilStep` | optics | `_d`, `_dTarget`, `_dt`, `_tauConstrict`, `_tauDilate` | Number - lagged diameter after this step, mm | yes |
-| `eyeTimeSkip` | optics | `_prevHour`, `_nowHour`, `_thresholdHours` | Boolean - true when the clock moved by more than the threshold in one step | yes |
-| `thermalImperfectionParams` | thermal | `_contrast`, `_time`, `_huntAmp`, `_huntPeriod`, `_nucAmp`, `_bloomBase`, `_hot`, `_settle` | Array - [bloom, agcHunt, nucDrift, temporalNoise] | yes |
-| `thermalWetDistortionParams` | thermal | `_wetness`, `_maxAmp` | ARRAY - the 15-element WetDistortion vector.  The first three elements are | yes |
+| Kernel | Addon | Side | Inputs | Outputs | Parity vector | Engine-write-free |
+|---|---|---|---|---|---|---|
+| `calculateHailEnergy` | atmos | server | `_capeProxy` | ARRAY [diameter_m, mass_kg, velocity_ms, energy_j] | - | yes |
+| `calculateStationPressure` | atmos | server | `_P_sea`, `_elevation`, `_lapseRate` | Number - station pressure, hPa (unrounded) | stationPressure (6) | yes |
+| `calculateRelativeHumidity` | atmos | server | `_rhBase`, `_surfaceMod`, `_tRef`, `_tNow`, `_overcast`, `_rain` | Number - relative humidity, % (integer, 0 to 100) | relativeHumidity (8) | yes |
+| `calculateAirDensityKernel` | ballistics | server | `_T_C`, `_P_hPa`, `_RH` | Number - air density, kg/m3 | airDensity (5) | yes |
+| `calculateBallisticDrag` | ballistics | server | `_bc`, `_velocity`, `_dragModel`, `_rhoRel`, `_airTempC` | expression | - | yes |
+| `eyeAdaptStep` | optics | server | `_state`, `_targetLogLum`, `_dt`, `_tauLight`, `_tauDarkCone`, `_tauDarkRod`, `_w` | Array - the two updated pool logs [coneLog, rodLog] | - | yes |
+| `eyeMesopicWeight` | optics | server | `_lum`, `_lo`, `_hi` | Number - photopic fraction in [0, 1]. 0 means the rods carry vision, | - | yes |
+| `eyePupilSteady` | optics | server | `_lum` | Number - steady pupil diameter in mm, clamped to [1.9, 8.0] | - | yes |
+| `eyePupilStep` | optics | server | `_d`, `_dTarget`, `_dt`, `_tauConstrict`, `_tauDilate` | Number - lagged diameter after this step, mm | - | yes |
+| `eyeTimeSkip` | optics | server | `_prevHour`, `_nowHour`, `_thresholdHours` | Boolean - true when the clock moved by more than the threshold in one step | - | yes |
+| `thermalImperfectionParams` | thermal | client | `_contrast`, `_time`, `_huntAmp`, `_huntPeriod`, `_nucAmp`, `_bloomBase`, `_hot`, `_settle` | Array - [bloom, agcHunt, nucDrift, temporalNoise] | - | yes |
+| `thermalWetDistortionParams` | thermal | client | `_wetness`, `_maxAmp` | ARRAY - the 15-element WetDistortion vector.  The first three elements are | - | yes |
 
 <!-- END GENERATED: kernel table -->
