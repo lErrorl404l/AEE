@@ -3,6 +3,7 @@
 if !(call aee_dev_fnc_devGateLive) exitWith {};
 
 aee_dev_verbs = call aee_dev_fnc_devVerbs;
+aee_dev_funcs = call aee_dev_fnc_devFuncs;
 
 // The extension raises this event for every request it forwards. The dispatcher
 // parses the request literal and answers with the callExtension argument list.

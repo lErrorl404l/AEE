@@ -208,6 +208,10 @@ def _sqf_type_tag(value: Any) -> str:
         return "ARRAY"
     if value is None:
         return "NIL"
+    # A Code value is a block.  The harness represents one as a Lambda or, for
+    # an injected engine function, as a Python callable.
+    if isinstance(value, Lambda) or callable(value):
+        return "CODE"
     return "OBJECT"
 
 
@@ -292,6 +296,11 @@ UNARY_COMMANDS = {
     # parseSimpleArray "text" - the literal parser the dev dispatcher uses to
     # read an extension request.  A non-array or unparsable text returns [].
     "parseSimpleArray",
+    # typeName X - the SQF type category.  compile X - the console `eval` op
+    # compiles agent input; the harness returns the text (a test does not run
+    # eval).
+    "typeName",
+    "compile",
 }
 
 
@@ -1077,6 +1086,10 @@ class SqfRuntime:
                 return [value[0] / mag, value[1] / mag, value[2] / mag]
             if node.op == "parseSimpleArray":
                 return _sqf_parse_simple_array(value)
+            if node.op == "typeName":
+                return _sqf_type_tag(value)
+            if node.op == "compile":
+                return value
             # Engine terrain and object queries: supplied by the caller through
             # globals_.  A test that exercises the wildlife sampler binds them.
             if node.op in (

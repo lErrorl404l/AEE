@@ -3,6 +3,7 @@
 aee_dev_fnc_devGate = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devGate.sqf";
 aee_dev_fnc_devGateLive = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devGateLive.sqf";
 aee_dev_fnc_devVerbs = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devVerbs.sqf";
+aee_dev_fnc_devFuncs = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devFuncs.sqf";
 aee_dev_fnc_devDispatch = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devDispatch.sqf";
 aee_dev_fnc_devExec = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devExec.sqf";
 
