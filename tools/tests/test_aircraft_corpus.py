@@ -30,6 +30,7 @@ sys.path.insert(0, str(REPO))
 
 from tools.validation import validate_aircraft_data as v  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
+from tools.validation import gen_aircraft_systems as systems  # noqa: E402
 
 VALIDATOR = REPO / "tools" / "validation" / "validate_aircraft_data.py"
 REAL_DATA = REPO / "data" / "aircraft"
@@ -343,6 +344,93 @@ class FixtureRejectionTest(unittest.TestCase):
         self.assertTrue(
             any("forbidden for a value" in error for error in errors), errors
         )
+
+
+class FuelFieldTest(unittest.TestCase):
+    """The fuel field set: the two named derivations and the fuel pair (task 14)."""
+
+    def test_fuel_density_derives_from_the_fuel_type(self) -> None:
+        values = {"fuel_type": _value("jet_a1", "enum", "fx_manual")}
+        field = catalogue.resolve_field(
+            values, "fuel_density_kg_l", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        self.assertEqual(0.8, field.value)
+        self.assertEqual("kg/L", field.unit)
+        self.assertIn("derived fuel density", field.state)
+        self.assertIn("DEF STAN 91-87", field.state)
+
+    def test_fuel_lhv_derives_from_the_fuel_type(self) -> None:
+        values = {"fuel_type": _value("avgas_100ll", "enum", "fx_manual")}
+        field = catalogue.resolve_field(
+            values, "fuel_lhv_mj_kg", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        self.assertEqual(43.5, field.value)
+        self.assertEqual("MJ/kg", field.unit)
+        self.assertIn("derived fuel lower heating value", field.state)
+        self.assertIn("DEF STAN 91-90", field.state)
+
+    def test_fuel_burn_derives_from_sfc_and_rated_power(self) -> None:
+        values = {
+            "rated_power_w": _value(1000000, "W", "fx_manual"),
+            "sfc_kg_kwh": _value(0.3, "kg/kWh", "fx_manual"),
+        }
+        field = catalogue.resolve_field(
+            values, "fuel_burn_kg_s", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        self.assertEqual(round(0.3 * 1000000 / 3.6e6, 6), field.value)
+        self.assertEqual("kg/s", field.unit)
+        self.assertIn(
+            "fuel_burn_kg_s = sfc_kg_kwh * rated_power_w / 3.6e6", field.state
+        )
+
+    def test_fuel_burn_uses_the_derived_rated_power(self) -> None:
+        values = {
+            "published_power_hp": _value(200.0, "hp", "fx_manual"),
+            "sfc_kg_kwh": _value(0.3, "kg/kWh", "fx_manual"),
+        }
+        field = catalogue.resolve_field(
+            values, "fuel_burn_kg_s", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        expected = round(0.3 * round(200.0 * 745.699872, 6) / 3.6e6, 6)
+        self.assertEqual(expected, field.value)
+
+    def test_fuel_density_is_absent_without_a_fuel_type(self) -> None:
+        field = catalogue.resolve_field(
+            {}, "fuel_density_kg_l", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("absent", field.grade)
+
+    def test_fuel_burn_is_absent_without_a_specific_consumption(self) -> None:
+        values = {"rated_power_w": _value(1000000, "W", "fx_manual")}
+        field = catalogue.resolve_field(
+            values, "fuel_burn_kg_s", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("absent", field.grade)
+
+    def test_every_entry_resolves_the_fuel_pair_in_its_systems_row(self) -> None:
+        """Every entry with a complete identity resolves the fuel pair (task 14).
+
+        The systems row carries ``fuel_capacity`` and ``fuel_consumption_rate``
+        for every entry: a held value or a labelled absent zero. A lead with no
+        identity emits no row. So no runtime-ready entry is left without the
+        fuel pair.
+        """
+        load = catalogue.load(REAL_DATA, profile=catalogue.AIRCRAFT_PROFILE)
+        self.assertEqual([], load.errors, load.errors)
+        for entry in load.entries:
+            row = systems.resolve_row(entry.to_mapping())
+            self.assertIsNotNone(row, entry.catalogue_id)
+            assert row is not None
+            by_name = {field.name: field for field in row}
+            for name in ("fuel_capacity", "fuel_consumption_rate"):
+                self.assertIn(name, by_name, entry.catalogue_id)
+                self.assertIn(
+                    by_name[name].grade, catalogue.RESOLVED_GRADES, entry.catalogue_id
+                )
 
 
 class SystemsGateTest(unittest.TestCase):

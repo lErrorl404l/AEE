@@ -64,6 +64,14 @@
           "locator": "Main rotor: 5",
           "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP main rotor blade count",
           "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 445,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 445",
+          "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP internal fuel capacity in litres",
+          "grade": "documented"
         }
       }
     },
@@ -128,6 +136,14 @@
           "locator": "Main rotor: 5",
           "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP main rotor blade count",
           "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 445,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 445",
+          "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP internal fuel capacity in litres",
+          "grade": "documented"
         }
       }
     },
@@ -191,6 +207,14 @@
           "source": "src_opfor_weg",
           "locator": "Main rotor: 5",
           "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND main rotor blade count",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 1840,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 1,840",
+          "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND internal fuel capacity in litres",
           "grade": "documented"
         }
       }
@@ -319,6 +343,14 @@
           "source": "src_opfor_weg",
           "locator": "Main rotor: 3",
           "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE main rotor blade count",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 445,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 445",
+          "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE internal fuel capacity in litres",
           "grade": "documented"
         }
       }

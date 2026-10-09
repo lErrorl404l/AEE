@@ -389,6 +389,38 @@
           "locator": "Service Ceiling 4,570 m (15,000 ft)",
           "state": "Leonardo AW101 brochure service ceiling",
           "grade": "claimed"
+        },
+        "fuel_capacity": {
+          "value": 4155,
+          "unit": "L",
+          "source": "src_easa_tcds_r013",
+          "locator": "Fluid capacities, Fuel, Tank capacity: 4 155 litres in four tanks of each 1 059 litres",
+          "state": "EASA TCDS EASA.R.013 EH101-500 fuel tank capacity in litres",
+          "grade": "documented"
+        },
+        "fuel_type": {
+          "value": "jet_a1",
+          "unit": "enum",
+          "source": "src_easa_tcds_r013",
+          "locator": "Fluids, Fuel, Avjet type fuels conforming to ASTM D1655, Type A, A-1",
+          "state": "EASA TCDS EASA.R.013 EH101-500 approved fuel type",
+          "grade": "documented"
+        },
+        "fuel_tank_count": {
+          "value": 4,
+          "unit": "count",
+          "source": "src_easa_tcds_r013",
+          "locator": "in four tanks of each 1 059 litres",
+          "state": "EASA TCDS EASA.R.013 EH101-500 fuel tank count",
+          "grade": "documented"
+        },
+        "fuel_tank_capacity_l": {
+          "value": 1059,
+          "unit": "L",
+          "source": "src_easa_tcds_r013",
+          "locator": "in four tanks of each 1 059 litres",
+          "state": "EASA TCDS EASA.R.013 EH101-500 fuel tank capacity each",
+          "grade": "documented"
         }
       }
     }

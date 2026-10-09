@@ -337,11 +337,13 @@ def _check_grade_coupling(
             )
     elif grade == "documented":
         manual_ok = (
-            tier in (2, 3) and source_type in ("manual", "measurement") and primary_held
+            tier in (2, 3)
+            and source_type in ("manual", "measurement", "poh", "tcds")
+            and primary_held
         )
         if not manual_ok:
             errors.append(
-                f"{where}: grade documented needs a held tier 2 or 3 manual or measurement source"
+                f"{where}: grade documented needs a held tier 2 or 3 manual, measurement, poh or tcds source"
             )
     elif grade == "claimed":
         maker_ok = tier == 4 and source_type == "manufacturer"

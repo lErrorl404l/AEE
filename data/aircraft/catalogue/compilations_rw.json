@@ -123,6 +123,14 @@
           "locator": "Mi-2 main rotor diameter 14.6 m",
           "state": "US Army OPFOR guide main rotor diameter",
           "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 600,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 600",
+          "state": "OPFOR Worldwide Equipment Guide Mi-2/HOPLITE internal fuel capacity in litres",
+          "grade": "documented"
         }
       }
     },
@@ -172,6 +180,14 @@
           "locator": "Mi-28 main rotor diameter 17.2 m",
           "state": "US Army OPFOR guide main rotor diameter",
           "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 1900,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 1,900",
+          "state": "OPFOR Worldwide Equipment Guide Mi-28/HAVOC internal fuel capacity in litres",
+          "grade": "documented"
         }
       }
     },
@@ -220,6 +236,14 @@
           "source": "src_opfor_weg",
           "locator": "Mi-26 main rotor diameter 32 m",
           "state": "US Army OPFOR guide main rotor diameter",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 11900,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 11,900",
+          "state": "OPFOR Worldwide Equipment Guide Mi-26/HALO internal fuel capacity in litres",
           "grade": "documented"
         }
       }

@@ -49,6 +49,22 @@
           "locator": "main rotor",
           "state": "main rotor diameter stated by the maker",
           "grade": "claimed"
+        },
+        "fuel_capacity": {
+          "value": 229,
+          "unit": "L",
+          "source": "src_md500e_2023",
+          "locator": "60.5 Gallon (229 liter) Crash Resistant Fuel System",
+          "state": "MD 500E product specification crash resistant fuel system capacity",
+          "grade": "claimed"
+        },
+        "fuel_type": {
+          "value": "jet_a",
+          "unit": "enum",
+          "source": "src_md500e_2023",
+          "locator": "Main Fuel Tank; Crash Resistant Fuel System, Full (Jet A)",
+          "state": "MD 500E product specification fuel type",
+          "grade": "claimed"
         }
       }
     },
@@ -146,6 +162,22 @@
           "source": "src_md500e_2023",
           "locator": "main rotor",
           "state": "main rotor diameter stated by the maker",
+          "grade": "claimed"
+        },
+        "fuel_capacity": {
+          "value": 229,
+          "unit": "L",
+          "source": "src_md500e_2023",
+          "locator": "60.5 Gallon (229 liter) Crash Resistant Fuel System",
+          "state": "MD 500E product specification crash resistant fuel system capacity",
+          "grade": "claimed"
+        },
+        "fuel_type": {
+          "value": "jet_a",
+          "unit": "enum",
+          "source": "src_md500e_2023",
+          "locator": "Main Fuel Tank; Crash Resistant Fuel System, Full (Jet A)",
+          "state": "MD 500E product specification fuel type",
           "grade": "claimed"
         }
       }
