@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Runtime aircraft fuel kernel tests (aircraft systems, task 16).
+"""Runtime aircraft fuel kernel tests (aircraft systems, tasks 16 and 17).
 
 The aircraft fuel layer burns a sourced rate on the owning machine and moves
 the centre of gravity as the fuel leaves. Two files carry it:
@@ -70,6 +70,7 @@ def run_kernel(
     is_local: bool = True,
     classes: tuple[str, ...] = ("Helicopter", "Air"),
     enabled: bool = True,
+    alive: bool = True,
 ) -> tuple[object, Recorder]:
     """Run fnc_updateFuelSystem against a stub aircraft and systems row."""
     rec = Recorder()
@@ -79,7 +80,7 @@ def run_kernel(
             enabled if pair[0] == "__QEGVAR__core_enabled" else pair[1]
         ),
         "isNull": lambda v: v is None,
-        "alive": lambda v: True,
+        "alive": lambda v: alive,
         "local": lambda v: is_local,
         "typeOf": lambda v: "Helicopter",
         "fuel": lambda v: fuel_fraction,
@@ -215,6 +216,28 @@ class TestFuelKernel(unittest.TestCase):
         result, rec = run_kernel(SYSTEMS, DATA, enabled=False)
         self.assertFalse(result)
         self.assertIsNone(rec.fuel)
+
+    def test_a_dead_vehicle_is_refused(self) -> None:
+        result, rec = run_kernel(SYSTEMS, DATA, alive=False)
+        self.assertFalse(result)
+        self.assertIsNone(rec.fuel)
+        self.assertIsNone(rec.com)
+
+    def test_a_parachute_is_refused(self) -> None:
+        result, rec = run_kernel(SYSTEMS, DATA, classes=("Air", "ParachuteBase"))
+        self.assertFalse(result)
+        self.assertIsNone(rec.fuel)
+
+    def test_a_non_air_vehicle_is_refused(self) -> None:
+        result, rec = run_kernel(SYSTEMS, DATA, classes=())
+        self.assertFalse(result)
+        self.assertIsNone(rec.fuel)
+
+    def test_the_fuel_fraction_is_clamped_to_one(self) -> None:
+        # A full tank is 1.0. A stub that reports more must clamp, not overshoot.
+        result, rec = run_kernel(SYSTEMS, DATA, fuel_fraction=1.5)
+        self.assertTrue(result)
+        self.assertEqual(rec.fuel, 1.0)
 
 
 class TestKernelContract(unittest.TestCase):
