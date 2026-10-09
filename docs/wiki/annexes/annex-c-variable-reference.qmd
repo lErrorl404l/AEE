@@ -311,6 +311,7 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_gripDeltaMu` | mobility | Wet/ice friction loss: dry reference minus the current surface coefficient (W2) |
 | `aee_mobility_gripLossForceN` | mobility | Coulomb grip-loss force applied with addForce, in newtons (W2) |
 | `aee_mobility_couplingPFH` | mobility | Runtime vehicle coupling PFH handle (W2) |
+| `aee_mobility_aircraftSystemsPFH` | mobility | Aircraft systems driver PFH handle, the ONE handler that schedules the four systems kernels (#117) |
 | `aee_mobility_brakeTempC` | mobility | Brake rotor temperature in C |
 | `aee_mobility_brakeMu` | mobility | Brake friction coefficient (fade) 0..1 |
 | `aee_mobility_vehicleMassLowKg` | mobility | Vehicle mass estimate lower bound in kg, 0 when unavailable |

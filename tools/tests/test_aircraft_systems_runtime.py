@@ -118,6 +118,18 @@ FORBIDDEN_STATUS_COMMANDS = (
     "addForceGeneratorRTD",
 )
 
+# The systems driver and its ONE per-frame handler.
+SYSTEMS_DRIVER = FUNCS / "fnc_updateAircraftSystems.sqf"
+SYSTEMS_DRIVER_SRC = SYSTEMS_DRIVER.read_text(encoding="utf-8")
+POSTINIT_PATH = REPO / "addons" / "mobility" / "XEH_postInit.sqf"
+POSTINIT_SRC = POSTINIT_PATH.read_text(encoding="utf-8")
+DRIVER_KERNELS = (
+    "updateFuelSystem",
+    "updateEngineSystem",
+    "updateDamageSystem",
+    "updateStatusSystems",
+)
+
 # The systems row carries the numeric fields first, in the generated order:
 # fuel (5), engine (5: idle Ng, max Ng, max Np, max torque, max TGT), oil (2),
 # then the remaining numeric fields and the three enum fields.
@@ -1080,6 +1092,48 @@ class TestStatusKernelContract(unittest.TestCase):
 
     def test_the_function_is_registered_once(self) -> None:
         hits = [line for line in PREP_SRC.splitlines() if "updateStatusSystems" in line]
+        self.assertEqual(len(hits), 1, hits)
+
+
+class TestSystemsDriverContract(unittest.TestCase):
+    """The source contracts the harness cannot execute."""
+
+    def test_exactly_one_per_frame_handler_is_registered_for_the_systems(self) -> None:
+        # The driver is registered exactly once...
+        self.assertEqual(POSTINIT_SRC.count("call FUNC(updateAircraftSystems)"), 1)
+        # ...and that registration is a CBA per-frame handler.
+        index = POSTINIT_SRC.index("call FUNC(updateAircraftSystems)")
+        tail = POSTINIT_SRC[index:]
+        self.assertLess(tail.index("CBA_fnc_addPerFrameHandler"), 200)
+
+    def test_the_driver_calls_all_four_kernels(self) -> None:
+        for kernel in DRIVER_KERNELS:
+            self.assertIn(f"FUNC({kernel})", SYSTEMS_DRIVER_SRC, kernel)
+
+    def test_the_driver_guards_on_the_kernels_being_present(self) -> None:
+        for kernel in DRIVER_KERNELS:
+            self.assertIn(f"isNil QFUNC({kernel})", SYSTEMS_DRIVER_SRC, kernel)
+
+    def test_the_driver_runs_on_local_vehicles_including_the_server(self) -> None:
+        self.assertIn("local _x", SYSTEMS_DRIVER_SRC)
+        header = SYSTEMS_DRIVER_SRC.split("*/", 1)[0]
+        self.assertIn("INCLUDING the server", header)
+
+    def test_the_driver_guards_on_the_airframe_being_an_aircraft(self) -> None:
+        self.assertIn('isKindOf "Air"', SYSTEMS_DRIVER_SRC)
+        self.assertIn('isKindOf "ParachuteBase"', SYSTEMS_DRIVER_SRC)
+
+    def test_the_handler_passes_elapsed_mission_time_not_a_tick_count(self) -> None:
+        # The handler computes the elapsed mission time and passes it to the
+        # driver, so every machine that owns the airframe agrees.
+        self.assertIn("time", POSTINIT_SRC)
+        self.assertIn("aircraftSystemsLastTime", POSTINIT_SRC)
+        self.assertIn("[_delta] call FUNC(updateAircraftSystems)", POSTINIT_SRC)
+
+    def test_the_driver_is_registered_once_in_prep(self) -> None:
+        hits = [
+            line for line in PREP_SRC.splitlines() if "updateAircraftSystems" in line
+        ]
         self.assertEqual(len(hits), 1, hits)
 
 

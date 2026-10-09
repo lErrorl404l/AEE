@@ -42,6 +42,7 @@ PREP(updateFuelSystem);
 PREP(updateEngineSystem);
 PREP(updateDamageSystem);
 PREP(updateStatusSystems);
+PREP(updateAircraftSystems);
 PREP(updateGroundState);
 PREP(getVehicleMassModel);
 PREP(estimateVehicleMass);
