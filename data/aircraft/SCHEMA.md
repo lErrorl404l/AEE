@@ -26,10 +26,10 @@ and `rotary_wing`. An aircraft entry never carries `wheeled`, `tracked`,
 
 ## 2. The units added
 
-The aircraft unit vocabulary adds four exact strings to the vehicle
-vocabulary: `W`, `kN`, `m/s` and `m^2`. The vehicle vocabulary in
-`data/vehicle/SCHEMA.md` section 9 stays in force. `W` is a watt. `kN` is a
-kilonewton. `m/s` is a metre per second. `m^2` is a square metre.
+The aircraft unit vocabulary adds `kN`, `m/s` and `m^2` to the shared
+vocabulary. The vocabulary in `data/vehicle/SCHEMA.md` section 9 stays in
+force. `kN` is a kilonewton. `m/s` is a metre per second. `m^2` is a
+square metre.
 
 ## 3. The field list and the model mapping
 
@@ -143,3 +143,75 @@ these.
 6. A class binding needs a real-world mapping source. No category guess.
 7. Write only your own output file. Never edit another file and never
    commit.
+
+## 10. The aircraft systems deltas
+
+This section inherits the shared systems field contract from
+`data/vehicle/SCHEMA.md` section 16 by reference. It states only the
+aircraft additions. The shared fuel, engine, mass, damage and status
+tables stay in force. They are not restated here.
+
+A row below carries the same shape as a shared row: a unit, a source
+class, a published flag and an engine hook or marker.
+
+### The aircraft engine ceiling
+
+The engine ceiling in `data/vehicle/SCHEMA.md` section 16 applies. The
+aircraft addition is the turbine delta. The RotorLib real-time data
+interface exists only when `difficultyEnabledRTD` is true. The commands
+are `setWantedRPMRTD` and the real-time getters. The interface is a no-op
+in the simple model. The engine exposes no turbine temperature, no oil, no
+start and no wear. The script supplies the turbine-temperature and oil
+readout. The flight dynamics model is fixed at config load.
+
+### The status-systems ceiling
+
+The status-systems ceiling is stated once in `data/vehicle/SCHEMA.md`
+section 16. It applies here in full. Hydraulics, electrical and
+pressurisation are absent and status only. No second statement is needed.
+
+### Engine turbine terms
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `engine_idle_ng` | ratio | manual | yes | `setWantedRPMRTD` target, RTD only |
+| `engine_max_ng` | ratio | manual | yes | `setWantedRPMRTD` limit, RTD only |
+| `engine_max_np` | ratio | manual | yes | scripted status |
+| `engine_max_tgt_c` | deg C | manual | yes | scripted status, not engine-exposed |
+| `engine_max_itt_c` | deg C | manual | yes | scripted status |
+| `transmission_gear_ratio_tail` | ratio | manual | yes | reference only |
+
+### Rotor geometry
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `rotor_radius_m` | m | manual | yes | reference only, disc area derivation |
+| `rotor_diameter_m` | m | manual | yes | exists |
+| `rotor_blade_count` | count | manual | yes | reference only |
+| `rotor_chord_m` | m | manual | yes | reference only |
+| `rotor_twist_deg` | deg | manual | yes | reference only |
+| `rotor_hinge_offset_m` | m | manual | yes | reference only |
+| `rotor_design_rpm` | rpm | manual | yes | reference only |
+| `rotor_tip_speed_ms` | m/s | derived | no | reference only |
+| `tail_rotor_radius_m` | m | manual | yes | reference only |
+| `tail_rotor_blade_count` | count | manual | yes | reference only |
+
+### V-speeds
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `vne_kmh` | km/h | manual / poh | yes | reference only |
+| `vmo_kmh` | km/h | manual | yes | reference only |
+| `vref_kmh` | km/h | manual | yes | reference only |
+| `vstall_kmh` | km/h | manual | yes | reference only |
+| `vy_kmh` | km/h | manual | yes | reference only |
+| `autorotation_speed_kmh` | km/h | manual | yes | reference only |
+| `service_ceiling_m` | m | manual | yes | exists |
+
+### Pressurisation
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `cabin_pressure_max_kpa` | kPa | manual | yes | status only |
+| `pressurisation_ceiling_m` | m | manual | yes | status only |
+| `oxygen_system` | enum | manual | yes | status only |
