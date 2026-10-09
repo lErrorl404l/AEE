@@ -105,6 +105,30 @@
           "locator": "Section 1 General, Oil Capacity, Sump: 8 U.S. Quarts",
           "state": "Cessna 172S POH sump oil capacity 8 US quarts converted to litres, 8 * 0.946353 = 7.57",
           "grade": "documented"
+        },
+        "generator_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Section 6 Weight and Balance Equipment List, 24-01 ALTERNATOR, 28 VOLT 50 AMP",
+          "state": "Cessna 172S POH one engine-driven alternator",
+          "grade": "documented"
+        },
+        "bus_voltage_v": {
+          "value": 28,
+          "unit": "V",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Section 6 Weight and Balance Equipment List, 24-01 ALTERNATOR, 28 VOLT 50 AMP",
+          "state": "Cessna 172S POH 28 volt direct current system",
+          "grade": "documented"
+        },
+        "battery_capacity_ah": {
+          "value": 12.75,
+          "unit": "Ah",
+          "source": "src_cessna_172sp_poh",
+          "locator": "Section 6 Weight and Balance Equipment List, 24-02 BATTERY, 24 VOLT, 12.75 A.H.",
+          "state": "Cessna 172S POH battery capacity 12.75 ampere hours",
+          "grade": "documented"
         }
       }
     }
