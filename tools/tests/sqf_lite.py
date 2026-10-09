@@ -181,6 +181,10 @@ BINARY_COMMANDS = {
     # Object class test used by the wildlife neighbourhood sampler.  In the
     # harness the objects are strings, so this is an equality test.
     "isKindOf",
+    # Object state writes used by the aircraft fuel kernel.  The harness
+    # resolves each through globals_, so a test binds a recorder.
+    "setFuel",
+    "setCenterOfMass",
 }
 
 
@@ -271,6 +275,13 @@ UNARY_COMMANDS = {
     # are engine commands the caller binds through globals_.
     "getArray",
     "fileExists",
+    # Object queries used by the aircraft fuel kernel (fnc_updateFuelSystem).
+    # The harness resolves each through globals_, so a test must bind them.
+    "local",
+    "isNull",
+    "alive",
+    "typeOf",
+    "fuel",
 }
 
 
@@ -1065,6 +1076,12 @@ class SqfRuntime:
                 "isClass",
                 "getArray",
                 "fileExists",
+                # Object queries used by fnc_updateFuelSystem.
+                "local",
+                "isNull",
+                "alive",
+                "typeOf",
+                "fuel",
             ):
                 fn = self.globals.get(node.op)
                 if callable(fn):
