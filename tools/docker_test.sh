@@ -16,6 +16,9 @@
 #   --parallel        run several modes at once and aggregate the verdict
 #   --merge-order     prove the config merge is last-loaded-wins (ADR-027)
 #   --direction       exercise the compat direction split with a stand-in host
+#   --console         drive the live dev console (AEE_DEV=1): post a probe
+#                     batch and assert the returned verdicts.  --with-client
+#                     also starts an optional headless client (clients = 1).
 #
 # Isolation options:
 #   --run-id ID       name this run (default: <worktree>-<pid>)
@@ -47,6 +50,7 @@ RUN_ID="${AEE_RUN_ID:-}"
 RUN_DIR="${AEE_RUN_DIR:-}"
 GAME_PORT="${AEE_GAME_PORT:-}"
 JOBS=()
+WITH_CLIENT=0
 while [ $# -gt 0 ]; do
     case "$1" in
     --baseline) MODE="baseline" ;;
@@ -57,6 +61,8 @@ while [ $# -gt 0 ]; do
     --parallel) MODE="parallel" ;;
     --merge-order) MODE="merge_order" ;;
     --direction) MODE="direction" ;;
+    --console) MODE="console" ;;
+    --with-client) WITH_CLIENT=1 ;;
     --isolate) ISOLATE=1 ;;
     --soak-min)
         shift
@@ -318,6 +324,71 @@ services:
       - $RUN_DIR/dev-sentinel/aee_dev:/arma3/server/aee_dev
       - $ROOT/tools/dev-harness/extension/dist/aee_dev_x64.so:/arma3/server/aee_dev_x64.so
 YAMLEOF
+fi
+
+# ── Console mode (AEE_DEV=1) ────────────────────────────────────────────────
+# Drives the live dev console: start, wait for /health, post a probe batch,
+# assert the returned verdicts, tear down.  This is an observation of the live
+# session.  verify.py stays the phase gate for the default mode; this mode does
+# not replace it.
+if [ "$MODE" = "console" ]; then
+    if [ "${AEE_DEV:-0}" != "1" ]; then
+        echo "ERROR: --console needs AEE_DEV=1 so the extension is mounted"
+        exit 2
+    fi
+    CONSOLE_FILES=(-f "$DOCKER/docker-compose.yml" -f "$DEV_OVERLAY")
+    DEV_PORT="${AEE_DEV_PORT:-7788}"
+    DEV_TOKEN="${AEE_DEV_TOKEN:-aee-dev-token}"
+    BATCH="${AEE_CONSOLE_BATCH:-headless}"
+    HTTP="$ROOT/tools/dev-harness/dev_http.py"
+
+    clean_profiles
+    echo "==> console: docker compose up"
+    docker compose "${CONSOLE_FILES[@]}" up -d --force-recreate
+
+    echo "==> console: waiting for /health on 127.0.0.1:$DEV_PORT (up to 300 s)"
+    health_ok=0
+    for _ in $(seq 1 100); do
+        if python3 "$HTTP" health "$DEV_PORT" 2>/dev/null | grep -q pong; then
+            health_ok=1
+            break
+        fi
+        sleep 3
+    done
+    if [ "$health_ok" != "1" ]; then
+        echo "==> console: FAIL /health never answered (container logs follow)"
+        docker compose "${CONSOLE_FILES[@]}" logs >"$RUN_DIR/console.log" 2>&1 || true
+        docker compose "${CONSOLE_FILES[@]}" down 2>/dev/null || true
+        exit 1
+    fi
+    echo "==> console: /health OK"
+
+    echo "==> console: POST probes [$BATCH]"
+    RESP="$(python3 "$HTTP" post "$DEV_PORT" "$DEV_TOKEN" probes "$BATCH" 2>/dev/null || true)"
+    printf '%s\n' "$RESP" >"$RUN_DIR/console-batch.txt"
+    docker compose "${CONSOLE_FILES[@]}" logs >"$RUN_DIR/console.log" 2>&1 || true
+    docker compose "${CONSOLE_FILES[@]}" down 2>/dev/null || true
+    printf '==> console: batch result %s\n' "$RESP"
+
+    CONSOLE_FAIL=0
+    TAGS="$(grep -oE '"P[0-9A-Za-z]+"' "$ROOT/tools/dev-harness/addons/dev/functions/fnc_devProbes.sqf" | tr -d '"' | sort -u)"
+    for tag in $TAGS; do
+        if ! printf '%s' "$RESP" | grep -q "\"$tag\""; then
+            echo "  FAIL: $tag absent from the batch result"
+            CONSOLE_FAIL=1
+        elif ! printf '%s' "$RESP" | grep -q "\"$tag\".*pass"; then
+            echo "  FAIL: $tag did not pass"
+            CONSOLE_FAIL=1
+        else
+            echo "  PASS: $tag"
+        fi
+    done
+    if [ "$CONSOLE_FAIL" -ne 0 ]; then
+        echo "==> console FAIL"
+        exit 1
+    fi
+    echo "==> console PASS"
+    exit 0
 fi
 
 # ── Parallel mode ───────────────────────────────────────────────────────────
