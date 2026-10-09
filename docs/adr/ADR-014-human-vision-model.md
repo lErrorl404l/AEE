@@ -22,7 +22,7 @@ The engine limits the work. Arma 3 renders a low dynamic range image through a f
 
 5. The model reuses the registry keys `BaseGrade` (ColorCorrections at priority 1505) and `BaseAcuity` (FilmGrain at priority 2505). It creates no new key and no new effect. The proven registry ownership, the priority and the teardown tests survive.
 
-6. The model reads the eye adaptation model's published state. It reads `aee_optics_eyeAdaptedLux` and `aee_optics_eyeMesopic`. It never writes the aperture. The eye model keeps the aperture, its rate, its `currentVisionMode != 0` gate and its `setAperture -1` stand-down. The driver does not chain onto the eye module.
+6. The model reads the eye adaptation model's published state. It reads `aee_eye_eyeAdaptedLux` and `aee_eye_eyeMesopic`. It never writes the aperture. The eye model keeps the aperture, its rate, its `currentVisionMode != 0` gate and its `setAperture -1` stand-down. The driver does not chain onto the eye module.
 
 7. The white target is the display white D65. The scene illuminant is the engine ambient colour from `getLightingAt`. The adaptation is a partial von Kries blend. The engine has no cone matrix, so the ColorCorrections blend slot carries a small complementary tint in the display domain.
 

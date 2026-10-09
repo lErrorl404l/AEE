@@ -680,7 +680,9 @@ class ExhaustWiring(unittest.TestCase):
         )
 
     def test_setting_is_registered_in_fx(self):
-        settings = (REPO / "addons/weatherfx/initSettings.inc.sqf").read_text(encoding="utf-8")
+        settings = (REPO / "addons/weatherfx/initSettings.inc.sqf").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("AEE_SETTING_SLIDER(exhaustShimmerAlpha", settings)
 
     def test_setting_is_not_registered_in_optics(self):
@@ -1091,8 +1093,13 @@ class AirEngineLoadWiring(unittest.TestCase):
         )
 
     def test_air_overrides_are_read_with_declared_defaults(self):
-        self.assertIn('getVariable ["aee_engineDragAreaM2", 0.7]', self.code)
-        self.assertIn('getVariable ["aee_engineRotorDiscAreaM2", 50]', self.code)
+        # The override is read with a 0 sentinel (unset), then the aircraft
+        # corpus row, then the declared default.  The declared defaults are
+        # 0.7 m^2 drag area and 50 m^2 rotor disc.
+        self.assertIn('getVariable ["aee_engineDragAreaM2", 0]', self.code)
+        self.assertIn('getVariable ["aee_engineRotorDiscAreaM2", 0]', self.code)
+        self.assertIn("_dragArea = 0.7", self.code)
+        self.assertIn("_discArea = 50", self.code)
 
     # ── the diagnostic ─────────────────────────────────────────────────
     def test_diagnostic_exists_and_names_the_fields(self):

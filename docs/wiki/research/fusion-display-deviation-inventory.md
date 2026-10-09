@@ -58,7 +58,7 @@ ours only, no source counterpart.
   remain (`RscTitles.hpp:145-292`). Our fusion HUD never sets a background on
   any control. Convenience alternative to their onLoad repositioning: our box
   geometry is a fixed macro `FUSION_HUD_BOX_FRACTION 0.40`
-  (`addons/thermal/script_component.hpp:18`).
+  (`addons/thermal_display/script_component.hpp:18`).
 
 ### 1.3 `functions/fn_collectHot.sqf` (lines 1-52)
 
@@ -144,7 +144,7 @@ geometry, explicit form.
 - Status: COPIED. Same geometry, idc layout, change cache. Heading comes from
   `EFUNC(core,getEyeState)` instead of the camera pair (`fnc_hudTapeDraw.sqf:34-42`).
 - Deviation: our scale/span are compile-time macros `FUSION_HUD_SCALE 1.14`,
-  `FUSION_HUD_TAPE_SPAN 60` (`addons/thermal/script_component.hpp:20-21`), not
+  `FUSION_HUD_TAPE_SPAN 60` (`addons/thermal_display/script_component.hpp:20-21`), not
   settings; the source exposes them through `fn_preInit.sqf:52,79-80`. Our ruler
   colour is the same value as a macro (`script_component.hpp:27`); source
   `rulerColor` at `fn_preInit.sqf:56`. Our tape loses the glass brightness
@@ -236,7 +236,7 @@ geometry, explicit form.
   `visionMode`/`thermalMode` (`:52-70`); `requireThermal` option (`:27`).
 - Ours: capability is resolved from the device corpus by
   `FUNC(resolveFusionDevice)` and `FUNC(isFusionCapable)`, invoked in the
-  optics vision dispatch (`addons/optics/XEH_postInit.sqf:109-117`).
+  vision dispatch (`addons/vision/XEH_postInit.sqf:109-117`).
 - Status: REPLACED.
 - Deviation: no class-name whitelist and no `visionMode` heuristic; a device is
   fusion-capable when our data says it is. The source's fuzzy name matching is
@@ -252,10 +252,10 @@ geometry, explicit form.
   range, detail range, line width, max outlines, glow, sensor resolution, grid
   digits, far width, opacity, whiteness, occlusion (`:114-268`). Keybinds V
   (`:287-294`) and Shift+B (`:299-314`).
-- Ours: compile-time macros in `addons/thermal/script_component.hpp`
+- Ours: compile-time macros in `addons/thermal_display/script_component.hpp`
   (`FUSION_HUD_BOX_FRACTION 0.40`, `FUSION_HUD_SCALE 1.14`,
   `FUSION_HUD_RULER_COLOR`, `FUSION_HUD_INFO_COLOR`, `FUSION_FRAME_MIN_INSET`;
-  lines 10-28) and CBA settings in `addons/thermal/initSettings.inc.sqf`.
+  lines 10-28) and CBA settings in `addons/thermal_display/initSettings.inc.sqf`.
 - Status: PARTIAL. Kept as settings: `fusionAlwaysOn` (`:23`), `fusionFovFrame`
   (`:30`), `fusionOutline` (`:36`), `fusionSolidFill` (`:45`), `fusionHud`
   (`:55`).
@@ -274,7 +274,7 @@ geometry, explicit form.
   `fn_boot`, `fn_drawHUD`, `fn_drawInfo` (`:45-49`). A 0.10 s loop refreshes the
   hot list, auto-closes on NVG off, and re-cuts the box on colour/size change
   (`:51-106`).
-- Ours: `addons/thermal/XEH_postInit.sqf:15-32`. One `Draw3D` handler calls
+- Ours: `addons/thermal_display/XEH_postInit.sqf:15-32`. One `Draw3D` handler calls
   `FUNC(outlineDraw)`, `FUNC(hudTapeBoot)`, `FUNC(hudTapeDraw)`; a 0.1 s PFH
   runs `FUNC(hudTapeInfo)` (`:29`).
 - Status: PARTIAL. COPIED wiring. The source separates the outline handler from
@@ -295,13 +295,13 @@ geometry, explicit form.
 - Ours: split. `FUNC(outlineToggle)` raises/clears only the canvas
   (`addons/thermal_display/functions/outline/fnc_outlineToggle.sqf:23-36`); the
   fusion on/off gate and animation live in the optics dispatch and
-  `FUNC(hudTapeBoot)` (`addons/optics/XEH_postInit.sqf:109-121`,
+  `FUNC(hudTapeBoot)` (`addons/vision/XEH_postInit.sqf:109-121`,
   `fnc_hudTapeBoot.sqf:33-45`).
 - Status: REPLACED (decomposed).
 - Deviation: no V-key toggle in thermal; fusion is entered through the optics
   vision dispatch. The source's Zeus-display guard and NVG-on guard are not in
   our thermal toggle; capability gating is `isFusionCapable`
-  (`addons/optics/XEH_postInit.sqf:109`).
+  (`addons/vision/XEH_postInit.sqf:109`).
 
 ### 1.16 `config.cpp` controls (lines 1-220)
 
@@ -488,7 +488,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   `ambientTemperature` replaced by `aee_core_currentTemperature`
   (`fnc_hudUpdate.sqf:53,70`); we add humidity and wind (`:54-56,71-72`). No
   radio line. The source's per-control visibility toggles map to our single
-  `hudEnabled` setting (`addons/optics/initSettings.inc.sqf:65`) and do not
+  `hudEnabled` setting (`addons/hud/initSettings.inc.sqf:65`) and do not
   support per-control hiding. The source's HUD editor drives its per-control
   positions (`:92-137`); ours has no editor, so positions are fixed.
 
@@ -540,11 +540,11 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   `XEH_postInit.sqf` (`:10-14`); `CfgMarkerClasses \ FPANO_ECOTI_Markers`
   (`:16-20`); `CfgMarkers` with `FPANO_marker_POI`, `_OP`, `_FSS` (`:22-45`);
   `CfgSounds \ fpano_sound_toggle` (`:47-54`); `#include "ui_hud.hpp"` (`:56`).
-- Ours: `addons/optics/config.cpp` declares `CfgPatches` and includes
+- Ours: `addons/hud/config.cpp` declares `CfgPatches` and includes
   `RscTitles.hpp`; there is no `CfgMarkerClasses`, no `CfgMarkers`, no
   `CfgSounds`.
 - Status: MISSING for CfgMarkers and CfgSounds. PARTIAL for PostInit (ours is
-  `addons/optics/XEH_postInit.sqf:142-151`).
+  `addons/hud/XEH_postInit.sqf:142-151`).
 
 ### 4.8 `CfgMarkers`
 
@@ -562,9 +562,9 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   starts the HUD/marker/rangefinder/radio scripts (`:180-195`), and registers
   four keybinds: toggle overlay, rangefinder ping, cycle filter, edit HUD
   (`:198-302`).
-- Ours: `addons/optics/XEH_postInit.sqf:142-151` starts `hudRangefinder`,
+- Ours: `addons/hud/XEH_postInit.sqf:142-151` starts `hudRangefinder`,
   `hudMarkers` and the `hudUpdate` PFH. Setting `hudEnabled` default false
-  (`addons/optics/initSettings.inc.sqf:65`).
+  (`addons/hud/initSettings.inc.sqf:65`).
 - Status: PARTIAL.
 - Deviation: one setting instead of 13; no keybinds; no editor; no radio; no
   filter modes. The source starts its scripts from a mission spawn; ours starts
