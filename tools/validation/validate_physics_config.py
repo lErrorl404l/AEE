@@ -70,10 +70,16 @@ CONFIG_CLASSES = frozenset({"CfgVehicles"})
 
 # The engine config keys this schema version admits. ``maxSpeed`` is a land
 # key. ``fuelCapacity`` is the aircraft fuel key, held in litres.
-CONFIG_KEYS = frozenset({"maxSpeed", "fuelCapacity"})
+# ``fuelConsumptionRate`` is the aircraft structural-zero key: it disables the
+# engine's own burn so the scripted burn is authoritative, and it is unitless.
+CONFIG_KEYS = frozenset({"maxSpeed", "fuelCapacity", "fuelConsumptionRate"})
 
 # The documented config unit of each admitted key.
-KEY_UNITS: dict[str, str] = {"maxSpeed": "km/h", "fuelCapacity": "L"}
+KEY_UNITS: dict[str, str] = {
+    "maxSpeed": "km/h",
+    "fuelCapacity": "L",
+    "fuelConsumptionRate": "unitless",
+}
 
 # The grade vocabulary. A binding never carries ``absent``: a binding with no
 # held source value is omitted, not recorded.
@@ -114,6 +120,16 @@ CONVERSIONS: dict[str, Conversion] = {
         target_unit="km/h",
         factor=3.6,
         basis="1 m/s = 3.6 km/h (SI derived unit)",
+    ),
+    "structural_zero": Conversion(
+        source_unit=None,
+        target_unit=None,
+        factor=0.0,
+        basis=(
+            "the key is a structural zero: the engine's own burn is disabled "
+            "so the scripted burn from the sourced systems-row rate is "
+            "authoritative and the two never double-count"
+        ),
     ),
 }
 
@@ -216,6 +232,10 @@ def _check_conversion(
         )
         return None
     if conv is None or unit is None:
+        return conv
+    if conversion == "structural_zero":
+        # The key is a structural zero, not a unit identity. Its value is
+        # fixed at zero by the conversion factor, so no held unit is compared.
         return conv
     if conv.source_unit is None:
         # A direct unit identity: the source unit equals the target unit.
