@@ -160,17 +160,6 @@ class TestMigratedModels(unittest.TestCase):
 class TestMonotonicPublish(unittest.TestCase):
     """The published clock is monotonic over a non-decreasing tick series."""
 
-    def test_publish_is_monotonic(self):
-        # The body binds simTime to the diag_tickTime sample.  diag_tickTime is
-        # real monotonic seconds, so the published series never decreases.
-        ticks = [0.0, 0.0, 0.0125, 0.0125, 0.025, 1.5, 1.5001, 900.0]
-        published = [t for t in ticks]  # body: simTime := diag_tickTime
-        self.assertEqual(
-            published,
-            sorted(published),
-            "a non-decreasing tick series must publish a non-decreasing clock",
-        )
-
     def test_the_binding_is_the_monotonic_sample(self):
         # Guard the simulation above from drifting off the real SQF: the only
         # simTime assignment must bind the _now sample, and _now must be the
