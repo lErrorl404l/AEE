@@ -25,7 +25,7 @@
           "class": "Hill"
         }
       ],
-      "preview": "addons/optics/data/terrain/hill.paa",
+      "preview": "addons/cartography/data/terrain/hill.paa",
       "shared_with": []
     },
     {
@@ -52,7 +52,7 @@
           "class": "Rock"
         }
       ],
-      "preview": "addons/optics/data/terrain/rock.paa",
+      "preview": "addons/cartography/data/terrain/rock.paa",
       "shared_with": []
     },
     {
@@ -83,7 +83,7 @@
           "class": "Tree"
         }
       ],
-      "preview": "addons/optics/data/terrain/deciduous.paa",
+      "preview": "addons/cartography/data/terrain/deciduous.paa",
       "shared_with": []
     },
     {
@@ -106,7 +106,7 @@
           "class": "VegetationFir"
         }
       ],
-      "preview": "addons/optics/data/terrain/coniferous.paa",
+      "preview": "addons/cartography/data/terrain/coniferous.paa",
       "shared_with": []
     },
     {
@@ -129,7 +129,7 @@
           "class": "VegetationPalm"
         }
       ],
-      "preview": "addons/optics/data/terrain/palm.paa",
+      "preview": "addons/cartography/data/terrain/palm.paa",
       "shared_with": []
     },
     {
@@ -152,7 +152,7 @@
           "class": "VegetationVineyard"
         }
       ],
-      "preview": "addons/optics/data/terrain/vineyard.paa",
+      "preview": "addons/cartography/data/terrain/vineyard.paa",
       "shared_with": []
     },
     {
@@ -175,7 +175,7 @@
           "class": "Bush"
         }
       ],
-      "preview": "addons/optics/data/terrain/brushwood.paa",
+      "preview": "addons/cartography/data/terrain/brushwood.paa",
       "shared_with": []
     },
     {
@@ -198,7 +198,7 @@
           "class": "church"
         }
       ],
-      "preview": "addons/optics/data/terrain/church.paa",
+      "preview": "addons/cartography/data/terrain/church.paa",
       "shared_with": []
     },
     {
@@ -221,7 +221,7 @@
           "class": "Chapel"
         }
       ],
-      "preview": "addons/optics/data/terrain/chapel.paa",
+      "preview": "addons/cartography/data/terrain/chapel.paa",
       "shared_with": []
     },
     {
@@ -244,7 +244,7 @@
           "class": "Cross"
         }
       ],
-      "preview": "addons/optics/data/terrain/cross.paa",
+      "preview": "addons/cartography/data/terrain/cross.paa",
       "shared_with": []
     },
     {
@@ -267,7 +267,7 @@
           "class": "Ruin"
         }
       ],
-      "preview": "addons/optics/data/terrain/ruin.paa",
+      "preview": "addons/cartography/data/terrain/ruin.paa",
       "shared_with": []
     },
     {
@@ -290,7 +290,7 @@
           "class": "hospital"
         }
       ],
-      "preview": "addons/optics/data/terrain/hospital.paa",
+      "preview": "addons/cartography/data/terrain/hospital.paa",
       "shared_with": []
     },
     {
@@ -313,7 +313,7 @@
           "class": "ViewPoint"
         }
       ],
-      "preview": "addons/optics/data/terrain/monument.paa",
+      "preview": "addons/cartography/data/terrain/monument.paa",
       "shared_with": []
     },
     {
@@ -336,7 +336,7 @@
           "class": "transmitter"
         }
       ],
-      "preview": "addons/optics/data/terrain/radio_tower.paa",
+      "preview": "addons/cartography/data/terrain/radio_tower.paa",
       "shared_with": []
     },
     {
@@ -359,7 +359,7 @@
           "class": "lighthouse"
         }
       ],
-      "preview": "addons/optics/data/terrain/lighthouse.paa",
+      "preview": "addons/cartography/data/terrain/lighthouse.paa",
       "shared_with": []
     },
     {
@@ -382,7 +382,7 @@
           "class": "watertower"
         }
       ],
-      "preview": "addons/optics/data/terrain/water_tower.paa",
+      "preview": "addons/cartography/data/terrain/water_tower.paa",
       "shared_with": []
     },
     {
@@ -405,7 +405,7 @@
           "class": "power"
         }
       ],
-      "preview": "addons/optics/data/terrain/power_plant.paa",
+      "preview": "addons/cartography/data/terrain/power_plant.paa",
       "shared_with": []
     },
     {
@@ -428,7 +428,7 @@
           "class": "powersolar"
         }
       ],
-      "preview": "addons/optics/data/terrain/solar.paa",
+      "preview": "addons/cartography/data/terrain/solar.paa",
       "shared_with": [
         "tourism",
         "wave"
@@ -454,7 +454,7 @@
           "class": "powerwind"
         }
       ],
-      "preview": "addons/optics/data/terrain/wind.paa",
+      "preview": "addons/cartography/data/terrain/wind.paa",
       "shared_with": []
     },
     {
@@ -477,7 +477,7 @@
           "class": "powerwave"
         }
       ],
-      "preview": "addons/optics/data/terrain/wave.paa",
+      "preview": "addons/cartography/data/terrain/wave.paa",
       "shared_with": [
         "solar",
         "tourism"
@@ -503,7 +503,7 @@
           "class": "fuelstation"
         }
       ],
-      "preview": "addons/optics/data/terrain/fuel_station.paa",
+      "preview": "addons/cartography/data/terrain/fuel_station.paa",
       "shared_with": []
     },
     {
@@ -526,7 +526,7 @@
           "class": "busstop"
         }
       ],
-      "preview": "addons/optics/data/terrain/bus_stop.paa",
+      "preview": "addons/cartography/data/terrain/bus_stop.paa",
       "shared_with": [
         "border_crossing"
       ]
@@ -551,7 +551,7 @@
           "class": "quay"
         }
       ],
-      "preview": "addons/optics/data/terrain/quay.paa",
+      "preview": "addons/cartography/data/terrain/quay.paa",
       "shared_with": []
     },
     {
@@ -574,7 +574,7 @@
           "class": "BorderCrossing"
         }
       ],
-      "preview": "addons/optics/data/terrain/border_crossing.paa",
+      "preview": "addons/cartography/data/terrain/border_crossing.paa",
       "shared_with": [
         "bus_stop"
       ]
@@ -599,7 +599,7 @@
           "class": "Fountain"
         }
       ],
-      "preview": "addons/optics/data/terrain/fountain.paa",
+      "preview": "addons/cartography/data/terrain/fountain.paa",
       "shared_with": []
     },
     {
@@ -622,7 +622,7 @@
           "class": "Shipwreck"
         }
       ],
-      "preview": "addons/optics/data/terrain/shipwreck.paa",
+      "preview": "addons/cartography/data/terrain/shipwreck.paa",
       "shared_with": []
     },
     {
@@ -645,7 +645,7 @@
           "class": "Bunker"
         }
       ],
-      "preview": "addons/optics/data/terrain/bunker.paa",
+      "preview": "addons/cartography/data/terrain/bunker.paa",
       "shared_with": []
     },
     {
@@ -668,7 +668,7 @@
           "class": "Fortress"
         }
       ],
-      "preview": "addons/optics/data/terrain/fortress.paa",
+      "preview": "addons/cartography/data/terrain/fortress.paa",
       "shared_with": []
     },
     {
@@ -691,7 +691,7 @@
           "class": "Stack"
         }
       ],
-      "preview": "addons/optics/data/terrain/stack.paa",
+      "preview": "addons/cartography/data/terrain/stack.paa",
       "shared_with": []
     },
     {
@@ -714,7 +714,7 @@
           "class": "Tourism"
         }
       ],
-      "preview": "addons/optics/data/terrain/tourism.paa",
+      "preview": "addons/cartography/data/terrain/tourism.paa",
       "shared_with": [
         "solar",
         "wave"
@@ -740,7 +740,7 @@
           "class": "ViewTower"
         }
       ],
-      "preview": "addons/optics/data/terrain/view_tower.paa",
+      "preview": "addons/cartography/data/terrain/view_tower.paa",
       "shared_with": []
     }
   ]

@@ -20,8 +20,8 @@
 //
 // Emits [P106] PASS/FAIL lines.
 
-private _fnReader = missionNamespace getVariable ["aee_core_fnc_getGeoAnchor", nil];
-private _fnBuild = missionNamespace getVariable ["aee_core_fnc_buildGeoAnchor", nil];
+private _fnReader = missionNamespace getVariable ["aee_lib_fnc_getGeoAnchor", nil];
+private _fnBuild = missionNamespace getVariable ["aee_lib_fnc_buildGeoAnchor", nil];
 if (isNil "_fnReader" || {isNil "_fnBuild"}) exitWith {
     diag_log text "[P106] [FAIL] geo anchor kernels not compiled (getGeoAnchor/buildGeoAnchor)";
 };

@@ -195,21 +195,21 @@ verdict per base engine config class AEE can override: implemented
 ## CfgLocationTypes >> <type>
 
 - Verdict: **ALREADY** (present)
-- Source: addons/optics/config_locationtypes.hpp; docs/wiki/research/terrain-symbols.md.
+- Source: addons/cartography/config_locationtypes.hpp; docs/wiki/research/terrain-symbols.md.
 - Reason: The terrain symbols are already overridden from the topographic standard.
 - Ceiling: None at config level.
 
 ## RscMapControl and RscDisplayStrategicMap
 
 - Verdict: **ALREADY** (present)
-- Source: addons/optics/config_mapcolors.hpp, config_mapicons.hpp and config_mapdisplays.hpp; docs/wiki/research/map-grid-and-cursor-surface.md.
+- Source: addons/cartography/config_mapcolors.hpp, config_mapicons.hpp and config_mapdisplays.hpp; docs/wiki/research/map-grid-and-cursor-surface.md.
 - Reason: The map palette and the display subclasses are already overridden.
 - Ceiling: Eden's map is ctrlMap, not RscMapControl, so a RscMapControl reopen does not reach Eden.
 
 ## CfgCurator >> DrawGroup
 
 - Verdict: **ALREADY** (present)
-- Source: addons/optics/config_curator.hpp; ADR-023.
+- Source: addons/cartography/config_curator.hpp; ADR-023.
 - Reason: The five side textures and the 3D and 2D sub-blocks are already overridden.
 - Ceiling: The texture is per side, not per unit function.
 

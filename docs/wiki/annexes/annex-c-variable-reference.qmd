@@ -135,14 +135,14 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_vision_shadowTarget` | vision | Scene-aware shadow distance target in metres (aee-workshop-copy item 6) |
 | `aee_vision_shadowScene` | vision | Scene classifier state for the shadow distance (aee-workshop-copy item 6) |
 | `aee_vision_shadowCoverage` | vision | Opening coverage from the shadow classifier (aee-workshop-copy item 6) |
-| `aee_optics_symbologyEnabled` | optics | Registered setting under **AEE HUD > Symbology**: draw the NATO APP-6(C) map and world symbols (default off) |
-| `aee_optics_symbologyPalette` | optics | Registered setting under **AEE HUD > Symbology**: the affiliation palette NATO, OPFOR or Auto (default Auto) |
-| `aee_optics_symbologyUnits` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the in-range units (default on) |
-| `aee_optics_symbologyMarkers` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the engine map markers (default on) |
-| `aee_optics_symbologySuppress` | optics | Registered setting under **AEE HUD > Symbology**: suppress the engine indicators and hide the mission markers locally (default on) |
-| `aee_optics_symbologyFont` | optics | Registered setting under **AEE HUD > Symbology**: use the AEE font for the symbology labels (default on) |
-| `aee_optics_symbologyTables` | optics | Generated APP-6 category tables loaded at preInit, read by the pure symbol kernels |
-| `aee_optics_terrainTables` | optics | Generated terrain and map-feature registry loaded at preInit, read by the P113 terrain probe |
+| `aee_symbology_symbologyEnabled` | optics | Registered setting under **AEE HUD > Symbology**: draw the NATO APP-6(C) map and world symbols (default off) |
+| `aee_symbology_symbologyPalette` | optics | Registered setting under **AEE HUD > Symbology**: the affiliation palette NATO, OPFOR or Auto (default Auto) |
+| `aee_symbology_symbologyUnits` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the in-range units (default on) |
+| `aee_symbology_symbologyMarkers` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the engine map markers (default on) |
+| `aee_symbology_symbologySuppress` | optics | Registered setting under **AEE HUD > Symbology**: suppress the engine indicators and hide the mission markers locally (default on) |
+| `aee_symbology_symbologyFont` | optics | Registered setting under **AEE HUD > Symbology**: use the AEE font for the symbology labels (default on) |
+| `aee_symbology_symbologyTables` | optics | Generated APP-6 category tables loaded at preInit, read by the pure symbol kernels |
+| `aee_cartography_terrainTables` | optics | Generated terrain and map-feature registry loaded at preInit, read by the P113 terrain probe |
 | `aee_thermal_currentThermalNoise` | thermal | Thermal noise floor (NETD-based), produced by fnc_calculateThermalContrast |
 | `aee_core_dynamicLux` | core | Dynamic lux contribution |
 | `aee_core_irLightLux` | core | IR light lux |
@@ -579,13 +579,13 @@ in **AEE HUD > Tracker**. Each stated default is the shipped value.
 
 | Variable | Category | Purpose |
 | --- | --- | --- |
-| `aee_optics_mgrsEnabled` | AEE HUD > Displays | Show the MGRS grid in place of the legacy numeric grid (default on) |
-| `aee_optics_mgrsMapGrid` | AEE HUD > Displays | Draw the MGRS grid overlay on the map (default on) |
-| `aee_optics_mgrsCursorReadout` | AEE HUD > Displays | Show the MGRS reference and elevation at the map cursor (default on) |
-| `aee_optics_mgrsPrecision` | AEE HUD > Displays | MGRS digit count, one of 4, 6, 8 or 10 (default 10) |
-| `aee_optics_trackerEnabled` | AEE HUD > Tracker | Replace the exact friendly position with the modelled tracker (default off) |
-| `aee_optics_trackerSuppressIcons` | AEE HUD > Tracker | Suppress the engine friendly map indicators where the difficulty allows (default off) |
-| `aee_optics_trackerInterval` | AEE HUD > Tracker | Seconds between tracker surveys, 0.2 to 5 (default 1.0) |
+| `aee_cartography_mgrsEnabled` | AEE HUD > Displays | Show the MGRS grid in place of the legacy numeric grid (default on) |
+| `aee_cartography_mgrsMapGrid` | AEE HUD > Displays | Draw the MGRS grid overlay on the map (default on) |
+| `aee_cartography_mgrsCursorReadout` | AEE HUD > Displays | Show the MGRS reference and elevation at the map cursor (default on) |
+| `aee_cartography_mgrsPrecision` | AEE HUD > Displays | MGRS digit count, one of 4, 6, 8 or 10 (default 10) |
+| `aee_hud_trackerEnabled` | AEE HUD > Tracker | Replace the exact friendly position with the modelled tracker (default off) |
+| `aee_hud_trackerSuppressIcons` | AEE HUD > Tracker | Suppress the engine friendly map indicators where the difficulty allows (default off) |
+| `aee_hud_trackerInterval` | AEE HUD > Tracker | Seconds between tracker surveys, 0.2 to 5 (default 1.0) |
 
 ### Human-vision model (perception)
 

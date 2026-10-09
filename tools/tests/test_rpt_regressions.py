@@ -36,10 +36,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-MGRS_DRAW = ROOT / "addons/optics/functions/hud/fnc_mgrsMapDraw.sqf"
+MGRS_DRAW = ROOT / "addons/cartography/functions/hud/fnc_mgrsMapDraw.sqf"
 WILDLIFE_TICK = ROOT / "addons/wildlife/functions/fnc_wildlifeTick.sqf"
 SYMBOLOGY_UNIT = (
-    ROOT / "addons/optics/functions/symbology/fnc_symbologyUnitCategory.sqf"
+    ROOT / "addons/symbology/functions/symbology/fnc_symbologyUnitCategory.sqf"
 )
 
 

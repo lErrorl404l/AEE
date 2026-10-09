@@ -57,8 +57,8 @@ licence text ships beside the font.
 
 | Family | Use | Designer | Licence | Official source | Shipped OFL text |
 |---|---|---|---|---|---|
-| Rajdhani | HUD and map labels | Indian Type Foundry | SIL OFL 1.1 | fonts.google.com/specimen/Rajdhani | `addons/optics/data/fonts/rajdhani/OFL.txt` |
-| B612 Mono | MGRS coordinate readout | Airbus, polarsys | SIL OFL 1.1 | github.com/polarsys/b612 | `addons/optics/data/fonts/b612mono/OFL.txt` |
+| Rajdhani | HUD and map labels | Indian Type Foundry | SIL OFL 1.1 | fonts.google.com/specimen/Rajdhani | `addons/cartography/data/fonts/rajdhani/OFL.txt` |
+| B612 Mono | MGRS coordinate readout | Airbus, polarsys | SIL OFL 1.1 | github.com/polarsys/b612 | `addons/cartography/data/fonts/b612mono/OFL.txt` |
 
 Rajdhani reads as military and technical signage. It is condensed and it has
 five weights. It covers A to Z, 0 to 9 and punctuation, so it covers the
@@ -92,7 +92,7 @@ Procedure:
    The command writes a DXT5 PAA when the sheet carries an alpha channel. A
    font sheet carries an alpha channel, so the output is DXT5.
 
-3. Place the `.fxy` and the `.paa` set under `addons/optics/data/fonts/`.
+3. Place the `.fxy` and the `.paa` set under `addons/cartography/data/fonts/`.
    The `CfgFontFamilies` paths in `addons/optics/config.cpp` point at them
    with no extension.
 

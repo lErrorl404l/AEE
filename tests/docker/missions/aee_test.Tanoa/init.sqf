@@ -231,7 +231,7 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
     //   b) the thermal contrast model produces a sane 0..1 value.
     //   c) the sensor functions resolve.
     private _hBefore = missionNamespace getVariable ["aee_vision_ppHandle_ColorCorrections", -1];
-    [] call aee_optics_fnc_ppEffectCreate;
+    [] call aee_vision_fnc_ppEffectCreate;
     private _hAfter = missionNamespace getVariable ["aee_vision_ppHandle_ColorCorrections", -1];
     if (_hBefore >= 0 && _hAfter == _hBefore) then {
         diag_log text format ["[PHASE8] [PASS] ppEffect handles idempotent (CC=%1 unchanged)", _hAfter];

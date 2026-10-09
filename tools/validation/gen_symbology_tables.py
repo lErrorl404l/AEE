@@ -6,7 +6,7 @@ CfgVehicles vehicleClass or unitClass value, to a NATO APP-6(C) class
 category.  The validated source is data/symbology/symbology_tables.json.
 This generator reads it and writes the runtime projection
 
-  addons/optics/data/symbology_tables.sqf
+  addons/symbology/data/symbology_tables.sqf
 
 which the kernel reads as aee_optics_symbologyTables.
 
@@ -26,7 +26,7 @@ from typing import Any
 
 ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "symbology_tables.json"
-TABLES_OUT = ROOT / "addons" / "optics" / "data" / "symbology_tables.sqf"
+TABLES_OUT = ROOT / "addons" / "symbology" / "data" / "symbology_tables.sqf"
 
 SECTIONS = (
     "prefixes",

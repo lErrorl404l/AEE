@@ -121,7 +121,7 @@ friend, hostile and neutral frames. The engine ships these glyphs per family:
 `installation`, `antiair`. The reference is a load-time path, so no engine file
 is redistributed.
 
-The AEE produced textures, under `addons/optics/data/markers/`, for the
+The AEE produced textures, under `addons/symbology/data/markers/`, for the
 symbols the engine set does not carry: the whole unknown-affiliation `u_`
 family, and the engineer, signal, supply, subsurface and waypoint glyphs. That
 is 35 files. The generator `tools/gen_symbology_markers.py` renders each one

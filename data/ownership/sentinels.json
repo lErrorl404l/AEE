@@ -63,32 +63,32 @@
     },
     {
       "id": "marker-color-aee",
-      "addon": "optics",
+      "addon": "symbology",
       "path": ["CfgMarkerColors", "ColorAEE"],
       "property": "color",
       "type": "array",
       "expected": [1, 1, 1, 1],
-      "source": "addons/optics/config.cpp",
+      "source": "addons/symbology/config.cpp",
       "evidence": "class ColorAEE: Default { scope = 1; color[] = {1, 1, 1, 1}; };"
     },
     {
       "id": "marker-base-size",
-      "addon": "optics",
+      "addon": "symbology",
       "path": ["CfgMarkers", "AEE_MarkerBase"],
       "property": "size",
       "type": "number",
       "expected": 32,
-      "source": "addons/optics/config.cpp",
+      "source": "addons/symbology/config.cpp",
       "evidence": "size = 32;"
     },
     {
       "id": "map-color-levels",
-      "addon": "optics",
+      "addon": "cartography",
       "path": ["RscMapControl"],
       "property": "colorLevels",
       "type": "array",
       "expected": [0.7, 0.48, 0.32, 1],
-      "source": "addons/optics/config_mapcolors.hpp",
+      "source": "addons/cartography/config_mapcolors.hpp",
       "evidence": "colorLevels[] = {0.70, 0.48, 0.32, 1};"
     },
     {

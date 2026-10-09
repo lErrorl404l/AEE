@@ -125,7 +125,7 @@ APP-6 marker layer, the `CfgMarkers` block, the MGRS overlay and the world
 
 The palette follows the USGS and FM 21-31 standard. The values are RGBA in the
 range 0 to 1. `data/symbology/terrain_symbols.json` holds them and
-`addons/optics/config_mapcolors.hpp` applies them.
+`addons/cartography/config_mapcolors.hpp` applies them.
 
 | Field | RGBA | Meaning | Grade |
 |---|---|---|---|

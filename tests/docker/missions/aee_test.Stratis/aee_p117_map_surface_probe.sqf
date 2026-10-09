@@ -47,7 +47,7 @@ private _repointed = [
 ];
 {
     private _icon = getText (configFile >> "CfgMarkers" >> _x >> "icon");
-    if ((_icon find "z\aee\addons\optics\data\markers") >= 0) then {
+    if ((_icon find "z\aee\addons\symbology\data\markers") >= 0) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
@@ -57,7 +57,7 @@ private _repointed = [
 
 // The structural classes must NOT be re-pointed: Empty is the invisible marker.
 private _emptyIcon = getText (configFile >> "CfgMarkers" >> "Empty" >> "icon");
-if ((_emptyIcon find "z\aee\addons\optics\data\markers") < 0) then {
+if ((_emptyIcon find "z\aee\addons\symbology\data\markers") < 0) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
@@ -89,7 +89,7 @@ if ((_sampleCat isNotEqualTo "") && {_sampleCat in _categoryNames}) then {
 // ── DEFECT 4: the echelon overlay is placed ABOVE the frame.  The engine
 // stretches a marker texture into its box, so the 64 x 128 echelon texture
 // needs a 1:2 marker size. ─────────────────────────────────────────────────
-private _fnSize = missionNamespace getVariable ["aee_optics_fnc_symbologyEchelonSize", nil];
+private _fnSize = missionNamespace getVariable ["aee_symbology_fnc_symbologyEchelonSize", nil];
 if (isNil "_fnSize") then {
     _fail = _fail + 1;
     _notes pushBack "symbologyEchelonSize not compiled";

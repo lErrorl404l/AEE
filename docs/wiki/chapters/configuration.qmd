@@ -93,6 +93,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_ballistics_logDebug` | CHECKBOX | `false` | yes | ballistics | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
+## AEE Debug → Cartography
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_cartography_logDebug` | CHECKBOX | `false` | yes | cartography | Log cartography diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE Debug → Compat - ACE3
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -164,6 +170,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_core_collisionDebug` | CHECKBOX | `false` | yes | core | Log vehicle collision impact energy and damage scaling to the RPT (issue #172) |
 | `aee_fx_logDebug` | CHECKBOX | `false` | yes | fx | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
+## AEE Debug → HUD
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_hud_logDebug` | CHECKBOX | `false` | yes | hud | Log HUD diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE Debug → Maritime
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -213,6 +225,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_radio_logDebug` | CHECKBOX | `false` | yes | radio | Log radio diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Symbology
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_symbology_logDebug` | CHECKBOX | `false` | yes | symbology | Log symbology diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Thermal
 
@@ -358,14 +376,14 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_cartography_mgrsCursorReadout` | CHECKBOX | `true` | yes | cartography | Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on. |
+| `aee_cartography_mgrsEnabled` | CHECKBOX | `true` | yes | cartography | Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on. |
+| `aee_cartography_mgrsMapGrid` | CHECKBOX | `true` | yes | cartography | Draw the aee MGRS grid over the engine map: the grid lines and their MGRS labels at an interval that follows the zoom. The engine grid stays numeric because the CfgWorlds Grid class formats numbers only, so the aee overlay draws the MGRS lines over it. Default on. |
+| `aee_cartography_mgrsPrecision` | LIST | `10` | yes | cartography | Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10. |
+| `aee_cartography_mgrsPrecisionAuto` | CHECKBOX | `true` | yes | cartography | Scale the MGRS digit count with the world map size. On: a small world gets a six-figure reference (100 m) and a large world an eight-figure one (10 m). Off: the MGRS Precision list applies. Default on. |
+| `aee_hud_hudEnabled` | CHECKBOX | `false` | yes | hud | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
 | `aee_nightvision_ltmDaylightFade` | CHECKBOX | `true` | yes | nightvision | Fade the laser target marker in daylight. Off holds the marker at full strength. |
 | `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
-| `aee_optics_hudEnabled` | CHECKBOX | `false` | yes | optics | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
-| `aee_optics_mgrsCursorReadout` | CHECKBOX | `true` | yes | optics | Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on. |
-| `aee_optics_mgrsEnabled` | CHECKBOX | `true` | yes | optics | Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on. |
-| `aee_optics_mgrsMapGrid` | CHECKBOX | `true` | yes | optics | Draw the aee MGRS grid over the engine map: the grid lines and their MGRS labels at an interval that follows the zoom. The engine grid stays numeric because the CfgWorlds Grid class formats numbers only, so the aee overlay draws the MGRS lines over it. Default on. |
-| `aee_optics_mgrsPrecision` | LIST | `10` | yes | optics | Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10. |
-| `aee_optics_mgrsPrecisionAuto` | CHECKBOX | `true` | yes | optics | Scale the MGRS digit count with the world map size. On: a small world gets a six-figure reference (100 m) and a large world an eight-figure one (10 m). Off: the MGRS Precision list applies. Default on. |
 | `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
 | `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 
@@ -373,20 +391,20 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_optics_symbologyEnabled` | CHECKBOX | `false` | yes | optics | Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off. |
-| `aee_optics_symbologyFont` | CHECKBOX | `true` | yes | optics | Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on. |
-| `aee_optics_symbologyMarkers` | CHECKBOX | `true` | yes | optics | Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on. |
-| `aee_optics_symbologyPalette` | LIST | `"Auto"` | yes | optics | Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto. |
-| `aee_optics_symbologySuppress` | CHECKBOX | `true` | yes | optics | Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on. |
-| `aee_optics_symbologyUnits` | CHECKBOX | `true` | yes | optics | Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on. |
+| `aee_symbology_symbologyEnabled` | CHECKBOX | `false` | yes | symbology | Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off. |
+| `aee_symbology_symbologyFont` | CHECKBOX | `true` | yes | symbology | Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on. |
+| `aee_symbology_symbologyMarkers` | CHECKBOX | `true` | yes | symbology | Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on. |
+| `aee_symbology_symbologyPalette` | LIST | `"Auto"` | yes | symbology | Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto. |
+| `aee_symbology_symbologySuppress` | CHECKBOX | `true` | yes | symbology | Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on. |
+| `aee_symbology_symbologyUnits` | CHECKBOX | `true` | yes | symbology | Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on. |
 
 ## AEE HUD → Tracker
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_optics_trackerEnabled` | CHECKBOX | `false` | yes | optics | Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off. |
-| `aee_optics_trackerInterval` | SLIDER | `1.0` | yes | optics | Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0. |
-| `aee_optics_trackerSuppressIcons` | CHECKBOX | `false` | yes | optics | Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off. |
+| `aee_hud_trackerEnabled` | CHECKBOX | `false` | yes | hud | Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off. |
+| `aee_hud_trackerInterval` | SLIDER | `1.0` | yes | hud | Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0. |
+| `aee_hud_trackerSuppressIcons` | CHECKBOX | `false` | yes | hud | Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off. |
 
 ## AEE Maritime → Sea
 

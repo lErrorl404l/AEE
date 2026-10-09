@@ -315,19 +315,20 @@ class TestMgrsTableIntegrity(unittest.TestCase):
 
 
 # ── The map-layer fix: font usability and world-size precision ──────────────
+CART_HUD = ROOT / "addons" / "cartography" / "functions" / "hud"
 OPTICS_HUD = ROOT / "addons" / "optics" / "functions" / "hud"
-MAP_PRECISION = OPTICS_HUD / "fnc_mgrsMapPrecision.sqf"
-EFFECTIVE_PRECISION = OPTICS_HUD / "fnc_mgrsEffectivePrecision.sqf"
-FONT_USABLE = OPTICS_HUD / "fnc_fontFamilyUsable.sqf"
-MGRS_FONT = OPTICS_HUD / "fnc_mgrsFontFamily.sqf"
-GRID_LINES = OPTICS_HUD / "fnc_mgrsGridLines.sqf"
-MAP_DRAW = OPTICS_HUD / "fnc_mgrsMapDraw.sqf"
-OPTICS_CONFIG = (ROOT / "addons" / "optics" / "config.cpp").read_text(encoding="utf-8")
-MAP_DISPLAYS = (ROOT / "addons" / "optics" / "config_mapdisplays.hpp").read_text(
+MAP_PRECISION = CART_HUD / "fnc_mgrsMapPrecision.sqf"
+EFFECTIVE_PRECISION = CART_HUD / "fnc_mgrsEffectivePrecision.sqf"
+FONT_USABLE = CART_HUD / "fnc_fontFamilyUsable.sqf"
+MGRS_FONT = CART_HUD / "fnc_mgrsFontFamily.sqf"
+GRID_LINES = CART_HUD / "fnc_mgrsGridLines.sqf"
+MAP_DRAW = CART_HUD / "fnc_mgrsMapDraw.sqf"
+OPTICS_CONFIG = (ROOT / "addons" / "cartography" / "config.cpp").read_text(encoding="utf-8")
+MAP_DISPLAYS = (ROOT / "addons" / "cartography" / "config_mapdisplays.hpp").read_text(
     encoding="utf-8"
 )
-PREP_SRC = (ROOT / "addons" / "optics" / "XEH_PREP.hpp").read_text(encoding="utf-8")
-SETTINGS = (ROOT / "addons" / "optics" / "initSettings.inc.sqf").read_text(
+PREP_SRC = (ROOT / "addons" / "cartography" / "XEH_PREP.hpp").read_text(encoding="utf-8")
+SETTINGS = (ROOT / "addons" / "cartography" / "initSettings.inc.sqf").read_text(
     encoding="utf-8"
 )
 

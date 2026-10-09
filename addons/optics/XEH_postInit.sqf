@@ -2,36 +2,6 @@
 
 AEE_MODULE_POST_INIT
 
-// ── ECOTI environment HUD ─────────────────────────────────────────────────
-// Two Draw3D workers (rangefinder, map markers) and one update PFH.  Every
-// worker gates on the aee_optics_hudEnabled setting each tick, so the HUD
-// toggles live and an operator who leaves it OFF pays one getVariable read
-// per tick.  Ported from workshop 3759527903 FPANO_ECOTI.  hasInterface
-// only: the display and the raycasts are client-side.
-if (hasInterface) then {
-    [] call FUNC(hudRangefinder);
-    [] call FUNC(hudMarkers);
-    // MGRS map overlay: attaches a Draw handler to the engine map control
-    // when the map opens.  Read-only, no marker is created or edited.
-    [] call FUNC(mgrsMapDraw);
-    // NATO/OPFOR map symbols: applies the AEE symbols as real engine markers
-    // while the map is open, client-local and reversible.
-    [] call FUNC(symbologyMarkers);
-    // NATO/OPFOR 3D world symbols: draws the real AEE marker texture in the 3D
-    // view.  The engine's own unit icons remain; this worker does not remove
-    // them.
-    [] call FUNC(symbologyWorldDraw);
-    [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
-    // MGRS GPS device readout: raised only while the player carries an
-    // ItemGPS and the aee_optics_mgrsEnabled setting is on.
-    [FUNC(gpsUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
-    // Signal-dependent tracker: the driver publishes the per-track state and
-    // the draw layer renders it on the map and the HUD.  Both gate on the
-    // aee_optics_trackerEnabled setting each tick.
-    [] call FUNC(trackerDraw);
-    [FUNC(trackerUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
-};
-
 // Muzzle flash / explosive flash response for NVG.
 // A fired round with a high visibleFire value blooms or gates the tube.
 // Follows the ACE3 pattern (nightvision/fnc_onFiredPlayer): read the

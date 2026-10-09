@@ -12,8 +12,8 @@
 //
 // Emits [P101] PASS/FAIL lines.
 
-private _loadTable = missionNamespace getVariable ["aee_core_fnc_consistencyLoadTable", nil];
-private _evaluate = missionNamespace getVariable ["aee_core_fnc_evaluateConsistency", nil];
+private _loadTable = missionNamespace getVariable ["aee_diagnostics_fnc_consistencyLoadTable", nil];
+private _evaluate = missionNamespace getVariable ["aee_diagnostics_fnc_evaluateConsistency", nil];
 
 if (isNil "_loadTable" || {isNil "_evaluate"}) exitWith {
     diag_log text "[P101] [FAIL] consistency kernels not compiled (loadTable/evaluate)";

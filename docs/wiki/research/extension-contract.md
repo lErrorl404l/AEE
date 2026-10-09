@@ -87,6 +87,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_armour` | `armour` |
 | `aee_atmos` | `atmos` |
 | `aee_ballistics` | `ballistics` |
+| `aee_cartography` | `cartography` |
 | `aee_compat_ace3` | `compat_ace3` |
 | `aee_compat_acm` | `compat_acm` |
 | `aee_compat_acre2` | `compat_acre2` |
@@ -98,6 +99,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_environmental` | `environmental` |
 | `aee_eye` | `eye` |
 | `aee_fx` | `fx` |
+| `aee_hud` | `hud` |
 | `aee_lib` | `lib` |
 | `aee_maritime` | `maritime` |
 | `aee_material` | `material` |
@@ -106,6 +108,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_optics` | `optics` |
 | `aee_physiology` | `physiology` |
 | `aee_radio` | `radio` |
+| `aee_symbology` | `symbology` |
 | `aee_thermal` | `thermal` |
 | `aee_vision` | `vision` |
 | `aee_wildlife` | `wildlife` |
@@ -193,6 +196,18 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ballistics_fnc_resolveShot`
 - `aee_ballistics_fnc_selectBand`
 - `aee_ballistics_fnc_startStateDump`
+- `aee_cartography_fnc_fontFamilyUsable`
+- `aee_cartography_fnc_formatGridDisplay`
+- `aee_cartography_fnc_gpsBuild`
+- `aee_cartography_fnc_gpsUpdate`
+- `aee_cartography_fnc_hudFormatGrid`
+- `aee_cartography_fnc_mgrsCursorText`
+- `aee_cartography_fnc_mgrsEffectivePrecision`
+- `aee_cartography_fnc_mgrsFontFamily`
+- `aee_cartography_fnc_mgrsGridLines`
+- `aee_cartography_fnc_mgrsMapDraw`
+- `aee_cartography_fnc_mgrsMapPrecision`
+- `aee_cartography_fnc_mgrsMarkerText`
 - `aee_compat_ace3_fnc_dumpState`
 - `aee_compat_ace3_fnc_getAceItemMass`
 - `aee_compat_ace3_fnc_integrateKestrel`
@@ -347,6 +362,15 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_fx_fnc_triggerLightning`
 - `aee_fx_fnc_triggerSevereWeatherFX`
 - `aee_fx_fnc_weatherParticleAlpha`
+- `aee_hud_fnc_hudBuild`
+- `aee_hud_fnc_hudFormatHeading`
+- `aee_hud_fnc_hudFormatRange`
+- `aee_hud_fnc_hudMarkers`
+- `aee_hud_fnc_hudRangefinder`
+- `aee_hud_fnc_hudUpdate`
+- `aee_hud_fnc_trackerDraw`
+- `aee_hud_fnc_trackerProject`
+- `aee_hud_fnc_trackerUpdate`
 - `aee_lib_fnc_attachObjectEngineHandler`
 - `aee_lib_fnc_buildGeoAnchor`
 - `aee_lib_fnc_createPPEffect`
@@ -470,49 +494,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_calculateSolarGlare`
 - `aee_optics_fnc_calculateVehicleHeatShimmer`
 - `aee_optics_fnc_dumpState`
-- `aee_optics_fnc_fontFamilyUsable`
-- `aee_optics_fnc_formatGridDisplay`
 - `aee_optics_fnc_getOpticProperties`
-- `aee_optics_fnc_gpsBuild`
-- `aee_optics_fnc_gpsUpdate`
-- `aee_optics_fnc_hudBuild`
-- `aee_optics_fnc_hudFormatGrid`
-- `aee_optics_fnc_hudFormatHeading`
-- `aee_optics_fnc_hudFormatRange`
-- `aee_optics_fnc_hudMarkers`
-- `aee_optics_fnc_hudRangefinder`
-- `aee_optics_fnc_hudUpdate`
-- `aee_optics_fnc_mgrsCursorText`
-- `aee_optics_fnc_mgrsEffectivePrecision`
-- `aee_optics_fnc_mgrsFontFamily`
-- `aee_optics_fnc_mgrsGridLines`
-- `aee_optics_fnc_mgrsMapDraw`
-- `aee_optics_fnc_mgrsMapPrecision`
-- `aee_optics_fnc_mgrsMarkerText`
-- `aee_optics_fnc_symbolCategory`
-- `aee_optics_fnc_symbolFrame`
-- `aee_optics_fnc_symbolIcon`
-- `aee_optics_fnc_symbolPalette`
-- `aee_optics_fnc_symbolResolve`
-- `aee_optics_fnc_symbologyAffiliation`
-- `aee_optics_fnc_symbologyDimension`
-- `aee_optics_fnc_symbologyEchelon`
-- `aee_optics_fnc_symbologyEchelonMarker`
-- `aee_optics_fnc_symbologyEchelonSize`
-- `aee_optics_fnc_symbologyMarkerCategory`
-- `aee_optics_fnc_symbologyMarkerColor`
-- `aee_optics_fnc_symbologyMarkerType`
-- `aee_optics_fnc_symbologyMarkers`
-- `aee_optics_fnc_symbologyMarkersApply`
-- `aee_optics_fnc_symbologyMarkersRestore`
-- `aee_optics_fnc_symbologyPaletteFriendly`
-- `aee_optics_fnc_symbologyUnitCategory`
-- `aee_optics_fnc_symbologyUnitDimension`
-- `aee_optics_fnc_symbologyUnitEchelon`
-- `aee_optics_fnc_symbologyWorldDraw`
-- `aee_optics_fnc_trackerDraw`
-- `aee_optics_fnc_trackerProject`
-- `aee_optics_fnc_trackerUpdate`
 - `aee_physiology_fnc_applyCrossSensitivity`
 - `aee_physiology_fnc_applyHeatStressHUD`
 - `aee_physiology_fnc_applyMovementSpeed`
@@ -556,6 +538,27 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_radio_fnc_calculateIonosphericAbsorption`
 - `aee_radio_fnc_calculateRadioPropagation`
 - `aee_radio_fnc_dumpState`
+- `aee_symbology_fnc_symbolCategory`
+- `aee_symbology_fnc_symbolFrame`
+- `aee_symbology_fnc_symbolIcon`
+- `aee_symbology_fnc_symbolPalette`
+- `aee_symbology_fnc_symbolResolve`
+- `aee_symbology_fnc_symbologyAffiliation`
+- `aee_symbology_fnc_symbologyDimension`
+- `aee_symbology_fnc_symbologyEchelon`
+- `aee_symbology_fnc_symbologyEchelonMarker`
+- `aee_symbology_fnc_symbologyEchelonSize`
+- `aee_symbology_fnc_symbologyMarkerCategory`
+- `aee_symbology_fnc_symbologyMarkerColor`
+- `aee_symbology_fnc_symbologyMarkerType`
+- `aee_symbology_fnc_symbologyMarkers`
+- `aee_symbology_fnc_symbologyMarkersApply`
+- `aee_symbology_fnc_symbologyMarkersRestore`
+- `aee_symbology_fnc_symbologyPaletteFriendly`
+- `aee_symbology_fnc_symbologyUnitCategory`
+- `aee_symbology_fnc_symbologyUnitDimension`
+- `aee_symbology_fnc_symbologyUnitEchelon`
+- `aee_symbology_fnc_symbologyWorldDraw`
 - `aee_thermal_fnc_activeIRGate`
 - `aee_thermal_fnc_addGroundStamp`
 - `aee_thermal_fnc_applyActiveIR`
@@ -817,9 +820,9 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 
 | Class | Declaring source |
 |---|---|
-| `AEE_Unknown_Other` | `addons/optics/config.cpp` |
-| `ColorAEE` | `addons/optics/config.cpp` |
-| `AEE_MarkerBase` | `addons/optics/config.cpp` |
+| `AEE_Unknown_Other` | `addons/symbology/config.cpp` |
+| `ColorAEE` | `addons/symbology/config.cpp` |
+| `AEE_MarkerBase` | `addons/symbology/config.cpp` |
 | `AEE_SandCloud` | `addons/fx/config.cpp` |
 | `AEE_SnowCloud` | `addons/fx/config.cpp` |
 | `AEE_SupersonicTrace` | `addons/fx/config.cpp` |
@@ -829,9 +832,9 @@ Engine classes AEE re-declares:
 
 - `CfgWorlds` (`addons/environmental/config.cpp`)
 - `CfgCloudlets` (`addons/fx/config.cpp`)
-- `CfgMarkers` (`addons/optics/config.cpp`)
-- `CfgMarkerColors` (`addons/optics/config.cpp`)
-- `CfgMarkerClasses` (`addons/optics/config.cpp`)
+- `CfgMarkers` (`addons/symbology/config.cpp`)
+- `CfgMarkerColors` (`addons/symbology/config.cpp`)
+- `CfgMarkerClasses` (`addons/symbology/config.cpp`)
 
 <!-- END GENERATED: extension contract -->
 

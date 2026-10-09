@@ -9,9 +9,6 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "aee_lib",
-            "aee_diagnostics",
-            "aee_optics",
-            "aee_vision",
             "A3_Data_F",
             "cba_main",
             "cba_xeh",

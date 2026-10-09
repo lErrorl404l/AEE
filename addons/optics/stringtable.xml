@@ -49,14 +49,6 @@
             <Original>Heat Shimmer Intensity</Original>
             <English>Heat Shimmer Intensity</English>
         </Key>
-        <Key ID="STR_AEE_Optics_hudEnabled_Description">
-            <Original>Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind</Original>
-            <English>Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_hudEnabled_Name">
-            <Original>Environment HUD</Original>
-            <English>Environment HUD</English>
-        </Key>
         <Key ID="STR_AEE_Optics_logDebug_Description">
             <Original>Log optics diagnostics to the RPT. Turn this on before reporting a fault.</Original>
             <English>Log optics diagnostics to the RPT. Turn this on before reporting a fault.</English>
@@ -64,46 +56,6 @@
         <Key ID="STR_AEE_Optics_logDebug_Name">
             <Original>Optics Debug Log</Original>
             <English>Optics Debug Log</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsCursorReadout_Description">
-            <Original>Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on.</Original>
-            <English>Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsCursorReadout_Name">
-            <Original>MGRS Cursor Readout</Original>
-            <English>MGRS Cursor Readout</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsEnabled_Description">
-            <Original>Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on.</Original>
-            <English>Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsEnabled_Name">
-            <Original>MGRS Grid</Original>
-            <English>MGRS Grid</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsMapGrid_Description">
-            <Original>Draw the aee MGRS grid over the engine map: the grid lines and their MGRS labels at an interval that follows the zoom. The engine grid stays numeric because the CfgWorlds Grid class formats numbers only, so the aee overlay draws the MGRS lines over it. Default on.</Original>
-            <English>Draw the aee MGRS grid over the engine map: the grid lines and their MGRS labels at an interval that follows the zoom. The engine grid stays numeric because the CfgWorlds Grid class formats numbers only, so the aee overlay draws the MGRS lines over it. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsMapGrid_Name">
-            <Original>MGRS Map Grid</Original>
-            <English>MGRS Map Grid</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsPrecisionAuto_Description">
-            <Original>Scale the MGRS digit count with the world map size. On: a small world gets a six-figure reference (100 m) and a large world an eight-figure one (10 m). Off: the MGRS Precision list applies. Default on.</Original>
-            <English>Scale the MGRS digit count with the world map size. On: a small world gets a six-figure reference (100 m) and a large world an eight-figure one (10 m). Off: the MGRS Precision list applies. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsPrecisionAuto_Name">
-            <Original>MGRS Precision Auto</Original>
-            <English>MGRS Precision Auto</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsPrecision_Description">
-            <Original>Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10.</Original>
-            <English>Number of MGRS digits, one of 4, 6, 8 or 10. Four digits is 1 km, six is 100 m, eight is 10 m and ten is 1 m. The digits label the south-west corner of the square and are truncated, not rounded. Default 10.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mgrsPrecision_Name">
-            <Original>MGRS Precision</Original>
-            <English>MGRS Precision</English>
         </Key>
         <Key ID="STR_AEE_Optics_mirageDensity_Description">
             <Original>Particle density of the heat-haze field</Original>
@@ -208,78 +160,6 @@
         <Key ID="STR_AEE_Optics_solarGlareIntensity_Name">
             <Original>Solar Glare Intensity</Original>
             <English>Solar Glare Intensity</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyEnabled_Description">
-            <Original>Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off.</Original>
-            <English>Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyEnabled_Name">
-            <Original>Map Symbology</Original>
-            <English>Map Symbology</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyFont_Description">
-            <Original>Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on.</Original>
-            <English>Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyFont_Name">
-            <Original>Symbology Font</Original>
-            <English>Symbology Font</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyMarkers_Description">
-            <Original>Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on.</Original>
-            <English>Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyMarkers_Name">
-            <Original>Marker Symbols</Original>
-            <English>Marker Symbols</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyPalette_Description">
-            <Original>Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto.</Original>
-            <English>Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyPalette_Name">
-            <Original>Affiliation Palette</Original>
-            <English>Affiliation Palette</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologySuppress_Description">
-            <Original>Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on.</Original>
-            <English>Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologySuppress_Name">
-            <Original>Suppress Engine Symbols</Original>
-            <English>Suppress Engine Symbols</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyUnits_Description">
-            <Original>Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on.</Original>
-            <English>Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_symbologyUnits_Name">
-            <Original>Unit Symbols</Original>
-            <English>Unit Symbols</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_trackerEnabled_Description">
-            <Original>Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off.</Original>
-            <English>Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_trackerEnabled_Name">
-            <Original>Signal Tracker</Original>
-            <English>Signal Tracker</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_trackerInterval_Description">
-            <Original>Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0.</Original>
-            <English>Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_trackerInterval_Name">
-            <Original>Tracker Update Interval</Original>
-            <English>Tracker Update Interval</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_trackerSuppressIcons_Description">
-            <Original>Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off.</Original>
-            <English>Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off.</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_trackerSuppressIcons_Name">
-            <Original>Suppress Engine Markers</Original>
-            <English>Suppress Engine Markers</English>
         </Key>
         <Key ID="STR_AEE_Optics_vehicleShimmerBase_Description">
             <Original>Idle-engine shimmer floor</Original>

@@ -52,8 +52,8 @@ aee_ballistics_shotTemp  handler id passed as the _key value argument, not read 
 aee_core_collisionDamage  handler id passed as the _key value argument, not read as a variable
 aee_fx_blast  handler id passed as the _key value argument, not read as a variable
 aee_optics_muzzleFlash  handler id passed as the _key value argument, not read as a variable
-aee_optics_hud  RscTitles config class name used by cutRsc, not a runtime variable
-aee_optics_gps  RscTitles config class name used by cutRsc, not a runtime variable
+aee_hud_hud  RscTitles config class name used by cutRsc, not a runtime variable
+aee_cartography_gps  RscTitles config class name used by cutRsc, not a runtime variable
 
 # Per-vehicle engine and exhaust contract: read with an inline default, and no
 # addon writes them, so a mission or a vehicle config publishes them.  The
