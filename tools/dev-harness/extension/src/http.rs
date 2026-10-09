@@ -14,7 +14,7 @@
 use std::io::{BufRead, BufReader, Read, Write};
 use std::net::{IpAddr, Ipv4Addr, SocketAddr, TcpListener, TcpStream};
 use std::sync::atomic::{AtomicBool, Ordering};
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
@@ -209,6 +209,69 @@ impl Drop for Server {
     }
 }
 
+/// The outcome of a start attempt.
+#[derive(Debug, Clone, Copy)]
+pub enum StartOutcome {
+    /// The listener started on this address.
+    Started(SocketAddr),
+    /// The listener was already running; nothing changed.
+    AlreadyRunning,
+}
+
+/// Owns the single persistent listener. The command that starts it builds the
+/// callback-bearing handler once through `make_handler`; this server calls
+/// that factory exactly once, at start, never per request.
+#[derive(Debug, Default)]
+pub struct DevServer {
+    inner: Mutex<Option<Server>>,
+}
+
+impl DevServer {
+    /// Creates a stopped server.
+    #[must_use]
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Starts the listener unless one already runs.
+    ///
+    /// `make_handler` runs once, on the first successful start, and captures
+    /// the callback. A later start leaves the running listener untouched.
+    ///
+    /// # Errors
+    /// Returns [`HttpError`] when the bind is refused or fails.
+    pub fn start<F>(&self, config: &DevConfig, make_handler: F) -> Result<StartOutcome, HttpError>
+    where
+        F: FnOnce() -> Arc<dyn CommandHandler>,
+    {
+        let mut guard = self.lock();
+        if guard.is_some() {
+            return Ok(StartOutcome::AlreadyRunning);
+        }
+        let server = Server::start(config, make_handler())?;
+        let addr = server.addr();
+        *guard = Some(server);
+        Ok(StartOutcome::Started(addr))
+    }
+
+    /// Stops the listener. Returns true when one was running.
+    pub fn stop(&self) -> bool {
+        self.lock().take().is_some()
+    }
+
+    /// The bound address, when running.
+    #[must_use]
+    pub fn addr(&self) -> Option<SocketAddr> {
+        self.lock().as_ref().map(Server::addr)
+    }
+
+    fn lock(&self) -> std::sync::MutexGuard<'_, Option<Server>> {
+        self.inner
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner)
+    }
+}
+
 fn accept_loop(listener: &TcpListener, state: &Arc<ServerState>) {
     loop {
         if state.shutdown.load(Ordering::SeqCst) {
@@ -321,6 +384,7 @@ fn write_response(stream: &mut TcpStream, response: &HttpResponse) -> std::io::R
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::sync::atomic::AtomicUsize;
 
     struct Echo;
 
@@ -355,6 +419,31 @@ mod tests {
             body
         );
         raw_request(addr, &request)
+    }
+
+    #[test]
+    fn handler_is_captured_once_at_start_not_per_request() {
+        let factory_calls = Arc::new(AtomicUsize::new(0));
+        let calls = Arc::clone(&factory_calls);
+        let dev = DevServer::new();
+        let addr = match dev
+            .start(&config("s3cret"), move || {
+                calls.fetch_add(1, Ordering::SeqCst);
+                Arc::new(Echo)
+            })
+            .expect("start")
+        {
+            StartOutcome::Started(addr) => addr,
+            StartOutcome::AlreadyRunning => panic!("expected a start"),
+        };
+        post(addr, r#"{"op":"ping","token":"s3cret"}"#);
+        post(addr, r#"{"op":"ping","token":"s3cret"}"#);
+        assert_eq!(factory_calls.load(Ordering::SeqCst), 1);
+        let again = dev.start(&config("s3cret"), || -> Arc<dyn CommandHandler> {
+            panic!("the handler factory must not run again")
+        });
+        assert!(matches!(again, Ok(StartOutcome::AlreadyRunning)));
+        assert_eq!(factory_calls.load(Ordering::SeqCst), 1);
     }
 
     #[test]
