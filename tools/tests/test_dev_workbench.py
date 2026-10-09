@@ -16,6 +16,7 @@ Run: python3 -m unittest tools.tests.test_dev_workbench
 
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -34,6 +35,10 @@ KEYBINDS = {
     "DevDump": "aee_dev_fnc_devDumpAll",
     "DevOverlayToggle": "aee_dev_fnc_devOverlayToggle",
 }
+
+REAPPLY = FUNCS / "fnc_devReapplyVisual.sqf"
+
+ADDONS = ROOT / "addons"
 
 
 def _code_only(text: str) -> str:
@@ -95,6 +100,50 @@ class TestWorkbenchKeybinds(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             self.assertNotIn(f'"{CATEGORY}"', text, str(path))
             self.assertNotIn("aee_dev_", text, str(path))
+
+
+class TestRuntimeReapply(unittest.TestCase):
+    """The re-apply re-runs the pipeline through the core registry."""
+
+    def test_the_reapply_is_compiled(self):
+        self.assertIn("fnc_devReapplyVisual", PRE.read_text(encoding="utf-8"))
+
+    def test_the_reapply_releases_each_scope_through_the_registry(self):
+        code = _code_only(REAPPLY.read_text(encoding="utf-8"))
+        for scope in ("optics", "nightvision", "thermal"):
+            self.assertIn(f'["{scope}", ""] call aee_core_fnc_destroyPPEffect', code)
+
+    def test_the_reapply_has_no_raw_effect_create(self):
+        # The only "ppEffectCreate" allowed is the owning function NAME
+        # (aee_optics_fnc_ppEffectCreate). A raw engine call is refused.
+        code = _code_only(REAPPLY.read_text(encoding="utf-8"))
+        raw = re.findall(r"(?<!fnc_)ppEffectCreate", code)
+        self.assertEqual(raw, [])
+
+    def test_the_reapply_covers_the_five_named_paths(self):
+        code = _code_only(REAPPLY.read_text(encoding="utf-8"))
+        for fn in (
+            "aee_optics_fnc_ppEffectCreate",
+            "aee_optics_fnc_applyBaseGrade",
+            "aee_optics_fnc_applyWeatherGrain",
+            "aee_nightvision_fnc_applyNightGrain",
+            "aee_thermal_fnc_createThermalPPEffects",
+        ):
+            self.assertIn(f"call {fn}", code, fn)
+
+    def test_the_apply_paths_route_through_the_registry_create(self):
+        # The paths the re-apply re-runs create through the core registry, not
+        # a raw ppEffectCreate of their own. The thermal choke point is the
+        # documented exception (it owns the engine create for its eight
+        # effects), so it is not part of this check.
+        for rel in (
+            "optics/functions/vision/fnc_ppEffectCreate.sqf",
+            "optics/functions/grade/fnc_applyBaseGrade.sqf",
+            "optics/functions/vision/fnc_applyWeatherGrain.sqf",
+            "nightvision/functions/fnc_applyNightGrain.sqf",
+        ):
+            text = (ADDONS / rel).read_text(encoding="utf-8")
+            self.assertIn("createPPEffect", text, rel)
 
 
 if __name__ == "__main__":
