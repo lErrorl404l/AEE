@@ -95,6 +95,42 @@ def systems_errors(text: str) -> list[str]:
     return errors
 
 
+# The header signature of a land-vehicle physics table.
+LAND_HEADER = ("field", "source class or derivation", "marker")
+LAND_MARKERS = ("published", "derived", "engine schema")
+
+
+def land_rows(text: str) -> list[list[str]]:
+    """Return every data row of every land-vehicle physics table."""
+    rows: list[list[str]] = []
+    for header, body in pipe_tables(text):
+        if tuple(cell.lower() for cell in header) == LAND_HEADER:
+            rows.extend(body)
+    return rows
+
+
+def land_errors(text: str) -> list[str]:
+    """Return one message per land row that breaks the contract."""
+    errors: list[str] = []
+    for row in land_rows(text):
+        if len(row) != len(LAND_HEADER):
+            errors.append(f"land row has {len(row)} columns, expected 3: {row}")
+            continue
+        field, source, marker = row
+        label = field or "<unknown field>"
+        if not field:
+            errors.append("land row has no field name")
+        if not source:
+            errors.append(f"{label}: missing source class or derivation")
+        if marker not in LAND_MARKERS:
+            errors.append(
+                f"{label}: marker must be published, derived or engine schema, got {marker!r}"
+            )
+        elif marker == "derived" and not source.lower().startswith("derived"):
+            errors.append(f"{label}: a derived row must name its derivation")
+    return errors
+
+
 def _section(text: str, heading: str) -> str:
     """Return the text under a level-2 heading up to the next heading."""
     marker = f"## {heading}"
@@ -148,6 +184,40 @@ class SharedSystemsContractTest(unittest.TestCase):
         # shared table, so a systems row here is a contract error.
         aircraft = AIRCRAFT_SCHEMA.read_text(encoding="utf-8")
         self.assertEqual([], systems_errors(aircraft))
+
+
+class LandPhysicsSurfaceTest(unittest.TestCase):
+    """`data/vehicle/SCHEMA.md` section 17 defines the land physics surface."""
+
+    def setUp(self) -> None:
+        self.text = VEHICLE_SCHEMA.read_text(encoding="utf-8")
+
+    def test_the_land_surface_holds_a_table(self) -> None:
+        self.assertTrue(land_rows(self.text), "no land physics table found")
+
+    def test_every_land_row_is_complete(self) -> None:
+        self.assertEqual([], land_errors(self.text))
+
+    def test_the_named_derivations_are_present(self) -> None:
+        derived = {row[0] for row in land_rows(self.text) if row[-1] == "derived"}
+        for name in ("`sprungMass`", "`springStrength`", "`springDamperRate`", "`MOI`"):
+            self.assertIn(name, derived, f"derivation missing: {name}")
+
+    def test_the_simulation_keys_name_the_three_solvers(self) -> None:
+        sims = [row for row in land_rows(self.text) if row[0] == "`simulation`"]
+        self.assertEqual(
+            3, len(sims), "carx, tankx and shipx each need a simulation key"
+        )
+        for _, source, _ in sims:
+            self.assertRegex(source, r"carx|tankx|shipx")
+
+    def test_the_three_solvers_are_named(self) -> None:
+        lowered = self.text.lower()
+        for solver in ("carx", "tankx", "shipx"):
+            self.assertGreaterEqual(lowered.count(solver), 1, solver)
+
+    def test_the_no_xml_statement_is_present(self) -> None:
+        self.assertIn("the engine reads no XML for it", self.text)
 
 
 if __name__ == "__main__":
