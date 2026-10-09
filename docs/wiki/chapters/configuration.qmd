@@ -6,6 +6,28 @@ title: "Configuration"
 
 All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings menu under the **AEE** categories. Values marked *global* must match across all clients.
 
+## AEE Altitude → G-LOC
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_altitude_agsmAvailable` | CHECKBOX | `true` | yes | altitude | The pilot performs the anti-G straining maneuver (adds 3.1 G tolerance) |
+| `aee_altitude_glocEnabled` | CHECKBOX | `true` | yes | altitude | Enable the G-LOC and altitude DCS physiology model |
+| `aee_altitude_gsuitEquipped` | CHECKBOX | `false` | yes | altitude | Pilot wears a G-suit (adds 1.5 G tolerance) |
+| `aee_altitude_seatReclined` | CHECKBOX | `false` | yes | altitude | Reclined seat (adds 0.5 G tolerance) |
+
+## AEE Altitude → Rates
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_altitude_HypoxiaRecovery` | SLIDER | `0.1` | yes | altitude | Residual-exposure recovery rate below 6000 m |
+
+## AEE Altitude → Thresholds
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_altitude_AMSOffsetAltitude` | SLIDER | `2500` | yes | altitude | Altitude (m) where acute mountain sickness risk starts |
+| `aee_altitude_RapidAscentThreshold` | SLIDER | `150` | yes | altitude | Climb rate (m per tick) that triggers acute mountain sickness |
+
 ## AEE Armour → Armour
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -73,6 +95,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_ai_logDebug` | CHECKBOX | `false` | yes | ai | Write the AI substrate diagnostics to the RPT |
+
+## AEE Debug → Altitude
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_altitude_logDebug` | CHECKBOX | `false` | yes | altitude | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
 ## AEE Debug → Armour
 
@@ -150,6 +178,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_diagnostics_consistencyStrict` | CHECKBOX | `false` | yes | diagnostics | Also report an invariant that passes with a drift inside its tolerance and a full comparison. A no-data or out-of-scope row makes no comparison, so it is not reported. Reported at INFO, never a warning. Default off. UNSOURCED. |
 | `aee_diagnostics_diagnostic` | CHECKBOX | `false` | no | diagnostics | Enable verbose diagnostic logging (diag_log) for environment state changes |
 | `aee_diagnostics_logDebug` | CHECKBOX | `false` | yes | diagnostics | Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default. |
+
+## AEE Debug → Dive
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_dive_logDebug` | CHECKBOX | `false` | yes | dive | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
 ## AEE Debug → Environmental
 
@@ -238,6 +272,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_radio_logDebug` | CHECKBOX | `false` | yes | radio | Log radio diagnostics to the RPT. Turn this on before reporting a fault. |
 
+## AEE Debug → Strain
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_logDebug` | CHECKBOX | `false` | yes | strain | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
+
 ## AEE Debug → Symbology
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -262,6 +302,13 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_wildlife_logDebug` | CHECKBOX | `false` | yes | wildlife | Log wildlife diagnostics to the RPT. Turn this on before reporting a fault |
+
+## AEE Dive → Diving
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_dive_diveEnabled` | CHECKBOX | `true` | yes | dive | Enable the Buhlmann ZH-L16C decompression model for diving |
+| `aee_dive_diveGradientFactor` | SLIDER | `1.0` | yes | dive | Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C) |
 
 ## AEE Environmental → Display
 
@@ -561,75 +608,11 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_snowBlindnessBase` | SLIDER | `0.1` | yes | optics | Base dazzle from bright snow |
 | `aee_optics_vehicleShimmerBase` | SLIDER | `0.3` | yes | optics | Idle-engine shimmer floor |
 
-## AEE Physiology → Cold Weather
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_coldWeatherEnabled` | CHECKBOX | `true` | yes | physiology | Toggle the wind chill, dexterity and frostbite model (Osczevski-Bluestein, Heus/Daanen, Tikuisis-Osczevski) |
-
-## AEE Physiology → Coupling
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_crossSensitivityEnabled` | CHECKBOX | `true` | yes | physiology | Dehydration and hypoxia amplify each other. Dehydrated personnel lose useful consciousness faster at altitude; hypoxia accelerates fluid loss |
-| `aee_physiology_crossSensitivityScale` | SLIDER | `1.0` | yes | physiology | Coupling strength. 1 = full literature values (1.6x hypoxia at full dehydration, 1.4x dehydration at full hypoxia) |
-
-## AEE Physiology → Diving
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_diveEnabled` | CHECKBOX | `true` | yes | physiology | Enable the Buhlmann ZH-L16C decompression model for diving |
-| `aee_physiology_diveGradientFactor` | SLIDER | `1.0` | yes | physiology | Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C) |
-
-## AEE Physiology → Fatigue
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_circadianAmplitude` | SLIDER | `0.12` | yes | physiology | Amplitude of the circadian wake drive (0.1-0.15 published range) |
-| `aee_physiology_fatigueEnabled` | CHECKBOX | `true` | yes | physiology | Toggle the Borbely two-process sleep/fatigue model |
-
-## AEE Physiology → G-LOC
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_agsmAvailable` | CHECKBOX | `true` | yes | physiology | The pilot performs the anti-G straining maneuver (adds 3.1 G tolerance) |
-| `aee_physiology_glocEnabled` | CHECKBOX | `true` | yes | physiology | Enable the G-LOC and altitude DCS physiology model |
-| `aee_physiology_gsuitEquipped` | CHECKBOX | `false` | yes | physiology | Pilot wears a G-suit (adds 1.5 G tolerance) |
-| `aee_physiology_seatReclined` | CHECKBOX | `false` | yes | physiology | Reclined seat (adds 0.5 G tolerance) |
-
-## AEE Physiology → Movement
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_movementSpeed` | CHECKBOX | `true` | yes | physiology | Couple fatigue, cold and carried load to movement speed via setAnimSpeedCoef - an exhausted, hypothermic or overloaded soldier moves slower (issue #212) |
-
-## AEE Physiology → Rates
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_HypoxiaRecovery` | SLIDER | `0.1` | yes | physiology | Residual-exposure recovery rate below 6000 m |
-| `aee_physiology_RehydrationRate` | SLIDER | `0.05` | yes | physiology | Natural rehydration speed (L per hour) |
-| `aee_physiology_SweatRateScale` | SLIDER | `1.0` | yes | physiology | Overall heat-stress severity multiplier on sweat rate |
-
 ## AEE Physiology → Scent
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_weather_ScentIntensity` | SLIDER | `1.0` | yes | weather | Scale on scent detectability (0 = off, 1 = normal, 2 = strong) |
-
-## AEE Physiology → Stability
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_stabilityEnabled` | CHECKBOX | `true` | yes | physiology | Toggle the shooter stability index (cold/heat/fatigue) and ACE3 sway integration |
-
-## AEE Physiology → Thresholds
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_AMSOffsetAltitude` | SLIDER | `2500` | yes | physiology | Altitude (m) where acute mountain sickness risk starts |
-| `aee_physiology_HeatStrokeSensitivity` | SLIDER | `0.03` | yes | physiology | Heat-stroke overlay strength per °C above the danger threshold |
-| `aee_physiology_RapidAscentThreshold` | SLIDER | `150` | yes | physiology | Climb rate (m per tick) that triggers acute mountain sickness |
 
 ## AEE Radio → Link
 
@@ -643,6 +626,51 @@ registered.
 | `aee_radio_batteryDeratingEnabled` | CHECKBOX | `true` | yes | radio | Scale effective transmit power by the physiology battery temperature derating |
 | `aee_radio_propagationRange` | SLIDER | `2.0` | yes | radio | Ceiling of the radio propagation quality index |
 | `aee_radio_txPower` | SLIDER | `37` | yes | radio | Reference handheld transmit power in dBm used in the link budget |
+
+## AEE Strain → Cold Weather
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_coldWeatherEnabled` | CHECKBOX | `true` | yes | strain | Toggle the wind chill, dexterity and frostbite model (Osczevski-Bluestein, Heus/Daanen, Tikuisis-Osczevski) |
+
+## AEE Strain → Coupling
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_crossSensitivityEnabled` | CHECKBOX | `true` | yes | strain | Dehydration and hypoxia amplify each other. Dehydrated personnel lose useful consciousness faster at altitude; hypoxia accelerates fluid loss |
+| `aee_strain_crossSensitivityScale` | SLIDER | `1.0` | yes | strain | Coupling strength. 1 = full literature values (1.6x hypoxia at full dehydration, 1.4x dehydration at full hypoxia) |
+
+## AEE Strain → Fatigue
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_circadianAmplitude` | SLIDER | `0.12` | yes | strain | Amplitude of the circadian wake drive (0.1-0.15 published range) |
+| `aee_strain_fatigueEnabled` | CHECKBOX | `true` | yes | strain | Toggle the Borbely two-process sleep/fatigue model |
+
+## AEE Strain → Movement
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_movementSpeed` | CHECKBOX | `true` | yes | strain | Couple fatigue, cold and carried load to movement speed via setAnimSpeedCoef - an exhausted, hypothermic or overloaded soldier moves slower (issue #212) |
+
+## AEE Strain → Rates
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_RehydrationRate` | SLIDER | `0.05` | yes | strain | Natural rehydration speed (L per hour) |
+| `aee_strain_SweatRateScale` | SLIDER | `1.0` | yes | strain | Overall heat-stress severity multiplier on sweat rate |
+
+## AEE Strain → Stability
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_stabilityEnabled` | CHECKBOX | `true` | yes | strain | Toggle the shooter stability index (cold/heat/fatigue) and ACE3 sway integration |
+
+## AEE Strain → Thresholds
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_strain_HeatStrokeSensitivity` | SLIDER | `0.03` | yes | strain | Heat-stroke overlay strength per °C above the danger threshold |
 
 ## AEE Thermal → Display
 

@@ -26,7 +26,7 @@ Output: [risk 0..1, R, newTissues]
 params [["_altM", 0, [0]], ["_tissues", [], [[]]], ["_dtSec", 1, [0]]];
 
 private _pAmb = [_altM] call FUNC(calculateBarometricPressure);
-private _step = [0, 0.79, 0, _tissues, 1.0, _pAmb] call FUNC(zh16cStep);
+private _step = [0, 0.79, 0, _tissues, 1.0, _pAmb] call EFUNC(physiology,zh16cStep);
 private _newTissues = _step select 0;
 
 // ─── Supersaturation ratio: controlling compartment ──────────────────────

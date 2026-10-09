@@ -48,7 +48,7 @@ ANCHOR_CLASSES = {
     "AEE_SandCloud": "addons/fx/config.cpp",
     "AEE_SnowCloud": "addons/fx/config.cpp",
     "AEE_SupersonicTrace": "addons/fx/config.cpp",
-    "CfgClothing": "addons/physiology/config.cpp",
+    "CfgClothing": "addons/clothing/config.cpp",
 }
 
 # The engine config classes AEE re-declares.  Each must be opened literally in

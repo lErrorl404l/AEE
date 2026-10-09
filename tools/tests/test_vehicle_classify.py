@@ -39,7 +39,7 @@ WRAPPER_PATH = FUNCTIONS / "fnc_estimateVehicleMass.sqf"
 TRACTION_PATH = FUNCTIONS / "fnc_calculateTraction.sqf"
 PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
 EQUIPMENT_PATH = (
-    REPO / "addons" / "physiology" / "functions" / "clothing" / "fnc_getItemMass.sqf"
+    REPO / "addons" / "clothing" / "functions" / "clothing" / "fnc_getItemMass.sqf"
 )
 
 BANDS = BANDS_PATH.read_text(encoding="utf-8")

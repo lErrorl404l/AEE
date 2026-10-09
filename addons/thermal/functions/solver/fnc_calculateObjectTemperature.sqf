@@ -256,7 +256,7 @@ private _infantryCount = 0;
             // fnc_applySelectionThermal.  The metabolic fraction is
             // delivery-limited; the perfusion index is the volume axis.
             private _basalHeat = 58.2 * 1.8258;
-            private _ox = [_obj, _basalHeat + _metabolicHeat, 1.8258] call EFUNC(physiology,calculateOxygenDelivery);
+            private _ox = [_obj, _basalHeat + _metabolicHeat, 1.8258] call EFUNC(altitude,calculateOxygenDelivery);
             _metabolicHeat = _metabolicHeat * (_ox select 6);
             private _shock = 1 - (_ox select 10);
             _target = _target + _metabolicHeat * 0.05;

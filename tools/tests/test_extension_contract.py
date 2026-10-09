@@ -74,7 +74,7 @@ class TestExtensionContract(unittest.TestCase):
         core = (
             ROOT
             / "addons"
-            / "physiology"
+            / "clothing"
             / "functions"
             / "clothing"
             / "fnc_getInventoryLoad.sqf"
@@ -82,7 +82,7 @@ class TestExtensionContract(unittest.TestCase):
         core_mass = (
             ROOT
             / "addons"
-            / "physiology"
+            / "clothing"
             / "functions"
             / "clothing"
             / "fnc_getItemMass.sqf"

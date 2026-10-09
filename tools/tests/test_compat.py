@@ -560,16 +560,16 @@ class TestAceItemMassHook(unittest.TestCase):
         # The other half of the contract: the walk must read the list and
         # try each resolver when the core table misses.  Assert the real
         # text, not a string this test fabricates.
-        src = self._read("physiology/functions/clothing/fnc_getInventoryLoad.sqf")
+        src = self._read("clothing/functions/clothing/fnc_getInventoryLoad.sqf")
         self.assertIn(
-            "QGVAR(massResolvers)", src, "the walk does not read the resolver list"
+            "QEGVAR(physiology,massResolvers)", src, "the walk does not read the resolver list"
         )
         self.assertIn("forEach _resolvers", src, "the walk does not try the resolvers")
 
     def test_core_stays_ace_free(self):
         # No ACE classname or ACE field may appear in the core resolver:
         # that knowledge belongs to the compat layer.
-        src = self._read("physiology/functions/clothing/fnc_getItemMass.sqf")
+        src = self._read("clothing/functions/clothing/fnc_getItemMass.sqf")
         self.assertNotIn("ACE_", src, "an ACE name leaked into the core resolver")
         self.assertNotIn("ACE_isMedicalItem", src)
 
@@ -579,10 +579,10 @@ class TestAceItemMassHook(unittest.TestCase):
         # as headgear (0.667 kg). This pins the collision and the rule.
         src = self._read("compat_ace3/functions/fnc_isAceMedicalItem.sqf")
         self.assertIn("ACE_isMedicalItem", src)
-        table_src = self._read("physiology/functions/clothing/fnc_getItemMass.sqf")
+        table_src = self._read("clothing/functions/clothing/fnc_getItemMass.sqf")
         self.assertIn('["fast", "helmet"', table_src, "the colliding family is gone")
         self.assertIn("_familyCategory != _known", table_src)
-        self.assertIn("QGVAR(categoryResolvers)", table_src)
+        self.assertIn("QEGVAR(physiology,categoryResolvers)", table_src)
 
     def test_compat_registers_its_classifier(self):
         # Without the registration the category question is never answered

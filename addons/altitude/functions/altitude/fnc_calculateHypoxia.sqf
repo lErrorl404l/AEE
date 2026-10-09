@@ -7,7 +7,7 @@ Risk is the ratio of accumulated exposure to the Time of Useful Consciousness
 (TUC) for the current altitude.
 Arguments: None
 Return Value: NUMBER: hypoxia risk 0..1
-Example: [] call aee_physiology_fnc_calculateHypoxia
+Example: [] call aee_altitude_fnc_calculateHypoxia
 Public: No
 */
 

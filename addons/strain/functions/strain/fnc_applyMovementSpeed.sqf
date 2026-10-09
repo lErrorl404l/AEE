@@ -43,7 +43,7 @@ if !(missionNamespace getVariable [QGVAR(movementSpeed), true]) exitWith { 1.0 }
 // ACE3 advanced fatigue owns setAnimSpeedCoef - do not fight it.
 if (isClass (configFile >> "CfgPatches" >> "ace_advanced_fatigue")) exitWith { 1.0 };
 
-private _fatigue = missionNamespace getVariable [QGVAR(fatigueFactor), 1.0];
+private _fatigue = missionNamespace getVariable [QEGVAR(physiology,fatigueFactor), 1.0];
 if !(_fatigue isEqualType 0) then { _fatigue = 1.0; };
 _fatigue = _fatigue max 0.3 min 1.0;
 
@@ -52,7 +52,7 @@ _fatigue = _fatigue max 0.3 min 1.0;
 // helmet + goggles + pack + contents) in kg.  A 30 kg combat load
 // slows the soldier (the issue #119 library feeds #212).  Light patrol
 // ~15 kg -> full speed, overloaded ~45 kg -> 0.85.
-private _equip = [_unit] call FUNC(getEquipmentProperties);
+private _equip = [_unit] call EFUNC(clothing,getEquipmentProperties);
 private _combined = _equip select 5;
 private _load = _combined select 0;
 
@@ -69,7 +69,7 @@ if !(_wct isEqualType 0) then { _wct = _airTemp; };
 // Dexterity is a HAND function.  The hand feels its OWN temperature -
 // the wind chill insulated by the handwear (Gonzalez 1998 measured:
 // light duty glove 0.86 clo, heavy duty 1.05, Arctic mitten 1.46).
-private _gloveClo = [_unit] call FUNC(getGloveProperties);
+private _gloveClo = [_unit] call EFUNC(clothing,getGloveProperties);
 private _handWct = _airTemp + (_wct - _airTemp) * (exp (-_gloveClo));
 
 // Cold-exposure duration: Daanen 2009 (Ind Health 47:262) - manual

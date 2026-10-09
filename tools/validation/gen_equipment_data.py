@@ -26,8 +26,8 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 SRC = REPO / "data" / "equipment" / "sources"
-OUT = REPO / "addons/physiology/functions/clothing/fnc_getItemMass.sqf"
-BANDS_OUT = REPO / "addons/physiology/functions/clothing/fnc_getEquipmentBands.sqf"
+OUT = REPO / "addons/clothing/functions/clothing/fnc_getItemMass.sqf"
+BANDS_OUT = REPO / "addons/clothing/functions/clothing/fnc_getEquipmentBands.sqf"
 
 # One spelling per category. The capture may use the plural.
 CATEGORY_ALIASES = {"binoculars": "binocular", "binocs": "binocular"}
@@ -78,7 +78,7 @@ def classifier_rows():
     )
     rows = []
     for category, filename in slots:
-        path = REPO / "addons/physiology/functions/clothing" / filename
+        path = REPO / "addons/clothing/functions/clothing" / filename
         if not path.exists():
             continue
         text = path.read_text(encoding="utf-8")
@@ -265,7 +265,7 @@ private _known = "";
 {
     _known = [_item] call _x;
     if (_known != "") exitWith {};
-} forEach (missionNamespace getVariable [QGVAR(categoryResolvers), []]);
+} forEach (missionNamespace getVariable [QEGVAR(physiology,categoryResolvers), []]);
 if (_known == "" && _allowed isNotEqualTo []) then { _known = _allowed select 0; };
 // Only a known category that the family contradicts is rejected.  An
 // empty family category means the row states none, which is not a
@@ -318,7 +318,7 @@ data/equipment/sources/. It is written by
 tools/validation/gen_equipment_data.py and must not be edited by hand.
 
 The band table is the property fallback of the item-mass resolver
-aee_physiology_fnc_getItemMass. An item whose identity text carries no
+aee_clothing_fnc_getItemMass. An item whose identity text carries no
 family keyword is matched by its own engine config mass against the
 researched family masses of its slot category. The category is the discrete
 token, the published family mass is the primary selector, and the number of

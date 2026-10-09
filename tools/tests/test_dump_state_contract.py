@@ -45,6 +45,13 @@ HOSTED_DUMPS: dict[str, str] = {
     # exactly as the single `environmental` addon did before the split.
     "weather": "lighting",
     "persistence": "lighting",
+    # The physiology split (step 6, ADR-032) left one consolidated
+    # physiology-family dump in physiology; strain, altitude, dive and
+    # clothing publish into that same state and reuse it.
+    "strain": "physiology",
+    "altitude": "physiology",
+    "dive": "physiology",
+    "clothing": "physiology",
 }
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR

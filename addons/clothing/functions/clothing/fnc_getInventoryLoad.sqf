@@ -47,7 +47,7 @@ private _total = 0;
 // ACE's own kit carries published masses for items the core cannot know.
 // Core asks whether a fallback resolver is registered and never names the
 // layer, so the dependency stays one-way.
-private _resolvers = missionNamespace getVariable [QGVAR(massResolvers), []];
+private _resolvers = missionNamespace getVariable [QEGVAR(physiology,massResolvers), []];
 private _resolve = {
     params ["_item", ["_category", "", [""]]];
     // getItemMass takes the LIST of categories it may match, so one
