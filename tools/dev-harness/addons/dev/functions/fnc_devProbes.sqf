@@ -20,6 +20,7 @@ params [["_name", ""]];
 
 private _members = switch (_name) do {
     case "headless": { ["P113", "P116", "P117", "P119", "P134"] };
+    case "client": { ["P136"] };
     default { [] };
 };
 if ((count _members) == 0) exitWith { "error: unknown probe batch " + _name };
@@ -125,6 +126,9 @@ private _predicates = [
             if (_a != 0) then { _notes pushBack format ["%1 alpha=%2 want 0", _x, _a]; };
         } forEach ["colorGrid", "colorGridMap"];
         [(count _notes) == 0, _notes joinString "; "]
+    }],
+    ["P136", {
+        [!isDedicated, format ["non-dedicated machine, hasInterface=%1", hasInterface]]
     }]
 ];
 

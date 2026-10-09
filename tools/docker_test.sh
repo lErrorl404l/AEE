@@ -337,10 +337,23 @@ if [ "$MODE" = "console" ]; then
         exit 2
     fi
     CONSOLE_FILES=(-f "$DOCKER/docker-compose.yml" -f "$DEV_OVERLAY")
+    if [ "$WITH_CLIENT" = "1" ]; then
+        CLIENT_OVERLAY="$RUN_DIR/docker-compose.console-client.yml"
+        cat >"$CLIENT_OVERLAY" <<YAMLEOF
+services:
+  aee-test:
+    environment:
+      - ARMA3_HEADLESS__CLIENTS=1
+    volumes:
+      - $DOCKER/config.client.toml:/arma3/config.toml
+YAMLEOF
+        CONSOLE_FILES+=(-f "$CLIENT_OVERLAY")
+    fi
     DEV_PORT="${AEE_DEV_PORT:-7788}"
     DEV_TOKEN="${AEE_DEV_TOKEN:-aee-dev-token}"
     BATCH="${AEE_CONSOLE_BATCH:-headless}"
     HTTP="$ROOT/tools/dev-harness/dev_http.py"
+    RUNNER="$ROOT/tools/dev-harness/addons/dev/functions/fnc_devProbes.sqf"
 
     clean_profiles
     echo "==> console: docker compose up"
@@ -363,16 +376,14 @@ if [ "$MODE" = "console" ]; then
     fi
     echo "==> console: /health OK"
 
+    CONSOLE_FAIL=0
+
     echo "==> console: POST probes [$BATCH]"
     RESP="$(python3 "$HTTP" post "$DEV_PORT" "$DEV_TOKEN" probes "$BATCH" 2>/dev/null || true)"
     printf '%s\n' "$RESP" >"$RUN_DIR/console-batch.txt"
-    docker compose "${CONSOLE_FILES[@]}" logs >"$RUN_DIR/console.log" 2>&1 || true
-    docker compose "${CONSOLE_FILES[@]}" down 2>/dev/null || true
     printf '==> console: batch result %s\n' "$RESP"
-
-    CONSOLE_FAIL=0
-    TAGS="$(grep -oE '"P[0-9A-Za-z]+"' "$ROOT/tools/dev-harness/addons/dev/functions/fnc_devProbes.sqf" | tr -d '"' | sort -u)"
-    for tag in $TAGS; do
+    HEADLESS_TAGS="$(grep -o 'case "headless": { \[[^]]*\]' "$RUNNER" | grep -oE '"P[0-9A-Za-z]+"' | tr -d '"')"
+    for tag in $HEADLESS_TAGS; do
         if ! printf '%s' "$RESP" | grep -q "\"$tag\""; then
             echo "  FAIL: $tag absent from the batch result"
             CONSOLE_FAIL=1
@@ -383,6 +394,31 @@ if [ "$MODE" = "console" ]; then
             echo "  PASS: $tag"
         fi
     done
+
+    if [ "$WITH_CLIENT" = "1" ]; then
+        echo "==> console: remoteExec client probe P136"
+        python3 "$HTTP" post "$DEV_PORT" "$DEV_TOKEN" remote probecall P136 >/dev/null 2>&1 || true
+        CLIENT_VERDICT=""
+        for _ in $(seq 1 15); do
+            CLIENT_VERDICT="$(python3 "$HTTP" post "$DEV_PORT" "$DEV_TOKEN" get aee_dev_clientprobe_P136 2>/dev/null || true)"
+            case "$CLIENT_VERDICT" in
+            "" | "nil" | *"nil"*) sleep 3 ;;
+            *) break ;;
+            esac
+        done
+        printf '%s\n' "$CLIENT_VERDICT" >"$RUN_DIR/console-client.txt"
+        printf '==> console: client verdict %s\n' "$CLIENT_VERDICT"
+        if printf '%s' "$CLIENT_VERDICT" | grep -q "true"; then
+            echo "  PASS: P136 reached via remoteExec"
+        else
+            echo "  FAIL: P136 client-unavailable (no headless client connected)"
+            CONSOLE_FAIL=1
+        fi
+    fi
+
+    docker compose "${CONSOLE_FILES[@]}" logs >"$RUN_DIR/console.log" 2>&1 || true
+    docker compose "${CONSOLE_FILES[@]}" down 2>/dev/null || true
+
     if [ "$CONSOLE_FAIL" -ne 0 ]; then
         echo "==> console FAIL"
         exit 1
