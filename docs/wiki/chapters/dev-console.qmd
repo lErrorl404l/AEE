@@ -1,0 +1,77 @@
+---
+title: "Dev console and workbench"
+---
+
+# Dev console and workbench {#sec-dev-console}
+
+This chapter describes the development surface. The surface is dev-only. It
+ships in no release artefact.
+
+## The dev console
+
+The dev console is a native extension, `aee_dev`. It listens on loopback only.
+It runs SQF in a live session, reads a `missionNamespace` variable, dumps a
+subsystem, drives a scenario and runs a batch of probes. The extension reaches
+SQF through the `ExtensionCallback` mission event handler. SQF answers through
+`callExtension`.
+
+### The four-layer gate
+
+The channel exists only when four independent layers hold.
+
+1. Build exclusion. The dev project is a standalone HEMTT project outside
+   `addons/`. The main project cannot build it.
+2. Addon-load exclusion. The release mod list does not name the dev mod.
+3. Run-time gate. The poller starts only when file patching is active, the
+   sentinel file exists, and the host is a dev host.
+4. No arbitrary code. The command surface is a fixed verb table.
+
+When a layer fails, the channel does not exist. There is no handler, no verb
+and no log line. The failure is a silent no-op.
+
+### The verb table
+
+The dispatcher accepts a fixed set of operations: `ping`, `get`, `set`, `dump`,
+`dumpall`, `eval`, `callfunc`, `batch`, `scenario`, `probes`, `remote` and
+`verbs`. `eval` is the only operation that compiles agent input, and it is
+reachable only on a fully gated dev session. `callfunc` runs a function only
+when its name is on the `AEE_DEV_FUNCS` whitelist.
+
+The generated contract, with the extension command set, the verb table and the
+whitelist, is in
+[the dev console contract](../research/dev-console-contract.md).
+
+## The visual workbench
+
+The workbench re-applies a visual change without a relaunch. Four keybinds
+register under the `AEE Dev` category.
+
+| Keybind | Action |
+|---|---|
+| Re-apply visual | Releases each effect scope and re-runs the pipeline. |
+| Screenshot | Takes a labelled screenshot and logs the paired state. |
+| Dump | Writes the full state dump. |
+| Overlay toggle | Shows the state dump in an overlay. |
+
+The re-apply releases the optics, nightvision and thermal scopes through the
+core registry, then re-runs the five named apply paths. The screenshot lands in
+the profile folder and its paired state line names the file.
+
+## Test batching
+
+One live session runs many probes. Each probe has a run class. A `headless`
+probe runs on the dedicated server. A `headless-client` probe needs a
+non-dedicated machine. An `interface` probe needs a human interface. The runner
+reports `client-unavailable` for a probe the machine cannot carry. It never
+reports a client probe as passing from a server-only run.
+
+A console result is evidence. It is not a gate. A fact that must gate also gets
+a probe file, and the Docker harness runs the probe.
+
+## The manual ceiling
+
+The visual check is manual. A dedicated server renders nothing, so the console
+and the harness cannot assert a rendered verdict. The human eye on a client is
+the ceiling. The operator presses a keybind, looks at the result, and confirms
+the change. The screenshot is evidence for that manual check. It is not an
+automated gate.
