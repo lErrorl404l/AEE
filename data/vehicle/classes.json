@@ -71,7 +71,7 @@
         "addons/mobility/XEH_postInit.sqf:43",
         "addons/mobility/XEH_postInit.sqf:81",
         "addons/mobility/functions/fnc_applyAirframeLoad.sqf:43",
-        "addons/mobility/functions/fnc_applyFlightTurbulence.sqf:76",
+        "addons/mobility/functions/fnc_applyFlightTurbulence.sqf:81",
         "addons/mobility/functions/fnc_applyRollover.sqf:40",
         "addons/mobility/functions/fnc_applyTerrainDrag.sqf:41",
         "addons/mobility/functions/fnc_calculateSSF.sqf:86",

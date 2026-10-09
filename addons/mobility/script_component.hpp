@@ -4,17 +4,18 @@
 #include "\z\aee\addons\main\script_macros.hpp"
 
 // ── Flight forces ──────────────────────────────────────────────────────────
-// Calibration and bounds for the scripted flight-force layer.  The divisors
-// and caps are UNSOURCED modelling choices; the tests pin them so a drift is
-// caught.  See docs/adr/ADR-017-flight-physics-ceiling.md.
+// Bounds for the scripted flight-force layer.  The gust force is aerodynamic
+// and sourced: F = 0.5 rho v^2 (Cd S), the dynamic pressure times the
+// airframe's effective drag area.  The drag area and the reference it comes
+// from are held in the aircraft corpus (data/aircraft/SCHEMA.md section 5).
+// The cap below is a stated perturbation bound, not a measured coefficient.
+// See docs/adr/ADR-017-flight-physics-ceiling.md.
 
-// Converts a gust velocity in m/s to the acceleration a force realises.  It
-// is the divisor the simple-model velocity path already used.
-#define TURBULENCE_FORCE_DIVISOR 100
 // A turbulence force is capped at this fraction of the aircraft weight, so a
 // gust can never dominate the airframe.
 #define TURBULENCE_FORCE_CAP_FRACTION 0.25
-// The density ratio (rho / 1.225) is capped here before it scales a force.
+// The air density (kg/m3) is capped at this multiple of ISA sea level before
+// it scales a force.
 #define TURBULENCE_DENSITY_RATIO_MAX 1.5
 // The rotary attitude nudge is this fraction of the applied gust force.
 #define TURBULENCE_TORQUE_FRACTION 0.05

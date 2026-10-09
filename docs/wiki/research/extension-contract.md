@@ -107,7 +107,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_thermal` | `thermal` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (636)
+### Public functions (637)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -404,6 +404,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_mobility_fnc_getVehicleMatch`
 - `aee_mobility_fnc_logAirframeState`
 - `aee_mobility_fnc_resolveFlightModel`
+- `aee_mobility_fnc_resolveTurbulenceArea`
 - `aee_mobility_fnc_routeRunoffD8`
 - `aee_mobility_fnc_updateGroundState`
 - `aee_nightvision_fnc_applyNVGTubeModel`

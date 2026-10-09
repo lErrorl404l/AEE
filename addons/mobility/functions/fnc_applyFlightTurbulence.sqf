@@ -10,11 +10,16 @@ currentWind, currentWindDir, currentAirDensity) and applies a smoothed gust
 vector to every airborne, moving aircraft within range of a player or the
 mission centre.
 
-The advanced flight model (the scenario-global flag difficultyEnabledRTD)
-and any rotor-lib airframe (the RotorLibHelicopterProperties class) receive
-the gust as a PhysX force via addForce, with a bounded addTorque attitude
-nudge for a rotary airframe.  The simple model receives a local velocity
-delta via setVelocity.  Every application is gated to the machine that owns
+The gust is a relative wind.  Its force is aerodynamic drag, the dynamic
+pressure times the airframe's effective drag area (F = 0.5 rho v^2 Cd S),
+read from the aircraft corpus record.  The force does not carry the mass, so
+the acceleration it realises is force / mass: a heavy airframe resists a gust
+and a light one is nudged.  The advanced flight model (the scenario-global
+flag difficultyEnabledRTD) and any rotor-lib airframe (the
+RotorLibHelicopterProperties class) receive the force via addForce, with a
+bounded addTorque attitude nudge for a rotary airframe.  The simple model
+cannot integrate a PhysX force, so it receives the same acceleration as a
+local velocity delta.  Every application is gated to the machine that owns
 the object, so a remote client or a dedicated server never writes another
 machine's velocity state.
 
@@ -22,8 +27,9 @@ The engine has no "AdvancedFlightModel" class.  The old gate tested for it,
 matched nothing, and left the addForce branch dead.  The correct gate is the
 difficulty flag and the rotor-lib property above.
 
-Wind shear: when gusts exceed 15 m/s, a deterministic horizontal impulse is
-added on a fixed roll so all clients agree.
+Wind shear: when gusts exceed 15 m/s, a deterministic horizontal gust is
+added on a fixed roll so all clients agree.  It joins the gust vector and
+takes the same aerodynamic, mass-aware force.
 
 Arguments:
 None
@@ -53,8 +59,7 @@ if (_windDir < 0) then {
     if (_windDir >= 360) then { _windDir = _windDir - 360; };
 };
 
-private _density = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-private _densityFactor = _density / 1.225;
+private _density = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
 private _scale = GVAR(turbulenceScale);
 private _radius = GVAR(turbulenceRadius);
 
@@ -118,10 +123,6 @@ private _candidates = _aircraft select {
     } forEach _state;
 
     // Target gust — wind direction plus random sway, scaled by weather.
-    // Density scales the FORCE (ASM path only): a thin-air force produces
-    // a smaller acceleration, but a velocity delta (SFM) already is a
-    // velocity — density must not enter it, or thin air would push the
-    // aircraft harder in SFM than in ASM.
     private _sway = (_turbulence * 40) - 20;
     private _dir = _windDir + 180 + _sway;
     private _dirVec = [sin _dir, cos _dir, 0];
@@ -143,33 +144,38 @@ private _candidates = _aircraft select {
     private _mass = getMass _veh;
     if (_mass <= 0) then { _mass = AERO_DEFAULT_AIRCRAFT_MASS_KG; };
 
-    if (_physical) then {
-        private _smoothMag = vectorMagnitude _newSmooth;
-        private _forceN = [_smoothMag, _densityFactor, _mass] call FUNC(calculateTurbulenceForce);
-        if (_forceN > 0) then {
-            private _dir = [0, 0, 0];
-            if (_smoothMag > 0) then { _dir = vectorNormalized _newSmooth; };
-            _veh addForce [_dir vectorMultiply _forceN, [0, 0, 0]];
-            // A rotary airframe also takes a bounded attitude nudge, so the
-            // gust rolls and yaws the machine and not only translates it.
-            if (_rotorLib) then {
-                private _torque = (_dir vectorCrossProduct [0, 0, 1]) vectorMultiply (_forceN * TURBULENCE_TORQUE_FRACTION);
-                _veh addTorque [_torque, false];
-            };
-        };
-    } else {
-        // Simple model: a LOCAL velocity delta, applied on the owning machine
-        // only.  It is no longer the sole path; the advanced and rotor-lib
-        // models take the physical path above.
-        _veh setVelocity ((velocity _veh) vectorAdd _newSmooth);
-    };
+    // The airframe's drag reference area, from the aircraft corpus record.
+    private _row = [typeOf _veh] call FUNC(getAircraftData);
+    private _dragArea = [_row] call FUNC(resolveTurbulenceArea);
 
-    // Wind-shear kick, same model split.
-    if (_shearVec isNotEqualTo [0, 0, 0]) then {
-        if (_physical) then {
-            _veh addForce [_shearVec vectorMultiply (_mass / TURBULENCE_FORCE_DIVISOR), [0, 0, 0]];
-        } else {
-            _veh setVelocity ((velocity _veh) vectorAdd _shearVec);
+    // The gust is a relative wind.  Its force is the dynamic pressure times
+    // the drag area, so it does not carry the mass and the acceleration it
+    // realises is force / mass: a heavy airframe resists and a light one is
+    // nudged.  The wind-shear kick is the same kind of perturbation, so it
+    // joins the gust vector.
+    private _gustVec = _newSmooth vectorAdd _shearVec;
+    private _gustMag = vectorMagnitude _gustVec;
+
+    if (_gustMag > 0) then {
+        private _forceN = [_gustMag, _density, _dragArea, _mass] call FUNC(calculateTurbulenceForce);
+        if (_forceN > 0) then {
+            private _forceDir = vectorNormalized _gustVec;
+            if (_physical) then {
+                _veh addForce [_forceDir vectorMultiply _forceN, [0, 0, 0]];
+                // A rotary airframe also takes a bounded attitude nudge, so
+                // the gust rolls and yaws it and not only translates it.
+                if (_rotorLib) then {
+                    private _torque = (_forceDir vectorCrossProduct [0, 0, 1]) vectorMultiply (_forceN * TURBULENCE_TORQUE_FRACTION);
+                    _veh addTorque [_torque, false];
+                };
+            } else {
+                // The simple model does not integrate a PhysX force, so apply
+                // the same acceleration over one frame as a local velocity
+                // delta.  The delta carries the mass through force / mass, so
+                // the simple model is weight-aware too.
+                private _deltaV = (_forceN / _mass) * diag_deltaTime;
+                _veh setVelocity ((velocity _veh) vectorAdd (_forceDir vectorMultiply _deltaV));
+            };
         };
     };
 } forEach _candidates;

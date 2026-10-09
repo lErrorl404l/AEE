@@ -43,6 +43,7 @@ RUNNER = ROOT / "tools" / "run_tests.py"
 
 RESOLVE = FUNCS / "fnc_resolveFlightModel.sqf"
 TURB_FORCE = FUNCS / "fnc_calculateTurbulenceForce.sqf"
+TURB_AREA = FUNCS / "fnc_resolveTurbulenceArea.sqf"
 AERO_PENALTY = FUNCS / "fnc_calculateAeroPenalty.sqf"
 APPLY_AIR = FUNCS / "fnc_applyAirframeLoad.sqf"
 APPLY_TURB = FUNCS / "fnc_applyFlightTurbulence.sqf"
@@ -61,7 +62,6 @@ def _define(name):
 
 def _defines():
     return {
-        "TURBULENCE_FORCE_DIVISOR": _define("TURBULENCE_FORCE_DIVISOR"),
         "TURBULENCE_FORCE_CAP_FRACTION": _define("TURBULENCE_FORCE_CAP_FRACTION"),
         "TURBULENCE_DENSITY_RATIO_MAX": _define("TURBULENCE_DENSITY_RATIO_MAX"),
         "TURBULENCE_TORQUE_FRACTION": _define("TURBULENCE_TORQUE_FRACTION"),
@@ -90,7 +90,6 @@ class TestConstants(unittest.TestCase):
 
     def test_bounds_are_the_published_values(self):
         d = _defines()
-        self.assertEqual(d["TURBULENCE_FORCE_DIVISOR"], 100.0)
         self.assertEqual(d["TURBULENCE_FORCE_CAP_FRACTION"], 0.25)
         self.assertEqual(d["AERO_ISA_SEA_LEVEL_DENSITY"], 1.225)
         self.assertEqual(d["AERO_ICE_LIFT_LOSS_MAX"], 0.35)
@@ -127,10 +126,16 @@ class TestFlightModelGate(unittest.TestCase):
 
 
 class TestTurbulenceForce(unittest.TestCase):
-    """fnc_calculateTurbulenceForce is the gust force magnitude."""
+    """fnc_calculateTurbulenceForce is the aerodynamic gust force.
 
-    def _force(self, gust, ratio=1.0, mass=1000.0):
-        return float(run_sqf(TURB_FORCE, [gust, ratio, mass], _defines()))
+    The force is the dynamic pressure times the airframe's effective drag
+    area, F = 0.5 rho v^2 (Cd S).  It carries no mass, so the acceleration it
+    realises is F / mass.  The old kernel multiplied by the mass, so the
+    acceleration was the same for a 752 kg Littlebird and a 22 tonne Chinook.
+    """
+
+    def _force(self, gust, density=1.225, area=0.7, mass=1000.0):
+        return float(run_sqf(TURB_FORCE, [gust, density, area, mass], _defines()))
 
     def test_zero_gust_is_no_force(self):
         self.assertEqual(self._force(0.0), 0.0)
@@ -141,20 +146,41 @@ class TestTurbulenceForce(unittest.TestCase):
     def test_zero_mass_is_no_force(self):
         self.assertEqual(self._force(4.0, mass=0.0), 0.0)
 
+    def test_zero_drag_area_is_no_force(self):
+        self.assertEqual(self._force(4.0, area=0.0), 0.0)
+
     def test_known_magnitude(self):
-        # 4 m/s * 1.0 * 1000 kg / 100 = 40 N.
-        self.assertAlmostEqual(self._force(4.0), 40.0, places=6)
+        # 0.5 * 1.225 * 4^2 * 0.7 = 6.86 N.
+        self.assertAlmostEqual(self._force(4.0), 6.86, places=6)
 
     def test_density_scales_the_force(self):
-        full = self._force(4.0, ratio=1.0)
-        half = self._force(4.0, ratio=0.5)
+        full = self._force(4.0, density=1.225)
+        half = self._force(4.0, density=0.6125)
         self.assertAlmostEqual(half, full / 2.0, places=6)
 
+    def test_drag_area_scales_the_force(self):
+        base = self._force(4.0, area=0.7)
+        double = self._force(4.0, area=1.4)
+        self.assertAlmostEqual(double, base * 2.0, places=6)
+
     def test_density_is_capped(self):
-        # A density ratio above the cap must not scale the force further.
-        at_cap = self._force(4.0, ratio=_define("TURBULENCE_DENSITY_RATIO_MAX"))
-        beyond = self._force(4.0, ratio=99.0)
+        at_cap = self._force(
+            4.0, density=1.225 * _define("TURBULENCE_DENSITY_RATIO_MAX")
+        )
+        beyond = self._force(4.0, density=99.0)
         self.assertAlmostEqual(beyond, at_cap, places=6)
+
+    def test_force_is_quadratic_in_gust(self):
+        # A drag force goes with the square of the gust speed.
+        self.assertAlmostEqual(self._force(4.0), self._force(2.0) * 4.0, places=6)
+
+    def test_force_is_independent_of_mass(self):
+        # The fix: the aerodynamic force carries no mass, so a heavy airframe
+        # does not get a proportionally larger force (the old flat
+        # acceleration).  Below the cap the force is identical.
+        light = self._force(4.0, area=50.9, mass=752.0)
+        heavy = self._force(4.0, area=50.9, mass=22680.0)
+        self.assertAlmostEqual(light, heavy, places=6)
 
     def test_extreme_gust_is_bounded_to_a_fraction_of_weight(self):
         cap = 1000.0 * G * _define("TURBULENCE_FORCE_CAP_FRACTION")
@@ -163,6 +189,64 @@ class TestTurbulenceForce(unittest.TestCase):
     def test_monotonic_in_gust(self):
         self.assertLess(self._force(2.0), self._force(4.0))
         self.assertLess(self._force(4.0), self._force(8.0))
+
+
+class TestGustWeightResponse(unittest.TestCase):
+    """A heavy airframe resists a gust and a light one is nudged.
+
+    The operator report: the wind blew the light Littlebird around like a
+    heavy airframe.  The old kernel returned a mass-proportional force, so the
+    acceleration F / mass was flat across airframes.  This proves the
+    acceleration now falls with the mass.
+    """
+
+    LIGHT = 782.0  # MD 530F / AH-9 Pawnee operating weight, kg
+    HEAVY = 9185.0  # UH-60 / UH-80 Ghost Hawk operating weight, kg
+    DISC = 55.154115  # MD 530F rotor disc area, m^2 (the operator's airframe)
+
+    def _accel(self, mass, area, gust=5.0):
+        force = float(run_sqf(TURB_FORCE, [gust, 1.225, area, mass], _defines()))
+        return force / mass
+
+    def test_light_airframe_accelerates_more_than_heavy(self):
+        self.assertGreater(
+            self._accel(self.LIGHT, self.DISC),
+            self._accel(self.HEAVY, self.DISC),
+        )
+
+    def test_acceleration_scales_as_one_over_mass(self):
+        # Same drag area, so the force is equal and the acceleration is 1/mass.
+        a_light = self._accel(self.LIGHT, self.DISC)
+        a_heavy = self._accel(self.HEAVY, self.DISC)
+        self.assertAlmostEqual(a_light / a_heavy, self.HEAVY / self.LIGHT, places=6)
+
+
+class TestResolveTurbulenceArea(unittest.TestCase):
+    """fnc_resolveTurbulenceArea reads the drag area from the corpus row.
+
+    The row order is the generated value row: [operating_weight_kg,
+    rated_power_w, drag_area_m2, rotor_disc_area_m2].  A fixed-wing entry holds
+    drag_area_m2 (Cd S); a rotary-wing entry holds rotor_disc_area_m2 (the
+    disc).  No parallel data table is added.
+    """
+
+    def _area(self, row):
+        return float(run_sqf(TURB_AREA, [row], _defines()))
+
+    def test_fixed_wing_uses_the_drag_area(self):
+        self.assertEqual(self._area([12701, 0, 0.7, 0]), 0.7)
+
+    def test_rotary_wing_uses_the_rotor_disc(self):
+        # The operator's airframe: AH-9 Pawnee (md530f), disc 55.154115 m^2.
+        self.assertAlmostEqual(
+            self._area([782, 478000, 0, 55.154115]), 55.154115, places=6
+        )
+
+    def test_unknown_row_uses_the_kernel_default(self):
+        self.assertEqual(self._area([]), _define("AERO_DRAG_AREA_M2"))
+
+    def test_all_absent_uses_the_kernel_default(self):
+        self.assertEqual(self._area([0, 0, 0, 0]), _define("AERO_DRAG_AREA_M2"))
 
 
 class TestAeroPenalty(unittest.TestCase):
@@ -234,6 +318,20 @@ class TestGateSourceContract(unittest.TestCase):
 
     def test_uses_the_gate_kernel(self):
         self.assertIn("FUNC(resolveFlightModel)", self.src)
+
+    def test_reads_the_corpus_drag_area(self):
+        # The drag area comes from the aircraft record, not a parallel table.
+        self.assertIn("FUNC(getAircraftData)", self.src)
+        self.assertIn("FUNC(resolveTurbulenceArea)", self.src)
+
+    def test_no_unsourced_force_divisor(self):
+        self.assertNotIn("TURBULENCE_FORCE_DIVISOR", self.src)
+
+    def test_simple_path_carries_the_mass(self):
+        # The simple model cannot integrate a force, so it applies the same
+        # acceleration as a velocity delta: force / mass over one frame.
+        self.assertIn("diag_deltaTime", self.src)
+        self.assertIn("_forceN / _mass", self.src)
 
     def test_physical_path_applies_force_and_torque(self):
         self.assertIn("addForce", self.src)

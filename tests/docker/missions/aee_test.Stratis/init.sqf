@@ -3391,6 +3391,13 @@ private _p29Pass = 0;
     // flash-scene kernel, the flash kernel and the real evaluator with the
     // operator RPT values.  It renders nothing.
     execVM "aee_p131_flash_scene_probe.sqf";
+
+    // PHASE 132 lives in aee_p132_turbulence_weight_probe.sqf: the gust force
+    // is now aerodynamic and mass-aware.  The probe reads the operator's
+    // Littlebird record from the aircraft corpus, checks the drag area the
+    // record holds, and proves the force is mass-free while the acceleration
+    // is mass-aware against a heavy airframe.  It renders nothing.
+    execVM "aee_p132_turbulence_weight_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the
