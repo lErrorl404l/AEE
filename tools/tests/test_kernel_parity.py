@@ -49,7 +49,18 @@ class TestKernelParity(unittest.TestCase):
         suite = json.loads(VECTORS.read_text(encoding="utf-8"))["kernels"]
         self.assertEqual(
             set(suite),
-            {"stationPressure", "relativeHumidity", "airDensity", "solveTwoNode"},
+            {
+                "stationPressure",
+                "relativeHumidity",
+                "airDensity",
+                "solveTwoNode",
+                "calculateBallisticDrag",
+                "eyeAdaptStep",
+                "eyeMesopicWeight",
+                "eyePupilSteady",
+                "eyePupilStep",
+                "eyeTimeSkip",
+            },
             "the vector file must cover each native kernel",
         )
         for name, kernel in suite.items():
@@ -96,7 +107,15 @@ class TestKernelParity(unittest.TestCase):
     def test_the_conformance_manifest_lists_the_kernel_generators(self):
         entries = json.loads(MANIFEST.read_text(encoding="utf-8"))["entries"]
         ids = {entry["id"] for entry in entries}
-        self.assertEqual(ids, {"kernel_table", "kernel_coefficients", "kernel_vectors"})
+        self.assertEqual(
+            ids,
+            {
+                "kernel_table",
+                "kernel_coefficients",
+                "kernel_vectors",
+                "kernel_drag_tables",
+            },
+        )
         for entry in entries:
             for artifact in entry["artifacts"]:
                 self.assertTrue(

@@ -27,11 +27,43 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 sys.path.insert(0, str(ROOT / "tools" / "tests"))
 
-from sqf_lite import run_sqf  # noqa: E402
+from sqf_lite import run_sqf, SqfParser, SqfRuntime, tokenize  # noqa: E402
 
 OUT = (
     ROOT / "tools" / "dev-harness" / "extension" / "tests" / "vectors" / "kernels.json"
 )
+
+
+def load_drag_tables() -> dict[str, list]:
+    """Parse the 14-model drag table out of the SQF reference.
+
+    ``fnc_getDragTables.sqf`` builds its map with ``createHashMapFromArray``.
+    The literal is a pure array of ``[name, [[mach, cd], ...]]`` pairs, so the
+    suite's own interpreter evaluates it here.  The native drag kernel and the
+    Rust table generator read the same SQF source, so the two cannot drift.
+    """
+    source = (
+        ROOT / "addons" / "ballistics" / "functions" / "fnc_getDragTables.sqf"
+    ).read_text(encoding="utf-8")
+    marker = "createHashMapFromArray"
+    after = source.index(marker) + len(marker)
+    open_idx = source.index("[", after)
+    depth = 0
+    literal = ""
+    for i in range(open_idx, len(source)):
+        if source[i] == "[":
+            depth += 1
+        elif source[i] == "]":
+            depth -= 1
+            if depth == 0:
+                literal = source[open_idx : i + 1]
+                break
+    stmts = SqfParser(tokenize(literal)).parse_program()
+    value = SqfRuntime({}).run(stmts)
+    return {name: table for name, table in value}
+
+
+DRAG_TABLES = load_drag_tables()
 
 # The relative bound is the f32 default.  The absolute bound covers a kernel
 # whose output is rounded to an integer: 0.5 is one rounding step and is the
@@ -264,6 +296,106 @@ KERNELS: tuple[dict, ...] = (
             ],
         ],
     },
+    {
+        "name": "calculateBallisticDrag",
+        "command": "kernel.calculateBallisticDrag",
+        "path": "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf",
+        "tolerance_rel": 1e-6,
+        "tolerance_abs": 0.0,
+        # The drag kernel reads its 15-key standard table through
+        # FUNC(getDragTables); the harness binds the SQF source's own table.
+        "globals": lambda: {"__FUNC__getDragTables": lambda: DRAG_TABLES},
+        "vectors": [
+            # [_bc, _velocity, _dragModel, _rhoRel, _airTempC]
+            [0.307, 900.0, "G1", 1.0, 15.0],  # 5.56 M855 anchor
+            [0.307, 900.0, "g1", 1.0, 15.0],  # case-folded name
+            [1.05, 850.0, "G7", 0.8, -20.0],  # .50 BMG, cold air
+            [0.5, 2000.0, "G5", 1.1, 50.0],  # hot, dense
+            [0.2, 1500.0, "APFSDS", 1.0, 15.0],  # fin-stabilised label
+            [0.15, 100.0, "G8", 1.0, 40.0],  # low Mach
+            [0.4, 1200.0, "LW2", 0.9, 0.0],
+            [0.4, 1200.0, "RA4", 1.0, 25.0],
+            [0.4, 1200.0, "GS", 1.0, 25.0],
+            [0.4, 1200.0, "GI", 1.0, 25.0],
+            [0.4, 1200.0, "GA", 1.0, 25.0],
+            [0.4, 1200.0, "GB", 1.0, 25.0],
+            [0.4, 1200.0, "G2", 1.0, 25.0],
+            [0.4, 1200.0, "G6", 1.0, 25.0],
+            [0.4, 1200.0, "RWS1943", 1.0, 25.0],
+            [0.4, 1200.0, "SCHAPIRO", 1.0, 25.0],
+            [0.307, 900.0, "NOPE", 1.0, 15.0],  # unknown model -> 0
+        ],
+    },
+    {
+        "name": "eyeAdaptStep",
+        "command": "kernel.eyeAdaptStep",
+        "path": "addons/optics/functions/eye/fnc_eyeAdaptStep.sqf",
+        "tolerance_rel": 1e-6,
+        "tolerance_abs": 0.0,
+        "vectors": [
+            # [_state, _targetLogLum, _dt, _tauLight, _tauDarkCone, _tauDarkRod, _w]
+            [[0.0, 0.0], 1.0, 0.1, 2.0, 120.0, 400.0, 0.0],
+            [[1.0, 0.0], 0.0, 0.5, 2.0, 120.0, 400.0, 0.5],
+            [[-3.0, -3.0], -1.0, 1.0, 2.0, 120.0, 400.0, 0.0],
+            [[-2.0, -4.0], 0.0, 0.25, 1.0, 100.0, 300.0, 1.0],
+        ],
+    },
+    {
+        "name": "eyeMesopicWeight",
+        "command": "kernel.eyeMesopicWeight",
+        "path": "addons/optics/functions/eye/fnc_eyeMesopicWeight.sqf",
+        "tolerance_rel": 1e-6,
+        "tolerance_abs": 0.0,
+        "vectors": [
+            # [_lum, _lo, _hi]
+            [0.001, 0.005, 5.0],  # below the band -> 0
+            [0.1, 0.005, 5.0],  # in the band
+            [1.0, 0.005, 5.0],
+            [100.0, 0.005, 5.0],  # above the band -> 1
+            [0.1, 0.01, 1.0],  # operator-tunable band
+        ],
+    },
+    {
+        "name": "eyePupilSteady",
+        "command": "kernel.eyePupilSteady",
+        "path": "addons/optics/functions/eye/fnc_eyePupilSteady.sqf",
+        "tolerance_rel": 1e-6,
+        "tolerance_abs": 0.0,
+        "vectors": [
+            [0.01],
+            [1.0],
+            [10.0],
+            [1000.0],
+        ],
+    },
+    {
+        "name": "eyePupilStep",
+        "command": "kernel.eyePupilStep",
+        "path": "addons/optics/functions/eye/fnc_eyePupilStep.sqf",
+        "tolerance_rel": 1e-6,
+        "tolerance_abs": 0.0,
+        "vectors": [
+            # [_d, _dTarget, _dt, _tauConstrict, _tauDilate]
+            [2.0, 8.0, 0.1, 0.25, 0.475],  # dilating
+            [8.0, 2.0, 0.1, 0.25, 0.475],  # constricting
+            [3.0, 3.0, 0.1, 0.25, 0.475],  # steady
+            [4.0, 6.0, 0.5, 0.2, 0.4],
+        ],
+    },
+    {
+        "name": "eyeTimeSkip",
+        "command": "kernel.eyeTimeSkip",
+        "path": "addons/optics/functions/eye/fnc_eyeTimeSkip.sqf",
+        "tolerance_rel": 1e-6,
+        "tolerance_abs": 0.0,
+        "vectors": [
+            # [_prevHour, _nowHour, _thresholdHours]
+            [-1.0, 5.0, 0.05],  # no previous sample -> false
+            [1.0, 5.0, 0.05],  # big forward jump -> true
+            [23.0, 1.0, 0.05],  # wraps past midnight -> true
+            [1.0, 1.1, 0.05],  # small tick -> false
+        ],
+    },
 )
 
 
@@ -271,8 +403,11 @@ def build() -> dict:
     kernels = {}
     for kernel in KERNELS:
         path = ROOT / kernel["path"]
+        globals_ = kernel.get("globals")
+        if globals_ is not None:
+            globals_ = globals_()
         cases = [
-            {"args": args, "expected": run_sqf(path, args)}
+            {"args": args, "expected": run_sqf(path, args, globals_)}
             for args in kernel["vectors"]
         ]
         kernels[kernel["name"]] = {

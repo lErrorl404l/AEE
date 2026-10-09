@@ -3441,6 +3441,14 @@ private _p29Pass = 0;
     // extension is absent the probe records native-unavailable and asserts the
     // SQF fallback.  It renders nothing.
     execVM "aee_p138_thermal_parity_probe.sqf";
+    // PHASE 139 lives in aee_p139_client_kernel_parity_probe.sqf: the ballistic
+    // drag and eye kernels are PURE and server-callable, so the dedicated
+    // server drives each one and compares the dispatcher's answer against the
+    // SQF reference within the per-kernel bound (ADR-034).  Their real call
+    // sites are client-local and stay manual interface ceilings (ADR-033).
+    // When the dev extension is absent the probe records native-unavailable
+    // and asserts the SQF fallback.  It renders nothing.
+    execVM "aee_p139_client_kernel_parity_probe.sqf";
     // PHASE 136 lives in aee_p136_client_probe.sqf: it needs a non-dedicated
     // machine, so the dedicated server never runs it and can never claim it
     // passed. An optional headless client carries it (guard !isDedicated).
