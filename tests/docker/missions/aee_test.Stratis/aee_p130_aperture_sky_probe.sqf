@@ -38,9 +38,9 @@ if (isNil "_teardown" || {isNil "_exitThermal"} || {isNil "_apFn"}) then {
     // The NVG/thermal exit: teardownSensors owns it.  Headless the sensor PFH
     // is nil, so the function runs its aperture restore and pin release, then
     // exits before the per-module teardown (which needs a live session).
-    missionNamespace setVariable ["aee_optics_eyePinned", true];
+    missionNamespace setVariable ["aee_eye_eyePinned", true];
     [] call _teardown;
-    if (isNil "aee_optics_eyePinned") then {
+    if (isNil "aee_eye_eyePinned") then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
@@ -48,9 +48,9 @@ if (isNil "_teardown" || {isNil "_exitThermal"} || {isNil "_apFn"}) then {
     };
 
     // The DTV host exit: exitThermalSensors owns it.
-    missionNamespace setVariable ["aee_optics_eyePinned", true];
+    missionNamespace setVariable ["aee_eye_eyePinned", true];
     [] call _exitThermal;
-    if (isNil "aee_optics_eyePinned") then {
+    if (isNil "aee_eye_eyePinned") then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
@@ -65,7 +65,7 @@ if (isNil "_teardown" || {isNil "_exitThermal"} || {isNil "_apFn"}) then {
     private _lastV = _nightAperture;                        // the value pinned before the sensor
     private _moved = abs (_nightAperture - _lastV) > 0.02;  // the scene did not move
     private _bugWrites = _moved;                            // pin survived: only a moved value writes
-    private _fixPinned = !(isNil "aee_optics_eyePinned");   // the real state after the exits
+    private _fixPinned = !(isNil "aee_eye_eyePinned");   // the real state after the exits
     private _fixWrites = (!_fixPinned) || {_moved};         // pin released: always writes
     if ((!_bugWrites) && {_fixWrites} && {_nightAperture > 8} && {_nightAperture < 20}) then {
         _pass = _pass + 1;

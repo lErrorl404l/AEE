@@ -30,7 +30,7 @@ private _table = [] call _loadTable;
 // core illuminance (100 lx) at a sun elevation below the horizon.
 private _agree = [
     ["aee_core_illuminanceLux", 100],
-    ["aee_optics_eyeSceneLux", 100],
+    ["aee_eye_eyeSceneLux", 100],
     ["aee_core_currentTemperature", 15],
     ["aee_core_groundSurfaceTemp", 14],
     ["aee_core_avgGroundTemp", 15],

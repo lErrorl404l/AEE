@@ -1,9 +1,9 @@
 // PHASE 131: the muzzle-flash scene coupling, headless.
 //
 // The eye driver samples the steady scene (physical sky plus the core local
-// light) and holds a muzzle-flash transient (aee_optics_eyeFlashLux, stamped by
+// light) and holds a muzzle-flash transient (aee_eye_eyeFlashLux, stamped by
 // the Fired handler).  The transient raises only the luminance the eye ADAPTS
-// to.  It must never enter the PUBLISHED scene (aee_optics_eyeSceneLux),
+// to.  It must never enter the PUBLISHED scene (aee_eye_eyeSceneLux),
 // because the cross-module invariant INV-1 (night_scene_agreement) compares the
 // published scene against the core illuminance, which carries no muzzle flash.
 //
@@ -65,7 +65,7 @@ if (abs (_flashLux - _flash) < 0.5) then {
 private _table = [] call _loadTable;
 private _night = [
     ["aee_core_illuminanceLux", _core],
-    ["aee_optics_eyeSceneLux", _steady],
+    ["aee_eye_eyeSceneLux", _steady],
     ["aee_core_currentTemperature", 17.5],
     ["aee_core_groundSurfaceTemp", 16.0],
     ["aee_core_avgGroundTemp", 15.7872],
@@ -87,8 +87,8 @@ if (_steadyOk) then {
 // 5. The flash-lit scene fails INV-1: the warning the RPT showed.
 private _flashLit = +_night;
 {
-    if ((_x select 0) == "aee_optics_eyeSceneLux") then {
-        _flashLit set [_forEachIndex, ["aee_optics_eyeSceneLux", _steady + _flash]];
+    if ((_x select 0) == "aee_eye_eyeSceneLux") then {
+        _flashLit set [_forEachIndex, ["aee_eye_eyeSceneLux", _steady + _flash]];
     };
 } forEach _flashLit;
 private _flashResult = [_table, _flashLit] call _evaluate;

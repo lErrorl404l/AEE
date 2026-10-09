@@ -18,9 +18,9 @@ if (isNil "_driver" || isNil "_compose") then {
     _notes pushBack "driver or composition kernel not compiled";
 } else {
     // 1. The driver reads the loaded config once and caches [1, 1, 0].
-    missionNamespace setVariable ["aee_optics_visionBaseAnchor", nil];
+    missionNamespace setVariable ["aee_vision_visionBaseAnchor", nil];
     [] call _driver;
-    private _anchor = missionNamespace getVariable ["aee_optics_visionBaseAnchor", []];
+    private _anchor = missionNamespace getVariable ["aee_vision_visionBaseAnchor", []];
     private _anchorOk = false;
     if (_anchor isEqualType []) then {
         if (_anchor isEqualTo [1, 1, 0]) then { _anchorOk = true; };
@@ -34,7 +34,7 @@ if (isNil "_driver" || isNil "_compose") then {
 
     // 2. The debug hook overrides the resolved anchor, and clearing it returns
     //    to the vanilla anchor.
-    missionNamespace setVariable ["aee_optics_visionForceBase", [1.1, 1.2, -0.05]];
+    missionNamespace setVariable ["aee_vision_visionForceBase", [1.1, 1.2, -0.05]];
     [] call _driver;
     private _forced = missionNamespace getVariable ["aee_vision_visionBaseResolved", []];
     private _forcedOk = false;
@@ -47,7 +47,7 @@ if (isNil "_driver" || isNil "_compose") then {
         _fail = _fail + 1;
         _notes pushBack format ["forced %1", str _forced];
     };
-    missionNamespace setVariable ["aee_optics_visionForceBase", nil];
+    missionNamespace setVariable ["aee_vision_visionForceBase", nil];
     [] call _driver;
     private _reset = missionNamespace getVariable ["aee_vision_visionBaseResolved", []];
     private _resetOk = false;
