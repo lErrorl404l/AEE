@@ -240,6 +240,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_runConsistencyCheck`
 - `aee_core_fnc_runGeoConsistency`
 - `aee_core_fnc_updateEnvironment`
+- `aee_core_fnc_updateSimClock`
 - `aee_core_fnc_utmToLatLon`
 - `aee_core_fnc_utmToWorld`
 - `aee_core_fnc_worldToMgrs`
@@ -749,7 +750,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (73)
+### Public core state variables (74)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -816,6 +817,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_ppHandle_optics_BaseGrade`
 - `aee_core_precipitationPhase`
 - `aee_core_realWeatherActive`
+- `aee_core_simTime`
 - `aee_core_snowDepth_m`
 - `aee_core_snowfallRate`
 - `aee_core_soilMoisture`

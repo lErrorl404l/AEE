@@ -60,6 +60,7 @@ def main():
         "tools/tests/test_docker_isolation.py",
         "tools/tests/test_fd_limit_guard.py",
         "tools/tests/test_p79_probe_contract.py",
+        "tools/tests/test_sim_clock.py",
         "tools/tests/test_biome.py",
         "tools/tests/test_biome_dynamic.py",
         "tools/tests/test_propellant_temp.py",

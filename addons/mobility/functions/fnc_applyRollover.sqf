@@ -53,8 +53,8 @@ if (((getPosATL _vehicle) select 2) > 2) exitWith { false };
 
 // ─── Lateral acceleration a_lat = V * omega ─────────────────────────────
 // omega is the yaw rate.  It is derived from the change in heading over
-// the tick; the frame delta comes from diag_deltaTime so the value is a
-// real acceleration, not a per-frame count.
+// the tick; the tick delta comes from the one real-time clock so the value
+// is a real acceleration, not a per-frame count.
 private _heading = getDir _vehicle;
 private _key = netId _vehicle;
 private _state = missionNamespace getVariable [QGVAR(rolloverState), -1];
@@ -64,7 +64,13 @@ if (_state isEqualType 0) then {
 };
 private _prev = _state getOrDefault [_key, [-999, _heading, 0]];
 
-private _dt = diag_deltaTime;
+// One clock (Pillar 1): real elapsed time since this pass.  The 0.05 floor
+// keeps the first tick (and any zero-width tick) from dividing by zero.
+private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
+private _lastSim = missionNamespace getVariable [QGVAR(rolloverLastSimTime), -1];
+private _dt = 0;
+if ((_lastSim isEqualType 0) && {_lastSim >= 0}) then { _dt = _simNow - _lastSim; };
+missionNamespace setVariable [QGVAR(rolloverLastSimTime), _simNow];
 if (_dt <= 0) then { _dt = 0.05; };
 
 private _dHeading = _heading - (_prev select 1);

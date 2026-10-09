@@ -56,15 +56,17 @@ if (!GVAR(eyeAdaptationEnabled)) exitWith {
     };
 };
 
-// The step is the REAL elapsed time between driver ticks.  The driver runs on
-// a 0.1 s PFH, and the scheduler services it at its own cadence, so
-// diag_deltaTime (the FRAME delta) is smaller than the tick interval and would
-// under-integrate the adaptation (the reported eye ran ~8x slower than its
-// taus).  diag_tickTime is the monotonic real clock, so its delta is the true
-// step.  It does NOT move on a skipTime, which the world clock below handles.
-private _now = diag_tickTime;
+// The step is the REAL elapsed time between driver ticks, read from the one
+// real-time clock (aee_core_simTime).  The driver runs on a 0.1 s PFH, and the
+// scheduler services it at its own cadence, so a FRAME delta (diag_deltaTime)
+// is smaller than the tick interval and would under-integrate the adaptation
+// (the reported eye ran ~8x slower than its taus).  The clock is monotonic real
+// time, so its delta is the true step.  It does NOT move on a skipTime, which
+// the world clock below handles.  The first tick has no previous sample, so
+// _dt = 0 and the model does not integrate.
+private _now = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _lastTick = missionNamespace getVariable [QGVAR(eyeLastTick), -1];
-private _dt = (diag_deltaTime max 0.01) min 0.5;
+private _dt = 0;
 if ((_lastTick isEqualType 0) && (_lastTick >= 0)) then {
     _dt = ((_now - _lastTick) max 0.01) min 0.5;
 };
