@@ -38,6 +38,9 @@ END = "<!-- END GENERATED: kernel table -->"
 # computation with engine writes is a driver and is not registered here.
 KERNELS: tuple[str, ...] = (
     "addons/atmos/functions/physics/fnc_calculateHailEnergy.sqf",
+    "addons/atmos/functions/physics/fnc_calculateStationPressure.sqf",
+    "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",
+    "addons/ballistics/functions/fnc_calculateAirDensityKernel.sqf",
     "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf",
     "addons/optics/functions/eye/fnc_eyeAdaptStep.sqf",
     "addons/optics/functions/eye/fnc_eyeMesopicWeight.sqf",

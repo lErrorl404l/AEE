@@ -20,7 +20,10 @@ private _table = createHashMapFromArray [
     ["eyePupilStep", ["aee_optics_fnc_eyePupilStep", "kernel.eyePupilStep"]],
     ["eyeTimeSkip", ["aee_optics_fnc_eyeTimeSkip", "kernel.eyeTimeSkip"]],
     ["thermalImperfectionParams", ["aee_thermal_fnc_thermalImperfectionParams", "kernel.thermalImperfectionParams"]],
-    ["thermalWetDistortionParams", ["aee_thermal_fnc_thermalWetDistortionParams", "kernel.thermalWetDistortionParams"]]
+    ["thermalWetDistortionParams", ["aee_thermal_fnc_thermalWetDistortionParams", "kernel.thermalWetDistortionParams"]],
+    ["calculateStationPressure", ["aee_atmos_fnc_calculateStationPressure", "kernel.calculateStationPressure"]],
+    ["calculateRelativeHumidity", ["aee_atmos_fnc_calculateRelativeHumidity", "kernel.calculateRelativeHumidity"]],
+    ["calculateAirDensityKernel", ["aee_ballistics_fnc_calculateAirDensityKernel", "kernel.calculateAirDensityKernel"]]
 ];
 
 missionNamespace setVariable [QGVAR(kernelTable), _table];
