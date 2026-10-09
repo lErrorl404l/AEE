@@ -17,8 +17,8 @@ mkdir -p "$DIST"
 
 case "${1:-linux}" in
 linux)
-    cargo build --release --manifest-path "$DIR/Cargo.toml"
-    cp "$DIR/target/release/libaee_dev.so" "$DIST/aee_dev_x64.so"
+    # Build against the server image's glibc. See build-linux.sh.
+    "$DIR/build-linux.sh"
     ;;
 windows)
     # cargo-xwin drives the MSVC linker (lld-link) and downloads the Windows
