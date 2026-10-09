@@ -8,7 +8,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 2.02;
-        requiredAddons[] = {"cba_main", "cba_xeh"};
+        requiredAddons[] = {"cba_main", "cba_xeh", "cba_keybinding"};
         author = "lErrorl404l";
         url = "https://github.com/lErrorl404l/AEE";
         version = 1.0;
