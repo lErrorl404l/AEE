@@ -53,7 +53,9 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith { 0 };
 private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _lastSim = missionNamespace getVariable [QGVAR(engThermLastSimTime), -1];
 private _dt = 0;
-if ((_lastSim isEqualType 0) && {_lastSim >= 0}) then { _dt = _simNow - _lastSim; };
+if (_lastSim isEqualType 0) then {
+    if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
+};
 missionNamespace setVariable [QGVAR(engThermLastSimTime), _simNow];
 
 // ─── Display window: faithful pass-through + stable blowout guard ──────────

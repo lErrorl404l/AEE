@@ -80,6 +80,9 @@ missionNamespace setVariable [QGVAR(eyeLastTick), _now];
 private _hour = dayTime;
 private _lastHour = missionNamespace getVariable [QGVAR(eyeLastHour), -1];
 private _skipped = [_lastHour, _hour] call FUNC(eyeTimeSkip);
+// The one clock owns the jump detector: when it raises clockJump for this
+// tick, the eye re-seeds even if its own sample missed the edge.
+if (missionNamespace getVariable [QEGVAR(core,clockJump), false]) then { _skipped = true; };
 missionNamespace setVariable [QGVAR(eyeLastHour), _hour];
 
 private _sample = call FUNC(eyeSampleScene);

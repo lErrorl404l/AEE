@@ -57,7 +57,9 @@ if (isNil "_player" || !alive _player) exitWith { 0 };
 private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _lastSim = missionNamespace getVariable [QGVAR(barrelLastSimTime), -1];
 private _dt = 0;
-if ((_lastSim isEqualType 0) && {_lastSim >= 0}) then { _dt = _simNow - _lastSim; };
+if (_lastSim isEqualType 0) then {
+    if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
+};
 missionNamespace setVariable [QGVAR(barrelLastSimTime), _simNow];
 if (_dt > 0) then {
     _heat = _heat * exp (-_dt / 90);

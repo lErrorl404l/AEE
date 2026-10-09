@@ -598,7 +598,9 @@ _tempDrainFactor = _tempDrainFactor max 1.0 min 4.0;
 private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _lastSim = missionNamespace getVariable [QGVAR(nvgLastSimTime), -1];
 private _dt = 0;
-if ((_lastSim isEqualType 0) && {_lastSim >= 0}) then { _dt = _simNow - _lastSim; };
+if (_lastSim isEqualType 0) then {
+    if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
+};
 missionNamespace setVariable [QGVAR(nvgLastSimTime), _simNow];
 if (missionNamespace getVariable [QGVAR(nvgBatteryEnabled), false]) then {
     private _drain = _baseDrain * _gainRatio * _tempDrainFactor * _dt;

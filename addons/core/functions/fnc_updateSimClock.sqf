@@ -26,3 +26,27 @@ private _now = diag_tickTime;
 // Real monotonic time, published as the one clock.  diag_tickTime never
 // decreases, so the published series is monotonic by construction.
 missionNamespace setVariable [QGVAR(simTime), _now];
+
+// ─── World-clock jump contract ─────────────────────────────────────────────
+// A time skip (skipTime, setDate, an Eden time change) moves the world clock
+// (dayTime) in one step; diag_tickTime does not.  Compare dayTime - NOT time,
+// which does not jump on skipTime - and wrap the 86400 s (24 h) day so a
+// midnight crossing is not read as a jump.  On a jump, raise
+// QGVAR(clockJump) for exactly one tick so the eye adaptation and the thermal
+// AGC re-seed (arrive adapted) instead of chasing the jumped scene.  The
+// 0.05 h threshold sits above the largest advance one frame can produce under
+// the 100x accTime clamp and below the smallest useful skip (the same bound
+// fnc_eyeTimeSkip uses).
+private _day = dayTime;
+private _prevDay = missionNamespace getVariable [QGVAR(clockLastDayTime), -1];
+private _jump = false;
+if (_prevDay isEqualType 0) then {
+    if (_prevDay >= 0) then {
+        private _delta = _day - _prevDay;
+        if (_delta > 12) then { _delta = _delta - 24; };
+        if (_delta < -12) then { _delta = _delta + 24; };
+        _jump = abs _delta > 0.05;
+    };
+};
+missionNamespace setVariable [QGVAR(clockLastDayTime), _day];
+missionNamespace setVariable [QGVAR(clockJump), _jump];
