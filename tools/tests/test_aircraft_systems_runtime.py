@@ -78,6 +78,46 @@ ENGINE_HIT_DAMAGE = 0.5
 FUEL_HIT_DAMAGE = 0.5
 ROTOR_HIT_DAMAGE = 0.5
 
+# The status kernel. It publishes the sourced nameplate state per system and
+# never touches a force, a mass or a velocity.
+STATUS_KERNEL = FUNCS / "fnc_updateStatusSystems.sqf"
+STATUS_KERNEL_SRC = STATUS_KERNEL.read_text(encoding="utf-8")
+STATUS_THRESHOLD = 21
+
+# Sentinel status state. Distinct values so a swapped index is provable.
+HYDRAULIC_KPA = 20684.3
+GENERATOR_KW = 22.5
+BUS_V = 28.0
+BATTERY_AH = 12.75
+CABIN_KPA = 75.0
+OXYGEN = "onboard"
+
+# The systems row carries the status fields at fixed indices: 13 hydraulic
+# pressure, 14 generator power, 15 bus voltage, 16 battery charge, 17 cabin
+# pressure and 20 the oxygen token.
+STATUS_SYSTEMS: list[object] = [0] * 21
+STATUS_SYSTEMS[13] = HYDRAULIC_KPA
+STATUS_SYSTEMS[14] = GENERATOR_KW
+STATUS_SYSTEMS[15] = BUS_V
+STATUS_SYSTEMS[16] = BATTERY_AH
+STATUS_SYSTEMS[17] = CABIN_KPA
+STATUS_SYSTEMS[20] = OXYGEN
+
+# The force, mass and velocity commands the status kernel must never call.
+FORBIDDEN_STATUS_COMMANDS = (
+    "addForce",
+    "addTorque",
+    "setVelocity",
+    "setVelocityModelSpace",
+    "forceSpeed",
+    "setMass",
+    "setCenterOfMass",
+    "setVectorDir",
+    "setVectorUp",
+    "setVectorDirAndUp",
+    "addForceGeneratorRTD",
+)
+
 # The systems row carries the numeric fields first, in the generated order:
 # fuel (5), engine (5: idle Ng, max Ng, max Np, max torque, max TGT), oil (2),
 # then the remaining numeric fields and the three enum fields.
@@ -873,6 +913,174 @@ class TestDamageRoleMap(unittest.TestCase):
         corpus = damage_corpus()
         roles = set(corpus["roles"])
         self.assertTrue(set(kernel_role_map().values()) <= roles)
+
+
+class StatusRecorder:
+    """The per-vehicle variables the status kernel publishes, captured."""
+
+    def __init__(self) -> None:
+        self.variables: dict[str, object] = {}
+
+
+def run_status_kernel(
+    systems: list[object],
+    is_local: bool = True,
+    classes: tuple[str, ...] = ("Helicopter", "Air"),
+    enabled: bool = True,
+    alive: bool = True,
+) -> tuple[object, StatusRecorder]:
+    """Run fnc_updateStatusSystems against a stub aircraft and systems row."""
+    rec = StatusRecorder()
+    mission_ns = object()
+    store: dict[str, object] = {}
+
+    def get_variable(ns: object, pair: list[object]) -> object:
+        name, default = pair[0], pair[1]
+        if ns is mission_ns:
+            return enabled if name == "__QEGVAR__core_enabled" else default
+        return store.get(name, default)
+
+    def set_variable(veh: object, pair: list[object]) -> None:
+        store[pair[0]] = pair[1]
+        rec.variables[pair[0]] = pair[1]
+        return None
+
+    globals_: dict[str, object] = {
+        "missionNamespace": mission_ns,
+        "getVariable": get_variable,
+        "setVariable": set_variable,
+        "isNull": lambda v: v is None,
+        "alive": lambda v: alive,
+        "local": lambda v: is_local,
+        "typeOf": lambda v: "Helicopter",
+        "isKindOf": lambda obj, cls: cls in classes,
+        "diag_deltaTime": DELTA_S,
+        "__FUNC__getAircraftSystems": lambda name: systems,
+    }
+    result = run_sqf(STATUS_KERNEL, ["fixture_aircraft", DELTA_S], globals_)
+    return result, rec
+
+
+class TestStatusKernel(unittest.TestCase):
+    """The status kernel, executed against a stub aircraft and systems row."""
+
+    def test_the_kernel_publishes_the_sourced_hydraulic_pressure(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS))
+        self.assertTrue(result)
+        self.assertEqual(
+            rec.variables["__QGVAR__statusHydraulicPressureKpa"], HYDRAULIC_KPA
+        )
+
+    def test_the_kernel_publishes_the_sourced_generator_power(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS))
+        self.assertTrue(result)
+        self.assertEqual(rec.variables["__QGVAR__statusGeneratorPowerKw"], GENERATOR_KW)
+
+    def test_the_kernel_publishes_the_sourced_bus_voltage(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS))
+        self.assertTrue(result)
+        self.assertEqual(rec.variables["__QGVAR__statusBusVoltageV"], BUS_V)
+
+    def test_the_kernel_publishes_the_sourced_battery_charge(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS))
+        self.assertTrue(result)
+        self.assertEqual(rec.variables["__QGVAR__statusBatteryChargeAh"], BATTERY_AH)
+
+    def test_the_kernel_publishes_the_sourced_cabin_pressure(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS))
+        self.assertTrue(result)
+        self.assertEqual(rec.variables["__QGVAR__statusCabinPressureMaxKpa"], CABIN_KPA)
+
+    def test_the_kernel_publishes_the_oxygen_token(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS))
+        self.assertTrue(result)
+        self.assertEqual(rec.variables["__QGVAR__statusOxygenSystem"], OXYGEN)
+
+    def test_the_kernel_publishes_exactly_the_six_status_variables(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS))
+        self.assertTrue(result)
+        self.assertEqual(
+            set(rec.variables),
+            {
+                "__QGVAR__statusHydraulicPressureKpa",
+                "__QGVAR__statusGeneratorPowerKw",
+                "__QGVAR__statusBusVoltageV",
+                "__QGVAR__statusBatteryChargeAh",
+                "__QGVAR__statusCabinPressureMaxKpa",
+                "__QGVAR__statusOxygenSystem",
+            },
+        )
+
+    def test_an_unknown_class_is_refused(self) -> None:
+        result, rec = run_status_kernel([])
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+    def test_a_short_row_is_refused(self) -> None:
+        result, rec = run_status_kernel([0] * (STATUS_THRESHOLD - 1))
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+    def test_a_negative_figure_is_refused(self) -> None:
+        systems = list(STATUS_SYSTEMS)
+        systems[13] = -1.0
+        result, rec = run_status_kernel(systems)
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+    def test_a_non_local_vehicle_is_refused(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS), is_local=False)
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+    def test_a_disabled_module_is_refused(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS), enabled=False)
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+    def test_a_dead_vehicle_is_refused(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS), alive=False)
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+    def test_a_parachute_is_refused(self) -> None:
+        result, rec = run_status_kernel(
+            list(STATUS_SYSTEMS), classes=("Air", "ParachuteBase")
+        )
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+    def test_a_non_air_vehicle_is_refused(self) -> None:
+        result, rec = run_status_kernel(list(STATUS_SYSTEMS), classes=())
+        self.assertFalse(result)
+        self.assertEqual(rec.variables, {})
+
+
+class TestStatusKernelContract(unittest.TestCase):
+    """The source contracts the harness cannot execute."""
+
+    def test_the_kernel_reads_the_systems_row(self) -> None:
+        self.assertIn("FUNC(getAircraftSystems)", STATUS_KERNEL_SRC)
+
+    def test_the_kernel_never_calls_a_force_mass_or_velocity_command(self) -> None:
+        for command in FORBIDDEN_STATUS_COMMANDS:
+            self.assertNotIn(command, STATUS_KERNEL_SRC, command)
+
+    def test_the_header_states_the_status_only_ceiling(self) -> None:
+        header = STATUS_KERNEL_SRC.split("*/", 1)[0]
+        self.assertIn("status only", header)
+        self.assertIn("ABSENT", header)
+        self.assertIn("NOT engine-observed", header)
+        self.assertIn("flight dynamics model", header)
+
+    def test_the_kernel_gates_on_local_including_the_server(self) -> None:
+        self.assertIn("if (!local _veh) exitWith { false };", STATUS_KERNEL_SRC)
+        header = STATUS_KERNEL_SRC.split("*/", 1)[0]
+        self.assertIn("INCLUDING the server", header)
+
+    def test_the_function_is_registered_once(self) -> None:
+        hits = [line for line in PREP_SRC.splitlines() if "updateStatusSystems" in line]
+        self.assertEqual(len(hits), 1, hits)
 
 
 if __name__ == "__main__":

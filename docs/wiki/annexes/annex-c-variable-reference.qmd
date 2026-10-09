@@ -261,6 +261,12 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_engineTgtC` | mobility | Scripted turbine temperature in deg C, from the sourced limits, not engine-exposed (issue #117) |
 | `aee_mobility_engineOilKpa` | mobility | Scripted engine oil pressure in kPa, from the sourced limits, not engine-exposed (issue #117) |
 | `aee_mobility_rotorImbalance` | mobility | Rotor imbalance 0..1 published by the damage kernel (issue #117) |
+| `aee_mobility_statusHydraulicPressureKpa` | mobility | Sourced hydraulic system pressure in kPa published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_mobility_statusGeneratorPowerKw` | mobility | Sourced generator power in kW published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_mobility_statusBusVoltageV` | mobility | Sourced bus voltage in V published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_mobility_statusBatteryChargeAh` | mobility | Sourced battery charge in Ah published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_mobility_statusCabinPressureMaxKpa` | mobility | Sourced cabin pressure in kPa published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_mobility_statusOxygenSystem` | mobility | Sourced oxygen system token published by the status kernel, status only and not engine-observed (issue #117) |
 | `aee_mobility_tractionForce` | mobility | Traction force |
 | `aee_mobility_wheelSlip` | mobility | Wheel slip 0..1 |
 | `aee_mobility_mudAccretion` | mobility | Mud accretion |

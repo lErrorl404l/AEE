@@ -80,6 +80,7 @@
         "addons/mobility/functions/fnc_updateDamageSystem.sqf:61",
         "addons/mobility/functions/fnc_updateEngineSystem.sqf:67",
         "addons/mobility/functions/fnc_updateFuelSystem.sqf:61",
+        "addons/mobility/functions/fnc_updateStatusSystems.sqf:60",
         "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
       ]
@@ -293,7 +294,8 @@
         "addons/mobility/functions/fnc_applyAirframeLoad.sqf:45",
         "addons/mobility/functions/fnc_updateDamageSystem.sqf:62",
         "addons/mobility/functions/fnc_updateEngineSystem.sqf:68",
-        "addons/mobility/functions/fnc_updateFuelSystem.sqf:62"
+        "addons/mobility/functions/fnc_updateFuelSystem.sqf:62",
+        "addons/mobility/functions/fnc_updateStatusSystems.sqf:61"
       ]
     },
     {
