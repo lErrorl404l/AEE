@@ -26,3 +26,7 @@ PREPS(symbology,symbologyKilledMarker);
 PREPS(symbology,symbologyMarkersApply);
 PREPS(symbology,symbologyMarkersRestore);
 PREPS(symbology,symbologyWorldDraw);
+PREPS(symbology,variationFamilies);
+PREPS(symbology,variationOptions);
+PREPS(symbology,variationResolve);
+PREPS(symbology,variationState);
