@@ -37,6 +37,7 @@ PLAN_NUMERIC = (
     "fuel_density_kg_l",
     "sfc_kg_kwh",
     "fuel_cg_arm_m",
+    "engine_design_rpm",
     "engine_idle_ng",
     "engine_max_ng",
     "engine_max_np",
@@ -169,7 +170,7 @@ class TestGeneratorRows(unittest.TestCase):
         text = gen.render_systems([row])
         self.assertIn('"fixture_aircraft", "fixture_variant"', text)
         self.assertIn(
-            "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21",
+            "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22",
             text,
         )
 
