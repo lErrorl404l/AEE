@@ -370,6 +370,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_persistence_freezeThawDescription` | environmental | Freeze-thaw description |
 | `aee_persistence_currentAvalancheWarning` | environmental | Avalanche warning |
 | `aee_weather_currentSoundPropagation` | environmental | Sound propagation 0..1 |
+| `aee_weather_currentAmbientNoise` | environmental | Ambient noise floor dB(A) |
 | `aee_weather_biologicalAmbientIntensity` | environmental | Biological ambient |
 | `aee_core_biome` | environmental | Koppen biome code (map climate class) |
 | `aee_weather_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
