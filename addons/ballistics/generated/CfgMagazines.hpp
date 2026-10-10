@@ -20,6 +20,15 @@
 // magazine-to-cartridge link is the committed cache
 // data/engine/magazine_bindings.json, resolved from the installed game
 // config.
+//
+// CfgMagazines mass is the magazine LOADED mass in kg, from the held
+// loaded-mass projection data/ballistics/magazine_masses.json (schema
+// aee.ballistics.magazine_mass/1). The loaded mass is the held value where
+// it is held, or DERIVED as empty_mass_g + capacity * round_mass_g from the
+// held round mass for the chambering. It resolves by the classname capacity
+// plus the chambering token, exactly as fnc_getMagazineMass parses a
+// classname. A magazine that resolves no mass keeps its initSpeed and is
+// recorded below as a mass lead. No engine number is copied.
 
 class CfgMagazines {
     class 1000Rnd_762x51_Belt;
@@ -91,6 +100,7 @@ class CfgMagazines {
     };
     class 20Rnd_762x51_Mag: CA_Magazine {
         initSpeed = 838.2;
+        mass = 0.68;
     };
     class 250Rnd_30mm_HE_shells: VehicleMagazine {
         initSpeed = 804.67;
@@ -100,15 +110,19 @@ class CfgMagazines {
     };
     class 30Rnd_556x45_Stanag: CA_Magazine {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_Sand_Tracer_Red: 30Rnd_556x45_Stanag_Sand {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_Sand_green: 30Rnd_556x45_Stanag_Sand {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_Sand_red: 30Rnd_556x45_Stanag_Sand {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 40Rnd_105mm_APFSDS: 24Rnd_125mm_APFSDS {
         initSpeed = 1173;
@@ -163,6 +177,7 @@ class CfgMagazines {
     };
     class 20Rnd_556x45_UW_mag: 30Rnd_556x45_Stanag {
         initSpeed = 914.4;
+        mass = 0.3594;
     };
     class 250Rnd_30mm_APDS_shells: 250Rnd_30mm_HE_shells {
         initSpeed = 804.67;
@@ -187,24 +202,31 @@ class CfgMagazines {
     };
     class 30Rnd_556x45_Stanag_Sand_Tracer_Green: 30Rnd_556x45_Stanag_Sand_Tracer_Red {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_Sand_Tracer_Yellow: 30Rnd_556x45_Stanag_Sand_Tracer_Red {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_Tracer_Green: 30Rnd_556x45_Stanag {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_Tracer_Red: 30Rnd_556x45_Stanag {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_Tracer_Yellow: 30Rnd_556x45_Stanag {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_green: 30Rnd_556x45_Stanag {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 30Rnd_556x45_Stanag_red: 30Rnd_556x45_Stanag {
         initSpeed = 914.4;
+        mass = 0.5107;
     };
     class 40Rnd_105mm_APFSDS_T_Green: 40Rnd_105mm_APFSDS {
         initSpeed = 1173;
@@ -342,3 +364,72 @@ class CfgMagazines {
 //   UGL_FlareWhite_Illumination_F: no muzzle velocity for 40x46_sr
 //   UGL_FlareYellow_F: no muzzle velocity for 40x46_sr
 //   UGL_FlareYellow_Illumination_F: no muzzle velocity for 40x46_sr
+
+// Mass leads (no resolved loaded mass):
+//   1000Rnd_762x51_Belt_Green: no resolved loaded mass
+//   1000Rnd_762x51_Belt_Red: no resolved loaded mass
+//   1000Rnd_762x51_Belt_Yellow: no resolved loaded mass
+//   1000Rnd_Gatling_30mm_Plane_CAS_01_F: no resolved loaded mass
+//   100Rnd_127x99_mag_Tracer_Green: no resolved loaded mass
+//   100Rnd_127x99_mag_Tracer_Red: no resolved loaded mass
+//   100Rnd_127x99_mag_Tracer_Yellow: no resolved loaded mass
+//   10Rnd_762x54_Mag: no resolved loaded mass
+//   140Rnd_30mm_MP_shells: no resolved loaded mass
+//   140Rnd_30mm_MP_shells_Tracer_Green: no resolved loaded mass
+//   140Rnd_30mm_MP_shells_Tracer_Red: no resolved loaded mass
+//   140Rnd_30mm_MP_shells_Tracer_Yellow: no resolved loaded mass
+//   150Rnd_762x51_Box: no resolved loaded mass
+//   150Rnd_762x54_Box: no resolved loaded mass
+//   2000Rnd_762x51_Belt_Green: no resolved loaded mass
+//   2000Rnd_762x51_Belt_Red: no resolved loaded mass
+//   2000Rnd_762x51_Belt_Yellow: no resolved loaded mass
+//   200Rnd_127x99_mag_Tracer_Green: no resolved loaded mass
+//   200Rnd_127x99_mag_Tracer_Red: no resolved loaded mass
+//   200Rnd_127x99_mag_Tracer_Yellow: no resolved loaded mass
+//   200Rnd_762x51_Belt: no resolved loaded mass
+//   200Rnd_762x51_Belt_Green: no resolved loaded mass
+//   200Rnd_762x51_Belt_Red: no resolved loaded mass
+//   200Rnd_762x51_Belt_Yellow: no resolved loaded mass
+//   20Rnd_105mm_HEAT_MP: no resolved loaded mass
+//   20Rnd_105mm_HEAT_MP_T_Green: no resolved loaded mass
+//   20Rnd_105mm_HEAT_MP_T_Red: no resolved loaded mass
+//   20Rnd_105mm_HEAT_MP_T_Yellow: no resolved loaded mass
+//   20Rnd_120mm_HEAT_MP: no resolved loaded mass
+//   20Rnd_120mm_HEAT_MP_T_Green: no resolved loaded mass
+//   20Rnd_120mm_HEAT_MP_T_Red: no resolved loaded mass
+//   20Rnd_120mm_HEAT_MP_T_Yellow: no resolved loaded mass
+//   250Rnd_30mm_APDS_shells: no resolved loaded mass
+//   250Rnd_30mm_APDS_shells_Tracer_Green: no resolved loaded mass
+//   250Rnd_30mm_APDS_shells_Tracer_Red: no resolved loaded mass
+//   250Rnd_30mm_APDS_shells_Tracer_Yellow: no resolved loaded mass
+//   250Rnd_30mm_HE_shells: no resolved loaded mass
+//   250Rnd_30mm_HE_shells_Tracer_Green: no resolved loaded mass
+//   250Rnd_30mm_HE_shells_Tracer_Red: no resolved loaded mass
+//   30Rnd_120mm_APFSDS_shells: no resolved loaded mass
+//   30Rnd_120mm_APFSDS_shells_Tracer_Green: no resolved loaded mass
+//   30Rnd_120mm_APFSDS_shells_Tracer_Red: no resolved loaded mass
+//   30Rnd_120mm_APFSDS_shells_Tracer_Yellow: no resolved loaded mass
+//   30Rnd_120mm_HE_shells: no resolved loaded mass
+//   30Rnd_120mm_HE_shells_Tracer_Green: no resolved loaded mass
+//   30Rnd_120mm_HE_shells_Tracer_Red: no resolved loaded mass
+//   30Rnd_120mm_HE_shells_Tracer_Yellow: no resolved loaded mass
+//   40Rnd_105mm_APFSDS: no resolved loaded mass
+//   40Rnd_105mm_APFSDS_T_Green: no resolved loaded mass
+//   40Rnd_105mm_APFSDS_T_Red: no resolved loaded mass
+//   40Rnd_105mm_APFSDS_T_Yellow: no resolved loaded mass
+//   450Rnd_127x108_Ball: no resolved loaded mass
+//   5000Rnd_762x51_Belt: no resolved loaded mass
+//   5000Rnd_762x51_Yellow_Belt: no resolved loaded mass
+//   500Rnd_127x99_mag: no resolved loaded mass
+//   500Rnd_127x99_mag_Tracer_Green: no resolved loaded mass
+//   500Rnd_127x99_mag_Tracer_Red: no resolved loaded mass
+//   500Rnd_127x99_mag_Tracer_Yellow: no resolved loaded mass
+//   500Rnd_Cannon_30mm_Plane_CAS_02_F: no resolved loaded mass
+//   5Rnd_127x108_APDS_Mag: no resolved loaded mass
+//   5Rnd_127x108_Mag: no resolved loaded mass
+//   60Rnd_30mm_APFSDS_shells: no resolved loaded mass
+//   60Rnd_30mm_APFSDS_shells_Tracer_Green: no resolved loaded mass
+//   60Rnd_30mm_APFSDS_shells_Tracer_Red: no resolved loaded mass
+//   60Rnd_30mm_APFSDS_shells_Tracer_Yellow: no resolved loaded mass
+//   6Rnd_155mm_Mo_smoke: no resolved loaded mass
+//   PylonWeapon_500Rnd_127mm_HEIAP_belt_right: no resolved loaded mass

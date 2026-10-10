@@ -10,6 +10,7 @@ verdict per base engine config class AEE can override: implemented
 |---|---|---|---|
 | ballistics | `CfgAmmo >> <ammo> >> airFriction` | ADOPT | implemented |
 | ballistics | `CfgMagazines >> <magazine> >> initSpeed` | ADOPT | implemented |
+| ballistics | `CfgMagazines >> <magazine> >> mass` | ADOPT | implemented |
 | fx | `CfgCloudlets >> <cloudlet>` | ALREADY | present |
 | symbology | `CfgCurator >> DrawGroup` | ALREADY | present |
 | physiology | `CfgClothing >> <uniform>` | ALREADY | present |
@@ -43,6 +44,13 @@ verdict per base engine config class AEE can override: implemented
 - Verdict: **ADOPT** (implemented)
 - Source: data/ballistics/loads.json: service_velocity_ms (grade documented, US military specifications and TM 43-0001-27) with the manufacturer velocity table as the fallback (grade claimed, Hornady and Lapua).
 - Reason: initSpeed is a plain scalar. The real cartridge muzzle velocity moves the engine's own projectile from the muzzle.
+- Ceiling: Load-time and global. The PBO is the only off switch.
+
+## CfgMagazines >> <magazine> >> mass
+
+- Verdict: **ADOPT** (implemented)
+- Source: data/ballistics/magazine_masses.json (schema aee.ballistics.magazine_mass/1), the loaded-mass projection: the held loaded value, or DERIVED as empty_mass_g + capacity * round_mass_g from the held round mass for the chambering (data/ballistics/sources/magazine_mass.json).
+- Reason: A magazine is the heaviest repeated item a soldier carries, and the engine reads the magazine mass as its PhysX mass. The sourced LOADED mass lets the engine carry the real weight. A magazine that resolves no mass is a lead and is not emitted.
 - Ceiling: Load-time and global. The PBO is the only off switch.
 
 ## CfgMagazines >> <magazine> >> tracersEvery

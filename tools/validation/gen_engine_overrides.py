@@ -56,6 +56,7 @@ OUT_DIR = REPO / "addons" / "ballistics" / "generated"
 
 MAG_BINDINGS = ENGINE / "magazine_bindings.json"
 AMMO_BINDINGS = ENGINE / "ammo_bindings.json"
+MAG_MASSES = BALL / "magazine_masses.json"
 MAG_OUT = OUT_DIR / "CfgMagazines.hpp"
 AMMO_OUT = OUT_DIR / "CfgAmmo.hpp"
 
@@ -71,8 +72,13 @@ STATUS_ENUM = ("implemented", "present", "withheld", "rejected")
 # The implemented verdicts and the generated key each one must correspond to.
 IMPLEMENTED_KEYS = {
     "cfgmagazines-initspeed": ("CfgMagazines", "initSpeed"),
+    "cfgmagazines-mass": ("CfgMagazines", "mass"),
     "cfgammo-airfriction": ("CfgAmmo", "airFriction"),
 }
+
+# The magazine loaded-mass projection (Task 2 of the mass-expansion plan),
+# schema aee.ballistics.magazine_mass/1. The engine mass is the loaded mass.
+MAG_MASS_SCHEMA = "aee.ballistics.magazine_mass/1"
 
 # The drag constant and the ISA sea-level speed of sound, both from the
 # verified AEE drag model (addons/ballistics/functions/fnc_calculateBallisticDrag.sqf).
@@ -473,6 +479,86 @@ def load_ammo_bindings(path: Path = AMMO_BINDINGS) -> list[AmmoBinding]:
     return out
 
 
+# ─── magazine mass projection ─────────────────────────────────────────────
+
+
+@dataclass(frozen=True)
+class MassGroup:
+    """One (chambering, capacity) group of the loaded-mass projection."""
+
+    calibre_key: str
+    capacity: int
+    loaded_mass_kg: float
+    source_id: str
+    locator: str
+    grade: str
+
+
+def load_mass_groups(path: Path = MAG_MASSES) -> list[MassGroup]:
+    """Read the loaded-mass projection. Raise ValueError when malformed."""
+    payload = _mapping(load_json(path))
+    if payload is None or payload.get("schema") != MAG_MASS_SCHEMA:
+        raise ValueError(f"{path}: schema must be {MAG_MASS_SCHEMA}")
+    rows = payload.get("groups")
+    if not isinstance(rows, list) or not rows:
+        raise ValueError(f"{path}: groups must be a non-empty array")
+    out: list[MassGroup] = []
+    for raw in rows:
+        record = _mapping(raw)
+        if record is None:
+            raise ValueError(f"{path}: a group is not an object")
+        calibre = _text(record.get("calibre_key"))
+        capacity = _number(record.get("capacity"))
+        mass = _number(record.get("loaded_mass_g"))
+        source_id = _text(record.get("source_id"))
+        locator = _text(record.get("locator"))
+        grade = _text(record.get("grade"))
+        if None in (calibre, capacity, mass, source_id, locator, grade):
+            raise ValueError(f"{path}: a group is incomplete")
+        out.append(
+            MassGroup(calibre, int(capacity), mass / 1000.0, source_id, locator, grade)
+        )
+    return out
+
+
+def classname_capacity(class_name: str) -> int:
+    """The capacity a classname states, mirroring fnc_getMagazineMass.
+
+    The digits that precede "rnd", as in "30Rnd_556x45_Stanag" -> 30. A
+    classname that states no capacity returns 0.
+    """
+    lower = class_name.lower()
+    marker = lower.find("rnd")
+    if marker <= 0:
+        return 0
+    digits = ""
+    index = marker - 1
+    while index >= 0 and lower[index].isdigit():
+        digits = lower[index] + digits
+        index -= 1
+    return int(digits) if digits else 0
+
+
+def resolve_mass(class_name: str, groups: Sequence[MassGroup]) -> MassGroup | None:
+    """Resolve a magazine classname to its loaded-mass group.
+
+    The chambering token and the capacity are the two signals the classname
+    carries, exactly as fnc_getMagazineMass parses them. A classname that
+    states no capacity matches the first group for its chambering. A
+    classname with no matching group resolves nothing.
+    """
+    lower = class_name.lower()
+    capacity = classname_capacity(class_name)
+    for group in groups:
+        if group.calibre_key in lower and group.capacity == capacity:
+            return group
+    if capacity == 0:
+        for group in groups:
+            if group.calibre_key in lower:
+                return group
+    return None
+
+
 # ─── value sources ────────────────────────────────────────────────────────
 
 
@@ -636,6 +722,15 @@ MAG_HEADER = """/* SPDX-License-Identifier: GPL-2.0-or-later */
 // magazine-to-cartridge link is the committed cache
 // data/engine/magazine_bindings.json, resolved from the installed game
 // config.
+//
+// CfgMagazines mass is the magazine LOADED mass in kg, from the held
+// loaded-mass projection data/ballistics/magazine_masses.json (schema
+// aee.ballistics.magazine_mass/1). The loaded mass is the held value where
+// it is held, or DERIVED as empty_mass_g + capacity * round_mass_g from the
+// held round mass for the chambering. It resolves by the classname capacity
+// plus the chambering token, exactly as fnc_getMagazineMass parses a
+// classname. A magazine that resolves no mass keeps its initSpeed and is
+// recorded below as a mass lead. No engine number is copied.
 """
 
 AMMO_HEADER = """/* SPDX-License-Identifier: GPL-2.0-or-later */
@@ -672,6 +767,10 @@ class MagazineEmission:
     parent_class: str
     init_speed: float
     velocity: MuzzleVelocity
+    mass_kg: float | None = None
+    mass_source_id: str | None = None
+    mass_locator: str | None = None
+    mass_grade: str | None = None
 
 
 @dataclass(frozen=True)
@@ -687,9 +786,13 @@ def build_magazines(
     bindings: Sequence[MagazineBinding],
     loads: dict[str, list[dict[str, object]]],
     projectiles: dict[str, dict[str, object]],
-) -> tuple[list[MagazineEmission], list[str]]:
+    groups: Sequence[MassGroup] | None = None,
+) -> tuple[list[MagazineEmission], list[str], list[str]]:
+    if groups is None:
+        groups = load_mass_groups()
     emissions: list[MagazineEmission] = []
     withheld: list[str] = []
+    mass_leads: list[str] = []
     cache: dict[str, MuzzleVelocity | None] = {}
     for binding in sorted(bindings, key=lambda item: item.game_class):
         if binding.cartridge_id not in cache:
@@ -702,12 +805,31 @@ def build_magazines(
                 f"{binding.game_class}: no muzzle velocity for {binding.cartridge_id}"
             )
             continue
+        group = resolve_mass(binding.game_class, groups)
+        if group is None:
+            mass_leads.append(f"{binding.game_class}: no resolved loaded mass")
+            emissions.append(
+                MagazineEmission(
+                    binding.game_class,
+                    binding.parent_class,
+                    velocity.value_ms,
+                    velocity,
+                )
+            )
+            continue
         emissions.append(
             MagazineEmission(
-                binding.game_class, binding.parent_class, velocity.value_ms, velocity
+                binding.game_class,
+                binding.parent_class,
+                velocity.value_ms,
+                velocity,
+                mass_kg=group.loaded_mass_kg,
+                mass_source_id=group.source_id,
+                mass_locator=group.locator,
+                mass_grade=group.grade,
             )
         )
-    return emissions, withheld
+    return emissions, withheld, mass_leads
 
 
 def build_ammo(
@@ -756,6 +878,7 @@ def _render_classes(
     class_name: str,
     rows: Sequence[tuple[str, str, str]],
     withheld: Sequence[str],
+    mass_leads: Sequence[str] = (),
 ) -> str:
     by_class = {game: (parent, body) for game, parent, body in rows}
     emitted = set(by_class)
@@ -798,21 +921,26 @@ def _render_classes(
         lines.append("// Withheld bindings (no sourced value):")
         for item in withheld:
             lines.append(f"//   {item}")
+    if mass_leads:
+        lines.append("")
+        lines.append("// Mass leads (no resolved loaded mass):")
+        for item in mass_leads:
+            lines.append(f"//   {item}")
     return "\n".join(lines) + "\n"
 
 
 def render_magazines(
-    emissions: Sequence[MagazineEmission], withheld: Sequence[str]
+    emissions: Sequence[MagazineEmission],
+    withheld: Sequence[str],
+    mass_leads: Sequence[str] = (),
 ) -> str:
-    rows = [
-        (
-            item.game_class,
-            item.parent_class,
-            f"initSpeed = {_render_number(item.init_speed)};",
-        )
-        for item in emissions
-    ]
-    return _render_classes(MAG_HEADER, "CfgMagazines", rows, withheld)
+    rows = []
+    for item in emissions:
+        body = f"initSpeed = {_render_number(item.init_speed)};"
+        if item.mass_kg is not None:
+            body += f"\n        mass = {_render_number(item.mass_kg)};"
+        rows.append((item.game_class, item.parent_class, body))
+    return _render_classes(MAG_HEADER, "CfgMagazines", rows, withheld, mass_leads)
 
 
 def render_ammo(emissions: Sequence[AmmoEmission], withheld: Sequence[str]) -> str:
@@ -905,12 +1033,13 @@ def build_all(
 ) -> tuple[str, str, str]:
     loads = load_loads()
     projectiles = load_projectiles()
-    magazines, mag_withheld = build_magazines(
-        load_magazine_bindings(mag_path), loads, projectiles
+    groups = load_mass_groups()
+    magazines, mag_withheld, mass_leads = build_magazines(
+        load_magazine_bindings(mag_path), loads, projectiles, groups
     )
     ammo, ammo_withheld = build_ammo(load_ammo_bindings(ammo_path), loads, projectiles)
     return (
-        render_magazines(magazines, mag_withheld),
+        render_magazines(magazines, mag_withheld, mass_leads),
         render_ammo(ammo, ammo_withheld),
         render_register(load_verdicts()),
     )
@@ -935,12 +1064,16 @@ def _count_values(text: str, key: str) -> int:
     return text.count(f"        {key} = ")
 
 
-def write_outputs() -> tuple[int, int]:
+def write_outputs() -> tuple[int, int, int]:
     mag_text, ammo_text, register_text = build_all()
     _write(MAG_OUT, mag_text)
     _write(AMMO_OUT, ammo_text)
     _write(REGISTER_OUT, register_text)
-    return _count_values(mag_text, "initSpeed"), _count_values(ammo_text, "airFriction")
+    return (
+        _count_values(mag_text, "initSpeed"),
+        _count_values(mag_text, "mass"),
+        _count_values(ammo_text, "airFriction"),
+    )
 
 
 def check() -> int:
@@ -955,7 +1088,8 @@ def check() -> int:
     if not ok:
         return 1
     print(
-        f"engine overrides: {_count_values(mag_text, 'initSpeed')} initSpeed and "
+        f"engine overrides: {_count_values(mag_text, 'initSpeed')} initSpeed, "
+        f"{_count_values(mag_text, 'mass')} mass and "
         f"{_count_values(ammo_text, 'airFriction')} airFriction values (fresh)"
     )
     return 0
@@ -995,11 +1129,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.check:
         return check()
     try:
-        mags, ammo = write_outputs()
+        mags, masses, ammo = write_outputs()
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"engine overrides: cannot build from the corpus: {exc}")
         return 1
-    print(f"engine overrides: wrote {mags} initSpeed and {ammo} airFriction values")
+    print(
+        f"engine overrides: wrote {mags} initSpeed, {masses} mass and "
+        f"{ammo} airFriction values"
+    )
     return 0
 
 
