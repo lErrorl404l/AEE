@@ -24,6 +24,8 @@ MAGNETIC = (
     / "fnc_calculateMagneticAnomaly.sqf"
 )
 
+_MARITIME = Path(__file__).resolve().parents[2] / "addons" / "maritime" / "functions"
+
 
 def dipole_flux_density_nt(moment, r, cos_theta):
     """SI dipole flux density in nT: B = (mu0/4pi) M/r^3 sqrt(1+3cos^2)."""
@@ -62,6 +64,58 @@ def sea_state_beaufort(wind_ms):
 def wave_height(wind_ms):
     """Mirror of the Pierson-Moskowitz significant wave height 0.0246 v^2."""
     return min(0.0246 * wind_ms**2, 15)
+
+
+def ekman_transport(u10, lat_deg):
+    """Mirror of fnc_ekmanTransport.sqf (Ekman 1905; Stewart 2008).
+
+    f = 2 Omega sin(phi); M = tau/(rho_w f); D_e = sqrt(2 K_v/|f|);
+    V0 = tau/sqrt(rho_w^2 |f| K_v).  |f| is clamped at the value at 0.5 deg.
+    """
+    omega = 7.2921e-5
+    rho_air, cd, rho_w, kv = 1.2, 1.2e-3, 1025.0, 0.1
+    f = 2 * omega * math.sin(math.radians(lat_deg))
+    f_min = 2 * omega * math.sin(math.radians(0.5))
+    if abs(f) < f_min:
+        f = f_min * (1 if f >= 0 else -1)
+    tau = rho_air * cd * u10 * u10
+    transport = tau / (rho_w * f)
+    depth = math.sqrt(2 * kv / abs(f))
+    surface = tau / math.sqrt(rho_w * rho_w * abs(f) * kv)
+    return [transport, depth, surface]
+
+
+def tidal_current_speed(eta, depth):
+    """Mirror of fnc_tidalCurrentSpeed.sqf: u = |eta| sqrt(g/H)."""
+    return abs(eta) * math.sqrt(9.80665 / max(depth, 1.0))
+
+
+def ocean_current_vector(
+    u10,
+    wind_az_deg,
+    lat_deg,
+    fraction,
+    deflection_deg,
+    tide,
+    depth,
+    ebb,
+    flood_bearing_deg,
+):
+    """Mirror of the vector composition in fnc_calculateOceanCurrent.sqf.
+
+    The wind-driven part is deflected right of the wind in the north and left
+    in the south; the tidal part runs along the flood axis and reverses on the
+    ebb.  Returns [total [east, north], speed, tidal speed].
+    """
+    wind_speed = fraction * u10
+    sign = 1 if lat_deg >= 0 else -1
+    waz = math.radians(wind_az_deg + sign * deflection_deg)
+    wx, wy = wind_speed * math.sin(waz), wind_speed * math.cos(waz)
+    tidal_speed = abs(tide) * math.sqrt(9.80665 / max(depth, 1.0))
+    tb = math.radians(flood_bearing_deg + (180 if ebb else 0))
+    tx, ty = tidal_speed * math.sin(tb), tidal_speed * math.cos(tb)
+    total = [wx + tx, wy + ty]
+    return total, math.hypot(total[0], total[1]), tidal_speed
 
 
 def compass_declination(lon_deg, lat_deg):
@@ -220,6 +274,131 @@ class TestCompassAnomalyScale(unittest.TestCase):
         b10 = run_sqf(MAGNETIC, [[0, 0, 10], [0, 0, 0], 1000, 0])
         b20 = run_sqf(MAGNETIC, [[0, 0, 20], [0, 0, 0], 1000, 0])
         self.assertAlmostEqual(b20, b10 / 8, places=6)
+
+
+class TestEkmanTransport(unittest.TestCase):
+    """The Ekman transport kernel (issue #28), executed as shipped SQF."""
+
+    def setUp(self):
+        self.kernel = _MARITIME / "fnc_ekmanTransport.sqf"
+
+    def test_matches_the_ekman_reference_at_45n(self):
+        # f = 2*7.2921e-5*sin(45) = 1.0312e-4; tau = 1.2*1.2e-3*10^2 = 0.144;
+        # M = tau/(1025 f) = 1.362 m^2/s; D_e = sqrt(2*0.1/f) = 44.0 m.
+        got = run_sqf(self.kernel, [10, 45])
+        want = ekman_transport(10, 45)
+        self.assertAlmostEqual(got[0], want[0], places=9)
+        self.assertAlmostEqual(got[0], 1.362, places=3)
+        self.assertAlmostEqual(got[1], 44.038, places=3)
+        self.assertAlmostEqual(got[2], want[2], places=9)
+
+    def test_issue_vector_one_m2s_per_tenth_n_per_m2(self):
+        # The issue's stated vector: tau = 0.1 N/m^2 at 45 N gives M = 0.95.
+        # tau = 0.00144 U10^2, so U10 = sqrt(0.1/0.00144) = 8.333 m/s.
+        got = run_sqf(self.kernel, [math.sqrt(0.1 / 0.00144), 45])
+        self.assertAlmostEqual(got[0], 0.95, places=2)
+
+    def test_equator_is_clamped_and_finite(self):
+        # f -> 0 at the equator would divide by zero; the kernel clamps |f| to
+        # the value at 0.5 degrees and stays finite.
+        got = run_sqf(self.kernel, [10, 0])
+        self.assertTrue(math.isfinite(got[0]))
+        self.assertTrue(math.isfinite(got[1]))
+        self.assertGreater(got[0], 0)
+
+
+class TestTidalCurrentSpeed(unittest.TestCase):
+    """The tidal current kernel (issue #28), executed as shipped SQF."""
+
+    def setUp(self):
+        self.kernel = _MARITIME / "fnc_tidalCurrentSpeed.sqf"
+
+    def test_shallow_and_deep_reference(self):
+        # u = eta sqrt(g/H): 1 m in 10 m -> 0.99 m/s; in 50 m -> 0.44 m/s.
+        self.assertAlmostEqual(run_sqf(self.kernel, [1, 10]), 0.990, places=3)
+        self.assertAlmostEqual(run_sqf(self.kernel, [1, 50]), 0.443, places=3)
+
+    def test_zero_tide_is_zero_current(self):
+        self.assertEqual(run_sqf(self.kernel, [0, 10]), 0)
+
+    def test_sign_of_the_tide_does_not_matter(self):
+        # The speed is the magnitude; the direction is set by the flood/ebb.
+        self.assertAlmostEqual(
+            run_sqf(self.kernel, [-1, 10]), run_sqf(self.kernel, [1, 10]), places=9
+        )
+
+    def test_zero_depth_is_finite(self):
+        self.assertTrue(math.isfinite(run_sqf(self.kernel, [1, 0])))
+
+
+class TestOceanCurrentDriver(unittest.TestCase):
+    """The driver that composes the wind-driven and tidal currents."""
+
+    def setUp(self):
+        self.driver = (_MARITIME / "fnc_calculateOceanCurrent.sqf").read_text(
+            encoding="utf-8"
+        )
+
+    def test_driver_reuses_the_state_it_must(self):
+        # It reuses the wind vector, the harmonic tide height, the map latitude
+        # and the two pure kernels; it does not model its own tide or wind.
+        self.assertIn("EGVAR(core,currentWind)", self.driver)
+        self.assertIn("EGVAR(core,currentTideOffset_m)", self.driver)
+        self.assertIn("EFUNC(lib,getWorldLocation)", self.driver)
+        self.assertIn("FUNC(ekmanTransport)", self.driver)
+        self.assertIn("FUNC(tidalCurrentSpeed)", self.driver)
+
+    def test_driver_publishes_the_current(self):
+        self.assertIn("QGVAR(oceanCurrent)", self.driver)
+        self.assertIn("QGVAR(oceanCurrentSpeed)", self.driver)
+        self.assertIn("QGVAR(ekmanTransport_m2s)", self.driver)
+
+    def test_vector_sum_of_the_two_parts(self):
+        # Wind blowing north (azimuth 0) at 10 m/s, 45 N, 3%, 30 deg right,
+        # a 1 m flood tide in 10 m of water on the north axis.
+        total, speed, tidal_speed = ocean_current_vector(
+            10, 0, 45, 0.03, 30, 1, 10, False, 0
+        )
+        self.assertAlmostEqual(total[0], 0.15, places=3)  # east: 0.3 sin30
+        self.assertAlmostEqual(total[1], 0.15 * 1.732 + 0.990, places=2)
+        self.assertAlmostEqual(tidal_speed, 0.990, places=3)
+        self.assertAlmostEqual(speed, math.hypot(*total), places=9)
+
+    def test_southern_hemisphere_deflects_left(self):
+        # The same wind in the south deflects the current left of the wind, so
+        # the east component flips sign.
+        north, _, _ = ocean_current_vector(10, 0, 45, 0.03, 30, 0, 10, False, 0)
+        south, _, _ = ocean_current_vector(10, 0, -45, 0.03, 30, 0, 10, False, 0)
+        self.assertGreater(north[0], 0)
+        self.assertLess(south[0], 0)
+
+    def test_ebb_reverses_the_tidal_part(self):
+        flood, _, _ = ocean_current_vector(0, 0, 45, 0.03, 30, 1, 10, False, 0)
+        ebb, _, _ = ocean_current_vector(0, 0, 45, 0.03, 30, 1, 10, True, 0)
+        self.assertAlmostEqual(flood[1], -ebb[1], places=6)
+
+
+class TestOceanCurrentWiring(unittest.TestCase):
+    """The current is wired into the environment tick and prep'd."""
+
+    def test_core_tick_calls_the_current(self):
+        core = (
+            Path(__file__).resolve().parents[2]
+            / "addons"
+            / "core"
+            / "functions"
+            / "fnc_updateEnvironment.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("EFUNC(maritime,calculateOceanCurrent)", core)
+
+    def test_prep_registers_the_functions(self):
+        prep = (_MARITIME.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        for name in (
+            "PREP(calculateOceanCurrent)",
+            "PREP(ekmanTransport)",
+            "PREP(tidalCurrentSpeed)",
+        ):
+            self.assertIn(name, prep)
 
 
 if __name__ == "__main__":
