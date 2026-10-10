@@ -97,6 +97,30 @@
             <Original>Sound Propagation Scale</Original>
             <English>Sound Propagation Scale</English>
         </Key>
+        <Key ID="STR_AEE_Weather_denseGasAgent_Description">
+            <Original>Agent dispersed by the dense-gas model (none disables it)</Original>
+            <English>Agent dispersed by the dense-gas model (none disables it)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_denseGasAgent_Name">
+            <Original>Dense Gas Agent</Original>
+            <English>Dense Gas Agent</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_denseGasCloudHeight_Description">
+            <Original>Dense cloud height for the slumping velocity (m)</Original>
+            <English>Dense cloud height for the slumping velocity (m)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_denseGasCloudHeight_Name">
+            <Original>Dense Gas Cloud Height</Original>
+            <English>Dense Gas Cloud Height</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_denseGasPoolDiameter_Description">
+            <Original>Pool diameter for the evaporation flux (m)</Original>
+            <English>Pool diameter for the evaporation flux (m)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_denseGasPoolDiameter_Name">
+            <Original>Dense Gas Pool Diameter</Original>
+            <English>Dense Gas Pool Diameter</English>
+        </Key>
         <Key ID="STR_AEE_Weather_logDebug_Description">
             <Original>Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental &gt; Diagnostics)</Original>
             <English>Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental &gt; Diagnostics)</English>

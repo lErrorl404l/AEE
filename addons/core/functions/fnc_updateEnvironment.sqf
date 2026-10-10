@@ -435,6 +435,7 @@ private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL se
 if (GVAR(environmentalEnabled)) then {
     [] call EFUNC(weather,calculateBiologicalAmbient);
     [] call EFUNC(persistence,calculateCBRNPersistence);
+    [] call EFUNC(weather,calculateDenseGasDispersion);
 };
 if (GVAR(physiologyEnabled)) then {
     [] call EFUNC(weather,calculateScentDispersion);
