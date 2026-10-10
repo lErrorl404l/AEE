@@ -59,6 +59,45 @@ The remaining first-slice leads are `a10a_thunderbolt_ii`, `su25_frogfoot`,
   military flight manual (TO/TM), an FAA type certificate data sheet, or a
   public-domain DTIC report.
 
+## Fixed-wing expansion leads
+
+The fixed-wing expansion capture `data/aircraft/catalogue/fixed_wing_fw.json`
+records the real fixed-wing types the roster's plane families represent, one
+entry per real variant. Every entry is an identity lead: it holds no value, so
+it names its next source here. The next source is named per group.
+
+- US post-war and modern types (`f16a_block10`, `f16c_block52`, `f15a_eagle`,
+  `f15e_strike_eagle`, `f14b_tomcat`, `fa18a_hornet`, `fa18c_hornet`,
+  `fa18f_super_hornet`, `f4c_phantom_ii`, `f4j_phantom_ii`, `f5e_tiger_ii`,
+  `f104g_starfighter`, `f105d_thunderchief`, `f100d_super_sabre`,
+  `f86d_sabre`, `f84f_thunderstreak`, `f80c_shooting_star`, `a7d_corsair_ii`,
+  `f8e_crusader`, `a1h_skyraider`, `a6a_intruder`, `a4e_skyhawk`, `t38a_talon`,
+  `f111a_ardvark`, `b52h_stratofortress`). Next source: a US military flight
+  manual such as `TO 1F-16C-1` for the F-16 or `TO 1F-15A-1` for the F-15, or
+  an FAA type certificate data sheet.
+- Soviet and Russian types (`mig17f_fresco`, `mig19s_farmer`, `mig21bis`,
+  `mig21f13`, `mig23m_flogger`, `mig23ml_flogger`, `mig25_foxbat`,
+  `mig27_flogger_d`, `mig29a_fulcrum`, `mig35_fulcrum_f`, `su7b_fitter`,
+  `su17_fitter_c`, `su22_fitter_f`, `su24_fencer`, `su25sm_frogfoot`,
+  `su25t_frogfoot`, `su27sk_flanker_b`, `su30mki_flanker_h`, `su33_flanker_d`,
+  `su34_fullback`, `yak130_mitten`, `yak38_forger`, `mig31b_foxhound`). Next
+  source: a Russian flight manual or an export operator's handbook, for example
+  the Su-27SK flight manual.
+- European types (`mirage_iii_e`, `mirage_2000c`, `mirage_f1_cr`,
+  `sepecat_jaguar_gr1`, `panavia_tornado_gr4`, `harrier_gr9`, `bae_hawk_t1`,
+  `folland_gnat`, `alphajet_e`, `saab_37_viggen`, `saab_35_draken`,
+  `saab_105`, `aermacchi_mb339`, `amx_gibli`). Next source: a manufacturer
+  datasheet from Dassault, Saab, BAE Systems, Leonardo or Panavia.
+- Chinese types (`chengdu_j7_ii`, `shenyang_j8_ii`, `chengdu_j10a`). Next
+  source: a manufacturer datasheet or an export operator's flight manual.
+- Historical types (`hawker_hurricane_mk_i`, `hawker_typhoon_mk_ib`,
+  `dehavilland_mosquito_b`, `avro_lancaster_b1`, `messerschmitt_bf109e`,
+  `junkers_ju87d_stuka`, `focke_wulf_fw190d`, `messerschmitt_me262a`,
+  `mitsubishi_a6m2_zero`, `p38j_lightning`, `p40e_warhawk`,
+  `p61b_black_widow`, `b24j_liberator`, `b29_superfortress`, `f4u4_corsair`,
+  `f6f5_hellcat`). Next source: a period flight manual or an FAA type
+  certificate data sheet.
+
 ## Fields with no obtainable source
 
 - The fixed-wing `drag_area_m2` is rarely published. It is optional, so the
@@ -69,3 +108,45 @@ The remaining first-slice leads are `a10a_thunderbolt_ii`, `su25_frogfoot`,
   or maximum speed alongside the thrust.
 - The `rotor_disc_area_m2` of the AW159 needs a held rotor diameter. Next
   source: the Leonardo AW159 datasheet.
+
+## Rotary-wing expansion leads
+
+The rotary-wing expansion capture `data/aircraft/catalogue/rotary_wing_rw.json`
+records the real rotary types the roster helicopter and rotary UCAV families
+represent, one entry per real variant. Five entries hold real values from the
+held OPFOR Worldwide Equipment Guide and resolve their runtime fields. Every
+other entry is an identity lead. It holds no value, so it names its next source
+here.
+
+- Real-value entries (`mi8_hip`, `mi17_hip`, `mi24p_hind_f`, `ka50_hokum`,
+  `sa341_gazelle`). The held OPFOR Worldwide Equipment Guide states the empty
+  weight, the shaft horsepower per engine and the main rotor diameter. Each
+  entry therefore resolves `operating_weight_kg`, `rated_power_w` and
+  `rotor_disc_area_m2`.
+- US types (`uh1h_v`, `uh1n_twin_huey`, `uh1y_venom`, `oh58a_kiowa`,
+  `oh58c_kiowa`, `oh58d_kiowa_warrior`, `ah64a_apache`,
+  `ah64e_apache_guardian`, `ah1j_seacobra`, `ah1s_cobra`, `ah1w_super_cobra`,
+  `ah1z_viper`, `ah6_little_bird`, `mh6m_mission_enhanced`, `uh60l_black_hawk`,
+  `mh60r_seahawk`, `mh60g_pave_hawk`, `hh60g_pave_hawk`, `mh60s_knighthawk`,
+  `sh60b_seahawk`, `ch47a_chinook`, `ch47b_chinook`, `ch47c_chinook`,
+  `mh47g_chinook`, `ch53d_sea_stallion`, `ch53e_super_stallion`,
+  `mh53e_sea_dragon`, `ch53k_king_stallion`, `uh72a_lakota`, `th67_creek`,
+  `ch46_sea_knight`, `oh6a_cayuse`). Next source: a US Army operator's manual
+  such as TM 1-1520-237-10, an FAA type certificate data sheet, or a maker
+  datasheet.
+- Soviet and Russian types (`mi35m_hind_e`, `mi171_hip_h`, `mi6_hook`,
+  `mi14_haze`, `mi38_halo`, `mi24a_hind_a`, `ka27_helix`, `ka29_helix_b`,
+  `ka32_helix_c`, `ka60_kasatka`, `mi4_hound`, `mi10_harke`). Next source: the
+  held ODIN Worldwide Equipment Guide 2025, or a Russian flight manual.
+- European types (`sa342_gazelle`, `sa330_puma`, `as332_super_puma`,
+  `as532_cougar`, `as350_ecureuil`, `as355_twinstar`, `as365_dauphin`, `ec135`,
+  `ec145`, `ec155`, `ec225_super_puma`, `sa321_super_frelon`, `nh90_nfh`,
+  `ec665_tiger`, `lynx_has3`, `wg13_lynx`, `aw139`, `aw149`, `aw101_hm2`,
+  `bo105`, `bk117`, `w3_sokol`). Next source: an EASA type certificate data
+  sheet or a maker datasheet. The held EASA.R.013 already covers the AW101.
+- Chinese and other types (`z8_haoyang`, `z9_haitun`, `z10_thunderbolt`,
+  `z19_thunderbolt`, `z20_black_eagle`, `bell412`, `bell412ep`, `bell212`,
+  `bell205`, `bell206b_jetranger`, `bell407`, `bell429`, `bell525`, `s76`,
+  `s92`, `md902_explorer`, `mq8_fire_scout`, `mq8c_fire_scout`,
+  `rq8_fire_scout`, `camcopter_s100`). Next source: a maker datasheet or an
+  export operator's handbook.

@@ -39,10 +39,10 @@ The unused state. AEE computed the air density (`aee_core_currentAirDensity`), t
 
 ## References
 
-- `addons/mobility/functions/fnc_applyFlightTurbulence.sqf`, the gate and the physical layer.
-- `addons/mobility/functions/fnc_calculateTurbulenceForce.sqf`, the aerodynamic gust force.
-- `addons/mobility/functions/fnc_resolveTurbulenceArea.sqf`, the drag area from the corpus row.
-- `addons/mobility/functions/fnc_applyAirframeLoad.sqf`, the density and icing consumer.
+- `addons/flight/functions/fnc_applyFlightTurbulence.sqf`, the gate and the physical layer.
+- `addons/flight/functions/fnc_calculateTurbulenceForce.sqf`, the aerodynamic gust force.
+- `addons/flight/functions/fnc_resolveTurbulenceArea.sqf`, the drag area from the corpus row.
+- `addons/flight/functions/fnc_applyAirframeLoad.sqf`, the density and icing consumer.
 - `addons/mobility/script_component.hpp`, the bounded constants.
 - `data/aircraft/SCHEMA.md`, the drag area and rotor disc area derivations.
 - FAR 25 Appendix C, the airframe icing envelope.

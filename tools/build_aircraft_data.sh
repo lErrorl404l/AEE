@@ -33,13 +33,21 @@ step "gate: aircraft data contract" "$V/validate_aircraft_data.py"
 # reports describe the corpus the projection was built from.
 step "coverage: air tokens and gaps" "$V/gen_aircraft_coverage.py"
 
-# The generator writes the two runtime SQF projections from the validated
-# corpus. It reads no source registry at runtime.
+# The generators write the runtime SQF projections from the validated corpus.
+# The four-value row and the systems row are separate lookups. Neither reads a
+# source registry at runtime.
 step "runtime: aircraft projection" "$V/gen_aircraft_data.py"
+step "runtime: aircraft systems lookup" "$V/gen_aircraft_systems.py"
+
+# The config projection writes the one CfgVehicles block, the aircraft keys
+# and the land physics surface. It is the sole owner of that block.
+step "config: load-time CfgVehicles projection" "$V/gen_physics_config.py"
 
 # The freshness checks re-run each writer with --check. They write nothing and
 # exit 1 when a committed output does not match the corpus.
 step "check: coverage freshness" "$V/gen_aircraft_coverage.py" --check
 step "check: projection freshness" "$V/gen_aircraft_data.py" --check
+step "check: systems freshness" "$V/gen_aircraft_systems.py" --check
+step "check: config freshness" "$V/gen_physics_config.py" --check
 
 printf '\naircraft data: complete\n'

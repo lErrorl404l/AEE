@@ -36,7 +36,7 @@ class TestSurfaceTemperatureRoute(unittest.TestCase):
     """fnc_detectGroundFrost must read the node stack, not T_air - 2."""
 
     def setUp(self):
-        self.src = read("environmental/functions/terrain/fnc_detectGroundFrost.sqf")
+        self.src = read("persistence/functions/terrain/fnc_detectGroundFrost.sqf")
 
     def test_reads_the_published_surface_temperature(self):
         self.assertIn("groundSurfaceTemp", self.src)
@@ -58,7 +58,7 @@ class TestStefanRoute(unittest.TestCase):
 
     def setUp(self):
         self.src = read(
-            "environmental/functions/terrain/fnc_calculateFreezeThawCycling.sqf"
+            "persistence/functions/terrain/fnc_calculateFreezeThawCycling.sqf"
         )
 
     def test_uses_the_coefficient_function(self):
@@ -154,9 +154,7 @@ class TestMeltCoupling(unittest.TestCase):
     """
 
     def setUp(self):
-        self.snow = read(
-            "environmental/functions/terrain/fnc_calculateSnowAccumulation.sqf"
-        )
+        self.snow = read("weather/functions/terrain/fnc_calculateSnowAccumulation.sqf")
         self.stack = read("thermal/functions/ground/fnc_calculateGroundNodeStack.sqf")
 
     def test_the_snow_owner_publishes_the_flux(self):

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A console result is evidence, not a gate (ADR-033).
+"""A console result is evidence, not a gate (ADR-035).
 
 The console ``probes`` op returns ``[[tag, verdict, diag], ...]`` for the tags
 its runner can reach.  Every such fact must name a probe file, so no console
@@ -27,7 +27,7 @@ MANIFEST = DEV / "functions" / "fnc_devProbeManifest.sqf"
 RUNNER = DEV / "functions" / "fnc_devProbes.sqf"
 MISSION = REPO / "tests" / "docker" / "missions" / "aee_test.Stratis"
 VERIFY = REPO / "tests" / "docker" / "verify.py"
-ADR = REPO / "docs" / "adr" / "ADR-033-truth-versus-assumption-console-evidence.md"
+ADR = REPO / "docs" / "adr" / "ADR-035-truth-versus-assumption-console-evidence.md"
 
 _TAG = re.compile(r'"(P[0-9A-Za-z]+)"')
 _ROW = re.compile(r'\[\s*"(P[0-9A-Za-z]+)"\s*,\s*"([a-z-]+)"\s*,\s*"([^"]+)"\s*\]')

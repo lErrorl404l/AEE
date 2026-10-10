@@ -2,7 +2,7 @@
 """Contract: a raw diag_log in addons/**/*.sqf must be on the allowlist.
 
 Every diagnostic that carries AEE state must go through AEE_LOG_ERROR,
-AEE_LOG_WARN, AEE_LOG_INFO or AEE_LOG_DEBUG (addons/main/script_macros.hpp),
+AEE_LOG_WARN, AEE_LOG_INFO or AEE_LOG_DEBUG (addons/lib/script_macros.hpp),
 so the module tag and the debug switch apply.  A raw diag_log is allowed
 only when it is a deliberate banner, an engine callback with no component
 context, or code that runs before the macros exist.  Each such site is

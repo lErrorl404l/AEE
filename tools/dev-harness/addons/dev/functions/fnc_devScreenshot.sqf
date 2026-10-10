@@ -30,7 +30,7 @@ private _name = format ["aee_%1_%2", _label, _stamp];
 private _ok = screenshot _name;
 
 // The paired state line: name the file, then emit the current AEE state.
-private _state = [] call aee_core_fnc_dumpState;
+private _state = [] call aee_diagnostics_fnc_dumpState;
 private _logMsg = format [
     "dev screenshot | file=%1.png | result=%2 | state=%3",
     _name, _ok, if (isNil "_state") then { "core state line emitted" } else { str _state }

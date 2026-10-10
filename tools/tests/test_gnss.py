@@ -2,9 +2,9 @@
 """GNSS tracker kernel tests (MGRS wave 3, tasks 10 to 12).
 
 Runs the REAL pure kernels through tools/tests/sqf_lite.py:
-  addons/core/functions/geo/fnc_gnssErrorEllipse.sqf   (task 10)
-  addons/core/functions/geo/fnc_gnssFixState.sqf       (task 11)
-  addons/core/functions/geo/fnc_datalinkState.sqf      (task 12)
+  addons/lib/functions/geo/fnc_gnssErrorEllipse.sqf   (task 10)
+  addons/lib/functions/geo/fnc_gnssFixState.sqf       (task 11)
+  addons/lib/functions/geo/fnc_datalinkState.sqf      (task 12)
 
 The kernels read no world, no config, no player and no engine state.  The
 sourced constants come from the GPS Standard Positioning Service Performance
@@ -23,11 +23,11 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-GEO = ROOT / "addons" / "core" / "functions" / "geo"
+GEO = ROOT / "addons" / "lib" / "functions" / "geo"
 ELLIPSE = GEO / "fnc_gnssErrorEllipse.sqf"
 FIXSTATE = GEO / "fnc_gnssFixState.sqf"
 DATALINK = GEO / "fnc_datalinkState.sqf"
-PREP = ROOT / "addons" / "core" / "XEH_PREP.hpp"
+PREP = ROOT / "addons" / "lib" / "XEH_PREP.hpp"
 
 
 def ellipse(dop, uere, atmos=0.0, canopy=0.0, urban=0.0, jamming=0.0, rx=1.0):

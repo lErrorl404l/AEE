@@ -70,7 +70,7 @@ a code path treats as "gate off", silently disabling a system).
 Use `aee_core_fnc_readState` for the guarded read:
 
 ```sqf
-private _heat = [QGVAR(barrelHeat), 0.3, 1, true] call EFUNC(core,readState);
+private _heat = [QGVAR(barrelHeat), 0.3, 1, true] call EFUNC(lib,readState);
 ```
 
 Arguments: key, default, type (0 any / 1 number / 2 string / 3 array /
@@ -155,9 +155,9 @@ The directory `data/aircraft/` holds one sourced entry per real aircraft
 variant. It is a sibling of the vehicle corpus and inherits that contract by
 reference. The corpus feeds four flight-model inputs: the weight in kg, the
 rated power in W, the drag area in m2 and the rotor disc area in m2. The
-generated lookup `addons/mobility/functions/fnc_getAircraftData.sqf` reads the
+generated lookup `addons/flight/functions/fnc_getAircraftData.sqf` reads the
 corpus at build time. The kernel
-`addons/mobility/functions/fnc_calculateAirEngineLoad.sqf` is not changed.
+`addons/flight/functions/fnc_calculateAirEngineLoad.sqf` is not changed.
 
 The runtime defaults 150000 W, 0.7 m2 and 50 m2 are the fallback for an empty
 row. A bound class reads a sourced value instead.

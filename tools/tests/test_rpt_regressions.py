@@ -36,10 +36,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-MGRS_DRAW = ROOT / "addons/optics/functions/hud/fnc_mgrsMapDraw.sqf"
+MGRS_DRAW = ROOT / "addons/cartography/functions/hud/fnc_mgrsMapDraw.sqf"
 WILDLIFE_TICK = ROOT / "addons/wildlife/functions/fnc_wildlifeTick.sqf"
 SYMBOLOGY_UNIT = (
-    ROOT / "addons/optics/functions/symbology/fnc_symbologyUnitCategory.sqf"
+    ROOT / "addons/symbology/functions/symbology/fnc_symbologyUnitCategory.sqf"
 )
 
 
@@ -194,9 +194,9 @@ class TestWildlifeScheduleRead(unittest.TestCase):
                 "configFile": "config",
                 "isClass": lambda path: False,
                 "date": [2026, 10, 8, 12, 0, 0],
-                "__EFUNC__core_readState": lambda key, default, type_: default,
+                "__EFUNC__lib_readState": lambda key, default, type_: default,
                 "__FUNC__getSpeciesMatch": lambda *args: [],
-                "__FUNC__soundTick": lambda *args: [],
+                "__EFUNC__ambience_soundTick": lambda *args: [],
             }
         )
         hour_key, emissions, read_back = run_program(program, globs)

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Weather">
+        <Key ID="STR_AEE_Weather_BlowingSnowWindThreshold_Description">
+            <Original>Wind speed (m/s) that triggers blowing snow</Original>
+            <English>Wind speed (m/s) that triggers blowing snow</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_BlowingSnowWindThreshold_Name">
+            <Original>Blowing Snow Wind Threshold</Original>
+            <English>Blowing Snow Wind Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_DustDevilTempThreshold_Description">
+            <Original>Air temperature (°C) that allows dust devils</Original>
+            <English>Air temperature (°C) that allows dust devils</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_DustDevilTempThreshold_Name">
+            <Original>Dust Devil Temperature Threshold</Original>
+            <English>Dust Devil Temperature Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_FlareChance_Description">
+            <Original>Solar-flare trigger chance per tick</Original>
+            <English>Solar-flare trigger chance per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_FlareChance_Name">
+            <Original>Solar Flare Chance</Original>
+            <English>Solar Flare Chance</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_FlareDecayRate_Description">
+            <Original>Solar-flare decay speed per tick</Original>
+            <English>Solar-flare decay speed per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_FlareDecayRate_Name">
+            <Original>Solar Flare Decay Rate</Original>
+            <English>Solar Flare Decay Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_FlareDuration_Description">
+            <Original>Solar-flare hold duration (s)</Original>
+            <English>Solar-flare hold duration (s)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_FlareDuration_Name">
+            <Original>Solar Flare Duration</Original>
+            <English>Solar Flare Duration</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_InversionBoost_Description">
+            <Original>Sound-range boost on clear calm nights</Original>
+            <English>Sound-range boost on clear calm nights</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_InversionBoost_Name">
+            <Original>Inversion Sound Boost</Original>
+            <English>Inversion Sound Boost</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_MaxSnowDepth_Description">
+            <Original>Maximum snow depth (m)</Original>
+            <English>Maximum snow depth (m)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_MaxSnowDepth_Name">
+            <Original>Maximum Snow Depth</Original>
+            <English>Maximum Snow Depth</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_SandstormWindThreshold_Description">
+            <Original>Wind speed (m/s) that triggers sandstorms</Original>
+            <English>Wind speed (m/s) that triggers sandstorms</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_SandstormWindThreshold_Name">
+            <Original>Sandstorm Wind Threshold</Original>
+            <English>Sandstorm Wind Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_ScentIntensity_Description">
+            <Original>Scale on scent detectability (0 = off, 1 = normal, 2 = strong)</Original>
+            <English>Scale on scent detectability (0 = off, 1 = normal, 2 = strong)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_ScentIntensity_Name">
+            <Original>Scent Intensity</Original>
+            <English>Scent Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_SnowAccretionRate_Description">
+            <Original>Snow depth gain per tick per unit rain</Original>
+            <English>Snow depth gain per tick per unit rain</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_SnowAccretionRate_Name">
+            <Original>Snow Accretion Rate</Original>
+            <English>Snow Accretion Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_SoundPropagationScale_Description">
+            <Original>Global sound-range multiplier</Original>
+            <English>Global sound-range multiplier</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_SoundPropagationScale_Name">
+            <Original>Sound Propagation Scale</Original>
+            <English>Sound Propagation Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_logDebug_Description">
+            <Original>Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental &gt; Diagnostics)</Original>
+            <English>Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental &gt; Diagnostics)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_logDebug_Name">
+            <Original>Night-Sky State Trace</Original>
+            <English>Night-Sky State Trace</English>
+        </Key>
+    </Package>
+</Project>

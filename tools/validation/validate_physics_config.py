@@ -44,6 +44,7 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 ROOT = _REPO
 DEFAULT_DATA = ROOT / "data" / "physics"
 DEFAULT_VEHICLE_DATA = ROOT / "data" / "vehicle"
+DEFAULT_AIRCRAFT_DATA = ROOT / "data" / "aircraft"
 BINDINGS_NAME = "config_bindings.json"
 CLASS_BINDINGS_NAME = "class_bindings.json"
 SOURCES_NAME = "sources.json"
@@ -67,11 +68,85 @@ VALUE_SOURCE_FIELDS = ("source_id", "locator", "field")
 # identity only. It is never a value source.
 CONFIG_CLASSES = frozenset({"CfgVehicles"})
 
-# The engine config keys this schema version admits.
-CONFIG_KEYS = frozenset({"maxSpeed"})
+# The engine config keys this schema version admits. ``maxSpeed`` is a land
+# key. ``fuelCapacity`` is the aircraft fuel key, held in litres.
+# ``fuelConsumptionRate`` is the aircraft structural-zero key: it disables the
+# engine's own burn so the scripted burn is authoritative, and it is unitless.
+# ``mass`` is the aircraft PhysX mass from the sourced operating weight, in
+# kilograms. ``centerOfMass`` is the aircraft centre of gravity, in metres,
+# emitted only where the engine accepts it. The remaining keys are the land
+# carx/tankx/shipx physics surface from data/vehicle/SCHEMA.md section 17, each
+# emitted only from a documented class identity and a documented held value.
+# enginePower, peakTorque, torqueCurve and the gearbox ratios are deliberately
+# absent until the in-engine probe resolves the enginePower unit.
+CONFIG_KEYS = frozenset(
+    {
+        "maxSpeed",
+        "fuelCapacity",
+        "fuelConsumptionRate",
+        "mass",
+        "centerOfMass",
+        "idleRpm",
+        "redRpm",
+        "maxOmega",
+        "minOmega",
+        "engineMOI",
+        "clutchStrength",
+        "switchTime",
+        "changeGearType",
+        "driveString",
+        "neutralString",
+        "reverseString",
+        "moveOffGear",
+        "differentialType",
+        "frontRearSplit",
+        "MOI",
+        "maxBrakeTorque",
+        "maxHandBrakeTorque",
+        "maxCompression",
+        "maxDroop",
+        "sprungMass",
+        "springStrength",
+        "springDamperRate",
+        "longitudinalStiffnessPerUnitGravity",
+        "latStiffX",
+        "latStiffY",
+    }
+)
 
 # The documented config unit of each admitted key.
-KEY_UNITS: dict[str, str] = {"maxSpeed": "km/h"}
+KEY_UNITS: dict[str, str] = {
+    "maxSpeed": "km/h",
+    "fuelCapacity": "L",
+    "fuelConsumptionRate": "unitless",
+    "mass": "kg",
+    "centerOfMass": "m",
+    "idleRpm": "rpm",
+    "redRpm": "rpm",
+    "maxOmega": "rad/s",
+    "minOmega": "rad/s",
+    "engineMOI": "kg m^2",
+    "clutchStrength": "unitless",
+    "switchTime": "s",
+    "changeGearType": "text",
+    "driveString": "text",
+    "neutralString": "text",
+    "reverseString": "text",
+    "moveOffGear": "count",
+    "differentialType": "text",
+    "frontRearSplit": "unitless",
+    "MOI": "kg m^2",
+    "maxBrakeTorque": "N m",
+    "maxHandBrakeTorque": "N m",
+    "maxCompression": "m",
+    "maxDroop": "m",
+    "sprungMass": "kg",
+    "springStrength": "N/m",
+    "springDamperRate": "N m s/rad",
+    "longitudinalStiffnessPerUnitGravity": "unitless",
+    "latStiffX": "unitless",
+    "latStiffY": "unitless",
+}
 
 # The grade vocabulary. A binding never carries ``absent``: a binding with no
 # held source value is omitted, not recorded.
@@ -112,6 +187,16 @@ CONVERSIONS: dict[str, Conversion] = {
         target_unit="km/h",
         factor=3.6,
         basis="1 m/s = 3.6 km/h (SI derived unit)",
+    ),
+    "structural_zero": Conversion(
+        source_unit=None,
+        target_unit=None,
+        factor=0.0,
+        basis=(
+            "the key is a structural zero: the engine's own burn is disabled "
+            "so the scripted burn from the sourced systems-row rate is "
+            "authoritative and the two never double-count"
+        ),
     ),
 }
 
@@ -186,9 +271,16 @@ def sources_by_id(vehicle_dir: Path) -> dict[str, dict[str, object]]:
     return registry
 
 
-def catalogue_by_id(vehicle_dir: Path) -> dict[str, catalogue.CatalogueEntry]:
-    """Return the catalogue corpus keyed by catalogue_id."""
-    load = catalogue.load(vehicle_dir)
+def catalogue_by_id(
+    data_dir: Path, *, profile: catalogue.Profile = catalogue.GROUND_PROFILE
+) -> dict[str, catalogue.CatalogueEntry]:
+    """Return the catalogue corpus keyed by catalogue_id.
+
+    ``profile`` selects the family contract. It defaults to the ground profile,
+    so every existing caller is unchanged. The aircraft corpus loads with the
+    aircraft profile.
+    """
+    load = catalogue.load(data_dir, profile=profile)
     return {entry.catalogue_id: entry for entry in load.entries}
 
 
@@ -207,6 +299,10 @@ def _check_conversion(
         )
         return None
     if conv is None or unit is None:
+        return conv
+    if conversion == "structural_zero":
+        # The key is a structural zero, not a unit identity. Its value is
+        # fixed at zero by the conversion factor, so no held unit is compared.
         return conv
     if conv.source_unit is None:
         # A direct unit identity: the source unit equals the target unit.
@@ -406,18 +502,24 @@ def main(argv: Sequence[str] | None = None) -> int:
     paths = list(sys.argv[1:] if argv is None else argv)
     data_dir = DEFAULT_DATA
     vehicle_dir = DEFAULT_VEHICLE_DATA
+    aircraft_dir = DEFAULT_AIRCRAFT_DATA
     index = 0
     while index < len(paths):
         flag = paths[index]
-        if flag in ("--data-dir", "--vehicle-dir") and index + 1 < len(paths):
+        if flag in ("--data-dir", "--vehicle-dir", "--aircraft-dir") and (
+            index + 1 < len(paths)
+        ):
             if flag == "--data-dir":
                 data_dir = Path(paths[index + 1])
-            else:
+            elif flag == "--vehicle-dir":
                 vehicle_dir = Path(paths[index + 1])
+            else:
+                aircraft_dir = Path(paths[index + 1])
             index += 2
             continue
         print(
-            "usage: validate_physics_config.py [--data-dir PATH] [--vehicle-dir PATH]"
+            "usage: validate_physics_config.py "
+            "[--data-dir PATH] [--vehicle-dir PATH] [--aircraft-dir PATH]"
         )
         return 2
 
@@ -427,6 +529,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         catalogue_ids = catalogue_by_id(vehicle_dir)
         class_bindings = class_binding_map(vehicle_dir)
         sources = sources_by_id(vehicle_dir)
+        # The aircraft family shares the config-key contract. Merge its class
+        # bindings, sources and catalogue so a future aircraft fuelCapacity
+        # record is not rejected as an unknown game_class.
+        if aircraft_dir.is_dir():
+            catalogue_ids.update(
+                catalogue_by_id(aircraft_dir, profile=catalogue.AIRCRAFT_PROFILE)
+            )
+            class_bindings.update(class_binding_map(aircraft_dir))
+            sources.update(sources_by_id(aircraft_dir))
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"physics config bindings: FAIL\n  cannot read the corpus: {exc}")
         return 1

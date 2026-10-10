@@ -39,7 +39,7 @@ from typing import Any
 ROOT = Path(__file__).parents[1]
 SOURCE_JSON = ROOT / "data" / "symbology" / "terrain_symbols.json"
 MANIFEST_JSON = ROOT / "data" / "symbology" / "terrain_sources.json"
-TERRAIN_OUT = ROOT / "addons" / "optics" / "data" / "terrain"
+TERRAIN_OUT = ROOT / "addons" / "cartography" / "data" / "terrain"
 SRC_DIR = TERRAIN_OUT / "src"
 
 SIZE = 64

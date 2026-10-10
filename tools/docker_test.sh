@@ -283,6 +283,15 @@ if [ "${AEE_SKIP_BUILD:-0}" != "1" ]; then
     # never asked for the logo and the harness could not report the omission.
     mkdir -p "$MODS/@aee"
     cp -a "$ROOT"/.hemttout/build/. "$MODS/@aee/"
+
+    # The land-physics fixture probe. Its generated CfgVehicles carries the ONE
+    # documented fixture carx key (maxBrakeTorque). Production ships no land
+    # surface key, so the probe proves the generator path with this fixture, not
+    # a shipped key. The addon loads after aee_mobility and is copied into the
+    # test @aee only. It is never part of a release.
+    echo "==> build the land-physics fixture probe addon"
+    (cd "$ROOT/tests/docker/probe_physics" && "$ROOT/tools/hemtt.sh" build >/dev/null)
+    cp -a "$ROOT"/tests/docker/probe_physics/.hemttout/build/addons/. "$MODS/@aee/addons/"
 else
     echo "==> reusing the built @aee (AEE_SKIP_BUILD=1)"
 fi

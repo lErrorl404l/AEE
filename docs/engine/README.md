@@ -33,7 +33,7 @@ change: read the engine first, then change.
 
 A dev tool holds no engine state. It observes the published state and calls
 published functions. The engine keeps the solver, the renderer and the
-physics step (ADR-017, ADR-032). A dev tool that needs a new engine anchor
+physics step (ADR-017, ADR-034). A dev tool that needs a new engine anchor
 adds a ceiling here first.
 
 ## Index
@@ -50,6 +50,7 @@ adds a ceiling here first.
 | [topo-standards.md](topo-standards.md) | Published topographic colour values and contour intervals. |
 | [workshop-mod-licence-survey.md](workshop-mod-licence-survey.md) | Per-mod licence facts for the surveyed Workshop mods. |
 | [aee-adopt-plan.md](aee-adopt-plan.md) | The per-mod adopt decision that follows the survey. |
+| [engine-power-unit-resolution.md](engine-power-unit-resolution.md) | The `enginePower` unit verdict: a PhysX tuning value, with the probe evidence. |
 
 The machine companion is `engine-pbo-inventory.json`.
 

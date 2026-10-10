@@ -89,7 +89,7 @@ for f in fails:
 # macro is not reading the flag and the switch is decorative.  This is the
 # check that a setting can be registered and still do nothing.
 _debug_expected = (
-    "[AEE][physiology][DEBUG] item mass:",
+    "[AEE][clothing][DEBUG] item mass:",
     "[AEE][ballistics][DEBUG] shot ",
 )
 _debug_missing = [m for m in _debug_expected if m not in text]
@@ -187,6 +187,7 @@ _probe_expected = (
     "[P137] [PASS]",
     "[P138] [PASS]",
     "[P139] [PASS]",
+    "[P140] [PASS]",
 )
 _probe_missing = [m for m in _probe_expected if m not in text]
 if _probe_missing:
@@ -196,7 +197,7 @@ if _probe_missing:
 _probe_failed = sorted(
     set(
         re.findall(
-            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84B|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|137|138|139)\] \[FAIL\][^\n]*",
+            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84B|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|137|138|139|140)\] \[FAIL\][^\n]*",
             text,
         )
     )

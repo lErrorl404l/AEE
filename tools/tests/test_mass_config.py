@@ -31,7 +31,7 @@ CALIBRATION = REPO / "data" / "physics" / "mass_calibration.json"
 CLASS_BINDINGS = VEHICLE / "class_bindings.json"
 PARENTS = VEHICLE / "class_parents.json"
 PROJECTION = REPO / "data" / "physics" / "config_bindings.json"
-GENERATED = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
+GENERATED = REPO / "addons" / "vehicles" / "generated" / "CfgVehicles.hpp"
 
 # One emitted class body: `class X: Parent {` ... `};`.
 BODY_RE = re.compile(r"^[ \t]+class (\w+): (\w+) \{\n(.*?)\n[ \t]+\};", re.M | re.S)

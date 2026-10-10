@@ -8,9 +8,9 @@
 //
 // Emits one [P112] PASS/FAIL line.
 
-private _fnEchelon = missionNamespace getVariable ["aee_optics_fnc_symbologyEchelon", nil];
-private _fnEchelonMarker = missionNamespace getVariable ["aee_optics_fnc_symbologyEchelonMarker", nil];
-private _fnDimension = missionNamespace getVariable ["aee_optics_fnc_symbologyDimension", nil];
+private _fnEchelon = missionNamespace getVariable ["aee_symbology_fnc_symbologyEchelon", nil];
+private _fnEchelonMarker = missionNamespace getVariable ["aee_symbology_fnc_symbologyEchelonMarker", nil];
+private _fnDimension = missionNamespace getVariable ["aee_symbology_fnc_symbologyDimension", nil];
 if (isNil "_fnEchelon" || {isNil "_fnEchelonMarker"} || {isNil "_fnDimension"}) exitWith {
     diag_log text "[P112] [FAIL] live kernels not compiled (symbologyEchelon/symbologyEchelonMarker/symbologyDimension)";
 };

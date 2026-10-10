@@ -4,8 +4,8 @@ title: "AEE dev console contract"
 
 # AEE dev console contract
 
-The dev console is the SQF half of the native extension bridge (ADR-032,
-ADR-033). The `aee_dev` extension registers a fixed command set; the console
+The dev console is the SQF half of the native extension bridge (ADR-034,
+ADR-035). The `aee_dev` extension registers a fixed command set; the console
 accepts a fixed verb table; and the `callfunc` verb runs a function name only
 when the name is on the `AEE_DEV_FUNCS` whitelist. This note is the contract.
 
@@ -58,7 +58,7 @@ The operations `fnc_devExec.sqf` accepts, published as `aee_dev_verbs` by `fnc_d
 
 The only function names the `callfunc` verb may run, published as `aee_dev_funcs` by `fnc_devFuncs.sqf`. A name outside the set is refused.
 
-- `aee_core_fnc_dumpState`
-- `aee_core_fnc_readState`
+- `aee_diagnostics_fnc_dumpState`
+- `aee_lib_fnc_readState`
 
 <!-- END GENERATED: dev console contract -->

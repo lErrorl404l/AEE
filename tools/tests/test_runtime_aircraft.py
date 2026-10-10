@@ -28,11 +28,11 @@ sys.path.insert(0, str(REPO))
 
 from tools.validation import gen_aircraft_data as gen  # noqa: E402
 
-MATCH_PATH = REPO / "addons" / "mobility" / "functions" / "fnc_getAircraftMatch.sqf"
-DATA_PATH = REPO / "addons" / "mobility" / "functions" / "fnc_getAircraftData.sqf"
-PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
+MATCH_PATH = REPO / "addons" / "flight" / "functions" / "fnc_getAircraftMatch.sqf"
+DATA_PATH = REPO / "addons" / "flight" / "functions" / "fnc_getAircraftData.sqf"
+PREP_PATH = REPO / "addons" / "flight" / "XEH_PREP.hpp"
 CALLER_PATH = (
-    REPO / "addons" / "fx" / "functions" / "weather" / "fnc_applyExhaustShimmer.sqf"
+    REPO / "addons" / "weatherfx" / "functions" / "weather" / "fnc_applyExhaustShimmer.sqf"
 )
 MATCH = MATCH_PATH.read_text(encoding="utf-8")
 DATA = DATA_PATH.read_text(encoding="utf-8")
@@ -153,7 +153,7 @@ class TestGeneratedMatchFile(unittest.TestCase):
     def test_the_file_is_marked_generated(self):
         self.assertIn("GENERATED", MATCH)
         self.assertIn("gen_aircraft_data.py", MATCH)
-        self.assertIn("aee_mobility_fnc_getAircraftMatch", MATCH)
+        self.assertIn("aee_flight_fnc_getAircraftMatch", MATCH)
 
     def test_the_header_states_the_nine_column_row(self):
         header = MATCH.split("*/", 1)[0]
@@ -256,7 +256,7 @@ class TestGeneratedDataFile(unittest.TestCase):
     def test_the_file_is_marked_generated(self):
         self.assertIn("GENERATED", DATA)
         self.assertIn("gen_aircraft_data.py", DATA)
-        self.assertIn("aee_mobility_fnc_getAircraftData", DATA)
+        self.assertIn("aee_flight_fnc_getAircraftData", DATA)
 
     def test_the_lookup_consumes_the_matcher(self):
         self.assertIn("FUNC(getAircraftMatch)", DATA)
@@ -498,7 +498,7 @@ class TestCallerContract(unittest.TestCase):
     """The exhaust-shimmer caller reads the generated lookup."""
 
     def test_the_caller_reads_the_generated_lookup(self):
-        self.assertIn("EFUNC(mobility,getAircraftData)", CALLER)
+        self.assertIn("EFUNC(flight,getAircraftData)", CALLER)
 
     def test_the_caller_keeps_the_declared_fallbacks(self):
         self.assertIn("_rated = 150000;", CALLER)

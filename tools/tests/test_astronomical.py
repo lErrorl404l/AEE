@@ -21,7 +21,13 @@ from pathlib import Path
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
-_ENV = _REPO_ROOT / "addons" / "environmental" / "functions"
+# The retired `environmental` addon split into lighting, weather and
+# persistence; the astronomy tests read functions from more than one.
+_ENV_ROOTS = (
+    _REPO_ROOT / "addons" / "lighting" / "functions",
+    _REPO_ROOT / "addons" / "weather" / "functions",
+    _REPO_ROOT / "addons" / "persistence" / "functions",
+)
 
 
 def _read_recursive(base, name):
@@ -37,8 +43,14 @@ def _read_recursive(base, name):
 def _read_sqf(name, addon="optics"):
     """Read an SQF function file.  The drift-lock tests read the SOURCE so a
     constant change in SQF fails the mirror tests until re-synced."""
-    base = _OPTICS if addon == "optics" else _ENV
-    return _read_recursive(base, name)
+    if addon == "optics":
+        return _read_recursive(_OPTICS, name)
+    for root in _ENV_ROOTS:
+        try:
+            return _read_recursive(root, name)
+        except FileNotFoundError:
+            continue
+    raise FileNotFoundError(f"{name} not found under the environmental split")
 
 
 # ─── DEF Stan 61-027 night classification mirrors ──────────────────────────
@@ -218,7 +230,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_classifyNight.sqf",
             ["> -6", "> -12", "> -18", "< 0.10"],
             "DEF Stan twilight thresholds",
-            addon="environmental",
+            addon="env",
         )
 
     # ── Lunar illumination (fnc_calculateLunarIllumination.sqf) ──
@@ -227,7 +239,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateLunarIllumination.sqf",
             ["29.530588853", "8777"],
             "synodic month and reference new moon",
-            addon="environmental",
+            addon="env",
         )
 
     def test_ks_magnitude_law(self):
@@ -235,7 +247,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateLunarIllumination.sqf",
             ["-12.73", "0.026", "4e-9", "14.18"],
             "Krisciunas & Schaefer magnitude law",
-            addon="environmental",
+            addon="env",
         )
 
     def test_lux_scale_constants(self):
@@ -243,7 +255,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateLunarIllumination.sqf",
             ["0.001 + _lux", "_lux max 0 min 300"],
             "lunar lux scale",
-            addon="environmental",
+            addon="env",
         )
 
     # ── Limiting magnitude (fnc_calculateLimitingMagnitude.sqf) ──
@@ -252,13 +264,13 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateLimitingMagnitude.sqf",
             ["6.5 - log (_ambientLux / 0.001", "0.2 + 1.3", "0.9"],
             "NELM baseline and seeing penalty",
-            addon="environmental",
+            addon="env",
         )
 
     # ── Star catalog sort order (fnc_getStarCatalog.sqf) ──
     def test_star_catalog_sorts_by_altitude(self):
         """The visible-star sort must key on altitude, not the name (#54)."""
-        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="env")
         self.assertNotIn(
             "_visible sort false",
             text,
@@ -268,12 +280,12 @@ class TestSQFSync(unittest.TestCase):
             "fnc_getStarCatalog.sqf",
             ["[(_x select 1), _x]", "_keyed sort true"],
             "altitude-keyed descending sort",
-            addon="environmental",
+            addon="env",
         )
 
     def test_star_catalog_has_no_fabricated_canopus_b(self):
         """Canopus_b is not a BSC5 entry and must not reappear (#55)."""
-        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="env")
         self.assertNotIn(
             "Canopus_b",
             text,
@@ -562,7 +574,7 @@ class TestPrecessionCenturies(unittest.TestCase):
 
     def test_source_uses_rational_julian_day_base(self):
         """Drift-lock: the SQF precession base must be 1721013.5."""
-        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="env")
         self.assertIn("1721013.5 + 367 * _year", text)
         self.assertNotIn("2451545.0 + 367 * _year", text)
 
@@ -596,7 +608,7 @@ class TestPrecessionModel(unittest.TestCase):
 
     def test_source_uses_iau_1976_angles(self):
         """Drift-lock: the SQF must carry the IAU 1976 constants."""
-        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="env")
         for const in (
             "2306.2181",
             "0.30188",
@@ -613,7 +625,7 @@ class TestPrecessionModel(unittest.TestCase):
 
     def test_source_uses_standard_rotation(self):
         """Drift-lock: the Meeus 21.4 rotation, not the old simplified form."""
-        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="env")
         self.assertIn("cos _thetaDeg * _cosDec * cos _raZeta", text)
         self.assertIn("sin _thetaDeg * _cosDec * cos _raZeta", text)
         self.assertNotIn("cos (_raDeg - _zDeg)", text)

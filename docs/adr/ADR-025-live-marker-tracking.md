@@ -74,7 +74,7 @@ Both layers track the companions in `QGVAR(symbologyUnitEchelonMarkers)` and
 
 `fnc_symbologyDimension` is a pure kernel that maps a class category to its
 battle dimension, using a new generated section six of
-`aee_optics_symbologyTables`. `fnc_symbologyUnitDimension` is the adapter that
+`aee_symbology_symbologyTables`. `fnc_symbologyUnitDimension` is the adapter that
 carries a unit's category through it. `fnc_symbolResolve` gains a sixth
 argument `_dimension` and passes it to `fnc_symbologyMarkerType` in place of
 the hardcoded `"land"`.

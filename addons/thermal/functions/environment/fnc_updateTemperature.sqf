@@ -18,13 +18,13 @@ if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
 };
 
 // ─── Base diurnal calculation ──────────────────────────────────────────────
-private _normals = [_biome] call EFUNC(environmental,getClimateNormals);
+private _normals = [_biome] call EFUNC(weather,getClimateNormals);
 private _tDay   = _normals select 2;
 private _tNight = _normals select 3;
 
 // Solar-elevation radiation model (replaces a fixed sinusoid): the sun's
 // height for the date, time and latitude drives the diurnal curve.
-private _diurnalWeight = [overcast] call EFUNC(environmental,calculateSolarRadiation);
+private _diurnalWeight = [overcast] call EFUNC(lighting,calculateSolarRadiation);
 private _monthIdx = (_month - 1) max 0 min 11;
 private _T_base = (_tNight select _monthIdx)
     + ((_tDay select _monthIdx) - (_tNight select _monthIdx)) * _diurnalWeight;
@@ -127,7 +127,7 @@ _T_shade = _T_shade + _moduleOffset;
 private _uhiSetting = missionNamespace getVariable [QEGVAR(core,urbanHeatIsland), 0];
 if !(_uhiSetting isEqualType 0) then { _uhiSetting = 0; };
 if (_uhiSetting > 0) then {
-    private _signals = missionNamespace getVariable [QEGVAR(environmental,terrainSignals), []];
+    private _signals = missionNamespace getVariable [QEGVAR(weather,terrainSignals), []];
     private _structures = if (count _signals > 2) then { _signals select 2 } else { [] };
     // The built-up density at this position: the structure vote for the
     // biome, which is the fraction of sampled objects that are buildings.
@@ -145,7 +145,7 @@ if (_uhiSetting > 0) then {
     private _pos = [0, 0, 0];
     private _unit = call CBA_fnc_currentUnit;
     if (!isNil "_unit" && {!isNull _unit}) then { _pos = getPosASL _unit; };
-    private _uhi = [_pos, _density] call EFUNC(environmental,calculateUrbanHeatIsland);
+    private _uhi = [_pos, _density] call EFUNC(weather,calculateUrbanHeatIsland);
     private _uhiOffset = _uhi * (_uhiSetting min 1);
     _T_shade = _T_shade + _uhiOffset;
 };
@@ -159,7 +159,7 @@ if (_mcRadius > 0) then {
     private _mcUnit = call CBA_fnc_currentUnit;
     if (!isNil "_mcUnit" && {!isNull _mcUnit}) then {
         private _mcPos = getPosASL _mcUnit;
-        private _mcOffset = [_mcPos, _mcRadius] call EFUNC(environmental,calculateMicroclimate);
+        private _mcOffset = [_mcPos, _mcRadius] call EFUNC(weather,calculateMicroclimate);
         _T_shade = _T_shade + _mcOffset;
     };
 };
@@ -173,7 +173,7 @@ if !(_wiRadius isEqualType 0) then { _wiRadius = 1000; };
 if (_wiRadius > 0) then {
     private _wiPos2D = _pos2D;
     if (isNil "_wiPos2D") then { _wiPos2D = [0, 0]; };
-    private _wiOffset = [[_wiPos2D select 0, _wiPos2D select 1, 0], _wiRadius, 0, _T_wind] call EFUNC(environmental,calculateWaterInfluence);
+    private _wiOffset = [[_wiPos2D select 0, _wiPos2D select 1, 0], _wiRadius, 0, _T_wind] call EFUNC(weather,calculateWaterInfluence);
     _T_shade = _T_shade + _wiOffset;
 };
 

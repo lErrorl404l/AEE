@@ -22,11 +22,11 @@ HARDENED_FILES = [
     "addons/thermal/functions/environment/fnc_calculateFreezingRain.sqf",
     "addons/thermal/functions/environment/fnc_calculateHeatIndex.sqf",
     "addons/thermal/functions/environment/fnc_calculateWBGT.sqf",
-    "addons/environmental/functions/warnings/fnc_calculateBiologicalAmbient.sqf",
-    "addons/environmental/functions/warnings/fnc_calculateCBRNPersistence.sqf",
-    "addons/environmental/functions/warnings/fnc_calculateFireSpreadRisk.sqf",
-    "addons/environmental/functions/warnings/fnc_calculateSevereWeather.sqf",
-    "addons/environmental/functions/terrain/fnc_calculateSnowAccumulation.sqf",
+    "addons/weather/functions/warnings/fnc_calculateBiologicalAmbient.sqf",
+    "addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf",
+    "addons/persistence/functions/warnings/fnc_calculateFireSpreadRisk.sqf",
+    "addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf",
+    "addons/weather/functions/terrain/fnc_calculateSnowAccumulation.sqf",
     "addons/optics/functions/sensor/fnc_calculateAttenuation.sqf",
     "addons/optics/functions/sensor/fnc_calculateMirageIntensity.sqf",
     "addons/optics/functions/sensor/fnc_calculateSmokePersistence.sqf",
@@ -113,14 +113,14 @@ class TestSourcedConstants(unittest.TestCase):
 
     def test_fire_spread_rothermel_1972(self):
         text = Path(
-            "addons/environmental/functions/warnings/fnc_calculateFireSpreadRisk.sqf"
+            "addons/persistence/functions/warnings/fnc_calculateFireSpreadRisk.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("Rothermel (1972)", text)
         self.assertIn("0.03 * _fuelFactor", text)
 
     def test_cbrn_q10_scaling(self):
         text = Path(
-            "addons/environmental/functions/warnings/fnc_calculateCBRNPersistence.sqf"
+            "addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("Q10", text)
         self.assertIn("per +10", text)

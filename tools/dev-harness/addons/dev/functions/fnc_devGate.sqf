@@ -15,7 +15,7 @@ Layer 4, surface: the verb whitelist is fixed and no agent input is compiled.
 
 Every input is a boolean. The driver (fnc_devGateLive) reads the engine
 conditions and passes them, so this function is a pure kernel. A model that
-touches the engine stays in the driver (ADR-032, the kernel split).
+touches the engine stays in the driver (ADR-034, the kernel split).
 */
 params [
     ["_structural", false],

@@ -14,7 +14,7 @@ probe can run before the extension is ready.  The dispatcher re-probes once on
 the first dispatch for that case.  When the extension is absent QGVAR(extReady)
 stays false, and after that one-shot probe the hot path never calls the engine.
 
-The extension is dev-only (ADR-033); it ships in no release artefact.
+The extension is dev-only (ADR-035); it ships in no release artefact.
 */
 
 private _extName = "aee_dev";

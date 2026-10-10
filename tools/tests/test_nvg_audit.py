@@ -153,7 +153,7 @@ class TestAuditResolved(unittest.TestCase):
         # Bug B: applyRainDroplets TICK ran twice per tick in thermal
         # mode.  The dispatch must call TICK exactly once, before the
         # mode branches.
-        src = (Path(__file__).parents[2] / "addons/optics/XEH_postInit.sqf").read_text(
+        src = (Path(__file__).parents[2] / "addons/vision/XEH_postInit.sqf").read_text(
             encoding="utf-8"
         )
         self.assertEqual(src.count('["TICK"] call EFUNC(thermal,applyRainDroplets)'), 1)

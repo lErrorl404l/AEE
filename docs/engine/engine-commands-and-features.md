@@ -124,7 +124,7 @@ apply order, higher applied later (on top). Base priorities: ColorInversion
 ChromAberration 200, RadialBlur 100, SSAO 0, Resolution 0. BIKI says "if there is
 another effect using the same priority, creation will fail", and shows a
 bump-the-priority loop. **Measured in AEE, this is wrong on at least one build
-[AEE `addons/core/functions/fnc_createPPEffect.sqf`]:** `ppEffectCreate` at an
+[AEE `addons/lib/functions/fnc_createPPEffect.sqf`]:** `ppEffectCreate` at an
 occupied priority returned a **POSITIVE** handle shared with the existing owner
 (RPT: `optics/FilmGrain handle=32 priority=2000` and
 `nightvision/FilmGrain handle=32 priority=2000`). So a negative-only return check
@@ -162,7 +162,7 @@ effect type into the stack.
 
 **ppEffectForceInNVG [DB].** Forces an effect to render inside NVG. AEE uses the
 flag to make a thermal overlay survive the NVG channel
-([AEE `addons/optics/functions/vision/fnc_runThermalPass.sqf`]).
+([AEE `addons/vision/functions/vision/fnc_runThermalPass.sqf`]).
 
 **DepthOfField is a real ppEffect, unlisted [AEE].** The BIKI effect list omits
 it, but `ppEffectCreate ["DepthOfField", priority]` returns a live handle and
@@ -201,7 +201,7 @@ Altis values: `minAperture=0.00001`, `maxAperture=256`,
 `nightShiftMaxAperture=0.002`, `nvgApertureMin/Std/Max=10/12.5/16.5`,
 `nvgLightGain=320`. The engine default differs (`nvg* = 1/7/15`,
 `nvgLightGain=100`, `tonemapMethod=2` vs Altis 1). AEE restates the full block
-in `addons/environmental/config.cpp` and locks `nvgApertureMin=Standard=Max=7`
+in `addons/lighting/config.cpp` and locks `nvgApertureMin=Standard=Max=7`
 to remove the artificial NVG range.
 
 **Depth-of-field config [CFG].** `CfgWorlds >> CAWorld >> DOFPars`
@@ -210,7 +210,7 @@ and water-goggles variants. AEE sets `focusDistance=12, blur=0.6, farOnly=1`.
 
 **`apertureParams` [AEE].** `apertureParams` returns the engine's own estimated
 luminance and a "blinding" term (element 9, no documented unit)
-([AEE `addons/optics/functions/eye/fnc_eyeSampleScene.sqf`,
+([AEE `addons/eye/functions/eye/fnc_eyeSampleScene.sqf`,
 `fnc_eyeLocalLux.sqf`]). AEE reads it and pins `setApertureNew` every frame so
 AEE owns the adaptation rate, not the engine. **Ceiling:** the engine's own
 adaptation rate is fixed by `eyeAdaptFactorLight/Dark`; a script can only
@@ -249,7 +249,7 @@ override the resulting aperture, not the internal luminance estimate.
 2 = thermal. AEE drives both an engine thermal channel (mode 2) and a day
 channel (mode 0 with native TI disabled) through one pass; the only host
 difference is the `ppEffectForceInNVG` flag
-([AEE `addons/optics/functions/vision/fnc_runThermalPass.sqf`]). **Ceiling:** the
+([AEE `addons/vision/functions/vision/fnc_runThermalPass.sqf`]). **Ceiling:** the
 engine thermal model is not replaceable; AEE overlays a `ppEffect`-based
 rendition and reads `apertureParams`, it does not change the engine's own
 radiance solver.
@@ -271,7 +271,7 @@ per-vehicle (`CfgVehicles >> lightPoints` families); the light commands act on a
 **Gotcha [AEE].** AEE drives dynamic star and meteor lights with
 `setLightUseFlare` + `setLightFlareSize` + `setLightFlareMaxDistance` + a
 non-black colour, and keeps `setLightAmbient` black so the field stays dark
-([AEE `addons/environmental/functions/astronomy/fnc_starLightsSync.sqf`]). The
+([AEE `addons/lighting/functions/astronomy/fnc_starLightsSync.sqf`]). The
 flare path is BIKI "Light Source Tutorial"-derived, community-reported.
 
 ### 5. Particles
@@ -379,12 +379,12 @@ textures are selected from existing `.rvmat`/`.paa` assets only.
   CfgLights:4225, HDRNewPars:16928, NVGPars:16959, DOFPars:16970,
   CfgCameraEffects:14724); `the derapified map_altis.pbo config`
   (HDRNewPars:473, Lighting:510).
-- AEE (read-only): `addons/core/functions/fnc_createPPEffect.sqf`,
-  `addons/optics/functions/eye/fnc_eyeAperture.sqf`,
-  `addons/optics/functions/eye/fnc_eyeSampleScene.sqf`,
-  `addons/optics/functions/vision/fnc_runThermalPass.sqf`,
+- AEE (read-only): `addons/lib/functions/fnc_createPPEffect.sqf`,
+  `addons/eye/functions/eye/fnc_eyeAperture.sqf`,
+  `addons/eye/functions/eye/fnc_eyeSampleScene.sqf`,
+  `addons/vision/functions/vision/fnc_runThermalPass.sqf`,
   `addons/nightvision/functions/fnc_applyNVGTubeModel.sqf`,
-  `addons/environmental/config.cpp`.
+  `addons/lighting/config.cpp`.
 
 ## AEE engine reference, section: simulation, scheduler, physics, animation, ballistics, damage
 

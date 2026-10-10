@@ -3,10 +3,10 @@
 // The drag and eye kernels are PURE kernels and server-callable.  Their real
 // call sites are client-local (the drag `Fired` handler and the `hasInterface`
 // eye driver), and those integrations are manual `interface` ceilings recorded
-// in ADR-033.  A pure kernel needs no player, so this probe drives each kernel
+// in ADR-035.  A pure kernel needs no player, so this probe drives each kernel
 // DIRECTLY on the dedicated server: it computes the SQF reference answer and
 // calls the native extension command with the same arguments, then compares
-// within the per-kernel bound justified in ADR-034.  It renders nothing.
+// within the per-kernel bound justified in ADR-036.  It renders nothing.
 //
 // When the extension is loaded the native command answers and the probe marks
 // the native path.  When it is absent the native call returns no payload: the
@@ -20,16 +20,16 @@ private _cases = [
     ["calculateBallisticDrag", "kernel.calculateBallisticDrag", "aee_ballistics_fnc_calculateBallisticDrag", [0.307, 900, "G1", 1.0, 15], 1e-6, 0],
     ["calculateBallisticDrag", "kernel.calculateBallisticDrag", "aee_ballistics_fnc_calculateBallisticDrag", [1.05, 850, "G7", 0.8, -20], 1e-6, 0],
     ["calculateBallisticDrag", "kernel.calculateBallisticDrag", "aee_ballistics_fnc_calculateBallisticDrag", [0.4, 1200, "LW2", 1.0, 25], 1e-6, 0],
-    ["eyeAdaptStep", "kernel.eyeAdaptStep", "aee_optics_fnc_eyeAdaptStep", [[0, 0], 1, 0.1, 2, 120, 400, 0], 1e-6, 0],
-    ["eyeAdaptStep", "kernel.eyeAdaptStep", "aee_optics_fnc_eyeAdaptStep", [[-3, -3], -1, 1, 2, 120, 400, 0], 1e-6, 0],
-    ["eyeMesopicWeight", "kernel.eyeMesopicWeight", "aee_optics_fnc_eyeMesopicWeight", [0.1, 0.005, 5], 1e-6, 0],
-    ["eyeMesopicWeight", "kernel.eyeMesopicWeight", "aee_optics_fnc_eyeMesopicWeight", [100, 0.005, 5], 1e-6, 0],
-    ["eyePupilSteady", "kernel.eyePupilSteady", "aee_optics_fnc_eyePupilSteady", [1], 1e-6, 0],
-    ["eyePupilSteady", "kernel.eyePupilSteady", "aee_optics_fnc_eyePupilSteady", [1000], 1e-6, 0],
-    ["eyePupilStep", "kernel.eyePupilStep", "aee_optics_fnc_eyePupilStep", [2, 8, 0.1, 0.25, 0.475], 1e-6, 0],
-    ["eyePupilStep", "kernel.eyePupilStep", "aee_optics_fnc_eyePupilStep", [8, 2, 0.1, 0.25, 0.475], 1e-6, 0],
-    ["eyeTimeSkip", "kernel.eyeTimeSkip", "aee_optics_fnc_eyeTimeSkip", [-1, 5, 0.05], 1e-6, 0],
-    ["eyeTimeSkip", "kernel.eyeTimeSkip", "aee_optics_fnc_eyeTimeSkip", [23, 1, 0.05], 1e-6, 0]
+    ["eyeAdaptStep", "kernel.eyeAdaptStep", "aee_eye_fnc_eyeAdaptStep", [[0, 0], 1, 0.1, 2, 120, 400, 0], 1e-6, 0],
+    ["eyeAdaptStep", "kernel.eyeAdaptStep", "aee_eye_fnc_eyeAdaptStep", [[-3, -3], -1, 1, 2, 120, 400, 0], 1e-6, 0],
+    ["eyeMesopicWeight", "kernel.eyeMesopicWeight", "aee_eye_fnc_eyeMesopicWeight", [0.1, 0.005, 5], 1e-6, 0],
+    ["eyeMesopicWeight", "kernel.eyeMesopicWeight", "aee_eye_fnc_eyeMesopicWeight", [100, 0.005, 5], 1e-6, 0],
+    ["eyePupilSteady", "kernel.eyePupilSteady", "aee_eye_fnc_eyePupilSteady", [1], 1e-6, 0],
+    ["eyePupilSteady", "kernel.eyePupilSteady", "aee_eye_fnc_eyePupilSteady", [1000], 1e-6, 0],
+    ["eyePupilStep", "kernel.eyePupilStep", "aee_eye_fnc_eyePupilStep", [2, 8, 0.1, 0.25, 0.475], 1e-6, 0],
+    ["eyePupilStep", "kernel.eyePupilStep", "aee_eye_fnc_eyePupilStep", [8, 2, 0.1, 0.25, 0.475], 1e-6, 0],
+    ["eyeTimeSkip", "kernel.eyeTimeSkip", "aee_eye_fnc_eyeTimeSkip", [-1, 5, 0.05], 1e-6, 0],
+    ["eyeTimeSkip", "kernel.eyeTimeSkip", "aee_eye_fnc_eyeTimeSkip", [23, 1, 0.05], 1e-6, 0]
 ];
 
 private _pass = 0;

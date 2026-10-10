@@ -1,0 +1,14 @@
+{
+  "note": "TEST ONLY. A self-contained land surface fixture for the Docker probe. It is not a real vehicle and it traces to no held document. It drives the same build-time gate and the same land surface mapping the production corpus uses, so the probe proves the generator path without shipping a production key.",
+  "game_class": "B_MBT_01_cannon_F",
+  "parent_class": "B_MBT_01_base_F",
+  "identity_grade": "documented",
+  "keys": {
+    "maxBrakeTorque": {
+      "value": 55000,
+      "grade": "documented",
+      "source_id": "fixture_manual",
+      "locator": "fixture only, no real locator"
+    }
+  }
+}

@@ -21,7 +21,7 @@
 // two species calls. Emits [P81] PASS and FAIL lines.
 
 private _fnTick = missionNamespace getVariable ["aee_wildlife_fnc_wildlifeTick", nil];
-private _fnBed = missionNamespace getVariable ["aee_wildlife_fnc_soundBedForContext", nil];
+private _fnBed = missionNamespace getVariable ["aee_ambience_fnc_soundBedForContext", nil];
 private _fnSpecies = missionNamespace getVariable ["aee_wildlife_fnc_speciesForBiome", nil];
 private _fnMonitor = missionNamespace getVariable ["aee_wildlife_fnc_monitorWildlife", nil];
 
@@ -62,7 +62,7 @@ if (_manifest isEqualTo []) then {
 [[], false] call _fnTick;
 private _fauna = missionNamespace getVariable ["aee_wildlife_fauna", []];
 if !(_fauna isEqualType []) then { _fauna = []; };
-private _sounds = missionNamespace getVariable ["aee_wildlife_soundInstances", []];
+private _sounds = missionNamespace getVariable ["aee_ambience_soundInstances", []];
 if !(_sounds isEqualType []) then { _sounds = []; };
 private _field = missionNamespace getVariable ["aee_ai_disturbance", []];
 if !(_field isEqualType []) then { _field = []; };

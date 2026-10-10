@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Regression tests for the core-stack QA fixes (2026-10-08).
 
-F1  addons/fx/XEH_postInit.sqf
+F1  addons/blast/XEH_postInit.sqf
     The blast handler called `ace_medical_fnc_addToLog` with no guard.  `fx`
     does not require ACE, and the function actually lives in
     ace_medical_treatment, so the name was wrong even with ACE present.
@@ -30,7 +30,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-FX_POSTINIT = ROOT / "addons/fx/XEH_postInit.sqf"
+FX_POSTINIT = ROOT / "addons/blast/XEH_postInit.sqf"
 STAMPS = ROOT / "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf"
 CORE_ENV = ROOT / "addons/core/functions/fnc_updateEnvironment.sqf"
 README = ROOT / "README.md"

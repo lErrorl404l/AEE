@@ -228,7 +228,7 @@
       "surface": "CfgLocationTypes >> <type>",
       "verdict": "ALREADY",
       "status": "present",
-      "source": "addons/optics/config_locationtypes.hpp; docs/wiki/research/terrain-symbols.md.",
+      "source": "addons/cartography/config_locationtypes.hpp; docs/wiki/research/terrain-symbols.md.",
       "reason": "The terrain symbols are already overridden from the topographic standard.",
       "ceiling": "None at config level."
     },
@@ -238,7 +238,7 @@
       "surface": "RscMapControl and RscDisplayStrategicMap",
       "verdict": "ALREADY",
       "status": "present",
-      "source": "addons/optics/config_mapcolors.hpp, config_mapicons.hpp and config_mapdisplays.hpp; docs/wiki/research/map-grid-and-cursor-surface.md.",
+      "source": "addons/cartography/config_mapcolors.hpp, config_mapicons.hpp and config_mapdisplays.hpp; docs/wiki/research/map-grid-and-cursor-surface.md.",
       "reason": "The map palette and the display subclasses are already overridden.",
       "ceiling": "Eden's map is ctrlMap, not RscMapControl, so a RscMapControl reopen does not reach Eden."
     },
@@ -248,7 +248,7 @@
       "surface": "CfgCurator >> DrawGroup",
       "verdict": "ALREADY",
       "status": "present",
-      "source": "addons/optics/config_curator.hpp; ADR-023.",
+      "source": "addons/cartography/config_curator.hpp; ADR-023.",
       "reason": "The five side textures and the 3D and 2D sub-blocks are already overridden.",
       "ceiling": "The texture is per side, not per unit function."
     },

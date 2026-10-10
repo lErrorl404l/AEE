@@ -8,9 +8,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "aee_main",
+            "aee_lib",
             "aee_core",
-            "aee_environmental",
+            "aee_persistence",
             "ACM_main",
             "cba_main",
             "cba_xeh"

@@ -545,7 +545,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         # for the latitude FACT (abs-corrected), never matched by name.
         from pathlib import Path
 
-        text = Path("addons/environmental/functions/biome/fnc_getBiome.sqf").read_text(
+        text = Path("addons/weather/functions/biome/fnc_getBiome.sqf").read_text(
             encoding="utf-8"
         )
         self.assertNotIn("_MAP_BIOMES", text)  # old map-name table gone
@@ -582,7 +582,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         from pathlib import Path
 
         get_biome = Path(
-            "addons/environmental/functions/biome/fnc_getBiome.sqf"
+            "addons/weather/functions/biome/fnc_getBiome.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("QGVAR(climateNormals)", get_biome)
         self.assertIn("getLatitudeClimate", get_biome)
@@ -593,7 +593,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         self.assertIn('QGVAR(biomeCached), ""]', get_biome)
 
         get_normals = Path(
-            "addons/environmental/functions/climatology/fnc_getClimateNormals.sqf"
+            "addons/weather/functions/climatology/fnc_getClimateNormals.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("QGVAR(climateNormals)", get_normals)
         self.assertIn(
@@ -621,7 +621,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         # `get`.
         from pathlib import Path
 
-        text = Path("addons/environmental/functions/biome/fnc_getBiome.sqf").read_text(
+        text = Path("addons/weather/functions/biome/fnc_getBiome.sqf").read_text(
             encoding="utf-8"
         )
         # The three score maps are HashMaps: keys = biome codes.
@@ -687,7 +687,7 @@ class TestLowLatitudeHeatCore(unittest.TestCase):
         import re
 
         text = Path(
-            "addons/environmental/functions/climatology/fnc_getLatitudeClimate.sqf"
+            "addons/weather/functions/climatology/fnc_getLatitudeClimate.sqf"
         ).read_text(encoding="utf-8")
 
         base = re.search(

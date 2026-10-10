@@ -19,7 +19,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-GEOM = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleGeometry.sqf"
+GEOM = ROOT / "addons" / "vehicles" / "functions" / "fnc_getVehicleGeometry.sqf"
 SSF = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateSSF.sqf"
 LIMITS = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateTerrainLimits.sqf"
 

@@ -31,7 +31,7 @@ ours only, no source counterpart.
 - Theirs: raise via `cutRsc ["whale_ecoti_llll_overlay", "PLAIN DOWN"]`
   (`fn_showBox.sqf:15`); hide by wiping every control background/text
   (`fn_showBox.sqf:19-27`) then `cutText` (`fn_showBox.sqf:30`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeBuild.sqf:28-56` (raise
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeBuild.sqf:28-56` (raise
   `cutRsc` at `:30`; clear at `:40-51`; `allControls` wipe at `:44-49`;
   `cutText` at `:51`).
 - Status: PARTIAL. COPIED raise/clear/wipes.
@@ -49,7 +49,7 @@ ours only, no source counterpart.
   `whale_ecoti_llll_tintColor`, default `[0.55,0.08,0.05,0.30]`
   (`fn_boxOnLoad.sqf:34,37-40`).
 - Ours: the display onLoad stores the handle in RscTitles
-  (`addons/thermal/RscTitles.hpp:138`) and there is no glass control.
+  (`addons/thermal_display/RscTitles.hpp:138`) and there is no glass control.
 - Status: MISSING. No counterpart; the glass is deleted outright.
 - Deviation: our commit `286fbdd` removed the `whale_ecoti` glass (`idc 910001`)
   and its driver `fnc_hudTapeOnLoad.sqf`, because a translucent red-orange panel
@@ -58,14 +58,14 @@ ours only, no source counterpart.
   remain (`RscTitles.hpp:145-292`). Our fusion HUD never sets a background on
   any control. Convenience alternative to their onLoad repositioning: our box
   geometry is a fixed macro `FUSION_HUD_BOX_FRACTION 0.40`
-  (`addons/thermal/script_component.hpp:18`).
+  (`addons/thermal_display/script_component.hpp:18`).
 
 ### 1.3 `functions/fn_collectHot.sqf` (lines 1-52)
 
 - Theirs: `nearEntities ["CAManBase", _radius]` only, humans and animals
   (`fn_collectHot.sqf:29`); `_radius` default 2000 (`:11`), `_maxN` 60 (`:12`),
   optional ignore-friendlies (`:13,24-25`); distance sort (`:44`); cap (`:48`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineCollect.sqf`. Search set
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineCollect.sqf`. Search set
   is `["CAManBase","Car","Tank","StaticWeapon","Air","Animal"]`
   (`fnc_outlineCollect.sqf:43`), default range 300 (`:22`); a target is hot
   when the maximum selection temperature exceeds ambient by 3 C (`:24,81`).
@@ -84,7 +84,7 @@ ours only, no source counterpart.
 - Theirs: screen-space convex hull by Andrew monotone chain
   (`fn_convexHull.sqf:29-73`).
 - Ours: MISSING. The earlier hull of the projected skeleton was removed; the
-  capsule-union topology replaces it (`addons/thermal/functions/outline/fnc_outlineDraw.sqf:8-11`).
+  capsule-union topology replaces it (`addons/thermal_display/functions/outline/fnc_outlineDraw.sqf:8-11`).
 - Status: MISSING. No counterpart file.
 - Deviation: intentional. Their file is dead weight in the newest mod; the
   capsule union is the live mechanism in both.
@@ -97,7 +97,7 @@ ours only, no source counterpart.
   topology pre-pass budget (`:229-248`), per-target topo cache `topo28`
   (`:419-477`), glow halo behind `_glowOn` (`:54,549`), clip to box
   (`:565-606`), canvas output (`:620-622`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineDraw.sqf` (worker),
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineDraw.sqf` (worker),
   `fnc_outlineTopo.sqf` (topology), `fnc_outlineSkeleton.sqf` (LOD table),
   `fnc_outlineSensorLod.sqf` (sensor LOD), `fnc_outlineCanvas.sqf` (draw).
 - Status: PARTIAL. Topology, sensor LOD, occlusion, canvas are COPIED. Several
@@ -140,11 +140,11 @@ geometry, explicit form.
   `_scl`/`_hudY` settings (`:48-49`); 13 labels `920011+` (`:145`), 25 ticks
   `920031+` (`:167`), 8 cardinals `920061+` (`:192`); colours from
   `rulerColor` default `[1.00,0.30,0.00,0.60]` (`:44`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeDraw.sqf`.
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeDraw.sqf`.
 - Status: COPIED. Same geometry, idc layout, change cache. Heading comes from
   `EFUNC(core,getEyeState)` instead of the camera pair (`fnc_hudTapeDraw.sqf:34-42`).
 - Deviation: our scale/span are compile-time macros `FUSION_HUD_SCALE 1.14`,
-  `FUSION_HUD_TAPE_SPAN 60` (`addons/thermal/script_component.hpp:20-21`), not
+  `FUSION_HUD_TAPE_SPAN 60` (`addons/thermal_display/script_component.hpp:20-21`), not
   settings; the source exposes them through `fn_preInit.sqf:52,79-80`. Our ruler
   colour is the same value as a macro (`script_component.hpp:27`); source
   `rulerColor` at `fn_preInit.sqf:56`. Our tape loses the glass brightness
@@ -157,7 +157,7 @@ geometry, explicit form.
 - Theirs: top-left grid/position `920102`, top-right time `920101`. Position is
   an invented latitude/longitude from the map config via `fn_gridCal`
   (`fn_drawInfo.sqf:61-88`). Time from `daytime` (`:106`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeInfo.sqf`. Left control
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeInfo.sqf`. Left control
   `920102` prints `mapGridPosition` plus ASL height (`fnc_hudTapeInfo.sqf:56-64`).
 - Status: PARTIAL. Layout COPIED; the position source is REPLACED.
 - Deviation: no `fn_gridCal`; we print the engine grid string directly
@@ -175,7 +175,7 @@ geometry, explicit form.
   at 0.10 s and 0.40 s (`:50`); glass, HUD and info brightness
   (`:60-73,84-93`); writes `bootProfile` (3 channels, `:99`) and refreshes the
   glass (`:110-123`).
-- Ours: `addons/thermal/functions/hud/fnc_hudTapeBoot.sqf`.
+- Ours: `addons/thermal_display/functions/hud/fnc_hudTapeBoot.sqf`.
 - Status: PARTIAL. COPIED envelope: same durations
   (`FUSION_HUD_BOOT_ON 1.05`, `FUSION_HUD_BOOT_OFF 0.70`,
   `script_component.hpp:23-24`), same 0.10/0.40 flashes with exponent 0.55
@@ -193,7 +193,7 @@ geometry, explicit form.
 - Theirs: full-screen transparent `RscMapControl`, idc `930001`, placed in a
   corner at max zoom, hidden two frames, draw handler over
   `whale_ecoti_llll_mapSegs` (`fn_outlineMap.sqf:31-63`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineCanvas.sqf`. Same
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineCanvas.sqf`. Same
   mechanism; idc `1301` (`fnc_outlineCanvas.sqf:37`), segs `QGVAR(outlineSegs)`
   (`:30,49`), same two-frame hide and calibration (`:42-72`).
 - Status: COPIED.
@@ -209,7 +209,7 @@ geometry, explicit form.
 - Theirs: capsule-union topology, `[t,c,s]` polylines, adaptive sampling
   (`fn_outlineTopo.sqf:102-104`), bisection crossings (`:178-205`), straight-side
   merge (`:212-231`), Chaikin smoothing (`:233-250`).
-- Ours: `addons/thermal/functions/outline/fnc_outlineTopo.sqf`.
+- Ours: `addons/thermal_display/functions/outline/fnc_outlineTopo.sqf`.
 - Status: COPIED. Same algorithm and same sampling bounds `_m` 3..6, `_k` 1..4
   (`fnc_outlineTopo.sqf:124-125`; source `:103-104`), same merge and smoothing.
 - Deviation: ours reads capsule fields with `select` plus a count guard so the
@@ -236,7 +236,7 @@ geometry, explicit form.
   `visionMode`/`thermalMode` (`:52-70`); `requireThermal` option (`:27`).
 - Ours: capability is resolved from the device corpus by
   `FUNC(resolveFusionDevice)` and `FUNC(isFusionCapable)`, invoked in the
-  optics vision dispatch (`addons/optics/XEH_postInit.sqf:109-117`).
+  vision dispatch (`addons/vision/XEH_postInit.sqf:109-117`).
 - Status: REPLACED.
 - Deviation: no class-name whitelist and no `visionMode` heuristic; a device is
   fusion-capable when our data says it is. The source's fuzzy name matching is
@@ -252,10 +252,10 @@ geometry, explicit form.
   range, detail range, line width, max outlines, glow, sensor resolution, grid
   digits, far width, opacity, whiteness, occlusion (`:114-268`). Keybinds V
   (`:287-294`) and Shift+B (`:299-314`).
-- Ours: compile-time macros in `addons/thermal/script_component.hpp`
+- Ours: compile-time macros in `addons/thermal_display/script_component.hpp`
   (`FUSION_HUD_BOX_FRACTION 0.40`, `FUSION_HUD_SCALE 1.14`,
   `FUSION_HUD_RULER_COLOR`, `FUSION_HUD_INFO_COLOR`, `FUSION_FRAME_MIN_INSET`;
-  lines 10-28) and CBA settings in `addons/thermal/initSettings.inc.sqf`.
+  lines 10-28) and CBA settings in `addons/thermal_display/initSettings.inc.sqf`.
 - Status: PARTIAL. Kept as settings: `fusionAlwaysOn` (`:23`), `fusionFovFrame`
   (`:30`), `fusionOutline` (`:36`), `fusionSolidFill` (`:45`), `fusionHud`
   (`:55`).
@@ -274,7 +274,7 @@ geometry, explicit form.
   `fn_boot`, `fn_drawHUD`, `fn_drawInfo` (`:45-49`). A 0.10 s loop refreshes the
   hot list, auto-closes on NVG off, and re-cuts the box on colour/size change
   (`:51-106`).
-- Ours: `addons/thermal/XEH_postInit.sqf:15-32`. One `Draw3D` handler calls
+- Ours: `addons/thermal_display/XEH_postInit.sqf:15-32`. One `Draw3D` handler calls
   `FUNC(outlineDraw)`, `FUNC(hudTapeBoot)`, `FUNC(hudTapeDraw)`; a 0.1 s PFH
   runs `FUNC(hudTapeInfo)` (`:29`).
 - Status: PARTIAL. COPIED wiring. The source separates the outline handler from
@@ -293,15 +293,15 @@ geometry, explicit form.
   the box, starts the power-on animation (`:42-46`); on off, starts power-off
   and lets `fn_boot` finish it (`:28-33`).
 - Ours: split. `FUNC(outlineToggle)` raises/clears only the canvas
-  (`addons/thermal/functions/outline/fnc_outlineToggle.sqf:23-36`); the
+  (`addons/thermal_display/functions/outline/fnc_outlineToggle.sqf:23-36`); the
   fusion on/off gate and animation live in the optics dispatch and
-  `FUNC(hudTapeBoot)` (`addons/optics/XEH_postInit.sqf:109-121`,
+  `FUNC(hudTapeBoot)` (`addons/vision/XEH_postInit.sqf:109-121`,
   `fnc_hudTapeBoot.sqf:33-45`).
 - Status: REPLACED (decomposed).
 - Deviation: no V-key toggle in thermal; fusion is entered through the optics
   vision dispatch. The source's Zeus-display guard and NVG-on guard are not in
   our thermal toggle; capability gating is `isFusionCapable`
-  (`addons/optics/XEH_postInit.sqf:109`).
+  (`addons/vision/XEH_postInit.sqf:109`).
 
 ### 1.16 `config.cpp` controls (lines 1-220)
 
@@ -312,7 +312,7 @@ geometry, explicit form.
   `920011-23` (`:117-129`); ticks `920031-55` (`:131-155`); cardinals
   `920061-68` (`:160-167`); canvas `ecoti_canvas` idc `930001` (`:177-217`).
   Font `EtelkaMonospaceProBold`; heading `sizeEx 0.009`, labels `0.006`.
-- Ours: `addons/thermal/RscTitles.hpp`. `GVAR(fusionHud)` idd `10782`
+- Ours: `addons/thermal_display/RscTitles.hpp`. `GVAR(fusionHud)` idd `10782`
   (`:133-134`); `GVAR(fusionOutline)` idd `10780` (`:22-23`); `GVAR(fusionFrame)`
   idd `10779` (`:80-81`). Tape controls keep the source idcs:
   heading `920001` (`:193-194`), mark `920002` (`:205-206`), labels
@@ -355,7 +355,7 @@ It has no `fn_outlineMap`, `fn_outlineTopo`, `fn_convexHull` or `fn_gridCal`.
   (`:58-60`). Slot count is the larger of live textures and config defaults,
   `12` for a man and `8` otherwise (`:107-123`). Restore drops empty saved
   strings (`:92`).
-- Ours: `addons/thermal/functions/fusion/fnc_applyFusionFill.sqf`.
+- Ours: `addons/thermal_display/functions/fusion/fnc_applyFusionFill.sqf`.
 - Status: COPIED mechanism, REPLACED driving data.
 - Deviation: our live list is `FUNC(outlineCollect)` filtered by
   `FUNC(fusionFovGate)` (`fnc_applyFusionFill.sqf:72,78-94`), not the source's
@@ -457,7 +457,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   temperature `9012` (`:117-127`), radio `9020` (`:129-143`). Fonts
   `PuristaMedium`, radio `EtelkaMonospacePro`; radio colour
   `[1.0,0.55,0.18,0.95]`.
-- Ours: `addons/optics/RscTitles.hpp`. `GVAR(hud)` idd `10781` (`:14-15`),
+- Ours: `addons/hud/RscTitles.hpp`. `GVAR(hud)` idd `10781` (`:14-15`),
   controls `9010` cardinal (`:44-53`), `9003` degrees (`:55-64`), `9004` grid
   (`:66-75`), `9005` altitude (`:77-85`), `9006` time (`:87-95`), labels
   `9011`/`9007` (`:97-117`), `9012` temperature (`:119-128`), plus EXTRA
@@ -477,7 +477,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   (`:72-82`); temperature from `ambientTemperature` (`:84-89`); time via
   `BIS_fnc_timeToString` (`:185`); altitude from `getPosASL` (`:184`); per-
   control show toggles (`:162-179`); radio comms text (`:189-226`).
-- Ours: `addons/optics/functions/hud/fnc_hudUpdate.sqf` (driver),
+- Ours: `addons/hud/functions/hud/fnc_hudUpdate.sqf` (driver),
   `fnc_hudFormatHeading.sqf` (cardinal/degrees), `fnc_hudFormatGrid.sqf`
   (grid split), `fnc_hudFormatRange.sqf` (distance).
 - Status: PARTIAL, REPLACED data.
@@ -488,7 +488,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   `ambientTemperature` replaced by `aee_core_currentTemperature`
   (`fnc_hudUpdate.sqf:53,70`); we add humidity and wind (`:54-56,71-72`). No
   radio line. The source's per-control visibility toggles map to our single
-  `hudEnabled` setting (`addons/optics/initSettings.inc.sqf:65`) and do not
+  `hudEnabled` setting (`addons/hud/initSettings.inc.sqf:65`) and do not
   support per-control hiding. The source's HUD editor drives its per-control
   positions (`:92-137`); ours has no editor, so positions are fixed.
 
@@ -499,7 +499,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   (`:239-336`); distances `MaxMarkerDist 2500`, `MaxVehicleDist 2000`,
   `MaxAirDist 3500`, `MaxUnitNameDist 120` (`:17-20`); raster icons
   (`:23-30`).
-- Ours: `addons/optics/functions/hud/fnc_hudMarkers.sqf`.
+- Ours: `addons/hud/functions/hud/fnc_hudMarkers.sqf`.
 - Status: PARTIAL.
 - Deviation: we port the marker scan and 3D label only (`:30-42`); the ally
   name and friendly vehicle passes are omitted, as is the filter-mode system
@@ -512,7 +512,7 @@ CfgMarkers, sounds. Our port is `aee_optics`.
 - Theirs: Draw3D reads a cached ping `FPANO_ECOTI_RangePing` set by a keybind
   (`:14-17`); draws the engine dot icon with distance
   (`:26-38`).
-- Ours: `addons/optics/functions/hud/fnc_hudRangefinder.sqf`.
+- Ours: `addons/hud/functions/hud/fnc_hudRangefinder.sqf`.
 - Status: REPLACED.
 - Deviation: our worker casts `lineIntersectsSurfaces` itself, throttled to
   0.5 s (`fnc_hudRangefinder.sqf:27-42`), instead of reading a keybind ping. We
@@ -540,11 +540,11 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   `XEH_postInit.sqf` (`:10-14`); `CfgMarkerClasses \ FPANO_ECOTI_Markers`
   (`:16-20`); `CfgMarkers` with `FPANO_marker_POI`, `_OP`, `_FSS` (`:22-45`);
   `CfgSounds \ fpano_sound_toggle` (`:47-54`); `#include "ui_hud.hpp"` (`:56`).
-- Ours: `addons/optics/config.cpp` declares `CfgPatches` and includes
+- Ours: `addons/hud/config.cpp` declares `CfgPatches` and includes
   `RscTitles.hpp`; there is no `CfgMarkerClasses`, no `CfgMarkers`, no
   `CfgSounds`.
 - Status: MISSING for CfgMarkers and CfgSounds. PARTIAL for PostInit (ours is
-  `addons/optics/XEH_postInit.sqf:142-151`).
+  `addons/hud/XEH_postInit.sqf:142-151`).
 
 ### 4.8 `CfgMarkers`
 
@@ -562,9 +562,9 @@ CfgMarkers, sounds. Our port is `aee_optics`.
   starts the HUD/marker/rangefinder/radio scripts (`:180-195`), and registers
   four keybinds: toggle overlay, rangefinder ping, cycle filter, edit HUD
   (`:198-302`).
-- Ours: `addons/optics/XEH_postInit.sqf:142-151` starts `hudRangefinder`,
+- Ours: `addons/hud/XEH_postInit.sqf:142-151` starts `hudRangefinder`,
   `hudMarkers` and the `hudUpdate` PFH. Setting `hudEnabled` default false
-  (`addons/optics/initSettings.inc.sqf:65`).
+  (`addons/hud/initSettings.inc.sqf:65`).
 - Status: PARTIAL.
 - Deviation: one setting instead of 13; no keybinds; no editor; no radio; no
   filter modes. The source starts its scripts from a mission spawn; ours starts
@@ -603,7 +603,7 @@ These have no counterpart in any of the four mods.
 ### 5.3 Fusion emissive ladder
 
 - Source: the whale_ecoti mods paint either a solid fill (W3/W4) or nothing.
-- Ours: `addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf` carries a
+- Ours: `addons/thermal_display/functions/fusion/fnc_applyFusionOverlay.sqf` carries a
   256-band emissive material ladder (header `:17-35`, files
   `data/fusion_emissive_000..255.rvmat`). The solid fill replaces it when the
   setting is on (`fnc_applyFusionFill.sqf:22-27`).

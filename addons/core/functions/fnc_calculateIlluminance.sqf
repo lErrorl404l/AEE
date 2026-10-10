@@ -141,7 +141,7 @@ if !(_starlightLux isEqualType 0 && _starlightLux > 0) then { _starlightLux = 0.
 // falls.  Wired here (the shared lux source) means limiting magnitude,
 // night classification, and every illuminance consumer inherit it
 // automatically.  Scaled by the space-weather aurora intensity (0-1).
-private _auroraIntensity = missionNamespace getVariable [QEGVAR(environmental,auroraIntensity), 0];
+private _auroraIntensity = missionNamespace getVariable [QEGVAR(weather,auroraIntensity), 0];
 if !(_auroraIntensity isEqualType 0 && _auroraIntensity > 0) then { _auroraIntensity = 0; };
 private _auroraLux = 0.03 * (_auroraIntensity min 1 max 0);
 

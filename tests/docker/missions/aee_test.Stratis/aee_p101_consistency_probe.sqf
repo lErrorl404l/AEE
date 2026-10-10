@@ -12,8 +12,8 @@
 //
 // Emits [P101] PASS/FAIL lines.
 
-private _loadTable = missionNamespace getVariable ["aee_core_fnc_consistencyLoadTable", nil];
-private _evaluate = missionNamespace getVariable ["aee_core_fnc_evaluateConsistency", nil];
+private _loadTable = missionNamespace getVariable ["aee_diagnostics_fnc_consistencyLoadTable", nil];
+private _evaluate = missionNamespace getVariable ["aee_diagnostics_fnc_evaluateConsistency", nil];
 
 if (isNil "_loadTable" || {isNil "_evaluate"}) exitWith {
     diag_log text "[P101] [FAIL] consistency kernels not compiled (loadTable/evaluate)";
@@ -30,14 +30,14 @@ private _table = [] call _loadTable;
 // core illuminance (100 lx) at a sun elevation below the horizon.
 private _agree = [
     ["aee_core_illuminanceLux", 100],
-    ["aee_optics_eyeSceneLux", 100],
+    ["aee_eye_eyeSceneLux", 100],
     ["aee_core_currentTemperature", 15],
     ["aee_core_groundSurfaceTemp", 14],
     ["aee_core_avgGroundTemp", 15],
     ["aee_core_currentSunElevation", -30],
     ["aee_thermal_skyBandTempC", -20],
     ["aee_core_lightIsNight", true],
-    ["aee_environmental_nightClassification", 4]
+    ["aee_lighting_nightClassification", 4]
 ];
 
 // The disagreeing map: the air temperature drops away from the two ground

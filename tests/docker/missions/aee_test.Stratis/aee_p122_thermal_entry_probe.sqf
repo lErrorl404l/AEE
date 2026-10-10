@@ -38,8 +38,8 @@
 missionNamespace setVariable ["aee_thermal_logDebug", false];
 missionNamespace setVariable ["aee_core_logDebug", false];
 
-private _fnCreate = missionNamespace getVariable ["aee_thermal_fnc_createThermalPPEffects", nil];
-private _fnWarm = missionNamespace getVariable ["aee_thermal_fnc_warmThermalPPEffects", nil];
+private _fnCreate = missionNamespace getVariable ["aee_thermal_display_fnc_createThermalPPEffects", nil];
+private _fnWarm = missionNamespace getVariable ["aee_thermal_display_fnc_warmThermalPPEffects", nil];
 private _fnSolve = missionNamespace getVariable ["aee_thermal_fnc_solveTwoNodeSelection", nil];
 
 if (isNil "_fnCreate" || {isNil "_fnWarm"} || {isNil "_fnSolve"}) exitWith {
@@ -52,14 +52,14 @@ private _notes = [];
 
 // The eight handle stores, in the order the create table declares them.
 private _stores = [
-    "aee_thermal_ppHandle_Thermal_Chroma",
-    "aee_thermal_ppHandle_Thermal_Vignette",
-    "aee_thermal_ppHandle_Thermal_Blur",
-    "aee_thermal_ppHandle_Thermal_Grain",
-    "aee_thermal_ppHandle_Thermal_CC",
-    "aee_thermal_ppHandle_Thermal_Inversion",
-    "aee_thermal_ppHandle_Thermal_WetDistortion",
-    "aee_thermal_ppHandle_Thermal_Resolution"
+    "aee_thermal_display_ppHandle_Thermal_Chroma",
+    "aee_thermal_display_ppHandle_Thermal_Vignette",
+    "aee_thermal_display_ppHandle_Thermal_Blur",
+    "aee_thermal_display_ppHandle_Thermal_Grain",
+    "aee_thermal_display_ppHandle_Thermal_CC",
+    "aee_thermal_display_ppHandle_Thermal_Inversion",
+    "aee_thermal_display_ppHandle_Thermal_WetDistortion",
+    "aee_thermal_display_ppHandle_Thermal_Resolution"
 ];
 private _readHandles = {
     _stores apply { missionNamespace getVariable [_x, -1] };

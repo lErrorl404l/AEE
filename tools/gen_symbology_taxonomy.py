@@ -43,11 +43,11 @@ from typing import Any
 ROOT = Path(__file__).parents[1]
 TSV = Path("/tmp/opencode/symbol_army_rows.tsv")
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
-MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
-CONFIG_OUT = ROOT / "addons" / "optics" / "config_taxonomy.hpp"
+MARKERS_OUT = ROOT / "addons" / "symbology" / "data" / "markers"
+CONFIG_OUT = ROOT / "addons" / "symbology" / "config_taxonomy.hpp"
 TAXONOMY_OUT = ROOT / "data" / "symbology" / "app6_taxonomy.json"
 RENDERER = ROOT / "tools" / "milsymbol_render.mjs"
-ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers"
+ADDON_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers"
 MILSYMBOL_ENTRY = os.environ.get(
     "MILSYMBOL_ENTRY", "/tmp/opencode/milsym/node_modules/milsymbol/index.js"
 )

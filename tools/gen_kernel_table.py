@@ -7,7 +7,7 @@ is the unit of test and the unit of native port; the driver is the only place
 that touches the engine.
 
 This generator scans the registered kernel files across the physics addons
-(atmos, thermal, ballistics, optics eye), derives each kernel's inputs from its
+(atmos, thermal, thermal_display, ballistics, eye), derives each kernel's inputs from its
 `params` block and its outputs from its header, checks it for an engine write,
 and renders the table into the marked block of
 `docs/wiki/research/kernel-table.md`.
@@ -46,20 +46,20 @@ KERNELS: tuple[str, ...] = (
     "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",
     "addons/ballistics/functions/fnc_calculateAirDensityKernel.sqf",
     "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf",
-    "addons/optics/functions/eye/fnc_eyeAdaptStep.sqf",
-    "addons/optics/functions/eye/fnc_eyeMesopicWeight.sqf",
-    "addons/optics/functions/eye/fnc_eyePupilSteady.sqf",
-    "addons/optics/functions/eye/fnc_eyePupilStep.sqf",
-    "addons/optics/functions/eye/fnc_eyeTimeSkip.sqf",
-    "addons/thermal/functions/display/fnc_thermalImperfectionParams.sqf",
-    "addons/thermal/functions/display/fnc_thermalWetDistortionParams.sqf",
+    "addons/eye/functions/eye/fnc_eyeAdaptStep.sqf",
+    "addons/eye/functions/eye/fnc_eyeMesopicWeight.sqf",
+    "addons/eye/functions/eye/fnc_eyePupilSteady.sqf",
+    "addons/eye/functions/eye/fnc_eyePupilStep.sqf",
+    "addons/eye/functions/eye/fnc_eyeTimeSkip.sqf",
+    "addons/thermal_display/functions/display/fnc_thermalImperfectionParams.sqf",
+    "addons/thermal_display/functions/display/fnc_thermalWetDistortionParams.sqf",
     "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf",
 )
 
 # Native-kernel metadata: the side the driver runs on (server or client), and
 # the generated parity vector key from tools/gen_kernel_vectors.py ("-" when the
 # kernel has no generated vector).  A pure kernel is server-callable whatever
-# its driver side; this column states the driver, per ADR-034.
+# its driver side; this column states the driver, per ADR-036.
 NATIVE: dict[str, tuple[str, str]] = {
     "calculateHailEnergy": ("server", "-"),
     "calculateStationPressure": ("server", "stationPressure"),

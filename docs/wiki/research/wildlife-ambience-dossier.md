@@ -43,7 +43,7 @@ under `a3\animals_f_beta\sheep\data\sound\`.
 ### Forest and open ground
 
 The day context splits on vegetation. The kernel reads the vegetation score
-from the published `aee_environmental_terrainSignals`, whose second element is
+from the published `aee_weather_terrainSignals`, whose second element is
 a HashMap of Koppen code to indicator vote weight from the terrain scan. It
 takes the strongest single vote and clamps it to 0..1: a map with no
 classified tree or bush yields an empty map, so the score is 0 on open ground,
@@ -107,9 +107,9 @@ time see the same mix.
 
 ## Resource model
 
-Water is a cell where `EFUNC(environmental,getCoastDistance)` is below the
+Water is a cell where `EFUNC(weather,getCoastDistance)` is below the
 arrival distance. Grazing is a cell where the vegetation vote in
-`aee_environmental_terrainSignals` scores high. `fnc_resourceScore` turns the
+`aee_weather_terrainSignals` scores high. `fnc_resourceScore` turns the
 water proximity or the vegetation score and the distance into a suitability,
 and `fnc_pickResourceTarget` walks an eight point ring at each increasing
 radius and returns the best point. The providers that read the two published
@@ -234,11 +234,11 @@ The sound runtime constants are modelling choices, UNSOURCED.
 | Constant | Value | Source | State |
 | --- | --- | --- | --- |
 | Sound-instance cap per client | 3 | Modelling. The acoustic niche hypothesis (Krause 1987; Pijanowski et al. 2011, BioScience 61(3):203-216) holds that species partition the auditory spectrum, so overlap is minimised. No published simultaneous-caller count exists, so three is a stated ceiling | [UNSOURCED] number |
-| Silence decay | 0.05 per disturbance unit | Modelling, the `aee_wildlife_silenceDecay` slider | [UNSOURCED] |
+| Silence decay | 0.05 per disturbance unit | Modelling, the `aee_ambience_silenceDecay` slider | [UNSOURCED] |
 | Wildlife simulation tick budget | 2 ms per call | Modelling, the core gate is 5 ms | [UNSOURCED] |
 | One-shot sound max distance | 120 m | `playSound3D` distance argument | [P] |
 | Rain bed gain factor | Up to 1.5 times at rain 1 | Modelling, the engine `rain` input | [UNSOURCED] |
-| Vegetation score source | Max `vegVotes` weight, clamped 0..1 | `aee_environmental_terrainSignals` element 1, the terrain scan HashMap | [PROJECT] |
+| Vegetation score source | Max `vegVotes` weight, clamped 0..1 | `aee_weather_terrainSignals` element 1, the terrain scan HashMap | [PROJECT] |
 | Forest vegetation threshold | 0.5 | Modelling, at or above is the `day_<family>_forest` context | [UNSOURCED] |
 | Forest bed gain premium | +0.15 on the matching open row | Modelling, a wooded bed is denser than the open field | [UNSOURCED] |
 | Wet-ground bed damping | Up to 0.3 of the gain | Modelling, damp ground muffles the bed | [UNSOURCED] |

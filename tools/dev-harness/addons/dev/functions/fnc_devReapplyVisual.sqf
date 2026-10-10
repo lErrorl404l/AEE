@@ -9,13 +9,13 @@ Pipeline:
   1. Teardown through the core registry. The "" key releases a whole scope,
      so a new key or priority can not leak an old handle.
   2. Re-create and re-apply through the owning modules. Every create routes
-     through the core registry (aee_core_fnc_createPPEffect), so no raw
+     through the core registry (aee_lib_fnc_createPPEffect), so no raw
      ppEffectCreate appears here:
-       eye grade       aee_optics_fnc_ppEffectCreate
-       base grade      aee_optics_fnc_applyBaseGrade
-       weather grain   aee_optics_fnc_applyWeatherGrain
+       eye grade       aee_vision_fnc_ppEffectCreate
+       base grade      aee_vision_fnc_applyBaseGrade
+       weather grain   aee_vision_fnc_applyWeatherGrain
        NVG grain       aee_nightvision_fnc_applyNightGrain
-       thermal vision  aee_thermal_fnc_createThermalPPEffects
+       thermal vision  aee_thermal_display_fnc_createThermalPPEffects
   3. Textures and materials: read the current values from the target and write
      them back for every selection, so an edited file is re-read.
 
@@ -30,16 +30,16 @@ if (!hasInterface) exitWith { false };
 private _unit = call CBA_fnc_currentUnit;
 
 // 1. Release the affected post-process scopes through the registry.
-["optics", ""] call aee_core_fnc_destroyPPEffect;
-["nightvision", ""] call aee_core_fnc_destroyPPEffect;
-["thermal", ""] call aee_core_fnc_destroyPPEffect;
+["optics", ""] call aee_lib_fnc_destroyPPEffect;
+["nightvision", ""] call aee_lib_fnc_destroyPPEffect;
+["thermal", ""] call aee_lib_fnc_destroyPPEffect;
 
 // 2. Re-create and re-apply through the owning modules (registry-routed).
-[] call aee_optics_fnc_ppEffectCreate;
-[] call aee_optics_fnc_applyBaseGrade;
-[] call aee_optics_fnc_applyWeatherGrain;
+[] call aee_vision_fnc_ppEffectCreate;
+[] call aee_vision_fnc_applyBaseGrade;
+[] call aee_vision_fnc_applyWeatherGrain;
 [] call aee_nightvision_fnc_applyNightGrain;
-[] call aee_thermal_fnc_createThermalPPEffects;
+[] call aee_thermal_display_fnc_createThermalPPEffects;
 
 // 3. Re-apply the current textures and materials on the target selections.
 if (!(isNil "_unit")) then {

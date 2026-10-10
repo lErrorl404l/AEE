@@ -79,8 +79,12 @@ jobs:
         run: python3 tools/validation/gen_aircraft_data.py --check
       - name: Aircraft coverage freshness check
         run: python3 tools/validation/gen_aircraft_coverage.py --check
+      - name: Aircraft systems freshness check
+        run: python3 tools/validation/gen_aircraft_systems.py --check
       - name: Aircraft data validation
         run: python3 tools/validation/validate_aircraft_data.py
+      - name: Aircraft systems validation
+        run: python3 -m unittest tools.tests.test_aircraft_systems
       - name: Thermal optics config freshness check
         run: python3 tools/validation/gen_thermal_optics.py --check
       - name: Engine override freshness check
@@ -197,7 +201,7 @@ jobs:
       - name: Build release artefact
         run: tools/hemtt.sh release
       - name: Release-artefact proof
-        # The release tree carries no dev PBO and no dev binary (ADR-033). This
+        # The release tree carries no dev PBO and no dev binary (ADR-035). This
         # runs `hemtt release` first, so it is a CI/phase gate and not part of
         # the per-commit `run_tests.py --fast` set.
         env:

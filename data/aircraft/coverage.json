@@ -1,5 +1,5 @@
 {
-  "schema": "aee.aircraft.coverage/1",
+  "schema": "aee.aircraft.coverage/2",
   "tokens": [
     {
       "class": "APC_Tracked_01_base_F",
@@ -296,6 +296,981 @@
       "state": "excluded_non_ground",
       "variant": null,
       "reason": "non-air token"
+    }
+  ],
+  "classes": [
+    {
+      "class": "B_CTRG_Heli_Transport_01_sand_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "uh60a_black_hawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_CTRG_Heli_Transport_01_tropic_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "uh60a_black_hawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Attack_01_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "rah66_comanche",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Attack_01_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "rah66_comanche",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Attack_01_pylons_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "rah66_comanche",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Light_01_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Light_01_armed_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md530_defender",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Light_01_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md530_defender",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Light_01_stripped_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Transport_01_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "uh60a_black_hawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Transport_01_camo_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "uh60a_black_hawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Transport_01_pylons_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "uh60a_black_hawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Transport_03_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "ch47_chinook",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Transport_03_black_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "ch47_chinook",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Transport_03_unarmed_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "ch47_chinook",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Heli_Transport_03_unarmed_green_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "ch47_chinook",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Plane_CAS_01_Cluster_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "a10a_thunderbolt_ii",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Plane_CAS_01_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "a10a_thunderbolt_ii",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Plane_CAS_01_dynamicLoadout_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "a10a_thunderbolt_ii",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Plane_Fighter_01_Cluster_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "fa18e_super_hornet",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Plane_Fighter_01_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "fa18e_super_hornet",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_Plane_Fighter_01_Stealth_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "fa18e_super_hornet",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "B_T_UAV_03_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source."
+    },
+    {
+      "class": "B_T_UAV_03_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source."
+    },
+    {
+      "class": "B_T_VTOL_01_armed_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_armed_blue_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_armed_olive_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_infantry_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_infantry_blue_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_infantry_olive_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_vehicle_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_vehicle_blue_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_T_VTOL_01_vehicle_olive_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "B_UAV_01_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "B_UAV_02_CAS_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "B_UAV_02_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "B_UAV_02_dynamicLoadout_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "B_UAV_05_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (UCAV Sentinel). The corpus holds no catalogue entry for the real type, so the class is no_source."
+    },
+    {
+      "class": "B_UAV_06_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "B_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "C_Heli_Light_01_civil_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500_civil",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_blueLine_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_blue_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_digital_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_elliptical_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_furious_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_graywatcher_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_ion_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_jeans_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_light_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_luxe_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_red_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_shadow_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_sheriff_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_speedy_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_stripped_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_sunset_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_vrana_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_wasp_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Heli_light_01_wave_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_IDAP_Heli_Transport_02_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "aw101_merlin",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_IDAP_UAV_01_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "C_IDAP_UAV_06_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "C_IDAP_UAV_06_antimine_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "C_IDAP_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "C_Plane_Civil_01_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "cessna_172_skyhawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_Plane_Civil_01_racing_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "cessna_172_skyhawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "C_UAV_06_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "C_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "I_C_Heli_Light_01_civil_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "md500_civil",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_C_Plane_Civil_01_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "cessna_172_skyhawk",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_E_Heli_light_03_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "aw159_wildcat",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_E_Heli_light_03_unarmed_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "aw159_wildcat",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_E_UAV_01_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "I_E_UAV_06_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "I_E_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "I_Heli_Transport_02_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "aw101_merlin",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Heli_light_03_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "aw159_wildcat",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Heli_light_03_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "aw159_wildcat",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Heli_light_03_unarmed_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "aw159_wildcat",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Plane_Fighter_03_AA_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "l159_alca",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Plane_Fighter_03_CAS_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "l159_alca",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Plane_Fighter_03_Cluster_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "l159_alca",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Plane_Fighter_03_dynamicLoadout_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "l159_alca",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Plane_Fighter_04_Cluster_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "jas39c_gripen",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_Plane_Fighter_04_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "jas39c_gripen",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "I_UAV_01_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "I_UAV_02_CAS_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "I_UAV_02_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "I_UAV_02_dynamicLoadout_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "I_UAV_06_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "I_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "O_Heli_Attack_02_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "mi28_havoc",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Attack_02_black_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "mi28_havoc",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Attack_02_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "mi28_havoc",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Attack_02_dynamicLoadout_black_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "mi28_havoc",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Light_02_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "light_utility_rotary",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Light_02_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "light_utility_rotary",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Light_02_unarmed_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "light_utility_rotary",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Light_02_v2_F",
+      "class_token": "Helicopter",
+      "state": "recorded",
+      "catalogue_id": "light_utility_rotary",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Heli_Transport_04_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_ammo_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_ammo_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_bench_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_bench_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_box_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_box_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_covered_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_covered_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_fuel_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_fuel_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_medevac_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_medevac_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_repair_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Heli_Transport_04_repair_black_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+    },
+    {
+      "class": "O_Plane_CAS_02_Cluster_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "su25_frogfoot",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Plane_CAS_02_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "su25_frogfoot",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Plane_CAS_02_dynamicLoadout_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "su25_frogfoot",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Plane_Fighter_02_Cluster_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "su57_felon",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Plane_Fighter_02_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "su57_felon",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_Plane_Fighter_02_Stealth_F",
+      "class_token": "Plane",
+      "state": "recorded",
+      "catalogue_id": "su57_felon",
+      "reason": "runtime row emitted and class binding held"
+    },
+    {
+      "class": "O_T_UAV_04_CAS_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (KH-3A Fenghuang). The corpus holds no catalogue entry for the real type, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_dynamicLoadout_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_ghex_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_grey_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_hex_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_dynamicLoadout_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_ghex_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_grey_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_hex_F",
+      "class_token": "Plane",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+    },
+    {
+      "class": "O_UAV_01_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "O_UAV_02_CAS_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "O_UAV_02_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "O_UAV_02_dynamicLoadout_F",
+      "class_token": "UAV",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+    },
+    {
+      "class": "O_UAV_06_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+    },
+    {
+      "class": "O_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "state": "no_source",
+      "catalogue_id": null,
+      "reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
     }
   ]
 }

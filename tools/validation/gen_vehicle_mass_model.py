@@ -5,7 +5,7 @@ The model artefact ``data/vehicle/mass_model.json`` holds cited material
 density ranges, calibrated fill ranges, geometry bands and a power block.
 This generator renders that artefact into one SQF parameter table:
 
-  addons/mobility/functions/fnc_getVehicleMassModel.sqf
+  addons/vehicles/functions/fnc_getVehicleMassModel.sqf
 
 The generated file is a data table. It reads no engine state, defines no
 extra function, and carries no value that is absent from the model
@@ -31,7 +31,7 @@ from typing import cast
 
 ROOT = Path(__file__).parents[2]
 DEFAULT_MODEL = ROOT / "data" / "vehicle" / "mass_model.json"
-DEFAULT_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleMassModel.sqf"
+DEFAULT_OUT = ROOT / "addons" / "vehicles" / "functions" / "fnc_getVehicleMassModel.sqf"
 
 SCHEMA = "aee.vehicle.mass_model/1"
 DEFAULT_MATCH = "default"
@@ -40,7 +40,7 @@ HEADER = """#include "..\\script_component.hpp"
 /*
 Vehicle mass model parameter table.
 
-Function: aee_mobility_fnc_getVehicleMassModel.
+Function: aee_vehicles_fnc_getVehicleMassModel.
 
 This file is GENERATED. The generator tools/validation/gen_vehicle_mass_model.py
 writes it from the model artefact data/vehicle/mass_model.json. Do not edit it

@@ -21,7 +21,7 @@ from pathlib import Path
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
 
-OPTICS = REPO / "addons" / "optics"
+OPTICS = REPO / "addons" / "cartography"
 TERRAIN = OPTICS / "data" / "terrain"
 SRC = TERRAIN / "src"
 TABLE_JSON = REPO / "data" / "symbology" / "terrain_symbols.json"
@@ -47,7 +47,7 @@ RUN_TESTS_SRC = (REPO / "tools" / "run_tests.py").read_text(encoding="utf-8")
 TABLE = json.loads(TABLE_JSON.read_text(encoding="utf-8"))
 MANIFEST = json.loads(MANIFEST_JSON.read_text(encoding="utf-8"))
 
-AEE_PREFIX = "\\z\\aee\\addons\\optics\\data\\terrain\\"
+AEE_PREFIX = "\\z\\aee\\addons\\cartography\\data\\terrain\\"
 LOCATION_CLASSES = {row["class"] for row in TABLE["locations"]}
 OBJECT_CLASSES = {row["class"] for row in TABLE["objects"]}
 ICON_LOCATION_CLASSES = {
@@ -454,7 +454,7 @@ class TestTerrainCurator(unittest.TestCase):
 
 class TestTerrainWiring(unittest.TestCase):
     def test_the_registry_is_loaded_at_startup(self):
-        self.assertIn("aee_optics_terrainTables", PREINIT_SRC)
+        self.assertIn("aee_cartography_terrainTables", PREINIT_SRC)
 
     def test_no_hand_drawn_terrain_kernel_remains(self):
         self.assertNotIn("terrainIcon", PREP_SRC)
@@ -464,8 +464,8 @@ class TestTerrainWiring(unittest.TestCase):
         self.assertNotIn('fontNames = "AEEFont";', CONFIG_SRC)
 
     def test_the_app6_marker_surfaces_are_untouched(self):
-        self.assertIn('#include "config_markers.hpp"', CONFIG_SRC)
-        self.assertIn("class CfgMarkerClasses", CONFIG_SRC)
+        self.assertNotIn('#include "config_markers.hpp"', CONFIG_SRC)
+        self.assertNotIn("class CfgMarkerClasses", CONFIG_SRC)
 
     def test_no_agent_provenance(self):
         for path in (LOC_HPP, OBJ_HPP, COL_HPP, DISP_HPP, TABLE_JSON, MANIFEST_JSON):

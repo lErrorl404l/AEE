@@ -6,8 +6,8 @@ carries a value, a unit, a source, a locator, a state and a grade per field.
 This generator reads the shared catalogue loader output and writes two SQF
 files:
 
-  addons/mobility/functions/fnc_getVehicleMatch.sqf   the identity ladder
-  addons/mobility/functions/fnc_getVehicleData.sqf    the value row lookup
+  addons/vehicles/functions/fnc_getVehicleMatch.sqf   the identity ladder
+  addons/vehicles/functions/fnc_getVehicleData.sqf    the value row lookup
 
 The match file holds the table and the five-layer ladder. The data file is
 a thin consumer that returns the value row. CBA PREP compiles one function
@@ -48,9 +48,9 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 ROOT = _REPO
 DEFAULT_DATA = ROOT / "data" / "vehicle"
-MATCH_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleMatch.sqf"
-DATA_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleData.sqf"
-BANDS_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleBands.sqf"
+MATCH_OUT = ROOT / "addons" / "vehicles" / "functions" / "fnc_getVehicleMatch.sqf"
+DATA_OUT = ROOT / "addons" / "vehicles" / "functions" / "fnc_getVehicleData.sqf"
+BANDS_OUT = ROOT / "addons" / "vehicles" / "functions" / "fnc_getVehicleBands.sqf"
 BINDINGS_FILE = "stringtable_bindings.json"
 
 # The five keys a complete value object carries beside its value.
@@ -74,7 +74,7 @@ MATCH_TEMPLATE = """#include "..\\script_component.hpp"
 /*
 Vehicle identity matcher (issue #117).
 
-Function: aee_mobility_fnc_getVehicleMatch.
+Function: aee_vehicles_fnc_getVehicleMatch.
 
 This file is GENERATED. The generator tools/validation/gen_vehicle_data.py
 writes it from the validated vehicle catalogue under data/vehicle/. Do not
@@ -259,13 +259,13 @@ DATA_TEMPLATE = """#include "..\\script_component.hpp"
 /*
 Vehicle runtime lookup (issue #117).
 
-Function: aee_mobility_fnc_getVehicleData.
+Function: aee_vehicles_fnc_getVehicleData.
 
 This file is GENERATED. The generator tools/validation/gen_vehicle_data.py
 writes it from the validated vehicle catalogue under data/vehicle/. Do not
 edit it by hand. Edit the corpus and regenerate it.
 
-The lookup is a thin consumer of aee_mobility_fnc_getVehicleMatch. It
+The lookup is a thin consumer of aee_vehicles_fnc_getVehicleMatch. It
 returns the value row of a unique match, or an empty array. A variant
 selector keeps a row only when its variant id matches.
 
@@ -303,14 +303,14 @@ BAND_TEMPLATE = """#include "..\\script_component.hpp"
 /*
 Vehicle identity band table (issue #117).
 
-Function: aee_mobility_fnc_getVehicleBands.
+Function: aee_vehicles_fnc_getVehicleBands.
 
 This file is GENERATED. The generator tools/validation/gen_vehicle_data.py
 writes it from the validated vehicle catalogue under data/vehicle/. Do not
 edit it by hand. Edit the corpus and regenerate it.
 
 The band table is the property fallback of the vehicle classifier
-aee_mobility_fnc_classifyVehicle. A class whose name routes resolve to no
+aee_vehicles_fnc_classifyVehicle. A class whose name routes resolve to no
 catalogue entry is matched by its live properties: the vehicle type first,
 then the nearest held mass, then the nearest held extent. A tie selects no
 row, so the classifier never guesses between two catalogue entries.

@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from typing import cast
@@ -29,12 +30,14 @@ sys.path.insert(0, str(REPO))
 
 from tools.validation import validate_aircraft_data as v  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
+from tools.validation import gen_aircraft_systems as systems  # noqa: E402
 
 VALIDATOR = REPO / "tools" / "validation" / "validate_aircraft_data.py"
 REAL_DATA = REPO / "data" / "aircraft"
 FIXTURES = REAL_DATA / "fixtures"
 FIXTURE_CAPTURE = FIXTURES / "pilot-invalid.json"
 FIXTURE_SOURCES = FIXTURES / "sources.json"
+SYSTEMS_FIXTURE = FIXTURES / "systems-invalid.json"
 
 # A robust subset of the first-slice catalogue ids. The corpus may grow, so
 # the tests assert presence, never an exact count.
@@ -343,6 +346,209 @@ class FixtureRejectionTest(unittest.TestCase):
         )
 
 
+class FuelFieldTest(unittest.TestCase):
+    """The fuel field set: the two named derivations and the fuel pair (task 14)."""
+
+    def test_fuel_density_derives_from_the_fuel_type(self) -> None:
+        values = {"fuel_type": _value("jet_a1", "enum", "fx_manual")}
+        field = catalogue.resolve_field(
+            values, "fuel_density_kg_l", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        self.assertEqual(0.8, field.value)
+        self.assertEqual("kg/L", field.unit)
+        self.assertIn("derived fuel density", field.state)
+        self.assertIn("DEF STAN 91-87", field.state)
+
+    def test_fuel_lhv_derives_from_the_fuel_type(self) -> None:
+        values = {"fuel_type": _value("avgas_100ll", "enum", "fx_manual")}
+        field = catalogue.resolve_field(
+            values, "fuel_lhv_mj_kg", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        self.assertEqual(43.5, field.value)
+        self.assertEqual("MJ/kg", field.unit)
+        self.assertIn("derived fuel lower heating value", field.state)
+        self.assertIn("DEF STAN 91-90", field.state)
+
+    def test_fuel_burn_derives_from_sfc_and_rated_power(self) -> None:
+        values = {
+            "rated_power_w": _value(1000000, "W", "fx_manual"),
+            "sfc_kg_kwh": _value(0.3, "kg/kWh", "fx_manual"),
+        }
+        field = catalogue.resolve_field(
+            values, "fuel_burn_kg_s", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        self.assertEqual(round(0.3 * 1000000 / 3.6e6, 6), field.value)
+        self.assertEqual("kg/s", field.unit)
+        self.assertIn(
+            "fuel_burn_kg_s = sfc_kg_kwh * rated_power_w / 3.6e6", field.state
+        )
+
+    def test_fuel_burn_uses_the_derived_rated_power(self) -> None:
+        values = {
+            "published_power_hp": _value(200.0, "hp", "fx_manual"),
+            "sfc_kg_kwh": _value(0.3, "kg/kWh", "fx_manual"),
+        }
+        field = catalogue.resolve_field(
+            values, "fuel_burn_kg_s", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("derived", field.grade)
+        expected = round(0.3 * round(200.0 * 745.699872, 6) / 3.6e6, 6)
+        self.assertEqual(expected, field.value)
+
+    def test_fuel_density_is_absent_without_a_fuel_type(self) -> None:
+        field = catalogue.resolve_field(
+            {}, "fuel_density_kg_l", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("absent", field.grade)
+
+    def test_fuel_burn_is_absent_without_a_specific_consumption(self) -> None:
+        values = {"rated_power_w": _value(1000000, "W", "fx_manual")}
+        field = catalogue.resolve_field(
+            values, "fuel_burn_kg_s", catalogue.AIRCRAFT_PROFILE
+        )
+        self.assertEqual("absent", field.grade)
+
+    def test_every_entry_resolves_the_fuel_pair_in_its_systems_row(self) -> None:
+        """Every entry with a complete identity resolves the fuel pair (task 14).
+
+        The systems row carries ``fuel_capacity`` and ``fuel_consumption_rate``
+        for every entry: a held value or a labelled absent zero. A lead with no
+        identity emits no row. So no runtime-ready entry is left without the
+        fuel pair.
+        """
+        load = catalogue.load(REAL_DATA, profile=catalogue.AIRCRAFT_PROFILE)
+        self.assertEqual([], load.errors, load.errors)
+        for entry in load.entries:
+            row = systems.resolve_row(entry.to_mapping())
+            self.assertIsNotNone(row, entry.catalogue_id)
+            assert row is not None
+            by_name = {field.name: field for field in row}
+            for name in ("fuel_capacity", "fuel_consumption_rate"):
+                self.assertIn(name, by_name, entry.catalogue_id)
+                self.assertIn(
+                    by_name[name].grade, catalogue.RESOLVED_GRADES, entry.catalogue_id
+                )
+
+
+class SystemsGateTest(unittest.TestCase):
+    """The systems registry, the record path and the mutation audit (task 7)."""
+
+    def _valid_document(self) -> JsonObject:
+        """A valid systems record document. Fixture only, no real aircraft."""
+        return {
+            "retrieved": "2026-10-09",
+            "sources": [_source("fx_manual", 2, "manual", True)],
+            "record": {
+                "catalogue_id": "fixture_systems_ok",
+                "canonical_name": "FIXTURE",
+                "maker": "FIXTURE",
+                "model": "FIXTURE",
+                "variant": "FIXTURE",
+                "variant_id": "fixture_systems_ok_variant",
+                "game_class": "FIXTURE_SYSTEMS_OK_F",
+                "class_token": "Plane",
+                "identity_source": "fx_manual",
+                "country": "NONE",
+                "era": "none",
+                "vehicle_type": "fixed_wing",
+                "runtime_ready": False,
+                "values": {
+                    "fuel_capacity": _value(1000, "L", "fx_manual"),
+                    "fuel_type": _value("sentinel", "enum", "fx_manual"),
+                    "fuel_consumption_rate": _value(1.5, "kg/s", "fx_manual"),
+                    "sfc_kg_kwh": _value(0.3, "kg/kWh", "fx_manual"),
+                    "fuel_lhv_mj_kg": _value(43.0, "MJ/kg", "fx_manual"),
+                    "engine_design_rpm": _value(6000, "rpm", "fx_manual"),
+                    "engine_max_tgt_c": _value(800, "deg C", "fx_manual"),
+                    "inertia_xx_kgm2": _value(1000, "kg m^2", "fx_manual"),
+                    "bus_voltage_v": _value(28, "V", "fx_manual"),
+                    "battery_capacity_ah": _value(25, "Ah", "fx_manual"),
+                },
+            },
+        }
+
+    def test_the_record_path_accepts_a_valid_systems_record(self) -> None:
+        errors: list[str] = []
+        v.validate_record_document(self._valid_document(), errors)
+        self.assertEqual([], errors)
+
+    def test_the_record_path_rejects_the_systems_fixture(self) -> None:
+        document = json.loads(SYSTEMS_FIXTURE.read_text(encoding="utf-8"))
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertTrue(
+            any("unit gal is not in the vocabulary" in e for e in errors), errors
+        )
+        self.assertTrue(any("name its formula" in e for e in errors), errors)
+
+    def test_the_fixture_record_cli_fails(self) -> None:
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(VALIDATOR),
+                "--record",
+                str(SYSTEMS_FIXTURE),
+            ],
+            capture_output=True,
+            text=True,
+            cwd=str(REPO),
+            check=False,
+        )
+        self.assertEqual(1, result.returncode, result.stdout + result.stderr)
+        self.assertIn("aircraft data gate: FAIL", result.stdout)
+        self.assertIn("unit gal is not in the vocabulary", result.stdout)
+
+    def test_a_mutation_to_an_unlisted_unit_is_caught(self) -> None:
+        document = self._valid_document()
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertEqual([], errors, "the base record must be clean")
+
+        record = cast("JsonObject", document["record"])
+        values = cast("dict[str, object]", record["values"])
+        cast("JsonObject", values["fuel_capacity"])["unit"] = "gal"
+        mutated: list[str] = []
+        v.validate_record_document(document, mutated)
+        self.assertTrue(
+            any("unit gal is not in the vocabulary" in e for e in mutated), mutated
+        )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "mutated.json"
+            path.write_text(json.dumps(document), encoding="utf-8")
+            errors: list[str] = []
+            v.validate_record_document(
+                json.loads(path.read_text(encoding="utf-8")), errors
+            )
+        self.assertTrue(errors)
+
+    def test_an_unknown_systems_field_is_an_error(self) -> None:
+        document = self._valid_document()
+        record = cast("JsonObject", document["record"])
+        values = cast("dict[str, object]", record["values"])
+        values["fuel_capacity_typo"] = _value(1, "L", "fx_manual")
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertTrue(any("unknown value field" in e for e in errors), errors)
+
+    def test_a_wrong_but_listed_systems_unit_is_an_error(self) -> None:
+        document = self._valid_document()
+        record = cast("JsonObject", document["record"])
+        values = cast("dict[str, object]", record["values"])
+        cast("JsonObject", values["fuel_capacity"])["unit"] = "kg"
+        errors: list[str] = []
+        v.validate_record_document(document, errors)
+        self.assertTrue(
+            any("does not match the field unit L" in e for e in errors), errors
+        )
+
+    def test_the_systems_markers_are_disjoint_from_the_runtime_fields(self) -> None:
+        self.assertEqual([], v.systems_marker_errors())
+
+
 class ValidatorCliTest(unittest.TestCase):
     """The command line proves the same two oracles."""
 
@@ -364,6 +570,87 @@ class ValidatorCliTest(unittest.TestCase):
         result = self._run(FIXTURES)
         self.assertEqual(1, result.returncode)
         self.assertIn("aircraft data gate: FAIL", result.stdout)
+
+
+class EngineLimitFieldTest(unittest.TestCase):
+    """The engine limit field set and its range rule (task 18)."""
+
+    def test_the_validator_rejects_an_ng_ratio_above_two(self) -> None:
+        errors: list[str] = []
+        v.validate_value(
+            "fixture",
+            "engine_max_ng",
+            _value(2.5, "ratio", "fx_manual"),
+            _by_id(),
+            errors,
+            kind="catalogue",
+        )
+        self.assertTrue(any("outside the allowed range" in e for e in errors), errors)
+
+    def test_the_validator_accepts_an_ng_ratio_at_the_bound(self) -> None:
+        errors: list[str] = []
+        v.validate_value(
+            "fixture",
+            "engine_max_ng",
+            _value(2.0, "ratio", "fx_manual"),
+            _by_id(),
+            errors,
+            kind="catalogue",
+        )
+        self.assertEqual([], errors)
+
+    def test_the_validator_rejects_a_turbine_temperature_above_the_bound(self) -> None:
+        errors: list[str] = []
+        v.validate_value(
+            "fixture",
+            "engine_max_tgt_c",
+            _value(1600, "deg C", "fx_manual"),
+            _by_id(),
+            errors,
+            kind="catalogue",
+        )
+        self.assertTrue(any("outside the allowed range" in e for e in errors), errors)
+
+    def test_every_runtime_ready_entry_carries_the_engine_limits_in_its_row(
+        self,
+    ) -> None:
+        """The systems row carries each engine limit for a runtime-ready entry.
+
+        The engine limits are reference or status fields, so they never fill a
+        flight-model runtime input. The systems row carries each of them as a
+        held value or a labelled absent zero. An absent field is a lead.
+        """
+        load = catalogue.load(REAL_DATA, profile=catalogue.AIRCRAFT_PROFILE)
+        self.assertEqual([], load.errors, load.errors)
+        watched = (
+            "engine_max_ng",
+            "engine_max_tgt_c",
+            "engine_oil_pressure_min_kpa",
+            "engine_oil_pressure_max_kpa",
+        )
+        for entry in load.entries:
+            if entry.runtime_ready is not True:
+                continue
+            row = systems.resolve_row(entry.to_mapping())
+            self.assertIsNotNone(row, entry.catalogue_id)
+            assert row is not None
+            by_name = {field.name: field for field in row}
+            for name in watched:
+                self.assertIn(name, by_name, entry.catalogue_id)
+                self.assertIn(
+                    by_name[name].grade,
+                    catalogue.RESOLVED_GRADES,
+                    f"{entry.catalogue_id}.{name}",
+                )
+
+    def test_the_aw101_resolves_a_held_ng_and_turbine_limit(self) -> None:
+        load = catalogue.load(REAL_DATA, profile=catalogue.AIRCRAFT_PROFILE)
+        entry = next(e for e in load.entries if e.catalogue_id == "aw101_merlin")
+        for name in ("engine_max_ng", "engine_max_tgt_c", "engine_oil_capacity_l"):
+            field = catalogue.resolve_field(
+                entry.values, name, catalogue.AIRCRAFT_PROFILE
+            )
+            self.assertNotEqual("absent", field.grade, name)
 
 
 if __name__ == "__main__":

@@ -1,74 +1,42 @@
 [
   {
-    "game_class": "B_Plane_CAS_01_F",
-    "class_token": "Plane",
-    "catalogue_id": "a10a_thunderbolt_ii",
+    "game_class": "B_CTRG_Heli_Transport_01_sand_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Plane_CAS_01_F is an Arma 3 Plane class for the A-164 Wipeout; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_evidence": "B_CTRG_Heli_Transport_01_sand_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
-    "game_class": "O_Plane_CAS_02_F",
-    "class_token": "Plane",
-    "catalogue_id": "su25_frogfoot",
+    "game_class": "B_CTRG_Heli_Transport_01_tropic_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "uh60a_black_hawk",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Plane_CAS_02_F is an Arma 3 Plane class for the To-199 Neophron; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_evidence": "B_CTRG_Heli_Transport_01_tropic_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
-    "game_class": "I_Plane_Fighter_03_CAS_F",
-    "class_token": "Plane",
-    "catalogue_id": "l159_alca",
+    "game_class": "B_Heli_Attack_01_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "rah66_comanche",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Plane_Fighter_03_CAS_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_evidence": "B_Heli_Attack_01_F is an Arma 3 Helicopter class for the AH-99 Blackfoot; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
-    "game_class": "I_Plane_Fighter_03_AA_F",
-    "class_token": "Plane",
-    "catalogue_id": "l159_alca",
+    "game_class": "B_Heli_Attack_01_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "rah66_comanche",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Plane_Fighter_03_AA_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_evidence": "B_Heli_Attack_01_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Attack_01_F family bound to rah66_comanche. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
-    "game_class": "I_Plane_Fighter_03_dynamicLoadout_F",
-    "class_token": "Plane",
-    "catalogue_id": "l159_alca",
+    "game_class": "B_Heli_Attack_01_pylons_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "rah66_comanche",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Plane_Fighter_03_dynamicLoadout_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "C_Plane_Civil_01_F",
-    "class_token": "Plane",
-    "catalogue_id": "cessna_172_skyhawk",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "C_Plane_Civil_01_F is an Arma 3 Plane class for the Cessna 172; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "B_Plane_Fighter_01_F",
-    "class_token": "Plane",
-    "catalogue_id": "fa18e_super_hornet",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Plane_Fighter_01_F is an Arma 3 Plane class for the F/A-18 Super Hornet; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "O_Plane_Fighter_02_F",
-    "class_token": "Plane",
-    "catalogue_id": "su57_felon",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Plane_Fighter_02_F is an Arma 3 Plane class for the Su-57 Felon; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "I_Plane_Fighter_04_F",
-    "class_token": "Plane",
-    "catalogue_id": "jas39c_gripen",
-    "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "I_Plane_Fighter_04_F is an Arma 3 Plane class for the A-149 Gryphon (Jets DLC); the Armed Assault Wiki names the A-149 Gryphon as the Saab JAS 39C Gripen, so the link is a claimed community identity lead and the corpus holds the Saab factsheet values. The class is a Jets DLC class; the vanilla air config verification is pending.",
+    "identity_evidence": "B_Heli_Attack_01_pylons_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Attack_01_F family bound to rah66_comanche. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
@@ -88,11 +56,19 @@
     "grade": "claimed"
   },
   {
-    "game_class": "B_Heli_Attack_01_F",
+    "game_class": "B_Heli_Light_01_dynamicLoadout_F",
     "class_token": "Helicopter",
-    "catalogue_id": "rah66_comanche",
+    "catalogue_id": "md530_defender",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "B_Heli_Attack_01_F is an Arma 3 Helicopter class for the AH-99 Blackfoot; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_evidence": "B_Heli_Light_01_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_armed_F family bound to md530_defender. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Light_01_stripped_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Heli_Light_01_stripped_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
@@ -104,27 +80,19 @@
     "grade": "claimed"
   },
   {
-    "game_class": "O_Heli_Light_02_F",
+    "game_class": "B_Heli_Transport_01_camo_F",
     "class_token": "Helicopter",
-    "catalogue_id": "light_utility_rotary",
+    "catalogue_id": "uh60a_black_hawk",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Light_02_F is an Arma 3 Helicopter class for the PO-30 Orca; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_evidence": "B_Heli_Transport_01_camo_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
-    "game_class": "O_Heli_Attack_02_F",
+    "game_class": "B_Heli_Transport_01_pylons_F",
     "class_token": "Helicopter",
-    "catalogue_id": "mi28_havoc",
+    "catalogue_id": "uh60a_black_hawk",
     "identity_source": "aee_air_class_table",
-    "identity_evidence": "O_Heli_Attack_02_F is an Arma 3 Helicopter class for the Mi-48 Kajman; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
-    "grade": "claimed"
-  },
-  {
-    "game_class": "I_Heli_light_03_F",
-    "class_token": "Helicopter",
-    "catalogue_id": "aw159_wildcat",
-    "identity_source": "aee_air_class_table",
-    "identity_evidence": "I_Heli_light_03_F is an Arma 3 Helicopter class for the WY-55 Hellcat; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "identity_evidence": "B_Heli_Transport_01_pylons_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_01_F family bound to uh60a_black_hawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
@@ -136,11 +104,75 @@
     "grade": "claimed"
   },
   {
-    "game_class": "I_Heli_Transport_02_F",
+    "game_class": "B_Heli_Transport_03_black_F",
     "class_token": "Helicopter",
-    "catalogue_id": "aw101_merlin",
+    "catalogue_id": "ch47_chinook",
     "identity_source": "src_armedassault_wiki",
-    "identity_evidence": "I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the Armed Assault Wiki names the CH-49 Mohawk as the AW101 Merlin, so the link is a claimed community identity lead and the corpus holds the AW101 values from the Leonardo brochure.",
+    "identity_evidence": "B_Heli_Transport_03_black_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_03_F family that the Armed Assault Wiki names as the Boeing CH-47 Chinook. The link stays a claimed community identity lead.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Transport_03_unarmed_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "ch47_chinook",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "B_Heli_Transport_03_unarmed_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_03_F family that the Armed Assault Wiki names as the Boeing CH-47 Chinook. The link stays a claimed community identity lead.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Heli_Transport_03_unarmed_green_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "ch47_chinook",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "B_Heli_Transport_03_unarmed_green_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Transport_03_F family that the Armed Assault Wiki names as the Boeing CH-47 Chinook. The link stays a claimed community identity lead.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_CAS_01_Cluster_F",
+    "class_token": "Plane",
+    "catalogue_id": "a10a_thunderbolt_ii",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_CAS_01_Cluster_F is an Arma 3 Plane class; it is a variant of the B_Plane_CAS_01_F family bound to a10a_thunderbolt_ii. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_CAS_01_F",
+    "class_token": "Plane",
+    "catalogue_id": "a10a_thunderbolt_ii",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_CAS_01_F is an Arma 3 Plane class for the A-164 Wipeout; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_CAS_01_dynamicLoadout_F",
+    "class_token": "Plane",
+    "catalogue_id": "a10a_thunderbolt_ii",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_CAS_01_dynamicLoadout_F is an Arma 3 Plane class; it is a variant of the B_Plane_CAS_01_F family bound to a10a_thunderbolt_ii. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_Cluster_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_Fighter_01_Cluster_F is an Arma 3 Plane class; it is a variant of the B_Plane_Fighter_01_F family bound to fa18e_super_hornet. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_Fighter_01_F is an Arma 3 Plane class for the F/A-18 Super Hornet; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_Stealth_F",
+    "class_token": "Plane",
+    "catalogue_id": "fa18e_super_hornet",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "B_Plane_Fighter_01_Stealth_F is an Arma 3 Plane class; it is a variant of the B_Plane_Fighter_01_F family bound to fa18e_super_hornet. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   },
   {
@@ -149,6 +181,406 @@
     "catalogue_id": "md500_civil",
     "identity_source": "aee_air_class_table",
     "identity_evidence": "C_Heli_Light_01_civil_F is an Arma 3 Helicopter class for the MD 500 civil; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_blueLine_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_blueLine_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_blue_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_blue_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_digital_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_digital_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_elliptical_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_elliptical_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_furious_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_furious_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_graywatcher_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_graywatcher_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_ion_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_ion_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_jeans_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_jeans_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_light_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_light_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_luxe_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_luxe_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_red_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_red_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_shadow_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_shadow_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_sheriff_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_sheriff_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_speedy_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_speedy_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_stripped_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_stripped_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_sunset_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_sunset_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_vrana_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_vrana_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_wasp_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_wasp_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Heli_light_01_wave_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Heli_light_01_wave_F is an Arma 3 Helicopter class; it is a variant of the B_Heli_Light_01_F family bound to md500. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_IDAP_Heli_Transport_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw101_merlin",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "C_IDAP_Heli_Transport_02_F is an Arma 3 Helicopter class; it is a variant of the I_Heli_Transport_02_F family that the Armed Assault Wiki names as the AW101 Merlin. The link stays a claimed community identity lead.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Plane_Civil_01_F",
+    "class_token": "Plane",
+    "catalogue_id": "cessna_172_skyhawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Plane_Civil_01_F is an Arma 3 Plane class for the Cessna 172; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Plane_Civil_01_racing_F",
+    "class_token": "Plane",
+    "catalogue_id": "cessna_172_skyhawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "C_Plane_Civil_01_racing_F is an Arma 3 Plane class; it is a variant of the C_Plane_Civil_01_F family bound to cessna_172_skyhawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_C_Heli_Light_01_civil_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "md500_civil",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_C_Heli_Light_01_civil_F is an Arma 3 Helicopter class; it is a variant of the C_Heli_Light_01_civil_F family bound to md500_civil. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_C_Plane_Civil_01_F",
+    "class_token": "Plane",
+    "catalogue_id": "cessna_172_skyhawk",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_C_Plane_Civil_01_F is an Arma 3 Plane class; it is a variant of the C_Plane_Civil_01_F family bound to cessna_172_skyhawk. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_E_Heli_light_03_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw159_wildcat",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_E_Heli_light_03_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the I_Heli_light_03_F family bound to aw159_wildcat. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_E_Heli_light_03_unarmed_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw159_wildcat",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_E_Heli_light_03_unarmed_F is an Arma 3 Helicopter class; it is a variant of the I_Heli_light_03_F family bound to aw159_wildcat. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Heli_Transport_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw101_merlin",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_Heli_Transport_02_F is an Arma 3 Helicopter class for the CH-49 Mohawk; the Armed Assault Wiki names the CH-49 Mohawk as the AW101 Merlin, so the link is a claimed community identity lead and the corpus holds the AW101 values from the Leonardo brochure.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Heli_light_03_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw159_wildcat",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Heli_light_03_F is an Arma 3 Helicopter class for the WY-55 Hellcat; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Heli_light_03_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw159_wildcat",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Heli_light_03_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the I_Heli_light_03_F family bound to aw159_wildcat. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Heli_light_03_unarmed_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "aw159_wildcat",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Heli_light_03_unarmed_F is an Arma 3 Helicopter class; it is a variant of the I_Heli_light_03_F family bound to aw159_wildcat. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_AA_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Plane_Fighter_03_AA_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_CAS_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Plane_Fighter_03_CAS_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_Cluster_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Plane_Fighter_03_Cluster_F is an Arma 3 Plane class; it is a variant of the I_Plane_Fighter_03_CAS_F family bound to l159_alca. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_dynamicLoadout_F",
+    "class_token": "Plane",
+    "catalogue_id": "l159_alca",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "I_Plane_Fighter_03_dynamicLoadout_F is an Arma 3 Plane class for the A-143 Buzzard; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_04_Cluster_F",
+    "class_token": "Plane",
+    "catalogue_id": "jas39c_gripen",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_Plane_Fighter_04_Cluster_F is an Arma 3 Plane class; it is a variant of the I_Plane_Fighter_04_F family that the Armed Assault Wiki names as the Saab JAS 39C Gripen. The link stays a claimed community identity lead.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Plane_Fighter_04_F",
+    "class_token": "Plane",
+    "catalogue_id": "jas39c_gripen",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_Plane_Fighter_04_F is an Arma 3 Plane class for the A-149 Gryphon (Jets DLC); the Armed Assault Wiki names the A-149 Gryphon as the Saab JAS 39C Gripen, so the link is a claimed community identity lead and the corpus holds the Saab factsheet values. The class is a Jets DLC class; the vanilla air config verification is pending.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Attack_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi28_havoc",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Attack_02_F is an Arma 3 Helicopter class for the Mi-48 Kajman; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Attack_02_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi28_havoc",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Attack_02_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Attack_02_F family bound to mi28_havoc. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Attack_02_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi28_havoc",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Attack_02_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Attack_02_F family bound to mi28_havoc. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Attack_02_dynamicLoadout_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi28_havoc",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Attack_02_dynamicLoadout_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Attack_02_F family bound to mi28_havoc. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Light_02_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "light_utility_rotary",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Light_02_F is an Arma 3 Helicopter class for the PO-30 Orca; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Light_02_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "light_utility_rotary",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Light_02_dynamicLoadout_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Light_02_F family bound to light_utility_rotary. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Light_02_unarmed_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "light_utility_rotary",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Light_02_unarmed_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Light_02_F family bound to light_utility_rotary. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Light_02_v2_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "light_utility_rotary",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Light_02_v2_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Light_02_F family bound to light_utility_rotary. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_CAS_02_Cluster_F",
+    "class_token": "Plane",
+    "catalogue_id": "su25_frogfoot",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_CAS_02_Cluster_F is an Arma 3 Plane class; it is a variant of the O_Plane_CAS_02_F family bound to su25_frogfoot. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_CAS_02_F",
+    "class_token": "Plane",
+    "catalogue_id": "su25_frogfoot",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_CAS_02_F is an Arma 3 Plane class for the To-199 Neophron; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_CAS_02_dynamicLoadout_F",
+    "class_token": "Plane",
+    "catalogue_id": "su25_frogfoot",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_CAS_02_dynamicLoadout_F is an Arma 3 Plane class; it is a variant of the O_Plane_CAS_02_F family bound to su25_frogfoot. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_Cluster_F",
+    "class_token": "Plane",
+    "catalogue_id": "su57_felon",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_Fighter_02_Cluster_F is an Arma 3 Plane class; it is a variant of the O_Plane_Fighter_02_F family bound to su57_felon. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_F",
+    "class_token": "Plane",
+    "catalogue_id": "su57_felon",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_Fighter_02_F is an Arma 3 Plane class for the Su-57 Felon; the class name does not name the real aircraft, so the link stays class_only and grade claimed.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_Stealth_F",
+    "class_token": "Plane",
+    "catalogue_id": "su57_felon",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Plane_Fighter_02_Stealth_F is an Arma 3 Plane class; it is a variant of the O_Plane_Fighter_02_F family bound to su57_felon. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
   }
 ]

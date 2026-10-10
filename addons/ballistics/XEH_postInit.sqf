@@ -118,7 +118,7 @@ ADDON = false;
         };
     };
     [_ammo, _ammoTemp] call FUNC(calculateMuzzleVelocityCorrection);
-}, QGVAR(shotTemp)] call EFUNC(core,installPlayerEngineHandler);
+}, QGVAR(shotTemp)] call EFUNC(lib,installPlayerEngineHandler);
 
 AEE_LOG_INFO("ballistics module post-init complete");
 

@@ -440,5 +440,139 @@ class TyreSizeParserTest(unittest.TestCase):
         self.assertIn("derived from the size code 130/80-16", field.state)
 
 
+class SystemsRegistryTest(unittest.TestCase):
+    """The shared registry for the systems fields, units and source types."""
+
+    def test_the_shared_source_types_include_poh_and_tcds(self) -> None:
+        self.assertIn("poh", vc.REAL_SOURCE_TYPES)
+        self.assertIn("tcds", vc.REAL_SOURCE_TYPES)
+
+    def test_the_systems_registry_covers_the_shared_and_aircraft_tables(
+        self,
+    ) -> None:
+        for name in (
+            "fuel_capacity",
+            "fuel_consumption_rate",
+            "fuel_lhv_mj_kg",
+            "engine_design_rpm",
+            "engine_max_torque_nm",
+            "engine_idle_ng",
+            "rotor_design_rpm",
+            "rotor_tip_speed_ms",
+            "cg_empty_m",
+            "inertia_xx_kgm2",
+            "vne_kmh",
+            "hitpoint_names",
+            "damage_role_map",
+            "hydraulic_pressure_kpa",
+            "battery_capacity_ah",
+            "cabin_pressure_max_kpa",
+            "oxygen_system",
+        ):
+            with self.subTest(field=name):
+                self.assertIn(name, vc.SYSTEMS_FIELD_UNITS)
+
+    def test_the_registry_carries_the_exact_field_units(self) -> None:
+        expected = {
+            "fuel_capacity": "L",
+            "fuel_consumption_rate": "kg/s",
+            "sfc_kg_kwh": "kg/kWh",
+            "fuel_lhv_mj_kg": "MJ/kg",
+            "fuel_density_kg_l": "kg/L",
+            "engine_design_rpm": "rpm",
+            "engine_max_tgt_c": "deg C",
+            "inertia_xx_kgm2": "kg m^2",
+            "bus_voltage_v": "V",
+            "battery_capacity_ah": "Ah",
+            "hitpoint_names": "list",
+            "damage_role_map": "mapping",
+        }
+        for name, unit in expected.items():
+            with self.subTest(field=name):
+                self.assertEqual(unit, vc.SYSTEMS_FIELD_UNITS[name])
+
+    def test_the_systems_units_are_registered(self) -> None:
+        for unit in (
+            "rpm",
+            "MJ/kg",
+            "kg/L",
+            "kg/kWh",
+            "kg/s",
+            "deg C",
+            "Ah",
+            "V",
+            "kg m^2",
+        ):
+            with self.subTest(unit=unit):
+                self.assertIn(unit, vc.SYSTEMS_UNITS)
+
+    def test_a_reference_or_status_field_is_never_runtime_required(self) -> None:
+        runtime: set[str] = set()
+        for fields in vc.AIRCRAFT_REQUIRED_RUNTIME_BY_TYPE.values():
+            runtime.update(fields)
+        marked = vc.REFERENCE_ONLY_SYSTEMS_FIELDS | vc.STATUS_ONLY_SYSTEMS_FIELDS
+        self.assertEqual(set(), marked & runtime)
+
+    def test_every_marked_field_is_a_known_systems_field(self) -> None:
+        marked = vc.REFERENCE_ONLY_SYSTEMS_FIELDS | vc.STATUS_ONLY_SYSTEMS_FIELDS
+        self.assertTrue(marked)
+        for name in marked:
+            with self.subTest(field=name):
+                self.assertIn(name, vc.SYSTEMS_FIELD_UNITS)
+
+
+class FamilyProfileTest(unittest.TestCase):
+    """The profile is the family parameter of the shared loader.
+
+    One profile is one vehicle family. The loader resolves the runtime field
+    set from the profile, so the same fixture yields a different field set
+    under the ground family and the aircraft family.
+    """
+
+    def test_the_family_selector_returns_each_profile(self) -> None:
+        self.assertIs(vc.GROUND_PROFILE, vc.profile_for("ground"))
+        self.assertIs(vc.AIRCRAFT_PROFILE, vc.profile_for("aircraft"))
+
+    def test_an_unknown_family_is_rejected(self) -> None:
+        with self.assertRaises(ValueError):
+            vc.profile_for("submarine")
+
+    def test_the_field_registry_is_reachable_per_family(self) -> None:
+        self.assertIn("fuel_capacity", vc.systems_field_units("ground"))
+        self.assertIn("fuel_capacity", vc.systems_field_units("aircraft"))
+
+    def test_a_ground_entry_resolves_the_ground_field_set_only(self) -> None:
+        entry = _entry("fixture_ground", vehicle_type="wheeled")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            ground = vc.load(root, profile=vc.GROUND_PROFILE)
+            air = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertEqual([], ground.errors, ground.errors)
+        self.assertEqual([], air.errors, air.errors)
+        ground_fields = cast(
+            "dict[str, object]", ground.entries[0].to_mapping()["resolved"]
+        )
+        air_fields = cast("dict[str, object]", air.entries[0].to_mapping()["resolved"])
+        self.assertIn("tyre_width_mm", ground_fields)
+        self.assertNotIn("tyre_width_mm", air_fields)
+        self.assertEqual({}, air_fields)
+
+    def test_an_aircraft_entry_resolves_the_aircraft_field_set_only(self) -> None:
+        entry = _entry("fixture_air", vehicle_type="rotary_wing")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            ground = vc.load(root, profile=vc.GROUND_PROFILE)
+            air = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertEqual([], ground.errors, ground.errors)
+        self.assertEqual([], air.errors, air.errors)
+        ground_fields = cast(
+            "dict[str, object]", ground.entries[0].to_mapping()["resolved"]
+        )
+        air_fields = cast("dict[str, object]", air.entries[0].to_mapping()["resolved"])
+        self.assertEqual({}, ground_fields)
+        self.assertIn("rotor_disc_area_m2", air_fields)
+        self.assertNotIn("tyre_width_mm", air_fields)
+
+
 if __name__ == "__main__":
     unittest.main()

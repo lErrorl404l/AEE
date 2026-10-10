@@ -72,9 +72,10 @@ exists. A compilation is never a primary source.
 ## 4. Source types and hard rules
 
 A source type is a real-world type or an engine type. The real-world
-types are `standard`, `manual`, `measurement`, `manufacturer` and
-`compilation`. The engine types are `engine_geometry`, `engine_config`
-and `class_table`.
+types are `standard`, `manual`, `poh`, `tcds`, `measurement`,
+`manufacturer` and `compilation`. The tier-2 real-world types are
+`manual`, `poh` and `tcds`. The engine types are `engine_geometry`,
+`engine_config` and `class_table`.
 
 The hard rules are these.
 
@@ -379,13 +380,17 @@ supply them is not runtime-ready.
 
 A unit is one exact string. The allowed strings are `kg`, `mm`, `kPa`,
 `kW`, `hp`, `L`, `N m`, `deg`, `km/h`, `km`, `m`, `count`, `ratio`,
-`enum` and `text`. The non-physical tokens mean this.
+`enum`, `text`, `rpm`, `MJ/kg`, `kg/L`, `kg/kWh`, `kg/s`, `deg C`, `Ah`,
+`V`, `kg m^2`, `W`, `list` and `mapping`. The non-physical tokens mean
+this.
 
 - `count`: a whole number of items.
 - `ratio`: a dimensionless ratio.
 - `enum`: one term from a stated controlled vocabulary.
 - `text`: a proper name or a published code, for example an engine model
   or a tyre size code.
+- `list`: an ordered set of names.
+- `mapping`: a field-to-value map.
 
 ## 10. Runtime-required sets
 
@@ -449,7 +454,7 @@ record that misses a required field as an error. A lead emits no row.
 ## 11. The matcher result
 
 The generated file
-`addons/mobility/functions/fnc_getVehicleData.sqf` carries the table, the
+`addons/vehicles/functions/fnc_getVehicleData.sqf` carries the table, the
 normaliser, the index and the ladder. The generator
 `tools/validation/gen_vehicle_data.py` writes it. The runtime function
 `fnc_getVehicleMatch(className)` returns the full result. The function
@@ -585,3 +590,267 @@ ambiguous variant, a tie and a missing required field.
 6. A class map needs a real-world mapping source. No category guess.
 7. Write only your own output file. Never edit another file and never
    commit.
+
+## 16. The systems field set
+
+This section defines the family-agnostic systems fields. It applies to an
+aircraft and to a land vehicle. The aircraft document adds its own deltas
+in `data/aircraft/SCHEMA.md`. A row below names the field, its unit, its
+source class, its published flag and its engine hook or marker.
+
+A `reference only` field documents the system. It never fills a runtime
+calculation input. A `status only` field reports a state. It never feeds
+the flight dynamics model.
+
+### Fuel
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `fuel_capacity` | L | manual / poh / tcds | yes | config `CfgVehicles >> fuelCapacity` |
+| `fuel_type` | enum | manual / poh | yes | reference only, selects the density |
+| `fuel_density_kg_l` | kg/L | standard | yes | derived consumer |
+| `fuel_mass_full_kg` | kg | derived | no | `setMass` delta and centre-of-gravity shift |
+| `fuel_consumption_rate` | kg/s | manual / poh | yes | systems row, the engine burn is zero |
+| `sfc_kg_kwh` | kg/kWh | manual | yes | burn derivation |
+| `fuel_burn_kg_s` | kg/s | derived | no | scripted `setFuel` |
+| `fuel_tank_count` | count | manual | yes | reference only, transfer |
+| `fuel_tank_capacity_l` | L | manual | yes | reference only |
+| `fuel_cg_arm_m` | m | manual (weight and balance) | yes | scripted `setCenterOfMass` |
+| `fuel_lhv_mj_kg` | MJ/kg | standard | yes | engine physics |
+
+### Engine
+
+Both families carry a rated power, an engine model, a design speed, a
+torque limit, oil and a main gearbox.
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `engine_model` | text | manual / manufacturer | yes | reference only |
+| `engine_count` | count | manual | yes | reference only |
+| `rated_power_w` | W | manual / manufacturer | yes | exists, the runtime `_ratedPowerW` |
+| `engine_design_rpm` | rpm | manual | yes | reference only |
+| `engine_max_torque_nm` | N m | manual | yes | scripted limit |
+| `engine_oil_pressure_min_kpa` | kPa | manual | yes | scripted status |
+| `engine_oil_pressure_max_kpa` | kPa | manual | yes | scripted status |
+| `engine_oil_capacity_l` | L | manual | yes | reference only |
+| `engine_oil_type` | enum | manual | yes | reference only |
+| `transmission_torque_limit_nm` | N m | manual | yes | scripted limit |
+| `transmission_gear_ratio_main` | ratio | manual | yes | reference only |
+
+The turbine terms are an aircraft delta. They are in
+`data/aircraft/SCHEMA.md`.
+
+### Mass, centre of gravity and inertia
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `empty_weight_kg` | kg | manual | yes | exists, derivation input |
+| `max_takeoff_weight_kg` | kg | manual | yes | exists |
+| `cg_empty_m` | m | manual (weight and balance) | yes | `setCenterOfMass` |
+| `cg_forward_limit_m` | m | manual | yes | reference only |
+| `cg_aft_limit_m` | m | manual | yes | reference only |
+| `inertia_xx_kgm2` | kg m^2 | manual / derived | yes | reference only, config |
+| `inertia_yy_kgm2` | kg m^2 | manual / derived | yes | reference only, config |
+| `inertia_zz_kgm2` | kg m^2 | manual / derived | yes | reference only, config |
+| `payload_kg` | kg | manual | yes | exists |
+
+### Damage
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `hitpoint_names` | list | manual (component breakdown) | yes | config `HitPoints`, `get` and `setHitPointDamage` |
+| `component_count` | count | manual | yes | scripted role model |
+| `crew_count` | count | manual | yes | reference only |
+| `damage_role_map` | mapping | structural reference | no | scripted layers |
+
+### Status systems
+
+Hydraulics and electrical are shared. Pressurisation is an aircraft delta.
+Every field below is `status only`. A status-only value never feeds the
+flight dynamics model.
+
+| Field | Unit | Source class | Published | Engine hook or marker |
+|---|---|---|---|---|
+| `hydraulic_system_count` | count | manual | yes | status only |
+| `hydraulic_pressure_kpa` | kPa | manual | yes | status only |
+| `generator_count` | count | manual | yes | status only |
+| `generator_power_kw` | kW | manual | yes | status only |
+| `bus_voltage_v` | V | manual | yes | status only |
+| `battery_capacity_ah` | Ah | manual | yes | status only |
+
+### The engine ceiling by system
+
+The engine ceiling is fixed at config load. It is stated here once.
+
+Fuel is built-in partial. The engine reads `fuelCapacity`,
+`fuelConsumptionRate` and `fuel`, and the script calls `setFuel`.
+Transfer, jettison and the centre-of-gravity shift are scripted.
+
+The engine is RTD-gated and partly absent. The real-time data interface
+exists only when `difficultyEnabledRTD` is true. The engine exposes no
+turbine temperature, no oil, no start and no wear. The script supplies
+the turbine-temperature and oil readout.
+
+Damage is built-in plus scripted layers. The engine reads `HitPoints`,
+`getHitPointDamage`, `setHitPointDamage`, `setDamage`, `allowDamage` and
+`CfgAmmo`. Per-system progressive damage is scripted.
+
+Hydraulics, electrical and pressurisation are absent. They are status
+only. A status-only value never feeds the flight dynamics model. The
+flight dynamics model is engine-fixed at config load (ADR-017).
+
+## 17. The land-vehicle physics surface
+
+This section defines the complete carx, tankx and shipx `CfgVehicles`
+physics surface for a land vehicle. The engine reads it at load time. A
+land vehicle has no engine XML, so the engine reads no XML for it. The
+load-time `CfgVehicles` block is the only consumer.
+
+A row below names the field, its source class or its named derivation and
+its marker. The markers mean this.
+
+- `published`: the value comes from a held real-world source.
+- `derived`: the value is computed from published inputs by a named
+  formula.
+- `engine schema`: the key is structural. Its value is engine tuning, not
+  a real figure. The generator emits it only from a sourced or derived
+  input.
+
+The tyre and contact solver, the gearbox shift logic, the suspension and
+the engine-power curve are engine-owned. AEE never sets a velocity on a
+driven vehicle.
+
+### Engine
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `enginePower` | published, the BIKI kW unit is resolved before use | published |
+| `maxOmega` | derived, `engine_design_rpm` converted to rad/s | derived |
+| `minOmega` | derived, the idle engine speed converted to rad/s | derived |
+| `idleRpm` | published | published |
+| `redRpm` | published | published |
+| `peakTorque` | published | published |
+| `torqueCurve[<=8][2]` | published | published |
+| `engineMOI` | derived, one half of the mass times the radius squared | derived |
+| `dampingRateFullThrottle` | engine schema | engine schema |
+| `dampingRateZeroThrottleClutchEngaged` | engine schema | engine schema |
+| `dampingRateZeroThrottleClutchDisengaged` | engine schema | engine schema |
+
+### Transmission
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `clutchStrength` | published | published |
+| `latency` | engine schema | engine schema |
+| `switchTime` | published, the gear shift time | published |
+| `changeGearType` | published | published |
+| `changeGearMinEffectivity[]` | published | published |
+| `changeGearOmegaRatios[]` | published | published |
+| `GearboxRatios[]` | published | published |
+| `TransmissionRatios[]` | published | published |
+| `moveOffGear` | derived, the gear the vehicle moves off in | derived |
+| `driveString` | published, the forward gear names | published |
+| `neutralString` | published | published |
+| `reverseString` | published | published |
+
+### Differential
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `differentialType` | published | published |
+| `frontRearSplit` | published | published |
+| `frontBias` | engine schema | engine schema |
+| `rearBias` | engine schema | engine schema |
+| `centreBias` | engine schema | engine schema |
+
+### Wheel
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `boneName` | published, the wheel station name | published |
+| `steering` | published | published |
+| `side` | published | published |
+| `center` | published, the wheel centre position | published |
+| `boundary` | published | published |
+| `width` | published, the tyre width | published |
+| `mass` | published, the wheel mass | published |
+| `MOI` | derived, one half of the mass times the radius squared | derived |
+| `dampingRate` | engine schema | engine schema |
+| `dampingRateDamaged` | engine schema | engine schema |
+| `dampingRateDestroyed` | engine schema | engine schema |
+| `maxBrakeTorque` | published | published |
+| `maxHandBrakeTorque` | published | published |
+| `tireForceAppPointOffset` | engine schema | engine schema |
+
+### Suspension
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `dampersBumpCoef` | engine schema | engine schema |
+| `maxCompression` | published | published |
+| `maxDroop` | published | published |
+| `sprungMass` | derived, the sum equals the vehicle mass | derived |
+| `springStrength` | derived, the natural frequency squared times `sprungMass` | derived |
+| `springDamperRate` | derived, the damping ratio times two times the square root of `springStrength` times `sprungMass` | derived |
+| `suspTravelDirection` | engine schema | engine schema |
+| `suspForceAppPointOffset` | engine schema | engine schema |
+
+### Tire
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `longitudinalStiffnessPerUnitGravity` | published | published |
+| `latStiffX` | published | published |
+| `latStiffY` | published | published |
+| `frictionVsSlipGraph[3][2]` | published | published |
+
+### CarX
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `simulation` | engine schema, `carx` | engine schema |
+| `thrustDelay` | engine schema | engine schema |
+| `accelAidForceCoef` | engine schema | engine schema |
+| `accelAidForceSpd` | engine schema | engine schema |
+| `accelAidForceYOffset` | engine schema | engine schema |
+| `maxSpeed` | published | published |
+| `slowSpeedForwardCoef` | engine schema | engine schema |
+| `normalSpeedForwardCoef` | engine schema | engine schema |
+| `waterLeakiness` | engine schema | engine schema |
+| `brakeIdleSpeed` | engine schema | engine schema |
+| `antiRollbarForceCoef` | engine schema | engine schema |
+| `antiRollbarForceLimit` | engine schema | engine schema |
+| `antiRollbarSpeedMin` | engine schema | engine schema |
+| `antiRollbarSpeedMax` | engine schema | engine schema |
+| `terrainCoef` | engine schema | engine schema |
+| `turnCoef` | engine schema | engine schema |
+
+### TankX
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `simulation` | engine schema, `tankx` | engine schema |
+| `tankTurnForce` | engine schema | engine schema |
+| `tankTurnForceAngMinSpd` | engine schema | engine schema |
+| `tankTurnForceAngSpd` | engine schema | engine schema |
+
+The Wheel `boneName` is the damper bone.
+
+### ShipX
+
+| Field | Source class or derivation | Marker |
+|---|---|---|
+| `simulation` | engine schema, `shipx` | engine schema |
+
+### The derived physics fields
+
+Four fields are derived. Do not source them separately.
+
+1. `sprungMass`: the sum of the corner masses equals the vehicle mass.
+2. `springStrength`: the natural frequency squared times `sprungMass`.
+3. `springDamperRate`: the damping ratio times two times the square root
+   of `springStrength` times `sprungMass`.
+4. Wheel `MOI`: one half of the wheel mass times the wheel radius squared.
+
+The natural frequency, the damping ratio and the wheel radius are the
+published or measured inputs.

@@ -1,6 +1,6 @@
 //! The AEE development extension.
 //!
-//! Dev-only. The extension ships in no release artefact (ADR-033). It answers
+//! Dev-only. The extension ships in no release artefact (ADR-035). It answers
 //! the preInit presence probe from `addons/core`, returns `pong` to `ping`,
 //! and hosts the loopback dev console.
 //!
@@ -346,7 +346,7 @@ mod tests {
         expected: serde_json::Value,
     }
 
-    /// One kernel's vectors and its justified parity bound (ADR-034).
+    /// One kernel's vectors and its justified parity bound (ADR-036).
     #[derive(serde::Deserialize)]
     struct KernelSuite {
         command: String,

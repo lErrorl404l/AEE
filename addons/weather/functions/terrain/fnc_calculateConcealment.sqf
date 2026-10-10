@@ -1,0 +1,122 @@
+#include "..\..\script_component.hpp"
+
+/*
+Seasonal vegetation concealment (issue #137).
+
+The chain vegetationState -> concealment -> camo -> detection did not
+exist: foliage and crop density were computed (and their comments said
+"for concealment") but nothing consumed them.  This function produces
+the concealment factor at a position:
+
+    concealment 0..1 = how much the local vegetation/snow hides a
+    standing person from an observer.
+
+Basis per surface class (engine surfaceType, the same lowercase table
+the biome scan uses):
+  forest/jungle/rainforest/orchard    foliage-density driven (leaf-on
+                                      July full, leaf-off January ~2-3x
+                                      detection)
+  crop/vineyard                       crop-density driven (standing
+                                      corn ~2 m hides a person)
+  grass/grassland/prairie/tundra      low base; tall grass hides
+                                      prone only (scaled)
+  marsh/swamp                         foliage + base
+  snow/glacier/ice                    white background: a NON-white
+                                      camo is more visible; penalty
+                                      scales with snow depth
+  desert/sand/dunes/rock/mountain     near-zero concealment (base 0.05)
+
+The result is published as the camo coefficient (aee_core_camoCoefficient)
+for the future concealment consumers (#119 clothing camo, #74 AI
+detection).  Factor = base x (1 + concealable vegetation/snow).
+*/
+
+params [["_posASL", [], [[]]], ["_stance", "STAND", [""]]];
+
+if (_posASL isEqualTo []) then {
+    private _unit = call CBA_fnc_currentUnit;
+    _posASL = getPosASL _unit;
+};
+
+// ─── Inputs (all pre-existing computed state) ─────────────────────────────
+private _foliage = missionNamespace getVariable [QEGVAR(weather,currentFoliageDensity), 0];
+if !(_foliage isEqualType 0) then { _foliage = 0; };
+private _crop = missionNamespace getVariable [QEGVAR(core,currentCropDensity), 0];
+if !(_crop isEqualType 0) then { _crop = 0; };
+private _snow = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
+if !(_snow isEqualType 0) then { _snow = 0; };
+
+private _surface = toLower (surfaceType _posASL);
+// surfaceType returns the class name with no '#' prefix (GdtSnow);
+// normalise to the bare token before the keyword tests below.
+if (_surface find "#gdt" == 0) then { _surface = _surface select [4]; }
+else { if (_surface find "gdt" == 0) then { _surface = _surface select [3]; }; };
+private _prone = _stance == "PRONE";
+private _crouched = _stance == "CROUCH";
+
+// ─── Surface class factor ─────────────────────────────────────────────────
+private _factor = 0.05;   // bare/desert floor
+private _class = "";
+
+if (_surface find "forest" >= 0 || _surface find "coniferous" >= 0 ||
+    _surface find "jungle" >= 0 || _surface find "rainforest" >= 0 ||
+    _surface find "orchard" >= 0) then {
+    // Deciduous leaf cycle: full concealment leaf-on, winter leaf-off.
+    _factor = _foliage;
+    _class = "forest";
+} else {
+    if (_surface find "crop" >= 0 || _surface find "vineyard" >= 0) then {
+        // Standing corn ~2 m hides a standing person; bare stubble none.
+        _factor = _crop;
+        _class = "crop";
+    } else {
+        if (_surface find "grass" >= 0 || _surface find "grassland" >= 0 ||
+            _surface find "prairie" >= 0 || _surface find "tundra" >= 0) then {
+            // Tall grass hides prone/crouched; a standing figure is
+            // visible above it.  Prone 0.5, crouched 0.2, standing 0.05.
+            _factor = [0.5, 0.2, 0.05] select ([_prone, _crouched] find true);
+            _class = "grass";
+        } else {
+            if (_surface find "marsh" >= 0 || _surface find "swamp" >= 0) then {
+                _factor = 0.3 + 0.7 * _foliage;
+                _class = "marsh";
+            } else {
+                if (_surface find "snow" >= 0 || _surface find "glacier" >= 0 ||
+                    _surface find "ice" >= 0) then {
+                    // White background: a non-white camo stands out.
+                    _factor = -0.3 * (0.1 + _snow);   // penalty (negative)
+                    _class = "snow";
+                } else {
+                    // desert/sand/dunes/rock/mountain/bare -> floor
+                    _class = "bare";
+                };
+            };
+        };
+    };
+};
+
+// ─── Snow white-background penalty over vegetation ───────────────────────
+// A snow-covered forest still gives structure concealment, but the snow
+// reduces it: white on white is harder, khaki on white is easier to spot.
+private _snowPenalty = 0;
+if (_snow > 0 && _class != "snow") then {
+    _snowPenalty = 0.2 * (_snow min 0.5);
+};
+
+private _concealment = ((_factor - _snowPenalty) max 0) min 1;
+
+missionNamespace setVariable [QGVAR(concealmentFactor), _concealment];
+missionNamespace setVariable [QGVAR(concealmentClass), _class];
+
+if (missionNamespace getVariable [QEGVAR(diagnostics,diagnostic), false]) then {
+    private _logMsg = format [
+        "Concealment: %1 (%2) foliage=%3 crop=%4 snow=%5",
+        [_concealment, 2] call CBA_fnc_formatNumber, _class,
+        [_foliage, 2] call CBA_fnc_formatNumber,
+        [_crop, 2] call CBA_fnc_formatNumber,
+        [_snow, 2] call CBA_fnc_formatNumber
+    ];
+    AEE_LOG_INFO(_logMsg);
+};
+
+_concealment

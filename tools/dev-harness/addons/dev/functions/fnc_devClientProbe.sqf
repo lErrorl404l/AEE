@@ -1,5 +1,5 @@
 /*
-fnc_devClientProbe - the client half of the probe bridge (ADR-033).
+fnc_devClientProbe - the client half of the probe bridge (ADR-035).
 
 The console runs server-side, so a headless-client probe cannot answer there.
 This function runs on a non-dedicated machine, evaluates the named probe and

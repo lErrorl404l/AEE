@@ -47,6 +47,8 @@ website:
             href: chapters/dev-console.qmd
           - text: Operator guide
             href: chapters/operator-guide.qmd
+          - text: Aircraft systems
+            href: chapters/aircraft-systems.qmd
       - section: "Annexes"
         contents:
           - text: Formulas

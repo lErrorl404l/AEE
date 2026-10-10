@@ -24,7 +24,7 @@ Public: No
 
 params [["_vehicle", objNull, [objNull]]];
 
-if !(GVAR(vehicleCouplingEnabled)) exitWith { false };
+if !(EGVAR(vehicles,vehicleCouplingEnabled)) exitWith { false };
 if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith { false };
 if (isNull _vehicle) exitWith { false };
 if (!alive _vehicle) exitWith { false };
@@ -34,7 +34,7 @@ if !(_vehicle isKindOf "LandVehicle") exitWith { false };
 if !(local _vehicle) exitWith { false };
 
 // A bound vehicle only. The classifier resolves the class identity.
-private _identity = [_vehicle] call FUNC(classifyVehicle);
+private _identity = [_vehicle] call EFUNC(vehicles,classifyVehicle);
 if ((_identity select 8) == "none") exitWith { false };
 
 // Capture the base mass once. The config override set the calibrated mass
@@ -49,7 +49,7 @@ if (_base < 0) then {
     // switch is live. A positive engine mass always wins, so the runtime
     // accretion coupling is never overwritten by a modelled value.
     if (_base <= 0) then {
-        private _estimate = [_vehicle] call FUNC(estimateVehicleMass);
+        private _estimate = [_vehicle] call EFUNC(vehicles,estimateVehicleMass);
         if ((_estimate select 5) != "unavailable" && {(_estimate select 0) > 0}) then {
             _base = _estimate select 0;
         };

@@ -50,10 +50,10 @@ from symbology_categories import modifier_category
 from typing import Any, Callable
 
 ROOT = Path(__file__).parents[1]
-MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
-CONFIG_OUT = ROOT / "addons" / "optics" / "config_modifiers.hpp"
+MARKERS_OUT = ROOT / "addons" / "symbology" / "data" / "markers"
+CONFIG_OUT = ROOT / "addons" / "symbology" / "config_modifiers.hpp"
 JSON_OUT = ROOT / "data" / "symbology" / "modifiers.json"
-ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers"
+ADDON_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers"
 
 LICENSE = "GPL-2.0-or-later"
 GEOMETRY_LICENSE = (

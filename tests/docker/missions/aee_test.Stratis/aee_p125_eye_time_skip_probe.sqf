@@ -11,13 +11,13 @@
 // It also runs the counterfactual: chasing the jumped scene from the old state
 // takes many frames, which is the reported defect.  It renders nothing.
 
-private _skipFn = missionNamespace getVariable ["aee_optics_fnc_eyeTimeSkip", nil];
-private _initFn = missionNamespace getVariable ["aee_optics_fnc_eyeAdaptInit", nil];
-private _stepFn = missionNamespace getVariable ["aee_optics_fnc_eyeAdaptStep", nil];
-private _apFn = missionNamespace getVariable ["aee_optics_fnc_eyeAperture", nil];
-private _pupilSteadyFn = missionNamespace getVariable ["aee_optics_fnc_eyePupilSteady", nil];
-private _pupilStepFn = missionNamespace getVariable ["aee_optics_fnc_eyePupilStep", nil];
-private _mesopicFn = missionNamespace getVariable ["aee_optics_fnc_eyeMesopicWeight", nil];
+private _skipFn = missionNamespace getVariable ["aee_eye_fnc_eyeTimeSkip", nil];
+private _initFn = missionNamespace getVariable ["aee_eye_fnc_eyeAdaptInit", nil];
+private _stepFn = missionNamespace getVariable ["aee_eye_fnc_eyeAdaptStep", nil];
+private _apFn = missionNamespace getVariable ["aee_eye_fnc_eyeAperture", nil];
+private _pupilSteadyFn = missionNamespace getVariable ["aee_eye_fnc_eyePupilSteady", nil];
+private _pupilStepFn = missionNamespace getVariable ["aee_eye_fnc_eyePupilStep", nil];
+private _mesopicFn = missionNamespace getVariable ["aee_eye_fnc_eyeMesopicWeight", nil];
 
 private _pass = 0;
 private _fail = 0;
@@ -31,13 +31,13 @@ if (isNil "_skipFn" || {isNil "_initFn"} || {isNil "_stepFn"} || {isNil "_apFn"}
     _fail = _fail + 1;
     _notes pushBack "eye kernels not compiled";
 } else {
-    private _rho = missionNamespace getVariable ["aee_optics_eyeReflectance", 0.18];
-    private _kp = missionNamespace getVariable ["aee_optics_eyeFastBlend", 0.35];
-    private _tauLight = missionNamespace getVariable ["aee_optics_eyeTauLight", 2.0];
-    private _tauDarkCone = missionNamespace getVariable ["aee_optics_eyeTauDarkCone", 120];
-    private _tauDarkRod = missionNamespace getVariable ["aee_optics_eyeTauDarkRod", 400];
-    private _mesoLo = missionNamespace getVariable ["aee_optics_eyeMesopicLow", 0.005];
-    private _mesoHi = missionNamespace getVariable ["aee_optics_eyeMesopicHigh", 5];
+    private _rho = missionNamespace getVariable ["aee_eye_eyeReflectance", 0.18];
+    private _kp = missionNamespace getVariable ["aee_eye_eyeFastBlend", 0.35];
+    private _tauLight = missionNamespace getVariable ["aee_eye_eyeTauLight", 2.0];
+    private _tauDarkCone = missionNamespace getVariable ["aee_eye_eyeTauDarkCone", 120];
+    private _tauDarkRod = missionNamespace getVariable ["aee_eye_eyeTauDarkRod", 400];
+    private _mesoLo = missionNamespace getVariable ["aee_eye_eyeMesopicLow", 0.005];
+    private _mesoHi = missionNamespace getVariable ["aee_eye_eyeMesopicHigh", 5];
 
     // The reported scenes: a moonlit night (RPT 0.5 lx) and noon (RPT 68039 lx).
     private _night = 0.5;

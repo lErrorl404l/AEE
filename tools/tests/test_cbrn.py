@@ -15,7 +15,7 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 FNC = (
-    REPO / "addons/environmental/functions/warnings/fnc_getCbrnProtection.sqf"
+    REPO / "addons/persistence/functions/warnings/fnc_getCbrnProtection.sqf"
 ).read_text(encoding="utf-8")
 ACM = (REPO / "addons/compat_acm/functions/fnc_integrateACM.sqf").read_text(
     encoding="utf-8"

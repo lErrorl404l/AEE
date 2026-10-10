@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Ambience">
+        <Key ID="STR_AEE_Ambience_ambientEnabled_Description">
+            <Original>Play the biome, time, weather and disturbance aware ambient soundscape</Original>
+            <English>Play the biome, time, weather and disturbance aware ambient soundscape</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_ambientEnabled_Name">
+            <Original>Ambient Sound</Original>
+            <English>Ambient Sound</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_callBudget_Description">
+            <Original>Cap on the heard calls the bus holds at once</Original>
+            <English>Cap on the heard calls the bus holds at once</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_callBudget_Name">
+            <Original>Call Bus Cap</Original>
+            <English>Call Bus Cap</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_callRange_Description">
+            <Original>Distance over which an animal hears a conspecific call</Original>
+            <English>Distance over which an animal hears a conspecific call</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_callRange_Name">
+            <Original>Call Range</Original>
+            <English>Call Range</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_communicationEnabled_Description">
+            <Original>Let an animal's call reach and move a nearby conspecific</Original>
+            <English>Let an animal's call reach and move a nearby conspecific</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_communicationEnabled_Name">
+            <Original>Communication</Original>
+            <English>Communication</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_logDebug_Description">
+            <Original>Log Ambience diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log Ambience diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_logDebug_Name">
+            <Original>Ambience Debug Log</Original>
+            <English>Ambience Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_silenceDecay_Description">
+            <Original>How strongly recent disturbance silences the ambient bed</Original>
+            <English>How strongly recent disturbance silences the ambient bed</English>
+        </Key>
+        <Key ID="STR_AEE_Ambience_silenceDecay_Name">
+            <Original>Silence Decay</Original>
+            <English>Silence Decay</English>
+        </Key>
+    </Package>
+</Project>

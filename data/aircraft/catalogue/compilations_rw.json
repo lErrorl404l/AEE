@@ -74,6 +74,86 @@
           "locator": "main rotor diameter 53 ft 8 in",
           "state": "UH-60A operator's manual rotor diameter converted to metres at capture",
           "grade": "documented"
+        },
+        "engine_max_ng": {
+          "value": 1.05,
+          "unit": "ratio",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Figure 5-2 Instrument Markings, 10-SECOND TRANSIENT 102% - 105%",
+          "state": "UH-60A operator's manual gas producer speed limit 105 per cent at the 10 second transient",
+          "grade": "documented"
+        },
+        "engine_max_np": {
+          "value": 1.07,
+          "unit": "ratio",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Figure 5-2 Instrument Markings, 12-SECOND TRANSIENT 105% - 107%",
+          "state": "UH-60A operator's manual power turbine speed limit 107 per cent at the 12 second transient",
+          "grade": "documented"
+        },
+        "engine_max_tgt_c": {
+          "value": 886,
+          "unit": "deg C",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Figure 5-2 Instrument Markings, 10-SECOND TRANSIENT 850 - 886 C",
+          "state": "UH-60A operator's manual turbine gas temperature limit 886 C at the 10 second transient",
+          "grade": "documented"
+        },
+        "engine_oil_pressure_min_kpa": {
+          "value": 137.9,
+          "unit": "kPa",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Figure 5-2 Instrument Markings, CONTINUOUS 20 - 100 PSI",
+          "state": "UH-60A operator's manual minimum engine oil pressure 20 PSI converted to kPa, 20 * 6.894757 = 137.9",
+          "grade": "documented"
+        },
+        "engine_oil_pressure_max_kpa": {
+          "value": 689.5,
+          "unit": "kPa",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Figure 5-2 Instrument Markings, CONTINUOUS 20 - 100 PSI",
+          "state": "UH-60A operator's manual maximum engine oil pressure 100 PSI converted to kPa, 100 * 6.894757 = 689.5",
+          "grade": "documented"
+        },
+        "engine_oil_capacity_l": {
+          "value": 6.62,
+          "unit": "L",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Table 2-4 Fuel and Lubricants, Specifications, and Capacities, Engine oil 7 U.S. Quarts",
+          "state": "UH-60A operator's manual engine oil capacity 7 US quarts converted to litres, 7 * 0.946353 = 6.62",
+          "grade": "documented"
+        },
+        "hydraulic_system_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Section XI, 2.40.1 Number 1 Hydraulic System and 2.40.2 Number 2 Hydraulic System",
+          "state": "UH-60A operator's manual two independent hydraulic systems, each with its own pump module and transfer module",
+          "grade": "documented"
+        },
+        "hydraulic_pressure_kpa": {
+          "value": 20684.3,
+          "unit": "kPa",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Section XI, 2.40.1 Number 1 Hydraulic System, 3000 psi pressure is supplied to the hydraulic system",
+          "state": "UH-60A operator's manual hydraulic system pressure 3000 PSI converted to kPa, 3000 * 6.894757 = 20684.3",
+          "grade": "documented"
+        },
+        "generator_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "Figure 2-19 UH60 ELECTRICAL SYSTEM, MAIN GENERATORS #1 and #2",
+          "state": "UH-60A operator's manual two main generators, one per ac primary bus",
+          "grade": "documented"
+        },
+        "bus_voltage_v": {
+          "value": 28,
+          "unit": "V",
+          "source": "src_tm_1_1520_237_10",
+          "locator": "2.64 DC POWER SUPPLY SYSTEM, 28 vdc dc primary and dc essential buses",
+          "state": "UH-60A operator's manual direct current bus voltage 28 V, supplied by two converters",
+          "grade": "documented"
         }
       }
     },
@@ -122,6 +202,42 @@
           "source": "src_opfor_weg",
           "locator": "Mi-2 main rotor diameter 14.6 m",
           "state": "US Army OPFOR guide main rotor diameter",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 600,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 600",
+          "state": "OPFOR Worldwide Equipment Guide Mi-2/HOPLITE internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 1 (pilot)",
+          "state": "OPFOR WEG Mi-2/HOPLITE published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 3, Tail rotor: 2, Engines: 2x 400-shp PZL GTD-350",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 3, Tail rotor: 2, Engines: 2x 400-shp PZL GTD-350",
+          "state": "OPFOR WEG Mi-2/HOPLITE component breakdown: three damageable component groups",
           "grade": "documented"
         }
       }
@@ -172,6 +288,42 @@
           "locator": "Mi-28 main rotor diameter 17.2 m",
           "state": "US Army OPFOR guide main rotor diameter",
           "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 1900,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 1,900",
+          "state": "OPFOR Worldwide Equipment Guide Mi-28/HAVOC internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 2 pilots in tandem cockpits",
+          "state": "OPFOR WEG Mi-28/HAVOC published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 4 (in X configuration), Engines: 2x 2,200-shp Klimov TV3-117VMA",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 4 (in X configuration), Engines: 2x 2,200-shp Klimov TV3-117VMA",
+          "state": "OPFOR WEG Mi-28/HAVOC component breakdown: three damageable component groups",
+          "grade": "documented"
         }
       }
     },
@@ -220,6 +372,42 @@
           "source": "src_opfor_weg",
           "locator": "Mi-26 main rotor diameter 32 m",
           "state": "US Army OPFOR guide main rotor diameter",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 11900,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 11,900",
+          "state": "OPFOR Worldwide Equipment Guide Mi-26/HALO internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 5,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 5 (2x pilots, 1x navigator, 1x flight engineer)",
+          "state": "OPFOR WEG Mi-26/HALO published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 8, Tail rotor: 5, Engines: 2x 11,400-shp Lotarev D-136",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 8, Tail rotor: 5, Engines: 2x 11,400-shp Lotarev D-136",
+          "state": "OPFOR WEG Mi-26/HALO component breakdown: three damageable component groups",
           "grade": "documented"
         }
       }

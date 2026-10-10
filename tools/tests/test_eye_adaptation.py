@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-EYE = ROOT / "addons" / "optics" / "functions" / "eye"
+EYE = ROOT / "addons" / "eye" / "functions" / "eye"
 
 MESOPIC = EYE / "fnc_eyeMesopicWeight.sqf"
 PUPIL_STEADY = EYE / "fnc_eyePupilSteady.sqf"
@@ -361,11 +361,11 @@ class TestEyeDriverContract(unittest.TestCase):
         self.assertIn("if (_skipped) then", code)
 
 
-OPTICS = ROOT / "addons" / "optics"
-PREP = OPTICS / "XEH_PREP.hpp"
-POSTINIT = OPTICS / "XEH_postInit.sqf"
-SETTINGS = OPTICS / "initSettings.inc.sqf"
-STRINGS = OPTICS / "stringtable.xml"
+EYE_ADDON = ROOT / "addons" / "eye"
+PREP = EYE_ADDON / "XEH_PREP.hpp"
+POSTINIT = EYE_ADDON / "XEH_postInit.sqf"
+SETTINGS = EYE_ADDON / "initSettings.inc.sqf"
+STRINGS = EYE_ADDON / "stringtable.xml"
 
 
 class TestEyeWiring(unittest.TestCase):
@@ -416,19 +416,19 @@ class TestEyeWiring(unittest.TestCase):
         text = SETTINGS.read_text(encoding="utf-8")
         for name in self.EYE_SETTINGS:
             self.assertIn(name, text, f"setting {name} is not registered")
-        self.assertIn('"AEE Optics","Eye Adaptation"', text)
+        self.assertIn('"AEE Eye","Eye Adaptation"', text)
 
     def test_stringtable_keys_are_sorted(self):
         keys = re.findall(
-            r'<Key ID="(STR_AEE_Optics_\w+)"', STRINGS.read_text(encoding="utf-8")
+            r'<Key ID="(STR_AEE_Eye_\w+)"', STRINGS.read_text(encoding="utf-8")
         )
         self.assertEqual(keys, sorted(keys), "stringtable keys are not sorted")
 
     def test_every_setting_has_name_and_description(self):
         text = STRINGS.read_text(encoding="utf-8")
         for name in self.EYE_SETTINGS:
-            self.assertIn(f"STR_AEE_Optics_{name}_Name", text)
-            self.assertIn(f"STR_AEE_Optics_{name}_Description", text)
+            self.assertIn(f"STR_AEE_Eye_{name}_Name", text)
+            self.assertIn(f"STR_AEE_Eye_{name}_Description", text)
 
 
 class TestEyeFlash(unittest.TestCase):
@@ -975,7 +975,7 @@ class TestEyeTimeSkip(unittest.TestCase):
         self.assertFalse(run_sqf(TIME_SKIP, [0.0, 1.0, 2.0]))
 
 
-VISION = ROOT / "addons" / "optics" / "functions" / "vision"
+VISION = ROOT / "addons" / "vision" / "functions" / "vision"
 TEARDOWN = VISION / "fnc_teardownSensors.sqf"
 EXIT_THERMAL = VISION / "fnc_exitThermalSensors.sqf"
 
@@ -999,7 +999,7 @@ class TestSensorApertureRestore(unittest.TestCase):
 
     def test_teardown_releases_the_eye_pin(self):
         self.assertIn(
-            "GVAR(eyePinned) = nil",
+            "EGVAR(eye,eyePinned) = nil",
             self._code(TEARDOWN),
             "fnc_teardownSensors does not release the eye pin on exit",
         )
@@ -1009,7 +1009,7 @@ class TestSensorApertureRestore(unittest.TestCase):
         # the pin release must too: an exit with the sensor handler already
         # gone is exactly the case the restore exists for.
         code = self._code(TEARDOWN)
-        release = code.index("GVAR(eyePinned) = nil")
+        release = code.index("EGVAR(eye,eyePinned) = nil")
         idempotency = code.index("if (isNil QGVAR(sensorPFH)) exitWith")
         self.assertLess(
             release, idempotency, "the pin release is gated on a live handler"
@@ -1017,7 +1017,7 @@ class TestSensorApertureRestore(unittest.TestCase):
 
     def test_exit_thermal_releases_the_eye_pin(self):
         self.assertIn(
-            "GVAR(eyePinned) = nil",
+            "EGVAR(eye,eyePinned) = nil",
             self._code(EXIT_THERMAL),
             "fnc_exitThermalSensors does not release the eye pin on exit",
         )
@@ -1031,7 +1031,7 @@ class TestSensorApertureRestore(unittest.TestCase):
             for match in re.finditer(r"setAperture\s+-1\s*;", code):
                 window = code[match.end() : match.end() + 900]
                 self.assertIn(
-                    "GVAR(eyePinned) = nil",
+                    "EGVAR(eye,eyePinned) = nil",
                     window,
                     f"{path.name}: a setAperture -1 restore has no pin release",
                 )

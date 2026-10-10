@@ -184,6 +184,13 @@ BINARY_COMMANDS = {
     # Object class test used by the wildlife neighbourhood sampler.  In the
     # harness the objects are strings, so this is an equality test.
     "isKindOf",
+    # Object state writes used by the aircraft fuel kernel.  The harness
+    # resolves each through globals_, so a test binds a recorder.
+    "setFuel",
+    "setCenterOfMass",
+    # Damage reads and writes used by fnc_updateDamageSystem.
+    "getHitPointDamage",
+    "setHitPointDamage",
 }
 
 
@@ -347,6 +354,16 @@ UNARY_COMMANDS = {
     # format [fmt, args..] - the drag kernel builds the G-series name with
     # format ["G%1", _code].  The operand is the [fmt, args..] array.
     "format",
+    # Object queries used by the aircraft fuel kernel (fnc_updateFuelSystem).
+    # The harness resolves each through globals_, so a test must bind them.
+    "local",
+    "isNull",
+    "alive",
+    "typeOf",
+    "fuel",
+    # Damage queries used by fnc_updateDamageSystem.
+    "getAllHitPointsDamage",
+    "isDamageAllowed",
 }
 
 
@@ -801,10 +818,20 @@ class SqfParser:
             self.next()
             return Call(self.parse_unary(), Arr([]))
         # command-like prefix: max/min/exp applied to a following expression
-        if t is not None and t.value in ("exp",) and self._is_cmd_use(t.value):
+        if (
+            t is not None
+            and t.kind == "id"
+            and t.value in ("exp",)
+            and self._is_cmd_use(t.value)
+        ):
             self.next()
             return Exp(self.parse_unary())
-        if t is not None and t.value in UNARY_COMMANDS and self._is_cmd_use(t.value):
+        if (
+            t is not None
+            and t.kind == "id"
+            and t.value in UNARY_COMMANDS
+            and self._is_cmd_use(t.value)
+        ):
             self.next()
             return UnaryCmd(t.value, self.parse_unary())
         return self.parse_postfix()
@@ -1193,6 +1220,15 @@ class SqfRuntime:
                 "isClass",
                 "getArray",
                 "fileExists",
+                # Object queries used by fnc_updateFuelSystem.
+                "local",
+                "isNull",
+                "alive",
+                "typeOf",
+                "fuel",
+                # Damage queries used by fnc_updateDamageSystem.
+                "getAllHitPointsDamage",
+                "isDamageAllowed",
             ):
                 fn = self.globals.get(node.op)
                 if callable(fn):

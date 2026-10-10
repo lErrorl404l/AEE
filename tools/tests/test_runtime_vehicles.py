@@ -30,9 +30,9 @@ from tools.validation import gen_vehicle_data as gen  # noqa: E402
 from tools.validation import validate_vehicle_data as v  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
-MATCH_PATH = REPO / "addons" / "mobility" / "functions" / "fnc_getVehicleMatch.sqf"
-DATA_PATH = REPO / "addons" / "mobility" / "functions" / "fnc_getVehicleData.sqf"
-PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
+MATCH_PATH = REPO / "addons" / "vehicles" / "functions" / "fnc_getVehicleMatch.sqf"
+DATA_PATH = REPO / "addons" / "vehicles" / "functions" / "fnc_getVehicleData.sqf"
+PREP_PATH = REPO / "addons" / "vehicles" / "XEH_PREP.hpp"
 MATCH = MATCH_PATH.read_text(encoding="utf-8")
 DATA = DATA_PATH.read_text(encoding="utf-8")
 
@@ -119,7 +119,7 @@ class TestGeneratedMatchFile(unittest.TestCase):
     def test_the_file_is_marked_generated(self):
         self.assertIn("GENERATED", MATCH)
         self.assertIn("gen_vehicle_data.py", MATCH)
-        self.assertIn("aee_mobility_fnc_getVehicleMatch", MATCH)
+        self.assertIn("aee_vehicles_fnc_getVehicleMatch", MATCH)
 
     def test_the_header_states_the_row_contract(self):
         header = MATCH.split("*/", 1)[0]
@@ -225,7 +225,7 @@ class TestGeneratedDataFile(unittest.TestCase):
     def test_the_file_is_marked_generated(self):
         self.assertIn("GENERATED", DATA)
         self.assertIn("gen_vehicle_data.py", DATA)
-        self.assertIn("aee_mobility_fnc_getVehicleData", DATA)
+        self.assertIn("aee_vehicles_fnc_getVehicleData", DATA)
 
     def test_the_lookup_consumes_the_matcher(self):
         self.assertIn("FUNC(getVehicleMatch)", DATA)

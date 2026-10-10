@@ -286,7 +286,7 @@ strength, (c) location-label styling.
 
 ## 5. What AEE should set, with source per value
 
-AEE already sets (`addons/optics/config_mapcolors.hpp`
+AEE already sets (`addons/cartography/config_mapcolors.hpp`
 and `config_mapdisplays.hpp`): `colorLevels`, `colorMainCountlines`,
 `colorCountlines`, `colorMainCountlinesWater`, `colorCountlinesWater`, roads,
 rail, power, tracks, trails, sea, forest, forestBorder, rocks, rocksBorder,
@@ -329,7 +329,7 @@ baseline so the next worker does not repeat a wrong premise.
 The config merge is last-loaded-wins per property, and the core loads before
 the addons. So the ui_f re-declare WINS, and the in-game map uses its values.
 
-**AEE is at parity.** `addons/optics/config_mapcolors.hpp` sets exactly the
+**AEE is at parity.** `addons/cartography/config_mapcolors.hpp` sets exactly the
 ui_f values (`Sea 5, Txt 20, CLn 10, For 9, ForEdge 9, Road 6, Obj 9`, and it
 inherits `Exp 10, Cost 10`). It does not raise any density above the shipped
 vanilla. The `ENG` source label in that header is correct.

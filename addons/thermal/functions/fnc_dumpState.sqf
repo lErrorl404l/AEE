@@ -11,7 +11,7 @@ with it off.
 
 if (!(AEE_TRACE_ON) && {missionNamespace getVariable [QGVAR(stateLogStarted), false]}) exitWith {};
 
-private _active = missionNamespace getVariable [QGVAR(thermalActive), false];
+private _active = missionNamespace getVariable [QEGVAR(thermal_display,thermalActive), false];
 if !(_active isEqualType false) then { _active = false; };
 private _displayMode = missionNamespace getVariable [QGVAR(thermalDisplayMode), 0];
 if !(_displayMode isEqualType 0) then { _displayMode = 0; };
@@ -19,17 +19,17 @@ private _palette = missionNamespace getVariable [QGVAR(thermalPalette), 0];
 if !(_palette isEqualType 0) then { _palette = 0; };
 private _polarity = missionNamespace getVariable [QGVAR(thermalPolarity), 0];
 if !(_polarity isEqualType 0) then { _polarity = 0; };
-private _fusionMode = missionNamespace getVariable [QGVAR(fusionMode), 0];
+private _fusionMode = missionNamespace getVariable [QEGVAR(thermal_display,fusionMode), 0];
 if !(_fusionMode isEqualType 0) then { _fusionMode = 0; };
-private _outlineOn = missionNamespace getVariable [QGVAR(outlineOn), false];
+private _outlineOn = missionNamespace getVariable [QEGVAR(thermal_display,outlineOn), false];
 if !(_outlineOn isEqualType false) then { _outlineOn = false; };
-private _hudTapeOn = missionNamespace getVariable [QGVAR(hudTapeOn), false];
+private _hudTapeOn = missionNamespace getVariable [QEGVAR(thermal_display,hudTapeOn), false];
 if !(_hudTapeOn isEqualType false) then { _hudTapeOn = false; };
 private _activeIR = missionNamespace getVariable [QGVAR(activeIR), false];
 if !(_activeIR isEqualType false) then { _activeIR = false; };
 private _agcPinned = missionNamespace getVariable [QGVAR(agcPinned), false];
 if !(_agcPinned isEqualType false) then { _agcPinned = false; };
-private _bloom = missionNamespace getVariable [QGVAR(bloom), 0];
+private _bloom = missionNamespace getVariable [QEGVAR(thermal_display,bloom), 0];
 if !(_bloom isEqualType 0) then { _bloom = 0; };
 private _manualMinC = missionNamespace getVariable [QGVAR(thermalManualMinC), -40];
 if !(_manualMinC isEqualType 0) then { _manualMinC = -40; };

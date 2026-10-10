@@ -131,26 +131,26 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_glareBlur` | optics | Glare blur |
 | `aee_optics_currentLaserAttenuation` | optics | Laser attenuation |
 | `aee_optics_currentVisibleAttenuation` | optics | Visible attenuation |
-| `aee_optics_weatherGrainActive` | optics | Rain-scaled film grain enabled, the hysteresis state |
-| `aee_optics_shadowTarget` | optics | Scene-aware shadow distance target in metres (aee-workshop-copy item 6) |
-| `aee_optics_shadowScene` | optics | Scene classifier state for the shadow distance (aee-workshop-copy item 6) |
-| `aee_optics_shadowCoverage` | optics | Opening coverage from the shadow classifier (aee-workshop-copy item 6) |
-| `aee_optics_symbologyEnabled` | optics | Registered setting under **AEE HUD > Symbology**: draw the NATO APP-6(C) map and world symbols (default off) |
-| `aee_optics_symbologyPalette` | optics | Registered setting under **AEE HUD > Symbology**: the affiliation palette NATO, OPFOR or Auto (default Auto) |
-| `aee_optics_symbologyUnits` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the in-range units (default on) |
-| `aee_optics_symbologyMarkers` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the engine map markers (default on) |
-| `aee_optics_symbologySuppress` | optics | Registered setting under **AEE HUD > Symbology**: suppress the engine indicators and hide the mission markers locally (default on) |
-| `aee_optics_symbologyFont` | optics | Registered setting under **AEE HUD > Symbology**: use the AEE font for the symbology labels (default on) |
-| `aee_optics_symbologyTables` | optics | Generated APP-6 category tables loaded at preInit, read by the pure symbol kernels |
-| `aee_optics_terrainTables` | optics | Generated terrain and map-feature registry loaded at preInit, read by the P113 terrain probe |
+| `aee_vision_weatherGrainActive` | vision | Rain-scaled film grain enabled, the hysteresis state |
+| `aee_vision_shadowTarget` | vision | Scene-aware shadow distance target in metres (aee-workshop-copy item 6) |
+| `aee_vision_shadowScene` | vision | Scene classifier state for the shadow distance (aee-workshop-copy item 6) |
+| `aee_vision_shadowCoverage` | vision | Opening coverage from the shadow classifier (aee-workshop-copy item 6) |
+| `aee_symbology_symbologyEnabled` | optics | Registered setting under **AEE HUD > Symbology**: draw the NATO APP-6(C) map and world symbols (default off) |
+| `aee_symbology_symbologyPalette` | optics | Registered setting under **AEE HUD > Symbology**: the affiliation palette NATO, OPFOR or Auto (default Auto) |
+| `aee_symbology_symbologyUnits` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the in-range units (default on) |
+| `aee_symbology_symbologyMarkers` | optics | Registered setting under **AEE HUD > Symbology**: draw the symbols for the engine map markers (default on) |
+| `aee_symbology_symbologySuppress` | optics | Registered setting under **AEE HUD > Symbology**: suppress the engine indicators and hide the mission markers locally (default on) |
+| `aee_symbology_symbologyFont` | optics | Registered setting under **AEE HUD > Symbology**: use the AEE font for the symbology labels (default on) |
+| `aee_symbology_symbologyTables` | optics | Generated APP-6 category tables loaded at preInit, read by the pure symbol kernels |
+| `aee_cartography_terrainTables` | optics | Generated terrain and map-feature registry loaded at preInit, read by the P113 terrain probe |
 | `aee_thermal_currentThermalNoise` | thermal | Thermal noise floor (NETD-based), produced by fnc_calculateThermalContrast |
 | `aee_core_dynamicLux` | core | Dynamic lux contribution |
 | `aee_core_irLightLux` | core | IR light lux |
 | `aee_core_lightDirection` | core | Light direction |
 | `aee_core_lightIsNight` | core | Night flag |
-| `aee_environmental_nightClassification` | environmental | Night class |
+| `aee_lighting_nightClassification` | environmental | Night class |
 | `aee_core_starsVisibility` | core | Star visibility |
-| `aee_environmental_visibleStars` | environmental | Visible star count |
+| `aee_lighting_visibleStars` | environmental | Visible star count |
 | `aee_nightvision_nvgNoise` | nightvision | NVG noise |
 | `aee_nightvision_nvgTubeTier` | nightvision | NVG tube tier |
 | `aee_nightvision_nvgWetness` | nightvision | NVG wetness |
@@ -162,72 +162,72 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_nightvision_ppHandle_NVG_Chroma` | nightvision | NVG-owned ChromAberration ppEffect handle (priority 3050), never shared with the optics handle |
 | `aee_nightvision_nvgBreathing` | nightvision | AGC breathing brightness factor this tick, in [-0.15, 0.15] |
 | `aee_nightvision_nvgImperfectionAlpha` | nightvision | Blemish overlay opacity this tick (1 - the control fade), 0..1 |
-| `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
-| `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
-| `aee_optics_dtvHostVehicle` | optics | Vehicle whose native TI the DTV base channel disabled; restored on exit or switch |
-| `aee_optics_dtvHostEntered` | optics | True while the DTV base channel has run its thermal sensor ENTER |
-| `aee_optics_eyeSceneLux` | optics | Scene illuminance the eye model sampled, lx |
-| `aee_optics_eyeAdaptedLux` | optics | Adapted scene illuminance after the eye model, lx |
-| `aee_optics_eyeAperture` | optics | Aperture the eye model pinned, higher is wider |
-| `aee_optics_eyePupilMm` | optics | Pupil diameter the eye model carries, mm |
-| `aee_optics_eyeAdaptTargetLux` | optics | Scene illuminance the eye model is adapting toward, lx |
-| `aee_optics_eyeAdaptDirection` | optics | Adaptation direction: -1 dark-adapting, 0 settled, +1 light-adapting |
-| `aee_optics_eyeAdaptTau` | optics | Effective adaptation time constant of the slowest pool, s |
-| `aee_optics_eyeAdaptTimeToAdapt` | optics | Time to cover 95 percent of the remaining adaptation, s |
-| `aee_optics_eyeAdaptInitialised` | optics | True once the eye takes its initial state from the scene at spawn |
-| `aee_optics_eyeAcuity` | optics | Scotopic acuity factor, 1 daylight down to a dark floor |
-| `aee_optics_eyeColourLoss` | optics | Scotopic colour-loss factor, 0 photopic to 1 rod monochromacy |
-| `aee_optics_eyeDarkNoise` | optics | Scotopic dark-noise (visual grain) factor, 0 to 1 |
-| `aee_optics_eyeGlare` | optics | Veiling glare factor from a local source, 0 to 1 |
-| `aee_optics_eyeMesopic` | optics | CIE 191:2010 photopic fraction, 0 scotopic to 1 photopic |
-| `aee_optics_eyeSkyFraction` | optics | Open-sky fraction from the sky raycast, 0 to 1 |
-| `aee_optics_eyeRawAmbient` | optics | Raw ambient input to the eye model, lx |
-| `aee_optics_eyeRawLocal` | optics | Raw local-light input to the eye model, lx |
-| `aee_optics_eyeRawCoreLocal` | optics | Core dynamic-lux input to the eye model, lx |
-| `aee_optics_eyeRawEngineAmbient` | optics | Engine `getLightingAt` ambient element, no unit |
-| `aee_optics_eyeRawSunElev` | optics | Sun elevation at the sample, degrees (gates the ambient source) |
-| `aee_optics_eyeRawEngineLocal` | optics | Engine `getLightingAt` dynamic element, no unit |
-| `aee_optics_eyeRawEngineLum` | optics | Engine `apertureParams` estimated luminance, no unit |
-| `aee_optics_eyeRawBlinding` | optics | Engine `apertureParams` blinding term, no unit |
-| `aee_optics_eyeRawSky` | optics | Open-sky fraction before the scene combine, 0 to 1 |
-| `aee_optics_perceptionState` | optics | Perception monitor aggregate: the 14-field perceptionSample schema (scene lux, adapted lux, aperture, pupil, mesopic, grade, tint, NVG, thermal, UV, stress, injury, effects, eye adaptation) |
-| `aee_optics_perceptionLine` | optics | Perception monitor one-line human readout of the view state |
-| `aee_optics_perceptionLux` | optics | Perception monitor scene illuminance, lx |
-| `aee_optics_perceptionAperture` | optics | Perception monitor applied aperture |
-| `aee_optics_perceptionGrade` | optics | Perception monitor applied grade channels [brightness, contrast, offset, alpha] |
-| `aee_optics_perceptionFlags` | optics | Perception monitor deviation flags [discolouration, blindness, gradeMismatch, stuckAdaptation, detail] |
-| `aee_optics_perceptionForceLux` | optics | Perception force hook: replaces the sampled scene lux. A debug-console value on `missionNamespace`, not a CBA setting |
-| `aee_optics_perceptionForceGrade` | optics | Perception force hook: replaces the applied grade array |
-| `aee_optics_perceptionForceNvg` | optics | Perception force hook: replaces the NVG state array |
-| `aee_optics_perceptionForceThermal` | optics | Perception force hook: replaces the thermal state array |
-| `aee_optics_perceptionMonitor` | optics | Registered setting under **AEE Debug > Perception**: publish and log the perception state (default on) |
-| `aee_optics_perceptionHud` | optics | Registered setting under **AEE Debug > Perception**: show the perception overlay (default off) |
-| `aee_optics_perceptionInterval` | optics | Registered setting under **AEE Debug > Perception**: minimum seconds between samples, 0.1 to 2.0 (default 0.5) |
+| `aee_vision_viewDistanceTarget` | vision | Vision-driven view distance target in metres (issue #138) |
+| `aee_vision_viewDistanceSigma` | vision | Total atmospheric extinction sigma for the view-distance driver |
+| `aee_vision_dtvHostVehicle` | vision | Vehicle whose native TI the DTV base channel disabled; restored on exit or switch |
+| `aee_vision_dtvHostEntered` | vision | True while the DTV base channel has run its thermal sensor ENTER |
+| `aee_eye_eyeSceneLux` | eye | Scene illuminance the eye model sampled, lx |
+| `aee_eye_eyeAdaptedLux` | eye | Adapted scene illuminance after the eye model, lx |
+| `aee_eye_eyeAperture` | eye | Aperture the eye model pinned, higher is wider |
+| `aee_eye_eyePupilMm` | eye | Pupil diameter the eye model carries, mm |
+| `aee_eye_eyeAdaptTargetLux` | eye | Scene illuminance the eye model is adapting toward, lx |
+| `aee_eye_eyeAdaptDirection` | eye | Adaptation direction: -1 dark-adapting, 0 settled, +1 light-adapting |
+| `aee_eye_eyeAdaptTau` | eye | Effective adaptation time constant of the slowest pool, s |
+| `aee_eye_eyeAdaptTimeToAdapt` | eye | Time to cover 95 percent of the remaining adaptation, s |
+| `aee_eye_eyeAdaptInitialised` | eye | True once the eye takes its initial state from the scene at spawn |
+| `aee_eye_eyeAcuity` | eye | Scotopic acuity factor, 1 daylight down to a dark floor |
+| `aee_eye_eyeColourLoss` | eye | Scotopic colour-loss factor, 0 photopic to 1 rod monochromacy |
+| `aee_eye_eyeDarkNoise` | eye | Scotopic dark-noise (visual grain) factor, 0 to 1 |
+| `aee_eye_eyeGlare` | eye | Veiling glare factor from a local source, 0 to 1 |
+| `aee_eye_eyeMesopic` | eye | CIE 191:2010 photopic fraction, 0 scotopic to 1 photopic |
+| `aee_eye_eyeSkyFraction` | eye | Open-sky fraction from the sky raycast, 0 to 1 |
+| `aee_eye_eyeRawAmbient` | eye | Raw ambient input to the eye model, lx |
+| `aee_eye_eyeRawLocal` | eye | Raw local-light input to the eye model, lx |
+| `aee_eye_eyeRawCoreLocal` | eye | Core dynamic-lux input to the eye model, lx |
+| `aee_eye_eyeRawEngineAmbient` | eye | Engine `getLightingAt` ambient element, no unit |
+| `aee_eye_eyeRawSunElev` | eye | Sun elevation at the sample, degrees (gates the ambient source) |
+| `aee_eye_eyeRawEngineLocal` | eye | Engine `getLightingAt` dynamic element, no unit |
+| `aee_eye_eyeRawEngineLum` | eye | Engine `apertureParams` estimated luminance, no unit |
+| `aee_eye_eyeRawBlinding` | eye | Engine `apertureParams` blinding term, no unit |
+| `aee_eye_eyeRawSky` | eye | Open-sky fraction before the scene combine, 0 to 1 |
+| `aee_vision_perceptionState` | optics | Perception monitor aggregate: the 14-field perceptionSample schema (scene lux, adapted lux, aperture, pupil, mesopic, grade, tint, NVG, thermal, UV, stress, injury, effects, eye adaptation) |
+| `aee_vision_perceptionLine` | optics | Perception monitor one-line human readout of the view state |
+| `aee_vision_perceptionLux` | optics | Perception monitor scene illuminance, lx |
+| `aee_vision_perceptionAperture` | optics | Perception monitor applied aperture |
+| `aee_vision_perceptionGrade` | optics | Perception monitor applied grade channels [brightness, contrast, offset, alpha] |
+| `aee_vision_perceptionFlags` | optics | Perception monitor deviation flags [discolouration, blindness, gradeMismatch, stuckAdaptation, detail] |
+| `aee_vision_perceptionForceLux` | optics | Perception force hook: replaces the sampled scene lux. A debug-console value on `missionNamespace`, not a CBA setting |
+| `aee_vision_perceptionForceGrade` | optics | Perception force hook: replaces the applied grade array |
+| `aee_vision_perceptionForceNvg` | optics | Perception force hook: replaces the NVG state array |
+| `aee_vision_perceptionForceThermal` | optics | Perception force hook: replaces the thermal state array |
+| `aee_vision_perceptionMonitor` | optics | Registered setting under **AEE Debug > Perception**: publish and log the perception state (default on) |
+| `aee_vision_perceptionHud` | optics | Registered setting under **AEE Debug > Perception**: show the perception overlay (default off) |
+| `aee_vision_perceptionInterval` | optics | Registered setting under **AEE Debug > Perception**: minimum seconds between samples, 0.1 to 2.0 (default 0.5) |
 
 ### Physiology
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_physiology_dehydrationRisk` | physiology | Dehydration risk 0..1 |
+| `aee_strain_dehydrationRisk` | strain | Dehydration risk 0..1 |
 | `aee_core_currentHypoxiaRisk` | physiology | Hypoxia risk 0..1 |
-| `aee_physiology_hypoxiaTUC` | physiology | Time of useful consciousness in seconds |
-| `aee_physiology_acclimatizationPercent` | physiology | Altitude acclimatisation 0..100 |
-| `aee_physiology_gLoad` | physiology | Measured Gz load (1 = standing) |
-| `aee_physiology_gLocStage` | physiology | G-LOC stage 0 none / 1 greyout / 2 blackout / 3 LOC |
-| `aee_physiology_gLocTolerance` | physiology | Current G-LOC tolerance in G |
-| `aee_physiology_altitudeDCSRisk` | physiology | Altitude DCS risk 0..1 (ZH-L16C R-ratio) |
-| `aee_physiology_uvIndex` | physiology | UV index 0..13 |
+| `aee_altitude_hypoxiaTUC` | altitude | Time of useful consciousness in seconds |
+| `aee_altitude_acclimatizationPercent` | altitude | Altitude acclimatisation 0..100 |
+| `aee_altitude_gLoad` | altitude | Measured Gz load (1 = standing) |
+| `aee_altitude_gLocStage` | altitude | G-LOC stage 0 none / 1 greyout / 2 blackout / 3 LOC |
+| `aee_altitude_gLocTolerance` | altitude | Current G-LOC tolerance in G |
+| `aee_altitude_altitudeDCSRisk` | altitude | Altitude DCS risk 0..1 (ZH-L16C R-ratio) |
+| `aee_strain_uvIndex` | strain | UV index 0..13 |
 | `aee_core_currentUVIndex` | physiology | UV index (core alias) |
 | `aee_thermal_batteryTemperatureDerating` | thermal | Battery derating 0.3..1 |
-| `aee_environmental_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
+| `aee_weather_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
 | `aee_physiology_scentDispersionDir` | physiology | Scent downwind direction |
-| `aee_environmental_scentDispersionDir` | environmental | Scent downwind direction (re-homed from physiology by the module-hygiene cleanup) |
-| `aee_physiology_amsRisk` | physiology | Acute mountain sickness risk |
+| `aee_weather_scentDispersionDir` | environmental | Scent downwind direction (re-homed from physiology by the module-hygiene cleanup) |
+| `aee_altitude_amsRisk` | altitude | Acute mountain sickness risk |
 | `aee_physiology_sleepState` | physiology | Sleep state |
 | `aee_physiology_sleepiness` | physiology | Sleepiness 0..1 |
-| `aee_physiology_diveStates` | physiology | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
-| `aee_physiology_diveMix` | physiology | External breathing-gas hook (issue #118): [fN2, fHe, fO2] set by diving addons |
-| `aee_physiology_diveGradientFactor` | physiology | Buhlmann gradient factor (CBA setting, 0.5-1.0) |
+| `aee_dive_diveStates` | dive | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
+| `aee_dive_diveMix` | dive | External breathing-gas hook (issue #118): [fN2, fHe, fO2] set by diving addons |
+| `aee_dive_diveGradientFactor` | dive | Buhlmann gradient factor (CBA setting, 0.5-1.0) |
 | `aee_core_coreBodyTemp` | core | Core body temperature in C from the physiology heat balance (`fnc_coreBodyTemp`): a 37 C baseline plus a WBGT heat gain minus a wind-chill and hypothermia loss. Grade: baseline sourced; coefficients UNSOURCED |
 
 ### Thermal
@@ -240,6 +240,9 @@ harness and the KAT integration. Each row states its grade.
 | `aee_thermal_humanCoreTempC` | thermal | Human core temperature from the two-node solver: 0.1 skin + 0.9 core (Gagge 1986). Published for a human selection only. Grade: derived |
 | `aee_thermal_skyBandTempC` | thermal | Last computed band sky temperature in C, from the Tebo 1965 8-14 um envelope applied by `fnc_calculateSkyRadiance`. Grade: derived-from-measurement |
 | `aee_thermal_groundNodeStack` | thermal | Four-layer ground node-stack state, a HashMap keyed by grid cell and material. The value is six elements: four layer temperatures at node depths 0.05 / 0.25 / 0.70 / 1.50 m (C), the deep-soil TBOT anchor (C), and the last-advance tick. A water cell stores the water temperature six times |
+| `aee_thermal_display_agcHunt` | thermal_display | View-owned AGC-hunt telemetry written by `fnc_applyThermalVision`; no reader (debug readout) |
+| `aee_thermal_display_nucDrift` | thermal_display | View-owned NUC-drift telemetry written by `fnc_applyThermalVision`; no reader (debug readout) |
+| `aee_thermal_display_temporalNoise` | thermal_display | View-owned temporal-noise telemetry written by `fnc_applyThermalVision`; no reader (debug readout) |
 
 ### Radio
 
@@ -255,8 +258,18 @@ harness and the KAT integration. Each row states its grade.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_mobility_enginePowerModifier` | mobility | NA engine power 0.3..1 |
-| `aee_mobility_engineTurboModifier` | mobility | Turbo engine power 0.3..1 |
+| `aee_vehicles_enginePowerModifier` | vehicles | NA engine power 0.3..1 |
+| `aee_vehicles_engineTurboModifier` | vehicles | Turbo engine power 0.3..1 |
+| `aee_flight_engineNg` | flight | Gas-generator speed ratio published by the engine kernel (issue #117) |
+| `aee_flight_engineTgtC` | flight | Scripted turbine temperature in deg C, from the sourced limits, not engine-exposed (issue #117) |
+| `aee_flight_engineOilKpa` | flight | Scripted engine oil pressure in kPa, from the sourced limits, not engine-exposed (issue #117) |
+| `aee_flight_rotorImbalance` | flight | Rotor imbalance 0..1 published by the damage kernel (issue #117) |
+| `aee_flight_statusHydraulicPressureKpa` | flight | Sourced hydraulic system pressure in kPa published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_flight_statusGeneratorPowerKw` | flight | Sourced generator power in kW published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_flight_statusBusVoltageV` | flight | Sourced bus voltage in V published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_flight_statusBatteryChargeAh` | flight | Sourced battery charge in Ah published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_flight_statusCabinPressureMaxKpa` | flight | Sourced cabin pressure in kPa published by the status kernel, status only and not engine-observed (issue #117) |
+| `aee_flight_statusOxygenSystem` | flight | Sourced oxygen system token published by the status kernel, status only and not engine-observed (issue #117) |
 | `aee_mobility_tractionForce` | mobility | Traction force |
 | `aee_mobility_wheelSlip` | mobility | Wheel slip 0..1 |
 | `aee_mobility_mudAccretion` | mobility | Mud accretion |
@@ -283,8 +296,8 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_routeDegradation` | mobility | Route degradation |
 | `aee_mobility_soilBearing` | mobility | Soil bearing strength |
 | `aee_mobility_tractionModifier` | mobility | Traction modifier |
-| `aee_mobility_turbulencePFH` | mobility | Turbulence PFH handle |
-| `aee_mobility_airframeLoadPFH` | mobility | Airframe density/icing PFH handle |
+| `aee_flight_turbulencePFH` | flight | Turbulence PFH handle |
+| `aee_flight_airframeLoadPFH` | flight | Airframe density/icing PFH handle |
 | `aee_mobility_airframeVehicles` | mobility | Cached aircraft list for the airframe load loop |
 | `aee_mobility_airframeRefresh` | mobility | Time of the last airframe-list refresh |
 | `aee_mobility_airLiftLoss` | mobility | Applied lift-loss fraction from density and icing, 0..0.45 |
@@ -293,7 +306,7 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_airLiftRatioApplied` | mobility | Lift ratio used for the applied lift loss |
 | `aee_mobility_rolloverPFH` | mobility | Vehicle rollover PFH handle (#108) |
 | `aee_mobility_isReady` | mobility | Mobility module ready flag |
-| `aee_mobility_crankSuccess` | mobility | Cold-start crank probability 0..1 |
+| `aee_vehicles_crankSuccess` | vehicles | Cold-start crank probability 0..1 |
 | `aee_mobility_muSurface` | mobility | Combined wet/ice/brake surface friction 0..1 |
 | `aee_mobility_dryFrictionMu` | mobility | Dry reference friction coefficient from the wet/ice traction model (0.8) |
 | `aee_mobility_accretionMassKg` | mobility | Surface accretion mass applied to the bound vehicle with setMass (W2) |
@@ -301,15 +314,16 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_gripDeltaMu` | mobility | Wet/ice friction loss: dry reference minus the current surface coefficient (W2) |
 | `aee_mobility_gripLossForceN` | mobility | Coulomb grip-loss force applied with addForce, in newtons (W2) |
 | `aee_mobility_couplingPFH` | mobility | Runtime vehicle coupling PFH handle (W2) |
+| `aee_flight_aircraftSystemsPFH` | flight | Aircraft systems driver PFH handle, the ONE handler that schedules the four systems kernels (#117) |
 | `aee_mobility_brakeTempC` | mobility | Brake rotor temperature in C |
 | `aee_mobility_brakeMu` | mobility | Brake friction coefficient (fade) 0..1 |
-| `aee_mobility_vehicleMassLowKg` | mobility | Vehicle mass estimate lower bound in kg, 0 when unavailable |
-| `aee_mobility_vehicleMassHighKg` | mobility | Vehicle mass estimate upper bound in kg, 0 when unavailable |
-| `aee_mobility_vehicleMassMethod` | mobility | Mass estimate method: `catalogue_row`, `geometry_material`, `geometry_material_power`, or `none` |
-| `aee_mobility_vehicleMassAssumptions` | mobility | Mass estimate assumption bitmask set by the model |
-| `aee_mobility_vehicleMassConfidence` | mobility | Mass estimate confidence: `documented`, `low`, `medium`, `high`, or `none` |
-| `aee_mobility_vehicleMassStatus` | mobility | Mass estimate status: `sourced`, `estimated`, or `unavailable` |
-| `aee_mobility_vehicleMassSource` | mobility | Source record id behind a sourced mass estimate |
+| `aee_vehicles_vehicleMassLowKg` | vehicles | Vehicle mass estimate lower bound in kg, 0 when unavailable |
+| `aee_vehicles_vehicleMassHighKg` | vehicles | Vehicle mass estimate upper bound in kg, 0 when unavailable |
+| `aee_vehicles_vehicleMassMethod` | vehicles | Mass estimate method: `catalogue_row`, `geometry_material`, `geometry_material_power`, or `none` |
+| `aee_vehicles_vehicleMassAssumptions` | vehicles | Mass estimate assumption bitmask set by the model |
+| `aee_vehicles_vehicleMassConfidence` | vehicles | Mass estimate confidence: `documented`, `low`, `medium`, `high`, or `none` |
+| `aee_vehicles_vehicleMassStatus` | vehicles | Mass estimate status: `sourced`, `estimated`, or `unavailable` |
+| `aee_vehicles_vehicleMassSource` | vehicles | Source record id behind a sourced mass estimate |
 
 The soil-strength model is fail-closed (#117). It publishes no numeric VCI or
 Mobility Index value while the vehicle records and the VCI50 source are
@@ -322,16 +336,16 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | Variable | Subsystem | Purpose |
 |---|---|---|
 | `aee_core_currentFireRisk` | environmental | Fire spread risk 0..1 |
-| `aee_environmental_fireSpreadRate_mps` | environmental | Fire spread rate in m/s |
-| `aee_environmental_fireArea_m2` | environmental | Fire area in m2 |
+| `aee_persistence_fireSpreadRate_mps` | environmental | Fire spread rate in m/s |
+| `aee_persistence_fireArea_m2` | environmental | Fire area in m2 |
 | `aee_core_currentFloodRisk` | environmental | Flash flood risk 0..1 |
 | `aee_core_currentAvalancheRisk` | environmental | Avalanche risk 0..1 |
-| `aee_environmental_currentAvalancheStability` | environmental | McClung stability index S (strength/shear stress) |
-| `aee_environmental_avalancheBurialSurvival` | environmental | Burial survival curve [[0,0.97],[15,0.93],[35,0.30],[90,0.03]] |
-| `aee_environmental_iceThicknessCm` | environmental | Stefan-grown ice thickness in cm |
-| `aee_environmental_iceSafeKg` | environmental | Gold safe load P = 3.5·h² in kg |
-| `aee_environmental_concealmentFactor` | environmental | Seasonal concealment 0..1 (foliage/crop/snow/stance) |
-| `aee_environmental_concealmentClass` | environmental | Concealment surface class (forest/crop/grass/marsh/snow/bare) |
+| `aee_persistence_currentAvalancheStability` | environmental | McClung stability index S (strength/shear stress) |
+| `aee_persistence_avalancheBurialSurvival` | environmental | Burial survival curve [[0,0.97],[15,0.93],[35,0.30],[90,0.03]] |
+| `aee_persistence_iceThicknessCm` | environmental | Stefan-grown ice thickness in cm |
+| `aee_persistence_iceSafeKg` | environmental | Gold safe load P = 3.5·h² in kg |
+| `aee_weather_concealmentFactor` | environmental | Seasonal concealment 0..1 (foliage/crop/snow/stance) |
+| `aee_weather_concealmentClass` | environmental | Concealment surface class (forest/crop/grass/marsh/snow/bare) |
 | `aee_core_snowDepth_m` | environmental | Snow depth in metres |
 | `aee_core_frozenDepth_m` | environmental | Frozen depth in metres |
 | `aee_core_thawDepth_m` | environmental | Thaw depth in metres |
@@ -341,28 +355,28 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_currentDustDevil` | environmental | Dust devil activity 0..1 |
 | `aee_core_currentBlowingSnow` | environmental | Blowing snow 0..1 |
 | `aee_core_cbrnPersistence` | environmental | CBRN persistence 0.225..2.1 |
-| `aee_environmental_solarFlareActive` | environmental | Solar flare flag |
-| `aee_environmental_spaceWeatherFlareValue` | environmental | Flare value |
-| `aee_environmental_auroraVisibility` | environmental | Aurora visibility |
-| `aee_environmental_auroraIntensity` | environmental | Aurora intensity 0..1 |
-| `aee_environmental_kpIndex` | environmental | Kp index |
-| `aee_environmental_solarActivity` | environmental | Solar activity |
-| `aee_environmental_geomagneticDescription` | environmental | Geomagnetic description |
-| `aee_environmental_spaceWeatherFlareTimer` | environmental | Flare timer |
-| `aee_environmental_flashFloodRisk` | environmental | Flash flood risk 0..1 |
-| `aee_environmental_groundFrostPresent` | environmental | Ground frost flag |
-| `aee_environmental_groundFrostIntensity` | environmental | Ground frost 0..1 |
-| `aee_environmental_snowDriftIntensity` | environmental | Snow drift 0..1 |
-| `aee_environmental_freezeThawDescription` | environmental | Freeze-thaw description |
-| `aee_environmental_currentAvalancheWarning` | environmental | Avalanche warning |
-| `aee_environmental_currentSoundPropagation` | environmental | Sound propagation 0..1 |
-| `aee_environmental_biologicalAmbientIntensity` | environmental | Biological ambient |
+| `aee_weather_solarFlareActive` | environmental | Solar flare flag |
+| `aee_weather_spaceWeatherFlareValue` | environmental | Flare value |
+| `aee_lighting_auroraVisibility` | environmental | Aurora visibility |
+| `aee_weather_auroraIntensity` | environmental | Aurora intensity 0..1 |
+| `aee_weather_kpIndex` | environmental | Kp index |
+| `aee_weather_solarActivity` | environmental | Solar activity |
+| `aee_weather_geomagneticDescription` | environmental | Geomagnetic description |
+| `aee_weather_spaceWeatherFlareTimer` | environmental | Flare timer |
+| `aee_persistence_flashFloodRisk` | environmental | Flash flood risk 0..1 |
+| `aee_persistence_groundFrostPresent` | environmental | Ground frost flag |
+| `aee_persistence_groundFrostIntensity` | environmental | Ground frost 0..1 |
+| `aee_weather_snowDriftIntensity` | environmental | Snow drift 0..1 |
+| `aee_persistence_freezeThawDescription` | environmental | Freeze-thaw description |
+| `aee_persistence_currentAvalancheWarning` | environmental | Avalanche warning |
+| `aee_weather_currentSoundPropagation` | environmental | Sound propagation 0..1 |
+| `aee_weather_biologicalAmbientIntensity` | environmental | Biological ambient |
 | `aee_core_biome` | environmental | Koppen biome code (map climate class) |
-| `aee_environmental_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
-| `aee_environmental_localBiomeName` | environmental | Display name for `aee_environmental_localBiome` |
-| `aee_environmental_terrainSignals` | environmental | Terrain facts the world lighting matcher reads: water fraction and mean elevation |
-| `aee_environmental_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
-| `aee_environmental_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
+| `aee_weather_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
+| `aee_weather_localBiomeName` | environmental | Display name for `aee_weather_localBiome` |
+| `aee_weather_terrainSignals` | environmental | Terrain facts the world lighting matcher reads: water fraction and mean elevation |
+| `aee_lighting_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
+| `aee_lighting_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
 
 ### Maritime
 
@@ -376,8 +390,8 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_maritime_seaSurfaceTemperature` | maritime | Sea-surface temperature (evaporation-duct feed) |
 | `aee_core_currentTideDescription` | maritime | Tide description |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
-| `aee_maritime_compassDeviation` | maritime | Compass deviation (maritime namespace) |
-| `aee_maritime_compassAnomalyNT` | maritime | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
+| `aee_magnetism_compassDeviation` | magnetism | Compass deviation (magnetism namespace) |
+| `aee_magnetism_compassAnomalyNT` | magnetism | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
 
 ### Aviation and severe weather
 
@@ -423,10 +437,10 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_fx_blastOverpressureKpa` | fx | Last explosion incident overpressure in kPa (Kingery-Bulmash) |
-| `aee_fx_blastInjury` | fx | Last explosion injury vector [eardrum, lungThresh, lung1, lung50, lung99, throw] |
-| `aee_fx_particleSources` | fx | Live particle source records: [source, effect, priority, particles, expiry, key, params] |
-| `aee_fx_supersonicTrace` | fx | Live refractive shock traces drawn on the local player's rounds. One record per trace, holding the particle source, the projectile, and the last kernel contrast in units of 1e-4. The renderer caps the list at 4 and skips a new shot at the cap. The drawn distortion is an upper bound on the refractive contrast. It is not a vapour trail and not a condensation trail |
+| `aee_blast_blastOverpressureKpa` | blast | Last explosion incident overpressure in kPa (Kingery-Bulmash) |
+| `aee_blast_blastInjury` | blast | Last explosion injury vector [eardrum, lungThresh, lung1, lung50, lung99, throw] |
+| `aee_particles_particleSources` | particles | Live particle source records: [source, effect, priority, particles, expiry, key, params] |
+| `aee_particles_supersonicTrace` | particles | Live refractive shock traces drawn on the local player's rounds. One record per trace, holding the particle source, the projectile, and the last kernel contrast in units of 1e-4. The renderer caps the list at 4 and skips a new shot at the cap. The drawn distortion is an upper bound on the refractive contrast. It is not a vapour trail and not a condensation trail |
 | `aee_core_moduleUpdateInterval` | core | EDEN update interval |
 | `aee_core_weatherProgressionSeed` | core | Seeded weather progression |
 | `aee_core_qnh` | core | QNH pressure setting |
@@ -459,16 +473,16 @@ read them.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_environmental_auroraActive` | environmental | Whether the aurora curtain is drawn this frame |
-| `aee_environmental_auroraSourceCount` | environmental | Live aurora particle sources |
-| `aee_environmental_milkyWayActive` | environmental | Whether the Milky Way band is drawn this frame |
-| `aee_environmental_milkyWaySampleCount` | environmental | Milky Way band samples this frame |
-| `aee_environmental_faintStarCount` | environmental | Faint stars drawn by the immediate-mode layer |
-| `aee_environmental_effectiveNelm` | environmental | The limiting magnitude the starfield uses (forced when `aee_environmental_starsForce` is set) |
-| `aee_environmental_starEmitterCount` | environmental | Bright-star light emitters requested |
-| `aee_environmental_starBrightnessCoefficient` | environmental | Resolved star render scale 0..1 (moon, light pollution, weather and the world matcher) |
-| `aee_environmental_houseCount` | environmental | Nearby house count behind the light-pollution penalty (5 s cache) |
-| `aee_environmental_ambientBrightness` | environmental | Engine ambient brightness behind the star coefficient (5 s cache) |
+| `aee_lighting_auroraActive` | environmental | Whether the aurora curtain is drawn this frame |
+| `aee_lighting_auroraSourceCount` | environmental | Live aurora particle sources |
+| `aee_lighting_milkyWayActive` | environmental | Whether the Milky Way band is drawn this frame |
+| `aee_lighting_milkyWaySampleCount` | environmental | Milky Way band samples this frame |
+| `aee_lighting_faintStarCount` | environmental | Faint stars drawn by the immediate-mode layer |
+| `aee_lighting_effectiveNelm` | environmental | The limiting magnitude the starfield uses (forced when `aee_lighting_starsForce` is set) |
+| `aee_lighting_starEmitterCount` | environmental | Bright-star light emitters requested |
+| `aee_lighting_starBrightnessCoefficient` | environmental | Resolved star render scale 0..1 (moon, light pollution, weather and the world matcher) |
+| `aee_lighting_houseCount` | environmental | Nearby house count behind the light-pollution penalty (5 s cache) |
+| `aee_lighting_ambientBrightness` | environmental | Engine ambient brightness behind the star coefficient (5 s cache) |
 
 ### Night-sky debug hooks
 
@@ -477,30 +491,30 @@ consolidated line is greppable by `sky state`.
 
 | Hook | Type | Purpose |
 |---|---|---|
-| `aee_environmental_skyForce` | Boolean | Force the whole night sky on |
-| `aee_environmental_auroraForce` | Number | -1 off, 0..1 forces that aurora intensity |
-| `aee_environmental_milkyWayForce` | Boolean | Force the Milky Way on |
-| `aee_environmental_starsForce` | Number | Forced limiting magnitude (6.5 reveals the faint bulk) |
-| `aee_environmental_meteorForce` | String | One-shot shower code (spawns one meteor) |
+| `aee_lighting_skyForce` | Boolean | Force the whole night sky on |
+| `aee_lighting_auroraForce` | Number | -1 off, 0..1 forces that aurora intensity |
+| `aee_lighting_milkyWayForce` | Boolean | Force the Milky Way on |
+| `aee_lighting_starsForce` | Number | Forced limiting magnitude (6.5 reveals the faint bulk) |
+| `aee_lighting_meteorForce` | String | One-shot shower code (spawns one meteor) |
 
 Set a hook from the debug console with the `missionNamespace setVariable`
 form:
 
 ```
-missionNamespace setVariable ["aee_environmental_skyForce", true];
-missionNamespace setVariable ["aee_environmental_auroraForce", 0.8];
-missionNamespace setVariable ["aee_environmental_milkyWayForce", true];
-missionNamespace setVariable ["aee_environmental_starsForce", 6.5];
-missionNamespace setVariable ["aee_environmental_meteorForce", "GEM"];
+missionNamespace setVariable ["aee_lighting_skyForce", true];
+missionNamespace setVariable ["aee_lighting_auroraForce", 0.8];
+missionNamespace setVariable ["aee_lighting_milkyWayForce", true];
+missionNamespace setVariable ["aee_lighting_starsForce", 6.5];
+missionNamespace setVariable ["aee_lighting_meteorForce", "GEM"];
 ```
 
 Clear every hook and return to the physics:
 
 ```
-missionNamespace setVariable ["aee_environmental_skyForce", false];
-missionNamespace setVariable ["aee_environmental_auroraForce", -1];
-missionNamespace setVariable ["aee_environmental_milkyWayForce", false];
-missionNamespace setVariable ["aee_environmental_starsForce", 0];
+missionNamespace setVariable ["aee_lighting_skyForce", false];
+missionNamespace setVariable ["aee_lighting_auroraForce", -1];
+missionNamespace setVariable ["aee_lighting_milkyWayForce", false];
+missionNamespace setVariable ["aee_lighting_starsForce", 0];
 ```
 
 ## Settings
@@ -510,7 +524,7 @@ missionNamespace setVariable ["aee_environmental_starsForce", 0];
 These registered settings gate the DEBUG and TRACE log lines. The
 `AEE_LOG_DEBUG` and `AEE_LOG_TRACE` macros test `aee_core_logDebug`, and
 per module the name built from the component (`aee_ballistics_logDebug`,
-`aee_physiology_logDebug`, `aee_fx_logDebug`). A mission or the debug
+`aee_physiology_logDebug`, `aee_particles_logDebug`). A mission or the debug
 console may set any of them directly.
 
 | Variable | Purpose |
@@ -518,7 +532,7 @@ console may set any of them directly.
 | `aee_core_logDebug` | Master switch for DEBUG and TRACE lines |
 | `aee_ballistics_logDebug` | Trace shot resolution alone |
 | `aee_physiology_logDebug` | Trace the carried load and the item masses |
-| `aee_fx_logDebug` | Trace the effect emitters |
+| `aee_particles_logDebug` | Trace the effect emitters |
 | `aee_thermal_logDebug` | Trace the thermal display chain |
 | `aee_optics_logDebug` | Trace the optics and eye-adaptation state |
 | `aee_nightvision_logDebug` | Trace the NVG tube model |
@@ -526,7 +540,7 @@ console may set any of them directly.
 | `aee_maritime_logDebug` | Trace the maritime model |
 | `aee_atmos_logDebug` | Trace the atmospheric events |
 | `aee_armour_logDebug` | Trace the armour ladder |
-| `aee_environmental_logDebug` | Trace the consolidated sky state |
+| `aee_weather_logDebug` | Trace the consolidated sky state |
 | `aee_compat_ace3_logDebug` | Trace the ACE3 integration |
 | `aee_compat_acm_logDebug` | Trace the ACM integration |
 | `aee_compat_acre2_logDebug` | Trace the ACRE2 integration |
@@ -534,9 +548,9 @@ console may set any of them directly.
 | `aee_compat_realweather_logDebug` | Trace the Real Weather integration |
 | `aee_compat_tfar_logDebug` | Trace the TFAR integration |
 | `aee_thermal_agcPinned` | Debug only: suspend the AGC and the engine-window writer so the operator can pin the engine TI window by hand (exposure pin test) |
-| `aee_core_consistencyCheck` | Run the cross-module consistency monitor (default on) |
-| `aee_core_consistencyInterval` | Seconds between consistency samples, 1 to 60 (default 10) |
-| `aee_core_consistencyStrict` | Report a passing invariant with a residual drift inside its tolerance, at INFO (default off) |
+| `aee_diagnostics_consistencyCheck` | Run the cross-module consistency monitor (default on) |
+| `aee_diagnostics_consistencyInterval` | Seconds between consistency samples, 1 to 60 (default 10) |
+| `aee_diagnostics_consistencyStrict` | Report a passing invariant with a residual drift inside its tolerance, at INFO (default off) |
 
 Every `logDebug` switch registers under **AEE Debug > <component>**. The
 coverage-gaps release added one to every addon that declares settings, so
@@ -549,7 +563,7 @@ when this switch is on.
 
 | Variable | Purpose |
 |---|---|
-| `aee_environmental_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
+| `aee_lighting_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
 
 ### Particle and heat-haze coupling
 
@@ -559,9 +573,9 @@ temperature. The kernels are pure and the coupling is gated.
 
 | Variable | Category | Purpose |
 |---|---|---|
-| `aee_fx_weatherAlphaEnabled` | AEE FX > Particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
-| `aee_fx_heatHazeEnabled` | AEE FX > Particles | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
-| `aee_fx_heatHazeMaxAlpha` | AEE FX > Particles | Upper bound on the ambient-temperature heat-haze alpha |
+| `aee_particles_weatherAlphaEnabled` | AEE FX > Particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
+| `aee_weatherfx_heatHazeEnabled` | AEE FX > Particles | Couple the exhaust heat-shimmer alpha and size to the ambient temperature |
+| `aee_weatherfx_heatHazeMaxAlpha` | AEE FX > Particles | Upper bound on the ambient-temperature heat-haze alpha |
 
 ### Night-vision display
 
@@ -569,8 +583,8 @@ The **AEE HUD > Displays** category holds the on-screen night-vision readouts.
 
 | Variable | Category | Purpose |
 | --- | --- | --- |
-| `aee_nightvision_ltmEnabled` | AEE HUD > Displays | Draw the NVG laser target marker |
-| `aee_nightvision_ltmDaylightFade` | AEE HUD > Displays | Fade the laser marker by day, alpha `1.2 - sunOrMoon` |
+| `aee_ltm_ltmEnabled` | AEE HUD > Displays | Draw the NVG laser target marker |
+| `aee_ltm_ltmDaylightFade` | AEE HUD > Displays | Fade the laser marker by day, alpha `1.2 - sunOrMoon` |
 
 ### MGRS grid and the signal tracker
 
@@ -579,13 +593,13 @@ in **AEE HUD > Tracker**. Each stated default is the shipped value.
 
 | Variable | Category | Purpose |
 | --- | --- | --- |
-| `aee_optics_mgrsEnabled` | AEE HUD > Displays | Show the MGRS grid in place of the legacy numeric grid (default on) |
-| `aee_optics_mgrsMapGrid` | AEE HUD > Displays | Draw the MGRS grid overlay on the map (default on) |
-| `aee_optics_mgrsCursorReadout` | AEE HUD > Displays | Show the MGRS reference and elevation at the map cursor (default on) |
-| `aee_optics_mgrsPrecision` | AEE HUD > Displays | MGRS digit count, one of 4, 6, 8 or 10 (default 10) |
-| `aee_optics_trackerEnabled` | AEE HUD > Tracker | Replace the exact friendly position with the modelled tracker (default off) |
-| `aee_optics_trackerSuppressIcons` | AEE HUD > Tracker | Suppress the engine friendly map indicators where the difficulty allows (default off) |
-| `aee_optics_trackerInterval` | AEE HUD > Tracker | Seconds between tracker surveys, 0.2 to 5 (default 1.0) |
+| `aee_cartography_mgrsEnabled` | AEE HUD > Displays | Show the MGRS grid in place of the legacy numeric grid (default on) |
+| `aee_cartography_mgrsMapGrid` | AEE HUD > Displays | Draw the MGRS grid overlay on the map (default on) |
+| `aee_cartography_mgrsCursorReadout` | AEE HUD > Displays | Show the MGRS reference and elevation at the map cursor (default on) |
+| `aee_cartography_mgrsPrecision` | AEE HUD > Displays | MGRS digit count, one of 4, 6, 8 or 10 (default 10) |
+| `aee_hud_trackerEnabled` | AEE HUD > Tracker | Replace the exact friendly position with the modelled tracker (default off) |
+| `aee_hud_trackerSuppressIcons` | AEE HUD > Tracker | Suppress the engine friendly map indicators where the difficulty allows (default off) |
+| `aee_hud_trackerInterval` | AEE HUD > Tracker | Seconds between tracker surveys, 0.2 to 5 (default 1.0) |
 
 ### Human-vision model (perception)
 
@@ -597,14 +611,14 @@ description.
 
 | Variable | Category | Purpose |
 |---|---|---|
-| `aee_optics_visionModelEnabled` | Optics > Vision | Enable the physical model for normal vision |
-| `aee_optics_visionToneEnabled` | Optics > Vision | Enable the tone and contrast stage |
-| `aee_optics_visionToneStrength` | Optics > Vision | Tone-stage strength, 0 to 1 |
-| `aee_optics_visionContrastScale` | Optics > Vision | Tone-stage contrast scale, 0.5 to 1.5 |
-| `aee_optics_visionWhiteBalance` | Optics > Vision | Enable the partial von Kries white balance |
-| `aee_optics_visionAdaptationDegree` | Experimental > Vision | Degree of chromatic adaptation D, 0 to 1 (CIE 159:2004) |
-| `aee_optics_visionMesopicDesaturation` | Experimental > Vision | Maximum mesopic desaturation, 0 to 0.5 |
-| `aee_optics_visionPurkinjeStrength` | Experimental > Vision | Purkinje tint strength, 0 to 1 |
+| `aee_vision_visionModelEnabled` | Optics > Vision | Enable the physical model for normal vision |
+| `aee_vision_visionToneEnabled` | Optics > Vision | Enable the tone and contrast stage |
+| `aee_vision_visionToneStrength` | Optics > Vision | Tone-stage strength, 0 to 1 |
+| `aee_vision_visionContrastScale` | Optics > Vision | Tone-stage contrast scale, 0.5 to 1.5 |
+| `aee_vision_visionWhiteBalance` | Optics > Vision | Enable the partial von Kries white balance |
+| `aee_vision_visionAdaptationDegree` | Experimental > Vision | Degree of chromatic adaptation D, 0 to 1 (CIE 159:2004) |
+| `aee_vision_visionMesopicDesaturation` | Experimental > Vision | Maximum mesopic desaturation, 0 to 0.5 |
+| `aee_vision_visionPurkinjeStrength` | Experimental > Vision | Purkinje tint strength, 0 to 1 |
 
 ### Thermal model (band and sensor)
 
@@ -628,9 +642,9 @@ the kernel default and the per-constant register.
 | `aee_wildlife_environmentBudgetMs` | Wildlife > Environment | The per-call millisecond budget |
 | `aee_wildlife_cognitionEnabled` | Wildlife > Cognition | Enable the budgeted ecology tick |
 | `aee_wildlife_cognitionBudgetMs` | Wildlife > Cognition | The per-call millisecond budget |
-| `aee_wildlife_communicationEnabled` | Wildlife > Communication | Enable the heard-call bus |
-| `aee_wildlife_callRange` | Wildlife > Communication | The audibility range, metres |
-| `aee_wildlife_callBudget` | Wildlife > Communication | The heard-call bus cap |
+| `aee_ambience_communicationEnabled` | Wildlife > Communication | Enable the heard-call bus |
+| `aee_ambience_callRange` | Wildlife > Communication | The audibility range, metres |
+| `aee_ambience_callBudget` | Wildlife > Communication | The heard-call bus cap |
 | `aee_wildlife_environmentDebug` | Debug > Wildlife | Trace the environment sampler |
 | `aee_wildlife_cognitionDebug` | Debug > Wildlife | Trace the ecology tick |
 | `aee_wildlife_communicationDebug` | Debug > Wildlife | Trace the call bus |
@@ -693,11 +707,11 @@ state for the operator and for the debug console.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_optics_baseGradeActive` | optics | Normal-vision base grade currently applied |
-| `aee_optics_baseGradeCC` | optics | Base-grade ColorCorrections handle |
-| `aee_optics_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
-| `aee_optics_visionModelActive` | optics | True when the human-vision model owns the normal-vision grade this tick |
-| `aee_optics_visionBaseResolved` | optics | The resolved base-grade anchor: the cached config value plus any debug override, published above the client-only exit for a headless probe |
+| `aee_vision_baseGradeActive` | vision | Normal-vision base grade currently applied |
+| `aee_vision_baseGradeCC` | vision | Base-grade ColorCorrections handle |
+| `aee_vision_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
+| `aee_vision_visionModelActive` | vision | True when the human-vision model owns the normal-vision grade this tick |
+| `aee_vision_visionBaseResolved` | vision | The resolved base-grade anchor: the cached config value plus any debug override, published above the client-only exit for a headless probe |
 | `aee_thermal_bloom` | thermal | Hot-source bloom amplitude this tick |
 | `aee_thermal_agcHunt` | thermal | AGC hunt gain offset this tick |
 | `aee_thermal_nucDrift` | thermal | Non-uniformity (NUC) drift this tick |
@@ -712,9 +726,9 @@ owning function headers.
 | Hook | Type | Purpose |
 |---|---|---|
 | `aee_optics_baseGradeForce` | BOOL | Force the normal-vision base grade on |
-| `aee_optics_baseGradeContrast` | NUMBER | Override the base-grade contrast setting |
-| `aee_optics_baseGradeSharpness` | NUMBER | Override the acuity sharpness setting |
-| `aee_optics_baseGradeGrain` | NUMBER | Override the acuity grain setting |
+| `aee_vision_baseGradeContrast` | NUMBER | Override the base-grade contrast setting |
+| `aee_vision_baseGradeSharpness` | NUMBER | Override the acuity sharpness setting |
+| `aee_vision_baseGradeGrain` | NUMBER | Override the acuity grain setting |
 | `aee_optics_visionForce` | BOOL | Force the human-vision model on |
 | `aee_optics_visionForceLux` | NUMBER | Override the adapted luminance, cd/m2 |
 | `aee_optics_visionForceMesopic` | NUMBER | Override the mesopic photopic fraction |
@@ -744,10 +758,10 @@ operator and the debug console.
 
 | Variable | Subsystem | Purpose |
 |---|---|---|
-| `aee_wildlife_soundInstances` | wildlife | The live one-shot expiry times, bounded by the instance cap |
-| `aee_wildlife_ambientSource` | wildlife | The current looping CfgSFX bed source |
+| `aee_ambience_soundInstances` | ambience | The live one-shot expiry times, bounded by the instance cap |
+| `aee_ambience_ambientSource` | ambience | The current looping CfgSFX bed source |
 | `aee_wildlife_manifest` | wildlife | The loaded vanilla sound manifest |
-| `aee_wildlife_ambientPFH` | wildlife | The wildlife client tick handle |
+| `aee_ambience_ambientPFH` | ambience | The wildlife client tick handle |
 | `aee_wildlife_firedManEH` | wildlife | The core player engine handler key for the gunfire report |
 
 ## Wildlife fauna state
@@ -781,11 +795,11 @@ call live on the agent object.
 | `aee_wildlife_environmentLastMs` | wildlife | The elapsed milliseconds of the last sampler call |
 | `aee_wildlife_ecologyPending` | wildlife | The animals not yet solved this ecology cycle |
 | `aee_wildlife_callBus` | wildlife | The heard-call bus, bounded and decayed |
-| `aee_wildlife_soundEvents` | wildlife | The propagated sound-event bus |
-| `aee_wildlife_soundSchedule` | wildlife | The species emission schedule for the current hour |
+| `aee_ambience_soundEvents` | ambience | The propagated sound-event bus |
+| `aee_ambience_soundSchedule` | ambience | The species emission schedule for the current hour |
 | `aee_wildlife_speciesEmit` | wildlife | The per-group emission gate state |
 | `aee_wildlife_emitters` | wildlife | The live attached 3D sound emitters |
-| `aee_wildlife_ambientKey` | wildlife | The ambient bed source key, for the recreate guard |
+| `aee_ambience_ambientKey` | ambience | The ambient bed source key, for the recreate guard |
 | `aee_wildlife_lastTickMs` | wildlife | The elapsed milliseconds of the last wildlife tick |
 | `aee_wildlife_speciesRules` | wildlife | Per-animal species rules, an object variable |
 | `aee_wildlife_habitatWeights` | wildlife | Per-animal habitat weights, an object variable |

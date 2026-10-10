@@ -35,13 +35,13 @@ EXPENSIVE = (
 # Sites that cannot carry a local guard, with a reason.  Keyed by path
 # relative to the repository root.
 ALLOWLIST = {
-    "addons/optics/XEH_postInit.sqf": (
+    "addons/vision/XEH_postInit.sqf": (
         "optics perception worktree owns this file; the guard is tracked there"
     ),
-    "addons/optics/functions/vision/fnc_dtvHostTick.sqf": (
+    "addons/vision/functions/vision/fnc_dtvHostTick.sqf": (
         "optics perception worktree owns this file; the guard is tracked there"
     ),
-    "addons/optics/functions/vision/fnc_managePostProcess.sqf": (
+    "addons/vision/functions/vision/fnc_managePostProcess.sqf": (
         "optics perception worktree owns this file; the guard is tracked there"
     ),
 }

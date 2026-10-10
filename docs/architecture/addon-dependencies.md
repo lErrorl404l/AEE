@@ -10,35 +10,56 @@ edge can take.
 
 | addon | depends on |
 |---|---|
-| `actions` | `core`, `environmental`, `maritime`, `nightvision` |
+| `actions` | `core`, `maritime`, `nightvision`, `persistence` |
 | `ai` | none |
-| `armour` | `core`, `physiology` |
-| `atmos` | `core`, `environmental` |
-| `ballistics` | `atmos`, `core` |
+| `altitude` | `core`, `dive`, `lib`, `physiology`, `strain` |
+| `ambience` | `lib`, `wildlife` |
+| `armour` | `clothing`, `lib` |
+| `atmos` | `core`, `lib`, `weather` |
+| `ballistics` | `atmos`, `core`, `lib` |
+| `blast` | `lib` |
+| `cartography` | `hud`, `lib`, `symbology` |
+| `clothing` | `physiology`, `thermal` |
 | `compat_ace3` | none |
-| `compat_acm` | `core`, `environmental` |
+| `compat_acm` | `core`, `persistence` |
 | `compat_acre2` | none |
 | `compat_kat` | none |
 | `compat_realweather` | `core` |
 | `compat_tfar` | none |
-| `core` | `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `mobility`, `nightvision`, `optics`, `physiology`, `radio`, `thermal` |
-| `environmental` | `compat_acm`, `core`, `material`, `physiology` |
-| `fx` | `atmos`, `ballistics`, `core`, `maritime`, `mobility`, `optics` |
-| `main` | none |
-| `maritime` | `core` |
+| `core` | `altitude`, `atmos`, `ballistics`, `diagnostics`, `flight`, `hydrology`, `lib`, `lighting`, `magnetism`, `maritime`, `mobility`, `nightvision`, `optics`, `particles`, `persistence`, `physiology`, `radio`, `strain`, `thermal`, `vehicles`, `vision`, `weather`, `weatherfx` |
+| `diagnostics` | `core`, `lib` |
+| `dive` | `lib`, `physiology` |
+| `eye` | `core`, `lib` |
+| `flight` | `atmos`, `core`, `lib` |
+| `hud` | `cartography`, `core`, `lib`, `symbology` |
+| `hydrology` | `core`, `lib`, `material`, `weather` |
+| `lib` | `core` |
+| `lighting` | `core`, `lib`, `weather` |
+| `ltm` | `lib` |
+| `magnetism` | `core`, `lib` |
+| `maritime` | `core`, `lib`, `magnetism` |
 | `material` | none |
-| `mobility` | `core`, `environmental`, `material`, `thermal` |
-| `nightvision` | `core`, `thermal` |
-| `optics` | `core`, `environmental`, `nightvision`, `thermal` |
-| `physiology` | `core`, `thermal` |
-| `radio` | `atmos`, `core`, `environmental`, `maritime`, `thermal` |
-| `thermal` | `core`, `environmental`, `material`, `nightvision`, `optics`, `physiology` |
-| `wildlife` | `ai`, `environmental` |
+| `mobility` | `core`, `material`, `persistence`, `vehicles` |
+| `nightvision` | `core`, `lib`, `ltm`, `thermal` |
+| `optics` | `core`, `eye`, `lib`, `nightvision`, `thermal`, `vision` |
+| `particles` | `atmos`, `ballistics`, `blast`, `core`, `lib`, `maritime`, `weatherfx` |
+| `persistence` | `compat_acm`, `core`, `diagnostics`, `lib`, `material` |
+| `physiology` | `altitude`, `core`, `dive`, `strain` |
+| `radio` | `atmos`, `core`, `diagnostics`, `maritime`, `thermal`, `weather` |
+| `strain` | `clothing`, `core`, `lib`, `physiology` |
+| `symbology` | `cartography`, `lib` |
+| `thermal` | `altitude`, `clothing`, `core`, `lib`, `lighting`, `material`, `nightvision`, `optics`, `persistence`, `thermal_display`, `vision`, `weather` |
+| `thermal_display` | `core`, `lib`, `nightvision`, `thermal` |
+| `vehicles` | `core`, `diagnostics`, `lib`, `material`, `thermal` |
+| `vision` | `core`, `eye`, `lib`, `lighting`, `nightvision`, `optics`, `thermal`, `thermal_display` |
+| `weather` | `core`, `diagnostics`, `lib`, `persistence` |
+| `weatherfx` | `atmos`, `ballistics`, `core`, `flight`, `hydrology`, `lib`, `lighting`, `mobility`, `optics`, `particles`, `vehicles` |
+| `wildlife` | `ai`, `ambience`, `ballistics`, `core`, `lib`, `material`, `weather` |
 
 ## Reading it
 
-- Leaves (depend on nothing, safe for anything to depend on): `ai`, `main`, `material`.
-- Hubs (depend on most others): `core` (11), `fx` (6), `thermal` (6).
+- Leaves (depend on nothing, safe for anything to depend on): `ai`, `material`.
+- Hubs (depend on most others): `core` (23), `thermal` (12), `weatherfx` (11), `vision` (8), `particles` (7), `wildlife` (7), `optics` (6), `radio` (6).
 - Compat addons (`compat_*`) load only when their host mod is present. An
   optional read of a compat variable is not an edge in the core set.
 
