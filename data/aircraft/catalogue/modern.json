@@ -430,6 +430,14 @@
           "state": "EASA TCDS EASA.R.013 EH101-500 gas producer speed limit 103 per cent at the OEI 2.5 minute rating",
           "grade": "documented"
         },
+        "engine_design_rpm": {
+          "value": 44700,
+          "unit": "rpm",
+          "source": "src_easa_tcds_r013",
+          "locator": "5.3.1 Installed Engine Limitations and Transmission Torque Limits, OEI Rating 2.5 min, Ng 103 per cent (46 041 rpm)",
+          "state": "EASA TCDS EASA.R.013 EH101-500 design gas producer speed derived from Ng 103 per cent = 46 041 rpm: 46041 / 1.03 = 44700 rpm",
+          "grade": "documented"
+        },
         "engine_max_np": {
           "value": 1.025,
           "unit": "ratio",
