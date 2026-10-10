@@ -59,11 +59,21 @@ if (count _cached > 0) exitWith { _cached };
 
 // ─── The heat source: the engine / propulsion point ──────────────────────
 private _source = [0, 0, 0];
-private _hpMap = [_veh] call FUNC(getHitPointMaterials);
+// Engine anchor from the component registry (issue #128): the "engine" role
+// resolves to the selections the engine's own anchors name for that part
+// (hit points and selection names).  The hit-point material map stays the
+// fallback for a class the registry does not classify.
 private _engineSel = "";
-{
-    if (_y == "engine") exitWith { _engineSel = _x; };
-} forEach _hpMap;
+private _engineSels = ([_veh] call FUNC(getComponentAnchors)) getOrDefault ["engine", []];
+if (_engineSels isNotEqualTo []) then {
+    _engineSel = _engineSels select 0;
+};
+if (_engineSel == "") then {
+    private _hpMap = [_veh] call FUNC(getHitPointMaterials);
+    {
+        if (_y == "engine") exitWith { _engineSel = _x; };
+    } forEach _hpMap;
+};
 if (_engineSel != "") then {
     private _ep = _veh selectionPosition [_engineSel, "Memory"];
     if ((_ep isEqualType []) && {count _ep == 3} && {_ep isNotEqualTo [0, 0, 0]}) then {

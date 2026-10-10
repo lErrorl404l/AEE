@@ -70,6 +70,7 @@ def main():
         "tools/tests/test_thermal_prewarm.py",
         "tools/tests/test_thermal_heat_sources.py",
         "tools/tests/test_thermal_selection_walk.py",
+        "tools/tests/test_component_anchors.py",
         "tools/tests/test_visual_pipeline_audit.py",
         "tools/tests/test_astronomical.py",
         "tools/tests/test_docker_isolation.py",
