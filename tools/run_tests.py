@@ -242,6 +242,7 @@ def main():
         "tools/tests/test_equipment_values.py",
         "tools/tests/test_frost_supersession.py",
         "tools/tests/test_fx_supersonic_trace.py",
+        "tools/tests/test_groundwater.py",
         "tools/tests/test_hail_damage.py",
         "tools/tests/test_hydrology.py",
         "tools/tests/test_erosion.py",
