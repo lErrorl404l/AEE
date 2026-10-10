@@ -29,6 +29,12 @@ AEE_SETTING_CHECKBOX(flightAeroPenalty,"AEE Flight","Flight",true);
 
 AEE_SETTING_SLIDER(airframeRadius,"AEE Flight","Flight",500,5000,2000,0);
 
+// ── Fixed-wing performance ─────────────────────────────────────────────────
+// Publishes the ambient density altitude and density ratio for the fixed-wing
+// performance model (issue #22).  The per-aircraft row is the pure kernel
+// FUNC(calculateFixedWingPerformance), computed on demand.
+AEE_SETTING_CHECKBOX(fixedWingPerformance,"AEE Flight","Performance",true);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name built
 // from the component: aee_flight_logDebug.  Declaring it here, in its own

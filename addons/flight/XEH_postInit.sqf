@@ -28,6 +28,25 @@ GVAR(aircraftSystemsPFH) = [{
 
 AEE_LOG_INFO("aircraft systems PFH started");
 
+// ─── Fixed-wing performance basis (issue #22) ───────────────────────────────
+// Publishes the ambient density altitude and density ratio once a second. The
+// environment is global, so this runs on every machine, the dedicated server
+// included, above the hasInterface guard.
+if (GVAR(fixedWingPerformance)) then {
+    GVAR(fixedWingPFH) = [{
+        BEGIN_COUNTER(updateFixedWingPerformance);
+        [] call FUNC(updateFixedWingPerformance);
+        END_COUNTER(updateFixedWingPerformance);
+    }, 1.0] call CBA_fnc_addPerFrameHandler;
+
+    // The published state line, read under the flight debug gate.
+    [{
+        [] call FUNC(logFixedWingState);
+    }, 1.0] call CBA_fnc_addPerFrameHandler;
+
+    AEE_LOG_INFO("fixed-wing performance PFH started");
+};
+
 // The per-frame loops below are client-side effects. The dedicated server
 // has no local player and must not run them.
 if (!hasInterface) exitWith {};
