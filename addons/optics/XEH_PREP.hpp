@@ -21,4 +21,5 @@ PREPS(sensor,calculateSnowBlindness);
 PREPS(sensor,calculateSolarGlare);
 PREPS(sensor,calculateVehicleHeatShimmer);
 PREPS(sensor,getOpticProperties);
+PREP(applyEmpSensorDamage);
 PREP(dumpState);

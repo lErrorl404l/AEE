@@ -98,6 +98,12 @@ AEE_SETTING_CHECKBOX(hydrologyEnabled,"AEE","Environmental",true);
 // ── Atmospheric Events ──────────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(atmosphericEventsEnabled,"AEE","Atmosphere",true);
 
+// ── Nuclear EMP (issue #9) ──────────────────────────────────────────────────
+// The EMP event model.  The switch gates the tick and the trigger; with no
+// burst triggered (aee_core_fnc_triggerEmp) the model is inert, so the default
+// is on and a mission opts in by triggering the event.
+AEE_SETTING_CHECKBOX(empEnabled,"AEE","EMP",true);
+
 // ── Environmental / Seasonal ────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(environmentalEnabled,"AEE","Environmental",true);
 

@@ -113,6 +113,14 @@
             <Original>Work Distribution</Original>
             <English>Work Distribution</English>
         </Key>
+        <Key ID="STR_AEE_Core_empEnabled_Description">
+            <Original>Enable the nuclear EMP event model. Inert until a mission triggers a burst with aee_core_fnc_triggerEmp; then the free field couples into the radio and optical sensors and they recover over time.</Original>
+            <English>Enable the nuclear EMP event model. Inert until a mission triggers a burst with aee_core_fnc_triggerEmp; then the free field couples into the radio and optical sensors and they recover over time.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_empEnabled_Name">
+            <Original>Enable Nuclear EMP</Original>
+            <English>Enable Nuclear EMP</English>
+        </Key>
         <Key ID="STR_AEE_Core_enabled_Description">
             <Original>Master switch for the AEE environment simulation module</Original>
             <English>Master switch for the AEE environment simulation module</English>

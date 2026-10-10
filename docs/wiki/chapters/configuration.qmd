@@ -987,6 +987,12 @@ registered.
 | `aee_core_referenceAltitude` | SLIDER | `0` | yes | core | Override reference altitude (m MSL) for station pressure calculations. 0 = auto-detect from unit position |
 | `aee_core_updateInterval` | SLIDER | `5` | yes | core | Simulation update interval in seconds (lower = more frequent updates) |
 
+## AEE → EMP
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_empEnabled` | CHECKBOX | `true` | yes | core | Enable the nuclear EMP event model. Inert until a mission triggers a burst with aee_core_fnc_triggerEmp; then the free field couples into the radio and optical sensors and they recover over time. |
+
 ## AEE → Environmental
 
 | Setting | Type | Default | Global | Addon | Purpose |

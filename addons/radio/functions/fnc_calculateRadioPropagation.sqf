@@ -182,6 +182,17 @@ _signalPct = _signalPct max 0 min 1;
 private _index = 0.3 + 1.7 * (_signalPct ^ 0.5);
 _index = _index max 0.3 min _propRange;
 
+// ─── EMP semiconductor upset (issue #9) ────────────────────────────────────
+// A nuclear EMP couples into the radio's antenna and front-end (front-door
+// coupling) and upsets the semiconductor front end.  The EMP Commission (2008)
+// found handheld radios suffer UPSET, not burnout: the link degrades and then
+// recovers.  The factor is produced by aee_core (fnc_updateEmp) and is 1.0
+// when no burst is active, so this is a no-op in a normal mission.
+private _empFactor = missionNamespace getVariable [QEGVAR(core,empRadioFactor), 1.0];
+if !(_empFactor isEqualType 0) then { _empFactor = 1.0; };
+_empFactor = _empFactor max 0.3 min 1.0;
+_index = (_index * _empFactor) max 0.3 min _propRange;
+
 missionNamespace setVariable [QGVAR(radioPropagationIndex), _index];
 
 if (missionNamespace getVariable [QEGVAR(diagnostics,diagnostic), false]) then {
