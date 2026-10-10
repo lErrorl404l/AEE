@@ -18,13 +18,13 @@ N' = 3 is the theoretical minimum; 4 to 5 is the common design band (4 is the
 usual design point).  N' is a tuning value, not a measured constant.
 
 SOURCE.  Zarchan, "Tactical and Strategic Missile Guidance", AIAA Progress in
-Astronautics and Aeronautics: 5th ed. vol. 219 (2007, ISBN 1-56347-874-9),
-6th ed. vol. 239 (2012, ISBN 978-1-60086-894-8), 7th ed. vol. 258/259 (2019,
-ISBN 978-1-62410-537-1).  Also Zarchan, "Proportional Navigation and Weaving
-Targets", J. Guidance Control Dyn. 18(5):969-974, 1995, DOI 10.2514/3.21492.
-The issue #131 vector "9g weave at 1 rad/s -> ~88 m miss" is the WEAVE
-AMPLITUDE implied by a = A * omega^2 (A = 88.26 / 1 = 88.3 m), not a PN miss
-distance; the attribution of that figure to Zarchan is UNVERIFIED.
+Astronautics and Aeronautics, 7th ed.: vol. 258 (ISBN 978-1-62410-537-1) and
+vol. 259 (ISBN 978-1-62410-538-8), 2019.  The 5th ed. (vol. 219) and 6th ed.
+(vol. 239) ISBNs are UNVERIFIED.  Also Zarchan, "Proportional Navigation and
+Weaving Targets", J. Guidance Control Dyn. 18(5):969-974, 1995, DOI
+10.2514/3.21492.  The issue #131 vector "9g weave at 1 rad/s -> ~88 m miss" is
+the WEAVE AMPLITUDE implied by a = A * omega^2 (A = 88.26 / 1 = 88.3 m), not a
+PN miss distance; the attribution of that figure to Zarchan is UNVERIFIED.
 
 Arguments:
   0: _navConstant      (NUMBER) N', default 4, >= 0
