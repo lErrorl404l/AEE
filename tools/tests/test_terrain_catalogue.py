@@ -167,6 +167,31 @@ class TestCatalogueRows(unittest.TestCase):
                 self.assertIn(entry["id"], refs)
 
 
+class TestCatalogueProvenance(unittest.TestCase):
+    """Every catalogue row names a source, a licence and a grade (todo 12).
+
+    The catalogue is the human legend for the terrain symbols; its provenance
+    must be as complete as the manifest's.
+    """
+
+    GRADES = ("specific", "generic", "substituted", "non_register")
+
+    def test_every_row_carries_a_source_licence_and_grade(self):
+        for row in _load(CATALOGUE)["entries"]:
+            with self.subTest(symbol=row["id"]):
+                self.assertTrue(row["source"], row["id"])
+                self.assertTrue(row["licence"], row["id"])
+                self.assertIn(row["grade"], self.GRADES, row["id"])
+
+    def test_every_licence_is_open(self):
+        for row in _load(CATALOGUE)["entries"]:
+            with self.subTest(symbol=row["id"]):
+                licence = row["licence"].lower()
+                self.assertTrue(
+                    "public domain" in licence or "cc by" in licence, row["id"]
+                )
+
+
 class TestCatalogueFreshness(unittest.TestCase):
     """The committed catalogue must match a fresh generation."""
 

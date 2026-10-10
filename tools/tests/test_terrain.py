@@ -746,6 +746,57 @@ class TestTerrainLabelLegibility(unittest.TestCase):
         self.assertGreaterEqual(float(m.group(1)), 0.03)
 
 
+class TestTerrainPaletteProvenance(unittest.TestCase):
+    """Every map colour names a source and carries a provenance grade (todo 12).
+
+    The audit: each colour in config_mapcolors.hpp is graded in
+    data/symbology/terrain_symbols.json (map_colour_grades).  Where an authority
+    publishes a colour NAME only, the name is the citable fact; no published
+    name is converted to a number.
+    """
+
+    AUTHORITIES = ("USGS", "FM", "DGIWG", "OS", "ENG", "STANAG")
+
+    def test_every_map_colour_has_a_grade(self):
+        grades = TABLE["map_colour_grades"]
+        for field in TABLE["map_colours"]:
+            if field in ("note", "sources"):
+                continue
+            with self.subTest(field=field):
+                self.assertIn(field, grades)
+
+    def test_every_grade_is_from_the_allowed_set(self):
+        for field, grade in TABLE["map_colour_grades"].items():
+            if field == "note":
+                continue
+            with self.subTest(field=field):
+                self.assertIn(grade, TABLE["grades"])
+
+    def test_every_map_colour_source_names_an_authority(self):
+        for field, source in TABLE["map_colours"]["sources"].items():
+            with self.subTest(field=field):
+                self.assertTrue(
+                    any(a in source for a in self.AUTHORITIES),
+                    f"{field} source names no authority: {source}",
+                )
+
+    def test_no_map_colour_source_is_a_bare_number(self):
+        # The name is the citable fact; a source is never a bare RGB value.
+        for field, source in TABLE["map_colours"]["sources"].items():
+            with self.subTest(field=field):
+                self.assertIsNone(
+                    re.fullmatch(r"[\d.,\s#]+", source.strip()),
+                    f"{field} source is a bare number: {source}",
+                )
+
+    def test_every_graded_field_is_a_real_map_colour(self):
+        for field in TABLE["map_colour_grades"]:
+            if field == "note":
+                continue
+            with self.subTest(field=field):
+                self.assertIn(field, TABLE["map_colours"])
+
+
 class TestSuiteRegistration(unittest.TestCase):
     def test_the_suite_is_registered(self):
         self.assertIn("tools/tests/test_terrain.py", RUN_TESTS_SRC)
