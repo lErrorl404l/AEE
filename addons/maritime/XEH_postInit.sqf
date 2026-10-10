@@ -28,3 +28,13 @@ AEE_MODULE_POST_INIT
 // Ship motion follows the sea state (issue #33).  One tick per second; the
 // driver reads the published sea state and writes the per-vessel motion.
 [FUNC(calculateShipMotion), 1] call CBA_fnc_addPerFrameHandler;
+
+// Underwater acoustics driver (issue #113).  One update per second.  It
+// self-gates on the setting and reads the local unit's depth, so a dedicated
+// server publishes the surface state and a client publishes the depth of the
+// local diver.  The explicit empty argument keeps the CBA handler array out
+// of the typed params.
+[{
+    if !(missionNamespace getVariable [QGVAR(underwaterAcousticsEnabled), true]) exitWith {};
+    [] call FUNC(updateUnderwaterAcoustics);
+}, 1] call CBA_fnc_addPerFrameHandler;
