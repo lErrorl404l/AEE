@@ -44,3 +44,7 @@ PREPS(dispersion,getCbrnAgent);
 PREPS(dispersion,calculateCbrnDose);
 PREPS(dispersion,startCbrnRelease);
 PREPS(dispersion,updateCbrnPlume);
+PREPS(acoustics,powerSumLevels);
+PREPS(acoustics,ambientNoiseLevel);
+PREPS(acoustics,acousticMasking);
+PREPS(acoustics,updateAmbientNoise);

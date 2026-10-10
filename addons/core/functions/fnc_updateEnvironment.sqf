@@ -148,6 +148,9 @@ if (GVAR(hydrologyEnabled)) then {
 BEGIN_COUNTER(soundPropagation);
 [] call EFUNC(weather,updateSoundPropagation);
 END_COUNTER(soundPropagation);
+BEGIN_COUNTER(ambientNoise);
+[_posASL] call EFUNC(weather,updateAmbientNoise);
+END_COUNTER(ambientNoise);
 BEGIN_COUNTER(fogChain);
 [] call EFUNC(atmos,updateFog);
 [] call EFUNC(weather,calculateFogBaseAltitude);
