@@ -359,6 +359,9 @@ if (GVAR(fxEnabled)) then {
 
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
 [] call EFUNC(hydrology,calculateRiverWaterLevel);
+// Erosion reads the storm depth and the cumulative runoff the river chain
+// just published, so it runs after it (issue #21).
+[] call EFUNC(hydrology,calculateErosion);
 [] call EFUNC(weather,calculateCropState);
 [] call EFUNC(atmos,calculateCloudDevelopment);
 [] call EFUNC(atmos,calculatePressureTrend);
