@@ -66,20 +66,24 @@ leave exactly one grid, the AEE MGRS overlay. The MGRS overlay then drew light
 cyan at alpha 0.30 on a light map, so the operator read no grid reference and
 the lines looked grey.
 
-Decision - how the two grids coexist. The engine numeric grid supplies the
-NUMBERS and the AEE overlay supplies the LINES.
+Decision - how the two grids coexist. The shipped contract is ONE grid. The
+engine grid fields are both off and the AEE overlay supplies the lines and the
+four-edge numbers.
 
 - The engine grid fields are SPLIT. `colorGrid` is the colour of the EDGE
   COORDINATE NUMBERS and `colorGridMap` is the colour of the in-map grid LINES
   (engine source: the open-sourced Poseidon engine, `UIMap.cpp`,
   `CStaticMap::DrawGrid` - `DrawText` uses `colorGrid`, `DrawLine` uses
   `colorGridMap`).
-- The engine NUMBERS return: `colorGrid` is the engine default
-  `{0.15, 0.15, 0.05, 0.9}` and `sizeExGrid` is the engine default 0.04, on
-  `RscMapControl`, `RscDisplayStrategicMap >> controlsBackground >> Map` and
-  the Eden `ctrlMap`.
-- The engine numeric LINES stay off: `colorGridMap[]` keeps alpha 0 on the
-  same three targets.
+- Superseded. The first decision kept the engine NUMBERS on, `colorGrid` at
+  the engine default `{0.15, 0.15, 0.05, 0.9}` with `sizeExGrid` 0.04, and
+  turned only the engine LINES off. The live run showed the engine edge ruler
+  is unreliable: it places each number half a grid spacing from its line,
+  clips it to the control rect, and has no per-axis toggle, so keeping the
+  numbers would double every edge the AEE ruler already labels. The shipped
+  config now sets BOTH `colorGrid` and `colorGridMap` to alpha 0 on
+  `RscMapControl`, the strategic map and the Eden `ctrlMap`
+  (`config.cpp:72-73`, `config_mapdisplays.hpp:32-33` and `:46-47`).
 - The AEE MGRS overlay is the only line grid, and its linework is DARK and
   high contrast. The first round set the minor line `{0.08, 0.08, 0.10, 0.55}`
   and the major line `{0.03, 0.03, 0.05, 0.90}`; the second round raises the
@@ -151,14 +155,14 @@ MGRS labels live.
   importance only.
 - The engine grid colours are split: `colorGrid` is the EDGE NUMBER colour and
   `colorGridMap` is the in-map LINE colour (engine source: the open-sourced
-  Poseidon engine, `UIMap.cpp`, `CStaticMap::DrawGrid`). The edge numbers
-  cannot be read while `colorGrid` alpha is 0, so AEE sets `colorGrid` to a
-  visible colour and keeps the engine lines off with `colorGridMap` alpha 0.
+  Poseidon engine, `UIMap.cpp`, `CStaticMap::DrawGrid`). Both are set to alpha
+  0 on every AEE target (`config.cpp:72-73`, `config_mapdisplays.hpp:32-33`
+  and `:46-47`), so the AEE MGRS overlay is the single complete ruler.
 - The contour geometry and the contour interval are engine-derived from the
   elevation data. No config field sets either.
 - The satellite land texture is baked into the map layers. Only
   `maxSatelliteAlpha` and `drawShaded` temper it.
-- `shadedSea` is set to 1 (`addons/cartography/config_mapcolors.hpp:104`). It
+- `shadedSea` is set to 1 (`addons/cartography/config_mapcolors.hpp:123`). It
   is a model choice with no standard, adopted from the Enhanced Map idea, the
   same source as `drawShaded`.
 
@@ -166,8 +170,8 @@ MGRS labels live.
 
 - The RPT no longer logs `No entry CfgLocationTypes/*` or `'/' is not a
   value`.
-- The operator reads the engine numeric grid reference beside the AEE MGRS
-  line grid.
+- The operator reads the AEE MGRS grid reference, lines and four-edge numbers,
+  as the single grid.
 - The AEE MGRS linework reads against the light topographic ground.
 - `tools/tests/test_terrain.py` locks the inheritance, the object names, the
   grid contract and the MGRS contrast. The live probe `aee_p121` reads the
