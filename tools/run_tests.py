@@ -69,6 +69,9 @@ def main():
         "tools/tests/test_propellant_temp.py",
         "tools/tests/test_sleep_model.py",
         "tools/tests/test_shooter_stability.py",
+        # Global sensitivity analysis of the two models above (SALib). Skips
+        # where SALib is absent; CI installs the pinned version.
+        "tools/tests/test_sensitivity.py",
         "tools/tests/test_cold_weather.py",
         "tools/tests/test_dynamics.py",
         "tools/tests/test_dynamic_stars.py",
