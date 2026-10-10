@@ -78,7 +78,7 @@ private _cgArm = _systems select 4;
 
 // A zero capacity or density cannot be divided by. Refuse before any
 // conversion, so the kernel never divides by zero.
-if (_fuelCapacityL <= 0 || {_density <= 0}) exitWith { false };
+if (_fuelCapacityL <= 0 || _density <= 0) exitWith { false };
 
 private _fullMassKg = _fuelCapacityL * _density;
 

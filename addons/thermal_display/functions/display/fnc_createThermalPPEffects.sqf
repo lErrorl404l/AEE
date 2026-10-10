@@ -90,7 +90,7 @@ if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv 
         _guard = 0;
         while {_handle < 0 && _guard < 100} do {
             _candidate = ppEffectCreate [_name, _priority];
-            if ((_candidate isEqualType 0) && {_candidate >= 0}) then {
+            if ((_candidate isEqualType 0) && _candidate >= 0) then {
                 _handle = _candidate;
             } else {
                 _priority = _priority + 1;

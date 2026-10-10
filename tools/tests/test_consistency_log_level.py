@@ -83,27 +83,29 @@ class TestConsistencyLogLevel(unittest.TestCase):
         self.assertIn(WARN_CALL, self.code)
         self.assertIn(INFO_CALL, self.code)
 
-        idx = self.code.index("if (!_rowPass) then {")
+        idx = self.code.index("if (_rowPass) then {")
         inner, end = block_at(self.code, self.code.index("{", idx))
-        # The WARN emitter is the failing branch and only the failing branch.
-        self.assertIn(WARN_CALL, inner)
-        self.assertNotIn(INFO_CALL, inner)
+        # The INFO emitter is the passing branch and only the passing branch.
+        self.assertIn(INFO_CALL, inner)
+        self.assertNotIn(WARN_CALL, inner)
 
-        # The INFO emitter is the else branch, the passing row.
+        # The WARN emitter is the else branch, the failing row.
         rest = self.code[end:]
         else_idx = rest.index("else {")
         else_open = end + else_idx + len("else ")
         else_inner, _ = block_at(self.code, else_open)
-        self.assertIn(INFO_CALL, else_inner)
-        self.assertNotIn(WARN_CALL, else_inner)
+        self.assertIn(WARN_CALL, else_inner)
+        self.assertNotIn(INFO_CALL, else_inner)
 
     def test_strict_is_gated_to_a_tolerance_bounded_residual(self):
         # The old condition warned on any drift, including a passing row that
-        # never compared its producers.
-        self.assertNotIn("_strict && _drift > 0", self.code)
+        # never compared its producers. The residual must carry every gate, so
+        # the full chain is pinned rather than a bare drift test.
+        self.assertIn(
+            '_strictResidual = _strict && _drift > 0 && _drift <= _tolerance && _detail != "no-data"',
+            self.code,
+        )
         self.assertIn("_strictResidual", self.code)
-        self.assertIn("_drift <= _tolerance", self.code)
-        self.assertIn('_detail != "no-data"', self.code)
 
 
 if __name__ == "__main__":

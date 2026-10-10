@@ -93,21 +93,21 @@ for "_r" from 0 to ((count _rows) - 1) do {
     // tolerance, so neither is a residual.  Gating on the tolerance is the
     // difference between a diagnostic and the WARN flood the operator reported:
     // without it strict logged every passing row every sample.
-    private _strictResidual = _strict && {_drift > 0} && {_drift <= _tolerance} && {_detail != "no-data"};
-    if ((!_rowPass) || {_strictResidual}) then {
+    private _strictResidual = _strict && _drift > 0 && _drift <= _tolerance && _detail != "no-data";
+    if (!_rowPass || _strictResidual) then {
         private _line = _report select 0;
         if (_firstLine) then {
             _line = _line + _healthSuffix;
             _firstLine = false;
         };
-        if (!_rowPass) then {
+        if (_rowPass) then {
+            // A passing invariant is informational, never a warning.
+            [_line, "INFO"] call FUNC(consistencyLog);
+        } else {
             // A failing invariant is a warning.
             _disagreeTotal = _disagreeTotal + _count;
             _failures pushBack _line;
             [_line] call FUNC(consistencyLog);
-        } else {
-            // A passing invariant is informational, never a warning.
-            [_line, "INFO"] call FUNC(consistencyLog);
         };
     };
 };

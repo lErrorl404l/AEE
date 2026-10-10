@@ -127,9 +127,9 @@ for "_i" from 0 to (_hpCount - 1) do {
         private _damage = _veh getHitPointDamage _canonical;
         if (_damage isEqualType 0) then {
             if (_damage > 0) then {
-                if (_role == "engine" && {_damage > _engineDamage}) then { _engineDamage = _damage; };
-                if (_role == "fuel" && {_damage > _fuelDamage}) then { _fuelDamage = _damage; };
-                if (_role == "rotor" && {_damage > _rotorDamage}) then { _rotorDamage = _damage; };
+                if (_role == "engine" && _damage > _engineDamage) then { _engineDamage = _damage; };
+                if (_role == "fuel" && _damage > _fuelDamage) then { _fuelDamage = _damage; };
+                if (_role == "rotor" && _damage > _rotorDamage) then { _rotorDamage = _damage; };
             };
             if (_damage > _threshold) then {
                 // Advance the failure. The increment is scripted and small.
@@ -153,7 +153,7 @@ private _fuelCapacityL = _systems select 0;
 private _sourcedRate = _systems select 1;
 private _density = _systems select 2;
 private _fullMassKg = _fuelCapacityL * _density;
-if (_fuelDamage > _threshold && {_fullMassKg > 0}) then {
+if (_fuelDamage > _threshold && _fullMassKg > 0) then {
     private _severity = (_fuelDamage - _threshold) / (1 - _threshold);
     private _leakKg = _sourcedRate * _severity * _deltaTimeS;
     private _fuelKg = (fuel _veh) * _fullMassKg;
