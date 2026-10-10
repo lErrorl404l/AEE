@@ -29,6 +29,7 @@ private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffse
 if !(_tideOffset isEqualType 0) then { _tideOffset = 0; };
 private _tideDescription = missionNamespace getVariable [QEGVAR(core,currentTideDescription), ""];
 if !(_tideDescription isEqualType "") then { _tideDescription = ""; };
+<<<<<<< HEAD
 private _waterTypeName = missionNamespace getVariable [QGVAR(waterTypeName), ""];
 if !(_waterTypeName isEqualType "") then { _waterTypeName = ""; };
 private _underwaterKd = missionNamespace getVariable [QGVAR(underwaterKd), [0, 0, 0]];
@@ -52,13 +53,20 @@ if !(_internalWaveSpeed isEqualType 0) then { _internalWaveSpeed = 0; };
 private _internalWaveAmplitude = missionNamespace getVariable [QGVAR(internalWaveAmplitude_m), 0];
 if !(_internalWaveAmplitude isEqualType 0) then { _internalWaveAmplitude = 0; };
 private _internalTideActive = missionNamespace getVariable [QGVAR(internalTideActive), false];
+private _shipRoll = missionNamespace getVariable [QGVAR(shipRoll_deg), 0];
+if !(_shipRoll isEqualType 0) then { _shipRoll = 0; };
+private _shipPitch = missionNamespace getVariable [QGVAR(shipPitch_deg), 0];
+if !(_shipPitch isEqualType 0) then { _shipPitch = 0; };
+private _shipHeave = missionNamespace getVariable [QGVAR(shipHeave_m), 0];
+if !(_shipHeave isEqualType 0) then { _shipHeave = 0; };
 
 private _logMsg = format [
-    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | water=type:%10 z=%11m Kd=[%12,%13,%14] T=[%15,%16,%17] snell=%18/%19 biolum=%20:%21 | internal=tc=%22 c=%23 eta=%24 active=%25",
+    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | water=type:%10 z=%11m Kd=[%12,%13,%14] T=[%15,%16,%17] snell=%18/%19 biolum=%20:%21 | internal=tc=%22 c=%23 eta=%24 active=%25 | ship=roll=%26 pitch=%27 heave=%28",
     _beaufort, round (_seaStateCurrent * 100) / 100, _seaStateDescription, round (_waveHeight * 100) / 100,
     round (_seaSurfaceTemperature * 100) / 100,
     round (_compassDeviation * 100) / 100, round (_compassAnomalyNT * 100) / 100,
     round (_tideOffset * 100) / 100, _tideDescription,
+<<<<<<< HEAD
     _waterTypeName, round (_underwaterDepth * 100) / 100,
     round ((_underwaterKd select 0) * 1000) / 1000,
     round ((_underwaterKd select 1) * 1000) / 1000,
@@ -69,7 +77,8 @@ private _logMsg = format [
     round (_snellCritical * 10) / 10, round (_snellCone * 10) / 10,
     _biolumVisible, round (_biolumIntensity * 100) / 100,
     round (_thermoclineDepth * 100) / 100, round (_internalWaveSpeed * 100) / 100,
-    round (_internalWaveAmplitude * 100) / 100, _internalTideActive
+    round (_internalWaveAmplitude * 100) / 100, _internalTideActive,
+    round (_shipRoll * 10) / 10, round (_shipPitch * 10) / 10, round (_shipHeave * 100) / 100
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

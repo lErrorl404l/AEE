@@ -96,6 +96,21 @@
         <Key ID="STR_AEE_Maritime_thermoclineWidth_Name">
             <Original>Thermocline Width</Original>
             <English>Thermocline Width</English>
+        <Key ID="STR_AEE_Maritime_shipDamping_Description">
+            <Original>Damping ratio used by the ship-motion response model; 0.10 is the typical ship value</Original>
+            <English>Damping ratio used by the ship-motion response model; 0.10 is the typical ship value</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_shipDamping_Name">
+            <Original>Ship Motion Damping</Original>
+            <English>Ship Motion Damping</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_shipMetacentricHeight_Description">
+            <Original>Metacentric height (GM) used by the ship-motion model; the engine publishes no hydrostatics, so this is the operator input</Original>
+            <English>Metacentric height (GM) used by the ship-motion model; the engine publishes no hydrostatics, so this is the operator input</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_shipMetacentricHeight_Name">
+            <Original>Ship Metacentric Height</Original>
+            <English>Ship Metacentric Height</English>
         </Key>
         <Key ID="STR_AEE_Maritime_tideAmplitude_Description">
             <Original>Half-range of the predicted tide height in metres</Original>

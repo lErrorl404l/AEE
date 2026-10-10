@@ -111,6 +111,10 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_seaStateCurrent` | The current sea state |
 | `aee_core_seaStateDescription` | The sea state description |
 | `aee_maritime_compassDeviation` | The compass deviation |
+| `aee_maritime_shipPitch_deg` | Ship pitch in degrees |
+| `aee_maritime_shipRoll_deg` | Ship roll in degrees |
+| `aee_maritime_shipHeave_m` | Ship heave in metres |
+| `aee_maritime_shipMotionSeverity` | Ship motion severity, 0 to 1 |
 
 ## Ocean current
 

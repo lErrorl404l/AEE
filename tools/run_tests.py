@@ -57,6 +57,7 @@ def main():
         "tools/tests/test_maritime.py",
         "tools/tests/test_underwater_light.py",
         "tools/tests/test_internal_waves.py",
+        "tools/tests/test_ship_motion.py",
         "tools/tests/test_thermal_optics.py",
         "tools/tests/test_thermal_optics_config.py",
         "tools/tests/test_thermal_display_mkk.py",
