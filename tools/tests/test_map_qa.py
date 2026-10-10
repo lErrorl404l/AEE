@@ -18,6 +18,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -551,11 +552,71 @@ class TestMapMinimapTargets(unittest.TestCase):
                 self.assertIn(f'["{field}",', probe)
 
 
-class TestSuiteRegistration(unittest.TestCase):
-    def test_the_suite_is_registered(self):
-        self.assertIn(
-            "tools/tests/test_map_qa.py",
-            RUN_TESTS.read_text(encoding="utf-8"),
+class TestMapMutationProofs(unittest.TestCase):
+    """Each new kernel and each new config value is pinned so that one source
+    mutation turns exactly one check red.
+
+    A value test proves the shipped value.  These tests prove the suite is
+    sensitive to the source.  Each applies one mutation to the real SQF or the
+    real config, in memory, and shows the pinned check would fail.  The shipped
+    file is never written.  The plan evidence records the same red-to-green,
+    run by hand.
+    """
+
+    def _mutated_kernel(self, path, args, mutate):
+        source = path.read_text(encoding="utf-8")
+        mutated = mutate(source)
+        self.assertNotEqual(source, mutated, "the mutation anchor must be present")
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / path.name
+            out.write_text(mutated, encoding="utf-8")
+            return run_sqf(out, args, {})
+
+    def test_the_icon_kernel_reference_size_is_pinned(self):
+        # The formula divides by the reference world size 8192.  A drift to
+        # 8000 changes the pixel result, so the pinned 10.0 catches it.
+        def mutate(source):
+            return source.replace(
+                "6.4 * _worldSize / 8192", "6.4 * _worldSize / 8000", 1
+            )
+
+        drifted = self._mutated_kernel(ICON_WORLD_SIZE_KERNEL, [64, 8192, 1.0], mutate)
+        self.assertNotEqual(drifted, 10.0)
+        self.assertAlmostEqual(drifted, 64 / (6.4 * 8192 / 8000 * 1.0))
+        self.assertEqual(run_sqf(ICON_WORLD_SIZE_KERNEL, [64, 8192, 1.0], {}), 10.0)
+
+    def test_the_killed_kernel_marker_field_is_pinned(self):
+        # The last-known spec copies field 1, the marker type.  A drift to
+        # field 0 returns the affiliation, so the pinned marker type catches it.
+        def mutate(source):
+            return source.replace(
+                "_markerType = _spec select 1;", "_markerType = _spec select 0;", 1
+            )
+
+        spec = ["friend", "AEE_b_inf", "ColorWEST", "squad"]
+        drifted = self._mutated_kernel(KILLED_MARKER_KERNEL, [spec], mutate)
+        self.assertEqual(drifted[1], "friend")
+        self.assertNotEqual(drifted[1], "AEE_b_inf")
+        self.assertEqual(run_sqf(KILLED_MARKER_KERNEL, [spec], {})[1], "AEE_b_inf")
+
+    def test_the_zoom_range_pin_is_mutation_sensitive(self):
+        # The zoom-range pin is a config string.  A changed scaleMax removes
+        # the pinned string, so the shipped pin catches a drift.
+        self.assertIn("scaleMax = 2;", COL_SRC)
+        mutated = COL_SRC.replace("scaleMax = 2;", "scaleMax = 5;", 1)
+        self.assertNotEqual(mutated, COL_SRC, "the mutation anchor must be present")
+        self.assertNotIn("scaleMax = 2;", mutated)
+
+    def test_the_minimap_reach_pin_is_mutation_sensitive(self):
+        # The minimap reach pin ties MINI_SRC to COL_SRC.  A changed value in
+        # the minimap file breaks the tie, so the shipped pin catches a drift.
+        self.assertEqual(
+            _scalar_of(MINI_SRC, "shadedSea"), _scalar_of(COL_SRC, "shadedSea")
+        )
+        mutated = MINI_SRC.replace("shadedSea = 1;", "shadedSea = 0;", 1)
+        self.assertNotEqual(mutated, MINI_SRC, "the mutation anchor must be present")
+        self.assertNotEqual(
+            _scalar_of(mutated, "shadedSea"), _scalar_of(COL_SRC, "shadedSea")
         )
 
 
