@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (669)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -362,10 +362,20 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_hud_fnc_trackerProject`
 - `aee_hud_fnc_trackerUpdate`
 - `aee_hydrology_fnc_calculateBaseflow`
+- `aee_hydrology_fnc_calculateCoverFactor`
 - `aee_hydrology_fnc_calculateDepressionStorage`
+- `aee_hydrology_fnc_calculateErosion`
+- `aee_hydrology_fnc_calculateErosionDepth`
+- `aee_hydrology_fnc_calculateErosivityIndex`
 - `aee_hydrology_fnc_calculateGreenAmptInfiltration`
+- `aee_hydrology_fnc_calculateKineticEnergy`
 - `aee_hydrology_fnc_calculateRiverWaterLevel`
 - `aee_hydrology_fnc_calculateRunoffSCS`
+- `aee_hydrology_fnc_calculateSedimentDeposition`
+- `aee_hydrology_fnc_calculateSedimentYield`
+- `aee_hydrology_fnc_calculateSlopeLengthGradient`
+- `aee_hydrology_fnc_calculateSoilErodibility`
+- `aee_hydrology_fnc_calculateSoilLoss`
 - `aee_hydrology_fnc_calculateThermalRefraction`
 - `aee_hydrology_fnc_routeRunoffD8`
 - `aee_lib_fnc_attachObjectEngineHandler`

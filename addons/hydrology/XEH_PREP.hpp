@@ -6,8 +6,18 @@
 
 PREP(calculateRiverWaterLevel);
 PREP(calculateThermalRefraction);
+PREP(calculateErosion);
 PREPS(hydrology,calculateBaseflow);
 PREPS(hydrology,calculateDepressionStorage);
 PREPS(hydrology,calculateGreenAmptInfiltration);
 PREPS(hydrology,calculateRunoffSCS);
 PREPS(hydrology,routeRunoffD8);
+PREPS(erosion,calculateKineticEnergy);
+PREPS(erosion,calculateErosivityIndex);
+PREPS(erosion,calculateSoilErodibility);
+PREPS(erosion,calculateSlopeLengthGradient);
+PREPS(erosion,calculateCoverFactor);
+PREPS(erosion,calculateSoilLoss);
+PREPS(erosion,calculateSedimentYield);
+PREPS(erosion,calculateSedimentDeposition);
+PREPS(erosion,calculateErosionDepth);
