@@ -43,6 +43,7 @@ adds a ceiling here first.
 | [engine-config-surface.md](engine-config-surface.md) | The global config roots, each with its engine source and line, the override mechanisms, and the eight-step pattern. |
 | [engine-override-surface.md](engine-override-surface.md) | A class-by-class verdict: ADOPT, ALREADY, RECONCILE, REJECT. |
 | [engine-commands-and-features.md](engine-commands-and-features.md) | The SQF commands by job, the engine systems behind them, and the consolidated ceiling list. |
+| [engine-command-inventory.md](engine-command-inventory.md) | The complete engine command inventory: every command group, its command count and its Arma 3 version, from the local command DB. The capstone of the #141-#147 series. |
 | [dev-tooling.md](dev-tooling.md) | The dev console, the workbench and the native kernels against the engine: the read-first rule and the dev ceilings. |
 | [engine-pbo-inventory.md](engine-pbo-inventory.md) | Every engine PBO, its root, what it carries, and the raw header layout. Machine form in `engine-pbo-inventory.json`. |
 | [arma-map-grid-semantics.md](arma-map-grid-semantics.md) | The map grid colour and geometry fields, resolved from the open-sourced engine source. |
