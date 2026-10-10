@@ -286,6 +286,12 @@ harness and the KAT integration. Each row states its grade.
 |---|---|---|
 | `aee_vehicles_enginePowerModifier` | vehicles | NA engine power 0.3..1 |
 | `aee_vehicles_engineTurboModifier` | vehicles | Turbo engine power 0.3..1 |
+| `aee_vehicles_coolantPowerDerate` | vehicles | Player-vehicle coolant derate 0..1 applied by the engine power model (issue #111) |
+| `aee_vehicles_fuelRateLph` | vehicles | Modelled fuel consumption in litres per hour (issue #111) |
+| `aee_vehicles_fuelPer100km` | vehicles | Modelled consumption in litres per 100 km, -1 when not moving (issue #111) |
+| `aee_vehicles_fuelRangeKm` | vehicles | Remaining range in km from the engine tank, -1 when unknown (issue #111) |
+| `aee_vehicles_coolantDerate` | vehicles | Coolant power derate 0..1 (issue #111) |
+| `aee_vehicles_coolantFanOn` | vehicles | Coolant fan state, 0 or 1 (issue #111) |
 | `aee_flight_engineNg` | flight | Gas-generator speed ratio published by the engine kernel (issue #117) |
 | `aee_flight_engineTgtC` | flight | Scripted turbine temperature in deg C, from the sourced limits, not engine-exposed (issue #117) |
 | `aee_flight_engineOilKpa` | flight | Scripted engine oil pressure in kPa, from the sourced limits, not engine-exposed (issue #117) |

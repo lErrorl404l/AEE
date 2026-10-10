@@ -28,6 +28,24 @@ AEE_SETTING_CHECKBOX(vehicleCouplingEnabled,"AEE Vehicles","Vehicle",true);
     {}
 ] call CBA_fnc_addSetting;
 
+// ── Fuel consumption and coolant (issue #111) ─────────────────────────────
+// The modelled fuel consumption and the coolant thermal management. The
+// engine class selects the brake-specific fuel consumption scalar. The corpus
+// holds no per-vehicle engine class, so the class is a user setting with a
+// documented default: diesel, the fuel of the military ground fleet the
+// research brief lists.
+AEE_SETTING_CHECKBOX(fuelConsumptionEnabled,"AEE Vehicles","Fuel",true);
+
+[
+    QGVAR(engineFuelClass),
+    "LIST",
+    [LLSTRING(engineFuelClass_Name), LLSTRING(engineFuelClass_Description)],
+    ["AEE Vehicles", "Fuel"],
+    [[0, 1, 2], ["Diesel", "Petrol (naturally aspirated)", "Petrol (turbocharged)"], 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name built
 // from the component: aee_vehicles_logDebug.  Declaring it here, in its own
