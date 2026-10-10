@@ -85,7 +85,7 @@ params [
 ];
 
 private _kappa = 0.4;
-private _g = 9.81;
+private _g = STANDARD_GRAVITY;
 
 // The logarithmic profile denominator.  A zero or negative z0 would make
 // the logarithm undefined, so the ends of the snow band are the bounds.

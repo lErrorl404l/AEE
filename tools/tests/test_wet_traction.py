@@ -67,7 +67,7 @@ def brake_mu(temp_c, mu_cold=0.4, mu_hot=0.2, fade_start=200.0, fade_end=300.0):
 
 
 # ─── 4. Stopping distance ──────────────────────────────────────────────────
-def stopping_distance_m(speed_mps, mu, g=9.81):
+def stopping_distance_m(speed_mps, mu, g=9.80665):
     """d = v^2/(2 mu g)."""
     return speed_mps**2 / (2 * mu * g)
 

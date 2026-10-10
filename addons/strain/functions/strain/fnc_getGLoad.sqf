@@ -33,7 +33,7 @@ if (_dt <= 0 || _dt > 2) exitWith { [1, 0] };  // first sample / gap: neutral
 private _a = (_vel vectorDiff _prevVel) vectorMultiply (1 / _dt);
 private _up = vectorUp _unit;          // Gz axis (headward)
 private _aUp = _a vectorDotProduct _up;
-private _g = _aUp / 9.81 + 1.0;  // +1 for the standing 1G baseline
+private _g = _aUp / STANDARD_GRAVITY + 1.0;  // +1 for the standing 1G baseline
 
 // Smooth with the previous sample (1 Hz raw deltas are noisy).
 private _gSmooth = 0.6 * _g + 0.4 * _prevG;
