@@ -98,7 +98,7 @@ private _config = call FUNC(scalarFieldConfig);
     } else {
         ((((_windSpeed - _windThresh) / 15) min 1) max 0) > 0
     };
-    if (!_fed && {_prevTotal <= 1e-9}) then {
+    if (!_fed && _prevTotal <= 1e-9) then {
         _summary set [_key, [0, 0, [0, 0], 0]];
         missionNamespace setVariable [format [QGVAR(scalarHotCells_%1), _key], []];
         missionNamespace setVariable [format [QGVAR(scalarMax_%1), _key], 0];
