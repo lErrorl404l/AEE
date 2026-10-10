@@ -158,8 +158,9 @@ MGRS labels live.
   elevation data. No config field sets either.
 - The satellite land texture is baked into the map layers. Only
   `maxSatelliteAlpha` and `drawShaded` temper it.
-- `shadedSea` is not set. The base `RscMapControl` does not carry it and AEE
-  has no verified source, so AEE leaves it to the engine.
+- `shadedSea` is set to 1 (`addons/cartography/config_mapcolors.hpp:104`). It
+  is a model choice with no standard, adopted from the Enhanced Map idea, the
+  same source as `drawShaded`.
 
 ## Consequences
 

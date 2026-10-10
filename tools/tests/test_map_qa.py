@@ -33,10 +33,21 @@ MARKERS_HPP = SYMBOLOGY / "config_markers.hpp"
 LOC_HPP = CART / "config_locationtypes.hpp"
 ECHELON_KERNEL = SYMBOLOGY / "functions" / "symbology" / "fnc_symbologyEchelonSize.sqf"
 RUN_TESTS = REPO / "tools" / "run_tests.py"
+ADR030 = (
+    REPO
+    / "docs"
+    / "adr"
+    / "ADR-030-map-legibility-location-inheritance-object-names-grid-and-mgrs-contrast.md"
+)
+TOPO_SURFACE = REPO / "docs" / "engine" / "topo-map-surface.md"
+COL_HPP = CART / "config_mapcolors.hpp"
 
 MATRIX_SRC = MATRIX.read_text(encoding="utf-8")
 MARKERS_SRC = MARKERS_HPP.read_text(encoding="utf-8")
 LOC_SRC = LOC_HPP.read_text(encoding="utf-8")
+ADR030_SRC = ADR030.read_text(encoding="utf-8")
+TOPO_SURFACE_SRC = TOPO_SURFACE.read_text(encoding="utf-8")
+COL_SRC = COL_HPP.read_text(encoding="utf-8")
 
 AEE_MARKER_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers\\"
 
@@ -165,6 +176,28 @@ class TestMapQaChecks(unittest.TestCase):
             with self.subTest(root=cls):
                 self.assertRegex(LOC_SRC, rf"class\s+{cls}\s*\{{")
                 self.assertIsNone(re.search(rf"class\s+{cls}\s*:", LOC_SRC))
+
+
+class TestMapQaDocDrift(unittest.TestCase):
+    """The engine records match the shipped map config.  Two records once said
+    the shipped config did not set a field it sets; this holds the records to
+    the config so the drift cannot return."""
+
+    def test_adr030_names_the_shipped_shaded_sea_value(self):
+        self.assertNotIn("shadedSea is not set", ADR030_SRC)
+        self.assertIn("shadedSea", ADR030_SRC)
+        self.assertIn("shadedSea` is set to 1", ADR030_SRC)
+
+    def test_topo_map_surface_names_the_shipped_render_fields(self):
+        self.assertNotIn("does not yet set", TOPO_SURFACE_SRC)
+        for field in ("drawShaded", "shadedSea", "colorForestTextured"):
+            with self.subTest(field=field):
+                self.assertIn(field, TOPO_SURFACE_SRC)
+
+    def test_the_named_fields_match_the_shipped_config(self):
+        self.assertIn("shadedSea = 1;", COL_SRC)
+        self.assertIn("drawShaded = 0.15;", COL_SRC)
+        self.assertIn("colorForestTextured", COL_SRC)
 
 
 class TestSuiteRegistration(unittest.TestCase):
