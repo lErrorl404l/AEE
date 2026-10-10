@@ -6556,7 +6556,9 @@ class TestCallerBandWiring(unittest.TestCase):
     _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
     _TRANSMISSION = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
 
-    _RAD_CALL = re.compile(r"\[([^\[\]]*?)\] call E?FUNC\((?:thermal,)?calculateBandRadiance\)")
+    _RAD_CALL = re.compile(
+        r"\[([^\[\]]*?)\] call E?FUNC\((?:thermal,)?calculateBandRadiance\)"
+    )
     _TAU_CALL = re.compile(
         r"\[([^\[\]]*?)\] call E?FUNC\((?:thermal,)?calculateAtmosphericTransmission\)"
     )
@@ -6573,7 +6575,9 @@ class TestCallerBandWiring(unittest.TestCase):
     def test_each_caller_resolves_the_band(self):
         for name in self._CALLERS:
             with self.subTest(function=name):
-                self.assertRegex(self._code(name), r"call E?FUNC\((?:thermal,)?resolveThermalBand\)")
+                self.assertRegex(
+                    self._code(name), r"call E?FUNC\((?:thermal,)?resolveThermalBand\)"
+                )
 
     def test_each_caller_reads_the_device_band_index(self):
         # The band is index 6 of the device tuple (T1).  The AGC resolves the
@@ -6607,7 +6611,10 @@ class TestCallerBandWiring(unittest.TestCase):
     def test_each_caller_applies_the_wet_emissivity(self):
         for name in self._CALLERS:
             with self.subTest(function=name):
-                self.assertRegex(self._code(name), r"call E?FUNC\((?:thermal,)?getEffectiveEmissivity\)")
+                self.assertRegex(
+                    self._code(name),
+                    r"call E?FUNC\((?:thermal,)?getEffectiveEmissivity\)",
+                )
 
     def test_each_caller_passes_the_reflected_solar_term(self):
         for name in self._CALLERS:
@@ -6648,15 +6655,17 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
     the 17.37 span, a 0.87 radiance swing, 5.0 percent of span.  A steady
     scene re-quantised every selection and repainted the whole view.  The old
     1 percent band released on that swing.  fnc_updateThermalAGC now holds
-    the accepted raw window until it has moved by more than 8 percent of its
-    own span, then lets the IIR smooth the real move.  The band is derived
-    from the measured swing (5 percent) plus the 1 percent the accepted lags
-    the raw.  The decision is mirrored below.
+    the accepted raw window until it has moved by more than 25 percent of its
+    own span, then lets the IIR smooth the real move.  The band is sized from
+    the window EXTREME the swing moves (12.7 percent, because the band
+    radiance is super-linear in temperature) plus a margin for host spread.
+    The decision is mirrored below.
     """
 
     # The measured floor-window swing in RPT 23:30:22 (radiance) over the
-    # 17.37 span, and the 1 percent the accepted lags the raw window.
+    # 17.37 span, and the window MAX the P79 jitter moves on that swing.
     _MEASURED_SWING = 0.866
+    _WINDOW_MAX_SWING = 2.198
     _FLOOR_SPAN = 17.37
 
     _F = _THERMAL / "solver" / "fnc_updateThermalAGC.sqf"
@@ -6666,7 +6675,7 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
         cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
 
     @staticmethod
-    def _accept(prev, raw, frac=0.08):
+    def _accept(prev, raw, frac=0.25):
         if prev is None:
             return raw
         band = (prev[1] - prev[0]) * frac
@@ -6683,7 +6692,7 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
 
     def test_the_measured_floor_swing_is_held(self):
         # The settled floor window breathing IS the case the old 1 percent
-        # band failed and the 8 percent band must hold.
+        # band failed and the 25 percent band must hold.
         prev = (37.898, 55.264)
         swing_frac = self._MEASURED_SWING / self._FLOOR_SPAN
         swing = swing_frac * (prev[1] - prev[0])
@@ -6692,20 +6701,24 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
 
     def test_the_old_one_percent_band_released_on_the_swing(self):
         prev = (37.898, 55.264)
-        swing_frac = self._MEASURED_SWING / self._FLOOR_SPAN
+        swing_frac = self._WINDOW_MAX_SWING / self._FLOOR_SPAN
         swing = swing_frac * (prev[1] - prev[0])
         raw = (prev[0] + swing, prev[1] + swing)
         self.assertEqual(self._accept(prev, raw, frac=0.01), raw)
 
-    def test_the_band_exceeds_the_measured_swing_plus_the_lag(self):
-        swing_frac = self._MEASURED_SWING / self._FLOOR_SPAN
-        self.assertGreater(0.08, swing_frac + 0.01)
+    def test_the_band_exceeds_the_window_extreme_the_swing_moves(self):
+        # The probe sizes the swing on the COLD band (5 percent of the floor
+        # span), but the window MAX moves about 12.7 percent.  The band must
+        # clear that move plus the 1 percent the accepted lags the raw.
+        window_max_frac = self._WINDOW_MAX_SWING / self._FLOOR_SPAN
+        self.assertGreater(0.25, window_max_frac + 0.01)
 
     def test_a_real_move_beyond_the_band_is_accepted(self):
-        # A move larger than the 8 percent band still releases: a genuine
-        # scene change must not be frozen out.
+        # A move larger than the 25 percent band still releases: the (2c)
+        # genuine scene change (about 46 percent of the span) must not freeze.
         prev = (37.898, 55.264)
-        raw = (39.500, 56.866)  # 1.602 radiance = 9.2 percent of the span
+        span = prev[1] - prev[0]
+        raw = (prev[0] + 0.46 * span, prev[1] + 0.46 * span)
         self.assertEqual(self._accept(prev, raw), raw)
 
     def test_repeated_identical_updates_hold(self):
@@ -6715,7 +6728,7 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
         self.assertEqual(win, (37.9, 55.3))
 
     def test_source_holds_then_releases(self):
-        self.assertIn("private _AGC_DEADBAND = 0.08;", self.code)
+        self.assertIn("private _AGC_DEADBAND = 0.25;", self.code)
         self.assertIn(
             "private _agcBand = (_acceptedMax - _acceptedMin) * _AGC_DEADBAND;",
             self.code,
@@ -7325,7 +7338,10 @@ class TestActiveIR(unittest.TestCase):
         text = self._STRINGS.read_text(encoding="utf-8")
         self.assertIn("STR_AEE_Thermal_activeIR_Name", text)
         self.assertIn("STR_AEE_Thermal_activeIR_Description", text)
-        self.assertIn("STR_AEE_Thermal_Display_activeIRToggle", self._DISPLAY_STRINGS.read_text(encoding="utf-8"))
+        self.assertIn(
+            "STR_AEE_Thermal_Display_activeIRToggle",
+            self._DISPLAY_STRINGS.read_text(encoding="utf-8"),
+        )
         post = self._POSTINIT.read_text(encoding="utf-8")
         self.assertIn("CBA_fnc_addKeybind", post)
         self.assertIn("ActiveIRToggle", post)
