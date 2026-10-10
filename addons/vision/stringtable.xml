@@ -65,6 +65,14 @@
             <Original>Acuity Sharpness</Original>
             <English>Acuity Sharpness</English>
         </Key>
+        <Key ID="STR_AEE_Vision_colorTemperature_Description">
+            <Original>Physics colour temperature (issue #100). When on, the white-balance illuminant and the atmospheric desaturation come from the physics colour temperature (sun elevation and cloud cover) and the acuity grain scales with the light level. The correlated colour temperature uses the Kasten and Young 1989 air mass and the CIE 15:2004 daylight locus; the issue's Tanner Helland approximation is superseded by the loci. When off, the white balance uses the engine ambient colour and the shipped image is unchanged.</Original>
+            <English>Physics colour temperature (issue #100). When on, the white-balance illuminant and the atmospheric desaturation come from the physics colour temperature (sun elevation and cloud cover) and the acuity grain scales with the light level. The correlated colour temperature uses the Kasten and Young 1989 air mass and the CIE 15:2004 daylight locus; the issue's Tanner Helland approximation is superseded by the loci. When off, the white balance uses the engine ambient colour and the shipped image is unchanged.</English>
+        </Key>
+        <Key ID="STR_AEE_Vision_colorTemperature_Name">
+            <Original>Physics Colour Temperature</Original>
+            <English>Physics Colour Temperature</English>
+        </Key>
         <Key ID="STR_AEE_Vision_logDebug_Description">
             <Original>Log post-process and human-vision diagnostics to the RPT. Turn this on before reporting a fault.</Original>
             <English>Log post-process and human-vision diagnostics to the RPT. Turn this on before reporting a fault.</English>

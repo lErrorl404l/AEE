@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (663)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -478,6 +478,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_nightvision_fnc_teardownNvgDoF`
 - `aee_optics_fnc_applyAtmosphericSeeingFX`
 - `aee_optics_fnc_applyDewOnOpticsFX`
+- `aee_optics_fnc_applyHeatHazeBlurFX`
 - `aee_optics_fnc_applyHeatShimmerFX`
 - `aee_optics_fnc_applyMirageFX`
 - `aee_optics_fnc_applyRainOnOpticsFX`
@@ -699,10 +700,13 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_vision_fnc_initWeatherGrain`
 - `aee_vision_fnc_managePostProcess`
 - `aee_vision_fnc_perceptionAdaptState`
+- `aee_vision_fnc_perceptionAtmosphericColor`
 - `aee_vision_fnc_perceptionBaseGrade`
 - `aee_vision_fnc_perceptionChromaticAdaptation`
+- `aee_vision_fnc_perceptionColorTemperature`
 - `aee_vision_fnc_perceptionDetectDeviation`
 - `aee_vision_fnc_perceptionIlluminant`
+- `aee_vision_fnc_perceptionIlluminantFromCct`
 - `aee_vision_fnc_perceptionMesopicColor`
 - `aee_vision_fnc_perceptionParams`
 - `aee_vision_fnc_perceptionSample`

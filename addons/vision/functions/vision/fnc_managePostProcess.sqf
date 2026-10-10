@@ -213,17 +213,22 @@ private _dewBlur     = missionNamespace getVariable [QEGVAR(optics,dewBlur), 0];
 private _rainBlur    = missionNamespace getVariable [QEGVAR(optics,rainBlur), 0];
 private _glareBlur   = missionNamespace getVariable [QEGVAR(optics,glareBlur), 0];
 private _severeBlur  = missionNamespace getVariable [QEGVAR(optics,severeWeatherBlur), 0];
+private _heatBlur    = missionNamespace getVariable [QEGVAR(optics,heatHazeBlur), 0];
 if !(_dewBlur isEqualType 0) then { _dewBlur = 0; };
 if !(_rainBlur isEqualType 0) then { _rainBlur = 0; };
 if !(_glareBlur isEqualType 0) then { _glareBlur = 0; };
 if !(_severeBlur isEqualType 0) then { _severeBlur = 0; };
+if !(_heatBlur isEqualType 0) then { _heatBlur = 0; };
 private _severeCC    = missionNamespace getVariable [QEGVAR(optics,severeWeatherCC), []];
 private _snowCC      = missionNamespace getVariable [QEGVAR(optics,snowBlindnessCC), []];
 
 // ─── Resolve per effect ────────────────────────────────────────────────────
 private _chromaCap = missionNamespace getVariable [QEGVAR(optics,chromaCap), 0.06];
 private _chroma = (_seeingChroma + _shimmerChroma) min _chromaCap;
-private _blur   = (_dewBlur max _rainBlur) max (_glareBlur max _severeBlur);
+// Heat-haze defocus (issue #100) is a further contributor to the SAME
+// single-owner DynamicBlur; the arbiter max-combines it, so no second
+// DynamicBlur handle is created.
+private _blur   = ((_dewBlur max _rainBlur) max (_glareBlur max _severeBlur)) max _heatBlur;
 
 // ColorCorrections: severe weather wins the single slot when active,
 // otherwise snow blindness.  Both empty → neutral.
