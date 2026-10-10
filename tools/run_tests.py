@@ -69,6 +69,7 @@ def main():
         "tools/tests/test_propellant_temp.py",
         "tools/tests/test_sleep_model.py",
         "tools/tests/test_shooter_stability.py",
+        "tools/tests/test_suppression_psychology.py",
         "tools/tests/test_cold_weather.py",
         "tools/tests/test_dynamics.py",
         "tools/tests/test_dynamic_stars.py",
