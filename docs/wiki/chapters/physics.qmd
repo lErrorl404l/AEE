@@ -138,6 +138,43 @@ HF uses ITU-R P.531 ionospheric absorption. The absorption scales with
 `1/f^2`, the solar zenith angle, and the sunspot number. A Dellinger flare
 term covers sudden ionospheric disturbances.
 
+### 3D electromagnetic propagation
+
+The link budget adds three 3D terms (issue #13).
+
+Ground bounce uses the two-ray ground-reflection model. The direct ray and
+the ground-reflected ray interfere. The excess path loss over free space is
+`L = -10*log10(F)` with the interference factor
+`F = 1 + rho^2 - 2*rho*cos(deltaPhi)` and the phase difference
+`deltaPhi = 4*pi*h_tx*h_rx/(lambda*d)`. The breakpoint is
+`d_bp = 4*h_tx*h_rx/lambda`. Below it the rays interfere in lobes. Above it
+the envelope falls as `d^4` (`40*log10 d`) for a perfect ground
+(`rho = 1`). A rough ground (`rho < 1`) weakens the reflected ray, so the
+excess saturates instead of falling as `d^4`. Source: the two-ray
+ground-reflection model (Balanis, Antenna Theory, 4th ed 2016; Freeman,
+Radio System Design for Telecommunications, 2007).
+
+Terrain diffraction uses the ITU-R P.526 single knife-edge loss
+`L = 6.9 + 20*log10(sqrt((v-0.1)^2 + 1) + v - 0.1)` with the diffraction
+parameter `v = h*sqrt(2*(d1+d2)/(lambda*d1*d2))`, valid for `v > -0.78`.
+Multiple edges use the Deygout method: the main edge loss plus the two
+sub-path losses, capped at three edges. The driver samples the terrain
+profile between the two positions with `getTerrainHeightASL`. Sources:
+ITU-R P.526-16 section 4.1 (single edge) and section 4.3 (multiple edges);
+Deygout (1966) IEEE Trans. Antennas Propag. 14(4):480-489. The issue's
+"Carnegie method" is a misnomer. No radio-diffraction method by that name
+exists.
+
+The valley waveguide treats a valley as a parallel-plate guide with cutoff
+`f_c = c/(2a)` and guided wavelength `lambda_g = lambda/sqrt(1-(f_c/f)^2)`
+(waveguide theory, Pozar). Below cutoff there is no guidance. The
+along-axis bonus and across-axis penalty magnitudes are a first-order
+geometric analogy and are marked UNSOURCED. No standardised valley
+channelling model was found.
+
+The ground reflectivity, the antenna heights and the reference link bearing
+are CBA settings. The whole model gates on `aee_radio_emPropagationEnabled`.
+
 ## Refractive shock trace
 
 A supersonic round steps the air density across its bow shock. The index

@@ -62,6 +62,19 @@ def evaporation_duct_bonus(freq_hz, dist_m, temp_c, sst_c, rh=50.0):
     return bonus
 
 
+def two_ray_excess(dist_m, freq_hz, h_tx, h_rx, rho):
+    """Mirror of fnc_calculateTwoRayGround.sqf (issue #13).
+
+    Excess path loss over free space, dB: F = 1 + rho^2 - 2*rho*cos(dPhi)
+    with dPhi = 4*pi*h_tx*h_rx/(lambda*d).  Floored at 1e-12 so the log
+    stays finite at a null.
+    """
+    lam = 3e8 / freq_hz
+    dphi = 4 * math.pi * h_tx * h_rx / (lam * dist_m)
+    field = max(1e-12, 1 + rho**2 - 2 * rho * math.cos(dphi))
+    return -10 * log10(field)
+
+
 def radio_propagation_index(
     freq_hz,
     dist_m,
@@ -73,6 +86,12 @@ def radio_propagation_index(
     battery_derate=1.0,
     battery_enabled=True,
     sst_c=None,
+    em_enabled=True,
+    tx_height=2.0,
+    rx_height=1.5,
+    ground_reflectivity=0.5,
+    diffraction_db=0.0,
+    valley_db=0.0,
 ):
     """Mirror of fnc_calculateRadioPropagation.sqf (Friis + ducting).
 
@@ -83,6 +102,10 @@ def radio_propagation_index(
     battery_enabled: the aee_radio_batteryDeratingEnabled toggle.
     sst_c: sea-surface temperature (issue #37).  None = no maritime
         state, so no evaporation duct.
+    em_enabled: the aee_radio_emPropagationEnabled toggle (issue #13).
+    tx_height, rx_height, ground_reflectivity: two-ray ground-bounce inputs.
+    diffraction_db, valley_db: terrain terms supplied by the EM kernels
+        (the mirror cannot sample terrain).
     """
     tx_power = 37.0
     if battery_enabled:
@@ -107,7 +130,22 @@ def radio_propagation_index(
     if biome in ["UMa", "Uhd", "Uhb", "Uhi", "Cfa", "Cfb", "Cfc", "Dfa", "Dfb"]:
         terrain_loss = 3
 
-    link_budget = tx_power - fspl - terrain_loss + duct_bonus - absorption
+    ground_bounce = 0.0
+    if em_enabled:
+        ground_bounce = two_ray_excess(
+            dist_m, freq_hz, tx_height, rx_height, ground_reflectivity
+        )
+
+    link_budget = (
+        tx_power
+        - fspl
+        - terrain_loss
+        + duct_bonus
+        - absorption
+        - ground_bounce
+        - diffraction_db
+        - valley_db
+    )
     signal_pct = 10 ** (link_budget / 20)
     signal_pct = max(0.0, min(1.0, signal_pct))
     index = 0.3 + 1.7 * (signal_pct**0.5)
@@ -236,10 +274,10 @@ class TestBatteryDerating(unittest.TestCase):
         # -20 C battery derating (~0.7): -1.55 dB tx power.  The link
         # budget drops, so the propagation index must fall.
         warm = radio_propagation_index(
-            1e8, 5000, 20, 50, 1013, False, battery_derate=1.0
+            1e8, 5000, 20, 50, 1013, False, battery_derate=1.0, em_enabled=False
         )
         cold = radio_propagation_index(
-            1e8, 5000, -20, 50, 1013, False, battery_derate=0.7
+            1e8, 5000, -20, 50, 1013, False, battery_derate=0.7, em_enabled=False
         )
         self.assertLess(cold, warm, "cold battery did not reduce signal")
         # Derating 0.7 -> tx -1.55 dB -> signal_pct scales by
@@ -283,6 +321,34 @@ class TestBatteryDerating(unittest.TestCase):
             1e8, 5000, -40, 50, 1013, False, battery_derate=0.3
         )
         self.assertAlmostEqual(below, at_floor, places=9)
+
+
+class TestEmIntegration(unittest.TestCase):
+    """Issue #13: the 3D EM terms adjust the propagation index."""
+
+    def test_ground_bounce_reduces_index(self):
+        on = radio_propagation_index(1e8, 5000, 15, 50, 1013, False, em_enabled=True)
+        off = radio_propagation_index(1e8, 5000, 15, 50, 1013, False, em_enabled=False)
+        self.assertLess(on, off)
+
+    def test_diffraction_reduces_index(self):
+        clean = radio_propagation_index(
+            1e8, 5000, 15, 50, 1013, False, diffraction_db=0.0
+        )
+        blocked = radio_propagation_index(
+            1e8, 5000, 15, 50, 1013, False, diffraction_db=20.0
+        )
+        self.assertLess(blocked, clean)
+
+    def test_valley_boosts_index(self):
+        plain = radio_propagation_index(1e8, 5000, 15, 50, 1013, False, valley_db=0.0)
+        guided = radio_propagation_index(1e8, 5000, 15, 50, 1013, False, valley_db=-3.0)
+        self.assertGreater(guided, plain)
+
+    def test_higher_antenna_less_ground_bounce(self):
+        low = two_ray_excess(5000, 1e8, 2.0, 1.5, 1.0)
+        high = two_ray_excess(5000, 1e8, 30.0, 30.0, 1.0)
+        self.assertLess(high, low)
 
 
 # ─── Sea-surface temperature (issue #37) ────────────────────────────────────
