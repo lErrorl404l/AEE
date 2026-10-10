@@ -9,6 +9,14 @@
             <Original>Airframe Load Radius</Original>
             <English>Airframe Load Radius</English>
         </Key>
+        <Key ID="STR_AEE_Flight_fixedWingPerformance_Description">
+            <Original>Publish the ambient density altitude and density ratio for the fixed-wing performance model (density altitude, ground effect, landing). The per-aircraft performance row is computed on demand from the pure kernel.</Original>
+            <English>Publish the ambient density altitude and density ratio for the fixed-wing performance model (density altitude, ground effect, landing). The per-aircraft performance row is computed on demand from the pure kernel.</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_fixedWingPerformance_Name">
+            <Original>Fixed-Wing Performance</Original>
+            <English>Fixed-Wing Performance</English>
+        </Key>
         <Key ID="STR_AEE_Flight_flightAeroPenalty_Description">
             <Original>Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe.</Original>
             <English>Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe.</English>

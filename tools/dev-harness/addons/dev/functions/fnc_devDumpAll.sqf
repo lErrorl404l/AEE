@@ -33,6 +33,7 @@ private _dumps = [
     "aee_maritime_fnc_dumpState",
     "aee_material_fnc_dumpState",
     "aee_flight_fnc_logAirframeState",
+    "aee_flight_fnc_logFixedWingState",
     "aee_nightvision_fnc_dumpState",
     "aee_optics_fnc_dumpState",
     "aee_physiology_fnc_dumpState",
