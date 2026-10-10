@@ -134,6 +134,7 @@
       "kind": "engine_base",
       "provenance": [
         "addons/mobility/functions/fnc_calculateTraction.sqf:54",
+        "addons/physiology/functions/state/fnc_updatePsychologyState.sqf:25",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:276",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:520",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62",
