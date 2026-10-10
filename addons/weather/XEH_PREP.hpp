@@ -6,6 +6,13 @@
 PREPS(warnings,calculateBiologicalAmbient);
 PREP(calculateScentDispersion);
 PREP(scentWildlifeResponse);
+PREPS(dispersion,getGasProperties);
+PREPS(dispersion,calculateDenseGasSlumping);
+PREPS(dispersion,calculateGasMixtureDensity);
+PREPS(dispersion,calculateDenseGasPooling);
+PREPS(dispersion,calculatePoolEvaporation);
+PREPS(dispersion,classifyToxicExposure);
+PREPS(dispersion,calculateDenseGasDispersion);
 PREPS(terrain,calculateCropState);
 PREPS(terrain,calculateDustSuppression);
 PREPS(terrain,calculateUrbanHeatIsland);

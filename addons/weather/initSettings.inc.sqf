@@ -50,3 +50,22 @@ AEE_SETTING_SLIDER(ScentIntensity,"AEE Physiology","Scent",0,2,1.0,1);
 // Off by default: the plume runs only when a mission starts a release with
 // aee_weather_fnc_startCbrnRelease, so an ordinary mission pays nothing.
 AEE_SETTING_CHECKBOX(CbrnPlumeEnabled,"AEE Environmental","CBRN",false);
+// ── Dense gas dispersion (issue #120) ──────────────────────────────────────
+// The agent is a scenario selection until a release event exists.  The
+// default "none" leaves the model off.
+AEE_SETTING_SLIDER(denseGasCloudHeight,"AEE Environmental","Dispersion",0.1,20,1.0,1);
+
+AEE_SETTING_SLIDER(denseGasPoolDiameter,"AEE Environmental","Dispersion",0.1,50,2.0,1);
+
+[
+    QGVAR(denseGasAgent),
+    "LIST",
+    [LLSTRING(denseGasAgent_Name), LLSTRING(denseGasAgent_Description)],
+    ["AEE Environmental", "Dispersion"],
+    [
+        ["none","chlorine","cs","phosgene","sarin","carbon-dioxide","hydrogen-cyanide"],
+        ["None","Chlorine","CS (tear gas)","Phosgene","Sarin (GB)","Carbon dioxide","Hydrogen cyanide"]
+    ],
+    0,
+    {}
+] call CBA_fnc_addSetting;
