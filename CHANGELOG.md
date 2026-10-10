@@ -60,10 +60,6 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-## [1.1.0] - 2026-09-15
-
-### Added
-
 - Scientific validation harness: grid-comparison of the physics formulas
   against Murphy & Koop 2005, ASHRAE psychrolib, NWS wind-chill values,
   pvlib SPA, and the ISA table.

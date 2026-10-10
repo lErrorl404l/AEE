@@ -11,7 +11,11 @@
 
 #define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION_STR); versionAr[] = {VERSION_AR}
 
-#define REQUIRED_VERSION 2.02
+// Mod-wide minimum engine version.  The highest engine feature AEE uses is
+// screenToWorldDirection (aee_vision) and createSoundSourceLocal (aee_ambience),
+// both Arma 3 2.18; the floor is the maximum over every addon.  Source: BI wiki
+// command DB (arma3-wiki), since.arma_3 per command.
+#define REQUIRED_VERSION 2.18
 
 // COMPONENT_NAME is defined per-addon in script_component.hpp, but default here for fallback
 #ifdef COMPONENT_BEAUTIFIED
