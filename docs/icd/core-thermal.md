@@ -13,7 +13,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_avgInfantryTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:71` | Average infantry temperature |
 | `aee_core_avgVehicleTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:70` | Average vehicle temperature |
 | `aee_core_builtDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:151` | UNKNOWN |
-| `aee_core_clockJump` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_updateThermalAGC.sqf:419` | UNKNOWN |
+| `aee_core_clockJump` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_updateThermalAGC.sqf:423` | UNKNOWN |
 | `aee_core_clothingInsulation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:92` | UNKNOWN |
 | `aee_core_clothingInsulationFactor` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/surface/fnc_calculateClothingInsulation.sqf:14` | Clothing insulation 0.5..2.0 |
 | `aee_core_crossoverTimer` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:69` | UNKNOWN |
