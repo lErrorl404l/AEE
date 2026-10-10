@@ -616,6 +616,7 @@ description.
 | `aee_vision_visionToneStrength` | Optics > Vision | Tone-stage strength, 0 to 1 |
 | `aee_vision_visionContrastScale` | Optics > Vision | Tone-stage contrast scale, 0.5 to 1.5 |
 | `aee_vision_visionWhiteBalance` | Optics > Vision | Enable the partial von Kries white balance |
+| `aee_vision_colorTemperature` | Optics > Vision | Derive the white-balance illuminant and the atmospheric desaturation from the physics colour temperature (issue #100, default off) |
 | `aee_vision_visionAdaptationDegree` | Experimental > Vision | Degree of chromatic adaptation D, 0 to 1 (CIE 159:2004) |
 | `aee_vision_visionMesopicDesaturation` | Experimental > Vision | Maximum mesopic desaturation, 0 to 0.5 |
 | `aee_vision_visionPurkinjeStrength` | Experimental > Vision | Purkinje tint strength, 0 to 1 |
@@ -712,6 +713,7 @@ state for the operator and for the debug console.
 | `aee_vision_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
 | `aee_vision_visionModelActive` | vision | True when the human-vision model owns the normal-vision grade this tick |
 | `aee_vision_visionBaseResolved` | vision | The resolved base-grade anchor: the cached config value plus any debug override, published above the client-only exit for a headless probe |
+| `aee_vision_colorTemperatureK` | vision | Physics correlated colour temperature of the scene illuminant this tick, kelvin (issue #100) |
 | `aee_thermal_bloom` | thermal | Hot-source bloom amplitude this tick |
 | `aee_thermal_agcHunt` | thermal | AGC hunt gain offset this tick |
 | `aee_thermal_nucDrift` | thermal | Non-uniformity (NUC) drift this tick |

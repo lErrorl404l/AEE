@@ -47,6 +47,9 @@ Arguments:
   9: Number - Purkinje tint strength, 0 to 1
   10: Array - vanilla base-grade anchor [brightness, contrast, offset]
   11: Number - bounded desaturation alpha, 0 to 0.10
+  12: Number - atmospheric desaturation alpha, 0 to 0.5
+               (fnc_perceptionAtmosphericColor)
+  13: Number - acuity grain light-level scale, 0 and up (1 is the base)
 
 Returns:
   Array - [ColorCorrections array, FilmGrain array]
@@ -64,8 +67,13 @@ params [
     ["_desatMax", 0, [0]],
     ["_purkinjeStrength", 0, [0]],
     ["_anchor", [1, 1, 0], [[]]],
-    ["_desatAlpha", 0, [0]]
+    ["_desatAlpha", 0, [0]],
+    ["_atmosAlpha", 0, [0]],
+    ["_grainScale", 1, [0]]
 ];
+
+if !(_atmosAlpha isEqualType 0) then { _atmosAlpha = 0; };
+if !(_grainScale isEqualType 0) then { _grainScale = 1; };
 
 private _tone = [1, 1, 0];
 if (_toneEnabled) then {
@@ -91,12 +99,25 @@ private _blend = [0, 0, 0, 0];
 // original colour.
 private _colorize = [1, 1, 1, 1];
 private _weights = [0, 0, 0, 0];
-if (_whiteBalance || (_mesopicW < 1)) then {
+// The total desaturation is the larger of the bounded mesopic alpha and the
+// atmospheric alpha.  The atmospheric term is a separate physical cause (Mie
+// and aerial scattering under cloud, rain and haze) feeding the SAME colorize
+// and weights mechanism, not a second colour stage.
+private _desat = _alpha max _atmosAlpha;
+if (_whiteBalance || (_mesopicW < 1) || (_atmosAlpha > 0)) then {
     private _meso = [_mesopicW, _desatMax, _purkinjeStrength] call FUNC(perceptionMesopicColor);
     // A zero mesopic alpha is the identity: keep the neutral colour and the
     // bounded desaturation alpha, so the default settings never tint.
     if ((_meso select 3) > 0) then {
-        _colorize = [_meso select 0, _meso select 1, _meso select 2, 1 - _alpha];
+        // The mesopic path tints toward the scotopic hue.
+        _colorize = [_meso select 0, _meso select 1, _meso select 2, 1 - _desat];
+        _weights = [0.2126, 0.7152, 0.0722, 0];
+    };
+    // The atmospheric path is a pure desaturation toward the Rec.709 luma, so
+    // its colorize colour stays white.  It supersedes the mesopic tint when
+    // both apply: the larger cause sets the visible grade.
+    if (_atmosAlpha > 0) then {
+        _colorize = [1, 1, 1, 1 - _desat];
         _weights = [0.2126, 0.7152, 0.0722, 0];
     };
     if (_whiteBalance) then {
@@ -115,9 +136,14 @@ private _cc = [
     [-1, -1, 0, 0, 0, 0, 0]
 ];
 
+// The light-level scale multiplies the acuity grain intensity: a dark scene
+// raises it.  The intensity is bounded to the engine FilmGrain range 0 to
+// 0.05 (BIKI FilmGrain, default 0.005).  The scale itself is UNSOURCED: the
+// issue's 2.25 to 2.7 values are a mod-derived scale, not an intensity.
 // The last FilmGrain element is the monochromatic flag.  BIKI Arma 3: 0 is
 // monochrome, any other value is colour.  0 desaturates normal vision, so the
 // acuity grain ships colour.
-private _grain = [0.006, 4.0, 2.01, 0.75, 1.0, 1];
+private _grainIntensity = ((0.006 * (_grainScale max 0)) max 0) min 0.05;
+private _grain = [_grainIntensity, 4.0, 2.01, 0.75, 1.0, 1];
 
 [_cc, _grain]

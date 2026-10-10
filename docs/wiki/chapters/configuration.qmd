@@ -836,6 +836,7 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_vision_colorTemperature` | CHECKBOX | `false` | yes | vision | Physics colour temperature (issue #100). When on, the white-balance illuminant and the atmospheric desaturation come from the physics colour temperature (sun elevation and cloud cover) and the acuity grain scales with the light level. The correlated colour temperature uses the Kasten and Young 1989 air mass and the CIE 15:2004 daylight locus; the issue's Tanner Helland approximation is superseded by the loci. When off, the white balance uses the engine ambient colour and the shipped image is unchanged. |
 | `aee_vision_visionContrastScale` | SLIDER | `1.0` | yes | vision | Contrast scale on the human-vision tone stage, range 0.5 to 1.5. It scales the display contrast the Naka-Rushton and CIE L* tangent derives. The exact calibration gain is UNSOURCED. |
 | `aee_vision_visionModelEnabled` | CHECKBOX | `true` | yes | vision | Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. Default on. Disable it to fall back to the aesthetic base grade. |
 | `aee_vision_visionToneEnabled` | CHECKBOX | `true` | yes | vision | Enable the tone and contrast stage of the human-vision model. It derives the display brightness, contrast and black point from the adapted scene luminance. The form is SOURCED to Naka and Rushton 1966 and CIE 15:2004. |
