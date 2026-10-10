@@ -30,7 +30,7 @@ ENGINE_MAGAZINE_BINDINGS = "aee.engine.magazine_bindings/1"
 ENGINE_OVERRIDES = "aee.engine.overrides/1"
 
 # Physics.
-PHYSICS_MASS_CALIBRATION = "aee.physics.mass_calibration/1"
+PHYSICS_MASS_CALIBRATION = "aee.physics.mass_calibration/2"
 
 # Vehicle.
 VEHICLE_CLASS_BINDING_MAP = "aee.vehicle.class_binding_map/1"

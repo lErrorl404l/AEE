@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -43,6 +44,56 @@ FORWARD_RE = re.compile(r"^[ \t]+class (\w+);$", re.M)
 BARE_RE = re.compile(r"^[ \t]+class (\w+) \{\s*$", re.M)
 
 FORBIDDEN_KEYS = ("htMin", "htMax", "afMax", "mfMax", "mFact", "tBody")
+
+# The grandfathered land classes. Their mass and maxSpeed block predates the
+# land-coverage growth and must stay byte-identical. The reference is the blob
+# at the base commit, read with ``git show``.
+GRANDFATHERED_BASE = "c8da67e4"
+GRANDFATHERED_HEADER = "addons/vehicles/generated/CfgVehicles.hpp"
+GRANDFATHERED_CLASSES = (
+    "B_AFV_Wheeled_01_cannon_F",
+    "B_APC_Tracked_01_rcws_F",
+    "B_APC_Wheeled_01_cannon_F",
+    "B_MBT_01_cannon_F",
+    "B_MRAP_01_F",
+    "B_Truck_01_transport_F",
+    "C_Hatchback_01_F",
+    "C_Hatchback_01_sport_F",
+    "I_APC_Wheeled_03_cannon_F",
+    "I_APC_tracked_03_cannon_F",
+    "I_MBT_03_cannon_F",
+    "I_MRAP_03_F",
+    "I_Truck_02_transport_F",
+    "O_APC_Tracked_02_cannon_F",
+    "O_APC_Wheeled_02_rcws_v2_F",
+    "O_MBT_02_cannon_F",
+    "O_MRAP_02_F",
+    "O_Truck_02_transport_F",
+)
+# One full class body: `class X: Parent {` through the closing `};`.
+FULL_BODY_RE = re.compile(r"^[ \t]+class (\w+): \w+ \{\n.*?\n[ \t]+\};", re.M | re.S)
+
+
+def _bodies(text: str) -> dict[str, str]:
+    """Return every class body keyed by class name, verbatim."""
+    return {match.group(1): match.group(0) for match in FULL_BODY_RE.finditer(text)}
+
+
+def _base_header() -> str | None:
+    """Return the base-commit header, or None when git cannot reach it."""
+    try:
+        result = subprocess.run(
+            ["git", "show", f"{GRANDFATHERED_BASE}:{GRANDFATHERED_HEADER}"],
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError:
+        return None
+    if result.returncode != 0:
+        return None
+    return result.stdout
 
 
 def _calibration_payload() -> dict[str, object]:
@@ -137,6 +188,23 @@ class MassOverrideTest(unittest.TestCase):
                 with self.subTest(game_class=binding.game_class):
                     self.assertIn("maxSpeed", self.assigned[binding.game_class])
                     self.assertIn("mass", self.assigned[binding.game_class])
+
+    def test_the_grandfathered_bodies_are_byte_identical(self) -> None:
+        base = _base_header()
+        if base is None:
+            self.skipTest(
+                f"git cannot reach {GRANDFATHERED_BASE}; a full-history "
+                "checkout is required for the grandfathered-body check"
+            )
+        base_bodies = _bodies(base)
+        now_bodies = _bodies(self.rendered)
+        # The class-body count grows; the grandfathered bodies do not change.
+        self.assertEqual(set(base_bodies), set(GRANDFATHERED_CLASSES))
+        self.assertGreater(len(now_bodies), len(base_bodies))
+        for name in GRANDFATHERED_CLASSES:
+            with self.subTest(game_class=name):
+                self.assertIn(name, now_bodies)
+                self.assertEqual(now_bodies[name], base_bodies[name])
 
     def test_a_missing_parent_fails_closed(self) -> None:
         drop = self.bindings[0].game_class
