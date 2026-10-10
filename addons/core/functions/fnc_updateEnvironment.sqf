@@ -251,6 +251,12 @@ if (GVAR(enginePowerDegradationEnabled)) then {
 };
 END_COUNTER(mobility);
 
+// ─── Seismic (issue #27) ───────────────────────────────────────────────────
+// Reads the event the core EDEN module published and computes the ground
+// motion at the sample position.  Deterministic per position, so it needs no
+// broadcast.
+[_posASL] call EFUNC(persistence,calculateSeismicActivity);
+
 // ─── Ballistics ─────────────────────────────────────────────────────────────
 BEGIN_COUNTER(ballistics);
     [] call EFUNC(ballistics,calculateCrosswindBallistics);

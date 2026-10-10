@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (667)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -298,6 +298,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_init`
 - `aee_core_fnc_initKernelTable`
 - `aee_core_fnc_moduleInit`
+- `aee_core_fnc_moduleSeismicInit`
 - `aee_core_fnc_moduleStormInit`
 - `aee_core_fnc_probeExtension`
 - `aee_core_fnc_updateEnvironment`
@@ -519,9 +520,16 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_persistence_fnc_calculateFreezeThawCycling`
 - `aee_persistence_fnc_calculateFrostOnWindscreens`
 - `aee_persistence_fnc_calculateIceLoad`
+- `aee_persistence_fnc_calculateSeismicActivity`
 - `aee_persistence_fnc_calculateSurfaceWetness`
 - `aee_persistence_fnc_detectGroundFrost`
 - `aee_persistence_fnc_getCbrnProtection`
+- `aee_persistence_fnc_seismicDamage`
+- `aee_persistence_fnc_seismicGroundMotion`
+- `aee_persistence_fnc_seismicLandslide`
+- `aee_persistence_fnc_seismicLiquefaction`
+- `aee_persistence_fnc_seismicShake`
+- `aee_persistence_fnc_seismicTerrainPoints`
 - `aee_persistence_fnc_updateSoilMoisture`
 - `aee_physiology_fnc_applyHeatStressHUD`
 - `aee_physiology_fnc_dumpState`
@@ -792,7 +800,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (56)
+### Public core state variables (61)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -841,6 +849,11 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_ppHandle_optics_BaseGrade`
 - `aee_core_precipitationPhase`
 - `aee_core_realWeatherActive`
+- `aee_core_seismicActive`
+- `aee_core_seismicDepth`
+- `aee_core_seismicEpicentre`
+- `aee_core_seismicMagnitude`
+- `aee_core_seismicStart`
 - `aee_core_simTime`
 - `aee_core_snowDepth_m`
 - `aee_core_snowfallRate`
