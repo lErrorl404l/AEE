@@ -4,7 +4,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {QGVAR(module), QGVAR(stormModule)};
+        units[] = {QGVAR(module), QGVAR(stormModule), QGVAR(seismicModule)};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
@@ -108,6 +108,35 @@ class CfgVehicles {
         };
         class ModuleDescription {
             description = "Force a severe-weather state for a set duration. AEE publishes aee_core_stormOverrideType, aee_core_stormOverrideIntensity, and aee_core_stormOverrideUntil for the fx addon to consume.";
+            sync[] = {};
+        };
+    };
+    class GVAR(seismicModule): Module_F {
+        scope = 2;
+        displayName = "AEE Seismic Source";
+        icon = "\a3\modules_f\data\portraitModule_ca.paa";
+        category = "Environment";
+        function = QFUNC(moduleSeismicInit);
+        functionPriority = 1;
+        isGlobal = 1;
+        isTriggerActivated = 0;
+        isDisposable = 0;
+        class Arguments {
+            class magnitude {
+                displayName = "Moment Magnitude";
+                description = "Earthquake moment magnitude (Mw), about 4 to 9";
+                typeName = "NUMBER";
+                defaultValue = 6.5;
+            };
+            class depthKm {
+                displayName = "Focal Depth (km)";
+                description = "Hypocentre depth in kilometres";
+                typeName = "NUMBER";
+                defaultValue = 10;
+            };
+        };
+        class ModuleDescription {
+            description = "Raise an earthquake at the module position. AEE publishes aee_core_seismicActive, aee_core_seismicMagnitude, aee_core_seismicEpicentre, aee_core_seismicDepth and aee_core_seismicStart for the persistence module to consume.";
             sync[] = {};
         };
     };

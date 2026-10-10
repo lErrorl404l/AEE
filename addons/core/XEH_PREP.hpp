@@ -7,6 +7,7 @@ PREP(calculateSeededWeatherProgression);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
+PREP(moduleSeismicInit);
 PREP(updateEnvironment);
 PREP(updateSimClock);
 PREP(initKernelTable);
