@@ -9,6 +9,10 @@ class CfgPatches {
         requiredVersion = 2.04;
         requiredAddons[] = {
             "aee_lib",
+            "aee_core",
+            "aee_weather",
+            "aee_atmos",
+            "aee_material",
             "cba_main",
             "cba_xeh",
             "cba_settings"
