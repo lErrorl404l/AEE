@@ -32,10 +32,15 @@ from collections.abc import Sequence
 from pathlib import Path
 
 ROOT = Path(__file__).parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools import schemas  # noqa: E402
+
 DEFAULT_PATH = ROOT / "data" / "physics" / "mass_calibration.json"
 DEFAULT_BINDINGS = ROOT / "data" / "vehicle" / "class_bindings.json"
 
-SCHEMA = "aee.physics.mass_calibration/1"
+SCHEMA = schemas.PHYSICS_MASS_CALIBRATION
 SCALE_ROUND = 6
 SCALE_TOLERANCE = 1e-6
 

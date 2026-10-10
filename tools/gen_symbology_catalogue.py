@@ -55,10 +55,13 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 if str(Path(__file__).parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).parent))
 
 from symbology_categories import marker_category  # noqa: E402
+from tools import schemas  # noqa: E402
 
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
 SOURCES = ROOT / "data" / "symbology" / "sources"
@@ -78,7 +81,7 @@ ADDON_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers"
 # three engine configs that define the marker classes AEE touches.  Resolve it
 # with `python3 tools/gen_symbology_catalogue.py --resolve-engine <config.cpp>...`.
 ENGINE_MARKERS = ROOT / "data" / "symbology" / "engine_markers.json"
-ENGINE_MARKERS_SCHEMA = "aee.symbology.engine_markers/1"
+ENGINE_MARKERS_SCHEMA = schemas.SYMBOLOGY_ENGINE_MARKERS
 REGISTER_OUT = ROOT / "docs" / "wiki" / "research" / "marker-mapping-register.md"
 
 # The runtime family and glyph vocabulary, read from the committed table source

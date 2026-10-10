@@ -23,6 +23,7 @@ from pathlib import Path
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import validate_vehicle_mass_accuracy as tool  # noqa: E402
 from tools.validation import vehicle_catalogue as vehicle_catalogue  # noqa: E402
 
@@ -165,7 +166,7 @@ class ProbeContractTest(_TempCase):
 
     def test_schema_mismatch_rejected(self) -> None:
         record = _probe()
-        record["schema"] = "aee.vehicle.mass_accuracy.probe/2"
+        record["schema"] = schemas.foreign_version(tool.PROBE_SCHEMA)
         self.assertTrue(tool.probe_errors(record))
 
     def test_missing_key_rejected(self) -> None:
@@ -248,7 +249,7 @@ class HoldoutContractTest(_TempCase):
 
     def test_schema_mismatch_rejected(self) -> None:
         document = _holdout()
-        document["schema"] = "aee.vehicle.mass_accuracy.holdout/2"
+        document["schema"] = schemas.foreign_version(tool.HOLDOUT_SCHEMA)
         self.assertTrue(tool.holdout_errors(document))
 
     def test_invalid_method_rejected(self) -> None:
@@ -306,7 +307,7 @@ class AblationContractTest(_TempCase):
 
     def test_schema_mismatch_rejected(self) -> None:
         document = _ablation()
-        document["schema"] = "aee.vehicle.mass_accuracy.ablation/2"
+        document["schema"] = schemas.foreign_version(tool.ABLATION_SCHEMA)
         self.assertTrue(tool.ablation_errors(document))
 
     def test_wrong_arm_name_rejected(self) -> None:
@@ -559,7 +560,7 @@ def _entry(
 
 def _synthetic_model() -> dict[str, object]:
     return {
-        "schema": "aee.vehicle.mass_model/1",
+        "schema": schemas.VEHICLE_MASS_MODEL,
         "material_density": {
             "metal": {"low": 7100, "high": 7850, "source": "x", "locator": "y"},
             "wood": {"low": 350, "high": 1100, "source": "x", "locator": "y"},
