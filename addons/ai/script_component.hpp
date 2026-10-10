@@ -19,3 +19,24 @@
 
 // The substrate client tick interval, seconds.
 #define AI_TICK 1.0
+
+// ── Engine-AI hearing constants ───────────────────────────────────────────
+// AEE feeds the engine AI hearing from its single sound-propagation model,
+// aee_weather_currentSoundPropagation, computed by
+// addons/weather/functions/terrain/fnc_updateSoundPropagation.sqf.  The index
+// (0.3 to 2.0, 1.0 baseline) scales the hearing range; no second propagation
+// model is introduced.
+//
+// AI_HEARING_BASE_RANGE is the baseline hearing range in metres.  It is a
+// modelling choice, UNSOURCED: the engine exposes no AI hearing range as a
+// readable value.  The index scales it, so the effective range moves with the
+// weather, not a constant.
+#define AI_HEARING_BASE_RANGE 400
+
+// The reveal value band.  The engine's reveal command sets the knowledge value
+// to 1 when the revealing side holds none (engine command reference), and the
+// value is capped below 1.5, the side-identification threshold: hearing alone
+// never tells the AI which side fired.  Both bounds come from the engine and
+// the issue, not a new model.
+#define AI_HEARING_REVEAL_MIN 1.0
+#define AI_HEARING_REVEAL_MAX 1.4
