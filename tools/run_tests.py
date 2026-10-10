@@ -203,6 +203,8 @@ def main():
         "tools/tests/test_run_tests_timeout.py",
         # Terrain and map-feature symbols (aee-map-feature-overhaul).
         "tools/tests/test_terrain.py",
+        # The map QA matrix and its machine checks (aee-map-realism-polish).
+        "tools/tests/test_map_qa.py",
         # Map symbology: the derived engine marker mapping (ADR-029).
         "tools/tests/test_symbology.py",
         "tools/tests/test_marker_derivation.py",
