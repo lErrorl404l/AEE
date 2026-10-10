@@ -73,6 +73,13 @@ if (!_realWeather) then {
         [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
     };
     [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
+    // Weather front: perturbs the just-computed temperature and pressure
+    // (the contrast step and the trough) and publishes the wind veer and the
+    // cloud term for the kernels below.  Runs before calculatePressureTrend,
+    // so the 3-hour trend ring buffer reports the passage signature (issue
+    // #15).  Inside the real-weather guard: the front is part of the
+    // computed weather and must not overwrite real data.
+    [_posASL] call EFUNC(atmos,updateWeatherFront);
     [] call EFUNC(weather,calculateQNH);
     [] call EFUNC(altitude,calculateHypoxia);
     if (GVAR(humidityEnabled)) then {

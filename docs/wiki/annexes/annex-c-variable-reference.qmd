@@ -448,6 +448,17 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_atmos_refractivityGradient` | atmos | Refractivity gradient |
 | `aee_core_orographicFactor` | atmos | Precipitation enhancement over terrain: 1.0 base, above over an upslope and below over a downslope. The published upslope form (Smith 1979) |
 | `aee_atmos_refractivityN` | atmos | Refractivity in N-units |
+| `aee_atmos_frontActive` | atmos | 1 while a weather front is modelled |
+| `aee_atmos_frontType` | atmos | Front type: stationary, warm, cold or occluded |
+| `aee_atmos_frontPhase` | atmos | Phase factor -1..+1 from the signed distance to the front line |
+| `aee_atmos_frontDistanceKm` | atmos | Signed distance to the front line in km |
+| `aee_atmos_frontSpeedKmh` | atmos | Front speed in km/h |
+| `aee_atmos_frontBearingDeg` | atmos | Front direction of motion in compass degrees |
+| `aee_atmos_frontContrastC` | atmos | Temperature step across the front in degC |
+| `aee_atmos_frontWindVeerDeg` | atmos | Signed clockwise wind veer for fnc_updateWind |
+| `aee_atmos_frontCloudTerm` | atmos | Signed cloud-trend forcing for fnc_calculateCloudDevelopment |
+| `aee_atmos_frontPrecipRate` | atmos | Frontal precipitation rate in mm/h at the observer |
+| `aee_atmos_frontPrecipPhase` | atmos | Frontal precipitation phase: rain or snow |
 | `aee_ballistics_downrangeWind` | ballistics | Downrange wind component |
 | `aee_ballistics_muzzleVelocityCorrection` | ballistics | MV correction 0.85..1.15 |
 | `aee_ballistics_barrelTempC` | ballistics | Weapon barrel temperature in degC |
