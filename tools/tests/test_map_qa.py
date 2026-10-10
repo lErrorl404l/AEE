@@ -244,6 +244,13 @@ class TestMapQaDocDrift(unittest.TestCase):
         self.assertIn("drawShaded = 0.15;", COL_SRC)
         self.assertIn("colorForestTextured", COL_SRC)
 
+    def test_adr030_matches_the_shipped_grid_contract(self):
+        # The shipped config sets BOTH engine grid fields to alpha 0, so the
+        # record must not claim the engine numbers return.
+        self.assertNotIn("The engine NUMBERS return", ADR030_SRC)
+        self.assertNotIn("AEE sets `colorGrid` to a visible colour", ADR030_SRC)
+        self.assertIn("config.cpp:72-73", ADR030_SRC)
+
 
 class TestMapIconWorldSizeKernel(unittest.TestCase):
     """fnc_mapIconWorldSize, executed: (metres, worldSize, scale) -> pixels.
