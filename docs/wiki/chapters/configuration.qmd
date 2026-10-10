@@ -555,6 +555,14 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
 
+## AEE Mobility → Frost Heave
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_frostHeaveEnabled` | CHECKBOX | `true` | yes | mobility | Lift the ground when it freezes, by the two-term frost heave model: the in-situ expansion of the pore water (about 9 per cent, TM 5-852-6) and the ice-lens segregation of water drawn to the freezing front (Konrad and Morgenstern 1981). The value is published as aee_core_frostHeave_m for other modules. |
+| `aee_mobility_frostHeaveMaxM` | SLIDER | `0.3` | yes | mobility | Maximum published heave in metres. Caps the value against an extreme freezing index. A terrain raise is clamped to this limit. |
+| `aee_mobility_frostHeaveMultiplier` | SLIDER | `1.0` | yes | mobility | Multiplier on the computed frost heave. 1.0 is the realistic value. Lower values reduce the heave; the setting scales both the in-situ and the segregation term. |
+
 ## AEE Mobility → Hydrology
 
 | Setting | Type | Default | Global | Addon | Purpose |

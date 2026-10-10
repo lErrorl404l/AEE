@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (658)
+### Public functions (661)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -450,6 +450,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_mobility_fnc_applyRollover`
 - `aee_mobility_fnc_applyTerrainDrag`
 - `aee_mobility_fnc_calculateAccretionMass`
+- `aee_mobility_fnc_calculateFrostHeave`
 - `aee_mobility_fnc_calculateMudAccretion`
 - `aee_mobility_fnc_calculateRolloverThreshold`
 - `aee_mobility_fnc_calculateRouteDegradation`
@@ -459,7 +460,9 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_mobility_fnc_calculateTerrainLimits`
 - `aee_mobility_fnc_calculateTraction`
 - `aee_mobility_fnc_calculateWetTraction`
+- `aee_mobility_fnc_differentialHeave`
 - `aee_mobility_fnc_getTerrainSpeedFactor`
+- `aee_mobility_fnc_heaveTerrainPoints`
 - `aee_mobility_fnc_updateGroundState`
 - `aee_nightvision_fnc_applyNVGTubeModel`
 - `aee_nightvision_fnc_applyNightGrain`

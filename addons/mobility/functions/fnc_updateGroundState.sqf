@@ -96,3 +96,31 @@ if (_surface in ["snow","ice","glacier","tundra"]) then {
 };
 
 missionNamespace setVariable [QEGVAR(core,groundState), _state];
+
+// ─── Frost heave (issue #20) ──────────────────────────────────────────────
+// A freezing ground lifts.  The in-situ term is the 9 per cent expansion of
+// the pore water over the current frost depth; the segregation term grows ice
+// lenses from water drawn to the freezing front (Konrad and Morgenstern
+// 1981).  The gradient is the linear drop from the air temperature at the
+// surface to 0 C at the frost front, and the freezing duration is the freezing
+// degree-day index divided by the current depression, a standard proxy for the
+// length of the freezing period.  The value is published for consumers.  The
+// terrain raise itself is a server-side call to setTerrainHeight, whose grid
+// fnc_heaveTerrainPoints builds; it is not applied per tick (see that kernel
+// for the JIP-queue ceiling).
+private _heave = 0;
+if (GVAR(frostHeaveEnabled) && (_frozenDepth > 0.01)) then {
+    private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 0];
+    if !(_tAir isEqualType 0) then { _tAir = 0; };
+    private _gradient = (-_tAir) / (_frozenDepth max 0.1);
+    private _fdd = missionNamespace getVariable [QEGVAR(core,freezingDegreeDays), 0];
+    if !(_fdd isEqualType 0) then { _fdd = 0; };
+    private _durationS = (_fdd / ((-_tAir) max 0.1)) * 86400;
+    private _soil = "ground";
+    if (_surface != "") then {
+        _soil = _surface call EFUNC(material,classifyBySurfaceType);
+    };
+    private _heaveResult = [_soil, _frozenDepth, _gradient, _durationS, GVAR(frostHeaveMultiplier)] call FUNC(calculateFrostHeave);
+    _heave = (_heaveResult select 0) min GVAR(frostHeaveMaxM);
+};
+missionNamespace setVariable [QEGVAR(core,frostHeave_m), _heave];

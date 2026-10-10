@@ -21,3 +21,10 @@ PREP(calculateTraction);
 PREP(calculateWetTraction);
 PREP(getTerrainSpeedFactor);
 PREP(updateGroundState);
+
+// Frost heave (issue #20): the soil-dependent heave magnitude, the road-vs-
+// field differential, and the terrain grid for the engine setTerrainHeight
+// command.
+PREPS(heave,calculateFrostHeave);
+PREPS(heave,differentialHeave);
+PREPS(heave,heaveTerrainPoints);
