@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (658)
+### Public functions (664)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -672,18 +672,24 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_takeThermalSweep`
 - `aee_thermal_fnc_updateTemperature`
 - `aee_thermal_fnc_updateThermalAGC`
+- `aee_vehicles_fnc_calculateCoolantDerate`
+- `aee_vehicles_fnc_calculateCoolantTemperature`
 - `aee_vehicles_fnc_calculateEngineLoad`
 - `aee_vehicles_fnc_calculateEnginePower`
 - `aee_vehicles_fnc_calculateExhaustPlume`
+- `aee_vehicles_fnc_calculateFuelRate`
+- `aee_vehicles_fnc_calculateRoadLoad`
 - `aee_vehicles_fnc_classifyVehicle`
 - `aee_vehicles_fnc_estimateVehicleMass`
 - `aee_vehicles_fnc_estimateVehicleMassCore`
+- `aee_vehicles_fnc_getFuelData`
 - `aee_vehicles_fnc_getNearbyVehicles`
 - `aee_vehicles_fnc_getVehicleBands`
 - `aee_vehicles_fnc_getVehicleData`
 - `aee_vehicles_fnc_getVehicleGeometry`
 - `aee_vehicles_fnc_getVehicleMassModel`
 - `aee_vehicles_fnc_getVehicleMatch`
+- `aee_vehicles_fnc_updateFuelConsumption`
 - `aee_vision_fnc_applyBaseGrade`
 - `aee_vision_fnc_applyWeatherGrain`
 - `aee_vision_fnc_baseGradeParams`

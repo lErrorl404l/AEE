@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Vehicles">
+        <Key ID="STR_AEE_Vehicles_engineFuelClass_Description">
+            <Original>The brake-specific fuel consumption scalar the fuel model applies. The corpus holds no per-vehicle engine class, so the class is a user setting. Diesel is the default: the military ground fleet the research brief lists runs on diesel. The scalar sets the litres per hour from the engine power demand.</Original>
+            <English>The brake-specific fuel consumption scalar the fuel model applies. The corpus holds no per-vehicle engine class, so the class is a user setting. Diesel is the default: the military ground fleet the research brief lists runs on diesel. The scalar sets the litres per hour from the engine power demand.</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_engineFuelClass_Name">
+            <Original>Engine Fuel Class</Original>
+            <English>Engine Fuel Class</English>
+        </Key>
         <Key ID="STR_AEE_Vehicles_estimateVehicleMassEnabled_Description">
             <Original>Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight.</Original>
             <English>Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight.</English>
@@ -8,6 +16,14 @@
         <Key ID="STR_AEE_Vehicles_estimateVehicleMassEnabled_Name">
             <Original>Vehicle Mass Estimate</Original>
             <English>Vehicle Mass Estimate</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_fuelConsumptionEnabled_Description">
+            <Original>Compute the modelled fuel consumption and the coolant temperature for nearby ground vehicles. The consumption comes from the road-load equation and a brake-specific fuel consumption scalar; the coolant comes from the heat that consumption rejects and the Holman convection the thermal model already uses. The engine owns the tank: the model publishes the consumption, the range and the coolant derate, and never calls setFuel, so it does not double-count the engine's own burn.</Original>
+            <English>Compute the modelled fuel consumption and the coolant temperature for nearby ground vehicles. The consumption comes from the road-load equation and a brake-specific fuel consumption scalar; the coolant comes from the heat that consumption rejects and the Holman convection the thermal model already uses. The engine owns the tank: the model publishes the consumption, the range and the coolant derate, and never calls setFuel, so it does not double-count the engine's own burn.</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_fuelConsumptionEnabled_Name">
+            <Original>Vehicle Fuel Consumption</Original>
+            <English>Vehicle Fuel Consumption</English>
         </Key>
         <Key ID="STR_AEE_Vehicles_logDebug_Description">
             <Original>Log vehicles diagnostics to the RPT. Turn this on before reporting a fault.</Original>
