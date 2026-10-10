@@ -133,6 +133,11 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_ballistics_lastShot` | ballistics | The resolved shot of the last round: [init speed, BC, drag model, twist, stability, retard, cartridge id, projectile id, BC grade, spin rate] |
 | `aee_ballistics_lastCartridge` | ballistics | The last fired round's cartridge: [cartridge id, 0, twist, 0, 0] |
 | `aee_ballistics_lastRecoil` | ballistics | The last round's free-recoil vector from the SAAMI/Lagrange model: [impulse, ...] |
+| `aee_ballistics_seekerState` | ballistics | Missile seeker state 0..6: 0 PRE_LAUNCH, 1 BOOST, 2 MIDCOURSE, 3 TERMINAL, 4 IMPACT, 5 BALLISTIC, 6 LOST |
+| `aee_ballistics_seekerTracked` | ballistics | 1 when the missile seeker holds the target |
+| `aee_ballistics_seekerRangeM` | ballistics | Missile-to-target slant range in metres |
+| `aee_ballistics_seekerLosRateRad` | ballistics | Missile line-of-sight rate in rad/s |
+| `aee_ballistics_seekerCommandMps2` | ballistics | Proportional-navigation acceleration command in m/s2 |
 
 ### Optics
 

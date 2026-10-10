@@ -25,5 +25,13 @@
             <Original>Trace This Module</Original>
             <English>Trace This Module</English>
         </Key>
+        <Key ID="STR_AEE_Ballistics_missileSeekerEnabled_Description">
+            <Original>Enable the missile seeker guidance model. Off by default.</Original>
+            <English>Enable the missile seeker guidance model. Off by default.</English>
+        </Key>
+        <Key ID="STR_AEE_Ballistics_missileSeekerEnabled_Name">
+            <Original>Missile Seeker</Original>
+            <English>Missile Seeker</English>
+        </Key>
     </Package>
 </Project>
