@@ -20,8 +20,8 @@
 // The rotary attitude nudge is this fraction of the applied gust force.
 #define TURBULENCE_TORQUE_FRACTION 0.05
 
-// ISA sea-level air density, kg/m3 (ISO 2533).
-#define AERO_ISA_SEA_LEVEL_DENSITY 1.225
+// AERO_ISA_SEA_LEVEL_DENSITY (ISA sea-level air density) is defined once in
+// addons/lib/constants.hpp and read here from the shared header.
 // Density lift loss is capped here (thin air, before the combined cap).
 #define AERO_DENSITY_LIFT_LOSS_MAX 0.6
 // Full-severity icing lift loss.  UNSOURCED: FAR 25 App C gives the

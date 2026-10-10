@@ -38,7 +38,7 @@ private _C_T2 = 1e-3 * ((_Tg - _temp) / 10) * ((_temp max 1) / 15);
 if (!_daytime) then { _C_T2 = _C_T2 * 0.01; };  // night: convection stops
 
 // Refractivity of air N ≈ 79e-6 · P/T; Cn² = C_T² · (79e-6 · P / T²)²
-private _T_K = _temp + 273.15;
+private _T_K = _temp + KELVIN_OFFSET;
 private _Cn2 = _C_T2 * ((79e-6 * 1013) / (_T_K ^ 2)) ^ 2;
 _Cn2 = _Cn2 max 0;
 

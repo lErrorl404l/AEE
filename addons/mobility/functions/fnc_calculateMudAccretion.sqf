@@ -33,7 +33,7 @@ if (_accretion isEqualType 0) then {
 };
 private _accretionRate = missionNamespace getVariable [QGVAR(mudAccretionRate), 0.002];
 private _decayRate = missionNamespace getVariable [QGVAR(mudDecayRate), 0.99];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 private _player = call CBA_fnc_currentUnit;
 
 // A null unit is the dedicated-server case. The old guard tested isNil

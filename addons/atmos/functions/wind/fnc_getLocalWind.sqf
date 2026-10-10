@@ -167,7 +167,7 @@ if (_nearAircraft isNotEqualTo []) then {
         _span = _span max 5;
         private _speed = speed _ac / 3.6;          // m/s
         _speed = _speed max 20;
-        private _rho = 1.225;
+        private _rho = AERO_ISA_SEA_LEVEL_DENSITY;
         private _gamma0 = 4 * _mass / (pi * _rho * _speed * _span);
         // Induced velocity at the query point: perpendicular to the
         // flight direction, decaying with 1/r.

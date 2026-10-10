@@ -126,8 +126,8 @@ for "_i" from 0 to (_n - 2) do {
 
         // Mean emissivity of the pair (0.9 typical for painted metal).
         private _eps = 0.9;
-        private _thK = _tHot + 273.15;
-        private _tcK = _tCold + 273.15;
+        private _thK = _tHot + KELVIN_OFFSET;
+        private _tcK = _tCold + KELVIN_OFFSET;
         private _q = _eps * _sigma * (_F / 50.0) * ((_thK ^ 4) - (_tcK ^ 4));
         // The /50 scales the W/m2 into the solver's flux convention
         // (the two-node q_internal is the same order as the object

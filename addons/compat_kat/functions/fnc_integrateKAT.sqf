@@ -34,7 +34,7 @@ if (!isClass (configFile >> "CfgPatches" >> "kat_circulation")) exitWith {};
 
 // ─── Circulation: body-fluid compartments from dehydration ────────────────
 private _coreAETemp   = missionNamespace getVariable ["aee_core_currentTemperature", 15];
-private _coreBodyTemp = missionNamespace getVariable ["aee_core_coreBodyTemp", 37];
+private _coreBodyTemp = missionNamespace getVariable ["aee_core_coreBodyTemp", BODY_TEMP_C];
 private _dehydrationRisk = missionNamespace getVariable ["aee_strain_dehydrationRisk", 0];
 
 private _dehyd = 0;

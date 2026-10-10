@@ -55,12 +55,12 @@ private _h = 5.7 + (3.8 * _windSpd);            // McAdams W/m2K
 private _sigma = 5.670374419e-8;             // CODATA 2022
 private _epsG = 0.95;                        // matte black globe
 private _alphaG = 0.95;                      // black paint absorptance
-private _mrtK = _mrt + 273.15;
-private _tAirK = _tAir + 273.15;
+private _mrtK = _mrt + KELVIN_OFFSET;
+private _tAirK = _tAir + KELVIN_OFFSET;
 
 // Fixed-point: q_absorbed - q_emitted - q_conv = 0
 private _tg = _tAir + 10;                    // first guess
-private _tgK = _tg + 273.15;
+private _tgK = _tg + KELVIN_OFFSET;
 for "_i" from 1 to 8 do {
     private _absorbed = (_alphaG * _solar / 4) + (_epsG * _sigma * (_mrtK ^ 4));
     private _lost = (_epsG * _sigma * (_tgK ^ 4)) + (_h * (_tgK - _tAirK));
@@ -72,4 +72,4 @@ for "_i" from 1 to 8 do {
     if (_tgK > (_tAirK + 90)) then { _tgK = _tAirK + 90; };
 };
 
-(_tgK - 273.15)
+(_tgK - KELVIN_OFFSET)

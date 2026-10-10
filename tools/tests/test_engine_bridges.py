@@ -35,12 +35,22 @@ def _read(path):
     return path.read_text(encoding="utf-8")
 
 
+def _constant(name):
+    """The value of a shared #define in addons/lib/constants.hpp."""
+    text = (REPO / "addons" / "lib" / "constants.hpp").read_text(encoding="utf-8")
+    m = re.search(rf"^#define\s+{re.escape(name)}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
+    if m is None:
+        raise AssertionError(f"constant {name} not defined in constants.hpp")
+    return float(m.group(1))
+
+
 def _const(text, name):
-    """Read `private _name = <number>;` out of the SQF."""
-    m = re.search(rf"_{re.escape(name)}\s*=\s*([0-9]*\.?[0-9]+)\s*;", text)
+    """Read `private _name = <number>;` or `_name = <CONST>;` out of the SQF."""
+    m = re.search(rf"_{re.escape(name)}\s*=\s*([0-9]*\.?[0-9]+|[A-Za-z_]\w*)\s*;", text)
     if m is None:
         raise AssertionError(f"constant _{name} not found in source")
-    return float(m.group(1))
+    token = m.group(1)
+    return float(token) if re.fullmatch(r"[0-9]*\.?[0-9]+", token) else _constant(token)
 
 
 # ─── Constants parsed from the SQF ────────────────────────────────────────

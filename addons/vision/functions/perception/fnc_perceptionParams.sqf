@@ -14,7 +14,7 @@ game's CfgPostProcessTemplates >> Default >> colorCorrections =
 {1,1,0,{0,0,0,0},{1,1,1,1},{0,0,0,0}} (functions_f.pbo, applied verbatim by
 fn_setppeffecttemplate) renders colour with colorize alpha 1 and all-zero
 weights.  The colour stage overrides the identity with the Rec.709 luma weights
-(0.2126, 0.7152, 0.0722), fourth value fixed 0, only when it is active.
+(REC709_LUMA_R, REC709_LUMA_G, REC709_LUMA_B), fourth value fixed 0, only when it is active.
 
 Tone stage: fnc_perceptionToneResponse maps the adapted scene luminance to the
 display brightness, contrast and black point.  fnc_perceptionBaseGrade then
@@ -97,7 +97,7 @@ if (_whiteBalance || (_mesopicW < 1)) then {
     // bounded desaturation alpha, so the default settings never tint.
     if ((_meso select 3) > 0) then {
         _colorize = [_meso select 0, _meso select 1, _meso select 2, 1 - _alpha];
-        _weights = [0.2126, 0.7152, 0.0722, 0];
+        _weights = [REC709_LUMA_R, REC709_LUMA_G, REC709_LUMA_B, 0];
     };
     if (_whiteBalance) then {
         private _illum = [_illuminant] call FUNC(perceptionIlluminant);

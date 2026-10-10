@@ -39,7 +39,7 @@ Per-constant source register (UNSOURCED values are marked beside the clamp):
               community code (AsYetUntitled/Framework fn_flashbang.sqf -0.01;
               Liberation-RX -0.35).  The BIKI range line says 0 and up.
               Exact default UNSOURCED.
-  weights     [0.2126, 0.7152, 0.0722, 0], fixed.  The Rec.709 luma and the ASC
+  weights     [REC709_LUMA_R, REC709_LUMA_G, REC709_LUMA_B, 0], fixed.  The Rec.709 luma and the ASC
               CDL luma, used as the engine "rgb weights for desaturation"
               (slot 5).  Nonzero, so the engine desaturation is valid.  The
               repo treats [0,0,0,0] as a broken effect; the wiki has no such
@@ -98,7 +98,7 @@ _grain = (_grain max 0) min 0.05;
 private _weights = [0, 0, 0, 0];
 private _colorize = [1, 1, 1, 1];
 if (_saturation > 0) then {
-    _weights = [0.2126, 0.7152, 0.0722, 0];
+    _weights = [REC709_LUMA_R, REC709_LUMA_G, REC709_LUMA_B, 0];
     _colorize = [1, 1, 1, 1 - _saturation];
 };
 private _cc = [

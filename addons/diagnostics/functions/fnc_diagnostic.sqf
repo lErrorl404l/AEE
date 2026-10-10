@@ -2,7 +2,7 @@
 
 private _rho = EGVAR(core,currentAirDensity);
 private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _P = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
+private _P = missionNamespace getVariable [QEGVAR(core,currentPressure), ISA_SEA_LEVEL_PRESSURE_HPA];
 private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _biome = EGVAR(core,biome);
 private _biomeName = EGVAR(core,biomeName);

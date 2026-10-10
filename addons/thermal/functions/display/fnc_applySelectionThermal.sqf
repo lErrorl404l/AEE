@@ -250,7 +250,7 @@ if (_mode == "EXIT") then {
     // thermal consumers read; no second environment model.
     private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
     private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
-    private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+    private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
     private _rangeM = if (isNull _viewer) then { 0 } else { _obj distance _viewer };
     // The detector band (T16): default lwir, replaced by the mounted device's
     // band below.  A device that cannot be read keeps the LWIR default, so the

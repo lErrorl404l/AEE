@@ -31,7 +31,7 @@ private _vapour = (_humidity / 100) * 6.105 * exp (17.27 * _temp / (237.7 + _tem
 
 // ─── Radio refractivity (ITU-R P.453) ─────────────────────────────────────
 // N = 77.6 * P/T + 3.73e5 * e/T^2, T in Kelvin.
-private _tempK = _temp + 273.15;
+private _tempK = _temp + KELVIN_OFFSET;
 private _refractivity = 77.6 * _pressure / _tempK + 3.73e5 * _vapour / (_tempK ^ 2);
 
 // ─── Refractivity gradient (N/km) ─────────────────────────────────────────

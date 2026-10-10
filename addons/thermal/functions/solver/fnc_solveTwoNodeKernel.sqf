@@ -157,7 +157,7 @@ if (_immersed) then {
             private _pr = 0.707;
             private _kAir = 0.02624;
             private _beta = 1 / 300;
-            private _gr = 9.81 * _beta * (_dT max 0) * (_lChar ^ 3) / (_nu ^ 2);
+            private _gr = STANDARD_GRAVITY * _beta * (_dT max 0) * (_lChar ^ 3) / (_nu ^ 2);
             private _ra = _gr * _pr;
             private _nuC = 0;
             if (_ra < 1000) then {
@@ -189,10 +189,10 @@ private _condConst = _cond;
 // ─── Radiative field (ISO 7726) ───────────────────────────────────────────
 // _mrtC arrives already combined by the caller (fnc_calculateMRT); the solver
 // must NOT re-derive a second MRT.
-private _tAirK = _tAir + 273.15;
-private _mrtK = _mrtC + 273.15;
-private _exchK = if (_immersed) then { _tWater + 273.15 } else { _tAirK };
-private _exchMrtK = if (_immersed) then { _tWater + 273.15 } else { _mrtK };
+private _tAirK = _tAir + KELVIN_OFFSET;
+private _mrtK = _mrtC + KELVIN_OFFSET;
+private _exchK = if (_immersed) then { _tWater + KELVIN_OFFSET } else { _tAirK };
+private _exchMrtK = if (_immersed) then { _tWater + KELVIN_OFFSET } else { _mrtK };
 private _sigma = 5.670374419e-8;
 private _fRadArea = [1, 0.73] select _isHuman;
 private _qSolar = _skinAlpha * (_solar max 0) * (_exposure max 0 min 1);
@@ -238,7 +238,7 @@ for "_i" from 1 to 12 do {
         _qShiv = 19.4 * _cSig2 * _cCoreSig;
     };
     _tCr = _tSk + (_qGen + _qShiv * _area - _qResp * _area) / (_kCoupling + 1e-6);
-    private _tsAbs = _tSk + 273.15;
+    private _tsAbs = _tSk + KELVIN_OFFSET;
     private _hR = 4 * _fRadArea * _skinEps * _sigma * ((((_tsAbs + _exchMrtK) * 0.5) ^ 3));
     _fCl = 1 / (1 + _rClo * _fACl * (_h + _hR));
     private _conv = _h * (_tsAbs - _exchK) * _fCl;

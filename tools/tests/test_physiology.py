@@ -225,7 +225,7 @@ class TestSQFSyncPhysiology(unittest.TestCase):
     def test_hypoxia_constants(self):
         self._assert_in_sqf(
             "fnc_calculateHypoxia.sqf",
-            ["44330", "1013.25", "6000", "1800", "10000", "15"],
+            ["44330", "ISA_SEA_LEVEL_PRESSURE_HPA", "6000", "1800", "10000", "15"],
             "ISA hypsometric and FAA TUC table",
         )
 

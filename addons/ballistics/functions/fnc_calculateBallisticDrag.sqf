@@ -9,12 +9,12 @@ AND the real drag law:
   retard = 0.00068418 * (Cd(Mach) / BC) * v^2 * rhoRel
 
 The constant 0.00068418 = 0.5 * rho0 * pi * (0.0254)^2 / (4 * 0.453592)
-at rho0 = 1.225 kg/m3, which converts the lb/in^2 coefficient
+at rho0 = AERO_ISA_SEA_LEVEL_DENSITY kg/m3, which converts the lb/in^2 coefficient
 convention to SI.
 
 The Mach number uses the LOCAL speed of sound, not a fixed 340 m/s:
 
-  a = 20.05 * sqrt(T + 273.15)         (m/s, T in Celsius)
+  a = SOUND_SPEED_COEFF * sqrt(T + KELVIN_OFFSET)         (m/s, T in Celsius)
 
 At -40 C that is 300 m/s and at +50 C it is 359 m/s, so a fixed value
 would misplace the transonic band and with it the whole drag curve.
@@ -61,7 +61,7 @@ private _table = (call FUNC(getDragTables)) getOrDefault [_model, []];
 if (_table isEqualTo []) exitWith { 0.0 };
 
 // The local speed of sound, then the Mach number at that temperature.
-private _sound = 20.05 * sqrt (_airTempC + 273.15);
+private _sound = SOUND_SPEED_COEFF * sqrt (_airTempC + KELVIN_OFFSET);
 private _mach = _velocity / _sound;
 
 // Table lookup with linear interpolation between the Mach breakpoints.

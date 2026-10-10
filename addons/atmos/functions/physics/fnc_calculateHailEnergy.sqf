@@ -22,7 +22,7 @@ The physics (all citable, no invented constants):
       v_t = sqrt( 4 g rho_h D / (3 C_d rho_a) )
   Source: Dieling, Smith & Beruvides 2020, Geosciences 10(12):500, Eq. 2.
   rho_h pure ice 917 kg/m3, C_d 0.6 the best fit for near-spherical hail
-  above 1 cm, rho_a 1.225 kg/m3 at sea level.
+  above 1 cm, rho_a AERO_ISA_SEA_LEVEL_DENSITY kg/m3 at sea level.
 
   Mass from the diameter, spherical:
       m = (pi / 6) rho_h D^3
@@ -65,8 +65,8 @@ private _diameter = _severeM + ((_maxM - _severeM) * ((_capeProxy / _proxyForMax
 // ─── Terminal velocity (drag balance, Dieling 2020 Eq. 2) ────────────────
 private _rhoH = 917;      // kg/m3, pure ice
 private _cd = 0.6;        // near-spherical hail above 1 cm, Dieling 2020
-private _rhoA = 1.225;    // kg/m3, sea level
-private _g = 9.80665;
+private _rhoA = AERO_ISA_SEA_LEVEL_DENSITY;    // kg/m3, sea level
+private _g = STANDARD_GRAVITY;
 private _vT = sqrt ((4 * _g * _rhoH * _diameter) / (3 * _cd * _rhoA));
 
 // ─── Mass and impact energy ──────────────────────────────────────────────

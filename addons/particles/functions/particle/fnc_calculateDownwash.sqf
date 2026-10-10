@@ -57,7 +57,7 @@ if (isNull _aircraft) exitWith { [0, 0, 0, 0] };
 
 // ─── Constants (cited) ────────────────────────────────────────────────────
 private _RHO_S = 2650;        // quartz grain density, kg/m3
-private _G = 9.80665;         // standard gravity, m/s2
+private _G = STANDARD_GRAVITY;         // standard gravity, m/s2
 private _D_REF = 250e-6;      // Bagnold's reference grain size, m
 private _A_FLUID = 0.1;       // Bagnold fluid threshold coefficient
 private _C_FLUX = 1.8;        // Bagnold flux constant, order unity
@@ -79,8 +79,8 @@ _grain params ["_d", "_coef"];
 private _grainDensity = [_RHO_S, 917] select (_material == "snow");
 
 // ─── Air density (AEE state; thin air lowers the threshold) ───────────────
-private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-if !(_rho isEqualType 0) then { _rho = 1.225; };
+private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+if !(_rho isEqualType 0) then { _rho = AERO_ISA_SEA_LEVEL_DENSITY; };
 _rho = _rho max 0.1 min 1.5;
 
 // ─── 1. Induced velocity from momentum theory ─────────────────────────────

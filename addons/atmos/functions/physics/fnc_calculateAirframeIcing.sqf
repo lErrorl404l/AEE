@@ -24,7 +24,7 @@ private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 1
 private _overcast = overcast;
 private _rain = rain;
 
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 
 // ─── Settings ─────────────────────────────────────────────────────────────
 private _maxIceMass = missionNamespace getVariable [QGVAR(maxIceMass), 100];

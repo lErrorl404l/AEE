@@ -49,11 +49,33 @@ def _strip_comments(text):
     return re.sub(r"//[^\n]*", "", text)
 
 
+def _constant(name):
+    """The value of a shared #define in addons/lib/constants.hpp."""
+    text = CONSTANTS_HPP.read_text(encoding="utf-8")
+    m = re.search(rf"^#define\s+{re.escape(name)}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
+    if m is None:
+        raise AssertionError(f"constant {name} not defined in constants.hpp")
+    return float(m.group(1))
+
+
 def _const(text, name):
-    """Read `_name = <number>;` out of SQF."""
-    m = re.search(rf"_{re.escape(name)}\s*=\s*([0-9]*\.?[0-9]+)\s*;", text)
+    """Read `_name = <number>;` or `_name = <CONST>;` out of SQF."""
+    m = re.search(rf"_{re.escape(name)}\s*=\s*([0-9]*\.?[0-9]+|[A-Za-z_]\w*)\s*;", text)
     if m is None:
         raise AssertionError(f"constant _{name} not found in source")
+    token = m.group(1)
+    return float(token) if re.fullmatch(r"[0-9]*\.?[0-9]+", token) else _constant(token)
+
+
+CONSTANTS_HPP = REPO / "addons" / "lib" / "constants.hpp"
+
+
+def _constant(name):
+    """The value of a shared #define in addons/lib/constants.hpp."""
+    text = CONSTANTS_HPP.read_text(encoding="utf-8")
+    m = re.search(rf"^#define\s+{re.escape(name)}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
+    if m is None:
+        raise AssertionError(f"{name} is not defined in constants.hpp")
     return float(m.group(1))
 
 

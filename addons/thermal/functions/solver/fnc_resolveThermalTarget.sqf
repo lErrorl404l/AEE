@@ -127,7 +127,7 @@ if (_fovDeg < 0) exitWith { [false, 0, 0] };
 // thermal FOV does not depend on it.
 if (_fovDeg == 0 && _mag < 1) exitWith { [false, 0, 0] };
 if (_netdC <= 0) exitWith { [false, 0, 0] };
-if (_tBgC <= -273.15) exitWith { [false, 0, 0] };
+if (_tBgC <= -KELVIN_OFFSET) exitWith { [false, 0, 0] };
 _contrast = (_contrast max 0) min 1;
 
 // The thermal channel's own lens FOV when supplied, otherwise the published
@@ -153,7 +153,7 @@ if (_linePairs >= 6.4) then { _level = 3; };
 // target that fills a whole pixel has no concentration left to lose).
 if (_level < 1) then {
     private _fill = (_pixels min 1) ^ 2;
-    private _tBgK = _tBgC + 273.15;
+    private _tBgK = _tBgC + KELVIN_OFFSET;
     private _n = 5.0121;
     if (_tBgK > 290) then { _n = 4.4580; };
     if (_tBgK > 330) then { _n = 3.7101; };

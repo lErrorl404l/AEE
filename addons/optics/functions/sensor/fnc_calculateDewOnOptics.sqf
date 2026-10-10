@@ -52,7 +52,7 @@ if (_daytime >= 6 && {_daytime <= 8 && (_humidity > 0.8)}) then {
 // ─── Accumulate / decay fog timer ─────────────────────────────────────────
 // Rates are per-tick; scale by the update interval so behaviour is
 // interval-independent (5 s baseline).
-private _intervalScale = (missionNamespace getVariable [QEGVAR(core,updateInterval), 5]) / 5;
+private _intervalScale = (EGVAR(core,updateInterval)) / 5;
 private _accumRate = (missionNamespace getVariable [QGVAR(dewAccumRate), 0.05]) * _intervalScale;
 private _decayRate = (missionNamespace getVariable [QGVAR(dewDecayRate), 0.02]) * _intervalScale;
 

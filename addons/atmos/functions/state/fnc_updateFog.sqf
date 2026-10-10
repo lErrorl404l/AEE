@@ -33,7 +33,7 @@ private _RH_biome = _RH_arr select (_month - 1);
 
 // ─── Settings ─────────────────────────────────────────────────────────────
 private _maxFogDensity = missionNamespace getVariable [QGVAR(maxFogDensity), 0.8];
-private _interval      = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval      = EGVAR(core,updateInterval);
 private _rampRate      = missionNamespace getVariable [QGVAR(radFogRampRate), 0.1];
 _rampRate = _rampRate * (_interval / 5);
 

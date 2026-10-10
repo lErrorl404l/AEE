@@ -61,7 +61,7 @@ if (_pos2D isNotEqualTo [0, 0]) then {
 // ratio: warm afternoon → RH drops, cool night → RH rises.
 private _Tnow = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _Tref = missionNamespace getVariable [QGVAR(dailyMeanTemp), _Tnow];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 _Tref = _Tref + ((_Tnow - _Tref) * (_interval / 86400));
 missionNamespace setVariable [QGVAR(dailyMeanTemp), _Tref];
 

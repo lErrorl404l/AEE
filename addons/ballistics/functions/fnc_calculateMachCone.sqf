@@ -6,7 +6,7 @@ A slender body in supersonic flight carries a cone-shaped bow shock that
 is attached at the nose.  The cone half-angle follows from the Mach number
 alone:
 
-    mu = asin (1 / M)          M = v / a,   a = 20.05 * sqrt (T_C + 273.15)
+    mu = asin (1 / M)          M = v / a,   a = SOUND_SPEED_COEFF * sqrt (T_C + KELVIN_OFFSET)
 
 This is exact cone geometry for a slender body, not a fit.  The cone opens
 linearly behind the nose, so the radius at an axial distance x behind the
@@ -78,7 +78,7 @@ if (_calibreMm <= 0) exitWith { [0, 0, 0] };
 // Local speed of sound, the same convention as fnc_calculateSupersonicTrace
 // and fnc_calculateBallisticDrag, so the cone follows the round down through
 // the transonic band instead of holding the muzzle value.
-private _sound = 20.05 * sqrt (_airTempC + 273.15);
+private _sound = SOUND_SPEED_COEFF * sqrt (_airTempC + KELVIN_OFFSET);
 if (_sound <= 0) exitWith { [0, 0, 0] };
 
 private _mach = _velocity / _sound;

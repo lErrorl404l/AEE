@@ -103,9 +103,26 @@ COEFFICIENTS: tuple[tuple[str, str, str], ...] = (
 )
 
 CONST_RE = re.compile(
-    r"^\s*private\s+(?P<name>_[A-Za-z0-9_]+)\s*=\s*(?P<value>[0-9]+(?:\.[0-9]+)?)\s*;",
+    r"^\s*private\s+(?P<name>_[A-Za-z0-9_]+)\s*=\s*"
+    r"(?P<value>[0-9]+(?:\.[0-9]+)?|[A-Za-z_][A-Za-z0-9_]*)\s*;",
     re.M,
 )
+
+CONSTANTS_HPP = ROOT / "addons" / "lib" / "constants.hpp"
+DEFINE_RE = re.compile(r"^#define\s+([A-Za-z_]\w*)\s+([0-9]+(?:\.[0-9]+)?)", re.M)
+
+
+def _resolve(value: str) -> str:
+    """A bare number passes through; a shared-constant name is read from
+    addons/lib/constants.hpp, so a kernel can name the constant instead of
+    repeating the literal."""
+    if re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", value):
+        return value
+    text = CONSTANTS_HPP.read_text(encoding="utf-8")
+    for name, number in DEFINE_RE.findall(text):
+        if name == value:
+            return number
+    raise SystemExit(f"gen_kernel_coefficients: {value} not defined in {CONSTANTS_HPP}")
 
 
 def extract(rel: str, var: str) -> str:
@@ -113,7 +130,7 @@ def extract(rel: str, var: str) -> str:
     text = (ROOT / rel).read_text(encoding="utf-8")
     for match in CONST_RE.finditer(text):
         if match.group("name") == var:
-            return match.group("value")
+            return _resolve(match.group("value"))
     raise SystemExit(f"gen_kernel_coefficients: {rel}: constant {var} not found")
 
 

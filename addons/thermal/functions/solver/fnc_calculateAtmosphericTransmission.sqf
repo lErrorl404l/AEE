@@ -134,7 +134,7 @@ so the MWIR clear-air extinction is UNSOURCED.
 
 Return Value: NUMBER, the path transmission in 0..1, or -1 when an input is
 unusable.
-Example: [1000, 50, 15, 0, 0, 1.225] call aee_thermal_fnc_calculateAtmosphericTransmission
+Example: [1000, 50, 15, 0, 0, AERO_ISA_SEA_LEVEL_DENSITY] call aee_thermal_fnc_calculateAtmosphericTransmission
 Public: No
 */
 
@@ -144,7 +144,7 @@ params [
     ["_tAirC", 15, [0]],
     ["_fogDensity", 0, [0]],
     ["_rainScalar", 0, [0]],
-    ["_airDensity", 1.225, [0]],
+    ["_airDensity", AERO_ISA_SEA_LEVEL_DENSITY, [0]],
     // The detector band.  The LWIR default keeps every existing caller
     // bit-identical.  "mwir" selects the declared clear-air ceiling.
     ["_bandToken", "lwir", [""]]
@@ -191,7 +191,7 @@ private _dCalM = 1;             // m, the paper's 1 m calibration distance
 private _co2Km = 0.02;          // km^-1, Roberts 1976 CO2 over 8-12 um
 private _aForeign = 0.023571;   // km^-1/torr, from the Roberts 4..14 torr endpoints
 private _bSelf = 3.5714e-4;     // km^-1/torr^2, from the same two endpoints
-private _rho0 = 1.225;          // kg/m^3, sea-level reference density
+private _rho0 = AERO_ISA_SEA_LEVEL_DENSITY;          // kg/m^3, sea-level reference density
 private _fogKm = 5.0;           // km^-1 per unit fog density, DECLARED DEFAULT
 private _rainKm = 0.5;          // km^-1 per unit rain scalar, DECLARED DEFAULT
 private _hPaToTorr = 0.750062;  // torr per hPa

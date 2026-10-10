@@ -52,8 +52,8 @@ missionNamespace setVariable [QGVAR(crankSuccess), _crankSuccess];
 // ─── Naturally-aspirated engine ──────────────────────────────────────────
 // SAE J1349 / ISO 1585 density correction: power derates with the
 // air-density ratio to the power 1.2.  20 % loss by 55 °C.
-private _density = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-private _powerRatio = (_density / 1.225) ^ 1.2;
+private _density = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+private _powerRatio = (_density / AERO_ISA_SEA_LEVEL_DENSITY) ^ 1.2;
 private _power = (1.0 - ((0 max (_T - 15)) / 40) * 0.2) * _powerRatio;
 private _minPower = missionNamespace getVariable [QGVAR(minEnginePower), 0.3];
 _power = _power max _minPower min 1.0;
