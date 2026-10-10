@@ -15,6 +15,9 @@ environmental, and the map and symbology.
 - Part 2 describes the engine systems and what they do and do not allow.
 - Part 3 is the consolidated ceiling list: what a mod cannot do, with evidence.
 - Part 4 records the sources and the BIKI access problem.
+- The verified command surface with introduction versions is in
+  [command-surface.md](command-surface.md) (#144) and
+  [command-surface-3.md](command-surface-3.md) (#146).
 
 ## Source hierarchy and method
 
