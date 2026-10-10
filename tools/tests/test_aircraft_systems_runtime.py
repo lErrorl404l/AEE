@@ -56,6 +56,7 @@ SYSTEMS = [FULL_CAPACITY_L, SOURCED_RATE, DENSITY_KG_L, 0.0, CG_ARM_M]
 DATA = [1100.0, 134000.0, 0.688, 0.0]
 
 # Sentinel engine state. Distinct values so a swapped input is provable.
+DESIGN_RPM = 2700.0
 IDLE_NG = 0.4
 MAX_NG = 1.0
 MAX_TGT_C = 900.0
@@ -131,30 +132,31 @@ DRIVER_KERNELS = (
 )
 
 # The systems row carries the numeric fields first, in the generated order:
-# fuel (5), engine (5: idle Ng, max Ng, max Np, max torque, max TGT), oil (2),
-# then the remaining numeric fields and the three enum fields.
+# fuel (5), engine (6: design rpm, idle Ng, max Ng, max Np, max torque, max TGT),
+# oil (2), then the remaining numeric fields and the three enum fields.
 ENGINE_SYSTEMS = [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    IDLE_NG,
-    MAX_NG,
-    0.0,
-    0.0,
-    MAX_TGT_C,
-    OIL_MIN_KPA,
-    OIL_MAX_KPA,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    "",
-    "",
-    "",
+    0.0,  # 0 fuel_capacity
+    0.0,  # 1 fuel_consumption_rate
+    0.0,  # 2 fuel_density_kg_l
+    0.0,  # 3 sfc_kg_kwh
+    0.0,  # 4 fuel_cg_arm_m
+    DESIGN_RPM,  # 5 engine_design_rpm
+    IDLE_NG,  # 6 engine_idle_ng
+    MAX_NG,  # 7 engine_max_ng
+    0.0,  # 8 engine_max_np
+    0.0,  # 9 engine_max_torque_nm
+    MAX_TGT_C,  # 10 engine_max_tgt_c
+    OIL_MIN_KPA,  # 11 engine_oil_pressure_min_kpa
+    OIL_MAX_KPA,  # 12 engine_oil_pressure_max_kpa
+    0.0,  # 13 transmission_torque_limit_nm
+    0.0,  # 14 hydraulic_pressure_kpa
+    0.0,  # 15 generator_power_kw
+    0.0,  # 16 bus_voltage_v
+    0.0,  # 17 battery_capacity_ah
+    0.0,  # 18 cabin_pressure_max_kpa
+    "",  # 19 fuel_type
+    "",  # 20 engine_oil_type
+    "",  # 21 oxygen_system
 ]
 
 
@@ -245,6 +247,7 @@ def run_engine_kernel(
         "isKindOf": lambda obj, cls: cls in classes,
         "difficultyEnabledRTD": rtd,
         "diag_deltaTime": DELTA_S,
+        "AEE_ENGINE_SPOOL_TAU_S": SPOOL_TAU_S,
         "__FUNC__getAircraftSystems": lambda name: systems,
         "__FUNC__calculateEngineNg": lambda *args: run_sqf(NG, list(args)),
         "__FUNC__calculateScriptedTgtOil": lambda *args: run_sqf(TGT_OIL, list(args)),
@@ -652,7 +655,7 @@ class TestEngineKernel(unittest.TestCase):
 
     def test_a_reversed_speed_band_is_refused(self) -> None:
         systems = list(ENGINE_SYSTEMS)
-        systems[6] = IDLE_NG  # max Ng not above idle Ng
+        systems[7] = IDLE_NG  # max Ng not above idle Ng
         result, _rec = run_engine_kernel(systems)
         self.assertFalse(result)
 
@@ -684,6 +687,34 @@ class TestEngineKernelContract(unittest.TestCase):
     def test_the_kernel_uses_the_rtd_command_and_not_the_missing_one(self) -> None:
         self.assertIn("setWantedRPMRTD", ENGINE_KERNEL_SRC)
         self.assertNotIn("setEngineRpmRTD", ENGINE_KERNEL_SRC)
+
+    def test_the_kernel_reads_the_live_speed_with_the_real_getter(self) -> None:
+        # The phantom reader rpmRTD is not a command; the real getter returns
+        # an array of engine RPM values.
+        self.assertIn("enginesRpmRTD", ENGINE_KERNEL_SRC)
+        self.assertNotIn("rpmRTD", ENGINE_KERNEL_SRC)
+
+    def test_the_kernel_commands_the_array_form(self) -> None:
+        # setWantedRPMRTD takes [rpm, seconds, engineIndex], not a bare ratio.
+        body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
+        self.assertIn("setWantedRPMRTD [", body)
+
+    def test_the_kernel_names_the_target_rpm_fallback(self) -> None:
+        self.assertIn("getEngineTargetRPMRTD", ENGINE_KERNEL_SRC)
+
+    def test_the_header_names_the_design_rpm_base(self) -> None:
+        header = ENGINE_KERNEL_SRC.split("*/", 1)[0]
+        self.assertIn("engine_design_rpm", header)
+
+    def test_the_base_and_fallback_sit_under_the_flight_model_gate(self) -> None:
+        body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
+        guard = body.find("difficultyEnabledRTD")
+        fallback = body.find("getEngineTargetRPMRTD")
+        base = body.find("_baseRpm = _designRpm")
+        self.assertNotEqual(guard, -1)
+        self.assertNotEqual(fallback, -1)
+        self.assertNotEqual(base, -1)
+        self.assertLess(guard, fallback)
 
     def test_the_kernel_guards_the_rtd_path_on_the_flight_model(self) -> None:
         # The guard and the command both live in the body, after the header.
