@@ -81,6 +81,11 @@ def propellant_sensitivity(ammo):
         ("762x51", MILITARY_BALL),
         ("545x39", MILITARY_BALL),
         ("127x", MILITARY_BALL),
+        # Creator DLC rifle cartridges, double-base military ball (issue #79).
+        ("762x39", MILITARY_BALL),
+        ("762x54", MILITARY_BALL),
+        ("792x57", MILITARY_BALL),
+        ("762x63", MILITARY_BALL),
         ("9x21", DOUBLE_BASE),
         ("9x19", DOUBLE_BASE),
         ("338", TEMP_STABLE),
@@ -139,6 +144,22 @@ class TestSensitivityCascade(unittest.TestCase):
         self.assertAlmostEqual(
             propellant_sensitivity("B_556x45_Ball_Green"), 1.5, places=4
         )
+
+    def test_dlc_rifle_calibers_use_military_ball(self):
+        # Creator DLC rifle cartridges (issue #79): 7.62x39, 7.62x54R,
+        # 7.92x57 and 7.62x63 (.30-06) are all double-base military ball, so
+        # the family anchor 1.5 fps/degF applies via the caliber fallback.
+        # The class names here are representative: the fallback matches the
+        # caliber substring, so any DLC prefix + caliber resolves.
+        for ammo in [
+            "vn_762x39_Ball",
+            "CSLA_762x54R_Ball",
+            "SPE_792x57_Ball",
+            "SPE_762x63_Ball",
+        ]:
+            self.assertAlmostEqual(
+                propellant_sensitivity(ammo), MILITARY_BALL, places=4, msg=ammo
+            )
 
     def test_sensitivity_span_within_literature(self):
         # All coefficients must sit in the published 0.14-2.0 fps/degF range.
