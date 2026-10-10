@@ -519,6 +519,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_symbology_bftRequired` | CHECKBOX | `false` | yes | symbology | Gate the unit symbols on a carried tracker. When on, the unit symbols draw only while the local player carries a GPS or a tracker device. Off draws them as before. Default off. |
 | `aee_symbology_symbologyEnabled` | CHECKBOX | `false` | yes | symbology | Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off. |
 | `aee_symbology_symbologyFont` | CHECKBOX | `true` | yes | symbology | Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on. |
 | `aee_symbology_symbologyMarkers` | CHECKBOX | `true` | yes | symbology | Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on. |

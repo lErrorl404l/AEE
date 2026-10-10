@@ -68,6 +68,18 @@ if (!(missionNamespace getVariable [QGVAR(symbologyUnits), true])) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNull _player) exitWith {};
 
+// ── The blue-force-tracker device gate ──────────────────────────────────
+// When the setting is on, the unit pass draws only while the local player
+// carries a tracker device.  The mission-marker pass above is not gated.
+// Default off, so nothing regresses.
+private _bftRequired = missionNamespace getVariable [QGVAR(bftRequired), false];
+private _skipUnits = false;
+if (_bftRequired) then {
+    private _carried = (assignedItems _player) + (items _player);
+    _skipUnits = !([_carried] call FUNC(symbologyHasTracker));
+};
+if (_skipUnits) exitWith {};
+
 private _units = [];
 if (alive _player) then {
     _units pushBack _player;

@@ -36,6 +36,7 @@ ECHELON_KERNEL = SYM / "fnc_symbologyEchelon.sqf"
 ECHELON_MARKER_KERNEL = SYM / "fnc_symbologyEchelonMarker.sqf"
 DIMENSION_KERNEL = SYM / "fnc_symbologyDimension.sqf"
 KILLED_MARKER_KERNEL = SYM / "fnc_symbologyKilledMarker.sqf"
+HAS_TRACKER_KERNEL = SYM / "fnc_symbologyHasTracker.sqf"
 TABLES_SQF = SYM_ADDON / "data" / "symbology_tables.sqf"
 TABLES_JSON = REPO / "data" / "symbology" / "symbology_tables.json"
 MODIFIERS_SRC = (SYM_ADDON / "config_modifiers.hpp").read_text(encoding="utf-8")
@@ -116,6 +117,11 @@ def dimension(category):
 def killed(spec):
     """Run the real killed-marker kernel."""
     return run_sqf(KILLED_MARKER_KERNEL, [spec], {})
+
+
+def has_tracker(items):
+    """Run the real blue-force-tracker kernel."""
+    return run_sqf(HAS_TRACKER_KERNEL, [items], {})
 
 
 class TestEchelonKernel(unittest.TestCase):
@@ -246,6 +252,29 @@ class TestKilledMarkerKernel(unittest.TestCase):
         self.assertEqual(killed([]), ["unknown", "", "ColorUNKNOWN", "unknown"])
 
 
+class TestTrackerKernel(unittest.TestCase):
+    """fnc_symbologyHasTracker, executed: item list -> tracker present."""
+
+    def test_each_tracker_device_is_recognised(self):
+        for device in (
+            "ItemGPS",
+            "B_UavTerminal",
+            "O_UavTerminal",
+            "I_UavTerminal",
+            "ACE_microDAGR",
+            "ACE_DAGR",
+        ):
+            with self.subTest(device=device):
+                self.assertTrue(has_tracker([device]))
+
+    def test_a_tracker_among_other_items_is_found(self):
+        self.assertTrue(has_tracker(["map", "compass", "watch", "ItemGPS"]))
+
+    def test_no_tracker_returns_false(self):
+        self.assertFalse(has_tracker([]))
+        self.assertFalse(has_tracker(["map", "compass", "binocular"]))
+
+
 class TestApplyContract(unittest.TestCase):
     """fnc_symbologyMarkersApply carries the alive gate, the echelon layer and
     the dimension argument."""
@@ -253,6 +282,23 @@ class TestApplyContract(unittest.TestCase):
     def test_the_alive_guard_gates_the_player(self):
         # The player is drawn only when alive; a dead player is not drawn.
         self.assertIn("alive _player", APPLY_SRC)
+
+    def test_the_unit_pass_is_gated_on_a_carried_tracker(self):
+        # The unit pass is skipped when the setting is on and the player
+        # carries no tracker.  The mission-marker pass is not gated.
+        self.assertIn("symbologyHasTracker", APPLY_SRC)
+        self.assertIn("bftRequired", APPLY_SRC)
+        self.assertIn("assignedItems _player", APPLY_SRC)
+        self.assertIn("items _player", APPLY_SRC)
+        # The gate sits after the mission-marker pass and before the units.
+        self.assertLess(
+            APPLY_SRC.index("forEach allMapMarkers"),
+            APPLY_SRC.index("symbologyHasTracker"),
+        )
+        self.assertLess(
+            APPLY_SRC.index("symbologyHasTracker"),
+            APPLY_SRC.index("private _units = []"),
+        )
 
     def test_a_dead_tracked_unit_keeps_a_last_known_contact(self):
         # The old guard `if ((alive _x) && ...)` deleted a dead unit's marker.
