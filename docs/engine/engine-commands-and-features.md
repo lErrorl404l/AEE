@@ -17,6 +17,9 @@ environmental, and the map and symbology.
 - Part 4 records the sources and the BIKI access problem.
 - The verified command surface with introduction versions is in
   [command-surface.md](command-surface.md).
+- The verified command surface for system diagnostics, effects and sound, and
+  object manipulation, with introduction versions, is in
+  [command-surface-2.md](command-surface-2.md).
 
 ## Source hierarchy and method
 
