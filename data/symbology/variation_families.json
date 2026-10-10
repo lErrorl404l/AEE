@@ -1,0 +1,57 @@
+{
+  "schema": "aee.symbology.variation_families/1",
+  "retrieved": "2026-10-10",
+  "note": "The AEE dynamic variation families. A family declares named options and one resolver that maps a selected value combination to a concrete artifact. The option values are NOT hand-listed: tools/gen_variation_families.py derives each option's value list from the table named in its source field, so a new symbol in the shipped tables becomes a new option value with no edit here. This file is the single declaration; the generator emits addons/symbology/config_variations.hpp (the CfgMarkers family entry and the CfgMarkerClasses group) and addons/symbology/data/variation_families.sqf (the runtime model). The mechanism is AEE's own; the idea of one option-driven entry is taken from AceArsenalExtended and reimplemented, with no code, config or art copied.",
+  "sources": [
+    "data/symbology/symbology_tables.json",
+    "data/symbology/modifiers.json",
+    "tools/symbology_categories.py",
+    "addons/symbology/initSettings.inc.sqf"
+  ],
+  "families": [
+    {
+      "id": "symbol",
+      "label": "AEE Symbol",
+      "entry": "AEE_Variation",
+      "markerClass": "AEE_Variation",
+      "resolver": "symbolResolve",
+      "options": [
+        {
+          "id": "affiliation",
+          "label": "Affiliation",
+          "source": "families",
+          "table": "data/symbology/symbology_tables.json#families",
+          "grade": "derived"
+        },
+        {
+          "id": "dimension",
+          "label": "Battle Dimension",
+          "source": "dimensions",
+          "table": "tools/symbology_categories.py#ROLES",
+          "grade": "derived"
+        },
+        {
+          "id": "function",
+          "label": "Function",
+          "source": "glyphs",
+          "table": "data/symbology/symbology_tables.json#glyphs",
+          "grade": "derived"
+        },
+        {
+          "id": "echelon",
+          "label": "Echelon",
+          "source": "echelons",
+          "table": "data/symbology/modifiers.json#echelon",
+          "grade": "derived"
+        },
+        {
+          "id": "palette",
+          "label": "Palette",
+          "source": "palette",
+          "table": "addons/symbology/initSettings.inc.sqf#symbologyPalette",
+          "grade": "derived"
+        }
+      ]
+    }
+  ]
+}

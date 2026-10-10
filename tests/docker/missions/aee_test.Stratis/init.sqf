@@ -3447,6 +3447,13 @@ private _p29Pass = 0;
     // surfaces AEE re-declares and reports where the reach stops.  It changes
     // no config and renders nothing.
     execVM "aee_p142_map_surface_reach_probe.sqf";
+    // PHASE 143 lives in aee_p143_variation_probe.sqf: the dynamic variation
+    // entry and the picker-collapse engine fact.  The probe reads the merged
+    // config and drives the pure variation kernels: the AEE_Variation entry is
+    // registered and resolvable, a concrete AEE variant places through
+    // setMarkerTypeLocal, and a hidden-scope (scope = 0) CfgMarkers class still
+    // places the same way.  It renders nothing.
+    execVM "aee_p143_variation_probe.sqf";
     // PHASE 137 lives in aee_p137_kernel_parity_probe.sqf: the pure native
     // kernels are server-callable, so the dedicated server drives each one and
     // compares the dispatcher's answer against the SQF reference within the

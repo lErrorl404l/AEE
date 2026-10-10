@@ -17,7 +17,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Block.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Breach: AEE_MarkerBase {
         name = "AEE Mission Task Breach";
@@ -25,7 +25,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Breach.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Bypass: AEE_MarkerBase {
         name = "AEE Mission Task Bypass";
@@ -33,7 +33,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Bypass.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Canalize: AEE_MarkerBase {
         name = "AEE Mission Task Canalize";
@@ -41,7 +41,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Canalize.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Clear: AEE_MarkerBase {
         name = "AEE Mission Task Clear";
@@ -49,7 +49,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Clear.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Counterattack: AEE_MarkerBase {
         name = "AEE Mission Task Counterattack";
@@ -57,7 +57,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Counterattack.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Counterattack_by_Fire: AEE_MarkerBase {
         name = "AEE Mission Task Counterattack by Fire";
@@ -65,7 +65,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Counterattack_by_Fire.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Delay: AEE_MarkerBase {
         name = "AEE Mission Task Delay";
@@ -73,7 +73,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Delay.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Destroy: AEE_MarkerBase {
         name = "AEE Mission Task Destroy";
@@ -81,7 +81,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Destroy.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Disrupt: AEE_MarkerBase {
         name = "AEE Mission Task Disrupt";
@@ -89,7 +89,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Disrupt.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Fix: AEE_MarkerBase {
         name = "AEE Mission Task Fix";
@@ -97,7 +97,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Fix.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Follow_and_Assume: AEE_MarkerBase {
         name = "AEE Mission Task Follow and Assume";
@@ -105,7 +105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Follow_and_Assume.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Follow_and_Support: AEE_MarkerBase {
         name = "AEE Mission Task Follow and Support";
@@ -113,7 +113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Follow_and_Support.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Interdict: AEE_MarkerBase {
         name = "AEE Mission Task Interdict";
@@ -121,7 +121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Interdict.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Isolate: AEE_MarkerBase {
         name = "AEE Mission Task Isolate";
@@ -129,7 +129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Isolate.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Neutralize: AEE_MarkerBase {
         name = "AEE Mission Task Neutralize";
@@ -137,7 +137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Neutralize.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Occupy: AEE_MarkerBase {
         name = "AEE Mission Task Occupy";
@@ -145,7 +145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Occupy.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Penetrate: AEE_MarkerBase {
         name = "AEE Mission Task Penetrate";
@@ -153,7 +153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Penetrate.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Relief_in_Place: AEE_MarkerBase {
         name = "AEE Mission Task Relief in Place";
@@ -161,7 +161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Relief_in_Place.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Retire: AEE_MarkerBase {
         name = "AEE Mission Task Retire";
@@ -169,7 +169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Retire.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Secure: AEE_MarkerBase {
         name = "AEE Mission Task Secure";
@@ -177,7 +177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Secure.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Security_Cover: AEE_MarkerBase {
         name = "AEE Mission Task Security Cover";
@@ -185,7 +185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Security_Cover.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Security_Guard: AEE_MarkerBase {
         name = "AEE Mission Task Security Guard";
@@ -193,7 +193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Security_Guard.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Security_Screen: AEE_MarkerBase {
         name = "AEE Mission Task Security Screen";
@@ -201,7 +201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Security_Screen.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Seize: AEE_MarkerBase {
         name = "AEE Mission Task Seize";
@@ -209,7 +209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Seize.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Withdraw: AEE_MarkerBase {
         name = "AEE Mission Task Withdraw";
@@ -217,7 +217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Withdraw.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Under_Pressure: AEE_MarkerBase {
         name = "AEE Mission Task Under Pressure";
@@ -225,7 +225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Under_Pressure.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Attack_by_Fire: AEE_MarkerBase {
         name = "AEE Mission Task Attack by Fire";
@@ -233,7 +233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Attack_by_Fire.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Ambush: AEE_MarkerBase {
         name = "AEE Mission Task Ambush";
@@ -241,7 +241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Ambush.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Contain: AEE_MarkerBase {
         name = "AEE Mission Task Contain";
@@ -249,7 +249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Contain.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Retain: AEE_MarkerBase {
         name = "AEE Mission Task Retain";
@@ -257,7 +257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Retain.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Support_by_Fire: AEE_MarkerBase {
         name = "AEE Mission Task Support by Fire";
@@ -265,7 +265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Support_by_Fire.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MT_Turn: AEE_MarkerBase {
         name = "AEE Mission Task Turn";
@@ -273,7 +273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MT_Turn.paa";
         side = 2;
         markerClass = "AEE_Mission_Tasks";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Strength_Reinforced: AEE_MarkerBase {
         name = "AEE Modifier Strength Reinforced";
@@ -281,7 +281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Strength_Reinforced.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Strength_Reduced: AEE_MarkerBase {
         name = "AEE Modifier Strength Reduced";
@@ -289,7 +289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Strength_Reduced.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Strength_Both: AEE_MarkerBase {
         name = "AEE Modifier Strength Both";
@@ -297,7 +297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Strength_Both.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Feint_Dummy: AEE_MarkerBase {
         name = "AEE Modifier Feint Dummy";
@@ -305,7 +305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Feint_Dummy.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Task_Force_Bracket: AEE_MarkerBase {
         name = "AEE Modifier Task Force Bracket";
@@ -313,7 +313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Task_Force_Bracket.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_HQ_Staff: AEE_MarkerBase {
         name = "AEE Modifier HQ Staff";
@@ -321,7 +321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_HQ_Staff.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Installation: AEE_MarkerBase {
         name = "AEE Modifier Installation";
@@ -329,7 +329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Installation.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Planned_Friend: AEE_MarkerBase {
         name = "AEE Modifier Planned Friend";
@@ -337,7 +337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Planned_Friend.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Planned_Hostile: AEE_MarkerBase {
         name = "AEE Modifier Planned Hostile";
@@ -345,7 +345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Planned_Hostile.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Planned_Neutral: AEE_MarkerBase {
         name = "AEE Modifier Planned Neutral";
@@ -353,7 +353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Planned_Neutral.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_MOD_Planned_Unknown: AEE_MarkerBase {
         name = "AEE Modifier Planned Unknown";
@@ -361,7 +361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_MOD_Planned_Unknown.paa";
         side = 2;
         markerClass = "AEE_Modifiers";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Team: AEE_MarkerBase {
         name = "AEE Echelon Team";
@@ -369,7 +369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Team.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Squad: AEE_MarkerBase {
         name = "AEE Echelon Squad";
@@ -377,7 +377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Squad.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Section: AEE_MarkerBase {
         name = "AEE Echelon Section";
@@ -385,7 +385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Section.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Platoon: AEE_MarkerBase {
         name = "AEE Echelon Platoon";
@@ -393,7 +393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Platoon.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Company: AEE_MarkerBase {
         name = "AEE Echelon Company";
@@ -401,7 +401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Company.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Battalion: AEE_MarkerBase {
         name = "AEE Echelon Battalion";
@@ -409,7 +409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Battalion.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Regiment: AEE_MarkerBase {
         name = "AEE Echelon Regiment";
@@ -417,7 +417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Regiment.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Brigade: AEE_MarkerBase {
         name = "AEE Echelon Brigade";
@@ -425,7 +425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Brigade.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Division: AEE_MarkerBase {
         name = "AEE Echelon Division";
@@ -433,7 +433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Division.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Corps: AEE_MarkerBase {
         name = "AEE Echelon Corps";
@@ -441,7 +441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Corps.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Army: AEE_MarkerBase {
         name = "AEE Echelon Army";
@@ -449,7 +449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Army.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Army_Group: AEE_MarkerBase {
         name = "AEE Echelon Army Group";
@@ -457,7 +457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Army_Group.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };
     class AEE_Ech_Region: AEE_MarkerBase {
         name = "AEE Echelon Region";
@@ -465,5 +465,5 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_Ech_Region.paa";
         side = 2;
         markerClass = "AEE_Echelon";
-        scope = 2;
+        scope = 0;
     };

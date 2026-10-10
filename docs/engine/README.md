@@ -49,6 +49,8 @@ adds a ceiling here first.
 | [topo-map-surface.md](topo-map-surface.md) | The rendered-map fields a mod controls, and the map fields the engine keeps. |
 | [topo-standards.md](topo-standards.md) | Published topographic colour values and contour intervals. |
 | [map-baseline.md](map-baseline.md) | The vanilla Arma map baseline, field by field, and the AEE delta per field. |
+| [variation-model.md](variation-model.md) | The AEE dynamic variation family: the schema, the five option sources and the derivation rule, and the resolution rule. |
+| [variation-surface.md](variation-surface.md) | The dynamic variation engine surface, the picker collapse, the operator-only rows and the ceiling. |
 | [workshop-mod-licence-survey.md](workshop-mod-licence-survey.md) | Per-mod licence facts for the surveyed Workshop mods. |
 | [aee-adopt-plan.md](aee-adopt-plan.md) | The per-mod adopt decision that follows the survey. |
 | [engine-power-unit-resolution.md](engine-power-unit-resolution.md) | The `enginePower` unit verdict: a PhysX tuning value, with the probe evidence. |

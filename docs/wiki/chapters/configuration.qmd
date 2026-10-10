@@ -526,6 +526,11 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_symbology_symbologyPalette` | LIST | `"Auto"` | yes | symbology | Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto. |
 | `aee_symbology_symbologySuppress` | CHECKBOX | `true` | yes | symbology | Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on. |
 | `aee_symbology_symbologyUnits` | CHECKBOX | `true` | yes | symbology | Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on. |
+| `aee_symbology_variationAffiliation` | LIST | `0` | yes | symbology | The affiliation of the dynamic AEE symbol: friend, hostile, neutral or unknown. Default friend. |
+| `aee_symbology_variationDimension` | LIST | `0` | yes | symbology | The battle dimension of the dynamic AEE symbol: Land, Air, Sea, Subsurface, Installation, Equipment or Other. Default Land. |
+| `aee_symbology_variationEchelon` | LIST | `0` | yes | symbology | The echelon of the dynamic AEE symbol, from team to region. Default team. |
+| `aee_symbology_variationFunction` | LIST | `0` | yes | symbology | The function glyph of the dynamic AEE symbol, from the APP-6(C) taxonomy. Default infantry. |
+| `aee_symbology_variationPalette` | LIST | `0` | yes | symbology | The affiliation palette for the dynamic AEE symbol: NATO, OPFOR or Auto. Default NATO. |
 
 ## AEE HUD → Tracker
 

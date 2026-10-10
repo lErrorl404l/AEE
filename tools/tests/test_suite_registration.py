@@ -51,16 +51,6 @@ ALLOWLIST: dict[str, str] = {
         "helper module, not a suite: it holds the 17-segment thermoregulation "
         "mirror and defines no unittest cases, so unittest exits 5 for it."
     ),
-    "test_symbology_catalogue": (
-        "stale after the marker-derivation rework (ADR-029): the b_/o_/n_ "
-        "engine overrides moved to the generated config_family.hpp, so it "
-        "counts 2 overrides where it expects 43 (fails on main too)."
-    ),
-    "test_symbology_live": (
-        "stale after the marker-derivation rework (ADR-029): the re-pointed "
-        "classes moved to the generated config_family.hpp, so it reads empty "
-        "class blocks (fails on main too)."
-    ),
     "test_vehicle_expansion": (
         "requires the gitignored held vehicle source PDFs "
         "(data/vehicle/sources/*.pdf); absent on a clean checkout, so it fails "

@@ -48,3 +48,50 @@ AEE_SETTING_CHECKBOX(symbologyFont,"AEE HUD","Symbology",true);
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_symbology_logDebug.
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Symbology",false);
+
+// ── Dynamic variation (aee-dynamic-variation-system) ──────────────────────
+// One LIST setting per family option.  The choices are derived from the
+// generated model, so a new symbol becomes a new choice with no edit here.
+// These are the headless and no-UI route: the selector dialog writes through
+// to them, and a change re-types the placed AEE_Variation markers live.
+call {
+private _variationChoices = [];
+{
+    private _choices = [];
+    {
+        _choices pushBack [(_x select 0), (_x select 1)];
+    } forEach (_x select 2);
+    _variationChoices pushBack _choices;
+} forEach (["symbol"] call FUNC(variationOptions));
+
+[
+    QGVAR(variationAffiliation), "LIST",
+    [LLSTRING(variationAffiliation_Name), LLSTRING(variationAffiliation_Description)],
+    ["AEE HUD", "Symbology"],
+    [_variationChoices select 0, _variationChoices select 0, 0], true, { [] call aee_symbology_fnc_variationSettingsChanged; }
+] call CBA_fnc_addSetting;
+[
+    QGVAR(variationDimension), "LIST",
+    [LLSTRING(variationDimension_Name), LLSTRING(variationDimension_Description)],
+    ["AEE HUD", "Symbology"],
+    [_variationChoices select 1, _variationChoices select 1, 0], true, { [] call aee_symbology_fnc_variationSettingsChanged; }
+] call CBA_fnc_addSetting;
+[
+    QGVAR(variationFunction), "LIST",
+    [LLSTRING(variationFunction_Name), LLSTRING(variationFunction_Description)],
+    ["AEE HUD", "Symbology"],
+    [_variationChoices select 2, _variationChoices select 2, 0], true, { [] call aee_symbology_fnc_variationSettingsChanged; }
+] call CBA_fnc_addSetting;
+[
+    QGVAR(variationEchelon), "LIST",
+    [LLSTRING(variationEchelon_Name), LLSTRING(variationEchelon_Description)],
+    ["AEE HUD", "Symbology"],
+    [_variationChoices select 3, _variationChoices select 3, 0], true, { [] call aee_symbology_fnc_variationSettingsChanged; }
+] call CBA_fnc_addSetting;
+[
+    QGVAR(variationPalette), "LIST",
+    [LLSTRING(variationPalette_Name), LLSTRING(variationPalette_Description)],
+    ["AEE HUD", "Symbology"],
+    [_variationChoices select 4, _variationChoices select 4, 0], true, { [] call aee_symbology_fnc_variationSettingsChanged; }
+] call CBA_fnc_addSetting;
+};

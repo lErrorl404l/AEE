@@ -142,6 +142,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_symbology_symbologySuppress` | optics | Registered setting under **AEE HUD > Symbology**: suppress the engine indicators and hide the mission markers locally (default on) |
 | `aee_symbology_symbologyFont` | optics | Registered setting under **AEE HUD > Symbology**: use the AEE font for the symbology labels (default on) |
 | `aee_symbology_symbologyTables` | optics | Generated APP-6 category tables loaded at preInit, read by the pure symbol kernels |
+| `aee_symbology_variationFamilies` | optics | Generated dynamic variation-family model loaded at preInit, read by the pure variation kernels |
 | `aee_cartography_terrainTables` | optics | Generated terrain and map-feature registry loaded at preInit, read by the P113 terrain probe |
 | `aee_thermal_currentThermalNoise` | thermal | Thermal noise floor (NETD-based), produced by fnc_calculateThermalContrast |
 | `aee_core_dynamicLux` | core | Dynamic lux contribution |

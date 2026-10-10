@@ -60,7 +60,7 @@ if str(ROOT) not in sys.path:
 if str(Path(__file__).parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).parent))
 
-from symbology_categories import marker_category  # noqa: E402
+from symbology_categories import marker_category, VARIATION_HIDDEN_SCOPE  # noqa: E402
 from tools import schemas  # noqa: E402
 
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
@@ -364,7 +364,7 @@ def render_config(pairs: list[tuple[str, dict[str, Any]]]) -> str:
             f'        texture = "{icon}";',
             f"        side = {side};",
             f'        markerClass = "{category}";',
-            "        scope = 2;",
+            f"        scope = {VARIATION_HIDDEN_SCOPE};",
             "    };",
         ]
     return "\n".join(lines) + "\n"
@@ -928,7 +928,7 @@ def render_family_aliases(pairs: list[tuple[str, dict[str, Any]]]) -> str:
                 f'        texture = "{icon}";',
                 f"        side = {FAMILY_SIDE[family]};",
                 f'        markerClass = "{marker_category(affil, GLYPH_DIM[glyph])}";',
-                "        scope = 2;",
+                f"        scope = {VARIATION_HIDDEN_SCOPE};",
                 "    };",
             ]
     return "\n".join(lines) + "\n"

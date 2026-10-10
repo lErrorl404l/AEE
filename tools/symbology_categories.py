@@ -16,6 +16,15 @@ from __future__ import annotations
 AFFILIATIONS = ("Friend", "Hostile", "Neutral", "Unknown")
 ROLES = ("Land", "Air", "Sea", "Subsurface", "Installation", "Equipment", "Other")
 
+# The CfgMarkers scope for the AEE-produced concrete variants.  The dynamic
+# variation system (aee-dynamic-variation-system) collapses the marker picker
+# to the one option-driven AEE_Variation entry, so the concrete variants are
+# hidden from the picker (scope = 0) while staying script-resolvable (probe
+# P143).  Set to 2 to revert the collapse in one line.  The engine re-point
+# classes are NOT affected: the picker must still show the engine's own
+# markers, so those restate their engine parent's scope.
+VARIATION_HIDDEN_SCOPE = 0
+
 # The modifier groups, not affiliation symbols.
 MODIFIER_CATEGORIES = (
     ("AEE_Mission_Tasks", "AEE Mission Tasks"),

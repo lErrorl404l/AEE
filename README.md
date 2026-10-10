@@ -91,6 +91,7 @@ Place the **AEE Environment Config** module in the editor to customise settings.
 ### Map symbology and terrain
 
 - NATO APP-6(C) unit and equipment markers, drawn from the standard's taxonomy.
+- ONE option-driven AEE symbol entry with an in-game selector: the marker picker shows one `AEE Symbol` entry, and a CBA keybind opens a selector that changes the active affiliation, battle dimension, function, echelon and palette live. The concrete variants are hidden from the picker but stay script-resolvable.
 - Terrain and map-feature symbols from the topographic standard (STANAG 3675 and the DGIWG Symbol Register, with FM 21-31 and the USGS sheet as the public-domain drawings): hills, rock, woodland, vineyards, churches, lighthouses, radio masts and the rest.
 - The map colour palette follows the same standard: relief brown, water blue, vegetation green, roads red and white.
 - One load-time config re-declare reaches the main map, the briefing, the GPS, the minimap, the airborne minimap, Eden and Zeus. Eden and Zeus also carry the real NATO side symbols.

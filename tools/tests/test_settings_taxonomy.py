@@ -61,6 +61,11 @@ EXPECTED_HUD_SYMBOLOGY = {
     "aee_symbology_symbologyPalette",
     "aee_symbology_symbologySuppress",
     "aee_symbology_symbologyUnits",
+    "aee_symbology_variationAffiliation",
+    "aee_symbology_variationDimension",
+    "aee_symbology_variationEchelon",
+    "aee_symbology_variationFunction",
+    "aee_symbology_variationPalette",
 }
 
 # Every AEE HUD name, across all subcategories.  The unknown-setting guard

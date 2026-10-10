@@ -10,7 +10,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_inf.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_armor: AEE_MarkerBase {
         name = "AEE Unknown armour";
@@ -18,7 +18,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_armor.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_motor_inf: AEE_MarkerBase {
         name = "AEE Unknown motorised";
@@ -26,7 +26,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_motor_inf.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_art: AEE_MarkerBase {
         name = "AEE Unknown artillery";
@@ -34,7 +34,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_art.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_eng: AEE_MarkerBase {
         name = "AEE Unknown engineer";
@@ -42,7 +42,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_eng.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_sig: AEE_MarkerBase {
         name = "AEE Unknown signal";
@@ -50,7 +50,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_sig.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_med: AEE_MarkerBase {
         name = "AEE Unknown medical";
@@ -58,7 +58,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_med.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_sup: AEE_MarkerBase {
         name = "AEE Unknown supply";
@@ -66,7 +66,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_sup.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_support: AEE_MarkerBase {
         name = "AEE Unknown support";
@@ -74,7 +74,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_support.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_recon: AEE_MarkerBase {
         name = "AEE Unknown recon";
@@ -82,7 +82,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_recon.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_antiair: AEE_MarkerBase {
         name = "AEE Unknown air_defence";
@@ -90,7 +90,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_antiair.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_plane: AEE_MarkerBase {
         name = "AEE Unknown fixed_wing";
@@ -98,7 +98,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_plane.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_air: AEE_MarkerBase {
         name = "AEE Unknown rotary";
@@ -106,7 +106,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_air.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_uav: AEE_MarkerBase {
         name = "AEE Unknown uav";
@@ -114,7 +114,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_uav.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_naval: AEE_MarkerBase {
         name = "AEE Unknown sea_surface";
@@ -122,7 +122,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_naval.paa";
         side = 2;
         markerClass = "AEE_Unknown_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_sub: AEE_MarkerBase {
         name = "AEE Unknown subsurface";
@@ -130,7 +130,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_sub.paa";
         side = 2;
         markerClass = "AEE_Unknown_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_installation: AEE_MarkerBase {
         name = "AEE Unknown installation";
@@ -138,7 +138,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_installation.paa";
         side = 2;
         markerClass = "AEE_Unknown_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_hq: AEE_MarkerBase {
         name = "AEE Unknown hq";
@@ -146,7 +146,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_hq.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_dot: AEE_MarkerBase {
         name = "AEE Unknown waypoint";
@@ -154,7 +154,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_dot.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_u_unknown: AEE_MarkerBase {
         name = "AEE Unknown unknown";
@@ -162,7 +162,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_unknown.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_b_inf: AEE_FL_Friendly_Unit_Infantry {};
     class AEE_b_armor: AEE_FL_Friendly_Unit_Armour {};
@@ -174,7 +174,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_b_eng.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_b_sig: AEE_MarkerBase {
         name = "AEE Friendly signal";
@@ -182,7 +182,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_b_sig.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_b_med: AEE_FL_Friendly_Unit_Medical {};
     class AEE_b_sup: AEE_MarkerBase {
@@ -191,7 +191,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_b_sup.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_b_support: AEE_FL_Friendly_Unit_CSS_Combat_Service {};
     class AEE_b_recon: AEE_FL_Friendly_Unit_Reconnaissance {};
@@ -206,7 +206,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_b_sub.paa";
         side = 1;
         markerClass = "AEE_Friend_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_b_installation: AEE_MarkerBase {
         name = "AEE Friendly installation";
@@ -214,7 +214,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FI_Installation.paa";
         side = 1;
         markerClass = "AEE_Friend_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_b_hq: AEE_FL_Friendly_Unit_Headquarters_Unit {};
     class AEE_b_dot: AEE_MarkerBase {
@@ -223,7 +223,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_b_dot.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_b_unknown: AEE_MarkerBase {
         name = "AEE Friendly unknown";
@@ -231,7 +231,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_unknown.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_o_inf: AEE_HL_Hostile_Unit_Infantry {};
     class AEE_o_armor: AEE_HL_Hostile_Unit_Armour {};
@@ -243,7 +243,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_o_eng.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_o_sig: AEE_MarkerBase {
         name = "AEE Hostile signal";
@@ -251,7 +251,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_o_sig.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_o_med: AEE_HL_Hostile_Unit_Medical {};
     class AEE_o_sup: AEE_MarkerBase {
@@ -260,7 +260,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_o_sup.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_o_support: AEE_HL_Hostile_Unit_CSS_Combat_Service {};
     class AEE_o_recon: AEE_HL_Hostile_Unit_Reconnaissance {};
@@ -275,7 +275,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_o_sub.paa";
         side = 0;
         markerClass = "AEE_Hostile_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_o_installation: AEE_MarkerBase {
         name = "AEE Hostile installation";
@@ -283,7 +283,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HI_Installation.paa";
         side = 0;
         markerClass = "AEE_Hostile_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_o_hq: AEE_HL_Hostile_Unit_Headquarters_Unit {};
     class AEE_o_dot: AEE_MarkerBase {
@@ -292,7 +292,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_o_dot.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_o_unknown: AEE_MarkerBase {
         name = "AEE Hostile unknown";
@@ -300,7 +300,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_unknown.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_n_inf: AEE_NL_Neutral_Unit_Infantry {};
     class AEE_n_armor: AEE_NL_Neutral_Unit_Armour {};
@@ -312,7 +312,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_n_eng.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_n_sig: AEE_MarkerBase {
         name = "AEE Neutral signal";
@@ -320,7 +320,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_n_sig.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_n_med: AEE_NL_Neutral_Unit_Medical {};
     class AEE_n_sup: AEE_MarkerBase {
@@ -329,7 +329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_n_sup.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_n_support: AEE_NL_Neutral_Unit_CSS_Combat_Service {};
     class AEE_n_recon: AEE_NL_Neutral_Unit_Reconnaissance {};
@@ -344,7 +344,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_n_sub.paa";
         side = 2;
         markerClass = "AEE_Neutral_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_n_installation: AEE_MarkerBase {
         name = "AEE Neutral installation";
@@ -352,7 +352,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NI_Installation.paa";
         side = 2;
         markerClass = "AEE_Neutral_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_n_hq: AEE_NL_Neutral_Unit_Headquarters_Unit {};
     class AEE_n_dot: AEE_MarkerBase {
@@ -361,7 +361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_n_dot.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_n_unknown: AEE_MarkerBase {
         name = "AEE Neutral unknown";
@@ -369,5 +369,5 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_u_unknown.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };

@@ -28,6 +28,8 @@ ALLOWLIST: dict[int, str] = {
     # ADR-038 is reserved by the map-realism plan, which lands on main as a
     # separate branch. The gap closes when the two branches merge.
     38: "reserved by the map-realism plan; lands on main as a separate branch",
+    39: "reserved by the aircraft-catalogue-expansion plan (ADR-039); landed separately.",
+}
 }
 
 _ADR = re.compile(r"^ADR-(\d{3})-[A-Za-z0-9]")
