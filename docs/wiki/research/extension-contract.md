@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (662)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -366,7 +366,10 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_hydrology_fnc_calculateGreenAmptInfiltration`
 - `aee_hydrology_fnc_calculateRiverWaterLevel`
 - `aee_hydrology_fnc_calculateRunoffSCS`
+- `aee_hydrology_fnc_calculateSpringFlow`
 - `aee_hydrology_fnc_calculateThermalRefraction`
+- `aee_hydrology_fnc_calculateWaterTableDepth`
+- `aee_hydrology_fnc_getAquiferProperties`
 - `aee_hydrology_fnc_routeRunoffD8`
 - `aee_lib_fnc_attachObjectEngineHandler`
 - `aee_lib_fnc_buildGeoAnchor`
