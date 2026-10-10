@@ -182,6 +182,7 @@ def main():
         "tools/tests/test_sqf_nil_reads.py",
         "tools/tests/test_pfh_contract.py",
         "tools/tests/test_flight_physics.py",
+        "tools/tests/test_fixed_wing.py",
         "tools/tests/test_mobility_pfh.py",
         # Observability and perception (aee-observability-and-perception).
         "tools/tests/test_debug_index.py",
