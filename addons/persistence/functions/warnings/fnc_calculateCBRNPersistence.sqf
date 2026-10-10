@@ -42,6 +42,24 @@ _persistenceH = _persistenceH * _humidityFactor;
 private _windFactor = 1 / (1 + _windSpd * 0.05);
 _persistenceH = _persistenceH * _windFactor;
 
+// ─── Rain washout — the scent model's one non-overlapping factor ───────────
+// The scent dispersion model (aee_weather) publishes its rain washout factor
+// separately.  Rain scavenges the airborne agent, the washout term of the
+// Gaussian plume (concentration falls with exp(-lambda x / u); Turner,
+// "Workbook of Atmospheric Dispersion Estimates", 2nd ed, CRC, 1994), so it
+// shortens persistence.  Only rain is reused.  Temperature, humidity and wind
+// are NOT reused: this model already scales persistence by all three, so a
+// second application would double-count.  The scent ground factor is NOT
+// reused: it encodes scent detectability and its sign (snow and frozen ground
+// suppress scent) inverts the surface-persistence physics.
+// The 0.2-in-rain magnitude is the scent model's own constant
+// (fnc_calculateScentDispersion) and is UNSOURCED as a CBRN scavenging
+// coefficient.  The read is a soft sibling read by name, defaulting to 1 (no
+// washout) when the scent model has not run.
+private _scentRainFactor = missionNamespace getVariable ["aee_weather_scentRainFactor", 1];
+if !(_scentRainFactor isEqualType 0) then { _scentRainFactor = 1; };
+_persistenceH = _persistenceH * _scentRainFactor;
+
 // ─── Decay per tick — exponential decay with the scaled time constant ──────
 private _modifier = exp (-(_interval / 3600) / _persistenceH);
 

@@ -67,6 +67,17 @@ private _seasonFactor = switch (true) do {
 };
 
 private _intensity = _baseline * _tempFactor * _nightFactor * _seasonFactor;
+
+// ─── Scent — predator / unknown presence quietens the ambient ──────────
+// The scent dispersion model (weather) publishes a 0..1 intensity.  Wildlife
+// detect a predator or unknown presence by scent and reduce activity, so a
+// high scent intensity scales the ambient down.  The mapping lives in the
+// kernel fnc_scentWildlifeResponse.  The scent model runs later in the tick
+// and under a different setting, so a missing value means "no scent noticed".
+private _scent = missionNamespace getVariable [QGVAR(scentDispersionIntensity), 0];
+if !(_scent isEqualType 0) then { _scent = 0; };
+_intensity = _intensity * ([_scent] call FUNC(scentWildlifeResponse));
+
 _intensity = _intensity max 0 min 1;
 
 missionNamespace setVariable [QGVAR(biologicalAmbientIntensity), _intensity];

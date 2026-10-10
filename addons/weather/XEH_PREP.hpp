@@ -5,6 +5,7 @@
 
 PREPS(warnings,calculateBiologicalAmbient);
 PREP(calculateScentDispersion);
+PREP(scentWildlifeResponse);
 PREPS(terrain,calculateCropState);
 PREPS(terrain,calculateDustSuppression);
 PREPS(terrain,calculateUrbanHeatIsland);
