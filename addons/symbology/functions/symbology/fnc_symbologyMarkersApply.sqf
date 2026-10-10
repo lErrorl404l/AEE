@@ -46,17 +46,31 @@ if (missionNamespace getVariable [QGVAR(symbologyMarkers), true]) then {
     private _names = _cache apply { _x select 0 };
     {
         private _name = _x;
-        private _tagged = (_name select [0, 4]) isEqualTo "AEE_";
-        if (!_tagged && !(_name in _names)) then {
-            private _category = [_name] call FUNC(symbologyMarkerCategory);
-            private _affiliation = [_name, "", _friendly] call FUNC(symbologyAffiliation);
-            private _spec = [
-                sideUnknown, _category, _affiliation, "unknown", _resolvedPalette
-            ] call FUNC(symbolResolve);
-            _cache pushBack [_name, markerType _name, markerColor _name];
-            _names pushBack _name;
-            _name setMarkerTypeLocal (_spec select 1);
-            _name setMarkerColorLocal (_spec select 2);
+        if ((markerType _name) isEqualTo "AEE_Variation") then {
+            // The dynamic variation family entry: resolve it from the active
+            // state and re-type it, and record the family type so the restore
+            // reverts the marker on map close.
+            if (!(_name in _names)) then {
+                private _state = missionNamespace getVariable [QGVAR(variationState), []];
+                private _spec = ["symbol", _state] call FUNC(variationResolve);
+                _cache pushBack [_name, markerType _name, markerColor _name];
+                _names pushBack _name;
+                _name setMarkerTypeLocal (_spec select 1);
+                _name setMarkerColorLocal (_spec select 2);
+            };
+        } else {
+            private _tagged = (_name select [0, 4]) isEqualTo "AEE_";
+            if (!_tagged && !(_name in _names)) then {
+                private _category = [_name] call FUNC(symbologyMarkerCategory);
+                private _affiliation = [_name, "", _friendly] call FUNC(symbologyAffiliation);
+                private _spec = [
+                    sideUnknown, _category, _affiliation, "unknown", _resolvedPalette
+                ] call FUNC(symbolResolve);
+                _cache pushBack [_name, markerType _name, markerColor _name];
+                _names pushBack _name;
+                _name setMarkerTypeLocal (_spec select 1);
+                _name setMarkerColorLocal (_spec select 2);
+            };
         };
     } forEach allMapMarkers;
     missionNamespace setVariable [QGVAR(symbologyMarkerCache), _cache];
