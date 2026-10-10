@@ -44,16 +44,40 @@ interpreter that executes the real SQF:
 Per the repository's UNSOURCED marker rule (data/aircraft/SCHEMA.md section 6):
 
 - **RCS class table** (`radarRcs`).  The issue states the class ranges but
-  the source it names (Skolnik, Radar Handbook 3rd ed.) is NOT held
-  locally, and no catalogue under `data/` holds an RCS figure.  The values
-  are the range mid-points and are leads, not verified figures.  They
-  never fill a runtime-required field, and the model is gated by the
+  names the wrong source.  A source check found the canonical figures in
+  Skolnik, "Introduction to Radar Systems", Table 2.2 (man 1, bird 0.01,
+  automobile 100, pickup truck 200, large fighter 6, large bomber 40,
+  jumbo jet 100, small open boat 0.02) - NOT the "Radar Handbook" the
+  issue cites.  Against that table the issue's "vehicle 5-20 m^2"
+  CONFLICTS (the canonical vehicle is ~100-200 m^2); the stealth
+  (0.001-0.01) and helicopter (~3) rows do not appear at all.  The values
+  are the issue's range mid-points, are leads, and never fill a
+  runtime-required field.  The model is gated by the
   `aee_radio_radarDetection` setting (default off) until a held source
   replaces them.
+- **Duct cutoff constant** (`radarDuctRange`).  A source check found
+  Kerr's cutoff is `lambda_max = c * gamma^0.5 * delta^1.5`
+  (NBS J. Res. 63D(1):29, 1959, eq. 13), gradient-dependent, NOT the
+  fixed `0.085 * delta^1.5` the issue states.  The issue's constant is
+  used as a lead.
 - **Ducted range constant** (`radarRangeEquation`, `n = 2`).  The issue's
   `R^4 -> R^2` law is implemented, but the cylindrical-spreading constant
   for the ducted case is not held, so the `(4 pi)^3` constant is retained.
   This is a simplification and is marked in the kernel header.
+
+## Source-verification notes
+
+- **NRL sea clutter CONFIRMED exact.**  Gregers-Hansen & Mital, NRL
+  MR/5310--12-9346 (DTIC ADA559494; IEEE TAES 2012,
+  DOI 10.1109/TAES.2012.6324732): the coefficients and the VV 10 GHz SS3
+  1 deg value (-41.19 dB) reproduce.
+- **Horizon.**  ITU-R P.834 gives the 4/3 earth radius only.  The horizon
+  formula `D = sqrt(2 k R_e H)` is derived from that `k`, not quoted from
+  P.834.
+- **Noise floor.**  The `k`, `T_0` constants are standard.  `SNR_min` is
+  taken as a parameter, so no detection-probability pairing is baked in
+  (the issue's "13 dB for Pd=0.5, Pfa=1e-6" is ambiguous; Skolnik
+  Fig 2.7 gives 13.1 dB for Pfa=1.11e-9).
 
 ## Honest ceilings
 
