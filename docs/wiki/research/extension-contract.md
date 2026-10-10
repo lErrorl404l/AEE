@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (658)
+### Public functions (664)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -151,6 +151,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ai_fnc_receiveStimulus`
 - `aee_ai_fnc_reportStimulus`
 - `aee_ai_fnc_stimulusDecay`
+- `aee_ai_fnc_survivalAction`
+- `aee_ai_fnc_survivalNeed`
 - `aee_ai_fnc_teardownAI`
 - `aee_altitude_fnc_calculateAltitudeAcclimatization`
 - `aee_altitude_fnc_calculateAltitudeDCS`
@@ -523,7 +525,11 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_persistence_fnc_getCbrnProtection`
 - `aee_persistence_fnc_updateSoilMoisture`
 - `aee_physiology_fnc_applyHeatStressHUD`
+- `aee_physiology_fnc_coldStress`
 - `aee_physiology_fnc_dumpState`
+- `aee_physiology_fnc_heatStress`
+- `aee_physiology_fnc_survivalPressure`
+- `aee_physiology_fnc_survivalState`
 - `aee_physiology_fnc_updateFatigueState`
 - `aee_physiology_fnc_zh16cStep`
 - `aee_radio_fnc_calculateIonosphericAbsorption`

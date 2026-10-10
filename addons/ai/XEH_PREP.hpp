@@ -13,4 +13,6 @@ PREP(reportStimulus);
 PREP(receiveStimulus);
 PREP(initAI);
 PREP(teardownAI);
+PREP(survivalAction);
+PREP(survivalNeed);
 PREP(dumpState);

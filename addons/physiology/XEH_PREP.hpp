@@ -6,5 +6,9 @@
 
 PREPS(state,updateFatigueState);
 PREPS(state,zh16cStep);
+PREPS(state,coldStress);
+PREPS(state,heatStress);
+PREPS(state,survivalPressure);
+PREPS(state,survivalState);
 PREPS(hud,applyHeatStressHUD);
 PREP(dumpState);

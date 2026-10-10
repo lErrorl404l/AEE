@@ -10,6 +10,7 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_lib",
             "aee_core",
+            "aee_physiology",
             "cba_main",
             "cba_xeh"
         };
