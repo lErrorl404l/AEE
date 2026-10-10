@@ -3412,6 +3412,16 @@ private _p29Pass = 0;
     // so the probe asserts the merged config is at the shipped vanilla parity
     // and that the engine grid stays off.  It renders nothing.
     execVM "aee_p134_map_density_probe.sqf";
+
+    // PHASE 135 lives in aee_p135_land_physics_probe.sqf: the land section of
+    // gen_physics_config.py emits the carx/tankx/shipx surface under the same
+    // build-time gate as the aircraft keys.  Production emits no new land key
+    // while every land class binding is claimed, so the probe proves the
+    // generator path with a documented FIXTURE (tests/docker/probe_physics),
+    // not a shipped production key.  It reads the merged mass and maxSpeed for
+    // B_MBT_01_cannon_F, spawns, drives and stops the vehicle, then reads the
+    // merged fixture key maxBrakeTorque.  It renders nothing.
+    execVM "aee_p135_land_physics_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

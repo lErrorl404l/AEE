@@ -446,5 +446,63 @@ class LandSurfaceGateTest(unittest.TestCase):
         )
 
 
+class LandFixtureTest(unittest.TestCase):
+    """The Docker fixture addon is generated from the committed fixture.
+
+    The fixture is test-only and must never ship. It drives the same gate the
+    production corpus uses, so the probe proves the generator path.
+    """
+
+    FIXTURE = VEHICLE / "fixtures" / "land_physics_fixture.json"
+    FIXTURE_OUT = (
+        REPO
+        / "tests"
+        / "docker"
+        / "probe_physics"
+        / "addons"
+        / "probe_physics"
+        / "generated"
+        / "CfgVehicles.hpp"
+    )
+
+    def test_the_fixture_addon_is_fresh(self) -> None:
+        self.assertTrue(self.FIXTURE.is_file())
+        expected = gen.render_bindings(gen.build_land_fixture(self.FIXTURE))
+        self.assertEqual(self.FIXTURE_OUT.read_text(encoding="utf-8"), expected)
+
+    def test_the_fixture_emits_only_the_documented_key(self) -> None:
+        bindings = gen.build_land_fixture(self.FIXTURE)
+        keys = {surface.key for binding in bindings for surface in binding.land_surface}
+        self.assertEqual(keys, {"maxBrakeTorque"})
+
+    def test_a_claimed_fixture_emits_no_key(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "fixture.json"
+            payload = json.loads(self.FIXTURE.read_text(encoding="utf-8"))
+            payload["identity_grade"] = "claimed"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            bindings = gen.build_land_fixture(path)
+        self.assertEqual(
+            [surface for binding in bindings for surface in binding.land_surface],
+            [],
+        )
+
+    def test_an_unemittable_fixture_key_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "fixture.json"
+            payload = json.loads(self.FIXTURE.read_text(encoding="utf-8"))
+            payload["keys"] = {
+                "enginePower": {
+                    "value": 1,
+                    "grade": "documented",
+                    "source_id": "fixture_manual",
+                    "locator": "fixture only",
+                }
+            }
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                gen.build_land_fixture(path)
+
+
 if __name__ == "__main__":
     unittest.main()
