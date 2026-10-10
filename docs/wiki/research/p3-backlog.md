@@ -13,14 +13,15 @@ verified value until the source body is read.
 
 Issue #114 lists seven un-researched P3 features and two verification flags.
 An update on the issue (2026-09-16) moved three of the seven features out of
-the backlog. They now live under other issues. Four features stay open.
+the backlog. They now live under other issues. Of the four that stayed, two
+are researched and closed (#20 and #26). Two stay open (#25 and #27).
 
 | Feature | Issue | Effort | Status |
 |---|---|---|---|
-| Frost heave terrain modification | #20 | M | open, un-researched |
+| Frost heave terrain modification | #20 | M | closed, research delivered |
 | Volcanic activity module | #25 | L | open, research in progress |
-| Groundwater and aquifer model | #26 | M | open, un-researched |
-| Seismic activity effects | #27 | M | open, un-researched |
+| Groundwater and aquifer model | #26 | M | closed, research delivered |
+| Seismic activity effects | #27 | M | open, research in progress |
 | 3D EM wave propagation | #13 | XL | re-homed to #116 |
 | Ship motion model | #33 | M | re-homed to #28 and #17 |
 | Scent dispersion | #39 | M | re-homed to #116 |
