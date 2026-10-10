@@ -64,6 +64,13 @@
         <Key ID="STR_AEE_Radio_txAntennaHeight_Name">
             <Original>Transmitter Antenna Height</Original>
             <English>Transmitter Antenna Height</English>
+        <Key ID="STR_AEE_Radio_terrainMaskingEnabled_Description">
+            <Original>Add ITU-R P.526 terrain diffraction loss by sampling the profile along the link. Off keeps the foliage-only fallback.</Original>
+            <English>Add ITU-R P.526 terrain diffraction loss by sampling the profile along the link. Off keeps the foliage-only fallback.</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_terrainMaskingEnabled_Name">
+            <Original>Terrain Masking</Original>
+            <English>Terrain Masking</English>
         </Key>
         <Key ID="STR_AEE_Radio_txPower_Description">
             <Original>Reference handheld transmit power in dBm used in the link budget</Original>

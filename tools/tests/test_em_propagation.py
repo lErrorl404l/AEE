@@ -82,7 +82,7 @@ class TestTwoRayGround(unittest.TestCase):
 class TestKnifeEdge(unittest.TestCase):
     def test_clear_path_zero(self):
         # v <= -0.78: the obstacle clears the line -> 0 dB.
-        self.assertEqual(run_sqf(KNIFE, [-25.0, 1000.0, 1000.0, 1e8]), 0.0)
+        self.assertEqual(run_sqf(KNIFE, [-25.0]), 0.0)
 
     def test_reference_values(self):
         # P.526-16 eq (31): v=0 -> 6.03 dB, v=1 -> 13.93 dB.
@@ -90,10 +90,11 @@ class TestKnifeEdge(unittest.TestCase):
         self.assertAlmostEqual(knife_loss(1.0), 13.93, places=1)
 
     def test_matches_mirror(self):
-        # d1 = d2 = 1000 m, 100 MHz: k = sqrt(2(d1+d2)/(lambda d1 d2)).
-        k = math.sqrt(2 * 2000 / ((C / 1e8) * 1000 * 1000))
+        # The canonical kernel takes the dimensionless Fresnel parameter nu
+        # (ITU-R P.526-16 eq. 31).  The geometry-to-nu step (eq. 26) lives in
+        # fnc_calculateTerrainDiffraction, exercised by test_radio_terrain.
         for v in (-0.5, 0.0, 0.5, 1.0, 2.0, 3.0):
-            got = run_sqf(KNIFE, [v / k, 1000.0, 1000.0, 1e8])
+            got = run_sqf(KNIFE, [v])
             self.assertAlmostEqual(got, knife_loss(v), places=4)
 
 

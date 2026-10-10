@@ -5,4 +5,7 @@ PREP(calculateKnifeEdgeLoss);
 PREP(calculateDeygoutDiffraction);
 PREP(calculateValleyWaveguide);
 PREP(calculateEmPropagation);
+PREP(calculateTerrainDiffraction);
+PREP(sampleTerrainProfile);
+PREP(calculateTerrainMaskedLink);
 PREP(dumpState);
