@@ -384,7 +384,16 @@ if (GVAR(fxEnabled)) then {
 };
 
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
-[] call EFUNC(hydrology,calculateRiverWaterLevel);
+// River level integrates on time constants of hours (the Nash reservoir,
+// baseflow and water-table kernels), so it does not need the 5 s tick.  The
+// object scan sets the precedent for a slow model on its own clock: a 30 s
+// step is well inside the model's own uncertainty, and the cached state is
+// republished in between.
+private _riverLast = missionNamespace getVariable [QGVAR(riverLevelLast), -1e9];
+if ((diag_tickTime - _riverLast) >= 30) then {
+    missionNamespace setVariable [QGVAR(riverLevelLast), diag_tickTime];
+    [] call EFUNC(hydrology,calculateRiverWaterLevel);
+};
 // Erosion reads the storm depth and the cumulative runoff the river chain
 // just published, so it runs after it (issue #21).
 [] call EFUNC(hydrology,calculateErosion);
@@ -423,15 +432,22 @@ if ((_houseCache isEqualType []) && {(count _houseCache) > 2} && {(_houseCache s
 };
 missionNamespace setVariable [QEGVAR(lighting,houseCount), _houseCount];
 missionNamespace setVariable [QEGVAR(lighting,ambientBrightness), _ambientBrightness];
-[_ambientLux, _seeing, _houseCount] call EFUNC(lighting,calculateLimitingMagnitude);
-private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
-[_posASL2D, date] call EFUNC(lighting,getStarCatalog);
-// One consolidated night-sky state line (INFO once, then DEBUG).
-// Reads the render registries the client workers publish, so it sits after
-// the star catalogue and the space-weather gates it reports.
-[] call EFUNC(lighting,logSkyState);
-[] call EFUNC(atmos,calculateCloudCeiling);
-[] call EFUNC(radio,calculateIonosphericAbsorption);
+// The star catalogue and the limiting magnitude depend on the sidereal time
+// and the world latitude, both slow.  Gate them on the same 30 s clock as the
+// river stage and republish the cached values in between.
+private _skyLast = missionNamespace getVariable [QGVAR(starSkyLast), -1e9];
+if ((diag_tickTime - _skyLast) >= 30) then {
+    missionNamespace setVariable [QGVAR(starSkyLast), diag_tickTime];
+    [_ambientLux, _seeing, _houseCount] call EFUNC(lighting,calculateLimitingMagnitude);
+    private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
+    [_posASL2D, date] call EFUNC(lighting,getStarCatalog);
+    // One consolidated night-sky state line (INFO once, then DEBUG).
+    // Reads the render registries the client workers publish, so it sits after
+    // the star catalogue and the space-weather gates it reports.
+    [] call EFUNC(lighting,logSkyState);
+    [] call EFUNC(atmos,calculateCloudCeiling);
+    [] call EFUNC(radio,calculateIonosphericAbsorption);
+};
 if (GVAR(environmentalEnabled)) then {
     [] call EFUNC(weather,calculateBiologicalAmbient);
     [] call EFUNC(persistence,calculateCBRNPersistence);
