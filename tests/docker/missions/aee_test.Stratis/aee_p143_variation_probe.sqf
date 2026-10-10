@@ -129,6 +129,54 @@ if (!isNil "_fnApply" && {!isNil "_fnRestore"}) then {
     _notes pushBack "variationApply / symbologyMarkersRestore not compiled";
 };
 
+// 7. the five variation settings are registered after init.
+private _settingNames = [
+    "aee_symbology_variationAffiliation", "aee_symbology_variationDimension",
+    "aee_symbology_variationFunction", "aee_symbology_variationEchelon",
+    "aee_symbology_variationPalette"
+];
+private _settingsOk = true;
+{
+    if (isNil { missionNamespace getVariable [_x, nil] }) then { _settingsOk = false; };
+} forEach _settingNames;
+if (_settingsOk) then {
+    _pass = _pass + 1;
+} else {
+    _fail = _fail + 1;
+    _notes pushBack "variation settings not registered";
+};
+
+// 8. the apply layer re-types a family marker for each of the five option states.
+if (!isNil "_fnApply") then {
+    private _switchMarker = createMarkerLocal ["aee_p143_switch", [0, 0, 0]];
+    _switchMarker setMarkerTypeLocal "AEE_Variation";
+    private _states = [
+        [["affiliation", "hostile"], ["function", "armour"]],
+        [["dimension", "air"], ["function", "fixed_wing"]],
+        [["echelon", "company"]],
+        [["palette", "OPFOR"]],
+        [["function", "medical"]]
+    ];
+    private _switchOk = true;
+    {
+        _switchMarker setMarkerTypeLocal "AEE_Variation";
+        missionNamespace setVariable ["aee_symbology_variationState", _x];
+        [] call _fnApply;
+        private _want = ["symbol", _x] call _fnResolve;
+        if (!((markerType _switchMarker) isEqualTo (_want select 1))) then {
+            _switchOk = false;
+            _notes pushBack format ["switch state %1 -> %2 want %3", _x, markerType _switchMarker, _want select 1];
+        };
+    } forEach _states;
+    if (_switchOk) then {
+        _pass = _pass + 1;
+    } else {
+        _fail = _fail + 1;
+    };
+    deleteMarkerLocal _switchMarker;
+    missionNamespace setVariable ["aee_symbology_variationState", []];
+};
+
 if (_fail == 0) then {
     diag_log text format ["[P143] [PASS] variation entry and marker placement (%1 checks)", _pass];
 } else {
