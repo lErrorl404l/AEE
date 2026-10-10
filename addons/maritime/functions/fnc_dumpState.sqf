@@ -30,12 +30,31 @@ if !(_tideOffset isEqualType 0) then { _tideOffset = 0; };
 private _tideDescription = missionNamespace getVariable [QEGVAR(core,currentTideDescription), ""];
 if !(_tideDescription isEqualType "") then { _tideDescription = ""; };
 
+// Underwater acoustics (issue #113).
+private _soundSpeedSurface = missionNamespace getVariable [QGVAR(soundSpeedSurface), 0];
+if !(_soundSpeedSurface isEqualType 0) then { _soundSpeedSurface = 0; };
+private _soundChannelAxisDepth = missionNamespace getVariable [QGVAR(soundChannelAxisDepth_m), 0];
+if !(_soundChannelAxisDepth isEqualType 0) then { _soundChannelAxisDepth = 0; };
+private _soundChannelAxisSpeed = missionNamespace getVariable [QGVAR(soundChannelAxisSpeed), 0];
+if !(_soundChannelAxisSpeed isEqualType 0) then { _soundChannelAxisSpeed = 0; };
+private _shadowZoneTop = missionNamespace getVariable [QGVAR(shadowZoneTop_m), 0];
+if !(_shadowZoneTop isEqualType 0) then { _shadowZoneTop = 0; };
+private _shadowZoneBottom = missionNamespace getVariable [QGVAR(shadowZoneBottom_m), 0];
+if !(_shadowZoneBottom isEqualType 0) then { _shadowZoneBottom = 0; };
+private _absorptionDbPerKm = missionNamespace getVariable [QGVAR(absorptionDbPerKm), 0];
+if !(_absorptionDbPerKm isEqualType 0) then { _absorptionDbPerKm = 0; };
+private _ambientNoiseDb = missionNamespace getVariable [QGVAR(ambientNoiseDb), 0];
+if !(_ambientNoiseDb isEqualType 0) then { _ambientNoiseDb = 0; };
+
 private _logMsg = format [
-    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9",
+    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | acoustics=c=%10 axis=%11@%12 shadow=%13..%14 alpha=%15 NL=%16",
     _beaufort, round (_seaStateCurrent * 100) / 100, _seaStateDescription, round (_waveHeight * 100) / 100,
     round (_seaSurfaceTemperature * 100) / 100,
     round (_compassDeviation * 100) / 100, round (_compassAnomalyNT * 100) / 100,
-    round (_tideOffset * 100) / 100, _tideDescription
+    round (_tideOffset * 100) / 100, _tideDescription,
+    round (_soundSpeedSurface * 10) / 10, round _soundChannelAxisDepth, round (_soundChannelAxisSpeed * 10) / 10,
+    round _shadowZoneTop, round _shadowZoneBottom,
+    round (_absorptionDbPerKm * 1000) / 1000, round _ambientNoiseDb
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

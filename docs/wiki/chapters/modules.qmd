@@ -311,15 +311,28 @@ no map name. The design decision is in ADR-016.
 
 ## maritime
 
-Sea state and tides.
+Sea state, tides, and underwater acoustics.
 
 | Function | Purpose |
 |---|---|
+| `calculateAbsorptionWater` | Seawater absorption vs frequency (Francois-Garrison 1982) |
+| `calculateAmbientNoise` | Ambient noise spectrum level keyed to sea state (Wenz 1962) |
 | `calculateCompassDeviation` | Calculate compass deviation |
+| `calculateDetectionRange` | Sonar detection range from the sonar equation (Urick) |
 | `calculateMagneticAnomaly` | Calculate magnetic field anomaly at a position |
+| `calculateRayBending` | Snell ray bending across a sound-speed layer |
 | `calculateSeaState` | Calculate the sea state |
+| `calculateSeaSurfaceTemperature` | Estimate the sea-surface temperature |
+| `calculateShadowZone` | Direct-path shadow zone below the thermocline |
+| `calculateSonarEquation` | Passive and active sonar equation signal excess |
+| `calculateSoundChannel` | SOFAR sound-channel axis from a sound-speed profile |
+| `calculateSoundSpeedProfile` | Vertical sound-speed profile through Mackenzie 1981 |
+| `calculateSoundSpeedWater` | Sound speed in seawater (Mackenzie 1981) |
 | `calculateTidalPrediction` | Calculate the tidal prediction |
+| `calculateTransmissionLoss` | Transmission loss: spreading plus absorption |
+| `getSonarDetectionRange` | Detection range bound to the published environment |
 | `updateEngineWaves` | Render the sea state as engine waves |
+| `updateUnderwaterAcoustics` | Publish the underwater acoustics state |
 
 ## physiology
 

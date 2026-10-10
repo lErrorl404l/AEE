@@ -547,6 +547,16 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_hydrology_riverSectionWidth_m` | SLIDER | `4` | yes | hydrology | Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise. |
 | `aee_hydrology_tidalReach_m` | SLIDER | `5000` | yes | hydrology | Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance. |
 
+## AEE Maritime → Acoustics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_maritime_acousticReferenceFreqHz` | SLIDER | `1000` | yes | maritime | Reference frequency in hertz for the published absorption and ambient-noise spectrum level |
+| `aee_maritime_deepWaterTemperature` | SLIDER | `4` | yes | maritime | Deep-water temperature in degrees C for the isothermal layer below the thermocline |
+| `aee_maritime_seaSalinity` | SLIDER | `35` | yes | maritime | Sea salinity in psu for the Mackenzie sound-speed equation |
+| `aee_maritime_thermoclineDepth` | SLIDER | `100` | yes | maritime | Base of the mixed layer (thermocline depth) in metres |
+| `aee_maritime_underwaterAcousticsEnabled` | CHECKBOX | `true` | yes | maritime | Publish the underwater acoustics state: sound speed, SOFAR channel axis, shadow zone, absorption and ambient noise |
+
 ## AEE Maritime → Sea
 
 | Setting | Type | Default | Global | Addon | Purpose |

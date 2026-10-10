@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (671)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -434,11 +434,23 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ltm_fnc_ltmToggleMode`
 - `aee_magnetism_fnc_calculateCompassDeviation`
 - `aee_magnetism_fnc_calculateMagneticAnomaly`
+- `aee_maritime_fnc_calculateAbsorptionWater`
+- `aee_maritime_fnc_calculateAmbientNoise`
+- `aee_maritime_fnc_calculateDetectionRange`
+- `aee_maritime_fnc_calculateRayBending`
 - `aee_maritime_fnc_calculateSeaState`
 - `aee_maritime_fnc_calculateSeaSurfaceTemperature`
+- `aee_maritime_fnc_calculateShadowZone`
+- `aee_maritime_fnc_calculateSonarEquation`
+- `aee_maritime_fnc_calculateSoundChannel`
+- `aee_maritime_fnc_calculateSoundSpeedProfile`
+- `aee_maritime_fnc_calculateSoundSpeedWater`
 - `aee_maritime_fnc_calculateTidalPrediction`
+- `aee_maritime_fnc_calculateTransmissionLoss`
 - `aee_maritime_fnc_dumpState`
+- `aee_maritime_fnc_getSonarDetectionRange`
 - `aee_maritime_fnc_updateEngineWaves`
+- `aee_maritime_fnc_updateUnderwaterAcoustics`
 - `aee_material_fnc_calculateStefanCoefficient`
 - `aee_material_fnc_classifyBySurfaceType`
 - `aee_material_fnc_dumpState`
