@@ -186,7 +186,9 @@ class TestDefaultPathColorizeAlpha(unittest.TestCase):
     def test_default_kernel_colorize_is_the_engine_neutral(self):
         cc, _ = run_sqf(BASE_KERNEL, [])
         self.assertEqual(cc[4][3], 1, "the default path desaturates")
-        self.assertEqual(cc[5], [0, 0, 0, 0], "the default path has desaturation weights")
+        self.assertEqual(
+            cc[5], [0, 0, 0, 0], "the default path has desaturation weights"
+        )
 
     def test_base_grade_acuity_grain_is_colour_not_monochrome(self):
         # BIKI capture 20240220225631: the Arma 3 FilmGrain monochromatic
@@ -688,8 +690,7 @@ class TestPerceptionDriverContract(unittest.TestCase):
     def test_stand_down_neutral_is_the_contract_identity(self):
         code = _code(DRIVER)
         self.assertIn(
-            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], "
-            "[-1,-1,0,0,0,0,0]]",
+            "[1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0], [-1,-1,0,0,0,0,0]]",
             code,
             "the stand-down neutral is not the contract identity",
         )
@@ -944,6 +945,7 @@ class TestPerceptionWiring(unittest.TestCase):
                 "aee_vision_visionToneStrength",
                 "aee_vision_visionContrastScale",
                 "aee_vision_visionWhiteBalance",
+                "aee_vision_colorTemperature",
             },
         )
 

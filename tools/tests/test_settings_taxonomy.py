@@ -138,6 +138,7 @@ EXPECTED_OPTICS_VISION = {
     "aee_vision_visionToneEnabled",
     "aee_vision_visionToneStrength",
     "aee_vision_visionWhiteBalance",
+    "aee_vision_colorTemperature",
 }
 
 

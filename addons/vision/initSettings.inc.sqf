@@ -61,6 +61,13 @@ AEE_SETTING_SLIDER(visionToneStrength,"AEE Vision","Vision",0,1,0.25,2);
 AEE_SETTING_SLIDER(visionContrastScale,"AEE Vision","Vision",0.5,1.5,1.0,2);
 AEE_SETTING_CHECKBOX(visionWhiteBalance,"AEE Vision","Vision",false);
 
+// Physics colour temperature (issue #100).  When on, the white-balance
+// illuminant and the atmospheric desaturation come from the physics colour
+// temperature (sun elevation and cloud cover) and the acuity grain scales with
+// the light level.  When off, the white balance uses the engine ambient colour
+// and the shipped image is unchanged.
+AEE_SETTING_CHECKBOX(colorTemperature,"AEE Vision","Vision",false);
+
 // Colour-stage calibration (AEE Experimental > Vision).  The degree of
 // adaptation D is CIECAM02 (CIE 159:2004).  The mesopic desaturation amplitude
 // and the Purkinje tint amplitude are UNSOURCED.

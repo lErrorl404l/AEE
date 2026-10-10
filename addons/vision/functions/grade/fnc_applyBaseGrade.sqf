@@ -204,6 +204,12 @@ if (_useModel isEqualTo true) then {
     };
     private _toneEnabled = missionNamespace getVariable [QGVAR(visionToneEnabled), true];
     private _whiteBalance = missionNamespace getVariable [QGVAR(visionWhiteBalance), false];
+    // The physics colour temperature (issue #100) is a white-balance SOURCE,
+    // so it implies the white-balance stage.  When it is off the engine
+    // ambient colour stays the source and the shipped image is unchanged.
+    private _colorTemp = missionNamespace getVariable [QGVAR(colorTemperature), false];
+    if (_colorTemp isEqualType 0) then { _colorTemp = _colorTemp > 0; };
+    if (_colorTemp isEqualTo true) then { _whiteBalance = true; };
     private _toneStrength = missionNamespace getVariable [QGVAR(visionToneStrength), 0.25];
     private _contrastScale = missionNamespace getVariable [QGVAR(visionContrastScale), 1];
     private _adaptDegree = missionNamespace getVariable [QGVAR(visionAdaptationDegree), 0.9];
@@ -227,6 +233,41 @@ if (_useModel isEqualTo true) then {
         };
     };
 
+    // Physics colour temperature (issue #100).  When enabled, the CCT from the
+    // sun elevation and the cloud cover supersedes the engine ambient as the
+    // white-balance illuminant, so exactly one white-balance model runs at a
+    // time.  The CCT becomes the linear Rec.709 white point; the existing
+    // fnc_perceptionIlluminant then normalises it and
+    // fnc_perceptionChromaticAdaptation adapts, both unchanged.
+    private _sunElevation = missionNamespace getVariable [QEGVAR(core,currentSunElevation), 0];
+    if !(_sunElevation isEqualType 0) then { _sunElevation = 0; };
+    private _overcast = overcast;
+    if !(_overcast isEqualType 0) then { _overcast = 0; };
+    private _cct = [_sunElevation, _overcast] call FUNC(perceptionColorTemperature);
+    if (_colorTemp isEqualTo true) then {
+        _illuminant = [_cct] call FUNC(perceptionIlluminantFromCct);
+    };
+
+    // Atmospheric desaturation (issue #100): cloud, rain and haze mix
+    // scattered light into the scene and lower its saturation.  It feeds the
+    // same colorize/weights mechanism as the mesopic path.
+    private _rain = rain;
+    if !(_rain isEqualType 0) then { _rain = 0; };
+    private _haze = missionNamespace getVariable [QEGVAR(core,currentHaze), 0];
+    if !(_haze isEqualType 0) then { _haze = 0; };
+    private _atmosAlpha = 0;
+    if (_colorTemp isEqualTo true) then {
+        _atmosAlpha = [_overcast, _rain, _haze] call FUNC(perceptionAtmosphericColor);
+    };
+
+    // Light-level grain (issue #100): a dark scene raises the acuity grain.
+    // The mesopic photopic fraction is the 0 to 1 light scalar: 1 photopic
+    // (bright), 0 scotopic (dark).
+    private _grainScale = 1;
+    if (_colorTemp isEqualTo true) then {
+        _grainScale = linearConversion [1, 0, _mesopicW, 1.0, 3.0, true];
+    };
+
     // Debug hook: override the scene illuminant colour.
     private _forceIlluminant = missionNamespace getVariable [QGVAR(visionForceIlluminant), []];
     if (_forceIlluminant isEqualType []) then {
@@ -247,8 +288,15 @@ if (_useModel isEqualTo true) then {
         _desatMax,
         _purkinje,
         _baseAnchor,
-        _desatAlpha
+        _desatAlpha,
+        _atmosAlpha,
+        _grainScale
     ] call FUNC(perceptionParams);
+
+    // Publish the physics colour temperature for the diagnostics and the
+    // tests.  It sits inside the model branch because the value is a model
+    // product.
+    missionNamespace setVariable [QGVAR(colorTemperatureK), _cct];
 } else {
     _params = [
         GVAR(baseGradeContrast),
