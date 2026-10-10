@@ -256,6 +256,90 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 };
             };
         };
+
+        // ── Topographic legend ────────────────────────────────────────
+        // The engine Legend class holds position only and the engine draws
+        // the body, so a mod cannot author one (docs/engine/topo-map-surface.md).
+        // FUNC(mapLegendDraw) is pure and returns the rows; this hook only
+        // assembles the palette and draws them in the legend rectangle at the
+        // control's bottom-left.  The swatch colours come from the live merged
+        // config (the same surface the map draws with) and from the generated
+        // terrain registry, so the legend and the map share one source.
+        private _rsc = configFile >> "RscMapControl";
+        private _palette = [
+            ["relief_brown", getArray (_rsc >> "colorLevels")],
+            ["water_blue", getArray (_rsc >> "colorSea")],
+            ["vegetation_green", getArray (_rsc >> "colorForest")],
+            ["transport_red", getArray (_rsc >> "colorMainRoads")],
+            ["contour_index", getArray (_rsc >> "colorMainCountlines")],
+            ["contour_intermediate", getArray (_rsc >> "colorCountlines")]
+        ];
+        private _symbols = missionNamespace getVariable ["aee_cartography_terrainTables", []];
+        if ((count _symbols) > 0) then { _symbols = _symbols select 0; };
+        {
+            _x params ["_groupKey", "_category"];
+            private _groupColour = [];
+            {
+                if ((_x select 1) == _category) exitWith { _groupColour = _x select 3; };
+            } forEach _symbols;
+            if ((count _groupColour) == 4) then {
+                _palette pushBack [_groupKey, _groupColour];
+            };
+        } forEach [
+            ["group_relief", "relief"],
+            ["group_vegetation", "vegetation"],
+            ["group_hydrography", "hydrography"],
+            ["group_populated", "populated"],
+            ["group_works", "works"],
+            ["group_transport", "transport"],
+            ["group_boundary", "boundary"],
+            ["group_control", "control"],
+            ["group_military", "military"]
+        ];
+        private _legendRows = [_palette] call FUNC(mapLegendDraw);
+        if ((count _legendRows) > 0) then {
+            // The map control draws in world metres, so convert the screen
+            // rectangle to world each frame from the control transform.  One
+            // screen unit equals _mPerX metres across and _mPerY metres down.
+            private _lcp = ctrlPosition _map;
+            private _origin = _map ctrlMapScreenToWorld [_lcp select 0, _lcp select 1];
+            private _px = _map ctrlMapScreenToWorld [(_lcp select 0) + 1, _lcp select 1];
+            private _py = _map ctrlMapScreenToWorld [_lcp select 0, (_lcp select 1) + 1];
+            private _mPerX = abs ((_px select 0) - (_origin select 0));
+            private _mPerY = abs ((_py select 1) - (_origin select 1));
+            private _panelW = 0.132;
+            private _rowH = 0.020;
+            private _panelH = ((count _legendRows) * _rowH) + 0.014;
+            private _panelX = (_lcp select 0) + 0.010;
+            private _panelTop = (_lcp select 1) + (_lcp select 3) - 0.010;
+            private _panelCentre = _map ctrlMapScreenToWorld [
+                _panelX + (_panelW * 0.5), _panelTop - (_panelH * 0.5)
+            ];
+            _map drawIcon [
+                "#(argb,8,8,3)color(0.96,0.95,0.92,0.72)", [1, 1, 1, 1], _panelCentre,
+                _panelW * _mPerX, _panelH * _mPerY, 0, "", 1, 0, _font, "center"
+            ];
+            {
+                _x params ["_swatch", "_label"];
+                private _rowMid = _panelTop - 0.007 - ((_forEachIndex + 0.5) * _rowH);
+                private _swatchFill = format [
+                    "#(argb,8,8,3)color(%1,%2,%3,%4)",
+                    _swatch select 0, _swatch select 1, _swatch select 2, _swatch select 3
+                ];
+                private _swatchCentre = _map ctrlMapScreenToWorld [
+                    _panelX + 0.016, _rowMid
+                ];
+                _map drawIcon [
+                    _swatchFill, [1, 1, 1, 1], _swatchCentre,
+                    0.020 * _mPerX, 0.011 * _mPerY, 0, "", 1, 0, _font, "center"
+                ];
+                private _text = _map ctrlMapScreenToWorld [_panelX + 0.032, _rowMid];
+                _map drawIcon [
+                    "", [0.05, 0.05, 0.05, 1], _text, 0, 0, 0,
+                    _label, 1, 0.018, _font, "left"
+                ];
+            } forEach _legendRows;
+        };
     }];
 
     _mapCtrl setVariable [QGVAR(mgrsMapReady), true];
