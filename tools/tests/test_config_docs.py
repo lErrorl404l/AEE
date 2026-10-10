@@ -63,7 +63,7 @@ class ConfigDocsParserTest(unittest.TestCase):
     def test_parser_finds_macro_settings(self) -> None:
         # aee_thermal_objectScanInterval is a macro registration.
         self.assertIn("aee_thermal_objectScanInterval", self.names)
-        self.assertIn("aee_fx_exhaustShimmerAlpha", self.names)
+        self.assertIn("aee_weatherfx_exhaustShimmerAlpha", self.names)
 
     def test_parser_finds_explicit_settings(self) -> None:
         # aee_core_enabled and aee_core_computeMode are explicit blocks.
@@ -143,7 +143,7 @@ class TestLogDebugSwitches(unittest.TestCase):
 
     def test_every_settings_addon_has_the_switch_and_keys(self) -> None:
         files = sorted((REPO / "addons").glob("*/initSettings.inc.sqf"))
-        self.assertEqual(len(files), 23)
+        self.assertEqual(len(files), 43)
         self.assertIn("core", {path.parent.name for path in files})
         for path in files:
             addon = path.parent

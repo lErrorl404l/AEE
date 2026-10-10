@@ -89,7 +89,7 @@ for f in fails:
 # macro is not reading the flag and the switch is decorative.  This is the
 # check that a setting can be registered and still do nothing.
 _debug_expected = (
-    "[AEE][physiology][DEBUG] item mass:",
+    "[AEE][clothing][DEBUG] item mass:",
     "[AEE][ballistics][DEBUG] shot ",
 )
 _debug_missing = [m for m in _debug_expected if m not in text]

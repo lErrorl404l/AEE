@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Oxygen-delivery physiology verification (issue #196).
 
-Mirrors addons/physiology/functions/oxygen/fnc_calculateOxygenDelivery.sqf.
+Mirrors addons/altitude/functions/oxygen/fnc_calculateOxygenDelivery.sqf.
 The constants are published values and are drift-locked to their sources:
 
   Hufner 1.34 mL O2/g Hb             (Hufner 1894; Guyton & Hall Ch. 40)
@@ -113,7 +113,7 @@ def source(rel):
     return (REPO / rel).read_text(encoding="utf-8")
 
 
-OXY = "addons/physiology/functions/oxygen/fnc_calculateOxygenDelivery.sqf"
+OXY = "addons/altitude/functions/oxygen/fnc_calculateOxygenDelivery.sqf"
 
 
 class TestOxygenContent(unittest.TestCase):
@@ -232,7 +232,7 @@ class TestModelWiring(unittest.TestCase):
 
     def test_function_exists_and_is_registered(self):
         self.assertTrue((REPO / OXY).exists())
-        prep = source("addons/physiology/XEH_PREP.hpp")
+        prep = source("addons/altitude/XEH_PREP.hpp")
         self.assertIn("PREPS(oxygen,calculateOxygenDelivery);", prep)
 
     def test_sourced_constants_pinned(self):
@@ -255,8 +255,8 @@ class TestModelWiring(unittest.TestCase):
         solver = source(
             "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf"
         )
-        self.assertIn("EFUNC(physiology,calculateOxygenDelivery)", display)
-        self.assertIn("EFUNC(physiology,calculateOxygenDelivery)", solver)
+        self.assertIn("EFUNC(altitude,calculateOxygenDelivery)", display)
+        self.assertIn("EFUNC(altitude,calculateOxygenDelivery)", solver)
 
     def test_old_perfusion_proxy_is_gone(self):
         for rel in (

@@ -14,7 +14,7 @@ particles.
 
 - **Index**: the ParticleArray position, 0-based. Verified against the
   array the shipped emitter builds
-  (`addons/fx/functions/particle/fnc_particlePipelineEmit.sqf`).
+  (`addons/particles/functions/particle/fnc_particlePipelineEmit.sqf`).
 - **Used by AEE**: does the shipped pipeline set this element, and from
   what. A blank means the element keeps the array default.
 - **Spec**: the engine behaviour, from the BI wiki ParticleArray page
@@ -122,6 +122,6 @@ the wind. This is what #151's rain and the hurricane composite use.
 
 - BI wiki, ParticleArray page (archived 2025-03-20).
 - BI wiki, `drop` command page (archived).
-- `addons/fx/functions/particle/fnc_particlePipelineEmit.sqf` - the
+- `addons/particles/functions/particle/fnc_particlePipelineEmit.sqf` - the
   shipped array, the ground truth for the index mapping above.
 - #146 (command surface 3), #149, #150, #151.

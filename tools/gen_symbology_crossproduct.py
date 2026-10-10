@@ -38,9 +38,9 @@ from typing import Any
 ROOT = Path(__file__).parents[1]
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
 SOURCE_ROOT = Path("/tmp/opencode/nato-symbols")
-MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
-CONFIG_OUT = ROOT / "addons" / "optics" / "config_crossproduct.hpp"
-ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers"
+MARKERS_OUT = ROOT / "addons" / "symbology" / "data" / "markers"
+CONFIG_OUT = ROOT / "addons" / "symbology" / "config_crossproduct.hpp"
+ADDON_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers"
 
 SIZE = 64
 GLYPH_BOX = 44  # the glyph fits this box inside the 64 px marker

@@ -3,9 +3,9 @@
 
 Executes the REAL SQF kernels through sqf_lite:
 
-  addons/thermal/functions/outline/fnc_outlineTopo.sqf
-  addons/thermal/functions/outline/fnc_outlineSkeleton.sqf
-  addons/thermal/functions/outline/fnc_outlineSensorLod.sqf
+  addons/thermal_display/functions/outline/fnc_outlineTopo.sqf
+  addons/thermal_display/functions/outline/fnc_outlineSkeleton.sqf
+  addons/thermal_display/functions/outline/fnc_outlineSensorLod.sqf
 
 The engine-reading functions fnc_outlineCanvas, fnc_outlineCollect,
 fnc_outlineDraw and fnc_outlineToggle cannot run without an engine, so their
@@ -35,7 +35,7 @@ sys.path.insert(0, str(REPO))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-OUTLINE = REPO / "addons" / "thermal" / "functions" / "outline"
+OUTLINE = REPO / "addons" / "thermal_display" / "functions" / "outline"
 TOPO_KERNEL = OUTLINE / "fnc_outlineTopo.sqf"
 SKELETON_KERNEL = OUTLINE / "fnc_outlineSkeleton.sqf"
 SENSOR_LOD_KERNEL = OUTLINE / "fnc_outlineSensorLod.sqf"
@@ -44,15 +44,15 @@ CANVAS_SRC = (OUTLINE / "fnc_outlineCanvas.sqf").read_text(encoding="utf-8")
 COLLECT_SRC = (OUTLINE / "fnc_outlineCollect.sqf").read_text(encoding="utf-8")
 DRAW_SRC = (OUTLINE / "fnc_outlineDraw.sqf").read_text(encoding="utf-8")
 TOGGLE_SRC = (OUTLINE / "fnc_outlineToggle.sqf").read_text(encoding="utf-8")
-PREP_SRC = (REPO / "addons" / "thermal" / "XEH_PREP.hpp").read_text(encoding="utf-8")
-SETTINGS_SRC = (REPO / "addons" / "thermal" / "initSettings.inc.sqf").read_text(
+PREP_SRC = (REPO / "addons" / "thermal_display" / "XEH_PREP.hpp").read_text(encoding="utf-8")
+SETTINGS_SRC = (REPO / "addons" / "thermal_display" / "initSettings.inc.sqf").read_text(
     encoding="utf-8"
 )
-RSC_SRC = (REPO / "addons" / "thermal" / "RscTitles.hpp").read_text(encoding="utf-8")
-STRINGTABLE_SRC = (REPO / "addons" / "thermal" / "stringtable.xml").read_text(
+RSC_SRC = (REPO / "addons" / "thermal_display" / "RscTitles.hpp").read_text(encoding="utf-8")
+STRINGTABLE_SRC = (REPO / "addons" / "thermal_display" / "stringtable.xml").read_text(
     encoding="utf-8"
 )
-POSTINIT_SRC = (REPO / "addons" / "optics" / "XEH_postInit.sqf").read_text(
+POSTINIT_SRC = (REPO / "addons" / "vision" / "XEH_postInit.sqf").read_text(
     encoding="utf-8"
 )
 
@@ -364,7 +364,7 @@ class TestOutlineConfigContract(unittest.TestCase):
 
     def test_the_stringtable_keys_exist(self):
         for key in ("fusionOutline_Name", "fusionOutline_Description"):
-            self.assertIn(f"STR_AEE_Thermal_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Thermal_Display_{key}", STRINGTABLE_SRC)
 
     def test_the_outline_display_is_idc_1301(self):
         self.assertIn("idc = 1301;", RSC_SRC)
@@ -412,7 +412,7 @@ class TestOutlineWiring(unittest.TestCase):
         self.assertIn('isKindOf "CAManBase"', DRAW_SRC)
 
     def test_the_collector_is_not_camanbase_only(self):
-        self.assertIn("QGVAR(selTemperature)", COLLECT_SRC)
+        self.assertIn("QEGVAR(thermal,selTemperature)", COLLECT_SRC)
         for token in ('"CAManBase"', '"Car"', '"Tank"', '"StaticWeapon"', '"Air"'):
             self.assertIn(token, COLLECT_SRC, token)
         self.assertNotIn('["CAManBase", _range]', COLLECT_SRC)
@@ -423,8 +423,8 @@ class TestOutlineWiring(unittest.TestCase):
         self.assertIn("QGVAR(outlineOn)", TOGGLE_SRC)
 
     def test_the_nvg_dispatch_drives_the_outline(self):
-        self.assertIn("[true] call EFUNC(thermal,outlineToggle);", POSTINIT_SRC)
-        self.assertIn("[false] call EFUNC(thermal,outlineToggle);", POSTINIT_SRC)
+        self.assertIn("[true] call EFUNC(thermal_display,outlineToggle);", POSTINIT_SRC)
+        self.assertIn("[false] call EFUNC(thermal_display,outlineToggle);", POSTINIT_SRC)
 
 
 class TestOutlineWorkerWiring(unittest.TestCase):
@@ -437,7 +437,7 @@ class TestOutlineWorkerWiring(unittest.TestCase):
     """
 
     def test_the_thermal_postinit_registers_a_draw3d_worker(self):
-        src = (REPO / "addons" / "thermal" / "XEH_postInit.sqf").read_text(
+        src = (REPO / "addons" / "thermal_display" / "XEH_postInit.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn('addMissionEventHandler ["Draw3D"', src)
@@ -445,7 +445,7 @@ class TestOutlineWorkerWiring(unittest.TestCase):
         self.assertIn("hasInterface", src)
 
     def test_the_postinit_event_handler_is_declared(self):
-        src = (REPO / "addons" / "thermal" / "CfgEventHandlers.hpp").read_text(
+        src = (REPO / "addons" / "thermal_display" / "CfgEventHandlers.hpp").read_text(
             encoding="utf-8"
         )
         self.assertIn("Extended_PostInit_EventHandlers", src)

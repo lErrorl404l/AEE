@@ -1,6 +1,6 @@
 #define COMPONENT core
 #define COMPONENT_BEAUTIFIED Core
-#include "\z\aee\addons\main\script_mod.hpp"
+#include "\z\aee\addons\lib\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 
@@ -8,4 +8,4 @@
     #define DEBUG_MODE_FULL
 #endif
 
-#include "\z\aee\addons\main\script_macros.hpp"
+#include "\z\aee\addons\lib\script_macros.hpp"

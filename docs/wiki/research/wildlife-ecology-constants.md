@@ -37,7 +37,7 @@ The kernels are `addons/wildlife/functions/`. The named constants are in
 | source level: footstep | 50 dB | U | loudness order |
 | stimulus | (level - 30) / 110 | R | from the floor and the loud reference |
 
-The propagation index is `aee_environmental_currentSoundPropagation`, AEE's own
+The propagation index is `aee_weather_currentSoundPropagation`, AEE's own
 weather model (0.3 to 2.0), not a new constant. It scales the effective range.
 
 ## Shot audio (task T26)

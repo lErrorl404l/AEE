@@ -9,7 +9,7 @@ Snow settles on the hull. The added mass is a published layer model:
 
 The top area is the vehicle's own bounding-box length times its width.
 The layer depth is the modelled snow depth aee_core_snowDepth_m.
-The bulk density is the sourced setting aee_environmental_slabDensity.
+The bulk density is the sourced setting aee_persistence_slabDensity.
 The default 300 kg/m3 is settled mid-winter snow. The published snowpack
 range is 100 to 500 kg/m3 (see the mobility coupling research note).
 
@@ -36,7 +36,7 @@ if !(_snowDepth isEqualType 0) exitWith { 0 };
 private _depth = _snowDepth max 0;
 if (_depth <= 0) exitWith { 0 };
 
-private _density = missionNamespace getVariable [QEGVAR(environmental,slabDensity), 300];
+private _density = missionNamespace getVariable [QEGVAR(persistence,slabDensity), 300];
 if !(_density isEqualType 0) then { _density = 300; };
 if (_density <= 0) exitWith { 0 };
 

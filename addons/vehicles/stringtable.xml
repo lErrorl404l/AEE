@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Vehicles">
+        <Key ID="STR_AEE_Vehicles_estimateVehicleMassEnabled_Description">
+            <Original>Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight.</Original>
+            <English>Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight.</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_estimateVehicleMassEnabled_Name">
+            <Original>Vehicle Mass Estimate</Original>
+            <English>Vehicle Mass Estimate</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_logDebug_Description">
+            <Original>Log vehicles diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log vehicles diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_logDebug_Name">
+            <Original>Vehicles Debug Log</Original>
+            <English>Vehicles Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_minEnginePower_Description">
+            <Original>Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power)</Original>
+            <English>Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power)</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_minEnginePower_Name">
+            <Original>Minimum Engine Power</Original>
+            <English>Minimum Engine Power</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_vehicleCouplingEnabled_Description">
+            <Original>Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle.</Original>
+            <English>Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle.</English>
+        </Key>
+        <Key ID="STR_AEE_Vehicles_vehicleCouplingEnabled_Name">
+            <Original>Runtime Vehicle Coupling</Original>
+            <English>Runtime Vehicle Coupling</English>
+        </Key>
+    </Package>
+</Project>

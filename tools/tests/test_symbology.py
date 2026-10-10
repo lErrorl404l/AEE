@@ -4,12 +4,12 @@
 Executes the REAL pure kernels through tools/tests/sqf_lite.py and pins the
 real CfgMarkers registration in addons/optics/config.cpp:
 
-  addons/optics/functions/symbology/fnc_symbolPalette.sqf
-  addons/optics/functions/symbology/fnc_symbolFrame.sqf
-  addons/optics/functions/symbology/fnc_symbolIcon.sqf
-  addons/optics/functions/symbology/fnc_symbolResolve.sqf
-  addons/optics/functions/symbology/fnc_symbologyMarkerType.sqf
-  addons/optics/functions/symbology/fnc_symbologyMarkerColor.sqf
+  addons/symbology/functions/symbology/fnc_symbolPalette.sqf
+  addons/symbology/functions/symbology/fnc_symbolFrame.sqf
+  addons/symbology/functions/symbology/fnc_symbolIcon.sqf
+  addons/symbology/functions/symbology/fnc_symbolResolve.sqf
+  addons/symbology/functions/symbology/fnc_symbologyMarkerType.sqf
+  addons/symbology/functions/symbology/fnc_symbologyMarkerColor.sqf
 
 The symbols are real engine map markers, so the map layer applies them with
 the local marker commands and draws nothing on the map control.
@@ -30,8 +30,10 @@ sys.path.insert(0, str(REPO))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-OPTICS = REPO / "addons" / "optics"
-SYM = OPTICS / "functions" / "symbology"
+SYMBOLOGY = REPO / "addons" / "symbology"
+CART = REPO / "addons" / "cartography"
+HUDROOT = REPO / "addons" / "hud"
+SYM = SYMBOLOGY / "functions" / "symbology"
 PALETTE_KERNEL = SYM / "fnc_symbolPalette.sqf"
 FRAME_KERNEL = SYM / "fnc_symbolFrame.sqf"
 ICON_KERNEL = SYM / "fnc_symbolIcon.sqf"
@@ -43,9 +45,9 @@ MARKER_CAT_KERNEL = SYM / "fnc_symbologyMarkerCategory.sqf"
 UNIT_CAT_KERNEL = SYM / "fnc_symbologyUnitCategory.sqf"
 AFFILIATION_KERNEL = SYM / "fnc_symbologyAffiliation.sqf"
 PALETTE_FRIENDLY_KERNEL = SYM / "fnc_symbologyPaletteFriendly.sqf"
-TABLES_SQF = OPTICS / "data" / "symbology_tables.sqf"
-MARKERS = OPTICS / "data" / "markers"
-PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
+TABLES_SQF = SYMBOLOGY / "data" / "symbology_tables.sqf"
+MARKERS = SYMBOLOGY / "data" / "markers"
+PREP_SRC = (SYMBOLOGY / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SYM_TABLES = run_sqf(TABLES_SQF, [])
 FAMILIES = SYM_TABLES[4]
 GLYPHS = SYM_TABLES[5]
@@ -58,23 +60,24 @@ SYM_APPLY_SRC = (SYM / "fnc_symbologyMarkersApply.sqf").read_text(encoding="utf-
 SYM_RESTORE_SRC = (SYM / "fnc_symbologyMarkersRestore.sqf").read_text(encoding="utf-8")
 SYM_WORLD_KERNEL = SYM / "fnc_symbologyWorldDraw.sqf"
 SYM_WORLD_SRC = SYM_WORLD_KERNEL.read_text(encoding="utf-8")
-HUD_MARKERS_SRC = (OPTICS / "functions" / "hud" / "fnc_hudMarkers.sqf").read_text(
+HUD_MARKERS_SRC = (HUDROOT / "functions" / "hud" / "fnc_hudMarkers.sqf").read_text(
     encoding="utf-8"
 )
-POSTINIT_SRC = (OPTICS / "XEH_postInit.sqf").read_text(encoding="utf-8")
-CONFIG_SRC = (OPTICS / "config.cpp").read_text(encoding="utf-8")
-FAMILY_SRC = (OPTICS / "config_family.hpp").read_text(encoding="utf-8")
-MARKERS_SRC = (OPTICS / "config_markers.hpp").read_text(encoding="utf-8")
-RSCTITLES_SRC = (OPTICS / "RscTitles.hpp").read_text(encoding="utf-8")
-SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
-STRINGTABLE_SRC = (OPTICS / "stringtable.xml").read_text(encoding="utf-8")
-MGRS_MAP_SRC = (OPTICS / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
+POSTINIT_SRC = (SYMBOLOGY / "XEH_postInit.sqf").read_text(encoding="utf-8")
+CONFIG_SRC = (SYMBOLOGY / "config.cpp").read_text(encoding="utf-8")
+CART_CONFIG_SRC = (CART / "config.cpp").read_text(encoding="utf-8")
+FAMILY_SRC = (SYMBOLOGY / "config_family.hpp").read_text(encoding="utf-8")
+MARKERS_SRC = (SYMBOLOGY / "config_markers.hpp").read_text(encoding="utf-8")
+RSCTITLES_SRC = (HUDROOT / "RscTitles.hpp").read_text(encoding="utf-8")
+SETTINGS_SRC = (SYMBOLOGY / "initSettings.inc.sqf").read_text(encoding="utf-8")
+STRINGTABLE_SRC = (SYMBOLOGY / "stringtable.xml").read_text(encoding="utf-8")
+MGRS_MAP_SRC = (CART / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
     encoding="utf-8"
 )
-MGRS_FONT_SRC = (OPTICS / "functions" / "hud" / "fnc_mgrsFontFamily.sqf").read_text(
+MGRS_FONT_SRC = (CART / "functions" / "hud" / "fnc_mgrsFontFamily.sqf").read_text(
     encoding="utf-8"
 )
-FONTS = OPTICS / "data" / "fonts"
+FONTS = CART / "data" / "fonts"
 
 # Every committed symbology source, for the provenance guard.
 ALL_SYM_SRC = "\n".join(
@@ -169,7 +172,7 @@ def marker_type(affiliation, category, dimension="land", echelon="unknown", pal=
     return run_sqf(
         MARKER_TYPE_KERNEL,
         [affiliation, category, dimension, echelon, pal],
-        {"aee_optics_symbologyTables": SYM_TABLES},
+        {"aee_symbology_symbologyTables": SYM_TABLES},
     )
 
 
@@ -183,7 +186,7 @@ def resolve(side, category, affiliation, echelon, pal):
         "__FUNC__symbologyMarkerType": lambda aff, cat, dim, ech, p: run_sqf(
             MARKER_TYPE_KERNEL,
             [aff, cat, dim, ech, p],
-            {"aee_optics_symbologyTables": SYM_TABLES},
+            {"aee_symbology_symbologyTables": SYM_TABLES},
         ),
         "__FUNC__symbologyMarkerColor": lambda aff, p: run_sqf(
             MARKER_COLOR_KERNEL, [aff, p], {}
@@ -197,7 +200,7 @@ def resolve(side, category, affiliation, echelon, pal):
 def category(value, kind="marker"):
     """Run the real category kernel against the real generated table."""
     return run_sqf(
-        CATEGORY_KERNEL, [value, kind], {"aee_optics_symbologyTables": SYM_TABLES}
+        CATEGORY_KERNEL, [value, kind], {"aee_symbology_symbologyTables": SYM_TABLES}
     )
 
 
@@ -205,7 +208,9 @@ def marker_category(marker_type_name):
     """Run the real marker adapter with the real category kernel injected."""
     globals_ = {
         "__FUNC__symbolCategory": lambda value, kind: run_sqf(
-            CATEGORY_KERNEL, [value, kind], {"aee_optics_symbologyTables": SYM_TABLES}
+            CATEGORY_KERNEL,
+            [value, kind],
+            {"aee_symbology_symbologyTables": SYM_TABLES},
         ),
     }
     return run_sqf(MARKER_CAT_KERNEL, ["", marker_type_name], globals_)
@@ -562,7 +567,7 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
         # alias inherits a visible parent.  Pin the count the engine lists in
         # the marker picker, so a change that floods or empties it is caught.
         explicit = sum(
-            (OPTICS / name).read_text(encoding="utf-8").count("scope = 2;")
+            (SYMBOLOGY / name).read_text(encoding="utf-8").count("scope = 2;")
             for name in (
                 "config_markers.hpp",
                 "config_crossproduct.hpp",
@@ -588,7 +593,7 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
                     continue
                 with self.subTest(family=family, glyph=glyph):
                     self.assertIn(
-                        f'icon = "\\z\\aee\\addons\\optics\\data\\markers\\'
+                        f'icon = "\\z\\aee\\addons\\symbology\\data\\markers\\'
                         f'AEE_{family}_{glyph}.paa";',
                         FAMILY_SRC,
                     )
@@ -599,7 +604,7 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
             for source in (MARKERS_SRC, FAMILY_SRC)
             for line in source.splitlines()
             if line.strip().startswith("icon = ")
-            and "\\z\\aee\\addons\\optics\\data\\markers\\" in line
+            and "\\z\\aee\\addons\\symbology\\data\\markers\\" in line
         ]
         self.assertTrue(produced)
         for line in produced:
@@ -726,7 +731,7 @@ class TestHudMarkersFrameContract(unittest.TestCase):
     """fnc_hudMarkers draws the real marker texture in front of its label."""
 
     def test_the_texture_is_read_from_the_marker_type(self):
-        self.assertIn("FUNC(symbolResolve)", HUD_MARKERS_SRC)
+        self.assertIn("EFUNC(symbology,symbolResolve)", HUD_MARKERS_SRC)
         self.assertIn('configFile >> "CfgMarkers"', HUD_MARKERS_SRC)
         self.assertIn("drawIcon3D", HUD_MARKERS_SRC)
 
@@ -740,9 +745,10 @@ class TestHudMarkersFrameContract(unittest.TestCase):
     def test_the_affiliation_is_computed_against_the_palette_side(self):
         # Without the friendly side the third argument defaults to WEST, so
         # an EAST player read every marker against WEST.
-        self.assertIn("call FUNC(symbologyPaletteFriendly)", HUD_MARKERS_SRC)
+        self.assertIn("call EFUNC(symbology,symbologyPaletteFriendly)", HUD_MARKERS_SRC)
         self.assertIn(
-            '[_name, "", _friendly] call FUNC(symbologyAffiliation)', HUD_MARKERS_SRC
+            '[_name, "", _friendly] call EFUNC(symbology,symbologyAffiliation)',
+            HUD_MARKERS_SRC,
         )
         self.assertIn("_resolvedPalette", HUD_MARKERS_SRC)
 
@@ -761,7 +767,7 @@ class TestSymbologyIndicatorTeardown(unittest.TestCase):
     """The optics Ended teardown reverses the indicator suppression too."""
 
     def test_the_ended_handler_calls_the_restore(self):
-        preinit = (OPTICS / "XEH_preInit.sqf").read_text(encoding="utf-8")
+        preinit = (SYMBOLOGY / "XEH_preInit.sqf").read_text(encoding="utf-8")
         self.assertIn('addMissionEventHandler ["Ended"', preinit)
         self.assertIn("[] call FUNC(symbologyMarkersRestore)", preinit)
         self.assertIn("hasInterface", preinit)
@@ -816,29 +822,31 @@ class TestSymbologyFontWiring(unittest.TestCase):
     """The AEE font is wired into the config and the draw layer."""
 
     def test_the_font_families_are_declared(self):
-        self.assertIn("class CfgFontFamilies {", CONFIG_SRC)
-        self.assertIn("class AEEFont {", CONFIG_SRC)
-        self.assertIn("class AEEFontMono {", CONFIG_SRC)
+        self.assertIn("class CfgFontFamilies {", CART_CONFIG_SRC)
+        self.assertIn("class AEEFont {", CART_CONFIG_SRC)
+        self.assertIn("class AEEFontMono {", CART_CONFIG_SRC)
 
     def test_the_families_carry_a_fonts_list_and_a_space_width(self):
-        self.assertIn("fonts[] = {", CONFIG_SRC)
-        self.assertIn("spaceWidth = 0.9;", CONFIG_SRC)
-        self.assertIn("spaceWidth = 0.5;", CONFIG_SRC)
+        self.assertIn("fonts[] = {", CART_CONFIG_SRC)
+        self.assertIn("spaceWidth = 0.9;", CART_CONFIG_SRC)
+        self.assertIn("spaceWidth = 0.5;", CART_CONFIG_SRC)
 
     def test_the_map_grid_font_is_left_to_the_engine_until_the_glyphs_ship(self):
         # The AEE fonts need the FontToTGA operator step.  Until the glyph
         # files exist the engine draws no text, so the config must not point
         # an engine surface at them.
-        self.assertIn("class RscMapControl {", CONFIG_SRC)
-        self.assertNotIn('fontGrid = "AEEFont";', CONFIG_SRC)
-        self.assertNotIn('fontNames = "AEEFont";', CONFIG_SRC)
+        self.assertIn("class RscMapControl {", CART_CONFIG_SRC)
+        self.assertNotIn('fontGrid = "AEEFont";', CART_CONFIG_SRC)
+        self.assertNotIn('fontNames = "AEEFont";', CART_CONFIG_SRC)
 
     def test_the_referenced_paths_carry_no_extension(self):
         self.assertIn(
-            "z\\aee\\addons\\optics\\data\\fonts\\rajdhani\\AEEFont9", CONFIG_SRC
+            "z\\aee\\addons\\cartography\\data\\fonts\\rajdhani\\AEEFont9",
+            CART_CONFIG_SRC,
         )
         self.assertIn(
-            "z\\aee\\addons\\optics\\data\\fonts\\b612mono\\AEEFontMono9", CONFIG_SRC
+            "z\\aee\\addons\\cartography\\data\\fonts\\b612mono\\AEEFontMono9",
+            CART_CONFIG_SRC,
         )
         for line in CONFIG_SRC.splitlines():
             stripped = line.strip()
@@ -851,7 +859,7 @@ class TestSymbologyFontWiring(unittest.TestCase):
 
     def test_the_mgrs_readout_uses_the_monospaced_family(self):
         self.assertIn("FUNC(mgrsFontFamily)", MGRS_MAP_SRC)
-        self.assertIn("QGVAR(symbologyFont)", MGRS_MAP_SRC)
+        self.assertIn("QEGVAR(symbology,symbologyFont)", MGRS_MAP_SRC)
         self.assertIn("AEEFontMono", MGRS_FONT_SRC)
 
     def test_the_hud_controls_use_the_engine_families_until_the_glyphs_ship(self):
@@ -904,10 +912,10 @@ class TestSymbologySettingsContract(unittest.TestCase):
         for name, _category, _subcategory, _default in SYMBOLOGY_SETTINGS:
             for suffix in ("_Name", "_Description"):
                 with self.subTest(setting=name, suffix=suffix):
-                    self.assertIn(f"STR_AEE_Optics_{name}{suffix}", STRINGTABLE_SRC)
+                    self.assertIn(f"STR_AEE_Symbology_{name}{suffix}", STRINGTABLE_SRC)
 
     def test_the_stringtable_keys_are_sorted(self):
-        keys = re.findall(r'<Key ID="(STR_AEE_Optics_\w+)"', STRINGTABLE_SRC)
+        keys = re.findall(r'<Key ID="(STR_AEE_Symbology_\w+)"', STRINGTABLE_SRC)
         self.assertEqual(keys, sorted(keys), "stringtable keys are not sorted")
         symbology_keys = [key for key in keys if "symbology" in key.lower()]
         self.assertTrue(symbology_keys, "no symbology stringtable keys")
@@ -990,7 +998,9 @@ class TestMarkerTexturesCarryColour(unittest.TestCase):
         if hemtt is None:
             self.skipTest("hemtt not on PATH")
 
-        catalogue_config = (OPTICS / "config_markers.hpp").read_text(encoding="utf-8")
+        catalogue_config = (SYMBOLOGY / "config_markers.hpp").read_text(
+            encoding="utf-8"
+        )
         names = re.findall(
             r"^\s*class (AEE_\w+): AEE_MarkerBase", catalogue_config, re.M
         )

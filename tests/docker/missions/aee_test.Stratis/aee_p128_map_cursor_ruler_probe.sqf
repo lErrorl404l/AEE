@@ -52,14 +52,14 @@ if (((count _grid) >= 4) && {(_grid select 3) == 0} && {(count _gridMap) >= 4} &
     } else {
         _pass = _pass + 1;
     };
-} forEach ["aee_optics_fnc_mgrsMapDraw", "aee_optics_fnc_mgrsGridLines"];
+} forEach ["aee_cartography_fnc_mgrsMapDraw", "aee_cartography_fnc_mgrsGridLines"];
 
 // ── The ruler is complete: every line is labelled at both ends. ──────────────
-private _anchor = call aee_core_fnc_getGeoAnchor;
+private _anchor = call aee_lib_fnc_getGeoAnchor;
 if ((count _anchor) >= 9) then {
     private _c = (_anchor select 3) / 2;
     private _rect = [_c - 1000, _c - 1000, _c + 1000, _c + 1000];
-    private _plan = [_anchor, _rect, 100] call aee_optics_fnc_mgrsGridLines;
+    private _plan = [_anchor, _rect, 100] call aee_cartography_fnc_mgrsGridLines;
     _plan params ["_segments", "_labels", "_interval"];
     private _segCount = count _segments;
     private _labCount = count _labels;

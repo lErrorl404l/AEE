@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Lighting">
+        <Key ID="STR_AEE_Lighting_dynamicAurora_Description">
+            <Original>Draw the physics-driven aurora as a client-side particle curtain (Kp index, observer latitude, night and cloud gate it; forceable)</Original>
+            <English>Draw the physics-driven aurora as a client-side particle curtain (Kp index, observer latitude, night and cloud gate it; forceable)</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_dynamicAurora_Name">
+            <Original>Dynamic Aurora</Original>
+            <English>Dynamic Aurora</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_dynamicMeteors_Description">
+            <Original>Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate)</Original>
+            <English>Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate)</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_dynamicMeteors_Name">
+            <Original>Dynamic Meteors</Original>
+            <English>Dynamic Meteors</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_dynamicMilkyWay_Description">
+            <Original>Draw the Milky Way as a faint client-side band along the galactic plane (night, cloud and limiting magnitude gate it; forceable)</Original>
+            <English>Draw the Milky Way as a faint client-side band along the galactic plane (night, cloud and limiting magnitude gate it; forceable)</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_dynamicMilkyWay_Name">
+            <Original>Dynamic Milky Way</Original>
+            <English>Dynamic Milky Way</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_dynamicStars_Description">
+            <Original>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</Original>
+            <English>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_dynamicStars_Name">
+            <Original>Dynamic Starfield</Original>
+            <English>Dynamic Starfield</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_logDebug_Description">
+            <Original>Log the consolidated lighting state line every environment tick after the one startup line (AEE Debug &gt; Lighting)</Original>
+            <English>Log the consolidated lighting state line every environment tick after the one startup line (AEE Debug &gt; Lighting)</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_logDebug_Name">
+            <Original>Lighting State Trace</Original>
+            <English>Lighting State Trace</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_starBrightnessScale_Description">
+            <Original>Multiplies the resolved star render scale (0..2), clamped to 0..1</Original>
+            <English>Multiplies the resolved star render scale (0..2), clamped to 0..1</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_starBrightnessScale_Name">
+            <Original>Star Brightness Scale</Original>
+            <English>Star Brightness Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_starLightPollutionEnabled_Description">
+            <Original>Dim stars by nearby settlement skyglow; the house scan runs every 5 s</Original>
+            <English>Dim stars by nearby settlement skyglow; the house scan runs every 5 s</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_starLightPollutionEnabled_Name">
+            <Original>Star Light Pollution</Original>
+            <English>Star Light Pollution</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_weatherOwnership_Description">
+            <Original>Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather.</Original>
+            <English>Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather.</English>
+        </Key>
+        <Key ID="STR_AEE_Lighting_weatherOwnership_Name">
+            <Original>Weather Ownership</Original>
+            <English>Weather Ownership</English>
+        </Key>
+    </Package>
+</Project>

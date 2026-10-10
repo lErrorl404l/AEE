@@ -189,10 +189,7 @@ class TestCloudletOverrideShape(unittest.TestCase):
     forward-declared once and the children restate it, so the engine merges.
     """
 
-    CONFIGS = (
-        REPO / "addons" / "core" / "config.cpp",
-        REPO / "addons" / "fx" / "config.cpp",
-    )
+    CONFIGS = (REPO / "addons" / "particles" / "config.cpp",)
 
     @staticmethod
     def _cloudlets_block(text):

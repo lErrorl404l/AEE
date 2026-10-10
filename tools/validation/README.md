@@ -128,7 +128,7 @@ outputs. The measured error is at most 0.35 C.
 
 ### 4. Solar position
 
-Source: `addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf`.
+Source: `addons/lighting/functions/astronomy/fnc_calculateSolarRadiation.sqf`.
 
 The mod computes the radiation factor:
 
@@ -266,7 +266,7 @@ error 0.13 km⁻¹.
 
 ### 10. Evaporation (Penman-Monteith)
 
-Source: `addons/environmental/functions/terrain/fnc_updateSoilMoisture.sqf`.
+Source: `addons/persistence/functions/terrain/fnc_updateSoilMoisture.sqf`.
 
 The mod uses the FAO-56 Penman-Monteith reference evapotranspiration form.
 The mod scales solar radiation to 0..1, so absolute FAO-56 mm/h values do

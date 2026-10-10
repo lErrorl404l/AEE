@@ -9,7 +9,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "aee_core",
-            "aee_main",
+            "aee_lib",
             "A3_Armor_F",
             "A3_Soft_F",
             "cba_main",

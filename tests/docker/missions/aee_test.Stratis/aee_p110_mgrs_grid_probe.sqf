@@ -7,11 +7,11 @@
 //
 // Emits [P110] PASS/FAIL lines.
 
-private _fnAnchor = missionNamespace getVariable ["aee_core_fnc_getGeoAnchor", nil];
-private _fnW2M = missionNamespace getVariable ["aee_core_fnc_worldToMgrs", nil];
-private _fnU2W = missionNamespace getVariable ["aee_core_fnc_utmToWorld", nil];
-private _fnGrid = missionNamespace getVariable ["aee_optics_fnc_mgrsGridLines", nil];
-private _fnCursor = missionNamespace getVariable ["aee_optics_fnc_mgrsCursorText", nil];
+private _fnAnchor = missionNamespace getVariable ["aee_lib_fnc_getGeoAnchor", nil];
+private _fnW2M = missionNamespace getVariable ["aee_lib_fnc_worldToMgrs", nil];
+private _fnU2W = missionNamespace getVariable ["aee_lib_fnc_utmToWorld", nil];
+private _fnGrid = missionNamespace getVariable ["aee_cartography_fnc_mgrsGridLines", nil];
+private _fnCursor = missionNamespace getVariable ["aee_cartography_fnc_mgrsCursorText", nil];
 if (isNil "_fnAnchor" || {isNil "_fnW2M"} || {isNil "_fnU2W"} || {isNil "_fnGrid"} || {isNil "_fnCursor"}) exitWith {
     diag_log text "[P110] [FAIL] MGRS grid kernels not compiled (getGeoAnchor/worldToMgrs/utmToWorld/mgrsGridLines/mgrsCursorText)";
 };

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Dynamic starfield renderer kernels (issue #122).
 
-The renderer converts the star catalog (aee_environmental_visibleStars: [name,
+The renderer converts the star catalog (aee_lighting_visibleStars: [name,
 altDeg, azDeg, vmag]) to per-frame sky positions and brightness.  Two
 pure kernels carry the physics and are executed here from their real SQF:
 
@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-SENSOR = ROOT / "addons" / "environmental" / "functions" / "astronomy"
+SENSOR = ROOT / "addons" / "lighting" / "functions" / "astronomy"
 
 DIRECTION = SENSOR / "fnc_starDirection.sqf"
 MAGNITUDE = SENSOR / "fnc_starMagnitude.sqf"

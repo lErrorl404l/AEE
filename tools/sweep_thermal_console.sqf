@@ -24,7 +24,7 @@ diag_log text "[AEE_SWEEP] starting in 5 s - exit the menu first";
     };
     private _hour = _idx;
     skipTime ((_hour - dayTime + 24) % 24);
-    private _rad = [overcast] call aee_environmental_fnc_calculateSolarRadiation;
+    private _rad = [overcast] call aee_lighting_fnc_calculateSolarRadiation;
     private _sunElev = missionNamespace getVariable ["aee_core_currentSunElevation", -90];
     private _biome = missionNamespace getVariable ["aee_core_biome", "Cfa"];
     if !(_biome isEqualType "") then { _biome = "Cfa"; };

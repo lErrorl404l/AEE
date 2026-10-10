@@ -21,17 +21,17 @@ if (is3DEN) exitWith {};
     if (!(_unit isKindOf "LandVehicle") && {!(_unit isKindOf "Air")}) exitWith { _damage };
     [_unit, _selection, _damage, _source, _projectile, _hitIndex,
      _instigator, _hitPoint] call FUNC(handleCollisionDamage);
-}, QGVAR(collisionDamage)] call EFUNC(core,installObjectEngineHandler);
+}, QGVAR(collisionDamage)] call EFUNC(lib,installObjectEngineHandler);
 
 // Emit the core state line once at INFO, then per second at DEBUG (see
 // fnc_dumpState).  A new registration keeps the dump out of the environment
 // tick.
-[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
+[EFUNC(diagnostics,dumpState), 1] call CBA_fnc_addPerFrameHandler;
 
 // The runtime module-health report reads every module's init flags once the
 // mission has had 10 s to bring the modules up.  It runs once, never per tick.
 [{
-    [] call FUNC(reportModuleHealth);
+    [] call EFUNC(diagnostics,reportModuleHealth);
 }, [], 10] call CBA_fnc_waitAndExecute;
 
 // The throttled cross-module consistency monitor.  A separate per-frame
@@ -39,14 +39,14 @@ if (is3DEN) exitWith {};
 // report.  It gates on the setting and on the interval, so the check itself
 // runs at the configured cadence, never per frame.
 [{
-    if !(missionNamespace getVariable [QGVAR(consistencyCheck), true]) exitWith {};
-    private _interval = missionNamespace getVariable [QGVAR(consistencyInterval), 10];
+    if !(missionNamespace getVariable [QEGVAR(diagnostics,consistencyCheck), true]) exitWith {};
+    private _interval = missionNamespace getVariable [QEGVAR(diagnostics,consistencyInterval), 10];
     if !(_interval isEqualType 0) then { _interval = 10; };
     private _last = missionNamespace getVariable [QGVAR(consistencyLast), -1];
     if !(_last isEqualType 0) then { _last = -1; };
     if ((_last < 0) || {CBA_missionTime - _last >= _interval}) then {
         missionNamespace setVariable [QGVAR(consistencyLast), CBA_missionTime];
-        [] call FUNC(runConsistencyCheck);
+        [] call EFUNC(diagnostics,runConsistencyCheck);
     };
 }, 1] call CBA_fnc_addPerFrameHandler;
 
@@ -62,5 +62,5 @@ GVAR(consistencyPFH) = [{
     // typed params would read an array for _force and error every tick.  Pass
     // the argument explicitly (the P82 lesson: a registered entry must accept
     // the handler array).
-    [false] call FUNC(runGeoConsistency);
+    [false] call EFUNC(lib,runGeoConsistency);
 }, GVAR(updateInterval)] call CBA_fnc_addPerFrameHandler;

@@ -22,7 +22,7 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-PARTICLE = REPO / "addons" / "fx" / "functions" / "particle"
+PARTICLE = REPO / "addons" / "particles" / "functions" / "particle"
 PHASE_SQF = (
     REPO
     / "addons"

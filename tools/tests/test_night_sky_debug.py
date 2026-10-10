@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-SENSOR = ROOT / "addons" / "environmental" / "functions" / "astronomy"
+SENSOR = ROOT / "addons" / "lighting" / "functions" / "astronomy"
 
 GALACTIC_EQUATORIAL = SENSOR / "fnc_galacticToEquatorial.sqf"
 GALACTIC_HORIZONTAL = SENSOR / "fnc_galacticToHorizontal.sqf"
@@ -322,10 +322,10 @@ class TestSkyStateLogContract(unittest.TestCase):
         self.assertEqual(self._top_level_commas(block), len(specifiers))
 
     def test_core_wires_logger_after_catalog(self):
-        self.assertIn("EFUNC(environmental,logSkyState)", self.core)
+        self.assertIn("EFUNC(lighting,logSkyState)", self.core)
         self.assertLess(
-            self.core.index("EFUNC(environmental,getStarCatalog)"),
-            self.core.index("EFUNC(environmental,logSkyState)"),
+            self.core.index("EFUNC(lighting,getStarCatalog)"),
+            self.core.index("EFUNC(lighting,logSkyState)"),
         )
 
     def test_old_windowed_logs_removed(self):
@@ -340,22 +340,22 @@ class TestForceHooks(unittest.TestCase):
 
     def test_stars_force_owned_by_star_sync(self):
         text = (SENSOR / "fnc_starLightsSync.sqf").read_text(encoding="utf-8")
-        self.assertIn("aee_environmental_starsForce", text)
+        self.assertIn("aee_lighting_starsForce", text)
         self.assertIn("effectiveNelm", text)
         self.assertIn("starEmitterCount", text)
 
     def test_sky_and_meteor_force_owned_by_meteor_worker(self):
         text = (SENSOR / "fnc_updateMeteors.sqf").read_text(encoding="utf-8")
-        self.assertIn("aee_environmental_skyForce", text)
-        self.assertIn("aee_environmental_meteorForce", text)
+        self.assertIn("aee_lighting_skyForce", text)
+        self.assertIn("aee_lighting_meteorForce", text)
 
     def test_aurora_force_owned_by_aurora_worker(self):
         text = (SENSOR / "fnc_updateAurora.sqf").read_text(encoding="utf-8")
-        self.assertIn("aee_environmental_auroraForce", text)
+        self.assertIn("aee_lighting_auroraForce", text)
 
     def test_milkyway_force_owned_by_milkyway_worker(self):
         text = (SENSOR / "fnc_updateMilkyWay.sqf").read_text(encoding="utf-8")
-        self.assertIn("aee_environmental_milkyWayForce", text)
+        self.assertIn("aee_lighting_milkyWayForce", text)
 
     def test_dead_hook_name_absent(self):
         # Build the banned name from parts: the literal must not appear here, or
@@ -371,9 +371,9 @@ class TestForceHooks(unittest.TestCase):
         self.assertEqual(hits, [])
 
     def test_hooks_are_not_cba_settings(self):
-        settings = (
-            ROOT / "addons" / "environmental" / "initSettings.inc.sqf"
-        ).read_text(encoding="utf-8")
+        settings = (ROOT / "addons" / "lighting" / "initSettings.inc.sqf").read_text(
+            encoding="utf-8"
+        )
         self.assertNotRegex(
             settings,
             r"AEE_SETTING_\w+\(\s*"
@@ -397,7 +397,7 @@ class TestAuroraRenderer(unittest.TestCase):
             "setParticleRandom",
             "setDropInterval",
             "cl_basic",
-            "QGVAR(auroraIntensity)",
+            "QEGVAR(weather,auroraIntensity)",
             "currentSunElevation",
         ):
             self.assertIn(token, self.code)
@@ -413,12 +413,12 @@ class TestAuroraRenderer(unittest.TestCase):
         self.assertIn("CBA_fnc_addPerFrameHandler", self.registrar)
 
     def test_wired(self):
-        prep = (ROOT / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+        prep = (ROOT / "addons" / "lighting" / "XEH_PREP.hpp").read_text(
             encoding="utf-8"
         )
         self.assertIn("PREPS(astronomy,renderAurora)", prep)
         self.assertIn("PREPS(astronomy,updateAurora)", prep)
-        post = (ROOT / "addons" / "environmental" / "XEH_postInit.sqf").read_text(
+        post = (ROOT / "addons" / "lighting" / "XEH_postInit.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("[] call FUNC(renderAurora);", post)
@@ -428,18 +428,18 @@ class TestAuroraWiring(unittest.TestCase):
     """The aurora display setting and its stringtable keys."""
 
     def test_setting_and_strings(self):
-        settings = (
-            ROOT / "addons" / "environmental" / "initSettings.inc.sqf"
-        ).read_text(encoding="utf-8")
+        settings = (ROOT / "addons" / "lighting" / "initSettings.inc.sqf").read_text(
+            encoding="utf-8"
+        )
         self.assertIn(
             'AEE_SETTING_CHECKBOX(dynamicAurora,"AEE Environmental","Display",true)',
             settings,
         )
-        st = (ROOT / "addons" / "environmental" / "stringtable.xml").read_text(
+        st = (ROOT / "addons" / "lighting" / "stringtable.xml").read_text(
             encoding="utf-8"
         )
-        self.assertIn("STR_AEE_Environmental_dynamicAurora_Name", st)
-        self.assertIn("STR_AEE_Environmental_dynamicAurora_Description", st)
+        self.assertIn("STR_AEE_Lighting_dynamicAurora_Name", st)
+        self.assertIn("STR_AEE_Lighting_dynamicAurora_Description", st)
 
 
 class TestMilkyWayRenderer(unittest.TestCase):
@@ -467,12 +467,12 @@ class TestMilkyWayRenderer(unittest.TestCase):
         self.assertIn("Draw3D", self.registrar)
 
     def test_wired(self):
-        prep = (ROOT / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+        prep = (ROOT / "addons" / "lighting" / "XEH_PREP.hpp").read_text(
             encoding="utf-8"
         )
         for entry in ("renderMilkyWay", "updateMilkyWay", "drawMilkyWay"):
             self.assertIn(f"PREPS(astronomy,{entry})", prep)
-        post = (ROOT / "addons" / "environmental" / "XEH_postInit.sqf").read_text(
+        post = (ROOT / "addons" / "lighting" / "XEH_postInit.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("[] call FUNC(renderMilkyWay);", post)
@@ -502,7 +502,7 @@ class TestFaintStarBulk(unittest.TestCase):
         self.assertIn("drawFaintStars", self.reg)
 
     def test_wired(self):
-        prep = (ROOT / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+        prep = (ROOT / "addons" / "lighting" / "XEH_PREP.hpp").read_text(
             encoding="utf-8"
         )
         self.assertIn("PREPS(astronomy,drawFaintStars)", prep)
@@ -512,18 +512,18 @@ class TestMilkyWayWiring(unittest.TestCase):
     """The Milky Way display setting and its stringtable keys."""
 
     def test_setting_strings_and_hook(self):
-        settings = (
-            ROOT / "addons" / "environmental" / "initSettings.inc.sqf"
-        ).read_text(encoding="utf-8")
+        settings = (ROOT / "addons" / "lighting" / "initSettings.inc.sqf").read_text(
+            encoding="utf-8"
+        )
         self.assertIn(
             'AEE_SETTING_CHECKBOX(dynamicMilkyWay,"AEE Environmental","Display",true)',
             settings,
         )
-        st = (ROOT / "addons" / "environmental" / "stringtable.xml").read_text(
+        st = (ROOT / "addons" / "lighting" / "stringtable.xml").read_text(
             encoding="utf-8"
         )
-        self.assertIn("STR_AEE_Environmental_dynamicMilkyWay_Name", st)
-        self.assertIn("STR_AEE_Environmental_dynamicMilkyWay_Description", st)
+        self.assertIn("STR_AEE_Lighting_dynamicMilkyWay_Name", st)
+        self.assertIn("STR_AEE_Lighting_dynamicMilkyWay_Description", st)
         sampler = (SENSOR / "fnc_updateMilkyWay.sqf").read_text(encoding="utf-8")
         self.assertIn("milkyWayForce", sampler)
 
@@ -548,7 +548,7 @@ class TestCelestialRegistration(unittest.TestCase):
         self.assertIn("GVAR(milkyWayEH)", code)
 
     def test_postinit_registers_all_four_renderers(self):
-        post = (ROOT / "addons" / "environmental" / "XEH_postInit.sqf").read_text(
+        post = (ROOT / "addons" / "lighting" / "XEH_postInit.sqf").read_text(
             encoding="utf-8"
         )
         start = post.index("if (hasInterface)")
@@ -572,7 +572,7 @@ class TestSkyGateConsistency(unittest.TestCase):
             "QGVAR(visibleStars)",
             "QGVAR(faintStarCount)",
             "QGVAR(meteors)",
-            "QGVAR(auroraIntensity)",
+            "QEGVAR(weather,auroraIntensity)",
         ):
             self.assertIn(token, code)
 
@@ -598,9 +598,9 @@ class TestSkyGateConsistency(unittest.TestCase):
             for name in names:
                 with self.subTest(needle=needle, file=name):
                     self.assertIn(needle, text[name])
-        component = (
-            ROOT / "addons" / "environmental" / "script_component.hpp"
-        ).read_text(encoding="utf-8")
+        component = (ROOT / "addons" / "lighting" / "script_component.hpp").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("#define MILKY_WAY_NELM_MIN 5.0", component)
 
     def test_each_worker_reads_its_force_and_the_sky_force(self):
@@ -613,7 +613,7 @@ class TestSkyGateConsistency(unittest.TestCase):
         for name, (path, hook) in workers.items():
             text = path.read_text(encoding="utf-8")
             with self.subTest(worker=name):
-                self.assertIn("aee_environmental_skyForce", text)
+                self.assertIn("aee_lighting_skyForce", text)
                 self.assertIn(hook, text)
 
     def test_kernel_calls_only_from_the_logger(self):

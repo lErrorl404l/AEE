@@ -22,12 +22,12 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 _THERMAL = REPO / "addons" / "thermal"
-_DISPLAY = _THERMAL / "functions" / "display"
+_DISPLAY = REPO / "addons" / "thermal_display" / "functions" / "display"
 _DRIVER = _DISPLAY / "fnc_applyThermalVision.sqf"
 _CREATE = _DISPLAY / "fnc_createThermalPPEffects.sqf"
 _WARM = _DISPLAY / "fnc_warmThermalPPEffects.sqf"
-_POSTINIT = _THERMAL / "XEH_postInit.sqf"
-_PREP = _THERMAL / "XEH_PREP.hpp"
+_POSTINIT = REPO / "addons" / "thermal_display" / "XEH_postInit.sqf"
+_PREP = REPO / "addons" / "thermal_display" / "XEH_PREP.hpp"
 
 _EFFECTS = (
     "ChromAberration",

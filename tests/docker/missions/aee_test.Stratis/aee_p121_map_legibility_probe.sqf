@@ -82,7 +82,7 @@ private _objects = [
 ];
 {
     private _icon = getText (configFile >> "RscMapControl" >> _x >> "icon");
-    if ((_icon find "z\aee\addons\optics\data\terrain") >= 0) then {
+    if ((_icon find "z\aee\addons\cartography\data\terrain") >= 0) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
@@ -183,11 +183,11 @@ if ((getText (configFile >> "RscMapControl" >> "fontLevel")) isNotEqualTo "") th
 } forEach ["watertower", "transmitter", "church", "lighthouse", "hospital"];
 
 // The AEE MGRS overlay is compiled, so the single line grid is present.
-if (!isNil "aee_optics_fnc_mgrsMapDraw") then {
+if (!isNil "aee_cartography_fnc_mgrsMapDraw") then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
-    _notes pushBack "aee_optics_fnc_mgrsMapDraw not compiled";
+    _notes pushBack "aee_cartography_fnc_mgrsMapDraw not compiled";
 };
 
 if (_fail == 0) then {

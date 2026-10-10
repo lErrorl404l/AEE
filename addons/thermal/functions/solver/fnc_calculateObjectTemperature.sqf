@@ -80,7 +80,7 @@ _maxObjects = _maxObjects max 1 min 100;
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if (isNil "_airTemp") then { _airTemp = 15; };
 private _windSpeed = vectorMagnitude wind;
-private _solar = [overcast] call EFUNC(environmental,calculateSolarRadiation);
+private _solar = [overcast] call EFUNC(lighting,calculateSolarRadiation);
 // Real solar FLUX in W/m2 (issue #124 audit): the factor is
 // sin(elevation) x cloud; the flux is that x 1000 W/m2 (ASTM G173).
 private _solarFlux = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), _solar * 1000];
@@ -256,7 +256,7 @@ private _infantryCount = 0;
             // fnc_applySelectionThermal.  The metabolic fraction is
             // delivery-limited; the perfusion index is the volume axis.
             private _basalHeat = 58.2 * 1.8258;
-            private _ox = [_obj, _basalHeat + _metabolicHeat, 1.8258] call EFUNC(physiology,calculateOxygenDelivery);
+            private _ox = [_obj, _basalHeat + _metabolicHeat, 1.8258] call EFUNC(altitude,calculateOxygenDelivery);
             _metabolicHeat = _metabolicHeat * (_ox select 6);
             private _shock = 1 - (_ox select 10);
             _target = _target + _metabolicHeat * 0.05;

@@ -105,7 +105,7 @@ class TestPPHandleUnique(unittest.TestCase):
         # candidate handle against the handles it owns and bumps.  If this
         # guard is removed, registry callers can share a handle again even with
         # disjoint priorities.
-        registry = (ADDONS / "core" / "functions" / "fnc_createPPEffect.sqf").read_text(
+        registry = (ADDONS / "lib" / "functions" / "fnc_createPPEffect.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("ppEffectCreate", registry)

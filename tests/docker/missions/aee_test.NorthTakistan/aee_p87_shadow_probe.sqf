@@ -16,9 +16,9 @@ private _fail = 0;
 private _notes = [];
 private _objTarget = 0;
 
-private _classify = missionNamespace getVariable ["aee_optics_fnc_shadowClassifyScene", nil];
-private _sampleFn = missionNamespace getVariable ["aee_optics_fnc_shadowSamplePattern", nil];
-private _driver = missionNamespace getVariable ["aee_optics_fnc_calculateViewDistance", nil];
+private _classify = missionNamespace getVariable ["aee_vision_fnc_shadowClassifyScene", nil];
+private _sampleFn = missionNamespace getVariable ["aee_vision_fnc_shadowSamplePattern", nil];
+private _driver = missionNamespace getVariable ["aee_vision_fnc_calculateViewDistance", nil];
 
 if (isNil "_classify" || {isNil "_sampleFn"} || {isNil "_driver"}) then {
     diag_log text "[P87] [FAIL] shadow kernels or driver not compiled";
@@ -55,26 +55,26 @@ if (isNil "_classify" || {isNil "_sampleFn"} || {isNil "_driver"}) then {
     // Shrink the physics target with a heavy fog override so the object
     // target is small.  Save and restore both overrides.
     private _fogSaved = missionNamespace getVariable ["aee_core_currentFogDensity", nil];
-    private _minSaved = missionNamespace getVariable ["aee_optics_shadowMinDistance", nil];
+    private _minSaved = missionNamespace getVariable ["aee_vision_shadowMinDistance", nil];
     missionNamespace setVariable ["aee_core_currentFogDensity", 10];
 
     // First driver call publishes the terrain target; derive the object
     // target from it.  Then push the shadow minimum above the object target
     // and call again: a present clamp keeps the target at or below it.
-    missionNamespace setVariable ["aee_optics_shadowLastUpdate", -1e9];
+    missionNamespace setVariable ["aee_vision_shadowLastUpdate", -1e9];
     [] call _driver;
-    private _vd = missionNamespace getVariable ["aee_optics_viewDistanceTarget", nil];
+    private _vd = missionNamespace getVariable ["aee_vision_viewDistanceTarget", nil];
     if (!isNil "_vd") then {
         _objTarget = (_vd * 0.5) min 2000;
     };
 
-    missionNamespace setVariable ["aee_optics_shadowMinDistance", _objTarget + 500];
-    missionNamespace setVariable ["aee_optics_shadowLastUpdate", -1e9];
+    missionNamespace setVariable ["aee_vision_shadowMinDistance", _objTarget + 500];
+    missionNamespace setVariable ["aee_vision_shadowLastUpdate", -1e9];
     [] call _driver;
 
-    private _target = missionNamespace getVariable ["aee_optics_shadowTarget", nil];
-    private _scene = missionNamespace getVariable ["aee_optics_shadowScene", nil];
-    private _coverage = missionNamespace getVariable ["aee_optics_shadowCoverage", nil];
+    private _target = missionNamespace getVariable ["aee_vision_shadowTarget", nil];
+    private _scene = missionNamespace getVariable ["aee_vision_shadowScene", nil];
+    private _coverage = missionNamespace getVariable ["aee_vision_shadowCoverage", nil];
 
     if (!isNil "_target" && {!isNil "_scene"} && {!isNil "_coverage"}) then {
         _pass = _pass + 1;
@@ -84,7 +84,7 @@ if (isNil "_classify" || {isNil "_sampleFn"} || {isNil "_driver"}) then {
     };
 
     // Bounded.
-    private _max = missionNamespace getVariable ["aee_optics_shadowMaxDistance", 500];
+    private _max = missionNamespace getVariable ["aee_vision_shadowMaxDistance", 500];
     if (!isNil "_target" && {_target >= 0} && {_target <= (_max + 1)}) then {
         _pass = _pass + 1;
     } else {
@@ -112,9 +112,9 @@ if (isNil "_classify" || {isNil "_sampleFn"} || {isNil "_driver"}) then {
         missionNamespace setVariable ["aee_core_currentFogDensity", _fogSaved];
     };
     if (isNil "_minSaved") then {
-        missionNamespace setVariable ["aee_optics_shadowMinDistance", 50];
+        missionNamespace setVariable ["aee_vision_shadowMinDistance", 50];
     } else {
-        missionNamespace setVariable ["aee_optics_shadowMinDistance", _minSaved];
+        missionNamespace setVariable ["aee_vision_shadowMinDistance", _minSaved];
     };
 };
 

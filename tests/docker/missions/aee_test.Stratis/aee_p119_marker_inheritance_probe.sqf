@@ -44,7 +44,7 @@ _notes pushBack format ["scope checked=%1 bad=%2", count _scopes, _scopeBad];
 private _texBad = 0;
 {
     private _tex = getText (configFile >> "CfgMarkers" >> _x >> "texture");
-    if ((_tex find "\z\aee\addons\optics\data\markers\") < 0) then {
+    if ((_tex find "\z\aee\addons\symbology\data\markers\") < 0) then {
         _texBad = _texBad + 1;
     };
 } forEach ["b_inf", "o_armor", "n_recon", "hd_dot", "b_unknown"];

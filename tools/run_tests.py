@@ -196,6 +196,7 @@ def main():
         "tools/tests/test_symbology.py",
         "tools/tests/test_marker_derivation.py",
         "tools/tests/test_cba_settings.py",
+        "tools/tests/test_settings_migration.py",
         # Dormant suites registered by the conformance sweep (ADR-031). Each was
         # on disk but not registered, so CI never ran it. Eight more stay on the
         # test_suite_registration allowlist with a recorded reason.

@@ -40,13 +40,13 @@ from simulate_visual_pipeline import (  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
 SQF = (
-    REPO / "addons" / "thermal" / "functions" / "display" / "fnc_applyThermalVision.sqf"
+    REPO / "addons" / "thermal_display" / "functions" / "display" / "fnc_applyThermalVision.sqf"
 )
 # The effect create table moved off the per-entry path into its own function.
 SQF_CREATE = (
     REPO
     / "addons"
-    / "thermal"
+    / "thermal_display"
     / "functions"
     / "display"
     / "fnc_createThermalPPEffects.sqf"

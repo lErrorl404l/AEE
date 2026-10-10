@@ -25,7 +25,7 @@ import unittest
 from pathlib import Path
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
-_PHYSIOLOGY = _REPO_ROOT / "addons" / "physiology" / "functions"
+_ADDONS = _REPO_ROOT / "addons"
 
 def _read_recursive(base, name):
     """Read an SQF function file, resolving categorised subfolders (issue
@@ -185,7 +185,7 @@ class TestSQFSyncSleep(unittest.TestCase):
     """SQF source must contain the constants the Python mirrors rely on."""
 
     def _assert_in_sqf(self, filename, fragments, context):
-        text = _read_recursive(_PHYSIOLOGY, filename)
+        text = _read_recursive(_ADDONS, filename)
         missing = [f for f in fragments if f not in text]
         self.assertFalse(
             missing,

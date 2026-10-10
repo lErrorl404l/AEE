@@ -345,8 +345,8 @@ class SupersonicTraceWiring(unittest.TestCase):
 
 # ─── Mach cone geometry and the renderer contract (#217 follow-on) ─────────
 CONE = REPO / "addons/ballistics/functions/fnc_calculateMachCone.sqf"
-RENDERER = REPO / "addons/fx/functions/particle/fnc_renderSupersonicTrace.sqf"
-FX_POST = REPO / "addons/fx/XEH_postInit.sqf"
+RENDERER = REPO / "addons/particles/functions/particle/fnc_renderSupersonicTrace.sqf"
+FX_POST = REPO / "addons/particles/XEH_postInit.sqf"
 BALLISTICS_PREP = REPO / "addons/ballistics/XEH_PREP.hpp"
 PROBE = REPO / "tests/docker/missions/aee_test.Stratis/aee_p65_trace_probe.sqf"
 

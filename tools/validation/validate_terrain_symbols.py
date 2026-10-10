@@ -20,13 +20,13 @@ from pathlib import Path
 ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "terrain_symbols.json"
 MANIFEST_JSON = ROOT / "data" / "symbology" / "terrain_sources.json"
-TERRAIN_DIR = ROOT / "addons" / "optics" / "data" / "terrain"
+TERRAIN_DIR = ROOT / "addons" / "cartography" / "data" / "terrain"
 SRC_DIR = TERRAIN_DIR / "src"
 CONFIG_FILES = (
-    ROOT / "addons" / "optics" / "config_locationtypes.hpp",
-    ROOT / "addons" / "optics" / "config_mapicons.hpp",
+    ROOT / "addons" / "cartography" / "config_locationtypes.hpp",
+    ROOT / "addons" / "cartography" / "config_mapicons.hpp",
 )
-ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\terrain\\"
+ADDON_PREFIX = "\\z\\aee\\addons\\cartography\\data\\terrain\\"
 
 
 def referenced(doc: dict) -> list[str]:

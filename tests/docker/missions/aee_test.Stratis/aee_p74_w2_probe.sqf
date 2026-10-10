@@ -29,7 +29,7 @@ if (isNull _veh) then {
 } else {
     // ── Accretion mass: setMass changes getMass by the layer mass ─────────
     missionNamespace setVariable ["aee_core_snowDepth_m", 0.3];
-    missionNamespace setVariable ["aee_environmental_slabDensity", 300];
+    missionNamespace setVariable ["aee_persistence_slabDensity", 300];
 
     private _base = getMass _veh;
     private _box = boundingBoxReal _veh;

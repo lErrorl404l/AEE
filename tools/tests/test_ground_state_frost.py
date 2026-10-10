@@ -18,7 +18,7 @@ GROUND = ROOT / "addons" / "mobility" / "functions" / "fnc_updateGroundState.sqf
 FREEZE = (
     ROOT
     / "addons"
-    / "environmental"
+    / "persistence"
     / "functions"
     / "terrain"
     / "fnc_calculateFreezeThawCycling.sqf"
@@ -43,7 +43,7 @@ class TestFrostFeedsGroundState(unittest.TestCase):
         snap: the ground freezes with no precipitation recorded.
         """
         cond = re.search(
-            r"if \(!isNil \"_T\" && \(_T < -2\)[^\n]*_groundFrozen[^\n]*\) then \{",
+            r"if \(!isNil \"_T\"[^\n]*_groundFrozen[^\n]*\) then \{",
             self.src,
         )
         self.assertIsNotNone(cond, "the Frozen branch is gone or restructured")

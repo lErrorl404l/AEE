@@ -37,7 +37,7 @@ ECO_OUT = ROOT / "addons" / "wildlife" / "data" / "ecology_corpus.sqf"
 ASSET_OUT = ROOT / "addons" / "wildlife" / "data" / "asset_map.sqf"
 
 # The generated-file notice, copied from the shape at
-# addons/mobility/functions/fnc_getVehicleMatch.sqf:7-9.
+# addons/vehicles/functions/fnc_getVehicleMatch.sqf:7-9.
 ECO_TEMPLATE = """/*
 Wildlife ecology corpus (generated).
 
@@ -90,7 +90,7 @@ has six columns:
 
 A media string with a dot is a raw vanilla .wss file. A media string without
 a dot is a vanilla CfgSFX class. An UNKNOWN or UNCONFIRMED recording is
-never given a species. The sound map aee_wildlife_fnc_speciesSound reads
+never given a species. The sound map aee_ambience_fnc_speciesSound reads
 this table.
 */
 [

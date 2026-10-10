@@ -23,7 +23,7 @@ NRMM soil function.
 
 The estimate is off by default. Two conditions must both hold.
 
-1. The CBA setting `aee_mobility_estimateVehicleMassEnabled` must be true.
+1. The CBA setting `aee_vehicles_estimateVehicleMassEnabled` must be true.
 2. The model approval flag `calibration.approved` must be true.
 
 When either condition is false, the function returns `unavailable`. The
@@ -64,10 +64,10 @@ be evaluated. No band is written. The evidence is
 | `data/vehicle/mass_model.json` | Cited densities, calibrated fills and the approval flag. |
 | `tools/validation/validate_vehicle_mass_model.py` | Calibration and approval gate. |
 | `tools/validation/gen_vehicle_mass_model.py` | Renders the runtime table. |
-| `addons/mobility/functions/fnc_getVehicleMassModel.sqf` | Generated parameter table. |
-| `addons/mobility/functions/fnc_estimateVehicleMassCore.sqf` | Pure bounded arithmetic. |
-| `addons/mobility/functions/fnc_estimateVehicleMass.sqf` | Engine-reading wrapper. |
-| `addons/mobility/functions/fnc_getVehicleMatch.sqf` | The sourced matcher. This layer does not change it. |
+| `addons/vehicles/functions/fnc_getVehicleMassModel.sqf` | Generated parameter table. |
+| `addons/vehicles/functions/fnc_estimateVehicleMassCore.sqf` | Pure bounded arithmetic. |
+| `addons/vehicles/functions/fnc_estimateVehicleMass.sqf` | Engine-reading wrapper. |
+| `addons/vehicles/functions/fnc_getVehicleMatch.sqf` | The sourced matcher. This layer does not change it. |
 | `addons/mobility/functions/fnc_calculateSoilStrength.sqf` | The NRMM path. This layer does not change it. |
 
 The governing rules are JSP 945 for configuration management and Def Stan

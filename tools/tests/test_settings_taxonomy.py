@@ -35,31 +35,31 @@ def taxonomy_groups(prefixes):
 
 
 EXPECTED_HUD = {
-    "aee_thermal_fusionHud",
-    "aee_optics_hudEnabled",
-    "aee_optics_mgrsCursorReadout",
-    "aee_optics_mgrsEnabled",
-    "aee_optics_mgrsMapGrid",
-    "aee_optics_mgrsPrecision",
-    "aee_optics_mgrsPrecisionAuto",
+    "aee_thermal_display_fusionHud",
+    "aee_hud_hudEnabled",
+    "aee_cartography_mgrsCursorReadout",
+    "aee_cartography_mgrsEnabled",
+    "aee_cartography_mgrsMapGrid",
+    "aee_cartography_mgrsPrecision",
+    "aee_cartography_mgrsPrecisionAuto",
     "aee_physiology_HUDWarningThreshold",
-    "aee_nightvision_ltmEnabled",
-    "aee_nightvision_ltmDaylightFade",
+    "aee_ltm_ltmEnabled",
+    "aee_ltm_ltmDaylightFade",
 }
 
 EXPECTED_HUD_TRACKER = {
-    "aee_optics_trackerEnabled",
-    "aee_optics_trackerInterval",
-    "aee_optics_trackerSuppressIcons",
+    "aee_hud_trackerEnabled",
+    "aee_hud_trackerInterval",
+    "aee_hud_trackerSuppressIcons",
 }
 
 EXPECTED_HUD_SYMBOLOGY = {
-    "aee_optics_symbologyEnabled",
-    "aee_optics_symbologyFont",
-    "aee_optics_symbologyMarkers",
-    "aee_optics_symbologyPalette",
-    "aee_optics_symbologySuppress",
-    "aee_optics_symbologyUnits",
+    "aee_symbology_symbologyEnabled",
+    "aee_symbology_symbologyFont",
+    "aee_symbology_symbologyMarkers",
+    "aee_symbology_symbologyPalette",
+    "aee_symbology_symbologySuppress",
+    "aee_symbology_symbologyUnits",
 }
 
 # Every AEE HUD name, across all subcategories.  The unknown-setting guard
@@ -90,16 +90,16 @@ class TestSettingsTaxonomy(unittest.TestCase):
 
 
 EXPECTED_EXPERIMENTAL_FUSION = {
-    "aee_thermal_fusionAlwaysOn",
-    "aee_thermal_fusionFovFrame",
-    "aee_thermal_fusionOutline",
-    "aee_thermal_fusionSolidFill",
+    "aee_thermal_display_fusionAlwaysOn",
+    "aee_thermal_display_fusionFovFrame",
+    "aee_thermal_display_fusionOutline",
+    "aee_thermal_display_fusionSolidFill",
 }
 
 EXPECTED_EXPERIMENTAL_VISION = {
-    "aee_optics_visionAdaptationDegree",
-    "aee_optics_visionMesopicDesaturation",
-    "aee_optics_visionPurkinjeStrength",
+    "aee_vision_visionAdaptationDegree",
+    "aee_vision_visionMesopicDesaturation",
+    "aee_vision_visionPurkinjeStrength",
 }
 
 # Every AEE Experimental name, across all subcategories.  The unknown-setting
@@ -127,11 +127,11 @@ class TestExperimentalTaxonomy(unittest.TestCase):
 
 
 EXPECTED_OPTICS_VISION = {
-    "aee_optics_visionContrastScale",
-    "aee_optics_visionModelEnabled",
-    "aee_optics_visionToneEnabled",
-    "aee_optics_visionToneStrength",
-    "aee_optics_visionWhiteBalance",
+    "aee_vision_visionContrastScale",
+    "aee_vision_visionModelEnabled",
+    "aee_vision_visionToneEnabled",
+    "aee_vision_visionToneStrength",
+    "aee_vision_visionWhiteBalance",
 }
 
 
@@ -139,8 +139,8 @@ class TestOpticsVisionTaxonomy(unittest.TestCase):
     """AEE Optics > Vision holds exactly the five human-vision settings."""
 
     def test_optics_vision_group_is_exact(self):
-        groups = taxonomy_groups({"AEE Optics"})
-        self.assertEqual(groups.get(("AEE Optics", "Vision")), EXPECTED_OPTICS_VISION)
+        groups = taxonomy_groups({"AEE Vision"})
+        self.assertEqual(groups.get(("AEE Vision", "Vision")), EXPECTED_OPTICS_VISION)
 
 
 EXPECTED_WILDLIFE_GENERAL = {
@@ -158,11 +158,9 @@ EXPECTED_WILDLIFE_FAUNA = {
 
 EXPECTED_WILDLIFE = {
     ("AEE Wildlife", "General"): EXPECTED_WILDLIFE_GENERAL,
-    ("AEE Wildlife", "Ambient Sound"): {"aee_wildlife_ambientEnabled"},
     ("AEE Wildlife", "Fauna"): EXPECTED_WILDLIFE_FAUNA,
     ("AEE Wildlife", "Behaviour"): {
         "aee_wildlife_spookSensitivity",
-        "aee_wildlife_silenceDecay",
         "aee_wildlife_hungerRate",
         "aee_wildlife_thirstRate",
         "aee_wildlife_herdSize",
@@ -175,11 +173,6 @@ EXPECTED_WILDLIFE = {
     ("AEE Wildlife", "Cognition"): {
         "aee_wildlife_cognitionEnabled",
         "aee_wildlife_cognitionBudgetMs",
-    },
-    ("AEE Wildlife", "Communication"): {
-        "aee_wildlife_communicationEnabled",
-        "aee_wildlife_callRange",
-        "aee_wildlife_callBudget",
     },
 }
 
@@ -205,21 +198,42 @@ class TestWildlifeTaxonomy(unittest.TestCase):
 EXPECTED_DEBUG = {
     ("AEE Debug", "AI"): {"aee_ai_logDebug"},
     ("AEE Debug", "Wildlife"): {"aee_wildlife_logDebug"},
-    ("AEE Debug", "Core"): {"aee_core_diagnostic", "aee_core_logDebug"},
-    ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},
-    ("AEE Debug", "Environmental"): {"aee_environmental_logDebug"},
+    ("AEE Debug", "Core"): {"aee_core_logDebug"},
+    ("AEE Debug", "Diagnostics"): {
+        "aee_diagnostics_consistencyCheck",
+        "aee_diagnostics_consistencyInterval",
+        "aee_diagnostics_consistencyStrict",
+        "aee_diagnostics_diagnostic",
+        "aee_diagnostics_logDebug",
+    },
+    ("AEE Debug", "FX"): {"aee_core_collisionDebug"},
+    ("AEE Debug", "Environmental"): {"aee_weather_logDebug"},
+    ("AEE Debug", "Lighting"): {"aee_lighting_logDebug"},
+    ("AEE Debug", "Persistence"): {"aee_persistence_logDebug"},
     ("AEE Debug", "Thermal"): {"aee_thermal_thermalDebug", "aee_thermal_logDebug"},
+    ("AEE Debug", "Thermal Display"): {"aee_thermal_display_logDebug"},
     ("AEE Debug", "Physiology"): {"aee_physiology_logDebug"},
+    ("AEE Debug", "Strain"): {"aee_strain_logDebug"},
+    ("AEE Debug", "Altitude"): {"aee_altitude_logDebug"},
+    ("AEE Debug", "Dive"): {"aee_dive_logDebug"},
     ("AEE Debug", "Ballistics"): {"aee_ballistics_logDebug"},
     ("AEE Debug", "Armour"): {"aee_armour_penetrationDebug", "aee_armour_logDebug"},
     ("AEE Debug", "Optics"): {"aee_optics_logDebug"},
+    ("AEE Debug", "Symbology"): {"aee_symbology_logDebug"},
+    ("AEE Debug", "Cartography"): {"aee_cartography_logDebug"},
+    ("AEE Debug", "HUD"): {"aee_hud_logDebug"},
+    ("AEE Debug", "Eye"): {"aee_eye_logDebug"},
+    ("AEE Debug", "Vision"): {"aee_vision_logDebug"},
     ("AEE Debug", "Perception"): {
-        "aee_optics_perceptionHud",
-        "aee_optics_perceptionInterval",
-        "aee_optics_perceptionMonitor",
+        "aee_vision_perceptionHud",
+        "aee_vision_perceptionInterval",
+        "aee_vision_perceptionMonitor",
     },
     ("AEE Debug", "Night Vision"): {"aee_nightvision_logDebug"},
     ("AEE Debug", "Mobility"): {"aee_mobility_logDebug"},
+    ("AEE Debug", "Flight"): {"aee_flight_logDebug"},
+    ("AEE Debug", "Vehicles"): {"aee_vehicles_logDebug"},
+    ("AEE Debug", "Hydrology"): {"aee_hydrology_logDebug"},
     ("AEE Debug", "Maritime"): {"aee_maritime_logDebug"},
     ("AEE Debug", "Radio"): {"aee_radio_logDebug"},
     ("AEE Debug", "Atmos"): {"aee_atmos_logDebug"},
@@ -231,11 +245,12 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Compat - TFAR"): {"aee_compat_tfar_logDebug"},
     ("AEE Debug", "Actions"): {"aee_actions_logDebug"},
     ("AEE Debug", "Material"): {"aee_material_logDebug"},
-    ("AEE Debug", "Consistency"): {
-        "aee_core_consistencyCheck",
-        "aee_core_consistencyInterval",
-        "aee_core_consistencyStrict",
-    },
+    ("AEE Debug", "Particles"): {"aee_particles_logDebug"},
+    ("AEE Debug", "Weather FX"): {"aee_weatherfx_logDebug"},
+    ("AEE Debug", "Blast"): {"aee_blast_logDebug"},
+    ("AEE Debug", "Ambience"): {"aee_ambience_logDebug"},
+    ("AEE Debug", "LTM"): {"aee_ltm_logDebug"},
+    ("AEE Debug", "Magnetism"): {"aee_magnetism_logDebug"},
 }
 
 
@@ -259,8 +274,8 @@ class TestDebugTaxonomy(unittest.TestCase):
 # slider.  These two maps lock the corrected values so the defect cannot return.
 EXPECTED_SLIDER_DECIMALS = {
     "aee_ballistics_ammoHeatPerShotJ": 4,  # was 6
-    "aee_fx_exhaustShimmerAlpha": 2,  # was 0
-    "aee_mobility_bedSlope": 4,  # was 5
+    "aee_weatherfx_exhaustShimmerAlpha": 2,  # was 0
+    "aee_hydrology_bedSlope": 4,  # was 5
     "aee_nightvision_fogGrainMax": 2,  # was 0
     "aee_nightvision_nightGrainMax": 1,  # was 0
     "aee_nightvision_nvgAgcBreathing": 2,  # was 0.05
@@ -272,26 +287,26 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_nightvision_nvgScintillationStrength": 2,  # was 0.05
     "aee_nightvision_nvgVeilingGlare": 4,  # was 0.001
     "aee_nightvision_rainGrainMax": 1,  # was 0
-    "aee_optics_baseGradeBlackPoint": 3,  # was 0.005
-    "aee_optics_baseGradeBrightness": 2,  # was 0.05
-    "aee_optics_baseGradeContrast": 2,  # was 0.05
-    "aee_optics_baseGradeGrain": 3,  # was 0.001
-    "aee_optics_baseGradeSaturation": 2,  # was 0.05
+    "aee_vision_baseGradeBlackPoint": 3,  # was 0.005
+    "aee_vision_baseGradeBrightness": 2,  # was 0.05
+    "aee_vision_baseGradeContrast": 2,  # was 0.05
+    "aee_vision_baseGradeGrain": 3,  # was 0.001
+    "aee_vision_baseGradeSaturation": 2,  # was 0.05
     "aee_optics_chromaCap": 2,  # was 0
     "aee_optics_dewAccumRate": 2,  # was 0
     "aee_optics_dewBlurMax": 1,  # was 0
     "aee_optics_dewDecayRate": 2,  # was 0
-    "aee_optics_eyeAmbientLuxScale": 3,  # was 0
-    "aee_optics_eyeFastBlend": 2,  # was 0
-    "aee_optics_eyeLocalLuxScale": 3,  # was 0
-    "aee_optics_eyeMesopicHigh": 1,  # was 0
-    "aee_optics_eyeMesopicLow": 3,  # was 0
-    "aee_optics_eyePupilTauConstrict": 2,  # was 0
-    "aee_optics_eyePupilTauDilate": 3,  # was 0
-    "aee_optics_eyeReflectance": 2,  # was 0
-    "aee_optics_eyeTauLight": 1,  # was 0
+    "aee_eye_eyeAmbientLuxScale": 3,  # was 0
+    "aee_eye_eyeFastBlend": 2,  # was 0
+    "aee_eye_eyeLocalLuxScale": 3,  # was 0
+    "aee_eye_eyeMesopicHigh": 1,  # was 0
+    "aee_eye_eyeMesopicLow": 3,  # was 0
+    "aee_eye_eyePupilTauConstrict": 2,  # was 0
+    "aee_eye_eyePupilTauDilate": 3,  # was 0
+    "aee_eye_eyeReflectance": 2,  # was 0
+    "aee_eye_eyeTauLight": 1,  # was 0
     "aee_optics_glareBlurMax": 1,  # was 0
-    "aee_optics_perceptionInterval": 1,  # was 0.1
+    "aee_vision_perceptionInterval": 1,  # was 0.1
     "aee_optics_heatShimmerIntensity": 2,  # was 0
     "aee_optics_mirageDensity": 2,  # was 0
     "aee_optics_rainAccumRate": 2,  # was 0
@@ -302,20 +317,20 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_optics_snowBlindnessBase": 1,  # was 0
     "aee_optics_snowVisibilityPenalty": 1,  # was 0
     "aee_optics_vehicleShimmerBase": 1,  # was 0
-    "aee_optics_visionAdaptationDegree": 2,  # was 0.05
-    "aee_optics_visionContrastScale": 2,  # was 0.05
-    "aee_optics_visionMesopicDesaturation": 2,  # was 0.05
-    "aee_optics_visionPurkinjeStrength": 2,  # was 0.05
-    "aee_optics_visionToneStrength": 2,  # was 0.05
-    "aee_thermal_thermalAgcHunt": 3,  # was 0.005
-    "aee_thermal_thermalHotBloom": 2,  # was 0.01
+    "aee_vision_visionAdaptationDegree": 2,  # was 0.05
+    "aee_vision_visionContrastScale": 2,  # was 0.05
+    "aee_vision_visionMesopicDesaturation": 2,  # was 0.05
+    "aee_vision_visionPurkinjeStrength": 2,  # was 0.05
+    "aee_vision_visionToneStrength": 2,  # was 0.05
+    "aee_thermal_display_thermalAgcHunt": 3,  # was 0.005
+    "aee_thermal_display_thermalHotBloom": 2,  # was 0.01
     "aee_thermal_thermalManualMaxC": 0,  # was 5
-    "aee_thermal_thermalNucDrift": 2,  # was 0.05
+    "aee_thermal_display_thermalNucDrift": 2,  # was 0.05
     "aee_thermal_thermalTemporalNoise": 1,  # was 0.1
     "aee_wildlife_density": 2,  # was 0.05
     "aee_wildlife_despawnRadius": 0,  # was 10
     "aee_wildlife_hungerRate": 3,  # was 0.001
-    "aee_wildlife_silenceDecay": 3,  # was 0.005
+    "aee_ambience_silenceDecay": 3,  # was 0.005
     "aee_wildlife_spawnRadius": 0,  # was 10
     "aee_wildlife_spookSensitivity": 2,  # was 0.05
     "aee_wildlife_thirstRate": 3,  # was 0.001

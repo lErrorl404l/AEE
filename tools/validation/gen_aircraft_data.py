@@ -6,8 +6,8 @@ carries a value, a unit, a source, a locator, a state and a grade per field.
 This generator reads the shared catalogue loader output through the aircraft
 profile and writes two SQF files:
 
-  addons/mobility/functions/fnc_getAircraftMatch.sqf   the identity ladder
-  addons/mobility/functions/fnc_getAircraftData.sqf    the value row lookup
+  addons/flight/functions/fnc_getAircraftMatch.sqf   the identity ladder
+  addons/flight/functions/fnc_getAircraftData.sqf    the value row lookup
 
 The match file holds the table and the five-layer ladder. The data file is
 a thin consumer that returns the value row. CBA PREP compiles one function
@@ -48,8 +48,8 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 ROOT = _REPO
 DEFAULT_DATA = ROOT / "data" / "aircraft"
-MATCH_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getAircraftMatch.sqf"
-DATA_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getAircraftData.sqf"
+MATCH_OUT = ROOT / "addons" / "flight" / "functions" / "fnc_getAircraftMatch.sqf"
+DATA_OUT = ROOT / "addons" / "flight" / "functions" / "fnc_getAircraftData.sqf"
 
 # The aircraft profile selects the type enum, the runtime sets and the named
 # derivations. The type enum is fixed_wing and rotary_wing.
@@ -82,7 +82,7 @@ MATCH_TEMPLATE = """#include "..\\script_component.hpp"
 /*
 Aircraft identity matcher (issue #117).
 
-Function: aee_mobility_fnc_getAircraftMatch.
+Function: aee_flight_fnc_getAircraftMatch.
 
 This file is GENERATED. The generator tools/validation/gen_aircraft_data.py
 writes it from the validated aircraft catalogue under data/aircraft/. Do not
@@ -261,13 +261,13 @@ DATA_TEMPLATE = """#include "..\\script_component.hpp"
 /*
 Aircraft runtime lookup (issue #117).
 
-Function: aee_mobility_fnc_getAircraftData.
+Function: aee_flight_fnc_getAircraftData.
 
 This file is GENERATED. The generator tools/validation/gen_aircraft_data.py
 writes it from the validated aircraft catalogue under data/aircraft/. Do not
 edit it by hand. Edit the corpus and regenerate it.
 
-The lookup is a thin consumer of aee_mobility_fnc_getAircraftMatch. It
+The lookup is a thin consumer of aee_flight_fnc_getAircraftMatch. It
 returns the value row of a unique match, or an empty array. A variant
 selector keeps a row only when its variant id matches.
 

@@ -26,8 +26,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
-EVAL = REPO / "addons" / "core" / "functions" / "fnc_evaluateConsistency.sqf"
-SQF_TABLE = REPO / "addons" / "core" / "functions" / "fnc_consistencyLoadTable.sqf"
+EVAL = REPO / "addons" / "diagnostics" / "functions" / "fnc_evaluateConsistency.sqf"
+SQF_TABLE = (
+    REPO / "addons" / "diagnostics" / "functions" / "fnc_consistencyLoadTable.sqf"
+)
 JSON_TABLE = REPO / "data" / "consistency" / "invariants.json"
 
 ROW_ORDER = [
@@ -45,14 +47,14 @@ ROW_ORDER = [
 # night-scoped comparison runs rather than skipping out of scope.
 CLEAN = [
     ["aee_core_illuminanceLux", 100.0],
-    ["aee_optics_eyeSceneLux", 100.0],
+    ["aee_eye_eyeSceneLux", 100.0],
     ["aee_core_currentTemperature", 15.0],
     ["aee_core_groundSurfaceTemp", 14.0],
     ["aee_core_avgGroundTemp", 15.0],
     ["aee_core_currentSunElevation", -30.0],
     ["aee_thermal_skyBandTempC", -20.0],
     ["aee_core_lightIsNight", True],
-    ["aee_environmental_nightClassification", 4.0],
+    ["aee_lighting_nightClassification", 4.0],
 ]
 
 # The operator RPT (/ext/SteamLibrary/.../Arma3_x64_2026-10-07_16-56-15.rpt)
@@ -65,14 +67,14 @@ CLEAN = [
 # like-for-like physical-sky model.
 RPT_NIGHT = [
     ["aee_core_illuminanceLux", 0.5302],
-    ["aee_optics_eyeSceneLux", 0.5302],
+    ["aee_eye_eyeSceneLux", 0.5302],
     ["aee_core_currentTemperature", 17.5],
     ["aee_core_groundSurfaceTemp", 16.0],
     ["aee_core_avgGroundTemp", 15.7872],
     ["aee_core_currentSunElevation", -31.4263],
     ["aee_thermal_skyBandTempC", -0.443878],
     ["aee_core_lightIsNight", True],
-    ["aee_environmental_nightClassification", 4.0],
+    ["aee_lighting_nightClassification", 4.0],
 ]
 
 
@@ -160,7 +162,7 @@ class TestPredicates(unittest.TestCase):
         # a real divergence, so INV-1 must fire.
         values = [list(pair) for pair in CLEAN]
         for pair in values:
-            if pair[0] == "aee_optics_eyeSceneLux":
+            if pair[0] == "aee_eye_eyeSceneLux":
                 pair[1] = 0.0
         _, verdicts = evaluate(values)
         row = rows_by_id((False, verdicts))["INV-1"]
@@ -174,11 +176,11 @@ class TestPredicates(unittest.TestCase):
         for pair in values:
             if pair[0] == "aee_core_lightIsNight":
                 pair[1] = False
-            if pair[0] == "aee_optics_eyeSceneLux":
+            if pair[0] == "aee_eye_eyeSceneLux":
                 pair[1] = 80000.0
             if pair[0] == "aee_core_currentSunElevation":
                 pair[1] = 30.0
-            if pair[0] == "aee_environmental_nightClassification":
+            if pair[0] == "aee_lighting_nightClassification":
                 pair[1] = 0.0
         _, verdicts = evaluate(values)
         self.assertTrue(rows_by_id((False, verdicts))["INV-1"][1])
@@ -192,7 +194,7 @@ class TestPredicates(unittest.TestCase):
         for pair in values:
             if pair[0] == "aee_core_currentSunElevation":
                 pair[1] = 30.0
-            if pair[0] == "aee_environmental_nightClassification":
+            if pair[0] == "aee_lighting_nightClassification":
                 pair[1] = 0.0
             # lightIsNight stays True, so the night flag disagrees.
         _, verdicts = evaluate(values)
@@ -222,7 +224,7 @@ class TestRptReplay(unittest.TestCase):
         # the eye's own scene, so the historical divergence still raises INV-1.
         values = [list(pair) for pair in RPT_NIGHT]
         for pair in values:
-            if pair[0] == "aee_optics_eyeSceneLux":
+            if pair[0] == "aee_eye_eyeSceneLux":
                 pair[1] = 46.4537
         _, verdicts = evaluate(values)
         row = rows_by_id((False, verdicts))["INV-1"]

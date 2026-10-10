@@ -16,7 +16,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$ROOT"
 
-DEBUG_HPP="addons/main/script_debug.hpp"
+DEBUG_HPP="addons/lib/script_debug.hpp"
 BACKUP="$(mktemp)"
 cp "$DEBUG_HPP" "$BACKUP"
 

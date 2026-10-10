@@ -10,7 +10,7 @@
 // the two drawLine3D colours changes.  That is pinned by the Python source
 // contract in tools/tests/test_ltm.py, so this probe checks the alpha seam.
 
-private _fn = missionNamespace getVariable ["aee_nightvision_fnc_ltmDaylightAlpha", nil];
+private _fn = missionNamespace getVariable ["aee_ltm_fnc_ltmDaylightAlpha", nil];
 
 private _pass = 0;
 private _fail = 0;
@@ -37,7 +37,7 @@ if (isNil "_fn") then {
         _notes pushBack format ["clamp low=%1 high=%2", _low, _high];
     };
 
-    private _fade = missionNamespace getVariable ["aee_nightvision_ltmDaylightFade", false];
+    private _fade = missionNamespace getVariable ["aee_ltm_ltmDaylightFade", false];
     if (_fade) then { _pass = _pass + 1; } else { _fail = _fail + 1; _notes pushBack "ltmDaylightFade default off"; };
 };
 

@@ -22,7 +22,7 @@ from sqf_lite import run_sqf  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 ADDONS = ROOT / "addons"
 
-MAGNETIC = ADDONS / "maritime" / "functions" / "fnc_calculateMagneticAnomaly.sqf"
+MAGNETIC = ADDONS / "magnetism" / "functions" / "fnc_calculateMagneticAnomaly.sqf"
 ROLLOVER = ADDONS / "mobility" / "functions" / "fnc_calculateRolloverThreshold.sqf"
 
 
@@ -97,26 +97,26 @@ class TestNoRadianConversionRemains(unittest.TestCase):
     """Source-lock: the degree-based form must not regress to radians."""
 
     SITES = {
-        "addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf": [
+        "addons/lighting/functions/astronomy/fnc_calculateSolarRadiation.sqf": [
             "_haRad",
             "_latRad",
             "_declRad",
         ],
-        "addons/maritime/functions/fnc_calculateMagneticAnomaly.sqf": ["_tiltRad"],
+        "addons/magnetism/functions/fnc_calculateMagneticAnomaly.sqf": ["_tiltRad"],
         "addons/thermal/functions/surface/fnc_isPositionShadowed.sqf": ["_azR", "_elR"],
         "addons/thermal/functions/display/fnc_getSelectionSunExposure.sqf": [
             "_azRad",
             "_elevRad",
         ],
-        "addons/environmental/functions/biome/fnc_getSmoothedBiome.sqf": [
+        "addons/weather/functions/biome/fnc_getSmoothedBiome.sqf": [
             "_rad =",
             "sin _rad",
             "cos _rad",
         ],
-        "addons/environmental/functions/warnings/fnc_calculateAvalancheRisk.sqf": [
+        "addons/persistence/functions/warnings/fnc_calculateAvalancheRisk.sqf": [
             "_psi"
         ],
-        "addons/environmental/functions/astronomy/fnc_getStarCatalog.sqf": [
+        "addons/lighting/functions/astronomy/fnc_getStarCatalog.sqf": [
             "_latRad",
             "_raRad",
             "_decRad",

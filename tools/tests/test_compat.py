@@ -31,7 +31,7 @@ def _read_env_biome():
     """Read fnc_getBiome.sqf from its categorised subfolder (issue #203)."""
     from pathlib import Path
 
-    base = Path("addons/environmental/functions")
+    base = Path("addons/weather/functions")
     for f in base.rglob("fnc_getBiome.sqf"):
         return f.read_text(encoding="utf-8")
     raise FileNotFoundError("fnc_getBiome.sqf not found")
@@ -422,14 +422,14 @@ class TestWorldLatitudePattern(unittest.TestCase):
     def test_shared_source_exists(self):
         from pathlib import Path
 
-        text = Path("addons/core/functions/fnc_getWorldLocation.sqf").read_text(
+        text = Path("addons/lib/functions/fnc_getWorldLocation.sqf").read_text(
             encoding="utf-8"
         )
         # The single location source reshapes the sourced geo anchor.
         self.assertIn("FUNC(getGeoAnchor)", text)
         self.assertIn("[_signed, abs _signed, _lon, _zone]", text)
         # The BIS inverted convention is corrected in the anchor (negate).
-        builder = Path("addons/core/functions/geo/fnc_buildGeoAnchor.sqf").read_text(
+        builder = Path("addons/lib/functions/geo/fnc_buildGeoAnchor.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("-_latitude", builder)
@@ -460,7 +460,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
         from pathlib import Path
 
         solar = Path(
-            "addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf"
+            "addons/lighting/functions/astronomy/fnc_calculateSolarRadiation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", solar)
         self.assertIn("select 1", solar)  # magnitude
@@ -469,17 +469,17 @@ class TestWorldLatitudePattern(unittest.TestCase):
         self.assertIn("getWorldLocation", biome)
 
         space = Path(
-            "addons/environmental/functions/climatology/fnc_calculateSpaceWeather.sqf"
+            "addons/weather/functions/climatology/fnc_calculateSpaceWeather.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", space)
 
         compass = Path(
-            "addons/maritime/functions/fnc_calculateCompassDeviation.sqf"
+            "addons/magnetism/functions/fnc_calculateCompassDeviation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", compass)
 
         star = Path(
-            "addons/environmental/functions/astronomy/fnc_getStarCatalog.sqf"
+            "addons/lighting/functions/astronomy/fnc_getStarCatalog.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", star)
         # No direct CfgWorlds latitude read may remain outside the source.
@@ -496,7 +496,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
             for fn in Path("addons").rglob("*.sqf")
             if '>> "latitude"' in fn.read_text(encoding="utf-8", errors="replace")
         }
-        allowed = {Path("addons/core/functions/geo/fnc_getGeoAnchor.sqf")}
+        allowed = {Path("addons/lib/functions/geo/fnc_getGeoAnchor.sqf")}
         self.assertEqual(
             hits,
             allowed,
@@ -560,16 +560,16 @@ class TestAceItemMassHook(unittest.TestCase):
         # The other half of the contract: the walk must read the list and
         # try each resolver when the core table misses.  Assert the real
         # text, not a string this test fabricates.
-        src = self._read("physiology/functions/clothing/fnc_getInventoryLoad.sqf")
+        src = self._read("clothing/functions/clothing/fnc_getInventoryLoad.sqf")
         self.assertIn(
-            "QGVAR(massResolvers)", src, "the walk does not read the resolver list"
+            "QEGVAR(physiology,massResolvers)", src, "the walk does not read the resolver list"
         )
         self.assertIn("forEach _resolvers", src, "the walk does not try the resolvers")
 
     def test_core_stays_ace_free(self):
         # No ACE classname or ACE field may appear in the core resolver:
         # that knowledge belongs to the compat layer.
-        src = self._read("physiology/functions/clothing/fnc_getItemMass.sqf")
+        src = self._read("clothing/functions/clothing/fnc_getItemMass.sqf")
         self.assertNotIn("ACE_", src, "an ACE name leaked into the core resolver")
         self.assertNotIn("ACE_isMedicalItem", src)
 
@@ -579,10 +579,10 @@ class TestAceItemMassHook(unittest.TestCase):
         # as headgear (0.667 kg). This pins the collision and the rule.
         src = self._read("compat_ace3/functions/fnc_isAceMedicalItem.sqf")
         self.assertIn("ACE_isMedicalItem", src)
-        table_src = self._read("physiology/functions/clothing/fnc_getItemMass.sqf")
+        table_src = self._read("clothing/functions/clothing/fnc_getItemMass.sqf")
         self.assertIn('["fast", "helmet"', table_src, "the colliding family is gone")
         self.assertIn("_familyCategory != _known", table_src)
-        self.assertIn("QGVAR(categoryResolvers)", table_src)
+        self.assertIn("QEGVAR(physiology,categoryResolvers)", table_src)
 
     def test_compat_registers_its_classifier(self):
         # Without the registration the category question is never answered

@@ -1,40 +1,10 @@
-PREPS(altitude,calculateAltitudeAcclimatization);
-PREPS(strain,applyCrossSensitivity);
-PREPS(strain,calculateDehydrationRisk);
-PREPS(strain,calculateUVIndex);
-PREPS(altitude,calculateHypoxia);
-PREPS(hud,applyHeatStressHUD);
-PREPS(strain,calculateSleepPressure);
-PREPS(strain,calculateFatigueFactor);
+// XEH_PREP.hpp - function prep includes for aee_physiology
+//
+// The shared physiology state (fatigue/sleep, the ZH-L16C solver) and the
+// heat-stress HUD warning.  The strain, altitude, dive and clothing kernels
+// split out to their own addons (ADR-032).
+
 PREPS(state,updateFatigueState);
-PREPS(strain,calculateShooterStability);
-PREPS(strain,calculateColdWeatherPerformance);
-PREPS(strain,integrateSwayFactor);
-PREPS(strain,applyMovementSpeed);
-PREPS(clothing,getCamouflageProperties);
-PREPS(clothing,getEquipmentProperties);
-PREPS(clothing,getInventoryLoad);
-PREPS(clothing,getItemMass);
-PREPS(clothing,selectBand);
-PREPS(clothing,getEquipmentBands);
-PREPS(clothing,getWeaponLoad);
-PREPS(clothing,getMagazineLoad);
-PREPS(clothing,getMagazineMass);
-PREPS(clothing,getWeaponMass);
-PREPS(clothing,getNirPerSelection);
-PREPS(clothing,getGloveProperties);
-PREPS(clothing,getUniformProperties);
-PREPS(clothing,getVestProperties);
-PREPS(clothing,getHelmetProperties);
-PREPS(clothing,getGoggleProperties);
-PREPS(clothing,getPackProperties);
-PREPS(clothing,getNvgContrast);
 PREPS(state,zh16cStep);
-PREPS(dive,getDiveState);
-PREPS(dive,updateDiveState);
-PREPS(altitude,calculateBarometricPressure);
-PREPS(altitude,calculateAltitudeDCS);
-PREPS(altitude,calculateGLOC);
-PREPS(strain,getGLoad);
-PREPS(oxygen,calculateOxygenDelivery);
+PREPS(hud,applyHeatStressHUD);
 PREP(dumpState);

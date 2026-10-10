@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
-BUILD = ROOT / "addons" / "core" / "functions" / "geo" / "fnc_buildGeoAnchor.sqf"
+BUILD = ROOT / "addons" / "lib" / "functions" / "geo" / "fnc_buildGeoAnchor.sqf"
 
 # Known CfgWorlds anchors (re-read from the installed configs, 2026-10-06).
 # BIS CfgWorlds latitude: negative = north, positive = south.
@@ -149,7 +149,7 @@ class TestGetWorldLocation(unittest.TestCase):
 class TestGeolocationSourceContract(unittest.TestCase):
     def test_getworldlocation_uses_geo_anchor(self):
         src = (
-            ROOT / "addons" / "core" / "functions" / "fnc_getWorldLocation.sqf"
+            ROOT / "addons" / "lib" / "functions" / "fnc_getWorldLocation.sqf"
         ).read_text(encoding="utf-8")
         # The call form, not the bare name in a comment, proves the migration.
         self.assertIn("call FUNC(getGeoAnchor)", src)

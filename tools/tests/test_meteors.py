@@ -28,7 +28,7 @@ from gen_meteor_showers import parse_showers  # noqa: E402
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-SENSOR = ROOT / "addons" / "environmental" / "functions" / "astronomy"
+SENSOR = ROOT / "addons" / "lighting" / "functions" / "astronomy"
 
 SHOWERS_SRC = SENSOR / "fnc_meteorShowers.sqf"
 IMO_SRC = ROOT / "data" / "astronomy" / "sources" / "imo_cal2025.txt"
@@ -40,10 +40,10 @@ STATE = SENSOR / "fnc_meteorState.sqf"
 REGISTRAR = SENSOR / "fnc_renderMeteors.sqf"
 WORKER = SENSOR / "fnc_updateMeteors.sqf"
 
-PREP = ROOT / "addons" / "environmental" / "XEH_PREP.hpp"
-POSTINIT = ROOT / "addons" / "environmental" / "XEH_postInit.sqf"
-SETTINGS = ROOT / "addons" / "environmental" / "initSettings.inc.sqf"
-STRINGTABLE = ROOT / "addons" / "environmental" / "stringtable.xml"
+PREP = ROOT / "addons" / "lighting" / "XEH_PREP.hpp"
+POSTINIT = ROOT / "addons" / "lighting" / "XEH_postInit.sqf"
+SETTINGS = ROOT / "addons" / "lighting" / "initSettings.inc.sqf"
+STRINGTABLE = ROOT / "addons" / "lighting" / "stringtable.xml"
 RUNNER = ROOT / "tools" / "run_tests.py"
 MAKEFILE = ROOT / "Makefile"
 CI = ROOT / ".github" / "workflows" / "ci.yml"
@@ -405,10 +405,10 @@ class TestMeteorRendererContract(unittest.TestCase):
         self.assertIn("meteorForce", self.code)
 
     def test_live_meteor_hook_documented(self):
-        # The live hook is aee_environmental_meteorForce; the retired
+        # The live hook is aee_lighting_meteorForce; the retired
         # optics-namespaced name is gone everywhere.
         raw = WORKER.read_text(encoding="utf-8")
-        self.assertIn("aee_environmental_meteorForce", raw)
+        self.assertIn("aee_lighting_meteorForce", raw)
         dead = "aee_optics_" + "meteorForce"
         self.assertNotIn(dead, raw)
 
@@ -457,8 +457,8 @@ class TestMeteorWiring(unittest.TestCase):
 
     def test_stringtable_keys(self):
         text = STRINGTABLE.read_text(encoding="utf-8")
-        self.assertIn("STR_AEE_Environmental_dynamicMeteors_Name", text)
-        self.assertIn("STR_AEE_Environmental_dynamicMeteors_Description", text)
+        self.assertIn("STR_AEE_Lighting_dynamicMeteors_Name", text)
+        self.assertIn("STR_AEE_Lighting_dynamicMeteors_Description", text)
         self.assertIn("<Original>Dynamic Meteors</Original>", text)
         # Sort order: dynamicMeteors before dynamicStars.
         self.assertLess(

@@ -1,7 +1,7 @@
 #define COMPONENT ai
 #define COMPONENT_BEAUTIFIED AEE AI
-#include "\z\aee\addons\main\script_mod.hpp"
-#include "\z\aee\addons\main\script_macros.hpp"
+#include "\z\aee\addons\lib\script_mod.hpp"
+#include "\z\aee\addons\lib\script_macros.hpp"
 
 // ── Disturbance field constants ───────────────────────────────────────────
 // The field is a small grid of cells, each keyed by floor(pos / cell size)

@@ -3,7 +3,7 @@
 /*
 Heat stress HUD warning via structured title text.
 
-Reads EGVAR(core,currentWBGT) (°C) and QGVAR(dehydrationRisk) (0–1) produced
+Reads EGVAR(core,currentWBGT) (°C) and QEGVAR(strain,dehydrationRisk) (0–1) produced
 by fn_calculateDehydrationRisk.  Gates on GVAR(environmentalEnabled).
 
 ISO 7243 WBGT categories:
@@ -20,7 +20,7 @@ titleText every tick.
 
 if (!(missionNamespace getVariable [QEGVAR(core,physiologyEnabled), true])) exitWith {};
 
-private _risk   = missionNamespace getVariable [QGVAR(dehydrationRisk), 0];
+private _risk   = missionNamespace getVariable [QEGVAR(strain,dehydrationRisk), 0];
 private _WBGT   = missionNamespace getVariable [QEGVAR(core,currentWBGT), 15];
 private _active = missionNamespace getVariable [QGVAR(hudWarningActive), false];
 private _warnThreshold = GVAR(HUDWarningThreshold);

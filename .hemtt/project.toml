@@ -19,7 +19,7 @@ author = "lErrorl404l"
 url = "https://github.com/lErrorl404l/AEE"
 
 [version]
-path = "addons/main/script_version.hpp"
+path = "addons/lib/script_version.hpp"
 # 0 = version purely from script_version.hpp, bumped at release time
 # (matches ACE3/ACRE2 practice). 8 = git-hash suffix instead.
 git_hash = 0

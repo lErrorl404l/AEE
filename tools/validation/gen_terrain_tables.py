@@ -7,7 +7,7 @@ dimension and the standard colour.  The validated source is
 data/symbology/terrain_symbols.json.  This generator reads it and writes the
 runtime projection
 
-  addons/optics/data/terrain_symbols.sqf
+  addons/cartography/data/terrain_symbols.sqf
 
 which the kernel reads as aee_optics_terrainTables.
 
@@ -27,7 +27,7 @@ from typing import Any
 
 ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "terrain_symbols.json"
-TABLES_OUT = ROOT / "addons" / "optics" / "data" / "terrain_symbols.sqf"
+TABLES_OUT = ROOT / "addons" / "cartography" / "data" / "terrain_symbols.sqf"
 
 SECTIONS = ("symbols", "locations", "objects")
 

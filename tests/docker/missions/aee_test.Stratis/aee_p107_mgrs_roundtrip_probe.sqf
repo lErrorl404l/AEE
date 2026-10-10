@@ -17,11 +17,11 @@
 //
 // Emits [P107] PASS/FAIL lines.
 
-private _fnReader = missionNamespace getVariable ["aee_core_fnc_getGeoAnchor", nil];
-private _fnW2M = missionNamespace getVariable ["aee_core_fnc_worldToMgrs", nil];
-private _fnM2W = missionNamespace getVariable ["aee_core_fnc_mgrsToWorld", nil];
-private _fnParse = missionNamespace getVariable ["aee_core_fnc_parseMgrs", nil];
-private _fnBuild = missionNamespace getVariable ["aee_core_fnc_buildGeoAnchor", nil];
+private _fnReader = missionNamespace getVariable ["aee_lib_fnc_getGeoAnchor", nil];
+private _fnW2M = missionNamespace getVariable ["aee_lib_fnc_worldToMgrs", nil];
+private _fnM2W = missionNamespace getVariable ["aee_lib_fnc_mgrsToWorld", nil];
+private _fnParse = missionNamespace getVariable ["aee_lib_fnc_parseMgrs", nil];
+private _fnBuild = missionNamespace getVariable ["aee_lib_fnc_buildGeoAnchor", nil];
 if (isNil "_fnReader" || {isNil "_fnW2M"} || {isNil "_fnM2W"} || {isNil "_fnParse"} || {isNil "_fnBuild"}) exitWith {
     diag_log text "[P107] [FAIL] MGRS kernels not compiled (getGeoAnchor/worldToMgrs/mgrsToWorld/parseMgrs/buildGeoAnchor)";
 };

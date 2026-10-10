@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Blast">
+        <Key ID="STR_AEE_Blast_blastInjuryEnabled_Description">
+            <Original>Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw)</Original>
+            <English>Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw)</English>
+        </Key>
+        <Key ID="STR_AEE_Blast_blastInjuryEnabled_Name">
+            <Original>Blast Injury</Original>
+            <English>Blast Injury</English>
+        </Key>
+        <Key ID="STR_AEE_Blast_logDebug_Description">
+            <Original>Log Blast diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log Blast diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Blast_logDebug_Name">
+            <Original>Blast Debug Log</Original>
+            <English>Blast Debug Log</English>
+        </Key>
+    </Package>
+</Project>

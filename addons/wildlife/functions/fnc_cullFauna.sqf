@@ -49,7 +49,7 @@ for "_i" from 0 to ((count _fauna) - 1) do {
         if (!isNull _agent) then {
             // The attached emitter is deleted with the animal, so a culled
             // agent cannot leak a looping sound source.
-            [_id] call FUNC(emitterRelease);
+            [_id] call EFUNC(ambience,emitterRelease);
             // Release the herd slot first, so a later spawn can reuse it and
             // the herd size cap stays accurate.
             private _herdAnchor = _agent getVariable [QGVAR(herdAnchor), []];

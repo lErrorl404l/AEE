@@ -16,8 +16,8 @@
 missionNamespace setVariable ["aee_core_logDebug", false];
 missionNamespace setVariable ["aee_optics_logDebug", false];
 
-private _sample = missionNamespace getVariable ["aee_optics_fnc_perceptionSample", nil];
-private _deviation = missionNamespace getVariable ["aee_optics_fnc_perceptionDetectDeviation", nil];
+private _sample = missionNamespace getVariable ["aee_vision_fnc_perceptionSample", nil];
+private _deviation = missionNamespace getVariable ["aee_vision_fnc_perceptionDetectDeviation", nil];
 
 if (isNil "_sample" || {isNil "_deviation"}) exitWith {
     diag_log text "[P100] [FAIL] perception kernels not compiled (sample/deviation)";

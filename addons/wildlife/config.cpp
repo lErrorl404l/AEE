@@ -10,10 +10,11 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_ai",
             "aee_ballistics",
-            "aee_environmental",
+            "aee_weather",
             "aee_material",
+            "aee_ambience",
             "aee_core",
-            "aee_main",
+            "aee_lib",
             "cba_main",
             "cba_xeh"
         };
