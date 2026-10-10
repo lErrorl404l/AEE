@@ -20,6 +20,7 @@ Run: python3 -m unittest tools.tests.test_optical_phenomena -v
 """
 
 import math
+import sys
 import unittest
 from pathlib import Path
 
@@ -28,14 +29,22 @@ _ATMOS = _REPO / "addons" / "atmos" / "functions"
 _OPTICS = _REPO / "addons" / "optics" / "functions"
 _CORE = _REPO / "addons" / "core" / "functions"
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-def _read(base, name):
+from sqf_lite import run_sqf  # noqa: E402
+
+
+def _path(base, name):
     direct = base / name
     if direct.exists():
-        return direct.read_text(encoding="utf-8")
+        return direct
     for f in base.rglob(name):
-        return f.read_text(encoding="utf-8")
+        return f
     raise FileNotFoundError(f"{name} not found under {base}")
+
+
+def _read(base, name):
+    return _path(base, name).read_text(encoding="utf-8")
 
 
 def halo_sqf():
@@ -248,6 +257,71 @@ class TestWiring(unittest.TestCase):
     def test_optics_declares_the_atmos_dependency(self):
         cfg = (_REPO / "addons" / "optics" / "config.cpp").read_text(encoding="utf-8")
         self.assertIn('"aee_atmos"', cfg)
+
+
+class TestSqfExecution(unittest.TestCase):
+    """The REAL kernels, executed through sqf_lite (issue #204 harness).
+
+    The mirrors above pin the formulas; these run the shipped SQF itself, so a
+    change to the kernels is executed, not mirrored.
+    """
+
+    def _run(self, path, ns, overcast):
+        def _get(ns_, kv):
+            return ns_.get(kv[0], kv[1])
+
+        def _set(ns_, kv):
+            ns_[kv[0]] = kv[1]
+            return None
+
+        g = {
+            "missionNamespace": ns,
+            "overcast": overcast,
+            "getVariable": _get,
+            "setVariable": _set,
+        }
+        return run_sqf(path, [], g), ns
+
+    def test_halo_geometry_and_state(self):
+        ns = {
+            "__QGVAR__haloEnabled": True,
+            "__QEGVAR__core_currentSunElevation": 30.0,
+        }
+        out, ns = self._run(_path(_ATMOS, "fnc_calculateHalo.sqf"), ns, 0.3)
+        self.assertAlmostEqual(out, 0.35, delta=0.01)
+        self.assertAlmostEqual(ns["__QGVAR__halo22InnerDeg"], 21.54, delta=0.1)
+        self.assertAlmostEqual(ns["__QGVAR__halo22OuterDeg"], 22.37, delta=0.1)
+        self.assertAlmostEqual(ns["__QGVAR__halo46InnerDeg"], 44.88, delta=0.1)
+        self.assertTrue(ns["__QGVAR__haloActive"])
+        self.assertAlmostEqual(ns["__QGVAR__sundogOffsetDeg"], 25.46, delta=0.2)
+
+    def test_halo_disabled_writes_zero(self):
+        ns = {"__QGVAR__haloEnabled": False}
+        out, ns = self._run(_path(_ATMOS, "fnc_calculateHalo.sqf"), ns, 0.3)
+        self.assertEqual(out, 0.0)
+        self.assertFalse(ns["__QGVAR__haloActive"])
+
+    def test_green_flash_state(self):
+        ns = {
+            "__QGVAR__greenFlashEnabled": True,
+            "__QEGVAR__core_currentSunElevation": 0.5,
+            "__QEGVAR__core_currentHaze": 0.0,
+            "__QEGVAR__atmos_refractivityGradient": -200.0,
+        }
+        out, ns = self._run(_path(_OPTICS, "fnc_calculateGreenFlash.sqf"), ns, 0.0)
+        self.assertAlmostEqual(out, 1.0, delta=0.01)
+        self.assertTrue(ns["__QGVAR__greenFlashActive"])
+        self.assertAlmostEqual(ns["__QGVAR__greenFlashDurationS"], 3.42, delta=0.05)
+
+    def test_green_flash_needs_a_mirage(self):
+        ns = {
+            "__QGVAR__greenFlashEnabled": True,
+            "__QEGVAR__core_currentSunElevation": 0.5,
+            "__QEGVAR__core_currentHaze": 0.0,
+            "__QEGVAR__atmos_refractivityGradient": -39.0,
+        }
+        out, ns = self._run(_path(_OPTICS, "fnc_calculateGreenFlash.sqf"), ns, 0.0)
+        self.assertEqual(out, 0.0)
 
 
 if __name__ == "__main__":
