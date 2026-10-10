@@ -25,6 +25,30 @@
             <Original>Brake Rotor Mass</Original>
             <English>Brake Rotor Mass</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_frostHeaveEnabled_Description">
+            <Original>Lift the ground when it freezes, by the two-term frost heave model: the in-situ expansion of the pore water (about 9 per cent, TM 5-852-6) and the ice-lens segregation of water drawn to the freezing front (Konrad and Morgenstern 1981). The value is published as aee_core_frostHeave_m for other modules.</Original>
+            <English>Lift the ground when it freezes, by the two-term frost heave model: the in-situ expansion of the pore water (about 9 per cent, TM 5-852-6) and the ice-lens segregation of water drawn to the freezing front (Konrad and Morgenstern 1981). The value is published as aee_core_frostHeave_m for other modules.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_frostHeaveEnabled_Name">
+            <Original>Frost Heave</Original>
+            <English>Frost Heave</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_frostHeaveMaxM_Description">
+            <Original>Maximum published heave in metres. Caps the value against an extreme freezing index. A terrain raise is clamped to this limit.</Original>
+            <English>Maximum published heave in metres. Caps the value against an extreme freezing index. A terrain raise is clamped to this limit.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_frostHeaveMaxM_Name">
+            <Original>Maximum Heave</Original>
+            <English>Maximum Heave</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_frostHeaveMultiplier_Description">
+            <Original>Multiplier on the computed frost heave. 1.0 is the realistic value. Lower values reduce the heave; the setting scales both the in-situ and the segregation term.</Original>
+            <English>Multiplier on the computed frost heave. 1.0 is the realistic value. Lower values reduce the heave; the setting scales both the in-situ and the segregation term.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_frostHeaveMultiplier_Name">
+            <Original>Heave Multiplier</Original>
+            <English>Heave Multiplier</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_logDebug_Description">
             <Original>Log mobility diagnostics to the RPT. Turn this on before reporting a fault.</Original>
             <English>Log mobility diagnostics to the RPT. Turn this on before reporting a fault.</English>

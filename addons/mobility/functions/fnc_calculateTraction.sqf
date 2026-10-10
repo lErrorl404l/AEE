@@ -33,6 +33,18 @@ private _tracked = (switch (_groundState) do {
     default        { 0.9  }; // Normal
 }) * _tractionScale;
 
+// ─── Frost heave grip loss (issue #20) ───────────────────────────────────
+// A heaved surface is uneven, so it grips less.  The loss is AEE's own
+// coupling, not a measured value: it scales linearly from zero to a half at
+// the maximum-heave setting.  fnc_updateGroundState publishes the heave.
+private _heaveM = missionNamespace getVariable [QEGVAR(core,frostHeave_m), 0];
+if !(_heaveM isEqualType 0) then { _heaveM = 0; };
+private _heaveMax = missionNamespace getVariable [QGVAR(frostHeaveMaxM), 0.3];
+if !(_heaveMax isEqualType 0) then { _heaveMax = 0.3; };
+private _heaveGrip = 1 - (0.5 * ((_heaveM / (_heaveMax max 0.01)) min 1));
+_wheeled = _wheeled * _heaveGrip;
+_tracked = _tracked * _heaveGrip;
+
 // ─── Rain reduces wheeled traction (lubricated surface) ──────────────────
 if (_rainAccum > 0) then {
     _wheeled = _wheeled * (1 - _rainAccum * 0.5);
