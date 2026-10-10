@@ -33,5 +33,21 @@
             <Original>Tide Amplitude</Original>
             <English>Tide Amplitude</English>
         </Key>
+        <Key ID="STR_AEE_Maritime_underwaterLightEnabled_Description">
+            <Original>Publish the underwater light state, the Snell window and the bioluminescence gate; turn off to save the per-second update</Original>
+            <English>Publish the underwater light state, the Snell window and the bioluminescence gate; turn off to save the per-second update</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_underwaterLightEnabled_Name">
+            <Original>Underwater Light</Original>
+            <English>Underwater Light</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_underwaterWaterType_Description">
+            <Original>Jerlov water type: 0 = I, 1 = IA, 2 = IB, 3 = II, 4 = III, 5 = 1, 6 = 3, 7 = 5, 8 = 7, 9 = 9</Original>
+            <English>Jerlov water type: 0 = I, 1 = IA, 2 = IB, 3 = II, 4 = III, 5 = 1, 6 = 3, 7 = 5, 8 = 7, 9 = 9</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_underwaterWaterType_Name">
+            <Original>Water Type</Original>
+            <English>Water Type</English>
+        </Key>
     </Package>
 </Project>

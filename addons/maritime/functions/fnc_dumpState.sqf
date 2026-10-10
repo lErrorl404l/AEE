@@ -29,13 +29,38 @@ private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffse
 if !(_tideOffset isEqualType 0) then { _tideOffset = 0; };
 private _tideDescription = missionNamespace getVariable [QEGVAR(core,currentTideDescription), ""];
 if !(_tideDescription isEqualType "") then { _tideDescription = ""; };
+private _waterTypeName = missionNamespace getVariable [QGVAR(waterTypeName), ""];
+if !(_waterTypeName isEqualType "") then { _waterTypeName = ""; };
+private _underwaterKd = missionNamespace getVariable [QGVAR(underwaterKd), [0, 0, 0]];
+if !(_underwaterKd isEqualType []) then { _underwaterKd = [0, 0, 0]; };
+private _underwaterDepth = missionNamespace getVariable [QGVAR(underwaterDepth), 0];
+if !(_underwaterDepth isEqualType 0) then { _underwaterDepth = 0; };
+private _underwaterTrans = missionNamespace getVariable [QGVAR(underwaterTrans), [1, 1, 1]];
+if !(_underwaterTrans isEqualType []) then { _underwaterTrans = [1, 1, 1]; };
+private _snellCritical = missionNamespace getVariable [QGVAR(snellCritical), 0];
+if !(_snellCritical isEqualType 0) then { _snellCritical = 0; };
+private _snellCone = missionNamespace getVariable [QGVAR(snellCone), 0];
+if !(_snellCone isEqualType 0) then { _snellCone = 0; };
+private _biolumVisible = missionNamespace getVariable [QGVAR(biolumVisible), false];
+if !(_biolumVisible isEqualType false) then { _biolumVisible = false; };
+private _biolumIntensity = missionNamespace getVariable [QGVAR(biolumIntensity), 0];
+if !(_biolumIntensity isEqualType 0) then { _biolumIntensity = 0; };
 
 private _logMsg = format [
-    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9",
+    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | water=type:%10 z=%11m Kd=[%12,%13,%14] T=[%15,%16,%17] snell=%18/%19 biolum=%20:%21",
     _beaufort, round (_seaStateCurrent * 100) / 100, _seaStateDescription, round (_waveHeight * 100) / 100,
     round (_seaSurfaceTemperature * 100) / 100,
     round (_compassDeviation * 100) / 100, round (_compassAnomalyNT * 100) / 100,
-    round (_tideOffset * 100) / 100, _tideDescription
+    round (_tideOffset * 100) / 100, _tideDescription,
+    _waterTypeName, round (_underwaterDepth * 100) / 100,
+    round ((_underwaterKd select 0) * 1000) / 1000,
+    round ((_underwaterKd select 1) * 1000) / 1000,
+    round ((_underwaterKd select 2) * 1000) / 1000,
+    round ((_underwaterTrans select 0) * 1000) / 1000,
+    round ((_underwaterTrans select 1) * 1000) / 1000,
+    round ((_underwaterTrans select 2) * 1000) / 1000,
+    round (_snellCritical * 10) / 10, round (_snellCone * 10) / 10,
+    _biolumVisible, round (_biolumIntensity * 100) / 100
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {
