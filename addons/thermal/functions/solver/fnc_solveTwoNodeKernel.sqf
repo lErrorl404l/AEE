@@ -183,7 +183,7 @@ if (_immersed) then {
 // ─── Coupling conductance (W/K) ────────────────────────────────────────────
 // Human: blood-flow coupling updates INSIDE the iterate (Gagge sigmoid).
 // Inert: the driver passes the constant Fourier conductance.
-private _kCoupling = if (_isHuman) then { 0 } else { _cond };
+private _kCoupling = [_cond, 0] select _isHuman;
 private _condConst = _cond;
 
 // ─── Radiative field (ISO 7726) ───────────────────────────────────────────

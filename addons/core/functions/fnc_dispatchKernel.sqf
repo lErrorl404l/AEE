@@ -58,7 +58,7 @@ if (_ready) then {
     } else {
         if (_result isEqualType "") then { _output = _result; };
     };
-    if ((_output isEqualType "") && {_output != ""} && {_code isEqualType 0} && {_code == 0}) then {
+    if ((_output isEqualType "") && _output != "" && _code isEqualType 0 && _code == 0) then {
         _nativeOutput = _output;
     };
 };

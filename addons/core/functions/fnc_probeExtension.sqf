@@ -30,7 +30,7 @@ if (_probe isEqualType []) then {
 };
 if !(_output isEqualType "") then { _output = ""; };
 
-private _ready = (_output != "") && {_code isEqualType 0} && {_code == 0};
+private _ready = (_output != "") && _code isEqualType 0 && _code == 0;
 
 missionNamespace setVariable [QGVAR(extName), _extName];
 missionNamespace setVariable [QGVAR(extReady), _ready];
