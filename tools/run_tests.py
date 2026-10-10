@@ -110,6 +110,7 @@ def main():
         "tools/tests/test_wet_ground.py",
         "tools/tests/test_audit_189.py",
         "tools/tests/test_frost.py",
+        "tools/tests/test_seismic.py",
         "tools/tests/test_geolocation.py",
         "tools/tests/test_geo_positioning.py",
         "tools/tests/test_mgrs.py",
