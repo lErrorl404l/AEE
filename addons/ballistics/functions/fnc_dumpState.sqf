@@ -35,14 +35,26 @@ private _downrangeWind = missionNamespace getVariable [QGVAR(downrangeWind), 0];
 if !(_downrangeWind isEqualType 0) then { _downrangeWind = 0; };
 private _supersonicTrace = missionNamespace getVariable [QGVAR(supersonicTrace), 0];
 if !(_supersonicTrace isEqualType 0) then { _supersonicTrace = 0; };
+private _seekerState = missionNamespace getVariable [QGVAR(seekerState), 0];
+if !(_seekerState isEqualType 0) then { _seekerState = 0; };
+private _seekerTracked = missionNamespace getVariable [QGVAR(seekerTracked), false];
+if !(_seekerTracked isEqualType false) then { _seekerTracked = false; };
+private _seekerRangeM = missionNamespace getVariable [QGVAR(seekerRangeM), 0];
+if !(_seekerRangeM isEqualType 0) then { _seekerRangeM = 0; };
+private _seekerLosRateRad = missionNamespace getVariable [QGVAR(seekerLosRateRad), 0];
+if !(_seekerLosRateRad isEqualType 0) then { _seekerLosRateRad = 0; };
+private _seekerCommandMps2 = missionNamespace getVariable [QGVAR(seekerCommandMps2), 0];
+if !(_seekerCommandMps2 isEqualType 0) then { _seekerCommandMps2 = 0; };
 
 private _logMsg = format [
-    "ballistics state | lastShot=%1 cartridge=%2 recoil=%3 | mv=%4 barrel=%5C poi=%6 cold=%7 wear=%8 | coriolis=%9 cross=%10 downrange=%11 trace=%12",
+    "ballistics state | lastShot=%1 cartridge=%2 recoil=%3 | mv=%4 barrel=%5C poi=%6 cold=%7 wear=%8 | coriolis=%9 cross=%10 downrange=%11 trace=%12 | seeker state=%13 tracked=%14 range=%15 losRate=%16 cmd=%17",
     _lastShot, _lastCartridge, _lastRecoil,
     round (_muzzleVelocityCorrection * 100) / 100, round (_barrelTempC * 100) / 100,
     round (_barrelPOIShiftMrad * 100) / 100, _barrelColdBore, _barrelWearModelled,
     round (_coriolisDeflection * 100) / 100, round (_crosswind * 100) / 100,
-    round (_downrangeWind * 100) / 100, round (_supersonicTrace * 100) / 100
+    round (_downrangeWind * 100) / 100, round (_supersonicTrace * 100) / 100,
+    _seekerState, _seekerTracked, round (_seekerRangeM * 100) / 100,
+    round (_seekerLosRateRad * 100) / 100, round (_seekerCommandMps2 * 100) / 100
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {
