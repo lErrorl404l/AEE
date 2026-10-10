@@ -26,6 +26,9 @@ SAMPLE = AI / "fnc_disturbanceSample.sqf"
 PRUNE = AI / "fnc_disturbancePrune.sqf"
 SENSE = AI / "fnc_agentSense.sqf"
 DECIDE = AI / "fnc_agentDecide.sqf"
+EXPOSURE = AI / "fnc_routeExposure.sqf"
+ROUTE_COST = AI / "fnc_routeCost.sqf"
+PLAN_ROUTE = AI / "fnc_planRoute.sqf"
 
 
 def decay(magnitude, age, half_life):
@@ -260,6 +263,107 @@ class TestFieldCapMirrorContract(unittest.TestCase):
                     _header_define(WILDLIFE_HEADER, name),
                     _header_define(AI_DIR / "script_component.hpp", name),
                 )
+
+
+def exposure(distance, view_range):
+    return run_sqf(EXPOSURE, [distance, view_range])
+
+
+def route_cost(base, value_map):
+    return run_sqf(ROUTE_COST, [base, value_map])
+
+
+class TestRouteExposure(unittest.TestCase):
+    """The visibility-model exposure term (issue #81)."""
+
+    def test_at_the_observer_is_fully_exposed(self):
+        self.assertAlmostEqual(exposure(0, 1000), 1.0)
+
+    def test_at_the_visibility_range_is_not_observable(self):
+        self.assertAlmostEqual(exposure(1000, 1000), 0.0)
+
+    def test_beyond_the_range_is_clamped_to_zero(self):
+        self.assertAlmostEqual(exposure(5000, 1000), 0.0)
+
+    def test_half_the_range_is_half_exposed(self):
+        self.assertAlmostEqual(exposure(500, 1000), 0.5)
+
+    def test_a_zero_range_is_not_observable(self):
+        self.assertAlmostEqual(exposure(500, 0), 0.0)
+
+
+class TestRouteCost(unittest.TestCase):
+    """The data-layer destination score (issue #81)."""
+
+    def test_no_hazard_keeps_the_base(self):
+        self.assertAlmostEqual(route_cost(1.0, []), 1.0)
+
+    def test_full_passability_keeps_the_base(self):
+        self.assertAlmostEqual(route_cost(1.0, [["passability", 1.0]]), 1.0)
+
+    def test_zero_passability_rejects_the_candidate(self):
+        self.assertAlmostEqual(route_cost(1.0, [["passability", 0.0]]), 0.0)
+
+    def test_flood_halves_the_score(self):
+        self.assertAlmostEqual(route_cost(1.0, [["floodRisk", 0.5]]), 0.5)
+
+    def test_fire_and_flood_multiply(self):
+        self.assertAlmostEqual(
+            route_cost(1.0, [["floodRisk", 0.5], ["fireRisk", 0.5]]), 0.25
+        )
+
+    def test_hazards_are_order_independent(self):
+        a = route_cost(1.0, [["floodRisk", 0.2], ["fireRisk", 0.3]])
+        b = route_cost(1.0, [["fireRisk", 0.3], ["floodRisk", 0.2]])
+        self.assertAlmostEqual(a, b)
+
+    def test_a_missing_key_contributes_one(self):
+        # exposure absent: only passability applies.
+        self.assertAlmostEqual(
+            route_cost(1.0, [["passability", 0.5], ["floodRisk", 0.0]]), 0.5
+        )
+
+    def test_a_malformed_pair_is_skipped(self):
+        self.assertAlmostEqual(route_cost(1.0, [[1, 2], "x", ["floodRisk"]]), 1.0)
+
+    def test_values_are_clamped_to_one(self):
+        self.assertAlmostEqual(route_cost(1.0, [["passability", 5.0]]), 1.0)
+
+    def test_the_base_scales_the_result(self):
+        self.assertAlmostEqual(route_cost(10.0, [["floodRisk", 0.5]]), 5.0)
+
+
+class TestRouteSourceContracts(unittest.TestCase):
+    """The driver wiring the harness cannot execute (issue #81)."""
+
+    def test_the_plan_route_is_gated_on_the_setting(self):
+        text = PLAN_ROUTE.read_text(encoding="utf-8")
+        self.assertIn("pathfinding", text)
+        self.assertIn("selectBestPlaces", text)
+
+    def test_the_plan_route_reads_the_repo_state(self):
+        text = PLAN_ROUTE.read_text(encoding="utf-8")
+        for var in (
+            "routePassability",
+            "flashFloodRisk",
+            "currentFireRisk",
+            "currentLightningRisk",
+            "viewDistanceTarget",
+        ):
+            self.assertIn(var, text, f"planRoute does not read {var}")
+
+    def test_the_kernels_are_pure(self):
+        # Strip the header and line comments: the headers name the state.
+        for path in (EXPOSURE, ROUTE_COST):
+            text = path.read_text(encoding="utf-8").split("*/", 1)[-1]
+            text = "\n".join(line.split("//", 1)[0] for line in text.splitlines())
+            for token in ("missionNamespace", "EGVAR", "GVAR", "getVariable"):
+                self.assertNotIn(token, text, f"{path.name} contains {token}")
+
+    def test_the_config_declares_the_new_dependencies(self):
+        text = (AI_DIR / "config.cpp").read_text(encoding="utf-8")
+        for dep in ("aee_mobility", "aee_persistence", "aee_vision"):
+            self.assertIn(f'"{dep}"', text, f"config.cpp omits {dep}")
 
 
 if __name__ == "__main__":

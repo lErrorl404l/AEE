@@ -9,3 +9,6 @@ AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","AI",false);
 // present but inert until an operator enables it, so it never changes a
 // mission that did not ask for it.
 AEE_SETTING_CHECKBOX(nativeHearing,"AEE AI","Hearing",false);
+// Data-driven pathfinding (issue #81).  Off by default: the driver runs only
+// when a caller asks for a route and the operator has opted in.
+AEE_SETTING_CHECKBOX(pathfinding,"AEE AI","Pathfinding",false);

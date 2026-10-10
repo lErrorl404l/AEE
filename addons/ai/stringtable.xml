@@ -16,6 +16,13 @@
         <Key ID="STR_AEE_AI_nativeHearing_Name">
             <Original>Native AI Hearing</Original>
             <English>Native AI Hearing</English>
+        <Key ID="STR_AEE_AI_pathfinding_Description">
+            <Original>Plan AI routes through AEE's computed hazard state (flood, fire, mud, lightning, visibility). Route planning runs at decision time, never per-frame.</Original>
+            <English>Plan AI routes through AEE's computed hazard state (flood, fire, mud, lightning, visibility). Route planning runs at decision time, never per-frame.</English>
+        </Key>
+        <Key ID="STR_AEE_AI_pathfinding_Name">
+            <Original>Data-Driven Pathfinding</Original>
+            <English>Data-Driven Pathfinding</English>
         </Key>
     </Package>
 </Project>

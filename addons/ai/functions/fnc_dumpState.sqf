@@ -30,10 +30,13 @@ if !(_aiPFH isEqualType 0) then { _aiPFH = -1; };
 private _forceDecide = missionNamespace getVariable ["aee_ai_forceDecide", -1];
 if !(_forceDecide isEqualType 0) then { _forceDecide = -1; };
 
+private _routePlan = missionNamespace getVariable [QGVAR(routePlan), []];
+if !(_routePlan isEqualType []) then { _routePlan = []; };
+
 private _logMsg = format [
-    "ai state | agents=%1 field=%2 lastReport=%3 pfh=%4 forceDecide=%5",
+    "ai state | agents=%1 field=%2 lastReport=%3 pfh=%4 forceDecide=%5 routePlan=%6",
     count _agents, count _field, round (_lastReport * 100) / 100, _aiPFH,
-    round _forceDecide
+    round _forceDecide, count _routePlan
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {
