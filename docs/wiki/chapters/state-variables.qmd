@@ -112,6 +112,18 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_seaStateDescription` | The sea state description |
 | `aee_maritime_compassDeviation` | The compass deviation |
 
+## Ocean current
+
+| Variable | Purpose |
+|---|---|
+| `aee_maritime_oceanCurrent` | The surface ocean current vector [east, north] in metres per second |
+| `aee_maritime_oceanCurrentSpeed` | The surface ocean current speed in metres per second |
+| `aee_maritime_oceanCurrentDir` | The surface ocean current azimuth in degrees from north |
+| `aee_maritime_windCurrentSpeed` | The wind-driven part of the current in metres per second |
+| `aee_maritime_tidalCurrentSpeed` | The tidal part of the current in metres per second |
+| `aee_maritime_ekmanTransport_m2s` | The Ekman volume transport in square metres per second |
+| `aee_maritime_ekmanDepth_m` | The Ekman e-folding depth in metres |
+
 ## Turbulence
 
 | Variable | Purpose |

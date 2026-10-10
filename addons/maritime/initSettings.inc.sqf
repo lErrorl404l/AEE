@@ -7,6 +7,16 @@
 // ── Tide ───────────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(tideAmplitude,"AEE Maritime","Sea",0.5,5,2.0,1);
 
+// ── Ocean current (issue #28) ──────────────────────────────────────────────
+// The wind-driven and tidal surface current.  Channel depth and flood bearing
+// are scenario parameters: the engine exposes no bathymetry or channel
+// orientation, so the tidal current needs both to become a vector.
+AEE_SETTING_CHECKBOX(oceanCurrentEnabled,"AEE Maritime","Current",true);
+AEE_SETTING_SLIDER(oceanChannelDepth_m,"AEE Maritime","Current",5,200,30,0);
+AEE_SETTING_SLIDER(oceanWindCurrentFraction,"AEE Maritime","Current",0.01,0.05,0.03,2);
+AEE_SETTING_SLIDER(oceanDeflectionDeg,"AEE Maritime","Current",10,45,30,0);
+AEE_SETTING_SLIDER(oceanTidalFloodBearing,"AEE Maritime","Current",0,360,0,0);
+
 // ── Sea state ──────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(seaStateResponse,"AEE Maritime","Sea",0.1,0.9,0.3,2);
 
