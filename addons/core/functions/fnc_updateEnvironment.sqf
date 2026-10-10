@@ -387,6 +387,9 @@ if (GVAR(environmentalEnabled)) then {
 if (GVAR(physiologyEnabled)) then {
     [] call EFUNC(weather,calculateScentDispersion);
 };
+// CBRN agent plume (issue #105).  Gated internally by the CbrnPlumeEnabled
+// setting, so it is inert unless a mission opts in.
+[_posASL] call EFUNC(weather,updateCbrnPlume);
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateSeaState);
     // Engine wave rendering follows the sea state (issue #141).

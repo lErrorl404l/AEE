@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (668)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -723,6 +723,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_vision_fnc_weatherGrainParams`
 - `aee_weather_fnc_calculateBiologicalAmbient`
 - `aee_weather_fnc_calculateBlowingSnowVisibility`
+- `aee_weather_fnc_calculateCbrnDecay`
+- `aee_weather_fnc_calculateCbrnDose`
 - `aee_weather_fnc_calculateConcealment`
 - `aee_weather_fnc_calculateCropState`
 - `aee_weather_fnc_calculateDustSuppression`
@@ -730,6 +732,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_weather_fnc_calculateFogBaseAltitude`
 - `aee_weather_fnc_calculateLunarIllumination`
 - `aee_weather_fnc_calculateMicroclimate`
+- `aee_weather_fnc_calculatePlumeConcentration`
+- `aee_weather_fnc_calculatePuffConcentration`
 - `aee_weather_fnc_calculateQNH`
 - `aee_weather_fnc_calculateScentDispersion`
 - `aee_weather_fnc_calculateSevereWeather`
@@ -741,12 +745,17 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_weather_fnc_getBiome`
 - `aee_weather_fnc_getBiomeAtPosition`
 - `aee_weather_fnc_getBiomeName`
+- `aee_weather_fnc_getCbrnAgent`
 - `aee_weather_fnc_getClimateNormals`
 - `aee_weather_fnc_getCoastDistance`
+- `aee_weather_fnc_getDispersionCoefficients`
 - `aee_weather_fnc_getLatitudeClimate`
 - `aee_weather_fnc_getSmoothedBiome`
+- `aee_weather_fnc_getStabilityClass`
 - `aee_weather_fnc_scanTerrainSignals`
+- `aee_weather_fnc_startCbrnRelease`
 - `aee_weather_fnc_updateBiomePosition`
+- `aee_weather_fnc_updateCbrnPlume`
 - `aee_weather_fnc_updateSeasonalFoliage`
 - `aee_weather_fnc_updateSoundPropagation`
 - `aee_weatherfx_fnc_applyAtmosphericDust`
@@ -792,7 +801,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (56)
+### Public core state variables (63)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -800,7 +809,14 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_avgGroundTemp`
 - `aee_core_biome`
 - `aee_core_camoCoefficient`
+- `aee_core_cbrnDepositionFlux`
 - `aee_core_cbrnPersistence`
+- `aee_core_cbrnPlumeActive`
+- `aee_core_cbrnPlumeConcentration`
+- `aee_core_cbrnPlumeDose`
+- `aee_core_cbrnPlumeIncapacitated`
+- `aee_core_cbrnPlumeLethal`
+- `aee_core_cbrnStabilityClass`
 - `aee_core_clothingInsulation`
 - `aee_core_consistencyFailures`
 - `aee_core_consistencyState`

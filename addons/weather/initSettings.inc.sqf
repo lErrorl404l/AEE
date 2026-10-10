@@ -39,3 +39,8 @@ AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Environmental",false);
 
 // ── Scent (moved from physiology; the scent dispersion model is weather) ──
 AEE_SETTING_SLIDER(ScentIntensity,"AEE Physiology","Scent",0,2,1.0,1);
+
+// ── CBRN (issue #105) ──────────────────────────────────────────────────────
+// Off by default: the plume runs only when a mission starts a release with
+// aee_weather_fnc_startCbrnRelease, so an ordinary mission pays nothing.
+AEE_SETTING_CHECKBOX(CbrnPlumeEnabled,"AEE Environmental","CBRN",false);

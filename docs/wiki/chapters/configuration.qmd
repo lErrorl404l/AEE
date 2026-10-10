@@ -395,6 +395,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_dive_diveEnabled` | CHECKBOX | `true` | yes | dive | Enable the Buhlmann ZH-L16C decompression model for diving |
 | `aee_dive_diveGradientFactor` | SLIDER | `1.0` | yes | dive | Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C) |
 
+## AEE Environmental → CBRN
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weather_CbrnPlumeEnabled` | CHECKBOX | `false` | yes | weather | Run the CBRN agent plume dispersion model (a mission starts a release with aee_weather_fnc_startCbrnRelease) |
+
 ## AEE Environmental → Display
 
 | Setting | Type | Default | Global | Addon | Purpose |

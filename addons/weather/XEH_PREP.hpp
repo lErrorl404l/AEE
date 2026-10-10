@@ -31,3 +31,15 @@ PREPS(climatology,getLatitudeClimate);
 PREPS(biome,scanTerrainSignals);
 PREPS(biome,updateBiomePosition);
 PREPS(terrain,updateSoundPropagation);
+
+// CBRN agent plume dispersion (issue #105).  Gaussian plume / puff on the
+// Briggs coefficients and the Pasquill stability class.
+PREPS(dispersion,getStabilityClass);
+PREPS(dispersion,getDispersionCoefficients);
+PREPS(dispersion,calculatePlumeConcentration);
+PREPS(dispersion,calculatePuffConcentration);
+PREPS(dispersion,calculateCbrnDecay);
+PREPS(dispersion,getCbrnAgent);
+PREPS(dispersion,calculateCbrnDose);
+PREPS(dispersion,startCbrnRelease);
+PREPS(dispersion,updateCbrnPlume);
