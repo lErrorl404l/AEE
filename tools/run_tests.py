@@ -86,6 +86,7 @@ def main():
         "tools/tests/test_engine_overrides.py",
         "tools/tests/test_magazine_masses.py",
         "tools/tests/test_magazine_mass_engine.py",
+        "tools/tests/test_physx_mass_surface.py",
         "tools/tests/test_aircraft_sources.py",
         "tools/tests/test_probe_numbers.py",
         "tools/tests/test_optics_vision.py",
