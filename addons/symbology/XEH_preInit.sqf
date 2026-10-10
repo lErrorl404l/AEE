@@ -24,6 +24,11 @@ aee_symbology_symbologyTables = call (compile preprocessFileLineNumbers QPATHTOF
 // aee_symbology_variationFamilies.
 aee_symbology_variationFamilies = call (compile preprocessFileLineNumbers QPATHTOF(data\variation_families.sqf));
 
+// The active dynamic variation state: one family's option selection.  The CBA
+// LIST settings and the selector dialog write it; the apply layer reads it.  An
+// empty state resolves to the family defaults.
+aee_symbology_variationState = [];
+
 
 addMissionEventHandler ["Ended", {
     // disableMapIndicators is a persistent LOCAL effect, not scoped to the
