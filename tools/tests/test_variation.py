@@ -18,6 +18,7 @@ Run: python3 -m unittest tools.tests.test_variation -v
 
 from __future__ import annotations
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -227,6 +228,51 @@ class TestVariationProvenance(unittest.TestCase):
         for token in FORBIDDEN_PROVENANCE:
             with self.subTest(token=token):
                 self.assertNotIn(token, ALL_VARIATION_SRC)
+
+
+class TestVariationCollapse(unittest.TestCase):
+    """The picker collapse: the AEE-produced variants are hidden, the engine
+    re-points stay picker-visible.
+
+    The AEE-produced headers (catalogue, cross-product, taxonomy, family
+    aliases, modifiers) inherit AEE_MarkerBase and set scope = 0.  The engine
+    re-points in config_markers.hpp restate their engine parent and set no
+    scope, so they inherit the engine scope (2) and stay visible.
+    """
+
+    PRODUCED_HEADERS = (
+        "config_markers.hpp",
+        "config_crossproduct.hpp",
+        "config_taxonomy.hpp",
+        "config_family.hpp",
+        "config_modifiers.hpp",
+    )
+
+    def _produced(self, header: str) -> tuple[int, str]:
+        text = (SYMBOLOGY / header).read_text(encoding="utf-8")
+        produced = len(re.findall(r"class AEE_\w+: AEE_MarkerBase \{", text))
+        return produced, text
+
+    def test_no_aee_produced_class_is_picker_visible(self):
+        for header in self.PRODUCED_HEADERS:
+            with self.subTest(header=header):
+                _produced, text = self._produced(header)
+                self.assertEqual(
+                    text.count("scope = 2;"), 0, f"{header} shows a concrete variant"
+                )
+
+    def test_every_aee_produced_class_is_hidden(self):
+        for header in self.PRODUCED_HEADERS:
+            with self.subTest(header=header):
+                produced, text = self._produced(header)
+                self.assertGreater(produced, 0, header)
+                self.assertEqual(produced, text.count("scope = 0;"), header)
+
+    def test_the_engine_repoints_stay_visible(self):
+        text = (SYMBOLOGY / "config_markers.hpp").read_text(encoding="utf-8")
+        overrides = re.findall(r"class \w+: \w+ \{ icon = ", text)
+        self.assertGreaterEqual(len(overrides), 43)
+        self.assertNotIn("scope = 0;", "\n".join(overrides))
 
 
 class TestVariationSuiteRegistration(unittest.TestCase):

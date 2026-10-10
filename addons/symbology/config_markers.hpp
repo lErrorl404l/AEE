@@ -9,7 +9,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_APP_6_Aerial_Refuel.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_APP_6_Army_Aviation: AEE_MarkerBase {
         name = "AEE Friend Air/Space APP-6 Army Aviation";
@@ -17,7 +17,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_APP_6_Army_Aviation.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Air_Unit: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Air Unit";
@@ -25,7 +25,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Air_Unit.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Air_Unit_Solid: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Air Unit - Solid";
@@ -33,7 +33,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Air_Unit_Solid.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Air_or_Space_Unit: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Air or Space Unit";
@@ -41,7 +41,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Air_or_Space_Unit.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Air_or_Space_Unit_Solid: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Air or Space Unit - Solid";
@@ -49,7 +49,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Air_or_Space_Unit_Solid.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Airborne_Forces: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Airborne Forces";
@@ -57,7 +57,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Airborne_Forces.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Anti_tank_Aviation: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Anti-tank Aviation";
@@ -65,7 +65,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Anti_tank_Aviation.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Artillery_Airborne: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Artillery - Airborne";
@@ -73,7 +73,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Artillery_Airborne.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation";
@@ -81,7 +81,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation";
@@ -89,7 +89,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_3: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation";
@@ -97,7 +97,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Attack: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Attack";
@@ -105,7 +105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Attack.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Attack_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Attack";
@@ -113,7 +113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Attack_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Cargo: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Cargo";
@@ -121,7 +121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Cargo.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Fixed_Win: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Fixed Wing";
@@ -129,7 +129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Fixed_Win.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Fixed_Win_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Fixed Wing";
@@ -137,7 +137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Fixed_Win_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Fixed_Win_3: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Fixed Wing - Attack";
@@ -145,7 +145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Fixed_Win_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Fixed_and: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Fixed and Rotary Wing";
@@ -153,7 +153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Fixed_and.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Reconnais: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Reconnaissance";
@@ -161,7 +161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Reconnais.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Utility: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Utility";
@@ -169,7 +169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Utility.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Aviation_Utility_M: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Aviation - Utility - Medium";
@@ -177,7 +177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Aviation_Utility_M.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_CSS_Aviation_Maint: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit CSS - Aviation Maintenance";
@@ -185,7 +185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_CSS_Aviation_Maint.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_CSS_Aviation_Maint_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit CSS - Aviation Maintenance";
@@ -193,7 +193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_CSS_Aviation_Maint_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Infantry_Airborne: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Infantry - Airborne";
@@ -201,7 +201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Infantry_Airborne.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Infantry_Airborne_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Infantry - Airborne";
@@ -209,7 +209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Infantry_Airborne_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Infantry_Airborne_3: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Infantry - Airborne";
@@ -217,7 +217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Infantry_Airborne_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Infantry_Airborne_4: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Infantry - Airborne Ranger";
@@ -225,7 +225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Infantry_Airborne_4.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Military_Engineers: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Military Engineers - Airborne Engineer";
@@ -233,7 +233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Military_Engineers.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Modifier_Airborne: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Modifier - Airborne";
@@ -241,7 +241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Modifier_Airborne.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Reconnaissance_Air: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Reconnaissance - Airborne";
@@ -249,7 +249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Reconnaissance_Air.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Special_Operations: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Special Operations Aviation";
@@ -257,7 +257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Special_Operations.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Special_Operations_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Special Operations Aviation";
@@ -265,7 +265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Special_Operations_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Unmanned Aerial Vehicles";
@@ -273,7 +273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Friendly Unit Unmanned Aerial Vehicles";
@@ -281,7 +281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Friendly_Unit_Unmanned_Aerial_Ve_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
         name = "AEE Friend Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Friendly";
@@ -289,7 +289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
         name = "AEE Friend Air/Space Ground Track - Unit - Combat - Aviation - Friendly";
@@ -297,7 +297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
         name = "AEE Friend Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Friendly";
@@ -305,7 +305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FA_Ground_Track_Unit_Combat_Aviatio_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
         name = "AEE Friend Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Friendly Framed";
@@ -313,7 +313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FE_Ground_Track_Equipment_Ground_Ve.paa";
         side = 1;
         markerClass = "AEE_Friend_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
         name = "AEE Friend Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Friendly Unframed";
@@ -321,7 +321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FE_Ground_Track_Equipment_Ground_Ve_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FI_Ground_Track_Installation_Milita: AEE_MarkerBase {
         name = "AEE Friend Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Friendly";
@@ -329,7 +329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FI_Ground_Track_Installation_Milita.paa";
         side = 1;
         markerClass = "AEE_Friend_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Friend Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Friendly";
@@ -337,7 +337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FI_Ground_Track_Unit_Combat_Service.paa";
         side = 1;
         markerClass = "AEE_Friend_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_AFD_AIR: AEE_MarkerBase {
         name = "AEE Friend Land AFD AIR";
@@ -345,7 +345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_AFD_AIR.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_AFD_EQP_SRF: AEE_MarkerBase {
         name = "AEE Friend Land AFD EQP+SRF";
@@ -353,7 +353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_AFD_EQP_SRF.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_AFD_GND: AEE_MarkerBase {
         name = "AEE Friend Land AFD GND";
@@ -361,7 +361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_AFD_GND.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_AFD_INS: AEE_MarkerBase {
         name = "AEE Friend Land AFD INS";
@@ -369,7 +369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_AFD_INS.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_AFD_SUB: AEE_MarkerBase {
         name = "AEE Friend Land AFD SUB";
@@ -377,7 +377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_AFD_SUB.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_AFD_UNK: AEE_MarkerBase {
         name = "AEE Friend Land AFD UNK";
@@ -385,7 +385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_AFD_UNK.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Air_Defence: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Air Defence";
@@ -393,7 +393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Air_Defence.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Air_Force: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Air Force";
@@ -401,7 +401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Air_Force.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Air_transportable: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Air-transportable";
@@ -409,7 +409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Air_transportable.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Airmobile: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Airmobile";
@@ -417,7 +417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Airmobile.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Airmobile_Infantry: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Airmobile Infantry";
@@ -425,7 +425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Airmobile_Infantry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Airmobile_Mod: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Airmobile Mod";
@@ -433,7 +433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Airmobile_Mod.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Airmobile_Mortar: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Airmobile Mortar";
@@ -441,7 +441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Airmobile_Mortar.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Airmobile_Supply_Transport: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Airmobile Supply Transport";
@@ -449,7 +449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Airmobile_Supply_Transport.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Ammunition: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Ammunition";
@@ -457,7 +457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Ammunition.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Amphibious: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Amphibious";
@@ -465,7 +465,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Amphibious.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Amphibious_Mechanized_Infa: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Amphibious Mechanized Infantry";
@@ -473,7 +473,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Amphibious_Mechanized_Infa.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Anti_Tank: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Anti Tank";
@@ -481,7 +481,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Anti_Tank.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Anti_Tank_Artillery: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Anti Tank Artillery";
@@ -489,7 +489,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Anti_Tank_Artillery.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Anti_Tank_Helicopter: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Anti Tank Helicopter";
@@ -497,7 +497,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Anti_Tank_Helicopter.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Anti_Tank_Missile: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Anti Tank Missile";
@@ -505,7 +505,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Anti_Tank_Missile.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Armored: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Armored";
@@ -513,7 +513,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Armored.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Armored_Artillery: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Armored Artillery";
@@ -521,7 +521,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Armored_Artillery.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Armored_Engineer: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Armored Engineer";
@@ -529,7 +529,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Armored_Engineer.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Armored_Reconnaissance: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Armored Reconnaissance";
@@ -537,7 +537,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Armored_Reconnaissance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Artillery: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Artillery";
@@ -545,7 +545,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Artillery.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Basic: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Basic";
@@ -553,7 +553,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Basic.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Bridging: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Bridging";
@@ -561,7 +561,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Bridging.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Combat_Service_Support: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Combat Service Support";
@@ -569,7 +569,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Combat_Service_Support.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Combat_Supply: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Combat Supply";
@@ -577,7 +577,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Combat_Supply.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Electronic_Warfare: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Electronic Warfare";
@@ -585,7 +585,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Electronic_Warfare.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Engineer: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Engineer";
@@ -593,7 +593,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Engineer.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Engineer_Construction: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Engineer Construction";
@@ -601,7 +601,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Engineer_Construction.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_HQ_Support: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 HQ Support";
@@ -609,7 +609,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_HQ_Support.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Infantry: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Infantry";
@@ -617,7 +617,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Infantry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Infantry_Mechanized_IFV: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Infantry Mechanized IFV";
@@ -625,7 +625,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Infantry_Mechanized_IFV.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Infantry_Motorised: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Infantry Motorised";
@@ -633,7 +633,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Infantry_Motorised.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Infantry_Wheeled_Mechanize: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Infantry Wheeled Mechanized IFV";
@@ -641,7 +641,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Infantry_Wheeled_Mechanize.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_MLRS: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 MLRS";
@@ -649,7 +649,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_MLRS.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_MP: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 MP";
@@ -657,7 +657,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_MP.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Machine_Gun: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Machine Gun";
@@ -665,7 +665,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Machine_Gun.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Machine_Gun_Heavy: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Machine Gun Heavy";
@@ -673,7 +673,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Machine_Gun_Heavy.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Maintenance: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Maintenance";
@@ -681,7 +681,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Maintenance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mechanized_Infantry: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mechanized Infantry";
@@ -689,7 +689,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mechanized_Infantry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Medical: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Medical";
@@ -697,7 +697,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Medical.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Meteorological: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Meteorological";
@@ -705,7 +705,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Meteorological.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Missile: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Missile";
@@ -713,7 +713,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Missile.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mod_Bicycle: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mod Bicycle";
@@ -721,7 +721,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mod_Bicycle.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mod_Motorcycle: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mod Motorcycle";
@@ -729,7 +729,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mod_Motorcycle.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Modifier_01: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Modifier 01";
@@ -737,7 +737,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Modifier_01.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Modifier_01_Transparent: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Modifier 01 Transparent";
@@ -745,7 +745,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Modifier_01_Transparent.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Modifier_02: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Modifier 02";
@@ -753,7 +753,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Modifier_02.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Modifier_02_Transparent: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Modifier 02 Transparent";
@@ -761,7 +761,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Modifier_02_Transparent.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mortar: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mortar";
@@ -769,7 +769,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mortar.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mortar_SP_Mechanized: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mortar SP Mechanized";
@@ -777,7 +777,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mortar_SP_Mechanized.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Motorised: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Motorised";
@@ -785,7 +785,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Motorised.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mountain: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mountain";
@@ -793,7 +793,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mountain.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mountain_Artillery: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mountain Artillery";
@@ -801,7 +801,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mountain_Artillery.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Mountain_Infantry: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Mountain Infantry";
@@ -809,7 +809,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Mountain_Infantry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_NBC: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 NBC";
@@ -817,7 +817,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_NBC.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Navy: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Navy";
@@ -825,7 +825,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Navy.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Ordnance: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Ordnance";
@@ -833,7 +833,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Ordnance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_PYSOPS: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 PYSOPS";
@@ -841,7 +841,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_PYSOPS.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Parachute: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Parachute";
@@ -849,7 +849,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Parachute.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Parachute_Infantry: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Parachute Infantry";
@@ -857,7 +857,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Parachute_Infantry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Quartermaster: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Quartermaster";
@@ -865,7 +865,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Quartermaster.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Radar: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Radar";
@@ -873,7 +873,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Radar.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Reconnaissance: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Reconnaissance";
@@ -881,7 +881,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Reconnaissance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Reconnaissance_Wheeled: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Reconnaissance Wheeled";
@@ -889,7 +889,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Reconnaissance_Wheeled.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Refuel: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Refuel";
@@ -897,7 +897,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Refuel.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Rocket: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Rocket";
@@ -905,7 +905,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Rocket.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Signals: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Signals";
@@ -913,7 +913,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Signals.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Special_Forces: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Special Forces";
@@ -921,7 +921,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Special_Forces.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Special_Operations_Forces: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Special Operations Forces";
@@ -929,7 +929,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Special_Operations_Forces.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Tank_Destroyer: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Tank Destroyer";
@@ -937,7 +937,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Tank_Destroyer.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Topographical: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Topographical";
@@ -945,7 +945,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Topographical.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Transport_Helicopter: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Transport Helicopter";
@@ -953,7 +953,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Transport_Helicopter.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Transportation: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Transportation";
@@ -961,7 +961,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Transportation.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Unmanned_Air_Recon: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Unmanned Air Recon";
@@ -969,7 +969,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Unmanned_Air_Recon.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Wheeled: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Wheeled";
@@ -977,7 +977,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Wheeled.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Wheeled_Armored_Reconnaiss: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Wheeled Armored Reconnaissance";
@@ -985,7 +985,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Wheeled_Armored_Reconnaiss.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Wheeled_MLRS: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Wheeled MLRS";
@@ -993,7 +993,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Wheeled_MLRS.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Wheeled_Mechanized_Infantr: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Wheeled Mechanized Infantry";
@@ -1001,7 +1001,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Wheeled_Mechanized_Infantr.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Wheeled_Tank: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Wheeled Tank";
@@ -1009,7 +1009,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Wheeled_Tank.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_Wheeled_Transparent: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 Wheeled Transparent";
@@ -1017,7 +1017,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_Wheeled_Transparent.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_battalion: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 battalion";
@@ -1025,7 +1025,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_battalion.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_company: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 company";
@@ -1033,7 +1033,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_company.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6_regiment: AEE_MarkerBase {
         name = "AEE Friend Land APP-6 regiment";
@@ -1041,7 +1041,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6_regiment.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6A_Field_positions: AEE_MarkerBase {
         name = "AEE Friend Land APP-6A Field positions";
@@ -1049,7 +1049,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6A_Field_positions.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_APP_6a_Armour: AEE_MarkerBase {
         name = "AEE Friend Land APP-6a Armour";
@@ -1057,7 +1057,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_APP_6a_Armour.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_FRD_AIR: AEE_MarkerBase {
         name = "AEE Friend Land FRD AIR";
@@ -1065,7 +1065,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_FRD_AIR.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_FRD_EQP_SRF: AEE_MarkerBase {
         name = "AEE Friend Land FRD EQP+SRF";
@@ -1073,7 +1073,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_FRD_EQP_SRF.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_FRD_GND: AEE_MarkerBase {
         name = "AEE Friend Land FRD GND";
@@ -1081,7 +1081,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_FRD_GND.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_FRD_INS: AEE_MarkerBase {
         name = "AEE Friend Land FRD INS";
@@ -1089,7 +1089,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_FRD_INS.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_FRD_SUB: AEE_MarkerBase {
         name = "AEE Friend Land FRD SUB";
@@ -1097,7 +1097,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_FRD_SUB.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_FRD_UNK: AEE_MarkerBase {
         name = "AEE Friend Land FRD UNK";
@@ -1105,7 +1105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_FRD_UNK.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Brigade_Group_Combined: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Brigade Group Combined Manoeuvre Arms";
@@ -1113,7 +1113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Brigade_Group_Combined.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Brigade_or_Wing_Combine: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Brigade or Wing Combined Manoeuvre Arms";
@@ -1121,7 +1121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Brigade_or_Wing_Combine.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Headquarters: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Headquarters";
@@ -1129,7 +1129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Headquarters.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Regiment_or_Group_Combi: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Regiment or Group Combined Manoeuvre Arms";
@@ -1137,7 +1137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Regiment_or_Group_Combi.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Soldier_Dismounted: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Soldier Dismounted";
@@ -1145,7 +1145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Soldier_Dismounted.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Space_Unit: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Space Unit";
@@ -1153,7 +1153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Space_Unit.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Space_Unit_Solid: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Space Unit - Solid";
@@ -1161,7 +1161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Space_Unit_Solid.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_B_W: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit - B&W";
@@ -1169,7 +1169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_B_W.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Opaque: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit - Opaque";
@@ -1177,7 +1177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Opaque.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Solid: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit - Solid";
@@ -1185,7 +1185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Solid.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence";
@@ -1193,7 +1193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence";
@@ -1201,7 +1201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Anti_T: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence & Anti-Tank (Canadian Usage)";
@@ -1209,7 +1209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Anti_T.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Close: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Close Range Guns";
@@ -1217,7 +1217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Close.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Guns: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Guns";
@@ -1225,7 +1225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Guns.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Mechan: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Mechanized - Close Range Guns";
@@ -1233,7 +1233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Mechan.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Mechan_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Mechanized - Close Range Guns";
@@ -1241,7 +1241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Mechan_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Mechan_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Mechanized - Missiles & Close Range Guns";
@@ -1249,7 +1249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Mechan_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Missil: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Missiles";
@@ -1257,7 +1257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Missil.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Missil_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Missiles";
@@ -1265,7 +1265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Missil_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Missil_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence - Missiles & Close Range Guns";
@@ -1273,7 +1273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Missil_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Air_Defence_Artill: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Air Defence Artillery ()";
@@ -1281,7 +1281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Air_Defence_Artill.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank";
@@ -1289,7 +1289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank";
@@ -1297,7 +1297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_Armoured: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank - Armoured";
@@ -1305,7 +1305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Armoured.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_Missiles: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank - Missiles";
@@ -1313,7 +1313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Missiles.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_Motorize: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank - Motorized";
@@ -1321,7 +1321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Motorize.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank - Tank Destroyers";
@@ -1329,7 +1329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank - Tank Destroyers - Wheeled Agile";
@@ -1337,7 +1337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank - Tank Destroyers - Wheeled Agile";
@@ -1345,7 +1345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Tank_Des_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Anti_Tank_Artiller: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Anti-Tank Artillery";
@@ -1353,7 +1353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Anti_Tank_Artiller.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour";
@@ -1361,7 +1361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour";
@@ -1369,7 +1369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour_Amphibious: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour - Amphibious";
@@ -1377,7 +1377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour_Amphibious.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour_Amphibious_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour - Amphibious";
@@ -1385,7 +1385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour_Amphibious_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour_Heavy: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour - Heavy";
@@ -1393,7 +1393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour_Heavy.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour_Light: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour - Light";
@@ -1401,7 +1401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour_Light.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour_Medium: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour - Medium";
@@ -1409,7 +1409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour_Medium.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armour_Wheeled_Agi: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armour - Wheeled Agile";
@@ -1417,7 +1417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armour_Wheeled_Agi.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armoured_Reconnais: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armoured Reconnaissance";
@@ -1425,7 +1425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armoured_Reconnais.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armoured_Reconnais_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armoured Reconnaissance - Cannon Equiped";
@@ -1433,7 +1433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armoured_Reconnais_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armoured_Reconnais_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armoured Reconnaissance - Wheeled Cross Country";
@@ -1441,7 +1441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armoured_Reconnais_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armoured_Reconnais_4: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armoured Reconnaissance - Wheeled Cross Country";
@@ -1449,7 +1449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armoured_Reconnais_4.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Armoured_Reconnais_5: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Armoured Reconnaissance - Wheeled Cross Country with Cannons";
@@ -1457,7 +1457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Armoured_Reconnais_5.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery";
@@ -1465,7 +1465,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery";
@@ -1473,7 +1473,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Field_Su: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Field Survey";
@@ -1481,7 +1481,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Field_Su.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Field_Su_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Field Survey (FM 101-5-1, 1997 September 30)";
@@ -1489,7 +1489,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Field_Su_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Heavy: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Heavy";
@@ -1497,7 +1497,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Heavy.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Light: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Light";
@@ -1505,7 +1505,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Light.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Mechaniz: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Mechanized";
@@ -1513,7 +1513,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Mechaniz.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Mechaniz_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Mechanized";
@@ -1521,7 +1521,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Mechaniz_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Mechaniz_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Mechanized";
@@ -1529,7 +1529,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Mechaniz_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Medium: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Medium";
@@ -1537,7 +1537,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Medium.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Mountain: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Mountain";
@@ -1545,7 +1545,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Mountain.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Mountain_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Mountain";
@@ -1553,7 +1553,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Mountain_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Observat: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Observation";
@@ -1561,7 +1561,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Observat.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Reconnai: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Reconnaissance";
@@ -1569,7 +1569,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Reconnai.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Rocket_L: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Rocket Launchers (MulitRocket)";
@@ -1577,7 +1577,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Rocket_L.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Rocket_L_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Rocket Launchers (MulitRocket)";
@@ -1585,7 +1585,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Rocket_L_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Rocket_L_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Rocket Launchers (MulitRocket) - Armoured";
@@ -1593,7 +1593,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Rocket_L_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Rocket_L_4: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Rocket Launchers (MulitRocket) - Wheeled Agile";
@@ -1601,7 +1601,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Rocket_L_4.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Rocket_L_5: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Rocket Launchers (MulitRocket) - Wheeled Agile";
@@ -1609,7 +1609,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Rocket_L_5.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Rocket_L_6: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Rocket Launchers (MulitRocket) - Wheeled Agile";
@@ -1617,7 +1617,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Rocket_L_6.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Target_A: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Target Acquisition - Mortar & Artillery Locating (Canadian Usage)";
@@ -1625,7 +1625,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Target_A.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Artillery_Target_A_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Artillery - Target Acquisition - Radar";
@@ -1633,7 +1633,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Artillery_Target_A_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CBRN: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CBRN";
@@ -1641,7 +1641,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CBRN.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Ammunition: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Ammunition";
@@ -1649,7 +1649,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Ammunition.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Ammunition_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Ammunition";
@@ -1657,7 +1657,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Ammunition_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Combat_Service: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Combat Service Support";
@@ -1665,7 +1665,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Combat_Service.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Combat_Service_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Combat Service Support";
@@ -1673,7 +1673,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Combat_Service_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Finance_or_Pay: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Finance or Pay Services Unit";
@@ -1681,7 +1681,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Finance_or_Pay.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Food_Services: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Food Services";
@@ -1689,7 +1689,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Food_Services.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Labour: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Labour";
@@ -1697,7 +1697,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Labour.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Labour_Pioneer: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Labour - Pioneers ()";
@@ -1705,7 +1705,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Labour_Pioneer.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Laundry_and_Ba: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Laundry and Bath";
@@ -1713,7 +1713,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Laundry_and_Ba.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Laundry_and_Ba_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Laundry and Bath and Decontamination";
@@ -1721,7 +1721,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Laundry_and_Ba_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Maintenance: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Maintenance";
@@ -1729,7 +1729,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Maintenance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Maintenance_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Maintenance";
@@ -1737,7 +1737,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Maintenance_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Ordnance: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Ordnance";
@@ -1745,7 +1745,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Ordnance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Personnel_Serv: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Personnel Services";
@@ -1753,7 +1753,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Personnel_Serv.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Petroleum_Oil: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Petroleum Oil Lubricants";
@@ -1761,7 +1761,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Petroleum_Oil.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Postal_Service: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Postal Services";
@@ -1769,7 +1769,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Postal_Service.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Supply: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Supply";
@@ -1777,7 +1777,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Supply.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Supply_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Supply";
@@ -1785,7 +1785,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Supply_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Supply_Transpo: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Supply & Transport";
@@ -1793,7 +1793,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Supply_Transpo.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Supply_Transpo_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Supply & Transport";
@@ -1801,7 +1801,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Supply_Transpo_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Supply_Petrole: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Supply - Petroleum Oil Lubricants - Theatre Support";
@@ -1809,7 +1809,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Supply_Petrole.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Transport: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Transport";
@@ -1817,7 +1817,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Transport.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Transport_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Transport";
@@ -1825,7 +1825,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Transport_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Transport_Amph: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Transport - Amphibious";
@@ -1833,7 +1833,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Transport_Amph.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_CSS_Water_Supply: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit CSS - Water Supply";
@@ -1841,7 +1841,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_CSS_Water_Supply.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Combat_Support: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Combat Support";
@@ -1849,7 +1849,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Combat_Support.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Combined_Manoeuvre: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Combined Manoeuvre Arms";
@@ -1857,7 +1857,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Combined_Manoeuvre.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Combined_Manoeuvre_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Combined Manoeuvre Arms";
@@ -1865,7 +1865,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Combined_Manoeuvre_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Electronic_Warfare: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Electronic Warfare";
@@ -1873,7 +1873,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Electronic_Warfare.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Electronic_Warfare_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Electronic Warfare";
@@ -1881,7 +1881,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Electronic_Warfare_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Electronic_Warfare_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Electronic Warfare - Jamming";
@@ -1889,7 +1889,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Electronic_Warfare_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Explosive_Ordnance: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Explosive Ordnance Disposal";
@@ -1897,7 +1897,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Explosive_Ordnance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Gendarmerie_or_Int: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Gendarmerie or Internal Security Force";
@@ -1905,7 +1905,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Gendarmerie_or_Int.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Gendarmerie_or_Int_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Gendarmerie or Internal Security Force - Mechanized";
@@ -1913,7 +1913,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Gendarmerie_or_Int_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Headquarters_Unit: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Headquarters Unit";
@@ -1921,7 +1921,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Headquarters_Unit.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Horse_Cavalry: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Horse Cavalry";
@@ -1929,7 +1929,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Horse_Cavalry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Horse_Reconnaissan: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Horse Reconnaissance";
@@ -1937,7 +1937,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Horse_Reconnaissan.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry";
@@ -1945,7 +1945,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry";
@@ -1953,7 +1953,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry";
@@ -1961,7 +1961,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Air_Assau: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Air Assault";
@@ -1969,7 +1969,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Air_Assau.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Airmobile: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Airmobile";
@@ -1977,7 +1977,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Airmobile.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Airmobile_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Airmobile";
@@ -1985,7 +1985,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Airmobile_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Amphibiou: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Amphibious";
@@ -1993,7 +1993,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Amphibiou.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Amphibiou_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Amphibious";
@@ -2001,7 +2001,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Amphibiou_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Arctic: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Arctic";
@@ -2009,7 +2009,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Arctic.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Armoured: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Armoured";
@@ -2017,7 +2017,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Armoured.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Armoured_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Armoured";
@@ -2025,7 +2025,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Armoured_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Combat_Su: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Combat Support";
@@ -2033,7 +2033,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Combat_Su.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Combat_Su_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Combat Support";
@@ -2041,7 +2041,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Combat_Su_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Combat_Su_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Combat Support - Amphibious - Tracked - Cannon Equiped";
@@ -2049,7 +2049,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Combat_Su_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Flame_Wea: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Flame Weapons - Mechanized - Light";
@@ -2057,7 +2057,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Flame_Wea.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Heavy_Wea: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Heavy Weapons";
@@ -2065,7 +2065,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Heavy_Wea.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Light_Inf: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Light Infantry";
@@ -2073,7 +2073,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Light_Inf.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Light_Inf_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Light Infantry";
@@ -2081,7 +2081,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Light_Inf_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized";
@@ -2089,7 +2089,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized";
@@ -2097,7 +2097,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized";
@@ -2105,7 +2105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_4: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized";
@@ -2113,7 +2113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_4.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_5: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Amphibious";
@@ -2121,7 +2121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_5.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_6: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Amphibious";
@@ -2129,7 +2129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_6.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_7: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Wheeled AFV";
@@ -2137,7 +2137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_7.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_8: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Wheeled AFV";
@@ -2145,7 +2145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_8.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_9: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Wheeled AFV";
@@ -2153,7 +2153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_9.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_10: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Wheeled AFV";
@@ -2161,7 +2161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_10.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_11: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Wheeled APC";
@@ -2169,7 +2169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_11.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mechanize_12: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mechanized - Wheeled APC";
@@ -2177,7 +2177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mechanize_12.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mortars_M: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mortars - Mechanized - Heavy (ADRP 1-02, 2015 December 07)";
@@ -2185,7 +2185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mortars_M.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Motorized: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Motorized";
@@ -2193,7 +2193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Motorized.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mountain: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mountain";
@@ -2201,7 +2201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mountain.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mountain_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mountain";
@@ -2209,7 +2209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mountain_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Mounted: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Mounted";
@@ -2217,7 +2217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Mounted.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Pioneers: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Pioneers";
@@ -2225,7 +2225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Pioneers.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Pioneers_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Pioneers (NATP APP-6)";
@@ -2233,7 +2233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Pioneers_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Infantry_Snipers: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Infantry - Snipers";
@@ -2241,7 +2241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Infantry_Snipers.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Marine_Air_Ground: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Marine Air Ground Task Force (USMC) (ADRP 1-02, 2015 Dec 07)";
@@ -2249,7 +2249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Marine_Air_Ground.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Marine_Air_Ground_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Marine Air Ground Task Force (USMC) (MCRP 5-2A)";
@@ -2257,7 +2257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Marine_Air_Ground_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Marines_Infantry: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Marines - Infantry";
@@ -2265,7 +2265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Marines_Infantry.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Medical: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Medical";
@@ -2273,7 +2273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Medical.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Medical_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Medical";
@@ -2281,7 +2281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Medical_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Medical_Dental: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Medical - Dental";
@@ -2289,7 +2289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Medical_Dental.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Medical_Hospital: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Medical - Hospital";
@@ -2297,7 +2297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Medical_Hospital.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Meteorological_Ser: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Meteorological Services";
@@ -2305,7 +2305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Meteorological_Ser.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Meteorological_Ser_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Meteorological Services";
@@ -2313,7 +2313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Meteorological_Ser_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers";
@@ -2321,7 +2321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Armoured Assault Bridging";
@@ -2329,7 +2329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Armoured Assault Bridging (FM 101-5-1, 1997 September 30)";
@@ -2337,7 +2337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_4: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Armoured Engineer";
@@ -2345,7 +2345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_4.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_5: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Armoured Engineer";
@@ -2353,7 +2353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_5.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_6: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Bridging (NATP APP-6)";
@@ -2361,7 +2361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_6.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_7: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Bridging (NATP APP-6)";
@@ -2369,7 +2369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_7.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_8: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Bridging Engineers";
@@ -2377,7 +2377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_8.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_9: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Bridging Engineers (FM 101-5-1, 1997 September 30)";
@@ -2385,7 +2385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_9.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_10: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineer - Tracked";
@@ -2393,7 +2393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_10.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_11: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineer - Tracked";
@@ -2401,7 +2401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_11.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_12: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineer - Wheeled Agile";
@@ -2409,7 +2409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_12.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_13: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineers";
@@ -2417,7 +2417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_13.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_14: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineers - Heavy";
@@ -2425,7 +2425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_14.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_15: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineers - Light";
@@ -2433,7 +2433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_15.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_16: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineers - Mechanized";
@@ -2441,7 +2441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_16.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_17: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineers - Mechanized";
@@ -2449,7 +2449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_17.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_18: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Combat Engineers - Medium";
@@ -2457,7 +2457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_18.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_19: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Construction Engineers";
@@ -2465,7 +2465,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_19.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_20: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Construction Engineers - Air Force";
@@ -2473,7 +2473,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_20.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_21: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Divers";
@@ -2481,7 +2481,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_21.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_22: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Engineer Resources";
@@ -2489,7 +2489,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_22.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_23: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Explosive Ordnance Disposal ()";
@@ -2497,7 +2497,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_23.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_24: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Floating Bridging (FM 101-5-1, 1997 September 30)";
@@ -2505,7 +2505,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_24.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_25: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Motorized";
@@ -2513,7 +2513,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_25.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_26: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Reconnaissance";
@@ -2521,7 +2521,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_26.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_27: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Sappers ()";
@@ -2529,7 +2529,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_27.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Engineers_28: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Engineers - Topographic and Mapping (FM 101-5-1, 1997 September 30)";
@@ -2537,7 +2537,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Engineers_28.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Geomatics: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Geomatics - Mapping";
@@ -2545,7 +2545,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Geomatics.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Geomatics_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Geomatics - Mapping";
@@ -2553,7 +2553,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Geomatics_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Intellige: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Intelligence";
@@ -2561,7 +2561,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Intellige.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Police: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Police";
@@ -2569,7 +2569,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Police.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Military_Police_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Military Police";
@@ -2577,7 +2577,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Military_Police_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Missile_Surface_to: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Missile - Surface to Surface";
@@ -2585,7 +2585,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Missile_Surface_to.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Missile_Surface_to_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Missile - Surface to Surface";
@@ -2593,7 +2593,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Missile_Surface_to_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Air_Assau: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Air Assault";
@@ -2601,7 +2601,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Air_Assau.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Airmobile: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Airmobile";
@@ -2609,7 +2609,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Airmobile.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Amphibiou: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Amphibious";
@@ -2617,7 +2617,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Amphibiou.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Amphibiou_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Amphibious";
@@ -2625,7 +2625,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Amphibiou_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Arctic_or: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Arctic or Ski";
@@ -2633,7 +2633,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Arctic_or.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Arctic_or_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Arctic or Sled";
@@ -2641,7 +2641,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Arctic_or_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Army_or_T: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Army or Theater Asset";
@@ -2649,7 +2649,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Army_or_T.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Corps_Ass: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Corps Asset";
@@ -2657,7 +2657,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Corps_Ass.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Gun_Syste: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Gun System Equiped";
@@ -2665,7 +2665,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Gun_Syste.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Mobilizat: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Mobilization - Full Mobilization Capable";
@@ -2673,7 +2673,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Mobilizat.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Mobilizat_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Mobilization - Only Partial Mobilization Capable";
@@ -2681,7 +2681,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Mobilizat_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Motorized: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Motorized";
@@ -2689,7 +2689,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Motorized.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Mountain: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Mountain";
@@ -2697,7 +2697,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Mountain.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Tracked: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Tracked";
@@ -2705,7 +2705,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Tracked.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Wheeled: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Wheeled";
@@ -2713,7 +2713,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Wheeled.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Wheeled_C: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Wheeled CrossCountry";
@@ -2721,7 +2721,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Wheeled_C.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Modifier_Wheeled_a: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Modifier - Wheeled and Tracked";
@@ -2729,7 +2729,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Modifier_Wheeled_a.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Mortars: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Mortars";
@@ -2737,7 +2737,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Mortars.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Mortars_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Mortars";
@@ -2745,7 +2745,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Mortars_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Mortars_Air_Assaul: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Mortars - Air Assault";
@@ -2753,7 +2753,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Mortars_Air_Assaul.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Parachute: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Parachute";
@@ -2761,7 +2761,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Parachute.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Psychological_Oper: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Psychological Operations";
@@ -2769,7 +2769,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Psychological_Oper.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Radar: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Radar";
@@ -2777,7 +2777,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Radar.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance";
@@ -2785,7 +2785,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance";
@@ -2793,7 +2793,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance_Air: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance - Air Assault";
@@ -2801,7 +2801,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance_Air.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance_Air_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance - Airmobile";
@@ -2809,7 +2809,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance_Air_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance_Amp: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance - Amphibious";
@@ -2817,7 +2817,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance_Amp.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance_For: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance - Force Recon (USMC )";
@@ -2825,7 +2825,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance_For.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance_Lig: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance - Light";
@@ -2833,7 +2833,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance_Lig.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Reconnaissance_Mot: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Reconnaissance - Motorised";
@@ -2841,7 +2841,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Reconnaissance_Mot.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Signals_Electronic: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Signals - Electronic Ranging";
@@ -2849,7 +2849,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Signals_Electronic.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Signals_or_Communi: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Signals or Communication";
@@ -2857,7 +2857,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Signals_or_Communi.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Signals_or_Communi_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Signals or Communication";
@@ -2865,7 +2865,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Signals_or_Communi_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Sniper: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Sniper";
@@ -2873,7 +2873,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Sniper.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Engineers";
@@ -2881,7 +2881,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force";
@@ -2889,7 +2889,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force";
@@ -2897,7 +2897,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_4: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force - CBRN";
@@ -2905,7 +2905,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_4.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_5: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force - Ground";
@@ -2913,7 +2913,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_5.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_6: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force - SAS (UK) ()";
@@ -2921,7 +2921,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_6.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_7: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force - SEALs (USN)";
@@ -2929,7 +2929,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_7.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_8: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force - Special Forces";
@@ -2937,7 +2937,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_8.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_9: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Force - Special Forces";
@@ -2945,7 +2945,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_9.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_10: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Infantry ()";
@@ -2953,7 +2953,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_10.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Special_Operations_11: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Special Operations Reconnaissance";
@@ -2961,7 +2961,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Special_Operations_11.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Unspecified_or_Com: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Unspecified or Composite All-Arms";
@@ -2969,7 +2969,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Unspecified_or_Com.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Unspecified_or_Com_2: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Unspecified or Composite All-Arms";
@@ -2977,7 +2977,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Unspecified_or_Com_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Unspecified_or_Com_3: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Unspecified or Composite All-Arms";
@@ -2985,7 +2985,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Unspecified_or_Com_3.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Unspecified_or_Com_4: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Unspecified or Composite All-Arms";
@@ -2993,7 +2993,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Unspecified_or_Com_4.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Friendly_Unit_Unspecified_or_Com_5: AEE_MarkerBase {
         name = "AEE Friend Land Friendly Unit Unspecified or Composite All-Arms";
@@ -3001,7 +3001,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Friendly_Unit_Unspecified_or_Com_5.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat - Air Defence - Friendly";
@@ -3009,7 +3009,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Air_Def.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat - Anti-Armour - Friendly";
@@ -3017,7 +3017,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Anti_Ar.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat - Armour - Friendly";
@@ -3025,7 +3025,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Armour.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Friendly";
@@ -3033,7 +3033,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Enginee.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat - Engineer - Friendly";
@@ -3041,7 +3041,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Enginee_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat - Field Artillery - Friendly";
@@ -3049,7 +3049,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Field_A.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat Service Support - Friendly";
@@ -3057,7 +3057,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Service.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat Service Support - Supply - Class III - Friendly";
@@ -3065,7 +3065,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Service_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
         name = "AEE Friend Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Friendly";
@@ -3073,7 +3073,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FL_Ground_Track_Unit_Combat_Support.paa";
         side = 1;
         markerClass = "AEE_Friend_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Sea_Surface_Unit: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Sea Surface Unit";
@@ -3081,7 +3081,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Sea_Surface_Unit.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Sea_Surface_Unit_Solid: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Sea Surface Unit - Solid";
@@ -3089,7 +3089,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Sea_Surface_Unit_Solid.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Unit_Air_Naval_Gunfire: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Air Naval Gunfire Liaison Company (USMC)";
@@ -3097,7 +3097,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Unit_Air_Naval_Gunfire.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Unit_Air_Naval_Gunfire_2: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Air Naval Gunfire Liaison Company (USMC) (MCRP 5-2A)";
@@ -3105,7 +3105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Unit_Air_Naval_Gunfire_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Unit_Infantry_Naval_Inf: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Infantry - Naval Infantry";
@@ -3113,7 +3113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Unit_Infantry_Naval_Inf.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Unit_Infantry_Naval_Inf_2: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Infantry - Naval Infantry - Mechanized - Heavy";
@@ -3121,7 +3121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Unit_Infantry_Naval_Inf_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Unit_Military_Engineers: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Military Engineers - Construction Engineers - Naval";
@@ -3129,7 +3129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Unit_Military_Engineers.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Unit_Naval: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Naval";
@@ -3137,7 +3137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Unit_Naval.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FS_Friendly_Unit_Special_Operations: AEE_MarkerBase {
         name = "AEE Friend Sea Surface Friendly Unit Special Operations Force - Naval";
@@ -3145,7 +3145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FS_Friendly_Unit_Special_Operations.paa";
         side = 1;
         markerClass = "AEE_Friend_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FU_Friendly_Sub_surface_Sea_Unit: AEE_MarkerBase {
         name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit";
@@ -3153,7 +3153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit.paa";
         side = 1;
         markerClass = "AEE_Friend_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FU_Friendly_Sub_surface_Sea_Unit_2: AEE_MarkerBase {
         name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit";
@@ -3161,7 +3161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FU_Friendly_Sub_surface_Sea_Unit_So: AEE_MarkerBase {
         name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit - Solid";
@@ -3169,7 +3169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So.paa";
         side = 1;
         markerClass = "AEE_Friend_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_FU_Friendly_Sub_surface_Sea_Unit_So_2: AEE_MarkerBase {
         name = "AEE Friend Subsurface Friendly Sub-surface Sea Unit - Solid";
@@ -3177,7 +3177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_FU_Friendly_Sub_surface_Sea_Unit_So_2.paa";
         side = 1;
         markerClass = "AEE_Friend_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Enemy_Air_Unit: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Enemy Air Unit";
@@ -3185,7 +3185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Enemy_Air_Unit.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Enemy_Air_Unit_Solid: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Enemy Air Unit - Solid";
@@ -3193,7 +3193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Enemy_Air_Unit_Solid.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Enemy_Air_or_Space_Unit: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Enemy Air or Space Unit";
@@ -3201,7 +3201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Enemy_Air_or_Space_Unit.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Enemy_Air_or_Space_Unit_Solid: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Enemy Air or Space Unit - Solid";
@@ -3209,7 +3209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Enemy_Air_or_Space_Unit_Solid.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Hostile";
@@ -3217,7 +3217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Ground Track - Unit - Combat - Aviation - Hostile";
@@ -3225,7 +3225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Hostile";
@@ -3233,7 +3233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Ground_Track_Unit_Combat_Aviatio_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Airborne_Forces: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Airborne Forces";
@@ -3241,7 +3241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Airborne_Forces.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Anti_tank_Aviation: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Anti-tank Aviation";
@@ -3249,7 +3249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Anti_tank_Aviation.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation";
@@ -3257,7 +3257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_2: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation";
@@ -3265,7 +3265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_3: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation";
@@ -3273,7 +3273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Attack: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Attack";
@@ -3281,7 +3281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Attack.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Cargo: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Cargo";
@@ -3289,7 +3289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Cargo.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Fixed_Wing: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Fixed Wing";
@@ -3297,7 +3297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Fixed_Wing.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Fixed_Wing_2: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Fixed Wing";
@@ -3305,7 +3305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Fixed_Wing_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Fixed_Wing_3: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Fixed Wing - Attack";
@@ -3313,7 +3313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Fixed_Wing_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Fixed_and: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Fixed and Rotary Wing";
@@ -3321,7 +3321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Fixed_and.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Reconnaiss: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Reconnaissance";
@@ -3329,7 +3329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Reconnaiss.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Aviation_Utility: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Aviation - Utility";
@@ -3337,7 +3337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Aviation_Utility.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_CSS_Aviation_Mainte: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit CSS - Aviation Maintenance";
@@ -3345,7 +3345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_CSS_Aviation_Mainte.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_CSS_Aviation_Mainte_2: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit CSS - Aviation Maintenance";
@@ -3353,7 +3353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_CSS_Aviation_Mainte_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Infantry_Airborne: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Infantry - Airborne";
@@ -3361,7 +3361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Infantry_Airborne.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Infantry_Airborne_R: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Infantry - Airborne Ranger";
@@ -3369,7 +3369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Infantry_Airborne_R.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Military_Engineers: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Military Engineers - Airborne Engineer";
@@ -3377,7 +3377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Military_Engineers.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Modifier_Airborne: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Modifier - Airborne";
@@ -3385,7 +3385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Modifier_Airborne.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Reconnaissance_Airb: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Reconnaissance - Airborne";
@@ -3393,7 +3393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Reconnaissance_Airb.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Special_Operations: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Special Operations Aviation";
@@ -3401,7 +3401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Special_Operations.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Unmanned Aerial Vehicles";
@@ -3409,7 +3409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh_2: AEE_MarkerBase {
         name = "AEE Hostile Air/Space Hostile Unit Unmanned Aerial Vehicles";
@@ -3417,7 +3417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HA_Hostile_Unit_Unmanned_Aerial_Veh_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
         name = "AEE Hostile Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Hostile Framed";
@@ -3425,7 +3425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HE_Ground_Track_Equipment_Ground_Ve.paa";
         side = 0;
         markerClass = "AEE_Hostile_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
         name = "AEE Hostile Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Hostile Unframed";
@@ -3433,7 +3433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HE_Ground_Track_Equipment_Ground_Ve_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HI_Ground_Track_Installation_Milita: AEE_MarkerBase {
         name = "AEE Hostile Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Hostile";
@@ -3441,7 +3441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HI_Ground_Track_Installation_Milita.paa";
         side = 0;
         markerClass = "AEE_Hostile_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Hostile Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Hostile";
@@ -3449,7 +3449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HI_Ground_Track_Unit_Combat_Service.paa";
         side = 0;
         markerClass = "AEE_Hostile_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Enemy_Headquarters: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Headquarters";
@@ -3457,7 +3457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Enemy_Headquarters.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Enemy_Space_Unit: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Space Unit";
@@ -3465,7 +3465,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Enemy_Space_Unit.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Enemy_Space_Unit_Solid: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Space Unit - Solid";
@@ -3473,7 +3473,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Enemy_Space_Unit_Solid.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Enemy_Unit: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Unit";
@@ -3481,7 +3481,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Enemy_Unit.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Enemy_Unit_B_W: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Unit - B&W";
@@ -3489,7 +3489,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Enemy_Unit_B_W.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Enemy_Unit_Opaque: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Unit - Opaque";
@@ -3497,7 +3497,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Enemy_Unit_Opaque.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Enemy_Unit_Solid: AEE_MarkerBase {
         name = "AEE Hostile Land Enemy Unit - Solid";
@@ -3505,7 +3505,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Enemy_Unit_Solid.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat - Air Defence - Hostile";
@@ -3513,7 +3513,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Air_Def.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat - Anti-Armour - Hostile";
@@ -3521,7 +3521,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Anti_Ar.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat - Armour - Hostile";
@@ -3529,7 +3529,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Armour.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Hostile";
@@ -3537,7 +3537,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Enginee.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat - Engineer - Hostile";
@@ -3545,7 +3545,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Enginee_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat - Field Artillery - Hostile";
@@ -3553,7 +3553,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Field_A.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat Service Support - Hostile";
@@ -3561,7 +3561,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Service.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat Service Support - Supply - Class III - Hostile";
@@ -3569,7 +3569,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Service_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
         name = "AEE Hostile Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Hostile";
@@ -3577,7 +3577,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Ground_Track_Unit_Combat_Support.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_HOS_AIR: AEE_MarkerBase {
         name = "AEE Hostile Land HOS AIR";
@@ -3585,7 +3585,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_HOS_AIR.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_HOS_GND_EQP_SRF: AEE_MarkerBase {
         name = "AEE Hostile Land HOS GND+EQP+SRF";
@@ -3593,7 +3593,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_HOS_GND_EQP_SRF.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_HOS_INS: AEE_MarkerBase {
         name = "AEE Hostile Land HOS INS";
@@ -3601,7 +3601,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_HOS_INS.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_HOS_SUB: AEE_MarkerBase {
         name = "AEE Hostile Land HOS SUB";
@@ -3609,7 +3609,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_HOS_SUB.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_HOS_UNK: AEE_MarkerBase {
         name = "AEE Hostile Land HOS UNK";
@@ -3617,7 +3617,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_HOS_UNK.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Combat_Service_Support: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile - Combat Service Support";
@@ -3625,7 +3625,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Combat_Service_Support.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Explosive_Ordnance_Dispo: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile - Explosive Ordnance Disposal";
@@ -3633,7 +3633,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Explosive_Ordnance_Dispo.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence";
@@ -3641,7 +3641,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence";
@@ -3649,7 +3649,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Anti_Ta: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence & Anti-Tank (Canadian Usage)";
@@ -3657,7 +3657,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Anti_Ta.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Close_R: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence - Close Range Guns";
@@ -3665,7 +3665,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Close_R.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Guns: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence - Guns";
@@ -3673,7 +3673,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Guns.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Mechani: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence - Mechanized - Close Range Guns";
@@ -3681,7 +3681,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Mechani.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Mechani_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence - Mechanized - Missiles & Close Range Guns";
@@ -3689,7 +3689,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Mechani_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Missile: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence - Missiles";
@@ -3697,7 +3697,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Missile.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Missile_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence - Missiles & Close Range Guns";
@@ -3705,7 +3705,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Missile_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Air_Defence_Artille: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Air Defence Artillery ()";
@@ -3713,7 +3713,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Air_Defence_Artille.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank";
@@ -3721,7 +3721,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank";
@@ -3729,7 +3729,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank_Armoured: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank - Armoured";
@@ -3737,7 +3737,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Armoured.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank_Missiles: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank - Missiles";
@@ -3745,7 +3745,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Missiles.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank_Motorized: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank - Motorized";
@@ -3753,7 +3753,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Motorized.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank_Tank_Dest: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank - Tank Destroyers";
@@ -3761,7 +3761,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Tank_Dest.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank_Tank_Dest_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank - Tank Destroyers - Wheeled Agile";
@@ -3769,7 +3769,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Tank_Dest_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Anti_Tank_Artillery: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Anti-Tank Artillery";
@@ -3777,7 +3777,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Anti_Tank_Artillery.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour";
@@ -3785,7 +3785,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour";
@@ -3793,7 +3793,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour";
@@ -3801,7 +3801,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_Amphibious: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour - Amphibious";
@@ -3809,7 +3809,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_Amphibious.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_Amphibious_A: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour - Amphibious (ADRP 1-02 (2015 Dec 07))";
@@ -3817,7 +3817,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_Amphibious_A.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_Heavy: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour - Heavy";
@@ -3825,7 +3825,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_Heavy.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_Light: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour - Light";
@@ -3833,7 +3833,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_Light.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_Medium: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour - Medium";
@@ -3841,7 +3841,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_Medium.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armour_Wheeled_Agil: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armour - Wheeled Agile";
@@ -3849,7 +3849,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armour_Wheeled_Agil.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armoured_Reconnaiss: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armoured Reconnaissance";
@@ -3857,7 +3857,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armoured_Reconnaiss.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armoured_Reconnaiss_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armoured Reconnaissance - Cannon Equiped";
@@ -3865,7 +3865,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armoured_Reconnaiss_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armoured_Reconnaiss_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armoured Reconnaissance - Wheeled Cross Country";
@@ -3873,7 +3873,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armoured_Reconnaiss_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Armoured_Reconnaiss_4: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Armoured Reconnaissance - Wheeled Cross Country with Cannons";
@@ -3881,7 +3881,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Armoured_Reconnaiss_4.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery";
@@ -3889,7 +3889,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery";
@@ -3897,7 +3897,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Field_Sur: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Field Survey";
@@ -3905,7 +3905,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Field_Sur.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Field_Sur_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Field Survey (FM 101-5-1, 1997 September 30)";
@@ -3913,7 +3913,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Field_Sur_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Heavy: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Heavy";
@@ -3921,7 +3921,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Heavy.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Light: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Light";
@@ -3929,7 +3929,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Light.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Mechanize: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Mechanized";
@@ -3937,7 +3937,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Mechanize.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Mechanize_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Mechanized";
@@ -3945,7 +3945,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Mechanize_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Medium: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Medium";
@@ -3953,7 +3953,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Medium.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Mountain: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Mountain";
@@ -3961,7 +3961,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Mountain.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Observati: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Observation";
@@ -3969,7 +3969,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Observati.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Reconnais: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Reconnaissance";
@@ -3977,7 +3977,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Reconnais.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Rocket_La: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Rocket Launchers (MulitRocket)";
@@ -3985,7 +3985,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Rocket_La.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Rocket_La_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Rocket Launchers (MulitRocket) - Armoured";
@@ -3993,7 +3993,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Rocket_La_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Rocket_La_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Rocket Launchers (MulitRocket) - Wheeled Agile";
@@ -4001,7 +4001,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Rocket_La_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Target_Ac: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Target Acquisition - Mortar & Artillery Locating (Canadian Usage)";
@@ -4009,7 +4009,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Target_Ac.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Artillery_Target_Ac_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Artillery - Target Acquisition - Radar";
@@ -4017,7 +4017,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Artillery_Target_Ac_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CBRN: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CBRN";
@@ -4025,7 +4025,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CBRN.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Ammunition: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Ammunition";
@@ -4033,7 +4033,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Ammunition.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Ammunition_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Ammunition";
@@ -4041,7 +4041,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Ammunition_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Combat_Service: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Combat Service Support";
@@ -4049,7 +4049,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Combat_Service.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Combat_Service_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Combat Service Support";
@@ -4057,7 +4057,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Combat_Service_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Finance_or_Pay: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Finance or Pay Services Unit";
@@ -4065,7 +4065,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Finance_or_Pay.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Food_Services: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Food Services";
@@ -4073,7 +4073,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Food_Services.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Labour: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Labour";
@@ -4081,7 +4081,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Labour.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Labour_Pioneers: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Labour - Pioneers ()";
@@ -4089,7 +4089,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Labour_Pioneers.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Laundry_and_Bat: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Laundry and Bath";
@@ -4097,7 +4097,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Laundry_and_Bat.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Laundry_and_Bat_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Laundry and Bath and Decontamination";
@@ -4105,7 +4105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Laundry_and_Bat_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Maintenance: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Maintenance";
@@ -4113,7 +4113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Maintenance.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Maintenance_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Maintenance";
@@ -4121,7 +4121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Maintenance_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Ordnance: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Ordnance";
@@ -4129,7 +4129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Ordnance.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Personnel_Servi: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Personnel Services";
@@ -4137,7 +4137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Personnel_Servi.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Petroleum_Oil_L: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Petroleum Oil Lubricants";
@@ -4145,7 +4145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Petroleum_Oil_L.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Postal_Services: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Postal Services";
@@ -4153,7 +4153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Postal_Services.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Supply: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Supply";
@@ -4161,7 +4161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Supply.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Supply_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Supply";
@@ -4169,7 +4169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Supply_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Supply_Transpor: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Supply & Transport";
@@ -4177,7 +4177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Supply_Transpor.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Transport: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Transport";
@@ -4185,7 +4185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Transport.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Transport_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Transport";
@@ -4193,7 +4193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Transport_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Transport_Amphi: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Transport - Amphibious (ADRP 1-02 (2015 Dec 07))";
@@ -4201,7 +4201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Transport_Amphi.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_CSS_Water_Supply: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit CSS - Water Supply";
@@ -4209,7 +4209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_CSS_Water_Supply.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Combat_Support: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Combat Support";
@@ -4217,7 +4217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Combat_Support.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Combined_Manoeuvre: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Combined Manoeuvre Arms";
@@ -4225,7 +4225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Combined_Manoeuvre.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Combined_Manoeuvre_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Combined Manoeuvre Arms";
@@ -4233,7 +4233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Combined_Manoeuvre_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Electronic_Warfare: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Electronic Warfare";
@@ -4241,7 +4241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Electronic_Warfare.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Electronic_Warfare_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Electronic Warfare";
@@ -4249,7 +4249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Electronic_Warfare_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Electronic_Warfare_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Electronic Warfare - Jamming";
@@ -4257,7 +4257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Electronic_Warfare_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Explosive_Ordnance: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Explosive Ordnance Disposal";
@@ -4265,7 +4265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Explosive_Ordnance.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Gendarmerie_or_Inte: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Gendarmerie or Internal Security Force";
@@ -4273,7 +4273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Gendarmerie_or_Inte.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Gendarmerie_or_Inte_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Gendarmerie or Internal Security Force - Mechanized";
@@ -4281,7 +4281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Gendarmerie_or_Inte_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Headquarters_Servic: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Headquarters & Services Unit";
@@ -4289,7 +4289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Headquarters_Servic.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Headquarters_Signal: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Headquarters & Signals Unit";
@@ -4297,7 +4297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Headquarters_Signal.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Headquarters_Unit: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Headquarters Unit";
@@ -4305,7 +4305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Headquarters_Unit.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Horse_Cavalry: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Horse Cavalry";
@@ -4313,7 +4313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Horse_Cavalry.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Horse_Reconnaissanc: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Horse Reconnaissance";
@@ -4321,7 +4321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Horse_Reconnaissanc.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry";
@@ -4329,7 +4329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Air_Assaul: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Air Assault";
@@ -4337,7 +4337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Air_Assaul.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Airmobile: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Airmobile";
@@ -4345,7 +4345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Airmobile.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Amphibious: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Amphibious";
@@ -4353,7 +4353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Amphibious.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Amphibious_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Amphibious (ADRP 1-02 (2015 Dec 07))";
@@ -4361,7 +4361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Amphibious_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Arctic: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Arctic";
@@ -4369,7 +4369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Arctic.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Armoured: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Armoured";
@@ -4377,7 +4377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Armoured.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Combat_Sup: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Combat Support";
@@ -4385,7 +4385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Combat_Sup.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Combat_Sup_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Combat Support (NATP APP-6 Alternate)";
@@ -4393,7 +4393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Combat_Sup_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Heavy_Weap: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Heavy Weapons";
@@ -4401,7 +4401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Heavy_Weap.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Light_Infa: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Light Infantry";
@@ -4409,7 +4409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Light_Infa.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Mechanized: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Mechanized";
@@ -4417,7 +4417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Mechanized.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Mechanized_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Mechanized";
@@ -4425,7 +4425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Mechanized_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Mechanized_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Mechanized - Amphibious";
@@ -4433,7 +4433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Mechanized_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Mechanized_4: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Mechanized - Wheeled AFV";
@@ -4441,7 +4441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Mechanized_4.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Mechanized_5: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Mechanized - Wheeled APC";
@@ -4449,7 +4449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Mechanized_5.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Motorized: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Motorized";
@@ -4457,7 +4457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Motorized.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Mountain: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Mountain";
@@ -4465,7 +4465,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Mountain.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Mounted: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Mounted";
@@ -4473,7 +4473,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Mounted.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Pioneers: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Pioneers";
@@ -4481,7 +4481,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Pioneers.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Pioneers_N: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Pioneers (NATP APP-6)";
@@ -4489,7 +4489,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Pioneers_N.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Infantry_Snipers: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Infantry - Snipers";
@@ -4497,7 +4497,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Infantry_Snipers.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Marine_Air_Ground_T: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Marine Air Ground Task Force (USMC) (ADRP 1-02, 2015 Dec 07)";
@@ -4505,7 +4505,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Marine_Air_Ground_T.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Marine_Air_Ground_T_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Marine Air Ground Task Force (USMC) (MCRP 5-2A)";
@@ -4513,7 +4513,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Marine_Air_Ground_T_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Marines_Infantry: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Marines - Infantry";
@@ -4521,7 +4521,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Marines_Infantry.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Medical: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Medical";
@@ -4529,7 +4529,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Medical.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Medical_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Medical";
@@ -4537,7 +4537,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Medical_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Medical_Dental: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Medical - Dental";
@@ -4545,7 +4545,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Medical_Dental.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Medical_Hospital: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Medical - Hospital";
@@ -4553,7 +4553,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Medical_Hospital.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Meteorological_Serv: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Meteorological Services";
@@ -4561,7 +4561,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Meteorological_Serv.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Meteorological_Serv_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Meteorological Services";
@@ -4569,7 +4569,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Meteorological_Serv_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers";
@@ -4577,7 +4577,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Armoured Assault Bridging";
@@ -4585,7 +4585,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Armoured Assault Bridging (FM 101-5-1, 1997 September 30)";
@@ -4593,7 +4593,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_4: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Armoured Engineer";
@@ -4601,7 +4601,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_4.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_5: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Bridging";
@@ -4609,7 +4609,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_5.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_6: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Bridging (NATP APP-6)";
@@ -4617,7 +4617,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_6.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_7: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Bridging Engineers";
@@ -4625,7 +4625,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_7.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_8: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Bridging Engineers (FM 101-5-1, 1997 September 30)";
@@ -4633,7 +4633,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_8.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_9: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Combat Engineer - Tracked";
@@ -4641,7 +4641,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_9.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_10: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Combat Engineer - Wheeled Agile";
@@ -4649,7 +4649,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_10.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_11: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Combat Engineers";
@@ -4657,7 +4657,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_11.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_12: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Combat Engineers - Heavy";
@@ -4665,7 +4665,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_12.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_13: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Combat Engineers - Light";
@@ -4673,7 +4673,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_13.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_14: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Combat Engineers - Mechanized";
@@ -4681,7 +4681,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_14.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_15: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Combat Engineers - Medium";
@@ -4689,7 +4689,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_15.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_16: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Construction Engineers";
@@ -4697,7 +4697,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_16.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_17: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Construction Engineers - Air Force";
@@ -4705,7 +4705,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_17.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_18: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Divers";
@@ -4713,7 +4713,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_18.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_19: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Engineer Resources";
@@ -4721,7 +4721,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_19.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_20: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Explosive Ordnance Disposal ()";
@@ -4729,7 +4729,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_20.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_21: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Floating Bridging (FM 101-5-1, 1997 September 30)";
@@ -4737,7 +4737,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_21.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_22: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Motorized";
@@ -4745,7 +4745,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_22.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_23: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Reconnaissance";
@@ -4753,7 +4753,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_23.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_24: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Sappers ()";
@@ -4761,7 +4761,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_24.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Engineers_25: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Engineers - Topographic and Mapping (FM 101-5-1, 1997 September 30)";
@@ -4769,7 +4769,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Engineers_25.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Geomatics: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Geomatics - Mapping";
@@ -4777,7 +4777,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Geomatics.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Geomatics_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Geomatics - Mapping";
@@ -4785,7 +4785,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Geomatics_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Intelligen: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Intelligence";
@@ -4793,7 +4793,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Intelligen.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Police: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Police";
@@ -4801,7 +4801,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Police.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Military_Police_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Military Police";
@@ -4809,7 +4809,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Military_Police_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Missile_Surface_to: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Missile - Surface to Surface";
@@ -4817,7 +4817,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Missile_Surface_to.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Missile_Surface_to_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Missile - Surface to Surface";
@@ -4825,7 +4825,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Missile_Surface_to_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Modifier_Air_Assaul: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Modifier - Air Assault";
@@ -4833,7 +4833,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Modifier_Air_Assaul.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Modifier_Airmobile: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Modifier - Airmobile";
@@ -4841,7 +4841,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Modifier_Airmobile.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Modifier_Amphibious: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Modifier - Amphibious";
@@ -4849,7 +4849,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Modifier_Amphibious.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Modifier_Gun_System: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Modifier - Gun System Equiped";
@@ -4857,7 +4857,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Modifier_Gun_System.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Modifier_Motorized: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Modifier - Motorized";
@@ -4865,7 +4865,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Modifier_Motorized.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Modifier_Mountain: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Modifier - Mountain";
@@ -4873,7 +4873,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Modifier_Mountain.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Modifier_Wheeled_Cr: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Modifier - Wheeled CrossCountry";
@@ -4881,7 +4881,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Modifier_Wheeled_Cr.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Mortars: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Mortars";
@@ -4889,7 +4889,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Mortars.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Mortars_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Mortars";
@@ -4897,7 +4897,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Mortars_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Mortars_Air_Assault: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Mortars - Air Assault";
@@ -4905,7 +4905,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Mortars_Air_Assault.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Parachute: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Parachute";
@@ -4913,7 +4913,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Parachute.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Psychological_Opera: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Psychological Operations";
@@ -4921,7 +4921,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Psychological_Opera.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Radar: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Radar";
@@ -4929,7 +4929,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Radar.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance";
@@ -4937,7 +4937,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance";
@@ -4945,7 +4945,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance_Air: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance - Air Assault";
@@ -4953,7 +4953,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance_Air.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance_Airm: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance - Airmobile";
@@ -4961,7 +4961,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance_Airm.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance_Amph: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance - Amphibious";
@@ -4969,7 +4969,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance_Amph.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance_Forc: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance - Force Recon (USMC )";
@@ -4977,7 +4977,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance_Forc.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance_Ligh: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance - Light";
@@ -4985,7 +4985,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance_Ligh.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Reconnaissance_Moto: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Reconnaissance - Motorised";
@@ -4993,7 +4993,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Reconnaissance_Moto.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Signals_Electronic: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Signals - Electronic Ranging";
@@ -5001,7 +5001,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Signals_Electronic.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Signals_or_Communic: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Signals or Communication";
@@ -5009,7 +5009,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Signals_or_Communic.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Signals_or_Communic_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Signals or Communication";
@@ -5017,7 +5017,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Signals_or_Communic_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Sniper: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Sniper";
@@ -5025,7 +5025,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Sniper.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Engineers";
@@ -5033,7 +5033,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Force";
@@ -5041,7 +5041,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Force";
@@ -5049,7 +5049,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_4: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Force - CBRN";
@@ -5057,7 +5057,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_4.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_5: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Force - Ground";
@@ -5065,7 +5065,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_5.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_6: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Force - Special Forces";
@@ -5073,7 +5073,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_6.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_7: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Force - Special Forces";
@@ -5081,7 +5081,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_7.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_8: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Infantry ()";
@@ -5089,7 +5089,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_8.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Special_Operations_9: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Special Operations Reconnaissance";
@@ -5097,7 +5097,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Special_Operations_9.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Unspecified_or_Comp: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Unspecified or Composite All-Arms";
@@ -5105,7 +5105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Unspecified_or_Comp.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Unspecified_or_Comp_2: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Unspecified or Composite All-Arms";
@@ -5113,7 +5113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Unspecified_or_Comp_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Unspecified_or_Comp_3: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Unspecified or Composite All-Arms";
@@ -5121,7 +5121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Unspecified_or_Comp_3.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Unspecified_or_Comp_4: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Unspecified or Composite All-Arms";
@@ -5129,7 +5129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Unspecified_or_Comp_4.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HL_Hostile_Unit_Unspecified_or_Comp_5: AEE_MarkerBase {
         name = "AEE Hostile Land Hostile Unit Unspecified or Composite All-Arms";
@@ -5137,7 +5137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HL_Hostile_Unit_Unspecified_or_Comp_5.paa";
         side = 0;
         markerClass = "AEE_Hostile_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HS_Hostile_Unit_Air_Naval_Gunfire_L: AEE_MarkerBase {
         name = "AEE Hostile Sea Surface Hostile Unit Air Naval Gunfire Liaison Company (USMC)";
@@ -5145,7 +5145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HS_Hostile_Unit_Air_Naval_Gunfire_L.paa";
         side = 0;
         markerClass = "AEE_Hostile_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HS_Hostile_Unit_Air_Naval_Gunfire_L_2: AEE_MarkerBase {
         name = "AEE Hostile Sea Surface Hostile Unit Air Naval Gunfire Liaison Company (USMC) (MCRP 5-2A)";
@@ -5153,7 +5153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HS_Hostile_Unit_Air_Naval_Gunfire_L_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HS_Hostile_Unit_Infantry_Naval_Infa: AEE_MarkerBase {
         name = "AEE Hostile Sea Surface Hostile Unit Infantry - Naval Infantry";
@@ -5161,7 +5161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HS_Hostile_Unit_Infantry_Naval_Infa.paa";
         side = 0;
         markerClass = "AEE_Hostile_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HS_Hostile_Unit_Military_Engineers: AEE_MarkerBase {
         name = "AEE Hostile Sea Surface Hostile Unit Military Engineers - Construction Engineers - Naval";
@@ -5169,7 +5169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HS_Hostile_Unit_Military_Engineers.paa";
         side = 0;
         markerClass = "AEE_Hostile_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HS_Hostile_Unit_Naval: AEE_MarkerBase {
         name = "AEE Hostile Sea Surface Hostile Unit Naval";
@@ -5177,7 +5177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HS_Hostile_Unit_Naval.paa";
         side = 0;
         markerClass = "AEE_Hostile_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HS_Hostile_Unit_Special_Operations: AEE_MarkerBase {
         name = "AEE Hostile Sea Surface Hostile Unit Special Operations Force - Naval";
@@ -5185,7 +5185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HS_Hostile_Unit_Special_Operations.paa";
         side = 0;
         markerClass = "AEE_Hostile_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HU_Enemy_Sub_surface_Sea_Unit: AEE_MarkerBase {
         name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit";
@@ -5193,7 +5193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit.paa";
         side = 0;
         markerClass = "AEE_Hostile_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HU_Enemy_Sub_surface_Sea_Unit_2: AEE_MarkerBase {
         name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit";
@@ -5201,7 +5201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid: AEE_MarkerBase {
         name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit - Solid";
@@ -5209,7 +5209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid.paa";
         side = 0;
         markerClass = "AEE_Hostile_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid_2: AEE_MarkerBase {
         name = "AEE Hostile Subsurface Enemy Sub-surface Sea Unit - Solid";
@@ -5217,7 +5217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_HU_Enemy_Sub_surface_Sea_Unit_Solid_2.paa";
         side = 0;
         markerClass = "AEE_Hostile_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Neutral";
@@ -5225,7 +5225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Ground Track - Unit - Combat - Aviation - Neutral";
@@ -5233,7 +5233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Neutral";
@@ -5241,7 +5241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Ground_Track_Unit_Combat_Aviatio_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Air_Unit: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Air Unit";
@@ -5249,7 +5249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Air_Unit.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Air_or_Space_Unit: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Air or Space Unit";
@@ -5257,7 +5257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Air_or_Space_Unit.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Airborne_Forces: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Airborne Forces";
@@ -5265,7 +5265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Airborne_Forces.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Anti_tank_Aviation: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Anti-tank Aviation";
@@ -5273,7 +5273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Anti_tank_Aviation.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation";
@@ -5281,7 +5281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_2: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation";
@@ -5289,7 +5289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_3: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation";
@@ -5297,7 +5297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Attack: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Attack";
@@ -5305,7 +5305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Attack.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Cargo: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Cargo";
@@ -5313,7 +5313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Cargo.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Fixed_Wing: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Fixed Wing";
@@ -5321,7 +5321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Fixed_Wing.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Fixed_Wing_2: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Fixed Wing";
@@ -5329,7 +5329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Fixed_Wing_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Fixed_Wing_3: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Fixed Wing - Attack";
@@ -5337,7 +5337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Fixed_Wing_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Fixed_and: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Fixed and Rotary Wing";
@@ -5345,7 +5345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Fixed_and.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Reconnaiss: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Reconnaissance";
@@ -5353,7 +5353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Reconnaiss.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Aviation_Utility: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Aviation - Utility";
@@ -5361,7 +5361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Aviation_Utility.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_CSS_Aviation_Mainte: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit CSS - Aviation Maintenance";
@@ -5369,7 +5369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_CSS_Aviation_Mainte.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_CSS_Aviation_Mainte_2: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit CSS - Aviation Maintenance";
@@ -5377,7 +5377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_CSS_Aviation_Mainte_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Infantry_Airborne: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Infantry - Airborne";
@@ -5385,7 +5385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Infantry_Airborne.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Infantry_Airborne_R: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Infantry - Airborne Ranger";
@@ -5393,7 +5393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Infantry_Airborne_R.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Modifier_Airborne: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Modifier - Airborne";
@@ -5401,7 +5401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Modifier_Airborne.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh: AEE_MarkerBase {
         name = "AEE Neutral Air/Space Neutral Unit Unmanned Aerial Vehicles";
@@ -5409,7 +5409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NA_Neutral_Unit_Unmanned_Aerial_Veh.paa";
         side = 2;
         markerClass = "AEE_Neutral_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
         name = "AEE Neutral Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Neutral Framed";
@@ -5417,7 +5417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NE_Ground_Track_Equipment_Ground_Ve.paa";
         side = 2;
         markerClass = "AEE_Neutral_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
         name = "AEE Neutral Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Neutral Unframed";
@@ -5425,7 +5425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NE_Ground_Track_Equipment_Ground_Ve_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NI_Ground_Track_Installation_Milita: AEE_MarkerBase {
         name = "AEE Neutral Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Neutral";
@@ -5433,7 +5433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NI_Ground_Track_Installation_Milita.paa";
         side = 2;
         markerClass = "AEE_Neutral_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Neutral Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Neutral";
@@ -5441,7 +5441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NI_Ground_Track_Unit_Combat_Service.paa";
         side = 2;
         markerClass = "AEE_Neutral_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat - Air Defence - Neutral";
@@ -5449,7 +5449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Air_Def.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat - Anti-Armour - Neutral";
@@ -5457,7 +5457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Anti_Ar.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat - Armour - Neutral";
@@ -5465,7 +5465,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Armour.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Neutral";
@@ -5473,7 +5473,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Enginee.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat - Engineer - Neutral";
@@ -5481,7 +5481,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Enginee_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat - Field Artillery - Howitzer+Gun - Neutral";
@@ -5489,7 +5489,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Field_A.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat Service Support - Neutral";
@@ -5497,7 +5497,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Service.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat Service Support - Supply - Class III - Neutral";
@@ -5505,7 +5505,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Service_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
         name = "AEE Neutral Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Neutral";
@@ -5513,7 +5513,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Ground_Track_Unit_Combat_Support.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_NEU_AIR: AEE_MarkerBase {
         name = "AEE Neutral Land NEU AIR";
@@ -5521,7 +5521,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_NEU_AIR.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_NEU_GND_EQP_SRF: AEE_MarkerBase {
         name = "AEE Neutral Land NEU GND+EQP+SRF";
@@ -5529,7 +5529,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_NEU_GND_EQP_SRF.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_NEU_INS: AEE_MarkerBase {
         name = "AEE Neutral Land NEU INS";
@@ -5537,7 +5537,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_NEU_INS.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_NEU_SUB: AEE_MarkerBase {
         name = "AEE Neutral Land NEU SUB";
@@ -5545,7 +5545,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_NEU_SUB.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_NEU_UNK: AEE_MarkerBase {
         name = "AEE Neutral Land NEU UNK";
@@ -5553,7 +5553,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_NEU_UNK.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Combat_Service_Support: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral - Combat Service Support";
@@ -5561,7 +5561,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Combat_Service_Support.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Electronic_Warfare: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral - Electronic Warfare";
@@ -5569,7 +5569,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Electronic_Warfare.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence";
@@ -5577,7 +5577,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence";
@@ -5585,7 +5585,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Anti_Ta: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence & Anti-Tank (Canadian Usage)";
@@ -5593,7 +5593,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Anti_Ta.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Close_R: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence - Close Range Guns";
@@ -5601,7 +5601,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Close_R.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Guns: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence - Guns";
@@ -5609,7 +5609,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Guns.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Mechani: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence - Mechanized - Close Range Guns";
@@ -5617,7 +5617,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Mechani.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Mechani_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence - Mechanized - Missiles & Close Range Guns";
@@ -5625,7 +5625,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Mechani_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Missile: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence - Missiles";
@@ -5633,7 +5633,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Missile.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Missile_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence - Missiles & Close Range Guns";
@@ -5641,7 +5641,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Missile_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Air_Defence_Artille: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Air Defence Artillery ()";
@@ -5649,7 +5649,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Air_Defence_Artille.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank";
@@ -5657,7 +5657,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank";
@@ -5665,7 +5665,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank_Armoured: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank - Armoured";
@@ -5673,7 +5673,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Armoured.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank_Missiles: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank - Missiles";
@@ -5681,7 +5681,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Missiles.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank_Motorized: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank - Motorized";
@@ -5689,7 +5689,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Motorized.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank_Tank_Dest: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank - Tank Destroyers";
@@ -5697,7 +5697,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Tank_Dest.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank_Tank_Dest_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank - Tank Destroyers - Wheeled Agile";
@@ -5705,7 +5705,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Tank_Dest_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Anti_Tank_Artillery: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Anti-Tank Artillery";
@@ -5713,7 +5713,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Anti_Tank_Artillery.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour";
@@ -5721,7 +5721,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour";
@@ -5729,7 +5729,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour_Amphibious: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour - Amphibious";
@@ -5737,7 +5737,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour_Amphibious.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour_Amphibious_A: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour - Amphibious (ADRP 1-02 (2015 Dec 07))";
@@ -5745,7 +5745,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour_Amphibious_A.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour_Heavy: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour - Heavy";
@@ -5753,7 +5753,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour_Heavy.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour_Light: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour - Light";
@@ -5761,7 +5761,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour_Light.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour_Medium: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour - Medium";
@@ -5769,7 +5769,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour_Medium.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armour_Wheeled_Agil: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armour - Wheeled Agile";
@@ -5777,7 +5777,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armour_Wheeled_Agil.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armoured_Reconnaiss: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armoured Reconnaissance";
@@ -5785,7 +5785,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armoured_Reconnaiss.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armoured_Reconnaiss_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armoured Reconnaissance - Cannon Equiped";
@@ -5793,7 +5793,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armoured_Reconnaiss_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armoured_Reconnaiss_3: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armoured Reconnaissance - Wheeled Cross Country";
@@ -5801,7 +5801,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armoured_Reconnaiss_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Armoured_Reconnaiss_4: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Armoured Reconnaissance - Wheeled Cross Country with Cannons";
@@ -5809,7 +5809,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Armoured_Reconnaiss_4.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery";
@@ -5817,7 +5817,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery";
@@ -5825,7 +5825,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Field_Sur: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Field Survey";
@@ -5833,7 +5833,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Field_Sur.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Field_Sur_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Field Survey (FM 101-5-1, 1997 September 30)";
@@ -5841,7 +5841,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Field_Sur_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Heavy: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Heavy";
@@ -5849,7 +5849,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Heavy.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Light: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Light";
@@ -5857,7 +5857,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Light.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Mechanize: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Mechanized";
@@ -5865,7 +5865,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Mechanize.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Mechanize_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Mechanized";
@@ -5873,7 +5873,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Mechanize_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Medium: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Medium";
@@ -5881,7 +5881,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Medium.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Mountain: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Mountain";
@@ -5889,7 +5889,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Mountain.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Observati: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Observation";
@@ -5897,7 +5897,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Observati.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Reconnais: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Reconnaissance";
@@ -5905,7 +5905,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Reconnais.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Rocket_La: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Rocket Launchers (MulitRocket)";
@@ -5913,7 +5913,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Rocket_La.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Rocket_La_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Rocket Launchers (MulitRocket) - Armoured";
@@ -5921,7 +5921,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Rocket_La_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Rocket_La_3: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Rocket Launchers (MulitRocket) - Wheeled Agile";
@@ -5929,7 +5929,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Rocket_La_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Target_Ac: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Target Acquisition - Mortar & Artillery Locating (Canadian Usage)";
@@ -5937,7 +5937,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Target_Ac.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Artillery_Target_Ac_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Artillery - Target Acquisition - Radar";
@@ -5945,7 +5945,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Artillery_Target_Ac_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CBRN: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CBRN";
@@ -5953,7 +5953,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CBRN.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Ammunition: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Ammunition";
@@ -5961,7 +5961,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Ammunition.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Ammunition_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Ammunition";
@@ -5969,7 +5969,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Ammunition_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Combat_Service: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Combat Service Support";
@@ -5977,7 +5977,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Combat_Service.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Combat_Service_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Combat Service Support";
@@ -5985,7 +5985,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Combat_Service_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Finance_or_Pay: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Finance or Pay Services Unit";
@@ -5993,7 +5993,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Finance_or_Pay.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Food_Services: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Food Services";
@@ -6001,7 +6001,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Food_Services.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Labour: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Labour";
@@ -6009,7 +6009,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Labour.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Labour_Pioneers: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Labour - Pioneers ()";
@@ -6017,7 +6017,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Labour_Pioneers.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Laundry_and_Bat: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Laundry and Bath";
@@ -6025,7 +6025,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Laundry_and_Bat.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Laundry_and_Bat_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Laundry and Bath and Decontamination";
@@ -6033,7 +6033,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Laundry_and_Bat_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Maintenance: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Maintenance";
@@ -6041,7 +6041,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Maintenance.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Maintenance_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Maintenance";
@@ -6049,7 +6049,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Maintenance_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Ordnance: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Ordnance";
@@ -6057,7 +6057,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Ordnance.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Personnel_Servi: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Personnel Services";
@@ -6065,7 +6065,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Personnel_Servi.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Petroleum_Oil_L: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Petroleum Oil Lubricants";
@@ -6073,7 +6073,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Petroleum_Oil_L.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Postal_Services: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Postal Services";
@@ -6081,7 +6081,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Postal_Services.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Supply: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Supply";
@@ -6089,7 +6089,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Supply.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Supply_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Supply";
@@ -6097,7 +6097,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Supply_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Supply_Transpor: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Supply & Transport";
@@ -6105,7 +6105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Supply_Transpor.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Transport: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Transport";
@@ -6113,7 +6113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Transport.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Transport_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Transport";
@@ -6121,7 +6121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Transport_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Transport_Amphi: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Transport - Amphibious (ADRP 1-02 (2015 Dec 07))";
@@ -6129,7 +6129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Transport_Amphi.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_CSS_Water_Supply: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit CSS - Water Supply";
@@ -6137,7 +6137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_CSS_Water_Supply.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Civil_Police: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Civil Police";
@@ -6145,7 +6145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Civil_Police.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Combat_Support: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Combat Support";
@@ -6153,7 +6153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Combat_Support.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Combined_Manoeuvre: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Combined Manoeuvre Arms";
@@ -6161,7 +6161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Combined_Manoeuvre.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Combined_Manoeuvre_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Combined Manoeuvre Arms";
@@ -6169,7 +6169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Combined_Manoeuvre_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Electronic_Warfare: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Electronic Warfare";
@@ -6177,7 +6177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Electronic_Warfare.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Electronic_Warfare_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Electronic Warfare";
@@ -6185,7 +6185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Electronic_Warfare_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Electronic_Warfare_3: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Electronic Warfare - Jamming";
@@ -6193,7 +6193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Electronic_Warfare_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Explosive_Ordnance: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Explosive Ordnance Disposal";
@@ -6201,7 +6201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Explosive_Ordnance.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Gendarmerie_or_Inte: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Gendarmerie or Internal Security Force";
@@ -6209,7 +6209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Gendarmerie_or_Inte.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Gendarmerie_or_Inte_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Gendarmerie or Internal Security Force - Mechanized";
@@ -6217,7 +6217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Gendarmerie_or_Inte_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Headquarters_Servic: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Headquarters & Services Unit";
@@ -6225,7 +6225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Headquarters_Servic.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Headquarters_Signal: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Headquarters & Signals Unit";
@@ -6233,7 +6233,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Headquarters_Signal.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Headquarters_Unit: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Headquarters Unit";
@@ -6241,7 +6241,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Headquarters_Unit.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Horse_Cavalry: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Horse Cavalry";
@@ -6249,7 +6249,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Horse_Cavalry.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Horse_Reconnaissanc: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Horse Reconnaissance";
@@ -6257,7 +6257,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Horse_Reconnaissanc.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry";
@@ -6265,7 +6265,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Air_Assaul: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Air Assault";
@@ -6273,7 +6273,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Air_Assaul.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Airmobile: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Airmobile";
@@ -6281,7 +6281,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Airmobile.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Amphibious: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Amphibious";
@@ -6289,7 +6289,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Amphibious.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Amphibious_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Amphibious (ADRP 1-02 (2015 Dec 07))";
@@ -6297,7 +6297,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Amphibious_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Arctic: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Arctic";
@@ -6305,7 +6305,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Arctic.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Armoured: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Armoured";
@@ -6313,7 +6313,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Armoured.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Combat_Sup: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Combat Support";
@@ -6321,7 +6321,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Combat_Sup.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Combat_Sup_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Combat Support";
@@ -6329,7 +6329,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Combat_Sup_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Combat_Sup_3: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Combat Support (NATP APP-6)";
@@ -6337,7 +6337,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Combat_Sup_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Infantry_Heavy_Weap: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Infantry - Heavy Weapons";
@@ -6345,7 +6345,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Infantry_Heavy_Weap.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Medical: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Medical";
@@ -6353,7 +6353,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Medical.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Medical_Hospital: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Medical - Hospital";
@@ -6361,7 +6361,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Medical_Hospital.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Meteorological_Serv: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Meteorological Services";
@@ -6369,7 +6369,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Meteorological_Serv.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Military_Engineers: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Military Engineers";
@@ -6377,7 +6377,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Military_Engineers.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Military_Engineers_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Military Engineers - Bridging (NATP APP-6)";
@@ -6385,7 +6385,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Military_Engineers_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Military_Geomatics: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Military Geomatics - Mapping";
@@ -6393,7 +6393,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Military_Geomatics.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Military_Police: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Military Police";
@@ -6401,7 +6401,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Military_Police.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Missile_Surface_to: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Missile - Surface to Surface";
@@ -6409,7 +6409,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Missile_Surface_to.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Modifier_Air_Assaul: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Modifier - Air Assault";
@@ -6417,7 +6417,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Modifier_Air_Assaul.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Modifier_Airmobile: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Modifier - Airmobile";
@@ -6425,7 +6425,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Modifier_Airmobile.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Modifier_Amphibious: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Modifier - Amphibious";
@@ -6433,7 +6433,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Modifier_Amphibious.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Modifier_Gun_System: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Modifier - Gun System Equiped";
@@ -6441,7 +6441,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Modifier_Gun_System.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Modifier_Motorized: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Modifier - Motorized";
@@ -6449,7 +6449,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Modifier_Motorized.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Modifier_Mountain: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Modifier - Mountain";
@@ -6457,7 +6457,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Modifier_Mountain.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Modifier_Wheeled_Cr: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Modifier - Wheeled CrossCountry";
@@ -6465,7 +6465,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Modifier_Wheeled_Cr.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Mortars: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Mortars";
@@ -6473,7 +6473,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Mortars.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Parachute: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Parachute";
@@ -6481,7 +6481,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Parachute.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Psychological_Opera: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Psychological Operations";
@@ -6489,7 +6489,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Psychological_Opera.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Radar: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Radar";
@@ -6497,7 +6497,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Radar.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Reconnaissance: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Reconnaissance";
@@ -6505,7 +6505,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Reconnaissance.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Signals_Electronic: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Signals - Electronic Ranging";
@@ -6513,7 +6513,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Signals_Electronic.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Signals_or_Communic: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Signals or Communication";
@@ -6521,7 +6521,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Signals_or_Communic.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Special_Operations: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Special Operations Force";
@@ -6529,7 +6529,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Special_Operations.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Special_Operations_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Special Operations Force - Special Forces";
@@ -6537,7 +6537,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Special_Operations_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Unspecified_or_Comp: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Unspecified or Composite All-Arms";
@@ -6545,7 +6545,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Unspecified_or_Comp.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Unspecified_or_Comp_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Unspecified or Composite All-Arms";
@@ -6553,7 +6553,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Unspecified_or_Comp_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_Unit_Unspecified_or_Comp_3: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral Unit Unspecified or Composite All-Arms";
@@ -6561,7 +6561,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_Unit_Unspecified_or_Comp_3.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_or_Unaligned_Headquarter: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral or Unaligned Headquarters";
@@ -6569,7 +6569,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_or_Unaligned_Headquarter.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_or_Unaligned_or_Unallied: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral or Unaligned or Unallied Unit - B&W";
@@ -6577,7 +6577,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_or_Unaligned_or_Unallied.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NL_Neutral_or_Unaligned_or_Unallied_2: AEE_MarkerBase {
         name = "AEE Neutral Land Neutral or Unaligned or Unallied Unit - Solid";
@@ -6585,7 +6585,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NL_Neutral_or_Unaligned_or_Unallied_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L: AEE_MarkerBase {
         name = "AEE Neutral Sea Surface Neutral Unit Air Naval Gunfire Liaison Company (USMC)";
@@ -6593,7 +6593,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L.paa";
         side = 2;
         markerClass = "AEE_Neutral_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L_2: AEE_MarkerBase {
         name = "AEE Neutral Sea Surface Neutral Unit Air Naval Gunfire Liaison Company (USMC) (MCRP 5-2A)";
@@ -6601,7 +6601,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NS_Neutral_Unit_Air_Naval_Gunfire_L_2.paa";
         side = 2;
         markerClass = "AEE_Neutral_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NS_Neutral_Unit_Naval: AEE_MarkerBase {
         name = "AEE Neutral Sea Surface Neutral Unit Naval";
@@ -6609,7 +6609,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NS_Neutral_Unit_Naval.paa";
         side = 2;
         markerClass = "AEE_Neutral_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_NU_Neutral_Sub_surface_Sea_Unit: AEE_MarkerBase {
         name = "AEE Neutral Subsurface Neutral Sub-surface Sea Unit";
@@ -6617,7 +6617,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_NU_Neutral_Sub_surface_Sea_Unit.paa";
         side = 2;
         markerClass = "AEE_Neutral_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Ground_Track_Unit_Combat_Aviatio: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Ground Track - Unit - Combat - Aviation - Fixed Wing - Unknown";
@@ -6625,7 +6625,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Ground_Track_Unit_Combat_Aviatio_2: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Ground Track - Unit - Combat - Aviation - Rotary Wing - Unknown";
@@ -6633,7 +6633,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Ground_Track_Unit_Combat_Aviatio_3: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Ground Track - Unit - Combat - Aviation - Unknown";
@@ -6641,7 +6641,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Ground_Track_Unit_Combat_Aviatio_3.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Unknown_Aligned_Unit_Aviation: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Unknown Aligned Unit Aviation";
@@ -6649,7 +6649,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Unknown_Aligned_Unit_Aviation.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Unknown_Aligned_Unit_Aviation_Fi: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Unknown Aligned Unit Aviation - Fixed Wing";
@@ -6657,7 +6657,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Unknown_Aligned_Unit_Aviation_Fi.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Unknown_Aligned_Unit_Modifier_Ai: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Unknown Aligned Unit Modifier - Airborne";
@@ -6665,7 +6665,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Unknown_Aligned_Unit_Modifier_Ai.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Unknown_Aligned_Unit_Unmanned_Ae: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Unknown Aligned Unit Unmanned Aerial Vehicles";
@@ -6673,7 +6673,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Unknown_Aligned_Unit_Unmanned_Ae.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Unknown_Allegiance_Air_or_Space: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Unknown Allegiance Air or Space Unit";
@@ -6681,7 +6681,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UA_Unknown_Allegiance_Air_or_Space_2: AEE_MarkerBase {
         name = "AEE Unknown Air/Space Unknown Allegiance Air or Space Unit - Solid";
@@ -6689,7 +6689,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UA_Unknown_Allegiance_Air_or_Space_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Air";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UE_Ground_Track_Equipment_Ground_Ve: AEE_MarkerBase {
         name = "AEE Unknown Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Unknown Framed";
@@ -6697,7 +6697,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve.paa";
         side = 2;
         markerClass = "AEE_Unknown_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UE_Ground_Track_Equipment_Ground_Ve_2: AEE_MarkerBase {
         name = "AEE Unknown Equipment Ground Track - Equipment - Ground Vehicle - Engineer Vehicle - Bridge - Unknown Unframed";
@@ -6705,7 +6705,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UE_Ground_Track_Equipment_Ground_Ve_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Equipment";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UI_Ground_Track_Installation_Milita: AEE_MarkerBase {
         name = "AEE Unknown Installation Ground Track - Installation - Military Matériel Facility - Engineering Equipment Production - Bridge - Unknown";
@@ -6713,7 +6713,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UI_Ground_Track_Installation_Milita.paa";
         side = 2;
         markerClass = "AEE_Unknown_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UI_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Unknown Installation Ground Track - Unit - Combat Service Support - Medical - Medical Treatment Facility - Unknown";
@@ -6721,7 +6721,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UI_Ground_Track_Unit_Combat_Service.paa";
         side = 2;
         markerClass = "AEE_Unknown_Installation";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Air_Def: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat - Air Defence - Unknown";
@@ -6729,7 +6729,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Air_Def.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Anti_Ar: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat - Anti-Armour - Unknown";
@@ -6737,7 +6737,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Anti_Ar.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Armour: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat - Armour - Unknown";
@@ -6745,7 +6745,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Armour.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Enginee: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat - Engineer - Combat - Mechanised (Tracked) - Unknown";
@@ -6753,7 +6753,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Enginee_2: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat - Engineer - Unknown";
@@ -6761,7 +6761,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Enginee_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Field_A: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat - Field Artillery - Unknown";
@@ -6769,7 +6769,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Field_A.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Service: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat Service Support - Supply - Class III - Unknown";
@@ -6777,7 +6777,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Service.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Service_2: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat Service Support - Unknown";
@@ -6785,7 +6785,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Service_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Ground_Track_Unit_Combat_Support: AEE_MarkerBase {
         name = "AEE Unknown Land Ground Track - Unit - Combat Support - Military Intelligence - Signal Intelligence - Electronic Warfare - Unknown";
@@ -6793,7 +6793,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Ground_Track_Unit_Combat_Support.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_UNK_AIR: AEE_MarkerBase {
         name = "AEE Unknown Land UNK AIR";
@@ -6801,7 +6801,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_UNK_AIR.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_UNK_GND_EQP_SRF: AEE_MarkerBase {
         name = "AEE Unknown Land UNK GND+EQP+SRF";
@@ -6809,7 +6809,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_UNK_GND_EQP_SRF.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_UNK_INS: AEE_MarkerBase {
         name = "AEE Unknown Land UNK INS";
@@ -6817,7 +6817,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_UNK_INS.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_UNK_SUB: AEE_MarkerBase {
         name = "AEE Unknown Land UNK SUB";
@@ -6825,7 +6825,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_UNK_SUB.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_UNK_UNK: AEE_MarkerBase {
         name = "AEE Unknown Land UNK UNK";
@@ -6833,7 +6833,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_UNK_UNK.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Air_Defence: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Air Defence";
@@ -6841,7 +6841,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Air_Defence.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Anti_Tank: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Anti-Tank";
@@ -6849,7 +6849,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Anti_Tank.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Armour: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Armour";
@@ -6857,7 +6857,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Armour.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Artillery: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Artillery";
@@ -6865,7 +6865,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Artillery.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CBRN: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CBRN";
@@ -6873,7 +6873,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CBRN.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CSS_Ammunit: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CSS - Ammunition";
@@ -6881,7 +6881,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CSS_Ammunit.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CSS_Combat: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CSS - Combat Service Support";
@@ -6889,7 +6889,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CSS_Combat.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CSS_Mainten: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CSS - Maintenance";
@@ -6897,7 +6897,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CSS_Mainten.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CSS_Ordnanc: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CSS - Ordnance";
@@ -6905,7 +6905,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CSS_Ordnanc.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CSS_Petrole: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CSS - Petroleum Oil Lubricants";
@@ -6913,7 +6913,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CSS_Petrole.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CSS_Supply: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CSS - Supply";
@@ -6921,7 +6921,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CSS_Supply.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_CSS_Transpo: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit CSS - Transport";
@@ -6929,7 +6929,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_CSS_Transpo.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Combined_Ma: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Combined Manoeuvre Arms";
@@ -6937,7 +6937,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Combined_Ma.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Electronic: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Electronic Warfare";
@@ -6945,7 +6945,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Electronic.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Explosive_O: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Explosive Ordnance Disposal";
@@ -6953,7 +6953,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Explosive_O.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Headquarter: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Headquarters Unit";
@@ -6961,7 +6961,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Headquarter.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Infantry: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Infantry";
@@ -6969,7 +6969,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Infantry.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Medical: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Medical";
@@ -6977,7 +6977,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Medical.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Medical_Hos: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Medical - Hospital";
@@ -6985,7 +6985,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Medical_Hos.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Meteorologi: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Meteorological Services";
@@ -6993,7 +6993,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Meteorologi.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Military_En: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Military Engineers";
@@ -7001,7 +7001,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Military_En.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Military_En_2: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Military Engineers - Bridging (NATP APP-6)";
@@ -7009,7 +7009,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Military_En_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Military_Ge: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Military Geomatics - Mapping";
@@ -7017,7 +7017,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Military_Ge.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Military_Po: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Military Police";
@@ -7025,7 +7025,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Military_Po.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Missile_Sur: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Missile - Surface to Surface";
@@ -7033,7 +7033,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Missile_Sur.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Modifier_Ai: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Modifier - Air Assault";
@@ -7041,7 +7041,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Modifier_Ai.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Modifier_Ai_2: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Modifier - Airmobile";
@@ -7049,7 +7049,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Modifier_Ai_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Modifier_Am: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Modifier - Amphibious";
@@ -7057,7 +7057,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Modifier_Am.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Modifier_Gu: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Modifier - Gun System Equiped";
@@ -7065,7 +7065,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Modifier_Gu.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Modifier_Mo: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Modifier - Motorized";
@@ -7073,7 +7073,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Modifier_Mo.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Modifier_Mo_2: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Modifier - Mountain";
@@ -7081,7 +7081,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Modifier_Mo_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Modifier_Wh: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Modifier - Wheeled CrossCountry";
@@ -7089,7 +7089,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Modifier_Wh.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Mortars: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Mortars";
@@ -7097,7 +7097,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Mortars.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Parachute: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Parachute";
@@ -7105,7 +7105,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Parachute.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Psychologic: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Psychological Operations";
@@ -7113,7 +7113,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Psychologic.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Radar: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Radar";
@@ -7121,7 +7121,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Radar.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Reconnaissa: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Reconnaissance";
@@ -7129,7 +7129,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Reconnaissa.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Signals_Ele: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Signals - Electronic Ranging";
@@ -7137,7 +7137,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Signals_Ele.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Signals_or: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Signals or Communication";
@@ -7145,7 +7145,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Signals_or.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Special_Ope: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Special Operations Force";
@@ -7153,7 +7153,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Special_Ope.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Special_Ope_2: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Special Operations Force - Special Forces";
@@ -7161,7 +7161,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Special_Ope_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Unspecified: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Unspecified or Composite All-Arms";
@@ -7169,7 +7169,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Unspecified.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Unspecified_2: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Unspecified or Composite All-Arms";
@@ -7177,7 +7177,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Unspecified_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Aligned_Unit_Unspecified_3: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Aligned Unit Unspecified or Composite All-Arms";
@@ -7185,7 +7185,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Aligned_Unit_Unspecified_3.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Allegiance_Headquarters: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Allegiance Headquarters";
@@ -7193,7 +7193,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Allegiance_Headquarters.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UL_Unknown_Allegiance_Unit_Solid: AEE_MarkerBase {
         name = "AEE Unknown Land Unknown Allegiance Unit - Solid";
@@ -7201,7 +7201,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UL_Unknown_Allegiance_Unit_Solid.paa";
         side = 2;
         markerClass = "AEE_Unknown_Land";
-        scope = 2;
+        scope = 0;
     };
     class AEE_US_Unknown_Aligned_Unit_Naval: AEE_MarkerBase {
         name = "AEE Unknown Sea Surface Unknown Aligned Unit Naval";
@@ -7209,7 +7209,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_US_Unknown_Aligned_Unit_Naval.paa";
         side = 2;
         markerClass = "AEE_Unknown_Sea";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UU_Unknown_Allegiance_Sub_Surface_S: AEE_MarkerBase {
         name = "AEE Unknown Subsurface Unknown Allegiance Sub-Surface Sea Unit";
@@ -7217,7 +7217,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UU_Unknown_Allegiance_Sub_Surface_S.paa";
         side = 2;
         markerClass = "AEE_Unknown_Subsurface";
-        scope = 2;
+        scope = 0;
     };
     class AEE_UU_Unknown_Allegiance_Sub_Surface_S_2: AEE_MarkerBase {
         name = "AEE Unknown Subsurface Unknown Allegiance Sub-Surface Sea Unit - Solid";
@@ -7225,7 +7225,7 @@
         texture = "\z\aee\addons\symbology\data\markers\AEE_UU_Unknown_Allegiance_Sub_Surface_S_2.paa";
         side = 2;
         markerClass = "AEE_Unknown_Subsurface";
-        scope = 2;
+        scope = 0;
     };
 
 
