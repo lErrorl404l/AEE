@@ -193,9 +193,11 @@ def load_roster(data_dir: Path = DEFAULT_DATA) -> list[JsonObject]:
     ]
 
 
-def load_catalogue(data_dir: Path = DEFAULT_DATA) -> catalogue.CatalogueLoad:
-    """Read the shared catalogue loader output through the aircraft profile."""
-    return catalogue.load(data_dir, profile=catalogue.AIRCRAFT_PROFILE)
+def load_catalogue(
+    data_dir: Path = DEFAULT_DATA, family: str = "aircraft"
+) -> catalogue.CatalogueLoad:
+    """Read the shared catalogue loader output through the named family."""
+    return catalogue.load(data_dir, profile=catalogue.profile_for(family))
 
 
 # --------------------------------------------------------------------------
@@ -203,36 +205,46 @@ def load_catalogue(data_dir: Path = DEFAULT_DATA) -> catalogue.CatalogueLoad:
 # --------------------------------------------------------------------------
 
 
-def entry_emits(entry: catalogue.CatalogueEntry) -> bool:
+def entry_emits(
+    entry: catalogue.CatalogueEntry,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> bool:
     """True when an entry has the identity a runtime row needs.
 
-    The aircraft profile supports ``fixed_wing`` and ``rotary_wing``. A
-    vehicle family never emits an aircraft row.
+    The profile's type enum selects the family. The aircraft profile supports
+    ``fixed_wing`` and ``rotary_wing``. A ground profile supports the ground
+    types, so a ground entry never emits an aircraft row and the reverse holds.
     """
     return bool(
         entry.catalogue_id
         and entry.variant_id
-        and entry.vehicle_type in catalogue.AIRCRAFT_VEHICLE_TYPES
+        and entry.vehicle_type in profile.vehicle_types
     )
 
 
-def emitted_rows(load: catalogue.CatalogueLoad) -> dict[str, str]:
+def emitted_rows(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> dict[str, str]:
     """Map each emitted catalogue id to its variant id."""
     rows: dict[str, str] = {}
     for entry in load.entries:
-        if entry_emits(entry):
+        if entry_emits(entry, profile):
             rows[entry.catalogue_id] = entry.variant_id
     return rows
 
 
-def recorded_variants(load: catalogue.CatalogueLoad) -> dict[str, set[str]]:
+def recorded_variants(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> dict[str, set[str]]:
     """Map each air token to the variant ids of its recorded rows.
 
     A token is ``recorded`` when a runtime row is emitted and a class binding
     exists for the token. The class bindings carry the token, so a binding
     with an empty ``class_token`` still records through the entry.
     """
-    emitted = emitted_rows(load)
+    emitted = emitted_rows(load, profile)
     recorded: dict[str, set[str]] = {}
     for binding in load.bindings:
         variant = emitted.get(binding.catalogue_id)
@@ -241,7 +253,10 @@ def recorded_variants(load: catalogue.CatalogueLoad) -> dict[str, set[str]]:
     return recorded
 
 
-def recorded_classes(load: catalogue.CatalogueLoad) -> dict[str, str]:
+def recorded_classes(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> dict[str, str]:
     """Map each bound game class to its emitted catalogue id.
 
     A class is ``recorded`` only when a runtime row is emitted for its bound
@@ -249,7 +264,7 @@ def recorded_classes(load: catalogue.CatalogueLoad) -> dict[str, str]:
     classes where both hold, so a class with a binding and no emitted row is
     absent and stays a lead.
     """
-    emitted = emitted_rows(load)
+    emitted = emitted_rows(load, profile)
     recorded: dict[str, str] = {}
     for binding in load.bindings:
         if binding.game_class and binding.catalogue_id in emitted:
@@ -729,10 +744,13 @@ def build_coverage_report(
     return "\n".join(lines)
 
 
-def build_source_gaps_report(load: catalogue.CatalogueLoad) -> str:
+def build_source_gaps_report(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> str:
     """Render data/aircraft/SOURCE_GAPS.md."""
     entries_by_id = sorted(load.entries, key=lambda entry: entry.catalogue_id)
-    emitted = sum(1 for entry in entries_by_id if entry_emits(entry))
+    emitted = sum(1 for entry in entries_by_id if entry_emits(entry, profile))
     absent_total = 0
     gap_entries = 0
     for entry in entries_by_id:
@@ -774,7 +792,7 @@ def build_source_gaps_report(load: catalogue.CatalogueLoad) -> str:
             "",
             f"- Capture: `data/aircraft/catalogue/{entry.source_file}`",
             f"- Required set: {entry.vehicle_type} ({len(resolved)} fields)",
-            f"- Runtime row: {'yes' if entry_emits(entry) else 'no'}",
+            f"- Runtime row: {'yes' if entry_emits(entry, profile) else 'no'}",
             f"- Runtime-ready: {'yes' if entry.runtime_ready else 'no'}",
             "",
         ]
@@ -886,39 +904,42 @@ def build_class_mapping_report(
 # --------------------------------------------------------------------------
 
 
-def build_artefacts(data_dir: Path) -> dict[str, str]:
+def build_artefacts(data_dir: Path, family: str = "aircraft") -> dict[str, str]:
     """Build every artefact text from the corpus at ``data_dir``."""
+    profile = catalogue.profile_for(family)
     classes = load_classes()
-    load = load_catalogue(data_dir)
+    load = load_catalogue(data_dir, family)
     roster = load_roster(data_dir)
-    recorded = recorded_variants(load)
-    class_recorded = recorded_classes(load)
+    recorded = recorded_variants(load, profile)
+    class_recorded = recorded_classes(load, profile)
     coverage = build_coverage(
         classes, recorded, LEAD_CANDIDATES, roster, class_recorded
     )
     return {
         COVERAGE_OUT: render_coverage(coverage),
         COVERAGE_REPORT: build_coverage_report(classes, coverage, load),
-        SOURCE_GAPS_REPORT: build_source_gaps_report(load),
+        SOURCE_GAPS_REPORT: build_source_gaps_report(load, profile),
         CLASS_MAPPING_REPORT: build_class_mapping_report(classes, load),
     }
 
 
-def write_all(data_dir: Path = DEFAULT_DATA) -> dict[str, str]:
+def write_all(
+    data_dir: Path = DEFAULT_DATA, family: str = "aircraft"
+) -> dict[str, str]:
     """Write every artefact and return the written text by filename."""
-    artefacts = build_artefacts(data_dir)
+    artefacts = build_artefacts(data_dir, family)
     for name, text in artefacts.items():
         (data_dir / name).write_text(text, encoding="utf-8")
     return artefacts
 
 
-def check_all(data_dir: Path = DEFAULT_DATA) -> int:
+def check_all(data_dir: Path = DEFAULT_DATA, family: str = "aircraft") -> int:
     """Return 0 when every artefact matches a fresh build.
 
     Check mode writes nothing. A missing or stale artefact returns 1, so a
     stale generated report fails the gate.
     """
-    fresh = build_artefacts(data_dir)
+    fresh = build_artefacts(data_dir, family)
     stale: list[str] = []
     for name in ARTEFACTS:
         path = data_dir / name
@@ -935,7 +956,9 @@ def check_all(data_dir: Path = DEFAULT_DATA) -> int:
     classes = load_classes()
     coverage = _as_mapping(json.loads(fresh[COVERAGE_OUT]))
     roster = load_roster(data_dir)
-    class_recorded = recorded_classes(load_catalogue(data_dir))
+    class_recorded = recorded_classes(
+        load_catalogue(data_dir, family), catalogue.profile_for(family)
+    )
     errors = class_coverage_errors(roster, coverage, class_recorded)
     if errors:
         for error in errors:
@@ -961,17 +984,22 @@ def check_all(data_dir: Path = DEFAULT_DATA) -> int:
 
 def main(argv: list[str]) -> int:
     data_dir = DEFAULT_DATA
+    family = "aircraft"
     if "--data-dir" in argv:
         index = argv.index("--data-dir")
         if index + 1 < len(argv):
             data_dir = Path(argv[index + 1])
+    if "--family" in argv:
+        index = argv.index("--family")
+        if index + 1 < len(argv):
+            family = argv[index + 1]
     if "--check" in argv:
-        return check_all(data_dir)
-    artefacts = write_all(data_dir)
+        return check_all(data_dir, family)
+    artefacts = write_all(data_dir, family)
     coverage = _as_mapping(json.loads(artefacts[COVERAGE_OUT]))
     counts = _coverage_counts(coverage)
     class_counts = _class_counts(coverage)
-    load = load_catalogue(data_dir)
+    load = load_catalogue(data_dir, family)
     print(
         f"aircraft coverage: {len(entries(coverage))} tokens, "
         f"recorded {counts.get('recorded', 0)}, lead {counts.get('lead', 0)}, "
