@@ -216,3 +216,49 @@ pressurisation are absent and status only. No second statement is needed.
 | `cabin_pressure_max_kpa` | kPa | manual | yes | status only |
 | `pressurisation_ceiling_m` | m | manual | yes | status only |
 | `oxygen_system` | enum | manual | yes | status only |
+
+## 11. The fictional-class analogue rule
+
+A fictional Arma class binds to a real analogue. The binding is a claim. This
+section states the rule and the licence boundary.
+
+### The rule
+
+1. A fictional Arma class never reaches grade `documented` for its identity. No
+   published source names a fictional class, so the class-to-analogue link is
+   always grade `claimed`. A held source that states the analogue's figures does
+   not raise the identity grade.
+2. The binding `identity_source` is a registered source. Use
+   `src_armedassault_wiki` (tier 5 compilation) when the community wiki names the
+   analogue. Use `aee_air_class_table` (tier 5 class table) otherwise. A
+   class-table binding names the concrete class token in its `identity_evidence`.
+3. The catalogue entry the binding points to carries values only from held
+   sources. A tier 2 or tier 3 held source gives grade `documented`. A tier 4
+   maker datasheet gives grade `claimed`. A tier 5 compilation is never a value
+   source.
+4. The `identity_evidence` names the concrete game class, the real analogue, the
+   judgement, and the held source that documents the analogue's figures.
+5. A held source that states no runtime-required figure gives an absent value,
+   never an invented one. A family with no held analogue keeps its `no_source`
+   state. Its reason names the exact next source and the licence of that source.
+6. The claimed-lead mechanism. A registered source may name a single analogue
+   while no held source states its figures. A `claimed` binding may then point
+   to a lead entry. The lead entry holds no value and names its next source.
+   This document records the mechanism. It does not apply the mechanism.
+
+### The licence boundary
+
+The allowed value sources are these:
+
+- US Government public-domain works: TMs, FMs, TOs, the OPFOR and ODIN
+  Worldwide Equipment Guides, and DTIC and NASA reports.
+- FAA and EASA type certificate data sheets.
+- Maker datasheets, with the facts cited.
+- CC-BY-SA compilations for identity only.
+
+The forbidden sources are these:
+
+- RHS (CC BY-NC-ND).
+- CUP (APL-SA).
+- Project Hatchet H-60 and BradMick HeliSim (APL-ND).
+- DCS. It is structure only and never a figure.

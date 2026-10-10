@@ -82,6 +82,14 @@ pilot's operating handbook, a type certificate data sheet, a standard or a
 maker datasheet. A proprietary or unheld document is a lead, not a value
 source. A class with no real counterpart is recorded as `no_source`.
 
+A fictional Arma class binds to a real analogue at grade `claimed`, because
+no published source names a fictional class. The catalogue entry the binding
+points to carries held-source values at grade `documented`, and a tier 5
+compilation is never a value source. A family with no held analogue stays
+`no_source` with a reason that names the exact next source and its licence.
+`docs/adr/ADR-039-aircraft-analogue-sourcing.md` records the rule and the
+licence boundary.
+
 ## The engine ceiling per system
 
 - Fuel: built-in partial. `fuelCapacity`, `fuelConsumptionRate` and `setFuel`
