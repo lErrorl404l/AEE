@@ -60,6 +60,30 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentLightningRisk` | atmos | Lightning risk 0..1 |
 | `aee_core_currentSolarRadiation` | core | Solar radiation factor 0..1 |
 
+### Nuclear EMP (issue #9)
+
+The EMP model publishes its event state. A mission triggers a burst with
+`aee_core_fnc_triggerEmp`. The field is sampled once and the device factors
+then recover.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_core_empActive` | core | EMP event active flag |
+| `aee_core_empBurstType` | core | `hemp` (high-altitude) or `ground` |
+| `aee_core_empBurstPos` | core | Burst ground zero |
+| `aee_core_empBurstAltM` | core | Burst altitude in metres |
+| `aee_core_empPeakVpm` | core | Peak free field in V/m |
+| `aee_core_empStartTime` | core | Burst mission time |
+| `aee_core_empFreeFieldVpm` | core | Free field that reached the player, V/m |
+| `aee_core_empRadioCoupledVpm` | core | Field coupled into the radio front end, V/m |
+| `aee_core_empOpticsCoupledVpm` | core | Field coupled into the optical sensor, V/m |
+| `aee_core_empRadioF0` | core | Radio degradation at the burst, 0..1 |
+| `aee_core_empOpticsF0` | core | Optics degradation at the burst, 0..1 |
+| `aee_core_empRadioTauS` | core | Radio recovery time constant, s |
+| `aee_core_empOpticsTauS` | core | Optics recovery time constant, s |
+| `aee_core_empRadioFactor` | core | Radio degradation factor now, 0..1 |
+| `aee_core_empOpticsFactor` | core | Optics degradation factor now, 0..1 |
+
 ### Positioning consistency
 
 The consistency monitor (aee-mgrs-and-positioning task 14) publishes these
