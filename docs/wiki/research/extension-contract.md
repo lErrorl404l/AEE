@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (668)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -185,23 +185,31 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_armour_fnc_getVehicleArmour`
 - `aee_armour_fnc_penetrationGate`
 - `aee_atmos_fnc_calculateAirframeIcing`
+- `aee_atmos_fnc_calculateAshSettling`
 - `aee_atmos_fnc_calculateCloudCeiling`
 - `aee_atmos_fnc_calculateCloudDevelopment`
+- `aee_atmos_fnc_calculateGaussianPlume`
 - `aee_atmos_fnc_calculateHailEnergy`
 - `aee_atmos_fnc_calculateHaze`
+- `aee_atmos_fnc_calculateLaharRisk`
 - `aee_atmos_fnc_calculateLightning`
 - `aee_atmos_fnc_calculateMicroburst`
 - `aee_atmos_fnc_calculateOrographicPrecipitation`
+- `aee_atmos_fnc_calculatePlumeRise`
 - `aee_atmos_fnc_calculatePrecipitationPhase`
 - `aee_atmos_fnc_calculatePressureTrend`
 - `aee_atmos_fnc_calculateRefraction`
 - `aee_atmos_fnc_calculateRelativeHumidity`
+- `aee_atmos_fnc_calculateSO2Plume`
 - `aee_atmos_fnc_calculateStationPressure`
 - `aee_atmos_fnc_calculateTerrainWind`
 - `aee_atmos_fnc_calculateTurbulence`
+- `aee_atmos_fnc_calculateVolcanicAsh`
+- `aee_atmos_fnc_calculateVolcanicWinter`
 - `aee_atmos_fnc_dumpState`
 - `aee_atmos_fnc_getLocalWind`
 - `aee_atmos_fnc_hailDamage`
+- `aee_atmos_fnc_moduleVolcanicInit`
 - `aee_atmos_fnc_updateEngineLightnings`
 - `aee_atmos_fnc_updateFog`
 - `aee_atmos_fnc_updateHumidity`
@@ -209,6 +217,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_updatePressure`
 - `aee_atmos_fnc_updateRainbow`
 - `aee_atmos_fnc_updateSimulWeatherLayers`
+- `aee_atmos_fnc_updateVolcanic`
 - `aee_atmos_fnc_updateWind`
 - `aee_ballistics_fnc_calculateAirDensity`
 - `aee_ballistics_fnc_calculateAirDensityKernel`
