@@ -562,21 +562,25 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
         self.assertRegex(CONFIG_SRC, r"class ColorAEE: Default \{ scope = 1;")
 
     def test_the_editor_visible_marker_count_is_pinned(self):
-        # Every AEE marker is editor-visible: the catalogue, the cross-product,
-        # the taxonomy and the modifiers set scope = 2, and every runtime family
-        # alias inherits a visible parent.  Pin the count the engine lists in
-        # the marker picker, so a change that floods or empties it is caught.
+        # The picker collapse (aee-dynamic-variation-system): every AEE-produced
+        # class is scope = 0, so the ONE editor-visible AEE marker is the
+        # option-driven family entry AEE_Variation.  Pin it so a change that
+        # floods or empties the picker is caught.
+        produced = (
+            "config_markers.hpp",
+            "config_crossproduct.hpp",
+            "config_taxonomy.hpp",
+            "config_modifiers.hpp",
+            "config_family.hpp",
+        )
         explicit = sum(
             (SYMBOLOGY / name).read_text(encoding="utf-8").count("scope = 2;")
-            for name in (
-                "config_markers.hpp",
-                "config_crossproduct.hpp",
-                "config_taxonomy.hpp",
-                "config_modifiers.hpp",
-            )
+            for name in produced
         )
-        family = FAMILY_SRC.count("class AEE_")
-        self.assertEqual(explicit + family, 5612)
+        self.assertEqual(explicit, 0, "a concrete variant is still picker-visible")
+        variation = (SYMBOLOGY / "config_variations.hpp").read_text(encoding="utf-8")
+        self.assertIn("class AEE_Variation: AEE_MarkerBase {", variation)
+        self.assertIn("scope = 2;", variation)
 
     def test_no_marker_points_at_an_engine_texture(self):
         # Every AEE marker texture is a real .paa under data/markers.  A

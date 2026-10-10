@@ -87,14 +87,29 @@ private _aee = ("true" configClasses (configFile >> "CfgMarkers")) select {
 };
 private _visible = _aee select { getNumber (_x >> "scope") > 0 };
 private _count = count _visible;
-// The dynamic variation entry adds ONE editor-visible AEE marker
-// (aee-dynamic-variation-system); the collapsed count follows the generator.
-if (_count == 5613) then {
+// The picker collapse (aee-dynamic-variation-system): the concrete AEE variants
+// are scope = 0, so the ONE editor-visible AEE marker is the option-driven
+// family entry AEE_Variation.
+private _onlyFamily = _count == 1 && {(configName (_visible select 0)) isEqualTo "AEE_Variation"};
+if (_onlyFamily) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
     _notes pushBack format ["AEE editor-visible markers=%1", _count];
 };
+
+// A concrete variant is hidden from the picker but still places through
+// setMarkerTypeLocal (probe P143 proves the engine fact).
+private _variant = configFile >> "CfgMarkers" >> "AEE_b_inf";
+private _hidden = createMarkerLocal ["aee_p124_hidden", [0, 0, 0]];
+_hidden setMarkerTypeLocal "AEE_b_inf";
+if ((getNumber (_variant >> "scope") == 0) && {(markerType _hidden) isEqualTo "AEE_b_inf"}) then {
+    _pass = _pass + 1;
+} else {
+    _fail = _fail + 1;
+    _notes pushBack format ["AEE_b_inf scope=%1 place=%2", getNumber (_variant >> "scope"), markerType _hidden];
+};
+deleteMarkerLocal _hidden;
 
 private _marker = createMarkerLocal ["aee_p124_marker", [0, 0, 0]];
 _marker setMarkerTypeLocal "AEE_b_inf";
