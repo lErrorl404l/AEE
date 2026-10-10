@@ -355,6 +355,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_currentDustDevil` | environmental | Dust devil activity 0..1 |
 | `aee_core_currentBlowingSnow` | environmental | Blowing snow 0..1 |
 | `aee_core_cbrnPersistence` | environmental | CBRN persistence 0.225..2.1 |
+| `aee_weather_denseGasState` | environmental | Dense-gas state [densityRatio, reducedGravity, frontalVelocity, richardson, entrainmentVelocity, denseActive, transitionConcentration, toxicTier, poolDepth, pooledConcentration, evaporationFlux] |
 | `aee_weather_solarFlareActive` | environmental | Solar flare flag |
 | `aee_weather_spaceWeatherFlareValue` | environmental | Flare value |
 | `aee_lighting_auroraVisibility` | environmental | Aurora visibility |

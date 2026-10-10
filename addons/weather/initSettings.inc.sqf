@@ -39,3 +39,23 @@ AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Environmental",false);
 
 // ── Scent (moved from physiology; the scent dispersion model is weather) ──
 AEE_SETTING_SLIDER(ScentIntensity,"AEE Physiology","Scent",0,2,1.0,1);
+
+// ── Dense gas dispersion (issue #120) ──────────────────────────────────────
+// The agent is a scenario selection until a release event exists.  The
+// default "none" leaves the model off.
+AEE_SETTING_SLIDER(denseGasCloudHeight,"AEE Environmental","Dispersion",0.1,20,1.0,1);
+
+AEE_SETTING_SLIDER(denseGasPoolDiameter,"AEE Environmental","Dispersion",0.1,50,2.0,1);
+
+[
+    QGVAR(denseGasAgent),
+    "LIST",
+    [LLSTRING(denseGasAgent_Name), LLSTRING(denseGasAgent_Description)],
+    ["AEE Environmental", "Dispersion"],
+    [
+        ["none","chlorine","cs","phosgene","sarin","carbon-dioxide","hydrogen-cyanide"],
+        ["None","Chlorine","CS (tear gas)","Phosgene","Sarin (GB)","Carbon dioxide","Hydrogen cyanide"]
+    ],
+    0,
+    {}
+] call CBA_fnc_addSetting;

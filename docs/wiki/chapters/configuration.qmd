@@ -395,6 +395,14 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_dive_diveEnabled` | CHECKBOX | `true` | yes | dive | Enable the Buhlmann ZH-L16C decompression model for diving |
 | `aee_dive_diveGradientFactor` | SLIDER | `1.0` | yes | dive | Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C) |
 
+## AEE Environmental → Dispersion
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weather_denseGasAgent` | LIST | `["None","Chlorine","CS (tear gas)","Phosgene","Sarin (GB)","Carbon dioxide","Hydrogen cyanide"]` | no | weather | Agent dispersed by the dense-gas model (none disables it) |
+| `aee_weather_denseGasCloudHeight` | SLIDER | `1.0` | yes | weather | Dense cloud height for the slumping velocity (m) |
+| `aee_weather_denseGasPoolDiameter` | SLIDER | `2.0` | yes | weather | Pool diameter for the evaporation flux (m) |
+
 ## AEE Environmental → Display
 
 | Setting | Type | Default | Global | Addon | Purpose |
