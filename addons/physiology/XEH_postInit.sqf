@@ -17,3 +17,9 @@ AEE_MODULE_POST_INIT
 // Survival pressure (will to live): one read a second, at the state tick,
 // never per frame.  Publishes aee_physiology_survivalPressure for the AI.
 [FUNC(survivalState), 1] call CBA_fnc_addPerFrameHandler;
+
+// ─── Combat-stress and morale state (issue #110) ───────────────────────────
+// A 1 s local loop updates the psychology state for the units this machine
+// owns.  Registered unconditionally so a live CBA toggle works; the driver
+// self-gates on aee_physiology_combatStressEnabled.
+[FUNC(updatePsychologyState), 1] call CBA_fnc_addPerFrameHandler;

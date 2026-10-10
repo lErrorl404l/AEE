@@ -13,3 +13,13 @@ PREPS(strain,calculateSleepPressure);
 PREPS(strain,calculateUVIndex);
 PREPS(strain,getGLoad);
 PREPS(strain,integrateSwayFactor);
+
+// Combat-stress psychology kernels (issue #110).  The suppression-psychology
+// model: stress and morale indices, the decision-quality multiplier table,
+// effective spotting and the morale action gate.  Pure; the driver is in
+// aee_physiology (state/updatePsychologyState).
+PREPS(psychology,calculateStress);
+PREPS(psychology,calculateMorale);
+PREPS(psychology,getDecisionMultipliers);
+PREPS(psychology,calculateEffectiveSpotting);
+PREPS(psychology,getMoraleAction);
