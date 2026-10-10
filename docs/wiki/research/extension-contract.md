@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (668)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -288,6 +288,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_compat_realweather_fnc_dumpState`
 - `aee_compat_realweather_fnc_integrateRealWeather`
 - `aee_compat_tfar_fnc_integrateTFAR`
+- `aee_core_fnc_calculateEmpCoupling`
+- `aee_core_fnc_calculateEmpDegradation`
+- `aee_core_fnc_calculateEmpField`
+- `aee_core_fnc_calculateEmpRecoveredFactor`
+- `aee_core_fnc_calculateEmpRecovery`
+- `aee_core_fnc_calculateEmpWaveform`
 - `aee_core_fnc_calculateIlluminance`
 - `aee_core_fnc_calculateSeededWeatherProgression`
 - `aee_core_fnc_coreBodyTemp`
@@ -300,6 +306,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_moduleInit`
 - `aee_core_fnc_moduleStormInit`
 - `aee_core_fnc_probeExtension`
+- `aee_core_fnc_triggerEmp`
+- `aee_core_fnc_updateEmp`
 - `aee_core_fnc_updateEnvironment`
 - `aee_core_fnc_updateSimClock`
 - `aee_diagnostics_fnc_consistencyFailureLine`
@@ -478,6 +486,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_nightvision_fnc_teardownNvgDoF`
 - `aee_optics_fnc_applyAtmosphericSeeingFX`
 - `aee_optics_fnc_applyDewOnOpticsFX`
+- `aee_optics_fnc_applyEmpSensorDamage`
 - `aee_optics_fnc_applyHeatShimmerFX`
 - `aee_optics_fnc_applyMirageFX`
 - `aee_optics_fnc_applyRainOnOpticsFX`
@@ -792,7 +801,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (56)
+### Public core state variables (65)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -820,8 +829,17 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_dustSuppression`
 - `aee_core_dynamicLux`
 - `aee_core_ehId_`
+- `aee_core_empActive`
 - `aee_core_enabled`
+- `aee_core_fnc_calculateEmpCoupling`
+- `aee_core_fnc_calculateEmpDegradation`
+- `aee_core_fnc_calculateEmpField`
+- `aee_core_fnc_calculateEmpRecoveredFactor`
+- `aee_core_fnc_calculateEmpRecovery`
+- `aee_core_fnc_calculateEmpWaveform`
 - `aee_core_fnc_calculateSeededWeatherProgression`
+- `aee_core_fnc_triggerEmp`
+- `aee_core_fnc_updateEmp`
 - `aee_core_geoAnchor`
 - `aee_core_groundSurfaceTemp`
 - `aee_core_hailActive`

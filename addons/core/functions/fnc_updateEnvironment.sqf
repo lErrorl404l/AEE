@@ -210,6 +210,14 @@ if (GVAR(physiologyEnabled)) then {
 // addons/compat_kat/functions/fnc_integrateKAT.sqf:37, which had no producer.
 [] call FUNC(coreBodyTemp);
 
+// ─── Nuclear EMP (issue #9) ────────────────────────────────────────────────
+// The EMP event tick.  It runs before the sensor and radio blocks so they
+// read the degradation factors this tick publishes.  It is inert until a
+// mission triggers a burst (aee_core_fnc_triggerEmp).
+BEGIN_COUNTER(emp);
+[_posASL] call FUNC(updateEmp);
+END_COUNTER(emp);
+
 // ─── Sensor / Optics ───────────────────────────────────────────────────────
 // Shared illuminance layer: the engine's real scene light (getLightingAt)
 // sampled at the player position.  Runs unconditionally so NVG, thermal,
@@ -221,6 +229,7 @@ BEGIN_COUNTER(optics);
 [_posASL] call EFUNC(core,calculateIlluminance);
 [] call EFUNC(thermal,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
+[] call EFUNC(optics,applyEmpSensorDamage);
 if (GVAR(opticsEnabled)) then {
     [] call EFUNC(optics,calculateMirageIntensity);
     [] call EFUNC(optics,calculateSmokePersistence);

@@ -182,6 +182,37 @@ on windscreens. Thunder follows the flash after a fixed sound-travel delay.
 - Flash flood risk is driven by rainfall intensity (mm/h), antecedent
   moisture, and terrain.
 
+## Nuclear EMP
+
+A nuclear EMP is a transient electromagnetic field with three phases. E1 is
+the fast pulse, E2 is like lightning, and E3 is a slow geomagnetic-like
+field. The model covers the E1 and E2 phases.
+
+The E1 and E2 pulse is a double exponential, from IEC 61000-2-9, adopted by
+MIL-STD-464C A.5.9.1. The kernel `fnc_calculateEmpWaveform` returns the field
+at time t. At onset the field is zero, then it rises to the peak (50 kV/m for
+E1).
+
+The free field follows one of two geometries. A high-altitude burst (above
+30 km) covers a footprint whose radius is the geometric horizon
+`r = sqrt(2 R h)`, from Glasstone and Dolan, The Effects of Nuclear Weapons,
+Ch XI. At 400 km the radius is 2257 km. A ground burst falls as `1/R` from a
+reference range (100 kV/m at 5 km).
+
+A shield attenuates the field by its effectiveness in dB:
+`E_coupled = E_free * 10^(-dB/20)`. The hardening is 0 dB for a radio, 20 dB
+for a soft-skin vehicle, 40 dB for armour, and 80 dB for a facility.
+
+A coupled field above the device damage threshold degrades the device. The
+degradation factor is `1/(1 + r)` with `r = E_coupled / E_damage`. This is a
+labelled model mapping, not a published curve. The device recovers with time
+constant `tau = 1 + 29 * r` seconds. Both relations are the issue's model.
+
+The model degrades the radio propagation index and the optical sensor
+transmission, and it drives the image-intensifier blowout. A mission triggers
+a burst with `aee_core_fnc_triggerEmp`. The event is inert until then. The
+state is local, so a multiplayer burst needs the mission to broadcast it.
+
 ## Humidity
 
 Relative humidity couples to the diurnal cycle. It falls as temperature

@@ -87,6 +87,7 @@ Optics and visibility effects.
 |---|---|
 | `applyAtmosphericSeeingFX` | Apply the atmospheric seeing post-process |
 | `applyDewOnOpticsFX` | Apply the dew on optics overlay |
+| `applyEmpSensorDamage` | Apply the EMP optoelectronic degradation |
 | `applyHeatShimmerFX` | Apply heat shimmer effects |
 | `applyMirageFX` | Apply the mirage refract effect |
 | `applyNightGrain` | Apply night low-light film grain |
@@ -341,6 +342,9 @@ Radio propagation.
 |---|---|
 | `calculateIonosphericAbsorption` | Calculate HF ionospheric absorption |
 | `calculateRadioPropagation` | Calculate radio propagation |
+
+The EMP model degrades the propagation index while a nuclear EMP is active
+(issue #9). The factor is `aee_core_empRadioFactor`, produced by `core`.
 
 ## ai
 
