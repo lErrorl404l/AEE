@@ -71,6 +71,11 @@
     // Coordinates the forest and the rock density.  ENG.
     ptsPerSquareFor = 9;
     ptsPerSquareForEdge = 9;
+    // The forest density at the two coarse LODs.  The engine Eden map
+    // (3den.pbo ctrlMap) sets these; AEE adopts the engine values (vanilla
+    // parity).  Source: 3den.pbo.
+    ptsPerSquareForLod1 = 4;
+    ptsPerSquareForLod2 = 1;
 
     // ── Roads, rail, power, tracks and trails.  FM s13 to s18. ──────────
     colorRoads[] = {0.80, 0.10, 0.10, 1};
@@ -86,12 +91,20 @@
     // The rail line width and the road density.  ENG.
     widthRailWay = 4;
     ptsPerSquareRoad = 6;
+    // The main-road and the simple-variant road densities.  The engine Eden
+    // map (3den.pbo ctrlMap) sets these; AEE adopts the engine values.
+    ptsPerSquareMainRoad = 6;
+    ptsPerSquareRoadSimple = 1;
+    ptsPerSquareMainRoadSimple = 1;
 
     // ── Labels and object icons.  FM s19, s20; USGS. ────────────────────
     colorNames[] = {0.10, 0.10, 0.10, 0.90};
     // Coordinates the label and the object icon density.  ENG.
     ptsPerSquareTxt = 20;
     ptsPerSquareObj = 9;
+    // The object icon density at LOD1.  The engine minimap (ui_f.pbo) sets
+    // this; AEE adopts the engine value.  Source: ui_f.pbo minimap.
+    ptsPerSquareObjLod1 = 2;
 
     // ── Display levers.  IDEA; engrave the hillshade and the satellite. ──
     // maxSatelliteAlpha 0.5: AEE's own, between the old 0.35 and the Enhanced
@@ -107,3 +120,11 @@
     // The satellite fade scales.  ENG.
     alphaFadeStartScale = 2;
     alphaFadeEndScale = 2;
+
+    // ── Zoom range.  The map zooms out further. ──────────────────────────
+    // scaleMax 2: AEE's own, double the vanilla zoom-out limit of 1.
+    // UNSOURCED (AEE model choice; no standard fixes the limit).
+    scaleMax = 2;
+    // scaleDefault 0.3: the engine strategic-map scale (ui_f.pbo
+    // RscDisplayStrategicMap Map), so the map opens at the overview zoom.
+    scaleDefault = 0.3;

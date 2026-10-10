@@ -254,6 +254,54 @@ class TestLastKnownContactLifecycle(unittest.TestCase):
         )
 
 
+class TestMapDisplayLevers(unittest.TestCase):
+    """The zoom range and the density LOD and simple variants (todo 8).
+
+    The base ui_f RscMapControl leaves the density fields unset; AEE sets
+    them in config_mapcolors.hpp.  scaleMax is AEE's own; scaleDefault is the
+    engine strategic-map scale; the density fields are the engine Eden
+    ctrlMap and minimap values.
+    """
+
+    def test_the_zoom_range_is_set(self):
+        self.assertIn("scaleMax = 2;", COL_SRC)
+        self.assertIn("scaleDefault = 0.3;", COL_SRC)
+
+    def test_the_density_lod_and_simple_variants_are_set(self):
+        for field, value in (
+            ("ptsPerSquareForLod1", "4"),
+            ("ptsPerSquareForLod2", "1"),
+            ("ptsPerSquareMainRoad", "6"),
+            ("ptsPerSquareMainRoadSimple", "1"),
+            ("ptsPerSquareRoadSimple", "1"),
+            ("ptsPerSquareObjLod1", "2"),
+        ):
+            with self.subTest(field=field):
+                self.assertIn(f"{field} = {value};", COL_SRC)
+
+    def test_the_probe_asserts_the_new_fields(self):
+        probe = (
+            REPO
+            / "tests"
+            / "docker"
+            / "missions"
+            / "aee_test.Stratis"
+            / "aee_p134_map_density_probe.sqf"
+        ).read_text(encoding="utf-8")
+        for field in (
+            "scaleMax",
+            "scaleDefault",
+            "ptsPerSquareForLod1",
+            "ptsPerSquareForLod2",
+            "ptsPerSquareMainRoad",
+            "ptsPerSquareMainRoadSimple",
+            "ptsPerSquareRoadSimple",
+            "ptsPerSquareObjLod1",
+        ):
+            with self.subTest(field=field):
+                self.assertIn(f'["{field}",', probe)
+
+
 class TestSuiteRegistration(unittest.TestCase):
     def test_the_suite_is_registered(self):
         self.assertIn(

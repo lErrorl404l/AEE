@@ -48,6 +48,32 @@ private _vanilla = [
     };
 } forEach _vanilla;
 
+// The AEE zoom range and the density LOD and simple variants.  AEE sets
+// these; the base ui_f RscMapControl leaves the density fields unset.
+// scaleMax is AEE's own (double the vanilla 1); scaleDefault is the engine
+// strategic-map scale; the density fields are the engine Eden ctrlMap and
+// minimap values.
+private _levers = [
+    ["scaleMax", 2],
+    ["scaleDefault", 0.3],
+    ["ptsPerSquareForLod1", 4],
+    ["ptsPerSquareForLod2", 1],
+    ["ptsPerSquareMainRoad", 6],
+    ["ptsPerSquareMainRoadSimple", 1],
+    ["ptsPerSquareRoadSimple", 1],
+    ["ptsPerSquareObjLod1", 2]
+];
+{
+    _x params ["_key", "_want"];
+    private _got = getNumber (_rsc >> _key);
+    if (_got == _want) then {
+        _pass = _pass + 1;
+    } else {
+        _fail = _fail + 1;
+        _notes pushBack format ["RscMapControl %1 = %2 (AEE %3)", _key, _got, _want];
+    };
+} forEach _levers;
+
 // The engine grid is off: both colour fields carry alpha 0, which removes the
 // whole DrawGrid pass (CStaticMap::DrawGrid, UIMap.cpp 1971-2042).
 {
@@ -93,6 +119,17 @@ diag_log text format ["[P134] map density: Txt=%1 CLn=%2 For=%3 ForEdge=%4 Road=
     (getArray (_rsc >> "colorGridMap")) param [3, -1],
     _drawObjects,
     _strategicDraw
+];
+
+diag_log text format ["[P134] map levers: scaleMax=%1 scaleDefault=%2 ForLod1=%3 ForLod2=%4 MainRoad=%5 MainRoadSimple=%6 RoadSimple=%7 ObjLod1=%8",
+    getNumber (_rsc >> "scaleMax"),
+    getNumber (_rsc >> "scaleDefault"),
+    getNumber (_rsc >> "ptsPerSquareForLod1"),
+    getNumber (_rsc >> "ptsPerSquareForLod2"),
+    getNumber (_rsc >> "ptsPerSquareMainRoad"),
+    getNumber (_rsc >> "ptsPerSquareMainRoadSimple"),
+    getNumber (_rsc >> "ptsPerSquareRoadSimple"),
+    getNumber (_rsc >> "ptsPerSquareObjLod1")
 ];
 
 if (_fail == 0) then {
