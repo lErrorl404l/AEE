@@ -311,15 +311,20 @@ no map name. The design decision is in ADR-016.
 
 ## maritime
 
-Sea state and tides.
+Sea state, tides, internal waves and the thermocline.
 
 | Function | Purpose |
 |---|---|
 | `calculateCompassDeviation` | Calculate compass deviation |
+| `calculateInternalTide` | Thermocline displacement and layer currents at the M2 period |
+| `calculateInternalWaveSpeed` | Two-layer interfacial internal-wave phase speed and reduced gravity |
 | `calculateMagneticAnomaly` | Calculate magnetic field anomaly at a position |
 | `calculateSeaState` | Calculate the sea state |
+| `calculateSeawaterDensity` | Linear seawater equation of state |
+| `calculateThermoclineTemperature` | Temperature profile across the thermocline |
 | `calculateTidalPrediction` | Calculate the tidal prediction |
 | `updateEngineWaves` | Render the sea state as engine waves |
+| `updateInternalWaves` | Publish the internal-wave and thermocline state |
 
 ## physiology
 
