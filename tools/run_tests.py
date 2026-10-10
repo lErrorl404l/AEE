@@ -49,6 +49,7 @@ def main():
         "tools/tests/test_atmos.py",
         "tools/tests/test_atmospheric_refraction.py",
         "tools/tests/test_maritime.py",
+        "tools/tests/test_underwater_acoustics.py",
         "tools/tests/test_thermal_optics.py",
         "tools/tests/test_thermal_optics_config.py",
         "tools/tests/test_thermal_display_mkk.py",
