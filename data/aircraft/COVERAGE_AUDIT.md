@@ -22,10 +22,10 @@ once, keyed by game class. No class leaves the report in silence.
 ## Expansion coverage target
 
 - Roster classes: 139
-- matched-and-sourced (`recorded`): 73
+- matched-and-sourced (`recorded`): 99
 - `lead`: 0
-- `no_source`: 66
-- Target (recorded + no_source equals the roster size): met (73 + 66 = 139 of 139)
+- `no_source`: 40
+- Target (recorded + no_source equals the roster size): met (99 + 40 = 139 of 139)
 
 ## Class coverage
 
@@ -53,24 +53,24 @@ once, keyed by game class. No class leaves the report in silence.
 | `B_Plane_Fighter_01_Cluster_F` | `Plane` | recorded | `fa18e_super_hornet` | runtime row emitted and class binding held |
 | `B_Plane_Fighter_01_F` | `Plane` | recorded | `fa18e_super_hornet` | runtime row emitted and class binding held |
 | `B_Plane_Fighter_01_Stealth_F` | `Plane` | recorded | `fa18e_super_hornet` | runtime row emitted and class binding held |
-| `B_T_UAV_03_F` | `Helicopter` | no_source | none | fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source. |
-| `B_T_UAV_03_dynamicLoadout_F` | `Helicopter` | no_source | none | fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source. |
-| `B_T_VTOL_01_armed_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_armed_blue_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_armed_olive_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_infantry_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_infantry_blue_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_infantry_olive_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_vehicle_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_vehicle_blue_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_T_VTOL_01_vehicle_olive_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry. |
-| `B_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
-| `B_UAV_02_CAS_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `B_UAV_02_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `B_UAV_02_dynamicLoadout_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `B_UAV_05_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (UCAV Sentinel). The corpus holds no catalogue entry for the real type, so the class is no_source. |
-| `B_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
-| `B_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `B_T_UAV_03_F` | `Helicopter` | no_source | none | fictional unmanned combat air vehicle (MQ-12 Falcon) with no held catalogue entry, so the next source to seek is the Northrop Grumman X-47B UCAS Data Sheet, a manufacturer datasheet with the facts cited. |
+| `B_T_UAV_03_dynamicLoadout_F` | `Helicopter` | no_source | none | fictional unmanned combat air vehicle (MQ-12 Falcon) with no held catalogue entry, so the next source to seek is the Northrop Grumman X-47B UCAS Data Sheet, a manufacturer datasheet with the facts cited. |
+| `B_T_VTOL_01_armed_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_armed_blue_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_armed_olive_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_infantry_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_infantry_blue_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_infantry_olive_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_vehicle_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_vehicle_blue_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_T_VTOL_01_vehicle_olive_F` | `Plane` | no_source | none | fictional tiltrotor (V-44X Blackfish) with no single real counterpart, so the next source to seek is the NATOPS Flight Manual for the MV-22B Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain. |
+| `B_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain. |
+| `B_UAV_02_CAS_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `B_UAV_02_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `B_UAV_02_dynamicLoadout_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `B_UAV_05_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (UCAV Sentinel) with no held catalogue entry, so the next source to seek is the Naval Postgraduate School overview Navy Unmanned Combat Air System Carrier Demonstration (UCAS-D), a US Government work in the public domain. |
+| `B_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
+| `B_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
 | `C_Heli_Light_01_civil_F` | `Helicopter` | recorded | `md500_civil` | runtime row emitted and class binding held |
 | `C_Heli_light_01_blueLine_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
 | `C_Heli_light_01_blue_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
@@ -92,21 +92,21 @@ once, keyed by game class. No class leaves the report in silence.
 | `C_Heli_light_01_wasp_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
 | `C_Heli_light_01_wave_F` | `Helicopter` | recorded | `md500` | runtime row emitted and class binding held |
 | `C_IDAP_Heli_Transport_02_F` | `Helicopter` | recorded | `aw101_merlin` | runtime row emitted and class binding held |
-| `C_IDAP_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
-| `C_IDAP_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
-| `C_IDAP_UAV_06_antimine_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
-| `C_IDAP_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `C_IDAP_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain. |
+| `C_IDAP_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
+| `C_IDAP_UAV_06_antimine_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
+| `C_IDAP_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
 | `C_Plane_Civil_01_F` | `Plane` | recorded | `cessna_172_skyhawk` | runtime row emitted and class binding held |
 | `C_Plane_Civil_01_racing_F` | `Plane` | recorded | `cessna_172_skyhawk` | runtime row emitted and class binding held |
-| `C_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
-| `C_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `C_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
+| `C_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
 | `I_C_Heli_Light_01_civil_F` | `Helicopter` | recorded | `md500_civil` | runtime row emitted and class binding held |
 | `I_C_Plane_Civil_01_F` | `Plane` | recorded | `cessna_172_skyhawk` | runtime row emitted and class binding held |
 | `I_E_Heli_light_03_dynamicLoadout_F` | `Helicopter` | recorded | `aw159_wildcat` | runtime row emitted and class binding held |
 | `I_E_Heli_light_03_unarmed_F` | `Helicopter` | recorded | `aw159_wildcat` | runtime row emitted and class binding held |
-| `I_E_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
-| `I_E_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
-| `I_E_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `I_E_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain. |
+| `I_E_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
+| `I_E_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
 | `I_Heli_Transport_02_F` | `Helicopter` | recorded | `aw101_merlin` | runtime row emitted and class binding held |
 | `I_Heli_light_03_F` | `Helicopter` | recorded | `aw159_wildcat` | runtime row emitted and class binding held |
 | `I_Heli_light_03_dynamicLoadout_F` | `Helicopter` | recorded | `aw159_wildcat` | runtime row emitted and class binding held |
@@ -117,12 +117,12 @@ once, keyed by game class. No class leaves the report in silence.
 | `I_Plane_Fighter_03_dynamicLoadout_F` | `Plane` | recorded | `l159_alca` | runtime row emitted and class binding held |
 | `I_Plane_Fighter_04_Cluster_F` | `Plane` | recorded | `jas39c_gripen` | runtime row emitted and class binding held |
 | `I_Plane_Fighter_04_F` | `Plane` | recorded | `jas39c_gripen` | runtime row emitted and class binding held |
-| `I_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
-| `I_UAV_02_CAS_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `I_UAV_02_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `I_UAV_02_dynamicLoadout_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `I_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
-| `I_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `I_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain. |
+| `I_UAV_02_CAS_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `I_UAV_02_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `I_UAV_02_dynamicLoadout_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `I_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
+| `I_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
 | `O_Heli_Attack_02_F` | `Helicopter` | recorded | `mi28_havoc` | runtime row emitted and class binding held |
 | `O_Heli_Attack_02_black_F` | `Helicopter` | recorded | `mi28_havoc` | runtime row emitted and class binding held |
 | `O_Heli_Attack_02_dynamicLoadout_F` | `Helicopter` | recorded | `mi28_havoc` | runtime row emitted and class binding held |
@@ -131,55 +131,55 @@ once, keyed by game class. No class leaves the report in silence.
 | `O_Heli_Light_02_dynamicLoadout_F` | `Helicopter` | recorded | `light_utility_rotary` | runtime row emitted and class binding held |
 | `O_Heli_Light_02_unarmed_F` | `Helicopter` | recorded | `light_utility_rotary` | runtime row emitted and class binding held |
 | `O_Heli_Light_02_v2_F` | `Helicopter` | recorded | `light_utility_rotary` | runtime row emitted and class binding held |
-| `O_Heli_Transport_04_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_ammo_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_ammo_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_bench_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_bench_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_box_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_box_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_covered_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_covered_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_fuel_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_fuel_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_medevac_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_medevac_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_repair_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
-| `O_Heli_Transport_04_repair_black_F` | `Helicopter` | no_source | none | fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry. |
+| `O_Heli_Transport_04_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_ammo_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_ammo_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_bench_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_bench_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_box_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_box_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_covered_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_covered_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_fuel_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_fuel_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_medevac_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_medevac_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_repair_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
+| `O_Heli_Transport_04_repair_black_F` | `Helicopter` | recorded | `mi26_halo` | runtime row emitted and class binding held |
 | `O_Plane_CAS_02_Cluster_F` | `Plane` | recorded | `su25_frogfoot` | runtime row emitted and class binding held |
 | `O_Plane_CAS_02_F` | `Plane` | recorded | `su25_frogfoot` | runtime row emitted and class binding held |
 | `O_Plane_CAS_02_dynamicLoadout_F` | `Plane` | recorded | `su25_frogfoot` | runtime row emitted and class binding held |
 | `O_Plane_Fighter_02_Cluster_F` | `Plane` | recorded | `su57_felon` | runtime row emitted and class binding held |
 | `O_Plane_Fighter_02_F` | `Plane` | recorded | `su57_felon` | runtime row emitted and class binding held |
 | `O_Plane_Fighter_02_Stealth_F` | `Plane` | recorded | `su57_felon` | runtime row emitted and class binding held |
-| `O_T_UAV_04_CAS_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (KH-3A Fenghuang). The corpus holds no catalogue entry for the real type, so the class is no_source. |
-| `O_T_VTOL_02_infantry_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_infantry_dynamicLoadout_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_infantry_ghex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_infantry_grey_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_infantry_hex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_vehicle_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_vehicle_dynamicLoadout_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_vehicle_ghex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_vehicle_grey_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_T_VTOL_02_vehicle_hex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source. |
-| `O_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source. |
-| `O_UAV_02_CAS_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `O_UAV_02_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `O_UAV_02_dynamicLoadout_F` | `UAV` | no_source | none | fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source. |
-| `O_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
-| `O_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source. |
+| `O_T_UAV_04_CAS_F` | `UAV` | recorded | `ch5_rainbow` | runtime row emitted and class binding held |
+| `O_T_VTOL_02_infantry_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_infantry_dynamicLoadout_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_infantry_ghex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_infantry_grey_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_infantry_hex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_vehicle_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_vehicle_dynamicLoadout_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_vehicle_ghex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_vehicle_grey_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_T_VTOL_02_vehicle_hex_F` | `Plane` | no_source | none | fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so the next source to seek is the NASA report Overview of STOVL Aircraft Propulsion Research (NTRS 19940014880), a US Government work in the public domain. |
+| `O_UAV_01_F` | `Helicopter` | no_source | none | toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, so the next source to seek is the NASA report Recent NASA Wind Tunnel Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US Government work in the public domain. |
+| `O_UAV_02_CAS_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `O_UAV_02_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `O_UAV_02_dynamicLoadout_F` | `UAV` | recorded | `mq9a_reaper` | runtime row emitted and class binding held |
+| `O_UAV_06_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
+| `O_UAV_06_medical_F` | `Helicopter` | no_source | none | fictional utility quadcopter (AL-6 Pelican) with no real counterpart, so the next source to seek is the NASA report Multirotor Test Bed Load and Stress Analysis (NASA/TM-20230000313), a US Government work in the public domain. |
 
 ## Token summary
 
 - Tokens: 37
 - Air tokens: 4
-- recorded: 2
+- recorded: 3
 - lead: 0
-- no_source: 2
+- no_source: 1
 - excluded_non_ground: 33
-- Runtime rows: 2
+- Runtime rows: 3
 
 ## Air tokens
 
@@ -188,7 +188,7 @@ once, keyed by game class. No class leaves the report in silence.
 | `Air` | engine_base | no_source | none | no | no emitted runtime row and no class binding held |
 | `Helicopter` | engine_base | recorded | `ah1j_seacobra`, `ah1s_cobra`, `ah1w_super_cobra`, `ah1z_viper`, `ah64a_apache`, `ah64e_apache_guardian`, `ah6_little_bird`, `as332_super_puma`, `as350_ecureuil`, `as355_twinstar`, `as365_dauphin`, `as532_cougar`, `aw101_hm2`, `aw101_merlin`, `aw139`, `aw149`, `aw159_wildcat`, `bell205`, `bell206b_jetranger`, `bell212`, `bell407`, `bell412`, `bell412ep`, `bell429`, `bell525`, `bk117`, `bo105`, `camcopter_s100`, `ch46_sea_knight`, `ch47_chinook`, `ch47a_chinook`, `ch47b_chinook`, `ch47c_chinook`, `ch53d_sea_stallion`, `ch53e_super_stallion`, `ch53k_king_stallion`, `ec135`, `ec145`, `ec155`, `ec225_super_puma`, `ec665_tiger`, `hh60g_pave_hawk`, `ka27_helix`, `ka29_helix_b`, `ka32_helix_c`, `ka50_hokum`, `ka60_kasatka`, `light_utility_rotary`, `lynx_has3`, `md500`, `md500_civil`, `md530_defender`, `md902_explorer`, `mh47g_chinook`, `mh53e_sea_dragon`, `mh60g_pave_hawk`, `mh60r_seahawk`, `mh60s_knighthawk`, `mh6m_mission_enhanced`, `mi10_harke`, `mi14_haze`, `mi171_hip_h`, `mi17_hip`, `mi24a_hind_a`, `mi24p_hind_f`, `mi26_halo`, `mi28_havoc`, `mi35m_hind_e`, `mi38_halo`, `mi4_hound`, `mi6_hook`, `mi8_hip`, `mq8_fire_scout`, `mq8c_fire_scout`, `nh90_nfh`, `oh58a_kiowa`, `oh58c_kiowa`, `oh58d_kiowa_warrior`, `oh6a_cayuse`, `rah66_comanche`, `rq8_fire_scout`, `s76`, `s92`, `sa321_super_frelon`, `sa330_puma`, `sa341_gazelle`, `sa342_gazelle`, `sh60b_seahawk`, `th67_creek`, `uh1h_v`, `uh1n_twin_huey`, `uh1y_venom`, `uh60a_black_hawk`, `uh60l_black_hawk`, `uh72a_lakota`, `w3_sokol`, `wg13_lynx`, `z10_thunderbolt`, `z19_thunderbolt`, `z20_black_eagle`, `z8_haoyang`, `z9_haitun` | yes | runtime row emitted and class binding held |
 | `Plane` | engine_base | recorded | `a10a_thunderbolt_ii`, `cessna_172_skyhawk`, `fa18e_super_hornet`, `jas39c_gripen`, `l159_alca`, `su25_frogfoot`, `su57_felon` | yes | runtime row emitted and class binding held |
-| `UAV` | engine_base | no_source | none | no | no emitted runtime row and no class binding held |
+| `UAV` | engine_base | recorded | `ch5_rainbow`, `mq9a_reaper` | yes | runtime row emitted and class binding held |
 
 ## Excluded tokens
 
