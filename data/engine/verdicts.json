@@ -13,6 +13,16 @@
       "ceiling": "Load-time and global. The PBO is the only off switch."
     },
     {
+      "id": "cfgmagazines-mass",
+      "domain": "ballistics",
+      "surface": "CfgMagazines >> <magazine> >> mass",
+      "verdict": "ADOPT",
+      "status": "implemented",
+      "source": "data/ballistics/magazine_masses.json (schema aee.ballistics.magazine_mass/1), the loaded-mass projection: the held loaded value, or DERIVED as empty_mass_g + capacity * round_mass_g from the held round mass for the chambering (data/ballistics/sources/magazine_mass.json).",
+      "reason": "A magazine is the heaviest repeated item a soldier carries, and the engine reads the magazine mass as its PhysX mass. The sourced LOADED mass lets the engine carry the real weight. A magazine that resolves no mass is a lead and is not emitted.",
+      "ceiling": "Load-time and global. The PBO is the only off switch."
+    },
+    {
       "id": "cfgmagazines-tracersevery",
       "domain": "ballistics",
       "surface": "CfgMagazines >> <magazine> >> tracersEvery",
