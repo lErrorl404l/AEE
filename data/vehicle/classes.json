@@ -359,7 +359,8 @@
       "provenance": [
         "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:129"
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:129",
+        "addons/vehicles/functions/fnc_updateFuelConsumption.sqf:109"
       ]
     },
     {

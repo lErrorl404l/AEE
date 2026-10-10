@@ -66,6 +66,17 @@ private _turbo = 1.0 - ((0 max (_alt - 2000)) / 7000) * 0.35 - ((0 max (_T - 15)
 _turbo = _turbo max 0.3 min 1.0;
 if (_crankSuccess <= 0) then { _turbo = 0; };
 
+// ─── Coolant overheat derate (issue #111) ────────────────────────────────
+// The coolant model (aee_vehicles_fnc_updateFuelConsumption) publishes a
+// power derate when the engine overheats. The engine power model applies it
+// to both the naturally-aspirated and the turbocharged path. The value is
+// 1.0 when there is no derate, so an absent model leaves the power unchanged.
+private _coolantDerate = missionNamespace getVariable [QGVAR(coolantPowerDerate), 1.0];
+if !(_coolantDerate isEqualType 0) then { _coolantDerate = 1.0; };
+_coolantDerate = _coolantDerate max 0 min 1;
+_power = _power * _coolantDerate;
+_turbo = _turbo * _coolantDerate;
+
 missionNamespace setVariable [QGVAR(enginePowerModifier), _power];
 missionNamespace setVariable [QGVAR(engineTurboModifier), _turbo];
 
