@@ -348,6 +348,14 @@ The reusable stimulus-response substrate. It runs the four stages sense,
 decide, act and recover over a registry of agents, and it holds a decaying
 disturbance field that every machine computes deterministically.
 
+It also carries the data-driven pathfinder (issue #81). It plans a route for a
+group at decision time, never per-frame: the engine `selectBestPlaces`
+generates terrain-flavoured candidates, `routeCost` scores each from AEE's own
+hazard state (passability, flash flood, fire, lightning) and `routeExposure`
+scores each from the repo's Koschmieder visibility model, and the winner
+becomes the group's move waypoint. The AI routes on data it may not see, the
+"seeing blind" behaviour.
+
 | Function | Purpose |
 |---|---|
 | `agentDecide` | Map the sense state and the thresholds to one action |
@@ -360,8 +368,11 @@ disturbance field that every machine computes deterministically.
 | `disturbancePrune` | Drop cells past the horizon and keep the cap, the `fnc_disturbancePrune` kernel |
 | `disturbanceSample` | Read the decayed disturbance at a cell |
 | `initAI` | Start the substrate client tick |
+| `planRoute` | Plan a group route through AEE's hazard state at decision time |
 | `receiveStimulus` | Apply a broadcast stimulus to the local field |
 | `reportStimulus` | Broadcast one rate-limited stimulus |
+| `routeCost` | Score a candidate destination from the AEE hazard state |
+| `routeExposure` | Score a candidate's observability from the visibility range |
 | `stimulusDecay` | Decay a stimulus magnitude over its half-life |
 | `teardownAI` | Stop the substrate client tick |
 

@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (662)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -148,8 +148,11 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ai_fnc_disturbanceSample`
 - `aee_ai_fnc_dumpState`
 - `aee_ai_fnc_initAI`
+- `aee_ai_fnc_planRoute`
 - `aee_ai_fnc_receiveStimulus`
 - `aee_ai_fnc_reportStimulus`
+- `aee_ai_fnc_routeCost`
+- `aee_ai_fnc_routeExposure`
 - `aee_ai_fnc_stimulusDecay`
 - `aee_ai_fnc_teardownAI`
 - `aee_altitude_fnc_calculateAltitudeAcclimatization`
@@ -792,7 +795,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (56)
+### Public core state variables (58)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -805,10 +808,12 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_consistencyFailures`
 - `aee_core_consistencyState`
 - `aee_core_coreBodyTemp`
+- `aee_core_currentFireRisk`
 - `aee_core_currentHeatIndex`
 - `aee_core_currentHumidity`
 - `aee_core_currentHypothermiaRisk`
 - `aee_core_currentHypoxiaRisk`
+- `aee_core_currentLightningRisk`
 - `aee_core_currentOvercast`
 - `aee_core_currentSunElevation`
 - `aee_core_currentTemperature`

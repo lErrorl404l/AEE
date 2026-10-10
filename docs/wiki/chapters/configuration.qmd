@@ -6,6 +6,12 @@ title: "Configuration"
 
 All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings menu under the **AEE** categories. Values marked *global* must match across all clients.
 
+## AEE AI → Pathfinding
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ai_pathfinding` | CHECKBOX | `false` | yes | ai | Plan AI routes through AEE's computed hazard state (flood, fire, mud, lightning, visibility). Route planning runs at decision time, never per-frame. |
+
 ## AEE Altitude → G-LOC
 
 | Setting | Type | Default | Global | Addon | Purpose |
