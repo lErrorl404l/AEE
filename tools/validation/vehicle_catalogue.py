@@ -291,7 +291,6 @@ REFERENCE_ONLY_SYSTEMS_FIELDS = frozenset(
         "fuel_tank_capacity_l",
         "engine_model",
         "engine_count",
-        "engine_design_rpm",
         "engine_oil_capacity_l",
         "engine_oil_type",
         "transmission_gear_ratio_main",
