@@ -340,6 +340,13 @@ GVAR(mgrsMapEH) = addMissionEventHandler ["Map", {
                 ];
             } forEach _legendRows;
         };
+        // ── Physics-state tactical overlay (#155) ─────────────────────
+        // Drawn from THIS handler, so the map keeps one rendering path.
+        // FUNC(mapOverlayDraw) samples the mod's own per-position kernels
+        // (biome, local wind) and draws the biome cells, the wind arrows
+        // and the magnetic-declination rose.  It throttles the sampling to
+        // 1 Hz, so the Draw hook stays cheap.
+        [_map, _rect, _font] call FUNC(mapOverlayDraw);
     }];
 
     _mapCtrl setVariable [QGVAR(mgrsMapReady), true];

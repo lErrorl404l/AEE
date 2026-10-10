@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (666)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -249,8 +249,15 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_cartography_fnc_gpsBuild`
 - `aee_cartography_fnc_gpsUpdate`
 - `aee_cartography_fnc_hudFormatGrid`
+- `aee_cartography_fnc_mapBiomeColor`
+- `aee_cartography_fnc_mapClickQuery`
+- `aee_cartography_fnc_mapDeclinationRose`
+- `aee_cartography_fnc_mapFieldPlan`
 - `aee_cartography_fnc_mapIconWorldSize`
 - `aee_cartography_fnc_mapLegendDraw`
+- `aee_cartography_fnc_mapOverlayDraw`
+- `aee_cartography_fnc_mapStateReadout`
+- `aee_cartography_fnc_mapWindArrow`
 - `aee_cartography_fnc_mgrsCursorText`
 - `aee_cartography_fnc_mgrsEffectivePrecision`
 - `aee_cartography_fnc_mgrsFontFamily`

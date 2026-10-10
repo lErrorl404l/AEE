@@ -9,6 +9,46 @@
             <Original>Cartography Debug Log</Original>
             <English>Cartography Debug Log</English>
         </Key>
+        <Key ID="STR_AEE_Cartography_mapBiomeLayer_Description">
+            <Original>Draw a coloured Koppen biome cell per sample over the visible map, from the aee per-position biome kernel. The cells are the mod's own computed biome at each cell centre. Default on; the layer draws only when the physics overlay master switch is on.</Original>
+            <English>Draw a coloured Koppen biome cell per sample over the visible map, from the aee per-position biome kernel. The cells are the mod's own computed biome at each cell centre. Default on; the layer draws only when the physics overlay master switch is on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapBiomeLayer_Name">
+            <Original>Map Biome Layer</Original>
+            <English>Map Biome Layer</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapClickQuery_Description">
+            <Original>Click the map to read the aee state at that point: the per-position biome, surface material, local wind and terrain height, plus the current global temperature, WBGT, flood, fire, snow, radio and hypoxia values. The readout uses the mod weather-report style. Default on; the query runs only when the physics overlay master switch is on.</Original>
+            <English>Click the map to read the aee state at that point: the per-position biome, surface material, local wind and terrain height, plus the current global temperature, WBGT, flood, fire, snow, radio and hypoxia values. The readout uses the mod weather-report style. Default on; the query runs only when the physics overlay master switch is on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapClickQuery_Name">
+            <Original>Map Click Query</Original>
+            <English>Map Click Query</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapDeclinationRose_Description">
+            <Original>Draw a magnetic-declination rose on the map: the true-north ray (the map up axis) and the magnetic-north ray the compass deviation model computes. The rose reads the aee magnetic declination the compass uses. Default on; the rose draws only when the physics overlay master switch is on.</Original>
+            <English>Draw a magnetic-declination rose on the map: the true-north ray (the map up axis) and the magnetic-north ray the compass deviation model computes. The rose reads the aee magnetic declination the compass uses. Default on; the rose draws only when the physics overlay master switch is on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapDeclinationRose_Name">
+            <Original>Map Declination Rose</Original>
+            <English>Map Declination Rose</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapOverlayEnabled_Description">
+            <Original>Master switch for the physics-state tactical map overlay. On: the per-position biome and wind layers, the declination rose and the click query draw on the open map. Off: the map is unchanged. Default off.</Original>
+            <English>Master switch for the physics-state tactical map overlay. On: the per-position biome and wind layers, the declination rose and the click query draw on the open map. Off: the map is unchanged. Default off.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapOverlayEnabled_Name">
+            <Original>Map Physics Overlay</Original>
+            <English>Map Physics Overlay</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapWindLayer_Description">
+            <Original>Draw a local-wind arrow per sample over the visible map, from the aee per-position local wind field. The arrow points the way the wind blows toward. The field is sampled at most once a second, so the map stays smooth. Default on; the layer draws only when the physics overlay master switch is on.</Original>
+            <English>Draw a local-wind arrow per sample over the visible map, from the aee per-position local wind field. The arrow points the way the wind blows toward. The field is sampled at most once a second, so the map stays smooth. Default on; the layer draws only when the physics overlay master switch is on.</English>
+        </Key>
+        <Key ID="STR_AEE_Cartography_mapWindLayer_Name">
+            <Original>Map Wind Layer</Original>
+            <English>Map Wind Layer</English>
+        </Key>
         <Key ID="STR_AEE_Cartography_mgrsCursorReadout_Description">
             <Original>Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on.</Original>
             <English>Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on.</English>

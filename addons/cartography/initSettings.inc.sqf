@@ -40,6 +40,29 @@ AEE_SETTING_CHECKBOX(mgrsMapGrid,"AEE HUD","Displays",true);
 // aee readout is drawn adjacent to it.  Default on.
 AEE_SETTING_CHECKBOX(mgrsCursorReadout,"AEE HUD","Displays",true);
 
+// ── Physics-state tactical map overlay (issue #155) ───────────────────────
+// The master switch.  Off by default: the overlay is a new, visually heavy
+// map layer, so the shipped map is unchanged until an operator turns it on.
+// On: the per-position layers below draw on the open map.
+AEE_SETTING_CHECKBOX(mapOverlayEnabled,"AEE HUD","Displays",false);
+
+// Biome layer: a coloured Koppen cell per sample over the visible map, from
+// EFUNC(weather,getBiomeAtPosition) at each cell centre.  Default on (it only
+// draws when the master is on).
+AEE_SETTING_CHECKBOX(mapBiomeLayer,"AEE HUD","Displays",true);
+
+// Wind layer: a local-wind arrow per sample, from EFUNC(atmos,getLocalWind)
+// (the issue #136 field).  Default on.
+AEE_SETTING_CHECKBOX(mapWindLayer,"AEE HUD","Displays",true);
+
+// Magnetic-declination rose: the true-north and magnetic-north rays, from
+// EGVAR(core,magneticDeclinationDeg) (the compass #78 value).  Default on.
+AEE_SETTING_CHECKBOX(mapDeclinationRose,"AEE HUD","Displays",true);
+
+// Click-to-query: click the map to read the AEE state at that point.  Default
+// on (it only acts when the master is on).
+AEE_SETTING_CHECKBOX(mapClickQuery,"AEE HUD","Displays",true);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,
