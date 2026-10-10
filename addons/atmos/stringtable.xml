@@ -105,5 +105,13 @@
             <Original>Simul Weather Layers</Original>
             <English>Simul Weather Layers</English>
         </Key>
+        <Key ID="STR_AEE_Atmos_weatherFrontsEnabled_Description">
+            <Original>Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes</Original>
+            <English>Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_weatherFrontsEnabled_Name">
+            <Original>Weather Fronts</Original>
+            <English>Weather Fronts</English>
+        </Key>
     </Package>
 </Project>

@@ -84,6 +84,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_atmos_maxFogDensity` | SLIDER | `0.8` | yes | atmos | Ceiling for the fog density value applied to the engine |
 | `aee_atmos_radFogRampRate` | SLIDER | `0.1` | yes | atmos | Radiational-fog density added per tick on clear calm moist nights |
 
+## AEE Atmos → Fronts
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_weatherFrontsEnabled` | CHECKBOX | `true` | yes | atmos | Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes |
+
 ## AEE Atmos → Icing
 
 | Setting | Type | Default | Global | Addon | Purpose |

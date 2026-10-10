@@ -34,6 +34,11 @@ AEE_SETTING_CHECKBOX(refractionEnabled,"AEE Atmos","Refraction",true);
 // ── Engine cloud quality ──────────────────────────────────────────────────
 AEE_SETTING_SLIDER(simulWeatherLayers,"AEE Atmos","Clouds",0,5,0,0);
 
+// ── Weather fronts ─────────────────────────────────────────────────────────
+// Bergen life-cycle front (issue #15).  Off disables the whole front model:
+// no temperature step, pressure trough, wind veer or cloud forcing.
+AEE_SETTING_CHECKBOX(weatherFrontsEnabled,"AEE Atmos","Fronts",true);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,

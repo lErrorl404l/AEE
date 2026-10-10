@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (664)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -187,6 +187,9 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculateAirframeIcing`
 - `aee_atmos_fnc_calculateCloudCeiling`
 - `aee_atmos_fnc_calculateCloudDevelopment`
+- `aee_atmos_fnc_calculateFrontDistance`
+- `aee_atmos_fnc_calculateFrontPhase`
+- `aee_atmos_fnc_calculateFrontWind`
 - `aee_atmos_fnc_calculateHailEnergy`
 - `aee_atmos_fnc_calculateHaze`
 - `aee_atmos_fnc_calculateLightning`
@@ -199,6 +202,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculateStationPressure`
 - `aee_atmos_fnc_calculateTerrainWind`
 - `aee_atmos_fnc_calculateTurbulence`
+- `aee_atmos_fnc_calculateWeatherFront`
 - `aee_atmos_fnc_dumpState`
 - `aee_atmos_fnc_getLocalWind`
 - `aee_atmos_fnc_hailDamage`
@@ -209,6 +213,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_updatePressure`
 - `aee_atmos_fnc_updateRainbow`
 - `aee_atmos_fnc_updateSimulWeatherLayers`
+- `aee_atmos_fnc_updateWeatherFront`
 - `aee_atmos_fnc_updateWind`
 - `aee_ballistics_fnc_calculateAirDensity`
 - `aee_ballistics_fnc_calculateAirDensityKernel`
@@ -792,7 +797,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (56)
+### Public core state variables (58)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -810,6 +815,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_currentHypothermiaRisk`
 - `aee_core_currentHypoxiaRisk`
 - `aee_core_currentOvercast`
+- `aee_core_currentPressure`
 - `aee_core_currentSunElevation`
 - `aee_core_currentTemperature`
 - `aee_core_currentTemperatureBase`
@@ -850,6 +856,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_stormOverrideType`
 - `aee_core_stormOverrideUntil`
 - `aee_core_updateInterval`
+- `aee_core_weatherProgressionSeed`
 - `aee_core_windChillTemp`
 - `aee_core_worldLocation`
 
