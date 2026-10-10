@@ -34,6 +34,8 @@ The reference mods (Project Hatchet H-60 and BradMick's HeliSim) and RHS, CUP an
 
 9. The shared-foundation decision for land vehicles. The systems specification is one foundation for two families. The land family reuses the contract, the match resolver, the source tooling, the config projection and the kernel shape. It is a branch, not a rewrite.
 
+10. The engine RTD command and the RPM base. The engine kernel commands the spool with `setWantedRPMRTD [rpm, seconds, -1]`, not `setEngineRpmRTD`. The getter is `enginesRpmRTD` for engine 0. The RPM base is the published `engine_design_rpm` from the systems row, with a `getEngineTargetRPMRTD` fallback for engine 0 only when the base is absent and `difficultyEnabledRTD` is true. The driver derives the commanded band from `isEngineOn` and never commands below the governed speed while airborne. RTD is off on a dedicated server, so the command path is proven by source-contract tests and not by the Docker probe.
+
 ## Alternatives rejected
 
 - A single widened flight-model row. Rejected: the four-value row is pinned by a test and the pure kernel `fnc_calculateAirEngineLoad.sqf` stays a pure power model. The systems fields get a separate lookup.
@@ -48,6 +50,7 @@ The reference mods (Project Hatchet H-60 and BradMick's HeliSim) and RHS, CUP an
 - The scripted magnitude is a residual the operator signs. It is not a gate.
 - The four-value row and the pure kernel `fnc_calculateAirEngineLoad.sqf` are unchanged.
 - No new PBO, no runtime model swap and no land engine XML ship.
+- The engine kernel reaches the RotorLib real-time path with a real getter and a real array command. The simple flight model keeps the scripted readout and issues no command.
 
 ## References
 
@@ -57,4 +60,7 @@ The reference mods (Project Hatchet H-60 and BradMick's HeliSim) and RHS, CUP an
 - `docs/adr/ADR-018-aircraft-catalogue.md`, the aircraft catalogue.
 - `tools/validation/gen_physics_config.py`, the one `CfgVehicles` block.
 - `tools/validation/gen_aircraft_systems.py`, the systems lookup.
+- `addons/flight/functions/fnc_updateEngineSystem.sqf`, the RTD command and the RPM base.
+- `addons/flight/functions/fnc_updateAircraftSystems.sqf`, the engine-state driver.
+- `data/vehicle/SCHEMA.md`, section 16, the `engine_design_rpm` systems field.
 - `docs/architecture/vehicle-systems-pipeline.md`, the shared pieces and the land branch points.
