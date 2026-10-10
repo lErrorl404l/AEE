@@ -29,7 +29,6 @@ private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffse
 if !(_tideOffset isEqualType 0) then { _tideOffset = 0; };
 private _tideDescription = missionNamespace getVariable [QEGVAR(core,currentTideDescription), ""];
 if !(_tideDescription isEqualType "") then { _tideDescription = ""; };
-<<<<<<< HEAD
 private _waterTypeName = missionNamespace getVariable [QGVAR(waterTypeName), ""];
 if !(_waterTypeName isEqualType "") then { _waterTypeName = ""; };
 private _underwaterKd = missionNamespace getVariable [QGVAR(underwaterKd), [0, 0, 0]];
@@ -60,13 +59,28 @@ if !(_shipPitch isEqualType 0) then { _shipPitch = 0; };
 private _shipHeave = missionNamespace getVariable [QGVAR(shipHeave_m), 0];
 if !(_shipHeave isEqualType 0) then { _shipHeave = 0; };
 
+// Underwater acoustics (issue #113).
+private _soundSpeedSurface = missionNamespace getVariable [QGVAR(soundSpeedSurface), 0];
+if !(_soundSpeedSurface isEqualType 0) then { _soundSpeedSurface = 0; };
+private _soundChannelAxisDepth = missionNamespace getVariable [QGVAR(soundChannelAxisDepth_m), 0];
+if !(_soundChannelAxisDepth isEqualType 0) then { _soundChannelAxisDepth = 0; };
+private _soundChannelAxisSpeed = missionNamespace getVariable [QGVAR(soundChannelAxisSpeed), 0];
+if !(_soundChannelAxisSpeed isEqualType 0) then { _soundChannelAxisSpeed = 0; };
+private _shadowZoneTop = missionNamespace getVariable [QGVAR(shadowZoneTop_m), 0];
+if !(_shadowZoneTop isEqualType 0) then { _shadowZoneTop = 0; };
+private _shadowZoneBottom = missionNamespace getVariable [QGVAR(shadowZoneBottom_m), 0];
+if !(_shadowZoneBottom isEqualType 0) then { _shadowZoneBottom = 0; };
+private _absorptionDbPerKm = missionNamespace getVariable [QGVAR(absorptionDbPerKm), 0];
+if !(_absorptionDbPerKm isEqualType 0) then { _absorptionDbPerKm = 0; };
+private _ambientNoiseDb = missionNamespace getVariable [QGVAR(ambientNoiseDb), 0];
+if !(_ambientNoiseDb isEqualType 0) then { _ambientNoiseDb = 0; };
+
 private _logMsg = format [
-    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | water=type:%10 z=%11m Kd=[%12,%13,%14] T=[%15,%16,%17] snell=%18/%19 biolum=%20:%21 | internal=tc=%22 c=%23 eta=%24 active=%25 | ship=roll=%26 pitch=%27 heave=%28",
+    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | water=type:%10 z=%11m Kd=[%12,%13,%14] T=[%15,%16,%17] snell=%18/%19 biolum=%20:%21 | internal=tc=%22 c=%23 eta=%24 active=%25 | ship=roll=%26 pitch=%27 heave=%28 | acoustics=c=%29 axis=%30@%31 shadow=%32..%33 alpha=%34 NL=%35",
     _beaufort, round (_seaStateCurrent * 100) / 100, _seaStateDescription, round (_waveHeight * 100) / 100,
     round (_seaSurfaceTemperature * 100) / 100,
     round (_compassDeviation * 100) / 100, round (_compassAnomalyNT * 100) / 100,
     round (_tideOffset * 100) / 100, _tideDescription,
-<<<<<<< HEAD
     _waterTypeName, round (_underwaterDepth * 100) / 100,
     round ((_underwaterKd select 0) * 1000) / 1000,
     round ((_underwaterKd select 1) * 1000) / 1000,
@@ -78,7 +92,10 @@ private _logMsg = format [
     _biolumVisible, round (_biolumIntensity * 100) / 100,
     round (_thermoclineDepth * 100) / 100, round (_internalWaveSpeed * 100) / 100,
     round (_internalWaveAmplitude * 100) / 100, _internalTideActive,
-    round (_shipRoll * 10) / 10, round (_shipPitch * 10) / 10, round (_shipHeave * 100) / 100
+    round (_shipRoll * 10) / 10, round (_shipPitch * 10) / 10, round (_shipHeave * 100) / 100,
+    round (_soundSpeedSurface * 10) / 10, round _soundChannelAxisDepth, round (_soundChannelAxisSpeed * 10) / 10,
+    round _shadowZoneTop, round _shadowZoneBottom,
+    round (_absorptionDbPerKm * 1000) / 1000, round _ambientNoiseDb
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {
