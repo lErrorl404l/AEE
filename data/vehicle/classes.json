@@ -133,7 +133,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/mobility/functions/fnc_calculateTraction.sqf:54",
+        "addons/mobility/functions/fnc_calculateTraction.sqf:66",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:276",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:520",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62",

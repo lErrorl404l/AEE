@@ -47,6 +47,16 @@ AEE_SETTING_SLIDER(rolloverTorqueScale,"AEE Mobility","Rollover",0.05,1.0,0.25,2
 
 AEE_SETTING_SLIDER(rolloverRadius,"AEE Mobility","Rollover",10,200,50,0);
 
+// ── Frost heave (issue #20) ────────────────────────────────────────────────
+// The magnitude is the two-term value of fnc_calculateFrostHeave (in-situ
+// expansion plus ice-lens segregation).  Each control is a real input to that
+// model, so none of them is inert.
+AEE_SETTING_CHECKBOX(frostHeaveEnabled,"AEE Mobility","Frost Heave",true);
+
+AEE_SETTING_SLIDER(frostHeaveMultiplier,"AEE Mobility","Frost Heave",0,2,1.0,2);
+
+AEE_SETTING_SLIDER(frostHeaveMaxM,"AEE Mobility","Frost Heave",0,0.5,0.3,2);
+
 // ── Off-road terrain drag ──────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(terrainDragEnabled,"AEE Mobility","Terrain",true);
 

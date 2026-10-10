@@ -110,6 +110,9 @@ def main():
         "tools/tests/test_wet_ground.py",
         "tools/tests/test_audit_189.py",
         "tools/tests/test_frost.py",
+        # Frost heave: the in-situ expansion and the ice-lens segregation
+        # (aee-frost-heave, issue #20).
+        "tools/tests/test_frost_heave.py",
         "tools/tests/test_geolocation.py",
         "tools/tests/test_geo_positioning.py",
         "tools/tests/test_mgrs.py",
