@@ -4,6 +4,11 @@
 // wetness, ice load, CBRN, fire spread, flash flood and avalanche.
 
 PREPS(warnings,calculateFireSpreadRisk);
+PREPS(warnings,equilibriumMoisture);
+PREPS(warnings,fuelMoistureResponse);
+PREPS(warnings,rothermelSpread);
+PREPS(warnings,byramIntensity);
+PREPS(warnings,fuelModelParams);
 PREPS(warnings,calculateAvalancheRisk);
 PREPS(terrain,calculateIceLoad);
 PREPS(warnings,calculateCBRNPersistence);

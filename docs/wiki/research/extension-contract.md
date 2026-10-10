@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (664)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -512,6 +512,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_particles_fnc_surfaceMaterial`
 - `aee_particles_fnc_surfaceSample`
 - `aee_particles_fnc_weatherParticleAlpha`
+- `aee_persistence_fnc_byramIntensity`
 - `aee_persistence_fnc_calculateAvalancheRisk`
 - `aee_persistence_fnc_calculateCBRNPersistence`
 - `aee_persistence_fnc_calculateFireSpreadRisk`
@@ -521,7 +522,11 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_persistence_fnc_calculateIceLoad`
 - `aee_persistence_fnc_calculateSurfaceWetness`
 - `aee_persistence_fnc_detectGroundFrost`
+- `aee_persistence_fnc_equilibriumMoisture`
+- `aee_persistence_fnc_fuelModelParams`
+- `aee_persistence_fnc_fuelMoistureResponse`
 - `aee_persistence_fnc_getCbrnProtection`
+- `aee_persistence_fnc_rothermelSpread`
 - `aee_persistence_fnc_updateSoilMoisture`
 - `aee_physiology_fnc_applyHeatStressHUD`
 - `aee_physiology_fnc_dumpState`
