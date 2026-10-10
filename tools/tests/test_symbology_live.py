@@ -35,6 +35,7 @@ SYM = SYM_ADDON / "functions" / "symbology"
 ECHELON_KERNEL = SYM / "fnc_symbologyEchelon.sqf"
 ECHELON_MARKER_KERNEL = SYM / "fnc_symbologyEchelonMarker.sqf"
 DIMENSION_KERNEL = SYM / "fnc_symbologyDimension.sqf"
+KILLED_MARKER_KERNEL = SYM / "fnc_symbologyKilledMarker.sqf"
 TABLES_SQF = SYM_ADDON / "data" / "symbology_tables.sqf"
 TABLES_JSON = REPO / "data" / "symbology" / "symbology_tables.json"
 MODIFIERS_SRC = (SYM_ADDON / "config_modifiers.hpp").read_text(encoding="utf-8")
@@ -44,6 +45,7 @@ MARKERS_SRC = (SYM_ADDON / "config_markers.hpp").read_text(encoding="utf-8")
 APPLY_SRC = (SYM / "fnc_symbologyMarkersApply.sqf").read_text(encoding="utf-8")
 RESTORE_SRC = (SYM / "fnc_symbologyMarkersRestore.sqf").read_text(encoding="utf-8")
 WORLD_SRC = (SYM / "fnc_symbologyWorldDraw.sqf").read_text(encoding="utf-8")
+MARKERS_INSTALLER_SRC = (SYM / "fnc_symbologyMarkers.sqf").read_text(encoding="utf-8")
 RESOLVE_SRC = (SYM / "fnc_symbolResolve.sqf").read_text(encoding="utf-8")
 
 SYM_TABLES = run_sqf(TABLES_SQF, [])
@@ -109,6 +111,11 @@ def dimension(category):
     return run_sqf(
         DIMENSION_KERNEL, [category], {"aee_symbology_symbologyTables": SYM_TABLES}
     )
+
+
+def killed(spec):
+    """Run the real killed-marker kernel."""
+    return run_sqf(KILLED_MARKER_KERNEL, [spec], {})
 
 
 class TestEchelonKernel(unittest.TestCase):
@@ -217,13 +224,51 @@ class TestDimensionKernel(unittest.TestCase):
                 self.assertEqual(rows.get(name), expected)
 
 
+class TestKilledMarkerKernel(unittest.TestCase):
+    """fnc_symbologyKilledMarker, executed: live spec -> last-known spec."""
+
+    def test_the_last_known_spec_keeps_the_affiliation_and_category(self):
+        spec = ["friend", "AEE_b_inf", "ColorWEST", "squad"]
+        self.assertEqual(killed(spec), spec)
+
+    def test_the_ceiling_keeps_every_field(self):
+        # No destroyed-status symbol exists in the catalogue, so the
+        # last-known form is the live form for the affiliation and category.
+        spec = ["hostile", "AEE_o_armor", "ColorEAST", "company"]
+        last_known = killed(spec)
+        self.assertEqual(last_known[0], spec[0])
+        self.assertEqual(last_known[1], spec[1])
+        self.assertEqual(last_known[2], spec[2])
+        self.assertEqual(last_known[3], spec[3])
+
+    def test_a_malformed_spec_falls_back_to_unknown(self):
+        self.assertEqual(killed(["friend"]), ["unknown", "", "ColorUNKNOWN", "unknown"])
+        self.assertEqual(killed([]), ["unknown", "", "ColorUNKNOWN", "unknown"])
+
+
 class TestApplyContract(unittest.TestCase):
     """fnc_symbologyMarkersApply carries the alive gate, the echelon layer and
     the dimension argument."""
 
-    def test_the_alive_guard_gates_the_unit_list(self):
+    def test_the_alive_guard_gates_the_player(self):
+        # The player is drawn only when alive; a dead player is not drawn.
         self.assertIn("alive _player", APPLY_SRC)
-        self.assertIn("alive _x", APPLY_SRC)
+
+    def test_a_dead_tracked_unit_keeps_a_last_known_contact(self):
+        # The old guard `if ((alive _x) && ...)` deleted a dead unit's marker.
+        # The layer now keeps a LAST-KNOWN contact for a dead unit the
+        # EntityKilled handler recorded, so the cleanup does not remove it.
+        self.assertIn("symbologyKilledUnits", APPLY_SRC)
+        self.assertIn("call FUNC(symbologyKilledMarker)", APPLY_SRC)
+        self.assertIn("!(alive _unit)", APPLY_SRC)
+
+    def test_the_death_handler_records_the_position_and_a_state_flag(self):
+        self.assertIn('addMissionEventHandler ["EntityKilled"', MARKERS_INSTALLER_SRC)
+        self.assertIn("symbologyKilledUnits", MARKERS_INSTALLER_SRC)
+        self.assertIn("getPos _killed", MARKERS_INSTALLER_SRC)
+
+    def test_restore_clears_the_last_known_state(self):
+        self.assertIn("symbologyKilledUnits", RESTORE_SRC)
 
     def test_the_echelon_companion_marker_is_named(self):
         self.assertIn('"AEE_ECH_"', APPLY_SRC)

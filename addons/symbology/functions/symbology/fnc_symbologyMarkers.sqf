@@ -38,3 +38,25 @@ GVAR(symbologyMarkersEH) = addMissionEventHandler ["Map", {
         GVAR(symbologyScanPFH) = nil;
     };
 }];
+
+// ── The last-known contact state ─────────────────────────────────────────
+// A dead unit's marker is not deleted while it stays in range: this handler
+// records the unit and its death position, and the next map re-scan keeps a
+// LAST-KNOWN contact there (FUNC(symbologyKilledMarker)).  The record is
+// cleared on map close by FUNC(symbologyMarkersRestore).
+if (isNil QGVAR(symbologyKilledEH)) then {
+    GVAR(symbologyKilledEH) = addMissionEventHandler ["EntityKilled", {
+        params ["_killed", "_killer", "_instigator"];
+        // Only a unit the layer already tracks has an AEE_UNIT_ marker, so
+        // the marker check below is the whole filter; a vehicle or a building
+        // carries no AEE_UNIT_ name and is ignored.
+        private _created = missionNamespace getVariable [QGVAR(symbologyUnitMarkers), []];
+        private _markerName = "AEE_UNIT_" + (netId _killed);
+        if (_markerName in _created) then {
+            private _killedUnits = missionNamespace getVariable [QGVAR(symbologyKilledUnits), []];
+            _killedUnits = _killedUnits select { (_x select 0) isNotEqualTo _killed };
+            _killedUnits pushBack [_killed, getPos _killed];
+            missionNamespace setVariable [QGVAR(symbologyKilledUnits), _killedUnits];
+        };
+    }];
+};

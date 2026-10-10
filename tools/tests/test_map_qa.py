@@ -32,6 +32,9 @@ CART = REPO / "addons" / "cartography"
 MARKERS_HPP = SYMBOLOGY / "config_markers.hpp"
 LOC_HPP = CART / "config_locationtypes.hpp"
 ECHELON_KERNEL = SYMBOLOGY / "functions" / "symbology" / "fnc_symbologyEchelonSize.sqf"
+KILLED_MARKER_KERNEL = (
+    SYMBOLOGY / "functions" / "symbology" / "fnc_symbologyKilledMarker.sqf"
+)
 ICON_WORLD_SIZE_KERNEL = CART / "functions" / "hud" / "fnc_mapIconWorldSize.sqf"
 CART_PREP = (CART / "XEH_PREP.hpp").read_text(encoding="utf-8")
 RUN_TESTS = REPO / "tools" / "run_tests.py"
@@ -43,6 +46,7 @@ ADR030 = (
 )
 TOPO_SURFACE = REPO / "docs" / "engine" / "topo-map-surface.md"
 COL_HPP = CART / "config_mapcolors.hpp"
+FAMILY_HPP = SYMBOLOGY / "config_family.hpp"
 
 MATRIX_SRC = MATRIX.read_text(encoding="utf-8")
 MARKERS_SRC = MARKERS_HPP.read_text(encoding="utf-8")
@@ -230,6 +234,24 @@ class TestMapIconWorldSizeKernel(unittest.TestCase):
 
     def test_the_kernel_is_registered(self):
         self.assertIn("PREPS(hud,mapIconWorldSize);", CART_PREP)
+
+
+class TestLastKnownContactLifecycle(unittest.TestCase):
+    """A killed unit keeps a last-known contact (todo 6).
+
+    The map QA matrix proves every engine marker family renders an AEE
+    symbol.  This holds the last-known contact to the same rule: the killed
+    kernel keeps the live marker type, which must be a registered class.
+    """
+
+    def test_the_killed_kernel_keeps_a_registered_marker_type(self):
+        spec = ["friend", "AEE_b_inf", "ColorWEST", "squad"]
+        last_known = run_sqf(KILLED_MARKER_KERNEL, [spec], {})
+        self.assertEqual(last_known[1], "AEE_b_inf")
+        self.assertIn(
+            "class AEE_b_inf:",
+            FAMILY_HPP.read_text(encoding="utf-8"),
+        )
 
 
 class TestSuiteRegistration(unittest.TestCase):
