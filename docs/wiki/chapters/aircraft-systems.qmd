@@ -30,9 +30,10 @@ order. A consumer indexes by name.
 
 - Fuel: `fuel_capacity`, `fuel_consumption_rate`, `fuel_density_kg_l`,
   `sfc_kg_kwh`, `fuel_cg_arm_m`.
-- Engine: `engine_idle_ng`, `engine_max_ng`, `engine_max_np`,
-  `engine_max_torque_nm`, `engine_max_tgt_c`, `engine_oil_pressure_min_kpa`,
-  `engine_oil_pressure_max_kpa`, `transmission_torque_limit_nm`.
+- Engine: `engine_design_rpm`, `engine_idle_ng`, `engine_max_ng`,
+  `engine_max_np`, `engine_max_torque_nm`, `engine_max_tgt_c`,
+  `engine_oil_pressure_min_kpa`, `engine_oil_pressure_max_kpa`,
+  `transmission_torque_limit_nm`.
 - Status: `hydraulic_pressure_kpa`, `generator_power_kw`, `bus_voltage_v`,
   `battery_capacity_ah`, `cabin_pressure_max_kpa`.
 - Enums: `fuel_type`, `engine_oil_type`, `oxygen_system`.
@@ -87,8 +88,11 @@ source. A class with no real counterpart is recorded as `no_source`.
   exist. The transfer, the jettison and the centre-of-gravity shift are
   scripted.
 - Engine: the engine exposes `setWantedRPMRTD` and the RotorLib real-time data
-  getters only when `difficultyEnabledRTD` is true. Turbine temperature, oil,
-  start and wear are not exposed and are scripted.
+  getters only when `difficultyEnabledRTD` is true. The kernel commands
+  `setWantedRPMRTD [rpm, seconds, engineIndex]` with the published
+  `engine_design_rpm` as the base and a `getEngineTargetRPMRTD` fallback when
+  the base is absent. Turbine temperature, oil, start and wear are not exposed
+  and are scripted.
 - Damage: built-in. `HitPoints`, `get` and `setHitPointDamage`, `setDamage`
   and `allowDamage` exist. The per-system progressive damage is scripted.
 - Status systems: absent. Hydraulics, electrical and pressurisation are status
