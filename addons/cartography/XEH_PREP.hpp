@@ -5,8 +5,15 @@
 // PREP'd from functions/hud/ (the category the optics split carried over);
 // callers use FUNC.
 
+PREPS(hud,mapBiomeColor);
+PREPS(hud,mapClickQuery);
+PREPS(hud,mapDeclinationRose);
+PREPS(hud,mapFieldPlan);
 PREPS(hud,mapIconWorldSize);
 PREPS(hud,mapLegendDraw);
+PREPS(hud,mapOverlayDraw);
+PREPS(hud,mapStateReadout);
+PREPS(hud,mapWindArrow);
 PREPS(hud,mgrsGridLines);
 PREPS(hud,mgrsMapDraw);
 PREPS(hud,mgrsMapPrecision);
