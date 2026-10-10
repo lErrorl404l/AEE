@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (662)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -434,10 +434,13 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ltm_fnc_ltmToggleMode`
 - `aee_magnetism_fnc_calculateCompassDeviation`
 - `aee_magnetism_fnc_calculateMagneticAnomaly`
+- `aee_maritime_fnc_calculateOceanCurrent`
 - `aee_maritime_fnc_calculateSeaState`
 - `aee_maritime_fnc_calculateSeaSurfaceTemperature`
 - `aee_maritime_fnc_calculateTidalPrediction`
 - `aee_maritime_fnc_dumpState`
+- `aee_maritime_fnc_ekmanTransport`
+- `aee_maritime_fnc_tidalCurrentSpeed`
 - `aee_maritime_fnc_updateEngineWaves`
 - `aee_material_fnc_calculateStefanCoefficient`
 - `aee_material_fnc_classifyBySurfaceType`
@@ -792,7 +795,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (56)
+### Public core state variables (57)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -813,6 +816,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_currentSunElevation`
 - `aee_core_currentTemperature`
 - `aee_core_currentTemperatureBase`
+- `aee_core_currentTideOffset_m`
 - `aee_core_currentTurbulence`
 - `aee_core_currentUVIndex`
 - `aee_core_currentWBGT`
