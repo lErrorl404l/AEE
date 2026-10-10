@@ -43,7 +43,7 @@ Arguments:
 
 Return Value: NUMBER - the new speed ratio in 0..1, or -1 when an input is
 unusable.
-Example: [0.4, 1.0, 1, 4] call aee_mobility_fnc_calculateEngineNg
+Example: [0.4, 1.0, 1, 4] call aee_flight_fnc_calculateEngineNg
 Public: No
 */
 

@@ -26,8 +26,8 @@ sys.path.insert(0, str(REPO))
 from tools.validation import gen_aircraft_systems as gen  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
-SYSTEMS_PATH = REPO / "addons" / "mobility" / "functions" / "fnc_getAircraftSystems.sqf"
-PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
+SYSTEMS_PATH = REPO / "addons" / "flight" / "functions" / "fnc_getAircraftSystems.sqf"
+PREP_PATH = REPO / "addons" / "flight" / "XEH_PREP.hpp"
 SYSTEMS = SYSTEMS_PATH.read_text(encoding="utf-8")
 
 # The plan's authoritative ordered field tuple. The generator must match it.
@@ -94,7 +94,7 @@ class TestGeneratedSystemsFile(unittest.TestCase):
     def test_the_file_is_marked_generated(self) -> None:
         self.assertIn("GENERATED", SYSTEMS)
         self.assertIn("gen_aircraft_systems.py", SYSTEMS)
-        self.assertIn("aee_mobility_fnc_getAircraftSystems", SYSTEMS)
+        self.assertIn("aee_flight_fnc_getAircraftSystems", SYSTEMS)
 
     def test_the_header_states_the_ordered_field_tuple(self) -> None:
         header = SYSTEMS.split("*/", 1)[0]

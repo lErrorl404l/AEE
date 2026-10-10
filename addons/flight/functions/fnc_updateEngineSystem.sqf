@@ -53,7 +53,7 @@ Arguments:
   2:  _deltaTimeS (NUMBER) elapsed interval, s, default diag_deltaTime
 
 Return Value: BOOL - true when the engine state was written
-Example: [cursorObject, 1, 1] call aee_mobility_fnc_updateEngineSystem
+Example: [cursorObject, 1, 1] call aee_flight_fnc_updateEngineSystem
 Public: No
 */
 

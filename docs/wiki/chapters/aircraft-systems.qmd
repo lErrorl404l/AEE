@@ -25,7 +25,7 @@ row is unchanged. The systems fields get a second lookup.
 ## The runtime fields it feeds
 
 The generator `tools/validation/gen_aircraft_systems.py` writes
-`addons/mobility/functions/fnc_getAircraftSystems.sqf`. The row is fixed
+`addons/flight/functions/fnc_getAircraftSystems.sqf`. The row is fixed
 order. A consumer indexes by name.
 
 - Fuel: `fuel_capacity`, `fuel_consumption_rate`, `fuel_density_kg_l`,

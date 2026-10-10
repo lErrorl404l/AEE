@@ -32,10 +32,10 @@ sys.path.insert(0, str(REPO / "tools" / "tests"))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-FUNCS = REPO / "addons" / "mobility" / "functions"
+FUNCS = REPO / "addons" / "flight" / "functions"
 BURN = FUNCS / "fnc_calculateFuelBurn.sqf"
 KERNEL = FUNCS / "fnc_updateFuelSystem.sqf"
-PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
+PREP_PATH = REPO / "addons" / "flight" / "XEH_PREP.hpp"
 
 BURN_SRC = BURN.read_text(encoding="utf-8")
 KERNEL_SRC = KERNEL.read_text(encoding="utf-8")
@@ -121,7 +121,7 @@ FORBIDDEN_STATUS_COMMANDS = (
 # The systems driver and its ONE per-frame handler.
 SYSTEMS_DRIVER = FUNCS / "fnc_updateAircraftSystems.sqf"
 SYSTEMS_DRIVER_SRC = SYSTEMS_DRIVER.read_text(encoding="utf-8")
-POSTINIT_PATH = REPO / "addons" / "mobility" / "XEH_postInit.sqf"
+POSTINIT_PATH = REPO / "addons" / "flight" / "XEH_postInit.sqf"
 POSTINIT_SRC = POSTINIT_PATH.read_text(encoding="utf-8")
 DRIVER_KERNELS = (
     "updateFuelSystem",

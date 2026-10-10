@@ -51,7 +51,7 @@ Arguments:
   5:  _oilMaxKpa   (NUMBER) sourced engine_oil_pressure_max_kpa, >= oilMin
 
 Return Value: ARRAY - [tgtC, oilKpa], or [0, 0] when an input is unusable.
-Example: [0.9, 0.4, 1.0, 900, 200, 800] call aee_mobility_fnc_calculateScriptedTgtOil
+Example: [0.9, 0.4, 1.0, 900, 200, 800] call aee_flight_fnc_calculateScriptedTgtOil
 Public: No
 */
 
