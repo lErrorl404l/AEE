@@ -13,3 +13,7 @@ AEE_MODULE_POST_INIT
 
 // Uniform per-module state dump, one line a second.
 [FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
+
+// Survival pressure (will to live): one read a second, at the state tick,
+// never per frame.  Publishes aee_physiology_survivalPressure for the AI.
+[FUNC(survivalState), 1] call CBA_fnc_addPerFrameHandler;
