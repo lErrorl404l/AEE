@@ -79,8 +79,12 @@ jobs:
         run: python3 tools/validation/gen_aircraft_data.py --check
       - name: Aircraft coverage freshness check
         run: python3 tools/validation/gen_aircraft_coverage.py --check
+      - name: Aircraft systems freshness check
+        run: python3 tools/validation/gen_aircraft_systems.py --check
       - name: Aircraft data validation
         run: python3 tools/validation/validate_aircraft_data.py
+      - name: Aircraft systems validation
+        run: python3 -m unittest tools.tests.test_aircraft_systems
       - name: Thermal optics config freshness check
         run: python3 tools/validation/gen_thermal_optics.py --check
       - name: Engine override freshness check
