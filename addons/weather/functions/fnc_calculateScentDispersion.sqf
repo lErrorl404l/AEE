@@ -16,6 +16,11 @@ the whole signal — realistic scent chemistry.
 
 Stored in GVAR(scentDispersionIntensity) (0–1) and
 GVAR(scentDispersionDir) (degrees, downwind direction).
+
+The rain washout factor is also published on its own as GVAR(scentRainFactor),
+so the CBRN persistence model (aee_persistence) can reuse the one component
+that is not already in that model.  A consumer reads the factor, never the
+aggregate intensity, which folds temperature, humidity and wind.
 */
 
 params [];
@@ -83,5 +88,10 @@ _intensity = _intensity max 0 min 1;
 missionNamespace setVariable [QGVAR(scentDispersionIntensity), _intensity];
 // currentWindDir is the direction the wind comes FROM; scent travels downwind
 missionNamespace setVariable [QGVAR(scentDispersionDir), ((_windDir + 180) mod 360)];
+// The rain washout factor, published on its own for the CBRN persistence model
+// (aee_persistence: fnc_calculateCBRNPersistence).  Rain scavenges an airborne
+// agent, so the factor shortens persistence.  It is the only scent factor that
+// is not already scaled by the CBRN model (temperature, humidity and wind).
+missionNamespace setVariable [QGVAR(scentRainFactor), _rainFactor];
 
 _intensity

@@ -220,6 +220,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_core_currentUVIndex` | physiology | UV index (core alias) |
 | `aee_thermal_batteryTemperatureDerating` | thermal | Battery derating 0.3..1 |
 | `aee_weather_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
+| `aee_weather_scentRainFactor` | environmental | Scent rain washout factor, reused by the CBRN persistence model (issue #39) |
 | `aee_physiology_scentDispersionDir` | physiology | Scent downwind direction |
 | `aee_weather_scentDispersionDir` | environmental | Scent downwind direction (re-homed from physiology by the module-hygiene cleanup) |
 | `aee_altitude_amsRisk` | altitude | Acute mountain sickness risk |
