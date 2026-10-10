@@ -70,7 +70,7 @@
         "addons/flight/functions/fnc_applyFlightTurbulence.sqf:81",
         "addons/flight/functions/fnc_updateAircraftSystems.sqf:63",
         "addons/flight/functions/fnc_updateDamageSystem.sqf:61",
-        "addons/flight/functions/fnc_updateEngineSystem.sqf:67",
+        "addons/flight/functions/fnc_updateEngineSystem.sqf:76",
         "addons/flight/functions/fnc_updateFuelSystem.sqf:61",
         "addons/flight/functions/fnc_updateStatusSystems.sqf:60",
         "addons/mobility/XEH_postInit.sqf:104",
@@ -295,7 +295,7 @@
         "addons/flight/functions/fnc_applyAirframeLoad.sqf:45",
         "addons/flight/functions/fnc_updateAircraftSystems.sqf:63",
         "addons/flight/functions/fnc_updateDamageSystem.sqf:62",
-        "addons/flight/functions/fnc_updateEngineSystem.sqf:68",
+        "addons/flight/functions/fnc_updateEngineSystem.sqf:77",
         "addons/flight/functions/fnc_updateFuelSystem.sqf:62",
         "addons/flight/functions/fnc_updateStatusSystems.sqf:61"
       ]
