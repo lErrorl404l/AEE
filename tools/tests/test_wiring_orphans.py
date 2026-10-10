@@ -44,9 +44,12 @@ class TestOpticPropertiesWiring(unittest.TestCase):
 
 class TestDeriveProtectionWiring(unittest.TestCase):
     GATE = _read("addons", "armour", "functions", "fnc_penetrationGate.sqf")
+    KERNEL = _read("addons", "armour", "functions", "fnc_calculatePenetration.sqf")
 
     def test_the_gate_reads_the_derivation(self):
-        self.assertIn("([_unit] call FUNC(deriveProtection)) select 1", self.GATE)
+        # The derivation lives in the shared kernel; the gate reads it.
+        self.assertIn("([_unit] call FUNC(deriveProtection)) select 1", self.KERNEL)
+        self.assertIn("calculatePenetration", self.GATE)
 
     def test_the_derivation_prefers_the_table(self):
         deriv = _read("addons", "armour", "functions", "fnc_deriveProtection.sqf")

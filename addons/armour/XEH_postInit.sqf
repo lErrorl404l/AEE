@@ -24,6 +24,19 @@ if (is3DEN) exitWith {};
      _instigator, _hitPoint] call FUNC(penetrationGate);
 }, QGVAR(penetrationGateHandler)] call EFUNC(lib,installObjectEngineHandler);
 
+// ─── Shot response (issue #161) ──────────────────────────────────────────
+// On a direct, penetrating, vital hit: setUnconscious at once and bias the
+// fall with the round's momentum.  The entity HitPart event runs on the
+// shooter's PC; its argument is a nested array of hit records.
+["CAManBase", "HitPart", {
+    if !(missionNamespace getVariable [QGVAR(shotResponse), true]) exitWith {};
+    if (isNil "_this" || {!(_this isEqualType [])} || {(count _this) == 0}) exitWith {};
+    private _hit = _this;
+    if ((_this select 0) isEqualType []) then { _hit = _this select 0; };
+    if !(_hit isEqualType []) exitWith {};
+    _hit call FUNC(applyShotResponse);
+}, QGVAR(shotResponse)] call EFUNC(lib,installObjectEngineHandler);
+
 // Uniform per-module state dump (plan T3): one state line per second.
 [FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
 

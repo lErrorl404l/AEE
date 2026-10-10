@@ -22,6 +22,9 @@ CONFIG = (REPO / "addons/armour/config.cpp").read_text(encoding="utf-8")
 GATE = (REPO / "addons/armour/functions/fnc_penetrationGate.sqf").read_text(
     encoding="utf-8"
 )
+KERNEL = (REPO / "addons/armour/functions/fnc_calculatePenetration.sqf").read_text(
+    encoding="utf-8"
+)
 
 
 def engine_pen_mm(speed, caliber):
@@ -87,7 +90,9 @@ class TestPenetrationMath(unittest.TestCase):
         self.assertLess(mm, 100)  # does NOT defeat MBT
 
     def test_formula_in_source(self):
-        self.assertIn("(_speed / 1000) * _caliber * 15", GATE)
+        # The formula lives in the shared kernel (issue #161 reuses it).
+        self.assertIn("(_speed / 1000) * _caliber * 15", KERNEL)
+        self.assertIn("calculatePenetration", GATE)
 
 
 class TestACECoexistence(unittest.TestCase):
@@ -97,8 +102,9 @@ class TestACECoexistence(unittest.TestCase):
         self.assertIn("damage _unit", GATE)
 
     def test_never_inflates_beyond_engine(self):
-        # The overmatch scale is capped: min 1.0 after division.
-        self.assertIn("min 1.0", GATE)
+        # The overmatch scale is capped: min 1.0 after division (in the
+        # shared kernel); the gate applies it.
+        self.assertIn("min 1.0", KERNEL)
         self.assertIn("0.5 + 0.5 * _overmatch", GATE)
 
     def test_non_projectile_passes_through(self):
@@ -111,7 +117,8 @@ class TestACECoexistence(unittest.TestCase):
 
     def test_soldier_armour_gate(self):
         # The issue #119 soldier branch: vest NIJ level -> protection mm.
-        src = GATE
+        # It lives in the shared kernel (issue #161 reuses it).
+        src = KERNEL
         self.assertIn('isKindOf "Man"', src)
         self.assertIn("getEquipmentProperties", src)
         self.assertIn("_nij", src)

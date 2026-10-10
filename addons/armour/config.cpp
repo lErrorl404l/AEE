@@ -10,6 +10,8 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_core",
             "aee_lib",
+            "aee_clothing",
+            "aee_ballistics",
             "A3_Armor_F",
             "A3_Soft_F",
             "cba_main",
