@@ -290,9 +290,12 @@ AEE already sets (`addons/cartography/config_mapcolors.hpp`
 and `config_mapdisplays.hpp`): `colorLevels`, `colorMainCountlines`,
 `colorCountlines`, `colorMainCountlinesWater`, `colorCountlinesWater`, roads,
 rail, power, tracks, trails, sea, forest, forestBorder, rocks, rocksBorder,
-background, `maxSatelliteAlpha=0.35`, `showCountourInterval=1`, and it hides
-the engine grid. It does **not** yet set `drawShaded`, `shadedSea` or
-`colorForestTextured`.
+background, `maxSatelliteAlpha=0.5`, `showCountourInterval=1`, and it hides
+the engine grid. It also sets `drawShaded = 0.15`, `shadedSea = 1` and
+`colorForestTextured` (`addons/cartography/config_mapcolors.hpp:68,102-104`).
+`drawShaded` and `shadedSea` are model choices with no standard, adopted from
+the Enhanced Map idea. `colorForestTextured` names the OS woodland fill
+`#cee6bd`.
 
 Recommended, per the operator's four asks:
 
