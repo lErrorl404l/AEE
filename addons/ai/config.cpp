@@ -12,6 +12,9 @@ class CfgPatches {
             "aee_core",
             "aee_weather",
             "aee_physiology",
+            "aee_mobility",
+            "aee_persistence",
+            "aee_vision",
             "cba_main",
             "cba_xeh"
         };
