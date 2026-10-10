@@ -6,9 +6,9 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
-        // apertureParams (fnc_eyeSampleScene) is an Arma 2.04 command; the
-        // vision addon keeps the same floor as the optics split it came from.
-        requiredVersion = 2.04;
+        // aee_eye itself needs 2.04 (apertureParams, fnc_eyeSampleScene); the
+        // value is the mod-wide floor defined in script_mod.hpp.
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "aee_lib",
             "aee_core",
