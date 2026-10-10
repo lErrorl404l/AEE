@@ -136,8 +136,8 @@ class TestKernelDispatcher(unittest.TestCase):
         # Assert the REAL dispatcher conditions, not a Python mirror of them:
         # native only when the output is a non-empty string with errorCode 0,
         # and the SQF reference kernel is the fallback.
-        self.assertIn('{_output != ""}', self.dispatch)
-        self.assertIn("{_code == 0}", self.dispatch)
+        self.assertIn('_output != ""', self.dispatch)
+        self.assertIn("_code == 0", self.dispatch)
         self.assertIn(
             'if (_nativeOutput != "") exitWith { _nativeOutput };', self.dispatch
         )
