@@ -296,8 +296,7 @@ harness and the KAT integration. Each row states its grade.
 | `aee_mobility_routeDegradation` | mobility | Route degradation |
 | `aee_mobility_soilBearing` | mobility | Soil bearing strength |
 | `aee_mobility_tractionModifier` | mobility | Traction modifier |
-| `aee_flight_turbulencePFH` | flight | Turbulence PFH handle |
-| `aee_flight_airframeLoadPFH` | flight | Airframe density/icing PFH handle |
+| `aee_flight_turbulencePFH` | flight | Turbulence PFH handle || `aee_flight_airframeLoadPFH` | flight | Airframe density/icing PFH handle || `aee_flight_fixedWingPFH` | flight | Fixed-wing performance driver PFH handle (issue #22) |
 | `aee_mobility_airframeVehicles` | mobility | Cached aircraft list for the airframe load loop |
 | `aee_mobility_airframeRefresh` | mobility | Time of the last airframe-list refresh |
 | `aee_mobility_airLiftLoss` | mobility | Applied lift-loss fraction from density and icing, 0..0.45 |

@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (665)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -336,20 +336,26 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_flight_fnc_applyFlightTurbulence`
 - `aee_flight_fnc_calculateAeroPenalty`
 - `aee_flight_fnc_calculateAirEngineLoad`
+- `aee_flight_fnc_calculateDensityAltitude`
 - `aee_flight_fnc_calculateEngineNg`
+- `aee_flight_fnc_calculateFixedWingPerformance`
 - `aee_flight_fnc_calculateFuelBurn`
+- `aee_flight_fnc_calculateGroundEffect`
 - `aee_flight_fnc_calculateHelicopterLift`
+- `aee_flight_fnc_calculatePowerRatio`
 - `aee_flight_fnc_calculateScriptedTgtOil`
 - `aee_flight_fnc_calculateTurbulenceForce`
 - `aee_flight_fnc_getAircraftData`
 - `aee_flight_fnc_getAircraftMatch`
 - `aee_flight_fnc_getAircraftSystems`
 - `aee_flight_fnc_logAirframeState`
+- `aee_flight_fnc_logFixedWingState`
 - `aee_flight_fnc_resolveFlightModel`
 - `aee_flight_fnc_resolveTurbulenceArea`
 - `aee_flight_fnc_updateAircraftSystems`
 - `aee_flight_fnc_updateDamageSystem`
 - `aee_flight_fnc_updateEngineSystem`
+- `aee_flight_fnc_updateFixedWingPerformance`
 - `aee_flight_fnc_updateFuelSystem`
 - `aee_flight_fnc_updateStatusSystems`
 - `aee_hud_fnc_hudBuild`
