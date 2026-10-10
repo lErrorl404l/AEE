@@ -12,14 +12,14 @@ The substrate calls this only for an agent that carries the
 QGVAR(survivalDriven) flag, so the bridge is inert until a caller marks the
 agent.  This mirrors the QGVAR(ecologyDriven) flag the wildlife ecology uses.
 
-Reads:   EGVAR(physiology,survivalPressure)  0..1
+Reads:   QEGVAR(physiology,survivalPressure)  0..1
 Writes:  QGVAR(need) on the anchor
 Returns: Number - the survival pressure, 0..1
 */
 
 params [["_anchor", objNull, [objNull, []]]];
 
-private _pressure = missionNamespace getVariable [EGVAR(physiology,survivalPressure), 0];
+private _pressure = missionNamespace getVariable [QEGVAR(physiology,survivalPressure), 0];
 if !(_pressure isEqualType 0) then { _pressure = 0; };
 _pressure = (_pressure max 0) min 1;
 
