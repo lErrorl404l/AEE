@@ -71,7 +71,7 @@ One defect is recorded against the version file.
 
 - `addons/lib/script_version.hpp` reads 1.1.0.0. The released version is
   1.1.1. The version file was not bumped at that release. See `docs/svd.md`
-  section 1 and `docs/releases/v1.1.1.md` section 1.
+  section 1 and `docs/release-records/v1.1.1.md` section 1.
 
 No defect was found in the change under test.
 

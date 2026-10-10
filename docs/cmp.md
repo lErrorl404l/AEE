@@ -13,7 +13,7 @@ data corpora, the tools, the tests, the documentation, and the build files.
 
 The plan covers the release archives too. The archive directory
 `releases/` is not tracked, because a build product is not a source. The
-release records live in `docs/releases/` and in `CHANGELOG.md`.
+release records live in `docs/release-records/` and in `CHANGELOG.md`.
 
 Two records hold the configuration.
 
@@ -103,8 +103,8 @@ when the two sets differ, so a local gate cannot be narrower than CI.
 ## 6. Baselines and releases
 
 A release baseline is a signed tag on `main`. The release process is in
-`docs/releases/README.md`. A baseline record is one file per release under
-`docs/releases/`.
+`docs/release-records/README.md`. A baseline record is one file per release under
+`docs/release-records/`.
 
 The record holds the version, the tag, the change set, and the audit
 evidence. The audit evidence is the gate result at the tag. The release
