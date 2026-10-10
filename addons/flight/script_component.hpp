@@ -36,3 +36,7 @@
 #define AERO_DRAG_AREA_M2 0.7
 // Fallback mass when the engine reports none for an air vehicle, kg.
 #define AERO_DEFAULT_AIRCRAFT_MASS_KG 1000
+// The declared default spool time constant for a light turboshaft, s.  It is
+// a declared value, not a measurement, and it is the same tau
+// fnc_calculateEngineNg.sqf uses.
+#define AEE_ENGINE_SPOOL_TAU_S 4
