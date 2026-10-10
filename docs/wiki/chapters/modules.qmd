@@ -356,13 +356,16 @@ Radio propagation.
 
 | Function | Purpose |
 |---|---|
-| `calculateIonosphericAbsorption` | Calculate HF ionospheric absorption |
-| `calculateRadioPropagation` | Calculate radio propagation |
-| `calculateTwoRayGround` | Two-ray ground-bounce excess path loss |
-| `calculateKnifeEdgeLoss` | ITU-R P.526 single knife-edge diffraction loss |
 | `calculateDeygoutDiffraction` | Deygout multiple-edge diffraction loss |
-| `calculateValleyWaveguide` | Valley waveguide path-loss modifier |
 | `calculateEmPropagation` | 3D EM link propagation over a terrain profile |
+| `calculateIonosphericAbsorption` | Calculate HF ionospheric absorption |
+| `calculateKnifeEdgeLoss` | Single knife-edge diffraction loss J(nu) |
+| `calculateRadioPropagation` | Calculate radio propagation |
+| `calculateTerrainDiffraction` | Terrain diffraction excess loss over a profile |
+| `calculateTerrainMaskedLink` | Terrain-masked diffraction loss for one link |
+| `calculateTwoRayGround` | Two-ray ground-bounce excess path loss |
+| `calculateValleyWaveguide` | Valley waveguide path-loss modifier |
+| `sampleTerrainProfile` | Sample the terrain profile along a link |
 
 The EMP model degrades the propagation index while a nuclear EMP is active
 (issue #9). The factor is `aee_core_empRadioFactor`, produced by `core`.

@@ -162,7 +162,8 @@ if (_freqHz < 30e6) then {
     _absorptionPenalty = _absorptionPenalty + _ionoAbs;
 };
 
-// Terrain/obstruction excess loss (open 0, urban/forest higher)
+// ─── Foliage loss (open 0, urban/forest higher) ────────────────────────────
+// Vegetation attenuation, a separate effect from terrain diffraction.
 private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 private _terrainLoss = 0;
 if (!isNil "_biome") then {
@@ -235,6 +236,33 @@ missionNamespace setVariable [QGVAR(emGroundBounceDB), _emGroundBounce];
 missionNamespace setVariable [QGVAR(emDiffractionDB), _emDiffraction];
 missionNamespace setVariable [QGVAR(emValleyDB), _emValley];
 missionNamespace setVariable [QGVAR(emLinkState), _emState];
+
+// ─── Terrain masking (issue #32) ───────────────────────────────────────────
+// The dominant excess loss on a tactical VHF/UHF link is the terrain between
+// the transmitter and the receiver.  This adds the ITU-R P.526-16 knife-edge
+// and Deygout diffraction loss over the sampled profile (the kernels
+// fnc_calculateTerrainDiffraction and fnc_calculateKnifeEdgeLoss), on top of
+// the Friis free-space loss above.
+//
+// The nominal link runs from the observer to a point at the nominal range.
+// A global index has no single bearing, so the loss is the mean over the four
+// cardinal bearings: the index must not change when the observer turns.  On a
+// dedicated server there is no observer, so the foliage fallback applies.
+private _maskingEnabled = missionNamespace getVariable [QGVAR(terrainMaskingEnabled), true];
+private _observer = call CBA_fnc_currentUnit;
+if (_maskingEnabled && {!isNull _observer}) then {
+    private _txPos = getPosASL _observer;
+    private _bearingLoss = 0;
+    {
+        private _rxPos = [
+            (_txPos select 0) + (_x select 0),
+            (_txPos select 1) + (_x select 1),
+            _txPos select 2
+        ];
+        _bearingLoss = _bearingLoss + ([_txPos, _rxPos, _freqHz] call FUNC(calculateTerrainMaskedLink));
+    } forEach [[_distM, 0], [0, _distM], [-_distM, 0], [0, -_distM]];
+    _terrainLoss = _terrainLoss + (_bearingLoss / 4);
+};
 
 // ─── Link budget → quality index ───────────────────────────────────────────
 private _linkBudget = _txPowerDBm - _fspl - _terrainLoss + _ductBonus - _absorptionPenalty - _emGroundBounce - _emDiffraction - _emValley;

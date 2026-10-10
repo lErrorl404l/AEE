@@ -134,6 +134,18 @@ Pierson-Moskowitz spectrum.
 Radio propagation covers the VHF, UHF, and HF bands. VHF and UHF use the
 Friis free-space path loss equation. Ducting adds a dB bonus to the signal.
 
+Terrain masks a link. The excess loss is the ITU-R P.526-16 knife-edge and
+Deygout diffraction loss over the terrain profile between the transmitter
+and the receiver (`fnc_calculateTerrainDiffraction`, `fnc_calculateKnifeEdgeLoss`).
+The profile is sampled from the engine terrain at 50-100 m
+(`fnc_sampleTerrainProfile`). The knife-edge loss is equation (31),
+`J(nu) = 6.9 + 20 log10(sqrt((nu-0.1)^2+1) + nu - 0.1)` dB, and the
+diffraction parameter is equation (26), `nu = h sqrt(2/lambda (1/d1 + 1/d2))`.
+The model treats a sample as an obstacle only when it rises above the
+direct line (P.526 section 4.1 covers isolated knife edges, not smooth
+ground). The global index applies the mean over four bearings, so it does
+not change when the observer turns.
+
 HF uses ITU-R P.531 ionospheric absorption. The absorption scales with
 `1/f^2`, the solar zenith angle, and the sunspot number. A Dellinger flare
 term covers sudden ionospheric disturbances.
