@@ -174,6 +174,7 @@ pressurisation are absent and status only. No second statement is needed.
 
 | Field | Unit | Source class | Published | Engine hook or marker |
 |---|---|---|---|---|
+| `engine_design_rpm` | rpm | manual | yes | systems row, the RTD RPM base |
 | `engine_idle_ng` | ratio | manual | yes | `setWantedRPMRTD` target, RTD only |
 | `engine_max_ng` | ratio | manual | yes | `setWantedRPMRTD` limit, RTD only |
 | `engine_max_np` | ratio | manual | yes | scripted status |

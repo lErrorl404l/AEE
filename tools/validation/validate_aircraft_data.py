@@ -138,6 +138,7 @@ FIELD_UNITS.update(vehicle_catalogue.SYSTEMS_FIELD_UNITS)
 # A gas-producer or power-turbine speed is a fraction of the design speed, so
 # it stays inside 2.0. A turbine temperature stays inside 1500 C.
 FIELD_BOUNDS: dict[str, tuple[float, float]] = {
+    "engine_design_rpm": (0.0, 200000.0),
     "engine_idle_ng": (0.0, 2.0),
     "engine_max_ng": (0.0, 2.0),
     "engine_max_np": (0.0, 2.0),

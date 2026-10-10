@@ -628,7 +628,7 @@ torque limit, oil and a main gearbox.
 | `engine_model` | text | manual / manufacturer | yes | reference only |
 | `engine_count` | count | manual | yes | reference only |
 | `rated_power_w` | W | manual / manufacturer | yes | exists, the runtime `_ratedPowerW` |
-| `engine_design_rpm` | rpm | manual | yes | reference only |
+| `engine_design_rpm` | rpm | manual | yes | systems row, the RTD RPM base |
 | `engine_max_torque_nm` | N m | manual | yes | scripted limit |
 | `engine_oil_pressure_min_kpa` | kPa | manual | yes | scripted status |
 | `engine_oil_pressure_max_kpa` | kPa | manual | yes | scripted status |
@@ -638,7 +638,8 @@ torque limit, oil and a main gearbox.
 | `transmission_gear_ratio_main` | ratio | manual | yes | reference only |
 
 The turbine terms are an aircraft delta. They are in
-`data/aircraft/SCHEMA.md`.
+`data/aircraft/SCHEMA.md`. The aircraft systems row consumes
+`engine_design_rpm` as the gas-producer RPM base for `setWantedRPMRTD`.
 
 ### Mass, centre of gravity and inertia
 
