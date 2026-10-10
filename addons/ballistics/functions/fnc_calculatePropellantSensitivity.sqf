@@ -95,6 +95,19 @@ if (_caliber find "556x45" >= 0) then { _typeCoeff = 1.5; };
 if (_caliber find "762x51" >= 0) then { _typeCoeff = 1.5; };
 if (_caliber find "545x39" >= 0) then { _typeCoeff = 1.5; };
 if (_caliber find "127x" >= 0)   then { _typeCoeff = 1.5; };
+// Creator DLC rifle cartridges, all double-base military ball of the same
+// class as the WC844 anchor above, so the published 1.5 fps/degF applies:
+//   7.62x39 M43     - SOG PF, Global Mobilization, CSLA
+//   7.62x54R        - SOG PF, CSLA
+//   7.92x57 Mauser  - Spearhead 1944, Global Mobilization
+//   7.62x63 .30-06  - Spearhead 1944
+// No per-cartridge primary data is held, so the family anchor is used
+// (issue #79).  Source: reloading literature / Sniper's Hide compilation;
+// Boulkadid et al. 2016, DOI 10.22211/cejem/67229.
+if (_caliber find "762x39" >= 0) then { _typeCoeff = 1.5; };
+if (_caliber find "762x54" >= 0) then { _typeCoeff = 1.5; };
+if (_caliber find "792x57" >= 0) then { _typeCoeff = 1.5; };
+if (_caliber find "762x63" >= 0) then { _typeCoeff = 1.5; };
 if (_caliber find "9x21" >= 0)   then { _typeCoeff = 1.2; };
 if (_caliber find "9x19" >= 0)   then { _typeCoeff = 1.2; };
 if (_caliber find "338" >= 0)    then { _typeCoeff = 0.3; };
