@@ -22,6 +22,18 @@ AEE_SETTING_SLIDER(manningN,"AEE Hydrology","Hydrology",0.01,0.1,0.035,3);
 
 AEE_SETTING_SLIDER(riverResponseRate,"AEE Hydrology","Hydrology",0.01,0.5,0.1,2);
 
+// ── Groundwater / aquifer (issue #26) ─────────────────────────────────────
+// These drive the water table and the spring discharge. The aquifer storage
+// is the same GVAR(groundwaterStore_mm) the baseflow reservoir drains, so the
+// water table is a read of that store through the specific yield.
+AEE_SETTING_SLIDER(aquiferReferenceDepth_m,"AEE Hydrology","Hydrology",0.5,30,3,2);
+
+AEE_SETTING_SLIDER(springOrificeDepth_m,"AEE Hydrology","Hydrology",0.1,10,1,2);
+
+AEE_SETTING_SLIDER(springConduitArea_m2,"AEE Hydrology","Hydrology",0.01,100,1,2);
+
+AEE_SETTING_SLIDER(springHydraulicGradient,"AEE Hydrology","Hydrology",0.0001,0.1,0.01,4);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name built
 // from the component: aee_hydrology_logDebug.  Declaring it here, in its own

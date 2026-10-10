@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Hydrology">
+        <Key ID="STR_AEE_Hydrology_aquiferReferenceDepth_m_Description">
+            <Original>Depth to the water table when the aquifer store is empty, in metres. The water table rises from this depth as the store fills, through the specific yield. 3 m is a shallow valley water table.</Original>
+            <English>Depth to the water table when the aquifer store is empty, in metres. The water table rises from this depth as the store fills, through the specific yield. 3 m is a shallow valley water table.</English>
+        </Key>
+        <Key ID="STR_AEE_Hydrology_aquiferReferenceDepth_m_Name">
+            <Original>Aquifer Reference Depth</Original>
+            <English>Aquifer Reference Depth</English>
+        </Key>
         <Key ID="STR_AEE_Hydrology_baseflowRate_perDay_Description">
             <Original>Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention.</Original>
             <English>Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention.</English>
@@ -56,6 +64,30 @@
         <Key ID="STR_AEE_Hydrology_riverSectionWidth_m_Name">
             <Original>River Section Width</Original>
             <English>River Section Width</English>
+        </Key>
+        <Key ID="STR_AEE_Hydrology_springConduitArea_m2_Description">
+            <Original>Cross-sectional area in square metres of the conduit that feeds a spring. The Darcy discharge is the saturated conductivity times this area times the hydraulic gradient.</Original>
+            <English>Cross-sectional area in square metres of the conduit that feeds a spring. The Darcy discharge is the saturated conductivity times this area times the hydraulic gradient.</English>
+        </Key>
+        <Key ID="STR_AEE_Hydrology_springConduitArea_m2_Name">
+            <Original>Spring Conduit Area</Original>
+            <English>Spring Conduit Area</English>
+        </Key>
+        <Key ID="STR_AEE_Hydrology_springHydraulicGradient_Description">
+            <Original>Hydraulic gradient in metres per metre that drives the spring discharge. It is the slope of the water table. 0.01 is a gentle gradient (Freeze and Cherry 1979).</Original>
+            <English>Hydraulic gradient in metres per metre that drives the spring discharge. It is the slope of the water table. 0.01 is a gentle gradient (Freeze and Cherry 1979).</English>
+        </Key>
+        <Key ID="STR_AEE_Hydrology_springHydraulicGradient_Name">
+            <Original>Spring Hydraulic Gradient</Original>
+            <English>Spring Hydraulic Gradient</English>
+        </Key>
+        <Key ID="STR_AEE_Hydrology_springOrificeDepth_m_Description">
+            <Original>Depth below ground in metres of the spring outlet. The spring flows only while the water table stands above this depth.</Original>
+            <English>Depth below ground in metres of the spring outlet. The spring flows only while the water table stands above this depth.</English>
+        </Key>
+        <Key ID="STR_AEE_Hydrology_springOrificeDepth_m_Name">
+            <Original>Spring Orifice Depth</Original>
+            <English>Spring Orifice Depth</English>
         </Key>
         <Key ID="STR_AEE_Hydrology_tidalReach_m_Description">
             <Original>Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance.</Original>
