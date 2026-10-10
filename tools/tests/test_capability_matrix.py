@@ -68,6 +68,66 @@ class TestLeverImplementation(unittest.TestCase):
         self.assertIn("Terrain surface texture", src)
         self.assertIn("baked", src)
 
+
+class TestPerSurfaceMatrix(unittest.TestCase):
+    """The #127 per-surface/per-object-type matrix must stay complete and
+    grounded.  Each row is a surface or object type with its baked and
+    dynamic properties and a named source.  If a target or a source is
+    dropped, this fails so the matrix cannot silently lose a row."""
+
+    def setUp(self):
+        self.doc = read("docs/wiki/research/thermal-capability-matrix.md")
+
+    def test_every_target_named(self):
+        for target in (
+            "Terrain surface",
+            "Static rocks and map props",
+            "Buildings with `hiddenSelections`",
+            "Buildings without `hiddenSelections`",
+            "Vehicles",
+            "Infantry body",
+            "Infantry clothing and gear",
+            "Infantry weapons",
+            "Vegetation",
+            "Glass",
+            "Optics and the display window",
+            "The native render pass",
+        ):
+            with self.subTest(target=target):
+                self.assertIn(target, self.doc)
+
+    def test_matrix_has_baked_and_dynamic_columns(self):
+        self.assertIn("Baked (texture / PBO)", self.doc)
+        self.assertIn("Dynamic (scripted)", self.doc)
+        self.assertIn("Ceiling", self.doc)
+
+    def test_named_sources_present(self):
+        # Each source the matrix cites by name must appear, so a row cannot
+        # cite a source that was never recorded.
+        for source in (
+            "default_TI.rvmat",
+            "DEFAULT_SECONDSUN_BRIGHTNESS",
+            "ace_thermals",
+            "setVehicleTIPars",
+            "setObjectMaterial",
+            "setObjectTexture",
+            "nearestTerrainObjects",
+            "NoTiWrite",
+        ):
+            with self.subTest(source=source):
+                self.assertIn(source, self.doc)
+
+    def test_ceilings_recorded(self):
+        # The unreadable/unbakeable properties must be recorded as ceilings.
+        self.assertIn("Unreadable properties", self.doc)
+        self.assertIn("No runtime terrain material swap command exists", self.doc)
+        self.assertIn("does not work on infantry weapons", self.doc)
+
+    def test_infantry_body_dynamic_lever_absent(self):
+        # The base body is baked.  Only the worn selections are swappable, so
+        # the matrix must not claim a per-body dynamic command.
+        self.assertIn("The base body renders natively", self.doc)
+
     def test_agc_settle_rate_is_degrees_per_second(self):
         # acos returns degrees, so the gaze rate is deg/s.  The old code
         # divided by the radian threshold 0.44, which was 57 times too
