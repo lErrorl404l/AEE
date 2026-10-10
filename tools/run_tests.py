@@ -138,6 +138,7 @@ def main():
         "tools/tests/test_equipment_classifier.py",
         "tools/tests/test_device_values.py",
         "tools/tests/test_cbrn.py",
+        "tools/tests/test_cbrn_plume.py",
         "tools/tests/test_device_coverage.py",
         "tools/tests/test_device_wiring.py",
         "tools/tests/test_device_runtime.py",

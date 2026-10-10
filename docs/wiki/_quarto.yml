@@ -57,6 +57,10 @@ website:
             href: annexes/annex-b-compat.qmd
           - text: Variable reference
             href: annexes/annex-c-variable-reference.qmd
+      - section: "Research"
+        contents:
+          - text: CBRN agent plume dispersion
+            href: research/cbrn-plume-dispersion.md
       - text: Support
         href: support.qmd
   navbar:
