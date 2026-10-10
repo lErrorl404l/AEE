@@ -426,6 +426,13 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_weather_MaxSnowDepth` | SLIDER | `3.0` | yes | weather | Maximum snow depth (m) |
 | `aee_weather_SnowAccretionRate` | SLIDER | `0.01` | yes | weather | Snow depth gain per tick per unit rain |
 
+## AEE Environmental → Seismic
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_persistence_seismicShakeEnabled` | CHECKBOX | `true` | yes | persistence | Enable camera shake from an earthquake (local, cosmetic) |
+| `aee_persistence_seismicTerrainDeformationEnabled` | CHECKBOX | `false` | yes | persistence | Apply liquefaction subsidence and landslide displacement with setTerrainHeight (server-side, needs engine 2.10) |
+
 ## AEE Environmental → Snow
 
 | Setting | Type | Default | Global | Addon | Purpose |
