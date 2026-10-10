@@ -1,0 +1,41 @@
+{
+  "schema": "aee.conformance.manifest/1",
+  "entries": [
+    {
+      "id": "kernel_table",
+      "generator": "python3 tools/gen_kernel_table.py",
+      "check": "python3 tools/gen_kernel_table.py --check",
+      "artifacts": ["docs/wiki/research/kernel-table.md"],
+      "truth": "addons/**/functions/**",
+      "truth_class": "repo-scan",
+      "repair": "auto"
+    },
+    {
+      "id": "kernel_coefficients",
+      "generator": "python3 tools/gen_kernel_coefficients.py",
+      "check": "python3 tools/gen_kernel_coefficients.py --check",
+      "artifacts": ["tools/dev-harness/extension/src/kernels/coefficients.rs"],
+      "truth": "addons/**/functions/**",
+      "truth_class": "repo-scan",
+      "repair": "auto"
+    },
+    {
+      "id": "kernel_vectors",
+      "generator": "python3 tools/gen_kernel_vectors.py",
+      "check": "python3 tools/gen_kernel_vectors.py --check",
+      "artifacts": ["tools/dev-harness/extension/tests/vectors/kernels.json"],
+      "truth": "addons/**/functions/**",
+      "truth_class": "repo-scan",
+      "repair": "auto"
+    },
+    {
+      "id": "kernel_drag_tables",
+      "generator": "python3 tools/gen_kernel_drag_tables.py",
+      "check": "python3 tools/gen_kernel_drag_tables.py --check",
+      "artifacts": ["tools/dev-harness/extension/src/kernels/drag_tables.rs"],
+      "truth": "addons/ballistics/functions/fnc_getDragTables.sqf",
+      "truth_class": "repo-scan",
+      "repair": "auto"
+    }
+  ]
+}

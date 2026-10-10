@@ -64,7 +64,10 @@ if (missionNamespace getVariable [QGVAR(agcPinned), false]) exitWith { 0 };
 // seconds timescale, and it is applied to the display as a gain, so recomputing
 // it at 4 Hz (the paint cadence) instead of 10 Hz is invisible and cuts the cost
 // by 60%.  A FORCE caller is unaffected because nothing forces the AGC.
-private _agcNow = diag_tickTime;
+// The one real-time clock (Pillar 1) is the AGC time base.  diag_deltaTime is
+// the last rendered frame, not the pass interval, so it would make the filter
+// time constant depend on the frame rate (the eye-driver defect class).
+private _agcNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _agcLast = missionNamespace getVariable [QGVAR(agcLastT), -99];
 private _agcDt = _agcNow - _agcLast;
 if (_agcDt < 0.25) exitWith { 0 };
@@ -394,7 +397,8 @@ missionNamespace setVariable [QGVAR(objAgcRad), _objWindows];
 // every run.
 private _prevMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
 private _prevMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
-if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevMax) then {
+private _firstPublication = !(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevMax;
+if (_firstPublication) then {
     // First publication: until now the display mapped through the no-AGC
     // fallback (the manual window _fullMin.._fullMax).  Seed the IIR from
     // that same window so the gain change to the max-gain floor ramps over
@@ -403,6 +407,19 @@ if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevM
     // the IIR rate, never between two adjacent passes.
     _prevMin = _fullMin;
     _prevMax = _fullMax;
+};
+// World-clock jump: the scene changed in one step, so snap an ESTABLISHED
+// window to the new scene instead of easing over the 0.5 s filter time
+// constant.  A first publication is already seeded from the manual window
+// and ramps, so a jump coincident with it must NOT bypass that seed (the
+// P79 first-pass contract); the snap applies only to a live window.  The one
+// clock holds clockJump for a short window after a jump (fnc_updateSimClock),
+// so this throttled pass cannot miss it.
+if (!_firstPublication) then {
+    if (missionNamespace getVariable [QEGVAR(core,clockJump), false]) then {
+        _prevMin = _radMin;
+        _prevMax = _radMax;
+    };
 };
 if (_agcDt > 0) then {
     private _a = _agcDt / (_agcDt + 0.5);

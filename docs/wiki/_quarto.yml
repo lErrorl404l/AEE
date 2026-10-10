@@ -43,6 +43,10 @@ website:
             href: chapters/development.qmd
           - text: Testing
             href: chapters/testing.qmd
+          - text: Dev console and workbench
+            href: chapters/dev-console.qmd
+          - text: Operator guide
+            href: chapters/operator-guide.qmd
           - text: Aircraft systems
             href: chapters/aircraft-systems.qmd
       - section: "Annexes"

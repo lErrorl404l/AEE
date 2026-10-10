@@ -60,6 +60,10 @@ def main():
         "tools/tests/test_docker_isolation.py",
         "tools/tests/test_fd_limit_guard.py",
         "tools/tests/test_p79_probe_contract.py",
+        "tools/tests/test_sim_clock.py",
+        "tools/tests/test_sim_clock_guard.py",
+        "tools/tests/test_kernel_split.py",
+        "tools/tests/test_kernel_parity.py",
         "tools/tests/test_biome.py",
         "tools/tests/test_biome_dynamic.py",
         "tools/tests/test_propellant_temp.py",
@@ -245,9 +249,29 @@ def main():
         "tools/tests/test_adr_numbers.py",
         # Engine reference: the docs/engine index and its portability rule.
         "tools/tests/test_engine_docs.py",
+        # Dev harness release exclusion, part (a). Part (b) runs in the full
+        # sweep only (see RELEASE_SUITES) because it needs a release tree.
+        "tools/tests/test_dev_harness_release_exclusion.py",
+        "tools/tests/test_dev_harness_gate.py",
+        "tools/tests/test_dev_harness_dispatch.py",
+        "tools/tests/test_dev_console_contract.py",
+        # The console command contract doc is generated, never hand-synced.
+        "tools/tests/test_dev_console_contract_doc.py",
+        # Probe batching: every probe has a run class, and every console fact
+        # keeps a probe file behind it (ADR-035).
+        "tools/tests/test_probe_classification.py",
+        "tools/tests/test_console_fact_gating.py",
+        # Visual workbench: keybinds, re-apply, screenshot and state dump.
+        "tools/tests/test_dev_workbench.py",
+    ]
+    # Part (b) needs a `hemtt release` tree, so it runs in the full sweep only.
+    release_suites = [
+        "tools/tests/test_dev_harness_release_exclusion.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
+    if not fast:
+        existing = [s for s in existing if s not in release_suites]
     if not existing:
         print("No test suites found under tools/tests/")
         return 1
@@ -261,6 +285,9 @@ def main():
     for suite in existing:
         failed += run(f"{python} -m unittest {suite} -v")
     if not fast:
+        print("\n--- Release-artefact proof ---")
+        for suite in release_suites:
+            failed += run(f"{python} -m unittest {suite} -v")
         print("\n--- Physics validation harness ---")
         failed += run(
             f"{python} {os.path.join(ROOT, 'tools/validation/validate_physics.py')}"

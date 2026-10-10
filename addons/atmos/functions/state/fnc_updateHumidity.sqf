@@ -55,8 +55,6 @@ if (_pos2D isNotEqualTo [0, 0]) then {
         default                        {   0 };
     };
 };
-_RH = (_RH + _surfaceMod) max 0 min 100;
-
 // ─── Diurnal coupling ─────────────────────────────────────────────────────
 // Track the daily-mean temperature as a slow exponential moving average
 // (~24 h time constant).  RH scales with the saturation vapour-pressure
@@ -67,13 +65,15 @@ private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5
 _Tref = _Tref + ((_Tnow - _Tref) * (_interval / 86400));
 missionNamespace setVariable [QGVAR(dailyMeanTemp), _Tref];
 
-_RH = _RH * (1 + (_Tref - _Tnow) * 0.05);
-_RH = _RH max 0 min 100;
-
-// Saturation under overcast or rain — hard constraint
-if (overcast > 0.7 || rain > 0) then { _RH = 100; };
-
-private _RH_final = round _RH;
+// The surface modifier, the diurnal coupling and the overcast-or-rain
+// saturation are the pure kernel FUNC(calculateRelativeHumidity).  The
+// dispatcher selects the native kernel when the dev extension is ready and
+// the SQF reference otherwise; both are the same formula.
+private _RH_final = ["calculateRelativeHumidity", [_RH, _surfaceMod, _Tref, _Tnow, overcast, rain]] call EFUNC(core,dispatchKernel);
+if (_RH_final isEqualType "") then { _RH_final = parseNumber _RH_final; };
+if !(_RH_final isEqualType 0) then {
+    _RH_final = [_RH, _surfaceMod, _Tref, _Tnow, overcast, rain] call FUNC(calculateRelativeHumidity);
+};
 
 missionNamespace setVariable [QEGVAR(core,currentHumidity), _RH_final];
 _RH_final

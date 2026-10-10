@@ -1,0 +1,842 @@
+{
+  "kernels": {
+    "airDensity": {
+      "command": "kernel.calculateAirDensityKernel",
+      "path": "addons/ballistics/functions/fnc_calculateAirDensityKernel.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            15.0,
+            1013.25,
+            50.0
+          ],
+          "expected": 1.2211035361594438
+        },
+        {
+          "args": [
+            0.0,
+            1013.25,
+            100.0
+          ],
+          "expected": 1.2893240073687018
+        },
+        {
+          "args": [
+            30.0,
+            1000.0,
+            80.0
+          ],
+          "expected": 1.1344072408514043
+        },
+        {
+          "args": [
+            -40.0,
+            900.0,
+            0.0
+          ],
+          "expected": 1.3447612812425465
+        },
+        {
+          "args": [
+            50.0,
+            1050.0,
+            20.0
+          ],
+          "expected": 1.1218743255325636
+        }
+      ]
+    },
+    "calculateBallisticDrag": {
+      "command": "kernel.calculateBallisticDrag",
+      "path": "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            0.307,
+            900.0,
+            "G1",
+            1.0,
+            15.0
+          ],
+          "expected": 956.3670875710607
+        },
+        {
+          "args": [
+            0.307,
+            900.0,
+            "g1",
+            1.0,
+            15.0
+          ],
+          "expected": 956.3670875710607
+        },
+        {
+          "args": [
+            1.05,
+            850.0,
+            "G7",
+            0.8,
+            -20.0
+          ],
+          "expected": 98.19250566001762
+        },
+        {
+          "args": [
+            0.5,
+            2000.0,
+            "G5",
+            1.1,
+            50.0
+          ],
+          "expected": 1372.7387520000004
+        },
+        {
+          "args": [
+            0.2,
+            1500.0,
+            "APFSDS",
+            1.0,
+            15.0
+          ],
+          "expected": 953.8731565282164
+        },
+        {
+          "args": [
+            0.15,
+            100.0,
+            "G8",
+            1.0,
+            40.0
+          ],
+          "expected": 9.5922036
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "LW2",
+            0.9,
+            0.0
+          ],
+          "expected": 508.6697060138937
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "RA4",
+            1.0,
+            25.0
+          ],
+          "expected": 1236.7111741775407
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "GS",
+            1.0,
+            25.0
+          ],
+          "expected": 2325.987572591802
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "GI",
+            1.0,
+            25.0
+          ],
+          "expected": 1185.5425626320884
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "GA",
+            1.0,
+            25.0
+          ],
+          "expected": 1251.2653174438517
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "GB",
+            1.0,
+            25.0
+          ],
+          "expected": 598.520664
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "G2",
+            1.0,
+            25.0
+          ],
+          "expected": 518.4399781065972
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "G6",
+            1.0,
+            25.0
+          ],
+          "expected": 519.1140265137279
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "RWS1943",
+            1.0,
+            25.0
+          ],
+          "expected": 796.1589130367208
+        },
+        {
+          "args": [
+            0.4,
+            1200.0,
+            "SCHAPIRO",
+            1.0,
+            25.0
+          ],
+          "expected": 342.3821387219258
+        },
+        {
+          "args": [
+            0.307,
+            900.0,
+            "NOPE",
+            1.0,
+            15.0
+          ],
+          "expected": 0.0
+        }
+      ]
+    },
+    "eyeAdaptStep": {
+      "command": "kernel.eyeAdaptStep",
+      "path": "addons/eye/functions/eye/fnc_eyeAdaptStep.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            [
+              0.0,
+              0.0
+            ],
+            1.0,
+            0.1,
+            2.0,
+            120.0,
+            400.0,
+            0.0
+          ],
+          "expected": [
+            0.048770575499285984,
+            0.048770575499285984
+          ]
+        },
+        {
+          "args": [
+            [
+              1.0,
+              0.0
+            ],
+            0.0,
+            0.5,
+            2.0,
+            120.0,
+            400.0,
+            0.5
+          ],
+          "expected": [
+            0.99584200184511,
+            0.0
+          ]
+        },
+        {
+          "args": [
+            [
+              -3.0,
+              -3.0
+            ],
+            -1.0,
+            1.0,
+            2.0,
+            120.0,
+            400.0,
+            0.0
+          ],
+          "expected": [
+            -2.213061319425267,
+            -2.213061319425267
+          ]
+        },
+        {
+          "args": [
+            [
+              -2.0,
+              -4.0
+            ],
+            0.0,
+            0.25,
+            1.0,
+            100.0,
+            300.0,
+            1.0
+          ],
+          "expected": [
+            -1.5576015661428098,
+            -3.1152031322856195
+          ]
+        }
+      ]
+    },
+    "eyeMesopicWeight": {
+      "command": "kernel.eyeMesopicWeight",
+      "path": "addons/eye/functions/eye/fnc_eyeMesopicWeight.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            0.001,
+            0.005,
+            5.0
+          ],
+          "expected": 0.0
+        },
+        {
+          "args": [
+            0.1,
+            0.005,
+            5.0
+          ],
+          "expected": 0.40109848197734244
+        },
+        {
+          "args": [
+            1.0,
+            0.005,
+            5.0
+          ],
+          "expected": 0.8624423949500558
+        },
+        {
+          "args": [
+            100.0,
+            0.005,
+            5.0
+          ],
+          "expected": 1.0
+        },
+        {
+          "args": [
+            0.1,
+            0.01,
+            1.0
+          ],
+          "expected": 0.5
+        }
+      ]
+    },
+    "eyePupilSteady": {
+      "command": "kernel.eyePupilSteady",
+      "path": "addons/eye/functions/eye/fnc_eyePupilSteady.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            0.01
+          ],
+          "expected": 6.894011882218993
+        },
+        {
+          "args": [
+            1.0
+          ],
+          "expected": 4.903403964884401
+        },
+        {
+          "args": [
+            10.0
+          ],
+          "expected": 3.7630669337959004
+        },
+        {
+          "args": [
+            1000.0
+          ],
+          "expected": 2.4000754393668218
+        }
+      ]
+    },
+    "eyePupilStep": {
+      "command": "kernel.eyePupilStep",
+      "path": "addons/eye/functions/eye/fnc_eyePupilStep.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            2.0,
+            8.0,
+            0.1,
+            0.25,
+            0.475
+          ],
+          "expected": 3.1390535904054397
+        },
+        {
+          "args": [
+            8.0,
+            2.0,
+            0.1,
+            0.25,
+            0.475
+          ],
+          "expected": 6.0219202762138355
+        },
+        {
+          "args": [
+            3.0,
+            3.0,
+            0.1,
+            0.25,
+            0.475
+          ],
+          "expected": 3.0
+        },
+        {
+          "args": [
+            4.0,
+            6.0,
+            0.5,
+            0.2,
+            0.4
+          ],
+          "expected": 5.42699040627962
+        }
+      ]
+    },
+    "eyeTimeSkip": {
+      "command": "kernel.eyeTimeSkip",
+      "path": "addons/eye/functions/eye/fnc_eyeTimeSkip.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            -1.0,
+            5.0,
+            0.05
+          ],
+          "expected": false
+        },
+        {
+          "args": [
+            1.0,
+            5.0,
+            0.05
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            23.0,
+            1.0,
+            0.05
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            1.0,
+            1.1,
+            0.05
+          ],
+          "expected": true
+        }
+      ]
+    },
+    "relativeHumidity": {
+      "command": "kernel.calculateRelativeHumidity",
+      "path": "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",
+      "tolerance_abs": 0.5,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            50.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.0
+          ],
+          "expected": 50.0
+        },
+        {
+          "args": [
+            50.0,
+            0.0,
+            20.0,
+            10.0,
+            0.0,
+            0.0
+          ],
+          "expected": 75.0
+        },
+        {
+          "args": [
+            80.0,
+            -15.0,
+            5.0,
+            25.0,
+            0.0,
+            0.0
+          ],
+          "expected": 0.0
+        },
+        {
+          "args": [
+            70.0,
+            10.0,
+            10.0,
+            20.0,
+            0.0,
+            0.0
+          ],
+          "expected": 40.0
+        },
+        {
+          "args": [
+            60.0,
+            0.0,
+            15.0,
+            15.0,
+            0.8,
+            0.0
+          ],
+          "expected": 100.0
+        },
+        {
+          "args": [
+            60.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.5
+          ],
+          "expected": 100.0
+        },
+        {
+          "args": [
+            0.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.0
+          ],
+          "expected": 0.0
+        },
+        {
+          "args": [
+            120.0,
+            0.0,
+            15.0,
+            15.0,
+            0.0,
+            0.0
+          ],
+          "expected": 100.0
+        }
+      ]
+    },
+    "solveTwoNode": {
+      "command": "kernel.solveTwoNodeKernel",
+      "path": "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 0.001,
+      "vectors": [
+        {
+          "args": [
+            15.0,
+            1.0,
+            500.0,
+            1.0,
+            63.0,
+            7.0,
+            1.8258,
+            0.15,
+            36.8,
+            33.7,
+            120.0,
+            "vertical",
+            0.5,
+            15.0,
+            true,
+            true,
+            5.0,
+            0.0,
+            -273.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.95,
+            0.7
+          ],
+          "expected": [
+            36.72370753104507,
+            35.522571160031916,
+            31.804896905819156
+          ]
+        },
+        {
+          "args": [
+            0.0,
+            5.0,
+            0.0,
+            1.0,
+            63.0,
+            7.0,
+            1.8258,
+            0.15,
+            35.0,
+            28.0,
+            80.0,
+            "vertical",
+            0.5,
+            0.0,
+            true,
+            true,
+            5.0,
+            0.0,
+            -273.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.95,
+            0.7
+          ],
+          "expected": [
+            34.874167533687725,
+            28.02390039590365,
+            26.47983950605369
+          ]
+        },
+        {
+          "args": [
+            15.0,
+            1.0,
+            500.0,
+            1.0,
+            63.0,
+            7.0,
+            1.8258,
+            0.15,
+            36.8,
+            33.7,
+            120.0,
+            "vertical",
+            0.5,
+            15.0,
+            true,
+            true,
+            5.0,
+            0.0,
+            -273.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            0.95,
+            0.7
+          ],
+          "expected": [
+            36.795027007626004,
+            33.67450685803029,
+            32.937667434387144
+          ]
+        },
+        {
+          "args": [
+            15.0,
+            0.0,
+            0.0,
+            1.0,
+            63.0,
+            7.0,
+            1.8258,
+            0.15,
+            36.8,
+            33.7,
+            120.0,
+            "vertical",
+            0.5,
+            15.0,
+            true,
+            true,
+            5.0,
+            0.0,
+            10.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.95,
+            0.7
+          ],
+          "expected": [
+            36.758553955925706,
+            33.49859919905069,
+            20.701029460003078
+          ]
+        },
+        {
+          "args": [
+            0.0,
+            5.0,
+            0.0,
+            1.0,
+            50.0,
+            20.0,
+            6.0,
+            1.5,
+            0.0,
+            0.0,
+            5000.0,
+            "vertical",
+            0.5,
+            0.0,
+            false,
+            false,
+            5.0,
+            0.0,
+            -273.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.9,
+            0.5
+          ],
+          "expected": [
+            7.145829227345452,
+            15.458881964159477,
+            0.0
+          ]
+        },
+        {
+          "args": [
+            20.0,
+            2.0,
+            800.0,
+            0.8,
+            100.0,
+            30.0,
+            10.0,
+            2.0,
+            25.0,
+            25.0,
+            2000.0,
+            "up",
+            0.6,
+            20.0,
+            false,
+            false,
+            5.0,
+            0.0,
+            -273.0,
+            0.0,
+            1.0,
+            0.5,
+            5.0,
+            0.9,
+            0.5
+          ],
+          "expected": [
+            25.90975164165397,
+            29.44191712445494,
+            0.0
+          ]
+        }
+      ]
+    },
+    "stationPressure": {
+      "command": "kernel.calculateStationPressure",
+      "path": "addons/atmos/functions/physics/fnc_calculateStationPressure.sqf",
+      "tolerance_abs": 0.0,
+      "tolerance_rel": 1e-06,
+      "vectors": [
+        {
+          "args": [
+            1013.25,
+            0.0,
+            6.5
+          ],
+          "expected": 1013.25
+        },
+        {
+          "args": [
+            1013.25,
+            1000.0,
+            6.5
+          ],
+          "expected": 898.7452152060672
+        },
+        {
+          "args": [
+            1013.25,
+            3000.0,
+            6.5
+          ],
+          "expected": 701.0842732351946
+        },
+        {
+          "args": [
+            1020.0,
+            500.0,
+            5.0
+          ],
+          "expected": 974.3382840593725
+        },
+        {
+          "args": [
+            900.0,
+            5000.0,
+            8.0
+          ],
+          "expected": 410.3096826978792
+        },
+        {
+          "args": [
+            1013.25,
+            20000.0,
+            6.5
+          ],
+          "expected": 43.28075972805034
+        }
+      ]
+    }
+  }
+}

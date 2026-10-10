@@ -593,8 +593,17 @@ if !(_physDerating isEqualType 0) then { _physDerating = 1.0; };
 private _tempDrainFactor = if (_physDerating > 0.01) then { 1 / _physDerating } else { 3.0 };
 _tempDrainFactor = _tempDrainFactor max 1.0 min 4.0;
 // Opt-in (issue #36): battery drain is hardcore, defaults OFF.
+// One clock (Pillar 1): real elapsed time since this pass.  First tick _dt = 0.
+// diag_deltaTime is the FRAME delta, not the pass interval.
+private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
+private _lastSim = missionNamespace getVariable [QGVAR(nvgLastSimTime), -1];
+private _dt = 0;
+if (_lastSim isEqualType 0) then {
+    if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
+};
+missionNamespace setVariable [QGVAR(nvgLastSimTime), _simNow];
 if (missionNamespace getVariable [QGVAR(nvgBatteryEnabled), false]) then {
-    private _drain = _baseDrain * _gainRatio * _tempDrainFactor * diag_deltaTime;
+    private _drain = _baseDrain * _gainRatio * _tempDrainFactor * _dt;
     _battery = (_battery - _drain) max 0;
 };
 missionNamespace setVariable [QGVAR(nvgBattery), _battery];

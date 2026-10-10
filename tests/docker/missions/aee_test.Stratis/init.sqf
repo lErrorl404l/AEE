@@ -5,6 +5,11 @@
 
 diag_log text "[AEE-TEST] mission start";
 
+// The dev trust gate's host layer. A dedicated server is not a dev host unless
+// the mission says so. The dev Docker run (AEE_DEV=1) adds file patching and
+// the sentinel file; a production run has neither, so the gate stays shut.
+aee_dev_allowServer = true;
+
 // -- PHASE 1: settings registered by initSettings.inc.sqf ------------------
 private _enabled = missionNamespace getVariable ["aee_core_enabled", -1];
 private _interval = missionNamespace getVariable ["aee_core_updateInterval", -1];
@@ -3422,6 +3427,43 @@ private _p29Pass = 0;
     // B_MBT_01_cannon_F, spawns, drives and stops the vehicle, then reads the
     // merged fixture key maxBrakeTorque.  It renders nothing.
     execVM "aee_p135_land_physics_probe.sqf";
+    // PHASE 140 lives in aee_p140_sim_clock_rate_probe.sqf: the one real-time
+    // clock (aee_core_simTime) is the model time base.  A throttled first-order
+    // lag is integrated at two sample cadences (30 vs 300 steps) and each run
+    // must match its own analytic value within 2 percent; a frame-delta
+    // counterfactual shows the defect the clock removes.  It renders nothing.
+    // (P135 is the land-physics probe on this base, so the clock probe takes
+    // the next free number.)
+    execVM "aee_p140_sim_clock_rate_probe.sqf";
+    // PHASE 137 lives in aee_p137_kernel_parity_probe.sqf: the pure native
+    // kernels are server-callable, so the dedicated server drives each one and
+    // compares the dispatcher's answer against the SQF reference within the
+    // per-kernel bound (ADR-036).  When the dev extension is absent the probe
+    // records native-unavailable and asserts the SQF fallback.  It renders
+    // nothing.  (P136 is the client probe, so the kernel probe takes the next
+    // free number.)
+    execVM "aee_p137_kernel_parity_probe.sqf";
+    // PHASE 138 lives in aee_p138_thermal_parity_probe.sqf: the two-node
+    // thermal solve is a pure server-callable kernel, so the dedicated server
+    // drives the native command and compares each element against the SQF
+    // reference kernel within the per-kernel bound (ADR-036).  When the dev
+    // extension is absent the probe records native-unavailable and asserts the
+    // SQF fallback.  It renders nothing.
+    execVM "aee_p138_thermal_parity_probe.sqf";
+    // PHASE 139 lives in aee_p139_client_kernel_parity_probe.sqf: the ballistic
+    // drag and eye kernels are PURE and server-callable, so the dedicated
+    // server drives each one and compares the dispatcher's answer against the
+    // SQF reference within the per-kernel bound (ADR-036).  Their real call
+    // sites are client-local and stay manual interface ceilings (ADR-035).
+    // When the dev extension is absent the probe records native-unavailable
+    // and asserts the SQF fallback.  It renders nothing.
+    execVM "aee_p139_client_kernel_parity_probe.sqf";
+    // PHASE 136 lives in aee_p136_client_probe.sqf: it needs a non-dedicated
+    // machine, so the dedicated server never runs it and can never claim it
+    // passed. An optional headless client carries it (guard !isDedicated).
+    if (!isDedicated) then {
+        execVM "aee_p136_client_probe.sqf";
+    };
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

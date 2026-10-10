@@ -48,14 +48,14 @@ Guards, each explicit:
 
 Arguments:
   0:  _veh        (OBJECT) the aircraft to burn
-  1:  _deltaTimeS (NUMBER) elapsed interval, s, default diag_deltaTime
+  1:  _deltaTimeS (NUMBER) elapsed interval, s, default 0
 
 Return Value: BOOL - true when the burn was applied
 Example: [cursorObject, 1] call aee_flight_fnc_updateFuelSystem
 Public: No
 */
 
-params [["_veh", objNull, [objNull]], ["_deltaTimeS", diag_deltaTime, [0]]];
+params [["_veh", objNull, [objNull]], ["_deltaTimeS", 0, [0]]];
 
 if (isNull _veh || {!alive _veh}) exitWith { false };
 if !(_veh isKindOf "Air") exitWith { false };

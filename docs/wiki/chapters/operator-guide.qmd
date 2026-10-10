@@ -1,0 +1,39 @@
+---
+title: "Operator guide"
+---
+
+# Operator guide {#sec-operator-guide}
+
+This guide is for the operator who runs the development surface. The surface is
+dev-only and ships in no release artefact.
+
+## The visual workbench
+
+The workbench applies a visual change at run time. It registers four actions
+under the `AEE Dev` category in the CBA keybind menu.
+
+| Action | What it does |
+|---|---|
+| `DevReapplyVisual` | Releases each effect scope and re-runs the visual pipeline, so a change is seen without a relaunch. |
+| `DevScreenshot` | Takes a labelled screenshot and logs the paired AEE state line. |
+| `DevDump` | Writes the full state dump. |
+| `DevOverlayToggle` | Shows the state dump in an overlay. |
+
+Bind each action in the CBA keybind menu under the `AEE Dev` category.
+
+## The screenshot
+
+The `DevScreenshot` action writes an image to the Arma profile `Screenshots`
+folder. The file name is `aee_<label>_<timestamp>.png`. The paired state line in
+the RPT names the file and the AEE state that produced it, so the image and the
+state are captured together.
+
+## The manual verdict
+
+The visual check is manual. The engine renders on a client only, and a
+dedicated server renders nothing. No automated gate reads a pixel, so the
+rendered look is an operator-only observation.
+
+The operator presses `DevReapplyVisual`, looks at the result, and confirms the
+change. The `DevScreenshot` image is the evidence for that manual check. It is
+not an automated gate, and no test asserts the image.

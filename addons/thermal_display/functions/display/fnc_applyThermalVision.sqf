@@ -203,8 +203,17 @@ private _dirDelta = _prevDir vectorDotProduct _dir;
 _dirDelta = ((_dirDelta max -1) min 1);
 _dirDelta = acos _dirDelta;   // angular change in degrees
 missionNamespace setVariable [QGVAR(thermalPrevDir), _dir];
-private _panSmear = if (diag_deltaTime > 0) then {
-    linearConversion [0, 90, _dirDelta / diag_deltaTime, 0.0, 0.04, true]
+// One clock (Pillar 1): real elapsed time since this pass.  First tick _dt = 0.
+// diag_deltaTime is the FRAME delta, not the pass interval.
+private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
+private _lastSim = missionNamespace getVariable [QGVAR(thermalVisLastSimTime), -1];
+private _dt = 0;
+if (_lastSim isEqualType 0) then {
+    if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
+};
+missionNamespace setVariable [QGVAR(thermalVisLastSimTime), _simNow];
+private _panSmear = if (_dt > 0) then {
+    linearConversion [0, 90, _dirDelta / _dt, 0.0, 0.04, true]
 } else { 0 };
 
 // ─── Thermal window effects (fog/rain on lens) ────────────────────────────

@@ -1,0 +1,31 @@
+[package]
+name = "aee_dev"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-2.0-or-later"
+description = "AEE development extension: loopback dev console and callback bridge"
+publish = false
+
+[lib]
+# `rlib` lets the integration test and the listener probe link the crate; the
+# release artefact is still the `cdylib` (`libaee_dev.so` / `aee_dev.dll`).
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+# A client build must not open a dev loopback port. Enable this for the client
+# extension; the server build leaves it off and binds the listener.
+client = []
+
+[dependencies]
+arma-rs = "1.13.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+opt-level = 3
+lto = true
+
+# This crate is its own workspace root, so `cargo build` inside this directory
+# writes to this directory's `target/` (the Docker harness expects it there).
+[workspace]

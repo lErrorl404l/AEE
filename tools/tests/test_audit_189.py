@@ -155,14 +155,14 @@ class TestTwoNodeSolver(unittest.TestCase):
     def test_two_node_file_exists_and_registered(self):
         from pathlib import Path
 
-        fn = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf")
+        fn = Path("addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf")
         self.assertTrue(fn.exists())
         prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("solveTwoNodeSelection", prep)
 
     def test_gagge_physiology_constants(self):
         text = Path(
-            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+            "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf"
         ).read_text(encoding="utf-8")
         # Blood-flow coupling: K_min 5.28, blood cp 4186.
         self.assertIn("5.28", text)
@@ -181,7 +181,7 @@ class TestTwoNodeSolver(unittest.TestCase):
 
     def test_two_node_physics_patterns(self):
         text = Path(
-            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+            "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf"
         ).read_text(encoding="utf-8")
         # Analytic core solve (linear residual) - the damped 2x2 Newton
         # oscillated (traced to 1363 C).
@@ -198,14 +198,19 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("1.5", text)
 
     def test_inert_conduction_not_l_char(self):
-        text = Path(
+        # The #124 audit bug: conduction must use L_cond (wall thickness),
+        # not L_char (convection plate dim).  After the kernel/driver split the
+        # driver owns the Fourier conductance (from L_cond) and the kernel owns
+        # the convection plate dimension (L_char), so both files are checked.
+        driver = Path(
             "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
         ).read_text(encoding="utf-8")
-        # The #124 audit bug: conduction must use L_cond (wall thickness),
-        # not L_char (convection plate dim).
-        self.assertIn("_lCond", text)
-        self.assertIn("_lChar", text)
-        self.assertIn("Fourier", text)
+        kernel = Path(
+            "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("_lCond", driver)
+        self.assertIn("Fourier", driver)
+        self.assertIn("_lChar", kernel)
 
 
 class TestWaterThermal(unittest.TestCase):
@@ -217,7 +222,7 @@ class TestWaterThermal(unittest.TestCase):
         from pathlib import Path
 
         text = Path(
-            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+            "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf"
         ).read_text(encoding="utf-8")
         # Boutelier, Bougues & Timbal 1977 (partitional calorimetry):
         # still water 43 (neutral) / 54 (cold+shivering) W/m2K; stirred
@@ -232,7 +237,7 @@ class TestWaterThermal(unittest.TestCase):
         from pathlib import Path
 
         text = Path(
-            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+            "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf"
         ).read_text(encoding="utf-8")
         # An immersed surface exchanges against the WATER temperature,
         # not air or the air-side MRT.
@@ -244,7 +249,7 @@ class TestWaterThermal(unittest.TestCase):
         from pathlib import Path
 
         text = Path(
-            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+            "addons/thermal/functions/solver/fnc_solveTwoNodeKernel.sqf"
         ).read_text(encoding="utf-8")
         # Rain is EXTERNAL water (not regulated sweat): drives the wet
         # state up, saturating at high rates.
