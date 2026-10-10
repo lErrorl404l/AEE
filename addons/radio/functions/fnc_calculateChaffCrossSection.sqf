@@ -27,7 +27,10 @@ Wires or Thin Metallic Strips", J. Appl. Phys. 18(3):274-294, 1947, DOI
 Revisited: The RCS of Thin Wires", 1973, DTIC AD0768336 (the standard
 follow-up).  Worked values at X-band (10 GHz, lambda = 0.03 m, lambda^2 =
 9e-4 m2): one dipole 1.53e-4 m2; a 6 m2 fighter return needs about 39,000
-dipoles.  The 6 m2 fighter RCS is a generic unclassified figure.
+dipoles.  The 6 m2 fighter RCS is Skolnik, "Introduction to Radar Systems",
+Table 2.2 (large fighter).  The issue #131 figures RR-188 = 835 m2 and
+Chemring CCM216 > 10,000 m2 are not published figures, so they are UNSOURCED
+and are not used by this kernel.
 
 Arguments:
   0: _dipoleCount (NUMBER) N, >= 0

@@ -20,7 +20,8 @@ confused, and this kernel does not reuse the Friis form.
 
 SOURCE.  Skolnik, "Radar Handbook", 3rd ed., McGraw-Hill, 2008, ISBN
 978-0-07-148547-0, ch. 1 (the radar range equation); MIT Lincoln Laboratory,
-"Radar Systems Course", Lecture 4 (the range equation and its R^4 form).
+"Introduction to Radar Systems" (web course), Lecture 4 "Target RCS" (the RCS
+material; the range equation itself is Skolnik's).
 The issue's test vector R_max = 46.1 km at Pt = 1 MW, G = 1000, lambda = 0.03
 m, sigma = 1 m2, Pmin = 1e-13 W is reproduced exactly by this form.
 
