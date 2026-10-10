@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (666)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -725,11 +725,16 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_weather_fnc_calculateBlowingSnowVisibility`
 - `aee_weather_fnc_calculateConcealment`
 - `aee_weather_fnc_calculateCropState`
+- `aee_weather_fnc_calculateDenseGasDispersion`
+- `aee_weather_fnc_calculateDenseGasPooling`
+- `aee_weather_fnc_calculateDenseGasSlumping`
 - `aee_weather_fnc_calculateDustSuppression`
 - `aee_weather_fnc_calculateDustVisibility`
 - `aee_weather_fnc_calculateFogBaseAltitude`
+- `aee_weather_fnc_calculateGasMixtureDensity`
 - `aee_weather_fnc_calculateLunarIllumination`
 - `aee_weather_fnc_calculateMicroclimate`
+- `aee_weather_fnc_calculatePoolEvaporation`
 - `aee_weather_fnc_calculateQNH`
 - `aee_weather_fnc_calculateScentDispersion`
 - `aee_weather_fnc_calculateSevereWeather`
@@ -738,11 +743,13 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_weather_fnc_calculateUrbanHeatIsland`
 - `aee_weather_fnc_calculateWaterInfluence`
 - `aee_weather_fnc_classifyBiome`
+- `aee_weather_fnc_classifyToxicExposure`
 - `aee_weather_fnc_getBiome`
 - `aee_weather_fnc_getBiomeAtPosition`
 - `aee_weather_fnc_getBiomeName`
 - `aee_weather_fnc_getClimateNormals`
 - `aee_weather_fnc_getCoastDistance`
+- `aee_weather_fnc_getGasProperties`
 - `aee_weather_fnc_getLatitudeClimate`
 - `aee_weather_fnc_getSmoothedBiome`
 - `aee_weather_fnc_scanTerrainSignals`
