@@ -41,6 +41,7 @@ def main():
         "tools/tests/test_trig_units.py",
         "tools/tests/test_physiology.py",
         "tools/tests/test_radio.py",
+        "tools/tests/test_acoustic_propagation.py",
         "tools/tests/test_environmental.py",
         "tools/tests/test_blowing_snow.py",
         "tools/tests/test_addon_dependencies.py",
