@@ -1,5 +1,13 @@
+PREP(calculateBioluminescence);
+PREP(calculateLightDepth);
 PREP(calculateSeaState);
 PREP(calculateSeaSurfaceTemperature);
+PREP(calculateSecchiKd);
+PREP(calculateSnellWindow);
 PREP(calculateTidalPrediction);
+PREP(calculateUnderwaterLight);
+PREP(pureWaterAbsorption);
 PREP(updateEngineWaves);
+PREP(updateUnderwaterLight);
+PREP(waterTypeKd);
 PREP(dumpState);
