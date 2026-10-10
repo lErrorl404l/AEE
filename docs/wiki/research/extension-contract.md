@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (658)
+### Public functions (664)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -180,6 +180,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ambience_fnc_soundBedForContext`
 - `aee_ambience_fnc_soundTick`
 - `aee_ambience_fnc_speciesSound`
+- `aee_armour_fnc_applyShotResponse`
+- `aee_armour_fnc_calculatePenetration`
 - `aee_armour_fnc_deriveProtection`
 - `aee_armour_fnc_dumpState`
 - `aee_armour_fnc_getVehicleArmour`
@@ -242,8 +244,11 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ballistics_fnc_resolveShot`
 - `aee_ballistics_fnc_selectBand`
 - `aee_ballistics_fnc_startStateDump`
+- `aee_blast_fnc_applyCorpsePhysics`
+- `aee_blast_fnc_applyDeathMomentum`
 - `aee_blast_fnc_calculateBlastInjury`
 - `aee_blast_fnc_calculateBlastOverpressure`
+- `aee_blast_fnc_calculateBlastThrow`
 - `aee_cartography_fnc_fontFamilyUsable`
 - `aee_cartography_fnc_formatGridDisplay`
 - `aee_cartography_fnc_gpsBuild`
@@ -258,6 +263,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_cartography_fnc_mgrsMapPrecision`
 - `aee_cartography_fnc_mgrsMarkerText`
 - `aee_clothing_fnc_getCamouflageProperties`
+- `aee_clothing_fnc_getCorpseMass`
 - `aee_clothing_fnc_getEquipmentBands`
 - `aee_clothing_fnc_getEquipmentProperties`
 - `aee_clothing_fnc_getGloveProperties`

@@ -5,6 +5,11 @@ AEE_SETTING_CHECKBOX(penetrationGate,"AEE Armour","Penetration",true);
 
 AEE_SETTING_CHECKBOX(penetrationDebug,"AEE Debug","Armour",false);
 
+// ── Shot response (issue #161) ────────────────────────────────────────────
+// A penetrating vital hit incapacitates at once (setUnconscious) and
+// biases the fall with the round's momentum.
+AEE_SETTING_CHECKBOX(shotResponse,"AEE Armour","Events",true);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,

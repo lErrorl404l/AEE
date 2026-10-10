@@ -9,6 +9,14 @@
             <Original>Blast Injury</Original>
             <English>Blast Injury</English>
         </Key>
+        <Key ID="STR_AEE_Blast_corpsePhysics_Description">
+            <Original>Apply the whole-body corpse physics on death: the blast throw, the tumble and the carried mass (issue #160). The thermal fade is aee_thermal's own.</Original>
+            <English>Apply the whole-body corpse physics on death: the blast throw, the tumble and the carried mass (issue #160). The thermal fade is aee_thermal's own.</English>
+        </Key>
+        <Key ID="STR_AEE_Blast_corpsePhysics_Name">
+            <Original>Corpse Physics</Original>
+            <English>Corpse Physics</English>
+        </Key>
         <Key ID="STR_AEE_Blast_logDebug_Description">
             <Original>Log Blast diagnostics to the RPT. Turn this on before reporting a fault.</Original>
             <English>Log Blast diagnostics to the RPT. Turn this on before reporting a fault.</English>

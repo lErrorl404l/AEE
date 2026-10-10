@@ -54,6 +54,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_armour_armourEnabled` | CHECKBOX | `true` | yes | armour | Apply the STANAG 4569-aligned vehicle armour ladder (issue #126) |
 
+## AEE Armour → Events
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_armour_shotResponse` | CHECKBOX | `true` | yes | armour | Incapacitate at once on a penetrating vital hit and bias the fall with the round's momentum (issue #161) |
+
 ## AEE Armour → Penetration
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -109,6 +115,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_blast_blastInjuryEnabled` | CHECKBOX | `true` | yes | blast | Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw) |
+| `aee_blast_corpsePhysics` | CHECKBOX | `true` | yes | blast | Apply the whole-body corpse physics on death: the blast throw, the tumble and the carried mass (issue #160). The thermal fade is aee_thermal's own. |
 
 ## AEE Debug → Actions
 
