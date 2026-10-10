@@ -130,7 +130,7 @@ MASS_KEY = "mass"
 VALUE_FIELD = "max_speed_kmh"
 KEY_UNIT = "km/h"
 CONVERSION = "identity"
-MASS_SCHEMA = "aee.physics.mass_calibration/1"
+MASS_SCHEMA = "aee.physics.mass_calibration/2"
 
 # The aircraft key. ``fuel_capacity`` is held in litres and projects to the
 # engine ``fuelCapacity`` key by the identity conversion.

@@ -19,7 +19,7 @@ These tests prove:
   * NEGATIVE: the same class at grade ``claimed`` emits no key and is
     recorded as a lead.
   * NON-REGRESSION: the shipped ``addons/vehicles/generated/CfgVehicles.hpp``
-    still carries one block, exactly eighteen land bodies and the keys
+    still carries one block, one land body per bound class and the keys
     ``maxSpeed`` and ``mass``, and it holds no aircraft key.
 
 Run: python3 -m unittest tools.tests.test_aircraft_systems -v
@@ -60,8 +60,9 @@ SENTINEL_MASS_KG = 2345
 SENTINEL_CG_M = 1.25
 SENTINEL_ID = "fixture_sentinel"
 
-# The land corpus is un-gated and unchanged. The shipped file carries exactly
-# these bodies and keys.
+# The land corpus is un-gated. The shipped file carries one body per bound
+# class; the grandfathered 18 are the floor and their bodies stay byte-identical
+# (tools/tests/test_mass_config.py pins them).
 LAND_BODY_COUNT = 18
 LAND_KEYS = {"maxSpeed", "mass"}
 
@@ -327,7 +328,7 @@ class AircraftFuelEmissionTest(unittest.TestCase):
 
 
 class ShippedConfigRegressionTest(unittest.TestCase):
-    """The shipped override stays header-only: the 18 land bodies never change."""
+    """The shipped override stays header-only: the land bodies never change."""
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -336,8 +337,14 @@ class ShippedConfigRegressionTest(unittest.TestCase):
     def test_one_cfgvehicles_block(self) -> None:
         self.assertEqual(len(BLOCK_RE.findall(self.text)), 1)
 
-    def test_eighteen_land_class_bodies(self) -> None:
-        self.assertEqual(len(BODY_RE.findall(self.text)), LAND_BODY_COUNT)
+    def test_land_class_bodies(self) -> None:
+        # One land body per bound class. The count grows with the land-coverage
+        # binding set; the grandfathered bodies stay byte-identical.
+        bindings = json.loads(
+            (VEHICLE / "class_bindings.json").read_text(encoding="utf-8")
+        )
+        self.assertGreaterEqual(len(BODY_RE.findall(self.text)), LAND_BODY_COUNT)
+        self.assertEqual(len(BODY_RE.findall(self.text)), len(bindings))
 
     def test_the_key_set_is_maxspeed_and_mass(self) -> None:
         self.assertEqual(set(KEY_RE.findall(self.text)), LAND_KEYS)

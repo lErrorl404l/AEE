@@ -28,6 +28,7 @@ from tools.validation import validate_mass_calibration as v  # noqa: E402
 
 BINDINGS = REPO / "data" / "vehicle" / "class_bindings.json"
 CALIBRATION = REPO / "data" / "vehicle" / "mass_model_calibration.json"
+PHYSICS = REPO / "data" / "physics" / "mass_calibration.json"
 
 
 def _classes() -> list[str]:
@@ -47,13 +48,39 @@ def _sample_log(classes: list[str], drop: str | None = None) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _held_source(tmp: str) -> Path:
+    """Write a held-mass source that covers every bound class.
+
+    The committed mass-model census predates the land-coverage growth and does
+    not cover the appended classes. The build tool pairs the census log with
+    the held real masses, so the test writes a source that covers every bound
+    class from the committed physics calibration.
+    """
+    physics = json.loads(PHYSICS.read_text(encoding="utf-8"))
+    rows = [
+        {
+            "id": row["game_class"],
+            "real_mass_kg": row["real_analogue_mass_kg"],
+            "mass_basis": row.get("mass_basis", ""),
+            "source": row.get("source", ""),
+            "source_locator": row.get("source_locator", ""),
+        }
+        for row in physics["rows"]
+    ]
+    path = Path(tmp) / "held_masses.json"
+    path.write_text(
+        json.dumps({"schema": build.CALIBRATION_SCHEMA, "rows": rows}, indent=2),
+        encoding="utf-8",
+    )
+    return path
+
+
 class BuildMassCalibrationTest(unittest.TestCase):
     """The tool fails closed on a bad census and writes on a good one."""
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.classes = _classes()
-        cls.held = build.held_masses(CALIBRATION)
 
     def _run(self, log_text: str | None, tmp: str) -> tuple[int, Path]:
         out = Path(tmp) / "mass_calibration.json"
@@ -63,7 +90,7 @@ class BuildMassCalibrationTest(unittest.TestCase):
             "--bindings",
             str(BINDINGS),
             "--calibration",
-            str(CALIBRATION),
+            str(_held_source(tmp)),
             "--out",
             str(out),
         ]
@@ -88,18 +115,58 @@ class BuildMassCalibrationTest(unittest.TestCase):
             self.assertEqual(len(payload["rows"]), len(self.classes))
             self.assertEqual(payload["counts"]["paired"], len(self.classes))
 
-    def test_the_fit_is_the_median_row_scale(self) -> None:
+    def test_the_fit_is_the_reference_median_row_scale(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             rc, out = self._run(_sample_log(self.classes), tmp)
             self.assertEqual(rc, 0)
             payload = json.loads(out.read_text(encoding="utf-8"))
             scales = [row["scale"] for row in payload["rows"]]
+            reference_n = payload["fit"]["reference_n"]
             self.assertAlmostEqual(
                 payload["fit"]["scale"],
-                round(statistics.median(scales), build.SCALE_ROUND),
+                round(statistics.median(scales[:reference_n]), build.SCALE_ROUND),
                 places=build.SCALE_ROUND,
             )
             self.assertEqual(payload["leave_one_out"]["n"], len(self.classes))
+
+    def test_an_appended_row_does_not_move_the_frozen_scale(self) -> None:
+        # The fit median is scoped to the frozen reference set, so a row with a
+        # very different scale appended after the reference rows never moves it.
+        rows = [
+            {
+                "scale": 0.5,
+                "real_analogue_mass_kg": 1000.0,
+                "engine_mass_live": 2000.0,
+            },
+            {
+                "scale": 0.6,
+                "real_analogue_mass_kg": 1200.0,
+                "engine_mass_live": 2000.0,
+            },
+        ]
+        scale_before, _ = build.fit_rows(rows, reference_n=2)
+        rows.append(
+            {
+                "scale": 9.0,
+                "real_analogue_mass_kg": 100.0,
+                "engine_mass_live": 2000.0,
+            }
+        )
+        scale_after, _ = build.fit_rows(rows, reference_n=2)
+        self.assertEqual(scale_before, scale_after)
+
+    def test_the_committed_artefact_is_frozen_to_the_reference_set(self) -> None:
+        payload = json.loads(PHYSICS.read_text(encoding="utf-8"))
+        fit = payload["fit"]
+        self.assertTrue(fit["frozen"])
+        reference_n = fit["reference_n"]
+        self.assertIsInstance(reference_n, int)
+        scales = [row["scale"] for row in payload["rows"]]
+        self.assertAlmostEqual(
+            fit["scale"],
+            round(statistics.median(scales[:reference_n]), build.SCALE_ROUND),
+            places=build.SCALE_ROUND,
+        )
 
     def test_a_missing_class_fails_closed(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -115,10 +182,12 @@ class BuildMassCalibrationTest(unittest.TestCase):
             self.assertFalse(out.exists())
 
     def test_the_committed_census_pairs_every_bound_class(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            held = build.held_masses(_held_source(tmp))
         readings = {}
         for index, name in enumerate(self.classes):
             readings[name] = (1000.0 + index, 2000.0 + index)
-        rows = build.build_rows(self.classes, readings, self.held)
+        rows = build.build_rows(self.classes, readings, held)
         self.assertEqual([row["game_class"] for row in rows], self.classes)
 
 
@@ -140,7 +209,7 @@ class ValidateMassCalibrationTest(unittest.TestCase):
                 "--bindings",
                 str(BINDINGS),
                 "--calibration",
-                str(CALIBRATION),
+                str(_held_source(tmp)),
                 "--out",
                 str(out),
             ]
