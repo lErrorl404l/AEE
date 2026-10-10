@@ -116,6 +116,12 @@ if (GVAR(windEnabled)) then {
     [] call EFUNC(atmos,updateWind);
     END_COUNTER(windUpdate);
 };
+// Unified scalar-field transport (issue #116): the smoke and dust fields
+// advect by the wind published just above. The driver self-gates on
+// aee_weather_scalarFieldsEnabled, so this call is unconditional.
+BEGIN_COUNTER(scalarFields);
+[] call EFUNC(weather,updateScalarFields);
+END_COUNTER(scalarFields);
 if (GVAR(fxEnabled)) then {
     BEGIN_COUNTER(windNoise);
     [] call EFUNC(weatherfx,applyWindNoise);
