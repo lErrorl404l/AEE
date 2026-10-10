@@ -94,7 +94,7 @@ No value is invented: every row is sourced or derived and carries its source.
         ["NameCityCapital", "", "populated", [0.15, 0.15, 0.15, 1], 14, "AEEFont", 0.09, 1, "derived", "CfgLocationTypes NameCityCapital, drawStyle name"],
         ["NameCity", "", "populated", [0.15, 0.15, 0.15, 1], 13, "AEEFont", 0.075, 1, "derived", "CfgLocationTypes NameCity, drawStyle name"],
         ["NameVillage", "", "populated", [0.15, 0.15, 0.15, 1], 11, "AEEFont", 0.06, 1, "derived", "CfgLocationTypes NameVillage, drawStyle name"],
-        ["NameLocal", "", "populated", [0.15, 0.15, 0.15, 1], 10, "AEEFont", 0.05, 1, "derived", "CfgLocationTypes NameLocal, drawStyle name"],
+        ["NameLocal", "", "populated", [0.15, 0.15, 0.15, 1], 10, "AEEFont", 0.06, 1, "derived", "CfgLocationTypes NameLocal, drawStyle name"],
         ["Hill", "hill", "relief", [1, 1, 1, 1], 14, "", 0.05, 0, "derived", "CfgLocationTypes Hill, drawStyle icon; DGIWG SO_0097 SurveyPointGeodeticHighestP"],
         ["ViewPoint", "monument", "works", [1, 1, 1, 1], 16, "", 0.05, 0, "derived", "CfgLocationTypes ViewPoint, drawStyle icon; DGIWG SO_0104 MonumentP"],
         ["RockArea", "rock", "relief", [1, 1, 1, 1], 12, "", 0.05, 0, "derived", "CfgLocationTypes RockArea, drawStyle icon; DGIWG SO_0364 RockFormationP"],
