@@ -24,6 +24,9 @@ environmental, and the map and symbology.
   NVG vision, particles, GUI and drawing, Eden, Zeus, and the CBA functions,
   with introduction versions, is in
   [command-surface-3.md](command-surface-3.md) (#146).
+- The complete command inventory, every group with its command count and its
+  Arma 3 version, is in
+  [engine-command-inventory.md](engine-command-inventory.md).
 
 ## Source hierarchy and method
 
