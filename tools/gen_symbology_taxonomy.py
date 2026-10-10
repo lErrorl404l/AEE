@@ -37,7 +37,7 @@ import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from symbology_categories import marker_category
+from symbology_categories import marker_category, VARIATION_HIDDEN_SCOPE
 from typing import Any
 
 ROOT = Path(__file__).parents[1]
@@ -274,7 +274,7 @@ def render_config(items: list[dict[str, Any]]) -> str:
             f'        texture = "{icon}";',
             f"        side = {AFFIL_SIDE[it['affil']]};",
             f'        markerClass = "{marker_category(it["affil"], it["dim"])}";',
-            "        scope = 2;",
+            f"        scope = {VARIATION_HIDDEN_SCOPE};",
             "    };",
         ]
     return "\n".join(lines) + "\n"
@@ -358,9 +358,32 @@ def check() -> int:
     return 0
 
 
+def config_from_record() -> int:
+    """Write config_taxonomy.hpp from the committed derived record.
+
+    The generator renders the gap glyphs from a fetched MIL-STD-2525C table
+    with milsymbol, which is not committed.  The committed
+    data/symbology/app6_taxonomy.json is the derived record, and the config is a
+    pure function of its entries, so the config regenerates with no render and
+    no fetched source.  Used to refresh the config after a scope or category
+    change without touching the marker art.
+    """
+    if not TAXONOMY_OUT.is_file():
+        raise SystemExit("gen_symbology_taxonomy: the committed record is missing")
+    data = json.loads(TAXONOMY_OUT.read_text(encoding="utf-8"))
+    CONFIG_OUT.write_text(render_config(data["entries"]), encoding="utf-8")
+    print(
+        f"taxonomy: config written from the committed record "
+        f"({len(data['entries'])} entries)"
+    )
+    return 0
+
+
 def main(argv: list[str]) -> int:
     if "--check" in argv:
         return check()
+    if "--config" in argv:
+        return config_from_record()
     if "--table" in argv:
         for it in plan():
             print(
