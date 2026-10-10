@@ -27,7 +27,7 @@ QGVAR(routeDegradation) and QGVAR(tractionModifier).
 private _coneIndex = missionNamespace getVariable [QGVAR(routeConeIndex), 1.0];
 private _recoveryRate = missionNamespace getVariable [QGVAR(routeRecoveryRate), 1.001];
 private _damageRate = missionNamespace getVariable [QGVAR(routeDamageRate), 0.00002];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 
 // ─── Exponential recovery toward nominal 1.0 ───────────────────────────────
 _coneIndex = (_coneIndex * (_recoveryRate ^ (_interval / 5))) min 1.0;

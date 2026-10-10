@@ -3,17 +3,17 @@
 /*
 Core body temperature from the physiology heat balance.
 
-Physiology heat balance.  A 37 C baseline plus a heat gain from the wet
+Physiology heat balance.  A BODY_TEMP_C (37 C) baseline plus a heat gain from the wet
 bulb globe temperature above a threshold, minus a cold loss from the wind
 chill temperature and the hypothermia risk:
 
-    T_core = 37 + 0.05 * max(0, WBGT - 28)
+    T_core = BODY_TEMP_C + 0.05 * max(0, WBGT - 28)
                 - 0.10 * max(0, 10 - windChill)
                 - 4.0  * hypothermiaRisk
 
 Source grading:
 
-  baseline 37 C        sourced.  Normal resting human core temperature.
+  baseline BODY_TEMP_C  sourced.  Normal resting human core temperature (37 C).
   heat threshold 28 C  UNSOURCED.  A WBGT threshold in the heat-stress
                        band (28 is the common worker-exposure limit), not a
                        measured physiological set point.
@@ -30,8 +30,8 @@ The result is clamped to [28, 42] C, the survivable band, so a missing or
 stale input cannot publish a non-physical value.
 
 This function fixes the orphan read at
-addons/compat_kat/functions/fnc_integrateKAT.sqf:37, which read
-aee_core_coreBodyTemp with a 37 fallback while nothing produced it.
+addons/compat_kat/functions/fnc_integrateKAT.sqf:BODY_TEMP_C, which read
+aee_core_coreBodyTemp with a BODY_TEMP_C fallback while nothing produced it.
 
 Sets:   aee_core_coreBodyTemp (C)
 Returns: Number - the core body temperature in C.
@@ -46,7 +46,7 @@ if !(_hypoRisk isEqualType 0) then { _hypoRisk = 0; };
 
 private _heatGain = ((_wbgt - 28) max 0) * 0.05;
 private _coldLoss = (((10 - _windChill) max 0) * 0.10) + (_hypoRisk * 4.0);
-private _tBody = ((37 + _heatGain - _coldLoss) max 28) min 42;
+private _tBody = ((BODY_TEMP_C + _heatGain - _coldLoss) max 28) min 42;
 
 missionNamespace setVariable [QGVAR(coreBodyTemp), _tBody];
 

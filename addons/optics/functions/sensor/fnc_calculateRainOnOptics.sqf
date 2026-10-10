@@ -31,7 +31,7 @@ private _droplets = missionNamespace getVariable [QGVAR(rainOnOptics), 0];
 
 // Rates are per-tick; scale by the update interval so behaviour is
 // interval-independent (5 s baseline).
-private _intervalScale = (missionNamespace getVariable [QEGVAR(core,updateInterval), 5]) / 5;
+private _intervalScale = (EGVAR(core,updateInterval)) / 5;
 private _accumRate = (missionNamespace getVariable [QGVAR(rainAccumRate), 0.01]) * _intervalScale;
 private _decayRate = (missionNamespace getVariable [QGVAR(rainDecayRate), 0.02]) * _intervalScale;
 

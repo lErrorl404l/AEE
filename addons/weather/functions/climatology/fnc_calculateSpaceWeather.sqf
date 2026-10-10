@@ -41,7 +41,7 @@ private _solarCycle = (sin (360 * _totalDays / 4018) + 1) / 2; // 0–1
 
 private _flareState = missionNamespace getVariable [QGVAR(spaceWeatherFlareState), "IDLE"];
 private _flareValue = missionNamespace getVariable [QGVAR(spaceWeatherFlareValue), 0];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 
 switch (_flareState) do {
     case "IDLE": {

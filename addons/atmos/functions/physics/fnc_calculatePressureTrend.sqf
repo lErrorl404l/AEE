@@ -23,7 +23,7 @@ Stored in GVAR(currentPressureTrend)   — float (hPa change over 3 h)
 Stored in GVAR(currentWeatherForecast) — string short phrase
 */
 
-private _currentP = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
+private _currentP = missionNamespace getVariable [QEGVAR(core,currentPressure), ISA_SEA_LEVEL_PRESSURE_HPA];
 if (isNil "_currentP") then {
     _currentP = missionNamespace getVariable [QEGVAR(core,currentPressure), 1018];
 };

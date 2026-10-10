@@ -58,13 +58,13 @@ private _snowfallRate = if (_phase in ["snow", "sleet", "freezing_rain"]) then {
 //
 // The growth layer is taken at 3 km, the mid-range of the 2-4 km hail
 // growth zone (Browning 1977).  The wet-bulb aloft is the surface wet-bulb
-// minus the standard lapse over that depth (0.0065 C/m, the lapse
+// minus the standard lapse over that depth (ISA_LAPSE_RATE C/m, the lapse
 // fnc_updateTemperature applies).  Rain must be falling: hail comes from a
 // convective storm, so the gate cannot fire in clear air.
 private _capeProxy = missionNamespace getVariable [QGVAR(capeProxy), 0];
 if !(_capeProxy isEqualType 0) then { _capeProxy = 0; };
 private _hailGrowthM = 3000;
-private _lapseCPerM = 0.0065;
+private _lapseCPerM = ISA_LAPSE_RATE;
 private _twAloft = _Tw - (_lapseCPerM * _hailGrowthM);
 private _hailActive = (_capeProxy > 0) && (_twAloft < 0) && (_rainRate > 0.05);
 

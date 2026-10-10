@@ -187,7 +187,9 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(["6.105", "17.27", "237.7"], "Buck equation constants")
 
     def test_itu_constants(self):
-        self._assert_in_sqf(["77.6", "3.73e5", "273.15"], "ITU-R P.453 constants")
+        self._assert_in_sqf(
+            ["77.6", "3.73e5", "KELVIN_OFFSET"], "ITU-R P.453 constants"
+        )
 
     def test_gradient_constants(self):
         self._assert_in_sqf(["-39", "0.00366", "15"], "surface gradient calibration")

@@ -35,6 +35,7 @@ ROOT = Path(__file__).resolve().parents[2]
 FLIGHT = ROOT / "addons" / "flight"
 FUNCS = FLIGHT / "functions"
 HEADER = FLIGHT / "script_component.hpp"
+CONSTANTS = ROOT / "addons" / "lib" / "constants.hpp"
 POST_INIT = FLIGHT / "XEH_postInit.sqf"
 PREP = FLIGHT / "XEH_PREP.hpp"
 SETTINGS = FLIGHT / "initSettings.inc.sqf"
@@ -53,11 +54,14 @@ G = 9.80665
 
 
 def _define(name):
-    """The numeric value of a #define in the mobility component header."""
-    text = HEADER.read_text(encoding="utf-8")
-    match = re.search(rf"^#define\s+{name}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
-    assert match, f"{name} is not defined in {HEADER.name}"
-    return float(match.group(1))
+    """The numeric value of a #define in the flight header or the shared
+    constants header (AERO_ISA_SEA_LEVEL_DENSITY now lives in lib/constants.hpp)."""
+    for header in (HEADER, CONSTANTS):
+        text = header.read_text(encoding="utf-8")
+        match = re.search(rf"^#define\s+{name}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
+        if match:
+            return float(match.group(1))
+    raise AssertionError(f"{name} is not defined in {HEADER.name} or {CONSTANTS.name}")
 
 
 def _defines():
@@ -66,6 +70,7 @@ def _defines():
         "TURBULENCE_DENSITY_RATIO_MAX": _define("TURBULENCE_DENSITY_RATIO_MAX"),
         "TURBULENCE_TORQUE_FRACTION": _define("TURBULENCE_TORQUE_FRACTION"),
         "AERO_ISA_SEA_LEVEL_DENSITY": _define("AERO_ISA_SEA_LEVEL_DENSITY"),
+        "STANDARD_GRAVITY": _define("STANDARD_GRAVITY"),
         "AERO_DENSITY_LIFT_LOSS_MAX": _define("AERO_DENSITY_LIFT_LOSS_MAX"),
         "AERO_ICE_LIFT_LOSS_MAX": _define("AERO_ICE_LIFT_LOSS_MAX"),
         "AERO_ICE_DRAG_RISE_MAX": _define("AERO_ICE_DRAG_RISE_MAX"),

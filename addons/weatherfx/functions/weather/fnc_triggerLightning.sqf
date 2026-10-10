@@ -14,7 +14,7 @@ Sets: nothing (side effect only — visual/audio)
 if (!(missionNamespace getVariable [QEGVAR(core,atmosphericEventsEnabled), true])) exitWith {};
 
 private _chance = missionNamespace getVariable [QGVAR(lightningFXChance), 0.05];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 _chance = _chance * (_interval / 5);
 private _brightness = missionNamespace getVariable [QGVAR(lightningBrightness), 1000];
 private _thunderVolume = missionNamespace getVariable [QGVAR(thunderVolume), 3.5];

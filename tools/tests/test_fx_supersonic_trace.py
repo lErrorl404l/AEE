@@ -140,7 +140,7 @@ class KernelNotScaled(unittest.TestCase):
 
     def test_kernel_scales_only_its_reporting_unit(self) -> None:
         kernel = KERNEL.read_text(encoding="utf-8")
-        self.assertIn("_contrast / 0.0001", kernel)
+        self.assertIn("_contrast / EPSILON", kernel)
         self.assertNotIn("settingsConfigFile", kernel)
         self.assertNotIn("missionNamespace setVariable", kernel)
 
@@ -281,7 +281,9 @@ class Diagnostics(unittest.TestCase):
 
     def test_debug_setting_exists_to_gate_it(self) -> None:
         # The setting must actually be declared, or the log never turns on.
-        settings = (REPO / "addons/particles/initSettings.inc.sqf").read_text(encoding="utf-8")
+        settings = (REPO / "addons/particles/initSettings.inc.sqf").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("QGVAR(logDebug)", settings)
 
     def test_diagnostics_name_the_cone_and_keep_the_labels(self) -> None:

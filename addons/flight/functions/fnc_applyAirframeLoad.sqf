@@ -6,7 +6,7 @@ Apply the density and icing flight penalties to one locally-owned aircraft.
 This is the flight consumer the AEE atmosphere lacked.  Two computed states
 previously reached no airframe:
 
-  - the lift ratio rho / 1.225 (aee_flight_currentLiftRatio), and
+  - the lift ratio rho / AERO_ISA_SEA_LEVEL_DENSITY (aee_flight_currentLiftRatio), and
   - the FAR 25 Appendix C icing state (aee_atmos_airframeIcing and
     aee_atmos_iceAccretion_kg).
 
@@ -81,7 +81,7 @@ private _dragRise = _penalty select 1;
 // Weight times the lift-loss fraction.  The kernel caps the fraction, so the
 // force is a bounded deficit and never the whole weight.
 if (_liftLoss > 0) then {
-    _vehicle addForce [[0, 0, -(_mass * 9.80665 * _liftLoss)], [0, 0, 0]];
+    _vehicle addForce [[0, 0, -(_mass * STANDARD_GRAVITY * _liftLoss)], [0, 0, 0]];
 };
 
 // ─── Added drag, opposing the velocity ──────────────────────────────────────

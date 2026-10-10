@@ -60,7 +60,7 @@ Args:
   0: wind speed at 10 m (NUMBER, m/s, default 0)
   1: air temperature (NUMBER, Celsius, default -5)
   2: roughness length z0 (NUMBER, metres, default 0.001)
-  3: air density (NUMBER, kg/m3, default 1.225)
+  3: air density (NUMBER, kg/m3, default AERO_ISA_SEA_LEVEL_DENSITY)
   4: suspended share of the saltation flux (NUMBER, 0..1, default 0.20)
 
 Returns a HashMap with the keys:
@@ -80,7 +80,7 @@ params [
     ["_wind", 0, [0]],
     ["_temp", -5, [0]],
     ["_z0", 0.001, [0]],
-    ["_rhoA", 1.225, [0]],
+    ["_rhoA", AERO_ISA_SEA_LEVEL_DENSITY, [0]],
     ["_suspShare", 0.20, [0]]
 ];
 

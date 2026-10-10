@@ -96,7 +96,7 @@ if (_velocity <= 0) exitWith { 0 };
 if (_rhoRel <= 0) exitWith { 0 };
 
 // Local speed of sound, matching fnc_calculateBallisticDrag.
-private _sound = 20.05 * sqrt (_airTempC + 273.15);
+private _sound = SOUND_SPEED_COEFF * sqrt (_airTempC + KELVIN_OFFSET);
 if (_sound <= 0) exitWith { 0 };
 
 private _mach = _velocity / _sound;
@@ -115,9 +115,9 @@ private _step = _densityRatio - 1;
 if (_step <= 0) exitWith { 0 };
 
 // Gladstone-Dale: d(n-1) = K * rho * (rho2/rho1 - 1), K = 2.26e-4 m^3/kg.
-private _rhoAmbient = 1.225 * _rhoRel;
+private _rhoAmbient = AERO_ISA_SEA_LEVEL_DENSITY * _rhoRel;
 private _k = 0.000226;
 private _contrast = _k * _rhoAmbient * _step;
 
 // Report in 1e-4 units so the caller reads a small number, not 1e-4.
-_contrast / 0.0001
+_contrast / EPSILON

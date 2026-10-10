@@ -24,6 +24,18 @@ ENERGY = (
 )
 DAMAGE = ROOT / "addons" / "atmos" / "functions" / "physics" / "fnc_hailDamage.sqf"
 
+CONSTANTS_HPP = ROOT / "addons" / "lib" / "constants.hpp"
+
+
+def _constant(name):
+    """The value of a shared #define in addons/lib/constants.hpp."""
+    text = CONSTANTS_HPP.read_text(encoding="utf-8")
+    m = re.search(rf"^#define\s+{re.escape(name)}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M)
+    if m is None:
+        raise AssertionError(f"{name} is not defined in constants.hpp")
+    return float(m.group(1))
+
+
 RHO_H = 917.0  # kg/m3, pure ice
 C_D = 0.6  # near-spherical hail > 1 cm, Dieling 2020
 RHO_A = 1.225  # kg/m3, sea level
@@ -71,9 +83,10 @@ class TestSqfConstantsMatchSources(unittest.TestCase):
         self.src = ENERGY.read_text(encoding="utf-8")
 
     def _number(self, name):
-        m = re.search(rf"private _{name} = ([0-9.]+);", self.src)
+        m = re.search(rf"private _{name} = ([0-9.]+|[A-Za-z_]\w*);", self.src)
         self.assertIsNotNone(m, f"constant _{name} is missing from the SQF")
-        return float(m.group(1))
+        token = m.group(1)
+        return float(token) if re.fullmatch(r"[0-9.]+", token) else _constant(token)
 
     def test_density_matches_ice(self):
         self.assertAlmostEqual(self._number("rhoH"), RHO_H, delta=1.0)

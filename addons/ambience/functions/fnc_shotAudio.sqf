@@ -19,7 +19,7 @@ The Fired wiring reads the muzzle velocity from the load resolver and the
 calibre from the parser, then calls this kernel.
 
 Model:
-  - Local speed of sound c = 20.05 * sqrt(T + 273.15) m/s, SOURCED (the dry-air
+  - Local speed of sound c = SOUND_SPEED_COEFF * sqrt(T + KELVIN_OFFSET) m/s, SOURCED (the dry-air
     relation; the same convention as fnc_calculateBallisticDrag and
     fnc_calculateMachCone, so the transonic band agrees).
   - Muzzle report.  The level rises with the muzzle velocity and falls with
@@ -63,7 +63,7 @@ if (_caliberMm <= 0) exitWith { [0, 1, false, 0, 0, 0] };
 if (_muzzleVelocity <= 0) exitWith { [0, 1, false, 0, 0, 0] };
 
 // Local speed of sound, SOURCED.
-private _speedOfSound = 20.05 * (sqrt (_airTempC + 273.15));
+private _speedOfSound = SOUND_SPEED_COEFF * (sqrt (_airTempC + KELVIN_OFFSET));
 if (_speedOfSound <= 0) exitWith { [0, 1, false, 0, 0, 0] };
 
 private _machMuzzle = _muzzleVelocity / _speedOfSound;

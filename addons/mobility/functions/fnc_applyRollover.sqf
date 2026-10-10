@@ -91,7 +91,7 @@ if (_dHeading < -180) then { _dHeading = _dHeading + 360; };
 private _omega = (_dHeading * 0.0174532925) / _dt;   // rad/s
 
 private _aLat = _speed * (abs _omega);               // m/s^2
-private _aLatG = _aLat / 9.80665;                    // in g
+private _aLatG = _aLat / STANDARD_GRAVITY;                    // in g
 
 // ─── Threshold ──────────────────────────────────────────────────────────
 // calculateSSF reads the vehicle's CONFIG Wheels class and, through

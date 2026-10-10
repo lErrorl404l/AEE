@@ -7,7 +7,7 @@ Step 1 - saturation vapour pressure (Buck 1996):
   e_s = 6.1121 * exp((18.678 - T/234.5) * T / (257.14 + T))
 Step 2 - actual vapour pressure: e = e_s * RH / 100
 Step 3 - virtual temperature: T_v = T_K / (1 - 0.37802 * e / P_hPa)
-Step 4 - density: rho = P_Pa / (R_d * T_v),  R_d = 287.05287 J/(kg K)
+Step 4 - density: rho = P_Pa / (R_d * T_v),  R_d = R_DRY_AIR J/(kg K)
 
 Pure: no missionNamespace, no GVAR or EGVAR, no engine command.  The driver
 FUNC(calculateAirDensity) reads the weather state, calls this kernel and stores
@@ -33,8 +33,8 @@ private _buckB = 18.678;
 private _buckC = 234.5;
 private _buckD = 257.14;
 private _virtualTempCoef = 0.37802;
-private _kelvinOffset = 273.15;
-private _specificGasDry = 287.05287;
+private _kelvinOffset = KELVIN_OFFSET;
+private _specificGasDry = R_DRY_AIR;
 private _paPerHpa = 100;
 
 private _e_s = _buckA * exp ((_buckB - _T_C / _buckC) * _T_C / (_buckD + _T_C));

@@ -15,7 +15,7 @@ Model, three terms on one base pitch:
   - Doppler.  A source moving toward the listener raises the received pitch
     and a receding source lowers it.  The shift is c / (c - v) with c the LOCAL
     speed of sound and v the radial velocity of the emitter toward the
-    listener (positive closing).  c = 20.05 * sqrt(T + 273.15) m/s, SOURCED
+    listener (positive closing).  c = SOUND_SPEED_COEFF * sqrt(T + KELVIN_OFFSET) m/s, SOURCED
     (the dry-air speed of sound).  The velocity is clamped below c.
   - Species.  A bird call pitch falls as the body grows, so an owl is lower
     than a songbird.  The factor is a per-guild constant, UNSOURCED, because
@@ -76,8 +76,8 @@ private _GUILD_PITCH = [
     ["sheep", 0.92]
 ];
 
-// Local speed of sound, SOURCED: the dry-air relation c = 20.05*sqrt(T_K).
-private _speedOfSound = 20.05 * (sqrt (_temperatureC + 273.15));
+// Local speed of sound, SOURCED: the dry-air relation c = SOUND_SPEED_COEFF*sqrt(T_K).
+private _speedOfSound = SOUND_SPEED_COEFF * (sqrt (_temperatureC + KELVIN_OFFSET));
 
 // Doppler: c / (c - v), with v clamped well below c so the ratio stays finite.
 private _limit = _speedOfSound * 0.9;

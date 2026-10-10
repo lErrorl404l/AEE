@@ -105,10 +105,10 @@ if (_filmMass > 0 && _tSurf < 0) then {
     // to the sky, minus any solar gain.  Radiation against the clear
     // night sky drives the pin.
     private _h = 5.7 + (3.8 * _windSpd);           // McAdams, W/m2K
-    private _tSkyClear = (0.0552 * ((_tAir + 273.15) ^ 1.5)) - 273.15;
-    private _tSkyK = (_tSkyClear + 273.15);
+    private _tSkyClear = (SWINBANK_CLEAR_SKY * ((_tAir + KELVIN_OFFSET) ^ 1.5)) - KELVIN_OFFSET;
+    private _tSkyK = (_tSkyClear + KELVIN_OFFSET);
     private _qConv = _h * (0 - _tAir);             // surface pinned at 0C
-    private _qRad = 0.97 * _sigma * ((273.15 ^ 4) - (_tSkyK ^ 4));
+    private _qRad = 0.97 * _sigma * ((KELVIN_OFFSET ^ 4) - (_tSkyK ^ 4));
     private _qNet = _qConv + _qRad;                // W/m2, negative = cooling
     if (_qNet < 0) then {
         private _dm = (-_qNet) * _dt / _lFus;      // kg/m2 released
@@ -129,8 +129,8 @@ if (_filmMass > 0 && _tSurf < 0) then {
 // 10-40% over-prediction of the bare Lewis relation (O'Neal 1982).
 if (_tSurf <= 0 && _ea > _esIceSurf) then {
     // Vapour drive: excess air vapour over the ice-saturated surface.
-    private _rhoVair = _ea / (461.5 * (_tAir + 273.15));        // kg/m3
-    private _rhoVIce = _esIceSurf / (461.5 * (_tSurf + 273.15));
+    private _rhoVair = _ea / (R_WATER_VAPOUR * (_tAir + KELVIN_OFFSET));        // kg/m3
+    private _rhoVIce = _esIceSurf / (R_WATER_VAPOUR * (_tSurf + KELVIN_OFFSET));
     // Mass-transfer coefficient from the heat-mass analogy (Incropera
     // ch. 6): h_m = h_c / (rho*cp*Le^(2/3)).  Air-water-vapour Le ~ 1.0,
     // so Le^(2/3) = 1.  The 16.5 K/kPa factor belongs to the Gagge human

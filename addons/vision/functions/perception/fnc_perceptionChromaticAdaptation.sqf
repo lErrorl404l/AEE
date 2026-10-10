@@ -33,7 +33,7 @@ Per-constant source register:
   display-RGB diagonal     UNSOURCED: the engine has no matrix.
   blend cap               0.25, UNSOURCED: a blend toward a solid colour washes
                           the image out.
-  channel floor           0.0001, UNSOURCED: guards a division by zero.
+  channel floor           EPSILON, UNSOURCED: guards a division by zero.
 
 Arguments:
   0: Array  - unit-luminance illuminant colour (fnc_perceptionIlluminant)
@@ -66,9 +66,9 @@ if (!((_illuminant select 1) isEqualType 0)) then { _ok = false; };
 if (!((_illuminant select 2) isEqualType 0)) then { _ok = false; };
 if (!_ok) exitWith { _neutral };
 
-private _ir = (_illuminant select 0) max 0.0001;
-private _ig = (_illuminant select 1) max 0.0001;
-private _ib = (_illuminant select 2) max 0.0001;
+private _ir = (_illuminant select 0) max EPSILON;
+private _ig = (_illuminant select 1) max EPSILON;
+private _ib = (_illuminant select 2) max EPSILON;
 
 // The complementary tint in the display domain (UNSOURCED approximation).
 private _compR = (((2 - _ir) max 0) min 1);

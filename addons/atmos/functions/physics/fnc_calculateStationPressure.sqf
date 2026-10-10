@@ -22,7 +22,7 @@ Returns:
 */
 
 params [
-    ["_P_sea", 1013.25, [0]],
+    ["_P_sea", ISA_SEA_LEVEL_PRESSURE_HPA, [0]],
     ["_elevation", 0, [0]],
     ["_lapseRate", 6.5, [0]]
 ];
