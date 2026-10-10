@@ -209,6 +209,7 @@ def main():
         "tools/tests/test_symbology.py",
         # The dynamic variation families (aee-dynamic-variation-system).
         "tools/tests/test_variation.py",
+        "tools/tests/test_variation_ui.py",
         "tools/tests/test_symbology_live.py",
         "tools/tests/test_symbology_catalogue.py",
         "tools/tests/test_marker_derivation.py",

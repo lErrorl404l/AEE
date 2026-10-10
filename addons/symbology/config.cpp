@@ -139,4 +139,8 @@ class CfgMarkers {
 #include "config_variations.hpp"
 };
 
+// The AEE dynamic variation selector display (aee_symbology).  ONE display,
+// opened by a CBA keybind; the option rows are built at run time from the model.
+#include "config_variation_ui.hpp"
+
 #include "CfgEventHandlers.hpp"
