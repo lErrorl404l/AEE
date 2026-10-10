@@ -49,13 +49,22 @@ if !(_viewDistanceTarget isEqualType 0) then { _viewDistanceTarget = 0; };
 private _sensorPFH = missionNamespace getVariable [QEGVAR(vision,sensorPFH), -1];
 if !(_sensorPFH isEqualType 0) then { _sensorPFH = -1; };
 
+private _greenFlashIntensity = missionNamespace getVariable [QGVAR(greenFlashIntensity), 0];
+if !(_greenFlashIntensity isEqualType 0) then { _greenFlashIntensity = 0; };
+private _greenFlashActive = missionNamespace getVariable [QGVAR(greenFlashActive), false];
+if !(_greenFlashActive isEqualType false) then { _greenFlashActive = false; };
+private _greenFlashDuration = missionNamespace getVariable [QGVAR(greenFlashDurationS), 0];
+if !(_greenFlashDuration isEqualType 0) then { _greenFlashDuration = 0; };
+
 private _logMsg = format [
-    "optics state | ready=%1 | eye=scene:%2 adapted:%3 aperture:%4 mesopic:%5 | pp=chroma:%6 blur:%7 cc:%8 | view=shadow:%9 target:%10m | sensor=%11",
+    "optics state | ready=%1 | eye=scene:%2 adapted:%3 aperture:%4 mesopic:%5 | pp=chroma:%6 blur:%7 cc:%8 | view=shadow:%9 target:%10m | sensor=%11 | greenFlash=%12/%13 %14s",
     _isReady,
     round (_eyeSceneLux * 100) / 100, round (_eyeAdaptedLux * 100) / 100,
     round (_eyeAperture * 100) / 100, round (_eyeMesopic * 100) / 100,
     _chromaActive, _blurActive, _ccActive,
-    _shadowScene, round (_viewDistanceTarget * 100) / 100, _sensorPFH
+    _shadowScene, round (_viewDistanceTarget * 100) / 100, _sensorPFH,
+    round (_greenFlashIntensity * 100) / 100, _greenFlashActive,
+    round (_greenFlashDuration * 100) / 100
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

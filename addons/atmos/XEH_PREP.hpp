@@ -21,6 +21,7 @@ PREPS(physics,calculateStationPressure);
 PREPS(physics,calculateRelativeHumidity);
 PREPS(physics,hailDamage);
 PREPS(physics,calculateHaze);
+PREPS(physics,calculateHalo);
 PREPS(physics,calculateRefraction);
 PREPS(wind,getLocalWind);
 PREP(dumpState);

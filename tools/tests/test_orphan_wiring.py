@@ -16,6 +16,7 @@ import unittest
 from pathlib import Path
 
 _REPO = Path(__file__).resolve().parents[2]
+_CORE = _REPO / "addons" / "core" / "functions"
 _MOB = _REPO / "addons" / "mobility" / "functions"
 _VEH = _REPO / "addons" / "vehicles" / "functions"
 _RADIO = _REPO / "addons" / "radio" / "functions"
@@ -38,13 +39,17 @@ def _sqf(root, name):
 
 
 class TestRadioRefractionWiring(unittest.TestCase):
-    """calculateRefraction -> fnc_calculateRadioPropagation."""
+    """calculateRefraction -> the environment tick; the radio budget reads it."""
 
     def setUp(self):
+        self.env = _sqf(_CORE, "fnc_updateEnvironment.sqf")
         self.src = _sqf(_RADIO, "fnc_calculateRadioPropagation.sqf")
 
-    def test_consumer_calls_and_reads_refraction(self):
-        self.assertIn("EFUNC(atmos,calculateRefraction)", self.src)
+    def test_tick_produces_the_state_and_radio_reads_it(self):
+        # The refractivity state has ONE producer per tick (the environment
+        # tick), so the radio budget, the green-flash kernel and any other
+        # consumer read the same fresh value.
+        self.assertIn("EFUNC(atmos,calculateRefraction)", self.env)
         self.assertIn("EGVAR(atmos,refractionK)", self.src)
         self.assertIn("_effectiveDistM = _distM / (sqrt _refractionK)", self.src)
         self.assertIn("20 * log _effectiveDistM", self.src)

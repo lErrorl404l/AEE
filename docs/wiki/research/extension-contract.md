@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (658)
+### Public functions (660)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -188,6 +188,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculateCloudCeiling`
 - `aee_atmos_fnc_calculateCloudDevelopment`
 - `aee_atmos_fnc_calculateHailEnergy`
+- `aee_atmos_fnc_calculateHalo`
 - `aee_atmos_fnc_calculateHaze`
 - `aee_atmos_fnc_calculateLightning`
 - `aee_atmos_fnc_calculateMicroburst`
@@ -485,6 +486,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_calculateAtmosphericSeeing`
 - `aee_optics_fnc_calculateAttenuation`
 - `aee_optics_fnc_calculateDewOnOptics`
+- `aee_optics_fnc_calculateGreenFlash`
 - `aee_optics_fnc_calculateMirageIntensity`
 - `aee_optics_fnc_calculatePrecipitationVisibility`
 - `aee_optics_fnc_calculateRainOnOptics`

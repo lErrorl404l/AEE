@@ -16,6 +16,9 @@ AEE_SETTING_SLIDER(mirageDensity,"AEE Optics","Intensity",0.01,0.5,0.08,2);
 
 AEE_SETTING_SLIDER(solarGlareIntensity,"AEE Optics","Intensity",0,2,1.0,0);
 
+// ── Atmospheric optical phenomena ──────────────────────────────────────────
+AEE_SETTING_CHECKBOX(greenFlashEnabled,"AEE Optics","Atmosphere",true);
+
 AEE_SETTING_SLIDER(glareBlurMax,"AEE Optics","Intensity",0,1,0.2,1);
 
 AEE_SETTING_SLIDER(heatShimmerIntensity,"AEE Optics","Intensity",0,0.2,0.04,2);

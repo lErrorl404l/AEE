@@ -221,11 +221,17 @@ BEGIN_COUNTER(optics);
 [_posASL] call EFUNC(core,calculateIlluminance);
 [] call EFUNC(thermal,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
+// Refraction / mirage state: one producer per tick.  The radio budget reads
+// the published k-factor and the green-flash kernel reads the refractivity
+// gradient, so it must run before both and regardless of the radio switch.
+[] call EFUNC(atmos,calculateRefraction);
 if (GVAR(opticsEnabled)) then {
     [] call EFUNC(optics,calculateMirageIntensity);
     [] call EFUNC(optics,calculateSmokePersistence);
     [] call EFUNC(optics,calculatePrecipitationVisibility);
     [] call EFUNC(optics,calculateSolarGlare);
+    [] call EFUNC(optics,calculateGreenFlash);
+    [] call EFUNC(atmos,calculateHalo);
     [] call EFUNC(thermal,calculateThermalCrossover);
     [] call EFUNC(optics,calculateDewOnOptics);
     [] call EFUNC(optics,calculateSnowBlindness);

@@ -41,6 +41,14 @@
             <Original>Glare Blur Maximum</Original>
             <English>Glare Blur Maximum</English>
         </Key>
+        <Key ID="STR_AEE_Optics_greenFlashEnabled_Description">
+            <Original>Model the green flash at the setting and rising sun from refraction dispersion</Original>
+            <English>Model the green flash at the setting and rising sun from refraction dispersion</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_greenFlashEnabled_Name">
+            <Original>Green Flash</Original>
+            <English>Green Flash</English>
+        </Key>
         <Key ID="STR_AEE_Optics_heatShimmerIntensity_Description">
             <Original>Chromatic aberration from engine heat shimmer</Original>
             <English>Chromatic aberration from engine heat shimmer</English>
