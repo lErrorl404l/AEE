@@ -54,6 +54,7 @@ lint: lint-parity
 	python3 tools/validation/validate_mass_calibration.py || rc=1; \
 	python3 tools/validation/gen_aircraft_data.py --check || rc=1; \
 	python3 tools/validation/gen_aircraft_coverage.py --check || rc=1; \
+	python3 tools/validation/gen_aircraft_systems.py --check || rc=1; \
 	python3 tools/validation/validate_aircraft_data.py || rc=1; \
 	python3 tools/validation/gen_thermal_optics.py --check || rc=1; \
 	python3 tools/validation/gen_engine_overrides.py --check || rc=1; \
