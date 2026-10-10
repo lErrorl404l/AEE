@@ -2,7 +2,8 @@
 
 This document maps every engine surface that carries a mass, the reach AEE has
 over each one, and the surfaces AEE cannot reach. Each reachable surface names
-a `file:line` citation. Each unreachable surface names the reason.
+a `file:line` citation. Each unreachable surface names the reason. The decision
+record is [ADR-037](../../adr/ADR-037-physx-mass-surface-and-the-grade-gate.md).
 
 ## Reachable surfaces
 

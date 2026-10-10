@@ -68,6 +68,10 @@ Temperature and thermal effects.
 
 Air density and ballistics.
 
+The magazine mass ships as the engine key `CfgMagazines >> mass`, the loaded
+mass from the held magazine corpus. The land vehicle mass and the gated
+physics surfaces are mapped in the mass-surface record (ADR-037).
+
 | Function | Purpose |
 |---|---|
 | `calculateAirDensity` | Calculate air density |
