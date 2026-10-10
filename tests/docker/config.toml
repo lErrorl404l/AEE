@@ -9,6 +9,13 @@ params = "-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3"
 port = 2302
 skip_install = true
 clear_keys = true
+# Creator DLC matrix entry (issue #79).  The arma3server wrapper loads a
+# Creator DLC only when [steam] branch = "creatordlc" and Steam credentials
+# are present (wrapper README, "Creator DLC").  Valid flags: CSLA, GM, vn,
+# WS, spe, rf, ef.
+# BLOCKER: the self-hosted CI runner holds a server install with no Creator
+# DLC and no Steam credentials, so the entry stays empty here.  On a runner
+# that provides the DLC, set cdlc = ["spe"] and branch = "creatordlc".
 cdlc = []
 
 [mods]
