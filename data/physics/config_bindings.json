@@ -56,6 +56,48 @@
     "grade": "documented"
   },
   {
+    "game_class": "C_Offroad_01_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 160,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "elite_uk_forces_land_rover_wolf",
+      "locator": "Elite UK Forces Wolf (XD 110) specifications: 'Maximum speed 160 kph on mettled road'",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_SUV_01_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 108,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "peugeot_p4",
+      "locator": "Infobox automobile, speed row, 108 to 118 km/h",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Van_01_transport_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 90,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "gaz_66",
+      "locator": "Specifications section, speed entry",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "claimed"
+  },
+  {
     "game_class": "I_APC_Wheeled_03_cannon_F",
     "config_class": "CfgVehicles",
     "key": "maxSpeed",
