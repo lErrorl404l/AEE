@@ -112,11 +112,21 @@ class TestSourcedConstants(unittest.TestCase):
         self.assertIn("0.7 * _Tw + 0.2 * _Tg + 0.1 * _T_C", text)
 
     def test_fire_spread_rothermel_1972(self):
+        # Rothermel (1972) INT-115 spread equations, pinned by their
+        # published coefficients (Gamma'_max, beta_op, A, eta_s, Q_ig, phi_s).
         text = Path(
-            "addons/persistence/functions/warnings/fnc_calculateFireSpreadRisk.sqf"
+            "addons/persistence/functions/warnings/fnc_rothermelSpread.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("Rothermel (1972)", text)
-        self.assertIn("0.03 * _fuelFactor", text)
+        for const in (
+            "495 + 0.0594",
+            "3.348",
+            "4.774",
+            "0.174",
+            "250 + 1116",
+            "5.275",
+        ):
+            self.assertIn(const, text, f"rothermel missing {const}")
 
     def test_cbrn_q10_scaling(self):
         text = Path(
