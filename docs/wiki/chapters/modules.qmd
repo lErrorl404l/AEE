@@ -318,7 +318,9 @@ Sea state and tides.
 | `calculateCompassDeviation` | Calculate compass deviation |
 | `calculateMagneticAnomaly` | Calculate magnetic field anomaly at a position |
 | `calculateSeaState` | Calculate the sea state |
+| `calculateShipMotion` | Calculate the ship pitch, roll and heave |
 | `calculateTidalPrediction` | Calculate the tidal prediction |
+| `shipMotionKernel` | Ship pitch, roll and heave kernel |
 | `updateEngineWaves` | Render the sea state as engine waves |
 
 ## physiology

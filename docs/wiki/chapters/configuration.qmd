@@ -553,6 +553,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_maritime_seaCouplingWeight` | SLIDER | `0.5` | yes | maritime | Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly |
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
+| `aee_maritime_shipDamping` | SLIDER | `0.1` | yes | maritime | Damping ratio used by the ship-motion response model; 0.10 is the typical ship value |
+| `aee_maritime_shipMetacentricHeight` | SLIDER | `1.5` | yes | maritime | Metacentric height (GM) used by the ship-motion model; the engine publishes no hydrostatics, so this is the operator input |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
 
 ## AEE Mobility → Hydrology

@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (661)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -436,8 +436,10 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_magnetism_fnc_calculateMagneticAnomaly`
 - `aee_maritime_fnc_calculateSeaState`
 - `aee_maritime_fnc_calculateSeaSurfaceTemperature`
+- `aee_maritime_fnc_calculateShipMotion`
 - `aee_maritime_fnc_calculateTidalPrediction`
 - `aee_maritime_fnc_dumpState`
+- `aee_maritime_fnc_shipMotionKernel`
 - `aee_maritime_fnc_updateEngineWaves`
 - `aee_material_fnc_calculateStefanCoefficient`
 - `aee_material_fnc_classifyBySurfaceType`

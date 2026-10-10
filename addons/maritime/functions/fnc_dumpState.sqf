@@ -29,13 +29,20 @@ private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffse
 if !(_tideOffset isEqualType 0) then { _tideOffset = 0; };
 private _tideDescription = missionNamespace getVariable [QEGVAR(core,currentTideDescription), ""];
 if !(_tideDescription isEqualType "") then { _tideDescription = ""; };
+private _shipRoll = missionNamespace getVariable [QGVAR(shipRoll_deg), 0];
+if !(_shipRoll isEqualType 0) then { _shipRoll = 0; };
+private _shipPitch = missionNamespace getVariable [QGVAR(shipPitch_deg), 0];
+if !(_shipPitch isEqualType 0) then { _shipPitch = 0; };
+private _shipHeave = missionNamespace getVariable [QGVAR(shipHeave_m), 0];
+if !(_shipHeave isEqualType 0) then { _shipHeave = 0; };
 
 private _logMsg = format [
-    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9",
+    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | ship=roll=%10 pitch=%11 heave=%12",
     _beaufort, round (_seaStateCurrent * 100) / 100, _seaStateDescription, round (_waveHeight * 100) / 100,
     round (_seaSurfaceTemperature * 100) / 100,
     round (_compassDeviation * 100) / 100, round (_compassAnomalyNT * 100) / 100,
-    round (_tideOffset * 100) / 100, _tideDescription
+    round (_tideOffset * 100) / 100, _tideDescription,
+    round (_shipRoll * 10) / 10, round (_shipPitch * 10) / 10, round (_shipHeave * 100) / 100
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

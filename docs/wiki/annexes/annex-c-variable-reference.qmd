@@ -389,6 +389,10 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_currentTideOffset_m` | maritime | Tide offset in metres |
 | `aee_maritime_seaSurfaceTemperature` | maritime | Sea-surface temperature (evaporation-duct feed) |
 | `aee_core_currentTideDescription` | maritime | Tide description |
+| `aee_maritime_shipRoll_deg` | maritime | Ship roll in degrees |
+| `aee_maritime_shipPitch_deg` | maritime | Ship pitch in degrees |
+| `aee_maritime_shipHeave_m` | maritime | Ship heave in metres |
+| `aee_maritime_shipMotionSeverity` | maritime | Ship motion severity, 0 to 1 |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
 | `aee_magnetism_compassDeviation` | magnetism | Compass deviation (magnetism namespace) |
 | `aee_magnetism_compassAnomalyNT` | magnetism | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
