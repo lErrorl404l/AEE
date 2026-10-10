@@ -21,6 +21,12 @@ AEE_SETTING_SLIDER(BlowingSnowWindThreshold,"AEE Environmental","Weather",5,20,8
 
 AEE_SETTING_SLIDER(DustDevilTempThreshold,"AEE Environmental","Weather",25,40,30,0);
 
+// ── Scalar Transport (issue #116) ──────────────────────────────────────────
+// One 2D advection grid shared by the smoke and dust fields. Off leaves the
+// existing point-scalar models as the only source of truth; no field is
+// computed and no grid is allocated.
+AEE_SETTING_CHECKBOX(scalarFieldsEnabled,"AEE Environmental","Transport",true);
+
 // ── Space Weather ──────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(FlareChance,"AEE Environmental","Fire",0,0.2,0.05,2);
 

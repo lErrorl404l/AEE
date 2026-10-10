@@ -439,6 +439,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_weather_SoundPropagationScale` | SLIDER | `1.0` | yes | weather | Global sound-range multiplier |
 
+## AEE Environmental → Transport
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weather_scalarFieldsEnabled` | CHECKBOX | `true` | yes | weather | Advect the smoke and dust fields on a shared 2D transport grid (issue #116). Off leaves the point-scalar models as the only source of truth. |
+
 ## AEE Environmental → Weather
 
 | Setting | Type | Default | Global | Addon | Purpose |

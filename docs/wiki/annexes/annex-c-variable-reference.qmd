@@ -377,6 +377,10 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_weather_terrainSignals` | environmental | Terrain facts the world lighting matcher reads: water fraction and mean elevation |
 | `aee_lighting_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
 | `aee_lighting_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
+| `aee_weather_scalarSummary` | environmental | Per-field transport summary HashMap: key -> `[max, sum, centroid, hotCellCount]` (#116) |
+| `aee_weather_scalarCflAdvection` | environmental | Advection (CFL) number C = U dt / dx of the transport grid (#116) |
+| `aee_weather_scalarDiffusionNumber` | environmental | Diffusion (von Neumann) number D = K dt / dx^2 of the transport grid (#116) |
+| `aee_weather_scalarStable` | environmental | Transport-grid stability flag (C <= 1 and D <= 0.5) (#116) |
 
 ### Maritime
 
