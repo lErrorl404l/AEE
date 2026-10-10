@@ -184,10 +184,10 @@ class TestSourceContracts(unittest.TestCase):
     def test_state_reads_the_five_published_hazards(self):
         text = STATE.read_text(encoding="utf-8")
         for ref in (
-            "EGVAR(strain,dehydrationRisk)",
-            "EGVAR(core,currentHypoxiaRisk)",
-            "EGVAR(core,windChillTemp)",
-            "EGVAR(core,currentWBGT)",
+            "QEGVAR(strain,dehydrationRisk)",
+            "QEGVAR(core,currentHypoxiaRisk)",
+            "QEGVAR(core,windChillTemp)",
+            "QEGVAR(core,currentWBGT)",
             "QGVAR(fatigueFactor)",
         ):
             self.assertIn(ref, text, f"fnc_survivalState does not read {ref}")
@@ -201,7 +201,7 @@ class TestSourceContracts(unittest.TestCase):
 
     def test_state_gates_on_physiology_enabled(self):
         text = STATE.read_text(encoding="utf-8")
-        self.assertIn("EGVAR(core,physiologyEnabled)", text)
+        self.assertIn("QEGVAR(core,physiologyEnabled)", text)
 
     def test_physiology_preps_the_four_functions(self):
         text = (ROOT / "addons" / "physiology" / "XEH_PREP.hpp").read_text(
@@ -233,7 +233,7 @@ class TestSourceContracts(unittest.TestCase):
 
     def test_need_bridge_reads_the_pressure_and_writes_the_need(self):
         text = NEED.read_text(encoding="utf-8")
-        self.assertIn("EGVAR(physiology,survivalPressure)", text)
+        self.assertIn("QEGVAR(physiology,survivalPressure)", text)
         self.assertIn("setVariable [QGVAR(need)", text)
 
     def test_ai_declares_the_physiology_dependency(self):
