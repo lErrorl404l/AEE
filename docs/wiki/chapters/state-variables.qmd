@@ -180,6 +180,7 @@ read them. The variables below are grouped by subsystem.
 | `aee_persistence_currentAvalancheWarning` | The current avalanche warning |
 | `aee_weather_currentFoliageDensity` | The current foliage density |
 | `aee_weather_currentSoundPropagation` | The current sound propagation |
+| `aee_weather_currentAmbientNoise` | The ambient noise floor, dB(A) |
 | `aee_lighting_ambientLux` | The ambient light level |
 | `aee_lighting_auroraVisibility` | The aurora visibility |
 | `aee_weather_biologicalAmbientIntensity` | The biological ambient intensity |
