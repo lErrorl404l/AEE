@@ -26,6 +26,11 @@ AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Radio",false);
 // ── Propagation ────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(txPower,"AEE Radio","Link",20,50,37,0);
 
+// ── Terrain masking (issue #32) ────────────────────────────────────────────
+// ITU-R P.526 terrain diffraction over the sampled profile.  Off switches
+// the per-tick terrain sampling off and keeps the foliage-only fallback.
+AEE_SETTING_CHECKBOX(terrainMaskingEnabled,"AEE Radio","Link",true);
+
 AEE_SETTING_SLIDER(propagationRange,"AEE Radio","Link",0.5,3,2.0,1);
 
 }; // _hasHost
