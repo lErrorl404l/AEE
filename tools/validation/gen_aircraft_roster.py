@@ -25,13 +25,18 @@ from pathlib import Path
 from typing import cast
 
 REPO = Path(__file__).parents[2]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools import schemas  # noqa: E402
+
 DEFAULT_DATA = REPO / "data" / "aircraft"
 
 INVENTORY_OUT = "class_inventory.json"
 ROSTER_OUT = "roster.json"
 ROSTER_REPORT = "ROSTER.md"
 
-INVENTORY_SCHEMA = "aee.aircraft.class_inventory/1"
+INVENTORY_SCHEMA = schemas.AIRCRAFT_CLASS_INVENTORY
 
 # The four engine class tokens of the air family.
 AIR_TOKENS = ("Air", "Plane", "Helicopter", "UAV")

@@ -61,12 +61,13 @@ _REPO = Path(__file__).parents[2]
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 ROOT = _REPO
 DEFAULT_DATA = ROOT / "data" / "vehicle"
 MODEL_NAME = "mass_model.json"
-MODEL_SCHEMA = "aee.vehicle.mass_model/1"
+MODEL_SCHEMA = schemas.VEHICLE_MASS_MODEL
 
 # The held weight fields, most specific first. The gate picks the first one
 # present. It never averages two fields.
@@ -78,7 +79,7 @@ MM3_PER_M3 = 1_000_000_000.0
 # and the evaluation use the same in-engine geometry paired with a sourced
 # mass. The catalogue loader is kept for a report-only cross-check.
 CALIBRATION_NAME = "mass_model_calibration.json"
-CALIBRATION_SCHEMA = "aee.vehicle.mass_model_calibration/1"
+CALIBRATION_SCHEMA = schemas.VEHICLE_MASS_MODEL_CALIBRATION
 # The census mass basis maps to the catalogue weight field the shared loader
 # reads. One row names one basis, so exactly one weight field is present.
 CENSUS_MASS_FIELDS = {
