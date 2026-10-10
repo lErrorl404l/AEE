@@ -10,8 +10,10 @@ Radar horizon - line-of-sight distance to a target.
 The 4.12 km factor is sqrt(2 k R_e) with the 4/3 effective earth radius
 (k = 4/3, R_e = 6371 km): sqrt(2 * 4/3 * 6371) = 4.12 km.
 
-Source: ITU-R P.834-2, "Effects of tropospheric refraction on radiowave
-propagation" (the 4/3-earth-radius horizon).  Verified vector:
+Source: the 4/3 earth radius is from ITU-R P.834 ("Effects of
+tropospheric refraction on radiowave propagation"); the horizon FORMULA
+D = sqrt(2 k R_e H) is the standard geometric line of sight, derived
+here from that k, not quoted from P.834.  Verified vector:
 H_a = 30, H_t = 10 -> 35.6 km.
 
 Pure: reads no engine state, writes none.

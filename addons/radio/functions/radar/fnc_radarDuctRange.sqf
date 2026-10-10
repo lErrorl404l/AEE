@@ -20,9 +20,15 @@ finding is issue #37; the M-profile test mirrors fnc_calculateRefraction's
 refractivity gradient.  Verified vector: delta = 15 m -> lambda_max =
 0.085 * 15^1.5 = 4.94 m -> f_min = 60.7 MHz, so X-band is trapped.
 
-UNSOURCED: the use of the SAME (4 pi)^3 constant for the R^2 case (the
-cylindrical-spreading constant is not held).  The exponent change itself
-is the issue's stated law.
+UNSOURCED (two items):
+  - The 0.085 cutoff constant.  A source check found Kerr's cutoff is
+    lambda_max = c * gamma^0.5 * delta^1.5 (NBS J. Res. 63D(1):29, 1959,
+    eq. 13), gradient-dependent, NOT the fixed 0.085 * delta^1.5 the
+    issue states.  The issue's constant is used as a lead.
+  - The use of the SAME (4 pi)^3 constant for the R^2 case (the
+    cylindrical-spreading constant is not held).
+
+The exponent change itself is the issue's stated law.
 
 Pure: reads no engine state, writes none.
 
