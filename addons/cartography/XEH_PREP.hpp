@@ -6,6 +6,7 @@
 // callers use FUNC.
 
 PREPS(hud,mapIconWorldSize);
+PREPS(hud,mapLegendDraw);
 PREPS(hud,mgrsGridLines);
 PREPS(hud,mgrsMapDraw);
 PREPS(hud,mgrsMapPrecision);

@@ -15,6 +15,7 @@ Run: python3 -m unittest tools.tests.test_map_qa
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 import unittest
@@ -54,6 +55,12 @@ LOC_SRC = LOC_HPP.read_text(encoding="utf-8")
 ADR030_SRC = ADR030.read_text(encoding="utf-8")
 TOPO_SURFACE_SRC = TOPO_SURFACE.read_text(encoding="utf-8")
 COL_SRC = COL_HPP.read_text(encoding="utf-8")
+LEGEND_KERNEL = CART / "functions" / "hud" / "fnc_mapLegendDraw.sqf"
+MGRS_DRAW_SRC = (CART / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
+    encoding="utf-8"
+)
+SYMBOLS_JSON = REPO / "data" / "symbology" / "terrain_symbols.json"
+TABLE_SRC = json.loads(SYMBOLS_JSON.read_text(encoding="utf-8"))
 
 AEE_MARKER_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers\\"
 
@@ -119,6 +126,17 @@ def _graph_pairs() -> dict[str, str]:
     pairs = dict(_GRAPH_ROW.findall(_graph_section()))
     pairs.pop("Class", None)
     return pairs
+
+
+def _colour_of(text: str, field: str) -> list[float] | None:
+    m = re.search(rf"{re.escape(field)}\[\]\s*=\s*\{{([^}}]*)\}}", text)
+    if not m:
+        return None
+    return [float(x) for x in m.group(1).split(",")]
+
+
+def _rgba_eq(a, b, tol=1e-6) -> bool:
+    return len(a) == len(b) and all(abs(x - y) <= tol for x, y in zip(a, b))
 
 
 class TestMapQaMatrix(unittest.TestCase):
@@ -300,6 +318,87 @@ class TestMapDisplayLevers(unittest.TestCase):
         ):
             with self.subTest(field=field):
                 self.assertIn(f'["{field}",', probe)
+
+
+class TestMapLegend(unittest.TestCase):
+    """The scripted topographic legend (todo 9).
+
+    The engine Legend class holds position only and draws its own body, so a
+    mod cannot author one (docs/engine/topo-map-surface.md:186-194).  AEE draws
+    the legend from SQF.  FUNC(mapLegendDraw) is pure and resolves every swatch
+    colour from the palette argument, which the caller builds from the same
+    table the map config is pinned to (data/symbology/terrain_symbols.json), so
+    the legend and the map share one source.
+    """
+
+    MAP_KEYS = (
+        ("relief_brown", "colorLevels"),
+        ("water_blue", "colorSea"),
+        ("vegetation_green", "colorForest"),
+        ("transport_red", "colorMainRoads"),
+        ("contour_index", "colorMainCountlines"),
+        ("contour_intermediate", "colorCountlines"),
+    )
+    GROUP_KEYS = (
+        ("group_relief", "relief_brown"),
+        ("group_vegetation", "vegetation_green"),
+        ("group_hydrography", "water_blue"),
+        ("group_populated", "populated_black"),
+        ("group_works", "works_black"),
+        ("group_transport", "transport_red"),
+        ("group_boundary", "boundary_black"),
+        ("group_control", "control_black"),
+        ("group_military", "military_green"),
+    )
+    ROW_COUNT = len(MAP_KEYS) + len(GROUP_KEYS)
+
+    def _shared_palette(self):
+        colours = TABLE_SRC["map_colours"]
+        palette = TABLE_SRC["palette"]
+        rows = [[key, colours[field]] for key, field in self.MAP_KEYS]
+        rows += [[key, palette[field]] for key, field in self.GROUP_KEYS]
+        return rows
+
+    def test_the_kernel_returns_one_row_per_legend_entry(self):
+        rows = run_sqf(LEGEND_KERNEL, [self._shared_palette()], {})
+        self.assertEqual(len(rows), self.ROW_COUNT)
+
+    def test_the_kernel_resolves_every_swatch_from_the_shared_table(self):
+        palette = self._shared_palette()
+        rows = run_sqf(LEGEND_KERNEL, [palette], {})
+        by_key = {name: colour for name, colour in palette}
+        for (key, _field), (swatch, _label) in zip(self.MAP_KEYS, rows):
+            self.assertTrue(_rgba_eq(swatch, by_key[key]), key)
+
+    def test_the_map_swatches_match_the_shipped_config(self):
+        # The map draws from the config; the legend reads the same table, so
+        # each map swatch equals the config value.  A swatch outside the table
+        # (a hardcoded literal) fails here.
+        rows = run_sqf(LEGEND_KERNEL, [self._shared_palette()], {})
+        for (_key, field), (swatch, _label) in zip(self.MAP_KEYS, rows):
+            self.assertTrue(_rgba_eq(swatch, _colour_of(COL_SRC, field)), field)
+
+    def test_a_swatch_not_in_the_shared_table_is_absent(self):
+        palette = [row for row in self._shared_palette() if row[0] != "water_blue"]
+        rows = run_sqf(LEGEND_KERNEL, [palette], {})
+        labels = [label for _swatch, label in rows]
+        self.assertNotIn("Water", labels)
+        self.assertEqual(len(rows), self.ROW_COUNT - 1)
+
+    def test_the_kernel_reads_the_table_not_a_literal(self):
+        # Mutation proof: a changed palette value changes the returned swatch,
+        # so the kernel derives the colour from the argument, not a literal.
+        palette = self._shared_palette()
+        palette[0][1] = [0.0, 0.0, 0.0, 1.0]
+        rows = run_sqf(LEGEND_KERNEL, [palette], {})
+        self.assertTrue(_rgba_eq(rows[0][0], [0.0, 0.0, 0.0, 1.0]))
+
+    def test_the_legend_kernel_is_registered(self):
+        self.assertIn("PREPS(hud,mapLegendDraw);", CART_PREP)
+
+    def test_the_legend_hook_draws_on_the_map_control(self):
+        # The Draw hook calls the kernel and draws on the map control.
+        self.assertIn("call FUNC(mapLegendDraw)", MGRS_DRAW_SRC)
 
 
 class TestSuiteRegistration(unittest.TestCase):
