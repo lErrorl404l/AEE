@@ -32,12 +32,15 @@ import sys
 import tempfile
 from pathlib import Path
 
-from symbology_categories import marker_category
+from symbology_categories import marker_category, VARIATION_HIDDEN_SCOPE
 from typing import Any
 
 ROOT = Path(__file__).parents[1]
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
-SOURCE_ROOT = Path("/tmp/opencode/nato-symbols")
+# The committed Commons SVG set, the same files the catalogue generator reads.
+# Deriving from the committed corpus (not a /tmp working copy) keeps the
+# composition reproducible in any checkout.
+SOURCE_ROOT = ROOT / "data" / "symbology" / "sources" / "svg"
 MARKERS_OUT = ROOT / "addons" / "symbology" / "data" / "markers"
 CONFIG_OUT = ROOT / "addons" / "symbology" / "config_crossproduct.hpp"
 ADDON_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers"
@@ -250,7 +253,7 @@ def build() -> int:
                 f'        texture = "{icon}";',
                 f"        side = {side};",
                 f'        markerClass = "{marker_category(affil, entry["dim"])}";',
-                "        scope = 2;",
+                f"        scope = {VARIATION_HIDDEN_SCOPE};",
                 "    };",
             ]
             made += 1
