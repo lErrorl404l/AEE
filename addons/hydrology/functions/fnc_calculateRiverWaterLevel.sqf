@@ -242,7 +242,32 @@ _baseflow params ["_newGwStore", "_baseflowOut_mm"];
 missionNamespace setVariable [QGVAR(groundwaterStore_mm), _newGwStore];
 private _baseflowM3s = ((_baseflowOut_mm / 1000) * _catchmentM2) / (_interval max 1);
 
-private _totalDischarge = _dischargeM3s + _baseflowM3s;
+// ─── Water table and springs (issue #26) ──────────────────────────────────
+// The store is a DEPTH of water, not a height. Its head is the water-table
+// depth, through the specific yield of the ground material (the water-table
+// fluctuation method, fnc_calculateWaterTableDepth). A spring is a point
+// where that head reaches an orifice; its Darcy discharge is a second slow
+// input to the river, alongside the baseflow. The baseflow itself is the
+// linear reservoir above, reused rather than replaced, so the mod has one
+// model of that physics.
+private _aquifer = [_surfaceClass] call FUNC(getAquiferProperties);
+_aquifer params ["_specificYield", "_kSat"];
+
+private _refDepth = missionNamespace getVariable [QGVAR(aquiferReferenceDepth_m), 3];
+if !(_refDepth isEqualType 0) then { _refDepth = 3; };
+private _waterTable = [_newGwStore, _specificYield, _refDepth] call FUNC(calculateWaterTableDepth);
+private _waterTableDepth_m = _waterTable select 0;
+
+private _orificeDepth = missionNamespace getVariable [QGVAR(springOrificeDepth_m), 1];
+if !(_orificeDepth isEqualType 0) then { _orificeDepth = 1; };
+private _springArea = missionNamespace getVariable [QGVAR(springConduitArea_m2), 1];
+if !(_springArea isEqualType 0) then { _springArea = 1; };
+private _springGradient = missionNamespace getVariable [QGVAR(springHydraulicGradient), 0.01];
+if !(_springGradient isEqualType 0) then { _springGradient = 0.01; };
+private _spring = [_waterTableDepth_m, _orificeDepth, _kSat, _springArea, _springGradient] call FUNC(calculateSpringFlow);
+private _springM3s = _spring select 0;
+
+private _totalDischarge = _dischargeM3s + _baseflowM3s + _springM3s;
 private _waterLevel = ((_totalDischarge * _manningN / (_riverWidthM * sqrt _bedSlope)) ^ 0.6) + (_tideOffset * _tideFactor);
 _waterLevel = _waterLevel max 0;
 
@@ -255,3 +280,6 @@ private _floodRisk = switch (true) do {
 
 missionNamespace setVariable [QEGVAR(core,currentWaterLevel), _waterLevel];
 missionNamespace setVariable [QEGVAR(core,currentFloodRisk), _floodRisk];
+// The water table feeds the soil bearing strength (issue #26): saturated
+// ground below a foundation loses bearing capacity.
+missionNamespace setVariable [QEGVAR(core,waterTableDepth_m), _waterTableDepth_m];

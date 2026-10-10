@@ -10,4 +10,7 @@ PREPS(hydrology,calculateBaseflow);
 PREPS(hydrology,calculateDepressionStorage);
 PREPS(hydrology,calculateGreenAmptInfiltration);
 PREPS(hydrology,calculateRunoffSCS);
+PREPS(hydrology,calculateSpringFlow);
+PREPS(hydrology,calculateWaterTableDepth);
+PREPS(hydrology,getAquiferProperties);
 PREPS(hydrology,routeRunoffD8);
