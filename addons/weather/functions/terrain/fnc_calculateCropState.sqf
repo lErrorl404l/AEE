@@ -46,4 +46,10 @@ private _cropDensity = switch (_biome) do {
     default     { 0.3 };
 };
 
+// ─── Volcanic ash ─────────────────────────────────────────────────────────
+// Ash burial smothers crops (issue #25).  A few centimetres buries them.
+private _ashDepth_mm = missionNamespace getVariable [QEGVAR(atmos,volcanicAshDepth_mm), 0];
+if !(_ashDepth_mm isEqualType 0) then { _ashDepth_mm = 0; };
+_cropDensity = _cropDensity * (1 - ((_ashDepth_mm / 50) min 1));
+
 missionNamespace setVariable [QEGVAR(core,currentCropDensity), _cropDensity];

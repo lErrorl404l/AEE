@@ -365,6 +365,7 @@ if (GVAR(fxEnabled)) then {
 [] call EFUNC(weather,calculateCropState);
 [] call EFUNC(atmos,calculateCloudDevelopment);
 [] call EFUNC(atmos,calculatePressureTrend);
+[_posASL] call EFUNC(atmos,updateVolcanic);
 [] call EFUNC(weather,calculateLunarIllumination);
 
 // ─── Night classification & star visibility (after lunar phase computed) ──
