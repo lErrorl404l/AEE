@@ -9,7 +9,7 @@ Checks:
      A corrupt category fails the run.
   3. Coverage.  Every shipped Arma 3 marker family prefix and the exact
      marker names are present, and every enumerated marker suffix is present.
-  4. Freshness.  The generated addons/optics/data/symbology_tables.sqf equals
+  4. Freshness.  The generated addons/symbology/data/symbology_tables.sqf equals
      a fresh render, so a hand-edited table fails the run.
   5. Kernel agreement.  The pure kernel aee_optics_fnc_symbolCategory maps the
      shipped marker types to the expected categories.
@@ -26,9 +26,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "symbology_tables.json"
-TABLES_SQF = ROOT / "addons" / "optics" / "data" / "symbology_tables.sqf"
+TABLES_SQF = ROOT / "addons" / "symbology" / "data" / "symbology_tables.sqf"
 KERNEL = (
-    ROOT / "addons" / "optics" / "functions" / "symbology" / "fnc_symbolCategory.sqf"
+    ROOT / "addons" / "symbology" / "functions" / "symbology" / "fnc_symbolCategory.sqf"
 )
 
 sys.path.insert(0, str(ROOT / "tools" / "tests"))
@@ -168,11 +168,11 @@ def check_coverage(source: dict, errors: list[str]) -> None:
 
 def check_freshness(source: dict, errors: list[str]) -> None:
     if not TABLES_SQF.is_file():
-        errors.append("addons/optics/data/symbology_tables.sqf is missing")
+        errors.append("addons/symbology/data/symbology_tables.sqf is missing")
         return
     if TABLES_SQF.read_text(encoding="utf-8") != render_tables(source):
         errors.append(
-            "addons/optics/data/symbology_tables.sqf is stale; run the generator"
+            "addons/symbology/data/symbology_tables.sqf is stale; run the generator"
         )
 
 
@@ -183,7 +183,7 @@ def check_kernel(source: dict, errors: list[str]) -> None:
     tables = run_sqf(TABLES_SQF, [])
     for marker_type, expected in KERNEL_EXPECTED.items():
         got = run_sqf(
-            KERNEL, [marker_type, "marker"], {"aee_optics_symbologyTables": tables}
+            KERNEL, [marker_type, "marker"], {"aee_symbology_symbologyTables": tables}
         )
         if got != expected:
             errors.append(

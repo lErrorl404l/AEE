@@ -38,7 +38,7 @@ if ((count _position) < 2) then {
 };
 
 // Guarded reads: a nil read that falls through to a default is the #154 bug.
-private _biome = [QEGVAR(environmental,localBiome), "", 2] call EFUNC(core,readState);
+private _biome = [QEGVAR(weather,localBiome), "", 2] call EFUNC(lib,readState);
 
 private _forceBiome = missionNamespace getVariable ["aee_wildlife_forceBiome", ""];
 if !(_forceBiome isEqualType "") then { _forceBiome = ""; };
@@ -50,7 +50,7 @@ if (_forceNight isEqualType false) then { _isNight = _forceNight; };
 
 private _nearWater = 0;
 if (_hasUnit) then {
-    private _coast = [_position, 200] call EFUNC(environmental,getCoastDistance);
+    private _coast = [_position, 200] call EFUNC(weather,getCoastDistance);
     if (_coast isEqualType 0) then {
         _nearWater = 1 - ((_coast / 200) min 1);
     };
@@ -65,8 +65,8 @@ private _rainAmount = ((_rain max 0) min 1);
 
 // The published soil and surface facts.  Wet ground damps the bed, so a damp
 // soundscape is muffled.  readState is the guarded read from the core.
-private _soil = [QEGVAR(core,soilMoisture), 0.2, 1] call EFUNC(core,readState);
-private _wetness = [QEGVAR(core,surfaceWetness), 0, 1] call EFUNC(core,readState);
+private _soil = [QEGVAR(core,soilMoisture), 0.2, 1] call EFUNC(lib,readState);
+private _wetness = [QEGVAR(core,surfaceWetness), 0, 1] call EFUNC(lib,readState);
 
 private _field = missionNamespace getVariable [QEGVAR(ai,disturbance), []];
 if !(_field isEqualType []) then { _field = []; };
@@ -118,11 +118,11 @@ if (_hasUnit) then {
         private _walk = speed _unit;
         if (_walk > 1.5) then {
             private _walkStrength = ((_walk / 8) max 0.01) min 1;
-            private _footDb = (["footstep"] call FUNC(acousticSourceDb)) + (20 * (log _walkStrength));
+            private _footDb = (["footstep"] call EFUNC(ambience,acousticSourceDb)) + (20 * (log _walkStrength));
             _soundEvents = [
                 _soundEvents, getPosASL _unit, _footDb, "footstep", _now,
                 WILDLIFE_ACOUSTIC_EVENT_CAP, WILDLIFE_ACOUSTIC_EVENT_HORIZON
-            ] call FUNC(acousticPublish);
+            ] call EFUNC(ambience,acousticPublish);
         };
 
         private _engines = 0;
@@ -138,9 +138,9 @@ if (_hasUnit) then {
                 if ((!isNull _vehicle) && (isEngineOn _vehicle)) then {
                     _soundEvents = [
                         _soundEvents, getPosASL _vehicle,
-                        ([_kind] call FUNC(acousticSourceDb)), _kind, _now,
+                        ([_kind] call EFUNC(ambience,acousticSourceDb)), _kind, _now,
                         WILDLIFE_ACOUSTIC_EVENT_CAP, WILDLIFE_ACOUSTIC_EVENT_HORIZON
-                    ] call FUNC(acousticPublish);
+                    ] call EFUNC(ambience,acousticPublish);
                     _engines = _engines + 1;
                 };
             };
@@ -160,27 +160,27 @@ if (_hasUnit) then {
 // spreads, absorbs and occludes them.  The occluder list is bounded by
 // fnc_acousticOccluders, and the propagation index is AEE's published
 // currentSoundPropagation, so this reuses the existing weather absorption.
-private _propIndex = missionNamespace getVariable [QEGVAR(environmental,currentSoundPropagation), 1];
+private _propIndex = missionNamespace getVariable [QEGVAR(weather,currentSoundPropagation), 1];
 if !(_propIndex isEqualType 0) then { _propIndex = 1; };
 private _listenerAsl = _position;
 if (_hasUnit) then { _listenerAsl = getPosASL _unit; };
-private _occluders = [_position] call FUNC(acousticOccluders);
+private _occluders = [_position] call EFUNC(ambience,acousticOccluders);
 private _soundEvents = missionNamespace getVariable [QGVAR(soundEvents), []];
 if !(_soundEvents isEqualType []) then { _soundEvents = []; };
 private _acoustic = [
     _soundEvents, _listenerAsl, _now, WILDLIFE_ACOUSTIC_EVENT_HORIZON,
     _propIndex, _occluders
-] call FUNC(acousticSample);
+] call EFUNC(ambience,acousticSample);
 private _acousticLevel = _acoustic select 0;
 
-// The vegetation signal from aee_environmental_terrainSignals.  The shape is
+// The vegetation signal from aee_weather_terrainSignals.  The shape is
 // [surfaceVotes, vegVotes, structureVotes, waterFrac, meanElevM, maxElevM].
 // vegVotes is a HashMap biome code -> indicator vote weight, published by the
 // terrain scan.  The strongest single vote is the vegetation score, clamped
 // to 0..1.  Max rather than sum: one tree votes for several Koppen codes, so
 // a sum double-counts one species.  A map with no classified tree or bush
 // yields an empty map and therefore an open-ground score of 0.
-private _signals = [QEGVAR(environmental,terrainSignals), [], 3] call EFUNC(core,readState);
+private _signals = [QEGVAR(weather,terrainSignals), [], 3] call EFUNC(lib,readState);
 private _vegScore = [_signals] call FUNC(vegScore);
 
 // The settlement overlay.  Element 2 of the terrain signals carries the
@@ -210,14 +210,14 @@ if !(_manifest isEqualType []) then { _manifest = []; };
 private _bed = [
     _biome, _isNight, _nearWater, _wind, _disturbance, _manifest, _rainAmount,
     _vegScore, _settlement, _coastal
-] call FUNC(soundBedForContext);
+] call EFUNC(ambience,soundBedForContext);
 private _bedKey = _bed select 0;
 private _bedGain = _bed select 1;
 
-private _decay = missionNamespace getVariable [QGVAR(silenceDecay), 0.05];
+private _decay = missionNamespace getVariable [QEGVAR(ambience,silenceDecay), 0.05];
 if !(_decay isEqualType 0) then { _decay = 0.05; };
 
-private _silence = [_disturbance, _decay] call FUNC(disturbanceSilence);
+private _silence = [_disturbance, _decay] call EFUNC(ambience,disturbanceSilence);
 private _forceSilence = missionNamespace getVariable ["aee_wildlife_forceSilence", -1];
 if !(_forceSilence isEqualType 0) then { _forceSilence = -1; };
 if (_forceSilence >= 0) then { _silence = ((_forceSilence max 0) min 1); };
@@ -262,7 +262,7 @@ private _enabled = missionNamespace getVariable [QGVAR(enabled), true];
 if !(_enabled isEqualType true) then { _enabled = true; };
 if (!_enabled) exitWith { _state };
 
-private _ambient = missionNamespace getVariable [QGVAR(ambientEnabled), true];
+private _ambient = missionNamespace getVariable [QEGVAR(ambience,ambientEnabled), true];
 if !(_ambient isEqualType true) then { _ambient = true; };
 
 // The fauna switches are read here so the slice-two runtime and the debug line
@@ -278,14 +278,14 @@ if (_ambient) then {
     private _seed = round (_now * 100);
     // The call pitch carries the seeded jitter, the temperature (cricket
     // stridulation) and, for a moving source, the Doppler shift.
-    private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+    private _callTemp = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
     if (_gain > 0.01) then {
         // A deterministic weighted draw over every row with the bed key, so
         // a multi-file context varies instead of playing only its first row.
         private _source = [_manifest, _bedKey, _seed] call FUNC(pickBedSource);
         if (_source != "") then {
-            private _bedPitch = [_seed, "", _callTemp, 0] call FUNC(callPitch);
-            [_source, _position, _gain, _bedPitch] call FUNC(playAmbientBed);
+            private _bedPitch = [_seed, "", _callTemp, 0] call EFUNC(ambience,callPitch);
+            [_source, _position, _gain, _bedPitch] call EFUNC(ambience,playAmbientBed);
         };
     };
 
@@ -311,8 +311,8 @@ if (_ambient) then {
         if !(_corpus isEqualType []) then { _corpus = []; };
         private _assetMap = missionNamespace getVariable [QGVAR(assetMap), []];
         if !(_assetMap isEqualType []) then { _assetMap = []; };
-        private _sunElev = [QEGVAR(core,currentSunElevation), 45, 1] call EFUNC(core,readState);
-        private _temperature = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(core,readState);
+        private _sunElev = [QEGVAR(core,currentSunElevation), 45, 1] call EFUNC(lib,readState);
+        private _temperature = [QEGVAR(core,currentTemperature), 15, 1] call EFUNC(lib,readState);
         private _today = date;
         private _month = 1;
         private _hour = 12;
@@ -342,7 +342,7 @@ if (_ambient) then {
         private _emissions = [
             _hour, _sunElev, _month, _temperature, _wind, _rainAmount, _gain,
             _mix, _assetMap, _platforms, _seed
-        ] call FUNC(soundTick);
+        ] call EFUNC(ambience,soundTick);
         private _fresh = [_hourKey, _emissions, 0];
         missionNamespace setVariable [QGVAR(soundSchedule), _fresh];
         _fresh
@@ -358,8 +358,8 @@ if (_ambient) then {
             private _emission = _emissions select ((_cursor + _k) mod _total);
             // The species call carries the seeded jitter and the temperature
             // term; the ambient layer has no radial velocity, so no Doppler.
-            private _emissionPitch = [(_seed + _k), (_emission select 0), _callTemp, 0] call FUNC(callPitch);
-            [_emission select 1, _position, _emission select 2, WILDLIFE_SOUND_MAX_DISTANCE, objNull, _emissionPitch] call FUNC(playOneShot);
+            private _emissionPitch = [(_seed + _k), (_emission select 0), _callTemp, 0] call EFUNC(ambience,callPitch);
+            [_emission select 1, _position, _emission select 2, WILDLIFE_SOUND_MAX_DISTANCE, objNull, _emissionPitch] call EFUNC(ambience,playOneShot);
         };
         _cursor = (_cursor + WILDLIFE_SOUND_INSTANCE_CAP) mod _total;
     };
@@ -399,7 +399,7 @@ if (_animals) then {
     // one-shots against the animal object; this keeps a looping source
     // attached where a species has one, and releases it on despawn or when
     // the class changes, so an emitter cannot leak.
-    [_position] call FUNC(emitterSync);
+    [_position] call EFUNC(ambience,emitterSync);
 };
 
 // The tick duration is recorded only inside the trace gate, so the

@@ -42,7 +42,7 @@ if str(REPO) not in sys.path:
 
 from tools.validation import gen_thermal_optics as gen  # noqa: E402
 
-ENV_CONFIG = REPO / "addons" / "environmental" / "config.cpp"
+ENV_CONFIG = REPO / "addons" / "lighting" / "config.cpp"
 GENERATED = REPO / "addons" / "thermal" / "generated" / "ThermalOptics.hpp"
 
 ENV_SRC = ENV_CONFIG.read_text(encoding="utf-8")

@@ -20,7 +20,7 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-CLOTHING = REPO / "addons/physiology/functions/clothing"
+CLOTHING = REPO / "addons/clothing/functions/clothing"
 SOURCES = REPO / "data" / "equipment" / "sources"
 FNC_ITEM = (CLOTHING / "fnc_getItemMass.sqf").read_text(encoding="utf-8")
 FNC_WALK = (CLOTHING / "fnc_getInventoryLoad.sqf").read_text(encoding="utf-8")
@@ -32,7 +32,7 @@ SLOT_FILES = [
     "fnc_getPackProperties.sqf",
     "fnc_getGoggleProperties.sqf",
 ]
-XEH = (REPO / "addons/physiology/XEH_PREP.hpp").read_text(encoding="utf-8")
+XEH = (REPO / "addons/clothing/XEH_PREP.hpp").read_text(encoding="utf-8")
 
 CATEGORY_ALIASES = {"binoculars": "binocular", "binocs": "binocular"}
 MIN_FAMILY = 3

@@ -21,7 +21,7 @@ class CfgPatches {
         // The addon init order is the requiredAddons order (the CfgPatches
         // class name, not the PBO name). AEE loads first, so my_mod loads
         // after AEE and merges over it.
-        requiredAddons[] = {"aee_core", "aee_main"};
+        requiredAddons[] = {"aee_core", "aee_lib"};
         skipWhenMissingDependencies = 1;
     };
 };
@@ -50,7 +50,7 @@ missionNamespace setVariable ["aee_physiology_massResolvers", _resolvers];
 AEE reads the registry and never names the extending mod:
 
 ```sqf
-// addons/physiology/functions/clothing/fnc_getInventoryLoad.sqf
+// addons/clothing/functions/clothing/fnc_getInventoryLoad.sqf
 private _resolvers = missionNamespace getVariable [QGVAR(massResolvers), []];
 ```
 
@@ -84,9 +84,14 @@ source by `tools/gen_extension_contract.py --check`.
 |---|---|
 | `aee_actions` | `actions` |
 | `aee_ai` | `ai` |
+| `aee_altitude` | `altitude` |
+| `aee_ambience` | `ambience` |
 | `aee_armour` | `armour` |
 | `aee_atmos` | `atmos` |
 | `aee_ballistics` | `ballistics` |
+| `aee_blast` | `blast` |
+| `aee_cartography` | `cartography` |
+| `aee_clothing` | `clothing` |
 | `aee_compat_ace3` | `compat_ace3` |
 | `aee_compat_acm` | `compat_acm` |
 | `aee_compat_acre2` | `compat_acre2` |
@@ -94,20 +99,36 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_compat_realweather` | `compat_realweather` |
 | `aee_compat_tfar` | `compat_tfar` |
 | `aee_core` | `core` |
-| `aee_environmental` | `environmental` |
-| `aee_fx` | `fx` |
-| `aee_main` | `main` |
+| `aee_diagnostics` | `diagnostics` |
+| `aee_dive` | `dive` |
+| `aee_eye` | `eye` |
+| `aee_flight` | `flight` |
+| `aee_hud` | `hud` |
+| `aee_hydrology` | `hydrology` |
+| `aee_lib` | `lib` |
+| `aee_lighting` | `lighting` |
+| `aee_ltm` | `ltm` |
+| `aee_magnetism` | `magnetism` |
 | `aee_maritime` | `maritime` |
 | `aee_material` | `material` |
 | `aee_mobility` | `mobility` |
 | `aee_nightvision` | `nightvision` |
 | `aee_optics` | `optics` |
+| `aee_particles` | `particles` |
+| `aee_persistence` | `persistence` |
 | `aee_physiology` | `physiology` |
 | `aee_radio` | `radio` |
+| `aee_strain` | `strain` |
+| `aee_symbology` | `symbology` |
 | `aee_thermal` | `thermal` |
+| `aee_thermal_display` | `thermal_display` |
+| `aee_vehicles` | `vehicles` |
+| `aee_vision` | `vision` |
+| `aee_weather` | `weather` |
+| `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (646)
+### Public functions (638)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -131,6 +152,34 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ai_fnc_reportStimulus`
 - `aee_ai_fnc_stimulusDecay`
 - `aee_ai_fnc_teardownAI`
+- `aee_altitude_fnc_calculateAltitudeAcclimatization`
+- `aee_altitude_fnc_calculateAltitudeDCS`
+- `aee_altitude_fnc_calculateBarometricPressure`
+- `aee_altitude_fnc_calculateGLOC`
+- `aee_altitude_fnc_calculateHypoxia`
+- `aee_altitude_fnc_calculateOxygenDelivery`
+- `aee_ambience_fnc_acousticLevel`
+- `aee_ambience_fnc_acousticOccluders`
+- `aee_ambience_fnc_acousticPublish`
+- `aee_ambience_fnc_acousticSample`
+- `aee_ambience_fnc_acousticSourceDb`
+- `aee_ambience_fnc_callEmit`
+- `aee_ambience_fnc_callPitch`
+- `aee_ambience_fnc_callPublish`
+- `aee_ambience_fnc_callReceive`
+- `aee_ambience_fnc_callSample`
+- `aee_ambience_fnc_disturbanceSilence`
+- `aee_ambience_fnc_emitterClass`
+- `aee_ambience_fnc_emitterPlan`
+- `aee_ambience_fnc_emitterRelease`
+- `aee_ambience_fnc_emitterSync`
+- `aee_ambience_fnc_getCallPattern`
+- `aee_ambience_fnc_playAmbientBed`
+- `aee_ambience_fnc_playOneShot`
+- `aee_ambience_fnc_shotAudio`
+- `aee_ambience_fnc_soundBedForContext`
+- `aee_ambience_fnc_soundTick`
+- `aee_ambience_fnc_speciesSound`
 - `aee_armour_fnc_deriveProtection`
 - `aee_armour_fnc_dumpState`
 - `aee_armour_fnc_getVehicleArmour`
@@ -190,6 +239,38 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ballistics_fnc_resolveShot`
 - `aee_ballistics_fnc_selectBand`
 - `aee_ballistics_fnc_startStateDump`
+- `aee_blast_fnc_calculateBlastInjury`
+- `aee_blast_fnc_calculateBlastOverpressure`
+- `aee_cartography_fnc_fontFamilyUsable`
+- `aee_cartography_fnc_formatGridDisplay`
+- `aee_cartography_fnc_gpsBuild`
+- `aee_cartography_fnc_gpsUpdate`
+- `aee_cartography_fnc_hudFormatGrid`
+- `aee_cartography_fnc_mgrsCursorText`
+- `aee_cartography_fnc_mgrsEffectivePrecision`
+- `aee_cartography_fnc_mgrsFontFamily`
+- `aee_cartography_fnc_mgrsGridLines`
+- `aee_cartography_fnc_mgrsMapDraw`
+- `aee_cartography_fnc_mgrsMapPrecision`
+- `aee_cartography_fnc_mgrsMarkerText`
+- `aee_clothing_fnc_getCamouflageProperties`
+- `aee_clothing_fnc_getEquipmentBands`
+- `aee_clothing_fnc_getEquipmentProperties`
+- `aee_clothing_fnc_getGloveProperties`
+- `aee_clothing_fnc_getGoggleProperties`
+- `aee_clothing_fnc_getHelmetProperties`
+- `aee_clothing_fnc_getInventoryLoad`
+- `aee_clothing_fnc_getItemMass`
+- `aee_clothing_fnc_getMagazineLoad`
+- `aee_clothing_fnc_getMagazineMass`
+- `aee_clothing_fnc_getNirPerSelection`
+- `aee_clothing_fnc_getNvgContrast`
+- `aee_clothing_fnc_getPackProperties`
+- `aee_clothing_fnc_getUniformProperties`
+- `aee_clothing_fnc_getVestProperties`
+- `aee_clothing_fnc_getWeaponLoad`
+- `aee_clothing_fnc_getWeaponMass`
+- `aee_clothing_fnc_selectBand`
 - `aee_compat_ace3_fnc_dumpState`
 - `aee_compat_ace3_fnc_getAceItemMass`
 - `aee_compat_ace3_fnc_integrateKestrel`
@@ -202,153 +283,139 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_compat_realweather_fnc_dumpState`
 - `aee_compat_realweather_fnc_integrateRealWeather`
 - `aee_compat_tfar_fnc_integrateTFAR`
-- `aee_core_fnc_attachObjectEngineHandler`
-- `aee_core_fnc_buildGeoAnchor`
 - `aee_core_fnc_calculateIlluminance`
 - `aee_core_fnc_calculateSeededWeatherProgression`
-- `aee_core_fnc_consistencyFailureLine`
-- `aee_core_fnc_consistencyLoadTable`
-- `aee_core_fnc_consistencyLog`
 - `aee_core_fnc_coreBodyTemp`
-- `aee_core_fnc_createPPEffect`
-- `aee_core_fnc_datalinkState`
-- `aee_core_fnc_destroyPPEffect`
-- `aee_core_fnc_deterministicRandom`
-- `aee_core_fnc_diagnostic`
-- `aee_core_fnc_dumpPerformanceCounters`
-- `aee_core_fnc_dumpState`
-- `aee_core_fnc_evaluateConsistency`
-- `aee_core_fnc_evaluateGeoConsistency`
-- `aee_core_fnc_formatMgrs`
 - `aee_core_fnc_getEyeState`
-- `aee_core_fnc_getGeoAnchor`
 - `aee_core_fnc_getSmoothedWeather`
-- `aee_core_fnc_getWorldLocation`
-- `aee_core_fnc_gnssErrorEllipse`
-- `aee_core_fnc_gnssFixState`
 - `aee_core_fnc_handleCollisionDamage`
 - `aee_core_fnc_init`
-- `aee_core_fnc_installObjectEngineHandler`
-- `aee_core_fnc_installPlayerEngineHandler`
-- `aee_core_fnc_latLonToUtm`
-- `aee_core_fnc_mgrsToWorld`
 - `aee_core_fnc_moduleInit`
 - `aee_core_fnc_moduleStormInit`
-- `aee_core_fnc_parseMgrs`
-- `aee_core_fnc_readState`
-- `aee_core_fnc_reportModuleHealth`
-- `aee_core_fnc_runConsistencyCheck`
-- `aee_core_fnc_runGeoConsistency`
 - `aee_core_fnc_updateEnvironment`
-- `aee_core_fnc_utmToLatLon`
-- `aee_core_fnc_utmToWorld`
-- `aee_core_fnc_worldToMgrs`
-- `aee_environmental_fnc_applyWorldLighting`
-- `aee_environmental_fnc_calculateAvalancheRisk`
-- `aee_environmental_fnc_calculateBiologicalAmbient`
-- `aee_environmental_fnc_calculateBlowingSnowVisibility`
-- `aee_environmental_fnc_calculateCBRNPersistence`
-- `aee_environmental_fnc_calculateConcealment`
-- `aee_environmental_fnc_calculateCropState`
-- `aee_environmental_fnc_calculateDustSuppression`
-- `aee_environmental_fnc_calculateDustVisibility`
-- `aee_environmental_fnc_calculateFireSpreadRisk`
-- `aee_environmental_fnc_calculateFlashFloodRisk`
-- `aee_environmental_fnc_calculateFogBaseAltitude`
-- `aee_environmental_fnc_calculateFreezeThawCycling`
-- `aee_environmental_fnc_calculateFrostOnWindscreens`
-- `aee_environmental_fnc_calculateIceLoad`
-- `aee_environmental_fnc_calculateLimitingMagnitude`
-- `aee_environmental_fnc_calculateLunarIllumination`
-- `aee_environmental_fnc_calculateMicroclimate`
-- `aee_environmental_fnc_calculateQNH`
-- `aee_environmental_fnc_calculateScentDispersion`
-- `aee_environmental_fnc_calculateSevereWeather`
-- `aee_environmental_fnc_calculateSnowAccumulation`
-- `aee_environmental_fnc_calculateSolarRadiation`
-- `aee_environmental_fnc_calculateSpaceWeather`
-- `aee_environmental_fnc_calculateSurfaceWetness`
-- `aee_environmental_fnc_calculateUrbanHeatIsland`
-- `aee_environmental_fnc_calculateWaterInfluence`
-- `aee_environmental_fnc_classifyBiome`
-- `aee_environmental_fnc_classifyNight`
-- `aee_environmental_fnc_detectGroundFrost`
-- `aee_environmental_fnc_drawFaintStars`
-- `aee_environmental_fnc_drawMilkyWay`
-- `aee_environmental_fnc_galacticToEquatorial`
-- `aee_environmental_fnc_galacticToHorizontal`
-- `aee_environmental_fnc_getBiome`
-- `aee_environmental_fnc_getBiomeAtPosition`
-- `aee_environmental_fnc_getBiomeName`
-- `aee_environmental_fnc_getCbrnProtection`
-- `aee_environmental_fnc_getClimateNormals`
-- `aee_environmental_fnc_getCoastDistance`
-- `aee_environmental_fnc_getLatitudeClimate`
-- `aee_environmental_fnc_getSmoothedBiome`
-- `aee_environmental_fnc_getStarCatalog`
-- `aee_environmental_fnc_lightPollutionPenalty`
-- `aee_environmental_fnc_logSkyState`
-- `aee_environmental_fnc_meteorRate`
-- `aee_environmental_fnc_meteorShowers`
-- `aee_environmental_fnc_meteorState`
-- `aee_environmental_fnc_radiantHorizontal`
-- `aee_environmental_fnc_renderAurora`
-- `aee_environmental_fnc_renderDynamicStars`
-- `aee_environmental_fnc_renderMeteors`
-- `aee_environmental_fnc_renderMilkyWay`
-- `aee_environmental_fnc_scanTerrainSignals`
-- `aee_environmental_fnc_showerIsActive`
-- `aee_environmental_fnc_siderealTime`
-- `aee_environmental_fnc_skyGateReason`
-- `aee_environmental_fnc_starBrightnessCoefficient`
-- `aee_environmental_fnc_starCatalogData`
-- `aee_environmental_fnc_starDirection`
-- `aee_environmental_fnc_starLightsSync`
-- `aee_environmental_fnc_starMagnitude`
-- `aee_environmental_fnc_starWeatherFade`
-- `aee_environmental_fnc_updateAurora`
-- `aee_environmental_fnc_updateBiomePosition`
-- `aee_environmental_fnc_updateMeteors`
-- `aee_environmental_fnc_updateMilkyWay`
-- `aee_environmental_fnc_updateSeasonalFoliage`
-- `aee_environmental_fnc_updateSoilMoisture`
-- `aee_environmental_fnc_updateSoundPropagation`
-- `aee_environmental_fnc_worldLightingClass`
-- `aee_environmental_fnc_worldLightingProfile`
-- `aee_fx_fnc_applyAtmosphericDust`
-- `aee_fx_fnc_applyBreathCondensation`
-- `aee_fx_fnc_applyExhaustShimmer`
-- `aee_fx_fnc_applyFootfallDust`
-- `aee_fx_fnc_applyRainSurfaceDrops`
-- `aee_fx_fnc_applyRainVehicleSound`
-- `aee_fx_fnc_applyRotorWash`
-- `aee_fx_fnc_applyVehicleDust`
-- `aee_fx_fnc_applyWeatherParticles`
-- `aee_fx_fnc_applyWindNoise`
-- `aee_fx_fnc_calculateBlastInjury`
-- `aee_fx_fnc_calculateBlastOverpressure`
-- `aee_fx_fnc_calculateDownwash`
-- `aee_fx_fnc_calculateLightningStrikeEffects`
-- `aee_fx_fnc_dumpState`
-- `aee_fx_fnc_heatHazeAlpha`
-- `aee_fx_fnc_heatHazeSize`
-- `aee_fx_fnc_kickupParams`
-- `aee_fx_fnc_particleAllocate`
-- `aee_fx_fnc_particleEffectConfig`
-- `aee_fx_fnc_particleEmission`
-- `aee_fx_fnc_particleMaterial`
-- `aee_fx_fnc_particlePipeline`
-- `aee_fx_fnc_particlePipelineEmit`
-- `aee_fx_fnc_particleState`
-- `aee_fx_fnc_registerParticleSource`
-- `aee_fx_fnc_renderSupersonicTrace`
-- `aee_fx_fnc_surfaceMaterial`
-- `aee_fx_fnc_surfaceSample`
-- `aee_fx_fnc_triggerLightning`
-- `aee_fx_fnc_triggerSevereWeatherFX`
-- `aee_fx_fnc_weatherParticleAlpha`
-- `aee_maritime_fnc_calculateCompassDeviation`
-- `aee_maritime_fnc_calculateMagneticAnomaly`
+- `aee_diagnostics_fnc_consistencyFailureLine`
+- `aee_diagnostics_fnc_consistencyLoadTable`
+- `aee_diagnostics_fnc_consistencyLog`
+- `aee_diagnostics_fnc_diagnostic`
+- `aee_diagnostics_fnc_dumpPerformanceCounters`
+- `aee_diagnostics_fnc_dumpState`
+- `aee_diagnostics_fnc_evaluateConsistency`
+- `aee_diagnostics_fnc_reportModuleHealth`
+- `aee_diagnostics_fnc_runConsistencyCheck`
+- `aee_dive_fnc_getDiveState`
+- `aee_dive_fnc_updateDiveState`
+- `aee_eye_fnc_eyeAdaptInit`
+- `aee_eye_fnc_eyeAdaptState`
+- `aee_eye_fnc_eyeAdaptStep`
+- `aee_eye_fnc_eyeAmbientLux`
+- `aee_eye_fnc_eyeAperture`
+- `aee_eye_fnc_eyeFlash`
+- `aee_eye_fnc_eyeFlashScene`
+- `aee_eye_fnc_eyeLimits`
+- `aee_eye_fnc_eyeLocalLux`
+- `aee_eye_fnc_eyeMesopicWeight`
+- `aee_eye_fnc_eyePupilSteady`
+- `aee_eye_fnc_eyePupilStep`
+- `aee_eye_fnc_eyeSampleScene`
+- `aee_eye_fnc_eyeSceneLux`
+- `aee_eye_fnc_eyeSkyCast`
+- `aee_eye_fnc_eyeSkyFraction`
+- `aee_eye_fnc_eyeTimeSkip`
+- `aee_eye_fnc_initEyeAdaptation`
+- `aee_eye_fnc_updateEyeAdaptation`
+- `aee_flight_fnc_applyAirframeLoad`
+- `aee_flight_fnc_applyFlightTurbulence`
+- `aee_flight_fnc_calculateAeroPenalty`
+- `aee_flight_fnc_calculateAirEngineLoad`
+- `aee_flight_fnc_calculateHelicopterLift`
+- `aee_flight_fnc_calculateTurbulenceForce`
+- `aee_flight_fnc_getAircraftData`
+- `aee_flight_fnc_getAircraftMatch`
+- `aee_flight_fnc_logAirframeState`
+- `aee_flight_fnc_resolveFlightModel`
+- `aee_flight_fnc_resolveTurbulenceArea`
+- `aee_hud_fnc_hudBuild`
+- `aee_hud_fnc_hudFormatHeading`
+- `aee_hud_fnc_hudFormatRange`
+- `aee_hud_fnc_hudMarkers`
+- `aee_hud_fnc_hudRangefinder`
+- `aee_hud_fnc_hudUpdate`
+- `aee_hud_fnc_trackerDraw`
+- `aee_hud_fnc_trackerProject`
+- `aee_hud_fnc_trackerUpdate`
+- `aee_hydrology_fnc_calculateBaseflow`
+- `aee_hydrology_fnc_calculateDepressionStorage`
+- `aee_hydrology_fnc_calculateGreenAmptInfiltration`
+- `aee_hydrology_fnc_calculateRiverWaterLevel`
+- `aee_hydrology_fnc_calculateRunoffSCS`
+- `aee_hydrology_fnc_calculateThermalRefraction`
+- `aee_hydrology_fnc_routeRunoffD8`
+- `aee_lib_fnc_attachObjectEngineHandler`
+- `aee_lib_fnc_buildGeoAnchor`
+- `aee_lib_fnc_createPPEffect`
+- `aee_lib_fnc_datalinkState`
+- `aee_lib_fnc_destroyPPEffect`
+- `aee_lib_fnc_deterministicRandom`
+- `aee_lib_fnc_evaluateGeoConsistency`
+- `aee_lib_fnc_formatMgrs`
+- `aee_lib_fnc_getGeoAnchor`
+- `aee_lib_fnc_getWorldLocation`
+- `aee_lib_fnc_gnssErrorEllipse`
+- `aee_lib_fnc_gnssFixState`
+- `aee_lib_fnc_installObjectEngineHandler`
+- `aee_lib_fnc_installPlayerEngineHandler`
+- `aee_lib_fnc_latLonToUtm`
+- `aee_lib_fnc_mgrsToWorld`
+- `aee_lib_fnc_migrateLegacySettings`
+- `aee_lib_fnc_parseMgrs`
+- `aee_lib_fnc_readState`
+- `aee_lib_fnc_runGeoConsistency`
+- `aee_lib_fnc_utmToLatLon`
+- `aee_lib_fnc_utmToWorld`
+- `aee_lib_fnc_worldToMgrs`
+- `aee_lighting_fnc_applyWorldLighting`
+- `aee_lighting_fnc_calculateLimitingMagnitude`
+- `aee_lighting_fnc_calculateSolarRadiation`
+- `aee_lighting_fnc_classifyNight`
+- `aee_lighting_fnc_drawFaintStars`
+- `aee_lighting_fnc_drawMilkyWay`
+- `aee_lighting_fnc_galacticToEquatorial`
+- `aee_lighting_fnc_galacticToHorizontal`
+- `aee_lighting_fnc_getStarCatalog`
+- `aee_lighting_fnc_lightPollutionPenalty`
+- `aee_lighting_fnc_logSkyState`
+- `aee_lighting_fnc_meteorRate`
+- `aee_lighting_fnc_meteorShowers`
+- `aee_lighting_fnc_meteorState`
+- `aee_lighting_fnc_radiantHorizontal`
+- `aee_lighting_fnc_renderAurora`
+- `aee_lighting_fnc_renderDynamicStars`
+- `aee_lighting_fnc_renderMeteors`
+- `aee_lighting_fnc_renderMilkyWay`
+- `aee_lighting_fnc_showerIsActive`
+- `aee_lighting_fnc_siderealTime`
+- `aee_lighting_fnc_skyGateReason`
+- `aee_lighting_fnc_starBrightnessCoefficient`
+- `aee_lighting_fnc_starCatalogData`
+- `aee_lighting_fnc_starDirection`
+- `aee_lighting_fnc_starLightsSync`
+- `aee_lighting_fnc_starMagnitude`
+- `aee_lighting_fnc_starWeatherFade`
+- `aee_lighting_fnc_updateAurora`
+- `aee_lighting_fnc_updateMeteors`
+- `aee_lighting_fnc_updateMilkyWay`
+- `aee_lighting_fnc_worldLightingClass`
+- `aee_lighting_fnc_worldLightingProfile`
+- `aee_ltm_fnc_ltmBeamSegments`
+- `aee_ltm_fnc_ltmCreate`
+- `aee_ltm_fnc_ltmDaylightAlpha`
+- `aee_ltm_fnc_ltmDraw`
+- `aee_ltm_fnc_ltmInit`
+- `aee_ltm_fnc_ltmPFH`
+- `aee_ltm_fnc_ltmToggle`
+- `aee_ltm_fnc_ltmToggleMode`
+- `aee_magnetism_fnc_calculateCompassDeviation`
+- `aee_magnetism_fnc_calculateMagneticAnomaly`
 - `aee_maritime_fnc_calculateSeaState`
 - `aee_maritime_fnc_calculateSeaSurfaceTemperature`
 - `aee_maritime_fnc_calculateTidalPrediction`
@@ -362,60 +429,21 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_material_fnc_handleHitPart`
 - `aee_material_fnc_initMaterialCache`
 - `aee_mobility_fnc_applyAccretionMass`
-- `aee_mobility_fnc_applyAirframeLoad`
-- `aee_mobility_fnc_applyFlightTurbulence`
 - `aee_mobility_fnc_applyGripLoss`
 - `aee_mobility_fnc_applyRollover`
 - `aee_mobility_fnc_applyTerrainDrag`
 - `aee_mobility_fnc_calculateAccretionMass`
-- `aee_mobility_fnc_calculateAeroPenalty`
-- `aee_mobility_fnc_calculateAirEngineLoad`
-- `aee_mobility_fnc_calculateBaseflow`
-- `aee_mobility_fnc_calculateDepressionStorage`
-- `aee_mobility_fnc_calculateEngineLoad`
-- `aee_mobility_fnc_calculateEngineNg`
-- `aee_mobility_fnc_calculateEnginePower`
-- `aee_mobility_fnc_calculateExhaustPlume`
-- `aee_mobility_fnc_calculateFuelBurn`
-- `aee_mobility_fnc_calculateGreenAmptInfiltration`
-- `aee_mobility_fnc_calculateHelicopterLift`
 - `aee_mobility_fnc_calculateMudAccretion`
-- `aee_mobility_fnc_calculateRiverWaterLevel`
 - `aee_mobility_fnc_calculateRolloverThreshold`
 - `aee_mobility_fnc_calculateRouteDegradation`
-- `aee_mobility_fnc_calculateRunoffSCS`
 - `aee_mobility_fnc_calculateSSF`
-- `aee_mobility_fnc_calculateScriptedTgtOil`
 - `aee_mobility_fnc_calculateSoilBearingStrength`
 - `aee_mobility_fnc_calculateSoilStrength`
 - `aee_mobility_fnc_calculateTerrainLimits`
-- `aee_mobility_fnc_calculateThermalRefraction`
 - `aee_mobility_fnc_calculateTraction`
-- `aee_mobility_fnc_calculateTurbulenceForce`
 - `aee_mobility_fnc_calculateWetTraction`
-- `aee_mobility_fnc_classifyVehicle`
-- `aee_mobility_fnc_estimateVehicleMass`
-- `aee_mobility_fnc_estimateVehicleMassCore`
-- `aee_mobility_fnc_getAircraftData`
-- `aee_mobility_fnc_getAircraftMatch`
-- `aee_mobility_fnc_getAircraftSystems`
-- `aee_mobility_fnc_getNearbyVehicles`
 - `aee_mobility_fnc_getTerrainSpeedFactor`
-- `aee_mobility_fnc_getVehicleBands`
-- `aee_mobility_fnc_getVehicleData`
-- `aee_mobility_fnc_getVehicleGeometry`
-- `aee_mobility_fnc_getVehicleMassModel`
-- `aee_mobility_fnc_getVehicleMatch`
-- `aee_mobility_fnc_logAirframeState`
-- `aee_mobility_fnc_resolveFlightModel`
-- `aee_mobility_fnc_resolveTurbulenceArea`
-- `aee_mobility_fnc_routeRunoffD8`
-- `aee_mobility_fnc_updateAircraftSystems`
-- `aee_mobility_fnc_updateDamageSystem`
-- `aee_mobility_fnc_updateEngineSystem`
-- `aee_mobility_fnc_updateFuelSystem`
 - `aee_mobility_fnc_updateGroundState`
-- `aee_mobility_fnc_updateStatusSystems`
 - `aee_nightvision_fnc_applyNVGTubeModel`
 - `aee_nightvision_fnc_applyNightGrain`
 - `aee_nightvision_fnc_dumpState`
@@ -423,14 +451,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_nightvision_fnc_getDeviceMatch`
 - `aee_nightvision_fnc_getNvgDeviceProperties`
 - `aee_nightvision_fnc_getNvgTubeModel`
-- `aee_nightvision_fnc_ltmBeamSegments`
-- `aee_nightvision_fnc_ltmCreate`
-- `aee_nightvision_fnc_ltmDaylightAlpha`
-- `aee_nightvision_fnc_ltmDraw`
-- `aee_nightvision_fnc_ltmInit`
-- `aee_nightvision_fnc_ltmPFH`
-- `aee_nightvision_fnc_ltmToggle`
-- `aee_nightvision_fnc_ltmToggleMode`
 - `aee_nightvision_fnc_nvgAgcBreathing`
 - `aee_nightvision_fnc_nvgBlemishField`
 - `aee_nightvision_fnc_nvgBlindingEnvelope`
@@ -439,15 +459,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_nightvision_fnc_nvgTierIndex`
 - `aee_nightvision_fnc_teardownNvgDoF`
 - `aee_optics_fnc_applyAtmosphericSeeingFX`
-- `aee_optics_fnc_applyBaseGrade`
 - `aee_optics_fnc_applyDewOnOpticsFX`
 - `aee_optics_fnc_applyHeatShimmerFX`
 - `aee_optics_fnc_applyMirageFX`
 - `aee_optics_fnc_applyRainOnOpticsFX`
 - `aee_optics_fnc_applySnowBlindnessFX`
 - `aee_optics_fnc_applySolarGlareFX`
-- `aee_optics_fnc_applyWeatherGrain`
-- `aee_optics_fnc_baseGradeParams`
 - `aee_optics_fnc_calculateAtmosphericSeeing`
 - `aee_optics_fnc_calculateAttenuation`
 - `aee_optics_fnc_calculateDewOnOptics`
@@ -458,164 +475,126 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_calculateSnowBlindness`
 - `aee_optics_fnc_calculateSolarGlare`
 - `aee_optics_fnc_calculateVehicleHeatShimmer`
-- `aee_optics_fnc_calculateViewDistance`
-- `aee_optics_fnc_destroyBasePostProcess`
-- `aee_optics_fnc_dtvHostStart`
-- `aee_optics_fnc_dtvHostStop`
-- `aee_optics_fnc_dtvHostTick`
 - `aee_optics_fnc_dumpState`
-- `aee_optics_fnc_enterThermalSensors`
-- `aee_optics_fnc_exitThermalSensors`
-- `aee_optics_fnc_eyeAdaptInit`
-- `aee_optics_fnc_eyeAdaptState`
-- `aee_optics_fnc_eyeAdaptStep`
-- `aee_optics_fnc_eyeAmbientLux`
-- `aee_optics_fnc_eyeAperture`
-- `aee_optics_fnc_eyeFlash`
-- `aee_optics_fnc_eyeFlashScene`
-- `aee_optics_fnc_eyeLimits`
-- `aee_optics_fnc_eyeLocalLux`
-- `aee_optics_fnc_eyeMesopicWeight`
-- `aee_optics_fnc_eyePupilSteady`
-- `aee_optics_fnc_eyePupilStep`
-- `aee_optics_fnc_eyeSampleScene`
-- `aee_optics_fnc_eyeSceneLux`
-- `aee_optics_fnc_eyeSkyCast`
-- `aee_optics_fnc_eyeSkyFraction`
-- `aee_optics_fnc_eyeTimeSkip`
-- `aee_optics_fnc_fontFamilyUsable`
-- `aee_optics_fnc_formatGridDisplay`
 - `aee_optics_fnc_getOpticProperties`
-- `aee_optics_fnc_gpsBuild`
-- `aee_optics_fnc_gpsUpdate`
-- `aee_optics_fnc_hudBuild`
-- `aee_optics_fnc_hudFormatGrid`
-- `aee_optics_fnc_hudFormatHeading`
-- `aee_optics_fnc_hudFormatRange`
-- `aee_optics_fnc_hudMarkers`
-- `aee_optics_fnc_hudRangefinder`
-- `aee_optics_fnc_hudUpdate`
-- `aee_optics_fnc_initBaseGrade`
-- `aee_optics_fnc_initEyeAdaptation`
-- `aee_optics_fnc_initWeatherGrain`
-- `aee_optics_fnc_managePostProcess`
-- `aee_optics_fnc_mgrsCursorText`
-- `aee_optics_fnc_mgrsEffectivePrecision`
-- `aee_optics_fnc_mgrsFontFamily`
-- `aee_optics_fnc_mgrsGridLines`
-- `aee_optics_fnc_mgrsMapDraw`
-- `aee_optics_fnc_mgrsMapPrecision`
-- `aee_optics_fnc_mgrsMarkerText`
-- `aee_optics_fnc_perceptionAdaptState`
-- `aee_optics_fnc_perceptionBaseGrade`
-- `aee_optics_fnc_perceptionChromaticAdaptation`
-- `aee_optics_fnc_perceptionDetectDeviation`
-- `aee_optics_fnc_perceptionIlluminant`
-- `aee_optics_fnc_perceptionMesopicColor`
-- `aee_optics_fnc_perceptionParams`
-- `aee_optics_fnc_perceptionSample`
-- `aee_optics_fnc_perceptionToneResponse`
-- `aee_optics_fnc_perceptionUpdate`
-- `aee_optics_fnc_ppEffectCreate`
-- `aee_optics_fnc_runThermalPass`
-- `aee_optics_fnc_shadowClassifyScene`
-- `aee_optics_fnc_shadowFpsGovernor`
-- `aee_optics_fnc_shadowSamplePattern`
-- `aee_optics_fnc_shadowSmoothDistance`
-- `aee_optics_fnc_shadowStabilizeDepth`
-- `aee_optics_fnc_shadowTargetDistance`
-- `aee_optics_fnc_symbolCategory`
-- `aee_optics_fnc_symbolFrame`
-- `aee_optics_fnc_symbolIcon`
-- `aee_optics_fnc_symbolPalette`
-- `aee_optics_fnc_symbolResolve`
-- `aee_optics_fnc_symbologyAffiliation`
-- `aee_optics_fnc_symbologyDimension`
-- `aee_optics_fnc_symbologyEchelon`
-- `aee_optics_fnc_symbologyEchelonMarker`
-- `aee_optics_fnc_symbologyEchelonSize`
-- `aee_optics_fnc_symbologyMarkerCategory`
-- `aee_optics_fnc_symbologyMarkerColor`
-- `aee_optics_fnc_symbologyMarkerType`
-- `aee_optics_fnc_symbologyMarkers`
-- `aee_optics_fnc_symbologyMarkersApply`
-- `aee_optics_fnc_symbologyMarkersRestore`
-- `aee_optics_fnc_symbologyPaletteFriendly`
-- `aee_optics_fnc_symbologyUnitCategory`
-- `aee_optics_fnc_symbologyUnitDimension`
-- `aee_optics_fnc_symbologyUnitEchelon`
-- `aee_optics_fnc_symbologyWorldDraw`
-- `aee_optics_fnc_teardownBaseGrade`
-- `aee_optics_fnc_teardownSensors`
-- `aee_optics_fnc_trackerDraw`
-- `aee_optics_fnc_trackerProject`
-- `aee_optics_fnc_trackerUpdate`
-- `aee_optics_fnc_updateEyeAdaptation`
-- `aee_optics_fnc_updateThermalHost`
-- `aee_optics_fnc_updateThermalHostSetting`
-- `aee_optics_fnc_weatherGrainParams`
-- `aee_physiology_fnc_applyCrossSensitivity`
+- `aee_particles_fnc_calculateDownwash`
+- `aee_particles_fnc_dumpState`
+- `aee_particles_fnc_heatHazeAlpha`
+- `aee_particles_fnc_heatHazeSize`
+- `aee_particles_fnc_kickupParams`
+- `aee_particles_fnc_particleAllocate`
+- `aee_particles_fnc_particleEffectConfig`
+- `aee_particles_fnc_particleEmission`
+- `aee_particles_fnc_particleMaterial`
+- `aee_particles_fnc_particlePipeline`
+- `aee_particles_fnc_particlePipelineEmit`
+- `aee_particles_fnc_particleState`
+- `aee_particles_fnc_registerParticleSource`
+- `aee_particles_fnc_renderSupersonicTrace`
+- `aee_particles_fnc_surfaceMaterial`
+- `aee_particles_fnc_surfaceSample`
+- `aee_particles_fnc_weatherParticleAlpha`
+- `aee_persistence_fnc_calculateAvalancheRisk`
+- `aee_persistence_fnc_calculateCBRNPersistence`
+- `aee_persistence_fnc_calculateFireSpreadRisk`
+- `aee_persistence_fnc_calculateFlashFloodRisk`
+- `aee_persistence_fnc_calculateFreezeThawCycling`
+- `aee_persistence_fnc_calculateFrostOnWindscreens`
+- `aee_persistence_fnc_calculateIceLoad`
+- `aee_persistence_fnc_calculateSurfaceWetness`
+- `aee_persistence_fnc_detectGroundFrost`
+- `aee_persistence_fnc_getCbrnProtection`
+- `aee_persistence_fnc_updateSoilMoisture`
 - `aee_physiology_fnc_applyHeatStressHUD`
-- `aee_physiology_fnc_applyMovementSpeed`
-- `aee_physiology_fnc_calculateAltitudeAcclimatization`
-- `aee_physiology_fnc_calculateAltitudeDCS`
-- `aee_physiology_fnc_calculateBarometricPressure`
-- `aee_physiology_fnc_calculateColdWeatherPerformance`
-- `aee_physiology_fnc_calculateDehydrationRisk`
-- `aee_physiology_fnc_calculateFatigueFactor`
-- `aee_physiology_fnc_calculateGLOC`
-- `aee_physiology_fnc_calculateHypoxia`
-- `aee_physiology_fnc_calculateOxygenDelivery`
-- `aee_physiology_fnc_calculateShooterStability`
-- `aee_physiology_fnc_calculateSleepPressure`
-- `aee_physiology_fnc_calculateUVIndex`
 - `aee_physiology_fnc_dumpState`
-- `aee_physiology_fnc_getCamouflageProperties`
-- `aee_physiology_fnc_getDiveState`
-- `aee_physiology_fnc_getEquipmentBands`
-- `aee_physiology_fnc_getEquipmentProperties`
-- `aee_physiology_fnc_getGLoad`
-- `aee_physiology_fnc_getGloveProperties`
-- `aee_physiology_fnc_getGoggleProperties`
-- `aee_physiology_fnc_getHelmetProperties`
-- `aee_physiology_fnc_getInventoryLoad`
-- `aee_physiology_fnc_getItemMass`
-- `aee_physiology_fnc_getMagazineLoad`
-- `aee_physiology_fnc_getMagazineMass`
-- `aee_physiology_fnc_getNirPerSelection`
-- `aee_physiology_fnc_getNvgContrast`
-- `aee_physiology_fnc_getPackProperties`
-- `aee_physiology_fnc_getUniformProperties`
-- `aee_physiology_fnc_getVestProperties`
-- `aee_physiology_fnc_getWeaponLoad`
-- `aee_physiology_fnc_getWeaponMass`
-- `aee_physiology_fnc_integrateSwayFactor`
-- `aee_physiology_fnc_selectBand`
-- `aee_physiology_fnc_updateDiveState`
 - `aee_physiology_fnc_updateFatigueState`
 - `aee_physiology_fnc_zh16cStep`
 - `aee_radio_fnc_calculateIonosphericAbsorption`
 - `aee_radio_fnc_calculateRadioPropagation`
 - `aee_radio_fnc_dumpState`
-- `aee_thermal_fnc_activeIRGate`
+- `aee_strain_fnc_applyCrossSensitivity`
+- `aee_strain_fnc_applyMovementSpeed`
+- `aee_strain_fnc_calculateColdWeatherPerformance`
+- `aee_strain_fnc_calculateDehydrationRisk`
+- `aee_strain_fnc_calculateFatigueFactor`
+- `aee_strain_fnc_calculateShooterStability`
+- `aee_strain_fnc_calculateSleepPressure`
+- `aee_strain_fnc_calculateUVIndex`
+- `aee_strain_fnc_getGLoad`
+- `aee_strain_fnc_integrateSwayFactor`
+- `aee_symbology_fnc_symbolCategory`
+- `aee_symbology_fnc_symbolFrame`
+- `aee_symbology_fnc_symbolIcon`
+- `aee_symbology_fnc_symbolPalette`
+- `aee_symbology_fnc_symbolResolve`
+- `aee_symbology_fnc_symbologyAffiliation`
+- `aee_symbology_fnc_symbologyDimension`
+- `aee_symbology_fnc_symbologyEchelon`
+- `aee_symbology_fnc_symbologyEchelonMarker`
+- `aee_symbology_fnc_symbologyEchelonSize`
+- `aee_symbology_fnc_symbologyMarkerCategory`
+- `aee_symbology_fnc_symbologyMarkerColor`
+- `aee_symbology_fnc_symbologyMarkerType`
+- `aee_symbology_fnc_symbologyMarkers`
+- `aee_symbology_fnc_symbologyMarkersApply`
+- `aee_symbology_fnc_symbologyMarkersRestore`
+- `aee_symbology_fnc_symbologyPaletteFriendly`
+- `aee_symbology_fnc_symbologyUnitCategory`
+- `aee_symbology_fnc_symbologyUnitDimension`
+- `aee_symbology_fnc_symbologyUnitEchelon`
+- `aee_symbology_fnc_symbologyWorldDraw`
+- `aee_thermal_display_fnc_activeIRGate`
+- `aee_thermal_display_fnc_applyActiveIR`
+- `aee_thermal_display_fnc_applyFusionFill`
+- `aee_thermal_display_fnc_applyFusionOverlay`
+- `aee_thermal_display_fnc_applyFusionPP`
+- `aee_thermal_display_fnc_applyFusionSun`
+- `aee_thermal_display_fnc_applyThermalVision`
+- `aee_thermal_display_fnc_createThermalPPEffects`
+- `aee_thermal_display_fnc_cycleFusionMode`
+- `aee_thermal_display_fnc_fusionBandIndex`
+- `aee_thermal_display_fnc_fusionFovGate`
+- `aee_thermal_display_fnc_fusionFrameGeometry`
+- `aee_thermal_display_fnc_fusionFrameVisible`
+- `aee_thermal_display_fnc_fusionGateDecision`
+- `aee_thermal_display_fnc_fusionMaterialPaths`
+- `aee_thermal_display_fnc_fusionThermalField`
+- `aee_thermal_display_fnc_hudBoxDraw`
+- `aee_thermal_display_fnc_hudTapeActive`
+- `aee_thermal_display_fnc_hudTapeBoot`
+- `aee_thermal_display_fnc_hudTapeBuild`
+- `aee_thermal_display_fnc_hudTapeDraw`
+- `aee_thermal_display_fnc_hudTapeInfo`
+- `aee_thermal_display_fnc_isFusionCapable`
+- `aee_thermal_display_fnc_outlineCanvas`
+- `aee_thermal_display_fnc_outlineCollect`
+- `aee_thermal_display_fnc_outlineDraw`
+- `aee_thermal_display_fnc_outlineGearRadius`
+- `aee_thermal_display_fnc_outlineSensorLod`
+- `aee_thermal_display_fnc_outlineSkeleton`
+- `aee_thermal_display_fnc_outlineToggle`
+- `aee_thermal_display_fnc_outlineTopo`
+- `aee_thermal_display_fnc_resolveFusionDevice`
+- `aee_thermal_display_fnc_startActiveIR`
+- `aee_thermal_display_fnc_stopActiveIR`
+- `aee_thermal_display_fnc_thermalImperfectionParams`
+- `aee_thermal_display_fnc_thermalPalette`
+- `aee_thermal_display_fnc_thermalResolutionParams`
+- `aee_thermal_display_fnc_thermalWetDistortionParams`
+- `aee_thermal_display_fnc_updateFusionFrame`
+- `aee_thermal_display_fnc_warmThermalPPEffects`
 - `aee_thermal_fnc_addGroundStamp`
-- `aee_thermal_fnc_applyActiveIR`
 - `aee_thermal_fnc_applyBuildingThermal`
 - `aee_thermal_fnc_applyClothingThermal`
 - `aee_thermal_fnc_applyContactConduction`
 - `aee_thermal_fnc_applyEngineThermal`
 - `aee_thermal_fnc_applyExhaustHeat`
-- `aee_thermal_fnc_applyFusionFill`
-- `aee_thermal_fnc_applyFusionOverlay`
-- `aee_thermal_fnc_applyFusionPP`
-- `aee_thermal_fnc_applyFusionSun`
 - `aee_thermal_fnc_applyGroundContactStamps`
 - `aee_thermal_fnc_applyImpactHeat`
 - `aee_thermal_fnc_applyRadiativeExchange`
 - `aee_thermal_fnc_applyRainDroplets`
 - `aee_thermal_fnc_applySecondSun`
 - `aee_thermal_fnc_applySelectionThermal`
-- `aee_thermal_fnc_applyThermalVision`
 - `aee_thermal_fnc_applyWeaponBarrelHeat`
 - `aee_thermal_fnc_calculateAtmosphericTransmission`
 - `aee_thermal_fnc_calculateBandRadiance`
@@ -641,18 +620,9 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_calculateWBGT`
 - `aee_thermal_fnc_calculateWaterTemperature`
 - `aee_thermal_fnc_collectThermalNestedObjects`
-- `aee_thermal_fnc_createThermalPPEffects`
-- `aee_thermal_fnc_cycleFusionMode`
 - `aee_thermal_fnc_dumpState`
 - `aee_thermal_fnc_evaluateThermalEdge`
 - `aee_thermal_fnc_expandThermalSelectionTree`
-- `aee_thermal_fnc_fusionBandIndex`
-- `aee_thermal_fnc_fusionFovGate`
-- `aee_thermal_fnc_fusionFrameGeometry`
-- `aee_thermal_fnc_fusionFrameVisible`
-- `aee_thermal_fnc_fusionGateDecision`
-- `aee_thermal_fnc_fusionMaterialPaths`
-- `aee_thermal_fnc_fusionThermalField`
 - `aee_thermal_fnc_getEffectiveEmissivity`
 - `aee_thermal_fnc_getGroundStampOffset`
 - `aee_thermal_fnc_getHitPointMaterials`
@@ -668,26 +638,10 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_getThermalSelectionPoints`
 - `aee_thermal_fnc_getThermalSelections`
 - `aee_thermal_fnc_handleImpactHeat`
-- `aee_thermal_fnc_hudBoxDraw`
-- `aee_thermal_fnc_hudTapeActive`
-- `aee_thermal_fnc_hudTapeBoot`
-- `aee_thermal_fnc_hudTapeBuild`
-- `aee_thermal_fnc_hudTapeDraw`
-- `aee_thermal_fnc_hudTapeInfo`
-- `aee_thermal_fnc_isFusionCapable`
 - `aee_thermal_fnc_isPositionShadowed`
 - `aee_thermal_fnc_isThermalHostActive`
-- `aee_thermal_fnc_outlineCanvas`
-- `aee_thermal_fnc_outlineCollect`
-- `aee_thermal_fnc_outlineDraw`
-- `aee_thermal_fnc_outlineGearRadius`
-- `aee_thermal_fnc_outlineSensorLod`
-- `aee_thermal_fnc_outlineSkeleton`
-- `aee_thermal_fnc_outlineToggle`
-- `aee_thermal_fnc_outlineTopo`
 - `aee_thermal_fnc_planckBandRadiance`
 - `aee_thermal_fnc_probeThermalCapability`
-- `aee_thermal_fnc_resolveFusionDevice`
 - `aee_thermal_fnc_resolvePaintIndexFromSelections`
 - `aee_thermal_fnc_resolveSelectionPaintIndex`
 - `aee_thermal_fnc_resolveThermalBand`
@@ -695,39 +649,104 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_resolveThermalVisibility`
 - `aee_thermal_fnc_solarElevation`
 - `aee_thermal_fnc_solveTwoNodeSelection`
-- `aee_thermal_fnc_startActiveIR`
-- `aee_thermal_fnc_stopActiveIR`
 - `aee_thermal_fnc_takeThermalSweep`
-- `aee_thermal_fnc_thermalImperfectionParams`
-- `aee_thermal_fnc_thermalPalette`
-- `aee_thermal_fnc_thermalResolutionParams`
-- `aee_thermal_fnc_thermalWetDistortionParams`
-- `aee_thermal_fnc_updateFusionFrame`
 - `aee_thermal_fnc_updateTemperature`
 - `aee_thermal_fnc_updateThermalAGC`
-- `aee_thermal_fnc_warmThermalPPEffects`
-- `aee_wildlife_fnc_acousticLevel`
-- `aee_wildlife_fnc_acousticOccluders`
-- `aee_wildlife_fnc_acousticPublish`
-- `aee_wildlife_fnc_acousticSample`
-- `aee_wildlife_fnc_acousticSourceDb`
+- `aee_vehicles_fnc_calculateEngineLoad`
+- `aee_vehicles_fnc_calculateEnginePower`
+- `aee_vehicles_fnc_calculateExhaustPlume`
+- `aee_vehicles_fnc_classifyVehicle`
+- `aee_vehicles_fnc_estimateVehicleMass`
+- `aee_vehicles_fnc_estimateVehicleMassCore`
+- `aee_vehicles_fnc_getNearbyVehicles`
+- `aee_vehicles_fnc_getVehicleBands`
+- `aee_vehicles_fnc_getVehicleData`
+- `aee_vehicles_fnc_getVehicleGeometry`
+- `aee_vehicles_fnc_getVehicleMassModel`
+- `aee_vehicles_fnc_getVehicleMatch`
+- `aee_vision_fnc_applyBaseGrade`
+- `aee_vision_fnc_applyWeatherGrain`
+- `aee_vision_fnc_baseGradeParams`
+- `aee_vision_fnc_calculateViewDistance`
+- `aee_vision_fnc_destroyBasePostProcess`
+- `aee_vision_fnc_dtvHostStart`
+- `aee_vision_fnc_dtvHostStop`
+- `aee_vision_fnc_dtvHostTick`
+- `aee_vision_fnc_enterThermalSensors`
+- `aee_vision_fnc_exitThermalSensors`
+- `aee_vision_fnc_initBaseGrade`
+- `aee_vision_fnc_initWeatherGrain`
+- `aee_vision_fnc_managePostProcess`
+- `aee_vision_fnc_perceptionAdaptState`
+- `aee_vision_fnc_perceptionBaseGrade`
+- `aee_vision_fnc_perceptionChromaticAdaptation`
+- `aee_vision_fnc_perceptionDetectDeviation`
+- `aee_vision_fnc_perceptionIlluminant`
+- `aee_vision_fnc_perceptionMesopicColor`
+- `aee_vision_fnc_perceptionParams`
+- `aee_vision_fnc_perceptionSample`
+- `aee_vision_fnc_perceptionToneResponse`
+- `aee_vision_fnc_perceptionUpdate`
+- `aee_vision_fnc_ppEffectCreate`
+- `aee_vision_fnc_runThermalPass`
+- `aee_vision_fnc_shadowClassifyScene`
+- `aee_vision_fnc_shadowFpsGovernor`
+- `aee_vision_fnc_shadowSamplePattern`
+- `aee_vision_fnc_shadowSmoothDistance`
+- `aee_vision_fnc_shadowStabilizeDepth`
+- `aee_vision_fnc_shadowTargetDistance`
+- `aee_vision_fnc_teardownBaseGrade`
+- `aee_vision_fnc_teardownSensors`
+- `aee_vision_fnc_updateThermalHost`
+- `aee_vision_fnc_updateThermalHostSetting`
+- `aee_vision_fnc_weatherGrainParams`
+- `aee_weather_fnc_calculateBiologicalAmbient`
+- `aee_weather_fnc_calculateBlowingSnowVisibility`
+- `aee_weather_fnc_calculateConcealment`
+- `aee_weather_fnc_calculateCropState`
+- `aee_weather_fnc_calculateDustSuppression`
+- `aee_weather_fnc_calculateDustVisibility`
+- `aee_weather_fnc_calculateFogBaseAltitude`
+- `aee_weather_fnc_calculateLunarIllumination`
+- `aee_weather_fnc_calculateMicroclimate`
+- `aee_weather_fnc_calculateQNH`
+- `aee_weather_fnc_calculateScentDispersion`
+- `aee_weather_fnc_calculateSevereWeather`
+- `aee_weather_fnc_calculateSnowAccumulation`
+- `aee_weather_fnc_calculateSpaceWeather`
+- `aee_weather_fnc_calculateUrbanHeatIsland`
+- `aee_weather_fnc_calculateWaterInfluence`
+- `aee_weather_fnc_classifyBiome`
+- `aee_weather_fnc_getBiome`
+- `aee_weather_fnc_getBiomeAtPosition`
+- `aee_weather_fnc_getBiomeName`
+- `aee_weather_fnc_getClimateNormals`
+- `aee_weather_fnc_getCoastDistance`
+- `aee_weather_fnc_getLatitudeClimate`
+- `aee_weather_fnc_getSmoothedBiome`
+- `aee_weather_fnc_scanTerrainSignals`
+- `aee_weather_fnc_updateBiomePosition`
+- `aee_weather_fnc_updateSeasonalFoliage`
+- `aee_weather_fnc_updateSoundPropagation`
+- `aee_weatherfx_fnc_applyAtmosphericDust`
+- `aee_weatherfx_fnc_applyBreathCondensation`
+- `aee_weatherfx_fnc_applyExhaustShimmer`
+- `aee_weatherfx_fnc_applyFootfallDust`
+- `aee_weatherfx_fnc_applyRainSurfaceDrops`
+- `aee_weatherfx_fnc_applyRainVehicleSound`
+- `aee_weatherfx_fnc_applyRotorWash`
+- `aee_weatherfx_fnc_applyVehicleDust`
+- `aee_weatherfx_fnc_applyWeatherParticles`
+- `aee_weatherfx_fnc_applyWindNoise`
+- `aee_weatherfx_fnc_calculateLightningStrikeEffects`
+- `aee_weatherfx_fnc_triggerLightning`
+- `aee_weatherfx_fnc_triggerSevereWeatherFX`
 - `aee_wildlife_fnc_applyAnimalBehaviour`
-- `aee_wildlife_fnc_callEmit`
-- `aee_wildlife_fnc_callPitch`
-- `aee_wildlife_fnc_callPublish`
-- `aee_wildlife_fnc_callReceive`
-- `aee_wildlife_fnc_callSample`
 - `aee_wildlife_fnc_cullFauna`
-- `aee_wildlife_fnc_disturbanceSilence`
 - `aee_wildlife_fnc_ecologyBudget`
 - `aee_wildlife_fnc_ecologyTick`
-- `aee_wildlife_fnc_emitterClass`
-- `aee_wildlife_fnc_emitterPlan`
-- `aee_wildlife_fnc_emitterRelease`
-- `aee_wildlife_fnc_emitterSync`
 - `aee_wildlife_fnc_environmentGrid`
 - `aee_wildlife_fnc_environmentSuitability`
-- `aee_wildlife_fnc_getCallPattern`
 - `aee_wildlife_fnc_getSeason`
 - `aee_wildlife_fnc_getSpeciesMatch`
 - `aee_wildlife_fnc_habitatBoundary`
@@ -737,18 +756,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_needsTick`
 - `aee_wildlife_fnc_pickBedSource`
 - `aee_wildlife_fnc_pickResourceTarget`
-- `aee_wildlife_fnc_playAmbientBed`
-- `aee_wildlife_fnc_playOneShot`
 - `aee_wildlife_fnc_resourceScore`
 - `aee_wildlife_fnc_sampleNeighbourhood`
-- `aee_wildlife_fnc_shotAudio`
-- `aee_wildlife_fnc_soundBedForContext`
-- `aee_wildlife_fnc_soundTick`
 - `aee_wildlife_fnc_spawnBudget`
 - `aee_wildlife_fnc_spawnFauna`
 - `aee_wildlife_fnc_speciesDeprecation`
 - `aee_wildlife_fnc_speciesForBiome`
-- `aee_wildlife_fnc_speciesSound`
 - `aee_wildlife_fnc_spookRange`
 - `aee_wildlife_fnc_spookWave`
 - `aee_wildlife_fnc_teardownWildlife`
@@ -758,7 +771,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (73)
+### Public core state variables (55)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -770,7 +783,6 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_clothingInsulation`
 - `aee_core_consistencyFailures`
 - `aee_core_consistencyState`
-- `aee_core_consistencyStrict`
 - `aee_core_coreBodyTemp`
 - `aee_core_currentHeatIndex`
 - `aee_core_currentHumidity`
@@ -788,24 +800,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_dynamicLux`
 - `aee_core_ehId_`
 - `aee_core_enabled`
-- `aee_core_fnc_buildGeoAnchor`
 - `aee_core_fnc_calculateSeededWeatherProgression`
-- `aee_core_fnc_datalinkState`
-- `aee_core_fnc_dumpState`
-- `aee_core_fnc_evaluateGeoConsistency`
-- `aee_core_fnc_formatMgrs`
-- `aee_core_fnc_getGeoAnchor`
-- `aee_core_fnc_gnssErrorEllipse`
-- `aee_core_fnc_gnssFixState`
-- `aee_core_fnc_latLonToUtm`
-- `aee_core_fnc_mgrsToWorld`
-- `aee_core_fnc_parseMgrs`
-- `aee_core_fnc_reportModuleHealth`
-- `aee_core_fnc_runConsistencyCheck`
-- `aee_core_fnc_runGeoConsistency`
-- `aee_core_fnc_utmToLatLon`
-- `aee_core_fnc_utmToWorld`
-- `aee_core_fnc_worldToMgrs`
 - `aee_core_geoAnchor`
 - `aee_core_groundSurfaceTemp`
 - `aee_core_hailActive`
@@ -840,21 +835,21 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 
 | Class | Declaring source |
 |---|---|
-| `AEE_Unknown_Other` | `addons/optics/config.cpp` |
-| `ColorAEE` | `addons/optics/config.cpp` |
-| `AEE_MarkerBase` | `addons/optics/config.cpp` |
-| `AEE_SandCloud` | `addons/core/config.cpp` |
-| `AEE_SnowCloud` | `addons/core/config.cpp` |
-| `AEE_SupersonicTrace` | `addons/fx/config.cpp` |
-| `CfgClothing` | `addons/physiology/config.cpp` |
+| `AEE_Unknown_Other` | `addons/symbology/config.cpp` |
+| `ColorAEE` | `addons/symbology/config.cpp` |
+| `AEE_MarkerBase` | `addons/symbology/config.cpp` |
+| `AEE_SandCloud` | `addons/particles/config.cpp` |
+| `AEE_SnowCloud` | `addons/particles/config.cpp` |
+| `AEE_SupersonicTrace` | `addons/particles/config.cpp` |
+| `CfgClothing` | `addons/clothing/config.cpp` |
 
 Engine classes AEE re-declares:
 
-- `CfgWorlds` (`addons/environmental/config.cpp`)
-- `CfgCloudlets` (`addons/core/config.cpp`)
-- `CfgMarkers` (`addons/optics/config.cpp`)
-- `CfgMarkerColors` (`addons/optics/config.cpp`)
-- `CfgMarkerClasses` (`addons/optics/config.cpp`)
+- `CfgWorlds` (`addons/lighting/config.cpp`)
+- `CfgCloudlets` (`addons/particles/config.cpp`)
+- `CfgMarkers` (`addons/symbology/config.cpp`)
+- `CfgMarkerColors` (`addons/symbology/config.cpp`)
+- `CfgMarkerClasses` (`addons/symbology/config.cpp`)
 
 <!-- END GENERATED: extension contract -->
 

@@ -16,7 +16,7 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-EMIT = "addons/fx/functions/particle/fnc_particlePipelineEmit.sqf"
+EMIT = "addons/particles/functions/particle/fnc_particlePipelineEmit.sqf"
 DOC = "docs/wiki/research/particle-array-spec.md"
 
 

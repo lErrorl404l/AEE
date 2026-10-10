@@ -83,12 +83,12 @@ and default off.
 The config is load time and world independent. AEE adapts at run time through
 `fnc_applyWorldLighting`. It runs once per environment tick. It reads latitude
 (`core getWorldLocation`), biome (`aee_core_biome`), terrain signals
-(`aee_environmental_terrainSignals`) and engine overcast. It classifies the
+(`aee_weather_terrainSignals`) and engine overcast. It classifies the
 world with `fnc_worldLightingClass` and derives four bounded scales with
 `fnc_worldLightingProfile`: the night factor, the star render scale, the grain
 scale and the haze scale. It publishes the profile as
-`aee_environmental_worldLighting` and the class as
-`aee_environmental_worldLightingClass`.
+`aee_lighting_worldLighting` and the class as
+`aee_lighting_worldLightingClass`.
 
 The class comes from the Koppen group of the biome, the water fraction and the
 mean elevation, never from a map name. A custom or unknown world falls back to

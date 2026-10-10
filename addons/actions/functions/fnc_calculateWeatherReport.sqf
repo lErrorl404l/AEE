@@ -49,7 +49,7 @@ private _frostbite  = missionNamespace getVariable [QEGVAR(core,frostbiteMinutes
 
 // Hazard state
 private _avalanche  = missionNamespace getVariable [QEGVAR(core,currentAvalancheRisk),   0];
-private _flashFlood = missionNamespace getVariable [QEGVAR(environmental,flashFloodRisk),0];
+private _flashFlood = missionNamespace getVariable [QEGVAR(persistence,flashFloodRisk),0];
 private _precipPh   = missionNamespace getVariable [QEGVAR(core,precipitationPhase),     ""];
 private _snowRate   = missionNamespace getVariable [QEGVAR(core,snowfallRate),           0];
 private _icing      = missionNamespace getVariable [QEGVAR(core,currentIcingSeverity),   0];

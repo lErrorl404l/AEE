@@ -45,26 +45,26 @@ defaults follow.
 | `aee_thermal_thermalPalette` | AEE Thermal > Display | Ember | Palette |
 | `aee_thermal_thermalManualMinC` | AEE Thermal > Display | -40 | Manual window minimum in C |
 | `aee_thermal_thermalManualMaxC` | AEE Thermal > Display | 120 | Manual window maximum in C |
-| `aee_thermal_thermalWetDistortion` | AEE Thermal > Display | 0.08 | Rain-on-lens blur ceiling |
-| `aee_thermal_thermalPixelation` | AEE Thermal > Display | false | Quantise to the device resolution |
-| `aee_thermal_thermalFPN` | AEE Thermal > Display | true | Fixed-pattern-noise material |
-| `aee_thermal_thermalPPEffects` | AEE Thermal > Display | true | Thermal post-process kill switch |
-| `aee_thermal_repaintHz` | AEE Thermal > Display | 4 | Repaint rate in hertz |
-| `aee_thermal_thermalImperfectionsEnabled` | AEE Thermal > Sensor | true | NUC drift, temporal noise, AGC hunt, hot bloom |
+| `aee_thermal_display_thermalWetDistortion` | AEE Thermal > Display | 0.08 | Rain-on-lens blur ceiling |
+| `aee_thermal_display_thermalPixelation` | AEE Thermal > Display | false | Quantise to the device resolution |
+| `aee_thermal_display_thermalFPN` | AEE Thermal > Display | true | Fixed-pattern-noise material |
+| `aee_thermal_display_thermalPPEffects` | AEE Thermal > Display | true | Thermal post-process kill switch |
+| `aee_thermal_display_repaintHz` | AEE Thermal > Display | 4 | Repaint rate in hertz |
+| `aee_thermal_display_thermalImperfectionsEnabled` | AEE Thermal > Sensor | true | NUC drift, temporal noise, AGC hunt, hot bloom |
 | `aee_thermal_thermalTemporalNoise` | AEE Thermal > Sensor | 1 | Temporal-noise scale |
-| `aee_thermal_thermalAgcHunt` | AEE Thermal > Sensor | 0.05 | AGC hunt amplitude |
-| `aee_thermal_thermalAgcHuntPeriod` | AEE Thermal > Sensor | 4 | AGC hunt period in seconds |
-| `aee_thermal_thermalNucDrift` | AEE Thermal > Sensor | 0.15 | NUC drift amplitude |
-| `aee_thermal_thermalHotBloom` | AEE Thermal > Sensor | 0.08 | Hot-source bloom |
+| `aee_thermal_display_thermalAgcHunt` | AEE Thermal > Sensor | 0.05 | AGC hunt amplitude |
+| `aee_thermal_display_thermalAgcHuntPeriod` | AEE Thermal > Sensor | 4 | AGC hunt period in seconds |
+| `aee_thermal_display_thermalNucDrift` | AEE Thermal > Sensor | 0.15 | NUC drift amplitude |
+| `aee_thermal_display_thermalHotBloom` | AEE Thermal > Sensor | 0.08 | Hot-source bloom |
 | `aee_thermal_activeIR` | AEE Thermal > Sensor | false | Active-IR illuminator, client-local |
 | `aee_thermal_objectScanInterval` | AEE Thermal > Solver | 30 | Object-temperature scan interval in seconds |
 | `aee_thermal_thermalDebug` | AEE Debug > Thermal | false | Thermal debug flag |
 | `aee_thermal_logDebug` | AEE Debug > Thermal | false | Thermal DEBUG and TRACE lines |
 
-The fusion switches are separate. They are `aee_thermal_fusionAlwaysOn`,
-`aee_thermal_fusionFovFrame`, `aee_thermal_fusionOutline` and
-`aee_thermal_fusionSolidFill` under **AEE Experimental > Fusion**, and
-`aee_thermal_fusionHud` under **AEE HUD > Displays**.
+The fusion switches are separate. They are `aee_thermal_display_fusionAlwaysOn`,
+`aee_thermal_display_fusionFovFrame`, `aee_thermal_display_fusionOutline` and
+`aee_thermal_display_fusionSolidFill` under **AEE Experimental > Fusion**, and
+`aee_thermal_display_fusionHud` under **AEE HUD > Displays**.
 
 ## A cooled MWIR sight by day
 

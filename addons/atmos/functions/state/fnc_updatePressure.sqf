@@ -6,7 +6,7 @@ params [
     ["_posASL", [], [[]]]
 ];
 
-private _normals = [_biome] call EFUNC(environmental,getClimateNormals);
+private _normals = [_biome] call EFUNC(weather,getClimateNormals);
 private _P_sea = _normals select 0;
 
 // ─── Elevation from explicit pos or local player ──────────────────────────

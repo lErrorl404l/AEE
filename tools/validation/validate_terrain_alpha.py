@@ -23,7 +23,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "terrain_symbols.json"
-TERRAIN_DIR = ROOT / "addons" / "optics" / "data" / "terrain"
+TERRAIN_DIR = ROOT / "addons" / "cartography" / "data" / "terrain"
 
 # A background pixel must be no more than this opaque (0..255).
 BACKGROUND_MAX = 40

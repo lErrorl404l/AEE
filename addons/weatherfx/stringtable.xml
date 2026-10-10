@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="WeatherFX">
+        <Key ID="STR_AEE_WeatherFX_exhaustShimmerAlpha_Description">
+            <Original>Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area</Original>
+            <English>Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_exhaustShimmerAlpha_Name">
+            <Original>Exhaust Shimmer Alpha</Original>
+            <English>Exhaust Shimmer Alpha</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_heatHazeEnabled_Description">
+            <Original>Couple the exhaust heat-shimmer alpha and size to the ambient temperature</Original>
+            <English>Couple the exhaust heat-shimmer alpha and size to the ambient temperature</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_heatHazeEnabled_Name">
+            <Original>Heat Haze</Original>
+            <English>Heat Haze</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_heatHazeMaxAlpha_Description">
+            <Original>Upper bound on the ambient-temperature heat-haze alpha</Original>
+            <English>Upper bound on the ambient-temperature heat-haze alpha</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_heatHazeMaxAlpha_Name">
+            <Original>Heat Haze Max Alpha</Original>
+            <English>Heat Haze Max Alpha</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_lightningBrightness_Description">
+            <Original>Brightness of the lightning flash lightpoint</Original>
+            <English>Brightness of the lightning flash lightpoint</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_lightningBrightness_Name">
+            <Original>Lightning Brightness</Original>
+            <English>Lightning Brightness</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_lightningFXChance_Description">
+            <Original>Chance of a visual lightning strike per 5 s tick at high risk</Original>
+            <English>Chance of a visual lightning strike per 5 s tick at high risk</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_lightningFXChance_Name">
+            <Original>Lightning FX Chance</Original>
+            <English>Lightning FX Chance</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_lightningIgnitionChance_Description">
+            <Original>Chance that a lightning strike starts a fire</Original>
+            <English>Chance that a lightning strike starts a fire</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_lightningIgnitionChance_Name">
+            <Original>Lightning Ignition Chance</Original>
+            <English>Lightning Ignition Chance</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_logDebug_Description">
+            <Original>Log Weather FX diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log Weather FX diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_logDebug_Name">
+            <Original>Weather FX Debug Log</Original>
+            <English>Weather FX Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_rainDropDensity_Description">
+            <Original>Rain-splash particle density (drop interval at light rain)</Original>
+            <English>Rain-splash particle density (drop interval at light rain)</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_rainDropDensity_Name">
+            <Original>Rain Drop Density</Original>
+            <English>Rain Drop Density</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_rainVehicleSoundVolume_Description">
+            <Original>Volume of rain-on-vehicle-roof ambience</Original>
+            <English>Volume of rain-on-vehicle-roof ambience</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_rainVehicleSoundVolume_Name">
+            <Original>Rain Vehicle Sound Volume</Original>
+            <English>Rain Vehicle Sound Volume</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_severeWeatherBlur_Description">
+            <Original>Blur intensity scale during severe weather</Original>
+            <English>Blur intensity scale during severe weather</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_severeWeatherBlur_Name">
+            <Original>Severe Weather Blur</Original>
+            <English>Severe Weather Blur</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_thunderVolume_Description">
+            <Original>Thunder volume</Original>
+            <English>Thunder volume</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_thunderVolume_Name">
+            <Original>Thunder Volume</Original>
+            <English>Thunder Volume</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_windNoiseVolume_Description">
+            <Original>Wind ambience volume scale</Original>
+            <English>Wind ambience volume scale</English>
+        </Key>
+        <Key ID="STR_AEE_WeatherFX_windNoiseVolume_Name">
+            <Original>Wind Noise Volume</Original>
+            <English>Wind Noise Volume</English>
+        </Key>
+    </Package>
+</Project>

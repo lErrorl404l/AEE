@@ -53,7 +53,7 @@ the digest stay in git. The fields are in `data/vehicle/SCHEMA.md` section 2.
 
 The generated runtime projection is an SQF matcher. The generator
 `tools/validation/gen_aircraft_data.py` writes
-`addons/mobility/functions/fnc_getAircraftData.sqf`. The file is never
+`addons/flight/functions/fnc_getAircraftData.sqf`. The file is never
 edited by hand. The matcher uses the inherited five-layer ladder. The
 runtime fields are `operating_weight_kg`, `rated_power_w`, `drag_area_m2`
 and `rotor_disc_area_m2`. The projection reads no config and no registry at

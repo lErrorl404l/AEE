@@ -32,7 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).parents[2]
 SOURCE_JSON = ROOT / "data" / "symbology" / "terrain_symbols.json"
 MANIFEST_JSON = ROOT / "data" / "symbology" / "terrain_sources.json"
-TERRAIN_DIR = ROOT / "addons" / "optics" / "data" / "terrain"
+TERRAIN_DIR = ROOT / "addons" / "cartography" / "data" / "terrain"
 SRC_DIR = TERRAIN_DIR / "src"
 
 # A register render is 128 px.  A scanned plate crop is far larger.

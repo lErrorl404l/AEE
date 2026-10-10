@@ -25,10 +25,11 @@ from tools.validation import gen_wildlife_ecology as gen  # noqa: E402
 
 WILDLIFE = ROOT / "addons" / "wildlife"
 FUNCS = WILDLIFE / "functions"
+AMBIENCE = ROOT / "addons" / "ambience" / "functions"
 DATA = WILDLIFE / "data"
 
 MATCH = FUNCS / "fnc_getSpeciesMatch.sqf"
-CALL_PATTERN = FUNCS / "fnc_getCallPattern.sqf"
+CALL_PATTERN = AMBIENCE / "fnc_getCallPattern.sqf"
 SEASON = FUNCS / "fnc_getSeason.sqf"
 GRID = FUNCS / "fnc_environmentGrid.sqf"
 CORPUS = DATA / "ecology_corpus.sqf"
@@ -303,6 +304,7 @@ class TestTemporalSourceContracts(unittest.TestCase):
 
     def test_the_temporal_kernels_are_prepped(self):
         text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        text += (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(getCallPattern)", text)
         self.assertIn("PREP(getSeason)", text)
 
@@ -670,13 +672,13 @@ class TestEnvironmentConsumptionContracts(unittest.TestCase):
     def test_the_tick_still_passes_the_veg_score_to_the_bed(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
         self.assertIn("_vegScore, _settlement, _coastal", text)
-        self.assertIn("call FUNC(soundBedForContext)", text)
+        self.assertIn("call EFUNC(ambience,soundBedForContext)", text)
 
 
-ACOUSTIC = FUNCS / "fnc_acousticLevel.sqf"
-ACOUSTIC_SOURCE = FUNCS / "fnc_acousticSourceDb.sqf"
-ACOUSTIC_PUBLISH = FUNCS / "fnc_acousticPublish.sqf"
-ACOUSTIC_SAMPLE = FUNCS / "fnc_acousticSample.sqf"
+ACOUSTIC = AMBIENCE / "fnc_acousticLevel.sqf"
+ACOUSTIC_SOURCE = AMBIENCE / "fnc_acousticSourceDb.sqf"
+ACOUSTIC_PUBLISH = AMBIENCE / "fnc_acousticPublish.sqf"
+ACOUSTIC_SAMPLE = AMBIENCE / "fnc_acousticSample.sqf"
 PERCEIVE = FUNCS / "fnc_wildlifePerceive.sqf"
 THINK = FUNCS / "fnc_wildlifeThink.sqf"
 
@@ -869,7 +871,7 @@ class TestAcousticSourceContracts(unittest.TestCase):
             self._pure(path)
 
     def test_the_kernels_are_prepped(self):
-        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        text = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         for name in (
             "acousticLevel",
             "acousticSourceDb",
@@ -891,15 +893,15 @@ class TestAcousticSourceContracts(unittest.TestCase):
 
     def test_the_fired_handler_propagates_a_source_level(self):
         text = (FUNCS / "fnc_initWildlife.sqf").read_text(encoding="utf-8")
-        self.assertIn("FUNC(acousticPublish)", text)
-        self.assertIn("FUNC(acousticSourceDb)", text)
+        self.assertIn("EFUNC(ambience,acousticPublish)", text)
+        self.assertIn("EFUNC(ambience,acousticSourceDb)", text)
         # The old fixed magnitude report is removed.
         self.assertNotIn("[getPos _unit, 1] call EFUNC(ai,reportStimulus)", text)
 
     def test_the_tick_consumes_the_propagated_level(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
-        self.assertIn("FUNC(acousticSample)", text)
-        self.assertIn("FUNC(acousticOccluders)", text)
+        self.assertIn("EFUNC(ambience,acousticSample)", text)
+        self.assertIn("EFUNC(ambience,acousticOccluders)", text)
         self.assertIn("currentSoundPropagation", text)
         self.assertIn("_acousticLevel > WILDLIFE_SPOOK_ACOUSTIC_MIN", text)
 
@@ -1049,7 +1051,7 @@ class TestThinkSourceContracts(unittest.TestCase):
         self.assertIn("sense-think-act", code)
 
 
-CALL_EMIT = FUNCS / "fnc_callEmit.sqf"
+CALL_EMIT = AMBIENCE / "fnc_callEmit.sqf"
 
 
 def emit(species, perception, state, trigger):
@@ -1142,7 +1144,7 @@ class TestCallEmitSourceContracts(unittest.TestCase):
             self.assertNotIn(banned, code, banned)
 
     def test_the_kernel_is_prepped(self):
-        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        text = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(callEmit)", text)
 
     def test_the_emit_header_states_conditional_emission(self):
@@ -1150,7 +1152,7 @@ class TestCallEmitSourceContracts(unittest.TestCase):
         self.assertIn("no trigger means no call", code)
 
 
-CALL_RECEIVE = FUNCS / "fnc_callReceive.sqf"
+CALL_RECEIVE = AMBIENCE / "fnc_callReceive.sqf"
 
 
 def receive(call_type, urgency, distance, relation, receiver_state):
@@ -1214,7 +1216,7 @@ class TestCallReceiveSourceContracts(unittest.TestCase):
             self.assertNotIn(banned, code, banned)
 
     def test_the_kernel_is_prepped(self):
-        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        text = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(callReceive)", text)
 
     def test_the_receive_header_states_the_relation_rule(self):
@@ -1309,12 +1311,12 @@ class TestEcologyTickSourceContracts(unittest.TestCase):
     def test_the_callback_consumes_the_plan_and_the_call_kernels(self):
         code = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
         self.assertIn("_plan", code)
-        self.assertIn("call FUNC(callEmit)", code)
-        self.assertIn("call FUNC(callReceive)", code)
+        self.assertIn("call EFUNC(ambience,callEmit)", code)
+        self.assertIn("call EFUNC(ambience,callReceive)", code)
 
 
-CALL_PUBLISH = FUNCS / "fnc_callPublish.sqf"
-CALL_SAMPLE = FUNCS / "fnc_callSample.sqf"
+CALL_PUBLISH = AMBIENCE / "fnc_callPublish.sqf"
+CALL_SAMPLE = AMBIENCE / "fnc_callSample.sqf"
 
 CALL_GLOBALS = {
     "WILDLIFE_CALL_HORIZON": 120,
@@ -1397,18 +1399,18 @@ class TestCallBusSourceContracts(unittest.TestCase):
                 self.assertNotIn(banned, code, banned)
 
     def test_the_kernels_are_prepped(self):
-        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        text = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         for name in ("callPublish", "callSample"):
             self.assertIn(f"PREP({name})", text, name)
 
     def test_the_tick_samples_the_bus(self):
         code = ECOLOGY_TICK.read_text(encoding="utf-8")
-        self.assertIn("call FUNC(callSample)", code)
-        self.assertIn("QGVAR(communicationEnabled)", code)
+        self.assertIn("call EFUNC(ambience,callSample)", code)
+        self.assertIn("QEGVAR(ambience,communicationEnabled)", code)
 
     def test_the_callback_publishes_the_bus(self):
         code = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
-        self.assertIn("call FUNC(callPublish)", code)
+        self.assertIn("call EFUNC(ambience,callPublish)", code)
         self.assertIn("QGVAR(callBus)", code)
 
 

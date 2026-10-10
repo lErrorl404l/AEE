@@ -232,7 +232,7 @@ already embody them.
 8. **Record the ceiling.** When the engine cannot be reached, record the
    ceiling and the evidence, so the next worker does not retry it.
 
-The template is `addons/mobility/generated/CfgVehicles.hpp` and
+The template is `addons/vehicles/generated/CfgVehicles.hpp` and
 `addons/thermal/generated/ThermalOptics.hpp`: a generator, a
 "do not edit" header, and a `--check` gate in the Makefile.
 

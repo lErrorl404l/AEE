@@ -27,15 +27,15 @@
 // Bounded and deterministic: fixed ladders, one restore, one cycle, a fixed
 // AGC settle loop, two solver calls. Emits [P80] PASS/FAIL lines.
 
-private _fnBandIdx = missionNamespace getVariable ["aee_thermal_fnc_fusionBandIndex", nil];
-private _fnPaths = missionNamespace getVariable ["aee_thermal_fnc_fusionMaterialPaths", nil];
-private _fnFov = missionNamespace getVariable ["aee_thermal_fnc_fusionFovGate", nil];
-private _fnOverlay = missionNamespace getVariable ["aee_thermal_fnc_applyFusionOverlay", nil];
-private _fnCycle = missionNamespace getVariable ["aee_thermal_fnc_cycleFusionMode", nil];
+private _fnBandIdx = missionNamespace getVariable ["aee_thermal_display_fnc_fusionBandIndex", nil];
+private _fnPaths = missionNamespace getVariable ["aee_thermal_display_fnc_fusionMaterialPaths", nil];
+private _fnFov = missionNamespace getVariable ["aee_thermal_display_fnc_fusionFovGate", nil];
+private _fnOverlay = missionNamespace getVariable ["aee_thermal_display_fnc_applyFusionOverlay", nil];
+private _fnCycle = missionNamespace getVariable ["aee_thermal_display_fnc_cycleFusionMode", nil];
 private _fnAGC = missionNamespace getVariable ["aee_thermal_fnc_updateThermalAGC", nil];
 private _fnSolve = missionNamespace getVariable ["aee_thermal_fnc_solveTwoNodeSelection", nil];
 private _fnBand = missionNamespace getVariable ["aee_thermal_fnc_calculateBandRadiance", nil];
-private _fnFrameGeo = missionNamespace getVariable ["aee_thermal_fnc_fusionFrameGeometry", nil];
+private _fnFrameGeo = missionNamespace getVariable ["aee_thermal_display_fnc_fusionFrameGeometry", nil];
 
 if (isNil "_fnBandIdx" || {isNil "_fnPaths"} || {isNil "_fnFov"}
     || {isNil "_fnOverlay"} || {isNil "_fnCycle"} || {isNil "_fnAGC"}
@@ -128,10 +128,10 @@ if (_slots > 0 && {_pathsOk}) then {
         _obj setObjectMaterial [_i, _paths select 0];
     };
 };
-missionNamespace setVariable ["aee_thermal_fusionOverlaySaved", [[_obj, _before]]];
+missionNamespace setVariable ["aee_thermal_display_fusionOverlaySaved", [[_obj, _before]]];
 [objNull, "EXIT"] call _fnOverlay;
 private _after = getObjectMaterials _obj;
-private _store = missionNamespace getVariable ["aee_thermal_fusionOverlaySaved", []];
+private _store = missionNamespace getVariable ["aee_thermal_display_fusionOverlaySaved", []];
 private _restored = (_after isEqualTo _before);
 private _storeEmpty = (_store isEqualTo []);
 deleteVehicle _obj;
@@ -145,15 +145,15 @@ if ((_slots > 0) && _restored && _storeEmpty) then {
 
 // ── (4) the mode cycle ────────────────────────────────────────────────────
 // Default I2-only (0); force 1; toggle back to 0; a forced 5 clamps to 1.
-private _mDefault = missionNamespace getVariable ["aee_thermal_fusionMode", 0];
+private _mDefault = missionNamespace getVariable ["aee_thermal_display_fusionMode", 0];
 [1] call _fnCycle;
-private _mForced1 = missionNamespace getVariable ["aee_thermal_fusionMode", -99];
+private _mForced1 = missionNamespace getVariable ["aee_thermal_display_fusionMode", -99];
 [] call _fnCycle;
-private _mToggled = missionNamespace getVariable ["aee_thermal_fusionMode", -99];
+private _mToggled = missionNamespace getVariable ["aee_thermal_display_fusionMode", -99];
 [5] call _fnCycle;
-private _mClamped = missionNamespace getVariable ["aee_thermal_fusionMode", -99];
+private _mClamped = missionNamespace getVariable ["aee_thermal_display_fusionMode", -99];
 [0] call _fnCycle;
-private _mReset = missionNamespace getVariable ["aee_thermal_fusionMode", -99];
+private _mReset = missionNamespace getVariable ["aee_thermal_display_fusionMode", -99];
 if (_mDefault == 0 && {_mForced1 == 1} && {_mToggled == 0} && {_mClamped == 1} && {_mReset == 0}) then {
     diag_log text "[P80] [PASS] (4) mode cycle: default 0, force 1, toggle 0, forced 5 clamps to 1";
 } else {

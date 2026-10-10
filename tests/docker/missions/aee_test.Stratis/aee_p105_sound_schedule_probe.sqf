@@ -14,8 +14,8 @@
 missionNamespace setVariable ["aee_wildlife_logDebug", false];
 missionNamespace setVariable ["aee_core_logDebug", false];
 
-private _fnPattern = missionNamespace getVariable ["aee_wildlife_fnc_getCallPattern", []];
-private _fnTick = missionNamespace getVariable ["aee_wildlife_fnc_soundTick", []];
+private _fnPattern = missionNamespace getVariable ["aee_ambience_fnc_getCallPattern", []];
+private _fnTick = missionNamespace getVariable ["aee_ambience_fnc_soundTick", []];
 if ((_fnPattern isEqualType []) || (_fnTick isEqualType [])) exitWith {
     diag_log text "[P105] [FAIL] sound schedule kernels not compiled (pattern/tick)";
 };

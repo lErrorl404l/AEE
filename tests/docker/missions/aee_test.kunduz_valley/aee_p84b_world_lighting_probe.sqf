@@ -6,8 +6,8 @@
 // mission loads.  This probe drives the real binder and asserts the resolved
 // class, the bounded profile and the published class.  It renders nothing.
 
-private _fn = missionNamespace getVariable ["aee_environmental_fnc_applyWorldLighting", nil];
-private _classFn = missionNamespace getVariable ["aee_environmental_fnc_worldLightingClass", nil];
+private _fn = missionNamespace getVariable ["aee_lighting_fnc_applyWorldLighting", nil];
+private _classFn = missionNamespace getVariable ["aee_lighting_fnc_worldLightingClass", nil];
 private _pass = 0;
 private _fail = 0;
 private _notes = [];
@@ -22,7 +22,7 @@ if (isNil "_fn" || {isNil "_classFn"}) then {
     _notes pushBack "matcher binder or class kernel not compiled";
 } else {
     private _profile = [] call _fn;
-    private _class = missionNamespace getVariable ["aee_environmental_worldLightingClass", ""];
+    private _class = missionNamespace getVariable ["aee_lighting_worldLightingClass", ""];
 
     // 1. The class is one of the known set.
     if (_known find _class >= 0) then {
@@ -50,9 +50,9 @@ if (isNil "_fn" || {isNil "_classFn"}) then {
     // 3. The published class equals the class the binder resolved.  Recompute
     //    the class from the same facts the binder reads, through the pure
     //    class kernel, so a drift between the binder and the kernel fails.
-    private _loc = [] call aee_core_fnc_getWorldLocation;
+    private _loc = [] call aee_lib_fnc_getWorldLocation;
     private _biome = missionNamespace getVariable ["aee_core_biome", "Cfb"];
-    private _signals = missionNamespace getVariable ["aee_environmental_terrainSignals", []];
+    private _signals = missionNamespace getVariable ["aee_weather_terrainSignals", []];
     private _waterFrac = 0;
     private _meanElev = 0;
     if ((_signals isEqualType []) && {(count _signals) > 4}) then {

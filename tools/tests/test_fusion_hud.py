@@ -5,10 +5,10 @@ The fusion HUD display is display-bound: it raises an RscTitles overlay and
 writes control positions, so it cannot run headless.  Its source contract is
 locked here instead:
 
-  * addons/thermal/RscTitles.hpp declares GVAR(fusionHud) with the source idc
+  * addons/thermal_display/RscTitles.hpp declares GVAR(fusionHud) with the source idc
     layout (heading 920001, mark 920002, 13 labels 920011-23, 25 ticks
     920031-55, 8 cardinal letters 920061-68, corners 920101-103).
-  * addons/thermal/functions/hud/ holds the ported tape drivers.
+  * addons/thermal_display/functions/hud/ holds the ported tape drivers.
   * The drivers read aee data (getEyeState bearing, mapGridPosition, getPosASL,
     dayTime, the aee environment state) and not the source's invented values.
   * The setting, stringtable keys, PREP entries and postInit wiring exist.
@@ -31,7 +31,7 @@ def code_only(src: str) -> str:
 
 
 REPO = Path(__file__).parents[2]
-THERMAL = REPO / "addons" / "thermal"
+THERMAL = REPO / "addons" / "thermal_display"
 HUD = THERMAL / "functions" / "hud"
 RSC_SRC = (THERMAL / "RscTitles.hpp").read_text(encoding="utf-8")
 PREP_SRC = (THERMAL / "XEH_PREP.hpp").read_text(encoding="utf-8")
@@ -175,8 +175,8 @@ class TestIntegration(unittest.TestCase):
         self.assertIn("AEE_SETTING_CHECKBOX(fusionHud", SETTINGS_SRC)
 
     def test_stringtable_keys(self) -> None:
-        self.assertIn("STR_AEE_Thermal_fusionHud_Name", STRINGTABLE_SRC)
-        self.assertIn("STR_AEE_Thermal_fusionHud_Description", STRINGTABLE_SRC)
+        self.assertIn("STR_AEE_Thermal_Display_fusionHud_Name", STRINGTABLE_SRC)
+        self.assertIn("STR_AEE_Thermal_Display_fusionHud_Description", STRINGTABLE_SRC)
 
     def test_postinit_wires_the_draw_worker(self) -> None:
         self.assertIn('addMissionEventHandler ["Draw3D"', POSTINIT_SRC)

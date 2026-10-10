@@ -8,7 +8,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "aee_main",
+            "aee_lib",
             "aee_core",
             "cba_main",
             "cba_xeh"
@@ -21,7 +21,6 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "RscTitles.hpp"
 
 // ─── Engine thermal model (issue #196) ─────────────────────────────────────
 // The ENGINE renders TI mode from its own per-model dynamic thermal model,

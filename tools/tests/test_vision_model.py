@@ -28,9 +28,9 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-OPTICS = ROOT / "addons" / "optics"
-GRADE = OPTICS / "functions" / "grade"
-PERCEPTION = OPTICS / "functions" / "perception"
+VISION_ADDON = ROOT / "addons" / "vision"
+GRADE = VISION_ADDON / "functions" / "grade"
+PERCEPTION = VISION_ADDON / "functions" / "perception"
 
 BASE_KERNEL = GRADE / "fnc_baseGradeParams.sqf"
 DRIVER = GRADE / "fnc_applyBaseGrade.sqf"
@@ -43,10 +43,10 @@ CHROMA_KERNEL = PERCEPTION / "fnc_perceptionChromaticAdaptation.sqf"
 MESOPIC_KERNEL = PERCEPTION / "fnc_perceptionMesopicColor.sqf"
 BASE_ANCHOR_KERNEL = PERCEPTION / "fnc_perceptionBaseGrade.sqf"
 
-OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
-OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
-OPTICS_SETTINGS = OPTICS / "initSettings.inc.sqf"
-OPTICS_STRINGS = OPTICS / "stringtable.xml"
+VISION_PREP = VISION_ADDON / "XEH_PREP.hpp"
+VISION_POSTINIT = VISION_ADDON / "XEH_postInit.sqf"
+VISION_SETTINGS = VISION_ADDON / "initSettings.inc.sqf"
+VISION_STRINGS = VISION_ADDON / "stringtable.xml"
 
 REC709_WEIGHTS = [0.2126, 0.7152, 0.0722, 0]
 RADIAL_DEFAULT = [-1, -1, 0, 0, 0, 0, 0]
@@ -709,7 +709,7 @@ class TestPerceptionDriverContract(unittest.TestCase):
 
     def test_driver_creates_no_new_effect(self):
         code = _code(DRIVER)
-        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertIn("EFUNC(lib,createPPEffect)", code)
         self.assertNotIn("= ppEffectCreate", code, "the driver bypasses the registry")
 
     def test_vision_mode_gate_precedes_the_first_adjust(self):
@@ -867,7 +867,7 @@ class TestPerceptionDebugHooks(unittest.TestCase):
             self.assertIn(hook, code, f"debug hook {hook} is not read")
 
     def test_hooks_are_not_cba_settings(self):
-        declared = OPTICS_SETTINGS.read_text(encoding="utf-8")
+        declared = VISION_SETTINGS.read_text(encoding="utf-8")
         for name in self.HOOKS:
             self.assertNotRegex(
                 declared,
@@ -887,7 +887,7 @@ class TestPerceptionWiring(unittest.TestCase):
     """The slice-1 functions are prepped, started, registered and grouped."""
 
     def test_every_perception_function_is_prepped(self):
-        text = OPTICS_PREP.read_text(encoding="utf-8")
+        text = VISION_PREP.read_text(encoding="utf-8")
         for name in PERCEPTION_FUNCTIONS:
             self.assertIn(f"PREPS(perception,{name});", text, f"{name} is not prepped")
 
@@ -900,11 +900,11 @@ class TestPerceptionWiring(unittest.TestCase):
         )
 
     def test_vision_mode_event_applies_the_grade(self):
-        text = OPTICS_POSTINIT.read_text(encoding="utf-8")
+        text = VISION_POSTINIT.read_text(encoding="utf-8")
         self.assertIn("FUNC(applyBaseGrade)", text)
 
     def test_settings_are_registered(self):
-        optics = OPTICS_SETTINGS.read_text(encoding="utf-8")
+        optics = VISION_SETTINGS.read_text(encoding="utf-8")
         for name in (
             "visionModelEnabled",
             "visionToneEnabled",
@@ -913,10 +913,10 @@ class TestPerceptionWiring(unittest.TestCase):
             "visionWhiteBalance",
         ):
             self.assertIn(name, optics, f"setting {name} is not registered")
-        self.assertIn('"AEE Optics","Vision"', optics)
+        self.assertIn('"AEE Vision","Vision"', optics)
 
     def test_stringtable_keys_exist(self):
-        strings = OPTICS_STRINGS.read_text(encoding="utf-8")
+        strings = VISION_STRINGS.read_text(encoding="utf-8")
         for name in (
             "visionModelEnabled",
             "visionToneEnabled",
@@ -924,8 +924,8 @@ class TestPerceptionWiring(unittest.TestCase):
             "visionContrastScale",
             "visionWhiteBalance",
         ):
-            self.assertIn(f"STR_AEE_Optics_{name}_Name", strings)
-            self.assertIn(f"STR_AEE_Optics_{name}_Description", strings)
+            self.assertIn(f"STR_AEE_Vision_{name}_Name", strings)
+            self.assertIn(f"STR_AEE_Vision_{name}_Description", strings)
 
     def test_taxonomy_group_exists(self):
         sys.path.insert(0, str(ROOT))
@@ -934,16 +934,16 @@ class TestPerceptionWiring(unittest.TestCase):
         names = {
             setting.name
             for setting in gen.collect_settings()
-            if setting.category == "AEE Optics" and setting.subcategory == "Vision"
+            if setting.category == "AEE Vision" and setting.subcategory == "Vision"
         }
         self.assertEqual(
             names,
             {
-                "aee_optics_visionModelEnabled",
-                "aee_optics_visionToneEnabled",
-                "aee_optics_visionToneStrength",
-                "aee_optics_visionContrastScale",
-                "aee_optics_visionWhiteBalance",
+                "aee_vision_visionModelEnabled",
+                "aee_vision_visionToneEnabled",
+                "aee_vision_visionToneStrength",
+                "aee_vision_visionContrastScale",
+                "aee_vision_visionWhiteBalance",
             },
         )
 

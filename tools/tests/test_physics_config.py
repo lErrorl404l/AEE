@@ -36,7 +36,7 @@ VEHICLE = REPO / "data" / "vehicle"
 BINDINGS = DATA / "config_bindings.json"
 CLASS_BINDINGS = VEHICLE / "class_bindings.json"
 PARENTS = VEHICLE / "class_parents.json"
-GENERATED = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
+GENERATED = REPO / "addons" / "vehicles" / "generated" / "CfgVehicles.hpp"
 
 
 def _write(path: Path, payload: object) -> None:

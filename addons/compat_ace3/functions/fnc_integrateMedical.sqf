@@ -33,7 +33,7 @@ if (isNil "ace_medical_status_fnc_addMedicationAdjustment") exitWith {};
 
 private _temp = missionNamespace getVariable ["aee_core_currentTemperature", 15];
 private _wbgt = missionNamespace getVariable ["aee_core_currentWBGT", 15];
-private _risk = missionNamespace getVariable ["aee_physiology_dehydrationRisk", 0];
+private _risk = missionNamespace getVariable ["aee_strain_dehydrationRisk", 0];
 
 // ─── Resolved thresholds (issue #154, pattern 1) ───────────────────────────
 // The CBA settings can be uninitialised at the first tick.  A fallback of

@@ -19,11 +19,11 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-HYDROLOGY = REPO / "addons" / "mobility" / "functions" / "hydrology"
+HYDROLOGY = REPO / "addons" / "hydrology" / "functions" / "hydrology"
 RIVER_SQF = (
-    REPO / "addons" / "mobility" / "functions" / "fnc_calculateRiverWaterLevel.sqf"
+    REPO / "addons" / "hydrology" / "functions" / "fnc_calculateRiverWaterLevel.sqf"
 )
-PREP_HPP = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
+PREP_HPP = REPO / "addons" / "hydrology" / "XEH_PREP.hpp"
 GA_SQF = HYDROLOGY / "fnc_calculateGreenAmptInfiltration.sqf"
 D8_SQF = HYDROLOGY / "fnc_routeRunoffD8.sqf"
 

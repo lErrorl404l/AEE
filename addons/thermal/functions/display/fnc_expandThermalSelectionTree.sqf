@@ -1,5 +1,5 @@
 #include "..\..\script_component.hpp"
-#include "\z\aee\addons\main\script_debug.hpp"
+#include "\z\aee\addons\lib\script_debug.hpp"
 /*
  * Thermal same-object selection breadth (issue #204, operator recursive-tree
  * directive).

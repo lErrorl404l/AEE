@@ -36,7 +36,7 @@ The evidence:
    file's docstring.
 
 4. Hand-written tables remain where the method asks for generation:
-   `addons/optics/config_locationtypes.hpp`, `config_mapcolors.hpp`,
+   `addons/cartography/config_locationtypes.hpp`, `config_mapcolors.hpp`,
    `config_mapdisplays.hpp`, `config_mapicons.hpp`, `config_curator.hpp`,
    `RscTitles.hpp`, `addons/wildlife/data/species_table.sqf`,
    `sound_manifest.sqf`. All carry a hand-written header, not a "Generated
@@ -312,7 +312,7 @@ pass.
       "id": "terrain_tables",
       "generator": "python3 tools/validation/gen_terrain_tables.py",
       "check": "python3 tools/validation/gen_terrain_tables.py --check",
-      "artifacts": ["addons/optics/data/terrain_symbols.sqf"],
+      "artifacts": ["addons/cartography/data/terrain_symbols.sqf"],
       "truth": "data/symbology/terrain_symbols.json",
       "truth_class": "corpus-in-repo",
       "repair": "auto"
@@ -348,7 +348,7 @@ pass.
   "exempt": {
     "generators": {},
     "artifacts": {
-      "addons/optics/config_curator.hpp": "hand-tuned Eden module list"
+      "addons/cartography/config_curator.hpp": "hand-tuned Eden module list"
     }
   }
 }

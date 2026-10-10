@@ -54,7 +54,7 @@ if (isClass (configFile >> "CfgPatches" >> "ace_weather")) then {
 if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then {
     missionNamespace setVariable ["aee_core_currentTemperature", 30];
     missionNamespace setVariable ["aee_core_currentWBGT", 30];
-    missionNamespace setVariable ["aee_physiology_dehydrationRisk", 0.5];
+    missionNamespace setVariable ["aee_strain_dehydrationRisk", 0.5];
     private _fnMed = missionNamespace getVariable ["aee_compat_ace3_fnc_integrateMedical", nil];
     if (isNil "_fnMed") then {
         diag_log text "[HOST] [FAIL] compat_ace3 integrateMedical not compiled";
@@ -71,7 +71,7 @@ if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then {
 if (isClass (configFile >> "CfgPatches" >> "kat_circulation")) then {
     missionNamespace setVariable ["aee_core_currentTemperature", 35];
     missionNamespace setVariable ["aee_core_coreBodyTemp", 39];
-    missionNamespace setVariable ["aee_physiology_dehydrationRisk", 0.8];
+    missionNamespace setVariable ["aee_strain_dehydrationRisk", 0.8];
     private _fnKAT = missionNamespace getVariable ["aee_compat_kat_fnc_integrateKAT", nil];
     if (isNil "_fnKAT") then {
         diag_log text "[HOST] [FAIL] compat_kat integrateKAT not compiled";

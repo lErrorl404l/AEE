@@ -24,7 +24,7 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 FNC = (
-    REPO / "addons/physiology/functions/strain/fnc_applyMovementSpeed.sqf"
+    REPO / "addons/strain/functions/strain/fnc_applyMovementSpeed.sqf"
 ).read_text(encoding="utf-8")
 
 
@@ -171,7 +171,7 @@ class TestSourceLocks(unittest.TestCase):
         self.assertIn("exitWith { 1.0 }", FNC)
 
     def test_setting_gated(self):
-        src = (REPO / "addons/physiology/initSettings.inc.sqf").read_text(
+        src = (REPO / "addons/strain/initSettings.inc.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("movementSpeed", src)

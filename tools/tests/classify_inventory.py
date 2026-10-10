@@ -18,7 +18,7 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 FNC = (
-    REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
+    REPO / "addons/clothing/functions/clothing/fnc_getEquipmentProperties.sqf"
 ).read_text(encoding="utf-8")
 INV = Path("/tmp/equip_extract/inventory.txt")
 

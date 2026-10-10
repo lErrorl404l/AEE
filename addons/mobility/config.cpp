@@ -8,10 +8,14 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "aee_main",
+            "aee_lib",
             "aee_core",
+            "aee_material",
+            "aee_persistence",
+            "aee_vehicles",
             "cba_main",
-            "cba_xeh"
+            "cba_xeh",
+            "cba_settings"
         };
         author = AUTHOR;
         authors[] = AUTHORS;
@@ -21,5 +25,3 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-
-#include "generated/CfgVehicles.hpp"

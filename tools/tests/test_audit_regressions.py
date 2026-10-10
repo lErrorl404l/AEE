@@ -269,7 +269,7 @@ class TestInitIsIdempotent(unittest.TestCase):
         impossible, and the flag name carrying the event is what let the log
         prove it rather than hide it.
         """
-        macros = _code(REPO / "addons/main/script_macros.hpp")
+        macros = _code(REPO / "addons/lib/script_macros.hpp")
 
         def body(name, end_token):
             i = macros.index(f"#define {name}")
@@ -303,13 +303,13 @@ class TestPPEffectRegistry(unittest.TestCase):
     the four optics base effects had no destroy path on any code path.
     """
 
-    _CREATE = REPO / "addons/core/functions/fnc_createPPEffect.sqf"
-    _DESTROY = REPO / "addons/core/functions/fnc_destroyPPEffect.sqf"
-    _RELEASE = REPO / "addons/optics/functions/vision/fnc_destroyBasePostProcess.sqf"
-    _PREP = REPO / "addons/core/XEH_PREP.hpp"
-    _OPTICS_PREP = REPO / "addons/optics/XEH_PREP.hpp"
-    _OPTS = REPO / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
-    _PRE = REPO / "addons/optics/XEH_preInit.sqf"
+    _CREATE = REPO / "addons/lib/functions/fnc_createPPEffect.sqf"
+    _DESTROY = REPO / "addons/lib/functions/fnc_destroyPPEffect.sqf"
+    _RELEASE = REPO / "addons/vision/functions/vision/fnc_destroyBasePostProcess.sqf"
+    _PREP = REPO / "addons/lib/XEH_PREP.hpp"
+    VISION_PREP = REPO / "addons/vision/XEH_PREP.hpp"
+    _OPTS = REPO / "addons/vision/functions/vision/fnc_ppEffectCreate.sqf"
+    _PRE = REPO / "addons/vision/XEH_preInit.sqf"
 
     def test_both_halves_of_the_registry_exist_and_are_prepped(self):
         for f in (self._CREATE, self._DESTROY, self._RELEASE):
@@ -319,7 +319,7 @@ class TestPPEffectRegistry(unittest.TestCase):
         self.assertIn("PREP(destroyPPEffect);", prep)
         self.assertIn(
             "PREPS(vision,destroyBasePostProcess);",
-            self._OPTICS_PREP.read_text(encoding="utf-8"),
+            self.VISION_PREP.read_text(encoding="utf-8"),
         )
 
     def test_creation_is_idempotent_through_the_registry(self):
@@ -349,7 +349,7 @@ class TestPPEffectRegistry(unittest.TestCase):
 
     def test_the_base_effects_no_longer_bypass_the_registry(self):
         code = _code(self._OPTS)
-        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertIn("EFUNC(lib,createPPEffect)", code)
         self.assertNotIn(
             "= ppEffectCreate", code, "the base effects bypass the registry"
         )
@@ -383,9 +383,9 @@ class TestPPEffectCrossScopeOwnership(unittest.TestCase):
     which is the damage the registry exists to prevent.
     """
 
-    _CREATE = REPO / "addons/core/functions/fnc_createPPEffect.sqf"
-    _OPTS = REPO / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
-    _MGMT = REPO / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+    _CREATE = REPO / "addons/lib/functions/fnc_createPPEffect.sqf"
+    _OPTS = REPO / "addons/vision/functions/vision/fnc_ppEffectCreate.sqf"
+    _MGMT = REPO / "addons/vision/functions/vision/fnc_managePostProcess.sqf"
 
     def test_a_candidate_is_compared_against_every_owned_handle(self):
         code = _code(self._CREATE)
@@ -461,7 +461,7 @@ class TestSettingMacroStringtableContract(unittest.TestCase):
     test is the python-side guard for the same contract.
     """
 
-    _MACROS = REPO / "addons/main/script_macros.hpp"
+    _MACROS = REPO / "addons/lib/script_macros.hpp"
     _SETTINGS = sorted((REPO / "addons").glob("*/initSettings.inc.sqf"))
 
     def test_the_title_macro_does_not_double_the_separator(self):
@@ -524,11 +524,11 @@ class TestPPEffectLifecycle(unittest.TestCase):
     addon that owns it, and the night grain read a handle that no code wrote.
     """
 
-    _MANAGE = REPO / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+    _MANAGE = REPO / "addons/vision/functions/vision/fnc_managePostProcess.sqf"
     # The nightvision DoF teardown call was extracted from optics/XEH_postInit.sqf
     # into fnc_runThermalPass.sqf so the DTV host can reuse the pass; the
     # teardown still goes through the owner, so this file carries the call.
-    _OPTICS_POST = REPO / "addons/optics/functions/vision/fnc_runThermalPass.sqf"
+    _OPTICS_POST = REPO / "addons/vision/functions/vision/fnc_runThermalPass.sqf"
     _NIGHT_GRAIN = REPO / "addons/nightvision/functions/fnc_applyNightGrain.sqf"
     _TEARDOWN = REPO / "addons/nightvision/functions/fnc_teardownNvgDoF.sqf"
     _ALLOWLIST = REPO / "tools/validation/cba_settings_allowlist.txt"
@@ -557,7 +557,7 @@ class TestPPEffectLifecycle(unittest.TestCase):
         """A recreated handle must stay owned, so a whole-scope release
         reaches it and the WARN can name the scope and key that lost it."""
         code = _code(self._MANAGE)
-        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertIn("EFUNC(lib,createPPEffect)", code)
         self.assertNotIn(
             "= ppEffectCreate", code, "the recreation bypasses the registry"
         )
@@ -577,12 +577,12 @@ class TestPPEffectLifecycle(unittest.TestCase):
     def test_night_grain_handle_is_created_and_destroyed(self):
         code = _code(self._NIGHT_GRAIN)
         self.assertIn(
-            "EFUNC(core,createPPEffect)",
+            "EFUNC(lib,createPPEffect)",
             code,
             "the night grain handle is never created",
         )
         self.assertIn(
-            "EFUNC(core,destroyPPEffect)",
+            "EFUNC(lib,destroyPPEffect)",
             code,
             "the night grain handle is never destroyed",
         )

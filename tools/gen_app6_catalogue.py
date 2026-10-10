@@ -37,10 +37,10 @@ if str(ROOT) not in sys.path:
 from tools import gen_symbology_catalogue as sym  # noqa: E402
 
 CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
-CONFIG_MARKERS = ROOT / "addons" / "optics" / "config_markers.hpp"
+CONFIG_MARKERS = ROOT / "addons" / "symbology" / "config_markers.hpp"
 OUT = ROOT / "data" / "symbology" / "app6_catalogue.json"
 MARKDOWN = ROOT / "docs" / "wiki" / "research" / "app6-catalogue.md"
-MARKER_REL = "addons/optics/data/markers"
+MARKER_REL = "addons/symbology/data/markers"
 
 AFFIL_ORDER = ["Friend", "Hostile", "Neutral", "Unknown"]
 DIM_ORDER = [

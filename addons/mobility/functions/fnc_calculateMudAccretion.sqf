@@ -43,7 +43,7 @@ private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || {isNull _player} || {!alive _player}) exitWith { 0 };
 
 // Ground vehicles within 200 m, shared with fnc_calculateRouteDegradation.
-private _vehicles = [200, _player] call FUNC(getNearbyVehicles);
+private _vehicles = [200, _player] call EFUNC(vehicles,getNearbyVehicles);
 
 // ─── Per-vehicle pass ─────────────────────────────────────────────────────
 {

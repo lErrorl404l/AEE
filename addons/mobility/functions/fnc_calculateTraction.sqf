@@ -79,7 +79,7 @@ _wheeled = _wheeled * _slipFactor;
 _tracked = _tracked * _slipFactor;
 
 // A tracked APC is tracked, so the shared classifier supplies the flag.
-private _mu = [_wheeled, _tracked] select (([_veh] call FUNC(classifyVehicle)) select 2);
+private _mu = [_wheeled, _tracked] select (([_veh] call EFUNC(vehicles,classifyVehicle)) select 2);
 private _tractionForce = _mu * (getMass _veh);
 
 missionNamespace setVariable [QGVAR(currentTractionWheeled), _wheeled];

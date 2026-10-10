@@ -6,7 +6,7 @@
 // asserts that every returned array keeps 1 (colour) as the sixth element,
 // never 0 (monochrome) - the invariant fixed at c753730.  It renders nothing.
 
-private _fn = missionNamespace getVariable ["aee_optics_fnc_weatherGrainParams", nil];
+private _fn = missionNamespace getVariable ["aee_vision_fnc_weatherGrainParams", nil];
 
 private _pass = 0;
 private _fail = 0;

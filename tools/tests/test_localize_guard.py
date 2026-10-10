@@ -35,7 +35,7 @@ GUARD = (
 MATCHERS = (
     (
         REPO / "tools/validation/gen_vehicle_data.py",
-        REPO / "addons/mobility/functions/fnc_getVehicleMatch.sqf",
+        REPO / "addons/vehicles/functions/fnc_getVehicleMatch.sqf",
         '_identity = _className + " " + _rawName + " " + _localName',
     ),
     (
@@ -138,7 +138,7 @@ class TestGeneratedMatchers(unittest.TestCase):
         # never calls localize. Pin it so a later change cannot add one
         # without this guard.
         text = (
-            REPO / "addons/physiology/functions/clothing/fnc_getItemMass.sqf"
+            REPO / "addons/clothing/functions/clothing/fnc_getItemMass.sqf"
         ).read_text(encoding="utf-8")
         self.assertNotIn("localize", text)
 

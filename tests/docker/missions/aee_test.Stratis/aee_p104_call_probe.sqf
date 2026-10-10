@@ -15,10 +15,10 @@
 missionNamespace setVariable ["aee_wildlife_logDebug", false];
 missionNamespace setVariable ["aee_core_logDebug", false];
 
-private _fnEmit = missionNamespace getVariable ["aee_wildlife_fnc_callEmit", []];
-private _fnReceive = missionNamespace getVariable ["aee_wildlife_fnc_callReceive", []];
-private _fnPublish = missionNamespace getVariable ["aee_wildlife_fnc_callPublish", []];
-private _fnSample = missionNamespace getVariable ["aee_wildlife_fnc_callSample", []];
+private _fnEmit = missionNamespace getVariable ["aee_ambience_fnc_callEmit", []];
+private _fnReceive = missionNamespace getVariable ["aee_ambience_fnc_callReceive", []];
+private _fnPublish = missionNamespace getVariable ["aee_ambience_fnc_callPublish", []];
+private _fnSample = missionNamespace getVariable ["aee_ambience_fnc_callSample", []];
 if ((_fnEmit isEqualType []) || (_fnReceive isEqualType []) || (_fnPublish isEqualType []) || (_fnSample isEqualType [])) exitWith {
     diag_log text "[P104] [FAIL] call kernels not compiled (emit/receive/publish/sample)";
 };

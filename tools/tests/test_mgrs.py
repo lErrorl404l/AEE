@@ -2,8 +2,8 @@
 """WGS84 / UTM kernel tests (MGRS wave 1, task 2).
 
 Runs the REAL forward and inverse kernels
-  addons/core/functions/geo/fnc_latLonToUtm.sqf
-  addons/core/functions/geo/fnc_utmToLatLon.sqf
+  addons/lib/functions/geo/fnc_latLonToUtm.sqf
+  addons/lib/functions/geo/fnc_utmToLatLon.sqf
 through tools/tests/sqf_lite.py.
 
 The series is the transverse Mercator expansion in DMA TM 8358.2 with the
@@ -24,12 +24,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-GEO = ROOT / "addons" / "core" / "functions" / "geo"
+GEO = ROOT / "addons" / "lib" / "functions" / "geo"
 FORWARD = GEO / "fnc_latLonToUtm.sqf"
 INVERSE = GEO / "fnc_utmToLatLon.sqf"
 FORMAT = GEO / "fnc_formatMgrs.sqf"
 PARSE = GEO / "fnc_parseMgrs.sqf"
-PREP = ROOT / "addons" / "core" / "XEH_PREP.hpp"
+PREP = ROOT / "addons" / "lib" / "XEH_PREP.hpp"
 PREINIT = ROOT / "addons" / "core" / "XEH_preInit.sqf"
 TABLES = ROOT / "addons" / "core" / "data" / "mgrs_tables.sqf"
 
@@ -315,19 +315,20 @@ class TestMgrsTableIntegrity(unittest.TestCase):
 
 
 # ── The map-layer fix: font usability and world-size precision ──────────────
+CART_HUD = ROOT / "addons" / "cartography" / "functions" / "hud"
 OPTICS_HUD = ROOT / "addons" / "optics" / "functions" / "hud"
-MAP_PRECISION = OPTICS_HUD / "fnc_mgrsMapPrecision.sqf"
-EFFECTIVE_PRECISION = OPTICS_HUD / "fnc_mgrsEffectivePrecision.sqf"
-FONT_USABLE = OPTICS_HUD / "fnc_fontFamilyUsable.sqf"
-MGRS_FONT = OPTICS_HUD / "fnc_mgrsFontFamily.sqf"
-GRID_LINES = OPTICS_HUD / "fnc_mgrsGridLines.sqf"
-MAP_DRAW = OPTICS_HUD / "fnc_mgrsMapDraw.sqf"
-OPTICS_CONFIG = (ROOT / "addons" / "optics" / "config.cpp").read_text(encoding="utf-8")
-MAP_DISPLAYS = (ROOT / "addons" / "optics" / "config_mapdisplays.hpp").read_text(
+MAP_PRECISION = CART_HUD / "fnc_mgrsMapPrecision.sqf"
+EFFECTIVE_PRECISION = CART_HUD / "fnc_mgrsEffectivePrecision.sqf"
+FONT_USABLE = CART_HUD / "fnc_fontFamilyUsable.sqf"
+MGRS_FONT = CART_HUD / "fnc_mgrsFontFamily.sqf"
+GRID_LINES = CART_HUD / "fnc_mgrsGridLines.sqf"
+MAP_DRAW = CART_HUD / "fnc_mgrsMapDraw.sqf"
+OPTICS_CONFIG = (ROOT / "addons" / "cartography" / "config.cpp").read_text(encoding="utf-8")
+MAP_DISPLAYS = (ROOT / "addons" / "cartography" / "config_mapdisplays.hpp").read_text(
     encoding="utf-8"
 )
-PREP_SRC = (ROOT / "addons" / "optics" / "XEH_PREP.hpp").read_text(encoding="utf-8")
-SETTINGS = (ROOT / "addons" / "optics" / "initSettings.inc.sqf").read_text(
+PREP_SRC = (ROOT / "addons" / "cartography" / "XEH_PREP.hpp").read_text(encoding="utf-8")
+SETTINGS = (ROOT / "addons" / "cartography" / "initSettings.inc.sqf").read_text(
     encoding="utf-8"
 )
 

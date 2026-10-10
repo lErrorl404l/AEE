@@ -8,10 +8,10 @@
 //
 // Emits one [P111] PASS/FAIL line.
 
-private _fnPalette = missionNamespace getVariable ["aee_optics_fnc_symbolPalette", nil];
-private _fnType = missionNamespace getVariable ["aee_optics_fnc_symbologyMarkerType", nil];
-private _fnColour = missionNamespace getVariable ["aee_optics_fnc_symbologyMarkerColor", nil];
-private _fnCategory = missionNamespace getVariable ["aee_optics_fnc_symbolCategory", nil];
+private _fnPalette = missionNamespace getVariable ["aee_symbology_fnc_symbolPalette", nil];
+private _fnType = missionNamespace getVariable ["aee_symbology_fnc_symbologyMarkerType", nil];
+private _fnColour = missionNamespace getVariable ["aee_symbology_fnc_symbologyMarkerColor", nil];
+private _fnCategory = missionNamespace getVariable ["aee_symbology_fnc_symbolCategory", nil];
 if (isNil "_fnPalette" || {isNil "_fnType"} || {isNil "_fnColour"} || {isNil "_fnCategory"}) exitWith {
     diag_log text "[P111] [FAIL] symbology kernels not compiled (symbolPalette/symbologyMarkerType/symbologyMarkerColor/symbolCategory)";
 };

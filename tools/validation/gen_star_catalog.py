@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate addons/environmental/functions/astronomy/fnc_starCatalogData.sqf
+"""Generate addons/lighting/functions/astronomy/fnc_starCatalogData.sqf
 from BSC5.
 
 Source: Yale Bright Star Catalogue, 5th edition (BSC5), CDS VizieR V/50,
@@ -24,12 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "data" / "astronomy" / "sources" / "catalog.dat"
 OUT = (
-    ROOT
-    / "addons"
-    / "environmental"
-    / "functions"
-    / "astronomy"
-    / "fnc_starCatalogData.sqf"
+    ROOT / "addons" / "lighting" / "functions" / "astronomy" / "fnc_starCatalogData.sqf"
 )
 
 V_CUTOFF = 7.0

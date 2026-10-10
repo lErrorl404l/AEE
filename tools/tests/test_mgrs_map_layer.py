@@ -36,21 +36,22 @@ from sqf_lite import run_sqf  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 OPTICS = ROOT / "addons" / "optics"
-HUD = OPTICS / "functions" / "hud"
-GEO = ROOT / "addons" / "core" / "functions" / "geo"
+CART = ROOT / "addons" / "cartography"
+HUD = CART / "functions" / "hud"
+GEO = ROOT / "addons" / "lib" / "functions" / "geo"
 
 MGRS_MAP_SRC = (HUD / "fnc_mgrsMapDraw.sqf").read_text(encoding="utf-8")
 GRID_SRC = (HUD / "fnc_mgrsGridLines.sqf").read_text(encoding="utf-8")
 FONT_FAMILY_SRC = (HUD / "fnc_mgrsFontFamily.sqf").read_text(encoding="utf-8")
 FONT_USABLE_SRC = (HUD / "fnc_fontFamilyUsable.sqf").read_text(encoding="utf-8")
 PRECISION_SRC = (HUD / "fnc_mgrsMapPrecision.sqf").read_text(encoding="utf-8")
-CONFIG_SRC = (OPTICS / "config.cpp").read_text(encoding="utf-8")
-DISP_SRC = (OPTICS / "config_mapdisplays.hpp").read_text(encoding="utf-8")
-LOC_SRC = (OPTICS / "config_locationtypes.hpp").read_text(encoding="utf-8")
-RSCTITLES_SRC = (OPTICS / "RscTitles.hpp").read_text(encoding="utf-8")
-SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
-STRINGTABLE_SRC = (OPTICS / "stringtable.xml").read_text(encoding="utf-8")
-PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
+CONFIG_SRC = (CART / "config.cpp").read_text(encoding="utf-8")
+DISP_SRC = (CART / "config_mapdisplays.hpp").read_text(encoding="utf-8")
+LOC_SRC = (CART / "config_locationtypes.hpp").read_text(encoding="utf-8")
+RSCTITLES_SRC = (CART / "RscTitles.hpp").read_text(encoding="utf-8")
+SETTINGS_SRC = (CART / "initSettings.inc.sqf").read_text(encoding="utf-8")
+STRINGTABLE_SRC = (CART / "stringtable.xml").read_text(encoding="utf-8")
+PREP_SRC = (CART / "XEH_PREP.hpp").read_text(encoding="utf-8")
 
 TABLES = run_sqf(ROOT / "addons" / "core" / "data" / "mgrs_tables.sqf", [])
 
@@ -111,9 +112,9 @@ def grid(anchor, rect, base_interval=0):
         HUD / "fnc_mgrsGridLines.sqf",
         [anchor, rect, base_interval],
         {
-            "__EFUNC__core_worldToMgrs": _world_to_mgrs,
-            "__EFUNC__core_utmToWorld": _utm_to_world,
-            "__EFUNC__core_formatMgrs": _format_mgrs,
+            "__EFUNC__lib_worldToMgrs": _world_to_mgrs,
+            "__EFUNC__lib_utmToWorld": _utm_to_world,
+            "__EFUNC__lib_formatMgrs": _format_mgrs,
             "aee_core_mgrsTables": TABLES,
         },
     )
@@ -137,7 +138,7 @@ def font_usable(family, glyph_exists):
         [family],
         {
             "configFile": "config",
-            "getArray": lambda path: [r"z\aee\addons\optics\data\fonts\x\AEEFont9"],
+            "getArray": lambda path: [r"z\aee\addons\cartography\data\fonts\x\AEEFont9"],
             "fileExists": lambda path: glyph_exists,
         },
     )
@@ -406,7 +407,7 @@ class TestWiring(unittest.TestCase):
 
     def test_the_stringtable_keys_exist(self):
         for key in ("mgrsPrecisionAuto_Name", "mgrsPrecisionAuto_Description"):
-            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Cartography_{key}", STRINGTABLE_SRC)
 
 
 # ── The engine edge-number rule (CStaticMap::DrawGrid) ───────────────────────

@@ -67,7 +67,7 @@ private _trackTable = [
 // The real geometry first: the vehicle's own wheel points, read from its
 // config or its model (fnc_getVehicleGeometry).  The class table below is
 // the fallback, used only when the vehicle declares no readable wheels.
-private _geo = [_vehicle] call FUNC(getVehicleGeometry);
+private _geo = [_vehicle] call EFUNC(vehicles,getVehicleGeometry);
 private _track = _geo select 0;
 
 if (_track <= 0) then {

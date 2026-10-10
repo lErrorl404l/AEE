@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from sqf_lite import run_sqf
 
-FNC = Path(__file__).parents[2] / "addons/core/functions/fnc_readState.sqf"
+FNC = Path(__file__).parents[2] / "addons/lib/functions/fnc_readState.sqf"
 
 
 def sqf_is_equal_type(a, b):

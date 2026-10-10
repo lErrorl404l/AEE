@@ -17,7 +17,7 @@ produce it.
 |---|---|---|
 | Control | `findDisplay 12 displayCtrl 51` (`RscMapControl`) | BIKI ctrlAddEventHandler, example 3 |
 | Draw event | `ctrlAddEventHandler ["Draw", { params ["_ctrl"] }]` | BIKI ctrlAddEventHandler; User Interface Event Handlers, `onDraw`, "Use on: Map" |
-| Local proof | A `Draw` handler on a `RscMapControl` with `drawLine` | `addons/thermal/functions/outline/fnc_outlineCanvas.sqf:36-49` |
+| Local proof | A `Draw` handler on a `RscMapControl` with `drawLine` | `addons/thermal_display/functions/outline/fnc_outlineCanvas.sqf:36-49` |
 
 The Draw event is the only map-scoped draw hook. `Draw3D` and `Draw2D` are
 screen and world space, not map-scoped.

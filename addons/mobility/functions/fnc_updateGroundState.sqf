@@ -61,8 +61,8 @@ if (_pos2D isNotEqualTo []) then {
 // balance, and publishes whether frost is present. Produce it here and fold
 // its presence into the frozen classification below. A frost-covered
 // surface is a frozen surface for the traction model.
-[] call EFUNC(environmental,detectGroundFrost);
-private _groundFrost = missionNamespace getVariable [QEGVAR(environmental,groundFrostPresent), false];
+[] call EFUNC(persistence,detectGroundFrost);
+private _groundFrost = missionNamespace getVariable [QEGVAR(persistence,groundFrostPresent), false];
 if !(_groundFrost isEqualType false) then { _groundFrost = false; };
 
 // ─── Frost depth (the Stefan solution, environmental) ────────────────────

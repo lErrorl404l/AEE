@@ -1,5 +1,5 @@
 #include "..\..\script_component.hpp"
-#include "\z\aee\addons\main\script_debug.hpp"
+#include "\z\aee\addons\lib\script_debug.hpp"
 /*
  * Per-building thermal (issue #124 migration).
  *

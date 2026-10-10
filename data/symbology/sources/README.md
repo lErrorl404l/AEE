@@ -22,7 +22,7 @@ not owned. The licence tag on each file is the uploader's licence on their own
 SVG trace. Each converted `.paa` of a CC BY-SA file remains CC BY-SA 4.0. AEE
 is GPL-2.0-or-later, and CC BY-SA 4.0 is one-way compatible with GPLv3, so the
 combined distribution is GPLv3 by the "or later" route. The per-asset
-attribution is written to `addons/optics/data/markers/ATTRIBUTION.md`.
+attribution is written to `addons/symbology/data/markers/ATTRIBUTION.md`.
 
 ## Why the renders are committed
 

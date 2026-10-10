@@ -6,8 +6,8 @@ Resource target kernel (wildlife ecology).
 Pure: no missionNamespace, no GVAR or EGVAR, no engine command.  The caller
 supplies the water and the vegetation provider, so the search is deterministic
 and testable.  The runtime supplies providers that read the published
-environmental facts: EFUNC(environmental,getCoastDistance) for water and
-aee_environmental_terrainSignals for the vegetation score.
+environmental facts: EFUNC(weather,getCoastDistance) for water and
+aee_weather_terrainSignals for the vegetation score.
 
 Walks an eight point ring at each increasing radius and returns the highest
 scoring point, or [0,0,0] when every score is zero.  The scoring is

@@ -3,9 +3,9 @@
 
 Executes the REAL pure formatters through sqf_lite:
 
-  addons/optics/functions/hud/fnc_hudFormatHeading.sqf
-  addons/optics/functions/hud/fnc_hudFormatGrid.sqf
-  addons/optics/functions/hud/fnc_hudFormatRange.sqf
+  addons/hud/functions/hud/fnc_hudFormatHeading.sqf
+  addons/cartography/functions/hud/fnc_hudFormatGrid.sqf
+  addons/hud/functions/hud/fnc_hudFormatRange.sqf
 
 The engine-reading functions fnc_hudBuild, fnc_hudUpdate, fnc_hudRangefinder
 and fnc_hudMarkers cannot run without an engine, so their source contract is
@@ -30,21 +30,24 @@ sys.path.insert(0, str(REPO))
 from sqf_lite import run_sqf  # noqa: E402
 
 OPTICS = REPO / "addons" / "optics"
-HUD = OPTICS / "functions" / "hud"
+CART = REPO / "addons" / "cartography"
+HUDROOT = REPO / "addons" / "hud"
+HUD = HUDROOT / "functions" / "hud"
+CHUD = CART / "functions" / "hud"
 HEADING_KERNEL = HUD / "fnc_hudFormatHeading.sqf"
-GRID_KERNEL = HUD / "fnc_hudFormatGrid.sqf"
-GRID_DISPLAY_KERNEL = HUD / "fnc_formatGridDisplay.sqf"
+GRID_KERNEL = CHUD / "fnc_hudFormatGrid.sqf"
+GRID_DISPLAY_KERNEL = CHUD / "fnc_formatGridDisplay.sqf"
 RANGE_KERNEL = HUD / "fnc_hudFormatRange.sqf"
-MGRS_MAP_KERNEL = HUD / "fnc_mgrsMapDraw.sqf"
-MGRS_MARKER_KERNEL = HUD / "fnc_mgrsMarkerText.sqf"
-GPS_BUILD_KERNEL = HUD / "fnc_gpsBuild.sqf"
-GPS_UPDATE_KERNEL = HUD / "fnc_gpsUpdate.sqf"
+MGRS_MAP_KERNEL = CHUD / "fnc_mgrsMapDraw.sqf"
+MGRS_MARKER_KERNEL = CHUD / "fnc_mgrsMarkerText.sqf"
+GPS_BUILD_KERNEL = CHUD / "fnc_gpsBuild.sqf"
+GPS_UPDATE_KERNEL = CHUD / "fnc_gpsUpdate.sqf"
 TRACKER_UPDATE_KERNEL = HUD / "fnc_trackerUpdate.sqf"
 TRACKER_DRAW_KERNEL = HUD / "fnc_trackerDraw.sqf"
 TRACKER_PROJECT_KERNEL = HUD / "fnc_trackerProject.sqf"
-GRID_LINES_KERNEL = HUD / "fnc_mgrsGridLines.sqf"
-CURSOR_TEXT_KERNEL = HUD / "fnc_mgrsCursorText.sqf"
-CORE_GEO = REPO / "addons" / "core" / "functions" / "geo"
+GRID_LINES_KERNEL = CHUD / "fnc_mgrsGridLines.sqf"
+CURSOR_TEXT_KERNEL = CHUD / "fnc_mgrsCursorText.sqf"
+CORE_GEO = REPO / "addons" / "lib" / "functions" / "geo"
 CORE_LATLON = CORE_GEO / "fnc_latLonToUtm.sqf"
 CORE_UTM2LL = CORE_GEO / "fnc_utmToLatLon.sqf"
 CORE_UTM2WORLD = CORE_GEO / "fnc_utmToWorld.sqf"
@@ -52,12 +55,12 @@ CORE_FORMAT = CORE_GEO / "fnc_formatMgrs.sqf"
 CORE_W2M = CORE_GEO / "fnc_worldToMgrs.sqf"
 CORE_TABLES = REPO / "addons" / "core" / "data" / "mgrs_tables.sqf"
 
-HUD_FILE = OPTICS / "RscTitles.hpp"
+HUD_FILE = HUDROOT / "RscTitles.hpp"
 BUILD_SRC = (HUD / "fnc_hudBuild.sqf").read_text(encoding="utf-8")
 UPDATE_SRC = (HUD / "fnc_hudUpdate.sqf").read_text(encoding="utf-8")
 RANGE_SRC = (HUD / "fnc_hudRangefinder.sqf").read_text(encoding="utf-8")
 MARKERS_SRC = (HUD / "fnc_hudMarkers.sqf").read_text(encoding="utf-8")
-FORMAT_DISPLAY_SRC = (HUD / "fnc_formatGridDisplay.sqf").read_text(encoding="utf-8")
+FORMAT_DISPLAY_SRC = (CHUD / "fnc_formatGridDisplay.sqf").read_text(encoding="utf-8")
 MGRS_MAP_SRC = MGRS_MAP_KERNEL.read_text(encoding="utf-8")
 MGRS_MARKER_SRC = MGRS_MARKER_KERNEL.read_text(encoding="utf-8")
 GRID_LINES_SRC = GRID_LINES_KERNEL.read_text(encoding="utf-8")
@@ -67,12 +70,22 @@ GPS_UPDATE_SRC = GPS_UPDATE_KERNEL.read_text(encoding="utf-8")
 TRACKER_UPDATE_SRC = TRACKER_UPDATE_KERNEL.read_text(encoding="utf-8")
 TRACKER_DRAW_SRC = TRACKER_DRAW_KERNEL.read_text(encoding="utf-8")
 TRACKER_PROJECT_SRC = TRACKER_PROJECT_KERNEL.read_text(encoding="utf-8")
-HUD_CLASS_SRC = HUD_FILE.read_text(encoding="utf-8")
-PREP_SRC = (OPTICS / "XEH_PREP.hpp").read_text(encoding="utf-8")
-SETTINGS_SRC = (OPTICS / "initSettings.inc.sqf").read_text(encoding="utf-8")
-STRINGTABLE_SRC = (OPTICS / "stringtable.xml").read_text(encoding="utf-8")
-POSTINIT_SRC = (OPTICS / "XEH_postInit.sqf").read_text(encoding="utf-8")
-CONFIG_SRC = (OPTICS / "config.cpp").read_text(encoding="utf-8")
+HUD_CLASS_SRC = HUD_FILE.read_text(encoding="utf-8") + (
+    CART / "RscTitles.hpp"
+).read_text(encoding="utf-8")
+PREP_SRC = (HUDROOT / "XEH_PREP.hpp").read_text(encoding="utf-8") + (
+    CART / "XEH_PREP.hpp"
+).read_text(encoding="utf-8")
+SETTINGS_SRC = (HUDROOT / "initSettings.inc.sqf").read_text(encoding="utf-8") + (
+    CART / "initSettings.inc.sqf"
+).read_text(encoding="utf-8")
+STRINGTABLE_SRC = (HUDROOT / "stringtable.xml").read_text(encoding="utf-8") + (
+    CART / "stringtable.xml"
+).read_text(encoding="utf-8")
+POSTINIT_SRC = (HUDROOT / "XEH_postInit.sqf").read_text(encoding="utf-8") + (
+    CART / "XEH_postInit.sqf"
+).read_text(encoding="utf-8")
+CONFIG_SRC = (HUDROOT / "config.cpp").read_text(encoding="utf-8")
 ALL_HUD_SRC = "\n".join(
     [
         HUD_CLASS_SRC,
@@ -119,7 +132,7 @@ def rng(distance):
 def grid_display(position, anchor, precision, grid_raw, enabled, mgrs):
     """Run the real selector with the real legacy formatter and a stub worldToMgrs."""
     globals_ = {
-        "__EFUNC__core_worldToMgrs": lambda _p, _a, _prec: [
+        "__EFUNC__lib_worldToMgrs": lambda _p, _a, _prec: [
             mgrs,
             0.0,
             0.0,
@@ -137,7 +150,7 @@ def grid_display(position, anchor, precision, grid_raw, enabled, mgrs):
 def mgrs_marker_text(label, position, anchor, precision, mgrs):
     """Run the real marker-text kernel with a stub worldToMgrs."""
     globals_ = {
-        "__EFUNC__core_worldToMgrs": lambda _p, _a, _prec: [
+        "__EFUNC__lib_worldToMgrs": lambda _p, _a, _prec: [
             mgrs,
             0.0,
             0.0,
@@ -182,13 +195,13 @@ def _core_globals():
 def grid_lines(anchor, rect):
     """Run the real grid kernel against the real core conversions."""
     g = _core_globals()
-    g["__EFUNC__core_worldToMgrs"] = lambda p, a, prec: run_sqf(
+    g["__EFUNC__lib_worldToMgrs"] = lambda p, a, prec: run_sqf(
         CORE_W2M, [p, a, prec], _core_globals()
     )
-    g["__EFUNC__core_utmToWorld"] = lambda e, n, z, h, a: run_sqf(
+    g["__EFUNC__lib_utmToWorld"] = lambda e, n, z, h, a: run_sqf(
         CORE_UTM2WORLD, [e, n, z, h, a], _core_globals()
     )
-    g["__EFUNC__core_formatMgrs"] = lambda e, n, z, p, lat: run_sqf(
+    g["__EFUNC__lib_formatMgrs"] = lambda e, n, z, p, lat: run_sqf(
         CORE_FORMAT, [e, n, z, p, lat], _core_globals()
     )
     return run_sqf(GRID_LINES_KERNEL, [anchor, rect], g)
@@ -376,11 +389,11 @@ class TestHudSourceContract(unittest.TestCase):
         self.assertIn("idc = 9015;", HUD_CLASS_SRC)
 
     def test_the_update_calls_the_grid_selector(self):
-        self.assertIn("call FUNC(formatGridDisplay)", UPDATE_SRC)
+        self.assertIn("call EFUNC(cartography,formatGridDisplay)", UPDATE_SRC)
 
     def test_the_update_supplies_the_position_and_the_anchor(self):
         self.assertIn("getPosASL _player", UPDATE_SRC)
-        self.assertIn("EFUNC(core,getGeoAnchor)", UPDATE_SRC)
+        self.assertIn("EFUNC(lib,getGeoAnchor)", UPDATE_SRC)
 
     def test_the_hud_class_exists(self):
         self.assertIn("class GVAR(hud)", HUD_CLASS_SRC)
@@ -493,8 +506,8 @@ class TestHudMapGridContract(unittest.TestCase):
         # conversion.  It no longer projects line geometry through
         # FUNC(utmToWorld): a cardinal line follows a world axis, so it is
         # straight by construction (ADR-030).
-        self.assertIn("EFUNC(core,worldToMgrs)", GRID_LINES_SRC)
-        self.assertNotIn("EFUNC(core,utmToWorld)", GRID_LINES_SRC)
+        self.assertIn("EFUNC(lib,worldToMgrs)", GRID_LINES_SRC)
+        self.assertNotIn("EFUNC(lib,utmToWorld)", GRID_LINES_SRC)
 
 
 class TestHudWiring(unittest.TestCase):
@@ -529,7 +542,7 @@ class TestHudWiring(unittest.TestCase):
 
     def test_the_stringtable_keys_exist(self):
         for key in ("hudEnabled_Name", "hudEnabled_Description"):
-            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Hud_{key}", STRINGTABLE_SRC)
 
     def test_the_mgrs_setting_is_registered_default_on(self):
         self.assertIn(
@@ -550,7 +563,7 @@ class TestHudWiring(unittest.TestCase):
             "mgrsPrecision_Name",
             "mgrsPrecision_Description",
         ):
-            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Cartography_{key}", STRINGTABLE_SRC)
 
     def test_the_mgrs_map_grid_setting_is_registered_default_on(self):
         self.assertIn(
@@ -571,7 +584,7 @@ class TestHudWiring(unittest.TestCase):
             "mgrsCursorReadout_Name",
             "mgrsCursorReadout_Description",
         ):
-            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Cartography_{key}", STRINGTABLE_SRC)
 
     def test_the_postinit_has_the_module_guard(self):
         self.assertIn("AEE_MODULE_POST_INIT", POSTINIT_SRC)
@@ -655,13 +668,13 @@ class TestHudTrackerContract(unittest.TestCase):
     """The driver calls the three kernels and applies the offset."""
 
     def test_the_driver_calls_the_error_kernel(self):
-        self.assertIn("call EFUNC(core,gnssErrorEllipse)", TRACKER_UPDATE_SRC)
+        self.assertIn("call EFUNC(lib,gnssErrorEllipse)", TRACKER_UPDATE_SRC)
 
     def test_the_driver_calls_the_fix_kernel(self):
-        self.assertIn("call EFUNC(core,gnssFixState)", TRACKER_UPDATE_SRC)
+        self.assertIn("call EFUNC(lib,gnssFixState)", TRACKER_UPDATE_SRC)
 
     def test_the_driver_calls_the_datalink_kernel(self):
-        self.assertIn("call EFUNC(core,datalinkState)", TRACKER_UPDATE_SRC)
+        self.assertIn("call EFUNC(lib,datalinkState)", TRACKER_UPDATE_SRC)
 
     def test_the_driver_applies_the_offset(self):
         self.assertIn("call FUNC(trackerProject)", TRACKER_UPDATE_SRC)
@@ -710,8 +723,8 @@ class TestHudTrackerContract(unittest.TestCase):
             self.assertNotIn(writer, TRACKER_DRAW_SRC, writer)
 
     def test_the_gps_readout_consumes_the_tracker_state(self):
-        self.assertIn("QGVAR(trackerFix)", GPS_UPDATE_SRC)
-        self.assertIn("QGVAR(trackerR95)", GPS_UPDATE_SRC)
+        self.assertIn("QEGVAR(hud,trackerFix)", GPS_UPDATE_SRC)
+        self.assertIn("QEGVAR(hud,trackerR95)", GPS_UPDATE_SRC)
 
 
 class TestHudTrackerWiring(unittest.TestCase):
@@ -742,7 +755,7 @@ class TestHudTrackerWiring(unittest.TestCase):
             "trackerInterval_Name",
             "trackerInterval_Description",
         ):
-            self.assertIn(f"STR_AEE_Optics_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_Hud_{key}", STRINGTABLE_SRC)
 
     def test_the_postinit_starts_the_tracker(self):
         self.assertIn("FUNC(trackerUpdate)", POSTINIT_SRC)

@@ -17,10 +17,11 @@ from pathlib import Path
 
 _REPO = Path(__file__).resolve().parents[2]
 _MOB = _REPO / "addons" / "mobility" / "functions"
+_VEH = _REPO / "addons" / "vehicles" / "functions"
 _RADIO = _REPO / "addons" / "radio" / "functions"
-_MAR = _REPO / "addons" / "maritime" / "functions"
+_MAR = _REPO / "addons" / "magnetism" / "functions"
 _BALL = _REPO / "addons" / "ballistics"
-_ENV = _REPO / "addons" / "environmental" / "functions"
+_ENV = _REPO / "addons" / "persistence" / "functions"
 
 
 def _candidates(root, name):
@@ -69,8 +70,8 @@ class TestGroundFrostWiring(unittest.TestCase):
         self.src = _sqf(_MOB, "fnc_updateGroundState.sqf")
 
     def test_consumer_calls_and_reads_frost(self):
-        self.assertIn("EFUNC(environmental,detectGroundFrost)", self.src)
-        self.assertIn("EGVAR(environmental,groundFrostPresent)", self.src)
+        self.assertIn("EFUNC(persistence,detectGroundFrost)", self.src)
+        self.assertIn("EGVAR(persistence,groundFrostPresent)", self.src)
         self.assertIn("|| _groundFrost", self.src)
 
     def test_frost_presence_changes_the_ground_state(self):
@@ -154,7 +155,7 @@ class TestTerrainLimitsWiring(unittest.TestCase):
 
     def test_limits_consume_getVehicleData_clearance(self):
         limits = _sqf(_MOB, "fnc_calculateTerrainLimits.sqf")
-        self.assertIn("FUNC(getVehicleData)", limits)
+        self.assertIn("EFUNC(vehicles,getVehicleData)", limits)
         self.assertIn("_clearanceMm / 1000", limits)
         self.assertIn("_clearance = _clearanceM", limits)
 
@@ -183,7 +184,7 @@ class TestEstimateMassWiring(unittest.TestCase):
         self.src = _sqf(_MOB, "fnc_applyAccretionMass.sqf")
 
     def test_mass_path_reads_the_estimate(self):
-        self.assertIn("FUNC(estimateVehicleMass)", self.src)
+        self.assertIn("EFUNC(vehicles,estimateVehicleMass)", self.src)
         self.assertIn("unavailable", self.src)
         self.assertIn("_base = _estimate select 0", self.src)
 
@@ -204,14 +205,14 @@ class TestGetVehicleDataVerdict(unittest.TestCase):
     """getVehicleData is the value-row lookup, consumed by the limits."""
 
     def test_identity_consumers_call_match_directly(self):
-        classify = _sqf(_MOB, "fnc_classifyVehicle.sqf")
-        estimate = _sqf(_MOB, "fnc_estimateVehicleMass.sqf")
+        classify = _sqf(_VEH, "fnc_classifyVehicle.sqf")
+        estimate = _sqf(_VEH, "fnc_estimateVehicleMass.sqf")
         self.assertIn("FUNC(getVehicleMatch)", classify)
         self.assertIn("FUNC(getVehicleMatch)", estimate)
 
     def test_the_value_row_is_now_consumed(self):
         limits = _sqf(_MOB, "fnc_calculateTerrainLimits.sqf")
-        self.assertIn("FUNC(getVehicleData)", limits)
+        self.assertIn("EFUNC(vehicles,getVehicleData)", limits)
 
 
 class TestSoilStrengthQuarantine(unittest.TestCase):

@@ -43,19 +43,19 @@ private _gridTargets = [
         _pass = _pass + 1;
     };
 } forEach [
-    "aee_optics_fnc_mgrsMapDraw",
-    "aee_optics_fnc_mgrsGridLines",
-    "aee_optics_fnc_mgrsCursorText",
-    "aee_optics_fnc_mgrsMarkerText"
+    "aee_cartography_fnc_mgrsMapDraw",
+    "aee_cartography_fnc_mgrsGridLines",
+    "aee_cartography_fnc_mgrsCursorText",
+    "aee_cartography_fnc_mgrsMarkerText"
 ];
 
 // ── The MGRS line plan: computed live, densified and collinear.  A visible
 // kink would show as a join deviation well above the sub-pixel bound. ───────
-private _anchor = call aee_core_fnc_getGeoAnchor;
+private _anchor = call aee_lib_fnc_getGeoAnchor;
 if ((count _anchor) >= 9) then {
     private _c = (_anchor select 3) / 2;
     private _rect = [_c - 1000, _c - 1000, _c + 1000, _c + 1000];
-    private _plan = [_anchor, _rect, 100] call aee_optics_fnc_mgrsGridLines;
+    private _plan = [_anchor, _rect, 100] call aee_cartography_fnc_mgrsGridLines;
     _plan params ["_segments", "_labels", "_interval"];
     private _segCount = count _segments;
     if ((_segCount > 4) && {(count _labels) > 0}) then {
@@ -103,7 +103,7 @@ if ((count _anchor) >= 9) then {
 };
 
 // ── The cursor readout carries OUR MGRS at the displayed precision. ────────
-private _cursor = ["35T NQ 123 456", 42] call aee_optics_fnc_mgrsCursorText;
+private _cursor = ["35T NQ 123 456", 42] call aee_cartography_fnc_mgrsCursorText;
 if (((_cursor find "35T NQ 123 456") >= 0) && {(_cursor find " m") >= 0}) then {
     _pass = _pass + 1;
 } else {

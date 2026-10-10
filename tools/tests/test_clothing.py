@@ -13,12 +13,12 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 INS = (
-    REPO / "addons/physiology/functions/clothing/fnc_getCamouflageProperties.sqf"
+    REPO / "addons/clothing/functions/clothing/fnc_getCamouflageProperties.sqf"
 ).read_text(encoding="utf-8")
-NVG = (REPO / "addons/physiology/functions/clothing/fnc_getNvgContrast.sqf").read_text(
+NVG = (REPO / "addons/clothing/functions/clothing/fnc_getNvgContrast.sqf").read_text(
     encoding="utf-8"
 )
-CFG = (REPO / "addons/physiology/config.cpp").read_text(encoding="utf-8")
+CFG = (REPO / "addons/clothing/config.cpp").read_text(encoding="utf-8")
 
 
 class TestInsulationResolver(unittest.TestCase):
@@ -51,7 +51,7 @@ class TestInsulationResolver(unittest.TestCase):
         # garment types (winter/flight/combat) classify insulation in
         # the uniform classifier.
         uni = (
-            REPO / "addons/physiology/functions/clothing/fnc_getUniformProperties.sqf"
+            REPO / "addons/clothing/functions/clothing/fnc_getUniformProperties.sqf"
         ).read_text(encoding="utf-8")
         for kw in ("ghillie", "winter", "flight", "combat"):
             self.assertIn(f'"{kw}"', uni)
@@ -66,7 +66,7 @@ class TestInsulationResolver(unittest.TestCase):
         # uniform classifier.
         src = INS
         uni = (
-            REPO / "addons/physiology/functions/clothing/fnc_getUniformProperties.sqf"
+            REPO / "addons/clothing/functions/clothing/fnc_getUniformProperties.sqf"
         ).read_text(encoding="utf-8")
         for kw in (
             "acu",
@@ -106,7 +106,7 @@ class TestInsulationResolver(unittest.TestCase):
         # classifier (the camouflage classifier carries the pattern
         # default).
         uni = (
-            REPO / "addons/physiology/functions/clothing/fnc_getUniformProperties.sqf"
+            REPO / "addons/clothing/functions/clothing/fnc_getUniformProperties.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("default                                     { 0.50 }", uni)
 
@@ -265,7 +265,7 @@ class TestEquipmentLibrary(unittest.TestCase):
     carry the family signal.  These tests lock the researched IRL
     families (equipment-library.md) to their classifier tiers."""
 
-    CLOTH = REPO / "addons/physiology/functions/clothing"
+    CLOTH = REPO / "addons/clothing/functions/clothing"
     EQ = (
         (CLOTH / "fnc_getVestProperties.sqf").read_text(encoding="utf-8")
         + (CLOTH / "fnc_getHelmetProperties.sqf").read_text(encoding="utf-8")
@@ -412,6 +412,6 @@ class TestEquipmentMath(unittest.TestCase):
     def test_helmet_family_tier_mapping(self):
         # A 6B47 classname must hit the Russian aramid tier.
         src = (
-            REPO / "addons/physiology/functions/clothing/fnc_getHelmetProperties.sqf"
+            REPO / "addons/clothing/functions/clothing/fnc_getHelmetProperties.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn('"6b47"', src)

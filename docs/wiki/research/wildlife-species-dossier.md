@@ -30,14 +30,14 @@ reads [U] and the qualitative rule is given instead.
 
 | Matcher input | Source in AEE | Notes |
 | --- | --- | --- |
-| Koppen biome code | `aee_core_biome`, `aee_environmental_localBiome` | e.g. `Csa`, `Dfb` |
+| Koppen biome code | `aee_core_biome`, `aee_weather_localBiome` | e.g. `Csa`, `Dfb` |
 | Biome family | wildlife code, first letter | `a` tropical, `b` arid, `d`/`e` cold, else temperate |
 | Night | `sunOrMoon < 0.5`; `aee_core_currentSunElevation` | sun elevation is real, not bool |
 | Air temperature °C | `aee_core_currentTemperature` | drives insect stridulation |
 | Wind m/s | engine `wind`; `aee_core_currentWindStr` | drives song suppression |
 | Rain 0–1 | engine `rain` | drives masking and amphibian triggering |
 | Overcast | `aee_core_overcast` | low light shifts crepuscular timing |
-| Near water | `aee_environmental_getCoastDistance` | water overlay |
+| Near water | `aee_weather_getCoastDistance` | water overlay |
 | Vegetation score 0–1 | `terrainSignals` `vegVotes` | forest vs open |
 | Disturbance 0–1 | `aee_ai_disturbance` | silences, spooks |
 | Season / month | engine `date` | AEE has no single published season scalar; use mission date and Koppen seasonal test |
@@ -460,7 +460,7 @@ Repo-internal (already cited in the project):
 - `docs/wiki/research/wildlife-ambience-dossier.md` (Blumstein 2003;
   Ydenberg & Dill 1986; vanilla media inventory).
 - `addons/wildlife/data/species_table.sqf`, `sound_manifest.sqf`.
-- `addons/environmental/functions/biome/fnc_classifyBiome.sqf`.
+- `addons/weather/functions/biome/fnc_classifyBiome.sqf`.
 
 ---
 

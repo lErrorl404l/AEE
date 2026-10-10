@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Dive">
+        <Key ID="STR_AEE_Dive_DiveEnabled_Description">
+            <Original>Enable the Buhlmann ZH-L16C decompression model for diving</Original>
+            <English>Enable the Buhlmann ZH-L16C decompression model for diving</English>
+        </Key>
+        <Key ID="STR_AEE_Dive_DiveEnabled_Name">
+            <Original>Diving Physiology</Original>
+            <English>Diving Physiology</English>
+        </Key>
+        <Key ID="STR_AEE_Dive_DiveGradientFactor_Description">
+            <Original>Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C)</Original>
+            <English>Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C)</English>
+        </Key>
+        <Key ID="STR_AEE_Dive_DiveGradientFactor_Name">
+            <Original>Diving Gradient Factor</Original>
+            <English>Diving Gradient Factor</English>
+        </Key>
+        <Key ID="STR_AEE_Dive_logDebug_Description">
+            <Original>Log this module DEBUG and TRACE lines to the RPT. Off by default.</Original>
+            <English>Log this module DEBUG and TRACE lines to the RPT. Off by default.</English>
+        </Key>
+        <Key ID="STR_AEE_Dive_logDebug_Name">
+            <Original>Trace This Module</Original>
+            <English>Trace This Module</English>
+        </Key>
+    </Package>
+</Project>

@@ -2,7 +2,7 @@
 """Validate the AEE mission-task, modifier and echelon marker registration.
 
 Fails if any registered asset is missing, or any marker name in
-addons/optics/config_modifiers.hpp is not listed in data/symbology/modifiers.json
+addons/symbology/config_modifiers.hpp is not listed in data/symbology/modifiers.json
 (and the reverse).  The two files are generated together, so a mismatch means the
 tree is stale or hand-edited.
 

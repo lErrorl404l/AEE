@@ -1,9 +1,9 @@
 // PHASE 131: the muzzle-flash scene coupling, headless.
 //
 // The eye driver samples the steady scene (physical sky plus the core local
-// light) and holds a muzzle-flash transient (aee_optics_eyeFlashLux, stamped by
+// light) and holds a muzzle-flash transient (aee_eye_eyeFlashLux, stamped by
 // the Fired handler).  The transient raises only the luminance the eye ADAPTS
-// to.  It must never enter the PUBLISHED scene (aee_optics_eyeSceneLux),
+// to.  It must never enter the PUBLISHED scene (aee_eye_eyeSceneLux),
 // because the cross-module invariant INV-1 (night_scene_agreement) compares the
 // published scene against the core illuminance, which carries no muzzle flash.
 //
@@ -15,10 +15,10 @@
 //
 // Emits [P131] PASS/FAIL lines.
 
-private _flashScene = missionNamespace getVariable ["aee_optics_fnc_eyeFlashScene", nil];
-private _eyeFlash = missionNamespace getVariable ["aee_optics_fnc_eyeFlash", nil];
-private _loadTable = missionNamespace getVariable ["aee_core_fnc_consistencyLoadTable", nil];
-private _evaluate = missionNamespace getVariable ["aee_core_fnc_evaluateConsistency", nil];
+private _flashScene = missionNamespace getVariable ["aee_eye_fnc_eyeFlashScene", nil];
+private _eyeFlash = missionNamespace getVariable ["aee_eye_fnc_eyeFlash", nil];
+private _loadTable = missionNamespace getVariable ["aee_diagnostics_fnc_consistencyLoadTable", nil];
+private _evaluate = missionNamespace getVariable ["aee_diagnostics_fnc_evaluateConsistency", nil];
 
 if (isNil "_flashScene" || {isNil "_eyeFlash"} || {isNil "_loadTable"} || {isNil "_evaluate"}) exitWith {
     diag_log text "[P131] [FAIL] flash-scene kernels not compiled (eyeFlashScene/eyeFlash/consistency)";
@@ -65,14 +65,14 @@ if (abs (_flashLux - _flash) < 0.5) then {
 private _table = [] call _loadTable;
 private _night = [
     ["aee_core_illuminanceLux", _core],
-    ["aee_optics_eyeSceneLux", _steady],
+    ["aee_eye_eyeSceneLux", _steady],
     ["aee_core_currentTemperature", 17.5],
     ["aee_core_groundSurfaceTemp", 16.0],
     ["aee_core_avgGroundTemp", 15.7872],
     ["aee_core_currentSunElevation", -31.38],
     ["aee_thermal_skyBandTempC", -0.443878],
     ["aee_core_lightIsNight", true],
-    ["aee_environmental_nightClassification", 4]
+    ["aee_lighting_nightClassification", 4]
 ];
 private _steadyResult = [_table, _night] call _evaluate;
 private _steadyOk = _steadyResult select 0;
@@ -87,8 +87,8 @@ if (_steadyOk) then {
 // 5. The flash-lit scene fails INV-1: the warning the RPT showed.
 private _flashLit = +_night;
 {
-    if ((_x select 0) == "aee_optics_eyeSceneLux") then {
-        _flashLit set [_forEachIndex, ["aee_optics_eyeSceneLux", _steady + _flash]];
+    if ((_x select 0) == "aee_eye_eyeSceneLux") then {
+        _flashLit set [_forEachIndex, ["aee_eye_eyeSceneLux", _steady + _flash]];
     };
 } forEach _flashLit;
 private _flashResult = [_table, _flashLit] call _evaluate;

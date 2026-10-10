@@ -23,7 +23,7 @@ private _month = date select 1;
 private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 if (isNil "_biome" || _biome == "") exitWith {};
 
-private _normals = [_biome] call EFUNC(environmental,getClimateNormals);
+private _normals = [_biome] call EFUNC(weather,getClimateNormals);
 private _tDay   = _normals select 2;
 private _tNight = _normals select 3;
 private _RH_arr = _normals select 4;
