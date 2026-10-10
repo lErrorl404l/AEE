@@ -83,7 +83,7 @@ ROTOR_HIT_DAMAGE = 0.5
 # never touches a force, a mass or a velocity.
 STATUS_KERNEL = FUNCS / "fnc_updateStatusSystems.sqf"
 STATUS_KERNEL_SRC = STATUS_KERNEL.read_text(encoding="utf-8")
-STATUS_THRESHOLD = 21
+STATUS_THRESHOLD = 22
 
 # Sentinel status state. Distinct values so a swapped index is provable.
 HYDRAULIC_KPA = 20684.3
@@ -93,16 +93,16 @@ BATTERY_AH = 12.75
 CABIN_KPA = 75.0
 OXYGEN = "onboard"
 
-# The systems row carries the status fields at fixed indices: 13 hydraulic
-# pressure, 14 generator power, 15 bus voltage, 16 battery charge, 17 cabin
-# pressure and 20 the oxygen token.
-STATUS_SYSTEMS: list[object] = [0] * 21
-STATUS_SYSTEMS[13] = HYDRAULIC_KPA
-STATUS_SYSTEMS[14] = GENERATOR_KW
-STATUS_SYSTEMS[15] = BUS_V
-STATUS_SYSTEMS[16] = BATTERY_AH
-STATUS_SYSTEMS[17] = CABIN_KPA
-STATUS_SYSTEMS[20] = OXYGEN
+# The systems row carries the status fields at fixed indices: 14 hydraulic
+# pressure, 15 generator power, 16 bus voltage, 17 battery charge, 18 cabin
+# pressure and 21 the oxygen token.
+STATUS_SYSTEMS: list[object] = [0] * 22
+STATUS_SYSTEMS[14] = HYDRAULIC_KPA
+STATUS_SYSTEMS[15] = GENERATOR_KW
+STATUS_SYSTEMS[16] = BUS_V
+STATUS_SYSTEMS[17] = BATTERY_AH
+STATUS_SYSTEMS[18] = CABIN_KPA
+STATUS_SYSTEMS[21] = OXYGEN
 
 # The force, mass and velocity commands the status kernel must never call.
 FORBIDDEN_STATUS_COMMANDS = (
@@ -1066,7 +1066,7 @@ class TestStatusKernel(unittest.TestCase):
 
     def test_a_negative_figure_is_refused(self) -> None:
         systems = list(STATUS_SYSTEMS)
-        systems[13] = -1.0
+        systems[14] = -1.0
         result, rec = run_status_kernel(systems)
         self.assertFalse(result)
         self.assertEqual(rec.variables, {})

@@ -68,18 +68,18 @@ if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith { fal
 
 private _systems = [typeOf _veh] call FUNC(getAircraftSystems);
 if (_systems isEqualTo []) exitWith { false };
-if ((count _systems) < 21) exitWith { false };
+if ((count _systems) < 22) exitWith { false };
 
 // The systems row holds the numeric fields first, in the generated order:
-// 13 hydraulic_pressure_kpa, 14 generator_power_kw, 15 bus_voltage_v,
-// 16 battery_capacity_ah, 17 cabin_pressure_max_kpa, then the enum fields
-// with 20 oxygen_system.
-private _hydraulicKpa = _systems select 13;
-private _generatorKw = _systems select 14;
-private _busV = _systems select 15;
-private _batteryAh = _systems select 16;
-private _cabinKpa = _systems select 17;
-private _oxygen = _systems select 20;
+// 14 hydraulic_pressure_kpa, 15 generator_power_kw, 16 bus_voltage_v,
+// 17 battery_capacity_ah, 18 cabin_pressure_max_kpa, then the enum fields
+// with 21 oxygen_system.
+private _hydraulicKpa = _systems select 14;
+private _generatorKw = _systems select 15;
+private _busV = _systems select 16;
+private _batteryAh = _systems select 17;
+private _cabinKpa = _systems select 18;
+private _oxygen = _systems select 21;
 
 if (_hydraulicKpa < 0 || {_generatorKw < 0} || {_busV < 0} || {_batteryAh < 0} || {_cabinKpa < 0}) exitWith { false };
 
