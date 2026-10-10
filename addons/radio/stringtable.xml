@@ -25,6 +25,14 @@
             <Original>Propagation Range</Original>
             <English>Propagation Range</English>
         </Key>
+        <Key ID="STR_AEE_Radio_radarDetection_Description">
+            <Original>Enable the radar detection model (range equation, horizon, ducting and clutter)</Original>
+            <English>Enable the radar detection model (range equation, horizon, ducting and clutter)</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_radarDetection_Name">
+            <Original>Radar Detection</Original>
+            <English>Radar Detection</English>
+        </Key>
         <Key ID="STR_AEE_Radio_txPower_Description">
             <Original>Reference handheld transmit power in dBm used in the link budget</Original>
             <English>Reference handheld transmit power in dBm used in the link budget</English>
