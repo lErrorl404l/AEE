@@ -1,5 +1,17 @@
+PREP(calculateAbsorptionWater);
+PREP(calculateAmbientNoise);
+PREP(calculateDetectionRange);
+PREP(calculateRayBending);
 PREP(calculateSeaState);
 PREP(calculateSeaSurfaceTemperature);
+PREP(calculateShadowZone);
+PREP(calculateSonarEquation);
+PREP(calculateSoundChannel);
+PREP(calculateSoundSpeedProfile);
+PREP(calculateSoundSpeedWater);
 PREP(calculateTidalPrediction);
+PREP(calculateTransmissionLoss);
+PREP(getSonarDetectionRange);
 PREP(updateEngineWaves);
+PREP(updateUnderwaterAcoustics);
 PREP(dumpState);

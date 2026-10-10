@@ -220,6 +220,78 @@ Where $v$ is wind speed in $\ms$ and 0.836 m/s is one knot. $B$ is the
 Beaufort number (0..12) and $H_s$ is the significant wave height in metres
 (Pierson-Moskowitz fully-developed sea).
 
+## Sound speed in seawater (Mackenzie 1981)
+
+$$
+c = 1448.96 + 4.591 T - 5.304\times10^{-2} T^2 + 2.374\times10^{-4} T^3
++ 1.340 (S-35) + 1.630\times10^{-2} D + 1.675\times10^{-7} D^2
+- 1.025\times10^{-2} T (S-35) - 7.139\times10^{-13} T D^3
+$$ {#eq-mackenzie}
+
+Where $T$ is temperature (degC), $S$ salinity (psu) and $D$ depth (m).
+Source: Mackenzie (1981), JASA 70(3):807, DOI 10.1121/1.386920. Valid
+$T$ 0-30 C, $S$ 30-40 psu, $D$ 0-8000 m. At $T=10$, $S=35$, $D=0$ the
+speed is 1489.8 m/s (the common "1481 m/s" figure is fresh water at 20 C).
+
+## Seawater absorption (Francois-Garrison 1982)
+
+$$
+\alpha = \frac{A_1 P_1 f_1 f^2}{f_1^2+f^2}
++ \frac{A_2 P_2 f_2 f^2}{f_2^2+f^2} + A_3 P_3 f^2
+$$ {#eq-francois-garrison}
+
+with $f$ in kHz and, with $c = 1412 + 3.21 T + 1.19 S + 0.0167 D$:
+
+- Boric acid: $A_1 = 8.86/c \cdot 10^{0.78\,\mathrm{pH}-5}$,
+  $f_1 = 2.8\sqrt{S/35}\cdot10^{4-1245/(T+273)}$, $P_1 = 1$.
+- Magnesium sulphate: $A_2 = 21.44 S/c \cdot (1+0.025T)$,
+  $f_2 = 8.17\cdot10^{8-1990/(T+273)}/(1+0.0018(S-35))$,
+  $P_2 = 1-1.37\times10^{-4}D+6.2\times10^{-9}D^2$.
+- Pure water: $A_3 = 4.937\times10^{-4}-2.59\times10^{-5}T+9.11\times10^{-7}T^2-1.5\times10^{-8}T^3$
+  for $T\le20$ C (the $T>20$ C branch replaces the coefficients),
+  $P_3 = 1-3.83\times10^{-5}D+4.9\times10^{-10}D^2$.
+
+Source: Francois & Garrison (1982), JASA 72(6):1879, DOI 10.1121/1.388673.
+At $T=10$ C, $S=35$ psu, $D=0$ m, pH 8 the result is 0.001 dB/km at
+100 Hz, 0.06 dB/km at 1 kHz, 0.96 dB/km at 10 kHz and 34 dB/km at 100 kHz.
+
+## Transmission loss and the sonar equation (Urick)
+
+$$
+TL = \log\!F \cdot \log_{10}(r) + \frac{\alpha}{1000} r,
+\qquad \log\!F = 20 \text{ (spherical)}, 10 \text{ (cylindrical)}
+$$ {#eq-transmission-loss}
+
+$$
+SE_{passive} = SL - TL - NL + DI, \qquad
+SE_{active} = SL - 2TL + TS - NL + DI
+$$ {#eq-sonar}
+
+Detection occurs when $SE \ge DT$. Source: Urick, "Principles of
+Underwater Sound", 3rd ed., 1983, ISBN 0-07-066087-5. The detection range
+inverts the transmission loss for the allowed excess
+$EL_{passive} = SL-NL+DI-DT$ or $EL_{active} = (SL+TS-NL+DI-DT)/2$.
+
+## Ambient noise (Wenz 1962)
+
+The sea-state component at 1 kHz is $L = 40 + 5\,\mathrm{SS}$ dB re
+1 uPa^2/Hz (SS 0..6). Wenz (1962), JASA 34(12):1936, DOI
+10.1121/1.1909155, published the spectrum as graphical curves, so this
+is a stated model anchored to those curves; the frequency shape is a
+stated approximation.
+
+## Snell ray bending and the sound channel
+
+$$
+\frac{\cos\theta}{c} = \text{constant}
+$$ {#eq-snell}
+
+Across a layer boundary $\cos\theta_2 = (c_2/c_1)\cos\theta_1$; a ray
+bends toward the slower sound speed. When $(c_2/c_1)\cos\theta_1 \ge 1$
+the boundary is a turning point. The SOFAR channel axis is the depth of
+least sound speed; the direct-path shadow zone is the band below it
+(convergence-zone refill is not modelled).
+
 ## Turbulence (ICAO EDR)
 
 $$

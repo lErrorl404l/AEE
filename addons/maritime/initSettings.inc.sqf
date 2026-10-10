@@ -16,6 +16,18 @@ AEE_SETTING_SLIDER(seaStateResponse,"AEE Maritime","Sea",0.1,0.9,0.3,2);
 // baseline); high = the sea follows the air quickly.
 AEE_SETTING_SLIDER(seaCouplingWeight,"AEE Maritime","Sea",0,1,0.5,2);
 
+// ── Underwater acoustics (issue #113) ──────────────────────────────────────
+// The acoustics driver publishes the environmental sound state once per
+// second.  The reference frequency sets the band for the published
+// absorption and ambient noise; a scenario reads the sonar equation at its
+// own frequency.  Salinity and the deep-water temperature set the sound
+// speed profile; the thermocline depth is the base of the mixed layer.
+AEE_SETTING_CHECKBOX(underwaterAcousticsEnabled,"AEE Maritime","Acoustics",true);
+AEE_SETTING_SLIDER(acousticReferenceFreqHz,"AEE Maritime","Acoustics",50,20000,1000,0);
+AEE_SETTING_SLIDER(seaSalinity,"AEE Maritime","Acoustics",30,40,35,1);
+AEE_SETTING_SLIDER(deepWaterTemperature,"AEE Maritime","Acoustics",0,15,4,1);
+AEE_SETTING_SLIDER(thermoclineDepth,"AEE Maritime","Acoustics",20,500,100,0);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,
