@@ -11,6 +11,11 @@ AEE_SETTING_SLIDER(ammoTempTimeConstant,"AEE Ballistics","Ammo Temperature",30,3
 
 AEE_SETTING_SLIDER(ammoHeatPerShotJ,"AEE Ballistics","Ammo Temperature",0,0.001,0.0001,4);
 
+// ── Missile seeker (issue #131) ───────────────────────────────────────────
+// The missile seeker model is a public API a consumer calls per missile per
+// tick.  It is off by default, so nothing runs until a scenario enables it.
+AEE_SETTING_CHECKBOX(missileSeekerEnabled,"AEE Ballistics","Missile Seeker",false);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,
