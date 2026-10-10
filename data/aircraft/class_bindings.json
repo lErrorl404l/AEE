@@ -582,5 +582,213 @@
     "identity_source": "aee_air_class_table",
     "identity_evidence": "O_Plane_Fighter_02_Stealth_F is an Arma 3 Plane class; it is a variant of the O_Plane_Fighter_02_F family bound to su57_felon. The class name does not name the real aircraft, so the link stays class_only and grade claimed.",
     "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_F is an Arma 3 Helicopter class for the Mi-290 Taru, a fictional CSAT heavy-lift helicopter; the class name does not name the real aircraft, so the Helicopter class token binds it to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_ammo_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_ammo_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_ammo_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_ammo_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_bench_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_bench_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_bench_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_bench_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_box_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_box_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_box_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_box_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_covered_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_covered_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_covered_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_covered_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_fuel_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_fuel_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_fuel_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_fuel_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_medevac_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_medevac_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_medevac_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_medevac_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_repair_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_repair_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Heli_Transport_04_repair_black_F",
+    "class_token": "Helicopter",
+    "catalogue_id": "mi26_halo",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_Heli_Transport_04_repair_black_F is an Arma 3 Helicopter class; it is a variant of the O_Heli_Transport_04_F family bound to the Mil Mi-26 Halo analogue at grade claimed, and the corpus holds the Mi-26 figures from the OPFOR Worldwide Equipment Guide (src_opfor_weg). The Helicopter class token is the identity evidence.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_UAV_02_CAS_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "B_UAV_02_CAS_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_UAV_02_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "B_UAV_02_F is an Arma 3 UAV class for the MQ-4A Greyhawk, a fictional unmanned combat air vehicle; the Armed Assault Wiki names the MQ-9 as its basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_UAV_02_dynamicLoadout_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "B_UAV_02_dynamicLoadout_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_UAV_02_CAS_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_UAV_02_CAS_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_UAV_02_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_UAV_02_F is an Arma 3 UAV class for the MQ-4A Greyhawk, a fictional unmanned combat air vehicle; the Armed Assault Wiki names the MQ-9 as its basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_UAV_02_dynamicLoadout_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "I_UAV_02_dynamicLoadout_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_UAV_02_CAS_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "O_UAV_02_CAS_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_UAV_02_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "O_UAV_02_F is an Arma 3 UAV class for the MQ-4A Greyhawk, a fictional unmanned combat air vehicle; the Armed Assault Wiki names the MQ-9 as its basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_UAV_02_dynamicLoadout_F",
+    "class_token": "UAV",
+    "catalogue_id": "mq9a_reaper",
+    "identity_source": "src_armedassault_wiki",
+    "identity_evidence": "O_UAV_02_dynamicLoadout_F is an Arma 3 UAV class; it is a variant of the MQ-4A Greyhawk family that the Armed Assault Wiki names as the MQ-9 basis, so the UAV class token binds it to the General Atomics MQ-9A Reaper analogue at grade claimed, and the corpus holds the MQ-9A figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_T_UAV_04_CAS_F",
+    "class_token": "UAV",
+    "catalogue_id": "ch5_rainbow",
+    "identity_source": "aee_air_class_table",
+    "identity_evidence": "O_T_UAV_04_CAS_F is an Arma 3 UAV class for the KH-3A Fenghuang, a fictional unmanned combat air vehicle; the class name does not name the real aircraft, so the UAV class token binds it to the CASC CH-5 Rainbow analogue at grade claimed, and the corpus holds the CH-5 figures from the ODIN Worldwide Equipment Guide 2025 (src_odin_weg_2025).",
+    "grade": "claimed"
   }
 ]
