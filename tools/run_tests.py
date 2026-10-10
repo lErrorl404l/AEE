@@ -256,6 +256,9 @@ def main():
         # Conformance meta-gates (ADR-031): suite registration and ADR numbering.
         "tools/tests/test_suite_registration.py",
         "tools/tests/test_adr_numbers.py",
+        # Dynamic identifier allocation: the next free ADR number and probe
+        # tag, derived so concurrent worktrees never collide.
+        "tools/tests/test_next_id.py",
         # Engine reference: the docs/engine index and its portability rule.
         "tools/tests/test_engine_docs.py",
         # Dev harness release exclusion, part (a). Part (b) runs in the full
