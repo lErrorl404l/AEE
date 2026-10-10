@@ -52,6 +52,14 @@ if (_capeProxy > 0 && _RH > 60) then {
 };
 
 private _trend = (_RH / 100 * 0.4) + ([0, 0.3] select (_T > 25)) + ([0.2, -0.1] select (_windSpeed >= 3)) + _convective;
+
+// Weather front (issue #15): a front forces the trend — cloud builds ahead of
+// it and clears behind it.  fnc_updateWeatherFront publishes the signed term,
+// already scaled by the phase factor.  Folding the forcing here keeps ONE
+// cloud model; the front does not recompute the convective physics.
+private _frontTerm = missionNamespace getVariable [QGVAR(frontCloudTerm), 0];
+if !(_frontTerm isEqualType 0) then { _frontTerm = 0; };
+_trend = _trend + _frontTerm;
 _trend = (_trend max -0.5) min 0.5;
 
 private _description = switch (true) do {
