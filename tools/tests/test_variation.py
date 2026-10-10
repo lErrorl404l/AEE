@@ -35,6 +35,7 @@ FAMILIES_KERNEL = SYM / "fnc_variationFamilies.sqf"
 OPTIONS_KERNEL = SYM / "fnc_variationOptions.sqf"
 RESOLVE_KERNEL = SYM / "fnc_variationResolve.sqf"
 STATE_KERNEL = SYM / "fnc_variationState.sqf"
+APPLY_KERNEL = SYM / "fnc_variationApply.sqf"
 SYMBOL_RESOLVE_KERNEL = SYM / "fnc_symbolResolve.sqf"
 MARKER_TYPE_KERNEL = SYM / "fnc_symbologyMarkerType.sqf"
 MARKER_COLOR_KERNEL = SYM / "fnc_symbologyMarkerColor.sqf"
@@ -44,6 +45,9 @@ GENERATOR = REPO / "tools" / "gen_variation_families.py"
 CONFIG_SRC = (SYMBOLOGY / "config.cpp").read_text(encoding="utf-8")
 VARIATION_CONFIG_SRC = (SYMBOLOGY / "config_variations.hpp").read_text(encoding="utf-8")
 RUNNER_SRC = (REPO / "tools" / "run_tests.py").read_text(encoding="utf-8")
+PREP_SRC = (SYMBOLOGY / "XEH_PREP.hpp").read_text(encoding="utf-8")
+APPLY_SRC = APPLY_KERNEL.read_text(encoding="utf-8")
+MARKERS_APPLY_SRC = (SYM / "fnc_symbologyMarkersApply.sqf").read_text(encoding="utf-8")
 
 MODEL = run_sqf(VARIATION_SQF, [])
 SYM_TABLES = run_sqf(TABLES_SQF, [])
@@ -273,6 +277,40 @@ class TestVariationCollapse(unittest.TestCase):
         overrides = re.findall(r"class \w+: \w+ \{ icon = ", text)
         self.assertGreaterEqual(len(overrides), 43)
         self.assertNotIn("scope = 0;", "\n".join(overrides))
+
+
+class TestVariationApply(unittest.TestCase):
+    """The apply layer re-types the family markers, client-local only.
+
+    The behavioural assertion (a marker of type AEE_Variation resolves to
+    AEE_o_armor for the hostile-armour state, and reverts to AEE_Variation on
+    restore) runs in the headless probe P143, which drives the real engine
+    marker commands.
+    """
+
+    def test_the_kernel_is_prepped(self):
+        self.assertIn("PREPS(symbology,variationApply)", PREP_SRC)
+
+    def test_it_delegates_to_the_resolver(self):
+        self.assertIn("FUNC(variationResolve)", APPLY_SRC)
+
+    def test_it_uses_only_local_marker_commands(self):
+        self.assertIn("setMarkerTypeLocal", APPLY_SRC)
+        self.assertIn("setMarkerColorLocal", APPLY_SRC)
+        for global_command in (
+            "setMarkerType ",
+            "setMarkerColor ",
+            "setMarkerPos ",
+            "setMarkerDir ",
+            "createMarker ",
+            "deleteMarker ",
+        ):
+            with self.subTest(command=global_command):
+                self.assertNotIn(global_command, APPLY_SRC)
+
+    def test_the_apply_pass_handles_the_family_entry(self):
+        self.assertIn('"AEE_Variation"', MARKERS_APPLY_SRC)
+        self.assertIn("FUNC(variationResolve)", MARKERS_APPLY_SRC)
 
 
 class TestVariationSuiteRegistration(unittest.TestCase):

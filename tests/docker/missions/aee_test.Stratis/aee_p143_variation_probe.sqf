@@ -99,6 +99,36 @@ if (_subject isNotEqualTo "") then {
     _notes pushBack "no scope-0 AEE CfgMarkers class found";
 };
 
+// 6. the apply layer re-types a family marker from the active state, and the
+//    restore reverts it to the family type.
+private _fnApply = missionNamespace getVariable ["aee_symbology_fnc_variationApply", nil];
+private _fnRestore = missionNamespace getVariable ["aee_symbology_fnc_symbologyMarkersRestore", nil];
+if (!isNil "_fnApply" && {!isNil "_fnRestore"}) then {
+    private _familyMarker = createMarkerLocal ["aee_p143_family", [0, 0, 0]];
+    _familyMarker setMarkerTypeLocal "AEE_Variation";
+    missionNamespace setVariable ["aee_symbology_variationState", [["affiliation", "hostile"], ["function", "armour"]]];
+    [] call _fnApply;
+    if ((markerType _familyMarker) isEqualTo "AEE_o_armor") then {
+        _pass = _pass + 1;
+    } else {
+        _fail = _fail + 1;
+        _notes pushBack format ["variationApply -> %1", markerType _familyMarker];
+    };
+    missionNamespace setVariable ["aee_symbology_symbologyMarkerCache", [[_familyMarker, "AEE_Variation", "ColorAEE"]]];
+    [] call _fnRestore;
+    if ((markerType _familyMarker) isEqualTo "AEE_Variation") then {
+        _pass = _pass + 1;
+    } else {
+        _fail = _fail + 1;
+        _notes pushBack format ["restore -> %1", markerType _familyMarker];
+    };
+    deleteMarkerLocal _familyMarker;
+    missionNamespace setVariable ["aee_symbology_variationState", []];
+} else {
+    _fail = _fail + 1;
+    _notes pushBack "variationApply / symbologyMarkersRestore not compiled";
+};
+
 if (_fail == 0) then {
     diag_log text format ["[P143] [PASS] variation entry and marker placement (%1 checks)", _pass];
 } else {
