@@ -15,6 +15,9 @@ environmental, and the map and symbology.
 - Part 2 describes the engine systems and what they do and do not allow.
 - Part 3 is the consolidated ceiling list: what a mod cannot do, with evidence.
 - Part 4 records the sources and the BIKI access problem.
+- The complete command inventory, every group with its command count and its
+  Arma 3 version, is in
+  [engine-command-inventory.md](engine-command-inventory.md).
 
 ## Source hierarchy and method
 
