@@ -286,6 +286,8 @@ def main():
         "tools/tests/test_next_id.py",
         # Engine reference: the docs/engine index and its portability rule.
         "tools/tests/test_engine_docs.py",
+        # Interface control documents: freshness, index and grounding.
+        "tools/tests/test_icd_docs.py",
         # Dev harness release exclusion, part (a). Part (b) runs in the full
         # sweep only (see RELEASE_SUITES) because it needs a release tree.
         "tools/tests/test_dev_harness_release_exclusion.py",
