@@ -338,6 +338,13 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_currentFireRisk` | environmental | Fire spread risk 0..1 |
 | `aee_persistence_fireSpreadRate_mps` | environmental | Fire spread rate in m/s |
 | `aee_persistence_fireArea_m2` | environmental | Fire area in m2 |
+| `aee_persistence_fireIntensity_kWm` | environmental | Byram fireline intensity in kW/m |
+| `aee_persistence_flameLength_m` | environmental | Byram flame length in m |
+| `aee_persistence_fuelMoisture_1h` | environmental | 1-hour dead fuel moisture, fraction |
+| `aee_persistence_fuelMoisture_10h` | environmental | 10-hour dead fuel moisture, fraction |
+| `aee_persistence_fuelMoisture_100h` | environmental | 100-hour dead fuel moisture, fraction |
+| `aee_persistence_fuelMoisture_live` | environmental | Live fuel moisture, fraction |
+| `aee_persistence_fuelModel` | environmental | Active Rothermel fuel model id |
 | `aee_core_currentFloodRisk` | environmental | Flash flood risk 0..1 |
 | `aee_core_currentAvalancheRisk` | environmental | Avalanche risk 0..1 |
 | `aee_persistence_currentAvalancheStability` | environmental | McClung stability index S (strength/shear stress) |
