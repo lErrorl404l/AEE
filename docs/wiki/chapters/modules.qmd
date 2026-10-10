@@ -311,14 +311,17 @@ no map name. The design decision is in ADR-016.
 
 ## maritime
 
-Sea state and tides.
+Sea state, tides and the surface ocean current.
 
 | Function | Purpose |
 |---|---|
 | `calculateCompassDeviation` | Calculate compass deviation |
 | `calculateMagneticAnomaly` | Calculate magnetic field anomaly at a position |
+| `calculateOceanCurrent` | Calculate the surface ocean current from the wind and the tide |
 | `calculateSeaState` | Calculate the sea state |
 | `calculateTidalPrediction` | Calculate the tidal prediction |
+| `ekmanTransport` | Ekman wind-driven transport and layer depth |
+| `tidalCurrentSpeed` | Tidal current speed from the tidal height |
 | `updateEngineWaves` | Render the sea state as engine waves |
 
 ## physiology

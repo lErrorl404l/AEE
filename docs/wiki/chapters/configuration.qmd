@@ -547,6 +547,16 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_hydrology_riverSectionWidth_m` | SLIDER | `4` | yes | hydrology | Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise. |
 | `aee_hydrology_tidalReach_m` | SLIDER | `5000` | yes | hydrology | Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance. |
 
+## AEE Maritime → Current
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_maritime_oceanChannelDepth_m` | SLIDER | `30` | yes | maritime | Water depth in metres used by the tidal current u = eta sqrt(g/H); the engine exposes no bathymetry, so this is a scenario parameter |
+| `aee_maritime_oceanCurrentEnabled` | CHECKBOX | `true` | yes | maritime | Compute the surface ocean current from the wind and the tide |
+| `aee_maritime_oceanDeflectionDeg` | SLIDER | `30` | yes | maritime | Angle in degrees the wind-driven current is deflected to the right of the wind (left in the southern hemisphere) |
+| `aee_maritime_oceanTidalFloodBearing` | SLIDER | `0` | yes | maritime | Bearing in degrees of the tidal flood axis; the current runs along it and reverses on the ebb |
+| `aee_maritime_oceanWindCurrentFraction` | SLIDER | `0.03` | yes | maritime | Fraction of the 10 m wind speed carried as surface current; the empirical range is 1 to 3 percent |
+
 ## AEE Maritime → Sea
 
 | Setting | Type | Default | Global | Addon | Purpose |
