@@ -87,7 +87,9 @@ private _aee = ("true" configClasses (configFile >> "CfgMarkers")) select {
 };
 private _visible = _aee select { getNumber (_x >> "scope") > 0 };
 private _count = count _visible;
-if (_count == 5612) then {
+// The dynamic variation entry adds ONE editor-visible AEE marker
+// (aee-dynamic-variation-system); the collapsed count follows the generator.
+if (_count == 5613) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
