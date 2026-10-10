@@ -205,6 +205,8 @@ def main():
         "tools/tests/test_terrain.py",
         # The map QA matrix and its machine checks (aee-map-realism-polish).
         "tools/tests/test_map_qa.py",
+        # The physics-state tactical map overlay (issue #155).
+        "tools/tests/test_map_overlay.py",
         # Map symbology: the derived engine marker mapping (ADR-029).
         "tools/tests/test_symbology.py",
         "tools/tests/test_marker_derivation.py",
