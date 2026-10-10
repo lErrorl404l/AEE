@@ -9,7 +9,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.0;
-        requiredAddons[] = {"aee_mobility"};
+        requiredAddons[] = {"aee_vehicles"};
         author = "AEE";
     };
 };

@@ -3,31 +3,6 @@
 
 AEE_MODULE_POST_INIT
 
-// ─── Aircraft systems driver ────────────────────────────────────────────
-// ONE per-frame handler schedules the fuel, engine, damage and status
-// kernels. It runs on the machine that owns each airframe, INCLUDING the
-// server, so a server-owned AI airframe burns fuel and never has infinite
-// fuel. The handler passes the elapsed MISSION TIME since the last tick,
-// not a client-local tick count, so every machine that owns the airframe
-// computes the same burn from the same systems row. This block sits ABOVE
-// the hasInterface guard on purpose: the driver must run on the dedicated
-// server too.
-GVAR(aircraftSystemsLastTime) = -1;
-GVAR(aircraftSystemsPFH) = [{
-    private _now = time;
-    private _last = GVAR(aircraftSystemsLastTime);
-    if (_last < 0) then { _last = _now; };
-    private _delta = _now - _last;
-    GVAR(aircraftSystemsLastTime) = _now;
-    if (_delta > 0) then {
-        BEGIN_COUNTER(updateAircraftSystems);
-        [_delta] call FUNC(updateAircraftSystems);
-        END_COUNTER(updateAircraftSystems);
-    };
-}, 1.0] call CBA_fnc_addPerFrameHandler;
-
-AEE_LOG_INFO("aircraft systems PFH started");
-
 // The per-frame loops below are client-side effects. The dedicated server
 // has no local player and must not run them.
 if (!hasInterface) exitWith {};

@@ -58,7 +58,7 @@ Arguments:
 
 Return Value: ARRAY - [remainingFuelMassKg, cgOffsetM], or [-1, -1] when an
 input is unusable.
-Example: [500, 0.1, 0, 0, 10, 600, 2.5] call aee_mobility_fnc_calculateFuelBurn
+Example: [500, 0.1, 0, 0, 10, 600, 2.5] call aee_flight_fnc_calculateFuelBurn
 Public: No
 */
 

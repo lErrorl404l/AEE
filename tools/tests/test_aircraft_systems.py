@@ -18,7 +18,7 @@ These tests prove:
     runtime inertia hook.
   * NEGATIVE: the same class at grade ``claimed`` emits no key and is
     recorded as a lead.
-  * NON-REGRESSION: the shipped ``addons/mobility/generated/CfgVehicles.hpp``
+  * NON-REGRESSION: the shipped ``addons/vehicles/generated/CfgVehicles.hpp``
     still carries one block, exactly eighteen land bodies and the keys
     ``maxSpeed`` and ``mass``, and it holds no aircraft key.
 
@@ -40,7 +40,7 @@ sys.path.insert(0, str(REPO))
 from tools.validation import gen_physics_config as gen  # noqa: E402
 from tools.validation import validate_physics_config as v  # noqa: E402
 
-GENERATED = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
+GENERATED = REPO / "addons" / "vehicles" / "generated" / "CfgVehicles.hpp"
 VEHICLE = REPO / "data" / "vehicle"
 
 # One `class CfgVehicles {` opener at column zero.

@@ -2,13 +2,13 @@
 /*
 Aircraft systems runtime lookup (issue #117).
 
-Function: aee_mobility_fnc_getAircraftSystems.
+Function: aee_flight_fnc_getAircraftSystems.
 
 This file is GENERATED. The generator tools/validation/gen_aircraft_systems.py
 writes it from the validated aircraft catalogue under data/aircraft/. Do not
 edit it by hand. Edit the corpus and regenerate it.
 
-The lookup is a thin consumer of aee_mobility_fnc_getAircraftMatch. It returns
+The lookup is a thin consumer of aee_flight_fnc_getAircraftMatch. It returns
 the systems row of a unique match, or an empty array. The systems row is a
 fixed-order array. A consumer indexes a value by name through the ordered
 field-name tuple.

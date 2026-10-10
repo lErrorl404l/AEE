@@ -51,7 +51,7 @@ Arguments:
   1:  _deltaTimeS (NUMBER) elapsed interval, s, default diag_deltaTime
 
 Return Value: BOOL - true when the damage state was applied
-Example: [cursorObject, 1] call aee_mobility_fnc_updateDamageSystem
+Example: [cursorObject, 1] call aee_flight_fnc_updateDamageSystem
 Public: No
 */
 

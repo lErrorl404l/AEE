@@ -9,8 +9,8 @@ and fuel, and it exposes setFuel, so the fuel LEVEL is engine-owned.  The
 generated config sets fuelConsumptionRate to zero for every bound aircraft
 class, because the sourced rate lives in the systems row and a nonzero config
 rate would double-count.  This kernel is the scripted burn that replaces it.
-It reads the generated systems row through aee_mobility_fnc_getAircraftSystems
-and does the arithmetic in the pure kernel aee_mobility_fnc_calculateFuelBurn.
+It reads the generated systems row through aee_flight_fnc_getAircraftSystems
+and does the arithmetic in the pure kernel aee_flight_fnc_calculateFuelBurn.
 
 DETERMINISM AND LOCALITY.  The burn is DETERMINISTIC and it runs on the machine
 that owns the airframe, INCLUDING the server.  The local test is the gate.  A
@@ -51,7 +51,7 @@ Arguments:
   1:  _deltaTimeS (NUMBER) elapsed interval, s, default diag_deltaTime
 
 Return Value: BOOL - true when the burn was applied
-Example: [cursorObject, 1] call aee_mobility_fnc_updateFuelSystem
+Example: [cursorObject, 1] call aee_flight_fnc_updateFuelSystem
 Public: No
 */
 

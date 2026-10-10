@@ -46,7 +46,7 @@ Arguments:
   0:  _deltaTimeS (NUMBER) elapsed mission time since the last tick, s
 
 Return Value: BOOL - true when the driver ran
-Example: [1] call aee_mobility_fnc_updateAircraftSystems
+Example: [1] call aee_flight_fnc_updateAircraftSystems
 Public: No
 */
 

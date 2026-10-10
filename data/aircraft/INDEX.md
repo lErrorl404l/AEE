@@ -104,8 +104,8 @@ to name its formula. It exits 1 on an error.
 | `data/aircraft/CLASS_MAPPING_GAPS.md` | coverage | Generated unmapped classes and tokens. |
 | `data/aircraft/RESEARCH_GAPS.md` | entry | The hand-written lead and data-gap register. |
 | `tools/validation/gen_aircraft_systems.py` | generator | Writes the systems lookup from the corpus. |
-| `addons/mobility/functions/fnc_getAircraftSystems.sqf` | generated | The fixed-order systems row. It returns `[]` for an unknown class. |
-| `addons/mobility/generated/CfgVehicles.hpp` | generated | The load-time config, the aircraft `fuelCapacity` and the land physics keys. |
+| `addons/flight/functions/fnc_getAircraftSystems.sqf` | generated | The fixed-order systems row. It returns `[]` for an unknown class. |
+| `addons/vehicles/generated/CfgVehicles.hpp` | generated | The load-time config, the aircraft `fuelCapacity` and the land physics keys. |
 
 The `data/aircraft/fixtures/` layer holds a deliberate invalid pilot
 fixture. It is a negative-test and audit artefact. The validator must reject
@@ -196,7 +196,7 @@ or the four-value runtime projection. The systems pieces are these.
   physics surface. `data/aircraft/SCHEMA.md` section 10 states only the
   aircraft deltas.
 - The systems lookup. `tools/validation/gen_aircraft_systems.py` writes
-  `addons/mobility/functions/fnc_getAircraftSystems.sqf`. It returns a
+  `addons/flight/functions/fnc_getAircraftSystems.sqf`. It returns a
   fixed-order systems row for a known class and `[]` for an unknown class.
   It reads no config value and no source registry at runtime.
 - The runtime kernels and driver. The kernel set holds the fuel burn and

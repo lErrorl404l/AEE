@@ -6,7 +6,7 @@ carries a value, a unit, a source, a locator, a state and a grade per field.
 This generator reads the shared catalogue loader output through the aircraft
 profile and writes one SQF file:
 
-  addons/mobility/functions/fnc_getAircraftSystems.sqf  the systems row lookup
+  addons/flight/functions/fnc_getAircraftSystems.sqf  the systems row lookup
 
 The systems row carries the numeric systems fields in fixed order, then the
 enum systems fields. The generated file states the ordered field-name tuple,
@@ -38,7 +38,7 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 ROOT = _REPO
 DEFAULT_DATA = ROOT / "data" / "aircraft"
-SYSTEMS_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getAircraftSystems.sqf"
+SYSTEMS_OUT = ROOT / "addons" / "flight" / "functions" / "fnc_getAircraftSystems.sqf"
 
 # The aircraft profile selects the type enum and the named derivations. The
 # type enum is fixed_wing and rotary_wing.
@@ -83,13 +83,13 @@ SYSTEMS_TEMPLATE = """#include "..\\script_component.hpp"
 /*
 Aircraft systems runtime lookup (issue #117).
 
-Function: aee_mobility_fnc_getAircraftSystems.
+Function: aee_flight_fnc_getAircraftSystems.
 
 This file is GENERATED. The generator tools/validation/gen_aircraft_systems.py
 writes it from the validated aircraft catalogue under data/aircraft/. Do not
 edit it by hand. Edit the corpus and regenerate it.
 
-The lookup is a thin consumer of aee_mobility_fnc_getAircraftMatch. It returns
+The lookup is a thin consumer of aee_flight_fnc_getAircraftMatch. It returns
 the systems row of a unique match, or an empty array. The systems row is a
 fixed-order array. A consumer indexes a value by name through the ordered
 field-name tuple.

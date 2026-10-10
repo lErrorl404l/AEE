@@ -81,35 +81,45 @@ if (_bodyMs <= _bodyBoundMs) then {
 
 // ── 3. The removed per-tick log line, with the switch on and off ──────────
 // The exact guarded shape the fix removed: test the switch, build, diag_log.
+// The guard must short-circuit: with the switch off the line is neither built
+// nor written.  A hit counter inside the guarded body encodes that literally:
+// the switch-on pass runs the body _NLog times, the switch-off pass never runs
+// it.  A timing comparison would flake: diag_log is asynchronous, so the whole
+// loop sits under one diag_tickTime frame boundary and the measured value is
+// which window that tick landed in, not the guard's work.
 missionNamespace setVariable ["aee_core_logDebug", true];
+missionNamespace setVariable ["aee_p120Hits", 0];
 _t = diag_tickTime;
 for "_i" from 1 to _NLog do {
     if (missionNamespace getVariable ["aee_core_logDebug", false]) then {
+        missionNamespace setVariable ["aee_p120Hits", (missionNamespace getVariable ["aee_p120Hits", 0]) + 1];
         diag_log text format ["[P120] per-tick line %1 | %2", _i, 0];
     };
 };
 private _logOnMs = ((diag_tickTime - _t) * 1000) / _NLog;
+private _onHits = missionNamespace getVariable ["aee_p120Hits", 0];
 
 missionNamespace setVariable ["aee_core_logDebug", false];
+missionNamespace setVariable ["aee_p120Hits", 0];
 _t = diag_tickTime;
 for "_i" from 1 to _NLog do {
     if (missionNamespace getVariable ["aee_core_logDebug", false]) then {
+        missionNamespace setVariable ["aee_p120Hits", (missionNamespace getVariable ["aee_p120Hits", 0]) + 1];
         diag_log text format ["[P120] per-tick line %1 | %2", _i, 0];
     };
 };
 private _logOffMs = ((diag_tickTime - _t) * 1000) / _NLog;
+private _offHits = missionNamespace getVariable ["aee_p120Hits", 0];
 
-// The guard must short-circuit: with the switch off the line is neither built
-// nor written, so the per-pass cost collapses.
-// The guard must short-circuit: with the switch off the line is neither built
-// nor written, so the per-pass cost collapses.  The comparison is NON-STRICT:
-// the on path is never cheaper than the off path, and on a fast host both
-// round to 0 ms, so a strict `<` would flake with the host speed.
-if (_logOffMs <= _logOnMs) then {
+// Deterministic, host-independent: the switch-on pass runs the guarded body on
+// every pass; the switch-off pass never does.  This fails if the guard is
+// removed (_offHits = _NLog), if the body is unreachable (_onHits = 0), or if
+// the condition inverts.  The per-pass timings remain printed diagnostics.
+if (_onHits == _NLog && {_offHits == 0}) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
-    _notes pushBack format ["guard did not short-circuit: on %1 ms off %2 ms", _logOnMs, _logOffMs];
+    _notes pushBack format ["guard did not short-circuit: on %1 hits off %2 hits (on %3 ms off %4 ms)", _onHits, _offHits, _logOnMs, _logOffMs];
 };
 
 deleteVehicle _veh;
