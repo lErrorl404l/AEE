@@ -9,5 +9,13 @@
             <Original>Log Debug Output</Original>
             <English>Log Debug Output</English>
         </Key>
+        <Key ID="STR_AEE_AI_nativeHearing_Description">
+            <Original>Reveal sound sources to AI through AEE's sound propagation</Original>
+            <English>Reveal sound sources to AI through AEE's sound propagation</English>
+        </Key>
+        <Key ID="STR_AEE_AI_nativeHearing_Name">
+            <Original>Native AI Hearing</Original>
+            <English>Native AI Hearing</English>
+        </Key>
     </Package>
 </Project>

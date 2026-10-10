@@ -192,6 +192,7 @@ def main():
         "tools/tests/test_night_sky_debug.py",
         "tools/tests/test_nvg_imperfections.py",
         "tools/tests/test_ai.py",
+        "tools/tests/test_ai_hearing.py",
         "tools/tests/test_wildlife.py",
         "tools/tests/test_wildlife_ecology.py",
         "tools/tests/test_rpt_regressions.py",

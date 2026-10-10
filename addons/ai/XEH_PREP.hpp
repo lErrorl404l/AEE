@@ -14,3 +14,6 @@ PREP(receiveStimulus);
 PREP(initAI);
 PREP(teardownAI);
 PREP(dumpState);
+PREP(hearingRange);
+PREP(revealSound);
+PREP(initHearing);
