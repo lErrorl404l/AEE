@@ -5,3 +5,14 @@
 
 PREPS(blast,calculateBlastInjury);
 PREPS(blast,calculateBlastOverpressure);
+
+// Explosion fragmentation physics (issue #107).
+PREPS(fragmentation,calculateFragmentAngularFraction);
+PREPS(fragmentation,calculateFragmentDecay);
+PREPS(fragmentation,calculateFragmentDensity);
+PREPS(fragmentation,calculateFragmentHitChance);
+PREPS(fragmentation,calculateFragmentLethality);
+PREPS(fragmentation,calculateGurneyVelocity);
+PREPS(fragmentation,calculateMottCount);
+PREPS(fragmentation,calculateMottMass);
+PREPS(fragmentation,getFragmentationWarhead);
