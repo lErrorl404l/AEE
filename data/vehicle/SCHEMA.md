@@ -842,6 +842,14 @@ The Wheel `boneName` is the damper bone.
 | Field | Source class or derivation | Marker |
 |---|---|---|
 | `simulation` | engine schema, `shipx` | engine schema |
+| `displacement_kg` | published, displacement, light ship, unit kg | published |
+| `full_load_displacement_kg` | published, full load displacement, unit kg | published |
+
+The ship mass key is the top-level `CfgVehicles` `mass`. The engine has no
+separate `shipx` mass key. The two displacement states are the two held
+states for the one key. `displacement_kg` is the light ship displacement.
+`full_load_displacement_kg` is the full load displacement. No displacement
+is held today, so the ship `mass` key emits nothing.
 
 ### The derived physics fields
 

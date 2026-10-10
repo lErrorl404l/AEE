@@ -150,6 +150,8 @@ def main():
         "tools/tests/test_vehicle_mass_separation.py",
         "tools/tests/test_class_bindings.py",
         "tools/tests/test_physics_config.py",
+        "tools/tests/test_ship_mass_schema.py",
+        "tools/tests/test_mass_gap_sources.py",
         "tools/tests/test_mass_calibration.py",
         "tools/tests/test_mass_config.py",
         "tools/tests/test_vehicle_classify.py",
