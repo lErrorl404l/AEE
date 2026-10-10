@@ -52,6 +52,7 @@ SYSTEMS_FIELDS = (
     "fuel_density_kg_l",
     "sfc_kg_kwh",
     "fuel_cg_arm_m",
+    "engine_design_rpm",
     "engine_idle_ng",
     "engine_max_ng",
     "engine_max_np",
