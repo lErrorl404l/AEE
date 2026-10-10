@@ -1,0 +1,48 @@
+{
+  "retrieved": "2026-10-10",
+  "note": "CASC CH-5 Rainbow capture from the held ODIN Worldwide Equipment Guide 2025.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "ch5_rainbow",
+      "canonical_name": "CASC CH-5 Rainbow",
+      "maker": "CASC",
+      "model": "CH-5",
+      "variant": "Rainbow",
+      "variant_id": "ch5",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "piston_prop",
+      "role": "attack",
+      "class_token": "UAV",
+      "country": "CN",
+      "era": "contemporary",
+      "aliases": [
+        "rainbow",
+        "ch5"
+      ],
+      "keywords": [
+        "ucav",
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "wing_span_m": {
+          "value": 21.0,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "CH-802 Rainbow record, Variants narrative, CH-5 wingspan 21 meters",
+          "state": "US Army ODIN guide wingspan",
+          "grade": "documented"
+        },
+        "payload_kg": {
+          "value": 1000,
+          "unit": "kg",
+          "source": "src_odin_weg_2025",
+          "locator": "CH-802 Rainbow record, Variants narrative, CH-5 payload 1,000 kg",
+          "state": "US Army ODIN guide payload",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}
