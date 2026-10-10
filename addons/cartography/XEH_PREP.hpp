@@ -5,6 +5,7 @@
 // PREP'd from functions/hud/ (the category the optics split carried over);
 // callers use FUNC.
 
+PREPS(hud,mapIconWorldSize);
 PREPS(hud,mgrsGridLines);
 PREPS(hud,mgrsMapDraw);
 PREPS(hud,mgrsMapPrecision);
