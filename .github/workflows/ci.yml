@@ -15,7 +15,7 @@ jobs:
           python-version: "3.12"
       - name: Install test dependencies
         run: |
-          pip install numpy pillow
+          pip install numpy pillow SALib==1.6.0
           sudo apt-get update && sudo apt-get install -y librsvg2-bin fonts-noto-core
       - name: Lint parity check
         run: python3 tools/validation/check_lint_parity.py
