@@ -24,10 +24,10 @@ defects, `P121` the ADR-030 legibility surface, `P127` the cardinal MGRS grid,
 | 9 | The MGRS line contrast is dark and high. | TestTerrainMgrsContrast.test_the_line_colours_are_dark_and_high_contrast | tools/tests/test_terrain.py |
 | 10 | The terrain symbol size is the vanilla interface-scaled value. | TestTerrainLook.test_the_icon_sizes_scale_with_the_interface_size | tools/tests/test_terrain.py |
 
-Row 1 and row 2 are the same shipped contract. The earlier ADR-030 text said
-the engine numbers return and only the lines stay off. The shipped config sets
-both fields to alpha 0, so the AEE MGRS overlay is the single ruler. The check
-is the shipped contract.
+Row 1 and row 2 are the same shipped contract. ADR-030 first kept the engine
+numbers on and turned only the lines off; the shipped config sets both fields
+to alpha 0, so the AEE MGRS overlay is the single ruler. ADR-030 now records
+that supersession. The check is the shipped contract.
 
 Row 3 and row 5 had no machine check. The live probe `P117` proves both, but a
 probe needs Docker. `tools/tests/test_map_qa.py` adds a source-contract check
