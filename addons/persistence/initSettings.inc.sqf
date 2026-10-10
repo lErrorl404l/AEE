@@ -34,6 +34,15 @@ AEE_SETTING_SLIDER(slabDensity,"AEE Environmental","Snow",100,400,300,0);
 
 AEE_SETTING_SLIDER(slabDepth,"AEE Environmental","Snow",0.1,2,1.0,1);
 
+// ── Seismic activity (#27) ─────────────────────────────────────────────────
+// The seismic event is placed with the AEE Seismic Source EDEN module or
+// raised by the scripting entry point.  These switches gate the secondary
+// effects: the camera shake is local and cosmetic, the terrain deformation
+// is server-side and destructive.
+AEE_SETTING_CHECKBOX(seismicShakeEnabled,"AEE Environmental","Seismic",true);
+
+AEE_SETTING_CHECKBOX(seismicTerrainDeformationEnabled,"AEE Environmental","Seismic",false);
+
 // Diagnostics: the ground-state trace line logs at DEBUG after the first
 // INFO line when this switch is on.
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Persistence",false);

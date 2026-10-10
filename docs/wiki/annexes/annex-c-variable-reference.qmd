@@ -400,6 +400,13 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_weather_snowDriftIntensity` | environmental | Snow drift 0..1 |
 | `aee_persistence_freezeThawDescription` | environmental | Freeze-thaw description |
 | `aee_persistence_currentAvalancheWarning` | environmental | Avalanche warning |
+| `aee_persistence_seismicPGA` | environmental | Peak ground acceleration at the sample position (g, BA08 GMPE) |
+| `aee_persistence_seismicPGV` | environmental | Peak ground velocity at the sample position (cm/s, BA08 GMPE) |
+| `aee_persistence_seismicMMI` | environmental | Modified Mercalli intensity from PGA (Worden et al. 2012) |
+| `aee_persistence_seismicLiquefactionFS` | environmental | Liquefaction factor of safety at 5 m (Seed-Idriss) |
+| `aee_persistence_seismicLandslideM` | environmental | Newmark landslide displacement at the local slope (m) |
+| `aee_persistence_seismicDamageLevel` | environmental | Structural damage level 0..3 from intensity |
+| `aee_persistence_seismicDamageImpassable` | environmental | Structure impassable flag at collapse (MMI 10+) |
 | `aee_weather_currentSoundPropagation` | environmental | Sound propagation 0..1 |
 | `aee_weather_biologicalAmbientIntensity` | environmental | Biological ambient |
 | `aee_core_biome` | environmental | Koppen biome code (map climate class) |

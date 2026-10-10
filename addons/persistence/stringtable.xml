@@ -57,6 +57,22 @@
             <Original>Persistence State Trace</Original>
             <English>Persistence State Trace</English>
         </Key>
+        <Key ID="STR_AEE_Persistence_seismicShakeEnabled_Description">
+            <Original>Enable camera shake from an earthquake (local, cosmetic)</Original>
+            <English>Enable camera shake from an earthquake (local, cosmetic)</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_seismicShakeEnabled_Name">
+            <Original>Seismic Camera Shake</Original>
+            <English>Seismic Camera Shake</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_seismicTerrainDeformationEnabled_Description">
+            <Original>Apply liquefaction subsidence and landslide displacement with setTerrainHeight (server-side, needs engine 2.10)</Original>
+            <English>Apply liquefaction subsidence and landslide displacement with setTerrainHeight (server-side, needs engine 2.10)</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_seismicTerrainDeformationEnabled_Name">
+            <Original>Seismic Terrain Deformation</Original>
+            <English>Seismic Terrain Deformation</English>
+        </Key>
         <Key ID="STR_AEE_Persistence_slabDensity_Description">
             <Original>Snow slab density in kg/m3 for the McClung shear-stress model</Original>
             <English>Snow slab density in kg/m3 for the McClung shear-stress model</English>
