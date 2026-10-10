@@ -9,6 +9,30 @@
             <Original>Battery Temperature Derating</Original>
             <English>Battery Temperature Derating</English>
         </Key>
+        <Key ID="STR_AEE_Radio_emLinkBearing_Description">
+            <Original>Bearing in degrees of the reference radio link used for terrain diffraction sampling</Original>
+            <English>Bearing in degrees of the reference radio link used for terrain diffraction sampling</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_emLinkBearing_Name">
+            <Original>EM Reference Link Bearing</Original>
+            <English>EM Reference Link Bearing</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_emPropagationEnabled_Description">
+            <Original>Apply the 3D electromagnetic propagation model: two-ray ground bounce, terrain diffraction and valley waveguide</Original>
+            <English>Apply the 3D electromagnetic propagation model: two-ray ground bounce, terrain diffraction and valley waveguide</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_emPropagationEnabled_Name">
+            <Original>3D EM Propagation</Original>
+            <English>3D EM Propagation</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_groundReflectivity_Description">
+            <Original>Effective ground reflection coefficient magnitude for the two-ray model (1.0 reproduces the ideal d^4 law)</Original>
+            <English>Effective ground reflection coefficient magnitude for the two-ray model (1.0 reproduces the ideal d^4 law)</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_groundReflectivity_Name">
+            <Original>Ground Reflectivity</Original>
+            <English>Ground Reflectivity</English>
+        </Key>
         <Key ID="STR_AEE_Radio_logDebug_Description">
             <Original>Log radio diagnostics to the RPT. Turn this on before reporting a fault.</Original>
             <English>Log radio diagnostics to the RPT. Turn this on before reporting a fault.</English>
@@ -24,6 +48,22 @@
         <Key ID="STR_AEE_Radio_propagationRange_Name">
             <Original>Propagation Range</Original>
             <English>Propagation Range</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_rxAntennaHeight_Description">
+            <Original>Receiver antenna height above ground in metres for the two-ray ground-bounce model</Original>
+            <English>Receiver antenna height above ground in metres for the two-ray ground-bounce model</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_rxAntennaHeight_Name">
+            <Original>Receiver Antenna Height</Original>
+            <English>Receiver Antenna Height</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_txAntennaHeight_Description">
+            <Original>Transmitter antenna height above ground in metres for the two-ray ground-bounce model</Original>
+            <English>Transmitter antenna height above ground in metres for the two-ray ground-bounce model</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_txAntennaHeight_Name">
+            <Original>Transmitter Antenna Height</Original>
+            <English>Transmitter Antenna Height</English>
         </Key>
         <Key ID="STR_AEE_Radio_txPower_Description">
             <Original>Reference handheld transmit power in dBm used in the link budget</Original>
