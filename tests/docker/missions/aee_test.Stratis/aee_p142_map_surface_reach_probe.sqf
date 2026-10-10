@@ -89,14 +89,29 @@ private _direct = [
     };
 } forEach _direct;
 
-// ── The separate controls AEE does NOT re-declare. ──────────────────────
-// These keep their own engine override for part of the palette.  The probe
-// asserts the control resolves (so the surface exists) and reports the
-// resolved reach; it makes no value claim, because the engine override wins.
-private _separate = [
+// ── The minimap controls AEE now re-declares. ───────────────────────────
+// The engine minimap CA_MiniMap forces part of the palette (config_mapminimap.hpp
+// names every unreachable field).  AEE re-declares the control for the fields
+// the engine does NOT force, from config_mapminimap.hpp; this asserts that new
+// reach on both the minimap and the airborne minimap.
+private _reach = [
+    ["colorOutside", "array", [0.90, 0.88, 0.80, 1]],
+    ["colorInactive", "array", [1, 1, 1, 0.5]],
+    ["colorForestTextured", "array", [0.45, 0.66, 0.34, 0.30]],
+    ["colorNames", "array", [0.10, 0.10, 0.10, 0.90]],
+    ["colorTrails", "array", [0.40, 0.30, 0.20, 1]],
+    ["colorTrailsFill", "array", [0.90, 0.85, 0.75, 1]],
+    ["fontLevel", "string", "RobotoCondensed"],
+    ["sizeExLevel", "number", 0.04],
+    ["ptsPerSquareSea", "number", 5],
+    ["ptsPerSquareCLn", "number", 10],
+    ["widthRailWay", "number", 4],
+    ["shadedSea", "number", 1]
+];
+
+private _minimaps = [
     ["RscCustomInfoMiniMap.CA_MiniMap", configFile >> "RscCustomInfoMiniMap" >> "controls" >> "MiniMap" >> "Controls" >> "CA_MiniMap"],
-    ["RscCustomInfoAirborneMiniMap.CA_MiniMap", configFile >> "RscCustomInfoAirborneMiniMap" >> "controls" >> "MiniMap" >> "Controls" >> "CA_MiniMap"],
-    ["RscDisplayCurator.Map", configFile >> "RscDisplayCurator" >> "ControlsBackground" >> "Map"]
+    ["RscCustomInfoAirborneMiniMap.CA_MiniMap", configFile >> "RscCustomInfoAirborneMiniMap" >> "controls" >> "MiniMap" >> "Controls" >> "CA_MiniMap"]
 ];
 
 {
@@ -105,23 +120,49 @@ private _separate = [
         _fail = _fail + 1;
         _notes pushBack format ["%1 config path not found", _label];
     } else {
-        _pass = _pass + 1;
+        {
+            _x params ["_key", "_kind", "_want"];
+            private _ok = if (_kind == "array") then {
+                [getArray (_cfg >> _key), _want, 1e-6] call _arrEq
+            } else {
+                if (_kind == "string") then {
+                    (getText (_cfg >> _key)) == _want
+                } else {
+                    abs ((getNumber (_cfg >> _key)) - _want) <= 1e-6
+                };
+            };
+            if (_ok) then {
+                _pass = _pass + 1;
+            } else {
+                _fail = _fail + 1;
+                _notes pushBack format ["%1 %2 (AEE reach)", _label, _key];
+            };
+        } forEach _reach;
+        // The engine override still wins on the forced fields: record the
+        // resolved values so the ceiling is visible in the log.
         diag_log text format [
-            "[P142] reach %1: bgA=%2 seaA=%3 forestA=%4 clnMainA=%5 clnA=%6 satAlpha=%7 drawShaded=%8 shadedSea=%9 sizeExLevel=%10 gridA=%11",
+            "[P142] minimap reach %1: seaA=%2 forestA=%3 clnMainA=%4 satAlpha=%5 drawShaded=%6 colorNamesA=%7 sizeExLevel=%8",
             _label,
-            (getArray (_cfg >> "colorBackground")) param [3, -1],
             (getArray (_cfg >> "colorSea")) param [3, -1],
             (getArray (_cfg >> "colorForest")) param [3, -1],
             (getArray (_cfg >> "colorMainCountlines")) param [3, -1],
-            (getArray (_cfg >> "colorCountlines")) param [3, -1],
             getNumber (_cfg >> "maxSatelliteAlpha"),
             getNumber (_cfg >> "drawShaded"),
-            getNumber (_cfg >> "shadedSea"),
-            getNumber (_cfg >> "sizeExLevel"),
-            (getArray (_cfg >> "colorGrid")) param [3, -1]
+            (getArray (_cfg >> "colorNames")) param [3, -1],
+            getNumber (_cfg >> "sizeExLevel")
         ];
     };
-} forEach _separate;
+} forEach _minimaps;
+
+// The curator map inherits RscMapControl, so the AEE surface reaches it with
+// no separate re-declare.  Assert the control resolves.
+private _curator = configFile >> "RscDisplayCurator" >> "ControlsBackground" >> "Map";
+if (isNull _curator) then {
+    _fail = _fail + 1;
+    _notes pushBack "RscDisplayCurator.Map config path not found";
+} else {
+    _pass = _pass + 1;
+};
 
 // ── The AEE marker set resolves. ────────────────────────────────────────
 // A representative generated class from the real Commons-derived APP-6 set.
