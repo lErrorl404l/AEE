@@ -312,21 +312,26 @@ no map name. The design decision is in ADR-016.
 
 ## maritime
 
-Sea state, tides and underwater light.
+Sea state, tides, internal waves, the thermocline and underwater light.
 
 | Function | Purpose |
 |---|---|
 | `calculateBioluminescence` | Gate the dinoflagellate flash on darkness, clear water and disturbance |
 | `calculateCompassDeviation` | Calculate compass deviation |
+| `calculateInternalTide` | Thermocline displacement and layer currents at the M2 period |
+| `calculateInternalWaveSpeed` | Two-layer interfacial internal-wave phase speed and reduced gravity |
 | `calculateLightDepth` | Depth at which a given light fraction remains |
 | `calculateMagneticAnomaly` | Calculate magnetic field anomaly at a position |
 | `calculateSeaState` | Calculate the sea state |
+| `calculateSeawaterDensity` | Linear seawater equation of state |
 | `calculateSecchiKd` | Diffuse attenuation from a Secchi depth |
 | `calculateSnellWindow` | Critical angle and cone of the Snell window |
+| `calculateThermoclineTemperature` | Temperature profile across the thermocline |
 | `calculateTidalPrediction` | Calculate the tidal prediction |
 | `calculateUnderwaterLight` | Beer-Lambert band transmission through the water column |
 | `pureWaterAbsorption` | Pure-water absorption at a wavelength (Pope and Fry) |
 | `updateEngineWaves` | Render the sea state as engine waves |
+| `updateInternalWaves` | Publish the internal-wave and thermocline state |
 | `updateUnderwaterLight` | Publish the underwater light state |
 | `waterTypeKd` | Per-band diffuse attenuation for a Jerlov water type |
 
