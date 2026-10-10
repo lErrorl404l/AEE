@@ -1,0 +1,64 @@
+{
+  "retrieved": "2026-10-10",
+  "note": "MQ-9A Reaper capture from the held ODIN Worldwide Equipment Guide 2025.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "mq9a_reaper",
+      "canonical_name": "General Atomics MQ-9A Reaper",
+      "maker": "General Atomics",
+      "model": "MQ-9",
+      "variant": "A Reaper",
+      "variant_id": "mq9a",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turboprop",
+      "role": "recon",
+      "class_token": "UAV",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "reaper",
+        "mq9a"
+      ],
+      "keywords": [
+        "uav",
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "max_takeoff_weight_kg": {
+          "value": 4763,
+          "unit": "kg",
+          "source": "src_odin_weg_2025",
+          "locator": "MQ-9A Reaper record, Dimensions table, Maximum Takeoff Weight 4,763 kg",
+          "state": "US Army ODIN guide maximum takeoff weight",
+          "grade": "documented"
+        },
+        "wing_span_m": {
+          "value": 20.0,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "MQ-9A Reaper record, Dimensions table, Wingspan 20.0 m",
+          "state": "US Army ODIN guide wingspan",
+          "grade": "documented"
+        },
+        "length_m": {
+          "value": 11.0,
+          "unit": "m",
+          "source": "src_odin_weg_2025",
+          "locator": "MQ-9A Reaper record, Dimensions table, Length 11.0 m",
+          "state": "US Army ODIN guide length",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Honeywell TPE331-10",
+          "unit": "text",
+          "source": "src_odin_weg_2025",
+          "locator": "MQ-9A Reaper record, Automotive table, Engine Name Honeywell TPE331-10",
+          "state": "US Army ODIN guide engine name",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

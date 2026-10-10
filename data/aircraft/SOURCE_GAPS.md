@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 224
-- Emitted runtime rows: 224
+- Catalogue entries: 226
+- Emitted runtime rows: 226
 - Runtime-ready entries: 15
-- Entries with an absent runtime field: 209
-- Absent fields: 512
+- Entries with an absent runtime field: 211
+- Absent fields: 515
 
 ## a10a_thunderbolt_ii - Fairchild A-10A Thunderbolt II (fixed_wing)
 
@@ -1048,6 +1048,23 @@ is a labelled zero, not a refusal.
 | `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+
+## ch5_rainbow - CASC CH-5 Rainbow (fixed_wing)
+
+- Capture: `data/aircraft/catalogue/ch5_rainbow.json`
+- Required set: fixed_wing (2 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 
 ## chengdu_j10a - Chengdu J-10A (fixed_wing)
 
@@ -2866,6 +2883,22 @@ is a labelled zero, not a refusal.
 | `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+
+## mq9a_reaper - General Atomics MQ-9A Reaper (fixed_wing)
+
+- Capture: `data/aircraft/catalogue/mq9a_reaper.json`
+- Required set: fixed_wing (2 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 4763 | `src_odin_weg_2025` | MQ-9A Reaper record, Dimensions table, Maximum Takeoff Weight 4,763 kg | derived operating weight from the maximum takeoff weight; no operating or empty weight is published, so the maximum is the basis |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 
 ## nh90_nfh - NHIndustries NH90 NFH (rotary_wing)
 

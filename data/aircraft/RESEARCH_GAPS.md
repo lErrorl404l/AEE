@@ -150,3 +150,19 @@ here.
   `s92`, `md902_explorer`, `mq8_fire_scout`, `mq8c_fire_scout`,
   `rq8_fire_scout`, `camcopter_s100`). Next source: a maker datasheet or an
   export operator's handbook.
+
+## The fictional-class analogue rule and the licence boundary
+
+`data/aircraft/SCHEMA.md` section 11 states the rule in full. In short: a
+fictional Arma class never reaches grade `documented` for its identity, so the
+class-to-analogue link is always grade `claimed`. The catalogue entry the
+binding points to carries held-source values only: a tier 2 or tier 3 held
+source gives grade `documented`, and a tier 4 maker datasheet gives grade
+`claimed`. A tier 5 compilation is never a value source.
+
+The allowed value sources are US Government public-domain works (TMs, FMs, TOs,
+the OPFOR and ODIN Worldwide Equipment Guides, DTIC and NASA reports), FAA and
+EASA type certificate data sheets, maker datasheets with the facts cited, and
+CC-BY-SA compilations for identity only. The forbidden sources are RHS
+(CC BY-NC-ND), CUP (APL-SA), Project Hatchet H-60 and BradMick HeliSim
+(APL-ND), and DCS, which is structure only and never a figure.
