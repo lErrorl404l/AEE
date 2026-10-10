@@ -69,9 +69,41 @@ private _meta = missionNamespace getVariable [QGVAR(scalarGridMeta), createHashM
 private _sources = missionNamespace getVariable [QGVAR(scalarSources), []];
 private _summary = createHashMap;
 private _now = diag_tickTime;
+// Previous tick's published summary.  A field that carries no mass and has no
+// source is a fixed point of the transport, so its published total (index 1)
+// is the cheap emptiness test that gates the O(cells) passes below.
+private _prevSummary = missionNamespace getVariable [QGVAR(scalarSummary), createHashMap];
+// The descriptor table is a constant.  Read it once, not once per loop below.
+private _config = call FUNC(scalarFieldConfig);
 
 {
     _x params ["_key", "_vd", "_kScav", "_sourceMode", "_windThresh", "_hotFraction"];
+
+    // ─── Empty-field gate ─────────────────────────────────────────────────
+    // Advecting, scavenging and reporting an all-zero field is an exact
+    // no-op: zeros advect to zeros, the sink multiplies by a constant, and
+    // the summary is [0, 0, [0, 0], 0].  A field gains mass only through a
+    // live registry emitter or the wind-gated background source.  When the
+    // field holds no mass and nothing feeds it this tick, skip the four
+    // O(cells) passes and republish the empty summary.  Emptiness is read
+    // from the previous tick's published total, so no grid scan is needed.
+    private _prevTotal = (_prevSummary getOrDefault [_key, []]) param [1, 0];
+    if !(_prevTotal isEqualType 0) then { _prevTotal = 0; };
+    private _fed = if (_sourceMode isEqualTo "registry") then {
+        private _has = false;
+        {
+            if (((_x select 0) == _key) && ((_x select 5) >= _now)) exitWith { _has = true; };
+        } forEach _sources;
+        _has
+    } else {
+        ((((_windSpeed - _windThresh) / 15) min 1) max 0) > 0
+    };
+    if (!_fed && {_prevTotal <= 1e-9}) then {
+        _summary set [_key, [0, 0, [0, 0], 0]];
+        missionNamespace setVariable [format [QGVAR(scalarHotCells_%1), _key], []];
+        missionNamespace setVariable [format [QGVAR(scalarMax_%1), _key], 0];
+        continue;
+    };
 
     // ─── Grid (get, or initialise to zero) ────────────────────────────────
     private _grid = _store getOrDefault [_key, []];
@@ -165,14 +197,14 @@ private _now = diag_tickTime;
     _summary set [_key, [_max, _sum, _centroid, count _hot]];
     missionNamespace setVariable [format [QGVAR(scalarHotCells_%1), _key], _hot];
     missionNamespace setVariable [format [QGVAR(scalarMax_%1), _key], _max];
-} forEach (call FUNC(scalarFieldConfig));
+} forEach _config;
 
 missionNamespace setVariable [QGVAR(scalarFields), _store];
 missionNamespace setVariable [QGVAR(scalarSummary), _summary];
 missionNamespace setVariable [QGVAR(scalarGridMeta), _meta];
 {
     _meta set [_x select 0, [_gridW, _gridH, _originX, _originY, _cellM]];
-} forEach (call FUNC(scalarFieldConfig));
+} forEach _config;
 
 // ─── Prune expired sources ────────────────────────────────────────────────
 private _live = [];
