@@ -285,6 +285,10 @@ read them. The variables below are grouped by subsystem.
 | `aee_radio_sunspotNumber` | The sunspot number |
 | `aee_radio_frequency` | The operating frequency |
 | `aee_core_radioPropagationEnabled` | Whether radio propagation is enabled |
+| `aee_radio_emGroundBounceDB` | Two-ray ground-bounce excess loss, dB |
+| `aee_radio_emDiffractionDB` | Terrain diffraction loss, dB |
+| `aee_radio_emValleyDB` | Valley waveguide path-loss modifier, dB |
+| `aee_radio_emLinkState` | EM link state: los, diffraction or shadow |
 
 ## Mobility
 

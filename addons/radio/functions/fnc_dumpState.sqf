@@ -28,15 +28,31 @@ if !(_txPower isEqualType 0) then { _txPower = 37; };
 private _propagationRange = missionNamespace getVariable [QGVAR(propagationRange), 2.0];
 if !(_propagationRange isEqualType 0) then { _propagationRange = 2.0; };
 
+private _emGroundBounce = missionNamespace getVariable [QGVAR(emGroundBounceDB), 0];
+if !(_emGroundBounce isEqualType 0) then { _emGroundBounce = 0; };
+private _emDiffraction = missionNamespace getVariable [QGVAR(emDiffractionDB), 0];
+if !(_emDiffraction isEqualType 0) then { _emDiffraction = 0; };
+private _emValley = missionNamespace getVariable [QGVAR(emValleyDB), 0];
+if !(_emValley isEqualType 0) then { _emValley = 0; };
+private _emState = missionNamespace getVariable [QGVAR(emLinkState), "los"];
+if !(_emState isEqualType "") then { _emState = "los"; };
+
 private _logMsg = format [
     "radio state | index=%1 iono=%2 | link=frequency=%3 sunspot=%4 carrier=%5 range=%6 tx=%7 ceiling=%8",
     round (_index * 100) / 100, round (_ionoAbs * 100) / 100,
     _frequency, _sunspotNumber, _radioFrequencyHz, _radioLinkRangeM, _txPower, round (_propagationRange * 100) / 100
 ];
+private _emMsg = format [
+    "radio EM | ground=%1 dB diffraction=%2 dB valley=%3 dB state=%4",
+    round (_emGroundBounce * 100) / 100, round (_emDiffraction * 100) / 100,
+    round (_emValley * 100) / 100, _emState
+];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {
     AEE_LOG_DEBUG(_logMsg);
+    AEE_LOG_DEBUG(_emMsg);
 } else {
     missionNamespace setVariable [QGVAR(stateLogStarted), true];
     AEE_LOG_INFO(_logMsg);
+    AEE_LOG_INFO(_emMsg);
 };

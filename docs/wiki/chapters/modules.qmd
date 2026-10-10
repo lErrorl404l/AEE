@@ -342,6 +342,11 @@ Radio propagation.
 |---|---|
 | `calculateIonosphericAbsorption` | Calculate HF ionospheric absorption |
 | `calculateRadioPropagation` | Calculate radio propagation |
+| `calculateTwoRayGround` | Two-ray ground-bounce excess path loss |
+| `calculateKnifeEdgeLoss` | ITU-R P.526 single knife-edge diffraction loss |
+| `calculateDeygoutDiffraction` | Deygout multiple-edge diffraction loss |
+| `calculateValleyWaveguide` | Valley waveguide path-loss modifier |
+| `calculateEmPropagation` | 3D EM link propagation over a terrain profile |
 
 The EMP model degrades the propagation index while a nuclear EMP is active
 (issue #9). The factor is `aee_core_empRadioFactor`, produced by `core`.

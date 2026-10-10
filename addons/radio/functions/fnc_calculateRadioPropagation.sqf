@@ -171,8 +171,73 @@ if (!isNil "_biome") then {
     };
 };
 
+// ─── 3D EM propagation (issue #13) ─────────────────────────────────────────
+// Ground bounce (two-ray), terrain diffraction (Deygout) and valley
+// waveguide.  Each term is a path-loss correction: positive is a loss,
+// negative is a gain.  See the kernel headers for sources.
+private _emGroundBounce = 0;
+private _emDiffraction = 0;
+private _emValley = 0;
+private _emState = "los";
+if (missionNamespace getVariable [QGVAR(emPropagationEnabled), true]) then {
+    private _hTx = missionNamespace getVariable [QGVAR(txAntennaHeight), 2];
+    if !(_hTx isEqualType 0) then { _hTx = 2; };
+    private _hRx = missionNamespace getVariable [QGVAR(rxAntennaHeight), 1.5];
+    if !(_hRx isEqualType 0) then { _hRx = 1.5; };
+    private _rho = missionNamespace getVariable [QGVAR(groundReflectivity), 0.5];
+    if !(_rho isEqualType 0) then { _rho = 0.5; };
+
+    // Ground bounce: the two-ray excess over free space for the reference
+    // link (antenna heights above ground, geometric range).
+    private _twoRay = [_distM, _freqHz, _hTx, _hRx, _rho] call FUNC(calculateTwoRayGround);
+    _emGroundBounce = _twoRay select 0;
+
+    // Diffraction and the valley waveguide need the observer position.  A
+    // dedicated server has no unit, so those terms stay zero there.
+    private _unit = call CBA_fnc_currentUnit;
+    if (!isNil "_unit" && {!isNull _unit}) then {
+        private _bearing = missionNamespace getVariable [QGVAR(emLinkBearing), 0];
+        if !(_bearing isEqualType 0) then { _bearing = 0; };
+        private _pos = getPosASL _unit;
+        private _txX = _pos select 0;
+        private _txY = _pos select 1;
+        private _rxX = _txX + ((sin _bearing) * _distM);
+        private _rxY = _txY + ((cos _bearing) * _distM);
+        private _rxPos = [_rxX, _rxY, getTerrainHeightASL [_rxX, _rxY]];
+        private _em = [_pos, _rxPos, _freqHz, _hTx, _hRx, 24] call FUNC(calculateEmPropagation);
+        _emDiffraction = _em select 0;
+        _emState = _em select 1;
+
+        // Valley detection: walls rising on BOTH sides of the reference
+        // bearing mean the link runs along a valley.  The wall threshold
+        // (20 m) and the search span (1000 m) are UNSOURCED.
+        private _perp = _bearing + 90;
+        private _px = sin _perp;
+        private _py = cos _perp;
+        private _valleyWidth = 0;
+        for "_s" from 1 to 20 do {
+            if (_valleyWidth == 0) then {
+                private _d = _s * 50;
+                private _left = getTerrainHeightASL [_txX + (_px * _d), _txY + (_py * _d)];
+                private _right = getTerrainHeightASL [_txX - (_px * _d), _txY - (_py * _d)];
+                if (((_left - (_pos select 2)) > 20) && ((_right - (_pos select 2)) > 20)) then {
+                    _valleyWidth = 2 * _d;
+                };
+            };
+        };
+        if (_valleyWidth > 0) then {
+            _emValley = [_valleyWidth, _freqHz, 0] call FUNC(calculateValleyWaveguide);
+        };
+    };
+};
+
+missionNamespace setVariable [QGVAR(emGroundBounceDB), _emGroundBounce];
+missionNamespace setVariable [QGVAR(emDiffractionDB), _emDiffraction];
+missionNamespace setVariable [QGVAR(emValleyDB), _emValley];
+missionNamespace setVariable [QGVAR(emLinkState), _emState];
+
 // ─── Link budget → quality index ───────────────────────────────────────────
-private _linkBudget = _txPowerDBm - _fspl - _terrainLoss + _ductBonus - _absorptionPenalty;
+private _linkBudget = _txPowerDBm - _fspl - _terrainLoss + _ductBonus - _absorptionPenalty - _emGroundBounce - _emDiffraction - _emValley;
 private _signalPct = 10 ^ (_linkBudget / 20);
 _signalPct = _signalPct max 0 min 1;
 
@@ -196,11 +261,14 @@ missionNamespace setVariable [QGVAR(radioPropagationIndex), _index];
 
 if (missionNamespace getVariable [QEGVAR(diagnostics,diagnostic), false]) then {
     private _logMsg = format [
-        "RadioPropagation: %1 (FSPL %2 dB | duct %3 dB | terrain %4 dB | link %5 dBm)",
+        "RadioPropagation: %1 (FSPL %2 dB | duct %3 dB | terrain %4 dB | ground %5 dB | diffract %6 dB | valley %7 dB | link %8 dBm)",
         [_index, 2] call CBA_fnc_formatNumber,
         [_fspl, 1] call CBA_fnc_formatNumber,
         [_ductBonus, 1] call CBA_fnc_formatNumber,
         [_terrainLoss, 1] call CBA_fnc_formatNumber,
+        [_emGroundBounce, 1] call CBA_fnc_formatNumber,
+        [_emDiffraction, 1] call CBA_fnc_formatNumber,
+        [_emValley, 1] call CBA_fnc_formatNumber,
         [_linkBudget, 1] call CBA_fnc_formatNumber
     ];
     AEE_LOG_INFO(_logMsg);
