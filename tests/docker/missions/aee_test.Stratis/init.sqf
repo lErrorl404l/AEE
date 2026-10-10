@@ -3435,6 +3435,12 @@ private _p29Pass = 0;
     // (P135 is the land-physics probe on this base, so the clock probe takes
     // the next free number.)
     execVM "aee_p140_sim_clock_rate_probe.sqf";
+    // PHASE 141 lives in aee_p141_magazine_mass_probe.sqf: the emitted
+    // CfgMagazines >> mass is engine config, so the probe reads the merged
+    // value for 30Rnd_556x45_Stanag live and asserts the thermal loadout
+    // consumer sees a non-zero magazine content mass from the same key. It
+    // renders nothing.
+    execVM "aee_p141_magazine_mass_probe.sqf";
     // PHASE 137 lives in aee_p137_kernel_parity_probe.sqf: the pure native
     // kernels are server-callable, so the dedicated server drives each one and
     // compares the dispatcher's answer against the SQF reference within the
