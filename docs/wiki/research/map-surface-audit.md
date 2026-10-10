@@ -29,12 +29,12 @@ Source of the engine overrides: the vanilla `Addons/ui_f.pbo` config.
 
 | Surface | Config class | AEE re-declare | Engine override | AEE reach |
 |---|---|---|---|---|
-| Main map, briefing, GPS | `RscMapControl` | `config.cpp:65` | none | All eleven fields. |
-| Strategic map | `RscDisplayStrategicMap >> controlsBackground >> Map` | `config_mapdisplays.hpp:22` | its own class re-declares the surface | All eleven fields. |
-| Eden map | `ctrlMap` | `config_mapdisplays.hpp:39` | `ctrlMapMain` and `ctrlMapEmpty` inherit | All eleven fields. |
+| Main map, briefing, GPS | `RscMapControl` | `config.cpp:70` | none | All eleven fields. |
+| Strategic map | `RscDisplayStrategicMap >> controlsBackground >> Map` | `config_mapdisplays.hpp:27` | its own class re-declares the surface | All eleven fields. |
+| Eden map | `ctrlMap` | `config_mapdisplays.hpp:43` | `ctrlMapMain` and `ctrlMapEmpty` inherit | All eleven fields. |
 | Curator map | `RscDisplayCurator >> ControlsBackground >> Map` | none; inherits `RscMapControl` | none found | Full. The probe reads `maxSatelliteAlpha=0.5`, `drawShaded=0.15`, `shadedSea=1`, `sizeExLevel=0.04` and grid alpha `0`, all the AEE values. |
-| Minimap | `RscCustomInfoMiniMap >> controls >> MiniMap >> Controls >> CA_MiniMap` | none | `colorBackground`, `colorSea`, `colorForest`, `colorMainCountlines` (alpha 0.6), `colorCountlines` (alpha 0.2), `maxSatelliteAlpha` (0), `drawShaded` (0.1), `colorGrid` (alpha 0.3), `alphaFade*`, `ptsPerSquare*` | Partial. The engine override wins for the fields it names. Only `shadedSea` and `sizeExLevel` inherit the AEE surface. |
-| Airborne minimap | `RscCustomInfoAirborneMiniMap >> controls >> MiniMap >> Controls >> CA_MiniMap` | none | the minimap set plus its own `colorSea`, `colorForest`, `drawShaded` and the altitude ramp | Partial, as the minimap. |
+| Minimap | `RscCustomInfoMiniMap >> controls >> MiniMap >> Controls >> CA_MiniMap` | `config_mapdisplays.hpp:60` + `config_mapminimap.hpp` | `colorBackground`, `colorSea`, `colorForest`, `colorForestBorder`, `colorRocks`, `colorRocksBorder`, `colorLevels`, `colorMainCountlines`, `colorCountlines`, `colorMainCountlinesWater`, `colorCountlinesWater`, `colorPowerLines`, `colorRailWay`, `colorTracks`, `colorTracksFill`, `colorRoads`, `colorRoadsFill`, `colorMainRoads`, `colorMainRoadsFill`, `colorGrid`, `colorGridMap`, `maxSatelliteAlpha`, `alphaFade*`, `drawShaded`, `showCountourInterval`, `ptsPerSquare*` | Partial. The engine override wins for the forced fields. AEE re-declares the fields the engine does not force: `colorOutside`, `colorInactive`, `colorForestTextured`, `colorNames`, `colorTrails`, `colorTrailsFill`, `fontLevel`, `sizeExLevel`, `ptsPerSquareSea`, `ptsPerSquareCLn`, `widthRailWay` and `shadedSea`. |
+| Airborne minimap | `RscCustomInfoAirborneMiniMap >> controls >> MiniMap >> Controls >> CA_MiniMap` | `config_mapdisplays.hpp:71` + `config_mapminimap.hpp` | the minimap set plus its own `colorSea`, `colorForest`, `colorPowerLines`, `widthPowerLines`, `drawShaded` and the altitude ramp | Partial, as the minimap. |
 
 The briefing map and the GPS panel inherit `RscMapControl`, so they read the
 same config entry. The probe asserts the `RscMapControl` values once and
@@ -48,9 +48,11 @@ AEE marker-apply function `aee_symbology_fnc_symbologyMarkersApply` is
 compiled at load. Its `disableMapIndicators [true, true, true, true]` call is
 pinned at `tools/tests/test_symbology.py:623`.
 
-## The gap
+## The minimap reach
 
-AEE does not re-declare the minimap or the airborne minimap. The engine keeps
-its own sea and forest fill and its satellite fade on those two displays. The
-engine minimap surface is the subject of a later todo in the plan
-(`aee-map-realism-polish.md`, todo 10).
+AEE re-declares the minimap and the airborne minimap for the fields the engine
+does not force, from `config_mapminimap.hpp` (`config_mapdisplays.hpp:60` and
+`:71`). The engine keeps its own sea and forest fill and its satellite fade on
+those two displays; that is the ceiling, and `config_mapminimap.hpp` names
+every forced field. The live probe `P142` asserts the reachable fields on both
+controls.
