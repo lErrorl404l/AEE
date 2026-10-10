@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (671)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -217,12 +217,18 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ballistics_fnc_calculateBallisticDrag`
 - `aee_ballistics_fnc_calculateBarrelState`
 - `aee_ballistics_fnc_calculateCoriolisDeflection`
+- `aee_ballistics_fnc_calculateCountermeasureEffectiveness`
 - `aee_ballistics_fnc_calculateCrosswindBallistics`
 - `aee_ballistics_fnc_calculateInteriorBallistics`
+- `aee_ballistics_fnc_calculateLosRate`
 - `aee_ballistics_fnc_calculateMachCone`
 - `aee_ballistics_fnc_calculateMuzzleVelocityCorrection`
+- `aee_ballistics_fnc_calculateNoEscapeZone`
 - `aee_ballistics_fnc_calculatePropellantSensitivity`
+- `aee_ballistics_fnc_calculateProportionalNavigation`
 - `aee_ballistics_fnc_calculateRecoil`
+- `aee_ballistics_fnc_calculateSeekerState`
+- `aee_ballistics_fnc_calculateSeekerTrack`
 - `aee_ballistics_fnc_calculateStability`
 - `aee_ballistics_fnc_calculateSupersonicTrace`
 - `aee_ballistics_fnc_deriveCartridge`
@@ -239,6 +245,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ballistics_fnc_getWeaponData`
 - `aee_ballistics_fnc_measureBarrel`
 - `aee_ballistics_fnc_parseCaliber`
+- `aee_ballistics_fnc_resolveMissileSeeker`
 - `aee_ballistics_fnc_resolveShot`
 - `aee_ballistics_fnc_selectBand`
 - `aee_ballistics_fnc_startStateDump`
@@ -527,7 +534,10 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_physiology_fnc_dumpState`
 - `aee_physiology_fnc_updateFatigueState`
 - `aee_physiology_fnc_zh16cStep`
+- `aee_radio_fnc_calculateChaffCrossSection`
 - `aee_radio_fnc_calculateIonosphericAbsorption`
+- `aee_radio_fnc_calculateRadarNoiseFloor`
+- `aee_radio_fnc_calculateRadarRange`
 - `aee_radio_fnc_calculateRadioPropagation`
 - `aee_radio_fnc_dumpState`
 - `aee_strain_fnc_applyCrossSensitivity`
@@ -620,6 +630,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_calculateBandRadiance`
 - `aee_thermal_fnc_calculateBatteryTemperatureDerating`
 - `aee_thermal_fnc_calculateClothingInsulation`
+- `aee_thermal_fnc_calculateFlareIntensity`
 - `aee_thermal_fnc_calculateFreezingRain`
 - `aee_thermal_fnc_calculateFrostState`
 - `aee_thermal_fnc_calculateGlobeTemperature`
@@ -627,6 +638,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_calculateGroundTemperature`
 - `aee_thermal_fnc_calculateHeatIndex`
 - `aee_thermal_fnc_calculateHypothermiaRisk`
+- `aee_thermal_fnc_calculateIRSeekerRange`
 - `aee_thermal_fnc_calculateMRT`
 - `aee_thermal_fnc_calculateObjectTemperature`
 - `aee_thermal_fnc_calculateReflectedSolarBand`
