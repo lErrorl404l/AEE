@@ -46,6 +46,7 @@ adds a ceiling here first.
 | [engine-commands-and-features.md](engine-commands-and-features.md) | The SQF commands by job, the engine systems behind them, and the consolidated ceiling list. |
 | [command-surface.md](command-surface.md) | The verified command surface for the #144-#147 series: geometry anchors, simulation physics, event hooks and AI, each with its introduction version and caveat. |
 | [command-surface-2.md](command-surface-2.md) | The verified command surface for the #144-#147 series, part 2: system diagnostics, effects and sound, and object manipulation, each with its introduction version and caveat. |
+| [command-surface-3.md](command-surface-3.md) | The verified command surface for the #146 domain: post-processing, camera and PIP, thermal and NVG vision, particles, GUI and drawing, Eden, Zeus, and the CBA functions, each with its introduction version and caveat. |
 | [dev-tooling.md](dev-tooling.md) | The dev console, the workbench and the native kernels against the engine: the read-first rule and the dev ceilings. |
 | [engine-pbo-inventory.md](engine-pbo-inventory.md) | Every engine PBO, its root, what it carries, and the raw header layout. Machine form in `engine-pbo-inventory.json`. |
 | [arma-map-grid-semantics.md](arma-map-grid-semantics.md) | The map grid colour and geometry fields, resolved from the open-sourced engine source. |
