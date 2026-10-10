@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (655)
+### Public functions (659)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -244,6 +244,10 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ballistics_fnc_startStateDump`
 - `aee_blast_fnc_calculateBlastInjury`
 - `aee_blast_fnc_calculateBlastOverpressure`
+- `aee_blast_fnc_calculateCrater`
+- `aee_blast_fnc_craterShape`
+- `aee_blast_fnc_craterTerrainPoints`
+- `aee_blast_fnc_hopkinsonCranzScale`
 - `aee_cartography_fnc_fontFamilyUsable`
 - `aee_cartography_fnc_formatGridDisplay`
 - `aee_cartography_fnc_gpsBuild`
