@@ -35,3 +35,8 @@ missionNamespace setVariable [QGVAR(symbologyUnitEchelonMarkers), []];
 // must be reversed here or the engine indicators stay hidden for the rest of
 // the session.  A no-op when the setting was off and nothing was suppressed.
 disableMapIndicators [false, false, false, false];
+
+// The last-known contact state is scoped to the open map: a unit that dies
+// while the map is closed is not tracked, so the record starts empty on the
+// next open.
+missionNamespace setVariable [QGVAR(symbologyKilledUnits), []];

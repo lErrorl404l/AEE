@@ -13,8 +13,9 @@
  *      with setMarkerTypeLocal and setMarkerColorLocal to the AEE symbol, and
  *      its original type and colour are recorded in a local cache;
  *   3. the player and each in-range unit that is alive get a real local AEE
- *      marker; a dead unit produces no marker, so the cleanup removes its
- *      marker and the next scan re-creates it on revive;
+ *      marker; a dead unit that the EntityKilled handler recorded keeps a
+ *      LAST-KNOWN contact at its death position, so the cleanup does not
+ *      remove it until it leaves range or the map closes;
  *   4. each unit marker gets a companion echelon overlay marker at the same
  *      position, created after the frame so the overlay draws on top.
  *
@@ -71,9 +72,21 @@ private _units = [];
 if (alive _player) then {
     _units pushBack _player;
 };
+// A live unit in range is drawn as before.  A DEAD unit that the EntityKilled
+// handler recorded keeps a LAST-KNOWN contact: it stays in the drawn set so
+// its marker is not deleted, and the marker holds the recorded death position.
+// A dead unit that was never tracked produces nothing.
+private _killedUnits = missionNamespace getVariable [QGVAR(symbologyKilledUnits), []];
 {
-    if ((alive _x) && {(_player distance _x) <= SYMBOLOGY_UNIT_RANGE}) then {
-        _units pushBack _x;
+    private _unit = _x;
+    if ((_player distance _unit) <= SYMBOLOGY_UNIT_RANGE) then {
+        if (alive _unit) then {
+            _units pushBack _unit;
+        } else {
+            if ((_killedUnits findIf { (_x select 0) isEqualTo _unit }) >= 0) then {
+                _units pushBack _unit;
+            };
+        };
     };
 } forEach allUnits;
 
@@ -84,6 +97,16 @@ private _echelonLive = [];
 {
     private _unit = _x;
     private _markerName = "AEE_UNIT_" + (netId _unit);
+    // A dead unit holds its LAST-KNOWN position (the recorded death point);
+    // a live unit follows its current position.
+    private _pos = getPos _unit;
+    private _dead = !(alive _unit);
+    if (_dead) then {
+        private _record = _killedUnits select { (_x select 0) isEqualTo _unit };
+        if (_record isNotEqualTo []) then {
+            _pos = (_record select 0) select 1;
+        };
+    };
     private _category = [_unit] call FUNC(symbologyUnitCategory);
     private _colourName = [side _unit, true] call BIS_fnc_sideColor;
     private _affiliation = ["", _colourName, _friendly] call FUNC(symbologyAffiliation);
@@ -92,11 +115,17 @@ private _echelonLive = [];
     private _spec = [
         side _unit, _category, _affiliation, _echelon, _resolvedPalette, _dimension
     ] call FUNC(symbolResolve);
+    // A dead unit keeps the LAST-KNOWN symbol: the same affiliation and
+    // category, mapped by the pure kernel.  The catalogue holds no destroyed
+    // status symbol, so the kernel returns the live form (its recorded ceiling).
+    if (_dead) then {
+        _spec = [_spec] call FUNC(symbologyKilledMarker);
+    };
     if (!(_markerName in _created)) then {
-        _markerName = createMarkerLocal [_markerName, getPos _unit];
+        _markerName = createMarkerLocal [_markerName, _pos];
         _created pushBack _markerName;
     };
-    _markerName setMarkerPosLocal (getPos _unit);
+    _markerName setMarkerPosLocal _pos;
     _markerName setMarkerTypeLocal (_spec select 1);
     _markerName setMarkerColorLocal (_spec select 2);
     _live pushBack _markerName;
@@ -113,7 +142,7 @@ private _echelonLive = [];
         _echelonName = createMarkerLocal [_echelonName, getPos _unit];
         _echelonCreated pushBack _echelonName;
     };
-    _echelonName setMarkerPosLocal (getPos _unit);
+    _echelonName setMarkerPosLocal _pos;
     _echelonName setMarkerTypeLocal ([_echelon] call FUNC(symbologyEchelonMarker));
     _echelonName setMarkerColorLocal (_spec select 2);
     _echelonName setMarkerSize ([_halfWidth] call FUNC(symbologyEchelonSize));
