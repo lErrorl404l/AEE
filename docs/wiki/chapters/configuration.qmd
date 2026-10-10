@@ -554,6 +554,8 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_maritime_seaCouplingWeight` | SLIDER | `0.5` | yes | maritime | Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly |
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
+| `aee_maritime_underwaterLightEnabled` | CHECKBOX | `true` | yes | maritime | Publish the underwater light state, the Snell window and the bioluminescence gate; turn off to save the per-second update |
+| `aee_maritime_underwaterWaterType` | SLIDER | `3` | yes | maritime | Jerlov water type: 0 = I, 1 = IA, 2 = IB, 3 = II, 4 = III, 5 = 1, 6 = 3, 7 = 5, 8 = 7, 9 = 9 |
 
 ## AEE Mobility → Hydrology
 
