@@ -1,5 +1,10 @@
+PREP(calculateInternalTide);
+PREP(calculateInternalWaveSpeed);
 PREP(calculateSeaState);
 PREP(calculateSeaSurfaceTemperature);
+PREP(calculateSeawaterDensity);
+PREP(calculateThermoclineTemperature);
 PREP(calculateTidalPrediction);
 PREP(updateEngineWaves);
+PREP(updateInternalWaves);
 PREP(dumpState);
