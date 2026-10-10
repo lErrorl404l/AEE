@@ -42,6 +42,27 @@ dialog, so the probe cannot prove them.
    the re-type for each of the five option states; the visible result is
    operator-only.
 
+## The generalisation
+
+The mechanism is not marker-specific. Any AEE surface that resolves one artifact
+from a combination of axes can declare a family and reuse the same generator,
+the same resolver shape and the same switch. No implementation is built now.
+
+- **Thermal-display palette family.** `aee_thermal_display` already carries
+  `aee_thermal_thermalPalette` (seven palettes) plus polarity and display mode.
+  A family "Thermal Display" would declare options palette, polarity and mode,
+  emit ONE entry, and resolve the state through the existing thermal settings.
+  The switch is the same CBA LIST settings plus the selector.
+- **Map-style family.** The cartography palette (relief, water, vegetation,
+  `maxSatelliteAlpha`, `drawShaded`) is a fixed re-declare of `RscMapControl`.
+  A family "Map Style" would declare one option per palette field, emit ONE
+  entry, and resolve the state into the `RscMapControl` re-declare. The switch
+  is the same settings plus the selector.
+
+The prior data model is AEE's own: `data/aircraft/roster.json` already carries
+`variant_family` and `is_variant` rows, so one roster entry can name many
+variants. The variation family generalises that idea to the engine surfaces.
+
 ## The ceiling
 
 - Per placed marker variation is a later enhancement. The active variation is a
