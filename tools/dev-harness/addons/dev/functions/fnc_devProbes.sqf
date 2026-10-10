@@ -31,21 +31,21 @@ private _predicates = [
     ["P113", {
         private _notes = [];
         private _hill = getText (configFile >> "CfgLocationTypes" >> "Hill" >> "texture");
-        if !(_hill isEqualTo "\z\aee\addons\optics\data\terrain\hill.paa") then { _notes pushBack format ["Hill texture %1", _hill]; };
+        if !(_hill isEqualTo "\z\aee\addons\cartography\data\terrain\hill.paa") then { _notes pushBack format ["Hill texture %1", _hill]; };
         private _fir = getText (configFile >> "CfgLocationTypes" >> "VegetationFir" >> "texture");
-        if !(_fir isEqualTo "\z\aee\addons\optics\data\terrain\coniferous.paa") then { _notes pushBack format ["VegetationFir texture %1", _fir]; };
+        if !(_fir isEqualTo "\z\aee\addons\cartography\data\terrain\coniferous.paa") then { _notes pushBack format ["VegetationFir texture %1", _fir]; };
         private _tx = getText (configFile >> "RscMapControl" >> "transmitter" >> "icon");
-        if !(_tx isEqualTo "\z\aee\addons\optics\data\terrain\radio_tower.paa") then { _notes pushBack format ["transmitter icon %1", _tx]; };
+        if !(_tx isEqualTo "\z\aee\addons\cartography\data\terrain\radio_tower.paa") then { _notes pushBack format ["transmitter icon %1", _tx]; };
         private _sea = getArray (configFile >> "RscMapControl" >> "colorSea");
         if !(_sea isEqualTo [0.55, 0.7, 0.85, 1]) then { _notes pushBack format ["colorSea %1", _sea]; };
         private _alpha = getNumber (configFile >> "RscMapControl" >> "maxSatelliteAlpha");
         if !(_alpha > 0 && {_alpha < 1}) then { _notes pushBack format ["maxSatelliteAlpha %1", _alpha]; };
         private _font = getText (configFile >> "RscMapControl" >> "fontNames");
         if !(_font isEqualTo "RobotoCondensed") then { _notes pushBack format ["fontNames %1", _font]; };
-        private _tables = missionNamespace getVariable ["aee_optics_terrainTables", []];
+        private _tables = missionNamespace getVariable ["aee_cartography_terrainTables", []];
         if !((count _tables) == 3 && {(count (_tables select 0)) > 0} && {(count (_tables select 1)) == 25} && {(count (_tables select 2)) == 26}) then { _notes pushBack format ["terrain tables %1", count _tables]; };
         private _cur = getText (configFile >> "CfgCurator" >> "DrawGroup" >> "textureUnknown");
-        if !(_cur isEqualTo "\z\aee\addons\optics\data\markers\AEE_u_unknown.paa") then { _notes pushBack format ["curator textureUnknown %1", _cur]; };
+        if !(_cur isEqualTo "\z\aee\addons\symbology\data\markers\AEE_u_unknown.paa") then { _notes pushBack format ["curator textureUnknown %1", _cur]; };
         [(count _notes) == 0, _notes joinString "; "]
     }],
     ["P116", {
@@ -81,7 +81,7 @@ private _predicates = [
         ];
         {
             private _icon = getText (configFile >> "CfgMarkers" >> _x >> "icon");
-            if !((_icon find "z\aee\addons\optics\data\markers") >= 0) then { _notes pushBack format ["engine marker %1 still vanilla: %2", _x, _icon]; };
+            if !((_icon find "z\aee\addons\symbology\data\markers") >= 0) then { _notes pushBack format ["engine marker %1 still vanilla: %2", _x, _icon]; };
         } forEach ["b_inf", "b_mech_inf", "o_naval", "n_installation", "c_car", "hd_dot", "hd_ambush", "mil_destroy", "mil_dot", "Contact_arrow1", "Contact_art1", "GroundSupport_CAS_WEST", "GroundSupport_ARTY_EAST", "group_0", "group_11", "respawn_inf", "waypoint"];
         [(count _notes) == 0, _notes joinString "; "]
     }],
@@ -98,7 +98,7 @@ private _predicates = [
         private _texBad = 0;
         {
             private _tex = getText (configFile >> "CfgMarkers" >> _x >> "texture");
-            if ((_tex find "\z\aee\addons\optics\data\markers\") < 0) then { _texBad = _texBad + 1; };
+            if ((_tex find "\z\aee\addons\symbology\data\markers\") < 0) then { _texBad = _texBad + 1; };
         } forEach ["b_inf", "o_armor", "n_recon", "hd_dot", "b_unknown"];
         if (_texBad > 0) then { _notes pushBack format ["texture bad=%1", _texBad]; };
         private _friendBad = 0;
