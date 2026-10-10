@@ -24,7 +24,10 @@ ADR_DIR = REPO / "docs" / "adr"
 
 # ADR number -> reason.  A deliberate gap or duplicate must be justified here.
 # An empty allowlist means the sequence must be unique and gap-free.
-ALLOWLIST: dict[int, str] = {}
+ALLOWLIST: dict[int, str] = {
+    38: "reserved by the map-realism-polish plan (ADR-038); landed separately.",
+    39: "reserved by the aircraft-catalogue-expansion plan (ADR-039); landed separately.",
+}
 
 _ADR = re.compile(r"^ADR-(\d{3})-[A-Za-z0-9]")
 
