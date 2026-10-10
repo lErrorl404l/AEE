@@ -16,3 +16,10 @@ PREPS(fragmentation,calculateGurneyVelocity);
 PREPS(fragmentation,calculateMottCount);
 PREPS(fragmentation,calculateMottMass);
 PREPS(fragmentation,getFragmentationWarhead);
+
+// Crater kernels (issue #19): Hopkinson-Cranz scaling, the WES / TM 5-855-1
+// crater size and shape model, and the terrain grid for setTerrainHeight.
+PREPS(crater,calculateCrater);
+PREPS(crater,craterShape);
+PREPS(crater,craterTerrainPoints);
+PREPS(crater,hopkinsonCranzScale);

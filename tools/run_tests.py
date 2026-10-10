@@ -93,6 +93,7 @@ def main():
         "tools/tests/test_optics_vision.py",
         "tools/tests/test_blast.py",
         "tools/tests/test_fragmentation.py",
+        "tools/tests/test_craters.py",
         "tools/tests/test_diving.py",
         "tools/tests/test_particles.py",
         "tools/tests/test_particle_engine.py",
