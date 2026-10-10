@@ -25,6 +25,46 @@
             <Original>Maritime Debug Log</Original>
             <English>Maritime Debug Log</English>
         </Key>
+        <Key ID="STR_AEE_Maritime_oceanChannelDepth_m_Description">
+            <Original>Water depth in metres used by the tidal current u = eta sqrt(g/H); the engine exposes no bathymetry, so this is a scenario parameter</Original>
+            <English>Water depth in metres used by the tidal current u = eta sqrt(g/H); the engine exposes no bathymetry, so this is a scenario parameter</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanChannelDepth_m_Name">
+            <Original>Channel Depth</Original>
+            <English>Channel Depth</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanCurrentEnabled_Description">
+            <Original>Compute the surface ocean current from the wind and the tide</Original>
+            <English>Compute the surface ocean current from the wind and the tide</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanCurrentEnabled_Name">
+            <Original>Ocean Current</Original>
+            <English>Ocean Current</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanDeflectionDeg_Description">
+            <Original>Angle in degrees the wind-driven current is deflected to the right of the wind (left in the southern hemisphere)</Original>
+            <English>Angle in degrees the wind-driven current is deflected to the right of the wind (left in the southern hemisphere)</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanDeflectionDeg_Name">
+            <Original>Wind Current Deflection</Original>
+            <English>Wind Current Deflection</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanTidalFloodBearing_Description">
+            <Original>Bearing in degrees of the tidal flood axis; the current runs along it and reverses on the ebb</Original>
+            <English>Bearing in degrees of the tidal flood axis; the current runs along it and reverses on the ebb</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanTidalFloodBearing_Name">
+            <Original>Tidal Flood Bearing</Original>
+            <English>Tidal Flood Bearing</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanWindCurrentFraction_Description">
+            <Original>Fraction of the 10 m wind speed carried as surface current; the empirical range is 1 to 3 percent</Original>
+            <English>Fraction of the 10 m wind speed carried as surface current; the empirical range is 1 to 3 percent</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_oceanWindCurrentFraction_Name">
+            <Original>Wind Current Fraction</Original>
+            <English>Wind Current Fraction</English>
+        </Key>
         <Key ID="STR_AEE_Maritime_seaCouplingWeight_Description">
             <Original>Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly</Original>
             <English>Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly</English>

@@ -452,6 +452,13 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_maritime_thermoclineProfile` | maritime | Temperature profile [[depth_m, tempC]] for the sound-speed model (#17) |
 | `aee_core_currentTideDescription` | maritime | Tide description |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
+| `aee_maritime_oceanCurrent` | maritime | Surface ocean current vector `[east, north]` in metres per second |
+| `aee_maritime_oceanCurrentSpeed` | maritime | Surface ocean current speed in metres per second |
+| `aee_maritime_oceanCurrentDir` | maritime | Surface ocean current azimuth in degrees from north |
+| `aee_maritime_windCurrentSpeed` | maritime | Wind-driven part of the current in metres per second |
+| `aee_maritime_tidalCurrentSpeed` | maritime | Tidal part of the current in metres per second |
+| `aee_maritime_ekmanTransport_m2s` | maritime | Ekman volume transport in square metres per second |
+| `aee_maritime_ekmanDepth_m` | maritime | Ekman e-folding depth in metres |
 | `aee_magnetism_compassDeviation` | magnetism | Compass deviation (magnetism namespace) |
 | `aee_magnetism_compassAnomalyNT` | magnetism | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
 

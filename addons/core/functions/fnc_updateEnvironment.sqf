@@ -303,6 +303,9 @@ END_COUNTER(radio);
 BEGIN_COUNTER(hydrology);
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateTidalPrediction);
+    // Ocean current needs the tide offset above and the wind vector from the
+    // wind block earlier this tick (issue #28).
+    [] call EFUNC(maritime,calculateOceanCurrent);
 };
 if (GVAR(hydrologyEnabled)) then {
     [] call EFUNC(weather,calculateSnowAccumulation);
