@@ -45,9 +45,16 @@ private _biolumVisible = missionNamespace getVariable [QGVAR(biolumVisible), fal
 if !(_biolumVisible isEqualType false) then { _biolumVisible = false; };
 private _biolumIntensity = missionNamespace getVariable [QGVAR(biolumIntensity), 0];
 if !(_biolumIntensity isEqualType 0) then { _biolumIntensity = 0; };
+private _thermoclineDepth = missionNamespace getVariable [QGVAR(thermoclineDepth_m), 0];
+if !(_thermoclineDepth isEqualType 0) then { _thermoclineDepth = 0; };
+private _internalWaveSpeed = missionNamespace getVariable [QGVAR(internalWaveSpeed_ms), 0];
+if !(_internalWaveSpeed isEqualType 0) then { _internalWaveSpeed = 0; };
+private _internalWaveAmplitude = missionNamespace getVariable [QGVAR(internalWaveAmplitude_m), 0];
+if !(_internalWaveAmplitude isEqualType 0) then { _internalWaveAmplitude = 0; };
+private _internalTideActive = missionNamespace getVariable [QGVAR(internalTideActive), false];
 
 private _logMsg = format [
-    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | water=type:%10 z=%11m Kd=[%12,%13,%14] T=[%15,%16,%17] snell=%18/%19 biolum=%20:%21",
+    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | water=type:%10 z=%11m Kd=[%12,%13,%14] T=[%15,%16,%17] snell=%18/%19 biolum=%20:%21 | internal=tc=%22 c=%23 eta=%24 active=%25",
     _beaufort, round (_seaStateCurrent * 100) / 100, _seaStateDescription, round (_waveHeight * 100) / 100,
     round (_seaSurfaceTemperature * 100) / 100,
     round (_compassDeviation * 100) / 100, round (_compassAnomalyNT * 100) / 100,
@@ -60,7 +67,9 @@ private _logMsg = format [
     round ((_underwaterTrans select 1) * 1000) / 1000,
     round ((_underwaterTrans select 2) * 1000) / 1000,
     round (_snellCritical * 10) / 10, round (_snellCone * 10) / 10,
-    _biolumVisible, round (_biolumIntensity * 100) / 100
+    _biolumVisible, round (_biolumIntensity * 100) / 100,
+    round (_thermoclineDepth * 100) / 100, round (_internalWaveSpeed * 100) / 100,
+    round (_internalWaveAmplitude * 100) / 100, _internalTideActive
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

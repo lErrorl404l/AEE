@@ -15,3 +15,12 @@ AEE_MODULE_POST_INIT
     if !(missionNamespace getVariable [QGVAR(underwaterLightEnabled), true]) exitWith {};
     [objNull] call FUNC(updateUnderwaterLight);
 }, 1] call CBA_fnc_addPerFrameHandler;
+
+// Internal waves and thermocline (issue #17).  One update per second; it
+// self-gates on the setting.  The model is a deterministic function of the
+// mission time, the map latitude and the sea-surface temperature, so a
+// dedicated server computes the same state as a client.
+[{
+    if !(missionNamespace getVariable [QGVAR(internalWaveEnabled), true]) exitWith {};
+    [] call FUNC(updateInternalWaves);
+}, 1] call CBA_fnc_addPerFrameHandler;

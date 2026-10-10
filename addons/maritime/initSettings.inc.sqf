@@ -23,6 +23,15 @@ AEE_SETTING_SLIDER(seaCouplingWeight,"AEE Maritime","Sea",0,1,0.5,2);
 // override it at run time through aee_maritime_waterType.
 AEE_SETTING_CHECKBOX(underwaterLightEnabled,"AEE Maritime","Sea",true);
 AEE_SETTING_SLIDER(underwaterWaterType,"AEE Maritime","Sea",0,9,3,0);
+// ── Internal waves & thermocline (issue #17) ───────────────────────────────
+// Two-layer internal-wave model.  The mixed layer is the thermocline depth;
+// the deep layer is fixed at 1000 m.  The internal tide runs at the M2
+// period (12.4206 h) with the configured amplitude.  See
+// fnc_updateInternalWaves for the model and the sources.
+AEE_SETTING_CHECKBOX(internalWaveEnabled,"AEE Maritime","Sea",true);
+AEE_SETTING_SLIDER(thermoclineDepth,"AEE Maritime","Sea",10,200,50,0);
+AEE_SETTING_SLIDER(thermoclineWidth,"AEE Maritime","Sea",10,100,30,0);
+AEE_SETTING_SLIDER(internalTideAmplitude,"AEE Maritime","Sea",0,100,20,0);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name

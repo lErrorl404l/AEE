@@ -420,6 +420,19 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_maritime_waveHeight_m` | maritime | Wave height in metres |
 | `aee_core_currentTideOffset_m` | maritime | Tide offset in metres |
 | `aee_maritime_seaSurfaceTemperature` | maritime | Sea-surface temperature (evaporation-duct feed) |
+| `aee_maritime_thermoclineDepth_m` | maritime | Thermocline centre depth in metres (#17) |
+| `aee_maritime_thermoclineWidth_m` | maritime | Thermocline half-width in metres (#17) |
+| `aee_maritime_mixedLayerTempC` | maritime | Mixed-layer temperature in C (#17) |
+| `aee_maritime_deepTempC` | maritime | Deep-water temperature in C (#17) |
+| `aee_maritime_reducedGravity_ms2` | maritime | Reduced gravity g' in m/s2 (#17) |
+| `aee_maritime_internalWaveSpeed_ms` | maritime | Two-layer internal-wave phase speed in m/s (#17) |
+| `aee_maritime_internalTidePeriod_h` | maritime | M2 internal-tide period in hours (#17) |
+| `aee_maritime_internalWaveAmplitude_m` | maritime | Thermocline displacement in metres (#17) |
+| `aee_maritime_internalCurrentUpper_ms` | maritime | Upper-layer internal current in m/s (#17) |
+| `aee_maritime_internalCurrentLower_ms` | maritime | Lower-layer internal current in m/s (#17) |
+| `aee_maritime_inertialPeriod_h` | maritime | Inertial period in hours (#17) |
+| `aee_maritime_internalTideActive` | maritime | Internal tide above the inertial frequency (#17) |
+| `aee_maritime_thermoclineProfile` | maritime | Temperature profile [[depth_m, tempC]] for the sound-speed model (#17) |
 | `aee_core_currentTideDescription` | maritime | Tide description |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
 | `aee_magnetism_compassDeviation` | magnetism | Compass deviation (magnetism namespace) |
