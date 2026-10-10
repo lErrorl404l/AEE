@@ -29,13 +29,22 @@ private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffse
 if !(_tideOffset isEqualType 0) then { _tideOffset = 0; };
 private _tideDescription = missionNamespace getVariable [QEGVAR(core,currentTideDescription), ""];
 if !(_tideDescription isEqualType "") then { _tideDescription = ""; };
+private _thermoclineDepth = missionNamespace getVariable [QGVAR(thermoclineDepth_m), 0];
+if !(_thermoclineDepth isEqualType 0) then { _thermoclineDepth = 0; };
+private _internalWaveSpeed = missionNamespace getVariable [QGVAR(internalWaveSpeed_ms), 0];
+if !(_internalWaveSpeed isEqualType 0) then { _internalWaveSpeed = 0; };
+private _internalWaveAmplitude = missionNamespace getVariable [QGVAR(internalWaveAmplitude_m), 0];
+if !(_internalWaveAmplitude isEqualType 0) then { _internalWaveAmplitude = 0; };
+private _internalTideActive = missionNamespace getVariable [QGVAR(internalTideActive), false];
 
 private _logMsg = format [
-    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9",
+    "maritime state | sea=beaufort=%1 state=%2 desc=%3 wave=%4 sst=%5 | compass=dev=%6 anomaly=%7 | tide=offset=%8 desc=%9 | internal=tc=%10 c=%11 eta=%12 active=%13",
     _beaufort, round (_seaStateCurrent * 100) / 100, _seaStateDescription, round (_waveHeight * 100) / 100,
     round (_seaSurfaceTemperature * 100) / 100,
     round (_compassDeviation * 100) / 100, round (_compassAnomalyNT * 100) / 100,
-    round (_tideOffset * 100) / 100, _tideDescription
+    round (_tideOffset * 100) / 100, _tideDescription,
+    round (_thermoclineDepth * 100) / 100, round (_internalWaveSpeed * 100) / 100,
+    round (_internalWaveAmplitude * 100) / 100, _internalTideActive
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

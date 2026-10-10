@@ -551,8 +551,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_maritime_internalTideAmplitude` | SLIDER | `20` | yes | maritime | Peak vertical displacement of the thermocline by the M2 internal tide, in metres |
+| `aee_maritime_internalWaveEnabled` | CHECKBOX | `true` | yes | maritime | Enable the two-layer internal-wave and thermocline model |
 | `aee_maritime_seaCouplingWeight` | SLIDER | `0.5` | yes | maritime | Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly |
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
+| `aee_maritime_thermoclineDepth` | SLIDER | `50` | yes | maritime | Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below |
+| `aee_maritime_thermoclineWidth` | SLIDER | `30` | yes | maritime | Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
 
 ## AEE Mobility → Hydrology

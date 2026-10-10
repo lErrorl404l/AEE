@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Maritime">
+        <Key ID="STR_AEE_Maritime_internalTideAmplitude_Description">
+            <Original>Peak vertical displacement of the thermocline by the M2 internal tide, in metres</Original>
+            <English>Peak vertical displacement of the thermocline by the M2 internal tide, in metres</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_internalTideAmplitude_Name">
+            <Original>Internal Tide Amplitude</Original>
+            <English>Internal Tide Amplitude</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_internalWaveEnabled_Description">
+            <Original>Enable the two-layer internal-wave and thermocline model</Original>
+            <English>Enable the two-layer internal-wave and thermocline model</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_internalWaveEnabled_Name">
+            <Original>Internal Waves</Original>
+            <English>Internal Waves</English>
+        </Key>
         <Key ID="STR_AEE_Maritime_logDebug_Description">
             <Original>Log maritime diagnostics to the RPT. Turn this on before reporting a fault.</Original>
             <English>Log maritime diagnostics to the RPT. Turn this on before reporting a fault.</English>
@@ -24,6 +40,22 @@
         <Key ID="STR_AEE_Maritime_seaStateResponse_Name">
             <Original>Sea State Response</Original>
             <English>Sea State Response</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineDepth_Description">
+            <Original>Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below</Original>
+            <English>Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineDepth_Name">
+            <Original>Thermocline Depth</Original>
+            <English>Thermocline Depth</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineWidth_Description">
+            <Original>Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient</Original>
+            <English>Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineWidth_Name">
+            <Original>Thermocline Width</Original>
+            <English>Thermocline Width</English>
         </Key>
         <Key ID="STR_AEE_Maritime_tideAmplitude_Description">
             <Original>Half-range of the predicted tide height in metres</Original>
