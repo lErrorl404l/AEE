@@ -228,6 +228,7 @@ def main():
         "tools/tests/test_fx_supersonic_trace.py",
         "tools/tests/test_hail_damage.py",
         "tools/tests/test_hydrology.py",
+        "tools/tests/test_erosion.py",
         "tools/tests/test_inventory_load.py",
         "tools/tests/test_movement_speed.py",
         "tools/tests/test_nvg_audit.py",
