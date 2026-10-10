@@ -13,6 +13,7 @@ PREPS(fx,applySolarGlareFX);
 PREPS(sensor,calculateAtmosphericSeeing);
 PREPS(sensor,calculateAttenuation);
 PREPS(sensor,calculateDewOnOptics);
+PREPS(sensor,calculateGreenFlash);
 PREPS(sensor,calculateMirageIntensity);
 PREPS(sensor,calculatePrecipitationVisibility);
 PREPS(sensor,calculateRainOnOptics);

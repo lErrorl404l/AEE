@@ -31,6 +31,9 @@ AEE_SETTING_SLIDER(maxFogDensity,"AEE Atmos","Fog",0.2,1,0.8,2);
 // ── Refraction ────────────────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(refractionEnabled,"AEE Atmos","Refraction",true);
 
+// ── Ice-crystal halos ──────────────────────────────────────────────────────
+AEE_SETTING_CHECKBOX(haloEnabled,"AEE Atmos","Optics",true);
+
 // ── Engine cloud quality ──────────────────────────────────────────────────
 AEE_SETTING_SLIDER(simulWeatherLayers,"AEE Atmos","Clouds",0,5,0,0);
 
