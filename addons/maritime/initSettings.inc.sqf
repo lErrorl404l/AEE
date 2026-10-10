@@ -16,6 +16,14 @@ AEE_SETTING_SLIDER(seaStateResponse,"AEE Maritime","Sea",0.1,0.9,0.3,2);
 // baseline); high = the sea follows the air quickly.
 AEE_SETTING_SLIDER(seaCouplingWeight,"AEE Maritime","Sea",0,1,0.5,2);
 
+// ── Underwater light (issue #14) ───────────────────────────────────────────
+// The water type is a Jerlov classification: 0 = I, 1 = IA, 2 = IB, 3 = II,
+// 4 = III, 5 = 1, 6 = 3, 7 = 5, 8 = 7, 9 = 9.  It sets the diffuse
+// attenuation of the three colour bands.  A world or biome layer can
+// override it at run time through aee_maritime_waterType.
+AEE_SETTING_CHECKBOX(underwaterLightEnabled,"AEE Maritime","Sea",true);
+AEE_SETTING_SLIDER(underwaterWaterType,"AEE Maritime","Sea",0,9,3,0);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,
