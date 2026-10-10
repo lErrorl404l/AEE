@@ -207,6 +207,8 @@ def main():
         "tools/tests/test_map_qa.py",
         # Map symbology: the derived engine marker mapping (ADR-029).
         "tools/tests/test_symbology.py",
+        # The dynamic variation families (aee-dynamic-variation-system).
+        "tools/tests/test_variation.py",
         "tools/tests/test_marker_derivation.py",
         "tools/tests/test_cba_settings.py",
         "tools/tests/test_settings_migration.py",
