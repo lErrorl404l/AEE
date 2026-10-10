@@ -387,6 +387,13 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_currentDustDevil` | environmental | Dust devil activity 0..1 |
 | `aee_core_currentBlowingSnow` | environmental | Blowing snow 0..1 |
 | `aee_core_cbrnPersistence` | environmental | CBRN persistence 0.225..2.1 |
+| `aee_core_cbrnStabilityClass` | environmental | Pasquill-Gifford stability class A..F for the CBRN plume (issue #105) |
+| `aee_core_cbrnPlumeActive` | environmental | A CBRN agent release is active |
+| `aee_core_cbrnPlumeConcentration` | environmental | CBRN plume ground-level concentration (mg/m3) |
+| `aee_core_cbrnPlumeDose` | environmental | CBRN inhaled dose (mg*min/m3) |
+| `aee_core_cbrnPlumeLethal` | environmental | CBRN dose has reached LCt50 |
+| `aee_core_cbrnPlumeIncapacitated` | environmental | CBRN dose has reached 0.1 x LCt50 |
+| `aee_core_cbrnDepositionFlux` | environmental | CBRN dry deposition flux (mg/m2/s) |
 | `aee_weather_solarFlareActive` | environmental | Solar flare flag |
 | `aee_weather_spaceWeatherFlareValue` | environmental | Flare value |
 | `aee_lighting_auroraVisibility` | environmental | Aurora visibility |
