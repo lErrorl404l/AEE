@@ -31,3 +31,7 @@ PREPS(climatology,getLatitudeClimate);
 PREPS(biome,scanTerrainSignals);
 PREPS(biome,updateBiomePosition);
 PREPS(terrain,updateSoundPropagation);
+PREPS(acoustics,powerSumLevels);
+PREPS(acoustics,ambientNoiseLevel);
+PREPS(acoustics,acousticMasking);
+PREPS(acoustics,updateAmbientNoise);
