@@ -54,6 +54,7 @@ EXPECTED_HUD_TRACKER = {
 }
 
 EXPECTED_HUD_SYMBOLOGY = {
+    "aee_symbology_bftRequired",
     "aee_symbology_symbologyEnabled",
     "aee_symbology_symbologyFont",
     "aee_symbology_symbologyMarkers",

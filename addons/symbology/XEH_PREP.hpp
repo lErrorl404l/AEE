@@ -23,6 +23,7 @@ PREPS(symbology,symbologyEchelonMarker);
 PREPS(symbology,symbologyEchelonSize);
 PREPS(symbology,symbologyMarkers);
 PREPS(symbology,symbologyKilledMarker);
+PREPS(symbology,symbologyHasTracker);
 PREPS(symbology,symbologyMarkersApply);
 PREPS(symbology,symbologyMarkersRestore);
 PREPS(symbology,symbologyWorldDraw);

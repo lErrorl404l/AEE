@@ -30,6 +30,11 @@ AEE_SETTING_CHECKBOX(symbologyUnits,"AEE HUD","Symbology",true);
 // Draw the symbols for the engine map markers.
 AEE_SETTING_CHECKBOX(symbologyMarkers,"AEE HUD","Symbology",true);
 
+// Gate the unit pass on a carried tracker.  When on, the unit symbols draw
+// only while the local player carries a GPS or a tracker device, as a
+// blue-force tracker does.  Default off, so nothing regresses.
+AEE_SETTING_CHECKBOX(bftRequired,"AEE HUD","Symbology",false);
+
 // Suppress the engine indicators where the engine allows it and hide the
 // engine mission markers locally while the map is open.
 AEE_SETTING_CHECKBOX(symbologySuppress,"AEE HUD","Symbology",true);
