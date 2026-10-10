@@ -532,6 +532,22 @@
           "state": "UH-1H operator's manual normal operating engine speed 6600 rpm",
           "grade": "documented"
         },
+        "engine_idle_ng": {
+          "value": 0.7,
+          "unit": "ratio",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Chapter 8, engine runup idle check, N1 68 to 72 percent",
+          "state": "UH-1H operator's manual gas producer idle 68 to 72 per cent; representative ratio 0.70",
+          "grade": "documented"
+        },
+        "engine_max_ng": {
+          "value": 1.015,
+          "unit": "ratio",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Figure 5-1 Instrument Markings, GAS PRODUCER TACHOMETER (N1) 101.5 percent maximum",
+          "state": "UH-1H operator's manual gas producer speed limit 101.5 per cent maximum",
+          "grade": "documented"
+        },
         "generator_count": {
           "value": 1,
           "unit": "count",
