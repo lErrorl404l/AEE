@@ -298,8 +298,8 @@ private _deriveGroundPower = {
 
     private _force = missionNamespace getVariable [QEGVAR(mobility,tractionForce), 0];
     if !(_force isEqualType 0) then { _force = 0; };
-    private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-    if !(_rho isEqualType 0) then { _rho = 1.225; };
+    private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+    if !(_rho isEqualType 0) then { _rho = AERO_ISA_SEA_LEVEL_DENSITY; };
     private _rated = _veh getVariable ["aee_engineRatedPowerW", 150000];
     if !(_rated isEqualType 0) then { _rated = 150000; };
 
@@ -344,8 +344,8 @@ private _deriveAirPower = {
     if (_discArea <= 0) then { _discArea = _corpusDisc; };
     if (_discArea <= 0) then { _discArea = 50; };
 
-    private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-    if !(_rho isEqualType 0) then { _rho = 1.225; };
+    private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+    if !(_rho isEqualType 0) then { _rho = AERO_ISA_SEA_LEVEL_DENSITY; };
 
     [_mass, _speed, typeOf _veh, _rated, _dragArea, _discArea, _idlePower, _rho] call EFUNC(flight,calculateAirEngineLoad)
 };

@@ -32,7 +32,7 @@ private _ea    = _es * (_humidity / 100);
 private _gamma = 0.000665 * 101.3;
 private _Rn    = _solar * 0.1;
 private _u2    = _wind;
-private _evap  = ((0.408 * _slope * _Rn) + (_gamma * (37 / (_temp + 273.15)) * _u2 * (_es - _ea))) / (_slope + (_gamma * (1 + 0.34 * _u2)));
+private _evap  = ((0.408 * _slope * _Rn) + (_gamma * (37 / (_temp + KELVIN_OFFSET)) * _u2 * (_es - _ea))) / (_slope + (_gamma * (1 + 0.34 * _u2)));
 _evap = (_evap max 0) * 0.0002;
 _moisture = (_moisture - _evap) max 0 min 1;
 

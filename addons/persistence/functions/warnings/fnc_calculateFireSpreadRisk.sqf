@@ -22,7 +22,7 @@ private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _windSpeed = vectorMagnitude wind;
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _rainAccum = missionNamespace getVariable [QEGVAR(core,rainAccum), 0];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 
 if (isNil "_RH") then { _RH = 50; };
 

@@ -18,7 +18,7 @@ params [["_posASL", [], [[]]]];
 // Tracks recent precipitation; decays per 5 s tick (setting rainAccumDecay)
 private _rainAccum = missionNamespace getVariable [QEGVAR(core,rainAccum), 0];
 private _decay = missionNamespace getVariable [QGVAR(rainAccumDecay), 0.97];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 private _decayScaled = _decay ^ (_interval / 5);
 _rainAccum = (_rainAccum * _decayScaled) + (rain * (1 - _decayScaled));
 missionNamespace setVariable [QEGVAR(core,rainAccum), _rainAccum];

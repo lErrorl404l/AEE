@@ -1000,12 +1000,39 @@ class SqfParser:
 
 
 # ─── Runtime ────────────────────────────────────────────────────────────────
+_CONSTANTS_PATH = (
+    Path(__file__).resolve().parents[2] / "addons" / "lib" / "constants.hpp"
+)
+_CONSTANTS_CACHE: dict[str, float] | None = None
+
+
+def constants_defines() -> dict[str, float]:
+    """The shared physical constants, parsed from addons/lib/constants.hpp.
+
+    The mod's preprocessor expands each #define name before the engine sees the
+    SQF.  The harness does not preprocess, so it injects the same names as
+    globals; a kernel that reads KELVIN_OFFSET would otherwise NameError.
+    """
+    global _CONSTANTS_CACHE
+    if _CONSTANTS_CACHE is None:
+        text = _CONSTANTS_PATH.read_text(encoding="utf-8")
+        _CONSTANTS_CACHE = {
+            m.group(1): float(m.group(2))
+            for m in re.finditer(
+                r"^#define\s+([A-Za-z_]\w*)\s+([0-9]+(?:\.[0-9]+)?)", text, re.M
+            )
+        }
+    return _CONSTANTS_CACHE
+
+
 class SqfRuntime:
     def __init__(self, globals_: dict[str, Any] | None = None):
         # true/false/nil and the mutating array builtins are engine words, not
         # variables; inject them before any call-supplied global so a caller
-        # can still override.
+        # can still override.  The shared constants follow, then the caller's
+        # globals win last.
         self.globals: dict[str, Any] = dict(BUILTINS)
+        self.globals.update(constants_defines())
         if globals_:
             self.globals.update(globals_)
         self.scopes: list[dict[str, Any]] = [{}]

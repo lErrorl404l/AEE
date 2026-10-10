@@ -29,7 +29,7 @@ Arguments:
   3: NUMBER - aircraft mass, kg, > 0
 
 Return Value: NUMBER - force magnitude in N, 0 or more
-Example: [4, 1.225, 0.7, 1200] call aee_flight_fnc_calculateTurbulenceForce
+Example: [4, AERO_ISA_SEA_LEVEL_DENSITY, 0.7, 1200] call aee_flight_fnc_calculateTurbulenceForce
 Public: No
 */
 
@@ -49,6 +49,6 @@ private _rho = (_densityKgM3 max 0) min (AERO_ISA_SEA_LEVEL_DENSITY * TURBULENCE
 private _forceN = 0.5 * _rho * _gust * _gust * _dragAreaM2;
 
 // Weight-relative cap: a gust force stays a perturbation, never the driver.
-private _capN = _massKg * 9.80665 * TURBULENCE_FORCE_CAP_FRACTION;
+private _capN = _massKg * STANDARD_GRAVITY * TURBULENCE_FORCE_CAP_FRACTION;
 
 (_forceN min _capN) max 0

@@ -29,7 +29,7 @@ if (isNil "_RH")   then { _RH   = 50; };
 private _tempThreshold = missionNamespace getVariable [QGVAR(microburstTempThreshold), 28];
 private _duration      = missionNamespace getVariable [QGVAR(microburstDuration), 12];
 private _gustMax       = missionNamespace getVariable [QGVAR(microburstGustMax), 36];
-private _interval      = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval      = EGVAR(core,updateInterval);
 private _chance        = missionNamespace getVariable [QGVAR(microburstChance), 0.01];
 _chance = _chance * (_interval / 5);
 

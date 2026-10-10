@@ -39,7 +39,7 @@ power to hold the aircraft in hover:
   hover power   P = W v_i = W^1.5 / sqrt (2 rho A)  [W]
   fraction      = P / P_rated                       [-]
 
-A is the rotor disc area in m^2 and g is standard gravity, 9.80665 m/s^2, the
+A is the rotor disc area in m^2 and g is standard gravity, STANDARD_GRAVITY m/s^2, the
 same value fnc_applyRollover uses.  THIS IS AN IDEAL LOWER BOUND, NOT A
 MEASUREMENT.  A real rotor also spends power on profile drag and on the tail
 rotor, and a helicopter in forward flight additionally overcomes parasite
@@ -51,13 +51,13 @@ need a different derivation and is deliberately not invented.
 WORKED REFERENCE, WING.  Piper PA-28-181: mass 1100 kg, wing area 16.16 m^2,
 span 11.0 m, rated power 134 kW, maximum level speed 58 m/s.  Aspect ratio
 AR = 11.0^2 / 16.16 = 7.49.  Lift coefficient CL = 2 W / (rho v^2 S) =
-21582 / (1.225 * 3364 * 16.16) = 0.324.  Induced drag CDi = CL^2 / (pi AR e)
+21582 / (AERO_ISA_SEA_LEVEL_DENSITY * 3364 * 16.16) = 0.324.  Induced drag CDi = CL^2 / (pi AR e)
 with e = 0.8 is 0.0056, and with a zero-lift CD0 of 0.037 the total is
 CD = 0.0426.  Cd S = 0.0426 * 16.16 = 0.688 m^2.  D = 0.5 rho Cd S v^2 =
 1418 N, so P = 1418 * 58 = 82.2 kW and the fraction is 82.2 / 134 = 0.61.
 
 WORKED REFERENCE, ROTOR.  Robinson R44: mass 580 kg, rotor disc 81 m^2, rated
-power 131 kW.  W = 580 * 9.80665 = 5688 N.  P = 5688^1.5 / sqrt (2 * 1.225 *
+power 131 kW.  W = 580 * STANDARD_GRAVITY = 5688 N.  P = 5688^1.5 / sqrt (2 * AERO_ISA_SEA_LEVEL_DENSITY *
 81) = 30.5 kW, so the fraction is 30.5 / 131 = 0.23.  This is the ideal
 induced power and a lower bound, as above.
 
@@ -105,7 +105,7 @@ Arguments:
 
 Return Value: NUMBER, the load fraction in 0..1, or -1 when an input is
 unusable.
-Example: [1100, 58, "B_Plane_CAS_01_F", 134000, 0.688, 50, 0.05, 1.225] call aee_flight_fnc_calculateAirEngineLoad
+Example: [1100, 58, "B_Plane_CAS_01_F", 134000, 0.688, 50, 0.05, AERO_ISA_SEA_LEVEL_DENSITY] call aee_flight_fnc_calculateAirEngineLoad
 Public: No
 */
 
@@ -117,7 +117,7 @@ params [
     ["_dragAreaM2", 0.7, [0]],
     ["_rotorDiscAreaM2", 50, [0]],
     ["_idleFraction", 0.05, [0]],
-    ["_airDensity", 1.225, [0]]
+    ["_airDensity", AERO_ISA_SEA_LEVEL_DENSITY, [0]]
 ];
 
 // A non-positive rated power cannot be divided by, a non-positive mass removes
@@ -140,7 +140,7 @@ if (_class isEqualType "") then {
 private _load = 0;
 if (_rotor) then {
     // Momentum theory: the ideal induced hover power, W^1.5 / sqrt (2 rho A).
-    private _weightN = _massKg * 9.80665;
+    private _weightN = _massKg * STANDARD_GRAVITY;
     private _hoverW = (_weightN ^ 1.5) / sqrt (2 * _rho * _rotorDiscAreaM2);
     _load = _hoverW / _ratedPowerW;
 } else {

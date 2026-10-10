@@ -34,11 +34,11 @@ private _windSpeed = vectorMagnitude wind;
 
 // ─── Temperature lapse (ambient, °C per metre) ──────────────────────────
 // The elevation temperature logic applies the standard-atmosphere lapse
-// (0.0065 °C/m).  Strong insolation on a hot surface steepens the real
+// (ISA_LAPSE_RATE °C/m).  Strong insolation on a hot surface steepens the real
 // near-surface lapse toward the dry adiabat (0.0098 °C/m); overcast and
 // night-time cooling flatten it.
 private _solar = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
-private _lapseRate = 0.0065 + (_solar * 0.004) - (overcast * 0.0015);
+private _lapseRate = ISA_LAPSE_RATE + (_solar * 0.004) - (overcast * 0.0015);
 
 // ─── Parcel buoyancy (CAPE proxy) ───────────────────────────────────────
 // Ambient lapse above the dry adiabat → rising parcels are buoyant.

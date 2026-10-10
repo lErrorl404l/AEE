@@ -70,17 +70,17 @@ if (_rhoRel <= 0) exitWith { 0 };
 // Hot gas must exceed the ambient air, or no density step stands.
 if (_gasTempC <= _ambientTempC) exitWith { 0 };
 
-private _gasK = _gasTempC + 273.15;
-private _ambientK = _ambientTempC + 273.15;
+private _gasK = _gasTempC + KELVIN_OFFSET;
+private _ambientK = _ambientTempC + KELVIN_OFFSET;
 if (_gasK <= 0) exitWith { 0 };
 if (_ambientK <= 0) exitWith { 0 };
 
 // Density is inversely proportional to absolute temperature at uniform
 // pressure, so rho_hot / rho_ambient = T_ambientK / T_gasK.
 private _ratio = _ambientK / _gasK;
-private _rhoAmbient = 1.225 * _rhoRel;
+private _rhoAmbient = AERO_ISA_SEA_LEVEL_DENSITY * _rhoRel;
 private _k = 0.000226;
 private _contrast = _k * _rhoAmbient * (_ratio - 1);
 
 // Report in 1e-4 units so the caller reads a small number, not 1e-4.
-_contrast / 0.0001
+_contrast / EPSILON

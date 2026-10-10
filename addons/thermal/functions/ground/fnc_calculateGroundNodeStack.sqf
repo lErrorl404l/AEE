@@ -187,8 +187,8 @@ if !(_solar isEqualType 0) then { _solar = 0; };
 private _overcast = overcast;
 private _h = 5.7 + (3.8 * _windSpd);            // McAdams, W/m2K
 private _sigma = 5.670374419e-8;             // CODATA 2022
-private _tSkyClear = (0.0552 * ((_tAir + 273.15) ^ 1.5)) - 273.15;
-private _tSkyK = ((_tAir + (_tSkyClear - _tAir) * (1 - _overcast)) + 273.15);
+private _tSkyClear = (SWINBANK_CLEAR_SKY * ((_tAir + KELVIN_OFFSET) ^ 1.5)) - KELVIN_OFFSET;
+private _tSkyK = ((_tAir + (_tSkyClear - _tAir) * (1 - _overcast)) + KELVIN_OFFSET);
 
 // ─── Snow insulation (issue #11) ──────────────────────────────────────────
 // A snow layer sits between the soil and the air as a thermal resistance
@@ -270,7 +270,7 @@ if (_moistTop > 0.02 && {!_snowCovered}) then {
 // F_sky = 1: the surface is treated as a horizontal plate.  Arma exposes
 // no reliable ground slope, so the slope term is omitted - an engine limit,
 // not a physics choice.
-private _fluxSurf = (_alphaSurf * (_solar max 0)) + (_eps * _sigma * (((_T select 0) + 273.15) ^ 4) - (_eps * _sigma * (_tSkyK ^ 4))) - (_h * ((_T select 0) - _tAir)) - _qEvap - _meltSink;
+private _fluxSurf = (_alphaSurf * (_solar max 0)) + (_eps * _sigma * (((_T select 0) + KELVIN_OFFSET) ^ 4) - (_eps * _sigma * (_tSkyK ^ 4))) - (_h * ((_T select 0) - _tAir)) - _qEvap - _meltSink;
 // Surface half-cell transient: dT = q*dt*2/(rho_cp*dz) (finite volume,
 // NOT the steady-state gradient - caught in the mirror as a 100x bug).
 private _T0new = (_T select 0) + (_fluxSurf * _dt * 2 / (_rho * _cp * (_dz select 0)));

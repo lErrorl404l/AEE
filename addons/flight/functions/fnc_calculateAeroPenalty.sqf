@@ -9,7 +9,7 @@ icing severity aee_atmos_airframeIcing.  This kernel turns them into bounded
 aerodynamic penalties a caller applies with addForce.
 
 DENSITY.  Lift is proportional to air density.  The denominator is ISA
-sea-level, AERO_ISA_SEA_LEVEL_DENSITY (1.225 kg/m3, ISO 2533).  Thin air
+sea-level, AERO_ISA_SEA_LEVEL_DENSITY (AERO_ISA_SEA_LEVEL_DENSITY kg/m3, ISO 2533).  Thin air
 removes lift; dense air is not credited here, because the engine's own model
 already gains from it.  The term is bounded to AERO_DENSITY_LIFT_LOSS_MAX.
 
@@ -20,7 +20,7 @@ combined lift loss is capped at AERO_LIFT_LOSS_CAP, so the airframe cannot
 be stalled by the scripted layer.
 
 Arguments:
-  0: NUMBER - lift ratio rho / 1.225, or 1.0 for sea-level standard day
+  0: NUMBER - lift ratio rho / AERO_ISA_SEA_LEVEL_DENSITY, or 1.0 for sea-level standard day
   1: NUMBER - icing severity, 0..1
 
 Return Value: ARRAY - [lift-loss fraction, drag-rise fraction], both >= 0

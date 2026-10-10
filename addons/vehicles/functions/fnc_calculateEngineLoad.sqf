@@ -92,7 +92,7 @@ params [
     ["_ratedPowerW", 150000, [0]],
     ["_idleFraction", 0.05, [0]],
     ["_gradeForceN", 0, [0]],
-    ["_airDensity", 1.225, [0]],
+    ["_airDensity", AERO_ISA_SEA_LEVEL_DENSITY, [0]],
     ["_dragAreaM2", 0.7, [0]]
 ];
 

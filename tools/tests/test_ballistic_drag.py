@@ -459,7 +459,7 @@ class TestSqfKernelStructure(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn('["_bc", 0, [0]]', sqf)
         self.assertIn("_dragModel", sqf)
-        self.assertIn("20.05 * sqrt", sqf)
+        self.assertIn("SOUND_SPEED_COEFF * sqrt", sqf)
         self.assertIn("_velocity / _sound", sqf)
 
 

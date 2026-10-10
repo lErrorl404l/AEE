@@ -28,7 +28,7 @@ ColorCorrections to the contract identity before disabling, so no graded frame
 is left live.  The identity is colorize alpha 0 (BIKI Post Process Effects,
 capture 20240220225631): alpha 1 is black and white, which is what drained
 normal vision to grey.
-  [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]]
+  [1, 1, 0, [0,0,0,0], [1,1,1,0], [REC709_LUMA_R,REC709_LUMA_G,REC709_LUMA_B,0], [-1,-1,0,0,0,0,0]]
 
 Handles are read before every guard.  The source is the core registry owner
 record aee_core_ppHandle_optics_BaseGrade / ..._BaseAcuity, which

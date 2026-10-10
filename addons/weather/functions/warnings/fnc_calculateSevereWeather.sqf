@@ -70,8 +70,8 @@ if (!isNil "_biome"
 // saltation flux uses the current atmosphere.
 private _blowingSnow = 0;
 if (_groundState == "Snow" && (_windSpd > missionNamespace getVariable [QGVAR(BlowingSnowWindThreshold), 8]) && (_temp < 0)) then {
-    private _rhoA = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-    if !(_rhoA isEqualType 0) then { _rhoA = 1.225; };
+    private _rhoA = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+    if !(_rhoA isEqualType 0) then { _rhoA = AERO_ISA_SEA_LEVEL_DENSITY; };
     _blowingSnow = ([_windSpd, _temp, 0.001, _rhoA, 0.20] call FUNC(calculateBlowingSnowVisibility)) get "intensity";
 };
 

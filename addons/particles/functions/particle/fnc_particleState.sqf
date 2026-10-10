@@ -34,10 +34,10 @@ _base params ["_weight", "_volume", "_rubbing", "_bounce", "_colour"];
 // Drag force ~ rho * v^2 * Cd * A.  At half density the same particle
 // decelerates half as fast, so it travels ~1.7x farther (sqrt(2)) in the
 // same time.  Scale volume inversely with the density ratio.
-private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-if !(_rho isEqualType 0) then { _rho = 1.225; };
+private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+if !(_rho isEqualType 0) then { _rho = AERO_ISA_SEA_LEVEL_DENSITY; };
 _rho = _rho max 0.1 min 1.5;
-_volume = _volume * (1.225 / _rho);
+_volume = _volume * (AERO_ISA_SEA_LEVEL_DENSITY / _rho);
 
 // ─── Ground state -> restitution ─────────────────────────────────────────
 // Dust on hardpack bounces (0.4), on mud absorbs (0.1), on snow fluffs

@@ -28,7 +28,7 @@ if (_altState isEqualType 0) then {
 private _myState = _altState getOrDefault [_uid, [0, 0, diag_tickTime, 0, 0]];
 _myState params ["_acclimTime", "_lastAlt", "_lastUpdate", "_lastAMS", "_timeAbove3000"];
 private _now = diag_tickTime;
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 
 private _currentAlt = (getPosASL _player) select 2;
 if (_currentAlt < 0) then { _currentAlt = 0; };

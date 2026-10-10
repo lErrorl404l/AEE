@@ -19,7 +19,7 @@ Stored in QEGVAR(core,snowDepth_m) and QGVAR(snowDriftIntensity) (0–1).
 */
 
 private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 
 private _depth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 // Kept for the melt flux below: the depth before this tick's change is
@@ -64,7 +64,7 @@ if (_T > 2 && _depth < _prevDepth) then {
     private _rhoSnowKgM3 = _snowDensity * 1000;
     private _lFus = 334e3;                  // J/kg, IAPWS-95
     private _meltDepthM = _prevDepth - _depth;
-    private _intervalS = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+    private _intervalS = EGVAR(core,updateInterval);
     if !(_intervalS isEqualType 0) then { _intervalS = 5; };
     _meltFlux = (_meltDepthM * _rhoSnowKgM3 * _lFus) / (_intervalS max 1);
 };

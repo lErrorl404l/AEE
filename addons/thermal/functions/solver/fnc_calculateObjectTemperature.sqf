@@ -149,11 +149,11 @@ _thermalState set ["ground", [_groundTemp, _now]];
 private _hConv = 5.7 + 3.8 * (_windSpeed max 0);   // McAdams 1954
 private _rhFrac = (missionNamespace getVariable [QEGVAR(core,currentHumidity), 50]) / 100;
 if !(_rhFrac isEqualType 0) then { _rhFrac = 0.5; };
-private _rv = 461.5;                  // water-vapour gas constant, J/kgK
+private _rv = R_WATER_VAPOUR;                  // water-vapour gas constant, J/kgK
 private _lv = 2.45e6;                 // latent heat of vaporisation, J/kg
 private _hM = _hConv / (1.2 * 1005);  // kg/(m2 s)
 private _eAir = 611.2 * exp (17.67 * _airTemp / (_airTemp + 243.5)) * (_rhFrac max 0 min 1);
-private _rhoVAir = _eAir / (_rv * (_airTemp + 273.15));
+private _rhoVAir = _eAir / (_rv * (_airTemp + KELVIN_OFFSET));
 private _wet = rain > 0.02;
 
 // ─── Object scan ──────────────────────────────────────────────────────────
@@ -346,7 +346,7 @@ private _infantryCount = 0;
         // (ISO 7726: ground + Swinbank sky + neighbours), not the air, so a
         // clear calm night cools below air - the effect the old air-5 floor
         // deleted.
-        private _mrtK = ([getPosASL _obj, 0.5] call FUNC(calculateMRT)) + 273.15;
+        private _mrtK = ([getPosASL _obj, 0.5] call FUNC(calculateMRT)) + KELVIN_OFFSET;
         private _sigmaB = 5.670374419e-8;
 
         // Internal generation as a surface flux.  A running engine's
@@ -401,7 +401,7 @@ private _infantryCount = 0;
         //                   + U_g*(Ts-Tg) + qEvap(Ts)
         private _tsK = _airTemp + 273.16;
         for "_iter" from 1 to 12 do {
-            private _tsC = _tsK - 273.15;
+            private _tsC = _tsK - KELVIN_OFFSET;
             private _qEvap = 0;
             if (_wet && (_tsC > 0)) then {
                 private _rhoVsat = (611.2 * exp (17.67 * _tsC / (_tsC + 243.5))) / (_rv * _tsK);
@@ -416,7 +416,7 @@ private _infantryCount = 0;
             if (_deriv == 0) exitWith {};
             _tsK = _tsK - (_res / _deriv);
         };
-        _target = _tsK - 273.15;
+        _target = _tsK - KELVIN_OFFSET;
     };
 
     // Thermal inertia: exponential approach to the equilibrium target.
@@ -533,8 +533,8 @@ private _hotSources = [];
         // over the 10 m reach - it cooks everything nearby.  The view
         // factor F captures that: a burning vehicle is a near-blackbody
         // hemisphere (F ~0.5), a warm engine a modest radiator (F ~0.05).
-        private _hotK = _nTemp + 273.15;
-        private _coldK = _oTemp + 273.15;
+        private _hotK = _nTemp + KELVIN_OFFSET;
+        private _coldK = _oTemp + KELVIN_OFFSET;
         private _fView = [0.05, 0.5] select (_nTemp > 300);
         private _qRad = _fView * 0.9 * 5.670374419e-8 * ((_hotK ^ 4) - (_coldK ^ 4));
         private _share = _qRad / 10;   // h ~10 W/m2K (windy ambient)

@@ -40,7 +40,7 @@ if (isNull _unit) then {
     _unit = call CBA_fnc_currentUnit;
 };
 if (_deltaHours <= 0) then {
-    private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+    private _interval = EGVAR(core,updateInterval);
     _deltaHours = _interval / 3600;
     if !(_deltaHours isEqualType 0) then { _deltaHours = 5 / 3600; };
 };

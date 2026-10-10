@@ -11,7 +11,7 @@ the slipperier surface.
 
 The friction coefficient is the sourced wet/ice continuum in
 fnc_calculateWetTraction. The dry reference is the same model's dry value.
-Standard gravity is 9.80665 m/s2 (ISO 80000-3, CODATA).
+Standard gravity is STANDARD_GRAVITY m/s2 (ISO 80000-3, CODATA).
 
 addForce clears the applied force after each simulation step. The caller
 must call this function every frame while the condition holds.
@@ -65,7 +65,7 @@ GVAR(gripDeltaMu) = _deltaMu;
 if (_deltaMu <= 0) exitWith { false };
 
 // Coulomb friction: the lost tractive force is d_mu * m * g.
-private _forceN = _deltaMu * _mass * 9.80665;
+private _forceN = _deltaMu * _mass * STANDARD_GRAVITY;
 private _dir = vectorNormalized _vel;
 _vehicle addForce [_dir vectorMultiply (-_forceN), [0, 0, 0]];
 

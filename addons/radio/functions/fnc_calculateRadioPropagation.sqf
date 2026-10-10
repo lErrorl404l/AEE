@@ -28,7 +28,7 @@ integration and AI communication-range modelling.
 
 private _T   = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _RH  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
-private _P   = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
+private _P   = missionNamespace getVariable [QEGVAR(core,currentPressure), ISA_SEA_LEVEL_PRESSURE_HPA];
 
 // The propagation index feeds only the ACRE2 and TFAR compat layers.
 // Without either host mod there is no consumer, so exit early with the
@@ -123,7 +123,7 @@ if (!isNil "_sst" && _sst isEqualType 0) then {
     private _esatSea = 6.1121 * exp ((18.678 - (_sst / 234.5)) * (_sst / (257.14 + _sst)));
     private _esatAir = 6.1121 * exp ((18.678 - (_T / 234.5)) * (_T / (257.14 + _T)));
     private _eAir = (_RH / 100) * _esatAir;
-    private _dn = 3.73e5 * ((_esatSea - _eAir) * 0.1) / ((_T + 273.15) ^ 2);
+    private _dn = 3.73e5 * ((_esatSea - _eAir) * 0.1) / ((_T + KELVIN_OFFSET) ^ 2);
     if (_dn < 0) then { _dn = 0 };
 
     // Hall cutoff: duct traps only wavelengths small enough to fit.

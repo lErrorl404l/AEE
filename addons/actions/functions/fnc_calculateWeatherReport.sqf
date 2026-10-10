@@ -10,7 +10,7 @@ Returns: string (do NOT setVariable — return value only).
 
 // ─── Read inputs with isNil guards ────────────────────────────────────────
 private _T      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _P      = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
+private _P      = missionNamespace getVariable [QEGVAR(core,currentPressure), ISA_SEA_LEVEL_PRESSURE_HPA];
 private _RH     = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _windDir = missionNamespace getVariable [QEGVAR(core,currentWindDir), 0];
 
