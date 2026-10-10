@@ -47,8 +47,19 @@ if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
 
 if (missionNamespace getVariable [QEGVAR(core,realWeatherActive), false]) exitWith {};
 
-private _seed = missionNamespace getVariable [QEGVAR(core,weatherProgressionSeed), 0.5];
+private _seed = missionNamespace getVariable [QEGVAR(core,weatherProgression), 0.5];
 if !(_seed isEqualType 0) then { _seed = 0.5; };
+// The seeded progression changes every tick, so it cannot set the front's
+// position directly: a 0.025 change in the seed would move the front ~190 km
+// in one tick.  The world name gives a STABLE per-world seed, deterministic
+// and identical on every machine, so the front holds its track for the
+// mission.
+private _chars = toArray worldName;
+if (_chars isNotEqualTo []) then {
+    private _hash = 0;
+    { _hash = (_hash * 31 + _x) mod 997; } forEach _chars;
+    _seed = _hash / 997;
+};
 
 private _front = [time, _seed] call FUNC(calculateWeatherFront);
 private _type      = _front select 0;

@@ -93,9 +93,11 @@ for "_i" from 0 to (_n - 1) do {
     };
 };
 
-// The front starts 300 km behind the anchor and sweeps through as the cycle
-// advances, so an observer at the anchor sees it approach, pass and recede.
-private _distanceKm = -300 + _travelledKm;
+// The front starts 1500 km behind the anchor (a modelling choice) and sweeps
+// through as the cycle advances, so an observer at the anchor sees it
+// approach, pass and recede.  1500 km places the crossing in the mature
+// (cold-front) stage, the dominant passage.
+private _distanceKm = -1500 + _travelledKm;
 
 // Bearing: the prevailing westerlies carry fronts broadly eastward; the seed
 // spreads the track over a 60 deg arc (UNSOURCED spread).
