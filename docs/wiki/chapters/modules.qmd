@@ -340,7 +340,11 @@ Radio propagation.
 | Function | Purpose |
 |---|---|
 | `calculateIonosphericAbsorption` | Calculate HF ionospheric absorption |
+| `calculateKnifeEdgeLoss` | Single knife-edge diffraction loss J(nu) |
 | `calculateRadioPropagation` | Calculate radio propagation |
+| `calculateTerrainDiffraction` | Terrain diffraction excess loss over a profile |
+| `calculateTerrainMaskedLink` | Terrain-masked diffraction loss for one link |
+| `sampleTerrainProfile` | Sample the terrain profile along a link |
 
 ## ai
 

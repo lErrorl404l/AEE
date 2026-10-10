@@ -686,6 +686,7 @@ registered.
 |---|---|---|---|---|---|
 | `aee_radio_batteryDeratingEnabled` | CHECKBOX | `true` | yes | radio | Scale effective transmit power by the physiology battery temperature derating |
 | `aee_radio_propagationRange` | SLIDER | `2.0` | yes | radio | Ceiling of the radio propagation quality index |
+| `aee_radio_terrainMaskingEnabled` | CHECKBOX | `true` | yes | radio | Add ITU-R P.526 terrain diffraction loss by sampling the profile along the link. Off keeps the foliage-only fallback. |
 | `aee_radio_txPower` | SLIDER | `37` | yes | radio | Reference handheld transmit power in dBm used in the link budget |
 
 ## AEE Strain → Cold Weather
