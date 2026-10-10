@@ -330,10 +330,14 @@ if (_atFloor) then {
 // percent.  Every move re-quantised every selection and repainted the scene:
 // that is the operator's shimmer.  Hold the ACCEPTED raw window until it has
 // moved by more than a set fraction of its own span, then let the IIR below
-// smooth the real move.  Eight percent is used, above the measured 6 percent
-// swing, so the breathing is held, while a genuine scene move, which is far
-// larger, still releases.  The old 1 percent band released on this swing.
-private _AGC_DEADBAND = 0.08;
+// smooth the real move.  The P79 probe measures the window EXTREMES, not the
+// cold band: a scene shift that moves the cold band 5 percent of the floor
+// span moves the window MAX about 12.7 percent, because the band radiance is
+// super-linear in temperature.  Fifteen percent is used, above that measured
+// 12.7 percent, so the breathing is held, while a genuine scene move (the P79
+// 40 percent shift, about 46 percent of the span) still releases.  The old 8
+// percent band released on this swing; the old 1 percent band before that.
+private _AGC_DEADBAND = 0.15;
 private _acceptedMin = missionNamespace getVariable [QGVAR(agcAcceptMin), _radMin];
 private _acceptedMax = missionNamespace getVariable [QGVAR(agcAcceptMax), _radMax];
 if (!(_acceptedMin isEqualType 0) || !(_acceptedMax isEqualType 0) || _acceptedMin >= _acceptedMax) then {
