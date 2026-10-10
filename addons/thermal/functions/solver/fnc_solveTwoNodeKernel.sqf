@@ -157,7 +157,7 @@ if (_immersed) then {
             private _pr = 0.707;
             private _kAir = 0.02624;
             private _beta = 1 / 300;
-            private _gr = 9.81 * _beta * (_dT max 0) * (_lChar ^ 3) / (_nu ^ 2);
+            private _gr = STANDARD_GRAVITY * _beta * (_dT max 0) * (_lChar ^ 3) / (_nu ^ 2);
             private _ra = _gr * _pr;
             private _nuC = 0;
             if (_ra < 1000) then {
