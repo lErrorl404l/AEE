@@ -521,5 +521,58 @@ class SystemsRegistryTest(unittest.TestCase):
                 self.assertIn(name, vc.SYSTEMS_FIELD_UNITS)
 
 
+class FamilyProfileTest(unittest.TestCase):
+    """The profile is the family parameter of the shared loader.
+
+    One profile is one vehicle family. The loader resolves the runtime field
+    set from the profile, so the same fixture yields a different field set
+    under the ground family and the aircraft family.
+    """
+
+    def test_the_family_selector_returns_each_profile(self) -> None:
+        self.assertIs(vc.GROUND_PROFILE, vc.profile_for("ground"))
+        self.assertIs(vc.AIRCRAFT_PROFILE, vc.profile_for("aircraft"))
+
+    def test_an_unknown_family_is_rejected(self) -> None:
+        with self.assertRaises(ValueError):
+            vc.profile_for("submarine")
+
+    def test_the_field_registry_is_reachable_per_family(self) -> None:
+        self.assertIn("fuel_capacity", vc.systems_field_units("ground"))
+        self.assertIn("fuel_capacity", vc.systems_field_units("aircraft"))
+
+    def test_a_ground_entry_resolves_the_ground_field_set_only(self) -> None:
+        entry = _entry("fixture_ground", vehicle_type="wheeled")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            ground = vc.load(root, profile=vc.GROUND_PROFILE)
+            air = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertEqual([], ground.errors, ground.errors)
+        self.assertEqual([], air.errors, air.errors)
+        ground_fields = cast(
+            "dict[str, object]", ground.entries[0].to_mapping()["resolved"]
+        )
+        air_fields = cast("dict[str, object]", air.entries[0].to_mapping()["resolved"])
+        self.assertIn("tyre_width_mm", ground_fields)
+        self.assertNotIn("tyre_width_mm", air_fields)
+        self.assertEqual({}, air_fields)
+
+    def test_an_aircraft_entry_resolves_the_aircraft_field_set_only(self) -> None:
+        entry = _entry("fixture_air", vehicle_type="rotary_wing")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = _write(Path(tmp), captures={"fixture": _capture([entry])})
+            ground = vc.load(root, profile=vc.GROUND_PROFILE)
+            air = vc.load(root, profile=vc.AIRCRAFT_PROFILE)
+        self.assertEqual([], ground.errors, ground.errors)
+        self.assertEqual([], air.errors, air.errors)
+        ground_fields = cast(
+            "dict[str, object]", ground.entries[0].to_mapping()["resolved"]
+        )
+        air_fields = cast("dict[str, object]", air.entries[0].to_mapping()["resolved"])
+        self.assertEqual({}, ground_fields)
+        self.assertIn("rotor_disc_area_m2", air_fields)
+        self.assertNotIn("tyre_width_mm", air_fields)
+
+
 if __name__ == "__main__":
     unittest.main()

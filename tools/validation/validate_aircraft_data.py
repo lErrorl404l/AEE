@@ -342,6 +342,7 @@ def _check_grade_coupling(
     entry: dict[str, object],
     source: dict[str, object],
     errors: list[str],
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
 ) -> None:
     source_type = source.get("type")
     tier = source.get("tier")
@@ -369,7 +370,7 @@ def _check_grade_coupling(
                 f"{where}: grade claimed needs a tier 4 manufacturer or a tier 5 compilation source"
             )
     elif grade == "derived":
-        marker = vehicle_catalogue.AIRCRAFT_PROFILE.derivation_markers.get(field)
+        marker = profile.derivation_markers.get(field)
         state = _text(entry.get("state")) or ""
         if marker is not None:
             if marker not in state:
@@ -389,6 +390,7 @@ def validate_value(
     by_id: dict[str, dict[str, object]],
     errors: list[str],
     kind: str = "record",
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
 ) -> None:
     where = f"{kind} {record_id} field {field}"
     entry = _mapping(raw_entry)
@@ -491,7 +493,7 @@ def validate_value(
     if not grade_ok:
         return
 
-    _check_grade_coupling(where, field, grade, entry, source, errors)
+    _check_grade_coupling(where, field, grade, entry, source, errors, profile)
 
     tier = source.get("tier")
     if source_type in REAL_SOURCE_TYPES and tier == 5 and grade != "claimed":
@@ -504,6 +506,7 @@ def _check_runtime_required(
     values: dict[str, object],
     errors: list[str],
     kind: str = "record",
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
 ) -> None:
     """Report every required field a runtime-ready record fails to resolve.
 
@@ -511,9 +514,7 @@ def _check_runtime_required(
     field that a named derivation supplies (operating weight from empty
     weight, rated power from thrust) counts as held.
     """
-    resolved = vehicle_catalogue.resolve_fields(
-        str(vehicle_type), values, vehicle_catalogue.AIRCRAFT_PROFILE
-    )
+    resolved = vehicle_catalogue.resolve_fields(str(vehicle_type), values, profile)
     for field, entry in resolved.items():
         if entry.grade == "absent":
             errors.append(
@@ -528,13 +529,12 @@ def _reject_unsourced_runtime(
     by_id: dict[str, dict[str, object]],
     errors: list[str],
     kind: str = "record",
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
 ) -> None:
     """A runtime-required field never resolves from an unheld source."""
     if not isinstance(vehicle_type, str):
         return
-    resolved = vehicle_catalogue.resolve_fields(
-        vehicle_type, values, vehicle_catalogue.AIRCRAFT_PROFILE
-    )
+    resolved = vehicle_catalogue.resolve_fields(vehicle_type, values, profile)
     for name, field in resolved.items():
         if field.grade == "absent" or not field.source:
             continue
@@ -555,6 +555,7 @@ def validate_record(
     by_id: dict[str, dict[str, object]],
     seen: set[str],
     errors: list[str],
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
 ) -> None:
     record = _mapping(raw)
     if record is None:
@@ -574,9 +575,9 @@ def validate_record(
             errors.append(f"record {record_id}: identity field {field} is required")
 
     vehicle_type = record.get("vehicle_type")
-    if not isinstance(vehicle_type, str) or vehicle_type not in VEHICLE_TYPES:
+    if not isinstance(vehicle_type, str) or vehicle_type not in profile.vehicle_types:
         errors.append(
-            f"record {record_id}: vehicle_type must be one of {sorted(VEHICLE_TYPES)}"
+            f"record {record_id}: vehicle_type must be one of {sorted(profile.vehicle_types)}"
         )
 
     identity_source = _text(record.get("identity_source"))
@@ -594,16 +595,22 @@ def validate_record(
         values = {}
 
     for field, raw_entry in values.items():
-        validate_value(record_id, field, raw_entry, by_id, errors)
+        validate_value(record_id, field, raw_entry, by_id, errors, profile=profile)
 
-    _reject_unsourced_runtime(record_id, vehicle_type, values, by_id, errors)
+    _reject_unsourced_runtime(
+        record_id, vehicle_type, values, by_id, errors, profile=profile
+    )
 
     if runtime_ready:
-        _check_runtime_required(record_id, vehicle_type, values, errors)
+        _check_runtime_required(
+            record_id, vehicle_type, values, errors, profile=profile
+        )
 
 
 def validate_catalogue(
-    entries: Sequence[object], by_id: dict[str, dict[str, object]]
+    entries: Sequence[object],
+    by_id: dict[str, dict[str, object]],
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
 ) -> list[str]:
     """Validate the real-world catalogue entries. Return the errors."""
     errors: list[str] = []
@@ -634,9 +641,12 @@ def validate_catalogue(
             seen_variants.add(variant_id)
 
         vehicle_type = entry.get("vehicle_type")
-        if not isinstance(vehicle_type, str) or vehicle_type not in VEHICLE_TYPES:
+        if (
+            not isinstance(vehicle_type, str)
+            or vehicle_type not in profile.vehicle_types
+        ):
             errors.append(
-                f"catalogue {cid}: vehicle_type must be one of {sorted(VEHICLE_TYPES)}"
+                f"catalogue {cid}: vehicle_type must be one of {sorted(profile.vehicle_types)}"
             )
 
         if not isinstance(entry.get("class_token"), str):
@@ -668,22 +678,24 @@ def validate_catalogue(
             values = {}
 
         for field, raw_entry in values.items():
-            validate_value(cid, field, raw_entry, by_id, errors, kind="catalogue")
+            validate_value(
+                cid, field, raw_entry, by_id, errors, kind="catalogue", profile=profile
+            )
 
         _reject_unsourced_runtime(
-            cid, vehicle_type, values, by_id, errors, kind="catalogue"
+            cid, vehicle_type, values, by_id, errors, kind="catalogue", profile=profile
         )
 
         # A lead may resolve no runtime field (plan tasks 5 and 6): an absent
         # field is a labelled zero. A non-lead must hold every runtime field.
         vehicle_kind = vehicle_type if isinstance(vehicle_type, str) else ""
-        resolved = vehicle_catalogue.resolve_fields(
-            vehicle_kind, values, vehicle_catalogue.AIRCRAFT_PROFILE
-        )
+        resolved = vehicle_catalogue.resolve_fields(vehicle_kind, values, profile)
         if runtime_ready:
-            _check_runtime_required(cid, vehicle_type, values, errors, "catalogue")
+            _check_runtime_required(
+                cid, vehicle_type, values, errors, "catalogue", profile=profile
+            )
         for name, field in resolved.items():
-            marker = vehicle_catalogue.AIRCRAFT_PROFILE.derivation_markers.get(name)
+            marker = profile.derivation_markers.get(name)
             if field.grade == "derived" and marker and marker not in field.state:
                 errors.append(
                     f"catalogue {cid}: derived {name} must name its formula in the state text"
@@ -914,7 +926,9 @@ def validate_conflict(
         errors.append(f"{where}: an averaged conflict is forbidden, keep both values")
 
 
-def systems_marker_errors() -> list[str]:
+def systems_marker_errors(
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
+) -> list[str]:
     """Report a reference-only or status-only field that is runtime-required.
 
     The shared contract marks a systems field reference only or status only.
@@ -922,7 +936,7 @@ def systems_marker_errors() -> list[str]:
     field.
     """
     runtime: set[str] = set()
-    for fields in REQUIRED_RUNTIME_BY_TYPE.values():
+    for fields in profile.runtime_by_type.values():
         runtime.update(fields)
     overlap = (
         vehicle_catalogue.REFERENCE_ONLY_SYSTEMS_FIELDS
@@ -936,7 +950,12 @@ def systems_marker_errors() -> list[str]:
     return []
 
 
-def validate_corpus(sources: object, records: object, conflicts: object) -> list[str]:
+def validate_corpus(
+    sources: object,
+    records: object,
+    conflicts: object,
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
+) -> list[str]:
     """Validate a whole corpus of records. Return the list of errors."""
     errors: list[str] = []
 
@@ -952,7 +971,7 @@ def validate_corpus(sources: object, records: object, conflicts: object) -> list
         record_list = []
     seen: set[str] = set()
     for raw in record_list:
-        validate_record(raw, by_id, seen, errors)
+        validate_record(raw, by_id, seen, errors, profile)
 
     conflict_list = _sequence(conflicts)
     if conflict_list is None:
@@ -1066,7 +1085,10 @@ def validate_damage_roles(data_dir: Path, catalogue: Sequence[object]) -> list[s
     return errors
 
 
-def run(data_dir: Path) -> list[str]:
+def run(
+    data_dir: Path,
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
+) -> list[str]:
     """Read one corpus directory and return every contract error."""
     if _is_fixtures_path(data_dir):
         return [
@@ -1074,7 +1096,7 @@ def run(data_dir: Path) -> list[str]:
         ]
 
     errors: list[str] = []
-    errors.extend(systems_marker_errors())
+    errors.extend(systems_marker_errors(profile))
     sources: list[object] = []
 
     registry = data_dir / "sources.json"
@@ -1090,9 +1112,7 @@ def run(data_dir: Path) -> list[str]:
             sources.extend(registry_list)
 
     records, conflicts = _load_capture_records(data_dir, errors)
-    catalogue_load = vehicle_catalogue.load(
-        data_dir, profile=vehicle_catalogue.AIRCRAFT_PROFILE
-    )
+    catalogue_load = vehicle_catalogue.load(data_dir, profile=profile)
     errors.extend(catalogue_load.errors)
     catalogue = [entry.to_mapping() for entry in catalogue_load.entries]
     class_map = [mapping.to_mapping() for mapping in catalogue_load.mappings]
@@ -1116,18 +1136,22 @@ def run(data_dir: Path) -> list[str]:
             conflicts.extend(file_conflicts)
 
     errors.extend(validate_held_sources(sources, data_dir / "sources"))
-    errors.extend(validate_corpus(sources, records, conflicts))
+    errors.extend(validate_corpus(sources, records, conflicts, profile))
 
     by_id = validate_sources(sources, [])
     if catalogue:
-        errors.extend(validate_catalogue(catalogue, by_id))
+        errors.extend(validate_catalogue(catalogue, by_id, profile))
     errors.extend(validate_class_map(class_map, catalogue_ids, by_id))
     errors.extend(validate_class_bindings(bindings, catalogue_ids, by_id))
     errors.extend(validate_damage_roles(data_dir, catalogue))
     return errors
 
 
-def validate_record_document(document: object, errors: list[str]) -> None:
+def validate_record_document(
+    document: object,
+    errors: list[str],
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
+) -> None:
     """Validate one record document outside the fixtures-path rule.
 
     The document is an object with an inline ``sources`` registry and one
@@ -1145,10 +1169,13 @@ def validate_record_document(document: object, errors: list[str]) -> None:
         sources = []
     by_id = validate_sources(sources, errors)
     seen: set[str] = set()
-    validate_record(obj.get("record"), by_id, seen, errors)
+    validate_record(obj.get("record"), by_id, seen, errors, profile)
 
 
-def run_record(path: Path) -> list[str]:
+def run_record(
+    path: Path,
+    profile: vehicle_catalogue.Profile = vehicle_catalogue.AIRCRAFT_PROFILE,
+) -> list[str]:
     """Read and validate one record document. Return every contract error.
 
     The record path is separate from ``run``. It never treats the fixtures
@@ -1158,7 +1185,7 @@ def run_record(path: Path) -> list[str]:
     errors: list[str] = []
     loaded = _read_json(path, errors)
     if loaded is not None:
-        validate_record_document(loaded, errors)
+        validate_record_document(loaded, errors, profile)
     return errors
 
 
@@ -1563,10 +1590,11 @@ def self_check() -> list[str]:
     return failures
 
 
-def _parse_args(argv: Sequence[str]) -> tuple[bool, str, str | None]:
+def _parse_args(argv: Sequence[str]) -> tuple[bool, str, str | None, str]:
     data_dir = str(DEFAULT_DATA)
     self_check_enabled = False
     record_path: str | None = None
+    family = "aircraft"
     index = 0
     while index < len(argv):
         arg = argv[index]
@@ -1577,6 +1605,11 @@ def _parse_args(argv: Sequence[str]) -> tuple[bool, str, str | None]:
             if index >= len(argv):
                 raise SystemExit("--data-dir needs a path")
             data_dir = argv[index]
+        elif arg == "--family":
+            index += 1
+            if index >= len(argv):
+                raise SystemExit("--family needs a name")
+            family = argv[index]
         elif arg == "--record":
             index += 1
             if index >= len(argv):
@@ -1585,19 +1618,20 @@ def _parse_args(argv: Sequence[str]) -> tuple[bool, str, str | None]:
         elif arg in ("-h", "--help"):
             print(
                 "usage: validate_aircraft_data.py "
-                "[--data-dir PATH] [--record PATH] [--self-check]"
+                "[--data-dir PATH] [--family NAME] [--record PATH] [--self-check]"
             )
             raise SystemExit(0)
         else:
             raise SystemExit(f"unknown argument: {arg}")
         index += 1
-    return self_check_enabled, data_dir, record_path
+    return self_check_enabled, data_dir, record_path, family
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    self_check_enabled, data_dir, record_path = _parse_args(
+    self_check_enabled, data_dir, record_path, family = _parse_args(
         sys.argv[1:] if argv is None else argv
     )
+    profile = vehicle_catalogue.profile_for(family)
 
     if self_check_enabled:
         failures = self_check()
@@ -1610,7 +1644,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0
 
     if record_path is not None:
-        errors = run_record(Path(record_path))
+        errors = run_record(Path(record_path), profile)
         if errors:
             print("aircraft data gate: FAIL")
             for error in errors:
@@ -1619,7 +1653,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"aircraft data gate: PASS (record {record_path})")
         return 0
 
-    errors = run(Path(data_dir))
+    errors = run(Path(data_dir), profile)
     if errors:
         print("aircraft data gate: FAIL")
         for error in errors:

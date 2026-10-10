@@ -451,7 +451,13 @@ def _derive_fuel_burn(
 
 @dataclass(frozen=True)
 class Profile:
-    """A corpus profile: the type enum, its runtime sets and its derivations."""
+    """A corpus profile: the family parameter for the shared tools.
+
+    One profile is one vehicle family. It carries the type enum, the runtime
+    sets, the text fields, the named derivations and the field registry. A
+    caller selects a family by profile, so a shared tool never hard-codes one
+    family's path or field set.
+    """
 
     name: str
     vehicle_types: frozenset[str]
@@ -459,6 +465,7 @@ class Profile:
     text_fields: frozenset[str]
     derivation_markers: Mapping[str, str]
     derivation_fields: frozenset[str]
+    field_registry: Mapping[str, str]
 
 
 GROUND_PROFILE = Profile(
@@ -468,6 +475,7 @@ GROUND_PROFILE = Profile(
     text_fields=TEXT_RUNTIME_FIELDS,
     derivation_markers=MappingProxyType(dict(DERIVATION_STATE_MARKERS)),
     derivation_fields=DERIVATION_FIELDS,
+    field_registry=MappingProxyType(dict(SYSTEMS_FIELD_UNITS)),
 )
 
 AIRCRAFT_PROFILE = Profile(
@@ -477,7 +485,46 @@ AIRCRAFT_PROFILE = Profile(
     text_fields=frozenset(),
     derivation_markers=MappingProxyType(dict(AIRCRAFT_DERIVATION_STATE_MARKERS)),
     derivation_fields=AIRCRAFT_DERIVATION_FIELDS,
+    field_registry=MappingProxyType(dict(SYSTEMS_FIELD_UNITS)),
 )
+
+# The family parameter of the shared tools. A family name selects one
+# profile, so a tool reads the family from its caller and never hard-codes
+# the aircraft path or the aircraft field set. The land family supplies the
+# ground profile and `data/vehicle/`.
+FAMILY_PROFILES: Mapping[str, Profile] = MappingProxyType(
+    {
+        "ground": GROUND_PROFILE,
+        "aircraft": AIRCRAFT_PROFILE,
+    }
+)
+
+
+def profile_for(family: str) -> Profile:
+    """Return the corpus profile for a vehicle family name.
+
+    ``ground`` selects the land family and ``aircraft`` selects the air
+    family. An unknown family name is an error, so a caller cannot fall back
+    to a wrong field set in silence.
+    """
+    profile = FAMILY_PROFILES.get(family)
+    if profile is None:
+        raise ValueError(
+            f"unknown vehicle family: {family!r}; "
+            f"known families: {sorted(FAMILY_PROFILES)}"
+        )
+    return profile
+
+
+def systems_field_units(family: str) -> Mapping[str, str]:
+    """Return the systems field registry for one family.
+
+    The registry is the shared contract together with the aircraft deltas, so
+    both families resolve the same field set. The family name still selects
+    the profile, so a caller names its family explicitly.
+    """
+    return profile_for(family).field_registry
+
 
 # Engine identity sources. They can bind a game class only at grade
 # ``claimed`` and only when the evidence names the concrete token or kind.
