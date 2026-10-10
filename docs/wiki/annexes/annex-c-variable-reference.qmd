@@ -424,6 +424,30 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_ballistics_barrelWearModelled` | ballistics | 1 when the barrel wear model applies to the weapon, 0 for a cannon |
 | `aee_ballistics_supersonicTrace` | ballistics | Refractive index contrast across the bow shock, in units of 1e-4. The exact upper bound for every nose shape. The attained maximum for a round with a finite tip radius. 0 when the round is not supersonic. The Fired handler publishes it once at the muzzle. A caller recomputes it at range with the round's current velocity, which is argument 0. A renderer may scale it. The kernel never does |
 
+### Volcanic activity
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_atmos_volcanicActive` | atmos | True while the volcanic model is running |
+| `aee_atmos_volcanicAshConcentrationMgM3` | atmos | Ground-level ash concentration in mg/m3 |
+| `aee_atmos_volcanicAshDepth_mm` | atmos | Accumulated ash depth in mm |
+| `aee_atmos_volcanicAshIntensity` | atmos | Ash visibility intensity 0..1 for the FX layer |
+| `aee_atmos_volcanicAshState` | atmos | Ash visibility state: none/moderate/severe/extreme |
+| `aee_atmos_volcanicAshVisibilityKm` | atmos | Ash-reduced visibility in km |
+| `aee_atmos_volcanicLaharRisk` | atmos | Lahar initiation risk 0..1 |
+| `aee_atmos_volcanicSO2Band` | atmos | SO2 toxicity band: none/rel/stel/bronchospasm/idlh |
+| `aee_atmos_volcanicSO2_ppm` | atmos | SO2 concentration in ppm |
+| `aee_atmos_volcanicWinterCooling_C` | atmos | Global mean volcanic-winter cooling in C |
+| `aee_atmos_volcanicWinterRegionalCooling_C` | atmos | Regional volcanic-winter cooling in C |
+| `aee_atmos_volcanoPosition` | atmos | Volcano vent position, set by the EDEN module |
+| `aee_atmos_volcanoVEI` | atmos | Volcanic Explosivity Index, set by the EDEN module |
+| `aee_atmos_volcanoVentAltitude` | atmos | Vent altitude in metres |
+| `aee_atmos_volcanoAshEmission` | atmos | Ash source strength in kg/s |
+| `aee_atmos_volcanoSO2Emission` | atmos | SO2 source strength in kg/s |
+| `aee_atmos_volcanoHeatFlux` | atmos | Eruption heat flux in W |
+| `aee_atmos_volcanoLatitude` | atmos | Observer latitude in degrees for the volcanic-winter latitude factor |
+| `aee_atmos_volcanoSlope` | atmos | Slope angle at the volcano in degrees for the lahar risk |
+
 ### Module overrides
 
 | Variable | Subsystem | Purpose |

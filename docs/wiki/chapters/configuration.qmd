@@ -97,6 +97,17 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_atmos_refractionEnabled` | CHECKBOX | `true` | yes | atmos | Enable atmospheric refraction, ducting, and mirage classification |
 
+## AEE Atmos → Volcanic
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_volcanicAshEmission` | SLIDER | `5000000` | yes | atmos | Ash source strength in kilograms per second |
+| `aee_atmos_volcanicEnabled` | CHECKBOX | `false` | yes | atmos | Enable the volcanic model: ash plume, SO2 plume, lahar risk and volcanic winter |
+| `aee_atmos_volcanicHeatFlux` | SLIDER | `100000000000` | yes | atmos | Eruption heat emission rate in watts, driving the Briggs plume rise |
+| `aee_atmos_volcanicSO2Emission` | SLIDER | `500000` | yes | atmos | Sulfur dioxide source strength in kilograms per second |
+| `aee_atmos_volcanicVEI` | SLIDER | `5` | yes | atmos | Volcanic Explosivity Index (0-8) driving the stratospheric aerosol load and the volcanic-winter cooling |
+| `aee_atmos_volcanicVentAltitude` | SLIDER | `2000` | yes | atmos | Vent altitude above sea level in metres |
+
 ## AEE Ballistics → Ammo Temperature
 
 | Setting | Type | Default | Global | Addon | Purpose |

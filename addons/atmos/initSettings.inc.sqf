@@ -34,6 +34,21 @@ AEE_SETTING_CHECKBOX(refractionEnabled,"AEE Atmos","Refraction",true);
 // ── Engine cloud quality ──────────────────────────────────────────────────
 AEE_SETTING_SLIDER(simulWeatherLayers,"AEE Atmos","Clouds",0,5,0,0);
 
+// ── Volcanic ───────────────────────────────────────────────────────────────
+// The eruption parameters.  The EDEN module overrides these per mission; the
+// defaults describe a VEI 5 Plinian eruption.
+AEE_SETTING_CHECKBOX(volcanicEnabled,"AEE Atmos","Volcanic",false);
+
+AEE_SETTING_SLIDER(volcanicVEI,"AEE Atmos","Volcanic",0,8,5,0);
+
+AEE_SETTING_SLIDER(volcanicVentAltitude,"AEE Atmos","Volcanic",0,6000,2000,0);
+
+AEE_SETTING_SLIDER(volcanicAshEmission,"AEE Atmos","Volcanic",0,100000000,5000000,0);
+
+AEE_SETTING_SLIDER(volcanicSO2Emission,"AEE Atmos","Volcanic",0,10000000,500000,0);
+
+AEE_SETTING_SLIDER(volcanicHeatFlux,"AEE Atmos","Volcanic",0,1000000000000,100000000000,0);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,

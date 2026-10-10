@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Atmos">
+        <Key ID="STR_AEE_Atmos_Arg_ashEmission">
+            <Original>Ash Emission Rate</Original>
+            <English>Ash Emission Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_ashEmission_Desc">
+            <Original>Ash source strength in kilograms per second</Original>
+            <English>Ash source strength in kilograms per second</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_heatFlux">
+            <Original>Heat Flux</Original>
+            <English>Heat Flux</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_heatFlux_Desc">
+            <Original>Eruption heat emission rate in watts, driving the Briggs plume rise</Original>
+            <English>Eruption heat emission rate in watts, driving the Briggs plume rise</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_latitude">
+            <Original>Observer Latitude</Original>
+            <English>Observer Latitude</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_latitude_Desc">
+            <Original>Observer latitude in degrees for the volcanic-winter latitude factor</Original>
+            <English>Observer latitude in degrees for the volcanic-winter latitude factor</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_slope">
+            <Original>Volcano Slope</Original>
+            <English>Volcano Slope</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_slope_Desc">
+            <Original>Slope angle at the volcano in degrees for the lahar risk</Original>
+            <English>Slope angle at the volcano in degrees for the lahar risk</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_so2Emission">
+            <Original>SO2 Emission Rate</Original>
+            <English>SO2 Emission Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_so2Emission_Desc">
+            <Original>Sulfur dioxide source strength in kilograms per second</Original>
+            <English>Sulfur dioxide source strength in kilograms per second</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_vei">
+            <Original>Volcanic Explosivity Index</Original>
+            <English>Volcanic Explosivity Index</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_vei_Desc">
+            <Original>Volcanic Explosivity Index (0-8)</Original>
+            <English>Volcanic Explosivity Index (0-8)</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_ventAltitude">
+            <Original>Vent Altitude</Original>
+            <English>Vent Altitude</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Arg_ventAltitude_Desc">
+            <Original>Vent altitude above sea level in metres</Original>
+            <English>Vent altitude above sea level in metres</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Module_Description">
+            <Original>Place at a volcano to enable the volcanic model. The module position is the vent; the arguments set the eruption parameters.</Original>
+            <English>Place at a volcano to enable the volcanic model. The module position is the vent; the arguments set the eruption parameters.</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_Module_DisplayName">
+            <Original>AEE Volcanic Eruption</Original>
+            <English>AEE Volcanic Eruption</English>
+        </Key>
         <Key ID="STR_AEE_Atmos_icingShedRate_Description">
             <Original>Fraction of accreted ice removed per tick while shedding conditions hold</Original>
             <English>Fraction of accreted ice removed per tick while shedding conditions hold</English>
@@ -104,6 +168,54 @@
         <Key ID="STR_AEE_Atmos_simulWeatherLayers_Name">
             <Original>Simul Weather Layers</Original>
             <English>Simul Weather Layers</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicAshEmission_Description">
+            <Original>Ash source strength in kilograms per second</Original>
+            <English>Ash source strength in kilograms per second</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicAshEmission_Name">
+            <Original>Volcanic Ash Emission Rate</Original>
+            <English>Volcanic Ash Emission Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicEnabled_Description">
+            <Original>Enable the volcanic model: ash plume, SO2 plume, lahar risk and volcanic winter</Original>
+            <English>Enable the volcanic model: ash plume, SO2 plume, lahar risk and volcanic winter</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicEnabled_Name">
+            <Original>Volcanic Activity</Original>
+            <English>Volcanic Activity</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicHeatFlux_Description">
+            <Original>Eruption heat emission rate in watts, driving the Briggs plume rise</Original>
+            <English>Eruption heat emission rate in watts, driving the Briggs plume rise</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicHeatFlux_Name">
+            <Original>Volcanic Heat Flux</Original>
+            <English>Volcanic Heat Flux</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicSO2Emission_Description">
+            <Original>Sulfur dioxide source strength in kilograms per second</Original>
+            <English>Sulfur dioxide source strength in kilograms per second</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicSO2Emission_Name">
+            <Original>Volcanic SO2 Emission Rate</Original>
+            <English>Volcanic SO2 Emission Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicVEI_Description">
+            <Original>Volcanic Explosivity Index (0-8) driving the stratospheric aerosol load and the volcanic-winter cooling</Original>
+            <English>Volcanic Explosivity Index (0-8) driving the stratospheric aerosol load and the volcanic-winter cooling</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicVEI_Name">
+            <Original>Volcanic Explosivity Index</Original>
+            <English>Volcanic Explosivity Index</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicVentAltitude_Description">
+            <Original>Vent altitude above sea level in metres</Original>
+            <English>Vent altitude above sea level in metres</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_volcanicVentAltitude_Name">
+            <Original>Volcanic Vent Altitude</Original>
+            <English>Volcanic Vent Altitude</English>
         </Key>
     </Package>
 </Project>
