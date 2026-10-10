@@ -23,8 +23,14 @@ REPO = Path(__file__).resolve().parents[2]
 ADR_DIR = REPO / "docs" / "adr"
 
 # ADR number -> reason.  A deliberate gap or duplicate must be justified here.
-# An empty allowlist means the sequence must be unique and gap-free.
-ALLOWLIST: dict[int, str] = {}
+# 038-041 are reserved by sibling plans on their own branches and land later;
+# remove an entry when its ADR lands on this branch.
+ALLOWLIST: dict[int, str] = {
+    38: "reserved by the map-realism plan on its own branch",
+    39: "reserved by the aircraft-catalogue plan on its own branch",
+    40: "reserved by the dynamic-variation plan on its own branch",
+    41: "reserved by the app6-tactical-graphics plan on its own branch",
+}
 
 _ADR = re.compile(r"^ADR-(\d{3})-[A-Za-z0-9]")
 
