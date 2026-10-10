@@ -28,8 +28,8 @@ structurally by --verify-svg.
 For each catalogue symbol this generator:
 
   * cuts the committed 64 px render to a .paa with `hemtt utils paa convert`,
-  * emits one CfgMarkers child into addons/optics/config_markers.hpp, and
-  * emits addons/optics/data/markers/ATTRIBUTION.md with the per-file source
+  * emits one CfgMarkers child into addons/symbology/config_markers.hpp, and
+  * emits addons/symbology/data/markers/ATTRIBUTION.md with the per-file source
     URL, licence and author.
 
 The real image is used wherever it exists; nothing is hand-drawn here.  The
@@ -64,11 +64,11 @@ CATALOGUE = ROOT / "data" / "symbology" / "nato_catalogue.json"
 SOURCES = ROOT / "data" / "symbology" / "sources"
 SVG_ROOT = SOURCES / "svg"
 RENDER_ROOT = SOURCES / "render"
-MARKERS_OUT = ROOT / "addons" / "optics" / "data" / "markers"
-CONFIG_OUT = ROOT / "addons" / "optics" / "config_markers.hpp"
-FAMILY_OUT = ROOT / "addons" / "optics" / "config_family.hpp"
+MARKERS_OUT = ROOT / "addons" / "symbology" / "data" / "markers"
+CONFIG_OUT = ROOT / "addons" / "symbology" / "config_markers.hpp"
+FAMILY_OUT = ROOT / "addons" / "symbology" / "config_family.hpp"
 ATTRIB_OUT = MARKERS_OUT / "ATTRIBUTION.md"
-ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers"
+ADDON_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers"
 
 # The engine's own CfgMarkers, resolved once from the installed game config and
 # committed under data/symbology/.  Every engine class AEE re-declares reads its

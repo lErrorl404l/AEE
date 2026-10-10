@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The AEE NATO/OPFOR symbology catalogue contract tests.
 
-Pins the engine-family override in addons/optics/config_markers.hpp to the exact
+Pins the engine-family override in addons/symbology/config_markers.hpp to the exact
 APP-6 symbol each engine class means, so the mapping cannot drift to a loose
 keyword match again.  A keyword match once pinned b_armor to the anti-tank glyph
 ("armour" is a substring of "armoured") and b_plane to an engineer glyph.
@@ -18,7 +18,7 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-CONFIG_MARKERS = (REPO / "addons" / "optics" / "config_markers.hpp").read_text(
+CONFIG_MARKERS = (REPO / "addons" / "symbology" / "config_markers.hpp").read_text(
     encoding="utf-8"
 )
 CATALOGUE = REPO / "data" / "symbology" / "nato_catalogue.json"
@@ -67,8 +67,8 @@ ENGINE_OVERRIDE = {
     "n_maint": "AEE_NL_Neutral_Unit_CSS_Maintenance",
     "n_service": "AEE_NL_Neutral_Unit_CSS_Supply",
     "n_antiair": "AEE_NL_Neutral_Unit_Air_Defence",
-    "c_air": "AEE_FA_APP_6_Army_Aviation",
-    "c_plane": "AEE_FL_APP_6_Air_Force",
+    "c_air": "AEE_u_air",
+    "c_plane": "AEE_u_plane",
 }
 
 # The engine class family -> the affiliation the override must resolve to.
@@ -86,9 +86,10 @@ def override_icons() -> dict[str, str]:
     block = CONFIG_MARKERS.split("// Overwrite the engine")[-1]
     found: dict[str, str] = {}
     for m in re.finditer(
-        r'class (\w+) \{ icon = "([^"]+)"; texture = "([^"]+)"; \};', block
+        r'class (\w+)(?:: \w+)? \{ icon = "([^"]+)"; texture = "([^"]+)"; \};', block
     ):
-        found[m.group(1)] = m.group(2)
+        if m.group(1) in ENGINE_OVERRIDE:
+            found[m.group(1)] = m.group(2)
     return found
 
 
@@ -121,7 +122,9 @@ class TestEngineOverrideMapping(unittest.TestCase):
             with self.subTest(cls=cls):
                 name = asset_name(icon)
                 self.assertTrue(
-                    (REPO / "addons" / "optics" / "data" / "markers" / name).is_file(),
+                    (
+                        REPO / "addons" / "symbology" / "data" / "markers" / name
+                    ).is_file(),
                     f"{cls} points at a missing asset {name}",
                 )
 
@@ -208,7 +211,7 @@ class TestNoDuplicateClasses(unittest.TestCase):
     """
 
     def _classes(self, name: str) -> list[str]:
-        text = (REPO / "addons" / "optics" / name).read_text(encoding="utf-8")
+        text = (REPO / "addons" / "symbology" / name).read_text(encoding="utf-8")
         return re.findall(r"^\s*class (AEE_\w+): AEE_MarkerBase", text, re.M)
 
     def test_no_duplicate_class_names(self):

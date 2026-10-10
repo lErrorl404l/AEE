@@ -6,7 +6,7 @@ Two facts are generated from the SQF reference and must stay fresh:
 - the coefficient table the Rust kernels compile (`gen_kernel_coefficients.py`);
 - the parity vectors the Rust `#[test]` reads (`gen_kernel_vectors.py`).
 
-This suite also holds the per-kernel tolerance to the ADR-034 rule: no relative
+This suite also holds the per-kernel tolerance to the ADR-036 rule: no relative
 bound looser than ``1e-6``, and an absolute bound no larger than one rounding
 step (``0.5``) for a kernel whose output is rounded to an integer.
 
@@ -67,7 +67,7 @@ class TestKernelParity(unittest.TestCase):
             self.assertTrue(kernel["vectors"], f"{name} has no vectors")
 
     # Kernels whose relative bound is looser than the 1e-6 f32 default, each
-    # with a written reason in ADR-034.  The 12-iteration nonlinear two-node
+    # with a written reason in ADR-036.  The 12-iteration nonlinear two-node
     # fixed point amplifies one f32 engine rounding to order 1e-5 relative, so
     # the default does not hold for it.
     JUSTIFIED_RELATIVE = {"solveTwoNode": 1e-3}

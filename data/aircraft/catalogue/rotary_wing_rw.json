@@ -1,0 +1,2476 @@
+{
+  "retrieved": "2026-10-09",
+  "note": "Rotary-wing expansion capture (plan task 12). Real rotary-wing types the roster's helicopter and rotary UCAV families represent, one entry per real variant. The Mil Mi-8, Mi-17 and Mi-24, the Kamov Ka-50 and the Aerospatiale SA 341 hold real values from the held OPFOR Worldwide Equipment Guide, so they resolve operating_weight_kg, rated_power_w and rotor_disc_area_m2. Every other entry is an identity lead: it holds no value, so it names its next source in data/aircraft/RESEARCH_GAPS.md.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "mi8_hip",
+      "canonical_name": "Mil Mi-8T Hip-C",
+      "maker": "Mil",
+      "model": "Mi-8",
+      "variant": "T",
+      "variant_id": "mi8_hip",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "hip"
+      ],
+      "keywords": [
+        "transport",
+        "utility"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 6990,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Empty: 6,990",
+          "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP empty weight in kilograms",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 1700,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "Engines: 2x 1,700-shp Isotov TV2-117A",
+          "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP shaft horsepower per engine",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 21.3,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Main Rotor Diameter: 21.3",
+          "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP main rotor diameter",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 12000,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Maximum Gross: 12,000",
+          "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP maximum gross weight",
+          "grade": "documented"
+        },
+        "rotor_blade_count": {
+          "value": 5,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Main rotor: 5",
+          "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP main rotor blade count",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 445,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 445",
+          "state": "OPFOR Worldwide Equipment Guide Mi-8/HIP internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 3 (2x pilots, 1x flight engineer)",
+          "state": "OPFOR WEG Mi-8/HIP published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,700-shp Isotov TV2-117A",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,700-shp Isotov TV2-117A",
+          "state": "OPFOR WEG Mi-8/HIP component breakdown: three damageable component groups",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "mi17_hip",
+      "canonical_name": "Mil Mi-17 Hip-H",
+      "maker": "Mil",
+      "model": "Mi-17",
+      "variant": "Hip-H",
+      "variant_id": "mi17_hip",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "hip"
+      ],
+      "keywords": [
+        "transport",
+        "utility"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 7100,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Empty: 7,100-7,370 (variant dependant)",
+          "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP empty weight in kilograms, lower figure",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 1950,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "Engines: 2x 1,950-shp Isotov TV3-117MT",
+          "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP shaft horsepower per engine",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 21.3,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Main Rotor Diameter: 21.3",
+          "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP main rotor diameter",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 13000,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Maximum Gross: 13,000",
+          "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP maximum gross weight",
+          "grade": "documented"
+        },
+        "rotor_blade_count": {
+          "value": 5,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Main rotor: 5",
+          "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP main rotor blade count",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 445,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 445",
+          "state": "OPFOR Worldwide Equipment Guide Mi-17/HIP internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 3 (2x pilots, 1x flight engineer)",
+          "state": "OPFOR WEG Mi-17/HIP published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,950-shp Isotov TV3-117MT",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 1,950-shp Isotov TV3-117MT",
+          "state": "OPFOR WEG Mi-17/HIP component breakdown: three damageable component groups",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "mi24p_hind_f",
+      "canonical_name": "Mil Mi-24P Hind-F",
+      "maker": "Mil",
+      "model": "Mi-24",
+      "variant": "P",
+      "variant_id": "mi24p",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "modern",
+      "aliases": [
+        "hind"
+      ],
+      "keywords": [
+        "attack",
+        "gunship"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 8500,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Empty: 8,500",
+          "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND empty weight in kilograms",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 2200,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "Engines: 2x 2,200-shp Klimov TV3-117VMA turboshaft",
+          "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND shaft horsepower per engine",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 17.3,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Main Rotor Diameter: 17.3",
+          "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND main rotor diameter",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 11500,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Maximum Gross: 11,500",
+          "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND maximum gross weight",
+          "grade": "documented"
+        },
+        "rotor_blade_count": {
+          "value": 5,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Main rotor: 5",
+          "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND main rotor blade count",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 1840,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 1,840",
+          "state": "OPFOR Worldwide Equipment Guide Mi-24/HIND internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 2 (pilots in tandem cockpits)",
+          "state": "OPFOR WEG Mi-24/HIND published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 2,200-shp Klimov TV3-117VMA",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 5, Tail rotor: 3, Engines: 2x 2,200-shp Klimov TV3-117VMA",
+          "state": "OPFOR WEG Mi-24/HIND component breakdown: three damageable component groups",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "ka50_hokum",
+      "canonical_name": "Kamov Ka-50 Hokum-A",
+      "maker": "Kamov",
+      "model": "Ka-50",
+      "variant": "Hokum-A",
+      "variant_id": "ka50",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "hokum"
+      ],
+      "keywords": [
+        "attack",
+        "gunship"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 7692,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Empty: 7,692",
+          "state": "OPFOR Worldwide Equipment Guide Ka-50/HOKUM empty weight in kilograms",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 2200,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "Engines: 2x 2,200-shp Klimov TV3-117VK",
+          "state": "OPFOR Worldwide Equipment Guide Ka-50/HOKUM shaft horsepower per engine",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 14.5,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Main Rotor Diameter: 14.5",
+          "state": "OPFOR Worldwide Equipment Guide Ka-50/HOKUM main rotor diameter",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 10800,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Maximum Gross: 10,800",
+          "state": "OPFOR Worldwide Equipment Guide Ka-50/HOKUM maximum gross weight",
+          "grade": "documented"
+        },
+        "rotor_blade_count": {
+          "value": 6,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Main rotor: 6 (2 heads, 3 blades each)",
+          "state": "OPFOR Worldwide Equipment Guide Ka-50/HOKUM main rotor blade count",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 1 (pilots, 2 in Ka-52)",
+          "state": "OPFOR WEG Ka-50/HOKUM published crew",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 6 (2 heads, 3 blades each), Tail rotor: None, Engines: 2x 2,200-shp Klimov TV3-117VK",
+          "state": "OPFOR WEG component breakdown: the coaxial main rotor and the engines. The WEG records no tail rotor. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 6 (2 heads, 3 blades each), Tail rotor: None, Engines: 2x 2,200-shp Klimov TV3-117VK",
+          "state": "OPFOR WEG Ka-50/HOKUM component breakdown: two damageable component groups, no tail rotor",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "sa341_gazelle",
+      "canonical_name": "Aerospatiale SA 341 Gazelle",
+      "maker": "Aerospatiale",
+      "model": "SA 341",
+      "variant": "SA 341",
+      "variant_id": "sa341",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "modern",
+      "aliases": [
+        "gazelle"
+      ],
+      "keywords": [
+        "light",
+        "utility"
+      ],
+      "runtime_ready": true,
+      "values": {
+        "empty_weight_kg": {
+          "value": 998,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Empty: 998",
+          "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE empty weight in kilograms",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 590,
+          "unit": "hp",
+          "source": "src_opfor_weg",
+          "locator": "Engines: 1x 590-shp Turbomeca Astazou IIIB turboshaft",
+          "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE shaft horsepower",
+          "grade": "documented"
+        },
+        "rotor_diameter_m": {
+          "value": 10.5,
+          "unit": "m",
+          "source": "src_opfor_weg",
+          "locator": "Main Rotor Diameter: 10.5",
+          "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE main rotor diameter",
+          "grade": "documented"
+        },
+        "max_takeoff_weight_kg": {
+          "value": 1800,
+          "unit": "kg",
+          "source": "src_opfor_weg",
+          "locator": "Maximum Gross: 1,800 (SA 341)",
+          "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE maximum gross weight",
+          "grade": "documented"
+        },
+        "rotor_blade_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Main rotor: 3",
+          "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE main rotor blade count",
+          "grade": "documented"
+        },
+        "fuel_capacity": {
+          "value": 445,
+          "unit": "L",
+          "source": "src_opfor_weg",
+          "locator": "Fuel (liters): Internal: 445",
+          "state": "OPFOR Worldwide Equipment Guide SA-341/GAZELLE internal fuel capacity in litres",
+          "grade": "documented"
+        },
+        "crew_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Crew: 1 or 2 (pilots)",
+          "state": "OPFOR WEG SA-341/Gazelle crew: the two-seat configuration is recorded",
+          "grade": "documented"
+        },
+        "hitpoint_names": {
+          "value": [
+            "HitMainRotor",
+            "HitTailRotor",
+            "HitEngine"
+          ],
+          "unit": "list",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 3, Tail rotor: 13 (fenestron enclosed in tail), Engines: 1x 590-shp Turbomeca Astazou IIIB",
+          "state": "OPFOR WEG component breakdown: main rotor, tail rotor and engines. The game hit point names are the engine-standard names for those components.",
+          "grade": "documented"
+        },
+        "component_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "src_opfor_weg",
+          "locator": "Blades: Main rotor: 3, Tail rotor: 13 (fenestron enclosed in tail), Engines: 1x 590-shp Turbomeca Astazou IIIB",
+          "state": "OPFOR WEG SA-341/Gazelle component breakdown: three damageable component groups",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "uh1h_v",
+      "canonical_name": "Bell UH-1H Iroquois",
+      "maker": "Bell",
+      "model": "UH-1",
+      "variant": "H",
+      "variant_id": "uh1h_v",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "huey",
+        "iroquois"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "engine_oil_pressure_min_kpa": {
+          "value": 172.4,
+          "unit": "kPa",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Chapter 2, caution panel, ENGINE OIL PRESS, engine oil pressure below 25 psi",
+          "state": "UH-1H operator's manual minimum engine oil pressure 25 psi converted to kPa, 25 * 6.894757 = 172.4",
+          "grade": "documented"
+        },
+        "engine_design_rpm": {
+          "value": 6600,
+          "unit": "rpm",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "Chapter 7 torque charts and paragraph 5-6b, 324 rotor / 6600 engine rpm normal operating",
+          "state": "UH-1H operator's manual normal operating engine speed 6600 rpm",
+          "grade": "documented"
+        },
+        "generator_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "2-58 Main and Standby Starter-Generator, 30 volt 300 ampere main generator",
+          "state": "UH-1H operator's manual one main generator on the transmission",
+          "grade": "documented"
+        },
+        "bus_voltage_v": {
+          "value": 28,
+          "unit": "V",
+          "source": "src_tm_55_1520_210_10",
+          "locator": "2-55 DC Power Supply System, 28 Vdc power to the power distribution system",
+          "state": "UH-1H operator's manual direct current bus 28 Vdc",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "uh1n_twin_huey",
+      "canonical_name": "Bell UH-1N Twin Huey",
+      "maker": "Bell",
+      "model": "UH-1",
+      "variant": "N",
+      "variant_id": "uh1n_twin_huey",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "twin huey"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "uh1y_venom",
+      "canonical_name": "Bell UH-1Y Venom",
+      "maker": "Bell",
+      "model": "UH-1",
+      "variant": "Y",
+      "variant_id": "uh1y_venom",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "venom"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "oh58a_kiowa",
+      "canonical_name": "Bell OH-58A Kiowa",
+      "maker": "Bell",
+      "model": "OH-58",
+      "variant": "A",
+      "variant_id": "oh58a_kiowa",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "kiowa"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "engine_oil_capacity_l": {
+          "value": 5.3,
+          "unit": "L",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "Table 2-1 Servicing, Engine Oil 11.2 U.S. Pt",
+          "state": "OH-58 operator's manual engine oil capacity 11.2 US pints converted to litres, 11.2 * 0.473176 = 5.3",
+          "grade": "documented"
+        },
+        "generator_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "2-49 DIRECT CURRENT PRIMARY POWER, supplied by a starter-generator",
+          "state": "OH-58A/C operator's manual one starter-generator",
+          "grade": "documented"
+        },
+        "bus_voltage_v": {
+          "value": 28,
+          "unit": "V",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "2-49 DIRECT CURRENT PRIMARY POWER, 28-volt direct current dual bus",
+          "state": "OH-58A/C operator's manual direct current bus 28 V",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "oh58c_kiowa",
+      "canonical_name": "Bell OH-58C Kiowa",
+      "maker": "Bell",
+      "model": "OH-58",
+      "variant": "C",
+      "variant_id": "oh58c_kiowa",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "kiowa"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "engine_oil_capacity_l": {
+          "value": 5.3,
+          "unit": "L",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "Table 2-1 Servicing, Engine Oil 11.2 U.S. Pt",
+          "state": "OH-58 operator's manual engine oil capacity 11.2 US pints converted to litres, 11.2 * 0.473176 = 5.3",
+          "grade": "documented"
+        },
+        "generator_count": {
+          "value": 1,
+          "unit": "count",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "2-49 DIRECT CURRENT PRIMARY POWER, supplied by a starter-generator",
+          "state": "OH-58A/C operator's manual one starter-generator",
+          "grade": "documented"
+        },
+        "bus_voltage_v": {
+          "value": 28,
+          "unit": "V",
+          "source": "src_tm_55_1520_228_10",
+          "locator": "2-49 DIRECT CURRENT PRIMARY POWER, 28-volt direct current dual bus",
+          "state": "OH-58A/C operator's manual direct current bus 28 V",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "catalogue_id": "oh58d_kiowa_warrior",
+      "canonical_name": "Bell OH-58D Kiowa Warrior",
+      "maker": "Bell",
+      "model": "OH-58",
+      "variant": "D",
+      "variant_id": "oh58d_kiowa_warrior",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "kiowa warrior"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ah64a_apache",
+      "canonical_name": "Hughes AH-64A Apache",
+      "maker": "Hughes",
+      "model": "AH-64",
+      "variant": "A",
+      "variant_id": "ah64a_apache",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "apache"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ah64e_apache_guardian",
+      "canonical_name": "Boeing AH-64E Apache Guardian",
+      "maker": "Boeing",
+      "model": "AH-64",
+      "variant": "E",
+      "variant_id": "ah64e_apache_guardian",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "apache guardian"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ah1j_seacobra",
+      "canonical_name": "Bell AH-1J SeaCobra",
+      "maker": "Bell",
+      "model": "AH-1",
+      "variant": "J",
+      "variant_id": "ah1j_seacobra",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "seacobra"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ah1s_cobra",
+      "canonical_name": "Bell AH-1S Cobra",
+      "maker": "Bell",
+      "model": "AH-1",
+      "variant": "S",
+      "variant_id": "ah1s_cobra",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "cobra"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ah1w_super_cobra",
+      "canonical_name": "Bell AH-1W SuperCobra",
+      "maker": "Bell",
+      "model": "AH-1",
+      "variant": "W",
+      "variant_id": "ah1w_super_cobra",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "supercobra"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ah1z_viper",
+      "canonical_name": "Bell AH-1Z Viper",
+      "maker": "Bell",
+      "model": "AH-1",
+      "variant": "Z",
+      "variant_id": "ah1z_viper",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "viper"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ah6_little_bird",
+      "canonical_name": "Hughes AH-6 Little Bird",
+      "maker": "Hughes",
+      "model": "AH-6",
+      "variant": "AH-6",
+      "variant_id": "ah6_little_bird",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "little bird"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mh6m_mission_enhanced",
+      "canonical_name": "Boeing MH-6M Mission Enhanced Little Bird",
+      "maker": "Boeing",
+      "model": "MH-6",
+      "variant": "M",
+      "variant_id": "mh6m_mission_enhanced",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "little bird"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "uh60l_black_hawk",
+      "canonical_name": "Sikorsky UH-60L Black Hawk",
+      "maker": "Sikorsky",
+      "model": "UH-60",
+      "variant": "L",
+      "variant_id": "uh60l_black_hawk",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "black hawk"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mh60r_seahawk",
+      "canonical_name": "Sikorsky MH-60R Seahawk",
+      "maker": "Sikorsky",
+      "model": "MH-60",
+      "variant": "R",
+      "variant_id": "mh60r_seahawk",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "seahawk"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mh60g_pave_hawk",
+      "canonical_name": "Sikorsky MH-60G Pave Hawk",
+      "maker": "Sikorsky",
+      "model": "MH-60",
+      "variant": "G",
+      "variant_id": "mh60g_pave_hawk",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "pave hawk"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "hh60g_pave_hawk",
+      "canonical_name": "Sikorsky HH-60G Pave Hawk",
+      "maker": "Sikorsky",
+      "model": "HH-60",
+      "variant": "G",
+      "variant_id": "hh60g_pave_hawk",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "pave hawk"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mh60s_knighthawk",
+      "canonical_name": "Sikorsky MH-60S Knighthawk",
+      "maker": "Sikorsky",
+      "model": "MH-60",
+      "variant": "S",
+      "variant_id": "mh60s_knighthawk",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "knighthawk"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "sh60b_seahawk",
+      "canonical_name": "Sikorsky SH-60B Seahawk",
+      "maker": "Sikorsky",
+      "model": "SH-60",
+      "variant": "B",
+      "variant_id": "sh60b_seahawk",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "seahawk"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ch47a_chinook",
+      "canonical_name": "Boeing CH-47A Chinook",
+      "maker": "Boeing",
+      "model": "CH-47",
+      "variant": "A",
+      "variant_id": "ch47a_chinook",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "historical",
+      "aliases": [
+        "chinook"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ch47b_chinook",
+      "canonical_name": "Boeing CH-47B Chinook",
+      "maker": "Boeing",
+      "model": "CH-47",
+      "variant": "B",
+      "variant_id": "ch47b_chinook",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "historical",
+      "aliases": [
+        "chinook"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ch47c_chinook",
+      "canonical_name": "Boeing CH-47C Chinook",
+      "maker": "Boeing",
+      "model": "CH-47",
+      "variant": "C",
+      "variant_id": "ch47c_chinook",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "historical",
+      "aliases": [
+        "chinook"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mh47g_chinook",
+      "canonical_name": "Boeing MH-47G Chinook",
+      "maker": "Boeing",
+      "model": "MH-47",
+      "variant": "G",
+      "variant_id": "mh47g_chinook",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "chinook"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ch53d_sea_stallion",
+      "canonical_name": "Sikorsky CH-53D Sea Stallion",
+      "maker": "Sikorsky",
+      "model": "CH-53",
+      "variant": "D",
+      "variant_id": "ch53d_sea_stallion",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "sea stallion"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ch53e_super_stallion",
+      "canonical_name": "Sikorsky CH-53E Super Stallion",
+      "maker": "Sikorsky",
+      "model": "CH-53",
+      "variant": "E",
+      "variant_id": "ch53e_super_stallion",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "super stallion"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mh53e_sea_dragon",
+      "canonical_name": "Sikorsky MH-53E Sea Dragon",
+      "maker": "Sikorsky",
+      "model": "MH-53",
+      "variant": "E",
+      "variant_id": "mh53e_sea_dragon",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "sea dragon"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ch53k_king_stallion",
+      "canonical_name": "Sikorsky CH-53K King Stallion",
+      "maker": "Sikorsky",
+      "model": "CH-53",
+      "variant": "K",
+      "variant_id": "ch53k_king_stallion",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "king stallion"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "uh72a_lakota",
+      "canonical_name": "Eurocopter UH-72A Lakota",
+      "maker": "Eurocopter",
+      "model": "UH-72",
+      "variant": "A",
+      "variant_id": "uh72a_lakota",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "lakota"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "th67_creek",
+      "canonical_name": "Bell TH-67 Creek",
+      "maker": "Bell",
+      "model": "TH-67",
+      "variant": "TH-67",
+      "variant_id": "th67_creek",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "trainer",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "creek"
+      ],
+      "keywords": [
+        "trainer"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ch46_sea_knight",
+      "canonical_name": "Boeing CH-46 Sea Knight",
+      "maker": "Boeing",
+      "model": "CH-46",
+      "variant": "CH-46",
+      "variant_id": "ch46_sea_knight",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "sea knight"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "oh6a_cayuse",
+      "canonical_name": "Hughes OH-6A Cayuse",
+      "maker": "Hughes",
+      "model": "OH-6",
+      "variant": "A",
+      "variant_id": "oh6a_cayuse",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "historical",
+      "aliases": [
+        "cayuse",
+        "loach"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi35m_hind_e",
+      "canonical_name": "Mil Mi-35M Hind-E",
+      "maker": "Mil",
+      "model": "Mi-35",
+      "variant": "M",
+      "variant_id": "mi35m_hind_e",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "hind"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi171_hip_h",
+      "canonical_name": "Mil Mi-171 Hip-H",
+      "maker": "Mil",
+      "model": "Mi-171",
+      "variant": "Mi-171",
+      "variant_id": "mi171_hip_h",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "hip"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi6_hook",
+      "canonical_name": "Mil Mi-6 Hook",
+      "maker": "Mil",
+      "model": "Mi-6",
+      "variant": "Mi-6",
+      "variant_id": "mi6_hook",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "historical",
+      "aliases": [
+        "hook"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi14_haze",
+      "canonical_name": "Mil Mi-14 Haze",
+      "maker": "Mil",
+      "model": "Mi-14",
+      "variant": "Mi-14",
+      "variant_id": "mi14_haze",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "historical",
+      "aliases": [
+        "haze"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi38_halo",
+      "canonical_name": "Mil Mi-38",
+      "maker": "Mil",
+      "model": "Mi-38",
+      "variant": "Mi-38",
+      "variant_id": "mi38_halo",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "halo"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi24a_hind_a",
+      "canonical_name": "Mil Mi-24A Hind-A",
+      "maker": "Mil",
+      "model": "Mi-24",
+      "variant": "A",
+      "variant_id": "mi24a_hind_a",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "historical",
+      "aliases": [
+        "hind"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ka27_helix",
+      "canonical_name": "Kamov Ka-27 Helix",
+      "maker": "Kamov",
+      "model": "Ka-27",
+      "variant": "Ka-27",
+      "variant_id": "ka27_helix",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "modern",
+      "aliases": [
+        "helix"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ka29_helix_b",
+      "canonical_name": "Kamov Ka-29 Helix-B",
+      "maker": "Kamov",
+      "model": "Ka-29",
+      "variant": "Ka-29",
+      "variant_id": "ka29_helix_b",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "modern",
+      "aliases": [
+        "helix"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ka32_helix_c",
+      "canonical_name": "Kamov Ka-32 Helix-C",
+      "maker": "Kamov",
+      "model": "Ka-32",
+      "variant": "Ka-32",
+      "variant_id": "ka32_helix_c",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "helix"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ka60_kasatka",
+      "canonical_name": "Kamov Ka-60 Kasatka",
+      "maker": "Kamov",
+      "model": "Ka-60",
+      "variant": "Ka-60",
+      "variant_id": "ka60_kasatka",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "contemporary",
+      "aliases": [
+        "kasatka"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi4_hound",
+      "canonical_name": "Mil Mi-4 Hound",
+      "maker": "Mil",
+      "model": "Mi-4",
+      "variant": "Mi-4",
+      "variant_id": "mi4_hound",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "historical",
+      "aliases": [
+        "hound"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mi10_harke",
+      "canonical_name": "Mil Mi-10 Harke",
+      "maker": "Mil",
+      "model": "Mi-10",
+      "variant": "Mi-10",
+      "variant_id": "mi10_harke",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "RU",
+      "era": "historical",
+      "aliases": [
+        "harke"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "sa342_gazelle",
+      "canonical_name": "Aerospatiale SA 342 Gazelle",
+      "maker": "Aerospatiale",
+      "model": "SA 342",
+      "variant": "SA 342",
+      "variant_id": "sa342_gazelle",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "modern",
+      "aliases": [
+        "gazelle"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "sa330_puma",
+      "canonical_name": "Aerospatiale SA 330 Puma",
+      "maker": "Aerospatiale",
+      "model": "SA 330",
+      "variant": "SA 330",
+      "variant_id": "sa330_puma",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "modern",
+      "aliases": [
+        "puma"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "as332_super_puma",
+      "canonical_name": "Aerospatiale AS 332 Super Puma",
+      "maker": "Aerospatiale",
+      "model": "AS 332",
+      "variant": "AS 332",
+      "variant_id": "as332_super_puma",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "contemporary",
+      "aliases": [
+        "super puma"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "as532_cougar",
+      "canonical_name": "Eurocopter AS 532 Cougar",
+      "maker": "Eurocopter",
+      "model": "AS 532",
+      "variant": "AS 532",
+      "variant_id": "as532_cougar",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "contemporary",
+      "aliases": [
+        "cougar"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "as350_ecureuil",
+      "canonical_name": "Aerospatiale AS 350 Ecureuil",
+      "maker": "Aerospatiale",
+      "model": "AS 350",
+      "variant": "AS 350",
+      "variant_id": "as350_ecureuil",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "contemporary",
+      "aliases": [
+        "ecureuil",
+        "squirrel"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "as355_twinstar",
+      "canonical_name": "Aerospatiale AS 355 TwinStar",
+      "maker": "Aerospatiale",
+      "model": "AS 355",
+      "variant": "AS 355",
+      "variant_id": "as355_twinstar",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "contemporary",
+      "aliases": [
+        "twinstar"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "as365_dauphin",
+      "canonical_name": "Aerospatiale AS 365 Dauphin",
+      "maker": "Aerospatiale",
+      "model": "AS 365",
+      "variant": "AS 365",
+      "variant_id": "as365_dauphin",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "contemporary",
+      "aliases": [
+        "dauphin"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ec135",
+      "canonical_name": "Eurocopter EC135",
+      "maker": "Eurocopter",
+      "model": "EC135",
+      "variant": "EC135",
+      "variant_id": "ec135",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "DE",
+      "era": "contemporary",
+      "aliases": [
+        "ec135"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ec145",
+      "canonical_name": "Eurocopter EC145",
+      "maker": "Eurocopter",
+      "model": "EC145",
+      "variant": "EC145",
+      "variant_id": "ec145",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "DE",
+      "era": "contemporary",
+      "aliases": [
+        "ec145"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ec155",
+      "canonical_name": "Eurocopter EC155",
+      "maker": "Eurocopter",
+      "model": "EC155",
+      "variant": "EC155",
+      "variant_id": "ec155",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "contemporary",
+      "aliases": [
+        "ec155"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ec225_super_puma",
+      "canonical_name": "Eurocopter EC225 Super Puma",
+      "maker": "Eurocopter",
+      "model": "EC225",
+      "variant": "EC225",
+      "variant_id": "ec225_super_puma",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "contemporary",
+      "aliases": [
+        "super puma"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "sa321_super_frelon",
+      "canonical_name": "Aerospatiale SA 321 Super Frelon",
+      "maker": "Aerospatiale",
+      "model": "SA 321",
+      "variant": "SA 321",
+      "variant_id": "sa321_super_frelon",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "FR",
+      "era": "historical",
+      "aliases": [
+        "super frelon"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "nh90_nfh",
+      "canonical_name": "NHIndustries NH90 NFH",
+      "maker": "NHIndustries",
+      "model": "NH90",
+      "variant": "NFH",
+      "variant_id": "nh90_nfh",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "EU",
+      "era": "contemporary",
+      "aliases": [
+        "nh90"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "ec665_tiger",
+      "canonical_name": "Eurocopter Tiger",
+      "maker": "Eurocopter",
+      "model": "EC665",
+      "variant": "Tiger",
+      "variant_id": "ec665_tiger",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "EU",
+      "era": "contemporary",
+      "aliases": [
+        "tiger"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "lynx_has3",
+      "canonical_name": "Westland Lynx HAS.3",
+      "maker": "Westland",
+      "model": "Lynx",
+      "variant": "HAS.3",
+      "variant_id": "lynx_has3",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "GB",
+      "era": "modern",
+      "aliases": [
+        "lynx"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "wg13_lynx",
+      "canonical_name": "Westland WG-13 Lynx",
+      "maker": "Westland",
+      "model": "WG-13",
+      "variant": "Lynx",
+      "variant_id": "wg13_lynx",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "GB",
+      "era": "modern",
+      "aliases": [
+        "lynx"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "aw139",
+      "canonical_name": "AgustaWestland AW139",
+      "maker": "AgustaWestland",
+      "model": "AW139",
+      "variant": "AW139",
+      "variant_id": "aw139",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "GB",
+      "era": "contemporary",
+      "aliases": [
+        "aw139"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "aw149",
+      "canonical_name": "AgustaWestland AW149",
+      "maker": "AgustaWestland",
+      "model": "AW149",
+      "variant": "AW149",
+      "variant_id": "aw149",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "GB",
+      "era": "contemporary",
+      "aliases": [
+        "aw149"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "aw101_hm2",
+      "canonical_name": "AgustaWestland AW101 HM2 Merlin",
+      "maker": "AgustaWestland",
+      "model": "AW101",
+      "variant": "HM2",
+      "variant_id": "aw101_hm2",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "GB",
+      "era": "contemporary",
+      "aliases": [
+        "merlin"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bo105",
+      "canonical_name": "Messerschmitt-Bolkow-Blohm Bo 105",
+      "maker": "MBB",
+      "model": "Bo 105",
+      "variant": "Bo 105",
+      "variant_id": "bo105",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "DE",
+      "era": "contemporary",
+      "aliases": [
+        "bo105"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bk117",
+      "canonical_name": "MBB/Kawasaki BK 117",
+      "maker": "MBB",
+      "model": "BK 117",
+      "variant": "BK 117",
+      "variant_id": "bk117",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "DE",
+      "era": "contemporary",
+      "aliases": [
+        "bk117"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "w3_sokol",
+      "canonical_name": "PZL W-3 Sokol",
+      "maker": "PZL",
+      "model": "W-3",
+      "variant": "Sokol",
+      "variant_id": "w3_sokol",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "PL",
+      "era": "contemporary",
+      "aliases": [
+        "sokol"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "z8_haoyang",
+      "canonical_name": "Harbin Z-8 Haoyang",
+      "maker": "Harbin",
+      "model": "Z-8",
+      "variant": "Z-8",
+      "variant_id": "z8_haoyang",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "CN",
+      "era": "contemporary",
+      "aliases": [
+        "haoyang"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "z9_haitun",
+      "canonical_name": "Harbin Z-9 Haitun",
+      "maker": "Harbin",
+      "model": "Z-9",
+      "variant": "Z-9",
+      "variant_id": "z9_haitun",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "CN",
+      "era": "contemporary",
+      "aliases": [
+        "haitun"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "z10_thunderbolt",
+      "canonical_name": "Changhe Z-10",
+      "maker": "Changhe",
+      "model": "Z-10",
+      "variant": "Z-10",
+      "variant_id": "z10_thunderbolt",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "attack",
+      "class_token": "Helicopter",
+      "country": "CN",
+      "era": "contemporary",
+      "aliases": [
+        "thunderbolt"
+      ],
+      "keywords": [
+        "attack"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "z19_thunderbolt",
+      "canonical_name": "Harbin Z-19",
+      "maker": "Harbin",
+      "model": "Z-19",
+      "variant": "Z-19",
+      "variant_id": "z19_thunderbolt",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "CN",
+      "era": "contemporary",
+      "aliases": [
+        "thunderbolt"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "z20_black_eagle",
+      "canonical_name": "Harbin Z-20",
+      "maker": "Harbin",
+      "model": "Z-20",
+      "variant": "Z-20",
+      "variant_id": "z20_black_eagle",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "CN",
+      "era": "contemporary",
+      "aliases": [
+        "black eagle"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell412",
+      "canonical_name": "Bell 412",
+      "maker": "Bell",
+      "model": "412",
+      "variant": "412",
+      "variant_id": "bell412",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "bell 412"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell412ep",
+      "canonical_name": "Bell 412EP",
+      "maker": "Bell",
+      "model": "412",
+      "variant": "412EP",
+      "variant_id": "bell412ep",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "bell 412"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell212",
+      "canonical_name": "Bell 212",
+      "maker": "Bell",
+      "model": "212",
+      "variant": "212",
+      "variant_id": "bell212",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "bell 212"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell205",
+      "canonical_name": "Bell 205",
+      "maker": "Bell",
+      "model": "205",
+      "variant": "205",
+      "variant_id": "bell205",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "bell 205"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell206b_jetranger",
+      "canonical_name": "Bell 206B JetRanger",
+      "maker": "Bell",
+      "model": "206",
+      "variant": "206B",
+      "variant_id": "bell206b_jetranger",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "jetranger"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell407",
+      "canonical_name": "Bell 407",
+      "maker": "Bell",
+      "model": "407",
+      "variant": "407",
+      "variant_id": "bell407",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "bell 407"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell429",
+      "canonical_name": "Bell 429",
+      "maker": "Bell",
+      "model": "429",
+      "variant": "429",
+      "variant_id": "bell429",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "bell 429"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "bell525",
+      "canonical_name": "Bell 525 Relentless",
+      "maker": "Bell",
+      "model": "525",
+      "variant": "525",
+      "variant_id": "bell525",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "relentless"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "s76",
+      "canonical_name": "Sikorsky S-76",
+      "maker": "Sikorsky",
+      "model": "S-76",
+      "variant": "S-76",
+      "variant_id": "s76",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "s-76"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "s92",
+      "canonical_name": "Sikorsky S-92",
+      "maker": "Sikorsky",
+      "model": "S-92",
+      "variant": "S-92",
+      "variant_id": "s92",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "s-92"
+      ],
+      "keywords": [
+        "transport"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "md902_explorer",
+      "canonical_name": "MD Helicopters MD 902 Explorer",
+      "maker": "MD Helicopters",
+      "model": "MD 902",
+      "variant": "Explorer",
+      "variant_id": "md902_explorer",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "utility",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "explorer"
+      ],
+      "keywords": [
+        "utility"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mq8_fire_scout",
+      "canonical_name": "Northrop Grumman MQ-8 Fire Scout",
+      "maker": "Northrop Grumman",
+      "model": "MQ-8",
+      "variant": "Fire Scout",
+      "variant_id": "mq8_fire_scout",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "fire scout"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "mq8c_fire_scout",
+      "canonical_name": "Northrop Grumman MQ-8C Fire Scout",
+      "maker": "Northrop Grumman",
+      "model": "MQ-8",
+      "variant": "C",
+      "variant_id": "mq8c_fire_scout",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "contemporary",
+      "aliases": [
+        "fire scout"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "rq8_fire_scout",
+      "canonical_name": "Northrop Grumman RQ-8 Fire Scout",
+      "maker": "Northrop Grumman",
+      "model": "RQ-8",
+      "variant": "RQ-8",
+      "variant_id": "rq8_fire_scout",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "US",
+      "era": "modern",
+      "aliases": [
+        "fire scout"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    },
+    {
+      "catalogue_id": "camcopter_s100",
+      "canonical_name": "Schiebel Camcopter S-100",
+      "maker": "Schiebel",
+      "model": "Camcopter S-100",
+      "variant": "S-100",
+      "variant_id": "camcopter_s100",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "recon",
+      "class_token": "Helicopter",
+      "country": "AT",
+      "era": "contemporary",
+      "aliases": [
+        "camcopter"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

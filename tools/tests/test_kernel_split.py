@@ -27,7 +27,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 import gen_kernel_table as gen  # noqa: E402
 
-PHYSICS_ADDONS = ("atmos", "thermal", "ballistics", "optics")
+PHYSICS_ADDONS = ("atmos", "thermal", "thermal_display", "ballistics", "eye")
 
 
 class TestKernelSplit(unittest.TestCase):

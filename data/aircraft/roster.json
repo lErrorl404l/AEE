@@ -1,0 +1,1180 @@
+[
+  {
+    "game_class": "B_CTRG_Heli_Transport_01_sand_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_01_base_F",
+    "variant_family": "Heli_Transport_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_CTRG_Heli_Transport_01_tropic_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_01_base_F",
+    "variant_family": "Heli_Transport_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Attack_01_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Attack_01_base_F",
+    "variant_family": "Heli_Attack_01",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "B_Heli_Attack_01_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Attack_01_dynamicLoadout_base_F",
+    "variant_family": "Heli_Attack_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Attack_01_pylons_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Attack_01_pylons_dynamicLoadout_base_F",
+    "variant_family": "Heli_Attack_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Light_01_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_01_unarmed_base_F",
+    "variant_family": "Heli_Light_01",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "B_Heli_Light_01_armed_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_01_armed_base_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Light_01_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_01_dynamicLoadout_base_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Light_01_stripped_F",
+    "class_token": "Helicopter",
+    "base_class": "B_Heli_Light_01_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Transport_01_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_01_base_F",
+    "variant_family": "Heli_Transport_01",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "B_Heli_Transport_01_camo_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_01_base_F",
+    "variant_family": "Heli_Transport_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Transport_01_pylons_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_01_pylons_base_F",
+    "variant_family": "Heli_Transport_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Transport_03_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_03_base_F",
+    "variant_family": "Heli_Transport_03",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "B_Heli_Transport_03_black_F",
+    "class_token": "Helicopter",
+    "base_class": "B_Heli_Transport_03_F",
+    "variant_family": "Heli_Transport_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Transport_03_unarmed_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_03_unarmed_base_F",
+    "variant_family": "Heli_Transport_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Heli_Transport_03_unarmed_green_F",
+    "class_token": "Helicopter",
+    "base_class": "B_Heli_Transport_03_unarmed_F",
+    "variant_family": "Heli_Transport_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Plane_CAS_01_Cluster_F",
+    "class_token": "Plane",
+    "base_class": "B_Plane_CAS_01_dynamicLoadout_F",
+    "variant_family": "Plane_CAS_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Plane_CAS_01_F",
+    "class_token": "Plane",
+    "base_class": "Plane_CAS_01_base_F",
+    "variant_family": "Plane_CAS_01",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "B_Plane_CAS_01_dynamicLoadout_F",
+    "class_token": "Plane",
+    "base_class": "Plane_CAS_01_dynamicLoadout_base_F",
+    "variant_family": "Plane_CAS_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_Cluster_F",
+    "class_token": "Plane",
+    "base_class": "B_Plane_Fighter_01_F",
+    "variant_family": "Plane_Fighter_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Fighter_01_Base_F",
+    "variant_family": "Plane_Fighter_01",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_Stealth_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Fighter_01_Base_F",
+    "variant_family": "Plane_Fighter_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "B_T_UAV_03_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_03_base_F",
+    "variant_family": "UAV_03",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source."
+  },
+  {
+    "game_class": "B_T_UAV_03_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_03_dynamicLoadout_base_F",
+    "variant_family": "UAV_03",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus holds no catalogue entry for the real type, so the class is no_source."
+  },
+  {
+    "game_class": "B_T_VTOL_01_armed_F",
+    "class_token": "Plane",
+    "base_class": "VTOL_01_armed_base_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_armed_blue_F",
+    "class_token": "Plane",
+    "base_class": "B_T_VTOL_01_armed_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_armed_olive_F",
+    "class_token": "Plane",
+    "base_class": "B_T_VTOL_01_armed_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_infantry_F",
+    "class_token": "Plane",
+    "base_class": "VTOL_01_infantry_base_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_infantry_blue_F",
+    "class_token": "Plane",
+    "base_class": "B_T_VTOL_01_infantry_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_infantry_olive_F",
+    "class_token": "Plane",
+    "base_class": "B_T_VTOL_01_infantry_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_vehicle_F",
+    "class_token": "Plane",
+    "base_class": "VTOL_01_vehicle_base_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_vehicle_blue_F",
+    "class_token": "Plane",
+    "base_class": "B_T_VTOL_01_vehicle_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_T_VTOL_01_vehicle_olive_F",
+    "class_token": "Plane",
+    "base_class": "B_T_VTOL_01_vehicle_F",
+    "variant_family": "VTOL_01",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "B_UAV_01_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_01_base_F",
+    "variant_family": "UAV_01",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "B_UAV_02_CAS_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_CAS_base_F",
+    "variant_family": "UAV_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "B_UAV_02_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_base_F",
+    "variant_family": "UAV_02",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "B_UAV_02_dynamicLoadout_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_dynamicLoadout_base_F",
+    "variant_family": "UAV_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "B_UAV_05_F",
+    "class_token": "UAV",
+    "base_class": "UAV_05_Base_F",
+    "variant_family": "UAV_05",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional unmanned combat air vehicle (UCAV Sentinel). The corpus holds no catalogue entry for the real type, so the class is no_source."
+  },
+  {
+    "game_class": "B_UAV_06_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_base_F",
+    "variant_family": "UAV_06",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "B_UAV_06_medical_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_medical_base_F",
+    "variant_family": "UAV_06",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "C_Heli_Light_01_civil_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_01_civil_base_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_blueLine_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_blue_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_digital_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_elliptical_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_furious_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_graywatcher_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_ion_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_jeans_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_light_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_luxe_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_red_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_shadow_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_sheriff_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_speedy_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_stripped_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_sunset_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_vrana_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_wasp_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_Heli_light_01_wave_F",
+    "class_token": "Helicopter",
+    "base_class": "C_Heli_Light_01_civil_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_IDAP_Heli_Transport_02_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_02_base_F",
+    "variant_family": "Heli_Transport_02",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "C_IDAP_UAV_01_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_01_base_F",
+    "variant_family": "UAV_01",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "C_IDAP_UAV_06_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_base_F",
+    "variant_family": "UAV_06",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "C_IDAP_UAV_06_antimine_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_antimine_base_F",
+    "variant_family": "UAV_06",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "C_IDAP_UAV_06_medical_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_medical_base_F",
+    "variant_family": "UAV_06",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "C_Plane_Civil_01_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Civil_01_base_F",
+    "variant_family": "Plane_Civil_01",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "C_Plane_Civil_01_racing_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Civil_01_base_F",
+    "variant_family": "Plane_Civil_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "C_UAV_06_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_base_F",
+    "variant_family": "UAV_06",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "C_UAV_06_medical_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_medical_base_F",
+    "variant_family": "UAV_06",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "I_C_Heli_Light_01_civil_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_01_civil_base_F",
+    "variant_family": "Heli_Light_01",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_C_Plane_Civil_01_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Civil_01_base_F",
+    "variant_family": "Plane_Civil_01",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "I_E_Heli_light_03_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_light_03_dynamicLoadout_base_F",
+    "variant_family": "Heli_light_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_E_Heli_light_03_unarmed_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_light_03_unarmed_base_F",
+    "variant_family": "Heli_light_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_E_UAV_01_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_01_base_F",
+    "variant_family": "UAV_01",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "I_E_UAV_06_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_base_F",
+    "variant_family": "UAV_06",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "I_E_UAV_06_medical_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_medical_base_F",
+    "variant_family": "UAV_06",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "I_Heli_Transport_02_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_02_base_F",
+    "variant_family": "Heli_Transport_02",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "I_Heli_light_03_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_light_03_base_F",
+    "variant_family": "Heli_light_03",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "I_Heli_light_03_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_light_03_dynamicLoadout_base_F",
+    "variant_family": "Heli_light_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_Heli_light_03_unarmed_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_light_03_unarmed_base_F",
+    "variant_family": "Heli_light_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_AA_F",
+    "class_token": "Plane",
+    "base_class": "I_Plane_Fighter_03_CAS_F",
+    "variant_family": "Plane_Fighter_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_CAS_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Fighter_03_base_F",
+    "variant_family": "Plane_Fighter_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_Cluster_F",
+    "class_token": "Plane",
+    "base_class": "I_Plane_Fighter_03_dynamicLoadout_F",
+    "variant_family": "Plane_Fighter_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_dynamicLoadout_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Fighter_03_dynamicLoadout_base_F",
+    "variant_family": "Plane_Fighter_03",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_Plane_Fighter_04_Cluster_F",
+    "class_token": "Plane",
+    "base_class": "I_Plane_Fighter_04_F",
+    "variant_family": "Plane_Fighter_04",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "I_Plane_Fighter_04_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Fighter_04_Base_F",
+    "variant_family": "Plane_Fighter_04",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "I_UAV_01_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_01_base_F",
+    "variant_family": "UAV_01",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "I_UAV_02_CAS_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_CAS_base_F",
+    "variant_family": "UAV_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "I_UAV_02_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_base_F",
+    "variant_family": "UAV_02",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "I_UAV_02_dynamicLoadout_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_dynamicLoadout_base_F",
+    "variant_family": "UAV_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "I_UAV_06_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_base_F",
+    "variant_family": "UAV_06",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "I_UAV_06_medical_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_medical_base_F",
+    "variant_family": "UAV_06",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "O_Heli_Attack_02_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Attack_02_base_F",
+    "variant_family": "Heli_Attack_02",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "O_Heli_Attack_02_black_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Attack_02_base_F",
+    "variant_family": "Heli_Attack_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Heli_Attack_02_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Attack_02_dynamicLoadout_base_F",
+    "variant_family": "Heli_Attack_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Heli_Attack_02_dynamicLoadout_black_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Attack_02_dynamicLoadout_base_F",
+    "variant_family": "Heli_Attack_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Heli_Light_02_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_02_base_F",
+    "variant_family": "Heli_Light_02",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "O_Heli_Light_02_dynamicLoadout_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_02_dynamicLoadout_base_F",
+    "variant_family": "Heli_Light_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Heli_Light_02_unarmed_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_02_unarmed_base_F",
+    "variant_family": "Heli_Light_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Heli_Light_02_v2_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Light_02_base_F",
+    "variant_family": "Heli_Light_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Heli_Transport_04_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_ammo_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_ammo_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_ammo_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_bench_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_bench_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_bench_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_box_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_box_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_box_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_covered_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_covered_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_covered_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_fuel_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_fuel_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_fuel_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_medevac_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_medevac_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_medevac_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_repair_F",
+    "class_token": "Helicopter",
+    "base_class": "Heli_Transport_04_base_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Heli_Transport_04_repair_black_F",
+    "class_token": "Helicopter",
+    "base_class": "O_Heli_Transport_04_repair_F",
+    "variant_family": "Heli_Transport_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, so there is no single real counterpart and no held catalogue entry."
+  },
+  {
+    "game_class": "O_Plane_CAS_02_Cluster_F",
+    "class_token": "Plane",
+    "base_class": "O_Plane_CAS_02_dynamicLoadout_F",
+    "variant_family": "Plane_CAS_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Plane_CAS_02_F",
+    "class_token": "Plane",
+    "base_class": "Plane_CAS_02_base_F",
+    "variant_family": "Plane_CAS_02",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "O_Plane_CAS_02_dynamicLoadout_F",
+    "class_token": "Plane",
+    "base_class": "Plane_CAS_02_dynamicLoadout_base_F",
+    "variant_family": "Plane_CAS_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_Cluster_F",
+    "class_token": "Plane",
+    "base_class": "O_Plane_Fighter_02_F",
+    "variant_family": "Plane_Fighter_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Fighter_02_Base_F",
+    "variant_family": "Plane_Fighter_02",
+    "role": "base",
+    "is_variant": false
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_Stealth_F",
+    "class_token": "Plane",
+    "base_class": "Plane_Fighter_02_Base_F",
+    "variant_family": "Plane_Fighter_02",
+    "role": "variant",
+    "is_variant": true
+  },
+  {
+    "game_class": "O_T_UAV_04_CAS_F",
+    "class_token": "UAV",
+    "base_class": "UAV_04_base_F",
+    "variant_family": "UAV_04",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (KH-3A Fenghuang). The corpus holds no catalogue entry for the real type, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_infantry_F",
+    "class_token": "Plane",
+    "base_class": "VTOL_02_infantry_base_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_infantry_dynamicLoadout_F",
+    "class_token": "Plane",
+    "base_class": "VTOL_02_infantry_dynamicLoadout_base_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_infantry_ghex_F",
+    "class_token": "Plane",
+    "base_class": "O_T_VTOL_02_infantry_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_infantry_grey_F",
+    "class_token": "Plane",
+    "base_class": "O_T_VTOL_02_infantry_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_infantry_hex_F",
+    "class_token": "Plane",
+    "base_class": "O_T_VTOL_02_infantry_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_vehicle_F",
+    "class_token": "Plane",
+    "base_class": "VTOL_02_vehicle_base_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_vehicle_dynamicLoadout_F",
+    "class_token": "Plane",
+    "base_class": "VTOL_02_vehicle_dynamicLoadout_base_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_vehicle_ghex_F",
+    "class_token": "Plane",
+    "base_class": "O_T_VTOL_02_vehicle_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_vehicle_grey_F",
+    "class_token": "Plane",
+    "base_class": "O_T_VTOL_02_vehicle_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_T_VTOL_02_vehicle_hex_F",
+    "class_token": "Plane",
+    "base_class": "O_T_VTOL_02_vehicle_F",
+    "variant_family": "VTOL_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no real counterpart, so the class is no_source."
+  },
+  {
+    "game_class": "O_UAV_01_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_01_base_F",
+    "variant_family": "UAV_01",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "O_UAV_02_CAS_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_CAS_base_F",
+    "variant_family": "UAV_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "O_UAV_02_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_base_F",
+    "variant_family": "UAV_02",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "O_UAV_02_dynamicLoadout_F",
+    "class_token": "UAV",
+    "base_class": "UAV_02_dynamicLoadout_base_F",
+    "variant_family": "UAV_02",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed Assault Wiki names the MQ-9 as its basis, and the corpus holds no catalogue entry, so the class is no_source."
+  },
+  {
+    "game_class": "O_UAV_06_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_base_F",
+    "variant_family": "UAV_06",
+    "role": "base",
+    "is_variant": false,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  },
+  {
+    "game_class": "O_UAV_06_medical_F",
+    "class_token": "Helicopter",
+    "base_class": "UAV_06_medical_base_F",
+    "variant_family": "UAV_06",
+    "role": "variant",
+    "is_variant": true,
+    "no_source_reason": "fictional utility quadcopter (AL-6 Pelican). No real counterpart with a held specification, so the class is no_source."
+  }
+]

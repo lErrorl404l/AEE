@@ -19,7 +19,7 @@ params [
     ["_posASL", [], [[]]]
 ];
 
-private _normals = [_biome] call EFUNC(environmental,getClimateNormals);
+private _normals = [_biome] call EFUNC(weather,getClimateNormals);
 private _humidityArray = _normals select 4;
 private _RH = _humidityArray select ((_month - 1) max 0 min 11);
 

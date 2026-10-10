@@ -9,13 +9,13 @@
 //
 // Emits [P114] PASS/FAIL lines.
 
-private _fnFont = missionNamespace getVariable ["aee_optics_fnc_mgrsFontFamily", nil];
-private _fnUsable = missionNamespace getVariable ["aee_optics_fnc_fontFamilyUsable", nil];
-private _fnPrec = missionNamespace getVariable ["aee_optics_fnc_mgrsMapPrecision", nil];
-private _fnGrid = missionNamespace getVariable ["aee_optics_fnc_mgrsGridLines", nil];
-private _fnCursor = missionNamespace getVariable ["aee_optics_fnc_mgrsCursorText", nil];
-private _fnMarker = missionNamespace getVariable ["aee_optics_fnc_mgrsMarkerText", nil];
-private _fnAnchor = missionNamespace getVariable ["aee_core_fnc_getGeoAnchor", nil];
+private _fnFont = missionNamespace getVariable ["aee_cartography_fnc_mgrsFontFamily", nil];
+private _fnUsable = missionNamespace getVariable ["aee_cartography_fnc_fontFamilyUsable", nil];
+private _fnPrec = missionNamespace getVariable ["aee_cartography_fnc_mgrsMapPrecision", nil];
+private _fnGrid = missionNamespace getVariable ["aee_cartography_fnc_mgrsGridLines", nil];
+private _fnCursor = missionNamespace getVariable ["aee_cartography_fnc_mgrsCursorText", nil];
+private _fnMarker = missionNamespace getVariable ["aee_cartography_fnc_mgrsMarkerText", nil];
+private _fnAnchor = missionNamespace getVariable ["aee_lib_fnc_getGeoAnchor", nil];
 if (isNil "_fnFont" || {isNil "_fnUsable"} || {isNil "_fnPrec"} || {isNil "_fnGrid"}
     || {isNil "_fnCursor"} || {isNil "_fnMarker"} || {isNil "_fnAnchor"}) exitWith {
     diag_log text "[P114] [FAIL] MGRS map-layer kernels not compiled";

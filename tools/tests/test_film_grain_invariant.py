@@ -20,9 +20,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 ADDONS = REPO / "addons"
 
-PERCEPTION = ADDONS / "optics" / "functions" / "perception" / "fnc_perceptionParams.sqf"
-BASE_GRADE = ADDONS / "optics" / "functions" / "grade" / "fnc_baseGradeParams.sqf"
-WEATHER = ADDONS / "optics" / "functions" / "vision" / "fnc_weatherGrainParams.sqf"
+PERCEPTION = ADDONS / "vision" / "functions" / "perception" / "fnc_perceptionParams.sqf"
+BASE_GRADE = ADDONS / "vision" / "functions" / "grade" / "fnc_baseGradeParams.sqf"
+WEATHER = ADDONS / "vision" / "functions" / "vision" / "fnc_weatherGrainParams.sqf"
 TUBE = ADDONS / "nightvision" / "functions" / "fnc_applyNVGTubeModel.sqf"
 
 # The pure kernels return the grain array from a local; the imperative drivers

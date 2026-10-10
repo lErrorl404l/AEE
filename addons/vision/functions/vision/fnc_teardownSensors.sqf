@@ -1,0 +1,58 @@
+#include "..\..\script_component.hpp"
+
+/*
+Tear down the vision-sensor session: one owner for the whole sequence.
+
+The sensor pipeline is started by the "visionMode" player event and torn
+down by this function.  It used to be torn down inline in that event, which
+made the event the only code that could ever clean up.  A death is not a
+vision-mode change, so the engine never fired the event and the per-frame
+handler outlived the session: the handle, the sensor flags and every
+overlay stayed live into the respawn (GAP-026).
+
+Two callers now exist, and one of them runs without any event:
+
+  1. the "visionMode" event, on a genuine return to normal vision, and
+  2. the sensor per-frame handler itself, when the unit it belongs to
+     changes or dies, which is the case the event cannot see.
+
+Because both paths run the same sequence, the teardown cannot drift between
+them.  The function is idempotent: a second call finds no handler and
+returns.
+*/
+
+// Restore the engine exposure before the idempotency exit below.  The NVG
+// and thermal modules set a FIXED setAperture 15, and this is the only place
+// that clears it.  Gating the restore on a live sensor handler leaves the
+// camera pinned to the night exposure whenever the session is already gone,
+// which is exactly when it matters.  setAperture -1 is the engine default, so
+// it is safe to call when no sensor ever ran.
+setAperture -1;
+
+// Release the eye driver's pin so it re-claims the aperture on the next
+// normal-vision tick.  While a sensor owns the exposure the eye driver stands
+// down without writing, and its 0.02 change gate then suppresses the re-write
+// on return, so a pin left set across the session leaves the camera on the
+// sensor's exposure: the operator report that the view stays dark after NVG
+// or thermal.  Releasing the pin hands the aperture back to the eye model.
+EGVAR(eye,eyePinned) = nil;
+
+// Fusion teardown, BEFORE the idempotency exit below, so an exit with the
+// sensor handler already gone still restores.  The forced 0 destroys the
+// fusion PP handles and must not LATCH; the value restored is the reader's
+// own default (0, I2-only).  The materials are restored by the mode "EXIT"
+// call, and the player is the FIRST parameter: a bare ["EXIT"] binds the
+// string to _player and is rejected, which is the documented restore leak.
+[0] call EFUNC(thermal_display,cycleFusionMode);
+missionNamespace setVariable [QEGVAR(thermal_display,fusionMode), 0];
+["EXIT"] call EFUNC(thermal_display,applyFusionSun);
+[call CBA_fnc_currentUnit, "EXIT"] call EFUNC(thermal_display,applyFusionOverlay);
+
+if (isNil QGVAR(sensorPFH)) exitWith {};
+
+[] call EFUNC(nightvision,applyNVGTubeModel);
+[] call FUNC(exitThermalSensors);
+[GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
+GVAR(sensorPFH) = nil;
+GVAR(sensorUnit) = nil;
+AEE_LOG_INFO("sensor PFH stopped")

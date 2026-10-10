@@ -105,11 +105,11 @@ missionNamespace setVariable [QGVAR(sleepHours), _sleepH];
 
 // ─── Borbely pressure + fatigue factor ────────────────────────────────────
 private _sleepPressure = [_wakeH, _sleepH, _localHour, _sleeping]
-    call FUNC(calculateSleepPressure);
+    call EFUNC(strain,calculateSleepPressure);
 _sleepPressure params ["_processS", "_processC", "_sleepiness"];
 
 private _fatigue = [_sleepiness, _processS, _processC, _wakeH]
-    call FUNC(calculateFatigueFactor);
+    call EFUNC(strain,calculateFatigueFactor);
 
 missionNamespace setVariable [QGVAR(sleepiness), _sleepiness];
 missionNamespace setVariable [QGVAR(fatigueFactor), _fatigue];

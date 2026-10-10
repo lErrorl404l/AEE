@@ -35,12 +35,14 @@ Arguments (unchanged for every caller):
   19: conduction length (NUMBER, m)
   20: evaporative path on (BOOL)
   21: time step (NUMBER, s)
-  22: water speed (NUMBER, m/s)
-  23: water temperature (NUMBER, C)
-  24: rain rate (NUMBER, 0..1)
-  25: skin perfusion index (NUMBER, 0..1)
-  26: clothing insulation (NUMBER, clo)
-  27: solar absorptance (NUMBER, 0..1) - -1 derives it from the skin material
+  22: water speed (NUMBER, m/s) - true current; 0 = still water
+  23: water temperature (NUMBER, C) - the exchange target when
+      immersed; below -100 = no water
+  24: rain rate (NUMBER, 0..1) - external wettedness driver
+  25: skin perfusion index (NUMBER, 0..1) - shock vasoconstriction,
+      computed by aee_altitude_fnc_calculateOxygenDelivery (issue #196)
+  26: clothing insulation (NUMBER, clo) - 0 = nude (no clothing term)
+  27: solar absorptance (NUMBER, 0..1) - -1 = derive from skin material
 
 Return:
   [coreTempC, skinTempC]

@@ -46,7 +46,7 @@ the affiliation map on `"Friendly"` while the catalogue stores `"Friend"`, so
    markers carry `AEE_Friend_*`, never Unknown.
 
 4. Real textures only. Every AEE marker texture is a `.paa` under
-   `addons/optics/data/markers`. No AEE marker points at an engine texture.
+   `addons/symbology/data/markers`. No AEE marker points at an engine texture.
 
 5. No invented engine classes. Engineer, signal and supply are not engine
    classes (`b_eng`/`b_sig`/`b_sup` do not exist in any engine config). They

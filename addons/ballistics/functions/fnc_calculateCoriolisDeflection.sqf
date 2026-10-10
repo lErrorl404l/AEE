@@ -38,7 +38,7 @@ params [
 // -35.097 in CfgWorlds, i.e. 35 N) deflected as if southern.
 if (!(_posASL isEqualType [])) then { _posASL = [0, 0, 0]; };
 if ((count _posASL) < 2) then { _posASL = [0, 0, 0]; };
-private _lat = ([] call EFUNC(core,getWorldLocation)) select 0;  // true geographic sign (positive north)
+private _lat = ([] call EFUNC(lib,getWorldLocation)) select 0;  // true geographic sign (positive north)
 
 // ─── Coriolis deflection ──────────────────────────────────────────────────
 // δ = 0.0000729 × sin(lat) × range × bulletTime

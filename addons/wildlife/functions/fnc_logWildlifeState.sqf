@@ -81,7 +81,7 @@ for "_i" from 0 to ((count _fauna) - 1) do {
 private _faunaCap = missionNamespace getVariable [QGVAR(maxAnimals), 16];
 if !(_faunaCap isEqualType 0) then { _faunaCap = 16; };
 
-private _instances = missionNamespace getVariable [QGVAR(soundInstances), []];
+private _instances = missionNamespace getVariable [QEGVAR(ambience,soundInstances), []];
 if !(_instances isEqualType []) then { _instances = []; };
 private _soundLive = 0;
 {
@@ -95,7 +95,7 @@ private _ambientPresent = !isNull _ambientSource;
 
 private _enabled = missionNamespace getVariable [QGVAR(enabled), true];
 if !(_enabled isEqualType true) then { _enabled = true; };
-private _ambient = missionNamespace getVariable [QGVAR(ambientEnabled), true];
+private _ambient = missionNamespace getVariable [QEGVAR(ambience,ambientEnabled), true];
 if !(_ambient isEqualType true) then { _ambient = true; };
 private _animals = missionNamespace getVariable [QGVAR(animalsEnabled), false];
 if !(_animals isEqualType true) then { _animals = false; };

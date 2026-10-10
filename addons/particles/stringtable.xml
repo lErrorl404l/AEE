@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Particles">
+        <Key ID="STR_AEE_Particles_atmosphericDustIntensity_Description">
+            <Original>Alpha of airborne dust particles</Original>
+            <English>Alpha of airborne dust particles</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_atmosphericDustIntensity_Name">
+            <Original>Atmospheric Dust Intensity</Original>
+            <English>Atmospheric Dust Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_logDebug_Description">
+            <Original>Log particles diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log particles diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_logDebug_Name">
+            <Original>Particles Debug Log</Original>
+            <English>Particles Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_vehicleDustDensity_Description">
+            <Original>Vehicle dust particle density (drop interval at low speed)</Original>
+            <English>Vehicle dust particle density (drop interval at low speed)</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_vehicleDustDensity_Name">
+            <Original>Vehicle Dust Density</Original>
+            <English>Vehicle Dust Density</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_vehicleDustIntensity_Description">
+            <Original>Alpha scale on vehicle dust kickup</Original>
+            <English>Alpha scale on vehicle dust kickup</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_vehicleDustIntensity_Name">
+            <Original>Vehicle Dust Intensity</Original>
+            <English>Vehicle Dust Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_weatherAlphaEnabled_Description">
+            <Original>Scale the blast, refract and weather particle alpha by overcast plus humidity</Original>
+            <English>Scale the blast, refract and weather particle alpha by overcast plus humidity</English>
+        </Key>
+        <Key ID="STR_AEE_Particles_weatherAlphaEnabled_Name">
+            <Original>Weather Particle Alpha</Original>
+            <English>Weather Particle Alpha</English>
+        </Key>
+    </Package>
+</Project>

@@ -228,7 +228,7 @@
     },
     "eyeAdaptStep": {
       "command": "kernel.eyeAdaptStep",
-      "path": "addons/optics/functions/eye/fnc_eyeAdaptStep.sqf",
+      "path": "addons/eye/functions/eye/fnc_eyeAdaptStep.sqf",
       "tolerance_abs": 0.0,
       "tolerance_rel": 1e-06,
       "vectors": [
@@ -308,7 +308,7 @@
     },
     "eyeMesopicWeight": {
       "command": "kernel.eyeMesopicWeight",
-      "path": "addons/optics/functions/eye/fnc_eyeMesopicWeight.sqf",
+      "path": "addons/eye/functions/eye/fnc_eyeMesopicWeight.sqf",
       "tolerance_abs": 0.0,
       "tolerance_rel": 1e-06,
       "vectors": [
@@ -356,7 +356,7 @@
     },
     "eyePupilSteady": {
       "command": "kernel.eyePupilSteady",
-      "path": "addons/optics/functions/eye/fnc_eyePupilSteady.sqf",
+      "path": "addons/eye/functions/eye/fnc_eyePupilSteady.sqf",
       "tolerance_abs": 0.0,
       "tolerance_rel": 1e-06,
       "vectors": [
@@ -388,7 +388,7 @@
     },
     "eyePupilStep": {
       "command": "kernel.eyePupilStep",
-      "path": "addons/optics/functions/eye/fnc_eyePupilStep.sqf",
+      "path": "addons/eye/functions/eye/fnc_eyePupilStep.sqf",
       "tolerance_abs": 0.0,
       "tolerance_rel": 1e-06,
       "vectors": [
@@ -436,7 +436,7 @@
     },
     "eyeTimeSkip": {
       "command": "kernel.eyeTimeSkip",
-      "path": "addons/optics/functions/eye/fnc_eyeTimeSkip.sqf",
+      "path": "addons/eye/functions/eye/fnc_eyeTimeSkip.sqf",
       "tolerance_abs": 0.0,
       "tolerance_rel": 1e-06,
       "vectors": [

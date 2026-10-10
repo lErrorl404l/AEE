@@ -1,0 +1,113 @@
+---
+title: "Aircraft systems"
+---
+
+# Aircraft systems {#sec-aircraft-systems}
+
+This note describes the aircraft systems corpus for an operator. It states
+what the corpus is, the runtime fields it feeds, how it refreshes, the
+licence rules, the engine ceiling per system and the non-goals.
+
+## What the corpus is
+
+The systems corpus gives every supported AEE air class a source-backed
+real-world specification. The corpus holds the only real aircraft values. The
+game config is identity evidence.
+
+The corpus is a shared foundation. The aircraft family is the first consumer.
+The land family is a branch. Read `data/aircraft/INDEX.md` for the layers and
+`data/vehicle/SCHEMA.md` sections 16 and 17 for the shared contract and the
+land physics surface.
+
+The systems fields sit beside the four-value flight-model row. The four-value
+row is unchanged. The systems fields get a second lookup.
+
+## The runtime fields it feeds
+
+The generator `tools/validation/gen_aircraft_systems.py` writes
+`addons/flight/functions/fnc_getAircraftSystems.sqf`. The row is fixed
+order. A consumer indexes by name.
+
+- Fuel: `fuel_capacity`, `fuel_consumption_rate`, `fuel_density_kg_l`,
+  `sfc_kg_kwh`, `fuel_cg_arm_m`.
+- Engine: `engine_idle_ng`, `engine_max_ng`, `engine_max_np`,
+  `engine_max_torque_nm`, `engine_max_tgt_c`, `engine_oil_pressure_min_kpa`,
+  `engine_oil_pressure_max_kpa`, `transmission_torque_limit_nm`.
+- Status: `hydraulic_pressure_kpa`, `generator_power_kw`, `bus_voltage_v`,
+  `battery_capacity_ah`, `cabin_pressure_max_kpa`.
+- Enums: `fuel_type`, `engine_oil_type`, `oxygen_system`.
+
+The load-time config projection `tools/validation/gen_physics_config.py`
+writes `fuelCapacity`, `fuelConsumptionRate`, `mass` and the centre of gravity
+into the one `CfgVehicles` block. The engine burn is set to zero, so the
+sourced rate drives a scripted burn and the two never double-count.
+
+One per-frame driver, `fnc_updateAircraftSystems.sqf`, schedules the four
+kernels: fuel, engine, damage and status.
+
+## How it refreshes
+
+Run one command from the repository root:
+
+```
+tools/build_aircraft_data.sh
+```
+
+The script validates the corpus, regenerates the coverage, the two runtime
+projections and the load-time config, then runs every freshness gate. A stale
+generated file fails the build.
+
+The individual commands are:
+
+- `python3 tools/validation/validate_aircraft_data.py`, the provenance gate.
+- `python3 tools/validation/gen_aircraft_coverage.py`, the coverage and gaps.
+- `python3 tools/validation/gen_aircraft_data.py`, the four-value projection.
+- `python3 tools/validation/gen_aircraft_systems.py`, the systems lookup.
+- `python3 tools/validation/gen_physics_config.py`, the load-time config.
+
+Each writer has a `--check` mode. It writes nothing and exits 1 on a stale
+file. Fetching a new source document is a separate act. Use
+`python3 tools/validation/fetch_vehicle_sources.py --data-dir data/aircraft
+<source_id>` when the digest is pinned.
+
+## The licence rules
+
+The reference mods (Project Hatchet H-60 and BradMick's HeliSim) and RHS, CUP
+and DCS are No-Derivatives or structure-only. Only their structure is
+learnable. No number is copied from a No-Derivatives source.
+
+Every number comes from a primary published source: a flight manual, a
+pilot's operating handbook, a type certificate data sheet, a standard or a
+maker datasheet. A proprietary or unheld document is a lead, not a value
+source. A class with no real counterpart is recorded as `no_source`.
+
+## The engine ceiling per system
+
+- Fuel: built-in partial. `fuelCapacity`, `fuelConsumptionRate` and `setFuel`
+  exist. The transfer, the jettison and the centre-of-gravity shift are
+  scripted.
+- Engine: the engine exposes `setWantedRPMRTD` and the RotorLib real-time data
+  getters only when `difficultyEnabledRTD` is true. Turbine temperature, oil,
+  start and wear are not exposed and are scripted.
+- Damage: built-in. `HitPoints`, `get` and `setHitPointDamage`, `setDamage`
+  and `allowDamage` exist. The per-system progressive damage is scripted.
+- Status systems: absent. Hydraulics, electrical and pressurisation are status
+  only. They never feed the flight dynamics model.
+- The flight dynamics model is engine-fixed at config load. There is no
+  runtime model swap.
+- Land: the tyre and contact solver, the gearbox shift logic, the suspension
+  and the engine-power curve are engine-owned. AEE owns only bounded force
+  deltas on the owner machine and never calls `setVelocity` on a driven
+  vehicle.
+
+The scripted magnitude is a residual the operator signs. It is not a gate.
+
+## Non-goals
+
+- No number copied from an APL-ND, APL-SA, APL, CC-BY-NC-ND or GRAD source.
+- No DCS number. DCS is a reference for what to model, never a data source.
+- No runtime flight-model swap and no blade-element replacement.
+- No engine XML for a land vehicle.
+- No `setVelocity` on a driven vehicle.
+- No invented analogue for a class with no real counterpart.
+- No new PBO and no config value used as a real figure.

@@ -67,7 +67,7 @@ if ((_vId1 >= 0) && {_vId2 >= 0} && {_aId1 >= 0}) then {
 // Array". Driving the same key twice on one object is the only way to reach it
 // here, so the branch is no longer dead in the harness.
 private _v1IdBefore = (_v1 getVariable ["aee_core_ehId_aee_core_collisionDamage", -1]);
-[_v1, "HandleDamage", { diag_log text "[P64] RAW-HD-REPLACED" }, "collisionDamage"] call aee_core_fnc_attachObjectEngineHandler;
+[_v1, "HandleDamage", { diag_log text "[P64] RAW-HD-REPLACED" }, "collisionDamage"] call aee_lib_fnc_attachObjectEngineHandler;
 private _v1IdAfter = (_v1 getVariable ["aee_core_ehId_aee_core_collisionDamage", -1]);
 diag_log text format ["[P64] REPLACE before=%1 after=%2", _v1IdBefore, _v1IdAfter];
 if ((_v1IdBefore >= 0) && {_v1IdAfter >= 0}) then {

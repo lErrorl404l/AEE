@@ -38,10 +38,10 @@ MIGRATED = (
     "addons/thermal/functions/display/fnc_applyEngineThermal.sqf",
     "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
     "addons/mobility/functions/fnc_applyRollover.sqf",
-    "addons/thermal/functions/display/fnc_applyThermalVision.sqf",
-    "addons/optics/functions/eye/fnc_updateEyeAdaptation.sqf",
+    "addons/thermal_display/functions/display/fnc_applyThermalVision.sqf",
+    "addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf",
     "addons/thermal/functions/solver/fnc_updateThermalAGC.sqf",
-    "addons/mobility/functions/fnc_applyFlightTurbulence.sqf",
+    "addons/flight/functions/fnc_applyFlightTurbulence.sqf",
 )
 
 # The per-model last-sample store each migrated file must keep.
@@ -50,10 +50,10 @@ LAST_SAMPLE = {
     "addons/thermal/functions/display/fnc_applyEngineThermal.sqf": "engThermLastSimTime",
     "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf": "nvgLastSimTime",
     "addons/mobility/functions/fnc_applyRollover.sqf": "rolloverLastSimTime",
-    "addons/thermal/functions/display/fnc_applyThermalVision.sqf": "thermalVisLastSimTime",
-    "addons/optics/functions/eye/fnc_updateEyeAdaptation.sqf": "eyeLastTick",
+    "addons/thermal_display/functions/display/fnc_applyThermalVision.sqf": "thermalVisLastSimTime",
+    "addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf": "eyeLastTick",
     "addons/thermal/functions/solver/fnc_updateThermalAGC.sqf": "agcLastT",
-    "addons/mobility/functions/fnc_applyFlightTurbulence.sqf": "turbulenceSimTime",
+    "addons/flight/functions/fnc_applyFlightTurbulence.sqf": "turbulenceSimTime",
 }
 
 
@@ -126,7 +126,7 @@ class TestClockWiring(unittest.TestCase):
         # so the published clock is current when any model reads it this frame.
         for later in (
             "[] call FUNC(init);",
-            "[FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;",
+            "[EFUNC(diagnostics,dumpState), 1] call CBA_fnc_addPerFrameHandler;",
         ):
             self.assertLess(clock_at, postinit.index(later), later)
 

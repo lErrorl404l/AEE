@@ -11,10 +11,10 @@
 //
 // Emits [P109] PASS/FAIL lines.
 
-private _fnEllipse = missionNamespace getVariable ["aee_core_fnc_gnssErrorEllipse", nil];
-private _fnFix = missionNamespace getVariable ["aee_core_fnc_gnssFixState", nil];
-private _fnLink = missionNamespace getVariable ["aee_core_fnc_datalinkState", nil];
-private _fnProject = missionNamespace getVariable ["aee_optics_fnc_trackerProject", nil];
+private _fnEllipse = missionNamespace getVariable ["aee_lib_fnc_gnssErrorEllipse", nil];
+private _fnFix = missionNamespace getVariable ["aee_lib_fnc_gnssFixState", nil];
+private _fnLink = missionNamespace getVariable ["aee_lib_fnc_datalinkState", nil];
+private _fnProject = missionNamespace getVariable ["aee_hud_fnc_trackerProject", nil];
 if (isNil "_fnEllipse" || {isNil "_fnFix"} || {isNil "_fnLink"} || {isNil "_fnProject"}) exitWith {
     diag_log text "[P109] [FAIL] tracker kernels not compiled (gnssErrorEllipse/gnssFixState/datalinkState/trackerProject)";
 };

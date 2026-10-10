@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="LTM">
+        <Key ID="STR_AEE_LTM_logDebug_Description">
+            <Original>Log LTM diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log LTM diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_LTM_logDebug_Name">
+            <Original>LTM Debug Log</Original>
+            <English>LTM Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_LTM_ltmDaylightFade_Description">
+            <Original>Fade the laser target marker in daylight. Off holds the marker at full strength.</Original>
+            <English>Fade the laser target marker in daylight. Off holds the marker at full strength.</English>
+        </Key>
+        <Key ID="STR_AEE_LTM_ltmDaylightFade_Name">
+            <Original>Laser Daylight Fade</Original>
+            <English>Laser Daylight Fade</English>
+        </Key>
+        <Key ID="STR_AEE_LTM_ltmEnabled_Description">
+            <Original>Show the laser target marker beam through night vision (aircraft only)</Original>
+            <English>Show the laser target marker beam through night vision (aircraft only)</English>
+        </Key>
+        <Key ID="STR_AEE_LTM_ltmEnabled_Name">
+            <Original>Laser Target Marker</Original>
+            <English>Laser Target Marker</English>
+        </Key>
+        <Key ID="STR_AEE_LTM_ltmToggle">
+            <Original>Laser Target Marker</Original>
+            <English>Laser Target Marker</English>
+        </Key>
+        <Key ID="STR_AEE_LTM_ltmToggleMode">
+            <Original>Laser Target Marker Mode</Original>
+            <English>Laser Target Marker Mode</English>
+        </Key>
+    </Package>
+</Project>

@@ -8,37 +8,37 @@
 # Format:  aee_addon_leaf  reason
 
 aee_core_coreBodyTemp  body-temp model not built yet; KAT falls back to default 37 (issue #64)
-aee_environmental_rainRateOverride  docker test override hook (written in tests/docker mission)
-aee_environmental_skyForce  debug console knob (documented in fnc_logSkyState.sqf)
-aee_environmental_auroraForce  debug console knob (documented in fnc_updateAurora.sqf)
-aee_environmental_milkyWayForce  debug console knob (documented in fnc_updateMilkyWay.sqf)
-aee_environmental_starsForce  debug console knob (documented in fnc_starLightsSync.sqf)
+aee_persistence_rainRateOverride  docker test override hook (written in tests/docker mission)
+aee_lighting_skyForce  debug console knob (documented in fnc_logSkyState.sqf)
+aee_lighting_auroraForce  debug console knob (documented in fnc_updateAurora.sqf)
+aee_lighting_milkyWayForce  debug console knob (documented in fnc_updateMilkyWay.sqf)
+aee_lighting_starsForce  debug console knob (documented in fnc_starLightsSync.sqf)
 aee_nightvision_nvgDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_thermal_rainDropColor  debug console knob (documented in fnc_applyRainDroplets.sqf)
 aee_core_starlightLux  tuning knob (documented in fnc_calculateIlluminance.sqf)
 aee_nightvision_titleDisplay  uiNamespace RscTitles display handle, written by the display layer
-aee_physiology_ozoneDU  ozone-column producer pending (issue #35 cross-addon wiring)
+aee_strain_ozoneDU  ozone-column producer pending (issue #35 cross-addon wiring)
 aee_radio_frequency  radio frequency producer pending (issue #35 cross-addon wiring)
 aee_radio_radioFrequencyHz  radio frequency producer pending (issue #35 cross-addon wiring)
 aee_radio_radioLinkRangeM  radio link range producer pending (issue #35 cross-addon wiring)
 aee_radio_sunspotNumber  sunspot producer pending (issue #35 cross-addon wiring)
 aee_compat_acm_hypoxiaDutyFactor  external API name passed to ACE3 addSpO2DutyFactor, not an AEE variable
 aee_nightvision_nvgTitle  RscTitles config class name, not a runtime variable
-aee_thermal_fusionFrame  RscTitles config class name used by cutRsc, not a runtime variable
-aee_physiology_diveMix  external breathing-gas hook (issue #118); set by diving addons (e.g. ADE) to [fN2, fHe, fO2]
+aee_thermal_display_fusionFrame  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
+aee_dive_diveMix  external breathing-gas hook (issue #118); set by diving addons (e.g. ADE) to [fN2, fHe, fO2]
 aee_nightvision_ppHandle_FilmGrain  written by the core registry (core fnc_createPPEffect) through the legacy variable passed as its fifth argument; the validator cannot trace the opaque write
 aee_nightvision_ppHandle_NVG_Bloom  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 961; the validator cannot trace the _store variable
 aee_nightvision_ppHandle_NVG_CC  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 962; the validator cannot trace the _store variable
 aee_nightvision_ppHandle_NVG_Grain  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 963; the validator cannot trace the _store variable
 aee_nightvision_ppHandle_NVG_Vignette  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 960; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Blur  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 195; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_CC  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 197; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Chroma  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 193; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Grain  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 196; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Vignette  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 194; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Inversion  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 205; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_Resolution  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 218; the validator cannot trace the _store variable
-aee_thermal_ppHandle_Thermal_WetDistortion  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 211; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Blur  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 195; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_CC  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 197; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Chroma  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 193; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Grain  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 196; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Vignette  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 194; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Inversion  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 205; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_Resolution  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 218; the validator cannot trace the _store variable
+aee_thermal_display_ppHandle_Thermal_WetDistortion  verified: written by the thermal display create loop thermal_display/functions/display/fnc_applyThermalVision.sqf:183 setVariable [_store, _handle], where the macro is the _store field of the create table at line 211; the validator cannot trace the _store variable
 aee_thermal_thermalSelectionsCache  dynamic cache key: written via format [QGVAR(thermalSelectionsCache_%1), typeOf] in fnc_getThermalSelections
 aee_thermal_hitPointMaterials  dynamic cache key: written via format [QGVAR(hitPointMaterials_%1), typeOf] in fnc_getHitPointMaterials
 aee_thermal_shadowCache  dynamic cache key: written via QGVAR(shadowCache) with per-cell keys in fnc_isPositionShadowed
@@ -50,10 +50,10 @@ aee_thermal_groundTraceT  dynamic per-cell trace key: format [QGVAR(groundTraceT
 aee_armour_penetrationGateHandler  handler id passed as the _key value argument, not read as a variable
 aee_ballistics_shotTemp  handler id passed as the _key value argument, not read as a variable
 aee_core_collisionDamage  handler id passed as the _key value argument, not read as a variable
-aee_fx_blast  handler id passed as the _key value argument, not read as a variable
+aee_blast_blast  handler id passed as the _key value argument, not read as a variable
 aee_optics_muzzleFlash  handler id passed as the _key value argument, not read as a variable
-aee_optics_hud  RscTitles config class name used by cutRsc, not a runtime variable
-aee_optics_gps  RscTitles config class name used by cutRsc, not a runtime variable
+aee_hud_hud  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
+aee_cartography_gps  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
 
 # Per-vehicle engine and exhaust contract: read with an inline default, and no
 # addon writes them, so a mission or a vehicle config publishes them.  The
@@ -70,25 +70,25 @@ aee_thermal_sweepBudget  runtime sweep-budget knob, read with default 16 at fnc_
 aee_thermal_paintBudgetMs  runtime paint-budget knob, read with default 2.0 at fnc_applyBuildingThermal.sqf:200, no addon writer
 
 # Eye adaptation debug knobs and handler id (issue #141).
-aee_optics_eyeFlash  handler id passed as the _key value argument, not read as a variable
-aee_optics_eyeForceLux  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
-aee_optics_eyeForceMode  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
-aee_optics_eyeFreeze  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
+aee_eye_eyeFlash  handler id passed as the _key value argument, not read as a variable
+aee_eye_eyeForceLux  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
+aee_eye_eyeForceMode  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
+aee_eye_eyeFreeze  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
 
 # Image realism debug hooks (documented in the owning function headers).
-aee_optics_baseGradeForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_baseGradeContrast  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_baseGradeSharpness  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_baseGradeGrain  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceLux  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceMesopic  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceIlluminant  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_optics_visionForceBase  debug console knob (documented in fnc_applyBaseGrade.sqf)
-aee_thermal_bloomForce  debug console knob (documented in fnc_applyThermalVision.sqf)
-aee_thermal_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
-aee_thermal_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)
-aee_thermal_temporalNoiseForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_vision_baseGradeForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_baseGradeContrast  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_baseGradeSharpness  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_baseGradeGrain  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceLux  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceMesopic  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceIlluminant  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_vision_visionForceBase  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_thermal_display_bloomForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_display_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_display_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_display_temporalNoiseForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 # NVG imperfection debug knobs (issue #215).
 aee_nightvision_nvgForceImperfections  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_nightvision_nvgForceBlemishes  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
@@ -96,7 +96,7 @@ aee_nightvision_nvgForceBreathing  debug console knob (documented in fnc_applyNV
 aee_nightvision_nvgForceBlowout  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_nightvision_nvgImperfectionDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_nightvision_imperfectionDisplay  display handle set by the RscTitles onLoad, read from uiNamespace
-aee_nightvision_nvgImperfections  RscTitles config class name used by cutRsc, not a runtime variable
+aee_nightvision_nvgImperfections  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
 
 # AI substrate and wildlife force hooks (documented in the owning headers).
 aee_ai_forceDecide  debug console knob (documented in fnc_aiTick.sqf)
@@ -107,11 +107,7 @@ aee_wildlife_forceSpook  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSilence  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSpecies  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_firedManEH  core player engine handler key passed to installPlayerEngineHandler; a string identifier, not a variable
-aee_optics_eyeAdaptTargetLux  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_eyeAdaptDirection  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_eyeAdaptTau  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_eyeAdaptTimeToAdapt  produced by the concurrent eye-adaptation fix (aee-eye-adapt lane); remove when it lands
-aee_optics_perceptionForceLux  debug console knob (documented in fnc_perceptionUpdate.sqf)
-aee_optics_perceptionForceGrade  debug console knob (documented in fnc_perceptionUpdate.sqf)
-aee_optics_perceptionForceNvg  debug console knob (documented in fnc_perceptionUpdate.sqf)
-aee_optics_perceptionForceThermal  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceLux  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceGrade  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceNvg  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_vision_perceptionForceThermal  debug console knob (documented in fnc_perceptionUpdate.sqf)

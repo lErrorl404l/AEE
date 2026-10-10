@@ -19,7 +19,7 @@ if str(ROOT) not in sys.path:
 
 from tools import gen_ownership_sentinels as gos  # noqa: E402
 
-DUMP = ROOT / "addons" / "core" / "functions" / "fnc_dumpState.sqf"
+DUMP = ROOT / "addons" / "diagnostics" / "functions" / "fnc_dumpState.sqf"
 PREINIT = ROOT / "addons" / "core" / "XEH_preInit.sqf"
 
 # The engine classes AEE owns that must carry a sentinel.
@@ -68,7 +68,7 @@ class TestSentinelRegistry(unittest.TestCase):
                     "property": "starEmissivity",
                     "type": "number",
                     "expected": 999,
-                    "source": "addons/environmental/config.cpp",
+                    "source": "addons/lighting/config.cpp",
                     "evidence": "starEmissivity = 999;",
                 }
             ]
@@ -102,7 +102,7 @@ class TestSentinelRegistry(unittest.TestCase):
 
     def test_dumpstate_reads_the_registry(self):
         text = DUMP.read_text(encoding="utf-8")
-        self.assertIn("QGVAR(ownershipSentinels)", text)
+        self.assertIn("QEGVAR(core,ownershipSentinels)", text)
         self.assertIn("getNumber _entry", text)
         self.assertIn("getArray _entry", text)
         self.assertIn("_mismatches", text)

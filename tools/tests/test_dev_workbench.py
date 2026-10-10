@@ -139,11 +139,11 @@ class TestRuntimeReapply(unittest.TestCase):
     def test_the_reapply_releases_each_scope_through_the_registry(self):
         code = _code_only(REAPPLY.read_text(encoding="utf-8"))
         for scope in ("optics", "nightvision", "thermal"):
-            self.assertIn(f'["{scope}", ""] call aee_core_fnc_destroyPPEffect', code)
+            self.assertIn(f'["{scope}", ""] call aee_lib_fnc_destroyPPEffect', code)
 
     def test_the_reapply_has_no_raw_effect_create(self):
         # The only "ppEffectCreate" allowed is the owning function NAME
-        # (aee_optics_fnc_ppEffectCreate). A raw engine call is refused.
+        # (aee_vision_fnc_ppEffectCreate). A raw engine call is refused.
         code = _code_only(REAPPLY.read_text(encoding="utf-8"))
         raw = re.findall(r"(?<!fnc_)ppEffectCreate", code)
         self.assertEqual(raw, [])
@@ -151,11 +151,11 @@ class TestRuntimeReapply(unittest.TestCase):
     def test_the_reapply_covers_the_five_named_paths(self):
         code = _code_only(REAPPLY.read_text(encoding="utf-8"))
         for fn in (
-            "aee_optics_fnc_ppEffectCreate",
-            "aee_optics_fnc_applyBaseGrade",
-            "aee_optics_fnc_applyWeatherGrain",
+            "aee_vision_fnc_ppEffectCreate",
+            "aee_vision_fnc_applyBaseGrade",
+            "aee_vision_fnc_applyWeatherGrain",
             "aee_nightvision_fnc_applyNightGrain",
-            "aee_thermal_fnc_createThermalPPEffects",
+            "aee_thermal_display_fnc_createThermalPPEffects",
         ):
             self.assertIn(f"call {fn}", code, fn)
 
@@ -165,9 +165,9 @@ class TestRuntimeReapply(unittest.TestCase):
         # documented exception (it owns the engine create for its eight
         # effects), so it is not part of this check.
         for rel in (
-            "optics/functions/vision/fnc_ppEffectCreate.sqf",
-            "optics/functions/grade/fnc_applyBaseGrade.sqf",
-            "optics/functions/vision/fnc_applyWeatherGrain.sqf",
+            "vision/functions/vision/fnc_ppEffectCreate.sqf",
+            "vision/functions/grade/fnc_applyBaseGrade.sqf",
+            "vision/functions/vision/fnc_applyWeatherGrain.sqf",
             "nightvision/functions/fnc_applyNightGrain.sqf",
         ):
             text = (ADDONS / rel).read_text(encoding="utf-8")
@@ -188,7 +188,7 @@ class TestScreenshot(unittest.TestCase):
     def test_a_paired_state_line_names_the_file(self):
         code = _code_only(SCREENSHOT.read_text(encoding="utf-8"))
         # The state (the core dump) is emitted with the file name.
-        self.assertIn("aee_core_fnc_dumpState", code)
+        self.assertIn("aee_diagnostics_fnc_dumpState", code)
         self.assertIn("%1.png", code)
         self.assertIn("diag_log", code)
 

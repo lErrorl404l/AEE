@@ -40,23 +40,23 @@ PER_TICK_BELOW = 1.0
 # Sites that cannot be fixed here, keyed by path relative to the repository
 # root, each with the reason and the owner.
 ALLOWLIST = {
-    "addons/optics/XEH_postInit.sqf": (
+    "addons/vision/XEH_postInit.sqf": (
         "optics perception worktree owns this file; the 0.1 s sensor PFH trace "
         "is tracked there"
     ),
-    "addons/optics/functions/hud/fnc_hudUpdate.sqf": (
+    "addons/hud/functions/hud/fnc_hudUpdate.sqf": (
         "optics perception worktree owns this file; the 0.1 s HUD trace is "
         "tracked there"
     ),
-    "addons/optics/functions/hud/fnc_trackerUpdate.sqf": (
+    "addons/hud/functions/hud/fnc_trackerUpdate.sqf": (
         "optics perception worktree owns this file; the 0.1 s tracker trace is "
         "tracked there"
     ),
-    "addons/optics/functions/perception/fnc_perceptionUpdate.sqf": (
+    "addons/vision/functions/perception/fnc_perceptionUpdate.sqf": (
         "optics perception worktree owns this file; the 0.5 s perception trace "
         "is tracked there"
     ),
-    "addons/optics/functions/vision/fnc_dtvHostTick.sqf": (
+    "addons/vision/functions/vision/fnc_dtvHostTick.sqf": (
         "optics perception worktree owns this file; the 0.1 s DTV host trace is "
         "tracked there"
     ),

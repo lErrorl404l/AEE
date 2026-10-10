@@ -20,8 +20,8 @@ Public: No
 
 private _freq_Hz = missionNamespace getVariable [QGVAR(frequency), 3e6];
 private _ssn = missionNamespace getVariable [QGVAR(sunspotNumber), 100];
-private _flareActive = missionNamespace getVariable [QEGVAR(environmental,solarFlareActive), false];
-private _flareValue = missionNamespace getVariable [QEGVAR(environmental,spaceWeatherFlareValue), 0];
+private _flareActive = missionNamespace getVariable [QEGVAR(weather,solarFlareActive), false];
+private _flareValue = missionNamespace getVariable [QEGVAR(weather,spaceWeatherFlareValue), 0];
 
 // ─── Frequency dependence — absorption ∝ 1/f² (reference 3 MHz) ────────────
 private _freqFactor = (3e6 / _freq_Hz) ^ 2;

@@ -23,7 +23,61 @@ ADDONS = REPO / "addons"
 
 # addon -> reason.  An entry here is a deliberate exemption from the dump
 # contract.  Empty means every publishing addon must expose a dump.
-ALLOWLIST: dict[str, str] = {}
+ALLOWLIST: dict[str, str] = {
+    "lib": "infrastructure: the shared kernels hold private caches (PP "
+    "registry, geo anchor, engine-handler specs) with no togglable "
+    "module and no debug switch",
+}
+
+# addon -> the addon whose PREP(dumpState) dumps it.  Core publishes state but
+# its consolidated dump moved to diagnostics (step 2 split, ADR-032); the dump
+# reads the aee_core_* variables via EGVAR, so core still has one state dump.
+HOSTED_DUMPS: dict[str, str] = {
+    "core": "diagnostics",
+    "eye": "optics",
+    "vision": "optics",
+    "symbology": "optics",
+    "cartography": "optics",
+    "hud": "optics",
+    # The environmental split (step 5, ADR-032) left one consolidated
+    # environment dump: `logSkyState` now lives in lighting.  weather and
+    # persistence publish into that same environment state, so they reuse it,
+    # exactly as the single `environmental` addon did before the split.
+    "weather": "lighting",
+    "persistence": "lighting",
+    # The physiology split (step 6, ADR-032) left one consolidated
+    # physiology-family dump in physiology; strain, altitude, dive and
+    # clothing publish into that same state and reuse it.
+    "strain": "physiology",
+    "altitude": "physiology",
+    "dive": "physiology",
+    "clothing": "physiology",
+    # The thermal split (step 7, ADR-032) left one thermal state dump in
+    # thermal; the display publishes into that same state and reuses it.
+    "thermal_display": "thermal",
+    # The mobility split (step 8, ADR-032) left one consolidated mobility-family
+    # dump: `logAirframeState` now lives in flight.  mobility, vehicles and
+    # hydrology publish into that same state and reuse it, exactly as the single
+    # `mobility` addon did before the split.
+    "mobility": "flight",
+    "vehicles": "flight",
+    "hydrology": "flight",
+    # The fx split (step 9, ADR-032) left one particle state dump in
+    # particles (fnc_dumpState); weatherfx and blast publish into the
+    # same effect state and reuse it.
+    "weatherfx": "particles",
+    "blast": "particles",
+    # The wildlife split (step 9, ADR-032) left one consolidated wildlife
+    # state dump in wildlife (fnc_logWildlifeState); ambience publishes
+    # into that same state and reuses it.
+    "ambience": "wildlife",
+    # The nightvision split (step 9, ADR-032) left one NVG state dump in
+    # nightvision; ltm publishes into that same state and reuses it.
+    "ltm": "nightvision",
+    # The maritime split (step 9, ADR-032) left one maritime state dump in
+    # maritime; magnetism publishes into that same state and reuses it.
+    "magnetism": "maritime",
+}
 
 # A state write: missionNamespace setVariable [QGVAR(x), ...] or the EGVAR
 # form, optionally inside a format [] for a composed name.
@@ -50,7 +104,8 @@ class TestDumpStateContract(unittest.TestCase):
         for addon, files in sorted(_publishing_addons().items()):
             if addon in ALLOWLIST:
                 continue
-            prep = ADDONS / addon / "XEH_PREP.hpp"
+            host = HOSTED_DUMPS.get(addon, addon)
+            prep = ADDONS / host / "XEH_PREP.hpp"
             src = prep.read_text(encoding="utf-8") if prep.exists() else ""
             if _PREP_DUMP.search(src) or _EXISTING_DUMP.search(src):
                 continue
@@ -66,8 +121,8 @@ class TestDumpStateContract(unittest.TestCase):
     def test_the_three_existing_dumps_are_still_prepped(self):
         for addon, name in (
             ("wildlife", "logWildlifeState"),
-            ("environmental", "logSkyState"),
-            ("mobility", "logAirframeState"),
+            ("lighting", "logSkyState"),
+            ("flight", "logAirframeState"),
         ):
             prep = ADDONS / addon / "XEH_PREP.hpp"
             src = prep.read_text(encoding="utf-8")

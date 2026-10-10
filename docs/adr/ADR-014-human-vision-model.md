@@ -6,7 +6,7 @@ Decision: AEE derives the normal-vision display tone, contrast, white balance an
 
 ## Context
 
-The normal-vision grade was a hand-tuned aesthetic look. The operator asked for an image that follows published human-vision science. The eye adaptation model already exists in `addons/optics/functions/eye/`. It publishes the adapted light level and the mesopic photopic fraction. It owns the aperture. The new work must read that state and add the colour and tone stages.
+The normal-vision grade was a hand-tuned aesthetic look. The operator asked for an image that follows published human-vision science. The eye adaptation model already exists in `addons/eye/functions/eye/`. It publishes the adapted light level and the mesopic photopic fraction. It owns the aperture. The new work must read that state and add the colour and tone stages.
 
 The engine limits the work. Arma 3 renders a low dynamic range image through a fixed display white. It has no HDR, no per-region adaptation, no chromatic-adaptation matrix and no scriptable sharpening. The creatable post-process set is RadialBlur, ChromAberration, WetDistortion, ColorCorrections, DynamicBlur, FilmGrain, ColorInversion, SSAO and Resolution. The model can express only part of each stage. The rest is a stated ceiling.
 
@@ -14,15 +14,15 @@ The engine limits the work. Arma 3 renders a low dynamic range image through a f
 
 1. The model has five stages. Stage 1 is light level and photoreceptor adaptation. Stage 2 is the tone response. Stage 3 is contrast sensitivity. Stage 4 is chromatic adaptation and white balance. Stage 5 is mesopic colour and the Purkinje shift.
 
-2. The new pure kernels live in `addons/optics/functions/perception/`. They compute stages 2, 4 and 5. Stage 1 is read from the eye model and never written. Stage 3 is a stated ceiling, because the engine cannot filter. The kernels are pure. They use no missionNamespace, no GVAR or EGVAR, and no engine command. `tools/tests/sqf_lite.py` runs them in the test suite.
+2. The new pure kernels live in `addons/vision/functions/perception/`. They compute stages 2, 4 and 5. Stage 1 is read from the eye model and never written. Stage 3 is a stated ceiling, because the engine cannot filter. The kernels are pure. They use no missionNamespace, no GVAR or EGVAR, and no engine command. `tools/tests/sqf_lite.py` runs them in the test suite.
 
 3. The model ships in three slices. Slice 1 ships the light and tone stage. Slice 2 ships the colour and tint stage. Slice 3 enables the model by default. The default switch is on. The photopic default keeps the engine's own neutral colorize (alpha 1, zero weights), so the default image is not desaturated. At the real CBA defaults the tone stage is active, so a full-identity assertion runs on the all-stages-neutral fixture, not on the CBA defaults.
 
-4. The perception path subsumes the aesthetic base grade in place. The driver `addons/optics/functions/grade/fnc_applyBaseGrade.sqf` gains one branch. When the model is on, the driver calls `FUNC(perceptionParams)`. Otherwise it calls `FUNC(baseGradeParams)`. The operator reverses the branch through the `visionModelEnabled` setting. The legacy kernel output is unchanged.
+4. The perception path subsumes the aesthetic base grade in place. The driver `addons/vision/functions/grade/fnc_applyBaseGrade.sqf` gains one branch. When the model is on, the driver calls `FUNC(perceptionParams)`. Otherwise it calls `FUNC(baseGradeParams)`. The operator reverses the branch through the `visionModelEnabled` setting. The legacy kernel output is unchanged.
 
 5. The model reuses the registry keys `BaseGrade` (ColorCorrections at priority 1505) and `BaseAcuity` (FilmGrain at priority 2505). It creates no new key and no new effect. The proven registry ownership, the priority and the teardown tests survive.
 
-6. The model reads the eye adaptation model's published state. It reads `aee_optics_eyeAdaptedLux` and `aee_optics_eyeMesopic`. It never writes the aperture. The eye model keeps the aperture, its rate, its `currentVisionMode != 0` gate and its `setAperture -1` stand-down. The driver does not chain onto the eye module.
+6. The model reads the eye adaptation model's published state. It reads `aee_eye_eyeAdaptedLux` and `aee_eye_eyeMesopic`. It never writes the aperture. The eye model keeps the aperture, its rate, its `currentVisionMode != 0` gate and its `setAperture -1` stand-down. The driver does not chain onto the eye module.
 
 7. The white target is the display white D65. The scene illuminant is the engine ambient colour from `getLightingAt`. The adaptation is a partial von Kries blend. The engine has no cone matrix, so the ColorCorrections blend slot carries a small complementary tint in the display domain.
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Flight">
+        <Key ID="STR_AEE_Flight_airframeRadius_Description">
+            <Original>Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic.</Original>
+            <English>Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic.</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_airframeRadius_Name">
+            <Original>Airframe Load Radius</Original>
+            <English>Airframe Load Radius</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_flightAeroPenalty_Description">
+            <Original>Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe.</Original>
+            <English>Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe.</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_flightAeroPenalty_Name">
+            <Original>Airframe Density and Icing Load</Original>
+            <English>Airframe Density and Icing Load</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_flightTurbulence_Description">
+            <Original>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</Original>
+            <English>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_flightTurbulence_Name">
+            <Original>Flight Turbulence</Original>
+            <English>Flight Turbulence</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_logDebug_Description">
+            <Original>Log flight diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log flight diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_logDebug_Name">
+            <Original>Flight Debug Log</Original>
+            <English>Flight Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_turbulenceRadius_Description">
+            <Original>Distance from the player or mission centre within which aircraft receive turbulence forces</Original>
+            <English>Distance from the player or mission centre within which aircraft receive turbulence forces</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_turbulenceRadius_Name">
+            <Original>Turbulence Radius</Original>
+            <English>Turbulence Radius</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_turbulenceScale_Description">
+            <Original>Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe)</Original>
+            <English>Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe)</English>
+        </Key>
+        <Key ID="STR_AEE_Flight_turbulenceScale_Name">
+            <Original>Turbulence Scale</Original>
+            <English>Turbulence Scale</English>
+        </Key>
+    </Package>
+</Project>

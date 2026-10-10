@@ -26,7 +26,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 ADDONS = REPO / "addons"
 JSON_TABLE = REPO / "data" / "consistency" / "invariants.json"
-SQF_TABLE = REPO / "addons" / "core" / "functions" / "fnc_consistencyLoadTable.sqf"
+SQF_TABLE = (
+    REPO / "addons" / "diagnostics" / "functions" / "fnc_consistencyLoadTable.sqf"
+)
 
 # setVariable / getVariable first argument: a literal aee_ name or a GVAR /
 # EGVAR / QGVAR / QEGVAR macro.

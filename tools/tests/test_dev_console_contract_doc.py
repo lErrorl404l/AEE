@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The dev console contract doc is generated, never hand-synced (ADR-033).
+"""The dev console contract doc is generated, never hand-synced (ADR-035).
 
 The generator projects three sources into one marked doc block:
 
@@ -56,7 +56,7 @@ class TestGeneratedBlock(unittest.TestCase):
     def test_the_whitelist_comes_from_the_sqf_source(self):
         self.assertEqual(
             gen.console_funcs(),
-            ["aee_core_fnc_dumpState", "aee_core_fnc_readState"],
+            ["aee_diagnostics_fnc_dumpState", "aee_lib_fnc_readState"],
         )
 
     def test_the_block_names_every_command_and_function(self):

@@ -1,0 +1,1701 @@
+{
+  "classes": [
+    {
+      "class": "Air",
+      "class_token": "Air",
+      "parent_class": "AllVehicles",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > config.cpp:84"
+    },
+    {
+      "class": "B_CTRG_Heli_Transport_01_sand_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > heli_transport_01/config.cpp:28"
+    },
+    {
+      "class": "B_CTRG_Heli_Transport_01_tropic_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > heli_transport_01/config.cpp:186"
+    },
+    {
+      "class": "B_Heli_Attack_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_01_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_01/config.cpp:24739"
+    },
+    {
+      "class": "B_Heli_Attack_01_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_01_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_01/config.cpp:24876"
+    },
+    {
+      "class": "B_Heli_Attack_01_pylons_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_01_pylons_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_01/config.cpp:25014"
+    },
+    {
+      "class": "B_Heli_Light_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_unarmed_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:2704"
+    },
+    {
+      "class": "B_Heli_Light_01_armed_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_armed_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3020"
+    },
+    {
+      "class": "B_Heli_Light_01_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3161"
+    },
+    {
+      "class": "B_Heli_Light_01_stripped_F",
+      "class_token": "Helicopter",
+      "parent_class": "B_Heli_Light_01_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:6136"
+    },
+    {
+      "class": "B_Heli_Transport_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_transport_01/config.cpp:2062"
+    },
+    {
+      "class": "B_Heli_Transport_01_camo_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_01_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_transport_01/config.cpp:2196"
+    },
+    {
+      "class": "B_Heli_Transport_01_pylons_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_01_pylons_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_transport_01/config.cpp:2330"
+    },
+    {
+      "class": "B_Heli_Transport_03_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_03_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:1478"
+    },
+    {
+      "class": "B_Heli_Transport_03_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:2298"
+    },
+    {
+      "class": "B_Heli_Transport_03_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "B_Heli_Transport_03_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:1949"
+    },
+    {
+      "class": "B_Heli_Transport_03_unarmed_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_03_unarmed_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:1773"
+    },
+    {
+      "class": "B_Heli_Transport_03_unarmed_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:2304"
+    },
+    {
+      "class": "B_Heli_Transport_03_unarmed_green_F",
+      "class_token": "Helicopter",
+      "parent_class": "B_Heli_Transport_03_unarmed_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:2125"
+    },
+    {
+      "class": "B_Plane_CAS_01_Cluster_F",
+      "class_token": "Plane",
+      "parent_class": "B_Plane_CAS_01_dynamicLoadout_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > config.cpp:113"
+    },
+    {
+      "class": "B_Plane_CAS_01_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_CAS_01_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_01/config.cpp:5820"
+    },
+    {
+      "class": "B_Plane_CAS_01_dynamicLoadout_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_CAS_01_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_01/config.cpp:5995"
+    },
+    {
+      "class": "B_Plane_Fighter_01_Cluster_F",
+      "class_token": "Plane",
+      "parent_class": "B_Plane_Fighter_01_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > config.cpp:301"
+    },
+    {
+      "class": "B_Plane_Fighter_01_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_01_Base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_01/config.cpp:6231"
+    },
+    {
+      "class": "B_Plane_Fighter_01_Stealth_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_01_Base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_01/config.cpp:6429"
+    },
+    {
+      "class": "B_T_UAV_03_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_03_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > uav_03/config.cpp:542"
+    },
+    {
+      "class": "B_T_UAV_03_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_03_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > uav_03/config.cpp:625"
+    },
+    {
+      "class": "B_T_VTOL_01_armed_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_01_armed_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:7477"
+    },
+    {
+      "class": "B_T_VTOL_01_armed_blue_F",
+      "class_token": "Plane",
+      "parent_class": "B_T_VTOL_01_armed_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:8196"
+    },
+    {
+      "class": "B_T_VTOL_01_armed_olive_F",
+      "class_token": "Plane",
+      "parent_class": "B_T_VTOL_01_armed_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:8352"
+    },
+    {
+      "class": "B_T_VTOL_01_infantry_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_01_infantry_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:7185"
+    },
+    {
+      "class": "B_T_VTOL_01_infantry_blue_F",
+      "class_token": "Plane",
+      "parent_class": "B_T_VTOL_01_infantry_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:7640"
+    },
+    {
+      "class": "B_T_VTOL_01_infantry_olive_F",
+      "class_token": "Plane",
+      "parent_class": "B_T_VTOL_01_infantry_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:7779"
+    },
+    {
+      "class": "B_T_VTOL_01_vehicle_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_01_vehicle_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:7331"
+    },
+    {
+      "class": "B_T_VTOL_01_vehicle_blue_F",
+      "class_token": "Plane",
+      "parent_class": "B_T_VTOL_01_vehicle_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:7918"
+    },
+    {
+      "class": "B_T_VTOL_01_vehicle_olive_F",
+      "class_token": "Plane",
+      "parent_class": "B_T_VTOL_01_vehicle_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:8057"
+    },
+    {
+      "class": "B_UAV_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_01/config.cpp:555"
+    },
+    {
+      "class": "B_UAV_02_CAS_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_CAS_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1156"
+    },
+    {
+      "class": "B_UAV_02_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:951"
+    },
+    {
+      "class": "B_UAV_02_dynamicLoadout_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1411"
+    },
+    {
+      "class": "B_UAV_05_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_05_Base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > uav_05/config.cpp:1353"
+    },
+    {
+      "class": "B_UAV_06_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:554"
+    },
+    {
+      "class": "B_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_medical_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:1001"
+    },
+    {
+      "class": "C_Heli_Light_01_civil_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_civil_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3302"
+    },
+    {
+      "class": "C_Heli_light_01_blueLine_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3862"
+    },
+    {
+      "class": "C_Heli_light_01_blue_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3442"
+    },
+    {
+      "class": "C_Heli_light_01_digital_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4002"
+    },
+    {
+      "class": "C_Heli_light_01_elliptical_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4142"
+    },
+    {
+      "class": "C_Heli_light_01_furious_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4282"
+    },
+    {
+      "class": "C_Heli_light_01_graywatcher_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4422"
+    },
+    {
+      "class": "C_Heli_light_01_ion_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3722"
+    },
+    {
+      "class": "C_Heli_light_01_jeans_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4562"
+    },
+    {
+      "class": "C_Heli_light_01_light_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4702"
+    },
+    {
+      "class": "C_Heli_light_01_luxe_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:5979"
+    },
+    {
+      "class": "C_Heli_light_01_red_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3582"
+    },
+    {
+      "class": "C_Heli_light_01_shadow_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4842"
+    },
+    {
+      "class": "C_Heli_light_01_sheriff_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:4982"
+    },
+    {
+      "class": "C_Heli_light_01_speedy_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:5122"
+    },
+    {
+      "class": "C_Heli_light_01_stripped_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:5822"
+    },
+    {
+      "class": "C_Heli_light_01_sunset_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:5262"
+    },
+    {
+      "class": "C_Heli_light_01_vrana_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:5402"
+    },
+    {
+      "class": "C_Heli_light_01_wasp_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:5542"
+    },
+    {
+      "class": "C_Heli_light_01_wave_F",
+      "class_token": "Helicopter",
+      "parent_class": "C_Heli_Light_01_civil_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:5682"
+    },
+    {
+      "class": "C_IDAP_Heli_Transport_02_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_02_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > heli_transport_02/config.cpp:27"
+    },
+    {
+      "class": "C_IDAP_UAV_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_01/config.cpp:22"
+    },
+    {
+      "class": "C_IDAP_UAV_06_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:776"
+    },
+    {
+      "class": "C_IDAP_UAV_06_antimine_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_antimine_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:924"
+    },
+    {
+      "class": "C_IDAP_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_medical_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:1224"
+    },
+    {
+      "class": "C_Plane_Civil_01_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Civil_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > plane_civil_01/config.cpp:2707"
+    },
+    {
+      "class": "C_Plane_Civil_01_racing_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Civil_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > plane_civil_01/config.cpp:2821"
+    },
+    {
+      "class": "C_UAV_06_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:850"
+    },
+    {
+      "class": "C_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_medical_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:1303"
+    },
+    {
+      "class": "Heli_Attack_01_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_01/config.cpp:57"
+    },
+    {
+      "class": "Heli_Attack_01_dynamicLoadout_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_01_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_01/config.cpp:8567"
+    },
+    {
+      "class": "Heli_Attack_01_pylons_dynamicLoadout_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_01_dynamicLoadout_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_01/config.cpp:16643"
+    },
+    {
+      "class": "Heli_Attack_02_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_02/config.cpp:62"
+    },
+    {
+      "class": "Heli_Attack_02_dynamicLoadout_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_02_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_02/config.cpp:3106"
+    },
+    {
+      "class": "Heli_Light_01_armed_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:2595"
+    },
+    {
+      "class": "Heli_Light_01_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_H",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:776"
+    },
+    {
+      "class": "Heli_Light_01_civil_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_unarmed_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:2257"
+    },
+    {
+      "class": "Heli_Light_01_dynamicLoadout_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_armed_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:2646"
+    },
+    {
+      "class": "Heli_Light_01_unarmed_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:2181"
+    },
+    {
+      "class": "Heli_Light_02_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_H",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:61"
+    },
+    {
+      "class": "Heli_Light_02_dynamicLoadout_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_02_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:3688"
+    },
+    {
+      "class": "Heli_Light_02_unarmed_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_02_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:3665"
+    },
+    {
+      "class": "Heli_Transport_01_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_H",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_transport_01/config.cpp:55"
+    },
+    {
+      "class": "Heli_Transport_01_pylons_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_01_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_transport_01/config.cpp:1407"
+    },
+    {
+      "class": "Heli_Transport_02_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_H",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_transport_02/config.cpp:218"
+    },
+    {
+      "class": "Heli_Transport_03_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_H",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:61"
+    },
+    {
+      "class": "Heli_Transport_03_unarmed_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:1657"
+    },
+    {
+      "class": "Heli_Transport_04_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_H",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:95"
+    },
+    {
+      "class": "Heli_light_03_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:56"
+    },
+    {
+      "class": "Heli_light_03_dynamicLoadout_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:2672"
+    },
+    {
+      "class": "Heli_light_03_unarmed_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:2789"
+    },
+    {
+      "class": "Helicopter",
+      "class_token": "Helicopter",
+      "parent_class": "Air",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > config.cpp:210"
+    },
+    {
+      "class": "Helicopter_Base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > config.cpp:561"
+    },
+    {
+      "class": "Helicopter_Base_H",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > config.cpp:672"
+    },
+    {
+      "class": "I_C_Heli_Light_01_civil_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_01_civil_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > heli_light_01/config.cpp:32"
+    },
+    {
+      "class": "I_C_Plane_Civil_01_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Civil_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > plane_civil_01/config.cpp:2960"
+    },
+    {
+      "class": "I_E_Heli_light_03_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "enoch/addons/air_f_enoch.pbo > heli_light_03/config.cpp:24"
+    },
+    {
+      "class": "I_E_Heli_light_03_unarmed_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_unarmed_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "enoch/addons/air_f_enoch.pbo > heli_light_03/config.cpp:185"
+    },
+    {
+      "class": "I_E_UAV_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "enoch/addons/air_f_enoch.pbo > uav_01/config.cpp:22"
+    },
+    {
+      "class": "I_E_UAV_06_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "enoch/addons/air_f_enoch.pbo > uav_06/config.cpp:54"
+    },
+    {
+      "class": "I_E_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_medical_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "enoch/addons/air_f_enoch.pbo > uav_06/config.cpp:128"
+    },
+    {
+      "class": "I_Heli_Transport_02_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_02_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_transport_02/config.cpp:3254"
+    },
+    {
+      "class": "I_Heli_light_03_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:2800"
+    },
+    {
+      "class": "I_Heli_light_03_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:3270"
+    },
+    {
+      "class": "I_Heli_light_03_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:2994"
+    },
+    {
+      "class": "I_Heli_light_03_unarmed_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_unarmed_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:3133"
+    },
+    {
+      "class": "I_Heli_light_03_unarmed_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_light_03_unarmed_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:3276"
+    },
+    {
+      "class": "I_Plane_Fighter_03_AA_F",
+      "class_token": "Plane",
+      "parent_class": "I_Plane_Fighter_03_CAS_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:3888"
+    },
+    {
+      "class": "I_Plane_Fighter_03_CAS_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_03_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:3756"
+    },
+    {
+      "class": "I_Plane_Fighter_03_Cluster_F",
+      "class_token": "Plane",
+      "parent_class": "I_Plane_Fighter_03_dynamicLoadout_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > config.cpp:239"
+    },
+    {
+      "class": "I_Plane_Fighter_03_dynamicLoadout_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_03_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:4018"
+    },
+    {
+      "class": "I_Plane_Fighter_04_Cluster_F",
+      "class_token": "Plane",
+      "parent_class": "I_Plane_Fighter_04_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > config.cpp:485"
+    },
+    {
+      "class": "I_Plane_Fighter_04_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_04_Base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_04/config.cpp:5152"
+    },
+    {
+      "class": "I_UAV_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_01/config.cpp:672"
+    },
+    {
+      "class": "I_UAV_02_CAS_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_CAS_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1292"
+    },
+    {
+      "class": "I_UAV_02_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1087"
+    },
+    {
+      "class": "I_UAV_02_dynamicLoadout_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1576"
+    },
+    {
+      "class": "I_UAV_06_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:702"
+    },
+    {
+      "class": "I_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_medical_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:1150"
+    },
+    {
+      "class": "NonSteerable_Parachute_F",
+      "class_token": "Helicopter",
+      "parent_class": "Parachute",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:433"
+    },
+    {
+      "class": "O_Heli_Attack_02_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_02/config.cpp:3203"
+    },
+    {
+      "class": "O_Heli_Attack_02_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_02/config.cpp:3349"
+    },
+    {
+      "class": "O_Heli_Attack_02_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_02_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_02/config.cpp:3495"
+    },
+    {
+      "class": "O_Heli_Attack_02_dynamicLoadout_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Attack_02_dynamicLoadout_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > heli_attack_02/config.cpp:3642"
+    },
+    {
+      "class": "O_Heli_Light_02_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:3889"
+    },
+    {
+      "class": "O_Heli_Light_02_dynamicLoadout_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_02_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:3753"
+    },
+    {
+      "class": "O_Heli_Light_02_unarmed_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_02_unarmed_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:4023"
+    },
+    {
+      "class": "O_Heli_Light_02_v2_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Light_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:4156"
+    },
+    {
+      "class": "O_Heli_Transport_04_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:1452"
+    },
+    {
+      "class": "O_Heli_Transport_04_ammo_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:1701"
+    },
+    {
+      "class": "O_Heli_Transport_04_ammo_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_ammo_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:5452"
+    },
+    {
+      "class": "O_Heli_Transport_04_bench_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:1944"
+    },
+    {
+      "class": "O_Heli_Transport_04_bench_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_bench_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:5649"
+    },
+    {
+      "class": "O_Heli_Transport_04_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:5259"
+    },
+    {
+      "class": "O_Heli_Transport_04_box_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:2303"
+    },
+    {
+      "class": "O_Heli_Transport_04_box_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_box_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:5843"
+    },
+    {
+      "class": "O_Heli_Transport_04_covered_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:2665"
+    },
+    {
+      "class": "O_Heli_Transport_04_covered_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_covered_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:6040"
+    },
+    {
+      "class": "O_Heli_Transport_04_fuel_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:3180"
+    },
+    {
+      "class": "O_Heli_Transport_04_fuel_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_fuel_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:6245"
+    },
+    {
+      "class": "O_Heli_Transport_04_medevac_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:3408"
+    },
+    {
+      "class": "O_Heli_Transport_04_medevac_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_medevac_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:6437"
+    },
+    {
+      "class": "O_Heli_Transport_04_repair_F",
+      "class_token": "Helicopter",
+      "parent_class": "Heli_Transport_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:3777"
+    },
+    {
+      "class": "O_Heli_Transport_04_repair_black_F",
+      "class_token": "Helicopter",
+      "parent_class": "O_Heli_Transport_04_repair_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_04/config.cpp:6639"
+    },
+    {
+      "class": "O_Plane_CAS_02_Cluster_F",
+      "class_token": "Plane",
+      "parent_class": "O_Plane_CAS_02_dynamicLoadout_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > config.cpp:181"
+    },
+    {
+      "class": "O_Plane_CAS_02_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_CAS_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_02/config.cpp:3492"
+    },
+    {
+      "class": "O_Plane_CAS_02_dynamicLoadout_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_CAS_02_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_02/config.cpp:3643"
+    },
+    {
+      "class": "O_Plane_Fighter_02_Cluster_F",
+      "class_token": "Plane",
+      "parent_class": "O_Plane_Fighter_02_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > config.cpp:400"
+    },
+    {
+      "class": "O_Plane_Fighter_02_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_02_Base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_02/config.cpp:3316"
+    },
+    {
+      "class": "O_Plane_Fighter_02_Stealth_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_02_Base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_02/config.cpp:3473"
+    },
+    {
+      "class": "O_T_UAV_04_CAS_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_04_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > uav_04/config.cpp:711"
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_infantry_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:5023"
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_dynamicLoadout_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_infantry_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:5477"
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_ghex_F",
+      "class_token": "Plane",
+      "parent_class": "O_T_VTOL_02_infantry_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:6156"
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_grey_F",
+      "class_token": "Plane",
+      "parent_class": "O_T_VTOL_02_infantry_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:6378"
+    },
+    {
+      "class": "O_T_VTOL_02_infantry_hex_F",
+      "class_token": "Plane",
+      "parent_class": "O_T_VTOL_02_infantry_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:5934"
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_vehicle_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:5250"
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_dynamicLoadout_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_vehicle_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:5705"
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_ghex_F",
+      "class_token": "Plane",
+      "parent_class": "O_T_VTOL_02_vehicle_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:6822"
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_grey_F",
+      "class_token": "Plane",
+      "parent_class": "O_T_VTOL_02_vehicle_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:7044"
+    },
+    {
+      "class": "O_T_VTOL_02_vehicle_hex_F",
+      "class_token": "Plane",
+      "parent_class": "O_T_VTOL_02_vehicle_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:6600"
+    },
+    {
+      "class": "O_UAV_01_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_01_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_01/config.cpp:613"
+    },
+    {
+      "class": "O_UAV_02_CAS_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_CAS_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1223"
+    },
+    {
+      "class": "O_UAV_02_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_base_F",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1018"
+    },
+    {
+      "class": "O_UAV_02_dynamicLoadout_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_dynamicLoadout_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1479"
+    },
+    {
+      "class": "O_UAV_06_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:628"
+    },
+    {
+      "class": "O_UAV_06_medical_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_medical_base_F",
+      "scope": 2,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:1076"
+    },
+    {
+      "class": "Parachute",
+      "class_token": "Helicopter",
+      "parent_class": "ParachuteWest",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:426"
+    },
+    {
+      "class": "ParachuteBase",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:333"
+    },
+    {
+      "class": "ParachuteEast",
+      "class_token": "Helicopter",
+      "parent_class": "ParachuteBase",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:396"
+    },
+    {
+      "class": "ParachuteG",
+      "class_token": "Helicopter",
+      "parent_class": "ParachuteBase",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:411"
+    },
+    {
+      "class": "ParachuteWest",
+      "class_token": "Helicopter",
+      "parent_class": "ParachuteBase",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:381"
+    },
+    {
+      "class": "Paraglide",
+      "class_token": "Helicopter",
+      "parent_class": "ParachuteWest",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:440"
+    },
+    {
+      "class": "Plane",
+      "class_token": "Plane",
+      "parent_class": "Air",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:88"
+    },
+    {
+      "class": "Plane_Base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:232"
+    },
+    {
+      "class": "Plane_CAS_01_base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_01/config.cpp:97"
+    },
+    {
+      "class": "Plane_CAS_01_dynamicLoadout_base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_CAS_01_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_01/config.cpp:2283"
+    },
+    {
+      "class": "Plane_CAS_02_base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_02/config.cpp:97"
+    },
+    {
+      "class": "Plane_CAS_02_dynamicLoadout_base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_CAS_02_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_epc.pbo > plane_cas_02/config.cpp:3351"
+    },
+    {
+      "class": "Plane_Civil_01_base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > plane_civil_01/config.cpp:225"
+    },
+    {
+      "class": "Plane_Fighter_01_Base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_01/config.cpp:54"
+    },
+    {
+      "class": "Plane_Fighter_02_Base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_02/config.cpp:54"
+    },
+    {
+      "class": "Plane_Fighter_03_base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:98"
+    },
+    {
+      "class": "Plane_Fighter_03_dynamicLoadout_base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Fighter_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:3643"
+    },
+    {
+      "class": "Plane_Fighter_04_Base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_04/config.cpp:53"
+    },
+    {
+      "class": "Steerable_Parachute_F",
+      "class_token": "Helicopter",
+      "parent_class": "Paraglide",
+      "scope": 1,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:445"
+    },
+    {
+      "class": "UAV",
+      "class_token": "UAV",
+      "parent_class": "Plane",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/air_f_beta.pbo > config.cpp:310"
+    },
+    {
+      "class": "UAV_01_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_01/config.cpp:45"
+    },
+    {
+      "class": "UAV_02_CAS_base_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:926"
+    },
+    {
+      "class": "UAV_02_base_F",
+      "class_token": "UAV",
+      "parent_class": "UAV",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:44"
+    },
+    {
+      "class": "UAV_02_dynamicLoadout_base_F",
+      "class_token": "UAV",
+      "parent_class": "UAV_02_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "addons/drones_f.pbo > air_f_gamma/uav_02/config.cpp:1361"
+    },
+    {
+      "class": "UAV_03_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > uav_03/config.cpp:48"
+    },
+    {
+      "class": "UAV_03_dynamicLoadout_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_03_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > uav_03/config.cpp:470"
+    },
+    {
+      "class": "UAV_04_base_F",
+      "class_token": "UAV",
+      "parent_class": "UAV",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > uav_04/config.cpp:37"
+    },
+    {
+      "class": "UAV_05_Base_F",
+      "class_token": "UAV",
+      "parent_class": "UAV",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "jets/addons/air_f_jets.pbo > uav_05/config.cpp:52"
+    },
+    {
+      "class": "UAV_06_antimine_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "orange/addons/air_f_orange.pbo > uav_06/config.cpp:415"
+    },
+    {
+      "class": "UAV_06_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "Helicopter_Base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "enoch/addons/air_f_enoch.pbo > uav_06/config.cpp:32"
+    },
+    {
+      "class": "UAV_06_medical_base_F",
+      "class_token": "Helicopter",
+      "parent_class": "UAV_06_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "enoch/addons/air_f_enoch.pbo > uav_06/config.cpp:42"
+    },
+    {
+      "class": "VTOL_01_armed_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_01_base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:4616"
+    },
+    {
+      "class": "VTOL_01_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:58"
+    },
+    {
+      "class": "VTOL_01_infantry_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_01_unarmed_base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:6950"
+    },
+    {
+      "class": "VTOL_01_unarmed_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_01_base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:6869"
+    },
+    {
+      "class": "VTOL_01_vehicle_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_01_unarmed_base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_01/config.cpp:7136"
+    },
+    {
+      "class": "VTOL_02_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:52"
+    },
+    {
+      "class": "VTOL_02_infantry_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:2916"
+    },
+    {
+      "class": "VTOL_02_infantry_dynamicLoadout_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_infantry_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:3048"
+    },
+    {
+      "class": "VTOL_02_vehicle_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:3014"
+    },
+    {
+      "class": "VTOL_02_vehicle_dynamicLoadout_base_F",
+      "class_token": "Plane",
+      "parent_class": "VTOL_02_vehicle_base_F",
+      "scope": null,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > vtol_02/config.cpp:4936"
+    },
+    {
+      "class": "VTOL_Base_F",
+      "class_token": "Plane",
+      "parent_class": "Plane_Base_F",
+      "scope": 0,
+      "source_kind": "pbo_config",
+      "source_locator": "expansion/addons/air_f_exp.pbo > config.cpp:17"
+    }
+  ],
+  "schema": "aee.aircraft.class_inventory/1"
+}

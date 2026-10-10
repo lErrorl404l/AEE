@@ -13,7 +13,7 @@
 //     fall) is meaningful instead of false-firing on every adapting window.
 // It renders nothing.
 
-private _state = missionNamespace getVariable ["aee_optics_fnc_eyeAdaptState", nil];
+private _state = missionNamespace getVariable ["aee_eye_fnc_eyeAdaptState", nil];
 private _pass = 0;
 private _fail = 0;
 private _notes = [];

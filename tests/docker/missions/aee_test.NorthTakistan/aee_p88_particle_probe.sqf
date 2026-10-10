@@ -10,9 +10,9 @@ private _pass = 0;
 private _fail = 0;
 private _notes = [];
 
-private _alphaFn = missionNamespace getVariable ["aee_fx_fnc_weatherParticleAlpha", nil];
-private _hazeAlphaFn = missionNamespace getVariable ["aee_fx_fnc_heatHazeAlpha", nil];
-private _hazeSizeFn = missionNamespace getVariable ["aee_fx_fnc_heatHazeSize", nil];
+private _alphaFn = missionNamespace getVariable ["aee_particles_fnc_weatherParticleAlpha", nil];
+private _hazeAlphaFn = missionNamespace getVariable ["aee_particles_fnc_heatHazeAlpha", nil];
+private _hazeSizeFn = missionNamespace getVariable ["aee_particles_fnc_heatHazeSize", nil];
 
 if (isNil "_alphaFn" || {isNil "_hazeAlphaFn"} || {isNil "_hazeSizeFn"}) then {
     diag_log text "[P88] [FAIL] weather particle kernels not compiled";
@@ -42,9 +42,9 @@ if (isNil "_alphaFn" || {isNil "_hazeAlphaFn"} || {isNil "_hazeSizeFn"}) then {
     if (abs (_v - 1.0) < 1e-6) then { _pass = _pass + 1; } else { _fail = _fail + 1; _notes pushBack format ["hazeSize(0.5)=%1", _v]; };
 
     // The registered settings and their defaults.
-    private _enabled = missionNamespace getVariable ["aee_fx_weatherAlphaEnabled", false];
-    private _hazeEnabled = missionNamespace getVariable ["aee_fx_heatHazeEnabled", false];
-    private _hazeMax = missionNamespace getVariable ["aee_fx_heatHazeMaxAlpha", 0];
+    private _enabled = missionNamespace getVariable ["aee_particles_weatherAlphaEnabled", false];
+    private _hazeEnabled = missionNamespace getVariable ["aee_weatherfx_heatHazeEnabled", false];
+    private _hazeMax = missionNamespace getVariable ["aee_weatherfx_heatHazeMaxAlpha", 0];
     if (_enabled && {_hazeEnabled} && {abs (_hazeMax - 0.45) < 1e-6}) then {
         _pass = _pass + 1;
     } else {

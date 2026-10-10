@@ -208,11 +208,11 @@ class TestSensorSessionLifecycle(unittest.TestCase):
     """
 
     def setUp(self):
-        self.post_init = Path("addons/optics/XEH_postInit.sqf").read_text(
+        self.post_init = Path("addons/vision/XEH_postInit.sqf").read_text(
             encoding="utf-8"
         )
         self.teardown = Path(
-            "addons/optics/functions/vision/fnc_teardownSensors.sqf"
+            "addons/vision/functions/vision/fnc_teardownSensors.sqf"
         ).read_text(encoding="utf-8")
 
     def test_death_tears_down_rather_than_exiting(self):

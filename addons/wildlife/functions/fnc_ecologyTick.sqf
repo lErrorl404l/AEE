@@ -67,11 +67,11 @@ private _field = missionNamespace getVariable [QEGVAR(ai,disturbance), []];
 if !(_field isEqualType []) then { _field = []; };
 private _events = missionNamespace getVariable [QGVAR(soundEvents), []];
 if !(_events isEqualType []) then { _events = []; };
-private _propIndex = missionNamespace getVariable [QEGVAR(environmental,currentSoundPropagation), 1];
+private _propIndex = missionNamespace getVariable [QEGVAR(weather,currentSoundPropagation), 1];
 if !(_propIndex isEqualType 0) then { _propIndex = 1; };
 private _store = missionNamespace getVariable [QGVAR(environment), []];
 if !(_store isEqualType []) then { _store = []; };
-private _comm = missionNamespace getVariable [QGVAR(communicationEnabled), false];
+private _comm = missionNamespace getVariable [QEGVAR(ambience,communicationEnabled), false];
 if !(_comm isEqualType true) then { _comm = false; };
 private _bus = missionNamespace getVariable [QGVAR(callBus), []];
 if !(_bus isEqualType []) then { _bus = []; };
@@ -127,10 +127,10 @@ for "_i" from 0 to ((count _pending) - 1) do {
         private _disturbance = [_field, _key, _now, WILDLIFE_ENVIRONMENT_HALF_LIFE] call EFUNC(ai,disturbanceSample);
         private _acoustic = 0;
         if ((count _events) > 0) then {
-            private _occluders = [_pos] call FUNC(acousticOccluders);
+            private _occluders = [_pos] call EFUNC(ambience,acousticOccluders);
             private _level = [
                 _events, _pos, _now, WILDLIFE_ACOUSTIC_EVENT_HORIZON, _propIndex, _occluders
-            ] call FUNC(acousticSample);
+            ] call EFUNC(ambience,acousticSample);
             _acoustic = _level select 0;
         };
 
@@ -149,7 +149,7 @@ for "_i" from 0 to ((count _pending) - 1) do {
         // from the same cell is heard at full strength.
         private _heard = [];
         if (_comm) then {
-            private _sampled = [_bus, _key, _now] call FUNC(callSample);
+            private _sampled = [_bus, _key, _now] call EFUNC(ambience,callSample);
             if ((count _sampled) >= 2) then {
                 _heard = [_sampled select 0, _sampled select 1, 0, 0];
             };

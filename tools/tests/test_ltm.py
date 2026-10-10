@@ -3,7 +3,7 @@
 
 Executes the REAL pure geometry through sqf_lite:
 
-  addons/nightvision/functions/ltm/fnc_ltmBeamSegments.sqf
+  addons/ltm/functions/ltm/fnc_ltmBeamSegments.sqf
 
 The engine-reading functions fnc_ltmCreate, fnc_ltmDraw, fnc_ltmPFH,
 fnc_ltmToggle, fnc_ltmToggleMode and fnc_ltmInit cannot run without an
@@ -28,7 +28,7 @@ sys.path.insert(0, str(REPO))
 
 from sqf_lite import run_sqf  # noqa: E402
 
-LTM = REPO / "addons" / "nightvision" / "functions" / "ltm"
+LTM = REPO / "addons" / "ltm" / "functions" / "ltm"
 SEGMENT_KERNEL = LTM / "fnc_ltmBeamSegments.sqf"
 DAYLIGHT_KERNEL = LTM / "fnc_ltmDaylightAlpha.sqf"
 SEGMENT_SRC = SEGMENT_KERNEL.read_text(encoding="utf-8")
@@ -38,19 +38,19 @@ PFH_SRC = (LTM / "fnc_ltmPFH.sqf").read_text(encoding="utf-8")
 TOGGLE_SRC = (LTM / "fnc_ltmToggle.sqf").read_text(encoding="utf-8")
 MODE_SRC = (LTM / "fnc_ltmToggleMode.sqf").read_text(encoding="utf-8")
 INIT_SRC = (LTM / "fnc_ltmInit.sqf").read_text(encoding="utf-8")
-PREP_SRC = (REPO / "addons" / "nightvision" / "XEH_PREP.hpp").read_text(
+PREP_SRC = (REPO / "addons" / "ltm" / "XEH_PREP.hpp").read_text(
     encoding="utf-8"
 )
-SETTINGS_SRC = (REPO / "addons" / "nightvision" / "initSettings.inc.sqf").read_text(
+SETTINGS_SRC = (REPO / "addons" / "ltm" / "initSettings.inc.sqf").read_text(
     encoding="utf-8"
 )
-STRINGTABLE_SRC = (REPO / "addons" / "nightvision" / "stringtable.xml").read_text(
+STRINGTABLE_SRC = (REPO / "addons" / "ltm" / "stringtable.xml").read_text(
     encoding="utf-8"
 )
-POSTINIT_SRC = (REPO / "addons" / "nightvision" / "XEH_postInit.sqf").read_text(
+POSTINIT_SRC = (REPO / "addons" / "ltm" / "XEH_postInit.sqf").read_text(
     encoding="utf-8"
 )
-EVENTS_SRC = (REPO / "addons" / "nightvision" / "CfgEventHandlers.hpp").read_text(
+EVENTS_SRC = (REPO / "addons" / "ltm" / "CfgEventHandlers.hpp").read_text(
     encoding="utf-8"
 )
 ALL_LTM_SRC = "\n".join(
@@ -199,7 +199,7 @@ class TestLtmWiring(unittest.TestCase):
             "ltmToggle",
             "ltmToggleMode",
         ):
-            self.assertIn(f"STR_AEE_NightVision_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_LTM_{key}", STRINGTABLE_SRC)
 
     def test_the_postinit_has_the_module_guard(self):
         self.assertIn("AEE_MODULE_POST_INIT", POSTINIT_SRC)
@@ -254,7 +254,7 @@ class TestLtmDaylightAlpha(unittest.TestCase):
 
     def test_the_stringtable_keys_exist(self):
         for key in ("ltmDaylightFade_Name", "ltmDaylightFade_Description"):
-            self.assertIn(f"STR_AEE_NightVision_{key}", STRINGTABLE_SRC)
+            self.assertIn(f"STR_AEE_LTM_{key}", STRINGTABLE_SRC)
 
 
 if __name__ == "__main__":

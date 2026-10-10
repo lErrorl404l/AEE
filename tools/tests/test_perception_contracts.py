@@ -18,10 +18,10 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-PERCEPTION = REPO / "addons" / "optics" / "functions" / "perception"
+PERCEPTION = REPO / "addons" / "vision" / "functions" / "perception"
 SAMPLE = PERCEPTION / "fnc_perceptionSample.sqf"
 UPDATE = PERCEPTION / "fnc_perceptionUpdate.sqf"
-XEH_PREP = REPO / "addons" / "optics" / "XEH_PREP.hpp"
+XEH_PREP = REPO / "addons" / "vision" / "XEH_PREP.hpp"
 ANNEX_C = REPO / "docs" / "wiki" / "annexes" / "annex-c-variable-reference.qmd"
 
 EXPECTED_SCHEMA_LENGTH = 14
@@ -45,7 +45,7 @@ def source_schema():
 def published_names():
     text = UPDATE.read_text(encoding="utf-8")
     leaves = re.findall(r"setVariable\s*\[\s*QGVAR\((\w+)\)", text)
-    return [f"aee_optics_{leaf}" for leaf in leaves]
+    return [f"aee_vision_{leaf}" for leaf in leaves]
 
 
 class TestSchemaContract(unittest.TestCase):
@@ -81,19 +81,19 @@ class TestPrepContract(unittest.TestCase):
 class TestAnnexCContract(unittest.TestCase):
     # The six names the plan requires to be documented in Annex C.
     REQUIRED_PUBLISHES = [
-        "aee_optics_perceptionState",
-        "aee_optics_perceptionLine",
-        "aee_optics_perceptionLux",
-        "aee_optics_perceptionAperture",
-        "aee_optics_perceptionGrade",
-        "aee_optics_perceptionFlags",
+        "aee_vision_perceptionState",
+        "aee_vision_perceptionLine",
+        "aee_vision_perceptionLux",
+        "aee_vision_perceptionAperture",
+        "aee_vision_perceptionGrade",
+        "aee_vision_perceptionFlags",
     ]
 
     # Internal cursors the driver writes but does not document as API.
     INTERNAL_PUBLISHES = {
-        "aee_optics_perceptionPrevTimeToAdapt",
-        "aee_optics_perceptionLast",
-        "aee_optics_perceptionLogged",
+        "aee_vision_perceptionPrevTimeToAdapt",
+        "aee_vision_perceptionLast",
+        "aee_vision_perceptionLogged",
     }
 
     def test_the_required_publishes_are_documented(self):

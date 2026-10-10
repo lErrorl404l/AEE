@@ -19,7 +19,7 @@ from sqf_lite import run_sqf  # noqa: E402
 MAGNETIC = (
     Path(__file__).resolve().parents[2]
     / "addons"
-    / "maritime"
+    / "magnetism"
     / "functions"
     / "fnc_calculateMagneticAnomaly.sqf"
 )

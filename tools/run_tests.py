@@ -136,6 +136,11 @@ def main():
         "tools/tests/test_runtime_aircraft.py",
         "tools/tests/test_aircraft_corpus.py",
         "tools/tests/test_aircraft_coverage.py",
+        "tools/tests/test_aircraft_roster.py",
+        "tools/tests/test_aircraft_systems.py",
+        "tools/tests/test_aircraft_systems_lookup.py",
+        "tools/tests/test_aircraft_systems_runtime.py",
+        "tools/tests/test_systems_contract.py",
         "tools/tests/test_vehicle_mass_model.py",
         "tools/tests/test_vehicle_mass_estimate.py",
         "tools/tests/test_vehicle_mass_separation.py",
@@ -195,6 +200,7 @@ def main():
         "tools/tests/test_symbology.py",
         "tools/tests/test_marker_derivation.py",
         "tools/tests/test_cba_settings.py",
+        "tools/tests/test_settings_migration.py",
         # Dormant suites registered by the conformance sweep (ADR-031). Each was
         # on disk but not registered, so CI never ran it. Eight more stay on the
         # test_suite_registration allowlist with a recorded reason.
@@ -252,7 +258,7 @@ def main():
         # The console command contract doc is generated, never hand-synced.
         "tools/tests/test_dev_console_contract_doc.py",
         # Probe batching: every probe has a run class, and every console fact
-        # keeps a probe file behind it (ADR-033).
+        # keeps a probe file behind it (ADR-035).
         "tools/tests/test_probe_classification.py",
         "tools/tests/test_console_fact_gating.py",
         # Visual workbench: keybinds, re-apply, screenshot and state dump.

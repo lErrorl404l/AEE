@@ -121,8 +121,8 @@ read them. The variables below are grouped by subsystem.
 | `aee_atmos_turbulenceClass` | The turbulence class |
 | `aee_mobility_turbulenceState` | The turbulence state |
 | `aee_mobility_turbulenceAircraft` | Whether aircraft turbulence is active |
-| `aee_mobility_turbulenceRadius` | The turbulence radius |
-| `aee_mobility_turbulenceScale` | The turbulence scale |
+| `aee_flight_turbulenceRadius` | The turbulence radius |
+| `aee_flight_turbulenceScale` | The turbulence scale |
 | `aee_mobility_turbulenceRefresh` | The turbulence refresh interval |
 | `aee_mobility_turbulenceShearTime` | The turbulence shear time |
 
@@ -154,23 +154,23 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_updateInterval` | The update interval |
 | `aee_core_enabled` | Whether the mod is enabled |
 | `aee_core_isReady` | Whether the mod is ready |
-| `aee_core_diagnostic` | Whether diagnostic reporting is enabled |
+| `aee_diagnostics_diagnostic` | Whether diagnostic reporting is enabled |
 | `aee_core_environmentalEnabled` | Whether environmental simulation is enabled |
 | `aee_core_atmosphericEventsEnabled` | Whether atmospheric events are enabled |
 | `aee_core_moduleUpdateInterval` | The update interval from the EDEN module |
 | `aee_core_updatePFH` | The update per-frame handler |
 | `aee_core_cbrnPersistence` | The CBRN persistence |
 | `aee_core_currentAvalancheRisk` | The current avalanche risk |
-| `aee_environmental_currentAvalancheWarning` | The current avalanche warning |
-| `aee_environmental_currentFoliageDensity` | The current foliage density |
-| `aee_environmental_currentSoundPropagation` | The current sound propagation |
-| `aee_environmental_ambientLux` | The ambient light level |
-| `aee_environmental_auroraVisibility` | The aurora visibility |
-| `aee_environmental_biologicalAmbientIntensity` | The biological ambient intensity |
-| `aee_environmental_flashFloodRisk` | The flash flood risk |
-| `aee_environmental_freezeThawState` | The freeze-thaw state |
-| `aee_environmental_freezeThawDescription` | The freeze-thaw description |
-| `aee_environmental_frostIntensity` | The frost intensity |
+| `aee_persistence_currentAvalancheWarning` | The current avalanche warning |
+| `aee_weather_currentFoliageDensity` | The current foliage density |
+| `aee_weather_currentSoundPropagation` | The current sound propagation |
+| `aee_lighting_ambientLux` | The ambient light level |
+| `aee_lighting_auroraVisibility` | The aurora visibility |
+| `aee_weather_biologicalAmbientIntensity` | The biological ambient intensity |
+| `aee_persistence_flashFloodRisk` | The flash flood risk |
+| `aee_persistence_freezeThawState` | The freeze-thaw state |
+| `aee_persistence_freezeThawDescription` | The freeze-thaw description |
+| `aee_persistence_frostIntensity` | The frost intensity |
 | `aee_fx_atmosphericDust` | The atmospheric dust effect |
 | `aee_fx_breathCondensation` | The breath condensation effect |
 | `aee_fx_rainSurfaceDrops` | The rain surface drop effect |
@@ -183,18 +183,18 @@ read them. The variables below are grouped by subsystem.
 
 | Variable | Purpose |
 |---|---|
-| `aee_environmental_nightClassification` | The DEF Stan 61-027 night classification |
-| `aee_environmental_limitingMagnitude` | The naked-eye limiting magnitude |
-| `aee_environmental_visibleStars` | The visible star count |
-| `aee_environmental_starLights` | The star light-emitter registry |
-| `aee_environmental_meteors` | The active meteor registry |
-| `aee_environmental_auroraActive` | Whether the aurora curtain is drawn |
-| `aee_environmental_auroraSourceCount` | Live aurora particle sources |
-| `aee_environmental_milkyWayActive` | Whether the Milky Way band is drawn |
-| `aee_environmental_milkyWaySampleCount` | Milky Way band samples |
-| `aee_environmental_faintStarCount` | Faint stars drawn by the immediate-mode layer |
-| `aee_environmental_effectiveNelm` | The limiting magnitude the starfield uses |
-| `aee_environmental_starEmitterCount` | Bright-star light emitters requested |
+| `aee_lighting_nightClassification` | The DEF Stan 61-027 night classification |
+| `aee_lighting_limitingMagnitude` | The naked-eye limiting magnitude |
+| `aee_lighting_visibleStars` | The visible star count |
+| `aee_lighting_starLights` | The star light-emitter registry |
+| `aee_lighting_meteors` | The active meteor registry |
+| `aee_lighting_auroraActive` | Whether the aurora curtain is drawn |
+| `aee_lighting_auroraSourceCount` | Live aurora particle sources |
+| `aee_lighting_milkyWayActive` | Whether the Milky Way band is drawn |
+| `aee_lighting_milkyWaySampleCount` | Milky Way band samples |
+| `aee_lighting_faintStarCount` | Faint stars drawn by the immediate-mode layer |
+| `aee_lighting_effectiveNelm` | The limiting magnitude the starfield uses |
+| `aee_lighting_starEmitterCount` | Bright-star light emitters requested |
 
 ## Soil and hydrology
 
@@ -264,14 +264,14 @@ read them. The variables below are grouped by subsystem.
 | `aee_physiology_acclimatizationPercent` | The altitude acclimatisation |
 | `aee_physiology_uvIndex` | The UV index |
 | `aee_thermal_batteryTemperatureDerating` | The battery temperature derating |
-| `aee_environmental_scentDispersionIntensity` | The scent dispersion intensity |
+| `aee_weather_scentDispersionIntensity` | The scent dispersion intensity |
 | `aee_core_currentHypoxiaRisk` | The current hypoxia risk |
 | `aee_physiology_altitudeState` | The altitude state |
 | `aee_physiology_amsRisk` | The acute mountain sickness risk |
 | `aee_physiology_dehydrationAccum` | The accumulated dehydration |
 | `aee_physiology_hypoxiaExposure` | The accumulated hypoxia exposure |
 | `aee_physiology_ozoneDU` | The ozone column in Dobson units |
-| `aee_environmental_scentDispersionDir` | The scent dispersion direction |
+| `aee_weather_scentDispersionDir` | The scent dispersion direction |
 | `aee_physiology_hudWarningActive` | Whether the HUD warning is active |
 
 ## Radio
@@ -305,7 +305,7 @@ read them. The variables below are grouped by subsystem.
 | `aee_mobility_routeDegradation` | The route degradation |
 | `aee_mobility_soilBearing` | The soil bearing strength |
 | `aee_mobility_currentLiftRatio` | The current helicopter lift ratio |
-| `aee_mobility_flightTurbulence` | The flight turbulence |
+| `aee_flight_flightTurbulence` | The flight turbulence |
 | `aee_mobility_isReady` | Whether the mobility addon is ready |
 | `aee_core_enginePowerDegradationEnabled` | Whether engine power degradation is enabled |
 | `aee_core_mudAccretionEnabled` | Whether mud accretion is enabled |
@@ -325,8 +325,8 @@ read them. The variables below are grouped by subsystem.
 |---|---|
 | `aee_atmos_microburstWindSpeed` | The microburst wind speed |
 | `aee_atmos_microburstSeverity` | The microburst severity |
-| `aee_environmental_spaceWeatherFlareValue` | The space weather flare value |
-| `aee_environmental_solarFlareActive` | Whether a solar flare is active |
+| `aee_weather_spaceWeatherFlareValue` | The space weather flare value |
+| `aee_weather_solarFlareActive` | Whether a solar flare is active |
 | `aee_atmos_currentMicroburst` | The current microburst |
 | `aee_atmos_microburstTimer` | The microburst timer |
 | `aee_atmos_capeProxy` | The CAPE proxy |
@@ -338,12 +338,12 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_stormOverrideType` | The storm override type |
 | `aee_core_stormOverrideIntensity` | The storm override intensity |
 | `aee_core_stormOverrideUntil` | The storm override expiry time |
-| `aee_environmental_geomagneticDescription` | The geomagnetic description |
-| `aee_environmental_kpIndex` | The Kp index |
-| `aee_environmental_solarActivity` | The solar activity |
-| `aee_environmental_spaceWeatherFlareState` | The space weather flare state |
-| `aee_environmental_spaceWeatherFlareTimer` | The space weather flare timer |
-| `aee_environmental_spaceWeatherFlareEndTime` | The space weather flare end time |
+| `aee_weather_geomagneticDescription` | The geomagnetic description |
+| `aee_weather_kpIndex` | The Kp index |
+| `aee_weather_solarActivity` | The solar activity |
+| `aee_weather_spaceWeatherFlareState` | The space weather flare state |
+| `aee_weather_spaceWeatherFlareTimer` | The space weather flare timer |
+| `aee_weather_spaceWeatherFlareEndTime` | The space weather flare end time |
 
 ## Air quality
 
@@ -362,14 +362,14 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_thawDepth_m` | The thaw depth in metres |
 | `aee_core_freezingDegreeDays` | The freezing degree days |
 | `aee_core_thawingDegreeDays` | The thawing degree days |
-| `aee_environmental_snowDriftIntensity` | The snow drift intensity |
+| `aee_weather_snowDriftIntensity` | The snow drift intensity |
 
 ## Fire
 
 | Variable | Purpose |
 |---|---|
-| `aee_environmental_fireSpreadRate_mps` | The fire spread rate in metres per second |
-| `aee_environmental_fireArea_m2` | The fire area in square metres |
+| `aee_persistence_fireSpreadRate_mps` | The fire spread rate in metres per second |
+| `aee_persistence_fireArea_m2` | The fire area in square metres |
 | `aee_core_currentFireRisk` | The current fire risk |
 
 ## Thermal

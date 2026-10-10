@@ -3,7 +3,7 @@
 // The two-node solve is a pure kernel and server-callable, so this probe drives
 // it directly on the dedicated server: it computes the SQF reference answer and
 // calls the native extension command with the same 25 arguments, then compares
-// each element within the per-kernel bound justified in ADR-034.  It renders
+// each element within the per-kernel bound justified in ADR-036.  It renders
 // nothing.
 //
 // When the extension is loaded the native command answers and the probe marks

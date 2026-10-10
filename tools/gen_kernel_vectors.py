@@ -7,7 +7,7 @@ kernel on a fixed set of vectors with the suite's SQF interpreter
 Rust `#[test]` reads.  The expectations are therefore generated from the SQF
 reference, never typed by hand.
 
-The per-kernel tolerance is recorded here and justified in ADR-034.  The engine
+The per-kernel tolerance is recorded here and justified in ADR-036.  The engine
 runs SQF numbers in 32-bit, so a single f32 rounding is about 6e-8 relative;
 the default bound is 1e-6 relative.  A kernel whose output is rounded to an
 integer carries an absolute bound of one rounding step (0.5).
@@ -67,7 +67,7 @@ DRAG_TABLES = load_drag_tables()
 
 # The relative bound is the f32 default.  The absolute bound covers a kernel
 # whose output is rounded to an integer: 0.5 is one rounding step and is the
-# smallest meaningful bound for that kernel.  Justified in ADR-034.
+# smallest meaningful bound for that kernel.  Justified in ADR-036.
 KERNELS: tuple[dict, ...] = (
     {
         "name": "stationPressure",
@@ -122,7 +122,7 @@ KERNELS: tuple[dict, ...] = (
         # The 12-iteration nonlinear fixed point amplifies one f32 engine
         # rounding (about 6e-8) by the Newton gain; the measured engine
         # divergence is of order 1e-5 relative, so the bound is the plan's
-        # ceiling, 1e-3, with this written reason (ADR-034).
+        # ceiling, 1e-3, with this written reason (ADR-036).
         "tolerance_rel": 1e-3,
         "tolerance_abs": 0.0,
         "vectors": [
@@ -329,7 +329,7 @@ KERNELS: tuple[dict, ...] = (
     {
         "name": "eyeAdaptStep",
         "command": "kernel.eyeAdaptStep",
-        "path": "addons/optics/functions/eye/fnc_eyeAdaptStep.sqf",
+        "path": "addons/eye/functions/eye/fnc_eyeAdaptStep.sqf",
         "tolerance_rel": 1e-6,
         "tolerance_abs": 0.0,
         "vectors": [
@@ -343,7 +343,7 @@ KERNELS: tuple[dict, ...] = (
     {
         "name": "eyeMesopicWeight",
         "command": "kernel.eyeMesopicWeight",
-        "path": "addons/optics/functions/eye/fnc_eyeMesopicWeight.sqf",
+        "path": "addons/eye/functions/eye/fnc_eyeMesopicWeight.sqf",
         "tolerance_rel": 1e-6,
         "tolerance_abs": 0.0,
         "vectors": [
@@ -358,7 +358,7 @@ KERNELS: tuple[dict, ...] = (
     {
         "name": "eyePupilSteady",
         "command": "kernel.eyePupilSteady",
-        "path": "addons/optics/functions/eye/fnc_eyePupilSteady.sqf",
+        "path": "addons/eye/functions/eye/fnc_eyePupilSteady.sqf",
         "tolerance_rel": 1e-6,
         "tolerance_abs": 0.0,
         "vectors": [
@@ -371,7 +371,7 @@ KERNELS: tuple[dict, ...] = (
     {
         "name": "eyePupilStep",
         "command": "kernel.eyePupilStep",
-        "path": "addons/optics/functions/eye/fnc_eyePupilStep.sqf",
+        "path": "addons/eye/functions/eye/fnc_eyePupilStep.sqf",
         "tolerance_rel": 1e-6,
         "tolerance_abs": 0.0,
         "vectors": [
@@ -385,7 +385,7 @@ KERNELS: tuple[dict, ...] = (
     {
         "name": "eyeTimeSkip",
         "command": "kernel.eyeTimeSkip",
-        "path": "addons/optics/functions/eye/fnc_eyeTimeSkip.sqf",
+        "path": "addons/eye/functions/eye/fnc_eyeTimeSkip.sqf",
         "tolerance_rel": 1e-6,
         "tolerance_abs": 0.0,
         "vectors": [

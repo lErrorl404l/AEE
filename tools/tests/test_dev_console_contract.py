@@ -46,7 +46,7 @@ OPS = (
 )
 
 # The whitelist the whitelist test seeds into the harness.
-WHITELIST = ("aee_core_fnc_dumpState", "aee_core_fnc_readState")
+WHITELIST = ("aee_diagnostics_fnc_dumpState", "aee_lib_fnc_readState")
 
 
 def _code_only(text: str) -> str:
@@ -106,7 +106,7 @@ class TestConsoleSourceContract(unittest.TestCase):
 
     def test_the_whitelist_exists(self):
         text = FUNCS.read_text(encoding="utf-8")
-        self.assertIn("aee_core_fnc_dumpState", text)
+        self.assertIn("aee_diagnostics_fnc_dumpState", text)
 
     def test_compile_is_used_only_by_eval(self):
         code = _code_only(EXEC.read_text(encoding="utf-8"))
@@ -155,8 +155,8 @@ class TestConsoleBehaviour(unittest.TestCase):
         self.assertEqual(out, "core state")
 
     def test_dump_calls_a_component_dump(self):
-        store = {"aee_core_fnc_dumpState": lambda *_args: "core state"}
-        out, _ = _run("dump", ["core"], store=store)
+        store = {"aee_diagnostics_fnc_dumpState": lambda *_args: "core state"}
+        out, _ = _run("dump", ["diagnostics"], store=store)
         self.assertEqual(out, "core state")
 
     def test_unknown_verb_returns_an_error(self):

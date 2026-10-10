@@ -31,13 +31,13 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-KERNEL = REPO / "addons/mobility/functions/fnc_calculateThermalRefraction.sqf"
-PLUME = REPO / "addons/mobility/functions/fnc_calculateExhaustPlume.sqf"
-LOAD = REPO / "addons/mobility/functions/fnc_calculateEngineLoad.sqf"
-AIRLOAD = REPO / "addons/mobility/functions/fnc_calculateAirEngineLoad.sqf"
+KERNEL = REPO / "addons/hydrology/functions/fnc_calculateThermalRefraction.sqf"
+PLUME = REPO / "addons/vehicles/functions/fnc_calculateExhaustPlume.sqf"
+LOAD = REPO / "addons/vehicles/functions/fnc_calculateEngineLoad.sqf"
+AIRLOAD = REPO / "addons/flight/functions/fnc_calculateAirEngineLoad.sqf"
 MIRAGE = REPO / "addons/optics/functions/fx/fnc_applyMirageFX.sqf"
 GLARE = REPO / "addons/optics/functions/fx/fnc_applySolarGlareFX.sqf"
-SHIMMER = REPO / "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf"
+SHIMMER = REPO / "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf"
 
 KERNEL_SRC = KERNEL.read_text(encoding="utf-8")
 PLUME_SRC = PLUME.read_text(encoding="utf-8")
@@ -412,17 +412,17 @@ class ExhaustShimmerRenderer(unittest.TestCase):
         )
 
     def test_plume_kernel_is_called_from_the_renderer(self):
-        self.assertIn("EFUNC(mobility,calculateExhaustPlume)", self.code)
+        self.assertIn("EFUNC(vehicles,calculateExhaustPlume)", self.code)
 
     def test_contrast_kernel_is_called_from_the_renderer(self):
-        self.assertIn("EFUNC(mobility,calculateThermalRefraction)", self.code)
+        self.assertIn("EFUNC(hydrology,calculateThermalRefraction)", self.code)
 
     def test_power_reaches_the_plume_kernel(self):
         self.assertIn("_power", self.code)
         self.assertRegex(
             self.code,
             r"\[_power, _idleT, _fullT, _idleD, _fullD\] call "
-            r"EFUNC\(mobility,calculateExhaustPlume\)",
+            r"EFUNC\(vehicles,calculateExhaustPlume\)",
         )
 
     # ── true physical scale, no visibility scale factor ────────────────
@@ -576,7 +576,7 @@ class ExhaustShimmerRenderer(unittest.TestCase):
             self.assertNotIn(token, self.code, f"the outwash proxy {token} survives")
 
     def test_mobility_modifier_is_not_used(self):
-        self.assertNotIn("aee_mobility_enginePowerModifier", self.code)
+        self.assertNotIn("aee_vehicles_enginePowerModifier", self.code)
 
     def test_published_power_name_is_declared(self):
         self.assertIn('getVariable ["aee_enginePowerFraction", -1]', self.code)
@@ -647,12 +647,12 @@ class ExhaustShimmerRenderer(unittest.TestCase):
 class ExhaustWiring(unittest.TestCase):
     """Registration, the environment tick, the settings, and the docs."""
 
-    def test_thermal_kernel_is_registered_in_mobility(self):
-        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
+    def test_thermal_kernel_is_registered_in_hydrology(self):
+        prep = (REPO / "addons/hydrology/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(calculateThermalRefraction);", prep)
 
-    def test_plume_kernel_is_registered_in_mobility(self):
-        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
+    def test_plume_kernel_is_registered_in_vehicles(self):
+        prep = (REPO / "addons/vehicles/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(calculateExhaustPlume);", prep)
 
     def test_neither_kernel_is_registered_in_ballistics(self):
@@ -661,7 +661,7 @@ class ExhaustWiring(unittest.TestCase):
         self.assertNotIn("PREP(calculateExhaustPlume);", prep)
 
     def test_renderer_is_registered_in_fx(self):
-        prep = (REPO / "addons/fx/XEH_PREP.hpp").read_text(encoding="utf-8")
+        prep = (REPO / "addons/weatherfx/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREPS(weather,applyExhaustShimmer);", prep)
 
     def test_renderer_is_not_registered_in_optics(self):
@@ -672,15 +672,17 @@ class ExhaustWiring(unittest.TestCase):
         tick = (REPO / "addons/core/functions/fnc_updateEnvironment.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn("EFUNC(fx,applyExhaustShimmer)", tick)
+        self.assertIn("EFUNC(weatherfx,applyExhaustShimmer)", tick)
         # It runs with the other optics FX, after the mirage call.
         self.assertLess(
             tick.find("EFUNC(optics,applyMirageFX)"),
-            tick.find("EFUNC(fx,applyExhaustShimmer)"),
+            tick.find("EFUNC(weatherfx,applyExhaustShimmer)"),
         )
 
     def test_setting_is_registered_in_fx(self):
-        settings = (REPO / "addons/fx/initSettings.inc.sqf").read_text(encoding="utf-8")
+        settings = (REPO / "addons/weatherfx/initSettings.inc.sqf").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("AEE_SETTING_SLIDER(exhaustShimmerAlpha", settings)
 
     def test_setting_is_not_registered_in_optics(self):
@@ -693,7 +695,7 @@ class ExhaustWiring(unittest.TestCase):
         config = (REPO / "docs/wiki/chapters/configuration.qmd").read_text(
             encoding="utf-8"
         )
-        self.assertIn("aee_fx_exhaustShimmerAlpha", config)
+        self.assertIn("aee_weatherfx_exhaustShimmerAlpha", config)
 
     def test_state_variables_doc_records_the_new_state(self):
         state = (REPO / "docs/wiki/chapters/state-variables.qmd").read_text(
@@ -832,12 +834,12 @@ class EngineLoadWiring(unittest.TestCase):
     def setUp(self):
         self.code = _code_only(SHIMMER_SRC)
 
-    def test_kernel_is_registered_in_mobility(self):
-        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
+    def test_kernel_is_registered_in_vehicles(self):
+        prep = (REPO / "addons/vehicles/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(calculateEngineLoad);", prep)
 
     def test_renderer_calls_the_derived_kernel(self):
-        self.assertIn("EFUNC(mobility,calculateEngineLoad)", self.code)
+        self.assertIn("EFUNC(vehicles,calculateEngineLoad)", self.code)
         self.assertIn("_deriveGroundPower", self.code)
 
     def test_land_vehicle_reaches_the_derived_branch(self):
@@ -853,7 +855,7 @@ class EngineLoadWiring(unittest.TestCase):
             r"private _deriveGroundPower = \{(.*?)\n\};", self.code, re.S
         )
         self.assertIsNotNone(helper, "the derived ground helper is missing")
-        self.assertIn("EFUNC(mobility,calculateEngineLoad)", helper.group(1))
+        self.assertIn("EFUNC(vehicles,calculateEngineLoad)", helper.group(1))
 
     def test_rtd_branch_is_still_compiled_from_a_string(self):
         self.assertIn('"collectiveRTD _this"', self.code)
@@ -1026,7 +1028,7 @@ class AirEngineLoadKernel(unittest.TestCase):
     def test_arguments_and_example_are_declared(self):
         self.assertIn("Arguments:", AIRLOAD_SRC)
         self.assertIn("Example:", AIRLOAD_SRC)
-        self.assertIn("aee_mobility_fnc_calculateAirEngineLoad", AIRLOAD_SRC)
+        self.assertIn("aee_flight_fnc_calculateAirEngineLoad", AIRLOAD_SRC)
 
 
 class AirEngineLoadWiring(unittest.TestCase):
@@ -1040,12 +1042,12 @@ class AirEngineLoadWiring(unittest.TestCase):
         self.assertIsNotNone(block, "the power resolver is missing")
         return block.group(1)
 
-    def test_kernel_is_registered_in_mobility(self):
-        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
+    def test_kernel_is_registered_in_flight(self):
+        prep = (REPO / "addons/flight/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(calculateAirEngineLoad);", prep)
 
     def test_renderer_calls_the_air_kernel(self):
-        self.assertIn("EFUNC(mobility,calculateAirEngineLoad)", self.code)
+        self.assertIn("EFUNC(flight,calculateAirEngineLoad)", self.code)
         self.assertIn("_deriveAirPower", self.code)
 
     def test_air_branch_is_gated_on_the_air_root(self):
@@ -1091,8 +1093,13 @@ class AirEngineLoadWiring(unittest.TestCase):
         )
 
     def test_air_overrides_are_read_with_declared_defaults(self):
-        self.assertIn('getVariable ["aee_engineDragAreaM2", 0.7]', self.code)
-        self.assertIn('getVariable ["aee_engineRotorDiscAreaM2", 50]', self.code)
+        # The override is read with a 0 sentinel (unset), then the aircraft
+        # corpus row, then the declared default.  The declared defaults are
+        # 0.7 m^2 drag area and 50 m^2 rotor disc.
+        self.assertIn('getVariable ["aee_engineDragAreaM2", 0]', self.code)
+        self.assertIn('getVariable ["aee_engineRotorDiscAreaM2", 0]', self.code)
+        self.assertIn("_dragArea = 0.7", self.code)
+        self.assertIn("_discArea = 50", self.code)
 
     # ── the diagnostic ─────────────────────────────────────────────────
     def test_diagnostic_exists_and_names_the_fields(self):

@@ -28,7 +28,7 @@ params [["_vehicle", objNull, [objNull]]];
 
 GVAR(gripLossForceN) = 0;
 
-if !(GVAR(vehicleCouplingEnabled)) exitWith { false };
+if !(EGVAR(vehicles,vehicleCouplingEnabled)) exitWith { false };
 if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith { false };
 if (isNull _vehicle) exitWith { false };
 if (!alive _vehicle) exitWith { false };

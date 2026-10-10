@@ -20,7 +20,7 @@ def read(rel):
 class TestComputeMode(unittest.TestCase):
     def setUp(self):
         self.settings = read("addons/core/initSettings.inc.sqf")
-        self.biome = read("addons/environmental/functions/biome/fnc_getBiome.sqf")
+        self.biome = read("addons/weather/functions/biome/fnc_getBiome.sqf")
 
     def test_the_setting_is_declared(self):
         self.assertIn("QGVAR(computeMode)", self.settings)

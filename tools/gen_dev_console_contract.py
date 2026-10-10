@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the AEE dev console command contract (ADR-032, ADR-033).
+"""Generate the AEE dev console command contract (ADR-034, ADR-035).
 
 The dev console has three fixed sets, and each has exactly one source:
 

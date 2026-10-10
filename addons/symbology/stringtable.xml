@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Symbology">
+        <Key ID="STR_AEE_Symbology_logDebug_Description">
+            <Original>Log symbology diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log symbology diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_logDebug_Name">
+            <Original>Symbology Debug Log</Original>
+            <English>Symbology Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyEnabled_Description">
+            <Original>Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off.</Original>
+            <English>Draw the NATO APP-6(C) map and world symbols over the engine markers and unit icons. The layer hides the engine mission markers locally and restores them when the map closes. The engine 3D unit icons cannot be suppressed and remain. Default off.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyEnabled_Name">
+            <Original>Map Symbology</Original>
+            <English>Map Symbology</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyFont_Description">
+            <Original>Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on.</Original>
+            <English>Use the AEE font for the symbology labels when the font assets are present. Off keeps the engine font. The font conversion is an operator step. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyFont_Name">
+            <Original>Symbology Font</Original>
+            <English>Symbology Font</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyMarkers_Description">
+            <Original>Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on.</Original>
+            <English>Draw the symbology symbols for the engine map markers. Off leaves the markers to the engine. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyMarkers_Name">
+            <Original>Marker Symbols</Original>
+            <English>Marker Symbols</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyPalette_Description">
+            <Original>Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto.</Original>
+            <English>Choose whose side is blue: NATO fixes WEST, OPFOR fixes EAST, Auto follows the local side. The frame shape and the colour then follow the standard. Default Auto.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyPalette_Name">
+            <Original>Affiliation Palette</Original>
+            <English>Affiliation Palette</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologySuppress_Description">
+            <Original>Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on.</Original>
+            <English>Suppress the engine map indicators where the engine allows it and hide the engine mission markers locally while the map is open. The call is disableMapIndicators; the hide is local and restored on close. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologySuppress_Name">
+            <Original>Suppress Engine Symbols</Original>
+            <English>Suppress Engine Symbols</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyUnits_Description">
+            <Original>Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on.</Original>
+            <English>Draw the symbology symbols for the in-range units. Off draws the markers and the player only. Default on.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_symbologyUnits_Name">
+            <Original>Unit Symbols</Original>
+            <English>Unit Symbols</English>
+        </Key>
+    </Package>
+</Project>

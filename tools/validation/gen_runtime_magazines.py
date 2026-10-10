@@ -8,7 +8,7 @@ carries: the capacity before "Rnd" (30Rnd) and the chambering token
 (556x45). Several magazines can share both, so the table holds the median
 of the group and the count, and the resolver returns the median.
 
-The resolver lives in the physiology addon, because the carried load is
+The resolver lives in the clothing addon, because the carried load is
 its data. The research database is the source of truth.
 
 Run:  python3 tools/validation/gen_runtime_magazines.py
@@ -22,7 +22,7 @@ from pathlib import Path
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 OUT = (
     Path(__file__).parents[2]
-    / "addons/physiology/functions/clothing/fnc_getMagazineMass.sqf"
+    / "addons/clothing/functions/clothing/fnc_getMagazineMass.sqf"
 )
 
 # The capacity tiers, used when the classname states no capacity. The

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The AEE APP-6 mission-task, modifier and echelon marker contract tests.
 
-Pins data/symbology/modifiers.json to the generated addons/optics/config_modifiers.hpp
+Pins data/symbology/modifiers.json to the generated addons/symbology/config_modifiers.hpp
 and to the marker .paa set, so the three cannot drift apart.  The mission-task name
 set is checked against the standard list (MIL-STD-2525D TABLE H-XXIV plus the
 FM 3-90 Appendix B graphics), so no invented task can enter the set.
@@ -17,11 +17,11 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-CONFIG = REPO / "addons" / "optics" / "config_modifiers.hpp"
+CONFIG = REPO / "addons" / "symbology" / "config_modifiers.hpp"
 JSON = REPO / "data" / "symbology" / "modifiers.json"
-MARKERS = REPO / "addons" / "optics" / "data" / "markers"
+MARKERS = REPO / "addons" / "symbology" / "data" / "markers"
 
-ADDON_PREFIX = "\\z\\aee\\addons\\optics\\data\\markers\\"
+ADDON_PREFIX = "\\z\\aee\\addons\\symbology\\data\\markers\\"
 PREFIX = {"mission_task": "AEE_MT_", "modifier": "AEE_MOD_", "echelon": "AEE_Ech_"}
 EXPECTED_COUNTS = {"mission_task": 33, "modifier": 11, "echelon": 13}
 

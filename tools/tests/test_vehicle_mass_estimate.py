@@ -43,7 +43,8 @@ sys.path.insert(0, str(ROOT))
 from tools.tests.sqf_lite import run_sqf  # noqa: E402
 from tools.validation import gen_vehicle_mass_model as gen  # noqa: E402
 
-FUNCTIONS = ROOT / "addons" / "mobility" / "functions"
+MOBILITY_FUNCTIONS = ROOT / "addons" / "mobility" / "functions"
+FUNCTIONS = ROOT / "addons" / "vehicles" / "functions"
 CORE = FUNCTIONS / "fnc_estimateVehicleMassCore.sqf"
 WRAPPER = FUNCTIONS / "fnc_estimateVehicleMass.sqf"
 TABLE = FUNCTIONS / "fnc_getVehicleMassModel.sqf"
@@ -1170,7 +1171,7 @@ class ArityGuardSourceTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.wrapper_flat = compact(code(WRAPPER.read_text(encoding="utf-8")))
         cls.ssf_flat = compact(
-            code((FUNCTIONS / "fnc_calculateSSF.sqf").read_text(encoding="utf-8"))
+            code((MOBILITY_FUNCTIONS / "fnc_calculateSSF.sqf").read_text(encoding="utf-8"))
         )
 
     def test_the_wrapper_guard_accepts_two_or_three_elements(self) -> None:
@@ -1191,7 +1192,7 @@ class ArityGuardSourceTest(unittest.TestCase):
         self.assertIn("first two elements are corners", raw)
 
     def test_the_ssf_header_states_the_box_arity(self) -> None:
-        raw = compact((FUNCTIONS / "fnc_calculateSSF.sqf").read_text(encoding="utf-8"))
+        raw = compact((MOBILITY_FUNCTIONS / "fnc_calculateSSF.sqf").read_text(encoding="utf-8"))
         self.assertIn("boundingSphereDiameter", raw)
         self.assertIn("first two elements are corners", raw)
 
@@ -1211,7 +1212,7 @@ class ArityGuardMutationProbeTest(unittest.TestCase):
         self.assertIn(LEGACY_ARITY_GUARD, flat)
 
     def test_a_reverted_ssf_guard_loses_the_three_element_branch(self) -> None:
-        path = FUNCTIONS / "fnc_calculateSSF.sqf"
+        path = MOBILITY_FUNCTIONS / "fnc_calculateSSF.sqf"
         src = path.read_text(encoding="utf-8")
         reverted = src.replace(
             "{(count _bb == 2) || {count _bb == 3}}",

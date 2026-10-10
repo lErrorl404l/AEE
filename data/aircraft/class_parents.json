@@ -1,0 +1,116 @@
+[
+  {
+    "game_class": "B_Heli_Attack_01_F",
+    "parent_class": "Heli_Attack_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_beta.pbo > heli_attack_01/config.cpp:24739"
+  },
+  {
+    "game_class": "B_Heli_Light_01_F",
+    "parent_class": "Heli_Light_01_unarmed_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:2704"
+  },
+  {
+    "game_class": "B_Heli_Light_01_armed_F",
+    "parent_class": "Heli_Light_01_armed_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3020"
+  },
+  {
+    "game_class": "B_Heli_Transport_01_F",
+    "parent_class": "Heli_Transport_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_beta.pbo > heli_transport_01/config.cpp:2062"
+  },
+  {
+    "game_class": "B_Heli_Transport_03_F",
+    "parent_class": "Heli_Transport_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "heli/addons/air_f_heli.pbo > heli_transport_03/config.cpp:1478"
+  },
+  {
+    "game_class": "B_Plane_CAS_01_F",
+    "parent_class": "Plane_CAS_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_epc.pbo > plane_cas_01/config.cpp:5820"
+  },
+  {
+    "game_class": "B_Plane_Fighter_01_F",
+    "parent_class": "Plane_Fighter_01_Base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_01/config.cpp:6231"
+  },
+  {
+    "game_class": "C_Heli_Light_01_civil_F",
+    "parent_class": "Heli_Light_01_civil_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f.pbo > heli_light_01/config.cpp:3302"
+  },
+  {
+    "game_class": "C_Plane_Civil_01_F",
+    "parent_class": "Plane_Civil_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "expansion/addons/air_f_exp.pbo > plane_civil_01/config.cpp:2707"
+  },
+  {
+    "game_class": "I_Heli_Transport_02_F",
+    "parent_class": "Heli_Transport_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_beta.pbo > heli_transport_02/config.cpp:3254"
+  },
+  {
+    "game_class": "I_Heli_light_03_F",
+    "parent_class": "Heli_light_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_epb.pbo > heli_light_03/config.cpp:2800"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_AA_F",
+    "parent_class": "I_Plane_Fighter_03_CAS_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:3888"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_CAS_F",
+    "parent_class": "Plane_Fighter_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:3756"
+  },
+  {
+    "game_class": "I_Plane_Fighter_03_dynamicLoadout_F",
+    "parent_class": "Plane_Fighter_03_dynamicLoadout_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_gamma.pbo > plane_fighter_03/config.cpp:4018"
+  },
+  {
+    "game_class": "I_Plane_Fighter_04_F",
+    "parent_class": "Plane_Fighter_04_Base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_04/config.cpp:5152"
+  },
+  {
+    "game_class": "O_Heli_Attack_02_F",
+    "parent_class": "Heli_Attack_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_beta.pbo > heli_attack_02/config.cpp:3203"
+  },
+  {
+    "game_class": "O_Heli_Light_02_F",
+    "parent_class": "Heli_Light_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f.pbo > heli_light_02/config.cpp:3889"
+  },
+  {
+    "game_class": "O_Plane_CAS_02_F",
+    "parent_class": "Plane_CAS_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "addons/air_f_epc.pbo > plane_cas_02/config.cpp:3492"
+  },
+  {
+    "game_class": "O_Plane_Fighter_02_F",
+    "parent_class": "Plane_Fighter_02_Base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "jets/addons/air_f_jets.pbo > plane_fighter_02/config.cpp:3316"
+  }
+]

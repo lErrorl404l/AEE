@@ -37,8 +37,20 @@ from pathlib import Path
 from types import MappingProxyType
 
 # The real-world source types. Only these can be a class-map mapping source.
+# This set is the canonical source-type vocabulary: the aircraft validator
+# reads it, so the two definitions cannot diverge. `poh` and `tcds` are the
+# tier-2 pilot's operating handbook and type certificate data sheet classes
+# from `data/vehicle/SCHEMA.md` section 4.
 REAL_SOURCE_TYPES = frozenset(
-    {"standard", "manual", "measurement", "manufacturer", "compilation"}
+    {
+        "standard",
+        "manual",
+        "poh",
+        "tcds",
+        "measurement",
+        "manufacturer",
+        "compilation",
+    }
 )
 
 # The class-map grade set per schema section 7.
@@ -69,6 +81,13 @@ RUNTIME_FIELD_UNITS: dict[str, str] = {
     "rated_power_w": "W",
     "drag_area_m2": "m^2",
     "rotor_disc_area_m2": "m^2",
+    # The fuel systems fields. They are reference only, so they never fill a
+    # runtime-required field. The unit map still resolves them for the systems
+    # row and for the fuel derivations.
+    "fuel_capacity": "L",
+    "fuel_consumption_rate": "kg/s",
+    "fuel_density_kg_l": "kg/L",
+    "fuel_burn_kg_s": "kg/s",
 }
 
 # The runtime inputs per vehicle family, in projection order. A wheeled set
@@ -153,15 +172,292 @@ AIRCRAFT_DERIVATION_STATE_MARKERS: dict[str, str] = {
     "rated_power_w": "derived rated power",
     "rotor_disc_area_m2": "derived rotor disc area",
     "drag_area_m2": "derived drag area",
+    "fuel_density_kg_l": "derived fuel density",
+    "fuel_lhv_mj_kg": "derived fuel lower heating value",
+    "fuel_burn_kg_s": "derived fuel burn",
 }
 AIRCRAFT_DERIVATION_FIELDS = frozenset(AIRCRAFT_DERIVATION_STATE_MARKERS)
 
+# The systems field registry. It is the shared contract in
+# ``data/vehicle/SCHEMA.md`` section 16 together with the aircraft deltas in
+# ``data/aircraft/SCHEMA.md`` section 10. Each row gives one field and its
+# exact unit. The validator reads this registry, so a systems field is a known
+# field. Every field here is reference only, status only or derived. None of
+# the reference-only or status-only fields is a runtime calculation input, so
+# a reference-only or status-only value never fills a runtime-required field.
+SYSTEMS_FIELD_UNITS: dict[str, str] = {
+    # Fuel.
+    "fuel_capacity": "L",
+    "fuel_type": "enum",
+    "fuel_density_kg_l": "kg/L",
+    "fuel_mass_full_kg": "kg",
+    "fuel_consumption_rate": "kg/s",
+    "sfc_kg_kwh": "kg/kWh",
+    "fuel_burn_kg_s": "kg/s",
+    "fuel_tank_count": "count",
+    "fuel_tank_capacity_l": "L",
+    "fuel_cg_arm_m": "m",
+    "fuel_lhv_mj_kg": "MJ/kg",
+    # Engine.
+    "engine_model": "text",
+    "engine_count": "count",
+    "rated_power_w": "W",
+    "engine_design_rpm": "rpm",
+    "engine_max_torque_nm": "N m",
+    "engine_oil_pressure_min_kpa": "kPa",
+    "engine_oil_pressure_max_kpa": "kPa",
+    "engine_oil_capacity_l": "L",
+    "engine_oil_type": "enum",
+    "transmission_torque_limit_nm": "N m",
+    "transmission_gear_ratio_main": "ratio",
+    # Engine turbine terms, an aircraft delta.
+    "engine_idle_ng": "ratio",
+    "engine_max_ng": "ratio",
+    "engine_max_np": "ratio",
+    "engine_max_tgt_c": "deg C",
+    "engine_max_itt_c": "deg C",
+    "transmission_gear_ratio_tail": "ratio",
+    # Rotor geometry, an aircraft delta.
+    "rotor_radius_m": "m",
+    "rotor_diameter_m": "m",
+    "rotor_blade_count": "count",
+    "rotor_chord_m": "m",
+    "rotor_twist_deg": "deg",
+    "rotor_hinge_offset_m": "m",
+    "rotor_design_rpm": "rpm",
+    "rotor_tip_speed_ms": "m/s",
+    "tail_rotor_radius_m": "m",
+    "tail_rotor_blade_count": "count",
+    # Mass, centre of gravity and inertia.
+    "empty_weight_kg": "kg",
+    "max_takeoff_weight_kg": "kg",
+    "cg_empty_m": "m",
+    "cg_forward_limit_m": "m",
+    "cg_aft_limit_m": "m",
+    "inertia_xx_kgm2": "kg m^2",
+    "inertia_yy_kgm2": "kg m^2",
+    "inertia_zz_kgm2": "kg m^2",
+    "payload_kg": "kg",
+    # V-speeds, an aircraft delta and reference only.
+    "vne_kmh": "km/h",
+    "vmo_kmh": "km/h",
+    "vref_kmh": "km/h",
+    "vstall_kmh": "km/h",
+    "vy_kmh": "km/h",
+    "autorotation_speed_kmh": "km/h",
+    "service_ceiling_m": "m",
+    # Damage.
+    "hitpoint_names": "list",
+    "component_count": "count",
+    "crew_count": "count",
+    "damage_role_map": "mapping",
+    # Status systems.
+    "hydraulic_system_count": "count",
+    "hydraulic_pressure_kpa": "kPa",
+    "generator_count": "count",
+    "generator_power_kw": "kW",
+    "bus_voltage_v": "V",
+    "battery_capacity_ah": "Ah",
+    # Pressurisation, an aircraft delta and status only.
+    "cabin_pressure_max_kpa": "kPa",
+    "pressurisation_ceiling_m": "m",
+    "oxygen_system": "enum",
+}
+
+# The unit vocabulary the systems contract adds to the inherited vocabulary.
+# ``list`` and ``mapping`` are the non-physical tokens the damage fields use.
+SYSTEMS_UNITS = frozenset(
+    {
+        "rpm",
+        "MJ/kg",
+        "kg/L",
+        "kg/kWh",
+        "kg/s",
+        "deg C",
+        "Ah",
+        "V",
+        "kg m^2",
+        "list",
+        "mapping",
+    }
+)
+
+# The systems fields the schema marks reference only. A reference-only value
+# may carry any grade. It never fills a runtime-required field.
+REFERENCE_ONLY_SYSTEMS_FIELDS = frozenset(
+    {
+        "fuel_type",
+        "fuel_tank_count",
+        "fuel_tank_capacity_l",
+        "engine_model",
+        "engine_count",
+        "engine_design_rpm",
+        "engine_oil_capacity_l",
+        "engine_oil_type",
+        "transmission_gear_ratio_main",
+        "transmission_gear_ratio_tail",
+        "rotor_radius_m",
+        "rotor_blade_count",
+        "rotor_chord_m",
+        "rotor_twist_deg",
+        "rotor_hinge_offset_m",
+        "rotor_design_rpm",
+        "rotor_tip_speed_ms",
+        "tail_rotor_radius_m",
+        "tail_rotor_blade_count",
+        "cg_forward_limit_m",
+        "cg_aft_limit_m",
+        "inertia_xx_kgm2",
+        "inertia_yy_kgm2",
+        "inertia_zz_kgm2",
+        "vne_kmh",
+        "vmo_kmh",
+        "vref_kmh",
+        "vstall_kmh",
+        "vy_kmh",
+        "autorotation_speed_kmh",
+        "service_ceiling_m",
+        "crew_count",
+    }
+)
+
+# The systems fields the schema marks status only. A status-only value reports
+# a state. It never feeds the flight dynamics model.
+STATUS_ONLY_SYSTEMS_FIELDS = frozenset(
+    {
+        "engine_oil_pressure_min_kpa",
+        "engine_oil_pressure_max_kpa",
+        "engine_max_np",
+        "engine_max_tgt_c",
+        "engine_max_itt_c",
+        "hydraulic_system_count",
+        "hydraulic_pressure_kpa",
+        "generator_count",
+        "generator_power_kw",
+        "bus_voltage_v",
+        "battery_capacity_ah",
+        "cabin_pressure_max_kpa",
+        "pressurisation_ceiling_m",
+        "oxygen_system",
+    }
+)
+
 HP_TO_W = HP_TO_KW * 1000.0
+
+# The standard fuel properties, keyed by the fuel type token. Each entry is
+# ``(density_kg_l, lhv_mj_kg, standard)``. The density is the standard value
+# at 15 C and the lower heating value is the standard net calorific value.
+# The standard is named in the derived state text, so the value is traceable.
+# The fuel type itself is a published field. This table only turns a published
+# token into the two standard properties the systems layer consumes.
+FUEL_PROPERTIES: dict[str, tuple[float, float, str]] = {
+    "avgas_100ll": (0.72, 43.5, "DEF STAN 91-90, Avgas 100LL"),
+    "avgas": (0.72, 43.5, "DEF STAN 91-90, Avgas 100LL"),
+    "jet_a": (0.80, 43.0, "DEF STAN 91-87, Avtur F-35 (Jet A-1)"),
+    "jet_a1": (0.80, 43.0, "DEF STAN 91-87, Avtur F-35 (Jet A-1)"),
+    "jp8": (0.80, 43.0, "MIL-DTL-83133, JP-8"),
+    "jp5": (0.81, 43.0, "MIL-DTL-5624, JP-5"),
+    "ts1": (0.80, 43.0, "GOST 10227, TS-1"),
+    "diesel": (0.84, 42.6, "EN 590, automotive diesel"),
+}
+
+# The joule count of one kilowatt hour. The fuel burn derivation divides the
+# specific fuel consumption by it: ``kg/kWh * W / 3.6e6 = kg/s``.
+JOULES_PER_KWH = 3.6e6
+
+
+def _derive_fuel_property(
+    values: dict[str, object], field: str
+) -> ResolvedField | None:
+    """Derive a standard fuel property from the published fuel type.
+
+    ``fuel_density_kg_l`` and ``fuel_lhv_mj_kg`` are standard values selected
+    by the fuel type. The state text names the standard. The source is the
+    source of the fuel type, so the derivation is traceable to a held document.
+    """
+    base = held_value(values, "fuel_type")
+    if base is None:
+        return None
+    fuel_type = base.get("value")
+    if not isinstance(fuel_type, str):
+        return None
+    prop = FUEL_PROPERTIES.get(fuel_type)
+    if prop is None:
+        return None
+    density, lhv, standard = prop
+    if field == "fuel_density_kg_l":
+        value: object = density
+        unit = "kg/L"
+        marker = "derived fuel density"
+        text = (
+            f"derived fuel density from the fuel type {fuel_type}: "
+            f"fuel_density_kg_l = {density} kg/L ({standard})"
+        )
+    else:
+        value = lhv
+        unit = "MJ/kg"
+        marker = "derived fuel lower heating value"
+        text = (
+            f"derived fuel lower heating value from the fuel type {fuel_type}: "
+            f"fuel_lhv_mj_kg = {lhv} MJ/kg ({standard})"
+        )
+    return ResolvedField(
+        name=field,
+        value=value,
+        unit=unit,
+        source=str(base.get("source", "")),
+        locator=str(base.get("locator", "")),
+        state=f"{marker}: {text}",
+        grade="derived",
+    )
+
+
+def _derive_fuel_burn(
+    values: dict[str, object], profile: Profile
+) -> ResolvedField | None:
+    """Derive the fuel burn rate from the specific fuel consumption and power.
+
+    ``fuel_burn_kg_s = sfc_kg_kwh * rated_power_w / 3.6e6``. The rated power
+    resolves through the same ladder as the runtime field, so a jet's derived
+    rated power is an input. The state text names the formula.
+    """
+    sfc = held_value(values, "sfc_kg_kwh")
+    if sfc is None:
+        return None
+    sfc_value = _number(sfc.get("value"))
+    if sfc_value is None:
+        return None
+    power = resolve_field(values, "rated_power_w", profile)
+    if power.grade == "absent":
+        return None
+    power_value = _number(power.value)
+    if power_value is None:
+        return None
+    burn = round(sfc_value * power_value / JOULES_PER_KWH, POWER_ROUND)
+    return ResolvedField(
+        name="fuel_burn_kg_s",
+        value=burn,
+        unit="kg/s",
+        source=str(sfc.get("source", "")),
+        locator=str(sfc.get("locator", "")),
+        state=(
+            "derived fuel burn from the specific fuel consumption and the "
+            "rated power: fuel_burn_kg_s = sfc_kg_kwh * rated_power_w / 3.6e6 "
+            f"= {sfc_value} * {power_value} / 3600000"
+        ),
+        grade="derived",
+    )
 
 
 @dataclass(frozen=True)
 class Profile:
-    """A corpus profile: the type enum, its runtime sets and its derivations."""
+    """A corpus profile: the family parameter for the shared tools.
+
+    One profile is one vehicle family. It carries the type enum, the runtime
+    sets, the text fields, the named derivations and the field registry. A
+    caller selects a family by profile, so a shared tool never hard-codes one
+    family's path or field set.
+    """
 
     name: str
     vehicle_types: frozenset[str]
@@ -169,6 +465,7 @@ class Profile:
     text_fields: frozenset[str]
     derivation_markers: Mapping[str, str]
     derivation_fields: frozenset[str]
+    field_registry: Mapping[str, str]
 
 
 GROUND_PROFILE = Profile(
@@ -178,6 +475,7 @@ GROUND_PROFILE = Profile(
     text_fields=TEXT_RUNTIME_FIELDS,
     derivation_markers=MappingProxyType(dict(DERIVATION_STATE_MARKERS)),
     derivation_fields=DERIVATION_FIELDS,
+    field_registry=MappingProxyType(dict(SYSTEMS_FIELD_UNITS)),
 )
 
 AIRCRAFT_PROFILE = Profile(
@@ -187,7 +485,46 @@ AIRCRAFT_PROFILE = Profile(
     text_fields=frozenset(),
     derivation_markers=MappingProxyType(dict(AIRCRAFT_DERIVATION_STATE_MARKERS)),
     derivation_fields=AIRCRAFT_DERIVATION_FIELDS,
+    field_registry=MappingProxyType(dict(SYSTEMS_FIELD_UNITS)),
 )
+
+# The family parameter of the shared tools. A family name selects one
+# profile, so a tool reads the family from its caller and never hard-codes
+# the aircraft path or the aircraft field set. The land family supplies the
+# ground profile and `data/vehicle/`.
+FAMILY_PROFILES: Mapping[str, Profile] = MappingProxyType(
+    {
+        "ground": GROUND_PROFILE,
+        "aircraft": AIRCRAFT_PROFILE,
+    }
+)
+
+
+def profile_for(family: str) -> Profile:
+    """Return the corpus profile for a vehicle family name.
+
+    ``ground`` selects the land family and ``aircraft`` selects the air
+    family. An unknown family name is an error, so a caller cannot fall back
+    to a wrong field set in silence.
+    """
+    profile = FAMILY_PROFILES.get(family)
+    if profile is None:
+        raise ValueError(
+            f"unknown vehicle family: {family!r}; "
+            f"known families: {sorted(FAMILY_PROFILES)}"
+        )
+    return profile
+
+
+def systems_field_units(family: str) -> Mapping[str, str]:
+    """Return the systems field registry for one family.
+
+    The registry is the shared contract together with the aircraft deltas, so
+    both families resolve the same field set. The family name still selects
+    the profile, so a caller names its family explicitly.
+    """
+    return profile_for(family).field_registry
+
 
 # Engine identity sources. They can bind a game class only at grade
 # ``claimed`` and only when the evidence names the concrete token or kind.
@@ -701,6 +1038,10 @@ def _derive_field(
         return _derive_rotor_disc(values)
     if field == "drag_area_m2":
         return _derive_drag_area(values)
+    if field in ("fuel_density_kg_l", "fuel_lhv_mj_kg"):
+        return _derive_fuel_property(values, field)
+    if field == "fuel_burn_kg_s":
+        return _derive_fuel_burn(values, profile)
     return None
 
 

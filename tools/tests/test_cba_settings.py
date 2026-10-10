@@ -37,7 +37,7 @@ class TestCbaSettingsValidator(unittest.TestCase):
         from tools.validation import validate_cba_settings as v
 
         self.assertTrue(
-            v._DIRECT_ASSIGN.search("aee_optics_terrainTables = call (compile ...)")
+            v._DIRECT_ASSIGN.search("aee_cartography_terrainTables = call (compile ...)")
         )
         self.assertFalse(v._DIRECT_ASSIGN.search("aee_x == other"))
         self.assertFalse(v._DIRECT_ASSIGN.search("local_x = 1"))

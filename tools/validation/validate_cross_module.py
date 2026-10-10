@@ -177,7 +177,7 @@ def scan_declarations() -> dict[str, set[str]]:
     #      macro form invisible, so ownership fell through to whichever module
     #      CROSS-WROTE the name and the owning module's own read was reported
     #      as a cross-module bug.  That is a false positive in the validator,
-    #      not a defect in the setting: fx owns aee_fx_severeWeatherBlur and
+    #      not a defect in the setting: fx owns aee_weatherfx_severeWeatherBlur and
     #      publishes a derived value into optics by design.
     for inc in ADDONS.glob("*/initSettings.inc.sqf"):
         text = strip_comments(inc.read_text(encoding="utf-8"))

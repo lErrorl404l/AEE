@@ -14,13 +14,13 @@ to the `material` leaf addon.
 The optics/thermal cycle has two edges from thermal back into optics:
 
 1. `addons/thermal/initSettings.inc.sqf` calls
-   `EFUNC(optics,updateThermalHostSetting)` from the `thermalBaseChannel`
+   `EFUNC(vision,updateThermalHostSetting)` from the `thermalBaseChannel`
    setting callback. The callback starts or stops the DTV host driver.
 2. `addons/thermal/functions/display/fnc_applySelectionThermal.sqf` calls
    `EFUNC(optics,getOpticProperties)` for the mounted optic's magnification.
 
 The forward edge (optics to thermal) is the sensor lifecycle.
-`addons/optics/functions/vision/` owns the DTV host, the thermal sensor
+`addons/vision/functions/vision/` owns the DTV host, the thermal sensor
 ENTER and EXIT, and the per-tick thermal pass, and calls the thermal
 rendering functions.
 
@@ -61,6 +61,6 @@ for this increment.
 
 - `docs/architecture/addon-dependencies.md` (generated)
 - `tools/tests/test_addon_dependencies.py` (the environmental/thermal guard)
-- `addons/optics/functions/vision/` (the sensor lifecycle)
+- `addons/vision/functions/vision/` (the sensor lifecycle)
 - `addons/thermal/functions/display/fnc_applySelectionThermal.sqf`
 - `addons/optics/functions/sensor/fnc_getOpticProperties.sqf`

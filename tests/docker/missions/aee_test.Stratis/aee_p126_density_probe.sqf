@@ -23,8 +23,8 @@
 missionNamespace setVariable ["aee_wildlife_logDebug", false];
 
 private _fnMonitor = missionNamespace getVariable ["aee_wildlife_fnc_monitorWildlife", nil];
-private _fnEmitterPlan = missionNamespace getVariable ["aee_wildlife_fnc_emitterPlan", nil];
-private _fnSoundTick = missionNamespace getVariable ["aee_wildlife_fnc_soundTick", nil];
+private _fnEmitterPlan = missionNamespace getVariable ["aee_ambience_fnc_emitterPlan", nil];
+private _fnSoundTick = missionNamespace getVariable ["aee_ambience_fnc_soundTick", nil];
 if (isNil "_fnMonitor" || {isNil "_fnEmitterPlan"} || {isNil "_fnSoundTick"}) exitWith {
     diag_log text "[P126] [FAIL] wildlife density kernels not compiled (monitor/emitterPlan/soundTick)";
 };

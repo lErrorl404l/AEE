@@ -35,7 +35,7 @@ from tools.validation import gen_runtime_projectiles as gen_projectiles  # noqa:
 from tools.validation import gen_runtime_weapons as gen_weapons  # noqa: E402
 
 BALLISTICS = REPO / "addons" / "ballistics" / "functions"
-CLOTHING = REPO / "addons" / "physiology" / "functions" / "clothing"
+CLOTHING = REPO / "addons" / "clothing" / "functions" / "clothing"
 
 WEAPON_MATCH = BALLISTICS / "fnc_getWeaponData.sqf"
 CARTRIDGE_MATCH = BALLISTICS / "fnc_getCartridgeData.sqf"
@@ -273,7 +273,7 @@ class TestMatcherWiring(unittest.TestCase):
         ballistics = (REPO / "addons" / "ballistics" / "XEH_PREP.hpp").read_text(
             encoding="utf-8"
         )
-        physiology = (REPO / "addons" / "physiology" / "XEH_PREP.hpp").read_text(
+        clothing = (REPO / "addons" / "clothing" / "XEH_PREP.hpp").read_text(
             encoding="utf-8"
         )
         for name in (
@@ -283,8 +283,8 @@ class TestMatcherWiring(unittest.TestCase):
             "getProjectileBands",
         ):
             self.assertIn(f"PREP({name});", ballistics, f"{name} is not registered")
-        self.assertIn("PREPS(clothing,selectBand);", physiology)
-        self.assertIn("PREPS(clothing,getEquipmentBands);", physiology)
+        self.assertIn("PREPS(clothing,selectBand);", clothing)
+        self.assertIn("PREPS(clothing,getEquipmentBands);", clothing)
 
     def test_the_selector_never_invents(self):
         # The selector returns the row or an empty array. There is no default

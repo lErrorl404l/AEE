@@ -3,7 +3,7 @@
 
 The catalogue is a generated legend, not hand-written data.  These tests pin it
 to its two sources: data/symbology/nato_catalogue.json (every symbol has a row,
-with the same affiliation and dimension) and addons/optics/config_markers.hpp
+with the same affiliation and dimension) and addons/symbology/config_markers.hpp
 (every used_for value names a real engine override).  The final test runs the
 generator's own --check, the same gate CI runs, so a stale committed legend
 fails here.

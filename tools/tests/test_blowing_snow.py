@@ -1,8 +1,8 @@
 """Blowing-snow and blowing-dust visibility mirrors (issue #106).
 
 Mirrors:
-  addons/environmental/functions/warnings/fnc_calculateBlowingSnowVisibility.sqf
-  addons/environmental/functions/warnings/fnc_calculateDustVisibility.sqf
+  addons/weather/functions/warnings/fnc_calculateBlowingSnowVisibility.sqf
+  addons/weather/functions/warnings/fnc_calculateDustVisibility.sqf
 
 Snow chain, Li and Pomeroy 1997a, Pomeroy and Gray 1990, Li and Pomeroy
 1997b:
@@ -47,7 +47,7 @@ LP_SLOPE = 0.0033
 LP_OFFSET = 27.27
 
 REPO = Path(__file__).resolve().parents[2]
-WARNINGS = REPO / "addons" / "environmental" / "functions" / "warnings"
+WARNINGS = REPO / "addons" / "weather" / "functions" / "warnings"
 SNOW_SQF = WARNINGS / "fnc_calculateBlowingSnowVisibility.sqf"
 DUST_SQF = WARNINGS / "fnc_calculateDustVisibility.sqf"
 SEVERE_SQF = WARNINGS / "fnc_calculateSevereWeather.sqf"

@@ -9,9 +9,9 @@
 
 setDate [2035, 1, 1, 0, 0];
 
-private _fnNelm = missionNamespace getVariable ["aee_environmental_fnc_calculateLimitingMagnitude", nil];
-private _fnCoef = missionNamespace getVariable ["aee_environmental_fnc_starBrightnessCoefficient", nil];
-private _fnFade = missionNamespace getVariable ["aee_environmental_fnc_starWeatherFade", nil];
+private _fnNelm = missionNamespace getVariable ["aee_lighting_fnc_calculateLimitingMagnitude", nil];
+private _fnCoef = missionNamespace getVariable ["aee_lighting_fnc_starBrightnessCoefficient", nil];
+private _fnFade = missionNamespace getVariable ["aee_lighting_fnc_starWeatherFade", nil];
 
 private _pass = 0;
 private _fail = 0;

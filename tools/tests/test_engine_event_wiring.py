@@ -49,7 +49,7 @@ INLINED_LEAF = {"addons/material/XEH_preInit.sqf"}
 
 PLAYER_SCOPED = (
     "addons/ballistics/XEH_postInit.sqf",
-    "addons/fx/XEH_postInit.sqf",
+    "addons/particles/XEH_postInit.sqf",
     "addons/optics/XEH_postInit.sqf",
     "addons/material/XEH_preInit.sqf",
 )
@@ -152,19 +152,19 @@ class TestEngineHandlersUseAWorkingRoute(unittest.TestCase):
         Keying the stored handler on the event name would let one caller's
         install remove another's, so the key is the caller's own name.
         """
-        for rel in ("addons/core/functions/fnc_installPlayerEngineHandler.sqf",
-                    "addons/core/functions/fnc_installObjectEngineHandler.sqf"):
+        for rel in ("addons/lib/functions/fnc_installPlayerEngineHandler.sqf",
+                    "addons/lib/functions/fnc_installObjectEngineHandler.sqf"):
             self.assertIn('"_key"', _raw(ROOT / rel), rel)
             self.assertIn("attachObjectEngineHandler", _code(ROOT / rel), rel)
         # Replacement lives in the shared attach, because the engine stacks
         # duplicate handlers and a stack means the work runs twice per event.
-        attach = _code(ROOT / "addons/core/functions/fnc_attachObjectEngineHandler.sqf")
+        attach = _code(ROOT / "addons/lib/functions/fnc_attachObjectEngineHandler.sqf")
         self.assertIn("removeEventHandler", attach)
         self.assertIn("getVariable [_idVar, -1] >= 0", attach)
 
     def test_respawn_uses_the_cba_unit_event(self):
         """Re-attachment must ride a CBA event, not a per-frame poll."""
-        rel = "addons/core/functions/fnc_installPlayerEngineHandler.sqf"
+        rel = "addons/lib/functions/fnc_installPlayerEngineHandler.sqf"
         self.assertIn("CBA_fnc_addPlayerEventHandler", _code(ROOT / rel))
         self.assertIn('"unit"', _raw(ROOT / rel))
 
@@ -214,7 +214,7 @@ class TestProbeKeepsMeasuring(unittest.TestCase):
         self.assertIn(bis, _raw(ROOT / "addons/ballistics/XEH_postInit.sqf"))
         # fx's trace renderer names only the slot it reads, so assert the
         # event name and that slot rather than the full seven-name list.
-        fx = _raw(ROOT / "addons/fx/XEH_postInit.sqf")
+        fx = _raw(ROOT / "addons/particles/XEH_postInit.sqf")
         self.assertIn('["Fired", {', fx)
         self.assertIn('params ["_unit", "", "", "", "", "", "_projectile"]', fx)
 

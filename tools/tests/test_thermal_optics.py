@@ -37,7 +37,10 @@ from tools.tests.test_sqf_two_node import _solve as _solve_two_node  # noqa: E40
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
+_VISION = _REPO_ROOT / "addons" / "vision" / "functions"
+_EYE = _REPO_ROOT / "addons" / "eye" / "functions"
 _THERMAL = _REPO_ROOT / "addons" / "thermal" / "functions"
+_THERMAL_DISPLAY = _REPO_ROOT / "addons" / "thermal_display" / "functions"
 _NVG = _REPO_ROOT / "addons" / "nightvision" / "functions"
 _CORE = _REPO_ROOT / "addons" / "core" / "functions"
 
@@ -50,10 +53,16 @@ def _read_sqf(name, addon="optics"):
     flat (aee_X_fnc_<name>) regardless of its organisational folder."""
     if addon == "thermal":
         base = _THERMAL
+        if not (base / name).exists() and not any(base.rglob(name)):
+            base = _THERMAL_DISPLAY
     elif addon == "nightvision":
         base = _NVG
     elif addon == "core":
         base = _CORE
+    elif addon == "vision":
+        base = _VISION
+    elif addon == "eye":
+        base = _EYE
     else:
         base = _OPTICS
     if (base / name).exists():
@@ -2027,7 +2036,7 @@ class TestClothingThermal(unittest.TestCase):
         # function of the band radiance; material enters only through the
         # emissivity already inside _rad.  No material token selects a hue.
         self.assertIn("[_obj, _sel] call FUNC(getSelectionMaterials)", text)
-        self.assertIn("call FUNC(thermalPalette)", text)
+        self.assertIn("call EFUNC(thermal_display,thermalPalette)", text)
         self.assertNotIn("_baseHue", text)
         self.assertNotIn("setObjectMaterial [_idx,", text)
         # The live path swaps exactly ONE material, the FPN substrate.
@@ -2125,7 +2134,7 @@ class TestSelectionThermalTexture(unittest.TestCase):
         """One screen-space noise source, FPN from netd/window, not a constant."""
         code = _code_only(_read_sqf("fnc_applyThermalVision.sqf", addon="thermal"))
         self.assertIn("getThermalDeviceProperties", code)
-        self.assertIn("QGVAR(agcFullSpan)", code)
+        self.assertIn("QEGVAR(thermal,agcFullSpan)", code)
         self.assertIn("_fpnAmp = _netd / _windowT", code)
         self.assertIn("_noise = (_envNoise + _fpnAmp)", code)
 
@@ -2594,7 +2603,7 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         )
         self.assertIn("eyeStatePrev", eye_state)
 
-        post = Path("addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        post = Path("addons/vision/XEH_postInit.sqf").read_text(encoding="utf-8")
         # The duplicate droplet call in the thermal branch must be gone:
         # exactly ONE tick call (the unconditional one before the branches).
         self.assertEqual(
@@ -3162,9 +3171,9 @@ class TestSQFSync(unittest.TestCase):
 
         root = Path(__file__).resolve().parents[2]
         files = [
-            "addons/optics/functions/vision/fnc_managePostProcess.sqf",
+            "addons/vision/functions/vision/fnc_managePostProcess.sqf",
             "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
-            "addons/thermal/functions/display/fnc_applyThermalVision.sqf",
+            "addons/thermal_display/functions/display/fnc_applyThermalVision.sqf",
         ]
         seen = {}
         for rel in files:
@@ -3233,10 +3242,10 @@ class TestSQFSync(unittest.TestCase):
             2550,
         }
         manage = (
-            root / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+            root / "addons/vision/functions/vision/fnc_managePostProcess.sqf"
         ).read_text(encoding="utf-8")
         create = (
-            root / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
+            root / "addons/vision/functions/vision/fnc_ppEffectCreate.sqf"
         ).read_text(encoding="utf-8")
         applied = {
             m.group(1): int(m.group(2))
@@ -3286,7 +3295,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applySelectionThermal.sqf",
             [
                 "#(rgb,8,8,3)color(",
-                "call FUNC(thermalPalette)",
+                "call EFUNC(thermal_display,thermalPalette)",
                 "private _levels = 255",
                 "setObjectTexture [_idx, _colour]",
                 "ti_fpn.rvmat",
@@ -3407,7 +3416,7 @@ class TestSQFSync(unittest.TestCase):
         cfg = (
             _REPO_ROOT
             / "addons"
-            / "environmental"
+            / "lighting"
             / "functions"
             / "astronomy"
             / "fnc_calculateSolarRadiation.sqf"
@@ -3723,7 +3732,7 @@ class TestSQFSync(unittest.TestCase):
         cfg = (
             _REPO_ROOT
             / "addons"
-            / "environmental"
+            / "lighting"
             / "functions"
             / "astronomy"
             / "fnc_calculateSolarRadiation.sqf"
@@ -4594,7 +4603,7 @@ class TestPostProcessHandleOwnership(unittest.TestCase):
     def test_sensor_exit_deferred_disables_carry_a_generation_guard(self):
         # (d) Each of the three sensor-exit deferred disables captures the
         # effect generation and skips the disable when it changed.
-        text = _read_sqf("fnc_managePostProcess.sqf", "optics")
+        text = _read_sqf("fnc_managePostProcess.sqf", "vision")
         block = _sqf_block(text, "if (_visionMode == 1 || _visionMode == 2) exitWith")
         pairs = (
             ("chromaGen", "ppHandle_ChromAberration"),
@@ -6547,9 +6556,9 @@ class TestCallerBandWiring(unittest.TestCase):
     _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
     _TRANSMISSION = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
 
-    _RAD_CALL = re.compile(r"\[([^\[\]]*?)\] call FUNC\(calculateBandRadiance\)")
+    _RAD_CALL = re.compile(r"\[([^\[\]]*?)\] call E?FUNC\((?:thermal,)?calculateBandRadiance\)")
     _TAU_CALL = re.compile(
-        r"\[([^\[\]]*?)\] call FUNC\(calculateAtmosphericTransmission\)"
+        r"\[([^\[\]]*?)\] call E?FUNC\((?:thermal,)?calculateAtmosphericTransmission\)"
     )
 
     _CALLERS = (
@@ -6564,7 +6573,7 @@ class TestCallerBandWiring(unittest.TestCase):
     def test_each_caller_resolves_the_band(self):
         for name in self._CALLERS:
             with self.subTest(function=name):
-                self.assertIn("call FUNC(resolveThermalBand)", self._code(name))
+                self.assertRegex(self._code(name), r"call E?FUNC\((?:thermal,)?resolveThermalBand\)")
 
     def test_each_caller_reads_the_device_band_index(self):
         # The band is index 6 of the device tuple (T1).  The AGC resolves the
@@ -6598,13 +6607,14 @@ class TestCallerBandWiring(unittest.TestCase):
     def test_each_caller_applies_the_wet_emissivity(self):
         for name in self._CALLERS:
             with self.subTest(function=name):
-                self.assertIn("call FUNC(getEffectiveEmissivity)", self._code(name))
+                self.assertRegex(self._code(name), r"call E?FUNC\((?:thermal,)?getEffectiveEmissivity\)")
 
     def test_each_caller_passes_the_reflected_solar_term(self):
         for name in self._CALLERS:
             with self.subTest(function=name):
-                self.assertIn(
-                    "call FUNC(calculateReflectedSolarBand)", self._code(name)
+                self.assertRegex(
+                    self._code(name),
+                    r"call E?FUNC\((?:thermal,)?calculateReflectedSolarBand\)",
                 )
 
     def test_the_no_device_radiance_path_reproduces_the_lwir_default(self):
@@ -7095,9 +7105,16 @@ class TestThermalBaseChannel(unittest.TestCase):
 
     _SETTINGS = _REPO_ROOT / "addons" / "thermal" / "initSettings.inc.sqf"
     _HOST = _THERMAL / "display" / "fnc_isThermalHostActive.sqf"
-    _VISION = _THERMAL / "display" / "fnc_applyThermalVision.sqf"
-    _HOSTMGR = _OPTICS / "vision" / "fnc_updateThermalHost.sqf"
-    _POSTINIT = _REPO_ROOT / "addons" / "optics" / "XEH_postInit.sqf"
+    _VISION = _THERMAL_DISPLAY / "display" / "fnc_applyThermalVision.sqf"
+    _HOSTMGR = (
+        _REPO_ROOT
+        / "addons"
+        / "vision"
+        / "functions"
+        / "vision"
+        / "fnc_updateThermalHost.sqf"
+    )
+    _POSTINIT = _REPO_ROOT / "addons" / "vision" / "XEH_postInit.sqf"
 
     def test_setting_defaults_to_vanilla_ti(self):
         text = self._SETTINGS.read_text(encoding="utf-8")
@@ -7112,14 +7129,14 @@ class TestThermalBaseChannel(unittest.TestCase):
 
     def test_apply_thermal_vision_gates_on_the_host_not_raw_mode_2(self):
         text = self._VISION.read_text(encoding="utf-8")
-        self.assertIn("call FUNC(isThermalHostActive)", text)
+        self.assertIn("call EFUNC(thermal,isThermalHostActive)", text)
         self.assertNotIn("currentVisionMode _player != 2", text)
 
     def test_force_in_nvg_is_absent_on_the_dtv_host(self):
         text = self._VISION.read_text(encoding="utf-8")
         self.assertIn(
             "private _forceNVG = (missionNamespace getVariable "
-            "[QGVAR(thermalBaseChannel), 0]) == 0;",
+            "[QEGVAR(thermal,thermalBaseChannel), 0]) == 0;",
             text,
         )
         # Every adjust call passes the resolved flag, never a literal true.
@@ -7221,7 +7238,7 @@ class TestThermalPostProcessLadder(unittest.TestCase):
         others += [
             (f"optics:{k}", v)
             for k, v in self._bare_entries(
-                _read_sqf("fnc_ppEffectCreate.sqf", "optics")
+                _read_sqf("fnc_ppEffectCreate.sqf", "vision")
             ).items()
         ]
         others += [(f"nvg:{k}", v) for k, v in self._qgvar_entries(nvg).items()]
@@ -7246,14 +7263,15 @@ class TestActiveIR(unittest.TestCase):
     guard also asserts the surveyed mod's tuning values were not copied.
     """
 
-    _GATE = _THERMAL / "ir" / "fnc_activeIRGate.sqf"
-    _START = _THERMAL / "ir" / "fnc_startActiveIR.sqf"
-    _STOP = _THERMAL / "ir" / "fnc_stopActiveIR.sqf"
-    _APPLY = _THERMAL / "ir" / "fnc_applyActiveIR.sqf"
-    _PREP = _REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp"
+    _GATE = _THERMAL_DISPLAY / "ir" / "fnc_activeIRGate.sqf"
+    _START = _THERMAL_DISPLAY / "ir" / "fnc_startActiveIR.sqf"
+    _STOP = _THERMAL_DISPLAY / "ir" / "fnc_stopActiveIR.sqf"
+    _APPLY = _THERMAL_DISPLAY / "ir" / "fnc_applyActiveIR.sqf"
+    _PREP = _REPO_ROOT / "addons" / "thermal_display" / "XEH_PREP.hpp"
     _SETTINGS = _REPO_ROOT / "addons" / "thermal" / "initSettings.inc.sqf"
-    _POSTINIT = _REPO_ROOT / "addons" / "thermal" / "XEH_postInit.sqf"
+    _POSTINIT = _REPO_ROOT / "addons" / "thermal_display" / "XEH_postInit.sqf"
     _STRINGS = _REPO_ROOT / "addons" / "thermal" / "stringtable.xml"
+    _DISPLAY_STRINGS = _REPO_ROOT / "addons" / "thermal_display" / "stringtable.xml"
 
     def _gate(self, setting_on, has_interface, unit_null, unit_alive):
         return run_sqf(self._GATE, [setting_on, has_interface, unit_null, unit_alive])
@@ -7307,7 +7325,7 @@ class TestActiveIR(unittest.TestCase):
         text = self._STRINGS.read_text(encoding="utf-8")
         self.assertIn("STR_AEE_Thermal_activeIR_Name", text)
         self.assertIn("STR_AEE_Thermal_activeIR_Description", text)
-        self.assertIn("STR_AEE_Thermal_activeIRToggle", text)
+        self.assertIn("STR_AEE_Thermal_Display_activeIRToggle", self._DISPLAY_STRINGS.read_text(encoding="utf-8"))
         post = self._POSTINIT.read_text(encoding="utf-8")
         self.assertIn("CBA_fnc_addKeybind", post)
         self.assertIn("ActiveIRToggle", post)
@@ -7337,7 +7355,7 @@ class TestThermalCapabilityProbe(unittest.TestCase):
     """
 
     _PROBE = _THERMAL / "sensor" / "fnc_probeThermalCapability.sqf"
-    _VISION = _THERMAL / "display" / "fnc_applyThermalVision.sqf"
+    _VISION = _THERMAL_DISPLAY / "display" / "fnc_applyThermalVision.sqf"
     _PREP = _REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp"
 
     def _probe(self, vision_mode, thermal_mode):
@@ -7361,6 +7379,6 @@ class TestThermalCapabilityProbe(unittest.TestCase):
 
     def test_the_session_entry_calls_the_probe(self):
         code = _code_only(self._VISION.read_text(encoding="utf-8"))
-        self.assertIn("call FUNC(probeThermalCapability)", code)
+        self.assertIn("call EFUNC(thermal,probeThermalCapability)", code)
         # The host ownership stays with fnc_isThermalHostActive.
-        self.assertIn("call FUNC(isThermalHostActive)", code)
+        self.assertIn("call EFUNC(thermal,isThermalHostActive)", code)

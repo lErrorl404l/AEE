@@ -20,6 +20,7 @@ from sqf_lite import Lambda, Params, load_sqf, run_sqf  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 WILDLIFE = ROOT / "addons" / "wildlife"
 FUNCS = WILDLIFE / "functions"
+AMBIENCE = ROOT / "addons" / "ambience" / "functions"
 DATA = WILDLIFE / "data"
 MANIFEST = DATA / "sound_manifest.sqf"
 SPECIES_TABLE = DATA / "species_table.sqf"
@@ -30,14 +31,14 @@ SPAWN_BUDGET = FUNCS / "fnc_spawnBudget.sqf"
 NEEDS_TICK = FUNCS / "fnc_needsTick.sqf"
 RESOURCE_SCORE = FUNCS / "fnc_resourceScore.sqf"
 PICK_RESOURCE = FUNCS / "fnc_pickResourceTarget.sqf"
-SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
+SOUND_BED = AMBIENCE / "fnc_soundBedForContext.sqf"
 SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
-DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
+DISTURBANCE_SILENCE = AMBIENCE / "fnc_disturbanceSilence.sqf"
 MONITOR = FUNCS / "fnc_monitorWildlife.sqf"
-EMITTER_PLAN = FUNCS / "fnc_emitterPlan.sqf"
-EMITTER_CLASS = FUNCS / "fnc_emitterClass.sqf"
-CALL_PITCH = FUNCS / "fnc_callPitch.sqf"
-SHOT_AUDIO = FUNCS / "fnc_shotAudio.sqf"
+EMITTER_PLAN = AMBIENCE / "fnc_emitterPlan.sqf"
+EMITTER_CLASS = AMBIENCE / "fnc_emitterClass.sqf"
+CALL_PITCH = AMBIENCE / "fnc_callPitch.sqf"
+SHOT_AUDIO = AMBIENCE / "fnc_shotAudio.sqf"
 
 # A tiny manifest for the pure kernel tests.  The real manifest has the same
 # row shape.
@@ -299,8 +300,8 @@ class TestFaunaSourceContracts(unittest.TestCase):
 
     def test_resource_providers_use_the_published_facts(self):
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
-        self.assertIn("EFUNC(environmental,getCoastDistance)", text)
-        self.assertIn("QEGVAR(environmental,terrainSignals)", text)
+        self.assertIn("EFUNC(weather,getCoastDistance)", text)
+        self.assertIn("QEGVAR(weather,terrainSignals)", text)
 
     def test_herd_anchor_is_recorded_and_leashed(self):
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
@@ -359,7 +360,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
 
     def test_every_play_sound_3d_sets_the_local_argument_true(self):
         calls = 0
-        for path in WILDLIFE.rglob("*.sqf"):
+        for path in list(WILDLIFE.rglob("*.sqf")) + list(AMBIENCE.rglob("*.sqf")):
             text = path.read_text(encoding="utf-8")
             for match in re.findall(r"playSound3D\s*\[([^\]]*)\]", text):
                 calls += 1
@@ -372,7 +373,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
         self.assertGreaterEqual(calls, 1)
 
     def test_cfg_sfx_bed_uses_the_client_local_sound_source(self):
-        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
         match = re.search(r"createSoundSourceLocal\s*\[(.*?)\]\s*;", text, re.DOTALL)
         self.assertIsNotNone(match, "no createSoundSourceLocal call in the bed")
         arguments = [part.strip() for part in match.group(1).split(",")]
@@ -388,7 +389,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
             )
 
     def test_the_bed_is_deleted_before_recreation(self):
-        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
         self.assertIn("deleteVehicle", text)
         self.assertLess(
             text.index("deleteVehicle"),
@@ -413,14 +414,14 @@ class TestWildlifeSourceContracts(unittest.TestCase):
 
     def test_tick_reads_the_vegetation_signal_and_passes_it_to_the_bed(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
-        self.assertIn("QEGVAR(environmental,terrainSignals)", text)
-        self.assertIn("EFUNC(core,readState)", text)
+        self.assertIn("QEGVAR(weather,terrainSignals)", text)
+        self.assertIn("EFUNC(lib,readState)", text)
         self.assertIn("_vegScore", text)
         # The score and the settlement and coastal overlays are appended to
         # the bed selector.
         self.assertIn("_vegScore, _settlement, _coastal", text)
-        self.assertIn("call FUNC(soundBedForContext)", text)
-        kernel = (FUNCS / "fnc_soundBedForContext.sqf").read_text(encoding="utf-8")
+        self.assertIn("call EFUNC(ambience,soundBedForContext)", text)
+        kernel = (AMBIENCE / "fnc_soundBedForContext.sqf").read_text(encoding="utf-8")
         self.assertIn('["_vegScore", 0, [0]]', kernel)
         self.assertIn("_forest", kernel)
 
@@ -431,7 +432,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
 
     def test_spawn_reads_the_biome_through_the_guarded_helper(self):
         text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
-        self.assertIn("EFUNC(core,readState)", text)
+        self.assertIn("EFUNC(lib,readState)", text)
 
     def test_dry_run_is_the_last_tick_parameter(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
@@ -447,7 +448,7 @@ class TestWildlifeSourceContracts(unittest.TestCase):
                 self.assertNotIn(token, text, f"{path.name} contains {token}")
 
     def test_sound_instance_cap_is_enforced(self):
-        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
         self.assertIn("WILDLIFE_SOUND_INSTANCE_CAP", text)
 
 
@@ -551,11 +552,11 @@ class TestWildlifeStateLineContract(unittest.TestCase):
             "aee_ai_forceDecide",
             "QGVAR(fauna)",
             "QGVAR(maxAnimals)",
-            "QGVAR(soundInstances)",
+            "QEGVAR(ambience,soundInstances)",
             "WILDLIFE_SOUND_INSTANCE_CAP",
             "QGVAR(ambientSource)",
             "QGVAR(enabled)",
-            "QGVAR(ambientEnabled)",
+            "QEGVAR(ambience,ambientEnabled)",
             "QGVAR(animalsEnabled)",
             "QGVAR(density)",
             "aee_wildlife_forceBiome",
@@ -876,7 +877,7 @@ class TestWildlifeSettingsStrings(unittest.TestCase):
 
 
 ASSET_MAP = DATA / "asset_map.sqf"
-SPECIES_SOUND = FUNCS / "fnc_speciesSound.sqf"
+SPECIES_SOUND = AMBIENCE / "fnc_speciesSound.sqf"
 MEDIA_EXTENSIONS = {".wss", ".ogg", ".wav"}
 
 
@@ -1105,7 +1106,7 @@ class TestSoundDefectFixes(unittest.TestCase):
     def test_the_fear_source_is_chosen_per_species(self):
         # Defect 6: the hardcoded scared_animal1 is replaced by the map.
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
-        self.assertIn('["fear", [], _assetMap] call FUNC(speciesSound)', text)
+        self.assertIn('["fear", [], _assetMap] call EFUNC(ambience,speciesSound)', text)
         self.assertIn("speciesGroup", text)
         self.assertNotIn("scared_animal1", text)
 
@@ -1118,8 +1119,8 @@ class TestSoundDefectFixes(unittest.TestCase):
 
 
 PICK_BED = FUNCS / "fnc_pickBedSource.sqf"
-SOUND_TICK = FUNCS / "fnc_soundTick.sqf"
-CALL_PATTERN = FUNCS / "fnc_getCallPattern.sqf"
+SOUND_TICK = AMBIENCE / "fnc_soundTick.sqf"
+CALL_PATTERN = AMBIENCE / "fnc_getCallPattern.sqf"
 
 # The corpus temporal bins for the two groups the day fixture drives:
 # pre_dawn, dawn, morning, midday, afternoon, dusk, night.
@@ -1222,7 +1223,7 @@ class TestSoundTick(unittest.TestCase):
 
     def test_the_tick_wires_the_scheduler(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
-        self.assertIn("call FUNC(soundTick)", text)
+        self.assertIn("call EFUNC(ambience,soundTick)", text)
         self.assertIn("call FUNC(getSpeciesMatch)", text)
         self.assertIn("QGVAR(soundSchedule)", text)
 
@@ -1231,7 +1232,7 @@ class TestBedStability(unittest.TestCase):
     """The ambient bed is stable across ticks (task 21)."""
 
     def test_the_bed_recreates_only_on_a_key_change(self):
-        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
         # The recreate is guarded by the stored key.
         self.assertIn("QGVAR(ambientKey)", text)
         self.assertIn("_key == _source", text)
@@ -1244,7 +1245,7 @@ class TestBedStability(unittest.TestCase):
         )
 
     def test_the_bed_documents_the_cfg_sfx_gain_limit(self):
-        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
         self.assertIn("takes no gain", text)
         self.assertIn("playOneShot", text)
 
@@ -1337,7 +1338,7 @@ class TestSoundDensityCap(unittest.TestCase):
         self.assertEqual(self._define("WILDLIFE_EMITTER_CAP"), DENSITY_TARGET)
 
     def test_the_one_shot_kernel_enforces_the_cap(self):
-        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
         self.assertIn(">= WILDLIFE_SOUND_INSTANCE_CAP) exitWith { false }", text)
 
     def test_the_tick_bounds_the_per_tick_top_up_by_the_cap(self):
@@ -1345,7 +1346,7 @@ class TestSoundDensityCap(unittest.TestCase):
         self.assertIn('for "_k" from 0 to (WILDLIFE_SOUND_INSTANCE_CAP - 1)', text)
 
     def test_the_emitter_plan_defaults_to_the_cap(self):
-        text = (FUNCS / "fnc_emitterPlan.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_emitterPlan.sqf").read_text(encoding="utf-8")
         self.assertIn('["_cap", WILDLIFE_EMITTER_CAP, [0]]', text)
 
     def test_the_state_line_reports_the_cap(self):
@@ -1382,7 +1383,7 @@ class TestEmitterSourceContracts(unittest.TestCase):
     """The engine wiring the harness cannot execute (task 27)."""
 
     def test_the_one_shot_passes_the_emitter_object(self):
-        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
         self.assertIn('["_attachTo", objNull, [objNull]]', text)
         # The object branch takes the animal as the sound source.
         self.assertIn("playSound3D [_source, _attachTo,", text)
@@ -1393,12 +1394,12 @@ class TestEmitterSourceContracts(unittest.TestCase):
     def test_the_fear_call_passes_the_fleeing_agent(self):
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
         self.assertIn(
-            "WILDLIFE_SOUND_MAX_DISTANCE, _agent, _callPitch] call FUNC(playOneShot)",
+            "WILDLIFE_SOUND_MAX_DISTANCE, _agent, _callPitch] call EFUNC(ambience,playOneShot)",
             text,
         )
 
     def test_the_emitter_functions_are_prepped(self):
-        text = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        text = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         for name in ("emitterPlan", "emitterClass", "emitterSync", "emitterRelease"):
             self.assertIn(f"PREP({name})", text, name)
 
@@ -1408,7 +1409,7 @@ class TestEmitterSourceContracts(unittest.TestCase):
         self.assertIn("WILDLIFE_EMITTER_RADIUS", text)
 
     def test_the_sync_attaches_and_bounds_the_emitter(self):
-        text = (FUNCS / "fnc_emitterSync.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_emitterSync.sqf").read_text(encoding="utf-8")
         self.assertIn("call FUNC(emitterPlan)", text)
         self.assertIn("createSoundSourceLocal", text)
         self.assertIn("attachTo [_agent", text)
@@ -1418,7 +1419,7 @@ class TestEmitterSourceContracts(unittest.TestCase):
 
     def test_a_culled_animal_releases_its_emitter(self):
         text = (FUNCS / "fnc_cullFauna.sqf").read_text(encoding="utf-8")
-        self.assertIn("FUNC(emitterRelease)", text)
+        self.assertIn("EFUNC(ambience,emitterRelease)", text)
 
     def test_a_teardown_releases_every_emitter(self):
         text = (FUNCS / "fnc_teardownWildlife.sqf").read_text(encoding="utf-8")
@@ -1427,7 +1428,7 @@ class TestEmitterSourceContracts(unittest.TestCase):
 
     def test_the_tick_syncs_the_emitters(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
-        self.assertIn("FUNC(emitterSync)", text)
+        self.assertIn("EFUNC(ambience,emitterSync)", text)
 
     def test_the_spawn_records_the_sound_group(self):
         text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
@@ -1435,7 +1436,7 @@ class TestEmitterSourceContracts(unittest.TestCase):
 
     def test_the_emitter_is_client_local(self):
         for name in ("fnc_emitterSync.sqf", "fnc_emitterRelease.sqf"):
-            text = (FUNCS / name).read_text(encoding="utf-8")
+            text = (AMBIENCE / name).read_text(encoding="utf-8")
             self.assertIn("hasInterface", text, name)
 
 
@@ -1492,22 +1493,22 @@ class TestPitchSourceContracts(unittest.TestCase):
     """No fixed pitch anywhere in the wildlife sound path (task 28)."""
 
     def test_the_one_shot_uses_the_derived_pitch(self):
-        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
         self.assertIn('["_pitch", 1, [0]]', text)
         self.assertIn(", _volume, _pitch, _distance", text)
 
     def test_the_bed_carries_the_pitch(self):
-        text = (FUNCS / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_playAmbientBed.sqf").read_text(encoding="utf-8")
         self.assertIn('["_pitch", 1, [0]]', text)
         self.assertIn(", objNull, _pitch] call FUNC(playOneShot)", text)
 
     def test_the_tick_derives_the_pitch(self):
         text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
-        self.assertIn("call FUNC(callPitch)", text)
+        self.assertIn("call EFUNC(ambience,callPitch)", text)
 
     def test_the_fear_call_derives_the_pitch(self):
         text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
-        self.assertIn("call FUNC(callPitch)", text)
+        self.assertIn("call EFUNC(ambience,callPitch)", text)
         self.assertIn("vectorDotProduct", text)
 
     def test_the_pitch_constants_and_prep(self):
@@ -1519,7 +1520,7 @@ class TestPitchSourceContracts(unittest.TestCase):
             "WILDLIFE_PITCH_RATE_COUPLING",
         ):
             self.assertIn(name, constants, name)
-        preps = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        preps = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(callPitch)", preps)
 
 
@@ -1594,7 +1595,7 @@ class TestShotAudioSourceContracts(unittest.TestCase):
     """The ballistics reuse and the constants (task 26)."""
 
     def test_the_shot_kernel_is_prepped(self):
-        preps = (WILDLIFE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        preps = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(shotAudio)", preps)
 
     def test_the_shot_constants_are_declared(self):
@@ -1611,10 +1612,10 @@ class TestShotAudioSourceContracts(unittest.TestCase):
         text = (FUNCS / "fnc_initWildlife.sqf").read_text(encoding="utf-8")
         self.assertIn("EFUNC(ballistics,getLoadData)", text)
         self.assertIn("EFUNC(ballistics,parseCaliber)", text)
-        self.assertIn("FUNC(shotAudio)", text)
+        self.assertIn("EFUNC(ambience,shotAudio)", text)
 
     def test_the_kernel_names_the_ballistics_reuse(self):
-        text = (FUNCS / "fnc_shotAudio.sqf").read_text(encoding="utf-8")
+        text = (AMBIENCE / "fnc_shotAudio.sqf").read_text(encoding="utf-8")
         self.assertIn("fnc_calculateBallisticDrag.sqf", text)
         self.assertIn("fnc_parseCaliber.sqf", text)
 

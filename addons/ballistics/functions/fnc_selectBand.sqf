@@ -3,7 +3,7 @@
 Property band selector (the ballistics identity fallback).
 
 This is the shared rule behind the weapon, cartridge and projectile band
-tables. It mirrors the band route of aee_mobility_fnc_classifyVehicle: a
+tables. It mirrors the band route of aee_vehicles_fnc_classifyVehicle: a
 generated table holds the properties that identify each catalogue record,
 and a live or held property selects at most one row.
 

@@ -1,0 +1,35 @@
+{
+  "note": "Structural role map for the aircraft damage model. It maps a game hit point name to one AEE system role. The structure is learned from the HeliSim component model (the bmkhsRole property in hitPoints.hpp), not copied. This file is a structural artefact. It carries no grade and no hit point armour value. It is not sourced data. A role is one of the tokens in the roles list. The consumer is the scripted damage layer (addons/mobility/functions/fnc_updateDamageSystem.sqf).",
+  "roles": [
+    "electrical",
+    "engine",
+    "fuel",
+    "gearbox",
+    "hydraulic",
+    "pilot",
+    "rotor"
+  ],
+  "hit_points": {
+    "HitEngine": "engine",
+    "HitEngine1": "engine",
+    "HitEngine2": "engine",
+    "HitMotor": "engine",
+    "HitMainRotor": "rotor",
+    "HitTailRotor": "rotor",
+    "HitHRotor": "rotor",
+    "HitVRotor": "rotor",
+    "HitMainRotorHub": "rotor",
+    "HitFuel": "fuel",
+    "HitFuelTank": "fuel",
+    "HitHydraulic": "hydraulic",
+    "HitAvionics": "electrical",
+    "HitBattery": "electrical",
+    "HitGenerator": "electrical",
+    "HitGearbox": "gearbox",
+    "HitMainRotorGearBox": "gearbox",
+    "HitTailGearBox": "gearbox",
+    "HitIntermediateGearBox": "gearbox",
+    "HitPilot": "pilot",
+    "HitCrew": "pilot"
+  }
+}

@@ -3,7 +3,7 @@
 // The pure kernels are server-callable, so this probe drives each one directly
 // on the dedicated server: it computes the SQF reference answer and calls the
 // native extension command with the same arguments, then compares the two
-// within the per-kernel bound justified in ADR-034.  It renders nothing.
+// within the per-kernel bound justified in ADR-036.  It renders nothing.
 //
 // When the extension is loaded the native command answers and the probe marks
 // the native path.  When it is absent the native call returns an empty string:

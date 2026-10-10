@@ -14,7 +14,7 @@ private _notes = [];
 
 // 1. the Hill location symbol is the AEE terrain texture
 private _hill = getText (configFile >> "CfgLocationTypes" >> "Hill" >> "texture");
-if (_hill isEqualTo "\z\aee\addons\optics\data\terrain\hill.paa") then {
+if (_hill isEqualTo "\z\aee\addons\cartography\data\terrain\hill.paa") then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
@@ -23,7 +23,7 @@ if (_hill isEqualTo "\z\aee\addons\optics\data\terrain\hill.paa") then {
 
 // 2. the VegetationFir location symbol is the AEE coniferous texture
 private _fir = getText (configFile >> "CfgLocationTypes" >> "VegetationFir" >> "texture");
-if (_fir isEqualTo "\z\aee\addons\optics\data\terrain\coniferous.paa") then {
+if (_fir isEqualTo "\z\aee\addons\cartography\data\terrain\coniferous.paa") then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
@@ -32,7 +32,7 @@ if (_fir isEqualTo "\z\aee\addons\optics\data\terrain\coniferous.paa") then {
 
 // 3. the transmitter object icon is the AEE topographic texture
 private _tx = getText (configFile >> "RscMapControl" >> "transmitter" >> "icon");
-if (_tx isEqualTo "\z\aee\addons\optics\data\terrain\radio_tower.paa") then {
+if (_tx isEqualTo "\z\aee\addons\cartography\data\terrain\radio_tower.paa") then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
@@ -67,7 +67,7 @@ if (_font isEqualTo "RobotoCondensed") then {
 };
 
 // 7. the terrain registry loaded and names the three sections
-private _tables = missionNamespace getVariable ["aee_optics_terrainTables", []];
+private _tables = missionNamespace getVariable ["aee_cartography_terrainTables", []];
 if ((count _tables) == 3 && {(count (_tables select 0)) > 0}
     && {(count (_tables select 1)) == 25} && {(count (_tables select 2)) == 26}) then {
     _pass = _pass + 1;
@@ -78,7 +78,7 @@ if ((count _tables) == 3 && {(count (_tables select 0)) > 0}
 
 // 8. Eden and Zeus carry the unknown-affiliation symbol, not the neutral one
 private _curUnknown = getText (configFile >> "CfgCurator" >> "DrawGroup" >> "textureUnknown");
-if (_curUnknown isEqualTo "\z\aee\addons\optics\data\markers\AEE_u_unknown.paa") then {
+if (_curUnknown isEqualTo "\z\aee\addons\symbology\data\markers\AEE_u_unknown.paa") then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;

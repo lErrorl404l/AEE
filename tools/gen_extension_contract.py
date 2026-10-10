@@ -42,28 +42,31 @@ END = "<!-- END GENERATED: extension contract -->"
 # declared with a literal `class <name>` in the named source.  Macro-built
 # classes (for example the EDEN modules) are not anchored by name.
 ANCHOR_CLASSES = {
-    "AEE_Unknown_Other": "addons/optics/config.cpp",
-    "ColorAEE": "addons/optics/config.cpp",
-    "AEE_MarkerBase": "addons/optics/config.cpp",
-    "AEE_SandCloud": "addons/core/config.cpp",
-    "AEE_SnowCloud": "addons/core/config.cpp",
-    "AEE_SupersonicTrace": "addons/fx/config.cpp",
-    "CfgClothing": "addons/physiology/config.cpp",
+    "AEE_Unknown_Other": "addons/symbology/config.cpp",
+    "ColorAEE": "addons/symbology/config.cpp",
+    "AEE_MarkerBase": "addons/symbology/config.cpp",
+    "AEE_SandCloud": "addons/particles/config.cpp",
+    "AEE_SnowCloud": "addons/particles/config.cpp",
+    "AEE_SupersonicTrace": "addons/particles/config.cpp",
+    "CfgClothing": "addons/clothing/config.cpp",
 }
 
 # The engine config classes AEE re-declares.  Each must be opened literally in
 # the named source.
 ANCHOR_ENGINE_CLASSES = {
-    "CfgWorlds": "addons/environmental/config.cpp",
-    "CfgCloudlets": "addons/core/config.cpp",
-    "CfgMarkers": "addons/optics/config.cpp",
-    "CfgMarkerColors": "addons/optics/config.cpp",
-    "CfgMarkerClasses": "addons/optics/config.cpp",
+    "CfgWorlds": "addons/lighting/config.cpp",
+    "CfgCloudlets": "addons/particles/config.cpp",
+    "CfgMarkers": "addons/symbology/config.cpp",
+    "CfgMarkerColors": "addons/symbology/config.cpp",
+    "CfgMarkerClasses": "addons/symbology/config.cpp",
 }
 
 PREP_RE = re.compile(r"\bPREP\(([A-Za-z0-9_]+)\)")
 PREPS_RE = re.compile(r"\bPREPS\([A-Za-z0-9_]+,\s*([A-Za-z0-9_]+)\)")
 STATE_RE = re.compile(r"\baee_core_[A-Za-z0-9_]+")
+# The per-module migration tables (ADR-032) hold old setting names; they are
+# not part of the published state surface.
+MIGRATION_TABLES = frozenset({"settingsMigration.sqf"})
 LINE_COMMENT_RE = re.compile(r"//[^\n]*")
 
 
@@ -86,6 +89,10 @@ def public_functions() -> list[str]:
 def public_core_state() -> list[str]:
     names: set[str] = set()
     for sqf in ADDONS.glob("**/*.sqf"):
+        # The migration tables name the OLD setting on purpose; they are not a
+        # contract surface, so skip them.
+        if sqf.name in MIGRATION_TABLES:
+            continue
         text = LINE_COMMENT_RE.sub(
             "", sqf.read_text(encoding="utf-8", errors="replace")
         )

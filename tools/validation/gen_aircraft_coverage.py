@@ -2,23 +2,36 @@
 """Generate the aircraft coverage table and the aircraft gap reports.
 
 The generator owns the coverage logic. It reads the four air tokens from the
-shared class inventory ``data/vehicle/classes.json``, the aircraft catalogue
-loader output and the aircraft class bindings, then writes four deterministic
-artefacts:
+shared class inventory ``data/vehicle/classes.json``, the class-keyed roster
+``data/aircraft/roster.json``, the aircraft catalogue loader output and the
+aircraft class bindings, then writes four deterministic artefacts:
 
-  data/aircraft/coverage.json            one state per inventory token
-  data/aircraft/COVERAGE_AUDIT.md        per-token runtime coverage
+  data/aircraft/coverage.json            one state per inventory token and
+                                         one state per roster class
+  data/aircraft/COVERAGE_AUDIT.md        per-token and per-class coverage
   data/aircraft/SOURCE_GAPS.md           per-entry missing runtime fields
   data/aircraft/CLASS_MAPPING_GAPS.md    air tokens and game classes with no
                                          sourced binding
 
-The four air tokens (``Air``, ``Helicopter``, ``Plane``, ``UAV``) are in
-scope. The states are ``recorded``, ``lead``, ``no_source`` and
+The merged coverage schema carries two keyed tables. ``tokens`` is keyed by
+the engine class token (``Air``, ``Helicopter``, ``Plane``, ``UAV``) and
+``classes`` is keyed by the concrete game class in the roster. The two tables
+coexist so the token view and the class view both stay reachable.
+
+The token states are ``recorded``, ``lead``, ``no_source`` and
 ``excluded_non_ground``. A token never leaves the inventory in silence. A
 ``recorded`` token has an emitted runtime row and a class binding for the
 token. A lead is a researched candidate with no recorded row, so it never
 reads as ``recorded``. An air token with no emitted row is ``no_source``. A
 non-air token is ``excluded_non_ground``.
+
+The class states are ``recorded``, ``lead`` and ``no_source``. Every roster
+class appears once, keyed by its game class. A class is ``recorded`` only
+when an emitted runtime row AND a class binding both hold for it, so a class
+never reads as ``recorded`` on one alone. A roster class with a
+``no_source_reason`` is ``no_source``. Any other class is ``lead``. No class
+leaves the report in silence. The count of recorded classes plus
+``no_source`` classes equals the roster size.
 
 The gap reports name what is missing. They invent no value and add no
 binding. A missing field is a gap with a next source class to try, taken
@@ -58,6 +71,7 @@ COVERAGE_OUT = "coverage.json"
 COVERAGE_REPORT = "COVERAGE_AUDIT.md"
 SOURCE_GAPS_REPORT = "SOURCE_GAPS.md"
 CLASS_MAPPING_REPORT = "CLASS_MAPPING_GAPS.md"
+ROSTER_OUT = "roster.json"
 ARTEFACTS = (
     COVERAGE_OUT,
     COVERAGE_REPORT,
@@ -65,10 +79,18 @@ ARTEFACTS = (
     CLASS_MAPPING_REPORT,
 )
 
-COVERAGE_SCHEMA = "aee.aircraft.coverage/1"
+COVERAGE_SCHEMA = "aee.aircraft.coverage/2"
 COVERAGE_STATES = ("recorded", "lead", "no_source", "excluded_non_ground")
 NON_AIR_STATE = "excluded_non_ground"
 AIR_ABSENT_STATE = "no_source"
+
+# The class-keyed table. It is keyed by the concrete game class in the
+# roster. The states are ``recorded``, ``lead`` and ``no_source``. A class is
+# ``recorded`` only when an emitted runtime row AND a class binding both hold.
+CLASS_STATES = ("recorded", "lead", "no_source")
+CLASS_RECORDED = "recorded"
+CLASS_LEAD = "lead"
+CLASS_NO_SOURCE = "no_source"
 
 # The four air tokens the class inventory holds. They are the in-scope tokens
 # for the aircraft corpus. Any other token is out of scope.
@@ -164,9 +186,18 @@ def load_coverage(data_dir: Path = DEFAULT_DATA) -> JsonObject:
     return _as_mapping(_read_json(data_dir / COVERAGE_OUT))
 
 
-def load_catalogue(data_dir: Path = DEFAULT_DATA) -> catalogue.CatalogueLoad:
-    """Read the shared catalogue loader output through the aircraft profile."""
-    return catalogue.load(data_dir, profile=catalogue.AIRCRAFT_PROFILE)
+def load_roster(data_dir: Path = DEFAULT_DATA) -> list[JsonObject]:
+    """Read the class-keyed roster. Each row is one concrete air class."""
+    return [
+        _as_mapping(item) for item in _as_sequence(_read_json(data_dir / ROSTER_OUT))
+    ]
+
+
+def load_catalogue(
+    data_dir: Path = DEFAULT_DATA, family: str = "aircraft"
+) -> catalogue.CatalogueLoad:
+    """Read the shared catalogue loader output through the named family."""
+    return catalogue.load(data_dir, profile=catalogue.profile_for(family))
 
 
 # --------------------------------------------------------------------------
@@ -174,41 +205,70 @@ def load_catalogue(data_dir: Path = DEFAULT_DATA) -> catalogue.CatalogueLoad:
 # --------------------------------------------------------------------------
 
 
-def entry_emits(entry: catalogue.CatalogueEntry) -> bool:
+def entry_emits(
+    entry: catalogue.CatalogueEntry,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> bool:
     """True when an entry has the identity a runtime row needs.
 
-    The aircraft profile supports ``fixed_wing`` and ``rotary_wing``. A
-    vehicle family never emits an aircraft row.
+    The profile's type enum selects the family. The aircraft profile supports
+    ``fixed_wing`` and ``rotary_wing``. A ground profile supports the ground
+    types, so a ground entry never emits an aircraft row and the reverse holds.
     """
     return bool(
         entry.catalogue_id
         and entry.variant_id
-        and entry.vehicle_type in catalogue.AIRCRAFT_VEHICLE_TYPES
+        and entry.vehicle_type in profile.vehicle_types
     )
 
 
-def emitted_rows(load: catalogue.CatalogueLoad) -> dict[str, str]:
+def emitted_rows(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> dict[str, str]:
     """Map each emitted catalogue id to its variant id."""
     rows: dict[str, str] = {}
     for entry in load.entries:
-        if entry_emits(entry):
+        if entry_emits(entry, profile):
             rows[entry.catalogue_id] = entry.variant_id
     return rows
 
 
-def recorded_variants(load: catalogue.CatalogueLoad) -> dict[str, set[str]]:
+def recorded_variants(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> dict[str, set[str]]:
     """Map each air token to the variant ids of its recorded rows.
 
     A token is ``recorded`` when a runtime row is emitted and a class binding
     exists for the token. The class bindings carry the token, so a binding
     with an empty ``class_token`` still records through the entry.
     """
-    emitted = emitted_rows(load)
+    emitted = emitted_rows(load, profile)
     recorded: dict[str, set[str]] = {}
     for binding in load.bindings:
         variant = emitted.get(binding.catalogue_id)
         if variant is not None:
             recorded.setdefault(binding.class_token, set()).add(variant)
+    return recorded
+
+
+def recorded_classes(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> dict[str, str]:
+    """Map each bound game class to its emitted catalogue id.
+
+    A class is ``recorded`` only when a runtime row is emitted for its bound
+    entry AND a class binding names the class. This map holds only the
+    classes where both hold, so a class with a binding and no emitted row is
+    absent and stays a lead.
+    """
+    emitted = emitted_rows(load, profile)
+    recorded: dict[str, str] = {}
+    for binding in load.bindings:
+        if binding.game_class and binding.catalogue_id in emitted:
+            recorded[binding.game_class] = binding.catalogue_id
     return recorded
 
 
@@ -235,17 +295,85 @@ def _coverage_row(
     }
 
 
+def _class_coverage_row(
+    game_class: str,
+    token: object,
+    state: str,
+    catalogue_id: str | None,
+    reason: str,
+) -> JsonObject:
+    return {
+        "class": game_class,
+        "class_token": token,
+        "state": state,
+        "catalogue_id": catalogue_id,
+        "reason": reason,
+    }
+
+
+def build_class_coverage(
+    roster: list[JsonObject],
+    recorded: dict[str, str],
+) -> list[JsonObject]:
+    """Derive one coverage row per roster class, keyed by game class.
+
+    ``recorded`` maps each bound game class to its emitted catalogue id. A
+    class is ``recorded`` only when that map holds it, so a class with an
+    emitted row but no binding stays a lead. A class with a roster
+    ``no_source_reason`` is ``no_source``. Any other class is ``lead``. Every
+    roster class gets a row, so no class leaves the report in silence.
+    """
+    rows: list[JsonObject] = []
+    for entry in roster:
+        game_class = _as_str(entry.get("game_class"))
+        token = entry.get("class_token")
+        catalogue_id = recorded.get(game_class)
+        if catalogue_id is not None:
+            rows.append(
+                _class_coverage_row(
+                    game_class,
+                    token,
+                    CLASS_RECORDED,
+                    catalogue_id,
+                    "runtime row emitted and class binding held",
+                )
+            )
+            continue
+        reason = entry.get("no_source_reason")
+        if isinstance(reason, str) and reason:
+            rows.append(
+                _class_coverage_row(game_class, token, CLASS_NO_SOURCE, None, reason)
+            )
+            continue
+        rows.append(
+            _class_coverage_row(
+                game_class,
+                token,
+                CLASS_LEAD,
+                None,
+                "no emitted runtime row and no class binding held",
+            )
+        )
+    return rows
+
+
 def build_coverage(
     classes_payload: JsonObject,
     recorded: dict[str, set[str]],
     leads: dict[str, str] | None = None,
+    roster: list[JsonObject] | None = None,
+    class_recorded: dict[str, str] | None = None,
 ) -> JsonObject:
-    """Derive one coverage row per inventory token, in inventory order.
+    """Derive the merged coverage payload.
 
-    ``recorded`` maps each class-binding token to the variant ids of its
-    recorded rows: an emitted runtime row and a class binding. ``leads`` names
-    the researched tokens with no recorded row. The four air tokens are in
-    scope. Any other token is ``excluded_non_ground``.
+    The ``tokens`` table holds one row per inventory token, in inventory
+    order. The ``classes`` table holds one row per roster class, keyed by
+    game class. ``recorded`` maps each class-binding token to the variant ids
+    of its recorded rows: an emitted runtime row and a class binding.
+    ``leads`` names the researched tokens with no recorded row.
+    ``class_recorded`` maps each bound game class to its emitted catalogue
+    id. The four air tokens are in scope. Any other token is
+    ``excluded_non_ground``.
     """
     rows: list[object] = []
     for entry in entries(classes_payload):
@@ -282,15 +410,24 @@ def build_coverage(
                     "no emitted runtime row and no class binding held",
                 )
             )
-    return {"schema": COVERAGE_SCHEMA, "tokens": rows}
+    classes = build_class_coverage(roster or [], class_recorded or {})
+    return {"schema": COVERAGE_SCHEMA, "tokens": rows, "classes": classes}
 
 
 def coverage_errors(
     classes_payload: JsonObject,
     coverage_payload: object,
     recorded: dict[str, set[str]],
+    roster: list[JsonObject] | None = None,
+    class_recorded: dict[str, str] | None = None,
 ) -> list[str]:
-    """Return every coverage contract error. An empty list is a clean guard."""
+    """Return every coverage contract error. An empty list is a clean guard.
+
+    The ``roster`` and ``class_recorded`` arguments are optional. When
+    ``roster`` is given, the class table is checked too: every roster class
+    needs one row, a ``recorded`` class needs an emitted row and a binding,
+    and no class leaves the report in silence.
+    """
     coverage = _as_mapping_or_none(coverage_payload)
     if coverage is None:
         return ["coverage: must be an object"]
@@ -372,6 +509,86 @@ def coverage_errors(
                 )
             if not row.get("reason"):
                 errors.append(f"coverage token {token}: {state} token needs a reason")
+    if roster is not None:
+        errors.extend(class_coverage_errors(roster, coverage, class_recorded or {}))
+    return errors
+
+
+def class_coverage_errors(
+    roster: list[JsonObject],
+    coverage: JsonObject,
+    recorded: dict[str, str],
+) -> list[str]:
+    """Return every class-table contract error. An empty list is clean.
+
+    Every roster class needs one row, keyed by its game class. A class is
+    ``recorded`` only when an emitted runtime row AND a class binding both
+    hold, so a class with one alone is an error. A class with no row is an
+    error, never a silence.
+    """
+    errors: list[str] = []
+    raw_rows = _as_sequence_or_none(coverage.get("classes"))
+    if raw_rows is None:
+        return ["coverage: classes must be an array"]
+
+    known: dict[str, JsonObject] = {}
+    for entry in roster:
+        name = entry.get("game_class")
+        if isinstance(name, str) and name:
+            known[name] = entry
+
+    by_class: dict[str, JsonObject] = {}
+    for raw in _as_sequence(raw_rows):
+        row = _as_mapping_or_none(raw)
+        if row is None:
+            errors.append("coverage class row: must be an object")
+            continue
+        name = row.get("class")
+        if not isinstance(name, str) or not name:
+            errors.append("coverage class row: class is required")
+            continue
+        if name in by_class:
+            errors.append(f"coverage class {name}: duplicate entry")
+        by_class[name] = row
+
+    for name in known:
+        if name not in by_class:
+            errors.append(
+                f"coverage class {name}: no entry, every roster class needs a state"
+            )
+    for name in by_class:
+        if name not in known:
+            errors.append(f"coverage class {name}: not in the roster")
+
+    for name, entry in known.items():
+        row = by_class.get(name)
+        if row is None:
+            continue
+        state = row.get("state")
+        if state not in CLASS_STATES:
+            errors.append(
+                f"coverage class {name}: state {state!r} is not a known state"
+            )
+            continue
+        catalogue_id = recorded.get(name)
+        if state == CLASS_RECORDED:
+            if catalogue_id is None:
+                errors.append(
+                    f"coverage class {name}: recorded without an emitted row and binding"
+                )
+                continue
+            if row.get("catalogue_id") != catalogue_id:
+                errors.append(
+                    f"coverage class {name}: recorded entry is not the bound entry"
+                )
+            continue
+        if catalogue_id is not None:
+            errors.append(
+                f"coverage class {name}: state {state} hides a recorded class"
+            )
+        reason = row.get("reason")
+        if not isinstance(reason, str) or not reason:
+            errors.append(f"coverage class {name}: {state} class needs a reason")
     return errors
 
 
@@ -406,6 +623,16 @@ def _mapped_entries(token: str, load: catalogue.CatalogueLoad) -> list[str]:
     return sorted(owners)
 
 
+def _class_counts(coverage: JsonObject) -> Counter[str]:
+    counts: Counter[str] = Counter()
+    for row in _as_sequence(coverage.get("classes", [])):
+        entry = _as_mapping(row)
+        state = entry.get("state")
+        if isinstance(state, str):
+            counts[state] += 1
+    return counts
+
+
 def build_coverage_report(
     classes: JsonObject,
     coverage: JsonObject,
@@ -418,17 +645,67 @@ def build_coverage_report(
     excluded = [row for row in rows if row.get("is_air") is not True]
     recorded = counts.get("recorded", 0)
 
+    class_rows = [_as_mapping(row) for row in _as_sequence(coverage.get("classes", []))]
+    class_counts = _class_counts(coverage)
+    class_total = len(class_rows)
+    class_recorded = class_counts.get(CLASS_RECORDED, 0)
+    class_no_source = class_counts.get(CLASS_NO_SOURCE, 0)
+    class_lead = class_counts.get(CLASS_LEAD, 0)
+    target_met = class_recorded + class_no_source == class_total
+
     lines = [
         "# Aircraft coverage audit",
         "",
         "Generated by `tools/validation/gen_aircraft_coverage.py`. Do not edit",
-        "by hand. The class inventory is `data/vehicle/classes.json`.",
+        "by hand. The class inventory is `data/vehicle/classes.json`. The class",
+        "roster is `data/aircraft/roster.json`.",
+        "",
+        "The merged coverage payload holds two keyed tables. The `tokens` table",
+        "is keyed by the engine class token. The `classes` table is keyed by",
+        "the concrete game class in the roster.",
         "",
         "A token is `recorded` only when a runtime row is emitted for an entry",
         "and a class binding exists for the token. A researched candidate",
         "with no recorded row is `lead`. An air token with no lead is",
         "`no_source`. A non-air token is `excluded_non_ground`. A token",
         "never leaves the inventory in silence.",
+        "",
+        "A class is `recorded` only when an emitted runtime row AND a class",
+        "binding both hold. A class with a roster `no_source_reason` is",
+        "`no_source`. Any other class is `lead`. Every roster class appears",
+        "once, keyed by game class. No class leaves the report in silence.",
+        "",
+        "## Expansion coverage target",
+        "",
+        f"- Roster classes: {class_total}",
+        f"- matched-and-sourced (`recorded`): {class_recorded}",
+        f"- `lead`: {class_lead}",
+        f"- `no_source`: {class_no_source}",
+        f"- Target (recorded + no_source equals the roster size): "
+        f"{'met' if target_met else 'NOT met'} "
+        f"({class_recorded} + {class_no_source} = "
+        f"{class_recorded + class_no_source} of {class_total})",
+        "",
+        "## Class coverage",
+        "",
+        "| Game class | Token | State | Catalogue entry | Reason |",
+        "|---|---|---|---|---|",
+    ]
+    for row in class_rows:
+        game_class = str(row.get("class", ""))
+        token = str(row.get("class_token", ""))
+        entry_id = row.get("catalogue_id")
+        entry_text = (
+            f"`{entry_id}`" if isinstance(entry_id, str) and entry_id else "none"
+        )
+        lines.append(
+            f"| `{game_class}` | `{token}` | {row.get('state', '')} | "
+            f"{entry_text} | {row.get('reason', '')} |"
+        )
+
+    lines += [
+        "",
+        "## Token summary",
         "",
         f"- Tokens: {len(rows)}",
         f"- Air tokens: {len(air)}",
@@ -467,10 +744,13 @@ def build_coverage_report(
     return "\n".join(lines)
 
 
-def build_source_gaps_report(load: catalogue.CatalogueLoad) -> str:
+def build_source_gaps_report(
+    load: catalogue.CatalogueLoad,
+    profile: catalogue.Profile = catalogue.AIRCRAFT_PROFILE,
+) -> str:
     """Render data/aircraft/SOURCE_GAPS.md."""
     entries_by_id = sorted(load.entries, key=lambda entry: entry.catalogue_id)
-    emitted = sum(1 for entry in entries_by_id if entry_emits(entry))
+    emitted = sum(1 for entry in entries_by_id if entry_emits(entry, profile))
     absent_total = 0
     gap_entries = 0
     for entry in entries_by_id:
@@ -512,7 +792,7 @@ def build_source_gaps_report(load: catalogue.CatalogueLoad) -> str:
             "",
             f"- Capture: `data/aircraft/catalogue/{entry.source_file}`",
             f"- Required set: {entry.vehicle_type} ({len(resolved)} fields)",
-            f"- Runtime row: {'yes' if entry_emits(entry) else 'no'}",
+            f"- Runtime row: {'yes' if entry_emits(entry, profile) else 'no'}",
             f"- Runtime-ready: {'yes' if entry.runtime_ready else 'no'}",
             "",
         ]
@@ -624,35 +904,42 @@ def build_class_mapping_report(
 # --------------------------------------------------------------------------
 
 
-def build_artefacts(data_dir: Path) -> dict[str, str]:
+def build_artefacts(data_dir: Path, family: str = "aircraft") -> dict[str, str]:
     """Build every artefact text from the corpus at ``data_dir``."""
+    profile = catalogue.profile_for(family)
     classes = load_classes()
-    load = load_catalogue(data_dir)
-    recorded = recorded_variants(load)
-    coverage = build_coverage(classes, recorded, LEAD_CANDIDATES)
+    load = load_catalogue(data_dir, family)
+    roster = load_roster(data_dir)
+    recorded = recorded_variants(load, profile)
+    class_recorded = recorded_classes(load, profile)
+    coverage = build_coverage(
+        classes, recorded, LEAD_CANDIDATES, roster, class_recorded
+    )
     return {
         COVERAGE_OUT: render_coverage(coverage),
         COVERAGE_REPORT: build_coverage_report(classes, coverage, load),
-        SOURCE_GAPS_REPORT: build_source_gaps_report(load),
+        SOURCE_GAPS_REPORT: build_source_gaps_report(load, profile),
         CLASS_MAPPING_REPORT: build_class_mapping_report(classes, load),
     }
 
 
-def write_all(data_dir: Path = DEFAULT_DATA) -> dict[str, str]:
+def write_all(
+    data_dir: Path = DEFAULT_DATA, family: str = "aircraft"
+) -> dict[str, str]:
     """Write every artefact and return the written text by filename."""
-    artefacts = build_artefacts(data_dir)
+    artefacts = build_artefacts(data_dir, family)
     for name, text in artefacts.items():
         (data_dir / name).write_text(text, encoding="utf-8")
     return artefacts
 
 
-def check_all(data_dir: Path = DEFAULT_DATA) -> int:
+def check_all(data_dir: Path = DEFAULT_DATA, family: str = "aircraft") -> int:
     """Return 0 when every artefact matches a fresh build.
 
     Check mode writes nothing. A missing or stale artefact returns 1, so a
     stale generated report fails the gate.
     """
-    fresh = build_artefacts(data_dir)
+    fresh = build_artefacts(data_dir, family)
     stale: list[str] = []
     for name in ARTEFACTS:
         path = data_dir / name
@@ -668,35 +955,60 @@ def check_all(data_dir: Path = DEFAULT_DATA) -> int:
 
     classes = load_classes()
     coverage = _as_mapping(json.loads(fresh[COVERAGE_OUT]))
+    roster = load_roster(data_dir)
+    class_recorded = recorded_classes(
+        load_catalogue(data_dir, family), catalogue.profile_for(family)
+    )
+    errors = class_coverage_errors(roster, coverage, class_recorded)
+    if errors:
+        for error in errors:
+            print(f"aircraft coverage: {error}")
+        return 1
+
     rows = entries(coverage)
     counts = _coverage_counts(coverage)
+    class_counts = _class_counts(coverage)
     air = sum(1 for entry in entries(classes) if entry.get("class") in AIR_TOKENS)
     print(
         f"aircraft coverage: {len(rows)} tokens ({air} air), "
         f"recorded {counts.get('recorded', 0)}, lead {counts.get('lead', 0)}, "
         f"no_source {counts.get('no_source', 0)}, "
-        f"excluded {counts.get('excluded_non_ground', 0)} -> fresh"
+        f"excluded {counts.get('excluded_non_ground', 0)}; "
+        f"{len(_as_sequence(coverage.get('classes', [])))} classes, "
+        f"recorded {class_counts.get(CLASS_RECORDED, 0)}, "
+        f"lead {class_counts.get(CLASS_LEAD, 0)}, "
+        f"no_source {class_counts.get(CLASS_NO_SOURCE, 0)} -> fresh"
     )
     return 0
 
 
 def main(argv: list[str]) -> int:
     data_dir = DEFAULT_DATA
+    family = "aircraft"
     if "--data-dir" in argv:
         index = argv.index("--data-dir")
         if index + 1 < len(argv):
             data_dir = Path(argv[index + 1])
+    if "--family" in argv:
+        index = argv.index("--family")
+        if index + 1 < len(argv):
+            family = argv[index + 1]
     if "--check" in argv:
-        return check_all(data_dir)
-    artefacts = write_all(data_dir)
+        return check_all(data_dir, family)
+    artefacts = write_all(data_dir, family)
     coverage = _as_mapping(json.loads(artefacts[COVERAGE_OUT]))
     counts = _coverage_counts(coverage)
-    load = load_catalogue(data_dir)
+    class_counts = _class_counts(coverage)
+    load = load_catalogue(data_dir, family)
     print(
         f"aircraft coverage: {len(entries(coverage))} tokens, "
         f"recorded {counts.get('recorded', 0)}, lead {counts.get('lead', 0)}, "
         f"no_source {counts.get('no_source', 0)}, "
-        f"excluded {counts.get('excluded_non_ground', 0)}, "
+        f"excluded {counts.get('excluded_non_ground', 0)}; "
+        f"{len(_as_sequence(coverage.get('classes', [])))} classes, "
+        f"recorded {class_counts.get(CLASS_RECORDED, 0)}, "
+        f"lead {class_counts.get(CLASS_LEAD, 0)}, "
+        f"no_source {class_counts.get(CLASS_NO_SOURCE, 0)}, "
         f"{len(load.entries)} catalogue entries -> wrote {len(artefacts)} artefacts"
     )
     return 0
