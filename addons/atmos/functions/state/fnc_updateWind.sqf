@@ -55,6 +55,22 @@ if (_terrainSetting > 0) then {
     };
 };
 
+// ─── Frontal wind veer (issue #15) ────────────────────────────────────────
+// The weather front rotates the wind clockwise by up to veerDeg/2 either side
+// of the front line.  fnc_updateWeatherFront publishes the signed veer and it
+// is applied to AEE's wind vector here, before the consumers read it.  The
+// engine `wind` command keeps the base vector: pushing the veered value would
+// feed back through this function's per-tick engine read and compound the
+// rotation, so the veer reaches AEE's wind consumers only (the evidence
+// records the ceiling; ACE3 ballistics reads the engine wind).
+private _frontVeer = missionNamespace getVariable [QGVAR(frontWindVeerDeg), 0];
+if !(_frontVeer isEqualType 0) then { _frontVeer = 0; };
+if (abs _frontVeer > 0.001) then {
+    _wind = [_wind, _frontVeer] call FUNC(calculateFrontWind);
+    _windDir = ((_wind select 0) atan2 (_wind select 1)) + 180;
+    if (_windDir >= 360) then { _windDir = _windDir - 360; };
+};
+
 // Store for our own functions
 missionNamespace setVariable [QEGVAR(core,currentWind), _wind];
 missionNamespace setVariable [QEGVAR(core,currentGusts), _gusts];
