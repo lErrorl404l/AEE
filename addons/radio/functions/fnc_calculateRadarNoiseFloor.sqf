@@ -19,11 +19,10 @@ SOURCE.  Skolnik, "Radar Handbook", 3rd ed., McGraw-Hill, 2008, ISBN
 978-0-07-148547-0, ch. 1 (the radar range equation and the k*T0*B noise
 floor); the 290 K reference and the exact Boltzmann constant are standard.
 
-COORDINATION.  The repository's general radar detection model (issue #104,
-addons/radio/functions/radar/fnc_radarNoiseFloor.sqf, branch
-feat/104-radar-detection) owns this equation.  This kernel is the missile
-seeker's own copy, written while #104 was unmerged; the two must be
-reconciled at integration so the repository keeps one model of this physics.
+CANONICAL OWNER.  The radar noise floor is defined once, in
+addons/radio/functions/radar/fnc_radarNoiseFloor.sqf (issue #104).  This
+seeker-facing entry point delegates to it, so the repository keeps one model
+of the physics and the missile-seeker call site stays unchanged.
 
 SNR_min NOTE.  The issue #131 states "SNRmin ~ 13 dB for Pd=0.5, Pfa=1e-6".
 That pairing is wrong.  Albersheim's closed-form approximation gives, single
@@ -53,7 +52,4 @@ if (_bandwidthHz <= 0) exitWith { 0 };
 if (_noiseFigure <= 0) exitWith { 0 };
 if (_snrMin <= 0) exitWith { 0 };
 
-private _k = 1.380649e-23;
-private _t0 = 290;
-
-_k * _t0 * _bandwidthHz * _noiseFigure * _snrMin
+[_bandwidthHz, _noiseFigure, _snrMin] call FUNC(radarNoiseFloor)

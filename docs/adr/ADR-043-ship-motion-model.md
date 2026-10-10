@@ -1,4 +1,4 @@
-# ADR-038: Ship motion from the sea state
+# ADR-043: Ship motion from the sea state
 
 Status: Accepted
 Date: 2026-10-10

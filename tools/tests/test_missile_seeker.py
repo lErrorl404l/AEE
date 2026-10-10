@@ -36,6 +36,33 @@ IR_RANGE = REPO / "addons/thermal/functions/sensor/fnc_calculateIRSeekerRange.sq
 FLARE = REPO / "addons/thermal/functions/sensor/fnc_calculateFlareIntensity.sqf"
 NOISE = REPO / "addons/radio/functions/fnc_calculateRadarNoiseFloor.sqf"
 RADAR = REPO / "addons/radio/functions/fnc_calculateRadarRange.sqf"
+# The seeker-facing radar kernels delegate to the canonical #104 kernels
+# (addons/radio/functions/radar/).  The harness resolves FUNC(x) through the
+# bound globals, so wire the delegation targets here.
+CANON_RANGE = REPO / "addons/radio/functions/radar/fnc_radarRangeEquation.sqf"
+CANON_NOISE = REPO / "addons/radio/functions/radar/fnc_radarNoiseFloor.sqf"
+
+
+def run_radar(args):
+    """Run the seeker radar-range wrapper, wiring FUNC to the canonical kernel."""
+    return run_sqf(
+        RADAR,
+        args,
+        globals_={
+            "__FUNC__radarRangeEquation": lambda *a: run_sqf(CANON_RANGE, list(a))
+        },
+    )
+
+
+def run_noise(args):
+    """Run the seeker noise-floor wrapper, wiring FUNC to the canonical kernel."""
+    return run_sqf(
+        NOISE,
+        args,
+        globals_={"__FUNC__radarNoiseFloor": lambda *a: run_sqf(CANON_NOISE, list(a))},
+    )
+
+
 CHAFF = REPO / "addons/radio/functions/fnc_calculateChaffCrossSection.sqf"
 PN = REPO / "addons/ballistics/functions/fnc_calculateProportionalNavigation.sqf"
 TRACK = REPO / "addons/ballistics/functions/fnc_calculateSeekerTrack.sqf"
@@ -48,38 +75,39 @@ STATE = REPO / "addons/ballistics/functions/fnc_calculateSeekerState.sqf"
 class TestRadarRange(unittest.TestCase):
     def test_issue_vector_46km(self):
         # 1 MW, G=1000, lambda=0.03 m, sigma=1 m2, Pmin=1e-13 W -> 46.1 km.
-        r = run_sqf(RADAR, [1e6, 1000, 0.03, 1, 1e-13])
+        r = run_radar([1e6, 1000, 0.03, 1, 1e-13])
         self.assertAlmostEqual(r, 46150, delta=150)
 
     def test_sigma_quarter_law(self):
         # 100x RCS multiplies the range by 100^(1/4) = 3.162.
-        r1 = run_sqf(RADAR, [1e6, 1000, 0.03, 1, 1e-13])
-        r100 = run_sqf(RADAR, [1e6, 1000, 0.03, 100, 1e-13])
+        r1 = run_radar([1e6, 1000, 0.03, 1, 1e-13])
+        r100 = run_radar([1e6, 1000, 0.03, 100, 1e-13])
         self.assertAlmostEqual(r100 / r1, 100**0.25, places=6)
 
     def test_power_quarter_law(self):
         # Doubling the power multiplies the range by 2^(1/4).
-        r1 = run_sqf(RADAR, [1e6, 1000, 0.03, 1, 1e-13])
-        r2 = run_sqf(RADAR, [2e6, 1000, 0.03, 1, 1e-13])
+        r1 = run_radar([1e6, 1000, 0.03, 1, 1e-13])
+        r2 = run_radar([2e6, 1000, 0.03, 1, 1e-13])
         self.assertAlmostEqual(r2 / r1, 2**0.25, places=6)
 
     def test_zero_argument_refused(self):
-        self.assertEqual(run_sqf(RADAR, [0, 1000, 0.03, 1, 1e-13]), 0)
+        self.assertEqual(run_radar([0, 1000, 0.03, 1, 1e-13]), 0)
 
 
 class TestRadarNoiseFloor(unittest.TestCase):
     def test_reference_value(self):
-        # k*T0*B*Fn*SNR = 1.380649e-23 * 290 * 1e6 * 3 * 20.
-        p = run_sqf(NOISE, [1e6, 3, 20])
-        self.assertAlmostEqual(p, 1.380649e-23 * 290 * 1e6 * 3 * 20, places=28)
+        # k*T0*B*Fn*SNR = 1.38e-23 * 290 * 1e6 * 3 * 20 (the canonical #104
+        # noise-floor kernel's Boltzmann constant).
+        p = run_noise([1e6, 3, 20])
+        self.assertAlmostEqual(p, 1.38e-23 * 290 * 1e6 * 3 * 20, places=28)
 
     def test_scales_with_bandwidth(self):
-        p1 = run_sqf(NOISE, [1e6, 3, 20])
-        p2 = run_sqf(NOISE, [2e6, 3, 20])
+        p1 = run_noise([1e6, 3, 20])
+        p2 = run_noise([2e6, 3, 20])
         self.assertAlmostEqual(p2 / p1, 2.0, places=6)
 
     def test_zero_bandwidth_refused(self):
-        self.assertEqual(run_sqf(NOISE, [0, 3, 20]), 0)
+        self.assertEqual(run_noise([0, 3, 20]), 0)
 
 
 class TestChaffCrossSection(unittest.TestCase):

@@ -1,4 +1,4 @@
-# ADR-038: Weather Fronts as a Bergen State Machine
+# ADR-041: Weather Fronts as a Bergen State Machine
 
 Status: Accepted
 Date: 2026-10-10

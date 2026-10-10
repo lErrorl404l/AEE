@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Maritime">
-        <Key ID="STR_AEE_Maritime_internalTideAmplitude_Description">
-            <Original>Peak vertical displacement of the thermocline by the M2 internal tide, in metres</Original>
-            <English>Peak vertical displacement of the thermocline by the M2 internal tide, in metres</English>
-        </Key>
-        <Key ID="STR_AEE_Maritime_internalTideAmplitude_Name">
-            <Original>Internal Tide Amplitude</Original>
-            <English>Internal Tide Amplitude</English>
-        </Key>
-        <Key ID="STR_AEE_Maritime_internalWaveEnabled_Description">
-            <Original>Enable the two-layer internal-wave and thermocline model</Original>
-            <English>Enable the two-layer internal-wave and thermocline model</English>
-        </Key>
-        <Key ID="STR_AEE_Maritime_internalWaveEnabled_Name">
-            <Original>Internal Waves</Original>
-            <English>Internal Waves</English>
         <Key ID="STR_AEE_Maritime_acousticReferenceFreqHz_Description">
             <Original>Reference frequency in hertz for the published absorption and ambient-noise spectrum level</Original>
             <English>Reference frequency in hertz for the published absorption and ambient-noise spectrum level</English>
@@ -31,6 +16,22 @@
         <Key ID="STR_AEE_Maritime_deepWaterTemperature_Name">
             <Original>Deep Water Temperature</Original>
             <English>Deep Water Temperature</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_internalTideAmplitude_Description">
+            <Original>Peak vertical displacement of the thermocline by the M2 internal tide, in metres</Original>
+            <English>Peak vertical displacement of the thermocline by the M2 internal tide, in metres</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_internalTideAmplitude_Name">
+            <Original>Internal Tide Amplitude</Original>
+            <English>Internal Tide Amplitude</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_internalWaveEnabled_Description">
+            <Original>Enable the two-layer internal-wave and thermocline model</Original>
+            <English>Enable the two-layer internal-wave and thermocline model</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_internalWaveEnabled_Name">
+            <Original>Internal Waves</Original>
+            <English>Internal Waves</English>
         </Key>
         <Key ID="STR_AEE_Maritime_logDebug_Description">
             <Original>Log maritime diagnostics to the RPT. Turn this on before reporting a fault.</Original>
@@ -104,23 +105,6 @@
             <Original>Sea State Response</Original>
             <English>Sea State Response</English>
         </Key>
-        <Key ID="STR_AEE_Maritime_thermoclineDepth_Description">
-            <Original>Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below</Original>
-            <English>Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below</English>
-            <Original>Base of the mixed layer (thermocline depth) in metres</Original>
-            <English>Base of the mixed layer (thermocline depth) in metres</English>
-        </Key>
-        <Key ID="STR_AEE_Maritime_thermoclineDepth_Name">
-            <Original>Thermocline Depth</Original>
-            <English>Thermocline Depth</English>
-        </Key>
-        <Key ID="STR_AEE_Maritime_thermoclineWidth_Description">
-            <Original>Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient</Original>
-            <English>Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient</English>
-        </Key>
-        <Key ID="STR_AEE_Maritime_thermoclineWidth_Name">
-            <Original>Thermocline Width</Original>
-            <English>Thermocline Width</English>
         <Key ID="STR_AEE_Maritime_shipDamping_Description">
             <Original>Damping ratio used by the ship-motion response model; 0.10 is the typical ship value</Original>
             <English>Damping ratio used by the ship-motion response model; 0.10 is the typical ship value</English>
@@ -137,6 +121,22 @@
             <Original>Ship Metacentric Height</Original>
             <English>Ship Metacentric Height</English>
         </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineDepth_Description">
+            <Original>Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below</Original>
+            <English>Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineDepth_Name">
+            <Original>Thermocline Depth</Original>
+            <English>Thermocline Depth</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineWidth_Description">
+            <Original>Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient</Original>
+            <English>Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_thermoclineWidth_Name">
+            <Original>Thermocline Width</Original>
+            <English>Thermocline Width</English>
+        </Key>
         <Key ID="STR_AEE_Maritime_tideAmplitude_Description">
             <Original>Half-range of the predicted tide height in metres</Original>
             <English>Half-range of the predicted tide height in metres</English>
@@ -144,6 +144,14 @@
         <Key ID="STR_AEE_Maritime_tideAmplitude_Name">
             <Original>Tide Amplitude</Original>
             <English>Tide Amplitude</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_underwaterAcousticsEnabled_Description">
+            <Original>Publish the underwater acoustics state: sound speed, SOFAR channel axis, shadow zone, absorption and ambient noise</Original>
+            <English>Publish the underwater acoustics state: sound speed, SOFAR channel axis, shadow zone, absorption and ambient noise</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_underwaterAcousticsEnabled_Name">
+            <Original>Underwater Acoustics</Original>
+            <English>Underwater Acoustics</English>
         </Key>
         <Key ID="STR_AEE_Maritime_underwaterLightEnabled_Description">
             <Original>Publish the underwater light state, the Snell window and the bioluminescence gate; turn off to save the per-second update</Original>
@@ -160,13 +168,6 @@
         <Key ID="STR_AEE_Maritime_underwaterWaterType_Name">
             <Original>Water Type</Original>
             <English>Water Type</English>
-        <Key ID="STR_AEE_Maritime_underwaterAcousticsEnabled_Description">
-            <Original>Publish the underwater acoustics state: sound speed, SOFAR channel axis, shadow zone, absorption and ambient noise</Original>
-            <English>Publish the underwater acoustics state: sound speed, SOFAR channel axis, shadow zone, absorption and ambient noise</English>
-        </Key>
-        <Key ID="STR_AEE_Maritime_underwaterAcousticsEnabled_Name">
-            <Original>Underwater Acoustics</Original>
-            <English>Underwater Acoustics</English>
         </Key>
     </Package>
 </Project>

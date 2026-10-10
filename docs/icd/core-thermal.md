@@ -12,7 +12,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_avgGroundTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:72` | UNKNOWN |
 | `aee_core_avgInfantryTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:71` | Average infantry temperature |
 | `aee_core_avgVehicleTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:70` | Average vehicle temperature |
-| `aee_core_builtDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:144` | UNKNOWN |
+| `aee_core_builtDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:151` | UNKNOWN |
 | `aee_core_clockJump` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_updateThermalAGC.sqf:419` | UNKNOWN |
 | `aee_core_clothingInsulation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:92` | UNKNOWN |
 | `aee_core_clothingInsulationFactor` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/surface/fnc_calculateClothingInsulation.sqf:14` | Clothing insulation 0.5..2.0 |
@@ -37,7 +37,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_enabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateGlobeTemperature.sqf:42` | Master switch |
 | `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateHypothermiaRisk.sqf:21` | Ground state |
 | `aee_core_groundSurfaceTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/ground/fnc_calculateGroundTemperature.sqf:142` | UNKNOWN |
-| `aee_core_microclimateRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:156` | UNKNOWN |
+| `aee_core_microclimateRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:163` | UNKNOWN |
 | `aee_core_moduleTempOffset` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:119` | EDEN temperature offset |
 | `aee_core_objectTemperatures` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateMRT.sqf:88` | UNKNOWN |
 | `aee_core_rainAccum` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateHypothermiaRisk.sqf:20` | Rain accumulation |
@@ -50,8 +50,8 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_surfaceWetness` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:693` | Surface wetness 0..1 |
 | `aee_core_tempLapseRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:60` | UNKNOWN |
 | `aee_core_thermalCrossoverActive` | BOOL | boolean | 0 or 1 | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:82` | Thermal crossover flag |
-| `aee_core_urbanHeatIsland` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:127` | UNKNOWN |
-| `aee_core_waterInfluenceRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:171` | UNKNOWN |
+| `aee_core_urbanHeatIsland` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:134` | UNKNOWN |
+| `aee_core_waterInfluenceRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:178` | UNKNOWN |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

@@ -45,11 +45,9 @@ private _profile = [];
 
 for "_i" from 0 to (_n - 1) do {
     private _z = (_maxDepth * _i) / (_n - 1);
-    private _T = if (_z <= _thermo) then {
-        _surfaceTemp + ((_deepTemp - _surfaceTemp) * (_z / _thermo))
-    } else {
-        _deepTemp
-    };
+    // One thermocline temperature model (fnc_calculateThermoclineTemperature),
+    // shared with the internal-wave driver (issue #17).
+    private _T = [_z, _surfaceTemp, _deepTemp, _thermo] call FUNC(calculateThermoclineTemperature);
     private _c =
           1448.96
         + 4.591 * _T

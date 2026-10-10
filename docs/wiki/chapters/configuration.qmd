@@ -6,6 +6,18 @@ title: "Configuration"
 
 All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings menu under the **AEE** categories. Values marked *global* must match across all clients.
 
+## AEE AI → Hearing
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ai_nativeHearing` | CHECKBOX | `false` | yes | ai | Reveal sound sources to AI through AEE's sound propagation |
+
+## AEE AI → Pathfinding
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ai_pathfinding` | CHECKBOX | `false` | yes | ai | Plan AI routes through AEE's computed hazard state (flood, fire, mud, lightning, visibility). Route planning runs at decision time, never per-frame. |
+
 ## AEE Altitude → G-LOC
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -54,6 +66,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_armour_armourEnabled` | CHECKBOX | `true` | yes | armour | Apply the STANAG 4569-aligned vehicle armour ladder (issue #126) |
 
+## AEE Armour → Events
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_armour_shotResponse` | CHECKBOX | `true` | yes | armour | Incapacitate at once on a penetrating vital hit and bias the fall with the round's momentum (issue #161) |
+
 ## AEE Armour → Penetration
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -84,6 +102,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_atmos_maxFogDensity` | SLIDER | `0.8` | yes | atmos | Ceiling for the fog density value applied to the engine |
 | `aee_atmos_radFogRampRate` | SLIDER | `0.1` | yes | atmos | Radiational-fog density added per tick on clear calm moist nights |
 
+## AEE Atmos → Fronts
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_weatherFrontsEnabled` | CHECKBOX | `true` | yes | atmos | Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes |
+
 ## AEE Atmos → Icing
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -91,11 +115,28 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_atmos_icingShedRate` | SLIDER | `0.9` | yes | atmos | Fraction of accreted ice removed per tick while shedding conditions hold |
 | `aee_atmos_maxIceMass` | SLIDER | `100` | yes | atmos | Ice mass in kilograms that equals full airframe icing severity |
 
+## AEE Atmos → Optics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_haloEnabled` | CHECKBOX | `true` | yes | atmos | Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state |
+
 ## AEE Atmos → Refraction
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_atmos_refractionEnabled` | CHECKBOX | `true` | yes | atmos | Enable atmospheric refraction, ducting, and mirage classification |
+
+## AEE Atmos → Volcanic
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_volcanicAshEmission` | SLIDER | `5000000` | yes | atmos | Ash source strength in kilograms per second |
+| `aee_atmos_volcanicEnabled` | CHECKBOX | `false` | yes | atmos | Enable the volcanic model: ash plume, SO2 plume, lahar risk and volcanic winter |
+| `aee_atmos_volcanicHeatFlux` | SLIDER | `100000000000` | yes | atmos | Eruption heat emission rate in watts, driving the Briggs plume rise |
+| `aee_atmos_volcanicSO2Emission` | SLIDER | `500000` | yes | atmos | Sulfur dioxide source strength in kilograms per second |
+| `aee_atmos_volcanicVEI` | SLIDER | `5` | yes | atmos | Volcanic Explosivity Index (0-8) driving the stratospheric aerosol load and the volcanic-winter cooling |
+| `aee_atmos_volcanicVentAltitude` | SLIDER | `2000` | yes | atmos | Vent altitude above sea level in metres |
 
 ## AEE Ballistics → Ammo Temperature
 
@@ -104,11 +145,18 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_ballistics_ammoHeatPerShotJ` | SLIDER | `0.0001` | yes | ballistics | Propellant heat added per joule of round energy (degC per shot) |
 | `aee_ballistics_ammoTempTimeConstant` | SLIDER | `600` | yes | ballistics | Time constant of the per-weapon ammo temperature relaxation toward ambient (seconds) |
 
+## AEE Ballistics → Missile Seeker
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ballistics_missileSeekerEnabled` | CHECKBOX | `false` | yes | ballistics | Enable the missile seeker guidance model. Off by default. |
+
 ## AEE Blast → Events
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_blast_blastInjuryEnabled` | CHECKBOX | `true` | yes | blast | Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw) |
+| `aee_blast_corpsePhysics` | CHECKBOX | `true` | yes | blast | Apply the whole-body corpse physics on death: the blast throw, the tumble and the carried mass (issue #160). The thermal fade is aee_thermal's own. |
 
 ## AEE Debug → Actions
 
@@ -395,6 +443,20 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_dive_diveEnabled` | CHECKBOX | `true` | yes | dive | Enable the Buhlmann ZH-L16C decompression model for diving |
 | `aee_dive_diveGradientFactor` | SLIDER | `1.0` | yes | dive | Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C) |
 
+## AEE Environmental → CBRN
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weather_CbrnPlumeEnabled` | CHECKBOX | `false` | yes | weather | Run the CBRN agent plume dispersion model (a mission starts a release with aee_weather_fnc_startCbrnRelease) |
+
+## AEE Environmental → Dispersion
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weather_denseGasAgent` | LIST | `["None","Chlorine","CS (tear gas)","Phosgene","Sarin (GB)","Carbon dioxide","Hydrogen cyanide"]` | no | weather | Agent dispersed by the dense-gas model (none disables it) |
+| `aee_weather_denseGasCloudHeight` | SLIDER | `1.0` | yes | weather | Dense cloud height for the slumping velocity (m) |
+| `aee_weather_denseGasPoolDiameter` | SLIDER | `2.0` | yes | weather | Pool diameter for the evaporation flux (m) |
+
 ## AEE Environmental → Display
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -426,6 +488,13 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_weather_MaxSnowDepth` | SLIDER | `3.0` | yes | weather | Maximum snow depth (m) |
 | `aee_weather_SnowAccretionRate` | SLIDER | `0.01` | yes | weather | Snow depth gain per tick per unit rain |
 
+## AEE Environmental → Seismic
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_persistence_seismicShakeEnabled` | CHECKBOX | `true` | yes | persistence | Enable camera shake from an earthquake (local, cosmetic) |
+| `aee_persistence_seismicTerrainDeformationEnabled` | CHECKBOX | `false` | yes | persistence | Apply liquefaction subsidence and landslide displacement with setTerrainHeight (server-side, needs engine 2.10) |
+
 ## AEE Environmental → Snow
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -438,6 +507,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_weather_SoundPropagationScale` | SLIDER | `1.0` | yes | weather | Global sound-range multiplier |
+
+## AEE Environmental → Transport
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weather_scalarFieldsEnabled` | CHECKBOX | `true` | yes | weather | Advect the smoke and dust fields on a shared 2D transport grid (issue #116). Off leaves the point-scalar models as the only source of truth. |
 
 ## AEE Environmental → Weather
 
@@ -492,6 +567,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_flight_airframeRadius` | SLIDER | `2000` | yes | flight | Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic. |
 | `aee_flight_flightAeroPenalty` | CHECKBOX | `true` | yes | flight | Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe. |
 
+## AEE Flight → Performance
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_flight_fixedWingPerformance` | CHECKBOX | `true` | yes | flight | Publish the ambient density altitude and density ratio for the fixed-wing performance model (density altitude, ground effect, landing). The per-aircraft performance row is computed on demand from the pure kernel. |
+
 ## AEE Flight → Turbulence
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -504,6 +585,11 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_cartography_mapBiomeLayer` | CHECKBOX | `true` | yes | cartography | Draw a coloured Koppen biome cell per sample over the visible map, from the aee per-position biome kernel. The cells are the mod's own computed biome at each cell centre. Default on; the layer draws only when the physics overlay master switch is on. |
+| `aee_cartography_mapClickQuery` | CHECKBOX | `true` | yes | cartography | Click the map to read the aee state at that point: the per-position biome, surface material, local wind and terrain height, plus the current global temperature, WBGT, flood, fire, snow, radio and hypoxia values. The readout uses the mod weather-report style. Default on; the query runs only when the physics overlay master switch is on. |
+| `aee_cartography_mapDeclinationRose` | CHECKBOX | `true` | yes | cartography | Draw a magnetic-declination rose on the map: the true-north ray (the map up axis) and the magnetic-north ray the compass deviation model computes. The rose reads the aee magnetic declination the compass uses. Default on; the rose draws only when the physics overlay master switch is on. |
+| `aee_cartography_mapOverlayEnabled` | CHECKBOX | `false` | yes | cartography | Master switch for the physics-state tactical map overlay. On: the per-position biome and wind layers, the declination rose and the click query draw on the open map. Off: the map is unchanged. Default off. |
+| `aee_cartography_mapWindLayer` | CHECKBOX | `true` | yes | cartography | Draw a local-wind arrow per sample over the visible map, from the aee per-position local wind field. The arrow points the way the wind blows toward. The field is sampled at most once a second, so the map stays smooth. Default on; the layer draws only when the physics overlay master switch is on. |
 | `aee_cartography_mgrsCursorReadout` | CHECKBOX | `true` | yes | cartography | Show the aee MGRS reference and the terrain elevation at the map cursor. The vanilla cursor tooltip is engine-side and cannot be replaced, so the aee readout is drawn adjacent to it. Default on. |
 | `aee_cartography_mgrsEnabled` | CHECKBOX | `true` | yes | cartography | Show the grid line as a full MGRS reference (zone, latitude band, 100 km square and digits) from the aee world-to-MGRS kernel instead of the engine numeric grid. Off restores the legacy numeric grid. Default on. |
 | `aee_cartography_mgrsMapGrid` | CHECKBOX | `true` | yes | cartography | Draw the aee MGRS grid over the engine map: the grid lines and their MGRS labels at an interval that follows the zoom. The engine grid stays numeric because the CfgWorlds Grid class formats numbers only, so the aee overlay draws the MGRS lines over it. Default on. |
@@ -544,21 +630,60 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_hydrology_aquiferReferenceDepth_m` | SLIDER | `3` | yes | hydrology | Depth to the water table when the aquifer store is empty, in metres. The water table rises from this depth as the store fills, through the specific yield. 3 m is a shallow valley water table. |
 | `aee_hydrology_baseflowRate_perDay` | SLIDER | `0.2` | yes | hydrology | Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention. |
 | `aee_hydrology_bedSlope` | SLIDER | `0.001` | yes | hydrology | Bed slope in metres per metre. Manning rating sets the stage from the discharge, and a steeper bed carries the same flow at a lower stage. |
 | `aee_hydrology_catchmentArea_m2` | SLIDER | `250000` | yes | hydrology | Area in square metres draining to the river point. A river stage responds to everything upstream, so this is the contributing area rather than the routing cell. 250000 is a small stream catchment. |
 | `aee_hydrology_manningN` | SLIDER | `0.035` | yes | hydrology | Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth. |
 | `aee_hydrology_riverResponseRate` | SLIDER | `0.1` | yes | hydrology | Nash-cascade storage coefficient per 5 s tick; 1/k = reservoir time constant |
 | `aee_hydrology_riverSectionWidth_m` | SLIDER | `4` | yes | hydrology | Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise. |
+| `aee_hydrology_springConduitArea_m2` | SLIDER | `1` | yes | hydrology | Cross-sectional area in square metres of the conduit that feeds a spring. The Darcy discharge is the saturated conductivity times this area times the hydraulic gradient. |
+| `aee_hydrology_springHydraulicGradient` | SLIDER | `0.01` | yes | hydrology | Hydraulic gradient in metres per metre that drives the spring discharge. It is the slope of the water table. 0.01 is a gentle gradient (Freeze and Cherry 1979). |
+| `aee_hydrology_springOrificeDepth_m` | SLIDER | `1` | yes | hydrology | Depth below ground in metres of the spring outlet. The spring flows only while the water table stands above this depth. |
 | `aee_hydrology_tidalReach_m` | SLIDER | `5000` | yes | hydrology | Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance. |
+
+## AEE Maritime → Acoustics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_maritime_acousticReferenceFreqHz` | SLIDER | `1000` | yes | maritime | Reference frequency in hertz for the published absorption and ambient-noise spectrum level |
+| `aee_maritime_deepWaterTemperature` | SLIDER | `4` | yes | maritime | Deep-water temperature in degrees C for the isothermal layer below the thermocline |
+| `aee_maritime_seaSalinity` | SLIDER | `35` | yes | maritime | Sea salinity in psu for the Mackenzie sound-speed equation |
+| `aee_maritime_underwaterAcousticsEnabled` | CHECKBOX | `true` | yes | maritime | Publish the underwater acoustics state: sound speed, SOFAR channel axis, shadow zone, absorption and ambient noise |
+
+## AEE Maritime → Current
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_maritime_oceanChannelDepth_m` | SLIDER | `30` | yes | maritime | Water depth in metres used by the tidal current u = eta sqrt(g/H); the engine exposes no bathymetry, so this is a scenario parameter |
+| `aee_maritime_oceanCurrentEnabled` | CHECKBOX | `true` | yes | maritime | Compute the surface ocean current from the wind and the tide |
+| `aee_maritime_oceanDeflectionDeg` | SLIDER | `30` | yes | maritime | Angle in degrees the wind-driven current is deflected to the right of the wind (left in the southern hemisphere) |
+| `aee_maritime_oceanTidalFloodBearing` | SLIDER | `0` | yes | maritime | Bearing in degrees of the tidal flood axis; the current runs along it and reverses on the ebb |
+| `aee_maritime_oceanWindCurrentFraction` | SLIDER | `0.03` | yes | maritime | Fraction of the 10 m wind speed carried as surface current; the empirical range is 1 to 3 percent |
 
 ## AEE Maritime → Sea
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_maritime_internalTideAmplitude` | SLIDER | `20` | yes | maritime | Peak vertical displacement of the thermocline by the M2 internal tide, in metres |
+| `aee_maritime_internalWaveEnabled` | CHECKBOX | `true` | yes | maritime | Enable the two-layer internal-wave and thermocline model |
 | `aee_maritime_seaCouplingWeight` | SLIDER | `0.5` | yes | maritime | Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly |
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
+| `aee_maritime_shipDamping` | SLIDER | `0.1` | yes | maritime | Damping ratio used by the ship-motion response model; 0.10 is the typical ship value |
+| `aee_maritime_shipMetacentricHeight` | SLIDER | `1.5` | yes | maritime | Metacentric height (GM) used by the ship-motion model; the engine publishes no hydrostatics, so this is the operator input |
+| `aee_maritime_thermoclineDepth` | SLIDER | `50` | yes | maritime | Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below |
+| `aee_maritime_thermoclineWidth` | SLIDER | `30` | yes | maritime | Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
+| `aee_maritime_underwaterLightEnabled` | CHECKBOX | `true` | yes | maritime | Publish the underwater light state, the Snell window and the bioluminescence gate; turn off to save the per-second update |
+| `aee_maritime_underwaterWaterType` | SLIDER | `3` | yes | maritime | Jerlov water type: 0 = I, 1 = IA, 2 = IB, 3 = II, 4 = III, 5 = 1, 6 = 3, 7 = 5, 8 = 7, 9 = 9 |
+
+## AEE Mobility → Frost Heave
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_frostHeaveEnabled` | CHECKBOX | `true` | yes | mobility | Lift the ground when it freezes, by the two-term frost heave model: the in-situ expansion of the pore water (about 9 per cent, TM 5-852-6) and the ice-lens segregation of water drawn to the freezing front (Konrad and Morgenstern 1981). The value is published as aee_core_frostHeave_m for other modules. |
+| `aee_mobility_frostHeaveMaxM` | SLIDER | `0.3` | yes | mobility | Maximum published heave in metres. Caps the value against an extreme freezing index. A terrain raise is clamped to this limit. |
+| `aee_mobility_frostHeaveMultiplier` | SLIDER | `1.0` | yes | mobility | Multiplier on the computed frost heave. 1.0 is the realistic value. Lower values reduce the heave; the setting scales both the in-situ and the segregation term. |
 
 ## AEE Mobility → Hydrology
 
@@ -629,6 +754,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_optics_greenFlashEnabled` | CHECKBOX | `true` | yes | optics | Model the green flash at the setting and rising sun from refraction dispersion |
 | `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | yes | optics | Global smoke-duration multiplier |
 | `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | yes | optics | Visibility loss from snow cover |
 
@@ -674,6 +800,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_particles_vehicleDustIntensity` | SLIDER | `1.0` | yes | particles | Alpha scale on vehicle dust kickup |
 | `aee_particles_weatherAlphaEnabled` | CHECKBOX | `true` | yes | particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
 
+## AEE Physiology → Combat Stress
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_combatStressEnabled` | CHECKBOX | `false` | yes | physiology | Model combat stress and morale from suppression, fatigue and group casualties. Off by default. |
+
 ## AEE Physiology → Scent
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -690,8 +822,20 @@ registered.
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_radio_batteryDeratingEnabled` | CHECKBOX | `true` | yes | radio | Scale effective transmit power by the physiology battery temperature derating |
+| `aee_radio_emLinkBearing` | SLIDER | `0` | yes | radio | Bearing in degrees of the reference radio link used for terrain diffraction sampling |
+| `aee_radio_emPropagationEnabled` | CHECKBOX | `true` | yes | radio | Apply the 3D electromagnetic propagation model: two-ray ground bounce, terrain diffraction and valley waveguide |
+| `aee_radio_groundReflectivity` | SLIDER | `0.5` | yes | radio | Effective ground reflection coefficient magnitude for the two-ray model (1.0 reproduces the ideal d^4 law) |
 | `aee_radio_propagationRange` | SLIDER | `2.0` | yes | radio | Ceiling of the radio propagation quality index |
+| `aee_radio_rxAntennaHeight` | SLIDER | `1.5` | yes | radio | Receiver antenna height above ground in metres for the two-ray ground-bounce model |
+| `aee_radio_terrainMaskingEnabled` | CHECKBOX | `true` | yes | radio | Add ITU-R P.526 terrain diffraction loss by sampling the profile along the link. Off keeps the foliage-only fallback. |
+| `aee_radio_txAntennaHeight` | SLIDER | `2` | yes | radio | Transmitter antenna height above ground in metres for the two-ray ground-bounce model |
 | `aee_radio_txPower` | SLIDER | `37` | yes | radio | Reference handheld transmit power in dBm used in the link budget |
+
+## AEE Radio → Radar
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_radio_radarDetection` | CHECKBOX | `false` | yes | radio | Enable the radar detection model (range equation, horizon, ducting and clutter) |
 
 ## AEE Strain → Cold Weather
 
@@ -782,6 +926,13 @@ registered.
 |---|---|---|---|---|---|
 | `aee_thermal_objectScanInterval` | SLIDER | `30` | yes | thermal | Seconds between object-temperature scans. Surface temperatures change on time constants of 600 seconds and longer, so a scan every tick is wasted work. 0 scans every tick. |
 
+## AEE Vehicles → Fuel
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_vehicles_engineFuelClass` | LIST | `0` | yes | vehicles | The brake-specific fuel consumption scalar the fuel model applies. The corpus holds no per-vehicle engine class, so the class is a user setting. Diesel is the default: the military ground fleet the research brief lists runs on diesel. The scalar sets the litres per hour from the engine power demand. |
+| `aee_vehicles_fuelConsumptionEnabled` | CHECKBOX | `true` | yes | vehicles | Compute the modelled fuel consumption and the coolant temperature for nearby ground vehicles. The consumption comes from the road-load equation and a brake-specific fuel consumption scalar; the coolant comes from the heat that consumption rejects and the Holman convection the thermal model already uses. The engine owns the tank: the model publishes the consumption, the range and the coolant derate, and never calls setFuel, so it does not double-count the engine's own burn. |
+
 ## AEE Vehicles → Traction
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -841,6 +992,7 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_vision_colorTemperature` | CHECKBOX | `false` | yes | vision | Physics colour temperature (issue #100). When on, the white-balance illuminant and the atmospheric desaturation come from the physics colour temperature (sun elevation and cloud cover) and the acuity grain scales with the light level. The correlated colour temperature uses the Kasten and Young 1989 air mass and the CIE 15:2004 daylight locus; the issue's Tanner Helland approximation is superseded by the loci. When off, the white balance uses the engine ambient colour and the shipped image is unchanged. |
 | `aee_vision_visionContrastScale` | SLIDER | `1.0` | yes | vision | Contrast scale on the human-vision tone stage, range 0.5 to 1.5. It scales the display contrast the Naka-Rushton and CIE L* tangent derives. The exact calibration gain is UNSOURCED. |
 | `aee_vision_visionModelEnabled` | CHECKBOX | `true` | yes | vision | Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. Default on. Disable it to fall back to the aesthetic base grade. |
 | `aee_vision_visionToneEnabled` | CHECKBOX | `true` | yes | vision | Enable the tone and contrast stage of the human-vision model. It derives the display brightness, contrast and black point from the adapted scene luminance. The form is SOURCED to Naka and Rushton 1966 and CIE 15:2004. |
@@ -991,6 +1143,12 @@ registered.
 | `aee_core_lightScanInterval` | SLIDER | `30` | yes | core | Seconds between dynamic light-source scans on the client. The contribution changes only when a lamp toggles or the weather attenuates it. 0 scans every tick. |
 | `aee_core_referenceAltitude` | SLIDER | `0` | yes | core | Override reference altitude (m MSL) for station pressure calculations. 0 = auto-detect from unit position |
 | `aee_core_updateInterval` | SLIDER | `5` | yes | core | Simulation update interval in seconds (lower = more frequent updates) |
+
+## AEE → EMP
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_empEnabled` | CHECKBOX | `true` | yes | core | Enable the nuclear EMP event model. Inert until a mission triggers a burst with aee_core_fnc_triggerEmp; then the free field couples into the radio and optical sensors and they recover over time. |
 
 ## AEE → Environmental
 

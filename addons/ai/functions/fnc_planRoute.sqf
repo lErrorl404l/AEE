@@ -63,9 +63,9 @@ private _lightning   = [QEGVAR(core,currentLightningRisk), 0, 1] call EFUNC(lib,
 private _viewRange   = [QEGVAR(vision,viewDistanceTarget), 0, 1] call EFUNC(lib,readState);
 
 // ── Candidate generation (step 1) ──────────────────────────────────────────
-// The expression is VCOM AI's terrain-flavour weights (fn_FlankMove.sqf L113,
-// genesis92x/VcomAI, commit def1230e), the pattern the issue cites.  Engine
-// variables only; AEE data is applied in step 2.
+// The expression weights terrain flavour for a flanking route: hills, forest,
+// houses and meadow are preferred; sea is avoided.  Engine variables only;
+// AEE data is applied in step 2.
 private _expr = "((6*hills + 2*forest + 4*houses + 2*meadow) - sea + (2*trees))";
 private _candidates = selectBestPlaces [_center, _radius, _expr, 100, _count];
 
