@@ -16,18 +16,20 @@ about a reference state:
 
 Sources:
   Gill (1982) Atmosphere-Ocean Dynamics, Academic Press, section 3.7 (the
-    linear equation of state and the expansion coefficients).
-  Stewart (2008) Introduction to Physical Oceanography, section 6.5
-    (linear EOS; thermal expansion ~1.7e-4 per degC and haline contraction
-    ~7.6e-4 per psu at S = 35).
+    linear equation of state).
+  UNESCO EOS-80 (Millero and Poisson 1981, Deep-Sea Research 28:625;
+    UNESCO 1983) for the coefficients at S = 35: thermal expansion 1.0e-4
+    per degC at 4 degC and 1.7e-4 at 10 degC, haline contraction 7.6e-4 per
+    psu at 10 degC.
   Reference state rho0 = 1027.8 kg/m3 at T0 = 4 degC, S0 = 35 psu, the
-    standard seawater density at the deep-ocean temperature.
+    EOS-80 seawater density at the deep-ocean temperature.
 
 The linear form is an approximation: the true thermal expansion coefficient
-rises from about 0.5e-4 per degC at 0 degC to about 3e-4 at 30 degC, so a
-single alpha is a stated simplification.  The density DIFFERENCE it
-produces is what the internal-wave model uses, and that difference is what
-the two-layer speed depends on.
+is temperature-dependent, 1.0e-4 per degC at 4 degC and 2.6e-4 at 20 degC,
+so a single alpha is a stated simplification.  The value 1.7e-4 is the
+mid-range figure at about 10 degC.  The density DIFFERENCE it produces is
+what the internal-wave model uses, and that difference is what the
+two-layer speed depends on.
 
 Input:  [_tempC, _salinityPsu, _rho0, _alpha, _beta, _t0, _s0]
 Output: density in kg/m3
