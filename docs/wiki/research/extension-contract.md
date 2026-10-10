@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (658)
+### Public functions (663)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -163,6 +163,9 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ambience_fnc_acousticPublish`
 - `aee_ambience_fnc_acousticSample`
 - `aee_ambience_fnc_acousticSourceDb`
+- `aee_ambience_fnc_acousticSpectrum`
+- `aee_ambience_fnc_atmosphericAbsorption`
+- `aee_ambience_fnc_atmosphericAbsorptionTable`
 - `aee_ambience_fnc_callEmit`
 - `aee_ambience_fnc_callPitch`
 - `aee_ambience_fnc_callPublish`
@@ -173,6 +176,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ambience_fnc_emitterPlan`
 - `aee_ambience_fnc_emitterRelease`
 - `aee_ambience_fnc_emitterSync`
+- `aee_ambience_fnc_getArrivalTime`
+- `aee_ambience_fnc_getArrivingSound`
 - `aee_ambience_fnc_getCallPattern`
 - `aee_ambience_fnc_playAmbientBed`
 - `aee_ambience_fnc_playOneShot`
