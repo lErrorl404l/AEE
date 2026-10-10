@@ -9,6 +9,14 @@
             <Original>Blowing Snow Wind Threshold</Original>
             <English>Blowing Snow Wind Threshold</English>
         </Key>
+        <Key ID="STR_AEE_Weather_CbrnPlumeEnabled_Description">
+            <Original>Run the CBRN agent plume dispersion model (a mission starts a release with aee_weather_fnc_startCbrnRelease)</Original>
+            <English>Run the CBRN agent plume dispersion model (a mission starts a release with aee_weather_fnc_startCbrnRelease)</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_CbrnPlumeEnabled_Name">
+            <Original>CBRN Plume Model</Original>
+            <English>CBRN Plume Model</English>
+        </Key>
         <Key ID="STR_AEE_Weather_DustDevilTempThreshold_Description">
             <Original>Air temperature (°C) that allows dust devils</Original>
             <English>Air temperature (°C) that allows dust devils</English>
