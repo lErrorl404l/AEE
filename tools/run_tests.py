@@ -101,6 +101,7 @@ def main():
         "tools/tests/test_wet_traction.py",
         "tools/tests/test_ice_avalanche.py",
         "tools/tests/test_concealment.py",
+        "tools/tests/test_acoustic_masking.py",
         "tools/tests/test_gloc.py",
         "tools/tests/test_two_node.py",
         "tools/tests/test_sqf_two_node.py",
