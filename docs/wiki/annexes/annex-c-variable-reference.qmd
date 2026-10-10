@@ -451,6 +451,10 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_maritime_internalTideActive` | maritime | Internal tide above the inertial frequency (#17) |
 | `aee_maritime_thermoclineProfile` | maritime | Temperature profile [[depth_m, tempC]] for the sound-speed model (#17) |
 | `aee_core_currentTideDescription` | maritime | Tide description |
+| `aee_maritime_shipRoll_deg` | maritime | Ship roll in degrees |
+| `aee_maritime_shipPitch_deg` | maritime | Ship pitch in degrees |
+| `aee_maritime_shipHeave_m` | maritime | Ship heave in metres |
+| `aee_maritime_shipMotionSeverity` | maritime | Ship motion severity, 0 to 1 |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
 | `aee_maritime_oceanCurrent` | maritime | Surface ocean current vector `[east, north]` in metres per second |
 | `aee_maritime_oceanCurrentSpeed` | maritime | Surface ocean current speed in metres per second |

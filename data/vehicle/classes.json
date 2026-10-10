@@ -336,6 +336,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
+        "addons/maritime/functions/fnc_calculateShipMotion.sqf:49",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292",
         "addons/vehicles/functions/fnc_classifyVehicle.sqf:88",

@@ -20,6 +20,17 @@ AEE_SETTING_SLIDER(oceanTidalFloodBearing,"AEE Maritime","Current",0,360,0,0);
 // ── Sea state ──────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(seaStateResponse,"AEE Maritime","Sea",0.1,0.9,0.3,2);
 
+// ── Ship motion (issue #33) ────────────────────────────────────────────────
+// Metacentric height GM drives the natural roll frequency
+// (omega_n = sqrt(g*GM/k_xx^2)).  The engine publishes no hydrostatics, so
+// GM is an operator input.  The 1.5 m default is a typical loaded
+// metacentric height (bulk carrier 1.5-3.5 m, PNA Vol III).
+AEE_SETTING_SLIDER(shipMetacentricHeight,"AEE Maritime","Sea",0.3,4,1.5,1);
+
+// Roll, pitch and heave damping ratio zeta.  0.10 is the typical ship value
+// quoted for roll; no primary source was pinned (ADR-038).
+AEE_SETTING_SLIDER(shipDamping,"AEE Maritime","Sea",0.02,0.3,0.1,2);
+
 // ── Sea-surface temperature (issue #37) ────────────────────────────────────
 // Coupling weight between the air temperature and the latitude-seasonal
 // climatology.  Low = high thermal inertia (sea stays near its climate

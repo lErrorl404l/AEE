@@ -129,6 +129,30 @@ Sea state uses the WMO Beaufort formula
 `B = (v/0.836)^(2/3)`. The significant wave height comes from the
 Pierson-Moskowitz spectrum.
 
+Ship motion follows the sea state (issue #33). The model is the seakeeping
+response-amplitude-operator method for a single-degree-of-freedom
+oscillator (SNAME Principles of Naval Architecture Vol III). The natural
+roll frequency is `omega_n = sqrt(g*GM/k_xx^2)` with the roll radius of
+gyration `k_xx = 0.35*B`. The RAO is
+`|H| = 1/sqrt((1 - r^2)^2 + (2*zeta*r)^2)` with `r = omega_e/omega_n`,
+where the encounter frequency is
+`omega_e = omega - (omega^2/g)*U*cos(beta)`. Roll and pitch follow the
+effective wave slope `(omega^2/g)*(Hs/2)`, resolved by heading; heave
+follows the amplitude `Hs/2`.
+
+For a fully-developed Pierson-Moskowitz sea the characteristic wave slope
+is nearly constant, so the significant motion is set by the
+encounter-frequency resonance, not by linear growth with sea state. The
+engine publishes no hydrostatics, so the metacentric height GM and the
+damping ratio are CBA settings (defaults 1.5 m and 0.10).
+
+Consumer note: the metacentric height and damping settings, and the
+published `aee_maritime_shipRoll_deg`, `aee_maritime_shipPitch_deg` and
+`aee_maritime_shipHeave_m`, are the contract for weapon accuracy,
+helicopter-deck operations and crew fatigue. A helicopter-deck roll or
+pitch limit is per ship-and-aircraft type (SHOL), not one standard, so a
+consumer sets its own threshold.
+
 ## Radio propagation
 
 Radio propagation covers the VHF, UHF, and HF bands. VHF and UHF use the

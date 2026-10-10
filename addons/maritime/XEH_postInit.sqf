@@ -24,3 +24,7 @@ AEE_MODULE_POST_INIT
     if !(missionNamespace getVariable [QGVAR(internalWaveEnabled), true]) exitWith {};
     [] call FUNC(updateInternalWaves);
 }, 1] call CBA_fnc_addPerFrameHandler;
+
+// Ship motion follows the sea state (issue #33).  One tick per second; the
+// driver reads the published sea state and writes the per-vessel motion.
+[FUNC(calculateShipMotion), 1] call CBA_fnc_addPerFrameHandler;

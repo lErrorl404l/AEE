@@ -326,12 +326,14 @@ Sea state, tides, internal waves, the thermocline, the surface ocean current and
 | `calculateSeaState` | Calculate the sea state |
 | `calculateSeawaterDensity` | Linear seawater equation of state |
 | `calculateSecchiKd` | Diffuse attenuation from a Secchi depth |
+| `calculateShipMotion` | Calculate the ship pitch, roll and heave |
 | `calculateSnellWindow` | Critical angle and cone of the Snell window |
 | `calculateThermoclineTemperature` | Temperature profile across the thermocline |
 | `calculateTidalPrediction` | Calculate the tidal prediction |
 | `calculateUnderwaterLight` | Beer-Lambert band transmission through the water column |
 | `ekmanTransport` | Ekman wind-driven transport and layer depth |
 | `pureWaterAbsorption` | Pure-water absorption at a wavelength (Pope and Fry) |
+| `shipMotionKernel` | Ship pitch, roll and heave kernel |
 | `tidalCurrentSpeed` | Tidal current speed from the tidal height |
 | `updateEngineWaves` | Render the sea state as engine waves |
 | `updateInternalWaves` | Publish the internal-wave and thermocline state |
