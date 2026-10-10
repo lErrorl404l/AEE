@@ -690,17 +690,28 @@ class TestEngineKernelContract(unittest.TestCase):
 
     def test_the_kernel_reads_the_live_speed_with_the_real_getter(self) -> None:
         # The phantom reader rpmRTD is not a command; the real getter returns
-        # an array of engine RPM values.
-        self.assertIn("enginesRpmRTD", ENGINE_KERNEL_SRC)
-        self.assertNotIn("rpmRTD", ENGINE_KERNEL_SRC)
+        # an array of engine RPM values. Scope to the body so the header prose
+        # cannot satisfy the assertion.
+        body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
+        self.assertIn("enginesRpmRTD", body)
+        self.assertNotIn("rpmRTD", body)
 
     def test_the_kernel_commands_the_array_form(self) -> None:
         # setWantedRPMRTD takes [rpm, seconds, engineIndex], not a bare ratio.
         body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
         self.assertIn("setWantedRPMRTD [", body)
 
+    def test_the_kernel_scales_the_ratio_to_engine_rpm(self) -> None:
+        # The point of the change: the getter divides the live RPM by the base
+        # and the command multiplies the spool ratio by the base. A regression
+        # to a bare-ratio command would fail this.
+        body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
+        self.assertIn("/ _baseRpm", body)
+        self.assertIn("_baseRpm * _newNg", body)
+
     def test_the_kernel_names_the_target_rpm_fallback(self) -> None:
-        self.assertIn("getEngineTargetRPMRTD", ENGINE_KERNEL_SRC)
+        body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
+        self.assertIn("getEngineTargetRPMRTD", body)
 
     def test_the_header_names_the_design_rpm_base(self) -> None:
         header = ENGINE_KERNEL_SRC.split("*/", 1)[0]
@@ -710,10 +721,8 @@ class TestEngineKernelContract(unittest.TestCase):
         body = ENGINE_KERNEL_SRC.split("*/", 1)[1]
         guard = body.find("difficultyEnabledRTD")
         fallback = body.find("getEngineTargetRPMRTD")
-        base = body.find("_baseRpm = _designRpm")
         self.assertNotEqual(guard, -1)
         self.assertNotEqual(fallback, -1)
-        self.assertNotEqual(base, -1)
         self.assertLess(guard, fallback)
 
     def test_the_kernel_guards_the_rtd_path_on_the_flight_model(self) -> None:
