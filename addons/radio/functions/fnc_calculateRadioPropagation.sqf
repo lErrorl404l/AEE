@@ -53,14 +53,13 @@ private _txPowerDBm = missionNamespace getVariable [QGVAR(txPower), 37];
 private _propRange  = missionNamespace getVariable [QGVAR(propagationRange), 2.0];
 
 // ─── Tropospheric refraction (ITU-R P.453) ─────────────────────────────────
-// Produce the published refractivity state (aee_atmos_refractivityN,
-// aee_atmos_refractionK, aee_atmos_refractionCondition) and read the
-// k-factor. The k-factor is the ratio of the effective to the true earth
-// radius, so it scales the geometric path length by 1 / sqrt(k). This is the
-// standard effective-earth-radius correction, and it is read from the
-// published ITU-R P.453 state so the radio budget and the refraction model
-// cannot disagree.
-[] call EFUNC(atmos,calculateRefraction);
+// Read the published refractivity state (aee_atmos_refractivityN,
+// aee_atmos_refractionK, aee_atmos_refractionCondition).  The state is
+// produced once per tick by fnc_updateEnvironment.  The k-factor is the
+// ratio of the effective to the true earth radius, so it scales the
+// geometric path length by 1 / sqrt(k).  This is the standard
+// effective-earth-radius correction, read from the published ITU-R P.453
+// state so the radio budget and the refraction model cannot disagree.
 private _refractionK = missionNamespace getVariable [QEGVAR(atmos,refractionK), 1];
 if !(_refractionK isEqualType 0) then { _refractionK = 1; };
 _refractionK = _refractionK max 0.5 min 2.0;

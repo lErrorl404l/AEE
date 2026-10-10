@@ -91,6 +91,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_atmos_icingShedRate` | SLIDER | `0.9` | yes | atmos | Fraction of accreted ice removed per tick while shedding conditions hold |
 | `aee_atmos_maxIceMass` | SLIDER | `100` | yes | atmos | Ice mass in kilograms that equals full airframe icing severity |
 
+## AEE Atmos → Optics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_haloEnabled` | CHECKBOX | `true` | yes | atmos | Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state |
+
 ## AEE Atmos → Refraction
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -624,6 +630,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_optics_greenFlashEnabled` | CHECKBOX | `true` | yes | optics | Model the green flash at the setting and rising sun from refraction dispersion |
 | `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | yes | optics | Global smoke-duration multiplier |
 | `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | yes | optics | Visibility loss from snow cover |
 
