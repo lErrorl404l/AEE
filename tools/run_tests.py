@@ -42,6 +42,7 @@ def main():
         "tools/tests/test_physiology.py",
         "tools/tests/test_radio.py",
         "tools/tests/test_environmental.py",
+        "tools/tests/test_scalar_advection.py",
         "tools/tests/test_blowing_snow.py",
         "tools/tests/test_addon_dependencies.py",
         "tools/tests/test_ground_frost.py",

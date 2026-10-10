@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (665)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -745,8 +745,14 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_weather_fnc_getCoastDistance`
 - `aee_weather_fnc_getLatitudeClimate`
 - `aee_weather_fnc_getSmoothedBiome`
+- `aee_weather_fnc_scalarAddSource`
+- `aee_weather_fnc_scalarAdvectKernel`
+- `aee_weather_fnc_scalarFieldConfig`
+- `aee_weather_fnc_scalarSample`
+- `aee_weather_fnc_scalarStabilityKernel`
 - `aee_weather_fnc_scanTerrainSignals`
 - `aee_weather_fnc_updateBiomePosition`
+- `aee_weather_fnc_updateScalarFields`
 - `aee_weather_fnc_updateSeasonalFoliage`
 - `aee_weather_fnc_updateSoundPropagation`
 - `aee_weatherfx_fnc_applyAtmosphericDust`

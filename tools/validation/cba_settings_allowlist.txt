@@ -51,6 +51,8 @@ aee_armour_penetrationGateHandler  handler id passed as the _key value argument,
 aee_ballistics_shotTemp  handler id passed as the _key value argument, not read as a variable
 aee_core_collisionDamage  handler id passed as the _key value argument, not read as a variable
 aee_blast_blast  handler id passed as the _key value argument, not read as a variable
+aee_weather_scalarSmokeEmitterLand  handler id passed as the _key value argument, not read as a variable
+aee_weather_scalarSmokeEmitterAir  handler id passed as the _key value argument, not read as a variable
 aee_optics_muzzleFlash  handler id passed as the _key value argument, not read as a variable
 aee_hud_hud  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable
 aee_cartography_gps  RscTitles config class name used by cutRsc (now addons/thermal_display/RscTitles.hpp), not a runtime variable

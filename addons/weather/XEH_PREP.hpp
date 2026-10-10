@@ -31,3 +31,12 @@ PREPS(climatology,getLatitudeClimate);
 PREPS(biome,scanTerrainSignals);
 PREPS(biome,updateBiomePosition);
 PREPS(terrain,updateSoundPropagation);
+
+// Scalar-field transport engine (issue #116): one advection grid shared by
+// the smoke and dust fields.
+PREPS(scalar,scalarAdvectKernel);
+PREPS(scalar,scalarStabilityKernel);
+PREPS(scalar,scalarFieldConfig);
+PREPS(scalar,scalarAddSource);
+PREPS(scalar,scalarSample);
+PREPS(scalar,updateScalarFields);
