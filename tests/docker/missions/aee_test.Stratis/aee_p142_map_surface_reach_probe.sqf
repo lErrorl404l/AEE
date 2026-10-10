@@ -98,7 +98,7 @@ private _reach = [
     ["colorOutside", "array", [0.90, 0.88, 0.80, 1]],
     ["colorInactive", "array", [1, 1, 1, 0.5]],
     ["colorForestTextured", "array", [0.45, 0.66, 0.34, 0.30]],
-    ["colorNames", "array", [0.10, 0.10, 0.10, 0.90]],
+    ["colorNames", "array", [0.10, 0.10, 0.10, 1]],
     ["colorTrails", "array", [0.40, 0.30, 0.20, 1]],
     ["colorTrailsFill", "array", [0.90, 0.85, 0.75, 1]],
     ["fontLevel", "string", "RobotoCondensed"],

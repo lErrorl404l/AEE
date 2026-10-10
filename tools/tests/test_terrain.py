@@ -698,6 +698,54 @@ class TestTerrainLook(unittest.TestCase):
         self.assertNotRegex(OBJ_SRC, r"\bsize = \d+;")
 
 
+class TestTerrainLabelLegibility(unittest.TestCase):
+    """The place-name label legibility (todo 11).
+
+    The vanilla name colour alpha 0.90 read faintly over the raster, and the
+    smallest name class (NameLocal) was left at the vanilla 0.05, so the labels
+    are opaque and the smallest is raised to the NameMarine floor.
+    """
+
+    NAME_CLASSES = (
+        "Name",
+        "NameMarine",
+        "NameCityCapital",
+        "NameCity",
+        "NameVillage",
+        "NameLocal",
+    )
+
+    def _block(self, cls: str):
+        m = re.search(
+            rf"class {cls}(?::\s*\w+)?\s*\{{(.*?)\n    \}}", LOC_SRC, re.DOTALL
+        )
+        self.assertIsNotNone(m, cls)
+        return m.group(1)
+
+    def test_the_place_name_colour_is_opaque(self):
+        names = colour_of(COL_SRC, "colorNames")
+        self.assertIsNotNone(names)
+        self.assertEqual(names[3], 1.0, "the place-name label must be opaque")
+
+    def test_the_smallest_name_label_is_raised_above_the_vanilla(self):
+        # The vanilla NameLocal textSize is 0.05; it is raised to 0.06.
+        m = re.search(r"\btextSize = ([0-9.]+);", self._block("NameLocal"))
+        self.assertIsNotNone(m)
+        self.assertGreater(float(m.group(1)), 0.05)
+
+    def test_every_name_class_carries_the_label_font(self):
+        for cls in self.NAME_CLASSES:
+            with self.subTest(cls=cls):
+                self.assertIn('font = "RobotoCondensed";', self._block(cls))
+
+    def test_the_contour_interval_label_stays_legible(self):
+        # The contour interval label is the level font and size; both stay set.
+        self.assertRegex(COL_SRC, r'\bfontLevel\s*=\s*"[^"]+"\s*;')
+        m = re.search(r"\bsizeExLevel\s*=\s*([0-9.]+)\s*;", COL_SRC)
+        self.assertIsNotNone(m)
+        self.assertGreaterEqual(float(m.group(1)), 0.03)
+
+
 class TestSuiteRegistration(unittest.TestCase):
     def test_the_suite_is_registered(self):
         self.assertIn("tools/tests/test_terrain.py", RUN_TESTS_SRC)

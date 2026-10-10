@@ -1134,7 +1134,7 @@
       ],
       "size": 10,
       "font": "AEEFont",
-      "textSize": 0.05,
+      "textSize": 0.06,
       "shadow": 1,
       "grade": "derived",
       "source": "CfgLocationTypes NameLocal, drawStyle name"
@@ -1743,7 +1743,7 @@
       0.1,
       0.1,
       0.1,
-      0.9
+      1
     ],
     "colorLevels": [
       0.7,
@@ -1875,7 +1875,7 @@
       "colorOutside": "USGS sheet margin is blank; matches colorBackground",
       "colorInactive": "ENG. Inactive marker tint",
       "colorForestTextured": "OS MasterMap woodland #cee6bd and DGIWG vegetation green, 30% tint over the baked raster so vegetation reads",
-      "colorNames": "FM s19 name text, near-black; USGS",
+      "colorNames": "FM s19 name text, near-black; USGS. Full opacity so the labels read over the satellite raster (the vanilla 0.90 read faintly)",
       "colorLevels": "FM s10 relief brown; USGS hypsometric tint",
       "colorMainCountlines": "FM 21-31 s10 / USGS: index contour is the heavier brown; AEE's own darker brown, darkened for legibility against the light ground",
       "colorCountlines": "FM 21-31 s10 / USGS contour brown; AEE's own darker brown, darkened for legibility against the light ground",

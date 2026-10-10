@@ -37,5 +37,5 @@
     colorTrails[] = {0.40, 0.30, 0.20, 1};
     colorTrailsFill[] = {0.90, 0.85, 0.75, 1};
     widthRailWay = 4;
-    colorNames[] = {0.10, 0.10, 0.10, 0.90};
+    colorNames[] = {0.10, 0.10, 0.10, 1};
     shadedSea = 1;

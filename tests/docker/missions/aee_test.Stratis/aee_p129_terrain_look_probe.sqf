@@ -25,7 +25,9 @@ private _palette = [
     ["colorMainCountlines", [0.45, 0.26, 0.12, 1]],
     ["colorCountlines", [0.62, 0.42, 0.22, 1]],
     ["colorForest", [0.55, 0.74, 0.44, 1]],
-    ["colorForestTextured", [0.45, 0.66, 0.34, 0.3]]
+    ["colorForestTextured", [0.45, 0.66, 0.34, 0.3]],
+    // The place-name label is fully opaque, so it reads over the raster.
+    ["colorNames", [0.1, 0.1, 0.1, 1]]
 ];
 {
     _x params ["_field", "_want"];
@@ -51,6 +53,15 @@ if (_level >= 0.03) then {
 } else {
     _fail = _fail + 1;
     _notes pushBack format ["sizeExLevel=%1", _level];
+};
+
+// 5b. the smallest place-name label is raised above the vanilla 0.05
+private _nameLocal = getNumber (configFile >> "CfgLocationTypes" >> "NameLocal" >> "textSize");
+if (_nameLocal >= 0.06) then {
+    _pass = _pass + 1;
+} else {
+    _fail = _fail + 1;
+    _notes pushBack format ["NameLocal textSize=%1", _nameLocal];
 };
 
 // 6. the icon sizes scale with the interface size.  safeZoneH = 1/uiScale, so

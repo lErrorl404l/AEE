@@ -147,7 +147,9 @@ class CfgLocationTypes {
         color[] = {0.15, 0.15, 0.15, 1};
         size = 10;
         font = "RobotoCondensed";
-        textSize = 0.05;
+        // The vanilla 0.05 is the smallest name label and reads too small at
+        // map zoom; raised to the NameMarine floor.
+        textSize = 0.06;
         shadow = 1;
     };
 

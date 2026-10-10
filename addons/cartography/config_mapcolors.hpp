@@ -98,7 +98,10 @@
     ptsPerSquareMainRoadSimple = 1;
 
     // ── Labels and object icons.  FM s19, s20; USGS. ────────────────────
-    colorNames[] = {0.10, 0.10, 0.10, 0.90};
+    // The place-name label colour.  Near-black (FM s19).  Full opacity: the
+    // vanilla alpha 0.90 let the satellite raster show through and the label
+    // read faintly, so the labels are opaque.
+    colorNames[] = {0.10, 0.10, 0.10, 1};
     // Coordinates the label and the object icon density.  ENG.
     ptsPerSquareTxt = 20;
     ptsPerSquareObj = 9;
