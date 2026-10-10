@@ -74,5 +74,7 @@ hemtt utils config derapify <outdir>/config.bin
 - `docs/adr/ADR-027-ownership-architecture.md` - ownership by declaration.
 - `docs/adr/ADR-031-conformance-layer-self-describing-detect-and-repair.md` -
   the conformance layer.
+- `docs/adr/ADR-037-physx-mass-surface-and-the-grade-gate.md` - the PhysX mass
+  surface, the build-time grade gate and the closed surfaces.
 - `docs/wiki/research/engine-override-surface.md` - the published copy of the
   engine override surface study.
