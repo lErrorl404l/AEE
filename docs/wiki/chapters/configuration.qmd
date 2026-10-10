@@ -685,7 +685,12 @@ registered.
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_radio_batteryDeratingEnabled` | CHECKBOX | `true` | yes | radio | Scale effective transmit power by the physiology battery temperature derating |
+| `aee_radio_emLinkBearing` | SLIDER | `0` | yes | radio | Bearing in degrees of the reference radio link used for terrain diffraction sampling |
+| `aee_radio_emPropagationEnabled` | CHECKBOX | `true` | yes | radio | Apply the 3D electromagnetic propagation model: two-ray ground bounce, terrain diffraction and valley waveguide |
+| `aee_radio_groundReflectivity` | SLIDER | `0.5` | yes | radio | Effective ground reflection coefficient magnitude for the two-ray model (1.0 reproduces the ideal d^4 law) |
 | `aee_radio_propagationRange` | SLIDER | `2.0` | yes | radio | Ceiling of the radio propagation quality index |
+| `aee_radio_rxAntennaHeight` | SLIDER | `1.5` | yes | radio | Receiver antenna height above ground in metres for the two-ray ground-bounce model |
+| `aee_radio_txAntennaHeight` | SLIDER | `2` | yes | radio | Transmitter antenna height above ground in metres for the two-ray ground-bounce model |
 | `aee_radio_txPower` | SLIDER | `37` | yes | radio | Reference handheld transmit power in dBm used in the link budget |
 
 ## AEE Strain → Cold Weather

@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (664)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -527,8 +527,13 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_physiology_fnc_dumpState`
 - `aee_physiology_fnc_updateFatigueState`
 - `aee_physiology_fnc_zh16cStep`
+- `aee_radio_fnc_calculateDeygoutDiffraction`
+- `aee_radio_fnc_calculateEmPropagation`
 - `aee_radio_fnc_calculateIonosphericAbsorption`
+- `aee_radio_fnc_calculateKnifeEdgeLoss`
 - `aee_radio_fnc_calculateRadioPropagation`
+- `aee_radio_fnc_calculateTwoRayGround`
+- `aee_radio_fnc_calculateValleyWaveguide`
 - `aee_radio_fnc_dumpState`
 - `aee_strain_fnc_applyCrossSensitivity`
 - `aee_strain_fnc_applyMovementSpeed`
