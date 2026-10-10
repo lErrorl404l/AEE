@@ -21,6 +21,11 @@ Limits from the same expression: when h2 is much greater than h1 the speed
 tends to sqrt(g' * h1), the wave runs on the upper layer alone; when
 h1 = h2 = D/2 the speed tends to sqrt(g' * D / 4).
 
+The reduced gravity uses the Boussinesq form with the reference density
+taken as the lower layer.  The exact symmetric two-layer form is
+g' = g * (rho2 - rho1) / (rho2 + rho1).  The two differ by about 0.1
+percent for seawater, so either is acceptable; this one is stated.
+
 When the lower layer is not denser than the upper layer (rho2 <= rho1) the
 column is unstable and there is no internal wave, so the speed is 0.
 
@@ -29,6 +34,9 @@ Sources:
     (two-layer internal waves; the phase speed and the reduced gravity).
   Turner (1973) Buoyancy Effects in Fluids, Cambridge University Press,
     section 2.1 (interfacial waves).
+  Phillips (1977) The Dynamics of the Upper Ocean, Cambridge University
+    Press, page 37 (the symmetric reduced gravity and the deep-water
+    dispersion).
   WHOI 12.800, chapter 11 "Internal Waves" (the two-layer result).
 
 Input:  [_rho1, _rho2, _h1, _h2, _g]
