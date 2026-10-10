@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (658)
+### Public functions (664)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -525,6 +525,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_physiology_fnc_applyHeatStressHUD`
 - `aee_physiology_fnc_dumpState`
 - `aee_physiology_fnc_updateFatigueState`
+- `aee_physiology_fnc_updatePsychologyState`
 - `aee_physiology_fnc_zh16cStep`
 - `aee_radio_fnc_calculateIonosphericAbsorption`
 - `aee_radio_fnc_calculateRadioPropagation`
@@ -533,11 +534,16 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_strain_fnc_applyMovementSpeed`
 - `aee_strain_fnc_calculateColdWeatherPerformance`
 - `aee_strain_fnc_calculateDehydrationRisk`
+- `aee_strain_fnc_calculateEffectiveSpotting`
 - `aee_strain_fnc_calculateFatigueFactor`
+- `aee_strain_fnc_calculateMorale`
 - `aee_strain_fnc_calculateShooterStability`
 - `aee_strain_fnc_calculateSleepPressure`
+- `aee_strain_fnc_calculateStress`
 - `aee_strain_fnc_calculateUVIndex`
+- `aee_strain_fnc_getDecisionMultipliers`
 - `aee_strain_fnc_getGLoad`
+- `aee_strain_fnc_getMoraleAction`
 - `aee_strain_fnc_integrateSwayFactor`
 - `aee_symbology_fnc_symbolCategory`
 - `aee_symbology_fnc_symbolFrame`

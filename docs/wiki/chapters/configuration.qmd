@@ -669,6 +669,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_particles_vehicleDustIntensity` | SLIDER | `1.0` | yes | particles | Alpha scale on vehicle dust kickup |
 | `aee_particles_weatherAlphaEnabled` | CHECKBOX | `true` | yes | particles | Scale the blast, refract and weather particle alpha by overcast plus humidity |
 
+## AEE Physiology → Combat Stress
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_combatStressEnabled` | CHECKBOX | `false` | yes | physiology | Model combat stress and morale from suppression, fatigue and group casualties. Off by default. |
+
 ## AEE Physiology → Scent
 
 | Setting | Type | Default | Global | Addon | Purpose |
