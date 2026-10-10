@@ -21,6 +21,7 @@ from pathlib import Path
 REPO = Path(__file__).parents[2]
 VEHICLE_SCHEMA = REPO / "data" / "vehicle" / "SCHEMA.md"
 AIRCRAFT_SCHEMA = REPO / "data" / "aircraft" / "SCHEMA.md"
+PIPELINE_DOC = REPO / "docs" / "architecture" / "vehicle-systems-pipeline.md"
 
 # The header signature of a systems field table. One name per column.
 SYSTEMS_HEADER = ("field", "unit", "source class", "published", "engine hook or marker")
@@ -257,6 +258,38 @@ class AircraftDeltasTest(unittest.TestCase):
             self.assertNotIn(
                 name, fields, f"land-only field in the aircraft deltas: {name}"
             )
+
+
+def bullets_under(text: str, heading: str) -> list[str]:
+    """Return the top-level bullet items under a level-2 heading."""
+    items: list[str] = []
+    for line in _section(text, heading).splitlines():
+        stripped = line.strip()
+        if stripped.startswith("- "):
+            items.append(stripped[2:].strip())
+    return items
+
+
+class VehicleSystemsPipelineTest(unittest.TestCase):
+    """`docs/architecture/vehicle-systems-pipeline.md` names both lists."""
+
+    def setUp(self) -> None:
+        self.text = PIPELINE_DOC.read_text(encoding="utf-8")
+
+    def test_the_shared_pieces_are_named(self) -> None:
+        shared = bullets_under(self.text, "The shared pieces")
+        self.assertGreaterEqual(len(shared), 5, f"shared pieces: {shared}")
+
+    def test_the_land_branch_points_are_named(self) -> None:
+        branch = bullets_under(self.text, "Where the land branch consumes it")
+        self.assertGreaterEqual(len(branch), 4, f"land branch points: {branch}")
+
+    def test_the_aircraft_is_the_first_consumer_and_land_a_branch(self) -> None:
+        self.assertIn("first consumer", self.text)
+        self.assertIn("not a rewrite", self.text)
+
+    def test_the_no_xml_decision_is_stated(self) -> None:
+        self.assertIn("reads no XML", self.text)
 
 
 if __name__ == "__main__":
