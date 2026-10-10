@@ -216,6 +216,10 @@ LAND_SURFACE_FIELDS: dict[str, tuple[str | None, str]] = {
     ),
     "latStiffX": ("lat_stiff_x", "unitless"),
     "latStiffY": ("lat_stiff_y", "unitless"),
+    # Ship. The engine ship mass is the top-level CfgVehicles `mass`. The
+    # held field is the light ship displacement in kg. No displacement is
+    # held today, so the key emits nothing.
+    "mass": ("displacement_kg", "kg"),
 }
 
 HEADER = (
