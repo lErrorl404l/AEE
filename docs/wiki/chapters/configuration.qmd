@@ -6,6 +6,12 @@ title: "Configuration"
 
 All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings menu under the **AEE** categories. Values marked *global* must match across all clients.
 
+## AEE AI → Hearing
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ai_nativeHearing` | CHECKBOX | `false` | yes | ai | Reveal sound sources to AI through AEE's sound propagation |
+
 ## AEE Altitude → G-LOC
 
 | Setting | Type | Default | Global | Addon | Purpose |
