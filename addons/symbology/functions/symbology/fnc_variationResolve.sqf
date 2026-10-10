@@ -26,7 +26,7 @@ params [
 ];
 
 private _pairs = [];
-if ((count _state) == 0) then {
+if (_state isEqualTo []) then {
     // Seed the family id so every option defaults even for an empty state.
     _pairs pushBack [_familyId, "", ""];
 } else {

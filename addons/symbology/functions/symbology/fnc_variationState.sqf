@@ -22,7 +22,7 @@ params [
 private _families = aee_symbology_variationFamilies;
 private _family = [];
 private _found = false;
-if ((count _pairs) > 0) then {
+if (_pairs isNotEqualTo []) then {
     private _familyId = (_pairs select 0) select 0;
     for "_i" from 0 to ((count _families) - 1) do {
         if (!_found && (_familyId isEqualTo ((_families select _i) select 0))) then {
@@ -55,7 +55,7 @@ if (_found) then {
         };
         if (!_valid) then {
             _valueId = "";
-            if ((count _values) > 0) then {
+            if (_values isNotEqualTo []) then {
                 _valueId = (_values select 0) select 0;
             };
         };
