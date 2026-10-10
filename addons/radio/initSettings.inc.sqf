@@ -42,3 +42,9 @@ AEE_SETTING_SLIDER(groundReflectivity,"AEE Radio","Link",0,1,0.5,2);
 AEE_SETTING_SLIDER(emLinkBearing,"AEE Radio","Link",0,359,0,0);
 
 }; // _hasHost
+
+// ── Radar detection (issue #104) ──────────────────────────────────────────
+// Radar detection is independent of any host radio mod, so it registers
+// unconditionally.  Default off: the model is opt-in until a held RCS
+// source replaces the issue's UNSOURCED class figures.
+AEE_SETTING_CHECKBOX(radarDetection,"AEE Radio","Radar",false);

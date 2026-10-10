@@ -45,6 +45,7 @@ def main():
         "tools/tests/test_em_propagation.py",
         "tools/tests/test_radio_terrain.py",
         "tools/tests/test_acoustic_propagation.py",
+        "tools/tests/test_radar.py",
         "tools/tests/test_environmental.py",
         "tools/tests/test_blowing_snow.py",
         "tools/tests/test_addon_dependencies.py",
