@@ -1,0 +1,301 @@
+{
+  "schema": "aee.physics.fuel/1",
+  "note": "Fuel consumption and coolant thermal-management constants (issue #111). The only home for a ground-vehicle fuel or coolant constant. Every value carries a source id that resolves in the sources array, or a named derivation. The generator tools/gen_fuel_data.py projects this file to addons/vehicles/functions/fnc_getFuelData.sqf. The validator tools/validation/validate_fuel_data.py gates it. The runtime kernel never invents a value: a class or surface the file does not hold resolves no constant and the model refuses.",
+  "sources": [
+    {
+      "source_id": "heywood_ice_fundamentals",
+      "tier": 3,
+      "type": "reference",
+      "title": "Internal Combustion Engine Fundamentals",
+      "identifier": "ISBN 978-1260116106",
+      "edition": "2nd edition",
+      "published": "2018",
+      "licence": "proprietary",
+      "note": "A reference work for brake-specific fuel consumption maps, fuel properties and the engine heat balance. The BSFC best points and the fuel densities and lower heating values come from it."
+    },
+    {
+      "source_id": "gillespie_vehicle_dynamics",
+      "tier": 3,
+      "type": "reference",
+      "title": "Fundamentals of Vehicle Dynamics",
+      "identifier": "ISBN 978-1-56091-199-9",
+      "edition": "revised edition",
+      "published": "1992",
+      "licence": "proprietary",
+      "note": "A reference work for the road-load equation and the rolling-resistance coefficient anchors."
+    },
+    {
+      "source_id": "sae_j1349",
+      "tier": 1,
+      "type": "standard",
+      "title": "Surface Vehicle Standard: Engine Power Test Code - Spark Ignition and Compression Ignition - Net Power Rating",
+      "identifier": "SAE J1349",
+      "edition": "current",
+      "published": "2020",
+      "licence": "proprietary",
+      "note": "The density and temperature correction standard the existing engine power model already cites."
+    },
+    {
+      "source_id": "issue_111_fuel_brief",
+      "tier": 5,
+      "type": "compilation",
+      "title": "AEE issue #111 research brief: vehicle fuel consumption and thermal management",
+      "identifier": "issue #111",
+      "published": "2026",
+      "licence": "internal",
+      "note": "The research brief that states the coolant thresholds, the terrain multipliers and the military consumption anchors. A compilation: the values it states are held at grade claimed, and each is corroborated against the reference works where they overlap."
+    }
+  ],
+  "engine_classes": [
+    {
+      "id": "petrol_na",
+      "bsfc_g_kwh": 225,
+      "fuel": "petrol",
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Brake-specific fuel consumption maps for spark-ignition engines; the best point is near 225 g/kWh at the 60-80 percent torque island.",
+      "basis": "best-point BSFC for a naturally-aspirated petrol engine"
+    },
+    {
+      "id": "petrol_turbo",
+      "bsfc_g_kwh": 240,
+      "fuel": "petrol",
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Brake-specific fuel consumption for boosted spark-ignition engines; the rich-mixture protection and the boost penalty place the best point at 230-250 g/kWh.",
+      "basis": "best-point BSFC for a turbocharged petrol engine, the low end of the 230-250 g/kWh band"
+    },
+    {
+      "id": "diesel",
+      "bsfc_g_kwh": 206,
+      "fuel": "diesel",
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Brake-specific fuel consumption for compression-ignition engines; the best point is 200-215 g/kWh and the sweet spot is 206 g/kWh at about 40.6 percent thermal efficiency.",
+      "basis": "best-point BSFC for a diesel engine"
+    }
+  ],
+  "fuels": [
+    {
+      "id": "petrol",
+      "density_g_l": 740,
+      "lhv_mj_kg": 43.9,
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Fuel properties; petrol density near 740 g/L and lower heating value near 43.9 MJ/kg.",
+      "basis": "published petrol density and lower heating value"
+    },
+    {
+      "id": "diesel",
+      "density_g_l": 840,
+      "lhv_mj_kg": 42.7,
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Fuel properties; diesel density near 840 g/L and lower heating value near 42.7 MJ/kg.",
+      "basis": "published diesel density and lower heating value"
+    },
+    {
+      "id": "jp8",
+      "density_g_l": 800,
+      "lhv_mj_kg": 43.0,
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Fuel properties; the kerosene-type aviation turbine fuel density near 800 g/L and lower heating value near 43.0 MJ/kg.",
+      "basis": "published JP-8 density and lower heating value"
+    }
+  ],
+  "rolling_resistance": [
+    {
+      "id": "car",
+      "crr": 0.0125,
+      "grade": "derived",
+      "source": "gillespie_vehicle_dynamics",
+      "locator": "Road loads; the rolling-resistance coefficient for a passenger car on a rigid surface is 0.010-0.015.",
+      "basis": "midpoint of the published 0.010-0.015 band"
+    },
+    {
+      "id": "truck",
+      "crr": 0.007,
+      "grade": "derived",
+      "source": "gillespie_vehicle_dynamics",
+      "locator": "Road loads; the rolling-resistance coefficient for a heavy truck on a rigid surface is 0.006-0.008.",
+      "basis": "midpoint of the published 0.006-0.008 band"
+    },
+    {
+      "id": "track",
+      "crr": 0.03,
+      "grade": "derived",
+      "source": "gillespie_vehicle_dynamics",
+      "locator": "Road loads; the rolling-resistance coefficient for a tracked vehicle on a rigid surface is 0.02-0.04.",
+      "basis": "midpoint of the published 0.02-0.04 band"
+    },
+    {
+      "id": "dirt_road",
+      "crr": 0.05575,
+      "grade": "derived",
+      "source": "gillespie_vehicle_dynamics",
+      "locator": "Road loads; the rolling-resistance coefficient on a dirt road is 0.0385-0.073.",
+      "basis": "midpoint of the published 0.0385-0.073 band"
+    },
+    {
+      "id": "sand",
+      "crr": 0.30,
+      "grade": "documented",
+      "source": "gillespie_vehicle_dynamics",
+      "locator": "Road loads; the rolling-resistance coefficient on sand is about 0.30.",
+      "basis": "published single value"
+    }
+  ],
+  "terrain_multipliers": [
+    {
+      "id": "Normal",
+      "multiplier": 1.0,
+      "grade": "documented",
+      "source": "issue_111_fuel_brief",
+      "locator": "Terrain multipliers: highway 1.0, the reference surface.",
+      "basis": "reference surface, corroborated by the road-load reference"
+    },
+    {
+      "id": "Dusty",
+      "multiplier": 1.5,
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Terrain multipliers: dirt 1.5. The mobility ground state Dusty is loose dry soil mobilised by wind, the dirt-track case.",
+      "basis": "the brief's dirt multiplier applied to the Dusty ground state"
+    },
+    {
+      "id": "Frozen",
+      "multiplier": 1.5,
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Terrain multipliers: packed snow 1.5-2.0. A frozen ground surface carries the low end of the packed band.",
+      "basis": "the low end of the brief's packed-snow band applied to the Frozen ground state"
+    },
+    {
+      "id": "Snow",
+      "multiplier": 2.0,
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Terrain multipliers: packed snow 1.5-2.0 and deep snow 2.0-2.5. A snow-covered surface carries the boundary value 2.0.",
+      "basis": "the boundary of the brief's packed and deep snow bands applied to the Snow ground state"
+    },
+    {
+      "id": "Mud",
+      "multiplier": 2.5,
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Terrain multipliers: mud 2.0-3.0.",
+      "basis": "midpoint of the brief's 2.0-3.0 mud band"
+    }
+  ],
+  "thermal": [
+    {
+      "id": "thermostat_c",
+      "value": 90,
+      "unit": "deg C",
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Engine cooling; the thermostat-open coolant temperature is near 90 C.",
+      "basis": "the regulated coolant setpoint, the same value aee_thermal fnc_calculateVehicleHeat already uses"
+    },
+    {
+      "id": "coolant_normal_min_c",
+      "value": 85,
+      "unit": "deg C",
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: coolant normal 85-100 C.",
+      "basis": "the brief's normal coolant band"
+    },
+    {
+      "id": "coolant_normal_max_c",
+      "value": 100,
+      "unit": "deg C",
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: coolant normal 85-100 C.",
+      "basis": "the brief's normal coolant band"
+    },
+    {
+      "id": "coolant_hot_max_c",
+      "value": 115,
+      "unit": "deg C",
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: hot 100-115 C, fan and power limit; overheat above 115 C.",
+      "basis": "the brief's hot coolant band top"
+    },
+    {
+      "id": "coolant_critical_c",
+      "value": 130,
+      "unit": "deg C",
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: critical above 130 C.",
+      "basis": "the brief's critical coolant threshold"
+    },
+    {
+      "id": "coolant_overheat_derate",
+      "value": 0.5,
+      "unit": "ratio",
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: overheat above 115 C derates to 50 percent.",
+      "basis": "the brief's overheat derate floor"
+    },
+    {
+      "id": "oil_normal_max_c",
+      "value": 120,
+      "unit": "deg C",
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: oil 100-120 C normal.",
+      "basis": "the brief's normal oil band top"
+    },
+    {
+      "id": "oil_limit_c",
+      "value": 140,
+      "unit": "deg C",
+      "grade": "claimed",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: oil limit about 140 C.",
+      "basis": "the brief's oil limit"
+    },
+    {
+      "id": "heat_reject_fraction",
+      "value": 0.333333,
+      "unit": "ratio",
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "Engine heat balance; roughly one third of the fuel energy is rejected to the coolant.",
+      "basis": "the Heywood coolant share, the same 1/3 fraction aee_thermal fnc_calculateVehicleHeat already cites"
+    },
+    {
+      "id": "convection_natural_w_m2k",
+      "value": 5.6,
+      "unit": "W",
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "The Holman flat-plate air correlation natural-convection term h = 5.6 + 3.9 v, the same correlation aee_thermal fnc_calculateVehicleHeat uses.",
+      "basis": "the natural-convection constant of the existing repository correlation"
+    },
+    {
+      "id": "convection_forced_w_m2k_per_ms",
+      "value": 3.9,
+      "unit": "W",
+      "grade": "documented",
+      "source": "heywood_ice_fundamentals",
+      "locator": "The Holman flat-plate air correlation forced-convection slope h = 5.6 + 3.9 v, the same correlation aee_thermal fnc_calculateVehicleHeat uses.",
+      "basis": "the forced-convection slope of the existing repository correlation"
+    },
+    {
+      "id": "coolant_tau_s",
+      "value": 90,
+      "unit": "s",
+      "grade": "derived",
+      "source": "issue_111_fuel_brief",
+      "locator": "Thermal management: first-order lag tau 60-120 s.",
+      "basis": "midpoint of the brief's 60-120 s coolant time-constant band"
+    }
+  ]
+}

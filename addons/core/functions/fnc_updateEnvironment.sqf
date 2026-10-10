@@ -274,6 +274,14 @@ BEGIN_COUNTER(mobility);
 if (GVAR(enginePowerDegradationEnabled)) then {
     [_posASL] call EFUNC(vehicles,calculateEnginePower);
 };
+// Fuel consumption and coolant thermal management (issue #111). Reads the
+// constants from the generated fuel table and publishes the per-vehicle fuel
+// rate, the range and the coolant derate.
+if (missionNamespace getVariable [QEGVAR(vehicles,fuelConsumptionEnabled), true]) then {
+    BEGIN_COUNTER(fuelConsumption);
+    [] call EFUNC(vehicles,updateFuelConsumption);
+    END_COUNTER(fuelConsumption);
+};
 END_COUNTER(mobility);
 
 // ─── Seismic (issue #27) ───────────────────────────────────────────────────

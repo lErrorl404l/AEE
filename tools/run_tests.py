@@ -33,6 +33,7 @@ def main():
     suites = [
         "tools/tests/test_physics.py",
         "tools/tests/test_mobility.py",
+        "tools/tests/test_fuel_consumption.py",
         "tools/tests/test_soil_strength.py",
         "tools/tests/test_terrain_limits.py",
         "tools/tests/test_terrain_drag.py",

@@ -304,3 +304,31 @@ lagged, peaked hydrograph response instead of an instantaneous one.
 Every vehicle passage reduces the soil cone index in proportion to ground
 pressure; the soil recovers exponentially. Passability is the ratio of the
 current cone index to the required threshold, clamped 0..1.
+
+## Vehicle fuel consumption (BSFC and road load)
+
+The fuel rate follows the brake-specific fuel consumption:
+
+$$fuel_{L/h} = \frac{BSFC_{g/kWh} \cdot (P_{idle} + P_{drive})_{kW}}{\rho_{fuel,g/L}}$$
+
+The drive power is the road-load force times the speed (Gillespie):
+
+$$F = C_{rr} m g + 0.5 \rho C_d A v^2 + m g \sin\theta + m a, \quad P_{drive} = F v$$
+
+$C_{rr}$ is a per-type anchor scaled by the mobility ground state. $BSFC$ is
+the best-point scalar per engine class (petrol 225, petrol turbo 240, diesel
+206 g/kWh). Sources: Gillespie, Fundamentals of Vehicle Dynamics; Heywood,
+Internal Combustion Engine Fundamentals; SAE J1349.
+
+## Coolant temperature (first-order lag)
+
+$$C \frac{dT}{dt} = Q_{reject} - UA(T - T_{ambient})$$
+
+The exact exponential step is
+
+$$T' = T_\infty + (T - T_\infty) e^{-dt/\tau}, \quad T_\infty = T_{amb} + \frac{Q_{reject}}{UA}$$
+
+$Q_{reject}$ is one third of the fuel energy (Heywood). $UA$ is the Holman
+flat-plate correlation $h A$, $h = 5.6 + 3.9 v$, the same correlation the
+vehicle thermal model uses. The coolant derate is 1.0 to 100 C, ramps to 0.5
+at 115 C, holds 0.5 to 130 C, and falls to 0 above it.

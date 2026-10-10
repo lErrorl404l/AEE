@@ -23,12 +23,13 @@ REPO = Path(__file__).resolve().parents[2]
 ADR_DIR = REPO / "docs" / "adr"
 
 # ADR number -> reason.  A deliberate gap or duplicate must be justified here.
-# The sequence is unique and gap-free apart from an allowlisted number.
+# 038-041 are reserved by sibling plans on their own branches and land later;
+# remove an entry when its ADR lands on this branch.
 ALLOWLIST: dict[int, str] = {
-    # ADR-038 is reserved by the map-realism plan, which lands on main as a
-    # separate branch. The gap closes when the two branches merge.
-    38: "reserved by the map-realism plan; lands on main as a separate branch",
-    39: "reserved by the aircraft-catalogue-expansion plan (ADR-039); landed separately.",
+    38: "reserved by the map-realism plan on its own branch",
+    39: "reserved by the aircraft-catalogue plan on its own branch",
+    40: "reserved by the dynamic-variation plan on its own branch",
+    41: "reserved by the app6-tactical-graphics plan on its own branch",
 }
 }
 
