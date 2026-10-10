@@ -130,8 +130,9 @@ def morris_screening():
 
 def sobol_decomposition():
     """Sobol variance decomposition of the shooter stability model."""
+    # seed fixes the scrambler, so every index is reproducible run to run.
     X = _sobol_sample.sample(
-        STABILITY_PROBLEM, STABILITY_SOBOL_N, calc_second_order=True
+        STABILITY_PROBLEM, STABILITY_SOBOL_N, calc_second_order=True, seed=_SEED
     )
     Y = np.array([stability(x[0], x[1], x[2]) for x in X])
     return {
