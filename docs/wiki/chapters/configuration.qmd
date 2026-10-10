@@ -492,6 +492,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_flight_airframeRadius` | SLIDER | `2000` | yes | flight | Distance from the player or mission centre within which aircraft receive the density and icing load. This is a downstream consequence of increasing radius count and procedural load; near aircraft are distinguished from distant contingency traffic. |
 | `aee_flight_flightAeroPenalty` | CHECKBOX | `true` | yes | flight | Apply the published air-density lift ratio and the FAR 25 Appendix C airframe icing state to a locally-owned aircraft, as bounded lift and drag forces plus an ice-mass delta. The magnitudes are bounded so the scripted layer cannot stall the airframe. |
 
+## AEE Flight → Performance
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_flight_fixedWingPerformance` | CHECKBOX | `true` | yes | flight | Publish the ambient density altitude and density ratio for the fixed-wing performance model (density altitude, ground effect, landing). The per-aircraft performance row is computed on demand from the pure kernel. |
+
 ## AEE Flight → Turbulence
 
 | Setting | Type | Default | Global | Addon | Purpose |
