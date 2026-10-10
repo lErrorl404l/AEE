@@ -1167,6 +1167,13 @@ class TestSystemsDriverContract(unittest.TestCase):
         ]
         self.assertEqual(len(hits), 1, hits)
 
+    def test_the_driver_reads_the_engine_state_not_its_own_output(self) -> None:
+        # The commanded band follows isEngineOn and isTouchingGround. The
+        # driver must not feed the kernel its own last spool output.
+        self.assertIn("isEngineOn", SYSTEMS_DRIVER_SRC)
+        self.assertIn("isTouchingGround", SYSTEMS_DRIVER_SRC)
+        self.assertNotIn("getVariable [QGVAR(engineNg)", SYSTEMS_DRIVER_SRC)
+
 
 if __name__ == "__main__":
     unittest.main()

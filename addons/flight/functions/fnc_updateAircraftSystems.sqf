@@ -31,10 +31,10 @@ machine that owns the same airframe computes the same burn from the same
 systems row and the same elapsed interval.  The handler interval is
 therefore free: it changes how often the state is written, never the total.
 
-THE ENGINE COMMAND.  The engine spool is a kernel-carried state.  The driver
-holds the last commanded fraction, so a tick never forces a spool change on
-an airframe the pilot is flying.  A throttle input replaces the held value
-when one is wired.
+THE ENGINE COMMAND.  The commanded band follows the engine state: the
+governed speed while airborne, idle on the ground.  The driver reads
+isEngineOn and isTouchingGround and never feeds the kernel its own last
+output.
 
 Guards, each explicit:
   - A non-positive interval is refused.
@@ -64,18 +64,12 @@ private _aircraft = vehicles select {
 };
 
 {
-    // Hold the engine spool at the last commanded fraction. The stored spool
-    // is an Ng ratio, so it is converted to the band fraction the engine
-    // kernel commands.
-    private _systems = [typeOf _x] call FUNC(getAircraftSystems);
+    // The commanded band follows the engine state: the governed speed while
+    // airborne, idle on the ground. The driver never feeds the kernel its own
+    // last output.
     private _wanted = 0;
-    if ((count _systems) >= 7) then {
-        private _idleNg = _systems select 5;
-        private _maxNg = _systems select 6;
-        if (_maxNg > _idleNg) then {
-            private _ng = _x getVariable [QGVAR(engineNg), _idleNg];
-            _wanted = ((_ng - _idleNg) / (_maxNg - _idleNg)) max 0 min 1;
-        };
+    if (isEngineOn _x) then {
+        _wanted = if (isTouchingGround _x) then { 0 } else { 1 };
     };
 
     [_x, _deltaTimeS] call FUNC(updateFuelSystem);
