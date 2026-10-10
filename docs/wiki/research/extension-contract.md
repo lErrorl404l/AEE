@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (659)
+### Public functions (662)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -606,6 +606,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_addGroundStamp`
 - `aee_thermal_fnc_applyBuildingThermal`
 - `aee_thermal_fnc_applyClothingThermal`
+- `aee_thermal_fnc_applyComponentMaterial`
 - `aee_thermal_fnc_applyContactConduction`
 - `aee_thermal_fnc_applyEngineThermal`
 - `aee_thermal_fnc_applyExhaustHeat`
@@ -639,10 +640,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_calculateVehicleHeat`
 - `aee_thermal_fnc_calculateWBGT`
 - `aee_thermal_fnc_calculateWaterTemperature`
+- `aee_thermal_fnc_classifyComponentRole`
 - `aee_thermal_fnc_collectThermalNestedObjects`
 - `aee_thermal_fnc_dumpState`
 - `aee_thermal_fnc_evaluateThermalEdge`
 - `aee_thermal_fnc_expandThermalSelectionTree`
+- `aee_thermal_fnc_getComponentAnchors`
 - `aee_thermal_fnc_getEffectiveEmissivity`
 - `aee_thermal_fnc_getGroundStampOffset`
 - `aee_thermal_fnc_getHitPointMaterials`
