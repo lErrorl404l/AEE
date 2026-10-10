@@ -33,4 +33,5 @@ PREPS(symbology,variationDialogSelect);
 PREPS(symbology,variationFamilies);
 PREPS(symbology,variationOptions);
 PREPS(symbology,variationResolve);
+PREPS(symbology,variationSettingsChanged);
 PREPS(symbology,variationState);

@@ -57,5 +57,49 @@
             <Original>Unit Symbols</Original>
             <English>Unit Symbols</English>
         </Key>
+        <Key ID="STR_AEE_Symbology_variationAffiliation_Description">
+            <Original>The affiliation of the dynamic AEE symbol: friend, hostile, neutral or unknown. Default friend.</Original>
+            <English>The affiliation of the dynamic AEE symbol: friend, hostile, neutral or unknown. Default friend.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationAffiliation_Name">
+            <Original>Variation Affiliation</Original>
+            <English>Variation Affiliation</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationDimension_Description">
+            <Original>The battle dimension of the dynamic AEE symbol: Land, Air, Sea, Subsurface, Installation, Equipment or Other. Default Land.</Original>
+            <English>The battle dimension of the dynamic AEE symbol: Land, Air, Sea, Subsurface, Installation, Equipment or Other. Default Land.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationDimension_Name">
+            <Original>Variation Battle Dimension</Original>
+            <English>Variation Battle Dimension</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationEchelon_Description">
+            <Original>The echelon of the dynamic AEE symbol, from team to region. Default team.</Original>
+            <English>The echelon of the dynamic AEE symbol, from team to region. Default team.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationEchelon_Name">
+            <Original>Variation Echelon</Original>
+            <English>Variation Echelon</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationFunction_Description">
+            <Original>The function glyph of the dynamic AEE symbol, from the APP-6(C) taxonomy. Default infantry.</Original>
+            <English>The function glyph of the dynamic AEE symbol, from the APP-6(C) taxonomy. Default infantry.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationFunction_Name">
+            <Original>Variation Function</Original>
+            <English>Variation Function</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationPalette_Description">
+            <Original>The affiliation palette for the dynamic AEE symbol: NATO, OPFOR or Auto. Default NATO.</Original>
+            <English>The affiliation palette for the dynamic AEE symbol: NATO, OPFOR or Auto. Default NATO.</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationPalette_Name">
+            <Original>Variation Palette</Original>
+            <English>Variation Palette</English>
+        </Key>
+        <Key ID="STR_AEE_Symbology_variationSelector">
+            <Original>Variation Selector</Original>
+            <English>Variation Selector</English>
+        </Key>
     </Package>
 </Project>

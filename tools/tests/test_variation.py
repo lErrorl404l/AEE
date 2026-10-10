@@ -313,6 +313,36 @@ class TestVariationApply(unittest.TestCase):
         self.assertIn("FUNC(variationResolve)", MARKERS_APPLY_SRC)
 
 
+class TestVariationSettings(unittest.TestCase):
+    """The headless route: one CBA LIST setting per option."""
+
+    SETTINGS_SRC = (SYMBOLOGY / "initSettings.inc.sqf").read_text(encoding="utf-8")
+    POSTINIT_SRC = (SYMBOLOGY / "XEH_postInit.sqf").read_text(encoding="utf-8")
+
+    def test_the_five_settings_are_declared_as_list(self):
+        for key in (
+            "variationAffiliation",
+            "variationDimension",
+            "variationFunction",
+            "variationEchelon",
+            "variationPalette",
+        ):
+            with self.subTest(setting=key):
+                self.assertIn(f"QGVAR({key})", self.SETTINGS_SRC)
+        self.assertIn('"LIST"', self.SETTINGS_SRC)
+
+    def test_the_settings_are_under_aee_hud_symbology(self):
+        self.assertIn('["AEE HUD", "Symbology"]', self.SETTINGS_SRC)
+
+    def test_a_setting_change_rebuilds_the_state(self):
+        self.assertIn("aee_symbology_fnc_variationSettingsChanged", self.SETTINGS_SRC)
+        self.assertIn("PREPS(symbology,variationSettingsChanged)", PREP_SRC)
+
+    def test_the_keybind_opens_the_dialog(self):
+        self.assertIn("CBA_fnc_addKeybind", self.POSTINIT_SRC)
+        self.assertIn("FUNC(variationDialogOpen)", self.POSTINIT_SRC)
+
+
 class TestVariationSuiteRegistration(unittest.TestCase):
     """The suite registers itself in the runner, so CI runs it."""
 
