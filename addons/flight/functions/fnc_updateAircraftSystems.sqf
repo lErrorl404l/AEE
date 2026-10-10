@@ -69,7 +69,7 @@ private _aircraft = vehicles select {
     // last output.
     private _wanted = 0;
     if (isEngineOn _x) then {
-        _wanted = if (isTouchingGround _x) then { 0 } else { 1 };
+        _wanted = parseNumber !(isTouchingGround _x);
     };
 
     [_x, _deltaTimeS] call FUNC(updateFuelSystem);

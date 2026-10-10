@@ -97,7 +97,7 @@ private _maxTgtC = _systems select 10;
 private _oilMinKpa = _systems select 11;
 private _oilMaxKpa = _systems select 12;
 
-if (_idleNg <= 0 || {_maxNg <= _idleNg}) exitWith { false };
+if (_idleNg <= 0 || _maxNg <= _idleNg) exitWith { false };
 
 // The commanded speed is the sourced idle at zero and the sourced maximum
 // at one, interpolated between.
@@ -107,7 +107,7 @@ private _wantedNg = _idleNg + ((_maxNg - _idleNg) * (_wanted max 0 min 1));
 // the fallback reads the engine's own target RPM, gated on the advanced
 // flight model.
 private _baseRpm = _designRpm;
-if (difficultyEnabledRTD && {_baseRpm <= 0}) then {
+if (difficultyEnabledRTD && _baseRpm <= 0) then {
     private _targetCode = compile "getEngineTargetRPMRTD _this";
     private _targets = _veh call _targetCode;
     if (_targets isEqualType [] && {(_targets select 0) isEqualType 0}) then {
@@ -126,7 +126,7 @@ if (_stored isEqualType 0) then {
 // scaled to a ratio by the RPM base. The reader is compiled from a string,
 // because the RTD command set differs between the game client and the
 // dedicated-server binary, exactly as fnc_applyExhaustShimmer does.
-if (difficultyEnabledRTD && {_baseRpm > 0}) then {
+if (difficultyEnabledRTD && _baseRpm > 0) then {
     private _reader = "enginesRpmRTD _this";
     private _code = compile _reader;
     private _live = _veh call _code;
@@ -143,7 +143,7 @@ if (_newNg < 0) exitWith { false };
 // engine, the time to reach it, and the engine index (-1 is every engine).
 // It is RTD-ONLY and is a no-op in the simple flight model. The non-existent
 // engine-rpm setter is never used.
-if (difficultyEnabledRTD && {_baseRpm > 0}) then {
+if (difficultyEnabledRTD && _baseRpm > 0) then {
     _veh setWantedRPMRTD [(_baseRpm * _newNg) max 0, AEE_ENGINE_SPOOL_TAU_S, -1];
 };
 

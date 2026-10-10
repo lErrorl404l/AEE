@@ -81,7 +81,7 @@ private _batteryAh = _systems select 17;
 private _cabinKpa = _systems select 18;
 private _oxygen = _systems select 21;
 
-if (_hydraulicKpa < 0 || {_generatorKw < 0} || {_busV < 0} || {_batteryAh < 0} || {_cabinKpa < 0}) exitWith { false };
+if (_hydraulicKpa < 0 || _generatorKw < 0 || _busV < 0 || _batteryAh < 0 || _cabinKpa < 0) exitWith { false };
 
 // Publish the sourced state. These are status values, not engine reads.
 _veh setVariable [QGVAR(statusHydraulicPressureKpa), _hydraulicKpa];

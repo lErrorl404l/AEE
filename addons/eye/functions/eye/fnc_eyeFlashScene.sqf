@@ -38,7 +38,7 @@ params [
 ];
 
 private _adaptLux = _steadyLux;
-if ((_flashUntil isEqualType 0) && {_missionTime < _flashUntil} && {_flashLux isEqualType 0}) then {
+if ((_flashUntil isEqualType 0) && _missionTime < _flashUntil && _flashLux isEqualType 0) then {
     _adaptLux = _steadyLux + _flashLux;
 };
 
