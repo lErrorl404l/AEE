@@ -83,6 +83,7 @@ def main():
         # Global sensitivity analysis of the two models above (SALib). Skips
         # where SALib is absent; CI installs the pinned version.
         "tools/tests/test_sensitivity.py",
+        "tools/tests/test_suppression_psychology.py",
         "tools/tests/test_cold_weather.py",
         "tools/tests/test_dynamics.py",
         "tools/tests/test_dynamic_stars.py",

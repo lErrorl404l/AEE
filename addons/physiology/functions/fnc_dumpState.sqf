@@ -36,13 +36,32 @@ if !(_hypoxia isEqualType createHashMap) then { _hypoxia = createHashMap; };
 private _dives = missionNamespace getVariable [QEGVAR(dive,diveStates), createHashMap];
 if !(_dives isEqualType createHashMap) then { _dives = createHashMap; };
 
+// Combat-stress psychology (issue #110): the tracked unit count and the
+// local unit's stress, morale and action gate.
+private _psyUnits = missionNamespace getVariable [QGVAR(psychologyUnits), 0];
+if !(_psyUnits isEqualType 0) then { _psyUnits = 0; };
+private _local = call CBA_fnc_currentUnit;
+private _psy = [];
+if (!isNull _local) then { _psy = _local getVariable [QGVAR(psychology), []]; };
+if !(_psy isEqualType []) then { _psy = []; };
+private _psyStress = 0;
+private _psyMorale = 0;
+private _psyAction = 0;
+if ((count _psy) > PSY_I_ACTION) then {
+    _psyStress = _psy select PSY_I_STRESS;
+    _psyMorale = _psy select PSY_I_MORALE;
+    _psyAction = _psy select PSY_I_ACTION;
+};
+
 private _logMsg = format [
-    "physiology state | sleep=%1 g=%2 gloc=%3 fatigue=%4 sleepiness=%5 wakeH=%6 acclim=%7 dehydration=%8 | altitude=%9 oxygen=%10 hypoxia=%11 dive=%12",
+    "physiology state | sleep=%1 g=%2 gloc=%3 fatigue=%4 sleepiness=%5 wakeH=%6 acclim=%7 dehydration=%8 | altitude=%9 oxygen=%10 hypoxia=%11 dive=%12 | psyUnits=%13 stress=%14 morale=%15 action=%16",
     _sleepState, round (_gLoad * 100) / 100, _gLocStage,
     round (_fatigue * 100) / 100, round (_sleepiness * 100) / 100,
     round (_wakeH * 100) / 100, round (_acclim * 100) / 100,
     round (_dehydration * 100) / 100, count _altitude, count _oxygen,
-    count _hypoxia, count _dives
+    count _hypoxia, count _dives, _psyUnits,
+    round (_psyStress * 100) / 100, round (_psyMorale * 100) / 100,
+    _psyAction
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

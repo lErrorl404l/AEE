@@ -5,6 +5,7 @@
 // split out to their own addons (ADR-032).
 
 PREPS(state,updateFatigueState);
+PREPS(state,updatePsychologyState);
 PREPS(state,zh16cStep);
 PREPS(state,coldStress);
 PREPS(state,heatStress);
