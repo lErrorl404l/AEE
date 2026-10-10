@@ -30,4 +30,4 @@ params [
 private _edge = [2.5, 1.3, 1.0, 1.0] select ((_tierIdx max 0) min 3);
 private _scale = 1 + (_edge - 1) * ((_strength max 0) min 1);
 
-_scale min (0.01 / (_vigPowerX max 0.0001))
+_scale min (0.01 / (_vigPowerX max EPSILON))

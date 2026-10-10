@@ -41,7 +41,7 @@ if (_flux <= 0) exitWith { 0 };
 
 private _h = 5.7 + 3.8 * (_wind max 0);
 private _sigma = 5.670374419e-8;
-private _tAirK = _tAir + 273.15;
+private _tAirK = _tAir + KELVIN_OFFSET;
 private _tsK = _tAirK + 1;
 
 for "_i" from 1 to 10 do {

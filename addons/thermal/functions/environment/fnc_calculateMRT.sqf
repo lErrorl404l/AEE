@@ -47,10 +47,10 @@ ground and sky.  The caller passes the ground view factor (0..1) and
 the function splits the remainder between sky and objects.
 
 Sky longwave temperature (Swinbank 1963, validated - a clear night sky
-radiates at 0.0552 * Ta^1.5 K, far below air temperature; overcast sky
+radiates at SWINBANK_CLEAR_SKY * Ta^1.5 K, far below air temperature; overcast sky
 approaches air temperature because cloud bases are warm emitters):
 
-  T_sky = 0.0552 * Ta_K^1.5 - 273.15     (clear sky, Swinbank 1963)
+  T_sky = SWINBANK_CLEAR_SKY * Ta_K^1.5 - KELVIN_OFFSET     (clear sky, Swinbank 1963)
   blended toward Ta as overcast -> 1
 
 Inputs come from the AEE environment state, so no new sensors are
@@ -75,11 +75,11 @@ if !(_tAir isEqualType 0) then { _tAir = 15; };
 private _tGround = [_pos] call FUNC(calculateGroundTemperature);
 
 // ─── Sky longwave temperature (Swinbank 1963) ─────────────────────────────
-// T_sky = 0.0552 * Ta^1.5 (Kelvin) for a clear sky.  Overcast raises the
+// T_sky = SWINBANK_CLEAR_SKY * Ta^1.5 (Kelvin) for a clear sky.  Overcast raises the
 // effective sky emitter to near air temperature (cloud base is a warm
 // blackbody), so blend by overcast 0..1.
-private _tAirK = _tAir + 273.15;
-private _tSkyClear = (0.0552 * (_tAirK ^ 1.5)) - 273.15;
+private _tAirK = _tAir + KELVIN_OFFSET;
+private _tSkyClear = (SWINBANK_CLEAR_SKY * (_tAirK ^ 1.5)) - KELVIN_OFFSET;
 private _tSky = _tAir + (_tSkyClear - _tAir) * (1 - overcast);
 if (_tSky > _tAir) then { _tSky = _tAir; };  // sky can never be a warmer emitter than air
 
@@ -121,7 +121,7 @@ private _fSky = 1 - _fGround - _fObj;
 if (_fSky < 0) then { _fSky = 0; };
 if (_fObj > 0) then {
     private _meanObj = _objContrib / _objFactor;
-    ((_fGround * ((_tGround + 273.15) ^ 4)) + (_fSky * ((_tSky + 273.15) ^ 4)) + (_fObj * ((_meanObj + 273.15) ^ 4))) ^ 0.25 - 273.15
+    ((_fGround * ((_tGround + KELVIN_OFFSET) ^ 4)) + (_fSky * ((_tSky + KELVIN_OFFSET) ^ 4)) + (_fObj * ((_meanObj + KELVIN_OFFSET) ^ 4))) ^ 0.25 - KELVIN_OFFSET
 } else {
-    ((_fGround * ((_tGround + 273.15) ^ 4)) + (_fSky * ((_tSky + 273.15) ^ 4))) ^ 0.25 - 273.15
+    ((_fGround * ((_tGround + KELVIN_OFFSET) ^ 4)) + (_fSky * ((_tSky + KELVIN_OFFSET) ^ 4))) ^ 0.25 - KELVIN_OFFSET
 }

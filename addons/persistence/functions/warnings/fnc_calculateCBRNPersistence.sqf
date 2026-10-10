@@ -21,7 +21,7 @@ Stored in QEGVAR(core,cbrnPersistence).
 private _temp_C  = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _windSpd  = vectorMagnitude wind;
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 
 if (isNil "_temp_C")   then { _temp_C   = 15; };
 if (isNil "_humidity") then { _humidity = 50; };

@@ -20,7 +20,7 @@ SOURCE LADDER FOR THE BAND EMISSIVITY.
 
 The full-spectrum clear-sky emissivity is Idso 1981:
 
-    epsFull = 0.70 + 5.95e-5 * eHPa * exp(1500 / (T_air + 273.15))
+    epsFull = 0.70 + 5.95e-5 * eHPa * exp(1500 / (T_air + KELVIN_OFFSET))
 
 (Idso, Water Resources Research 17(2):295-304, 1981, DOI
 10.1029/WR017i002p00295).  It is sourced and quoted.
@@ -71,7 +71,7 @@ private _bandEdges = [_bandToken] call FUNC(resolveThermalBand);
 private _lambda1M = _bandEdges select 0;
 private _lambda2M = _bandEdges select 1;
 
-private _tAirK = _tAirC + 273.15;
+private _tAirK = _tAirC + KELVIN_OFFSET;
 
 // ─── Water-vapour partial pressure, Magnus saturation curve ───────────────
 // e_s(T) = 6.112 * exp(17.67 * T / (T + 243.5)) hPa (Magnus, Bolton 1980).
@@ -120,4 +120,4 @@ for "_i" from 1 to 40 do {
     };
 };
 
-((_lo + _hi) / 2) - 273.15
+((_lo + _hi) / 2) - KELVIN_OFFSET

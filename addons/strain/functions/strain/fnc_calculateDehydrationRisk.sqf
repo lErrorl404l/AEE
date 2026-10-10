@@ -43,7 +43,7 @@ if (_dehydAccum isEqualType 0) then {
 private _myState = _dehydAccum getOrDefault [_uid, [0, 0, 0]];
 _myState params ["_deficit", "_lastTime", "_lastRisk"];
 private _now = diag_tickTime;
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 private _tickHours = _interval / 3600;
 
 private _WBGT = missionNamespace getVariable [QEGVAR(core,currentWBGT), 15];

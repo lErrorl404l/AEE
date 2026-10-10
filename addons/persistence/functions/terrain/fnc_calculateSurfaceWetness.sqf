@@ -15,7 +15,7 @@ private _humidity  = missionNamespace getVariable [QEGVAR(core,currentHumidity),
 private _windSpeed = vectorMagnitude wind;
 private _overcast  = overcast;
 private _rainRate  = rain;
-private _interval  = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval  = EGVAR(core,updateInterval);
 
 if (isNil "_rainRate") then { _rainRate = 0; };
 

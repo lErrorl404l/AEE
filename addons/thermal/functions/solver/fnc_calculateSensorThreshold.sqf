@@ -112,7 +112,7 @@ if (_netdC <= 0) exitWith { -1 };
 if (_snrMultiple <= 0) exitWith { -1 };
 
 // The background is the divisor, in Kelvin.
-private _tBgK = _tBgC + 273.15;
+private _tBgK = _tBgC + KELVIN_OFFSET;
 if (_tBgK <= 0) exitWith { -1 };
 
 // The Planck exponent of the segment holding the background.  The same

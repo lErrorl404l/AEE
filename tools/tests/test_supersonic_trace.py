@@ -39,13 +39,30 @@ KERNEL = REPO / "addons/ballistics/functions/fnc_calculateSupersonicTrace.sqf"
 SOURCE = KERNEL.read_text(encoding="utf-8")
 
 
+CONSTANTS_HPP = REPO / "addons" / "lib" / "constants.hpp"
+
+
+def _constant(name: str) -> float:
+    """The value of a shared #define in addons/lib/constants.hpp."""
+    text = CONSTANTS_HPP.read_text(encoding="utf-8")
+    match = re.search(
+        rf"^#define\s+{re.escape(name)}\s+([0-9]+(?:\.[0-9]+)?)", text, re.M
+    )
+    if not match:
+        raise AssertionError(f"{name} is not defined in constants.hpp")
+    return float(match.group(1))
+
+
 def sqf_number(pattern: str) -> float:
-    """Read a numeric literal out of the real SQF, so this test cannot drift
-    from the file it tests."""
+    """Read a numeric literal, or a shared-constant name, out of the real SQF,
+    so this test cannot drift from the file it tests."""
     match = re.search(pattern, SOURCE)
     if not match:
         raise AssertionError(f"SQF no longer matches {pattern!r}")
-    return float(match.group(1))
+    token = match.group(1)
+    if re.fullmatch(r"[0-9.]+", token):
+        return float(token)
+    return _constant(token)
 
 
 def normal_shock_ratio(mach: float, gamma: float = 1.4) -> float:
@@ -58,8 +75,8 @@ class SupersonicTraceKernel(unittest.TestCase):
     def setUp(self) -> None:
         self.gamma = sqf_number(r"private _gamma\s*=\s*([0-9.]+)\s*;")
         self.k = sqf_number(r"private _k\s*=\s*([0-9.]+)\s*;")
-        self.rho0 = sqf_number(r"private _rhoAmbient\s*=\s*([0-9.]+)")
-        self.sound_coeff = sqf_number(r"private _sound\s*=\s*([0-9.]+)")
+        self.rho0 = sqf_number(r"private _rhoAmbient\s*=\s*([0-9.]+|[A-Za-z_]\w*)")
+        self.sound_coeff = sqf_number(r"private _sound\s*=\s*([0-9.]+|[A-Za-z_]\w*)")
 
     def contrast(self, mach: float, rho_rel: float = 1.0) -> float:
         """The kernel result in its reported units, re-derived here."""
@@ -253,7 +270,7 @@ class SupersonicTraceKernel(unittest.TestCase):
         self.assertNotIn("GVAR(", SOURCE.split("Arguments:")[0])
         # The only scaling is the reporting unit, and it is a pure division.
         body = SOURCE.split("private _contrast =")[-1]
-        self.assertIn("_contrast / 0.0001", body)
+        self.assertIn("_contrast / EPSILON", body)
 
     def test_declares_params_and_return(self) -> None:
         # CONTRIBUTING requires the standard header: params, return, example.

@@ -25,7 +25,7 @@ Sets:   engine local wind visual (setLocalWindParams)
 */
 if (!hasInterface) exitWith {};
 
-private _g = 9.80665;
+private _g = STANDARD_GRAVITY;
 private _disableParam = 0.0001;
 
 private _player = call CBA_fnc_currentUnit;
@@ -50,8 +50,8 @@ if (_mass <= 0) exitWith {
     missionNamespace setVariable [QGVAR(localWindActive), false];
 };
 
-private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-if !(_rho isEqualType 0) then { _rho = 1.225; };
+private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+if !(_rho isEqualType 0) then { _rho = AERO_ISA_SEA_LEVEL_DENSITY; };
 _rho = (_rho max 0.1) min 1.5;
 
 // Rotor radius: 3 m (light) to 11 m (heavy lift), the estimate

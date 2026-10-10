@@ -5,6 +5,9 @@
 // Stock CBA macros (vendored in include/x/cba for HEMTT preprocessing).
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
+// Shared physical constants: one definition per fact, read by every addon.
+#include "constants.hpp"
+
 // ── Function compilation ────────────────────────────────────────────────────
 // Stock CBA's PREP compiles from the addon root (fnc_<name>.sqf). AEE keeps
 // the ACE3 convention of a functions/ subfolder, so PREP is overridden to

@@ -34,7 +34,7 @@ if (isNil "_temp") exitWith {
     1.0
 };
 
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 private _state    = missionNamespace getVariable [QGVAR(freezeThawState), 1.0];
 
 // ─── Degree-day accumulation (Stefan solution) ────────────────────────────

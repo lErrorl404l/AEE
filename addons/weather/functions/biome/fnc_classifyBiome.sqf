@@ -84,7 +84,7 @@ if (count _monthlyTemps != 12 || count _monthlyPrecip != 12) exitWith { "" };
 
 // Altitude lapse-rate correction: 6.5 °C per 1000 m
 if (_altitudeM > 0) then {
-    private _lapse = 0.0065 * _altitudeM;
+    private _lapse = ISA_LAPSE_RATE * _altitudeM;
     _monthlyTemps = _monthlyTemps apply { _x - _lapse; };
 };
 

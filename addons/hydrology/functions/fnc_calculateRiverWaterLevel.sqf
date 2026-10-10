@@ -65,7 +65,7 @@ _curveNumber = _curveNumber min 100;
 // delivered is rain * (30 / 3600) * interval mm.
 private _rainIntensity = rain;
 if !(_rainIntensity isEqualType 0) then { _rainIntensity = 0; };
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval = EGVAR(core,updateInterval);
 if !(_interval isEqualType 0) then { _interval = 5; };
 private _mmPerTick = _rainIntensity * (30 / 3600) * _interval;
 

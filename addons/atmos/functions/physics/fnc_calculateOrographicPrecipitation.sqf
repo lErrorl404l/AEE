@@ -42,8 +42,8 @@ params [["_pos", [], [[]]]];
 if (count _pos < 2) exitWith { 1 };
 
 // ─── Air density and moisture ────────────────────────────────────────────
-private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-if !(_rho isEqualType 0) then { _rho = 1.225; };
+private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+if !(_rho isEqualType 0) then { _rho = AERO_ISA_SEA_LEVEL_DENSITY; };
 
 // Specific humidity from the relative humidity and temperature the
 // atmosphere model already publishes.  The saturation mixing ratio uses
@@ -52,8 +52,8 @@ private _tempC = missionNamespace getVariable [QEGVAR(core,currentTemperature), 
 if !(_tempC isEqualType 0) then { _tempC = 15; };
 private _rh = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 if !(_rh isEqualType 0) then { _rh = 50; };
-private _pressure = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
-if !(_pressure isEqualType 0) then { _pressure = 1013.25; };
+private _pressure = missionNamespace getVariable [QEGVAR(core,currentPressure), ISA_SEA_LEVEL_PRESSURE_HPA];
+if !(_pressure isEqualType 0) then { _pressure = ISA_SEA_LEVEL_PRESSURE_HPA; };
 
 // Saturation vapour pressure (Buck 1996), hPa, then the mixing ratio.
 private _eSat = 6.1121 * exp ((18.678 - _tempC / 234.5) * _tempC / (257.14 + _tempC));

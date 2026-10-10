@@ -26,7 +26,7 @@ if (!isNil "_player" && {!isNull _player}) then {
 private _pressure = missionNamespace getVariable [QEGVAR(core,currentPressure), 0];
 private _eqAlt = _altASL;
 if (_pressure > 0) then {
-    _eqAlt = 44330 * (1 - ((_pressure / 1013.25) ^ 0.1903));
+    _eqAlt = 44330 * (1 - ((_pressure / ISA_SEA_LEVEL_PRESSURE_HPA) ^ 0.1903));
 };
 
 // ─── Time of Useful Consciousness (FAA table) ────────────────────────────
@@ -60,7 +60,7 @@ if (_exposureMap isEqualType 0) then {
     missionNamespace setVariable [QGVAR(hypoxiaExposure), _exposureMap];
 };
 private _exposure = _exposureMap getOrDefault [_uid, 0];
-private _tickSeconds = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _tickSeconds = EGVAR(core,updateInterval);
 
 if (_eqAlt > 6000) then {
     _exposure = _exposure + _tickSeconds;

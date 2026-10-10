@@ -2,7 +2,7 @@
 
 /*
 Helicopter lift density ratio — current air density relative to ISA sea-level
-(1.225 kg/m³ at 15 °C).
+(AERO_ISA_SEA_LEVEL_DENSITY kg/m³ at 15 °C).
 
   ratio = 1.0  — equivalent to sea-level standard-day performance
   ratio < 1.0  — reduced lift (hot day, high altitude, or both)
@@ -29,10 +29,10 @@ if (_density <= 0) then {
             _elevation = getTerrainHeightASL (getPos _player);
         };
     };
-    _density = 1.225 * exp (-_elevation / 8500);
+    _density = AERO_ISA_SEA_LEVEL_DENSITY * exp (-_elevation / 8500);
 };
 
-private _ratio = _density / 1.225;
+private _ratio = _density / AERO_ISA_SEA_LEVEL_DENSITY;
 _ratio = _ratio max 0.4 min 1.05;
 
 missionNamespace setVariable [QGVAR(currentLiftRatio), _ratio];

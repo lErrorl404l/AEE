@@ -30,7 +30,7 @@ params [];
 
 private _intensity = missionNamespace getVariable [QGVAR(frostIntensity), 0];
 private _vehicle   = vehicle player;
-private _interval  = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval  = EGVAR(core,updateInterval);
 
 // ─── Read environment ─────────────────────────────────────────────────────
 private _temp     = missionNamespace getVariable ["aee_core_currentTemperature", 20];

@@ -48,7 +48,7 @@ if (isNil "_temp") then { _temp = 20; };
 
 // ─── Settings ─────────────────────────────────────────────────────────────
 private _convectionTemp = missionNamespace getVariable [QGVAR(lightningConvectionTemp), 25];
-private _interval       = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _interval       = EGVAR(core,updateInterval);
 private _strikeChance   = missionNamespace getVariable [QGVAR(lightningStrikeChance), 0.05];
 _strikeChance = _strikeChance * (_interval / 5);
 

@@ -133,8 +133,8 @@ _tau = (_tau max 0) min 1;
 
 // Clamp the physical inputs: emissivity 0..1, temps sane.
 _eps = (_eps max 0.05) min 1;
-private _tSurfK = _tSurf + 273.15;
-private _tGroundK = _tGround + 273.15;
+private _tSurfK = _tSurf + KELVIN_OFFSET;
+private _tGroundK = _tGround + KELVIN_OFFSET;
 
 // ─── Sky temperature for the sensor band ──────────────────────────────────
 // The sensor sees the ATMOSPHERIC WINDOW, which is semi-transparent, so the
@@ -150,7 +150,7 @@ private _tSkyC = [_bandToken, _tAir, _humidityPct, _overcast] call FUNC(calculat
 // fnc_calculateSkyRadiance applies.  This is the last computed band sky
 // temperature; the solver arithmetic is unchanged.
 missionNamespace setVariable ["aee_thermal_skyBandTempC", _tSkyC];
-private _tSkyK = _tSkyC + 273.15;
+private _tSkyK = _tSkyC + KELVIN_OFFSET;
 
 // ─── Reflected environment: sky/ground mix by view factor ────────────────
 private _tReflK = _fGround * _tGroundK + (1 - _fGround) * _tSkyK;
@@ -160,7 +160,7 @@ private _tReflK = _fGround * _tGroundK + (1 - _fGround) * _tSkyK;
 // the cumulative-blackbody series and the CODATA 2022 constants.
 private _wObj = [_tSurfK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
 private _wRefl = [_tReflK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
-private _tPathK = (_tPath + 273.15) max 200 min 350;
+private _tPathK = (_tPath + KELVIN_OFFSET) max 200 min 350;
 private _wAtm = [_tPathK, _lambda1M, _lambda2M] call FUNC(planckBandRadiance);
 private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl + _wSolar);
 private _wBand = _wTransmitted + (1 - _tau) * _wAtm;
@@ -171,7 +171,7 @@ if (_traceOn) then {
     // three namespace lookups behind it are not repeated per selection.
     private _us = round ((diag_tickTime - _perfT0) * 1000);
     private _bandMsg = format ["bandRadiance %1 ms | tau %2 | eps %3 | surf %4 C | refl %5 C | path %6 C | W %7",
-        _us, _tau toFixed 4, _eps toFixed 3, _tSurf, _tReflK - 273.15, _tPath, _wBand toFixed 6];
+        _us, _tau toFixed 4, _eps toFixed 3, _tSurf, _tReflK - KELVIN_OFFSET, _tPath, _wBand toFixed 6];
     AEE_LOG_DEBUG(_bandMsg);
 };
 _wBand

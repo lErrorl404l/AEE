@@ -207,8 +207,8 @@ private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 if !(_fog isEqualType 0) then { _fog = 0; };
 private _rain = rain;
 if !(_rain isEqualType 0) then { _rain = 0; };
-private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
-if !(_airDensity isEqualType 0) then { _airDensity = 1.225; };
+private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
+if !(_airDensity isEqualType 0) then { _airDensity = AERO_ISA_SEA_LEVEL_DENSITY; };
 // The device pair is resolved ONCE per tick, before the object walk.  It
 // carries the NVG tube row, the thermal channel row, the channel's
 // half-angle and the provenance of that figure (declared, derived or
