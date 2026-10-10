@@ -47,6 +47,8 @@ ADR030 = (
 )
 TOPO_SURFACE = REPO / "docs" / "engine" / "topo-map-surface.md"
 COL_HPP = CART / "config_mapcolors.hpp"
+DISP_HPP = CART / "config_mapdisplays.hpp"
+DISP_SRC = DISP_HPP.read_text(encoding="utf-8")
 FAMILY_HPP = SYMBOLOGY / "config_family.hpp"
 
 MATRIX_SRC = MATRIX.read_text(encoding="utf-8")
@@ -59,6 +61,8 @@ LEGEND_KERNEL = CART / "functions" / "hud" / "fnc_mapLegendDraw.sqf"
 MGRS_DRAW_SRC = (CART / "functions" / "hud" / "fnc_mgrsMapDraw.sqf").read_text(
     encoding="utf-8"
 )
+MINI_HPP = CART / "config_mapminimap.hpp"
+MINI_SRC = MINI_HPP.read_text(encoding="utf-8")
 SYMBOLS_JSON = REPO / "data" / "symbology" / "terrain_symbols.json"
 TABLE_SRC = json.loads(SYMBOLS_JSON.read_text(encoding="utf-8"))
 
@@ -137,6 +141,23 @@ def _colour_of(text: str, field: str) -> list[float] | None:
 
 def _rgba_eq(a, b, tol=1e-6) -> bool:
     return len(a) == len(b) and all(abs(x - y) <= tol for x, y in zip(a, b))
+
+
+def _array_of(text: str, field: str):
+    m = re.search(rf"{re.escape(field)}\[\]\s*=\s*\{{([^}}]*)\}}", text)
+    if not m:
+        return None
+    return [float(x) for x in m.group(1).split(",")]
+
+
+def _scalar_of(text: str, field: str):
+    m = re.search(rf"\b{re.escape(field)}\s*=\s*([0-9.]+)\s*;", text)
+    return float(m.group(1)) if m else None
+
+
+def _text_of(text: str, field: str):
+    m = re.search(rf'\b{re.escape(field)}\s*=\s*"([^"]+)"\s*;', text)
+    return m.group(1) if m else None
 
 
 class TestMapQaMatrix(unittest.TestCase):
@@ -399,6 +420,128 @@ class TestMapLegend(unittest.TestCase):
     def test_the_legend_hook_draws_on_the_map_control(self):
         # The Draw hook calls the kernel and draws on the map control.
         self.assertIn("call FUNC(mapLegendDraw)", MGRS_DRAW_SRC)
+
+
+class TestMapMinimapTargets(unittest.TestCase):
+    """The minimap and airborne-minimap targets (todo 10).
+
+    The engine minimap CA_MiniMap forces part of the palette, so AEE
+    re-declares the control for the fields the engine does not force, from
+    config_mapminimap.hpp.  Every reachable value is the SAME as
+    config_mapcolors.hpp, so the minimap and the main map read one source; a
+    forced field would be dead and is recorded in the ceiling instead.
+    """
+
+    REACH_ARRAYS = (
+        "colorOutside",
+        "colorInactive",
+        "colorForestTextured",
+        "colorNames",
+        "colorTrails",
+        "colorTrailsFill",
+    )
+    REACH_SCALARS = (
+        "sizeExLevel",
+        "ptsPerSquareSea",
+        "ptsPerSquareCLn",
+        "widthRailWay",
+        "shadedSea",
+    )
+    FORCED = (
+        "colorSea",
+        "colorForest",
+        "colorForestBorder",
+        "colorRocks",
+        "colorRocksBorder",
+        "colorLevels",
+        "colorMainCountlines",
+        "colorCountlines",
+        "colorMainCountlinesWater",
+        "colorCountlinesWater",
+        "colorPowerLines",
+        "colorRailWay",
+        "colorTracks",
+        "colorTracksFill",
+        "colorRoads",
+        "colorRoadsFill",
+        "colorMainRoads",
+        "colorMainRoadsFill",
+        "colorGrid",
+        "colorGridMap",
+        "maxSatelliteAlpha",
+        "alphaFadeStartScale",
+        "alphaFadeEndScale",
+        "drawShaded",
+        "showCountourInterval",
+        "moveOnEdges",
+        "ptsPerSquareTxt",
+        "ptsPerSquareFor",
+        "ptsPerSquareForEdge",
+        "ptsPerSquareRoad",
+        "ptsPerSquareMainRoad",
+        "ptsPerSquareObj",
+        "ptsPerSquareObjLod1",
+        "ptsPerSquareForLod1",
+        "ptsPerSquareForLod2",
+        "ptsPerSquareRoadSimple",
+        "ptsPerSquareMainRoadSimple",
+    )
+
+    def test_the_minimap_and_airborne_targets_are_declared(self):
+        self.assertIn("class RscCustomInfoMiniMap {", DISP_SRC)
+        self.assertIn(
+            "class RscCustomInfoAirborneMiniMap: RscCustomInfoMiniMap {", DISP_SRC
+        )
+        # Every reopened class restates its vanilla parent, so the engine Empty
+        # syntax cannot strip the inherited palette or font fields (ADR-030).
+        self.assertIn("class CA_MiniMap: RscMapControl {", DISP_SRC)
+        self.assertIn("class CA_MiniMap: CA_MiniMap {", DISP_SRC)
+        self.assertIn("class MiniMap: RscControlsGroupNoScrollbars {", DISP_SRC)
+
+    def test_the_targets_include_the_minimap_surface(self):
+        self.assertEqual(DISP_SRC.count('#include "config_mapminimap.hpp"'), 2)
+
+    def test_every_reachable_array_matches_config_mapcolors(self):
+        for field in self.REACH_ARRAYS:
+            with self.subTest(field=field):
+                self.assertEqual(
+                    _array_of(MINI_SRC, field), _array_of(COL_SRC, field), field
+                )
+
+    def test_every_reachable_scalar_matches_config_mapcolors(self):
+        for field in self.REACH_SCALARS:
+            with self.subTest(field=field):
+                self.assertEqual(
+                    _scalar_of(MINI_SRC, field), _scalar_of(COL_SRC, field), field
+                )
+
+    def test_the_label_font_matches_config_mapcolors(self):
+        self.assertEqual(
+            _text_of(MINI_SRC, "fontLevel"), _text_of(COL_SRC, "fontLevel")
+        )
+
+    def test_no_forced_field_is_set_in_the_minimap_surface(self):
+        for field in self.FORCED:
+            with self.subTest(field=field):
+                self.assertNotRegex(MINI_SRC, rf"\b{re.escape(field)}\s*(\[\])?\s*=")
+
+    def test_the_ceiling_names_every_forced_field(self):
+        for field in self.FORCED:
+            with self.subTest(field=field):
+                self.assertIn(field, MINI_SRC)
+
+    def test_the_probe_asserts_the_new_reach(self):
+        probe = (
+            REPO
+            / "tests"
+            / "docker"
+            / "missions"
+            / "aee_test.Stratis"
+            / "aee_p142_map_surface_reach_probe.sqf"
+        ).read_text(encoding="utf-8")
+        for field in self.REACH_ARRAYS + ("fontLevel",) + self.REACH_SCALARS:
+            with self.subTest(field=field):
+                self.assertIn(f'["{field}",', probe)
 
 
 class TestSuiteRegistration(unittest.TestCase):

@@ -17,7 +17,9 @@
  *
  * Engine ceiling: the minimap overrides maxSatelliteAlpha, alphaFade*, the
  * ptsPerSquare* densities, colorSea, colorForest and drawShaded, so the
- * minimap keeps its own sea and forest fill and its satellite fade.
+ * minimap keeps its own sea and forest fill and its satellite fade.  AEE
+ * re-declares the minimap CA_MiniMap below for the fields the engine does not
+ * force, from config_mapminimap.hpp; that file names every unreachable field.
  */
 class RscDisplayStrategicMap {
     class controlsBackground {
@@ -44,4 +46,31 @@ class ctrlMap: ctrlDefault {
     colorGrid[] = {0, 0, 0, 0};
     colorGridMap[] = {0, 0, 0, 0};
     sizeExGrid = 0.04;
+};
+
+// The minimap control.  The engine ui_f CA_MiniMap forces part of the palette
+// (config_mapminimap.hpp names every unreachable field), so AEE re-declares the
+// control for the fields the engine does not force.  The airborne minimap
+// inherits this control and adds its own forced overrides.
+class RscCustomInfoMiniMap {
+    class controls {
+        class MiniMap: RscControlsGroupNoScrollbars {
+            class Controls {
+                class CA_MiniMap: RscMapControl {
+#include "config_mapminimap.hpp"
+                };
+            };
+        };
+    };
+};
+class RscCustomInfoAirborneMiniMap: RscCustomInfoMiniMap {
+    class controls: controls {
+        class MiniMap: MiniMap {
+            class Controls: Controls {
+                class CA_MiniMap: CA_MiniMap {
+#include "config_mapminimap.hpp"
+                };
+            };
+        };
+    };
 };
