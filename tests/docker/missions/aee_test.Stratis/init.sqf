@@ -3441,6 +3441,12 @@ private _p29Pass = 0;
     // consumer sees a non-zero magazine content mass from the same key. It
     // renders nothing.
     execVM "aee_p141_magazine_mass_probe.sqf";
+    // PHASE 142 lives in aee_p142_map_surface_reach_probe.sqf: the AEE
+    // topographic surface is engine config, so the probe reads the merged
+    // config on every named map surface, asserts the AEE values on the
+    // surfaces AEE re-declares and reports where the reach stops.  It changes
+    // no config and renders nothing.
+    execVM "aee_p142_map_surface_reach_probe.sqf";
     // PHASE 137 lives in aee_p137_kernel_parity_probe.sqf: the pure native
     // kernels are server-callable, so the dedicated server drives each one and
     // compares the dispatcher's answer against the SQF reference within the
