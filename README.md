@@ -52,6 +52,7 @@ Place the **AEE Environment Config** module in the editor to customise settings.
 ### Thermal and Optics
 
 - Thermal crossover, mirage, and solar glare.
+- Ice-crystal halos and parhelia, and the green flash.
 - Cn2-based atmospheric seeing and physical smoke dispersal.
 - Rain visibility (Atlas extinction), dew and frost on optics, snow blindness.
 

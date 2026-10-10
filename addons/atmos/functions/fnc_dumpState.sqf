@@ -35,13 +35,33 @@ private _localWindActive = missionNamespace getVariable [QGVAR(localWindActive),
 if !(_localWindActive isEqualType false) then { _localWindActive = false; };
 private _mirageType = missionNamespace getVariable [QGVAR(mirageType), "None"];
 if !(_mirageType isEqualType "") then { _mirageType = "None"; };
+private _haloIntensity = missionNamespace getVariable [QGVAR(haloIntensity), 0];
+if !(_haloIntensity isEqualType 0) then { _haloIntensity = 0; };
+private _haloActive = missionNamespace getVariable [QGVAR(haloActive), false];
+if !(_haloActive isEqualType false) then { _haloActive = false; };
+private _halo22Inner = missionNamespace getVariable [QGVAR(halo22InnerDeg), 0];
+if !(_halo22Inner isEqualType 0) then { _halo22Inner = 0; };
+private _halo22Outer = missionNamespace getVariable [QGVAR(halo22OuterDeg), 0];
+if !(_halo22Outer isEqualType 0) then { _halo22Outer = 0; };
+private _halo46Inner = missionNamespace getVariable [QGVAR(halo46InnerDeg), 0];
+if !(_halo46Inner isEqualType 0) then { _halo46Inner = 0; };
+private _halo46Outer = missionNamespace getVariable [QGVAR(halo46OuterDeg), 0];
+if !(_halo46Outer isEqualType 0) then { _halo46Outer = 0; };
+private _sundogOffset = missionNamespace getVariable [QGVAR(sundogOffsetDeg), 0];
+if !(_sundogOffset isEqualType 0) then { _sundogOffset = 0; };
+private _sundogActive = missionNamespace getVariable [QGVAR(sundogActive), false];
+if !(_sundogActive isEqualType false) then { _sundogActive = false; };
 
 private _logMsg = format [
-    "atmos state | turbulence=%1/%2 icing=%3/%4 clouds=%5 cape=%6 | microburst=%7 t=%8 wind=%9 | fog=%10 localWind=%11 mirage=%12",
+    "atmos state | turbulence=%1/%2 icing=%3/%4 clouds=%5 cape=%6 | microburst=%7 t=%8 wind=%9 | fog=%10 localWind=%11 mirage=%12 | halo=%13/%14 r22=%15-%16 r46=%17-%18 sundog=%19@%20",
     round (_edrValue * 100) / 100, _turbulenceClass, round (_airframeIcing * 100) / 100, _airframeIcingDetected,
     _cloudDescription, round (_capeProxy * 100) / 100,
     _microburstSeverity, round (_microburstTimer * 100) / 100, round (_microburstWindSpeed * 100) / 100,
-    round (_radiationalFog * 100) / 100, _localWindActive, _mirageType
+    round (_radiationalFog * 100) / 100, _localWindActive, _mirageType,
+    round (_haloIntensity * 100) / 100, _haloActive,
+    round (_halo22Inner * 100) / 100, round (_halo22Outer * 100) / 100,
+    round (_halo46Inner * 100) / 100, round (_halo46Outer * 100) / 100,
+    _sundogActive, round (_sundogOffset * 100) / 100
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {
