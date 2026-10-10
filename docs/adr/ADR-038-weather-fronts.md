@@ -26,15 +26,20 @@ physics and the two models would drift.
    follows the prevailing westerlies. The seed offsets the life cycle and the
    bearing, so two missions do not share a front.
 
-2. The front state is a PURE function of mission time and the seeded
+2. The seed is derived from the world name, so it is STABLE for the mission.
+   The seeded progression changes every tick: a 0.025 change in the seed would
+   move the front about 190 km in one tick. The world-name seed is
+   deterministic and identical on every machine, so the front holds its track.
+
+3. The front state is a PURE function of mission time and the seeded
    progression (`fnc_calculateWeatherFront`). Every machine computes the same
    front. Nothing is broadcast, so the rule against `publicVariable` holds.
 
-3. The signed distance from the observer to the front line maps to a phase
+4. The signed distance from the observer to the front line maps to a phase
    factor in [-1, +1] (`fnc_calculateFrontDistance`, `fnc_calculateFrontPhase`).
    One factor drives the whole passage signature.
 
-4. `fnc_updateWeatherFront` applies the factor to the existing state:
+5. `fnc_updateWeatherFront` applies the factor to the existing state:
 
    - temperature: the contrast step, `warmSide * f * contrast / 2`
    - pressure: the trough at the line, `-trough * (1 - |f|)`
@@ -47,7 +52,7 @@ physics and the two models would drift.
    3-hour trend ring buffer reports the fall, the trough and the rise of a
    passage. There is no second trend model.
 
-5. The whole front is gated on the computed weather. In Real Weather mode the
+6. The whole front is gated on the computed weather. In Real Weather mode the
    mission supplies the temperature and pressure, so the front stays off.
 
 ## Ceiling
