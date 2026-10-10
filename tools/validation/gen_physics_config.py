@@ -686,6 +686,63 @@ def build_land_surface(
     return surface
 
 
+def build_land_fixture(fixture_path: Path) -> list[ClassBinding]:
+    """Return the test-only fixture class body with its gated land surface keys.
+
+    The fixture is a self-contained binding whose identity grade and value
+    grade are both read from the fixture file. It drives the SAME ``emit_key``
+    predicate and the SAME land surface mapping the production corpus uses, so
+    it proves the generator path without shipping a production key. The
+    fixture is NOT a real vehicle and must never ship.
+    """
+    payload = _mapping(json.loads(fixture_path.read_text(encoding="utf-8")))
+    if payload is None:
+        raise ValueError(f"{fixture_path}: the fixture must be a JSON object")
+    game_class = _text(payload.get("game_class"))
+    parent_class = _text(payload.get("parent_class"))
+    if game_class is None or parent_class is None:
+        raise ValueError(f"{fixture_path}: game_class and parent_class are required")
+    identity_grade = payload.get("identity_grade")
+    keys = _mapping(payload.get("keys")) or {}
+    surface: list[SurfaceEmission] = []
+    for key in sorted(keys):
+        field, unit = LAND_SURFACE_FIELDS.get(key, (None, None))
+        if field is None or unit is None:
+            raise ValueError(
+                f"{fixture_path}: {key} is not an emittable land surface key"
+            )
+        held = _mapping(keys[key])
+        if held is None:
+            raise ValueError(f"{fixture_path}: {key} must be an object")
+        value_grade = _text(held.get("grade"))
+        if not emit_key(identity_grade, value_grade):
+            continue
+        source_id = _text(held.get("source_id"))
+        locator = _text(held.get("locator"))
+        if source_id is None or locator is None:
+            raise ValueError(f"{fixture_path}: the {key} fixture is incomplete")
+        surface.append(
+            SurfaceEmission(
+                key=key,
+                value=held.get("value"),
+                unit=unit,
+                source_id=source_id,
+                locator=locator,
+                field=field,
+                grade=str(value_grade),
+            )
+        )
+    return [
+        ClassBinding(
+            game_class=game_class,
+            parent_class=parent_class,
+            max_speed=None,
+            mass=None,
+            land_surface=tuple(surface),
+        )
+    ]
+
+
 def build_class_bindings(
     class_bindings_path: Path,
     vehicle_dir: Path,
@@ -1379,7 +1436,36 @@ def main(argv: Sequence[str] | None = None) -> int:
         type=Path,
         help="Path to the installed Arma 3 directory for --resolve-parents.",
     )
+    parser.add_argument(
+        "--land-fixture",
+        type=Path,
+        help=(
+            "Emit a test-only land surface fixture instead of the corpus. "
+            "Drives the same build-time gate and mapping."
+        ),
+    )
+    parser.add_argument(
+        "--fixture-out",
+        type=Path,
+        help="Output path for --land-fixture.",
+    )
     args = parser.parse_args(argv)
+
+    if args.land_fixture is not None:
+        if args.fixture_out is None:
+            print("physics config override: --land-fixture needs --fixture-out")
+            return 2
+        try:
+            fixture_bindings = build_land_fixture(args.land_fixture)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"physics config override: cannot build the fixture: {exc}")
+            return 1
+        _write(args.fixture_out, render_bindings(fixture_bindings))
+        print(
+            f"physics config fixture: {len(fixture_bindings)} class bodies -> "
+            f"{args.fixture_out}"
+        )
+        return 0
 
     if args.resolve_parents or args.resolve_aircraft_parents:
         if args.game_root is None:
