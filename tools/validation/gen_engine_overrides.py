@@ -50,6 +50,8 @@ REPO = Path(__file__).parents[2]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
+from tools import schemas  # noqa: E402
+
 BALL = REPO / "data" / "ballistics"
 ENGINE = REPO / "data" / "engine"
 OUT_DIR = REPO / "addons" / "ballistics" / "generated"
@@ -63,9 +65,9 @@ AMMO_OUT = OUT_DIR / "CfgAmmo.hpp"
 VERDICTS = ENGINE / "verdicts.json"
 REGISTER_OUT = REPO / "docs" / "wiki" / "research" / "engine-override-register.md"
 
-MAG_SCHEMA = "aee.engine.magazine_bindings/1"
-AMMO_SCHEMA = "aee.engine.ammo_bindings/1"
-VERDICT_SCHEMA = "aee.engine.overrides/1"
+MAG_SCHEMA = schemas.ENGINE_MAGAZINE_BINDINGS
+AMMO_SCHEMA = schemas.ENGINE_AMMO_BINDINGS
+VERDICT_SCHEMA = schemas.ENGINE_OVERRIDES
 VERDICT_ENUM = ("ADOPT", "ALREADY", "RECONCILE", "REJECT")
 STATUS_ENUM = ("implemented", "present", "withheld", "rejected")
 
@@ -76,9 +78,9 @@ IMPLEMENTED_KEYS = {
     "cfgammo-airfriction": ("CfgAmmo", "airFriction"),
 }
 
-# The magazine loaded-mass projection (Task 2 of the mass-expansion plan),
-# schema aee.ballistics.magazine_mass/1. The engine mass is the loaded mass.
-MAG_MASS_SCHEMA = "aee.ballistics.magazine_mass/1"
+# The magazine loaded-mass projection (Task 2 of the mass-expansion plan).
+# The engine mass is the loaded mass.
+MAG_MASS_SCHEMA = schemas.BALLISTICS_MAGAZINE_MASS
 
 # The drag constant and the ISA sea-level speed of sound, both from the
 # verified AEE drag model (addons/ballistics/functions/fnc_calculateBallisticDrag.sqf).
@@ -700,7 +702,7 @@ def _render_number(value: float) -> str:
     return repr(rounded)
 
 
-MAG_HEADER = """/* SPDX-License-Identifier: GPL-2.0-or-later */
+MAG_HEADER = f"""/* SPDX-License-Identifier: GPL-2.0-or-later */
 // Generated engine config override. Do not edit by hand.
 // Regenerate with: python3 tools/validation/gen_engine_overrides.py
 //
@@ -725,7 +727,7 @@ MAG_HEADER = """/* SPDX-License-Identifier: GPL-2.0-or-later */
 //
 // CfgMagazines mass is the magazine LOADED mass in kg, from the held
 // loaded-mass projection data/ballistics/magazine_masses.json (schema
-// aee.ballistics.magazine_mass/1). The loaded mass is the held value where
+// {schemas.BALLISTICS_MAGAZINE_MASS}). The loaded mass is the held value where
 // it is held, or DERIVED as empty_mass_g + capacity * round_mass_g from the
 // held round mass for the chambering. It resolves by the classname capacity
 // plus the chambering token, exactly as fnc_getMagazineMass parses a

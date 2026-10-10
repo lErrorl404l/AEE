@@ -30,10 +30,15 @@ from pathlib import Path
 from typing import cast
 
 ROOT = Path(__file__).parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools import schemas  # noqa: E402
+
 DEFAULT_MODEL = ROOT / "data" / "vehicle" / "mass_model.json"
 DEFAULT_OUT = ROOT / "addons" / "vehicles" / "functions" / "fnc_getVehicleMassModel.sqf"
 
-SCHEMA = "aee.vehicle.mass_model/1"
+SCHEMA = schemas.VEHICLE_MASS_MODEL
 DEFAULT_MATCH = "default"
 
 HEADER = """#include "..\\script_component.hpp"

@@ -32,6 +32,7 @@ from typing import cast
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import gen_aircraft_coverage as g  # noqa: E402
 
 DATA = REPO / "data" / "aircraft"
@@ -76,7 +77,7 @@ def _token(token: str, is_air: bool, reason: str = "fixture reason") -> JsonObje
 
 
 def _classes(*tokens: JsonObject) -> JsonObject:
-    return {"schema": "aee.vehicle.class_inventory/1", "tokens": list(tokens)}
+    return {"schema": schemas.VEHICLE_CLASS_INVENTORY, "tokens": list(tokens)}
 
 
 class CoverageBuildTest(unittest.TestCase):

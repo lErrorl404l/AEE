@@ -12,11 +12,11 @@ a missing key, an unexpected key, a wrong type, an invalid enum value, a
 non-object record and malformed JSON. The process exits non-zero on a
 violation.
 
-Contract ``aee.vehicle.mass_accuracy.probe/1`` (one object per probe
+Contract ``PROBE_SCHEMA`` (one object per probe
 record)::
 
     {
-      "schema": "aee.vehicle.mass_accuracy.probe/1",
+      "schema": PROBE_SCHEMA,
       "class": str, "type_of": str, "spawned": bool, "failure": str,
       "bounding_box_real": [number or [number, ...], ...],
       "extents_m": {"length": number, "width": number, "height": number},
@@ -38,10 +38,10 @@ A record with ``spawned`` false must hold the failure text. The flag
 ``engine_relative_only`` must be exactly true: no probe value is a
 real-world mass or power.
 
-Contract ``aee.vehicle.mass_accuracy.mapping/1``::
+Contract ``MAPPING_SCHEMA``::
 
     {
-      "schema": "aee.vehicle.mass_accuracy.mapping/1",
+      "schema": MAPPING_SCHEMA,
       "entries": [{
         "catalogue_id": str, "class_key": str,
         "resolve_path": "token" | "vehicle_type" | "default",
@@ -56,10 +56,10 @@ Contract ``aee.vehicle.mass_accuracy.mapping/1``::
       }]
     }
 
-Contract ``aee.vehicle.mass_accuracy.holdout/1``::
+Contract ``HOLDOUT_SCHEMA``::
 
     {
-      "schema": "aee.vehicle.mass_accuracy.holdout/1",
+      "schema": HOLDOUT_SCHEMA,
       "method": "leave_one_out" | "grouped_leave_one_out" | "stratified_split",
       "aggregate": {metric object},
       "by_class_key": {str: metric object},
@@ -74,10 +74,10 @@ Contract ``aee.vehicle.mass_accuracy.holdout/1``::
 A metric object holds ``n``, ``coverage``, ``mdape``,
 ``width_ratio_median``, ``interval_distance_median`` and ``bias_median``.
 
-Contract ``aee.vehicle.mass_accuracy.ablation/1``::
+Contract ``ABLATION_SCHEMA``::
 
     {
-      "schema": "aee.vehicle.mass_accuracy.ablation/1",
+      "schema": ABLATION_SCHEMA,
       "arm_a": {"name": "geometry_class_fill_only", "n": int,
                 "coverage": number, "mdape": number,
                 "width_ratio_median": number},
@@ -117,6 +117,7 @@ _REPO = Path(__file__).parents[2]
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 from tools.validation.validate_vehicle_mass_model import (  # noqa: E402
     CALIBRATION_NAME,
@@ -142,10 +143,10 @@ CATALOGUE_DIR = "data/vehicle/catalogue"
 DATA_DIR = ROOT / "data" / "vehicle"
 MODEL_PATH = DATA_DIR / "mass_model.json"
 
-PROBE_SCHEMA = "aee.vehicle.mass_accuracy.probe/1"
-MAPPING_SCHEMA = "aee.vehicle.mass_accuracy.mapping/1"
-HOLDOUT_SCHEMA = "aee.vehicle.mass_accuracy.holdout/1"
-ABLATION_SCHEMA = "aee.vehicle.mass_accuracy.ablation/1"
+PROBE_SCHEMA = schemas.VEHICLE_MASS_ACCURACY_PROBE
+MAPPING_SCHEMA = schemas.VEHICLE_MASS_ACCURACY_MAPPING
+HOLDOUT_SCHEMA = schemas.VEHICLE_MASS_ACCURACY_HOLDOUT
+ABLATION_SCHEMA = schemas.VEHICLE_MASS_ACCURACY_ABLATION
 
 # The protected files named by the campaign plan. The catalogue entry
 # expands through PROTECTED_GLOBS at run time, so the manifest records one
@@ -1126,7 +1127,7 @@ def _check_contract_rejections(private: Path, failures: list[str]) -> None:
     )
 
     wrong_schema = copy.deepcopy(probe)
-    wrong_schema["schema"] = "aee.vehicle.mass_accuracy.probe/2"
+    wrong_schema["schema"] = schemas.foreign_version(PROBE_SCHEMA)
     _expect_reject(
         private, "probe-wrong-schema", probe, wrong_schema, probe_errors, failures
     )

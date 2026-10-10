@@ -58,6 +58,7 @@ _REPO = Path(__file__).parents[2]
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 ROOT = _REPO
@@ -79,7 +80,7 @@ ARTEFACTS = (
     CLASS_MAPPING_REPORT,
 )
 
-COVERAGE_SCHEMA = "aee.aircraft.coverage/2"
+COVERAGE_SCHEMA = schemas.AIRCRAFT_COVERAGE
 COVERAGE_STATES = ("recorded", "lead", "no_source", "excluded_non_ground")
 NON_AIR_STATE = "excluded_non_ground"
 AIR_ABSENT_STATE = "no_source"
