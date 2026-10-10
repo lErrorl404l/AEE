@@ -50,6 +50,7 @@ def main():
         "tools/tests/test_orphan_wiring.py",
         "tools/tests/test_atmos.py",
         "tools/tests/test_weather_front.py",
+        "tools/tests/test_volcanic.py",
         "tools/tests/test_atmospheric_refraction.py",
         "tools/tests/test_optical_phenomena.py",
         "tools/tests/test_maritime.py",

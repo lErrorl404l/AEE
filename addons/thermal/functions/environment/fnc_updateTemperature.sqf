@@ -119,6 +119,13 @@ private _T_shade = _T_wind - ([0, 3] select _inShade);
 private _moduleOffset = missionNamespace getVariable [QEGVAR(core,moduleTempOffset), 0];
 _T_shade = _T_shade + _moduleOffset;
 
+// ─── Volcanic winter ──────────────────────────────────────────────────────
+// A large eruption cools the surface for one to three years (Robock 2000).
+// The atmos volcanic model publishes the regional cooling (issue #25).
+private _volcanicCooling = missionNamespace getVariable [QEGVAR(atmos,volcanicWinterRegionalCooling_C), 0];
+if !(_volcanicCooling isEqualType 0) then { _volcanicCooling = 0; };
+_T_shade = _T_shade - _volcanicCooling;
+
 // ─── Urban heat island ───────────────────────────────────────────────────
 // A city is warmer than its countryside; the relation and its validity
 // limits are in fnc_calculateUrbanHeatIsland (Oke 1973).  The user setting

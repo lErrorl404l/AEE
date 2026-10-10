@@ -50,6 +50,13 @@ private _compoundFactor = if (_tideOffset > 0.5) then {
 } else { 1.0 };
 _risk = _risk * _compoundFactor;
 
+// ─── Volcanic lahar ───────────────────────────────────────────────────────
+// Rain on a loose ash deposit can mobilise a lahar (issue #25).  The lahar
+// risk raises the flood baseline.
+private _laharRisk = missionNamespace getVariable [QEGVAR(atmos,volcanicLaharRisk), 0];
+if !(_laharRisk isEqualType 0) then { _laharRisk = 0; };
+_risk = _risk max (_laharRisk * _terrainFactor);
+
 _risk = _risk max 0 min 1;
 
 missionNamespace setVariable [QGVAR(flashFloodRisk), _risk];
