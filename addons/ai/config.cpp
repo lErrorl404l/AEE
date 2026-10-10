@@ -11,6 +11,7 @@ class CfgPatches {
             "aee_lib",
             "aee_core",
             "aee_weather",
+            "aee_physiology",
             "cba_main",
             "cba_xeh"
         };

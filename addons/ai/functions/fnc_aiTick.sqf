@@ -66,6 +66,15 @@ for "_i" from 0 to ((count _agents) - 1) do {
     private _need = 0;
     if (_isObject && {!isNull _anchor}) then {
         _need = _anchor getVariable [QGVAR(need), 0];
+
+        // A survival-driven agent takes its need from the physiology
+        // survival pressure instead of the static value.  The flag is
+        // absent until a caller sets it, so existing agents are unchanged.
+        private _survivalDriven = _anchor getVariable [QGVAR(survivalDriven), false];
+        if ((_survivalDriven isEqualType true) && _survivalDriven) then {
+            private _survival = [_anchor] call FUNC(survivalNeed);
+            if (_survival isEqualType 0) then { _need = _survival; };
+        };
     };
 
     if (_now >= _recoveryUntil) then {

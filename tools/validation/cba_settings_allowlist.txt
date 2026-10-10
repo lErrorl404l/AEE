@@ -101,6 +101,7 @@ aee_nightvision_nvgImperfections  RscTitles config class name used by cutRsc (no
 # AI substrate and wildlife force hooks (documented in the owning headers).
 aee_ai_forceDecide  debug console knob (documented in fnc_aiTick.sqf)
 aee_ai_need  need pressure published by the slice-two fauna runtime, read by fnc_aiTick.sqf
+aee_ai_survivalDriven  survival-driven opt-in flag read by fnc_aiTick.sqf; a mission or an ecology sets it to route an agent's need through the physiology survival model (issue #75)
 aee_wildlife_forceBiome  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceNight  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSpook  debug console knob (documented in fnc_wildlifeTick.sqf)
