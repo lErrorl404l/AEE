@@ -109,6 +109,7 @@ REPO = Path(__file__).parents[2]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 DEFAULT_CLASS_BINDINGS = REPO / "data" / "vehicle" / "class_bindings.json"
@@ -130,7 +131,7 @@ MASS_KEY = "mass"
 VALUE_FIELD = "max_speed_kmh"
 KEY_UNIT = "km/h"
 CONVERSION = "identity"
-MASS_SCHEMA = "aee.physics.mass_calibration/1"
+MASS_SCHEMA = schemas.PHYSICS_MASS_CALIBRATION
 
 # The aircraft key. ``fuel_capacity`` is held in litres and projects to the
 # engine ``fuelCapacity`` key by the identity conversion.

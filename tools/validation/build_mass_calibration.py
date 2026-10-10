@@ -37,13 +37,18 @@ from collections.abc import Sequence
 from pathlib import Path
 
 ROOT = Path(__file__).parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools import schemas  # noqa: E402
+
 DEFAULT_LOG = ROOT / "tests" / "docker" / "run.log"
 DEFAULT_BINDINGS = ROOT / "data" / "vehicle" / "class_bindings.json"
 DEFAULT_CALIBRATION = ROOT / "data" / "vehicle" / "mass_model_calibration.json"
 DEFAULT_OUT = ROOT / "data" / "physics" / "mass_calibration.json"
 
-SCHEMA = "aee.physics.mass_calibration/1"
-CALIBRATION_SCHEMA = "aee.vehicle.mass_model_calibration/1"
+SCHEMA = schemas.PHYSICS_MASS_CALIBRATION
+CALIBRATION_SCHEMA = schemas.VEHICLE_MASS_MODEL_CALIBRATION
 PROBE_TAG = "[P72] MASS"
 LINE_RE = re.compile(r"^\[P72\] MASS (\S+) config=(\S+) live=(\S+)\s*$")
 SCALE_ROUND = 6

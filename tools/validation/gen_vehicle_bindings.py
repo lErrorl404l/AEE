@@ -49,13 +49,14 @@ REPO = Path(__file__).parents[2]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 DEFAULT_OUT = REPO / "data" / "vehicle" / "stringtable_bindings.json"
 DEFAULT_VEHICLE_DIR = REPO / "data" / "vehicle"
 DEFAULT_CLASS_BINDINGS = REPO / "data" / "vehicle" / "fleet" / "class_binding_map.json"
-SCHEMA = "aee.vehicle.stringtable_bindings/1"
-CLASS_BINDING_SCHEMA = "aee.vehicle.class_binding_map/1"
+SCHEMA = schemas.VEHICLE_STRINGTABLE_BINDINGS
+CLASS_BINDING_SCHEMA = schemas.VEHICLE_CLASS_BINDING_MAP
 
 # The provenance label of an explicit fleet class binding, taken from the map.
 CLASS_BINDING_SOURCE = "data/vehicle/fleet/class_binding_map.json"
@@ -752,7 +753,7 @@ class FleetRecord:
         }
 
 
-FLEET_SCHEMA = "aee.vehicle.mod_fleet/1"
+FLEET_SCHEMA = schemas.VEHICLE_MOD_FLEET
 
 
 def build_fleet(

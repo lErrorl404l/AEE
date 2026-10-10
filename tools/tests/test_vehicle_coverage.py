@@ -31,6 +31,7 @@ from typing import cast
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation import gen_vehicle_coverage as g  # noqa: E402
 from tools.validation import validate_vehicle_data as v  # noqa: E402
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
@@ -83,7 +84,7 @@ def _token(
 
 
 def _classes(*tokens: JsonObject) -> JsonObject:
-    return {"schema": "aee.vehicle.class_inventory/1", "tokens": list(tokens)}
+    return {"schema": schemas.VEHICLE_CLASS_INVENTORY, "tokens": list(tokens)}
 
 
 def _ready_record(token: str, variant_id: str) -> JsonObject:

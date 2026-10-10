@@ -34,9 +34,14 @@ from pathlib import Path
 from typing import TypedDict
 
 REPO = Path(__file__).parents[2]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools import schemas  # noqa: E402
+
 DEFAULT_ROOT = REPO / "addons"
 DEFAULT_OUT = REPO / "data" / "vehicle" / "classes.json"
-SCHEMA = "aee.vehicle.class_inventory/1"
+SCHEMA = schemas.VEHICLE_CLASS_INVENTORY
 
 
 class TokenRefs(TypedDict):

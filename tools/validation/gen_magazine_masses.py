@@ -35,13 +35,14 @@ REPO = Path(__file__).parents[2]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
+from tools import schemas  # noqa: E402
 from tools.validation.gen_runtime_magazines import calibre_key  # noqa: E402
 
 BALL = REPO / "data" / "ballistics"
 SOURCE = BALL / "sources" / "magazine_mass.json"
 OUT = BALL / "magazine_masses.json"
 
-SCHEMA = "aee.ballistics.magazine_mass/1"
+SCHEMA = schemas.BALLISTICS_MAGAZINE_MASS
 
 
 def case_key(cartridge: str) -> str:
