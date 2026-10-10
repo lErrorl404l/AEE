@@ -64,47 +64,39 @@ PARACHUTE_NAMES = frozenset(
 # variant family the roster derives, so a new class in a listed family is
 # covered without a second edit.
 NO_SOURCE_FAMILIES: dict[str, str] = {
-    "Heli_Transport_04": (
-        "fictional CSAT heavy lift (Mi-290 Taru). The Armed Assault Wiki "
-        "names a composite of the Sikorsky CH-54 Tarhe and the Kamov Ka-226, "
-        "so there is no single real counterpart and no held catalogue entry."
-    ),
     "UAV_01": (
-        "toy-grade miniature quadcopter (AR-2 Darter). No real counterpart "
-        "with a held specification, so the class is no_source."
-    ),
-    "UAV_02": (
-        "fictional unmanned combat air vehicle (MQ-4A Greyhawk). The Armed "
-        "Assault Wiki names the MQ-9 as its basis, and the corpus holds no "
-        "catalogue entry, so the class is no_source."
+        "toy-grade miniature quadcopter (AR-2 Darter) with no real counterpart, "
+        "so the next source to seek is the NASA report Recent NASA Wind Tunnel "
+        "Free-Flight Testing of a Multirotor Unmanned Aircraft System, a US "
+        "Government work in the public domain."
     ),
     "UAV_03": (
-        "fictional unmanned combat air vehicle (MQ-12 Falcon). The corpus "
-        "holds no catalogue entry for the real type, so the class is "
-        "no_source."
-    ),
-    "UAV_04": (
-        "fictional unmanned combat air vehicle (KH-3A Fenghuang). The corpus "
-        "holds no catalogue entry for the real type, so the class is "
-        "no_source."
+        "fictional unmanned combat air vehicle (MQ-12 Falcon) with no held "
+        "catalogue entry, so the next source to seek is the Northrop Grumman "
+        "X-47B UCAS Data Sheet, a manufacturer datasheet with the facts cited."
     ),
     "UAV_05": (
-        "fictional unmanned combat air vehicle (UCAV Sentinel). The corpus "
-        "holds no catalogue entry for the real type, so the class is "
-        "no_source."
+        "fictional unmanned combat air vehicle (UCAV Sentinel) with no held "
+        "catalogue entry, so the next source to seek is the Naval Postgraduate "
+        "School overview Navy Unmanned Combat Air System Carrier Demonstration "
+        "(UCAS-D), a US Government work in the public domain."
     ),
     "UAV_06": (
-        "fictional utility quadcopter (AL-6 Pelican). No real counterpart "
-        "with a held specification, so the class is no_source."
+        "fictional utility quadcopter (AL-6 Pelican) with no real counterpart, "
+        "so the next source to seek is the NASA report Multirotor Test Bed Load "
+        "and Stress Analysis (NASA/TM-20230000313), a US Government work in the "
+        "public domain."
     ),
     "VTOL_01": (
-        "fictional tiltrotor (V-44X Blackfish). The Armed Assault Wiki names "
-        "an enlarged Bell Boeing V-22 Osprey with V-280 Valor propulsion, so "
-        "there is no single real counterpart and no held catalogue entry."
+        "fictional tiltrotor (V-44X Blackfish) with no single real counterpart, "
+        "so the next source to seek is the NATOPS Flight Manual for the MV-22B "
+        "Osprey (A1-MV22AB-000-NFM), a US Navy manual in the public domain."
     ),
     "VTOL_02": (
-        "fictional stealth VTOL (Y-32 Xi'an). The Armed Assault Wiki names no "
-        "real counterpart, so the class is no_source."
+        "fictional stealth VTOL (Y-32 Xi'an) with no named real counterpart, so "
+        "the next source to seek is the NASA report Overview of STOVL Aircraft "
+        "Propulsion Research (NTRS 19940014880), a US Government work in the "
+        "public domain."
     ),
 }
 
