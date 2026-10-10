@@ -34,6 +34,20 @@ CHANNEL = FUNCS / "fnc_calculateSoundChannel.sqf"
 SHADOW = FUNCS / "fnc_calculateShadowZone.sqf"
 DRIVER = FUNCS / "fnc_updateUnderwaterAcoustics.sqf"
 QUERY = FUNCS / "fnc_getSonarDetectionRange.sqf"
+THERMO = FUNCS / "fnc_calculateThermoclineTemperature.sqf"
+
+
+def run_profile(args):
+    """Run the sound-speed profile, wiring FUNC to the shared thermocline kernel."""
+    return run_sqf(
+        PROFILE,
+        args,
+        globals_={
+            "__FUNC__calculateThermoclineTemperature": lambda *a: run_sqf(
+                THERMO, list(a)
+            )
+        },
+    )
 
 
 def mackenzie(T, S, D):
@@ -222,17 +236,20 @@ class TestSoundSpeedProfile(unittest.TestCase):
     """Vertical profile through Mackenzie."""
 
     def test_profile_shape(self):
-        prof = run_sqf(PROFILE, [20, 100, 4, 35, 4000, 21])
+        prof = run_profile([20, 100, 4, 35, 4000, 21])
         self.assertEqual(len(prof), 21)
-        # Surface speed for T=20, S=35.
-        self.assertAlmostEqual(prof[0][1], mackenzie(20, 35, 0), places=3)
+        # Surface speed for T=20, S=35.  The shared thermocline model
+        # (fnc_calculateThermoclineTemperature) is a tanh profile, so the
+        # surface temperature is asymptotic to the mixed layer (within 0.02 C
+        # here); allow 0.2 m/s on the derived sound speed.
+        self.assertAlmostEqual(prof[0][1], mackenzie(20, 35, 0), delta=0.2)
         # Deep speed for T=4 at 4000 m.
         self.assertAlmostEqual(prof[-1][1], mackenzie(4, 35, 4000), places=3)
 
     def test_temperature_falls_to_thermocline(self):
         # The sound speed falls through the thermocline (a negative gradient)
         # then rises with pressure in the deep isothermal layer.
-        prof = run_sqf(PROFILE, [20, 100, 4, 35, 4000, 21])
+        prof = run_profile([20, 100, 4, 35, 4000, 21])
         speeds = [c for _, c in prof]
         self.assertLess(speeds[5], speeds[0])
         self.assertGreater(speeds[-1], min(speeds))
@@ -270,20 +287,20 @@ class TestSoundChannelAndShadow(unittest.TestCase):
     """SOFAR axis and the direct-path shadow zone."""
 
     def test_axis_is_the_minimum(self):
-        prof = run_sqf(PROFILE, [20, 100, 4, 35, 4000, 21])
+        prof = run_profile([20, 100, 4, 35, 4000, 21])
         axis_depth, axis_speed = run_sqf(CHANNEL, [prof, 0])
         self.assertAlmostEqual(axis_speed, min(c for _, c in prof), places=6)
         self.assertGreater(axis_depth, 0)
 
     def test_shadow_below_the_axis(self):
-        prof = run_sqf(PROFILE, [20, 100, 4, 35, 4000, 21])
+        prof = run_profile([20, 100, 4, 35, 4000, 21])
         top, bottom = run_sqf(SHADOW, [prof, 0])
         axis_depth, _ = run_sqf(CHANNEL, [prof, 0])
         self.assertAlmostEqual(top, axis_depth, places=6)
         self.assertGreater(bottom, top)
 
     def test_deep_source_has_no_shadow(self):
-        prof = run_sqf(PROFILE, [20, 100, 4, 35, 4000, 21])
+        prof = run_profile([20, 100, 4, 35, 4000, 21])
         top, bottom = run_sqf(SHADOW, [prof, 3900])
         self.assertEqual((top, bottom), (0, 0))
 

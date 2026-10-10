@@ -78,7 +78,9 @@ if (rain > 0)   then { _quality = _quality - 0.3; };         // rain lubricates
 if (_quality < 0.2) then { _quality = 0.2; };
 private _tauStrength = 1 + (_quality * 9);                    // 1-10 kPa
 
-private _S = _tauStrength / (_tau / 1000);                    // kPa / kPa
+// A flat slope (sin psi = 0) carries no shear stress, so the slab is stable
+// and the stability index is maximal.  Guard the division.
+private _S = if (_tau <= 0) then { 99 } else { _tauStrength / (_tau / 1000) };  // kPa / kPa
 
 // ─── Trigger: new snow loading (30 cm in 24 h) or warm-up spike ─────────
 // Rolling 24 h window: maintain a decaying snowfall accumulator (cm) in
@@ -89,7 +91,10 @@ if (_grid isEqualType 0) then {
     _grid = createHashMap;
     missionNamespace setVariable [QGVAR(fddGrid), _grid];
 };
-private _key = format ["%1_%2", round ((_pos2D select 0) / 100), round ((_pos2D select 1) / 100)];
+// On a dedicated server there is no local unit, so _pos2D is empty; key the
+// snowfall grid on the origin rather than indexing an empty array.
+private _posKey = if (_pos2D isEqualTo []) then { [0, 0] } else { _pos2D };
+private _key = format ["%1_%2", round ((_posKey select 0) / 100), round ((_posKey select 1) / 100)];
 private _entry = _grid getOrDefault [_key, [0, -1e10, 0, 0]];
 _entry params ["_fdd", "_lastTick", "_ice", "_snow24"];
 private _now = diag_tickTime;

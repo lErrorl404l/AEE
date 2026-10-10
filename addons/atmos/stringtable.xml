@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Atmos">
-        <Key ID="STR_AEE_Atmos_haloEnabled_Description">
-            <Original>Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state</Original>
-            <English>Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state</English>
-        </Key>
-        <Key ID="STR_AEE_Atmos_haloEnabled_Name">
-            <Original>Ice-Crystal Halos</Original>
-            <English>Ice-Crystal Halos</English>
         <Key ID="STR_AEE_Atmos_Arg_ashEmission">
             <Original>Ash Emission Rate</Original>
             <English>Ash Emission Rate</English>
@@ -71,6 +64,14 @@
         <Key ID="STR_AEE_Atmos_Module_DisplayName">
             <Original>AEE Volcanic Eruption</Original>
             <English>AEE Volcanic Eruption</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_haloEnabled_Description">
+            <Original>Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state</Original>
+            <English>Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_haloEnabled_Name">
+            <Original>Ice-Crystal Halos</Original>
+            <English>Ice-Crystal Halos</English>
         </Key>
         <Key ID="STR_AEE_Atmos_icingShedRate_Description">
             <Original>Fraction of accreted ice removed per tick while shedding conditions hold</Original>
@@ -176,13 +177,6 @@
             <Original>Simul Weather Layers</Original>
             <English>Simul Weather Layers</English>
         </Key>
-        <Key ID="STR_AEE_Atmos_weatherFrontsEnabled_Description">
-            <Original>Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes</Original>
-            <English>Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes</English>
-        </Key>
-        <Key ID="STR_AEE_Atmos_weatherFrontsEnabled_Name">
-            <Original>Weather Fronts</Original>
-            <English>Weather Fronts</English>
         <Key ID="STR_AEE_Atmos_volcanicAshEmission_Description">
             <Original>Ash source strength in kilograms per second</Original>
             <English>Ash source strength in kilograms per second</English>
@@ -230,6 +224,14 @@
         <Key ID="STR_AEE_Atmos_volcanicVentAltitude_Name">
             <Original>Volcanic Vent Altitude</Original>
             <English>Volcanic Vent Altitude</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_weatherFrontsEnabled_Description">
+            <Original>Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes</Original>
+            <English>Model the Bergen life-cycle weather front: a temperature step, a pressure trough, a wind veer and a cloud trend as the front passes</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_weatherFrontsEnabled_Name">
+            <Original>Weather Fronts</Original>
+            <English>Weather Fronts</English>
         </Key>
     </Package>
 </Project>

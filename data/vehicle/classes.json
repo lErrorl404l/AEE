@@ -65,7 +65,7 @@
         "addons/core/XEH_postInit.sqf:28",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
-        "addons/flight/XEH_postInit.sqf:68",
+        "addons/flight/XEH_postInit.sqf:87",
         "addons/flight/functions/fnc_applyAirframeLoad.sqf:43",
         "addons/flight/functions/fnc_applyFlightTurbulence.sqf:91",
         "addons/flight/functions/fnc_updateAircraftSystems.sqf:63",
@@ -133,7 +133,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/mobility/functions/fnc_calculateTraction.sqf:54",
+        "addons/mobility/functions/fnc_calculateTraction.sqf:66",
         "addons/physiology/functions/state/fnc_updatePsychologyState.sqf:25",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:276",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:520",
@@ -292,7 +292,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/flight/XEH_postInit.sqf:68",
+        "addons/flight/XEH_postInit.sqf:87",
         "addons/flight/functions/fnc_applyAirframeLoad.sqf:45",
         "addons/flight/functions/fnc_updateAircraftSystems.sqf:63",
         "addons/flight/functions/fnc_updateDamageSystem.sqf:62",
@@ -337,6 +337,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
+        "addons/maritime/functions/fnc_calculateShipMotion.sqf:49",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292",
         "addons/vehicles/functions/fnc_classifyVehicle.sqf:88",

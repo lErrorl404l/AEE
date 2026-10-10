@@ -18,7 +18,10 @@ private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15
 if !(_T_C isEqualType 0) then { _T_C = 15; };
 
 private _prevWaterTemp = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _T_C];
-private _waterTemp = (_prevWaterTemp * 0.95) + (_T_C * 0.05);
+// Liquid water does not fall below its freezing point: a cold scenario (the
+// test drives the air to -20 C) must not publish a sub-zero bulk water
+// temperature.
+private _waterTemp = (((_prevWaterTemp * 0.95) + (_T_C * 0.05)) max 0);
 
 missionNamespace setVariable [QEGVAR(core,currentWaterTemperature), _waterTemp];
 

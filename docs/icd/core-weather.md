@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/weather/`
 - Direction: one way. `core` must initialise before `weather` reads.
-- Variables crossing: 31.
+- Variables crossing: 40.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -14,6 +14,14 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_biomeOverride` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_updateBiomePosition.sqf:32` | UNKNOWN |
 | `aee_core_biomeTransitionRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_getSmoothedBiome.sqf:33` | UNKNOWN |
 | `aee_core_builtDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateMicroclimate.sqf:78` | UNKNOWN |
+| `aee_core_cbrnDepositionFlux` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:142` | CBRN dry deposition flux (mg/m2/s) |
+| `aee_core_cbrnPlumeActive` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_startCbrnRelease.sqf:32` | A CBRN agent release is active |
+| `aee_core_cbrnPlumeConcentration` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:134` | CBRN plume ground-level concentration (mg/m3) |
+| `aee_core_cbrnPlumeDose` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:129` | CBRN inhaled dose (mg*min/m3) |
+| `aee_core_cbrnPlumeIncapacitated` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:137` | CBRN dose has reached 0.1 x LCt50 |
+| `aee_core_cbrnPlumeLethal` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:136` | CBRN dose has reached LCt50 |
+| `aee_core_cbrnRelease` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_startCbrnRelease.sqf:31` | UNKNOWN |
+| `aee_core_cbrnStabilityClass` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:138` | Pasquill-Gifford stability class A..F for the CBRN plume (issue #105) |
 | `aee_core_computeMode` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_getBiome.sqf:79` | UNKNOWN |
 | `aee_core_currentAirDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:73` | Air density in kg/m3 |
 | `aee_core_currentBlowingSnow` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:17` | Blowing snow 0..1 |
@@ -22,15 +30,16 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentHumidity` | SCALAR | percent | 0..100 | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateFogBaseAltitude.sqf:13` | Relative humidity percent |
 | `aee_core_currentPressure` | SCALAR | hPa | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateQNH.sqf:12` | Barometric pressure in hPa |
 | `aee_core_currentSandstorm` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:17` | Sandstorm intensity 0..1 |
+| `aee_core_currentSolarFlux` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:64` | UNKNOWN |
 | `aee_core_currentSolarRadiation` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateMicroclimate.sqf:91` | Solar radiation factor 0..1 |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateFogBaseAltitude.sqf:12` | Air temperature in C |
 | `aee_core_currentWaterTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateWaterInfluence.sqf:107` | Water temperature in C |
-| `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:24` | Wind vector |
-| `aee_core_currentWindDir` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:30` | Wind direction in degrees |
-| `aee_core_currentWindStr` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateMicroclimate.sqf:107` | UNKNOWN |
-| `aee_core_dustSuppression` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateDustSuppression.sqf:33` | Dust suppression 0..1 |
+| `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_calculateDenseGasDispersion.sqf:41` | Wind vector |
+| `aee_core_currentWindDir` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:35` | Wind direction in degrees |
+| `aee_core_currentWindStr` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:63` | UNKNOWN |
+| `aee_core_dustSuppression` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/scalar/fnc_updateScalarFields.sqf:57` | Dust suppression 0..1 |
 | `aee_core_fogBase_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateFogBaseAltitude.sqf:25` | Fog base altitude in metres |
-| `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:35` | Ground state |
+| `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:40` | Ground state |
 | `aee_core_moduleBiomeOverride` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_getBiome.sqf:27` | EDEN biome override |
 | `aee_core_pressureAltitude_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateQNH.sqf:30` | Pressure altitude in metres |
 | `aee_core_qnh` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateQNH.sqf:29` | QNH pressure setting |

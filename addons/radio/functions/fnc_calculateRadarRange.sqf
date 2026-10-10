@@ -22,14 +22,11 @@ SOURCE.  Skolnik, "Radar Handbook", 3rd ed., McGraw-Hill, 2008, ISBN
 978-0-07-148547-0, ch. 1 (the radar range equation); MIT Lincoln Laboratory,
 "Introduction to Radar Systems" (web course), Lecture 4 "Target RCS" (the RCS
 material; the range equation itself is Skolnik's).
-The issue's test vector R_max = 46.1 km at Pt = 1 MW, G = 1000, lambda = 0.03
-m, sigma = 1 m2, Pmin = 1e-13 W is reproduced exactly by this form.
 
-COORDINATION.  The repository's general radar detection model (issue #104,
-addons/radio/functions/radar/fnc_radarRangeEquation.sqf, branch
-feat/104-radar-detection) owns this equation.  This kernel is the missile
-seeker's own copy, written while #104 was unmerged; the two must be
-reconciled at integration so the repository keeps one model of this physics.
+CANONICAL OWNER.  The radar range equation is defined once, in
+addons/radio/functions/radar/fnc_radarRangeEquation.sqf (issue #104).  This
+seeker-facing entry point delegates to it, so the repository keeps one model
+of the physics and the missile-seeker call site stays unchanged.
 
 Arguments:
   0: _peakPowerW         (NUMBER) Pt, W, > 0
@@ -57,7 +54,4 @@ if (_wavelengthM <= 0) exitWith { 0 };
 if (_rcsM2 <= 0) exitWith { 0 };
 if (_minDetectablePowerW <= 0) exitWith { 0 };
 
-private _numerator = _peakPowerW * _gain * _gain * _wavelengthM * _wavelengthM * _rcsM2;
-private _denominator = (4 * pi) ^ 3 * _minDetectablePowerW;
-
-(_numerator / _denominator) ^ 0.25
+[_peakPowerW, _gain, _wavelengthM, _rcsM2, _minDetectablePowerW] call FUNC(radarRangeEquation)

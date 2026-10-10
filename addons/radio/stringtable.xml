@@ -49,6 +49,14 @@
             <Original>Propagation Range</Original>
             <English>Propagation Range</English>
         </Key>
+        <Key ID="STR_AEE_Radio_radarDetection_Description">
+            <Original>Enable the radar detection model (range equation, horizon, ducting and clutter)</Original>
+            <English>Enable the radar detection model (range equation, horizon, ducting and clutter)</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_radarDetection_Name">
+            <Original>Radar Detection</Original>
+            <English>Radar Detection</English>
+        </Key>
         <Key ID="STR_AEE_Radio_rxAntennaHeight_Description">
             <Original>Receiver antenna height above ground in metres for the two-ray ground-bounce model</Original>
             <English>Receiver antenna height above ground in metres for the two-ray ground-bounce model</English>
@@ -57,13 +65,6 @@
             <Original>Receiver Antenna Height</Original>
             <English>Receiver Antenna Height</English>
         </Key>
-        <Key ID="STR_AEE_Radio_txAntennaHeight_Description">
-            <Original>Transmitter antenna height above ground in metres for the two-ray ground-bounce model</Original>
-            <English>Transmitter antenna height above ground in metres for the two-ray ground-bounce model</English>
-        </Key>
-        <Key ID="STR_AEE_Radio_txAntennaHeight_Name">
-            <Original>Transmitter Antenna Height</Original>
-            <English>Transmitter Antenna Height</English>
         <Key ID="STR_AEE_Radio_terrainMaskingEnabled_Description">
             <Original>Add ITU-R P.526 terrain diffraction loss by sampling the profile along the link. Off keeps the foliage-only fallback.</Original>
             <English>Add ITU-R P.526 terrain diffraction loss by sampling the profile along the link. Off keeps the foliage-only fallback.</English>
@@ -71,13 +72,14 @@
         <Key ID="STR_AEE_Radio_terrainMaskingEnabled_Name">
             <Original>Terrain Masking</Original>
             <English>Terrain Masking</English>
-        <Key ID="STR_AEE_Radio_radarDetection_Description">
-            <Original>Enable the radar detection model (range equation, horizon, ducting and clutter)</Original>
-            <English>Enable the radar detection model (range equation, horizon, ducting and clutter)</English>
         </Key>
-        <Key ID="STR_AEE_Radio_radarDetection_Name">
-            <Original>Radar Detection</Original>
-            <English>Radar Detection</English>
+        <Key ID="STR_AEE_Radio_txAntennaHeight_Description">
+            <Original>Transmitter antenna height above ground in metres for the two-ray ground-bounce model</Original>
+            <English>Transmitter antenna height above ground in metres for the two-ray ground-bounce model</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_txAntennaHeight_Name">
+            <Original>Transmitter Antenna Height</Original>
+            <English>Transmitter Antenna Height</English>
         </Key>
         <Key ID="STR_AEE_Radio_txPower_Description">
             <Original>Reference handheld transmit power in dBm used in the link budget</Original>

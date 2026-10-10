@@ -54,37 +54,38 @@ params [
 
 if ((_width <= 0) || (_height <= 0) || (_cellM <= 0)) exitWith { _field };
 
-// Bilinear sample of a flat field at fractional grid coords (_fx, _fy).
-// A sample outside the grid holds the nearest edge value (clamped).
-private _bilinear = {
-    params ["_f", "_w", "_h", "_fx", "_fy"];
-    private _x = (_fx max 0) min (_w - 1);
-    private _y = (_fy max 0) min (_h - 1);
-    private _x0 = floor _x;
-    private _y0 = floor _y;
-    private _x1 = (_x0 + 1) min (_w - 1);
-    private _y1 = (_y0 + 1) min (_h - 1);
-    private _tx = _x - _x0;
-    private _ty = _y - _y0;
-    private _c00 = _f select (_x0 + _y0 * _w);
-    private _c10 = _f select (_x1 + _y0 * _w);
-    private _c01 = _f select (_x0 + _y1 * _w);
-    private _c11 = _f select (_x1 + _y1 * _w);
-    private _top = _c00 + (_c10 - _c00) * _tx;
-    private _bot = _c01 + (_c11 - _c01) * _tx;
-    _top + (_bot - _top) * _ty
-};
-
+// Bilinear sample of a flat field at fractional grid coords (_fx, _fy),
+// inlined into the loop: a per-cell `call` of a helper costs more than the
+// arithmetic it wraps on a 31x31 grid, and the y-dependent terms hoist out
+// of the inner loop.  A sample outside the grid holds the nearest edge value.
 private _invCell = 1 / _cellM;
 private _out = [];
+private _w = _width;
+private _h = _height;
 
-for "_j" from 0 to (_height - 1) do {
+for "_j" from 0 to (_h - 1) do {
     private _yd = (_originY + (_j * _cellM)) - (_v * _dt);
     private _fy = (_yd - _originY) * _invCell;
-    for "_i" from 0 to (_width - 1) do {
+    private _y = (_fy max 0) min (_h - 1);
+    private _y0 = floor _y;
+    private _y1 = (_y0 + 1) min (_h - 1);
+    private _ty = _y - _y0;
+    private _row0 = _y0 * _w;
+    private _row1 = _y1 * _w;
+    for "_i" from 0 to (_w - 1) do {
         private _xd = (_originX + (_i * _cellM)) - (_u * _dt);
         private _fx = (_xd - _originX) * _invCell;
-        _out pushBack ([_field, _width, _height, _fx, _fy] call _bilinear);
+        private _x = (_fx max 0) min (_w - 1);
+        private _x0 = floor _x;
+        private _x1 = (_x0 + 1) min (_w - 1);
+        private _tx = _x - _x0;
+        private _c00 = _field select (_x0 + _row0);
+        private _c10 = _field select (_x1 + _row0);
+        private _c01 = _field select (_x0 + _row1);
+        private _c11 = _field select (_x1 + _row1);
+        private _top = _c00 + (_c10 - _c00) * _tx;
+        private _bot = _c01 + (_c11 - _c01) * _tx;
+        _out pushBack (_top + (_bot - _top) * _ty);
     };
 };
 
