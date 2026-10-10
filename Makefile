@@ -1,4 +1,4 @@
-.PHONY: data check build release test lint lint-parity clean
+.PHONY: data check build release test dev lint lint-parity clean
 
 # Rebuild the verified ballistics database and its runtime projections.
 # Adding a source and running this one target updates the in-game values.
@@ -16,6 +16,16 @@ release:
 
 test:
 	python3 -m unittest discover -s tools/tests
+
+# Build the standalone dev project, then print the dev console health URL and
+# the command that starts the server with the console. The dev project lives
+# outside the main HEMTT project, so `make lint`, `make release` and CI never
+# depend on it.
+dev:
+	bash tools/dev-harness/build.sh
+	@echo "dev console health: http://127.0.0.1:7788/health"
+	@echo "build the extension: bash tools/dev-harness/extension/build.sh linux"
+	@echo "start the server with the console: AEE_DEV=1 tools/docker_test.sh --console"
 
 # Run EVERY check CI runs, and report ALL failures: a failing line does not
 # stop the sweep, so a later broken gate is visible in one run.  Generated
@@ -79,6 +89,10 @@ lint: lint-parity
 	python3 tools/gen_compat_directions.py --check || rc=1; \
 	python3 tools/gen_ownership_sentinels.py --check || rc=1; \
 	python3 tools/gen_extension_contract.py --check || rc=1; \
+	python3 tools/gen_dev_console_contract.py --check || rc=1; \
+	python3 tools/gen_kernel_table.py --check || rc=1; \
+	python3 tools/tests/test_sim_clock_guard.py || rc=1; \
+	python3 tools/tests/test_kernel_split.py || rc=1; \
 	python3 tools/validation/gen_wildlife_ecology.py --check || rc=1; \
 	python3 tools/validation/validate_wildlife_ecology.py || rc=1; \
 	python3 tools/tests/test_suite_registration.py || rc=1; \

@@ -29,22 +29,18 @@ if (_elevation <= 0) then {
 };
 
 // ─── Barometric formula — hypsometric equation ───────────────────────────
-// P_station = P_sea * (1 - lapse * elevation / T_std) ^ 5.2559
-// The setting is in degrees Celsius per 1000 m (6.5 is the ICAO
-// standard), so it is divided by 1000 to get kelvin per metre before it
-// enters the formula. Two faults met here: passing the setting through
-// unconverted put a 1000-times lapse rate into the term, and the ratio
-// was inverted, so pressure rose with height instead of falling. At
-// 1000 m the inverted form gave 1142 hPa against the ISA value of
-// 898 hPa.
-private _T_std = 288.15;       // K
+// The pure formula is the kernel FUNC(calculateStationPressure).  The
+// dispatcher selects the native kernel when the dev extension is ready and
+// the SQF reference otherwise; both are the same formula.  The lapse rate
+// setting is in degrees Celsius per 1000 m (6.5 is the ICAO standard).
 private _lapseRate = missionNamespace getVariable [QEGVAR(core,tempLapseRate), 6.5];
 if !(_lapseRate isEqualType 0) then { _lapseRate = 6.5; };
-private _lapsePerM = _lapseRate / 1000;
-private _exponent = 5.2559;
-private _ratio = 1 - (_lapsePerM * _elevation / _T_std);
-_ratio = _ratio max 0.05;
-private _P_station = _P_sea * (_ratio ^ _exponent);
+
+private _P_station = ["calculateStationPressure", [_P_sea, _elevation, _lapseRate]] call EFUNC(core,dispatchKernel);
+if (_P_station isEqualType "") then { _P_station = parseNumber _P_station; };
+if !(_P_station isEqualType 0) then {
+    _P_station = [_P_sea, _elevation, _lapseRate] call FUNC(calculateStationPressure);
+};
 
 private _P_final = round (_P_station * 10) / 10;
 

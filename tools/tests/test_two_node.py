@@ -415,7 +415,7 @@ class TestSQFSync(unittest.TestCase):
             / "thermal"
             / "functions"
             / "solver"
-            / "fnc_solveTwoNodeSelection.sqf"
+            / "fnc_solveTwoNodeKernel.sqf"
         ).read_text(encoding="utf-8")
 
     def test_shivering_gated_on_is_human(self):

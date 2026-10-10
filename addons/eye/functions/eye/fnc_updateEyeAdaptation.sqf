@@ -56,15 +56,17 @@ if (!GVAR(eyeAdaptationEnabled)) exitWith {
     };
 };
 
-// The step is the REAL elapsed time between driver ticks.  The driver runs on
-// a 0.1 s PFH, and the scheduler services it at its own cadence, so
-// diag_deltaTime (the FRAME delta) is smaller than the tick interval and would
-// under-integrate the adaptation (the reported eye ran ~8x slower than its
-// taus).  diag_tickTime is the monotonic real clock, so its delta is the true
-// step.  It does NOT move on a skipTime, which the world clock below handles.
-private _now = diag_tickTime;
+// The step is the REAL elapsed time between driver ticks, read from the one
+// real-time clock (aee_core_simTime).  The driver runs on a 0.1 s PFH, and the
+// scheduler services it at its own cadence, so a FRAME delta (diag_deltaTime)
+// is smaller than the tick interval and would under-integrate the adaptation
+// (the reported eye ran ~8x slower than its taus).  The clock is monotonic real
+// time, so its delta is the true step.  It does NOT move on a skipTime, which
+// the world clock below handles.  The first tick has no previous sample, so
+// _dt = 0 and the model does not integrate.
+private _now = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
 private _lastTick = missionNamespace getVariable [QGVAR(eyeLastTick), -1];
-private _dt = (diag_deltaTime max 0.01) min 0.5;
+private _dt = 0;
 if ((_lastTick isEqualType 0) && (_lastTick >= 0)) then {
     _dt = ((_now - _lastTick) max 0.01) min 0.5;
 };
@@ -77,7 +79,14 @@ missionNamespace setVariable [QGVAR(eyeLastTick), _now];
 // slow dark tau and the aperture is wrong for minutes.
 private _hour = dayTime;
 private _lastHour = missionNamespace getVariable [QGVAR(eyeLastHour), -1];
-private _skipped = [_lastHour, _hour] call FUNC(eyeTimeSkip);
+private _skipped = ["eyeTimeSkip", [_lastHour, _hour, 0.05]] call EFUNC(core,dispatchKernel);
+// The dispatcher returns nil for a kernel id it does not hold; a caller that
+// then tests the result would raise an SQF type error, so bind a typed default.
+if (isNil "_skipped") then { _skipped = false; };
+if (_skipped isEqualType "") then { _skipped = (_skipped == "true"); };
+// The one clock owns the jump detector: when it holds clockJump (for a short
+// window after a jump), the eye re-seeds even if its own sample missed the edge.
+if (missionNamespace getVariable [QEGVAR(core,clockJump), false]) then { _skipped = true; };
 missionNamespace setVariable [QGVAR(eyeLastHour), _hour];
 
 private _sample = call FUNC(eyeSampleScene);
@@ -124,13 +133,15 @@ private _xTarget = log (_lumScene max 1e-9);
 
 // Fast pupil branch. The pupil sets the retinal illuminance, so its current
 // diameter is the fast estimate of the scene light.
-private _dSteady = [_lumScene] call FUNC(eyePupilSteady);
+private _dSteady = ["eyePupilSteady", [_lumScene]] call EFUNC(core,dispatchKernel);
+if (_dSteady isEqualType "") then { _dSteady = parseNumber _dSteady; };
 private _dPrev = missionNamespace getVariable [QGVAR(eyePupil), -1];
 if (!(_dPrev isEqualType 0) || _dPrev <= 0) then { _dPrev = _dSteady; };
 // A skip re-seeds the fast pupil branch with the eye, so the first frame after
 // the jump shows the new scene at its adapted diameter, not the old one.
 if (_skipped) then { _dPrev = _dSteady; };
-private _d = [_dPrev, _dSteady, _dt, GVAR(eyePupilTauConstrict), GVAR(eyePupilTauDilate)] call FUNC(eyePupilStep);
+private _d = ["eyePupilStep", [_dPrev, _dSteady, _dt, GVAR(eyePupilTauConstrict), GVAR(eyePupilTauDilate)]] call EFUNC(core,dispatchKernel);
+if (_d isEqualType "") then { _d = parseNumber _d; };
 
 // Invert the steady fit to read the luminance the pupil's diameter implies.
 private _u = ((4.9 - _d) / 3.0) max (-0.999) min 0.999;
@@ -166,7 +177,8 @@ if (!_initialised) then {
 };
 if (!_initialised) exitWith {};
 missionNamespace setVariable [QGVAR(eyeAdaptInitialised), _initialised];
-private _step = [_state, _xTarget, _dt, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod), 0] call FUNC(eyeAdaptStep);
+private _step = ["eyeAdaptStep", [_state, _xTarget, _dt, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod), 0]] call EFUNC(core,dispatchKernel);
+if (_step isEqualType "") then { _step = parseSimpleArray _step; };
 
 // The freeze hook holds the adapted state while the scene moves.
 private _freeze = missionNamespace getVariable [QGVAR(eyeFreeze), false];
@@ -181,7 +193,8 @@ private _xRod = _step select 1;
 
 // _w is the CIE 191:2010 photopic fraction: near 1 the cones carry vision,
 // near 0 the rods do, so _w weights the cone pool.
-private _w = [_lumScene, GVAR(eyeMesopicLow), GVAR(eyeMesopicHigh)] call FUNC(eyeMesopicWeight);
+private _w = ["eyeMesopicWeight", [_lumScene, GVAR(eyeMesopicLow), GVAR(eyeMesopicHigh)]] call EFUNC(core,dispatchKernel);
+if (_w isEqualType "") then { _w = parseNumber _w; };
 private _xSlow = (_w * _xCone) + ((1 - _w) * _xRod);
 private _kp = GVAR(eyeFastBlend);
 private _x = ((1 - _kp) * _xSlow) + (_kp * _xFast);

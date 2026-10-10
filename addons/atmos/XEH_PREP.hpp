@@ -17,6 +17,8 @@ PREPS(physics,calculateMicroburst);
 PREPS(physics,calculateTurbulence);
 PREPS(physics,calculatePrecipitationPhase);
 PREPS(physics,calculateHailEnergy);
+PREPS(physics,calculateStationPressure);
+PREPS(physics,calculateRelativeHumidity);
 PREPS(physics,hailDamage);
 PREPS(physics,calculateHaze);
 PREPS(physics,calculateRefraction);

@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (647)
+### Public functions (655)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -195,6 +195,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculatePrecipitationPhase`
 - `aee_atmos_fnc_calculatePressureTrend`
 - `aee_atmos_fnc_calculateRefraction`
+- `aee_atmos_fnc_calculateRelativeHumidity`
+- `aee_atmos_fnc_calculateStationPressure`
 - `aee_atmos_fnc_calculateTerrainWind`
 - `aee_atmos_fnc_calculateTurbulence`
 - `aee_atmos_fnc_dumpState`
@@ -209,6 +211,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_updateSimulWeatherLayers`
 - `aee_atmos_fnc_updateWind`
 - `aee_ballistics_fnc_calculateAirDensity`
+- `aee_ballistics_fnc_calculateAirDensityKernel`
 - `aee_ballistics_fnc_calculateAmmoTemperature`
 - `aee_ballistics_fnc_calculateBallisticCoefficient`
 - `aee_ballistics_fnc_calculateBallisticDrag`
@@ -286,13 +289,17 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_calculateIlluminance`
 - `aee_core_fnc_calculateSeededWeatherProgression`
 - `aee_core_fnc_coreBodyTemp`
+- `aee_core_fnc_dispatchKernel`
 - `aee_core_fnc_getEyeState`
 - `aee_core_fnc_getSmoothedWeather`
 - `aee_core_fnc_handleCollisionDamage`
 - `aee_core_fnc_init`
+- `aee_core_fnc_initKernelTable`
 - `aee_core_fnc_moduleInit`
 - `aee_core_fnc_moduleStormInit`
+- `aee_core_fnc_probeExtension`
 - `aee_core_fnc_updateEnvironment`
+- `aee_core_fnc_updateSimClock`
 - `aee_diagnostics_fnc_consistencyFailureLine`
 - `aee_diagnostics_fnc_consistencyLoadTable`
 - `aee_diagnostics_fnc_consistencyLog`
@@ -657,6 +664,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_resolveThermalTarget`
 - `aee_thermal_fnc_resolveThermalVisibility`
 - `aee_thermal_fnc_solarElevation`
+- `aee_thermal_fnc_solveTwoNodeKernel`
 - `aee_thermal_fnc_solveTwoNodeSelection`
 - `aee_thermal_fnc_takeThermalSweep`
 - `aee_thermal_fnc_updateTemperature`
@@ -780,7 +788,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (55)
+### Public core state variables (56)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -829,6 +837,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_ppHandle_optics_BaseGrade`
 - `aee_core_precipitationPhase`
 - `aee_core_realWeatherActive`
+- `aee_core_simTime`
 - `aee_core_snowDepth_m`
 - `aee_core_snowfallRate`
 - `aee_core_soilMoisture`

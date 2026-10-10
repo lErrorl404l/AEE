@@ -329,9 +329,11 @@ class TestGateSourceContract(unittest.TestCase):
 
     def test_simple_path_carries_the_mass(self):
         # The simple model cannot integrate a force, so it applies the same
-        # acceleration as a velocity delta: force / mass over one frame.
-        self.assertIn("diag_deltaTime", self.src)
-        self.assertIn("_forceN / _mass", self.src)
+        # acceleration as a velocity delta: force / mass over the real clock
+        # delta, never the per-frame diag_deltaTime.
+        self.assertIn("EGVAR(core,simTime)", self.src)
+        self.assertIn("(_forceN / _mass) * _dt", self.src)
+        self.assertNotIn("diag_deltaTime", self.src)
 
     def test_physical_path_applies_force_and_torque(self):
         self.assertIn("addForce", self.src)

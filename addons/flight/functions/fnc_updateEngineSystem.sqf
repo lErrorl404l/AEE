@@ -59,7 +59,7 @@ Guards, each explicit:
 Arguments:
   0:  _veh        (OBJECT) the aircraft to manage
   1:  _wanted     (NUMBER) commanded spool fraction, 0 idle to 1 maximum
-  2:  _deltaTimeS (NUMBER) elapsed interval, s, default diag_deltaTime
+  2:  _deltaTimeS (NUMBER) elapsed interval, s, default 0
 
 Return Value: BOOL - true when the engine state was written
 Example: [cursorObject, 1, 1] call aee_flight_fnc_updateEngineSystem
@@ -69,7 +69,7 @@ Public: No
 params [
     ["_veh", objNull, [objNull]],
     ["_wanted", 0, [0]],
-    ["_deltaTimeS", diag_deltaTime, [0]]
+    ["_deltaTimeS", 0, [0]]
 ];
 
 if (isNull _veh || {!alive _veh}) exitWith { false };

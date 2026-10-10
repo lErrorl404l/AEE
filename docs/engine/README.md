@@ -24,6 +24,18 @@ The full eight-step pattern, the config roots with their engine source and
 line, and the override mechanisms are in
 [engine-config-surface.md](engine-config-surface.md).
 
+## Dev tooling rule
+
+Before a change to a dev tool that touches the engine, read this reference
+first. The dev console, the dev harness and the native kernels read engine
+state and call engine commands, so they obey the same rule as a config
+change: read the engine first, then change.
+
+A dev tool holds no engine state. It observes the published state and calls
+published functions. The engine keeps the solver, the renderer and the
+physics step (ADR-017, ADR-034). A dev tool that needs a new engine anchor
+adds a ceiling here first.
+
 ## Index
 
 | Document | Covers |
@@ -31,6 +43,7 @@ line, and the override mechanisms are in
 | [engine-config-surface.md](engine-config-surface.md) | The global config roots, each with its engine source and line, the override mechanisms, and the eight-step pattern. |
 | [engine-override-surface.md](engine-override-surface.md) | A class-by-class verdict: ADOPT, ALREADY, RECONCILE, REJECT. |
 | [engine-commands-and-features.md](engine-commands-and-features.md) | The SQF commands by job, the engine systems behind them, and the consolidated ceiling list. |
+| [dev-tooling.md](dev-tooling.md) | The dev console, the workbench and the native kernels against the engine: the read-first rule and the dev ceilings. |
 | [engine-pbo-inventory.md](engine-pbo-inventory.md) | Every engine PBO, its root, what it carries, and the raw header layout. Machine form in `engine-pbo-inventory.json`. |
 | [arma-map-grid-semantics.md](arma-map-grid-semantics.md) | The map grid colour and geometry fields, resolved from the open-sourced engine source. |
 | [topo-map-surface.md](topo-map-surface.md) | The rendered-map fields a mod controls, and the map fields the engine keeps. |

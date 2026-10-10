@@ -131,6 +131,14 @@ jobs:
         run: python3 tools/gen_ownership_sentinels.py --check
       - name: Extension contract freshness check
         run: python3 tools/gen_extension_contract.py --check
+      - name: Dev console contract freshness check
+        run: python3 tools/gen_dev_console_contract.py --check
+      - name: Kernel table freshness check
+        run: python3 tools/gen_kernel_table.py --check
+      - name: diag_deltaTime scan
+        run: python3 tools/tests/test_sim_clock_guard.py
+      - name: Kernel-split scan
+        run: python3 tools/tests/test_kernel_split.py
       - name: Wildlife ecology projection freshness check
         run: python3 tools/validation/gen_wildlife_ecology.py --check
       - name: Wildlife ecology corpus validation
@@ -145,6 +153,34 @@ jobs:
         uses: arma-actions/bom-check@v1
         with:
           path: addons
+
+  extension:
+    # The native extension, gated without the network: the GitHub runner image
+    # carries a stable Rust toolchain, so no toolchain download is needed. Only
+    # the public crates registry is reached, exactly as the validate job reaches
+    # PyPI. No gate here touches a live engine or an external service.
+    name: Extension
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Cache Cargo
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            tools/dev-harness/extension/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('tools/dev-harness/extension/Cargo.lock') }}
+          restore-keys: cargo-${{ runner.os }}-
+      - name: Toolchain
+        run: rustc --version && cargo --version
+      - name: Extension unit and parity tests
+        run: cargo test --locked --manifest-path tools/dev-harness/extension/Cargo.toml
+      - name: Extension release build (Linux width)
+        run: cargo build --release --locked --manifest-path tools/dev-harness/extension/Cargo.toml
+      # The Windows width is a recorded step, not a push gate: it needs the MSVC
+      # CRT/SDK via cargo-xwin, a network download, so it runs on a workstation
+      # with `bash tools/dev-harness/extension/build.sh windows`.
 
   build:
     runs-on: ubuntu-latest
@@ -162,6 +198,16 @@ jobs:
         run: tools/hemtt.sh check -p -e
       - name: Run HEMTT build
         run: tools/hemtt.sh build
+      - name: Build release artefact
+        run: tools/hemtt.sh release
+      - name: Release-artefact proof
+        # The release tree carries no dev PBO and no dev binary (ADR-035). This
+        # runs `hemtt release` first, so it is a CI/phase gate and not part of
+        # the per-commit `run_tests.py --fast` set.
+        env:
+          AEE_RELEASE_TREE: .hemttout/release
+          AEE_REQUIRE_RELEASE_TREE: "1"
+        run: python3 -m unittest tools.tests.test_dev_harness_release_exclusion -v
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:

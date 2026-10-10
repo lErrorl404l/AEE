@@ -161,6 +161,9 @@ BINARY_COMMANDS = {
     "isEqualTypeAny",
     "isEqualTo",
     "isNotEqualTo",
+    # hashmap getOrDefault [key, default] - the drag kernel reads the drag
+    # table by model name.  Resolved against the HashMap the caller binds.
+    "getOrDefault",
     "pushBack",
     "deleteAt",
     "sort",
@@ -203,6 +206,41 @@ def _sqf_isNotEqualTo(a: Any, b: Any) -> bool:
     return a != b
 
 
+def _sqf_getOrDefault(container: Any, spec: Any) -> Any:
+    """SQF hashmap getOrDefault [key, default].  The harness holds the table
+    as a plain dict, so this is a dict lookup with a default."""
+    key = spec[0]
+    default = spec[1] if len(spec) > 1 else None
+    if isinstance(container, dict):
+        return container.get(key, default)
+    return default
+
+
+def _sqf_format(spec: Any) -> str:
+    """SQF format ["G%1", _code].  Replace %1..%9 with the arguments; a %%
+    is a literal percent.  The operand is the [fmt, args..] array."""
+    fmt = str(spec[0])
+    args = list(spec[1:])
+    out: list[str] = []
+    i = 0
+    while i < len(fmt):
+        ch = fmt[i]
+        if ch == "%" and i + 1 < len(fmt):
+            nxt = fmt[i + 1]
+            if nxt.isdigit():
+                index = int(nxt) - 1
+                out.append(_sqf_str(args[index]) if 0 <= index < len(args) else "")
+                i += 2
+                continue
+            if nxt == "%":
+                out.append("%")
+                i += 2
+                continue
+        out.append(ch)
+        i += 1
+    return "".join(out)
+
+
 def _sqf_type_tag(value: Any) -> str:
     """SQF type category, so int and float both read as NUMBER."""
     if isinstance(value, bool):
@@ -215,6 +253,10 @@ def _sqf_type_tag(value: Any) -> str:
         return "ARRAY"
     if value is None:
         return "NIL"
+    # A Code value is a block.  The harness represents one as a Lambda or, for
+    # an injected engine function, as a Python callable.
+    if isinstance(value, Lambda) or callable(value):
+        return "CODE"
     return "OBJECT"
 
 
@@ -227,6 +269,24 @@ def _sqf_isEqualTypeAny(value: Any, types: Any) -> bool:
     matches the type of any element of `types`."""
     tag = _sqf_type_tag(value)
     return any(_sqf_type_tag(t) == tag for t in types)
+
+
+def _sqf_parse_simple_array(text: Any) -> list:
+    """SQF `parseSimpleArray`: parse an SQF literal and return its array.
+
+    The literal is parsed by the same tokeniser and parser, so a string, a
+    number or a bare identifier evaluates without executing code.  Anything
+    that is not a top-level array, or that raises while parsing or evaluating,
+    returns an empty array, matching the engine on malformed input.
+    """
+    if not isinstance(text, str):
+        return []
+    try:
+        stmts = SqfParser(tokenize(text)).parse_program()
+        value = SqfRuntime({}).run(stmts)
+    except Exception:
+        return []
+    return value if isinstance(value, list) else []
 
 
 # Unary commands applied to a following expression.  Without these the
@@ -278,6 +338,22 @@ UNARY_COMMANDS = {
     # are engine commands the caller binds through globals_.
     "getArray",
     "fileExists",
+    # parseSimpleArray "text" - the literal parser the dev dispatcher uses to
+    # read an extension request.  A non-array or unparsable text returns [].
+    "parseSimpleArray",
+    # typeName X - the SQF type category.  compile X - the console `eval` op
+    # compiles agent input; the harness returns the text (a test does not run
+    # eval).
+    "typeName",
+    "compile",
+    # isNil "_name" - the dev dispatcher reports a nothing-returning operation
+    # as the text "nil" so the reply always marshals across the extension.
+    "isNil",
+    # toUpper X - the drag kernel upper-cases the drag-model name.
+    "toUpper",
+    # format [fmt, args..] - the drag kernel builds the G-series name with
+    # format ["G%1", _code].  The operand is the [fmt, args..] array.
+    "format",
     # Object queries used by the aircraft fuel kernel (fnc_updateFuelSystem).
     # The harness resolves each through globals_, so a test must bind them.
     "local",
@@ -373,6 +449,7 @@ BUILTINS: dict[str, Any] = {
     "isEqualType": _sqf_isEqualType,
     "isEqualTypeAny": _sqf_isEqualTypeAny,
     "isNotEqualTo": _sqf_isNotEqualTo,
+    "getOrDefault": _sqf_getOrDefault,
     "isKindOf": _sqf_isKindOf,
     "vectorDiff": _sqf_vectorDiff,
     "vectorAdd": _sqf_vectorAdd,
@@ -486,6 +563,11 @@ class SqfParser:
     def __init__(self, toks: list[Tok]):
         self.toks = toks
         self.i = 0
+        # Depth of `select`-index parsing.  A chained `a select b select c` is
+        # left-associative: it means `(a select b) select c`.  While parsing
+        # the index of a select, a following `select` belongs to the outer
+        # chain, not to the index, so parse_postfix stops there.
+        self.stop_select = 0
 
     def peek(self) -> Tok | None:
         return self.toks[self.i] if self.i < len(self.toks) else None
@@ -730,6 +812,11 @@ class SqfParser:
         if t is not None and t.value == "!":
             self.next()
             return Bin("not", Num(0.0), self.parse_unary())
+        # Prefix `call`: `call FUNC(x)` runs the function value with no args.
+        # The postfix `args call FUNC(x)` form is handled in parse_postfix.
+        if t is not None and t.value == "call" and self._is_cmd_use(t.value):
+            self.next()
+            return Call(self.parse_unary(), Arr([]))
         # command-like prefix: max/min/exp applied to a following expression
         if (
             t is not None
@@ -764,8 +851,14 @@ class SqfParser:
             if t is None:
                 return left
             if t.value == "select":
+                if self.stop_select > 0:
+                    return left
                 self.next()
-                idx = self.parse_unary()
+                self.stop_select += 1
+                try:
+                    idx = self.parse_unary()
+                finally:
+                    self.stop_select -= 1
                 left = Select(left, idx)
             elif t.value == "call":
                 self.next()
@@ -825,8 +918,14 @@ class SqfParser:
                 els = self.parse_block()
             return If(cond, then, els)
         if t.value == "(":
-            # grouping parens: (expr)
-            expr = self.parse_expr()
+            # grouping parens: (expr).  Clear the select-stop guard: a select
+            # inside the parens is a nested expression, not the outer chain.
+            saved = self.stop_select
+            self.stop_select = 0
+            try:
+                expr = self.parse_expr()
+            finally:
+                self.stop_select = saved
             self.expect(")")
             return expr
         if t.kind == "num":
@@ -835,14 +934,21 @@ class SqfParser:
             return Str(t.value)
         if t.value == "[":
             items = []
-            while self.peekv() != "]":
-                items.append(self.parse_expr())
-                if self.peekv() == ",":
-                    self.next()
+            saved = self.stop_select
+            self.stop_select = 0
+            try:
+                while self.peekv() != "]":
+                    items.append(self.parse_expr())
+                    if self.peekv() == ",":
+                        self.next()
+            finally:
+                self.stop_select = saved
             self.expect("]")
             return Arr(items)
         if t.value == "{":
             # lambda: { params ["_x"]; ... } or bare { ... }
+            saved_stop = self.stop_select
+            self.stop_select = 0
             save = self.i
             params = []
             if self.peekv() == "params":
@@ -857,6 +963,7 @@ class SqfParser:
             while self.peekv() != "}":
                 body.append(self.parse_stmt())
             self.expect("}")
+            self.stop_select = saved_stop
             return Lambda(params, body, {})
         if t.kind == "id":
             if t.value == "FUNC":
@@ -1024,6 +1131,17 @@ class SqfRuntime:
         if isinstance(node, Exp):
             return math.exp(self.eval(node.arg))
         if isinstance(node, UnaryCmd):
+            if node.op == "isNil":
+                # SQF isNil takes a variable NAME (a string) or a value. A
+                # string operand names the variable to test; a missing variable
+                # and a nil value both read as nil.
+                arg = node.arg
+                if isinstance(arg, Str):
+                    try:
+                        return self.get(arg.v) is None
+                    except NameError:
+                        return True
+                return self.eval(arg) is None
             value = self.eval(node.arg)
             if node.op == "count":
                 return len(value)
@@ -1031,6 +1149,10 @@ class SqfRuntime:
                 return abs(value)
             if node.op == "toLower":
                 return str(value).lower()
+            if node.op == "toUpper":
+                return str(value).upper()
+            if node.op == "format":
+                return _sqf_format(value)
             if node.op == "finite":
                 return math.isfinite(value)
             if node.op == "tan":
@@ -1081,6 +1203,12 @@ class SqfRuntime:
                 if mag == 0:
                     return [0.0, 0.0, 0.0]
                 return [value[0] / mag, value[1] / mag, value[2] / mag]
+            if node.op == "parseSimpleArray":
+                return _sqf_parse_simple_array(value)
+            if node.op == "typeName":
+                return _sqf_type_tag(value)
+            if node.op == "compile":
+                return value
             # Engine terrain and object queries: supplied by the caller through
             # globals_.  A test that exercises the wildlife sampler binds them.
             if node.op in (

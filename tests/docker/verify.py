@@ -184,6 +184,10 @@ _probe_expected = (
     "[P133] [PASS]",
     "[P134] [PASS]",
     "[P135] [PASS]",
+    "[P137] [PASS]",
+    "[P138] [PASS]",
+    "[P139] [PASS]",
+    "[P140] [PASS]",
 )
 _probe_missing = [m for m in _probe_expected if m not in text]
 if _probe_missing:
@@ -193,7 +197,7 @@ if _probe_missing:
 _probe_failed = sorted(
     set(
         re.findall(
-            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84B|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135)\] \[FAIL\][^\n]*",
+            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84B|84|85|86|87|88|89|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|137|138|139|140)\] \[FAIL\][^\n]*",
             text,
         )
     )
@@ -202,6 +206,16 @@ if _probe_failed:
     print(f"mission probes: {len(_probe_failed)} failed")
     for p in _probe_failed:
         print(f"  {p}")
+
+# The dev console must never appear in a production run.  The dev addon logs
+# nothing when the four-layer gate fails, so no [AEE][dev] line can legitimately
+# appear.  A present marker is a hard failure: the channel started when it must
+# not.  This is the run-time half of the release-exclusion proof.
+_dev_markers = [line for line in text.splitlines() if "[AEE][dev]" in line]
+if _dev_markers:
+    print(f"dev markers: {len(_dev_markers)} present (must be absent)")
+    for marker in _dev_markers[:10]:
+        print(f"  {marker}")
 
 if not done:
     print("  mission did not reach DONE")
@@ -223,6 +237,7 @@ if (
     or _state_missing
     or _probe_missing
     or _probe_failed
+    or _dev_markers
 ):
     print("RESULT: FAIL")
     sys.exit(1)

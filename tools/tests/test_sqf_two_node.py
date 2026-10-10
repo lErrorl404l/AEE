@@ -55,7 +55,7 @@ _SOLVER = (
     / "thermal"
     / "functions"
     / "solver"
-    / "fnc_solveTwoNodeSelection.sqf"
+    / "fnc_solveTwoNodeKernel.sqf"
 )
 
 _GLOBALS = {
@@ -103,13 +103,17 @@ def _solve(
     t_air_k = t_air + 273.15
     sky_k = 0.0552 * t_air_k**1.5
     mrt = (0.5 * (t_ground + 273.15) ** 4 + 0.5 * sky_k**4) ** 0.25 - 273.15
-    return run_sqf(
+    # The driver resolves the material registry and passes the inert
+    # conductance, the skin emissivity and the skin absorptance to the pure
+    # kernel.  Do the same here so the REAL kernel SQF is the subject.
+    core_mat = _REGISTRY.get(core, _REGISTRY["ground"])
+    skin_mat = _REGISTRY.get(skin, _REGISTRY["ground"])
+    skin_eps = skin_mat[0]
+    skin_alpha = solar_alpha if solar_alpha > 0 else skin_mat[1]
+    cond = min(core_mat[4], skin_mat[4]) * area / max(l_cond, 0.01)
+    result = run_sqf(
         _SOLVER,
         [
-            None,
-            "",
-            core,
-            skin,
             t_air,
             wind,
             solar,
@@ -125,7 +129,6 @@ def _solve(
             rh,
             mrt,
             is_human,
-            l_cond,
             evap_on,
             dt,
             water_speed,
@@ -133,10 +136,13 @@ def _solve(
             rain,
             skin_perfusion,
             clo,
-            solar_alpha,
+            cond,
+            skin_eps,
+            skin_alpha,
         ],
         _GLOBALS,
     )
+    return result[0], result[1]
 
 
 class TestSqfTwoNode(unittest.TestCase):

@@ -4,6 +4,13 @@ AEE_MODULE_POST_INIT
 
 if (is3DEN) exitWith {};
 
+// ─── One real-time simulation clock (Pillar 1) ────────────────────────────
+// Registered FIRST, before the environment tick and every model handler, so
+// aee_core_simTime is current when any model reads it in the same frame.  The
+// handler publishes the monotonic clock; it publishes no per-frame delta (see
+// fnc_updateSimClock for why).
+[FUNC(updateSimClock), 0] call CBA_fnc_addPerFrameHandler;
+
 [] call FUNC(init);
 
 // ─── Collision-damage response (issue #172) ───────────────────────────────

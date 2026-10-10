@@ -48,6 +48,16 @@ private _veh = vehicle _player;
 if (isNil "_player" || !alive _player) exitWith { 0 };
 if (cameraOn != _player && {cameraOn != _veh}) exitWith { 0 };
 
+// One clock (Pillar 1): real elapsed time since this pass.  First tick _dt = 0.
+// diag_deltaTime is the FRAME delta, not this pass interval (the P79 defect).
+private _simNow = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
+private _lastSim = missionNamespace getVariable [QGVAR(engThermLastSimTime), -1];
+private _dt = 0;
+if (_lastSim isEqualType 0) then {
+    if (_lastSim >= 0) then { _dt = _simNow - _lastSim; };
+};
+missionNamespace setVariable [QGVAR(engThermLastSimTime), _simNow];
+
 // ─── Display window: faithful pass-through + stable blowout guard ──────────
 // ENGINE CONSTRAINT (verified): the window maps
 //     output = OutputRangeStart + thermalValue * OutputRangeWidth
@@ -84,7 +94,7 @@ private _cosA = (_prevFwd vectorDotProduct _fwd) max -1 min 1;
 // code labelled it rad/s and compared it to 0.44, which made the settle
 // threshold 57 times too strict: the window almost never settled, so the
 // AGC did not adapt when the view was nearly still.
-private _angVelDeg = (acos _cosA) / (diag_deltaTime max 0.001);   // deg/s
+private _angVelDeg = (acos _cosA) / (_dt max 0.001);   // deg/s
 missionNamespace setVariable [QGVAR(agcPrevFwd), _fwd];
 
 // Freeze threshold: 25 deg/s.  Below = settled, adapt.
@@ -107,8 +117,8 @@ private _targetWidth = if (_sceneMaxHeat > 0.9) then {
 // Applied width: hold while panning, ease toward target when settled.
 private _outWidth = missionNamespace getVariable [QGVAR(tiOutWidth), _targetWidth];
 if !(_outWidth isEqualType 0 && _outWidth > 0) then { _outWidth = _targetWidth; };
-if (_settled && diag_deltaTime > 0) then {
-    private _a = diag_deltaTime / (diag_deltaTime + 1.5);
+if (_settled && _dt > 0) then {
+    private _a = _dt / (_dt + 1.5);
     _outWidth = _outWidth + (_targetWidth - _outWidth) * _a;
 };
 missionNamespace setVariable [QGVAR(tiOutWidth), _outWidth];
@@ -227,7 +237,7 @@ private _sceneMax = 0.05;
 // the hot source leaves view (a FLIR does not hold max gain forever).
 private _prevMax = missionNamespace getVariable [QGVAR(tiSceneMaxHeat), 0.5];
 if !(_prevMax isEqualType 0) then { _prevMax = 0.5; };
-_sceneMax = (_sceneMax max _prevMax - 0.2 * (diag_deltaTime / 30)) max 0.05;
+_sceneMax = (_sceneMax max _prevMax - 0.2 * (_dt / 30)) max 0.05;
 missionNamespace setVariable [QGVAR(tiSceneMaxHeat), _sceneMax];
 
 count _vehicles

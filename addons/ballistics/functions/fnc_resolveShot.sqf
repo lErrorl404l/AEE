@@ -143,7 +143,12 @@ if (_lengthMm > 0 && _massG > 0 && _calibreMm > 0) then {
 
 private _retard = 0;
 if (_bc > 0 && _mv > 0) then {
-    _retard = [_bc, _mv, _model, _rhoRel, _tempC] call FUNC(calculateBallisticDrag);
+    // Route the pure drag kernel through the dispatcher: the native kernel
+    // when the dev extension is ready, else the SQF reference.  The native
+    // path returns a number as a string, so normalise it.
+    _retard = ["calculateBallisticDrag", [_bc, _mv, _model, _rhoRel, _tempC]]
+        call EFUNC(core,dispatchKernel);
+    if (_retard isEqualType "") then { _retard = parseNumber _retard; };
 };
 
 // The spin rate follows from the twist and the velocity:

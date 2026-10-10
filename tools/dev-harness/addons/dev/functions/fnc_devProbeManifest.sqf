@@ -1,0 +1,92 @@
+/*
+fnc_devProbeManifest - the machine-readable probe classification manifest.
+
+One row per probe file in the mission: [tag, class, file].  The class says
+where the probe may produce its verdict:
+
+  "headless"        a pure kernel or config read; the dedicated server runs it.
+  "headless-client" needs a non-dedicated machine; the file guards !isDedicated.
+  "interface"       needs a human interface or rendering; guards hasInterface.
+
+A dedicated server and a headless client both report hasInterface = false, so
+an interface probe never runs on either.  tools/tests/test_probe_classification.py
+holds every probe to a class and holds each class to its guard.
+*/
+[
+["P64", "headless", "aee_p64_probe.sqf"],
+["P65", "headless", "aee_p65_trace_probe.sqf"],
+["P66", "headless", "aee_p66_airload_probe.sqf"],
+["P68", "headless", "aee_p68_edge_probe.sqf"],
+["P69", "headless", "aee_p69_netd_probe.sqf"],
+["P70", "headless", "aee_p70_atmos_probe.sqf"],
+["P71", "headless", "aee_p71_johnson_probe.sqf"],
+["P72", "headless", "aee_p72_mass_probe.sqf"],
+["P73", "headless", "aee_p73_fleet_probe.sqf"],
+["P74", "headless", "aee_p74_w2_probe.sqf"],
+["P75", "headless", "aee_p75_drive_probe.sqf"],
+["P76", "headless", "aee_p76_thermal_probe.sqf"],
+["P77", "headless", "aee_p77_soldier_not_vehicle_probe.sqf"],
+["P78", "headless", "aee_p78_pylon_proxy_probe.sqf"],
+["P79", "headless", "aee_p79_thermal_startup_probe.sqf"],
+["P80", "headless", "aee_p80_fusion_probe.sqf"],
+["P81", "headless", "aee_p81_wildlife_edge_probe.sqf"],
+["P82", "headless", "aee_p82_pfh_probe.sqf"],
+["P83", "headless", "aee_p83_grade_probe.sqf"],
+["P84", "headless", "aee_p84_hdr_probe.sqf"],
+["P84B", "headless", "aee_p84b_world_lighting_probe.sqf"],
+["P85", "headless", "aee_p85_star_probe.sqf"],
+["P86", "headless", "aee_p86_grain_probe.sqf"],
+["P87", "headless", "aee_p87_shadow_probe.sqf"],
+["P88", "headless", "aee_p88_particle_probe.sqf"],
+["P89", "headless", "aee_p89_laser_probe.sqf"],
+["P91", "headless", "aee_p91_stageti_probe.sqf"],
+["P92", "headless", "aee_p92_optics_budget_probe.sqf"],
+["P93", "headless", "aee_p93_band_probe.sqf"],
+["P94", "headless", "aee_p94_bandsky_probe.sqf"],
+["P95", "headless", "aee_p95_weteps_probe.sqf"],
+["P96", "headless", "aee_p96_crossover_probe.sqf"],
+["P97", "headless", "aee_p97_noise_probe.sqf"],
+["P98", "headless", "aee_p98_capability_probe.sqf"],
+["P99", "headless", "aee_p99_thermal_budget_probe.sqf"],
+["P100", "headless", "aee_p100_perception_probe.sqf"],
+["P101", "headless", "aee_p101_consistency_probe.sqf"],
+["P102", "headless", "aee_p102_environment_probe.sqf"],
+["P103", "headless", "aee_p103_cognition_probe.sqf"],
+["P104", "headless", "aee_p104_call_probe.sqf"],
+["P105", "headless", "aee_p105_sound_schedule_probe.sqf"],
+["P106", "headless", "aee_p106_mgrs_anchor_probe.sqf"],
+["P107", "headless", "aee_p107_mgrs_roundtrip_probe.sqf"],
+["P108", "headless", "aee_p108_consistency_probe.sqf"],
+["P109", "headless", "aee_p109_tracker_probe.sqf"],
+["P110", "headless", "aee_p110_mgrs_grid_probe.sqf"],
+["P111", "headless", "aee_p111_symbology_probe.sqf"],
+["P112", "headless", "aee_p112_symbology_live_probe.sqf"],
+["P113", "headless", "aee_p113_terrain_probe.sqf"],
+["P114", "headless", "aee_p114_mgrs_map_layer_probe.sqf"],
+["P115", "headless", "aee_p115_eye_adapt_probe.sqf"],
+["P116", "headless", "aee_p116_engine_override_probe.sqf"],
+["P117", "headless", "aee_p117_map_surface_probe.sqf"],
+["P118", "headless", "aee_p118_ownership_probe.sqf"],
+["P119", "headless", "aee_p119_marker_inheritance_probe.sqf"],
+["P120", "headless", "aee_p120_mobility_cost_probe.sqf"],
+["P121", "headless", "aee_p121_map_legibility_probe.sqf"],
+["P122", "headless", "aee_p122_thermal_entry_probe.sqf"],
+["P123", "headless", "aee_p123_map_grid_readout_probe.sqf"],
+["P124", "headless", "aee_p124_map_symbols_probe.sqf"],
+["P125", "headless", "aee_p125_eye_time_skip_probe.sqf"],
+["P126", "headless", "aee_p126_density_probe.sqf"],
+["P127", "headless", "aee_p127_mgrs_straightness_probe.sqf"],
+["P128", "headless", "aee_p128_map_cursor_ruler_probe.sqf"],
+["P129", "headless", "aee_p129_terrain_look_probe.sqf"],
+["P130", "headless", "aee_p130_aperture_sky_probe.sqf"],
+["P131", "headless", "aee_p131_flash_scene_probe.sqf"],
+["P132", "headless", "aee_p132_turbulence_weight_probe.sqf"],
+["P133", "headless", "aee_p133_compass_anomaly_probe.sqf"],
+["P134", "headless", "aee_p134_map_density_probe.sqf"],
+["P135", "headless", "aee_p135_land_physics_probe.sqf"],
+["P140", "headless", "aee_p140_sim_clock_rate_probe.sqf"],
+["P136", "headless-client", "aee_p136_client_probe.sqf"],
+["P137", "headless", "aee_p137_kernel_parity_probe.sqf"],
+["P138", "headless", "aee_p138_thermal_parity_probe.sqf"],
+["P139", "headless", "aee_p139_client_kernel_parity_probe.sqf"]
+]

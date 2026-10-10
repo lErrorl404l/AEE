@@ -1,0 +1,8 @@
+# Build output and the include mirror (created by build.sh).
+@aee_dev/
+.hemttout/
+include/
+
+# HEMTT signing keys (a release would generate these).
+.biprivatekey
+.hemttprivatekey

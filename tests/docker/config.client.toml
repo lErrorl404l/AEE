@@ -1,0 +1,31 @@
+[server]
+binary = "./arma3server_x64"
+config = "server.cfg"
+profile = "aeetest"
+world = "Stratis"
+mission = "aee_test.Stratis"
+limit_fps = 1000
+params = "-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3"
+port = 2302
+skip_install = true
+clear_keys = true
+cdlc = []
+
+[mods]
+local = false
+preset = ""
+
+# The optional dev client: one non-dedicated machine so headless-client probes
+# can run.  The default harness stays at clients = 0; this file is used only by
+# `docker_test.sh --console --with-client`.  A headless client reports
+# hasInterface = false, so it carries a headless-client probe but never an
+# interface one.
+[headless]
+clients = 1
+profile = "$profile-hc-$i"
+
+[steam]
+user = ""
+password = ""
+branch = "public"
+branch_password = ""

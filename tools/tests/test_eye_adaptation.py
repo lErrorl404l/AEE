@@ -356,7 +356,7 @@ class TestEyeDriverContract(unittest.TestCase):
         # A skip jumps the world clock; the eye must arrive adapted, not chase.
         code = self._code(DRIVER)
         self.assertIn("dayTime", code)
-        self.assertIn("FUNC(eyeTimeSkip)", code)
+        self.assertIn('"eyeTimeSkip"', code)
         self.assertIn("eyeLastHour", code)
         self.assertIn("if (_skipped) then", code)
 
