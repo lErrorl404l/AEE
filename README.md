@@ -97,6 +97,10 @@ Place the **AEE Environment Config** module in the editor to customise settings.
 - The map colour palette follows the same standard: relief brown, water blue, vegetation green, roads red and white.
 - One load-time config re-declare reaches the main map, the briefing, the GPS, the minimap, the airborne minimap, Eden and Zeus. Eden and Zeus also carry the real NATO side symbols.
 - The layer is a re-texture of the engine's own location and object classes, so the engine draws it and no overlay is stacked on the marker layer. The engine owns the contour, road, rail and satellite geometry.
+- A unit symbol keeps its real-world ground size at every map zoom. A pure kernel scales the drawn pixel size with the map scale.
+- A destroyed unit stays on the map as a last-known contact at its death position, instead of vanishing.
+- An optional blue-force-tracker gate draws the unit symbols only while the player carries a GPS or a tracker device. The gate ships off, so the default does not change.
+- The map zooms out twice as far as vanilla. A scripted legend draws the palette and the terrain symbol groups from the same table the map config uses.
 
 ---
 
