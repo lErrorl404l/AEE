@@ -15,7 +15,7 @@ is its family default.
             ["friend", "Friend", "b", "derived", "Arma 3 CfgMarkers NATO BLUFOR family b_; icon \A3\ui_f\data\map\markers\nato\b_*.paa"],
             ["hostile", "Hostile", "o", "derived", "Arma 3 CfgMarkers NATO OPFOR family o_; icon \A3\ui_f\data\map\markers\nato\o_*.paa"],
             ["neutral", "Neutral", "n", "derived", "Arma 3 CfgMarkers NATO Independent family n_; icon \A3\ui_f\data\map\markers\nato\n_*.paa"],
-            ["unknown", "Unknown", "u", "derived", "AEE unknown-affiliation family; Arma 3 ships no u_ family, so the AEE u_ textures are produced"],
+            ["unknown", "Unknown", "u", "derived", "AEE unknown-affiliation family; Arma 3 ships no u_ family, so the AEE u_ textures are produced"]
         ]],
         ["dimension", "Battle Dimension", "dimensions", [
             ["land", "Land", "land", "derived", "tools/symbology_categories.py#ROLES"],
@@ -24,7 +24,7 @@ is its family default.
             ["subsurface", "Subsurface", "subsurface", "derived", "tools/symbology_categories.py#ROLES"],
             ["installation", "Installation", "installation", "derived", "tools/symbology_categories.py#ROLES"],
             ["equipment", "Equipment", "equipment", "derived", "tools/symbology_categories.py#ROLES"],
-            ["other", "Other", "other", "derived", "tools/symbology_categories.py#ROLES"],
+            ["other", "Other", "other", "derived", "tools/symbology_categories.py#ROLES"]
         ]],
         ["function", "Function", "glyphs", [
             ["infantry", "Infantry", "inf", "sourced", "APP-6(C) infantry; Arma 3 b_inf"],
@@ -46,7 +46,7 @@ is its family default.
             ["installation", "Installation", "installation", "sourced", "APP-6(C) installation; Arma 3 b_installation"],
             ["hq", "Hq", "hq", "sourced", "APP-6(C) headquarters; Arma 3 b_hq"],
             ["waypoint", "Waypoint", "dot", "derived", "AEE waypoint; no Arma 3 NATO glyph, AEE produces AEE_*_dot.paa"],
-            ["unknown", "Unknown", "unknown", "derived", "APP-6(C) unknown; Arma 3 b_unknown"],
+            ["unknown", "Unknown", "unknown", "derived", "APP-6(C) unknown; Arma 3 b_unknown"]
         ]],
         ["echelon", "Echelon", "echelons", [
             ["team", "Team", "team", "derived", "MIL-STD-2525D Table D-III"],
@@ -61,12 +61,12 @@ is its family default.
             ["corps", "Corps", "corps", "derived", "MIL-STD-2525D Table D-III"],
             ["army", "Army", "army", "derived", "MIL-STD-2525D Table D-III"],
             ["army_group", "Army Group", "army_group", "derived", "MIL-STD-2525D Table D-III"],
-            ["region", "Region", "region", "derived", "MIL-STD-2525D Table D-III"],
+            ["region", "Region", "region", "derived", "MIL-STD-2525D Table D-III"]
         ]],
         ["palette", "Palette", "palette", [
             ["NATO", "NATO", "NATO", "derived", "addons/symbology/initSettings.inc.sqf#symbologyPalette"],
             ["OPFOR", "OPFOR", "OPFOR", "derived", "addons/symbology/initSettings.inc.sqf#symbologyPalette"],
-            ["Auto", "Auto", "Auto", "derived", "addons/symbology/initSettings.inc.sqf#symbologyPalette"],
-        ]],
+            ["Auto", "Auto", "Auto", "derived", "addons/symbology/initSettings.inc.sqf#symbologyPalette"]
+        ]]
     ]]
 ]

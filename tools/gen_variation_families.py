@@ -209,10 +209,28 @@ def render_config(families: list[dict]) -> str:
 
 
 def render_model(families: list[dict]) -> str:
-    lines = [MODEL_HEADER.rstrip("\n"), ""]
-    lines.append("[")
+    family_blocks: list[str] = []
     for family in families:
-        lines.append(
+        option_blocks: list[str] = []
+        for option in family["options"]:
+            values = ",\n".join(
+                "            " + sqf_value(value) for value in option["values"]
+            )
+            option_blocks.append(
+                "        ["
+                + ", ".join(
+                    [
+                        sqf_str(option["id"]),
+                        sqf_str(option["label"]),
+                        sqf_str(option["source"]),
+                    ]
+                )
+                + ", [\n"
+                + values
+                + "\n        ]]"
+            )
+        options = ",\n".join(option_blocks)
+        family_blocks.append(
             "    ["
             + ", ".join(
                 [
@@ -223,26 +241,12 @@ def render_model(families: list[dict]) -> str:
                     sqf_str(family["resolver"]),
                 ]
             )
-            + ", ["
+            + ", [\n"
+            + options
+            + "\n    ]]"
         )
-        for option in family["options"]:
-            lines.append(
-                "        ["
-                + ", ".join(
-                    [
-                        sqf_str(option["id"]),
-                        sqf_str(option["label"]),
-                        sqf_str(option["source"]),
-                    ]
-                )
-                + ", ["
-            )
-            for value in option["values"]:
-                lines.append("            " + sqf_value(value) + ",")
-            lines.append("        ]],")
-        lines.append("    ]]")
-    lines.append("]")
-    return "\n".join(lines) + "\n"
+    body = ",\n".join(family_blocks)
+    return MODEL_HEADER.rstrip("\n") + "\n\n[\n" + body + "\n]\n"
 
 
 def artifacts() -> dict[Path, str]:
