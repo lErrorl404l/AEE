@@ -410,6 +410,17 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_lighting_worldLighting` | environmental | World lighting matcher profile `[nightFactor, starScale, grainScale, hazeScale]` |
 | `aee_lighting_worldLightingClass` | environmental | World lighting class from the matcher (climate class, never a map name) |
 
+### Erosion and sediment transport
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_hydrology_erosionRate_thaYr` | hydrology | RUSLE soil loss A in t/ha/yr at the current position |
+| `aee_hydrology_erosionDepth_mmYr` | hydrology | Soil loss as vertical lowering in mm/yr |
+| `aee_hydrology_erosivityR` | hydrology | Storm erosivity R (EI30) in MJ*mm/ha/h |
+| `aee_hydrology_sedimentYield_t` | hydrology | Event sediment yield (MUSLE) in metric tonnes |
+| `aee_hydrology_erosionRisk` | hydrology | Soil loss normalised 0..1 against 50 t/ha/yr |
+| `aee_hydrology_erosionDepositedFraction` | hydrology | Share of the load deposited at a slope break 0..1 |
+
 ### Maritime
 
 | Variable | Subsystem | Purpose |
