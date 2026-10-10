@@ -32,6 +32,8 @@ CART = REPO / "addons" / "cartography"
 MARKERS_HPP = SYMBOLOGY / "config_markers.hpp"
 LOC_HPP = CART / "config_locationtypes.hpp"
 ECHELON_KERNEL = SYMBOLOGY / "functions" / "symbology" / "fnc_symbologyEchelonSize.sqf"
+ICON_WORLD_SIZE_KERNEL = CART / "functions" / "hud" / "fnc_mapIconWorldSize.sqf"
+CART_PREP = (CART / "XEH_PREP.hpp").read_text(encoding="utf-8")
 RUN_TESTS = REPO / "tools" / "run_tests.py"
 ADR030 = (
     REPO
@@ -198,6 +200,36 @@ class TestMapQaDocDrift(unittest.TestCase):
         self.assertIn("shadedSea = 1;", COL_SRC)
         self.assertIn("drawShaded = 0.15;", COL_SRC)
         self.assertIn("colorForestTextured", COL_SRC)
+
+
+class TestMapIconWorldSizeKernel(unittest.TestCase):
+    """fnc_mapIconWorldSize, executed: (metres, worldSize, scale) -> pixels.
+
+    The engine draws a map icon at a constant pixel size, so an icon that
+    keeps a fixed WORLD size needs a pixel size that scales with the zoom.
+    The kernel is pure: the world size and the scale arrive as arguments.
+    """
+
+    def test_a_metre_size_on_the_reference_world_at_unit_scale(self):
+        # 6.4 * 8192 / 8192 * 1.0 = 6.4, so 64 metres -> 10 pixels.
+        self.assertEqual(run_sqf(ICON_WORLD_SIZE_KERNEL, [64, 8192, 1.0], {}), 10.0)
+
+    def test_a_half_world_size_doubles_the_pixels(self):
+        # 6.4 * 4096 / 8192 * 1.0 = 3.2, so the same metres -> twice the pixels.
+        self.assertEqual(run_sqf(ICON_WORLD_SIZE_KERNEL, [64, 4096, 1.0], {}), 20.0)
+
+    def test_a_double_scale_halves_the_pixels(self):
+        # 6.4 * 8192 / 8192 * 2.0 = 12.8, so 64 metres -> 5 pixels.
+        self.assertEqual(run_sqf(ICON_WORLD_SIZE_KERNEL, [64, 8192, 2.0], {}), 5.0)
+
+    def test_a_non_positive_scale_is_zero(self):
+        self.assertEqual(run_sqf(ICON_WORLD_SIZE_KERNEL, [64, 8192, 0], {}), 0.0)
+
+    def test_a_non_positive_world_size_is_zero(self):
+        self.assertEqual(run_sqf(ICON_WORLD_SIZE_KERNEL, [64, 0, 1.0], {}), 0.0)
+
+    def test_the_kernel_is_registered(self):
+        self.assertIn("PREPS(hud,mapIconWorldSize);", CART_PREP)
 
 
 class TestSuiteRegistration(unittest.TestCase):
