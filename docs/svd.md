@@ -62,6 +62,6 @@ for the release notes.
 ## 6. Related records
 
 - `CHANGELOG.md` - the change set of each version.
-- `docs/releases/README.md` - the release process.
-- `docs/releases/` - one baseline record per release.
+- `docs/release-records/README.md` - the release process.
+- `docs/release-records/` - one baseline record per release.
 - `docs/cmp.md` - the Configuration Management Plan.

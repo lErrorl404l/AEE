@@ -71,5 +71,5 @@ no accreditation and no compliance certificate.
 The evidence is the gate result at each release. The gate
 `tools/validation/validate_oracles.py` exits 0 when every run check passes.
 
-The release record under `docs/releases/` carries the gate result. The
+The release record under `docs/release-records/` carries the gate result. The
 Software Test Report carries the run counts.
