@@ -127,6 +127,28 @@ def blast_injury(p_so, td, indoor_mult=1.0):
     return [eardrum, lung_thresh, lung1, lung50, lung99, throw01]
 
 
+# ─── Corpse blast throw (issue #160) ──────────────────────────────────────
+
+P0_KPA = 101.325
+RHO0 = 1.225
+
+
+def blast_throw(p_so, td, mass_kg):
+    """Mirror of fnc_calculateBlastThrow.sqf: [throwSpeed, tumbleRate]."""
+    if p_so <= 0 or td <= 0 or mass_kg <= 0:
+        return [0.0, 0.0]
+    qo = 2.5 * p_so**2 / (7 * P0_KPA + p_so)  # kPa
+    u = math.sqrt(2 * (qo * 1000) / RHO0)  # m/s
+    cd, area = 1.2, 0.7
+    j = cd * (qo * 1000) * area * (td / 1000)  # N.s
+    dv = j / mass_kg
+    dv = min(dv, u, 55.0)  # wind cap, then ceiling
+    c_com, h, k = 0.57, 1.75, 0.30
+    d = (c_com - 0.5) * h
+    omega = dv * d / (k * k)
+    return [dv, omega]
+
+
 # ─── Tests ────────────────────────────────────────────────────────────────
 
 
@@ -269,6 +291,39 @@ class TestValidationTargets(unittest.TestCase):
         # Use the exact Z values (1.9522) from the lung99 search.
         z = 3.7345045944197084 / (7 ** (1 / 3))
         self.assertAlmostEqual(kb_incident_pressure(z), 300, delta=20)
+
+
+class TestBlastThrow(unittest.TestCase):
+    """The corpse blast-throw kernel (issue #160)."""
+
+    def test_zero_inputs(self):
+        self.assertEqual(blast_throw(0, 10, 80), [0.0, 0.0])
+        self.assertEqual(blast_throw(20, 0, 80), [0.0, 0.0])
+        self.assertEqual(blast_throw(20, 10, 0), [0.0, 0.0])
+
+    def test_rises_with_overpressure(self):
+        lo = blast_throw(20, 20, 80)[0]
+        hi = blast_throw(60, 20, 80)[0]
+        self.assertGreater(hi, lo)
+
+    def test_500lb_bomb_body_thrown(self):
+        # 227 kg charge at 25 m: above the throw threshold, a sane throw.
+        p_so, td = blast_overpressure(227.0, 25.0)
+        self.assertGreater(p_so, 15.0)
+        dv, omega = blast_throw(p_so, td, 80.0)
+        self.assertGreater(dv, 0.5)
+        self.assertLess(dv, 20.0)
+        self.assertGreater(omega, 0.0)
+
+    def test_capped_at_ceiling(self):
+        # Close in the impulse model over-predicts; the ceiling holds.
+        dv, _ = blast_throw(1000, 50, 80)
+        self.assertLessEqual(dv, 55.0)
+
+    def test_tumble_scales_with_speed(self):
+        _, o_lo = blast_throw(20, 20, 80)
+        _, o_hi = blast_throw(60, 20, 80)
+        self.assertGreater(o_hi, o_lo)
 
 
 if __name__ == "__main__":

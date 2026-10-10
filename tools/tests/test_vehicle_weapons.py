@@ -26,6 +26,7 @@ LOAD_SQF = (BALL / "fnc_getLoadData.sqf").read_text(encoding="utf-8")
 SHOT = (BALL / "fnc_resolveShot.sqf").read_text(encoding="utf-8")
 RECOIL = (BALL / "fnc_calculateRecoil.sqf").read_text(encoding="utf-8")
 GATE = (ARM / "fnc_penetrationGate.sqf").read_text(encoding="utf-8")
+KERNEL = (ARM / "fnc_calculatePenetration.sqf").read_text(encoding="utf-8")
 DERIVE = (BALL / "fnc_deriveCartridge.sqf").read_text(encoding="utf-8")
 
 
@@ -134,7 +135,8 @@ class TestCannonPenetrationDeferral(unittest.TestCase):
     def test_no_cannon_model_is_applied(self):
         # The deferral may name a candidate model, but none is applied:
         # the only penetration computation is still the bisurf rule.
-        self.assertEqual(GATE.count("_penMM ="), 1)
+        self.assertEqual(KERNEL.count("_penMM ="), 1)
+        self.assertIn("calculatePenetration", GATE)
 
 
 if __name__ == "__main__":

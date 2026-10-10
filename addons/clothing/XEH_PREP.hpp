@@ -5,6 +5,7 @@
 
 PREPS(clothing,getCamouflageProperties);
 PREPS(clothing,getEquipmentProperties);
+PREPS(clothing,getCorpseMass);
 PREPS(clothing,getInventoryLoad);
 PREPS(clothing,getItemMass);
 PREPS(clothing,selectBand);

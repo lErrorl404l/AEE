@@ -5,3 +5,6 @@
 
 PREPS(blast,calculateBlastInjury);
 PREPS(blast,calculateBlastOverpressure);
+PREPS(blast,calculateBlastThrow);
+PREPS(blast,applyDeathMomentum);
+PREPS(blast,applyCorpsePhysics);
