@@ -163,6 +163,7 @@ _probe_expected = (
     "[P111] [PASS]",
     "[P112] [PASS]",
     "[P113] [PASS]",
+    "[P114] [PASS]",
     "[P115] [PASS]",
     "[P116] [PASS]",
     "[P117] [PASS]",

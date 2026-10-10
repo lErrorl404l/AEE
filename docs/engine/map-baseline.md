@@ -29,50 +29,76 @@ satellite opacity.
 ## 2. The `RscMapControl` fields
 
 The vanilla column is `Addons/ui_f.pbo` `config.cpp:1272`. The AEE column is
-`addons/cartography/config_mapcolors.hpp`, included inside the
-`RscMapControl` block in `addons/cartography/config.cpp:65`.
+`addons/cartography/config_mapcolors.hpp`, included inside the `RscMapControl`
+block in `addons/cartography/config.cpp:70`; `colorGrid`, `colorGridMap` and
+`sizeExGrid` are set in `config.cpp` itself (`config.cpp:72`). A vanilla value
+marked "not set on the base" is absent from the `ui_f` base block and is set
+only by a display override; the parenthesised value names that override.
 
 | Field | Vanilla (`ui_f.pbo:1272`) | AEE | AEE source |
 |---|---|---|---|
-| `colorBackground` | `0.969,0.957,0.949,1` | `0.90,0.88,0.80,1` | FM 21-31; USGS |
-| `colorOutside` | `0,0,0,1` | `0.90,0.88,0.80,1` | FM 21-31; USGS |
+| `colorBackground` | `0.969,0.957,0.949,1` | `0.90,0.88,0.80,1` | FM 21-31 s9; USGS |
+| `colorOutside` | `0,0,0,1` | `0.90,0.88,0.80,1` | FM 21-31 s9; USGS |
+| `colorInactive` | `1,1,1,0.5` | `1,1,1,0.5` | ENG value kept |
 | `colorSea` | `0.467,0.631,0.851,0.5` | `0.55,0.70,0.85,1` | DGIWG water blue |
-| `colorForest` | `0.624,0.78,0.388,0.5` | `0.55,0.74,0.44,1` | FM 21-31; DGIWG green |
-| `colorForestBorder` | `0,0,0,0` | `0,0.5,0,1` | FM 21-31 |
-| `colorForestTextured` | not set on the base | `0.45,0.66,0.34,0.30` | OS woodland fill `#cee6bd` |
-| `colorRocks` | not set | `0.75,0.70,0.60,1` | FM 21-31 |
-| `colorLevels` | `0.286,0.177,0.094,0.5` | `0.70,0.48,0.32,1` | FM 21-31 relief brown |
-| `colorMainCountlines` | `0.572,0.354,0.188,0.5` | `0.45,0.26,0.12,1` | FM 21-31 brown |
-| `colorCountlines` | `0.572,0.354,0.188,0.25` | `0.62,0.42,0.22,1` | FM 21-31 brown |
 | `colorMainCountlinesWater` | `0.491,0.577,0.702,0.6` | `0,0.5,0.75,1` | DGIWG water blue |
 | `colorCountlinesWater` | `0.491,0.577,0.702,0.3` | `0.30,0.60,0.80,1` | DGIWG water blue |
-| `colorNames` | `0.1,0.1,0.1,0.9` | `0.10,0.10,0.10,0.90` | FM 21-31; USGS |
+| `ptsPerSquareSea` | `5` | `5` | ENG value kept |
+| `colorLevels` | `0.286,0.177,0.094,0.5` | `0.70,0.48,0.32,1` | FM 21-31 s10 relief brown |
+| `colorMainCountlines` | `0.572,0.354,0.188,0.5` | `0.45,0.26,0.12,1` | FM 21-31 s10; USGS |
+| `colorCountlines` | `0.572,0.354,0.188,0.25` | `0.62,0.42,0.22,1` | FM 21-31 s10; USGS |
+| `fontLevel` | `TahomaB` | `RobotoCondensed` | AEE label family |
+| `sizeExLevel` | `0.02` | `0.04` | doubled for legibility |
+| `ptsPerSquareCLn` | `10` | `10` | ENG value kept |
+| `colorForest` | `0.624,0.78,0.388,0.5` | `0.55,0.74,0.44,1` | FM 21-31 s11; DGIWG green |
+| `colorForestBorder` | `0,0,0,0` | `0,0.5,0,1` | FM 21-31 s11 |
+| `colorForestTextured` | not set on the base | `0.45,0.66,0.34,0.30` | OS MasterMap woodland fill `#cee6bd` |
+| `colorRocks` | `0,0,0,0.3` | `0.75,0.70,0.60,1` | FM 21-31 s11 |
+| `colorRocksBorder` | `0,0,0,0` | `0.50,0.45,0.40,1` | FM 21-31 s11 |
+| `ptsPerSquareFor` | `9` | `9` | ENG value kept |
+| `ptsPerSquareForEdge` | `9` | `9` | ENG value kept |
+| `ptsPerSquareForLod1` | not set on the base (`3den.pbo` `ctrlMap`: `4`) | `4` | `3den.pbo` ctrlMap parity |
+| `ptsPerSquareForLod2` | not set on the base (`3den.pbo` `ctrlMap`: `1`) | `1` | `3den.pbo` ctrlMap parity |
+| `colorRoads` | `0.7,0.7,0.7,1` | `0.80,0.10,0.10,1` | FM 21-31 s13-s18 |
+| `colorRoadsFill` | `1,1,1,1` | `0.95,0.90,0.80,1` | FM 21-31 s13-s18 |
+| `colorMainRoads` | `0.9,0.5,0.3,1` | `0.70,0.00,0.00,1` | FM 21-31 s13-s18 |
+| `colorMainRoadsFill` | `1,0.6,0.4,1` | `0.95,0.90,0.80,1` | FM 21-31 s13-s18 |
+| `colorRailWay` | `0.8,0.2,0,1` | `0,0,0,1` | FM 21-31 s13-s18 |
+| `colorPowerLines` | `0.1,0.1,0.1,1` | `0,0,0,1` | FM 21-31 s13-s18 |
+| `colorTracks` | `0.84,0.76,0.65,0.15` | `0.40,0.30,0.20,1` | FM 21-31 s13-s18 |
+| `colorTracksFill` | `0.84,0.76,0.65,1` | `0.90,0.85,0.75,1` | FM 21-31 s13-s18 |
+| `colorTrails` | `0.84,0.76,0.65,0.15` | `0.40,0.30,0.20,1` | FM 21-31 s13-s18 |
+| `colorTrailsFill` | `0.84,0.76,0.65,0.65` | `0.90,0.85,0.75,1` | FM 21-31 s13-s18 |
+| `widthRailWay` | `4` | `4` | ENG value kept |
+| `ptsPerSquareRoad` | `6` | `6` | ENG value kept |
+| `ptsPerSquareMainRoad` | not set on the base (`3den.pbo` `ctrlMap`: `6`) | `6` | `3den.pbo` ctrlMap parity |
+| `ptsPerSquareRoadSimple` | not set on the base (`3den.pbo` `ctrlMap`: `1`) | `1` | `3den.pbo` ctrlMap parity |
+| `ptsPerSquareMainRoadSimple` | not set on the base (`3den.pbo` `ctrlMap`: `1`) | `1` | `3den.pbo` ctrlMap parity |
+| `colorNames` | `0.1,0.1,0.1,0.9` | `0.10,0.10,0.10,1` | FM 21-31 s19; USGS |
+| `ptsPerSquareTxt` | `20` | `20` | ENG value kept |
+| `ptsPerSquareObj` | `9` | `9` | ENG value kept |
+| `ptsPerSquareObjLod1` | not set on the base (minimap: `2`) | `2` | `ui_f.pbo` minimap parity |
+| `ptsPerSquareExp`, `ptsPerSquareCost` | `10` | inherited | ENG value kept |
+| `maxSatelliteAlpha` | `0.85` | `0.5` | AEE model choice (ADR-030) |
+| `drawShaded` | not set on the base (minimap: `0.1`) | `0.15` | Enhanced Map idea (ADR-030) |
+| `shadedSea` | not set on the base (`3den.pbo` `ctrlMap`: `0.3`) | `1` | Enhanced Map idea (ADR-030) |
+| `showCountourInterval` | `0` | `1` | the interval label is shown |
+| `alphaFadeStartScale` | `2` | `2` | ENG value kept |
+| `alphaFadeEndScale` | `2` | `2` | ENG value kept |
+| `scaleMin` | `0.001` | not set | left to the engine |
+| `scaleMax` | `1` | `2` | AEE model choice, UNSOURCED |
+| `scaleDefault` | `0.16` | `0.3` | `ui_f.pbo` strategic-map scale |
 | `colorGrid` | `0.1,0.1,0.1,0.6` | `0,0,0,0` | engine grid off (ADR-028) |
 | `colorGridMap` | `0.1,0.1,0.1,0.6` | `0,0,0,0` | engine grid off (ADR-028) |
 | `sizeExGrid` | `0.02` | `0.04` | AEE MGRS label size |
-| `maxSatelliteAlpha` | `0.85` | `0.5` | AEE model choice (ADR-030) |
-| `drawShaded` | not set on the base | `0.15` | Enhanced Map idea (ADR-030) |
-| `shadedSea` | not set on the base | `1` | Enhanced Map idea (ADR-030) |
-| `showCountourInterval` | `0` | `1` | the interval label is shown |
-| `alphaFadeStartScale` | `2` | `2` | engine value kept |
-| `alphaFadeEndScale` | `2` | `2` | engine value kept |
-| `fontLevel` | `TahomaB` | `RobotoCondensed` | engine field, AEE label family |
-| `sizeExLevel` | `0.02` | `0.04` | doubled for legibility |
-| `scaleMin` | `0.001` | not set | AEE leaves it to the engine |
-| `scaleMax` | `1` | not set | AEE leaves it to the engine |
-| `scaleDefault` | `0.16` | not set | AEE leaves it to the engine |
-| `ptsPerSquareSea` | `5` | `5` | ui_f parity |
-| `ptsPerSquareTxt` | `20` | `20` | ui_f parity |
-| `ptsPerSquareCLn` | `10` | `10` | ui_f parity |
-| `ptsPerSquareFor` | `9` | `9` | ui_f parity |
-| `ptsPerSquareForEdge` | `9` | `9` | ui_f parity |
-| `ptsPerSquareRoad` | `6` | `6` | ui_f parity |
-| `ptsPerSquareObj` | `9` | `9` | ui_f parity |
-| `ptsPerSquareExp`, `ptsPerSquareCost` | `10` | inherited | ui_f parity |
 
-The AEE density values are the `ui_f` values, not above them. The `ptsPerSquare*`
+AEE adopts the vanilla densities. It raises none above the engine value: the
+`ptsPerSquare*` fields are the `ui_f` base values, and the LOD and simple
+variants (`ptsPerSquareForLod1`, `ptsPerSquareForLod2`, `ptsPerSquareMainRoad`,
+`ptsPerSquareRoadSimple`, `ptsPerSquareMainRoadSimple`, `ptsPerSquareObjLod1`)
+are the engine `3den.pbo` `ctrlMap` and minimap values. The `ptsPerSquare*`
 density is a per-frame cost lever: a HIGHER value is a LARGER stride and FEWER
-draw calls (`CStaticMap::DrawBackground`). AEE raises no density above vanilla.
+draw calls (`CStaticMap::DrawBackground`).
 
 The `colorBackground` alpha stays 1, so the map ground is opaque. The engine
 minimap overrides `colorBackground` with the profile background colour, so the
@@ -82,26 +108,29 @@ AEE value does not reach it.
 
 A `RscMapControl` re-declare does not reach every map. The separate targets:
 
-- `RscDisplayStrategicMap >> controlsBackground >> Map` (`ui_f.pbo:38381`).
+- `RscDisplayStrategicMap >> controlsBackground >> Map` (`ui_f.pbo:38380`).
   Its own `RscMapControl`. Vanilla sets `maxSatelliteAlpha` from a uinamespace
   default of `1` and `scaleMin/Max/Default` to `0.3`. AEE re-declares the same
-  topographic surface (`addons/cartography/config_mapdisplays.hpp:22`).
+  topographic surface (`addons/cartography/config_mapdisplays.hpp:26`).
 - `ctrlMap` (Eden, `Addons/3den.pbo:1037`). Not `RscMapControl`. Vanilla sets
   `drawShaded = 0.25`, `shadedSea = 0.3`, `maxSatelliteAlpha = 0.85` and
   `colorForestTextured = 0.624,0.78,0.388,0.25`. `ctrlMapMain` and
   `ctrlMapEmpty` inherit it. AEE re-declares the surface
-  (`config_mapdisplays.hpp:39`).
+  (`config_mapdisplays.hpp:42`).
 - The minimap `RscCustomInfoMiniMap >> controls >> MiniMap >> Controls >>
   CA_MiniMap` (`ui_f.pbo:50285`). Vanilla overrides `maxSatelliteAlpha` (0),
   `alphaFade*` (10), the `ptsPerSquare*` densities, `drawShaded` (0.1),
   `colorSea` and `colorForest`, and turns the contour interval label off. AEE
-  does not re-declare it, so the engine override wins.
+  re-declares the control (`config_mapdisplays.hpp:55`, the surface in
+  `addons/cartography/config_mapminimap.hpp`) for the fields the engine does
+  not force; the forced fields are the ceiling.
 - The airborne minimap `RscCustomInfoAirborneMiniMap` (`ui_f.pbo:50644`)
-  inherits the minimap and overrides `colorSea`, `colorForest`, `drawShaded`
-  and the altitude ramp.
+  inherits the minimap and overrides `colorSea`, `colorForest`, `drawShaded`,
+  `colorPowerLines`, `widthPowerLines` and the altitude ramp. AEE re-declares
+  it too (`config_mapdisplays.hpp:66`).
 - The curator map `RscDisplayCurator >> ControlsBackground >> Map` inherits
   `RscMapControl`, so the AEE surface reaches it with no separate re-declare
-  (`addons/cartography/config_curator.hpp`).
+  (`addons/cartography/config_curator.hpp:11`).
 
 A display that re-declares a field wins for that display. The live probe P142
 reads the reach per surface.
@@ -111,9 +140,9 @@ reads the reach per surface.
 The engine draws a place-name or an icon from `CfgLocationTypes`. `Mount`,
 `Name` and `Area` are the parentless roots. `Strategic` derives from `Name`,
 and `Hill` derives from `Name`. Every AEE re-declared class restates its parent
-(`addons/cartography/config_locationtypes.hpp`), because a bare reopen invokes
-the engine Empty syntax and strips `drawStyle` and the base texture (ADR-030).
-The full graph is in `docs/wiki/research/map-qa-matrix.md`.
+(`addons/cartography/config_locationtypes.hpp:49`), because a bare reopen
+invokes the engine Empty syntax and strips `drawStyle` and the base texture
+(ADR-030). The full graph is in `docs/wiki/research/map-qa-matrix.md`.
 
 `drawStyle` is a fixed engine enum (`name`, `icon`, `area`, `mount`). A mod
 changes the texture, colour, size, font, shadow and importance only.
@@ -143,4 +172,3 @@ each world PBO and were not read for this baseline.
 - `topo-standards.md` - the published colour values and contour intervals.
 - `docs/wiki/research/map-surface-audit.md` - the live reach per surface.
 - `docs/wiki/research/map-qa-matrix.md` - the invariant to machine-check map.
-

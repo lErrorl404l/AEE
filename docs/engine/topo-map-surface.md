@@ -292,7 +292,7 @@ and `config_mapdisplays.hpp`): `colorLevels`, `colorMainCountlines`,
 rail, power, tracks, trails, sea, forest, forestBorder, rocks, rocksBorder,
 background, `maxSatelliteAlpha=0.5`, `showCountourInterval=1`, and it hides
 the engine grid. It also sets `drawShaded = 0.15`, `shadedSea = 1` and
-`colorForestTextured` (`addons/cartography/config_mapcolors.hpp:68,102-104`).
+`colorForestTextured` (`addons/cartography/config_mapcolors.hpp:71,122-123`).
 `drawShaded` and `shadedSea` are model choices with no standard, adopted from
 the Enhanced Map idea. `colorForestTextured` names the OS woodland fill
 `#cee6bd`.
