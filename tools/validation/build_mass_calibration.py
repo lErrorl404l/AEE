@@ -53,6 +53,21 @@ PROBE_TAG = "[P72] MASS"
 LINE_RE = re.compile(r"^\[P72\] MASS (\S+) config=(\S+) live=(\S+)\s*$")
 SCALE_ROUND = 6
 METRIC_ROUND = 4
+# The frozen reference set. The fit scale is the median of the first
+# REFERENCE_N rows and is frozen at approval, so an appended verification row
+# never moves it. A recalibration re-derives the set and needs approval.
+REFERENCE_N = 18
+FROZEN_ON = "2026-10-01"
+FROZEN_BASIS = (
+    "The operator approved the calibration on 2026-10-01. The fit scale is "
+    "the median of the first 18 reference rows; the set was frozen at approval "
+    "so that an appended verification row never moves it."
+)
+RECALIBRATION_POLICY = (
+    "An appended row is a verification row and never recomputes the frozen "
+    "scale. A recalibration re-derives the scale from a new reference set and "
+    "needs operator approval and a new frozen_on date."
+)
 # The leave-one-out band. A predicted engine mass within this fraction of the
 # measured one counts as covered. The value is a reporting band, not a gate.
 COVERAGE_TOLERANCE = 0.20
@@ -214,16 +229,19 @@ def build_rows(
     return rows
 
 
-def fit_rows(rows: Sequence[dict[str, object]]) -> tuple[float, dict[str, object]]:
-    """Return the median scale and the leave-one-out report.
+def fit_rows(
+    rows: Sequence[dict[str, object]], reference_n: int = REFERENCE_N
+) -> tuple[float, dict[str, object]]:
+    """Return the frozen reference median scale and the leave-one-out report.
 
-    The fit is the median of the per-class scales. The median resists the one
-    weak pairing and matches the small-sample treatment in the held census.
-    The leave-one-out error refits from the other classes and scores the held
-    class, so a fit that only works because a row is in its own input shows up.
+    The fit is the median of the reference row scales only. The reference set
+    is frozen at approval, so an appended verification row never moves the
+    scale. The leave-one-out error refits from the other classes and scores the
+    held class, so a fit that only works because a row is in its own input
+    shows up.
     """
     scales = [float(row["scale"]) for row in rows]
-    scale = _round(statistics.median(scales), SCALE_ROUND)
+    scale = _round(statistics.median(scales[:reference_n]), SCALE_ROUND)
     errors: list[float] = []
     covered = 0
     for index, row in enumerate(rows):
@@ -254,10 +272,20 @@ def build_artefact(
     classes: Sequence[str],
     readings: dict[str, tuple[float, float]],
     held: dict[str, dict[str, object]],
+    reference_n: int = REFERENCE_N,
+    frozen_scale: float | None = None,
 ) -> dict[str, object]:
-    """Return the calibration artefact. The approved flag stays false."""
+    """Return the calibration artefact. The approved flag stays false.
+
+    The fit is frozen to a reference set, so its scale is the median of the
+    reference rows only and an appended verification row never moves it. A
+    frozen scale read from an existing artefact is preserved, so a rebuild
+    never clobbers the frozen constant.
+    """
     rows = build_rows(classes, readings, held)
-    scale, leave_one_out = fit_rows(rows)
+    scale, leave_one_out = fit_rows(rows, reference_n)
+    if frozen_scale is not None:
+        scale = frozen_scale
     return {
         "schema": SCHEMA,
         "note": (
@@ -273,12 +301,37 @@ def build_artefact(
             "estimator": "median",
             "scale": scale,
             "round": SCALE_ROUND,
+            "reference_n": reference_n,
+            "frozen": True,
+            "frozen_on": FROZEN_ON,
+            "frozen_basis": FROZEN_BASIS,
+            "recalibration_policy": RECALIBRATION_POLICY,
         },
         "leave_one_out": leave_one_out,
         "counts": {"paired": len(rows)},
         "approved": False,
         "rows": rows,
     }
+
+
+def existing_frozen_scale(path: Path) -> float | None:
+    """Return the frozen fit scale of an existing artefact, or None.
+
+    A rebuild reads this so it never clobbers the frozen constant.
+    """
+    if not path.is_file():
+        return None
+    try:
+        loaded: object = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    payload = _mapping(loaded)
+    if payload is None:
+        return None
+    fit = _mapping(payload.get("fit"))
+    if fit is None or fit.get("frozen") is not True:
+        return None
+    return _number(fit.get("scale"))
 
 
 def check_log_present(path: Path) -> None:
@@ -301,6 +354,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--bindings", type=Path, default=DEFAULT_BINDINGS)
     parser.add_argument("--calibration", type=Path, default=DEFAULT_CALIBRATION)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument(
+        "--reference-n",
+        type=int,
+        default=REFERENCE_N,
+        help="The size of the frozen reference set the fit median is scoped to.",
+    )
     args = parser.parse_args(argv)
 
     try:
@@ -308,7 +367,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         classes = bound_classes(args.bindings)
         readings = parse_log(args.log)
         held = held_masses(args.calibration)
-        artefact = build_artefact(classes, readings, held)
+        frozen_scale = existing_frozen_scale(args.out)
+        artefact = build_artefact(
+            classes,
+            readings,
+            held,
+            reference_n=args.reference_n,
+            frozen_scale=frozen_scale,
+        )
     except (CensusError, OSError) as exc:
         print(f"mass calibration: cannot build the artefact: {exc}", file=sys.stderr)
         return 1

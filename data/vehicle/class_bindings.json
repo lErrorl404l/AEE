@@ -142,5 +142,29 @@
     "identity_source": "aee_class_table",
     "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
     "grade": "claimed"
+  },
+  {
+    "game_class": "C_Offroad_01_F",
+    "class_token": "Car",
+    "catalogue_id": "land_rover_wolf_xd_110",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Car; the class is a light off-road 4x4 utility vehicle, paired with the held Land Rover Wolf (XD 110) light off-road utility 4x4. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_SUV_01_F",
+    "class_token": "Car",
+    "catalogue_id": "peugeot_p4",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Car; the class is a sport utility vehicle, paired with the held Peugeot P4 light 4x4 utility. The held catalogue holds no sport utility vehicle, so the pairing is weak and recorded as such.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Van_01_transport_F",
+    "class_token": "Car",
+    "catalogue_id": "gaz_66",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Car; the class is a light commercial van, paired with the held GAZ-66 light utility truck. The held catalogue holds no van, so the pairing is weak and recorded as such.",
+    "grade": "claimed"
   }
 ]

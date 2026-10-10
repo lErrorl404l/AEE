@@ -80,8 +80,11 @@ class CfgVehicles {
     class MRAP_03_base_F;
     class O_APC_Tracked_02_base_F;
     class O_MBT_02_base_F;
+    class Offroad_01_civil_base_F;
+    class SUV_01_base_F;
     class Truck_01_base_F;
     class Truck_02_transport_base_F;
+    class Van_01_transport_base_F;
 
     class B_AFV_Wheeled_01_cannon_F: AFV_Wheeled_01_base_F {
         maxSpeed = 80;
@@ -110,6 +113,18 @@ class CfgVehicles {
     };
     class C_Hatchback_01_sport_F: Hatchback_01_sport_base_F {
         mass = 1710.389328;
+    };
+    class C_Offroad_01_F: Offroad_01_civil_base_F {
+        maxSpeed = 160;
+        mass = 1830.517007;
+    };
+    class C_SUV_01_F: SUV_01_base_F {
+        maxSpeed = 108;
+        mass = 2002.127976;
+    };
+    class C_Van_01_transport_F: Van_01_transport_base_F {
+        maxSpeed = 90;
+        mass = 3935.611564;
     };
     class I_APC_Wheeled_03_cannon_F: I_APC_Wheeled_03_base_F {
         maxSpeed = 80;

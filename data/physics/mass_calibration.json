@@ -1,18 +1,23 @@
 {
-  "schema": "aee.physics.mass_calibration/1",
+  "schema": "aee.physics.mass_calibration/2",
   "note": "Calibration of the engine's own mass for the bound vehicle classes. The engine mass and the config mass are engine tuning values, measured in engine by the mass-census probe; they are never a real-world value. The real mass is a held catalogue analogue. The fit is a calibration scale, not a copied engine value. The operator approved this calibration on 2026-10-01, so the calibrated mass override may consume it.",
   "fit": {
     "convention": "scale = real_analogue_mass_kg / engine_mass; engine_mass = real_analogue_mass_kg / scale",
     "estimator": "median",
     "scale": 0.87407,
-    "round": 6
+    "round": 6,
+    "reference_n": 18,
+    "frozen": true,
+    "frozen_on": "2026-10-01",
+    "frozen_basis": "The operator approved the calibration on 2026-10-01. The fit scale is the median of the first 18 reference rows; the set was frozen at approval so that an appended verification row never moves it.",
+    "recalibration_policy": "An appended row is a verification row and never recomputes the frozen scale. A recalibration re-derives the scale from a new reference set and needs operator approval and a new frozen_on date."
   },
   "leave_one_out": {
     "convention": "each class is scored with the fit refit from the other classes",
-    "n": 18,
+    "n": 21,
     "coverage": 0.3333,
     "coverage_tolerance": 0.2,
-    "mdape": 0.3351
+    "mdape": 0.3163
   },
   "counts": {
     "paired": 18
@@ -203,6 +208,36 @@
       "scale": 0.729223,
       "source": "data/vehicle/catalogue/btr_80_technical_description_2001.json",
       "source_locator": "btr_80_technical_description_2001 Section 3 Combat and technical characteristics, General data, printed page 9, row Polnaya massa mashiny, kg (full mass of the machine)"
+    },
+    {
+      "game_class": "C_Offroad_01_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 1620.91,
+      "real_analogue_mass_kg": 1600.0,
+      "mass_basis": "operating",
+      "scale": 0.9871,
+      "source": "data/vehicle/catalogue/land_rover_wolf_xd_110.json",
+      "source_locator": "Elite UK Forces Wolf (XD 110) specifications: 'Weight 1.6 tonnes'"
+    },
+    {
+      "game_class": "C_SUV_01_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 1600.0,
+      "real_analogue_mass_kg": 1750.0,
+      "mass_basis": "curb",
+      "scale": 1.09375,
+      "source": "data/vehicle/catalogue/peugeot_p4.json",
+      "source_locator": "Infobox automobile, weight row, 1,750 kg"
+    },
+    {
+      "game_class": "C_Van_01_transport_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 2400.04,
+      "real_analogue_mass_kg": 3440.0,
+      "mass_basis": "curb",
+      "scale": 1.433309,
+      "source": "data/vehicle/catalogue/gaz_66.json",
+      "source_locator": "Infobox, weight row"
     }
   ]
 }

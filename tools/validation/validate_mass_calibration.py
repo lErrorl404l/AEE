@@ -10,7 +10,9 @@ held real masses. This gate checks the artefact is honest:
   * the fit names the median estimator and a positive scale;
   * every row reproduces its scale from the held real mass and the measured
     engine mass;
-  * the recorded fit equals the median of the row scales;
+  * the fit is frozen to a reference set and its scale equals the median of
+    the reference row scales only, so an appended verification row never moves
+    it; the full-sample median is reported as visible drift;
   * the row set equals the classes in ``data/vehicle/class_bindings.json``.
 
 A missing artefact is a legal state: the census has not run yet, so there is
@@ -43,6 +45,7 @@ DEFAULT_BINDINGS = ROOT / "data" / "vehicle" / "class_bindings.json"
 SCHEMA = schemas.PHYSICS_MASS_CALIBRATION
 SCALE_ROUND = 6
 SCALE_TOLERANCE = 1e-6
+FIT_TOLERANCE = 1e-4
 
 
 def _number(value: object) -> float | None:
@@ -79,6 +82,25 @@ def bound_classes(path: Path) -> list[str]:
         if name is not None:
             classes.append(name)
     return classes
+
+
+def reference_scales(
+    rows: Sequence[dict[str, object]], reference_n: int
+) -> list[float]:
+    """Return the row scales of the frozen reference set."""
+    return [
+        float(rows[index]["scale"])
+        for index in range(min(reference_n, len(rows)))
+        if _number(rows[index].get("scale"))
+    ]
+
+
+def full_sample_median(rows: Sequence[dict[str, object]]) -> float | None:
+    """Return the median scale over every row. This is the visible drift."""
+    scales = [float(row["scale"]) for row in rows if _number(row.get("scale"))]
+    if not scales:
+        return None
+    return round(statistics.median(scales), SCALE_ROUND)
 
 
 def load_artefact(path: Path) -> dict[str, object]:
@@ -157,16 +179,29 @@ def validate_artefact(
             errors.append("fit.estimator must be median")
         if _text(fit.get("convention")) is None:
             errors.append("fit.convention must be non-empty")
+        if fit.get("frozen") is not True:
+            errors.append("fit.frozen must be true")
         scale = _number(fit.get("scale"))
         if scale is None or scale <= 0:
             errors.append("fit.scale must be positive")
-        elif rows:
-            scales = [float(row["scale"]) for row in rows if _number(row.get("scale"))]
-            if scales:
-                median = round(statistics.median(scales), SCALE_ROUND)
-                if abs(scale - median) > 1e-4:
+        reference_n = fit.get("reference_n")
+        if isinstance(reference_n, bool) or not isinstance(reference_n, int):
+            errors.append("fit.reference_n must be an integer")
+        elif not 1 <= reference_n <= len(rows):
+            errors.append(
+                f"fit.reference_n {reference_n} must be between 1 and {len(rows)}"
+            )
+        elif scale is not None:
+            # The fit is frozen to a reference set. The scale is the median of
+            # the reference row scales only, so an appended verification row
+            # never moves it. The full-sample median is reported as drift.
+            reference = reference_scales(rows, reference_n)
+            if reference:
+                median = round(statistics.median(reference), SCALE_ROUND)
+                if abs(scale - median) > FIT_TOLERANCE:
                     errors.append(
-                        f"fit.scale {scale} is not the median row scale {median}"
+                        f"fit.scale {scale} is not the reference median row "
+                        f"scale {median}"
                     )
 
     leave_one_out = _mapping(payload.get("leave_one_out"))
@@ -226,6 +261,11 @@ def _valid_fixture() -> dict[str, object]:
             "estimator": "median",
             "scale": 0.5,
             "round": SCALE_ROUND,
+            "reference_n": len(rows),
+            "frozen": True,
+            "frozen_on": "2026-10-01",
+            "frozen_basis": "test fixture",
+            "recalibration_policy": "test fixture",
         },
         "leave_one_out": {
             "convention": "refit from the other classes",
@@ -262,6 +302,33 @@ def self_check() -> int:
         "without an approval" in error for error in validate_artefact(flipped, expected)
     ):
         failures.append("a bare approved flag was accepted")
+
+    unfrozen = copy.deepcopy(fixture)
+    unfrozen["fit"]["frozen"] = False
+    if not any(
+        "fit.frozen must be true" in error
+        for error in validate_artefact(unfrozen, expected)
+    ):
+        failures.append("a non-frozen fit was accepted")
+
+    # An appended verification row with a different scale must not move the
+    # frozen fit.scale: the fit stays the median of the reference rows only.
+    appended = copy.deepcopy(fixture)
+    appended["rows"].append(
+        {
+            "game_class": "C_F",
+            "engine_mass_config": 3000.0,
+            "engine_mass_live": 3000.0,
+            "real_analogue_mass_kg": 9000.0,
+            "mass_basis": "gross",
+            "scale": 3.0,
+            "source": "data/vehicle/catalogue/c.json",
+            "source_locator": "c, row 3",
+        }
+    )
+    appended["leave_one_out"]["n"] = len(appended["rows"])
+    if validate_artefact(appended, expected + ["C_F"]):
+        failures.append("an appended verification row moved the frozen fit.scale")
 
     if failures:
         print("mass calibration: self-check FAIL")
@@ -308,6 +375,20 @@ def main(argv: Sequence[str] | None = None) -> int:
     rows = payload.get("rows")
     count = len(rows) if isinstance(rows, list) else 0
     print(f"mass calibration: {count} calibrated classes -> {args.path} (valid)")
+    if isinstance(rows, list):
+        row_maps = [row for row in (_mapping(raw) for raw in rows) if row is not None]
+        drift = full_sample_median(row_maps)
+        fit = _mapping(payload.get("fit"))
+        scale = _number(fit.get("scale")) if fit is not None else None
+        if (
+            drift is not None
+            and scale is not None
+            and abs(drift - scale) > FIT_TOLERANCE
+        ):
+            print(
+                f"mass calibration: full-sample median {drift} drifts from the "
+                f"frozen scale {scale} (the appended verification rows)"
+            )
     return 0
 
 
