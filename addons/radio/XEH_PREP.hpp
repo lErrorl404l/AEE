@@ -1,3 +1,12 @@
 PREP(calculateRadioPropagation);
 PREP(calculateIonosphericAbsorption);
 PREP(dumpState);
+PREPS(radar,calculateRadarDetection);
+PREPS(radar,radarClutterRange);
+PREPS(radar,radarDetectionRange);
+PREPS(radar,radarDuctRange);
+PREPS(radar,radarHorizon);
+PREPS(radar,radarNoiseFloor);
+PREPS(radar,radarRangeEquation);
+PREPS(radar,radarRcs);
+PREPS(radar,radarSeaClutter);
