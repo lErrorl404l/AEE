@@ -73,6 +73,8 @@ website:
             href: field-guide/features/map-surface.qmd
           - text: "F3 - HUD, markers and symbology"
             href: field-guide/features/hud-markers.qmd
+          - text: "Citations"
+            href: field-guide/citations.qmd
       - text: Support
         href: support.qmd
   navbar:

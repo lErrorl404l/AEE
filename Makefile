@@ -100,6 +100,7 @@ lint: lint-parity
 	python3 tools/tests/test_engine_docs.py || rc=1; \
 	python3 tools/tests/test_field_guide.py || rc=1; \
 	python3 tools/validation/validate_field_guide.py || rc=1; \
+	python3 tools/field-guide/citations.py --check || rc=1; \
 	if [ $$rc -ne 0 ]; then echo "LINT: one or more checks FAILED"; fi; \
 	exit $$rc
 

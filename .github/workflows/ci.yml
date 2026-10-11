@@ -153,6 +153,8 @@ jobs:
         run: python3 tools/tests/test_field_guide.py
       - name: Engine field guide page contract check
         run: python3 tools/validation/validate_field_guide.py
+      - name: Engine field guide citation index check
+        run: python3 tools/field-guide/citations.py --check
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:
