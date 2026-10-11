@@ -1,0 +1,118 @@
+---
+title: "F5 - post-process and the image pipeline"
+feature: F5
+verify: extract
+---
+
+# F5: post-process and the image pipeline {#sec-fg-post-process}
+
+The engine draws the world, then a stack of full-screen effects, then the HUD.
+Script controls the stack only. This page covers the effect lifecycle, the
+effect catalogue, the colour and grain parameters, the template reader, and the
+world HDR anchors.
+
+## What works
+
+- `ppEffectCreate [name, priority]` builds a named effect at a priority. The
+  higher priority draws later, on top of the lower. It returns a handle, or -1
+  on failure. {src:cmd:ppEffectCreate}
+- `ppEffectAdjust handle [params]` sets the parameter array.
+  {src:cmd:ppEffectAdjust}
+- `ppEffectCommit handle duration` fades the change over the time.
+  {src:cmd:ppEffectCommit}
+- `ppEffectEnable handle bool` switches the effect on and off and keeps the
+  handle alive. {src:cmd:ppEffectEnable}
+- `ppEffectDestroy handle` frees the handle. {src:cmd:ppEffectDestroy}
+- The creatable catalogue holds nine effects: RadialBlur, ChromAberration,
+  WetDistortion, ColorCorrections, DynamicBlur, FilmGrain, ColorInversion,
+  SSAO and Resolution. {src:adr:ADR-010}
+- `ColorCorrections` takes seven elements in this order: brightness, contrast,
+  offset, the blend vector, the colorize vector, the weight vector and the
+  radial vector. {src:cfg:CfgPostProcessTemplates.Default.colorCorrections}
+- The base-game `Default` template holds six elements and omits the radial
+  vector. The engine treats the missing vector as the default.
+  {src:pbo:Addons/functions_f.pbo:3553}
+- `FilmGrain` sets the grain with `intensity` and `sharpness`, plus a grain
+  size, two intensity endpoints and a monochromatic flag. The engine defaults
+  are 0.005, 1.25, 2.01, 0.75, 1.0 and 0. {src:adr:ADR-014}
+- `CfgPostProcessTemplates` holds one class per named template. The base game
+  ships `Default`, `Survive`, `RealIsBrown`, `BlackAndWhite` and
+  `Mediterranean`. The curator module `ModulePostprocess_F` calls
+  `BIS_fnc_modulePostprocess`, which reads the named template and applies it to
+  the camera. {src:script:docs/wiki/research/post-process-template-reference.md}
+- The engine reads the world HDR pipeline from `HDRNewPars`. It carries the
+  bloom, the tonemap curve, the eye-adaptation gains and the night shift
+  aperture. {src:cfg:CfgWorlds.HDRNewPars}
+- The engine reads `DOFPars` to place the NVG focal plane.
+  {src:cfg:CfgWorlds.DOFPars}
+
+## What does not work
+
+- A scriptable sharpen filter. The engine has no `Sharpen` effect. Scene
+  sharpening is the video option "Sharpen Filter", and a mod cannot set a video
+  option. {src:adr:ADR-010}
+- A second depth of field. `DepthOfField` is one engine handle, and the NVG
+  tube model owns it. {src:script:addons/nightvision/functions/fnc_applyNVGTubeModel.sqf}
+- A run-time change to `HDRNewPars`. The engine reads it at world load, and no
+  script command reaches the same stage. {src:script:docs/wiki/research/engine-hdr-and-night-ceiling.md}
+- A preset in the video menu. A mod can declare a template class and extend the
+  curator list. It cannot add a preset to the engine video menu, which is
+  engine UI data. {src:script:docs/wiki/research/post-process-template-reference.md}
+- A custom effect type or a custom shader. `ppEffectCreate` accepts the nine
+  named effects only. {src:script:docs/wiki/research/video-option-ceiling.md}
+
+## Limitations
+
+- The effect count and the draw order are fixed by the priority. Two owners
+  must not share one priority. The registry bumps the priority until the engine
+  returns a handle the registry does not hold.
+  {src:script:addons/lib/functions/fnc_createPPEffect.sqf}
+- `ColorCorrections` is a single-slot effect. One owner holds the visible
+  value. Severe weather wins the weather slot, and snow blindness holds it when
+  severe weather is clear. {src:script:addons/vision/functions/vision/fnc_managePostProcess.sqf}
+- The base-grade tone curve is read at world load and cached. AEE reads the
+  vanilla `Default` anchor once per session and falls back to the neutral triple
+  when the read fails. {src:adr:ADR-014}
+- The NVG depth of field is one handle. Its blur is a script approximation,
+  because the engine does not document the parameter unit.
+  {src:script:tools/validation/validate_dof.py}
+
+## Breaks visually
+
+- A `ColorCorrections` or `ChromAberration` array of the wrong length throws.
+  A six-element `ChromAberration` array logs the "6 elements provided, 3
+  expected" error class and no effect is applied.
+  {src:script:addons/vision/functions/vision/fnc_managePostProcess.sqf}
+- A fight over the single weather slot. Two writers flicker the picture. The
+  arbiter gives the slot one owner per tick.
+  {src:script:addons/vision/functions/vision/fnc_managePostProcess.sqf}
+- An over-bright tone. A large brightness or a lifted black point washes the
+  image out. The grade may only deepen the black point and raise the contrast.
+  {src:adr:ADR-014}
+- A world anchor outside the class chain is inert. A direct `CfgWorlds` child
+  is never read, so the HDR values never reach the frame.
+  {src:probe:P84}
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Addons/functions_f.pbo:3553 | extract |
+| cfg | CfgPostProcessTemplates.Default.colorCorrections | extract |
+| cfg | CfgWorlds.HDRNewPars | extract |
+| cfg | CfgWorlds.DOFPars | extract |
+| cmd | ppEffectCreate | extract |
+| cmd | ppEffectAdjust | extract |
+| cmd | ppEffectCommit | extract |
+| cmd | ppEffectEnable | extract |
+| cmd | ppEffectDestroy | extract |
+| adr | ADR-010 | test:tools/tests/test_image_realism.py |
+| adr | ADR-014 | test:tools/tests/test_vision_model.py |
+| script | addons/lib/functions/fnc_createPPEffect.sqf | test:tools/tests/test_pp_handle_unique.py |
+| script | addons/vision/functions/vision/fnc_managePostProcess.sqf | test:tools/tests/test_visual_pipeline_audit.py |
+| script | addons/nightvision/functions/fnc_applyNVGTubeModel.sqf | test:tools/tests/test_nvg_audit.py |
+| script | tools/validation/validate_dof.py | kernel:tools/validation/validate_dof.py |
+| script | docs/wiki/research/post-process-template-reference.md | extract |
+| script | docs/wiki/research/engine-hdr-and-night-ceiling.md | extract |
+| script | docs/wiki/research/video-option-ceiling.md | extract |
+| probe | P84 | probe:P84 |

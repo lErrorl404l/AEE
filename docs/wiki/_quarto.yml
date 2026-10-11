@@ -75,6 +75,8 @@ website:
             href: field-guide/features/hud-markers.qmd
           - text: "F4 - Thermal imaging and AGC"
             href: field-guide/features/thermal-agc.qmd
+          - text: "F5 - Post-process and the image pipeline"
+            href: field-guide/features/post-process.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support
