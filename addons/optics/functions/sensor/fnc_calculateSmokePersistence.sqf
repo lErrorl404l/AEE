@@ -34,7 +34,7 @@ private _temp      = missionNamespace getVariable [QEGVAR(core,currentTemperatur
 private _rain      = rain;
 private _turbulence = missionNamespace getVariable [QEGVAR(core,currentTurbulence), 0];
 
-if (isNil "_humidity")  then { _humidity  = 0.5; };
+if (isNil "_humidity")  then { _humidity  = 50; };
 if (isNil "_temp")      then { _temp      = 20;  };
 if (isNil "_rain")      then { _rain      = 0;   };
 
@@ -49,10 +49,10 @@ private _advection = 1 / (1 + _windSpeed * 0.12);
 private _diffusion = 1 / (1 + _turbulence * 0.5);
 
 // ─── Hygroscopic growth (Köhler theory) ─────────────────────────────────
-// Humidity is a 0..1 fraction in this file. RH >50 % grows particles.
+// Humidity is 0..100 percent (currentHumidity). RH above 50 % grows particles.
 private _humidityFactor = 1.0;
-if (_humidity > 0.5) then {
-    _humidityFactor = 1 + (_humidity - 0.5) * 0.4;
+if (_humidity > 50) then {
+    _humidityFactor = 1 + ((_humidity - 50) / 100) * 0.4;
 };
 
 // ─── Buoyancy (temperature) ─────────────────────────────────────────────
