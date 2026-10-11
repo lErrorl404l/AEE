@@ -143,6 +143,16 @@ class TestProtectionDerivation(unittest.TestCase):
         self.assertIn('isKindOf "Tank"', src)
         self.assertIn('{ [6, 650, "120mmKE"] }', src)
 
+    def test_apc_branches_precede_tank(self):
+        # A tracked APC or IFV inherits Tank_F, so it is a kindOf Tank. The
+        # specific APC tests must run first or the general Tank test shadows
+        # them and every tracked APC is classed MBT (ARM-01 regression lock).
+        src = (ARM / "fnc_deriveProtection.sqf").read_text(encoding="utf-8")
+        self.assertLess(
+            src.index('isKindOf "APC_Tracked_01_base_F"'),
+            src.index('isKindOf "Tank"'),
+        )
+
 
 class TestDerivationWiring(unittest.TestCase):
     def test_fired_eh_uses_derivation(self):
