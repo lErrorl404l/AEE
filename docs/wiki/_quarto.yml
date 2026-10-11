@@ -79,6 +79,8 @@ website:
             href: field-guide/features/post-process.qmd
           - text: "F6 - Weather, lighting and the world state"
             href: field-guide/features/weather-lighting.qmd
+          - text: "F7 - Particles and visual effects"
+            href: field-guide/features/particles-vfx.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support

@@ -1,0 +1,111 @@
+---
+title: "F7 - particles and visual effects"
+feature: F7
+verify: extract
+---
+
+# F7: particles and visual effects {#sec-fg-particles-vfx}
+
+The engine draws smoke, dust, fire and spray from one particle source. A
+mod sets the source input. The engine runs the solver. This page covers the
+config classes AEE re-declares, the four source calls, the ParticleArray
+shape, and the three faults that break the picture.
+
+## What works
+
+- `CfgCloudlets` defines the particle effects as smoke, dust, explosion and
+  fire. The class starts at line 2901 of the derapified `Dta/bin.pbo`
+  config. {src:pbo:Dta/bin.pbo:2901}
+- A `CfgCloudlets` class carries the fields `particleShape`, `particleType`,
+  `interval`, `lifeTime`, `moveVelocity[]`, `rubbing`, `onTimerScript` and
+  `beforeDestroyScript`. {src:cfg:CfgCloudlets.particleShape}
+- AEE declares three cloudlets in `addons/particles/config.cpp`:
+  `AEE_SupersonicTrace`, `AEE_SandCloud` and `AEE_SnowCloud`.
+  {src:script:addons/particles/config.cpp}
+- `CfgCloudletShapes` maps a shape name to the model. The shipped config
+  maps `cloudletSmoke` to `default.p3d`. The class starts at line 7423.
+  {src:pbo:Dta/bin.pbo:7423}
+- `CfgLights` defines the dynamic lights. Each light sets `color[]`,
+  `ambient[]` and `brightness[]`. The class starts at line 3466.
+  {src:pbo:Dta/bin.pbo:3466}
+- The light falloff is the `class Attenuation` block with the four terms
+  `start`, `constant`, `linear` and `quadratic`. The engine reference
+  records the block as a `CfgLights` field. {src:cfg:CfgLights.Attenuation}
+  In the shipped config the block sits on the world lighting light at line
+  14358. {src:pbo:Dta/bin.pbo:14358}
+- `setParticleParams` sets the whole ParticleArray. {src:cmd:setParticleParams}
+- `setParticleRandom` sets the per-particle random spread.
+  {src:cmd:setParticleRandom}
+- `setParticleCircle` makes a circular emitter.
+  {src:cmd:setParticleCircle}
+- `setDropInterval` sets the seconds between emissions.
+  {src:cmd:setDropInterval}
+- The shipped emitter builds the array in
+  `addons/particles/functions/particle/fnc_particlePipelineEmit.sqf`.
+  {src:script:addons/particles/functions/particle/fnc_particlePipelineEmit.sqf}
+- The array has **22 live elements, indices 0 to 21**, in this order:
+  0 shapeName, 1 animationName, 2 type, 3 timerPeriod, 4 lifetime,
+  5 position, 6 moveVelocity, 7 rotationVelocity, 8 weight, 9 volume,
+  10 rubbing, 11 size, 12 color, 13 animationPhase, 14 randomDirectionPeriod,
+  15 randomDirectionIntensity, 16 onTimer, 17 beforeDestroy, 18 object,
+  19 angle, 20 onSurface, 21 bounceOnSurface.
+  {src:script:docs/wiki/research/particle-array-spec.md}
+
+## What does not work
+
+- The animation element, index 1, is obsolete. A value throws the RPT error
+  "Skeletal animation not supported for particles". The shipped emitter
+  keeps it empty.
+  {src:script:docs/wiki/research/particle-array-spec.md}
+- The particle solver is engine-closed. A mod sets the input fields only.
+  {src:cfg:CfgCloudlets}
+- A per-particle light does not work. The light list loads once, so a mod
+  cannot add a per-object light at run time. {src:cfg:CfgLights}
+- `setParticleClass` does not evaluate a simple expression inside the config
+  class. Some vanilla classes are therefore unusable from script.
+  {src:cmd:setParticleClass}
+
+## Limitations
+
+- The particle solver is engine-closed. No config field changes the motion
+  integration. {src:cfg:CfgCloudlets}
+- The array shape is fixed. The engine documents 24 elements, but the
+  shipped emitter truncates the array at index 21 and lets the engine
+  default the rest.
+  {src:script:docs/wiki/research/particle-array-spec.md}
+- The particle count is capped by the client `particlesQuality` setting. A
+  mod cannot raise it. {src:cmd:setParticleParams}
+- An attached source is bounded by the object view distance.
+  {src:script:docs/wiki/research/particle-array-spec.md}
+- The visual plume is out of scope for the CBRN dispersion decision. That
+  model publishes the state a future particle effect would render.
+  {src:adr:ADR-038}
+
+## Breaks visually
+
+- A wrong `particleShape` frame range shows the wrong frame. The shape
+  element carries `[p3dPath, nth, index, count, loop]`, so the frame
+  index and the frame count set the drawn frame.
+  {src:script:docs/wiki/research/particle-array-spec.md}
+- A `position` that is not a selection name or a vector fails. The element
+  accepts a Position or a String that names an object selection.
+  {src:script:addons/particles/functions/particle/fnc_particlePipelineEmit.sqf}
+- An uncapped emitter count floods the frame. `setDropInterval` sets the
+  rate as `1 / interval`. {src:cmd:setDropInterval}
+- `bounceOnSurface` at a value such as 0.6 has a significant performance
+  cost against -1. The engine documents the cost.
+  {src:script:docs/wiki/research/particle-array-spec.md}
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Dta/bin.pbo CfgCloudlets | extract |
+| pbo | Dta/bin.pbo CfgCloudletShapes | extract |
+| pbo | Dta/bin.pbo CfgLights | extract |
+| cfg | CfgCloudlets | extract |
+| script | addons/particles/config.cpp | test:tools/tests/test_particles.py |
+| script | addons/particles/functions/particle/fnc_particlePipelineEmit.sqf | test:tools/tests/test_particle_array_spec.py |
+| script | addons/particles/functions/particle/fnc_particleMaterial.sqf | test:tools/tests/test_particles.py |
+| script | addons/weatherfx/functions/weather/fnc_applyWeatherParticles.sqf | test:tools/tests/test_weather_particles.py |
+| adr | ADR-038 | extract |
