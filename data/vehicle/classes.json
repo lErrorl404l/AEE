@@ -7,7 +7,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:52"
+        "addons/armour/functions/fnc_deriveProtection.sqf:53"
       ]
     },
     {
@@ -16,7 +16,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:52"
+        "addons/armour/functions/fnc_deriveProtection.sqf:53"
       ]
     },
     {
@@ -25,7 +25,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:53"
+        "addons/armour/functions/fnc_deriveProtection.sqf:54"
       ]
     },
     {
@@ -34,7 +34,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:56"
+        "addons/armour/functions/fnc_deriveProtection.sqf:57"
       ]
     },
     {
@@ -43,7 +43,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:56"
+        "addons/armour/functions/fnc_deriveProtection.sqf:57"
       ]
     },
     {
@@ -52,7 +52,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:57"
+        "addons/armour/functions/fnc_deriveProtection.sqf:58"
       ]
     },
     {
@@ -61,7 +61,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:64",
+        "addons/armour/functions/fnc_deriveProtection.sqf:66",
         "addons/core/XEH_postInit.sqf:28",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
@@ -151,7 +151,7 @@
       "is_ground": true,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:60",
+        "addons/armour/functions/fnc_deriveProtection.sqf:62",
         "addons/mobility/functions/fnc_calculateSSF.sqf:116",
         "addons/mobility/functions/fnc_calculateSSF.sqf:62",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:78",
@@ -371,7 +371,7 @@
       "is_ground": true,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:51",
+        "addons/armour/functions/fnc_deriveProtection.sqf:61",
         "addons/mobility/functions/fnc_calculateSSF.sqf:114",
         "addons/mobility/functions/fnc_calculateSSF.sqf:59",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
@@ -411,7 +411,7 @@
       "is_ground": true,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_deriveProtection.sqf:63",
+        "addons/armour/functions/fnc_deriveProtection.sqf:65",
         "addons/mobility/functions/fnc_calculateSSF.sqf:117",
         "addons/mobility/functions/fnc_calculateSSF.sqf:63",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:79"
