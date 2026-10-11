@@ -40,34 +40,64 @@ PBO-distribution exception.
 - ICAO eddy dissipation rate turbulence.
 - Atmospheric events, including lightning, sandstorms, and NWS microburst
   tiers.
+- Wildlife, with a biome and weather aware ambient soundscape and
+  client-local animals.
+- NATO APP-6(C) map symbology and topographic terrain symbols, drawn on
+  the engine map layer.
 
 ## Addon structure
 
-The project has 22 addons under `addons/`. The 16 core addons are `main`,
-`core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`,
-`maritime`, `material`, `mobility`, `nightvision`, `optics`, `physiology`,
-`radio`, and `thermal`. The 6 compat
+The project has 45 addons under `addons/`. The 39 core addons are `actions`,
+`ai`, `altitude`, `ambience`, `armour`, `atmos`, `ballistics`, `blast`,
+`cartography`, `clothing`, `core`, `diagnostics`, `dive`, `eye`, `flight`,
+`hud`, `hydrology`, `lib`, `lighting`, `ltm`, `magnetism`, `maritime`,
+`material`, `mobility`, `nightvision`, `optics`, `particles`, `persistence`,
+`physiology`, `radio`, `strain`, `symbology`, `thermal`, `thermal_display`,
+`vehicles`, `vision`, `weather`, `weatherfx`, and `wildlife`. The 6 compat
 addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
 `compat_realweather`, and `compat_tfar`.
 
 | Addon | Role |
 |---|---|
-| `main` | Bootstrapper |
-| `core` | Orchestrator and shared state |
+| `actions` | Player actions and reports |
+| `ai` | Autonomous agents, senses and disturbance |
+| `altitude` | Altitude, hypoxia and G-load |
+| `ambience` | Ambient soundscape and acoustics |
+| `armour` | Vehicle armour and penetration |
 | `atmos` | Atmosphere and weather |
-| `thermal` | Temperature and thermal effects |
 | `ballistics` | Air density and ballistics |
-| `optics` | Optics and visibility |
-| `mobility` | Vehicle and ground mobility |
-| `environmental` | Environmental and seasonal effects |
+| `blast` | Blast, craters and fragmentation |
+| `cartography` | Map surface, grid and palette |
+| `clothing` | Clothing insulation and equipment mass |
+| `core` | Orchestrator and shared state |
+| `diagnostics` | Diagnostics, consistency and state dumps |
+| `dive` | Diving state |
+| `eye` | Eye adaptation and vision |
+| `flight` | Aircraft flight and aerodynamics |
+| `hud` | HUD, rangefinder and tracker |
+| `hydrology` | Runoff, erosion and river level |
+| `lib` | Shared engine, geometry and maths library |
+| `lighting` | Night sky, stars and world lighting |
+| `ltm` | Laser target marker |
+| `magnetism` | Magnetic field and compass |
 | `maritime` | Sea state and tides |
+| `material` | Shared material and soil properties |
+| `mobility` | Vehicle and ground mobility |
+| `nightvision` | Night vision and image intensification |
+| `optics` | Optics and visibility |
+| `particles` | Particles and visual effects |
+| `persistence` | Freeze-thaw, CBRN, fire and seismic |
 | `physiology` | Physiological effects |
 | `radio` | Radio propagation |
-| `fx` | Visual and audio effects |
-| `actions` | Player actions and reports |
-| `armour` | Vehicle armour and penetration |
-| `material` | Shared material and soil properties |
-| `nightvision` | Night vision and image intensification |
+| `strain` | Strain, fatigue and morale |
+| `symbology` | NATO/OPFOR map symbology |
+| `thermal` | Temperature and thermal effects |
+| `thermal_display` | Thermal display and fusion |
+| `vehicles` | Vehicle systems and engine |
+| `vision` | Base grade and perception |
+| `weather` | Biome, climate and dispersion |
+| `weatherfx` | Weather visual effects |
+| `wildlife` | Wildlife ecology and behaviour |
 | `compat_ace3` | ACE3 integration |
 | `compat_acm` | ACM integration |
 | `compat_acre2` | ACRE2 integration |
