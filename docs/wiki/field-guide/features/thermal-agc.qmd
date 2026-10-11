@@ -1,0 +1,137 @@
+---
+title: "F4 - thermal imaging, AGC and TI materials"
+feature: F4
+verify: probe
+---
+
+# F4: thermal imaging, AGC and TI materials {#sec-fg-thermal-agc}
+
+The engine renders thermal imaging from a per-object temperature model. It
+does not blit a texture to the screen. A material's `StageTI` texture feeds
+that model. This page states the pattern that works, the pattern that fails,
+the engine limits, and the defect a wrong value shows.
+
+## What works
+
+A material's `StageTI` block carries four heat-source channels. Red is
+solar gain, green is base and active heat, blue is moving parts, and alpha
+is metabolism. The BI Community Wiki page "Thermal Imaging Maps" (oldid
+155895) states these semantics {src:pbo:Addons/data_f.pbo}. The engine's
+own `data_f\default_TI.rvmat` points its `StageTI` at
+`a3\data_f\default_ti_ca.paa`, a flat red map with solar gain only
+{src:cfg:default_TI.rvmat>>StageTI.texture}.
+
+A surface needs a `class StageTI { texture = ... }` block to render in the
+engine thermal mode. A material with a grey diffuse and no `StageTI` does
+not render thermal at all {src:adr:ADR-019}.
+
+Per-optic thermal keys describe the sensor. AEE declares `thermalMode[]`,
+`thermalNoise[]` and `thermalResolution[]` on the optic class
+{src:script:addons/thermal/generated/ThermalOptics.hpp}. The `thermalMode[]`
+array names the native palettes, where 0 is WHOT and 1 is BHOT
+{src:cfg:CfgWeapons>>ItemInfo>>OpticsModes>>thermalMode}. AEE reads the
+array to test whether an optic supports native thermal
+{src:script:addons/thermal_display/functions/fusion/fnc_isFusionCapable.sqf}.
+
+A script swaps one material on one named selection. `setObjectMaterial`
+takes a selection index and a material path {src:cmd:setObjectMaterial}.
+AEE reads the material a model declares from `hiddenSelectionsMaterials`
+before the swap {src:script:addons/material/functions/fnc_getObjectMaterial.sqf}.
+
+The display track draws its own thermal palette over the engine day (DTV)
+channel. The ppEffect stack applies only when the optic declares a thermal
+mode {src:script:addons/thermal_display/functions/display/fnc_applyThermalVision.sqf}.
+The sensor lifecycle stays with optics and the render primitives stay with
+thermal {src:adr:ADR-006}.
+
+## What does not work
+
+A per-pixel temperature is impossible. The engine simulates one temperature
+per object, so a whole surface reads as one value {src:adr:ADR-019}.
+
+A runtime GDT surface mask does not exist. The GDT surface mask is baked
+into the WRP, and no command swaps a terrain material at run time
+{src:pbo:Addons/data_f.pbo}. Terrain, vegetation and rock stay engine-baked
+and are reachable only through the second sun term {src:adr:ADR-019}.
+
+Glass thermal reflection needs a custom model. A stock model does not carry
+the `NoTiWrite` render flag on its glass. Only `setObjectMaterial` per
+selection reaches the glass, and then only when the model ships
+`hiddenSelections` {src:cmd:setObjectMaterial}.
+
+The native thermal pass is out of reach. The renderer is compiled, and a
+ppEffect does not apply in the engine vision mode 2 {src:adr:ADR-019}. A mod
+therefore cannot put its own palette on the engine thermal channel and must
+run its display on the day channel {src:script:addons/thermal_display/functions/display/fnc_applyThermalVision.sqf}.
+
+## Limitations
+
+Three native heat slots exist. `setVehicleTIPars` takes an engine, a wheels
+and a weapon value only {src:cmd:setVehicleTIPars}. Beyond the three slots
+a surface needs a per-selection material swap
+{src:script:addons/thermal/functions/display/fnc_applyEngineThermal.sqf}.
+
+The engine heat is whole-model. The display window can compress and offset
+the object temperature curve, and it cannot rebuild the scene
+{src:cmd:setTIParameter}.
+
+No terrain material command exists. A PBO path override changes the baked
+baseline at load and never at run time {src:pbo:Addons/data_f.pbo}.
+
+The optic palette pair is fixed. The engine config declares no green-hot,
+red-hot or ironbow palette, so AEE emits the two-mode WHOT and BHOT pair
+{src:script:addons/thermal/generated/ThermalOptics.hpp}.
+
+The AGC window holds on a steady scene. The automatic gain control accepts a
+new window only when it moves by more than `_AGC_DEADBAND` of its own span,
+and the value is 0.25 at line 340
+{src:script:addons/thermal/functions/solver/fnc_updateThermalAGC.sqf}. The
+probe P79 measures the window extremes, and the probe P134 covers the
+thermal startup path {src:probe:P79}. The hold contract lives in the kernel
+test, which pins the value and the window-extreme model
+{src:probe:P134}.
+
+## Breaks visually
+
+A hunting AGC window shimmers. A sub-band scene move repaints every
+selection when the band is too small, so the settled window must hold
+{src:script:tools/tests/test_thermal_optics.py}. The measured floor swing is
+5.0 percent of the span, and the window maximum moves about 12.7 percent, so
+the band clears both motions {src:probe:P79}.
+
+A wrong selection index paints the wrong part of the model. The index comes
+from the `hiddenSelections[]` array and starts at 0
+{src:cmd:setObjectMaterial}. An index off by one swaps the material on the
+wrong part {src:script:addons/material/functions/fnc_getObjectMaterial.sqf}.
+
+A swapped `StageTI` channel changes the heat reading. A red channel that
+should carry solar gain but carries active heat makes a cold object read hot
+{src:pbo:Addons/data_f.pbo}. The alpha channel is metabolism, so a swap with
+blue removes the barrel heat from a weapon
+{src:cfg:default_TI.rvmat>>StageTI.texture}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Addons/data_f.pbo (the StageTI rvmat block) | extract |
+| pbo | Dta/bin.pbo (the CfgVehicles render heat keys) | extract |
+| cfg | default_TI.rvmat>>StageTI.texture | extract |
+| cfg | CfgWeapons>>ItemInfo>>OpticsModes>>thermalMode | extract |
+| cmd | setObjectMaterial | extract |
+| cmd | setVehicleTIPars | extract |
+| cmd | setTIParameter | extract |
+| adr | ADR-019 | test:tools/tests/test_thermal_optics.py |
+| adr | ADR-006 | test:tools/tests/test_thermal_optics.py |
+| probe | P79 | probe:P79 |
+| probe | P134 | probe:P134 |
+| script | addons/thermal/functions/solver/fnc_updateThermalAGC.sqf | test:tools/tests/test_thermal_optics.py |
+| script | addons/thermal/generated/ThermalOptics.hpp | extract |
+| script | addons/thermal/functions/display/fnc_applyEngineThermal.sqf | extract |
+| script | addons/thermal_display/functions/display/fnc_applyThermalVision.sqf | extract |
+| script | addons/thermal_display/functions/fusion/fnc_isFusionCapable.sqf | extract |
+| script | addons/material/functions/fnc_getObjectMaterial.sqf | extract |
+| script | tools/tests/test_thermal_optics.py | test:tools/tests/test_thermal_optics.py |
+| doc | docs/wiki/research/engine-thermal-mechanisms.md | extract |
+| doc | docs/wiki/research/thermal-capability-matrix.md | extract |
+| doc | docs/wiki/research/thermal-nvg-architecture-dossier.md | extract |

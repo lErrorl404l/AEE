@@ -71,3 +71,4 @@ its headless check.
 | F1 - Config re-declare | [config-redeclare.qmd](features/config-redeclare.qmd) |
 | F2 - The map surface | [map-surface.qmd](features/map-surface.qmd) |
 | F3 - HUD, markers and symbology | [hud-markers.qmd](features/hud-markers.qmd) |
+| F4 - Thermal imaging and AGC | [thermal-agc.qmd](features/thermal-agc.qmd) |
