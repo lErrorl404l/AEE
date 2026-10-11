@@ -16,6 +16,8 @@ The mod is standalone and requires only [CBA A3](https://github.com/CBATeam/CBA_
 - **Maritime** — Harmonic tidal prediction (M2/S2/K1/O1 constituents), WMO Beaufort sea state, Pierson-Moskowitz wave height, magnetic compass deviation.
 - **Radio** — Friis free-space path loss with atmospheric ducting and ITU-R P.531 ionospheric absorption for VHF/UHF/HF.
 - **Atmospheric events** — Lightning (ice-phase gated), sandstorms, dust devils, microbursts (NWS tiers), ICAO eddy-dissipation-rate turbulence, airframe icing.
+- **Wildlife** — Biome, time and weather aware ambient soundscape and client-local animals, with hunger, thirst and a decaying disturbance field.
+- **Map symbology** — NATO APP-6(C) unit and equipment markers, topographic terrain symbols, and a map palette re-declare that reaches the main map, briefing, GPS, minimap, Eden and Zeus.
 
 ---
 
