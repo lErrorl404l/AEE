@@ -69,6 +69,8 @@ website:
             href: field-guide/ceiling.qmd
           - text: "F1 - Config re-declare"
             href: field-guide/features/config-redeclare.qmd
+          - text: "F2 - The map surface"
+            href: field-guide/features/map-surface.qmd
       - text: Support
         href: support.qmd
   navbar:
