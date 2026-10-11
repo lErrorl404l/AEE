@@ -83,6 +83,8 @@ website:
             href: field-guide/features/particles-vfx.qmd
           - text: "F8 - Materials, textures and the data formats"
             href: field-guide/features/materials-formats.qmd
+          - text: "F9 - The SQF command surface"
+            href: field-guide/features/command-surface.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support
