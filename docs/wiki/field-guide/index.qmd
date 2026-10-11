@@ -65,3 +65,4 @@ The guide cites these primary sources:
 
 | Feature | Page |
 |---|---|
+| F1 - Config re-declare | [config-redeclare.qmd](features/config-redeclare.qmd) |

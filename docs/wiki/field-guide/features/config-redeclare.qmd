@@ -1,0 +1,102 @@
+---
+title: "F1 - config re-declare and class inheritance"
+feature: F1
+verify: extract
+---
+
+# F1: config re-declare and class inheritance {#sec-fg-config-redeclare}
+
+A class re-declare overrides a vanilla engine class at load time. This page
+states the re-declare that works, the re-declare that fails, the engine
+limits, and the visible defect a wrong value shows. Read the engine config
+first, then restate the real parent {src:pbo:Dta/bin.pbo}.
+
+## What works
+
+A re-declare that repeats the class name and its parent merges the named
+values. Every inherited field survives. The engine merge is per property
+{src:adr:ADR-027}.
+
+AEE uses this form. Inside `CfgWorlds` it re-declares `DOFPars`,
+`DayLightingBrightAlmost` and `DayLightingRainy`, each with its own name as
+the parent {src:script:addons/lighting/config.cpp}. The engine keeps the
+vanilla keyframes and the AEE values win {src:cfg:CfgWorlds>>DefaultWorld}.
+
+The parent restatement rule governs every re-declare. You name the real
+engine parent of a vanilla class. A test fails any re-declare that omits the
+parent {src:script:tools/tests/test_config_inheritance.py}.
+
+`requiredAddons[]` sets the load order. AEE declares its dependencies in the
+list, so the engine loads them before AEE and the AEE values win
+{src:script:addons/actions/config.cpp}. The base game always loads first, so
+every AEE re-declare wins over the base game {src:cfg:CfgPatches>>requiredAddons}.
+
+A forward declaration sits at the nested scope that uses it. AEE declares
+`class Default;` inside `CfgCloudlets` before the child class
+{src:script:addons/particles/config.cpp}. The declaration resolves the name
+and does not shadow the vanilla base {src:cfg:CfgCloudlets>>Default}.
+
+## What does not work
+
+A class with no parent drops every inherited value. The engine strips the
+fields and logs `Updating base class '<parent>'->''` {src:cfg:CfgMarkers}.
+This defect produced `No entry CfgMarkers/*.scope` and `Wrong location draw
+style` in the AEE RPT {src:adr:ADR-027}.
+
+A file-root forward declaration is a trap. `class Y;` at column zero makes
+the engine create an empty class Y and re-parent the existing entries onto
+it. The real definition is destroyed. AEE forbids a file-root declaration of
+the world classes {src:script:tools/tests/test_config_inheritance.py}.
+
+An override of a key AEE does not own is a defect. A generated header
+disowns the keys that thermal and optics own, because a second declaration
+wins and changes the model {src:script:addons/vehicles/generated/CfgVehicles.hpp}.
+Name only the fields you own, so the engine values survive {src:adr:ADR-001}.
+
+## Limitations
+
+Config is load-time and global. A config merges into the engine tree when the
+PBO loads. The merge is last-loaded-wins per property {src:adr:ADR-027}. No
+script command writes the config tree for these classes. The PBO is the only
+off switch {src:adr:ADR-001}.
+
+Load order over an undeclared mod cannot be guaranteed. Only the mod-list
+order decides that merge. AEE detects and logs it instead of chasing it
+{src:adr:ADR-027}.
+
+The engine C++ runtime is closed. The simulation solver, the renderer and
+the flight model are not addressable by config or by script {src:adr:ADR-031}.
+
+## Breaks visually
+
+A wrong material or a wrong hidden-selection index corrupts the picture. A
+per-selection material swap on the wrong selection alters the visible
+appearance. This is the Zulu uniform defect, issue #123 {src:adr:ADR-001}.
+
+The selection number is an index, not a name. `setObjectMaterial` takes the
+number from the `hiddenSelections[]` array in the vehicle config, and the
+index starts at 0 {src:cmd:setObjectMaterial}. An index that is off by one
+paints the wrong part of the model {src:cfg:CfgVehicles>>hiddenSelectionsMaterials}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Dta/bin.pbo (the engine core config) | extract |
+| pbo | Addons/ui_f.pbo (the UI and map config) | extract |
+| cfg | CfgWorlds>>DefaultWorld | extract |
+| cfg | CfgPatches>>requiredAddons | extract |
+| cfg | CfgCloudlets>>Default | extract |
+| cfg | CfgMarkers | extract |
+| cfg | CfgVehicles>>hiddenSelectionsMaterials | extract |
+| cmd | setObjectMaterial | extract |
+| adr | ADR-001 | test:tools/tests/test_config_inheritance.py |
+| adr | ADR-027 | test:tools/tests/test_config_inheritance.py |
+| adr | ADR-031 | test:tools/tests/test_config_inheritance.py |
+| script | addons/lighting/config.cpp | test:tools/tests/test_config_inheritance.py |
+| script | addons/actions/config.cpp | extract |
+| script | addons/particles/config.cpp | extract |
+| script | addons/vehicles/generated/CfgVehicles.hpp | test:tools/tests/test_config_inheritance.py |
+| script | tools/tests/test_config_inheritance.py | test:tools/tests/test_config_inheritance.py |
+| doc | docs/engine/engine-config-surface.md | extract |
+| doc | docs/engine/engine-override-surface.md | extract |

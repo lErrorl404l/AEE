@@ -67,6 +67,8 @@ website:
             href: field-guide/index.qmd
           - text: "Predictability ceiling"
             href: field-guide/ceiling.qmd
+          - text: "F1 - Config re-declare"
+            href: field-guide/features/config-redeclare.qmd
       - text: Support
         href: support.qmd
   navbar:
