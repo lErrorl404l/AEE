@@ -1250,7 +1250,7 @@ private _eyePos = _focusEye select 0;
 private _lookDir = _focusEye select 1;
 private _aspect = getResolution select 4;
 if (_aspect <= 0) then { _aspect = 16.0 / 9.0; };
-// Live camera FOV via CBA (ACE3-proven): returns [hFOV, zoom] for the
+// Live camera FOV via CBA (ACE3-proven): returns [vFOV, zoom] for the
 // CURRENT view, so it follows the player's FOV slider, weapon zoom, and
 // borderless-window aspect changes.  A static fovTop from config ignores
 // all three.  Fall back to the config value if CBA is absent (should not
@@ -1258,6 +1258,9 @@ if (_aspect <= 0) then { _aspect = 16.0 / 9.0; };
 private _cbaFov = [1.0, 0.0];
 if !(isNil "CBA_fnc_getFov") then { _cbaFov = [1.0] call CBA_fnc_getFov; };
 _cbaFov params ["_hFovLive", "_zoomLive"];
+// CBA_fnc_getFov returns the vertical FOV in radians. The fan works in the
+// half horizontal FOV in degrees, matching the config fallback below.
+_hFovLive = atan (tan (_hFovLive * 0.5 * 180 / pi) * _aspect);
 if (_hFovLive <= 0) then {
     // Fallback: horizontal FOV from fovTop config + aspect.
     private _fovTop = getNumber (configFile >> "CfgDifficulties" >> "Base" >> "fovTop");
