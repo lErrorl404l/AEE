@@ -89,6 +89,8 @@ website:
             href: field-guide/features/game-scripts.qmd
           - text: "F11 - Engine extensions"
             href: field-guide/features/extensions.qmd
+          - text: "F12 - The PBO container and the shader cache"
+            href: field-guide/features/pbo-container.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support
