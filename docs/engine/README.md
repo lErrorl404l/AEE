@@ -77,8 +77,9 @@ hemtt utils config derapify <outdir>/config.bin
 
 ## Related records
 
-- `docs/adr/ADR-001-engine-anchors.md` - the three override mechanisms.
-- `docs/adr/ADR-017-flight-physics-ceiling.md` - the engine-internal simulation.
+- [../wiki/field-guide/index.qmd](../wiki/field-guide/index.qmd) - the
+  per-feature engine field guide.
+- `docs/adr/ADR-001-engine-anchors.md` - the three override mechanisms.- `docs/adr/ADR-017-flight-physics-ceiling.md` - the engine-internal simulation.
 - `docs/adr/ADR-027-ownership-architecture.md` - ownership by declaration.
 - `docs/adr/ADR-031-conformance-layer-self-describing-detect-and-repair.md` -
   the conformance layer.

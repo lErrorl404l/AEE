@@ -1,0 +1,82 @@
+---
+title: "Engine field guide"
+---
+
+# Engine field guide {#sec-field-guide}
+
+This guide answers four questions about each Arma 3 engine feature AEE
+touches. The four questions are what works, what does not work, the engine
+limits, and what breaks the picture. Every claim cites a primary source.
+Every fact names a headless check, so a modder predicts the engine without
+launching the game.
+
+## How to read a page
+
+Each feature page carries the same four headings, in this order:
+
+1. **What works** - the pattern AEE relies on.
+2. **What does not work** - the pattern that fails, and the reason.
+3. **Limitations** - the engine ceiling.
+4. **Breaks visually** - the defect a wrong value shows.
+
+A page also carries a `## Sources` table. The `verify` column names the
+headless check that reproduces the row.
+
+## The citation grammar
+
+Every claim carries an inline token:
+
+```
+{src:<kind>:<ref>}
+```
+
+`<kind>` is one of the seven kinds below.
+
+| Kind | Names |
+|---|---|
+| `pbo` | a PBO entry and its line |
+| `cfg` | a config class or key |
+| `exe` | a fact read from the engine binary |
+| `cmd` | a command-database entry |
+| `adr` | a decision record |
+| `probe` | a headless probe `P###` |
+| `script` | an extracted script path |
+
+The `verify` cell of a `## Sources` row is one of:
+
+- `extract` - the extraction harness reproduces the row.
+- `strings` - a string search over the engine binary reproduces the row.
+- `test:<path>` - a unittest module that exists.
+- `probe:<P###>` - a probe that the Docker gate already runs.
+- `kernel:<path>` - a pure-kernel check that exists.
+
+## The source list
+
+The guide cites these primary sources:
+
+- The Arma 3 addon PBOs and data PBOs, read with the extraction harness.
+- The engine binary, read with a string search.
+- The AEE research notes under `research/`.
+- The AEE decision records under the `adr` directory.
+- The local command database and the extracted command-name list.
+- The headless probes that the Docker gate runs.
+
+The generated [citations index](citations.qmd) lists every cited source and
+its headless check.
+
+## Feature pages
+
+| Feature | Page |
+|---|---|
+| F1 - Config re-declare | [config-redeclare.qmd](features/config-redeclare.qmd) |
+| F2 - The map surface | [map-surface.qmd](features/map-surface.qmd) |
+| F3 - HUD, markers and symbology | [hud-markers.qmd](features/hud-markers.qmd) |
+| F4 - Thermal imaging and AGC | [thermal-agc.qmd](features/thermal-agc.qmd) |
+| F5 - Post-process and the image pipeline | [post-process.qmd](features/post-process.qmd) |
+| F6 - Weather, lighting and the world state | [weather-lighting.qmd](features/weather-lighting.qmd) |
+| F7 - Particles and visual effects | [particles-vfx.qmd](features/particles-vfx.qmd) |
+| F8 - Materials, textures and the data formats | [materials-formats.qmd](features/materials-formats.qmd) |
+| F9 - The SQF command surface | [command-surface.qmd](features/command-surface.qmd) |
+| F10 - The game's own scripts | [game-scripts.qmd](features/game-scripts.qmd) |
+| F11 - Engine extensions | [extensions.qmd](features/extensions.qmd) |
+| F12 - The PBO container and the shader cache | [pbo-container.qmd](features/pbo-container.qmd) |

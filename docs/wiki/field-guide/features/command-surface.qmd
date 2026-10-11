@@ -1,0 +1,106 @@
+---
+title: "F9 - the SQF command surface"
+feature: F9
+verify: extract
+---
+
+# F9: the SQF command surface {#sec-fg-command-surface}
+
+An SQF command has a name, one or more syntaxes, a return type, an
+introduction version and a locality. The engine also carries a command
+whitelist and a command disable list. Read the command database page first,
+then call the command {src:cmd:selectionNames}.
+
+## What works
+
+The command database holds one page for each command. A page records the
+name, the group labels, each syntax alternative, the return type, the
+introduction version, the argument locality and the effect locality. AEE
+reads the page, not memory {src:cmd:selectionNames}.
+
+`selectionNames` carries two syntax alternatives. The default form reads the
+first model level of detail. The second form takes a level of detail name or
+resolution and starts at version 2.0. The return type is an array of
+selection names. The command itself starts at version 1.58
+{src:cmd:selectionNames}.
+
+`setObjectMaterial` takes an object and a `[selectionNumber, material]`
+array. The argument locality is global. The effect locality is local. The
+return type is Nothing. The command starts at version 0.50
+{src:cmd:setObjectMaterial}.
+
+`CfgCommands` declares the command whitelist for the mission.
+`CfgDisabledCommands` disables a named command at load
+{src:cfg:CfgCommands} {src:cfg:CfgDisabledCommands}.
+
+The database holds 2696 command pages. It assigns each command one or more
+of 89 group labels. A command can carry two labels, so the label counts sum
+to more than the page count {src:script:tools/arma3-wiki/fetch-wiki.py}.
+
+The source is the acemod arma3-wiki distribution version 2.22, a machine
+readable copy of the Bohemia Interactive Community Wiki. The offline reader
+fetches one page by name {src:script:tools/arma3-wiki/README.md}.
+
+## What does not work
+
+An undocumented command does not work. The database holds no page, so the
+name, the syntax and the version are unknown. The wiki documents the public
+surface only, so a missing page is not proof that the engine lacks the
+command {src:script:tools/arma3-wiki/README.md}.
+
+A command outside its version range does not work. The database records the
+introduction version, and the engine has no command before that version. A
+call of `selectionNames` in a build before 1.58 has no result
+{src:cmd:selectionNames}.
+
+A client-only command does not work on a dedicated server. `drawIcon3D` has
+a local effect and draws to the local game view. A headless server runs no
+game view, so the draw has no target {src:cmd:drawIcon3D}. The exe string
+table carries the two class names and the disable rule
+{src:exe:arma3_x64.exe}.
+
+## Limitations
+
+The database holds 2696 command pages. 2653 pages carry an Arma 3 version.
+The remaining 43 pages carry no Arma 3 version, because the command
+predates the version field {src:cmd:selectionNames}.
+
+The exe exposes 1802 verb-prefixed command names. The database holds 2696
+pages. The two counts measure different sets, so the difference is not a
+missing-command count. The exact reconciliation between the two counts is
+UNKNOWN against these sources {src:exe:arma3_x64.exe}.
+
+The issue names 74 command groups. The database carries 89 group labels.
+The database keeps sub-groups separate, so the labels do not reconcile the
+74. The exact 74-group list is UNKNOWN against this source
+{src:script:tools/arma3-wiki/fetch-wiki.py}.
+
+## Breaks visually
+
+A disabled command errors at load. `CfgDisabledCommands` removes the
+command name, and a script that still calls it stops. The error appears in
+the log at start, so the scene loads without the intended result
+{src:cfg:CfgDisabledCommands}.
+
+A wrong locality desynchronises the scene. `setObjectMaterial` sets a
+global argument and a local effect. When a script expects a local effect on
+every machine, the other machines keep the old material. One screen then
+shows a part that the other screens do not {src:cmd:setObjectMaterial}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| cmd | the arma3-wiki command database entry `selectionNames` | extract |
+| cmd | the arma3-wiki command database entry `setObjectMaterial` | extract |
+| cmd | the arma3-wiki command database entry `drawIcon3D` | extract |
+| cfg | CfgCommands (the exe string table) | strings |
+| cfg | CfgDisabledCommands (the exe string table) | strings |
+| exe | the exe verb-name string table in arma3_x64.exe | strings |
+| script | tools/arma3-wiki/README.md | extract |
+| script | tools/arma3-wiki/fetch-wiki.py | extract |
+| doc | docs/engine/engine-command-inventory.md | test:tools/tests/test_engine_docs.py |
+| doc | docs/engine/command-surface.md | test:tools/tests/test_engine_docs.py |
+| doc | docs/engine/command-surface-2.md | test:tools/tests/test_engine_docs.py |
+| doc | docs/engine/command-surface-3.md | test:tools/tests/test_engine_docs.py |
+| doc | docs/engine/engine-commands-and-features.md | test:tools/tests/test_engine_docs.py |

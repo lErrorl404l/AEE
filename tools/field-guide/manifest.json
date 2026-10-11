@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "targets": [
+    {
+      "kind": "pbo",
+      "pbo": "Dta/bin.pbo",
+      "entry": "config.bin",
+      "size": 640951,
+      "sha256": "f6a03694be93b5a01d22d46f09ca55299b5b5bf6703573231053fab1b9bd347f",
+      "command": "armake cat Dta/bin.pbo config.bin"
+    },
+    {
+      "kind": "derapify",
+      "pbo": "Dta/bin.pbo",
+      "entry": "config.bin",
+      "size": 1027977,
+      "lines": 32627,
+      "sha256": "c5d07e493f867a8378bceac79b76179230d6870cfd428553677423f85fa4f6dd",
+      "command": "armake cat Dta/bin.pbo config.bin | armake derapify"
+    },
+    {
+      "kind": "pbo",
+      "pbo": "Addons/ui_f.pbo",
+      "entry": "config.bin",
+      "size": 3084420,
+      "sha256": "0123aa33722d13b6f2eeee841e2cddf791eee4846bb5089bc14b60a5b9492a2a",
+      "command": "armake cat Addons/ui_f.pbo config.bin"
+    },
+    {
+      "kind": "derapify",
+      "pbo": "Addons/ui_f.pbo",
+      "entry": "config.bin",
+      "size": 4364511,
+      "lines": 86281,
+      "sha256": "fe2275d86422fcfaa5b66931c8305aa44fdbe07d05dc58d1ac2704e925de14ec",
+      "command": "armake cat Addons/ui_f.pbo config.bin | armake derapify"
+    },
+    {
+      "kind": "strings",
+      "binary": "arma3_x64.exe",
+      "regex": "^Cfg[A-Z]",
+      "count": 139,
+      "command": "strings -n 4 arma3_x64.exe | grep -E ^Cfg[A-Z]"
+    }
+  ]
+}

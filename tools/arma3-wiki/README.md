@@ -1,5 +1,10 @@
 # Arma 3 Wiki Reference
 
+The AEE engine field guide at `docs/wiki/field-guide/` supersedes this
+directory as the local engine reference. This directory stays as the live-wiki
+fallback: the fetch script and the acemod command database remain the source
+for a command the field guide does not carry.
+
 ## Quick Access
 
 For on-demand wiki page access, use the `webfetch` tool with URLs from the
