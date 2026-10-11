@@ -77,3 +77,4 @@ its headless check.
 | F7 - Particles and visual effects | [particles-vfx.qmd](features/particles-vfx.qmd) |
 | F8 - Materials, textures and the data formats | [materials-formats.qmd](features/materials-formats.qmd) |
 | F9 - The SQF command surface | [command-surface.qmd](features/command-surface.qmd) |
+| F10 - The game's own scripts | [game-scripts.qmd](features/game-scripts.qmd) |

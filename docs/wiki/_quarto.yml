@@ -85,6 +85,8 @@ website:
             href: field-guide/features/materials-formats.qmd
           - text: "F9 - The SQF command surface"
             href: field-guide/features/command-surface.qmd
+          - text: "F10 - The game's own scripts"
+            href: field-guide/features/game-scripts.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support
