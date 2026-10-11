@@ -81,6 +81,8 @@ website:
             href: field-guide/features/weather-lighting.qmd
           - text: "F7 - Particles and visual effects"
             href: field-guide/features/particles-vfx.qmd
+          - text: "F8 - Materials, textures and the data formats"
+            href: field-guide/features/materials-formats.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support
