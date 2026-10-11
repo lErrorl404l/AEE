@@ -41,14 +41,6 @@
       "regex": "^Cfg[A-Z]",
       "count": 139,
       "command": "strings -n 4 arma3_x64.exe | grep -E ^Cfg[A-Z]"
-    },
-    {
-      "kind": "decomp",
-      "binary": "arma3_x64.exe",
-      "function": "RVExtensionCallback",
-      "size": 3808,
-      "sha256": "11071305c32877088f2e3d2ef54283df5d73c2624f6d91ca70ef56f57a09e4d7",
-      "command": "r2 -q -e scr.color=0 -c 's <addr>; af; pdg' arma3_x64.exe"
     }
   ]
 }

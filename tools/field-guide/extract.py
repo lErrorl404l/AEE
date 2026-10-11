@@ -48,7 +48,6 @@ TARGETS: list[dict[str, str]] = [
     {"kind": "pbo", "pbo": "Addons/ui_f.pbo", "entry": "config.bin"},
     {"kind": "derapify", "pbo": "Addons/ui_f.pbo", "entry": "config.bin"},
     {"kind": "strings", "binary": "arma3_x64.exe", "regex": "^Cfg[A-Z]"},
-    {"kind": "decomp", "binary": "arma3_x64.exe", "function": "RVExtensionCallback"},
 ]
 
 

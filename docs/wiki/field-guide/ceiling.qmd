@@ -22,7 +22,7 @@ The field guide predicts the engine from primary sources. A dedicated server ren
 - Perceptual tuning. The operator judges a grade, a contrast and a colour. Substitute: one operator visual pass with `tools/visual_diff.py`.
 - The engine's internal solver step. Substitute: a headless probe in the Docker harness when the observable is script state, or an explicit UNKNOWN {src:adr:ADR-020}.
 - GPU or driver-dependent behaviour. The result depends on the operator's GPU and driver. Substitute: an explicit UNKNOWN.
-- Anything the decompiler cannot resolve in one pass. Substitute: a targeted decompile of one named function, or an explicit UNKNOWN {src:exe:arma3_x64.exe}.
+- A fact that one static read cannot resolve. Substitute: an explicit UNKNOWN, or an operator check {src:exe:arma3_x64.exe}.
 
 ## Sources
 
