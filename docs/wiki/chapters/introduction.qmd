@@ -5,7 +5,7 @@ title: "AEE Documentation"
 # ACE Environment Extended
 
 ACE Environment Extended (AEE) is a physically accurate environment
-simulation for Arma 3, extending ACE3. It models elevation lapse rates,
+simulation for Arma 3. It models elevation lapse rates,
 terrain microclimate, true air density, Koppen biome classification,
 thermal and physiological effects, optics, mobility, environmental
 conditions, maritime state, radio propagation, and atmospheric events.
