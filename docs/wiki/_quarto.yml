@@ -1,6 +1,9 @@
 project:
   type: website
 
+execute:
+  enabled: false
+
 website:
   title: "AEE Documentation"
   favicon: images/favicon.png
