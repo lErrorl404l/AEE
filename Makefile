@@ -98,6 +98,8 @@ lint: lint-parity
 	python3 tools/tests/test_suite_registration.py || rc=1; \
 	python3 tools/tests/test_adr_numbers.py || rc=1; \
 	python3 tools/tests/test_engine_docs.py || rc=1; \
+	python3 tools/tests/test_field_guide.py || rc=1; \
+	python3 tools/validation/validate_field_guide.py || rc=1; \
 	if [ $$rc -ne 0 ]; then echo "LINT: one or more checks FAILED"; fi; \
 	exit $$rc
 
