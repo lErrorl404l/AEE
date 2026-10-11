@@ -73,3 +73,4 @@ its headless check.
 | F3 - HUD, markers and symbology | [hud-markers.qmd](features/hud-markers.qmd) |
 | F4 - Thermal imaging and AGC | [thermal-agc.qmd](features/thermal-agc.qmd) |
 | F5 - Post-process and the image pipeline | [post-process.qmd](features/post-process.qmd) |
+| F6 - Weather, lighting and the world state | [weather-lighting.qmd](features/weather-lighting.qmd) |
