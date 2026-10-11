@@ -48,7 +48,8 @@ private _mass = getMass _vehicle;   // kg
 if (_mass <= 0) then { _mass = 10000; };   // fallback: a 10-ton vehicle
 
 // The hierarchy check (most specific first - the isKindOf chain).
-if (_vehicle isKindOf "Tank") exitWith { [6, 650, "120mmKE"] };
+// The APC tests must precede the Tank test: a tracked APC or IFV inherits
+// Tank_F, so a general Tank test would shadow these branches.
 if (_vehicle isKindOf "APC_Tracked_01_base_F" || _vehicle isKindOf "APC_Tracked_02_base_F"
     || _vehicle isKindOf "APC_Tracked_03_base_F") exitWith {
     if (_mass > 20000) then { [5, 120, "25mm"] } else { [3, 40, "7.62AP"] }
@@ -57,6 +58,7 @@ if (_vehicle isKindOf "APC_Wheeled_01_base_F" || _vehicle isKindOf "APC_Wheeled_
     || _vehicle isKindOf "APC_Wheeled_03_base_F") exitWith {
     if (_mass > 15000) then { [5, 100, "25mm"] } else { [4, 60, "14.5mm"] }
 };
+if (_vehicle isKindOf "Tank") exitWith { [6, 650, "120mmKE"] };
 if (_vehicle isKindOf "Car") exitWith {
     if (_mass > 8000) then { [2, 20, "7.62API"] } else { [0, 5, "7.62ball"] }
 };
