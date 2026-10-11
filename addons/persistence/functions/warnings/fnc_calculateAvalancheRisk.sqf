@@ -86,10 +86,10 @@ private _S = if (_tau <= 0) then { 99 } else { _tauStrength / (_tau / 1000) };  
 // Rolling 24 h window: maintain a decaying snowfall accumulator (cm) in
 // the same grid pattern as the ice FDD.  Fresh loading is the classic
 // natural trigger (McClung & Schaerer: 30 cm in 24 h).
-private _grid = missionNamespace getVariable [QGVAR(fddGrid), -1];
+private _grid = missionNamespace getVariable [QGVAR(avalancheGrid), -1];
 if (_grid isEqualType 0) then {
     _grid = createHashMap;
-    missionNamespace setVariable [QGVAR(fddGrid), _grid];
+    missionNamespace setVariable [QGVAR(avalancheGrid), _grid];
 };
 // On a dedicated server there is no local unit, so _pos2D is empty; key the
 // snowfall grid on the origin rather than indexing an empty array.
@@ -103,7 +103,7 @@ if (_dtH > 0.5) then { _dtH = 0.5; };
 private _snowfallCmH = (missionNamespace getVariable [QEGVAR(core,snowfallRate), 0]) / 10;  // mm/h -> cm/h
 _snow24 = (_snow24 * exp (-_dtH / 24)) + (_snowfallCmH * _dtH);
 _grid set [_key, [_fdd, _now, _ice, _snow24]];
-missionNamespace setVariable [QGVAR(fddGrid), _grid];
+missionNamespace setVariable [QGVAR(avalancheGrid), _grid];
 
 private _trigger = (_snow24 >= 30) || (_temp > 2);
 

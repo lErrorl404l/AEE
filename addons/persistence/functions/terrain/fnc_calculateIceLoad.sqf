@@ -13,7 +13,7 @@ degree-days, then Gold's load equation for the safe weight.
 The mod has no frost-depth model (#11 not built), so FDD accumulates
 here: a per-position (rounded 100 m grid) running sum of (0 - T_air)
 whenever the air is below freezing, decayed above freezing.  Stored in
-missionNamespace QGVAR(fddGrid) = createHashMap keyed by grid tag ->
+missionNamespace QGVAR(iceGrid) = createHashMap keyed by grid tag ->
 [fddCDays, lastUpdateTick, iceCm].  Deterministic, cheap per tick.
 
 Per the Minnesota DNR table (clear ice):
@@ -40,10 +40,10 @@ if !(_overcast isEqualType 0) then { _overcast = 0; };
 private _snow = missionNamespace getVariable [QEGVAR(core,snowfallRate), 0];
 if !(_snow isEqualType 0) then { _snow = 0; };
 
-private _grid = missionNamespace getVariable [QGVAR(fddGrid), -1];
+private _grid = missionNamespace getVariable [QGVAR(iceGrid), -1];
 if (_grid isEqualType 0) then {
     _grid = createHashMap;
-    missionNamespace setVariable [QGVAR(fddGrid), _grid];
+    missionNamespace setVariable [QGVAR(iceGrid), _grid];
 };
 private _key = format ["%1_%2", round ((_posASL select 0) / 100), round ((_posASL select 1) / 100)];
 private _entry = _grid getOrDefault [_key, [0, -1e10, 0, 0]];
@@ -82,7 +82,7 @@ if (_T < 0) then {
 };
 
 _grid set [_key, [_fdd, _now, _ice, _snow24]];
-missionNamespace setVariable [QGVAR(fddGrid), _grid];
+missionNamespace setVariable [QGVAR(iceGrid), _grid];
 
 // ─── Gold load equation ──────────────────────────────────────────────────
 private _safeKg = 3.5 * (_ice ^ 2);       // clear ice, conservative
