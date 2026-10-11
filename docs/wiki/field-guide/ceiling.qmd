@@ -4,5 +4,36 @@ title: "Predictability ceiling"
 
 # What the field guide can and cannot predict {#sec-field-guide-ceiling}
 
-This page is completed in a later task. It will name what the field guide
-predicts, what no guide can predict, and the substitute for each item.
+The field guide predicts the engine from primary sources. A dedicated server renders no pixels, so the guide stops at the script-observable state and names the operator's visual pass for the rest.
+
+## What the wiki predicts
+
+- The config schema and its inheritance. A class, a key and a re-declare rule are read from the PBO config {src:pbo:Dta/bin.pbo}.
+- The command surface. A command name, its syntax, its return type and its locality are read from the local command database {src:cmd:setParticleParams}.
+- The script source. A game function is read from the unpacked function library {src:script:Addons/functions_f.pbo}.
+- The data formats. The PBO header, the rap config, the shader cache and the font metrics are read from the container {src:pbo:Dta/core.pbo}.
+- The material and particle specs. A spec is read from the config and the research note {src:cfg:CfgCloudlets}.
+- The engine's own vocabulary. The command names and the class names are read from the engine binary {src:exe:arma3_x64.exe}.
+- The ceilings. Each hard limit is recorded with its evidence {src:adr:ADR-035}.
+
+## What no wiki can predict
+
+- The final shading result. The guide predicts the config and the texture identity, never the shaded pixel. Substitute: one operator visual pass, or `tools/visual_diff.py` for a numeric comparison.
+- Perceptual tuning. The operator judges a grade, a contrast and a colour. Substitute: one operator visual pass with `tools/visual_diff.py`.
+- The engine's internal solver step. Substitute: a headless probe in the Docker harness when the observable is script state, or an explicit UNKNOWN {src:adr:ADR-020}.
+- GPU or driver-dependent behaviour. The result depends on the operator's GPU and driver. Substitute: an explicit UNKNOWN.
+- Anything the decompiler cannot resolve in one pass. Substitute: a targeted decompile of one named function, or an explicit UNKNOWN {src:exe:arma3_x64.exe}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Dta/bin.pbo | extract |
+| pbo | Dta/core.pbo | extract |
+| cfg | CfgCloudlets | extract |
+| cmd | setParticleParams | extract |
+| exe | arma3_x64.exe | strings |
+| adr | ADR-035 | extract |
+| adr | ADR-020 | extract |
+| script | tools/visual_diff.py | kernel:tools/visual_diff.py |
+| script | tools/docker_test.sh | kernel:tools/docker_test.sh |
