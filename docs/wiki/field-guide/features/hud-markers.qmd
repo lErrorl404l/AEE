@@ -1,0 +1,88 @@
+---
+title: "F3 - HUD, markers and symbology"
+feature: F3
+verify: probe
+---
+
+# F3: HUD, markers and symbology {#sec-fg-hud-markers}
+
+The engine draws map markers, location symbols and the marker picker from
+four config classes. This page covers the schema AEE re-declares, the picker
+collapse, the echelon overlay and the location draw-style enum.
+
+## What works
+
+- `CfgMarkers` holds one class per marker. The engine reads `icon` and
+  `texture` for the drawn image, `color[]` for the tint, and `size` for the
+  box. The class starts at line 84992 of the `Addons/ui_f.pbo` config.
+  {src:pbo:Addons/ui_f.pbo:84992}
+- A marker names its picker group with `markerClass`. {src:cfg:CfgMarkers.markerClass}
+- `CfgMarkerClasses` declares the picker groups as one flat list. Vanilla
+  ships Default, System, Military, Draw, the four NATO affiliation groups,
+  NATO_Sizes, NATO_Respawn, Locations and Flags. The class starts at line
+  86243. {src:pbo:Addons/ui_f.pbo:86243}
+- `CfgMarkerColors` maps a colour name to one `color[]` RGBA value. AEE adds
+  the class `ColorAEE`. {src:cfg:CfgMarkerColors.color[]}
+- `CfgLocationTypes` holds one class per location type. The engine reads
+  `icon`, `texture`, `color[]`, `size`, `textSize`, `font`, `shadow`,
+  `importance` and `drawStyle`. The class starts at line 78353.
+  {src:pbo:Addons/ui_f.pbo:78353}
+- The location `drawStyle` enum holds `name`, `icon`, `area` and `mount`.
+  {src:cfg:CfgLocationTypes.drawStyle}
+- AEE collapses the picker to one entry. Every AEE concrete variant is scope
+  0, so the picker hides it. The one visible class is `AEE_Variation`, which
+  is scope 2. A CBA keybind opens a selector that changes the affiliation,
+  dimension, function, echelon and palette at run time.
+  {src:script:addons/symbology/config_variations.hpp}
+- AEE layers the echelon. Each `AEE_Ech_*` texture holds the ticks in the top
+  band of a 64 by 128 canvas. A marker at the same position shows the ticks
+  above the frame. {src:script:addons/symbology/config_modifiers.hpp}
+
+## What does not work
+
+- A new marker-class group does not nest. The picker reads `CfgMarkerClasses`
+  as one flat list. AEE carries the hierarchy in the class name and the
+  `displayName`. {src:adr:ADR-028}
+- The engine does not keep the marker aspect. It stretches the `texture` into
+  the marker box. This is the Bohemia feedback T170754.
+  {src:pbo:Addons/ui_f.pbo:84992}
+- The engine routes an object to its icon. No config field sets that route. A
+  re-texture reaches only the objects the engine already maps. This is the
+  Bohemia ticket T157884. {src:script:addons/cartography/config_mapicons.hpp}
+- A `drawStyle` value outside the enum fails. The engine logs `Wrong location
+  draw style` and draws no icon. {src:cfg:CfgLocationTypes.drawStyle}
+
+## Limitations
+
+- The marker texture stretches to the box. A square box squashes a 2:1
+  texture, so the echelon ticks land inside the frame and not above it.
+  {src:adr:ADR-028}
+- `drawStyle` is a fixed engine enum. A mod sets the texture, colour, size,
+  font, shadow and importance only.
+  {src:script:addons/cartography/config_locationtypes.hpp}
+- The object-to-icon routing is engine-internal. A custom object map icon
+  needs engine support. {src:adr:ADR-026}
+
+## Breaks visually
+
+- A marker stretched to its box shows a distorted symbol. A square icon loses
+  its aspect. {src:script:addons/symbology/functions/symbology/fnc_symbologyMarkersApply.sqf}
+- A colour that matches the background hides the symbol.
+  {src:cfg:CfgMarkerColors.color[]}
+- An echelon box of the wrong size puts the ticks inside the frame. The
+  kernel returns a 1:2 box from the frame half-width.
+  {src:script:addons/symbology/functions/symbology/fnc_symbologyEchelonSize.sqf}
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Addons/ui_f.pbo CfgMarkers | extract |
+| pbo | Addons/ui_f.pbo CfgLocationTypes | extract |
+| cfg | CfgMarkerClasses | extract |
+| cfg | CfgMarkerColors.color[] | extract |
+| adr | ADR-028 | test:tools/tests/test_map_qa.py |
+| adr | ADR-026 | probe:P117 |
+| script | addons/symbology/config_variations.hpp | test:tools/tests/test_symbology.py |
+| script | addons/symbology/config_modifiers.hpp | test:tools/tests/test_map_qa.py |
+| script | addons/symbology/functions/symbology/fnc_symbologyMarkersApply.sqf | probe:P121 |
