@@ -1,0 +1,88 @@
+---
+title: "F10 - the game's own scripts"
+feature: F10
+verify: extract
+---
+
+# F10: the game's own scripts {#sec-fg-game-scripts}
+
+The game ships its own script library. The library holds the engine helper
+functions and the editor modules. This page states the library that works, the
+form that does not work, the engine limits, and the visible defect a script
+fault shows. Read the shipped library first, then call its functions by name.
+
+## What works
+
+- The `functions_f.pbo` library holds 2308 files. The tree holds 1139 `.sqf`
+  files and 1105 `.sqfc` files. The rest are the shared includes and the
+  `config.bin` {src:pbo:Addons/functions_f.pbo}.
+- A function ships as a pair. A readable `.sqf` file sits next to the compiled
+  `.sqfc` file of the same name. The example is `Waypoints/fn_wpSuppress.sqf`
+  and `Waypoints/fn_wpSuppress.sqfc` {src:script:docs/engine/engine-pbo-inventory.md}.
+- The readable `.sqf` file is the primary source for the engine script
+  behaviour. The first line of `fn_wpSuppress.sqf` declares its arguments:
+  `private ["_group","_pos","_target","_wp"];`.
+  {src:script:addons/vision/functions/vision/fnc_calculateViewDistance.sqf}
+- The library registers every function in `CfgFunctions`. The registration
+  names the function, its category and its file. The engine calls a registered
+  function by that name {src:script:docs/engine/engine-pbo-inventory.md}.
+- The engine naming convention is `BIS_fnc_<name>`. AEE calls 20 of these
+  functions. `fnc_triggerLightning.sqf` calls `BIS_fnc_lightning` when the
+  function is present {src:script:addons/weatherfx/functions/weather/fnc_triggerLightning.sqf}.
+- The `modules_f.pbo` library holds 221 entries. It carries the Eden editor
+  modules and the Zeus curator modules. Each module is a `CfgVehicles` class
+  with a `CfgFunctions` file {src:pbo:Addons/modules_f.pbo}.
+- A module calls its function at run time. The curator module
+  `ModulePostprocess_F` calls `BIS_fnc_modulePostprocess`. That function reads
+  the named template and applies it to the camera.
+  {src:script:docs/wiki/research/post-process-template-reference.md}
+
+## What does not work
+
+- Reading a `.sqfc` file as text. The engine compiles the file, so the bytes
+  are not source. The first bytes of `fn_wpSuppress.sqfc` are binary.
+  {src:pbo:Addons/functions_f.pbo}.
+- A call to a function that is not compiled on every build. AEE notes that
+  `BIS_fnc_min` is not compiled on all headless builds, so
+  `fnc_calculateViewDistance.sqf` writes the comparison chain by hand.
+  {src:script:addons/vision/functions/vision/fnc_calculateViewDistance.sqf}
+- A written assumption about an internal helper name. An internal function is
+  not part of the public surface. A later game version can rename it, and the
+  call then fails at load {src:script:docs/engine/engine-pbo-inventory.md}.
+
+## Limitations
+
+- A `.sqfc` file needs its matching `.sqf` file to read. The pair shares one
+  name. A missing `.sqf` file leaves the compiled file alone and unreadable
+  {src:pbo:Addons/functions_f.pbo}.
+- The function library is versioned with the game. The shipped library carries
+  a version and a product tag, so a call matches one game build.
+  {src:script:docs/engine/engine-pbo-inventory.md}.
+- The library carries no shipped `.sqf` source in the mod. AEE reads the pair
+  and calls the function by its registered name.
+  {src:script:tools/sqf_validator.py}.
+
+## Breaks visually
+
+- A script fault at load. A script error stops the function at its first bad
+  line. The visible result is a missing effect or a frozen state. The source
+  contract test locks one such class, a nil read before the guard.
+  {src:script:tools/tests/test_sqf_nil_reads.py}
+- A module that runs before its dependency. The module calls its function
+  before the library registers it. The call does nothing and the module
+  appears dead {src:script:docs/wiki/research/post-process-template-reference.md}.
+- A renamed internal helper. The call fails at load and the effect never
+  reaches the frame {src:script:addons/vision/functions/vision/fnc_calculateViewDistance.sqf}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Addons/functions_f.pbo | extract |
+| pbo | Addons/modules_f.pbo | extract |
+| script | docs/engine/engine-pbo-inventory.md | extract |
+| script | docs/wiki/research/post-process-template-reference.md | extract |
+| script | addons/weatherfx/functions/weather/fnc_triggerLightning.sqf | extract |
+| script | addons/vision/functions/vision/fnc_calculateViewDistance.sqf | extract |
+| script | tools/sqf_validator.py | kernel:tools/sqf_validator.py |
+| script | tools/tests/test_sqf_nil_reads.py | test:tools/tests/test_sqf_nil_reads.py |

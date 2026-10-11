@@ -149,6 +149,12 @@ jobs:
         run: python3 tools/tests/test_adr_numbers.py
       - name: Engine reference doc check
         run: python3 tools/tests/test_engine_docs.py
+      - name: Engine field guide index check
+        run: python3 tools/tests/test_field_guide.py
+      - name: Engine field guide page contract check
+        run: python3 tools/validation/validate_field_guide.py
+      - name: Engine field guide citation index check
+        run: python3 tools/field-guide/citations.py --check
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:

@@ -1,0 +1,101 @@
+---
+title: "F8 - materials, textures and the data formats"
+feature: F8
+verify: extract
+---
+
+# F8: materials, textures and the data formats {#sec-fg-materials-formats}
+
+The engine builds every visible surface from data files. A mod replaces a
+texture or a material at load time, or swaps one at run time on a named
+selection. This page states the replacement that works, the swap that fails,
+the engine limits, and the visible defect a wrong value shows.
+
+## What works
+
+A PBO that carries a replacement `.paa` or `.rvmat` at a vanilla path
+overrides the baked asset. Two PBOs that carry one path resolve to the
+later-loaded file. This is the PBO path override {src:pbo:Addons/data_f.pbo}.
+
+The engine resolves a file path from its PBO prefix. AEE builds under
+`z\aee\addons\`, so it does not collide with the vanilla `a3\` tree by
+default. A deliberate override needs a PBO that mounts at the vanilla path
+{src:adr:ADR-001}.
+
+A class names its textureable parts in `hiddenSelections[]`. The matching
+`hiddenSelectionsMaterials[]` adds one material per selection, with no model
+edit {src:cfg:CfgVehicles>>hiddenSelectionsMaterials}. AEE reads the array and
+maps each selection to its own material {src:script:addons/material/functions/fnc_getObjectMaterial.sqf}.
+
+Two commands swap a surface at run time. `setObjectTexture` sets a texture on
+one selection by index {src:cmd:setObjectTexture}. `setObjectMaterial` sets a
+material the same way {src:cmd:setObjectMaterial}.
+
+An RVMAT is a text material. It names a pixel shader, a vertex shader and one
+texture per stage. The shared default material declares
+`PixelShaderID = "Normal"`, `VertexShaderID = "Basic"` and a StageTI texture
+{src:pbo:Addons/data_f.pbo}.
+
+A PAA is a compressed texture with a mip chain. `armake paa2img` converts a
+PAA to an image, and `armake img2paa` converts an image to a PAA
+{src:cmd:paa2img}. The tool writes DXT1, DXT3, DXT5, ARGB4444, ARGB1555 or
+AI88.
+
+## What does not work
+
+A run-time material swap needs a selection. An object whose P3D names no
+selection cannot take one. AEE cannot verify a model it does not hold, so this
+config path stays unused {src:adr:ADR-001}.
+
+Texture size has a hard limit. Each axis must be a power of two, and the
+maximum is 4096 by 4096 {src:cmd:setObjectTexture}.
+
+A material override cannot reach the baked terrain. `CfgSurfaces` defines
+surface behaviour and carries no material field {src:cfg:CfgSurfaces>>Default}.
+
+## Limitations
+
+The terrain surface-type mask is baked into the WRP, not into config. No
+config field and no script command reaches it, so a change needs a
+re-binarised map {src:cfg:CfgSurfaces>>Default}.
+
+The terrain's rendered material is the WRP layer RVMAT. Each terrain cell
+carries one, and they ship in `map_altis_data_layers`
+{src:pbo:Addons/map_altis_data_layers.pbo}.
+
+The default TI material is one file. Every object with no dedicated thermal
+map falls back to the shared `a3\data_f\default_vehicle_ti_ca.paa`
+{src:pbo:Addons/data_f.pbo}.
+
+A material defines appearance and surface response, not physics. A surface
+carries friction and no mass key {src:adr:ADR-037}.
+
+## Breaks visually
+
+A material on the wrong selection corrupts the picture. A per-selection swap
+on the wrong index alters the visible appearance. This is the Zulu uniform
+defect, issue #123 {src:adr:ADR-001}.
+
+A bad PAA shows as a soft or speckled surface. A texture whose axes are not
+powers of two, or a mip chain that loses detail, blurs the part at range
+{src:cmd:paa2img}.
+
+A length mismatch shifts every material. The engine reads
+`hiddenSelectionsMaterials[]` per selection, so a short or long array paints
+the wrong part {src:cfg:CfgVehicles>>hiddenSelectionsMaterials}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Addons/data_f.pbo | extract |
+| pbo | Addons/map_altis_data_layers.pbo | extract |
+| cfg | CfgVehicles>>hiddenSelectionsMaterials | extract |
+| cfg | CfgSurfaces>>Default | extract |
+| cmd | setObjectTexture | extract |
+| cmd | setObjectMaterial | extract |
+| cmd | paa2img | extract |
+| adr | ADR-001 | test:tools/tests/test_material.py |
+| adr | ADR-037 | test:tools/tests/test_mass_config.py |
+| script | addons/material/functions/fnc_getObjectMaterial.sqf | kernel:tools/tests/sqf_lite.py |
+| script | addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf | kernel:tools/tests/sqf_lite.py |

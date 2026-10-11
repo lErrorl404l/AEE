@@ -1,0 +1,56 @@
+---
+title: "F2 - the map surface re-declare"
+feature: F2
+verify: probe
+---
+
+# F2: the map surface re-declare {#sec-fg-map-surface}
+
+AEE sends one topographic surface to every map display. The surface is a config re-declare at load time. The engine draws the map, so no overlay is stacked on the marker layer. This page states where the re-declare reaches, where it stops, and what a wrong value shows.
+
+## What works
+
+- AEE re-declares the base map control at `addons/cartography/config.cpp:69` and includes the palette at line 70. The main map, the briefing and the GPS inherit this control, so one include reaches all three {src:cfg:RscMapControl}.
+- The strategic map carries its own control. `addons/cartography/config_mapdisplays.hpp:24` opens the display and line 27 includes the same palette {src:cfg:RscDisplayStrategicMap.Map}.
+- The Eden editor map is the `ctrlMap` class, not `RscMapControl`. Line 42 opens `ctrlMap` and line 43 includes the palette. `ctrlMapMain` and `ctrlMapEmpty` inherit it {src:cfg:ctrlMap}.
+- The Zeus map (`RscDisplayCurator`) inherits `RscMapControl` and needs no separate re-declare. The probe P142 reads the AEE values on every surface named here {src:probe:P142}.
+- The minimap is a separate control. Line 55 opens `RscCustomInfoMiniMap`, line 59 the `CA_MiniMap` control, and line 60 includes the minimap palette. Lines 66, 70 and 71 do the same for the airborne minimap {src:cfg:CA_MiniMap}.
+- The palette sets the fill colours. `colorSea` is `0.55,0.70,0.85,1` at `config_mapcolors.hpp:41`, `colorLevels` is `0.70,0.48,0.32,1` at line 48, and `colorRocks` is `0.75,0.70,0.60,1` at line 72 {src:cfg:colorLevels}.
+- The palette sets the line colours. `colorRoads` is `0.80,0.10,0.10,1` at line 84 and `colorMainRoads` is `0.70,0.00,0.00,1` at line 86 {src:cfg:colorRoads}.
+- The rail and power lines are black. `colorRailWay` is `0,0,0,1` at line 88 and `colorPowerLines` is `0,0,0,1` at line 89 {src:cfg:colorRailWay}.
+- The satellite opacity is set. `maxSatelliteAlpha` is `0.5` at line 121, below the shipped `0.85` {src:cfg:maxSatelliteAlpha}.
+- The engine grid is relabelled. `colorGrid`, `colorGridMap` and `sizeExGrid` are set at `config_mapdisplays.hpp:32` to `34`, and again at lines 46 to 48 {src:cfg:colorGrid}.
+- The label and zoom fields are set. `colorNames` is opaque at line 107, `scaleMax` is `2` at line 133, and `scaleDefault` is `0.3` at line 136 {src:cfg:colorNames}.
+
+## What does not work
+
+- A mod cannot remove the engine grid. The geometry is engine-drawn, and alpha 0 only hides it. AEE sets both grid colours to alpha 0, so the AEE MGRS overlay is the single ruler {src:cfg:colorGridMap}.
+- A mod cannot change the contour geometry. The engine derives the contour lines at run time from the WRP heightmap. No config field sets the geometry {src:adr:ADR-030}.
+- A mod cannot change the satellite raster. The raster is the world field `pictureMap`, a per-world asset. A change to the raster means a change to the world {src:cfg:pictureMap}.
+- A mod cannot preserve a marker texture's aspect. The engine stretches the texture to the marker box. A 2 to 1 texture needs a non-square `size` {src:adr:ADR-029}.
+
+## Limitations
+
+- The contour interval is engine or map data. `showCountourInterval` toggles the interval label only. It does not set the interval value {src:cfg:showCountourInterval}.
+- The road and rail geometry is map data. AEE sets the colours and the rail width. It cannot move a road or a rail {src:cfg:colorRoads}.
+- The satellite raster is map data. `maxSatelliteAlpha` sets the opacity of the raster, not its content {src:cfg:maxSatelliteAlpha}.
+- The minimap forces part of the palette. The engine override wins for every forced field, and the airborne minimap forces more. The file `addons/cartography/config_mapminimap.hpp` names each unreachable field {src:cfg:CA_MiniMap}.
+
+## Breaks visually
+
+- The engine numeric grid and the AEE MGRS overlay both on show two rulers. The engine ruler clips its left and right numbers at close zoom, so the operator sees doubled and missing labels {src:cfg:colorGrid}.
+- A wrong `drawStyle` breaks the location symbols. A class that restates no parent drops the inherited `drawStyle` and `texture`. The engine logs a warning and draws the wrong symbol {src:adr:ADR-030}.
+- A palette value that hides a feature breaks the picture. A line colour at alpha 0 hides that line, and a fill colour at alpha 0 hides that fill. A stray non-zero grid value restores the engine ruler {src:cfg:colorNames}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Addons/ui_f.pbo, RscMapControl at config.cpp:1272 | extract |
+| cfg | addons/cartography/config_mapcolors.hpp | test:tools/tests/test_terrain.py |
+| cfg | addons/cartography/config_mapdisplays.hpp | test:tools/tests/test_map_qa.py |
+| cfg | addons/cartography/config_mapminimap.hpp | test:tools/tests/test_map_qa.py |
+| adr | ADR-030 | test:tools/tests/test_map_qa.py |
+| adr | ADR-044 | extract |
+| probe | P142, the live surface reach | probe:P142 |
+| script | addons/cartography/config.cpp | test:tools/tests/test_terrain.py |

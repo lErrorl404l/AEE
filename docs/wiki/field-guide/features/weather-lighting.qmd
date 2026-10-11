@@ -1,0 +1,136 @@
+---
+title: "F6 - weather, lighting and the world state"
+feature: F6
+verify: extract
+---
+
+# F6: weather, lighting and the world state {#sec-fg-weather-lighting}
+
+The engine owns the weather, the sun, the sky and the light. A mod reads
+the weather state and re-declares the world lighting at load. This page
+states which levers AEE moves, which levers are read only, and what a
+wrong value shows.
+
+## What works
+
+- The engine weather commands cover the atmosphere state. `overcast` runs
+  0 to 1 from clear to full cloud. `rain` needs an overcast of at least
+  0.5 in Arma 3. `fog` uses `setFog [time, fog]`. `wind` is the horizontal
+  vector in metres per second and `windStr` is the strength 0 to 1.
+  {src:cmd:overcast}
+- `setTimeMultiplier` moves the world clock. The engine clamps the value
+  to 0.1 to 120. The effect is global. {src:cmd:setTimeMultiplier}
+- `waves` is the sea state. The command is read only. The value comes from
+  the world config `Weather >> Overcast` bands and the `startWaves` field.
+  `setWaves` needs Manual Override in the Eden intel section.
+  {src:cfg:CfgWorlds.Weather.Overcast}
+- `CfgWorlds` holds the world lighting. The engine core declares
+  `DefaultLighting` at `config.cpp:14346`. {src:pbo:Dta/bin.pbo:14346}
+- `DefaultLighting >> starEmissivity` is the star draw scale. The engine
+  declares `0.3` at `config.cpp:14353`. A world that sets its own value
+  shadows the default. {src:pbo:Dta/bin.pbo:14353}
+- The world re-opens the default as `class Lighting: DefaultLighting {}`
+  at `config.cpp:14435`, so the engine merges instead of replacing.
+  {src:pbo:Dta/bin.pbo:14435}
+- `DayLightingBrightAlmost` at `config.cpp:14436` and `DayLightingRainy`
+  at `config.cpp:14447` carry the night endpoints. The engine
+  interpolates the world lighting between them as the sun and moon move.
+  {src:pbo:Dta/bin.pbo:14436}
+- The `Weather >> Overcast` bands are a ladder. `class Overcast` at
+  `config.cpp:14500` holds `Weather1` at overcast 0 through `Weather5` at
+  overcast 1. Each band sets `lightingOvercast` 0 to 1 and `waves` 0.15
+  to 0.70. {src:cfg:CfgWorlds.Weather.Overcast}
+- `CfgLights` at `config.cpp:3466` holds the two engine light classes,
+  `ObjectDestructionLight` and `ExplosionLight`. Each carries `color[]`,
+  `ambient[]` and `brightness[]`. {src:pbo:Dta/bin.pbo:3466}
+- The engine clamps a light with an `Attenuation` block. The core declares
+  one on `DefaultLighting >> ThunderBoltLight` at `config.cpp:14358`,
+  with `start`, `constant`, `linear` and `quadratic`.
+  {src:cfg:CfgLights.Attenuation}
+- AEE re-homes the lighting anchor into `CAWorld` and each stock world
+  with the explicit base form `class X: X`. The engine merges the values
+  through the world class chain. {src:script:addons/lighting/config.cpp}
+- AEE sets `starEmissivity` to 25, the vanilla world value. It restores 25
+  from an earlier 40, which doubled the vanilla draw with no source.
+  {src:script:addons/lighting/config.cpp}
+
+## What does not work
+
+- A script cannot change the tone curve at run time. `HDRNewPars` at
+  `config.cpp:14869` is the engine HDR pipeline, and the engine reads it
+  at world load. {src:pbo:Dta/bin.pbo:14869}
+- A mod cannot add a per-object light at run time. The engine loads the
+  light list once, and `CfgLights` declares two classes only.
+  {src:cfg:CfgLights}
+- A client cannot write the engine weather directly. A client
+  `setOvercast`, `setRain` or `setFog` is local and temporary, and the
+  value reverts to the server value. {src:cmd:setOvercast}
+- AEE does not write engine weather. It reads `overcast`, `rain`, `fog`
+  and `wind`, and another mod owns the server write. A push back would
+  feed the AEE wind model, which reads the engine wind each tick, and the
+  change would compound. {src:adr:ADR-041}
+- A re-open that drops its parent empties the class. A file-root
+  declaration makes the engine log a missing definition and re-parent
+  every world onto an empty class. That empties the tone curve.
+  {src:script:addons/lighting/config.cpp}
+
+## Limitations
+
+- The light list loads once. A new light class needs a PBO load, not a
+  script call. {src:cfg:CfgLights}
+- The world lighting is read at load. `HDRNewPars`, `DOFPars`, `Lighting`,
+  the `DayLighting` keyframes and the `Weather` bands are fixed at world
+  load. {src:cfg:CfgWorlds}
+- The overcast transitions run on the engine clock. `nextWeatherChange`
+  states the seconds left in a transition. After it the engine starts a
+  new random change over at least 90 minutes. {src:cmd:nextWeatherChange}
+- `setTimeMultiplier` is global and clamped to 0.1 to 120. A client cannot
+  hold a private rate. {src:cmd:setTimeMultiplier}
+- The engine owns the sky, the waves and the tone curve. AEE sets a
+  colour, a scale and a band. It cannot move the engine geometry.
+  {src:adr:ADR-008}
+- A custom world keeps its own values. AEE compensates at run time
+  through `fnc_applyWorldLighting`, once per environment tick, and
+  publishes the profile as `aee_lighting_worldLighting`.
+  {src:script:addons/lighting/config.cpp}
+
+## Breaks visually
+
+- A lighting keyframe that fights the AEE grade breaks the picture. AEE
+  keeps the vanilla tone curve and adds a gated `ColorCorrections` grade.
+  A world that re-authors the curve away from the vanilla floor doubles
+  the change and crushes or lifts the frame. {src:cfg:CfgWorlds.DayLighting}
+- An over-bright `starEmissivity` flattens the night sky. AEE carried 40,
+  which is 1.6 times the vanilla 25. The star draw doubled with no source.
+  {src:script:addons/lighting/config.cpp}
+- An attenuation that clips shows a bright disc. A `quadratic` term with
+  `start` 0 makes the light fall off fast. A fire or an explosion then
+  shows a hard edge, not a glow. {src:cfg:CfgLights.Attenuation}
+- A `DayLighting` keyframe below the vanilla floor makes midnight too
+  dark. The `deepNight` triplet 0.005, 0.01, 0.01 is the floor. A value
+  near zero hides the ground. {src:pbo:Dta/bin.pbo:14436}
+- An overcast band that disagrees with the sea state shows flat water.
+  The band sets `waves` 0.15 to 0.70. A `Weather5` sky with a calm
+  `waves` value shows a heavy sky over a still sea.
+  {src:cfg:CfgWorlds.Weather.Overcast}
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Dta/bin.pbo, CfgWorlds at config.cpp:13033 | extract |
+| pbo | Dta/bin.pbo, CfgLights at config.cpp:3466 | extract |
+| pbo | Dta/bin.pbo, DefaultLighting at config.cpp:14346 | extract |
+| pbo | Dta/bin.pbo, Weather >> Overcast at config.cpp:14500 | extract |
+| pbo | Dta/bin.pbo, HDRNewPars at config.cpp:14869 | extract |
+| cfg | CfgWorlds >> Lighting >> starEmissivity | extract |
+| cfg | CfgWorlds >> Weather >> Overcast bands | extract |
+| cfg | CfgLights >> Attenuation | extract |
+| cmd | setTimeMultiplier, overcast, rain, fog, wind, nextWeatherChange | extract |
+| adr | ADR-041 | test:tools/tests/test_weather_front.py |
+| adr | ADR-008 | test:tools/tests/test_night_sky_debug.py |
+| script | addons/lighting/config.cpp | test:tools/tests/test_engine_hdr_config.py |
+| script | addons/weather/config.cpp | test:tools/tests/test_weather_front.py |
+| script | addons/atmos/config.cpp | test:tools/tests/test_atmos.py |
+| kernel | tools/validation/validate_illuminance.py | kernel:tools/validation/validate_illuminance.py |
+| probe | P84, the resolved world HDR anchor | probe:P84 |

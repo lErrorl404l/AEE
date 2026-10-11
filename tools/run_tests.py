@@ -305,6 +305,8 @@ def main():
         "tools/tests/test_next_id.py",
         # Engine reference: the docs/engine index and its portability rule.
         "tools/tests/test_engine_docs.py",
+        # Engine field guide: index completeness and path portability.
+        "tools/tests/test_field_guide.py",
         # Interface control documents: freshness, index and grounding.
         "tools/tests/test_icd_docs.py",
         # Dev harness release exclusion, part (a). Part (b) runs in the full

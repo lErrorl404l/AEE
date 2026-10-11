@@ -61,6 +61,38 @@ website:
         contents:
           - text: CBRN agent plume dispersion
             href: research/cbrn-plume-dispersion.md
+      - section: "Field guide"
+        contents:
+          - text: "How to read"
+            href: field-guide/index.qmd
+          - text: "Predictability ceiling"
+            href: field-guide/ceiling.qmd
+          - text: "F1 - Config re-declare"
+            href: field-guide/features/config-redeclare.qmd
+          - text: "F2 - The map surface"
+            href: field-guide/features/map-surface.qmd
+          - text: "F3 - HUD, markers and symbology"
+            href: field-guide/features/hud-markers.qmd
+          - text: "F4 - Thermal imaging and AGC"
+            href: field-guide/features/thermal-agc.qmd
+          - text: "F5 - Post-process and the image pipeline"
+            href: field-guide/features/post-process.qmd
+          - text: "F6 - Weather, lighting and the world state"
+            href: field-guide/features/weather-lighting.qmd
+          - text: "F7 - Particles and visual effects"
+            href: field-guide/features/particles-vfx.qmd
+          - text: "F8 - Materials, textures and the data formats"
+            href: field-guide/features/materials-formats.qmd
+          - text: "F9 - The SQF command surface"
+            href: field-guide/features/command-surface.qmd
+          - text: "F10 - The game's own scripts"
+            href: field-guide/features/game-scripts.qmd
+          - text: "F11 - Engine extensions"
+            href: field-guide/features/extensions.qmd
+          - text: "F12 - The PBO container and the shader cache"
+            href: field-guide/features/pbo-container.qmd
+          - text: "Citations"
+            href: field-guide/citations.qmd
       - text: Support
         href: support.qmd
   navbar:
