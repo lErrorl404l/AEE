@@ -77,6 +77,8 @@ website:
             href: field-guide/features/thermal-agc.qmd
           - text: "F5 - Post-process and the image pipeline"
             href: field-guide/features/post-process.qmd
+          - text: "F6 - Weather, lighting and the world state"
+            href: field-guide/features/weather-lighting.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support
