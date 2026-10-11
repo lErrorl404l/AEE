@@ -55,7 +55,7 @@ The `verify` cell of a `## Sources` row is one of:
 The guide cites these primary sources:
 
 - The Arma 3 addon PBOs and data PBOs, read with the extraction harness.
-- The engine binary, read with a string search and a targeted decompile.
+- The engine binary, read with a string search.
 - The AEE research notes under `research/`.
 - The AEE decision records under the `adr` directory.
 - The local command database and the extracted command-name list.
