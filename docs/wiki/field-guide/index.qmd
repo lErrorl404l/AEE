@@ -79,3 +79,4 @@ its headless check.
 | F9 - The SQF command surface | [command-surface.qmd](features/command-surface.qmd) |
 | F10 - The game's own scripts | [game-scripts.qmd](features/game-scripts.qmd) |
 | F11 - Engine extensions | [extensions.qmd](features/extensions.qmd) |
+| F12 - The PBO container and the shader cache | [pbo-container.qmd](features/pbo-container.qmd) |

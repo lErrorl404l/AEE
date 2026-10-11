@@ -1,0 +1,126 @@
+---
+title: "F12 - the PBO container and the shader cache"
+feature: F12
+verify: extract
+---
+
+# F12: the PBO container and the shader cache {#sec-fg-pbo-container}
+
+The PBO is the container the engine mounts. A modder builds a source
+folder, a packer writes a PBO, and the engine reads the header before it
+reads one file. This page states the header layout, the rap config, the
+shader cache and the font metrics. A modder reads the container without
+launching the game.
+
+## What works
+
+- The PBO header is a fixed layout. Bytes 0 to 4 are the magic
+  `\x00sreV`. Bytes 5 to 20 are 16 reserved bytes. Then `key\0value\0`
+  extension pairs end at an empty key. Then the file entries follow.
+  {src:pbo:Dta/bin.pbo}
+- A file entry is `name\0 mime\0` and five `uint32` fields. The entry
+  list ends at an empty name. The last `uint32` is the stored data size.
+  So a reader finds every file and its size from the header alone, with
+  no unpack. {src:pbo:Dta/bin.pbo}
+- `Dta/bin.pbo` declares the extension pairs `version` 154089 and
+  `prefix` `bin`. `Dta/core.pbo` declares `prefix` `core`, `product`
+  `Arma 3` and `version` 151188. {src:pbo:Dta/core.pbo}
+- `armake inspect` lists the prefix, the product, the version and every
+  file. `armake unpack` writes the tree. `armake cat <pbo> <name>`
+  writes one file to stdout. `armake derapify` writes a `config.cpp`
+  from a binarised `config.bin`.
+  {src:script:docs/engine/engine-pbo-inventory.md}
+- `Dta/bin.pbo` holds 10 files. The set is `config.bin` at 640951 bytes
+  and nine `.shdc` shader cache files. {src:pbo:Dta/bin.pbo}
+- `config.bin` is the rap format. It holds the packed engine config, and
+  `armake derapify` turns it back into text. The core config declares
+  every global root, `CfgVehicles` through `RscMapControl`.
+  {src:cfg:config.bin}
+- The nine `.shdc` files name the shader model and the profile. Shader
+  model 4.0 carries `VS`, `PS`, `GS` and `PP`. Shader model 5.0 adds
+  `CS`. So the set is `Shaders_4_0_VS`, `Shaders_4_0_PS`,
+  `Shaders_4_0_GS`, `Shaders_4_0_PP`, `Shaders_5_0_VS`, `Shaders_5_0_PS`,
+  `Shaders_5_0_GS`, `Shaders_5_0_PP` and `Shaders_5_0_CS`.
+  {src:pbo:Dta/bin.pbo}
+- Each `.shdc` file starts with the magic text `BIShaderCache-id: 0007`.
+  The engine reads the id before it reads the compiled body.
+  {src:pbo:Dta/bin.pbo}
+- `Dta/core.pbo` holds 33 files. The set carries the shared `.p3d`
+  models, such as `Compass\Compass.p3d` and `GPS\GPS.p3d`, and three
+  `.fxy` font metric files. {src:pbo:Dta/core.pbo}
+- The `.fxy` metrics are `Data\Fonts\LucidaConsoleB11.fxy`,
+  `Data\Fonts\LucidaConsoleB8.fxy` and `Data\Fonts\TahomaB16.fxy`. Each
+  file states the advance and the box of every glyph. The engine lays
+  out HUD and map text from these metrics. {src:pbo:Dta/core.pbo}
+- The repository packs a PBO through `tools/hemtt.sh`. The wrapper raises
+  the open-file limit, then calls HEMTT. Every HEMTT call in the
+  repository goes through the wrapper. {src:script:tools/hemtt.sh}
+
+## What does not work
+
+- A modder cannot read a binarised `config.bin` as text. The bytes are
+  the rap format, not ASCII. `armake derapify` writes the `config.cpp`
+  beside the `config.bin`, and the reader works from that text.
+  {src:cfg:config.bin}
+- A modder cannot decode a `.shdc` file into readable shader source. The
+  file is compiled bytecode, and the header gives the id only. The body
+  is not a text listing. {src:pbo:Dta/bin.pbo}
+- `armake inspect` reports the header only. It does not show a file body
+  and it does not show a config class. A reader uses `armake cat` for one
+  file and `armake unpack` for the tree.
+  {src:script:docs/engine/engine-pbo-inventory.md}
+- A packer cannot put a `config.cpp` and a `config.bin` in one PBO and
+  expect both to load. The engine ignores the `config.bin` when a
+  `config.cpp` sits in the same PBO.
+  {src:script:docs/engine/README.md}
+
+## Limitations
+
+- The shader cache is compiled, and the engine owns the shading math. A
+  page states the shader identity and the profile set, not the shader
+  source. The `.shdc` set gives the model and the profile name only.
+  {src:pbo:Dta/bin.pbo}
+- The `.shdc` id is `0007` in this install. A different id marks a
+  different cache version. The engine matches its own id, so a stale
+  cache is inert. {src:pbo:Dta/bin.pbo}
+- The engine reads the config at mount. The header names the prefix, and
+  the prefix fixes every path the engine resolves. A modder cannot change
+  the prefix after the mount. {src:pbo:Dta/core.pbo}
+- The rap format is not documented in one place. A modder learns it from
+  the derapified `config.cpp` and from the `armake derapify` write.
+  {src:cfg:config.bin}
+- The font metrics are fixed for a shipped font. The `.fxy` file states
+  one glyph table, and the engine draws from it. A modder cannot change
+  a glyph box at run time. {src:pbo:Dta/core.pbo}
+
+## Breaks visually
+
+- A `config.cpp` beside a `config.bin` changes which one the engine
+  reads. The engine reads the `config.cpp` and ignores the `config.bin`.
+  A stale `config.cpp` in a packed PBO then overrides the intended
+  `config.bin`, and the picture shows the old values.
+  {src:script:docs/engine/README.md}
+- A wrong PBO prefix breaks a path override. A modder ships a
+  replacement texture at a vanilla path and relies on last-loaded-wins.
+  A wrong prefix resolves the path under the wrong root, the engine keeps
+  the vanilla file, and the surface shows the old texture.
+  {src:script:docs/engine/engine-pbo-inventory.md}
+- A missing `.shdc` entry removes one profile. The engine then falls back
+  for that pass, and a scene can show a flat surface or a wrong light.
+  Each name in the profile set must appear in the pack.
+  {src:pbo:Dta/bin.pbo}
+- A wrong `.fxy` metric misaligns the text. A wrong advance crowds or
+  spaces the glyphs. The HUD and the map then show shifted labels.
+  {src:pbo:Dta/core.pbo}
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Dta/bin.pbo, the header layout and config.bin at 640951 bytes | extract |
+| pbo | Dta/bin.pbo, the nine .shdc entries and the BIShaderCache-id magic | extract |
+| pbo | Dta/core.pbo, the .p3d models and the three .fxy font metrics | extract |
+| cfg | config.bin, the rap format, and its config.cpp read order | extract |
+| script | tools/hemtt.sh, the HEMTT wrapper and the command set | test:tools/tests/test_field_guide.py |
+| script | docs/engine/engine-pbo-inventory.md, the confirmed header layout | test:tools/tests/test_engine_docs.py |
+| kernel | tools/validation/validate_field_guide.py | kernel:tools/validation/validate_field_guide.py |
