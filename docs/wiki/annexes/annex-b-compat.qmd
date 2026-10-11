@@ -15,10 +15,12 @@ on its host with `skipWhenMissingDependencies`.
 | `aee_compat_acre2` | ACRE2 | Radio propagation hand-off |
 | `aee_compat_kat` | KAT - Advanced Medical | Circulation and medical effects |
 | `aee_compat_tfar` | TFAR | Radio propagation hand-off |
+| `aee_compat_realweather` | Real Weather | Reads `weather.json` from the mission folder and publishes the values into the AEE simulation |
 
 ## ACE3 weather
 
-AEE drives the engine weather directly (`setWind`, `setFog`). `ACE3`'s weather
+AEE writes engine `wind` and `fog` from its own model, and reads engine
+`overcast` and `rain` as inputs. `ACE3`'s weather
 module reads engine state, so it follows AEE automatically. The `ACE3` compat
 addon disables `ACE3`'s own wind, rain, fog, and overcast simulation to avoid
 two models fighting.
