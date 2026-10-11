@@ -117,7 +117,7 @@ Six compat addons load only when their host mod is present. Install the ones you
 | `compat_acm` | ACM | Drives CBRN contamination from AEE persistence |
 | `compat_realweather` | Real Weather | Reads `weather.json` and publishes into AEE |
 
-AEE does not drive engine weather directly. It reads engine `overcast`, `rain`, and `wind` as inputs and computes its own state from them. Only `compat_realweather` writes engine overcast, and only on the server.
+AEE writes engine `wind` and `fog` from its own model, and reads engine `overcast` and `rain` as inputs. Only `compat_realweather` writes engine overcast, and only on the server.
 
 ---
 
