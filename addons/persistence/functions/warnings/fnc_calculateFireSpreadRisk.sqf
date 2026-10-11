@@ -105,6 +105,9 @@ if (_fuelAvailable) then {
 
 // ─── Fire area growth — growing circle ────────────────────────────────────
 private _area = missionNamespace getVariable [QGVAR(fireArea_m2), 0];
+// A fire starts as a point: the growth law dA/dt = perimeter * ros needs a
+// nonzero seed or the area stays pinned at zero.
+if (_area <= 0 && _ros > 0) then { _area = pi; };   // 1 m ignition radius
 private _perimeter = 2 * pi * sqrt (_area / pi);
 _area = _area + _perimeter * _ros * _interval;
 _area = _area max 0 min 1e6;
