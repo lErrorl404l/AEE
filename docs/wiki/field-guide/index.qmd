@@ -78,3 +78,4 @@ its headless check.
 | F8 - Materials, textures and the data formats | [materials-formats.qmd](features/materials-formats.qmd) |
 | F9 - The SQF command surface | [command-surface.qmd](features/command-surface.qmd) |
 | F10 - The game's own scripts | [game-scripts.qmd](features/game-scripts.qmd) |
+| F11 - Engine extensions | [extensions.qmd](features/extensions.qmd) |

@@ -1,0 +1,52 @@
+---
+title: "F11 - engine extensions"
+feature: F11
+verify: extract
+---
+
+# F11: engine extensions {#sec-fg-extensions}
+
+The engine can load a native shared library and call it from script. AEE uses this path for the development extension `aee_dev`, which accelerates the pure kernels and hosts the loopback dev console. This page states the call shape, the return shape, and the points where the engine withholds control.
+
+## What works
+
+- The engine calls a native library through the RVExtension ABI. `arma-rs` generates the four entry points `RVExtension`, `RVExtensionArgs`, `RVExtensionRegisterCallback` and `RVExtensionVersion` from one entry function. The bridge lives at `tools/dev-harness/extension/src/lib.rs`. {src:script:tools/dev-harness/extension/src/lib.rs}
+- Script addresses the library by name. The call passes a command name and an argument array to `callExtension`. AEE calls the name `aee_dev`. {src:script:tools/dev-harness/extension/README.md}
+- The extension answers with an array. The dispatcher reads the shape `[output, errorCode, aux]`, and the call succeeds only when the output is a non-empty string and the error code is 0. {src:script:addons/core/functions/fnc_dispatchKernel.sqf}
+- The named command dispatch maps an SQF kernel name to one native command. The extension registers `kernel.calculateStationPressure`, `kernel.calculateAirDensityKernel` and the other kernel names in the same entry function. {src:script:tools/dev-harness/extension/src/kernels/mod.rs}
+- The `arma-rs` bridge carries an asynchronous request and reply. The HTTP handler opens an id, raises the `exec` callback, and waits with a two second timeout. The SQF side answers with a second `callExtension` call that names `reply`. {src:script:tools/dev-harness/extension/src/bridge.rs}
+- A probe detects an absent extension. The preInit probe calls `_extName callExtension ["__probe__", []]` at `addons/core/functions/fnc_probeExtension.sqf:21` and caches the verdict in `QGVAR(extReady)`. An absent extension answers with an empty string, so the verdict stays false. {src:script:addons/core/functions/fnc_probeExtension.sqf}
+
+## What does not work
+
+- A blocking extension call on the main thread stalls the engine. The direct `RVExtension` call runs on the engine thread, so a slow call stops the frame. `arma-rs` runs the callback loop on a worker thread, and the callback call only enqueues. {src:script:tools/dev-harness/extension/src/lib.rs}
+- A missing extension fails silently. A name the engine cannot load answers with an empty string, and the call raises no error at the call site. A mod that reads the return as a string sees an empty value only. The probe exists to make the absence explicit. {src:script:addons/core/functions/fnc_probeExtension.sqf}
+- A native kernel does not replace the SQF kernel. The native path is taken only when the probe proved the extension ready and the native return is non-empty with error code 0. Any other result selects the SQF kernel. {src:adr:ADR-036}
+
+## Limitations
+
+- One call returns one array. The engine bounds the `callExtension` return at 10240 bytes, so a large payload cannot travel back in one call. {src:script:tools/dev-harness/extension/README.md}
+- The extension is native per platform. The crate is a `cdylib`, so the build produces a Linux `.so` and a Windows `.dll` from the same source. {src:script:tools/dev-harness/extension/Cargo.toml}
+- The engine gives no asynchronous reply to a call. The engine calls the extension and waits for the return. A reply from the extension travels as a separate `callExtension` input, not as an engine async return. {src:adr:ADR-034}
+- The native path runs only after the parity checks pass. The Docker probe P137 compares the dispatcher answer to the SQF reference in the running engine at a per-kernel bound. {src:probe:P137}
+
+## Breaks visually
+
+- A slow extension stalls the frame. A blocking call on the engine thread holds the render until the call returns, so the screen holds and the drawn frame rate drops. AEE keeps the native path off when the extension is absent, and the SQF kernel is the fallback. {src:adr:ADR-036}
+- A malformed return breaks the call site. The dispatcher accepts only an array whose first element is a non-empty string and whose second element is 0. Any other shape is rejected, and the SQF kernel runs instead. {src:script:addons/core/functions/fnc_dispatchKernel.sqf}
+- A legacy string return is accepted only when it is non-empty. A bare string that the extension returns with no error code cannot prove success, so the dispatcher falls back. {src:script:addons/core/functions/fnc_dispatchKernel.sqf}
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| script | addons/core/functions/fnc_dispatchKernel.sqf | test:tools/tests/test_kernel_split.py |
+| script | addons/core/functions/fnc_probeExtension.sqf | extract |
+| script | tools/dev-harness/extension/src/lib.rs | test:tools/tests/test_dev_harness_dispatch.py |
+| script | tools/dev-harness/extension/src/bridge.rs | test:tools/tests/test_dev_harness_dispatch.py |
+| script | tools/dev-harness/extension/src/kernels/mod.rs | extract |
+| script | tools/dev-harness/extension/Cargo.toml | extract |
+| script | tools/dev-harness/extension/README.md | extract |
+| adr | ADR-034 | test:tools/tests/test_kernel_split.py |
+| adr | ADR-036 | probe:P137 |
+| probe | P137, the kernel parity probe | probe:P137 |
