@@ -5,7 +5,7 @@
 [![Issues](https://img.shields.io/github/issues/lErrorl404l/AEE)](https://github.com/lErrorl404l/AEE/issues)
 [![Project Board](https://img.shields.io/badge/Project_Board-tracker-blue)](https://github.com/orgs/lErrorl404l/projects/2)
 
-Physically accurate environment simulation for Arma 3. Extends ACE3 with models for atmosphere, thermal and optical effects, physiology, mobility, environmental conditions, maritime state, and radio propagation. Each model uses published physics and public standards.
+Physically accurate environment simulation for Arma 3. The mod is standalone and requires only CBA A3. It models atmosphere, thermal and optical effects, physiology, mobility, environmental conditions, maritime state, radio propagation, wildlife, and map symbology. Each model uses published physics and public standards.
 
 Author: [lErrorl404l](https://github.com/lErrorl404l). Licence: [GPL-2.0-or-later](LICENSE) with a PBO-distribution exception.
 
@@ -155,9 +155,9 @@ AEE develops in three phases. The [project board](https://github.com/orgs/lError
 
 ## Structure
 
-22 addons under `addons/`.
+45 addons under `addons/`.
 
-**Core addons (16):** `main`, `core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `physiology`, `radio`, `thermal`.
+**Core addons (39):** `actions`, `ai`, `altitude`, `ambience`, `armour`, `atmos`, `ballistics`, `blast`, `cartography`, `clothing`, `core`, `diagnostics`, `dive`, `eye`, `flight`, `hud`, `hydrology`, `lib`, `lighting`, `ltm`, `magnetism`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `particles`, `persistence`, `physiology`, `radio`, `strain`, `symbology`, `thermal`, `thermal_display`, `vehicles`, `vision`, `weather`, `weatherfx`, `wildlife`.
 
 **Compat addons (6):** `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, `compat_realweather`, `compat_tfar`.
 
