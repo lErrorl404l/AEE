@@ -267,4 +267,5 @@ Make logical commits. Link each commit to its change rationale. Report vulnerabi
 - [GitHub Repository](https://github.com/lErrorl404l/AEE)
 - [Project Board](https://github.com/orgs/lErrorl404l/projects/2)
 - [Documentation](https://lerrorl404l.github.io/AEE/)
+- [Engine field guide](docs/wiki/field-guide/index.qmd) - the per-feature engine reference for a modder.
 - [Issues](https://github.com/lErrorl404l/AEE/issues)
