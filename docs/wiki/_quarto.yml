@@ -61,6 +61,12 @@ website:
         contents:
           - text: CBRN agent plume dispersion
             href: research/cbrn-plume-dispersion.md
+      - section: "Field guide"
+        contents:
+          - text: "How to read"
+            href: field-guide/index.qmd
+          - text: "Predictability ceiling"
+            href: field-guide/ceiling.qmd
       - text: Support
         href: support.qmd
   navbar:

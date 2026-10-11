@@ -1,0 +1,38 @@
+---
+title: "F0 - the feature name"
+feature: F0
+verify: extract
+---
+
+# F0: the feature name {#sec-fg-f0}
+
+One sentence that states the engine feature this page covers.
+
+## What works
+
+- The pattern AEE relies on, with its source {src:pbo:Addons/example.pbo}.
+- A second working pattern {src:cfg:CfgExample.key}.
+
+## What does not work
+
+- The pattern that fails, and the reason {src:adr:ADR-000}.
+- A second failing pattern {src:exe:arma3_x64.exe}.
+
+## Limitations
+
+- The engine ceiling {src:cmd:exampleCommand}.
+
+## Breaks visually
+
+- The defect a wrong value shows {src:script:addons/example/functions/fnc_example.sqf}.
+
+## Sources
+
+| Kind | Reference | Verify |
+|---|---|---|
+| pbo | Addons/example.pbo | extract |
+| cfg | CfgExample.key | extract |
+| adr | ADR-000 | test:tools/tests/test_example.py |
+| exe | arma3_x64.exe | strings |
+| cmd | exampleCommand | extract |
+| script | addons/example/functions/fnc_example.sqf | kernel:tools/tests/sqf_lite.py |

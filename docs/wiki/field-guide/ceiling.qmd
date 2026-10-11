@@ -1,0 +1,8 @@
+---
+title: "Predictability ceiling"
+---
+
+# What the field guide can and cannot predict {#sec-field-guide-ceiling}
+
+This page is completed in a later task. It will name what the field guide
+predicts, what no guide can predict, and the substitute for each item.
