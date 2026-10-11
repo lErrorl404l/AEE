@@ -137,14 +137,20 @@ def render(rows: list[tuple[str, str, str, str]]) -> str:
     return "\n".join(lines).rstrip("\n") + "\n"
 
 
-def _references_in_doc(text: str) -> set[tuple[str, str]]:
-    found: set[tuple[str, str]] = set()
+def _references_in_doc(text: str) -> set[tuple[str, str, str]]:
+    """Every (kind, page, reference) a rendered index already lists."""
+    found: set[tuple[str, str, str]] = set()
+    kind = ""
     for line in text.splitlines():
-        if not line.strip().startswith("|"):
+        stripped = line.strip()
+        if stripped.startswith("## "):
+            kind = stripped[3:].strip()
             continue
-        cells = [cell.strip().strip("`") for cell in line.strip().strip("|").split("|")]
-        if len(cells) == 3 and cells[0].endswith(".qmd"):
-            found.add((cells[1], cells[0]))
+        if kind not in KINDS or not stripped.startswith("|"):
+            continue
+        cells = [cell.strip().strip("`") for cell in stripped.strip("|").split("|")]
+        if len(cells) == 3 and cells[0].endswith(".qmd") and cells[1]:
+            found.add((kind, cells[0], cells[1]))
     return found
 
 
@@ -165,12 +171,15 @@ def write(path: Path = DOC, allow_removals: bool = False) -> int:
     rendered = render(rows)
     if path.exists() and not allow_removals:
         stale = _references_in_doc(path.read_text(encoding="utf-8")) - {
-            (row[1], row[0]) for row in rows
+            (row[1], row[0], row[2]) for row in rows
         }
         if stale:
+            dropped = ", ".join(
+                f"{kind}:{page}:{ref}" for kind, page, ref in sorted(stale)
+            )
             print(
                 "refusing to write: the new index would drop "
-                f"{len(stale)} reference(s): {', '.join(sorted(stale))}"
+                f"{len(stale)} reference(s): {dropped}"
             )
             return 1
     path.write_text(rendered, encoding="utf-8")
