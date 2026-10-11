@@ -87,6 +87,8 @@ website:
             href: field-guide/features/command-surface.qmd
           - text: "F10 - The game's own scripts"
             href: field-guide/features/game-scripts.qmd
+          - text: "F11 - Engine extensions"
+            href: field-guide/features/extensions.qmd
           - text: "Citations"
             href: field-guide/citations.qmd
       - text: Support
