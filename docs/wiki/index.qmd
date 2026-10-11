@@ -7,7 +7,8 @@ css: index.css
 editor: source
 description: |
   Physically accurate environment simulation for Arma 3: atmosphere,
-  temperature, ballistics, optics, mobility, maritime, radio.
+  temperature, ballistics, optics, mobility, maritime, radio, wildlife,
+  and map symbology.
 hide-description: true
 ---
 
@@ -116,6 +117,24 @@ VHF, UHF, and HF propagation under atmospheric conditions.
 ::: {.feature}
 ### Environment
 Koppen biomes, seasonal foliage, snow, crop and fire risk, floods, avalanches, dust, CBRN persistence, and lunar illumination.
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
+:::
+
+::: {.feature}
+### Wildlife
+Biome, time and weather aware ambient soundscape; client-local animals by biome, terrain and water, with hunger and thirst; reactive spooks from movement and gunfire.
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
+:::
+
+::: {.feature}
+### Map symbology
+NATO APP-6(C) unit and equipment markers, topographic terrain symbols, and a map palette that reaches the main map, briefing, GPS, minimap, Eden and Zeus.
 
 ::: {.learn-more}
 [Module reference »](chapters/modules.qmd#sec-modules)

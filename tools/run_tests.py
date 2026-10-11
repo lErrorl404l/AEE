@@ -305,6 +305,8 @@ def main():
         "tools/tests/test_next_id.py",
         # Engine reference: the docs/engine index and its portability rule.
         "tools/tests/test_engine_docs.py",
+        # Addon inventory: the README and wiki addon list must match the tree.
+        "tools/tests/test_docs_addon_index.py",
         # Engine field guide: index completeness and path portability.
         "tools/tests/test_field_guide.py",
         # Interface control documents: freshness, index and grounding.
