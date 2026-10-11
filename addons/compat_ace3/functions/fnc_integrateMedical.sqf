@@ -92,9 +92,9 @@ if (_heatActive) then {
     // warning), so the old "expire with 0" call never worked and spammed
     // the RPT every tick.  There is no removal API; filter the array.
     if (_wasHeatActive) then {
-        private _medications = _unit getVariable ["ace_medical_status_medications", []];
+        private _medications = _unit getVariable ["ace_medical_medications", []];
         _medications = _medications select {(_x select 0) != "AEE_heatStress"};
-        _unit setVariable ["ace_medical_status_medications", _medications, true];
+        _unit setVariable ["ace_medical_medications", _medications, true];
         missionNamespace setVariable [QGVAR(heatStressAdjustmentActive), false];
     };
 };
