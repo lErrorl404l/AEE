@@ -174,5 +174,214 @@ class Lexer(unittest.TestCase):
         self.assertEqual([t.val for t in lx.toks if t.kind == "id"], ["TRACE_1", "x", "y", "QUOTE"])
 
 
+def in_file(res, name, rule=None):
+    return [f for f in res.findings if f.file.endswith(name) and (rule is None or f.rule == rule)]
+
+
+class UiLayers(unittest.TestCase):
+    """cutRsc / cutText / cutObj / cutFadeOut / titleText / BIS_fnc_rscLayer."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.res = scan("ui_layers")
+        cls.c = by_rule(cls.res)
+
+    def test_real_world_idioms_are_silent(self):
+        # REAL-WORLD: numeric 135471 (ACE dagr), (name call BIS_fnc_rscLayer) layers (ACE zeus/interaction),
+        # `_layer = [..] call BIS_fnc_rscLayer` (ACE scopes), structured text with the flag (ACE hunterkiller),
+        # lower-case effect names ("plain down", "black out"), curtains that are lifted again (ACE huntir)
+        self.assertEqual(in_file(self.res, "fn_good.sqf"), [], in_file(self.res, "fn_good.sqf"))
+
+    def test_layer_number_rules(self):
+        m = msgs(self.res, "UI002")
+        self.assertEqual(len(m), 2, m)
+        self.assertTrue(any("negative" in x for x in m))
+        self.assertTrue(any("rounded" in x for x in m))
+
+    def test_effect_type_must_be_one_of_the_documented_names(self):
+        m = msgs(self.res, "UI003")
+        self.assertEqual(len(m), 1)
+        self.assertIn("FLASH", m[0])
+
+    def test_argument_shape_and_types(self):
+        m = msgs(self.res, "UI004")
+        self.assertEqual(len(m), 3, m)
+        self.assertTrue(any("no layer argument" in x for x in m))
+        self.assertTrue(any("speed" in x for x in m))
+        self.assertTrue(any("at most 5" in x for x in m))
+
+    def test_structured_text_markup_needs_the_flag(self):
+        self.assertEqual(self.c["UI005"], 1)
+
+    def test_unknown_resource_class(self):
+        sev = {f.message.split('"')[1]: f.sev for f in self.res.findings if f.rule == "UI006"}
+        self.assertEqual(sev["tag_hudd"], "warning")        # near miss of tag_hud
+        self.assertIn("did you mean \"tag_hud\"", msgs(self.res, "UI006")[0])
+        self.assertEqual(sev["Unknown_Thing"], "info")      # could be vanilla / another addon
+
+    def test_layer_names_are_case_sensitive(self):
+        self.assertEqual(self.c["UI009"], 1)
+
+    def test_fade_out_scaling_note(self):
+        self.assertEqual(self.c["UI007"], 1)
+
+    def test_default_class_and_reserved_layer_zero(self):
+        self.assertEqual(self.c["UI010"], 1)
+        self.assertGreaterEqual(self.c["UI008"], 2)
+
+    def test_rsc_layer_needs_a_string(self):
+        self.assertEqual(self.c["UI011"], 1)
+
+    def test_curtains(self):
+        self.assertEqual(self.c["UI014"], 1)   # WHITE OUT without fade-in
+        self.assertEqual(self.c["UI015"], 1)   # BLACK FADED without speed
+        self.assertEqual(self.c["UI016"], 2)   # BLACK OUT and WHITE OUT never lifted; the lifted ones in fn_good are fine
+        self.assertEqual(in_file(self.res, "fn_good.sqf", "UI016"), [])
+
+    def test_clear_on_a_layer_nothing_shows(self):
+        m = msgs(self.res, "UI013")
+        self.assertEqual(len(m), 1)
+        self.assertIn("ghost", m[0])
+
+    def test_same_layer_different_resources_in_one_mod_is_only_info(self):
+        sev = [f.sev for f in self.res.findings if f.rule == "UI001"]
+        self.assertTrue(sev and all(x == "info" for x in sev), sev)
+
+    def test_cross_mod_layer_collision_is_a_warning(self):
+        res = scan("ui_layer_mods/mod_a", "ui_layer_mods/mod_b")
+        hits = [f for f in res.findings if f.rule == "UI001"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0].sev, "warning")
+        self.assertIn("cross-mod", hits[0].message)
+
+    def test_layer_table_is_reported(self):
+        names = {r["layer"] for r in self.res.layers}
+        self.assertIn('layer "tag_hud"', names)
+        self.assertIn("layer 135471", names)
+        self.assertIn('rscLayer "tag_rsc"', names)
+
+
+class UiLexing(unittest.TestCase):
+    def test_qgvar_is_a_string_layer_name(self):
+        lx = tokenize("QGVAR(layer) cutRsc [QGVAR(cls), 'PLAIN']; QEGVAR(common,x) cutFadeOut 1;", "<mem>")
+        strs = [t.val for t in lx.toks if t.kind == "str"]
+        self.assertEqual(strs, ["mod_layer", "mod_cls", "PLAIN", "common_x"])
+
+    def test_unary_minus_layer(self):
+        from arma_vqa.sqf import collect_assignments, extract_calls
+        lx = tokenize('-1 cutRsc ["a", "PLAIN"]; x = 2; 3 - 1 cutRsc ["b", "PLAIN"];', "<mem>")
+        calls = [c for c in extract_calls(lx, {}).calls if c.cmd == "cutrsc"]
+        self.assertEqual(calls[0].left, -1)
+
+    def test_array_elements_survive_an_unresolvable_first_element(self):
+        from arma_vqa.sqf import extract_calls
+        lx = tokenize('"l" cutText [format ["<t>%1</t>", _x], "PLAIN", -1, false, true];', "<mem>")
+        c = extract_calls(lx, {}).calls[0]
+        self.assertEqual(c.items[1:], ["PLAIN", -1, False, True])
+
+    def test_rsc_layer_call_is_a_distinct_layer_kind(self):
+        from arma_vqa.sqf import RscLayer, extract_calls
+        lx = tokenize('("abc" call BIS_fnc_rscLayer) cutRsc ["a", "PLAIN"]; _l = ["x"] call BIS_fnc_rscLayer; _l cutFadeOut 1;', "<mem>")
+        calls = extract_calls(lx, {}).calls
+        lefts = [c.left for c in calls if c.cmd in ("cutrsc", "cutfadeout")]
+        self.assertTrue(all(isinstance(v, RscLayer) for v in lefts), lefts)
+
+
+class MapGrid(unittest.TestCase):
+    """CfgWorlds >> World >> Grid (community-sourced, see arma_vqa/mapcfg.py)."""
+
+    def test_real_world_grids_are_clean(self):
+        # REAL-WORLD: VR (offsetY 8192), abc_sample (zoomMax 1e+030.0 on the last class), the PMC 40960 m tutorial
+        # grid with four zoom levels and 4-digit labels, and a Kunduz-style grid that inherits its zoom classes
+        res = scan("map_grid_ok")
+        bad = [f for f in res.findings if f.sev in ("warning", "error")]
+        self.assertEqual(bad, [], bad)
+        self.assertEqual(by_rule(res)["MAP008"], 1)   # the 4-digit format is only an info note (sources disagree)
+
+    def test_label_corners_follow_the_community_formula(self):
+        from arma_vqa import mapcfg
+        res = scan("map_grid_ok")
+        g = {x["world"]: x for x in res.grids}
+        z1 = g["abc_sample"]["zooms"][0]
+        self.assertEqual(z1["corners"]["SW"], "000 000")        # numbers start at 0 in the south-west corner ...
+        self.assertEqual(z1["corners"]["NE"], "051 051")        # ... and rise to the north and east (5120 m / 100 m)
+        self.assertEqual(z1["labelsY"], [0, 51])
+        z2 = g["pmc_40k"]["zooms"][1]
+        self.assertEqual(z2["corners"]["NE"], "409 409")        # 40960 m / 100 m
+        self.assertEqual(g["vr_like"]["zooms"][0]["corners"]["centre"], "040 040")
+
+    def test_numbers_that_go_negative(self):
+        res = scan("map_grid_bad")
+        m = [f for f in res.findings if f.rule == "MAP001"]
+        self.assertTrue(any("no_offset" in f.message and "-52" in f.message for f in m), [f.message for f in m])
+        # a positive stepY with offsetY = mapSize also flips the Y axis out of the map
+        self.assertTrue(any("broken_steps" in f.message for f in m))
+
+    def test_digits_that_do_not_fit_the_format(self):
+        res = scan("map_grid_bad")
+        m = msgs(res, "MAP002")
+        self.assertEqual(len(m), 4, m)   # X and Y on two zoom levels of the 102400 m map
+        self.assertTrue(all("too_big" in x for x in m))
+
+    def test_zoom_ordering_and_nesting(self):
+        res = scan("map_grid_bad")
+        self.assertEqual(sum(1 for x in msgs(res, "MAP003") if "messy" in x), 1)
+        self.assertEqual(sum(1 for x in msgs(res, "MAP006") if "messy" in x), 2)   # X and Y of the 100 m vs 250 m steps
+        self.assertEqual(sum(1 for x in msgs(res, "MAP004") if "messy" in x), 1)
+
+    def test_steps_and_incomplete_classes(self):
+        res = scan("map_grid_bad")
+        sev = {(f.rule, f.severity if hasattr(f, "severity") else f.sev) for f in res.findings if "broken_steps" in f.message}
+        self.assertIn(("MAP005", "error"), sev)
+        self.assertIn(("MAP007", "warning"), sev)
+
+    def test_world_basics(self):
+        res = scan("map_grid_bad")
+        m = msgs(res, "MAP009")
+        self.assertTrue(any("centerPosition" in x for x in m))
+        self.assertTrue(any("gridNumbersOverLines" in x for x in m))
+        self.assertTrue(any("mapArea" in x for x in m))
+
+    def test_inherited_zoom_classes_are_not_flagged_as_incomplete(self):
+        res = scan("map_grid_ok")
+        self.assertEqual([f for f in res.findings if f.rule == "MAP007"], [])
+
+
+class MapControls(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.res = scan("map_ctrl")
+
+    def test_real_world_overrides_are_silent(self):
+        # REAL-WORLD: ACE3 RscMapControl overrides (showCountourInterval!), MicroDAGR mini map (scaleMax 10)
+        quiet = [f for f in self.res.findings if "BadMap" not in f.message and f.rule != "MAPUI007"]
+        self.assertEqual(quiet, [], quiet)
+
+    def test_helper_map_control_inside_group_is_only_info(self):
+        # REAL-WORLD: ACE3 fcs/laser put RscMapControl helpers inside CA_IGUI_elements_group and they work
+        hits = [f for f in self.res.findings if f.rule == "MAPUI007"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0].sev, "info")
+
+    def test_colours(self):
+        m = msgs(self.res, "MAPUI001")
+        self.assertEqual(len(m), 3, m)
+
+    def test_grid_text_and_visibility(self):
+        self.assertEqual(self.res and by_rule(self.res)["MAPUI002"], 1)
+        sev = sorted(f.sev for f in self.res.findings if f.rule == "MAPUI005")
+        self.assertEqual(sev, ["info", "warning"])
+
+    def test_scales_and_satellite_alpha(self):
+        self.assertEqual(by_rule(self.res)["MAPUI003"], 1)
+        self.assertEqual(by_rule(self.res)["MAPUI006"], 1)
+
+    def test_misspelled_properties(self):
+        m = msgs(self.res, "MAPUI004")
+        self.assertEqual(len(m), 2, m)
+        self.assertTrue(any("showCountourInterval" in x for x in m))
+        self.assertTrue(any("colorSea" in x for x in m))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -11,4 +11,3 @@ setAperture 12;
 "rtt" setPiPEffect [0];
 "rtt" setPiPEffect [4];
 1 cutRsc ["HudA", "PLAIN"];
-1 cutRsc ["HudB", "PLAIN"];

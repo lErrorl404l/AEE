@@ -54,6 +54,9 @@ DEFAULT_CAL = {
     "cc_model": "desat_first",
     "cc_pivot": 0.0,                  # contrast pivot (desat_first only)                       (UNCALIBRATED)
     "cc_brightness": "additive",      # additive: c + (b-1)   multiplicative: c * b            (UNCALIBRATED)
+    # Is post-process applied to the map screen? Not documented on the wiki. None = unknown (map findings are info
+    # only), True/False are written by `map-pp` from a pair of screenshots.
+    "pp_on_map": None,
 }
 
 

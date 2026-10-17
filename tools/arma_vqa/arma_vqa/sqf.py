@@ -31,6 +31,17 @@ class _Unknown:
 UNKNOWN = _Unknown()
 
 
+class RscLayer(str):
+    """A layer obtained with `name call BIS_fnc_rscLayer`.
+
+    At runtime that is a Number. Statically we keep the *name* it was derived from, so two scripts that
+    ask for the same name are recognised as the same layer. It is deliberately a distinct type from a
+    plain string layer name: the wiki does not say that `"x" cutRsc` and `("x" call BIS_fnc_rscLayer) cutRsc`
+    address the same layer, so the checks never assume they do.
+    """
+    __slots__ = ()
+
+
 @dataclass
 class Tok:
     kind: str  # id | num | str | punct | op
@@ -176,10 +187,12 @@ def component_for(path: str) -> str:
 
 
 _SYMBOL_MACROS = {"gvar": 1, "gvarmain": 1, "egvar": 2, "egvarmain": 2}
+# QGVAR(x) is QUOTE(GVAR(x)): the same name as a string literal, e.g.  QGVAR(layer) cutRsc [...]
+_QSYMBOL_MACROS = {"qgvar": "gvar", "qgvarmain": "gvarmain", "qegvar": "egvar", "qegvarmain": "egvarmain"}
 
 
 def _collapse_symbol_macros(toks: list[Tok], path: str) -> list[Tok]:
-    if not any(t.kind == "id" and t.val.lower() in _SYMBOL_MACROS for t in toks):
+    if not any(t.kind == "id" and (t.val.lower() in _SYMBOL_MACROS or t.val.lower() in _QSYMBOL_MACROS) for t in toks):
         return toks
     comp = component_for(path)
     out: list[Tok] = []
@@ -187,8 +200,12 @@ def _collapse_symbol_macros(toks: list[Tok], path: str) -> list[Tok]:
     n = len(toks)
     while i < n:
         t = toks[i]
-        if t.kind == "id" and t.val.lower() in _SYMBOL_MACROS and i + 1 < n and toks[i + 1].kind == "punct" and toks[i + 1].val == "(":
-            want = _SYMBOL_MACROS[t.val.lower()]
+        as_string = False
+        low0 = t.val.lower() if t.kind == "id" else ""
+        if low0 in _QSYMBOL_MACROS:
+            low0, as_string = _QSYMBOL_MACROS[low0], True
+        if t.kind == "id" and low0 in _SYMBOL_MACROS and i + 1 < n and toks[i + 1].kind == "punct" and toks[i + 1].val == "(":
+            want = _SYMBOL_MACROS[low0]
             args: list[str] = []
             j = i + 2
             ok = False
@@ -205,7 +222,7 @@ def _collapse_symbol_macros(toks: list[Tok], path: str) -> list[Tok]:
                     break
                 break
             if ok:
-                low = t.val.lower()
+                low = low0
                 if low == "gvar":
                     name = f"{comp}_{args[0]}"
                 elif low == "gvarmain":
@@ -214,7 +231,7 @@ def _collapse_symbol_macros(toks: list[Tok], path: str) -> list[Tok]:
                     name = f"{args[0]}_{args[1]}"
                 else:
                     name = f"{args[0]}_{args[1]}"
-                out.append(Tok("id", name, t.line))
+                out.append(Tok("str" if as_string else "id", name, t.line))
                 i = j + 1
                 continue
         out.append(t)
@@ -319,9 +336,25 @@ class Evaluator:
     def __init__(self, resolve):
         self.resolve = resolve
 
+    def _rsc_layer(self, toks: list[Tok], at: int):
+        """`"name" call BIS_fnc_rscLayer` / `["name"] call BIS_fnc_rscLayer` -> RscLayer("name")."""
+        if not (len(toks) >= 3 and toks[-1].kind == "id" and toks[-1].val.lower() == "bis_fnc_rsclayer"
+                and toks[-2].kind == "id" and toks[-2].val.lower() == "call"):
+            return None
+        head = toks[:-2]
+        if head[0].kind == "punct" and head[0].val == "[" and head[-1].kind == "punct" and head[-1].val == "]":
+            head = head[1:-1]
+        if not head:
+            return UNKNOWN  # nil name: the engine uses the calling function's name, which we cannot know
+        v = Evaluator(self.resolve).eval(head, at)
+        return RscLayer(v) if isinstance(v, str) and v != "" else UNKNOWN
+
     def eval(self, toks: list[Tok], at: int = -1) -> Any:
         if not toks:
             return UNKNOWN
+        rl = self._rsc_layer(toks, at)
+        if rl is not None:
+            return rl
         try:
             self._t, self._i, self._at = toks, 0, at
             v = self._expr()
@@ -443,14 +476,18 @@ BINARY_CMDS = {
     "setpipeffect", "setcamuseti", "cameraeffect",
     "camsetfov", "disabletiequipment", "disablenvgequipment", "setvehicletipars",
     "settonemappingparams",
+    "cutfadeout",  # layer cutFadeOut duration
 }
 UNARY_CMDS = {
     "ppeffectcreate", "ppeffectdestroy", "settiparameter", "setaperture",
     "setaperturenew", "camusenvg", "camcreate", "settonemapping",
+    "titlefadeout",  # titleFadeOut duration
 }
 EITHER_CMDS = {"cutrsc", "cuttext", "titlersc", "titletext", "cutobj", "titleobj"}
-# BIS functions that create/replace post-process effects: `[args] call BIS_fnc_x`
-FUNC_CALLS = {"bis_fnc_setppeffecttemplate", "bis_fnc_ambientpostprocess"}
+# BIS functions: `[args] call BIS_fnc_x`
+#   setPPeffectTemplate / ambientPostProcess create or replace post-process effects
+#   rscLayer registers a named UI layer (checked for its argument type)
+FUNC_CALLS = {"bis_fnc_setppeffecttemplate", "bis_fnc_ambientpostprocess", "bis_fnc_rsclayer"}
 ALL_CMDS = BINARY_CMDS | UNARY_CMDS | EITHER_CMDS | FUNC_CALLS
 _NOT_LEFT = {"then", "do", "else", "spawn", "call", "exitwith", "if", "while", "waituntil", "private", "return"}
 
@@ -470,6 +507,10 @@ class Call:
     retry: bool = False
     owners: tuple = ()
     has_left: bool = False
+    # when the right operand is an array literal: one value (or UNKNOWN) and one token slice per element,
+    # so `cutText [format [...], "PLAIN", 1, false, true]` still yields the effect, speed and flags
+    items: list | None = None
+    item_toks: list | None = None
 
 
 @dataclass
@@ -591,7 +632,10 @@ def extract_calls(lx: Lexed, global_assigns: dict) -> FileFacts:
         c.right = ev.eval(rslice, i)
         c.right_ref = _ref_of(rslice)
         if rslice and rslice[0].kind == "punct" and rslice[0].val == "[" and lx.match.get(i + 1) == end - 1:
-            c.right_ref = [_ref_of(toks[a:b]) for a, b in _split_top(lx, i + 2, end - 1)]
+            parts = _split_top(lx, i + 2, end - 1)
+            c.right_ref = [_ref_of(toks[a:b]) for a, b in parts]
+            c.item_toks = [toks[a:b] for a, b in parts]
+            c.items = [ev.eval(toks[a:b], i) for a, b in parts]
 
         # ---- assignment target (for ppEffectCreate)
         if low == "ppeffectcreate" and i >= 2 and toks[i - 1].kind == "op" and toks[i - 1].val == "=" and toks[i - 2].kind == "id":
@@ -624,6 +668,11 @@ def _left_operand(lx: Lexed, i: int, ev: Evaluator, resolve):
     if p.kind == "str":
         return True, p.val, None
     if p.kind == "num":
+        # unary minus:  -1 cutRsc [...]   (the '-' is an operator token in front of the number)
+        if i >= 2 and toks[i - 2].kind == "op" and toks[i - 2].val == "-" and (
+                i == 2 or toks[i - 3].kind == "op" or (toks[i - 3].kind == "punct" and toks[i - 3].val in ";{(,[")
+                or (toks[i - 3].kind == "id" and toks[i - 3].val.lower() in _NOT_LEFT)):
+            return True, -p.val, None
         return True, p.val, None
     if p.kind == "punct" and p.val in (")", "]"):
         o = lx.match.get(i - 1)

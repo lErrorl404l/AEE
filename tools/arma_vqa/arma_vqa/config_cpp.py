@@ -20,6 +20,7 @@ class CfgClass:
     line: int
     file: str
     props: dict[str, tuple[Any, int]] = field(default_factory=dict)  # lower name -> (value, line)
+    names: dict[str, str] = field(default_factory=dict)              # lower name -> spelling as written
     children: dict[str, "CfgClass"] = field(default_factory=dict)
     path: tuple[str, ...] = ()
 
@@ -93,6 +94,7 @@ def _parse_body(lx: Lexed, ev: Evaluator, i: int, end: int, cls: CfgClass) -> No
                 if is_array and j < end and toks[j].kind == "punct" and toks[j].val == "{":
                     val, _ = _parse_cfg_array(lx, ev, j)
                     cls.props[low] = (val, t.line)
+                    cls.names[low] = t.val
                     i = _skip_stmt(lx, j, end)
                     continue
                 e = expr_end(lx, j)
@@ -100,6 +102,7 @@ def _parse_body(lx: Lexed, ev: Evaluator, i: int, end: int, cls: CfgClass) -> No
                 if v is UNKNOWN and e - j == 1 and toks[j].kind == "id":
                     v = toks[j].val  # bare word
                 cls.props[low] = (v, t.line)
+                cls.names[low] = t.val
                 i = _skip_stmt(lx, e, end)
                 continue
         i = _skip_stmt(lx, i, end) if t.kind != "punct" or t.val != ";" else i + 1
