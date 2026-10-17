@@ -141,15 +141,8 @@ fn kernel_station_pressure(p_sea: f64, elevation: f64, lapse_rate: f64) -> Strin
 }
 
 /// Relative humidity. Dispatcher name `kernel.calculateRelativeHumidity`.
-fn kernel_relative_humidity(
-    rh_base: f64,
-    surface_mod: f64,
-    t_ref: f64,
-    t_now: f64,
-    overcast: f64,
-    rain: f64,
-) -> String {
-    kernels::relative_humidity(rh_base, surface_mod, t_ref, t_now, overcast, rain).to_string()
+fn kernel_relative_humidity(rh_mean: f64, t_mean: f64, t_now: f64) -> String {
+    kernels::relative_humidity(rh_mean, t_mean, t_now).to_string()
 }
 
 /// Air density. Dispatcher name `kernel.calculateAirDensity`.
@@ -195,8 +188,8 @@ fn kernel_eye_adapt_step(
 }
 
 /// Eye mesopic photopic fraction. Dispatcher name `kernel.eyeMesopicWeight`.
-fn kernel_eye_mesopic_weight(lum: f64, lo: f64, hi: f64) -> String {
-    kernels::eye_mesopic_weight(lum, lo, hi).to_string()
+fn kernel_eye_mesopic_weight(lp: f64, sp: f64, lo: f64, hi: f64) -> String {
+    kernels::eye_mesopic_weight(lp, sp, lo, hi).to_string()
 }
 
 /// Steady pupil diameter. Dispatcher name `kernel.eyePupilSteady`.

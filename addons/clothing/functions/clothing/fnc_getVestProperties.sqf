@@ -163,9 +163,11 @@ private _tier = switch (true) do {
     // ── Generic vanilla families ──
     case (_v find "platecarrier" >= 0): { [5.5, 3, 0.35, 0.18] };
     case (_v find "tacvest" >= 0):      { [2.0, 2, 0.38, 0.10] };
-    case (_v find "bandollier" >= 0):   { [1.0, 1, 0.40, 0.06] };
-    case (_v find "chestrig" >= 0):     { [1.2, 1, 0.40, 0.07] };
-    case (_v find "harness" >= 0):      { [1.5, 1, 0.40, 0.08] };
+    // Bandoliers, chest rigs and harnesses are nylon load carriage with no
+    // ballistic panel: armour 0.
+    case (_v find "bandollier" >= 0):   { [1.0, 0, 0.40, 0.06] };
+    case (_v find "chestrig" >= 0):     { [1.2, 0, 0.40, 0.07] };
+    case (_v find "harness" >= 0):      { [1.5, 0, 0.40, 0.08] };
     case (_v find "rebreather" >= 0):   { [3.0, 0, 0.20, 0.15] };
     // Belts, suspenders, webbing, belt-mounted rigs (ALICE, 6Sh,
     // vest_commander / vest_pistol_holster): load-bearing only.

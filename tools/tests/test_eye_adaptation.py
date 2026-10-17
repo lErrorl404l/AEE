@@ -49,15 +49,28 @@ FLASH = EYE / "fnc_eyeFlash.sqf"
 FLASH_SCENE = EYE / "fnc_eyeFlashScene.sqf"
 
 
-def mesopic_weight(lum):
-    """Mirror of fnc_eyeMesopicWeight: CIE 191:2010 photopic fraction."""
-    lo, hi = 0.005, 5.0
-    if lum <= lo:
-        return 0.0
-    if lum >= hi:
-        return 1.0
-    t = (math.log10(lum) - math.log10(lo)) / (math.log10(hi) - math.log10(lo))
-    return t * t * (3 - 2 * t)
+def mesopic_weight(lp, sp=2.4):
+    """Independent CIE 191:2010 MES2 solution: the root of
+    m = clip(0.7670 + 0.3334 log10 Lmes(m)) by bisection (not the
+    fixed-point iteration the kernel uses)."""
+    v0 = 683 / 1699
+
+    def g(m):
+        lmes = (m * lp + (1 - m) * lp * sp * v0) / (m + (1 - m) * v0)
+        if lmes >= 5:
+            return 1.0
+        if lmes <= 0.005:
+            return 0.0
+        return min(1.0, max(0.0, 0.7670 + 0.3334 * math.log10(lmes)))
+
+    lo, hi = 0.0, 1.0
+    for _ in range(80):
+        mid = (lo + hi) / 2
+        if g(mid) - mid > 0:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2
 
 
 def pupil_steady(lum):
@@ -75,34 +88,34 @@ def pupil_step(d, d_target, dt, tau_constrict=0.25, tau_dilate=0.475):
 
 
 class TestEyeMesopicWeight(unittest.TestCase):
-    """fnc_eyeMesopicWeight runs from the real SQF and matches the mirror."""
+    """fnc_eyeMesopicWeight: the CIE 191:2010 MES2 system, from the real SQF."""
 
-    def test_scotopic_endpoint_is_zero(self):
-        self.assertEqual(run_sqf(MESOPIC, [0.005]), 0)
+    def m(self, lp, sp=2.4):
+        return run_sqf(MESOPIC, [lp, sp, 0.005, 5])
 
-    def test_photopic_endpoint_is_one(self):
-        self.assertEqual(run_sqf(MESOPIC, [5]), 1)
+    def test_scotopic_and_photopic_limits(self):
+        self.assertEqual(self.m(0.001), 0)
+        self.assertEqual(self.m(100), 1)
 
-    def test_below_band_is_scotopic(self):
-        self.assertEqual(run_sqf(MESOPIC, [0.001]), 0)
+    def test_sp_of_one_reduces_to_the_m_equation(self):
+        # S/P = 1: L_mes = L_p, so m = 0.7670 + 0.3334 log10 L_p.
+        for lp in (0.01, 0.1, 1.0):
+            self.assertAlmostEqual(self.m(lp, 1.0), 0.7670 + 0.3334 * math.log10(lp), places=6)
 
-    def test_above_band_is_photopic(self):
-        self.assertEqual(run_sqf(MESOPIC, [100]), 1)
+    def test_matches_an_independent_solution(self):
+        for lp in (0.01, 0.05, 0.2, 1.0, 2.5):
+            for sp in (0.6, 1.2, 2.4, 3.5):
+                with self.subTest(lp=lp, sp=sp):
+                    self.assertAlmostEqual(self.m(lp, sp), mesopic_weight(lp, sp), places=5)
 
-    def test_monotonic_on_the_band(self):
-        sweep = [0.005 * (5 / 0.005) ** (i / 20) for i in range(21)]
-        prev = -1.0
-        for lum in sweep:
-            got = run_sqf(MESOPIC, [lum])
-            self.assertGreaterEqual(got, prev)
-            self.assertLessEqual(got, 1.0)
-            prev = got
+    def test_bluer_light_holds_more_photopic_adaptation(self):
+        # Higher S/P raises L_mes, so m (cone share) rises at the same L_p.
+        self.assertGreater(self.m(0.1, 2.4), self.m(0.1, 0.6))
 
-    def test_matches_the_mirror_in_the_band(self):
-        for lum in [0.01, 0.05, 0.2, 1.0, 2.5]:
-            self.assertAlmostEqual(
-                run_sqf(MESOPIC, [lum]), mesopic_weight(lum), places=6
-            )
+    def test_monotonic_in_luminance(self):
+        sweep = [0.002 * (8 / 0.002) ** (i / 20) for i in range(21)]
+        got = [self.m(lp) for lp in sweep]
+        self.assertEqual(got, sorted(got))
 
 
 class TestEyePupilSteady(unittest.TestCase):
@@ -893,51 +906,51 @@ class TestEyeApertureResponse(unittest.TestCase):
 
 
 class TestEyeLimits(unittest.TestCase):
-    """Human limits: scotopic acuity, colour loss, dark noise, scattered glare.
+    """Human limits from published measurements (fnc_eyeLimits)."""
 
-    The glare term is angular scatter, not an on-axis-or-nothing cone: a source
-    off to the side is dimmer by angle but never zero, and fog adds in-scatter.
-    """
+    @staticmethod
+    def lim(lum, m=1.0, lux=0.0, ang=90.0, age=25.0):
+        return run_sqf(LIMITS, [lum, m, lux, ang, age])
 
-    def test_photopic_is_unimpaired(self):
-        a, c, n, g = run_sqf(LIMITS, [100, 1, 0, 0, 0])
-        self.assertAlmostEqual(a, 1.0, places=6)
-        self.assertAlmostEqual(c, 0.0, places=6)
-        self.assertAlmostEqual(n, 0.0, places=6)
-        self.assertAlmostEqual(g, 0.0, places=6)
+    def test_acuity_follows_the_shlaer_fit(self):
+        # Ward Larson et al. 1997: R = 17.25 atan(1.4 log L + 0.35) + 25.72.
+        for lum in (1e-4, 1e-2, 1, 100):
+            r = 17.25 * math.atan(1.4 * math.log10(lum) + 0.35) + 25.72
+            out = self.lim(lum)
+            self.assertAlmostEqual(out[4], r, places=4)
+            self.assertAlmostEqual(out[0], r / 52.82, places=5)
 
-    def test_scotopic_acuity_has_a_floor(self):
-        a, _c, _n, _g = run_sqf(LIMITS, [0.001, 0, 0, 0, 0])
-        self.assertAlmostEqual(a, 0.15, places=6)
+    def test_daylight_acuity_is_about_20_15(self):
+        # 100 cd/m2: ~47.5 c/deg, about 1.6 x the 30 c/deg of 20/20.
+        self.assertAlmostEqual(self.lim(100)[4], 47.5, delta=0.3)
 
-    def test_scotopic_is_achromatic(self):
-        _a, c, _n, _g = run_sqf(LIMITS, [0.001, 0, 0, 0, 0])
-        self.assertAlmostEqual(c, 1.0, places=6)
+    def test_starlight_acuity_is_low(self):
+        # 1e-3 cd/m2 (starlight): a few c/deg, near 20/200.
+        self.assertLess(self.lim(1e-3)[4], 4.5)
 
-    def test_dark_noise_rises_as_the_light_falls(self):
-        _a, _c, dim, _g = run_sqf(LIMITS, [0.01, 0, 0, 0, 0])
-        _a, _c, bright, _g = run_sqf(LIMITS, [10, 0, 0, 0, 0])
-        self.assertGreater(dim, bright)
+    def test_rods_carry_no_colour(self):
+        self.assertAlmostEqual(self.lim(0.001, 0.0)[1], 1.0)
+        self.assertAlmostEqual(self.lim(100, 1.0)[1], 0.0)
 
-    def test_on_axis_source_scatters(self):
-        _a, _c, _n, g = run_sqf(LIMITS, [1, 1, 100, 0, 0])
-        self.assertGreater(g, 0.5)
+    def test_quantum_noise_is_the_de_vries_rose_threshold(self):
+        self.assertAlmostEqual(self.lim(1e-4, 0.0)[2], 0.1, places=5)
+        self.assertAlmostEqual(self.lim(1e-6, 0.0)[2], 1.0, places=5)
+        self.assertEqual(self.lim(1e-4, 1.0)[2], 0)
 
-    def test_off_axis_source_is_not_zero(self):
-        # A headlight off to the side is dimmer but still visible.
-        _a, _c, _n, g = run_sqf(LIMITS, [1, 1, 100, 85, 0])
-        self.assertGreater(g, 0.0)
+    def test_age_adjusted_stiles_holladay(self):
+        # Vos 2003: L_veil / E = 10 (1 + (A/70)^4) / theta^2, 1 to 30 deg.
+        for theta in (1, 5, 10, 30):
+            for age in (20, 45, 70):
+                k = 10 * (1 + (age / 70) ** 4) / theta ** 2
+                out = self.lim(1.0, 1.0, 10.0, theta, age)
+                self.assertAlmostEqual(out[5], 10 * k, places=4)
+                self.assertAlmostEqual(out[3], 10 * k / (1 + 10 * k), places=5)
 
-    def test_scatter_decays_with_angle_but_never_reaches_zero(self):
-        _a, _c, _n, on = run_sqf(LIMITS, [1, 1, 100, 0, 0])
-        _a, _c, _n, far = run_sqf(LIMITS, [1, 1, 100, 179, 0])
-        self.assertGreater(on, far)
-        self.assertGreater(far, 0.0)
+    def test_a_70_year_old_has_twice_the_veil(self):
+        self.assertAlmostEqual(self.lim(1, 1, 1, 10, 70)[5] / self.lim(1, 1, 1, 10, 0)[5], 2.0, places=5)
 
-    def test_fog_adds_in_scatter(self):
-        _a, _c, _n, clear = run_sqf(LIMITS, [1, 1, 100, 85, 0])
-        _a, _c, _n, foggy = run_sqf(LIMITS, [1, 1, 100, 85, 1])
-        self.assertGreater(foggy, clear)
+    def test_older_eyes_suffer_more_glare(self):
+        self.assertGreater(self.lim(1, 1, 10, 5, 70)[3], self.lim(1, 1, 10, 5, 20)[3])
 
 
 class TestEyeTimeSkip(unittest.TestCase):

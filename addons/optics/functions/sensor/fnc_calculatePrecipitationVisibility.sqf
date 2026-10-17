@@ -13,7 +13,7 @@ Rain rate drives reduction with the Atlas (1954) power law:
   • Modifier: V / 20, clamped to [0.05, 1.0]
 
 The Arma 3 rain value is abstract (0..1), not mm/h.  Map it to a rain
-rate with _rainMMH = rain * 25, so 1.0 rain equals 25 mm/h (heavy rain).
+rate with _rainMMH = rain * ENGINE_RAIN_FULL_MMH (25 mm/h, heavy rain).
 
 Snow cover adds a multiplicative 0.7 penalty.  The result is
 combined with existing fog density (fog takes the tighter bound).
@@ -34,7 +34,7 @@ if (isNil "_rainRate") then { _rainRate = 0; };
 
 // ─── Rain visibility modifier (Atlas 1954 extinction) ─────────────────
 // Abstract engine rain (0..1) maps to mm/h: 1.0 rain = 25 mm/h heavy rain.
-private _rainMMH = _rainRate * 25;
+private _rainMMH = _rainRate * ENGINE_RAIN_FULL_MMH;
 
 private _rainMod = 1.0;
 

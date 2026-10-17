@@ -112,19 +112,24 @@ def _resolver(
     return empty / 1000.0 + capacity * round_g / 1000.0
 
 
+# The engine inventory mass unit, kg (0.1 lb; addons/lib/constants.hpp).
+ENGINE_MASS_UNIT_KG = 0.045359237
+
+
 class TestMagazineMassEngine(unittest.TestCase):
     def test_generator_emits_mass_for_known_magazine(self) -> None:
         emitted = _emitted_mass()
         self.assertIn("30Rnd_556x45_Stanag", emitted)
-        self.assertAlmostEqual(emitted["30Rnd_556x45_Stanag"], 0.5107, places=4)
+        # Written in the engine unit (0.1 lb): 0.5107 kg / 0.045359237.
+        self.assertAlmostEqual(emitted["30Rnd_556x45_Stanag"] * ENGINE_MASS_UNIT_KG, 0.5107, places=3)
 
     def test_generator_emits_nothing_for_magazine_with_no_mass(self) -> None:
-        # 10Rnd_762x54_Mag carries an initSpeed but no loaded mass resolves
-        # (no 7.62x54mmR magazine group). It must have no mass key.
+        # 150Rnd_762x51_Box carries an initSpeed but no loaded mass resolves
+        # (no 150-round 7.62x51 box group). It must have no mass key.
         text = MAG_HPP.read_text(encoding="utf-8")
-        self.assertIn("class 10Rnd_762x54_Mag:", text)
+        self.assertIn("class 150Rnd_762x51_Box:", text)
         block = re.search(
-            r"class 10Rnd_762x54_Mag: \w+ \{\n(.*?)\n    \};", text, re.DOTALL
+            r"class 150Rnd_762x51_Box: \w+ \{\n(.*?)\n    \};", text, re.DOTALL
         )
         self.assertIsNotNone(block)
         self.assertIn("initSpeed", block.group(1))
@@ -137,7 +142,7 @@ class TestMagazineMassEngine(unittest.TestCase):
         for class_name, mass in emitted.items():
             resolved = _resolver(class_name, table, tiers, rounds)
             self.assertLessEqual(
-                abs(mass - resolved),
+                abs(mass * ENGINE_MASS_UNIT_KG - resolved),
                 TOLERANCE_KG,
                 f"{class_name}: config {mass} vs resolver {resolved}",
             )

@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (877)
+### Public functions (891)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -369,6 +369,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_moduleStormInit`
 - `aee_core_fnc_probeExtension`
 - `aee_core_fnc_triggerEmp`
+- `aee_core_fnc_twilightIlluminance`
 - `aee_core_fnc_updateEmp`
 - `aee_core_fnc_updateEnvironment`
 - `aee_core_fnc_updateSimClock`
@@ -437,6 +438,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_hud_fnc_hudUpdate`
 - `aee_hud_fnc_trackerDraw`
 - `aee_hud_fnc_trackerProject`
+- `aee_hud_fnc_trackerReportInterval`
 - `aee_hud_fnc_trackerUpdate`
 - `aee_hydrology_fnc_calculateBaseflow`
 - `aee_hydrology_fnc_calculateCoverFactor`
@@ -458,18 +460,26 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_hydrology_fnc_calculateWaterTableDepth`
 - `aee_hydrology_fnc_getAquiferProperties`
 - `aee_hydrology_fnc_routeRunoffD8`
+- `aee_lib_fnc_astroPosition`
 - `aee_lib_fnc_attachObjectEngineHandler`
 - `aee_lib_fnc_buildGeoAnchor`
+- `aee_lib_fnc_bullingtonLoss`
 - `aee_lib_fnc_createPPEffect`
 - `aee_lib_fnc_datalinkState`
 - `aee_lib_fnc_destroyPPEffect`
 - `aee_lib_fnc_deterministicRandom`
 - `aee_lib_fnc_evaluateGeoConsistency`
 - `aee_lib_fnc_formatMgrs`
+- `aee_lib_fnc_gameClockToUT`
 - `aee_lib_fnc_getGeoAnchor`
 - `aee_lib_fnc_getWorldLocation`
+- `aee_lib_fnc_gnssDop`
 - `aee_lib_fnc_gnssErrorEllipse`
+- `aee_lib_fnc_gnssErrorStep`
 - `aee_lib_fnc_gnssFixState`
+- `aee_lib_fnc_gnssSatellites`
+- `aee_lib_fnc_gnssTables`
+- `aee_lib_fnc_gnssUere`
 - `aee_lib_fnc_installObjectEngineHandler`
 - `aee_lib_fnc_installPlayerEngineHandler`
 - `aee_lib_fnc_latLonToUtm`
@@ -524,6 +534,8 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ltm_fnc_ltmToggleMode`
 - `aee_magnetism_fnc_calculateCompassDeviation`
 - `aee_magnetism_fnc_calculateMagneticAnomaly`
+- `aee_magnetism_fnc_geomagneticLatitude`
+- `aee_magnetism_fnc_wmmField`
 - `aee_maritime_fnc_calculateAbsorptionWater`
 - `aee_maritime_fnc_calculateAmbientNoise`
 - `aee_maritime_fnc_calculateBioluminescence`
@@ -551,6 +563,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_maritime_fnc_dumpState`
 - `aee_maritime_fnc_ekmanTransport`
 - `aee_maritime_fnc_getSonarDetectionRange`
+- `aee_maritime_fnc_getTideConstituents`
 - `aee_maritime_fnc_pureWaterAbsorption`
 - `aee_maritime_fnc_shipMotionKernel`
 - `aee_maritime_fnc_tidalCurrentSpeed`
@@ -812,9 +825,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_calculateReflectedSolarBand`
 - `aee_thermal_fnc_calculateSensorThreshold`
 - `aee_thermal_fnc_calculateSkyRadiance`
-- `aee_thermal_fnc_calculateThermalContrast`
 - `aee_thermal_fnc_calculateThermalCrossover`
-- `aee_thermal_fnc_calculateThermalNoise`
 - `aee_thermal_fnc_calculateUnitLoadoutThermal`
 - `aee_thermal_fnc_calculateVehicleHeat`
 - `aee_thermal_fnc_calculateWBGT`
@@ -877,6 +888,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_vision_fnc_applyWeatherGrain`
 - `aee_vision_fnc_baseGradeParams`
 - `aee_vision_fnc_calculateViewDistance`
+- `aee_vision_fnc_daylightTable`
 - `aee_vision_fnc_destroyBasePostProcess`
 - `aee_vision_fnc_dtvHostStart`
 - `aee_vision_fnc_dtvHostStop`
@@ -887,7 +899,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_vision_fnc_initWeatherGrain`
 - `aee_vision_fnc_managePostProcess`
 - `aee_vision_fnc_perceptionAdaptState`
-- `aee_vision_fnc_perceptionAtmosphericColor`
 - `aee_vision_fnc_perceptionBaseGrade`
 - `aee_vision_fnc_perceptionChromaticAdaptation`
 - `aee_vision_fnc_perceptionColorTemperature`
@@ -950,8 +961,11 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_weather_fnc_getDispersionCoefficients`
 - `aee_weather_fnc_getGasProperties`
 - `aee_weather_fnc_getLatitudeClimate`
+- `aee_weather_fnc_getNearestClimateStation`
 - `aee_weather_fnc_getSmoothedBiome`
+- `aee_weather_fnc_getSpaceWeatherData`
 - `aee_weather_fnc_getStabilityClass`
+- `aee_weather_fnc_getStationNormals`
 - `aee_weather_fnc_powerSumLevels`
 - `aee_weather_fnc_scalarAddSource`
 - `aee_weather_fnc_scalarAdvectKernel`
@@ -1010,7 +1024,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (82)
+### Public core state variables (89)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -1030,7 +1044,12 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_consistencyFailures`
 - `aee_core_consistencyState`
 - `aee_core_coreBodyTemp`
+- `aee_core_currentExtinction`
 - `aee_core_currentFireRisk`
+- `aee_core_currentFogDensity`
+- `aee_core_currentFogExtinction`
+- `aee_core_currentFogLWC`
+- `aee_core_currentHaze`
 - `aee_core_currentHeatIndex`
 - `aee_core_currentHumidity`
 - `aee_core_currentHypothermiaRisk`
@@ -1038,9 +1057,11 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_currentLightningRisk`
 - `aee_core_currentOvercast`
 - `aee_core_currentPressure`
+- `aee_core_currentSolarFlux`
 - `aee_core_currentSunElevation`
 - `aee_core_currentTemperature`
 - `aee_core_currentTemperatureBase`
+- `aee_core_currentTideDescription`
 - `aee_core_currentTideOffset_m`
 - `aee_core_currentTurbulence`
 - `aee_core_currentUVIndex`

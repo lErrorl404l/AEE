@@ -34,18 +34,35 @@ pub fn eye_adapt_step(
     (new_cone, new_rod)
 }
 
-/// CIE 191:2010 mesopic photopic fraction: 0 is pure scotopic (rods), 1 is
-/// pure photopic (cones).  Mirrors `fnc_eyeMesopicWeight`.
+/// CIE 191:2010 MES2 mesopic adaptation coefficient m: 0 is pure scotopic
+/// (rods), 1 is pure photopic (cones).  Fixed-point iteration from m0 = 0.5
+/// on the photopic luminance and the S/P ratio.  Mirrors
+/// `fnc_eyeMesopicWeight`.
 #[must_use]
-pub fn eye_mesopic_weight(lum: f64, lo: f64, hi: f64) -> f64 {
-    if lum <= lo {
+pub fn eye_mesopic_weight(lp: f64, sp: f64, lo: f64, hi: f64) -> f64 {
+    if lp <= 0.0 {
         return 0.0;
     }
-    if lum >= hi {
-        return 1.0;
+    let v0 = 683.0 / 1699.0;
+    let ls = lp * sp.max(0.0);
+    let mut m = 0.5;
+    for _ in 0..50 {
+        let lmes = (m * lp + (1.0 - m) * ls * v0) / (m + (1.0 - m) * v0);
+        let mut next = 0.7670 + 0.3334 * lmes.max(1e-12).log10();
+        if lmes >= hi {
+            next = 1.0;
+        }
+        if lmes <= lo {
+            next = 0.0;
+        }
+        next = next.max(0.0).min(1.0);
+        let done = (next - m).abs() < 1e-7;
+        m = next;
+        if done {
+            break;
+        }
     }
-    let t = (lum.log10() - lo.log10()) / (hi.log10() - lo.log10());
-    t * t * (3.0 - 2.0 * t)
+    m
 }
 
 /// Steady-state pupil diameter (mm) for a scene luminance.  Mirrors the Moon

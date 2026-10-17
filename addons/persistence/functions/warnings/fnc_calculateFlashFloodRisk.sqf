@@ -28,7 +28,7 @@ private _biome     = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 if (isNil "_rainRate") then { _rainRate = 0; };
 
 // ─── Intensity (mm/h) — same mapping as the optics module ─────────────────
-private _intensity = _rainRate * 25;
+private _intensity = _rainRate * ENGINE_RAIN_FULL_MMH;
 
 // ─── Antecedent moisture — existing accumulated-rain state ────────────────
 private _antecedent = _rainAccum;

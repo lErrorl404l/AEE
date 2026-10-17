@@ -18,16 +18,56 @@ if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
 };
 
 // ─── Base diurnal calculation ──────────────────────────────────────────────
+// Climate normals at sea level (fnc_getClimateNormals: the world's reference
+// station, else the nearest WMO 1991-2020 station).  The day's maximum and
+// minimum are interpolated between the mid-month normals of the date.
 private _normals = [_biome] call EFUNC(weather,getClimateNormals);
 private _tDay   = _normals select 2;
 private _tNight = _normals select 3;
+// Run the solar model for the sun state (position, declination) it publishes.
+[overcast] call EFUNC(lighting,calculateSolarRadiation);
+date params ["_dy", "_dm", "_dd"];
+private _midFrac = (_dd - 15.2) / 30.44;               // months from mid-month
+private _m0 = (_dm - 1) + (floor _midFrac);
+private _w = _midFrac - (floor _midFrac);
+private _i0 = ((_m0 mod 12) + 12) mod 12;
+private _i1 = (_i0 + 1) mod 12;
+private _tMax = ((_tDay select _i0) * (1 - _w)) + ((_tDay select _i1) * _w);
+private _tMin = ((_tNight select _i0) * (1 - _w)) + ((_tNight select _i1) * _w);
 
-// Solar-elevation radiation model (replaces a fixed sinusoid): the sun's
-// height for the date, time and latitude drives the diurnal curve.
-private _diurnalWeight = [overcast] call EFUNC(lighting,calculateSolarRadiation);
-private _monthIdx = (_month - 1) max 0 min 11;
-private _T_base = (_tNight select _monthIdx)
-    + ((_tDay select _monthIdx) - (_tNight select _monthIdx)) * _diurnalWeight;
+// Diurnal course: Parton & Logan (1981, Agric. Meteorol. 23:205), the
+// APSIM implementation (Utilities.cpp, as ported in the weaana package):
+// a sine from C hours after sunrise to sunset peaking A hours after noon,
+// then an exponential decay to the minimum, A = 1.5 h, B = 4, C = 1 h.
+// The clock is local apparent solar time (the engine's), so sunrise and
+// sunset are 12 -/+ half the day length; the day length is the real one,
+// from the sun's declination and the latitude with the standard -0.833 deg
+// sunrise altitude (refraction and semi-diameter).
+private _lat = ([] call EFUNC(lib,getWorldLocation)) select 0;
+private _dec = missionNamespace getVariable [QEGVAR(core,currentSunDeclination), 0];
+if !(_dec isEqualType 0) then { _dec = 0; };
+private _cosH0 = ((sin -0.833) - (sin _lat) * (sin _dec)) / ((cos _lat) * (cos _dec));
+private _dayLen = 24 * ((acos ((_cosH0 max -1) min 1)) / 180);
+private _A = 1.5;
+private _B = 4;
+private _C = 1;
+private _hour = dayTime;
+private _rise = 12 - (_dayLen / 2) + _C;
+private _set = 12 + (_dayLen / 2);
+private _T_base = _tMin;
+if (_dayLen >= 24) then {
+    _T_base = _tMin + (_tMax - _tMin) * (0.5 + 0.5 * (cos ((_hour - 12 - _A) * 15)));
+} else {
+    if (_dayLen > _C) then {
+        if (_hour >= _rise && _hour < _set) then {
+            _T_base = _tMin + (_tMax - _tMin) * (sin (180 * (_hour - _rise) / (_dayLen + 2 * _A)));
+        } else {
+            private _since = if (_hour >= _set) then { _hour - _set } else { (24 - _set) + _hour };
+            private _tSet = _tMin + (_tMax - _tMin) * (sin (180 * (_dayLen - _C) / (_dayLen + 2 * _A)));
+            _T_base = _tMin + (_tSet - _tMin) * exp (-_B * _since / (24 - _dayLen));
+        };
+    };
+};
 
 // Publish the UN-LAPSED base temperature for the ACE3 compat handoff
 // (issue #181).  ACE's ace_weather_fnc_calculateTemperatureAtHeight applies
@@ -60,59 +100,16 @@ if (_elevation <= 0) then {
 private _lapseRate = missionNamespace getVariable [QEGVAR(core,tempLapseRate), 6.5];
 if !(_lapseRate isEqualType 0) then { _lapseRate = 6.5; };
 private _T_elevation = _T_base - (_lapseRate / 1000) * _elevation;
+// The day's mean temperature at this height: the humidity model holds the
+// day's vapour pressure at it (fnc_calculateRelativeHumidity).
+missionNamespace setVariable [QEGVAR(core,currentDayMeanTemp), ((_tMax + _tMin) / 2) - (_lapseRate / 1000) * _elevation];
 
-// ─── Overcast ─────────────────────────────────────────────────────────────
-private _T_overcast = _T_elevation - 4 * overcast;
-
-// ─── Surface modifier ─────────────────────────────────────────────────────
-private _surfaceMod = 0;
-if (_pos2D isNotEqualTo [0, 0]) then {
-    // surfaceType returns the class name with no '#' prefix (GdtDesert);
-    // normalise to the bare token before comparing.
-    private _type = toLower (surfaceType _pos2D);
-    if (_type find "#gdt" == 0) then { _type = _type select [4]; }
-    else { if (_type find "gdt" == 0) then { _type = _type select [3]; }; };
-    _surfaceMod = switch (true) do {
-        case (_type == "desert"):        {  4   };
-        case (_type == "sand"):          {  2   };
-        case (_type == "ice"):           { -5   };
-        case (_type == "snow"):          { -3   };
-        case (_type == "coniferous"):    { -2   };
-        case (_type == "forest"):        { -1.5 };
-        default                          {  0   };
-    };
-};
-private _T_surface = _T_overcast + _surfaceMod;
-
-// ─── Wind chill (JAG/TTI metric formula) ────────────────────────────────
-//   Twc = 13.12 + 0.6215*T - 11.37*(V*3.6)^0.16 + 0.3965*T*(V*3.6)^0.16
-//   T = air temperature (°C), V = wind speed (m/s, converted to km/h)
-//   Valid for T ≤ 10°C and V > 4.8 km/h (1.34 m/s).
-//   Above those thresholds, wind chill = ambient (no meaningful chilling).
-private _windSpeed = vectorMagnitude wind;
-private _T_wind = _T_surface;
-if (_T_base <= 10 && _windSpeed > 1.34) then {
-    private _V_kmh = _windSpeed * 3.6;
-    private _Vexp = _V_kmh ^ 0.16;
-    private _windChillJAGTTI = 13.12 + 0.6215 * _T_surface - 11.37 * _Vexp + 0.3965 * _T_surface * _Vexp;
-    // Clamp: JAG/TTI formula wind chill must be ≤ ambient temp
-    if (_windChillJAGTTI < _T_surface) then {
-        _T_wind = _windChillJAGTTI;
-    };
-};
-
-// ─── Shade ────────────────────────────────────────────────────────────────
-private _inShade = false;
-if (_pos2D isNotEqualTo [0, 0]) then {
-    private _eyePos = [_pos2D#0, _pos2D#1, _elevation + 1.5];
-    private _abovePos = _eyePos vectorAdd [0, 0, 6];
-    private _hits = lineIntersectsSurfaces [
-        _eyePos, _abovePos,
-        objNull, objNull, true, 1, "GEOM", "NONE"
-    ];
-    if (count _hits > 0) then { _inShade = true; };
-};
-private _T_shade = _T_wind - ([0, 3] select _inShade);
+// Air temperature is the screen (shaded, ventilated) value: cloud is in the
+// station normals, wind chill is a perceived index (published by
+// aee_strain_fnc_calculateColdWeatherPerformance as windChillTemp) and the
+// sun's radiant load is in the mean radiant temperature (fnc_calculateMRT),
+// so none of them is added to the air temperature here.
+private _T_shade = _T_elevation;
 
 // ─── Module temperature offset ───────────────────────────────────────────
 // Apply a fixed offset configured via EDEN/Zeus module
@@ -180,7 +177,7 @@ if !(_wiRadius isEqualType 0) then { _wiRadius = 1000; };
 if (_wiRadius > 0) then {
     private _wiPos2D = _pos2D;
     if (isNil "_wiPos2D") then { _wiPos2D = [0, 0]; };
-    private _wiOffset = [[_wiPos2D select 0, _wiPos2D select 1, 0], _wiRadius, 0, _T_wind] call EFUNC(weather,calculateWaterInfluence);
+    private _wiOffset = [[_wiPos2D select 0, _wiPos2D select 1, 0], _wiRadius, 0, _T_shade] call EFUNC(weather,calculateWaterInfluence);
     _T_shade = _T_shade + _wiOffset;
 };
 

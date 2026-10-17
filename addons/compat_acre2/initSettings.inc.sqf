@@ -11,8 +11,6 @@
 // that only pays off at 50+ settings.
 
 // ── Signal ─────────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(signalDBShift,"AEE","Compat - ACRE2",0,20,8,1);
-
 AEE_SETTING_SLIDER(signalSensitivityMin,"AEE","Compat - ACRE2",-130,-90,-110,0);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────

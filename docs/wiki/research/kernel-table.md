@@ -15,11 +15,11 @@ drift or on a kernel that contains an engine write.
 |---|---|---|---|---|---|---|
 | `calculateHailEnergy` | atmos | server | `_capeProxy` | ARRAY [diameter_m, mass_kg, velocity_ms, energy_j] | - | yes |
 | `calculateStationPressure` | atmos | server | `_P_sea`, `_elevation`, `_lapseRate` | Number - station pressure, hPa (unrounded) | stationPressure (6) | yes |
-| `calculateRelativeHumidity` | atmos | server | `_rhBase`, `_surfaceMod`, `_tRef`, `_tNow`, `_overcast`, `_rain` | Number - relative humidity, % (integer, 0 to 100) | relativeHumidity (8) | yes |
+| `calculateRelativeHumidity` | atmos | server | `_rhMean`, `_tMean`, `_tNow` | Number - relative humidity, % (integer, 0 to 100) | relativeHumidity (9) | yes |
 | `calculateAirDensityKernel` | ballistics | server | `_T_C`, `_P_hPa`, `_RH` | Number - air density, kg/m3 | airDensity (5) | yes |
 | `calculateBallisticDrag` | ballistics | server | `_bc`, `_velocity`, `_dragModel`, `_rhoRel`, `_airTempC` | expression | calculateBallisticDrag (17) | yes |
 | `eyeAdaptStep` | eye | server | `_state`, `_targetLogLum`, `_dt`, `_tauLight`, `_tauDarkCone`, `_tauDarkRod`, `_w` | Array - the two updated pool logs [coneLog, rodLog] | eyeAdaptStep (4) | yes |
-| `eyeMesopicWeight` | eye | server | `_lum`, `_lo`, `_hi` | Number - photopic fraction in [0, 1]. 0 means the rods carry vision, | eyeMesopicWeight (5) | yes |
+| `eyeMesopicWeight` | eye | server | `_lp`, `_sp`, `_lo`, `_hi` | Number - m in [0, 1] | eyeMesopicWeight (5) | yes |
 | `eyePupilSteady` | eye | server | `_lum` | Number - steady pupil diameter in mm, clamped to [1.9, 8.0] | eyePupilSteady (4) | yes |
 | `eyePupilStep` | eye | server | `_d`, `_dTarget`, `_dt`, `_tauConstrict`, `_tauDilate` | Number - lagged diameter after this step, mm | eyePupilStep (4) | yes |
 | `eyeTimeSkip` | eye | server | `_prevHour`, `_nowHour`, `_thresholdHours` | Boolean - true when the clock moved by more than the threshold in one step | eyeTimeSkip (4) | yes |

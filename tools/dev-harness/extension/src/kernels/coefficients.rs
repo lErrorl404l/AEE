@@ -4,7 +4,7 @@
 //! in the SQF reference kernels. Do not edit by hand. Run the generator
 //! without `--check` to refresh it, with `--check` to fail on drift.
 
-// 14 coefficients.
+// 15 coefficients.
 
 /// `_T_std` from `addons/atmos/functions/physics/fnc_calculateStationPressure.sqf`.
 pub const PRESSURE_T_STD: f64 = 288.15;
@@ -15,11 +15,14 @@ pub const PRESSURE_EXPONENT: f64 = 5.2559;
 /// `_ratioFloor` from `addons/atmos/functions/physics/fnc_calculateStationPressure.sqf`.
 pub const PRESSURE_RATIO_FLOOR: f64 = 0.05;
 
-/// `_diurnalCoef` from `addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf`.
-pub const HUMIDITY_DIURNAL_COEF: f64 = 0.05;
+/// `_magnusA` from `addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf`.
+pub const HUMIDITY_MAGNUS_A: f64 = 6.112;
 
-/// `_overcastGate` from `addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf`.
-pub const HUMIDITY_OVERCAST_GATE: f64 = 0.7;
+/// `_magnusB` from `addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf`.
+pub const HUMIDITY_MAGNUS_B: f64 = 17.62;
+
+/// `_magnusC` from `addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf`.
+pub const HUMIDITY_MAGNUS_C: f64 = 243.12;
 
 /// `_saturation` from `addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf`.
 pub const HUMIDITY_SATURATION: f64 = 100.0;

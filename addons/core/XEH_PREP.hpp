@@ -17,6 +17,7 @@ PREP(getEyeState);
 PREP(getSmoothedWeather);
 PREP(handleCollisionDamage);
 PREP(calculateIlluminance);
+PREP(twilightIlluminance);
 PREP(coreBodyTemp);
 PREP(calculateEmpWaveform);
 PREP(calculateEmpField);

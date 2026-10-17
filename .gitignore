@@ -34,6 +34,9 @@ __pycache__/
 .venv/
 *.pyc
 
+# Data Collection
+pyghidra_mcp_projects/
+
 # Docker test harness
 /tests/docker/mods/
 /tests/docker/run.log
@@ -83,3 +86,9 @@ tools/dev-harness/extension/dist/
 
 # The dev Docker run directory (--run-dir .docker-run)
 .docker-run/
+
+# Raw space-weather downloads (rebuilt by tools/gen_space_weather.py --refresh)
+data/space_weather/raw/
+
+# Raw WMO normals downloads (rebuilt by tools/gen_climate_normals.py --refresh)
+data/climate/raw/

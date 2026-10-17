@@ -1,59 +1,78 @@
 #include "..\..\script_component.hpp"
 
 /*
-Naked-eye limiting magnitude (NELM) from ambient illuminance and
-atmospheric seeing.
+Naked-eye limiting magnitude (NELM) at the zenith from the sky luminance.
 
-Model:
-  NELM = mBase - seeingPenalty
+Sky luminance at the zenith, cd/m2, the sum of:
+  - the natural night sky, 22.0 mag/arcsec2 = 1.74e-4 cd/m2 (Falchi et al.
+    2016, Sci. Adv. 2:e1600377, the natural background of the World Atlas);
+  - moonlight scattered by the air (Krisciunas & Schaefer 1991, PASP
+    103:1033, eqs. 15-21) for the zenith (X = 1), the Moon at zenith
+    distance Z and phase angle a:
+      B = f(rho) I* 10^(-0.4 k X_moon) (1 - 10^(-0.4 k))   nanolamberts
+      f(rho) = 10^5.36 (1.06 + cos^2 rho) + 10^(6.15 - rho/40), rho = Z
+      I* = 10^(-0.4 (3.84 + 0.026 |a| + 4e-9 a^4))
+      X_moon = (1 - 0.96 sin^2 Z)^-1/2;  1 nL = 3.183e-6 cd/m2;
+  - twilight: the sky of a sun below the horizon is the only light on a
+    horizontal plane, so for an isotropic sky L = E / pi
+    (fnc_twilightIlluminance, already cloud-cut).
+The threshold illuminance of a point source against that luminance is the
+Knoll et al. (1946) law, which Crumey (2014, MNRAS 442:2600, eq. 19) shows
+fits astronomical conditions better than Hecht's:
+  dI = 1.076e-9 (1 + 1e5 B)^1/2  lux,  B in cd/m2.
+A V = 0 star gives 2.54e-6 lux above the atmosphere (Schlyter, held in
+data/astronomy/sources), so m = -2.5 log10(dI / 2.54e-6), less the zenith
+extinction k (mag per air mass):
+  k = 1.086 (tau_Rayleigh 0.0973 + tau_ozone 0.027 + tau_aerosol)  at 550 nm,
+tau_aerosol from the published haze extinction (less Rayleigh, Bucholtz
+1995, times the 1.2 km aerosol scale height, Elterman 1968).
 
-  mBase = 6.5 - log10(ambientLux / 0.001)
-    Starlight (0.001 lux) -> 6.5  (pristine dark sky, Bortle 1-2)
-    Crescent  (0.01 lux)  -> 5.5  (Bortle 3-4)
-    Gibbous   (0.1 lux)   -> 4.5  (Bortle 5)
-    Full      (0.3 lux)   -> 4.0  (Bortle 6)
+Light pollution: the nearby house count still subtracts a bounded
+magnitude penalty (fnc_lightPollutionPenalty, UNSOURCED form) - the
+artificial sky brightness needs the light emission of the settlement,
+which the engine does not expose.
 
-  seeingPenalty = 0.2 + 1.3 * (seeing - 0.1) / 0.9
-    Seeing 0.1 (excellent) -> 0.2 mag penalty
-    Seeing 1.0 (terrible)  -> 1.5 mag penalty
+Arguments:
+  0: Number - Moon altitude, deg
+  1: Number - Moon illuminated fraction, 0..1
+  2: Number - twilight horizontal illuminance, lux
+  3: Number - haze extinction at 550 nm, per km
+  4: Number - nearby house count
 
-Reference: Garstang (2000) empirical NELM-sky brightness relation,
-Bortle scale calibrations, Fried (1966) seeing model.
-
-Stores: QGVAR(limitingMagnitude) as scalar.
-Returns: limiting magnitude (higher = fainter stars visible).
+Pure.  The caller publishes aee_lighting_limitingMagnitude and
+aee_lighting_skyLuminance.
+Returns: [limiting magnitude at the zenith, sky luminance cd/m2].
 */
 
 params [
-    ["_ambientLux", 0.001, [0]],
-    ["_seeing", 0.5, [0]],
+    ["_moonAlt", -90, [0]],
+    ["_moonFrac", 0, [0]],
+    ["_twilightLux", 0, [0]],
+    ["_haze", 0.08, [0]],
     ["_houseCount", 0, [0]]
 ];
 
-// ─── Base NELM from sky brightness ─────────────────────────────────────────
-// Linear in log-lux.  Each 10x increase in ambient lux reduces the
-// faintest visible star by 1 magnitude.  This matches Garstang's
-// empirical NELM-sky brightness relation across the full range from
-// starlight to full moon.
-private _mBase = 6.5 - log (_ambientLux / 0.001 max 1e-6);
+private _tauAer = ((_haze - 0.0116) max 0) * 1.2;
+private _k = 1.086 * (0.0973 + 0.027 + _tauAer);
 
-// ─── Atmospheric seeing penalty ───────────────────────────────────────────
-// Turbulence degrades point-source contrast.  Stars scatter into larger
-// Airy disks, reducing peak brightness against the sky background.
-// Linear interpolation between excellent (0.1) and terrible (1.0) seeing.
-private _clampedSeeing = _seeing max 0.1 min 1.0;
-private _seeingPenalty = 0.2 + 1.3 * ((_clampedSeeing - 0.1) / 0.9);
+private _b = 1.74e-4;
 
-// ─── Light-pollution penalty ──────────────────────────────────────────────
-// Nearby settlement raises the sky background and hides faint stars.  The
-// magnitude penalty is a bounded function of the nearby house count; the
-// caller caches the count on a 5 s key so the kernel stays pure.
-private _pollution = [_houseCount] call FUNC(lightPollutionPenalty);
+if (_moonAlt > 0 && _moonFrac > 0) then {
+    private _z = 90 - _moonAlt;
+    private _alpha = acos ((((2 * (_moonFrac min 1)) - 1) max -1) min 1);
+    private _iStar = 10 ^ (-0.4 * (3.84 + (0.026 * _alpha) + (4e-9 * (_alpha ^ 4))));
+    private _f = ((10 ^ 5.36) * (1.06 + ((cos _z) ^ 2))) + (10 ^ (6.15 - (_z / 40)));
+    private _xMoon = 1 / (sqrt (1 - (0.96 * ((sin _z) ^ 2))));
+    private _bMoonNl = _f * _iStar * (10 ^ (-0.4 * _k * _xMoon)) * (1 - (10 ^ (-0.4 * _k)));
+    _b = _b + (_bMoonNl * 3.183e-6);
+};
 
-// ─── Total limiting magnitude ──────────────────────────────────────────────
-private _mLim = _mBase - _pollution - _seeingPenalty;
-_mLim = _mLim max 2.0 min 7.0;
+_b = _b + ((_twilightLux max 0) / pi);
 
-missionNamespace setVariable [QGVAR(limitingMagnitude), _mLim];
+private _dI = 1.076e-9 * (sqrt (1 + (1e5 * _b)));
+private _mLim = (-2.5 * (log (_dI / 2.54e-6))) - _k;
 
-_mLim
+_mLim = _mLim - ([_houseCount] call FUNC(lightPollutionPenalty));
+_mLim = (_mLim max -2) min 8;
+
+[_mLim, _b]

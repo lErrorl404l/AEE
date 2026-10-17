@@ -1,0 +1,189 @@
+{
+ "schema": "aee.maritime.tide_constituents/1",
+ "source": {
+  "title": "TICON-4: TIdal CONstants based on GESLA-4 sea-level records",
+  "authors": "Hart-Davis, M., Dettmering, D., Seitz, F. (DGFI-TUM)",
+  "year": 2025,
+  "doi": "10.17882/109129",
+  "url": "https://www.seanoe.org/data/00980/109129/",
+  "file": "122848.csv",
+  "units": "amp in cm in the source (converted to m here); phase = Greenwich phase lag in degrees (UTC), verified against Brest M2 205.1 cm and NOAA 9414290",
+  "licence": "CC BY 4.0 (SEANOE)"
+ },
+ "constituents_used": [
+  "M2",
+  "S2",
+  "N2",
+  "K2",
+  "K1",
+  "O1",
+  "P1",
+  "Q1"
+ ],
+ "gauges": {
+  "samothraki": {
+   "gauge": "samothraki-sam-grc-cmems",
+   "lat": 40.474602,
+   "lon": 25.46797,
+   "country": "GRC",
+   "years_of_obs": 6.0,
+   "start_date": "13/12/2016",
+   "end_date": "20/12/2023",
+   "gesla_source": "gesla4.CMEMS",
+   "record_quality": "Possible quality control issues",
+   "constituents": {
+    "M2": {
+     "amp_m": 0.07646,
+     "phase_deg": 56.099,
+     "amp_std_m": 0.000127,
+     "phase_std_deg": 0.0062
+    },
+    "N2": {
+     "amp_m": 0.01197,
+     "phase_deg": 66.305,
+     "amp_std_m": 2.4e-05,
+     "phase_std_deg": 0.0478
+    },
+    "S2": {
+     "amp_m": 0.05297,
+     "phase_deg": 75.925,
+     "amp_std_m": 8.6e-05,
+     "phase_std_deg": 0.0088
+    },
+    "K2": {
+     "amp_m": 0.01629,
+     "phase_deg": 70.295,
+     "amp_std_m": 2.2e-05,
+     "phase_std_deg": 0.0235
+    },
+    "K1": {
+     "amp_m": 0.02527,
+     "phase_deg": 341.614,
+     "amp_std_m": 3.8e-05,
+     "phase_std_deg": 0.0173
+    },
+    "P1": {
+     "amp_m": 0.0103,
+     "phase_deg": 348.281,
+     "amp_std_m": 1.7e-05,
+     "phase_std_deg": 0.0451
+    },
+    "O1": {
+     "amp_m": 0.01319,
+     "phase_deg": 306.688,
+     "amp_std_m": 1.9e-05,
+     "phase_std_deg": 0.0314
+    },
+    "Q1": {
+     "amp_m": 0.00167,
+     "phase_deg": 265.416,
+     "amp_std_m": 2e-06,
+     "phase_std_deg": 0.25
+    }
+   }
+  },
+  "lautoka": {
+   "gauge": "lautoka-67070-fji-bom",
+   "lat": -17.6053,
+   "lon": 177.4381,
+   "country": "FJI",
+   "years_of_obs": 31.0,
+   "start_date": "24/10/1992",
+   "end_date": "31/12/2022",
+   "gesla_source": "gesla4.BOM",
+   "record_quality": "No obvious issues",
+   "constituents": {
+    "M2": {
+     "amp_m": 0.62907,
+     "phase_deg": 191.557,
+     "amp_std_m": 5.5e-05,
+     "phase_std_deg": 0.0
+    },
+    "N2": {
+     "amp_m": 0.14767,
+     "phase_deg": 172.208,
+     "amp_std_m": 1.3e-05,
+     "phase_std_deg": 0.0002
+    },
+    "S2": {
+     "amp_m": 0.14846,
+     "phase_deg": 192.568,
+     "amp_std_m": 1.3e-05,
+     "phase_std_deg": 0.0002
+    },
+    "K2": {
+     "amp_m": 0.0422,
+     "phase_deg": 185.708,
+     "amp_std_m": 4e-06,
+     "phase_std_deg": 0.0006
+    },
+    "K1": {
+     "amp_m": 0.11166,
+     "phase_deg": 48.875,
+     "amp_std_m": 1e-05,
+     "phase_std_deg": 0.0002
+    },
+    "P1": {
+     "amp_m": 0.0327,
+     "phase_deg": 44.817,
+     "amp_std_m": 3e-06,
+     "phase_std_deg": 0.0008
+    },
+    "O1": {
+     "amp_m": 0.06051,
+     "phase_deg": 35.855,
+     "amp_std_m": 6e-06,
+     "phase_std_deg": 0.0004
+    },
+    "Q1": {
+     "amp_m": 0.00976,
+     "phase_deg": 21.445,
+     "amp_std_m": 1e-06,
+     "phase_std_deg": 0.0027
+    }
+   }
+  }
+ },
+ "world_bindings": {
+  "Altis": {
+   "gauge": "samothraki",
+   "basis": "Altis is Lemnos; Samothraki (66 km NE) is the nearest TICON-4 gauge. GESLA flags 'possible quality control issues' on this 6-year record."
+  },
+  "Stratis": {
+   "gauge": "samothraki",
+   "basis": "Stratis is Agios Efstratios, south-west of Lemnos; same nearest gauge."
+  },
+  "Malden": {
+   "gauge": "samothraki",
+   "basis": "Malden's CfgWorlds mapArea is the Altis (Lemnos) box."
+  },
+  "Tanoa": {
+   "gauge": "lautoka",
+   "basis": "Tanoa is Fiji (CfgWorlds 17.7 S 178.8 E); Lautoka, Viti Levu, Australian BoM gauge 67070, 31 years."
+  },
+  "Enoch": {
+   "gauge": "",
+   "basis": "Livonia is inland north-east Poland: no ocean tide."
+  }
+ },
+ "equilibrium_ratios": {
+  "basis": "Doodson (1921) equilibrium coefficients M2 0.9081 S2 0.4229 N2 0.1739 K2 0.1151 K1 0.5305 O1 0.3771 P1 0.1755 Q1 0.0722, normalised to M2; used only for a world with no bound gauge",
+  "M2": 1.0,
+  "S2": 0.4657,
+  "N2": 0.1915,
+  "K2": 0.1267,
+  "K1": 0.5842,
+  "O1": 0.4153,
+  "P1": 0.1933,
+  "Q1": 0.0795
+ },
+ "validation": {
+  "noaa_9414290": {
+   "station": "San Francisco, CA (NOAA 9414290)",
+   "harmonics": "validation/noaa_9414290_harcon.json",
+   "predictions": "validation/noaa_9414290_predictions_20240115.json",
+   "source": "NOAA CO-OPS API (public domain): mdapi harcon.json and datagetter product=predictions, datum MSL, GMT",
+   "note": "The eight-constituent model reproduces NOAA's full prediction to 4.4 cm RMS over 48 h (range 2.4 m); the residual is the constituents not modelled."
+  }
+ }
+}

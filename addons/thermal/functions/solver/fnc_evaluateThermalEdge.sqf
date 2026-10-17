@@ -97,9 +97,9 @@ Arguments:
 
 Return Value: ARRAY [edge (BOOL), contrast (NUMBER)].  The contrast is 0..1.
 On an unusable input the kernel returns the refusal [false, -1].
-The caller raises the threshold by the sensor noise floor from
-fnc_calculateThermalNoise, which grows with the sensor-to-target range; the
-range is never read from the engine.
+An optional extra noise floor raises the threshold; the selection painter
+passes 0, because the threshold is the NETD and the path transmission
+already carries the range.
 Example: [52.4, 41.0] call aee_thermal_fnc_evaluateThermalEdge
 Public: No
 */

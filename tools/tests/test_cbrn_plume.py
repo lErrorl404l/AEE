@@ -9,7 +9,8 @@ Sources (see each kernel header):
                           Estimates, EPA AP-26 (1970).
   Dispersion coefficients Briggs (1973), Diffusion Estimation for Small
                           Emissions, ATDL.
-  Stability class         Pasquill, via Turner AP-26 Table 1.
+  Stability class         Pasquill-Gifford: EPA SRDT (EPA-454/R-99-005
+                          Table 6-7) by day, Turner AP-26 by night.
   Agent parameters        FM 3-11, Chemical Operations (2003), Table 4-1.
 
 Run: python3 -m unittest tools.tests.test_cbrn_plume -v
@@ -53,9 +54,19 @@ class TestStabilityClass(unittest.TestCase):
         # Issue vector: night overcast, 4 m/s -> D.
         self.assertEqual(run_sqf(STABILITY, [4.0, 0, 6, False, 999]), "D")
 
-    def test_day_slight_low_wind_is_B(self):
-        # Slight insolation (solar < 350), calm -> B (day table col 0).
-        self.assertEqual(run_sqf(STABILITY, [1.0, 100, 0, True, 999]), "B")
+    def test_day_low_radiation_is_neutral(self):
+        # EPA SRDT: solar radiation < 175 W/m2 is D at every wind speed.
+        self.assertEqual(run_sqf(STABILITY, [1.0, 100, 0, True, 999]), "D")
+
+    def test_epa_srdt_day_key(self):
+        # EPA-454/R-99-005 Table 6-7, every cell.
+        key = {
+            1.0: "AABD", 2.5: "ABCD", 4.0: "BBCD", 5.5: "CCDD", 7.0: "CDDD",
+        }
+        for wind, row in key.items():
+            for rad, cls in zip((950, 800, 400, 100), row):
+                with self.subTest(wind=wind, rad=rad):
+                    self.assertEqual(run_sqf(STABILITY, [wind, rad, 0, True, 999]), cls)
 
     def test_night_clear_calm_is_F(self):
         self.assertEqual(run_sqf(STABILITY, [1.0, 0, 0, False, 999]), "F")

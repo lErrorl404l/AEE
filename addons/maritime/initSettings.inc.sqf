@@ -5,7 +5,7 @@
 // maritime stringtable.
 
 // ── Tide ───────────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(tideAmplitude,"AEE Maritime","Sea",0.5,5,2.0,1);
+AEE_SETTING_SLIDER(tideAmplitude,"AEE Maritime","Sea",0,5,1.0,2);
 
 // ── Ocean current (issue #28) ──────────────────────────────────────────────
 // The wind-driven and tidal surface current.  Channel depth and flood bearing

@@ -24,8 +24,6 @@ AEE_SETTING_SLIDER(icingShedRate,"AEE Atmos","Icing",0.5,1,0.9,2);
 AEE_SETTING_SLIDER(maxIceMass,"AEE Atmos","Icing",20,200,100,0);
 
 // ── Fog ────────────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(radFogRampRate,"AEE Atmos","Fog",0,0.5,0.1,2);
-
 AEE_SETTING_SLIDER(maxFogDensity,"AEE Atmos","Fog",0.2,1,0.8,2);
 
 // ── Refraction ────────────────────────────────────────────────────────────

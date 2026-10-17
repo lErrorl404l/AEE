@@ -5,3 +5,5 @@
 
 PREP(calculateCompassDeviation);
 PREP(calculateMagneticAnomaly);
+PREP(wmmField);
+PREP(geomagneticLatitude);

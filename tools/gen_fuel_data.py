@@ -46,11 +46,12 @@ Sections, each a hashmap:
   engine_classes      id -> [bsfc_g_kwh, fuel_id]
   fuels               id -> [density_g_l, lhv_mj_kg]
   rolling_resistance  id -> crr
+  drag_coefficients   id -> cd
   terrain_multipliers ground_state -> multiplier
   thermal             id -> value
 
 Arguments: none.
-Return Value: HASHMAP - the five sections.
+Return Value: HASHMAP - the six sections.
 Public: No
 */
 
@@ -92,6 +93,7 @@ def render(data: dict) -> str:
         for f in data["fuels"]
     ]
     rolling = [(r["id"], _num(r["crr"])) for r in data["rolling_resistance"]]
+    drag = [(r["id"], _num(r["cd"])) for r in data["drag_coefficients"]]
     terrain = [(t["id"], _num(t["multiplier"])) for t in data["terrain_multipliers"]]
     thermal = [(t["id"], _num(t["value"])) for t in data["thermal"]]
 
@@ -99,6 +101,7 @@ def render(data: dict) -> str:
         ("engine_classes", engine),
         ("fuels", fuels),
         ("rolling_resistance", rolling),
+        ("drag_coefficients", drag),
         ("terrain_multipliers", terrain),
         ("thermal", thermal),
     ):

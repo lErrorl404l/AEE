@@ -32,5 +32,22 @@
   "held_file": "imo_cal2025.txt",
   "archive_hash": "71e8a63eca901ac471041a3786a3bc19922d6986127ce50c2d99178efba3efee",
   "note": "Primary source for the issue #122 meteor-shower layer. held_file is the pdftotext -layout extraction of the calendar PDF; the document header reads IMO INFO(3.1-24). tools/validation/gen_meteor_showers.py reads Table 5 only (the eight major annual showers) and transcribes activity window, peak date, solar longitude, radiant RA/Dec, pre-atmospheric velocity, population index r and ZHR. The ZHR definition (reference limiting magnitude +6.5, radiant overhead, meteors per hour) is in the calendar text; the rate-reduction equation implemented by fnc_meteorRate is NOT printed there and is marked UNSOURCED in that function."
+ },
+ {
+  "source_id": "schlyter-radfaq",
+  "tier": 2,
+  "type": "reference",
+  "title": "Radiometry and photometry in astronomy",
+  "edition": "web FAQ, P. Schlyter",
+  "identifier": "section 10",
+  "locator": "Section 10, 'Solar illumination on horizontal surface at various solar altitudes above the horizon' (log10 lux by altitude, +90 to -18 deg)",
+  "published": "undated",
+  "retrieved": "2026-10-17",
+  "url": "http://stjarnhimlen.se/comp/radfaq.html",
+  "licence": "freely readable web reference; table values quoted with attribution",
+  "primary_held": true,
+  "held_file": "schlyter_radfaq.html",
+  "archive_hash": "7a78828882d48cbaec628ab4e41b05a7e821fcc90c5dbacf6478bea3d44fb9c2",
+  "note": "Twilight illuminance for fnc_twilightIlluminance (tools/gen_twilight.py -> data/astronomy/twilight_illuminance.json, the 0 to -18 deg rows). The page does not name its own source."
  }
 ]

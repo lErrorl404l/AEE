@@ -136,19 +136,16 @@ class TestSourcedConstants(unittest.TestCase):
         self.assertIn("per +10", text)
 
     def test_thermal_contrast_flir_fom(self):
-        text = Path(
+        # The unsourced display-contrast factor is gone: the radiance path
+        # carries the contrast and the atmosphere degrades it once.
+        self.assertFalse(Path(
             "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
-        ).read_text(encoding="utf-8")
-        # The kernel is a display degradation factor, not a FLIR figure of
-        # merit, and its coefficients are declared UNSOURCED.
-        self.assertIn("DISPLAY DEGRADATION FACTOR", text)
-        self.assertIn("UNSOURCED", text)
-        # The NETD noise floor moved to the pure kernel; the microbolometer
-        # NETD default lives there now.
-        kernel = Path(
+        ).exists())
+        # The range-squared noise floor is gone too: the NETD threshold and
+        # the path transmission carry the physics.
+        self.assertFalse(Path(
             "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
-        ).read_text(encoding="utf-8")
-        self.assertIn("0.05", kernel)  # microbolometer NETD default
+        ).exists())
 
     def test_smoke_taylor_and_kohler(self):
         text = Path(

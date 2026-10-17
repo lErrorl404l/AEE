@@ -47,13 +47,18 @@ COEFFICIENTS: tuple[tuple[str, str, str], ...] = (
     ),
     (
         "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",
-        "_diurnalCoef",
-        "HUMIDITY_DIURNAL_COEF",
+        "_magnusA",
+        "HUMIDITY_MAGNUS_A",
     ),
     (
         "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",
-        "_overcastGate",
-        "HUMIDITY_OVERCAST_GATE",
+        "_magnusB",
+        "HUMIDITY_MAGNUS_B",
+    ),
+    (
+        "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",
+        "_magnusC",
+        "HUMIDITY_MAGNUS_C",
     ),
     (
         "addons/atmos/functions/physics/fnc_calculateRelativeHumidity.sqf",

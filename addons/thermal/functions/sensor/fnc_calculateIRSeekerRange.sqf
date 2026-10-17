@@ -14,9 +14,7 @@ The point-source (unresolved-target) infrared range equation:
              physical constant)
 
 J is the IN-BAND contrast radiant intensity: the target's radiant intensity
-minus the background's, over the seeker's band.  It is NOT the display
-contrast factor fnc_calculateThermalContrast publishes, which is a
-dimensionless display-degradation term.  A caller builds J from the band
+minus the background's, over the seeker's band.  A caller builds J from the band
 radiance the solver already computes (fnc_calculateBandRadiance) times the
 projected area and the emissivity, then passes it here.
 

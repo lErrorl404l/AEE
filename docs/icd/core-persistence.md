@@ -31,7 +31,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_seismicMagnitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:54` | UNKNOWN |
 | `aee_core_seismicStart` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:57` | UNKNOWN |
 | `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/persistence/functions/terrain/fnc_calculateFreezeThawCycling.sqf:62` | Snow depth in metres |
-| `aee_core_snowfallRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/terrain/fnc_calculateIceLoad.sqf:40` | Snowfall rate |
+| `aee_core_snowfallRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateAvalancheRisk.sqf:107` | Snowfall rate |
 | `aee_core_soilMoisture` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/persistence/functions/terrain/fnc_updateSoilMoisture.sqf:18` | Soil moisture 0..1 |
 | `aee_core_surfaceWetness` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/persistence/functions/terrain/fnc_calculateSurfaceWetness.sqf:12` | Surface wetness 0..1 |
 | `aee_core_thawDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/persistence/functions/terrain/fnc_calculateFreezeThawCycling.sqf:24` | Thaw depth in metres |

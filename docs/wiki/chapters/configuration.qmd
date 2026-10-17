@@ -100,7 +100,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_atmos_maxFogDensity` | SLIDER | `0.8` | yes | atmos | Ceiling for the fog density value applied to the engine |
-| `aee_atmos_radFogRampRate` | SLIDER | `0.1` | yes | atmos | Radiational-fog density added per tick on clear calm moist nights |
 
 ## AEE Atmos → Fronts
 
@@ -468,14 +467,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_lighting_starBrightnessScale` | SLIDER | `1.0` | yes | lighting | Multiplies the resolved star render scale (0..2), clamped to 0..1 |
 | `aee_lighting_starLightPollutionEnabled` | CHECKBOX | `true` | yes | lighting | Dim stars by nearby settlement skyglow; the house scan runs every 5 s |
 
-## AEE Environmental → Fire
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_weather_FlareChance` | SLIDER | `0.05` | yes | weather | Solar-flare trigger chance per tick |
-| `aee_weather_FlareDecayRate` | SLIDER | `0.05` | yes | weather | Solar-flare decay speed per tick |
-| `aee_weather_FlareDuration` | SLIDER | `10800` | yes | weather | Solar-flare hold duration (s) |
-
 ## AEE Environmental → Hydrology
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -486,7 +477,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_persistence_WettingRate` | SLIDER | `0.05` | yes | persistence | Surface wetting speed per tick per unit rain |
 | `aee_persistence_groundFrostEnabled` | CHECKBOX | `true` | yes | persistence | Enable ground frost detection on terrain surfaces |
 | `aee_weather_MaxSnowDepth` | SLIDER | `3.0` | yes | weather | Maximum snow depth (m) |
-| `aee_weather_SnowAccretionRate` | SLIDER | `0.01` | yes | weather | Snow depth gain per tick per unit rain |
 
 ## AEE Environmental → Seismic
 
@@ -507,6 +497,13 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_weather_SoundPropagationScale` | SLIDER | `1.0` | yes | weather | Global sound-range multiplier |
+
+## AEE Environmental → Space Weather
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_weather_kpOverride` | SLIDER | `-1` | yes | weather | -1: Kp evolves on the observed GFZ statistics for the current sunspot number. 0-9: pin the geomagnetic activity (5+ is a storm, NOAA G1-G5). |
+| `aee_weather_sunspotOverride` | SLIDER | `-1` | yes | weather | -1: the sunspot number of the mission date (SILSO record, NOAA prediction, then mean solar cycles). 0-400: pin it for the scenario. |
 
 ## AEE Environmental → Transport
 
@@ -551,8 +548,9 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_eye_eyeBlindingLuxScale` | SLIDER | `0` | yes | eye | Scale on the engine blinding term, no unit. UNSOURCED: apertureParams blinding has no documented unit. Default 0, off until tuned. |
 | `aee_eye_eyeFastBlend` | SLIDER | `0.35` | yes | eye | Weight of the fast pupil branch in the adapted luminance, 0 to 1. UNSOURCED: operator-tunable. |
 | `aee_eye_eyeLocalLuxScale` | SLIDER | `1` | yes | eye | Scale on the engine local term, no unit. UNSOURCED: getLightingAt has no documented unit. |
-| `aee_eye_eyeMesopicHigh` | SLIDER | `5` | yes | eye | Photopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 5 cd/m2. |
-| `aee_eye_eyeMesopicLow` | SLIDER | `0.005` | yes | eye | Scotopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 0.005 cd/m2. |
+| `aee_eye_eyeMesopicHigh` | SLIDER | `5` | yes | eye | Mesopic luminance at and above which vision is fully photopic (m = 1), cd/m2. CIE 191:2010 MES2: 5 cd/m2. |
+| `aee_eye_eyeMesopicLow` | SLIDER | `0.005` | yes | eye | Mesopic luminance at and below which vision is fully scotopic (m = 0), cd/m2. CIE 191:2010 MES2: 0.005 cd/m2. |
+| `aee_eye_eyeObserverAge` | SLIDER | `25` | yes | eye | Age of the observer, years. Disability glare from bright sources rises steeply with age, as 1 + (A/70)^4 in the CIE age-adjusted Stiles-Holladay equation. |
 | `aee_eye_eyePupilTauConstrict` | SLIDER | `0.25` | yes | eye | Pupil constriction time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, 0.25 s. |
 | `aee_eye_eyePupilTauDilate` | SLIDER | `0.475` | yes | eye | Pupil redilation time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, redilation 1.9 times the constriction. |
 | `aee_eye_eyeReflectance` | SLIDER | `0.18` | yes | eye | Assumed scene reflectance for the luminance step, 0 to 1. UNSOURCED: mid-grey assumption, 0.18. |
@@ -622,9 +620,16 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_hud_trackerEnabled` | CHECKBOX | `false` | yes | hud | Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off. |
+| `aee_hud_trackerAntennaGainDbi` | SLIDER | `0` | yes | hud | Transmit plus receive antenna gain, dBi. 0 is isotropic; a body-worn whip is typically below it. |
+| `aee_hud_trackerEnabled` | CHECKBOX | `false` | yes | hud | Show your group as a real tracker would: each unit's own GPS solution (the real constellation at the mission date, blocked by terrain and buildings), sent on the ATAK reporting schedule over a radio link that must close over the terrain. Draws each report with its error ellipse on the map and the HUD. Default off. |
+| `aee_hud_trackerFrequencyMHz` | SLIDER | `100` | yes | hud | Carrier frequency of the datalink, MHz. Sets the free-space loss and the terrain diffraction (ITU-R P.525, P.526). |
 | `aee_hud_trackerInterval` | SLIDER | `1.0` | yes | hud | Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0. |
+| `aee_hud_trackerReportFast` | SLIDER | `2` | yes | hud | Seconds between position reports at 30 mph and above. ATAK default: 2. |
+| `aee_hud_trackerReportSlow` | SLIDER | `20` | yes | hud | Seconds between position reports at 1 mph, scaled toward the fast interval at 30 mph as ATAK does. ATAK default: 20. |
+| `aee_hud_trackerReportStationary` | SLIDER | `30` | yes | hud | Seconds between position reports below 1 mph. ATAK default for a multicast network: 30. |
+| `aee_hud_trackerRxSensitivityDbm` | SLIDER | `-116` | yes | hud | Weakest signal the receiver decodes, dBm. -116 dBm is the AN/PRC-152A FM sensitivity at 12 dB SINAD, 30-152 MHz (L3Harris data sheet). |
 | `aee_hud_trackerSuppressIcons` | CHECKBOX | `false` | yes | hud | Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off. |
+| `aee_hud_trackerTxPowerDbm` | SLIDER | `37` | yes | hud | Transmit power of the radio that carries the position reports, dBm. 37 dBm = 5 W, the AN/PRC-152A maximum (L3Harris data sheet). |
 
 ## AEE Hydrology → Hydrology
 
@@ -641,6 +646,13 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_hydrology_springHydraulicGradient` | SLIDER | `0.01` | yes | hydrology | Hydraulic gradient in metres per metre that drives the spring discharge. It is the slope of the water table. 0.01 is a gentle gradient (Freeze and Cherry 1979). |
 | `aee_hydrology_springOrificeDepth_m` | SLIDER | `1` | yes | hydrology | Depth below ground in metres of the spring outlet. The spring flows only while the water table stands above this depth. |
 | `aee_hydrology_tidalReach_m` | SLIDER | `5000` | yes | hydrology | Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance. |
+
+## AEE Magnetism → Compass
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_magnetism_compassFerrousDeviation` | CHECKBOX | `true` | yes | magnetism | Nearby vehicles and steel deflect the compass by atan(dB / H), H the local horizontal field from the World Magnetic Model. |
+| `aee_magnetism_wmmExtrapolate` | CHECKBOX | `true` | yes | magnetism | WMM2025 is valid 2025.0-2030.0. On: a mission date outside it extrapolates the published secular variation (as the NOAA software does, with growing error). Off: the field is held at the nearer end of the window. |
 
 ## AEE Maritime → Acoustics
 
@@ -673,7 +685,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_maritime_shipMetacentricHeight` | SLIDER | `1.5` | yes | maritime | Metacentric height (GM) used by the ship-motion model; the engine publishes no hydrostatics, so this is the operator input |
 | `aee_maritime_thermoclineDepth` | SLIDER | `50` | yes | maritime | Centre depth of the thermocline, in metres; the mixed layer is above it and the deep layer below |
 | `aee_maritime_thermoclineWidth` | SLIDER | `30` | yes | maritime | Half-width of the thermocline transition, in metres; a smaller value is a sharper gradient |
-| `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
+| `aee_maritime_tideAmplitude` | SLIDER | `1.0` | yes | maritime | M2 tide amplitude (m) for a map with no bound tide gauge; the other constituents follow the Doodson equilibrium ratios. Altis, Stratis, Malden and Tanoa use real TICON-4 gauge constants and ignore this |
 | `aee_maritime_underwaterLightEnabled` | CHECKBOX | `true` | yes | maritime | Publish the underwater light state, the Snell window and the bioluminescence gate; turn off to save the per-second update |
 | `aee_maritime_underwaterWaterType` | SLIDER | `3` | yes | maritime | Jerlov water type: 0 = I, 1 = IA, 2 = IB, 3 = II, 4 = III, 5 = 1, 6 = 3, 7 = 5, 8 = 7, 9 = 9 |
 
@@ -822,14 +834,6 @@ registered.
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_radio_batteryDeratingEnabled` | CHECKBOX | `true` | yes | radio | Scale effective transmit power by the physiology battery temperature derating |
-| `aee_radio_emLinkBearing` | SLIDER | `0` | yes | radio | Bearing in degrees of the reference radio link used for terrain diffraction sampling |
-| `aee_radio_emPropagationEnabled` | CHECKBOX | `true` | yes | radio | Apply the 3D electromagnetic propagation model: two-ray ground bounce, terrain diffraction and valley waveguide |
-| `aee_radio_groundReflectivity` | SLIDER | `0.5` | yes | radio | Effective ground reflection coefficient magnitude for the two-ray model (1.0 reproduces the ideal d^4 law) |
-| `aee_radio_propagationRange` | SLIDER | `2.0` | yes | radio | Ceiling of the radio propagation quality index |
-| `aee_radio_rxAntennaHeight` | SLIDER | `1.5` | yes | radio | Receiver antenna height above ground in metres for the two-ray ground-bounce model |
-| `aee_radio_terrainMaskingEnabled` | CHECKBOX | `true` | yes | radio | Add ITU-R P.526 terrain diffraction loss by sampling the profile along the link. Off keeps the foliage-only fallback. |
-| `aee_radio_txAntennaHeight` | SLIDER | `2` | yes | radio | Transmitter antenna height above ground in metres for the two-ray ground-bounce model |
-| `aee_radio_txPower` | SLIDER | `37` | yes | radio | Reference handheld transmit power in dBm used in the link budget |
 
 ## AEE Radio → Radar
 
@@ -1109,7 +1113,6 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_compat_acre2_signalDBShift` | SLIDER | `8` | yes | compat_acre2 | Maximum dB shift from the propagation index |
 | `aee_compat_acre2_signalSensitivityMin` | SLIDER | `-110` | yes | compat_acre2 | Receiver sensitivity floor in dBm |
 
 ## AEE → Compat - KAT
@@ -1125,14 +1128,6 @@ registered.
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_compat_realweather_enabled` | CHECKBOX | `false` | yes | compat_realweather | Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state. |
-
-## AEE → Compat - TFAR
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_tfar_signalMultMax` | SLIDER | `1.5` | yes | compat_tfar | Upper limit of the signal multiplier |
-| `aee_compat_tfar_signalMultMin` | SLIDER | `0.3` | yes | compat_tfar | Lower limit of the signal multiplier |
-| `aee_compat_tfar_signalMultScale` | SLIDER | `0.6` | yes | compat_tfar | Sending multiplier scale from the propagation index |
 
 ## AEE → Core
 

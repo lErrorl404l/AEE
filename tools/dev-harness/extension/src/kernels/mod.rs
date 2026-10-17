@@ -29,25 +29,16 @@ pub fn station_pressure(p_sea: f64, elevation: f64, lapse_rate: f64) -> f64 {
     p_sea * ratio.powf(PRESSURE_EXPONENT)
 }
 
-/// Relative humidity (%) after the surface modifier, the diurnal coupling and
-/// the overcast-or-rain saturation constraint.  Mirrors the SQF kernel
-/// `fnc_calculateRelativeHumidity`.
+/// Relative humidity (%) at the current temperature from the day's vapour
+/// pressure, e = RH_mean/100 * e_w(T_mean), RH = 100 e / e_w(T_now) (WMO-No. 8
+/// Magnus). Mirrors the SQF kernel `fnc_calculateRelativeHumidity`.
 #[must_use]
-pub fn relative_humidity(
-    rh_base: f64,
-    surface_mod: f64,
-    t_ref: f64,
-    t_now: f64,
-    overcast: f64,
-    rain: f64,
-) -> f64 {
-    let mut rh = (rh_base + surface_mod).max(0.0).min(HUMIDITY_SATURATION);
-    rh *= 1.0 + (t_ref - t_now) * HUMIDITY_DIURNAL_COEF;
-    rh = rh.max(0.0).min(HUMIDITY_SATURATION);
-    if overcast > HUMIDITY_OVERCAST_GATE || rain > 0.0 {
-        rh = HUMIDITY_SATURATION;
-    }
-    rh.round()
+pub fn relative_humidity(rh_mean: f64, t_mean: f64, t_now: f64) -> f64 {
+    let e = rh_mean.max(0.0).min(HUMIDITY_SATURATION) / 100.0
+        * HUMIDITY_MAGNUS_A
+        * (HUMIDITY_MAGNUS_B * t_mean / (HUMIDITY_MAGNUS_C + t_mean)).exp();
+    let ew = HUMIDITY_MAGNUS_A * (HUMIDITY_MAGNUS_B * t_now / (HUMIDITY_MAGNUS_C + t_now)).exp();
+    (100.0 * e / ew).max(0.0).min(HUMIDITY_SATURATION).round()
 }
 
 /// Air density (kg/m3) from temperature, pressure and relative humidity.

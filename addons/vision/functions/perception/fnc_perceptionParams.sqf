@@ -47,8 +47,8 @@ Arguments:
   9: Number - Purkinje tint strength, 0 to 1
   10: Array - vanilla base-grade anchor [brightness, contrast, offset]
   11: Number - bounded desaturation alpha, 0 to 0.10
-  12: Number - atmospheric desaturation alpha, 0 to 0.5
-               (fnc_perceptionAtmosphericColor)
+  12: Number - atmospheric desaturation alpha, 0 to 0.5 (the driver passes
+               0: aerial perspective is the engine fog's, see fnc_updateFog)
   13: Number - acuity grain light-level scale, 0 and up (1 is the base)
 
 Returns:

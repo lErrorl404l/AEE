@@ -26,7 +26,11 @@ params [["_massKg", 1, [0]], ["_distanceM", 1, [0]]];
 if (_massKg <= 0 || _distanceM <= 0) exitWith { [0, 0] };
 
 private _w = _massKg ^ (1 / 3);
-private _z = _distanceM / _w;
+// The Swisdak fits start at Z = 0.2 m/kg^(1/3).  Closer is contact range,
+// where the real pressure only rises; returning 0 there (the old fall
+// through) made a charge at a soldier's feet harmless.  Z is held at the
+// fit's lower bound, the smallest pressure the fit can vouch for.
+private _z = (_distanceM / _w) max 0.2;
 
 // ─── Incident overpressure (kPa) ─────────────────────────────────────────
 // log-form fit: ln(P) = A + B·lnZ + C·(lnZ)^2 + ... evaluated as

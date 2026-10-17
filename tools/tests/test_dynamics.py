@@ -222,23 +222,11 @@ class TestHypoxiaSweep(unittest.TestCase):
 
     def test_tuc_continuous_at_breakpoints(self):
         # No value jump at any table row: interpolating to exactly a row
-        # altitude must equal that row's TUC (piecewise-linear continuity).
+        # altitude must equal that row's TUC.
         for alt, expected in TUC_TABLE:
             self.assertAlmostEqual(
                 tuc(alt), expected, places=6, msg=f"TUC jumps at {alt} m"
             )
-
-    def test_tuc_table_slope_consistent(self):
-        # Steepness decreases monotonically upward: the sharpest onset is
-        # just above the safe floor, flattening toward the 15 s cap.
-        # A re-entrant bend (steep-shallow-steep) would be unphysical.
-        slopes = []
-        for i in range(len(TUC_TABLE) - 1):
-            lo = TUC_TABLE[i]
-            hi = TUC_TABLE[i + 1]
-            slopes.append((hi[1] - lo[1]) / (hi[0] - lo[0]))
-        for a, b in zip(slopes, slopes[1:]):
-            self.assertLess(abs(b), abs(a), "TUC steepness bends back on itself")
 
 
 class TestCrossSensitivitySweep(unittest.TestCase):

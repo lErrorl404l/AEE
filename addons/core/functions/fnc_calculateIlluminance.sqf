@@ -43,23 +43,22 @@ if (count _lightGlobal >= 4) then {
     if (_dir isEqualType [] && {count _dir == 3}) then { _lightDir = _dir; };
 };
 
-// Convert the engine's sun/moon vector to azimuth/elevation (degrees).
-// Arma's light direction is a world vector pointing FROM the light: x=east,
-// y=south, z=up (Arma compass convention: north = -y).  Azimuth is measured
-// clockwise from north (getDir convention).  Elevation is angle above
-// horizon, 0 at horizon, 90 straight up.
+// Convert the engine's sun/moon vector to the azimuth/elevation OF THE
+// LIGHT (degrees).  getLighting's lightDirection is the direction the light
+// TRAVELS, so the light itself lies along its negation.  Arma world axes are
+// x = east, y = north, z = up (getDir 0 = +y).  For the light direction
+// d = -v:  elevation = asin(d_z / |d|),  azimuth = atan2(d_east, d_north),
+// clockwise from north.  The recorded docker probe [0.0255, 0.472, -0.881]
+// (sensor-value-audit) is a sun 61.8 deg high, 3.1 deg west of south.
 private _lightAzimuth = 0;
 private _lightElevation = 0;
 private _lightLen = vectorMagnitude _lightDir;
 if (_lightLen > 0.001) then {
-    _lightElevation = asin ((_lightDir select 2) / _lightLen);
-    private _flatX = _lightDir select 0;
-    private _flatY = _lightDir select 1;
-    private _flatLen = sqrt ((_flatX * _flatX) + (_flatY * _flatY));
-    if (_flatLen > 0.001) then {
-        // atan2-like: north (0, -1) → 0°, east (1, 0) → 90°
-        private _ang = _flatX atan2 (-_flatY);
-        _lightAzimuth = _ang mod 360;
+    _lightElevation = asin (-(_lightDir select 2) / _lightLen);
+    private _east = -(_lightDir select 0);
+    private _north = -(_lightDir select 1);
+    if ((sqrt ((_east * _east) + (_north * _north))) > 0.001) then {
+        _lightAzimuth = (_east atan2 _north) mod 360;
         if (_lightAzimuth < 0) then { _lightAzimuth = _lightAzimuth + 360; };
     };
 };
@@ -97,27 +96,15 @@ private _cloudLoss = (_overcastS * 0.85) min 0.85;
 private _cloudTransmission = 1 - _cloudLoss;
 private _moonLight = 0 max ((moonIntensity * _cloudTransmission) - (_rainS * 0.5));
 
-// ─── Twilight glow (NVG-relevant sky light) ──────────────────────────────
-// Image intensifiers respond to VISIBLE + near-infrared, and the twilight
-// sky glow (scattered sunlight) is huge: ~400 lux at the horizon, ~3 lux
-// at civil twilight end (-6 deg), ~0.008 lux at nautical (-12 deg),
-// ~0.0008 lux at astronomical (-18 deg).  The moonlight model alone does
-// NOT capture this, so NVG would not dim through dawn or brighten through
-// dusk.  The sun elevation comes from the verified solar model.
-//
-// Fit: lux = 10 ^ (2.6 - 0.3 * |elevation|) for the sun below the horizon.
-//   elevation  0  -> 10^2.6  = 398 lux
-//   elevation -6  -> 10^0.8  =  6.3 lux
-//   elevation -12 -> 10^-1.0 =  0.10 lux
-//   elevation -18 -> 10^-2.8 = 0.0016 lux (falls below the starlight floor)
-// Above the horizon it is daylight and NVG is not used, so the term only
-// applies when the sun is at or below the horizon.
+// ─── Twilight glow (scattered sunlight, sun below the horizon) ────────────
+// Measured clear-sky horizontal illuminance by solar altitude (Schlyter,
+// section 10; fnc_twilightIlluminance): 759 lx at 0 deg, 3.41 lx at -6,
+// 0.00806 lx at -12, 0.000645 lx at -18.  Cloud cuts it as it cuts the
+// global light, 1 - 0.75 N^3.4 (Kasten & Czeplak 1980).
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 if !(_sunElev isEqualType 0) then { _sunElev = -90; };
-private _twilightLux = 0;
-if (_sunElev <= 0) then {
-    _twilightLux = 10 ^ (2.6 - 0.3 * (abs _sunElev));
-};
+private _twilightLux = ([_sunElev] call FUNC(twilightIlluminance)) * (1 - 0.75 * ((_overcastS max 0 min 1) ^ 3.4));
+missionNamespace setVariable [QGVAR(twilightLux), _twilightLux];
 
 // ─── Starlight floor (SKYBOX COMPATIBILITY HOOK) ────────────────────────
 // The 0.001 lux starlight baseline represents the assumed moonless night
@@ -229,19 +216,17 @@ if (!isNull _unit && hasInterface && _scanDue) then {
     // player's position, the atmosphere between them and each light
     // source attenuates the flux: T = e^(-γd).
     //
-    // Rain: γ_rain ≈ 15 dB/km at heavy rain (25 mm/h).  The engine
-    // `rain` variable (0-1) maps linearly: rain=1 → 50 mm/h (storm),
-    // rain=0.5 → 25 mm/h (heavy).  We use the ITU relationship:
-    //   γ (dB/km) = k × R^α, with k ≈ 1.075, α ≈ 0.698 (optical)
-    // Simplified: rain=1 maps to ~30 dB/km, rain=0.5 to ~10 dB/km.
+    // Rain: the visible-band extinction of Atlas (1953), the relation the
+    // vision and optics modules use: sigma = 0.21 * R^0.74 per km, R the rain
+    // rate in mm/h (engine level * ENGINE_RAIN_FULL_MMH).  25 mm/h gives
+    // 2.3 /km (9.9 dB/km).  (ITU-R P.838 is a RADIO relation and does not
+    // apply to light.)
     //
     // Fog: the engine `fog` value (0-1) approximates visibility.  Dense
     // fog (fog > 0.5, vis < 200 m) can exceed 100 dB/km.  We use a
     // simplified Kim model: γ_fog ≈ 10^(1.7 - 2.0 × vis_km) for vis < 1 km.
-    private _rainExtinction = if (_rainS > 0.1) then {
-        // Rain attenuation: 0-30 dB/km mapped from rain 0-1
-        private _dBkm = _rainS * 30;
-        _dBkm / 4343   // convert dB/km to per-metre: γ = dB_km / (10/ln(10) × 1000)
+    private _rainExtinction = if (_rainS > 0) then {
+        0.21 * ((_rainS * ENGINE_RAIN_FULL_MMH) ^ 0.74) / 1000   // per metre
     } else { 0 };
 
     // Fog: use `fog` variable if available, estimate from overcast + humidity.

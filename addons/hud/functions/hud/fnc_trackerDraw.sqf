@@ -1,10 +1,10 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_optics_fnc_trackerDraw
+ * aee_hud_fnc_trackerDraw
  *
  * ATAK-style presentation for the signal-dependent tracker.  It draws the
  * fuzzy markers and the uncertainty ellipse from the published tracker state
- * (aee_optics_trackerTracks) on the map and on the HUD.  It is read-only: it
+ * (aee_hud_trackerTracks) on the map and on the HUD.  It is read-only: it
  * creates no marker and edits none, and it changes no other module's state.
  *
  * The map overlay registers one Draw handler on the engine map control, the

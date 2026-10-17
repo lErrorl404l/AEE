@@ -9,7 +9,7 @@ addons/maritime against their published references:
   fnc_calculateMudAccretion.sqf     — surface-type mud test and exponential decay
   fnc_calculateRiverWaterLevel.sqf  — Nash cascade of three linear reservoirs
   fnc_calculateRouteDegradation.sqf — NRMM cone-index passability
-  fnc_calculateCompassDeviation.sqf — WMM 2020 coarse declination table
+  (compass declination: see test_wmm.py, the WMM2025 kernel)
 
 They fail if the formulas drift from the SQF source of truth.
 
@@ -100,40 +100,6 @@ def route_passability(cone_index, ground_pressure):
     cone_index = cone_index - (ground_pressure * 0.00002)
     cone_index = min(max(cone_index, 0.1), 1.0)
     return min(max(cone_index / 1.0, 0.0), 1.0)
-
-
-def declination(lon_deg, lat_deg):
-    """Mirror of fnc_calculateCompassDeviation.sqf (WMM 2020 coarse table).
-
-    Linear interpolation across the longitude bands, a small latitude
-    adjustment, and the final +/-30 degree clamp.
-    """
-    table = [
-        (-180, 10),
-        (-120, 12),
-        (-80, -13),
-        (-20, -5),
-        (0, 1),
-        (40, 6),
-        (90, -3),
-        (120, -5),
-        (150, -9),
-        (180, 10),
-    ]
-    n = len(table)
-    if lon_deg <= table[0][0]:
-        decl = table[0][1]
-    elif lon_deg >= table[n - 1][0]:
-        decl = table[n - 1][1]
-    else:
-        decl = 0.0
-        for i in range(n - 1):
-            lo, hi = table[i], table[i + 1]
-            if lo[0] <= lon_deg <= hi[0]:
-                frac = (lon_deg - lo[0]) / (hi[0] - lo[0])
-                decl = lo[1] + frac * (hi[1] - lo[1])
-    decl = decl + ((lat_deg - 45) * 0.05)
-    return min(max(decl, -30.0), 30.0)
 
 
 class TestEnginePower(unittest.TestCase):
@@ -328,36 +294,6 @@ class TestRouteDegradation(unittest.TestCase):
         for _ in range(100):
             ci = route_passability(ci, 0)
         self.assertEqual(ci, 1.0)
-
-
-class TestCompassDeviation(unittest.TestCase):
-    def test_new_york(self):
-        # New York (40N, 74W): about -12 degrees.
-        self.assertAlmostEqual(declination(-74, 40), -12.2, delta=1.0)
-
-    def test_london(self):
-        # London (51N, 0E): about +1 degree.
-        self.assertAlmostEqual(declination(0, 51), 1.0, delta=1.0)
-
-    def test_tokyo(self):
-        # Tokyo (35N, 139E): about -7.5 degrees.
-        self.assertAlmostEqual(declination(139, 35), -7.5, delta=1.0)
-
-    def test_beyond_table_ends(self):
-        # Longitude past the table clamps to the end values, not NaN.
-        self.assertEqual(declination(-190, 45), 10.0)
-        self.assertEqual(declination(200, 45), 10.0)
-
-    def test_within_30_degree_clamp(self):
-        # The result stays within +/-30 degrees at extreme lat/lon.
-        for lon in range(-180, 181, 30):
-            for lat in range(-80, 81, 20):
-                self.assertTrue(-30 <= declination(lon, lat) <= 30)
-
-    def test_linear_interpolation(self):
-        # Midpoint between two table entries is their average.
-        self.assertAlmostEqual(declination(-100, 45), -0.5, places=3)
-        self.assertAlmostEqual(declination(20, 45), 3.5, places=3)
 
 
 def snow_load_mass(area_m2, depth_m, density_kgm3):

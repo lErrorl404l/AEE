@@ -56,6 +56,13 @@ EXPECTED_HUD_TRACKER = {
     "aee_hud_trackerEnabled",
     "aee_hud_trackerInterval",
     "aee_hud_trackerSuppressIcons",
+    "aee_hud_trackerTxPowerDbm",
+    "aee_hud_trackerAntennaGainDbi",
+    "aee_hud_trackerRxSensitivityDbm",
+    "aee_hud_trackerFrequencyMHz",
+    "aee_hud_trackerReportStationary",
+    "aee_hud_trackerReportSlow",
+    "aee_hud_trackerReportFast",
 }
 
 EXPECTED_HUD_SYMBOLOGY = {

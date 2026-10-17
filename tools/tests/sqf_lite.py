@@ -34,6 +34,7 @@ registry from fnc_getMaterialThermal.sqf) and the `overcast` global.
 from __future__ import annotations
 
 import math
+import struct
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -83,7 +84,10 @@ def tokenize(text: str) -> list[Tok]:
         elif s in "[]{}();,+-*/^<>=!&|":
             toks.append(Tok("punct", s, m.start()))
         else:
-            toks.append(Tok("id", s, m.start()))
+            # SQF local variable names are case-insensitive (_P and _p are
+            # one variable), so a local is normalised to lower case here; a
+            # harness that kept the case would pass code the engine breaks.
+            toks.append(Tok("id", s.lower() if re.match(r"_[A-Za-z]", s) else s, m.start()))
     return toks
 
 
@@ -149,6 +153,7 @@ class UnaryCmd:
 class Assign:
     name: str
     expr: Any
+    private: bool = False
 
 
 BINARY_COMMANDS = {
@@ -164,6 +169,10 @@ BINARY_COMMANDS = {
     # hashmap getOrDefault [key, default] - the drag kernel reads the drag
     # table by model name.  Resolved against the HashMap the caller binds.
     "getOrDefault",
+    # hashmap get key: the generated data tables are read this way.
+    "get",
+    # array set [index, value]: in-place element write.
+    "set",
     "pushBack",
     "deleteAt",
     "sort",
@@ -294,6 +303,8 @@ def _sqf_parse_simple_array(text: Any) -> list:
 # which is how `(count _v) == 0` raised "expected ), got _v".
 UNARY_COMMANDS = {
     "count",
+    # createHashMapFromArray [[key, value], ...]: the generated tables.
+    "createHashMapFromArray",
     "abs",
     "toLower",
     "finite",
@@ -369,6 +380,20 @@ UNARY_COMMANDS = {
 
 # Mutating array builtins.  The interpreter holds Python lists by reference,
 # so append/pop on the list mutate the variable's value, as SQF does.
+def _sqf_set(arr: Any, spec: Any) -> None:
+    """arr set [index, value]: writes in place, padding with nil (SQF grows
+    an array written past its end); a hashmap set [key, value] stores."""
+    key, value = spec[0], spec[1]
+    if isinstance(arr, dict):
+        arr[key] = value
+        return None
+    i = int(key)
+    while len(arr) <= i:
+        arr.append(None)
+    arr[i] = value
+    return None
+
+
 def _sqf_pushBack(arr: list, value: Any) -> None:
     arr.append(value)
     return None
@@ -450,6 +475,9 @@ BUILTINS: dict[str, Any] = {
     "isEqualTypeAny": _sqf_isEqualTypeAny,
     "isNotEqualTo": _sqf_isNotEqualTo,
     "getOrDefault": _sqf_getOrDefault,
+    "get": lambda m, k: m.get(k) if isinstance(m, dict) else None,
+    "set": _sqf_set,
+    "createHashMapFromArray": lambda pairs: {p[0]: p[1] for p in pairs},
     "isKindOf": _sqf_isKindOf,
     "vectorDiff": _sqf_vectorDiff,
     "vectorAdd": _sqf_vectorAdd,
@@ -607,7 +635,7 @@ class SqfParser:
             self.expect("=")
             expr = self.parse_expr()
             self.optional_semi()
-            return Assign(name.value, expr)
+            return Assign(name.value, expr, True)
         if t.kind == "id" and t.value.startswith("_"):
             # bare assignment inside a block: _x = expr;
             name = self.next()
@@ -654,7 +682,7 @@ class SqfParser:
             var = self.next()
             # loop var is a quoted string: for "_i" from 1 to 12 do
             if var.kind == "str":
-                loop_var = var.value
+                loop_var = var.value.lower()
             elif var.kind == "id":
                 loop_var = var.value.strip('"')
             else:
@@ -702,7 +730,7 @@ class SqfParser:
             name = self.next()
             # SQF params names are QUOTED strings: ["_obj", default, type]
             if name.kind == "str":
-                name_value = name.value
+                name_value = name.value.lower()
             elif name.kind == "id" and name.value.startswith("_"):
                 name_value = name.value
             else:
@@ -739,7 +767,7 @@ class SqfParser:
             t = self.next()
             if t.kind != "str":
                 raise SyntaxError(f"lambda param must be a string, got {t.value}")
-            names.append(t.value)
+            names.append(t.value.lower())
             if self.peekv() == ",":
                 self.next()
         self.expect("]")
@@ -1025,7 +1053,21 @@ def constants_defines() -> dict[str, float]:
     return _CONSTANTS_CACHE
 
 
+def _f32(value: Any) -> Any:
+    """Round a number to IEEE single precision, the engine's number type."""
+    if isinstance(value, float):
+        return struct.unpack("f", struct.pack("f", value))[0] if math.isfinite(value) else value
+    if isinstance(value, list):
+        return [_f32(v) for v in value]
+    return value
+
+
 class SqfRuntime:
+    # When True every evaluated number is rounded to float32, as Arma's
+    # engine stores it.  A kernel that relies on double precision (a raw
+    # Julian Day, a large product of an angle rate) fails under it.
+    float32 = False
+
     def __init__(self, globals_: dict[str, Any] | None = None):
         # true/false/nil and the mutating array builtins are engine words, not
         # variables; inject them before any call-supplied global so a caller
@@ -1034,7 +1076,10 @@ class SqfRuntime:
         self.globals: dict[str, Any] = dict(BUILTINS)
         self.globals.update(constants_defines())
         if globals_:
-            self.globals.update(globals_)
+            # Injected locals follow the same case-insensitive rule.
+            self.globals.update(
+                {(k.lower() if re.match(r"_[A-Za-z]", k) else k): v for k, v in globals_.items()}
+            )
         self.scopes: list[dict[str, Any]] = [{}]
 
     def get(self, name: str) -> Any:
@@ -1071,6 +1116,12 @@ class SqfRuntime:
         return r
 
     def eval(self, node: Any) -> Any:
+        value = self._eval(node)
+        if self.float32 and isinstance(value, float):
+            return _f32(value)
+        return value
+
+    def _eval(self, node: Any) -> Any:
         if isinstance(node, Num):
             return node.v
         if isinstance(node, Str):
@@ -1256,6 +1307,8 @@ class SqfRuntime:
                 # Damage queries used by fnc_updateDamageSystem.
                 "getAllHitPointsDamage",
                 "isDamageAllowed",
+                # Hashmap construction: the generated data tables.
+                "createHashMapFromArray",
             ):
                 fn = self.globals.get(node.op)
                 if callable(fn):
@@ -1268,7 +1321,7 @@ class SqfRuntime:
             for i, el in enumerate(arr):
                 self.push()
                 self.set("_x", el)
-                self.set("_forEachIndex", float(i))
+                self.set("_foreachindex", float(i))
                 # Do NOT re-bind code.closure here: the block runs in the
                 # current scope chain, so outer variables are already visible.
                 # Re-binding a captured snapshot resets a variable that an
@@ -1282,7 +1335,7 @@ class SqfRuntime:
                 # Propagate those writes before the block scope is popped.
                 inner = self.scopes[-1]
                 for k, v in list(inner.items()):
-                    if k in ("_x", "_forEachIndex"):
+                    if k in ("_x", "_foreachindex"):
                         continue
                     for outer in reversed(self.scopes[:-1]):
                         if k in outer:
@@ -1298,14 +1351,14 @@ class SqfRuntime:
             for i, el in enumerate(arr):
                 self.push()
                 self.set("_x", el)
-                self.set("_forEachIndex", float(i))
+                self.set("_foreachindex", float(i))
                 if isinstance(code, Lambda):
                     r = self.run(code.body)
                 else:
                     r = None
                 inner = self.scopes[-1]
                 for k, v in list(inner.items()):
-                    if k in ("_x", "_forEachIndex"):
+                    if k in ("_x", "_foreachindex"):
                         continue
                     for outer in reversed(self.scopes[:-1]):
                         if k in outer:
@@ -1365,30 +1418,49 @@ class SqfRuntime:
                 raise ExitSignal(self.run(s.value))
             return None
         if isinstance(s, Assign):
-            self.set(s.name, self.eval(s.expr))
+            value = self.eval(s.expr)
+            if s.private:
+                # private declares in the CURRENT scope (it shadows an outer
+                # variable of the same, case-insensitive, name).
+                self.set(s.name, value)
+            else:
+                # A plain assignment writes the nearest scope that already
+                # holds the name, else creates it in the current scope.
+                for scope in reversed(self.scopes):
+                    if s.name in scope:
+                        scope[s.name] = value
+                        break
+                else:
+                    self.set(s.name, value)
             return None
         if isinstance(s, ExprStmt):
             return self.eval(s.expr)
         if isinstance(s, If):
-            # SQF if/else blocks share the ENCLOSING scope - a variable
-            # assigned inside a block is visible after it.  Do NOT push
-            # a scope here (pushing discards the assignment on pop).
-            # SQF `if` is an expression: return the executed branch's value,
-            # so a lambda whose last statement is an if returns its result.
-            if self.eval(s.cond):
-                return self.run(s.then)
-            elif s.els:
-                return self.run(s.els)
-            return None
+            # An if/else block is a new SQF scope: a `private` (or a first)
+            # assignment inside it is local to the block, while a plain
+            # assignment to an outer variable writes that variable (the
+            # Assign rule above).  SQF `if` is an expression: return the
+            # executed branch's value.
+            branch = s.then if self.eval(s.cond) else s.els
+            if not branch:
+                return None
+            self.push()
+            try:
+                return self.run(branch)
+            finally:
+                self.pop()
         if isinstance(s, For):
             lo = int(self.eval(s.lo))
             hi = int(self.eval(s.hi))
             for i in range(lo, hi + 1):
+                self.push()
                 self.set(s.var, float(i))
                 try:
                     self.run(s.body)
                 except ContinueSignal:
-                    continue
+                    pass
+                finally:
+                    self.pop()
             return None
         if isinstance(s, While):
             guard = 0
@@ -1430,9 +1502,17 @@ def run_sqf(
     path: str | Path,
     args: list[Any],
     globals_: dict[str, Any] | None = None,
+    float32: bool = False,
 ) -> Any:
-    """Run an SQF function file with the given args."""
+    """Run an SQF function file with the given args.
+
+    float32=True evaluates every number in IEEE single precision, the
+    engine's number type, so precision bugs show in the test suite.
+    """
     rt = SqfRuntime(globals_)
+    rt.float32 = float32
+    if float32:
+        args = [_f32(float(a)) if isinstance(a, int) and not isinstance(a, bool) else _f32(a) for a in args]
     stmts = load_sqf(path)
     # bind params from the first Params statement
     for s in stmts:

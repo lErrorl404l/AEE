@@ -37,8 +37,6 @@ private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_T isEqualType 0) then { _T = 15; };
 private _overcast = missionNamespace getVariable [QEGVAR(core,overcast), 0];
 if !(_overcast isEqualType 0) then { _overcast = 0; };
-private _snow = missionNamespace getVariable [QEGVAR(core,snowfallRate), 0];
-if !(_snow isEqualType 0) then { _snow = 0; };
 
 private _grid = missionNamespace getVariable [QGVAR(iceGrid), -1];
 if (_grid isEqualType 0) then {

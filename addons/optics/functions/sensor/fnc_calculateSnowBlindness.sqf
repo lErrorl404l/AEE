@@ -35,7 +35,6 @@ if (sunOrMoon <= 0) exitWith {
 // ─── Inputs ────────────────────────────────────────────────────────────────
 private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 private _overcast  = overcast;
-private _daytime   = dayTime;
 
 // No snow → no snow blindness
 if (_snowDepth <= 0) exitWith {
@@ -49,8 +48,8 @@ private _baseMax = missionNamespace getVariable [QGVAR(snowBlindnessBase), 0.1];
 private _baseBlindness = (_snowDepth min _baseMax) * (1 - _overcast);
 
 // ─── Solar elevation factor (peak at noon, zero at horizon) ────────────────
-private _dayFraction    = _daytime / 24;
-private _solarElevation = sin ((_dayFraction - 0.25) * 360) * 90 max 0;
+// The astronomical sun (date, latitude, longitude; fnc_calculateSolarRadiation).
+private _solarElevation = (missionNamespace getVariable [QEGVAR(core,currentSunElevation), 0]) max 0;
 _baseBlindness = _baseBlindness * (_solarElevation / 90);
 
 // ─── Eye protection adaption factor ────────────────────────────────────────

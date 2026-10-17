@@ -274,6 +274,14 @@
       "reason": "non-air token"
     },
     {
+      "class": "Truck_F",
+      "kind": "engine_base",
+      "is_air": false,
+      "state": "excluded_non_ground",
+      "variant": null,
+      "reason": "no positive ground class-table row"
+    },
+    {
       "class": "UAV",
       "kind": "engine_base",
       "is_air": true,

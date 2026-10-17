@@ -13,11 +13,12 @@ Sections, each a hashmap:
   engine_classes      id -> [bsfc_g_kwh, fuel_id]
   fuels               id -> [density_g_l, lhv_mj_kg]
   rolling_resistance  id -> crr
+  drag_coefficients   id -> cd
   terrain_multipliers ground_state -> multiplier
   thermal             id -> value
 
 Arguments: none.
-Return Value: HASHMAP - the five sections.
+Return Value: HASHMAP - the six sections.
 Public: No
 */
 
@@ -39,6 +40,11 @@ private _table = createHashMapFromArray [
         ["dirt_road", 0.05575],
         ["sand", 0.3]
     ]],
+    ["drag_coefficients", createHashMapFromArray [
+        ["wheeled_light", 0.59],
+        ["wheeled_truck", 0.6],
+        ["tracked", 1.05]
+    ]],
     ["terrain_multipliers", createHashMapFromArray [
         ["Normal", 1.0],
         ["Dusty", 1.5],
@@ -58,7 +64,9 @@ private _table = createHashMapFromArray [
         ["heat_reject_fraction", 0.333333],
         ["convection_natural_w_m2k", 5.6],
         ["convection_forced_w_m2k_per_ms", 3.9],
-        ["coolant_tau_s", 90.0]
+        ["coolant_tau_s", 90.0],
+        ["idle_fuel_lph_ref", 3.0283],
+        ["idle_ref_power_kw", 298.28]
     ]]
 ];
 

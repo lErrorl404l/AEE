@@ -66,8 +66,10 @@ private _thetaDeg = _thetaArc / 3600;
 // #179), not a direct CfgWorlds read or the position Y axis: map Y is
 // metres, not degrees.  The source normalises the BIS inverted sign and
 // returns the magnitude for consumers like this one.
-private _lat = ([] call EFUNC(lib,getWorldLocation)) select 1;
-if (_lat == 0) then { _lat = 40; }; // fallback: temperate default
+// SIGNED (positive north): a southern observer sees the southern sky, so
+// |lat| would put Polaris over Tanoa.  The shared source already falls back
+// to 40 N when the world holds no latitude.
+private _lat = ([] call EFUNC(lib,getWorldLocation)) select 0;
 
 // ─── Local sidereal time (degrees) ────────────────────────────────────────
 // Shared kernel (Meeus Ch. 12), so the star field and the meteor radiants

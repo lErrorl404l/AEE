@@ -1,40 +1,44 @@
 #include "..\..\script_component.hpp"
 
 /*
-UV Index (0–13) after the standard clear-sky model (ISO 17166 / CIE).
+UV Index, the WHO/WMO/ISO 17166 erythemal index.
 
-Solar elevation drives a sine term.  The ozone column absorbs UV-B by a
-Beer-Lambert term, altitude adds about 10 % per 1000 m, and overcast reduces
-the index.
+Clear sky, Madronich (2007), "Analytic formula for the clear-sky UV index",
+Photochem. Photobiol. 83:1537, fitted to radiative-transfer runs:
+  UVI_clear = 12.50 * mu0^2.42 * (ozone / 300 DU)^-1.23
+mu0 is the cosine of the solar zenith angle, taken from the astronomical
+sun (aee_core_currentSunElevation: date, latitude, longitude), so the season
+and the latitude are in the sun angle and no month factor is needed.  The
+Earth-Sun distance adds the +/-3.3 % annual term (perihelion early January).
+
+Altitude: +10 % per 1000 m (WHO 2002, Global Solar UV Index: A Practical
+Guide, p. 5).  Cloud: the overcast cloud modification factor is 0.2-0.5
+for 8 oktas in the measured studies Calbo et al. (2005, Rev. Geophys. 43,
+RG2002) review; the midpoint 0.35 is used, linear in cover.
 
 Stored in GVAR(uvIndex) and EGVAR(core,currentUVIndex).
 */
 
 private _overcast = overcast;
-private _month    = date select 1;
 
-// ─── Solar elevation from daytime
-//     Sin wave: peak at noon (dayFraction = 0.5), horizon at 06:00 / 18:00
-private _dayFraction    = dayTime / 24;
-private _solarElevation = sin ((_dayFraction - 0.25) * 360) * 90 max 0;
-private _sinElev        = sin _solarElevation;
+// ─── Solar zenith angle (astronomical sun) ────────────────────────────────
+private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+if !(_sunElev isEqualType 0) then { _sunElev = -90; };
+private _mu0 = (sin _sunElev) max 0;
 
-// ─── Clear-sky UV index: 12.5 × sin(elevation) for overhead sun
-private _uvClear = 12.5 * _sinElev;
-
-// ─── Ozone absorption (Beer-Lambert)
-//     300 DU is the mid-latitude column.  The 0.0013 coefficient folds the
-//     ozone cross-section over the UV-B band.  (A 0.05 coefficient — an
-//     earlier value — made the index collapse to 0 at every realistic
-//     ozone level: exp(-0.05*300/sin60) ~ 2e-9.  The correct coefficient
-//     reproduces a UVI of ~7 at 60 deg elevation and 300 DU, matching
-//     published clear-sky UVI values.)  A mission override is used when
-//     present.
+// ─── Clear-sky index (Madronich 2007) ─────────────────────────────────────
+// A mission override of the ozone column is used when present.
 private _ozoneDU = missionNamespace getVariable [QGVAR(ozoneDU), 300];
-private _ozoneFactor = 0;
-if (_sinElev > 0.001) then {
-    _ozoneFactor = exp (-0.0013 * _ozoneDU / _sinElev);
+if !(_ozoneDU isEqualType 0) then { _ozoneDU = 300; };
+private _uvClear = 0;
+if (_mu0 > 0) then {
+    _uvClear = 12.50 * (_mu0 ^ 2.42) * ((_ozoneDU max 100) / 300) ^ -1.23;
 };
+
+// ─── Earth-Sun distance (1/r^2, eccentricity 0.0167) ──────────────────────
+private _date = date;
+private _doy = floor (275 * (_date select 1) / 9) - (2 * floor (((_date select 1) + 9) / 12)) + (_date select 2) - 30;
+private _distFactor = 1 + 0.033 * cos (360 * (_doy - 3) / 365);
 
 // ─── Altitude bonus: +10 % per 1000 m
 private _player = call CBA_fnc_currentUnit;
@@ -45,15 +49,12 @@ if !(_altitude isEqualType 0) then { _altitude = 0; };
 if (!isNil "_player" && {!isNull _player}) then { _altitude = (getPosASL _player) select 2; };
 private _altFactor = 1 + (_altitude / 1000) * 0.1;
 
-// ─── Overcast reduction: full overcast cuts 70 %
-private _cloudFactor = 1 - _overcast * 0.7;
+// ─── Cloud modification factor (overcast CMF 0.35) ───────────────────────
+private _cloudFactor = 1 - _overcast * 0.65;
 
-// ─── Summer months (northern-hemisphere) boost
-private _monthFactor = [1.0, 1.3] select ((_month >= 5) && (_month <= 8));
-
-// ─── Compute
-private _uvIndex = _uvClear * _ozoneFactor * _altFactor * _cloudFactor * _monthFactor;
-_uvIndex = round (_uvIndex max 0 min 13);
+// ─── Compute (the published index is an integer; it is open-ended) ──────
+private _uvIndex = _uvClear * _distFactor * _altFactor * _cloudFactor;
+_uvIndex = round (_uvIndex max 0);
 
 missionNamespace setVariable [QGVAR(uvIndex), _uvIndex];
 missionNamespace setVariable [QEGVAR(core,currentUVIndex), _uvIndex];

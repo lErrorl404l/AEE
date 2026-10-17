@@ -166,7 +166,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:276"
+        "addons/core/functions/fnc_calculateIlluminance.sqf:261"
       ]
     },
     {
@@ -175,7 +175,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:275"
+        "addons/core/functions/fnc_calculateIlluminance.sqf:260"
       ]
     },
     {
@@ -184,8 +184,8 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:275",
-        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:660"
+        "addons/core/functions/fnc_calculateIlluminance.sqf:260",
+        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:669"
       ]
     },
     {
@@ -194,7 +194,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:276"
+        "addons/core/functions/fnc_calculateIlluminance.sqf:261"
       ]
     },
     {
@@ -262,7 +262,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/functions/fnc_calculatePenetration.sqf:39",
+        "addons/armour/functions/fnc_calculatePenetration.sqf:66",
         "addons/armour/functions/fnc_penetrationGate.sqf:56",
         "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:236",
         "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:244",
@@ -272,7 +272,7 @@
         "addons/thermal/functions/display/fnc_getThermalSelections.sqf:31",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:205",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:154",
-        "addons/thermal_display/functions/fusion/fnc_applyFusionOverlay.sqf:503",
+        "addons/thermal_display/functions/fusion/fnc_applyFusionOverlay.sqf:502",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:67"
       ]
     },
@@ -307,6 +307,8 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
+        "addons/altitude/XEH_postInit.sqf:43",
+        "addons/altitude/functions/altitude/fnc_calculateHypoxia.sqf:35",
         "addons/ltm/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/weatherfx/functions/weather/fnc_applyExhaustShimmer.sqf:262",
@@ -362,7 +364,7 @@
         "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",
         "addons/vehicles/functions/fnc_classifyVehicle.sqf:129",
-        "addons/vehicles/functions/fnc_updateFuelConsumption.sqf:109"
+        "addons/vehicles/functions/fnc_updateFuelConsumption.sqf:117"
       ]
     },
     {
@@ -415,6 +417,15 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:117",
         "addons/mobility/functions/fnc_calculateSSF.sqf:63",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:79"
+      ]
+    },
+    {
+      "class": "Truck_F",
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/vehicles/functions/fnc_updateFuelConsumption.sqf:126"
       ]
     },
     {

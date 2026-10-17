@@ -1,0 +1,249 @@
+{
+ "schema": "aee.gnss.measured_accuracy/1",
+ "source": "FAA William J. Hughes Technical Center, GPS SPS Performance Analysis Report #125 (30 April 2024), Tables 5-2 (WAAS reference stations) and 7-2 (IGS high-rate sites): 95% horizontal and vertical single-frequency SPS position error, 1 Jan - 31 Mar 2024, 1 s data. https://www.nstb.tc.faa.gov/reports/FAA_SPS_PAN_Report_125_v1.0.pdf",
+ "period": [
+  "2024-01-01",
+  "2024-03-31"
+ ],
+ "coords_note": "site coordinates are the cities' (approximate, to ~0.1 deg); they place the site in geomagnetic latitude only",
+ "sites": [
+  {
+   "site": "Albuquerque",
+   "lat": 35.08,
+   "lon": -106.65,
+   "h95_m": 1.93,
+   "v95_m": 4.33
+  },
+  {
+   "site": "Anchorage",
+   "lat": 61.22,
+   "lon": -149.9,
+   "h95_m": 2.58,
+   "v95_m": 6.02
+  },
+  {
+   "site": "Atlanta",
+   "lat": 33.75,
+   "lon": -84.39,
+   "h95_m": 2.32,
+   "v95_m": 3.75
+  },
+  {
+   "site": "Barrow",
+   "lat": 71.29,
+   "lon": -156.79,
+   "h95_m": 2.89,
+   "v95_m": 7.34
+  },
+  {
+   "site": "Bethel",
+   "lat": 60.79,
+   "lon": -161.76,
+   "h95_m": 2.38,
+   "v95_m": 6.71
+  },
+  {
+   "site": "Billings",
+   "lat": 45.78,
+   "lon": -108.5,
+   "h95_m": 2.15,
+   "v95_m": 3.84
+  },
+  {
+   "site": "Boston",
+   "lat": 42.36,
+   "lon": -71.06,
+   "h95_m": 2.55,
+   "v95_m": 3.59
+  },
+  {
+   "site": "Cleveland",
+   "lat": 41.5,
+   "lon": -81.69,
+   "h95_m": 2.3,
+   "v95_m": 3.45
+  },
+  {
+   "site": "Cold Bay",
+   "lat": 55.2,
+   "lon": -162.72,
+   "h95_m": 2.03,
+   "v95_m": 6.32
+  },
+  {
+   "site": "Fairbanks",
+   "lat": 64.84,
+   "lon": -147.72,
+   "h95_m": 2.83,
+   "v95_m": 6.03
+  },
+  {
+   "site": "Gander",
+   "lat": 48.95,
+   "lon": -54.6,
+   "h95_m": 3.05,
+   "v95_m": 3.79
+  },
+  {
+   "site": "Honolulu",
+   "lat": 21.31,
+   "lon": -157.86,
+   "h95_m": 10.72,
+   "v95_m": 6.94
+  },
+  {
+   "site": "Houston",
+   "lat": 29.76,
+   "lon": -95.37,
+   "h95_m": 2.35,
+   "v95_m": 4.25
+  },
+  {
+   "site": "Juneau",
+   "lat": 58.3,
+   "lon": -134.42,
+   "h95_m": 2.25,
+   "v95_m": 4.48
+  },
+  {
+   "site": "Kansas City",
+   "lat": 39.1,
+   "lon": -94.58,
+   "h95_m": 2.14,
+   "v95_m": 3.68
+  },
+  {
+   "site": "Kotzebue",
+   "lat": 66.9,
+   "lon": -162.6,
+   "h95_m": 2.83,
+   "v95_m": 6.95
+  },
+  {
+   "site": "Los Angeles",
+   "lat": 34.05,
+   "lon": -118.24,
+   "h95_m": 2.38,
+   "v95_m": 5.1
+  },
+  {
+   "site": "Miami",
+   "lat": 25.76,
+   "lon": -80.19,
+   "h95_m": 3.19,
+   "v95_m": 4.55
+  },
+  {
+   "site": "Minneapolis",
+   "lat": 44.98,
+   "lon": -93.27,
+   "h95_m": 2.2,
+   "v95_m": 3.46
+  },
+  {
+   "site": "Oakland",
+   "lat": 37.8,
+   "lon": -122.27,
+   "h95_m": 2.4,
+   "v95_m": 5.28
+  },
+  {
+   "site": "Salt Lake City",
+   "lat": 40.76,
+   "lon": -111.89,
+   "h95_m": 2.01,
+   "v95_m": 4.36
+  },
+  {
+   "site": "San Jose Del Cabo",
+   "lat": 23.06,
+   "lon": -109.7,
+   "h95_m": 5.04,
+   "v95_m": 6.15
+  },
+  {
+   "site": "San Juan",
+   "lat": 18.47,
+   "lon": -66.11,
+   "h95_m": 7.75,
+   "v95_m": 10.75
+  },
+  {
+   "site": "Seattle",
+   "lat": 47.61,
+   "lon": -122.33,
+   "h95_m": 2.05,
+   "v95_m": 4.72
+  },
+  {
+   "site": "Tapachula",
+   "lat": 14.9,
+   "lon": -92.26,
+   "h95_m": 5.78,
+   "v95_m": 6.34
+  },
+  {
+   "site": "Washington, DC",
+   "lat": 38.9,
+   "lon": -77.04,
+   "h95_m": 2.41,
+   "v95_m": 3.52
+  },
+  {
+   "site": "GLPS Puerto Ayora",
+   "lat": -0.74,
+   "lon": -90.3,
+   "h95_m": 6.58,
+   "v95_m": 8.11
+  },
+  {
+   "site": "GUAM Dededo",
+   "lat": 13.59,
+   "lon": 144.87,
+   "h95_m": 5.93,
+   "v95_m": 10.54
+  },
+  {
+   "site": "IISC Bangalore",
+   "lat": 13.02,
+   "lon": 77.57,
+   "h95_m": 6.1,
+   "v95_m": 9.23
+  },
+  {
+   "site": "MADR Robledo",
+   "lat": 40.43,
+   "lon": -4.25,
+   "h95_m": 4.89,
+   "v95_m": 5.99
+  },
+  {
+   "site": "POL2 Bishkek",
+   "lat": 42.68,
+   "lon": 74.69,
+   "h95_m": 2.15,
+   "v95_m": 6.21
+  },
+  {
+   "site": "SANT Santiago",
+   "lat": -33.15,
+   "lon": -70.67,
+   "h95_m": 9.59,
+   "v95_m": 7.7
+  },
+  {
+   "site": "TIDB Tidbinbilla",
+   "lat": -35.4,
+   "lon": 148.98,
+   "h95_m": 2.26,
+   "v95_m": 4.57
+  },
+  {
+   "site": "USUD Usuda",
+   "lat": 36.13,
+   "lon": 138.36,
+   "h95_m": 6.75,
+   "v95_m": 7.84
+  }
+ ]
+}

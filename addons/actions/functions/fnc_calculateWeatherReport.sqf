@@ -63,7 +63,6 @@ private _tideOff    = missionNamespace getVariable [QEGVAR(core,currentTideOffse
 // Atmosphere
 private _qnh        = missionNamespace getVariable [QEGVAR(core,qnh),                    _P];
 private _preAlt     = missionNamespace getVariable [QEGVAR(core,pressureAltitude_m),     -1];
-private _haze       = missionNamespace getVariable [QEGVAR(core,currentHaze),            0];
 
 // ─── Derived labels ────────────────────────────────────────────────────────
 private _fireStr = switch (true) do {
@@ -105,11 +104,10 @@ private _icingStr = switch (true) do {
     default              { "Low" };
 };
 
-private _hazeStr = switch (true) do {
-    case (_haze >= 0.8): { "Heavy" };
-    case (_haze >= 0.5): { "Moderate" };
-    default             { "Light" };
-};
+// Haze (HZ) and mist (BR) are reported only when they reduce the visibility
+// to 5000 m or less (WMO No. 306 code table 4678; ICAO Annex 3, 4.4.2.6).
+private _hazeVisKm = missionNamespace getVariable [QEGVAR(core,currentHazeVisibility), 90];
+if !(_hazeVisKm isEqualType 0) then { _hazeVisKm = 90; };
 
 // ─── Format ────────────────────────────────────────────────────────────────
 private _report = "=== Weather Report ===" + "\n";
@@ -165,8 +163,17 @@ if (_avalanche > 0.3)  then { _hazards pushBack (format ["Avalanche %1", _avalan
 if (_flashFlood > 0.3) then { _hazards pushBack (format ["Flash Flood %1", _flashFloodStr]); };
 if (_icing > 0.3)      then { _hazards pushBack (format ["Icing %1", _icingStr]); };
 if (_precipPh != "" && _precipPh != "rain") then { _hazards pushBack _precipPh; };
-if (_snowRate > 0)       then { _hazards pushBack (format ["Snowfall %1 mm/h", str (round (_snowRate * 100) / 100)]); };
-if (_haze > 0.5)         then { _hazards pushBack (format ["Haze %1", _hazeStr]); };
+// The snowfall rate is liquid-water equivalent (mm/h); the report states
+// the snow depth rate a soldier sees, through the fresh-snow density
+// (Hedstrom & Pomeroy 1998).
+if (_snowRate > 0) then {
+    private _rhoNew = 67.92 + 51.25 * exp ((_T min 0) / 2.59);
+    private _snowCmH = (_snowRate / 10) * (1000 / _rhoNew);
+    _hazards pushBack (format ["Snowfall %1 cm/h", str ((round (_snowCmH * 10)) / 10)]);
+};
+if (_hazeVisKm <= 5) then {
+    _hazards pushBack (format ["Haze/mist, visibility %1 km", (round (_hazeVisKm * 10)) / 10]);
+};
 if (_hazards isNotEqualTo []) then {
     _report = _report + "\n";
     _report = _report + "Hazards: " + (_hazards joinString ", ");

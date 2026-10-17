@@ -106,7 +106,6 @@ Optics and visibility effects.
 | `calculateSmokePersistence` | Calculate smoke persistence |
 | `calculateSnowBlindness` | Calculate snow blindness |
 | `calculateSolarGlare` | Calculate solar glare |
-| `calculateThermalContrast` | Calculate thermal contrast |
 | `calculateVehicleHeatShimmer` | Calculate vehicle heat shimmer |
 | `managePostProcess` | Manage the shared post-process effects |
 

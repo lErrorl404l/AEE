@@ -111,9 +111,9 @@ if ((_x > 0) && (_x <= _cull)) then {
     _concentration = [_concentration, _elapsedH, _halfLife] call FUNC(calculateCbrnDecay);
 
     if (_rain > 0) then {
-        // The engine `rain` command is a 0..1 level, not mm/h.  The 50
-        // mm/h full-scale mapping is UNSOURCED (a heavy-rain proxy).
-        private _rainMMh = _rain * 50;
+        // The engine `rain` level to mm/h through the shared precipitation
+        // model (ENGINE_RAIN_FULL_MMH), as every other rain consumer does.
+        private _rainMMh = _rain * ENGINE_RAIN_FULL_MMH;
         private _lambda = 8.4e-5 * (_rainMMh ^ 0.79);
         _concentration = _concentration * exp (-_lambda * _x / _u);
     };

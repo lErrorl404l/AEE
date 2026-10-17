@@ -14,14 +14,17 @@ Run: python3 -m unittest tools.tests.test_blast
 
 import math
 import unittest
+from pathlib import Path
 
 
 # ─── Mirrors ───────────────────────────────────────────────────────────────
 
 
 def kb_incident_pressure(z):
-    """Swisdak simplified KB incident overpressure fit (kPa)."""
-    if not (0.2 <= z <= 198.5):
+    """Swisdak simplified KB incident overpressure fit (kPa).  Inside the
+    fit's lower bound (contact range) Z is held at 0.2, as the SQF does."""
+    z = max(z, 0.2)
+    if z > 198.5:
         return 0.0
     lnz = math.log(z)
     if z <= 2.9:
@@ -36,6 +39,7 @@ def kb_incident_pressure(z):
 
 def kb_positive_duration(z, w):
     """Swisdak simplified KB positive-phase duration fit (ms)."""
+    z = max(z, 0.2)
     if not (0.2 <= z <= 40):
         return 0.0
     lnz = math.log(z)
@@ -324,6 +328,18 @@ class TestBlastThrow(unittest.TestCase):
         _, o_lo = blast_throw(20, 20, 80)
         _, o_hi = blast_throw(60, 20, 80)
         self.assertGreater(o_hi, o_lo)
+
+
+
+
+class TestContactRange(unittest.TestCase):
+    def test_contact_range_is_not_harmless(self):
+        # A 1 kg charge 0.1 m away (Z = 0.1) is inside the fit floor; the
+        # pressure must not fall to zero there.
+        self.assertGreaterEqual(kb_incident_pressure(0.1), kb_incident_pressure(0.2))
+        src = (Path(__file__).resolve().parents[2] / "addons" / "blast" / "functions"
+               / "blast" / "fnc_calculateBlastOverpressure.sqf").read_text(encoding="utf-8")
+        self.assertIn("max 0.2", src)
 
 
 if __name__ == "__main__":

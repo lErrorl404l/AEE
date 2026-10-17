@@ -190,39 +190,8 @@ def _unused_emissivity_radiant_correction(emissivity):
 # ─── Thermal contrast mirrors ───────────────────────────────────────────────
 
 
-def thermal_contrast(air_temp=15.0, surface_temp=None):
-    """Mirror of fnc_calculateThermalContrast.
-
-    DEGRADATION ONLY, base 1.0, and NO weather term of its own.  The engine
-    already renders the native thermal image with its own gain, so this stage
-    adds no base gain: the clear-air value is exactly 1.0, which is also the
-    consumer's declared default (fnc_applyThermalVision.sqf:95).  Atmospheric
-    degradation lives once, in fnc_calculateAtmosphericTransmission, so this
-    kernel must not apply rain, fog or humidity a second time.
-
-    The extreme-heat and cold terms are driven by the surface-to-air gap
-    where a surface temperature is available; where it is not, the air
-    temperature is the only reference and the legacy form applies.  Every
-    coefficient is UNSOURCED (see docs/wiki/chapters/sensor-value-audit.md).
-
-    gap > 35: contrast -= ((gap - 35) / 10) × 0.7
-    gap < 5:  contrast *= 1.2, min 1.0
-    """
-    c = 1.0
-    gap = air_temp if surface_temp is None else surface_temp - air_temp
-    if gap > 35:
-        c -= ((gap - 35) / 10) * 0.7
-    if gap < 5:
-        c = min(c * 1.2, 1.0)
-    return max(0, min(1, c))
 
 
-def netd_noise(view_distance, humidity=0.0):
-    """Retired mirror.  The noise floor is now the pure kernel
-    fnc_calculateThermalNoise.sqf, executed directly by TestThermalNoise, so
-    the hand-transcribed mirror is gone.
-    """
-    return 0.05 * ((view_distance / 1000) ** 2) * (1 + humidity * 0.5)
 
 
 # ─── Thermal blur / pan smear mirrors ────────────────────────────────────────
@@ -285,7 +254,7 @@ def ambient_lux(
 
     cloudTransmission = 1 - min(overcast*0.85, 0.85)   (multiplicative)
     moonLight = max(0, moonIntensity*cloudTransmission - rain*0.5)
-    twilightLux = 10^(2.6 - 0.3*|sunElev|) when the sun is below horizon
+    twilightLux = the measured table (fnc_twilightIlluminance) x (1 - 0.75 N^3.4)
     auroraLux = 0.03 * auroraIntensity  (issue #112, green 557.7 nm)
     ambientLux = starlight + moonLight*0.249 + twilightLux + auroraLux
 
@@ -299,16 +268,22 @@ def ambient_lux(
     raise the assumed night-sky brightness; a brighter sky -> higher lux
     -> NVG gains down, rendering the brighter sky correctly.
     Twilight glow (sun below horizon) adds the scattered-sunlight sky
-    light: ~6.3 lux at -6 deg, ~0.1 at -12, ~0.0016 at -18.
+    light: 3.41 lux at -6 deg, 0.00806 at -12, 0.000645 at -18 (Schlyter).
     Aurora adds up to 0.03 lux at full intensity (a Kp 7-9 storm) -
     the green emission sits in the NVG tube's peak sensitivity, so the
     added photons brighten the image like moonlight.
     """
     trans = 1.0 - min(overcast * 0.85, 0.85)
     moon = max(0.0, moon_intensity * trans - rain * 0.5)
-    twilight = 10.0 ** (2.6 - 0.3 * abs(sun_elev_deg)) if sun_elev_deg <= 0 else 0.0
+    twilight = _twilight_lux(sun_elev_deg) * (1 - 0.75 * max(0.0, min(1.0, overcast)) ** 3.4)
     aurora = 0.03 * max(0.0, min(1.0, aurora_intensity))
     return starlight + moon * 0.249 + twilight + aurora
+
+
+def _twilight_lux(sun_elev_deg):
+    """The generated table, run as SQF (fnc_twilightIlluminance)."""
+    from sqf_lite import run_sqf
+    return run_sqf(Path(__file__).resolve().parents[2] / "addons/core/functions/fnc_twilightIlluminance.sqf", [sun_elev_deg])
 
 
 def extinction_per_m(rain, fog):
@@ -1206,115 +1181,6 @@ class TestEmissivityRadiant(unittest.TestCase):
         self.assertNotIn("(1 - _emissivity) * 2", text)
 
 
-class TestThermalContrast(unittest.TestCase):
-    """Thermal contrast is a DEGRADATION factor with base 1.0.
-
-    The engine renders the native thermal image with its own gain, so this
-    stage adds none: clear conditions publish exactly 1.0.  The old base
-    (delta-T / 8) was an undocumented second gain stage and is removed.
-    """
-
-    def test_clear_conditions_publish_unity(self):
-        # No weather, no extreme heat, no cold: the factor is exactly 1.0,
-        # which is also the consumer's declared default.
-        self.assertAlmostEqual(thermal_contrast(), 1.0, places=6)
-
-    def test_the_source_has_no_base_gain(self):
-        code = _code_only(
-            _read_sqf("fnc_calculateThermalContrast.sqf", addon="thermal")
-        )
-        self.assertIn("private _contrast = 1.0", code)
-        self.assertNotIn("_deltaT", code)
-        self.assertNotIn("_avgVehicleTemp", code)
-        self.assertNotIn("objectTemperatures", code)
-
-    def test_weather_returns_unity(self):
-        # The kernel has no weather term of its own: atmospheric degradation
-        # is modelled once, in fnc_calculateAtmosphericTransmission.  A rain,
-        # fog or humidity case must return exactly 1.0 from this kernel alone.
-        self.assertEqual(thermal_contrast(), 1.0)
-        self.assertEqual(thermal_contrast(air_temp=15.0), 1.0)
-
-    def test_the_source_has_no_weather_terms(self):
-        code = _code_only(
-            _read_sqf("fnc_calculateThermalContrast.sqf", addon="thermal")
-        )
-        for token in ("rain", "_fog", "currentFogDensity", "* 0.3"):
-            self.assertNotIn(
-                token,
-                code,
-                f"weather double-count token {token!r} is still in the kernel",
-            )
-
-    def test_heat_flattens_contrast(self):
-        # Extreme heat drives every surface toward air temperature, so the
-        # surface-to-air gap closes.  A wide gap above 35 flattens the factor.
-        c_hot = thermal_contrast(air_temp=15.0, surface_temp=55.0)
-        c_mild = thermal_contrast(air_temp=15.0, surface_temp=20.0)
-        self.assertLess(c_hot, c_mild)
-
-    def test_heat_flattens_by_air_temperature_without_a_surface(self):
-        # No surface temperature available: the air temperature is the only
-        # reference and the legacy threshold form applies.
-        c_hot = thermal_contrast(air_temp=40)
-        c_mild = thermal_contrast(air_temp=20)
-        self.assertLess(c_hot, c_mild)
-
-    def test_cold_can_restore_a_lowered_factor(self):
-        # The cold term scales a lowered factor up toward, never above, 1.0.
-        lowered = 0.5
-        self.assertLess(min(lowered * 1.2, 1.0), 1.0)
-
-    def test_never_negative(self):
-        c = thermal_contrast(air_temp=90.0)
-        self.assertGreaterEqual(c, 0)
-
-    def test_never_exceeds_one(self):
-        self.assertLessEqual(thermal_contrast(air_temp=0), 1.0)
-        self.assertLessEqual(thermal_contrast(air_temp=-40.0), 1.0)
-
-
-class TestThermalNoise(unittest.TestCase):
-    """The pure NETD noise floor (fnc_calculateThermalNoise.sqf).
-
-    Executes the shipped SQF through the shared interpreter, so the formula
-    is proven, not mirrored.  Range is a REAL sensor-to-target range.
-    """
-
-    _KERNEL = _THERMAL / "solver" / "fnc_calculateThermalNoise.sqf"
-
-    def _noise(self, netd, rng, resx=640, hum=0.0):
-        return run_sqf(self._KERNEL, [netd, rng, resx, hum])
-
-    def test_noise_at_1km_uncooled_dry(self):
-        # 0.05 × 1² × 1 × 1 = 0.05 at zero humidity.
-        self.assertAlmostEqual(self._noise(0.05, 1000), 0.05, places=6)
-
-    def test_noise_monotone_in_range(self):
-        # A real range drives the term: more path, more noise.
-        n500 = self._noise(0.05, 500)
-        n1000 = self._noise(0.05, 1000)
-        self.assertGreater(n1000, n500)
-
-    def test_noise_scales_with_range_squared(self):
-        n1 = self._noise(0.05, 500)
-        n2 = self._noise(0.05, 1000)
-        self.assertAlmostEqual(n2 / n1, 4.0, places=2)
-
-    def test_humidity_increases_noise(self):
-        wet = self._noise(0.05, 1000, 640, 80)
-        dry = self._noise(0.05, 1000, 640, 0)
-        self.assertGreater(wet, dry)
-
-    def test_resolution_scales_noise(self):
-        # A 320-wide detector doubles the 640 reference term.
-        self.assertAlmostEqual(self._noise(0.05, 1000, 320), 0.1, places=6)
-
-    def test_clamped_to_unit(self):
-        self.assertEqual(self._noise(0.5, 5000, 160, 100), 1.0)
-        self.assertGreaterEqual(self._noise(0.0, 1000), 0.0)
-
-
 class TestThermalBlur(unittest.TestCase):
     """Thermal DynamicBlur + pan smear - flicker guards."""
 
@@ -1497,9 +1363,12 @@ class TestTwilight(unittest.TestCase):
         self.assertAlmostEqual(ambient_lux(0.0, sun_elev_deg=-90), 0.001, places=4)
 
     def test_civil_twilight(self):
-        # Sun at -6 (civil twilight end): ~6.3 lux dominates the moon term.
+        # Sun at -6 (civil twilight end): 3.41 lux measured (Schlyter).
         lux = ambient_lux(0.0, sun_elev_deg=-6)
-        self.assertAlmostEqual(lux, 0.001 + 10 ** (2.6 - 0.3 * 6), places=3)
+        self.assertAlmostEqual(lux, 0.001 + 3.41, delta=0.05)
+
+    def test_nautical_twilight_end(self):
+        self.assertAlmostEqual(ambient_lux(0.0, sun_elev_deg=-12), 0.001 + 0.00806, delta=0.0003)
 
     def test_horizon_sunset(self):
         # Sun at horizon: ~398 lux (bright twilight).
@@ -3065,53 +2934,10 @@ class TestSQFSync(unittest.TestCase):
             f"Re-sync the Python mirror in test_thermal_optics.py.",
         )
 
-    # ── Thermal contrast (fnc_calculateThermalContrast.sqf) ──
-    def test_contrast_has_no_base_gain(self):
-        # The scene-gain stage must not amplify: the engine renders the
-        # native image with its own gain, so the base is exactly 1.0 and
-        # there is no delta-T span.
-        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
-        self.assertIn("private _contrast = 1.0", code)
-        self.assertNotIn("/ 8", code)
-        self.assertNotIn("_deltaT", code)
-
-    def test_contrast_has_no_weather_terms(self):
-        # The weather double-count is removed: atmospheric degradation lives
-        # once, in fnc_calculateAtmosphericTransmission.  Humidity survives
-        # only inside the NETD noise term until the range task moves it.
-        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
-        for token in ("rain", "_fog", "currentFogDensity", "* 0.3"):
-            self.assertNotIn(token, code)
-
-    def test_contrast_heat_cold_constants(self):
-        self._assert_in_sqf(
-            "fnc_calculateThermalContrast.sqf",
-            ["_gap > 35", "(_gap - 35) / 10) * 0.7", "_gap < 5", "* 1.2", "min 1.0"],
-            "heat flatten / cold boost",
-            addon="thermal",
-        )
-
-    def test_contrast_base_is_degradation_only(self):
-        # The vehicle-only scene average that fed the old base gain is gone;
-        # the base is 1.0 and only the environmental terms move it.
-        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
-        self.assertNotIn('isKindOf "Man"', code)
-        self.assertNotIn("_avgVehicleTemp", code)
-        self.assertNotIn("avgGroundTemp", code)
-        self.assertIn("private _contrast = 1.0", code)
-
-    def test_netd_noise_kernel_constants(self):
-        # The noise floor moved to the pure kernel, where the range is a real
-        # argument.  The contrast kernel no longer computes it.
-        self._assert_in_sqf(
-            "fnc_calculateThermalNoise.sqf",
-            ["640 / _res", "(1 + (_hum / 100) * 0.5)", "_noise max 0", "_rangeM"],
-            "NETD noise floor",
-            addon="thermal",
-        )
-        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
-        self.assertNotIn("currentThermalNoise", code)
-        self.assertNotIn("viewDistance", code)
+    # ── Thermal contrast: no second scene-contrast factor ──
+    def test_contrast_kernel_is_gone(self):
+        self.assertFalse(Path("addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf").exists())
+        self.assertNotIn("currentThermalContrast", _read_sqf("fnc_applyThermalVision.sqf", "thermal"))
 
     # ── Thermal vision (fnc_applyThermalVision.sqf) ──
     def test_thermal_blur_constants(self):
@@ -3403,7 +3229,7 @@ class TestSQFSync(unittest.TestCase):
                 "4 * pi * _dist * _dist",
                 "exp (-_gamma * _dist)",
                 "currentSunElevation",
-                "10 ^ (2.6 - 0.3 * (abs _sunElev))",
+                "call FUNC(twilightIlluminance)",
                 "starlightLux",
             ],
             "moon lux / cloud / twilight / starlight hook / inverse-square",
@@ -3422,12 +3248,12 @@ class TestSQFSync(unittest.TestCase):
             / "fnc_calculateSolarRadiation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("currentSunElevation", cfg)
-        self.assertIn("asin (_sinElev", cfg)
+        self.assertIn("call EFUNC(lib,astroPosition)", cfg)
 
     def test_illuminance_extinction_constants(self):
         self._assert_in_sqf(
             "fnc_calculateIlluminance.sqf",
-            ["_rainS * 30", "4343", "40 * (_fogS / 0.5) ^ 2", "min 300"],
+            ["0.21 * ((_rainS * ENGINE_RAIN_FULL_MMH) ^ 0.74) / 1000", "4343", "40 * (_fogS / 0.5) ^ 2", "min 300"],
             "smoothed rain/fog extinction",
             addon="core",
         )
@@ -3737,7 +3563,7 @@ class TestSQFSync(unittest.TestCase):
             / "astronomy"
             / "fnc_calculateSolarRadiation.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn("private _hour = dayTime", cfg)
+        self.assertIn("[date, dayTime, _lon] call EFUNC(lib,gameClockToUT)", cfg)
         self.assertNotIn("(_date#3) + (time / 3600)", cfg)
 
     def test_clothing_thermal_constants(self):
@@ -4391,55 +4217,6 @@ class TestSQFSync(unittest.TestCase):
             ],
             "glare angular falloff / elevation / overcast",
         )
-
-
-class TestThermalContrastMixedObjects(unittest.TestCase):
-    """Scene contrast must ignore infantry and fall back cleanly."""
-
-    @staticmethod
-    def scene_vehicle_temp(entries, air_temp=15.0):
-        """Mirror of the vehicle-only average in fnc_calculateThermalContrast.
-
-        entries: list of (kind, temp) where kind is 'man', 'veh', or 'bad'.
-        Returns the average vehicle temp, or air_temp when no vehicles.
-        """
-        veh_sum = 0.0
-        veh_count = 0
-        for kind, temp in entries:
-            if kind == "bad":
-                continue  # type guard skips malformed
-            if kind == "man":
-                continue  # infantry excluded
-            if isinstance(temp, (int, float)):
-                veh_sum += temp
-                veh_count += 1
-        return veh_sum / veh_count if veh_count else air_temp
-
-    def test_infantry_does_not_skew_average(self):
-        # Two vehicles at 28 C, five infantry at 33 C.  Average must be 28.
-        entries = [("veh", 28.0), ("veh", 28.0)] + [("man", 33.0)] * 5
-        self.assertAlmostEqual(self.scene_vehicle_temp(entries), 28.0, places=6)
-
-    def test_no_vehicles_falls_back_to_air(self):
-        entries = [("man", 33.0)] * 3
-        self.assertAlmostEqual(self.scene_vehicle_temp(entries, 15.0), 15.0, places=6)
-
-    def test_empty_scene_falls_back_to_air(self):
-        self.assertAlmostEqual(self.scene_vehicle_temp([], 12.0), 12.0, places=6)
-
-    def test_malformed_entry_does_not_crash(self):
-        entries = [("bad", None), ("veh", 30.0)]
-        self.assertAlmostEqual(self.scene_vehicle_temp(entries), 30.0, places=6)
-
-    def test_cold_vehicle_lower_contrast_than_hot(self):
-        # Ground 18 C.  Cold vehicle 20 C -> delta 2 -> 2/8 = 0.25.
-        # Hot vehicle 34 C -> delta 16 -> capped 1.0.
-        ground = 18.0
-        cold = min(abs(20.0 - ground) / 8.0, 1.0)
-        hot = min(abs(34.0 - ground) / 8.0, 1.0)
-        self.assertAlmostEqual(cold, 0.25, places=6)
-        self.assertAlmostEqual(hot, 1.0, places=6)
-        self.assertLess(cold, hot)
 
 
 # ─── NVG stack audit #153: spectral response + gate flicker ────────────────

@@ -17,7 +17,7 @@ Freezing rain: warm air aloft (wet-bulb > 0) falling onto a frozen surface.
 
 Arguments: None
 Return Value: STRING: precipitation phase ("rain", "sleet", "snow", "freezing_rain")
-Sets: aee_core_precipitationPhase, aee_core_snowfallRate,
+Sets: aee_core_precipitationPhase, aee_core_snowfallRate (mm/h water equivalent),
       aee_core_orographicFactor, aee_core_hailActive (hail gate, #151)
 Example: [] call aee_atmos_fnc_calculatePrecipitationPhase
 Public: No
@@ -46,7 +46,12 @@ private _phase = switch (true) do {
     default                              { "snow" };
 };
 
-private _snowfallRate = if (_phase in ["snow", "sleet", "freezing_rain"]) then { _rainRate min 1 } else { 0 };
+// aee_core_snowfallRate is the frozen precipitation rate as LIQUID-WATER
+// EQUIVALENT, mm/h (the engine level times ENGINE_RAIN_FULL_MMH).  A
+// consumer that wants a snow depth applies the fresh-snow density
+// (fnc_calculateSnowAccumulation).  Freezing rain falls as liquid and
+// freezes on contact, so it accumulates ice, not snow, and is excluded.
+private _snowfallRate = if (_phase in ["snow", "sleet"]) then { (_rainRate min 1) * ENGINE_RAIN_FULL_MMH } else { 0 };
 
 // ─── Hail gate (issue #151) ───────────────────────────────────────────────
 // Hail needs a strong updraft and a wet-bulb below freezing in the layer

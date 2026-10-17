@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Reference checks for AEE's maritime models.
 
-Mirrors of the SQF implementations in addons/maritime: harmonic tidal
-prediction (M2/S2/K1/O1), WMO Beaufort sea state, and the coarse WMM
-compass declination table.
+Checks of the SQF implementations in addons/maritime: harmonic tidal
+prediction (eight constituents, validated against NOAA) and WMO Beaufort
+sea state.  Compass declination is covered by test_wmm.py.
 
 Run: python3 -m unittest tools/tests/test_maritime.py
 """
@@ -32,28 +32,11 @@ def dipole_flux_density_nt(moment, r, cos_theta):
     return (1e-7 * moment / r**3) * math.sqrt(1 + 3 * cos_theta**2) * 1e9
 
 
-def tidal_height(hours_since_epoch):
-    """Mirror of fnc_calculateTidalPrediction.sqf — four harmonic constituents.
-
-    M2 28.9841 deg/h (1.00 m), S2 30.0000 (0.47), K1 15.0411 (0.58),
-    O1 13.9430 (0.42).  Phases at epoch: M2 0, S2 45, K1 90, O1 0.
-    """
-    consts = [
-        (28.9841, 1.00, 0),
-        (30.0000, 0.47, 45),
-        (15.0411, 0.58, 90),
-        (13.9430, 0.42, 0),
-    ]
-    return sum(
-        a * math.sin(math.radians(w * hours_since_epoch + p)) for w, a, p in consts
-    )
-
-
-def tidal_alignment(hours_since_epoch):
-    """Mirror of the spring/neap alignment (cos of the M2-S2 phase diff)."""
-    return abs(
-        math.cos(math.radians((28.9841 - 30.0000) * hours_since_epoch + (0 - 45)))
-    )
+def tidal_alignment(jd_ut):
+    """cos of the M2-S2 equilibrium phase difference (twice the elongation)."""
+    from tools import gen_tide_constituents as tides
+    args = tides.arguments(jd_ut)
+    return math.cos(math.radians(args["M2"][0] - args["S2"][0]))
 
 
 def sea_state_beaufort(wind_ms):
@@ -118,42 +101,6 @@ def ocean_current_vector(
     return total, math.hypot(total[0], total[1]), tidal_speed
 
 
-def compass_declination(lon_deg, lat_deg):
-    """Mirror of fnc_calculateCompassDeviation.sqf — coarse WMM table.
-
-    Table: [-180,10],[-120,12],[-80,-13],[-20,-5],[0,1],[40,6],[90,-3],
-    [120,-5],[150,-9],[180,10]; linear interpolation; latitude adj
-    (lat-45)*0.05; clamped +-30.
-    """
-    table = [
-        [-180, 10],
-        [-120, 12],
-        [-80, -13],
-        [-20, -5],
-        [0, 1],
-        [40, 6],
-        [90, -3],
-        [120, -5],
-        [150, -9],
-        [180, 10],
-    ]
-    n = len(table)
-    if lon_deg <= table[0][0]:
-        decl = table[0][1]
-    elif lon_deg >= table[n - 1][0]:
-        decl = table[n - 1][1]
-    else:
-        decl = 0.0
-        for i in range(n - 1):
-            lo, hi = table[i], table[i + 1]
-            if lo[0] <= lon_deg <= hi[0]:
-                frac = (lon_deg - lo[0]) / (hi[0] - lo[0])
-                decl = lo[1] + frac * (hi[1] - lo[1])
-                break
-    decl += (lat_deg - 45) * 0.05
-    return max(-30, min(30, decl))
-
-
 class TestTidalHarmonics(unittest.TestCase):
     def test_constituent_periods(self):
         # M2 period = 360/28.9841 = 12.42 h; S2 = 360/30 = 12 h.
@@ -165,22 +112,40 @@ class TestTidalHarmonics(unittest.TestCase):
         beat_h = 360 / (30.0000 - 28.9841)
         self.assertAlmostEqual(beat_h / 24, 14.77, places=1)
 
-    def test_alignment_peaks_at_spring(self):
-        # Alignment (cos of phase diff) is 1 when in phase: at t=0 the M2-S2
-        # phase diff is (0-45) deg, cos(-45)=0.707 — not 1.  At the beat
-        # midpoint (177.2 h) the diff is a multiple of 360 so cos = 1.
-        self.assertGreaterEqual(tidal_alignment(0), 0.7)
-        self.assertLessEqual(tidal_alignment(0), 0.71)
-        # Near the beat period the alignment returns to the same value.
-        self.assertAlmostEqual(tidal_alignment(354.4), tidal_alignment(0), places=3)
+    def test_spring_tide_at_new_and_full_moon(self):
+        # New moon 2024-01-11 11:57 UT, full moon 2024-01-25 17:54 UT, first
+        # quarter 2024-01-18 03:52 UT (USNO phases of the moon).
+        self.assertGreater(tidal_alignment(2460320.998), 0.95)
+        self.assertGreater(tidal_alignment(2460335.246), 0.95)
+        self.assertLess(tidal_alignment(2460327.661), -0.95)
 
-    def test_tidal_range_bounded(self):
-        # Sum of amplitudes = 1.00 + 0.47 + 0.58 + 0.42 = 2.47 m max theoretical;
-        # the SQF clamps to +-2 m.  Mirror without clamp stays within 2.47.
-        for t in range(0, 24 * 30, 3):  # 30 days hourly
-            h = tidal_height(t)
-            self.assertLessEqual(abs(h), 2.47)
-            self.assertGreaterEqual(h, -2.47)
+    def test_formula_reproduces_noaa(self):
+        from tools import gen_tide_constituents as tides
+        self.assertLess(tides.noaa_rms(), 0.06)
+
+    def test_generated_table_is_fresh(self):
+        from tools import gen_tide_constituents as tides
+        self.assertEqual(tides.main(["--check"]), 0)
+
+    def test_real_gauges(self):
+        # TICON-4: Samothraki (North Aegean) is microtidal, Lautoka (Fiji)
+        # mesotidal.  Brest M2 205.1 cm confirms the source unit is cm.
+        import json
+        data = json.loads((Path(__file__).resolve().parents[2] / "data" / "maritime"
+                           / "tide_constituents.json").read_text(encoding="utf-8"))
+        sam = data["gauges"]["samothraki"]["constituents"]
+        lau = data["gauges"]["lautoka"]["constituents"]
+        self.assertLess(sum(c["amp_m"] for c in sam.values()), 0.25)
+        self.assertAlmostEqual(lau["M2"]["amp_m"], 0.629, places=2)
+        self.assertEqual(data["world_bindings"]["Enoch"]["gauge"], "")
+
+    def test_the_sqf_uses_the_validated_arguments(self):
+        src = (Path(__file__).resolve().parents[2] / "addons" / "maritime" / "functions"
+               / "fnc_calculateTidalPrediction.sqf").read_text(encoding="utf-8")
+        for token in ("[_tau + _h - 90, _fK1, _uK1]", "[_tau - 2 * _s + _h + 90, _fO1, _uO1]",
+                      "gameClockToUT", "getTideConstituents"):
+            self.assertIn(token, src)
+        self.assertNotIn("max -_amp min _amp", src)
 
 
 class TestSeaState(unittest.TestCase):
@@ -209,30 +174,6 @@ class TestSeaState(unittest.TestCase):
 
     def test_wave_height_capped(self):
         self.assertLessEqual(wave_height(100), 15)
-
-
-class TestCompassDeclination(unittest.TestCase):
-    def test_wmm_reference_points(self):
-        # Coarse table: NY lon -74 -> between -80(-13) and -20(-5):
-        # -13 + (6/60)*(-13 - -5) = -13 + 0.1*8 = -12.2 at lat 45;
-        # at lat 40 (adj -0.25) -> -12.45.  London lon 0 -> +1 at lat 51
-        # (adj +0.3) -> +1.3.
-        self.assertAlmostEqual(compass_declination(-74, 40), -12.45, places=1)
-        self.assertAlmostEqual(compass_declination(0, 51), 1.3, places=1)
-
-    def test_table_endpoints_clamp(self):
-        # Beyond table ends the interpolated value clamps to the endpoint
-        # constant, then the latitude adjustment still applies (lat 0 ->
-        # (0-45)*0.05 = -2.25, so 10 - 2.25 = 7.75).
-        self.assertAlmostEqual(compass_declination(-200, 0), 7.75, places=1)
-        self.assertAlmostEqual(compass_declination(200, 0), 7.75, places=1)
-
-    def test_never_exceeds_clamp(self):
-        for lon in range(-180, 181, 15):
-            for lat in range(-80, 81, 10):
-                d = compass_declination(lon, lat)
-                self.assertLessEqual(d, 30)
-                self.assertGreaterEqual(d, -30)
 
 
 class TestCompassAnomalyScale(unittest.TestCase):

@@ -96,10 +96,18 @@ private _convNatural = _thermal getOrDefault ["convection_natural_w_m2k", 5.6];
 private _convForced = _thermal getOrDefault ["convection_forced_w_m2k_per_ms", 3.9];
 private _coolantTau = _thermal getOrDefault ["coolant_tau_s", 90];
 
-// The declared idle power and drag area reuse the engine-load kernel's own
-// declared defaults, so the two kernels agree on the same nominal vehicle.
-private _idlePowerW = 0.05 * 150000;
-private _dragAreaM2 = 0.7;
+// Idle fuel: a measured idling rate, 0.8 US gal/h for a heavy truck
+// (Gaines, Vyas & Anderson 2006, Argonne) on its 400 hp engine (RMI 2008),
+// scaled by the vehicle's rated power (idle friction and pumping scale with
+// engine size).  The rated power is the catalogue net power of the real
+// vehicle, else the engine config enginePower (kW).  The kernel takes power,
+// so the idle rate is passed as the equivalent idle power at the BSFC.
+private _idleRefLph = _thermal getOrDefault ["idle_fuel_lph_ref", 3.0283];
+private _idleRefKw = _thermal getOrDefault ["idle_ref_power_kw", 298.28];
+// The drag area is per vehicle: Cd (sourced, by body class, data/physics/
+// fuel.json drag_coefficients) times the frontal area of the vehicle's own
+// model (bounding-box width x height, from the classifier).
+private _dragCd = _data getOrDefault ["drag_coefficients", createHashMap];
 
 private _playerDerate = 1.0;
 private _vehicles = [200, _player] call EFUNC(vehicles,getNearbyVehicles);
@@ -112,6 +120,14 @@ private _vehicles = [200, _player] call EFUNC(vehicles,getNearbyVehicles);
     private _type = _class select 1;
     private _massKg = _class select 4;
     if (_massKg <= 0) then { _massKg = getMass _veh; };
+
+    private _cdKey = switch (true) do {
+        case (_type == "tracked"): { "tracked" };
+        case (_veh isKindOf "Truck_F"): { "wheeled_truck" };
+        default { "wheeled_light" };
+    };
+    private _frontalM2 = ((_class select 6) max 0) * ((_class select 7) max 0);
+    private _dragAreaM2 = (_dragCd getOrDefault [_cdKey, 0]) * _frontalM2;
 
     private _crrBase = if (_type == "tracked") then {
         _rolling getOrDefault ["track", 0.03]
@@ -131,6 +147,13 @@ private _vehicles = [200, _player] call EFUNC(vehicles,getNearbyVehicles);
         call FUNC(calculateRoadLoad);
     if ((_load select 0) < 0) then { continue; };
 
+    private _ratedKw = 0;
+    private _row = [typeOf _veh] call FUNC(getVehicleData);
+    if ((count _row) > 4 && {(_row select 4) isEqualType 0}) then { _ratedKw = _row select 4; };
+    if (_ratedKw <= 0) then { _ratedKw = getNumber (configOf _veh >> "enginePower"); };
+    if (_ratedKw <= 0) then { _ratedKw = _idleRefKw; };
+    private _idleLph = if (isEngineOn _veh) then { _idleRefLph * _ratedKw / _idleRefKw } else { 0 };
+    private _idlePowerW = (_idleLph * _density / _bsfc) * 1000;
     private _fuel = [_idlePowerW, _load select 1, _bsfc, _density] call FUNC(calculateFuelRate);
     if ((_fuel select 0) < 0) then { continue; };
     private _fuelRateLph = _fuel select 0;

@@ -82,7 +82,8 @@ switch (true) do {
         private _phase = missionNamespace getVariable [QEGVAR(core,precipitationPhase), "rain"];
         private _rate = missionNamespace getVariable [QEGVAR(core,snowfallRate), 0];
         if !(_rate isEqualType 0) then { _rate = 0; };
-        if (_phase == "snow") then { _intensity = _rate min 1; };
+        // The rate is liquid-equivalent mm/h; the emitter wants 0..1.
+        if (_phase == "snow") then { _intensity = (_rate / ENGINE_RAIN_FULL_MMH) min 1; };
         _colour = [1, 1, 1, 1];
     };
     case (_effect == "blowingSnow"): {

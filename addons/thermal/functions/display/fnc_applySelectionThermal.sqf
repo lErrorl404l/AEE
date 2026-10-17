@@ -819,14 +819,10 @@ if (_mode == "EXIT") then {
         _radMap set [_stateKey, _rad];
 
         private _vis = 1;
-        // The sensor noise floor.  The range is the REAL sensor-to-selection
-        // distance; a display-only tick or a dedicated server has no target,
-        // so the declared default 1000 m is used.  That default is UNSOURCED:
-        // the device corpus holds no detection range.  The noise raises the
-        // contrast a selection must show to resolve (fnc_calculateThermalNoise).
-        private _noiseRange = [1000, _rangeM] select (_rangeM > 0.001);
-        private _noiseFloor = [_netdC, _noiseRange, _resX, _humidity] call FUNC(calculateThermalNoise);
-        if !((_noiseFloor isEqualType 0) && {finite _noiseFloor}) then { _noiseFloor = 0; };
+        // No extra noise floor: the device threshold already is the NETD
+        // (signal-to-noise 1), and the path transmission tau(range) already
+        // lowers the apparent contrast with range on the radiance path.
+        private _noiseFloor = 0;
         if (_thermalOn && (_bgRad > 0) && (_rangeM > 0.001)) then {
             private _edge = [_rad, _bgRad, _threshold, _noiseFloor] call FUNC(evaluateThermalEdge);
             if ((_edge isEqualType []) && {(count _edge) >= 2}) then {

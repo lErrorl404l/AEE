@@ -45,27 +45,17 @@ class TestRadioRefractionWiring(unittest.TestCase):
         self.env = _sqf(_CORE, "fnc_updateEnvironment.sqf")
         self.src = _sqf(_RADIO, "fnc_calculateRadioPropagation.sqf")
 
-    def test_tick_produces_the_state_and_radio_reads_it(self):
+    def test_tick_produces_the_state(self):
         # The refractivity state has ONE producer per tick (the environment
-        # tick), so the radio budget, the green-flash kernel and any other
-        # consumer read the same fresh value.
+        # tick), so every consumer reads the same fresh value.
         self.assertIn("EFUNC(atmos,calculateRefraction)", self.env)
-        self.assertIn("EGVAR(atmos,refractionK)", self.src)
-        self.assertIn("_effectiveDistM = _distM / (sqrt _refractionK)", self.src)
-        self.assertIn("20 * log _effectiveDistM", self.src)
 
-    def test_k_factor_changes_the_published_fspl(self):
-        def fspl(dist_m, freq_hz, k):
-            return (
-                20 * math.log10(dist_m / math.sqrt(k))
-                + 20 * math.log10(freq_hz)
-                - 147.55
-            )
-
-        standard = fspl(5000, 1e8, 1.0)
-        super_refract = fspl(5000, 1e8, 4.0 / 3.0)
-        self.assertNotAlmostEqual(standard, super_refract, places=1)
-        self.assertLess(super_refract, standard)
+    def test_k_factor_never_rescales_free_space_loss(self):
+        # The effective-earth-radius k-factor (ITU-R P.453) changes the radio
+        # horizon and the diffraction geometry, not the free-space spreading
+        # loss.  The old budget divided the distance by sqrt(k), which has no
+        # physical basis; ACRE2's ITM owns the terrain/horizon geometry.
+        self.assertNotIn("_effectiveDistM = _distM / (sqrt _refractionK)", self.src)
 
 
 class TestGroundFrostWiring(unittest.TestCase):

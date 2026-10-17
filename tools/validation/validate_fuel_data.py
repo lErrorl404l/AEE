@@ -36,6 +36,8 @@ GROUND_STATES = {"Normal", "Mud", "Dusty", "Frozen", "Snow"}
 
 # The thermal constants the coolant model reads. A missing id is an error.
 REQUIRED_THERMAL = {
+    "idle_fuel_lph_ref",
+    "idle_ref_power_kw",
     "thermostat_c",
     "coolant_normal_min_c",
     "coolant_normal_max_c",
@@ -152,6 +154,22 @@ def validate(data: dict) -> list[str]:
         if not (0.0 < crr < 1.0):
             errors.append(f"{where}: crr {crr} outside 0..1")
         check_source(entry, where)
+
+    # ─── Drag coefficients ──────────────────────────────────────────────────
+    seen_cd: set[str] = set()
+    for entry in data.get("drag_coefficients", []):
+        did = _require_str(entry, "id", "drag_coefficient", errors)
+        where = f"drag_coefficient '{did}'"
+        if did in seen_cd:
+            errors.append(f"{where}: duplicated id")
+        seen_cd.add(did)
+        cd = _require_number(entry, "cd", where, errors)
+        if not (0.1 <= cd <= 2.0):
+            errors.append(f"{where}: cd {cd} outside 0.1..2.0")
+        check_source(entry, where)
+    missing_cd = {"wheeled_light", "wheeled_truck", "tracked"} - seen_cd
+    if missing_cd:
+        errors.append(f"drag_coefficients: missing {sorted(missing_cd)}")
 
     # ─── Terrain multipliers ────────────────────────────────────────────────
     seen_tm: set[str] = set()

@@ -17,8 +17,12 @@ Implements the Bühlmann ZH-L16C 16-compartment dissolved-gas model:
 
 Constants from the published ZH-L16C table (Bühlmann "Tauchmedizin"
 1993, reproduced in Baker 1998/2000 and the SAETT FAQ which labels the
-dive-computer "a" column).  NOT the ZHL-16b variant (5-minute first
-compartment, used by Subsurface): 16C keeps compartment 1 at 4 min.
+dive-computer "a" column).  Bühlmann publishes two first compartments,
+"1" (4.0 min, a 1.2599, b 0.5050) and "1b" (5.0 min, a 1.1696, b 0.5578),
+with the same M-values in the A, B and C sets (Baker, "Understanding
+M-values", Fig. 1); this table uses "1".  Many dive computers (and
+Subsurface, core/deco.cpp) use "1b"; the choice changes only the fastest
+tissue.
 
 Input:  [_depthM, _fN2, _fHe, _tissues]  - depth, gas mix, 16x2 state
         [_depthM, _fN2, _fHe, _tissues, _gf, _pAmbOverride, _dtSec]
