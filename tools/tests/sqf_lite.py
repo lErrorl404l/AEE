@@ -87,7 +87,9 @@ def tokenize(text: str) -> list[Tok]:
             # SQF local variable names are case-insensitive (_P and _p are
             # one variable), so a local is normalised to lower case here; a
             # harness that kept the case would pass code the engine breaks.
-            toks.append(Tok("id", s.lower() if re.match(r"_[A-Za-z]", s) else s, m.start()))
+            toks.append(
+                Tok("id", s.lower() if re.match(r"_[A-Za-z]", s) else s, m.start())
+            )
     return toks
 
 
@@ -193,6 +195,9 @@ BINARY_COMMANDS = {
     # Object class test used by the wildlife neighbourhood sampler.  In the
     # harness the objects are strings, so this is an equality test.
     "isKindOf",
+    # haystack find needle: a string's substring index or an array's element
+    # index, -1 when absent (the surface-name classifiers).
+    "find",
     # Object state writes used by the aircraft fuel kernel.  The harness
     # resolves each through globals_, so a test binds a recorder.
     "setFuel",
@@ -213,6 +218,24 @@ def _sqf_isEqualTo(a: Any, b: Any) -> bool:
 
 def _sqf_isNotEqualTo(a: Any, b: Any) -> bool:
     return a != b
+
+
+def _sqf_getVariable(container: Any, spec: Any) -> Any:
+    """SQF `namespace getVariable [key, default]`.  A namespace is a dict in
+    the harness, so this is a dict lookup with a default."""
+    key = spec[0]
+    default = spec[1] if len(spec) > 1 else None
+    if isinstance(container, dict):
+        return container.get(key, default)
+    return default
+
+
+def _sqf_setVariable(container: Any, spec: Any) -> None:
+    """SQF `namespace setVariable [key, value]`.  A non-dict namespace (an
+    engine object the test did not supply) drops the write."""
+    if isinstance(container, dict):
+        container[spec[0]] = spec[1]
+    return None
 
 
 def _sqf_getOrDefault(container: Any, spec: Any) -> Any:
@@ -307,6 +330,8 @@ UNARY_COMMANDS = {
     "createHashMapFromArray",
     "abs",
     "toLower",
+    # toLowerANSI X - the Pandolf terrain kernel lower-cases the surface name.
+    "toLowerANSI",
     "finite",
     "round",
     "tan",
@@ -340,6 +365,11 @@ UNARY_COMMANDS = {
     "surfaceIsWater",
     "getTerrainHeightASL",
     "nearestTerrainObjects",
+    # Objects within a radius and a unit's own vehicle and ASL position: the
+    # compass kernel's local ferrous sources.
+    "nearestObjects",
+    "vehicle",
+    "getPosASL",
     # HashMap value list used by the wildlife vegetation-score helper.
     "values",
     # isClass X - config class-existence test used by fnc_wildlifeTick.
@@ -475,10 +505,17 @@ BUILTINS: dict[str, Any] = {
     "isEqualTypeAny": _sqf_isEqualTypeAny,
     "isNotEqualTo": _sqf_isNotEqualTo,
     "getOrDefault": _sqf_getOrDefault,
+    "getVariable": _sqf_getVariable,
+    "setVariable": _sqf_setVariable,
     "get": lambda m, k: m.get(k) if isinstance(m, dict) else None,
     "set": _sqf_set,
     "createHashMapFromArray": lambda pairs: {p[0]: p[1] for p in pairs},
     "isKindOf": _sqf_isKindOf,
+    "find": lambda h, n: (
+        float(h.find(n))
+        if isinstance(h, str)
+        else (float(h.index(n)) if n in h else -1.0)
+    ),
     "vectorDiff": _sqf_vectorDiff,
     "vectorAdd": _sqf_vectorAdd,
     "vectorMultiply": _sqf_vectorMultiply,
@@ -1056,7 +1093,11 @@ def constants_defines() -> dict[str, float]:
 def _f32(value: Any) -> Any:
     """Round a number to IEEE single precision, the engine's number type."""
     if isinstance(value, float):
-        return struct.unpack("f", struct.pack("f", value))[0] if math.isfinite(value) else value
+        return (
+            struct.unpack("f", struct.pack("f", value))[0]
+            if math.isfinite(value)
+            else value
+        )
     if isinstance(value, list):
         return [_f32(v) for v in value]
     return value
@@ -1078,7 +1119,10 @@ class SqfRuntime:
         if globals_:
             # Injected locals follow the same case-insensitive rule.
             self.globals.update(
-                {(k.lower() if re.match(r"_[A-Za-z]", k) else k): v for k, v in globals_.items()}
+                {
+                    (k.lower() if re.match(r"_[A-Za-z]", k) else k): v
+                    for k, v in globals_.items()
+                }
             )
         self.scopes: list[dict[str, Any]] = [{}]
 
@@ -1227,6 +1271,8 @@ class SqfRuntime:
                 return abs(value)
             if node.op == "toLower":
                 return str(value).lower()
+            if node.op == "toLowerANSI":
+                return str(value).lower()
             if node.op == "toUpper":
                 return str(value).upper()
             if node.op == "format":
@@ -1294,6 +1340,10 @@ class SqfRuntime:
                 "surfaceIsWater",
                 "getTerrainHeightASL",
                 "nearestTerrainObjects",
+                # Object queries used by fnc_calculateCompassDeviation.
+                "nearestObjects",
+                "vehicle",
+                "getPosASL",
                 "values",
                 "isClass",
                 "getArray",
@@ -1512,7 +1562,12 @@ def run_sqf(
     rt = SqfRuntime(globals_)
     rt.float32 = float32
     if float32:
-        args = [_f32(float(a)) if isinstance(a, int) and not isinstance(a, bool) else _f32(a) for a in args]
+        args = [
+            _f32(float(a))
+            if isinstance(a, int) and not isinstance(a, bool)
+            else _f32(a)
+            for a in args
+        ]
     stmts = load_sqf(path)
     # bind params from the first Params statement
     for s in stmts:

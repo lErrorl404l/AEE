@@ -242,16 +242,12 @@ private _infantryCount = 0;
             // doesn't stay cold), scaled to the corpse's surface.
             if (!_inShade) then { _target = _target + ((1 - _insulation) * (([0.6, _solarFlux, 0.95, _airTemp, _windSpeed] call FUNC(solarElevation)))); };
         } else {
-            // Metabolic heat from movement: idle 0, walk 20, run 60,
-            // sprint 120 W - SCALED by the fraction of oxidative metabolism
-            // the circulation can still supply.
-            private _vSpeed = abs speed _obj;
-            private _metabolicHeat = switch (true) do {
-                case (_vSpeed > 6):   { 120 };
-                case (_vSpeed > 3):   {  60 };
-                case (_vSpeed > 0.5): {  20 };
-                default               {   0 };
-            };
+            // Metabolic heat above rest from what the unit is doing: the
+            // Pandolf 1977 load-carriage rate (aee_lib_fnc_unitMetabolicRate)
+            // less the 1 met resting rate (58.2 W/m2 over 1.8258 m2) -
+            // SCALED by the fraction of oxidative metabolism the circulation
+            // can still supply.
+            private _metabolicHeat = (([_obj] call EFUNC(lib,unitMetabolicRate)) - (58.2 * 1.8258)) max 0;
             // Oxygen delivery (issue #196): one blood model shared with
             // fnc_applySelectionThermal.  The metabolic fraction is
             // delivery-limited; the perfusion index is the volume axis.

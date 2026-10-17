@@ -199,6 +199,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_lighting_limitingMagnitude` | environmental | Naked-eye limiting magnitude at the zenith (Knoll threshold on the sky luminance) |
 | `aee_lighting_skyLuminance` | environmental | Zenith sky luminance, cd/m2: natural sky + moonlit sky (Krisciunas & Schaefer) + twilight |
 | `aee_core_twilightLux` | core | Twilight horizontal illuminance, lux (Schlyter table, cloud-cut) |
+| `aee_core_moonLux` | core | Moonlight on a horizontal plane, lux (Krisciunas & Schaefer magnitude through air mass and extinction, cloud-cut) |
 | `aee_nightvision_nvgNoise` | nightvision | NVG noise |
 | `aee_nightvision_nvgTubeTier` | nightvision | NVG tube tier |
 | `aee_nightvision_nvgWetness` | nightvision | NVG wetness |
@@ -276,7 +277,9 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_dive_diveStates` | dive | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
 | `aee_dive_diveMix` | dive | External breathing-gas hook (issue #118): [fN2, fHe, fO2] set by diving addons |
 | `aee_dive_diveGradientFactor` | dive | Buhlmann gradient factor (CBA setting, 0.5-1.0) |
-| `aee_core_coreBodyTemp` | core | Core body temperature in C from the physiology heat balance (`fnc_coreBodyTemp`): a 37 C baseline plus a WBGT heat gain minus a wind-chill and hypothermia loss. Grade: baseline sourced; coefficients UNSOURCED |
+| `aee_core_coreBodyTemp` | core | Core body temperature in C from the Gagge two-node model (`fnc_coreBodyTemp` -> `fnc_gaggeTwoNode`: Gagge, Fobelets & Berglund 1986, ASHRAE 55-2020 reference form), integrated in time from the persistent state. Read by the KAT integration |
+| `aee_core_skinTemp` | core | Skin node temperature in C from the same Gagge two-node state (`fnc_coreBodyTemp`). Published physiology state, read by external addons |
+| `aee_core_metabolicRate` | core | Metabolic rate of the local player in W (`fnc_unitMetabolicRate`: Pandolf 1977 load carriage). Published physiology state, read by external addons |
 
 ### Thermal
 
@@ -497,7 +500,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_maritime_shipPitch_deg` | maritime | Ship pitch in degrees |
 | `aee_maritime_shipHeave_m` | maritime | Ship heave in metres |
 | `aee_maritime_shipMotionSeverity` | maritime | Ship motion severity, 0 to 1 |
-| `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
+| `aee_core_magneticDeclinationDeg` | maritime | Magnetic declination in degrees (WMM), without the local ferrous deflection |
 | `aee_maritime_oceanCurrent` | maritime | Surface ocean current vector `[east, north]` in metres per second |
 | `aee_maritime_oceanCurrentSpeed` | maritime | Surface ocean current speed in metres per second |
 | `aee_maritime_oceanCurrentDir` | maritime | Surface ocean current azimuth in degrees from north |
@@ -512,7 +515,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_maritime_shadowZoneBottom_m` | maritime | Bottom of the direct-path shadow zone in metres |
 | `aee_maritime_absorptionDbPerKm` | maritime | Seawater absorption at the reference frequency in dB/km |
 | `aee_maritime_ambientNoiseDb` | maritime | Ambient noise spectrum level at the reference frequency, dB re 1 uPa^2/Hz |
-| `aee_magnetism_compassDeviation` | magnetism | Compass deviation (magnetism namespace) |
+| `aee_magnetism_compassDeviation` | magnetism | Compass deviation in degrees: the declination plus the local ferrous deflection |
 | `aee_magnetism_compassAnomalyNT` | magnetism | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
 
 ### Aviation and severe weather
