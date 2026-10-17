@@ -11,10 +11,10 @@ Three sources are combined:
   - getLightingAt returns the engine's local dynamic light at the player.
     It folds local light into one value, but it has no documented unit and
     it is gated by the local player's night-vision state, so it enters only
-    through a tunable scale (UNSOURCED).
+    through a game tunable scale.
   - apertureParams exposes the engine's own estimated luminance and
     blinding term, read for diagnostics and through an off-by-default
-    blinding scale (UNSOURCED).
+    game tunable blinding scale.
 
 The sky fraction scales the ambient term only. A local light is not scaled
 by the sky: a torch lights the scene in a closed room.
@@ -66,8 +66,8 @@ private _ambient = [_physAmbient, _engAmbient, GVAR(eyeAmbientLuxScale), _sunEle
 private _local = [_coreLocal, _engLocal, GVAR(eyeLocalLuxScale), _blinding, GVAR(eyeBlindingLuxScale), _sunElev] call FUNC(eyeLocalLux);
 
 // Sky directions: straight up plus four at 45 degrees, one per compass
-// quadrant. The 200 m range is UNSOURCED; it only has to clear the geometry
-// that can stand between the eye and open sky.
+// quadrant. The 200 m range is a display tunable; it only has to clear the
+// geometry that can stand between the eye and open sky.
 private _range = 200;
 private _dirs = [
     [0, 0, 1],

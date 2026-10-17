@@ -2,6 +2,7 @@
 
 Status: Accepted
 Date: 2026-10-10
+Superseded: the compat_realweather addon was removed on 2026-10-17; AEE owns the engine weather directly.
 Decision: AEE models a mid-latitude weather front as a deterministic Bergen
 life-cycle state machine that perturbs the existing atmospheric state. It does
 not add a second model of the temperature, pressure or wind physics.

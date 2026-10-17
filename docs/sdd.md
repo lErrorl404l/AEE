@@ -25,7 +25,7 @@ records the addon split.
 
 ## 2. Addon decomposition
 
-The addon tree has 45 addons. The tree is in
+The addon tree has 44 addons. The tree is in
 `docs/architecture/addon-map.json`. The dependency graph is generated from
 the source by `tools/architecture/addon_dependencies.py`, and written to
 `docs/architecture/addon-dependencies.md`.
@@ -95,7 +95,7 @@ cannot reach is recorded as a ceiling.
 
 A compatibility addon is named `compat_<host>`. It loads only when the host
 mod is present. The compat addons are `compat_ace3`, `compat_acm`,
-`compat_acre2`, `compat_kat`, `compat_realweather`, and `compat_tfar`.
+`compat_acre2`, `compat_kat`, and `compat_tfar`.
 
 The engine version floor is set in `addons/lib/script_mod.hpp`. Every addon
 reads that floor. The floor is the highest engine command version AEE uses.

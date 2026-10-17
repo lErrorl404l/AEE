@@ -126,7 +126,14 @@ if ((_flashUntil isEqualType 0) && (CBA_missionTime >= _flashUntil)) then {
 private _rawSceneLux = _sceneLux;
 _sceneLux = _sceneLux max 1e-6;
 
-// Reflectance assumption rho: luminance = rho * E / pi (mid-grey, UNSOURCED).
+// Scene illuminance to luminance for a diffuse (Lambertian) surface:
+//   L = rho * E / pi   (cd/m2),  rho = surface reflectance
+// The 1/pi factor is the standard photometric relation for a perfect
+// diffuser: NIST SP 250-37, "Photometric Calibrations": "In SI units, the
+// luminance of a perfect diffuser would be 1/pi (cd/m^2) when illuminated
+// at 1 lx."  Equivalently L in apostilb equals rho * E in lux, since
+// 1 asb = (1/pi) cd/m2.  rho is the mid-grey scene assumption
+// (GVAR(eyeReflectance), 0.18).
 private _rho = GVAR(eyeReflectance);
 private _lumScene = (_rho * _sceneLux) / pi;
 private _xTarget = log (_lumScene max 1e-9);

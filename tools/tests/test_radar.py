@@ -160,19 +160,37 @@ class TestRadarClutterRange(unittest.TestCase):
 
 
 class TestRadarRcs(unittest.TestCase):
-    def test_class_values(self):
+    def test_sourced_class_values(self):
+        # Skolnik, "Introduction to Radar Systems", 2nd ed., Table 2.2, p.44.
         self.assertAlmostEqual(
-            run_sqf(_kernel("fnc_radarRcs.sqf"), ["fighter"]), 3.0, places=6
+            run_sqf(_kernel("fnc_radarRcs.sqf"), ["fighter"]), 6.0, places=6
         )
+        self.assertAlmostEqual(
+            run_sqf(_kernel("fnc_radarRcs.sqf"), ["bomber"]), 40.0, places=6
+        )
+        self.assertAlmostEqual(
+            run_sqf(_kernel("fnc_radarRcs.sqf"), ["person"]), 1.0, places=6
+        )
+        self.assertAlmostEqual(
+            run_sqf(_kernel("fnc_radarRcs.sqf"), ["vehicle"]), 100.0, places=6
+        )
+        self.assertAlmostEqual(
+            run_sqf(_kernel("fnc_radarRcs.sqf"), ["boat"]), 0.02, places=6
+        )
+
+    def test_game_tunable_class_values(self):
+        # No published scalar: the values are documented game tunables.
         self.assertAlmostEqual(
             run_sqf(_kernel("fnc_radarRcs.sqf"), ["helicopter"]), 3.0, places=6
         )
         self.assertAlmostEqual(
-            run_sqf(_kernel("fnc_radarRcs.sqf"), ["vehicle"]), 10.0, places=6
+            run_sqf(_kernel("fnc_radarRcs.sqf"), ["stealth"]), 0.00316, places=6
         )
-        self.assertAlmostEqual(
-            run_sqf(_kernel("fnc_radarRcs.sqf"), ["ship"]), 1000.0, places=6
-        )
+        # NAWCWD TP 8347 section 4-11 range 3,000-1,000,000 sq m; low end used.
+        ship = run_sqf(_kernel("fnc_radarRcs.sqf"), ["ship"])
+        self.assertAlmostEqual(ship, 3000.0, places=6)
+        self.assertGreaterEqual(ship, 3000.0)
+        self.assertLessEqual(ship, 1000000.0)
 
     def test_case_insensitive(self):
         self.assertEqual(
@@ -206,9 +224,21 @@ class TestRadarDuctRange(unittest.TestCase):
         self.assertEqual(exponent, 4)
 
     def test_below_cutoff_not_trapped(self):
-        # 10 MHz is far below the duct cutoff (~61 MHz at delta 15 m).
+        # NPS NWDC EM course module 4.2: f_M = 360 * delta^-1.5 GHz.  At
+        # delta 15 m the cutoff is 6.2 GHz; 10 MHz is far below it.
         exponent = run_sqf(_kernel("fnc_radarDuctRange.sqf"), [15, 1e7, -200, 10, 5])
         self.assertEqual(exponent, 4)
+
+    def test_sourced_cutoff_vector(self):
+        # Kerr 1951 sec 1-5 eq (18): lambda_max = 0.014 d^1.5 cm with d in ft,
+        # i.e. 8.32e-4 d^1.5 m with d in m.  At d = 15 m that is 0.0483 m
+        # -> f_min = 3e8 / 0.0483 = 6.21 GHz.
+        f_min = 3e8 / (8.32e-4 * 15.0**1.5)
+        self.assertAlmostEqual(f_min / 1e9, 6.21, places=2)
+        above = run_sqf(_kernel("fnc_radarDuctRange.sqf"), [15, 6.5e9, -200, 10, 5])
+        below = run_sqf(_kernel("fnc_radarDuctRange.sqf"), [15, 6.0e9, -200, 10, 5])
+        self.assertEqual(above, 2)
+        self.assertEqual(below, 4)
 
 
 class TestRadarDetectionRange(unittest.TestCase):

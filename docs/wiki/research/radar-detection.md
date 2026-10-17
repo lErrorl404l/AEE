@@ -19,9 +19,9 @@ limits, with the duct applied when it traps.
 | `radarHorizon` | `D_max = 4.12 (sqrt(H_a) + sqrt(H_t))` km | ITU-R P.834-2 (4/3 earth radius) |
 | `radarSeaClutter` | NRL `sigma0(dB)` model | Gregers-Hansen & Mital, NRL 2012 (DTIC ADA559494) |
 | `radarClutterRange` | `R_max = sigma_t / (sigma0 theta_az (c tau / 2) sec(psi) TCR_min)` | NRL 2012; Skolnik |
-| `radarDuctRange` | `lambda_max = 0.085 delta^1.5`, `dM/dz = dN/dz + 0.157` | Kerr 1951; issue #37 |
+| `radarDuctRange` | `lambda_max = 8.32e-4 delta^1.5` m (Kerr eq. 18 converted), `dM/dz = dN/dz + 0.157` | Kerr 1951 sec. 1-5 eq. (18); NPS NWDC EM course module 4.2 |
 | `radarDetectionRange` | `R_det = min(noise, clutter, horizon)` | issue #104 recommended model |
-| `radarRcs` | class -> RCS (m^2) | UNSOURCED (see below) |
+| `radarRcs` | class -> RCS (m^2) | Skolnik, Introduction to Radar Systems 2nd ed. Table 2.2; NAWCWD TP 8347 4-11 (see below) |
 
 The consumer `calculateRadarDetection` reads the atmosphere and maritime
 state, calls every kernel, and returns `[range m, limiting factor, detected]`.
@@ -39,31 +39,37 @@ interpreter that executes the real SQF:
 | NRL `sigma0` (VV, 10 GHz, SS3, 1 deg) | -41.2 dB | -41.189 dB |
 | Clutter range (`sigma_t = 10`, `sigma0 = -40 dB`, `theta_az = 0.02`, `tau = 1e-6`, `TCR_min = 10`) | 3.3 km | 3.333 km |
 
-## UNSOURCED values
+## Sourced values
 
-Per the repository's UNSOURCED marker rule (data/aircraft/SCHEMA.md section 6):
+- **RCS class table** (`radarRcs`).  The sourced rows are the published
+  figures from Skolnik, "Introduction to Radar Systems", 2nd ed.,
+  McGraw-Hill, 1981, Table 2.2, p. 44: large fighter 6 m^2, large bomber
+  40 m^2, man 1 m^2, automobile 100 m^2, small open boat 0.02 m^2.  The
+  issue named Skolnik's "Radar Handbook", which does not carry this table;
+  the class range mid-points it gave (vehicle 5-20 m^2) conflict with the
+  published automobile 100 m^2 and were replaced.
+- **Duct cutoff** (`radarDuctRange`).  Kerr, "Propagation of Short Radio
+  Waves", MIT Radiation Laboratory Series vol. 13, 1951, section 1-5 eq.
+  (18): `lambda_max = 0.014 d^1.5` cm with d in feet, i.e.
+  `8.32e-4 d^1.5` m with d in metres (the commonly quoted
+  `0.085 delta^1.5` is Kerr's constant in centimetres).  Corroborated by
+  the Naval Postgraduate School NWDC Electromagnetic Course, module 4.2
+  (`f_M = 360 delta^-1.5` GHz).  The gradient-dependent form is Bean, NBS
+  J. Res. D 63(1):29-34, 1959, eq. (13).  The earlier use of a bare 0.085
+  as a metre-valued constant was a unit error of about 100x.
 
-- **RCS class table** (`radarRcs`).  The issue states the class ranges but
-  names the wrong source.  A source check found the canonical figures in
-  Skolnik, "Introduction to Radar Systems", Table 2.2 (man 1, bird 0.01,
-  automobile 100, pickup truck 200, large fighter 6, large bomber 40,
-  jumbo jet 100, small open boat 0.02) - NOT the "Radar Handbook" the
-  issue cites.  Against that table the issue's "vehicle 5-20 m^2"
-  CONFLICTS (the canonical vehicle is ~100-200 m^2); the stealth
-  (0.001-0.01) and helicopter (~3) rows do not appear at all.  The values
-  are the issue's range mid-points, are leads, and never fill a
-  runtime-required field.  The model is gated by the
-  `aee_radio_radarDetection` setting (default off) until a held source
-  replaces them.
-- **Duct cutoff constant** (`radarDuctRange`).  A source check found
-  Kerr's cutoff is `lambda_max = c * gamma^0.5 * delta^1.5`
-  (NBS J. Res. 63D(1):29, 1959, eq. 13), gradient-dependent, NOT the
-  fixed `0.085 * delta^1.5` the issue states.  The issue's constant is
-  used as a lead.
+## Game tunables
+
+- **RCS rows with no published scalar** (`radarRcs`): stealth 0.00316
+  (the issue's range 0.001-0.01), helicopter 3 (no single representative
+  figure; helicopter RCS is dominated by dynamic rotor scattering), and
+  ship 3000 (NAWCWD TP 8347 section 4-11 publishes only a range, "ships
+  3,000 to 1,000,000 sq m").  Each row is marked a game tunable in the
+  kernel.
 - **Ducted range constant** (`radarRangeEquation`, `n = 2`).  The issue's
   `R^4 -> R^2` law is implemented, but the cylindrical-spreading constant
   for the ducted case is not held, so the `(4 pi)^3` constant is retained.
-  This is a simplification and is marked in the kernel header.
+  This is a documented simplification and is marked in the kernel header.
 
 ## Source-verification notes
 
@@ -86,12 +92,14 @@ Per the repository's UNSOURCED marker rule (data/aircraft/SCHEMA.md section 6):
   executes the real SQF), and the engine query is verified structurally.
 - **Swerling fluctuation is not modelled.**  The issue flags it; a
   `Pd`-versus-range curve needs the Swerling cases, which are deferred.
-- **The RCS table is a lead.**  See UNSOURCED above.
+- **The RCS rows without a published scalar are game tunables.**  See
+  Game tunables above.
 
 ## Issue-text corrections
 
-- The RCS table cites Skolnik, which is not held.  The values are marked
-  UNSOURCED rather than presented as verified.
+- The RCS table cited Skolnik's "Radar Handbook", which does not carry the
+  table.  The sourced figures are from "Introduction to Radar Systems",
+  2nd ed., Table 2.2, p. 44.
 - The issue's Rayleigh-region note is applied: at SHF against these
   vehicle and aircraft classes the target is in the optical region, so a
   flat RCS is correct (no `lambda^-4` scaling).

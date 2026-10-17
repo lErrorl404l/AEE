@@ -10,19 +10,36 @@ and distance-independent.  A source is audible over it when its level at the
 listener exceeds the floor by a detection threshold (fnc_acousticMasking).
 
 The four contributions are read from engine and AEE state and mapped through
-tables.  The LEVELS ARE UNSOURCED modelling ranges; the issue states the
-bands and this kernel reproduces their midpoints, so the register holds them.
-The mapping shapes are:
+tables.  Only the wind term carries a measured law.  The others stay
+UNSOURCED modelling ranges, stated so the register holds them.  The mapping
+shapes are:
 
   rain     engine rain 0..1 -> dB(A)   drizzle 40-45 .. heavy 55-60
-  wind     m/s -> dB(A)                light breeze 25-35 .. gale 55-65
+  wind     m/s -> dB(A)                measured wind-in-vegetation law below
   foliage  density 0..1 -> dB(A)       quiet forest floor 20-30
   water    local fraction 0..1 -> dB(A) stream 40-50, river 50-60
 
-No in-air published law gives a dB(A) level against the engine's rain and
-wind scalars.  The nearest real literature is the wind-driven ambient-noise
-spectra (Wenz 1962, JASA 34:1936) and rain-on-surface noise (ISO 140-18:2006;
-Von Meier 1960, JASA, DOI 10.1121/1.1936237), both qualitative here.
+PROVENANCE.
+
+  wind SOURCED.  Wind-induced vegetation noise.  The measured regression is
+    L_A = 2.78 * v + 37.4 dB(A), with v the wind speed in m/s (Sneddon and
+    others, reported in Komatsu, Kato, Kuwano, Namba, Kondo, Inoue and
+    Yamaguchi 2000, "Physical Characteristics of Wind-induced Foliage
+    Sounds of Planting Trees", Journal of the INCE of Japan 24(4):268-276,
+    DOI 10.11372/souonseigyo1977.24.268, section 2, page 269: "L = 2.78 y +
+    37.4 ... y = 5 m/s ... L = 51.3 dBA").  The table holds that regression
+    at 0, 2, 5, 10, 15 and 20 m/s.  The receiver sat 5 m from the trunk of a
+    planted tree, so the value is the floor a listener under vegetation
+    hears, not a bare-ground value.  Komatsu section 4.2, page 271, records
+    the same order for its own six-tree set.
+
+  rain, foliage, water UNSOURCED.  No in-air published law held in this
+    repository gives a dB(A) level against the engine's rain scalar, the
+    AEE foliage density or the local water fraction.  The nearest real
+    literature is rain-on-surface noise (ISO 140-18:2006; Von Meier 1960,
+    JASA, DOI 10.1121/1.1936237) and the wind-driven ambient spectrum (Wenz
+    1962, JASA 34:1936), both qualitative here.  The register in
+    docs/wiki/research/wildlife-ecology-constants.md holds them.
 
 The masking literature is NOT modelled as per-band here.  The engine exposes
 one broadband level, so this is a broadband floor.  For the record, the
@@ -53,9 +70,11 @@ params [
     ["_waterFrac", 0, [0]]
 ];
 
-// [input, dB(A)] breakpoints.  UNSOURCED: the issue's band midpoints.
+// [input, dB(A)] breakpoints.  The wind row is the measured regression
+// L_A = 2.78 * v + 37.4 dB(A), Komatsu and others 2000, section 2, page 269
+// (see the header).  The rain, foliage and water rows are UNSOURCED.
 private _rainTable = [[0, 0], [0.25, 43], [0.5, 48], [0.75, 53], [1.0, 58]];
-private _windTable = [[0, 0], [2, 30], [5, 40], [10, 50], [15, 58], [20, 65]];
+private _windTable = [[0, 0], [2, 42.96], [5, 51.3], [10, 65.2], [15, 79.1], [20, 93]];
 private _foliageTable = [[0, 0], [1, 25]];
 private _waterTable = [[0, 0], [0.5, 45], [1, 55]];
 

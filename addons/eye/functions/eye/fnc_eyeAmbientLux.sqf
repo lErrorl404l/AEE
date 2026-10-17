@@ -21,7 +21,8 @@ Pure: no missionNamespace, no GVAR or EGVAR, no engine command.
 Arguments:
   0: Number - physical sky illuminance, lx (starlight + moon + twilight + aurora)
   1: Number - engine ambient brightness (getLightingAt element 1), no unit
-  2: Number - scale on the engine term (UNSOURCED, operator-tunable)
+  2: Number - scale on the engine term (game tunable: getLightingAt element 1
+             has no documented unit; operator-tunable via aee_eye_eyeAmbientLuxScale)
   3: Number - sun elevation, degrees (0 or below is night)
 
 Returns:

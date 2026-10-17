@@ -6,24 +6,33 @@ Bergen (Norwegian) cyclone life cycle as a deterministic front state machine.
 Bjerknes (1919) describes the mid-latitude cyclone as a repeating life cycle:
 a stationary front, cyclogenesis (a wave on the front), the mature stage (a
 warm sector between a warm front and a cold front), occlusion (the cold front
-overtakes the warm front), then dissipation.  The cycle runs about one week.
-This kernel maps mission time onto that cycle and returns the front state at
-the current instant.  It is a PURE function of mission time and the seeded
-progression, so every machine computes the same front and nothing is
-broadcast (no publicVariable).
+overtakes the warm front), then dissipation.  The cycle runs about one week:
+the wave-cyclone life cycle lasts from a few days to over a week (Ahrens,
+Meteorology Today, ch. 13).  This kernel maps mission time onto that cycle
+and returns the front state at the current instant.  It is a PURE function of
+mission time and the seeded progression, so every machine computes the same
+front and nothing is broadcast (no publicVariable).
 
 The front is one line that sweeps across the map.  Its bearing (direction of
 motion) follows the prevailing mid-latitude westerlies: fronts track broadly
 eastward.  The seed spreads the bearing over a 60 deg arc (UNSOURCED spread)
 and offsets the life cycle so two missions do not share a front.
 
-The per-stage numbers come from the issue's research (FAA Advisory Circular
-00-6B ch 10.3 Aviation Weather; WW2010 UIUC; NOAA JetStream; UK Met Office):
-  cold front      speed 30-60 km/h, gradient zone 50-100 km, veer 40-90 deg
-  warm front      speed 20-30 km/h (about half the cold-front speed)
-  occluded front  speed 25-45 km/h
-  stationary      speed below 5 km/h
-  temperature contrast 5-15 C across the front
+The per-stage numbers, with their source register:
+  cold front      speed 45 km/h.  Published: 25-30 mph (40-48 km/h typical,
+                  extreme fronts to 60 mph) - FAA Aviation Weather Handbook
+                  FAA-H-8083-28, ch. 11 (successor to FAA AC 00-6B).
+  warm front      speed 25 km/h.  Published: 10-25 mph (16-40 km/h) - FAA
+                  FAA-H-8083-28, ch. 11.
+  occluded front  speed 35 km/h.  UNSOURCED: ch. 11 states no occluded-front
+                  speed; 35 km/h sits between the warm and cold values.
+  stationary      speed 3 km/h.  UNSOURCED: no published figure; a stationary
+                  front is defined as one that is not replacing either air
+                  mass, so it is given the near-zero value the model needs.
+  gradient zone   50-100 km (cold), 100-150 km (warm) - FAA-H-8083-28 ch. 11.
+  wind veer       40-90 deg (cold) - FAA-H-8083-28 ch. 11.
+  temperature contrast 5-15 C across the front (issue's research, NOAA/UKMO).
+  cloud trend     magnitude is a modelling choice, not a published value.
 
 Arguments:
   0: mission time in seconds (Number)
@@ -53,7 +62,8 @@ if !(_missionTime isEqualType 0) then { _missionTime = 0; };
 if !(_seed isEqualType 0) then { _seed = 0.5; };
 _seed = (_seed max 0) min 1;
 
-// One week: the Bjerknes (1919) life cycle, ~1 week.
+// One week (604800 s): the wave-cyclone life cycle lasts from a few days to
+// over a week (Ahrens, Meteorology Today ch. 13; Bjerknes 1919).
 private _cycleLength = 604800;
 
 // The life-cycle stages.  Each entry:

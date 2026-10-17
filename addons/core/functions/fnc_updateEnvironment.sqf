@@ -23,12 +23,6 @@ BEGIN_COUNTER(updateEnvironment);
 // machine random rolls; divergence there is cosmetic only.
 missionNamespace setVariable [QEGVAR(core,overcast), overcast];
 
-// Real Weather mode: when aee_core_realWeatherActive is set (by the
-// RealWeather compat layer from weather.json), the simulation must NOT
-// recompute temperature/pressure/humidity — it would overwrite the real
-// data. Derived effects (ground, fog, foliage, FX) still run below.
-private _realWeather = missionNamespace getVariable [QEGVAR(core,realWeatherActive), false];
-
 // The ICAO reference altitude is the standard-atmosphere datum the
 // derived models use.  Five consumers read EGVAR(core,referenceAltitude)
 // (pressure, temperature lapse, helicopter lift, UV index, freezing rain)
@@ -49,58 +43,54 @@ if (GVAR(icaoReferenceAlt) != 0) then {
     missionNamespace setVariable [QEGVAR(core,referenceAltitude), _refAlt];
 };
 
-if (!_realWeather) then {
-    // Deterministic weather progression seed — drives slow weather-quality drift
-    BEGIN_COUNTER(weatherProgression);
-    [] call FUNC(calculateSeededWeatherProgression);
-    END_COUNTER(weatherProgression);
+// Deterministic weather progression seed — drives slow weather-quality drift
+BEGIN_COUNTER(weatherProgression);
+[] call FUNC(calculateSeededWeatherProgression);
+END_COUNTER(weatherProgression);
 
-    private _month = date select 1;
+private _month = date select 1;
 
-    // Per-position biome detection — updates aee_core_biome based on
-    // surface type, latitude, and elevation at the player's position.
-    BEGIN_COUNTER(biomePosition);
-    if (GVAR(biomeEnabled)) then {
-        [_posASL] call EFUNC(weather,updateBiomePosition);
-    };
-    END_COUNTER(biomePosition);
-    private _biome = GVAR(biome);
+// Per-position biome detection — updates aee_core_biome based on
+// surface type, latitude, and elevation at the player's position.
+BEGIN_COUNTER(biomePosition);
+if (GVAR(biomeEnabled)) then {
+    [_posASL] call EFUNC(weather,updateBiomePosition);
+};
+END_COUNTER(biomePosition);
+private _biome = GVAR(biome);
 
-    // Pass explicit position to update functions so they use the same
-    // location rather than each independently querying CBA_fnc_currentUnit.
-    BEGIN_COUNTER(thermoAtmos);
-    if (GVAR(tempLapseRateEnabled) || GVAR(tempDiurnalEnabled)) then {
-        [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
-    };
-    [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
-    // Weather front: perturbs the just-computed temperature and pressure
-    // (the contrast step and the trough) and publishes the wind veer and the
-    // cloud term for the kernels below.  Runs before calculatePressureTrend,
-    // so the 3-hour trend ring buffer reports the passage signature (issue
-    // #15).  Inside the real-weather guard: the front is part of the
-    // computed weather and must not overwrite real data.
-    [_posASL] call EFUNC(atmos,updateWeatherFront);
-    [] call EFUNC(weather,calculateQNH);
-    [] call EFUNC(altitude,calculateHypoxia);
-    if (GVAR(humidityEnabled)) then {
-        [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
-    };
-    [] call EFUNC(persistence,updateSoilMoisture);
-    [] call EFUNC(atmos,calculatePrecipitationPhase);
-    [] call EFUNC(atmos,calculateHaze);
-    [] call EFUNC(persistence,calculateSurfaceWetness);
-    END_COUNTER(thermoAtmos);
+// Pass explicit position to update functions so they use the same
+// location rather than each independently querying CBA_fnc_currentUnit.
+BEGIN_COUNTER(thermoAtmos);
+if (GVAR(tempLapseRateEnabled) || GVAR(tempDiurnalEnabled)) then {
+    [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
+};
+[_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
+// Weather front: perturbs the just-computed temperature and pressure
+// (the contrast step and the trough) and publishes the wind veer and the
+// cloud term for the kernels below.  Runs before calculatePressureTrend,
+// so the 3-hour trend ring buffer reports the passage signature (issue
+// #15).  Inside the real-weather guard: the front is part of the
+// computed weather and must not overwrite real data.
+[_posASL] call EFUNC(atmos,updateWeatherFront);
+[] call EFUNC(weather,calculateQNH);
+[] call EFUNC(altitude,calculateHypoxia);
+if (GVAR(humidityEnabled)) then {
+    [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
+};
+[] call EFUNC(persistence,updateSoilMoisture);
+[] call EFUNC(atmos,calculatePrecipitationPhase);
+[] call EFUNC(atmos,calculateHaze);
+[] call EFUNC(persistence,calculateSurfaceWetness);
+END_COUNTER(thermoAtmos);
 
-    if (GVAR(airDensityEnabled)) then {
-        BEGIN_COUNTER(airDensity);
-        [] call EFUNC(ballistics,calculateAirDensity);
-        END_COUNTER(airDensity);
-    };
+if (GVAR(airDensityEnabled)) then {
+    BEGIN_COUNTER(airDensity);
+    [] call EFUNC(ballistics,calculateAirDensity);
+    END_COUNTER(airDensity);
 };
 
-// World lighting matcher.  Classify the world from latitude, biome, terrain
-// signals and weather and publish the run-time lighting profile.  The config
-// anchor is read at world load, so this is where AEE adapts at run time.  Cheap
+// This is where AEE adapts at run time.  Cheap
 // and safe headless.  Runs in both weather modes.
 BEGIN_COUNTER(worldLighting);
 [] call EFUNC(lighting,applyWorldLighting);
@@ -108,9 +98,8 @@ END_COUNTER(worldLighting);
 
 // Wind runs in BOTH modes.  updateWind reads the engine wind command and
 // publishes the computed vector and gusts to the shared state and the
-// engine (setWind).  Real-weather mode replaces temperature/pressure/
-// humidity but must not freeze the wind field, so it is not gated by
-// realWeather, only by the wind switch itself.
+// engine (setWind).  Wind runs in both weather modes and is gated only by
+// the wind switch itself.
 if (GVAR(windEnabled)) then {
     BEGIN_COUNTER(windUpdate);
     [] call EFUNC(atmos,updateWind);
@@ -482,6 +471,12 @@ if (GVAR(opticsEnabled)) then {
 // Local renderer bridges; each function self-gates on hasInterface.
 [] call EFUNC(atmos,updateRainbow);
 [] call EFUNC(atmos,updateLocalWindParams);
+
+// The engine weather writer maps AEE's modelled atmosphere onto the engine's
+// own overcast, rain and surface humidity (issue #155).  It runs after the
+// front, precipitation and fog models, whose published rates it reads, and
+// self-gates on the operator setting and on manual mission weather.
+[] call EFUNC(atmos,applyEngineWeather);
 
 // ─── Post-Process Effects & HUD ─────────────────────────────────────────
 [] call EFUNC(optics,applyRainOnOpticsFX);

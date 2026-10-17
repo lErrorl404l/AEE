@@ -42,8 +42,6 @@ private _night = missionNamespace getVariable [QEGVAR(core,lightIsNight), false]
 if !(_night isEqualType false) then { _night = false; };
 private _seed = missionNamespace getVariable [QEGVAR(core,weatherProgressionSeed), 0];
 if !(_seed isEqualType 0) then { _seed = 0; };
-private _realWeather = missionNamespace getVariable [QEGVAR(core,realWeatherActive), false];
-if !(_realWeather isEqualType false) then { _realWeather = false; };
 private _isReady = missionNamespace getVariable [QEGVAR(core,isReady), false];
 if !(_isReady isEqualType false) then { _isReady = false; };
 
@@ -88,11 +86,11 @@ if (_mismatches isNotEqualTo []) then {
 };
 
 private _logMsg = format [
-    "core state | weather=temp:%1C press:%2hPa rh:%3%% rho:%4 overcast:%5 sunElev:%6 | light=lux:%7 ambient:%8 night:%9 | progression=seed:%10 realWeather:%11 | ready:%12 | ownership:%13",
+    "core state | weather=temp:%1C press:%2hPa rh:%3%% rho:%4 overcast:%5 sunElev:%6 | light=lux:%7 ambient:%8 night:%9 | progression=seed:%10 | ready:%11 | ownership:%12",
     round (_tempC * 100) / 100, round (_pressHPa * 100) / 100, round _humidity,
     round (_rho * 10000) / 10000, round (_overcast * 1000) / 1000, round (_sunElev * 100) / 100,
     round _lux, round _ambientLux, _night,
-    _seed, _realWeather, _isReady, _ownership
+    _seed, _isReady, _ownership
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

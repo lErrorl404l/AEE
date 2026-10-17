@@ -140,6 +140,16 @@ class TestValleyWaveguide(unittest.TestCase):
     def test_across_axis_penalty(self):
         self.assertGreater(run_sqf(VALLEY, [100.0, 1e8, 90.0]), 0.0)
 
+    def test_sourced_cutoff_vector(self):
+        # Parallel-plate cutoff f_c = c/(2a) (Pozar, Microwave Engineering,
+        # 4th ed., 3.3): a = 100 m -> 1.5 MHz.
+        a = 100.0
+        self.assertAlmostEqual(C / (2 * a), 1.5e6, delta=1.0)
+        # Just below cutoff: no guidance at all.
+        self.assertEqual(run_sqf(VALLEY, [a, 1.4e6, 0.0]), 0.0)
+        # Just above cutoff: the along-axis guidance bonus appears.
+        self.assertLess(run_sqf(VALLEY, [a, 3.0e6, 0.0]), 0.0)
+
     def test_matches_mirror(self):
         a, f, ang = 100.0, 1e8, 30.0
         fc = C / (2 * a)

@@ -469,7 +469,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_hydrology_erosionDepth_mmYr` | hydrology | Soil loss as vertical lowering in mm/yr |
 | `aee_hydrology_erosivityR` | hydrology | Storm erosivity R (EI30) in MJ*mm/ha/h |
 | `aee_hydrology_sedimentYield_t` | hydrology | Event sediment yield (MUSLE) in metric tonnes |
-| `aee_hydrology_erosionRisk` | hydrology | Soil loss normalised 0..1 against 50 t/ha/yr |
+| `aee_hydrology_erosionRisk` | hydrology | Soil loss as a fraction of the USDA soil-loss tolerance T (11.2 t/ha/yr), 0..1 |
 | `aee_hydrology_erosionDepositedFraction` | hydrology | Share of the load deposited at a slope break 0..1 |
 
 ### Maritime
@@ -710,7 +710,6 @@ console may set any of them directly.
 | `aee_compat_acm_logDebug` | Trace the ACM integration |
 | `aee_compat_acre2_logDebug` | Trace the ACRE2 integration |
 | `aee_compat_kat_logDebug` | Trace the KAT integration |
-| `aee_compat_realweather_logDebug` | Trace the Real Weather integration |
 | `aee_compat_tfar_logDebug` | Trace the TFAR integration |
 | `aee_thermal_agcPinned` | Debug only: suspend the AGC and the engine-window writer so the operator can pin the engine TI window by hand (exposure pin test) |
 | `aee_diagnostics_consistencyCheck` | Run the cross-module consistency monitor (default on) |
@@ -847,8 +846,8 @@ including the new AI and Wildlife subcategories). The
 remaining categories are one per module: AEE (core), AEE Optics, AEE
 Physiology, AEE Environmental, AEE Atmos, AEE Maritime, AEE Radio, AEE
 Mobility, AEE FX, AEE Thermal, AEE Armour, AEE Ballistics, AEE Night
-Vision, AEE Wildlife, AEE ACE3, AEE ACM, AEE KAT, AEE ACRE2, AEE TFAR, and
-AEE Real Weather. The compat categories appear only when their host mod is
+Vision, AEE Wildlife, AEE ACE3, AEE ACM, AEE KAT, AEE ACRE2, and AEE TFAR.
+The compat categories appear only when their host mod is
 loaded.
 All settings use `CBA_fnc_addSetting`; titles and descriptions come from
 the per-addon stringtables. See the Configuration chapter for the full

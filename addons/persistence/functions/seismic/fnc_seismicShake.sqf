@@ -21,8 +21,15 @@ is not used.  The length-magnitude relation gives about 9 s at M6.5 and about
 18 s at M7.
 
 Power: the engine addCamShake power is a 0-20 unitless strength with no
-physical meaning, so the mapping from PGA to power is an engine calibration
-and is UNSOURCED.  It rises linearly from 0 at zero PGA to 20 at 0.5 g.
+physical meaning.  The physical input is the published shaking severity, so
+the power is derived from the Worden et al. (2012) Modified Mercalli
+intensity (fnc_seismicIntensity) on the engine's fixed 0-20 scale:
+
+    power = 20 * (MMI - 1) / 9
+
+MMI 1 (imperceptible) maps to 0 and MMI 10 maps to 20; the expression is
+clamped to the engine's 0-20 range.  The mapping is an explicit engine
+calibration; the intensity it reads is the published quantity.
 
 Input:  [_pgaG, _magnitude] - peak ground acceleration (g) and moment
         magnitude.
@@ -38,7 +45,7 @@ params [
 private _lengthKm = 10 ^ (-2.44 + 0.59 * _magnitude);
 private _durationS = _lengthKm / 2.8;
 
-private _powerRaw = 20 * (_pgaG / 0.5);
+private _powerRaw = 20 * ((([_pgaG] call FUNC(seismicIntensity)) - 1) / 9);
 private _power = (_powerRaw min 20) max 0;
 
 [_power, _durationS]

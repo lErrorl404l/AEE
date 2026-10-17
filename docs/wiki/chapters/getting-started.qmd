@@ -68,7 +68,7 @@ If you see numeric values (not nil), AEE is running.
 
 ## Compatibility
 
-AEE works alongside ACE3, ACRE2, TFAR, KAT, ACM, and Real Weather. Each
+AEE works alongside ACE3, ACRE2, TFAR, KAT, and ACM. Each
 compat addon loads only when its host mod is present. You do not need to
 configure anything --- the compat activates automatically.
 
@@ -79,7 +79,6 @@ configure anything --- the compat activates automatically.
 | TFAR | Feeds radio propagation index from atmospheric state |
 | KAT | Feeds dehydration and hypoxia state to KAT's circulation model |
 | ACM | Feeds CBRN persistence to ACM's contamination state; registers an optional hypoxia duty factor that engages above risk 0.8 |
-| Real Weather | Reads weather.json from the mission folder and overrides the AEE simulation |
 
 ## Troubleshooting
 

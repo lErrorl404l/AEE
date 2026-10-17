@@ -2,6 +2,7 @@
 
 Status: Accepted
 Date: 2026-10-09
+Superseded: the compat_realweather addon was removed on 2026-10-17; the target tree is now 44 addons and AEE owns the engine weather directly.
 Decision: Split the 24 addons into 45, one cohesive module per addon, with a
 new `lib` infrastructure addon. Rename every setting to
 `aee_<module>_<leaf>` and MIGRATE each stored `profileNamespace` value once,

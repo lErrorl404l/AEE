@@ -17,9 +17,12 @@ equation); MIT Lincoln Laboratory, "Introduction to Radar Systems",
 Lecture 4.  The two-way R^4 spreading term (4 pi)^3 is the standard form.
 
 The ducted R^4 -> R^2 law (n = 2) is the issue's stated duct behaviour
-(Kerr 1951).  The (4 pi)^3 constant is retained for the ducted case, which
-is a simplification: the cylindrical-spreading constant for a duct is not
-held.  UNSOURCED: the ducted constant.
+(Kerr 1951).  The (4 pi)^3 constant is retained for the ducted case: this is
+a DOCUMENTED SIMPLIFICATION, not a physical constant.  The correct
+cylindrical-spreading constant for a duct is not held, and this kernel makes
+no claim that (4 pi)^3 is right for the ducted path.  It only re-uses the
+free-space numerator with the ducted exponent, so a ducted range is
+indicative, not calibrated.
 
 Pure: reads no engine state, writes none.
 

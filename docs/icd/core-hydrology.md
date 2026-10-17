@@ -14,7 +14,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentTideOffset_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/hydrology/functions/fnc_calculateRiverWaterLevel.sqf:208` | Tide offset in metres |
 | `aee_core_currentWaterLevel` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/hydrology/functions/fnc_calculateRiverWaterLevel.sqf:281` | River water level |
 | `aee_core_soilMoisture` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/hydrology/functions/fnc_calculateRiverWaterLevel.sqf:92` | Soil moisture 0..1 |
-| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/hydrology/functions/fnc_calculateErosion.sqf:154` | Update interval in seconds |
+| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/hydrology/functions/fnc_calculateRiverWaterLevel.sqf:68` | Update interval in seconds |
 | `aee_core_waterTableDepth_m` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/hydrology/functions/fnc_calculateRiverWaterLevel.sqf:285` | UNKNOWN |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.

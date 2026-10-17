@@ -13,8 +13,8 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_clockJump` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf:89` | UNKNOWN |
 | `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_eyeSampleScene.sqf:61` | UNKNOWN |
 | `aee_core_dynamicLux` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_eyeSampleScene.sqf:36` | Dynamic lux contribution |
-| `aee_core_lightAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf:229` | UNKNOWN |
-| `aee_core_lightElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf:230` | UNKNOWN |
+| `aee_core_lightAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf:236` | UNKNOWN |
+| `aee_core_lightElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf:237` | UNKNOWN |
 | `aee_core_simTime` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/eye/functions/eye/fnc_updateEyeAdaptation.sqf:67` | UNKNOWN |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.

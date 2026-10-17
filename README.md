@@ -115,9 +115,8 @@ Six compat addons load only when their host mod is present. Install the ones you
 | `compat_tfar` | TFAR | Scales transmission range |
 | `compat_kat` | KAT | Drives KAT circulation from AEE dehydration |
 | `compat_acm` | ACM | Drives CBRN contamination from AEE persistence |
-| `compat_realweather` | Real Weather | Reads `weather.json` and publishes into AEE |
 
-AEE writes engine `wind` and `fog` from its own model, and reads engine `overcast` and `rain` as inputs. Only `compat_realweather` writes engine overcast, and only on the server.
+AEE writes engine `wind`, `fog`, `overcast` and `rain` from its own model, and reads engine `overcast` and `rain` as inputs. AEE owns the engine weather and writes overcast on the server.
 
 ---
 
@@ -155,11 +154,11 @@ AEE develops in three phases. The [project board](https://github.com/orgs/lError
 
 ## Structure
 
-45 addons under `addons/`.
+44 addons under `addons/`.
 
 **Core addons (39):** `actions`, `ai`, `altitude`, `ambience`, `armour`, `atmos`, `ballistics`, `blast`, `cartography`, `clothing`, `core`, `diagnostics`, `dive`, `eye`, `flight`, `hud`, `hydrology`, `lib`, `lighting`, `ltm`, `magnetism`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `particles`, `persistence`, `physiology`, `radio`, `strain`, `symbology`, `thermal`, `thermal_display`, `vehicles`, `vision`, `weather`, `weatherfx`, `wildlife`.
 
-**Compat addons (6):** `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, `compat_realweather`, `compat_tfar`.
+**Compat addons (5):** `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, `compat_tfar`.
 
 Build PBO names are `aee_<component>`. For example, the core addon builds to `aee_core.pbo`.
 

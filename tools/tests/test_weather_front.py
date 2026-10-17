@@ -224,13 +224,51 @@ class TestFrontWiring(unittest.TestCase):
         self.assertIn("currentTemperature", src)
         self.assertIn("currentPressure", src)
 
-    def test_gated_on_real_weather(self):
+    def test_not_gated_on_removed_compat(self):
+        """The front always runs; no compat weather gate remains."""
         src = CONSUMER.read_text(encoding="utf-8")
-        self.assertIn("realWeatherActive", src)
+        self.assertNotIn("real" + "weather", src.lower())
 
     def test_setting_is_declared(self):
         src = SETTINGS.read_text(encoding="utf-8")
         self.assertIn("weatherFrontsEnabled", src)
+
+
+class TestFrontSourcing(unittest.TestCase):
+    """Every per-stage number carries a publication or an UNSOURCED marker."""
+
+    def setUp(self):
+        self.src = FRONT.read_text(encoding="utf-8")
+
+    def test_cites_the_aviation_weather_handbook(self):
+        # FAA-H-8083-28 chapter 11 superseded FAA AC 00-6B.
+        self.assertIn("FAA-H-8083-28", self.src)
+
+    def test_published_speed_ranges_are_recorded(self):
+        # Warm fronts 10-25 mph (16-40 km/h); cold fronts 25-30 mph
+        # (40-48 km/h), extreme ones up to 60 mph.
+        self.assertIn("16-40 km/h", self.src)
+        self.assertIn("40-48 km/h", self.src)
+
+    def test_the_life_cycle_length_is_sourced(self):
+        # Ahrens, Meteorology Today: the wave-cyclone life cycle lasts from
+        # a few days to over a week.
+        self.assertIn("Ahrens", self.src)
+
+    def test_unpublished_stage_numbers_are_marked(self):
+        for stage in ("occluded", "stationary"):
+            with self.subTest(stage=stage):
+                self.assertTrue(
+                    re.search(rf"{stage}[^\n]*UNSOURCED", self.src),
+                    f"{stage} is not marked UNSOURCED",
+                )
+
+    def test_modelling_choices_are_marked(self):
+        # The bearing spread, the cloud-trend magnitude and the 1500 km start
+        # offset have no published figure.
+        self.assertIn("60 deg arc (UNSOURCED", self.src)
+        self.assertIn("1500 km", self.src)
+        self.assertIn("a modelling choice", self.src)
 
 
 if __name__ == "__main__":

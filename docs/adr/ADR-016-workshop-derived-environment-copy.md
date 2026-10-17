@@ -2,6 +2,7 @@
 
 Status: Accepted
 Date: 2026-10-06
+Superseded: the compat_realweather addon was removed on 2026-10-17; AEE owns the engine weather directly.
 Decision: AEE re-implements the environment, optics and effects ideas from the
 eleven Workshop mods surveyed for `aee-workshop-copy` as its own behaviour. AEE
 copies no content (textures, sky paths, models); numeric parameter arrays are

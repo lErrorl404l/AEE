@@ -65,6 +65,14 @@
             <Original>AEE Volcanic Eruption</Original>
             <English>AEE Volcanic Eruption</English>
         </Key>
+        <Key ID="STR_AEE_Atmos_engineWeatherEnabled_Description">
+            <Original>Push AEE's modelled overcast and rain onto the engine so a modelled storm shows as cloud, rain and a wet surface. Disabled when a mission sets aee_atmos_manualWeather</Original>
+            <English>Push AEE's modelled overcast and rain onto the engine so a modelled storm shows as cloud, rain and a wet surface. Disabled when a mission sets aee_atmos_manualWeather</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_engineWeatherEnabled_Name">
+            <Original>Engine Weather Write</Original>
+            <English>Engine Weather Write</English>
+        </Key>
         <Key ID="STR_AEE_Atmos_haloEnabled_Description">
             <Original>Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state</Original>
             <English>Model ice-crystal halos and parhelia (sundogs) from the solar and cloud state</English>

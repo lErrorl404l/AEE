@@ -204,26 +204,90 @@ class TestDetectionRange(unittest.TestCase):
 
 
 class TestWenzAmbientNoise(unittest.TestCase):
-    """Wenz (1962) sea-state anchors at 1 kHz, dB re 1 uPa^2/Hz."""
+    """Wenz (1962) "rule of fives" and the Mellen (1952) thermal limit.
 
-    def test_sea_state_anchors(self):
-        # Issue: SS0 ~40, SS3 ~55-60, SS6 ~70.
-        self.assertAlmostEqual(run_sqf(NOISE, [1000, 0, False]), 40.0, places=1)
-        self.assertAlmostEqual(run_sqf(NOISE, [1000, 3, False]), 55.0, places=1)
-        self.assertAlmostEqual(run_sqf(NOISE, [1000, 6, False]), 70.0, places=1)
+    NL_wind(f_kHz, U_kn) = 51.02 - (50/3) * (log10 f_kHz - log10 (U_kn/5))
+    dB re 1 uPa^2/Hz, energy-summed with the thermal limit
+    NL_th(f_kHz) = -15 + 20 log10 f_kHz (APL-UW TR 9407 Eq. 47).  The
+    published anchor is 25 dB re 20 uPa at 1 kHz for 5 knots, which is
+    25 + 20 log10(20) = 51.02 dB re 1 uPa^2/Hz.
+    """
 
-    def test_five_db_per_sea_state(self):
-        a = run_sqf(NOISE, [1000, 1, False]) - run_sqf(NOISE, [1000, 0, False])
-        self.assertAlmostEqual(a, 5.0, places=3)
+    KNOT_MS = 0.514444
+
+    def test_anchor_25_db_at_1khz_5_knots(self):
+        # Published anchor, to its two printed decimals.  Tolerance 0.05 dB:
+        # the 51.02 constant is itself rounded, and the thermal component is
+        # 66 dB below the wind component here.
+        v = 5 * self.KNOT_MS
+        self.assertAlmostEqual(run_sqf(NOISE, [1000, v, False]), 51.02, delta=0.05)
+
+    def test_minus_five_db_per_octave(self):
+        # The rule of fives: -5 dB per octave of frequency.  The 50/3 dB per
+        # decade in the formula is -5.017 dB per octave; the 0.06 dB
+        # tolerance is that rounding.
+        v = 5 * self.KNOT_MS
+        for f_lo, f_hi in [(500, 1000), (1000, 2000), (2000, 4000)]:
+            drop = run_sqf(NOISE, [f_lo, v, False]) - run_sqf(NOISE, [f_hi, v, False])
+            self.assertAlmostEqual(drop, 5.0, delta=0.06)
+
+    def test_plus_five_db_per_doubling_of_wind(self):
+        # The rule of fives: +5 dB per doubling of wind speed.
+        base = run_sqf(NOISE, [1000, 5 * self.KNOT_MS, False])
+        for u_kn in (10.0, 20.0, 40.0):
+            expected = (50.0 / 3.0) * math.log10(u_kn / 5.0)
+            self.assertAlmostEqual(
+                run_sqf(NOISE, [1000, u_kn * self.KNOT_MS, False]) - base,
+                expected,
+                delta=0.05,
+            )
+
+    def test_thermal_limit_dominates_at_200_khz(self):
+        # Mellen 1952 / APL-UW TR 9407 Eq. 47.  At 200 kHz the thermal
+        # component exceeds the extrapolated wind component by more than
+        # 18 dB, so the total sits within 0.1 dB of the thermal value.
+        expected = -15 + 20 * math.log10(200)
+        v = 5 * self.KNOT_MS
+        self.assertAlmostEqual(run_sqf(NOISE, [200000, v, False]), expected, delta=0.1)
+
+    def test_wind_below_2_5_knots_clamped(self):
+        # Stated validity is 2.5-40 knots; below it the kernel clamps rather
+        # than extrapolates, so the level is flat and total.
+        a = run_sqf(NOISE, [1000, 0.0, False])
+        b = run_sqf(NOISE, [1000, 1.0, False])  # 1.0 m/s = 1.94 knots
+        self.assertAlmostEqual(a, b, delta=0.01)
+
+    def test_wind_above_40_knots_clamped(self):
+        a = run_sqf(NOISE, [1000, 30.0, False])  # 58 knots
+        b = run_sqf(NOISE, [1000, 40.0, False])
+        self.assertAlmostEqual(a, b, delta=0.01)
+
+    def test_frequency_below_500_hz_clamped(self):
+        # Stated validity starts at 500 Hz; the wind component is held at its
+        # 500 Hz value below the corner.  The remaining difference is the
+        # UNSOURCED 6 dB per octave shipping rise.
+        v = 5 * self.KNOT_MS
+        self.assertAlmostEqual(
+            run_sqf(NOISE, [400, v, False]) - run_sqf(NOISE, [500, v, False]),
+            6 * math.log2(500 / 400),
+            delta=0.05,
+        )
+
+    def test_total_for_extreme_inputs(self):
+        for f, v in [(0, 0), (1000000000, 1000000), (-5, -5), (1000, 0)]:
+            x = run_sqf(NOISE, [f, v, False])
+            self.assertTrue(math.isfinite(x), f"{f},{v} -> {x}")
 
     def test_high_frequency_falls(self):
+        v = 5 * self.KNOT_MS
         self.assertLess(
-            run_sqf(NOISE, [10000, 3, False]), run_sqf(NOISE, [1000, 3, False])
+            run_sqf(NOISE, [10000, v, False]), run_sqf(NOISE, [1000, v, False])
         )
 
     def test_low_frequency_shipping_rises(self):
+        v = 5 * self.KNOT_MS
         self.assertGreater(
-            run_sqf(NOISE, [100, 3, False]), run_sqf(NOISE, [500, 3, False])
+            run_sqf(NOISE, [100, v, False]), run_sqf(NOISE, [500, v, False])
         )
 
     def test_shallow_water_is_louder(self):

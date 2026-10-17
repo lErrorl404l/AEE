@@ -23,6 +23,7 @@ PREPS(terrain,updateSoilMoisture);
 // Seismic activity (#27): the ground-motion, liquefaction, landslide,
 // damage, shake and terrain-deformation kernels, and their tick consumer.
 PREPS(seismic,seismicGroundMotion);
+PREPS(seismic,seismicIntensity);
 PREPS(seismic,seismicLiquefaction);
 PREPS(seismic,seismicLandslide);
 PREPS(seismic,seismicDamage);

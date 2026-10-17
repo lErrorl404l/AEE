@@ -43,6 +43,7 @@ Intensity from PGA follows Worden, C.B., Gerstenberger, M.C., Rhoades, D.A.
 and Wald, D.J. (2012) "Probabilistic relationships between ground-motion
 parameters and Modified Mercalli intensity in California", Bulletin of the
 Seismological Society of America 102(1):204-221.  DOI 10.1785/0120110156.
+The relation lives in fnc_seismicIntensity, shared with the shake kernel.
 Piecewise-linear in log10(PGA), with PGA in cm/s^2:
 
     log10(PGA) < 0.14         MMI = 1.71 + 2.08*log10(PGA)
@@ -87,12 +88,7 @@ private _rPGV = sqrt (_rjbKm * _rjbKm + (_pgv select 3) * (_pgv select 3));
 private _fdPGV = ((_pgv select 0) + (_pgv select 1) * (_mag - 4.5)) * (ln _rPGV) + (_pgv select 2) * (_rPGV - 1);
 private _pgvCms = exp (_fmPGV + _fdPGV);
 
-// Worden et al. 2012, piecewise-linear in log10(PGA) with PGA in cm/s^2.
-private _pgaCms2 = _pgaG * 980.665;
-private _l = log (_pgaCms2 max 0.0001);
-private _mmi = -1.60 + 3.70 * _l;
-if (_l < 1.57) then { _mmi = 1.78 + 1.55 * _l; };
-if (_l < 0.14) then { _mmi = 1.71 + 2.08 * _l; };
-private _mmiClamped = (_mmi max 1) min 12;
+// Worden et al. 2012 (fnc_seismicIntensity), shared with the shake kernel.
+private _mmiClamped = [_pgaG] call FUNC(seismicIntensity);
 
 [_pgaG, _pgvCms, _mmiClamped]

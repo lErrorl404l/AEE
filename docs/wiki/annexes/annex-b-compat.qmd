@@ -15,7 +15,6 @@ on its host with `skipWhenMissingDependencies`.
 | `aee_compat_acre2` | ACRE2 | Radio propagation hand-off |
 | `aee_compat_kat` | KAT - Advanced Medical | Circulation and medical effects |
 | `aee_compat_tfar` | TFAR | Radio propagation hand-off |
-| `aee_compat_realweather` | Real Weather | Reads `weather.json` from the mission folder and publishes the values into the AEE simulation |
 
 ## ACE3 weather
 

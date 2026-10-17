@@ -29,7 +29,8 @@ broadcast: each machine computes the same values.
 Engine ceiling: setTerrainHeight needs engine 2.10; the mod floor on this
 branch is 2.02, so the deformation is guarded by the product version and off
 by default.  The camera shake is an engine effect with no physical units; the
-PGA-to-power mapping in fnc_seismicShake is UNSOURCED.
+PGA-to-power mapping in fnc_seismicShake reads the Worden et al. (2012)
+intensity (fnc_seismicIntensity) and scales it onto the engine's 0-20 range.
 
 Input:  [_posASL] - the sample position (ASL); empty uses the local unit.
 Output: PGA (g) at the position.

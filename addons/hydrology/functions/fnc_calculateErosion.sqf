@@ -29,7 +29,9 @@ The factors:
   mm/yr = A / (10 * BD)    (fnc_calculateErosionDepth)
 
 Event sediment yield is the MUSLE (fnc_calculateSedimentYield): the runoff
-volume Q and the peak rate qp replace the annual R.
+volume Q and the peak rate qp replace the annual R.  qp is the NRCS
+triangular-unit-hydrograph peak (fnc_calculatePeakRunoff), not a volume
+divided by the tick.
 
 CEILING. The engine cannot lower terrain at the sub-millimetre rates this
 model predicts, and scripted terrain deformation (setTerrainHeight, since
@@ -37,6 +39,12 @@ model predicts, and scripted terrain deformation (setTerrainHeight, since
 reachable effect is therefore the computed RATE: this driver publishes the
 soil loss, the lowering, the sediment yield and the break deposition, and
 does not deform terrain.
+
+RISK. GVAR(erosionRisk) is the soil loss as a fraction of the soil-loss
+tolerance T, the rate above which the USDA considers erosion to exceed the
+soil's ability to sustain productivity.  T is 1 to 5 ton/ac/yr (2.24 to
+11.2 t/ha/yr); 5 ton/ac/yr (11.2 t/ha/yr) is the common value and is used
+here.  Source: USDA NRCS soil-loss tolerance (T) factor.
 
 Stored in GVAR(erosionRate_thaYr), GVAR(erosionDepth_mmYr),
 GVAR(erosivityR), GVAR(sedimentYield_t), GVAR(erosionRisk),
@@ -106,10 +114,13 @@ private _ix = (floor ((_pos select 0) / _step)) min (_side - 1) max 0;
 private _iy = (floor ((_pos select 1) / _step)) min (_side - 1) max 0;
 private _catchmentM2 = _area param [(_iy * _side) + _ix, 0];
 if !(_catchmentM2 isEqualType 0) then { _catchmentM2 = 0; };
-// Cap the length: the RUSLE slope length is bounded where deposition
-// begins, and an uncapped catchment length would run to hundreds of
-// metres. 300 m is the practical upper bound (UNSOURCED cap).
-private _slopeLength = (_catchmentM2 / _step) max 22.13 min 300;
+// Cap the length: the RUSLE slope length ends where deposition begins or
+// runoff reaches a channel.  NRCS-USDA (Technical Guide to RUSLE use in
+// Michigan, LS factor): "slope lengths usually do not exceed 400 ft
+// [121.9 m].  Slope lengths longer than 1000 ft [304.8 m] should not be used
+// in RUSLE because the reliability of RUSLE at these long slope lengths is
+// questionable".  1000 ft (304.8 m) is the published ceiling.
+private _slopeLength = (_catchmentM2 / _step) max 22.13 min 304.8;
 
 // ─── Factors ──────────────────────────────────────────────────────────────
 private _k = [_texture] call FUNC(calculateSoilErodibility);
@@ -148,16 +159,15 @@ private _depth = [_a, _bulkDensity] call FUNC(calculateErosionDepth);
 
 // ─── Event sediment yield (MUSLE) ─────────────────────────────────────────
 // Q is the event runoff volume over the cell's catchment, from the
-// cumulative runoff depth the river chain tracks. qp is the interval-mean
-// rate Q / interval; the true instantaneous peak is higher, so this is a
-// conservative lower bound (UNSOURCED peak relation).
-private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
-if !(_interval isEqualType 0) then { _interval = 5; };
-_interval = _interval max 1;
+// cumulative runoff depth the river chain tracks.  qp is the NRCS
+// triangular-unit-hydrograph peak (fnc_calculatePeakRunoff) from Q, the
+// slope length, the slope and the storm's excess-rainfall duration
+// D = storm depth / intensity.
+private _stormHours = if (_intensity > 0) then { _stormDepth / _intensity } else { 0 };
 private _runoffMm = missionNamespace getVariable [QGVAR(runoffCumulative_mm), 0];
 if !(_runoffMm isEqualType 0) then { _runoffMm = 0; };
 private _q = (_runoffMm / 1000) * _catchmentM2;
-private _qp = _q / _interval;
+private _qp = [_q, _slopeLength, _slopeFraction, _stormHours] call FUNC(calculatePeakRunoff);
 private _sed = [_q, _qp, _k, _ls, _c, _p] call FUNC(calculateSedimentYield);
 
 // ─── Slope-break deposition ───────────────────────────────────────────────
@@ -181,10 +191,13 @@ if (_maxDown > 0) then {
 private _deposited = [_slopeFraction, _downslopeGradient] call FUNC(calculateSedimentDeposition);
 
 // ─── Publish ──────────────────────────────────────────────────────────────
-// Risk is the soil loss normalised against 50 t/ha/yr, the top of the
-// issue's bare-slope band. The 50 reference is UNSOURCED; it is a display
-// scale, not a physical threshold.
-private _risk = (_a / 50) min 1;
+// Risk is the soil loss as a fraction of the soil-loss tolerance T, the rate
+// above which the USDA considers erosion to exceed the soil's ability to
+// sustain productivity.  T is 1 to 5 ton/ac/yr (2.24 to 11.2 t/ha/yr);
+// 5 ton/ac/yr (11.2 t/ha/yr) is the common value.
+// Source: USDA NRCS soil-loss tolerance (T) factor (eFOTG, Section II-iii-A).
+private _tolerance = 11.2;
+private _risk = (_a / _tolerance) min 1;
 
 missionNamespace setVariable [QGVAR(erosionRate_thaYr), _a];
 missionNamespace setVariable [QGVAR(erosionDepth_mmYr), _depth];

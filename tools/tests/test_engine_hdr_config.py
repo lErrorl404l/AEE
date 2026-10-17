@@ -403,7 +403,7 @@ class TestAeeDrivesNoEngineSky(unittest.TestCase):
     fnc_applyWorldLighting publishes a four-element profile consumed by the
     star scale, the weather grain and the exhaust shimmer.  It calls no engine
     sky setter, so AEE cannot drive the sky or horizon brightness at run time;
-    only compat_realweather writes overcast, and only on the server.
+    only AEE writes overcast, and only on the server.
     """
 
     BINDER = (

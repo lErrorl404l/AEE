@@ -33,8 +33,11 @@
 
 // Shot-audio policy (task T26).  The speed of sound against temperature is
 // SOURCED (20.05*sqrt(T_K), the same convention as the ballistics drag and
-// Mach-cone kernels).  The report reference, the pitch slope, and the crack,
-// snap and ricochet levels and geometry bounds are UNSOURCED.
+// Mach-cone kernels).  WILDLIFE_SHOT_REPORT_DB is SOURCED: it is the measured
+// peak level of an unsuppressed centre-fire weapon, 160 to 170 dB (NIOSH HHE
+// report 2013-0124-3208, Results; NIOSH "Hit the Mark" bulletin, 2017), and
+// the kernel takes 160, the low end of the published range.  The pitch slope
+// and the crack, snap and ricochet levels and geometry bounds are UNSOURCED.
 #define WILDLIFE_SHOT_REPORT_DB 160
 #define WILDLIFE_SHOT_REPORT_REF_MV 900
 #define WILDLIFE_SHOT_PITCH_PER_MACH 0.15

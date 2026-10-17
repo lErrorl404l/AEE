@@ -26,6 +26,12 @@ AEE_SETTING_SLIDER(maxIceMass,"AEE Atmos","Icing",20,200,100,0);
 // ── Fog ────────────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(maxFogDensity,"AEE Atmos","Fog",0.2,1,0.8,2);
 
+// ── Engine weather write ───────────────────────────────────────────────────
+// Pushes AEE's modelled overcast and rain onto the engine (issue #155).
+// Off stops the write; the writer also yields to a mission that sets
+// aee_atmos_manualWeather.
+AEE_SETTING_CHECKBOX(engineWeatherEnabled,"AEE Atmos","Weather",true);
+
 // ── Refraction ────────────────────────────────────────────────────────────
 AEE_SETTING_CHECKBOX(refractionEnabled,"AEE Atmos","Refraction",true);
 

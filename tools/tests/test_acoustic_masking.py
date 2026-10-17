@@ -102,19 +102,31 @@ class TestAmbientNoiseLevel(unittest.TestCase):
         self.assertEqual(ambient(0, 0, 0, 0), 0)
         self.assertAlmostEqual(ambient(1, 0, 0, 0), 58, places=4)
 
-    def test_wind_two_is_thirty_and_wind_ten_is_fifty(self):
-        # The issue's test vector.
-        self.assertAlmostEqual(ambient(0, 2, 0, 0), 30, places=4)
-        self.assertAlmostEqual(ambient(0, 10, 0, 0), 50, places=4)
+    def test_wind_follows_the_measured_vegetation_regression(self):
+        # SOURCED: the wind-induced vegetation-noise regression is
+        # L_A = 2.78 * v + 37.4 dB(A), with L = 51.3 dBA at v = 5 m/s.
+        # Sneddon, in Komatsu and others 2000, Journal of the INCE of Japan
+        # 24(4):268-276, section 2, page 269.
+        self.assertAlmostEqual(ambient(0, 5, 0, 0), 51.3, places=4)
+        self.assertAlmostEqual(ambient(0, 2, 0, 0), 2.78 * 2 + 37.4, places=4)
+        self.assertAlmostEqual(ambient(0, 10, 0, 0), 2.78 * 10 + 37.4, places=4)
+        self.assertAlmostEqual(ambient(0, 15, 0, 0), 2.78 * 15 + 37.4, places=4)
+
+    def test_wind_is_interpolated_between_the_source_points(self):
+        # 3.5 m/s sits between the 2 and 5 m/s table points.
+        lo = 2.78 * 2 + 37.4
+        hi = 2.78 * 5 + 37.4
+        self.assertAlmostEqual(ambient(0, 3.5, 0, 0), (lo + hi) / 2, places=4)
 
     def test_a_quiet_forest_floor_is_twenty_five(self):
         # Full foliage, no weather: the issue's quiet forest floor (20-30).
         self.assertAlmostEqual(ambient(0, 0, 1.0, 0), 25, places=4)
 
     def test_the_levels_power_sum(self):
-        # Rain 58 and wind 30 combine as 10*log10(10^5.8 + 10^3) = 58.0.
+        # Rain 58 and wind 42.96 (the 2 m/s regression value) combine by the
+        # power sum, so the floor is just above the loudest single term.
         combined = ambient(1, 2, 0, 0)
-        self.assertAlmostEqual(combined, power_sum([58, 30]), places=4)
+        self.assertAlmostEqual(combined, power_sum([58, 42.96]), places=4)
         self.assertGreater(combined, 58)
 
     def test_every_term_is_monotonic(self):
@@ -124,8 +136,14 @@ class TestAmbientNoiseLevel(unittest.TestCase):
         self.assertGreaterEqual(ambient(0, 0, 0, 1.0), ambient(0, 0, 0, 0.5))
 
     def test_the_level_is_bounded_by_the_table_ceilings(self):
-        # The strongest single source is violent rain at 58 dB.
+        # The rain ceiling is violent rain at 58 dB.
         self.assertLessEqual(ambient(1, 0, 0, 0), 58)
+        # The wind ceiling is the regression value at its last table point,
+        # 2.78 * 20 + 37.4 = 93.0 dB(A).
+        self.assertLessEqual(ambient(0, 20, 0, 0), 93.0 + 1e-9)
+        self.assertLess(ambient(0, 19, 0, 0), 93.0)
+        # Above the last table point the value is held, not extrapolated.
+        self.assertEqual(ambient(0, 40, 0, 0), ambient(0, 20, 0, 0))
 
 
 class TestAcousticMasking(unittest.TestCase):
@@ -213,6 +231,13 @@ class TestAcousticMaskingSourceContracts(unittest.TestCase):
         self.assertIn(
             "10.1016/0378-5955(90)90170-T", AMBIENT.read_text(encoding="utf-8")
         )
+
+    def test_the_ambient_wind_term_cites_the_measured_law(self):
+        # The wind term carries the measured regression, so its source must
+        # be stated: Komatsu and others 2000, DOI 10.11372/souonseigyo1977.24.268.
+        text = AMBIENT.read_text(encoding="utf-8")
+        self.assertIn("10.11372/souonseigyo1977.24.268", text)
+        self.assertIn("2.78", text)
 
     def test_the_kernels_are_prepped(self):
         text = PREP.read_text(encoding="utf-8")

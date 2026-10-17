@@ -260,7 +260,6 @@ EXPECTED_DEBUG = {
     ("AEE Debug", "Compat - ACM"): {"aee_compat_acm_logDebug"},
     ("AEE Debug", "Compat - ACRE2"): {"aee_compat_acre2_logDebug"},
     ("AEE Debug", "Compat - KAT"): {"aee_compat_kat_logDebug"},
-    ("AEE Debug", "Compat - Real Weather"): {"aee_compat_realweather_logDebug"},
     ("AEE Debug", "Compat - TFAR"): {"aee_compat_tfar_logDebug"},
     ("AEE Debug", "Actions"): {"aee_actions_logDebug"},
     ("AEE Debug", "Material"): {"aee_material_logDebug"},

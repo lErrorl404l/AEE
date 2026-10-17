@@ -15,17 +15,18 @@ unit's position, once per second:
   - the seawater absorption at the reference frequency
     (fnc_calculateAbsorptionWater, Francois-Garrison 1982);
   - the ambient noise spectrum level at the reference frequency, keyed to
-    the mod's sea state (fnc_calculateAmbientNoise, Wenz 1962).
+    the physical wind speed at 10 m (fnc_calculateAmbientNoise, Wenz 1962
+    "rule of fives" plus the Mellen thermal limit).
 
 The published variables are read by the sonar query
 (fnc_getSonarDetectionRange) and by scenarios.  This driver does not decide
 detection; it publishes the environment.  The sonar equation lives in
 fnc_calculateSonarEquation and fnc_calculateDetectionRange.
 
-The Wenz sea-state levels are anchored to sea states 0..6, so the Beaufort
-number the mod publishes is clamped to 6.  The clamp is a stated
-approximation (Wenz 1962 is graphical; the mapping Beaufort-to-sea-state is
-UNSOURCED).
+The noise model is wind-driven, so the driver reads the wind speed the
+atmosphere publishes (aee_core_currentWindStr, m/s at 10 m) and passes the
+physical value.  The game's Beaufort sea state no longer feeds the noise
+model, so no unsourced Beaufort-to-sea-state mapping remains.
 
 Input:  [_depth] - source depth in metres (default: the local unit's depth)
 Output: none.  Publishes the state variables below.
@@ -33,8 +34,16 @@ Output: none.  Publishes the state variables below.
 
 params [["_depth", -1, [0]]];
 
-private _beaufort = missionNamespace getVariable [QEGVAR(core,seaStateBeaufort), 0];
-if !(_beaufort isEqualType 0) then { _beaufort = 0; };
+private _windSpeed = missionNamespace getVariable [QEGVAR(core,currentWindStr), 0];
+if !(_windSpeed isEqualType 0) then { _windSpeed = 0; };
+if (_windSpeed <= 0) then {
+    // Fallback: magnitude of the velocity vector, when the scalar is not
+    // published yet (first tick) or is zero.
+    private _windVec = missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0]];
+    if (_windVec isEqualType []) then {
+        _windSpeed = vectorMagnitude _windVec;
+    };
+};
 
 private _sst = missionNamespace getVariable [QGVAR(seaSurfaceTemperature), 15];
 if !(_sst isEqualType 0) then { _sst = 15; };
@@ -81,8 +90,7 @@ private _shadow = [_profile, _depth] call FUNC(calculateShadowZone);
 
 // ─── Absorption and ambient noise at the reference frequency ──────────────
 private _absorption = [_freqHz, _sst, _salinity, 0, 8.0] call FUNC(calculateAbsorptionWater);
-private _seaState = _beaufort min 6;
-private _noise = [_freqHz, _seaState, false] call FUNC(calculateAmbientNoise);
+private _noise = [_freqHz, _windSpeed, false] call FUNC(calculateAmbientNoise);
 
 // ─── Publish ──────────────────────────────────────────────────────────────
 missionNamespace setVariable [QGVAR(soundSpeedSurface), _cSurface];

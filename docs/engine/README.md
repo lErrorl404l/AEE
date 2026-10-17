@@ -44,6 +44,7 @@ adds a ceiling here first.
 | [engine-override-surface.md](engine-override-surface.md) | A class-by-class verdict: ADOPT, ALREADY, RECONCILE, REJECT. |
 | [engine-baked-texture-override.md](engine-baked-texture-override.md) | The baked-texture, terrain and per-component override surface (issue #128): the default TI material, the WRP layer materials, the runtime anchor, and every ceiling. |
 | [engine-commands-and-features.md](engine-commands-and-features.md) | The SQF commands by job, the engine systems behind them, and the consolidated ceiling list. |
+| [engine-weather-writer.md](engine-weather-writer.md) | The engine weather surface AEE writes: each command, its range, locality and interpolation, the AEE mapping, and the inland-water ceiling. |
 | [command-surface.md](command-surface.md) | The verified command surface for the #144-#147 series: geometry anchors, simulation physics, event hooks and AI, each with its introduction version and caveat. |
 | [command-surface-2.md](command-surface-2.md) | The verified command surface for the #144-#147 series, part 2: system diagnostics, effects and sound, and object manipulation, each with its introduction version and caveat. |
 | [command-surface-3.md](command-surface-3.md) | The verified command surface for the #146 domain: post-processing, camera and PIP, thermal and NVG vision, particles, GUI and drawing, Eden, Zeus, and the CBA functions, each with its introduction version and caveat. |

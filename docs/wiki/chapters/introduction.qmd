@@ -47,15 +47,15 @@ PBO-distribution exception.
 
 ## Addon structure
 
-The project has 45 addons under `addons/`. The 39 core addons are `actions`,
+The project has 44 addons under `addons/`. The 39 core addons are `actions`,
 `ai`, `altitude`, `ambience`, `armour`, `atmos`, `ballistics`, `blast`,
 `cartography`, `clothing`, `core`, `diagnostics`, `dive`, `eye`, `flight`,
 `hud`, `hydrology`, `lib`, `lighting`, `ltm`, `magnetism`, `maritime`,
 `material`, `mobility`, `nightvision`, `optics`, `particles`, `persistence`,
 `physiology`, `radio`, `strain`, `symbology`, `thermal`, `thermal_display`,
-`vehicles`, `vision`, `weather`, `weatherfx`, and `wildlife`. The 6 compat
+`vehicles`, `vision`, `weather`, `weatherfx`, and `wildlife`. The 5 compat
 addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
-`compat_realweather`, and `compat_tfar`.
+and `compat_tfar`.
 
 | Addon | Role |
 |---|---|
@@ -102,7 +102,6 @@ addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
 | `compat_acm` | ACM integration |
 | `compat_acre2` | ACRE2 integration |
 | `compat_kat` | KAT integration |
-| `compat_realweather` | Real-weather file integration |
 | `compat_tfar` | TFAR integration |
 
 Build PBO names are `aee_<component>`. For example, the core addon builds to
