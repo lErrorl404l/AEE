@@ -24,7 +24,7 @@ def air_density(t_c, p_hpa, rh):
 
 
 def wind_chill(t_c, v_ms):
-    """Mirror of the JAG/TTI wind chill in fnc_updateTemperature.sqf."""
+    """Mirror of the JAG/TTI wind chill in fnc_calculateColdWeatherPerformance.sqf."""
     v_kmh = v_ms * 3.6
     return 13.12 + 0.6215 * t_c - 11.37 * v_kmh**0.16 + 0.3965 * t_c * v_kmh**0.16
 
@@ -116,7 +116,7 @@ class TestAirDensityEdgeCases(unittest.TestCase):
 
 
 class TestWindChillEdgeCases(unittest.TestCase):
-    """Wind chill guards and monotonicity (fnc_updateTemperature).
+    """Wind chill guards and monotonicity (fnc_calculateColdWeatherPerformance).
 
     The JAG/TTI formula is continuous and valid below 10 C with wind
     above 4.8 km/h; the SQF gates on those before applying it.  The

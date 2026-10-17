@@ -8,20 +8,22 @@ This closes the loop: the engine renders what the eye can actually see,
 and it is performance-positive (mostly LOWERS view distance in weather).
 
 The driver (vision science):
-  viewDistance = min(horizon, Koschmieder V, acuityLimit, 12000)
+  viewDistance = min(Koschmieder V, 12000)
 
   sigma_total = sigma_fog + sigma_haze + sigma_rain     (per km)
-    sigma_fog  = fogDensity * 10
-    sigma_haze = haze * 1.0
+    sigma_fog  = the fog droplet extinction (aee_core_currentFogExtinction)
+    sigma_haze = the clear-air extinction (aee_core_currentHaze, per km)
     sigma_rain = 0.21 * rainRate^0.74                    (Atlas 1954)
   Koschmieder: V = 3.912 / sigma_total                   (km)
-  Horizon: at 1.7 m eye height ~4.7 km; use the player's actual
-    eye height: sqrt(2 * R_earth * eyeHeightASL)
-  Acuity: the Johnson detection criterion caps useful range at
-    ~6 km for a standing man (1.8 m at 1 arcmin); below that the
-    eye cannot resolve the target regardless of clarity.
-  Night: at NELM < 6 the eye's sensitivity limits range further:
-    100 + (NELM - 2) * 300 m, applied when the sun is down.
+  No horizon cap: RV4 renders a flat world, and the smooth-earth horizon
+    from eye height alone (4.7 km standing) hides what is really visible
+    above it: a target of height H stays above the horizon out to
+    sqrt(2 R h_eye) + sqrt(2 R H), so a ridge 300 m high is visible to
+    66 km and an aircraft at 3,000 m to ~200 km.
+  No night cap: darkness limits what the eye resolves, not how far the
+    scene extends; lights, fires and skylines stay visible for tens of
+    kilometres, and the engine's own night lighting already darkens the
+    unlit scene.
 
 Rate limiting: 500 m deadband + 4 s ramp, 1 Hz.  The engine fog already
 fades objects at the fog range; matching view distance to it makes them
@@ -49,25 +51,22 @@ guards on isMultiplayer + hasInterface for the engine calls only.
 params [];
 
 // ─── Read the physics inputs ─────────────────────────────────────────────
-private _fog   = missionNamespace getVariable [QEGVAR(core,currentFogDensity),      0];
+private _fog   = missionNamespace getVariable [QEGVAR(core,currentFogExtinction),   0];
 private _haze  = missionNamespace getVariable [QEGVAR(core,currentHaze),             0];
-private _nelm  = missionNamespace getVariable [QEGVAR(lighting,limitingMagnitude),     6.5];
-private _sunDown = (parseNumber (sunOrMoon < 0));
 
-// Rain rate from the engine weather (rain * 25 = mm/h, per the optics
+// Rain rate from the engine weather (rain * ENGINE_RAIN_FULL_MMH = mm/h, the shared
 // precipitation model).  Type guards against nil/string inputs.
 if !(_fog  isEqualType 0) then { _fog  = 0; };
 if !(_haze isEqualType 0) then { _haze = 0; };
-if !(_nelm isEqualType 0) then { _nelm = 6.5; };
-private _rainMMH = (rain * 25) max 0;
+private _rainMMH = (rain * ENGINE_RAIN_FULL_MMH) max 0;
 
 // ─── Extinction coefficients (per km) ────────────────────────────────────
 // Atlas 1954 rain extinction is added to fog/haze sigma (spec formula):
-//   sigma_fog = fogDensity * 10
-//   sigma_haze = haze * 1.0
+//   sigma_fog = the fog droplet extinction, per km
+//   sigma_haze = the clear-air extinction, per km
 //   sigma_rain = 0.21 * R^0.74, R in mm/h
-private _sigmaFog  = _fog * 10;
-private _sigmaHaze = _haze * 1.0;
+private _sigmaFog  = _fog max 0;
+private _sigmaHaze = _haze max 0;
 private _sigmaRain = if (_rainMMH > 0) then { 0.21 * (_rainMMH ^ 0.74) } else { 0 };
 private _sigmaTotal = _sigmaFog + _sigmaHaze + _sigmaRain;
 
@@ -75,34 +74,10 @@ private _sigmaTotal = _sigmaFog + _sigmaHaze + _sigmaRain;
 private _visKm = if (_sigmaTotal > 0.001) then { 3.912 / _sigmaTotal } else { 300 };
 private _visM = _visKm * 1000;
 
-// ─── Horizon from the player's actual eye height ─────────────────────────
-private _eye = (eyePos player) select 2;
-private _eyeRel = (_eye - (getTerrainHeightASL (getPos player))) max 1.0;
-private _horizonM = 1000 * sqrt (2 * 6371 * (_eyeRel / 1000));   // km -> m
-
-// ─── Acuity: Johnson DRI is a TARGET-resolution criterion, not a scene
-// view-distance cap.  A standing man is detectable to ~6.2 km but a
-// vehicle to ~14 km, and the scene itself (terrain, structures) is
-// resolvable much farther.  The spec's own worked example (haze 0.2 ->
-// 11.3 km, the horizon) confirms the driver must NOT hard-cap at the
-// human-detection range.  Johnson is documented in the issue and left
-// to the player's optics; the driver caps by horizon and clarity only.
-// (Optic magnification does NOT extend the scene caps: a scope does not
-// see through fog or beyond the horizon - it resolves what is already
-// within them.  The driver is scene physics, not target resolution.)
-private _acuityM = 1e6;
-
-// ─── Night sensitivity ───────────────────────────────────────────────────
-// NELM 2 (city) -> ~100 m; NELM 6.5 (dark sky) -> ~1.45 km.
-private _nightM = 1e6;   // no limit in daylight
-if (_sunDown > 0 && _nelm < 6) then {
-    _nightM = 100 + ((_nelm - 2) * 300);
-};
-
 // ─── Combine ─────────────────────────────────────────────────────────────
 // Explicit min chain (avoids BIS_fnc_min, not compiled on all headless
 // loads, and selectMin, which the HEMTT parser rejects in assignments).
-private _target = _horizonM min _visM min _acuityM min _nightM min 12000;
+private _target = _visM min 12000;
 _target = _target max 150;   // engine floor; never less than a room
 
 // ─── Object view-distance target (issue #139) ────────────────────────────

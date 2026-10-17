@@ -138,8 +138,8 @@
             <English>Thermocline Width</English>
         </Key>
         <Key ID="STR_AEE_Maritime_tideAmplitude_Description">
-            <Original>Half-range of the predicted tide height in metres</Original>
-            <English>Half-range of the predicted tide height in metres</English>
+            <Original>M2 tide amplitude (m) for a map with no bound tide gauge; the other constituents follow the Doodson equilibrium ratios. Altis, Stratis, Malden and Tanoa use real TICON-4 gauge constants and ignore this</Original>
+            <English>M2 tide amplitude (m) for a map with no bound tide gauge; the other constituents follow the Doodson equilibrium ratios. Altis, Stratis, Malden and Tanoa use real TICON-4 gauge constants and ignore this</English>
         </Key>
         <Key ID="STR_AEE_Maritime_tideAmplitude_Name">
             <Original>Tide Amplitude</Original>

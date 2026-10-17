@@ -1,303 +1,87 @@
 #include "..\script_component.hpp"
-
 /*
-VHF/UHF radio propagation quality (0.3 to the configured ceiling) —
-physical link budget.
+Environmental excess loss on a radio link, for the ACRE2 and TFAR layers.
 
-Models the received-signal quality from the Friis transmission equation
-(P_r / P_t = G_t G_r (λ / 4πd)²) with atmospheric ducting and absorption
-as dB corrections:
+ACRE2 already computes the physical path loss of every link (Longley-Rice
+ITM: distance, frequency, terrain diffraction), and TFAR applies its own
+distance and terrain model.  AEE therefore supplies ONLY the losses those
+models do not hold, as decibels, so nothing is counted twice:
 
-  Link budget:  _linkBudget_dB = P_t(dBm) − FSPL(dB) − _extraLoss + _ductBonus
-  FSPL (Friis): 20·log10(d) + 20·log10(f) − 147.55   (d in m, f in Hz)
-  Quality:      _quality = 0.3 + 1.7 · (_signalPct ^ 0.5)   clamped 0.3..ceiling
+  L_iono    HF D-layer absorption, ITU-R P.533 (fnc_calculateIonosphericAbsorption),
+            evaluated at the link frequency; zero at 30 MHz and above, where
+            the D-layer is transparent.  The ACRE2 callback re-evaluates it
+            per link at the link's own frequency.
+  L_flare   a solar flare's sudden ionospheric disturbance, NOAA SWPC
+            D-RAP: (HAF / f)^1.5 dB, at any frequency.
+  L_batt    a cold battery delivers less power: -10 log10(capacity factor)
+            (aee_thermal_batteryTemperatureDerating), when enabled.
+  L_emp     EMP front-end upset (EMP Commission 2008): the published
+            amplitude factor f gives -20 log10(f).
 
-where _signalPct = 10^(_linkBudget_dB / 20).  The quality index is then
-scaled to the 0.3–2.0 range the compat layers (ACRE2/TFAR) consume:
-1.0 = nominal range, >1.0 = ducting extends range, <1.0 = absorption
-shortens it.
+Gaseous absorption is not included: below 1 GHz it is under 0.01 dB/km
+(ITU-R P.676, Fig. 1), so a tactical VHF/UHF link loses less than 0.1 dB.
+Tropospheric ducting and vegetation loss are not included: both need path
+geometry (duct height and launch angle, ITU-R P.453/P.530; foliage depth,
+ITU-R P.833) that the link layers do not pass.
 
-Factors:
-  • Ducting (temperature inversion, high humidity, high pressure) → dB bonus
-  • Hot & dry (absorption) → dB penalty
-  • Distance and frequency enter through FSPL directly.
-
-Stored in QGVAR(radioPropagationIndex) for consumption by radio/TFAR
-integration and AI communication-range modelling.
+Published:
+  aee_radio_excessLossDB          L_iono(reference freq) + L_batt + L_emp, dB
+  aee_radio_radioPropagationIndex the free-space range factor of that loss,
+                                  10^(-L/20) (1 = no excess loss)
 */
 
-private _T   = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _RH  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
-private _P   = missionNamespace getVariable [QEGVAR(core,currentPressure), ISA_SEA_LEVEL_PRESSURE_HPA];
-
-// The propagation index feeds only the ACRE2 and TFAR compat layers.
-// Without either host mod there is no consumer, so exit early with the
-// neutral index 1.0 rather than computing a dead value every tick.
-if (!isClass (configFile >> "CfgPatches" >> "acre_sys_core")
-    && !isClass (configFile >> "CfgPatches" >> "task_force_radio")) exitWith {
-    missionNamespace setVariable [QGVAR(radioPropagationIndex), 1.0];
-    1.0
-};
-
-if (isNil "_T")  exitWith { 1.0 };
-if (isNil "_RH") exitWith { 1.0 };
-if (isNil "_P")  then { _P = 1013 };
-
-// ─── Link geometry ─────────────────────────────────────────────────────────
-// Reference handheld link: configured transmit power, 100 MHz, 5 km
-// nominal range. Frequency and range can be overridden via mission
-// variables so a scenario can model specific radios.
 private _freqHz = missionNamespace getVariable [QGVAR(radioFrequencyHz), 1e8];
-private _distM  = missionNamespace getVariable [QGVAR(radioLinkRangeM), 5000];
-private _txPowerDBm = missionNamespace getVariable [QGVAR(txPower), 37];
-private _propRange  = missionNamespace getVariable [QGVAR(propagationRange), 2.0];
+if !(_freqHz isEqualType 0) then { _freqHz = 1e8; };
 
-// ─── Tropospheric refraction (ITU-R P.453) ─────────────────────────────────
-// Read the published refractivity state (aee_atmos_refractivityN,
-// aee_atmos_refractionK, aee_atmos_refractionCondition).  The state is
-// produced once per tick by fnc_updateEnvironment.  The k-factor is the
-// ratio of the effective to the true earth radius, so it scales the
-// geometric path length by 1 / sqrt(k).  This is the standard
-// effective-earth-radius correction, read from the published ITU-R P.453
-// state so the radio budget and the refraction model cannot disagree.
-private _refractionK = missionNamespace getVariable [QEGVAR(atmos,refractionK), 1];
-if !(_refractionK isEqualType 0) then { _refractionK = 1; };
-_refractionK = _refractionK max 0.5 min 2.0;
-private _effectiveDistM = _distM / (sqrt _refractionK);
-
-// ─── Battery temperature derating (issue #36) ──────────────────────────────
-// Cold Li-ion cells deliver less power: the physiology model publishes a
-// capacity multiplier 0.3-1.0 (aee_thermal_batteryTemperatureDerating).
-// A derated battery cuts effective transmit power: in dBm the loss is
-// 10*log10(derating).  At 0.7 (about -20 C) that is -1.55 dB; at 0.3
-// (severe cold) -5.2 dB.  The signal fraction follows as sqrt of the
-// linear power ratio, so a 0.7 battery transmits at ~84% of nominal range.
-private _batteryDerate = missionNamespace getVariable [QEGVAR(thermal,batteryTemperatureDerating), 1.0];
-if !(_batteryDerate isEqualType 0) then { _batteryDerate = 1.0; };
-_batteryDerate = _batteryDerate max 0.3 min 1.0;
-if (_batteryDerate < 1.0 && (missionNamespace getVariable [QGVAR(batteryDeratingEnabled), true])) then {
-    _txPowerDBm = _txPowerDBm + (10 * log _batteryDerate);
-};
-
-// ─── Free-space path loss (Friis) ──────────────────────────────────────────
-// SQF's log command is base-10 (verified in-game: log 100 = 2).  Friis in
-// SQF is therefore 20*log10(d) + 20*log10(f) - 147.55 with NO radix
-// conversion.  (A previous version divided by 2.302585 assuming natural
-// log, which double-converted and produced FSPL -46 dB — caught by the
-// in-game RPT, invisible to the range-checked index.)
-private _fspl = (20 * log _effectiveDistM) + (20 * log _freqHz) - 147.55;
-
-// ─── Evaporation duct (issue #37) ─────────────────────────────────────────
-// The evaporation duct is an SHF phenomenon (1-40 GHz, best 10-18 GHz):
-// a strong humidity gradient just above the sea traps radar/satcom links
-// and extends range 3-10x.  VHF/UHF tactical radios (30-300 MHz) are
-// largely UNAFFECTED - links below the duct's cutoff frequency get NO
-// bonus.  This replaces the old flat temperature/humidity/pressure
-// heuristic, which applied a dB bonus to every band regardless of the
-// physics.
-//
-// Modified refractivity deficit (N-units): the duct is driven by the
-// sea-air water-vapour deficit.  The sea surface is saturated (RH 100%);
-// the air above carries less vapour.  From the definition
-//   N = 77.6 p/T + 3.73e5 e/T^2,
-// the deficit is dN = 3.73e5 * (esat(SST) - e_air) / T^2.  Verified
-// anchors: tropics dN~14 (tall duct, low cutoff), Gulf dN~8, North Sea
-// dN~2 (weak duct, high cutoff).
-//
-// Duct height (Paulus-Jeske): a stable air-sea gradient (warm air over
-// cold sea) raises the duct; delta = clamp(1.5 + (T - SST) * 2.5, 3, 25)
-// metres (world mean ~13 m, tropics to 40 m, North Sea 5-6 m).
-//
-// Hall cutoff: lambda_max = 2.5e-3 * sqrt(dN/H - 0.157) * H^1.5,
-// f_min = c / lambda_max.  Below f_min the duct is too small for the
-// wavelength: no trapping.  (Verified: H=13, dN=10 -> 3.27 GHz.)
-private _ductBonus = 0;
-private _sst = missionNamespace getVariable [QEGVAR(maritime,seaSurfaceTemperature), nil];
-if (!isNil "_sst" && _sst isEqualType 0) then {
-    private _delta = 1.5 + ((_T - _sst) * 2.5);
-    _delta = _delta max 3 min 25;
-
-    // Saturated vapour pressure at the sea surface (Buck), and ambient
-    // vapour pressure from RH.  Convert the deficit to N-units.
-    private _esatSea = 6.1121 * exp ((18.678 - (_sst / 234.5)) * (_sst / (257.14 + _sst)));
-    private _esatAir = 6.1121 * exp ((18.678 - (_T / 234.5)) * (_T / (257.14 + _T)));
-    private _eAir = (_RH / 100) * _esatAir;
-    private _dn = 3.73e5 * ((_esatSea - _eAir) * 0.1) / ((_T + KELVIN_OFFSET) ^ 2);
-    if (_dn < 0) then { _dn = 0 };
-
-    // Hall cutoff: duct traps only wavelengths small enough to fit.
-    private _lam = 2.5e-3 * (sqrt ((_dn / _delta) - 0.157)) * (_delta ^ 1.5);
-    if !(isNil "_lam" || _lam <= 0) then {
-        private _fMinHz = 3e8 / _lam;
-        if (_freqHz >= _fMinHz) then {
-            // Range extension 3-10x (cap 150 km), attenuation 0.3 dB/km
-            // beyond the ~44.8 km over-the-horizon limit.
-            private _ductFactor = ((_delta / 13) max 0.3) min 2.5;
-            _ductBonus = 6 * _ductFactor;                   // up to +15 dB
-            private _rangeKm = _distM / 1000;
-            if (_rangeKm > 44.8) then {
-                // Attenuation beyond the OTH limit, clamped so the duct
-                // never becomes a net penalty (it either extends range
-                // or is neutral, per the ducting validation).
-                _ductBonus = (_ductBonus - (_rangeKm * 0.3)) max 0;
-            };
-        };
-    };
-};
-
-// Hot & dry — absorption penalty
-private _absorptionPenalty = 0;
-if (_T > 30 && _RH < 30) then {
-    _absorptionPenalty = 2;                                     // −2 dB
-};
-
-// HF ionospheric absorption — D-layer non-deviative absorption (ITU-R
-// P.531, computed by fnc_calculateIonosphericAbsorption) applies to HF
-// skywave links (below 30 MHz).  VHF/UHF line-of-sight links (the Friis
-// default) do not pass through the D-layer, so the penalty is gated on
-// frequency.  This wires the ionospheric state into the link budget
-// instead of leaving it write-only.
+// ─── HF D-layer absorption (only below 30 MHz) ────────────────────────────
+private _ionoDB = 0;
 if (_freqHz < 30e6) then {
-    private _ionoAbs = missionNamespace getVariable [QEGVAR(core,ionosphericAbsorption), 0];
-    _absorptionPenalty = _absorptionPenalty + _ionoAbs;
+    private _num = missionNamespace getVariable [QGVAR(dLayerNumerator), 0];
+    private _fL = missionNamespace getVariable [QGVAR(gyroFreqMHz), 1];
+    if !(_num isEqualType 0) then { _num = 0; };
+    if !(_fL isEqualType 0) then { _fL = 1; };
+    _ionoDB = _num / ((((_freqHz / 1e6) + _fL) ^ 1.98) + 10.2);
 };
 
-// ─── Foliage loss (open 0, urban/forest higher) ────────────────────────────
-// Vegetation attenuation, a separate effect from terrain diffraction.
-private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
-private _terrainLoss = 0;
-if (!isNil "_biome") then {
-    if (_biome in ["UMa", "Uhd", "Uhb", "Uhi", "Cfa", "Cfb", "Cfc", "Dfa", "Dfb"]) then {
-        _terrainLoss = 3;                                       // forested/humid: foliage loss
-    };
+// ─── Battery temperature derating (issue #36) ─────────────────────────────
+private _battDB = 0;
+if (missionNamespace getVariable [QGVAR(batteryDeratingEnabled), true]) then {
+    private _derate = missionNamespace getVariable [QEGVAR(thermal,batteryTemperatureDerating), 1.0];
+    if !(_derate isEqualType 0) then { _derate = 1.0; };
+    _derate = (_derate max 0.01) min 1;
+    _battDB = -10 * log _derate;
 };
 
-// ─── 3D EM propagation (issue #13) ─────────────────────────────────────────
-// Ground bounce (two-ray), terrain diffraction (Deygout) and valley
-// waveguide.  Each term is a path-loss correction: positive is a loss,
-// negative is a gain.  See the kernel headers for sources.
-private _emGroundBounce = 0;
-private _emDiffraction = 0;
-private _emValley = 0;
-private _emState = "los";
-if (missionNamespace getVariable [QGVAR(emPropagationEnabled), true]) then {
-    private _hTx = missionNamespace getVariable [QGVAR(txAntennaHeight), 2];
-    if !(_hTx isEqualType 0) then { _hTx = 2; };
-    private _hRx = missionNamespace getVariable [QGVAR(rxAntennaHeight), 1.5];
-    if !(_hRx isEqualType 0) then { _hRx = 1.5; };
-    private _rho = missionNamespace getVariable [QGVAR(groundReflectivity), 0.5];
-    if !(_rho isEqualType 0) then { _rho = 0.5; };
-
-    // Ground bounce: the two-ray excess over free space for the reference
-    // link (antenna heights above ground, geometric range).
-    private _twoRay = [_distM, _freqHz, _hTx, _hRx, _rho] call FUNC(calculateTwoRayGround);
-    _emGroundBounce = _twoRay select 0;
-
-    // Diffraction and the valley waveguide need the observer position.  A
-    // dedicated server has no unit, so those terms stay zero there.
-    private _unit = call CBA_fnc_currentUnit;
-    if (!isNil "_unit" && {!isNull _unit}) then {
-        private _bearing = missionNamespace getVariable [QGVAR(emLinkBearing), 0];
-        if !(_bearing isEqualType 0) then { _bearing = 0; };
-        private _pos = getPosASL _unit;
-        private _txX = _pos select 0;
-        private _txY = _pos select 1;
-        private _rxX = _txX + ((sin _bearing) * _distM);
-        private _rxY = _txY + ((cos _bearing) * _distM);
-        private _rxPos = [_rxX, _rxY, getTerrainHeightASL [_rxX, _rxY]];
-        private _em = [_pos, _rxPos, _freqHz, _hTx, _hRx, 24] call FUNC(calculateEmPropagation);
-        _emDiffraction = _em select 0;
-        _emState = _em select 1;
-
-        // Valley detection: walls rising on BOTH sides of the reference
-        // bearing mean the link runs along a valley.  The wall threshold
-        // (20 m) and the search span (1000 m) are UNSOURCED.
-        private _perp = _bearing + 90;
-        private _px = sin _perp;
-        private _py = cos _perp;
-        private _valleyWidth = 0;
-        for "_s" from 1 to 20 do {
-            if (_valleyWidth == 0) then {
-                private _d = _s * 50;
-                private _left = getTerrainHeightASL [_txX + (_px * _d), _txY + (_py * _d)];
-                private _right = getTerrainHeightASL [_txX - (_px * _d), _txY - (_py * _d)];
-                if (((_left - (_pos select 2)) > 20) && ((_right - (_pos select 2)) > 20)) then {
-                    _valleyWidth = 2 * _d;
-                };
-            };
-        };
-        if (_valleyWidth > 0) then {
-            _emValley = [_valleyWidth, _freqHz, 0] call FUNC(calculateValleyWaveguide);
-        };
-    };
-};
-
-missionNamespace setVariable [QGVAR(emGroundBounceDB), _emGroundBounce];
-missionNamespace setVariable [QGVAR(emDiffractionDB), _emDiffraction];
-missionNamespace setVariable [QGVAR(emValleyDB), _emValley];
-missionNamespace setVariable [QGVAR(emLinkState), _emState];
-
-// ─── Terrain masking (issue #32) ───────────────────────────────────────────
-// The dominant excess loss on a tactical VHF/UHF link is the terrain between
-// the transmitter and the receiver.  This adds the ITU-R P.526-16 knife-edge
-// and Deygout diffraction loss over the sampled profile (the kernels
-// fnc_calculateTerrainDiffraction and fnc_calculateKnifeEdgeLoss), on top of
-// the Friis free-space loss above.
-//
-// The nominal link runs from the observer to a point at the nominal range.
-// A global index has no single bearing, so the loss is the mean over the four
-// cardinal bearings: the index must not change when the observer turns.  On a
-// dedicated server there is no observer, so the foliage fallback applies.
-private _maskingEnabled = missionNamespace getVariable [QGVAR(terrainMaskingEnabled), true];
-private _observer = call CBA_fnc_currentUnit;
-if (_maskingEnabled && {!isNull _observer}) then {
-    private _txPos = getPosASL _observer;
-    private _bearingLoss = 0;
-    {
-        private _rxPos = [
-            (_txPos select 0) + (_x select 0),
-            (_txPos select 1) + (_x select 1),
-            _txPos select 2
-        ];
-        _bearingLoss = _bearingLoss + ([_txPos, _rxPos, _freqHz] call FUNC(calculateTerrainMaskedLink));
-    } forEach [[_distM, 0], [0, _distM], [-_distM, 0], [0, -_distM]];
-    _terrainLoss = _terrainLoss + (_bearingLoss / 4);
-};
-
-// ─── Link budget → quality index ───────────────────────────────────────────
-private _linkBudget = _txPowerDBm - _fspl - _terrainLoss + _ductBonus - _absorptionPenalty - _emGroundBounce - _emDiffraction - _emValley;
-private _signalPct = 10 ^ (_linkBudget / 20);
-_signalPct = _signalPct max 0 min 1;
-
-// Map signal fraction to the 0.3–2.0 index (√ compresses so mid-range
-// signals land near 1.0 and the extremes reach 0.3 / 2.0).
-private _index = 0.3 + 1.7 * (_signalPct ^ 0.5);
-_index = _index max 0.3 min _propRange;
-
-// ─── EMP semiconductor upset (issue #9) ────────────────────────────────────
-// A nuclear EMP couples into the radio's antenna and front-end (front-door
-// coupling) and upsets the semiconductor front end.  The EMP Commission (2008)
-// found handheld radios suffer UPSET, not burnout: the link degrades and then
-// recovers.  The factor is produced by aee_core (fnc_updateEmp) and is 1.0
-// when no burst is active, so this is a no-op in a normal mission.
+// ─── EMP semiconductor upset (issue #9) ───────────────────────────────────
 private _empFactor = missionNamespace getVariable [QEGVAR(core,empRadioFactor), 1.0];
 if !(_empFactor isEqualType 0) then { _empFactor = 1.0; };
-_empFactor = _empFactor max 0.3 min 1.0;
-_index = (_index * _empFactor) max 0.3 min _propRange;
+_empFactor = (_empFactor max 0.001) min 1;
+private _empDB = -20 * log _empFactor;
 
+// ─── Flare sudden ionospheric disturbance (NOAA SWPC D-RAP) ───────────────
+// (HAF / f)^1.5 dB at any frequency: an X-class flare's HAF can exceed
+// 30 MHz, so it reaches low VHF.
+private _flareDB = 0;
+private _haf = missionNamespace getVariable [QEGVAR(weather,flareHAF), 0];
+if !(_haf isEqualType 0) then { _haf = 0; };
+if (_haf > 0) then {
+    _flareDB = (_haf / (_freqHz / 1e6)) ^ 1.5;
+};
+
+private _excessDB = _ionoDB + _flareDB + _battDB + _empDB;
+private _index = 10 ^ (-_excessDB / 20);
+
+missionNamespace setVariable [QGVAR(excessLossDB), _excessDB];
 missionNamespace setVariable [QGVAR(radioPropagationIndex), _index];
 
 if (missionNamespace getVariable [QEGVAR(diagnostics,diagnostic), false]) then {
     private _logMsg = format [
-        "RadioPropagation: %1 (FSPL %2 dB | duct %3 dB | terrain %4 dB | ground %5 dB | diffract %6 dB | valley %7 dB | link %8 dBm)",
-        [_index, 2] call CBA_fnc_formatNumber,
-        [_fspl, 1] call CBA_fnc_formatNumber,
-        [_ductBonus, 1] call CBA_fnc_formatNumber,
-        [_terrainLoss, 1] call CBA_fnc_formatNumber,
-        [_emGroundBounce, 1] call CBA_fnc_formatNumber,
-        [_emDiffraction, 1] call CBA_fnc_formatNumber,
-        [_emValley, 1] call CBA_fnc_formatNumber,
-        [_linkBudget, 1] call CBA_fnc_formatNumber
+        "RadioPropagation: excess %1 dB (iono %2 | battery %3 | EMP %4) -> range factor %5",
+        [_excessDB, 1] call CBA_fnc_formatNumber,
+        [_ionoDB, 1] call CBA_fnc_formatNumber,
+        [_battDB, 1] call CBA_fnc_formatNumber,
+        [_empDB, 1] call CBA_fnc_formatNumber,
+        [_index, 3] call CBA_fnc_formatNumber
     ];
     AEE_LOG_INFO(_logMsg);
 };

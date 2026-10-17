@@ -24,3 +24,4 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+#include "CfgClimateStations.hpp"

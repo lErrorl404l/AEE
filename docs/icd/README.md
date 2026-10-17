@@ -20,38 +20,39 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 
 | Producer | Consumer | Variables | Document |
 |---|---|---|---|
-| `core` | `thermal` | 43 | [core-thermal.md](core-thermal.md) |
-| `core` | `atmos` | 41 | [core-atmos.md](core-atmos.md) |
-| `core` | `weather` | 40 | [core-weather.md](core-weather.md) |
+| `core` | `atmos` | 45 | [core-atmos.md](core-atmos.md) |
+| `core` | `thermal` | 45 | [core-thermal.md](core-thermal.md) |
+| `core` | `weather` | 43 | [core-weather.md](core-weather.md) |
 | `core` | `actions` | 28 | [core-actions.md](core-actions.md) |
 | `core` | `persistence` | 28 | [core-persistence.md](core-persistence.md) |
-| `core` | `optics` | 19 | [core-optics.md](core-optics.md) |
+| `core` | `optics` | 20 | [core-optics.md](core-optics.md) |
 | `core` | `diagnostics` | 16 | [core-diagnostics.md](core-diagnostics.md) |
 | `core` | `mobility` | 16 | [core-mobility.md](core-mobility.md) |
 | `core` | `weatherfx` | 16 | [core-weatherfx.md](core-weatherfx.md) |
 | `optics` | `vision` | 15 | [optics-vision.md](optics-vision.md) |
+| `core` | `lighting` | 13 | [core-lighting.md](core-lighting.md) |
+| `core` | `strain` | 13 | [core-strain.md](core-strain.md) |
 | `eye` | `vision` | 13 | [eye-vision.md](eye-vision.md) |
-| `core` | `strain` | 12 | [core-strain.md](core-strain.md) |
 | `core` | `particles` | 11 | [core-particles.md](core-particles.md) |
-| `thermal` | `thermal_display` | 11 | [thermal-thermal_display.md](thermal-thermal_display.md) |
 | `core` | `cartography` | 10 | [core-cartography.md](core-cartography.md) |
 | `core` | `maritime` | 10 | [core-maritime.md](core-maritime.md) |
 | `core` | `thermal_display` | 10 | [core-thermal_display.md](core-thermal_display.md) |
+| `thermal` | `thermal_display` | 10 | [thermal-thermal_display.md](thermal-thermal_display.md) |
 | `core` | `flight` | 9 | [core-flight.md](core-flight.md) |
-| `core` | `lighting` | 8 | [core-lighting.md](core-lighting.md) |
+| `core` | `vision` | 8 | [core-vision.md](core-vision.md) |
 | `thermal_display` | `vision` | 8 | [thermal_display-vision.md](thermal_display-vision.md) |
 | `core` | `ballistics` | 7 | [core-ballistics.md](core-ballistics.md) |
+| `core` | `eye` | 7 | [core-eye.md](core-eye.md) |
 | `core` | `hydrology` | 7 | [core-hydrology.md](core-hydrology.md) |
-| `core` | `radio` | 7 | [core-radio.md](core-radio.md) |
 | `thermal_display` | `thermal` | 7 | [thermal_display-thermal.md](thermal_display-thermal.md) |
 | `altitude` | `physiology` | 6 | [altitude-physiology.md](altitude-physiology.md) |
 | `ambience` | `wildlife` | 6 | [ambience-wildlife.md](ambience-wildlife.md) |
-| `core` | `eye` | 6 | [core-eye.md](core-eye.md) |
-| `core` | `vision` | 6 | [core-vision.md](core-vision.md) |
+| `lighting` | `core` | 6 | [lighting-core.md](lighting-core.md) |
 | `vision` | `optics` | 6 | [vision-optics.md](vision-optics.md) |
 | `core` | `compat_realweather` | 5 | [core-compat_realweather.md](core-compat_realweather.md) |
 | `core` | `nightvision` | 5 | [core-nightvision.md](core-nightvision.md) |
 | `core` | `physiology` | 5 | [core-physiology.md](core-physiology.md) |
+| `core` | `radio` | 5 | [core-radio.md](core-radio.md) |
 | `core` | `vehicles` | 5 | [core-vehicles.md](core-vehicles.md) |
 | `nightvision` | `vision` | 5 | [nightvision-vision.md](nightvision-vision.md) |
 | `weatherfx` | `particles` | 5 | [weatherfx-particles.md](weatherfx-particles.md) |
@@ -59,23 +60,20 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `core` | `hud` | 4 | [core-hud.md](core-hud.md) |
 | `core` | `wildlife` | 4 | [core-wildlife.md](core-wildlife.md) |
 | `eye` | `optics` | 4 | [eye-optics.md](eye-optics.md) |
-| `lighting` | `core` | 4 | [lighting-core.md](lighting-core.md) |
 | `weather` | `lighting` | 4 | [weather-lighting.md](weather-lighting.md) |
 | `core` | `altitude` | 3 | [core-altitude.md](core-altitude.md) |
 | `diagnostics` | `core` | 3 | [diagnostics-core.md](diagnostics-core.md) |
+| `hud` | `cartography` | 3 | [hud-cartography.md](hud-cartography.md) |
 | `nightvision` | `actions` | 3 | [nightvision-actions.md](nightvision-actions.md) |
 | `weather` | `wildlife` | 3 | [weather-wildlife.md](weather-wildlife.md) |
 | `wildlife` | `ambience` | 3 | [wildlife-ambience.md](wildlife-ambience.md) |
 | `atmos` | `flight` | 2 | [atmos-flight.md](atmos-flight.md) |
-| `atmos` | `radio` | 2 | [atmos-radio.md](atmos-radio.md) |
 | `atmos` | `weatherfx` | 2 | [atmos-weatherfx.md](atmos-weatherfx.md) |
 | `blast` | `particles` | 2 | [blast-particles.md](blast-particles.md) |
 | `core` | `ai` | 2 | [core-ai.md](core-ai.md) |
 | `core` | `compat_acm` | 2 | [core-compat_acm.md](core-compat_acm.md) |
 | `core` | `lib` | 2 | [core-lib.md](core-lib.md) |
 | `dive` | `altitude` | 2 | [dive-altitude.md](dive-altitude.md) |
-| `hud` | `cartography` | 2 | [hud-cartography.md](hud-cartography.md) |
-| `lighting` | `vision` | 2 | [lighting-vision.md](lighting-vision.md) |
 | `magnetism` | `maritime` | 2 | [magnetism-maritime.md](magnetism-maritime.md) |
 | `optics` | `weatherfx` | 2 | [optics-weatherfx.md](optics-weatherfx.md) |
 | `persistence` | `mobility` | 2 | [persistence-mobility.md](persistence-mobility.md) |
@@ -85,6 +83,7 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `symbology` | `hud` | 2 | [symbology-hud.md](symbology-hud.md) |
 | `thermal` | `optics` | 2 | [thermal-optics.md](thermal-optics.md) |
 | `weather` | `core` | 2 | [weather-core.md](weather-core.md) |
+| `weather` | `hud` | 2 | [weather-hud.md](weather-hud.md) |
 | `weather` | `radio` | 2 | [weather-radio.md](weather-radio.md) |
 
 ## Single-variable boundaries
@@ -93,6 +92,7 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 |---|---|---|
 | `atmos` | `optics` | `aee_atmos_refractivityGradient` |
 | `atmos` | `persistence` | `aee_atmos_volcanicLaharRisk` |
+| `atmos` | `radio` | `aee_atmos_refractivityGradient` |
 | `atmos` | `thermal` | `aee_atmos_volcanicWinterRegionalCooling_C` |
 | `atmos` | `weather` | `aee_atmos_volcanicAshDepth_mm` |
 | `cartography` | `hud` | `aee_cartography_mgrsEnabled` |
@@ -103,6 +103,7 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `diagnostics` | `vehicles` | `aee_diagnostics_diagnostic` |
 | `diagnostics` | `weather` | `aee_diagnostics_diagnostic` |
 | `dive` | `physiology` | `aee_dive_diveStates` |
+| `lighting` | `vision` | `aee_lighting_worldLighting` |
 | `lighting` | `weatherfx` | `aee_lighting_worldLighting` |
 | `ltm` | `nightvision` | `aee_ltm_ltmPFH` |
 | `maritime` | `actions` | `aee_maritime_waveHeight_m` |
@@ -111,13 +112,13 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `mobility` | `ai` | `aee_mobility_routePassability` |
 | `mobility` | `weatherfx` | `aee_mobility_tractionForce` |
 | `nightvision` | `optics` | `aee_nightvision_nvgFlashUntil` |
-| `optics` | `core` | `aee_optics_atmosphericSeeing` |
 | `persistence` | `actions` | `aee_persistence_flashFloodRisk` |
 | `persistence` | `ai` | `aee_persistence_flashFloodRisk` |
 | `persistence` | `thermal` | `aee_persistence_slabDensity` |
 | `persistence` | `weather` | `aee_persistence_slabDensity` |
 | `physiology` | `ai` | `aee_physiology_survivalPressure` |
 | `radio` | `cartography` | `aee_radio_radioPropagationIndex` |
+| `radio` | `hud` | `aee_radio_excessLossDB` |
 | `strain` | `physiology` | `aee_strain_dehydrationRisk` |
 | `symbology` | `cartography` | `aee_symbology_symbologyFont` |
 | `thermal` | `nightvision` | `aee_thermal_batteryTemperatureDerating` |
@@ -128,8 +129,9 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `vehicles` | `mobility` | `aee_vehicles_vehicleCouplingEnabled` |
 | `vision` | `ai` | `aee_vision_viewDistanceTarget` |
 | `vision` | `core` | `aee_vision_viewDistanceEnabled` |
+| `vision` | `eye` | `aee_vision_illuminantSP` |
 | `weather` | `ai` | `aee_weather_currentSoundPropagation` |
 | `weather` | `hydrology` | `aee_weather_currentFoliageDensity` |
 | `weather` | `thermal` | `aee_weather_terrainSignals` |
 
-Counts: 66 documented boundaries, 40 single-variable boundaries.
+Counts: 65 documented boundaries, 43 single-variable boundaries.

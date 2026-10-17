@@ -12,13 +12,17 @@ concentration).
 Two methods, in the standard's order of preference:
 
   Gradient   the measured vertical temperature gradient dT/dz (C/100 m) is
-             the direct stability measure.  It is used when supplied.
-  Tables     otherwise the day insolation category and the night cloud
-             cover, both crossed with the 10 m wind speed.
+             the direct stability measure, classed by the US NRC lapse-rate
+             bands (Regulatory Guide 1.23).  It is used when supplied.
+  Tables     otherwise, by day, the solar radiation/delta-T (SRDT) key of
+             US EPA, "Meteorological Monitoring Guidance for Regulatory
+             Modeling Applications", EPA-454/R-99-005 (2000), Table 6-7:
+             total solar radiation (W/m2) crossed with the 10 m wind speed;
+             by night, Turner's table: cloud cover crossed with the wind.
 
 Arguments:
   0: wind speed (NUMBER, m/s)
-  1: solar flux (NUMBER, W/m2) - the day insolation proxy
+  1: total (global horizontal) solar radiation (NUMBER, W/m2)
   2: cloud cover (NUMBER, oktas 0..8)
   3: is day (BOOL)
   4: observed lapse rate (NUMBER, C/100 m), or 999 for "not supplied"
@@ -69,27 +73,24 @@ if (_lapseRate < 900) then {
     };
 
     if (_isDay) then {
-        // Insolation category from the solar flux: strong >= 700 W/m2,
-        // moderate 350..700, slight < 350.  The thresholds are a numeric
-        // proxy for the standard's qualitative bands (UNSOURCED: the
-        // standard defines them by solar altitude and cloud).
-        private _insol = 0;
-        if (_solarFlux >= 700) then { _insol = 2; }
+        // EPA SRDT key (EPA-454/R-99-005, Table 6-7).  Columns: solar
+        // radiation >= 925, 675-925, 175-675, < 175 W/m2.
+        private _rad = 3;
+        if (_solarFlux >= 925) then { _rad = 0; }
         else {
-            if (_solarFlux >= 350) then { _insol = 1; };
+            if (_solarFlux >= 675) then { _rad = 1; }
+            else {
+                if (_solarFlux >= 175) then { _rad = 2; };
+            };
         };
-        // Day table: rows = wind band, columns = [slight, moderate, strong].
-        // Each cell is the single class resolved from the standard's range
-        // (a range "A-B" resolves to its more stable letter, the
-        // conservative choice for a concentration estimate).
         private _table = [
-            ["B", "B", "A"],
-            ["C", "B", "B"],
-            ["C", "C", "B"],
-            ["D", "D", "C"],
-            ["D", "D", "C"]
+            ["A", "A", "B", "D"],
+            ["A", "B", "C", "D"],
+            ["B", "B", "C", "D"],
+            ["C", "C", "D", "D"],
+            ["C", "D", "D", "D"]
         ];
-        _cls = (_table select _band) select _insol;
+        _cls = (_table select _band) select _rad;
     } else {
         // Night table: rows = wind band (<2, 2-3, 3-5, >=5), columns =
         // [clear (<=3/8 cloud), cloudy (>=4/8 cloud)].  The standard leaves

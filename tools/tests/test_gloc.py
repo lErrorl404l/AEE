@@ -403,3 +403,24 @@ class TestGLOC(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAltitudeDcsCallSite(unittest.TestCase):
+    """The caller must pass [altitude, tissues, dt] in the kernel's order.
+
+    Passed as [alt, 1, tissues], the params type check discarded the tissue
+    array, so the nitrogen state reset to the surface baseline every second
+    and the exposure had no memory.
+    """
+
+    def test_call_matches_the_params_order(self):
+        from pathlib import Path
+        import re
+
+        addons = Path(__file__).resolve().parents[2] / "addons" / "altitude"
+        kernel = next(addons.rglob("fnc_calculateAltitudeDCS.sqf")).read_text(encoding="utf-8")
+        params = re.search(r"params \[(.*?)\];", kernel, re.S).group(1)
+        names = re.findall(r'\["(_\w+)"', params)
+        self.assertEqual(names[:3], ["_altM", "_tissues", "_dtSec"])
+        caller = (addons / "XEH_postInit.sqf").read_text(encoding="utf-8")
+        self.assertIn("[_altM, _tissues, 1] call FUNC(calculateAltitudeDCS)", caller)

@@ -37,12 +37,15 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
         private _stage = _glocRes select 0;
 
         // ── Altitude DCS (above 21,000 ft the ZH-L16C R-ratio rises) ──
+        // A pressurised fixed-wing cabin holds at most 8,000 ft cabin altitude
+        // (14 CFR 25.841(a)); a helicopter is unpressurised.
         private _altM = (getPosASL _unit) select 2;
+        if ((vehicle _unit) isKindOf "Plane") then { _altM = _altM min 2438; };
         private _dcsRisk = 0;
         if (_altM > 6400) then {   // ~21,000 ft
             private _entry = [_unit] call EFUNC(dive,getDiveState);
             private _tissues = _entry select [0, 32];
-            private _res = [_altM, 1, _tissues] call FUNC(calculateAltitudeDCS);
+            private _res = [_altM, _tissues, 1] call FUNC(calculateAltitudeDCS);
             _entry = _res select 2;
             for "_i" from 0 to 31 do { _entry set [_i, _res select 2 select _i]; };
             private _state = missionNamespace getVariable [QEGVAR(dive,diveStates), -1];

@@ -191,9 +191,13 @@ if (_freeze) then {
 private _xCone = _step select 0;
 private _xRod = _step select 1;
 
-// _w is the CIE 191:2010 photopic fraction: near 1 the cones carry vision,
-// near 0 the rods do, so _w weights the cone pool.
-private _w = ["eyeMesopicWeight", [_lumScene, GVAR(eyeMesopicLow), GVAR(eyeMesopicHigh)]] call EFUNC(core,dispatchKernel);
+// _w is the CIE 191:2010 MES2 adaptation coefficient m: near 1 the cones
+// carry vision, near 0 the rods do, so _w weights the cone pool.  The S/P
+// ratio of the light comes from the daylight spectral model (aee_vision_
+// illuminantSP); until it publishes, the clear-sky daylight value 2.3.
+private _sp = missionNamespace getVariable [QEGVAR(vision,illuminantSP), 2.3];
+if !(_sp isEqualType 0) then { _sp = 2.3; };
+private _w = ["eyeMesopicWeight", [_lumScene, _sp, GVAR(eyeMesopicLow), GVAR(eyeMesopicHigh)]] call EFUNC(core,dispatchKernel);
 if (_w isEqualType "") then { _w = parseNumber _w; };
 private _xSlow = (_w * _xCone) + ((1 - _w) * _xRod);
 private _kp = GVAR(eyeFastBlend);
@@ -218,19 +222,17 @@ GVAR(eyeFast) = _xFast;
 // and the target, the direction, the effective tau and the time to adapt.
 private _adaptState = [_step, _xTarget, _w, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod)] call FUNC(eyeAdaptState);
 
-// Human-vision limits: the scotopic acuity and colour loss, the dark noise and
-// the scattered glare.  Published for the render and the perception monitor.
-// The glare angle is the angle from the view to the primary light source, and
-// the fog drives the atmospheric in-scatter.  A local-source angle (headlights
-// off to the side) needs the light scan to return the brightest direction; the
-// sun/moon angle is available now.
-private _viewAz = getDirVisual _player;
-private _srcAz = missionNamespace getVariable [QEGVAR(core,lightAzimuth), _viewAz];
-private _srcAngle = abs(_viewAz - _srcAz);
-if (_srcAngle > 180) then { _srcAngle = 360 - _srcAngle; };
-private _fogNow = ([] call EFUNC(core,getSmoothedWeather)) select 2;
-if !(_fogNow isEqualType 0) then { _fogNow = 0; };
-private _limits = [_adaptedLux, _w, _localLux, _srcAngle, _fogNow] call FUNC(eyeLimits);
+// Human-vision limits: acuity, colour loss, quantum noise and disability
+// glare, from the adapting luminance (10^x cd/m2) and the angle in 3D from
+// the line of sight to the primary light source.
+private _viewDir = getCameraViewDirection _player;
+private _srcAz = missionNamespace getVariable [QEGVAR(core,lightAzimuth), 0];
+private _srcEl = missionNamespace getVariable [QEGVAR(core,lightElevation), -90];
+if !(_srcAz isEqualType 0) then { _srcAz = 0; };
+if !(_srcEl isEqualType 0) then { _srcEl = -90; };
+private _srcDir = [(sin _srcAz) * (cos _srcEl), (cos _srcAz) * (cos _srcEl), sin _srcEl];
+private _srcAngle = acos (((_viewDir vectorDotProduct _srcDir) max -1) min 1);
+private _limits = [10 ^ _x, _w, _localLux, _srcAngle, GVAR(eyeObserverAge)] call FUNC(eyeLimits);
 
 missionNamespace setVariable [QGVAR(eyeSceneLux), _steadySceneLux];
 missionNamespace setVariable [QGVAR(eyeAdaptedLux), _adaptedLux];

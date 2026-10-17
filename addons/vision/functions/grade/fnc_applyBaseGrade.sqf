@@ -246,22 +246,31 @@ if (_useModel isEqualTo true) then {
     if !(_sunElevation isEqualType 0) then { _sunElevation = 0; };
     private _overcast = overcast;
     if !(_overcast isEqualType 0) then { _overcast = 0; };
-    private _cct = [_sunElevation, _overcast] call FUNC(perceptionColorTemperature);
+    private _hazeExt = missionNamespace getVariable [QEGVAR(core,currentHaze), 0.08];
+    if !(_hazeExt isEqualType 0) then { _hazeExt = 0.08; };
+    private _pressureHpa = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
+    if !(_pressureHpa isEqualType 0) then { _pressureHpa = 1013.25; };
+    private _daylight = [_sunElevation, _overcast, _hazeExt, _pressureHpa] call FUNC(perceptionColorTemperature);
+    private _cct = _daylight select 2;
+    // The S/P ratio of the light for the CIE 191:2010 mesopic system.  At
+    // night the moon's reflected sunlight crosses the same atmosphere, so
+    // its S/P is the model's at the moon's elevation (the moon's own
+    // reddening is not modelled).
+    private _sp = _daylight select 3;
+    private _moonElevation = missionNamespace getVariable [QEGVAR(core,currentMoonElevation), -90];
+    if !(_moonElevation isEqualType 0) then { _moonElevation = -90; };
+    if (_sunElevation < -6 && _moonElevation > 0) then {
+        _sp = ([_moonElevation, _overcast, _hazeExt, _pressureHpa] call FUNC(perceptionColorTemperature)) select 3;
+    };
+    missionNamespace setVariable [QGVAR(illuminantSP), _sp];
     if (_colorTemp isEqualTo true) then {
-        _illuminant = [_cct] call FUNC(perceptionIlluminantFromCct);
+        _illuminant = [_cct, [_daylight select 0, _daylight select 1]] call FUNC(perceptionIlluminantFromCct);
     };
 
-    // Atmospheric desaturation (issue #100): cloud, rain and haze mix
-    // scattered light into the scene and lower its saturation.  It feeds the
-    // same colorize/weights mechanism as the mesopic path.
-    private _rain = rain;
-    if !(_rain isEqualType 0) then { _rain = 0; };
-    private _haze = missionNamespace getVariable [QEGVAR(core,currentHaze), 0];
-    if !(_haze isEqualType 0) then { _haze = 0; };
+    // Atmospheric scattering is distance-dependent (Koschmieder): the engine
+    // fog carries it (fnc_updateFog adds the haze and rain extinction), so no
+    // screen-wide desaturation stands in for it.
     private _atmosAlpha = 0;
-    if (_colorTemp isEqualTo true) then {
-        _atmosAlpha = [_overcast, _rain, _haze] call FUNC(perceptionAtmosphericColor);
-    };
 
     // Light-level grain (issue #100): a dark scene raises the acuity grain.
     // The mesopic photopic fraction is the 0 to 1 light scalar: 1 photopic

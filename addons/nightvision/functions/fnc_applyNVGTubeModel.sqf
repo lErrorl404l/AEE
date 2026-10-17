@@ -92,7 +92,10 @@ if (currentVisionMode _player != 1) exitWith {
     missionNamespace setVariable [QGVAR(nvgBlowout), 0];
     missionNamespace setVariable [QGVAR(nvgBlowoutHold), 0];
     missionNamespace setVariable [QGVAR(nvgWetness), 0];
-    missionNamespace setVariable [QGVAR(nvgBattery), 1.0];
+    // The battery is NOT refilled on flip-up: a cell does not recharge when
+    // the tube is off.  The drain clock restarts, so the time spent off is
+    // never charged as drain on the next flip-down.
+    missionNamespace setVariable [QGVAR(nvgLastSimTime), -1];
     missionNamespace setVariable [QGVAR(nvgBreathing), 0];
     missionNamespace setVariable [QGVAR(nvgImperfectionAlpha), 0];
 };
@@ -539,8 +542,8 @@ _noise = 0.03 max _noise min 1;
 missionNamespace setVariable [QGVAR(nvgNoise), _noise];
 
 // ─── Battery-level degradation ───────────────────────────────────────────
-// Real NVGs are powered by a single BA-5567/U battery (1.5 V lithium,
-// ~4 Wh).  As voltage drops, the MCP bias falls, reducing gain and
+// Real NVGs run on small primary cells: the AN/PVS-14 on one 1.5 V AA,
+// the AN/PVS-7 on two AA or one 3 V BA-5567/U lithium.  As voltage drops, the MCP bias falls, reducing gain and
 // increasing noise.  Image quality degrades progressively.
 //
 // Model: nvgBattery tracks 0.0 (dead) to 1.0 (fresh).  Drain rate
@@ -548,9 +551,15 @@ missionNamespace setVariable [QGVAR(nvgNoise), _noise];
 // temperature (extreme cold reduces battery capacity; extreme heat
 // increases self-discharge).  At 0.3 and below, noise floor rises;
 // at 0.15, scan-line flicker appears; at 0.05, intermittent dropout.
-// Battery persists per session (missionNamespace) and resets on NVG exit.
+// The charge persists across flip-up/flip-down and resets only when a
+// different device is worn.
 private _battery = missionNamespace getVariable [QGVAR(nvgBattery), 1.0];
 if !(_battery isEqualType 0) then { _battery = 1.0; };
+// A different device carries its own (fresh) cell.
+if ((missionNamespace getVariable [QGVAR(nvgBatteryDevice), ""]) != _hmd) then {
+    missionNamespace setVariable [QGVAR(nvgBatteryDevice), _hmd];
+    _battery = 1.0;
+};
 
 // Drain rate: per-tier base matched to real-world battery life on a single
 // AA lithium cell at 25 °C, typical nighttime use (gain ≈ sensitivity).
@@ -713,7 +722,9 @@ private _blowoutNow = 0;
             // bad weather reduces auto-gating because less light reaches
             // the tube.
             private _dist = _eye distance _srcPos;
-            private _rainExt = if (_rainS > 0.1) then { _rainS * 30 / 4343 } else { 0 };
+            // Rain: Atlas (1953) sigma = 0.21 * R^0.74 per km, R in mm/h,
+            // the relation the vision and optics modules use; per metre /1000.
+            private _rainExt = if (_rainS > 0) then { 0.21 * ((_rainS * ENGINE_RAIN_FULL_MMH) ^ 0.74) / 1000 } else { 0 };
             private _fogS2 = ([] call EFUNC(core,getSmoothedWeather)) select 2;
             private _fogExt = if (_fogS2 > 0.3) then { (_fogS2 / 0.5) ^ 2 * 40 / 4343 min 300 / 4343 } else { 0 };
             private _extinction = _rainExt + _fogExt;

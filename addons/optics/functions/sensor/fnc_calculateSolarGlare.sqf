@@ -31,27 +31,21 @@ if (sunOrMoon <= 0) exitWith {
 };
 
 // ─── Inputs ────────────────────────────────────────────────────────────
-// Sun position from the shared illuminance layer (fnc_calculateIlluminance):
-// the engine's OWN sun/moon vector via getLighting, converted to azimuth
-// and elevation.  This replaces the old dayTime sine approximation — the
-// engine's light direction is real data, verified by docker probe (vector
-// points FROM the light; elevation is sign-flipped to give sun elevation).
-private _sunAzim  = missionNamespace getVariable [QEGVAR(core,lightAzimuth), -1];
-private _sunElev  = missionNamespace getVariable [QEGVAR(core,lightElevation), -1];
-private _sunValid = (_sunAzim >= 0 && _sunElev >= 0);
-if (_sunValid) then {
-    // Engine vector points FROM the sun; the sun is the opposite direction,
-    // so elevation is negated.  The probe showed vector z ≈ -0.88 → sun
-    // elevation ≈ +61.8° (a plausible summer afternoon sun).
-    _sunElev = -_sunElev;
-} else {
-    // Fallback if the illuminance layer has not run yet this tick:
-    // the old sine model (dayTime-based), identical shape to the
-    // original code so glare never blanks between ticks.
-    private _dayFraction = dayTime / 24;
-    _sunElev = (sin ((_dayFraction - 0.25) * 360) * 90) max 0;
-    _sunAzim = ((_dayFraction - 0.25) * 360) mod 360;
-    if (_sunAzim < 0) then { _sunAzim = _sunAzim + 360; };
+// The sun the player SEES is the engine's own light (getLighting, published
+// by fnc_calculateIlluminance as the light's azimuth and elevation).  It is
+// the sun only while sunOrMoon is 1; in the sun/moon transition the
+// astronomical sun (aee_core_currentSunElevation/Azimuth, from
+// fnc_calculateSolarRadiation) is used instead.
+private _sunAzim = missionNamespace getVariable [QEGVAR(core,lightAzimuth), -1];
+private _sunElev = missionNamespace getVariable [QEGVAR(core,lightElevation), -90];
+if !(_sunAzim isEqualType 0) then { _sunAzim = -1; };
+if (sunOrMoon < 1 || _sunAzim < 0) then {
+    _sunAzim = missionNamespace getVariable [QEGVAR(core,currentSunAzimuth), 180];
+    _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+};
+if (_sunElev <= 0) exitWith {
+    missionNamespace setVariable [QGVAR(solarGlareIntensity), 0];
+    0
 };
 private _viewDir  = getDirVisual _unit;
 if (_viewDir != _viewDir) then { _viewDir = getDir _unit; };  // NaN check: fresh AI units have no visual direction

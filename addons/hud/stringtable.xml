@@ -17,13 +17,29 @@
             <Original>HUD Debug Log</Original>
             <English>HUD Debug Log</English>
         </Key>
+        <Key ID="STR_AEE_Hud_trackerAntennaGainDbi_Description">
+            <Original>Transmit plus receive antenna gain, dBi. 0 is isotropic; a body-worn whip is typically below it.</Original>
+            <English>Transmit plus receive antenna gain, dBi. 0 is isotropic; a body-worn whip is typically below it.</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerAntennaGainDbi_Name">
+            <Original>Datalink Antenna Gain (dBi)</Original>
+            <English>Datalink Antenna Gain (dBi)</English>
+        </Key>
         <Key ID="STR_AEE_Hud_trackerEnabled_Description">
-            <Original>Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off.</Original>
-            <English>Show the signal-dependent tracker in place of the exact friendly positions. The tracker applies the aee GNSS error-ellipse, fix-state and datalink kernels to your own group, and draws fuzzy markers with an uncertainty ellipse on the map and the HUD. Default off.</English>
+            <Original>Show your group as a real tracker would: each unit's own GPS solution (the real constellation at the mission date, blocked by terrain and buildings), sent on the ATAK reporting schedule over a radio link that must close over the terrain. Draws each report with its error ellipse on the map and the HUD. Default off.</Original>
+            <English>Show your group as a real tracker would: each unit's own GPS solution (the real constellation at the mission date, blocked by terrain and buildings), sent on the ATAK reporting schedule over a radio link that must close over the terrain. Draws each report with its error ellipse on the map and the HUD. Default off.</English>
         </Key>
         <Key ID="STR_AEE_Hud_trackerEnabled_Name">
             <Original>Signal Tracker</Original>
             <English>Signal Tracker</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerFrequencyMHz_Description">
+            <Original>Carrier frequency of the datalink, MHz. Sets the free-space loss and the terrain diffraction (ITU-R P.525, P.526).</Original>
+            <English>Carrier frequency of the datalink, MHz. Sets the free-space loss and the terrain diffraction (ITU-R P.525, P.526).</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerFrequencyMHz_Name">
+            <Original>Datalink Frequency (MHz)</Original>
+            <English>Datalink Frequency (MHz)</English>
         </Key>
         <Key ID="STR_AEE_Hud_trackerInterval_Description">
             <Original>Seconds between tracker model updates for the local group, range 0.2 to 5. A longer interval costs less and ages the tracks more. Default 1.0.</Original>
@@ -33,6 +49,38 @@
             <Original>Tracker Update Interval</Original>
             <English>Tracker Update Interval</English>
         </Key>
+        <Key ID="STR_AEE_Hud_trackerReportFast_Description">
+            <Original>Seconds between position reports at 30 mph and above. ATAK default: 2.</Original>
+            <English>Seconds between position reports at 30 mph and above. ATAK default: 2.</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerReportFast_Name">
+            <Original>Report Interval, Fast (s)</Original>
+            <English>Report Interval, Fast (s)</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerReportSlow_Description">
+            <Original>Seconds between position reports at 1 mph, scaled toward the fast interval at 30 mph as ATAK does. ATAK default: 20.</Original>
+            <English>Seconds between position reports at 1 mph, scaled toward the fast interval at 30 mph as ATAK does. ATAK default: 20.</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerReportSlow_Name">
+            <Original>Report Interval, Slow (s)</Original>
+            <English>Report Interval, Slow (s)</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerReportStationary_Description">
+            <Original>Seconds between position reports below 1 mph. ATAK default for a multicast network: 30.</Original>
+            <English>Seconds between position reports below 1 mph. ATAK default for a multicast network: 30.</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerReportStationary_Name">
+            <Original>Report Interval, Stationary (s)</Original>
+            <English>Report Interval, Stationary (s)</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerRxSensitivityDbm_Description">
+            <Original>Weakest signal the receiver decodes, dBm. -116 dBm is the AN/PRC-152A FM sensitivity at 12 dB SINAD, 30-152 MHz (L3Harris data sheet).</Original>
+            <English>Weakest signal the receiver decodes, dBm. -116 dBm is the AN/PRC-152A FM sensitivity at 12 dB SINAD, 30-152 MHz (L3Harris data sheet).</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerRxSensitivityDbm_Name">
+            <Original>Datalink Receiver Sensitivity (dBm)</Original>
+            <English>Datalink Receiver Sensitivity (dBm)</English>
+        </Key>
         <Key ID="STR_AEE_Hud_trackerSuppressIcons_Description">
             <Original>Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off.</Original>
             <English>Suppress the engine friendly map indicators where the engine allows it. The call is disableMapIndicators, which acts only when the difficulty exposes extended map content; it is local and re-applied. setGroupIconsVisible cannot hide the engine markers. Default off.</English>
@@ -40,6 +88,14 @@
         <Key ID="STR_AEE_Hud_trackerSuppressIcons_Name">
             <Original>Suppress Engine Markers</Original>
             <English>Suppress Engine Markers</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerTxPowerDbm_Description">
+            <Original>Transmit power of the radio that carries the position reports, dBm. 37 dBm = 5 W, the AN/PRC-152A maximum (L3Harris data sheet).</Original>
+            <English>Transmit power of the radio that carries the position reports, dBm. 37 dBm = 5 W, the AN/PRC-152A maximum (L3Harris data sheet).</English>
+        </Key>
+        <Key ID="STR_AEE_Hud_trackerTxPowerDbm_Name">
+            <Original>Datalink Transmit Power (dBm)</Original>
+            <English>Datalink Transmit Power (dBm)</English>
         </Key>
     </Package>
 </Project>

@@ -114,7 +114,14 @@ if (isNil "_vegScores") then { _vegScores = createHashMap; };
 if (isNil "_structScores") then { _structScores = createHashMap; };
 
 // ─── Channel A: climate verdict (Koppen from latitude climatology) ──
-private _normals = [_lat, _waterFrac] call FUNC(getLatitudeClimate);
+// A world bound to a real reference station uses that station's published
+// normals (fnc_getStationNormals); any other world uses the latitude
+// climatology, which needs the SIGNED latitude: its warmest month is July in
+// the north and January in the south (fnc_getLatitudeClimate).
+private _normals = [""] call FUNC(getStationNormals);
+if (_normals isEqualTo []) then {
+    _normals = [([] call EFUNC(lib,getWorldLocation)) select 0, _waterFrac] call FUNC(getLatitudeClimate);
+};
 private _tDay = _normals select 2;
 private _tNight = _normals select 3;
 private _precip = _normals select 5;

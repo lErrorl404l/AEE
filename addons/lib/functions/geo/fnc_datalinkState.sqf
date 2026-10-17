@@ -2,102 +2,45 @@
 /*
  * aee_lib_fnc_datalinkState
  *
- * Pure, argument-driven datalink kernel.  It reads no world, no config, no
- * player and no radio module.  It models the range falloff, the terrain and
- * urban obstruction and the jamming of a tactical datalink, and it returns
- * the link state, the update interval, the track age and the added position
- * error.
+ * Link budget of a VHF/UHF tactical data radio between two ground units.
+ * Pure.
  *
- * Propagation shape: the Friis free-space path loss
- *   FSPL = 20*log10(d) + 20*log10(f) - 147.55
- * the shape used by addons/radio/functions/fnc_calculateRadioPropagation.sqf.
- * This kernel reuses the SHAPE only.  It does not call the radio module and
- * it reads no mission variable.
- *
- * UNSOURCED shapes (listed for the per-constant register):
- *   DATA_REF_RANGE_M    nominal clear-air link range
- *   DATA_FREQ_HZ        reference carrier frequency
- *   DATA_TERRAIN_RANGE  usable-range fraction lost to full terrain masking
- *   DATA_URBAN_RANGE    usable-range fraction lost to full urban masking
- *   DATA_JAM_RANGE      usable-range fraction lost to full jamming
- *   DATA_TERRAIN_DB     signal loss at full terrain masking
- *   DATA_URBAN_DB       signal loss at full urban masking
- *   DATA_JAM_DB         signal loss at full jamming
- *   DATA_BASE_INTERVAL  update interval at reference signal and bandwidth
- *   DATA_REF_BANDWIDTH  reference bandwidth
- *   DATA_TRACK_AGE_MAX  track age at zero signal
- *   DATA_ERROR_MAX      added position error at zero signal
- *   DATA_ERROR_LOST     added position error penalty when the link is lost
+ *   Pr = Pt + Gt + Gr - (FSPL + Ldiff + Lexcess)
+ *   FSPL  = 32.45 + 20 log10(f MHz) + 20 log10(d km)  (ITU-R P.525)
+ *   Ldiff = Bullington diffraction over the terrain profile
+ *           (ITU-R P.526-15 s.4.5.1, fnc_bullingtonLoss)
+ *   Lexcess the environment loss the radio module publishes
+ *           (aee_radio_excessLossDB: D-layer, flare, battery, EMP)
+ * The report is received when Pr reaches the receiver sensitivity.  The
+ * caller passes the radio: the defaults are the L3Harris AN/PRC-152A
+ * data sheet (5 W = 37 dBm; -116 dBm at 12 dB SINAD, FM 30-152 MHz).
+ * Vegetation loss (ITU-R P.833) needs the foliage depth along the path and
+ * is not included.
  *
  * Arguments:
- *   0: distance    <NUMBER> link range, metres
- *   1: terrainMask <NUMBER> terrain obstruction, 0 clear to 1 blocked
- *   2: urbanMask   <NUMBER> urban obstruction, 0 clear to 1 blocked
- *   3: jammerState <NUMBER> jammer strength, 0 none to 1 full
- *   4: bandwidth   <NUMBER> link bandwidth, arbitrary units
+ *   0: txDbm   <NUMBER> transmit power, dBm
+ *   1: gainDbi <NUMBER> transmit plus receive antenna gain, dBi
+ *   2: sensDbm <NUMBER> receiver sensitivity, dBm
+ *   3: fMHz    <NUMBER> frequency, MHz
+ *   4: dKm     <NUMBER> path length, km
+ *   5: dist    <ARRAY>  profile point distances, km
+ *   6: hgt     <ARRAY>  profile point heights above sea level, m
+ *   7: hts     <NUMBER> transmit antenna height above sea level, m
+ *   8: hrs     <NUMBER> receive antenna height above sea level, m
+ *   9: excessDb <NUMBER> environment excess loss, dB
  *
- * Return: [state, updateInterval, trackAge, addedPositionError]
- *   state is "received" or "lost".  updateInterval is seconds (0 when lost).
- *   trackAge is seconds.  addedPositionError is metres.
+ * Return: [state, receivedDbm, marginDb, pathLossDb]; state "received" or
+ *         "lost".
  */
 params [
-    ["_distance", 0, [0]],
-    ["_terrainMask", 0, [0]],
-    ["_urbanMask", 0, [0]],
-    ["_jammerState", 0, [0]],
-    ["_bandwidth", 0, [0]]
+    ["_txDbm", 37, [0]], ["_gainDbi", 0, [0]], ["_sensDbm", -116, [0]], ["_fMHz", 100, [0]],
+    ["_dKm", 1, [0]], ["_dist", [], [[]]], ["_hgt", [], [[]]],
+    ["_hts", 2, [0]], ["_hrs", 2, [0]], ["_excessDb", 0, [0]]
 ];
-
-private _dist = _distance max 0;
-private _terrain = ((_terrainMask) max 0) min 1;
-private _urban = ((_urbanMask) max 0) min 1;
-private _jammer = ((_jammerState) max 0) min 1;
-private _bw = _bandwidth max 1;
-
-// Range falloff.  Full masking shrinks the usable range.  All UNSOURCED.
-private _refRange = 5000;                                // UNSOURCED
-private _terrainRange = 0.6;                             // UNSOURCED
-private _urbanRange = 0.3;                               // UNSOURCED
-private _jamRange = 0.9;                                 // UNSOURCED
-private _rangeLoss = (_terrain * _terrainRange) + (_urban * _urbanRange) + (_jammer * _jamRange);
-private _effectiveRange = _refRange * ((1 - _rangeLoss) max 0);
-
-private _received = (_dist <= _effectiveRange);
-
-// Friis free-space path loss, normalised to the reference range so the
-// signal fraction is 1.0 at the reference range.  The masks and the jammer
-// add decibels.  All UNSOURCED.
-private _freqHz = 3e8;                                   // UNSOURCED
-private _terrainDb = 12;                                 // UNSOURCED
-private _urbanDb = 6;                                    // UNSOURCED
-private _jamDb = 30;                                     // UNSOURCED
-private _refFSPL = (20 * log _refRange) + (20 * log _freqHz) - 147.55;
-private _fspl = (20 * log (_dist max 1)) + (20 * log _freqHz) - 147.55;
-private _maskDb = (_terrain * _terrainDb) + (_urban * _urbanDb) + (_jammer * _jamDb);
-private _relativeDb = _refFSPL - _fspl - _maskDb;
-private _signal = ((10 ^ (_relativeDb / 20)) max 0) min 1;
-
-// A received link updates faster with more signal and more bandwidth.
-private _baseInterval = 1.0;                             // UNSOURCED
-private _refBandwidth = 100;                             // UNSOURCED
-private _updateInterval = 0;
-if (_received) then {
-    _updateInterval = (_baseInterval * (_refBandwidth / _bw)) / (_signal max 0.1);
-};
-
-// Track age rises as the signal falls.  UNSOURCED.
-private _trackAgeMax = 30;                               // UNSOURCED
-private _trackAge = _trackAgeMax * (1 - _signal);
-
-// Added position error rises as the signal falls, with a lost-link penalty.
-private _errorMax = 25;                                  // UNSOURCED
-private _errorLost = 15;                                 // UNSOURCED
-private _addedError = _errorMax * (1 - _signal);
-if (!_received) then {
-    _addedError = _addedError + _errorLost;
-};
-
-private _state = "lost";
-if (_received) then { _state = "received"; };
-
-[_state, _updateInterval, _trackAge, _addedError]
+private _d = _dKm max 0.001;
+private _fspl = 32.45 + (20 * log _fMHz) + (20 * log _d);
+private _diff = [_d, _dist, _hgt, _hts, _hrs, _fMHz] call FUNC(bullingtonLoss);
+private _loss = _fspl + _diff + (_excessDb max 0);
+private _pr = _txDbm + _gainDbi - _loss;
+private _margin = _pr - _sensDbm;
+[["lost", "received"] select (_margin >= 0), _pr, _margin, _loss]

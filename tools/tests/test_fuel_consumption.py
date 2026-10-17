@@ -275,3 +275,31 @@ class TestReuse(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSourcedDragAndIdle(unittest.TestCase):
+    """The drag area and the idle rate come from sourced data, per vehicle."""
+
+    def test_drag_coefficients_are_sourced(self):
+        import json
+        data = json.loads((REPO / "data/physics/fuel.json").read_text(encoding="utf-8"))
+        cds = {r["id"]: r for r in data["drag_coefficients"]}
+        self.assertEqual(cds["wheeled_truck"]["cd"], 0.6)    # McCallen 1999, DOE
+        self.assertEqual(cds["wheeled_light"]["cd"], 0.59)   # Land Rover Defender
+        self.assertEqual(cds["tracked"]["cd"], 1.05)         # Hoerner face-on cube
+
+    def test_idle_anchor_is_the_argonne_rate(self):
+        import json
+        data = json.loads((REPO / "data/physics/fuel.json").read_text(encoding="utf-8"))
+        thermal = {r["id"]: r["value"] for r in data["thermal"]}
+        self.assertAlmostEqual(thermal["idle_fuel_lph_ref"], 0.8 * 3.785411784, places=3)
+        # A 150 kW light 4x4 idles at ~1.5 L/h, inside the DOE 0.25-0.5
+        # gal/h (0.95-1.9 L/h) for personal vehicles.
+        light = thermal["idle_fuel_lph_ref"] * 150 / thermal["idle_ref_power_kw"]
+        self.assertTrue(0.95 <= light <= 1.9)
+
+    def test_driver_uses_per_vehicle_drag_area(self):
+        src = (REPO / "addons/vehicles/functions/fnc_updateFuelConsumption.sqf").read_text(encoding="utf-8")
+        self.assertNotIn("_dragAreaM2 = 0.7;", src)
+        self.assertIn('isKindOf "Truck_F"', src)
+        self.assertIn("idle_fuel_lph_ref", src)

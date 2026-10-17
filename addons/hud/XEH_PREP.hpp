@@ -14,3 +14,4 @@ PREPS(hud,hudMarkers);
 PREPS(hud,trackerDraw);
 PREPS(hud,trackerProject);
 PREPS(hud,trackerUpdate);
+PREPS(hud,trackerReportInterval);

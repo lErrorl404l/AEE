@@ -68,8 +68,9 @@ _meteors = _alive;
 
 // ── Spawn new meteors at the expected rate. ──────────────────────────────
 private _date = date;
-private _lat = ([] call EFUNC(lib,getWorldLocation)) select 1;
-if (_lat == 0) then { _lat = 40; };
+// SIGNED latitude: a radiant's altitude depends on the hemisphere (the
+// Eta Aquariids favour the south, the Perseids the north).
+private _lat = ([] call EFUNC(lib,getWorldLocation)) select 0;
 private _mLim = missionNamespace getVariable [QGVAR(limitingMagnitude), 6.5];
 private _eyePos = ((call CBA_fnc_currentUnit) call EFUNC(core,getEyeState)) select 0;
 private _showers = [] call FUNC(meteorShowers);

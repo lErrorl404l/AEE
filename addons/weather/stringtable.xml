@@ -25,30 +25,6 @@
             <Original>Dust Devil Temperature Threshold</Original>
             <English>Dust Devil Temperature Threshold</English>
         </Key>
-        <Key ID="STR_AEE_Weather_FlareChance_Description">
-            <Original>Solar-flare trigger chance per tick</Original>
-            <English>Solar-flare trigger chance per tick</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_FlareChance_Name">
-            <Original>Solar Flare Chance</Original>
-            <English>Solar Flare Chance</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_FlareDecayRate_Description">
-            <Original>Solar-flare decay speed per tick</Original>
-            <English>Solar-flare decay speed per tick</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_FlareDecayRate_Name">
-            <Original>Solar Flare Decay Rate</Original>
-            <English>Solar Flare Decay Rate</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_FlareDuration_Description">
-            <Original>Solar-flare hold duration (s)</Original>
-            <English>Solar-flare hold duration (s)</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_FlareDuration_Name">
-            <Original>Solar Flare Duration</Original>
-            <English>Solar Flare Duration</English>
-        </Key>
         <Key ID="STR_AEE_Weather_InversionBoost_Description">
             <Original>Sound-range boost on clear calm nights</Original>
             <English>Sound-range boost on clear calm nights</English>
@@ -80,14 +56,6 @@
         <Key ID="STR_AEE_Weather_ScentIntensity_Name">
             <Original>Scent Intensity</Original>
             <English>Scent Intensity</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_SnowAccretionRate_Description">
-            <Original>Snow depth gain per tick per unit rain</Original>
-            <English>Snow depth gain per tick per unit rain</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_SnowAccretionRate_Name">
-            <Original>Snow Accretion Rate</Original>
-            <English>Snow Accretion Rate</English>
         </Key>
         <Key ID="STR_AEE_Weather_SoundPropagationScale_Description">
             <Original>Global sound-range multiplier</Original>
@@ -121,6 +89,14 @@
             <Original>Dense Gas Pool Diameter</Original>
             <English>Dense Gas Pool Diameter</English>
         </Key>
+        <Key ID="STR_AEE_Weather_kpOverride_Description">
+            <Original>-1: Kp evolves on the observed GFZ statistics for the current sunspot number. 0-9: pin the geomagnetic activity (5+ is a storm, NOAA G1-G5).</Original>
+            <English>-1: Kp evolves on the observed GFZ statistics for the current sunspot number. 0-9: pin the geomagnetic activity (5+ is a storm, NOAA G1-G5).</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_kpOverride_Name">
+            <Original>Kp Index Override</Original>
+            <English>Kp Index Override</English>
+        </Key>
         <Key ID="STR_AEE_Weather_logDebug_Description">
             <Original>Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental &gt; Diagnostics)</Original>
             <English>Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental &gt; Diagnostics)</English>
@@ -136,6 +112,14 @@
         <Key ID="STR_AEE_Weather_scalarFieldsEnabled_Name">
             <Original>Scalar Field Transport</Original>
             <English>Scalar Field Transport</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_sunspotOverride_Description">
+            <Original>-1: the sunspot number of the mission date (SILSO record, NOAA prediction, then mean solar cycles). 0-400: pin it for the scenario.</Original>
+            <English>-1: the sunspot number of the mission date (SILSO record, NOAA prediction, then mean solar cycles). 0-400: pin it for the scenario.</English>
+        </Key>
+        <Key ID="STR_AEE_Weather_sunspotOverride_Name">
+            <Original>Sunspot Number Override</Original>
+            <English>Sunspot Number Override</English>
         </Key>
     </Package>
 </Project>

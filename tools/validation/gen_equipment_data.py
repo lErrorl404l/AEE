@@ -289,6 +289,8 @@ if ((_match == 0) && (_known != "")) then {
             if (_liveMass <= 0) then {
                 _liveMass = getNumber (_bandCfg >> "ItemInfo" >> "mass");
             };
+            // Config mass is in 0.1 lb units; the bands are in kg.
+            _liveMass = _liveMass * ENGINE_MASS_UNIT_KG;
         };
     } forEach ["CfgWeapons", "CfgVehicles", "CfgGlasses"];
     if (_liveMass > 0) then {

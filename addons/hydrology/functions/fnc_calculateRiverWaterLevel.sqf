@@ -60,14 +60,14 @@ _curveNumber = _curveNumber min 100;
 // here instead, and reset once the rain has stopped for a while, which is
 // what makes one storm one event.
 //
-// rain 1.0 is the engine's heaviest fall. The mod treats that as 30 mm/h,
-// the upper bound of the WMO "heavy rain" band, so the depth the interval
-// delivered is rain * (30 / 3600) * interval mm.
+// rain 1.0 is the engine's heaviest fall, ENGINE_RAIN_FULL_MMH (25 mm/h,
+// inside the WMO 10-50 mm/h "heavy rain" band), so the depth the interval
+// delivered is rain * (ENGINE_RAIN_FULL_MMH / 3600) * interval mm.
 private _rainIntensity = rain;
 if !(_rainIntensity isEqualType 0) then { _rainIntensity = 0; };
 private _interval = EGVAR(core,updateInterval);
 if !(_interval isEqualType 0) then { _interval = 5; };
-private _mmPerTick = _rainIntensity * (30 / 3600) * _interval;
+private _mmPerTick = _rainIntensity * (ENGINE_RAIN_FULL_MMH / 3600) * _interval;
 
 private _stormDepth = missionNamespace getVariable [QGVAR(stormDepth_mm), 0];
 if !(_stormDepth isEqualType 0) then { _stormDepth = 0; };

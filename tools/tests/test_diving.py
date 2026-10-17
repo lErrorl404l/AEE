@@ -7,7 +7,8 @@ compartment 1 = 4-minute N2 half-time).  These tests mirror the model and
 assert:
 
   - the constant table against the published ZH-L16C values (streit.cc
-    SAETT FAQ "computer" column; NOT the ZHL-16b 5-minute variant)
+    SAETT FAQ "computer" column; Bühlmann compartment "1", not the
+    equally published "1b" 5-minute row)
   - the loading equation (Schreiner exponential toward inspired gas)
   - the ceiling equation (b*(P_tissue - a) at GF 100)
   - the NDL (no-decompression limit) against published ZH-L16C air
@@ -233,7 +234,8 @@ class TestZHL16CTable(unittest.TestCase):
         )
 
     def test_first_compartment_is_4min(self):
-        # The distinguishing ZH-L16C feature vs the 16b 5-minute variant.
+        # Bühlmann compartment "1" (4 min); "1b" (5 min) is the published
+        # alternative row, shared by the A, B and C sets (Baker, Fig. 1).
         self.assertEqual(T_HALF_N2[0], 4.0)
 
     def test_n2_a_values(self):

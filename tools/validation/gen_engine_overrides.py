@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import sys
 from dataclasses import dataclass
@@ -108,6 +109,77 @@ _NON_BALL_MARKERS = (
     "heat",
     "sabot",
 )
+
+
+_CALIBRE_ONLY = re.compile(r"\d+mm")
+
+# BI tank-gun shell prefixes and the gun they belong to (vanilla CfgAmmo:
+# Sh_120mm_APFSDS, Sh_120mm_HEAT_MP, Sh_105mm_APFSDS, Sh_105mm_HEAT_MP).
+_TANK_GUN_PREFIXES = {
+    "sh_120mm_": "120mm_m256_smoothbore",
+    "sh_105mm_": "105mm_m68",
+}
+
+# A magazine whose initSpeed the engine uses for something other than a
+# single service velocity is never overridden:
+#   * artillery and mortar magazines: the weapon's artilleryCharge[] scales
+#     the magazine initSpeed per charge, so the magazine value is the
+#     reference charge velocity the fire-control tables are built on;
+#   * underwater dual-purpose rounds (SDAR): the vanilla 270 m/s is the
+#     underwater dart, not the 5.56x45 service velocity.
+_NEVER_OVERRIDE = re.compile(
+    r"(^|_)(mo|amos|artillery|mlrs|mortar|uw|dual)(_|$)", re.IGNORECASE
+)
+
+# The projectile nature of an engine ammo class, from BI's naming.  Order
+# matters: HEAT_MP is HEAT, APFSDS before APDS before AP, and "tracer" is
+# the last resort, so B_127x99_HEIAP_Tracer_Red is HEIAP, not ball.
+_AMMO_NATURE_TOKENS = (
+    ("heiap", "heiap"),
+    ("slap", "slap"),
+    ("apfsds", "apfsds"),
+    ("sabot", "apfsds"),
+    ("heat", "heat"),
+    ("apds", "apds"),
+    ("smoke", "smoke"),
+    ("flare", "illum"),
+    ("mp", "hedp"),
+    ("hedp", "hedp"),
+    ("hei", "he"),
+    ("he", "he"),
+    ("ap", "ap"),
+    ("api", "api"),
+    ("ball", "ball"),
+    ("tracer", "ball"),
+)
+
+# The nature of each military load the database holds, by its designation.
+# A tracer whose trajectory is matched to its ball round by specification
+# (M62 to M80, M856 to M855, M17 to M33) counts as ball.  A commercial
+# hunting or match load is "commercial" and never stands in for a service
+# round.
+_LOAD_NATURE = {
+    "m855": "ball", "m193": "ball", "m80": "ball", "m62": "ball",
+    "m118": "ball", "m33": "ball", "m17": "ball", "m882": "ball",
+    "m8apiandm20apit": "api", "m993": "ap", "127x108mmap": "ap",
+    "m829apfsdst": "apfsds", "m735apfsdst": "apfsds", "m919apfsdst": "apfsds",
+    "m88apfsdst": "apfsds",
+    "m830heatmpt": "heat", "m456heatt": "heat",
+    "m789hedp": "hedp", "m430hedp": "hedp", "m792heit": "he",
+    "m55a2": "tp", "mk239tpt": "tp",
+}
+
+
+def ammo_nature(ammo_class: str) -> str | None:
+    tokens = re.split(r"[_\-. ]", ammo_class.lower())
+    for token, nature in _AMMO_NATURE_TOKENS:
+        if token in tokens:
+            return nature
+    return None
+
+
+def load_nature(row: dict[str, object]) -> str:
+    return _LOAD_NATURE.get(normalise(_text(row.get("projectile"))), "commercial")
 
 
 @dataclass(frozen=True)
@@ -263,6 +335,7 @@ def cartridge_index() -> dict[str, str]:
     if not isinstance(records, list):
         raise ValueError("cartridges.json must be a top-level array")
     index: dict[str, str] = {}
+    ambiguous: set[str] = set()
     for raw in records:
         record = _mapping(raw)
         if record is None:
@@ -279,13 +352,31 @@ def cartridge_index() -> dict[str, str]:
                 aliases.add(normalise(name))
                 aliases |= derived_aliases(name)
         for alias in aliases:
-            if len(alias) >= 3:
-                index.setdefault(alias, cartridge_id)
+            if len(alias) < 3:
+                continue
+            # A bare calibre ("30mm", "120mm") is not a cartridge: 30 mm is
+            # 30x113, 30x165 and 30x173, and 120 mm is a tank gun and a
+            # mortar.  The initials rule in derived_aliases makes such tokens
+            # by accident ("30 mm M230" -> "30mm"), so they never bind.
+            if _CALIBRE_ONLY.fullmatch(alias):
+                continue
+            # An alias two cartridges claim identifies neither.
+            if alias in index and index[alias] != cartridge_id:
+                ambiguous.add(alias)
+            index.setdefault(alias, cartridge_id)
+    for alias in ambiguous:
+        index.pop(alias, None)
     return index
 
 
 def resolve_cartridge(aliases: dict[str, str], class_name: str) -> str | None:
-    for token in re.split(r"[_\-. ]", class_name.lower()):
+    lowered = class_name.lower()
+    # BI names its tank-gun shells Sh_<calibre>mm_<nature>; the calibre token
+    # alone is refused above, so the tank guns bind through this map.
+    for prefix, cartridge_id in _TANK_GUN_PREFIXES.items():
+        if lowered.startswith(prefix):
+            return cartridge_id
+    for token in re.split(r"[_\-. ]", lowered):
         if token in aliases:
             return aliases[token]
     return None
@@ -672,10 +763,93 @@ def cartridge_muzzle_velocity(
     return None
 
 
+def nature_muzzle_velocity(
+    binding: MagazineBinding,
+    loads: dict[str, list[dict[str, object]]],
+    projectiles: dict[str, dict[str, object]],
+) -> tuple[MuzzleVelocity | None, str | None]:
+    """The velocity of the load that matches the magazine's projectile.
+
+    A gun fires several natures at very different velocities (the M256 fires
+    M829 APFSDS at 1679 m/s and M830 HEAT at 1140 m/s), so the cartridge
+    alone never fixes initSpeed.  The magazine's ammo nature selects the
+    load; when no held load has that nature the magazine is withheld and
+    keeps its vanilla value.  Returns (velocity, withheld reason).
+    """
+    if _NEVER_OVERRIDE.search(binding.game_class) or _NEVER_OVERRIDE.search(
+        binding.ammo_class
+    ):
+        return None, "artillery, mortar or underwater round (engine-owned initSpeed)"
+    nature = ammo_nature(binding.ammo_class)
+    if nature is None:
+        return None, f"no projectile nature in {binding.ammo_class}"
+    rows = loads.get(binding.cartridge_id, [])
+    if nature == "ball":
+        service = cartridge_muzzle_velocity(binding.cartridge_id, loads, projectiles)
+        service_rows = [
+            row for row in rows
+            if _mv_from_load(row) == service and load_nature(row) == "ball"
+        ]
+        if service is not None and service_rows:
+            return service, None
+    for row in rows:
+        if load_nature(row) != nature:
+            continue
+        found = _mv_from_load(row)
+        if found is not None and found.grade == "documented":
+            return found, None
+    return None, f"no documented {nature} load for {binding.cartridge_id}"
+
+
+# The transonic limit of the fit: below Mach 1.2 the drag curve rises
+# steeply and no constant coefficient describes the flight.
+FIT_END_MACH = 1.2
+
+
+def supersonic_time_of_flight(
+    table: Sequence[tuple[float, float]], bc: float, v0: float
+) -> tuple[float, float]:
+    """(distance m, time s) to Mach FIT_END_MACH under the real drag curve.
+
+    dv/dx = -DRAG_CONSTANT * Cd(M) / BC * v, integrated in 0.5 m steps
+    (the verified AEE drag model, fnc_calculateBallisticDrag.sqf).
+    """
+    x = t = 0.0
+    v = v0
+    dx = 0.5
+    while v / SPEED_OF_SOUND_15C > FIT_END_MACH and x < 10000:
+        k = DRAG_CONSTANT * interpolate_cd(table, v / SPEED_OF_SOUND_15C) / bc
+        v_next = v * math.exp(-k * dx)
+        t += dx * 2 / (v + v_next)
+        v = v_next
+        x += dx
+    return x, t
+
+
+def constant_k_for_time(x: float, t: float, v0: float) -> float:
+    """The constant k (a = -k v^2) whose time of flight over x equals t.
+
+    With constant k, v(x) = v0 exp(-k x) and t(x) = (exp(k x) - 1) / (k v0).
+    """
+    lo, hi = 1e-7, 1e-2
+    for _ in range(200):
+        mid = (lo + hi) / 2
+        tof = (math.exp(mid * x) - 1) / (mid * v0)
+        lo, hi = (mid, hi) if tof < t else (lo, mid)
+    return (lo + hi) / 2
+
+
 def air_friction(
     projectile: dict[str, object], init_speed: float
 ) -> tuple[float, str, float] | None:
-    """Return (airFriction, standard, bc) derived from the held coefficient."""
+    """Return (airFriction, standard, bc) derived from the held coefficient.
+
+    The engine drag is a = airFriction * v^2 with ONE constant.  The constant
+    is the one whose time of flight from the muzzle to Mach 1.2 equals the
+    real flight under the held standard drag curve and BC; the time of
+    flight sets the drop and the lead, so the trajectory over the whole
+    supersonic range matches, not just the drag at the muzzle.
+    """
     values = _mapping(projectile.get("values"))
     if values is None:
         return None
@@ -686,9 +860,11 @@ def air_friction(
         bc = _number(held.get("value"))
         if bc is None or bc <= 0:
             continue
-        mach = init_speed / SPEED_OF_SOUND_15C
-        cd = interpolate_cd(load_drag_table(standard), mach)
-        return (-DRAG_CONSTANT * cd / bc, standard, bc)
+        table = load_drag_table(standard)
+        x, t = supersonic_time_of_flight(table, bc, init_speed)
+        if x <= 0:
+            return None
+        return (-constant_k_for_time(x, t, init_speed), standard, bc)
     return None
 
 
@@ -716,7 +892,10 @@ MAG_HEADER = f"""/* SPDX-License-Identifier: GPL-2.0-or-later */
 // Empty syntax and strips the vanilla class of every inherited property. The
 // generator never emits a bare class.
 //
-// initSpeed is the cartridge service muzzle velocity in m/s:
+// initSpeed is the muzzle velocity in m/s of the held load whose projectile
+// nature (ball, APFSDS, HEAT, HE, ...) matches the magazine's ammo; a
+// magazine whose nature no documented load holds keeps its vanilla value.
+// Artillery, mortar and underwater magazines are never overridden.  For ball:
 //   * the documented service velocity from the US military specifications and
 //     TM 43-0001-27 (grade documented); or, when none is held,
 //   * the manufacturer velocity table from Hornady or Lapua (grade claimed).
@@ -725,7 +904,8 @@ MAG_HEADER = f"""/* SPDX-License-Identifier: GPL-2.0-or-later */
 // data/engine/magazine_bindings.json, resolved from the installed game
 // config.
 //
-// CfgMagazines mass is the magazine LOADED mass in kg, from the held
+// CfgMagazines mass is the magazine LOADED mass in the engine unit (0.1 lb,
+// 45.359237 g; kg / 0.045359237), from the held
 // loaded-mass projection data/ballistics/magazine_masses.json (schema
 // {schemas.BALLISTICS_MAGAZINE_MASS}). The loaded mass is the held value where
 // it is held, or DERIVED as empty_mass_g + capacity * round_mass_g from the
@@ -750,11 +930,11 @@ AMMO_HEADER = """/* SPDX-License-Identifier: GPL-2.0-or-later */
 // generator never emits a bare class.
 //
 // airFriction is DERIVED, never copied. The engine applies quadratic drag
-// a = airFriction * v^2. The verified AEE drag model states the same form with
-// retard = 0.00068418 * (Cd / BC) * v^2. The value is that coefficient at the
-// reference muzzle Mach (the cartridge service muzzle velocity at ISA sea
-// level):
-//     airFriction = -0.00068418 * Cd(muzzleMach) / BC
+// a = airFriction * v^2 with one constant. The verified AEE drag model is
+// retard = 0.00068418 * (Cd(M) / BC) * v^2 with the Mach-dependent standard
+// curve. The constant is the one whose time of flight from the muzzle (the
+// service velocity, ISA sea level) to Mach 1.2 equals the real flight, so
+// drop and lead match over the whole supersonic range.
 // BC is the held measured or documented ballistic coefficient and Cd is the
 // held standard drag curve (data/ballistics/projectiles.json and
 // data/ballistics/sources/drag_functions.json, JBM and McCoy). The
@@ -795,17 +975,10 @@ def build_magazines(
     emissions: list[MagazineEmission] = []
     withheld: list[str] = []
     mass_leads: list[str] = []
-    cache: dict[str, MuzzleVelocity | None] = {}
     for binding in sorted(bindings, key=lambda item: item.game_class):
-        if binding.cartridge_id not in cache:
-            cache[binding.cartridge_id] = cartridge_muzzle_velocity(
-                binding.cartridge_id, loads, projectiles
-            )
-        velocity = cache[binding.cartridge_id]
+        velocity, reason = nature_muzzle_velocity(binding, loads, projectiles)
         if velocity is None:
-            withheld.append(
-                f"{binding.game_class}: no muzzle velocity for {binding.cartridge_id}"
-            )
+            withheld.append(f"{binding.game_class}: {reason}")
             continue
         group = resolve_mass(binding.game_class, groups)
         if group is None:
@@ -931,6 +1104,17 @@ def _render_classes(
     return "\n".join(lines) + "\n"
 
 
+# The engine inventory mass unit is 0.1 lb (ACE3 ace_common_fnc_getWeight:
+# kg = mass * 0.1 * 0.45359237; vanilla 30Rnd_556x45_Stanag mass = 8 is a
+# 0.36 kg load).  The held loaded mass is in kg, so it is converted here;
+# writing kg straight into `mass` made a loaded STANAG weigh 23 g.
+ENGINE_MASS_UNIT_KG = 0.045359237
+
+
+def engine_mass_units(mass_kg: float) -> float:
+    return round(mass_kg / ENGINE_MASS_UNIT_KG, 2)
+
+
 def render_magazines(
     emissions: Sequence[MagazineEmission],
     withheld: Sequence[str],
@@ -940,7 +1124,7 @@ def render_magazines(
     for item in emissions:
         body = f"initSpeed = {_render_number(item.init_speed)};"
         if item.mass_kg is not None:
-            body += f"\n        mass = {_render_number(item.mass_kg)};"
+            body += f"\n        mass = {_render_number(engine_mass_units(item.mass_kg))};"
         rows.append((item.game_class, item.parent_class, body))
     return _render_classes(MAG_HEADER, "CfgMagazines", rows, withheld, mass_leads)
 

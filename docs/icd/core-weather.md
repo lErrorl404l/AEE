@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/weather/`
 - Direction: one way. `core` must initialise before `weather` reads.
-- Variables crossing: 40.
+- Variables crossing: 43.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -32,7 +32,9 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentSandstorm` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:17` | Sandstorm intensity 0..1 |
 | `aee_core_currentSolarFlux` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:64` | UNKNOWN |
 | `aee_core_currentSolarRadiation` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateMicroclimate.sqf:91` | Solar radiation factor 0..1 |
+| `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateSpaceWeather.sqf:163` | UNKNOWN |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateFogBaseAltitude.sqf:12` | Air temperature in C |
+| `aee_core_currentUTInstant` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateSpaceWeather.sqf:47` | The game clock as [whole days since 2000-01-01, UT hours] (local apparent solar time converted to UT) |
 | `aee_core_currentWaterTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateWaterInfluence.sqf:107` | Water temperature in C |
 | `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_calculateDenseGasDispersion.sqf:41` | Wind vector |
 | `aee_core_currentWindDir` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:35` | Wind direction in degrees |
@@ -44,11 +46,12 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_pressureAltitude_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateQNH.sqf:30` | Pressure altitude in metres |
 | `aee_core_qnh` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateQNH.sqf:29` | QNH pressure setting |
 | `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateConcealment.sqf:46` | Snow depth in metres |
-| `aee_core_snowMeltFlux_Wm2` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateSnowAccumulation.sqf:71` | UNKNOWN |
+| `aee_core_snowMeltFlux_Wm2` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateSnowAccumulation.sqf:83` | UNKNOWN |
+| `aee_core_snowfallRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateSnowAccumulation.sqf:45` | Snowfall rate |
 | `aee_core_stormOverrideIntensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:27` | UNKNOWN |
 | `aee_core_stormOverrideType` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:23` | UNKNOWN |
 | `aee_core_stormOverrideUntil` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:24` | UNKNOWN |
-| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateSpaceWeather.sqf:44` | Update interval in seconds |
+| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:128` | Update interval in seconds |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

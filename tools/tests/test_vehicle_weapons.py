@@ -133,9 +133,12 @@ class TestCannonPenetrationDeferral(unittest.TestCase):
         self.assertIn("(v/1000) * caliber * 15", GATE)
 
     def test_no_cannon_model_is_applied(self):
-        # The deferral may name a candidate model, but none is applied:
-        # the only penetration computation is still the bisurf rule.
-        self.assertEqual(KERNEL.count("_penMM ="), 1)
+        # The deferral may name a candidate model, but none is applied: the
+        # vehicle penetration is still the bisurf rule (the soldier branch
+        # compares bullet energy density against body armour, not cannon).
+        self.assertEqual(KERNEL.count("_penMM = ((_speed / 1000) * _caliber * 15)"), 1)
+        for token in ("odermatt", "lanz", "jet length", "rod_length"):
+            self.assertNotIn(token, KERNEL.lower())
         self.assertIn("calculatePenetration", GATE)
 
 

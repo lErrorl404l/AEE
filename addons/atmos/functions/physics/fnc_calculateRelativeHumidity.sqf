@@ -1,49 +1,35 @@
 #include "..\..\script_component.hpp"
-
 /*
-Relative humidity after the surface modifier, the diurnal coupling and the
-overcast-or-rain saturation constraint.
+Relative humidity at the current temperature from the day's vapour content.
 
-  RH = clamp100(RH_base + surfaceMod)
-  RH = clamp100(RH * (1 + (T_ref - T_now) * k))
-  RH = 100 when overcast > gate or rain > 0
+The water-vapour pressure of the near-surface air changes far less over a
+day than the temperature, so it is held at the day's value
+  e = RH_mean / 100 * e_w(T_mean)
+and the relative humidity follows the temperature:
+  RH = 100 * e / e_w(T_now),   capped at saturation.
+e_w is the saturation vapour pressure over water (WMO-No. 8, Annex 4.B,
+Magnus form): e_w(t) = 6.112 exp(17.62 t / (243.12 + t)) hPa.  A warm
+afternoon dries the air, a cool night moistens it, and air that cools to
+its dew point saturates (the fog model takes the excess as liquid water).
 
-RH couples to the diurnal temperature curve: at constant vapour content,
-RH = 100 * e / e_sat(T), so RH falls as temperature rises.  T_ref is the
-daily-mean temperature the driver tracks.
-
-Pure: no missionNamespace, no GVAR or EGVAR, no engine command.  The driver
-FUNC(updateHumidity) reads the state, updates the daily-mean temperature and
-calls this kernel.
+Pure: no missionNamespace, no GVAR or EGVAR, no engine command.
 
 Arguments:
-  0: Number - base relative humidity from the biome normals, %
-  1: Number - surface modifier, %
-  2: Number - daily-mean temperature, degrees Celsius
-  3: Number - current temperature, degrees Celsius
-  4: Number - overcast, 0 to 1
-  5: Number - rain, 0 to 1
-
+  0: Number - the day's mean relative humidity (climate normal), %
+  1: Number - the day's mean temperature, degrees Celsius
+  2: Number - current temperature, degrees Celsius
 Returns:
   Number - relative humidity, % (integer, 0 to 100)
 */
-
 params [
-    ["_rhBase", 50, [0]],
-    ["_surfaceMod", 0, [0]],
-    ["_tRef", 15, [0]],
-    ["_tNow", 15, [0]],
-    ["_overcast", 0, [0]],
-    ["_rain", 0, [0]]
+    ["_rhMean", 50, [0]],
+    ["_tMean", 15, [0]],
+    ["_tNow", 15, [0]]
 ];
-
-private _diurnalCoef = 0.05;
-private _overcastGate = 0.7;
+private _magnusA = 6.112;
+private _magnusB = 17.62;
+private _magnusC = 243.12;
 private _saturation = 100;
-
-private _rh = ((_rhBase + _surfaceMod) max 0) min _saturation;
-_rh = _rh * (1 + (_tRef - _tNow) * _diurnalCoef);
-_rh = (_rh max 0) min _saturation;
-if (_overcast > _overcastGate || _rain > 0) then { _rh = _saturation; };
-
-round _rh
+private _e = ((_rhMean max 0) min _saturation) / 100 * _magnusA * exp (_magnusB * _tMean / (_magnusC + _tMean));
+private _ew = _magnusA * exp (_magnusB * _tNow / (_magnusC + _tNow));
+round (((100 * _e / _ew) max 0) min _saturation)

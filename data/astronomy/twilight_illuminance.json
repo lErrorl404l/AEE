@@ -1,0 +1,158 @@
+{
+ "source": "P. Schlyter, 'Radiometry and photometry in astronomy', section 10, 'Solar illumination on horizontal surface at various solar altitudes' (http://stjarnhimlen.se/comp/radfaq.html); clear sky, horizontal plane",
+ "retrieved": "2026-10-17",
+ "units": {
+  "altitude": "deg (true solar altitude)",
+  "lux": "lx"
+ },
+ "rows": [
+  {
+   "altitude": 0.0,
+   "log10_lux": 2.88
+  },
+  {
+   "altitude": -0.5,
+   "log10_lux": 2.75
+  },
+  {
+   "altitude": -1.0,
+   "log10_lux": 2.61
+  },
+  {
+   "altitude": -1.5,
+   "log10_lux": 2.45
+  },
+  {
+   "altitude": -2.0,
+   "log10_lux": 2.28
+  },
+  {
+   "altitude": -2.5,
+   "log10_lux": 2.09
+  },
+  {
+   "altitude": -3.0,
+   "log10_lux": 1.9
+  },
+  {
+   "altitude": -3.5,
+   "log10_lux": 1.69
+  },
+  {
+   "altitude": -4.0,
+   "log10_lux": 1.48
+  },
+  {
+   "altitude": -4.5,
+   "log10_lux": 1.25
+  },
+  {
+   "altitude": -5.0,
+   "log10_lux": 1.02
+  },
+  {
+   "altitude": -5.5,
+   "log10_lux": 0.78
+  },
+  {
+   "altitude": -6.0,
+   "log10_lux": 0.53
+  },
+  {
+   "altitude": -6.5,
+   "log10_lux": 0.29
+  },
+  {
+   "altitude": -7.0,
+   "log10_lux": 0.04
+  },
+  {
+   "altitude": -7.5,
+   "log10_lux": -0.21
+  },
+  {
+   "altitude": -8.0,
+   "log10_lux": -0.46
+  },
+  {
+   "altitude": -8.5,
+   "log10_lux": -0.7
+  },
+  {
+   "altitude": -9.0,
+   "log10_lux": -0.93
+  },
+  {
+   "altitude": -9.5,
+   "log10_lux": -1.16
+  },
+  {
+   "altitude": -10.0,
+   "log10_lux": -1.38
+  },
+  {
+   "altitude": -10.5,
+   "log10_lux": -1.58
+  },
+  {
+   "altitude": -11.0,
+   "log10_lux": -1.77
+  },
+  {
+   "altitude": -11.5,
+   "log10_lux": -1.94
+  },
+  {
+   "altitude": -12.0,
+   "log10_lux": -2.09
+  },
+  {
+   "altitude": -12.5,
+   "log10_lux": -2.22
+  },
+  {
+   "altitude": -13.0,
+   "log10_lux": -2.34
+  },
+  {
+   "altitude": -13.5,
+   "log10_lux": -2.44
+  },
+  {
+   "altitude": -14.0,
+   "log10_lux": -2.54
+  },
+  {
+   "altitude": -14.5,
+   "log10_lux": -2.62
+  },
+  {
+   "altitude": -15.0,
+   "log10_lux": -2.69
+  },
+  {
+   "altitude": -15.5,
+   "log10_lux": -2.77
+  },
+  {
+   "altitude": -16.0,
+   "log10_lux": -2.84
+  },
+  {
+   "altitude": -16.5,
+   "log10_lux": -2.92
+  },
+  {
+   "altitude": -17.0,
+   "log10_lux": -3.0
+  },
+  {
+   "altitude": -17.5,
+   "log10_lux": -3.09
+  },
+  {
+   "altitude": -18.0,
+   "log10_lux": -3.19
+  }
+ ]
+}

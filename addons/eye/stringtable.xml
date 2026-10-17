@@ -42,20 +42,28 @@
             <English>Local Light Scale</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeMesopicHigh_Description">
-            <Original>Photopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 5 cd/m2.</Original>
-            <English>Photopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 5 cd/m2.</English>
+            <Original>Mesopic luminance at and above which vision is fully photopic (m = 1), cd/m2. CIE 191:2010 MES2: 5 cd/m2.</Original>
+            <English>Mesopic luminance at and above which vision is fully photopic (m = 1), cd/m2. CIE 191:2010 MES2: 5 cd/m2.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeMesopicHigh_Name">
             <Original>Mesopic Upper Bound</Original>
             <English>Mesopic Upper Bound</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeMesopicLow_Description">
-            <Original>Scotopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 0.005 cd/m2.</Original>
-            <English>Scotopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 0.005 cd/m2.</English>
+            <Original>Mesopic luminance at and below which vision is fully scotopic (m = 0), cd/m2. CIE 191:2010 MES2: 0.005 cd/m2.</Original>
+            <English>Mesopic luminance at and below which vision is fully scotopic (m = 0), cd/m2. CIE 191:2010 MES2: 0.005 cd/m2.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeMesopicLow_Name">
             <Original>Mesopic Lower Bound</Original>
             <English>Mesopic Lower Bound</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeObserverAge_Description">
+            <Original>Age of the observer, years. Disability glare from bright sources rises steeply with age, as 1 + (A/70)^4 in the CIE age-adjusted Stiles-Holladay equation.</Original>
+            <English>Age of the observer, years. Disability glare from bright sources rises steeply with age, as 1 + (A/70)^4 in the CIE age-adjusted Stiles-Holladay equation.</English>
+        </Key>
+        <Key ID="STR_AEE_Eye_eyeObserverAge_Name">
+            <Original>Observer Age</Original>
+            <English>Observer Age</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyePupilTauConstrict_Description">
             <Original>Pupil constriction time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, 0.25 s.</Original>

@@ -115,45 +115,50 @@ def sidereal_lst(date, time_s):
     return lst
 
 
+ASTRO = Path(__file__).resolve().parents[2] / "addons/lib/functions/astronomy/fnc_astroPosition.sqf"
+CLOCK = Path(__file__).resolve().parents[2] / "addons/lib/functions/astronomy/fnc_gameClockToUT.sqf"
+
+
+def sidereal_sqf(date, clock_h, lat=40.0, lon=25.0):
+    """Run the real fnc_siderealTime with the real lib kernels bound."""
+    astro = lambda *a: run_sqf(ASTRO, list(a))  # noqa: E731
+    clock = lambda *a: run_sqf(CLOCK, list(a), globals_={"__FUNC__astroPosition": astro})  # noqa: E731
+    return run_sqf(SIDEREAL, [list(date)], globals_={
+        "dayTime": clock_h,
+        "__EFUNC__lib_getWorldLocation": lambda *a: [lat, abs(lat), lon, 35],
+        "__EFUNC__lib_gameClockToUT": clock,
+        "__EFUNC__lib_astroPosition": astro,
+    })
+
+
 class TestSiderealTime(unittest.TestCase):
-    """fnc_siderealTime runs from the real SQF and matches a Meeus mirror."""
-
-    CASES = [
-        ((2025, 1, 1), 0.0),
-        ((2025, 1, 1), 43200.0),
-        ((2025, 3, 20), 3600.0),
-        ((2025, 6, 15), 7200.0),
-        ((2025, 9, 1), 80100.0),
-        ((2025, 12, 31), 79200.0),
-        ((2026, 2, 28), 1800.0),
-    ]
-
-    def test_matches_meeus_mirror(self):
-        for date, seconds in self.CASES:
-            with self.subTest(date=date, seconds=seconds):
-                got = run_sqf(SIDEREAL, [list(date)], globals_={"time": seconds})
-                self.assertAlmostEqual(got, sidereal_lst(date, seconds), places=6)
+    """fnc_siderealTime runs from the real SQF on the real astronomy kernels."""
 
     def test_meeus_ch12_worked_example(self):
-        """Meeus, Astronomical Algorithms, Ch. 12 worked example.
-
-        1987 April 10, 0h UT gives GMST = 13h10m46.3668s = 197.693195 deg.
-        The pre-fix J2000 base returned 243.802549 deg.
-        """
-        got = run_sqf(SIDEREAL, [[1987, 4, 10]], globals_={"time": 0.0})
-        self.assertAlmostEqual(got, 197.693195, places=4)
+        """Meeus, Astronomical Algorithms, Ch. 12: 1987 April 10, 0h UT,
+        GMST = 13h10m46.3668s = 197.693195 deg."""
+        got = run_sqf(ASTRO, [-4649, 0.0, 0.0, 0.0], float32=True)[0]   # 1987-04-10 is day -4649
+        self.assertAlmostEqual(got, 197.693195, places=3)
 
     def test_within_zero_360(self):
-        for date, seconds in self.CASES:
-            got = run_sqf(SIDEREAL, [list(date)], globals_={"time": seconds})
+        for clock in (0.0, 6.0, 12.0, 23.9):
+            got = sidereal_sqf((2025, 9, 1), clock)
             self.assertGreaterEqual(got, 0.0)
             self.assertLess(got, 360.0)
 
-    def test_advances_with_ut(self):
-        a = run_sqf(SIDEREAL, [[2025, 9, 1]], globals_={"time": 0.0})
-        b = run_sqf(SIDEREAL, [[2025, 9, 1]], globals_={"time": 3600.0})
-        delta = math.fmod(b - a, 360.0)
-        self.assertAlmostEqual(delta, 360.98564736629 / 24, places=4)
+    def test_follows_the_game_clock(self):
+        # One hour of clock is one sidereal-rate hour (the old kernel read
+        # `time`, the mission run time, so the sky ignored the clock).
+        a = sidereal_sqf((2025, 9, 1), 20.0)
+        b = sidereal_sqf((2025, 9, 1), 21.0)
+        self.assertAlmostEqual(math.fmod(b - a + 360, 360), 360.98564736629 / 24, delta=0.01)
+
+    def test_longitude_shifts_it(self):
+        a = sidereal_sqf((2025, 9, 1), 12.0, lon=0.0)
+        b = sidereal_sqf((2025, 9, 1), 12.0, lon=30.0)
+        # Same LOCAL clock at 30 E: the sky is the same local solar hour, so
+        # the sidereal difference is only the sun's day-of-year motion.
+        self.assertLess(abs(math.fmod(b - a + 540, 360) - 180), 1.0)
 
     def test_catalog_uses_kernel(self):
         text = (SENSOR / "fnc_getStarCatalog.sqf").read_text(encoding="utf-8")
@@ -306,7 +311,7 @@ def injections(sidereal=None):
     """The four sub-kernels for fnc_meteorState, each wrapping run_sqf."""
     return {
         "__FUNC__siderealTime": sidereal
-        or (lambda date: run_sqf(SIDEREAL, [date], globals_={"time": 0.0})),
+        or (lambda date: sidereal_sqf(date, 0.0)),
         "__FUNC__showerIsActive": lambda m, d, s: run_sqf(ACTIVE, [m, d, s]),
         "__FUNC__radiantHorizontal": lambda ra, dec, lat, lst: run_sqf(
             RADIANT, [ra, dec, lat, lst]

@@ -15,7 +15,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentCropDensity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:40` | Crop density 0..1 |
 | `aee_core_currentFireRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:37` | Fire spread risk 0..1 |
 | `aee_core_currentFloodRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:42` | Flash flood risk 0..1 |
-| `aee_core_currentHaze` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:66` | Haze intensity 0..1 |
+| `aee_core_currentHazeVisibility` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:109` | Clear-air visibility from RH, km (NOAA UPP) |
 | `aee_core_currentHumidity` | SCALAR | percent | 0..100 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:14` | Relative humidity percent |
 | `aee_core_currentIcingSeverity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:55` | Airframe icing 0..1 |
 | `aee_core_currentLightningRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:38` | Lightning risk 0..1 |

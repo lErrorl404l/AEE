@@ -38,19 +38,31 @@ if (isNull _unit || !alive _unit) exitWith { createHashMap };
 private _result = createHashMap;
 
 // ─── Enumerate the carried gear with real masses ──────────────────────────
-// Arma gives the real mass via config (getMass on the container class
-// plus its contents).  Each item is a thermal node.
+// The mass of each item is the researched published mass
+// (aee_clothing_fnc_getItemMass, kg).  An item the research does not hold
+// falls back to its engine config mass, which is in 0.1 lb units
+// (ENGINE_MASS_UNIT_KG), never kg.  Each item is a thermal node.
 private _gear = [];
+private _fnc_massKg = {
+    params ["_class", "_cfgMass"];
+    // Optional: the clothing addon owns the research table (ADR-032).
+    private _kg = 0;
+    if (!isNil "aee_clothing_fnc_getItemMass") then {
+        _kg = [_class] call aee_clothing_fnc_getItemMass;
+    };
+    if (_kg > 0) exitWith { _kg };
+    _cfgMass * ENGINE_MASS_UNIT_KG
+};
 
 // Headgear / goggles (worn).
 private _headgear = headgear _unit;
 if (_headgear != "") then {
-    private _m = getNumber (configFile >> "CfgWeapons" >> _headgear >> "ItemInfo" >> "mass");
+    private _m = [_headgear, getNumber (configFile >> "CfgWeapons" >> _headgear >> "ItemInfo" >> "mass")] call _fnc_massKg;
     _gear pushBack [_headgear, _m, "plastic"];
 };
 private _goggles = goggles _unit;
 if (_goggles != "") then {
-    private _m = getNumber (configFile >> "CfgGlasses" >> _goggles >> "mass");
+    private _m = [_goggles, getNumber (configFile >> "CfgGlasses" >> _goggles >> "mass")] call _fnc_massKg;
     _gear pushBack [_goggles, _m, "glass"];
 };
 
@@ -62,6 +74,7 @@ if (_goggles != "") then {
     if (isNil "_container" || _container == "") then { continue; };
     private _containerMass = getNumber (configFile >> "CfgWeapons" >> _container >> "ItemInfo" >> "mass");
     if (_containerMass <= 0) then { _containerMass = getNumber (configFile >> "CfgVehicles" >> _container >> "mass"); };
+    _containerMass = [_container, _containerMass] call _fnc_massKg;
     // Real content mass: sum of each item's config mass.  A full
     // backpack has many times the mass of an empty one - this is the
     // thermal-inertia driver.
@@ -74,7 +87,7 @@ if (_goggles != "") then {
         if (_magMass <= 0) then {
             _magMass = getNumber (configFile >> "CfgVehicles" >> _x >> "mass");
         };
-        _contentMass = _contentMass + _magMass;
+        _contentMass = _contentMass + ([_x, _magMass] call _fnc_massKg);
     } forEach _items;
     _gear pushBack [_container, (_containerMass + _contentMass), _mat];
 } forEach [
@@ -87,7 +100,7 @@ if (_goggles != "") then {
 // adds inertia to the whole-hand system).
 private _weapon = primaryWeapon _unit;
 if (_weapon != "") then {
-    private _m = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "mass");
+    private _m = [_weapon, getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "mass")] call _fnc_massKg;
     _gear pushBack [_weapon, _m, "metal"];
 };
 

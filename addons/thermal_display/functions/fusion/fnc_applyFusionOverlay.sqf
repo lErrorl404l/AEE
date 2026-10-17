@@ -194,8 +194,7 @@ private _edgeMap = missionNamespace getVariable [QGVAR(selThermalEdge), createHa
 // tick, not once per object.  The device is the same for every object.
 // The background temperature for the threshold is the ambient air
 // temperature the display already uses.  A dedicated server has no player,
-// so the resolver is guarded the same way fnc_calculateThermalContrast
-// does, and it falls back to the uncooled default the resolver itself
+// so the resolver is guarded, and it falls back to the uncooled default the resolver itself
 // returns for an unknown device.
 private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_tAir isEqualType 0) then { _tAir = 15; };

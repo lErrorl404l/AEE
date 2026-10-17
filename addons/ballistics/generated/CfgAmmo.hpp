@@ -13,11 +13,11 @@
 // generator never emits a bare class.
 //
 // airFriction is DERIVED, never copied. The engine applies quadratic drag
-// a = airFriction * v^2. The verified AEE drag model states the same form with
-// retard = 0.00068418 * (Cd / BC) * v^2. The value is that coefficient at the
-// reference muzzle Mach (the cartridge service muzzle velocity at ISA sea
-// level):
-//     airFriction = -0.00068418 * Cd(muzzleMach) / BC
+// a = airFriction * v^2 with one constant. The verified AEE drag model is
+// retard = 0.00068418 * (Cd(M) / BC) * v^2 with the Mach-dependent standard
+// curve. The constant is the one whose time of flight from the muzzle (the
+// service velocity, ISA sea level) to Mach 1.2 equals the real flight, so
+// drop and lead match over the whole supersonic range.
 // BC is the held measured or documented ballistic coefficient and Cd is the
 // held standard drag curve (data/ballistics/projectiles.json and
 // data/ballistics/sources/drag_functions.json, JBM and McCoy). The
@@ -28,12 +28,12 @@ class CfgAmmo {
     class BulletBase;
 
     class B_127x99_Ball: BulletBase {
-        airFriction = -0.000531115;
+        airFriction = -0.000599678;
     };
     class B_556x45_Ball: BulletBase {
-        airFriction = -0.001175773;
+        airFriction = -0.001337197;
     };
     class B_762x51_Ball: BulletBase {
-        airFriction = -0.000929668;
+        airFriction = -0.001037517;
     };
 };

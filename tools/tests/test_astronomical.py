@@ -15,8 +15,11 @@ Run: python3 -m unittest tools.tests.test_astronomical -v
 """
 
 import math
+import sys
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
 
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -99,18 +102,20 @@ def ks_lunar_lux(phase):
 # ─── Limiting magnitude mirrors ────────────────────────────────────────────
 
 
-def calculate_limiting_magnitude(ambient_lux, seeing):
-    """Mirror of fnc_calculateLimitingMagnitude.sqf.
+NELM_KERNEL = Path(__file__).resolve().parents[2] / "addons/lighting/functions/astronomy/fnc_calculateLimitingMagnitude.sqf"
 
-    mBase = 6.5 - log10(ambientLux / 0.001)
-    seeingPenalty = 0.2 + 1.3 * (seeing - 0.1) / 0.9
-    mLim = clamp(mBase - seeingPenalty, 2.0, 7.0)
-    """
-    m_base = 6.5 - math.log10(max(ambient_lux / 0.001, 1e-6))
-    clamped_seeing = max(0.1, min(1.0, seeing))
-    seeing_penalty = 0.2 + 1.3 * ((clamped_seeing - 0.1) / 0.9)
-    m_lim = m_base - seeing_penalty
-    return max(2.0, min(7.0, m_lim))
+
+def calculate_limiting_magnitude(moon_alt=-90, moon_frac=0, twilight_lux=0, haze=0.08, houses=0):
+    """Run the real NELM kernel (light pollution held at zero)."""
+    from sqf_lite import run_sqf
+    return run_sqf(NELM_KERNEL, [moon_alt, moon_frac, twilight_lux, haze, houses],
+                   {"__FUNC__lightPollutionPenalty": lambda h: 0.0})
+
+
+def knoll_nelm(b, k):
+    """Independent: Knoll et al. 1946 via Crumey 2014 eq. 19, V=0 at 2.54e-6 lx."""
+    di = 1.076e-9 * math.sqrt(1 + 1e5 * b)
+    return -2.5 * math.log10(di / 2.54e-6) - k
 
 
 # ─── Star catalog sort mirror ──────────────────────────────────────────────
@@ -262,8 +267,8 @@ class TestSQFSync(unittest.TestCase):
     def test_limiting_magnitude_constants(self):
         self._assert_in_sqf(
             "fnc_calculateLimitingMagnitude.sqf",
-            ["6.5 - log (_ambientLux / 0.001", "0.2 + 1.3", "0.9"],
-            "NELM baseline and seeing penalty",
+            ["1.74e-4", "1.076e-9", "1e5", "2.54e-6", "10 ^ 5.36", "3.84 + (0.026 * _alpha)"],
+            "Falchi natural sky, Knoll threshold, Krisciunas-Schaefer moon",
             addon="env",
         )
 
@@ -415,70 +420,42 @@ class TestLunarIllumination(unittest.TestCase):
 
 
 class TestLimitingMagnitude(unittest.TestCase):
-    """Naked-eye limiting magnitude from illuminance + seeing."""
+    """NELM from the zenith sky luminance (fnc_calculateLimitingMagnitude)."""
 
-    def test_starlight_good_seeing(self):
-        """Starlight (0.001 lux) + excellent seeing (0.1) → ~6.3."""
-        m_lim = calculate_limiting_magnitude(0.001, 0.1)
-        self.assertAlmostEqual(m_lim, 6.3, places=1)
+    K = 1.086 * (0.0973 + 0.027 + (0.08 - 0.0116) * 1.2)
 
-    def test_starlight_poor_seeing(self):
-        """Starlight (0.001 lux) + terrible seeing (1.0) → ~5.0."""
-        m_lim = calculate_limiting_magnitude(0.001, 1.0)
-        self.assertAlmostEqual(m_lim, 5.0, places=1)
+    def test_pristine_dark_sky(self):
+        # Natural sky 22.0 mag/arcsec2 (Falchi 2016): NELM ~6.6, the
+        # observed limit at the darkest sites.
+        m, b = calculate_limiting_magnitude()
+        self.assertAlmostEqual(b, 1.74e-4, places=9)
+        self.assertAlmostEqual(m, knoll_nelm(1.74e-4, self.K), places=4)
+        self.assertTrue(6.4 < m < 6.9)
 
-    def test_full_moon_good_seeing(self):
-        """Full moon (0.3 lux) + excellent seeing → ~3.8."""
-        m_lim = calculate_limiting_magnitude(0.3, 0.1)
-        self.assertAlmostEqual(m_lim, 3.8, places=1)
+    def test_full_moon_sky_is_about_18_7_mag_arcsec2(self):
+        # Krisciunas & Schaefer: a 45 deg full moon brightens the zenith to
+        # ~18-19 mag/arcsec2; NELM falls to ~4.5-5.
+        m, b = calculate_limiting_magnitude(45, 1.0)
+        mag = -2.5 * math.log10(b / 10.9e4)
+        self.assertTrue(18.0 < mag < 19.5, mag)
+        self.assertTrue(4.3 < m < 5.2, m)
 
-    def test_full_moon_poor_seeing(self):
-        """Full moon (0.3 lux) + terrible seeing → ~2.5."""
-        m_lim = calculate_limiting_magnitude(0.3, 1.0)
-        self.assertAlmostEqual(m_lim, 2.5, places=0)
+    def test_twilight_sky(self):
+        # Isotropic sky L = E / pi: end of civil twilight (3.41 lx) leaves
+        # only the brightest stars.
+        m, b = calculate_limiting_magnitude(twilight_lux=3.41)
+        self.assertAlmostEqual(b, 1.74e-4 + 3.41 / math.pi, places=6)
+        self.assertLess(m, 2.5)
 
-    def test_quarter_moon(self):
-        """Quarter moon (~0.03 lux) + moderate seeing (0.5) → ~4.2."""
-        m_lim = calculate_limiting_magnitude(0.03, 0.5)
-        self.assertAlmostEqual(m_lim, 4.2, places=0)
+    def test_haze_raises_extinction(self):
+        self.assertLess(calculate_limiting_magnitude(haze=0.25)[0], calculate_limiting_magnitude(haze=0.05)[0])
 
-    def test_clamp_upper(self):
-        """Very dark sky → clamped to 7.0."""
-        m_lim = calculate_limiting_magnitude(0.0001, 0.1)
-        self.assertLessEqual(m_lim, 7.0)
-
-    def test_clamp_lower(self):
-        """Very bright sky → clamped to 2.0."""
-        m_lim = calculate_limiting_magnitude(10.0, 1.0)
-        self.assertGreaterEqual(m_lim, 2.0)
-
-    def test_seeing_clamped_low(self):
-        """Seeing below 0.1 → clamped to 0.1."""
-        m1 = calculate_limiting_magnitude(0.001, 0.0)
-        m2 = calculate_limiting_magnitude(0.001, 0.1)
-        self.assertAlmostEqual(m1, m2, places=6)
-
-    def test_seeing_clamped_high(self):
-        """Seeing above 1.0 → clamped to 1.0."""
-        m1 = calculate_limiting_magnitude(0.001, 2.0)
-        m2 = calculate_limiting_magnitude(0.001, 1.0)
-        self.assertAlmostEqual(m1, m2, places=6)
-
-    def test_monotonic_decrease_with_light(self):
-        """More ambient light → lower limiting magnitude (fewer stars visible)."""
-        prev = calculate_limiting_magnitude(0.001, 0.5)
-        for lux in [0.01, 0.05, 0.1, 0.3, 1.0]:
-            current = calculate_limiting_magnitude(lux, 0.5)
-            self.assertLess(current, prev)
-            prev = current
-
-    def test_monotonic_decrease_with_seeing(self):
-        """Worse seeing → lower limiting magnitude."""
-        prev = calculate_limiting_magnitude(0.01, 0.1)
-        for s in [0.3, 0.5, 0.7, 1.0]:
-            current = calculate_limiting_magnitude(0.01, s)
-            self.assertLessEqual(current, prev)
-            prev = current
+    def test_brighter_moon_lowers_nelm(self):
+        prev = calculate_limiting_magnitude(45, 0.1)[0]
+        for f in (0.3, 0.6, 1.0):
+            cur = calculate_limiting_magnitude(45, f)[0]
+            self.assertLess(cur, prev)
+            prev = cur
 
 
 class TestStarCatalogVisibility(unittest.TestCase):

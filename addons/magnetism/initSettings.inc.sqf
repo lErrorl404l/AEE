@@ -4,6 +4,10 @@
 // CBA_fnc_addSetting; titles and descriptions come from the
 // magnetism stringtable.
 
+// ── World Magnetic Model ─────────────────────────────────────────────────
+AEE_SETTING_CHECKBOX(wmmExtrapolate,"AEE Magnetism","Compass",true);
+AEE_SETTING_CHECKBOX(compassFerrousDeviation,"AEE Magnetism","Compass",true);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,

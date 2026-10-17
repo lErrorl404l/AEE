@@ -22,6 +22,21 @@ follow the variable names as written in the SQF source.
 | `aee_core_rainAccum` | core | Rain accumulation |
 | `aee_core_soilMoisture` | core | Soil moisture 0..1 |
 | `aee_core_surfaceWetness` | core | Surface wetness 0..1 |
+| `aee_core_currentMoonElevation` | lighting | Topocentric moon altitude, deg (Astronomical Almanac series, lib astroPosition) |
+| `aee_core_currentMoonIllumination` | lighting | Illuminated fraction of the lunar disc, 0..1 |
+| `aee_core_currentLocalSiderealTime` | lighting | Local sidereal time at the world, deg |
+| `aee_core_currentUTInstant` | lighting | The game clock as [whole days since 2000-01-01, UT hours] (local apparent solar time converted to UT) |
+| `aee_weather_xrayFlux` | weather | GOES 1-8 A solar X-ray flux of the current flare, W/m2 (0 when none) |
+| `aee_weather_flareClass` | weather | GOES class of the current flare (e.g. "M2.4"), "" when none |
+| `aee_weather_geomagneticLatitude` | weather | Observer geomagnetic (WMM2025 dipole) latitude, deg |
+| `aee_weather_auroraElevationDeg` | weather | Elevation of the auroral oval's equatorward edge above the observer's horizon, deg (90 when overhead) |
+| `aee_weather_climateStationName` | weather | Name of the WMO 1991-2020 station whose normals an unbound world uses |
+| `aee_core_currentSunDeclination` | lighting | Solar declination, deg |
+| `aee_core_currentFogLWC` | atmos | Fog liquid water content, g/m3 (cooling below the dew point) |
+| `aee_core_currentFogExtinction` | atmos | Fog extinction coefficient, per km (Kunkel 1984) |
+| `aee_core_currentExtinction` | atmos | Total atmospheric extinction (fog + haze + rain), per km; drives the engine fog |
+| `aee_core_currentExtinction` | atmos | Total atmospheric extinction (fog + haze + rain), per km; drives the engine fog |
+| `aee_core_currentHazeVisibility` | atmos | Clear-air visibility from RH, km (NOAA UPP) |
 | `aee_core_currentTemperature` | thermal | Air temperature in C |
 | `aee_core_surfaceTemperature` | thermal | Surface temperature in C |
 | `aee_core_currentWaterTemperature` | thermal | Water temperature in C |
@@ -45,8 +60,8 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentWindDir` | atmos | Wind direction in degrees |
 | `aee_core_currentGusts` | atmos | Gust speed in m/s |
 | `aee_core_pushedWind` | atmos | Last wind vector pushed to the engine `wind` command |
-| `aee_core_currentFogDensity` | atmos | Fog density 0..1 |
-| `aee_core_currentHaze` | atmos | Haze intensity 0..1 |
+| `aee_core_currentFogDensity` | atmos | Engine fog value 0..1 (total extinction / 10 per km) |
+| `aee_core_currentHaze` | atmos | Clear-air (haze) extinction at 550 nm, per km (NOAA UPP RH visibility, sigma = 3.0 / vis) |
 | `aee_core_cloudCeiling_m` | atmos | Cloud base height in metres |
 | `aee_core_precipitationPhase` | atmos | Phase (rain/sleet/snow/freezing_rain) |
 | `aee_core_snowfallRate` | atmos | Snowfall rate |
@@ -54,7 +69,7 @@ follow the variable names as written in the SQF source.
 | `aee_core_hailEnergy` | atmos | Hailstone [diameter_m, mass_kg, v_t_ms, energy_j] from the convective proxy (#151) |
 | `aee_core_fogBase_m` | atmos | Fog base altitude in metres |
 | `aee_core_fogForecast` | atmos | Fog forecast |
-| `aee_core_currentHaze` | atmos | Haze intensity 0..1 |
+| `aee_core_currentHaze` | atmos | Clear-air (haze) extinction at 550 nm, per km (NOAA UPP RH visibility, sigma = 3.0 / vis) |
 | `aee_core_currentTurbulence` | atmos | Turbulence 0..1 |
 | `aee_core_currentIcingSeverity` | atmos | Airframe icing 0..1 |
 | `aee_core_currentLightningRisk` | atmos | Lightning risk 0..1 |
@@ -107,12 +122,13 @@ records that the draw function and the GPS readout consume.
 |---|---|---|
 | `aee_core_geoAnchor` | core | World geographic anchor: [latitude, longitude, zone, mapSize, lonWest, latSouth, lonEast, latNorth, sourceToken] |
 | `aee_core_mgrsTables` | core | MGRS letter tables loaded at preInit: bands, column sets, rows, even-zone offset, zone strings and digit characters |
-| `aee_optics_trackerTracks` | optics | Per-track records: displayed position, ellipse, track age and fix quality |
-| `aee_optics_trackerR95` | optics | The largest error radius in the group, metres |
-| `aee_optics_trackerFix` | optics | The worst fix quality in the group (`none`, `degraded` or `ok`) |
-| `aee_optics_trackerPrev` | optics | Per-unit previous fix state for the continuity kernel |
-| `aee_optics_trackerTime` | optics | Mission time of the last tracker survey, seconds |
-| `aee_optics_trackerLogAt` | optics | Mission time of the next suppression log line, seconds |
+| `aee_hud_trackerTracks` | hud | Per-track records: displayed position, ellipse, track age and fix quality |
+| `aee_hud_trackerR95` | hud | The largest error radius in the group, metres |
+| `aee_hud_trackerFix` | hud | The worst fix quality in the group (`none`, `degraded` or `ok`) |
+| `aee_hud_trackerOwn` | hud | The player's own GPS solution: [reported position AGL, fix quality, R95 m]; nil with the tracker off |
+| `aee_hud_trackerPrev` | hud | Per-unit receiver state: time since fix, acquisition left, Gauss-Markov error, last report, ellipse, report age |
+| `aee_hud_trackerTime` | hud | Mission time of the last tracker survey, seconds |
+| `aee_hud_trackerLogAt` | hud | Mission time of the next suppression log line, seconds |
 
 ### Engine environment bridges
 
@@ -173,7 +189,6 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_symbology_symbologyTables` | optics | Generated APP-6 category tables loaded at preInit, read by the pure symbol kernels |
 | `aee_symbology_variationFamilies` | optics | Generated dynamic variation-family model loaded at preInit, read by the pure variation kernels |
 | `aee_cartography_terrainTables` | optics | Generated terrain and map-feature registry loaded at preInit, read by the P113 terrain probe |
-| `aee_thermal_currentThermalNoise` | thermal | Thermal noise floor (NETD-based), produced by fnc_calculateThermalContrast |
 | `aee_core_dynamicLux` | core | Dynamic lux contribution |
 | `aee_core_irLightLux` | core | IR light lux |
 | `aee_core_lightDirection` | core | Light direction |
@@ -181,6 +196,9 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_lighting_nightClassification` | environmental | Night class |
 | `aee_core_starsVisibility` | core | Star visibility |
 | `aee_lighting_visibleStars` | environmental | Visible star count |
+| `aee_lighting_limitingMagnitude` | environmental | Naked-eye limiting magnitude at the zenith (Knoll threshold on the sky luminance) |
+| `aee_lighting_skyLuminance` | environmental | Zenith sky luminance, cd/m2: natural sky + moonlit sky (Krisciunas & Schaefer) + twilight |
+| `aee_core_twilightLux` | core | Twilight horizontal illuminance, lux (Schlyter table, cloud-cut) |
 | `aee_nightvision_nvgNoise` | nightvision | NVG noise |
 | `aee_nightvision_nvgTubeTier` | nightvision | NVG tube tier |
 | `aee_nightvision_nvgWetness` | nightvision | NVG wetness |
@@ -857,7 +875,8 @@ state for the operator and for the debug console.
 | `aee_vision_baseGradeAcuityHandle` | vision | Base-grade acuity FilmGrain handle. The `aee_vision_baseGradeGrain` setting stays the numeric slider |
 | `aee_vision_visionModelActive` | vision | True when the human-vision model owns the normal-vision grade this tick |
 | `aee_vision_visionBaseResolved` | vision | The resolved base-grade anchor: the cached config value plus any debug override, published above the client-only exit for a headless probe |
-| `aee_vision_colorTemperatureK` | vision | Physics correlated colour temperature of the scene illuminant this tick, kelvin (issue #100) |
+| `aee_vision_colorTemperatureK` | vision | Correlated colour temperature of the light on a horizontal surface (SPCTRAL2 x CIE 1931, cloud-mixed), kelvin |
+| `aee_vision_illuminantSP` | vision | S/P ratio of the light (CIE 1951 scotopic over photopic luminance; the moon's elevation at night), the CIE 191:2010 mesopic input |
 | `aee_thermal_bloom` | thermal | Hot-source bloom amplitude this tick |
 | `aee_thermal_agcHunt` | thermal | AGC hunt gain offset this tick |
 | `aee_thermal_nucDrift` | thermal | Non-uniformity (NUC) drift this tick |

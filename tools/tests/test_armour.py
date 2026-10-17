@@ -122,8 +122,32 @@ class TestACECoexistence(unittest.TestCase):
         self.assertIn('isKindOf "Man"', src)
         self.assertIn("getEquipmentProperties", src)
         self.assertIn("_nij", src)
-        self.assertIn("case 3: { 20 }", src)  # ESAPI plates
-        self.assertIn("default { 3 }", src)  # no vest
+        self.assertIn("getProjectileData", src)  # the real bullet
+        self.assertIn("_protectionMM = 3;", src)  # no vest
+
+    def test_nij_certification_rounds(self):
+        # NIJ Standard-0101.06 certification rounds: [mass g, dia mm, m/s].
+        import re
+        src = KERNEL
+        for row in ("[9.6, 7.82, 847", "[8.1, 9.02, 448", "[15.6, 10.9, 436",
+                    "[8.0, 9.02, 373", "[11.7, 10.16, 352"):
+            self.assertIn(row, src)
+
+    def test_energy_density_outcomes(self):
+        # Level III stops its own M80 test round and 7.62x39; a .50 BMG
+        # defeats it.  IIIA stops 9 mm but not 5.56 M855.
+        import math
+
+        def density(m_g, d_mm, v):
+            return 0.5 * m_g / 1000 * v * v / (math.pi * d_mm * d_mm / 4)
+
+        level_iii = density(9.6, 7.82, 847)
+        level_iiia = max(density(8.1, 9.02, 448), density(15.6, 10.9, 436))
+        self.assertLessEqual(density(9.655, 7.8232, 838.2), level_iii)   # M80
+        self.assertLess(density(7.97, 7.874, 715), level_iii)            # M43
+        self.assertGreater(density(42.12, 12.954, 887), level_iii)       # M33
+        self.assertLess(density(8.0, 9.02, 380), level_iiia)             # 9 mm
+        self.assertGreater(density(4.0175, 5.6896, 914), level_iiia)     # M855
 
 
 if __name__ == "__main__":

@@ -35,7 +35,6 @@ EXPECTED_PREPS = [
     "perceptionDetectDeviation",
     "perceptionColorTemperature",
     "perceptionIlluminantFromCct",
-    "perceptionAtmosphericColor",
 ]
 
 

@@ -100,7 +100,14 @@ _entry params ["_fdd", "_lastTick", "_ice", "_snow24"];
 private _now = diag_tickTime;
 private _dtH = (_now - _lastTick) / 3600;
 if (_dtH > 0.5) then { _dtH = 0.5; };
-private _snowfallCmH = (missionNamespace getVariable [QEGVAR(core,snowfallRate), 0]) / 10;  // mm/h -> cm/h
+// aee_core_snowfallRate is liquid-water equivalent, mm/h.  New-snow depth
+// is SWE * rho_water / rho_new, rho_new from the air temperature
+// (Hedstrom & Pomeroy 1998, the same relation the snow-depth model uses):
+// 1 mm/h of water at -5 C is ~1.3 cm/h of snow.
+private _sweMmH = missionNamespace getVariable [QEGVAR(core,snowfallRate), 0];
+if !(_sweMmH isEqualType 0) then { _sweMmH = 0; };
+private _rhoNew = 67.92 + 51.25 * exp ((_temp min 0) / 2.59);
+private _snowfallCmH = (_sweMmH / 10) * (1000 / _rhoNew);
 _snow24 = (_snow24 * exp (-_dtH / 24)) + (_snowfallCmH * _dtH);
 _grid set [_key, [_fdd, _now, _ice, _snow24]];
 missionNamespace setVariable [QGVAR(avalancheGrid), _grid];

@@ -44,21 +44,14 @@ class TestThermalWiring(unittest.TestCase):
     PAINT = (
         REPO / "addons/thermal/functions/display/fnc_applySelectionThermal.sqf"
     ).read_text(encoding="utf-8")
-    KERNEL = (
-        REPO / "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
-    ).read_text(encoding="utf-8")
 
     def test_netd_from_device(self):
-        # The selection caller resolves the device NETD and feeds the pure
-        # noise kernel (0.025 cooled / 0.05 uncooled).
+        # The selection caller resolves the device NETD (0.025 cooled /
+        # 0.05 uncooled) for the resolution threshold; no range-squared noise
+        # floor double-counts the path transmission.
         self.assertIn("getThermalDeviceProperties", self.PAINT)
-        self.assertIn("FUNC(calculateThermalNoise)", self.PAINT)
-        self.assertIn("_netdDegC", self.KERNEL)
-
-    def test_resolution_scales_noise(self):
-        # A low-res detector adds spatial noise (640x480 reference).
-        self.assertIn("640 / _res", self.KERNEL)
-        self.assertIn("_netdC, _noiseRange, _resX, _humidity", self.PAINT)
+        self.assertNotIn("calculateThermalNoise", self.PAINT)
+        self.assertFalse((REPO / "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf").exists())
 
 
 class TestOpticKnowledgeLayer(unittest.TestCase):

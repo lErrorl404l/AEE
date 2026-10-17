@@ -17,9 +17,13 @@ set, and haze removes the violet and blue, so only green remains.
   - The sun's limb crosses the horizon at 0.25 deg/min, so the rim shows for
     deltaR / (0.25/60) seconds, about 1-2 s.
 
-Conditions (all must hold): the sun's upper limb within ~0.5 deg of the
-horizon, a mirage (a strong refractivity gradient at the horizon), and a
-clean horizon (low aerosol and low overcast).
+Conditions: the sun's upper limb within ~0.5 deg of the horizon and a mirage
+(a strong refractivity gradient at the horizon).  The rim's light crosses the
+horizon air mass m (Kasten & Young 1989, ~38 at the horizon); the aerosol
+along it transmits exp(-tau_aer m), tau_aer the aerosol optical depth at
+550 nm from the published haze extinction (less Rayleigh 0.0116 per km,
+Bucholtz 1995, times the 1.2 km aerosol scale height, Elterman 1968).  A
+cloud deck hides the horizon with probability N (the overcast fraction).
 
 Reads:  EGVAR(core,currentSunElevation), EGVAR(core,currentHaze),
         EGVAR(atmos,refractivityGradient)
@@ -78,9 +82,12 @@ if (_nearHorizon && _mirage && _clean) then {
     private _proximity = (1 - (abs (_sunElev - 0.5) / 1.5)) max 0;
     // Mirage strength: 0 at the -100 N/km onset, 1 at -200 N/km.
     private _mirageFactor = (((-_gradient) - 100) / 100) min 1;
-    // Clean horizon: full at zero haze, zero at the 0.3 limit.
-    private _clearFactor = (1 - _haze / 0.3) min 1;
-    _intensity = _proximity * _mirageFactor * _clearFactor * (1 - _overcast);
+    // Aerosol transmittance of the rim along the horizon air mass.
+    private _theta = _sunElev max 0;
+    private _airMass = 1 / ((sin _theta) + (0.50572 * ((_theta + 6.07995) ^ -1.6364)));
+    private _tauAer = ((_haze - 0.0116) max 0) * 1.2;
+    private _clearFactor = exp (-_tauAer * _airMass);
+    _intensity = _proximity * _mirageFactor * _clearFactor * (1 - ((_overcast max 0) min 1));
 };
 _intensity = _intensity max 0 min 1;
 

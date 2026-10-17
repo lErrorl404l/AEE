@@ -236,7 +236,6 @@ read them. The variables below are grouped by subsystem.
 | `aee_optics_dewBlur` | The dew blur intensity |
 | `aee_optics_rainBlur` | The rain blur intensity |
 | `aee_optics_glareBlur` | The glare blur intensity |
-| `aee_optics_currentThermalContrast` | The current thermal contrast |
 | `aee_optics_currentVisibleAttenuation` | The current visible attenuation |
 | `aee_optics_currentLaserAttenuation` | The current laser attenuation |
 | `aee_optics_precipVisibilityModifier` | The precipitation visibility modifier |
@@ -264,9 +263,10 @@ read them. The variables below are grouped by subsystem.
 |---|---|
 | `aee_core_geoAnchor` | The world geographic anchor, read once from `CfgWorlds` |
 | `aee_core_mgrsTables` | The MGRS letter tables, loaded once at preInit |
-| `aee_optics_trackerTracks` | The per-track records of the signal tracker |
-| `aee_optics_trackerR95` | The largest tracker error radius in the group, metres |
-| `aee_optics_trackerFix` | The worst tracker fix quality in the group |
+| `aee_hud_trackerTracks` | The per-track records of the signal tracker |
+| `aee_hud_trackerR95` | The largest tracker error radius in the group, metres |
+| `aee_hud_trackerFix` | The worst tracker fix quality in the group |
+| `aee_hud_trackerOwn` | The player's own GPS solution (position, fix, R95) |
 | `aee_core_positionDivergence` | True when a position invariant diverges |
 | `aee_core_positionVerdicts` | The per-invariant position consistency verdicts |
 | `aee_core_consistencyPFH` | The position-consistency monitor handler id |

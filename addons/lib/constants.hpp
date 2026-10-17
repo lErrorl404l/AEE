@@ -39,6 +39,18 @@
 // ISO 2533 dry-air relation (sqrt(gamma R)).
 #define SOUND_SPEED_COEFF 20.05
 
+// The engine `rain` level (0..1) as a liquid rate.  The engine level has no
+// physical unit; the mod maps the full level to 25 mm/h, inside the WMO
+// "heavy rain" band (10-50 mm/h, WMO-No. 8), and every module converts with
+// this one constant so a given sky means the same rate everywhere.
+#define ENGINE_RAIN_FULL_MMH 25
+
+// The engine inventory mass unit in kg.  Config `mass` (CfgMagazines,
+// CfgWeapons ItemInfo/WeaponSlotsInfo, CfgVehicles, CfgGlasses) and loadAbs
+// are in units of 0.1 lb: kg = mass * 0.1 * 0.45359237 (ACE3
+// ace_common_fnc_getWeight; vanilla 30Rnd_556x45_Stanag mass 8 = 0.36 kg).
+#define ENGINE_MASS_UNIT_KG 0.045359237
+
 // Rec. ITU-R BT.709-6 luma coefficients (R, G, B).
 #define REC709_LUMA_R 0.2126
 #define REC709_LUMA_G 0.7152

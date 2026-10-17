@@ -19,6 +19,7 @@ Run: python3 -m unittest tools.tests.test_hud -v
 
 from __future__ import annotations
 
+import math
 import sys
 import unittest
 from pathlib import Path
@@ -212,9 +213,9 @@ def cursor_text(mgrs, elevation):
     return run_sqf(CURSOR_TEXT_KERNEL, [mgrs, elevation], {})
 
 
-def tracker_project(position, ellipse, fix, link, seed):
+def tracker_project(position, ellipse, quality, error, held, age):
     """Run the real pure tracker projector."""
-    return run_sqf(TRACKER_PROJECT_KERNEL, [position, ellipse, fix, link, seed], {})
+    return run_sqf(TRACKER_PROJECT_KERNEL, [position, ellipse, quality, error, held, age], {})
 
 
 class TestHudHeading(unittest.TestCase):
@@ -614,54 +615,30 @@ class TestHudLogging(unittest.TestCase):
 
 
 class TestHudTrackerProject(unittest.TestCase):
-    """fnc_trackerProject, executed: the exact position plus the modelled error."""
+    """fnc_trackerProject, executed: the reported GPS position."""
 
-    def test_a_zero_error_keeps_the_exact_position(self):
-        shown = tracker_project(
-            [100, 200, 5],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            ["ok", 0, 1, 0, 0],
-            ["received", 1, 0, 0],
-            0.5,
-        )
-        self.assertEqual(shown[0], [100, 200, 5])
-        self.assertEqual(shown[5], 0.0)
+    ELL = [3.0, 2.0, 5.0, 3.2, 1.8, 75, 2.9, 7.2, 0.4]
 
-    def test_a_nonzero_error_displaces_the_displayed_position(self):
-        shown = tracker_project(
-            [100, 200, 5],
-            [3.6, 3.6, 5.85, 3.6, 3.6, 0, 4.2, 7.2],
-            ["degraded", 0, 0.5, 20, 0.25],
-            ["received", 1, 0, 0],
-            0.5,
-        )
-        self.assertNotEqual(shown[0], [100, 200, 5])
-        # The displacement magnitude is R95 7.2 + added 0 + lag 20.
-        self.assertAlmostEqual(shown[5], 27.2, places=6)
+    def test_a_fix_reports_the_true_position_plus_the_error(self):
+        shown = tracker_project([100, 200, 5], self.ELL, "ok", [3, -4], [], 0)
+        self.assertEqual(shown[0], [103, 196, 5])
+        self.assertAlmostEqual(shown[5], 5.0, places=6)
 
-    def test_the_ellipse_and_the_track_age_pass_through(self):
-        shown = tracker_project(
-            [0, 0, 0],
-            [3.6, 3.6, 5.85, 3.6, 2.0, 90, 4.2, 7.2],
-            ["ok", 0, 1, 0, 0],
-            ["received", 1, 12.5, 0],
-            0.0,
-        )
-        self.assertAlmostEqual(shown[1], 3.6, places=6)
-        self.assertAlmostEqual(shown[2], 2.0, places=6)
-        self.assertAlmostEqual(shown[3], 90, places=6)
-        self.assertAlmostEqual(shown[4], 12.5, places=6)
+    def test_a_2d_fix_still_reports(self):
+        shown = tracker_project([0, 0, 0], self.ELL, "degraded", [1, 0], [], 0)
+        self.assertEqual(shown[0], [1, 0, 0])
 
-    def test_the_lag_alone_displaces(self):
-        shown = tracker_project(
-            [0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            ["degraded", 0, 0.5, 40, 0.25],
-            ["lost", 0, 0, 0],
-            0.0,
-        )
-        self.assertAlmostEqual(shown[5], 40.0, places=6)
-        self.assertNotEqual(shown[0], [0, 0, 0])
+    def test_no_fix_holds_the_last_report(self):
+        shown = tracker_project([50, 50, 0], self.ELL, "none", [1, 1], [10, 10, 0], 30)
+        self.assertEqual(shown[0], [10, 10, 0])
+        self.assertAlmostEqual(shown[4], 30, places=6)
+        self.assertAlmostEqual(shown[5], math.hypot(40, 40), places=4)
+
+    def test_the_ellipse_passes_through(self):
+        shown = tracker_project([0, 0, 0], self.ELL, "ok", [0, 0], [], 0)
+        self.assertAlmostEqual(shown[1], 3.2, places=6)
+        self.assertAlmostEqual(shown[2], 1.8, places=6)
+        self.assertAlmostEqual(shown[3], 75, places=6)
 
 
 class TestHudTrackerContract(unittest.TestCase):
@@ -679,9 +656,9 @@ class TestHudTrackerContract(unittest.TestCase):
     def test_the_driver_applies_the_offset(self):
         self.assertIn("call FUNC(trackerProject)", TRACKER_UPDATE_SRC)
 
-    def test_the_projector_displaces_by_the_total_error(self):
-        self.assertIn("(sin _rad) * _totalError", TRACKER_PROJECT_SRC)
-        self.assertIn("(cos _rad) * _totalError", TRACKER_PROJECT_SRC)
+    def test_the_driver_steps_the_correlated_error(self):
+        self.assertIn("call EFUNC(lib,gnssErrorStep)", TRACKER_UPDATE_SRC)
+        self.assertIn("call EFUNC(lib,gnssSatellites)", TRACKER_UPDATE_SRC)
 
     def test_the_driver_reads_the_local_group_exact_positions(self):
         self.assertIn("units (group _player)", TRACKER_UPDATE_SRC)

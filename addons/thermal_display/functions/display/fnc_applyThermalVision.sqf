@@ -26,14 +26,15 @@ the environmental degradation the engine does not model:
   ChromAberration  - lens colour fringing (the A3TI WHOT branch, workshop
                      3725008325 fn_ppEffects.sqf case 0, [0.001,0.001,true])
 
-Contrast input: EGVAR(thermal,currentThermalContrast) (0-1) from
-fnc_calculateThermalContrast.  Heat (>35 °C), rain and fog degrade it;
-cold (<5 °C) boosts it.  At thermal crossover (ΔT < 1.5 °C, air ≈
-surface) EGVAR(core,thermalCrossoverActive) nullifies it: the image
-becomes a flat grey — AGC cannot create contrast that does not exist.
+Contrast: the engine renders the radiance contrast itself, and the
+atmosphere degrades it once, on the radiance path
+(fnc_calculateAtmosphericTransmission); no second scene-contrast factor is
+applied here.  At thermal crossover (ΔT < 1.5 °C, air ≈
+surface) EGVAR(core,thermalCrossoverActive) is logged only: crossover is
+per object and is resolved by the selection painter.
 
 Gate:    vision mode 2
-Reads:   EGVAR(thermal,currentThermalContrast), EGVAR(core,thermalCrossoverActive)
+Reads:   EGVAR(core,thermalCrossoverActive)
 Sets:    QGVAR(thermalActive), eight ppEffects (client-side only)
 
 Debug hooks (set on missionNamespace; debug console only, no CBA setting):
@@ -120,18 +121,16 @@ if (!isNull _opticCfg) then {
 if (!_capable) exitWith { false };
 
 // ─── Effective contrast ───────────────────────────────────────────────────
-// Defensive: a nil or non-numeric stored contrast (bad variable state)
-// must not propagate into ppEffectAdjust — "Type Number, expected Number"
-// otherwise fires every tick.  Default to full contrast.
-private _contrast = missionNamespace getVariable [QEGVAR(thermal,currentThermalContrast), 1];
-if !(_contrast isEqualType 0) then { _contrast = 1; };
-_contrast = 0 max _contrast min 1;
+// Full display contrast: the radiance path already carries the physics.
+private _contrast = 1;
 
-// At thermal crossover (ΔT < 1.5 °C) the object-background gradient
-// vanishes.  The image becomes a uniform grey — not black, the sensor
-// still sees a flat scene.  Floor at 0.05 keeps a faint image.
+// Thermal crossover is per object: an object whose radiance meets its own
+// background's drops below the NETD threshold and is drawn as background by
+// the selection painter (fnc_evaluateThermalEdge).  Engines, people and
+// fires stay hot through a terrain crossover, so the whole image is NOT
+// flattened.  The terrain crossover flag is read for diagnostics only.
 private _crossover = missionNamespace getVariable [QEGVAR(core,thermalCrossoverActive), false];
-private _effective = [_contrast, 0.05] select _crossover;
+private _effective = _contrast;
 
 // ─── Sensor imperfections (image realism) ─────────────────────────────────
 // One pure kernel call builds the hot-source bloom, the AGC hunt, the NUC

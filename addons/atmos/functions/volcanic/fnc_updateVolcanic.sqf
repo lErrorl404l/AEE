@@ -107,7 +107,7 @@ private _so2 = [_downwind, _crosswind, _so2Emission, _windSpeed, _stability, _pl
 
 // ─── Lahar ──────────────────────────────────────────────────────────────────
 // Rain on the loose ash deposit; the accumulated depth is the deposit.
-private _rainMMH = rain * 25;
+private _rainMMH = rain * ENGINE_RAIN_FULL_MMH;
 private _slopeDeg = missionNamespace getVariable [QGVAR(volcanoSlope), 15];
 if !(_slopeDeg isEqualType 0) then { _slopeDeg = 15; };
 private _lahar = [1, _rainMMH, _depth_mm / 1000, _slopeDeg] call FUNC(calculateLaharRisk);

@@ -38,13 +38,16 @@ Per-constant source register:
 
 Arguments:
   0: Number - correlated colour temperature, kelvin
+  1: Array  - optional CIE 1931 [x, y]; when given it is used directly and
+              step 1 is skipped (the daylight kernel's exact chromaticity)
 
 Returns:
   Array - linear Rec.709 white point [r, g, b], each channel 0 and up.
 */
 
 params [
-    ["_cct", 6504, [0]]
+    ["_cct", 6504, [0]],
+    ["_xy", [], [[]]]
 ];
 
 if !(_cct isEqualType 0) then { _cct = 6504; };
@@ -71,6 +74,10 @@ if (_cct >= 4000) then {
     };
 };
 
+if ((count _xy) > 1) then {
+    _x = _xy select 0;
+    _y = _xy select 1;
+};
 private _ysafe = _y max 0.0001;
 
 // XYZ with Y = 1.

@@ -243,7 +243,6 @@ END_COUNTER(emp);
 BEGIN_COUNTER(optics);
 [] call EFUNC(weather,calculateSpaceWeather);
 [_posASL] call EFUNC(core,calculateIlluminance);
-[] call EFUNC(thermal,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
 // Refraction / mirage state: one producer per tick.  The radio budget reads
 // the published k-factor and the green-flash kernel reads the refractivity
@@ -411,7 +410,6 @@ private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation
 private _moonPhase = missionNamespace getVariable [QEGVAR(weather,lunarPhase), 0];
 [_sunElev, _moonPhase] call EFUNC(lighting,classifyNight);
 private _ambientLux = missionNamespace getVariable [QEGVAR(core,ambientLux), 0.001];
-private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing), 0.5];
 
 // Light pollution: the house scan is expensive, so cache it on a 5 s key and
 // share it with the star catalogue.  The NELM kernel stays pure; this tick is
@@ -438,7 +436,15 @@ missionNamespace setVariable [QEGVAR(lighting,ambientBrightness), _ambientBright
 private _skyLast = missionNamespace getVariable [QGVAR(starSkyLast), -1e9];
 if ((diag_tickTime - _skyLast) >= 30) then {
     missionNamespace setVariable [QGVAR(starSkyLast), diag_tickTime];
-    [_ambientLux, _seeing, _houseCount] call EFUNC(lighting,calculateLimitingMagnitude);
+    private _nelm = [
+        missionNamespace getVariable [QGVAR(currentMoonElevation), -90],
+        missionNamespace getVariable [QGVAR(currentMoonIllumination), 0],
+        missionNamespace getVariable [QGVAR(twilightLux), 0],
+        missionNamespace getVariable [QGVAR(currentHaze), 0.08],
+        _houseCount
+    ] call EFUNC(lighting,calculateLimitingMagnitude);
+    missionNamespace setVariable [QEGVAR(lighting,limitingMagnitude), _nelm select 0];
+    missionNamespace setVariable [QEGVAR(lighting,skyLuminance), _nelm select 1];
     private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
     [_posASL2D, date] call EFUNC(lighting,getStarCatalog);
     // One consolidated night-sky state line (INFO once, then DEBUG).

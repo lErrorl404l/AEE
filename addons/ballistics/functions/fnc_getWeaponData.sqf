@@ -1748,7 +1748,8 @@ if (_match isEqualTo []) then {
             if (_cart isNotEqualTo []) then { _cartridgeKey = _cart select 0; };
         };
     } forEach (getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines"));
-    private _liveMass = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "mass");
+    // Config mass is in 0.1 lb units; the bands are in kg.
+    private _liveMass = (getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "mass")) * ENGINE_MASS_UNIT_KG;
     if ((_cartridgeKey != "") && (_liveMass > 0)) then {
         private _band = [call FUNC(getWeaponBands), _cartridgeKey, _liveMass, 0]
             call FUNC(selectBand);

@@ -58,8 +58,9 @@ if (_stack isEqualTo []) then {
 // it should work best.  Instead the sine must go negative below the
 // horizon, and twilight means the sun is within ~10° of the horizon on
 // EITHER side — dawn and dusk only.
-private _dayFraction = dayTime / 24;
-private _sunElev = sin ((_dayFraction - 0.25) * 360) * 90;
+// The astronomical sun, signed (date, latitude, longitude;
+// fnc_calculateSolarRadiation): negative below the horizon.
+private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 private _inTwilight = abs _sunElev < 10;
 
 private _delta = abs (_airTemp - _surfaceTemp);

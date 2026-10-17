@@ -146,30 +146,21 @@ multipliers, not physical units.  Each is documented with its reference.
 | blur 0..0.35 | IR scatter | A3TI 0.25 | ⚠️ judgment |
 | crossover twilight <10° | isothermal gate | solar model | ✅ derived |
 
-## Thermal contrast (fnc_calculateThermalContrast.sqf)
+## Thermal contrast (removed)
 
-The kernel is a display-degradation factor with no base gain and no weather
-term of its own. Atmospheric degradation is modelled once, in
-fnc_calculateAtmosphericTransmission.
+The display-contrast factor (fnc_calculateThermalContrast) had no physical
+basis: it lowered contrast when the surface ran more than 35 C above the air
+(a wider gap is MORE contrast) and its cold branch was a no-op. It is
+deleted. The engine renders the radiance contrast, and the atmosphere
+degrades it once, in fnc_calculateAtmosphericTransmission.
 
-| Value | Used | Source | Status |
-|---|---|---|---|
-| contrast base 1.0 | no display gain | engine renders the native image | ✅ derived |
-| heat threshold 35 / span 10 / factor 0.7 | gradient flatten | none | ⚠️ UNSOURCED |
-| cold threshold 5 / factor 1.2 | gap widen | none | ⚠️ UNSOURCED |
-| rain × 0.4 / fog × 0.6 / humidity × 0.3 | removed | double-counted transmission | removed |
+## Thermal noise floor (removed)
 
-## Thermal noise (fnc_calculateThermalNoise.sqf)
-
-The noise floor is a pure kernel driven by a REAL sensor-to-target range. It
-replaced the engine view-distance proxy.
-
-| Value | Used | Source | Status |
-|---|---|---|---|
-| range 1000 m fallback | no-target range | none (device corpus holds no detection range) | ⚠️ UNSOURCED |
-| 640 detector reference | resolution scaling | uncooled reference class | ✅ derived |
-| humidity coefficient 0.5 | water-vapour noise | none | ⚠️ UNSOURCED |
-| range squared | path noise growth | scintillation/absorption | ⚠️ UNSOURCED |
+The range-squared, humidity-scaled noise floor (fnc_calculateThermalNoise)
+double-counted the atmosphere: the path transmission tau(range) already
+lowers the apparent contrast with range, and the resolution threshold is the
+device NETD (signal-to-noise 1). It is deleted; the selection painter passes
+no extra floor.
 
 ## Wet-surface emissivity (fnc_getEffectiveEmissivity.sqf)
 
@@ -364,74 +355,79 @@ centre. The tangent plane is an approximation, not a projection.
 | linear anchor-box mapping | world square to geographic box | the design choice | ⚠️ UNSOURCED approximation |
 | tangent-plane fallback | world position to lat/lon | the design choice | ⚠️ UNSOURCED approximation |
 
-### GNSS error ellipse (fnc_gnssErrorEllipse.sqf)
+### GPS constellation and geometry (fnc_gnssSatellites.sqf, fnc_gnssDop.sqf, fnc_gnssTables.sqf)
 
 | Value | Used | Source | Status |
 |---|---|---|---|
-| UERE 3.6 m RMS | 1-sigma range error | SPS App. A.4 | ✅ sourced |
-| horizontal 8 m, vertical 13 m at 95 percent | accuracy standard | SPS App. A.4 | ✅ sourced |
-| 13/8 = 1.625 | vertical-to-horizontal 1-sigma ratio | derived from SPS | ✅ derived |
-| sigma = DOP x UERE | 1-sigma horizontal error | SPS App. A.8.2 | ✅ sourced |
+| 30 slot locations, RAAN and argument of latitude | constellation | SPS Tables 3.2-1/3.2-2 (`data/gnss/gps_constellation.json`) | ✅ sourced |
+| a 26559.8 km, i 55 deg, nodal rate -0.0402 deg/day | orbits | SPS Table 3.2-3 | ✅ sourced |
+| epoch GHA 100.765 deg | Earth rotation | SPS Table 3.2-3 epoch | ✅ sourced; every published GEC reproduced by `tools/gen_gnss.py` |
+| mask angle 5 deg | visible satellites | SPS s.3.4 | ✅ sourced |
+| Q = (G^T G)^-1 | cofactor matrix | SPS App. A.8.2 | ✅ sourced |
+| altitude-hold row [0, 0, 1, 0] | 2D fix with 3 satellites | standard 2D navigation solution | ✅ derived |
+
+### GPS range error (fnc_gnssUere.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| UERE by geomagnetic latitude band | 1-sigma range error | FAA SPS PAN #125 (Q1 2024), 34 sites, H95 / (2 HDOP) | ✅ measured |
+| (1 + SSN/179) / (1 + SSN_ref/179) | solar-cycle scaling | SPS Table A.4-2 iono residual 9.8 m min / 19.6 m max; SILSO mean max 179 | ✅ derived |
+
+### GPS error ellipse (fnc_gnssErrorEllipse.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| covariance = UERE^2 Q | east, north, up variances | SPS App. A.8.2 | ✅ sourced |
+| eigen axes and bearing of the 2 x 2 block | ellipse | linear algebra | ✅ derived |
 | R95 = 2.0 x DRMS | 2DRMS radius | SPS App. A.8.2 | ✅ sourced |
-| atmosphere gain 0.5 per index | sigma gain | none | ⚠️ UNSOURCED |
-| canopy gain 1.0 per fraction | sigma gain | none | ⚠️ UNSOURCED |
-| urban gain 1.5 per fraction | sigma gain | none | ⚠️ UNSOURCED |
-| urban anisotropy 2 | east-west axis stretch | none | ⚠️ UNSOURCED |
-| jam gain 20, on jammer^1.5 | sigma gain | none | ⚠️ UNSOURCED |
-| receiver max penalty 2 | sigma gain | none | ⚠️ UNSOURCED |
-| CEP coefficient 0.589 | elliptical CEP | none | ⚠️ UNSOURCED |
+| CEP = 0.59 (sigma_a + sigma_b) | elliptical CEP | van Diggelen, GPS World, Jan 2007 | ✅ sourced |
 
-### GNSS fix continuity (fnc_gnssFixState.sqf)
+### GPS error correlation (fnc_gnssErrorStep.sqf)
 
 | Value | Used | Source | Status |
 |---|---|---|---|
-| availability then a non-zero re-acquisition | continuity mechanism | SPS s.3.6 and App. A.8 | ✅ sourced |
-| effective-signal acquire floor 0.3 | fix gate | none | ⚠️ UNSOURCED |
-| re-acquisition rate 0.25 per second | recovery ramp | none | ⚠️ UNSOURCED |
-| decay rate 1.0 per second | progress loss | none | ⚠️ UNSOURCED |
-| jamming removes the received signal | effective signal | none | ⚠️ UNSOURCED |
-| lag 2 m per second since the fix | lag offset | none | ⚠️ UNSOURCED |
-| lag 40 m at zero progress | lag offset | none | ⚠️ UNSOURCED |
-| stutter envelope 0.5 | jitter amplitude | none | ⚠️ UNSOURCED |
+| first-order Gauss-Markov, tau 240 s | time-correlated error | Abu Ali & Abu-Elkheir, Sensors 15 (2015) 15540 | ✅ sourced |
+| draw from the fix covariance (Cholesky) | error shape | linear algebra | ✅ derived |
 
-### Datalink falloff (fnc_datalinkState.sqf)
+### GPS fix state (fnc_gnssFixState.sqf)
 
 | Value | Used | Source | Status |
 |---|---|---|---|
-| FSPL = 20log10(d) + 20log10(f) - 147.55 | range falloff shape | Friis, reused from the radio module | ✅ derived |
-| reference range 5000 m | usable range | none | ⚠️ UNSOURCED |
-| reference carrier 3e8 Hz | falloff | none | ⚠️ UNSOURCED |
-| terrain range fraction 0.6 | range loss | none | ⚠️ UNSOURCED |
-| urban range fraction 0.3 | range loss | none | ⚠️ UNSOURCED |
-| jamming range fraction 0.9 | range loss | none | ⚠️ UNSOURCED |
-| terrain loss 12 dB | signal loss | none | ⚠️ UNSOURCED |
-| urban loss 6 dB | signal loss | none | ⚠️ UNSOURCED |
-| jamming loss 30 dB | signal loss | none | ⚠️ UNSOURCED |
-| base interval 1.0 s, reference bandwidth 100 | update interval | none | ⚠️ UNSOURCED |
-| track age 30 s at zero signal | track age | none | ⚠️ UNSOURCED |
-| added error 25 m at zero signal | position error | none | ⚠️ UNSOURCED |
-| lost-link error penalty 15 m | position error | none | ⚠️ UNSOURCED |
+| >= 4 satellites 3D, 3 satellites 2D, fewer none | fix quality | navigation solution unknowns | ✅ derived |
+| hot start 1 s, cold start 26 s | time to first fix | u-blox NEO-M8 data sheet UBX-15031086 | ✅ sourced |
+| hot start while the outage < 4 h | ephemeris still valid | IS-GPS-200 4 h fit interval | ✅ sourced |
+
+### Datalink (fnc_datalinkState.sqf, fnc_bullingtonLoss.sqf, fnc_trackerReportInterval.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| FSPL = 32.45 + 20 log f + 20 log d | free-space loss | ITU-R P.525 | ✅ sourced |
+| Bullington diffraction, eqs. 31, 49-57 | terrain loss | ITU-R P.526-15 s.4.5.1 | ✅ sourced |
+| effective Earth radius 8 500 km | Earth bulge | ITU-R P.526-15 s.1 | ✅ sourced |
+| environment excess loss | D-layer, flare, battery, EMP | aee_radio_excessLossDB | ✅ derived |
+| 37 dBm (5 W), -116 dBm | default radio | L3Harris AN/PRC-152A data sheet | ✅ sourced, user setting |
+| 0 dBi antenna gain | default antennas | isotropic | ⚠️ assumption, user setting |
+| 100 MHz | default frequency | the radio module's reference | ⚠️ assumption, user setting |
+| still 30 s, slow 20 s, fast 2 s; 1 and 30 mph | report interval | ATAK-CIV ReportingRate (multicast defaults) | ✅ sourced, user settings |
+| report at once on 7 mph speed or 50 m height change | report trigger | ATAK-CIV ReportingRate | ✅ sourced |
+| vegetation loss not modelled | link | needs foliage depth (ITU-R P.833) | ⚠️ limitation |
 
 ### Tracker projection (fnc_trackerProject.sqf)
 
 | Value | Used | Source | Status |
 |---|---|---|---|
-| error term = ellipse R95 + datalink error + fix lag | displacement magnitude | the three kernel outputs | ✅ derived |
-| phase step 137.508 degrees, the golden angle | per-track bearing | the golden-angle constant | ⚠️ UNSOURCED mapping |
-| displacement sum and bearing choice | displayed position | none | ⚠️ UNSOURCED mapping |
+| reported = true + correlated error | displayed position | the GPS model above | ✅ derived |
+| no fix holds the last report | displayed position | receiver behaviour | ✅ derived |
 
 ### Tracker driver (fnc_trackerUpdate.sqf)
 
 | Value | Used | Source | Status |
 |---|---|---|---|
-| humidity to atmosphere index, humidity / 100, default 50 | ellipse atmosphere input | none | ⚠️ UNSOURCED |
-| canopy probe height +40 m vertical ray | canopy mask | none | ⚠️ UNSOURCED |
-| urban survey radius 50 m | urban mask | none | ⚠️ UNSOURCED |
-| urban saturation 8 buildings | urban fraction cap | none | ⚠️ UNSOURCED |
-| canopy signal gain 0.5 per fraction | effective signal | none | ⚠️ UNSOURCED |
-| urban signal gain 0.3 per fraction | effective signal | none | ⚠️ UNSOURCED |
-| DOP 1.0 | ellipse sigma | none | ⚠️ UNSOURCED |
-| receiver quality 1.0 | ellipse sigma | none | ⚠️ UNSOURCED |
+| constellation at the mission date and time | visible sky | fnc_gameClockToUT, fnc_gnssSatellites | ✅ derived |
+| terrain and structures block each line of sight | received satellites | engine ray casts (3000 m terrain, 300 m objects) | ✅ derived; ray lengths are engine limits |
+| foliage does not block | received satellites | IS-GPS-200 -128.5 dBm minimum vs u-blox M8 -167 dBm tracking | ✅ sourced |
+| UERE from published geomagnetic latitude and SSN | range error | fnc_gnssUere, space weather | ✅ derived |
+| a report not received holds the last one | track age | link budget above | ✅ derived |
 
 ### Geographic anchor (fnc_buildGeoAnchor.sqf, fnc_getGeoAnchor.sqf)
 

@@ -1,34 +1,24 @@
 #include "..\..\script_component.hpp"
-
 /*
 Author: AEE
-Description: Computes atmospheric haze from relative humidity and dust suppression. Haze is aerosol scattering below saturation. Fog is condensation at saturation. Aerosols grow hygroscopically before condensation. The growth follows the Köhler curve. Dust suppression removes haze.
+Description: Clear-air (haze) extinction from relative humidity.
+
+Hygroscopic aerosols swell as the humidity rises and scatter more light.
+NOAA's operational visibility diagnostic (UPP CALVIS_GSD, Benjamin, Brown
+& Smirnova) gives the clear-air visibility from the near-surface RH:
+  q = clamp(RH / 100 - 0.15, 0, 0.8),   vis_RH = 90 exp(-2.5 q)  km
+(90 km in dry air, 12.2 km at saturation).  The extinction is the WMO
+meteorological optical range relation sigma = 3.0 / vis (5 % contrast).
+
 Arguments: None
-Return Value: NUMBER: haze 0..1
-Example: [] call aee_atmos_fnc_calculateHaze
+Return Value: NUMBER: haze extinction, per km (also aee_core_currentHaze)
 Public: No
 */
-
 private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
-private _dustSuppression = missionNamespace getVariable [QEGVAR(core,dustSuppression), 0];
-
-// ─── Aerosol growth ──────────────────────────────────────────────────────
-// Below 40 % RH the air holds little aerosol water. From 40 % to
-// saturation the aerosols swell, which increases scattering. This linear
-// branch is a proxy for the Köhler growth curve.
-private _haze = 0;
-if (_humidity >= 40) then {
-    _haze = 0.2 + 0.8 * ((_humidity - 40) / 60);
-};
-
-// ─── Fog scavenging ──────────────────────────────────────────────────────
-// At saturation fog droplets form and settle the haze particles.
-if (_humidity >= 99.5) then { _haze = _haze * 0.3; };
-
-// ─── Dust suppression ────────────────────────────────────────────────────
-_haze = _haze - (_dustSuppression * 0.15);
-_haze = _haze max 0 min 1;
-
+if !(_humidity isEqualType 0) then { _humidity = 50; };
+private _q = (((_humidity / 100) - 0.15) max 0) min 0.8;
+private _visKm = 90 * exp (-2.5 * _q);
+private _haze = 3.0 / _visKm;
 missionNamespace setVariable [QEGVAR(core,currentHaze), _haze];
-
+missionNamespace setVariable [QEGVAR(core,currentHazeVisibility), _visKm];
 _haze

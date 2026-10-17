@@ -160,25 +160,13 @@ class TestNormalisationHelpers(unittest.TestCase):
 
 
 class TestUpdateHumidity(unittest.TestCase):
-    """fnc_updateHumidity surface modifier."""
+    """fnc_updateHumidity adds no surface-type offset: RH follows the air's
+    vapour pressure and temperature (fnc_calculateRelativeHumidity)."""
 
-    def setUp(self):
-        self.cases = equality_cases(read("humidity"), "_type")
-
-    def test_runtime_desert(self):
-        self.assertEqual(self.cases[normalise("GdtDesert")], -15)
-
-    def test_runtime_snow(self):
-        self.assertEqual(self.cases[normalise("GdtSnow")], 5)
-
-    def test_runtime_ice(self):
-        self.assertEqual(self.cases[normalise("GdtIce")], -10)
-
-    def test_legacy_prefixed_input_resolves(self):
-        self.assertEqual(self.cases[normalise("#gdtsnow")], 5)
-
-    def test_no_dead_prefix_keys(self):
-        self.assertFalse([k for k in self.cases if k.startswith("#")])
+    def test_no_surface_offset(self):
+        code = code_only(read("humidity"))
+        self.assertNotIn("_surfaceMod", code)
+        self.assertNotIn("surfaceType", code)
 
 
 class TestCalculateTurbulence(unittest.TestCase):
@@ -331,19 +319,14 @@ class TestConcealment(unittest.TestCase):
 
 
 class TestUpdateTemperature(unittest.TestCase):
-    """fnc_updateTemperature surface modifier."""
+    """fnc_updateTemperature adds no surface-type offset: the 2 m air
+    temperature is the screen value; the surface's own temperature is the
+    ground thermal model's (fnc_calculateGroundTemperature)."""
 
-    def setUp(self):
-        self.cases = equality_cases(read("temperature"), "_type")
-
-    def test_runtime_desert(self):
-        self.assertEqual(self.cases[normalise("GdtDesert")], 4)
-
-    def test_runtime_snow(self):
-        self.assertEqual(self.cases[normalise("GdtSnow")], -3)
-
-    def test_no_dead_prefix_keys(self):
-        self.assertFalse([k for k in self.cases if k.startswith("#")])
+    def test_no_surface_offset(self):
+        code = code_only(read("temperature"))
+        self.assertNotIn("_surfaceMod", code)
+        self.assertNotIn("surfaceType", code)
 
 
 class TestMirage(unittest.TestCase):

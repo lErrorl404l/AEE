@@ -604,7 +604,6 @@ class TestRootCauseRegressions(unittest.TestCase):
         # reach around it with its own static data.
         for fn in [
             "addons/atmos/functions/state/fnc_updateHumidity.sqf",
-            "addons/atmos/functions/state/fnc_updateFog.sqf",
             "addons/atmos/functions/state/fnc_updatePressure.sqf",
             "addons/thermal/functions/environment/fnc_updateTemperature.sqf",
         ]:

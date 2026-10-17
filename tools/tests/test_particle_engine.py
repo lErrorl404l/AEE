@@ -120,7 +120,7 @@ class TestEmissionGates(unittest.TestCase):
     def test_snowfall_requires_snow_phase(self):
         self.assertRegex(
             EMISSION_CODE,
-            r'if \(_phase == "snow"\) then \{ _intensity = _rate min 1; \};',
+            r'if \(_phase == "snow"\) then \{ _intensity = \(_rate / ENGINE_RAIN_FULL_MMH\) min 1; \};',
         )
 
     def test_hail_requires_hail_active(self):

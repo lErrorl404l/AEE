@@ -1,79 +1,50 @@
 #include "..\..\script_component.hpp"
 /*
- * aee_optics_fnc_trackerProject
+ * aee_hud_fnc_trackerProject
  *
- * Pure, argument-driven tracker projector.  It maps the three aee GNSS
- * kernels (the error ellipse, the fix state and the datalink state) onto an
- * exact position and returns the position the tracker DISPLAYS.  It reads no
- * world, no config, no player and no engine state.
+ * Pure tracker projector: the position a GPS receiver REPORTS for a unit.
+ * It reads no world, no config, no player and no engine state.
  *
- * Mechanism: the displayed position is the exact position displaced by the
- * modelled error.  The displacement magnitude is the error-ellipse R95 radius
- * plus the datalink added position error plus the fix lag offset.  The
- * bearing is a deterministic per-track phase; the step 137.508 degrees is the
- * golden angle, so two adjacent tracks scatter instead of stacking.
- *
- * UNSOURCED shapes (listed for the per-constant register in task 18):
- *   TRACKER_PHASE_STEP  golden-angle track phase step, degrees
- *   the displacement sum and the bearing choice
- *
- * The R95, the added error and the lag are the kernel outputs, so the error
- * itself is sourced by the kernels from GPS SPS PS 5th edition, April 2020
- * (gps.gov).
+ * With a fix (3D or 2D) the receiver reports the true position displaced by
+ * its current horizontal error (fnc_gnssErrorStep, a time-correlated draw
+ * from the fix covariance).  Without one it keeps reporting the last fixed
+ * position, so the track freezes where the fix was lost.
  *
  * Arguments:
- *   0: exactPos <ARRAY>  exact world position [x, y, z], metres
- *   1: ellipse  <ARRAY>  the gnssErrorEllipse return
- *   2: fix      <ARRAY>  the gnssFixState return
- *   3: link     <ARRAY>  the datalinkState return
- *   4: seed     <NUMBER> per-track phase seed
+ *   0: exactPos <ARRAY>  true position [x, y, z], metres
+ *   1: ellipse  <ARRAY>  the fnc_gnssErrorEllipse return
+ *   2: quality  <STRING> "ok", "degraded" or "none" (fnc_gnssFixState)
+ *   3: error    <ARRAY>  [east, north] horizontal error, metres
+ *   4: heldPos  <ARRAY>  the last reported position ([] if none)
+ *   5: trackAge <NUMBER> seconds since the report was received
  *
  * Return: [displayedPos, semiMajor, semiMinor, orientation, trackAge, totalError]
- *   displayedPos is [x, y, z] metres.  The axes are metres.  orientation is
- *   the semi-major bearing in degrees.  trackAge is seconds.  totalError is
- *   the displacement magnitude in metres.
+ *   totalError is the horizontal distance from the true position, metres.
  */
 params [
     ["_exactPos", [0, 0, 0], [[]]],
-    ["_ellipse", [0, 0, 0, 0, 0, 0, 0, 0], [[]]],
-    ["_fix", ["none", 0, 0, 0, 0], [[]]],
-    ["_link", ["lost", 0, 0, 0], [[]]],
-    ["_seed", 0, [0]]
+    ["_ellipse", [], [[]]],
+    ["_quality", "none", [""]],
+    ["_error", [0, 0], [[]]],
+    ["_heldPos", [], [[]]],
+    ["_trackAge", 0, [0]]
 ];
-
-// Read the kernel fields by explicit bounded index.  A short array from a
-// fixture stays safe.
-private _r95 = 0;
 private _semiMajor = 0;
 private _semiMinor = 0;
 private _orientation = 0;
-if ((count _ellipse) > 7) then {
-    _r95 = _ellipse select 7;
-    _semiMajor = _ellipse select 3;
-    _semiMinor = _ellipse select 4;
+if ((count _ellipse) > 5) then {
+    _semiMajor = (_ellipse select 3) max 0;
+    _semiMinor = (_ellipse select 4) max 0;
     _orientation = _ellipse select 5;
 };
-private _lagOffset = 0;
-if ((count _fix) > 3) then { _lagOffset = _fix select 3; };
-private _addedError = 0;
-private _trackAge = 0;
-if ((count _link) > 3) then {
-    _addedError = _link select 3;
-    _trackAge = _link select 2;
+private _displayed = _exactPos;
+if (_quality isEqualTo "none") then {
+    if ((count _heldPos) > 2) then { _displayed = _heldPos; };
+} else {
+    if ((count _error) > 1) then {
+        _displayed = [(_exactPos select 0) + (_error select 0), (_exactPos select 1) + (_error select 1), _exactPos select 2];
+    };
 };
-
-// The displacement magnitude.  Every term is a kernel output; the sum is the
-// UNSOURCED composition.
-private _totalError = ((_r95) max 0) + ((_addedError) max 0) + ((_lagOffset) max 0);
-
-private _phaseStep = 137.508;                            // UNSOURCED
-private _bearing = ((_seed * _phaseStep) mod 360);
-private _rad = _bearing * (pi / 180);
-
-private _displayed = [
-    (_exactPos select 0) + ((sin _rad) * _totalError),
-    (_exactPos select 1) + ((cos _rad) * _totalError),
-    _exactPos select 2
-];
-
-[_displayed, _semiMajor, _semiMinor, _orientation, _trackAge, _totalError]
+private _dx = (_displayed select 0) - (_exactPos select 0);
+private _dy = (_displayed select 1) - (_exactPos select 1);
+[_displayed, _semiMajor, _semiMinor, _orientation, _trackAge, sqrt (_dx * _dx + _dy * _dy)]

@@ -9,6 +9,7 @@ Run: python3 -m unittest tools/tests/test_radio.py
 """
 
 import math
+from pathlib import Path
 import unittest
 
 LN10 = 2.302585
@@ -152,16 +153,25 @@ def radio_propagation_index(
     return max(0.3, min(2.0, index))
 
 
-def ionospheric_absorption(freq_hz, sun_elev_deg, ssn, flare_active, flare_value):
-    """Mirror of fnc_calculateIonosphericAbsorption.sqf (ITU-R P.531)."""
-    freq_factor = (3e6 / freq_hz) ** 2
-    cos_chi = max(0.0, math.sin(math.radians(sun_elev_deg)))
-    day_factor = 1 if cos_chi > 0 else 0.05
-    ssn_factor = 1 + ssn / 100
-    absorption = 0.5 * freq_factor * day_factor * ssn_factor
-    if flare_active:
-        absorption += flare_value
-    return max(0.0, min(10.0, absorption))
+def gyro_longitudinal_mhz(lat_deg):
+    """Mirror of the centred-dipole f_L at 100 km (IGRF-13 B0 29.8 uT)."""
+    lat = math.radians(lat_deg)
+    b_ut = 29.8 * (6371 / 6471) ** 3 * math.sqrt(1 + 3 * math.sin(lat) ** 2)
+    dip = math.atan(2 * math.tan(lat))
+    return 0.028 * b_ut * abs(math.sin(dip))
+
+
+def ionospheric_absorption(freq_hz, sun_elev_deg, ssn, flare_active, flare_value, lat_deg=40.0):
+    """Mirror of fnc_calculateIonosphericAbsorption.sqf (ITU-R P.533,
+    George & Bradley), vertical incidence.  flare_value is the D-RAP HAF
+    (MHz); the flare adds (HAF / f)^1.5 dB."""
+    chi = min(90 - sun_elev_deg, 102)
+    index = (1 + 0.0037 * ssn) * max(math.cos(math.radians(0.881 * chi)), 0) ** 1.3
+    f = freq_hz / 1e6
+    absorption = 677.2 * index / ((f + gyro_longitudinal_mhz(lat_deg)) ** 1.98 + 10.2)
+    if flare_active and flare_value > 0:
+        absorption += (flare_value / f) ** 1.5
+    return max(0.0, absorption)
 
 
 class TestRadioPropagation(unittest.TestCase):
@@ -232,39 +242,51 @@ class TestRadioPropagation(unittest.TestCase):
 
 
 class TestIonosphericAbsorption(unittest.TestCase):
-    def test_reference_noon_3mhz(self):
-        # 3 MHz, sun at zenith, SSN 100, no flare: 0.5 * 1 * 1 * 2 = 1.0
-        self.assertAlmostEqual(
-            ionospheric_absorption(3e6, 90, 100, False, 0), 1.0, places=3
+    def test_gyrofrequency_is_physical(self):
+        # f_L at mid-latitude, 100 km: ~0.8-1.4 MHz (ITU-R P.533 maps).
+        self.assertGreater(gyro_longitudinal_mhz(40), 0.8)
+        self.assertLess(gyro_longitudinal_mhz(40), 1.4)
+
+    def test_daytime_80m_is_heavily_absorbed(self):
+        # Midday D-layer absorption at 3.5 MHz, solar maximum: tens of dB
+        # per vertical pass (why 80 m is a night band).
+        self.assertGreater(ionospheric_absorption(3.5e6, 70, 150, False, 0), 20)
+
+    def test_upper_hf_is_lightly_absorbed(self):
+        self.assertLess(ionospheric_absorption(21e6, 70, 150, False, 0), 3)
+
+    def test_night_is_near_zero(self):
+        night = ionospheric_absorption(3e6, -30, 100, False, 0)
+        day = ionospheric_absorption(3e6, 60, 100, False, 0)
+        self.assertLess(night, 0.01 * day)
+
+    def test_absorption_falls_with_zenith_angle(self):
+        values = [ionospheric_absorption(5e6, e, 100, False, 0) for e in (90, 60, 30, 10, 0)]
+        for a, b in zip(values, values[1:]):
+            self.assertGreater(a, b)
+
+    def test_sunspots_raise_absorption(self):
+        self.assertGreater(
+            ionospheric_absorption(5e6, 60, 200, False, 0),
+            ionospheric_absorption(5e6, 60, 0, False, 0),
         )
 
-    def test_night_residual(self):
-        # Night (sun below horizon): day factor 0.05.
-        night = ionospheric_absorption(3e6, -5, 100, False, 0)
-        day = ionospheric_absorption(3e6, 90, 100, False, 0)
-        self.assertAlmostEqual(night / day, 0.05, places=6)
+    def test_flare_drap(self):
+        # NOAA SWPC D-RAP: HAF = 10 log10(F) + 65 MHz; 1 dB at the HAF;
+        # (HAF/f)^1.5 elsewhere.  An X1 flare (1e-4 W/m2) overhead: HAF 25 MHz.
+        haf = 10 * math.log10(1e-4) + 65
+        self.assertAlmostEqual(haf, 25.0)
+        base = ionospheric_absorption(25e6, 90, 100, False, 0)
+        flared = ionospheric_absorption(25e6, 90, 100, True, haf)
+        self.assertAlmostEqual(flared - base, 1.0, places=6)
+        src = (Path(__file__).resolve().parents[2] / "addons/radio/functions/fnc_calculateIonosphericAbsorption.sqf").read_text(encoding="utf-8")
+        self.assertIn("((_haf / _fMHz) ^ 1.5)", src)
 
-    def test_frequency_quadratic(self):
-        # 1/f^2: 6 MHz absorbs a quarter of 3 MHz at the same conditions.
-        f3 = ionospheric_absorption(3e6, 90, 100, False, 0)
-        f6 = ionospheric_absorption(6e6, 90, 100, False, 0)
-        self.assertAlmostEqual(f6, f3 / 4, places=6)
-
-    def test_sunspot_scales(self):
-        low = ionospheric_absorption(3e6, 90, 0, False, 0)
-        high = ionospheric_absorption(3e6, 90, 200, False, 0)
-        self.assertGreater(high, low)
-        # SSN 0 -> factor 1; SSN 200 -> factor 3.
-        self.assertAlmostEqual(high / low, 3.0, places=6)
-
-    def test_flare_adds_directly(self):
-        base = ionospheric_absorption(3e6, 90, 100, False, 0)
-        flared = ionospheric_absorption(3e6, 90, 100, True, 2.0)
-        self.assertAlmostEqual(flared, base + 2.0, places=6)
-
-    def test_clamped_0_10(self):
-        self.assertEqual(ionospheric_absorption(1e6, 90, 300, True, 5), 10.0)
-        self.assertGreaterEqual(ionospheric_absorption(3e6, -90, 0, False, 0), 0.0)
+    def test_sqf_carries_the_p533_constants(self):
+        src = next((Path(__file__).resolve().parents[2] / "addons" / "radio").rglob(
+            "fnc_calculateIonosphericAbsorption.sqf")).read_text(encoding="utf-8")
+        for token in ("677.2", "0.0037", "0.881", "1.98", "10.2", "29.8", "min 102"):
+            self.assertIn(token, src)
 
 
 class TestBatteryDerating(unittest.TestCase):
@@ -458,3 +480,33 @@ class TestEvaporationDuct(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestExcessLossModel(unittest.TestCase):
+    """The radio layer publishes only the losses ACRE2/TFAR do not model."""
+
+    SRC = (Path(__file__).resolve().parents[2] / "addons" / "radio" / "functions"
+           / "fnc_calculateRadioPropagation.sqf").read_text(encoding="utf-8")
+
+    def test_no_double_counted_or_invented_terms(self):
+        # FSPL and terrain belong to ACRE2's ITM / TFAR; the flat "hot & dry"
+        # penalty and the biome foliage constant had no physical source.
+        for token in ("147.55", "_absorptionPenalty = 2", "_terrainLoss = 3", "0.3 + 1.7"):
+            self.assertNotIn(token, self.SRC)
+
+    def test_loss_terms(self):
+        for token in ("_battDB = -10 * log _derate", "private _empDB = -20 * log _empFactor",
+                      "private _index = 10 ^ (-_excessDB / 20)", "if (_freqHz < 30e6) then"):
+            self.assertIn(token, self.SRC)
+        # A half-capacity cold battery is a 3.01 dB transmit loss; a 0.5 EMP
+        # amplitude factor is 6.02 dB; together the free-space range falls
+        # to 10^(-9.03/20) = 0.354.
+        excess = -10 * math.log10(0.5) - 20 * math.log10(0.5)
+        self.assertAlmostEqual(10 ** (-excess / 20), 0.3536, places=3)
+
+    def test_acre_callback_evaluates_hf_at_the_link_frequency(self):
+        acre = (Path(__file__).resolve().parents[2] / "addons" / "compat_acre2" / "functions"
+                / "fnc_integrateACRE2.sqf").read_text(encoding="utf-8")
+        self.assertIn('"aee_radio_dLayerNumerator"', acre)
+        self.assertIn("if (_freq < 30) then", acre)
+        self.assertNotIn("QEGVAR(", acre.split("compile '")[1])

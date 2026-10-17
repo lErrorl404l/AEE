@@ -1,0 +1,342 @@
+{
+ "schema": "aee.gnss.constellation/1",
+ "source": "GPS Standard Positioning Service Performance Standard, 5th ed., April 2020 (gps.gov), Tables 3.2-1 (baseline 24-slot), 3.2-2 (expandable slots) and 3.2-3 (reference orbit); public domain",
+ "configuration": "the expandable 24-slot constellation with all six expandable slots expanded: 30 orbital locations (the operational constellation flies about 31 satellites)",
+ "epoch_utc": "2016-12-31T23:59:43Z",
+ "epoch_day_number": 6209,
+ "epoch_ut_hours": 23.99527778,
+ "greenwich_hour_angle_deg": 100.765,
+ "semi_major_axis_km": 26559.8,
+ "inclination_deg": 55.0,
+ "eccentricity": 0.0,
+ "nodal_regression_deg_per_day": -0.0402,
+ "mask_angle_deg": 5.0,
+ "slots": [
+  {
+   "slot": "A1",
+   "raan": 288.85,
+   "arglat": 239.54,
+   "gec": 127.85
+  },
+  {
+   "slot": "A3",
+   "raan": 288.85,
+   "arglat": 343.09,
+   "gec": 179.63
+  },
+  {
+   "slot": "A4",
+   "raan": 288.85,
+   "arglat": 13.22,
+   "gec": 14.69
+  },
+  {
+   "slot": "B2",
+   "raan": 348.85,
+   "arglat": 144.75,
+   "gec": 140.46
+  },
+  {
+   "slot": "B3",
+   "raan": 348.85,
+   "arglat": 281.39,
+   "gec": 28.78
+  },
+  {
+   "slot": "B4",
+   "raan": 348.85,
+   "arglat": 175.79,
+   "gec": 155.98
+  },
+  {
+   "slot": "C1",
+   "raan": 48.85,
+   "arglat": 83.29,
+   "gec": 169.73
+  },
+  {
+   "slot": "C2",
+   "raan": 48.85,
+   "arglat": 343.21,
+   "gec": 119.69
+  },
+  {
+   "slot": "C3",
+   "raan": 48.85,
+   "arglat": 311.08,
+   "gec": 103.62
+  },
+  {
+   "slot": "D1",
+   "raan": 108.85,
+   "arglat": 106.64,
+   "gec": 61.4
+  },
+  {
+   "slot": "D3",
+   "raan": 108.85,
+   "arglat": 6.57,
+   "gec": 11.37
+  },
+  {
+   "slot": "D4",
+   "raan": 108.85,
+   "arglat": 138.77,
+   "gec": 77.47
+  },
+  {
+   "slot": "E1",
+   "raan": 168.85,
+   "arglat": 168.46,
+   "gec": 152.31
+  },
+  {
+   "slot": "E2",
+   "raan": 168.85,
+   "arglat": 274.01,
+   "gec": 25.09
+  },
+  {
+   "slot": "E4",
+   "raan": 168.85,
+   "arglat": 305.1,
+   "gec": 40.63
+  },
+  {
+   "slot": "F1",
+   "raan": 228.85,
+   "arglat": 210.3,
+   "gec": 53.23
+  },
+  {
+   "slot": "F3",
+   "raan": 228.85,
+   "arglat": 76.62,
+   "gec": 166.39
+  },
+  {
+   "slot": "F4",
+   "raan": 228.85,
+   "arglat": 106.76,
+   "gec": 1.46
+  },
+  {
+   "slot": "B1F",
+   "raan": 348.85,
+   "arglat": 66.33,
+   "gec": 101.25
+  },
+  {
+   "slot": "B1A",
+   "raan": 348.85,
+   "arglat": 37.77,
+   "gec": 86.97
+  },
+  {
+   "slot": "D2F",
+   "raan": 108.85,
+   "arglat": 254.09,
+   "gec": 135.13
+  },
+  {
+   "slot": "D2A",
+   "raan": 108.85,
+   "arglat": 229.39,
+   "gec": 122.78
+  },
+  {
+   "slot": "F2F",
+   "raan": 228.85,
+   "arglat": 331.87,
+   "gec": 114.02
+  },
+  {
+   "slot": "F2A",
+   "raan": 228.85,
+   "arglat": 305.43,
+   "gec": 100.8
+  },
+  {
+   "slot": "A2F",
+   "raan": 288.85,
+   "arglat": 144.4,
+   "gec": 80.28
+  },
+  {
+   "slot": "A2A",
+   "raan": 288.85,
+   "arglat": 117.96,
+   "gec": 67.06
+  },
+  {
+   "slot": "C4F",
+   "raan": 48.85,
+   "arglat": 220.43,
+   "gec": 58.3
+  },
+  {
+   "slot": "C4A",
+   "raan": 48.85,
+   "arglat": 195.73,
+   "gec": 45.95
+  },
+  {
+   "slot": "E3F",
+   "raan": 168.85,
+   "arglat": 52.08,
+   "gec": 94.18
+  },
+  {
+   "slot": "E3A",
+   "raan": 168.85,
+   "arglat": 23.52,
+   "gec": 79.84
+  }
+ ],
+ "baseline_slots": [
+  {
+   "slot": "A1",
+   "raan": 288.85,
+   "arglat": 239.54,
+   "gec": 127.85
+  },
+  {
+   "slot": "A2",
+   "raan": 288.85,
+   "arglat": 133.2,
+   "gec": 74.68
+  },
+  {
+   "slot": "A3",
+   "raan": 288.85,
+   "arglat": 343.09,
+   "gec": 179.63
+  },
+  {
+   "slot": "A4",
+   "raan": 288.85,
+   "arglat": 13.22,
+   "gec": 14.69
+  },
+  {
+   "slot": "B1",
+   "raan": 348.85,
+   "arglat": 52.37,
+   "gec": 94.27
+  },
+  {
+   "slot": "B2",
+   "raan": 348.85,
+   "arglat": 144.75,
+   "gec": 140.46
+  },
+  {
+   "slot": "B3",
+   "raan": 348.85,
+   "arglat": 281.39,
+   "gec": 28.78
+  },
+  {
+   "slot": "B4",
+   "raan": 348.85,
+   "arglat": 175.79,
+   "gec": 155.98
+  },
+  {
+   "slot": "C1",
+   "raan": 48.85,
+   "arglat": 83.29,
+   "gec": 169.73
+  },
+  {
+   "slot": "C2",
+   "raan": 48.85,
+   "arglat": 343.21,
+   "gec": 119.69
+  },
+  {
+   "slot": "C3",
+   "raan": 48.85,
+   "arglat": 311.08,
+   "gec": 103.62
+  },
+  {
+   "slot": "C4",
+   "raan": 48.85,
+   "arglat": 212.97,
+   "gec": 54.57
+  },
+  {
+   "slot": "D1",
+   "raan": 108.85,
+   "arglat": 106.64,
+   "gec": 61.4
+  },
+  {
+   "slot": "D2",
+   "raan": 108.85,
+   "arglat": 236.86,
+   "gec": 126.51
+  },
+  {
+   "slot": "D3",
+   "raan": 108.85,
+   "arglat": 6.57,
+   "gec": 11.37
+  },
+  {
+   "slot": "D4",
+   "raan": 108.85,
+   "arglat": 138.77,
+   "gec": 77.47
+  },
+  {
+   "slot": "E1",
+   "raan": 168.85,
+   "arglat": 168.46,
+   "gec": 152.31
+  },
+  {
+   "slot": "E2",
+   "raan": 168.85,
+   "arglat": 274.01,
+   "gec": 25.09
+  },
+  {
+   "slot": "E3",
+   "raan": 168.85,
+   "arglat": 37.48,
+   "gec": 86.82
+  },
+  {
+   "slot": "E4",
+   "raan": 168.85,
+   "arglat": 305.1,
+   "gec": 40.63
+  },
+  {
+   "slot": "F1",
+   "raan": 228.85,
+   "arglat": 210.3,
+   "gec": 53.23
+  },
+  {
+   "slot": "F2",
+   "raan": 228.85,
+   "arglat": 316.64,
+   "gec": 106.4
+  },
+  {
+   "slot": "F3",
+   "raan": 228.85,
+   "arglat": 76.62,
+   "gec": 166.39
+  },
+  {
+   "slot": "F4",
+   "raan": 228.85,
+   "arglat": 106.76,
+   "gec": 1.46
+  }
+ ]
+}

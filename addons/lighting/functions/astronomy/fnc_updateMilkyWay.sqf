@@ -44,8 +44,8 @@ if (!_active) exitWith {
 };
 
 private _lstDeg = [date] call FUNC(siderealTime);
-private _latDeg = ([] call EFUNC(lib,getWorldLocation)) select 1;
-if (_latDeg == 0) then { _latDeg = 40; };
+// SIGNED latitude: the galactic plane's altitude depends on the hemisphere.
+private _latDeg = ([] call EFUNC(lib,getWorldLocation)) select 0;
 
 private _samples = [];
 for "_i" from 0 to (MILKY_WAY_SAMPLES - 1) do {

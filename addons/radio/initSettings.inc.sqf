@@ -23,24 +23,6 @@ AEE_SETTING_CHECKBOX(batteryDeratingEnabled,"AEE Radio","Link",true);
 // resolves to aee_radio_logDebug.
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Radio",false);
 
-// ── Propagation ────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(txPower,"AEE Radio","Link",20,50,37,0);
-
-// ── Terrain masking (issue #32) ────────────────────────────────────────────
-// ITU-R P.526 terrain diffraction over the sampled profile.  Off switches
-// the per-tick terrain sampling off and keeps the foliage-only fallback.
-AEE_SETTING_CHECKBOX(terrainMaskingEnabled,"AEE Radio","Link",true);
-
-AEE_SETTING_SLIDER(propagationRange,"AEE Radio","Link",0.5,3,2.0,1);
-
-// ── 3D EM propagation (issue #13) ──────────────────────────────────────────
-// Two-ray ground bounce, terrain diffraction (Deygout) and valley waveguide.
-AEE_SETTING_CHECKBOX(emPropagationEnabled,"AEE Radio","Link",true);
-AEE_SETTING_SLIDER(txAntennaHeight,"AEE Radio","Link",0.5,30,2,1);
-AEE_SETTING_SLIDER(rxAntennaHeight,"AEE Radio","Link",0.5,30,1.5,1);
-AEE_SETTING_SLIDER(groundReflectivity,"AEE Radio","Link",0,1,0.5,2);
-AEE_SETTING_SLIDER(emLinkBearing,"AEE Radio","Link",0,359,0,0);
-
 }; // _hasHost
 
 // ── Radar detection (issue #104) ──────────────────────────────────────────

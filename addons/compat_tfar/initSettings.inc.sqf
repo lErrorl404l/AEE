@@ -10,13 +10,6 @@
 // ponytail: one call per setting; a bulk-register macro would add complexity
 // that only pays off at 50+ settings.
 
-// ── Signal ─────────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(signalMultScale,"AEE","Compat - TFAR",0,2,0.6,2);
-
-AEE_SETTING_SLIDER(signalMultMin,"AEE","Compat - TFAR",0.1,1,0.3,2);
-
-AEE_SETTING_SLIDER(signalMultMax,"AEE","Compat - TFAR",1,3,1.5,2);
-
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,

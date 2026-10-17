@@ -78,19 +78,28 @@ world with no usable `mapArea[]` the values are unchanged.
 
 ### The tracker
 
-Three pure kernels model the signal. `fnc_gnssErrorEllipse` returns the error
-ellipse, the semi axes, the orientation, CEP and R95. `fnc_gnssFixState`
-returns the fix quality, the time since the last fix, the re-acquisition
-progress, the lag offset and the stutter envelope. `fnc_datalinkState` returns
-the link state, the update interval, the track age and the added position
-error.
+*Amended: the tracker now runs on a physical model; the original shape
+kernels (fixed DOP, canopy and urban gains, lag, stutter, an unsourced
+datalink) are gone.*
 
-`fnc_trackerProject` maps the three kernels onto an exact position and
-returns the displayed position. The driver `fnc_trackerUpdate` reads
-`group _player`, surveys the canopy, the urban cover and the terrain, calls
-the three kernels and then the projector. It suppresses the engine friendly
-map indicators with `disableMapIndicators [true, false, false, false]` where
-the difficulty exposes extended map content.
+Each unit's receiver sees the real GPS constellation at the mission date
+(`fnc_gnssSatellites`, GPS SPS PS 2020) minus the satellites terrain and
+structures block along each line of sight. `fnc_gnssDop` gives the geometry,
+`fnc_gnssUere` the measured range error (FAA SPS PAN #125, by geomagnetic
+latitude and the sunspot number), `fnc_gnssErrorEllipse` the covariance,
+CEP and 2DRMS, `fnc_gnssErrorStep` a Gauss-Markov error (tau 240 s), and
+`fnc_gnssFixState` the 3D / 2D / no-fix state with the u-blox M8 time to
+first fix.
+
+Each unit sends its solution on the ATAK dynamic schedule
+(`fnc_trackerReportInterval`). A report reaches the player when the link
+budget closes (`fnc_datalinkState`: P.525 free-space loss, ITU-R P.526-15
+Bullington diffraction over the terrain profile, the radio module's excess
+loss; AN/PRC-152A defaults). Otherwise the last report is held and ages.
+`fnc_trackerProject` gives the receiver's reported position. The driver
+`fnc_trackerUpdate` suppresses the engine friendly map indicators with
+`disableMapIndicators [true, false, false, false]` where the difficulty
+exposes extended map content.
 
 ### The per-constant register
 

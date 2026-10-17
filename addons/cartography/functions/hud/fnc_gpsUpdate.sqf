@@ -36,7 +36,13 @@ if (isNull _display) exitWith {};
 private _anchor = call EFUNC(lib,getGeoAnchor);
 private _precision = [_anchor] call FUNC(mgrsEffectivePrecision);
 
-private _grid = ["", getPos _player, _anchor, _precision] call FUNC(mgrsMarkerText);
+// With the tracker on, the device shows its own GPS solution (the real
+// constellation, blocking and error); otherwise the true position.
+private _own = missionNamespace getVariable [QEGVAR(hud,trackerOwn), []];
+if !(_own isEqualType []) then { _own = []; };
+private _shownPos = getPos _player;
+if ((count _own) > 2) then { _shownPos = _own select 0; };
+private _grid = ["", _shownPos, _anchor, _precision] call FUNC(mgrsMarkerText);
 
 private _setText = {
     params ["_display", "_idc", "_text"];
@@ -52,6 +58,10 @@ private _fix = missionNamespace getVariable [QEGVAR(hud,trackerFix), "--"];
 if !(_fix isEqualType "") then { _fix = "--"; };
 private _r95 = missionNamespace getVariable [QEGVAR(hud,trackerR95), 0];
 if !(_r95 isEqualType 0) then { _r95 = 0; };
+if ((count _own) > 2) then {
+    _fix = _own select 1;
+    _r95 = (_own select 2) max 0;
+};
 
 [_display, 9020, _grid] call _setText;
 [_display, 9021, "PREC " + (str _precision) + " DIGITS"] call _setText;

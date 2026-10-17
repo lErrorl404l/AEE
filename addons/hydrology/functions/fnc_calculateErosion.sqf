@@ -128,13 +128,13 @@ private _c = [_coverClass] call FUNC(calculateCoverFactor);
 private _p = 1.0;
 
 // ─── Event erosivity R (EI30) from the storm the river chain tracks ───────
-// The engine rain 1.0 is 30 mm/h (the river chain's convention). The storm
+// The engine rain 1.0 is ENGINE_RAIN_FULL_MMH (the shared convention). The storm
 // energy is the per-millimetre energy at the current intensity times the
 // storm depth; I30 is the current intensity. This treats the storm as if
 // it fell at the present intensity, a documented simplification.
 private _intensity = rain;
 if !(_intensity isEqualType 0) then { _intensity = 0; };
-_intensity = (_intensity max 0) * 30;
+_intensity = (_intensity max 0) * ENGINE_RAIN_FULL_MMH;
 private _stormDepth = missionNamespace getVariable [QGVAR(stormDepth_mm), 0];
 if !(_stormDepth isEqualType 0) then { _stormDepth = 0; };
 private _ePerMm = [_intensity] call FUNC(calculateKineticEnergy);

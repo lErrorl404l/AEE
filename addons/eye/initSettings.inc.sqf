@@ -18,6 +18,8 @@ AEE_SETTING_SLIDER(eyePupilTauConstrict,"AEE Eye","Eye Adaptation",0.05,1,0.25,2
 AEE_SETTING_SLIDER(eyePupilTauDilate,"AEE Eye","Eye Adaptation",0.1,2,0.475,3);
 AEE_SETTING_SLIDER(eyeMesopicLow,"AEE Eye","Eye Adaptation",0.001,0.1,0.005,3);
 AEE_SETTING_SLIDER(eyeMesopicHigh,"AEE Eye","Eye Adaptation",0.5,20,5,1);
+// Disability glare observer age, years (CIE age-adjusted Stiles-Holladay).
+AEE_SETTING_SLIDER(eyeObserverAge,"AEE Eye","Eye Adaptation",16,70,25,0);
 AEE_SETTING_SLIDER(eyeFastBlend,"AEE Eye","Eye Adaptation",0,1,0.35,2);
 AEE_SETTING_SLIDER(eyeAmbientLuxScale,"AEE Eye","Eye Adaptation",0.001,10,1,3);
 AEE_SETTING_SLIDER(eyeLocalLuxScale,"AEE Eye","Eye Adaptation",0.001,10,1,3);

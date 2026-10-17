@@ -463,7 +463,16 @@ class TestWorldLatitudePattern(unittest.TestCase):
             "addons/lighting/functions/astronomy/fnc_calculateSolarRadiation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", solar)
-        self.assertIn("select 1", solar)  # magnitude
+        # SIGNED latitude: sin(lat)*sin(decl) carries the season, so a
+        # magnitude would give a southern map a June summer.
+        self.assertIn("private _lat = _loc select 0;", solar)
+        for rel in (
+            "addons/lighting/functions/astronomy/fnc_getStarCatalog.sqf",
+            "addons/lighting/functions/astronomy/fnc_updateMilkyWay.sqf",
+            "addons/lighting/functions/astronomy/fnc_updateMeteors.sqf",
+        ):
+            src = Path(rel).read_text(encoding="utf-8")
+            self.assertIn("getWorldLocation)) select 0", src, rel)
 
         biome = _read_env_biome()
         self.assertIn("getWorldLocation", biome)

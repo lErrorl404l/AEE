@@ -8,7 +8,6 @@
 // that only pays off at 50+ settings.
 
 // ── Snow ───────────────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(SnowAccretionRate,"AEE Environmental","Hydrology",0,0.1,0.01,2);
 
 AEE_SETTING_SLIDER(MaxSnowDepth,"AEE Environmental","Hydrology",0.5,10,3.0,1);
 
@@ -28,11 +27,10 @@ AEE_SETTING_SLIDER(DustDevilTempThreshold,"AEE Environmental","Weather",25,40,30
 AEE_SETTING_CHECKBOX(scalarFieldsEnabled,"AEE Environmental","Transport",true);
 
 // ── Space Weather ──────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(FlareChance,"AEE Environmental","Fire",0,0.2,0.05,2);
-
-AEE_SETTING_SLIDER(FlareDuration,"AEE Environmental","Fire",600,36000,10800,0);
-
-AEE_SETTING_SLIDER(FlareDecayRate,"AEE Environmental","Fire",0,0.2,0.05,2);
+// Sunspot number and Kp follow the real record at the mission date (SILSO,
+// NOAA, GFZ); -1 keeps that, a value >= 0 pins it for a scenario.
+AEE_SETTING_SLIDER(sunspotOverride,"AEE Environmental","Space Weather",-1,400,-1,0);
+AEE_SETTING_SLIDER(kpOverride,"AEE Environmental","Space Weather",-1,9,-1,1);
 
 // ── Sound Propagation ──────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(InversionBoost,"AEE Environmental","Weather",0,1.5,0.6,1);

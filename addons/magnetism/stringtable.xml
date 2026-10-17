@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Magnetism">
+        <Key ID="STR_AEE_Magnetism_compassFerrousDeviation_Description">
+            <Original>Nearby vehicles and steel deflect the compass by atan(dB / H), H the local horizontal field from the World Magnetic Model.</Original>
+            <English>Nearby vehicles and steel deflect the compass by atan(dB / H), H the local horizontal field from the World Magnetic Model.</English>
+        </Key>
+        <Key ID="STR_AEE_Magnetism_compassFerrousDeviation_Name">
+            <Original>Ferrous Compass Deviation</Original>
+            <English>Ferrous Compass Deviation</English>
+        </Key>
         <Key ID="STR_AEE_Magnetism_logDebug_Description">
             <Original>Log Magnetism diagnostics to the RPT. Turn this on before reporting a fault.</Original>
             <English>Log Magnetism diagnostics to the RPT. Turn this on before reporting a fault.</English>
@@ -8,6 +16,14 @@
         <Key ID="STR_AEE_Magnetism_logDebug_Name">
             <Original>Magnetism Debug Log</Original>
             <English>Magnetism Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Magnetism_wmmExtrapolate_Description">
+            <Original>WMM2025 is valid 2025.0-2030.0. On: a mission date outside it extrapolates the published secular variation (as the NOAA software does, with growing error). Off: the field is held at the nearer end of the window.</Original>
+            <English>WMM2025 is valid 2025.0-2030.0. On: a mission date outside it extrapolates the published secular variation (as the NOAA software does, with growing error). Off: the field is held at the nearer end of the window.</English>
+        </Key>
+        <Key ID="STR_AEE_Magnetism_wmmExtrapolate_Name">
+            <Original>Extrapolate Magnetic Model Beyond 2030</Original>
+            <English>Extrapolate Magnetic Model Beyond 2030</English>
         </Key>
     </Package>
 </Project>
