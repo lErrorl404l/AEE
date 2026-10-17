@@ -25,11 +25,6 @@ AEE_SETTING_SLIDER(starBrightnessScale,"AEE Environmental","Display",0,2,1.0,1);
 
 AEE_SETTING_CHECKBOX(starLightPollutionEnabled,"AEE Environmental","Display",true);
 
-// ── Severe Weather ownership ───────────────────────────────────────────────
-// Per-lever ownership.  Off by default: AEE keeps reading engine weather.
-// When on, the server writes gusts and humidity from AEE's computed state.
-AEE_SETTING_CHECKBOX(weatherOwnership,"AEE Environmental","Weather",false);
-
 // Diagnostics: the consolidated night-sky state line logs at DEBUG after
 // the first INFO line when this switch is on.
 AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Lighting",false);

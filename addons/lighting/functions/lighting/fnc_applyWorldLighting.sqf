@@ -54,22 +54,11 @@ private _profile = [_worldClass, _overcast] call FUNC(worldLightingProfile);
 missionNamespace setVariable [QGVAR(worldLighting), _profile];
 missionNamespace setVariable [QGVAR(worldLightingClass), _worldClass];
 
-// Per-lever ownership (docs/wiki/research/engine-hdr-and-night-ceiling.md).
-// AEE owns gusts and humidity only when the operator turns weatherOwnership
-// on.  It keeps reading overcast, rain, fog and wind to avoid a feedback loop.
-// Server-side only.
-if (isServer && {missionNamespace getVariable [QGVAR(weatherOwnership), false]}) then {
-    private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
-    if (_humidity isEqualType 0) then {
-        private _rh = (_humidity / 100) max 0 min 1;
-        setHumidity _rh;
-    };
-    private _gusts = missionNamespace getVariable [QEGVAR(core,currentGusts), 0];
-    if (_gusts isEqualType 0) then {
-        private _g = _gusts max 0 min 1;
-        // setGusts is binary: time (s) on the left, value on the right.
-        0 setGusts _g;
-    };
-};
+// Engine weather is not written here.  The atmos writer
+// (addons/atmos/functions/state/fnc_applyEngineWeather.sqf) is the single
+// owner of the engine humidity (per client), overcast and rain (server), and
+// the engine owns the gust signal that fnc_updateWind reads.  This function
+// only classifies the world and publishes the lighting profile
+// (docs/engine/engine-weather-writer.md, the ownership table).
 
 _profile

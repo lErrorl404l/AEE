@@ -105,7 +105,6 @@
   "aee_environmental_slabDepth": "aee_persistence_slabDepth",
   "aee_environmental_starBrightnessScale": "aee_lighting_starBrightnessScale",
   "aee_environmental_starLightPollutionEnabled": "aee_lighting_starLightPollutionEnabled",
-  "aee_environmental_weatherOwnership": "aee_lighting_weatherOwnership",
   "aee_fx_atmosphericDustIntensity": "aee_particles_atmosphericDustIntensity",
   "aee_fx_blastInjuryEnabled": "aee_blast_blastInjuryEnabled",
   "aee_fx_exhaustShimmerAlpha": "aee_weatherfx_exhaustShimmerAlpha",

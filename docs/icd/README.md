@@ -30,9 +30,9 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `core` | `weatherfx` | 16 | [core-weatherfx.md](core-weatherfx.md) |
 | `core` | `diagnostics` | 15 | [core-diagnostics.md](core-diagnostics.md) |
 | `optics` | `vision` | 15 | [optics-vision.md](optics-vision.md) |
-| `core` | `lighting` | 13 | [core-lighting.md](core-lighting.md) |
 | `core` | `strain` | 13 | [core-strain.md](core-strain.md) |
 | `eye` | `vision` | 13 | [eye-vision.md](eye-vision.md) |
+| `core` | `lighting` | 11 | [core-lighting.md](core-lighting.md) |
 | `core` | `maritime` | 11 | [core-maritime.md](core-maritime.md) |
 | `core` | `particles` | 11 | [core-particles.md](core-particles.md) |
 | `core` | `cartography` | 10 | [core-cartography.md](core-cartography.md) |

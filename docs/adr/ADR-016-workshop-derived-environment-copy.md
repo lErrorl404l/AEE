@@ -114,20 +114,21 @@ The engine exposes a small set of run-time levers. The table states the owner.
 | Lever | Owner | Note |
 | --- | --- | --- |
 | `setShadowDistance` | AEE optics | The scene-aware shadow distance item |
-| `setGusts` | AEE, gated | On when `weatherOwnership` is on. Default off |
-| `setHumidity` | AEE, gated | Same setting and default |
-| `overcast` | read only | `compat_realweather` owns the server write |
-| `rain` | read only | AEE reads |
-| `fog` | read only | AEE reads |
-| `wind` | read only | AEE reads |
+| `setGusts` | none | The engine owns the gust signal; AEE reads it in `fnc_updateWind` |
+| `setHumidity` | AEE atmos | Per client, `fnc_applyEngineWeather` |
+| `overcast` | AEE atmos, server | `fnc_applyEngineWeather`; AEE also reads the engine value |
+| `rain` | AEE atmos, server | `fnc_applyEngineWeather`; AEE also reads the engine value |
+| `fog` | AEE atmos, server | `fnc_updateFog` |
+| `wind` | AEE atmos | `fnc_updateWind` |
 | `HDRNewPars` | none | No script command exists |
 | `starEmissivity` | none | No script command exists |
 | `Lighting` | none | No script command exists |
 | `DayLighting` | none | No script command exists |
 | `Weather` | none | No script command exists |
 
-AEE owns three writes and reads the rest. The gated writes avoid a feedback
-loop and keep `compat_realweather` authoritative.
+AEE owns the overcast, rain, humidity, fog and wind writes and reads the engine
+overcast and rain as inputs. The engine owns the gust signal. One owner per
+quantity avoids a feedback loop.
 
 ## The world lighting matcher
 

@@ -31,22 +31,26 @@ Two engine facts decide the design and are read from the same pages:
 | `setHumidity` | `setHumidity value` | surface humidity 0..1 | Local | Arma 3 2.8 |
 | `forceWeatherChange` | `forceWeatherChange` | nular | Unspecified | Arma 3 1.16 |
 
-`setFog`, `setWind`, `setWaves`, `setRainbow` and `setLightnings` are engine
-weather commands that AEE already writes. Each has one owner and this writer
-does not repeat the write:
+Every engine weather quantity has one owner. This writer does not repeat a
+write another function already makes:
 
-| Command | Owner |
-|---|---|
-| `time setFog [value, decay, base]` | `addons/atmos/functions/state/fnc_updateFog.sqf` |
-| `setWind [x, y, forced]` | `addons/atmos/functions/state/fnc_updateWind.sqf` |
-| `time setWaves value` | `addons/maritime/functions/fnc_updateEngineWaves.sqf` |
-| `time setRainbow value` | `addons/atmos/functions/state/fnc_updateRainbow.sqf` |
-| `time setLightnings value` | `addons/atmos/functions/state/fnc_updateEngineLightnings.sqf` |
+| Quantity | Command | Command locality | Owner |
+|---|---|---|---|
+| wind | `setWind` | Global | `addons/atmos/functions/state/fnc_updateWind.sqf` |
+| gusts | `setGusts` | Local | none. The engine owns the gust signal; `fnc_updateWind` reads it |
+| humidity | `setHumidity` | Local (per client) | `addons/atmos/functions/state/fnc_applyEngineWeather.sqf` (this writer) |
+| overcast | `setOvercast` | Local; global from the server | `addons/atmos/functions/state/fnc_applyEngineWeather.sqf` (this writer) |
+| rain | `setRain` | Global from the server | `addons/atmos/functions/state/fnc_applyEngineWeather.sqf` (this writer) |
+| fog | `setFog` | Global | `addons/atmos/functions/state/fnc_updateFog.sqf` |
+| waves | `setWaves` | Local | `addons/maritime/functions/fnc_updateEngineWaves.sqf` |
+| rainbow | `setRainbow` | Local | `addons/atmos/functions/state/fnc_updateRainbow.sqf` |
+| lightnings | `setLightnings` | Local | `addons/atmos/functions/state/fnc_updateEngineLightnings.sqf` |
 
 Two writers for the one engine wind vector would compound, because
-`fnc_updateWind` reads the engine wind every tick (ADR-041). `setWaves` and
-`setLightnings` need *Manual Override* in the Eden intel section to render at
-all.
+`fnc_updateWind` reads the engine wind every tick (ADR-041). The engine owns
+the gust signal, so AEE writes `setGusts` nowhere: `fnc_updateWind` reads the
+engine gust and publishes the derived value. `setWaves` and `setLightnings`
+need *Manual Override* in the Eden intel section to render at all.
 
 ## 3. Locality
 

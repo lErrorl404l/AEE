@@ -65,19 +65,17 @@ The free run-time weather levers and their owner:
 
 | Lever | Owner |
 |---|---|
-| `setGusts` | AEE, when `AEE Environmental > Weather > weatherOwnership` is on (default off) |
-| `setHumidity` | AEE, same setting |
 | `setShadowDistance` | AEE optics, the scene-aware shadow distance item |
-| `overcast` | AEE, the engine weather writer, server side |
-| `rain` | read only |
-| `fog` | read only |
-| `wind` | read only |
+| `setGusts` | none. The engine owns the gust signal; AEE reads it in `fnc_updateWind` |
+| `setHumidity` | AEE atmos, `fnc_applyEngineWeather`, per client |
+| `overcast` | AEE atmos, `fnc_applyEngineWeather`, server side |
+| `rain` | AEE atmos, `fnc_applyEngineWeather`, server side |
+| `fog` | AEE atmos, `fnc_updateFog`, server side |
+| `wind` | AEE atmos, `fnc_updateWind` |
 
-AEE reads `overcast`, `rain`, `fog` and `wind` as inputs and owns the engine
-overcast write on the server. It writes gusts and
-humidity only when the operator turns ownership on. This avoids a feedback
-loop. The write is server side
-and default off.
+AEE reads `overcast` and `rain` as inputs and owns the engine overcast, rain,
+fog, humidity and wind writes. The engine owns the gust signal, so no AEE code
+writes `setGusts`. One owner per quantity avoids a feedback loop.
 
 ## The matcher
 

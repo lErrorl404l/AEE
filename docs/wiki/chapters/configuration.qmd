@@ -515,7 +515,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_lighting_weatherOwnership` | CHECKBOX | `false` | yes | lighting | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only. |
 | `aee_persistence_FlashFloodThreshold` | SLIDER | `50` | yes | persistence | Rain rate (mm/h) that counts as flash-flood producing |
 | `aee_weather_BlowingSnowWindThreshold` | SLIDER | `8` | yes | weather | Wind speed (m/s) that triggers blowing snow |
 | `aee_weather_DustDevilTempThreshold` | SLIDER | `30` | yes | weather | Air temperature (°C) that allows dust devils |

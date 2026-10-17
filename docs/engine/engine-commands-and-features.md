@@ -1034,8 +1034,9 @@ Relations (command DB, corroborated by the world config):
 - `wind` is the horizontal vector in m/s; `windDir` is the azimuth the wind
   comes FROM; `windStr` 0..1. Setters: `setWindStr`, `setWindDir`,
   `setWindForce` (max wind change rate).
-- Read-only state: `gusts`, `waves`, `rainbow`, `humidity`, `temperature`
-  (2.8), `pressure`.
+- Ambient state: `gusts`, `waves`, `rainbow`, `humidity` are read-only;
+  `ambientTemperature` (2.06) is read and written and drives the black-surface
+  and white-surface temperatures. The engine has no `pressure` quantity at all.
 
 **Locality.** `setOvercast`, `setRain`, `setFog`, `setWindDir` on the SERVER
 propagate globally; on a CLIENT the effect is local and temporary and reverts to

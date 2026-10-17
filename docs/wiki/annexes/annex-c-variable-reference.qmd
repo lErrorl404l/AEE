@@ -720,15 +720,6 @@ Every `logDebug` switch registers under **AEE Debug > <component>**. The
 coverage-gaps release added one to every addon that declares settings, so
 all nineteen sit in one place, grouped by the owning component.
 
-### Environmental weather ownership
-
-AEE reads engine weather by default. The server writes gusts and humidity only
-when this switch is on.
-
-| Variable | Purpose |
-|---|---|
-| `aee_lighting_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only. |
-
 ### Particle and heat-haze coupling
 
 Item 7 of the aee-workshop-copy plan couples the particle alpha to the engine

@@ -175,6 +175,7 @@ def main():
         "tools/tests/test_vehicle_weapons.py",
         "tools/tests/test_engine_bridges.py",
         "tools/tests/test_engine_weather_writer.py",
+        "tools/tests/test_weather_ownership.py",
         "tools/tests/test_vehicle_inventory.py",
         "tools/tests/test_vehicle_corpus.py",
         "tools/tests/test_vehicle_coverage.py",

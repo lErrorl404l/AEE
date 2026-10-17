@@ -10,6 +10,5 @@
     ["aee_environmental_dynamicMilkyWay", "aee_lighting_dynamicMilkyWay"],
     ["aee_environmental_dynamicStars", "aee_lighting_dynamicStars"],
     ["aee_environmental_starBrightnessScale", "aee_lighting_starBrightnessScale"],
-    ["aee_environmental_starLightPollutionEnabled", "aee_lighting_starLightPollutionEnabled"],
-    ["aee_environmental_weatherOwnership", "aee_lighting_weatherOwnership"]
+    ["aee_environmental_starLightPollutionEnabled", "aee_lighting_starLightPollutionEnabled"]
 ]
