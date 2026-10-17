@@ -325,6 +325,12 @@ def main():
         "tools/tests/test_console_fact_gating.py",
         # Visual workbench: keybinds, re-apply, screenshot and state dump.
         "tools/tests/test_dev_workbench.py",
+        # The AEE-native in-engine component test layer: the runner, the five
+        # per-surface test.sqf files and their headless-safety.
+        "tools/tests/test_component_tests.py",
+        # The screenshot differential: baseline vs candidate render metric and
+        # change localisation, consumed by the manual visual QA pass.
+        "tools/tests/test_compare_screens.py",
     ]
     # Part (b) needs a `hemtt release` tree, so it runs in the full sweep only.
     release_suites = [

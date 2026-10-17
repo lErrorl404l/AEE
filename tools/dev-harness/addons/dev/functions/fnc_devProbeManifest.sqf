@@ -91,5 +91,6 @@ holds every probe to a class and holds each class to its guard.
 ["P139", "headless", "aee_p139_client_kernel_parity_probe.sqf"],
 ["P141", "headless", "aee_p141_magazine_mass_probe.sqf"],
 ["P142", "headless", "aee_p142_map_surface_reach_probe.sqf"],
-["P143", "headless", "aee_p143_variation_probe.sqf"]
+["P143", "headless", "aee_p143_variation_probe.sqf"],
+["P144", "headless", "aee_p144_component_tests_probe.sqf"]
 ]
