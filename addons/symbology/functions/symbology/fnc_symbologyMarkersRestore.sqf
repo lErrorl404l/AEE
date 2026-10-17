@@ -30,6 +30,15 @@ private _echelon = missionNamespace getVariable [QGVAR(symbologyUnitEchelonMarke
 } forEach _echelon;
 missionNamespace setVariable [QGVAR(symbologyUnitEchelonMarkers), []];
 
+// The variation family markers carry their own companion echelon overlays
+// (FUNC(variationApply)); delete them and clear the cache so the next map
+// open rebuilds them from the active state.
+private _variationEchelon = missionNamespace getVariable [QGVAR(symbologyVariationEchelonMarkers), []];
+{
+    deleteMarkerLocal _x;
+} forEach _variationEchelon;
+missionNamespace setVariable [QGVAR(symbologyVariationEchelonMarkers), []];
+
 // disableMapIndicators is a persistent LOCAL effect, not scoped to the map
 // display, so the suppression FUNC(symbologyMarkersApply) set on map open
 // must be reversed here or the engine indicators stay hidden for the rest of

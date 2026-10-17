@@ -74,6 +74,10 @@ if (missionNamespace getVariable [QGVAR(symbologyMarkers), true]) then {
         };
     } forEach allMapMarkers;
     missionNamespace setVariable [QGVAR(symbologyMarkerCache), _cache];
+    // The variation family markers also carry the echelon overlay, so the
+    // apply pass refreshes them from the active state on map open and on the
+    // one-second re-scan, not only on a settings or dialog change.
+    [] call FUNC(variationApply);
 };
 
 // ── The player and the in-range units ───────────────────────────────────

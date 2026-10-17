@@ -531,6 +531,28 @@ class TestSymbologyMarkerConfig(unittest.TestCase):
         pairs = len(FAMILIES) * len(GLYPHS)
         self.assertEqual(FAMILY_SRC.count("class AEE_"), pairs)
 
+    def test_the_neutral_motorised_alias_is_the_motorised_glyph(self):
+        # Issue #243: AEE_n_motor_inf was bound to AEE_NL_Neutral_Unit_Infantry,
+        # so neutral plus motorised drew the infantry glyph.  The catalogue
+        # holds no neutral motorised symbol, so the alias must inherit the
+        # composed neutral frame of the motorised-infantry glyph.
+        self.assertNotIn(
+            "class AEE_n_motor_inf: AEE_NL_Neutral_Unit_Infantry {}", FAMILY_SRC
+        )
+        self.assertIn(
+            "class AEE_n_motor_inf: AEE_XNL_Friendly_Unit_Infantry_Motoriz {};",
+            FAMILY_SRC,
+        )
+        # The friendly and hostile motorised aliases keep their real glyphs.
+        self.assertIn(
+            "class AEE_b_motor_inf: AEE_FL_Friendly_Unit_Infantry_Motorized {};",
+            FAMILY_SRC,
+        )
+        self.assertIn(
+            "class AEE_o_motor_inf: AEE_HL_Hostile_Unit_Infantry_Motorized {};",
+            FAMILY_SRC,
+        )
+
     def test_every_marker_carries_the_size_shadow_and_side(self):
         self.assertIn("size = 32;", CONFIG_SRC)
         self.assertIn("shadow = 0;", CONFIG_SRC)

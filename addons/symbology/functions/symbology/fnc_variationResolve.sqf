@@ -14,6 +14,15 @@
  * stay the single source of truth for the marker type and colour; the
  * variation layer only selects their inputs.
  *
+ * The battle dimension is the outer APP-6(C) frame and the function is the
+ * inner glyph.  An AEE family texture bakes the frame of the function's own
+ * dimension, so a function from another dimension cannot be drawn in the
+ * selected frame.  When the two disagree the kernel takes the selected
+ * dimension's canonical function: the first glyph the dimension table
+ * (section 6) lists for that dimension.  A dimension the table does not cover
+ * leaves the function unchanged.  Issue #242: the dimension selector changes
+ * the drawn symbol.
+ *
  * Arguments:
  *   0: _familyId <STRING> the family id, for example "symbol"
  *   1: _state    <ARRAY>  [[optionId, valueId], ...]
@@ -51,5 +60,29 @@ private _palette = "";
     if (_optionId isEqualTo "echelon") then { _echelon = _valueId; };
     if (_optionId isEqualTo "palette") then { _palette = _valueId; };
 } forEach _normal;
+
+// The battle dimension selects the frame; the function must belong to that
+// frame.  The dimension table is section 6: [category, dimension, grade,
+// source].  A function from another dimension is replaced by the selected
+// dimension's canonical function, so the drawn symbol matches the frame.
+if (_category isNotEqualTo "" && _dimension isNotEqualTo "") then {
+    private _dimensions = aee_symbology_symbologyTables select 6;
+    private _categoryDimension = "";
+    private _canonical = "";
+    private _found = false;
+    {
+        private _row = _x;
+        if (!_found && ((_row select 0) isEqualTo _category)) then {
+            _categoryDimension = _row select 1;
+            _found = true;
+        };
+        if (_canonical isEqualTo "" && ((_row select 1) isEqualTo _dimension)) then {
+            _canonical = _row select 0;
+        };
+    } forEach _dimensions;
+    if (_found && _categoryDimension isNotEqualTo _dimension && _canonical isNotEqualTo "") then {
+        _category = _canonical;
+    };
+};
 
 [sideUnknown, _category, _affiliation, _echelon, _palette, _dimension] call FUNC(symbolResolve)

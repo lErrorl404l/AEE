@@ -201,6 +201,23 @@ class TestVariationResolve(unittest.TestCase):
         out = resolve("symbol", [["nonsense", "x"], ["function", "engineer"]])
         self.assertEqual(out[1], "AEE_b_eng")
 
+    def test_the_dimension_selects_the_frame(self):
+        # Issue #242: the battle dimension is a live input, not a dead one.  A
+        # function from another dimension is replaced by the selected
+        # dimension's canonical function so the glyph matches the frame.
+        self.assertEqual(
+            resolve("symbol", [["dimension", "sea"], ["function", "infantry"]])[1],
+            "AEE_b_naval",
+        )
+
+    def test_a_function_in_the_selected_dimension_is_kept(self):
+        # The regression guard for the correction above: a consistent choice is
+        # not disturbed.
+        self.assertEqual(
+            resolve("symbol", [["dimension", "air"], ["function", "fixed_wing"]])[1],
+            "AEE_b_plane",
+        )
+
 
 class TestVariationConfig(unittest.TestCase):
     """The generated config registers the one option-driven entry."""
@@ -311,6 +328,14 @@ class TestVariationApply(unittest.TestCase):
     def test_the_apply_pass_handles_the_family_entry(self):
         self.assertIn('"AEE_Variation"', MARKERS_APPLY_SRC)
         self.assertIn("FUNC(variationResolve)", MARKERS_APPLY_SRC)
+
+    def test_the_apply_layer_draws_the_resolved_echelon(self):
+        # Issue #242: the resolved spec carries the echelon (element 3) and the
+        # apply layer must draw the echelon overlay from it, or the selector's
+        # echelon stays a dead input.
+        self.assertIn("_spec select 3", APPLY_SRC)
+        self.assertIn("FUNC(symbologyEchelonMarker)", APPLY_SRC)
+        self.assertIn("FUNC(symbologyEchelonSize)", APPLY_SRC)
 
 
 class TestVariationSettings(unittest.TestCase):
