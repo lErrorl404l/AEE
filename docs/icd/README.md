@@ -53,13 +53,13 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `core` | `nightvision` | 5 | [core-nightvision.md](core-nightvision.md) |
 | `core` | `physiology` | 5 | [core-physiology.md](core-physiology.md) |
 | `core` | `vehicles` | 5 | [core-vehicles.md](core-vehicles.md) |
+| `nightvision` | `vision` | 5 | [nightvision-vision.md](nightvision-vision.md) |
 | `weatherfx` | `particles` | 5 | [weatherfx-particles.md](weatherfx-particles.md) |
 | `ai` | `wildlife` | 4 | [ai-wildlife.md](ai-wildlife.md) |
 | `core` | `hud` | 4 | [core-hud.md](core-hud.md) |
 | `core` | `wildlife` | 4 | [core-wildlife.md](core-wildlife.md) |
 | `eye` | `optics` | 4 | [eye-optics.md](eye-optics.md) |
 | `lighting` | `core` | 4 | [lighting-core.md](lighting-core.md) |
-| `nightvision` | `vision` | 4 | [nightvision-vision.md](nightvision-vision.md) |
 | `weather` | `lighting` | 4 | [weather-lighting.md](weather-lighting.md) |
 | `core` | `altitude` | 3 | [core-altitude.md](core-altitude.md) |
 | `diagnostics` | `core` | 3 | [diagnostics-core.md](diagnostics-core.md) |

@@ -11,6 +11,7 @@ class CfgPatches {
             "aee_lib",
             "aee_core",
             "aee_ltm",
+            "aee_thermal",
             "cba_main",
             "cba_xeh"
         };

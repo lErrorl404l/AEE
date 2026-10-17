@@ -135,6 +135,11 @@ private _visionMode = currentVisionMode _player;
 private _diagFlags = format ["PP mode=%1 chromaActive=%2 blurActive=%3 ccActive=%4", _visionMode, missionNamespace getVariable [QGVAR(chromaActive), false], missionNamespace getVariable [QGVAR(blurActive), false], missionNamespace getVariable [QGVAR(ccActive), false]];
 AEE_LOG_DEBUG(_diagFlags);
 
+// The thermal host can own the view on the DTV day channel (vision mode 0
+// with an AEE thermal image).  Fold it into the mode the gate below reads, so
+// a sensor image is never repainted by the optical path.  The diagnostic line
+// above reports the raw engine mode.
+if ([_player] call EFUNC(thermal,isThermalHostActive)) then { _visionMode = 2; };
 if (_visionMode == 1 || _visionMode == 2) exitWith {
     // NVG tube model uses separate ppEffect handles (NVG_CC, NVG_Bloom, NVG_Vignette)
     // and separate state variables (nvgGrainActive). This block only fades the
