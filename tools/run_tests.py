@@ -331,6 +331,9 @@ def main():
         # The screenshot differential: baseline vs candidate render metric and
         # change localisation, consumed by the manual visual QA pass.
         "tools/tests/test_compare_screens.py",
+        # The thermal-host stand-down gate, the vision-mode reset lifecycle and
+        # the declared thermal dependency (issue #299).
+        "tools/tests/test_pp_thermal_host_gate.py",
     ]
     # Part (b) needs a `hemtt release` tree, so it runs in the full sweep only.
     release_suites = [
