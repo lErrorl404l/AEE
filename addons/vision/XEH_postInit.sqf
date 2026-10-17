@@ -18,13 +18,21 @@ AEE_MODULE_POST_INIT
     params ["_unit", "_visionMode"];
     if (_unit != call CBA_fnc_currentUnit) exitWith {};
     if (isNil QGVAR(isReady)) exitWith {};
-    // Real exit to normal vision: the visionMode event is the only place
-    // that knows the exit is genuine (not a transient 0 from weapon raise
-    // or ENVG-II cycling).  Run each sensor's exit block once to destroy
-    // handles and tear down the overlay, then stop the PFH.  Also restore
-    // the engine's default aperture (DoF off) so normal vision is sharp.
-    if (_visionMode == 0) then {
-        [] call FUNC(teardownSensors);
+    // A visionMode event is the only place that knows an exit is genuine (a
+    // transient 0 from a weapon raise or ENVG-II cycling never fires it).
+    // Run each sensor's exit block once to destroy handles and tear down the
+    // overlay, then stop the PFH.  Also restore the engine's default aperture
+    // (DoF off) so normal vision is sharp.
+    // A direct 1 -> 2 handover must run the same teardown: the NVG tube
+    // effects carry ppEffectForceInNVG, so without it they stay composited
+    // over the thermal frame for the whole session.  A live NVG session is
+    // signalled by nvgGrainActive, which fnc_applyNVGTubeModel sets on each
+    // full tube tick and clears in its exit branch.
+    if (_visionMode != 1) then {
+        if (_visionMode == 0
+            || {missionNamespace getVariable [QEGVAR(nightvision,nvgGrainActive), false]}) then {
+            [] call FUNC(teardownSensors);
+        };
     };
     // Fade normal-vision optical effects immediately (managePostProcess
     // gates on vision mode internally).
@@ -35,10 +43,17 @@ AEE_MODULE_POST_INIT
     // Reset sensor handles to -1 on entry.  The engine can kill ppEffects
     // (alt-tab, resize) leaving stale positive handle numbers that fail
     // every call with "Invalid post effect handle".  Forcing -1 makes the
-    // first sensor tick recreate them cleanly.
+    // first sensor tick recreate them cleanly.  Destroy-then-store: a handle
+    // that is still live is destroyed before its store is cleared, or the
+    // engine effect is orphaned (the idiom at
+    // fnc_applyNVGTubeModel.sqf:1107-1124).
     if (_visionMode == 1) then {
         {
-            missionNamespace setVariable [_x, -1];
+            private _h = missionNamespace getVariable [_x, -1];
+            if (_h >= 0) then {
+                ppEffectDestroy _h;
+                missionNamespace setVariable [_x, -1];
+            };
         } forEach [
             QEGVAR(nightvision,ppHandle_NVG_CC),
             QEGVAR(nightvision,ppHandle_NVG_Bloom),
@@ -47,8 +62,15 @@ AEE_MODULE_POST_INIT
         ];
     };
     if (_visionMode == 2) then {
+        // Same reset for the thermal stack.  The post-init warm pass creates
+        // and disables the eight handles at client start, so these four are
+        // live here and a bare -1 would orphan them.
         {
-            missionNamespace setVariable [_x, -1];
+            private _h = missionNamespace getVariable [_x, -1];
+            if (_h >= 0) then {
+                ppEffectDestroy _h;
+                missionNamespace setVariable [_x, -1];
+            };
         } forEach [
             QEGVAR(thermal_display,ppHandle_Thermal_Vignette),
             QEGVAR(thermal_display,ppHandle_Thermal_CC),

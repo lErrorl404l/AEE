@@ -146,7 +146,10 @@ if ((cameraOn != _player) && (cameraOn != _veh)) exitWith {
 };
 
 // A vision sensor owns the image.  The gate must come before the first adjust.
-if (currentVisionMode _player != 0) exitWith {
+// The thermal host also owns the image on the DTV day channel (mode 0), so the
+// host predicate belongs to the same gate.
+if (currentVisionMode _player != 0
+    || {[_player] call EFUNC(thermal,isThermalHostActive)}) exitWith {
     [_hCC, _hAcuity] call _standDown;
 };
 

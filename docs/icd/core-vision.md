@@ -10,9 +10,9 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
 | `aee_core_currentFogDensity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/vision/functions/vision/fnc_calculateViewDistance.sqf:52` | Fog density 0..1 |
-| `aee_core_currentHaze` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/vision/functions/grade/fnc_applyBaseGrade.sqf:256` | Haze intensity 0..1 |
-| `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/vision/functions/grade/fnc_applyBaseGrade.sqf:242` | UNKNOWN |
-| `aee_core_opticsEnabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/vision/functions/vision/fnc_applyWeatherGrain.sqf:35` | UNKNOWN |
+| `aee_core_currentHaze` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/vision/functions/grade/fnc_applyBaseGrade.sqf:259` | Haze intensity 0..1 |
+| `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/vision/functions/grade/fnc_applyBaseGrade.sqf:245` | UNKNOWN |
+| `aee_core_opticsEnabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/vision/functions/vision/fnc_applyWeatherGrain.sqf:37` | UNKNOWN |
 | `aee_core_ppHandle_optics_BaseAcuity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/vision/functions/grade/fnc_applyBaseGrade.sqf:69` | UNKNOWN |
 | `aee_core_ppHandle_optics_BaseGrade` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/vision/functions/grade/fnc_applyBaseGrade.sqf:68` | UNKNOWN |
 

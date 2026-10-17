@@ -30,11 +30,13 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
 // Sensor mode gate.  A non-zero currentVisionMode means the engine draws its
 // own NVG or thermal image, and god-ray streaks from the visible sun have no
-// place on top of it.  The string-LHS form owns the engine effect, so it is
-// disabled on the way out rather than merely dimmed.  Leaving sensor mode
-// restores the effect on the next tick through the enable path below.
+// place on top of it.  The thermal host does the same on the DTV day channel
+// (mode 0), so the host predicate is part of this gate.  The string-LHS form
+// owns the engine effect, so it is disabled on the way out rather than merely
+// dimmed.  Leaving sensor mode restores the effect on the next tick through
+// the enable path below.
 private _visionMode = currentVisionMode _player;
-if (_visionMode != 0) exitWith {
+if (_visionMode != 0 || {[_player] call EFUNC(thermal,isThermalHostActive)}) exitWith {
     if (missionNamespace getVariable [QGVAR(glareFXActive), false]) then {
         "LightShafts" ppEffectAdjust [0.01, 0.6, 0, 0.89];
         "LightShafts" ppEffectEnable false;

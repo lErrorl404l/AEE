@@ -49,9 +49,12 @@ if (_offView) exitWith {
 // clean NVG/thermal image destroys the view — the real devices do not have
 // this grain.  Fade, then release the handle: the sensor path owns the
 // screen, so the eye grain must not survive into it.
-// Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
+// Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.  The
+// thermal host also owns the image on the DTV day channel (mode 0), so ask
+// the host predicate as well as the mode.
 private _visionMode = currentVisionMode _player;
-if (_visionMode == 1 || _visionMode == 2) exitWith {
+if (_visionMode == 1 || _visionMode == 2
+    || {[_player] call EFUNC(thermal,isThermalHostActive)}) exitWith {
     if (_hGrain >= 0) then {
         if (missionNamespace getVariable [QGVAR(nightGrainActive), false]) then {
             _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];

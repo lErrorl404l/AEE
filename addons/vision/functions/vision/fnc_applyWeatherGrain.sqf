@@ -20,7 +20,8 @@ Lifecycle (the existing hysteresis pattern from fnc_managePostProcess):
   - engages above the rain on-threshold and disengages below the off-threshold
     (off < on), so a value at the boundary does not toggle every tick;
   - normal vision only: NVG and thermal own their own grain, so the effect
-    stands down in a sensor mode;
+    stands down in a sensor mode, and while the thermal host owns the view on
+    the DTV day channel;
   - stands down when the optics module is disabled.
 
 Client-only.  Args: none.  Returns: nothing.
@@ -32,6 +33,7 @@ private _unit = call CBA_fnc_currentUnit;
 if (isNull _unit) exitWith {};
 
 private _standDown = (currentVisionMode _unit != 0)
+    || {[_unit] call EFUNC(thermal,isThermalHostActive)}
     || {!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])};
 
 private _hGrain = ["optics", "WeatherGrain", "FilmGrain", 1747, ""] call EFUNC(lib,createPPEffect);
