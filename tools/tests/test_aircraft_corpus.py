@@ -18,6 +18,7 @@ Run: python3 -m unittest tools.tests.test_aircraft_corpus -v
 from __future__ import annotations
 
 import json
+import math
 import subprocess
 import sys
 import tempfile
@@ -322,6 +323,109 @@ class RealCorpusTest(unittest.TestCase):
                 source_id = raw.get("source")
                 if isinstance(source_id, str) and source_id:
                     self.assertIn(source_id, by_id, f"{entry.catalogue_id}.{name}")
+
+
+class CatalogueExpansionTest(unittest.TestCase):
+    """The bindings and held values added by the catalogue expansion.
+
+    Priority 1 corrects the Chinook binding, binds the Gripen and the Merlin,
+    and records the wiki conflicts. Priority 2 makes the F/A-18E runtime-ready
+    from the NATOPS. The held UH-60A and RAH-66 documents state no shaft power,
+    so those two entries stay leads; that ceiling is asserted here too.
+    """
+
+    def _bindings(self) -> dict[str, catalogue.ClassBinding]:
+        return {binding.game_class: binding for binding in _load_real().bindings}
+
+    def _entries(self) -> dict[str, catalogue.CatalogueEntry]:
+        return {entry.catalogue_id: entry for entry in _load_real().entries}
+
+    def test_chinook_binding_moves_to_the_huron(self) -> None:
+        # B_Heli_Transport_03_F is the CH-67 Huron, the real Chinook analogue.
+        binding = self._bindings()["B_Heli_Transport_03_F"]
+        self.assertEqual("ch47_chinook", binding.catalogue_id)
+        self.assertEqual("Helicopter", binding.class_token)
+        self.assertEqual("claimed", binding.grade)
+
+    def test_mohawk_binding_moves_to_the_merlin(self) -> None:
+        # I_Heli_Transport_02_F is the CH-49 Mohawk, which the wiki names the
+        # AW101 Merlin. The old ch47_chinook binding was wrong.
+        binding = self._bindings()["I_Heli_Transport_02_F"]
+        self.assertEqual("aw101_merlin", binding.catalogue_id)
+        self.assertEqual("src_armedassault_wiki", binding.identity_source)
+
+    def test_gryphon_binds_to_the_gripen(self) -> None:
+        binding = self._bindings()["I_Plane_Fighter_04_F"]
+        self.assertEqual("jas39c_gripen", binding.catalogue_id)
+        self.assertEqual("Plane", binding.class_token)
+        self.assertEqual("claimed", binding.grade)
+
+    def test_gripen_reference_speed_resolves_rated_power(self) -> None:
+        entry = self._entries()["jas39c_gripen"]
+        self.assertIs(True, entry.runtime_ready)
+        rated = entry.resolved_fields()["rated_power_w"]
+        self.assertEqual("derived", rated.grade)
+        self.assertAlmostEqual(
+            round(80.5 * 1000.0 * 388.888889, 6), rated.value, places=3
+        )
+        self.assertIn(
+            "rated_power_w = thrust_kn * 1000 * reference_speed_ms", rated.state
+        )
+
+    def test_fa18e_super_hornet_is_runtime_ready(self) -> None:
+        entry = self._entries()["fa18e_super_hornet"]
+        self.assertIs(True, entry.runtime_ready)
+        resolved = entry.resolved_fields()
+        self.assertNotEqual("absent", resolved["operating_weight_kg"].grade)
+        rated = resolved["rated_power_w"]
+        self.assertEqual("derived", rated.grade)
+        self.assertEqual("src_fa18_natops", rated.source)
+        self.assertAlmostEqual(
+            round(184.156375 * 1000.0 * 360.111111, 6), rated.value, places=3
+        )
+
+    def test_aw101_merlin_is_runtime_ready(self) -> None:
+        entry = self._entries()["aw101_merlin"]
+        self.assertIs(True, entry.runtime_ready)
+        resolved = entry.resolved_fields()
+        self.assertEqual(15600, resolved["operating_weight_kg"].value)
+        self.assertEqual(5652000.0, resolved["rated_power_w"].value)
+        self.assertAlmostEqual(
+            round(math.pi * (18.6 / 2.0) ** 2, 6),
+            resolved["rotor_disc_area_m2"].value,
+            places=3,
+        )
+
+    def test_mi26_and_mi28_stay_runtime_ready_from_the_opfor_guide(self) -> None:
+        entries = self._entries()
+        for catalogue_id in ("mi26_halo", "mi28_havoc"):
+            entry = entries[catalogue_id]
+            self.assertIs(True, entry.runtime_ready, catalogue_id)
+            for field in ("operating_weight_kg", "rated_power_w", "rotor_disc_area_m2"):
+                self.assertNotEqual(
+                    "absent", entry.resolved_fields()[field].grade, catalogue_id
+                )
+
+    def test_the_uh60a_and_rah66_stay_leads(self) -> None:
+        # TM 1-1520-237-10 and DTIC ADA378729 state no shaft power, so the
+        # rated power is absent and the entry stays a lead. This is the ceiling.
+        entries = self._entries()
+        for catalogue_id in ("uh60a_black_hawk", "rah66_comanche"):
+            entry = entries[catalogue_id]
+            self.assertIs(False, entry.runtime_ready, catalogue_id)
+            self.assertEqual(
+                "absent", entry.resolved_fields()["rated_power_w"].grade, catalogue_id
+            )
+
+    def test_the_wiki_conflicts_are_recorded_with_both_values(self) -> None:
+        raw = json.loads((REAL_DATA / "conflicts.json").read_text(encoding="utf-8"))
+        by_entity = {item["entity"]: item for item in raw}
+        for entity in ("su25_frogfoot", "cessna_172_skyhawk", "light_utility_rotary"):
+            self.assertIn(entity, by_entity)
+            conflict = by_entity[entity]
+            self.assertNotEqual(conflict["value_a"], conflict["value_b"])
+            self.assertIn("keep both", conflict["resolution"])
+            self.assertNotIn("averag", conflict["resolution"])
 
 
 class FixtureRejectionTest(unittest.TestCase):
