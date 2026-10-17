@@ -34,9 +34,16 @@ def cmd_scan(a) -> int:
     res = an.scan(a.path)
     sims: list[dict] = []
     if not a.no_sim:
+        from . import mapview
+
         cal = sim.load_calibration(a.calibration)
         scs = sim.build_scenarios(res, rules)
         sims, sf = sim.run_scenarios(scs, rules, cal, a.sim_out)
+        msum, mf = mapview.preview_scenarios(res, rules, cal, a.sim_out)
+        for e in msum:
+            sims.append({"scenario": f"map: {e['style']}", "kind": "map", "metrics": e["configured"], "image": None,
+                         "assumed": e["assumed"], "through": [x["scenario"] for x in e["scenarios"]]})
+        sf = list(sf) + list(mf)
         ign = {i.upper() for i in (a.ignore or [])}
         seen = set()
         for rule, sev, msg, prov, origin in sf:
@@ -201,6 +208,141 @@ def cmd_calibrate(a) -> int:
     return 0
 
 
+def _scan_quiet(a) -> "Analyzer":
+    rules = load_rules(getattr(a, "rules", None))
+    an = Analyzer(rules)
+    an.scan(a.path)
+    return an
+
+
+def cmd_layers(a) -> int:
+    """The UI layer table: which script puts what on which cut/title layer."""
+    an = _scan_quiet(a)
+    res = an.res
+    if a.format == "json":
+        print(json.dumps(res.layers, indent=2, default=str))
+        return 0
+    if not res.layers:
+        print("no cutRsc / cutText / cutObj / titleRsc / titleText calls found")
+        return 0
+    print("UI LAYERS  (cut* layers: 0 is the back-most; named layers are numbered in order of first use at runtime)\n")
+    over_map = []
+    for row in res.layers:
+        print(f"{row['layer']}   [{row['kind']}]")
+        for u in row["uses"]:
+            bits = [u["what"], u["cmd"]]
+            if u["resource"]:
+                bits.append(f"\"{u['resource']}\"")
+            if u["effect"]:
+                bits.append(u["effect"])
+            if u["speed"] is not None:
+                bits.append(f"speed {u['speed']:g}")
+            sm = u["showInMap"]
+            if u["what"] == "show":
+                bits.append("hidden in map" if sm is False else ("shown over the map" if sm else "showInMap unknown"))
+                if u["drawOverHUD"] is False:
+                    bits.append("under the HUD")
+            print("    " + "  ".join(bits) + f"   {u['at']}")
+            if u["what"] == "show" and sm is not False:
+                over_map.append((row["layer"], u))
+        print()
+    if over_map:
+        print(f"{len(over_map)} show command(s) stay visible when the map is opened (showInMap is true or default); pass false to hide them there.")
+    print("Not known (wiki silent): how title* resources stack against cut* layers, and whether a string layer and a BIS_fnc_rscLayer layer of the same name are one layer.")
+    return 0
+
+
+def cmd_grid(a) -> int:
+    """What the terrain's map grid will print: label ranges and corner references per zoom class."""
+    from . import mapview
+
+    rules = load_rules(getattr(a, "rules", None))
+    an = Analyzer(rules)
+    res = an.scan(a.path)
+    gm = [g for g in res.grids if not a.world or g["world"].lower() == a.world.lower()]
+    if a.format == "json":
+        print(json.dumps(gm, indent=2, default=str))
+        return 0
+    if not gm:
+        print("no CfgWorlds >> <world> >> Grid class found" + (f" for {a.world}" if a.world else ""))
+        return 0
+    for g in gm:
+        print(f"{g['world']}   mapSize {g['mapSize']}   offsetX {g['offsetX']}   offsetY {g['offsetY']}   ({os.path.relpath(g['file'], res.root)})")
+        for z in g["zooms"]:
+            head = f"  {z['name']:<6} zoomMax {z['zoomMax']!s:<8} step {z['stepX']}/{z['stepY']}  format {z['formatX']}/{z['formatY']}"
+            if z.get("inherits"):
+                head += f"  (inherits {z['inherits']})"
+            print(head)
+            if "corners" in z:
+                c = z["corners"]
+                print(f"         labels X {z['labelsX'][0]}..{z['labelsX'][1]}  Y {z['labelsY'][0]}..{z['labelsY'][1]}   SW {c['SW']}   SE {c['SE']}   NW {c['NW']}   NE {c['NE']}   centre {c['centre']}")
+        print()
+    print("Label arithmetic is the community BIS_fnc_gridToPos conversion (posX = offsetX + stepX*gridX; posY = mapSize - offsetY - stepY*gridY), inverted. It is not read from the engine.")
+    if a.png:
+        models = [m for m in res.grid_models if not a.world or m.world.lower() == a.world.lower()]
+        mapview.grid_sheet(models[0], rules, a.png, a.zoom)
+        print(f"wrote {a.png}")
+    return 0
+
+
+def cmd_map(a) -> int:
+    from . import mapview, sim
+
+    rules = load_rules(getattr(a, "rules", None))
+    an = Analyzer(rules)
+    res = an.scan(a.path)
+    cal = sim.load_calibration(a.calibration)
+    if a.zoom:
+        cal["map_zoom"] = a.zoom
+    msum, mf = mapview.preview_scenarios(res, rules, cal, a.out, limit=a.limit)
+    if not res.map_styles:
+        print("no map control (RscMapControl-like class) found in the scanned configs")
+        return 0
+    if not msum:
+        print("map controls found, but none sets colorGrid / colorGridMap, so there is nothing to preview")
+        return 0
+    state = {None: "unknown (map findings stay info)", True: "yes", False: "no"}[cal.get("pp_on_map")]
+    print(f"post-process applied to the map screen: {state}\n")
+    for e in msum:
+        c = e["configured"]["colorGrid"]
+        print(f"{e['style']}   labels: {e['labels']}" + (f"   defaults assumed for: {', '.join(e['assumed'])}" if e["assumed"] else ""))
+        print("   grid line contrast  " + "  ".join(f"{n.split(' (')[0]}: {'-' if v is None else f'{v:.2f}'}" for n, v in zip(mapview.BAND_NAMES, c["lines"])))
+        print("   grid number contrast " + "  ".join(f"{n.split(' (')[0]}: {'-' if v is None else f'{v:.2f}'}" for n, v in zip(mapview.BAND_NAMES, c["text"])))
+        for sc in e["scenarios"]:
+            m = sc["metrics"]["colorGrid"]
+            print(f"   through {sc['scenario']}: lines " + "  ".join('-' if v is None else f'{v:.2f}' for v in m["lines_pp"]))
+    print()
+    for rule, sev, msg, prov, origin in mf:
+        print(f"  {sev:<7} {rule} {msg}  [{prov}]")
+    print(f"\nwrote previews to {a.out}")
+    return 0
+
+
+def cmd_map_pp(a) -> int:
+    """Does post-process change the map screen? Compare two screenshots of the same map view, effect off and on."""
+    from . import sim
+
+    b, f = sim.load_pair(a.before, a.after)
+    mae = sim._mae(b, f)
+    applies = mae > a.threshold
+    print(f"mean absolute difference between the two screenshots: {mae:.4f}   (threshold {a.threshold})")
+    if applies:
+        print("=> the effect changed the map screenshot: post-process IS applied to the map screen. Map findings will use their normal severity.")
+    else:
+        print("=> no measurable change: post-process does NOT appear to be applied to the map screen. MAPSIM002 will be suppressed.")
+    print("Make sure both shots show the same map position/zoom and that only the post-process effect differs; any other change counts as a difference.")
+    if a.out:
+        merged = {}
+        if os.path.exists(a.out):
+            with open(a.out, encoding="utf-8") as fh:
+                merged = json.load(fh)
+        merged["pp_on_map"] = bool(applies)
+        with open(a.out, "w", encoding="utf-8") as fh:
+            json.dump(merged, fh, indent=2)
+        print(f"wrote pp_on_map={str(bool(applies)).lower()} to {a.out}  (use it with: scan ... --calibration {a.out})")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="arma_vqa", description="Offline visual QA for Arma 3 mods (post-process, thermal, NVG, aperture, PiP).")
     p.add_argument("--version", action="version", version=__version__)
@@ -215,7 +357,7 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--no-sim", action="store_true", help="skip the offline render model")
     s.add_argument("--calibration", metavar="JSON")
     s.add_argument("--rules", metavar="DIR", help="alternate rules directory")
-    s.add_argument("--vanilla-classes", metavar="FILE", help="text file with extra known CfgOpticsEffect class names")
+    s.add_argument("--vanilla-classes", metavar="FILE", help="text file with extra known class names (CfgOpticsEffect, RscTitles, CfgTitles)")
     s.add_argument("--ignore", nargs="*", metavar="RULE")
     s.add_argument("--output", "-o", metavar="FILE")
     s.set_defaults(fn=cmd_scan)
@@ -245,6 +387,37 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--calibration", metavar="JSON", help="start from an existing calibration file")
     c.add_argument("--max-error", type=float, default=0.06, help="warn when the best candidate is worse than this mean abs error")
     c.set_defaults(fn=cmd_calibrate)
+
+    ly = sub.add_parser("layers", help="table of cutRsc / cutText / cutObj / titleRsc layers: who shows what where, and what stays visible over the map")
+    ly.add_argument("path", nargs="+")
+    ly.add_argument("--format", choices=["text", "json"], default="text")
+    ly.add_argument("--rules")
+    ly.set_defaults(fn=cmd_layers)
+
+    gr = sub.add_parser("grid", help="what the terrain's map Grid class prints: label ranges and corner references per zoom class")
+    gr.add_argument("path", nargs="+")
+    gr.add_argument("--world", help="only this CfgWorlds class")
+    gr.add_argument("--zoom", help="zoom class for --png (default: finest)")
+    gr.add_argument("--png", metavar="FILE", help="draw a preview with the real labels")
+    gr.add_argument("--format", choices=["text", "json"], default="text")
+    gr.add_argument("--rules")
+    gr.set_defaults(fn=cmd_grid)
+
+    mp = sub.add_parser("map", help="render a synthetic map from the mod's map-control colours, measure grid line/number visibility, optionally through its post-process stack")
+    mp.add_argument("path", nargs="+")
+    mp.add_argument("--out", default="map_preview", metavar="DIR")
+    mp.add_argument("--zoom", help="grid zoom class for the labels (default: finest)")
+    mp.add_argument("--limit", type=int, default=3, help="how many post-process scenarios to run")
+    mp.add_argument("--calibration", metavar="JSON")
+    mp.add_argument("--rules")
+    mp.set_defaults(fn=cmd_map)
+
+    mpp = sub.add_parser("map-pp", help="decide from two screenshots whether post-process is applied to the map screen")
+    mpp.add_argument("--before", required=True, metavar="PNG", help="map screenshot with the effect off")
+    mpp.add_argument("--after", required=True, metavar="PNG", help="the same map view with the effect on")
+    mpp.add_argument("--threshold", type=float, default=0.01)
+    mpp.add_argument("--out", metavar="JSON", help="record pp_on_map in this calibration file")
+    mpp.set_defaults(fn=cmd_map_pp)
 
     t = sub.add_parser("ti", help="preview a setTIParameter output window")
     t.add_argument("--start", type=float, default=0.1)

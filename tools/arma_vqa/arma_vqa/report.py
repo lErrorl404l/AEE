@@ -42,6 +42,10 @@ def to_text(res: Result, findings: list[Finding], sims: list[dict], color: bool 
     if sims:
         out.append("Offline render scenarios")
         for s in sims:
+            if s["kind"] == "map":
+                c = s["metrics"]["colorGrid"]["lines"]
+                out.append(f"  - {s['scenario']}: grid line contrast " + " / ".join('-' if v is None else f'{v:.2f}' for v in c) + " (land / sea / forest / 2 satellite stand-ins)")
+                continue
             if s["kind"] == "ti":
                 m = s["metrics"]
                 out.append(f"  - {s['scenario']}: window {m['output_low']:.2f}..{m['output_high']:.2f}, ~{m['grey_levels']} grey levels"
@@ -53,7 +57,11 @@ def to_text(res: Result, findings: list[Finding], sims: list[dict], color: bool 
                            + (f"  -> {s['image']}" if s.get("image") else ""))
         out.append("")
     out.append(summary_line(res, findings))
-    out.append("Provenance tags: wiki / wiki-note / inferred / heuristic / model. Run `explain RULEID` for details.")
+    out.append("Provenance tags: wiki / wiki-note / community / inferred / heuristic / model. Run `explain RULEID` for details.")
+    if res.layers:
+        out.append(f"{len(res.layers)} UI layer(s) in use - `layers` prints who shows what where.")
+    if res.grids:
+        out.append(f"{len(res.grids)} terrain grid(s) - `grid` prints the numbers each zoom level shows.")
     return "\n".join(out)
 
 
@@ -82,6 +90,8 @@ def to_json(res: Result, findings: list[Finding], sims: list[dict]) -> str:
         "summary": res.counts() | {"files": len(res.files), "suppressed": res.suppressed},
         "findings": [f.to_dict() for f in findings],
         "simulation": sims,
+        "layers": res.layers,
+        "grids": res.grids,
     }, indent=2, default=str)
 
 

@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass, field
 from typing import Any
 
-from . import sqf
+from . import mapcfg, sqf, ui
 from .catalog import RULES
 from .config_cpp import CfgClass, parse_config, walk
 from .rules import Rules, defaults_of, load_rules, validate_params
@@ -102,6 +102,10 @@ class Result:
     ti_calls: list[dict] = field(default_factory=list)
     optics: list[Optic] = field(default_factory=list)
     optic_effects: dict[str, Instance] = field(default_factory=dict)
+    layers: list[dict] = field(default_factory=list)       # UI layer table (cut*/title* commands)
+    grids: list[dict] = field(default_factory=list)        # terrain Grid classes and the labels they print
+    grid_models: list = field(default_factory=list)        # the same as mapcfg.GridModel objects (for the preview)
+    map_styles: list[dict] = field(default_factory=list)   # colours/scales of map controls found in configs
     suppressed: int = 0
 
     def counts(self) -> dict[str, int]:
@@ -116,6 +120,7 @@ class Analyzer:
                  ignore: set[str] | None = None):
         self.rules = rules or load_rules()
         self.vanilla = {c.lower() for c in self.rules.tc.get("known_vanilla_optics_effects", [])}
+        self.vanilla |= {c.lower() for c in self.rules.ui.get("known_vanilla_ui_classes", {}).get("classes", [])}
         if vanilla_classes:
             self.vanilla |= {c.lower() for c in vanilla_classes}
         self.ignore = {i.upper() for i in (ignore or set())}
@@ -134,6 +139,11 @@ class Analyzer:
         self.cam_addons: set[str] = set()      # addon roots that contain camCreate + cameraEffect
         self.cam_any = False
         self._tpl_calls: list = []
+        self.rsc_titles: dict[str, tuple] = {}   # RscTitles class (lowercase) -> (file, line, name)
+        self.cfg_titles: dict[str, tuple] = {}   # CfgTitles class (lowercase) -> (file, line, name)
+        ui.configure(self.rules.ui.get("title_effect_types", {}))
+        self.ui = ui.UiModel()
+        self._worlds: list[mapcfg.GridModel] = []
 
     # ------------------------------------------------------------------ util
     def add(self, rule: str, file: str, line: int, msg: str, sev: str | None = None, prov: str | None = None) -> None:
@@ -279,6 +289,13 @@ class Analyzer:
         self._check_optics()
         self._check_ti_combo()
         self._check_templates()
+        self.ui.finish(self)
+        self.res.layers = self.ui.layers
+        for m in mapcfg._merge(self._worlds):
+            mapcfg.check_grid(self, m)
+            if m.has_grid:
+                self.res.grids.append(mapcfg.grid_report(m))
+                self.res.grid_models.append(m)
         self.res.findings.sort(key=lambda f: (f.file, f.line, f.rule))
         return self.res
 
@@ -479,8 +496,8 @@ class Analyzer:
                 self._check_aperture(c, low_path)
             elif cmd == "setpipeffect":
                 self._check_pip(c, pip_state)
-            elif cmd in ("cutrsc", "cuttext", "titlersc", "titletext"):
-                self._ui_layer(c)
+            elif cmd in ui.UI_CMDS:
+                self.ui.check_call(self, c)
 
         # aperture ordering: setApertureNew first, then setAperture later in same file
         seq = [c for c in ap_calls]
@@ -675,27 +692,6 @@ class Analyzer:
             elif mode == 0 and key in state:
                 self.add("PIP003", c.file, c.line, f"\"{key}\" went through colour correction (mode 3) earlier; setPiPEffect [0] will not undo it - send [3, 0, ...] to disable instead")
 
-    def _ui_layer(self, c: Call) -> None:
-        # numeric layers shared by different resources
-        r = c.right
-        if not (isinstance(r, list) and r and isinstance(r[0], str)):
-            return
-        res = r[0]
-        if res.strip() == "" or res.lower() == "default":
-            return
-        layer = c.left if c.has_left else 0
-        if isinstance(layer, bool) or not _isnum(layer):
-            return
-        fam = "cut" if c.cmd.startswith("cut") else "title"
-        self._layers = getattr(self, "_layers", {})
-        key = (fam, int(layer))
-        self._layers.setdefault(key, {})
-        users = self._layers[key]
-        if users and res not in users:
-            first = next(iter(users.items()))
-            self.add("UI001", c.file, c.line, f"layer {int(layer)} is also used for \"{first[0]}\" ({self._rel(first[1][0])}:{first[1][1]}); showing \"{res}\" there replaces it. Use a named layer")
-        users.setdefault(res, (c.file, c.line))
-
     # --------------------------------------------------------- instance checks
     def _check_instances(self) -> None:
         rules = self.rules
@@ -824,6 +820,16 @@ class Analyzer:
     # ---------------------------------------------------------------- config
     def _scan_config(self, lx: sqf.Lexed) -> None:
         root = parse_config(lx)
+        # UI resources (cutRsc / titleRsc / cutObj targets) and map config
+        for cls in walk(root):
+            p0 = cls.path[0].lower() if cls.path else ""
+            if len(cls.path) == 2 and p0 == "rsctitles":
+                self.rsc_titles.setdefault(cls.name.lower(), (cls.file, cls.line, cls.name))
+            elif len(cls.path) == 2 and p0 == "cfgtitles":
+                self.cfg_titles.setdefault(cls.name.lower(), (cls.file, cls.line, cls.name))
+        self._worlds.extend(mapcfg.collect_worlds(root))
+        for mc, anc in mapcfg.collect_map_controls(root):
+            self.res.map_styles.append(mapcfg.check_map_control(self, mc, anc))
         # CfgOpticsEffect
         for cls in walk(root):
             if cls.name.lower() == "cfgopticseffect":

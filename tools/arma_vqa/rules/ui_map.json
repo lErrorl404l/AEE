@@ -1,0 +1,102 @@
+{
+  "_meta": {
+    "description": "UI layer (cutRsc/titleRsc/...) and map facts. Every entry carries a provenance tag (wiki, wiki-note, community, inferred, heuristic).",
+    "sources": [
+      "https://community.bistudio.com/wiki/cutRsc",
+      "https://community.bistudio.com/wiki/cutText",
+      "https://community.bistudio.com/wiki/cutObj",
+      "https://community.bistudio.com/wiki/cutFadeOut",
+      "https://community.bistudio.com/wiki/allCutLayers",
+      "https://community.bistudio.com/wiki/titleRsc",
+      "https://community.bistudio.com/wiki/titleText",
+      "https://community.bistudio.com/wiki/Title_Effect_Type",
+      "https://community.bistudio.com/wiki/BIS_fnc_rscLayer",
+      "https://community.bistudio.com/wiki/CT_MAP_MAIN",
+      "https://community.bistudio.com/wiki/CfgWorlds_Config_Reference",
+      "https://forums.bohemia.net/forums/topic/176278-grid-refrence-to-world-position/",
+      "https://pmc.editing.wiki/doku.php?id=arma3%3Aterrain%3Areal-world-data-tutorial",
+      "https://www.pmctactical.org/forum/viewtopic.php?p=180907"
+    ],
+    "could_not_read": [
+      "https://community.bistudio.com/wiki/RscTitles / Description.ext (RscTitles properties): the fetch tool returned nothing for these, so no RscTitles property rules exist",
+      "https://community.bistudio.com/wiki/Arma_3:_GUI_Coordinates (safeZone formulas): not readable, so no control-geometry rules exist",
+      "https://pmc.editing.wiki/doku.php?id=arma3%3Aterrain%3Aconfig.cpp (server error)"
+    ],
+    "source_conflicts": [
+      {
+        "topic": "map control inside a controls group (MAPUI007)",
+        "wiki": "CT_MAP_MAIN page: the map control cannot be placed inside a CT_CONTROLS_GROUP",
+        "shipped_code": "ACE3 (fcs, laser, javelin, spike) defines ACE_Rangehelper / ACE_LaserCode_Helper: RscMapControl inside CA_IGUI_elements_group of RscInGameUI as invisible helper controls that only run onDraw",
+        "decision": "reported as info only"
+      },
+      {
+        "topic": "'Default' class for clearing a layer (UI010)",
+        "wiki": "cutRsc documents cutRsc [\"Default\", ...] as the way to remove a resource; the titleRsc page says the class no longer exists as of 2.12",
+        "decision": "reported as info with the cutText [\"\", \"PLAIN\"] / cutFadeOut alternative"
+      },
+      {
+        "topic": "four-character grid label format (MAP008)",
+        "community": "one forum post links a 4-character format on Zoom0 to a crash; the PMC tutorial uses 4 digits on Zoom1 without a crash",
+        "decision": "reported as info only"
+      }
+    ]
+  },
+  "title_effect_types": {
+    "_prov": "wiki",
+    "_page": "Title_Effect_Type",
+    "types": ["PLAIN", "PLAIN NOFADE", "PLAIN DOWN", "BLACK", "BLACK OUT", "BLACK FADED", "BLACK IN", "WHITE OUT", "WHITE IN"],
+    "curtain_on": ["BLACK", "BLACK OUT", "BLACK FADED", "WHITE OUT"],
+    "curtain_off": ["BLACK IN", "WHITE IN"],
+    "notes": {
+      "PLAIN": "centred text, fades in and out",
+      "PLAIN NOFADE": "as PLAIN without fade in/out",
+      "PLAIN DOWN": "text aligned 25% up from the bottom of the screen",
+      "BLACK": "same as BLACK OUT",
+      "BLACK OUT": "whole screen black, shows the element, hides the other GUI behind the curtain",
+      "BLACK FADED": "black without a fade-in; with no speed it disappears after ~5-10 s, with a speed the screen stays black",
+      "BLACK IN": "withdraws the black curtain",
+      "WHITE OUT": "whole screen white; can blind the player, always set a fade-in time",
+      "WHITE IN": "withdraws the white curtain"
+    }
+  },
+  "known_vanilla_ui_classes": {
+    "_prov": "heuristic",
+    "_note": "RscTitles / CfgTitles classes that ship with the game. Minimal on purpose: only names with evidence (CBA_A3 uses cutRsc RscTitleDisplayEmpty). Extend with --vanilla-classes.",
+    "classes": ["RscTitleDisplayEmpty"]
+  },
+  "map_grid": {
+    "_prov": "community",
+    "_formula": "posX = offsetX + stepX*gridX ; posY = mapSize - offsetY - stepY*gridY   (BIS_fnc_gridToPos as posted by Moricky and Killzone_Kid)",
+    "_conventions": "offsetX 0, offsetY = mapSize, negative stepY; zoom classes finest first with ascending zoomMax; one digit fewer per x10 step",
+    "reference_grids": {
+      "VR": {"offsetX": 0, "offsetY": 8192, "zooms": [[100, "000"], [1000, "00"], [10000, "0"]], "source": "forum thread 176278 (Killzone_Kid)"},
+      "abc_sample": {"offsetX": 0, "offsetY": 5120, "zooms": [[100, "000"], [1000, "00"], [10000, "0"]], "source": "forum thread 186172 / pastebin EDBYDjjL"},
+      "PMC 40960 m tutorial": {"offsetX": 0, "offsetY": 40960, "zooms": [[10, "0000"], [100, "000"], [1000, "00"], [10000, "0"]], "source": "PMC editing wiki real-world-data-tutorial"}
+    }
+  },
+  "map_preview": {
+    "_note": "Heuristic thresholds for the offline map preview. Not BI limits.",
+    "grid_line_min_contrast": 1.3,
+    "grid_label_min_contrast": 1.8,
+    "contrast_drop_ratio": 0.6,
+    "satellite_swatches": {
+      "_prov": "heuristic",
+      "_note": "Stand-ins for the satellite texture, which depends on the terrain. Dark forest/dusk-like and bright sand-like.",
+      "dark": [0.20, 0.26, 0.15],
+      "bright": [0.72, 0.66, 0.50]
+    },
+    "default_style": {
+      "_prov": "community",
+      "_note": "Values of the default RscMapControl class as dumped in a community gist; used only to fill properties a mod does not set.",
+      "colorGrid": [0.1, 0.1, 0.1, 0.6],
+      "colorGridMap": [0.1, 0.1, 0.1, 0.6],
+      "colorOutside": [0.0, 0.0, 0.0, 1.0],
+      "colorSea": [0.467, 0.631, 0.851, 0.5],
+      "colorLevels": [0.286, 0.177, 0.094, 0.5],
+      "sizeExGrid": 0.02,
+      "scaleMin": 0.001,
+      "scaleMax": 1,
+      "scaleDefault": 0.16
+    }
+  }
+}

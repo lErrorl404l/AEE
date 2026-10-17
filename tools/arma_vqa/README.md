@@ -2,6 +2,8 @@
 
 Checks what a mod will **look like** without launching the game: post-process effects, priorities and layering,
 thermal imaging, night vision, aperture, picture-in-picture, camera effects and the optics config that drives them.
+It also covers the on-screen UI layers (`cutRsc` / `cutText` / `cutObj` / `titleRsc` / `titleText` / `BIS_fnc_rscLayer`)
+and whether the map renders correctly (terrain grid numbers, map-control colours, grid visibility, post-process over the map).
 It is a static analyser plus an approximate renderer. It does not replace one look in the real game; it makes
 most of the trips to the game unnecessary.
 
@@ -19,6 +21,11 @@ python3 -m arma_vqa explain PP004                       # why a rule exists, wit
 python3 -m arma_vqa sim ColorCorrections "[1,0.4,0,[0,0,0,0],[1,1,1,0],[1,1,1,0]]"   # preview one effect, no mod needed
 python3 -m arma_vqa ti --start 0.7 --width 0.3 --modes 1 2                          # preview a thermal output window
 python3 -m arma_vqa calibrate --pair before.png after.png "[...]" --out calibration.json   # fit the renderer to real screenshots
+python3 -m arma_vqa layers mod                          # who shows what on which cutRsc/titleRsc layer, and what stays over the map
+python3 -m arma_vqa grid mod --world MyTerrain          # the grid numbers each map zoom level prints, and the corner references
+python3 -m arma_vqa grid mod --png grid.png             # the same as a picture
+python3 -m arma_vqa map mod --out map_previews/         # synthetic map from the mod's map-control colours: grid lines and numbers, with/without post-process
+python3 -m arma_vqa map-pp --before map.png --after map_pp.png --out calibration.json   # settle whether post-process reaches the map screen
 python3 -m unittest discover -s tests -v                # self-tests
 ```
 
@@ -35,13 +42,14 @@ Every finding carries a provenance tag. This is the most important thing to read
 | `wiki` | Stated on the Bohemia wiki. |
 | `wiki-note` | From a user note on a wiki page. Less authoritative. |
 | `tracker` | A bug report on the BI Feedback Tracker: the engine deviates from the documentation. |
+| `community` | From forum posts, tutorials or shipped mod configs, **not** from BI documentation. Used for the terrain `Grid` class, whose properties the wiki does not describe. |
 | `inferred` | A logical consequence of the wiki text, not stated outright. |
 | `heuristic` | A QA threshold chosen by this tool, **not** a Bohemia limit. Editable in `rules/post_process.json` (`thresholds`). |
 | `model` | Depends on the approximate renderer. Uncalibrated until you run `calibrate`. |
 
 Severity is capped by confidence: renderer-based findings never rise above `warning`, and numbers the wiki sources disagree on are `info`.
 
-## What it checks (63 rules)
+## What it checks (96 rules)
 
 **Post-process effects**
 
@@ -111,11 +119,59 @@ Severity is capped by confidence: renderer-based findings never rise above `warn
 | CF005 | info | wiki | Weapon optics zoom values out of order |
 | CF006 | warning | wiki | opticsDisablePeripherialVision outside 0..1 |
 
-**UI layers**
+**UI layers** (`cutRsc`, `cutText`, `cutObj`, `cutFadeOut`, `titleRsc`, `titleText`, `titleFadeOut`, `BIS_fnc_rscLayer`)
 
 | Rule | Default severity | Provenance | What it catches |
 |---|---|---|---|
-| UI001 | warning | wiki | Numeric layer shared by different resources |
+| UI001 | warning | wiki | Layer shared by different resources |
+| UI002 | warning | wiki | Invalid layer number |
+| UI003 | warning | wiki | Unknown effect type |
+| UI004 | warning | wiki | Wrong argument shape or type for a layer command |
+| UI005 | warning | inferred | Structured Text markup in cutText/titleText without isStructuredText |
+| UI006 | warning | inferred | Resource class not defined |
+| UI007 | info | wiki-note | cutFadeOut time is scaled by a short fade-in |
+| UI008 | info | wiki | Uses the reserved default layer 0 |
+| UI009 | warning | wiki | Layer names differ only by case |
+| UI010 | info | wiki | cutRsc/titleRsc with the "Default" class |
+| UI011 | warning | wiki | BIS_fnc_rscLayer argument |
+| UI012 | info | inferred | Full-screen curtain also drawn over the map |
+| UI013 | info | heuristic | Layer cleared or faded but nothing shows on it |
+| UI014 | warning | wiki | WHITE OUT without a fade-in time |
+| UI015 | info | wiki | BLACK FADED without a speed |
+| UI016 | warning | inferred | Screen curtain is never lifted |
+
+**Map: terrain grid numbers** (`CfgWorlds >> Grid`)
+
+| Rule | Default severity | Provenance | What it catches |
+|---|---|---|---|
+| MAP001 | warning | community | Grid numbers go negative over the map |
+| MAP002 | warning | community | Highest grid number does not fit its label format |
+| MAP003 | warning | community | Grid zoom classes out of order |
+| MAP004 | info | community | No grid class for the widest zoom |
+| MAP005 | warning | community | Grid step problem |
+| MAP006 | warning | community | Grid zoom levels are inconsistent with each other |
+| MAP007 | warning | community | Grid / zoom class incomplete or malformed |
+| MAP008 | info | community | Long grid label format (disputed) |
+| MAP009 | warning | wiki | World map settings |
+
+**Map: the map control** (`CT_MAP_MAIN`)
+
+| Rule | Default severity | Provenance | What it catches |
+|---|---|---|---|
+| MAPUI001 | warning | wiki | Map colour malformed or out of range |
+| MAPUI002 | info | inferred | Grid colour is fully transparent |
+| MAPUI003 | warning | inferred | Map scale values inconsistent |
+| MAPUI004 | info | wiki | Misspelled or undocumented map-control property |
+| MAPUI005 | warning | heuristic | Grid number text size |
+| MAPUI006 | warning | inferred | maxSatelliteAlpha outside 0..1 |
+| MAPUI007 | info | wiki | Map control inside a controls group |
+
+**Map: offline preview**
+
+| Rule | Default severity | Provenance | What it catches |
+|---|---|---|---|
+| MAPSIM001 | warning | heuristic | Map grid lines or numbers nearly invisible against a backdrop |
+| MAPSIM002 | warning | model | Post-process stack hides the map grid (info until `pp_on_map` is settled, see below) |
 
 **Offline render model**
 
@@ -166,14 +222,62 @@ reporting a confident fit to the wrong thing. `--effect DynamicBlur` fits the bl
 radial blur and wet distortion scales can be edited by hand in the calibration JSON (keys are in `DEFAULT_CAL` in `sim.py`).
 In-game screenshots include the engine's own tone mapping, so expect some residual error even from a correct model.
 
+## UI layers and the map
+
+### Layers (`python3 -m arma_vqa layers mod`)
+
+Every `cutRsc` / `cutText` / `cutObj` / `titleRsc` / `titleText` call is resolved to a layer and tabulated: layer, command, resource, effect type, which addon, which file and line.
+Numeric layers, case-sensitive string layers, `QGVAR(...)` names and `"name" call BIS_fnc_rscLayer` are all understood; anything computed at run time is `UNKNOWN` and is left alone.
+
+What is modelled is what the wiki states: layer 0 is the back-most layer and the target of the no-layer and empty-name forms; a second resource on the same layer replaces the first;
+the nine effect types, and which of them put a curtain over the screen (`BLACK`, `BLACK OUT`, `WHITE OUT`, `BLACK FADED`) and which lift it (`BLACK IN`, `WHITE IN`);
+`showInMap` defaults to true, so a cut resource is drawn over the map too (`UI012`, and the `layers` table says which ones stay visible when the map is opened).
+
+What is **not** assumed, because the wiki does not say: whether `"x" cutRsc` and `("x" call BIS_fnc_rscLayer) cutRsc` share a layer, and how title and cut resources stack against each other.
+Title commands have no layer argument, so they are reported as one shared slot and only ever as `info`.
+
+### Map grid numbers (`python3 -m arma_vqa grid mod --world MyTerrain`)
+
+The wiki has no page for the terrain `Grid` class, so this part comes from community sources (forum posts by Killzone_Kid and others, the PMC terrain tutorial, and `Grid` classes
+in shipped configs); every rule in it is tagged `community`. The tool uses the formula the community posts give for `BIS_fnc_gridToPos`:
+`posX = offsetX + stepX * gridX` and `posY = mapSize - offsetY - stepY * gridY`. It inverts that to get the number printed at any point on the map, per zoom class, and checks:
+
+* numbers never go negative anywhere on the map (`offsetY` must be the map size when `stepY` is negative, otherwise the numbers run the wrong way or below zero);
+* the highest number fits the label format (`"000"` holds up to 999; a 20 km terrain at 10 m steps needs more digits);
+* zoom classes are ordered and each coarser one is consistent with the finer one;
+* `grid` prints the label range and the corner references (SW / NE) for every zoom class, so a wrong origin is visible at a glance; `grid --png` draws the labels around the map centre in a map-control-style picture.
+
+### Map control and map preview (`python3 -m arma_vqa map mod`)
+
+`RscMapControl` / `CT_MAP_MAIN` properties are checked for malformed colours, impossible scales, misspelled property names (the engine's own spelling `showCountourInterval` is accepted) and unreadable grid-number sizes.
+`map` then renders a synthetic map (land, sea, forest and two stand-in satellite swatches) using the mod's own colours, draws the grid and its numbers on top with the configured alpha,
+and measures WCAG contrast of lines and numbers against each backdrop, before and after the mod's post-process stack. The satellite swatches are stand-ins: the real contrast depends on the terrain's satellite texture.
+
+**Does post-process apply to the map screen?** The wiki does not say, so the tool does not guess. Until you tell it, `MAPSIM002` is `info` only. To settle it, take two screenshots of the open map in the real game,
+one with the mod's effect off and one with it on, and run:
+
+```
+python3 -m arma_vqa map-pp --before map_off.png --after map_on.png --out calibration.json
+python3 -m arma_vqa scan mod --calibration calibration.json
+```
+
+If the screenshots differ, `pp_on_map` is set to `true` and `MAPSIM002` becomes a normal warning; if they are the same, it is set to `false` and `MAPSIM002` is suppressed.
+
+### Where the wiki and shipped code disagree
+
+These are recorded in `rules/ui_map.json` under `_meta.source_conflicts` and reported at `info`: `MAPUI007` (the CT_MAP_MAIN page says a map control cannot sit in a controls group; ACE3 does it for invisible helper controls),
+`UI010` (the `Default` class is documented on cutRsc and said to be gone on titleRsc), and `MAP008` (one forum post links a 4-character grid format to a crash, the PMC tutorial uses one without trouble).
+
 ## Validation
 
 * **Real mods.** Scanned ACE3 (`b98e48d`, 2026-10-14) and CBA_A3 (`cd4361a`, 2026-10-10), 5,625 files in about 7 seconds, no crashes.
-  Together: 0 errors, 0 warnings, 43 info. A first pass produced 5 + 63 findings; the false positives were fixed and each now has a regression test (`tests/test_rules.py`, labelled REAL-WORLD).
+  Together: 0 errors, 0 warnings, 55 info (the 12 added by the layer and map rules are `UI008`, `UI012` and `MAPUI007`). A first pass produced 5 + 63 findings, and the layer and map rules produced 4 false-positive errors on ACE3's invisible map-control helpers; the false positives were fixed and each now has a regression test (`tests/test_rules.py`, labelled REAL-WORLD).
 * **Seeded bugs.** Defects injected into ACE-style `GVAR()` code (priority collision, three out-of-range params, missing commit, non-boolean force flag,
   wrong array length, never enabled) are all found.
 * **Calibrator.** Renders "screenshots" with a known model, then checks `calibrate` recovers it. This tests the fitting code, not the engine.
-* `python3 -m unittest discover -s tests` runs all 29.
+* **Example mod.** `examples/bad_mod` is deliberately broken in every rule family and a test pins which rules it must trigger (currently 9 errors and 46 warnings with the render model on).
+* **Terrain grids.** The clean fixture follows `Grid` classes posted in community sources (a VR-shaped 8192 m terrain, abc_sample at 5120 m, the PMC 40960 m tutorial, and a Kunduz-style class that inherits `Grid`) and must scan clean; the bad fixture (missing offset, number overflow, scrambled zoom order, broken steps) must not. These are community-sourced shapes, not files from the game.
+* `python3 -m unittest discover -s tests` runs all 77.
 
 ## Known limits
 
@@ -184,21 +288,29 @@ In-game screenshots include the engine's own tone mapping, so expect some residu
   The wiki text was read through a summarising fetcher, not as raw wikitext: check anything that matters against the live page.
 * **Documented ranges can be wrong in practice.** ColorCorrections radial radii are documented `-1..1`; ACE3 ships 10 and 2. Optics `opticsZoomMin/Max` follow a different convention on
   vehicle turrets than on weapon optics. Both are `info`/scoped for that reason.
-* **Not covered:** UI layout and aspect ratio, textures/rvmat/models, particles and lights, `CfgPostProcessTemplates` internals (only template *names* are checked),
+* **Not covered:** control geometry and aspect ratio (`safeZone*` layout, whether a dialog fits at 4:3 / 21:9 / triple-head; the GUI-coordinates wiki page could not be read, so no rules were invented),
+  `RscTitles` / `description.ext` class properties (same reason: the pages could not be read), how title and cut resources stack against each other (undocumented),
+  which zoom class `mapGridPosition` reads (undocumented), textures/rvmat/models, particles and lights, `CfgPostProcessTemplates` internals (only template *names* are checked),
   the priorities used inside `BIS_fnc_setPPeffectTemplate` / `BIS_fnc_ambientPostprocess` (the wiki does not document them; rule `TPL002` says so).
+* **The grid formula is community-sourced.** BI documents no `Grid` class page. The arithmetic matches several independent posts and configs, but a terrain that does something unusual
+  may be flagged wrongly or not at all. Every `MAP00x` finding says "by the community formula" for that reason. Check one against the game before reshaping a terrain.
+* **The map preview is a model.** The satellite backdrops are stand-ins, the post-process maths is the same approximate renderer as elsewhere, and whether post-process reaches the map screen at all is unknown until you run `map-pp`.
 * `setToneMapping` / `setToneMappingParams` are flagged because their wiki pages state "This command is not present in Arma 3". If that changes, edit rule `TM001`.
 
 ## Layout
 
 ```
 arma_vqa/   sqf.py (tokenizer, constant folding, call extraction)   analyze.py (model + rules)   config_cpp.py (config reader)
+            ui.py (cut*/title*/rscLayer layer model)   mapcfg.py (terrain Grid + map-control checks)   mapview.py (map preview renderer)
             sim.py (renderer, calibration fit)   catalog.py (rule text, severity, provenance, source URL)   report.py   cli.py
 rules/      post_process.json (effects, ranges, priorities, thresholds)   thermal_camera.json (TI, PiP, aperture, vision modes)
+            ui_map.json (effect types, grid reference configs, map-preview thresholds, source conflicts)
 examples/   bad_mod (deliberately broken, every rule family)
-tests/      test_rules.py   test_calibrate.py   fixtures/
+tests/      test_rules.py   test_calibrate.py   test_cli_map.py   fixtures/
 ```
 
 Sources: the BI wiki pages for Post Process Effects, ppEffectCreate / Adjust / Commit / Committed / Enable / Enabled / Destroy / ForceInNVG,
 setTIParameter, getTIParameters, setVehicleTIPars, setCamUseTI, camUseNVG, disableTIEquipment, disableNVGEquipment, setPiPEffect, setAperture, setApertureNew,
-apertureParams, camSetFov, cameraEffect, cutRsc, BIS_fnc_setPPeffectTemplate, BIS_fnc_ambientPostprocess, setToneMapping(Params), CfgWeapons Config Reference;
-Feedback Tracker T185536. Each rule's `url` is shown by `explain`.
+apertureParams, camSetFov, cameraEffect, cutRsc, cutText, cutObj, cutFadeOut, allCutLayers, titleRsc, titleText, Title Effect Type, BIS_fnc_rscLayer, CT_MAP_MAIN,
+BIS_fnc_setPPeffectTemplate, BIS_fnc_ambientPostprocess, setToneMapping(Params), CfgWeapons Config Reference, CfgWorlds Config Reference;
+Feedback Tracker T185536; for the terrain `Grid` class only, Bohemia forum thread 176278 and the PMC terrain tutorial. Each rule's `url` is shown by `explain`.

@@ -16,6 +16,7 @@ DEFAULT_RULE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 class Rules:
     pp: dict
     tc: dict
+    ui: dict = field(default_factory=dict)   # rules/ui_map.json: layer effect types, map grid / preview facts
     effects: dict = field(init=False)
     alias: dict = field(init=False)
     canon: dict = field(init=False)
@@ -49,7 +50,12 @@ def load_rules(rule_dir: str | None = None) -> Rules:
         pp = json.load(f)
     with open(os.path.join(d, "thermal_camera.json"), encoding="utf-8") as f:
         tc = json.load(f)
-    return Rules(pp, tc)
+    ui_path = os.path.join(d, "ui_map.json")
+    if not os.path.isfile(ui_path):          # an alternate rules dir written before this file existed
+        ui_path = os.path.join(DEFAULT_RULE_DIR, "ui_map.json")
+    with open(ui_path, encoding="utf-8") as f:
+        ui = json.load(f)
+    return Rules(pp, tc, ui)
 
 
 # ---------------------------------------------------------------------------
