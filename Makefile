@@ -51,6 +51,12 @@ lint: lint-parity
 	python3 tools/validation/check_macro_quoting.py || rc=1; \
 	python3 tools/validation/validate_oracles.py || rc=1; \
 	python3 tools/validation/validate_physics_config.py || rc=1; \
+	python3 tools/validation/validate_visual_effects.py || rc=1; \
+	python3 tools/validation/validate_visual_particles.py || rc=1; \
+	python3 tools/validation/validate_visual_markers.py || rc=1; \
+	python3 tools/validation/validate_visual_materials.py || rc=1; \
+	python3 tools/validation/validate_visual_cloudlets.py || rc=1; \
+	python3 tools/validation/validate_visual_vanilla_assets.py || rc=1; \
 	python3 tools/validation/gen_physics_config.py --check || rc=1; \
 	python3 tools/validation/gen_star_catalog.py --check || rc=1; \
 	python3 tools/validation/gen_meteor_showers.py --check || rc=1; \

@@ -53,6 +53,18 @@ jobs:
         run: python3 tools/validation/validate_oracles.py
       - name: Physics config-binding validation
         run: python3 tools/validation/validate_physics_config.py
+      - name: Post-process effect contract validation
+        run: python3 tools/validation/validate_visual_effects.py
+      - name: Particle array contract validation
+        run: python3 tools/validation/validate_visual_particles.py
+      - name: Marker icon and class contract validation
+        run: python3 tools/validation/validate_visual_markers.py
+      - name: Material shader contract validation
+        run: python3 tools/validation/validate_visual_materials.py
+      - name: Cloudlet field contract validation
+        run: python3 tools/validation/validate_visual_cloudlets.py
+      - name: Vanilla asset provenance validation
+        run: python3 tools/validation/validate_visual_vanilla_assets.py
       - name: Physics config override freshness check
         run: python3 tools/validation/gen_physics_config.py --check
       - name: Star catalogue freshness check
