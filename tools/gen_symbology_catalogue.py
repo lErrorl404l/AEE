@@ -602,6 +602,32 @@ def _find_exact(pairs: list[tuple[str, dict[str, Any]]], func: str) -> str | Non
     return None
 
 
+def _crossproduct_by_glyph() -> dict[tuple[str, str], str]:
+    """(affiliation, catalogue function) -> the composed cross-product class.
+
+    The cross-product generator re-frames every real catalogue glyph in all
+    four affiliation frames.  A glyph the catalogue holds for one affiliation
+    therefore also exists as a composed class in the other three, which is the
+    only source for an affiliation the uploaders did not draw (issue #243).
+    """
+    from gen_symbology_crossproduct import crossproduct_names
+
+    return {
+        (affil, str(entry["func"])): name for name, entry, affil in crossproduct_names()
+    }
+
+
+def _function_for_stem(
+    pairs: list[tuple[str, dict[str, Any]]], stem: str
+) -> str | None:
+    """The catalogue function that ends with the given affiliation-free stem."""
+    for _name, entry in pairs:
+        func = str(entry.get("func", ""))
+        if func.endswith(" " + stem):
+            return func
+    return None
+
+
 def engine_overrides(
     pairs: list[tuple[str, dict[str, Any]]],
 ) -> list[tuple[str, str | None, str, bool]]:
@@ -900,6 +926,10 @@ def render_family_aliases(pairs: list[tuple[str, dict[str, Any]]]) -> str:
     ]
     engine_target = {cls: name for cls, name, _func, _dev in engine_overrides(pairs)}
     direct_target = dict(engine_direct_overrides())
+    # The cross-product frames use the catalogue affiliation token "Friend"
+    # (the symbol prefix is "Friendly", the affiliation key is "Friend").
+    composed = _crossproduct_by_glyph()
+    composed_affil = {"b": "Friend", "o": "Hostile", "n": "Neutral"}
     for family in sorted(FAMILIES, key=lambda name: name != "u"):
         affil = FAMILY_AFFIL[family]
         for glyph in GLYPHS:
@@ -907,11 +937,20 @@ def render_family_aliases(pairs: list[tuple[str, dict[str, Any]]]) -> str:
             stem = ENGINE_GLYPH_STEM.get(glyph)
             target = None
             if glyph not in ("installation", "unknown"):
-                target = (
-                    (_find_exact(pairs, f"{affil} {stem}") if stem else None)
-                    or engine_target.get(f"{family}_{glyph}")
-                    or direct_target.get(f"{family}_{glyph}")
-                )
+                target = _find_exact(pairs, f"{affil} {stem}") if stem else None
+                if target is None and stem and family in composed_affil:
+                    # The catalogue holds the glyph for another affiliation
+                    # only.  The composed cross-product class is the same glyph
+                    # in this affiliation's frame, so the alias keeps the real
+                    # glyph instead of borrowing a different function's symbol
+                    # (issue #243: the neutral motorised glyph).
+                    source = _function_for_stem(pairs, stem)
+                    if source is not None:
+                        target = composed.get((composed_affil[family], source))
+                if target is None:
+                    target = engine_target.get(
+                        f"{family}_{glyph}"
+                    ) or direct_target.get(f"{family}_{glyph}")
             if target is not None:
                 lines.append(f"    class {cls}: {target} {{}};")
                 continue

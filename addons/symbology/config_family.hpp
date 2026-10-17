@@ -304,7 +304,7 @@
     };
     class AEE_n_inf: AEE_NL_Neutral_Unit_Infantry {};
     class AEE_n_armor: AEE_NL_Neutral_Unit_Armour {};
-    class AEE_n_motor_inf: AEE_NL_Neutral_Unit_Infantry {};
+    class AEE_n_motor_inf: AEE_XNL_Friendly_Unit_Infantry_Motoriz {};
     class AEE_n_art: AEE_NL_Neutral_Unit_Artillery {};
     class AEE_n_eng: AEE_MarkerBase {
         name = "AEE Neutral engineer";
