@@ -213,7 +213,7 @@ def main():
             return by_key.get(name[len(maker) :])
         return None
 
-    masses = matched_mass = mass_conflicts = twist_only = 0
+    masses = matched_mass = mass_conflicts = twist_only = restated_mass = 0
     for name in MASS_FILES:
         path = SRC / name
         if not path.exists():
@@ -235,6 +235,15 @@ def main():
             grade = grade_for(sources, source_id)
             existing = record["values"].get("mass_kg")
             if existing is not None:
+                if existing["source"] == source_id:
+                    # The same source restated. The source is the authority,
+                    # so a corrected capture replaces its own earlier value
+                    # and records no conflict: one source cannot disagree
+                    # with itself (issue #234 corrected eight gram rows).
+                    if existing["value"] != value:
+                        existing["value"] = value
+                        restated_mass += 1
+                    continue
                 if abs(existing["value"] - value) > 0.02 * existing["value"]:
                     if any(
                         c.get("entity") == record["weapon_id"]
@@ -360,7 +369,8 @@ def main():
     print(
         f"sources added: {added_sources}, twist-only rows skipped: {twist_only}, "
         f"weapon masses merged: {matched_mass} "
-        f"(of {masses} rows, {mass_conflicts} disagreements), "
+        f"(of {masses} rows, {mass_conflicts} disagreements, "
+        f"{restated_mass} restated by their own source), "
         f"charge rows considered: {charges}, service charges on the "
         f"cartridge: {service_level}, merged onto a load: {matched_charge}, "
         f"unmatched: {no_load} no load at that bullet, {ambiguous} "

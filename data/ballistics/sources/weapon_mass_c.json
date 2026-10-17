@@ -1419,7 +1419,7 @@
    "weapon_key": "ruger_lcp",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae LCP\u00ae Centerfire Pistol Model 3752",
-   "mass_kg": 294.0,
+   "mass_kg": 0.294,
    "state": "as published",
    "source_id": "ruger_lcp_3752",
    "note": "Weight 10.4 oz. 294\u00a0g"
@@ -1428,7 +1428,7 @@
    "weapon_key": "ruger_lcpii",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae LCP\u00ae II Centerfire Pistol Model 13705",
-   "mass_kg": 317.0,
+   "mass_kg": 0.317,
    "state": "as published",
    "source_id": "ruger_lcpii_13705",
    "note": "Weight 11.2 oz. 317\u00a0g"
@@ -1446,7 +1446,7 @@
    "weapon_key": "ruger_markiv",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae Mark IV\u2122 Standard Rimfire Pistol Model 40104",
-   "mass_kg": 799.0,
+   "mass_kg": 0.799,
    "state": "as published",
    "source_id": "ruger_markivstandard_40104",
    "note": "Weight 28.2 oz. 799\u00a0g"
@@ -1536,7 +1536,7 @@
    "weapon_key": "ruger_security9",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae Security-9\u00ae Centerfire Pistol Model 3810",
-   "mass_kg": 674.0,
+   "mass_kg": 0.674,
    "state": "as published",
    "source_id": "ruger_security9_3810",
    "note": "Weight 23.8 oz. 674\u00a0g"
@@ -1545,7 +1545,7 @@
    "weapon_key": "ruger_singlesix",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae New Model Single-Six\u00ae Single-Action Revolver Model 0661",
-   "mass_kg": 992.0,
+   "mass_kg": 0.992,
    "state": "as published",
    "source_id": "ruger_newmodelsinglesix_0661",
    "note": "Weight 35 oz. 992\u00a0g"
@@ -1554,7 +1554,7 @@
    "weapon_key": "ruger_sp101",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae SP101\u00ae Standard Double-Action Revolver Model 5737",
-   "mass_kg": 737.0,
+   "mass_kg": 0.737,
    "state": "as published",
    "source_id": "ruger_sp101_5737",
    "note": "Weight 26 oz. 737\u00a0g"
@@ -1563,7 +1563,7 @@
    "weapon_key": "ruger_sr1911",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae SR1911\u00ae Standard Centerfire Pistol Model 16706",
-   "mass_kg": 881.0,
+   "mass_kg": 0.881,
    "state": "as published",
    "source_id": "ruger_sr1911standard_16706",
    "note": "Weight 31.1 oz. 881\u00a0g"
@@ -1581,7 +1581,7 @@
    "weapon_key": "ruger_wrangler",
    "maker": "Ruger",
    "weapon": "Ruger\u00ae Wrangler\u00ae Single-Action Revolver Model 2003",
-   "mass_kg": 850.0,
+   "mass_kg": 0.85,
    "state": "as published",
    "source_id": "ruger_wrangler_2003",
    "note": "Weight 30 oz. 850\u00a0g"

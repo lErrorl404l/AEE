@@ -43,7 +43,6 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
             private _entry = [_unit] call EFUNC(dive,getDiveState);
             private _tissues = _entry select [0, 32];
             private _res = [_altM, 1, _tissues] call FUNC(calculateAltitudeDCS);
-            _dcsRisk = _res select 0;
             _entry = _res select 2;
             for "_i" from 0 to 31 do { _entry set [_i, _res select 2 select _i]; };
             private _state = missionNamespace getVariable [QEGVAR(dive,diveStates), -1];
@@ -54,6 +53,13 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
             private _uid = _unit getVariable [QEGVAR(dive,diveUID), ""];
             _state set [_uid, _entry];
             missionNamespace setVariable [QEGVAR(dive,diveStates), _state];
+            // The kernel returns the risk the last second of exposure added.
+            // The published value is the episode risk, so the one-second
+            // increments compose: 2700 ticks reach the 45-minute anchor
+            // (Haske & Pilmanis 2002).  Below the gate the supersaturation
+            // resolves and the episode ends.
+            private _episode = missionNamespace getVariable [QGVAR(altitudeDCSRisk), 0];
+            _dcsRisk = 1 - ((1 - _episode) * (1 - (_res select 0)));
         };
 
         // ── Publish ──

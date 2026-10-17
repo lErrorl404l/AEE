@@ -48,6 +48,11 @@ RANGES = {
     "reference_barrel_mm": (10.0, 8000.0),  # cannon class
     "grooves": (1, 24),
     "mass_g": (0.1, 50000.0),  # cannon class
+    # A whole firearm in kilograms. The band covers the lightest service
+    # pistol (0.2 kg) to a heavy man-portable weapon and its mount, so it
+    # rejects the gram-under-kilogram error a thousand times over
+    # (issue #234 held the Ruger LCP as 294 under the kg unit).
+    "mass_kg": (0.05, 200.0),
     "length_mm": (0.1, 2000.0),  # cannon class
     "diameter_mm": (0.1, 200.0),  # cannon class
     "bc_g1": (0.001, 2.0),
