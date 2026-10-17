@@ -42,9 +42,9 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith { 0 };
 
 // ─── Throttle ─────────────────────────────────────────────────────────────
 // The solve is one-shot state; only rescan the expensive BUILDING list when
-// ambient changes materially.  COLD-START: on the first ENTER
-// (tiBldgLastTemp = -999) the swap ALWAYS applies — everything starts at
-// the cold baseline, never at baked engine defaults.
+// ambient changes materially or the periodic rescan is due.  COLD-START: on
+// the first ENTER (tiBldgLastTemp = -999) the swap ALWAYS applies.  Everything
+// starts at the cold baseline, never at baked engine defaults.
 //
 // VEHICLES are NOT throttled by ambient: they are few, and a vehicle that
 // spawns AFTER the boot pass (editor-placed, player-created, mission
@@ -56,6 +56,24 @@ if (!(_lastTemp isEqualType 0)) then { _lastTemp = -999; };
 private _ambientChanged = abs (_airTemp - _lastTemp) >= 2;
 if (_ambientChanged) then {
     missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];
+};
+
+// DISCOVERY needs its own trigger.  The ambient gate is the right trigger for
+// a RE-SOLVE, because a surface temperature moves on an hours timescale, but
+// the pending queue DRAINS.  Once the ambient holds, nothing revisits an
+// object the boot pass never saw, so a structure the player has just walked
+// into range of, or one the mission or Zeus created later, is never enqueued
+// and keeps the engine's baked default in the fused view.  A periodic rescan
+// closes that at one scan per period instead of one scan per tick.  It loses
+// no physics: an object re-solved seconds after the last pass has not
+// measurably changed.
+private _rescanPeriod = 30;
+private _lastScan = missionNamespace getVariable [QGVAR(tiBldgLastScan), -1e9];
+if !(_lastScan isEqualType 0) then { _lastScan = -1e9; };
+private _rescan = (diag_tickTime - _lastScan) >= _rescanPeriod;
+private _discover = _ambientChanged || _rescan;
+if (_rescan) then {
+    missionNamespace setVariable [QGVAR(tiBldgLastScan), diag_tickTime];
 };
 
 // Build the SOLVE set for this pass.  DISCOVERY (which objects exist) is now
@@ -71,7 +89,7 @@ if (_ambientChanged) then {
 private _viewDist = (getObjectViewDistance select 0) max 300;
 private _pending = missionNamespace getVariable [QGVAR(tiBldgPending), []];
 if !(_pending isEqualType []) then { _pending = []; };
-if (_ambientChanged) then {
+if (_discover) then {
     // allMissionObjects "" returned 1193 objects on the operator's Altis
     // session (visible in the RPT as "Building thermal: 1193 found"), and the
     // per-selection solve then ran over EVERY one of them on thermal entry.
@@ -93,6 +111,11 @@ if (_ambientChanged) then {
     // is re-queued.  Any object the previous sweep had not reached is already
     // in _pending and stays FIRST, so a change that lands mid-sweep can never
     // starve the tail; only newly seen objects are appended.
+    //
+    // The periodic rescan enters the SAME path and re-queues the whole view.
+    // That re-solve is IDEMPOTENT, the same physics at the same air
+    // temperature, and it is what collects a structure that came into range
+    // while the ambient held.  An object already queued is not appended twice.
     private _queued = createHashMap;
     { _queued set [str _x, true]; } forEach _pending;
     {
@@ -101,7 +124,7 @@ if (_ambientChanged) then {
             _pending pushBack _x;
         };
     } forEach _discovered;
-    private _bldMsg = format ["building thermal scan (ENTER/ambient): %1 objects in %2 m", count _discovered, _viewDist];
+    private _bldMsg = format ["building thermal scan (ambient/rescan): %1 objects in %2 m", count _discovered, _viewDist];
     AEE_LOG_DEBUG(_bldMsg);
 };
 // Bound the vehicle list the same way the unit list is bounded.  This line

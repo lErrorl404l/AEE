@@ -27,7 +27,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentIcingSeverity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateFreezingRain.sqf:37` | Airframe icing 0..1 |
 | `aee_core_currentMoonAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySecondSun.sqf:107` | UNKNOWN |
 | `aee_core_currentSolarFlux` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:245` | UNKNOWN |
-| `aee_core_currentSolarRadiation` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:191` | Solar radiation factor 0..1 |
+| `aee_core_currentSolarRadiation` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:214` | Solar radiation factor 0..1 |
 | `aee_core_currentSunAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySecondSun.sqf:104` | UNKNOWN |
 | `aee_core_currentSunDeclination` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:47` | Solar declination, deg |
 | `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:261` | UNKNOWN |

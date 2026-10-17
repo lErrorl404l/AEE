@@ -6819,6 +6819,88 @@ class TestThermalSweepBudget(unittest.TestCase):
         )
 
 
+class TestThermalRescanTrigger(unittest.TestCase):
+    """Discovery that follows only the ambient misses a new structure (P2).
+
+    The discovery ran only when the ambient had moved by 2 C or more, and the
+    pending queue DRAINS.  Once the ambient held, nothing revisited the world,
+    so a structure the boot pass never saw - the player has just walked into
+    range of it, or the mission created it after the boot pass - never entered
+    the queue and kept the engine's baked default in the fused view.  The
+    periodic rescan closes that at one scan per period, bounded by the sweep
+    budget like every other pass.  It loses no physics: a structure re-solved
+    seconds after the last pass has not measurably changed.
+    """
+
+    _CALLER = _THERMAL / "display" / "fnc_applyBuildingThermal.sqf"
+    _PERIOD = 30.0
+
+    @staticmethod
+    def _gate(ambient_changed, now, last_scan, period):
+        """Mirror of the caller's gate: (discover, stamped last_scan)."""
+        rescan = (now - last_scan) >= period
+        if rescan:
+            last_scan = now
+        return (ambient_changed or rescan), last_scan
+
+    @staticmethod
+    def _enqueue(pending, discovered):
+        """Mirror of the caller's append-only re-queue."""
+        queued = {str(obj) for obj in pending}
+        for obj in discovered:
+            if str(obj) not in queued:
+                queued.add(str(obj))
+                pending.append(obj)
+        return pending
+
+    def test_a_structure_that_enters_range_while_the_ambient_holds_is_collected(self):
+        view = ["bldg_a", "bldg_b"]
+        pending = []
+        # Boot pass: the cold start is an ambient change, so the view is scanned.
+        discover, last_scan = self._gate(True, 0.0, -1e9, self._PERIOD)
+        self.assertTrue(discover)
+        self._enqueue(pending, view)
+        # The queue drains.  The view grows while the ambient stays inside the
+        # 2 C gate, and inside one period the new structure is not yet seen.
+        pending.clear()
+        view.append("bldg_late")
+        discover, last_scan = self._gate(False, 5.0, last_scan, self._PERIOD)
+        self.assertFalse(discover)
+        self.assertNotIn("bldg_late", pending)
+        # One period after the boot pass the rescan fires and collects it.
+        discover, last_scan = self._gate(False, 30.0, last_scan, self._PERIOD)
+        self.assertTrue(discover)
+        self._enqueue(pending, view)
+        self.assertIn("bldg_late", pending)
+        self.assertEqual(last_scan, 30.0)
+
+    def test_the_rescan_does_not_queue_an_object_twice(self):
+        pending = ["bldg_a"]
+        self._enqueue(pending, ["bldg_a", "bldg_b"])
+        self.assertEqual(pending, ["bldg_a", "bldg_b"])
+
+    def test_the_rescan_waits_a_full_period_after_each_scan(self):
+        discover, last_scan = self._gate(False, 30.0, -1e9, self._PERIOD)
+        self.assertTrue(discover)
+        self.assertFalse(self._gate(False, 40.0, last_scan, self._PERIOD)[0])
+        self.assertTrue(self._gate(False, 60.0, last_scan, self._PERIOD)[0])
+
+    def test_source_gates_discovery_on_the_ambient_change_or_the_period(self):
+        code = _code_only(self._CALLER.read_text(encoding="utf-8"))
+        self.assertIn("private _rescanPeriod = 30;", code)
+        self.assertIn(
+            "private _rescan = (diag_tickTime - _lastScan) >= _rescanPeriod;", code
+        )
+        self.assertIn("private _discover = _ambientChanged || _rescan;", code)
+        self.assertIn("if (_discover) then {", code)
+        # The stamp survives the pass, so the period is measured across passes.
+        self.assertIn("QGVAR(tiBldgLastScan), -1e9", code)
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(tiBldgLastScan), diag_tickTime];",
+            code,
+        )
+
+
 class TestThermalPassBudget(unittest.TestCase):
     """The mode-2 thermal pass amortises its scene sweep (P1).
 
