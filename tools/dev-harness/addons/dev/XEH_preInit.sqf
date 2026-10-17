@@ -15,5 +15,6 @@ aee_dev_fnc_devOverlayToggle = compile preprocessFileLineNumbers "\z\aee\addons\
 aee_dev_fnc_devProbeManifest = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devProbeManifest.sqf";
 aee_dev_fnc_devProbes = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devProbes.sqf";
 aee_dev_fnc_devClientProbe = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devClientProbe.sqf";
+aee_dev_fnc_devPpSpike = compile preprocessFileLineNumbers "\z\aee\addons\dev\functions\fnc_devPpSpike.sqf";
 
 aee_dev_present = true;

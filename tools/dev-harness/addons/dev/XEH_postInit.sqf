@@ -1,3 +1,7 @@
+// Engine post-process feasibility spike (C1..C5). It runs before the gate, so
+// it does not need the dev channel. Spawned, so its waits are scheduled.
+[] spawn aee_dev_fnc_devPpSpike;
+
 // The dev channel starts only when the four-layer gate holds. Failure is a
 // silent no-op: no per-frame handler, no verb table, no log line.
 if !(call aee_dev_fnc_devGateLive) exitWith {};
