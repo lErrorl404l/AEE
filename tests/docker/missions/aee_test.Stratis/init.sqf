@@ -3483,6 +3483,13 @@ private _p29Pass = 0;
     if (!isDedicated) then {
         execVM "aee_p136_client_probe.sqf";
     };
+    // PHASE 144 lives in aee_p144_component_tests_probe.sqf: it drives the
+    // five visual-surface component test.sqf files through the AEE runner
+    // (aee_diagnostics_fnc_test), which execs \z\aee\addons\<component>\
+    // test.sqf and returns the component's failure count.  Every component
+    // test reads the live merged config and renders nothing, so the dedicated
+    // server carries it.
+    execVM "aee_p144_component_tests_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.  On a loaded host the

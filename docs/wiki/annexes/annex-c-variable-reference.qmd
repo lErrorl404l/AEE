@@ -604,6 +604,11 @@ sample. The producer variables it reads are declared in
 | `aee_core_consistencyLast` | core | Mission time of the last consistency sample, the throttle cursor |
 | `aee_perfCounters` | core | Performance-counter samples from the `BEGIN`/`END_COUNTER` macros, read by `fnc_dumpPerformanceCounters` |
 | `aee_pfhCounter` | core | Per-frame-handler timing samples from the debug macros, read by `fnc_dumpPerformanceCounters` |
+| `aee_test_failures_cartography` | cartography | Failure count the cartography `test.sqf` publishes for `aee_diagnostics_fnc_test`, which reads it by the composed name `aee_test_failures_<component>` |
+| `aee_test_failures_lighting` | lighting | Failure count the lighting `test.sqf` publishes for `aee_diagnostics_fnc_test`, which reads it by the composed name `aee_test_failures_<component>` |
+| `aee_test_failures_nightvision` | nightvision | Failure count the nightvision `test.sqf` publishes for `aee_diagnostics_fnc_test`, which reads it by the composed name `aee_test_failures_<component>` |
+| `aee_test_failures_symbology` | symbology | Failure count the symbology `test.sqf` publishes for `aee_diagnostics_fnc_test`, which reads it by the composed name `aee_test_failures_<component>` |
+| `aee_test_failures_thermal_display` | thermal_display | Failure count the thermal_display `test.sqf` publishes for `aee_diagnostics_fnc_test`, which reads it by the composed name `aee_test_failures_<component>` |
 
 ### Night-sky render state
 

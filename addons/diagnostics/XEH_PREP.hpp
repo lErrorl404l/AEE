@@ -13,3 +13,4 @@ PREP(dumpState);
 PREP(evaluateConsistency);
 PREP(reportModuleHealth);
 PREP(runConsistencyCheck);
+PREP(test);

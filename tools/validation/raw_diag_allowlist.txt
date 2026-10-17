@@ -15,3 +15,19 @@ addons/diagnostics/functions/fnc_dumpPerformanceCounters.sqf:41 deliberate banne
 addons/diagnostics/functions/fnc_dumpPerformanceCounters.sqf:44 deliberate banner: counter-results report header (issue #97, counter build only)
 addons/diagnostics/functions/fnc_dumpPerformanceCounters.sqf:72 deliberate banner: counter-results report row (issue #97, counter build only)
 addons/diagnostics/functions/fnc_dumpPerformanceCounters.sqf:75 deliberate banner: counter-results report footer (issue #97, counter build only)
+
+# The in-engine component test layer (aee_diagnostics_fnc_test).  Each test.sqf
+# emits the CBA-style verdict line "TEST: OK/FAIL - ..." and a "[AEE-TEST] ...
+# DONE" banner.  These lines are the machine-readable contract a headless probe
+# gates on, and they carry no AEE state, so the module tag is deliberately not
+# wanted.  One emitter per file, plus the DONE banner.
+addons/cartography/test.sqf:20 component test harness: CBA-style TEST: OK/FAIL verdict line
+addons/cartography/test.sqf:128 component test harness: [AEE-TEST] done banner
+addons/lighting/test.sqf:20 component test harness: CBA-style TEST: OK/FAIL verdict line
+addons/lighting/test.sqf:67 component test harness: [AEE-TEST] done banner
+addons/nightvision/test.sqf:20 component test harness: CBA-style TEST: OK/FAIL verdict line
+addons/nightvision/test.sqf:71 component test harness: [AEE-TEST] done banner
+addons/symbology/test.sqf:20 component test harness: CBA-style TEST: OK/FAIL verdict line
+addons/symbology/test.sqf:94 component test harness: [AEE-TEST] done banner
+addons/thermal_display/test.sqf:20 component test harness: CBA-style TEST: OK/FAIL verdict line
+addons/thermal_display/test.sqf:88 component test harness: [AEE-TEST] done banner
