@@ -727,7 +727,7 @@ when this switch is on.
 
 | Variable | Purpose |
 |---|---|
-| `aee_lighting_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only and preserves Real Weather. |
+| `aee_lighting_weatherOwnership` | Server writes engine gusts and humidity from AEE state. Off keeps AEE read-only. |
 
 ### Particle and heat-haze coupling
 

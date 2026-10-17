@@ -27,7 +27,6 @@ The mod is standalone and requires only [CBA A3](https://github.com/CBATeam/CBA_
 - **KAT** — Dehydration and hypoxia state feed KAT's circulation model.
 - **ACM** — CBRN persistence drives ACM's contamination state.
 - **ACRE2 / TFAR** — Radio propagation index scales transmission range.
-- **Real Weather** — Reads a `weather.json` written by `tools/weather_fetch.py` (Open-Meteo, no API key) and overrides the simulation.
 
 ---
 
