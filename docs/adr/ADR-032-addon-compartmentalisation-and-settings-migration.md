@@ -58,7 +58,10 @@ loses a stored value unless the value is copied.
    is `docs/architecture/settings-map.json`. `lib` provides
    `fnc_migrateLegacySettings.sqf`; it takes `[oldName, newName]` pairs and
    a version tag, and on first run copies each set old value to the new
-   name, then sets `aee_settings_migrated_v<version>`. It is idempotent.
+   name, then sets a flag scoped to the pair-set,
+   `aee_settings_migrated_v<version>_<first new name>`, so every module's
+   table migrates exactly once (a version-only flag let the first module
+   migrate and skipped the rest, issue #249). It is idempotent.
    Each module calls it in `XEH_preInit.sqf` before its
    `initSettings.inc.sqf` include, so `CBA_fnc_addSetting` reads the
    migrated value. The pairs live in

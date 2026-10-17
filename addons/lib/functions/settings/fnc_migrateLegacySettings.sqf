@@ -9,11 +9,12 @@
  * helper copies each set old value to its new name ONCE, before the module
  * registers the new setting, so CBA_fnc_addSetting reads the migrated value.
  *
- * The version tag makes the work a one-time event.  A module calls this with
- * its own [oldName, newName] pairs and the version tag; the first call sets
- * profileNamespace "aee_settings_migrated_v<version>".  A later call, from
- * any addon, is a no-op, so the helper is safe to call from every addon and
- * has no side effect on a second call.
+ * The flag makes the work a one-time event PER PAIR-SET.  A module calls this
+ * with its own [oldName, newName] pairs and the shared version tag.  The flag
+ * is keyed on the version AND the caller's pairs, so each module's table
+ * migrates once and a repeat call from the same module is a no-op.  Keying on
+ * the version alone let the first caller migrate and made every later module a
+ * silent no-op (issue #249).
  *
  * Arguments:
  *  0: pairs (Array) - array of [oldName, newName] STRING pairs to migrate
@@ -29,9 +30,15 @@
 
 params [["_pairs", [], [[]]], ["_version", "1", [""]]];
 
-// The flag records that THIS version of the migration has run.  A second
-// call, from this or any other addon, reads it true and does nothing.
-private _flag = format ["aee_settings_migrated_v%1", _version];
+// The flag records that THIS pair-set has migrated at THIS version.  Every
+// module calls the helper with the same version tag and its own table, so a
+// version-only flag let the first caller win and made the rest no-ops.  The
+// tag is the first new name, which carries the aee_<module>_ token.
+private _pairTag = "";
+if ((_pairs isNotEqualTo []) && {(_pairs select 0) isEqualType []}) then {
+    _pairTag = (_pairs select 0) param [1, ""];
+};
+private _flag = format ["aee_settings_migrated_v%1_%2", _version, _pairTag];
 if (profileNamespace getVariable [_flag, false]) exitWith { false };
 
 {
