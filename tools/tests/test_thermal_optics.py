@@ -4925,18 +4925,19 @@ class TestSensorThresholdKernel(unittest.TestCase):
         return 1.0 / (levels - 1)
 
     @staticmethod
-    def _n(t_bg_k):
-        # The segment selection, mirrored from the fit.  The fit clamps its
-        # temperature to 240..460 K before selecting, which cannot change the
-        # selected segment for a real background.
-        n = 5.0121  # night: 250-290 K
-        if t_bg_k > 290:
-            n = 4.4580  # day: 290-330 K
-        if t_bg_k > 330:
-            n = 3.7101  # hot: 330-450 K
-        return n
+    def _n(t_bg_k, lambda1_m=8e-6, lambda2_m=14e-6):
+        # The local log-log slope of the EXACT band radiance at the
+        # background, mirrored from fnc_planckExponent (issue #255).  The
+        # retired three-segment power-law constants (5.0121 / 4.4580 /
+        # 3.7101) came from a fit fnc_calculateBandRadiance no longer uses,
+        # so this mirror differentiates the real Planck integral instead.
+        h = 1.0  # K, the central-difference step
+        l0 = planck_band_radiance(t_bg_k, lambda1_m, lambda2_m)
+        l_hi = planck_band_radiance(t_bg_k + h, lambda1_m, lambda2_m)
+        l_lo = planck_band_radiance(max(t_bg_k - h, 1.0), lambda1_m, lambda2_m)
+        return (t_bg_k / l0) * ((l_hi - l_lo) / (2 * h))
 
-    def threshold(self, netd_c, snr, t_bg_c):
+    def threshold(self, netd_c, snr, t_bg_c, lambda1_m=8e-6, lambda2_m=14e-6):
         # Mirror of the kernel body, pinned by test_source_guards_present.
         if not (math.isfinite(netd_c) and math.isfinite(snr) and math.isfinite(t_bg_c)):
             return -1
@@ -4945,13 +4946,13 @@ class TestSensorThresholdKernel(unittest.TestCase):
         t_bg_k = t_bg_c + 273.15
         if t_bg_k <= 0:
             return -1
-        return snr * netd_c * self._n(t_bg_k) / t_bg_k
+        return snr * netd_c * self._n(t_bg_k, lambda1_m, lambda2_m) / t_bg_k
 
     def test_matches_the_closed_form_on_a_hand_computed_case(self):
-        # 5 * 0.05 * 5.0121 / 288.15 = 0.0043489...
+        # 5 * 0.05 * 4.7338 / 288.15 = 0.0041071...
         got = self.threshold(0.05, 5, 15)
-        self.assertAlmostEqual(got, 5 * 0.05 * 5.0121 / 288.15, places=12)
-        self.assertAlmostEqual(got, 0.004349, places=6)
+        self.assertAlmostEqual(got, 5 * 0.05 * self._n(288.15) / 288.15, places=12)
+        self.assertAlmostEqual(got, 0.0041071, places=6)
 
     def test_a_cooler_device_gives_a_lower_threshold(self):
         # A cooled InSb/MCT device (0.02 C) is MORE sensitive than the
@@ -4960,21 +4961,35 @@ class TestSensorThresholdKernel(unittest.TestCase):
         uncooled = self.threshold(0.05, 5, 15)
         cooled = self.threshold(0.02, 5, 15)
         self.assertLess(cooled, uncooled)
-        self.assertAlmostEqual(cooled, 0.001739, places=6)
+        self.assertAlmostEqual(cooled, 0.0016428, places=6)
 
     def test_a_higher_multiple_gives_a_higher_threshold(self):
         self.assertLess(self.threshold(0.05, 5, 15), self.threshold(0.05, 10, 15))
-        self.assertAlmostEqual(self.threshold(0.05, 10, 15), 0.008697, places=6)
+        self.assertAlmostEqual(self.threshold(0.05, 10, 15), 0.0082142, places=6)
 
-    def test_the_exponent_follows_the_background_segment(self):
-        # 5 C sits in the night segment, 35 C in the day segment and 60 C in
-        # the hot segment.  The exponent must change with the background.
-        night = self.threshold(0.05, 5, 5)
-        day = self.threshold(0.05, 5, 35)
-        hot = self.threshold(0.05, 5, 60)
-        self.assertAlmostEqual(night, 5 * 0.05 * 5.0121 / 278.15, places=12)
-        self.assertAlmostEqual(day, 5 * 0.05 * 4.4580 / 308.15, places=12)
-        self.assertAlmostEqual(hot, 5 * 0.05 * 3.7101 / 333.15, places=12)
+    def test_the_exponent_tracks_the_background_temperature(self):
+        # The exponent is the local slope of the exact band radiance.  It
+        # falls smoothly as the background warms (Wien's displacement moves
+        # the band onto the tail of the Planck curve), so the threshold is
+        # NOT the old three-segment staircase.  Each value is re-derived
+        # from the integral, not a pinned constant.
+        for t_c in (5.0, 15.0, 35.0, 60.0):
+            t_k = t_c + 273.15
+            got = self.threshold(0.05, 5, t_c)
+            self.assertAlmostEqual(got, 5 * 0.05 * self._n(t_k) / t_k, places=12)
+        self.assertGreater(self._n(278.15), self._n(288.15))
+        self.assertGreater(self._n(288.15), self._n(308.15))
+        self.assertGreater(self._n(308.15), self._n(333.15))
+
+    def test_the_mwir_band_has_a_larger_exponent_than_lwir(self):
+        # The band is per-device (issue #255): a MWIR 3-5 um detector sees a
+        # much steeper radiance slope than an LWIR 8-14 um one, so the same
+        # NETD gives a HIGHER relative threshold at the same background.
+        lwir = self.threshold(0.05, 5, 15)
+        mwir = self.threshold(0.05, 5, 15, 3e-6, 5e-6)
+        self.assertGreater(self._n(288.15, 3e-6, 5e-6), self._n(288.15))
+        self.assertGreater(mwir, lwir)
+        self.assertAlmostEqual(mwir, 0.0097821, places=6)
 
     def test_a_non_positive_netd_is_refused(self):
         for bad in (0.0, -0.05):
@@ -5006,14 +5021,71 @@ class TestSensorThresholdKernel(unittest.TestCase):
         self.assertIn("if !(finite _netdC) exitWith { -1 };", code)
         self.assertIn("if !(finite _snrMultiple) exitWith { -1 };", code)
         self.assertIn("if !(finite _tBgC) exitWith { -1 };", code)
-        # The exponents live in the sensor-threshold closed form only.  The
-        # radiance kernel now uses the exact Planck integral, not this fit.
+        # The stale three-segment exponents are GONE from the threshold
+        # kernel; the exponent now comes from fnc_planckExponent, the one
+        # home of the band-resolved slope (issue #255).
+        self.assertIn("call FUNC(planckExponent)", code)
         for exponent in ("5.0121", "4.4580", "3.7101"):
-            self.assertIn(exponent, code)
+            self.assertNotIn(exponent, code)
         self.assertNotIn("5.0121", self.radiance_code)
-        # The segment boundaries match the fit.
-        self.assertIn("if (_tBgK > 290) then", code)
-        self.assertIn("if (_tBgK > 330) then", code)
+        # The device band is threaded through, so an MWIR device no longer
+        # reuses the LWIR exponent.
+        self.assertIn('["_bandToken", "lwir", [""]]', code)
+        # The retired segment boundaries are gone too.
+        self.assertNotIn("if (_tBgK > 290) then", code)
+        self.assertNotIn("if (_tBgK > 330) then", code)
+
+
+_PLANCK_EXP_KERNEL = _THERMAL / "solver" / "fnc_planckExponent.sqf"
+_SENSOR_THRESHOLD_KERNEL = _THERMAL / "solver" / "fnc_calculateSensorThreshold.sqf"
+
+
+def _run_planck_exponent(t_k, band="lwir"):
+    """Execute the real exponent kernel, with the real Planck integral."""
+    return run_sqf(
+        _PLANCK_EXP_KERNEL,
+        [t_k, band],
+        {
+            "__FUNC__resolveThermalBand": _run_resolve_band,
+            "__FUNC__planckBandRadiance": _run_planck,
+        },
+    )
+
+
+def _run_sensor_threshold(netd_c, snr, t_bg_c, band="lwir"):
+    """Execute the real sensor-threshold kernel (issue #255)."""
+    return run_sqf(
+        _SENSOR_THRESHOLD_KERNEL,
+        [netd_c, snr, t_bg_c, band],
+        {"__FUNC__planckExponent": _run_planck_exponent},
+    )
+
+
+class TestSensorThresholdBandResolved(unittest.TestCase):
+    """The real sensor-threshold SQF, executed headless (issue #255).
+
+    The kernel must derive its exponent from the exact band integral for the
+    DEVICE band, not the retired three-segment constants.  This executes the
+    shipped SQF, so a regression to a band-blind exponent fails here.
+    """
+
+    def test_the_lwir_threshold_matches_the_exact_slope(self):
+        got = _run_sensor_threshold(0.05, 5, 15)
+        expected = 5 * 0.05 * _run_planck_exponent(288.15, "lwir") / 288.15
+        self.assertAlmostEqual(got, expected, places=10)
+        self.assertAlmostEqual(got, 0.0041071, places=6)
+
+    def test_an_mwir_device_is_not_given_the_lwir_exponent(self):
+        lwir = _run_sensor_threshold(0.05, 5, 15, "lwir")
+        mwir = _run_sensor_threshold(0.05, 5, 15, "mwir")
+        self.assertGreater(mwir, lwir)
+        # The MWIR slope (~11.3) is about 2.38x the LWIR slope (~4.73) at
+        # a 15 C background, so the threshold ratio tracks it.
+        self.assertAlmostEqual(mwir / lwir, 11.274825 / 4.733824, places=3)
+
+    def test_the_exponent_kernel_refuses_a_non_positive_temperature(self):
+        self.assertEqual(_run_planck_exponent(0.0), -1)
+        self.assertEqual(_run_planck_exponent(-5.0), -1)
 
 
 class TestSpatialResolutionKernel(unittest.TestCase):
@@ -5074,14 +5146,15 @@ class TestSpatialResolutionKernel(unittest.TestCase):
         if level < 1:
             fill = min(pixels, 1.0) ** 2
             tbg_k = tbg + 273.15
-            n = 5.0121
-            if tbg_k > 290:
-                n = 4.4580
-            if tbg_k > 330:
-                n = 3.7101
-            snr_full = contrast * tbg_k / (n * netd)
-            if snr_full * fill >= 2.8:
-                level = 1
+            h = 1.0
+            l0 = planck_band_radiance(tbg_k)
+            l_hi = planck_band_radiance(tbg_k + h)
+            l_lo = planck_band_radiance(max(tbg_k - h, 1.0))
+            n = (tbg_k / l0) * ((l_hi - l_lo) / (2 * h))
+            if n > 0:
+                snr_full = contrast * tbg_k / (n * netd)
+                if snr_full * fill >= 2.8:
+                    level = 1
         return level >= 1, level, lp
 
     def test_source_guards_and_constants_present(self):
@@ -5146,9 +5219,10 @@ class TestSpatialResolutionKernel(unittest.TestCase):
     def test_sub_pixel_needs_enough_contrast(self):
         # At 4000 m the fill is 0.5837, so the full-pixel SNR must exceed
         # 2.8 / 0.5837 = 4.797, i.e. contrast above
-        # 4.797 * n * netd / tBgK = 4.797 * 5.0121 * 0.05 / 288.15 = 0.00417.
-        low = self._resolve(0.5 / 4000.0, 640, 4, contrast=0.004)
-        high = self._resolve(0.5 / 4000.0, 640, 4, contrast=0.005)
+        # 4.797 * n * netd / tBgK = 4.797 * 4.7338 * 0.05 / 288.15 = 0.00394
+        # (the band-resolved LWIR slope, issue #255).
+        low = self._resolve(0.5 / 4000.0, 640, 4, contrast=0.0035)
+        high = self._resolve(0.5 / 4000.0, 640, 4, contrast=0.0045)
         self.assertFalse(low[0])
         self.assertTrue(high[0])
 
@@ -6023,7 +6097,7 @@ class TestThermalResolvabilityWiring(unittest.TestCase):
         # the model live.
         self.assertIn("getThermalDeviceProperties", self.paint)
         self.assertIn("FUNC(calculateSensorThreshold)", self.paint)
-        self.assertIn("_threshold = 0.004349;", self.paint)
+        self.assertIn("_threshold = 0.004107;", self.paint)
         device = _read_sqf("fnc_getThermalDeviceProperties.sqf", "thermal")
         self.assertIn('[0.05, 640, 480, 1.5, 30, 0, "lwir"]', device)
 

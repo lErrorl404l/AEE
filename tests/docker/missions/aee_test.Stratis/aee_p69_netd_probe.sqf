@@ -21,10 +21,14 @@ if (isNil _KERNEL) then {
     _notes pushBack "kernel isNil: the sensor threshold kernel is not compiled";
     _summary = "kernel not compiled";
 } else {
-    // 1. The closed form on a hand-computed case: 5 * 0.05 * 5.0121 / 288.15.
-    private _ref = [0.05, 5, 15] call aee_thermal_fnc_calculateSensorThreshold;
-    private _expect = 5 * 0.05 * 5.0121 / 288.15;
-    if ((_ref isEqualType 0) && (abs (_ref - _expect) < 1e-9)) then {
+    // 1. The closed form on the band-resolved exponent: the LWIR 8-14 um
+    // slope at 288.15 K is about 4.7338, so the threshold is
+    // 5 * 0.05 * 4.7338 / 288.15.  The exponent comes from the SEPARATE
+    // exponent kernel, so this is not a self-check.
+    private _ref = [0.05, 5, 15, "lwir"] call aee_thermal_fnc_calculateSensorThreshold;
+    private _nLwir = [288.15, "lwir"] call aee_thermal_fnc_planckExponent;
+    private _expect = 5 * 0.05 * _nLwir / 288.15;
+    if ((_ref isEqualType 0) && (_nLwir isEqualType 0) && (abs (_ref - _expect) < 1e-9)) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
@@ -80,15 +84,21 @@ if (isNil _KERNEL) then {
         _notes pushBack format ["non-positive NETD gave %1 and %2, want -1", _zero, _neg];
     };
 
-    // 6. The exponent follows the background segment.  A 35 C background is
-    // above 290 K, so the day exponent 4.4580 applies.
-    private _day = [0.05, 5, 35] call aee_thermal_fnc_calculateSensorThreshold;
-    private _dayExpect = 5 * 0.05 * 4.4580 / 308.15;
-    if ((_day isEqualType 0) && (abs (_day - _dayExpect) < 1e-9)) then {
+    // 6. The exponent is BAND-RESOLVED.  An MWIR 3-5 um detector sees a
+    // much steeper radiance slope (~11.3) than the LWIR 8-14 um window
+    // (~4.73) at the same background, so the same NETD gives a HIGHER
+    // threshold.  This is the property issue #255 restored.
+    private _mwir = [0.05, 5, 15, "mwir"] call aee_thermal_fnc_calculateSensorThreshold;
+    private _nMwir = [288.15, "mwir"] call aee_thermal_fnc_planckExponent;
+    private _mwirExpect = 5 * 0.05 * _nMwir / 288.15;
+    if (
+        (_mwir isEqualType 0) && (_mwir > _ref)
+        && (abs (_mwir - _mwirExpect) < 1e-9)
+    ) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["day segment gave %1, want %2", _day, _dayExpect];
+        _notes pushBack format ["mwir gave %1, want %2 above lwir %3", _mwir, _mwirExpect, _ref];
     };
 
     _summary = format ["uncooled=%1 cooled=%2 snr10=%3", _ref, _cooled, _snr10];

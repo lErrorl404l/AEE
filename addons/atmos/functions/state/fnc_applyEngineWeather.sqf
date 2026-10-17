@@ -22,8 +22,9 @@ runs once per client.  Engine coupling: rain does not fall below overcast 0.5
 in Arma 3 (command DB `setRain`), so the modelled rain is gated on the
 modelled overcast.
 
-PRECEDENCE is FUNC(engineWeatherBlockedReason): the setting gate, the
-Real Weather host-mod gate, then the operator's manual-weather gate.
+PRECEDENCE is FUNC(engineWeatherBlockedReason): two gates, first match wins,
+the setting, then the operator's manual-weather gate.  AEE alone owns the
+engine weather, so no third gate exists.
 
 INTERPOLATION: every value uses the engine's timed form,
 `<interval> setOvercast value` and `<interval> setRain value`, so the engine

@@ -56,7 +56,10 @@ if (_intensity > 0.02) then {
     private _mirage = "#particlesource" createVehicleLocal _pos;
     _mirage attachTo [_player, [0, 3, 0.5]]; // in front, at ground
 
-    private _alpha = linearConversion [0, 1, _intensity, 0.05, 0.15, true] * (missionNamespace getVariable [QGVAR(mirageIntensity), 1.0]);
+    // _intensity IS QGVAR(mirageIntensity), read above, so the alpha must
+    // apply it ONCE.  A second multiply squared the intensity: too weak at
+    // low intensity and too strong at high (issue #258).
+    private _alpha = linearConversion [0, 1, _intensity, 0.05, 0.15, true];
     private _size  = linearConversion [0, 1, _intensity, 1, 3, true];
 
     _mirage setParticleParams [

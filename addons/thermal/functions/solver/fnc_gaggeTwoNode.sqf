@@ -12,12 +12,16 @@
  *   standing), h_c = max(3.0 p^0.53, 8.6 (v p)^0.53, 5.66 (met - 0.85)^0.39);
  *   q_sens = (t_sk - t_op) / (r_a + r_clo);
  *   core-skin flux (t_cr - t_sk)(5.28 + 1.163 m_bl);
- *   respiration C_res = 0.0014 M (34 - t_a), E_res = 0.0023 M (44 - p_a);
+ *   respiration C_res = 0.0014 M (34 - t_a), E_res = 0.0023 M (44 - p_a),
+ *   M the working rate, fixed once before the loop as the reference does;
  *   storage into 0.97 alpha m and 0.97 (1 - alpha) m (70 kg);
  *   vasomotion m_bl = (6.3 + 120 c_warm)/(1 + 0.5 cold_sk) in [0.5, 90];
  *   sweat m_rsw = 170 warm_body exp(warm_sk / 10.7), E_rsw = 0.68 m_rsw,
  *   wettedness w = 0.06 + 0.94 E_rsw / E_max, capped at the critical
  *   wettedness 0.59 v^-0.08 (clothed); shivering 19.4 cold_sk cold_cr.
+ * Start (an empty state): t_cr 36.8, t_sk 33.7, m_bl 6.3, alpha 0.1 and
+ *   e_sk = 0.1 met, the reference's initial evaporative loss (0.12 W at
+ *   1.2 met), overwritten by the first step.
  * Sun: the ASHRAE 55-2020 Appendix C (SolarCal) effective radiant field
  *   ERF = (0.5 f_eff (I_diff + I_th R_floor) + f_p f_bes I_dir) a_sw / 0.95
  *   raises the mean radiant temperature by ERF / (f_eff h_r), f_eff 0.725,
@@ -58,10 +62,11 @@ params [
     ["_tWater", -273, [0]], ["_vWater", 0, [0]], ["_perfusion", 1, [0]],
     ["_swimming", false, [false]]
 ];
+private _met = _metW / 58.2;
 private _tSk = 33.7;
 private _tCr = 36.8;
 private _mBl = 6.3;
-private _eSk = 0.1 * 58.2;
+private _eSk = 0.1 * _met;
 private _alfa = 0.1;
 private _immMin = 0;
 if ((count _state) >= 5) then {
@@ -78,7 +83,6 @@ private _fAcl = 1 + 0.15 * _clo;
 private _lr = 2.2 / _patmA;
 private _iCl = [1.0, 0.45] select (_clo > 0);
 private _wMax = if (_clo > 0) then { 0.59 * (_vA ^ -0.08) } else { 0.38 * (_vA ^ -0.29) };
-private _met = _metW / 58.2;
 private _hcc = (3.0 * (_patmA ^ 0.53)) max (8.600001 * ((_vA * _patmA) ^ 0.53));
 if (_met > 0.85) then { _hcc = _hcc max (5.66 * ((_met - 0.85) ^ 0.39)); };
 
@@ -101,13 +105,18 @@ if (!_immersed && _ghi > 0 && _sunAlt > 0) then {
 private _sbc = 0.000000056697;
 private _m = _metW;
 private _rm = _metW;
+// Respiration is fixed once from the working rate, as the reference does.
+// The shivering term at the end of the loop raises the core storage term,
+// but the reference never lets it raise the respiratory loss.
+// pythermalcomfort _gagge_two_nodes_optimized: q_res and c_res are computed
+// once before the loop from m = met * 58.2.
+private _qRes = 0.0023 * _rm * (44 - _pa);
+private _cRes = 0.0014 * _rm * (34 - _tdb);
 private _remaining = _dt max 0;
 while { _remaining > 0 } do {
     private _step = _remaining min 60;
     _remaining = _remaining - _step;
     private _f = _step / 60;
-    private _qRes = 0.0023 * _m * (44 - _pa);
-    private _cRes = 0.0014 * _m * (34 - _tdb);
     private _qSens = 0;
     if (_immersed) then {
         private _hW = if (_vWater > 0) then { 272.9 * (_vWater ^ 0.5) } else { 43.0 };

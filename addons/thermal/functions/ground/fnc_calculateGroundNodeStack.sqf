@@ -235,7 +235,15 @@ private _delta = {
     ((_this call _psat) * 4302.645 / ((_this + 243.5) ^ 2)) / 1000
 };
 private _esKPa = ((_tAir call _psat) / 1000);  // kPa
-private _eaKPa = _esKPa * (0.5);               // kPa (50% RH default)
+// Vapour pressure from the modelled relative humidity, NOT a fixed 50
+// percent: the FAO-56 latent draw is humidity-dependent, so a constant made
+// the ground latent cooling independent of the weather and the surface node
+// read the same on a dry and a humid day.  EGVAR(core,currentHumidity) is
+// published every tick (atmos/state/fnc_updateHumidity); 50 is its reference
+// default and the clamp keeps a bad read inside the physical range.
+private _rh = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+if !(_rh isEqualType 0) then { _rh = 50; };
+private _eaKPa = _esKPa * ((_rh max 0 min 100) / 100);  // kPa
 private _ra = (_rho * 1007) / (_h max 1);      // aerodynamic resistance, s/m
 // The snow surface, not the soil, exchanges with the sky, so leaving them
 // in would warm the ground under the snow, the opposite of the insulation

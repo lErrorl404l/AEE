@@ -273,7 +273,7 @@ private _snrMultiple = 5;
 // the two must not be conflated.  On this path the step is FINER than the
 // sensor.  The band step stays a display concern in the ladder below.
 private _sensorThreshold = [_deviceNetd, _snrMultiple, _tAir] call EFUNC(thermal,calculateSensorThreshold);
-if (_sensorThreshold <= 0) then { _sensorThreshold = 0.004349; };
+if (_sensorThreshold <= 0) then { _sensorThreshold = 0.004107; };
 
 // The 256-level emissive ladder.  The filenames are zero-padded to three
 // digits, so the full path list is built ONCE and cached rather than

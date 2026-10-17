@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (899)
+### Public functions (900)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -861,6 +861,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_isPositionShadowed`
 - `aee_thermal_fnc_isThermalHostActive`
 - `aee_thermal_fnc_planckBandRadiance`
+- `aee_thermal_fnc_planckExponent`
 - `aee_thermal_fnc_probeThermalCapability`
 - `aee_thermal_fnc_resolvePaintIndexFromSelections`
 - `aee_thermal_fnc_resolveSelectionPaintIndex`

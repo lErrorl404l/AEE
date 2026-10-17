@@ -28,7 +28,10 @@ PROVENANCE.
     Sounds of Planting Trees", Journal of the INCE of Japan 24(4):268-276,
     DOI 10.11372/souonseigyo1977.24.268, section 2, page 269: "L = 2.78 y +
     37.4 ... y = 5 m/s ... L = 51.3 dBA").  The table holds that regression
-    at 0, 2, 5, 10, 15 and 20 m/s.  The receiver sat 5 m from the trunk of a
+    at 2, 5, 10, 15 and 20 m/s.  Its 0 m/s row is a deliberate zero, not the
+    regression's 37.4 dB intercept: the row is the wind contribution, and the
+    source measured from 5 m/s up, so a dead calm adds no wind-induced
+    foliage noise.  The receiver sat 5 m from the trunk of a
     planted tree, so the value is the floor a listener under vegetation
     hears, not a bare-ground value.  Komatsu section 4.2, page 271, records
     the same order for its own six-tree set.
@@ -72,7 +75,9 @@ params [
 
 // [input, dB(A)] breakpoints.  The wind row is the measured regression
 // L_A = 2.78 * v + 37.4 dB(A), Komatsu and others 2000, section 2, page 269
-// (see the header).  The rain, foliage and water rows are UNSOURCED.
+// (see the header).  Its 0 m/s entry is a deliberate zero: the row is the
+// wind contribution, so a dead calm adds no wind-induced foliage noise.
+// The rain, foliage and water rows are UNSOURCED.
 private _rainTable = [[0, 0], [0.25, 43], [0.5, 48], [0.75, 53], [1.0, 58]];
 private _windTable = [[0, 0], [2, 42.96], [5, 51.3], [10, 65.2], [15, 79.1], [20, 93]];
 private _foliageTable = [[0, 0], [1, 25]];
