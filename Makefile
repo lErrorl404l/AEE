@@ -57,6 +57,7 @@ lint: lint-parity
 	python3 tools/validation/validate_visual_materials.py || rc=1; \
 	python3 tools/validation/validate_visual_cloudlets.py || rc=1; \
 	python3 tools/validation/validate_visual_vanilla_assets.py || rc=1; \
+	python3 tools/validation/validate_visual_stack.py || rc=1; \
 	python3 tools/validation/gen_physics_config.py --check || rc=1; \
 	python3 tools/validation/gen_star_catalog.py --check || rc=1; \
 	python3 tools/validation/gen_meteor_showers.py --check || rc=1; \
