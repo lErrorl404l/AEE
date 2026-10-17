@@ -190,10 +190,6 @@ def _unused_emissivity_radiant_correction(emissivity):
 # ─── Thermal contrast mirrors ───────────────────────────────────────────────
 
 
-
-
-
-
 # ─── Thermal blur / pan smear mirrors ────────────────────────────────────────
 
 
@@ -243,47 +239,49 @@ def battery_derating(temp_c):
 
 
 def ambient_lux(
-    moon_intensity,
+    moon_frac,
     overcast=0.0,
     rain=0.0,
     sun_elev_deg=-90.0,
     starlight=0.001,
     aurora_intensity=0.0,
+    moon_alt=90.0,
+    haze=0.08,
 ):
-    """Mirror of the lux model in fnc_calculateIlluminance.
+    """The lux model of fnc_calculateIlluminance, from its real kernels.
 
-    cloudTransmission = 1 - min(overcast*0.85, 0.85)   (multiplicative)
-    moonLight = max(0, moonIntensity*cloudTransmission - rain*0.5)
+    moonLux     = fnc_moonIlluminance(moonAlt, fraction, k) x (1 - 0.75 N^3.4)
     twilightLux = the measured table (fnc_twilightIlluminance) x (1 - 0.75 N^3.4)
-    auroraLux = 0.03 * auroraIntensity  (issue #112, green 557.7 nm)
-    ambientLux = starlight + moonLight*0.249 + twilightLux + auroraLux
-
-    Full moon (1.0) clear sky -> 0.25 lux (real full-moon illuminance).
-    Overcast is a MULTIPLICATIVE transmission loss (the engine does not
-    pre-attenuate moonIntensity for clouds - ACE3 applies its own
-    (1 - overcast) factor); heavy overcast blocks ~85 % of moonlight.
-    Heavy rain halves the remainder.
-    starlight is the moonless-night floor (default 0.001).  It is a live
-    missionNamespace hook (aee_core_starlightLux) so skybox mods can
-    raise the assumed night-sky brightness; a brighter sky -> higher lux
-    -> NVG gains down, rendering the brighter sky correctly.
-    Twilight glow (sun below horizon) adds the scattered-sunlight sky
-    light: 3.41 lux at -6 deg, 0.00806 at -12, 0.000645 at -18 (Schlyter).
-    Aurora adds up to 0.03 lux at full intensity (a Kp 7-9 storm) -
-    the green emission sits in the NVG tube's peak sensitivity, so the
-    added photons brighten the image like moonlight.
+    auroraLux   = 0.03 * auroraIntensity
+    ambientLux  = starlight + moonLux + twilightLux + auroraLux
+    k = 1.086 (0.0973 + 0.027 + tau_aerosol); rain adds no vertical loss.
     """
-    trans = 1.0 - min(overcast * 0.85, 0.85)
-    moon = max(0.0, moon_intensity * trans - rain * 0.5)
-    twilight = _twilight_lux(sun_elev_deg) * (1 - 0.75 * max(0.0, min(1.0, overcast)) ** 3.4)
+    from sqf_lite import run_sqf
+
+    cloud = 1 - 0.75 * max(0.0, min(1.0, overcast)) ** 3.4
+    k = 1.086 * (0.0973 + 0.027 + max(haze - 0.0116, 0) * 1.2)
+    moon = (
+        run_sqf(
+            Path(__file__).resolve().parents[2]
+            / "addons/core/functions/fnc_moonIlluminance.sqf",
+            [moon_alt, moon_frac, k],
+        )
+        * cloud
+    )
+    twilight = _twilight_lux(sun_elev_deg) * cloud
     aurora = 0.03 * max(0.0, min(1.0, aurora_intensity))
-    return starlight + moon * 0.249 + twilight + aurora
+    return starlight + moon + twilight + aurora
 
 
 def _twilight_lux(sun_elev_deg):
     """The generated table, run as SQF (fnc_twilightIlluminance)."""
     from sqf_lite import run_sqf
-    return run_sqf(Path(__file__).resolve().parents[2] / "addons/core/functions/fnc_twilightIlluminance.sqf", [sun_elev_deg])
+
+    return run_sqf(
+        Path(__file__).resolve().parents[2]
+        / "addons/core/functions/fnc_twilightIlluminance.sqf",
+        [sun_elev_deg],
+    )
 
 
 def extinction_per_m(rain, fog):
@@ -1254,34 +1252,22 @@ class TestAmbientLux(unittest.TestCase):
     """Moon lux model - real full-moon illuminance is ~0.1-0.3 lux."""
 
     def test_full_moon_clear_sky(self):
-        # Full moon, no cloud/rain -> 0.25 lux.
-        self.assertAlmostEqual(ambient_lux(1.0), 0.25, places=6)
+        # Full moon at the zenith through ~0.2 mag of extinction: ~0.26 lx.
+        self.assertAlmostEqual(ambient_lux(1.0), 0.001 + 0.26, delta=0.01)
 
-    def test_moon_term_matches_verified_lunar_model(self):
-        # Cross-model lock: NVG uses the ENGINE moonIntensity term
-        # (moonLight * 0.249).  The verified lunar model (Krisciunas &
-        # Schaefer 1991, in fnc_calculateLunarIllumination) computes lux
-        # from the phase angle.  The two must stay within a 10% envelope
-        # at every phase so the NVG display and the astronomical model
-        # do not diverge.  (Exact equality is NOT expected: the optics
-        # constant is calibrated to ACE3's 0.25 lux full-moon anchor.)
-        # Engine moonIntensity is 1.0 at full moon, 0.09 at quarter, 0
-        # at new (Arma folds phase + elevation into it).
-        cases = [
-            (1.0, 0.5),  # full moon
-            (0.09, 0.25),  # first quarter
-            (0.09, 0.75),  # last quarter
-            (0.0, 0.0),  # new moon
-        ]
-        for moon_intensity, phase in cases:
-            optics_lux = ambient_lux(moon_intensity)
-            verified_lux = ks_lunar_lux(phase)
-            self.assertLess(
-                abs(optics_lux - verified_lux) / max(verified_lux, 1e-6),
-                0.10,
-                msg=f"moonIntensity {moon_intensity}: optics {optics_lux:.4f} "
-                f"vs verified {verified_lux:.4f} diverged >10%",
-            )
+    def test_quarter_moon_is_a_tenth_of_full(self):
+        # Krisciunas & Schaefer: the quarter moon is 2.6 mag fainter.
+        q = ambient_lux(0.5) - 0.001
+        f = ambient_lux(1.0) - 0.001
+        self.assertAlmostEqual(
+            q / f, 10 ** (-0.4 * 0.026 * 90 - 0.4 * 4e-9 * 90**4), places=4
+        )
+
+    def test_low_moon_is_dimmer(self):
+        self.assertLess(ambient_lux(1.0, moon_alt=10), ambient_lux(1.0, moon_alt=60))
+
+    def test_moon_below_horizon_gives_nothing(self):
+        self.assertAlmostEqual(ambient_lux(1.0, moon_alt=-1), 0.001, places=6)
 
     def test_starlight_floor(self):
         # No moon (new moon / moon below horizon) -> 0.001 lux floor.
@@ -1319,40 +1305,19 @@ class TestAmbientLux(unittest.TestCase):
         # 30x the starlight floor - a genuinely brighter image.
         self.assertGreater(with_aurora / max(no_aurora, 1e-9), 30.0)
 
-    def test_overcast_reduces_moon(self):
-        # Full moon behind heavy overcast: cloud loss 0.8*0.85 = 0.68,
-        # transmission 0.32 -> lux = 0.001 + 0.32*0.249 = 0.0807.
-        # Real heavy overcast blocks 60-90% of moonlight.
+    def test_overcast_follows_kasten_czeplak(self):
+        clear = ambient_lux(1.0) - 0.001
+        for n in (0.5, 0.8, 1.0):
+            self.assertAlmostEqual(
+                (ambient_lux(1.0, overcast=n) - 0.001) / clear,
+                1 - 0.75 * n**3.4,
+                places=4,
+            )
+
+    def test_overcast_clamped(self):
         self.assertAlmostEqual(
-            ambient_lux(1.0, overcast=0.8), 0.001 + 0.32 * 0.249, places=4
+            ambient_lux(1.0, overcast=2.0), ambient_lux(1.0, overcast=1.0), places=6
         )
-
-    def test_full_overcast_near_black(self):
-        # Full moon at overcast=1.0: transmission 0.15 -> 0.038 lux.
-        # ACE3 goes to 0 at full overcast; real storm sky ~0.01-0.05.
-        self.assertAlmostEqual(
-            ambient_lux(1.0, overcast=1.0), 0.001 + 0.15 * 0.249, places=4
-        )
-
-    def test_overcast_never_negative_transmission(self):
-        # overcast beyond 1.0 (modded weather) clamps transmission at 0.15.
-        self.assertAlmostEqual(
-            ambient_lux(1.0, overcast=2.0), 0.001 + 0.15 * 0.249, places=4
-        )
-
-    def test_rain_reduces_moon(self):
-        # Full moon in heavy rain: moonLight -= 0.5.
-        self.assertAlmostEqual(
-            ambient_lux(1.0, rain=1.0), 0.001 + 0.5 * 0.249, places=4
-        )
-
-    def test_never_negative_moon(self):
-        # Worst case: overcast + rain cannot push moonLight below 0.
-        self.assertGreaterEqual(ambient_lux(0.1, overcast=1.0, rain=1.0), 0.001)
-
-    def test_half_moon_half_lux(self):
-        # Half moon, clear: ~0.125 lux (midway to full moon).
-        self.assertAlmostEqual(ambient_lux(0.5), 0.1255, places=4)
 
 
 class TestTwilight(unittest.TestCase):
@@ -1368,7 +1333,9 @@ class TestTwilight(unittest.TestCase):
         self.assertAlmostEqual(lux, 0.001 + 3.41, delta=0.05)
 
     def test_nautical_twilight_end(self):
-        self.assertAlmostEqual(ambient_lux(0.0, sun_elev_deg=-12), 0.001 + 0.00806, delta=0.0003)
+        self.assertAlmostEqual(
+            ambient_lux(0.0, sun_elev_deg=-12), 0.001 + 0.00806, delta=0.0003
+        )
 
     def test_horizon_sunset(self):
         # Sun at horizon: ~398 lux (bright twilight).
@@ -2936,8 +2903,14 @@ class TestSQFSync(unittest.TestCase):
 
     # ── Thermal contrast: no second scene-contrast factor ──
     def test_contrast_kernel_is_gone(self):
-        self.assertFalse(Path("addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf").exists())
-        self.assertNotIn("currentThermalContrast", _read_sqf("fnc_applyThermalVision.sqf", "thermal"))
+        self.assertFalse(
+            Path(
+                "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
+            ).exists()
+        )
+        self.assertNotIn(
+            "currentThermalContrast", _read_sqf("fnc_applyThermalVision.sqf", "thermal")
+        )
 
     # ── Thermal vision (fnc_applyThermalVision.sqf) ──
     def test_thermal_blur_constants(self):
@@ -3220,11 +3193,9 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_calculateIlluminance.sqf",
             [
-                "_starlightLux + (_moonLight * 0.249) + _twilightLux",
-                "_cloudLoss",
-                "_cloudTransmission",
-                "_overcastS * 0.85) min 0.85",
-                "_rainS * 0.5",
+                "_starlightLux + _moonLux + _twilightLux",
+                "call FUNC(moonIlluminance)",
+                "1 - 0.75 * ((_overcastS max 0 min 1) ^ 3.4)",
                 "call FUNC(getSmoothedWeather)",
                 "4 * pi * _dist * _dist",
                 "exp (-_gamma * _dist)",
@@ -3253,7 +3224,12 @@ class TestSQFSync(unittest.TestCase):
     def test_illuminance_extinction_constants(self):
         self._assert_in_sqf(
             "fnc_calculateIlluminance.sqf",
-            ["0.21 * ((_rainS * ENGINE_RAIN_FULL_MMH) ^ 0.74) / 1000", "4343", "40 * (_fogS / 0.5) ^ 2", "min 300"],
+            [
+                "0.21 * ((_rainS * ENGINE_RAIN_FULL_MMH) ^ 0.74) / 1000",
+                "4343",
+                "40 * (_fogS / 0.5) ^ 2",
+                "min 300",
+            ],
             "smoothed rain/fog extinction",
             addon="core",
         )
@@ -3761,10 +3737,17 @@ class TestSQFSync(unittest.TestCase):
         text = _read_sqf("fnc_applyClothingThermal.sqf", "thermal")
         self.assertIn("calculateUnitLoadoutThermal", text)
         self.assertIn("_loadoutFlux", text)
-        # The mass scale is applied in the callee's solve.
+        # The mass scale is applied in the callee's solve.  The per-selection
+        # `_skinMass = (0.1 * 70) * (_massScale ...` expression moved with the
+        # human path to the whole-body Gagge kernel (fnc_gaggeTwoNode): the
+        # carried mass now sizes the body through the Pandolf loadAbs
+        # metabolic input and the kernel's skin heat capacity.
         callee = _read_sqf("fnc_applySelectionThermal.sqf", "thermal")
         self.assertIn("_massScale", callee)
-        self.assertIn("_skinMass = (0.1 * 70) * (_massScale", callee)
+        self.assertIn("EFUNC(lib,unitMetabolicRate)", callee)
+        self.assertIn("FUNC(gaggeTwoNode)", callee)
+        kernel = _read_sqf("fnc_gaggeTwoNode.sqf", "thermal")
+        self.assertIn("0.97 * _alfa * 70 * 60", kernel)
 
     def test_custom_surface_classification(self):
         # Issue #204: custom/modded surfaces (GdtStratisConcrete,
@@ -6687,7 +6670,14 @@ class TestThermalSolverWarmup(unittest.TestCase):
         code = _code_only(self._CALLER.read_text(encoding="utf-8"))
         self.assertIn('private _firstSight = isNil "_storedTemp";', code)
         self.assertIn("private _solveDt = [5, 1000000] select _firstSight;", code)
-        self.assertEqual(code.count("_solveDt"), 3)
+        # _solveDt now appears twice, not three times: the definition and the
+        # inert-object two-node call.  The human selection path replaced its
+        # _solveDt call with the whole-body Gagge step, whose first sight is
+        # seeded by the same rule - a 4 h warm-up instead of a 5 s step.
+        self.assertEqual(code.count("_solveDt"), 2)
+        self.assertIn(
+            "private _gDt = if ((_gPrev select 1) < 0) then { 4 * 3600 }", code
+        )
 
 
 class TestThermalSweepBudget(unittest.TestCase):

@@ -318,8 +318,8 @@ if (_mode == "EXIT") then {
     _sizeObj = _sizeObj max (abs (((_bbRealObj select 1) select 1) - ((_bbRealObj select 0) select 1)));
     _sizeObj = _sizeObj max (abs (((_bbRealObj select 1) select 2) - ((_bbRealObj select 0) select 2)));
     if (_sizeObj <= 0) then { _sizeObj = (sizeOf _obj) max 0.1; };
-    private _vSpeedObj = abs speed _obj;
     private _oxObj = [];
+    private _gaggeObj = [];
 
     private _uploaded = 0;
 
@@ -518,20 +518,10 @@ if (_mode == "EXIT") then {
         // factor.  The solver consumes it directly and must not re-derive MRT.
         private _mrt = [getPosASL _obj, _fGround] call FUNC(calculateMRT);
         if (_obj isKindOf "CAManBase") then {
-            // Metabolic rate: resting 1 met = 58.2 W/m2 (Gagge 1986) over
-            // DuBois 1.8258 m2, plus movement heat.  qGen is TOTAL W,
-            // matching the W/K coupling in the core balance.  The movement
-            // terms mirror fnc_calculateObjectTemperature so both thermal
-            // paths agree (the movement model itself is an open item: no
-            // published speed-to-metabolism relation is in the repo).
-            private _vSpeed = _vSpeedObj;
-            private _metabMove = switch (true) do {
-                case (_vSpeed > 6):   { 120 };
-                case (_vSpeed > 3):   {  60 };
-                case (_vSpeed > 0.5): {  20 };
-                default               {   0 };
-            };
-            private _qMet = 58.2 * 1.8258 + _metabMove;
+            // Metabolic rate from what the unit is doing: Pandolf 1977 load
+            // carriage with the real carried mass, speed, grade and terrain
+            // (aee_lib_fnc_unitMetabolicRate), total W.
+            private _qMet = [_obj] call EFUNC(lib,unitMetabolicRate);
 
             // ─── Oxygen delivery (issue #196) ────────────────────────────────
             // One blood model, shared with fnc_calculateObjectTemperature
@@ -565,48 +555,38 @@ if (_mode == "EXIT") then {
                 _tWater = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _tAir];
                 if !(_tWater isEqualType 0) then { _tWater = _tAir; };
             };
-            // Rain rate (0..1) from the engine's built-in rain command - the
-            // native weather state, external wettedness driver for the
-            // evaporative path.
-            private _rain = rain;
 
-            // The loadout flux scales the skin mass: a carried item with
-            // more thermal inertia (a full backpack) warms and cools
-            // slower - the skin-mass time constant grows with the
-            // carried mass (issue #204).
-            private _skinMass = (0.1 * 70) * (_massScale max 0.2 min 3);
 
-            // Core state persists separately from the skin: the two nodes
-            // have different capacities and must not be seeded equal each
-            // tick (issue #191).
-            private _coreMap = missionNamespace getVariable [QGVAR(selCoreTemperature), -1];
-            if (_coreMap isEqualType 0) then {
-                _coreMap = createHashMap;
-                missionNamespace setVariable [QGVAR(selCoreTemperature), _coreMap];
+            // Whole-body Gagge two-node state (fnc_gaggeTwoNode), advanced
+            // once per object per pass and shared by its selections: core and
+            // skin are whole-body nodes in the model.
+            if (count _gaggeObj == 0) then {
+                private _gMap = missionNamespace getVariable [QGVAR(gaggeState), -1];
+                if (_gMap isEqualType 0) then {
+                    _gMap = createHashMap;
+                    missionNamespace setVariable [QGVAR(gaggeState), _gMap];
+                };
+                private _gKey = str _obj;
+                private _gPrev = _gMap getOrDefault [_gKey, [[], -1]];
+                private _gDt = if ((_gPrev select 1) < 0) then { 4 * 3600 } else { ((time - (_gPrev select 1)) max 0) min 600 };
+                private _rhNow = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+                if !(_rhNow isEqualType 0) then { _rhNow = 50; };
+                private _paMmHg = (6.112 * exp (17.62 * _tAir / (243.12 + _tAir))) * (_rhNow / 100) * 0.750062;
+                private _sunAltNow = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+                if !(_sunAltNow isEqualType 0) then { _sunAltNow = -90; };
+                private _gNew = [
+                    _gPrev select 0, _gDt, _tAir, _mrt, _wind, _qMet / 1.8258, _cloWorn,
+                    _paMmHg, 101325, _solar, _sunAltNow, _exposure,
+                    // Shortwave absorptance of the worn garment's own texture.
+                    [_obj, _idx, (_savedTexs param [_idx, ""])] call FUNC(getSolarAbsorptance),
+                    _tWater, _waterSpeed, (_ox select 10),
+                    (_tWater > -100) && {(vectorMagnitude velocity _obj) > 0.2}
+                ] call FUNC(gaggeTwoNode);
+                _gMap set [_gKey, [_gNew, time]];
+                _gaggeObj = _gNew;
             };
-            private _tCoreNow = _coreMap getOrDefault [_stateKey, 36.8];
-            if !(_tCoreNow isEqualType 0) then { _tCoreNow = 36.8; };
-
-            // Per-selection solar absorptance from the worn garment's own
-            // texture (fnc_getSolarAbsorptance), so a black and a light
-            // uniform differ in sun.  Thermal paint overwrites the texture
-            // during a session, so the saved original is the fallback.
-            private _solarAlpha = [_obj, _idx, (_savedTexs param [_idx, ""])] call FUNC(getSolarAbsorptance);
-
-            private _two = [
-                _obj, _sel,
-                "human", "human",       // core class, skin class
-                _tAir, _wind, _solar, _exposure,
-                0.9 * 70, _skinMass,    // core/skin mass (loadout-scaled)
-                1.8258,                 // DuBois area (m2)
-                0.15,                   // convection plate dim (m)
-                _tCoreNow, _tCurrent,   // persistent core, current skin
-                _qMet,                  // qGen: metabolism (W)
-                "vertical", 0.5, _mrt, true, 0.05, true, _solveDt,
-                _waterSpeed, _tWater, _rain, (_ox select 10), _cloWorn, _solarAlpha
-            ] call FUNC(solveTwoNodeSelection);
-            _tNew = _two select 1;      // skin temp - what FLIR sees
-            _tCoreNew = _two select 0;
+            _tNew = _gaggeObj select 1;      // skin temp - what FLIR sees
+            _tCoreNew = _gaggeObj select 0;
         } else {
             // ─── Inert objects (vehicles, buildings): two-node path ────────
             // The single-node surface solve is OBSOLETE - the two-node

@@ -34,7 +34,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:52` | Air temperature in C |
 | `aee_core_currentTemperatureBase` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:77` | UNKNOWN |
 | `aee_core_currentWBGT` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateWBGT.sqf:12` | Wet bulb globe temperature in C |
-| `aee_core_currentWaterTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:565` | Water temperature in C |
+| `aee_core_currentWaterTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:555` | Water temperature in C |
 | `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:244` | Wind vector |
 | `aee_core_enabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateGlobeTemperature.sqf:42` | Master switch |
 | `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateHypothermiaRisk.sqf:21` | Ground state |
@@ -49,7 +49,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_snowMeltFlux_Wm2` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf:253` | UNKNOWN |
 | `aee_core_soilMoisture` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf:133` | Soil moisture 0..1 |
 | `aee_core_surfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:84` | Surface temperature in C |
-| `aee_core_surfaceWetness` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:693` | Surface wetness 0..1 |
+| `aee_core_surfaceWetness` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:673` | Surface wetness 0..1 |
 | `aee_core_tempLapseRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:100` | UNKNOWN |
 | `aee_core_thermalCrossoverActive` | BOOL | boolean | 0 or 1 | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:83` | Thermal crossover flag |
 | `aee_core_urbanHeatIsland` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:131` | UNKNOWN |

@@ -7,7 +7,6 @@
 #
 # Format:  aee_addon_leaf  reason
 
-aee_core_coreBodyTemp  body-temp model not built yet; KAT falls back to default 37 (issue #64)
 aee_persistence_rainRateOverride  docker test override hook (written in tests/docker mission)
 aee_lighting_skyForce  debug console knob (documented in fnc_logSkyState.sqf)
 aee_lighting_auroraForce  debug console knob (documented in fnc_updateAurora.sqf)
