@@ -6,6 +6,11 @@ Rain droplet accumulation on optical lenses (0–1).
 Water droplets build up on scope, binocular, and camera lenses during
 precipitation, creating a blurred/distorted overlay.
 
+The engine `rain` command is a 0..1 level, not a rate (Arma 3 wiki, `rain`:
+0-1 intensity; tools/arma3-wiki/commands-reference.md), so this function
+converts the level to mm/h with the optics precipitation mapping: 1.0 engine
+rain = 25 mm/h (fnc_calculatePrecipitationVisibility.sqf).
+
 Accumulation:
   • Rain rate > 0.2 mm/h  → +0.002 per tick (light drizzle)
   • Rain rate > 2 mm/h    → +0.005 per tick (moderate rain)
@@ -27,6 +32,11 @@ if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith
 private _rainRate = rain;
 if (isNil "_rainRate") then { _rainRate = 0; };
 
+// The engine `rain` command is a 0..1 level, not a rate.  Convert it to mm/h
+// with the mapping the optics module owns: 1.0 engine rain = 25 mm/h, heavy
+// rain (fnc_calculatePrecipitationVisibility.sqf).
+private _rainMMH = _rainRate * ENGINE_RAIN_FULL_MMH;
+
 private _droplets = missionNamespace getVariable [QGVAR(rainOnOptics), 0];
 
 // Rates are per-tick; scale by the update interval so behaviour is
@@ -35,11 +45,11 @@ private _intervalScale = (EGVAR(core,updateInterval)) / 5;
 private _accumRate = (missionNamespace getVariable [QGVAR(rainAccumRate), 0.01]) * _intervalScale;
 private _decayRate = (missionNamespace getVariable [QGVAR(rainDecayRate), 0.02]) * _intervalScale;
 
-if (_rainRate > 0.2) then {
+if (_rainMMH > 0.2) then {
     switch (true) do {
-        case (_rainRate > 10): { _droplets = _droplets + _accumRate; };
-        case (_rainRate > 2):  { _droplets = _droplets + (_accumRate / 2); };
-        default                { _droplets = _droplets + (_accumRate / 5); };
+        case (_rainMMH > 10): { _droplets = _droplets + _accumRate; };
+        case (_rainMMH > 2):  { _droplets = _droplets + (_accumRate / 2); };
+        default               { _droplets = _droplets + (_accumRate / 5); };
     };
     _droplets = _droplets min 1;
 } else {

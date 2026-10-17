@@ -27,6 +27,7 @@ Run: python3 -m unittest tools.tests.test_settings_migration -v
 
 from __future__ import annotations
 
+import ast
 import json
 import re
 import unittest
@@ -104,6 +105,41 @@ def migration_text() -> str:
         for path in sorted(ADDONS.rglob("settingsMigration.sqf"))
     ]
     return "\n".join(chunks)
+
+
+# The helper builds the flag with one format call.  A version-only flag
+# ("%1") returns one key for every caller; a pair-set flag ("%1_%2") returns
+# a key per module.  The rule is read from the helper source, so the
+# simulation below cannot drift from the helper.
+_FLAG_FORMAT_RE = re.compile(
+    r'private _flag = format \["(aee_settings_migrated_v[^"]*)", _version(?:,\s*([^\]]+))?\]'
+)
+_PAIR_TAG_ASSIGNMENT = '_pairTag = (_pairs select 0) param [1, ""]'
+_TABLE_COMMENT_RE = re.compile(r"/\*.*?\*/|//[^\n]*", re.DOTALL)
+
+
+def flag_rule(src: str):
+    """The helper's flag key, as a ``key(version, pairs)`` callable."""
+    match = _FLAG_FORMAT_RE.search(src)
+    assert match is not None, "the helper must build the flag with format"
+    template, tag = match.group(1), match.group(2)
+    if "%2" not in template:
+        return lambda version, pairs: template.replace("%1", version)
+    assert tag is not None and _PAIR_TAG_ASSIGNMENT in src, (
+        "a per-set flag must be keyed on the caller's pairs"
+    )
+    return lambda version, pairs: template.replace("%1", version).replace(
+        "%2", str(pairs[0][1])
+    )
+
+
+def migration_tables() -> dict[str, list[tuple[str, str]]]:
+    """module -> [oldName, newName] pairs, from every addon migration table."""
+    tables: dict[str, list[tuple[str, str]]] = {}
+    for path in sorted(ADDONS.glob("*/data/settingsMigration.sqf")):
+        text = _TABLE_COMMENT_RE.sub(" ", path.read_text(encoding="utf-8"))
+        tables[path.parent.parent.name] = ast.literal_eval(text[text.index("[") :])
+    return tables
 
 
 def migrate(profile: dict, pairs, version: str = VERSION) -> bool:
@@ -238,6 +274,46 @@ class TestMigrationCoverage(unittest.TestCase):
             stale,
             [],
             f"renamed settings still registered as live knobs: {stale}",
+        )
+
+
+class TestEveryModuleMigrates(unittest.TestCase):
+    """Issue #249: the one-shot flag is per module, not global.
+
+    Every module's XEH_preInit passes version "1" and its own pair table, so
+    a flag keyed on the version alone let the first caller migrate and made
+    every later table a silent no-op.  This test drives each module's real
+    table through the flag rule the helper source implements.
+    """
+
+    def test_every_module_table_copies_its_renames(self):
+        rule = flag_rule(helper_source())
+        tables = migration_tables()
+        self.assertGreaterEqual(len(tables), 20, f"found {len(tables)} tables")
+
+        profile: dict = {}
+        for _module, pairs in tables.items():
+            for old, new in pairs:
+                if old != new:
+                    profile[old] = f"legacy:{old}"
+
+        unmigrated = []
+        for module, pairs in tables.items():
+            renames = [(old, new) for old, new in pairs if old != new]
+            self.assertTrue(renames, f"{module} declares no renamed pair")
+            flag = rule(VERSION, pairs)
+            if not profile.get(flag, False):
+                for old, new in renames:
+                    if new not in profile and old in profile:
+                        profile[new] = profile[old]
+                profile[flag] = True
+            if any(profile.get(new) != f"legacy:{old}" for old, new in renames):
+                unmigrated.append(module)
+
+        self.assertEqual(
+            unmigrated,
+            [],
+            f"modules whose legacy values did not migrate: {unmigrated}",
         )
 
 
