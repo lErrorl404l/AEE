@@ -115,20 +115,38 @@ def sidereal_lst(date, time_s):
     return lst
 
 
-ASTRO = Path(__file__).resolve().parents[2] / "addons/lib/functions/astronomy/fnc_astroPosition.sqf"
-CLOCK = Path(__file__).resolve().parents[2] / "addons/lib/functions/astronomy/fnc_gameClockToUT.sqf"
+ASTRO = (
+    Path(__file__).resolve().parents[2]
+    / "addons/lib/functions/astronomy/fnc_astroPosition.sqf"
+)
+CLOCK = (
+    Path(__file__).resolve().parents[2]
+    / "addons/lib/functions/astronomy/fnc_gameClockToUT.sqf"
+)
+CIVIL = (
+    Path(__file__).resolve().parents[2] / "addons/lib/functions/fnc_civilDayNumber.sqf"
+)
 
 
 def sidereal_sqf(date, clock_h, lat=40.0, lon=25.0):
     """Run the real fnc_siderealTime with the real lib kernels bound."""
     astro = lambda *a: run_sqf(ASTRO, list(a))  # noqa: E731
-    clock = lambda *a: run_sqf(CLOCK, list(a), globals_={"__FUNC__astroPosition": astro})  # noqa: E731
-    return run_sqf(SIDEREAL, [list(date)], globals_={
-        "dayTime": clock_h,
-        "__EFUNC__lib_getWorldLocation": lambda *a: [lat, abs(lat), lon, 35],
-        "__EFUNC__lib_gameClockToUT": clock,
-        "__EFUNC__lib_astroPosition": astro,
-    })
+    civil = lambda *a: run_sqf(CIVIL, list(a))  # noqa: E731
+    clock = lambda *a: run_sqf(  # noqa: E731
+        CLOCK,
+        list(a),
+        globals_={"__FUNC__astroPosition": astro, "__FUNC__civilDayNumber": civil},
+    )
+    return run_sqf(
+        SIDEREAL,
+        [list(date)],
+        globals_={
+            "dayTime": clock_h,
+            "__EFUNC__lib_getWorldLocation": lambda *a: [lat, abs(lat), lon, 35],
+            "__EFUNC__lib_gameClockToUT": clock,
+            "__EFUNC__lib_astroPosition": astro,
+        },
+    )
 
 
 class TestSiderealTime(unittest.TestCase):
@@ -137,7 +155,9 @@ class TestSiderealTime(unittest.TestCase):
     def test_meeus_ch12_worked_example(self):
         """Meeus, Astronomical Algorithms, Ch. 12: 1987 April 10, 0h UT,
         GMST = 13h10m46.3668s = 197.693195 deg."""
-        got = run_sqf(ASTRO, [-4649, 0.0, 0.0, 0.0], float32=True)[0]   # 1987-04-10 is day -4649
+        got = run_sqf(ASTRO, [-4649, 0.0, 0.0, 0.0], float32=True)[
+            0
+        ]  # 1987-04-10 is day -4649
         self.assertAlmostEqual(got, 197.693195, places=3)
 
     def test_within_zero_360(self):
@@ -151,7 +171,9 @@ class TestSiderealTime(unittest.TestCase):
         # `time`, the mission run time, so the sky ignored the clock).
         a = sidereal_sqf((2025, 9, 1), 20.0)
         b = sidereal_sqf((2025, 9, 1), 21.0)
-        self.assertAlmostEqual(math.fmod(b - a + 360, 360), 360.98564736629 / 24, delta=0.01)
+        self.assertAlmostEqual(
+            math.fmod(b - a + 360, 360), 360.98564736629 / 24, delta=0.01
+        )
 
     def test_longitude_shifts_it(self):
         a = sidereal_sqf((2025, 9, 1), 12.0, lon=0.0)
@@ -310,8 +332,7 @@ class TestMeteorRate(unittest.TestCase):
 def injections(sidereal=None):
     """The four sub-kernels for fnc_meteorState, each wrapping run_sqf."""
     return {
-        "__FUNC__siderealTime": sidereal
-        or (lambda date: sidereal_sqf(date, 0.0)),
+        "__FUNC__siderealTime": sidereal or (lambda date: sidereal_sqf(date, 0.0)),
         "__FUNC__showerIsActive": lambda m, d, s: run_sqf(ACTIVE, [m, d, s]),
         "__FUNC__radiantHorizontal": lambda ra, dec, lat, lst: run_sqf(
             RADIANT, [ra, dec, lat, lst]

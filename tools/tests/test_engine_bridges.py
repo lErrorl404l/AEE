@@ -64,7 +64,11 @@ _LOCAL_WIND = _read(LOCAL_WIND_SQF)
 _SIMUL = _read(SIMUL_SQF)
 
 MAX_SUN_ELEV = _const(_RAINBOW, "maxSunElev")
-FULL_SCALE_M = _const(_WAVES, "fullScaleMetres")
+# The world declares the metre scale of the engine's normalised 0..1 `waves`
+# value in CfgWorlds >> Sea >> MaxWave.  The bridge reads that field and falls
+# back to 0.25 m (the Altis value, unverified for other worlds), so the mirror
+# uses the fallback as its world.
+WORLD_MAX_WAVE_M = _const(_WAVES, "worldMaxWave")
 APERTURE_RHO = _const(_APERTURE, "rho")
 NIGHT_STANDARD = _const(_APERTURE, "nightStandard")
 DAY_STANDARD = _const(_APERTURE, "dayStandard")
@@ -92,10 +96,15 @@ def rainbow_value(sun_elev, rain, facing_anti):
     return 0
 
 
-def waves_value(significant_height_m):
-    """Mirror of fnc_updateEngineWaves: normalise to the model ceiling."""
-    hs = max(0.0, min(FULL_SCALE_M, significant_height_m))
-    return hs / FULL_SCALE_M
+def waves_value(significant_height_m, world_max_wave=WORLD_MAX_WAVE_M):
+    """Mirror of fnc_updateEngineWaves: normalise to the world wave scale.
+
+    The engine `waves` value is a 0..1 fraction of the world's own
+    CfgWorlds >> Sea >> MaxWave (map_altis declares 0.25), so the bridge
+    divides the significant wave height by that field and clamps to 1.
+    """
+    hs = max(0.0, min(world_max_wave, significant_height_m))
+    return min(hs / world_max_wave, 1.0)
 
 
 def lightning_value(risk):
@@ -152,21 +161,23 @@ class TestRainbow(unittest.TestCase):
 
 
 class TestWaves(unittest.TestCase):
-    """Sea state to the engine wave scale."""
+    """Sea state to the engine wave scale, which is the world's MaxWave."""
 
-    def test_half_metre_maps_to_documented_value(self):
-        # 0.5 m significant wave height -> 0.5 / 15 = 0.0333 on 0..1.
-        self.assertAlmostEqual(waves_value(0.5), 0.5 / 15.0, places=6)
+    def test_the_world_scale_is_the_engine_full_scale(self):
+        # CfgWorlds >> Sea >> MaxWave = 0.25 m on Altis: half that height is
+        # half the engine value, and that height exactly is the engine's 1.0.
+        self.assertAlmostEqual(waves_value(WORLD_MAX_WAVE_M), 1.0, places=6)
+        self.assertAlmostEqual(waves_value(WORLD_MAX_WAVE_M / 2), 0.5, places=6)
 
     def test_calm_is_zero(self):
         self.assertEqual(waves_value(0.0), 0.0)
 
-    def test_above_ceiling_saturates(self):
+    def test_above_the_world_scale_saturates(self):
         self.assertEqual(waves_value(30.0), 1.0)
 
     def test_monotonic(self):
-        self.assertLess(waves_value(0.5), waves_value(2.0))
-        self.assertLess(waves_value(2.0), waves_value(8.0))
+        self.assertLess(waves_value(0.05), waves_value(0.15))
+        self.assertLess(waves_value(0.15), waves_value(WORLD_MAX_WAVE_M))
 
 
 class TestLightnings(unittest.TestCase):

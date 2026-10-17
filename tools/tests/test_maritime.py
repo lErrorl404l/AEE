@@ -35,6 +35,7 @@ def dipole_flux_density_nt(moment, r, cos_theta):
 def tidal_alignment(jd_ut):
     """cos of the M2-S2 equilibrium phase difference (twice the elongation)."""
     from tools import gen_tide_constituents as tides
+
     args = tides.arguments(jd_ut)
     return math.cos(math.radians(args["M2"][0] - args["S2"][0]))
 
@@ -121,18 +122,27 @@ class TestTidalHarmonics(unittest.TestCase):
 
     def test_formula_reproduces_noaa(self):
         from tools import gen_tide_constituents as tides
+
         self.assertLess(tides.noaa_rms(), 0.06)
 
     def test_generated_table_is_fresh(self):
         from tools import gen_tide_constituents as tides
+
         self.assertEqual(tides.main(["--check"]), 0)
 
     def test_real_gauges(self):
         # TICON-4: Samothraki (North Aegean) is microtidal, Lautoka (Fiji)
         # mesotidal.  Brest M2 205.1 cm confirms the source unit is cm.
         import json
-        data = json.loads((Path(__file__).resolve().parents[2] / "data" / "maritime"
-                           / "tide_constituents.json").read_text(encoding="utf-8"))
+
+        data = json.loads(
+            (
+                Path(__file__).resolve().parents[2]
+                / "data"
+                / "maritime"
+                / "tide_constituents.json"
+            ).read_text(encoding="utf-8")
+        )
         sam = data["gauges"]["samothraki"]["constituents"]
         lau = data["gauges"]["lautoka"]["constituents"]
         self.assertLess(sum(c["amp_m"] for c in sam.values()), 0.25)
@@ -140,10 +150,19 @@ class TestTidalHarmonics(unittest.TestCase):
         self.assertEqual(data["world_bindings"]["Enoch"]["gauge"], "")
 
     def test_the_sqf_uses_the_validated_arguments(self):
-        src = (Path(__file__).resolve().parents[2] / "addons" / "maritime" / "functions"
-               / "fnc_calculateTidalPrediction.sqf").read_text(encoding="utf-8")
-        for token in ("[_tau + _h - 90, _fK1, _uK1]", "[_tau - 2 * _s + _h + 90, _fO1, _uO1]",
-                      "gameClockToUT", "getTideConstituents"):
+        src = (
+            Path(__file__).resolve().parents[2]
+            / "addons"
+            / "maritime"
+            / "functions"
+            / "fnc_calculateTidalPrediction.sqf"
+        ).read_text(encoding="utf-8")
+        for token in (
+            "[_tau + _h - 90, _fK1, _uK1]",
+            "[_tau - 2 * _s + _h + 90, _fO1, _uO1]",
+            "gameClockToUT",
+            "getTideConstituents",
+        ):
             self.assertIn(token, src)
         self.assertNotIn("max -_amp min _amp", src)
 
@@ -174,6 +193,202 @@ class TestSeaState(unittest.TestCase):
 
     def test_wave_height_capped(self):
         self.assertLessEqual(wave_height(100), 15)
+
+
+TIDE_SQF = _MARITIME / "fnc_calculateTidalPrediction.sqf"
+TIDE_ORDER = ("M2", "S2", "N2", "K2", "K1", "O1", "P1", "Q1")
+
+
+def tide_constituents() -> list:
+    """The shipped Samothraki amplitudes and phases, in the kernel's order."""
+    import json
+
+    data = json.loads(
+        (
+            Path(__file__).resolve().parents[2]
+            / "data"
+            / "maritime"
+            / "tide_constituents.json"
+        ).read_text(encoding="utf-8")
+    )
+    gauge = data["gauges"]["samothraki"]["constituents"]
+    return [[gauge[k]["amp_m"], gauge[k]["phase_deg"]] for k in TIDE_ORDER]
+
+
+def tide_arguments(cons, dn, ut_h, offset_h, carry=True):
+    """The kernel's astronomical arguments at a UT instant, in Python.
+
+    carry=False drops the day the sample crossed: the wrapped hour is used
+    without adding the crossed day, which moves every per-day argument back one
+    day.  The shipped kernel divides the unwrapped hour by 24, which carries
+    the day on its own.
+    """
+    ut = ut_h + offset_h
+    crossed = math.floor(ut / 24)
+    hour = ut - crossed * 24
+    days = dn + (crossed if carry else 0.0) - 0.5 + hour / 24
+    s = (218.3164477 + 13.17639647 * days) % 360
+    h = (280.46646 + 0.98564736 * days) % 360
+    p = (83.3532465 + 0.11140352 * days) % 360
+    node = (125.04452 - 0.05295376 * days) % 360
+    tau = 15 * hour + 180
+    r = math.radians
+    f_m2 = 1.0004 - 0.0373 * math.cos(r(node)) + 0.0002 * math.cos(r(2 * node))
+    u_m2 = -2.14 * math.sin(r(node))
+    f_k1 = (
+        1.0060
+        + 0.1150 * math.cos(r(node))
+        - 0.0088 * math.cos(r(2 * node))
+        + 0.0006 * math.cos(r(3 * node))
+    )
+    u_k1 = (
+        -8.86 * math.sin(r(node))
+        + 0.68 * math.sin(r(2 * node))
+        - 0.07 * math.sin(r(3 * node))
+    )
+    f_o1 = (
+        1.0089
+        + 0.1871 * math.cos(r(node))
+        - 0.0147 * math.cos(r(2 * node))
+        + 0.0014 * math.cos(r(3 * node))
+    )
+    u_o1 = (
+        10.80 * math.sin(r(node))
+        - 1.34 * math.sin(r(2 * node))
+        + 0.19 * math.sin(r(3 * node))
+    )
+    f_k2 = (
+        1.0241
+        + 0.2863 * math.cos(r(node))
+        + 0.0083 * math.cos(r(2 * node))
+        - 0.0015 * math.cos(r(3 * node))
+    )
+    u_k2 = (
+        -17.74 * math.sin(r(node))
+        + 0.68 * math.sin(r(2 * node))
+        - 0.04 * math.sin(r(3 * node))
+    )
+    return [
+        [2 * tau - 2 * s + 2 * h, f_m2, u_m2],
+        [2 * tau, 1, 0],
+        [2 * tau - 3 * s + 2 * h + p, f_m2, u_m2],
+        [2 * tau + 2 * h, f_k2, u_k2],
+        [tau + h - 90, f_k1, u_k1],
+        [tau - 2 * s + h + 90, f_o1, u_o1],
+        [tau - h + 90, 1, 0],
+        [tau - 3 * s + h + p + 90, f_o1, u_o1],
+    ]
+
+
+def tide_height(args, cons) -> float:
+    return sum(
+        f * amp * math.cos(math.radians(v + u - phase))
+        for (amp, phase), (v, f, u) in zip(cons, args)
+    )
+
+
+def tide_description(dn, ut_h, cons, carry=True) -> str:
+    args = tide_arguments(cons, dn, ut_h, 0.0, carry)
+    height = tide_height(args, cons)
+    slope = (
+        tide_height(tide_arguments(cons, dn, ut_h, 0.25, carry), cons) - height
+    ) / 0.25
+    band = 0.6 * (cons[0][0] + cons[1][0])
+    if height > band:
+        text = "High"
+    elif height < -band:
+        text = "Low"
+    else:
+        text = "Rising" if slope > 0 else "Falling"
+    alignment = math.cos(math.radians(args[0][0] - args[1][0]))
+    if alignment > 0.9:
+        text += " (Spring Tide)"
+    if alignment < -0.9:
+        text += " (Neap Tide)"
+    return text
+
+
+class TestTideMidnightDayCarry(unittest.TestCase):
+    """The +0.25 h slope sample across midnight (QA round 2, F4).
+
+    The slope sample is the height 0.25 h ahead.  A UT hour in [23.75, 24)
+    makes that sample cross midnight: the day number must carry, or the per-day
+    astronomical arguments are a day early and the rising/falling label
+    inverts.  The shipped kernel divides the UNWRAPPED hour by 24, which
+    carries the day on its own; the test pins that, and pins that a dropped day
+    is detectable at 8013 / 23.75 UT.
+    """
+
+    def setUp(self):
+        self.cons = tide_constituents()
+
+    def run_kernel(self, dn, ut_h):
+        state = {}
+        height = run_sqf(
+            TIDE_SQF,
+            [],
+            {
+                "date": [2025, 6, 15, 12, 0],
+                "dayTime": 12.0,
+                "missionNamespace": state,
+                "__FUNC__getTideConstituents": lambda: [self.cons, "samothraki"],
+                "__EFUNC__lib_getWorldLocation": lambda: [40.4, 0.0, 25.4],
+                "__EFUNC__lib_gameClockToUT": lambda *a: [dn, ut_h],
+            },
+            float32=True,
+        )
+        return height, state.get("__QEGVAR__core_currentTideDescription")
+
+    def test_the_label_holds_across_midnight(self):
+        for i in range(13):
+            ut_h = 23.75 + 0.02 * i
+            with self.subTest(ut_h=round(ut_h, 2)):
+                height, desc = self.run_kernel(8013, ut_h)
+                self.assertEqual(desc, tide_description(8013, ut_h, self.cons))
+                self.assertAlmostEqual(
+                    height,
+                    tide_height(tide_arguments(self.cons, 8013, ut_h, 0.0), self.cons),
+                    delta=1e-4,
+                )
+
+    def test_the_height_also_carries_the_day(self):
+        # The height (offset 0) at a midnight-crossing instant is unchanged by
+        # the slope sample, but a dropped day moves it too: it is the second
+        # observable of the same arithmetic.
+        height, _desc = self.run_kernel(8013, 23.75)
+        carried = tide_height(
+            tide_arguments(self.cons, 8013, 23.75, 0.0, True), self.cons
+        )
+        self.assertAlmostEqual(height, carried, delta=1e-4)
+        # Offset 0 never crosses midnight, so only the +0.25 h slope sample
+        # sees the day boundary: there the carried and dropped days disagree in
+        # sign.
+        up = (
+            tide_height(tide_arguments(self.cons, 8013, 23.75, 0.25, True), self.cons)
+            - height
+        ) / 0.25
+        down = (
+            tide_height(tide_arguments(self.cons, 8013, 23.75, 0.25, False), self.cons)
+            - height
+        ) / 0.25
+        self.assertGreater(up, 0.0)
+        self.assertLess(down, 0.0)
+
+    def test_the_rising_label_would_invert_without_the_carry(self):
+        # The case that makes the defect visible: 8013 / 23.75 UT is rising.
+        self.assertEqual(tide_description(8013, 23.75, self.cons), "Rising")
+        self.assertEqual(
+            tide_description(8013, 23.75, self.cons, carry=False), "Falling"
+        )
+        _height, desc = self.run_kernel(8013, 23.75)
+        self.assertEqual(desc, "Rising")
+
+    def test_a_non_crossing_sample_is_untouched(self):
+        # Nothing changes away from midnight, so the fix cannot move the curve.
+        for ut_h in (0.0, 6.25, 12.5, 23.5):
+            with self.subTest(ut_h=ut_h):
+                _height, desc = self.run_kernel(9000, ut_h)
+                self.assertEqual(desc, tide_description(9000, ut_h, self.cons))
 
 
 class TestCompassAnomalyScale(unittest.TestCase):

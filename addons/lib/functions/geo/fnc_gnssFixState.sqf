@@ -10,7 +10,9 @@
  * A receiver whose satellites return re-acquires as a hot start, about 1 s,
  * while its broadcast ephemeris is still valid (the 4 h fit interval of
  * IS-GPS-200), and as a cold start, about 26 s, after a longer outage
- * (u-blox NEO-M8 data sheet UBX-15031086, TTFF: hot 1 s, cold 26 s).
+ * (u-blox NEO-M8 data sheet UBX-15031086, TTFF: hot 1 s, cold 26 s).  The
+ * first call (no previous state) is a receiver switching on: a cold start,
+ * because it holds no almanac or ephemeris yet.
  *
  * Arguments:
  *   0: dt        <NUMBER> seconds since the previous call
@@ -29,9 +31,18 @@ if ((count _prevState) >= 2) then {
 };
 private _quality = "none";
 if (_count >= 3) then {
-    if (_since > 0 && _acquire <= 0) then {
-        // Satellites back after an outage: start the time to fix.
-        _acquire = [26, 1] select (_since < 14400);
+    // The first ever call (no previous state) is a receiver switching on with
+    // satellites already in view: it holds no almanac and no broadcast
+    // ephemeris, so the time to first fix is the cold start.  A receiver that
+    // lost the satellites and got them back is a new acquisition, hot while
+    // its ephemeris is still valid (the 4 h fit interval of IS-GPS-200) and
+    // cold after a longer outage.
+    if ((count _prevState) < 2) then {
+        _acquire = 26;
+    } else {
+        if (_since > 0 && _acquire <= 0) then {
+            _acquire = [26, 1] select (_since < 14400);
+        };
     };
     _acquire = (_acquire - _step) max 0;
     if (_acquire <= 0) then {

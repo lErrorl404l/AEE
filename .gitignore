@@ -92,3 +92,6 @@ data/space_weather/raw/
 
 # Raw WMO normals downloads (rebuilt by tools/gen_climate_normals.py --refresh)
 data/climate/raw/
+
+# Local scratch directory
+.scratch/

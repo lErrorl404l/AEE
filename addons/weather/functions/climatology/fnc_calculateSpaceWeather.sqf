@@ -30,7 +30,9 @@ viewing the aurora").  The geomagnetic latitude is the WMM2025 dipole
 (aee_magnetism_fnc_geomagneticLatitude).  An aurora whose lower border is
 at 110 km is above the observer's horizon out to acos(R / (R + h)) = 10.6
 deg of arc beyond the edge; the elevation of the edge follows from that
-geometry.  It needs a dark sky: the sun below -12 deg (nautical twilight).
+geometry.  It needs a dark sky: the sun below -12 deg, which is the end of
+nautical twilight and the start of astronomical twilight (civil twilight
+ends at -6 deg, astronomical at -18 deg).
 
 Every random draw is aee_lib_fnc_deterministicRandom on the UT block or
 tick, so every machine agrees.

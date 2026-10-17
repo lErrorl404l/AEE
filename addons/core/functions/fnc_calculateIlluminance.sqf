@@ -11,8 +11,9 @@
  * headless server (the lighting engine only advances per-camera), so it
  * is NOT used as the lux source.
  *
- * LUX SOURCE: the validated moonIntensity/overcast/rain model (real engine
- * variables, time-varying on every machine).  Engine illuminance cannot
+ * LUX SOURCE: the physical sky model (the astronomy Moon through the air,
+ * the measured twilight table, the starlight floor, the aurora), identical
+ * on every machine.  Engine illuminance cannot
  * be sampled at night without a client camera (getLightingAt returns []
  * on a logic, frozen on headless, and is client-NV-dependent per tracker
  * T156930), so the physics lux model remains authoritative.
@@ -22,7 +23,9 @@
  *
  * Outputs (missionNamespace, shared):
  *   aee_core_illuminanceLux     - total lux (moon model + client dynamic)
- *   aee_core_ambientLux         - ambient lux (moon model)
+ *   aee_core_ambientLux         - ambient lux (moon + twilight + starlight + aurora)
+ *   aee_core_moonLux            - moonlight lux on a horizontal plane
+ *   aee_core_twilightLux        - twilight lux
  *   aee_core_dynamicLux         - dynamic (light-source) lux, client only
  *   aee_core_lightDirection     - engine sun/moon unit vector (getLighting)
  *   aee_core_lightAzimuth       - compass azimuth of primary light, degrees
@@ -63,38 +66,29 @@ if (_lightLen > 0.001) then {
     };
 };
 
-// ─── Lux: validated moonIntensity/overcast/rain model ────────────────────
-// Engine ambient brightness is frozen on headless and camera-dependent, so
-// the lux base comes from real engine weather variables (moonIntensity,
-// overcast, rain) — time-varying and identical on every machine.
-//
-// moonIntensity is 0..1 and is the ENGINE's effective moon brightness
-// (phase + elevation already folded in): ACE3's ambientBrightness uses it
-// directly with no phase curve or elevation scaling, and its real-world
-// anchor matches (full moon -> 0.25 lux, quarter -> ~0.02-0.03).
-//
-// Overcast: the engine does NOT attenuate moonIntensity for clouds — ACE3
-// applies its own (1 - overcast) factor on the moon term.  Cloud cover is
-// a multiplicative transmission loss, NOT an additive subtraction: heavy
-// overcast blocks ~85 % of moonlight (ACE3 goes to 0 at full overcast;
-// Garstang/Kyba show 80-90 % loss under thick cloud).  The old additive
-// cap min(overcast*0.8, 0.275) limited the loss to 27.5 %, passing 72 % of
-// moonlight through a storm — physically wrong.
-// NOTE: min/max bind LOOSER than arithmetic in SQF, so the cap MUST be
-// parenthesised: "1 - (x min 0.85)" would parse as "(1 - x) min 0.85"
-// and give 0.85 transmission in clear sky (a 15 % loss for no reason).
-// Smoothed weather: the engine's rain/overcast can step abruptly (mission
-// script, weather clear).  Reading them raw makes the NVG display SNAP to
-// a new brightness in one frame (the user report: "as soon as rain stops
-// it snaps straight away to a higher brightness").  The shared weather
-// foundation EMA-eases them over ~5 s so weather transitions look real.
+// ─── Lux: the Moon, from the astronomy model ─────────────────────────────
+// The Moon's altitude and illuminated fraction come from the verified
+// astronomy (fnc_calculateSolarRadiation, JPL-validated); its light is the
+// Krisciunas & Schaefer magnitude through the air mass and the extinction
+// (fnc_moonIlluminance), k from the published aerosol load (Rayleigh 0.0973
+// + ozone 0.027 + aerosol at 550 nm, x 1.086).  Cloud cuts it as it cuts
+// the global light, 1 - 0.75 N^3.4 (Kasten & Czeplak 1980).  Rain falls
+// from that cloud, so it adds no separate loss on the vertical path.
+// Smoothed weather: the engine's overcast can step abruptly (mission
+// script, weather clear); the shared foundation EMA-eases it over ~5 s.
 private _weather = [] call FUNC(getSmoothedWeather);
 private _rainS = _weather select 0;
 private _overcastS = _weather select 1;
-
-private _cloudLoss = (_overcastS * 0.85) min 0.85;
-private _cloudTransmission = 1 - _cloudLoss;
-private _moonLight = 0 max ((moonIntensity * _cloudTransmission) - (_rainS * 0.5));
+private _cloudFactor = 1 - 0.75 * ((_overcastS max 0 min 1) ^ 3.4);
+private _hazeExt = missionNamespace getVariable [QGVAR(currentHaze), 0.08];
+if !(_hazeExt isEqualType 0) then { _hazeExt = 0.08; };
+private _kExt = 1.086 * (0.0973 + 0.027 + (((_hazeExt - 0.0116) max 0) * 1.2));
+private _moonAlt = missionNamespace getVariable [QGVAR(currentMoonElevation), -90];
+if !(_moonAlt isEqualType 0) then { _moonAlt = -90; };
+private _moonFrac = missionNamespace getVariable [QGVAR(currentMoonIllumination), 0];
+if !(_moonFrac isEqualType 0) then { _moonFrac = 0; };
+private _moonLux = ([_moonAlt, _moonFrac, _kExt] call FUNC(moonIlluminance)) * _cloudFactor;
+missionNamespace setVariable [QGVAR(moonLux), _moonLux];
 
 // ─── Twilight glow (scattered sunlight, sun below the horizon) ────────────
 // Measured clear-sky horizontal illuminance by solar altitude (Schlyter,
@@ -103,7 +97,7 @@ private _moonLight = 0 max ((moonIntensity * _cloudTransmission) - (_rainS * 0.5
 // global light, 1 - 0.75 N^3.4 (Kasten & Czeplak 1980).
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 if !(_sunElev isEqualType 0) then { _sunElev = -90; };
-private _twilightLux = ([_sunElev] call FUNC(twilightIlluminance)) * (1 - 0.75 * ((_overcastS max 0 min 1) ^ 3.4));
+private _twilightLux = ([_sunElev] call FUNC(twilightIlluminance)) * _cloudFactor;
 missionNamespace setVariable [QGVAR(twilightLux), _twilightLux];
 
 // ─── Starlight floor (SKYBOX COMPATIBILITY HOOK) ────────────────────────
@@ -132,7 +126,7 @@ private _auroraIntensity = missionNamespace getVariable [QEGVAR(weather,auroraIn
 if !(_auroraIntensity isEqualType 0 && _auroraIntensity > 0) then { _auroraIntensity = 0; };
 private _auroraLux = 0.03 * (_auroraIntensity min 1 max 0);
 
-private _ambientLux = _starlightLux + (_moonLight * 0.249) + _twilightLux + _auroraLux;
+private _ambientLux = _starlightLux + _moonLux + _twilightLux + _auroraLux;
 
 // ─── Dynamic lux (client only) ───────────────────────────────────────────
 // Two sources: (1) IR weapon light from the player, (2) nearby environmental

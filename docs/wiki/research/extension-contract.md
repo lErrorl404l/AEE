@@ -128,7 +128,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (891)
+### Public functions (897)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -367,6 +367,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_moduleInit`
 - `aee_core_fnc_moduleSeismicInit`
 - `aee_core_fnc_moduleStormInit`
+- `aee_core_fnc_moonIlluminance`
 - `aee_core_fnc_probeExtension`
 - `aee_core_fnc_triggerEmp`
 - `aee_core_fnc_twilightIlluminance`
@@ -464,6 +465,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_lib_fnc_attachObjectEngineHandler`
 - `aee_lib_fnc_buildGeoAnchor`
 - `aee_lib_fnc_bullingtonLoss`
+- `aee_lib_fnc_civilDayNumber`
 - `aee_lib_fnc_createPPEffect`
 - `aee_lib_fnc_datalinkState`
 - `aee_lib_fnc_destroyPPEffect`
@@ -485,9 +487,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_lib_fnc_latLonToUtm`
 - `aee_lib_fnc_mgrsToWorld`
 - `aee_lib_fnc_migrateLegacySettings`
+- `aee_lib_fnc_pandolfMetabolicRate`
+- `aee_lib_fnc_pandolfTerrainFactor`
 - `aee_lib_fnc_parseMgrs`
 - `aee_lib_fnc_readState`
 - `aee_lib_fnc_runGeoConsistency`
+- `aee_lib_fnc_unitMetabolicRate`
 - `aee_lib_fnc_utmToLatLon`
 - `aee_lib_fnc_utmToWorld`
 - `aee_lib_fnc_worldToMgrs`
@@ -835,6 +840,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_dumpState`
 - `aee_thermal_fnc_evaluateThermalEdge`
 - `aee_thermal_fnc_expandThermalSelectionTree`
+- `aee_thermal_fnc_gaggeTwoNode`
 - `aee_thermal_fnc_getComponentAnchors`
 - `aee_thermal_fnc_getEffectiveEmissivity`
 - `aee_thermal_fnc_getGroundStampOffset`
@@ -1024,7 +1030,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (89)
+### Public core state variables (94)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -1079,6 +1085,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_fnc_calculateEmpRecovery`
 - `aee_core_fnc_calculateEmpWaveform`
 - `aee_core_fnc_calculateSeededWeatherProgression`
+- `aee_core_fnc_moonIlluminance`
 - `aee_core_fnc_triggerEmp`
 - `aee_core_fnc_updateEmp`
 - `aee_core_geoAnchor`
@@ -1090,8 +1097,10 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_lightElevation`
 - `aee_core_lightIsNight`
 - `aee_core_logDebug`
+- `aee_core_metabolicRate`
 - `aee_core_mgrsTables`
 - `aee_core_moduleHealth`
+- `aee_core_moonLux`
 - `aee_core_objectTemperatures`
 - `aee_core_orographicFactor`
 - `aee_core_overcast`
@@ -1106,6 +1115,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_seismicMagnitude`
 - `aee_core_seismicStart`
 - `aee_core_simTime`
+- `aee_core_skinTemp`
 - `aee_core_snowDepth_m`
 - `aee_core_snowfallRate`
 - `aee_core_soilMoisture`
@@ -1113,6 +1123,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_stormOverrideIntensity`
 - `aee_core_stormOverrideType`
 - `aee_core_stormOverrideUntil`
+- `aee_core_twilightLux`
 - `aee_core_updateInterval`
 - `aee_core_weatherProgressionSeed`
 - `aee_core_windChillTemp`

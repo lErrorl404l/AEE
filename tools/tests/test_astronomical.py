@@ -248,22 +248,10 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_ks_magnitude_law(self):
-        self._assert_in_sqf(
-            "fnc_calculateLunarIllumination.sqf",
-            ["-12.73", "0.026", "4e-9", "14.18"],
-            "Krisciunas & Schaefer magnitude law",
-            addon="env",
-        )
+        text = (Path(__file__).resolve().parents[2] / "addons/core/functions/fnc_moonIlluminance.sqf").read_text(encoding="utf-8")
+        for token in ("-12.73", "0.026", "4e-9", "2.54e-6"):
+            self.assertIn(token, text)
 
-    def test_lux_scale_constants(self):
-        self._assert_in_sqf(
-            "fnc_calculateLunarIllumination.sqf",
-            ["0.001 + _lux", "_lux max 0 min 300"],
-            "lunar lux scale",
-            addon="env",
-        )
-
-    # ── Limiting magnitude (fnc_calculateLimitingMagnitude.sqf) ──
     def test_limiting_magnitude_constants(self):
         self._assert_in_sqf(
             "fnc_calculateLimitingMagnitude.sqf",

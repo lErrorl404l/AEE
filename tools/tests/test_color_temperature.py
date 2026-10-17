@@ -38,6 +38,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from tools import gen_daylight  # noqa: E402
+
 VISION = ROOT / "addons" / "vision"
 PERCEPTION = VISION / "functions" / "perception"
 GRADE = VISION / "functions" / "grade"
@@ -56,8 +57,12 @@ DAYLIGHT_GLOBALS = {"__FUNC__daylightTable": lambda: _TABLE}
 REC709_WEIGHTS = [0.2126, 0.7152, 0.0722, 0]
 
 
-def cct(sun_elevation: float, overcast: float, haze: float = 0.08, pressure: float = 1013.25):
-    return run_sqf(CT_KERNEL, [sun_elevation, overcast, haze, pressure], DAYLIGHT_GLOBALS)
+def cct(
+    sun_elevation: float, overcast: float, haze: float = 0.08, pressure: float = 1013.25
+):
+    return run_sqf(
+        CT_KERNEL, [sun_elevation, overcast, haze, pressure], DAYLIGHT_GLOBALS
+    )
 
 
 def white_point(kelvin: float) -> list[float]:
@@ -119,6 +124,24 @@ class TestColorTemperature(unittest.TestCase):
     def test_table_is_fresh(self):
         self.assertEqual(gen_daylight.main(["--check"]), 0)
 
+    def test_the_colour_matching_citation_is_the_right_standard(self):
+        """F10: the CMF data are ISO/CIE 11664-1:2019, not CIE 018:2019.
+
+        CIE 018:2019 is the photometric basis (the scotopic V'(lambda) file);
+        the 1931 2-degree colour-matching functions are ISO/CIE 11664-1:2019.
+        """
+        table = (
+            Path(__file__).resolve().parents[2]
+            / "addons/vision/functions/perception/fnc_daylightTable.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("ISO/CIE 11664-1:2019 colour-matching functions", table)
+        self.assertIn("CIE 018:2019", table)  # the scotopic function is CIE 018
+        generator = (
+            Path(__file__).resolve().parents[2] / "tools/gen_daylight.py"
+        ).read_text(encoding="utf-8")
+        self.assertIn("ISO/CIE 11664-1:2019", generator)
+        self.assertNotIn("CIE 018:2019, data/daylight", generator)
+
     def test_clear_sky_on_the_grid_matches_the_spectral_model(self):
         # On-grid and off-grid points (interpolated between bands).
         for elev in (5, 11, 21.5, 50, 77):
@@ -155,11 +178,15 @@ class TestColorTemperature(unittest.TestCase):
         for xy in ((0.31271, 0.32902), (0.44757, 0.40745), (0.29, 0.30), (0.40, 0.39)):
             exact = gen_daylight.cct(self.cmf, *xy)
             nm = (xy[0] - 0.3320) / (0.1858 - xy[1])
-            k = 449 * nm ** 3 + 3525 * nm ** 2 + 6823.3 * nm + 5520.33
+            k = 449 * nm**3 + 3525 * nm**2 + 6823.3 * nm + 5520.33
             if k >= 3000:
                 nh = (xy[0] - 0.3366) / (xy[1] - 0.1735)
-                k = -949.86315 + 6253.80338 * math.exp(-nh / 0.92159) \
-                    + 28.70599 * math.exp(-nh / 0.20039) + 0.00004 * math.exp(-nh / 0.07125)
+                k = (
+                    -949.86315
+                    + 6253.80338 * math.exp(-nh / 0.92159)
+                    + 28.70599 * math.exp(-nh / 0.20039)
+                    + 0.00004 * math.exp(-nh / 0.07125)
+                )
             self.assertAlmostEqual(k, exact, delta=0.01 * exact, msg=xy)
 
     def test_daylight_sp_ratio(self):

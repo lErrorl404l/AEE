@@ -32,7 +32,7 @@ PAN = REPO / "data/gnss/sps_pan_125.json"
 SW = REPO / "data/space_weather/space_weather.json"
 WMM = REPO / "data/magnetism/WMM2025.COF"
 OUT = REPO / "addons/lib/functions/geo/fnc_gnssTables.sqf"
-EARTH_RATE = 360.98564736629          # deg per solar day (Meeus 12.4)
+EARTH_RATE = 360.98564736629  # deg per solar day (Meeus 12.4)
 RE_A, RE_F = 6378.137, 1 / 298.257223563
 
 
@@ -46,7 +46,11 @@ def gec(c: dict, slot: dict) -> float:
     """Groundtrack equatorial crossing longitude implied by the model."""
     n = mean_motion(c)
     t_node = ((360 - slot["arglat"]) % 360) / n
-    lon = slot["raan"] - c["greenwich_hour_angle_deg"] - (EARTH_RATE - c["nodal_regression_deg_per_day"]) * t_node
+    lon = (
+        slot["raan"]
+        - c["greenwich_hour_angle_deg"]
+        - (EARTH_RATE - c["nodal_regression_deg_per_day"]) * t_node
+    )
     return lon % 360
 
 
@@ -56,26 +60,40 @@ def sat_ecef(c: dict, slot: dict, days: float) -> tuple[float, float, float]:
     raan = math.radians(slot["raan"] + c["nodal_regression_deg_per_day"] * days)
     inc = math.radians(c["inclination_deg"])
     a = c["semi_major_axis_km"]
-    x = a * (math.cos(raan) * math.cos(u) - math.sin(raan) * math.sin(u) * math.cos(inc))
-    y = a * (math.sin(raan) * math.cos(u) + math.cos(raan) * math.sin(u) * math.cos(inc))
+    x = a * (
+        math.cos(raan) * math.cos(u) - math.sin(raan) * math.sin(u) * math.cos(inc)
+    )
+    y = a * (
+        math.sin(raan) * math.cos(u) + math.cos(raan) * math.sin(u) * math.cos(inc)
+    )
     z = a * math.sin(u) * math.sin(inc)
     th = math.radians(c["greenwich_hour_angle_deg"] + EARTH_RATE * days)
-    return (x * math.cos(th) + y * math.sin(th), -x * math.sin(th) + y * math.cos(th), z)
+    return (
+        x * math.cos(th) + y * math.sin(th),
+        -x * math.sin(th) + y * math.cos(th),
+        z,
+    )
 
 
-def observer(lat: float, lon: float) -> tuple:
+def observer(lat: float, lon: float, alt_km: float = 0.0) -> tuple:
     e2 = RE_F * (2 - RE_F)
     la, lo = math.radians(lat), math.radians(lon)
     nr = RE_A / math.sqrt(1 - e2 * math.sin(la) ** 2)
-    p = (nr * math.cos(la) * math.cos(lo), nr * math.cos(la) * math.sin(lo), nr * (1 - e2) * math.sin(la))
+    p = (
+        (nr + alt_km) * math.cos(la) * math.cos(lo),
+        (nr + alt_km) * math.cos(la) * math.sin(lo),
+        (nr * (1 - e2) + alt_km) * math.sin(la),
+    )
     east = (-math.sin(lo), math.cos(lo), 0.0)
     north = (-math.sin(la) * math.cos(lo), -math.sin(la) * math.sin(lo), math.cos(la))
     up = (math.cos(la) * math.cos(lo), math.cos(la) * math.sin(lo), math.sin(la))
     return p, east, north, up
 
 
-def dops(c: dict, lat: float, lon: float, days: float) -> tuple[float, float, int] | None:
-    p, e, nn, u = observer(lat, lon)
+def dops(
+    c: dict, lat: float, lon: float, days: float, alt_km: float = 0.0
+) -> tuple[float, float, int] | None:
+    p, e, nn, u = observer(lat, lon, alt_km)
     rows = []
     for s in c["slots"]:
         r = sat_ecef(c, s, days)
@@ -85,8 +103,14 @@ def dops(c: dict, lat: float, lon: float, days: float) -> tuple[float, float, in
         el = math.degrees(math.asin(sum(d[i] * u[i] for i in range(3))))
         if el < c["mask_angle_deg"]:
             continue
-        rows.append([sum(d[i] * e[i] for i in range(3)), sum(d[i] * nn[i] for i in range(3)),
-                     sum(d[i] * u[i] for i in range(3)), 1.0])
+        rows.append(
+            [
+                sum(d[i] * e[i] for i in range(3)),
+                sum(d[i] * nn[i] for i in range(3)),
+                sum(d[i] * u[i] for i in range(3)),
+                1.0,
+            ]
+        )
     if len(rows) < 4:
         return None
     m = [[sum(r[i] * r[j] for r in rows) for j in range(4)] for i in range(4)]
@@ -124,8 +148,9 @@ def geomagnetic_lat(lat: float, lon: float, year: float) -> float:
     b0 = math.sqrt(g10 * g10 + g11 * g11 + h11 * h11)
     plat = 90 - math.degrees(math.acos(-g10 / b0))
     plon = math.degrees(math.atan2(-h11, -g11))
-    s = (math.sin(math.radians(lat)) * math.sin(math.radians(plat))
-         + math.cos(math.radians(lat)) * math.cos(math.radians(plat)) * math.cos(math.radians(lon - plon)))
+    s = math.sin(math.radians(lat)) * math.sin(math.radians(plat)) + math.cos(
+        math.radians(lat)
+    ) * math.cos(math.radians(plat)) * math.cos(math.radians(lon - plon))
     return math.degrees(math.asin(s))
 
 
@@ -151,21 +176,26 @@ def build() -> dict:
     table.sort()
     sw = json.loads(SW.read_text())
     i0 = (2024 - sw["ssn_first_year"]) * 12
-    ssn_ref = statistics.mean(sw["ssn_monthly"][i0:i0 + 3])
+    ssn_ref = statistics.mean(sw["ssn_monthly"][i0 : i0 + 3])
     # Geomagnetic-latitude profile: the median UERE in 10-degree bands.
     bands = []
     for lo in range(0, 80, 10):
         vals = [u for m, u, _h, _s in table if lo <= m < lo + 10]
         if vals:
             bands.append([lo + 5, round(statistics.median(vals), 3)])
-    return {"table": table, "bands": bands, "ssn_ref": round(ssn_ref, 1), "constellation": c}
+    return {
+        "table": table,
+        "bands": bands,
+        "ssn_ref": round(ssn_ref, 1),
+        "constellation": c,
+    }
 
 
 def render(b: dict) -> str:
     c = b["constellation"]
-    slots = ",\n".join(f'    [{s["raan"]:g}, {s["arglat"]:g}]' for s in c["slots"])
+    slots = ",\n".join(f"    [{s['raan']:g}, {s['arglat']:g}]" for s in c["slots"])
     bands = ", ".join(f"[{m:g}, {u:g}]" for m, u in b["bands"])
-    return f'''#include "..\\..\\script_component.hpp"
+    return f"""#include "..\\..\\script_component.hpp"
 /*
 GENERATED FILE. Do not edit by hand.  Regenerate: python3 tools/gen_gnss.py
 
@@ -180,6 +210,11 @@ GPS tables:
                  geomagnetic latitude (deg): FAA SPS PAN #125 (Q1 2024)
                  95 % horizontal errors over 2 x this constellation's HDOP,
                  at the quarter's smoothed sunspot number {b["ssn_ref"]:g}.
+                 One median per 10-degree bin, keyed by the bin centre.  No
+                 FAA site falls in the 10-20 degree bin, so there is no
+                 15-degree entry: a query between the 5 and 25 degree entries
+                 is their straight line (fnc_gnssUere), an interpolation
+                 rather than a measurement.
 Return: HASHMAP
 Public: No
 */
@@ -197,7 +232,7 @@ createHashMapFromArray [
     ["uereBands", [{bands}]],
     ["ssnRef", {b["ssn_ref"]:g}]
 ]
-'''
+"""
 
 
 def main(argv=None) -> int:

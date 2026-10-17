@@ -10,7 +10,7 @@ A variable named `aee_magnetism_{leaf}` is written as `EGVAR(magnetism,leaf)` by
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
 | `aee_magnetism_compassAnomalyNT` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/maritime/functions/fnc_dumpState.sqf:26` | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
-| `aee_magnetism_compassDeviation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/maritime/functions/fnc_dumpState.sqf:24` | Compass deviation (magnetism namespace) |
+| `aee_magnetism_compassDeviation` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/maritime/functions/fnc_dumpState.sqf:24` | Compass deviation in degrees: the declination plus the local ferrous deflection |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

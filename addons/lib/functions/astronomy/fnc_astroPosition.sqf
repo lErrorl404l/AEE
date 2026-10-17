@@ -50,7 +50,10 @@ private _C = (1.914602 - 0.004817 * _T - 0.000014 * _T * _T) * (sin _M)
     + (0.019993 - 0.000101 * _T) * (sin (2 * _M))
     + 0.000289 * (sin (3 * _M));
 private _omega = 125.04 - 0.05295376 * _days;
-private _lambdaSun = _L0 + _C - 0.00569 - 0.00478 * (sin _omega);
+// Meeus 22.2 leading nutation term, in degrees; the apparent solar longitude
+// takes it (Meeus 25.9) and so does the equation of time (Meeus 28.1).
+private _dpsi = -0.00478 * (sin _omega);
+private _lambdaSun = _L0 + _C - 0.00569 + _dpsi;
 private _eps0 = 23 + (26 + ((21.448 - _T * (46.815 + _T * (0.00059 - 0.001813 * _T))) / 60)) / 60;
 private _eps = _eps0 + 0.00256 * (cos _omega);
 private _raSun = [((cos _eps) * (sin _lambdaSun)) atan2 (cos _lambdaSun)] call _fnc_norm;
@@ -62,7 +65,7 @@ private _decSun = asin ((sin _eps) * (sin _lambdaSun));
 private _dayFrac = ((_utH / 24) + 0.5) - floor ((_utH / 24) + 0.5);
 private _gmst = [280.46061837 + 360 * _dayFrac + 0.98564736629 * _days + 0.000387933 * _T * _T] call _fnc_norm;
 private _lst = [_gmst + _lonDeg] call _fnc_norm;
-private _eotDeg = [_L0 - 0.0057183 - _raSun + 180] call _fnc_norm;
+private _eotDeg = [_L0 - 0.0057183 - _raSun + _dpsi * (cos _eps) + 180] call _fnc_norm;
 private _eotMin = 4 * (_eotDeg - 180);
 
 // ─── Horizontal coordinates ───────────────────────────────────────────────

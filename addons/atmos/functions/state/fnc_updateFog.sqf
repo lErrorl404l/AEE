@@ -57,10 +57,14 @@ missionNamespace setVariable [QEGVAR(core,currentFogDensity), _fogDensity];
 0 setFog [_fogDensity, 0.5, 0];
 
 // ─── Engine fog forecast (trend) ─────────────────────────────────────────
-private _forecast = fogForecast;
-if (_forecast isEqualType [] && {count _forecast >= 3}) then {
-    missionNamespace setVariable [QEGVAR(core,fogForecast), _forecast];
-} else {
-    missionNamespace setVariable [QEGVAR(core,fogForecast), [_fogDensity, 0.5, 0]];
-};
+// `fogForecast` is a single 0..1 Number, not an array (BIKI: "Returns the
+// forecast fog value. A value of 0 means no fog, 1 means maximum fog.",
+// return Number).  The array form is `fogParams`.  The old array guard was
+// therefore always false, so the engine forecast was discarded every tick
+// and AEE published its own value instead.  The published shape stays the
+// setFog extended form [value, decay, base] for its consumers; the decay and
+// base are the ones this function already pushes to setFog.
+private _forecastFog = fogForecast;
+if !(_forecastFog isEqualType 0) then { _forecastFog = _fogDensity; };
+missionNamespace setVariable [QEGVAR(core,fogForecast), [_forecastFog, 0.5, 0]];
 _fogDensity

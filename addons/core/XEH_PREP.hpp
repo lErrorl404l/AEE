@@ -18,6 +18,7 @@ PREP(getSmoothedWeather);
 PREP(handleCollisionDamage);
 PREP(calculateIlluminance);
 PREP(twilightIlluminance);
+PREP(moonIlluminance);
 PREP(coreBodyTemp);
 PREP(calculateEmpWaveform);
 PREP(calculateEmpField);

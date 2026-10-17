@@ -1,20 +1,15 @@
 #include "..\..\script_component.hpp"
 
 /*
-Compute ambient light level from moon phase, cloud cover, and solar
-elevation.
+Lunar phase (0 new, 0.25 first quarter, 0.5 full, 0.75 last quarter) from
+the mean synodic month (29.530588853 d) since the new moon of 2024-01-11
+11:57 UT, including the time of day.  The mean phase is within about half a
+day of the true one; the Moon's light uses the true illuminated fraction
+(fnc_calculateSolarRadiation).
 
-Moon phase uses a simplified astronomical approximation referenced to the
-new moon of 2024-01-11.  The result is in lux (0–300).
-
-Sets  QGVAR(ambientLux).
-Returns QGVAR(ambientLux).
+Sets  QGVAR(lunarPhase).
+Returns the phase.
 */
-
-// ─── Daytime guard ───────────────────────────────────────────────────────
-if (sunOrMoon > 0) exitWith {
-    0
-};
 
 // ─── Parse date ──────────────────────────────────────────────────────────
 private _dateArr = date;
@@ -33,7 +28,13 @@ private _dayNumber = 367 * _year - _c + _d + _day - 730530;
 
 // ─── Days elapsed since reference new moon (2024-01-11) ──────────────────
 // _refDayNumber computed from the same formula = 8777
-private _daysSinceRef = _dayNumber - 8777;
+// The UT instant (fnc_gameClockToUT, published by the solar model) puts
+// the phase on Universal Time: day 8776 since 2000-01-01 is 2024-01-11.
+private _daysSinceRef = (_dayNumber - 8777) + ((dayTime - 11.95) / 24);
+private _ut = missionNamespace getVariable [QEGVAR(core,currentUTInstant), []];
+if ((_ut isEqualType []) && {(count _ut) == 2}) then {
+    _daysSinceRef = ((_ut select 0) - 8776) + (((_ut select 1) - 11.95) / 24);
+};
 
 // ─── Lunar phase (0 ≤ phase < 1) ─────────────────────────────────────────
 // 0.0 = new moon, 0.25 = first quarter, 0.5 = full, 0.75 = last quarter
@@ -44,28 +45,7 @@ if (_phase < 0) then { _phase = _phase + 1; };
 // Store phase for downstream consumers (classifyNight, NVG, etc.)
 missionNamespace setVariable [QGVAR(lunarPhase), _phase];
 
-// ─── Illumination (lux) from phase angle ──────────────────────────────────
-// Krisciunas & Schaefer (1991), PASP 103, 1033: the Moon's V magnitude
-// as a function of phase angle, then illuminance from magnitude:
-//   m = -12.73 + 0.026|alpha| + 4e-9 * alpha^4   (alpha in degrees)
-//   E = 10^(-0.4 * (m + 14.18))  lux
-// This reproduces the published moonlight curve: full ~0.26 lux,
-// quarter ~0.025 lux, new ~0.0001 lux.  The opposition surge near
-// full moon is built into the magnitude law, so no separate term.
-private _phaseAngle = abs (180 * (1 - 2 * _phase));
-private _moonMag = -12.73 + 0.026 * _phaseAngle + 4e-9 * (_phaseAngle ^ 4);
-private _lux = 10 ^ (-0.4 * (_moonMag + 14.18));
-
-// ─── Overcast attenuation ────────────────────────────────────────────────
-private _overcast = overcast;
-if (isNil "_overcast") then { _overcast = 0; };
-_lux = _lux * (1 - _overcast * 0.8);
-
-// ─── Starlight floor (0.001 lux) ─────────────────────────────────────────
-_lux = 0.001 + _lux;
-_lux = _lux max 0 min 300;
-
-// ─── Store & return ──────────────────────────────────────────────────────
-// The optics illuminance model owns ambientLux (aee_core_ambientLux);
-// this module only feeds moonPhase into night classification.
-_lux
+// The Moon's light is computed from the astronomy Moon (altitude and
+// illuminated fraction) by aee_core_fnc_moonIlluminance; this function only
+// publishes the waxing/waning phase for night classification.
+_phase

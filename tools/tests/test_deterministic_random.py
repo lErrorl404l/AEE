@@ -10,7 +10,6 @@ Run: python3 -m unittest tools.tests.test_deterministic_random
 
 from __future__ import annotations
 
-import math
 import sys
 import unittest
 from pathlib import Path
@@ -27,9 +26,19 @@ SRC = REPO / "addons/lib/functions/fnc_deterministicRandom.sqf"
 def exact(a: float, b: float) -> float:
     a = int(abs(a)) % 1048576
     b = int(abs(b)) % 1048576
-    s1 = 1 + ((a + (b % 4096) * 4096) % 32362)
-    s2 = 1 + (((a % 4096) * 4096 + b) % 31726)
-    s3 = 1 + ((a // 4096 + (b // 4096) * 256 + (a % 7919)) % 31656)
+    # The seed fold, written the way the SQF forms it: each addend is reduced
+    # before it is added, so every intermediate (addend and sum) stays below
+    # 2^24 and is exact in the engine's 32-bit floats.  Summing the unwrapped
+    # addends first (a + (b % 4096) * 4096 reaches 1.78e7 for a large seed2)
+    # rounds in float32 and the mod then reads a rounded value.
+    t1 = (b % 4096) * 4096
+    t2 = (a % 4096) * 4096
+    t3 = a // 4096 + (b // 4096) * 256 + (a % 7919)
+    for term in (t1, t2, t3, (a % 32362) + (t1 % 32362), (t2 % 31726) + (b % 31726)):
+        assert term < 2**24, term
+    s1 = 1 + (((a % 32362) + (t1 % 32362)) % 32362)
+    s2 = 1 + (((t2 % 31726) + (b % 31726)) % 31726)
+    s3 = 1 + (t3 % 31656)
     peak = 0
     for _ in range(6):
         s1, s2, s3 = 157 * s1 % 32363, 146 * s2 % 31727, 142 * s3 % 31657
@@ -37,7 +46,7 @@ def exact(a: float, b: float) -> float:
         s1 = 1 + ((s1 + s3) % 32362)
         s2 = 1 + ((s2 + s1) % 31726)
         s3 = 1 + ((s3 + s2) % 31656)
-    assert peak < 2 ** 24
+    assert peak < 2**24
     z = (s1 - s2 + s3) % 32362
     if z < 1:
         z += 32362
@@ -46,9 +55,23 @@ def exact(a: float, b: float) -> float:
 
 class TestDeterministicRandom(unittest.TestCase):
     def test_sqf_matches_the_exact_generator(self):
-        for a in (0, 1, 2, 999, 123456, 2 ** 20 + 5, 9_876_543):
+        for a in (0, 1, 2, 999, 123456, 2**20 + 5, 9_876_543):
             for b in (401, 402, 7):
                 self.assertAlmostEqual(run_sqf(SRC, [a, b]), exact(a, b), places=9)
+
+    def test_sqf_matches_the_exact_generator_in_float32(self):
+        """The engine's float32 must reproduce the exact integer generator.
+
+        seed2 is a large in-game tick, so (seed2 mod 2^20) mod 4096 reaches
+        4095 and the fold is exercised at its widest.
+        """
+        self.assertEqual((11_800_575 % 1048576) % 4096, 4095)
+        for a in (0, 1, 999, 123456, 9_876_543, 1_048_575):
+            for b in (401, 402, 7, 11_800_575, 11_800_123, 4_194_303, 16_777_215):
+                with self.subTest(a=a, b=b):
+                    self.assertAlmostEqual(
+                        run_sqf(SRC, [a, b], float32=True), exact(a, b), places=7
+                    )
 
     def test_uniform_and_uncorrelated(self):
         xs = [exact(a, 401) for a in range(50000)]

@@ -32,7 +32,15 @@ params [
     ["_houseCount", 0, [0]]
 ];
 
-private _coef2 = ((1.5 - _moonPhase) ^ 2) * ((_ambientBrightness min 1000) ^ 4);
+// UNVERIFIED RANGE.  getLighting element 1 (ambientLightBrightness) has no
+// documented range: BIKI lists it as "Number" with no bounds, and its own
+// example reads 28526.2 in daylight, so the value is not a 0..1 fraction and
+// the old 1000 ceiling was not the engine's scale.  The bounds below are a
+// defensive saturation of the fourth power, NOT a range claim: the floor is 0
+// because a negative brightness would otherwise read as a lit sky.  Settle
+// the real range with an in-engine getLighting read before changing either
+// bound.
+private _coef2 = ((1.5 - _moonPhase) ^ 2) * (((_ambientBrightness max 0) min 1000) ^ 4);
 if (_coef2 <= 0) exitWith { 100 };
 
 // Parenthesise the final min: some SQF precedence readings bind min tighter

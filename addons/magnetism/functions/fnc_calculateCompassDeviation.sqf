@@ -14,8 +14,14 @@ WMM2025 is valid 2025.0-2030.0.  Setting aee_magnetism_wmmExtrapolate (on by
 default) extrapolates the published secular variation outside it, as the
 NOAA software does; off holds the field at the nearer end of the window.
 
-Stored in GVAR(compassDeviation) and EGVAR(core,magneticDeclinationDeg),
-degrees, positive east.
+Stored, degrees, positive east.  The two quantities are separate, because
+they have different owners:
+  EGVAR(core,magneticDeclinationDeg)  the declination alone: a property of the
+      geomagnetic field at the place.  The map's north rose draws it.
+  GVAR(compassDeviation)              the compass reading: the declination
+      plus the local ferrous deflection of the platform next to the observer.
+
+Returns the compass deviation (declination plus local ferrous deflection).
 */
 
 params [];
@@ -27,7 +33,13 @@ if (isNull _unit) exitWith { 0 };
 
 // ─── Mission date as a decimal year ───────────────────────────────────────
 date params ["_y", "_mo", "_d", "_hh", "_mi"];
-private _doy = floor (275 * _mo / 9) - (2 * floor ((_mo + 9) / 12)) + _d - 30;
+// Day of year from the shared exact civil day count (aee_lib_fnc_civilDayNumber,
+// Hinnant's days_from_civil).  The naive
+//   floor (275 * _mo / 9) - 2 * floor ((_mo + 9) / 12) + _d - 30
+// is one day low from 1 March in a leap year, so the field would be evaluated
+// 0.0027 yr early for ten months of every leap year.
+private _doy = ([_y, _mo, _d] call EFUNC(lib,civilDayNumber))
+    - ([_y, 1, 1] call EFUNC(lib,civilDayNumber)) + 1;
 private _year = _y + ((_doy - 1) + (_hh + _mi / 60) / 24) / 365.25;
 if !(missionNamespace getVariable [QGVAR(wmmExtrapolate), true]) then {
     _year = (_year max 2025.0) min 2030.0;
@@ -73,10 +85,13 @@ if (missionNamespace getVariable [QGVAR(compassFerrousDeviation), true]) then {
     } forEach (nearestObjects [_unit, ["LandVehicle"], 50]);
 };
 private _anomalyDeg = (atan (_anomalyNT / _horizontalNT)) max -10 min 10;
-_declination = _declination + _anomalyDeg;
+// The declination is a property of the place, the ferrous deflection a
+// property of the platform.  Publish them under separate names: the map's
+// north rose must not swing when a truck parks next to the observer.
+private _deviation = _declination + _anomalyDeg;
 missionNamespace setVariable [QGVAR(compassAnomalyNT), _anomalyNT];
 
 missionNamespace setVariable [QEGVAR(core,magneticDeclinationDeg), _declination];
-missionNamespace setVariable [QGVAR(compassDeviation), _declination];
+missionNamespace setVariable [QGVAR(compassDeviation), _deviation];
 
-_declination
+_deviation

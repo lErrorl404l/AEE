@@ -12,7 +12,10 @@ Public: No
 private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 
-// Magnus dew point (Sonntag 1990, over water)
+// Magnus dew point over water, WMO-No. 8 Annex 4.B coefficients (17.62,
+// 243.12); the same pair is Alduchov & Eskridge 1996.  The earlier citation
+// "Sonntag 1990" is wrong: Sonntag's water formula is a log-polynomial, not
+// this Magnus pair.
 private _gamma = (ln (_RH / 100)) + (17.62 * _T / (243.12 + _T));
 private _Td = 243.12 * _gamma / (17.62 - _gamma);
 private _spread = _T - _Td;

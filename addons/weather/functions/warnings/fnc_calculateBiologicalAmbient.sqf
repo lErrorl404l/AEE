@@ -56,7 +56,14 @@ private _tempFactor = if (_temp < 10) then {
 };
 
 // ─── Night factor — crickets still chirp, birds sleep ─────────────────
-private _nightFactor = [1, 0.6] select (sunOrMoon == -1);
+// The engine reports the sun/moon transition state in 0..1 (BIKI
+// `sunOrMoon`): 0 at night (moon), 1 by day (sun), with the in-between
+// values only during the few minutes of the transition.  It never returns a
+// negative, so the old `== -1` test was always false and the night
+// quietening never applied.  A value below 0.5 is the night half of the
+// transition, the same threshold fnc_applyNightGrain and fnc_wildlifeTick
+// use.
+private _nightFactor = [1, 0.6] select (sunOrMoon < 0.5);
 
 // ─── Season factor (northern-hemisphere) ──────────────────────────────
 private _seasonFactor = switch (true) do {

@@ -10,6 +10,8 @@
  *   biome       a coloured Koppen cell per sample   EFUNC(weather,getBiomeAtPosition)
  *   wind        a local-wind arrow per sample        EFUNC(atmos,getLocalWind)
  *   declination the true-north and magnetic-north rays  EGVAR(core,magneticDeclinationDeg)
+ *               (the WMM declination of the place, without the local ferrous
+ *               deflection: a parked truck must not swing the rose)
  *
  * The field is sampled by FUNC(mapFieldPlan) at most once a second, keyed on
  * the rounded visible rectangle, so a static map resamples nothing.  The

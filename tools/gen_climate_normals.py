@@ -42,14 +42,28 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[1]
 DATA = REPO / "data" / "climate" / "station_normals.json"
-OUT = REPO / "addons" / "weather" / "functions" / "climatology" / "fnc_getStationNormals.sqf"
+OUT = (
+    REPO
+    / "addons"
+    / "weather"
+    / "functions"
+    / "climatology"
+    / "fnc_getStationNormals.sqf"
+)
 SCHEMA = "aee.climate.station_normals/1"
-SERIES = ("mean_daily_max_c", "mean_daily_min_c", "relative_humidity_pct", "precipitation_mm")
+SERIES = (
+    "mean_daily_max_c",
+    "mean_daily_min_c",
+    "relative_humidity_pct",
+    "precipitation_mm",
+)
 RAW = REPO / "data" / "climate" / "raw"
 WMO = REPO / "data" / "climate" / "wmo_normals_9120.json"
 CFG_OUT = REPO / "addons" / "weather" / "CfgClimateStations.hpp"
-WMO_URL = ("https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/"
-           "data-composite-primary-parameters/wmo_normals_9120_{v}.csv")
+WMO_URL = (
+    "https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/"
+    "data-composite-primary-parameters/wmo_normals_9120_{v}.csv"
+)
 LAPSE = 0.0065
 MSLP_RADIUS_KM = 300
 
@@ -70,28 +84,37 @@ def diurnal_rh(e_hpa: float, tmax: float, tmin: float) -> float:
     monthly means, e / e_w(T_mean), errs by up to 9.2).
     """
     mid, amp = (tmax + tmin) / 2, (tmax - tmin) / 2
-    vals = [min(100.0, 100.0 * e_hpa / esat(mid + amp * math.cos(math.radians(15 * k)))) for k in range(24)]
+    vals = [
+        min(100.0, 100.0 * e_hpa / esat(mid + amp * math.cos(math.radians(15 * k))))
+        for k in range(24)
+    ]
     return sum(vals) / 24
 
 
 def great_circle_km(a: float, b: float, c: float, d: float) -> float:
-    x = (math.sin(math.radians(a)) * math.sin(math.radians(c))
-         + math.cos(math.radians(a)) * math.cos(math.radians(c)) * math.cos(math.radians(b - d)))
+    x = math.sin(math.radians(a)) * math.sin(math.radians(c)) + math.cos(
+        math.radians(a)
+    ) * math.cos(math.radians(c)) * math.cos(math.radians(b - d))
     return 6371.0 * math.acos(max(-1.0, min(1.0, x)))
 
 
 def refresh_wmo() -> None:
     import csv
     import urllib.request
+
     RAW.mkdir(parents=True, exist_ok=True)
     for v in ("TMAX", "TMIN", "PRCP", "MSLP", "MNVP", "TAVG"):
-        req = urllib.request.Request(WMO_URL.format(v=v), headers={"User-Agent": "AEE-climate/1.0"})
+        req = urllib.request.Request(
+            WMO_URL.format(v=v), headers={"User-Agent": "AEE-climate/1.0"}
+        )
         with urllib.request.urlopen(req, timeout=120) as r:
             (RAW / f"wmo_normals_9120_{v}.csv").write_bytes(r.read())
 
     def table(v):
         out = {}
-        with open(RAW / f"wmo_normals_9120_{v}.csv", encoding="utf-8", errors="replace") as f:
+        with open(
+            RAW / f"wmo_normals_9120_{v}.csv", encoding="utf-8", errors="replace"
+        ) as f:
             rows = csv.reader(f)
             next(rows)
             for row in rows:
@@ -102,7 +125,14 @@ def refresh_wmo() -> None:
                     continue
                 if any(x < -9000 for x in vals):
                     continue
-                out[row[3]] = (float(row[4]), float(row[5]), float(row[6]), row[7], row[8], vals)
+                out[row[3]] = (
+                    float(row[4]),
+                    float(row[5]),
+                    float(row[6]),
+                    row[7],
+                    row[8],
+                    vals,
+                )
         return out
 
     t = {v: table(v) for v in ("TMAX", "TMIN", "PRCP", "MSLP", "MNVP", "TAVG")}
@@ -114,17 +144,44 @@ def refresh_wmo() -> None:
             continue
         rh = None
         if wid in t["MNVP"]:
-            rh = [round(diurnal_rh(e, hi, lo), 1) for e, hi, lo in zip(t["MNVP"][wid][5], tmax, tmin)]
-        mslp = t["MSLP"][wid][5] if wid in t["MSLP"] and all(x > 800 for x in t["MSLP"][wid][5]) else None
-        stations.append({"wigos": wid, "name": name, "country": country, "lat": lat, "lon": lon,
-                         "elevation_m": elev, "tmax": tmax, "tmin": tmin, "prcp": t["PRCP"][wid][5],
-                         "rh": rh, "mslp": mslp})
-    WMO.write_text(json.dumps({
-        "schema": "aee.climate.wmo_normals/1",
-        "source": "NOAA NCEI archive arc0216/0253808: WMO climatological standard normals 1991-2020, "
-                  "composite primary parameters (public domain)",
-        "rh_method": "24-h mean of 100 * MNVP / e_w(T(t)), T sinusoidal between TMIN and TMAX; e_w = 6.112 exp(17.62 t / (243.12 + t)) hPa (WMO-No. 8 Annex 4.B)",
-        "stations": stations}, separators=(",", ":")) + "\n", encoding="utf-8")
+            rh = [
+                round(diurnal_rh(e, hi, lo), 1)
+                for e, hi, lo in zip(t["MNVP"][wid][5], tmax, tmin)
+            ]
+        mslp = (
+            t["MSLP"][wid][5]
+            if wid in t["MSLP"] and all(x > 800 for x in t["MSLP"][wid][5])
+            else None
+        )
+        stations.append(
+            {
+                "wigos": wid,
+                "name": name,
+                "country": country,
+                "lat": lat,
+                "lon": lon,
+                "elevation_m": elev,
+                "tmax": tmax,
+                "tmin": tmin,
+                "prcp": t["PRCP"][wid][5],
+                "rh": rh,
+                "mslp": mslp,
+            }
+        )
+    WMO.write_text(
+        json.dumps(
+            {
+                "schema": "aee.climate.wmo_normals/1",
+                "source": "NOAA NCEI archive arc0216/0253808: WMO climatological standard normals 1991-2020, "
+                "composite primary parameters (public domain)",
+                "rh_method": "24-h mean of 100 * MNVP / e_w(T(t)), T sinusoidal between TMIN and TMAX; e_w = 6.112 exp(17.62 t / (243.12 + t)) hPa (WMO-No. 8 Annex 4.B)",
+                "stations": stations,
+            },
+            separators=(",", ":"),
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
 
 def koppen(tmean: list[float], precip: list[float], north: bool = True) -> str:
@@ -155,9 +212,15 @@ def koppen(tmean: list[float], precip: list[float], north: bool = True) -> str:
     pw_dry = min(precip[m] for m in winter)
     ps_wet = max(precip[m] for m in summer)
     pw_wet = max(precip[m] for m in winter)
-    second = "s" if (ps_dry < 40 and ps_dry < pw_wet / 3) else ("w" if pw_dry < ps_wet / 10 else "f")
+    second = (
+        "s"
+        if (ps_dry < 40 and ps_dry < pw_wet / 3)
+        else ("w" if pw_dry < ps_wet / 10 else "f")
+    )
     warm = sum(1 for t in tmean if t >= 10)
-    third = "a" if t_hot >= 22 else ("b" if warm >= 4 else ("d" if t_cold < -38 else "c"))
+    third = (
+        "a" if t_hot >= 22 else ("b" if warm >= 4 else ("d" if t_cold < -38 else "c"))
+    )
     return ("C" if t_cold > -3 else "D") + second + third
 
 
@@ -183,10 +246,14 @@ def load() -> dict:
         if not s.get("primary_source"):
             raise ValueError(f"{sid}: no primary source")
         north = s.get("hemisphere", "N") == "N"
-        tmean = [(a + b) / 2 for a, b in zip(s["mean_daily_max_c"], s["mean_daily_min_c"])]
+        tmean = [
+            (a + b) / 2 for a, b in zip(s["mean_daily_max_c"], s["mean_daily_min_c"])
+        ]
         got = koppen(tmean, s["precipitation_mm"], north)
         if got != s["koppen"]:
-            raise ValueError(f"{sid}: labelled {s['koppen']} but its normals classify as {got}")
+            raise ValueError(
+                f"{sid}: labelled {s['koppen']} but its normals classify as {got}"
+            )
     for world, row in data["world_bindings"].items():
         if row["station"] not in ids:
             raise ValueError(f"world {world}: unknown station {row['station']}")
@@ -217,7 +284,9 @@ def render(data: dict) -> str:
         "national meteorological service or NOAA/WMO normals:",
     ]
     for s in data["stations"]:
-        lines.append(f"  {s['id']:12s} {s['koppen']:4s} {s['station'][:44]}: {s['primary_source']}")
+        lines.append(
+            f"  {s['id']:12s} {s['koppen']:4s} {s['station'][:44]}: {s['primary_source']}"
+        )
     lines += [
         "",
         "Arguments:",
@@ -230,7 +299,7 @@ def render(data: dict) -> str:
         "temperature model applies the lapse to the terrain.  The MSLP is the",
         "station's 1991-2020 WMO normal, or the nearest WMO station's within",
         "300 km.  A Koppen station is shifted six months on a southern",
-        "hemisphere world.  An UNBOUND world (key \"\") takes the nearest of the",
+        'hemisphere world.  An UNBOUND world (key "") takes the nearest of the',
         "WMO 1991-2020 stations in CfgClimateStations; [] if none is loaded.",
         "Public: No",
         "*/",
@@ -246,23 +315,33 @@ def render(data: dict) -> str:
         mslp = s.get("mslp_hpa") or nearest_mslp(wmo, *station_latlon(s))
         rows.append(
             f'    ["{s["id"]}", [{_arr([round(v + up, 2) for v in s["mean_daily_max_c"]])}, '
-            f'{_arr([round(v + up, 2) for v in s["mean_daily_min_c"]])}, '
-            f'{_arr(s["relative_humidity_pct"])}, {_arr(s["precipitation_mm"])}, {_arr(mslp)}]]'
+            f"{_arr([round(v + up, 2) for v in s['mean_daily_min_c']])}, "
+            f"{_arr(s['relative_humidity_pct'])}, {_arr(s['precipitation_mm'])}, {_arr(mslp)}]]"
         )
     lines.append(",\n".join(rows))
     lines += ["];", "", "private _WORLDS = createHashMapFromArray ["]
-    lines.append(",\n".join(f'    ["{w.lower()}", "{r["station"]}"]' for w, r in sorted(data["world_bindings"].items())))
+    lines.append(
+        ",\n".join(
+            f'    ["{w.lower()}", "{r["station"]}"]'
+            for w, r in sorted(data["world_bindings"].items())
+        )
+    )
     lines += ["];", "", "private _KOPPEN = createHashMapFromArray ["]
-    lines.append(",\n".join(f'    ["{c}", "{sid}"]' for c, sid in sorted(data["koppen_fallback"].items())))
+    lines.append(
+        ",\n".join(
+            f'    ["{c}", "{sid}"]'
+            for c, sid in sorted(data["koppen_fallback"].items())
+        )
+    )
     lines += [
         "];",
         "",
-        "private _id = \"\";",
+        'private _id = "";',
         "private _shift = false;",
         'if (_key == "") then {',
-        "    _id = _WORLDS getOrDefault [toLower worldName, \"\"];",
+        '    _id = _WORLDS getOrDefault [toLower worldName, ""];',
         "} else {",
-        "    _id = _KOPPEN getOrDefault [_key, \"\"];",
+        '    _id = _KOPPEN getOrDefault [_key, ""];',
         "    _shift = ((([] call EFUNC(lib,getWorldLocation)) select 0) < 0);",
         "};",
         'if (_id == "" && _key == "") exitWith { [] call FUNC(getNearestClimateStation) };',
@@ -307,12 +386,18 @@ def render_cfg() -> str:
     for i, w in enumerate(wmo):
         up = LAPSE * w["elevation_m"]
         f = lambda v: "{" + ",".join(f"{x:g}" for x in v) + "}"  # noqa: E731
+        # A WIGOS station identifier is `0-20000-0-XXXXX`.  The NOAA composite
+        # holds no identifier for a few stations and the raw field is empty or
+        # "-" for them, which produced the malformed ids `"WIGOS "` and
+        # `"WIGOS -"`.  Emit no identifier rather than a malformed one.
+        wid = w["wigos"].strip()
+        sid = f"WIGOS {wid}" if wid and wid != "-" else ""
         lines.append(
-            f'    class s{i} {{ id = "WIGOS {w["wigos"]}"; name = "{w["name"].replace(chr(34), "")}"; '
-            f'lat = {w["lat"]:g}; lon = {w["lon"]:g}; '
-            f'tmax[] = {f([round(x + up, 2) for x in w["tmax"]])}; '
-            f'tmin[] = {f([round(x + up, 2) for x in w["tmin"]])}; '
-            f'prcp[] = {f(w["prcp"])}; rh[] = {f(w["rh"] or [])}; mslp[] = {f(w["mslp"] or [])}; }};'
+            f'    class s{i} {{ id = "{sid}"; name = "{w["name"].replace(chr(34), "")}"; '
+            f"lat = {w['lat']:g}; lon = {w['lon']:g}; "
+            f"tmax[] = {f([round(x + up, 2) for x in w['tmax']])}; "
+            f"tmin[] = {f([round(x + up, 2) for x in w['tmin']])}; "
+            f"prcp[] = {f(w['prcp'])}; rh[] = {f(w['rh'] or [])}; mslp[] = {f(w['mslp'] or [])}; }};"
         )
     lines.append("};")
     return "\n".join(lines) + "\n"
@@ -326,7 +411,9 @@ def main(argv: list[str] | None = None) -> int:
     cfg = render_cfg()
     if "--check" in args:
         fresh = OUT.is_file() and OUT.read_text(encoding="utf-8") == text
-        fresh = fresh and CFG_OUT.is_file() and CFG_OUT.read_text(encoding="utf-8") == cfg
+        fresh = (
+            fresh and CFG_OUT.is_file() and CFG_OUT.read_text(encoding="utf-8") == cfg
+        )
         print(f"climate normals: {'fresh' if fresh else 'STALE'}")
         return 0 if fresh else 1
     OUT.write_text(text, encoding="utf-8")

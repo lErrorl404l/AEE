@@ -13,6 +13,11 @@ GPS tables:
                  geomagnetic latitude (deg): FAA SPS PAN #125 (Q1 2024)
                  95 % horizontal errors over 2 x this constellation's HDOP,
                  at the quarter's smoothed sunspot number 136.5.
+                 One median per 10-degree bin, keyed by the bin centre.  No
+                 FAA site falls in the 10-20 degree bin, so there is no
+                 15-degree entry: a query between the 5 and 25 degree entries
+                 is their straight line (fnc_gnssUere), an interpolation
+                 rather than a measurement.
 Return: HASHMAP
 Public: No
 */

@@ -20,11 +20,14 @@
  *   2: geodetic latitude, deg (NUMBER)
  *   3: longitude, deg (NUMBER)
  *   4: mask angle, deg (NUMBER, default: the table's 5 deg)
+ *   5: observer height above the WGS84 ellipsoid, km (NUMBER, default 0:
+ *      a ground unit).  A receiver on a hill or in the air sees a wider sky,
+ *      so its height enters the observer's ECEF position.
  *
  * Return: ARRAY of [east, north, up] unit line-of-sight vectors, one per
  *         satellite above the mask.
  */
-params [["_dn", 0, [0]], ["_utH", 0, [0]], ["_lat", 0, [0]], ["_lon", 0, [0]], ["_mask", -1, [0]]];
+params [["_dn", 0, [0]], ["_utH", 0, [0]], ["_lat", 0, [0]], ["_lon", 0, [0]], ["_mask", -1, [0]], ["_altKm", 0, [0]]];
 private _t = call FUNC(gnssTables);
 if (_mask < 0) then { _mask = _t get "maskDeg"; };
 
@@ -38,12 +41,12 @@ private _fnc_norm = { params ["_x"]; ((_x mod 360) + 360) mod 360 };
 // fraction 360 deg per day, so no large product is formed.
 private _theta = [(_t get "gha0") + 0.98564736629 * _days + 360 * (_days - floor _days)] call _fnc_norm;
 
-// Observer (WGS84).
+// Observer (WGS84) at the receiver height.
 private _e2 = (1 / 298.257223563) * (2 - (1 / 298.257223563));
 private _nr = 6378.137 / sqrt (1 - _e2 * (sin _lat) ^ 2);
-private _px = _nr * (cos _lat) * (cos _lon);
-private _py = _nr * (cos _lat) * (sin _lon);
-private _pz = _nr * (1 - _e2) * (sin _lat);
+private _px = (_nr + _altKm) * (cos _lat) * (cos _lon);
+private _py = (_nr + _altKm) * (cos _lat) * (sin _lon);
+private _pz = (_nr * (1 - _e2) + _altKm) * (sin _lat);
 
 // Argument-of-latitude advance n * days with n = 2 (earthRate - nodeRate),
 // reduced mod 360 before the factor 2 so float32 keeps ~0.001 deg.
