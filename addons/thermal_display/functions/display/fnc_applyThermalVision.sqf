@@ -365,7 +365,7 @@ if (_hCC >= 0) then {
         ];
         _hCC ppEffectCommit 0;
         _hCC ppEffectEnable true;
-        _hCC ppEffectForceInNVG true;
+        _hCC ppEffectForceInNVG _forceNVG;
     };
 
 // ─── ColorInversion (BHOT polarity, proven mechanism) ─────────────────────
@@ -381,7 +381,7 @@ if (_hInv >= 0) then {
         _hInv ppEffectAdjust [1, 1, 1];
         _hInv ppEffectCommit 0;
         _hInv ppEffectEnable true;
-        _hInv ppEffectForceInNVG true;
+        _hInv ppEffectForceInNVG _forceNVG;
     } else {
         // The ACE pattern: a freshly-created ColorInversion may default
         // to ENABLED with an uninitialised (inverting) state, so

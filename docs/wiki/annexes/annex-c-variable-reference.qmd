@@ -189,7 +189,6 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_nightvision_nvgGrainBoost` | nightvision | 1 while gate flicker active (noise floor raised), 0 otherwise |
 | `aee_nightvision_nvgTubeOnTime` | nightvision | Mission time the tube was first powered on - drives the warm-up dark-current curve (#153 gap 4) |
 | `aee_nightvision_nvgPerceived` | nightvision | Perceived NVG output 0.65..1.0: AGC brightness x cleanliness (MTF x SNR / erosion), per tier - consumed by ColorCorrections (#153 gap 6) |
-| `aee_nightvision_ppHandle_NVG_Chroma` | nightvision | NVG-owned ChromAberration ppEffect handle (priority 3050), never shared with the optics handle |
 | `aee_nightvision_nvgBreathing` | nightvision | AGC breathing brightness factor this tick, in [-0.15, 0.15] |
 | `aee_nightvision_nvgImperfectionAlpha` | nightvision | Blemish overlay opacity this tick (1 - the control fade), 0..1 |
 | `aee_vision_viewDistanceTarget` | vision | Vision-driven view distance target in metres (issue #138) |
@@ -855,7 +854,7 @@ state for the operator and for the debug console.
 |---|---|---|
 | `aee_vision_baseGradeActive` | vision | Normal-vision base grade currently applied |
 | `aee_vision_baseGradeCC` | vision | Base-grade ColorCorrections handle |
-| `aee_vision_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
+| `aee_vision_baseGradeAcuityHandle` | vision | Base-grade acuity FilmGrain handle. The `aee_vision_baseGradeGrain` setting stays the numeric slider |
 | `aee_vision_visionModelActive` | vision | True when the human-vision model owns the normal-vision grade this tick |
 | `aee_vision_visionBaseResolved` | vision | The resolved base-grade anchor: the cached config value plus any debug override, published above the client-only exit for a headless probe |
 | `aee_vision_colorTemperatureK` | vision | Physics correlated colour temperature of the scene illuminant this tick, kelvin (issue #100) |

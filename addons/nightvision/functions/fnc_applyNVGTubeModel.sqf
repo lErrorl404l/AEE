@@ -9,10 +9,9 @@ ACE3's pattern (addons/nightvision/functions/fnc_pfeh.sqf). Arma 3
 kills ppEffects on alt-tab, resize, AT sights. Without recreation
 the effects stay dead. ACE3's comment: "This is hacky but... works."
 
-Model chain: moonIntensity -> gain -> shot noise -> five
+Model chain: moonIntensity -> gain -> shot noise -> four
 post-process effects forced into the NVG view:
 
-  ChromAberration  - optical imperfection (lens dispersion)
   ColorCorrections - phosphor tint, brightness, contrast
   DynamicBlur      - blooming / halos from bright sources
   RadialBlur       - optical edge degradation
@@ -28,7 +27,7 @@ Reads:   moonIntensity, overcast, rain, hmd _player
 Sets:    QGVAR(nvgGain), QGVAR(nvgNoise), QGVAR(nvgTubeTier),
          QGVAR(nvgPerceived), QGVAR(nvgGrainActive), QGVAR(nvgBreathing),
          QGVAR(nvgImperfectionAlpha),
-         five ppEffects (client-side only)
+         four ppEffects (client-side only)
 
 Force hooks (debug console, set on missionNamespace):
   QGVAR(nvgForceImperfections) (Bool)   force every imperfection to maximum
@@ -52,16 +51,6 @@ if (cameraOn != _player && {cameraOn != _guardVeh}) exitWith {};
 // The tube model runs only in NVG.  Leaving NVG fades every NVG effect
 // to a neutral state and disables it.
 if (currentVisionMode _player != 1) exitWith {
-    // ChromAberration is owned by nightvision (QGVAR(ppHandle_NVG_Chroma)).
-    // Reset it to neutral on EVERY sensor exit.  The sensor path may adjust
-    // the effect whether or not the grain flag is set, so a reset gated on
-    // nvgGrainActive can leave a non-neutral effect in normal vision.
-    private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
-    if (_hChroma >= 0) then {
-        _hChroma ppEffectAdjust [0, 0, false];
-        _hChroma ppEffectCommit 0;
-    };
-
     private _active = missionNamespace getVariable [QGVAR(nvgGrainActive), false];
     if (_active) then {
         // NVG effects: destroy handles on exit and reset to -1.  The engine
@@ -1083,13 +1072,10 @@ missionNamespace setVariable [QGVAR(nvgImperfectionAlpha), 1 - _blemishFade];
 // cannot see a collision; the priorities here must stay disjoint from every
 // other AEE creator (tools/tests/test_pp_handle_unique.py enforces that).
 //
-// Nightvision owns its own ChromAberration handle at priority 3050.  It
-// must not share the optics handle (priority 3000): the optics module
-// adjusts that effect in normal vision, so a shared handle lets this
-// function destroy or rewrite it and blind the player.  3050 avoids the
-// optics ChromAberration (3000), the NVG DynamicBlur (4100) and the
-// thermal DynamicBlur (4200).
-private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
+// No ChromAberration is created: an image intensifier is monochrome, so its
+// output carries no colour fringing (the note at the end of this file gives
+// the source).  The optics ChromAberration at 3000 is a normal-vision effect
+// and this function must never read, adjust or destroy it.
 private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];
 private _hBloom  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
 private _hVig    = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
@@ -1102,7 +1088,7 @@ private _hGrain  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Grain), -1];
 // recreate CC/bloom/vignette/grain every 0.1 s tick, leaving the image
 // vanilla and flooding the RPT with "Invalid post effect handle".
 // DoF gets its own create-if-missing block further down.
-private _missing = (_hChroma < 0 || _hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0);
+private _missing = (_hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0);
 
 if (_missing) then {
     // Destroy any live handles first so the bump loop can reclaim the
@@ -1119,26 +1105,8 @@ if (_missing) then {
         QGVAR(ppHandle_NVG_CC),
         QGVAR(ppHandle_NVG_Bloom),
         QGVAR(ppHandle_NVG_Vignette),
-        QGVAR(ppHandle_NVG_Grain),
-        QGVAR(ppHandle_NVG_Chroma)
+        QGVAR(ppHandle_NVG_Grain)
     ];
-
-    // The destroy loop above may just have destroyed the chroma handle.
-    // Re-read it from missionNamespace before the recreate test, because
-    // the local copy still holds the stale positive value.
-    _hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
-    if (_hChroma < 0) then {
-        private _prio = 3050;
-        private _guard = 0;
-        while {_hChroma < 0 && _guard < 100} do {
-            _hChroma = ppEffectCreate ["ChromAberration", _prio];
-            _prio = _prio + 1;
-            _guard = _guard + 1;
-        };
-        missionNamespace setVariable [QGVAR(ppHandle_NVG_Chroma), _hChroma];
-        private _logMsg = format ["recreated NVG ChromAberration handle=%1", _hChroma];
-        AEE_LOG_DEBUG(_logMsg);
-    };
 
     private _handles = [];
     {
@@ -1164,7 +1132,7 @@ if (_missing) then {
     // One INFO line per entry so a failed create (-1) is visible without
     // the per-tick debug flag: the essential handles must all be >= 0 or
     // the image degrades to vanilla and the adjusts spam the RPT.
-    private _logMsg = format ["NVG handles created: vig=%1 bloom=%2 cc=%3 grain=%4 chroma=%5", _hVig, _hBloom, _hCC, _hGrain, _hChroma];
+    private _logMsg = format ["NVG handles created: vig=%1 bloom=%2 cc=%3 grain=%4", _hVig, _hBloom, _hCC, _hGrain];
     AEE_LOG_INFO(_logMsg);
 };
 
@@ -1175,7 +1143,6 @@ if (_missing) then {
 // every fresh handle (4 handles x 4 calls = the 16 per entry seen in the
 // RPT).  missionNamespace is the single source of truth; always read it
 // after the create block.
-_hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
 _hVig   = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
 _hBloom = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
 _hCC    = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];
@@ -1187,14 +1154,14 @@ _hGrain = missionNamespace getVariable [QGVAR(ppHandle_NVG_Grain), -1];
 // handle stays -1 and the feature is silently skipped (one WARN line).
 private _hDoF = missionNamespace getVariable [QGVAR(ppHandle_NVG_DoF), -1];
 if (_hDoF < 0) then {
+    // One create attempt, not a priority bump loop. The wiki does not list
+    // DepthOfField as creatable, so an invalid name would otherwise cost 100
+    // ppEffectCreate calls on every NVG entry. AEE observes the effect
+    // working in game, so the feature stays until a rendered probe settles
+    // the contradiction.
     private _dofPrio = 868;   // TFN NVG Effects proven priority
+    // vqa-ignore: PP001 engine creates DepthOfField despite the wiki list
     _hDoF = ppEffectCreate ["DepthOfField", _dofPrio];
-    private _guard = 0;
-    while {_hDoF < 0 && _guard < 100} do {
-        _dofPrio = _dofPrio + 1;
-        _hDoF = ppEffectCreate ["DepthOfField", _dofPrio];
-        _guard = _guard + 1;
-    };
     missionNamespace setVariable [QGVAR(ppHandle_NVG_DoF), _hDoF];
     if (_hDoF >= 0) then {
         private _logMsg = format ["created NVG DepthOfField priority=%1 handle=%2", _dofPrio, _hDoF];
@@ -1616,7 +1583,7 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _impPart = format [" | imp on=%1 str=%2 blemFade=%3 retFade=%4 breath=%5 blind=%6 scint=%7 edge=%8 glare=%9 alpha=%10", _ioOn, _ioStr, _blemishFade, _reticuleFade, _breathing, _blindStr, _scintStr, _edgeStr, _glare, 1 - _blemishFade];
     };
     private _logMsg = format [
-        "NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focus=%18 settled=%19 raw=%20 pending=%21",
+        "NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 bloom=%8 vig=%9 grain=%10 dof=%11 | CC params %12 | bloom=%13 grain=%14 | blowout=%15 | dofBlur=%16 focus=%17 settled=%18 raw=%19 pending=%20",
         _tier,
         _moonLight,
         _lux,
@@ -1624,7 +1591,6 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         currentVisionMode _player,
         _hmd,
         _hCC,
-        _hChroma,
         _hBloom,
         _hVig,
         _hGrain,
@@ -1642,18 +1608,18 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     AEE_LOG_DEBUG(_logMsg);
 };
 
-// ─── ChromAberration — disabled (NVGs are monochrome) ────────────────────
-// ponytail: NVGs are monochrome — no chromatic aberration.
+// ─── ChromAberration — not created (NVGs are monochrome) ─────────────────
+// NVGs are monochrome, so there is no chromatic aberration.
 // An image intensifier has a single photocathode and a single phosphor
 // screen, so its output carries no colour fringing.  ChromAberration is
-// a normal-vision effect (lens dispersion in a colour camera).  The
-// handle is still created and owned by fnc_managePostProcess for normal
-// vision; the NVG path leaves it neutral.  The per-tier _chromaStrength
-// parameter is removed with the effect.
+// a normal-vision effect (lens dispersion in a colour camera) and
+// fnc_managePostProcess owns its handle.  This function creates no
+// ChromAberration, adjusts none and destroys none, so priority 3050 is not
+// taken.  The per-tier _chromaStrength parameter went with the effect.
 //
-// Removed: the edge boost (1 + (angle/20)²) and the per-tick
-// adjust/commit/enable/force block — with no CA there is nothing to
-// scale or apply.
+// Removed: the creation, the neutral reset on sensor exit, the edge boost
+// (1 + (angle/20)²) and the per-tick adjust/commit/enable/force block —
+// with no CA there is nothing to scale or apply.
 // ─── ColorCorrections (phosphor tint + brightness + contrast) ───────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
 //

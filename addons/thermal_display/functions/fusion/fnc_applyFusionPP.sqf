@@ -38,31 +38,44 @@ private _hChroma  = missionNamespace getVariable [QGVAR(ppHandle_Fusion_Chroma),
 private _hGrain   = missionNamespace getVariable [QGVAR(ppHandle_Fusion_Grain), -1];
 private _hDynBlur = missionNamespace getVariable [QGVAR(ppHandle_Fusion_DynBlur), -1];
 private _hCC      = missionNamespace getVariable [QGVAR(ppHandle_Fusion_CC), -1];
-if (_hChroma < 0) then {
+if (_hChroma < 0 || _hGrain < 0 || _hDynBlur < 0 || _hCC < 0) then {
+    // Same pattern as fnc_createThermalPPEffects and fnc_applyNVGTubeModel:
+    // destroy every live handle first, then create the set.  A handle the
+    // engine killed on alt-tab or a resize stays positive, so a create is
+    // only issued after fnc_cycleFusionMode has cleared the four stores.
+    // That entry is the recreate point; this block never runs on a live set.
+    {
+        private _h = missionNamespace getVariable [_x, -1];
+        if (_h >= 0) then {
+            ppEffectDestroy _h;
+            missionNamespace setVariable [_x, -1];
+            private _logMsg = format ["fusion PP: destroyed %1 (was %2)", _x, _h];
+            AEE_LOG_DEBUG(_logMsg);
+        };
+    } forEach [
+        QGVAR(ppHandle_Fusion_Chroma),
+        QGVAR(ppHandle_Fusion_Grain),
+        QGVAR(ppHandle_Fusion_DynBlur),
+        QGVAR(ppHandle_Fusion_CC)
+    ];
     _hChroma = ppEffectCreate ["ChromAberration", 1905];
     if (_hChroma >= 0) then {
         missionNamespace setVariable [QGVAR(ppHandle_Fusion_Chroma), _hChroma];
         private _logMsg = format ["fusion PP: created chroma handle=%1", _hChroma];
         AEE_LOG_DEBUG(_logMsg);
     };
-};
-if (_hGrain < 0) then {
     _hGrain = ppEffectCreate ["FilmGrain", 2005];
     if (_hGrain >= 0) then {
         missionNamespace setVariable [QGVAR(ppHandle_Fusion_Grain), _hGrain];
         private _logMsg = format ["fusion PP: created grain handle=%1", _hGrain];
         AEE_LOG_DEBUG(_logMsg);
     };
-};
-if (_hDynBlur < 0) then {
     _hDynBlur = ppEffectCreate ["DynamicBlur", 2105];
     if (_hDynBlur >= 0) then {
         missionNamespace setVariable [QGVAR(ppHandle_Fusion_DynBlur), _hDynBlur];
         private _logMsg = format ["fusion PP: created dynBlur handle=%1", _hDynBlur];
         AEE_LOG_DEBUG(_logMsg);
     };
-};
-if (_hCC < 0) then {
     _hCC = ppEffectCreate ["ColorCorrections", 2505];
     if (_hCC >= 0) then {
         missionNamespace setVariable [QGVAR(ppHandle_Fusion_CC), _hCC];
@@ -84,7 +97,7 @@ _hChroma ppEffectForceInNVG true;
 // The microbolometer channel has its own noise floor, independent of the
 // I2 tube grain.  A3TI fusion values (workshop 3725008325, IRNV WHOT
 // case -2): [_GRAIN, 0.75, 1.5, 0.25, 0, true] with _GRAIN = 0.
-_hGrain ppEffectAdjust [0, 0.75, 1.5, 0.25, 0, true];
+_hGrain ppEffectAdjust [0, 1.25, 1.5, 0.25, 0, 1];
 _hGrain ppEffectCommit 0;
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG true;

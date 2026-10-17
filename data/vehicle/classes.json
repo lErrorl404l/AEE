@@ -185,7 +185,7 @@
       "kind": "engine_base",
       "provenance": [
         "addons/core/functions/fnc_calculateIlluminance.sqf:275",
-        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:671"
+        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:660"
       ]
     },
     {

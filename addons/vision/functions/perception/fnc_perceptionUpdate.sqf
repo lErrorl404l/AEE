@@ -114,7 +114,7 @@ private _expectedGrade = [_tone, [1, 1, 0], _toneStrength, _desatAlpha] call FUN
 // is applied, so the expectation is the identity and the deviation stays
 // clear.
 private _baseGradeCC = missionNamespace getVariable [QGVAR(baseGradeCC), -1];
-private _baseGradeGrain = missionNamespace getVariable [QGVAR(baseGradeGrain), -1];
+private _baseGradeAcuity = missionNamespace getVariable [QGVAR(baseGradeAcuityHandle), -1];
 private _gradeActive = (_baseGradeCC isEqualType 0) && (_baseGradeCC >= 0);
 if (!_gradeActive) then { _expectedGrade = [1, 1, 0, 0]; };
 
@@ -224,7 +224,7 @@ private _line = "perception scene=" + (str _sceneLux)
     + " effects=" + (str _effects)
     + " grade=" + (str _appliedGrade)
     + " baseCC=" + (str _baseGradeCC)
-    + " baseGrain=" + (str _baseGradeGrain)
+    + " baseAcuity=" + (str _baseGradeAcuity)
     + " adapt=" + (str _adaptState)
     + " flags=" + (str _flags);
 
