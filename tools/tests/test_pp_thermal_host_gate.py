@@ -40,6 +40,10 @@ DRIVERS = (
 THERMAL_CALLERS = ("vision", "nightvision", "optics")
 
 VISION_MODE_HANDLER = ADDONS / "vision" / "XEH_postInit.sqf"
+BASE_GRADE_DRIVER = ADDONS / "vision" / "functions" / "grade" / "fnc_applyBaseGrade.sqf"
+PERCEPTION_UPDATE = (
+    ADDONS / "vision" / "functions" / "perception" / "fnc_perceptionUpdate.sqf"
+)
 
 _CALL = re.compile(r"EFUNC\(\s*([a-z_]+)\s*,")
 _REQUIRED_BLOCK = re.compile(r"requiredAddons\[\]\s*=\s*\{(.*?)\}", re.DOTALL)
@@ -76,6 +80,35 @@ class TestThermalHostStandDown(unittest.TestCase):
                     f"{addon} calls into thermal but does not list aee_thermal "
                     "in requiredAddons",
                 )
+
+
+class TestBaseGradeSettingOwnsNoHandle(unittest.TestCase):
+    """The acuity grain setting keeps its slider value; the handle is separate."""
+
+    def test_the_grain_setting_is_never_overwritten_by_the_handle(self):
+        text = _read(BASE_GRADE_DRIVER)
+        self.assertNotIn(
+            "setVariable [QGVAR(baseGradeGrain)",
+            text,
+            "the acuity handle overwrites the aee_vision_baseGradeGrain slider",
+        )
+        self.assertIn(
+            "GVAR(baseGradeGrain)",
+            text,
+            "the grain setting is no longer read as the intensity",
+        )
+
+    def test_the_handle_has_its_own_variable(self):
+        self.assertIn(
+            "setVariable [QGVAR(baseGradeAcuityHandle), _hAcuity]",
+            _read(BASE_GRADE_DRIVER),
+            "the acuity handle has no store of its own",
+        )
+        self.assertIn(
+            "getVariable [QGVAR(baseGradeAcuityHandle), -1]",
+            _read(PERCEPTION_UPDATE),
+            "a reader still reads the setting variable as the handle",
+        )
 
 
 class TestVisionModeResetLifecycle(unittest.TestCase):

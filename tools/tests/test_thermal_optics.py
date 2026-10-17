@@ -4574,31 +4574,14 @@ class TestPostProcessHandleOwnership(unittest.TestCase):
         ]
         self.assertEqual(offenders, [])
 
-    def test_nightvision_stores_and_reads_its_own_chroma_handle(self):
-        # (b) Nightvision reads and writes QGVAR(ppHandle_NVG_Chroma), and
-        # the handle joins the NVG destroy list.
+    def test_the_tube_model_creates_no_chroma_handle(self):
+        # The tube image is monochrome, so the ChromAberration the NVG path
+        # created at priority 3050 was never enabled and was excluded from
+        # the exit destroy list.  It is removed from every list; no
+        # replacement returns without an enable path of its own.
         text = _read_sqf("fnc_applyNVGTubeModel.sqf", "nightvision")
-        self.assertIn("getVariable [QGVAR(ppHandle_NVG_Chroma), -1]", text)
-        self.assertIn("setVariable [QGVAR(ppHandle_NVG_Chroma), _hChroma]", text)
-        self.assertIn("QGVAR(ppHandle_NVG_Chroma),", text)
-
-    def test_chroma_neutral_reset_is_not_gated_on_grain(self):
-        # (c) The neutral reset sits in the sensor-exit block, BEFORE and
-        # outside the `if (_active)` grain gate.  The gate may still skip
-        # the NVG-only teardown.
-        text = _read_sqf("fnc_applyNVGTubeModel.sqf", "nightvision")
-        exit_block = _sqf_block(text, "if (currentVisionMode _player != 1) exitWith")
-        self.assertLess(
-            exit_block.index("getVariable [QGVAR(ppHandle_NVG_Chroma), -1]"),
-            exit_block.index("if (_active) then {"),
-            "chroma reset must precede the grain gate",
-        )
-        gate_block = _sqf_block(exit_block, "if (_active) then")
-        self.assertNotIn(
-            "ppHandle_NVG_Chroma",
-            gate_block,
-            "chroma reset must not be nested in the grain gate",
-        )
+        self.assertNotIn("ppHandle_NVG_Chroma", text)
+        self.assertNotIn('ppEffectCreate ["ChromAberration"', text)
 
     def test_sensor_exit_deferred_disables_carry_a_generation_guard(self):
         # (d) Each of the three sensor-exit deferred disables captures the
