@@ -166,7 +166,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:255"
+        "addons/core/functions/fnc_calculateIlluminance.sqf:258"
       ]
     },
     {
@@ -175,7 +175,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:254"
+        "addons/core/functions/fnc_calculateIlluminance.sqf:257"
       ]
     },
     {
@@ -184,7 +184,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:254",
+        "addons/core/functions/fnc_calculateIlluminance.sqf:257",
         "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:669"
       ]
     },
@@ -194,7 +194,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/core/functions/fnc_calculateIlluminance.sqf:255"
+        "addons/core/functions/fnc_calculateIlluminance.sqf:258"
       ]
     },
     {

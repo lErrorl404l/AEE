@@ -96,7 +96,6 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_compat_acm` | `compat_acm` |
 | `aee_compat_acre2` | `compat_acre2` |
 | `aee_compat_kat` | `compat_kat` |
-| `aee_compat_realweather` | `compat_realweather` |
 | `aee_compat_tfar` | `compat_tfar` |
 | `aee_core` | `core` |
 | `aee_diagnostics` | `diagnostics` |
@@ -128,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (897)
+### Public functions (899)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -199,6 +198,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_armour_fnc_dumpState`
 - `aee_armour_fnc_getVehicleArmour`
 - `aee_armour_fnc_penetrationGate`
+- `aee_atmos_fnc_applyEngineWeather`
 - `aee_atmos_fnc_calculateAirframeIcing`
 - `aee_atmos_fnc_calculateAshSettling`
 - `aee_atmos_fnc_calculateCloudCeiling`
@@ -227,6 +227,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculateVolcanicWinter`
 - `aee_atmos_fnc_calculateWeatherFront`
 - `aee_atmos_fnc_dumpState`
+- `aee_atmos_fnc_engineWeatherBlockedReason`
 - `aee_atmos_fnc_getLocalWind`
 - `aee_atmos_fnc_hailDamage`
 - `aee_atmos_fnc_moduleVolcanicInit`
@@ -346,8 +347,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_compat_acm_fnc_registerHypoxiaDutyFactor`
 - `aee_compat_acre2_fnc_integrateACRE2`
 - `aee_compat_kat_fnc_integrateKAT`
-- `aee_compat_realweather_fnc_dumpState`
-- `aee_compat_realweather_fnc_integrateRealWeather`
 - `aee_compat_tfar_fnc_integrateTFAR`
 - `aee_core_fnc_calculateEmpCoupling`
 - `aee_core_fnc_calculateEmpDegradation`
@@ -449,6 +448,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_hydrology_fnc_calculateErosivityIndex`
 - `aee_hydrology_fnc_calculateGreenAmptInfiltration`
 - `aee_hydrology_fnc_calculateKineticEnergy`
+- `aee_hydrology_fnc_calculatePeakRunoff`
 - `aee_hydrology_fnc_calculateRiverWaterLevel`
 - `aee_hydrology_fnc_calculateRunoffSCS`
 - `aee_hydrology_fnc_calculateSedimentDeposition`
@@ -674,6 +674,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_persistence_fnc_rothermelSpread`
 - `aee_persistence_fnc_seismicDamage`
 - `aee_persistence_fnc_seismicGroundMotion`
+- `aee_persistence_fnc_seismicIntensity`
 - `aee_persistence_fnc_seismicLandslide`
 - `aee_persistence_fnc_seismicLiquefaction`
 - `aee_persistence_fnc_seismicShake`
@@ -1073,6 +1074,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_currentUVIndex`
 - `aee_core_currentWBGT`
 - `aee_core_currentWind`
+- `aee_core_currentWindStr`
 - `aee_core_dustSuppression`
 - `aee_core_dynamicLux`
 - `aee_core_ehId_`
@@ -1108,7 +1110,6 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_ppHandle_`
 - `aee_core_ppHandle_optics_BaseGrade`
 - `aee_core_precipitationPhase`
-- `aee_core_realWeatherActive`
 - `aee_core_seismicActive`
 - `aee_core_seismicDepth`
 - `aee_core_seismicEpicentre`

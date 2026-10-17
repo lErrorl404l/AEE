@@ -4,7 +4,7 @@
  "convention": "new = aee_<destination_module>_<leaf>; the leaf is preserved verbatim from the old name, only the module token changes. Kept verbatim to stay bijective and collision-free.",
  "counts": {
   "renamed": 166,
-  "total": 342
+  "total": 340
  },
  "settings": {
   "aee_actions_logDebug": "aee_actions_logDebug",
@@ -44,8 +44,6 @@
   "aee_compat_kat_logDebug": "aee_compat_kat_logDebug",
   "aee_compat_kat_spo2Floor": "aee_compat_kat_spo2Floor",
   "aee_compat_kat_spo2RiskScale": "aee_compat_kat_spo2RiskScale",
-  "aee_compat_realweather_enabled": "aee_compat_realweather_enabled",
-  "aee_compat_realweather_logDebug": "aee_compat_realweather_logDebug",
   "aee_compat_tfar_logDebug": "aee_compat_tfar_logDebug",
   "aee_core_airDensityEnabled": "aee_core_airDensityEnabled",
   "aee_core_atmosphericEventsEnabled": "aee_core_atmosphericEventsEnabled",

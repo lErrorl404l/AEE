@@ -92,16 +92,6 @@ every vitals tick, so the addon re-applies them from the
 
 Verified against: KAT source v3.2.1.
 
-## compat_realweather
-
-compat_realweather reads `weather.json` from the mission folder. The file
-holds `temperatureC`, `humidityPct`, `pressureHpa`, and `overcast`. The
-addon publishes these values into the `aee_core_*` state. It sets
-`realWeatherActive` to gate AEE's simulation tick. Engine overcast applies
-on the server only.
-
-Verified against: the mission-side weather file format.
-
 ## compat_tfar
 
 compat_tfar scales TFAR transmission range from AEE radio propagation. It

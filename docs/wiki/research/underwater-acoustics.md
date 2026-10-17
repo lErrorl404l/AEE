@@ -83,24 +83,45 @@ active 1-20 km). These are standard Urick values but were not re-read from the
 primary this session. The detection-range kernel defaults are set to produce a
 submarine passive range near 95 km, inside the issue's stated band.
 
-## 4. Ambient noise (Wenz 1962)
+## 4. Ambient noise (Wenz 1962; Knudsen 1948; APL-UW TR 9407)
 
-Source: Wenz, G. M. (1962), "Acoustic Ambient Noise in the Ocean: Spectra and
-Sources", JASA 34(12):1936-1956, DOI 10.1121/1.1909155.
+Sources: Wenz, G. M. (1962), "Acoustic Ambient Noise in the Ocean: Spectra
+and Sources", JASA 34(12):1936-1956, DOI 10.1121/1.1909155; Knudsen, V. O.,
+Alford, R. S. and Emling, J. W. (1948), "Underwater Ambient Noise",
+J. Marine Res. 7:410-429; APL-UW TR 9407 (1994), "APL-UW High-Frequency
+Ocean Environmental Acoustic Models Handbook", DOI ADB199453.
 
-Wenz published the spectrum as GRAPHICAL curves, not a closed form. There is
-no citable analytic parameterisation. The model is therefore a stated
-approximation:
+The wind-driven surface-noise component uses Wenz's "rule of fives", the
+closed form that Wenz states for the spectrum and that Carey and Evans
+restate ("Ocean Ambient Noise", Springer 2011, ch. 1 p. 2):
 
-- Sea-state component at 1 kHz: `L = 40 + 5 SS` dB re 1 uPa^2/Hz (SS 0..6),
-  anchored to the issue's readings (SS0 40, SS3 55-60, SS6 70).
-- Frequency shape and the shipping band below 500 Hz are UNSOURCED stated
-  approximations.
-- Shallow water is louder (a fixed UNSOURCED bonus).
+```
+NL_wind(f, U) = 51.02 - (50/3) * (log10 f_kHz - log10 (U_kn / 5))
+```
 
-The reference convention is dB re 1 uPa^2/Hz. The driver clamps the mod's
-Beaufort number to the Wenz 0..6 range; the Beaufort-to-sea-state mapping is
-UNSOURCED.
+-5 dB per octave of frequency and +5 dB per doubling of wind speed about
+the anchor "25 dB (5 x 5)" at 1 kHz for 5 knots re 20 uPa, which becomes
+`25 + 20 log10(20) = 51.02` dB re 1 uPa^2/Hz. The published validity is
+500 Hz to 5 kHz and 2.5 to 40 knots; the kernel clamps the wind speed to
+that range and the frequency to its 500 Hz floor, so it never extrapolates.
+
+The thermal-noise limit (Mellen 1952) is `NL_th(f) = -15 + 20 log10 f_kHz`
+dB re 1 uPa^2/Hz, the form APL-UW TR 9407 Eq. 47 states. The kernel
+power-sums the two components (APL-UW TR 9407 Eq. 46). Worked vectors, all
+dB re 1 uPa^2/Hz at 1 kHz: 51.02 at 5 knots, 56.04 at 10 knots, 61.05 at
+20 knots, 46.00 at 2 kHz (5 knots), 31.02 thermal-only at 200 kHz.
+
+UNSOURCED, kept and marked in the kernel:
+
+- the distant-shipping rise below 500 Hz. Wenz (1962) and Carey and Evans
+  (2011) treat that band as site- and traffic-dependent, with no single
+  fixed analytic parameterisation;
+- the shallow-water bonus. APL-UW TR 9407 models the shallow-water increase
+  as bottom multipath, which a single-level kernel cannot carry.
+
+The reference convention is dB re 1 uPa^2/Hz (ISO 18405). The noise model
+is keyed to the physical wind speed at 10 m, so the earlier unsourced
+Beaufort-to-sea-state mapping is gone.
 
 ## 5. Sound channel, ray bending and the shadow zone
 

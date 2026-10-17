@@ -100,13 +100,17 @@ class TestEyeMesopicWeight(unittest.TestCase):
     def test_sp_of_one_reduces_to_the_m_equation(self):
         # S/P = 1: L_mes = L_p, so m = 0.7670 + 0.3334 log10 L_p.
         for lp in (0.01, 0.1, 1.0):
-            self.assertAlmostEqual(self.m(lp, 1.0), 0.7670 + 0.3334 * math.log10(lp), places=6)
+            self.assertAlmostEqual(
+                self.m(lp, 1.0), 0.7670 + 0.3334 * math.log10(lp), places=6
+            )
 
     def test_matches_an_independent_solution(self):
         for lp in (0.01, 0.05, 0.2, 1.0, 2.5):
             for sp in (0.6, 1.2, 2.4, 3.5):
                 with self.subTest(lp=lp, sp=sp):
-                    self.assertAlmostEqual(self.m(lp, sp), mesopic_weight(lp, sp), places=5)
+                    self.assertAlmostEqual(
+                        self.m(lp, sp), mesopic_weight(lp, sp), places=5
+                    )
 
     def test_bluer_light_holds_more_photopic_adaptation(self):
         # Higher S/P raises L_mes, so m (cone share) rises at the same L_p.
@@ -458,6 +462,22 @@ class TestEyeFlash(unittest.TestCase):
         quiet = run_sqf(FLASH, [5, True])
         self.assertGreater(loud, quiet)
         self.assertGreater(quiet, 0)
+
+    def test_flash_is_the_scale_times_visible_fire(self):
+        # The returned quantity is illuminance in lux: visibleFire * scale.
+        for vf in (1.0, 3.0, 12.0):
+            self.assertAlmostEqual(run_sqf(FLASH, [vf, False]), vf * 1500.0, places=6)
+
+    def test_flash_scale_is_declared_a_game_tunable(self):
+        # CfgAmmo visibleFire has no published photometric unit, so the lux
+        # scale is a game tunable and must say so, with the photometric chain.
+        text = FLASH.read_text(encoding="utf-8")
+        self.assertIn("GAME TUNABLE", text)
+        self.assertIn("E = I / d^2", text)
+
+    def test_driver_documents_the_lambertian_conversion(self):
+        # Scene illuminance (lux) to luminance (cd/m2) for a diffuse surface.
+        self.assertIn("L = rho * E / pi", DRIVER.read_text(encoding="utf-8"))
 
     def test_handler_stamps_the_flash_window(self):
         text = POSTINIT.read_text(encoding="utf-8")
@@ -941,13 +961,15 @@ class TestEyeLimits(unittest.TestCase):
         # Vos 2003: L_veil / E = 10 (1 + (A/70)^4) / theta^2, 1 to 30 deg.
         for theta in (1, 5, 10, 30):
             for age in (20, 45, 70):
-                k = 10 * (1 + (age / 70) ** 4) / theta ** 2
+                k = 10 * (1 + (age / 70) ** 4) / theta**2
                 out = self.lim(1.0, 1.0, 10.0, theta, age)
                 self.assertAlmostEqual(out[5], 10 * k, places=4)
                 self.assertAlmostEqual(out[3], 10 * k / (1 + 10 * k), places=5)
 
     def test_a_70_year_old_has_twice_the_veil(self):
-        self.assertAlmostEqual(self.lim(1, 1, 1, 10, 70)[5] / self.lim(1, 1, 1, 10, 0)[5], 2.0, places=5)
+        self.assertAlmostEqual(
+            self.lim(1, 1, 1, 10, 70)[5] / self.lim(1, 1, 1, 10, 0)[5], 2.0, places=5
+        )
 
     def test_older_eyes_suffer_more_glare(self):
         self.assertGreater(self.lim(1, 1, 10, 5, 70)[3], self.lim(1, 1, 10, 5, 20)[3])

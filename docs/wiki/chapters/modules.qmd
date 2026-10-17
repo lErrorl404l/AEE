@@ -328,7 +328,7 @@ Sea state, tides, internal waves, the thermocline, the surface ocean current, un
 | Function | Purpose |
 |---|---|
 | `calculateAbsorptionWater` | Seawater absorption vs frequency (Francois-Garrison 1982) |
-| `calculateAmbientNoise` | Ambient noise spectrum level keyed to sea state (Wenz 1962) |
+| `calculateAmbientNoise` | Deep-water ambient noise spectrum level, Wenz "rule of fives" plus thermal (Wenz 1962) |
 | `calculateBioluminescence` | Gate the dinoflagellate flash on darkness, clear water and disturbance |
 | `calculateCompassDeviation` | Calculate compass deviation |
 | `calculateDetectionRange` | Sonar detection range from the sonar equation (Urick) |
@@ -577,5 +577,4 @@ present.
 | `compat_acm` | `registerHypoxiaDutyFactor` | Register the hypoxia duty factor with ACM |
 | `compat_acre2` | `integrateACRE2` | Integrate ACRE2 |
 | `compat_kat` | `integrateKAT` | Integrate KAT |
-| `compat_realweather` | `integrateRealWeather` | Read weather.json and publish real values |
 | `compat_tfar` | `integrateTFAR` | Integrate TFAR |

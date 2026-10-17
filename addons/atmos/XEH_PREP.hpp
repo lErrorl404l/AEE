@@ -1,3 +1,5 @@
+PREPS(state,applyEngineWeather);
+PREPS(state,engineWeatherBlockedReason);
 PREPS(state,updateEngineLightnings);
 PREPS(state,updateFog);
 PREPS(state,updateHumidity);

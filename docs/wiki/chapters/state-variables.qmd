@@ -156,7 +156,6 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_currentWeatherForecast` | The current weather forecast |
 | `aee_core_weatherProgression` | The weather quality factor |
 | `aee_core_weatherProgressionSeed` | The weather progression seed |
-| `aee_core_realWeatherActive` | Whether real weather mode is active |
 
 ## Environmental
 

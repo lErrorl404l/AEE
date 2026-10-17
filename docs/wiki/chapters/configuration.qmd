@@ -137,6 +137,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_atmos_volcanicVEI` | SLIDER | `5` | yes | atmos | Volcanic Explosivity Index (0-8) driving the stratospheric aerosol load and the volcanic-winter cooling |
 | `aee_atmos_volcanicVentAltitude` | SLIDER | `2000` | yes | atmos | Vent altitude above sea level in metres |
 
+## AEE Atmos → Weather
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_engineWeatherEnabled` | CHECKBOX | `true` | yes | atmos | Push AEE's modelled overcast and rain onto the engine so a modelled storm shows as cloud, rain and a wet surface. Disabled when a mission sets aee_atmos_manualWeather |
+
 ## AEE Ballistics → Ammo Temperature
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -235,12 +241,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_compat_kat_logDebug` | CHECKBOX | `false` | yes | compat_kat | Log KAT compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
-
-## AEE Debug → Compat - Real Weather
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_realweather_logDebug` | CHECKBOX | `false` | yes | compat_realweather | Log Real Weather compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Debug → Compat - TFAR
 
@@ -1122,12 +1122,6 @@ registered.
 | `aee_compat_kat_fluidDrainBase` | SLIDER | `0.05` | yes | compat_kat | Base body-fluid drain per tick |
 | `aee_compat_kat_spo2Floor` | SLIDER | `60` | yes | compat_kat | Minimum SpO2 that AEE applies |
 | `aee_compat_kat_spo2RiskScale` | SLIDER | `32` | yes | compat_kat | SpO2 drop per unit of hypoxia risk |
-
-## AEE → Compat - Real Weather
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_realweather_enabled` | CHECKBOX | `false` | yes | compat_realweather | Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state. |
 
 ## AEE → Core
 

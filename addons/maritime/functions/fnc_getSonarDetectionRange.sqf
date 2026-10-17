@@ -6,10 +6,11 @@ Answers "can this sonar hear that target, and at what range" from the
 published environmental acoustics (fnc_updateUnderwaterAcoustics) and the
 caller's sonar parameters.
 
-The noise level comes from the published ambient noise, keyed to the mod's
-sea state (Wenz 1962).  The absorption comes from the published seawater
-absorption at the reference frequency (Francois-Garrison 1982).  The range
-then follows from the sonar equation (Urick):
+The noise level comes from the published ambient noise, keyed to the local
+wind speed (Wenz 1962 "rule of fives"; fnc_calculateAmbientNoise).  The
+absorption comes from the published seawater absorption at the reference
+frequency (Francois-Garrison 1982).  The range then follows from the sonar
+equation (Urick):
 
     passive:  EL = SL - NL + DI - DT
     active:   EL = (SL + TS - NL + DI - DT) / 2

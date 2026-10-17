@@ -2,38 +2,42 @@
 /*
 Radar cross section (RCS) by target class, m^2.
 
-The table maps a target class token to a representative RCS (the
-mid-point of the issue's range, in the optical region - the SHF vs
-vehicle case).  It is the input to the radar range equation.
+The table maps a target class token to a representative monostatic RCS in
+the optical region (the SHF case: the target is many wavelengths across, so
+a flat RCS is correct and the Rayleigh lambda^-4 region does not apply).
+It is the input to the radar range equation.
 
-  class        RCS m^2
-  stealth      0.00316   (0.001-0.01, mid)
-  fighter      3         (1-6)
-  bomber       55        (10-100)
-  helicopter   3
-  person       0.3       (0.1-1)
-  vehicle      10        (5-20)
-  ship         1000      (100-10000)
-  boat         0.2       (0.02-2)
+SOURCED rows.  The value is the published figure, quoted from the table:
 
-UNSOURCED.  The issue states these class ranges but names the wrong
-source.  A source check found the canonical figures in Skolnik,
-"Introduction to Radar Systems", Table 2.2 (man 1, bird 0.01,
-automobile 100, pickup truck 200, large fighter 6, large bomber 40,
-jumbo jet 100, small open boat 0.02) - NOT the "Radar Handbook" the
-issue cites.  Against that table the issue's "vehicle 5-20 m^2"
-CONFLICTS (the canonical vehicle is ~100-200 m^2), and the stealth
-(0.001-0.01) and helicopter (~3) rows do not appear at all.  No
-catalogue under data/ holds an RCS figure, and the source is not held
-locally.
+  class        RCS m^2   row in Skolnik Table 2.2
+  fighter      6         "Large fighter"
+  bomber       40        "Large bomber or large jet airliner"
+  person       1         "Man"
+  vehicle      100       "Automobile" (the table also gives "Pickup truck" 200)
+  boat         0.02      "Small open boat"
 
-Per the repository's UNSOURCED marker rule the values are leads: they
-never fill a runtime-required field and the grade is "claimed".  A held
-source must replace them before this model is trusted for any decision.
+GAME TUNABLE rows.  No single published scalar exists for these classes, so
+the value is a game tunable, declared here with its reason:
 
-The Rayleigh region (lambda^-4) does NOT apply here: at SHF (3-30 cm)
-against these vehicle and aircraft classes the target is in the optical
-region, so a flat RCS is correct (the issue's own correction).
+  stealth      0.00316   no figure in Skolnik Table 2.2 or NAWCWD TP 8347;
+                         the issue's range (0.001-0.01) is used as a tunable
+  helicopter   3         no scalar in the held sources; helicopter RCS is
+                         dominated by dynamic rotor scattering and no single
+                         representative figure is published
+  ship         3000      NAWCWD TP 8347 (2012) section 4-11 publishes only a
+                         range, "ships 3,000 to 1,000,000 sq m"; the low end
+                         is used, and the choice within the range is a tunable
+
+Sources.
+  M. I. Skolnik, "Introduction to Radar Systems", 2nd ed., McGraw-Hill,
+  1981, Table 2.2 "Example radar cross sections at microwave frequencies",
+  p. 44.
+  US Navy, "Electronic Warfare and Radar Systems Engineering Handbook",
+  NAWCWD TP 8347 (DTIC ADA566236), rev. 4, 2012, section 4-11, p. 4-11.2.
+
+The issue cited Skolnik's "Radar Handbook", which does not carry this table.
+Its class range mid-points conflict with the published figures (its vehicle
+5-20 m^2 against the published automobile 100 m^2) and were replaced.
 
 Pure: reads no engine state, writes none.
 
@@ -50,14 +54,14 @@ params [
 private _key = toLower _class;
 
 private _table = [
-    ["stealth", 0.00316],
-    ["fighter", 3],
-    ["bomber", 55],
-    ["helicopter", 3],
-    ["person", 0.3],
-    ["vehicle", 10],
-    ["ship", 1000],
-    ["boat", 0.2]
+    ["stealth", 0.00316],   // GAME TUNABLE: no published scalar
+    ["fighter", 6],          // Skolnik Table 2.2, "Large fighter"
+    ["bomber", 40],          // Skolnik Table 2.2, "Large bomber or large jet airliner"
+    ["helicopter", 3],       // GAME TUNABLE: no published scalar
+    ["person", 1],           // Skolnik Table 2.2, "Man"
+    ["vehicle", 100],        // Skolnik Table 2.2, "Automobile"
+    ["ship", 3000],          // GAME TUNABLE within NAWCWD range 3,000-1,000,000
+    ["boat", 0.02]           // Skolnik Table 2.2, "Small open boat"
 ];
 
 private _sigma = 0;

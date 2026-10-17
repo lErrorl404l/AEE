@@ -25,11 +25,11 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_groundSurfaceTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/terrain/fnc_detectGroundFrost.sqf:57` | UNKNOWN |
 | `aee_core_overcast` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/persistence/functions/terrain/fnc_calculateFrostOnWindscreens.sqf:38` | Engine overcast 0..1 |
 | `aee_core_rainAccum` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateFlashFloodRisk.sqf:25` | Rain accumulation |
-| `aee_core_seismicActive` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:42` | UNKNOWN |
-| `aee_core_seismicDepth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:55` | UNKNOWN |
-| `aee_core_seismicEpicentre` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:56` | UNKNOWN |
-| `aee_core_seismicMagnitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:54` | UNKNOWN |
-| `aee_core_seismicStart` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:57` | UNKNOWN |
+| `aee_core_seismicActive` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:43` | UNKNOWN |
+| `aee_core_seismicDepth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:56` | UNKNOWN |
+| `aee_core_seismicEpicentre` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:57` | UNKNOWN |
+| `aee_core_seismicMagnitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:55` | UNKNOWN |
+| `aee_core_seismicStart` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/seismic/fnc_calculateSeismicActivity.sqf:58` | UNKNOWN |
 | `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/persistence/functions/terrain/fnc_calculateFreezeThawCycling.sqf:62` | Snow depth in metres |
 | `aee_core_snowfallRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateAvalancheRisk.sqf:107` | Snowfall rate |
 | `aee_core_soilMoisture` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/persistence/functions/terrain/fnc_updateSoilMoisture.sqf:18` | Soil moisture 0..1 |

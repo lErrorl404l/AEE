@@ -12,10 +12,14 @@ the downslope gradient is less than half the upslope gradient, or the
 downslope gradient is below 2 percent. The retained fraction is 50 to 90
 percent at a break.
 
-The 2 percent threshold and the 0.5 gradient ratio are the issue's stated
-rule. The exact retention curve between 50 and 90 percent is UNSOURCED:
-no primary was found, so the retained fraction is a parameter with a
-conservative default of 0.5 (the low end of the stated range).
+The 0.5 gradient ratio is the published NRCS rule of thumb for where
+deposition begins: "if no signs of deposition are present on a concave slope,
+assume that deposition begins at the location where the steepness is 1/2 of
+the average steepness of the concave area" (NRCS-USDA Technical Guide to
+RUSLE use in Michigan, LS factor). The 2 percent threshold is UNSOURCED: the
+issue states it and no primary was found. The exact retention curve between
+50 and 90 percent is also UNSOURCED: the retained fraction is a parameter with
+a conservative default of 0.5 (the low end of the stated range).
 
 Args:
   0: upslope gradient (NUMBER, rise/run m/m, default 0)

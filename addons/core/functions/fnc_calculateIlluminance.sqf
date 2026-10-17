@@ -156,11 +156,13 @@ private _unit = call CBA_fnc_currentUnit;
 // Magnitude: a typical weapon IR illuminator floods the near scene with
 // the equivalent of ~0.01 lux of NIR at 5-10 m (1/10 full-moon); this
 // brings a starlit scene up to a workable level without overdriving.
+// GAME TUNABLES: the engine exposes only the weapon-light on/off state, no
+// radiant or luminous output, so the two lux magnitudes are game tunables.
 private _currentWeapon = currentWeapon _unit;
 private _irLux = 0;
 if (!isNull _unit && hasInterface && _currentWeapon != "") then {
-    if (_unit isFlashlightOn _currentWeapon) then { _irLux = 0.01; };
-    if (isLightOn _unit && _irLux == 0) then { _irLux = 0.005; };
+    if (_unit isFlashlightOn _currentWeapon) then { _irLux = 0.01; };   // IR illuminator
+    if (isLightOn _unit && _irLux == 0) then { _irLux = 0.005; };       // white weapon light
     _dynamicLux = _dynamicLux + _irLux;
     missionNamespace setVariable [QGVAR(irLightLux), _irLux];
 };
@@ -243,27 +245,30 @@ if (!isNull _unit && hasInterface && _scanDue) then {
         if (_sim == "Lamps") then {
             _isLight = true;
             // Street lamp / area light: config brightness is 0..1 mapped
-            // to a typical range of 500-5000 lumens.
+            // to a GAME TUNABLE flux range of 500-5000 lumens (the engine
+            // config carries no luminous flux).
             private _bright = getNumber ((configOf _x) >> "light" >> "brightness");
             _lumens = 500 + _bright * 4500;
         };
         if (isLightOn _x) then {
             _isLight = true;
-            _lumens = 2000;   // vehicle headlights
+            _lumens = 2000;   // vehicle headlights: GAME TUNABLE flux, lumens
         };
         if (_x isKindOf "F_40_White" || {_x isKindOf "F_40_Red"
             || {_x isKindOf "F_40_Green" || {_x isKindOf "F_40_Yellow"}}}) then {
             _isLight = true;
-            _lumens = 3000;   // flare (very bright)
+            _lumens = 3000;   // flare (very bright): GAME TUNABLE flux, lumens
         };
         if (_isLight && _lumens > 0) then {
             private _dist = _eye distance (getPosASL _x);
             if (_dist > 0.5 && _dist < 100) then {
-                // E = lumens / (4π d²) × T, where T = e^(-γd) is the
-                // Beer-Lambert transmission factor.  Without T, the model
-                // over-predicts illumination in rain/fog.  With T, light
-                // sources lose throw in bad weather — matching real NVG
-                // behaviour.
+                // Illuminance from an isotropic point source: E = I / d²,
+                // with intensity I = Φ / (4π) for luminous flux Φ (lumens),
+                // so E = Φ / (4π d²) (lux).  T = e^(-γd) is the Beer-Lambert
+                // transmission factor along the path.
+                // Without T, the model over-predicts illumination in
+                // rain/fog.  With T, light sources lose throw in bad weather
+                // — matching real NVG behaviour.
                 private _transmission = if (_gamma > 0) then { exp (-_gamma * _dist) } else { 1 };
                 private _luxContrib = (_lumens / (4 * pi * _dist * _dist)) * _transmission;
                 _dynamicLux = _dynamicLux + _luxContrib;

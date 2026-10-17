@@ -27,9 +27,11 @@ Pure: no missionNamespace, no GVAR or EGVAR, no engine command.
 Arguments:
   0: Number - physical local illuminance, lx (aee_core_dynamicLux)
   1: Number - engine dynamic light brightness (getLightingAt element 3), no unit
-  2: Number - scale on the engine term (UNSOURCED, operator-tunable)
+  2: Number - scale on the engine term (game tunable: getLightingAt element 3
+             has no documented unit; operator-tunable via aee_eye_eyeLocalLuxScale)
   3: Number - engine blinding term (apertureParams element 9), no unit
-  4: Number - scale on the blinding term (UNSOURCED, operator-tunable)
+  4: Number - scale on the blinding term (game tunable: apertureParams
+             element 9 has no documented unit; operator-tunable)
   5: Number - sun elevation, degrees (0 or below is night)
 
 Returns:

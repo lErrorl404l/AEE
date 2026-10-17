@@ -169,6 +169,60 @@ class TestSoilLoss(unittest.TestCase):
         )
 
 
+def peak_runoff(volume, length=22.13, slope=0.0, hours=0.0):
+    return run_sqf(
+        EROSION / "fnc_calculatePeakRunoff.sqf", [volume, length, slope, hours]
+    )
+
+
+class TestPeakRunoff(unittest.TestCase):
+    """MUSLE peak runoff rate from the NRCS triangular unit hydrograph.
+
+    qp = 0.208 * A * Q / Tp (A km2, Q mm, Tp h -> m3/s), the SCS peak rate
+    factor 484 in SI (TR-55, 1986; NEH Part 630 chapter 16).  Tp follows the
+    SCS lag Tp = D/2 + 0.6*Tc, with Tc from Kirpich (1940),
+    Tc[min] = 0.0195 * L^0.77 * S^-0.385 (L m, S m/m).
+    """
+
+    def _tp_hours(self, length, slope, hours):
+        # Independent mirror of the two published relations.
+        tc_min = 0.0195 * math.pow(length, 0.77) * math.pow(slope, -0.385)
+        return hours / 2 + 0.6 * (tc_min / 60)
+
+    def test_published_peak_rate(self):
+        # V = 1000 m3, L = 100 m, S = 0.10, D = 0.5 h.
+        want = 0.000208 * 1000 / self._tp_hours(100.0, 0.10, 0.5)
+        self.assertAlmostEqual(peak_runoff(1000, 100, 0.10, 0.5), want, places=5)
+
+    def test_scs_peak_rate_form(self):
+        # The SI identity qp = 0.208 * A * Q / Tp with A*Q = V/1000.
+        length, slope, hours, volume = 100.0, 0.10, 0.5, 1000.0
+        tp = self._tp_hours(length, slope, hours)
+        want = 0.208 * ((volume / 1000) / tp)
+        self.assertAlmostEqual(
+            peak_runoff(volume, length, slope, hours), want, places=9
+        )
+
+    def test_no_volume_no_peak(self):
+        self.assertEqual(peak_runoff(0, 100, 0.10, 0.5), 0)
+
+    def test_peak_rises_with_volume(self):
+        self.assertLess(
+            peak_runoff(500, 100, 0.1, 0.5), peak_runoff(2000, 100, 0.1, 0.5)
+        )
+
+    def test_steeper_slope_has_a_shorter_response(self):
+        # A steeper slope lowers Tc, so the same volume peaks higher.
+        self.assertGreater(
+            peak_runoff(1000, 100, 0.30, 0.5), peak_runoff(1000, 100, 0.05, 0.5)
+        )
+
+    def test_total_on_bad_input(self):
+        for args in ([1000, 0, 0, 0], [1000, -5, -1, 0.5], [0, -5, 0, -3]):
+            with self.subTest(args=args):
+                self.assertGreaterEqual(peak_runoff(*args), 0)
+
+
 class TestSedimentYield(unittest.TestCase):
     def test_musle_form(self):
         """Williams (1975): Sed = 11.8 (Q qp)^0.56 K LS C P."""
@@ -193,6 +247,19 @@ class TestSedimentDeposition(unittest.TestCase):
     def test_gentle_ground_is_a_break(self):
         """A downslope gradient under 2 percent deposits."""
         self.assertEqual(kernel("calculateSedimentDeposition", 0.01, 0.015), 0.5)
+
+    def test_break_ratio_is_the_published_rule_of_thumb(self):
+        """Deposition starts where the steepness is half the upslope steepness.
+
+        NRCS RUSLE guidance ("if no signs of deposition are present on a
+        concave slope, assume that deposition begins at the location where
+        the steepness is 1/2 of the average steepness of the concave area").
+        """
+        src = (EROSION / "fnc_calculateSedimentDeposition.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("NRCS", src)
+        self.assertIn("1/2", src)
 
 
 class TestErosionDepth(unittest.TestCase):
@@ -226,6 +293,7 @@ class TestDriverWiring(unittest.TestCase):
             "calculateSedimentYield",
             "calculateSedimentDeposition",
             "calculateErosionDepth",
+            "calculatePeakRunoff",
         ):
             with self.subTest(kernel=fn):
                 self.assertIn(f"FUNC({fn})", self.src)
@@ -253,6 +321,17 @@ class TestDriverWiring(unittest.TestCase):
         self.assertIn("CEILING", self.src)
         self.assertIn("setTerrainHeight", self.src)
 
+    def test_driver_uses_the_sourced_constants(self):
+        """The remaining driving numbers carry a publication, not a guess."""
+        # NRCS RUSLE guide: a slope length longer than 1000 ft (304.8 m) is
+        # not used, and slope lengths usually do not exceed 400 ft.
+        self.assertIn("304.8", self.src)
+        self.assertIn("1000 ft", self.src)
+        # USDA soil-loss tolerance T, 5 ton/ac/yr = 11.2 t/ha/yr.
+        self.assertIn("11.2", self.src)
+        self.assertIn("tolerance", self.src)
+        self.assertNotIn("_a / 50", self.src)
+
     def test_prep_registers_the_driver_and_kernels(self):
         prep = PREP.read_text(encoding="utf-8")
         self.assertIn("PREP(calculateErosion);", prep)
@@ -266,6 +345,7 @@ class TestDriverWiring(unittest.TestCase):
             "calculateSedimentYield",
             "calculateSedimentDeposition",
             "calculateErosionDepth",
+            "calculatePeakRunoff",
         ):
             with self.subTest(kernel=fn):
                 self.assertIn(f"PREPS(erosion,{fn});", prep)

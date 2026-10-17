@@ -25,7 +25,7 @@ is a recorded defect, not a silent gap.
 ## 2. Configuration items
 
 The version carries the software CIs named in `docs/cmp.md` section 2. The
-addon tree holds 45 addons. The addon set is in
+addon tree holds 44 addons. The addon set is in
 `docs/architecture/addon-map.json`.
 
 ## 3. Third-party components

@@ -24,3 +24,4 @@ PREPS(erosion,calculateSoilLoss);
 PREPS(erosion,calculateSedimentYield);
 PREPS(erosion,calculateSedimentDeposition);
 PREPS(erosion,calculateErosionDepth);
+PREPS(erosion,calculatePeakRunoff);

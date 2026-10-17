@@ -115,3 +115,4 @@ aee_vision_perceptionForceLux  debug console knob (documented in fnc_perceptionU
 aee_vision_perceptionForceGrade  debug console knob (documented in fnc_perceptionUpdate.sqf)
 aee_vision_perceptionForceNvg  debug console knob (documented in fnc_perceptionUpdate.sqf)
 aee_vision_perceptionForceThermal  debug console knob (documented in fnc_perceptionUpdate.sqf)
+aee_atmos_manualWeather  operator/mission manual-weather knob (issue #155), set by a mission script, not a CBA setting

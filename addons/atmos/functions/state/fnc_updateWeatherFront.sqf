@@ -21,12 +21,8 @@ The pressure perturbation is applied before FUNC(calculatePressureTrend), so
 the existing 3-hour pressure-trend ring buffer reports the fall, the trough
 and the rise of a passage without a second trend model.
 
-The whole front is gated on the computed weather: in Real Weather mode the
-mission supplies the real temperature and pressure, so the front must not
-overwrite them.
-
 Reads:  aee_core_currentTemperature, aee_core_currentPressure,
-        aee_core_realWeatherActive, aee_core_weatherProgressionSeed
+        aee_core_weatherProgressionSeed
 Sets:   aee_atmos_front* (state), aee_core_currentTemperature,
         aee_core_currentPressure
 
@@ -44,8 +40,6 @@ if (!GVAR(weatherFrontsEnabled)) exitWith {};
 if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
     _posASL = _posASL select 0;
 };
-
-if (missionNamespace getVariable [QEGVAR(core,realWeatherActive), false]) exitWith {};
 
 private _seed = missionNamespace getVariable [QEGVAR(core,weatherProgression), 0.5];
 if !(_seed isEqualType 0) then { _seed = 0.5; };

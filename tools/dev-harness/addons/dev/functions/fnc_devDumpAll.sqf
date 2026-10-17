@@ -25,7 +25,6 @@ private _dumps = [
     "aee_atmos_fnc_dumpState",
     "aee_ballistics_fnc_dumpState",
     "aee_compat_ace3_fnc_dumpState",
-    "aee_compat_realweather_fnc_dumpState",
     "aee_diagnostics_fnc_dumpPerformanceCounters",
     "aee_diagnostics_fnc_dumpState",
     "aee_lighting_fnc_logSkyState",

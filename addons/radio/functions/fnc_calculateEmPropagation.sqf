@@ -26,7 +26,8 @@ Args:
 
 Return: <ARRAY> [diffractionLossDB, state]
   state is "los" (clear), "diffraction" (shadowed, weak) or "shadow" (deep
-  shadow).  The loss thresholds (1 dB, 15 dB) are UNSOURCED banding.
+  shadow).  The loss thresholds (1 dB, 15 dB) are GAME TUNABLES: they pick
+  the label, not the physics, and no standard fixes the boundary.
 */
 
 params [

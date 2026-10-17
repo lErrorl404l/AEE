@@ -315,52 +315,6 @@ class TestCompatACM(unittest.TestCase):
         self.assertEqual(acm_duty_factor(0.79), 1.0)
 
 
-# ─── compat_realweather: weather.json validation contract ───────────────────
-# fnc_integrateRealWeather.sqf: every value is range-checked at the trust
-# boundary; ANY out-of-range value rejects the WHOLE file (no partial
-# publish).  Ranges: T -60..60 C, RH 0..100, P 850..1085 hPa, overcast 0..1.
-
-
-def realweather_validate(temp, humidity, pressure, overcast):
-    """Mirror of the weather.json trust-boundary check.
-
-    Returns True if the whole record is valid, False if ANY field fails.
-    """
-    if temp is None or humidity is None or pressure is None or overcast is None:
-        return False
-    if not isinstance(temp, (int, float)) or not -60 <= temp <= 60:
-        return False
-    if not isinstance(humidity, (int, float)) or not 0 <= humidity <= 100:
-        return False
-    if not isinstance(pressure, (int, float)) or not 850 <= pressure <= 1085:
-        return False
-    if not isinstance(overcast, (int, float)) or not 0 <= overcast <= 1:
-        return False
-    return True
-
-
-class TestCompatRealWeather(unittest.TestCase):
-    def test_valid_record_accepted(self):
-        self.assertTrue(realweather_validate(15.0, 50.0, 1013.0, 0.4))
-
-    def test_out_of_range_humidity_rejects_whole_file(self):
-        self.assertFalse(realweather_validate(15.0, 150.0, 1013.0, 0.4))
-
-    def test_out_of_range_overcast_rejects(self):
-        self.assertFalse(realweather_validate(15.0, 50.0, 1013.0, 1.5))
-
-    def test_out_of_range_pressure_rejects(self):
-        self.assertFalse(realweather_validate(15.0, 50.0, 800.0, 0.4))
-
-    def test_missing_field_rejects(self):
-        self.assertFalse(realweather_validate(None, 50.0, 1013.0, 0.4))
-        self.assertFalse(realweather_validate(15.0, None, 1013.0, 0.4))
-
-    def test_boundary_values_accepted(self):
-        self.assertTrue(realweather_validate(-60, 0, 850, 0))
-        self.assertTrue(realweather_validate(60, 100, 1085, 1))
-
-
 class TestThresholdGatePattern(unittest.TestCase):
     """Issue #154 pattern 1: no getVariable-fallback-0 in medical gates.
 

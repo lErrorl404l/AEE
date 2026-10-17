@@ -23,8 +23,11 @@ Model:
     relation; the same convention as fnc_calculateBallisticDrag and
     fnc_calculateMachCone, so the transonic band agrees).
   - Muzzle report.  The level rises with the muzzle velocity and falls with
-    distance (20*log10 spherical spreading).  The report pitch rises with the
-    muzzle Mach number.  Both shapes are UNSOURCED.
+    distance (20*log10 spherical spreading).  The reference level at the
+    reference muzzle velocity is the SOURCED measured weapon peak,
+    WILDLIFE_SHOT_REPORT_DB, 160 dB (NIOSH HHE report 2013-0124-3208).  The
+    report pitch rises with the muzzle Mach number.  The velocity slope and
+    the pitch slope are UNSOURCED.
   - Supersonic crack.  Present ONLY while the round is above Mach 1 in the
     LOCAL air, so a hot day raises the threshold.  The level scales with the
     Mach excess and falls with distance.  Shape UNSOURCED.

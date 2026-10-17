@@ -170,6 +170,30 @@ class TestAcousticSpectrum(unittest.TestCase):
         self.assertEqual([row[1] for row in spectrum("nonsense")], [0.0] * 9)
 
 
+class TestAcousticSourceDb(unittest.TestCase):
+    """fnc_acousticSourceDb runs from the real SQF; the sourced rows."""
+
+    def test_gunshot_is_the_measured_peak_level(self):
+        # SOURCED: the measured unsuppressed centre-fire peak is 160 to
+        # 170 dB.  NIOSH HHE report 2013-0124-3208 (Results) and the NIOSH
+        # "Hit the Mark" bulletin, 2017.  The table takes 160.
+        self.assertAlmostEqual(source_db("gunshot"), 160.0, places=6)
+
+    def test_suppressed_sits_in_the_measured_reduction_band(self):
+        # SOURCED: a suppressor lowers the peak by 17 to 24 dB at the ear.
+        # Murphy, Flamme and others 2017, Int. J. Audiology, DOI
+        # 10.1080/14992027.2017.1407459.  The table takes the mid 22 dB.
+        suppression = source_db("gunshot") - source_db("suppressed")
+        self.assertGreaterEqual(suppression, 17.0)
+        self.assertLessEqual(suppression, 24.0)
+        self.assertAlmostEqual(suppression, 22.0, places=6)
+
+    def test_the_source_db_cites_the_measured_values(self):
+        text = SOURCE_DB.read_text(encoding="utf-8")
+        self.assertIn("2013-0124-3208", text)
+        self.assertIn("10.1080/14992027.2017.1407459", text)
+
+
 class TestGetArrivingSound(unittest.TestCase):
     """fnc_getArrivingSound runs from the real SQF."""
 

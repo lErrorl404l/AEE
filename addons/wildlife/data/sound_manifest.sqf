@@ -23,6 +23,12 @@ The day contexts carry an open-ground row set under the day_<family> key and
 a forest row set under the day_<family>_forest key.  Both reuse the same
 vanilla bird files.  The forest rows carry the higher base gain, because a
 wooded bed is denser than the open field in the same climate.
+
+GAME MAPPING.  maxDistance and baseGain are engine quantities, not measured
+levels.  baseGain is the volume playSound3D or the sound source takes, and
+maxDistance is the audible-range argument, so both are a game mapping of the
+soundscape and not physical dB values.  The measured acoustic values live in
+the kernels (fnc_acousticSourceDb, fnc_ambientNoiseLevel).
 */
 
 [

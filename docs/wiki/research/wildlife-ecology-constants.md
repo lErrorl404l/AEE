@@ -28,8 +28,8 @@ The kernels are `addons/wildlife/functions/`. The named constants are in
 | `WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB` | 30 dB | U | stimulus zero |
 | `WILDLIFE_ACOUSTIC_LOUD_DB` | 140 dB | U | stimulus one |
 | `WILDLIFE_SPOOK_ACOUSTIC_MIN` | 0.5 | U | spook threshold on the stimulus |
-| source level: gunshot | 160 dB | U | loudness order |
-| source level: suppressed | 120 dB | U | loudness order |
+| source level: gunshot | 160 dB | S | measured unsuppressed centre-fire peak, 160-170 dB; NIOSH HHE report 2013-0124-3208 (M4 152 dB, 9 mm 146 dB at the instructor; about 160 dB at 5 yards) and the NIOSH "Hit the Mark" bulletin, 2017 |
+| source level: suppressed | 138 dB | R | 160 dB less the mid suppressor reduction, 22 dB. Murphy, Flamme and others 2017, Int. J. Audiology, DOI 10.1080/14992027.2017.1407459: the peak falls 17-24 dB |
 | source level: explosion | 180 dB | U | loudness order |
 | source level: grenade | 170 dB | U | loudness order |
 | source level: aircraft | 130 dB | U | loudness order |
@@ -47,7 +47,7 @@ weather model (0.3 to 2.0), not a new constant. It scales the effective range.
 | Constant | Value | Grade | Formula or basis |
 |---|---|---|---|
 | Speed of sound | 20.05*sqrt(T_K) m/s | S | dry-air relation, same as the ballistics drag and Mach-cone kernels |
-| `WILDLIFE_SHOT_REPORT_DB` | 160 dB | U | report reference level |
+| `WILDLIFE_SHOT_REPORT_DB` | 160 dB | S | measured unsuppressed centre-fire peak; NIOSH HHE report 2013-0124-3208 and the NIOSH "Hit the Mark" bulletin, 2017 |
 | `WILDLIFE_SHOT_REPORT_REF_MV` | 900 m/s | U | reference muzzle velocity |
 | `WILDLIFE_SHOT_PITCH_PER_MACH` | 0.15 | U | report pitch slope per Mach |
 | `WILDLIFE_SHOT_CRACK_DB` | 150 dB | U | crack reference level |
@@ -63,6 +63,20 @@ weather model (0.3 to 2.0), not a new constant. It scales the effective range.
 | crack level | 150 + 30*(Mach-1) - spread | R | from the crack reference and the spreading |
 | snap level | 140*(1 - d/5) | R | linear fall to the snap radius |
 | ricochet level | 130 * min(J/500,1) * (1 - angle/30) | R | energy and angle factors |
+
+## Ambient noise floor (issue #109)
+
+`addons/weather/functions/acoustics/`. The floor is the power sum of four local
+terms (ISO 1996-1:2016).
+
+| Constant | Value | Grade | Formula or basis |
+|---|---|---|---|
+| wind term | 2.78*v + 37.4 dB(A) | S | measured wind-induced vegetation-noise regression; Sneddon, in Komatsu, Kato, Kuwano, Namba, Kondo, Inoue and Yamaguchi 2000, Journal of the INCE of Japan 24(4):268-276, DOI 10.11372/souonseigyo1977.24.268, section 2, page 269. The table holds 0, 2, 5, 10, 15 and 20 m/s |
+| rain term | drizzle 43 to violent 58 dB(A) | U | engine rain 0..1 to dB(A), no in-air law held |
+| foliage term | 0 to 25 dB(A) | U | AEE foliage density 0..1 to dB(A) |
+| water term | stream 45 to river 55 dB(A) | U | local water fraction 0..1 to dB(A) |
+| detection threshold | 6 dB detection, 12 dB recognition | U | practical margin over the floor, `fnc_acousticMasking.sqf` |
+| power sum | 10*log10(sum 10^(L/10)) | S | ISO 1996-1:2016 |
 
 ## Attached emitter (task T27)
 
@@ -145,6 +159,12 @@ weather model (0.3 to 2.0), not a new constant. It scales the effective range.
 | cohesion floor | 0.5 | U | below it no contact call |
 | receive: strength | urgency*(1 - d/range) | R | distance attenuation |
 | receive: strong threshold | 0.5 | U | flee above it, silent below |
+
+ANIMAL CALL LEVELS. A call carries no dB source level. Its reach is
+`WILDLIFE_CALL_RANGE`, 200 m, and its loudness at the receiver is the emitter
+gain in the sound manifest, which is a game mapping. No published call
+spectrum or source level is held in this repository, so the 200 m range and
+the receiver strength rule stay UNSOURCED and are marked U here.
 
 ## Sound schedule
 

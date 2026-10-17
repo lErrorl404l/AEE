@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/atmos/`
 - Direction: one way. `core` must initialise before `atmos` reads.
-- Variables crossing: 45.
+- Variables crossing: 44.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -42,7 +42,6 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_precipitationPhase` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:89` | Phase (rain/sleet/snow/freezing_rain) |
 | `aee_core_pressureHistory` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePressureTrend.sqf:34` | UNKNOWN |
 | `aee_core_pushedWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:102` | Last wind vector pushed to the engine `wind` command |
-| `aee_core_realWeatherActive` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWeatherFront.sqf:48` | UNKNOWN |
 | `aee_core_referenceAltitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updatePressure.sqf:25` | UNKNOWN |
 | `aee_core_snowfallRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:90` | Snowfall rate |
 | `aee_core_stormOverrideIntensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateLightning.sqf:27` | UNKNOWN |
@@ -51,7 +50,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_surfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:28` | Surface temperature in C |
 | `aee_core_tempLapseRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updatePressure.sqf:36` | UNKNOWN |
 | `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateAirframeIcing.sqf:27` | Update interval in seconds |
-| `aee_core_weatherProgression` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWeatherFront.sqf:50` | UNKNOWN |
+| `aee_core_weatherProgression` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWeatherFront.sqf:44` | UNKNOWN |
 | `aee_core_windGustFrequency` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:30` | UNKNOWN |
 | `aee_core_windTerrainInfluence` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:59` | UNKNOWN |
 

@@ -32,8 +32,17 @@ from sqf_lite import run_sqf  # noqa: E402
 SEISMIC = REPO / "addons" / "persistence" / "functions" / "seismic"
 
 
+def intensity(pga):
+    """Worden et al. (2012) MMI from peak ground acceleration (g)."""
+    return run_sqf(SEISMIC / "fnc_seismicIntensity.sqf", [pga])
+
+
 def gm(mag, rjb):
-    return run_sqf(SEISMIC / "fnc_seismicGroundMotion.sqf", [mag, rjb])
+    return run_sqf(
+        SEISMIC / "fnc_seismicGroundMotion.sqf",
+        [mag, rjb],
+        globals_={"__FUNC__seismicIntensity": intensity},
+    )
 
 
 def lq(pga, depth, n160, mag, wt):
@@ -49,7 +58,11 @@ def dmg(mmi):
 
 
 def shake(pga, mag):
-    return run_sqf(SEISMIC / "fnc_seismicShake.sqf", [pga, mag])
+    return run_sqf(
+        SEISMIC / "fnc_seismicShake.sqf",
+        [pga, mag],
+        globals_={"__FUNC__seismicIntensity": intensity},
+    )
 
 
 def points(centre, radius, delta, step):
@@ -152,12 +165,39 @@ class TestDamage(unittest.TestCase):
         self.assertLessEqual(dmg(8.0)[0], dmg(10.0)[0])
 
 
+class TestIntensity(unittest.TestCase):
+    """Worden et al. (2012) piecewise-linear MMI from PGA (PGA in cm/s2)."""
+
+    def test_shakemap_band_edges(self):
+        # The USGS ShakeMap instrumental-intensity band edges: 0.115 g -> VI.
+        self.assertAlmostEqual(intensity(0.115), 6.0, delta=0.05)
+        # 0.401 g -> VIII.
+        self.assertAlmostEqual(intensity(0.401), 8.0, delta=0.05)
+
+    def test_clamped_between_one_and_twelve(self):
+        self.assertGreaterEqual(intensity(0.0), 1.0)
+        self.assertLessEqual(intensity(9.0), 12.0)
+
+    def test_monotonic(self):
+        self.assertLess(intensity(0.05), intensity(0.2))
+        self.assertLess(intensity(0.2), intensity(0.8))
+
+
 class TestShake(unittest.TestCase):
+    def test_power_from_the_published_intensity(self):
+        """The shake power is the Worden MMI on the engine's 0-20 scale.
+
+        power = 20 * (MMI - 1) / 9.  At PGA 0.5 g the Worden MMI is 8.3547,
+        so the power is 16.3438.
+        """
+        self.assertAlmostEqual(shake(0.5, 6.5)[0], 16.3438, places=3)
+
     def test_power_scales_with_pga(self):
-        self.assertEqual(shake(0.5, 6.5)[0], 20.0)
         self.assertLess(shake(0.1, 6.5)[0], shake(0.3, 6.5)[0])
 
     def test_power_capped(self):
+        # MMI 10 (PGA ~1.39 g) saturates the engine's 0-20 scale.
+        self.assertEqual(shake(1.5, 8.0)[0], 20.0)
         self.assertLessEqual(shake(1.0, 8.0)[0], 20.0)
 
     def test_duration_grows_with_magnitude(self):

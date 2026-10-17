@@ -3,17 +3,24 @@
 /*
 Expected meteor rate for one shower.
 
-UNSOURCED: the held calendar (IMO INFO 3.1-24) defines the Zenithal Hourly
-Rate - an ideal observer under a clear sky at the reference limiting
-magnitude +6.5, with the radiant overhead, sees ZHR meteors per hour.  The
-calendar does NOT print the reduction applied at a lower radiant altitude or
-a different limiting magnitude.  This function implements the standard
-relation:
+Source: International Meteor Organization; Rendtel, J., Arlt, R. and
+McBeath, A. (eds.), Handbook for Visual Meteor Observations (IMO, 1st ed.
+1995, 2nd ed. 1999).  The rate a single observer sees is the ZHR reduced by
+the radiant altitude, the limiting magnitude and the sky obscuration:
 
-    N = ZHR * sin(alt) * r ^ (limitingMag - 6.5)
+    ZHR = N * F * r^(6.5 - lm) / sin(h)
 
-where r is the shower's population index.  It is marked UNSOURCED against
-the held file and is locked by tools/tests/test_meteors.py.
+rearranged for the expected rate:
+
+    N = ZHR * sin(h) * r^(limitingMag - 6.5) / F
+
+where h is the radiant altitude, r the shower's population index, and F the
+sky-obscuration correction.  F is 1 here: the caller has already gated the
+sky on the cloud and the night.  The exponent on sin(h) is 1, the published
+form.  The held IMO calendar (IMO INFO 3.1-24) prints the ZHR and r but not
+the reduction, so the reduction is cited to the Handbook.
+
+Locked by tools/tests/test_meteors.py.
 
 Arguments:
   0: Number - ZHR, meteors per hour

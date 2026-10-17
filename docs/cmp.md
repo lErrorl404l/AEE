@@ -31,7 +31,7 @@ principle 2 selects the CIs. The design organisation decides the split.
 
 The addons are the software CIs. Each addon is one directory under
 `addons/`. The build compiles each addon into one PBO. The addon set is
-recorded in `docs/architecture/addon-map.json`. The target tree holds 45
+recorded in `docs/architecture/addon-map.json`. The target tree holds 44
 addons. ADR-032 records the split.
 
 | CI class | Item | Path | Control |

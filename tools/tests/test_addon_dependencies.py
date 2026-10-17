@@ -15,7 +15,7 @@ the others already depend on, so the cycle is gone.
 These checks read the SOURCE. A mirror of the dependency graph would prove
 nothing about the graph.
 
-The target tree is 45 addons, recorded in `docs/architecture/addon-map.json`
+The target tree is 44 addons, recorded in `docs/architecture/addon-map.json`
 and ADR-032. An addon that is present but not yet a target is listed in
 PENDING_RETIREMENT while the migration retires it.
 
@@ -91,7 +91,7 @@ def dependencies(addon):
 
 
 def target_addons():
-    """The 45 destination addon names from the canonical map."""
+    """The 44 destination addon names from the canonical map."""
     return set(json.loads(ADDON_MAP.read_text(encoding="utf-8"))["target_addons"])
 
 
@@ -320,7 +320,7 @@ class TestRequiredAddonsComplete(unittest.TestCase):
 
 
 class TestTargetAddonSet(unittest.TestCase):
-    """Every addon on disk has a home in the 45-addon target tree."""
+    """Every addon on disk has a home in the 44-addon target tree."""
 
     def test_present_addons_are_targets_or_retiring(self):
         unplanned = set(present_addons()) - target_addons() - PENDING_RETIREMENT
@@ -330,8 +330,8 @@ class TestTargetAddonSet(unittest.TestCase):
             f"addon(s) with no destination addon: {sorted(unplanned)}",
         )
 
-    def test_the_target_set_holds_45_addons(self):
-        self.assertEqual(len(target_addons()), 45)
+    def test_the_target_set_holds_44_addons(self):
+        self.assertEqual(len(target_addons()), 44)
 
     def test_a_pending_retirement_is_not_also_a_target(self):
         self.assertEqual(PENDING_RETIREMENT & target_addons(), frozenset())
