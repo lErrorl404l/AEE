@@ -161,6 +161,15 @@ class TestPrecedence(unittest.TestCase):
         self.assertIn("call FUNC(engineWeatherBlockedReason)", writer)
         self.assertRegex(writer, r'if \(_reason != ""\) exitWith')
 
+    def test_the_writer_header_names_the_two_gates_and_no_removed_one(self) -> None:
+        # The header is what a reader trusts, so it must match the predicate:
+        # the setting, then manual weather.  AEE alone owns the engine weather,
+        # so no third gate and no host-mod gate exists.
+        text = _read(WRITER)
+        self.assertIn("the setting", text)
+        self.assertIn("manual-weather gate", text)
+        self.assertIsNone(re.search(r"(?i)real\s*weather|host-mod", text))
+
 
 class TestWiring(unittest.TestCase):
     def test_both_functions_are_prepped(self) -> None:
@@ -193,6 +202,11 @@ class TestDocumentation(unittest.TestCase):
     def test_doc_records_the_inland_water_ceiling(self) -> None:
         self.assertIn("inland water", self.doc.lower())
         self.assertIn("setHumidity", self.doc)
+
+    def test_doc_names_only_the_setting_and_the_manual_gate(self) -> None:
+        self.assertIn('"setting"', self.doc)
+        self.assertIn('"manual"', self.doc)
+        self.assertIsNone(re.search(r"(?i)real\s*weather|host-mod", self.doc))
 
 
 class TestCommandDbCrossCheck(unittest.TestCase):

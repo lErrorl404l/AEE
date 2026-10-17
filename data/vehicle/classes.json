@@ -136,7 +136,7 @@
         "addons/mobility/functions/fnc_calculateTraction.sqf:66",
         "addons/physiology/functions/state/fnc_updatePsychologyState.sqf:25",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:276",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:520",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:521",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62",
         "addons/thermal_display/functions/fusion/fnc_applyFusionFill.sqf:173",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:43",

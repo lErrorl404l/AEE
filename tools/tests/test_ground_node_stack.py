@@ -295,6 +295,49 @@ class TestSurfaceEnergyFlux(unittest.TestCase):
         q_wet = surface_energy_flux(45, 30, 15, 1.0, 520, 0.65, 0.92, 0.30, 0.5)
         self.assertLess(q_wet, q_dry)
 
+    def test_latent_draw_tracks_humidity(self):
+        # The FAO-56 vapour-pressure deficit (es - ea) is humidity-dependent:
+        # dry air (10% RH) evaporates far faster than humid air (90% RH), so
+        # the surface flux into the soil differs.  A hardcoded 50% RH makes
+        # the two identical (issue #253).
+        dry_air = surface_energy_flux(45, 30, 15, 1.0, 520, 0.65, 0.92, 0.30, 0.10)
+        humid_air = surface_energy_flux(45, 30, 15, 1.0, 520, 0.65, 0.92, 0.30, 0.90)
+        self.assertGreater(humid_air, dry_air)
+
+    def test_surface_node_responds_to_humidity(self):
+        # Wander the SQF's wet-ground case through the stack: the final
+        # surface node read must differ between a dry and a humid day, not
+        # collapse to one value under a fixed 50% draw.
+        common = dict(
+            t_air=30.0,
+            t_sky=15.0,
+            wind=1.0,
+            solar=520,
+            alpha_s=0.65,
+            eps_s=0.92,
+            moisture_per_layer=[0.30] * 4,
+            dt=300.0,
+            n_steps=96,
+            t_bot=18.0,
+            t_init=[35.0, 28.0, 20.0, 18.0],
+        )
+        dry, _ = run_node_stack(rh=0.10, **common)
+        humid, _ = run_node_stack(rh=0.90, **common)
+        self.assertNotAlmostEqual(dry[0], humid[0], places=2)
+
+    def test_sqf_reads_the_modelled_humidity(self):
+        # The SQF node stack must consume EGVAR(core,currentHumidity) and
+        # must not multiply the saturation vapour pressure by a literal 0.5.
+        # This is the regression lock for issue #253.
+        from pathlib import Path
+
+        text = Path(
+            "addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("QEGVAR(core,currentHumidity)", text)
+        self.assertIn("(_rh max 0 min 100) / 100", text)
+        self.assertNotIn("_esKPa * (0.5)", text)
+
 
 class TestCrankNicolson(unittest.TestCase):
     """The tridiagonal scheme is unconditionally stable (no CFL limit)."""

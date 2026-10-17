@@ -34,6 +34,7 @@ PREPS(solver,calculateAtmosphericTransmission);
 PREPS(solver,calculateBandRadiance);
 PREPS(solver,resolveThermalBand);
 PREPS(solver,planckBandRadiance);
+PREPS(solver,planckExponent);
 PREPS(solver,calculateSkyRadiance);
 PREPS(solver,calculateReflectedSolarBand);
 PREPS(solver,evaluateThermalEdge);

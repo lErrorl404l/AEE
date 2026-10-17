@@ -31,23 +31,25 @@ value for it.  With dT = _snrMultiple * _netdC the threshold is:
     threshold = _snrMultiple * _netdC * n / _tBgK
 
 _tBgK is the background temperature in Kelvin, _netdC the device NETD in
-Celsius, and n the Planck exponent of the segment that holds the
-background.  The exponent is selected the same way fnc_calculateBandRadiance
-selects its segment: night 250-290 K, n = 5.0121; day 290-330 K, n = 4.4580;
-hot 330-450 K, n = 3.7101.
+Celsius, and n the local Planck exponent of the DEVICE BAND at the
+background temperature, from fnc_planckExponent.  The band is per-device:
+the LWIR 8-14 um window and the MWIR 3-5 um window give different slopes
+(about 4.7 against 11.3 at a 15 C background), so the two detector classes
+no longer share an exponent and the exponent tracks the exact band integral
+rather than the retired three-segment power-law fit.
 
 THE SENSOR THRESHOLD AND THE DISPLAY BAND STEP ARE TWO DIFFERENT
 QUANTITIES.  At NETD 0.05 C and a multiple of 5, a 15 C background gives
-n = 5.0121 and a threshold of
+n = 4.7338 (LWIR) and a threshold of
 
-    5 * 0.05 * 5.0121 / 288.15 = 0.004349
+    5 * 0.05 * 4.7338 / 288.15 = 0.004107
 
 ONE DISPLAY QUANTISER IS LIVE.  fnc_applySelectionThermal quantises the
 heat tint to 32 levels, so its step is 1 / 31 = 0.03226.  (The 16-band
 material set and the 256-material fusion overlay it was followed by are
 both removed, so no other quantiser steps in the shipped mod.)
 
-Set that step against the 0.004349 threshold above:
+Set that step against the 0.004107 threshold above:
 
     selection step  0.03226   0.13 of a step, so the step is 7.4 times
                               COARSER than the threshold
@@ -81,17 +83,19 @@ Arguments:
   1: _snrMultiple (NUMBER) signal-to-noise multiple for reliable detection,
                   > 0 (ENGINEERING CHOICE, typically 3 to 10)
   2: _tBgC        (NUMBER) background temperature in C
+  3: _bandToken   (STRING) device band, "lwir" (default) or "mwir"
 
 Return Value: NUMBER - the sensor detection threshold, a normalised
 contrast, or -1 when an input is unusable.
-Example: [0.05, 5, 15] call aee_thermal_fnc_calculateSensorThreshold
+Example: [0.05, 5, 15, "mwir"] call aee_thermal_fnc_calculateSensorThreshold
 Public: No
 */
 
 params [
     ["_netdC", 0.05, [0]],
     ["_snrMultiple", 5, [0]],
-    ["_tBgC", 15, [0]]
+    ["_tBgC", 15, [0]],
+    ["_bandToken", "lwir", [""]]
 ];
 
 // A non-Number must not reach the arithmetic.  The typed params entries
@@ -115,13 +119,11 @@ if (_snrMultiple <= 0) exitWith { -1 };
 private _tBgK = _tBgC + KELVIN_OFFSET;
 if (_tBgK <= 0) exitWith { -1 };
 
-// The Planck exponent of the segment holding the background.  The same
-// boundaries and exponents as fnc_calculateBandRadiance: night 250-290 K,
-// day 290-330 K, hot 330-450 K.  The fit clamps its temperature to
-// 240..460 K before selecting, which cannot change the selected segment
-// for a real background, so the boundaries alone are enough.
-private _n = 5.0121;
-if (_tBgK > 290) then { _n = 4.4580; };
-if (_tBgK > 330) then { _n = 3.7101; };
+// The local Planck exponent of the DEVICE BAND at the background
+// temperature, from the exact band integral (fnc_planckExponent).  The
+// retired three-segment constants were stale and band-blind, so an MWIR
+// device reused the LWIR exponent (issue #255).
+private _n = [_tBgK, _bandToken] call FUNC(planckExponent);
+if (_n <= 0) exitWith { -1 };
 
 _snrMultiple * _netdC * _n / _tBgK

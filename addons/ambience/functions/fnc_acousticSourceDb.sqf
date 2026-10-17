@@ -24,8 +24,10 @@ PROVENANCE.
     Flamme and others 2017, "The reduction of gunshot noise and auditory
     risk through the use of firearm suppressors and low-velocity
     ammunition", International Journal of Audiology, DOI
-    10.1080/14992027.2017.1407459, abstract).  The table takes the mid
-    reduction, 22 dB: 160 - 22 = 138 dB.
+    10.1080/14992027.2017.1407459, abstract).  The band is 17 to 24 dB, so its
+    mid is 20.5 dB.  The table takes 22 dB, one value inside the band and near
+    its upper end: 160 - 22 = 138 dB.  It is a chosen operating point, not the
+    band's mid, and the constants register states the same.
 
   explosion, grenade, aircraft, vehicle, footstep.  UNSOURCED.  No primary
     source for a 1 m source level is held in this repository, so the values

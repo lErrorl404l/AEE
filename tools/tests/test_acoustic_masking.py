@@ -129,6 +129,15 @@ class TestAmbientNoiseLevel(unittest.TestCase):
         self.assertAlmostEqual(combined, power_sum([58, 42.96]), places=4)
         self.assertGreater(combined, 58)
 
+    def test_the_wind_term_is_a_deliberate_zero_at_rest(self):
+        # The 0 m/s row is a zero by design, not the regression's 37.4 dB
+        # intercept: the row is the wind contribution, and the source
+        # regression is fitted from 5 m/s up, so a dead calm adds none.
+        self.assertEqual(ambient(0, 0, 0, 0), 0)
+        text = AMBIENT.read_text(encoding="utf-8")
+        self.assertIn("deliberate zero", text)
+        self.assertNotRegex(text, r"regression\s+at\s+0\b")
+
     def test_every_term_is_monotonic(self):
         self.assertGreaterEqual(ambient(0.9, 0, 0, 0), ambient(0.1, 0, 0, 0))
         self.assertGreaterEqual(ambient(0, 15, 0, 0), ambient(0, 2, 0, 0))

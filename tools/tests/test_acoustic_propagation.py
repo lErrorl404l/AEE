@@ -28,6 +28,7 @@ SPECTRUM = AMBIENCE / "fnc_acousticSpectrum.sqf"
 ARRIVING = AMBIENCE / "fnc_getArrivingSound.sqf"
 ARRIVAL_TIME = AMBIENCE / "fnc_getArrivalTime.sqf"
 SOURCE_DB = AMBIENCE / "fnc_acousticSourceDb.sqf"
+REGISTER = ROOT / "docs" / "wiki" / "research" / "wildlife-ecology-constants.md"
 
 BANDS = [31.5, 63, 125, 250, 500, 1000, 2000, 4000, 8000]
 
@@ -182,11 +183,23 @@ class TestAcousticSourceDb(unittest.TestCase):
     def test_suppressed_sits_in_the_measured_reduction_band(self):
         # SOURCED: a suppressor lowers the peak by 17 to 24 dB at the ear.
         # Murphy, Flamme and others 2017, Int. J. Audiology, DOI
-        # 10.1080/14992027.2017.1407459.  The table takes the mid 22 dB.
+        # 10.1080/14992027.2017.1407459.  The table takes 22 dB, a point
+        # inside the band (its mid is 20.5 dB), not the mid.
         suppression = source_db("gunshot") - source_db("suppressed")
         self.assertGreaterEqual(suppression, 17.0)
         self.assertLessEqual(suppression, 24.0)
         self.assertAlmostEqual(suppression, 22.0, places=6)
+
+    def test_the_derivation_states_the_suppression_it_uses(self):
+        # 22 dB is inside the measured 17-24 dB band and is not its mid, so
+        # neither the source header nor the constants register may call it
+        # the mid reduction, and both must state the band's mid.
+        for path in (SOURCE_DB, REGISTER):
+            with self.subTest(path=path.name):
+                text = path.read_text(encoding="utf-8")
+                self.assertIn("22 dB", text)
+                self.assertIn("20.5", text)
+                self.assertIsNone(re.search(r"(?i)mid\s+reduction", text))
 
     def test_the_source_db_cites_the_measured_values(self):
         text = SOURCE_DB.read_text(encoding="utf-8")

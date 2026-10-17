@@ -154,12 +154,15 @@ if (_linePairs >= 6.4) then { _level = 3; };
 if (_level < 1) then {
     private _fill = (_pixels min 1) ^ 2;
     private _tBgK = _tBgC + KELVIN_OFFSET;
-    private _n = 5.0121;
-    if (_tBgK > 290) then { _n = 4.4580; };
-    if (_tBgK > 330) then { _n = 3.7101; };
-    private _snrFull = _contrast * _tBgK / (_n * _netdC);
-    private _snrSub = _snrFull * _fill;
-    if (_snrSub >= 2.8) then { _level = 1; };
+    // The local Planck exponent of the LWIR band at the background, from the
+    // exact band integral (fnc_planckExponent).  The retired three-segment
+    // constants were stale and band-blind (issue #255).
+    private _n = [_tBgK] call FUNC(planckExponent);
+    if (_n > 0) then {
+        private _snrFull = _contrast * _tBgK / (_n * _netdC);
+        private _snrSub = _snrFull * _fill;
+        if (_snrSub >= 2.8) then { _level = 1; };
+    };
 };
 
 [_level >= 1, _level, _linePairs]

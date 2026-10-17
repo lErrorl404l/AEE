@@ -403,14 +403,15 @@ if (_mode == "EXIT") then {
     if (_tau < 0) then { _tau = 1; };   // unusable input: transmissive fallback
 
     // The threshold.  A device the matcher cannot identify is the documented
-    // uncooled 0.05 C microbolometer fallback, NOT a disabled model.  If the
-    // background temperature is unusable as well, the edge kernel's declared
-    // reference value is used (0.004349, the network default at 15 C).
+    // uncooled 0.05 C microbolometer fallback, NOT a disabled model.  The
+    // device band is threaded through so an MWIR device no longer reuses the
+    // LWIR exponent (issue #255).  If the threshold is unusable as well, the
+    // LWIR 15 C reference value is used (0.004107, the network default).
     private _tBgC = _tAir;
     if !((_tBgC isEqualType 0) && {finite _tBgC}) then { _tBgC = 15; };
-    private _threshold = [_netdC, 5, _tBgC] call FUNC(calculateSensorThreshold);
+    private _threshold = [_netdC, 5, _tBgC, _band] call FUNC(calculateSensorThreshold);
     if !((_threshold isEqualType 0) && (_threshold > 0) && {finite _threshold}) then {
-        _threshold = 0.004349;
+        _threshold = 0.004107;
     };
 
     // The object's local background: the mean band radiance of its OTHER

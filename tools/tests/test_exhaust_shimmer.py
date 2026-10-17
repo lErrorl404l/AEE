@@ -333,6 +333,44 @@ class VisionModeGate(unittest.TestCase):
         self.assertIn("deleteVehicle _src", code)
 
 
+class MirageAlphaIsLinear(unittest.TestCase):
+    """The mirage particle alpha applies the intensity ONCE (issue #258).
+
+    fnc_applyMirageFX reads QGVAR(mirageIntensity) into _intensity, then maps
+    it linearly to the particle alpha (0.05 to 0.15).  The old line multiplied
+    the mapped alpha by mirageIntensity a second time, so the alpha went as
+    the SQUARE of the intensity: too weak at low intensity and too strong at
+    high.  This locks the single application in source; the rendered
+    linearity is an in-game verdict, not a static one.
+    """
+
+    def setUp(self):
+        self.code = _code_only(MIRAGE.read_text(encoding="utf-8"))
+
+    def test_alpha_applies_the_intensity_once(self):
+        m = re.search(r"private _alpha = ([^\n;]+);", self.code)
+        self.assertIsNotNone(m, "the alpha expression is missing")
+        expr = m.group(1)
+        self.assertIn("linearConversion [0, 1, _intensity, 0.05, 0.15, true]", expr)
+        # The second intensity factor (the square) is gone.
+        self.assertNotIn("mirageIntensity", expr)
+        self.assertEqual(expr.count("_intensity"), 1)
+
+    def test_alpha_is_linear_in_intensity(self):
+        m = re.search(
+            r"linearConversion \[0, 1, _intensity, ([0-9.]+), ([0-9.]+), true\]",
+            self.code,
+        )
+        self.assertIsNotNone(m, "the alpha map is not a plain linearConversion")
+        a0, a1 = float(m.group(1)), float(m.group(2))
+
+        def alpha(intensity):
+            return a0 + (a1 - a0) * intensity
+
+        # Equal steps in intensity give equal steps in alpha.
+        self.assertAlmostEqual(alpha(1.0) - alpha(0.5), alpha(0.5) - alpha(0.0))
+
+
 class ExhaustTierSelection(unittest.TestCase):
     """The class tier table and the branch that selects each tier."""
 
