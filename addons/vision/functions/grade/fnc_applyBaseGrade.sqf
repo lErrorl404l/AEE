@@ -333,5 +333,9 @@ if (_hAcuity >= 0) then {
 
 missionNamespace setVariable [QGVAR(baseGradeActive), true];
 missionNamespace setVariable [QGVAR(baseGradeCC), _hCC];
-missionNamespace setVariable [QGVAR(baseGradeGrain), _hAcuity];
+// The acuity handle has its own variable.  QGVAR(baseGradeGrain) is the
+// aee_vision_baseGradeGrain CBA slider (0 to 0.05) read as the grain
+// intensity above; writing a handle there replaced the slider from the
+// second tick.
+missionNamespace setVariable [QGVAR(baseGradeAcuityHandle), _hAcuity];
 missionNamespace setVariable [QGVAR(visionModelActive), _useModel isEqualTo true];

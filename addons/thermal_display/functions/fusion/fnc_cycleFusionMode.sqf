@@ -22,6 +22,7 @@
 params [["_force", -1, [0]]];
 
 private _mode = missionNamespace getVariable [QGVAR(fusionMode), 0];
+private _wasMode = _mode;
 if (_force >= 0) then {
     _mode = _force min 1 max 0;
 } else {
@@ -30,41 +31,51 @@ if (_force >= 0) then {
 
 missionNamespace setVariable [QGVAR(fusionMode), _mode];
 
-if (_mode == 0) then {
-    // Tear the field-of-view frame down with the other fusion effects.
-    [false] call FUNC(updateFusionFrame);
-    // I2 only: tear down the fusion effects so the NVG base is clean.  Each
-    // destroy is reported, so the full handle lifecycle appears in the log:
-    // created in fnc_applyFusionPP, destroyed here.  A handle that outlives
-    // its mode is a silent leak, and a silent leak cannot be found.
+// The four fusion handles are created in fnc_applyFusionPP, destroyed here.
+// A handle that outlives its mode is a silent leak, and a silent leak cannot
+// be found.  The fused entry releases the stores as well, so a handle the
+// engine killed on alt-tab or a resize (positive but dead) is never carried
+// into a fused session: the next fnc_applyFusionPP tick recreates the set.
+private _releaseHandles = {
     private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_Fusion_Chroma), -1];
     if (_hChroma >= 0) then {
         ppEffectDestroy _hChroma;
+        missionNamespace setVariable [QGVAR(ppHandle_Fusion_Chroma), -1];
         private _logMsg = format ["fusion PP: destroyed chroma handle=%1", _hChroma];
         AEE_LOG_DEBUG(_logMsg);
     };
     private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Fusion_Grain), -1];
     if (_hGrain >= 0) then {
         ppEffectDestroy _hGrain;
+        missionNamespace setVariable [QGVAR(ppHandle_Fusion_Grain), -1];
         private _logMsg = format ["fusion PP: destroyed grain handle=%1", _hGrain];
         AEE_LOG_DEBUG(_logMsg);
     };
     private _hDynBlur = missionNamespace getVariable [QGVAR(ppHandle_Fusion_DynBlur), -1];
     if (_hDynBlur >= 0) then {
         ppEffectDestroy _hDynBlur;
+        missionNamespace setVariable [QGVAR(ppHandle_Fusion_DynBlur), -1];
         private _logMsg = format ["fusion PP: destroyed dynBlur handle=%1", _hDynBlur];
         AEE_LOG_DEBUG(_logMsg);
     };
     private _hCC = missionNamespace getVariable [QGVAR(ppHandle_Fusion_CC), -1];
     if (_hCC >= 0) then {
         ppEffectDestroy _hCC;
+        missionNamespace setVariable [QGVAR(ppHandle_Fusion_CC), -1];
         private _logMsg = format ["fusion PP: destroyed CC handle=%1", _hCC];
         AEE_LOG_DEBUG(_logMsg);
     };
-    missionNamespace setVariable [QGVAR(ppHandle_Fusion_Chroma), -1];
-    missionNamespace setVariable [QGVAR(ppHandle_Fusion_Grain), -1];
-    missionNamespace setVariable [QGVAR(ppHandle_Fusion_DynBlur), -1];
-    missionNamespace setVariable [QGVAR(ppHandle_Fusion_CC), -1];
+};
+
+if (_mode == 0) then {
+    // Tear the field-of-view frame down with the other fusion effects.
+    [false] call FUNC(updateFusionFrame);
+    // I2 only: tear down the fusion effects so the NVG base is clean.
+    call _releaseHandles;
+} else {
+    if (_wasMode != 1) then {
+        call _releaseHandles;
+    };
 };
 
 _mode
