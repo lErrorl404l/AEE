@@ -1,0 +1,924 @@
+{
+  "_meta": {
+    "description": "Post-process effect rule database for arma_vqa. Edit freely; every entry carries its provenance.",
+    "sources": {
+      "pp": "https://community.bistudio.com/wiki/Post_Process_Effects",
+      "create": "https://community.bistudio.com/wiki/ppEffectCreate",
+      "adjust": "https://community.bistudio.com/wiki/ppEffectAdjust",
+      "commit": "https://community.bistudio.com/wiki/ppEffectCommit",
+      "enable": "https://community.bistudio.com/wiki/ppEffectEnable",
+      "nvg": "https://community.bistudio.com/wiki/ppEffectForceInNVG"
+    },
+    "provenance_levels": {
+      "wiki": "Stated on the BI wiki page for the command/effect.",
+      "wiki-note": "From a user note on the wiki page (less authoritative).",
+      "inferred": "Logical consequence of wiki text, not stated outright.",
+      "heuristic": "Tunable QA threshold chosen by this tool, NOT from BI. Adjust to taste."
+    },
+    "source_conflicts": {
+      "_note": "Where the current BI wiki and an older mirrored copy (arma.fandom.com/zh/wiki/Post_process_effects) disagree. Unresolved items should be checked against the live wiki.",
+      "ColorInversion range": "0..1 (current) vs 0..2 (older); demoted to info",
+      "FilmGrain defaults": "current [0.005,1.25,2.01,0.75,1,0] vs older [0.1,1.5,1.7,0.2,1.0,true]; the offline renderer fills omitted trailing params from the current set",
+      "Base priorities": "older copy lists FilmGrain 2050, ColorCorrections 1550, DynamicBlur 450, ChromAberration 250; relative order is identical, which is all the ordering rules use",
+      "RadialBlur/ChromAberration upper bounds": "current wiki implies 0.01/0.06 and 0.005; older copy gives no upper bound. The data only enforces min 0",
+      "ColorCorrections radial radii": "documented -1..1 but ACE3 ships 10 and 2; demoted to info"
+    }
+  },
+  "priority_table": {
+    "_note": "Higher priority = applied later, on top of the others (wiki). Priority must be unique across ALL effects or ppEffectCreate returns -1.",
+    "ColorInversion": 2500,
+    "FilmGrain": 2000,
+    "ColorCorrections": 1500,
+    "DynamicBlur": 400,
+    "WetDistortion": 300,
+    "ChromAberration": 200,
+    "RadialBlur": 100,
+    "SSAO": 0,
+    "Resolution": 0,
+    "Sharpness": 0
+  },
+  "name_aliases": {
+    "chromaticaberration": "ChromAberration",
+    "chromaberration": "ChromAberration",
+    "_note": "Wiki priority table says 'ChromaticAberration' but the effect title and every example use 'ChromAberration'."
+  },
+  "effects": {
+    "ColorCorrections": {
+      "base_priority": 1500,
+      "advanced": false,
+      "min_params": 6,
+      "max_params": 7,
+      "params": [
+        {
+          "name": "brightness",
+          "kind": "float",
+          "min": 0,
+          "max": 2,
+          "default": 1,
+          "oor": "warning",
+          "prov": "wiki",
+          "why": "0 = black, 1 = unchanged, 2 = white"
+        },
+        {
+          "name": "contrast",
+          "kind": "float",
+          "min": 0,
+          "default": 1,
+          "oor": "warning",
+          "prov": "wiki",
+          "why": "1 = normal contrast"
+        },
+        {
+          "name": "offset",
+          "kind": "float",
+          "default": 0,
+          "soft_min": -0.5,
+          "soft_max": 0.5,
+          "soft_sev": "info",
+          "prov": "heuristic",
+          "why": "Wiki range is '0...' but official examples use -0.01; large offsets lift or crush blacks."
+        },
+        {
+          "name": "blend",
+          "kind": "color",
+          "default": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "comp": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "oor": "info",
+          "prov": "wiki",
+          "why": "r,g,b = blend colour, a = blend factor (0 original, 1 full blend colour)"
+        },
+        {
+          "name": "colorize",
+          "kind": "color",
+          "default": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "comp": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "oor": "info",
+          "prov": "wiki",
+          "why": "Wiki range 0..1, but the wiki's own ppEffectAdjust example uses 1.5 on rgb. Values >1 over-drive that channel."
+        },
+        {
+          "name": "desaturateWeights",
+          "kind": "color",
+          "default": [
+            0.299,
+            0.587,
+            0.114,
+            0
+          ],
+          "comp": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "oor": "info",
+          "prov": "wiki",
+          "why": "rgb weights for desaturation; 4th component is always 0"
+        },
+        {
+          "name": "radial",
+          "kind": "array",
+          "optional": true,
+          "default": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "prov": "wiki",
+          "items": [
+            {
+              "name": "radialMajorAxisRadius",
+              "kind": "float",
+              "min": -1,
+              "max": 1,
+              "default": -1,
+              "oor": "info",
+              "why": "Wiki documents -1..1, but ACE3 (advanced_fatigue, gforces) ships radii of 10 and 2 in production, so values above 1 are accepted by the engine. Treat the documented range as advisory."
+            },
+            {
+              "name": "radialMinorAxisRadius",
+              "kind": "float",
+              "min": -1,
+              "max": 1,
+              "default": -1,
+              "oor": "info",
+              "why": "Wiki documents -1..1, but ACE3 (advanced_fatigue, gforces) ships radii of 10 and 2 in production, so values above 1 are accepted by the engine. Treat the documented range as advisory."
+            },
+            {
+              "name": "radialRotationDeg",
+              "kind": "float",
+              "min": 0,
+              "max": 359,
+              "default": 0,
+              "oor": "warning"
+            },
+            {
+              "name": "radialCenterX",
+              "kind": "float",
+              "min": -1,
+              "max": 1,
+              "soft_min": -0.5,
+              "soft_max": 0.5,
+              "soft_sev": "info",
+              "default": 0,
+              "oor": "warning",
+              "why": "Wiki text says relative coords -0.5..0.5 (0 = screen centre); table says -1..1."
+            },
+            {
+              "name": "radialCenterY",
+              "kind": "float",
+              "min": -1,
+              "max": 1,
+              "soft_min": -0.5,
+              "soft_max": 0.5,
+              "soft_sev": "info",
+              "default": 0,
+              "oor": "warning"
+            },
+            {
+              "name": "radialInnerRadiusCoef",
+              "kind": "float",
+              "min": 0,
+              "max": 1,
+              "default": 0,
+              "oor": "warning"
+            },
+            {
+              "name": "radialInterpCoef",
+              "kind": "float",
+              "min": 0,
+              "default": 0,
+              "oor": "warning"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "By-name syntax (\"ColorCorrections\" ppEffectAdjust ...) requires colours packed in sub-arrays; handle syntax accepts flat or packed. (wiki: ppEffectAdjust)",
+        "The 7th (radial) parameter is Arma 3 only and optional."
+      ]
+    },
+    "DynamicBlur": {
+      "base_priority": 400,
+      "advanced": false,
+      "min_params": 1,
+      "max_params": 1,
+      "params": [
+        {
+          "name": "value",
+          "kind": "float",
+          "min": 0,
+          "default": 0,
+          "oor": "warning",
+          "prov": "wiki",
+          "why": "blurriness, 0 = none"
+        }
+      ]
+    },
+    "FilmGrain": {
+      "base_priority": 2000,
+      "advanced": false,
+      "min_params": 1,
+      "max_params": 6,
+      "params": [
+        {
+          "name": "intensity",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0.005,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "sharpness",
+          "kind": "float",
+          "min": 1,
+          "max": 20,
+          "default": 1.25,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "grainSize",
+          "kind": "float",
+          "min": 1,
+          "max": 8,
+          "default": 2.01,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "intensityX0",
+          "kind": "float",
+          "default": 0.75,
+          "prov": "wiki"
+        },
+        {
+          "name": "intensityX1",
+          "kind": "float",
+          "default": 1.0,
+          "prov": "wiki"
+        },
+        {
+          "name": "monochromatic",
+          "kind": "boolnum",
+          "default": 0,
+          "prov": "wiki",
+          "why": "Arma 3: numeric; 0 = monochrome, any other value = colour. Arma 2 OA: boolean."
+        }
+      ],
+      "notes": [
+        "Parameter count is flexible: 1 to 6."
+      ]
+    },
+    "ColorInversion": {
+      "base_priority": 2500,
+      "advanced": false,
+      "min_params": 3,
+      "max_params": 3,
+      "params": [
+        {
+          "name": "red",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki",
+          "why": "Disputed: the current wiki page documents 0..1 for each channel, an older mirrored copy of the same page says 0..2, and the wiki itself calls the channel description unclear. Reported as info only."
+        },
+        {
+          "name": "green",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki",
+          "why": "Disputed: the current wiki page documents 0..1 for each channel, an older mirrored copy of the same page says 0..2, and the wiki itself calls the channel description unclear. Reported as info only."
+        },
+        {
+          "name": "blue",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki",
+          "why": "Disputed: the current wiki page documents 0..1 for each channel, an older mirrored copy of the same page says 0..2, and the wiki itself calls the channel description unclear. Reported as info only."
+        }
+      ]
+    },
+    "ChromAberration": {
+      "base_priority": 200,
+      "advanced": false,
+      "min_params": 3,
+      "max_params": 3,
+      "params": [
+        {
+          "name": "aberrationPowerX",
+          "kind": "float",
+          "min": 0,
+          "default": 0.005,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "aberrationPowerY",
+          "kind": "float",
+          "min": 0,
+          "default": 0.005,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "aspectCorrection",
+          "kind": "bool",
+          "default": false,
+          "prov": "wiki"
+        }
+      ]
+    },
+    "RadialBlur": {
+      "base_priority": 100,
+      "advanced": false,
+      "min_params": 4,
+      "max_params": 4,
+      "params": [
+        {
+          "name": "powerX",
+          "kind": "float",
+          "min": 0,
+          "default": 0.01,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "powerY",
+          "kind": "float",
+          "min": 0,
+          "default": 0.01,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "offsetX",
+          "kind": "float",
+          "min": 0,
+          "default": 0.06,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "offsetY",
+          "kind": "float",
+          "min": 0,
+          "default": 0.06,
+          "oor": "warning",
+          "prov": "wiki"
+        }
+      ],
+      "notes": [
+        "Does nothing if RADIAL BLUR is disabled in Video Options. (wiki)"
+      ],
+      "player_option_dependency": "RADIAL BLUR (Video Options)"
+    },
+    "WetDistortion": {
+      "base_priority": 300,
+      "advanced": false,
+      "min_params": 15,
+      "max_params": 15,
+      "params": [
+        {
+          "name": "value",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 1,
+          "oor": "warning",
+          "prov": "wiki",
+          "why": "blurriness; values above 1 cause unusual results"
+        },
+        {
+          "name": "top",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 1,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "bottom",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 1,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "horizontal1Speed",
+          "kind": "float",
+          "min": 0,
+          "default": 4.1,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "horizontal2Speed",
+          "kind": "float",
+          "min": 0,
+          "default": 3.7,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "vertical1Speed",
+          "kind": "float",
+          "min": 0,
+          "default": 2.5,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "vertical2Speed",
+          "kind": "float",
+          "min": 0,
+          "default": 1.85,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "horizontal1Amp",
+          "kind": "float",
+          "min": 0,
+          "default": 0.0054,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "horizontal2Amp",
+          "kind": "float",
+          "min": 0,
+          "default": 0.0041,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "vertical1Amp",
+          "kind": "float",
+          "min": 0,
+          "default": 0.009,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "vertical2Amp",
+          "kind": "float",
+          "min": 0,
+          "default": 0.007,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "randX",
+          "kind": "float",
+          "min": 0,
+          "default": 0.5,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "randY",
+          "kind": "float",
+          "min": 0,
+          "default": 0.3,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "posX",
+          "kind": "float",
+          "min": 0,
+          "default": 10.0,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "posY",
+          "kind": "float",
+          "min": 0,
+          "default": 6.0,
+          "oor": "warning",
+          "prov": "wiki"
+        }
+      ],
+      "notes": [
+        "Effect cancels automatically under water. (wiki)",
+        "Only works if a handle is used, not by name. (wiki-note on ppEffectCreate)"
+      ],
+      "handle_only": true
+    },
+    "SSAO": {
+      "base_priority": 0,
+      "advanced": false,
+      "min_params": 11,
+      "max_params": 11,
+      "params": [
+        {
+          "name": "intensity",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "soft_max": 10,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki",
+          "why": "Wiki range is 0..1 but the wiki example passes 3."
+        },
+        {
+          "name": "threshold0",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "threshold1",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "nearRadius",
+          "kind": "float",
+          "min": 0,
+          "soft_max": 1000,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki",
+          "why": "Wiki range 0..1 but example passes 5."
+        },
+        {
+          "name": "farRadius",
+          "kind": "float",
+          "min": 0,
+          "soft_max": 1000,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki"
+        },
+        {
+          "name": "nearDist",
+          "kind": "float",
+          "min": 0,
+          "soft_max": 1000,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki"
+        },
+        {
+          "name": "farDist",
+          "kind": "float",
+          "min": 0,
+          "soft_max": 1000,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki"
+        },
+        {
+          "name": "depthBlurDist",
+          "kind": "float",
+          "min": 0,
+          "soft_max": 1000,
+          "default": 0,
+          "oor": "info",
+          "prov": "wiki"
+        },
+        {
+          "name": "blurPasses",
+          "kind": "int",
+          "min": 0,
+          "default": 0,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "halfRes",
+          "kind": "bool",
+          "default": false,
+          "prov": "wiki"
+        },
+        {
+          "name": "blurHalfRes",
+          "kind": "bool",
+          "default": false,
+          "prov": "wiki"
+        }
+      ],
+      "notes": [
+        "Wiki range column says 0..1 for most params while the wiki example uses values up to 100; treat range violations as info."
+      ]
+    },
+    "Resolution": {
+      "base_priority": 0,
+      "advanced": false,
+      "min_params": 1,
+      "max_params": 1,
+      "params": [
+        {
+          "name": "verticalResolution",
+          "kind": "int",
+          "min": -1,
+          "default": -1,
+          "oor": "warning",
+          "prov": "wiki",
+          "why": "Negative = back to normal. Greater than final render resolution gets clamped.",
+          "soft_min": 240,
+          "soft_sev": "info",
+          "soft_note": "heuristic: below ~240 lines the image is extremely blocky",
+          "soft_min_if_ge": 0
+        }
+      ]
+    },
+    "Sharpness": {
+      "base_priority": 0,
+      "advanced": false,
+      "min_params": 1,
+      "max_params": 1,
+      "params": [
+        {
+          "name": "scale",
+          "kind": "float",
+          "min": 0.01,
+          "default": 0,
+          "oor": "warning",
+          "prov": "wiki",
+          "why": "minimum 0.01"
+        }
+      ]
+    },
+    "LightShafts": {
+      "base_priority": null,
+      "advanced": true,
+      "min_params": 4,
+      "max_params": 4,
+      "params": [
+        {
+          "name": "sunInnerRadius",
+          "kind": "float",
+          "min": 0.001,
+          "max": 1,
+          "default": 0.01,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "sunOuterRadius",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0.6,
+          "oor": "warning",
+          "prov": "wiki",
+          "why": "must be > sunInnerRadius"
+        },
+        {
+          "name": "exposure",
+          "kind": "float",
+          "min": 0,
+          "default": 0.45,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "decay",
+          "kind": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0.89,
+          "oor": "warning",
+          "prov": "wiki"
+        }
+      ],
+      "notes": [
+        "Advanced effect: cannot be created with ppEffectCreate; ppEffectAdjust is immediate, no commit needed. (wiki)"
+      ]
+    },
+    "HBAOPlus": {
+      "base_priority": null,
+      "advanced": true,
+      "min_params": 10,
+      "max_params": 10,
+      "params": [
+        {
+          "name": "radius",
+          "kind": "float",
+          "min": 0,
+          "default": 1.0,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "bias",
+          "kind": "float",
+          "min": 0,
+          "max": 0.5,
+          "default": 0.3,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "detailAO",
+          "kind": "float",
+          "min": 0,
+          "max": 2,
+          "default": 0.3,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "coarseAO",
+          "kind": "float",
+          "min": 0,
+          "max": 2,
+          "default": 0.75,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "powerExponent",
+          "kind": "float",
+          "min": 1,
+          "max": 4,
+          "default": 3,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "blurRadius",
+          "kind": "int",
+          "min": 0,
+          "max": 2,
+          "default": 1,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "blurSharpness",
+          "kind": "float",
+          "min": 0,
+          "default": 4,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "fadeSharpness",
+          "kind": "float",
+          "min": 0,
+          "default": 5,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "foregroundViewDepth",
+          "kind": "float",
+          "min": 0,
+          "default": 2,
+          "oor": "warning",
+          "prov": "wiki"
+        },
+        {
+          "name": "backgroundViewDepth",
+          "kind": "float",
+          "min": 0,
+          "default": 0,
+          "oor": "warning",
+          "prov": "wiki"
+        }
+      ],
+      "notes": [
+        "Requires DirectX 11 feature level 11+ and HBAO+ enabled in Video Options. (wiki)"
+      ],
+      "player_option_dependency": "HBAO+ (Video Options) + DX11 FL11"
+    }
+  },
+  "ordering_pairs": {
+    "_note": "If effect A has a LOWER priority than effect B it is applied BEFORE B. Each entry lists the 'expected' application order (first applied -> later applied) and what goes wrong when inverted.",
+    "pairs": [
+      {
+        "first": "ColorCorrections",
+        "then": "FilmGrain",
+        "prov": "inferred",
+        "sev": "info",
+        "id": "PP013",
+        "problem": "Grain is applied before colour grading, so the grade (contrast/brightness/colorize) also scales the grain. Grain strength will not match what you tuned."
+      },
+      {
+        "first": "ColorCorrections",
+        "then": "ColorInversion",
+        "prov": "inferred",
+        "sev": "info",
+        "id": "PP013",
+        "problem": "Inversion is applied before colour grading; the grade acts on the inverted image."
+      },
+      {
+        "first": "DynamicBlur",
+        "then": "FilmGrain",
+        "prov": "inferred",
+        "sev": "info",
+        "id": "PP013",
+        "problem": "Blur is applied after grain, so the grain gets smeared and loses its sharpness."
+      },
+      {
+        "first": "ChromAberration",
+        "then": "ColorCorrections",
+        "prov": "inferred",
+        "sev": "info",
+        "id": "PP013",
+        "problem": "Chromatic aberration is applied after the grade; colour fringes bypass the grade."
+      }
+    ]
+  },
+  "thresholds": {
+    "_note": "All values below are tunable QA heuristics (provenance: heuristic), not BI limits.",
+    "clip_low_pct": 10.0,
+    "clip_high_pct": 10.0,
+    "levels_remaining_min": 96,
+    "mean_luma_shift_abs": 0.25,
+    "saturation_ratio_min": 0.15,
+    "saturation_ratio_max": 1.8,
+    "contrast_ratio_min": 0.3,
+    "contrast_ratio_max": 2.2,
+    "detail_ratio_min": 0.15,
+    "grain_noise_std_max": 0.12,
+    "stacked_color_corrections_warn": 2
+  }
+}

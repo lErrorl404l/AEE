@@ -1,0 +1,14 @@
+setTIParameter ["OutputRangeStart", 0.7];
+setTIParameter ["OutputRangeWidth", 0.6];
+setTIParameter ["Contrast", 1];
+setTIParameter ["Blur", 3];
+setTIParameter ["OutputRangeStart", 1.4];
+true setCamUseTI 9;
+camUseNVG true;
+setApertureNew [2, 8, 14, 0.9];
+setAperture 12;
+"rtt" setPiPEffect [3, 1, 1, 0.4, 0];
+"rtt" setPiPEffect [0];
+"rtt" setPiPEffect [4];
+1 cutRsc ["HudA", "PLAIN"];
+1 cutRsc ["HudB", "PLAIN"];

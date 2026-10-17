@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "sources": {
+      "setTIParameter": "https://community.bistudio.com/wiki/setTIParameter",
+      "getTIParameters": "https://community.bistudio.com/wiki/getTIParameters",
+      "setCamUseTI": "https://community.bistudio.com/wiki/setCamUseTI",
+      "camUseNVG": "https://community.bistudio.com/wiki/camUseNVG",
+      "setAperture": "https://community.bistudio.com/wiki/setAperture",
+      "setApertureNew": "https://community.bistudio.com/wiki/setApertureNew",
+      "setPiPEffect": "https://community.bistudio.com/wiki/setPiPEffect",
+      "ppEffectForceInNVG": "https://community.bistudio.com/wiki/ppEffectForceInNVG",
+      "tracker_T185536": "https://feedback.bistudio.com/T185536",
+      "spotrep_2_10": "https://dev.arma3.com/post/spotrep-00105",
+      "spotrep_2_10_hotfix": "https://dev.arma3.com/post/spotrep-00106"
+    }
+  },
+
+  "ti_parameters": {
+    "_note": "Defaults from getTIParameters. Output formula (wiki): OutputRangeStart + thermalValue x OutputRangeWidth, default range 0.1..0.9. Values are NOT saved in savegames and must be re-applied after load. Added in Arma 3 2.10 hotfix.",
+    "OutputRangeStart": {"default": 0.1, "min": 0.0, "max": 1.0, "desc": "Thermal output minimal value"},
+    "OutputRangeWidth": {"default": 0.8, "min": 0.0, "max": 1.0, "desc": "Thermal output width"},
+    "FilmGrain": {"default": 1, "flag": true, "desc": "Film grain"},
+    "Blur": {"default": 1, "flag": true, "desc": "Blur"},
+    "UpdateHistogram": {"default": 1, "flag": true, "desc": "Histogram"}
+  },
+
+  "ti_modes": {
+    "_note": "setCamUseTI modeIndex (wiki). setPiPEffect additionally accepts 7, 8 and 9..70 (alt. TI modes, since 2.10).",
+    "0": "White Hot",
+    "1": "Black Hot",
+    "2": "Light Green Hot / Darker Green cold",
+    "3": "Black Hot / Darker Green cold",
+    "4": "Light Red Hot / Darker Red cold",
+    "5": "Black Hot / Darker Red cold",
+    "6": "White Hot / Darker Red cold",
+    "7": "Thermal (shades of red and green, bodies white)"
+  },
+  "setCamUseTI_modes": [0, 1, 2, 3, 4, 5, 6, 7],
+
+  "pip_modes": {
+    "0": {"desc": "Normal", "params": 1},
+    "1": {"desc": "Night Vision", "params": 1},
+    "2": {"desc": "Thermal Imaging", "params": 1},
+    "3": {"desc": "Color Correction", "params": 8, "layout": "[3, enabled, brightness, contrast, offset, blend[r,g,b,a], lerp[r,g,b,a], rgb[r,g,b,a]]"},
+    "7": {"desc": "Alt. TI 1 (Inverted)", "params": 1},
+    "8": {"desc": "Alt. TI 2 (Green)", "params": 1}
+  },
+  "pip_alt_ti_range": [9, 70],
+
+  "aperture": {
+    "setAperture": {
+      "auto_if_le": 0,
+      "max_effective": 100,
+      "guide": {"daylight_outdoor": 50, "daylight_indoor": 30, "very_bright_below": 20},
+      "guide_prov": "wiki-note (2009, Namikaze) - may have drifted since"
+    },
+    "setApertureNew": {"shape": "[min, std, max, stdLum]  or  [-1] for automatic", "local": true}
+  },
+
+  "vision_modes": ["Normal", "NVG", "Ti"],
+  "vision_modes_prov": "community/config convention (CfgWeapons OpticsModes visionMode[]), not on the pages fetched",
+
+  "known_vanilla_optics_effects": [
+    "OpticsBlur1", "OpticsBlur2", "OpticsBlur3",
+    "OpticsCHAbera1", "OpticsCHAbera2", "OpticsCHAbera3",
+    "TankGunnerOptics1", "TankGunnerOptics2"
+  ],
+  "known_vanilla_optics_effects_prov": "Names seen in community configs; extend with --vanilla-classes for full coverage."
+}
