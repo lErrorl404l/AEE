@@ -409,7 +409,6 @@ if ((diag_tickTime - _riverLast) >= 30) then {
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 private _moonPhase = missionNamespace getVariable [QEGVAR(weather,lunarPhase), 0];
 [_sunElev, _moonPhase] call EFUNC(lighting,classifyNight);
-private _ambientLux = missionNamespace getVariable [QEGVAR(core,ambientLux), 0.001];
 
 // Light pollution: the house scan is expensive, so cache it on a 5 s key and
 // share it with the star catalogue.  The NELM kernel stays pure; this tick is

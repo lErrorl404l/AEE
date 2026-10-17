@@ -86,7 +86,13 @@ missionNamespace setVariable [QEGVAR(core,snowMeltFlux_Wm2), _meltFlux];
 private _windSpd = vectorMagnitude wind;
 private _drift = 0;
 if (_windSpd > 8 && _depth > 0.05) then {
-    _drift = (_windSpd * 0.001) min 1.0;
+    // Drift intensity is the fractional excess over the transport threshold,
+    // on the 0..1 scale the header declares.  The threshold is the transport
+    // onset the gate already applies (8 m/s); the scale is twice the
+    // threshold, so the ramp reads 0.5 at 12 m/s and saturates at 16 m/s.
+    // The old `_windSpd * 0.001` reached at most 0.03, so the declared range
+    // was never used and the intensity was effectively constant.
+    _drift = (((_windSpd - 8) / 8) min 1.0) max 0;
 };
 
 missionNamespace setVariable [QEGVAR(core,snowDepth_m), _depth];

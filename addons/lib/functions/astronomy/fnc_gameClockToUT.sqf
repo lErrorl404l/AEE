@@ -28,16 +28,9 @@ private _m = _date select 1;
 private _d = _date select 2;
 
 // Whole days from 2000-01-01 (H. Hinnant, "chrono-compatible low-level
-// date algorithms", days_from_civil, proleptic Gregorian).  Every
-// intermediate stays below 2^24, so it is exact in float32.
-private _yy = _y;
-if (_m <= 2) then { _yy = _yy - 1; };
-private _era = floor (_yy / 400);
-private _yoe = _yy - _era * 400;
-private _mp = if (_m > 2) then { _m - 3 } else { _m + 9 };
-private _doy = floor ((153 * _mp + 2) / 5) + _d - 1;
-private _doe = _yoe * 365 + floor (_yoe / 4) - floor (_yoe / 100) + _doy;
-private _dn = _era * 146097 + _doe - 719468 - 10957;   // 1970 epoch -> 2000
+// date algorithms", days_from_civil, proleptic Gregorian).  Shared with the
+// geomagnetic model, so both use one exact day count.
+private _dn = [_y, _m, _d] call FUNC(civilDayNumber);
 
 private _utH = _clockH - (_lonDeg / 15);
 for "_i" from 1 to 2 do {

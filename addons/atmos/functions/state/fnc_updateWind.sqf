@@ -14,7 +14,19 @@ private _wind = wind;
 // timing, so the setting controls how much gust the atmosphere carries
 // without replacing the engine's natural cycle.
 private _gusts = 0;
-if (!isNil {gust}) then { _gusts = gust; };
+// The engine nular is `gusts` (plural).  BIKI `gusts`: "Return the current
+// gusts value. Scale is 0 to 1."  `gust` is not a command, so the old name
+// left the isNil guard true and the engine gust signal never reached AEE:
+// aee_core_currentGusts was always 0.
+//
+// The ONE unit for aee_core_currentGusts is therefore the engine's 0..1
+// fraction, scaled below by the gust-frequency setting (so the published
+// value is 0..2, not gale force in m/s).  fnc_applyFlightTurbulence.sqf:63
+// still reads it as m/s (> 3, > 15); that consumer is wrong against the
+// engine contract above, but the correct metre scale for it is not
+// published anywhere and cannot be settled headless, so it is left as a
+// recorded defect rather than guessed at here.
+if (!isNil {gusts}) then { _gusts = gusts; };
 private _gustFreq = missionNamespace getVariable [QEGVAR(core,windGustFrequency), 0.3];
 if !(_gustFreq isEqualType 0) then { _gustFreq = 0.3; };
 _gustFreq = _gustFreq max 0 min 1;

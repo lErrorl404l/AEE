@@ -1,53 +1,86 @@
 #include "..\script_component.hpp"
 
 /*
-Core body temperature from the physiology heat balance.
+Core body temperature of the local player, integrated in time.
 
-Physiology heat balance.  A BODY_TEMP_C (37 C) baseline plus a heat gain from the wet
-bulb globe temperature above a threshold, minus a cold loss from the wind
-chill temperature and the hypothermia risk:
+The Gagge two-node model (aee_thermal_fnc_gaggeTwoNode: Gagge, Fobelets &
+Berglund 1986 in the ASHRAE 55-2020 reference form, validated against
+pythermalcomfort to 0.01 C), stepped in time from the persistent state, with:
+  - metabolism from what the player is doing (aee_lib_fnc_unitMetabolicRate:
+    Pandolf 1977 load carriage with the real carried mass, speed, grade and
+    terrain), scaled by the oxygen-delivery fraction;
+  - the worn clothing insulation (aee_clothing_fnc_getUniformProperties);
+  - the air temperature, humidity, pressure, wind, the MRT
+    (aee_thermal_fnc_calculateMRT) raised by the sun per ASHRAE 55 SolarCal
+    with the sun exposure at the eye, and water immersion.
+The core temperature therefore rises with exertion in heat and falls with
+exposure in cold at the model's own physiological rates, instead of being
+set instantaneously from the WBGT.
 
-    T_core = BODY_TEMP_C + 0.05 * max(0, WBGT - 28)
-                - 0.10 * max(0, 10 - windChill)
-                - 4.0  * hypothermiaRisk
-
-Source grading:
-
-  baseline BODY_TEMP_C  sourced.  Normal resting human core temperature (37 C).
-  heat threshold 28 C  UNSOURCED.  A WBGT threshold in the heat-stress
-                       band (28 is the common worker-exposure limit), not a
-                       measured physiological set point.
-  heat gain 0.05       UNSOURCED.  C of core rise per C of WBGT above the
-                       threshold.  A bounded modelling choice.
-  cold threshold 10 C  UNSOURCED.  The wind chill below which the core
-                       loses heat.  A bounded modelling choice.
-  cold gain 0.10       UNSOURCED.  C of core loss per C of wind chill below
-                       the threshold.  A bounded modelling choice.
-  hypothermia loss 4.0 UNSOURCED.  C of core loss at full hypothermia risk
-                       (risk is 0..1).  A bounded modelling choice.
-
-The result is clamped to [28, 42] C, the survivable band, so a missing or
-stale input cannot publish a non-physical value.
-
-This function fixes the orphan read at
-addons/compat_kat/functions/fnc_integrateKAT.sqf:BODY_TEMP_C, which read
-aee_core_coreBodyTemp with a BODY_TEMP_C fallback while nothing produced it.
-
-Sets:   aee_core_coreBodyTemp (C)
+Sets:   aee_core_coreBodyTemp (C), aee_core_skinTemp (C),
+        aee_core_metabolicRate (W)
 Returns: Number - the core body temperature in C.
 */
 
-private _wbgt = missionNamespace getVariable [QEGVAR(core,currentWBGT), 15];
-if !(_wbgt isEqualType 0) then { _wbgt = 15; };
-private _windChill = missionNamespace getVariable [QEGVAR(core,windChillTemp), 15];
-if !(_windChill isEqualType 0) then { _windChill = 15; };
-private _hypoRisk = missionNamespace getVariable [QEGVAR(core,currentHypothermiaRisk), 0];
-if !(_hypoRisk isEqualType 0) then { _hypoRisk = 0; };
+if (!hasInterface) exitWith { BODY_TEMP_C };
+private _unit = call CBA_fnc_currentUnit;
+if (isNull _unit || {!alive _unit}) exitWith { BODY_TEMP_C };
 
-private _heatGain = ((_wbgt - 28) max 0) * 0.05;
-private _coldLoss = (((10 - _windChill) max 0) * 0.10) + (_hypoRisk * 4.0);
-private _tBody = ((BODY_TEMP_C + _heatGain - _coldLoss) max 28) min 42;
+private _state = missionNamespace getVariable [QGVAR(coreBodyState), []];
+private _now = time;
+if !((_state isEqualType []) && {(count _state) == 3} && {(_state select 2) isEqualTo _unit}) then {
+    // Start four hours into the present conditions, so the body arrives
+    // adapted to the mission's weather rather than at a thermoneutral seed.
+    _state = [[], _now - 4 * 3600, _unit];
+};
+_state params ["_gagge", "_last"];
+private _dt = ((_now - _last) max 0) min (4 * 3600);
+if (_dt <= 0) exitWith { missionNamespace getVariable [QGVAR(coreBodyTemp), BODY_TEMP_C] };
 
-missionNamespace setVariable [QGVAR(coreBodyTemp), _tBody];
+private _tAir = missionNamespace getVariable [QGVAR(currentTemperature), 15];
+if !(_tAir isEqualType 0) then { _tAir = 15; };
+private _rh = missionNamespace getVariable [QGVAR(currentHumidity), 50];
+if !(_rh isEqualType 0) then { _rh = 50; };
+private _wind = vectorMagnitude (missionNamespace getVariable [QGVAR(currentWind), [0, 0, 0]]);
+private _solar = missionNamespace getVariable [QGVAR(currentSolarFlux), 0];
+if !(_solar isEqualType 0) then { _solar = 0; };
 
-_tBody
+// Sun exposure at the eye: the line toward the light is clear.
+private _eye = eyePos _unit;
+private _lightDir = missionNamespace getVariable [QGVAR(lightDirection), [0, 0, -1]];
+private _toSun = (_lightDir vectorMultiply -1) vectorMultiply 300;
+private _exposure = [_unit, "VIEW"] checkVisibility [_eye, _eye vectorAdd _toSun];
+
+private _mrt = [getPosASL _unit, 0.5] call EFUNC(thermal,calculateMRT);
+private _clo = ([_unit] call EFUNC(clothing,getUniformProperties)) param [3, 0.75];
+if !(_clo isEqualType 0) then { _clo = 0.75; };
+
+private _met = [_unit] call EFUNC(lib,unitMetabolicRate);
+private _ox = [_unit, _met, 1.8258] call EFUNC(altitude,calculateOxygenDelivery);
+private _qMet = _met * (_ox param [6, 1]);
+
+private _tWater = -273;
+if ((eyePos _unit select 2) < 0 && {surfaceIsWater (getPosASL _unit)}) then {
+    _tWater = missionNamespace getVariable [QGVAR(currentWaterTemperature), _tAir];
+    if !(_tWater isEqualType 0) then { _tWater = _tAir; };
+};
+
+private _paMmHg = (6.112 * exp (17.62 * _tAir / (243.12 + _tAir))) * (_rh / 100) * 0.750062;
+private _sunAlt = missionNamespace getVariable [QGVAR(currentSunElevation), -90];
+if !(_sunAlt isEqualType 0) then { _sunAlt = -90; };
+private _pressure = missionNamespace getVariable [QGVAR(currentPressure), 1013.25];
+if !(_pressure isEqualType 0) then { _pressure = 1013.25; };
+private _new = [
+    _gagge, _dt, _tAir, _mrt, _wind, _qMet / 1.8258, _clo, _paMmHg, _pressure * 100,
+    _solar, _sunAlt, _exposure, 0.7, _tWater, 0, (_ox param [10, 1]),
+    (_tWater > -100) && {(vectorMagnitude velocity _unit) > 0.2}
+] call EFUNC(thermal,gaggeTwoNode);
+private _tCoreNew = _new select 0;
+private _tSkinNew = _new select 1;
+
+missionNamespace setVariable [QGVAR(coreBodyState), [_new, _now, _unit]];
+missionNamespace setVariable [QGVAR(coreBodyTemp), _tCoreNew];
+missionNamespace setVariable [QGVAR(skinTemp), _tSkinNew];
+missionNamespace setVariable [QGVAR(metabolicRate), _met];
+
+_tCoreNew

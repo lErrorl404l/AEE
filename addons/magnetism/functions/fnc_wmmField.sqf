@@ -13,6 +13,9 @@ Arguments:
   2: height above the WGS84 ellipsoid, km
   3: decimal year
 Return: [D declination deg (east +), I inclination deg (down +), H, X, Y, Z nT]
+At |lat| = 90 exactly (a geographic pole) the frame has no east, so D, H, X
+and Y are undefined and are returned as 0, I is +90 (north) or -90 (south)
+and Z, the axial component, is exact.
 Public: No
 */
 
@@ -39,6 +42,12 @@ private _r = sqrt (_p * _p + _z * _z);
 private _latC = _z atan2 _p;
 private _ct = sin _latC;
 private _st = cos _latC;
+// Geographic poles: cos(latC) is zero, every P(n,m) with m > 0 vanishes with
+// it, and the (north, east) frame has no defined orientation there.  The
+// division below would then be 0/0, whose float32 value is pure rounding
+// noise, so the pole takes the overridden path at the end of the kernel.
+private _atPole = (abs _st) < 1e-6;
+private _stSafe = [_st, 1] select _atPole;
 
 // Schmidt semi-normalised P(n,m) and dP/dtheta, flat index n(n+1)/2 + m.
 private _pnm = [1];
@@ -82,7 +91,7 @@ for "_n" from 1 to 12 do {
         private _sm = sin (_m * _lonDeg);
         private _ip = (_n * (_n + 1) / 2) + _m;
         _bx = _bx + _rr * (_g * _cm + _h * _sm) * (_dpnm select _ip);
-        _by = _by + _rr * _m * (_g * _sm - _h * _cm) * (_pnm select _ip) / _st;
+        _by = _by + _rr * _m * (_g * _sm - _h * _cm) * (_pnm select _ip) / _stSafe;
         _bz = _bz - (_n + 1) * _rr * (_g * _cm + _h * _sm) * (_pnm select _ip);
         _k = _k + 1;
     };
@@ -92,5 +101,12 @@ for "_n" from 1 to 12 do {
 private _d = _latC - _latDeg;
 private _Xg = _bx * (cos _d) - _bz * (sin _d);
 private _Zg = _bx * (sin _d) + _bz * (cos _d);
+if (_atPole) then {
+    // Pole: the declination and the horizontal intensity have no defined value
+    // (the frame has no east), so report them as 0.  The axial component Z is
+    // exact and is kept: I is then +90 at the north pole and -90 at the south.
+    _by = 0;
+    _Xg = 0;
+};
 private _Hn = sqrt (_Xg * _Xg + _by * _by);
 [_by atan2 _Xg, _Zg atan2 _Hn, _Hn, _Xg, _by, _Zg]

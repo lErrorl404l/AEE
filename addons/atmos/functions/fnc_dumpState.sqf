@@ -51,9 +51,22 @@ private _sundogOffset = missionNamespace getVariable [QGVAR(sundogOffsetDeg), 0]
 if !(_sundogOffset isEqualType 0) then { _sundogOffset = 0; };
 private _sundogActive = missionNamespace getVariable [QGVAR(sundogActive), false];
 if !(_sundogActive isEqualType false) then { _sundogActive = false; };
+// Space weather (the weather module's state).  These five were published with
+// no reader; this line is their consumer, so the state is observable from the
+// console instead of being written and forgotten.
+private _solarActivity = missionNamespace getVariable [QEGVAR(weather,solarActivity), 0];
+if !(_solarActivity isEqualType 0) then { _solarActivity = 0; };
+private _geomagnetic = missionNamespace getVariable [QEGVAR(weather,geomagneticDescription), ""];
+if !(_geomagnetic isEqualType "") then { _geomagnetic = ""; };
+private _xrayFlux = missionNamespace getVariable [QEGVAR(weather,xrayFlux), 0];
+if !(_xrayFlux isEqualType 0) then { _xrayFlux = 0; };
+private _flareClass = missionNamespace getVariable [QEGVAR(weather,flareClass), ""];
+if !(_flareClass isEqualType "") then { _flareClass = ""; };
+private _auroraEdge = missionNamespace getVariable [QEGVAR(weather,auroraElevationDeg), 90];
+if !(_auroraEdge isEqualType 0) then { _auroraEdge = 90; };
 
 private _logMsg = format [
-    "atmos state | turbulence=%1/%2 icing=%3/%4 clouds=%5 cape=%6 | microburst=%7 t=%8 wind=%9 | fog=%10 localWind=%11 mirage=%12 | halo=%13/%14 r22=%15-%16 r46=%17-%18 sundog=%19@%20",
+    "atmos state | turbulence=%1/%2 icing=%3/%4 clouds=%5 cape=%6 | microburst=%7 t=%8 wind=%9 | fog=%10 localWind=%11 mirage=%12 | halo=%13/%14 r22=%15-%16 r46=%17-%18 sundog=%19@%20 | spaceWx=%21 act=%22 xray=%23 flare=%24 auroraEdge=%25",
     round (_edrValue * 100) / 100, _turbulenceClass, round (_airframeIcing * 100) / 100, _airframeIcingDetected,
     _cloudDescription, round (_capeProxy * 100) / 100,
     _microburstSeverity, round (_microburstTimer * 100) / 100, round (_microburstWindSpeed * 100) / 100,
@@ -61,7 +74,8 @@ private _logMsg = format [
     round (_haloIntensity * 100) / 100, _haloActive,
     round (_halo22Inner * 100) / 100, round (_halo22Outer * 100) / 100,
     round (_halo46Inner * 100) / 100, round (_halo46Outer * 100) / 100,
-    _sundogActive, round (_sundogOffset * 100) / 100
+    _sundogActive, round (_sundogOffset * 100) / 100,
+    _geomagnetic, round (_solarActivity * 100) / 100, _xrayFlux, _flareClass, round _auroraEdge
 ];
 
 if (missionNamespace getVariable [QGVAR(stateLogStarted), false]) then {

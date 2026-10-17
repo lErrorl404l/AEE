@@ -27,7 +27,8 @@ Model (anchored to real climatology):
 
   Diurnal range grows toward the dry subtropics and shrinks toward the
   wet tropics and the poles (a proxy for clear-sky vs cloudy/oceanic):
-  day - night ~ 8 C at the equator, 13 C at 30 deg, 6 C at 60+ deg.
+  day - night ~ 8 C at the equator (forced below 10 deg latitude),
+  11.3 C at 30 deg, 8.0 C at 60+ deg.
 
   Precipitation is a simple wet-season model: the wet season follows the
   warm season (thermal convection), with a dryness factor that grows away
@@ -65,7 +66,7 @@ private _tMeanBase = 26 - 0.40 * _lat;
 // third of its area water is dominated by ocean-air masses (warm-current
 // climates like the British Isles have modest land fractions but strong
 // maritime moderation).  The +5 C coefficient is anchored to the
-// Scottish Highlands (Aviemore, 57.2 N): the latitude base 27 - 0.42*lat
+// Scottish Highlands (Aviemore, 57.2 N): the latitude base 26 - 0.40*lat
 // gives 3.2 C, the real annual mean is 7.7 C - a +4.5 C maritime lift at
 // waterFrac ~0.35.  The earlier +4 C coefficient left the mean 1.2 C
 // low, dropping high-latitude oceanic maps to Cfc instead of Cfb

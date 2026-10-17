@@ -45,13 +45,20 @@ private _fnc_args = {
     // instant is [whole days since 2000-01-01, UT hours]: float32 cannot
     // hold a Julian Day, so every argument is a daily rate times the days.
     private _ut = [date, dayTime, _lon] call EFUNC(lib,gameClockToUT);
+    // The offset may cross midnight.  Carry the day explicitly: with the
+    // wrapped hour alone the per-day astronomical arguments would be a day
+    // early and the +0.25 h slope sample would invert the rising/falling
+    // label.  (The previous form divided the unwrapped hour by 24, which
+    // carried the day implicitly; this form states it.)
     private _utH = (_ut select 1) + _offsetH;
-    private _days = (_ut select 0) - 0.5 + (_utH / 24);
+    private _carry = floor (_utH / 24);
+    private _hour = _utH - _carry * 24;
+    private _days = (_ut select 0) + _carry - 0.5 + (_hour / 24);
     private _s = (218.3164477 + 13.17639647 * _days) mod 360;
     private _h = (280.46646 + 0.98564736 * _days) mod 360;
     private _p = (83.3532465 + 0.11140352 * _days) mod 360;
     private _N = (125.04452 - 0.05295376 * _days) mod 360;
-    private _tau = 15 * _utH + 180;
+    private _tau = 15 * _hour + 180;
     private _fM2 = 1.0004 - 0.0373 * cos _N + 0.0002 * cos (2 * _N);
     private _uM2 = -2.14 * sin _N;
     private _fK1 = 1.0060 + 0.1150 * cos _N - 0.0088 * cos (2 * _N) + 0.0006 * cos (3 * _N);

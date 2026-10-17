@@ -6,8 +6,9 @@ Regenerate with: python3 tools/gen_daylight.py
 Clear-sky tristimulus values (CIE 1931 2 deg, unnormalised photometric scale)
 of the direct beam on the horizontal and of the diffuse sky, from the Bird &
 Riordan 1986 SPCTRAL2 spectral model (data/daylight/spectrl2_coefficients.json)
-and the CIE 018:2019 colour-matching functions (data/daylight/
-CIE_xyz_1931_2deg.csv and CIE_sle_scotopic.csv, CC BY-SA 4.0).  Ozone 0.3 atm-cm, precipitable
+and the ISO/CIE 11664-1:2019 colour-matching functions (data/daylight/
+CIE_xyz_1931_2deg.csv) with the CIE 018:2019 / CIE 1951 scotopic function
+(CIE_sle_scotopic.csv, CC BY-SA 4.0).  Ozone 0.3 atm-cm, precipitable
 water 1.5 cm, ground albedo 0.2.
 
 rows: index (iPressure * nAod + iAod) * nElev + iElev, each

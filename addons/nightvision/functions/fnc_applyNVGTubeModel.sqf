@@ -9,7 +9,7 @@ ACE3's pattern (addons/nightvision/functions/fnc_pfeh.sqf). Arma 3
 kills ppEffects on alt-tab, resize, AT sights. Without recreation
 the effects stay dead. ACE3's comment: "This is hacky but... works."
 
-Model chain: moonIntensity -> gain -> shot noise -> four
+Model chain: illuminance -> gain -> shot noise -> four
 post-process effects forced into the NVG view:
 
   ColorCorrections - phosphor tint, brightness, contrast
@@ -17,13 +17,13 @@ post-process effects forced into the NVG view:
   RadialBlur       - optical edge degradation
   FilmGrain        - shot noise (inverse light)
 
-Light source: moonIntensity (engine variable, 0..1 moon phase).
+Light source: aee_core_moonLux / aee_core_illuminanceLux (the physical sky model).
 Overcast and rain subtract from this. This is the same variable
 ACE3 uses. ambientLux is NOT used for NVG — it can be 0 or
 unpopulated when the NVG tick fires.
 
 Gate:    vision mode 1
-Reads:   moonIntensity, overcast, rain, hmd _player
+Reads:   aee_core_moonLux, aee_core_illuminanceLux, overcast, rain, hmd _player
 Sets:    QGVAR(nvgGain), QGVAR(nvgNoise), QGVAR(nvgTubeTier),
          QGVAR(nvgPerceived), QGVAR(nvgGrainActive), QGVAR(nvgBreathing),
          QGVAR(nvgImperfectionAlpha),
@@ -101,12 +101,12 @@ if (currentVisionMode _player != 1) exitWith {
 };
 
 // ─── Ambient light input ─────────────────────────────────────────────────
-// moonIntensity: engine variable, 0..1 based on moon phase.
-// Same source ACE3 uses. Subtracts overcast and rain (smoothed weather:
-// raw overcast/rain step abruptly and snap the tube gain; the EMA eases).
+// Moonlight relative to a clear full moon at the zenith (0.32 lx above the
+// atmosphere): the physical moon lux of the shared illuminance layer.
 private _rainS = ([] call EFUNC(core,getSmoothedWeather)) select 0;
-private _overcastS = ([] call EFUNC(core,getSmoothedWeather)) select 1;
-private _moonLight = 0 max (moonIntensity - ((_overcastS * .8) min .275) - (_rainS * .5));
+private _moonLuxNow = missionNamespace getVariable [QEGVAR(core,moonLux), 0];
+if !(_moonLuxNow isEqualType 0) then { _moonLuxNow = 0; };
+private _moonLight = (_moonLuxNow / 0.32) max 0 min 1;
 
 // ─── Tube tier by HMD classname ──────────────────────────────────────────
 // Substring tests run most-specific first.  "NVGoggles" is a substring of
@@ -470,7 +470,7 @@ _noiseFloor = _noiseFloor * (1 + 0.25 * _warmupFrac);
 
 // ─── Ambient light in lux ────────────────────────────────────────────────
 // From the shared illuminance layer (fnc_calculateIlluminance): the
-// validated moonIntensity/overcast/rain lux model, plus client dynamic
+// physical sky lux model (moon, twilight, starlight, aurora), plus client dynamic
 // lux from getLightingAt.  One lux value feeds NVG, thermal, glare and
 // ballistics instead of each module estimating independently.
 private _lux = missionNamespace getVariable [QEGVAR(core,illuminanceLux), 0.001];

@@ -7,12 +7,14 @@ Engine wave rendering from AEE's sea state (issue #141).
 seconds.  AEE's maritime model already computes the significant wave
 height; this bridge feeds it to the renderer.
 
-Mapping: the engine `waves` value is a normalised 0..1 amplitude scale and
-the engine publishes no metre mapping.  The bridge normalises the
-significant wave height to the model's own ceiling of 15 m (the clamp in
-fnc_calculateSeaState).  This is a rendering normalisation, not a physical
-constant, and it keeps the engine scale monotonic and unsaturated while the
-physics is valid.
+Mapping: the engine `waves` value is a normalised 0..1 amplitude scale (the
+local engine reference calls it "0-1 wave intensity"; the engine publishes
+no metre mapping).  The world declares the metre scale of that normalised
+value in CfgWorlds >> <world> >> Sea >> MaxWave (map_altis config.cpp:486,
+MaxWave = 0.25), so that field is the scale this bridge divides by.
+The previous hard-coded 15 m was NOT an engine figure: it is AEE's own
+Pierson-Moskowitz clamp ceiling in fnc_calculateSeaState.sqf:48, which would
+have sent the engine a sea state about 60x the height Altis can represent.
 
 REQUIREMENT: the mission weather must be on Manual Override (editor, Intel
 > Manual Override).  The value changes without it, but the engine renders
@@ -23,7 +25,12 @@ Sets:   engine waves (time setWaves)
 */
 if (!hasInterface) exitWith {};
 
-private _fullScaleMetres = 15;   // fnc_calculateSeaState caps H_s at 15 m
+// The world's own wave scale, in metres.  Fallback 0.25 is the Altis value
+// (map_altis config.cpp:486); it is UNVERIFIED for other worlds, so read the
+// world field first and fall back only when the field is absent or zero.
+private _worldMaxWave = getNumber (configFile >> "CfgWorlds" >> worldName >> "Sea" >> "MaxWave");
+if (_worldMaxWave <= 0) then { _worldMaxWave = 0.25; };
+private _fullScaleMetres = _worldMaxWave;
 
 private _waveH = missionNamespace getVariable [QGVAR(waveHeight_m), 0];
 if !(_waveH isEqualType 0) then { _waveH = 0; };

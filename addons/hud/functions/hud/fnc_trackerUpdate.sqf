@@ -94,7 +94,8 @@ private _previous = missionNamespace getVariable [QGVAR(trackerPrev), createHash
 // at the mission date and time (fnc_gameClockToUT) over the map's location.
 private _loc = [] call EFUNC(lib,getWorldLocation);
 private _ut = [date, dayTime, _loc select 2] call EFUNC(lib,gameClockToUT);
-private _sky = [_ut select 0, _ut select 1, _loc select 0, _loc select 2, -1] call EFUNC(lib,gnssSatellites);
+private _sky = [_ut select 0, _ut select 1, _loc select 0, _loc select 2, -1,
+    ((getPosASL _player) select 2) / 1000] call EFUNC(lib,gnssSatellites);
 
 // Range error: measured by geomagnetic latitude and scaled with the solar
 // cycle (fnc_gnssUere), from the published space weather.

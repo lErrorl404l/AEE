@@ -110,7 +110,7 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_seaStateBeaufort` | The sea state on the Beaufort scale |
 | `aee_core_seaStateCurrent` | The current sea state |
 | `aee_core_seaStateDescription` | The sea state description |
-| `aee_maritime_compassDeviation` | The compass deviation |
+| `aee_magnetism_compassDeviation` | The compass deviation in degrees: the declination plus the local ferrous deflection |
 | `aee_maritime_shipPitch_deg` | Ship pitch in degrees |
 | `aee_maritime_shipRoll_deg` | Ship roll in degrees |
 | `aee_maritime_shipHeave_m` | Ship heave in metres |

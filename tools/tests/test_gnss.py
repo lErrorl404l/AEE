@@ -45,7 +45,9 @@ ELLIPSE = GEO / "fnc_gnssErrorEllipse.sqf"
 STEP = GEO / "fnc_gnssErrorStep.sqf"
 FIXSTATE = GEO / "fnc_gnssFixState.sqf"
 PREP = ROOT / "addons" / "lib" / "XEH_PREP.hpp"
-UPDATE_SRC = (ROOT / "addons/hud/functions/hud/fnc_trackerUpdate.sqf").read_text(encoding="utf-8")
+UPDATE_SRC = (ROOT / "addons/hud/functions/hud/fnc_trackerUpdate.sqf").read_text(
+    encoding="utf-8"
+)
 
 
 def _tables():
@@ -56,8 +58,8 @@ G = {"__FUNC__gnssTables": _tables}
 T = _tables()
 
 
-def satellites(dn, ut_h, lat, lon, f32=True):
-    return run_sqf(SATS, [dn, ut_h, lat, lon, -1], G, float32=f32)
+def satellites(dn, ut_h, lat, lon, alt_km=0.0, f32=True):
+    return run_sqf(SATS, [dn, ut_h, lat, lon, -1, alt_km], G, float32=f32)
 
 
 def dop(rows):
@@ -78,8 +80,15 @@ class TestGeneratedTables(unittest.TestCase):
 
     def test_preps(self):
         prep = PREP.read_text(encoding="utf-8")
-        for name in ("gnssTables", "gnssSatellites", "gnssDop", "gnssUere",
-                     "gnssErrorEllipse", "gnssErrorStep", "gnssFixState"):
+        for name in (
+            "gnssTables",
+            "gnssSatellites",
+            "gnssDop",
+            "gnssUere",
+            "gnssErrorEllipse",
+            "gnssErrorStep",
+            "gnssFixState",
+        ):
             self.assertIn(f"PREPS(geo,{name})", prep)
 
 
@@ -87,10 +96,10 @@ class TestConstellation(unittest.TestCase):
     """The float32 SQF sky matches the double-precision reference."""
 
     CASES = [  # (dn since 2000-01-01, UT h, lat, lon)
-        (9393, 6.5, 51.5, -0.1),     # 2025-09-20, London
+        (9393, 6.5, 51.5, -0.1),  # 2025-09-20, London
         (9393, 18.25, -33.9, 151.2),  # Sydney
-        (10200, 0.0, 0.0, 30.0),     # 2027-12-05, equator
-        (8000, 12.0, 70.0, 20.0),    # 2021-11-26, Tromso
+        (10200, 0.0, 0.0, 30.0),  # 2027-12-05, equator
+        (8000, 12.0, 70.0, 20.0),  # 2021-11-26, Tromso
     ]
 
     def test_hdop_matches_the_reference(self):
@@ -115,6 +124,27 @@ class TestConstellation(unittest.TestCase):
         # SPS PS 2020 3.6: >= 6 in view 100 % of the time at a 5 deg mask.
         for dn, ut, lat, lon in self.CASES:
             self.assertTrue(6 <= len(satellites(dn, ut, lat, lon)) <= 14)
+
+    def test_the_observer_height_enters_the_sky(self):
+        """F8: a receiver on a hill or in the air sees a wider sky.
+
+        The observer ECEF must take the receiver height, not the ellipsoid
+        surface.  The reference (tools/gen_gnss.py) is the independent check.
+        """
+        c = json.loads(gen.CONS.read_text(encoding="utf-8"))
+        dn, ut, lat, lon = 9393, 6.5, 51.5, -0.1
+        days = (dn - T["epochDay"]) + (ut - T["epochHours"]) / 24
+        low = satellites(dn, ut, lat, lon)
+        self.assertEqual(low, satellites(dn, ut, lat, lon, 0.0))
+        for alt in (3.0, 10.0, 400.0):
+            with self.subTest(alt_km=alt):
+                ref = gen.dops(c, lat, lon, days, alt_km=alt)
+                sky = satellites(dn, ut, lat, lon, alt)
+                self.assertNotEqual(sky, low)
+                self.assertEqual(len(sky), ref[2])
+                d = dop(sky)
+                self.assertAlmostEqual(math.sqrt(d[1] + d[2]), ref[0], delta=0.01)
+                self.assertAlmostEqual(math.sqrt(d[4]), ref[1], delta=0.02)
 
 
 class TestDop(unittest.TestCase):
@@ -146,6 +176,55 @@ class TestUere(unittest.TestCase):
 
     def test_solar_maximum_raises_the_error(self):
         self.assertGreater(run_sqf(UERE, [50, 200], G), run_sqf(UERE, [50, 5], G))
+
+
+class TestUereBandGap(unittest.TestCase):
+    """F5: the band table has no 10-20 degree entry (no FAA site fell in it).
+
+    The entries are 10-degree bin medians keyed by the bin centre, so the 5 and
+    25 degree entries are 20 degrees apart.  Below the first centre and above
+    the last one the nearest median holds; between two entries the value is
+    their straight line.  The gap is data, not arithmetic: it must be stated,
+    never read as a resolved equatorial peak.
+    """
+
+    def test_below_the_first_centre_holds_the_first_median(self):
+        first = run_sqf(UERE, [5, T["ssnRef"]], G)
+        for mlat in (0.0, -4.9, 4.99):
+            with self.subTest(mlat=mlat):
+                self.assertAlmostEqual(
+                    run_sqf(UERE, [mlat, T["ssnRef"]], G), first, places=9
+                )
+
+    def test_above_the_last_centre_holds_the_last_median(self):
+        last = run_sqf(UERE, [75, T["ssnRef"]], G)
+        for mlat in (75.01, 85.0, 90.0):
+            with self.subTest(mlat=mlat):
+                self.assertAlmostEqual(
+                    run_sqf(UERE, [mlat, T["ssnRef"]], G), last, places=9
+                )
+
+    def test_the_gap_is_the_straight_line_between_its_neighbours(self):
+        five = run_sqf(UERE, [5, T["ssnRef"]], G)
+        twenty_five = run_sqf(UERE, [25, T["ssnRef"]], G)
+        for mlat, weight in ((15.0, 0.5), (10.0, 0.25), (20.0, 0.75)):
+            with self.subTest(mlat=mlat):
+                want = five * (1 - weight) + twenty_five * weight
+                self.assertAlmostEqual(
+                    run_sqf(UERE, [mlat, T["ssnRef"]], G), want, places=6
+                )
+
+    def test_the_missing_band_is_stated_in_the_table_and_the_consumer(self):
+        src = UERE.read_text(encoding="utf-8")
+        table = TABLES.read_text(encoding="utf-8")
+        self.assertIn("10-20 degree bin", src)
+        self.assertIn("interpolation", src)
+        self.assertIn("10-20 degree bin", table)
+        # The gap is real: no band centre sits between 5 and 25 degrees.
+        self.assertNotIn([15, 3.0], [list(b) for b in T["uereBands"]])
+        centres = [b[0] for b in T["uereBands"]]
+        self.assertEqual(centres, sorted(centres))
+        self.assertEqual(centres[:2], [5, 25])
 
 
 class TestErrorEllipse(unittest.TestCase):
@@ -208,9 +287,32 @@ class TestErrorStep(unittest.TestCase):
 
 class TestFixState(unittest.TestCase):
     def test_satellite_counts(self):
-        self.assertEqual(fix_state(1, 8, [])[0], "ok")
-        self.assertEqual(fix_state(1, 3, [])[0], "degraded")
-        self.assertEqual(fix_state(1, 2, [])[0], "none")
+        # A receiver holding a fix (timeSinceFix 0) reports its counts at once:
+        # 8 satellites 3D, 3 satellites 2D, fewer no fix.
+        self.assertEqual(fix_state(1, 8, [0, 0])[0], "ok")
+        self.assertEqual(fix_state(1, 3, [0, 0])[0], "degraded")
+        self.assertEqual(fix_state(1, 2, [0, 0])[0], "none")
+
+    def test_the_first_fix_is_a_cold_start(self):
+        # F6: a receiver switching on holds no almanac or ephemeris, so the
+        # first call with satellites in view is the 26 s cold start, not "ok".
+        quality, since, acquire = fix_state(1, 8, [])
+        self.assertEqual(quality, "none")
+        self.assertAlmostEqual(since, 1.0)
+        self.assertAlmostEqual(acquire, 25.0)
+
+    def test_the_first_fix_arrives_after_26_seconds(self):
+        state = []
+        seconds = 0
+        quality = "none"
+        while seconds < 60:
+            quality, since, acquire = fix_state(1, 8, state)
+            state = [since, acquire]
+            seconds += 1
+            if quality == "ok":
+                break
+        self.assertEqual(quality, "ok")
+        self.assertEqual(seconds, 26)
 
     def test_a_short_outage_is_a_hot_start(self):
         s = [0, 0]
@@ -230,10 +332,19 @@ class TestFixState(unittest.TestCase):
 
 class TestTrackerUsesTheModel(unittest.TestCase):
     def test_wiring(self):
-        for token in ("gnssSatellites", "gnssDop", "gnssUere", "gnssErrorEllipse",
-                      "gnssErrorStep", "gnssFixState", "gameClockToUT",
-                      "terrainIntersectASL", "lineIntersectsSurfaces",
-                      "QEGVAR(weather,sunspotNumber)", "QEGVAR(weather,geomagneticLatitude)"):
+        for token in (
+            "gnssSatellites",
+            "gnssDop",
+            "gnssUere",
+            "gnssErrorEllipse",
+            "gnssErrorStep",
+            "gnssFixState",
+            "gameClockToUT",
+            "terrainIntersectASL",
+            "lineIntersectsSurfaces",
+            "QEGVAR(weather,sunspotNumber)",
+            "QEGVAR(weather,geomagneticLatitude)",
+        ):
             self.assertIn(token, UPDATE_SRC)
         for token in ("UNSOURCED", "currentHumidity", "nearestTerrainObjects"):
             self.assertNotIn(token, UPDATE_SRC)

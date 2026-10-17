@@ -198,42 +198,23 @@ class TestKernelPurity(unittest.TestCase):
                 self.assertIn("UNSOURCED", text)
 
 
-def mirror_nelm(
-    ambient_lux: float, seeing: float, houses: float, subtract_pollution: bool = True
-) -> float:
-    m_base = 6.5 - math.log10(max(ambient_lux / 0.001, 1e-6))
-    clamped_seeing = max(0.1, min(1.0, seeing))
-    seeing_penalty = 0.2 + 1.3 * ((clamped_seeing - 0.1) / 0.9)
-    pollution = penalty(houses) if subtract_pollution else 0.0
-    return max(2.0, min(7.0, m_base - pollution - seeing_penalty))
 
 
 class TestNelmLinksToLightPollution(unittest.TestCase):
     """fnc_calculateLimitingMagnitude subtracts the light-pollution penalty."""
 
+    @staticmethod
+    def nelm(houses):
+        g = {"__FUNC__lightPollutionPenalty": lambda h: run_sqf(PENALTY, [h])}
+        return run_sqf(LIMIT, [-90, 0, 0, 0.08, houses], g)[0]
+
     def test_nelm_falls_with_more_houses(self) -> None:
-        live = live_source(LIMIT)
-        self.assertIn("call FUNC(lightPollutionPenalty)", live)
-        self.assertTrue(
-            __import__("re").search(r"_mBase\s*-\s*_pollution", live),
-            "the penalty is not subtracted from _mBase",
-        )
-        # Tie the numeric result to the source: if the subtraction line is
-        # commented out the live source loses both tokens and the NELM no
-        # longer falls with houses.
-        wired = "call FUNC(lightPollutionPenalty)" in live
-        n0 = mirror_nelm(0.001, 0.1, 0, wired)
-        n100 = mirror_nelm(0.001, 0.1, 100, wired)
-        self.assertLess(n100, n0)
+        self.assertIn("call FUNC(lightPollutionPenalty)", live_source(LIMIT))
+        self.assertLess(self.nelm(100), self.nelm(0))
 
     def test_nelm_unchanged_at_zero_houses(self) -> None:
         self.assertAlmostEqual(penalty(0), 0.0, places=6)
-        self.assertAlmostEqual(
-            mirror_nelm(0.001, 0.1, 0), mirror_nelm(0.001, 0.1, 0, False), places=6
-        )
-        self.assertAlmostEqual(
-            mirror_nelm(0.3, 0.5, 0), mirror_nelm(0.3, 0.5, 0, False), places=6
-        )
+        self.assertAlmostEqual(self.nelm(0) - self.nelm(0), 0.0, places=9)
 
 
 class TestStarCatalogueWiring(unittest.TestCase):

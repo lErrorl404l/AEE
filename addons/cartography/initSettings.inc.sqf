@@ -56,7 +56,8 @@ AEE_SETTING_CHECKBOX(mapBiomeLayer,"AEE HUD","Displays",true);
 AEE_SETTING_CHECKBOX(mapWindLayer,"AEE HUD","Displays",true);
 
 // Magnetic-declination rose: the true-north and magnetic-north rays, from
-// EGVAR(core,magneticDeclinationDeg) (the compass #78 value).  Default on.
+// EGVAR(core,magneticDeclinationDeg) (the WMM declination of the place, not the
+// compass reading, which carries the local ferrous deflection).  Default on.
 AEE_SETTING_CHECKBOX(mapDeclinationRose,"AEE HUD","Displays",true);
 
 // Click-to-query: click the map to read the AEE state at that point.  Default

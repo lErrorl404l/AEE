@@ -153,6 +153,7 @@ def main():
         "tools/tests/test_gnss.py",
         "tools/tests/test_datalink.py",
         "tools/tests/test_twilight.py",
+        "tools/tests/test_gagge.py",
         "tools/tests/test_material.py",
         "tools/tests/test_equipment_classifier.py",
         "tools/tests/test_device_values.py",
@@ -344,6 +345,9 @@ def main():
         # The thermal-host stand-down gate, the vision-mode reset lifecycle and
         # the declared thermal dependency (issue #299).
         "tools/tests/test_pp_thermal_host_gate.py",
+        # Round-2 engine-unit and environment defect locks (the engine unit
+        # audit and the environment audit of 2026-10-17).
+        "tools/tests/test_engine_units_round2.py",
     ]
     # Part (b) needs a `hemtt release` tree, so it runs in the full sweep only.
     release_suites = [

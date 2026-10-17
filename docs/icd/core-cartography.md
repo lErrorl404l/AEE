@@ -17,7 +17,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/cartography/functions/hud/fnc_mapClickQuery.sqf:53` | Air temperature in C |
 | `aee_core_currentWBGT` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/cartography/functions/hud/fnc_mapClickQuery.sqf:54` | Wet bulb globe temperature in C |
 | `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/cartography/functions/hud/fnc_mapClickQuery.sqf:55` | Ground state |
-| `aee_core_magneticDeclinationDeg` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/cartography/functions/hud/fnc_mapDeclinationRose.sqf:10` | Compass deviation in degrees |
+| `aee_core_magneticDeclinationDeg` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/cartography/functions/hud/fnc_mapDeclinationRose.sqf:10` | Magnetic declination in degrees (WMM), without the local ferrous deflection |
 | `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/cartography/functions/hud/fnc_mapClickQuery.sqf:56` | Snow depth in metres |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.

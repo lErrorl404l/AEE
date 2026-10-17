@@ -8,8 +8,9 @@
  *
  * The declination is the mod's own computed value
  * (EGVAR(core,magneticDeclinationDeg), produced by
- * FUNC(magnetism,calculateCompassDeviation)): degrees east, positive east,
- * clamped +-30.  The kernel reads no world and no engine state.
+ * FUNC(magnetism,calculateCompassDeviation)): the WMM field of the place
+ * alone, without the local ferrous deflection, in degrees east, positive
+ * east, clamped +-30.  The kernel reads no world and no engine state.
  *
  * World axes: +x is east, +y is north, and the map is north up, so true
  * north is the +y ray.  A declination of D degrees east puts magnetic north

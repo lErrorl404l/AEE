@@ -9,8 +9,8 @@ A variable named `aee_weather_{leaf}` is written as `EGVAR(weather,leaf)` by the
 
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
-| `aee_weather_geomagneticLatitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/hud/functions/hud/fnc_trackerUpdate.sqf:101` | Observer geomagnetic (WMM2025 dipole) latitude, deg |
-| `aee_weather_sunspotNumber` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/hud/functions/hud/fnc_trackerUpdate.sqf:103` | UNKNOWN |
+| `aee_weather_geomagneticLatitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/hud/functions/hud/fnc_trackerUpdate.sqf:102` | Observer geomagnetic (WMM2025 dipole) latitude, deg |
+| `aee_weather_sunspotNumber` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/hud/functions/hud/fnc_trackerUpdate.sqf:104` | UNKNOWN |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

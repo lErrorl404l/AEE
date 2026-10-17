@@ -14,6 +14,13 @@
  * 19.6 m at solar maximum: the measured value is scaled by
  * (1 + SSN / 179) / (1 + SSN_ref / 179), 179 the mean SILSO cycle maximum.
  *
+ * The band table holds one median per 10-degree bin, keyed by the bin centre.
+ * No FAA site falls in the 10-20 degree bin, so the table has no 15-degree
+ * entry and the 5-degree and 25-degree entries are 20 degrees apart: a query
+ * between them takes the straight line between those two medians.  That
+ * segment is an interpolation, not a measurement.  Below the first centre and
+ * above the last one the nearest bin median holds.
+ *
  * Arguments:
  *   0: |geomagnetic latitude|, deg (NUMBER)
  *   1: sunspot number (NUMBER)
@@ -22,10 +29,13 @@
 params [["_mlat", 45, [0]], ["_ssn", 100, [0]]];
 private _t = call FUNC(gnssTables);
 private _bands = _t get "uereBands";
+private _first = _bands select 0;
+private _last = _bands select -1;
 private _m = abs _mlat;
-private _u = (_bands select 0) select 1;
-if (_m >= ((_bands select -1) select 0)) then {
-    _u = (_bands select -1) select 1;
+// |mlat| < 5 lies inside the 0-10 degree bin, so it takes that bin's median.
+private _u = _first select 1;
+if (_m >= (_last select 0)) then {
+    _u = _last select 1;
 } else {
     for "_i" from 0 to ((count _bands) - 2) do {
         private _lo = _bands select _i;
