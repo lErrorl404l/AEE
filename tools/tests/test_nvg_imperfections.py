@@ -235,7 +235,6 @@ class TestImperfectionWiring(unittest.TestCase):
         # the tube model already owns.  A new handle adds a new name and fails.
         known_effects = {
             "RadialBlur",
-            "ChromAberration",
             "WetDistortion",
             "ColorCorrections",
             "DynamicBlur",
@@ -246,11 +245,13 @@ class TestImperfectionWiring(unittest.TestCase):
             "DepthOfField",
         }
         present = set(re.findall(r'"(\w+)"', self.parent))
+        # PP-08 removed the chroma handle: an image intensifier is monochrome,
+        # so the parent must not create one again.
+        self.assertNotIn("ChromAberration", present)
         self.assertEqual(
             present & known_effects,
             {
                 "RadialBlur",
-                "ChromAberration",
                 "ColorCorrections",
                 "DynamicBlur",
                 "FilmGrain",
