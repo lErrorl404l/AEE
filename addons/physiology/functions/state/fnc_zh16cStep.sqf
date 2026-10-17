@@ -21,11 +21,17 @@ dive-computer "a" column).  NOT the ZHL-16b variant (5-minute first
 compartment, used by Subsurface): 16C keeps compartment 1 at 4 min.
 
 Input:  [_depthM, _fN2, _fHe, _tissues]  - depth, gas mix, 16x2 state
+        [_depthM, _fN2, _fHe, _tissues, _gf, _pAmbOverride, _dtSec]
+        Additional arguments are optional. _gf is the gradient factor
+        (default 1.0, pure Bühlmann). _pAmbOverride is a barometric
+        pressure for a hypobaric solve (altitude DCS, issue #135).
+        _dtSec is the step length in seconds (default 1, the dive cadence);
+        the altitude DCS solver passes its own step (issue #280).
 Output: [newTissues, ceilingM]  - updated state and the controlling
         ceiling depth (metres, positive down)
 */
 
-params [["_depthM", 0, [0]], ["_fN2", 0.79, [0]], ["_fHe", 0, [0]], ["_tissues", [], [[]]], ["_gf", 1, [0]], ["_pAmbOverride", -1, [0]]];
+params [["_depthM", 0, [0]], ["_fN2", 0.79, [0]], ["_fHe", 0, [0]], ["_tissues", [], [[]]], ["_gf", 1, [0]], ["_pAmbOverride", -1, [0]], ["_dtSec", 1, [0]]];
 
 // Fresh state = N2 equilibrium at the surface breathing air:
 // PN2 = (1 - 0.0627) * 0.79 = 0.74047 bar in every compartment.  A diver
@@ -68,9 +74,10 @@ private _pInspiredN2 = (_pAmb - _pH2O) * _fN2;
 private _pInspiredHe = (_pAmb - _pH2O) * _fHe;
 
 // ─── Tissue loading (one-step exponential per compartment) ───────────────
-// The half-times are in MINUTES; the SQF integrates at 1-second cadence,
-// so the time constant in the exponential is 1/60 minutes.
-private _dtMin = 1 / 60;
+// The half-times are in MINUTES and the step is in seconds. The dive loop
+// integrates at the 1 s default cadence; any other caller passes its own
+// step, so the declared step length is honoured (issue #280).
+private _dtMin = (_dtSec max 0) / 60;
 private _newN2 = [];
 private _newHe = [];
 for "_i" from 0 to 15 do {

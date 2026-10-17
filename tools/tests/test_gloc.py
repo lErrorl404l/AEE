@@ -34,10 +34,22 @@ def barometric_pressure_pa(alt_m):
 
 # ─── Altitude DCS (fnc_calculateAltitudeDCS.sqf) ───────────────────────────
 # Reuses the ZH-L16C tissue solver with pAmbOverride = barometric pressure.
-# Risk from R = max tissue N2 / pAmb (the controlling slowest compartment,
-# not the diving a/b ceiling).  Risk = clamp((R - 1.5) / 0.5, 0, 1).
+# The risk is the exposure-integrated hazard, not the instantaneous ratio
+# (issue #280):
+#   severity = max(0, (R - 1.5) / 0.5)   R = max tissue N2 / pAmb
+#   hazard   = severity ** HAZARD_EXP     per second, at full severity
+#   risk     = 1 - exp(-sum(hazard * dt) / CALIB_SEC)
+# The exponent and the time constant are fitted to the two Haske &
+# Pilmanis 2002 anchors: 20% at 25,000 ft / 45 min and 20% at
+# 22,000 ft / 200 min.  The interval is walked in sub-steps of at most
+# SUBSTEP_S seconds (bounded by MAX_SUBSTEPS), so the mirror matches the
+# SQF quadrature.
 
 # ZH-L16C compartment half-times (minutes) and N2 M-value a (surface).
+HAZARD_EXP = 1.2
+CALIB_SEC = 10352.0
+SUBSTEP_S = 30.0
+MAX_SUBSTEPS = 120
 T_HALF_N2 = [
     4.0,
     8.0,
@@ -118,14 +130,23 @@ def zh16c_step(tissues, p_amb, f_n2, dt_s, p_amb_override=None):
 
 
 def altitude_dcs_risk(alt_m, exposure_s, tissues=None):
-    """R = max tissue N2 / pAmb; risk = clamp((R-1.5)/0.5, 0, 1)."""
+    """Exposure-integrated DCS risk over exposure_s seconds."""
     if tissues is None:
         tissues = fresh_tissues()
     p_amb_bar = barometric_pressure_pa(alt_m) / 100000.0
-    t = zh16c_step(tissues, None, 0.79, exposure_s, p_amb_override=p_amb_bar)
-    r_max = max(t[:16]) / p_amb_bar
-    risk = max(0.0, min(1.0, (r_max - 1.5) / 0.5))
-    return risk, r_max, t
+    step_s = max(exposure_s, 0.0)
+    n_sub = min(MAX_SUBSTEPS, math.ceil(step_s / SUBSTEP_S))
+    sub_s = step_s / n_sub if n_sub > 0 else 0.0
+    dose = 0.0
+    for _ in range(n_sub):
+        r = max(tissues[:16]) / p_amb_bar if p_amb_bar > 0 else 0.0
+        severity = (r - 1.5) / 0.5
+        if severity > 0:
+            dose += (severity**HAZARD_EXP) * sub_s
+        tissues = zh16c_step(tissues, None, 0.79, sub_s, p_amb_override=p_amb_bar)
+    r_max = max(tissues[:16]) / p_amb_bar if p_amb_bar > 0 else 0.0
+    risk = max(0.0, min(1.0, 1.0 - math.exp(-dose / CALIB_SEC)))
+    return risk, r_max, tissues
 
 
 # ─── G-LOC (fnc_calculateGLOC.sqf) ─────────────────────────────────────────
@@ -276,6 +297,48 @@ class TestAltitudeDCS(unittest.TestCase):
         # part of the curve (risk meaningfully above 0).
         risk, r, _ = altitude_dcs_risk(25000 * 0.3048, 45 * 60)
         self.assertGreater(risk, 0.0)
+
+    def test_25k_1s_step_is_low_risk(self):
+        # One tick at 25,000 ft. The exposure is one second, so the risk is
+        # far below the 45-minute anchor and not the 0.94 the instantaneous
+        # supersaturation ratio reported (#280).
+        risk, _, _ = altitude_dcs_risk(25000 * 0.3048, 1)
+        self.assertLess(risk, 0.05)
+
+    def test_25k_2700s_approaches_the_anchor(self):
+        # Haske & Pilmanis 2002: 20% DCS at 25,000 ft for 45 min (2700 s).
+        risk, _, _ = altitude_dcs_risk(25000 * 0.3048, 2700)
+        self.assertAlmostEqual(risk, 0.20, delta=0.02)
+
+    def test_22k_12000s_approaches_the_anchor(self):
+        # The second cited anchor: 22,000 ft for 200 min (12,000 s).
+        risk, _, _ = altitude_dcs_risk(22000 * 0.3048, 12000)
+        self.assertAlmostEqual(risk, 0.20, delta=0.02)
+
+    def test_exposure_composes_across_ticks(self):
+        # The engine calls the kernel once per second, so 2700 one-second
+        # steps must accumulate the exposure of one 2700 s step.
+        tissues = fresh_tissues()
+        compounded = 0.0
+        for _ in range(2700):
+            risk, _, tissues = altitude_dcs_risk(25000 * 0.3048, 1, tissues)
+            compounded = 1.0 - (1.0 - compounded) * (1.0 - risk)
+        single, _, _ = altitude_dcs_risk(25000 * 0.3048, 2700)
+        self.assertAlmostEqual(compounded, single, delta=0.01)
+
+    def test_no_step_at_the_gate(self):
+        # The caller gates at ~21,000 ft (6400 m). One tick there is a small
+        # risk, not the 0.32 the ratio gave (#280).
+        for alt_ft in (21000, 21200, 25000):
+            risk, _, _ = altitude_dcs_risk(alt_ft * 0.3048, 1)
+            self.assertLess(risk, 0.001)
+
+    def test_risk_keeps_rising_above_the_curve_shoulder(self):
+        # Severity reaches 1.0 at R = 2.0, but the hazard keeps growing with
+        # altitude: the dose is the excess supersaturation, not a clamp.
+        low, _, _ = altitude_dcs_risk(30000 * 0.3048, 2700)
+        high, _, _ = altitude_dcs_risk(35000 * 0.3048, 2700)
+        self.assertGreater(high, low)
 
     def test_40k_15s_risk(self):
         # 40k at 15 s: fast but real exposure.

@@ -19581,7 +19581,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 294.0,
+    "value": 0.294,
     "unit": "kg",
     "source": "ruger_lcp_3752",
     "grade": "documented"
@@ -19620,7 +19620,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 317.0,
+    "value": 0.317,
     "unit": "kg",
     "source": "ruger_lcpii_13705",
     "grade": "documented"
@@ -24499,7 +24499,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 799.0,
+    "value": 0.799,
     "unit": "kg",
     "source": "ruger_markivstandard_40104",
     "grade": "documented"
@@ -36863,7 +36863,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 674.0,
+    "value": 0.674,
     "unit": "kg",
     "source": "ruger_security9_3810",
     "grade": "documented"
@@ -37950,7 +37950,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 992.0,
+    "value": 0.992,
     "unit": "kg",
     "source": "ruger_newmodelsinglesix_0661",
     "grade": "documented"
@@ -38260,7 +38260,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 737.0,
+    "value": 0.737,
     "unit": "kg",
     "source": "ruger_sp101_5737",
     "grade": "documented"
@@ -38537,7 +38537,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 881.0,
+    "value": 0.881,
     "unit": "kg",
     "source": "ruger_sr1911standard_16706",
     "grade": "documented"
@@ -44100,7 +44100,7 @@
     "grade": "claimed"
    },
    "mass_kg": {
-    "value": 850.0,
+    "value": 0.85,
     "unit": "kg",
     "source": "ruger_wrangler_2003",
     "grade": "documented"
