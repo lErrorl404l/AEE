@@ -471,12 +471,21 @@ if (GVAR(opticsEnabled)) then {
 // Local renderer bridges; each function self-gates on hasInterface.
 [] call EFUNC(atmos,updateRainbow);
 [] call EFUNC(atmos,updateLocalWindParams);
+[] call EFUNC(atmos,updateWindyCoef);
 
 // The engine weather writer maps AEE's modelled atmosphere onto the engine's
 // own overcast, rain and surface humidity (issue #155).  It runs after the
 // front, precipitation and fog models, whose published rates it reads, and
 // self-gates on the operator setting and on manual mission weather.
 [] call EFUNC(atmos,applyEngineWeather);
+
+// The precipitation phase reaches the renderer on the client-local
+// `setRain [rainParams]` form; the simul weather bridge reuses the modelled
+// overcast as its cloud-structure axis; the temperature read publishes the
+// engine's black/white surface pair.
+[] call EFUNC(atmos,applyPrecipitationPhase);
+[] call EFUNC(atmos,updateSimulWeather);
+[] call EFUNC(thermal,readEngineAmbientTemperature);
 
 // ─── Post-Process Effects & HUD ─────────────────────────────────────────
 [] call EFUNC(optics,applyRainOnOpticsFX);

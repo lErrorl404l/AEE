@@ -79,6 +79,15 @@ if (_hour > 8 && (_hour < 18) && (_temp > 25)) then {
     _convective = _convective + (0.1 + ((_temp - 25) / 50) * 0.1);   // 0.1-0.2
 };
 
+// In-cloud turbulence: the engine's in-cloud probe (aee_core_simulCloudDensity,
+// published by fnc_updateSimulWeather) is real visible moisture, so a flight
+// inside a convective cloud is turbulent whatever the surface temperature.
+// The modelled density 0..1 scales the term; -1 (no reading) adds nothing.
+private _cloudDensity = missionNamespace getVariable [QEGVAR(core,simulCloudDensity), -1];
+if (_cloudDensity isEqualType 0 && _cloudDensity > 0) then {
+    _convective = _convective + (_cloudDensity * 0.3);
+};
+
 // ─── Sum & clamp ───────────────────────────────────────────────────────
 private _turbulence = (_mechanical + _convective) min 1.0;
 

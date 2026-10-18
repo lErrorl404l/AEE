@@ -10,6 +10,7 @@ PREP(moduleStormInit);
 PREP(moduleSeismicInit);
 PREP(updateEnvironment);
 PREP(updateSimClock);
+PREP(warnManualOverride);
 PREP(initKernelTable);
 PREP(probeExtension);
 PREP(dispatchKernel);

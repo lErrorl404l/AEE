@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/thermal/`
 - Direction: one way. `core` must initialise before `thermal` reads.
-- Variables crossing: 45.
+- Variables crossing: 48.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -37,6 +37,9 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentWaterTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:556` | Water temperature in C |
 | `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:244` | Wind vector |
 | `aee_core_enabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateGlobeTemperature.sqf:42` | Master switch |
+| `aee_core_engineAirTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_readEngineAmbientTemperature.sqf:36` | Engine air temperature in C, from the read-only `ambientTemperature` |
+| `aee_core_engineBlackSurfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_readEngineAmbientTemperature.sqf:39` | Engine sunlit (black) surface temperature in C, from the read-only `ambientTemperature` |
+| `aee_core_engineWhiteSurfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_readEngineAmbientTemperature.sqf:42` | Engine shaded (white) surface temperature in C, from the read-only `ambientTemperature` |
 | `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateHypothermiaRisk.sqf:21` | Ground state |
 | `aee_core_groundSurfaceTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/ground/fnc_calculateGroundTemperature.sqf:142` | UNKNOWN |
 | `aee_core_microclimateRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:160` | UNKNOWN |

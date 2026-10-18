@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (900)
+### Public functions (906)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -199,6 +199,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_armour_fnc_getVehicleArmour`
 - `aee_armour_fnc_penetrationGate`
 - `aee_atmos_fnc_applyEngineWeather`
+- `aee_atmos_fnc_applyPrecipitationPhase`
 - `aee_atmos_fnc_calculateAirframeIcing`
 - `aee_atmos_fnc_calculateAshSettling`
 - `aee_atmos_fnc_calculateCloudCeiling`
@@ -220,6 +221,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculateRefraction`
 - `aee_atmos_fnc_calculateRelativeHumidity`
 - `aee_atmos_fnc_calculateSO2Plume`
+- `aee_atmos_fnc_calculateSnowRainParams`
 - `aee_atmos_fnc_calculateStationPressure`
 - `aee_atmos_fnc_calculateTerrainWind`
 - `aee_atmos_fnc_calculateTurbulence`
@@ -237,10 +239,12 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_updateLocalWindParams`
 - `aee_atmos_fnc_updatePressure`
 - `aee_atmos_fnc_updateRainbow`
+- `aee_atmos_fnc_updateSimulWeather`
 - `aee_atmos_fnc_updateSimulWeatherLayers`
 - `aee_atmos_fnc_updateVolcanic`
 - `aee_atmos_fnc_updateWeatherFront`
 - `aee_atmos_fnc_updateWind`
+- `aee_atmos_fnc_updateWindyCoef`
 - `aee_ballistics_fnc_calculateAirDensity`
 - `aee_ballistics_fnc_calculateAirDensityKernel`
 - `aee_ballistics_fnc_calculateAmmoTemperature`
@@ -373,6 +377,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_core_fnc_updateEmp`
 - `aee_core_fnc_updateEnvironment`
 - `aee_core_fnc_updateSimClock`
+- `aee_core_fnc_warnManualOverride`
 - `aee_diagnostics_fnc_consistencyFailureLine`
 - `aee_diagnostics_fnc_consistencyLoadTable`
 - `aee_diagnostics_fnc_consistencyLog`
@@ -863,6 +868,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_thermal_fnc_planckBandRadiance`
 - `aee_thermal_fnc_planckExponent`
 - `aee_thermal_fnc_probeThermalCapability`
+- `aee_thermal_fnc_readEngineAmbientTemperature`
 - `aee_thermal_fnc_resolvePaintIndexFromSelections`
 - `aee_thermal_fnc_resolveSelectionPaintIndex`
 - `aee_thermal_fnc_resolveThermalBand`
@@ -1032,7 +1038,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (94)
+### Public core state variables (99)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -1081,6 +1087,9 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_ehId_`
 - `aee_core_empActive`
 - `aee_core_enabled`
+- `aee_core_engineAirTemperature`
+- `aee_core_engineBlackSurfaceTemperature`
+- `aee_core_engineWhiteSurfaceTemperature`
 - `aee_core_fnc_calculateEmpCoupling`
 - `aee_core_fnc_calculateEmpDegradation`
 - `aee_core_fnc_calculateEmpField`
@@ -1117,6 +1126,8 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_seismicMagnitude`
 - `aee_core_seismicStart`
 - `aee_core_simTime`
+- `aee_core_simulCloudDensity`
+- `aee_core_simulInClouds`
 - `aee_core_skinTemp`
 - `aee_core_snowDepth_m`
 - `aee_core_snowfallRate`

@@ -138,6 +138,11 @@ client-only and derives from deterministic state, so none is broadcast.
 | Variable | Subsystem | Purpose |
 |---|---|---|
 | `aee_atmos_localWindActive` | atmos | True while the rotor-wash visual is applied |
+| `aee_core_simulInClouds` | atmos | Engine in-cloud probe at the observer, from the read-only `simulInClouds`. Published API for the icing and turbulence models |
+| `aee_core_simulCloudDensity` | atmos | Engine in-cloud density 0..1 at the observer, from the read-only `simulCloudDensity`; -1 when simul weather is disabled. Published API for the icing and turbulence models |
+| `aee_core_engineAirTemperature` | thermal | Engine air temperature in C, from the read-only `ambientTemperature` |
+| `aee_core_engineBlackSurfaceTemperature` | thermal | Engine sunlit (black) surface temperature in C, from the read-only `ambientTemperature` |
+| `aee_core_engineWhiteSurfaceTemperature` | thermal | Engine shaded (white) surface temperature in C, from the read-only `ambientTemperature` |
 
 ### Air density and ballistics
 

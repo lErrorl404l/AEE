@@ -1035,8 +1035,11 @@ Relations (command DB, corroborated by the world config):
   comes FROM; `windStr` 0..1. Setters: `setWindStr`, `setWindDir`,
   `setWindForce` (max wind change rate).
 - Ambient state: `gusts`, `waves`, `rainbow`, `humidity` are read-only;
-  `ambientTemperature` (2.06) is read and written and drives the black-surface
-  and white-surface temperatures. The engine has no `pressure` quantity at all.
+  `ambientTemperature` (2.06) is read only and returns
+  `[airTemperature, blackSurfaceTemperature, whiteSurfaceTemperature]`. The
+  engine has no `pressure` quantity at all. Rain carries one particle form:
+  `setRain rainParams` (2.08) selects it, and element 15 of the `rainParams`
+  array is the `snow` flag.
 
 **Locality.** `setOvercast`, `setRain`, `setFog`, `setWindDir` on the SERVER
 propagate globally; on a CLIENT the effect is local and temporary and reverts to

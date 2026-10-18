@@ -7,9 +7,13 @@ enabled = true
 [stringtables.l02_usage]
 options.ignore_unused = true
 
-[sqf.s09_banned_command]
+[sqf.banned_commands]
 options.ignore = [
     "addPublicVariableEventHandler",
+    # simulSetHumidity: the wiki lists it under Broken Commands, but the same
+    # page records it as implemented since Arma 3 2.18.  It is used behind the
+    # simul-weather opt-in (fnc_updateSimulWeather).
+    "simulSetHumidity",
 ]
 
 [sqf.s28_banned_macros]

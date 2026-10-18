@@ -33,7 +33,15 @@ _shedRate = _shedRate ^ (_interval / 5);   // per-tick multiplier scales with in
 
 // ─── Liquid water content proxy (FAR 25 App C envelope) ──────────────────
 // Cloud LWC up to ~0.5 g/m3; precipitation adds up to ~2 g/m3.
+// The engine's in-cloud probe (aee_core_simulCloudDensity, published by
+// fnc_updateSimulWeather) replaces the overcast term with the REAL cloud
+// density when it is available; a dedicated server or a disabled simul
+// weather leaves the value at -1, so the overcast proxy stays the fallback.
 private _lwc = (_overcast * 0.5) + (_rain * 2);
+private _cloudDensity = missionNamespace getVariable [QEGVAR(core,simulCloudDensity), -1];
+if (_cloudDensity isEqualType 0 && _cloudDensity >= 0) then {
+    _lwc = (_cloudDensity * 0.5) + (_rain * 2);
+};
 
 // ─── Collection efficiency by ice type ───────────────────────────────────
 // Glaze (0 to -10 °C): wet growth, high collection.
@@ -48,7 +56,10 @@ if (_temp > -10) then {
 // ─── Accretion ───────────────────────────────────────────────────────────
 private _iceMass = missionNamespace getVariable [QGVAR(iceAccretion_kg), 0];
 
-if (_temp > -20 && _temp < 0 && (_overcast > 0.5 || _rain > 0)) then {
+// A positive in-cloud probe is visible moisture even when the amount is low,
+// so it joins the gate (fnc_updateSimulWeather publishes it; false default).
+private _inClouds = missionNamespace getVariable [QEGVAR(core,simulInClouds), false];
+if (_temp > -20 && _temp < 0 && (_overcast > 0.5 || _rain > 0 || _inClouds)) then {
     private _icingRate = _lwc * _efficiency * 0.05;   // kg/s
     _iceMass = _iceMass + (_icingRate * _interval);
 } else {

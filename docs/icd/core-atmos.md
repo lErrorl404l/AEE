@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/atmos/`
 - Direction: one way. `core` must initialise before `atmos` reads.
-- Variables crossing: 44.
+- Variables crossing: 46.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -43,6 +43,8 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_pressureHistory` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePressureTrend.sqf:34` | UNKNOWN |
 | `aee_core_pushedWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:102` | Last wind vector pushed to the engine `wind` command |
 | `aee_core_referenceAltitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updatePressure.sqf:25` | UNKNOWN |
+| `aee_core_simulCloudDensity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateAirframeIcing.sqf:41` | Engine in-cloud density 0..1 at the observer, from the read-only `simulCloudDensity`; -1 when simul weather is disabled. Published API for the icing and turbulence models |
+| `aee_core_simulInClouds` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateAirframeIcing.sqf:61` | Engine in-cloud probe at the observer, from the read-only `simulInClouds`. Published API for the icing and turbulence models |
 | `aee_core_snowfallRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:90` | Snowfall rate |
 | `aee_core_stormOverrideIntensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateLightning.sqf:27` | UNKNOWN |
 | `aee_core_stormOverrideType` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateLightning.sqf:23` | UNKNOWN |

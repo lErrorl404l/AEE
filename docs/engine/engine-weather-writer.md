@@ -13,8 +13,8 @@ runs once per environment tick from
 
 The contract is the local Arma 3 command DB, acemod/arma3-wiki dist **v2.22**,
 one page per command at `commands/<name>.yml`. The column-0 `since` block
-gives the introduction version. A nested, indented `since` block belongs to
-one syntax alternative, never to the command.
+gives the introduction version. A nested, indented `since` block belongs to one
+syntax alternative, never to the command.
 
 Two engine facts decide the design and are read from the same pages:
 
@@ -41,16 +41,22 @@ write another function already makes:
 | humidity | `setHumidity` | Local (per client) | `addons/atmos/functions/state/fnc_applyEngineWeather.sqf` (this writer) |
 | overcast | `setOvercast` | Local; global from the server | `addons/atmos/functions/state/fnc_applyEngineWeather.sqf` (this writer) |
 | rain | `setRain` | Global from the server | `addons/atmos/functions/state/fnc_applyEngineWeather.sqf` (this writer) |
+| rain particles (phase) | `setRain` | Local (per client) | `addons/atmos/functions/state/fnc_applyPrecipitationPhase.sqf` |
 | fog | `setFog` | Global | `addons/atmos/functions/state/fnc_updateFog.sqf` |
 | waves | `setWaves` | Local | `addons/maritime/functions/fnc_updateEngineWaves.sqf` |
 | rainbow | `setRainbow` | Local | `addons/atmos/functions/state/fnc_updateRainbow.sqf` |
 | lightnings | `setLightnings` | Local | `addons/atmos/functions/state/fnc_updateEngineLightnings.sqf` |
+| simul cloud cover | `simulSetHumidity` | Local | `addons/atmos/functions/state/fnc_updateSimulWeather.sqf` |
+| wind aloft (howl) | `enableEnvironment` | Local | `addons/atmos/functions/state/fnc_updateWindyCoef.sqf` |
+| engine surface temperature | `ambientTemperature` | Unspecified (read only) | `addons/thermal/functions/environment/fnc_readEngineAmbientTemperature.sqf` |
 
 Two writers for the one engine wind vector would compound, because
 `fnc_updateWind` reads the engine wind every tick (ADR-041). The engine owns
 the gust signal, so AEE writes `setGusts` nowhere: `fnc_updateWind` reads the
-engine gust and publishes the derived value. `setWaves` and `setLightnings`
-need *Manual Override* in the Eden intel section to render at all.
+engine gust and publishes the derived value (see section 8). `setWaves` and
+`setLightnings` need *Manual Override* in the Eden intel section to render at
+all, and AEE logs one warning per session because a script cannot read that
+flag (see section 8).
 
 ## 3. Locality
 
@@ -58,6 +64,9 @@ need *Manual Override* in the Eden intel section to render at all.
   temporary, so the writer is server-authoritative here.
 - **Client**: `setHumidity`. The command has no global form, so each client
   writes its own surface humidity. The writer gates it on `hasInterface`.
+- **Client**: the `setRain [rainParams]` phase form, `simulSetHumidity` and
+  the `enableEnvironment` wind coefficient. Each is local to the machine, so
+  each bridge gates on `hasInterface`.
 
 ## 4. Interpolation
 
@@ -95,9 +104,10 @@ the writer reading back its own engine write and compounding.
   rain to zero.
 - **Humidity**: the modelled relative humidity in percent divided by 100, to
   the engine's surface-humidity 0..1.
-- **Phase**: the engine renders one precipitation form, so phase does not
-  change the engine intensity. The only phase lever is the client-local
-  `setRain []` rain-params form (Arma 3 2.8), which is out of scope here.
+- **Phase**: the engine renders one precipitation form. The phase lever is the
+  client-local `setRain [rainParams]` form (Arma 3 2.08): element 15 is the
+  `snow` flag, and `setRain []` resets to the config form.
+  `fnc_applyPrecipitationPhase` writes it once per phase change.
 - **Wind**: owned by `fnc_updateWind`. The engine raises wind with overcast,
   so the overcast write below is the writer's only wind lever.
 
@@ -132,6 +142,37 @@ The only engine-visible levers AEE holds near inland water are:
 
 A river, a flood or a wet track stays a plotted state until the engine exposes
 a water body, which it does not. This is the recorded ceiling.
+
+## 8. The levers added after the first writer
+
+Four engine levers were unused. Each is now driven, and each is a separate
+bridge with its own gate. The command facts are the local command DB
+(acemod/arma3-wiki v2.22).
+
+| Lever | Command and form | Locality | Since | Bridge |
+|---|---|---|---|---|
+| Precipitation phase | `setRain rainParams` (syntax 2) and `setRain []` | Local | Arma 3 2.08 | `addons/atmos/functions/state/fnc_applyPrecipitationPhase.sqf` |
+| Cloud structure | `simulSetHumidity value` | Unspecified (local to the machine) | Arma 3 2.18 (working; 0.50 stub) | `addons/atmos/functions/state/fnc_updateSimulWeather.sqf` |
+| In-cloud probe (read) | `simulInClouds pos`, `simulCloudDensity pos` | Local read | Arma 3 1.00 | `addons/atmos/functions/state/fnc_updateSimulWeather.sqf` |
+| Wind aloft (howl) | `enableEnvironment [ambientLife, ambientSound, windyCoef]` | Local | `windyCoef` Arma 3 2.12 | `addons/atmos/functions/state/fnc_updateWindyCoef.sqf` |
+| Surface temperatures (read) | `ambientTemperature` | Unspecified read | Arma 3 2.06 | `addons/thermal/functions/environment/fnc_readEngineAmbientTemperature.sqf` |
+
+Two levers are deliberately NOT written:
+
+- **`setGusts`** (Local, Arma 3 0.50). The engine owns the gust signal and
+  `fnc_updateWind` reads it every tick to publish `aee_core_currentGusts`
+  (ADR-041, the single-owner rule for the engine wind). A scripted gust would
+  be read back through that per-tick read and compound, so the engine keeps
+  the signal. The `gusts` row in the owner table stays `none`.
+- **A setter for the engine air temperature.** None exists: the command DB has
+  no `setAmbientTemperature` and no command that writes the black or white
+  surface temperature. `ambientTemperature` is read only.
+
+The `setWaves` and `setLightnings` writes need the Eden intel *Manual
+Override* flag before the engine draws anything, and the command DB has no
+command that reads or sets that flag, so a script can neither detect it nor
+enable it. Both bridges call `aee_core_fnc_warnManualOverride`, which logs one
+warning per session instead of a silent no-op.
 
 ## Related records
 

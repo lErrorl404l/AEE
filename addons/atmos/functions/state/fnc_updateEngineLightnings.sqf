@@ -21,3 +21,9 @@ if !(_risk isEqualType 0) then { _risk = 0; };
 _risk = (_risk max 0) min 1;
 
 0 setLightnings _risk;
+
+// As for waves: the command DB records that this write draws nothing unless
+// the mission selects *Manual Override* in the Eden intel section
+// (commands/setLightnings.yml, acemod/arma3-wiki v2.22), and no command reads
+// or sets that flag.  Warn once per session.
+[] call EFUNC(core,warnManualOverride);

@@ -20,8 +20,8 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 
 | Producer | Consumer | Variables | Document |
 |---|---|---|---|
-| `core` | `thermal` | 45 | [core-thermal.md](core-thermal.md) |
-| `core` | `atmos` | 44 | [core-atmos.md](core-atmos.md) |
+| `core` | `thermal` | 48 | [core-thermal.md](core-thermal.md) |
+| `core` | `atmos` | 46 | [core-atmos.md](core-atmos.md) |
 | `core` | `weather` | 43 | [core-weather.md](core-weather.md) |
 | `core` | `actions` | 28 | [core-actions.md](core-actions.md) |
 | `core` | `persistence` | 28 | [core-persistence.md](core-persistence.md) |

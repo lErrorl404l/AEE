@@ -38,3 +38,10 @@ _waveH = (_waveH max 0) min _fullScaleMetres;
 
 private _waves = _waveH / _fullScaleMetres;
 0 setWaves _waves;
+
+// The command DB records that this write draws nothing unless the mission
+// selects *Manual Override* in the Eden intel section (commands/setWaves.yml,
+// acemod/arma3-wiki v2.22).  No command reads or sets that flag and the
+// `waves` readback moves either way, so a script cannot detect or enable it.
+// Warn once per session instead of a silent no-op.
+[] call EFUNC(core,warnManualOverride);

@@ -4,6 +4,7 @@ PREPS(environment,calculateHypothermiaRisk);
 PREPS(environment,calculateFreezingRain);
 PREPS(ground,calculateWaterTemperature);
 PREPS(environment,calculateThermalCrossover);
+PREPS(environment,readEngineAmbientTemperature);
 PREPS(solver,calculateObjectTemperature);
 PREPS(surface,calculateClothingInsulation);
 PREPS(environment,updateTemperature);
