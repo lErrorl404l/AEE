@@ -31,9 +31,10 @@
       "anchor": {
         "pbo": "a3\\sounds_f",
         "config": "CfgSFX.Owl",
+        "locator": "sounds_f/config.cpp:598",
         "files": "owl1..3.wss"
       },
-      "note": "CfgSFX.Owl names owl1-3. One generic owl bank. Species not pinned. The class is an identity anchor; a CfgSFX class is not a playback source, so the media are the three raw files."
+      "note": "CfgSFX.Owl names owl1-3. One generic owl bank. Species not pinned. The class is the looping emitter source, and the three raw files are the media for the one-shot path. Locator docs/wiki/research/wildlife-sound-inventory.md section 2."
     },
     {
       "sound_group": "songbird",
@@ -57,7 +58,13 @@
       ],
       "fauna_classes": [],
       "species": null,
-      "note": "CfgSFX.Birds names birds1-5. One generic songbird chorus. Species not pinned."
+      "anchor": {
+        "pbo": "a3\\sounds_f",
+        "config": "CfgSFX.Birds",
+        "locator": "sounds_f/config.cpp:608",
+        "files": "birds1..5.wss"
+      },
+      "note": "CfgSFX.Birds names birds1-5. One generic songbird chorus. Species not pinned. The class is the looping emitter source, and the five raw files are the media for the one-shot path. Locator docs/wiki/research/wildlife-sound-inventory.md section 2."
     },
     {
       "sound_group": "fear",
@@ -87,6 +94,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "CfgSounds.Scared_Animal1-7 carry the distress clips and are not looping sources, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "note": "CfgSounds.Scared_Animal1-7. Generic distress cry. Species not pinned."
     },
     {
@@ -132,6 +140,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "The bed is raw files plus Enoch sound sets and vanilla ships no CfgSFX class for it, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "anchor": {
         "pbo": "a3\\sounds_f",
         "config": "ambient/basics",
@@ -150,6 +159,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "The legacy sarance files have no CfgSFX class in vanilla, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "anchor": {
         "pbo": "a3\\sounds_f",
         "config": "ambient/animals (legacy name sarance)",
@@ -193,6 +203,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "Vanilla names the deer media only in CfgSoundSet and CfgSoundShader entries, which are not sound sources, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "anchor": {
         "pbo": "a3\\sounds_f_enoch",
         "config": "Deercall_Forest_Night_SoundSet",
@@ -213,6 +224,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "Vanilla names the wolf media only in CfgSoundSet and CfgSoundShader entries, which are not sound sources, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "anchor": {
         "pbo": "a3\\sounds_f_enoch",
         "config": "Wolves_Night_SoundSet",
@@ -256,6 +268,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "CfgNonAiVehicles.SeaGull names the gull call as singSound, which is not a sound source, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "note": "Name only. No config class names it. It differs from the config gull call seagul1. Never given a species."
     },
     {
@@ -274,6 +287,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "Vanilla names the hen clips only as file paths, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "note": "Name only. No config class names it. Never given a species."
     },
     {
@@ -295,6 +309,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "Vanilla names the dog clips only as file paths, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "note": "Name only. No config class names it. Never given a species."
     },
     {
@@ -319,6 +334,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "Vanilla names the sheep clips only as file paths, and CfgSounds.Sheep_IdleComm plays the silent dummy, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "note": "Name and path convention only. Sheep_IdleComm is a dummy. Never given a species."
     },
     {
@@ -340,6 +356,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "The legacy sarance files have no CfgSFX class in vanilla, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "taxon": "Orthoptera",
       "rank": "order",
       "media_class": "cricket",
@@ -361,6 +378,7 @@
       ],
       "fauna_classes": [],
       "species": null,
+      "emitter_note": "The identity is UNKNOWN and vanilla ships no class for it, so the group has no emitter class. Locator docs/wiki/research/wildlife-sound-inventory.md section 2.",
       "note": "UNKNOWN. The name reads as a recording label, not an animal. Never given a species."
     },
     {

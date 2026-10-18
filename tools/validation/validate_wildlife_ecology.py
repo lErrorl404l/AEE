@@ -43,8 +43,10 @@ ALLOWED_GREGARIOUSNESS = {
     "mixed",
 }
 
-# The media rules, copied from test_wildlife.py.
-ALLOWED_CFGSFX = {"Owl", "Sound_Stream"}
+# The media rules, copied from test_wildlife.py.  The confirmed CfgSFX set
+# comes from docs/wiki/research/wildlife-sound-inventory.md section 2, which
+# carries the config.cpp locator for each class.
+ALLOWED_CFGSFX = {"Owl", "Birds", "Sound_Stream"}
 ALLOWED_EXTENSIONS = {".wss", ".ogg", ".wav"}
 
 # The recordings that must never be given a species. sarance is a confirmed
