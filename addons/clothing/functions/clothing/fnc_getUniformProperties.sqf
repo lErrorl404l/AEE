@@ -103,11 +103,14 @@ private _clo = switch (true) do {
     default                                     { 0.50 };   // light shirt
 };
 
-// The uniform carries no armour (the vest covers the torso); its
-// weight is the base garment (4.0 kg) + the gloves.  The researched item
-// table outranks the base when a capture holds the uniform's family, and
-// the gloves still ride in the uniform.
-private _tier = [4.0 + _gloves, 0, _nir, _clo + _gloves];
+// The uniform carries no armour (the vest covers the torso); its weight
+// is the base garment (4.0 kg), and the researched item table outranks
+// the base when a capture holds the uniform's family.  The gloves are
+// INSULATION only: _gloves is a clo value (Gonzalez 1998), so it belongs
+// in the clo column and never in the mass column (issue #303, which added
+// up to 1.05 kg of phantom glove mass).  The glove's own mass is not
+// counted: no published per-pair figure is held.
+private _tier = [4.0, 0, _nir, _clo + _gloves];
 private _mass = [_uniform, ["uniform", "garment"]] call FUNC(getItemMass);
-if (_mass > 0) then { _tier set [0, _mass + _gloves] };
+if (_mass > 0) then { _tier set [0, _mass] };
 _tier

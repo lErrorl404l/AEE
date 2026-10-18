@@ -8,10 +8,24 @@ CfgWeapons-inheritance walk (the modded-uniform mechanism), and the NVG
 black-hole contrast maths.
 """
 
+import sys
 import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools.tests.sqf_lite import run_sqf  # noqa: E402
+
+CLOTHING = REPO / "addons/clothing/functions/clothing"
+
+
+def _run(name, args, globals_):
+    """Execute a shipped clothing kernel, not a Python mirror of it."""
+    return run_sqf(CLOTHING / name, args, globals_)
+
+
 INS = (
     REPO / "addons/clothing/functions/clothing/fnc_getCamouflageProperties.sqf"
 ).read_text(encoding="utf-8")
@@ -250,6 +264,115 @@ class TestNvgContrast(unittest.TestCase):
         self.assertIn("_camoCoeff", NVG)
         self.assertIn("_nirUniform", NVG)
         self.assertIn("_dRMax", NVG)
+
+
+class TestUnwornSlot(unittest.TestCase):
+    """An empty vest or helmet slot carries no weight and no armour (#315).
+
+    The old early-out returned the NIJ-2 row, so a bare unit was credited
+    2.5 kg of vest, 1.4 kg of helmet and 10 mm of protection on each slot.
+    The penetration kernel reads element 1 and falls to its 3 mm soft-tissue
+    floor only when that element is 0.
+    """
+
+    @staticmethod
+    def _globals(slot, value):
+        return {
+            "isNull": lambda unit: unit is None,
+            slot: lambda unit: value,
+            "__FUNC__getItemMass": lambda item, allowed=None: 0.0,
+        }
+
+    def test_empty_vest_has_no_weight_or_armour(self):
+        row = _run("fnc_getVestProperties.sqf", ["unit"], self._globals("vest", ""))
+        self.assertEqual(row[0], 0, "an empty vest still adds weight")
+        self.assertEqual(row[1], 0, "an empty vest still adds NIJ armour")
+
+    def test_empty_helmet_has_no_weight_or_armour(self):
+        row = _run(
+            "fnc_getHelmetProperties.sqf", ["unit"], self._globals("headgear", "")
+        )
+        self.assertEqual(row[0], 0, "an empty helmet still adds weight")
+        self.assertEqual(row[1], 0, "an empty helmet still adds NIJ armour")
+
+    def test_null_unit_has_no_weight_or_armour(self):
+        row = _run("fnc_getVestProperties.sqf", [None], self._globals("vest", ""))
+        self.assertEqual(row[0], 0)
+        self.assertEqual(row[1], 0)
+
+    def test_a_worn_plate_carrier_still_carries_armour(self):
+        # The no-armour row must not erase a real vest (5.5 kg, NIJ III).
+        row = _run(
+            "fnc_getVestProperties.sqf",
+            ["unit"],
+            self._globals("vest", "V_PlateCarrier1_rgr"),
+        )
+        self.assertEqual(row[1], 3)
+        self.assertEqual(row[0], 5.5)
+
+
+class TestGloveInsulationNotMass(unittest.TestCase):
+    """Glove insulation belongs in the clo column only (#303).
+
+    fnc_getGloveProperties returns clo (Gonzalez 1998: heavy duty 1.05),
+    and the old uniform tier added that clo to the mass column as if it
+    were kilograms.
+    """
+
+    @staticmethod
+    def _globals(item_mass):
+        return {
+            "configFile": "configFile",
+            "isNull": lambda unit: unit is None,
+            "uniform": lambda unit: "U_B_CombatUniform_mcam",
+            "getText": lambda path: "",
+            "__FUNC__getCamouflageProperties": lambda unit: [0.8, 0.0, 0.35, 0.93],
+            "__FUNC__getGloveProperties": lambda unit: 1.05,
+            "__FUNC__getItemMass": lambda item, allowed=None: item_mass,
+        }
+
+    def test_heavy_gloves_do_not_add_their_clo_as_mass(self):
+        row = _run("fnc_getUniformProperties.sqf", ["unit"], self._globals(0.0))
+        self.assertEqual(row[0], 4.0, "the glove clo entered the mass column")
+        # Combat uniform 0.75 clo + heavy glove 1.05 clo.
+        self.assertAlmostEqual(row[3], 1.80)
+
+    def test_the_table_mass_is_not_inflated_by_the_gloves(self):
+        row = _run("fnc_getUniformProperties.sqf", ["unit"], self._globals(1.34))
+        self.assertEqual(row[0], 1.34, "the glove clo inflated the tabled mass")
+        self.assertAlmostEqual(row[3], 1.80)
+
+
+class TestCamouflageCache(unittest.TestCase):
+    """The cache key is the query, not the frame (#301).
+
+    The old cache stored [diag_frameNo, result], so the first unit queried
+    in a frame answered for every later unit in that same frame.
+    """
+
+    def test_two_units_in_one_frame_get_their_own_camouflage(self):
+        namespace = {}
+        globals_ = {
+            "missionNamespace": namespace,
+            "diag_frameNo": 500,
+            "configFile": "configFile",
+            "isNull": lambda unit: unit is None,
+            "isClass": lambda path: False,
+            "getText": lambda path: "",
+            "uniform": lambda unit: "U_B_CombatUniform_mcam",
+        }
+        combat = _run("fnc_getCamouflageProperties.sqf", ["u1"], globals_)
+        globals_["uniform"] = lambda unit: "U_B_GhillieSuit"
+        ghillie = _run("fnc_getCamouflageProperties.sqf", ["u2"], globals_)
+
+        self.assertEqual(combat, [0.80, 0.40, 0.35, 0.93])
+        self.assertEqual(ghillie, [0.70, 0.45, 0.30, 0.93])
+
+        cache = namespace["__QGVAR__clothingCache"]
+        self.assertEqual(len(cache), 2, "the cache grew past one entry")
+        self.assertEqual(
+            cache[0], "U_B_GhillieSuit", "the cache is not keyed on the uniform"
+        )
 
 
 if __name__ == "__main__":

@@ -16,10 +16,16 @@ Run: python3 -m unittest tools/tests/test_inventory_load.py
 
 import json
 import re
+import sys
 import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools.tests.sqf_lite import run_sqf  # noqa: E402
+
 CLOTHING = REPO / "addons/clothing/functions/clothing"
 SOURCES = REPO / "data" / "equipment" / "sources"
 FNC_ITEM = (CLOTHING / "fnc_getItemMass.sqf").read_text(encoding="utf-8")
@@ -197,6 +203,110 @@ class TestInventoryWalk(unittest.TestCase):
             source = (CLOTHING / name).read_text(encoding="utf-8")
             self.assertIn("FUNC(getItemMass)", source, f"{name} misses the lookup")
             self.assertIn("_tier set [0, _mass", source, f"{name} misses the override")
+
+
+class TestInventoryWalkExecutes(unittest.TestCase):
+    """The walk weighs what the soldier carries (#313), from the shipped SQF.
+
+    The old `_resolve` defaulted the category to the empty string, so it
+    called getItemMass with `[""]`; no table row matches that, so every
+    assigned slot item and weapon attachment added 0 kg.  The container
+    loop hard-coded "medical", so a non-medical item was forced through the
+    medical band.
+
+    The item resolver is stubbed at its category boundary: a mass returns
+    only when the item's own category is in the allowed list (an empty list
+    means "any category").  That reproduces the defect without guessing at
+    the generated table.
+    """
+
+    CATEGORY = {
+        "ItemMap": "misc",
+        "ItemCompass": "misc",
+        "ItemWatch": "misc",
+        "ItemGPS": "gps",
+        "ItemRadio": "radio",
+        "NVGoggles": "nv",
+        "Binocular": "binocular",
+        "optic_Arco": "optic",
+        "muzzle_snds_M": "suppressor",
+        "bipod_01_F_blk": "mount",
+        "ToolKit": "tool",
+    }
+    # Published family masses already in fnc_getItemMass.sqf.
+    MASS = {
+        "ItemMap": 0.14,
+        "ItemCompass": 0.1,
+        "ItemWatch": 0.06,
+        "ItemGPS": 0.088,
+        "ItemRadio": 1.1,
+        "NVGoggles": 0.35,
+        "Binocular": 0.695,
+        "optic_Arco": 0.428,
+        "muzzle_snds_M": 0.519,
+        "bipod_01_F_blk": 0.397,
+        "ToolKit": 4.0,
+    }
+
+    def _item_mass(self, item, allowed=None):
+        allowed = allowed or []
+        if allowed and self.CATEGORY.get(item, "") not in allowed:
+            return 0.0
+        return self.MASS.get(item, 0.0)
+
+    def _globals(self, assigned, items, attachments):
+        return {
+            "player": "unit",
+            "missionNamespace": {},
+            "configFile": "configFile",
+            "isNull": lambda unit: unit is None,
+            "isClass": lambda path: False,
+            "uniform": lambda unit: "",
+            "vest": lambda unit: "",
+            "headgear": lambda unit: "",
+            "goggles": lambda unit: "",
+            "backpack": lambda unit: "",
+            "primaryWeapon": lambda unit: "arifle_MX_F",
+            "secondaryWeapon": lambda unit: "",
+            "handgunWeapon": lambda unit: "",
+            "items": lambda unit: list(items),
+            "assignedItems": lambda unit: list(assigned),
+            "hmd": lambda unit: "",
+            "binocular": lambda unit: "",
+            "primaryWeaponItems": lambda unit: list(attachments),
+            "secondaryWeaponItems": lambda unit: ["", "", ""],
+            "handgunItems": lambda unit: ["", "", ""],
+            "unitBackpack": lambda unit: "",
+            "weaponCargo": lambda bag: [],
+            "__FUNC__getItemMass": self._item_mass,
+            "__FUNC__getWeaponMass": lambda weapon: 0.0,
+        }
+
+    def test_assigned_items_and_weapon_attachments_are_weighed(self):
+        assigned = [
+            "ItemMap",
+            "ItemCompass",
+            "ItemWatch",
+            "ItemGPS",
+            "ItemRadio",
+            "NVGoggles",
+        ]
+        attachments = ["optic_Arco", "muzzle_snds_M", "bipod_01_F_blk"]
+        total = run_sqf(
+            CLOTHING / "fnc_getInventoryLoad.sqf",
+            ["unit"],
+            self._globals(assigned, [], attachments),
+        )
+        self.assertAlmostEqual(total, 1.838 + 1.344, places=3)
+
+    def test_container_contents_use_their_own_category(self):
+        # ToolKit is a "tool": the old forced "medical" band rejected it.
+        total = run_sqf(
+            CLOTHING / "fnc_getInventoryLoad.sqf",
+            ["unit"],
+            self._globals([], ["ToolKit"], []),
+        )
+        self.assertAlmostEqual(total, 4.0, places=3)
 
 
 class TestMagazineLoadRowShape(unittest.TestCase):
