@@ -7,7 +7,7 @@
       "is_air": false,
       "state": "excluded_non_ground",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "non-air token"
     },
     {
       "class": "APC_Tracked_02_base_F",
@@ -15,7 +15,7 @@
       "is_air": false,
       "state": "excluded_non_ground",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "non-air token"
     },
     {
       "class": "APC_Tracked_03_base_F",
@@ -23,7 +23,7 @@
       "is_air": false,
       "state": "excluded_non_ground",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "non-air token"
     },
     {
       "class": "APC_Wheeled_01_base_F",
@@ -162,7 +162,23 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "class": "MRAP",
+      "class": "MRAP_01_base_F",
+      "kind": "mod_token",
+      "is_air": false,
+      "state": "excluded_non_ground",
+      "variant": null,
+      "reason": "non-air token"
+    },
+    {
+      "class": "MRAP_02_base_F",
+      "kind": "mod_token",
+      "is_air": false,
+      "state": "excluded_non_ground",
+      "variant": null,
+      "reason": "non-air token"
+    },
+    {
+      "class": "MRAP_03_base_F",
       "kind": "mod_token",
       "is_air": false,
       "state": "excluded_non_ground",
@@ -255,7 +271,7 @@
       "is_air": false,
       "state": "excluded_non_ground",
       "variant": null,
-      "reason": "non-air token"
+      "reason": "no positive ground class-table row"
     },
     {
       "class": "Tree",
@@ -279,7 +295,7 @@
       "is_air": false,
       "state": "excluded_non_ground",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "non-air token"
     },
     {
       "class": "UAV",
@@ -288,14 +304,6 @@
       "state": "recorded",
       "variant": null,
       "reason": "runtime row emitted and class binding held"
-    },
-    {
-      "class": "Wheeled_APC",
-      "kind": "mod_token",
-      "is_air": false,
-      "state": "excluded_non_ground",
-      "variant": null,
-      "reason": "non-air token"
     },
     {
       "class": "Wheeled_APC_F",

@@ -4,26 +4,26 @@
     {
       "class": "APC_Tracked_01_base_F",
       "kind": "engine_base",
-      "is_ground": false,
-      "state": "excluded_non_ground",
+      "is_ground": true,
+      "state": "no_source",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "no emitted runtime row and no class-map binding held"
     },
     {
       "class": "APC_Tracked_02_base_F",
       "kind": "engine_base",
-      "is_ground": false,
-      "state": "excluded_non_ground",
+      "is_ground": true,
+      "state": "no_source",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "no emitted runtime row and no class-map binding held"
     },
     {
       "class": "APC_Tracked_03_base_F",
       "kind": "engine_base",
-      "is_ground": false,
-      "state": "excluded_non_ground",
+      "is_ground": true,
+      "state": "no_source",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "no emitted runtime row and no class-map binding held"
     },
     {
       "class": "APC_Wheeled_01_base_F",
@@ -162,12 +162,28 @@
       "reason": "no positive ground class-table row"
     },
     {
-      "class": "MRAP",
+      "class": "MRAP_01_base_F",
       "kind": "mod_token",
       "is_ground": true,
-      "state": "recorded",
-      "variant": "m_atv_m1240",
-      "reason": "runtime row emitted and class-map binding held"
+      "state": "no_source",
+      "variant": null,
+      "reason": "no emitted runtime row and no class-map binding held"
+    },
+    {
+      "class": "MRAP_02_base_F",
+      "kind": "mod_token",
+      "is_ground": true,
+      "state": "no_source",
+      "variant": null,
+      "reason": "no emitted runtime row and no class-map binding held"
+    },
+    {
+      "class": "MRAP_03_base_F",
+      "kind": "mod_token",
+      "is_ground": true,
+      "state": "no_source",
+      "variant": null,
+      "reason": "no emitted runtime row and no class-map binding held"
     },
     {
       "class": "Man",
@@ -252,10 +268,10 @@
     {
       "class": "Tracked_APC",
       "kind": "engine_base",
-      "is_ground": true,
-      "state": "recorded",
-      "variant": "m113a2",
-      "reason": "runtime row emitted and class-map binding held"
+      "is_ground": false,
+      "state": "excluded_non_ground",
+      "variant": null,
+      "reason": "no positive ground class-table row"
     },
     {
       "class": "Tree",
@@ -276,10 +292,10 @@
     {
       "class": "Truck_F",
       "kind": "engine_base",
-      "is_ground": false,
-      "state": "excluded_non_ground",
+      "is_ground": true,
+      "state": "no_source",
       "variant": null,
-      "reason": "no positive ground class-table row"
+      "reason": "no emitted runtime row and no class-map binding held"
     },
     {
       "class": "UAV",
@@ -288,14 +304,6 @@
       "state": "excluded_non_ground",
       "variant": null,
       "reason": "no positive ground class-table row"
-    },
-    {
-      "class": "Wheeled_APC",
-      "kind": "mod_token",
-      "is_ground": true,
-      "state": "recorded",
-      "variant": "btr_80",
-      "reason": "runtime row emitted and class-map binding held"
     },
     {
       "class": "Wheeled_APC_F",

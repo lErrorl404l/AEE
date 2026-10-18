@@ -173,12 +173,12 @@ once, keyed by game class. No class leaves the report in silence.
 
 ## Token summary
 
-- Tokens: 38
+- Tokens: 39
 - Air tokens: 4
 - recorded: 3
 - lead: 0
 - no_source: 1
-- excluded_non_ground: 34
+- excluded_non_ground: 35
 - Runtime rows: 3
 
 ## Air tokens
@@ -194,9 +194,9 @@ once, keyed by game class. No class leaves the report in silence.
 
 | Token | Reason |
 |---|---|
-| `APC_Tracked_01_base_F` | no positive ground class-table row |
-| `APC_Tracked_02_base_F` | no positive ground class-table row |
-| `APC_Tracked_03_base_F` | no positive ground class-table row |
+| `APC_Tracked_01_base_F` | non-air token |
+| `APC_Tracked_02_base_F` | non-air token |
+| `APC_Tracked_03_base_F` | non-air token |
 | `APC_Wheeled_01_base_F` | no positive ground class-table row |
 | `APC_Wheeled_02_base_F` | no positive ground class-table row |
 | `APC_Wheeled_03_base_F` | no positive ground class-table row |
@@ -212,7 +212,9 @@ once, keyed by game class. No class leaves the report in silence.
 | `F_40_Yellow` | no positive ground class-table row |
 | `House` | no positive ground class-table row |
 | `LandVehicle` | no positive ground class-table row |
-| `MRAP` | non-air token |
+| `MRAP_01_base_F` | non-air token |
+| `MRAP_02_base_F` | non-air token |
+| `MRAP_03_base_F` | non-air token |
 | `Man` | no positive ground class-table row |
 | `Motorcycle` | no positive ground class-table row |
 | `ParachuteBase` | no positive ground class-table row |
@@ -222,9 +224,8 @@ once, keyed by game class. No class leaves the report in silence.
 | `Static` | no positive ground class-table row |
 | `StaticWeapon` | no positive ground class-table row |
 | `Tank` | non-air token |
-| `Tracked_APC` | non-air token |
+| `Tracked_APC` | no positive ground class-table row |
 | `Tree` | no positive ground class-table row |
 | `Truck` | non-air token |
-| `Truck_F` | no positive ground class-table row |
-| `Wheeled_APC` | non-air token |
+| `Truck_F` | non-air token |
 | `Wheeled_APC_F` | non-air token |

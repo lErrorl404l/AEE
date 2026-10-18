@@ -9,9 +9,9 @@ is a `claimed` binding, not a real-world mapping. This file lists the
 bindings held, every ground token with no binding, and the held max
 speed values that no binding reaches.
 
-- Ground tokens: 7
-- Ground tokens with a binding: 6
-- Ground tokens without a binding: 1
+- Ground tokens: 11
+- Ground tokens with a binding: 3
+- Ground tokens without a binding: 8
 - Class map records: 6
 - Catalogue entries holding max_speed_kmh: 226
 - Of those with no class binding: 223
@@ -31,4 +31,11 @@ speed values that no binding reaches.
 
 | Token | Next source class |
 |---|---|
+| `APC_Tracked_01_base_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
+| `APC_Tracked_02_base_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
+| `APC_Tracked_03_base_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
+| `MRAP_01_base_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
+| `MRAP_02_base_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
+| `MRAP_03_base_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
+| `Truck_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
 | `Wheeled_APC_F` | a real-world source that names the vehicle, corroborated by the engine displayName |
