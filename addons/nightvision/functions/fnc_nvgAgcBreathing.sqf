@@ -33,6 +33,6 @@ private _err = (abs (_gainTarget - _gain)) / ((abs _gainTarget) max 1);
 private _osc = sin (_timeSec * 3.0);
 private _raw = _strength * 0.10 * _osc * (_err min 1);
 
-// Clamp written as (max lower) then (min upper): a leading negative literal
-// in `-0.15 max _raw` is parsed as a unary minus over the whole right side.
+// Asymmetric clamp: the negative lower bound is kept in parentheses so the
+// leading minus reads as a unary sign on the literal.
 (_raw max -0.15) min 0.15
