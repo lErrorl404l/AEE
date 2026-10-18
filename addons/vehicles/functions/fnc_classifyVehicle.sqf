@@ -20,10 +20,10 @@ It resolves in this order.
            resolution, select no row. A tie at the nearest extent selects no
            row. This is the route for a class whose display name is a
            fictional Arma designation.
-  token    the class is the first engine family token it isKindOf, most
-           specific first. This is the coarse class identity and the type
-           source. The ground order is the one aee_mobility_fnc_calculateSSF
-           uses.
+  token    the class is the first engine family row it isKindOf, most
+           specific first, and the row gives the coarse class token. This is
+           the coarse class identity and the type source. The ground order is
+           the one aee_mobility_fnc_calculateSSF uses.
   none     no route resolved. The class token is empty. The classifier
            never returns a wrong catalogue entry.
 
@@ -42,7 +42,7 @@ A man on foot is the live case: the traction model reads `vehicle _unit`, and
 on foot that is the man.
 
 The live properties are the engine mass (getMass), the bounding box
-(boundingBoxReal), the tracked flag (isKindOf Tank or Tracked_APC) and the
+(boundingBoxReal), the tracked flag (isKindOf Tank) and the
 turret presence (allTurrets). The engine mass and the engine box are
 identity signals for the band selector only. They are not sourced values
 and they are never written to the catalogue.
@@ -107,7 +107,11 @@ if ((_box isEqualType []) && {(count _box == 2) || {count _box == 3}}
     _heightM = abs ((_boxMax select 2) - (_boxMin select 2));
 };
 
-private _tracked = (_vehicle isKindOf "Tank") || {_vehicle isKindOf "Tracked_APC"};
+// A tracked APC is kindOf Tank (APC_Tracked_* : Tank_F : Tank), so the Tank
+// test alone covers it. "Tracked_APC" is an AEE token, not a CfgVehicles
+// class, so an isKindOf test against it is always false and the clause was
+// inert. The token stays the return vocabulary; it is not a selector.
+private _tracked = _vehicle isKindOf "Tank";
 private _hasTurret = (count (allTurrets _vehicle)) > 0;
 // The live family is the band selector. A land class is wheeled or tracked
 // by its live tracked flag. An air class is air and a sea class is sea.
@@ -251,19 +255,45 @@ if (!_resolved && !_isEmplacement && (_massKg > 0)) then {
 };
 
 // ─── Token: the coarse class identity ────────────────────────────────────
-// Most specific first. The order follows the fnc_calculateSSF track table.
 if (!_resolved && !_isEmplacement) then {
-    // Most specific first, within each family. The ground order follows the
-    // aee_mobility_fnc_calculateSSF track table. A class reaches one engine
-    // family only, so the family order does not change a land match.
+    // Most specific first. The row maps an ENGINE class to the AEE coarse
+    // token. "MRAP", "Wheeled_APC" and "Tracked_APC" are AEE tokens, not
+    // CfgVehicles classes, so they are the value of a row and never the
+    // selector. The ground order follows the aee_mobility_fnc_calculateSSF
+    // track table. The chains come from the shipped PBO configs (hemtt
+    // derapify, 2026-10-18):
+    //   MRAP_01_base_F : Car_F : Car
+    //   MRAP_02_base_F : Car_F : Car
+    //   MRAP_03_base_F : Car_F : Car
+    //   Wheeled_APC_F  : Car_F : Car
+    //   APC_Tracked_01_base_F : Tank_F : Tank
+    //   APC_Tracked_02_base_F : Tank_F : Tank
+    //   APC_Tracked_03_base_F : Tank_F : Tank
+    //   Truck_F : Car_F : Car
+    //   Truck : Car
+    // Every MRAP and Wheeled_APC_F is kindOf Car, and every APC_Tracked is
+    // kindOf Tank, so those rows precede Car and Tank. Truck_F and Truck are
+    // kindOf Car, so they precede Car too. A class reaches one engine family
+    // only, so the family order does not change a land match.
     private _vehicleTokens = [
-        "MRAP", "Wheeled_APC", "Tank", "Tracked_APC", "Car", "Truck",
-        "Wheeled_APC_F",
-        "Helicopter", "Plane",
-        "Ship"
+        ["MRAP_01_base_F", "MRAP"],
+        ["MRAP_02_base_F", "MRAP"],
+        ["MRAP_03_base_F", "MRAP"],
+        ["Wheeled_APC_F", "Wheeled_APC"],
+        ["APC_Tracked_01_base_F", "Tracked_APC"],
+        ["APC_Tracked_02_base_F", "Tracked_APC"],
+        ["APC_Tracked_03_base_F", "Tracked_APC"],
+        ["Truck_F", "Truck"],
+        ["Truck", "Truck"],
+        ["Tank", "Tank"],
+        ["Car", "Car"],
+        ["Helicopter", "Helicopter"],
+        ["Plane", "Plane"],
+        ["Ship", "Ship"]
     ];
     {
-        if (_vehicle isKindOf _x) exitWith { _classToken = _x; };
+        _x params ["_familyClass", "_familyToken"];
+        if (_vehicle isKindOf _familyClass) exitWith { _classToken = _familyToken; };
     } forEach _vehicleTokens;
     if (_classToken != "") then { _matchedBy = "token"; };
 };

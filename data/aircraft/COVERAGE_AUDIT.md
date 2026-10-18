@@ -173,12 +173,12 @@ once, keyed by game class. No class leaves the report in silence.
 
 ## Token summary
 
-- Tokens: 39
+- Tokens: 38
 - Air tokens: 4
 - recorded: 3
 - lead: 0
 - no_source: 1
-- excluded_non_ground: 35
+- excluded_non_ground: 34
 - Runtime rows: 3
 
 ## Air tokens
@@ -224,7 +224,6 @@ once, keyed by game class. No class leaves the report in silence.
 | `Static` | no positive ground class-table row |
 | `StaticWeapon` | no positive ground class-table row |
 | `Tank` | non-air token |
-| `Tracked_APC` | no positive ground class-table row |
 | `Tree` | no positive ground class-table row |
 | `Truck` | non-air token |
 | `Truck_F` | non-air token |

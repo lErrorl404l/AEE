@@ -67,7 +67,11 @@ if (_vehicle isEqualType objNull) then {
     if (isNull _vehicle) then {
         _reason = "null";
     } else {
-        if (_vehicle isKindOf "Tank" || {_vehicle isKindOf "Tracked_APC"}) then {
+        // A tracked APC is kindOf Tank (APC_Tracked_* : Tank_F : Tank), so
+        // the Tank test alone covers it. "Tracked_APC" is an AEE token, not
+        // a CfgVehicles class, so an isKindOf test against it was always
+        // false and the second clause was inert.
+        if (_vehicle isKindOf "Tank") then {
             _reason = "tracked";
         };
     };

@@ -151,7 +151,11 @@ class TestReasonVocabulary(unittest.TestCase):
         self.assertRegex(self.code, r"isNull\s+_vehicle")
 
     def test_tracked_classification_is_present(self):
-        self.assertIn('"Tracked_APC"', self.code)
+        # A tracked APC is kindOf Tank (APC_Tracked_* : Tank_F : Tank), so
+        # the Tank test classifies it. "Tracked_APC" is an AEE token, not a
+        # CfgVehicles class: an isKindOf test against it is always false.
+        self.assertIn('_vehicle isKindOf "Tank"', self.code)
+        self.assertNotIn('isKindOf "Tracked_APC"', self.code)
 
     def test_unverified_inputs_is_the_default_outcome(self):
         self.assertIn('"unverifiedInputs"', self.code)

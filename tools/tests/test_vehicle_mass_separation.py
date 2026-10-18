@@ -58,7 +58,10 @@ CORE = FUNCTIONS / "fnc_estimateVehicleMassCore.sqf"
 # no change to the estimate layer can alter the soil path without notice. Only
 # this file is pinned. The catalogue directory is never pinned, because the
 # sourced corpus changes on purpose.
-NRMM_SHA256 = "135d6a3e6bf2e797d256887a27a76bdffa47bcb11bc092bcbe8b45b5e3f1050a"
+# Re-baselined once, for the class-token fix: the isKindOf "Tracked_APC"
+# clause tested an AEE token, not a CfgVehicles class, and was always false.
+# A tracked APC is kindOf Tank, so the Tank test alone carries it.
+NRMM_SHA256 = "616b7faef47752053801feaec602e36adaa61ee6a6afdfb4d59b2ec5786f1659"
 NRMM_QUARANTINE_NOTE = (
     "the NRMM soil path is quarantined and fail-closed; this digest pins it"
 )

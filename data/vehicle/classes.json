@@ -395,7 +395,7 @@
       "provenance": [
         "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:52",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:129",
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:133",
         "addons/vehicles/functions/fnc_updateFuelConsumption.sqf:117"
       ]
     },
@@ -408,23 +408,13 @@
         "addons/armour/functions/fnc_deriveProtection.sqf:61",
         "addons/mobility/functions/fnc_calculateSSF.sqf:142",
         "addons/mobility/functions/fnc_calculateSSF.sqf:82",
-        "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
+        "addons/mobility/functions/fnc_calculateSoilStrength.sqf:74",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:81",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
         "addons/thermal_display/functions/outline/fnc_outlineCollect.sqf:52",
         "addons/vehicles/functions/common/fnc_getNearbyVehicles.sqf:44",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:110"
-      ]
-    },
-    {
-      "class": "Tracked_APC",
-      "exclusion_reason": "no positive ground class-table row",
-      "is_ground": false,
-      "kind": "engine_base",
-      "provenance": [
-        "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
-        "addons/vehicles/functions/fnc_classifyVehicle.sqf:110"
+        "addons/vehicles/functions/fnc_classifyVehicle.sqf:114"
       ]
     },
     {

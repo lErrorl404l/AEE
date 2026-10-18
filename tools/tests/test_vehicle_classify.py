@@ -62,17 +62,28 @@ COL_HEIGHT = 6
 # The classifier routes, strongest first.
 ROUTES = ("corpus", "band", "token", "none")
 
-# The engine ground tokens, most specific first. This order is the
-# fnc_calculateSSF track-table precedent.
-GROUND_TOKENS = (
-    "MRAP",
-    "Wheeled_APC",
-    "Tank",
-    "Tracked_APC",
-    "Car",
-    "Truck",
+# The engine ground classes the token table selects on, most specific first.
+# This order is the fnc_calculateSSF track-table precedent. These are
+# CfgVehicles classes: "MRAP", "Wheeled_APC" and "Tracked_APC" are AEE class
+# TOKENS, not classes, so an isKindOf test against them is always false and
+# they are the token column of a row, never a selector.
+GROUND_CLASSES = (
+    "MRAP_01_base_F",
+    "MRAP_02_base_F",
+    "MRAP_03_base_F",
     "Wheeled_APC_F",
+    "APC_Tracked_01_base_F",
+    "APC_Tracked_02_base_F",
+    "APC_Tracked_03_base_F",
+    "Truck_F",
+    "Truck",
+    "Tank",
+    "Car",
 )
+
+# The AEE coarse tokens a ground row may return. The mass model reads these
+# names, so the token column is a closed vocabulary and not a class list.
+GROUND_TOKENS = ("MRAP", "Wheeled_APC", "Tracked_APC", "Truck", "Tank", "Car")
 
 # The engine air and sea family tokens. A class reaches one family only, so
 # these follow the ground tokens without reorder.
@@ -209,9 +220,14 @@ def row(
     ]
 
 
-def classify_tracked(tokens: set[str]) -> bool:
-    """Mirror of the classifier's live tracked rule: Tank or Tracked_APC."""
-    return "Tank" in tokens or "Tracked_APC" in tokens
+def classify_tracked(classes: set[str]) -> bool:
+    """Mirror of the classifier's live tracked rule: isKindOf Tank.
+
+    A tracked APC is kindOf Tank (APC_Tracked_* : Tank_F : Tank), so the
+    Tank test alone covers it. The rule takes engine CLASSES, not AEE
+    tokens: an isKindOf test against the token "Tracked_APC" is false.
+    """
+    return "Tank" in classes
 
 
 def select_mu(is_tracked: bool, wheeled_mu: float, tracked_mu: float) -> float:
@@ -471,13 +487,42 @@ class ClassifierSourceTest(unittest.TestCase):
             self.assertIn(token, CLASSIFY)
 
     def test_the_token_order_is_most_specific_first(self) -> None:
-        block = CLASSIFY.index("private _vehicleTokens = [")
-        tail = CLASSIFY[block:]
-        positions = [
-            tail.index(f'"{token}"')
-            for token in GROUND_TOKENS + AIR_TOKENS + SEA_TOKENS
-        ]
-        self.assertEqual(positions, sorted(positions))
+        # The selector column is an engine class, and it runs most specific
+        # first. The token column is the AEE vocabulary and does not order:
+        # every MRAP row returns "MRAP" and every tracked APC row returns
+        # "Tracked_APC", so the old assertion on the token column could not
+        # see that Tracked_APC is a token and not a class.
+        table = CLASSIFY[CLASSIFY.index("private _vehicleTokens = [") :]
+        table = table[: table.index("];")]
+        rows = re.findall(
+            r'\["([A-Za-z_][A-Za-z0-9_]*)",\s*"([A-Za-z_][A-Za-z0-9_]*)"\]',
+            table,
+        )
+        self.assertEqual(
+            [row[0] for row in rows],
+            list(GROUND_CLASSES + AIR_TOKENS + SEA_TOKENS),
+        )
+        for selector, token in rows:
+            self.assertTrue(selector, token)
+            self.assertTrue(token, selector)
+        self.assertEqual(
+            [row[1] for row in rows if row[0] in GROUND_CLASSES],
+            [
+                "MRAP",
+                "MRAP",
+                "MRAP",
+                "Wheeled_APC",
+                "Tracked_APC",
+                "Tracked_APC",
+                "Tracked_APC",
+                "Truck",
+                "Truck",
+                "Tank",
+                "Car",
+            ],
+        )
+        for token in GROUND_TOKENS:
+            self.assertIn(f'"{token}"', CLASSIFY, f"{token} has no token route")
 
     def test_the_classifier_reads_the_live_properties(self) -> None:
         for call in (
@@ -538,21 +583,29 @@ class TractionConsumerTest(unittest.TestCase):
         self.assertNotIn('_veh isKindOf "Tank"', TRACTION)
 
     def test_the_classifier_tracked_rule_covers_tracked_apc(self) -> None:
-        self.assertIn('_vehicle isKindOf "Tank"', CLASSIFY)
-        self.assertIn('_vehicle isKindOf "Tracked_APC"', CLASSIFY)
+        # A tracked APC is kindOf Tank, so the Tank test covers it. The
+        # "Tracked_APC" literal was an inert isKindOf test against an AEE
+        # token, not a class, and it is gone.
+        self.assertIn('private _tracked = _vehicle isKindOf "Tank";', CLASSIFY)
+        self.assertNotIn('isKindOf "Tracked_APC"', CLASSIFY)
 
     def test_the_tracked_flag_selects_the_tracked_coefficient(self) -> None:
         self.assertEqual(select_mu(True, 0.85, 0.9), 0.9)
         self.assertEqual(select_mu(False, 0.85, 0.9), 0.85)
 
     def test_a_tank_and_a_tracked_apc_select_the_tracked_coefficient(self) -> None:
-        # A tracked APC is tracked. A wheeled vehicle is not.
-        for tokens in ({"Tank"}, {"Tracked_APC"}):
-            with self.subTest(tokens=tokens):
-                self.assertEqual(select_mu(classify_tracked(tokens), 0.85, 0.9), 0.9)
-        for tokens in ({"Car"}, {"Wheeled_APC"}, set()):
-            with self.subTest(tokens=tokens):
-                self.assertEqual(select_mu(classify_tracked(tokens), 0.85, 0.9), 0.85)
+        # A tank and a tracked APC are both kindOf Tank. A wheeled class is
+        # not. The sets hold engine classes, not AEE tokens.
+        for classes in (
+            {"Tank"},
+            {"Tank", "Tank_F"},
+            {"APC_Tracked_01_base_F", "Tank"},
+        ):
+            with self.subTest(classes=classes):
+                self.assertEqual(select_mu(classify_tracked(classes), 0.85, 0.9), 0.9)
+        for classes in ({"Car"}, {"Wheeled_APC_F", "Car"}, set()):
+            with self.subTest(classes=classes):
+                self.assertEqual(select_mu(classify_tracked(classes), 0.85, 0.9), 0.85)
 
 
 class BandTableFunctionTest(unittest.TestCase):

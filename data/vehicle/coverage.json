@@ -266,14 +266,6 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
-      "class": "Tracked_APC",
-      "kind": "engine_base",
-      "is_ground": false,
-      "state": "excluded_non_ground",
-      "variant": null,
-      "reason": "no positive ground class-table row"
-    },
-    {
       "class": "Tree",
       "kind": "engine_base",
       "is_ground": false,
