@@ -3468,7 +3468,14 @@ class TestSQFSync(unittest.TestCase):
         src = _read_sqf("fnc_calculateAtmosphericSeeing.sqf", "optics")
         self.assertIn("QEGVAR(core,opticalCn2)", src)
         for raw in ("rain", "overcast", "fog"):
-            self.assertNotIn(raw + " ", "\n".join(l for l in src.splitlines() if not l.strip().startswith("//") and "*" not in l))
+            self.assertNotIn(
+                raw + " ",
+                "\n".join(
+                    l
+                    for l in src.splitlines()
+                    if not l.strip().startswith("//") and "*" not in l
+                ),
+            )
 
     def test_no_raw_weather_in_brightness_paths(self):
         # Every brightness/visibility consumer must read the SMOOTHED
@@ -4188,6 +4195,18 @@ class TestSQFSync(unittest.TestCase):
             "empty-stack guard",
             addon="thermal",
         )
+
+    def test_crossover_reads_the_canonical_sun_elevation(self):
+        # The twilight gate must read EGVAR(core,currentSunElevation), the one
+        # solar model in the repo, and must not build its own latitude-free
+        # proxy.  The old proxy pinned sunrise and sunset near 0600 and 1800
+        # on every map and every date (issue #254).
+        code = _read_sqf("fnc_calculateThermalCrossover.sqf", "thermal")
+        self.assertIn(
+            "missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90]",
+            code,
+        )
+        self.assertNotIn("_dayFraction", code)
 
     # ── Solar glare (fnc_calculateSolarGlare.sqf) ──
     def test_glare_constants(self):
@@ -5363,14 +5382,24 @@ class TestAtmosphericTransmissionKernel(unittest.TestCase):
     def test_the_sqf_matches_the_mirror_in_fog_and_rain(self):
         kernel = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
         for fog, rain, band in ((0.05, 0, "lwir"), (0, 25, "lwir"), (0.02, 5, "mwir")):
-            got = run_sqf(kernel, [800, 60, 12, fog, rain, 1.225, band], {"AERO_ISA_SEA_LEVEL_DENSITY": 1.225})
-            self.assertAlmostEqual(got, atmospheric_transmission(800, 60, 12, fog, rain, 1.225, band), places=9)
+            got = run_sqf(
+                kernel,
+                [800, 60, 12, fog, rain, 1.225, band],
+                {"AERO_ISA_SEA_LEVEL_DENSITY": 1.225},
+            )
+            self.assertAlmostEqual(
+                got,
+                atmospheric_transmission(800, 60, 12, fog, rain, 1.225, band),
+                places=9,
+            )
 
     def test_rain_extinction_is_geometric_marshall_palmer(self):
         t = atmospheric_transmission(1001, 50, 15, 0, 10, 1.225)
         clear = atmospheric_transmission(1001, 50, 15, 0, 0, 1.225)
-        lam = 4.1 * 10 ** -0.21
-        self.assertAlmostEqual(-math.log(t / clear), math.pi * 8000 / lam ** 3 * 1e-3, places=4)
+        lam = 4.1 * 10**-0.21
+        self.assertAlmostEqual(
+            -math.log(t / clear), math.pi * 8000 / lam**3 * 1e-3, places=4
+        )
 
     def test_source_constants_and_guards(self):
         code = self.code
@@ -5577,7 +5606,9 @@ class TestBandSkyModel(unittest.TestCase):
         self.assertTrue(-48 < self._sky("lwir", 15.0, 50.0, 0.0) < -38)
 
     def test_the_result_warms_monotonically_with_humidity(self):
-        values = [self._sky("lwir", 15.0, rh, 0.0) for rh in (10, 25, 40, 55, 70, 85, 100)]
+        values = [
+            self._sky("lwir", 15.0, rh, 0.0) for rh in (10, 25, 40, 55, 70, 85, 100)
+        ]
         for a, b in zip(values, values[1:]):
             self.assertLess(a, b)
 
@@ -5826,7 +5857,7 @@ def atmospheric_transmission(
     # Marshall-Palmer drops, geometric Q_ext = 2: beta = pi N0 / Lambda^3.
     beta_rain_km = 0.0
     if rain > 0:
-        beta_rain_km = 1000 * 1e-6 * math.pi * 8000 / (4.1 * rain ** -0.21) ** 3
+        beta_rain_km = 1000 * 1e-6 * math.pi * 8000 / (4.1 * rain**-0.21) ** 3
     beta_extra_km = beta_fog_km + beta_rain_km
     if band == "mwir":
         # Minkina & Klecha 2016 SW: alpha 0.0393 (reproduces Fig. 2a), beta 0.00049 /m.

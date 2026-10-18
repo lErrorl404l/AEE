@@ -51,7 +51,11 @@ class TestThermalWiring(unittest.TestCase):
         # floor double-counts the path transmission.
         self.assertIn("getThermalDeviceProperties", self.PAINT)
         self.assertNotIn("calculateThermalNoise", self.PAINT)
-        self.assertFalse((REPO / "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf").exists())
+        self.assertFalse(
+            (
+                REPO / "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
+            ).exists()
+        )
 
 
 class TestOpticKnowledgeLayer(unittest.TestCase):
@@ -72,6 +76,14 @@ class TestOpticKnowledgeLayer(unittest.TestCase):
             "susat",
         ):
             self.assertIn(f'"{kw}"', self.FNC, f"optic keyword {kw} missing")
+
+    def test_the_optic_slot_is_read_from_a_unit_not_a_vehicle(self):
+        # primaryWeaponItems takes a soldier, and the caller passes
+        # `vehicle _viewer`.  The old read always came back empty, so every
+        # mounted optic fell back to the 4x32 default (issue #261).
+        self.assertIn("primaryWeaponItems _unit", self.FNC)
+        self.assertNotIn("primaryWeaponItems _weapon", self.FNC)
+        self.assertIn("hmd _unit", self.FNC)
 
 
 if __name__ == "__main__":

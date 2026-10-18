@@ -25,16 +25,23 @@ Optic physics (the FOV/magnification the view model consumes):
   active (NVG/thermal) adds ~1.5-2 kg
 
 Arguments:
-  0: unit (OBJECT, default player)
-  1: weapon (OBJECT, default the primary)
+  0: unit (OBJECT, default player) - the viewer whose optic is resolved.
+  1: vehicle (OBJECT, default objNull) - the viewer's vehicle; its
+     head-mounted display is the mounted sight when the weapon slot is empty.
 
 Returns [magnification, objectiveMm, fovDeg, weightKg, exitPupilMm, active]
 */
-params [["_unit", player, [objNull]], ["_weapon", objNull, [objNull]]];
+params [["_unit", player, [objNull]], ["_vehicle", objNull, [objNull]]];
 if (isNull _unit) exitWith { [4, 32, 7, 0.42, 8, 0] };
 
+// The optic slot belongs to a UNIT.  primaryWeaponItems takes a soldier,
+// and the caller passed `vehicle _viewer`, so the slot read always came
+// back empty and every mounted sight fell back to 4x32 (issue #261).  Read
+// the viewer's own weapon slot, then the viewer's head-mounted display,
+// which is the mounted sight the caller resolves for a vehicle view.
 private _optic = "";
-if (!isNull _weapon) then { _optic = primaryWeaponItems _weapon param [2, ""]; };
+if (!isNull _unit) then { _optic = primaryWeaponItems _unit param [2, ""]; };
+if (_optic == "" && {!isNull _vehicle}) then { _optic = hmd _unit; };
 if (_optic == "") exitWith { [4, 32, 7, 0.42, 8, 0] };
 
 private _o = toLower _optic;

@@ -10,9 +10,9 @@
  * state the thermal display and the fusion overlay already write, and the
  * selection names are resolved exactly as fnc_applyFusionOverlay does.
  *
- * The per-object verdict is cached for 0.25 s in a missionNamespace HashMap,
- * so the expensive selection walk runs about four times a second and not once
- * per frame.  The collected count is logged once per refresh, not per frame.
+ * The per-object verdict and the nearEntities candidate list are both cached
+ * for 0.25 s in missionNamespace, so neither the spatial query nor the
+ * selection walk runs more than about four times a second (issue #263).
  *
  * Params:
  *   0: _range (SCALAR, default 300) - search radius in metres.
@@ -37,10 +37,23 @@ if !(_cache isEqualType createHashMap) then { _cache = createHashMap; };
 
 private _refreshAt = missionNamespace getVariable [QGVAR(outlineHotRefreshAt), -1e9];
 if !(_refreshAt isEqualType 0) then { _refreshAt = -1e9; };
-private _doLog = _now >= _refreshAt;
-if (_doLog) then { missionNamespace setVariable [QGVAR(outlineHotRefreshAt), _now + _ttl]; };
+private _doRefresh = _now >= _refreshAt;
 
-private _candidates = _center nearEntities [["CAManBase", "Car", "Tank", "StaticWeapon", "Air", "Animal"], _range];
+// The gate covers the spatial query and the log, so nearEntities runs at the
+// 4 Hz TTL and not once per Draw3D frame (issue #263).  The candidate list is
+// cached and read back on the frames between refreshes; a caller that asks
+// for a different radius forces a fresh sweep.
+private _sweptRange = missionNamespace getVariable [QGVAR(outlineHotRange), -1];
+if !(_sweptRange isEqualType 0) then { _sweptRange = -1; };
+private _sweep = _doRefresh || (_sweptRange != _range);
+private _candidates = missionNamespace getVariable [QGVAR(outlineHotCandidates), []];
+if !(_candidates isEqualType []) then { _candidates = []; };
+if (_sweep) then {
+    _candidates = _center nearEntities [["CAManBase", "Car", "Tank", "StaticWeapon", "Air", "Animal"], _range];
+    missionNamespace setVariable [QGVAR(outlineHotRefreshAt), _now + _ttl];
+    missionNamespace setVariable [QGVAR(outlineHotCandidates), _candidates];
+    missionNamespace setVariable [QGVAR(outlineHotRange), _range];
+};
 private _hot = [];
 
 {
@@ -92,7 +105,7 @@ _pairs sort true;
 private _out = [];
 { _out pushBack (_x select 1); } forEach _pairs;
 
-if (_doLog) then {
+if (_doRefresh) then {
     private _logMsg = format ["fusion outline collect: %1 hot of %2 candidates within %3 m", count _out, count _candidates, round _range];
     AEE_LOG_DEBUG(_logMsg);
 };
