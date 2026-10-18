@@ -89,5 +89,13 @@
             <Original>Slab Depth</Original>
             <English>Slab Depth</English>
         </Key>
+        <Key ID="STR_AEE_Persistence_weakLayerStrength_Description">
+            <Original>Weak-layer shear strength in kPa. The published range is 0.2 to 3 kPa by snow type (Fohn, Camponovo and Krusi 1998, Annals of Glaciology 26:1-6). The 0.2 kPa default is buried surface hoar.</Original>
+            <English>Weak-layer shear strength in kPa. The published range is 0.2 to 3 kPa by snow type (Fohn, Camponovo and Krusi 1998, Annals of Glaciology 26:1-6). The 0.2 kPa default is buried surface hoar.</English>
+        </Key>
+        <Key ID="STR_AEE_Persistence_weakLayerStrength_Name">
+            <Original>Weak-Layer Strength</Original>
+            <English>Weak-Layer Strength</English>
+        </Key>
     </Package>
 </Project>

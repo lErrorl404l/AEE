@@ -93,10 +93,13 @@ if (_altitude <= 1) then { _cull = 500; };
 
 private _agentRow = [_agent] call FUNC(getCbrnAgent);
 // The row carries the persisted band, not a point half-life: row 4 is the
-// JP 1-02 persistence band in hours, row 3 the latent heat in kJ/mol.
+// JP 1-02 persistence band in hours, row 3 the latent heat in kJ/mol and
+// row 5 the published hydrolysis activation energy in kJ/mol (0 for the
+// agents with none).
 private _band = _agentRow select 4;
 private _tempK = (missionNamespace getVariable [QEGVAR(core,currentTemperature), 15]) + KELVIN_OFFSET;
 private _deltaHvapJmol = (_agentRow select 3) * 1000;
+private _eaJmol = (_agentRow select 5) * 1000;
 
 private _concentration = 0;
 
@@ -114,7 +117,7 @@ if ((_x > 0) && (_x <= _cull)) then {
 
     // ─── Decay: the persistence-band envelope, then rain washout ───────────
     private _elapsedH = (diag_tickTime - _startTime) / 3600;
-    private _envelope = [_concentration, _elapsedH, _band, _tempK, _deltaHvapJmol] call FUNC(calculateCbrnDecay);
+    private _envelope = [_concentration, _elapsedH, _band, _tempK, _deltaHvapJmol, _eaJmol] call FUNC(calculateCbrnDecay);
     // The slow edge is the casualty-conservative one, so the dose path uses it.
     // The fast edge is the envelope's lower bound; the true value lies inside.
     _concentration = _envelope select 1;

@@ -84,6 +84,49 @@ class TestGasProperties(unittest.TestCase):
         self.assertEqual(run_sqf(PROPS, ["CHLORINE"]), run_sqf(PROPS, ["chlorine"]))
 
 
+class TestGasPropertiesEndpoints(unittest.TestCase):
+    """Acute endpoints now published for phosgene and hydrogen cyanide.
+
+    Both carried 0, so fnc_classifyToxicExposure returned "none" for two
+    agents with published figures.  Conversion is the chlorine row's own:
+    mg/m3 = ppm * M / 24.45 at 25 C.
+    """
+
+    def test_phosgene_endpoints(self):
+        # EPA AEGL final (60 min) 0.30 / 0.75 ppm, NIOSH IDLH 2 ppm,
+        # ACGIH TLV-TWA 0.1 ppm.
+        p = run_sqf(PROPS, ["phosgene"])
+        m, ppm = 98.91, 24.45
+        self.assertAlmostEqual(p[4], 0.30 * m / ppm, places=2)
+        self.assertAlmostEqual(p[5], 0.75 * m / ppm, places=2)
+        self.assertAlmostEqual(p[6], 2 * m / ppm, places=2)
+        self.assertAlmostEqual(p[7], 0.10 * m / ppm, places=2)
+
+    def test_hydrogen_cyanide_endpoints(self):
+        # EPA AEGL final (60 min) 7.1 / 15 ppm, NIOSH IDLH 50 ppm,
+        # NIOSH REL ceiling 4.7 ppm (5 mg/m3, 10 min).
+        p = run_sqf(PROPS, ["hydrogen-cyanide"])
+        m, ppm = 27.03, 24.45
+        self.assertAlmostEqual(p[4], 7.1 * m / ppm, places=1)
+        self.assertAlmostEqual(p[5], 15 * m / ppm, places=1)
+        self.assertAlmostEqual(p[6], 50 * m / ppm, places=1)
+        self.assertAlmostEqual(p[7], 4.7 * m / ppm, places=1)
+
+    def test_sarin_and_carbon_dioxide_stay_labelled_zero(self):
+        # An AEGL final exists for both and was not read for this model, so
+        # they stay 0 rather than being filled from memory.
+        for agent in ("sarin", "carbon-dioxide"):
+            with self.subTest(agent=agent):
+                self.assertEqual(run_sqf(PROPS, [agent])[4:8], [0, 0, 0, 0])
+
+    def test_the_classifier_sees_the_new_endpoints(self):
+        # At the AEGL-2 the agent is disabling; before the fix it was "none".
+        for agent in ("phosgene", "hydrogen-cyanide"):
+            with self.subTest(agent=agent):
+                p = run_sqf(PROPS, [agent])
+                self.assertEqual(run_sqf(TOX, [p[4]] + p[4:8]), "aegl-2")
+
+
 class TestDenseGasSlumping(unittest.TestCase):
     def test_frontal_velocity_test_vector(self):
         # Issue vector: rho = 2*rho_a, H = 1 m -> u_f = 3.60 m/s.

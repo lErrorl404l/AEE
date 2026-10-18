@@ -24,6 +24,21 @@ the published values:
     EPA AEGL final, mg/m3: AEGL-2 0.083 (all durations), AEGL-3 11 at
     60 min; NIOSH IDLH 2 mg/m3 (Pocket Guide 0122); ACGIH TLV ceiling
     0.4 mg/m3.  Saturation vapour pressure 3.4e-5 mmHg at 20 C.
+  phosgene (CAS 75-44-5)
+    EPA AEGL final, 60 min: AEGL-2 0.30 ppm, AEGL-3 0.75 ppm; NIOSH IDLH
+    2 ppm; ACGIH TLV-TWA 0.1 ppm.  Converted with the relation above, so
+    AEGL-2 1.21, AEGL-3 3.03, IDLH 8.09, TLV 0.40 mg/m3.
+  hydrogen cyanide (CAS 74-90-8)
+    EPA AEGL final, 60 min: AEGL-2 7.1 ppm, AEGL-3 15 ppm; NIOSH IDLH
+    50 ppm; NIOSH REL ceiling 4.7 ppm (5 mg/m3, 10 min).  Converted with
+    the relation above, so AEGL-2 7.85, AEGL-3 16.6, IDLH 55.3, TLV
+    5.20 mg/m3.
+
+PENDING and labelled, not filled: the sarin and carbon-dioxide acute
+endpoints.  An EPA AEGL final exists for both and was not read for this
+model, so both keep 0 and classify as "none".  The vapour pressure stays 0
+for phosgene, sarin, carbon-dioxide and hydrogen-cyanide: no property table
+was read for them, and an AEGL page does not carry one.
 
 A liquefied agent (normal boiling point below the ambient temperature)
 evaporates from a pool held at its boiling point, where the vapour
@@ -59,7 +74,7 @@ if (_key == "cs") then {
     _p = [188.61, 6.511, 310.0, 0.00453, 0.083, 11.0, 2.0, 0.4];
 };
 if (_key == "phosgene") then {
-    _p = [98.91, 3.414, 7.6, 0, 0, 0, 0, 0];
+    _p = [98.91, 3.414, 7.6, 0, 1.21, 3.03, 8.09, 0.40];
 };
 if (_key == "sarin") then {
     _p = [140.09, 4.836, 158.0, 0, 0, 0, 0, 0];
@@ -68,7 +83,7 @@ if (_key == "carbon-dioxide") then {
     _p = [44.01, 1.519, -78.5, 0, 0, 0, 0, 0];
 };
 if (_key == "hydrogen-cyanide") then {
-    _p = [27.03, 0.933, 25.6, 0, 0, 0, 0, 0];
+    _p = [27.03, 0.933, 25.6, 0, 7.85, 16.6, 55.3, 5.20];
 };
 
 _p

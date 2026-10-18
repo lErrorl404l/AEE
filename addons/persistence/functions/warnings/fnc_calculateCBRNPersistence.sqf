@@ -4,26 +4,35 @@
 Chemical/biological agent surface persistence (hours).
 
 Persistence is the time constant of first-order decay.  The temperature term
-is the Clausius-Clapeyron slope of the agent's latent heat of vaporisation
-(FM 3-11.9, "Potential Military Chemical/Biological Agents and Compounds",
-January 2005, Appendix G), the same quantity the airborne decay kernel uses:
+is an Arrhenius hydrolysis slope:
 
-  rate(T) = rate(T_ref) exp( -(deltaHvap / R) (1/T - 1/T_ref) )
+  rate(T) = rate(T_ref) exp( -(Ea / R) (1/T - 1/T_ref) )
   P(T)    = P_ref / rate(T) / rate(T_ref)
 
 with T_ref = 298.15 K (25 C) and R = 8.314462618 J/(mol*K) (CODATA 2018).
 
-deltaHvap is an INPUT.  This kernel cannot resolve an agent, so the caller
-(the core environment tick) passes the active agent's value from
-aee_weather_fnc_getCbrnAgent.  With no agent the term is 1: no deltaHvap is
-published for an unidentified agent, and no generic value exists.
+Ea is a published hydrolysis activation energy where one exists:
+
+  GD (soman)   64.25 kJ/mol.  Wu et al. 2021, E3S Web Conf 267:02060,
+               doi:10.1051/e3sconf/202126702060 (HCl aqueous, pH 0.90, 20 C).
+  HD (mustard) 108.8 kJ/mol.  Herriott 1947, J Gen Physiol 30(6):457-464,
+               doi:10.1085/jgp.30.6.457.  QUALIFIED: the figure is the
+               hydrolysis of the H.2TDG sulfonium salt over 20 to 100 C, a
+               related species, not neat HD.
+
+GB, VX and CG have no published activation energy.  For those the slope is
+the deltaHvap interim: FM 3-11.9 (January 2005, Appendix G) gives the latent
+heat of vaporisation and no hydrolysis activation energy, so the kinetic
+term is INTERIM and UNSOURCED as a hydrolysis activation energy.  The same
+interim applies when no agent is active.
+
+With no published Ea and no deltaHvap the term is 1: no generic value exists.
 
 The Q10 rule of thumb that stood here is gone: its decay rate doubled per
 10 C.  Its implied Q10 over 15 to 25 C runs 1.42 (CG) to 3.09 (VX) per agent,
-so it was 30 percent low for HD and 55 percent low for VX.  The INTERIM basis
-is the deltaHvap slope: FM 3-11.9 gives deltaHvap and no hydrolysis activation
-energy, so the kinetic term is UNSOURCED as a hydrolysis activation energy
-until a published one is found.
+so it was 30 percent low for HD and 55 percent low for VX.  Against the
+interim slope, the published HD Ea shortens persistence by 36 percent at
+30 C.
 
 REMOVED terms, no published value found (.omo/research/cbrn-kinetics.md):
 
@@ -44,9 +53,11 @@ time constant.  Stored in QEGVAR(core,cbrnPersistence).
 Arguments:
   0: latent heat of vaporisation (NUMBER, J/mol).  0 or absent means no
      temperature term (no active agent)
+  1: hydrolysis activation energy (NUMBER, J/mol).  0 or absent means use
+     the deltaHvap interim slope
 */
 
-params [["_deltaHvapJmol", 0, [0]]];
+params [["_deltaHvapJmol", 0, [0]], ["_activationEnergyJmol", 0, [0]]];
 
 // ─── Inputs ────────────────────────────────────────────────────────────────
 private _temp_C  = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
@@ -54,16 +65,18 @@ private _interval = EGVAR(core,updateInterval);
 
 if !(_temp_C isEqualType 0) then { _temp_C = 15; };
 if !(_deltaHvapJmol isEqualType 0) then { _deltaHvapJmol = 0; };
+if !(_activationEnergyJmol isEqualType 0) then { _activationEnergyJmol = 0; };
 
-// ─── Temperature — per-agent Clausius-Clapeyron (interim: deltaHvap) ───────
+// ─── Temperature — Arrhenius slope, published Ea first ─────────────────────
 // Base persistence lives in compat_acm (ACM loaded) with a 24 h fallback
 // when ACM is absent.  The 24 h fallback is UNSOURCED: no source gives a
 // generic point base persistence (JP 1-02 gives a band, not a point).
 private _basePersistenceH = missionNamespace getVariable [QEGVAR(compat_acm,CBRNBasePersistence), 24];
 private _rateMultiplier = 1;
-if (_deltaHvapJmol != 0) then {
+private _slopeJmol = [_deltaHvapJmol, _activationEnergyJmol] select (_activationEnergyJmol != 0);
+if (_slopeJmol != 0) then {
     private _tempK = (_temp_C + KELVIN_OFFSET) max 1;
-    _rateMultiplier = exp (-(_deltaHvapJmol / 8.314462618) * (1 / _tempK - 1 / 298.15));
+    _rateMultiplier = exp (-(_slopeJmol / 8.314462618) * (1 / _tempK - 1 / 298.15));
 };
 private _persistenceH = _basePersistenceH / _rateMultiplier;
 

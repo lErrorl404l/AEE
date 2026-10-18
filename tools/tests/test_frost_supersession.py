@@ -41,11 +41,15 @@ class TestSurfaceTemperatureRoute(unittest.TestCase):
     def test_reads_the_published_surface_temperature(self):
         self.assertIn("groundSurfaceTemp", self.src)
 
-    def test_the_heuristic_is_only_a_fallback(self):
-        """The -2 must sit in an else branch, not stand alone."""
-        # Find the fallback and check it is guarded by a lookup that
-        # already succeeded or failed.
-        self.assertRegex(self.src, r"else\s*\{[^}]*_temp\s*-\s*2", re.S)
+    def test_the_heuristic_is_gone(self):
+        """The -2 offset must not return, in an else branch or anywhere.
+
+        Issue #11 asked for it to be replaced by the solved surface node.
+        Keeping it as a fallback hid the fact that the file had no Brunt
+        term at all.  An unsolved cell now yields no frost verdict.
+        """
+        self.assertNotRegex(self.src, r"_temp\s*-\s*2")
+        self.assertRegex(self.src, r"exitWith\s*\{[^}]*groundFrostPresent", re.S)
 
     def test_the_node_stack_publishes_it(self):
         src = read("thermal/functions/ground/fnc_calculateGroundTemperature.sqf")

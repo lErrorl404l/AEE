@@ -34,6 +34,11 @@ AEE_SETTING_SLIDER(slabDensity,"AEE Environmental","Snow",100,400,300,0);
 
 AEE_SETTING_SLIDER(slabDepth,"AEE Environmental","Snow",0.1,2,1.0,1);
 
+// Weak-layer shear strength.  The published in-situ band is 0.2 to 3 kPa by
+// snow type (Fohn, Camponovo & Krusi 1998, Ann. Glaciol. 26:1-6); the default
+// is the buried-surface-hoar low end, the layer the model names.
+AEE_SETTING_SLIDER(weakLayerStrength,"AEE Environmental","Snow",0.2,3.0,0.2,1);
+
 // ── Seismic activity (#27) ─────────────────────────────────────────────────
 // The seismic event is placed with the AEE Seismic Source EDEN module or
 // raised by the scripting entry point.  These switches gate the secondary

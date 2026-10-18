@@ -3649,12 +3649,14 @@ class TestSQFSync(unittest.TestCase):
                 "_qBrake / _hA",
                 "_prevSpeed",
                 "300-800 C",
-                "115-143.5 W/cm2",
             ],
             "vehicle heat model (lumped-capacitance physics + diagnostic trace)",
             addon="thermal",
         )
         text = _read_sqf("fnc_calculateVehicleHeat.sqf", "thermal")
+        # The uncited "measured 115-143.5 W/cm2" brake flux was unused and had
+        # no source, so it is deleted rather than drift-locked.
+        self.assertNotIn("115-143.5", text)
         self.assertNotIn("_warmupTime = 120", text)
         self.assertNotIn("_cooldownTime = 320", text)
         self.assertNotIn("_cooldownDelay = 120", text)

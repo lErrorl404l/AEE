@@ -491,6 +491,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_persistence_slabDensity` | SLIDER | `300` | yes | persistence | Snow slab density in kg/m3 for the McClung shear-stress model |
 | `aee_persistence_slabDepth` | SLIDER | `1.0` | yes | persistence | Snow slab depth in metres for the McClung shear-stress model |
+| `aee_persistence_weakLayerStrength` | SLIDER | `0.2` | yes | persistence | Weak-layer shear strength in kPa. The published range is 0.2 to 3 kPa by snow type (Fohn, Camponovo and Krusi 1998, Annals of Glaciology 26:1-6). The 0.2 kPa default is buried surface hoar. |
 
 ## AEE Environmental → Sound
 

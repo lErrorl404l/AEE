@@ -128,19 +128,23 @@ class TestSourcedConstants(unittest.TestCase):
             self.assertIn(const, text, f"rothermel missing {const}")
 
     def test_cbrn_arrhenius_temperature_term(self):
-        # The Q10 = 2 rule of thumb is gone.  The temperature term is the
-        # Clausius-Clapeyron slope of the agent's latent heat of vaporisation
-        # (FM 3-11.9, January 2005, Appendix G), supplied per agent by the
-        # caller (the core tick) from aee_weather_fnc_getCbrnAgent.
+        # The Q10 = 2 rule of thumb is gone.  The temperature term is an
+        # Arrhenius hydrolysis slope: the published activation energy where
+        # one exists (GD 64.25, HD 108.8 kJ/mol), else the deltaHvap interim
+        # (FM 3-11.9, January 2005, Appendix G).  The core tick supplies both
+        # from aee_weather_fnc_getCbrnAgent.
         text = Path(
             "addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf"
         ).read_text(encoding="utf-8")
         self.assertNotIn("Q10 = 2", text)
         self.assertNotIn("2 ^ ((_temp_C - 15) / 10)", text)
-        self.assertIn("Clausius-Clapeyron", text)
+        self.assertIn("Arrhenius", text)
         self.assertIn("8.314462618", text)
         self.assertIn("298.15", text)
         self.assertIn("_deltaHvapJmol", text)
+        self.assertIn("_activationEnergyJmol", text)
+        self.assertIn("Wu et al. 2021", text)
+        self.assertIn("Herriott 1947", text)
         self.assertIn("INTERIM", text)
         self.assertIn("UNSOURCED", text)
 

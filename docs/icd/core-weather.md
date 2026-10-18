@@ -14,14 +14,14 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_biomeOverride` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_updateBiomePosition.sqf:32` | UNKNOWN |
 | `aee_core_biomeTransitionRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_getSmoothedBiome.sqf:33` | UNKNOWN |
 | `aee_core_builtDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/terrain/fnc_calculateMicroclimate.sqf:78` | UNKNOWN |
-| `aee_core_cbrnDepositionFlux` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:151` | CBRN dry deposition flux (mg/m2/s) |
+| `aee_core_cbrnDepositionFlux` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:154` | CBRN dry deposition flux (mg/m2/s) |
 | `aee_core_cbrnPlumeActive` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_startCbrnRelease.sqf:32` | A CBRN agent release is active |
-| `aee_core_cbrnPlumeConcentration` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:143` | CBRN plume ground-level concentration (mg/m3) |
-| `aee_core_cbrnPlumeDose` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:138` | CBRN inhaled dose (mg*min/m3) |
-| `aee_core_cbrnPlumeIncapacitated` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:146` | CBRN dose has reached 0.1 x LCt50 |
-| `aee_core_cbrnPlumeLethal` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:145` | CBRN dose has reached LCt50 |
+| `aee_core_cbrnPlumeConcentration` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:146` | CBRN plume ground-level concentration (mg/m3) |
+| `aee_core_cbrnPlumeDose` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:141` | CBRN inhaled dose (mg*min/m3) |
+| `aee_core_cbrnPlumeIncapacitated` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:149` | CBRN dose has reached 0.1 x LCt50 |
+| `aee_core_cbrnPlumeLethal` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:148` | CBRN dose has reached LCt50 |
 | `aee_core_cbrnRelease` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_startCbrnRelease.sqf:31` | UNKNOWN |
-| `aee_core_cbrnStabilityClass` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:147` | Pasquill-Gifford stability class A..F for the CBRN plume (issue #105) |
+| `aee_core_cbrnStabilityClass` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:150` | Pasquill-Gifford stability class A..F for the CBRN plume (issue #105) |
 | `aee_core_computeMode` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_getBiome.sqf:79` | UNKNOWN |
 | `aee_core_currentAirDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:73` | Air density in kg/m3 |
 | `aee_core_currentBlowingSnow` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:17` | Blowing snow 0..1 |
@@ -51,7 +51,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_stormOverrideIntensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:27` | UNKNOWN |
 | `aee_core_stormOverrideType` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:23` | UNKNOWN |
 | `aee_core_stormOverrideUntil` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/warnings/fnc_calculateSevereWeather.sqf:24` | UNKNOWN |
-| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:137` | Update interval in seconds |
+| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:140` | Update interval in seconds |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

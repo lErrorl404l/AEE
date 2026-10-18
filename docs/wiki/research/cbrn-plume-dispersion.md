@@ -90,9 +90,14 @@ tau_lo = t_lo / ln 2   ->  cFast = C0 exp(-t / tau_lo)   (fast edge)
 tau_hi = t_hi / ln 2   ->  cSlow = C0 exp(-t / tau_hi)   (slow edge)
 ```
 
-The band is scaled to the air temperature by the Clausius-Clapeyron slope of
-the latent heat of vaporisation, `t_half(T) = t_half(298.15 K) exp((dHvap / R)
-(1/T - 1/298.15))`, with `R = 8.314462618 J/(mol*K)`. The implied Q10 over 15
+The band is scaled to the air temperature by an Arrhenius slope, `t_half(T) =
+t_half(298.15 K) exp((slope / R) (1/T - 1/298.15))`, with `R = 8.314462618
+J/(mol*K)`. The slope is the agent's published hydrolysis activation energy
+where one exists (GD 64.25 kJ/mol, Wu et al. 2021, E3S Web Conf 267:02060;
+HD 108.8 kJ/mol, Herriott 1947, J Gen Physiol 30(6):457-464, the H.2TDG
+sulfonium salt, a related species), and the latent heat of vaporisation as the
+labelled interim slope otherwise (FM 3-11.9 Appendix G gives dHvap only, so
+GB, VX and CG stay on it). The implied Q10 over 15
 to 25 C runs 1.42 (CG) to 3.09 (VX) per agent. Rain washout uses
 `Lambda = 8.4e-5 I^0.79` (`I` in mm/h). Dry deposition flux is `vd * C`, with
 `vd ~ 0.002 m/s` for a vapour.

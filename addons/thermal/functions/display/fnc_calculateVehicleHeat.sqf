@@ -53,7 +53,7 @@
  *     invented here.
  *   - Reference data for the brake temperatures, for context only: hard
  *     braking drives disc temperatures to 300-800 C, and fade starts above
- *     600 K.  Measured disc surface flux is 115-143.5 W/cm2.
+ *     600 K.
  *   - Only the lumped body/coolant path is modelled here.  The exhaust plume
  *     is a separate consumer (fnc_applyExhaustHeat) and is not split out of
  *     this balance.

@@ -29,11 +29,23 @@ old table had H = 1500 with CG = 3200.
 
 A row is
 
-  [lcT50, vapourPressureTorr, volatilityMgM3, deltaHvapKJmol, persistenceBand]
+  [lcT50, vapourPressureTorr, volatilityMgM3, deltaHvapKJmol, bandHours,
+   hydrolysisEaKJmol]
 
 deltaHvapKJmol is the latent heat of vaporisation at 25 C (FM 3-11.9 Appendix
-G).  The decay kernel turns it into the per-agent Clausius-Clapeyron
-temperature term, which replaces the Q10 = 2 rule of thumb.
+G).  hydrolysisEaKJmol is a published hydrolysis activation energy, and it
+takes precedence over deltaHvap in the decay kernel:
+
+  GD  64.25  Wu et al. 2021, E3S Web Conf 267:02060,
+             doi:10.1051/e3sconf/202126702060 (HCl aqueous, pH 0.90, 20 C).
+  HD 108.8   Herriott 1947, J Gen Physiol 30(6):457-464,
+             doi:10.1085/jgp.30.6.457.  QUALIFIED: this is the hydrolysis of
+             the H.2TDG sulfonium salt over 20 to 100 C, a related species,
+             not neat HD.
+  GB, VX, CG  0.  No activation energy was found (the search is recorded in
+             .omo/research/cbrn-kinetics-ea.md), so the kernel keeps the
+             deltaHvap INTERIM slope for them, labelled as an interim and
+             not as an activation energy.
 
 persistenceBand is the JP 1-02 persistence class limits in HOURS, as classified
 by FM 3-11.9 Table G-6 with its notes:
@@ -55,27 +67,28 @@ is not modelled here.
 Arguments:
   0: agent name (STRING, "VX"/"GB"/"GD"/"H"/"CG")
 
-Returns [lcT50, vapourPressureTorr, volatilityMgM3, deltaHvapKJmol, bandHours].
+Returns [lcT50, vapourPressureTorr, volatilityMgM3, deltaHvapKJmol, bandHours,
+         hydrolysisEaKJmol].
 */
 
 params [["_agent", "", [""]]];
 
 // Default: H (distilled mustard), the persistent agent.
-private _row = [1000, 0.106, 906, 62.8, [24, 336]];
+private _row = [1000, 0.106, 906, 62.8, [24, 336], 108.8];
 
 private _a = toUpper _agent;
 
 if (_a == "VX") then {
-    _row = [15, 8.78e-4, 12.6, 80.3, [24, 336]];
+    _row = [15, 8.78e-4, 12.6, 80.3, [24, 336], 0];
 } else {
     if (_a == "GB") then {
-        _row = [35, 2.48, 18700, 48.5, [10 / 60, 15 / 60]];
+        _row = [35, 2.48, 18700, 48.5, [10 / 60, 15 / 60], 0];
     } else {
         if (_a == "GD") then {
-            _row = [35, 0.401, 3930, 55.2, [10 / 60, 15 / 60]];
+            _row = [35, 0.401, 3930, 55.2, [10 / 60, 15 / 60], 64.25];
         } else {
             if (_a == "CG") then {
-                _row = [1500, 1400, 7460000, 24.8, [10 / 60, 15 / 60]];
+                _row = [1500, 1400, 7460000, 24.8, [10 / 60, 15 / 60], 0];
             };
         };
     };

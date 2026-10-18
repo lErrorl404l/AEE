@@ -7,7 +7,7 @@ Replaces the 4-factor heuristic (slope/wind/temp/rain sums) with the
 shear-stress stability model:
 
   tau        = rho·g·h·sin(psi)          slab shear stress
-  tau_strength = weak-layer strength      (1-10 kPa, snowpack quality)
+  tau_strength = weak-layer strength      (0.2-3 kPa, by snow type)
   S          = tau_strength / tau         stability index
   release    = S < 1 AND trigger present
 
@@ -58,8 +58,10 @@ if (_pos2D isNotEqualTo []) then {
 };
 
 // ─── McClung & Schaerer shear-stress stability ──────────────────────────
-// Shear stress: tau = rho·g·h·sin(psi).  Slab density 200-400 kg/m3,
-// slab depth 0.3-2 m (spec).  Surface-hoar weak layer 1-10 kPa.
+// Shear stress: tau = rho·g·h·sin(psi).  Slab density and slab depth are
+// the mission settings; typical seasonal-snow values are 100-400 kg/m3 and
+// a slab 0.3-2 m deep (McClung & Schaerer, The Avalanche Handbook, 3rd ed,
+// 2006).  Weak-layer strength is the published in-situ range below.
 private _rho = missionNamespace getVariable [QGVAR(slabDensity), 300];
 if !(_rho isEqualType 0) then { _rho = 300; };
 private _slabH = missionNamespace getVariable [QGVAR(slabDepth), 1.0];
@@ -68,15 +70,17 @@ if !(_slabH isEqualType 0) then { _slabH = 1.0; };
 // SQF sin takes degrees; _slopeDeg is already degrees.
 private _tau = _rho * STANDARD_GRAVITY * _slabH * sin _slopeDeg;         // Pa
 
-// Weak-layer strength scales with snowpack quality: cold dry snow is
-// strong, warm/rain/wind-weakened snow is weak.
-private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-if !(_temp isEqualType 0) then { _temp = 15; };
-private _quality = 1.0;
-if (_temp > 0)  then { _quality = _quality - 0.4; };         // warm weakens
-if (rain > 0)   then { _quality = _quality - 0.3; };         // rain lubricates
-if (_quality < 0.2) then { _quality = 0.2; };
-private _tauStrength = 1 + (_quality * 9);                    // 1-10 kPa
+// Weak-layer shear strength, kPa.  The published in-situ range is 0.2 to
+// 3 kPa, by snow type (Fohn, Camponovo & Krusi 1998, "Mechanical and
+// structural properties of weak snow layers measured in situ", Annals of
+// Glaciology 26:1-6, doi:10.3189/1998aog26-1-1-6).  Buried surface hoar and
+// depth hoar, the layers this model names, sit at the low end, so the
+// setting defaults to 0.2 kPa and is clamped into the band.
+// The warm (-0.4) and rain (-0.3) penalties that stood here are removed:
+// neither has a published weak-layer shear-strength coefficient.
+private _tauStrength = missionNamespace getVariable [QGVAR(weakLayerStrength), 0.2];
+if !(_tauStrength isEqualType 0) then { _tauStrength = 0.2; };
+_tauStrength = _tauStrength max 0.2 min 3.0;                            // kPa
 
 // A flat slope (sin psi = 0) carries no shear stress, so the slab is stable
 // and the stability index is maximal.  Guard the division.
@@ -100,6 +104,8 @@ _entry params ["_fdd", "_lastTick", "_ice", "_snow24"];
 private _now = diag_tickTime;
 private _dtH = (_now - _lastTick) / 3600;
 if (_dtH > 0.5) then { _dtH = 0.5; };
+private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_temp isEqualType 0) then { _temp = 15; };
 // aee_core_snowfallRate is liquid-water equivalent, mm/h.  New-snow depth
 // is SWE * rho_water / rho_new, rho_new from the air temperature
 // (Hedstrom & Pomeroy 1998, the same relation the snow-depth model uses):

@@ -5,9 +5,10 @@ Validates the SQF implementation in addons/environmental:
 - fnc_detectGroundFrost.sqf (Magnus dew point -> terrain frost)
 
 The model mirrors the SQF exactly: same Magnus constants (Alduchov &
-Eskridge 1996), same Brunt surface-cooling estimate, same four frost
-gates, same intensity clamp.  The drift-lock tests at the bottom fail
-if the SQF source drifts from the Python mirror.
+Eskridge 1996), same requirement for a solved node-stack surface
+temperature (there is no T_air - 2 fallback), same four frost gates,
+same intensity clamp.  The drift-lock tests at the bottom fail if the
+SQF source drifts from the Python mirror.
 
 Run: python3 -m unittest tools/tests/test_ground_frost.py
 """
@@ -45,29 +46,25 @@ def dew_point_depression(temp_c, rh_pct):
     return temp_c - dew_point_magnus(temp_c, rh_pct)
 
 
-def surface_temperature(temp_c, wind_speed, overcast):
-    """Mirror of the Brunt radiative-cooling surface estimate.
-
-    Clear (overcast < 0.3) and calm (wind < 5 m/s) nights cool the
-    surface ~2 degC below air temperature; otherwise surface = air.
-    """
-    if overcast < 0.3 and wind_speed < 5:
-        return temp_c - 2
-    return temp_c
-
-
-def ground_frost_intensity(temp_c, rh_pct, wind_speed, overcast):
+def ground_frost_intensity(temp_c, rh_pct, wind_speed, overcast, surface_temp):
     """Mirror of fnc_detectGroundFrost.sqf.
+
+    surface_temp is the node-stack surface temperature for the 5 m cell,
+    or None when the stack has not solved that cell.  The SQF gives no
+    frost verdict for an unsolved cell: the old T_air - 2 C night offset
+    is removed (issue #11), because a fixed offset is a cooling law in
+    neither direction.
 
     Frost requires surface <= 0 degC, dew-point depression < 2 degC,
     overcast < 0.3 and wind < 5 m/s.  Intensity is
     (0 - surface) * (1 - depression/5), clamped to 0-1.
     """
-    surface = surface_temperature(temp_c, wind_speed, overcast)
-    depression = dew_point_depression(temp_c, rh_pct)
-    if surface > 0 or depression >= 2 or overcast >= 0.3 or wind_speed >= 5:
+    if surface_temp is None:
         return 0.0
-    return max(0.0, min(1.0, (0 - surface) * (1 - depression / 5)))
+    depression = dew_point_depression(temp_c, rh_pct)
+    if surface_temp > 0 or depression >= 2 or overcast >= 0.3 or wind_speed >= 5:
+        return 0.0
+    return max(0.0, min(1.0, (0 - surface_temp) * (1 - depression / 5)))
 
 
 class TestDewPoint(unittest.TestCase):
@@ -91,57 +88,64 @@ class TestDewPoint(unittest.TestCase):
         self.assertAlmostEqual(dew_point_depression(10, 100), 0.0, places=4)
 
 
-class TestSurfaceTemperature(unittest.TestCase):
-    def test_clear_calm_cools(self):
-        # Clear, calm night: surface ~2 degC below air.
-        self.assertEqual(surface_temperature(-5, 1, 0), -7.0)
+class TestSolvedSurfaceRequired(unittest.TestCase):
+    """Frost reads the solved node-stack surface, and refuses without one."""
 
-    def test_cloudy_no_cooling(self):
-        # Cloud cover blocks radiative cooling: surface = air.
-        self.assertEqual(surface_temperature(-5, 1, 0.8), -5.0)
+    def test_no_solved_surface_gives_no_frost(self):
+        # The stack has not reached the cell: no verdict.  The removed
+        # T_air - 2 offset would have reported frost here.
+        self.assertEqual(ground_frost_intensity(-5, 90, 1, 0, None), 0.0)
 
-    def test_windy_no_cooling(self):
-        # Wind mixes the air: surface = air.
-        self.assertEqual(surface_temperature(-5, 10, 0), -5.0)
+    def test_solved_cold_surface_gives_frost(self):
+        self.assertGreater(ground_frost_intensity(-5, 90, 1, 0, -7.0), 0.0)
+
+    def test_solved_warm_surface_gives_no_frost(self):
+        # The surface governs, not the air: air -5 C over a solved 1 C
+        # surface is not frost.  The flat offset could not tell them apart.
+        self.assertEqual(ground_frost_intensity(-5, 90, 1, 0, 1.0), 0.0)
+
+    def test_cold_solved_surface_under_warm_air_gives_frost(self):
+        # The reverse case: air +2 C, solved surface -1 C.
+        self.assertGreater(ground_frost_intensity(2, 90, 1, 0, -1.0), 0.0)
 
 
 class TestGroundFrost(unittest.TestCase):
     def test_frost_present(self):
-        # -5 degC, 90 % RH, clear, calm: surface -7 degC, depression
+        # -5 degC, 90 % RH, clear, calm, solved surface -7 degC, depression
         # ~1.4 degC -> intensity saturates at 1.0.
-        i = ground_frost_intensity(-5, 90, 1, 0)
+        i = ground_frost_intensity(-5, 90, 1, 0, -7.0)
         self.assertGreater(i, 0.5)
         self.assertLessEqual(i, 1.0)
 
     def test_no_frost_too_warm(self):
-        # +5 degC: surface above freezing, no frost.
-        self.assertEqual(ground_frost_intensity(5, 90, 1, 0), 0.0)
+        # +5 degC air, surface +3 degC: above freezing, no frost.
+        self.assertEqual(ground_frost_intensity(5, 90, 1, 0, 3.0), 0.0)
 
     def test_no_frost_cloudy(self):
-        # Cloud cover blocks radiative cooling and the frost gate.
-        self.assertEqual(ground_frost_intensity(-5, 90, 1, 0.8), 0.0)
+        # Cloud cover blocks the frost gate even with a cold surface.
+        self.assertEqual(ground_frost_intensity(-5, 90, 1, 0.8, -7.0), 0.0)
 
     def test_no_frost_windy(self):
         # Strong wind mixes the air, no frost.
-        self.assertEqual(ground_frost_intensity(-5, 90, 10, 0), 0.0)
+        self.assertEqual(ground_frost_intensity(-5, 90, 10, 0, -7.0), 0.0)
 
     def test_edge_case_zero_air_temp(self):
-        # 0 degC air, clear and calm: surface -2 degC -> frost forms.
-        self.assertGreater(ground_frost_intensity(0, 90, 1, 0), 0.0)
+        # 0 degC air, clear and calm, solved surface -2 degC -> frost forms.
+        self.assertGreater(ground_frost_intensity(0, 90, 1, 0, -2.0), 0.0)
 
     def test_edge_case_zero_surface(self):
-        # +2 degC air, clear and calm: surface exactly 0 degC -> the
-        # intensity term (0 - surface) is zero, so no frost.
-        self.assertEqual(ground_frost_intensity(2, 90, 1, 0), 0.0)
+        # +2 degC air, solved surface exactly 0 degC -> the intensity term
+        # (0 - surface) is zero, so no frost.
+        self.assertEqual(ground_frost_intensity(2, 90, 1, 0, 0.0), 0.0)
 
     def test_intensity_clamped(self):
         # Very cold, saturated, clear, calm: raw intensity far above 1.
-        self.assertEqual(ground_frost_intensity(-15, 100, 1, 0), 1.0)
+        self.assertEqual(ground_frost_intensity(-15, 100, 1, 0, -17.0), 1.0)
 
     def test_dry_air_blocks_frost(self):
         # -5 degC at 80 % RH: dew-point depression ~2.9 degC, above the
         # 2 degC gate, so no frost even though the surface is cold.
-        self.assertEqual(ground_frost_intensity(-5, 80, 1, 0), 0.0)
+        self.assertEqual(ground_frost_intensity(-5, 80, 1, 0, -7.0), 0.0)
 
 
 class TestSQFSyncGroundFrost(unittest.TestCase):
@@ -177,9 +181,28 @@ class TestSQFSyncGroundFrost(unittest.TestCase):
                 "_depression < 2",
                 "_overcast < 0.3",
                 "_wind < 5",
-                "_surfaceTemp = _temp - 2",
+                "_stackKey in _surfState",
+                "groundSurfaceTemp",
             ],
-            "frost gates and Brunt surface-cooling estimate",
+            "frost gates and the solved-surface route",
+        )
+
+    def test_the_flat_offset_is_gone(self):
+        # The T_air - 2 C night offset (issue #11) is removed, not kept as a
+        # fallback: an unsolved cell now yields no verdict instead.
+        text = _read_env("fnc_detectGroundFrost.sqf")
+        self.assertNotIn("_temp - 2", text)
+        self.assertNotIn("Brunt", text)
+
+    def test_the_caller_passes_the_position(self):
+        # A dedicated server has no local unit, so the cell key must come
+        # from the caller, which already holds the position.
+        text = (
+            _REPO_ROOT / "addons/mobility/functions/fnc_updateGroundState.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("[_pos2D] call EFUNC(persistence,detectGroundFrost)", text)
+        self.assertIn(
+            'params [["_pos2D", [], [[]]]]', _read_env("fnc_detectGroundFrost.sqf")
         )
 
     def test_intensity_formula(self):

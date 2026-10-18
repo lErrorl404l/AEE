@@ -243,6 +243,125 @@ class TestDecayEnvelope(unittest.TestCase):
                 self.assertAlmostEqual(got, q10, places=1)
 
 
+def decay_slow_edge(c0, elapsed_h, band, temp_k, dh_jmol, ea_jmol=0.0):
+    """Mirror of the slow edge of fnc_calculateCbrnDecay.
+
+    The slope is the published hydrolysis activation energy where the agent
+    has one, else the latent heat.  tau_hi = band_hi * factor / ln 2.
+    """
+    slope = ea_jmol if ea_jmol != 0 else dh_jmol
+    factor = 1.0
+    if slope != 0:
+        factor = math.exp((slope / R_GAS) * (1 / temp_k - 1 / 298.15))
+    tau_hi = (band[1] * factor) / math.log(2)
+    return c0 * math.exp(-elapsed_h / tau_hi)
+
+
+class TestDecayActivationEnergy(unittest.TestCase):
+    """A published hydrolysis activation energy outranks the latent heat.
+
+    GD 64.25 kJ/mol (Wu et al. 2021, E3S Web Conf 267:02060) and HD
+    108.8 kJ/mol (Herriott 1947, J Gen Physiol 30(6):457-464, the H.2TDG
+    sulfonium salt, a related species).  GB, VX and CG keep the deltaHvap
+    interim slope, because no activation energy was found for them.
+    """
+
+    BAND = [24, 336]
+    GD_DHVAP = 55.2e3
+    GD_EA = 64.25e3
+    HD_DHVAP = 62.8e3
+    HD_EA = 108.8e3
+    # Long enough that the half-life difference shows in the concentration.
+    ELAPSED = 2000.0
+
+    def _slow(self, temp_k, dh, ea=0.0):
+        return run_sqf(DECAY, [1.0, self.ELAPSED, self.BAND, temp_k, dh, ea])[1]
+
+    def test_the_ea_is_preferred_when_both_are_supplied(self):
+        # At the 25 C reference the factor is 1 either way, so the two agree
+        # only there; a temperature away from it separates them.
+        self.assertAlmostEqual(
+            self._slow(298.15, self.HD_DHVAP, self.HD_EA),
+            self._slow(298.15, self.HD_DHVAP),
+        )
+        self.assertNotAlmostEqual(
+            self._slow(303.15, self.HD_DHVAP, self.HD_EA),
+            self._slow(303.15, self.HD_DHVAP),
+            places=4,
+        )
+
+    def test_the_temperature_factor_changes_by_the_known_ratio(self):
+        # At 30 C the published HD Ea shortens the half-life by the ratio
+        # exp((Ea - dhvap)/R * (1/T - 1/Tref)) = 0.736, i.e. 36 percent.
+        ea = self._slow(303.15, self.HD_DHVAP, self.HD_EA)
+        dh = self._slow(303.15, self.HD_DHVAP)
+        self.assertLess(ea, dh)
+        self.assertAlmostEqual(
+            ea,
+            decay_slow_edge(
+                1.0, self.ELAPSED, self.BAND, 303.15, self.HD_DHVAP, self.HD_EA
+            ),
+            places=9,
+        )
+        self.assertAlmostEqual(
+            dh,
+            decay_slow_edge(1.0, self.ELAPSED, self.BAND, 303.15, self.HD_DHVAP),
+            places=9,
+        )
+        half_life_ratio = math.exp(
+            ((self.HD_EA - self.HD_DHVAP) / R_GAS) * (1 / 303.15 - 1 / 298.15)
+        )
+        self.assertAlmostEqual(half_life_ratio, 0.736, places=3)
+
+    def test_the_ea_slows_the_cold_band(self):
+        # Below the reference the larger slope is the longer half-life.
+        self.assertGreater(
+            self._slow(293.15, self.HD_DHVAP, self.HD_EA),
+            self._slow(293.15, self.HD_DHVAP),
+        )
+
+    def test_gd_moves_the_same_way(self):
+        # The published GD Ea is a 6 percent change at 30 C.
+        self.assertLess(
+            self._slow(303.15, self.GD_DHVAP, self.GD_EA),
+            self._slow(303.15, self.GD_DHVAP),
+        )
+        self.assertAlmostEqual(
+            math.exp(
+                ((self.GD_EA - self.GD_DHVAP) / R_GAS) * (1 / 303.15 - 1 / 298.15)
+            ),
+            0.942,
+            places=3,
+        )
+
+    def test_agents_without_an_ea_are_unchanged(self):
+        # GB 48.5, VX 80.3 and CG 24.8 kJ/mol carry 0 in row 5, so the
+        # five-argument and six-argument forms must agree for them.
+        for agent in ("GB", "VX", "CG"):
+            with self.subTest(agent=agent):
+                row = run_sqf(AGENT, [agent])
+                self.assertEqual(row[5], 0)
+                dh = row[3] * 1000
+                self.assertAlmostEqual(
+                    run_sqf(
+                        DECAY, [1.0, self.ELAPSED, row[4], 288.15, dh, row[5] * 1000]
+                    )[1],
+                    run_sqf(DECAY, [1.0, self.ELAPSED, row[4], 288.15, dh])[1],
+                    places=9,
+                )
+
+    def test_gd_and_hd_carry_the_published_ea(self):
+        self.assertEqual(run_sqf(AGENT, ["GD"])[5] * 1000, self.GD_EA)
+        self.assertAlmostEqual(run_sqf(AGENT, ["H"])[5] * 1000, self.HD_EA)
+
+    def test_the_plume_kernel_passes_the_ea(self):
+        # The plume must feed row 5 as well, or it scales temperature
+        # differently from the persistence kernel for GD and HD.
+        driver = DRIVER.read_text(encoding="utf-8")
+        self.assertIn("_agentRow select 5", driver)
+        self.assertIn("_deltaHvapJmol, _eaJmol] call FUNC(calculateCbrnDecay)", driver)
+
+
 class TestAgentTable(unittest.TestCase):
     """The FM 3-11.9 (January 2005) rows: LCt50, vapour pressure, volatility,
     latent heat of vaporisation and the JP 1-02 persistence band."""
@@ -381,11 +500,14 @@ class TestWiring(unittest.TestCase):
 
     def test_core_tick_supplies_the_agent_delta_hvap(self):
         # The persistence kernel cannot resolve an agent, so the tick passes
-        # the active agent's dHvap.
+        # the active agent's dHvap and its published hydrolysis Ea.
         env = UPDATE_ENV.read_text(encoding="utf-8")
         self.assertIn("EFUNC(weather,getCbrnAgent)", env)
+        self.assertIn("_cbrnRow select 3", env)
+        self.assertIn("_cbrnRow select 5", env)
         self.assertIn(
-            "[_cbrnDeltaHvapJmol] call EFUNC(persistence,calculateCBRNPersistence)", env
+            "[_cbrnDeltaHvapJmol, _cbrnEaJmol] call EFUNC(persistence,calculateCBRNPersistence)",
+            env,
         )
 
 

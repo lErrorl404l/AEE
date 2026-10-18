@@ -13,9 +13,9 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_biome` | STRING | code | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_updateGroundState.sqf:37` | Koppen biome code (map climate class) |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_updateGroundState.sqf:36` | Air temperature in C |
 | `aee_core_enabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_applyAccretionMass.sqf:28` | Master switch |
-| `aee_core_freezingDegreeDays` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_updateGroundState.sqf:116` | UNKNOWN |
+| `aee_core_freezingDegreeDays` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_updateGroundState.sqf:117` | UNKNOWN |
 | `aee_core_frostHeave_m` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_calculateTraction.sqf:40` | UNKNOWN |
-| `aee_core_frozenDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_updateGroundState.sqf:75` | Frozen depth in metres |
+| `aee_core_frozenDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_updateGroundState.sqf:76` | Frozen depth in metres |
 | `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_applyGripLoss.sqf:45` | Ground state |
 | `aee_core_mudAccretionEnabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_calculateMudAccretion.sqf:24` | UNKNOWN |
 | `aee_core_precipitationPhase` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_calculateWetTraction.sqf:48` | Phase (rain/sleet/snow/freezing_rain) |

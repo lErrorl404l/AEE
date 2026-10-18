@@ -57,11 +57,12 @@ if (_pos2D isNotEqualTo []) then {
 };
 
 // ─── Ground frost (surface state, environmental) ─────────────────────────
-// fnc_detectGroundFrost solves the Magnus dew point and the surface energy
-// balance, and publishes whether frost is present. Produce it here and fold
+// fnc_detectGroundFrost solves the Magnus dew point against the surface
+// temperature the node stack publishes for the same 5 m cell, and publishes
+// whether frost is present. Produce it here and fold
 // its presence into the frozen classification below. A frost-covered
 // surface is a frozen surface for the traction model.
-[] call EFUNC(persistence,detectGroundFrost);
+[_pos2D] call EFUNC(persistence,detectGroundFrost);
 private _groundFrost = missionNamespace getVariable [QEGVAR(persistence,groundFrostPresent), false];
 if !(_groundFrost isEqualType false) then { _groundFrost = false; };
 

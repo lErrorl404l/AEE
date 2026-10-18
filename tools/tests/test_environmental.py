@@ -22,20 +22,20 @@ R_GAS = 8.314462618  # J/(mol*K), CODATA 2018 (molar gas constant)
 T_REF_K = 298.15  # K, 25 C: the temperature the agent data is quoted at
 
 
-def cbrn_persistence_h(temp_c, delta_hvap_jmol=0.0, base_h=24.0):
+def cbrn_persistence_h(temp_c, delta_hvap_jmol=0.0, base_h=24.0, ea_jmol=0.0):
     """Mirror of the temperature term in fnc_calculateCBRNPersistence.sqf.
 
-    Per-agent Clausius-Clapeyron on the latent heat of vaporisation
-    (FM 3-11.9, January 2005, Appendix G).  delta_hvap_jmol = 0 is the
-    no-agent case, where the term is 1 (no published value exists for an
-    unidentified agent).  Returns the persistence in hours.
+    The slope is the published hydrolysis activation energy where the agent
+    has one (GD 64.25, HD 108.8 kJ/mol), else the deltaHvap interim slope
+    (FM 3-11.9, January 2005, Appendix G).  Both 0 is the no-agent case,
+    where the term is 1 (no published value exists for an unidentified
+    agent).  Returns the persistence in hours.
     """
+    slope = ea_jmol if ea_jmol != 0 else delta_hvap_jmol
     rate_multiplier = 1.0
-    if delta_hvap_jmol != 0:
+    if slope != 0:
         temp_k = max(temp_c + 273.15, 1.0)
-        rate_multiplier = math.exp(
-            -(delta_hvap_jmol / R_GAS) * (1.0 / temp_k - 1.0 / T_REF_K)
-        )
+        rate_multiplier = math.exp(-(slope / R_GAS) * (1.0 / temp_k - 1.0 / T_REF_K))
     return base_h / rate_multiplier
 
 
@@ -257,15 +257,84 @@ class TestCBRNPersistenceRemovals(unittest.TestCase):
         self.assertNotIn("2 ^ ((_temp_C - 15) / 10)", self.text)
 
     def test_arrhenius_term_is_sourced(self):
-        self.assertIn("Clausius-Clapeyron", self.text)
+        self.assertIn("Arrhenius", self.text)
         self.assertIn("8.314462618", self.text)
         self.assertIn("298.15", self.text)
         self.assertIn("_deltaHvapJmol", self.text)
+        self.assertIn("_activationEnergyJmol", self.text)
+        self.assertIn("Wu et al. 2021", self.text)
+        self.assertIn("Herriott 1947", self.text)
 
     def test_interim_basis_is_marked(self):
-        # FM 3-11.9 gives dHvap, not a hydrolysis activation energy.
+        # GB, VX and CG have no published Ea: their slope stays the deltaHvap
+        # interim, labelled as such and not as an activation energy.
         self.assertIn("INTERIM", self.text)
         self.assertIn("UNSOURCED", self.text)
+
+
+CBRN_AGENT = REPO / "addons/weather/functions/dispersion/fnc_getCbrnAgent.sqf"
+
+
+class TestCBRNPersistenceActivationEnergy(unittest.TestCase):
+    """A published hydrolysis activation energy replaces the deltaHvap slope
+    where one exists: GD 64.25 kJ/mol (Wu et al. 2021, E3S Web Conf 267:02060)
+    and HD 108.8 kJ/mol (Herriott 1947, J Gen Physiol 30(6):457-464)."""
+
+    HD_DHVAP = 62.8e3  # FM 3-11.9 Appendix G, the interim slope
+    HD_EA = 108.8e3  # Herriott 1947, H.2TDG sulfonium salt, 20-100 C
+    GD_DHVAP = 55.2e3
+    GD_EA = 64.25e3  # Wu et al. 2021, HCl aqueous, pH 0.90, 20 C
+
+    def _rate_multiplier(self, dh, ea=0.0):
+        """Decay-rate multiplier at 30 C over 25 C, the kernel's own term.
+
+        A larger multiplier means faster decay, hence shorter persistence.
+        """
+        return cbrn_persistence_h(25, dh, ea_jmol=ea) / cbrn_persistence_h(
+            30, dh, ea_jmol=ea
+        )
+
+    def test_hd_ea_shortens_persistence_by_36_percent_at_30c(self):
+        interim = self._rate_multiplier(self.HD_DHVAP)
+        published = self._rate_multiplier(self.HD_DHVAP, self.HD_EA)
+        self.assertAlmostEqual(interim, 1.52, places=2)
+        self.assertAlmostEqual(published, 2.06, places=2)
+        self.assertAlmostEqual(published / interim, 1.358, places=3)
+        # The same result stated as persistence: 36 percent shorter.
+        self.assertAlmostEqual(interim / published, 0.736, places=3)
+
+    def test_gd_ea_is_a_six_percent_change_at_30c(self):
+        interim = self._rate_multiplier(self.GD_DHVAP)
+        published = self._rate_multiplier(self.GD_DHVAP, self.GD_EA)
+        self.assertAlmostEqual(published / interim, 1.062, places=3)
+
+    def test_the_ea_wins_over_the_interim_slope(self):
+        # A non-zero Ea is the slope even when deltaHvap is also passed.
+        self.assertNotAlmostEqual(
+            cbrn_persistence_h(30, self.HD_DHVAP, ea_jmol=self.HD_EA),
+            cbrn_persistence_h(30, self.HD_DHVAP),
+        )
+        self.assertLess(
+            cbrn_persistence_h(30, self.HD_DHVAP, ea_jmol=self.HD_EA),
+            cbrn_persistence_h(30, self.HD_DHVAP),
+        )
+
+    def test_no_ea_no_delta_hvap_still_means_no_term(self):
+        self.assertAlmostEqual(cbrn_persistence_h(30, 0, ea_jmol=0), 24.0)
+
+    def test_agent_table_carries_the_ea_and_the_zeros(self):
+        # GD and HD carry a published activation energy.  GB, VX and CG
+        # carry 0, so the kernel keeps the deltaHvap interim for them.
+        text = CBRN_AGENT.read_text(encoding="utf-8")
+        for row in (
+            "[1000, 0.106, 906, 62.8, [24, 336], 108.8]",  # HD
+            "[35, 0.401, 3930, 55.2, [10 / 60, 15 / 60], 64.25]",  # GD
+            "[15, 8.78e-4, 12.6, 80.3, [24, 336], 0]",  # VX
+            "[35, 2.48, 18700, 48.5, [10 / 60, 15 / 60], 0]",  # GB
+            "[1500, 1400, 7460000, 24.8, [10 / 60, 15 / 60], 0]",  # CG
+        ):
+            with self.subTest(row=row):
+                self.assertIn(row, text)
 
 
 class TestFireSpread(unittest.TestCase):

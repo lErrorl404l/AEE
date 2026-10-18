@@ -12,7 +12,8 @@ and the air is near saturation.  Uses the Magnus dew-point formula
 
 Conditions for frost:
   Surface temperature <= 0 C
-    (surface approx air - 2 C on clear calm nights, Brunt radiative cooling)
+    (solved by the ground node stack, published per 5 m cell; no frost
+    verdict is given for a cell with no solved value)
   Dew-point depression < 2 C   (air near saturation)
   Overcast < 0.3              (clear sky for radiative cooling)
   Wind < 5 m/s                (light wind, strong wind mixes the air)
@@ -24,9 +25,14 @@ Stores:
   QGVAR(groundFrostIntensity) float, 0 to 1
   QGVAR(groundFrostPresent)   bool
 Returns QGVAR(groundFrostIntensity)
+
+Arguments:
+  0: ARRAY - the position to read the solved cell for.  Empty means the
+     current unit's position.  With no position and no unit (a dedicated
+     server) no cell resolves, so no frost verdict is given.
 */
 
-params [];
+params [["_pos2D", [], [[]]]];
 
 if (!(missionNamespace getVariable [QGVAR(groundFrostEnabled), true])) exitWith {
     missionNamespace setVariable [QGVAR(groundFrostIntensity), 0];
@@ -47,27 +53,32 @@ private _depression = _temp - _dewPoint;
 
 // Surface temperature. The node stack solves it from the full energy
 // balance (issue #198, fnc_calculateGroundNodeStack) and publishes it per
-// 5 m cell; issue #11 asked for the old T_air - 2 C night heuristic to be
-// replaced, and the Brunt term below now stands only for a cell the stack
-// has not reached yet.
-private _surfaceTemp = _temp;
+// 5 m cell.  Issue #11 asked for the old T_air - 2 C night heuristic to be
+// replaced, and it is now gone rather than kept as a fallback: a fixed
+// offset is a published cooling law in neither direction, because grass
+// minima run several kelvin below screen air on a clear night and the
+// offset depends on the sky, the wind and the surface.  A cell the stack has
+// not reached carries no solved surface temperature, so this kernel gives no
+// frost verdict for it instead of inventing one.
 private _unit = call CBA_fnc_currentUnit;
-// Eager-default allocation removed; the guard below expects a hashmap, which
-// the lazy branch still guarantees.
 private _surfState = missionNamespace getVariable [QEGVAR(core,groundSurfaceTemp), -1];
 if (_surfState isEqualType 0) then { _surfState = createHashMap; };
+// The caller's position wins: the core tick runs on a dedicated server,
+// where there is no local unit, and it passes the position it already has.
+private _readPos = if (_pos2D isEqualType [] && {_pos2D isNotEqualTo []}) then { _pos2D } else { [] };
+if (_readPos isEqualTo [] && {!isNil "_unit"} && {!isNull _unit}) then {
+    _readPos = getPos _unit;
+};
 private _stackKey = "";
-if (!isNil "_unit" && {!isNull _unit} && {_surfState isEqualType createHashMap}) then {
-    private _upos = getPos _unit;
-    _stackKey = format ["%1_%2_%3", floor ((_upos select 0) / 5), floor ((_upos select 1) / 5), "ground"];
+if (_readPos isNotEqualTo [] && {_surfState isEqualType createHashMap}) then {
+    _stackKey = format ["%1_%2_%3", floor ((_readPos select 0) / 5), floor ((_readPos select 1) / 5), "ground"];
 };
-if (_stackKey != "" && {_stackKey in _surfState}) then {
-    _surfaceTemp = _surfState get _stackKey;
-} else {
-    if (_overcast < 0.3 && _wind < 5) then {
-        _surfaceTemp = _temp - 2;
-    };
+if (_stackKey == "" || {!(_stackKey in _surfState)}) exitWith {
+    missionNamespace setVariable [QGVAR(groundFrostIntensity), 0];
+    missionNamespace setVariable [QGVAR(groundFrostPresent), false];
+    0
 };
+private _surfaceTemp = _surfState get _stackKey;
 
 // Frost conditions
 private _intensity = 0;

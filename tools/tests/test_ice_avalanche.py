@@ -16,7 +16,11 @@ Anchors (from the issue):
 """
 
 import math
+import re
 import unittest
+from pathlib import Path
+
+ADDONS = Path(__file__).resolve().parents[2] / "addons"
 
 
 # ─── Stefan ice growth ──────────────────────────────────────────────────────
@@ -298,6 +302,72 @@ class TestBurialSurvival(unittest.TestCase):
 
     def test_clamps_past_end(self):
         self.assertAlmostEqual(burial_survival(200), 0.03, places=3)
+
+
+WEAK_LAYER_MIN_KPA = 0.2
+WEAK_LAYER_MAX_KPA = 3.0
+
+
+def weak_layer_strength_kpa(setting=WEAK_LAYER_MIN_KPA):
+    """Mirror of the clamped weak-layer strength in fnc_calculateAvalancheRisk.
+
+    The published in-situ band is 0.2 to 3 kPa by snow type (Fohn,
+    Camponovo and Krusi 1998, Ann. Glaciol. 26:1-6).  A non-number setting
+    falls back to the buried-surface-hoar default.
+    """
+    if isinstance(setting, bool) or not isinstance(setting, (int, float)):
+        setting = WEAK_LAYER_MIN_KPA
+    return max(WEAK_LAYER_MIN_KPA, min(WEAK_LAYER_MAX_KPA, setting))
+
+
+class TestWeakLayerStrength(unittest.TestCase):
+    """The weak layer is the measured band, not a 1-10 kPa quality scale."""
+
+    def test_default_is_the_surface_hoar_low_end(self):
+        self.assertEqual(weak_layer_strength_kpa(), 0.2)
+
+    def test_the_old_upper_bound_is_gone(self):
+        # The removed model reached 10 kPa, 3.3 times the published bound.
+        self.assertEqual(weak_layer_strength_kpa(10.0), 3.0)
+
+    def test_the_band_is_enforced_both_ways(self):
+        self.assertEqual(weak_layer_strength_kpa(0.05), 0.2)
+        self.assertEqual(weak_layer_strength_kpa(1.5), 1.5)
+        self.assertEqual(weak_layer_strength_kpa(3.0), 3.0)
+
+    def test_a_bad_setting_falls_back_to_the_default(self):
+        self.assertEqual(weak_layer_strength_kpa(None), 0.2)
+        self.assertEqual(weak_layer_strength_kpa(True), 0.2)
+
+    def test_the_band_drives_the_stability_index(self):
+        # At 40 deg the slab shear stress is 1.89 kPa, so S spans 0.11 to
+        # 1.59 across the published band: the whole band can release.
+        tau = avalanche_shear_stress_kpa(40.0)
+        self.assertLess(avalanche_stability(tau, weak_layer_strength_kpa()), 1.0)
+        self.assertGreater(avalanche_stability(tau, weak_layer_strength_kpa(3.0)), 1.0)
+
+
+class TestAvalancheStrengthSource(unittest.TestCase):
+    """The SQF must cite the measured band and carry no invented penalty."""
+
+    def setUp(self):
+        self.src = (
+            ADDONS / "persistence/functions/warnings/fnc_calculateAvalancheRisk.sqf"
+        ).read_text(encoding="utf-8")
+
+    def test_cites_the_measured_band(self):
+        for token in ("Fohn, Camponovo & Krusi 1998", "Annals of", "0.2 to", "3 kPa"):
+            self.assertIn(token, self.src)
+
+    def test_the_quality_penalties_are_gone(self):
+        body = re.sub(r"//[^\n]*", "", self.src)
+        self.assertNotIn("_quality", body)
+        self.assertNotIn("_tauStrength = 1 +", body)
+        self.assertNotIn("rain > 0", body)
+
+    def test_the_strength_is_a_clamped_setting(self):
+        self.assertIn("weakLayerStrength", self.src)
+        self.assertIn("_tauStrength max 0.2 min 3.0", self.src)
 
 
 if __name__ == "__main__":
