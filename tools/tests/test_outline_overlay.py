@@ -44,11 +44,15 @@ CANVAS_SRC = (OUTLINE / "fnc_outlineCanvas.sqf").read_text(encoding="utf-8")
 COLLECT_SRC = (OUTLINE / "fnc_outlineCollect.sqf").read_text(encoding="utf-8")
 DRAW_SRC = (OUTLINE / "fnc_outlineDraw.sqf").read_text(encoding="utf-8")
 TOGGLE_SRC = (OUTLINE / "fnc_outlineToggle.sqf").read_text(encoding="utf-8")
-PREP_SRC = (REPO / "addons" / "thermal_display" / "XEH_PREP.hpp").read_text(encoding="utf-8")
+PREP_SRC = (REPO / "addons" / "thermal_display" / "XEH_PREP.hpp").read_text(
+    encoding="utf-8"
+)
 SETTINGS_SRC = (REPO / "addons" / "thermal_display" / "initSettings.inc.sqf").read_text(
     encoding="utf-8"
 )
-RSC_SRC = (REPO / "addons" / "thermal_display" / "RscTitles.hpp").read_text(encoding="utf-8")
+RSC_SRC = (REPO / "addons" / "thermal_display" / "RscTitles.hpp").read_text(
+    encoding="utf-8"
+)
 STRINGTABLE_SRC = (REPO / "addons" / "thermal_display" / "stringtable.xml").read_text(
     encoding="utf-8"
 )
@@ -424,7 +428,9 @@ class TestOutlineWiring(unittest.TestCase):
 
     def test_the_nvg_dispatch_drives_the_outline(self):
         self.assertIn("[true] call EFUNC(thermal_display,outlineToggle);", POSTINIT_SRC)
-        self.assertIn("[false] call EFUNC(thermal_display,outlineToggle);", POSTINIT_SRC)
+        self.assertIn(
+            "[false] call EFUNC(thermal_display,outlineToggle);", POSTINIT_SRC
+        )
 
 
 class TestOutlineWorkerWiring(unittest.TestCase):
@@ -487,6 +493,55 @@ class TestOutlineCollectorCacheKey(unittest.TestCase):
             '_selMap getOrDefault [format ["%1|%2", _obj, _selName], -999]',
             COLLECT_SRC,
         )
+
+
+class TestOutlineBroadphaseGate(unittest.TestCase):
+    """The nearEntities broadphase runs at the 4 Hz TTL, not once per frame.
+
+    The outline is drawn from a Draw3D worker, so FUNC(outlineCollect) is
+    called once per frame while the overlay is raised.  The _refreshAt gate
+    covered the log line only, and the spatial query ran unconditionally on
+    every call - a full nearEntities sweep of six object classes at frame
+    rate (issue #263).  The query now sits inside the gate and the candidate
+    list is cached for the TTL, so the sweep runs at most four times a
+    second.
+    """
+
+    def test_the_query_is_inside_the_refresh_gate(self):
+        self.assertIn("private _doRefresh = _now >= _refreshAt;", COLLECT_SRC)
+        self.assertIn(
+            "if (_sweep) then {\n    _candidates = _center nearEntities",
+            COLLECT_SRC,
+        )
+
+    def test_the_ungated_query_is_gone(self):
+        # The pre-fix form was a bare statement outside any gate, so it
+        # executed on every frame the collector was called.
+        self.assertNotIn("\nprivate _candidates = _center nearEntities", COLLECT_SRC)
+
+    def test_the_candidate_list_is_cached_and_read_back(self):
+        self.assertIn(
+            "private _candidates = missionNamespace getVariable "
+            "[QGVAR(outlineHotCandidates), []];",
+            COLLECT_SRC,
+        )
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(outlineHotCandidates), _candidates];",
+            COLLECT_SRC,
+        )
+
+    def test_a_changed_range_forces_a_fresh_sweep(self):
+        # The cached list belongs to the radius it was swept with.
+        self.assertIn("_sweep = _doRefresh || (_sweptRange != _range);", COLLECT_SRC)
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(outlineHotRange), _range];",
+            COLLECT_SRC,
+        )
+
+    def test_the_log_shares_the_refresh_gate(self):
+        # One gate for the query and the log, so the two cannot drift.
+        self.assertIn("if (_doRefresh) then {", COLLECT_SRC)
+        self.assertNotIn("_doLog", COLLECT_SRC)
 
 
 if __name__ == "__main__":
