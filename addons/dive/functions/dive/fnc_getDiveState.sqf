@@ -13,9 +13,13 @@ State (per UID, array):
   32           fN2 of the current breathing gas (0..1)
   33           fHe of the current breathing gas (0..1)
   34           fO2 of the current breathing gas (0..1)
-  35           last depth (m)
-  36           DCS accumulator (0..1, threshold 1.0 triggers hit)
-  37           ascent-rate violation count (fast ascent without deco)
+  35           depth at the previous 1 Hz tick (m); the ascent-rate baseline
+  36           DCS accumulator (0..1, threshold 1.0 triggers a hit)
+  37           reserved (unused)
+  38           NDL, minutes remaining (9999 = no limit)
+  39           CNS oxygen clock, fraction of the exposure limit (0..1,
+               threshold 1.0 triggers a hit)
+  40           nitrogen narcosis accumulator (0..1, warning gate 0.5)
 
 Input:  [_unit] - the unit to track (default: player)
 Output: the unit's state array (read-only reference)
@@ -46,9 +50,12 @@ if (isNil "_entry") then {
     _entry pushBack 0.79;   // fN2
     _entry pushBack 0;      // fHe
     _entry pushBack 0.21;   // fO2
-    _entry pushBack 0;      // last depth
+    _entry pushBack 0;      // last depth (m)
     _entry pushBack 0;      // DCS accumulator
-    _entry pushBack 0;      // ascent violations
+    _entry pushBack 0;      // reserved
+    _entry pushBack 9999;   // NDL minutes remaining (no limit)
+    _entry pushBack 0;      // CNS oxygen clock (fraction)
+    _entry pushBack 0;      // nitrogen narcosis accumulator
     _state set [_uid, _entry];
     missionNamespace setVariable [QGVAR(diveStates), _state];
 };

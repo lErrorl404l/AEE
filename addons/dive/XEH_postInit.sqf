@@ -42,6 +42,16 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(diveEnabled), true])) t
                 private _step = [0, 0.79, 0, _tissues, 1.0] call EFUNC(physiology,zh16cStep);
                 private _new = _step select 0;
                 for "_i" from 0 to 31 do { _entry set [_i, _new select _i]; };
+                // updateDiveState runs only underwater, so the toxin
+                // accumulators would freeze on surfacing without this.
+                // CNS clock: 90-minute recovery half-time below 0.5 bar
+                // ppO2 (NOAA Diving Manual / Repex); surface air is
+                // 0.21 bar.  Narcosis: the 4-minute ZH-L16C compartment 1.
+                // Index 35 is reset so the next dive's first ascent-rate
+                // tick starts from the surface.
+                _entry set [39, ((_entry select 39) * (2 ^ (-1 / (60 * 90))))];
+                _entry set [40, ((_entry select 40) * (2 ^ (-1 / (60 * 4))))];
+                _entry set [35, 0];
                 private _state = missionNamespace getVariable [QGVAR(diveStates), -1];
                 if (_state isEqualType 0) then {
                     _state = createHashMap;

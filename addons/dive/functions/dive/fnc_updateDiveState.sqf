@@ -27,10 +27,17 @@ if (isNull _unit) then { _unit = call CBA_fnc_currentUnit; };
 if (_unit != call CBA_fnc_currentUnit) exitWith {};
 
 private _entry = [_unit] call FUNC(getDiveState);
+// Depth at the previous 1 Hz tick, captured BEFORE this tick overwrites
+// index 35 (issue #306: reading it after the write made the ascent rate 0).
+private _prevDepth = _entry select 35;
 private _tissues = _entry select [0, 32];
 
 // ─── Depth and gas ──────────────────────────────────────────────────────
-private _depthM = 0 max ((getPosASL _unit) select 2) * -1;
+// Parenthesise the product: SQF gives max the same precedence as + and -
+// (BIS "Order of Precedence", levels 6 and 7), so this negates the z
+// coordinate before the max.  Without the parens the expression is a
+// precedence trap for any reader or test harness that binds max tighter.
+private _depthM = 0 max (((getPosASL _unit) select 2) * -1);
 private _fN2 = _entry select 32;
 private _fHe = _entry select 33;
 private _fO2 = _entry select 34;
@@ -87,15 +94,56 @@ _entry set [38, _ndl];  // minutes remaining
 // ─── Oxygen / nitrogen toxicity ──────────────────────────────────────────
 private _ppO2 = _pAmb * _fO2;
 private _ppN2 = _pAmb * _fN2;
-private _o2Cns = 0;
-if (_ppO2 > 1.4) then { _o2Cns = (_ppO2 - 1.4) * 0.01; };  // per-second CNS charge
-_entry set [39, _o2Cns];
-private _n2Narc = if (_ppN2 > 3.5) then { (_ppN2 - 3.5) * 0.01 } else { 0 };
-_entry set [40, _n2Narc];
+
+// CNS oxygen clock: an accumulator (issue #311), charged by dt / limit.
+// Limits are NOAA Diving Manual (4th ed.) Table 15-1, the table Repex
+// uses.  Each bracket is [ppO2 bar, max single exposure minutes] that
+// charges 100 %: 1.6 bar = 45 min (2.22 %/min).  The bracket at or below
+// the reading is used, the conservative choice Repex makes.
+private _cnsTable = [
+    [1.6, 45], [1.5, 120], [1.4, 150], [1.3, 180], [1.2, 210],
+    [1.1, 240], [1.0, 300], [0.9, 360], [0.8, 450], [0.7, 570],
+    [0.6, 720]
+];
+private _cnsLimitMin = 0;
+{
+    if (_cnsLimitMin == 0) then {
+        if (_ppO2 >= (_x select 0)) then { _cnsLimitMin = _x select 1; };
+    };
+} forEach _cnsTable;
+
+private _cns = _entry select 39;
+if (_ppO2 < 0.5) then {
+    // Published recovery rule: below about 0.5 bar ppO2 the CNS clock
+    // recovers with a 90-minute half-time (NOAA Diving Manual / Repex).
+    _cns = _cns * (2 ^ (-1 / (60 * 90)));
+};
+if (_cnsLimitMin > 0) then {
+    _cns = _cns + (1 / (60 * _cnsLimitMin));
+};
+_entry set [39, _cns];
+
+// Nitrogen narcosis: an accumulator (issue #310), not an instantaneous
+// value.  Onset charges at the existing 0.01 per second per bar of
+// excess over 3.5 bar ppN2 (about 30 m on air).  Recovery follows the
+// fastest ZH-L16C compartment, the 4-minute N2 half-time tabulated
+// above (compartment 1), so narcosis clears within minutes of ascent.
+private _narc = _entry select 40;
+if (_ppN2 > 3.5) then {
+    _narc = _narc + ((_ppN2 - 3.5) * 0.01);
+} else {
+    _narc = _narc * (2 ^ (-1 / (60 * (_tHalfN2 select 0))));
+};
+_entry set [40, _narc min 1];   // 1 = the full narcosis effect
 
 // ─── Ceiling violation → DCS ─────────────────────────────────────────────
 private _dcs = _entry select 36;
-private _ascentRate = (_entry select 35) - _depthM;  // positive = ascending
+// Ascent rate = the 1 Hz depth delta in metres per second (positive =
+// ascending); the gate values 0.5 and 1.5 m/s are 30 and 90 m/min.  For
+// scale, the published safe-ascent limits are PADI 18 m/min (0.3 m/s)
+// and US Navy Diving Manual 30 ft/min (about 0.15 m/s); these gates are
+// deliberately permissive to allow a controlled emergency ascent.
+private _ascentRate = _prevDepth - _depthM;
 private _violation = 0;
 if ((_ceilingM > _depthM + 1) && _ascentRate > 0.5) then {
     // Ascending above the ceiling with tissue still over-saturated.
