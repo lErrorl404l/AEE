@@ -806,8 +806,8 @@ class TestNeedsTick(unittest.TestCase):
 
     def test_the_rate_ratio_is_the_measured_bout_ratio(self):
         text = (WILDLIFE / "initSettings.inc.sqf").read_text(encoding="utf-8")
-        self.assertIn("hungerRate,\"AEE Wildlife\",\"Behaviour\",0.001,0.1,0.02,3", text)
-        self.assertIn("thirstRate,\"AEE Wildlife\",\"Behaviour\",0.001,0.2,0.004,3", text)
+        self.assertIn('hungerRate,"AEE Wildlife","Behaviour",0.001,0.1,0.02,3', text)
+        self.assertIn('thirstRate,"AEE Wildlife","Behaviour",0.001,0.2,0.004,3', text)
 
     def test_both_needs_rise_with_dt(self):
         hunger0, thirst0, _goal = self.needs(0.0, 0.0, 0)
@@ -1389,6 +1389,35 @@ class TestEmitterClass(unittest.TestCase):
     def test_an_empty_group_has_no_source(self):
         self.assertEqual(run_sqf(EMITTER_CLASS, ["", self.ASSET_MAP]), "")
 
+    def test_the_real_asset_map_resolves_no_sound_group_to_a_source(self):
+        # Issue #276: the shipped map holds only .wss paths, so the resolver
+        # returns "" for every group that has media and the emitter layer is
+        # inert.  This is the defect, pinned so a data fix is visible.
+        rows = load_asset_map()
+        groups = [row[1] for row in rows if row[0] == "sound" and row[3]]
+        self.assertGreater(len(groups), 0)
+        for group in groups:
+            self.assertEqual(run_sqf(EMITTER_CLASS, [group, rows]), "", group)
+
+    def test_a_declared_looping_class_would_become_the_source(self):
+        # The data requirement, stated as an implication: a media entry with
+        # no dot is the only form fnc_emitterClass returns, so the layer goes
+        # live as soon as the corpus names one.  Vacuous today because no
+        # media entry has one, which is the requirement issue #276 records.
+        # The class belongs in data/wildlife/asset_map.json (generated into
+        # this map by tools/validation/gen_wildlife_ecology.py), not in the
+        # addon: hand-editing the generated map is forbidden.
+        rows = load_asset_map()
+        declared = [
+            (row[1], entry)
+            for row in rows
+            if row[0] == "sound"
+            for entry in row[3]
+            if "." not in entry
+        ]
+        for group, entry in declared:
+            self.assertEqual(run_sqf(EMITTER_CLASS, [group, rows]), entry, group)
+
 
 class TestEmitterSourceContracts(unittest.TestCase):
     """The engine wiring the harness cannot execute (task 27)."""
@@ -1579,7 +1608,9 @@ class TestShotAudio(unittest.TestCase):
 
     def test_the_reference_weapon_is_the_measured_peak(self):
         # M4, 5.56 mm at 900 m/s, at 1 m: the NIOSH 160 dB peak.
-        self.assertAlmostEqual(shot_audio(caliber=5.56, muzzle_v=900, distance=1)[0], 160, places=6)
+        self.assertAlmostEqual(
+            shot_audio(caliber=5.56, muzzle_v=900, distance=1)[0], 160, places=6
+        )
 
     def test_cube_root_blast_scaling(self):
         # Hopkinson-Cranz: L = Lref + (20/3) log10(E/Eref), E ~ d^3 v^2.
@@ -1596,7 +1627,7 @@ class TestShotAudio(unittest.TestCase):
         c = speed_of_sound(15)
         v, d, b = 800, 7.62e-3, 5
         m = v / c
-        dp = 0.53 * 101325 * (m * m - 1) ** 0.125 * d / (b ** 0.75 * (3.9 * d) ** 0.25)
+        dp = 0.53 * 101325 * (m * m - 1) ** 0.125 * d / (b**0.75 * (3.9 * d) ** 0.25)
         out = shot_audio(caliber=7.62, muzzle_v=838, current_v=v, closest=b)
         self.assertAlmostEqual(out[4], 20 * math.log10(dp / 2e-5), places=3)
         self.assertAlmostEqual(out[3], out[4], places=6)
