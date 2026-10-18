@@ -14,8 +14,9 @@ applies the phase factor to the existing atmospheric state:
 The wind veer and the cloud trend are published as forcing terms
 (aee_atmos_frontWindVeerDeg, aee_atmos_frontCloudTerm) that FUNC(updateWind)
 and FUNC(calculateCloudDevelopment) fold into their own kernels, and the
-frontal precipitation signature is published as aee_atmos_frontPrecipRate and
-aee_atmos_frontPrecipPhase.
+frontal precipitation signature is published as aee_atmos_frontPrecipRate. The
+phase is not published here: the render phase is derived from the wet-bulb
+temperature in core and applied by fnc_applyPrecipitationPhase (#269).
 
 The pressure perturbation is applied before FUNC(calculatePressureTrend), so
 the existing 3-hour pressure-trend ring buffer reports the fall, the trough
@@ -126,8 +127,9 @@ missionNamespace setVariable [QGVAR(frontCloudTerm), _phase * _cloudMag];
 // ─── Frontal precipitation signature ─────────────────────────────────────────
 // The intrinsic frontal rate at the line, tapering to zero at the zone edge.
 // Cold fronts are showery (10-50 mm/h), warm fronts steady (1-10 mm/h) (WMO).
+// No phase is published here: the precipitation phase is derived from the
+// wet-bulb temperature in core and rendered by fnc_applyPrecipitationPhase,
+// which is the single source. This model's crude air-temperature phase was
+// never read (#269).
 private _precipRate = _precipMmH * (1 - _absPhase);
 missionNamespace setVariable [QGVAR(frontPrecipRate), _precipRate];
-
-private _precipPhase = ["rain", "snow"] select (_T <= 0);
-missionNamespace setVariable [QGVAR(frontPrecipPhase), _precipPhase];

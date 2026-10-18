@@ -89,7 +89,7 @@ def wake_gamma0(mass_kg, speed_ms, span_m, rho=1.225):
 def wake_descent_rate(mass_kg, speed_ms, span_m, rho=1.225):
     """Vortex pair descent rate (m/s): Gamma0/(2 pi b0), b0 = (pi/4) b."""
     gamma0 = wake_gamma0(mass_kg, speed_ms, span_m, rho)
-    return 2.0 * gamma0 / (math.pi ** 2 * span_m)
+    return 2.0 * gamma0 / (math.pi**2 * span_m)
 
 
 def wake_induced_velocity(gamma0, radius_m):
@@ -265,6 +265,18 @@ class TestSQFSync(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("_terrainS min _buildingS) min _canyonS", text)
+
+    def test_sqf_reads_its_frame_cache_before_scanning(self):
+        from pathlib import Path
+
+        text = Path("addons/atmos/functions/wind/fnc_getLocalWind.sqf").read_text(
+            encoding="utf-8"
+        )
+        # The entry carries the frame and the input key, and the read at the
+        # top of the function serves a matching entry (#268).
+        self.assertIn("(_cached select 5) == diag_frameNo", text)
+        self.assertIn("(_cached select 6) isEqualTo _cacheKey", text)
+        self.assertIn("diag_frameNo, _cacheKey]", text)
 
 
 if __name__ == "__main__":

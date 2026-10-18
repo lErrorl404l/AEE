@@ -215,9 +215,14 @@ class TestFrontWiring(unittest.TestCase):
             "frontWindVeerDeg",
             "frontCloudTerm",
             "frontPrecipRate",
-            "frontPrecipPhase",
         ):
             self.assertIn(name, src, f"{name} is not published")
+
+    def test_the_front_does_not_publish_a_phase(self):
+        # The precipitation phase belongs to the wet-bulb derivative in core,
+        # rendered by fnc_applyPrecipitationPhase. A second phase here, from
+        # the air temperature, was published and never read (#269).
+        self.assertNotIn("frontPrecipPhase", CONSUMER.read_text(encoding="utf-8"))
 
     def test_consumer_perturbs_temperature_and_pressure(self):
         src = CONSUMER.read_text(encoding="utf-8")

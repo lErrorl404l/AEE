@@ -54,7 +54,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_surfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:28` | Surface temperature in C |
 | `aee_core_tempLapseRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updatePressure.sqf:36` | UNKNOWN |
 | `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateAirframeIcing.sqf:27` | Update interval in seconds |
-| `aee_core_weatherProgression` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWeatherFront.sqf:44` | UNKNOWN |
+| `aee_core_weatherProgression` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWeatherFront.sqf:45` | UNKNOWN |
 | `aee_core_windGustFrequency` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:30` | UNKNOWN |
 | `aee_core_windTerrainInfluence` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:59` | UNKNOWN |
 

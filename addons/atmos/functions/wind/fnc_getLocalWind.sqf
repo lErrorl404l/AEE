@@ -33,6 +33,27 @@ Sets:   aee_atmos_localWindCache (per-frame cache for the three consumers)
 
 params [["_posAGL", [0, 0, 0], [[]]], ["_heightAGL", 1.5, [0]]];
 
+// ─── Frame cache ─────────────────────────────────────────────────────────
+// Three consumers can query the same point in one frame. The cache is a
+// single entry keyed on the inputs and the frame, so a hit skips the two
+// nearestObjects scans and the terrain probes below. A stale entry, from a
+// different point or a later frame, cannot be served.
+private _cacheKey = [];
+if ((count _posAGL) >= 3) then {
+    _cacheKey = [
+        round ((_posAGL select 0) * 10),
+        round ((_posAGL select 1) * 10),
+        round ((_posAGL select 2) * 10),
+        round (_heightAGL * 10)
+    ];
+    private _cached = missionNamespace getVariable [QGVAR(localWindCache), []];
+    if ((_cached isEqualType []) && {(count _cached) == 7}
+        && {(_cached select 5) == diag_frameNo}
+        && {(_cached select 6) isEqualTo _cacheKey}) exitWith {
+        _cached select 0
+    };
+};
+
 // ─── Altitude gate ────────────────────────────────────────────────────────
 // Above ~50 m, and with no ridge within 200 m upwind, the local field is
 // the global one: building wakes (cavity ~15H) and canyon effects are a
@@ -201,7 +222,10 @@ private _local = [
     (_global select 1) * _minS + (_wake select 1)
 ];
 
-// Frame cache: three consumers per unit per frame share one scan.
-missionNamespace setVariable [QGVAR(localWindCache), [_local, _minS, _terrainS, _buildingS, _canyonS, diag_frameNo]];
+// Frame cache: the entry is [result, strengths..., frame, key] and the read
+// at the top of this function serves it when the key and frame match.
+if (_cacheKey isNotEqualTo []) then {
+    missionNamespace setVariable [QGVAR(localWindCache), [_local, _minS, _terrainS, _buildingS, _canyonS, diag_frameNo, _cacheKey]];
+};
 
 _local
