@@ -139,6 +139,9 @@ def main():
         "tools/tests/test_concealment.py",
         "tools/tests/test_acoustic_masking.py",
         "tools/tests/test_gloc.py",
+        # The altitude outputs that are published and deliberately unread
+        # (issue #293): gLocTolerance and amsRisk have no consumer.
+        "tools/tests/test_altitude_unconsumed_outputs.py",
         "tools/tests/test_two_node.py",
         "tools/tests/test_sqf_two_node.py",
         "tools/tests/test_oxygen_delivery.py",
