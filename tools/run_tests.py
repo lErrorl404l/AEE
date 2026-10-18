@@ -41,6 +41,7 @@ def main():
         "tools/tests/test_rollover.py",
         "tools/tests/test_trig_units.py",
         "tools/tests/test_physiology.py",
+        "tools/tests/test_strain_solar.py",
         "tools/tests/test_radio.py",
         "tools/tests/test_emp.py",
         "tools/tests/test_em_propagation.py",
