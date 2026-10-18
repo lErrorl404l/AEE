@@ -243,6 +243,7 @@ def main():
         # Harness fidelity: the SQF max/min precedence (precedence 6 beside
         # + and -, left to right) the engine uses.
         "tools/tests/test_sqf_maxmin_precedence.py",
+        "tools/tests/test_ballistics_fired_path.py",
         "tools/tests/test_pfh_contract.py",
         "tools/tests/test_flight_physics.py",
         "tools/tests/test_fixed_wing.py",

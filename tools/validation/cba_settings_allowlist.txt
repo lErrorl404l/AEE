@@ -48,6 +48,7 @@ aee_thermal_groundTraceT  dynamic per-cell trace key: format [QGVAR(groundTraceT
 # variable.  fnc_installObjectEngineHandler stores the id under
 # format ["aee_core_ehId_%1", _key], so the bare name is never a variable.
 aee_armour_penetrationGateHandler  handler id passed as the _key value argument, not read as a variable
+aee_armour_penetrationGateManHandler  handler id passed as the _key value argument, not read as a variable
 aee_ballistics_shotTemp  handler id passed as the _key value argument, not read as a variable
 aee_core_collisionDamage  handler id passed as the _key value argument, not read as a variable
 aee_blast_blast  handler id passed as the _key value argument, not read as a variable

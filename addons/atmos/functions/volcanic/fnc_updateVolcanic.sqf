@@ -45,11 +45,11 @@ if !(_volcano isEqualType [] && {(count _volcano) >= 2}) exitWith {
     missionNamespace setVariable [QGVAR(volcanicActive), false];
 };
 
-private _vei         = missionNamespace getVariable [QGVAR(volcanoVEI), 5];
-private _ventAlt     = missionNamespace getVariable [QGVAR(volcanoVentAltitude), 2000];
-private _ashEmission = missionNamespace getVariable [QGVAR(volcanoAshEmission), 5.0e6];
-private _so2Emission = missionNamespace getVariable [QGVAR(volcanoSO2Emission), 5.0e5];
-private _heatFlux    = missionNamespace getVariable [QGVAR(volcanoHeatFlux), 1.0e11];
+private _vei         = missionNamespace getVariable [QGVAR(volcanicVEI), 5];
+private _ventAlt     = missionNamespace getVariable [QGVAR(volcanicVentAltitude), 2000];
+private _ashEmission = missionNamespace getVariable [QGVAR(volcanicAshEmission), 5.0e6];
+private _so2Emission = missionNamespace getVariable [QGVAR(volcanicSO2Emission), 5.0e5];
+private _heatFlux    = missionNamespace getVariable [QGVAR(volcanicHeatFlux), 1.0e11];
 
 // ─── Wind and geometry ──────────────────────────────────────────────────────
 private _wind = wind;
