@@ -16,7 +16,9 @@ Model sources:
   Dispersion coefficients Briggs (1973), Diffusion Estimation for Small
                           Emissions, ATDL.
   Stability class         Pasquill, via Turner AP-26 Table 1.
-  Agent parameters        FM 3-11, Chemical Operations (2003), Table 4-1.
+  Agent parameters        FM 3-11.9, Potential Military Chemical/Biological
+                          Agents and Compounds, January 2005, Chapter II
+                          agent tables and Appendix G.
   Rain washout            Lambda = 8.4e-5 * I^0.79 (I in mm/h).
 
 Publishes:
@@ -90,7 +92,11 @@ private _cull = 2000;
 if (_altitude <= 1) then { _cull = 500; };
 
 private _agentRow = [_agent] call FUNC(getCbrnAgent);
-private _halfLife = _agentRow select 3;
+// The row carries the persisted band, not a point half-life: row 4 is the
+// JP 1-02 persistence band in hours, row 3 the latent heat in kJ/mol.
+private _band = _agentRow select 4;
+private _tempK = (missionNamespace getVariable [QEGVAR(core,currentTemperature), 15]) + KELVIN_OFFSET;
+private _deltaHvapJmol = (_agentRow select 3) * 1000;
 
 private _concentration = 0;
 
@@ -106,9 +112,12 @@ if ((_x > 0) && (_x <= _cull)) then {
         _concentration = [_strength, _u, _sy, _sz, _altitude, _y, _z] call FUNC(calculatePlumeConcentration);
     };
 
-    // ─── Decay: intrinsic half-life, then rain washout ─────────────────────
+    // ─── Decay: the persistence-band envelope, then rain washout ───────────
     private _elapsedH = (diag_tickTime - _startTime) / 3600;
-    _concentration = [_concentration, _elapsedH, _halfLife] call FUNC(calculateCbrnDecay);
+    private _envelope = [_concentration, _elapsedH, _band, _tempK, _deltaHvapJmol] call FUNC(calculateCbrnDecay);
+    // The slow edge is the casualty-conservative one, so the dose path uses it.
+    // The fast edge is the envelope's lower bound; the true value lies inside.
+    _concentration = _envelope select 1;
 
     if (_rain > 0) then {
         // The engine `rain` level to mm/h through the shared precipitation

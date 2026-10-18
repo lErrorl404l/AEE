@@ -127,30 +127,56 @@ class TestSourcedConstants(unittest.TestCase):
         ):
             self.assertIn(const, text, f"rothermel missing {const}")
 
-    def test_cbrn_q10_scaling(self):
+    def test_cbrn_arrhenius_temperature_term(self):
+        # The Q10 = 2 rule of thumb is gone.  The temperature term is the
+        # Clausius-Clapeyron slope of the agent's latent heat of vaporisation
+        # (FM 3-11.9, January 2005, Appendix G), supplied per agent by the
+        # caller (the core tick) from aee_weather_fnc_getCbrnAgent.
         text = Path(
             "addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn("Q10", text)
-        self.assertIn("per +10", text)
+        self.assertNotIn("Q10 = 2", text)
+        self.assertNotIn("2 ^ ((_temp_C - 15) / 10)", text)
+        self.assertIn("Clausius-Clapeyron", text)
+        self.assertIn("8.314462618", text)
+        self.assertIn("298.15", text)
+        self.assertIn("_deltaHvapJmol", text)
+        self.assertIn("INTERIM", text)
+        self.assertIn("UNSOURCED", text)
+
+    def test_cbrn_invented_environmental_terms_are_gone(self):
+        # Humidity and wind had no published persistence value: humidity acts
+        # indirectly through condensed water and its pH, and wind is
+        # dispersion (double-counted by the plume path).
+        text = Path(
+            "addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertNotIn("_humidityFactor", text)
+        self.assertNotIn("_windFactor", text)
 
     def test_thermal_contrast_flir_fom(self):
         # The unsourced display-contrast factor is gone: the radiance path
         # carries the contrast and the atmosphere degrades it once.
-        self.assertFalse(Path(
-            "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
-        ).exists())
+        self.assertFalse(
+            Path(
+                "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
+            ).exists()
+        )
         # The range-squared noise floor is gone too: the NETD threshold and
         # the path transmission carry the physics.
-        self.assertFalse(Path(
-            "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
-        ).exists())
+        self.assertFalse(
+            Path(
+                "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
+            ).exists()
+        )
 
     def test_unconsumed_smoke_modifier_is_gone(self):
         # Its multipliers were invented and nothing read it.
-        self.assertFalse(Path(
-            "addons/optics/functions/sensor/fnc_calculateSmokePersistence.sqf"
-        ).exists())
+        self.assertFalse(
+            Path(
+                "addons/optics/functions/sensor/fnc_calculateSmokePersistence.sqf"
+            ).exists()
+        )
 
 
 class TestTwoNodeSolver(unittest.TestCase):

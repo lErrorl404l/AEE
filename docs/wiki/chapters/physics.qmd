@@ -248,8 +248,9 @@ on windscreens. Thunder follows the flash after a fixed sound-travel delay.
 - Dust devils form in a 2-8 m/s wind band.
 - Space weather aurora requires Kp > 4, clear sky, night, and latitude
   above 45 from the world config.
-- CBRN persistence follows Arrhenius Q10 hydrolysis. Decay doubles per
-  10 C rise.
+- CBRN persistence uses the per-agent Arrhenius slope of the agent's latent
+  heat of vaporisation. Decay is faster when warmer; there is no generic
+  Q10 rule of thumb.
 - Fire spread uses the Rothermel rate-of-spread with growing-circle area.
 - Avalanche risk peaks at a 35 degree slope.
 - Flash flood risk is driven by rainfall intensity (mm/h), antecedent
