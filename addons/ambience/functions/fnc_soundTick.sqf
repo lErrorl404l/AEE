@@ -37,6 +37,7 @@ Arguments:
   8: Array  - the asset-map rows (see asset_map.sqf)
   9: Array  - the loaded platform tokens, for example ["enoch"]
   10: Number - the seed
+  11: Number - the latitude, degrees (positive north)
 
 Returns:
   Array - emission rows [groupId, media path, volume], one per call
@@ -53,7 +54,8 @@ params [
     ["_mix", [], [[]]],
     ["_assetMap", [], [[]]],
     ["_platforms", [], [[]]],
-    ["_seed", 0, [0]]
+    ["_seed", 0, [0]],
+    ["_latitude", 45, [0]]
 ];
 
 private _contains = {
@@ -85,7 +87,7 @@ for "_g" from 0 to ((count _mix) - 1) do {
         if ((_weight > 0) && (_volume > 0.01) && (_group isEqualType "") && (_soundGroup isEqualType "")) then {
             private _probability = [
                 _group, _sunElevationDeg, _hour, _month, _temperatureC,
-                _wind, _rain, _bins
+                _wind, _rain, _bins, _latitude
             ] call FUNC(getCallPattern);
 
             if (_probability > 0) then {

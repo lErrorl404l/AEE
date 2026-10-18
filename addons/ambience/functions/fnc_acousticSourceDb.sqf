@@ -29,11 +29,18 @@ PROVENANCE.
     its upper end: 160 - 22 = 138 dB.  It is a chosen operating point, not the
     band's mid, and the constants register states the same.
 
-  explosion, grenade, aircraft, vehicle, footstep.  UNSOURCED.  No primary
-    source for a 1 m source level is held in this repository, so the values
-    are modelling choices that order the kinds by loudness: an explosion is
-    louder than a gunshot, a vehicle engine is quieter than a grenade, a
-    footstep is the quietest.  The register in
+  grenade, explosion.  SOURCED.  The Kinney & Graham (1985) peak
+    overpressure (fnc_blastPeakDb) at 100 m, in the acoustic far field,
+    carried back to 1 m by spherical spreading (+40 dB), so the level the
+    propagation kernels spread is the far-field-equivalent source level.
+    grenade: the M67, 6.5 oz (184 g) of Composition B (TM 3-23.30), TNT
+    equivalence 1.11 in peak pressure (UFC 3-340-02): 0.204 kg TNT.
+    explosion: the 155 mm M107 shell, 6.6 kg TNT (TM 43-0001-28).
+  vehicle 99.5 dB.  SOURCED as the regulatory ceiling: EU Regulation
+    540/2014 Annex III limits a heavy goods vehicle (N3, > 250 kW) to
+    82 dB(A) at 7.5 m in the ISO 362 pass-by, +17.5 dB to 1 m.
+  aircraft, footstep.  UNSOURCED.  No primary source for a 1 m level is
+    held; they are ordered by loudness.  The register in
     docs/wiki/research/wildlife-ecology-constants.md holds them.
 
 GAME MAPPING.  Only the gunshot and suppressed rows carry a measured level.
@@ -59,10 +66,10 @@ private _db = 0;
 
 if (_key == "gunshot") then { _db = 160; };
 if (_key == "suppressed") then { _db = 138; };
-if (_key == "explosion") then { _db = 180; };
-if (_key == "grenade") then { _db = 170; };
+if (_key == "explosion") then { _db = ([6.6, 100] call EFUNC(lib,blastPeakDb)) + 40; };
+if (_key == "grenade") then { _db = ([0.184 * 1.11, 100] call EFUNC(lib,blastPeakDb)) + 40; };
 if (_key == "aircraft") then { _db = 130; };
-if (_key == "vehicle") then { _db = 100; };
+if (_key == "vehicle") then { _db = 82 + (20 * (log 7.5)); };
 if (_key == "footstep") then { _db = 50; };
 
 _db

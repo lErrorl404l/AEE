@@ -169,7 +169,8 @@ private _soundEvents = missionNamespace getVariable [QGVAR(soundEvents), []];
 if !(_soundEvents isEqualType []) then { _soundEvents = []; };
 private _acoustic = [
     _soundEvents, _listenerAsl, _now, WILDLIFE_ACOUSTIC_EVENT_HORIZON,
-    _propIndex, _occluders
+    _propIndex, _occluders,
+    ([QEGVAR(weather,currentAmbientNoise), WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB, 1] call EFUNC(lib,readState)) max WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB
 ] call EFUNC(ambience,acousticSample);
 private _acousticLevel = _acoustic select 0;
 
@@ -341,7 +342,8 @@ if (_ambient) then {
         };
         private _emissions = [
             _hour, _sunElev, _month, _temperature, _wind, _rainAmount, _gain,
-            _mix, _assetMap, _platforms, _seed
+            _mix, _assetMap, _platforms, _seed,
+            ([] call EFUNC(lib,getWorldLocation)) param [0, 45]
         ] call EFUNC(ambience,soundTick);
         private _fresh = [_hourKey, _emissions, 0];
         missionNamespace setVariable [QGVAR(soundSchedule), _fresh];

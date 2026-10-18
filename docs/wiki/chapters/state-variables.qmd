@@ -238,7 +238,6 @@ read them. The variables below are grouped by subsystem.
 | `aee_optics_currentVisibleAttenuation` | The current visible attenuation |
 | `aee_optics_currentLaserAttenuation` | The current laser attenuation |
 | `aee_optics_precipVisibilityModifier` | The precipitation visibility modifier |
-| `aee_optics_smokeDispersalModifier` | The smoke dispersal modifier |
 | `aee_optics_severeWeatherBlur` | The severe weather blur |
 | `aee_optics_severeWeatherCC` | The severe weather colour correction |
 | `aee_optics_blurActive` | Whether the dynamic blur effect is active |

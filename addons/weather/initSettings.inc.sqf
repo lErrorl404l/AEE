@@ -33,7 +33,6 @@ AEE_SETTING_SLIDER(sunspotOverride,"AEE Environmental","Space Weather",-1,400,-1
 AEE_SETTING_SLIDER(kpOverride,"AEE Environmental","Space Weather",-1,9,-1,1);
 
 // ── Sound Propagation ──────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(InversionBoost,"AEE Environmental","Weather",0,1.5,0.6,1);
 
 AEE_SETTING_SLIDER(SoundPropagationScale,"AEE Environmental","Sound",0.5,2,1.0,1);
 

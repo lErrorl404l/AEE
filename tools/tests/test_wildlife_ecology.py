@@ -8,6 +8,7 @@ the engine wiring, which the harness cannot execute.
 Run: python3 -m unittest tools.tests.test_wildlife_ecology -v
 """
 
+import math
 import contextlib
 import io
 import re
@@ -689,7 +690,7 @@ def _acoustic_kernel():
 
 
 ACOUSTIC_GLOBALS = {
-    "WILDLIFE_ACOUSTIC_OCCLUSION_DB": 6,
+    "WILDLIFE_ACOUSTIC_OCCLUSION_DB": 20,
     "WILDLIFE_ACOUSTIC_OCCLUSION_RADIUS_M": 2.5,
     "WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB": 30,
     "WILDLIFE_ACOUSTIC_LOUD_DB": 140,
@@ -735,14 +736,26 @@ class TestAcousticLevel(unittest.TestCase):
         self.assertGreater(at_5000, 0)
         self.assertGreater(at_500, at_5000)
 
-    def test_an_occluder_lowers_the_level(self):
-        clear = level_at(500, occluders=[])
-        blocked = level_at(500, occluders=[[250, 0, 0]])
-        self.assertLess(blocked, clear)
+    def test_a_barrier_follows_iso_9613_2(self):
+        # A 10 m wall midway on a 500 m path: z = 2 sqrt(250^2 + 10^2) - 500,
+        # D_z = 10 log10(3 + 20 z / (343/500)), over the 30-140 dB span.
+        z = 2 * math.sqrt(250 ** 2 + 10 ** 2) - 500
+        dz = 10 * math.log10(3 + 20 * z / (343 / 500))
+        clear = level_at(500)
+        blocked = level_at(500, occluders=[[250, 0, 10, 5]])
+        self.assertAlmostEqual((clear - blocked) * 110, dz, places=3)
+
+    def test_a_barrier_is_capped_at_20_db(self):
+        clear = level_at(500)
+        blocked = level_at(500, occluders=[[250, 0, 400, 5]])
+        self.assertAlmostEqual((clear - blocked) * 110, 20, places=3)
+
+    def test_a_barrier_below_the_sight_line_does_not_block(self):
+        self.assertEqual(level_at(500, occluders=[[250, 0, -1, 5]]), level_at(500))
 
     def test_an_occluder_off_the_line_does_not_block(self):
         clear = level_at(500)
-        off = level_at(500, occluders=[[250, 500, 0]])
+        off = level_at(500, occluders=[[250, 500, 10, 5]])
         self.assertEqual(off, clear)
 
     def test_the_same_cell_is_the_strongest(self):
@@ -770,8 +783,32 @@ class TestAcousticLevel(unittest.TestCase):
         self.assertEqual(rows[0][0], "vehicle")
 
 
+BLAST = AMBIENCE.parents[1] / "lib/functions/acoustics/fnc_blastPeakDb.sqf"
+SOURCE_GLOBALS = {"__EFUNC__lib_blastPeakDb": lambda *a: run_sqf(BLAST, list(a))}
+
+
+def kinney_graham_db(w, r, p0=101325):
+    z = r / w ** (1 / 3)
+    ratio = 808 * (1 + (z / 4.5) ** 2) / math.sqrt(
+        (1 + (z / 0.048) ** 2) * (1 + (z / 0.32) ** 2) * (1 + (z / 1.35) ** 2))
+    return 20 * math.log10(ratio * p0 / 2e-5)
+
+
 class TestAcousticSourceDb(unittest.TestCase):
     """fnc_acousticSourceDb runs from the real SQF."""
+
+    def test_kinney_graham(self):
+        for w, r in ((0.2, 15), (1, 50), (6.6, 100)):
+            self.assertAlmostEqual(run_sqf(BLAST, [w, r]), kinney_graham_db(w, r), places=6)
+
+    def test_grenade_and_shell_levels(self):
+        self.assertAlmostEqual(run_sqf(ACOUSTIC_SOURCE, ["grenade"], SOURCE_GLOBALS),
+                               kinney_graham_db(0.184 * 1.11, 100) + 40, places=6)
+        self.assertAlmostEqual(run_sqf(ACOUSTIC_SOURCE, ["explosion"], SOURCE_GLOBALS),
+                               kinney_graham_db(6.6, 100) + 40, places=6)
+
+    def test_vehicle_is_the_eu_pass_by_limit(self):
+        self.assertAlmostEqual(run_sqf(ACOUSTIC_SOURCE, ["vehicle"]), 82 + 20 * math.log10(7.5), places=6)
 
     def test_every_named_kind_has_a_level(self):
         for kind in (
@@ -783,7 +820,7 @@ class TestAcousticSourceDb(unittest.TestCase):
             "vehicle",
             "footstep",
         ):
-            self.assertGreater(run_sqf(ACOUSTIC_SOURCE, [kind]), 0, kind)
+            self.assertGreater(run_sqf(ACOUSTIC_SOURCE, [kind], SOURCE_GLOBALS), 0, kind)
 
     def test_an_unknown_kind_is_silent(self):
         self.assertEqual(run_sqf(ACOUSTIC_SOURCE, [""]), 0)
@@ -791,7 +828,7 @@ class TestAcousticSourceDb(unittest.TestCase):
 
     def test_the_loudness_order_holds(self):
         self.assertGreater(
-            run_sqf(ACOUSTIC_SOURCE, ["explosion"]),
+            run_sqf(ACOUSTIC_SOURCE, ["explosion"], SOURCE_GLOBALS),
             run_sqf(ACOUSTIC_SOURCE, ["gunshot"]),
         )
         self.assertGreater(

@@ -14,7 +14,7 @@ A variable named `aee_thermal_{leaf}` is written as `EGVAR(thermal,leaf)` by the
 | `aee_thermal_agcRadMax` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/display/fnc_applyThermalVision.sqf:414` | UNKNOWN |
 | `aee_thermal_agcRadMin` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/display/fnc_applyThermalVision.sqf:413` | UNKNOWN |
 | `aee_thermal_selTemperature` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/fusion/fnc_applyFusionFill.sqf:14` | UNKNOWN |
-| `aee_thermal_sweepBudget` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/fusion/fnc_applyFusionOverlay.sqf:387` | UNKNOWN |
+| `aee_thermal_sweepBudget` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/fusion/fnc_applyFusionOverlay.sqf:389` | UNKNOWN |
 | `aee_thermal_thermalBaseChannel` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/display/fnc_applyThermalVision.sqf:108` | UNKNOWN |
 | `aee_thermal_thermalDebug` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/display/fnc_applyThermalVision.sqf:500` | UNKNOWN |
 | `aee_thermal_thermalPolarity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal_display/functions/display/fnc_applyThermalVision.sqf:376` | UNKNOWN |

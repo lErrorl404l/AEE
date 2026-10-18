@@ -192,9 +192,13 @@ BINARY_COMMANDS = {
     # y atan2 x returns DEGREES; pos1 distance pos2 returns metres.
     "atan2",
     "distance",
+    "distance2D",
     # Object class test used by the wildlife neighbourhood sampler.  In the
     # harness the objects are strings, so this is an equality test.
     "isKindOf",
+    # array param [index, default]: the element, or the default when the
+    # index is out of range or the element is nil.
+    "param",
     # haystack find needle: a string's substring index or an array's element
     # index, -1 when absent (the surface-name classifiers).
     "find",
@@ -511,6 +515,7 @@ BUILTINS: dict[str, Any] = {
     "set": _sqf_set,
     "createHashMapFromArray": lambda pairs: {p[0]: p[1] for p in pairs},
     "isKindOf": _sqf_isKindOf,
+    "param": lambda a, spec: (a[int(spec[0])] if isinstance(a, list) and 0 <= int(spec[0]) < len(a) and a[int(spec[0])] is not None else (spec[1] if len(spec) > 1 else None)),
     "find": lambda h, n: (
         float(h.find(n))
         if isinstance(h, str)
@@ -528,6 +533,7 @@ BUILTINS: dict[str, Any] = {
     "toFixed": _sqf_toFixed,
     "atan2": lambda a, b: math.degrees(math.atan2(a, b)),
     "distance": lambda a, b: math.dist(a, b),
+    "distance2D": lambda a, b: math.dist(a[:2], b[:2]),
     "pi": math.pi,
     "true": True,
     "false": False,

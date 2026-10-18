@@ -20,12 +20,12 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 
 | Producer | Consumer | Variables | Document |
 |---|---|---|---|
-| `core` | `thermal` | 48 | [core-thermal.md](core-thermal.md) |
-| `core` | `atmos` | 46 | [core-atmos.md](core-atmos.md) |
+| `core` | `thermal` | 51 | [core-thermal.md](core-thermal.md) |
+| `core` | `atmos` | 48 | [core-atmos.md](core-atmos.md) |
 | `core` | `weather` | 43 | [core-weather.md](core-weather.md) |
 | `core` | `actions` | 28 | [core-actions.md](core-actions.md) |
 | `core` | `persistence` | 28 | [core-persistence.md](core-persistence.md) |
-| `core` | `optics` | 20 | [core-optics.md](core-optics.md) |
+| `core` | `optics` | 19 | [core-optics.md](core-optics.md) |
 | `core` | `mobility` | 16 | [core-mobility.md](core-mobility.md) |
 | `core` | `weatherfx` | 16 | [core-weatherfx.md](core-weatherfx.md) |
 | `core` | `diagnostics` | 15 | [core-diagnostics.md](core-diagnostics.md) |
@@ -35,8 +35,8 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `core` | `lighting` | 11 | [core-lighting.md](core-lighting.md) |
 | `core` | `maritime` | 11 | [core-maritime.md](core-maritime.md) |
 | `core` | `particles` | 11 | [core-particles.md](core-particles.md) |
+| `core` | `thermal_display` | 11 | [core-thermal_display.md](core-thermal_display.md) |
 | `core` | `cartography` | 10 | [core-cartography.md](core-cartography.md) |
-| `core` | `thermal_display` | 10 | [core-thermal_display.md](core-thermal_display.md) |
 | `thermal` | `thermal_display` | 10 | [thermal-thermal_display.md](thermal-thermal_display.md) |
 | `core` | `flight` | 9 | [core-flight.md](core-flight.md) |
 | `core` | `vision` | 8 | [core-vision.md](core-vision.md) |
@@ -61,12 +61,12 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `core` | `wildlife` | 4 | [core-wildlife.md](core-wildlife.md) |
 | `eye` | `optics` | 4 | [eye-optics.md](eye-optics.md) |
 | `weather` | `lighting` | 4 | [weather-lighting.md](weather-lighting.md) |
+| `weather` | `wildlife` | 4 | [weather-wildlife.md](weather-wildlife.md) |
 | `core` | `altitude` | 3 | [core-altitude.md](core-altitude.md) |
 | `core` | `lib` | 3 | [core-lib.md](core-lib.md) |
 | `diagnostics` | `core` | 3 | [diagnostics-core.md](diagnostics-core.md) |
 | `hud` | `cartography` | 3 | [hud-cartography.md](hud-cartography.md) |
 | `nightvision` | `actions` | 3 | [nightvision-actions.md](nightvision-actions.md) |
-| `weather` | `wildlife` | 3 | [weather-wildlife.md](weather-wildlife.md) |
 | `wildlife` | `ambience` | 3 | [wildlife-ambience.md](wildlife-ambience.md) |
 | `atmos` | `flight` | 2 | [atmos-flight.md](atmos-flight.md) |
 | `atmos` | `weatherfx` | 2 | [atmos-weatherfx.md](atmos-weatherfx.md) |

@@ -170,25 +170,23 @@ class TestUpdateHumidity(unittest.TestCase):
 
 
 class TestCalculateTurbulence(unittest.TestCase):
-    """fnc_calculateTurbulence roughness source shape.
-
-    Roughness now comes from the engine's own CfgSurfaces `rough`
-    coefficient, so the source must read configFile and must no longer
-    carry the static membership table keyed on a surface token.
-    """
+    """fnc_calculateTurbulence roughness: the aerodynamic roughness length z0
+    of the revised Davenport classification, matched on the surface name.
+    CfgSurfaces `rough` is the vehicle ground-bumpiness parameter, not an
+    aerodynamic roughness, so it is not used."""
 
     def setUp(self):
         self.code = code_only(read("turbulence"))
 
-    def test_reads_roughness_from_cfg_surfaces(self):
-        self.assertIn('"CfgSurfaces"', self.code)
-        self.assertIn('"rough"', self.code)
+    def test_uses_the_davenport_roughness_lengths(self):
+        for token in ('["grass", 0.03]', '["forest", 1.0]', "0.0002"):
+            self.assertIn(token, self.code)
 
-    def test_no_static_membership_table(self):
-        self.assertNotIn("case (_type in [", self.code)
+    def test_does_not_use_the_vehicle_bumpiness(self):
+        self.assertNotIn('"rough"', self.code)
 
-    def test_normalises_the_surface_token(self):
-        self.assertIn('"#gdt"', self.code)
+    def test_matches_on_the_lower_case_surface_name(self):
+        self.assertIn("toLower (surfaceType _posASL)", self.code)
 
 
 class TestClassifyBySurfaceType(unittest.TestCase):
@@ -330,22 +328,18 @@ class TestUpdateTemperature(unittest.TestCase):
 
 
 class TestMirage(unittest.TestCase):
-    """fnc_calculateMirageIntensity arid-surface test."""
+    """fnc_calculateMirageIntensity: the refractive gradient, no surface list.
+
+    The mirage follows the ground-to-air temperature gradient against the
+    autoconvective 0.0342 K/m threshold, so no arid-surface set exists."""
 
     def setUp(self):
-        code = code_only(read("mirage"))
-        m = re.search(r"_isAridSurf\s*=\s*_surfaceType\s+in\s*\[([^\]]*)\]", code)
-        assert m, "the arid-surface set is gone"
-        self.surfaces = set(re.findall(r'"([^"]+)"', m.group(1)))
+        self.code = code_only(read("mirage"))
 
-    def test_runtime_desert_is_arid(self):
-        self.assertIn(normalise("GdtDesert"), self.surfaces)
-
-    def test_runtime_asphalt_is_arid(self):
-        self.assertIn(normalise("GdtAsphalt"), self.surfaces)
-
-    def test_no_dead_prefix_tokens(self):
-        self.assertFalse([s for s in self.surfaces if s.startswith("#")])
+    def test_uses_the_gradient_not_a_surface_list(self):
+        self.assertIn("0.0342", self.code)
+        self.assertIn("QEGVAR(core,surfaceTemperature)", self.code)
+        self.assertNotIn("surfaceType", self.code)
 
 
 class TestScanTerrainSignals(unittest.TestCase):

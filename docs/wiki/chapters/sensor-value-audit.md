@@ -189,20 +189,23 @@ are declared, not fitted.  An unknown token returns the LWIR pair.
 
 ## Band sky temperature (fnc_calculateSkyRadiance.sqf)
 
-The fixed 35 K offset is retired.  The band emissivity is the exact Planck
-radiance ratio at the depressed temperature, not the Stefan-Boltzmann
-quartic.
-
 | Value | Used | Source | Status |
 |---|---|---|---|
 | Magnus 6.112 / 17.67 / 243.5 | water-vapour partial pressure | Bolton 1980 | ✅ verified |
-| full-spectrum eps 0.70 + 5.95e-5 e exp(1500/T_K) | clear-sky emissivity | Idso 1981, Water Resources Research 17(2):295-304, DOI 10.1029/WR017i002p00295 | ✅ verified |
-| band depression 45 K at eHPa <= 4 | measured band envelope | Tebo 1965, Effective Clear Sky Temperatures in the 8- to 14-Micron Band | ✅ derived |
-| band depression 21 K at eHPa >= 15 | measured band envelope | Tebo 1965 | ✅ derived |
-| log(eHPa) interpolation between 4 and 15 hPa | intermediate depression | none | ⚠️ UNSOURCED |
-| band emissivity B_band(T_sky) / B_band(T_air) | exact Planck radiance ratio | derived-from-measurement (Tebo 1965 envelope, Planck function) | ✅ derived |
-| overcast blend (1 - overcast) | cloud fills the window | Tebo 1965 envelope limit, no cloud model | ⚠️ UNSOURCED |
+| eps_8-14 = 0.24 + 2.98e-8 e^2 exp(3000/T), e in hPa | clear-sky band emittance | Idso 1981, WRR 17:295; validated by an 8-14 um radiometer within 2-10 C (Clay et al. 1998, arXiv astro-ph/9810496) | ✅ sourced |
+| eps + (1 - eps) N | cloud fills the window | water clouds black in 8-14 um (Stephens 1978) | ✅ derived |
+| cloud base at air temperature | cloudy sky | simplification | ⚠️ assumption |
+| MWIR uses the 8-14 um emittance | 3-5 um sky | no clear-sky 3-5 um relation held | ⚠️ limitation |
 | bisection 40 iterations, T in 1..T_air | band sky inversion | convergence bound, not physics | ✅ derived |
+
+## Thermal-band fog and rain extinction (fnc_calculateAtmosphericTransmission.sqf)
+
+| Value | Used | Source | Status |
+|---|---|---|---|
+| beta_fog = 3 pi c_e W / (2 lambda rho_w), c_e 0.31 (11 um), 0.64 (4 um) | fog droplets | Chylek 1978; Pinnick et al. 1979; Klein & Dabas 2014 eq. 5 | ✅ sourced |
+| W = aee_core_currentFogLWC | fog liquid water | fnc_updateFog (Gultepe; Kunkel) | ✅ derived |
+| beta_rain = pi N0 / Lambda^3, Q_ext = 2 | rain drops | Marshall & Palmer 1948, geometric optics | ✅ derived |
+| MWIR clear-air extinction 0 | 3-5 um | no sea-level band curve held | ⚠️ UNSOURCED |
 
 ## Reflected-solar band radiance (fnc_calculateReflectedSolarBand.sqf)
 
@@ -287,7 +290,7 @@ Each one states its grade.
 | Value | Used | Source | Grade |
 |---|---|---|---|
 | `aee_core_coreBodyTemp` | KAT circulation | Physiology heat balance in `fnc_coreBodyTemp.sqf`.  The 37 C baseline is sourced (normal resting human core temperature).  The heat threshold (28 C WBGT), the heat gain (0.05), the cold threshold (10 C wind chill), the cold gain (0.10) and the hypothermia loss (4.0) are UNSOURCED modelling choices. | baseline sourced; coefficients UNSOURCED |
-| `aee_thermal_skyBandTempC` | solar/sky invariant INV-5 | The Tebo 1965 8-14 um band envelope applied by `fnc_calculateSkyRadiance.sqf`; published from `fnc_calculateBandRadiance.sqf`. | derived-from-measurement |
+| `aee_thermal_skyBandTempC` | solar/sky invariant INV-5 | The Idso 1981 8-14 um band emittance applied by `fnc_calculateSkyRadiance.sqf`; published from `fnc_calculateBandRadiance.sqf`. | derived-from-measurement |
 
 ## Ground node stack shape (aee_thermal_groundNodeStack)
 

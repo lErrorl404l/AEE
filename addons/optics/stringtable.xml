@@ -81,22 +81,6 @@
             <Original>Mirage Intensity</Original>
             <English>Mirage Intensity</English>
         </Key>
-        <Key ID="STR_AEE_Optics_mirageMinSunElev_Description">
-            <Original>Sun angle gate for mirage, in degrees</Original>
-            <English>Sun angle gate for mirage, in degrees</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mirageMinSunElev_Name">
-            <Original>Mirage Minimum Sun Elevation</Original>
-            <English>Mirage Minimum Sun Elevation</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mirageOnsetTemp_Description">
-            <Original>Surface temperature at which mirage starts, in degrees Celsius</Original>
-            <English>Surface temperature at which mirage starts, in degrees Celsius</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_mirageOnsetTemp_Name">
-            <Original>Mirage Onset Temperature</Original>
-            <English>Mirage Onset Temperature</English>
-        </Key>
         <Key ID="STR_AEE_Optics_rainAccumRate_Description">
             <Original>Droplet build-up speed per tick during rain</Original>
             <English>Droplet build-up speed per tick during rain</English>
@@ -128,14 +112,6 @@
         <Key ID="STR_AEE_Optics_seeingFXIntensity_Name">
             <Original>Seeing Effect Intensity</Original>
             <English>Seeing Effect Intensity</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_smokePersistenceScale_Description">
-            <Original>Global smoke-duration multiplier</Original>
-            <English>Global smoke-duration multiplier</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_smokePersistenceScale_Name">
-            <Original>Smoke Persistence Scale</Original>
-            <English>Smoke Persistence Scale</English>
         </Key>
         <Key ID="STR_AEE_Optics_snowBlindnessBase_Description">
             <Original>Base dazzle from bright snow</Original>

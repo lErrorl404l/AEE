@@ -36,17 +36,11 @@
 // Mach-cone kernels).  WILDLIFE_SHOT_REPORT_DB is SOURCED: it is the measured
 // peak level of an unsuppressed centre-fire weapon, 160 to 170 dB (NIOSH HHE
 // report 2013-0124-3208, Results; NIOSH "Hit the Mark" bulletin, 2017), and
-// the kernel takes 160, the low end of the published range.  The pitch slope
-// and the crack, snap and ricochet levels and geometry bounds are UNSOURCED.
+// the kernel takes 160, the low end of the published range, for the M4
+// (5.56 mm, 900 m/s); other weapons scale by Hopkinson-Cranz cube-root blast
+// scaling and the shock wave is Whitham's (fnc_shotAudio).
 #define WILDLIFE_SHOT_REPORT_DB 160
 #define WILDLIFE_SHOT_REPORT_REF_MV 900
-#define WILDLIFE_SHOT_PITCH_PER_MACH 0.15
-#define WILDLIFE_SHOT_CRACK_DB 150
-#define WILDLIFE_SHOT_SNAP_RADIUS_M 5
-#define WILDLIFE_SHOT_SNAP_DB 140
-#define WILDLIFE_SHOT_RICOCHET_DB 130
-#define WILDLIFE_SHOT_RICOCHET_ANGLE_DEG 30
-#define WILDLIFE_SHOT_RICOCHET_REF_J 500
 
 // The disturbance field policy is owned by aee_ai.  The wildlife tick is the
 // only cross-addon consumer, so the cap and the horizon are mirrored here

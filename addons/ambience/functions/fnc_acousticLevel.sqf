@@ -13,30 +13,30 @@ Model, in order:
     inverse-square law.  The 1 m floor keeps the source level at d = 0.
   - Air and weather absorption.  The engine of this term is AEE's published
     sound-propagation index aee_weather_currentSoundPropagation
-    (0.3 to 2.0), computed by fnc_updateSoundPropagation from the temperature
-    inversion, the wind, the rain, the foliage and the snow.  It scales the
+    (0.3 to 2.0), computed by fnc_updateSoundPropagation from ISO 9613 (air
+    absorption, ground, foliage) and the ambient noise floor.  It scales the
     effective range: an index above 1 carries the sound further, below 1
     shorter.  The index is AEE's model, not a new constant.
-  - Occlusion.  Each occluder position within the occlusion radius of the
-    source-listener line of sight lowers the level by the occlusion loss.
-    The caller collects a bounded occluder list with nearestTerrainObjects
-    and lineIntersects; this kernel does the geometry.  UNSOURCED.
+  - Barriers.  A building, wall or fence between source and listener whose
+    top stands above the line of sight diffracts the sound: ISO 9613-2
+    eq. 14, D_z = 10 log10(3 + (20/lambda) z) at 500 Hz, z the path
+    difference over the top, capped at 20 dB (clause 7.4); the worst barrier
+    governs.  The caller collects the barriers (fnc_acousticOccluders).
 
-The event is [sourcePos ASL, sourceLevelDb, kind].  The kind is metadata: the
-caller supplies the source level.  The result is a 0 to 1 stimulus per event,
-the level mapped onto the hearing floor and the loud reference.
-
-Constants: the 6 dB per doubling is SOURCED.  The occlusion loss and radius,
-the hearing floor and the loud reference are UNSOURCED modelling choices.
+The event is [sourcePos ASL, sourceLevelDb, kind].  The result is a 0 to 1
+stimulus per event: the level above the hearing floor (the published ambient
+noise floor, which masks quieter sounds) over the span to the loud reference,
+140 dB peak, the level WHO's Guidelines for Community Noise (1999, s.4.2.6)
+say adults should never be exposed to.
 
 Arguments:
   0: Array  - events, each [sourcePos ASL, sourceLevelDb, kind]
   1: Array  - the listener position, ASL
   2: Number - the propagation index, 0.3 to 2.0
-  3: Array  - occluder positions, ASL
-  4: Number - the occlusion loss per occluder, dB
-  5: Number - the occlusion radius, metres
-  6: Number - the hearing floor, dB
+  3: Array  - barriers [x, y, topASL, halfWidth]
+  4: Number - the barrier cap, dB (ISO 9613-2: 20)
+  5: Number - the fallback barrier half-width, metres
+  6: Number - the hearing floor (ambient noise), dB
   7: Number - the loud reference, dB
 
 Returns:
@@ -78,46 +78,44 @@ for "_i" from 0 to ((count _events) - 1) do {
         private _effective = _distance / _index;
         private _spreadDb = 20 * (log (_effective max 1));
 
-        // Occlusion: each occluder near the source-listener line lowers the
-        // level.  The closest approach of the occluder to the segment is the
-        // line-of-sight test.
-        private _blocked = 0;
-        for "_o" from 0 to ((count _occluders) - 1) do {
-            private _occluder = _occluders select _o;
-            if ((_occluder isEqualType []) && ((count _occluder) >= 2)) then {
-                private _ax = _source select 0;
-                private _ay = _source select 1;
-                private _az = 0;
-                private _bx = _listenerPos select 0;
-                private _by = _listenerPos select 1;
-                private _bz = 0;
-                if (((count _source) >= 3) && ((count _listenerPos) >= 3)) then {
-                    _az = _source select 2;
-                    _bz = _listenerPos select 2;
+        // Barriers: ISO 9613-2 eq. 14 single diffraction at 500 Hz,
+        // D_z = 10 log10(3 + (20 / lambda) z), lambda = 343/500 m, capped at
+        // 20 dB (clause 7.4); z the path difference over the barrier top.
+        // The worst barrier governs.
+        private _ax = _source select 0;
+        private _ay = _source select 1;
+        private _az = _source param [2, 0];
+        private _bx = _listenerPos select 0;
+        private _by = _listenerPos select 1;
+        private _bz = _listenerPos param [2, 0];
+        private _abx = _bx - _ax;
+        private _aby = _by - _ay;
+        private _lenSq = (_abx * _abx) + (_aby * _aby);
+        private _direct = sqrt (_lenSq + ((_bz - _az) ^ 2));
+        private _barrierDb = 0;
+        if (_lenSq > 1) then {
+            {
+                if ((_x isEqualType []) && {(count _x) >= 3}) then {
+                    private _t = ((((_x select 0) - _ax) * _abx) + (((_x select 1) - _ay) * _aby)) / _lenSq;
+                    if (_t > 0 && _t < 1) then {
+                        private _cx = _ax + (_t * _abx);
+                        private _cy = _ay + (_t * _aby);
+                        private _off = [_x select 0, _x select 1] distance2D [_cx, _cy];
+                        private _half = _x param [3, _occlusionRadiusM];
+                        private _top = _x select 2;
+                        private _los = _az + (_t * (_bz - _az));
+                        if (_off <= _half && _top > _los) then {
+                            private _d1 = sqrt (((_cx - _ax) ^ 2) + ((_cy - _ay) ^ 2) + ((_top - _az) ^ 2));
+                            private _d2 = sqrt (((_bx - _cx) ^ 2) + ((_by - _cy) ^ 2) + ((_bz - _top) ^ 2));
+                            private _z = (_d1 + _d2 - _direct) max 0;
+                            private _dz = (10 * (log (3 + ((20 / (343 / 500)) * _z)))) min _occlusionDb;
+                            _barrierDb = _barrierDb max _dz;
+                        };
+                    };
                 };
-                private _abx = _bx - _ax;
-                private _aby = _by - _ay;
-                private _abz = _bz - _az;
-                private _lenSq = (_abx * _abx) + (_aby * _aby) + (_abz * _abz);
-                private _t = 0;
-                if (_lenSq > 0) then {
-                    _t = ((((_occluder select 0) - _ax) * _abx)
-                        + (((_occluder select 1) - _ay) * _aby)
-                        + (((_occluder select 2) - _az) * _abz)) / _lenSq;
-                    _t = (_t max 0) min 1;
-                };
-                private _cx = _ax + (_t * _abx);
-                private _cy = _ay + (_t * _aby);
-                private _cz = _az + (_t * _abz);
-                private _ox = (_occluder select 0) - _cx;
-                private _oy = (_occluder select 1) - _cy;
-                private _oz = (_occluder select 2) - _cz;
-                private _closest = sqrt ((_ox * _ox) + (_oy * _oy) + (_oz * _oz));
-                if (_closest <= _occlusionRadiusM) then { _blocked = _blocked + 1; };
-            };
+            } forEach _occluders;
         };
-
-        private _levelDb = _sourceDb - _spreadDb - (_blocked * _occlusionDb);
+        private _levelDb = _sourceDb - _spreadDb - _barrierDb;
         private _stimulus = (((_levelDb - _hearingFloorDb) / _span) max 0) min 1;
         _out pushBack [_kind, _stimulus];
     };

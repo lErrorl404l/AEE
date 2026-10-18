@@ -249,7 +249,9 @@ if (_mode == "EXIT") then {
     // selection on this object shares.  Same core-state lookups the other
     // thermal consumers read; no second environment model.
     private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
-    private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
+    // Fog liquid water content (g/m3) and rain rate (mm/h): the thermal
+    // band extinction is computed from the droplets, not the visual fog.
+    private _fog = missionNamespace getVariable [QEGVAR(core,currentFogLWC), 0];
     private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
     private _rangeM = if (isNull _viewer) then { 0 } else { _obj distance _viewer };
     // The detector band (T16): default lwir, replaced by the mounted device's
@@ -399,7 +401,7 @@ if (_mode == "EXIT") then {
     private _bandEdges = [_band] call FUNC(resolveThermalBand);
     private _lambda1M = _bandEdges select 0;
     private _lambda2M = _bandEdges select 1;
-    private _tau = [_rangeM, _humidity, _tAir, _fog, rain, _airDensity, _band] call FUNC(calculateAtmosphericTransmission);
+    private _tau = [_rangeM, _humidity, _tAir, _fog, rain * ENGINE_RAIN_FULL_MMH, _airDensity, _band] call FUNC(calculateAtmosphericTransmission);
     if (_tau < 0) then { _tau = 1; };   // unusable input: transmissive fallback
 
     // The threshold.  A device the matcher cannot identify is the documented

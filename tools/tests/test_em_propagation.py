@@ -126,39 +126,11 @@ class TestDeygout(unittest.TestCase):
         self.assertEqual(run_sqf(DEYGOUT, [[0.0, 1.0], [0.0, 0.0], 0.0, 0.0, 1e8]), 0.0)
 
 
-class TestValleyWaveguide(unittest.TestCase):
-    def test_below_cutoff_no_effect(self):
-        # f_c = c/(2a); a = 100 m -> 1.5 MHz.  100 kHz is below cutoff.
-        self.assertEqual(run_sqf(VALLEY, [100.0, 1e5, 0.0]), 0.0)
-
-    def test_zero_width_no_effect(self):
-        self.assertEqual(run_sqf(VALLEY, [0.0, 1e8, 0.0]), 0.0)
-
-    def test_along_axis_bonus(self):
-        self.assertLess(run_sqf(VALLEY, [100.0, 1e8, 0.0]), 0.0)
-
-    def test_across_axis_penalty(self):
-        self.assertGreater(run_sqf(VALLEY, [100.0, 1e8, 90.0]), 0.0)
-
-    def test_sourced_cutoff_vector(self):
-        # Parallel-plate cutoff f_c = c/(2a) (Pozar, Microwave Engineering,
-        # 4th ed., 3.3): a = 100 m -> 1.5 MHz.
-        a = 100.0
-        self.assertAlmostEqual(C / (2 * a), 1.5e6, delta=1.0)
-        # Just below cutoff: no guidance at all.
-        self.assertEqual(run_sqf(VALLEY, [a, 1.4e6, 0.0]), 0.0)
-        # Just above cutoff: the along-axis guidance bonus appears.
-        self.assertLess(run_sqf(VALLEY, [a, 3.0e6, 0.0]), 0.0)
-
-    def test_matches_mirror(self):
-        a, f, ang = 100.0, 1e8, 30.0
-        fc = C / (2 * a)
-        coupling = math.sqrt(1 - (fc / f) ** 2)
-        expected = (
-            1.5 * coupling * math.sin(math.radians(ang)) ** 2
-            - 3 * coupling * math.cos(math.radians(ang)) ** 2
-        )
-        self.assertAlmostEqual(run_sqf(VALLEY, [a, f, ang]), expected, places=6)
+class TestValleyWaveguideRemoved(unittest.TestCase):
+    def test_the_unsourced_modifier_is_gone(self):
+        # Its dB magnitudes had no published model and nothing called it;
+        # terrain diffraction is ITU-R P.526 (fnc_bullingtonLoss).
+        self.assertFalse(VALLEY.exists())
 
 
 if __name__ == "__main__":

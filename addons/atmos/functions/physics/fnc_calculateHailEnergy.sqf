@@ -10,13 +10,14 @@ already uses for the hail gate, so size scales from the same quantity.
 
 The physics (all citable, no invented constants):
 
-  Size from the updraft.  A stone is held when the updraft speed exceeds its
-  terminal velocity, so the largest stone a storm can carry is set by the
-  updraft.  The model maps the CAPE proxy to a diameter over the observed
-  range: the NWS severe criterion is 25.4 mm (1 inch) and the largest
-  observed stones reach about 100 mm (grapefruit, 101.6 mm).  The mapping is
-  linear in the CAPE proxy between those bounds; it is a model, and the
-  comment says so rather than claiming a measured law.
+  Size from the updraft.  A stone is held while the updraft exceeds its
+  terminal velocity, so the largest stone a storm can carry is the one whose
+  terminal velocity equals the updraft: inverting the drag balance below,
+      D = 3 C_d rho_a w^2 / (4 g rho_h),
+  with w the parcel-theory updraft sqrt(2 CAPE).  That updraft is an upper
+  bound (Peters et al. 2020), so the size is the largest possible stone,
+  capped at the largest ever recorded, 203 mm (Vivian, South Dakota, 2010;
+  NOAA NCEI).
 
   Terminal velocity from the drag balance for a sphere:
       v_t = sqrt( 4 g rho_h D / (3 C_d rho_a) )
@@ -40,7 +41,7 @@ size, and the caller scales the game's own damage system by that energy.
 See the material note in fnc_hailDamage.
 
 Arguments:
-  0: capeProxy (NUMBER) - the convective proxy from fnc_calculateCloudDevelopment
+  0: CAPE (NUMBER, J/kg) from fnc_calculateCloudDevelopment
 
 Return Value: ARRAY [diameter_m, mass_kg, velocity_ms, energy_j]
 Example: [400] call aee_atmos_fnc_calculateHailEnergy
@@ -49,19 +50,10 @@ Public: No
 
 params [["_capeProxy", 0, [0]]];
 
-// The convective proxy is a lapse-rate departure in K/km, published as
-// buoyancy * 1000.  Below 0 there is no convection and no hail.
 if (_capeProxy <= 0) exitWith { [0, 0, 0, 0] };
-
 // ─── Size from the updraft ───────────────────────────────────────────────
-// The NWS severe criterion is 25.4 mm; the largest observed stones reach
-// about 100 mm.  Map the proxy across that band.  A proxy of 20 K/km is a
-// strongly unstable profile and carries the largest stones the model allows.
-private _severeM = 0.0254;
-private _maxM = 0.1016;
-private _proxyForMax = 20;
-private _diameter = _severeM + ((_maxM - _severeM) * ((_capeProxy / _proxyForMax) min 1));
-
+private _w = sqrt (2 * _capeProxy);
+private _diameter = ((3 * 0.6 * AERO_ISA_SEA_LEVEL_DENSITY * (_w ^ 2)) / (4 * STANDARD_GRAVITY * 917)) min 0.203;
 // ─── Terminal velocity (drag balance, Dieling 2020 Eq. 2) ────────────────
 private _rhoH = 917;      // kg/m3, pure ice
 private _cd = 0.6;        // near-spherical hail above 1 cm, Dieling 2020

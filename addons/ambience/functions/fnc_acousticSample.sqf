@@ -30,7 +30,8 @@ params [
     ["_now", 0, [0]],
     ["_horizon", WILDLIFE_ACOUSTIC_EVENT_HORIZON, [0]],
     ["_propagationIndex", 1, [0]],
-    ["_occluders", [], [[]]]
+    ["_occluders", [], [[]]],
+    ["_floorDb", WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB, [0]]
 ];
 
 private _live = [];
@@ -46,7 +47,7 @@ for "_i" from 0 to ((count _events) - 1) do {
 private _levels = [
     _live, _listenerPos, _propagationIndex, _occluders,
     WILDLIFE_ACOUSTIC_OCCLUSION_DB, WILDLIFE_ACOUSTIC_OCCLUSION_RADIUS_M,
-    WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB, WILDLIFE_ACOUSTIC_LOUD_DB
+    _floorDb, WILDLIFE_ACOUSTIC_LOUD_DB
 ] call FUNC(acousticLevel);
 
 private _level = 0;

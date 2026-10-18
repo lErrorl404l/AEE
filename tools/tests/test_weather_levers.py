@@ -175,8 +175,10 @@ class TestProbeConsumers(unittest.TestCase):
         self.assertIn("QEGVAR(core,simulCloudDensity)", live)
         self.assertIn("QEGVAR(core,simulInClouds)", live)
 
-    def test_turbulence_reads_the_probe(self) -> None:
-        self.assertIn("QEGVAR(core,simulCloudDensity)", _code_only(_read(TURBULENCE)))
+    def test_turbulence_is_the_boundary_layer_dissipation(self) -> None:
+        # In-cloud turbulence has no held law; the EDR is the boundary-layer
+        # dissipation (fnc_turbulenceDissipation).
+        self.assertIn("FUNC(turbulenceDissipation)", _code_only(_read(TURBULENCE)))
 
 
 class TestWindyCoef(unittest.TestCase):

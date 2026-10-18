@@ -25,14 +25,6 @@
             <Original>Dust Devil Temperature Threshold</Original>
             <English>Dust Devil Temperature Threshold</English>
         </Key>
-        <Key ID="STR_AEE_Weather_InversionBoost_Description">
-            <Original>Sound-range boost on clear calm nights</Original>
-            <English>Sound-range boost on clear calm nights</English>
-        </Key>
-        <Key ID="STR_AEE_Weather_InversionBoost_Name">
-            <Original>Inversion Sound Boost</Original>
-            <English>Inversion Sound Boost</English>
-        </Key>
         <Key ID="STR_AEE_Weather_MaxSnowDepth_Description">
             <Original>Maximum snow depth (m)</Original>
             <English>Maximum snow depth (m)</English>

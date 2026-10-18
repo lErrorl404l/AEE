@@ -15,6 +15,7 @@ Sources:
 
 import math
 import re
+import sys
 import unittest
 from pathlib import Path
 
@@ -114,9 +115,20 @@ class TestSqfConstantsMatchSources(unittest.TestCase):
     def test_energy_is_half_mass_v_squared(self):
         self.assertIn("0.5 * _mass * _vT * _vT", self.src)
 
-    def test_size_band_spans_severe_to_grapefruit(self):
-        self.assertAlmostEqual(self._number("severeM"), NWS_SEVERE_M, delta=0.0005)
-        self.assertAlmostEqual(self._number("maxM"), NWS_GRAPEFRUIT_M, delta=0.0005)
+    def test_size_is_the_stone_the_updraft_holds(self):
+        # D = 3 Cd rho_a w^2 / (4 g rho_h), w = sqrt(2 CAPE), capped at the
+        # 203 mm record stone.
+        sys.path.insert(0, str(Path(__file__).parent))
+        from sqf_lite import run_sqf
+        g = {"AERO_ISA_SEA_LEVEL_DENSITY": RHO_A, "STANDARD_GRAVITY": 9.80665}
+        for cape in (100, 400, 1000):
+            d = run_sqf(ENERGY, [cape], g)[0]
+            ref = min(3 * C_D * RHO_A * 2 * cape / (4 * 9.80665 * RHO_H), 0.203)
+            self.assertAlmostEqual(d, ref, places=6)
+            # The stone's terminal velocity equals the updraft.
+            self.assertAlmostEqual(terminal_velocity(d), math.sqrt(2 * cape), places=3)
+        self.assertAlmostEqual(run_sqf(ENERGY, [5000], g)[0], 0.203, places=6)
+        self.assertEqual(run_sqf(ENERGY, [0], g), [0, 0, 0, 0])
 
 
 class TestNoInventedInjuryThreshold(unittest.TestCase):

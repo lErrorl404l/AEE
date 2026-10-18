@@ -24,12 +24,13 @@
 // addons/lib/constants.hpp and read here from the shared header.
 // Density lift loss is capped here (thin air, before the combined cap).
 #define AERO_DENSITY_LIFT_LOSS_MAX 0.6
-// Full-severity icing lift loss.  UNSOURCED: FAR 25 App C gives the
-// accretion envelope, not a lift-loss coefficient.
-#define AERO_ICE_LIFT_LOSS_MAX 0.35
-// Full-severity icing drag rise.  UNSOURCED, same reason.
-#define AERO_ICE_DRAG_RISE_MAX 0.5
-// The combined lift loss is capped here so the airframe cannot be stalled.
+// Full-severity icing: lift down by as much as 30 % and drag up 40 % for ice
+// with the roughness of medium or coarse sandpaper on the leading edge and
+// upper surface (FAA AC 135-17, from wind-tunnel and flight tests).
+#define AERO_ICE_LIFT_LOSS_MAX 0.30
+#define AERO_ICE_DRAG_RISE_MAX 0.40
+// The combined lift loss is capped here so the scripted layer cannot stall
+// the airframe on its own (an engine-safety bound, not a physical value).
 #define AERO_LIFT_LOSS_CAP 0.45
 // Effective drag area Cd*S for the added-drag term, m2.  The declared default
 // the air-engine kernel uses.

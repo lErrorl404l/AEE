@@ -202,10 +202,12 @@ if !(_tAir isEqualType 0) then { _tAir = 15; };
 // air temperature.  Rain is the engine scalar, not an AEE variable.
 private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 if !(_humidity isEqualType 0) then { _humidity = 50; };
-private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
+// Fog liquid water content (g/m3) and rain rate (mm/h) for the band extinction.
+private _fog = missionNamespace getVariable [QEGVAR(core,currentFogLWC), 0];
 if !(_fog isEqualType 0) then { _fog = 0; };
 private _rain = rain;
 if !(_rain isEqualType 0) then { _rain = 0; };
+_rain = _rain * ENGINE_RAIN_FULL_MMH;
 private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), AERO_ISA_SEA_LEVEL_DENSITY];
 if !(_airDensity isEqualType 0) then { _airDensity = AERO_ISA_SEA_LEVEL_DENSITY; };
 // The device pair is resolved ONCE per tick, before the object walk.  It

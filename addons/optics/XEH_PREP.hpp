@@ -18,7 +18,6 @@ PREPS(sensor,calculateGreenFlash);
 PREPS(sensor,calculateMirageIntensity);
 PREPS(sensor,calculatePrecipitationVisibility);
 PREPS(sensor,calculateRainOnOptics);
-PREPS(sensor,calculateSmokePersistence);
 PREPS(sensor,calculateSnowBlindness);
 PREPS(sensor,calculateSolarGlare);
 PREPS(sensor,calculateVehicleHeatShimmer);

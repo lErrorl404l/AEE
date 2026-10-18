@@ -3463,6 +3463,13 @@ class TestSQFSync(unittest.TestCase):
             addon="core",
         )
 
+    def test_seeing_reads_no_weather_directly(self):
+        # Seeing is the published surface-layer Cn^2; it reads no weather.
+        src = _read_sqf("fnc_calculateAtmosphericSeeing.sqf", "optics")
+        self.assertIn("QEGVAR(core,opticalCn2)", src)
+        for raw in ("rain", "overcast", "fog"):
+            self.assertNotIn(raw + " ", "\n".join(l for l in src.splitlines() if not l.strip().startswith("//") and "*" not in l))
+
     def test_no_raw_weather_in_brightness_paths(self):
         # Every brightness/visibility consumer must read the SMOOTHED
         # weather, not raw `rain`/`overcast`/`fog` (which step abruptly and
@@ -3474,8 +3481,6 @@ class TestSQFSync(unittest.TestCase):
             ("fnc_applyNightGrain.sqf", "night grain", "nightvision"),
             ("fnc_applyThermalVision.sqf", "thermal vision", "thermal"),
             ("fnc_calculateAttenuation.sqf", "attenuation", "optics"),
-            ("fnc_calculateAtmosphericSeeing.sqf", "seeing", "optics"),
-            ("fnc_calculateMirageIntensity.sqf", "mirage", "optics"),
         ]:
             src = _read_sqf(fname, addon)
             self.assertIn(
@@ -5352,6 +5357,25 @@ class TestAtmosphericTransmissionKernel(unittest.TestCase):
             self.assertEqual(atmospheric_transmission(1000, bad), -1)
             self.assertEqual(atmospheric_transmission(1000, 50, bad), -1)
 
+    def test_fog_extinction_follows_chylek(self):
+        # Klein & Dabas 2014 Table 1 case 17: W = 0.0904 g/m3 gives
+        # 1.24e-2 per m at 11 um; the linear law gives 1.20e-2.
+        t = atmospheric_transmission(1001, 50, 15, 0.0904, 0, 1.225)
+        clear = atmospheric_transmission(1001, 50, 15, 0, 0, 1.225)
+        self.assertAlmostEqual(-math.log(t / clear), 12.0, delta=0.15)
+
+    def test_the_sqf_matches_the_mirror_in_fog_and_rain(self):
+        kernel = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
+        for fog, rain, band in ((0.05, 0, "lwir"), (0, 25, "lwir"), (0.02, 5, "mwir")):
+            got = run_sqf(kernel, [800, 60, 12, fog, rain, 1.225, band], {"AERO_ISA_SEA_LEVEL_DENSITY": 1.225})
+            self.assertAlmostEqual(got, atmospheric_transmission(800, 60, 12, fog, rain, 1.225, band), places=9)
+
+    def test_rain_extinction_is_geometric_marshall_palmer(self):
+        t = atmospheric_transmission(1001, 50, 15, 0, 10, 1.225)
+        clear = atmospheric_transmission(1001, 50, 15, 0, 0, 1.225)
+        lam = 4.1 * 10 ** -0.21
+        self.assertAlmostEqual(-math.log(t / clear), math.pi * 8000 / lam ** 3 * 1e-3, places=4)
+
     def test_source_constants_and_guards(self):
         code = self.code
         for token in (
@@ -5359,8 +5383,8 @@ class TestAtmosphericTransmissionKernel(unittest.TestCase):
             "0.02",
             "0.023571",
             "3.5714e-4",
-            "_fogKm",
-            "_rainKm",
+            "3 * pi * _ce * _fogDensity",
+            "4.1 * (_rainScalar ^ -0.21)",
             "6.112",
             "17.67",
             "243.5",
@@ -5541,13 +5565,8 @@ class TestBandParameterisedRadiance(unittest.TestCase):
 
 
 class TestBandSkyModel(unittest.TestCase):
-    """The band sky model replaces the fixed offset (T3).
-
-    The kernel is executed from its real SQF.  The 15 C and 50 percent
-    humidity clear-sky band temperature must sit inside the Tebo 1965
-    depression envelope and within 5 K of the retired fixed offset, so night
-    cold-sky contrast does not regress.
-    """
+    """The band sky model: Idso 1981 8-14 um emittance (T3), executed from
+    its real SQF."""
 
     _KERNEL = _THERMAL / "solver" / "fnc_calculateSkyRadiance.sqf"
     _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
@@ -5555,21 +5574,14 @@ class TestBandSkyModel(unittest.TestCase):
     def _sky(self, band="lwir", t_air=15.0, rh=50.0, oc=0.0):
         return _run_sky(band, t_air, rh, oc)
 
-    def test_the_reference_condition_is_within_5k_of_the_old_offset(self):
-        # The retired fixed offset was T_air - 35 = -20 C at 15 C.
-        self.assertAlmostEqual(self._sky("lwir", 15.0, 50.0, 0.0), -20.0, delta=5.0)
-
-    def test_the_reference_condition_is_within_the_tebo_depression(self):
-        # Tebo 1965 measured a band depression of 21 to 45 K over the
-        # water-vapour range.  The clear-sky reference must sit inside it.
-        depression = 15.0 - self._sky("lwir", 15.0, 50.0, 0.0)
-        self.assertGreaterEqual(depression, 21.0)
-        self.assertLessEqual(depression, 45.0)
+    def test_idso_emittance_at_the_reference_condition(self):
+        # 15 C, 50 % RH: e = 8.5 hPa, eps = 0.24 + 2.98e-8 e^2 exp(3000/T)
+        # ~ 0.31, a band sky near -43 C - the cold clear zenith an 8-14 um
+        # radiometer reads (Clay et al. 1998 measured slightly colder still).
+        self.assertTrue(-48 < self._sky("lwir", 15.0, 50.0, 0.0) < -38)
 
     def test_the_result_warms_monotonically_with_humidity(self):
-        # Sample inside the Tebo slope (4 < eHPa < 15, about 24 to 88 percent
-        # at 15 C); the depression is flat outside it.
-        values = [self._sky("lwir", 15.0, rh, 0.0) for rh in (25, 40, 55, 70, 85)]
+        values = [self._sky("lwir", 15.0, rh, 0.0) for rh in (10, 25, 40, 55, 70, 85, 100)]
         for a, b in zip(values, values[1:]):
             self.assertLess(a, b)
 
@@ -5607,7 +5619,7 @@ class TestBandSkyModel(unittest.TestCase):
     def test_the_source_cites_the_right_identities(self):
         header = self._KERNEL.read_text(encoding="utf-8")
         self.assertIn("Idso 1981", header)
-        self.assertIn("Tebo 1965", header)
+        self.assertIn("2.98e-8", header)
         self.assertNotIn("Aase & Idso 1981", header)
 
     def test_both_kernels_are_prep_registered(self):
@@ -5796,8 +5808,8 @@ def atmospheric_transmission(
     if range_m == 0:
         return 1.0
     rh = min(max(rh_pct, 0.0), 100.0)
-    fog = min(max(fog, 0.0), 1.0)
-    rain = min(max(rain, 0.0), 1.0)
+    fog = min(max(fog, 0.0), 3.0)  # liquid water content, g/m3
+    rain = min(max(rain, 0.0), 500.0)  # rain rate, mm/h
 
     alpha_ref = 0.008  # per sqrt(m), Minkina & Klecha LW declared default
     d_cal = 1.0  # m, the paper's 1 m calibration distance
@@ -5805,8 +5817,6 @@ def atmospheric_transmission(
     a_foreign = 0.023571  # km^-1/torr, from the Roberts 4..14 torr endpoints
     b_self = 3.5714e-4  # km^-1/torr^2, from the same two endpoints
     rho0 = 1.225  # kg/m^3
-    fog_km = 5.0  # km^-1 per unit fog density, DECLARED DEFAULT
-    rain_km = 0.5  # km^-1 per unit rain scalar, DECLARED DEFAULT
     hpa_to_torr = 0.750062
 
     e_torr = _atmos_es_hpa(t_c) * (rh / 100.0) * hpa_to_torr
@@ -5817,7 +5827,14 @@ def atmospheric_transmission(
     alpha_eff = alpha_ref * (beta_clean / beta_ref)
     if band == "mwir":
         alpha_eff = 0.0  # declared clear-air ceiling (UNSOURCED)
-    beta_extra_km = fog_km * fog + rain_km * rain
+    # Chylek 1978 / Pinnick 1979: beta = 3 pi c_e W / (2 lambda rho_w).
+    lam, ce = (4e-6, 0.64) if band == "mwir" else (11e-6, 0.31)
+    beta_fog_km = 1000 * 3 * math.pi * ce * fog / (2 * lam * 1e6)
+    # Marshall-Palmer drops, geometric Q_ext = 2: beta = pi N0 / Lambda^3.
+    beta_rain_km = 0.0
+    if rain > 0:
+        beta_rain_km = 1000 * 1e-6 * math.pi * 8000 / (4.1 * rain ** -0.21) ** 3
+    beta_extra_km = beta_fog_km + beta_rain_km
     sqrt_part = max(math.sqrt(range_m) - math.sqrt(d_cal), 0.0)
     linear_part = max((range_m - d_cal) / 1000.0, 0.0)
     optical_depth = alpha_eff * sqrt_part + beta_extra_km * linear_part
@@ -5879,9 +5896,8 @@ def planck_band_radiance(t_k, lambda1_m=8e-6, lambda2_m=14e-6):
 def sky_temperature_c(band="lwir", t_air_c=15.0, rh_pct=50.0, overcast=0.0):
     """Python mirror of fnc_calculateSkyRadiance.sqf (T3).
 
-    The Tebo 1965 measured band depression is interpolated linearly in
-    log(eHPa), the band emissivity is the exact Planck radiance ratio, and
-    the band sky temperature is recovered by bisection.
+    Idso 1981 8-14 um clear-sky emittance (e in hPa), lifted by cloud as
+    eps + (1 - eps) N, the band sky temperature recovered by bisection.
     """
     l1, l2 = (3e-6, 5e-6) if band == "mwir" else (8e-6, 14e-6)
     t_air_c = max(-80.0, min(60.0, t_air_c))
@@ -5889,20 +5905,9 @@ def sky_temperature_c(band="lwir", t_air_c=15.0, rh_pct=50.0, overcast=0.0):
     oc = max(0.0, min(1.0, overcast))
     t_air_k = t_air_c + 273.15
     e_hpa = _atmos_es_hpa(t_air_c) * (rh / 100.0)
-    eps_full = 0.70 + 5.95e-5 * e_hpa * math.exp(1500.0 / t_air_k)
-    if e_hpa <= 4.0:
-        dt = 45.0
-    elif e_hpa >= 15.0:
-        dt = 21.0
-    else:
-        f = (math.log(e_hpa) - math.log(4.0)) / (math.log(15.0) - math.log(4.0))
-        dt = 45.0 + (21.0 - 45.0) * f
-    dt *= 1.0 - oc
+    eps_clear = min(0.24 + 2.98e-8 * e_hpa**2 * math.exp(3000.0 / t_air_k), 1.0)
+    eps_band = min(eps_clear + (1 - eps_clear) * oc, 1.0)
     w_air = planck_band_radiance(t_air_k, l1, l2)
-    w_sky = planck_band_radiance(t_air_k - dt, l1, l2)
-    eps_band = min(w_sky / w_air, 1.0)
-    if oc <= 0.0:
-        eps_band = min(eps_band, eps_full)
     target = eps_band * w_air
     lo, hi = 1.0, t_air_k
     for _ in range(40):

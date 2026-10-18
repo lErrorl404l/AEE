@@ -331,7 +331,6 @@ EXPECTED_SLIDER_DECIMALS = {
     "aee_optics_rainBlurScale": 1,  # was 0
     "aee_optics_rainDecayRate": 2,  # was 0
     "aee_optics_seeingFXIntensity": 2,  # was 0
-    "aee_optics_smokePersistenceScale": 1,  # was 0
     "aee_optics_snowBlindnessBase": 1,  # was 0
     "aee_optics_snowVisibilityPenalty": 1,  # was 0
     "aee_optics_vehicleShimmerBase": 1,  # was 0

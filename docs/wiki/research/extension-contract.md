@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (906)
+### Public functions (907)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -170,8 +170,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ambience_fnc_acousticPublish`
 - `aee_ambience_fnc_acousticSample`
 - `aee_ambience_fnc_acousticSourceDb`
-- `aee_ambience_fnc_acousticSpectrum`
-- `aee_ambience_fnc_atmosphericAbsorption`
 - `aee_ambience_fnc_atmosphericAbsorptionTable`
 - `aee_ambience_fnc_callEmit`
 - `aee_ambience_fnc_callPitch`
@@ -215,6 +213,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_calculateLightning`
 - `aee_atmos_fnc_calculateMicroburst`
 - `aee_atmos_fnc_calculateOrographicPrecipitation`
+- `aee_atmos_fnc_calculateParcelCape`
 - `aee_atmos_fnc_calculatePlumeRise`
 - `aee_atmos_fnc_calculatePrecipitationPhase`
 - `aee_atmos_fnc_calculatePressureTrend`
@@ -233,6 +232,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_atmos_fnc_getLocalWind`
 - `aee_atmos_fnc_hailDamage`
 - `aee_atmos_fnc_moduleVolcanicInit`
+- `aee_atmos_fnc_turbulenceDissipation`
 - `aee_atmos_fnc_updateEngineLightnings`
 - `aee_atmos_fnc_updateFog`
 - `aee_atmos_fnc_updateHumidity`
@@ -467,7 +467,9 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_hydrology_fnc_getAquiferProperties`
 - `aee_hydrology_fnc_routeRunoffD8`
 - `aee_lib_fnc_astroPosition`
+- `aee_lib_fnc_atmosphericAbsorption`
 - `aee_lib_fnc_attachObjectEngineHandler`
+- `aee_lib_fnc_blastPeakDb`
 - `aee_lib_fnc_buildGeoAnchor`
 - `aee_lib_fnc_bullingtonLoss`
 - `aee_lib_fnc_civilDayNumber`
@@ -497,6 +499,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_lib_fnc_parseMgrs`
 - `aee_lib_fnc_readState`
 - `aee_lib_fnc_runGeoConsistency`
+- `aee_lib_fnc_soundPathLoss`
 - `aee_lib_fnc_unitMetabolicRate`
 - `aee_lib_fnc_utmToLatLon`
 - `aee_lib_fnc_utmToWorld`
@@ -638,7 +641,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_optics_fnc_calculateMirageIntensity`
 - `aee_optics_fnc_calculatePrecipitationVisibility`
 - `aee_optics_fnc_calculateRainOnOptics`
-- `aee_optics_fnc_calculateSmokePersistence`
 - `aee_optics_fnc_calculateSnowBlindness`
 - `aee_optics_fnc_calculateSolarGlare`
 - `aee_optics_fnc_calculateVehicleHeatShimmer`
@@ -706,7 +708,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_radio_fnc_calculateTerrainDiffraction`
 - `aee_radio_fnc_calculateTerrainMaskedLink`
 - `aee_radio_fnc_calculateTwoRayGround`
-- `aee_radio_fnc_calculateValleyWaveguide`
 - `aee_radio_fnc_dumpState`
 - `aee_radio_fnc_radarClutterRange`
 - `aee_radio_fnc_radarDetectionRange`
@@ -1038,7 +1039,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_wildlife_fnc_wildlifeTick`
 - `aee_wildlife_fnc_wildlifeTickPFH`
 
-### Public core state variables (99)
+### Public core state variables (101)
 
 The `aee_core_*` mission variables. The canonical list of every published variable is `docs/wiki/chapters/state-variables.qmd`; these are the names that appear in the source as a contract surface.
 
@@ -1114,6 +1115,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_moduleHealth`
 - `aee_core_moonLux`
 - `aee_core_objectTemperatures`
+- `aee_core_opticalCn2`
 - `aee_core_orographicFactor`
 - `aee_core_overcast`
 - `aee_core_positionDivergence`
@@ -1136,6 +1138,7 @@ The `aee_core_*` mission variables. The canonical list of every published variab
 - `aee_core_stormOverrideIntensity`
 - `aee_core_stormOverrideType`
 - `aee_core_stormOverrideUntil`
+- `aee_core_surfaceTemperature`
 - `aee_core_twilightLux`
 - `aee_core_updateInterval`
 - `aee_core_weatherProgressionSeed`

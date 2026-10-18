@@ -29,7 +29,6 @@ HARDENED_FILES = [
     "addons/weather/functions/terrain/fnc_calculateSnowAccumulation.sqf",
     "addons/optics/functions/sensor/fnc_calculateAttenuation.sqf",
     "addons/optics/functions/sensor/fnc_calculateMirageIntensity.sqf",
-    "addons/optics/functions/sensor/fnc_calculateSmokePersistence.sqf",
 ]
 
 # A bare read looks like `EGVAR(core,currentTemperature)` or
@@ -147,12 +146,11 @@ class TestSourcedConstants(unittest.TestCase):
             "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
         ).exists())
 
-    def test_smoke_taylor_and_kohler(self):
-        text = Path(
+    def test_unconsumed_smoke_modifier_is_gone(self):
+        # Its multipliers were invented and nothing read it.
+        self.assertFalse(Path(
             "addons/optics/functions/sensor/fnc_calculateSmokePersistence.sqf"
-        ).read_text(encoding="utf-8")
-        self.assertIn("Taylor", text)
-        self.assertIn("Köhler", text)
+        ).exists())
 
 
 class TestTwoNodeSolver(unittest.TestCase):

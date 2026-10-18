@@ -3,21 +3,16 @@
 /*
 Density altitude from pressure altitude and outside air temperature.
 
-Density altitude is the pressure altitude corrected for a non-standard air
-temperature.  The FAA rule of thumb adds 120 ft of density altitude for every
-degree Celsius the air is warmer than ISA, and subtracts 120 ft for every
-degree colder:
-
-    DA = PA + 120 * (OAT - ISA_T),   ISA_T = 15 - 1.98 * (PA / 1000 ft)
-
-1.98 C per 1000 ft is the ISA lapse rate of 6.5 C per 1000 m.  In SI the rule
-is 36.576 m of density altitude per degree C and the lapse term is 0.0065 C
-per metre.
-
-Source: FAA Pilot's Handbook of Aeronautical Knowledge, Ch. 11 (Density
-Altitude).  ISA lapse rate 6.5 C/km and sea-level 15 C: ICAO Doc 7488 / ISO
-2533.
-
+Density altitude is the height in the ICAO standard atmosphere (ICAO Doc
+7488 / ISO 2533: T0 288.15 K, p0 101325 Pa, L 0.0065 K/m, R 287.053 J/kg/K,
+g 9.80665) at which the standard density equals the actual density.  The
+actual density follows from the pressure at the pressure altitude and the
+outside air temperature, rho = p / (R T); the ISA troposphere then inverts
+exactly:
+    p  = p0 (1 - L PA / T0)^(g / (R L))
+    DA = (T0 / L) (1 - (rho / rho0)^(R L / (g - R L)))
+(The FAA rule of thumb, 120 ft per degree C off ISA, linearises this; the
+exact form is used.)
 This is a pure kernel: no missionNamespace, no GVAR or EGVAR, no engine
 command.
 
@@ -35,8 +30,11 @@ params [
     ["_oatC", 15, [0]]
 ];
 
-// ISA temperature at the pressure altitude, then the FAA correction.
-private _isaTempC = 15 - 0.0065 * _pressureAltitudeM;
-private _deltaC = _oatC - _isaTempC;
-
-_pressureAltitudeM + 36.576 * _deltaC
+private _t0 = 288.15;
+private _lapse = 0.0065;
+private _r = 287.053;
+private _g = 9.80665;
+private _p = 101325 * ((1 - _lapse * _pressureAltitudeM / _t0) ^ (_g / (_r * _lapse)));
+private _rho = _p / (_r * (_oatC + 273.15));
+private _rho0 = 101325 / (_r * _t0);
+(_t0 / _lapse) * (1 - ((_rho / _rho0) ^ ((_r * _lapse) / (_g - _r * _lapse))))

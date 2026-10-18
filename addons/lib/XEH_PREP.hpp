@@ -37,3 +37,6 @@ PREPS(geo,bullingtonLoss);
 PREPS(geo,datalinkState);
 PREPS(geo,evaluateGeoConsistency);
 PREPS(geo,runGeoConsistency);
+PREPS(acoustics,atmosphericAbsorption);
+PREPS(acoustics,soundPathLoss);
+PREPS(acoustics,blastPeakDb);

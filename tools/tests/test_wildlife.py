@@ -1527,13 +1527,8 @@ class TestPitchSourceContracts(unittest.TestCase):
 SHOT_GLOBALS = {
     "WILDLIFE_SHOT_REPORT_DB": 160,
     "WILDLIFE_SHOT_REPORT_REF_MV": 900,
-    "WILDLIFE_SHOT_PITCH_PER_MACH": 0.15,
-    "WILDLIFE_SHOT_CRACK_DB": 150,
-    "WILDLIFE_SHOT_SNAP_RADIUS_M": 5,
-    "WILDLIFE_SHOT_SNAP_DB": 140,
-    "WILDLIFE_SHOT_RICOCHET_DB": 130,
-    "WILDLIFE_SHOT_RICOCHET_ANGLE_DEG": 30,
-    "WILDLIFE_SHOT_RICOCHET_REF_J": 500,
+    "SOUND_SPEED_COEFF": 20.05,
+    "KELVIN_OFFSET": 273.15,
 }
 
 
@@ -1574,18 +1569,37 @@ class TestShotAudio(unittest.TestCase):
         self.assertTrue(shot_audio(current_v=345, temp=15)[2])
         self.assertFalse(shot_audio(current_v=345, temp=40)[2])
 
-    def test_the_report_pitch_rises_with_velocity(self):
-        slow = shot_audio(muzzle_v=300)[1]
-        fast = shot_audio(muzzle_v=1100)[1]
-        self.assertGreater(fast, slow)
+    def test_the_reference_weapon_is_the_measured_peak(self):
+        # M4, 5.56 mm at 900 m/s, at 1 m: the NIOSH 160 dB peak.
+        self.assertAlmostEqual(shot_audio(caliber=5.56, muzzle_v=900, distance=1)[0], 160, places=6)
 
-    def test_a_near_pass_has_a_snap(self):
-        self.assertGreater(shot_audio(closest=1)[4], 0)
-        self.assertEqual(shot_audio(closest=50)[4], 0)
+    def test_cube_root_blast_scaling(self):
+        # Hopkinson-Cranz: L = Lref + (20/3) log10(E/Eref), E ~ d^3 v^2.
+        e = (7.62 / 5.56) ** 3 * (838 / 900) ** 2
+        out = shot_audio(caliber=7.62, muzzle_v=838, distance=1)
+        self.assertAlmostEqual(out[0], 160 + 20 / 3 * math.log10(e), places=5)
+        self.assertAlmostEqual(out[1], e ** (-1 / 3), places=5)
 
-    def test_a_grazing_impact_ricochets(self):
-        self.assertGreater(shot_audio(angle=5, energy=500)[5], 0)
-        self.assertEqual(shot_audio(angle=80, energy=500)[5], 0)
+    def test_a_bigger_charge_reports_lower(self):
+        self.assertLess(shot_audio(caliber=12.7)[1], shot_audio(caliber=5.56)[1])
+
+    def test_whitham_shock_wave(self):
+        # dp = 0.53 p0 (M^2-1)^1/8 d / (b^3/4 l^1/4), l = 3.9 d.
+        c = speed_of_sound(15)
+        v, d, b = 800, 7.62e-3, 5
+        m = v / c
+        dp = 0.53 * 101325 * (m * m - 1) ** 0.125 * d / (b ** 0.75 * (3.9 * d) ** 0.25)
+        out = shot_audio(caliber=7.62, muzzle_v=838, current_v=v, closest=b)
+        self.assertAlmostEqual(out[4], 20 * math.log10(dp / 2e-5), places=3)
+        self.assertAlmostEqual(out[3], out[4], places=6)
+
+    def test_the_snap_falls_with_miss_distance(self):
+        near = shot_audio(closest=1)[4]
+        far = shot_audio(closest=50)[4]
+        self.assertAlmostEqual(near - far, 15 * math.log10(50), places=3)
+
+    def test_ricochet_is_not_modelled(self):
+        self.assertEqual(shot_audio(angle=5, energy=500)[5], 0)
 
     def test_same_inputs_give_the_same_result(self):
         self.assertEqual(shot_audio(), shot_audio())
@@ -1602,9 +1616,7 @@ class TestShotAudioSourceContracts(unittest.TestCase):
         constants = (WILDLIFE / "script_component.hpp").read_text(encoding="utf-8")
         for name in (
             "WILDLIFE_SHOT_REPORT_DB",
-            "WILDLIFE_SHOT_CRACK_DB",
-            "WILDLIFE_SHOT_SNAP_RADIUS_M",
-            "WILDLIFE_SHOT_RICOCHET_ANGLE_DEG",
+            "WILDLIFE_SHOT_REPORT_REF_MV",
         ):
             self.assertIn(name, constants, name)
 
@@ -1614,10 +1626,29 @@ class TestShotAudioSourceContracts(unittest.TestCase):
         self.assertIn("EFUNC(ballistics,parseCaliber)", text)
         self.assertIn("EFUNC(ambience,shotAudio)", text)
 
-    def test_the_kernel_names_the_ballistics_reuse(self):
+    def test_the_kernel_names_its_sources(self):
         text = (AMBIENCE / "fnc_shotAudio.sqf").read_text(encoding="utf-8")
-        self.assertIn("fnc_calculateBallisticDrag.sqf", text)
-        self.assertIn("fnc_parseCaliber.sqf", text)
+        self.assertIn("Whitham", text)
+        self.assertIn("Hopkinson-Cranz", text)
+
+
+class TestCallSeasonHemisphere(unittest.TestCase):
+    """The breeding-season factor follows the hemisphere."""
+
+    K = AMBIENCE / "fnc_getCallPattern.sqf"
+
+    def p(self, month, lat):
+        return run_sqf(self.K, ["songbird", 30, 10, month, 15, 0, 0, [1] * 7, lat])
+
+    def test_northern_spring_is_april(self):
+        self.assertGreater(self.p(4, 50), self.p(10, 50))
+
+    def test_southern_spring_is_october(self):
+        self.assertGreater(self.p(10, -35), self.p(4, -35))
+        self.assertAlmostEqual(self.p(10, -35), self.p(4, 50), places=9)
+
+    def test_tropics_have_no_season(self):
+        self.assertEqual(self.p(1, 5), self.p(7, 5))
 
 
 class TestWildlifeTeardownWiring(unittest.TestCase):

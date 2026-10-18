@@ -518,7 +518,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_persistence_FlashFloodThreshold` | SLIDER | `50` | yes | persistence | Rain rate (mm/h) that counts as flash-flood producing |
 | `aee_weather_BlowingSnowWindThreshold` | SLIDER | `8` | yes | weather | Wind speed (m/s) that triggers blowing snow |
 | `aee_weather_DustDevilTempThreshold` | SLIDER | `30` | yes | weather | Air temperature (°C) that allows dust devils |
-| `aee_weather_InversionBoost` | SLIDER | `0.6` | yes | weather | Sound-range boost on clear calm nights |
 | `aee_weather_SandstormWindThreshold` | SLIDER | `10` | yes | weather | Wind speed (m/s) that triggers sandstorms |
 
 ## AEE Experimental → Fusion
@@ -766,7 +765,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_optics_greenFlashEnabled` | CHECKBOX | `true` | yes | optics | Model the green flash at the setting and rising sun from refraction dispersion |
-| `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | yes | optics | Global smoke-duration multiplier |
 | `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | yes | optics | Visibility loss from snow cover |
 
 ## AEE Optics → Intensity
@@ -797,8 +795,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_optics_mirageMinSunElev` | SLIDER | `15` | yes | optics | Sun angle gate for mirage, in degrees |
-| `aee_optics_mirageOnsetTemp` | SLIDER | `35` | yes | optics | Surface temperature at which mirage starts, in degrees Celsius |
 | `aee_optics_snowBlindnessBase` | SLIDER | `0.1` | yes | optics | Base dazzle from bright snow |
 | `aee_optics_vehicleShimmerBase` | SLIDER | `0.3` | yes | optics | Idle-engine shimmer floor |
 

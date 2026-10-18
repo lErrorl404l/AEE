@@ -69,6 +69,7 @@ private _events = missionNamespace getVariable [QGVAR(soundEvents), []];
 if !(_events isEqualType []) then { _events = []; };
 private _propIndex = missionNamespace getVariable [QEGVAR(weather,currentSoundPropagation), 1];
 if !(_propIndex isEqualType 0) then { _propIndex = 1; };
+private _floorDb = ([QEGVAR(weather,currentAmbientNoise), WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB, 1] call EFUNC(lib,readState)) max WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB;
 private _store = missionNamespace getVariable [QGVAR(environment), []];
 if !(_store isEqualType []) then { _store = []; };
 private _comm = missionNamespace getVariable [QEGVAR(ambience,communicationEnabled), false];
@@ -129,7 +130,7 @@ for "_i" from 0 to ((count _pending) - 1) do {
         if ((count _events) > 0) then {
             private _occluders = [_pos] call EFUNC(ambience,acousticOccluders);
             private _level = [
-                _events, _pos, _now, WILDLIFE_ACOUSTIC_EVENT_HORIZON, _propIndex, _occluders
+                _events, _pos, _now, WILDLIFE_ACOUSTIC_EVENT_HORIZON, _propIndex, _occluders, _floorDb
             ] call EFUNC(ambience,acousticSample);
             _acoustic = _level select 0;
         };

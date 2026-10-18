@@ -14,7 +14,7 @@ Arguments:
   2: Number - the object cap
 
 Returns:
-  Array - occluder positions, ASL, at most the cap
+  Array - barriers [x, y, topASL, halfWidth], at most the cap
 */
 
 params [
@@ -25,7 +25,7 @@ params [
 
 private _objects = nearestTerrainObjects [
     _position,
-    ["TREE", "SMALL TREE", "BUSH", "BUILDING", "WALL", "FENCE", "HOUSE"],
+    ["BUILDING", "WALL", "FENCE", "HOUSE"],
     _radius,
     false,
     true
@@ -36,7 +36,12 @@ for "_i" from 0 to ((count _objects) - 1) do {
     if ((count _out) < _cap) then {
         private _object = _objects select _i;
         if (!isNull _object) then {
-            _out pushBack getPosASL _object;
+            private _box = boundingBoxReal _object;
+            private _lo = _box select 0;
+            private _hi = _box select 1;
+            private _pos = _object modelToWorldWorld [0, 0, _hi select 2];
+            private _half = (((_hi select 0) - (_lo select 0)) max ((_hi select 1) - (_lo select 1))) / 2;
+            _out pushBack [_pos select 0, _pos select 1, _pos select 2, _half];
         };
     };
 };

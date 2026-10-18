@@ -97,8 +97,9 @@ class TestConstants(unittest.TestCase):
         d = _defines()
         self.assertEqual(d["TURBULENCE_FORCE_CAP_FRACTION"], 0.25)
         self.assertEqual(d["AERO_ISA_SEA_LEVEL_DENSITY"], 1.225)
-        self.assertEqual(d["AERO_ICE_LIFT_LOSS_MAX"], 0.35)
-        self.assertEqual(d["AERO_ICE_DRAG_RISE_MAX"], 0.5)
+        # FAA AC 135-17: lift down by as much as 30 %, drag up 40 %.
+        self.assertEqual(d["AERO_ICE_LIFT_LOSS_MAX"], 0.30)
+        self.assertEqual(d["AERO_ICE_DRAG_RISE_MAX"], 0.40)
         self.assertEqual(d["AERO_LIFT_LOSS_CAP"], 0.45)
         self.assertEqual(d["AERO_DRAG_AREA_M2"], 0.7)
 

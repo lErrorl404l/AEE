@@ -17,22 +17,26 @@ first-order tangent, and folds it into the affine ColorCorrections can express.
 Stevens 1957 gives the brightness power law near 0.33 for reference.
 
 The engine contrast is linear, so this is a stand-in for a curve, not a curve.
-The exact Naka-Rushton exponent and sigma are UNSOURCED and operator-tunable.
+The exponent is the measured primate-cone value; the gains that map the
+tangent onto the engine's ColorCorrections are a DISPLAY MAPPING (no physical
+measurement exists for them) and are labelled so.
 
 Per-constant source register (UNSOURCED values are marked beside the clamp):
-  Naka-Rushton exponent n   0.7, range 0.5 to 1.0.  Form SOURCED (Naka and
-                            Rushton 1966).  The exact value is UNSOURCED.
-  Naka-Rushton sigma        0.18, the mid-grey reflectance.  Form SOURCED.
-                            The exact value is UNSOURCED (photographic
-                            convention, not a CIE constant).
+  Naka-Rushton exponent n   0.74.  SOURCED: primate cones in vivo,
+                            V/Vm = I^n / (I^n + sigma^n), n = 0.74 for every
+                            steady-state and transient record (Valeton &
+                            van Norren 1983, Vision Res 23:1539).
+  Naka-Rushton sigma        0.18 of the reference, the mid-grey of a scene
+                            whose mean reflectance is 18 % (the ISO 2720
+                            exposure-meter calibration convention).
   CIE L* exponent           1/3.  SOURCED: CIE 15:2004 and ISO 11664-4.
   CIE L* threshold delta    6/29, delta cubed 0.008856.  SOURCED: CIE 15:2004.
   Stevens brightness exp    0.33.  SOURCED: Stevens 1957, secondary table.
-  contrast                  0.8 to 1.6.  UNSOURCED: matches the legacy
-                            base-grade clamp.
-  offset                    -0.05 to 0.05.  UNSOURCED: BIKI says the offset
-                            range is 0 and up; negative is proven in
-                            community code.
+  contrast gain 0.6, band 0.8 to 1.6   DISPLAY MAPPING: the engine
+                            contrast budget, not a physical value.
+  offset gain 0.1, band -0.05 to 0.05  DISPLAY MAPPING (BIKI: offset 0 and
+                            up; negative is proven in community code).
+  brightness gain 0.3                  DISPLAY MAPPING.
   brightness                0.7 to 1.3.  BIKI ColorCorrections brightness,
                             0 black, 1 unchanged, 2 white.
 
@@ -60,7 +64,7 @@ private _ref = (_refLum max 0.00001);
 
 // Stage 1: the Naka-Rushton retinal response at the operating point.  The
 // sigma is measured in the reference-relative unit, so 0.18 is mid grey.
-private _n = 0.7;
+private _n = 0.74;
 private _sigma = 0.18;
 private _x = _lum / _ref;
 private _xn = _x ^ _n;

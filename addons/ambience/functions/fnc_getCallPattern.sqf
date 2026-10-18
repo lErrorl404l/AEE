@@ -25,6 +25,7 @@ Arguments:
    5: Number - the wind speed, m/s 0 or more
    6: Number - the rain, 0 to 1
    7: Array  - the seven temporal weights, each 0 to 1
+   8: Number - the latitude, degrees (positive north)
 
 Returns:
   Number - the calling probability, 0 to 1
@@ -38,7 +39,8 @@ params [
     ["_temperatureC", 15, [0]],
     ["_wind", 0, [0]],
     ["_rain", 0, [0]],
-    ["_pattern", [], [[]]]
+    ["_pattern", [], [[]]],
+    ["_latitude", 45, [0]]
 ];
 
 private _weights = _pattern;
@@ -110,10 +112,16 @@ if (_isAmphibian) then {
     if (_rain < 0.2) then { _guildFactor = 0.2; };
 };
 
-// The breeding season lifts the bird and amphibian chorus.  AEE publishes no
-// season scalar; the month is the source.  The shape is UNSOURCED.
+// The breeding season lifts the bird and amphibian chorus in spring.  The
+// seasons are reversed in the southern hemisphere, so the month is shifted
+// six months there; inside the tropics (|lat| < 23.44 deg, the Tropics of
+// Cancer and Capricorn) there is no temperate spring and no seasonal factor.
+// The seasonal SHAPE (1.0 / 0.9 / 0.7 / 0.5) is UNSOURCED.
 private _seasonFactor = 1;
-if (_isBird || _isAmphibian) then {
+private _seasonMonth = _month;
+if (_latitude < 0) then { _seasonMonth = ((_month + 5) mod 12) + 1; };
+if ((_isBird || _isAmphibian) && {(abs _latitude) >= 23.44}) then {
+    _month = _seasonMonth;
     if ((_month >= 3) && (_month <= 5)) then { _seasonFactor = 1.0; }
     else { if ((_month >= 6) && (_month <= 8)) then { _seasonFactor = 0.9; }
     else { if ((_month >= 9) && (_month <= 11)) then { _seasonFactor = 0.7; }

@@ -60,21 +60,8 @@ private _contains = {
     _found
 };
 
-// The species factor by guild token.  A factor of -1 marks a stridulator,
-// whose term comes from the temperature instead.  Every factor is UNSOURCED.
-private _GUILD_PITCH = [
-    ["cricket", -1],
-    ["cicada", -1],
-    ["frog", 0.95],
-    ["owl", 0.85],
-    ["bird", 1.10],
-    ["deer", 0.82],
-    ["wolf", 0.82],
-    ["gull", 1.05],
-    ["hen", 1.02],
-    ["dog", 0.95],
-    ["sheep", 0.92]
-];
+// Stridulators: their chirp rate follows the temperature.
+private _STRIDULATORS = ["cricket", "cicada"];
 
 // Local speed of sound, SOURCED: the dry-air relation c = SOUND_SPEED_COEFF*sqrt(T_K).
 private _speedOfSound = SOUND_SPEED_COEFF * (sqrt (_temperatureC + KELVIN_OFFSET));
@@ -92,16 +79,9 @@ private _jitter = 1 + (_unit * WILDLIFE_PITCH_JITTER);
 // The species term.
 private _speciesTerm = 1;
 private _stridulator = false;
-for "_g" from 0 to ((count _GUILD_PITCH) - 1) do {
-    private _row = _GUILD_PITCH select _g;
-    if (([_species, _row select 0] call _contains)) then {
-        if ((_row select 1) < 0) then {
-            _stridulator = true;
-        } else {
-            _speciesTerm = _row select 1;
-        };
-    };
-};
+{
+    if ([_species, _x] call _contains) then { _stridulator = true; };
+} forEach _STRIDULATORS;
 
 if (_stridulator) then {
     // The Dolbear rate in chirps per minute, N8 = 7*T - 30, and its value at

@@ -44,6 +44,22 @@ def motion(hs, rel_deg, vessel, u=3.0, gm=1.5, zeta=0.10):
 
 
 class TestKernelBehaviour(unittest.TestCase):
+    def test_heave_uses_strip_theory_added_mass(self):
+        # a33 = rho pi B^2 L / 8 (semicircular sections, Newman 1977).
+        b, l, m = FRIGATE
+        rho, g = 1025, 9.81
+        wn = math.sqrt(rho * g * l * b / (m + rho * math.pi * b * b * l / 8))
+        hs, tp = 2.0, peak_period(2.0)
+        we = 2 * math.pi / tp  # zero speed
+        r = we / wn
+        rao = 1 / math.sqrt((1 - r * r) ** 2 + (0.2 * r) ** 2)
+        got = run_sqf(KERNEL, [hs, tp, 0, 90, b, l, m, 1.5, 0.10])[2]
+        self.assertAlmostEqual(got, hs / 2 * rao, places=4)
+
+    def test_driver_reads_beam_across_the_model(self):
+        src = DRIVER.read_text(encoding="utf-8")
+        self.assertIn("private _beam = abs ((_max select 0) - (_min select 0));", src)
+
     def test_zero_wave_height_is_still(self):
         self.assertEqual(motion(0.0, 90.0, PATROL), [0, 0, 0])
 

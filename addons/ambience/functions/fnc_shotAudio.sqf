@@ -1,56 +1,47 @@
 #include "..\script_component.hpp"
-
 /*
 Ballistics-coupled shot-audio kernel (wildlife ecology, task T26).
-
 Pure: no missionNamespace, no GVAR or EGVAR, no engine command, no random.
-From the projectile's real parameters it derives the four shot events at the
-listener: the muzzle report, the supersonic crack, the near-pass snap and the
-ricochet.  The projectile VELOCITY is supplied by the caller from AEE's
-ballistics kernel; this kernel never re-derives drag.
+From the projectile's real parameters it derives the shot events at the
+listener: the muzzle report and the ballistic shock wave (the supersonic
+"crack" of a near pass).  The projectile velocity is the caller's, from
+AEE's ballistics kernels.
 
-Ballistics reuse (where the velocity lives):
-  addons/ballistics/functions/fnc_calculateBallisticDrag.sqf   drag + c(T)
-  addons/ballistics/functions/fnc_calculateInteriorBallistics.sqf  muzzle v
-  addons/ballistics/functions/fnc_calculateMachCone.sqf        Mach geometry
-  addons/ballistics/functions/fnc_getLoadData.sqf              service v
-  addons/ballistics/functions/fnc_parseCaliber.sqf             calibre
-The Fired wiring reads the muzzle velocity from the load resolver and the
-calibre from the parser, then calls this kernel.
-
-Model:
-  - Local speed of sound c = SOUND_SPEED_COEFF * sqrt(T + KELVIN_OFFSET) m/s, SOURCED (the dry-air
-    relation; the same convention as fnc_calculateBallisticDrag and
-    fnc_calculateMachCone, so the transonic band agrees).
-  - Muzzle report.  The level rises with the muzzle velocity and falls with
-    distance (20*log10 spherical spreading).  The reference level at the
-    reference muzzle velocity is the SOURCED measured weapon peak,
-    WILDLIFE_SHOT_REPORT_DB, 160 dB (NIOSH HHE report 2013-0124-3208).  The
-    report pitch rises with the muzzle Mach number.  The velocity slope and
-    the pitch slope are UNSOURCED.
-  - Supersonic crack.  Present ONLY while the round is above Mach 1 in the
-    LOCAL air, so a hot day raises the threshold.  The level scales with the
-    Mach excess and falls with distance.  Shape UNSOURCED.
-  - Snap/whiz.  The near pass of a round: present only when its closest
-    approach to the listener is inside the snap radius.  UNSOURCED.
-  - Ricochet.  From the impact energy and the angle from the surface plane: a
-    grazing impact ricochets, a perpendicular one penetrates.  UNSOURCED.
+  - Local speed of sound c = SOUND_SPEED_COEFF * sqrt(T + KELVIN_OFFSET).
+  - Muzzle report.  The reference is the measured peak of an M4 (5.56 mm,
+    ~900 m/s), WILDLIFE_SHOT_REPORT_DB at 1 m (NIOSH HHE 2013-0124-3208).
+    Other weapons scale by Hopkinson-Cranz cube-root blast scaling (Cranz
+    1926; Baker, Explosions in Air, 1973): at a fixed distance the far-field
+    overpressure goes as W^1/3 and the blast duration as W^1/3, so
+      L = L_ref + (20/3) log10(E / E_ref),  pitch = (E / E_ref)^(-1/3),
+    E the muzzle energy, which for geometrically similar projectiles goes
+    as d^3 v^2 (projectile mass ~ d^3).
+  - Ballistic shock wave.  Only while the round is above Mach 1 in the local
+    air.  The N-wave peak overpressure at miss distance b is Whitham's
+    (1952, Comm Pure Appl Math 5:301), the form used by Stoughton (1997,
+    JASA 102:781) and Hamernik et al. for small arms:
+      dp = 0.53 p0 (M^2 - 1)^1/8 d / (b^3/4 l^1/4)
+    p0 101325 Pa, d the calibre and l the bullet length, l = 3.9 d (the
+    M80 7.62 mm ball is 3.7 calibres long, the M855 5.56 mm 4.1; l enters at
+    the quarter power, so +-10 % is +-0.2 dB).  The level is
+    20 log10(dp / 20 uPa).  With no closest approach the listener distance
+    is taken as the miss distance.  The snap is that wave at the closest
+    approach.
+  - Ricochet is not modelled (no published level law); it returns 0.
 
 Arguments:
   0: Number - calibre, mm
   1: Number - muzzle velocity, m/s
-  2: Number - current velocity, m/s (the drag-reduced speed now)
+  2: Number - current velocity, m/s
   3: Number - air temperature, Celsius
-  4: Number - listener distance, metres
-  5: Number - closest approach of the round to the listener, metres, -1 unknown
-  6: Number - impact angle from the surface plane, degrees, -1 no impact
-  7: Number - impact energy, joules
-
+  4: Number - listener distance from the muzzle, metres
+  5: Number - closest approach of the round to the listener, m, -1 unknown
+  6: Number - impact angle from the surface plane, degrees (unused)
+  7: Number - impact energy, joules (unused)
 Returns:
   Array - [reportLevelDb, reportPitch, crack, crackLevelDb, snapLevelDb,
            ricochetLevelDb]
 */
-
 params [
     ["_caliberMm", 7.62, [0]],
     ["_muzzleVelocity", 0, [0]],
@@ -61,49 +52,32 @@ params [
     ["_impactAngleDeg", -1, [0]],
     ["_impactEnergyJ", 0, [0]]
 ];
-
 if (_caliberMm <= 0) exitWith { [0, 1, false, 0, 0, 0] };
 if (_muzzleVelocity <= 0) exitWith { [0, 1, false, 0, 0, 0] };
-
-// Local speed of sound, SOURCED.
 private _speedOfSound = SOUND_SPEED_COEFF * (sqrt (_airTempC + KELVIN_OFFSET));
 if (_speedOfSound <= 0) exitWith { [0, 1, false, 0, 0, 0] };
 
-private _machMuzzle = _muzzleVelocity / _speedOfSound;
-private _machNow = _currentVelocity / _speedOfSound;
-
-// Spherical spreading from the muzzle to the listener.
+// Muzzle report: cube-root blast scaling on the muzzle energy.
+private _energyRatio = ((_caliberMm / 5.56) ^ 3) * ((_muzzleVelocity / WILDLIFE_SHOT_REPORT_REF_MV) ^ 2);
 private _spread = 20 * (log ((_listenerDistanceM max 1) min 1e6));
+private _reportLevel = WILDLIFE_SHOT_REPORT_DB + ((20 / 3) * (log _energyRatio)) - _spread;
+private _reportPitch = ((_energyRatio ^ (-1 / 3)) max 0.25) min 4;
 
-// Muzzle report.
-private _reportSource = WILDLIFE_SHOT_REPORT_DB
-    + (20 * (log ((_muzzleVelocity max 1) / WILDLIFE_SHOT_REPORT_REF_MV)));
-private _reportLevel = _reportSource - _spread;
-private _reportPitch = ((1 + (WILDLIFE_SHOT_PITCH_PER_MACH * (_machMuzzle - 1))) max 0.5) min 2.0;
-
-// Supersonic crack: only while the round is above Mach 1 in the local air.
+// Ballistic shock wave (Whitham).
+private _machNow = _currentVelocity / _speedOfSound;
 private _crack = (_machNow > 1);
+private _dM = _caliberMm / 1000;
+private _lM = 3.9 * _dM;
+private _whitham = {
+    params ["_b"];
+    private _dp = 0.53 * 101325 * (((_machNow ^ 2) - 1) ^ 0.125) * _dM / (((_b max 0.05) ^ 0.75) * (_lM ^ 0.25));
+    20 * (log (_dp / 2e-5))
+};
 private _crackLevel = 0;
-if (_crack) then {
-    _crackLevel = (WILDLIFE_SHOT_CRACK_DB + (30 * (_machNow - 1))) - _spread;
-};
-
-// Near-pass snap: only inside the snap radius of the listener.
 private _snapLevel = 0;
-if ((_closestApproachM >= 0) && (_closestApproachM <= WILDLIFE_SHOT_SNAP_RADIUS_M)) then {
-    _snapLevel = WILDLIFE_SHOT_SNAP_DB
-        * (1 - (_closestApproachM / WILDLIFE_SHOT_SNAP_RADIUS_M));
+if (_crack) then {
+    private _miss = [_listenerDistanceM max 1, _closestApproachM] select (_closestApproachM >= 0);
+    _crackLevel = _miss call _whitham;
+    if (_closestApproachM >= 0) then { _snapLevel = _crackLevel; };
 };
-
-// Ricochet: a grazing impact with energy ricochets, a perpendicular one does
-// not.  The angle is measured from the surface plane.
-private _ricochetLevel = 0;
-if ((_impactAngleDeg >= 0) && (_impactAngleDeg <= WILDLIFE_SHOT_RICOCHET_ANGLE_DEG)) then {
-    if (_impactEnergyJ > 0) then {
-        private _energyFactor = ((_impactEnergyJ / WILDLIFE_SHOT_RICOCHET_REF_J) min 1);
-        private _angleFactor = 1 - (_impactAngleDeg / WILDLIFE_SHOT_RICOCHET_ANGLE_DEG);
-        _ricochetLevel = WILDLIFE_SHOT_RICOCHET_DB * _energyFactor * _angleFactor;
-    };
-};
-
-[_reportLevel, _reportPitch, _crack, _crackLevel, _snapLevel, _ricochetLevel]
+[_reportLevel, _reportPitch, _crack, _crackLevel, _snapLevel, 0]

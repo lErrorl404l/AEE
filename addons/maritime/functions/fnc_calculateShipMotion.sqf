@@ -62,8 +62,9 @@ private _havePlayerShip = false;
         private _box = boundingBoxReal _ship;
         private _min = _box select 0;
         private _max = _box select 1;
-        private _beam = abs ((_max select 1) - (_min select 1));
-        private _length = abs ((_max select 0) - (_min select 0));
+        // Model axes: x across the hull (beam), y fore-aft (length).
+        private _beam = abs ((_max select 0) - (_min select 0));
+        private _length = abs ((_max select 1) - (_min select 1));
         private _mass = getMass _ship;
 
         private _motion = [

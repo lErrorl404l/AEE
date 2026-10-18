@@ -73,21 +73,24 @@ the three published anchors hold.  Away from it the absorber column scales
 the exponent.  This scaling is a DECLARED MODEL, because the record gives
 the coefficient at one condition only.
 
-FOG.  Fog droplets are about 5 to 15 um, comparable to the band wavelength,
-so the extinction is in the Mie regime and is wavelength dependent (Applied
-Sciences 2019, 9, 2843).  The visible Koschmieder relation beta = 3.912 / V
-does NOT transfer to this band and is NOT used here.  The engine fog density
-is a dimensionless 0..1 visual parameter with no published thermal-band
-extinction, so the fog coefficient is a DECLARED DEFAULT, and the wavelength
-dependence is an ASSUMPTION folded into that default.  It is NOT a
-measurement.
+FOG.  Fog droplets are about 5 to 15 um, comparable to the band wavelength
+(Mie regime).  Chylek (1978, J Atmos Sci 35:296) showed that up to radii of
+the order of the wavelength the extinction efficiency is linear in size,
+Q_ext = c_e 2 pi r / lambda, so the extinction is proportional to the liquid
+water content W whatever the drop-size distribution:
+  beta_fog = 3 pi c_e W / (2 lambda rho_w)
+with c_e = 0.31 at 11 um and 0.64 at 4 um (Pinnick et al. 1979; restated and
+re-tested by Klein & Dabas 2014, Atmos Meas Tech 7:1277, eq. 5).  At 11 um
+that is 0.133 per metre per g/m3.  The 4 um relation is the weaker one
+(Klein & Dabas found it size-dependent).  W is the fog liquid water content
+the fog model publishes (aee_core_currentFogLWC).
 
 RAIN.  Rain drops are 100 to 1000 um, far larger than the wavelength, so
-geometric optics applies and the extinction efficiency tends to a constant
-near 2.  The extinction is therefore linear in rain rate IN FORM (Radio
-Science 1995, doi 10.1029/95RS01117).  The record establishes no thermal-band
-coefficient, so the coefficient is a DECLARED DEFAULT and is NOT a
-measurement.
+geometric optics applies and the extinction efficiency is 2 (the extinction
+paradox).  Over the Marshall-Palmer distribution N(D) = N0 exp(-Lambda D),
+N0 = 8000 m^-3 mm^-1, Lambda = 4.1 R^-0.21 mm^-1 (Marshall & Palmer 1948,
+J Meteor 5:165), beta_rain = 2 (pi/4) int D^2 N dD = pi N0 / Lambda^3, in
+mm^2 per m^3 (x 1e-6 per metre).  R is the rain rate in mm/h.
 
 FOG AND RAIN ENTER THROUGH BETA, THE PUBLISHED LINEAR TERM.  The long-wave
 reference sets beta = 0 for clear air, and the (d - d_cal) term is the
@@ -110,19 +113,19 @@ Guards, each explicit:
     it out; the refusal must come before the arithmetic.
   - A non-positive air density is refused with -1.  It is a divisor.
   - A zero-length path returns 1: no air, no absorption.
-  - Relative humidity is clamped to 0..100, and fog and rain to 0..1.
+  - Relative humidity is clamped to 0..100; fog and rain floor at 0.
   - The returned transmission is clamped to 0..1.
 
 Units on every line: _rangeM in metres, _humidityPct in percent, _tAirC in
-degrees Celsius, _fogDensity and _rainScalar dimensionless 0..1, _airDensity
+degrees Celsius, _fogDensity in g/m3, _rainScalar in mm/h, _airDensity
 in kg/m^3, e in torr, extinctions in km^-1.  The return is dimensionless.
 
 Arguments:
   0: _rangeM      (NUMBER) path length, m, >= 0
   1: _humidityPct (NUMBER) relative humidity, percent, 0..100
   2: _tAirC       (NUMBER) air temperature, C
-  3: _fogDensity  (NUMBER) engine fog density, 0..1
-  4: _rainScalar  (NUMBER) engine rain scalar, 0..1
+  3: _fogDensity  (NUMBER) fog liquid water content, g/m3
+  4: _rainScalar  (NUMBER) rain rate, mm/h
   5: _airDensity  (NUMBER) air density, kg/m^3, > 0
   6: _bandToken   (STRING) "lwir" (default) or "mwir"
 
@@ -180,8 +183,8 @@ if (_rangeM == 0) exitWith { 1 };
 // Physical clamps.  Humidity is a percentage; fog and rain are 0..1 engine
 // scalars.  A value above the top is clamped, never extrapolated.
 _humidityPct = _humidityPct max 0 min 100;
-_fogDensity = _fogDensity max 0 min 1;
-_rainScalar = _rainScalar max 0 min 1;
+_fogDensity = (_fogDensity max 0) min 3;
+_rainScalar = (_rainScalar max 0) min 500;
 
 // ─── Published and declared constants ─────────────────────────────────────
 // alpha_ref and d_cal are the Minkina and Klecha 2016 long-wave DECLARED
@@ -192,8 +195,6 @@ private _co2Km = 0.02;          // km^-1, Roberts 1976 CO2 over 8-12 um
 private _aForeign = 0.023571;   // km^-1/torr, from the Roberts 4..14 torr endpoints
 private _bSelf = 3.5714e-4;     // km^-1/torr^2, from the same two endpoints
 private _rho0 = AERO_ISA_SEA_LEVEL_DENSITY;          // kg/m^3, sea-level reference density
-private _fogKm = 5.0;           // km^-1 per unit fog density, DECLARED DEFAULT
-private _rainKm = 0.5;          // km^-1 per unit rain scalar, DECLARED DEFAULT
 private _hPaToTorr = 0.750062;  // torr per hPa
 
 // ─── Water vapour partial pressure, Magnus saturation curve ───────────────
@@ -212,7 +213,16 @@ private _betaRef = _co2Km + _aForeign * _eRefTorr + _bSelf * _eRefTorr * _eRefTo
 
 // ─── Effective square-root coefficient and the linear fog/rain extinction ─
 private _alphaEff = _alphaRef * (_betaClean / _betaRef);
-private _betaExtraKm = _fogKm * _fogDensity + _rainKm * _rainScalar;
+private _isMwir = (toLower _bandToken) == "mwir";
+private _lambdaM = [11e-6, 4e-6] select _isMwir;
+private _ce = [0.31, 0.64] select _isMwir;
+private _betaFogKm = 1000 * (3 * pi * _ce * _fogDensity) / (2 * _lambdaM * 1e6);
+private _betaRainKm = 0;
+if (_rainScalar > 0) then {
+    private _lam = 4.1 * (_rainScalar ^ -0.21);
+    _betaRainKm = 1000 * 1e-6 * pi * 8000 / (_lam ^ 3);
+};
+private _betaExtraKm = _betaFogKm + _betaRainKm;
 
 // ─── Band-resolved clear-air extinction (T5) ──────────────────────────────
 // LWIR keeps the Minkina and Klecha 2016 square-root term unchanged.

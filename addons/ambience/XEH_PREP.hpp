@@ -8,8 +8,6 @@ PREP(acousticOccluders);
 PREP(acousticPublish);
 PREP(acousticSample);
 PREP(acousticSourceDb);
-PREP(acousticSpectrum);
-PREP(atmosphericAbsorption);
 PREP(atmosphericAbsorptionTable);
 PREP(callEmit);
 PREP(callPitch);

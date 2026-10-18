@@ -140,12 +140,13 @@ if (GVAR(hydrologyEnabled)) then {
     call EFUNC(persistence,calculateFreezeThawCycling);
     END_COUNTER(freezeThaw);
 };
-BEGIN_COUNTER(soundPropagation);
-[] call EFUNC(weather,updateSoundPropagation);
-END_COUNTER(soundPropagation);
+// The ambient floor first: the propagation index reads it.
 BEGIN_COUNTER(ambientNoise);
 [_posASL] call EFUNC(weather,updateAmbientNoise);
 END_COUNTER(ambientNoise);
+BEGIN_COUNTER(soundPropagation);
+[_posASL] call EFUNC(weather,updateSoundPropagation);
+END_COUNTER(soundPropagation);
 BEGIN_COUNTER(fogChain);
 [] call EFUNC(atmos,updateFog);
 [] call EFUNC(weather,calculateFogBaseAltitude);
@@ -240,7 +241,6 @@ BEGIN_COUNTER(optics);
 [] call EFUNC(optics,applyEmpSensorDamage);
 if (GVAR(opticsEnabled)) then {
     [] call EFUNC(optics,calculateMirageIntensity);
-    [] call EFUNC(optics,calculateSmokePersistence);
     [] call EFUNC(optics,calculatePrecipitationVisibility);
     [] call EFUNC(optics,calculateSolarGlare);
     [] call EFUNC(optics,calculateGreenFlash);

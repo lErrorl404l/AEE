@@ -1,63 +1,25 @@
 #include "..\..\script_component.hpp"
 
 /*
-Atmospheric seeing / turbulence index (0.1–1.0) for extreme long-range optics.
+Atmospheric seeing index (0.1-1.0) for long-range optics.  Higher is worse
+(more shimmer).
 
-Higher values = worse seeing (more shimmer, distortion).
-Lower values = clearer air (better for observation >1000 m).
+The refractive-index structure constant Cn^2 along a sight line 2 m above
+the ground is the surface-layer value fnc_calculateTurbulence publishes
+(aee_core_opticalCn2: Wyngaard, Izumi & Collins 1971 C_T^2 from the
+Monin-Obukhov heat flux and stability, Cn^2 = (79e-6 P / T^2)^2 C_T^2).
+The index is a log scale over the range of near-ground optical turbulence,
+Cn^2 1e-17 (very weak) to 1e-12 m^-2/3 (very strong) (Andrews & Phillips,
+Laser Beam Propagation through Random Media, 2nd ed., s.3.3), mapped onto
+the 0.1-1.0 display index the shimmer effect consumes.
 
-Model chain: thermal convection + wind shear → refractive-index structure
-parameter Cn² → Fried parameter r0 → seeing index.
-
-  Cn² (boundary layer) = [C_T² · (79e-6 · P / T)²] + mechanical term
-  r0 = 0.185 · (λ² / Cn²)^(3/5)          (Fried, Kolmogorov turbulence)
-  seeing ∝ Cn²^(1/5)                     (r0 ∝ Cn²^(−3/5), θ ∝ λ/r0)
-
-  • Daytime sun heats the ground → C_T² rises → Cn² rises → poor seeing
-  • Night: thermal convection stops, only mechanical turbulence remains
-  • High wind shear (turbulence index) adds mechanical Cn²
-  • High humidity adds water-vapour refractive-index fluctuation
-
-Stored in QGVAR(atmosphericSeeing). Lower = better.
+Stored in QGVAR(atmosphericSeeing).  Lower = better.
 */
 
-// ─── Inputs ────────────────────────────────────────────────────────────────
-private _turbulence = missionNamespace getVariable [QEGVAR(core,currentTurbulence), 0];
-private _temp       = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _humidity   = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
-private _overcast   = ([] call EFUNC(core,getSmoothedWeather)) select 1;
-private _daytime    = sunOrMoon == 1;
-
-// ─── Thermal convection Cn² (daytime boundary-layer heating) ───────────────
-// Globe temperature: T + 15 in full sun, T in full shade, linear by overcast.
-// C_T² scales with the ground-air delta AND absolute temperature (hotter
-// air convects harder), so hot clear days degrade seeing far more than
-// mild ones. Night convection drops ~100x.
-private _Tg = _temp + 15 * (1 - _overcast);
-private _C_T2 = 1e-3 * ((_Tg - _temp) / 10) * ((_temp max 1) / 15);
-if (!_daytime) then { _C_T2 = _C_T2 * 0.01; };  // night: convection stops
-
-// Refractivity of air N ≈ 79e-6 · P/T; Cn² = C_T² · (79e-6 · P / T²)²
-private _T_K = _temp + KELVIN_OFFSET;
-private _Cn2 = _C_T2 * ((79e-6 * 1013) / (_T_K ^ 2)) ^ 2;
-_Cn2 = _Cn2 max 0;
-
-// ─── Mechanical turbulence (shear-driven, dominates in storms) ─────────────
-_Cn2 = _Cn2 + 1e-14 * (_turbulence max 0);
-
-// ─── Humidity (water vapour refractive-index fluctuation) ──────────────────
-if (_humidity > 50) then {
-    _Cn2 = _Cn2 * (1 + (_humidity - 50) * 0.002);
-};
-
-// ─── Map Cn² to seeing index (log scale over the Cn² decade range) ─────────
-// Cn² ~1e-17 (excellent night) → 0.1; Cn² ~1e-12 (storm/hot afternoon) → 1.0.
-// SQF log is BASE-10 (log 100 = 2), so log10(Cn²) is `log _Cn2` directly.
-// The earlier /2.302585 conversion was written assuming natural log and
-// inverted the scale — a cool rainy day (Cn² 2.5e-15) saturated seeing to
-// 1.0 (verified via sqfvm: correct value is 0.53).
-private _logCn2 = log (_Cn2 max 1e-17);
-private _seeing = (0.1 + 0.9 * ((_logCn2 + 17) / 5)) min 1;
+private _cn2 = missionNamespace getVariable [QEGVAR(core,opticalCn2), 1e-15];
+if !(_cn2 isEqualType 0) then { _cn2 = 1e-15; };
+private _logCn2 = log ((_cn2 max 1e-17) min 1e-12);
+private _seeing = 0.1 + 0.9 * ((_logCn2 + 17) / 5);
 _seeing = _seeing max 0.1 min 1.0;
 
 missionNamespace setVariable [QGVAR(atmosphericSeeing), _seeing];

@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/atmos/`
 - Direction: one way. `core` must initialise before `atmos` reads.
-- Variables crossing: 46.
+- Variables crossing: 48.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -21,13 +21,13 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentHazeVisibility` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateHaze.sqf:23` | Clear-air visibility from RH, km (NOAA UPP) |
 | `aee_core_currentHumidity` | SCALAR | percent | 0..100 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudCeiling.sqf:17` | Relative humidity percent |
 | `aee_core_currentLightningRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateLightning.sqf:15` | Lightning risk 0..1 |
-| `aee_core_currentPressure` | SCALAR | hPa | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateOrographicPrecipitation.sqf:55` | Barometric pressure in hPa |
+| `aee_core_currentPressure` | SCALAR | hPa | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudDevelopment.sqf:38` | Barometric pressure in hPa |
 | `aee_core_currentPressureTrend` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePressureTrend.sqf:68` | Pressure trend value |
-| `aee_core_currentSolarRadiation` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudDevelopment.sqf:40` | Solar radiation factor 0..1 |
+| `aee_core_currentSolarRadiation` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/volcanic/fnc_updateVolcanic.sqf:71` | Solar radiation factor 0..1 |
 | `aee_core_currentSunAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateRainbow.sqf:23` | UNKNOWN |
 | `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateHalo.sqf:73` | UNKNOWN |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateAirframeIcing.sqf:23` | Air temperature in C |
-| `aee_core_currentTurbulence` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateTurbulence.sqf:15` | Turbulence 0..1 |
+| `aee_core_currentTurbulence` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateTurbulence.sqf:20` | EDR over the ICAO severe threshold (0.45), 0..1 |
 | `aee_core_currentVapourPressure` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateFog.sqf:34` | UNKNOWN |
 | `aee_core_currentWeatherForecast` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePressureTrend.sqf:69` | UNKNOWN |
 | `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateOrographicPrecipitation.sqf:65` | Wind vector |
@@ -37,6 +37,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_hailActive` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:92` | Hail gate: convective instability + wet-bulb below freezing aloft (#151) |
 | `aee_core_hailEnergy` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:103` | Hailstone [diameter_m, mass_kg, v_t_ms, energy_j] from the convective proxy (#151) |
 | `aee_core_moduleWindMultiplier` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:36` | EDEN wind multiplier |
+| `aee_core_opticalCn2` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateTurbulence.sqf:79` | Refractive-index structure constant 2 m above ground, m^-2/3 (Wyngaard et al. 1971) |
 | `aee_core_orographicFactor` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:91` | Precipitation enhancement over terrain: 1.0 base, above over an upslope and below over a downslope. The published upslope form (Smith 1979) |
 | `aee_core_precipOrographicEnabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:82` | UNKNOWN |
 | `aee_core_precipitationPhase` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:89` | Phase (rain/sleet/snow/freezing_rain) |
@@ -45,6 +46,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_referenceAltitude` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updatePressure.sqf:25` | UNKNOWN |
 | `aee_core_simulCloudDensity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateAirframeIcing.sqf:41` | Engine in-cloud density 0..1 at the observer, from the read-only `simulCloudDensity`; -1 when simul weather is disabled. Published API for the icing and turbulence models |
 | `aee_core_simulInClouds` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateAirframeIcing.sqf:61` | Engine in-cloud probe at the observer, from the read-only `simulInClouds`. Published API for the icing and turbulence models |
+| `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateTurbulence.sqf:34` | Snow depth in metres |
 | `aee_core_snowfallRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePrecipitationPhase.sqf:90` | Snowfall rate |
 | `aee_core_stormOverrideIntensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateLightning.sqf:27` | UNKNOWN |
 | `aee_core_stormOverrideType` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateLightning.sqf:23` | UNKNOWN |

@@ -5,7 +5,7 @@ Density altitude, ground effect and landing performance, grounded in the ISA
 standard atmosphere, the SAE J1349 piston density correction and the FAA
 empirical ground-effect curve.
 
-  fnc_calculateDensityAltitude        - DA from pressure altitude and OAT
+  fnc_calculateDensityAltitude        - exact ISA density altitude
   fnc_calculatePowerRatio             - engine power/thrust ratio from sigma
   fnc_calculateGroundEffect           - induced-drag reduction from h/b
   fnc_calculateFixedWingPerformance   - the derived performance row
@@ -74,23 +74,42 @@ def _perf(sigma, ias, stall, propulsion, height_m, wingspan_m, headwind):
     )
 
 
+def _isa_density_altitude(pa, oat):
+    """Independent ISA solution: find the ISA height whose density matches."""
+    t0, lapse, r, g = 288.15, 0.0065, 287.053, 9.80665
+    p = 101325 * (1 - lapse * pa / t0) ** (g / (r * lapse))
+    rho = p / (r * (oat + 273.15))
+
+    def isa_rho(h):
+        t = t0 - lapse * h
+        return 101325 * (t / t0) ** (g / (r * lapse)) / (r * t)
+
+    lo, hi = -3000.0, 11000.0
+    for _ in range(80):
+        mid = (lo + hi) / 2
+        if isa_rho(mid) > rho:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2
+
+
 class TestDensityAltitude(unittest.TestCase):
-    """fnc_calculateDensityAltitude is the FAA density-altitude correction."""
+    """fnc_calculateDensityAltitude: the exact ICAO standard-atmosphere
+    density altitude."""
 
     def test_standard_day_at_sea_level_is_zero(self):
-        self.assertAlmostEqual(_da(0, 15), 0.0, places=6)
+        self.assertAlmostEqual(_da(0, 15), 0.0, places=4)
 
-    def test_hot_day_adds_density_altitude(self):
-        # 30 C at sea level: 15 C above ISA, 36.576 m per degree.
-        self.assertAlmostEqual(_da(0, 30), 36.576 * 15, places=6)
+    def test_matches_an_independent_isa_inversion(self):
+        for pa, oat in ((0, 30), (0, 0), (2400, 30), (1500, 35), (3000, -20)):
+            self.assertAlmostEqual(_da(pa, oat), _isa_density_altitude(pa, oat), delta=0.5)
 
-    def test_cold_day_subtracts(self):
-        self.assertAlmostEqual(_da(0, 0), 36.576 * -15, places=6)
-
-    def test_pressure_altitude_correction(self):
-        # 2400 m PA, 30 C.  ISA temp = 15 - 0.0065*2400 = -0.6 C.
-        expected = 2400 + 36.576 * (30 - (15 - 0.0065 * 2400))
-        self.assertAlmostEqual(_da(2400, 30), expected, places=4)
+    def test_close_to_the_faa_rule_of_thumb(self):
+        # The FAA 120 ft/C rule linearises the exact form: within about 10 %.
+        exact = _da(2400, 30) - 2400
+        rule = 36.576 * (30 - (15 - 0.0065 * 2400))
+        self.assertAlmostEqual(exact / rule, 1.0, delta=0.12)
 
     def test_monotonic_in_temperature(self):
         self.assertLess(_da(1000, 0), _da(1000, 20))

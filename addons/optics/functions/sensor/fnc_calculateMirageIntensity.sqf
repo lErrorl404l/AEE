@@ -1,82 +1,31 @@
 #include "..\..\script_component.hpp"
-
 /*
-Heat haze / mirage intensity (0.0–1.0).
+Heat haze / inferior mirage intensity (0.0-1.0).
 
-Requires sufficient surface heating to create a thermal gradient
-strong enough for visible refractive distortion.  Surface temperature
-is estimated from air temperature plus solar loading on
-sun-exposed arid/reflective surfaces (desert, asphalt, rock).
+A near-horizontal light ray curves with the vertical refractivity gradient;
+with N = 77.6 P / T (ITU-R P.453), dN/dz = -(77.6 P / T^2)(dT/dz + 0.0342)
+per metre, so the ray curves UPWARD - the inferior mirage, the "wet road" -
+once the air cools with height faster than the autoconvective lapse,
+-dT/dz > 0.0342 K/m (Lehn 1985, J Opt Soc Am A 2:1385; Young, "An
+introduction to mirages", SDSU).  The near-ground gradient is the ground
+surface temperature the thermal ground solve publishes
+(aee_core_surfaceTemperature) against the screen air temperature, over the
+1.5 m eye height.  The intensity is the excess gradient over 10 K/m, the
+order of a sun-baked road (surface ~15 K above the air at 1 m), as a 0-1
+DISPLAY index for the shimmer effect.
 
-Conditions:
-  • Estimated surface temp >35 °C
-  • Arid biome (BWh, BWk, BSh, BSk) OR ground state is Dusty
-  • Solar elevation >15° (true daytime)
-
-Overcast proportionally reduces the effect since cloud cover
-reduces direct insolation.
-
-Stored in QGVAR(mirageIntensity) for consumption by visual-effect
-and thermal-imaging systems.
+Stored in QGVAR(mirageIntensity) for the visual-effect systems.
 */
-
 params [["_unit", objNull, [objNull]]];
-if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
+if (isNull _unit) exitWith { 0 };
 
-// ─── Inputs ────────────────────────────────────────────────────────────
-private _temp        = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _overcast    = ([] call EFUNC(core,getSmoothedWeather)) select 1;
-private _biome       = missionNamespace getVariable [QEGVAR(core,biome), ""];
-private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
-// The astronomical sun (date, latitude, longitude; fnc_calculateSolarRadiation).
-private _sunElev = (missionNamespace getVariable [QEGVAR(core,currentSunElevation), 0]) max 0;
+private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_tAir isEqualType 0) then { _tAir = 15; };
+private _tSurf = missionNamespace getVariable [QEGVAR(core,surfaceTemperature), _tAir];
+if !(_tSurf isEqualType 0) then { _tSurf = _tAir; };
 
-if (isNil "_temp") exitWith {
-    missionNamespace setVariable [QGVAR(mirageIntensity), 0];
-    0
-};
+private _lapse = (_tSurf - _tAir) / 1.5;
+private _intensity = ((_lapse - 0.0342) / (10 - 0.0342)) max 0 min 1;
 
-// ─── Surface temperature estimate ──────────────────────────────────────
-// Solar loading: +10 °C on bare/reflective surfaces in clear daytime
-// surfaceType returns the class name with no '#' prefix (GdtDesert);
-// normalise to the bare token before the membership test.
-private _surfaceType = toLower (surfaceType (getPos _unit));
-if (_surfaceType find "#gdt" == 0) then { _surfaceType = _surfaceType select [4]; }
-else { if (_surfaceType find "gdt" == 0) then { _surfaceType = _surfaceType select [3]; }; };
-private _isAridSurf  = _surfaceType in [
-    "bare", "concrete", "desert", "rocky",
-    "sundesert", "stony", "asphalt"
-];
-
-private _solarLoading = 0;
-if (sunOrMoon > 0 && _isAridSurf && _overcast < 0.3) then {
-    _solarLoading = 10;
-};
-
-private _surfaceTemp = _temp + _solarLoading;
-
-// ─── Eligibility ──────────────────────────────────────────────────────
-private _onsetTemp   = missionNamespace getVariable [QGVAR(mirageOnsetTemp), 35];
-private _minSunElev  = missionNamespace getVariable [QGVAR(mirageMinSunElev), 15];
-private _aridBiome   = _biome in ["BWh", "BWk", "BSh", "BSk"];
-private _dustyGround = _groundState == "Dusty";
-private _hotEnough   = _surfaceTemp > _onsetTemp;
-
-if (!_hotEnough || (!(_aridBiome || _dustyGround)) || (_sunElev <= _minSunElev)) exitWith {
-    missionNamespace setVariable [QGVAR(mirageIntensity), 0];
-    0
-};
-
-// ─── Intensity ─────────────────────────────────────────────────────────
-private _intensity = ((_surfaceTemp - _onsetTemp) / 30) min 1.0;
-
-// Overcast reduction — cloud cover reduces direct insolation
-_intensity = _intensity * (1 - _overcast);
-
-// Floor at zero, cap at 1
-_intensity = _intensity max 0 min 1;
-
-// ─── Store ─────────────────────────────────────────────────────────────
 missionNamespace setVariable [QGVAR(mirageIntensity), _intensity];
-
 _intensity

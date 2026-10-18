@@ -24,11 +24,14 @@ Bhattacharyya, Dynamics of Marine Vehicles.
        Source: PNA Vol III Ch.3; IMO IS Code 2008 2.3.4.
   4. Natural pitch         omega_n = sqrt(g * GM_L / k_yy^2)
        GM_L = I_L / V, the longitudinal metacentric height from the box
-       waterplane; k_yy = 0.25 * L (UNSOURCED).
+       waterplane; k_yy = 0.25 * L, the pitch radius of gyration the ITTC
+       seakeeping procedure takes for a ship model (ITTC 7.5-02-07-02.1).
        Source: PNA Vol III Ch.3.
   5. Natural heave         omega_n = sqrt(rho * g * A_wp / (m + a33))
-       A_wp = L * B box waterplane; a33 ~= m, the heave added mass
-       (UNSOURCED).
+       A_wp = L * B box waterplane; a33 = rho * pi * B^2 * L / 8, strip
+       theory with semicircular sections of radius B/2, whose 2-D heave
+       added mass is rho * pi * R^2 / 2 (Newman, Marine Hydrodynamics,
+       1977, s.4.13).
        Source: Faltinsen, Sea Loads on Ships and Offshore Structures.
   6. RAO                   |H| = 1 / sqrt((1 - r^2)^2 + (2*zeta*r)^2)
        r = omega_e / omega_n.
@@ -41,10 +44,7 @@ Bhattacharyya, Dynamics of Marine Vehicles.
      Ch.16.4).
        Source: PNA Vol III Ch.3.
 
-UNSOURCED values (no primary source found; also recorded in the ADR):
-  k_yy = 0.25 * L    pitch radius of gyration ratio
-  a33 ~= m           heave added-mass ratio
-  zeta               damping ratio, supplied by the caller (0.10 typical)
+The damping ratio zeta is the caller's (aee_maritime_shipDamping).
 
 Arguments:
   0: waveHeightM (NUMBER) significant wave height Hs, m
@@ -92,7 +92,8 @@ private _kyy = 0.25 * _lengthM;
 private _gmLong = ((_beamM * (_lengthM ^ 3)) / 12) / (_massKg / _rho);
 private _omegaNpitch = sqrt ((_g * _gmLong) / (_kyy ^ 2));
 
-private _omegaNheave = sqrt ((_rho * _g * _lengthM * _beamM) / (_massKg * 2));
+private _a33 = _rho * pi * (_beamM ^ 2) * _lengthM / 8;
+private _omegaNheave = sqrt ((_rho * _g * _lengthM * _beamM) / (_massKg + _a33));
 
 // ─── Response amplitude operators ─────────────────────────────────────────
 private _rRoll = _omegaE / _omegaNroll;

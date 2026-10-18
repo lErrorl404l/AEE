@@ -6,8 +6,8 @@ AI hearing range kernel.
 Applies AEE's single sound-propagation model to a baseline hearing range.  The
 propagation index is aee_weather_currentSoundPropagation (0.3 to 2.0, 1.0 =
 baseline), computed once per environment tick by
-addons/weather/functions/terrain/fnc_updateSoundPropagation.sqf from the
-temperature inversion, the wind, the rain, the foliage and the snow.  This
+addons/weather/functions/terrain/fnc_updateSoundPropagation.sqf from ISO 9613
+(air absorption, ground, foliage) and the ambient noise floor.  This
 kernel adds no second propagation model: it scales the range by that index
 alone, so an index above 1 carries the shot further and below 1 shorter.
 

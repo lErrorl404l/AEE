@@ -22,6 +22,8 @@ PREPS(physics,calculateAirframeIcing);
 PREPS(physics,calculateOrographicPrecipitation);
 PREPS(physics,calculateTerrainWind);
 PREPS(physics,calculateCloudDevelopment);
+PREPS(physics,calculateParcelCape);
+PREPS(physics,turbulenceDissipation);
 PREPS(physics,calculateLightning);
 PREPS(physics,calculateMicroburst);
 PREPS(physics,calculateTurbulence);

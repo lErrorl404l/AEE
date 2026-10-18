@@ -13,11 +13,12 @@ sea-level, AERO_ISA_SEA_LEVEL_DENSITY (AERO_ISA_SEA_LEVEL_DENSITY kg/m3, ISO 253
 removes lift; dense air is not credited here, because the engine's own model
 already gains from it.  The term is bounded to AERO_DENSITY_LIFT_LOSS_MAX.
 
-ICING.  FAR 25 Appendix C describes where and how fast ice accretes, not how
-much lift it destroys.  AERO_ICE_LIFT_LOSS_MAX and AERO_ICE_DRAG_RISE_MAX
-are therefore UNSOURCED modelling choices.  They are bounded, and the
-combined lift loss is capped at AERO_LIFT_LOSS_CAP, so the airframe cannot
-be stalled by the scripted layer.
+ICING.  FAR 25 Appendix C describes where and how fast ice accretes; the
+aerodynamic effect at full severity is the FAA's test figure: ice as rough as
+medium or coarse sandpaper on the leading edge and upper surface reduces lift
+by as much as 30 % and increases drag by 40 % (AC 135-17).  The combined lift
+loss is capped at AERO_LIFT_LOSS_CAP, an engine-safety bound, so the scripted
+layer cannot stall the airframe on its own.
 
 Arguments:
   0: NUMBER - lift ratio rho / AERO_ISA_SEA_LEVEL_DENSITY, or 1.0 for sea-level standard day

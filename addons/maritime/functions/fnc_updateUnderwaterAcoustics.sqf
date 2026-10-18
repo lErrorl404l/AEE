@@ -15,8 +15,8 @@ unit's position, once per second:
   - the seawater absorption at the reference frequency
     (fnc_calculateAbsorptionWater, Francois-Garrison 1982);
   - the ambient noise spectrum level at the reference frequency, keyed to
-    the physical wind speed at 10 m (fnc_calculateAmbientNoise, Wenz 1962
-    "rule of fives" plus the Mellen thermal limit).
+    the physical wind speed at 10 m and moderate distant shipping
+    (fnc_calculateAmbientNoise, the Coates 1990 four-component model).
 
 The published variables are read by the sonar query
 (fnc_getSonarDetectionRange) and by scenarios.  This driver does not decide
@@ -90,7 +90,8 @@ private _shadow = [_profile, _depth] call FUNC(calculateShadowZone);
 
 // ─── Absorption and ambient noise at the reference frequency ──────────────
 private _absorption = [_freqHz, _sst, _salinity, 0, 8.0] call FUNC(calculateAbsorptionWater);
-private _noise = [_freqHz, _windSpeed, false] call FUNC(calculateAmbientNoise);
+// Distant shipping at the moderate activity s = 0.5 of the Coates scale.
+private _noise = [_freqHz, _windSpeed, 0.5] call FUNC(calculateAmbientNoise);
 
 // ─── Publish ──────────────────────────────────────────────────────────────
 missionNamespace setVariable [QGVAR(soundSpeedSurface), _cSurface];

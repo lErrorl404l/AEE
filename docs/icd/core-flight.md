@@ -12,7 +12,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentAirDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/flight/functions/fnc_applyAirframeLoad.sqf:64` | Air density in kg/m3 |
 | `aee_core_currentGusts` | SCALAR | m/s | UNKNOWN | UNKNOWN | `addons/flight/functions/fnc_applyFlightTurbulence.sqf:60` | Gust speed in m/s |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/flight/functions/fnc_updateFixedWingPerformance.sqf:26` | Air temperature in C |
-| `aee_core_currentTurbulence` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/flight/functions/fnc_applyFlightTurbulence.sqf:59` | Turbulence 0..1 |
+| `aee_core_currentTurbulence` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/flight/functions/fnc_applyFlightTurbulence.sqf:59` | EDR over the ICAO severe threshold (0.45), 0..1 |
 | `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/flight/functions/fnc_applyFlightTurbulence.sqf:67` | Wind vector |
 | `aee_core_currentWindDir` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/flight/functions/fnc_applyFlightTurbulence.sqf:65` | Wind direction in degrees |
 | `aee_core_enabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/flight/functions/fnc_applyAirframeLoad.sqf:41` | Master switch |

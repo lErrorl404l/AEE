@@ -4,8 +4,7 @@
 Executes the real SQF kernels in addons/ambience through
 tools/tests/sqf_lite.py, so a test failure is a source failure, not a mirror
 drift.  The absorption kernel is validated against the ISO 9613-1:1993
-equations (a Python reference) and against the issue #80 reference values
-2.60 / 12.59 dB/km at 15 C, 50 % RH, 101.325 kPa.
+equations (a Python reference) and against ISO 9613-2:1996 Table 2.
 
 Run: python3 -m unittest tools.tests.test_acoustic_propagation -v
 """
@@ -22,9 +21,8 @@ from sqf_lite import run_sqf  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 AMBIENCE = ROOT / "addons" / "ambience" / "functions"
 
-ABSORPTION = AMBIENCE / "fnc_atmosphericAbsorption.sqf"
+ABSORPTION = AMBIENCE.parents[1] / "lib/functions/acoustics/fnc_atmosphericAbsorption.sqf"
 ABSORPTION_TABLE = AMBIENCE / "fnc_atmosphericAbsorptionTable.sqf"
-SPECTRUM = AMBIENCE / "fnc_acousticSpectrum.sqf"
 ARRIVING = AMBIENCE / "fnc_getArrivingSound.sqf"
 ARRIVAL_TIME = AMBIENCE / "fnc_getArrivalTime.sqf"
 SOURCE_DB = AMBIENCE / "fnc_acousticSourceDb.sqf"
@@ -32,11 +30,12 @@ REGISTER = ROOT / "docs" / "wiki" / "research" / "wildlife-ecology-constants.md"
 
 BANDS = [31.5, 63, 125, 250, 500, 1000, 2000, 4000, 8000]
 
-KERNELS = (ABSORPTION, ABSORPTION_TABLE, SPECTRUM, ARRIVING, ARRIVAL_TIME)
+KERNELS = (ABSORPTION, ABSORPTION_TABLE, ARRIVING, ARRIVAL_TIME)
 
 
 def source_db(kind):
-    return run_sqf(SOURCE_DB, [kind])
+    blast = AMBIENCE.parents[1] / "lib/functions/acoustics/fnc_blastPeakDb.sqf"
+    return run_sqf(SOURCE_DB, [kind], {"__EFUNC__lib_blastPeakDb": lambda *a: run_sqf(blast, list(a))})
 
 
 GLOBALS = {"__FUNC__acousticSourceDb": source_db}
@@ -50,12 +49,14 @@ def absorption_table(t_c, rh, p_hpa=1013.25):
     return run_sqf(
         ABSORPTION_TABLE,
         [t_c, rh, p_hpa],
-        globals_={"__FUNC__atmosphericAbsorption": absorption},
+        globals_={"__EFUNC__lib_atmosphericAbsorption": absorption},
     )
 
 
 def spectrum(kind):
-    return run_sqf(SPECTRUM, [kind], globals_=GLOBALS)
+    """A flat test spectrum at the kind's source level (the per-band shape
+    kernel was removed: no published shape was held)."""
+    return [[f, source_db(kind)] for f in BANDS]
 
 
 def arriving(source_spectrum, distance, index=1.0, table=None, occlusion=0.0):
@@ -79,9 +80,9 @@ def iso9613_db_per_m(f_hz, t_c, rh, p_hpa=1013.25):
     p = p_hpa * 100.0
     p0 = 101325.0
     psat = 6.1121 * math.exp((18.678 - t_c / 234.5) * (t_c / (257.14 + t_c))) * 100.0
-    h = (rh / 100.0) * psat / p
+    h = rh * psat / p  # molar concentration in PERCENT (ISO 9613-1 eq. B.1)
     fr_o = (p / p0) * (24.0 + 4.04e4 * h * (0.02 + h) / (0.391 + h))
-    fr_n = (t_k / t0) ** -0.5 * (
+    fr_n = (p / p0) * (t_k / t0) ** -0.5 * (
         9.0 + 280.0 * h * math.exp(-4.170 * ((t_k / t0) ** (-1.0 / 3.0) - 1.0))
     )
     alpha = (
@@ -102,11 +103,13 @@ def iso9613_db_per_m(f_hz, t_c, rh, p_hpa=1013.25):
 class TestAtmosphericAbsorption(unittest.TestCase):
     """fnc_atmosphericAbsorption runs from the real SQF."""
 
-    def test_issue80_reference_values(self):
-        one_k = absorption(1000, 15, 50) * 1000.0
-        eight_k = absorption(8000, 15, 50) * 1000.0
-        self.assertAlmostEqual(one_k, 2.60, delta=0.05)
-        self.assertAlmostEqual(eight_k, 12.59, delta=0.05)
+    def test_iso_9613_2_table_2(self):
+        # ISO 9613-2:1996 Table 2, 10 C, 70 % RH, dB/km, to its printed digits.
+        table = {63: 0.1, 125: 0.4, 250: 1.0, 500: 1.9, 1000: 3.7,
+                 2000: 9.7, 4000: 32.8, 8000: 117}
+        for f, ref in table.items():
+            got = absorption(f, 10, 70) * 1000.0
+            self.assertAlmostEqual(got, ref, delta=max(0.06, 0.02 * ref), msg=f)
 
     def test_matches_the_iso_standard_over_a_grid(self):
         for f_hz in BANDS:
@@ -125,10 +128,13 @@ class TestAtmosphericAbsorption(unittest.TestCase):
     def test_zero_frequency_absorbs_nothing(self):
         self.assertEqual(absorption(0, 15, 50), 0.0)
 
-    def test_humidity_raises_the_high_band_absorption(self):
+    def test_dry_air_absorbs_the_high_band_most(self):
+        # ISO 9613-1: at 4 kHz the absorption peaks at low humidity (the
+        # oxygen relaxation frequency sweeps through the band) and falls as
+        # the air gets more humid.
         dry = absorption(4000, 15, 10)
         wet = absorption(4000, 15, 90)
-        self.assertGreater(wet, dry)
+        self.assertGreater(dry, wet)
 
 
 class TestAtmosphericAbsorptionTable(unittest.TestCase):
@@ -142,33 +148,6 @@ class TestAtmosphericAbsorptionTable(unittest.TestCase):
         for row in absorption_table(15, 50):
             with self.subTest(f=row[0]):
                 self.assertAlmostEqual(row[1], absorption(row[0], 15, 50), places=12)
-
-
-class TestAcousticSpectrum(unittest.TestCase):
-    """fnc_acousticSpectrum runs from the real SQF."""
-
-    def test_nine_bands(self):
-        self.assertEqual([row[0] for row in spectrum("gunshot")], BANDS)
-
-    def test_peak_band_carries_the_source_level(self):
-        for kind in ("gunshot", "suppressed", "explosion", "vehicle", "footstep"):
-            with self.subTest(kind=kind):
-                levels = [row[1] for row in spectrum(kind)]
-                self.assertAlmostEqual(max(levels), source_db(kind))
-
-    def test_suppressed_cuts_the_high_bands(self):
-        gun = dict(spectrum("gunshot"))
-        sup = dict(spectrum("suppressed"))
-        self.assertLess(sup[8000], gun[8000] - 20.0)
-        self.assertLess(sup[2000], gun[2000] - 20.0)
-
-    def test_explosion_is_low_band_dominant(self):
-        exp = dict(spectrum("explosion"))
-        self.assertGreater(exp[31.5], exp[1000])
-        self.assertGreater(exp[63], exp[500])
-
-    def test_unknown_kind_is_silent(self):
-        self.assertEqual([row[1] for row in spectrum("nonsense")], [0.0] * 9)
 
 
 class TestAcousticSourceDb(unittest.TestCase):

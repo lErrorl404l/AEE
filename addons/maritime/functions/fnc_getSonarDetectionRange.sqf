@@ -7,7 +7,7 @@ published environmental acoustics (fnc_updateUnderwaterAcoustics) and the
 caller's sonar parameters.
 
 The noise level comes from the published ambient noise, keyed to the local
-wind speed (Wenz 1962 "rule of fives"; fnc_calculateAmbientNoise).  The
+wind speed (Coates 1990 four-component model; fnc_calculateAmbientNoise).  The
 absorption comes from the published seawater absorption at the reference
 frequency (Francois-Garrison 1982).  The range then follows from the sonar
 equation (Urick):
