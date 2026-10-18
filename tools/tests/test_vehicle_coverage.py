@@ -357,12 +357,15 @@ class RealCorpusCoverageTest(unittest.TestCase):
 
     def test_the_researched_lead_candidates_are_now_recorded(self) -> None:
         # The researched lead candidates (MRAP, Tracked_APC, Wheeled_APC) now
-        # hold an emitted row and a class-map binding, so the committed table
-        # records them and carries no bare lead. The lead render path stays
-        # covered by CoverageBuildTest.
-        rows = {row.get("class"): row for row in _entries(self.coverage)}
+        # hold an emitted row and a class-map binding, so the corpus records
+        # them and carries no bare lead. The lead render path stays covered
+        # by CoverageBuildTest. The three are AEE class TOKENS, not
+        # CfgVehicles classes, so the coverage table (one row per inventory
+        # class) has no row for them and the class map carries the binding.
         for token in g.LEAD_CANDIDATES:
-            self.assertEqual("recorded", rows[token]["state"], token)
+            self.assertIn(token, self.recorded, token)
+            self.assertTrue(self.recorded[token], token)
+        rows = {row.get("class"): row for row in _entries(self.coverage)}
         leads = [token for token, row in rows.items() if row["state"] == "lead"]
         self.assertEqual([], leads)
 
@@ -375,12 +378,15 @@ class RealCorpusCoverageTest(unittest.TestCase):
             self.assertIn(row["state"], ("recorded", "lead", g.GROUND_ABSENT_STATE))
 
     def test_the_ground_set_matches_the_inventory(self) -> None:
+        # Eleven engine ground classes: the MRAP_*, Wheeled_APC_F and
+        # APC_Tracked_* families the shipped PBOs declare, plus Car, Truck,
+        # Truck_F and Tank. The AEE tokens are not classes and take no row.
         ground = [
             entry.get("class")
             for entry in _entries(self.classes)
             if entry.get("is_ground") is True
         ]
-        self.assertEqual(7, len(ground), ground)
+        self.assertEqual(11, len(ground), ground)
 
     def test_every_token_is_covered(self) -> None:
         self.assertEqual(len(_entries(self.classes)), len(_entries(self.coverage)))
@@ -409,9 +415,14 @@ class GeneratedArtefactTest(unittest.TestCase):
             self.assertIn(f"`{row.get('class')}`", self.audit)
 
     def test_the_audit_counts_the_recorded_rows(self) -> None:
-        # Six class-map bindings each have an emitted runtime row.
-        self.assertIn("recorded: 6", self.audit)
-        self.assertIn("Runtime rows: 6", self.audit)
+        # Three class-map bindings name an engine class the inventory holds
+        # (Car, Truck, Tank), so three coverage rows read recorded. The
+        # other three (MRAP, Tracked_APC, Wheeled_APC) name an AEE token,
+        # not a CfgVehicles class: the token has no inventory row, so it has
+        # no coverage row. The bindings stay recorded and are counted by
+        # test_the_recorded_tokens_are_the_mapped_entries.
+        self.assertIn("recorded: 3", self.audit)
+        self.assertIn("Runtime rows: 3", self.audit)
 
     def test_source_gaps_lists_every_catalogue_entry(self) -> None:
         for entry in self.load.entries:

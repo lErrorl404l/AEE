@@ -24,8 +24,23 @@ ADDONS = REPO / "addons"
 COMMITTED = REPO / "data" / "vehicle" / "classes.json"
 GENERATOR = REPO / "tools" / "validation" / "gen_vehicle_class_inventory.py"
 
-# The ground tokens the mobility and armour code branches on.
-GROUND_TOKENS = ("Tank", "Tracked_APC", "Wheeled_APC", "Car", "Truck", "MRAP")
+# The ground engine classes the mobility and armour code branches on. The
+# AEE tokens "MRAP", "Wheeled_APC" and "Tracked_APC" are not classes and
+# carry no isKindOf reference, so they are not inventory rows. The engine
+# classes they map to are.
+GROUND_TOKENS = (
+    "Tank",
+    "Car",
+    "Truck",
+    "Truck_F",
+    "Wheeled_APC_F",
+    "MRAP_01_base_F",
+    "MRAP_02_base_F",
+    "MRAP_03_base_F",
+    "APC_Tracked_01_base_F",
+    "APC_Tracked_02_base_F",
+    "APC_Tracked_03_base_F",
+)
 # The two explicit non-ground exclusions the plan names.
 AIR_TOKENS = ("Air", "Helicopter")
 
@@ -95,8 +110,13 @@ class TestClassInventory(unittest.TestCase):
         # A token that occurs only in an addon table is a mod token.
         self.assertEqual(self.tokens["Car"]["kind"], "engine_base")
         self.assertEqual(self.tokens["Tank"]["kind"], "engine_base")
-        self.assertEqual(self.tokens["MRAP"]["kind"], "mod_token")
-        self.assertEqual(self.tokens["Wheeled_APC"]["kind"], "mod_token")
+        # "MRAP" and "Wheeled_APC" are AEE class tokens, not CfgVehicles
+        # classes, so they are not inventory rows. The engine classes they
+        # map to are rows, and a class named only in a class table is a mod
+        # token by the reference-style rule.
+        for engine_class in ("MRAP_01_base_F", "Wheeled_APC_F"):
+            self.assertIn(engine_class, self.tokens, engine_class)
+            self.assertEqual(self.tokens[engine_class]["kind"], "mod_token")
 
     def test_non_ground_tokens_have_a_reason(self):
         for token, entry in self.tokens.items():
