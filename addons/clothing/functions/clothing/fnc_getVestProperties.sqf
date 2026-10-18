@@ -28,10 +28,15 @@ Arguments:
 Returns [weight, armor, nirReflectance, clo].
 */
 params [["_unit", player, [objNull]]];
-if (isNull _unit) exitWith { [2.5, 2, 0.38, 0.10] };
+// An unworn slot carries no weight and no armour. The old NIJ-2 row
+// credited every bare unit 2.5 kg of vest and 10 mm of protection
+// (issue #315). The NIR and clo columns stay at the slot's ambient
+// value: the slot contributes no garment, but the surface factors in
+// fnc_getEquipmentProperties are a fixed split.
+if (isNull _unit) exitWith { [0, 0, 0.38, 0.10] };
 
 private _vestItem = vest _unit;
-if (_vestItem == "") exitWith { [2.5, 2, 0.38, 0.10] };
+if (_vestItem == "") exitWith { [0, 0, 0.38, 0.10] };
 
 private _vestDef = [2.5, 2, 0.38, 0.10];
 private _v = toLower _vestItem;

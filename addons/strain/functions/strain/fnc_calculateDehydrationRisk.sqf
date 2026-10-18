@@ -5,6 +5,13 @@ Dehydration risk index (0–1) for ACE3 medical integration.
   0.0 = well hydrated
   1.0 = critical dehydration
 
+The band curve is anchored on the body-water bands the survival-pressure
+header states (TB MED 507; StatPearls): 2 % of body mass = 0.3, 4 % = 0.6,
+6 % = 1.0.  The deficit accumulates in litres for the 70 kg reference man
+of the Gagge two-node model, so 1 % = 0.7 L and the anchors fall at 1.4 L,
+2.8 L and 4.2 L.  A 6 % deficit therefore reaches 1.0 (issue #307), the
+value the ACE3 medical integration gates on above 0.8.
+
 Driven by two branches:
   HEAT  (WBGT >= 18): ISO 7243 WBGT-band sweat rate with per-player water
         deficit accumulation.  Clothing (uniform/vest) adds metabolic load.
@@ -103,12 +110,14 @@ _deficit = _deficit + _sweatAmount + _coldLoss - _naturalDecay;
 _deficit = _deficit max 0;
 
 // ─── Risk calculation (0–1) ──────────────────────────────────────────────
+// Each band divides by its own span, so no rate is retyped: 0.5-1.4 L rises
+// 0.0-0.3, 1.4-2.8 L rises 0.3-0.6, 2.8-4.2 L rises 0.6-1.0.
 private _risk = switch (true) do {
-    case (_deficit < 0.5): { 0 };
-    case (_deficit < 1.0): { (_deficit - 0.5) * 0.5 };                    // mild
-    case (_deficit < 2.0): { 0.25 + (_deficit - 1.0) * 0.25 };            // moderate
-    case (_deficit < 3.0): { 0.5  + (_deficit - 2.0) * 0.25 };            // severe
-    default                { 0.75 };                                        // critical
+    case (_deficit < 0.5): { 0 };                                          // well hydrated
+    case (_deficit < 1.4): { (_deficit - 0.5) * (0.3 / 0.9) };             // up to 2 %
+    case (_deficit < 2.8): { 0.3 + (_deficit - 1.4) * (0.3 / 1.4) };       // up to 4 %
+    case (_deficit < 4.2): { 0.6 + (_deficit - 2.8) * (0.4 / 1.4) };       // up to 6 %
+    default                { 1.0 };                                        // critical
 };
 
 // ─── Heat stroke overlay — dangerous combination of heat + fluid loss ───

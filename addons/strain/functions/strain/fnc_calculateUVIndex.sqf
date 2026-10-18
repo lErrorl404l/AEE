@@ -16,6 +16,11 @@ Guide, p. 5).  Cloud: the overcast cloud modification factor is 0.2-0.5
 for 8 oktas in the measured studies Calbo et al. (2005, Rev. Geophys. 43,
 RG2002) review; the midpoint 0.35 is used, linear in cover.
 
+Sun position is published by the lighting tick (fnc_calculateSolarRadiation),
+which runs the Meeus solar position for date, latitude and longitude.  Until
+that first tick the core value is unset; the fallback is -90 degrees (the
+anti-solar point), so the index reads 0 rather than a latitude-free guess.
+
 Stored in GVAR(uvIndex) and EGVAR(core,currentUVIndex).
 */
 

@@ -9,7 +9,9 @@ sample [foliageFrac, surfaceVotes, waterFrac, structureFrac, meanElev].  A
 per-cell sample is cached under the cell key floor(pos / cellSize), the same
 shape as the disturbance field, so a second call in the cache window makes no
 object query.  surfaceVotes is an array of [materialClass, count] rows from
-fnc_classifyBySurfaceType.
+fnc_classifyBySurfaceType.  A cached per-cell sample is the same canonical
+shape with its single vote row [[material, 1]], so the tick and the spawn path
+read one shape and the surface votes are never reduced to a bare material.
 
 The grid, the object cap and the millisecond budget are performance policy
 (no physical quantity).  The sampler never exceeds the per-cell object cap or the
@@ -112,7 +114,7 @@ for "_i" from 0 to ((count _pending) - 1) do {
 
                 _sample = [
                     ((_trees / _cap) min 1),
-                    _material,
+                    [[_material, 1]],
                     _waterFlag,
                     ((_buildings / _cap) min 1),
                     (getTerrainHeightASL _pos2d)
@@ -129,7 +131,9 @@ for "_i" from 0 to ((count _pending) - 1) do {
             _structSum = _structSum + (_sample select 3);
             _elevSum = _elevSum + (_sample select 4);
 
-            private _material = _sample select 1;
+            // The cached cell sample is already the canonical aggregate, so
+            // one cell contributes exactly one surface vote.
+            private _material = ((_sample select 1) select 0) select 0;
             private _matched = false;
             private _next = [];
             for "_v" from 0 to ((count _votes) - 1) do {

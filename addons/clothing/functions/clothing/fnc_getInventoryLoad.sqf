@@ -49,11 +49,13 @@ private _total = 0;
 // layer, so the dependency stays one-way.
 private _resolvers = missionNamespace getVariable [QEGVAR(physiology,massResolvers), []];
 private _resolve = {
-    params ["_item", ["_category", "", [""]]];
-    // getItemMass takes the LIST of categories it may match, so one
-    // category is a one-element list. Passing the bare string threw in
-    // params every time an item needed a category-restricted lookup.
-    private _mass = [_item, [_category]] call FUNC(getItemMass);
+    params ["_item", ["_categories", [], [[]]]];
+    // getItemMass takes the LIST of categories it may match. An empty
+    // list means "any category": the walk does not hold the slot, so it
+    // cannot know the kind of item it is weighing. The old default was
+    // the empty string, and `"" in [""]` is false for every family, so
+    // every assigned item and weapon attachment weighed 0 (issue #313).
+    private _mass = [_item, _categories] call FUNC(getItemMass);
     if (_mass <= 0) then {
         {
             _mass = [_item] call _x;
@@ -64,15 +66,17 @@ private _resolve = {
 };
 
 // The container contents: one entry per instance, so each is counted.
-// The category is the kind the walk knows: the items loop carries the
-// general carried kit, so an optional classifier may identify a medical
-// item and a family of another kind may not claim it.
+// A container holds any kind of item, so the walk passes no category
+// and lets the family row (or a registered classifier) name the kind.
+// The old hard-coded "medical" forced every container item through the
+// medical band, so a non-medical item with no family keyword was
+// weighed as the nearest medical mass (issue #313).
 {
     if (_x != ""
         && {!(_x in _worn)}
         && {!(_x in _held)}
         && {!isClass (configFile >> "CfgMagazines" >> _x)}) then {
-        _total = _total + ([_x, "medical"] call _resolve);
+        _total = _total + ([_x] call _resolve);
     };
 } forEach (items _unit);
 

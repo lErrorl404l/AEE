@@ -19,7 +19,25 @@ Run: python3 -m unittest tools.tests.test_diving
 """
 
 import math
+import sys
 import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+import sqf_lite  # noqa: E402
+from sqf_lite import SqfRuntime, load_sqf  # noqa: E402
+
+ROOT = Path(__file__).resolve().parents[2]
+DIVE = ROOT / "addons" / "dive" / "functions" / "dive"
+UPDATE_SQF = DIVE / "fnc_updateDiveState.sqf"
+STATE_SQF = DIVE / "fnc_getDiveState.sqf"
+
+# The harness command tables lack the damage read/write and UID commands the
+# dive state uses.  Add them here rather than editing the shared harness
+# (ownership): the additions only let the shipped files parse, and the
+# runtime resolves each through the globals dict this module binds.
+sqf_lite.UNARY_COMMANDS.update({"getDammage", "getPlayerUID"})
+sqf_lite.BINARY_COMMANDS.add("setDamage")
 
 # ─── ZH-L16C constants (published table) ───────────────────────────────────
 T_HALF_N2 = [
@@ -391,6 +409,157 @@ class TestNDL(unittest.TestCase):
     def test_shallow_long(self):
         # 10 m NDL is very long (hours).
         self.assertGreater(ndl_minutes(10.0), 200)
+
+
+# ─── Shipped 1 Hz dive loop (issues #306, #310, #311) ─────────────────────
+def _new_unit():
+    return {"__QGVAR__diveUID": "u1"}
+
+
+def _fresh_state(unit):
+    """Build a fresh per-UID state array from the shipped fnc_getDiveState.
+
+    Running the real initialiser (rather than transcribing it) is what makes
+    the array length and the reset values a source fact.
+    """
+    prog = load_sqf(STATE_SQF)
+    globals_ = {
+        "missionNamespace": {},
+        "objNull": None,
+        "isNull": lambda u: u is None,
+        "getPlayerUID": lambda u: "u1",
+        "createHashMap": {},
+        "str": str,
+        "CBA_fnc_currentUnit": lambda: unit,
+    }
+    rt = SqfRuntime(globals_)
+    rt.set("_unit", unit)
+    return rt.run(prog)
+
+
+def _run_dive(entry, unit, depths, *, ceiling=45.0, is_class=False, ace_damage=None):
+    """Drive the shipped fnc_updateDiveState over a depth profile.
+
+    The stub getDiveState returns the SAME list stored in missionNamespace,
+    so the loop's in-place `_entry set [...]` writes persist between ticks,
+    exactly as the per-UID hashmap does in game.  `depths` is the eyePos z
+    each 1 Hz tick; the harness binds the engine words the file reads.
+    """
+    prog = load_sqf(UPDATE_SQF)
+    namespace = {
+        "__QGVAR__diveStates": {"u1": entry},
+        "__QGVAR__diveGradientFactor": 1.0,
+    }
+    position = [depths[0]]
+    damage = [] if ace_damage is None else ace_damage
+
+    def _step(_depth, _fn2, _fhe, tissues, _gf):
+        return [list(tissues), float(ceiling)]
+
+    globals_ = {
+        "missionNamespace": namespace,
+        "objNull": None,
+        "isNull": lambda u: u is None,
+        "getPosASL": lambda u: [0.0, 0.0, -position[0]],
+        "CBA_fnc_currentUnit": lambda: unit,
+        "__FUNC__getDiveState": lambda u: entry,
+        "__EFUNC__physiology_zh16cStep": _step,
+        "isClass": lambda _x: is_class,
+        "configFile": "configFile",
+        "getDammage": lambda u: 0.0,
+        "setDamage": lambda u, v: None,
+        "ace_medical_fnc_addDamageToUnit": lambda u, amount, part, kind: damage.append(
+            (amount, kind)
+        ),
+        "ace_medical_fnc_adjustPainLevel": lambda u, level: None,
+    }
+    rt = SqfRuntime(globals_)
+    for depth in depths:
+        position[0] = float(depth)
+        rt.scopes = [{}]  # a fresh local scope per 1 Hz call
+        rt.set("_unit", unit)
+        rt.run(prog)
+    return entry
+
+
+class TestDiveStateLoop(unittest.TestCase):
+    """The shipped dive loop, executed through tools/tests/sqf_lite.py."""
+
+    def test_fresh_state_covers_every_documented_index(self):
+        # fnc_getDiveState documents indices 0..40.  The initialiser must
+        # size the array for all of them, or the loop reads a missing
+        # index on the first tick (issues #306, #310, #311 reset path).
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        self.assertEqual(len(state), 41)
+        self.assertEqual(state[38], 9999)  # NDL minutes, no limit
+        self.assertEqual(state[39], 0)  # CNS oxygen clock
+        self.assertEqual(state[40], 0)  # nitrogen narcosis
+
+    def test_emergency_ascent_accumulates_dcs(self):
+        # 2 m/s = 120 m/min.  From 40 m with a 45 m ceiling each ascent
+        # tick adds the ceiling violation (0.01 * 2) and the fast-ascent
+        # term (0.02): 0.04 per tick over four ticks.
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        _run_dive(state, unit, [40, 38, 36, 34, 32], ceiling=45.0)
+        self.assertGreater(state[36], 0.0)
+        self.assertAlmostEqual(state[36], 0.16, places=6)
+
+    def test_slow_ascent_does_not_accumulate_dcs(self):
+        # 0.2 m/s = 12 m/min, below the PADI 18 m/min limit, so the 0.5
+        # and 1.5 m/s gates do not fire.
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        _run_dive(state, unit, [40, 39.8, 39.6, 39.4], ceiling=45.0)
+        self.assertEqual(state[36], 0)
+
+    def test_narcosis_accumulates_past_the_warning_gate(self):
+        # 40 m on air: ppN2 = 5 * 0.79 = 3.95 bar, excess 0.45 bar at
+        # 0.01/s.  The 0.5 gate is reached after 112 s; 120 s exceeds it.
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        _run_dive(state, unit, [40.0] * 120, ceiling=45.0)
+        self.assertGreater(state[40], 0.5)
+        self.assertAlmostEqual(state[40], 120 * 0.0045, places=6)
+
+    def test_narcosis_recovers_on_ascent(self):
+        # 120 s at 40 m charges 0.54.  Then 240 s at the surface is one
+        # 4-minute half-time (ZH-L16C compartment 1), so it halves.
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        _run_dive(state, unit, [40.0] * 120 + [0.0] * 240, ceiling=45.0)
+        self.assertAlmostEqual(state[40], 0.54 * 0.5, places=3)
+
+    def test_cns_clock_charges_at_the_noaa_rate(self):
+        # Air at 66.2 m gives ppO2 = 1.6002 bar.  NOAA Diving Manual
+        # Table 15-1 gives a 45-minute limit, so 60 s charges 1/45 of
+        # 100 %: 0.022222, not the 0.002 the old linear term reached.
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        _run_dive(state, unit, [66.2] * 60)
+        self.assertAlmostEqual(state[39], 60.0 / 2700.0, places=8)
+
+    def test_cns_clock_recovers_below_half_a_bar(self):
+        # Below 0.5 bar ppO2 the clock recovers with a 90-minute
+        # half-time.  Surface air is 0.21 bar.
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        _run_dive(state, unit, [66.2] * 60 + [0.0] * 540)
+        expected = (60.0 / 2700.0) * 2 ** (-540.0 / 5400.0)
+        self.assertAlmostEqual(state[39], expected, places=8)
+
+    def test_cns_hit_fires_at_one_hundred_percent(self):
+        # 45 minutes at ppO2 1.6 bar fills the clock.  The hit resets the
+        # clock and applies the O2Tox damage through ACE when present.
+        unit = _new_unit()
+        state = _fresh_state(unit)
+        damage = []
+        _run_dive(state, unit, [66.2] * 2705, is_class=True, ace_damage=damage)
+        self.assertTrue(
+            any(kind == "O2Tox" for _amount, kind in damage),
+            f"no O2Tox damage recorded: {damage}",
+        )
 
 
 if __name__ == "__main__":

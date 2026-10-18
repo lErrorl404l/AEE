@@ -116,14 +116,25 @@ for "_i" from 0 to ((count _pending) - 1) do {
             };
         };
 
-        private _habitat = _anchor getVariable [QGVAR(habitatWeights), [0, 0, 0, 0]];
+        // Anchor state is object state.  A position anchor has no store, so a
+        // read takes the default the guarded write path assumes and a write is
+        // dropped, exactly as the ecologyDriven write already behaves.
+        private _habitat = [0, 0, 0, 0];
+        private _hunger = 0.1;
+        private _thirst = 0.1;
+        private _species = [1, 0.4, 0.6, 1];
+        if (_isObject) then {
+            _habitat = _anchor getVariable [QGVAR(habitatWeights), _habitat];
+            _hunger = _anchor getVariable [QGVAR(hunger), _hunger];
+            _thirst = _anchor getVariable [QGVAR(thirst), _thirst];
+            _species = _anchor getVariable [QGVAR(speciesRules), _species];
+        };
         if !(_habitat isEqualType []) then { _habitat = [0, 0, 0, 0]; };
-        private _suitability = [_sample, _habitat] call FUNC(environmentSuitability);
-
-        private _hunger = _anchor getVariable [QGVAR(hunger), 0.1];
         if !(_hunger isEqualType 0) then { _hunger = 0.1; };
-        private _thirst = _anchor getVariable [QGVAR(thirst), 0.1];
         if !(_thirst isEqualType 0) then { _thirst = 0.1; };
+        if !(_species isEqualType []) then { _species = [1, 0.4, 0.6, 1]; };
+
+        private _suitability = [_sample, _habitat] call FUNC(environmentSuitability);
 
         private _disturbance = [_field, _key, _now, WILDLIFE_ENVIRONMENT_HALF_LIFE] call EFUNC(ai,disturbanceSample);
         private _acoustic = 0;
@@ -142,9 +153,6 @@ for "_i" from 0 to ((count _pending) - 1) do {
         private _wind = (((_windVector select 0) ^ 2) + ((_windVector select 1) ^ 2)) ^ 0.5;
         private _state = [_hunger, _thirst, _disturbance, _timeBin, [_rain, _wind, 0], _acoustic];
 
-        private _species = _anchor getVariable [QGVAR(speciesRules), [1, 0.4, 0.6, 1]];
-        if !(_species isEqualType []) then { _species = [1, 0.4, 0.6, 1]; };
-
         // Sample the heard-call bus at the animal's cell.  The receiver is a
         // conspecific at no distance: the bus is keyed by cell, so a call
         // from the same cell is heard at full strength.
@@ -155,14 +163,16 @@ for "_i" from 0 to ((count _pending) - 1) do {
                 _heard = [_sampled select 0, _sampled select 1, 0, 0];
             };
         };
-        _anchor setVariable [QGVAR(heardCall), _heard];
+        if (_isObject) then { _anchor setVariable [QGVAR(heardCall), _heard]; };
 
         private _perception = [_sample, _suitability, _species, _state, _heard] call FUNC(wildlifePerceive);
         private _plan = [_perception, _species, _thresholds] call FUNC(wildlifeThink);
         private _action = _plan select 0;
 
-        _anchor setVariable [QGVAR(perception), _perception];
-        _anchor setVariable [QGVAR(ecologyState), _state];
+        if (_isObject) then {
+            _anchor setVariable [QGVAR(perception), _perception];
+            _anchor setVariable [QGVAR(ecologyState), _state];
+        };
 
         if (!_dryRun) then {
             if (_callback isEqualType {}) then {

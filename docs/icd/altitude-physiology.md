@@ -9,7 +9,7 @@ A variable named `aee_altitude_{leaf}` is written as `EGVAR(altitude,leaf)` by t
 
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
-| `aee_altitude_acclimatizationPercent` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/physiology/XEH_postInit.sqf:11` | Altitude acclimatisation 0..100 |
+| `aee_altitude_acclimatizationPercent` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/physiology/XEH_postInit.sqf:15` | Altitude acclimatisation 0..100 |
 | `aee_altitude_altitudeState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/physiology/functions/fnc_dumpState.sqf:30` | UNKNOWN |
 | `aee_altitude_gLoad` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/physiology/functions/fnc_dumpState.sqf:16` | Measured Gz load (1 = standing) |
 | `aee_altitude_gLocStage` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/physiology/functions/fnc_dumpState.sqf:18` | G-LOC stage 0 none / 1 greyout / 2 blackout / 3 LOC |
