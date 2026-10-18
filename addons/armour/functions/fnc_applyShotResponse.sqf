@@ -34,7 +34,7 @@ params [
     ["_position", [0, 0, 0], [[]]],
     ["_velocity", [0, 0, 0], [[]]],
     ["_selection", [], [[]]],
-    ["_ammo", [], [[]]],
+    ["_ammo", "", ["", []]],
     ["_vector", [0, 0, 0], [[]]],
     ["_radius", 0, [0]],
     ["_surface", "", [""]],
@@ -45,8 +45,22 @@ params [
 if (!_direct) exitWith { false };
 if (isNull _target || {!alive _target}) exitWith { false };
 
-private _ammoClass = _ammo param [4, ""];
-if !(_ammoClass isEqualType "") exitWith { false };
+// The HitPart `ammo` element is the projectile's CfgAmmo classname: ONE
+// string, not a nested five-element record (docs/engine/command-surface.md).
+// The old normalisation read index 4 of it, a slot that never exists, so the
+// classname was always "" and the response never fired.  Accept the string
+// form, and defensively an array that carries the classname as a string
+// element.
+private _ammoClass = if (_ammo isEqualType "") then {
+    _ammo
+} else {
+    private _found = "";
+    {
+        if (_x isEqualType "" && _x != "") exitWith { _found = _x; };
+    } forEach _ammo;
+    _found
+};
+if (_ammoClass == "") exitWith { false };
 
 // A vital region only: a limb or a graze does not incapacitate.
 private _vital = ["head", "face", "neck", "torso", "chest", "spine",

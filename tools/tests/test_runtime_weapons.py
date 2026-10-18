@@ -202,5 +202,99 @@ class TestWeaponMassBand(unittest.TestCase):
             )
 
 
+class TestWeaponMassBand(unittest.TestCase):
+    """Issue #234: the pistol masses must be kilograms, not grams.
+
+    Eight Ruger rows once recorded grams under unit "kg" (a Ruger LCP read
+    294 "kg").  A mass consumer is wrong by 1000x for those rows, so the
+    band test below holds every row to a plausible small-arms mass and pins
+    the eight corrected rows to their crisply published weights.
+    """
+
+    PISTOLS = {
+        "lcp": 0.294,
+        "lcpii": 0.317,
+        "markiv": 0.799,
+        "security9": 0.674,
+        "singlesix": 0.992,
+        "sp101": 0.737,
+        "sr1911": 0.881,
+        "wrangler": 0.850,
+    }
+
+    def setUp(self):
+        self.db = json.loads(
+            (REPO / "data/ballistics/weapons.json").read_text(encoding="utf-8")
+        )
+
+    def test_every_mass_is_in_kilograms(self):
+        for rec in self.db:
+            entry = rec["values"].get("mass_kg")
+            if entry is None:
+                continue
+            with self.subTest(weapon=rec["weapon_id"]):
+                self.assertEqual(entry["unit"], "kg")
+                # A small arm is 0.2 kg to 20 kg. Anything above the band is
+                # the grams-under-kg defect or a heavier weapon class.
+                self.assertGreaterEqual(entry["value"], 0.2)
+                self.assertLessEqual(entry["value"], 20.0)
+
+    def test_the_eight_pistols_hold_their_kg_value(self):
+        rows = {rec["weapon_id"]: rec for rec in self.db}
+        for weapon, kg in self.PISTOLS.items():
+            with self.subTest(weapon=weapon):
+                self.assertIn(weapon, rows)
+                entry = rows[weapon]["values"]["mass_kg"]
+                self.assertAlmostEqual(entry["value"], kg, places=3)
+                self.assertEqual(entry["grade"], "documented")
+
+    def test_the_corpus_median_is_a_real_small_arm(self):
+        # The defect was detectable by the corpus statistics, so pin them.
+        values = sorted(
+            rec["values"]["mass_kg"]["value"]
+            for rec in self.db
+            if "mass_kg" in rec["values"]
+        )
+        self.assertGreater(len(values), 100)
+        median = values[len(values) // 2]
+        self.assertGreater(median, 1.0)
+        self.assertLess(median, 6.0)
+
+
+class TestConflictLedger(unittest.TestCase):
+    """Issue #248: one record per distinct conflict.
+
+    The ledger is written by appending, so a second run of the generator
+    duplicated every record it wrote: 471 records for 140 distinct conflicts.
+    The ledger is what a reviewer reads to see the disagreements, so a
+    duplicate inflates every count taken from it.
+    """
+
+    def setUp(self):
+        self.records = json.loads(
+            (REPO / "data/ballistics/conflicts.json").read_text(encoding="utf-8")
+        )
+
+    def test_no_duplicate_conflict_group(self):
+        seen: dict = {}
+        for rec in self.records:
+            key = (
+                rec.get("entity"),
+                rec.get("field"),
+                rec.get("value_a"),
+                rec.get("value_b"),
+            )
+            with self.subTest(key=key):
+                self.assertNotIn(key, seen, f"duplicate conflict record for {key}")
+            seen[key] = rec
+
+    def test_every_record_names_two_values_and_two_sources(self):
+        for rec in self.records:
+            with self.subTest(entity=rec.get("entity")):
+                self.assertNotEqual(rec.get("value_a"), rec.get("value_b"))
+                self.assertTrue(rec.get("source_a"))
+                self.assertTrue(rec.get("source_b"))
+
+
 if __name__ == "__main__":
     unittest.main()

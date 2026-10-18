@@ -1938,7 +1938,7 @@
   "names": [
    "18 x 81"
   ],
-  "note": "",
+  "note": "CIP datasheet, tab X (sha256 960ee6695834ff702a634a0a21164965678eeb2b6b74d9e47cb3e4fd8a38daac): case L3 = 81.00 mm, projectile G1 = 16.30 mm, barrel bore F = 18.00 mm, Q = 254.47 mm2 = pi*18.00^2/4. The projectile is smaller than the bore, so calibre_mm is below bore_mm. That is the CIP datum, not a transcription error; the corpus holds no calibre-greater-than-bore rule. The other inversion in the corpus, 41_long_colt (heeled bullet), is the same case.",
   "values": {
    "max_pressure_mpa": {
     "value": 355.0,
@@ -18639,7 +18639,7 @@
   "names": [
    "41 Long Colt"
   ],
-  "note": "",
+  "note": "CIP datasheet, tab IV (sha256 38fcd07c375955f0d624bbd141cff5fb8497aaf1611d1df13b870f2163ae2e75): case L3 = 28.70 mm, projectile G1 = 9.86 mm, barrel bore F = 10.03 mm, twist u = 406 mm, Z = 10.19 mm. The projectile is smaller than the bore because the round carries a heeled bullet that seats inside the case mouth, so calibre_mm is below bore_mm. That is the CIP datum, not a transcription error.",
   "values": {
    "max_pressure_mpa": {
     "value": 90.0,

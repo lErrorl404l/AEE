@@ -11,18 +11,30 @@ if (is3DEN) exitWith {};
 // original value for non-projectile/non-vehicle damage (no effect).
 // ACE3 rule: the gate returns _oldDamage when stopped (never re-inflates
 // _damage), so ACE3's delta stays at zero.
-["LandVehicle", "HandleDamage", {
+//
+// The handler is installed on BOTH "LandVehicle" and "Man" (issue #251).
+// installObjectEngineHandler matches by isKindOf, and a Man is not a kind
+// of LandVehicle, so installing on LandVehicle alone left the soldier
+// branch of fnc_penetrationGate (issue #119) dead: the inner
+// `isKindOf "Man"` test was never reached.  Both installs share one code
+// block and one gate body.
+private _penetrationHandler = {
     params ["_unit", "_selection", "_damage", "_source", "_projectile",
             "_hitIndex", "_instigator", "_hitPoint"];
-    // Only land vehicles; cheap gate for everything else.
-    if !(_unit isKindOf "LandVehicle") exitWith { _damage };
+    // Land vehicles and infantry only; cheap gate for everything else.
+    if !(_unit isKindOf "LandVehicle" || {_unit isKindOf "Man"}) exitWith { _damage };
     // The module's own switch, so a mission can disable the whole armour
     // model without unloading the addon.
     if !(missionNamespace getVariable [QGVAR(armourEnabled), true]) exitWith { _damage };
     if !(missionNamespace getVariable [QGVAR(penetrationGate), true]) exitWith { _damage };
     [_unit, _selection, _damage, _source, _projectile, _hitIndex,
      _instigator, _hitPoint] call FUNC(penetrationGate);
-}, QGVAR(penetrationGateHandler)] call EFUNC(lib,installObjectEngineHandler);
+};
+
+["LandVehicle", "HandleDamage", _penetrationHandler, QGVAR(penetrationGateHandler)]
+    call EFUNC(lib,installObjectEngineHandler);
+["Man", "HandleDamage", _penetrationHandler, QGVAR(penetrationGateManHandler)]
+    call EFUNC(lib,installObjectEngineHandler);
 
 // ─── Shot response (issue #161) ──────────────────────────────────────────
 // On a direct, penetrating, vital hit: setUnconscious at once and bias the

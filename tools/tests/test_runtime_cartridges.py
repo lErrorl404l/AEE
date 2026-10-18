@@ -10,6 +10,7 @@ Run: python3 tools/tests/test_runtime_cartridges.py
 """
 
 import json
+import math
 import re
 import unittest
 from pathlib import Path
@@ -115,6 +116,88 @@ class TestGeneratedFile(unittest.TestCase):
         self.assertFalse(
             missing, f"records missing from the runtime table: {sorted(missing)[:5]}"
         )
+
+
+class TestCalibreAndBore(unittest.TestCase):
+    """Issue #247: the calibre/bore pair, locked to the CIP datasheets.
+
+    The corpus convention is calibre_mm (CIP G1, the projectile) greater than
+    bore_mm (CIP F, the barrel bore): 489 of 491 pairs follow it.  The two
+    that invert, 18_x_81 and 41_long_colt, are the CIP datum itself, so the
+    fix is provenance plus a guard, not a renumbered value.
+    """
+
+    EXTRACT = json.loads(
+        (REPO / "data/ballistics/sources/cip/cip_datasheet_extract.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    DB = json.loads(
+        (REPO / "data/ballistics/cartridges.json").read_text(encoding="utf-8")
+    )
+
+    def test_every_pair_matches_its_cip_datasheet(self):
+        checked = 0
+        for rec in self.DB:
+            name = (rec.get("names") or [""])[0]
+            ext = self.EXTRACT.get(name)
+            if not ext:
+                continue
+            for field, key in (("calibre_mm", "G1"), ("bore_mm", "F")):
+                raw = ext.get(key)
+                entry = rec["values"].get(field)
+                if raw is None or entry is None or entry.get("source") != "cip_tdcc":
+                    continue
+                with self.subTest(cartridge=rec["cartridge_id"], field=field):
+                    self.assertAlmostEqual(
+                        entry["value"],
+                        float(str(raw).replace(",", ".")),
+                        places=2,
+                        msg=f"{rec['cartridge_id']}.{field} != CIP {key}",
+                    )
+                checked += 1
+        self.assertGreater(checked, 100)
+
+    def test_the_two_inversions_are_the_cip_ones(self):
+        inverted = [
+            rec["cartridge_id"]
+            for rec in self.DB
+            if "calibre_mm" in rec["values"]
+            and "bore_mm" in rec["values"]
+            and rec["values"]["calibre_mm"]["value"] < rec["values"]["bore_mm"]["value"]
+        ]
+        self.assertEqual(sorted(inverted), ["18_x_81", "41_long_colt"])
+
+    def test_the_18_x_81_datum_holds_its_cip_values(self):
+        rec = next(r for r in self.DB if r["cartridge_id"] == "18_x_81")
+        # CIP tab X: G1 = 16.30, F = 18.00, L3 = 81.00, Q = pi*F^2/4 = 254.47.
+        self.assertAlmostEqual(rec["values"]["calibre_mm"]["value"], 16.30, places=2)
+        self.assertAlmostEqual(rec["values"]["bore_mm"]["value"], 18.00, places=2)
+        self.assertAlmostEqual(
+            rec["values"]["case_length_mm"]["value"], 81.00, places=2
+        )
+        self.assertAlmostEqual(math.pi * 18.00**2 / 4, 254.47, places=2)
+
+    def test_an_inverted_pair_carries_its_provenance(self):
+        # A reader who finds calibre below bore will "fix" it unless the
+        # record says where the pair came from.
+        for cid in ("18_x_81", "41_long_colt"):
+            with self.subTest(cartridge=cid):
+                rec = next(r for r in self.DB if r["cartridge_id"] == cid)
+                note = rec.get("note", "")
+                self.assertTrue(note, f"{cid} inverts calibre/bore with no note")
+                self.assertIn("CIP", note)
+                self.assertIn("not a transcription error", note)
+
+    def test_no_pair_is_averaged(self):
+        # A conflict between two sources is recorded, never averaged, so a
+        # pair that is not held is left out rather than invented.
+        for rec in self.DB:
+            values = rec["values"]
+            if "calibre_mm" in values and "bore_mm" in values:
+                with self.subTest(cartridge=rec["cartridge_id"]):
+                    self.assertGreater(values["calibre_mm"]["value"], 0.0)
+                    self.assertGreater(values["bore_mm"]["value"], 0.0)
 
 
 if __name__ == "__main__":
