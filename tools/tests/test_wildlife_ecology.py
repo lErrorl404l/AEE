@@ -752,7 +752,7 @@ class TestAcousticLevel(unittest.TestCase):
     def test_a_barrier_follows_iso_9613_2(self):
         # A 10 m wall midway on a 500 m path: z = 2 sqrt(250^2 + 10^2) - 500,
         # D_z = 10 log10(3 + 20 z / (343/500)), over the 30-140 dB span.
-        z = 2 * math.sqrt(250 ** 2 + 10 ** 2) - 500
+        z = 2 * math.sqrt(250**2 + 10**2) - 500
         dz = 10 * math.log10(3 + 20 * z / (343 / 500))
         clear = level_at(500)
         blocked = level_at(500, occluders=[[250, 0, 10, 5]])
@@ -802,8 +802,13 @@ SOURCE_GLOBALS = {"__EFUNC__lib_blastPeakDb": lambda *a: run_sqf(BLAST, list(a))
 
 def kinney_graham_db(w, r, p0=101325):
     z = r / w ** (1 / 3)
-    ratio = 808 * (1 + (z / 4.5) ** 2) / math.sqrt(
-        (1 + (z / 0.048) ** 2) * (1 + (z / 0.32) ** 2) * (1 + (z / 1.35) ** 2))
+    ratio = (
+        808
+        * (1 + (z / 4.5) ** 2)
+        / math.sqrt(
+            (1 + (z / 0.048) ** 2) * (1 + (z / 0.32) ** 2) * (1 + (z / 1.35) ** 2)
+        )
+    )
     return 20 * math.log10(ratio * p0 / 2e-5)
 
 
@@ -812,16 +817,26 @@ class TestAcousticSourceDb(unittest.TestCase):
 
     def test_kinney_graham(self):
         for w, r in ((0.2, 15), (1, 50), (6.6, 100)):
-            self.assertAlmostEqual(run_sqf(BLAST, [w, r]), kinney_graham_db(w, r), places=6)
+            self.assertAlmostEqual(
+                run_sqf(BLAST, [w, r]), kinney_graham_db(w, r), places=6
+            )
 
     def test_grenade_and_shell_levels(self):
-        self.assertAlmostEqual(run_sqf(ACOUSTIC_SOURCE, ["grenade"], SOURCE_GLOBALS),
-                               kinney_graham_db(0.184 * 1.11, 100) + 40, places=6)
-        self.assertAlmostEqual(run_sqf(ACOUSTIC_SOURCE, ["explosion"], SOURCE_GLOBALS),
-                               kinney_graham_db(6.6, 100) + 40, places=6)
+        self.assertAlmostEqual(
+            run_sqf(ACOUSTIC_SOURCE, ["grenade"], SOURCE_GLOBALS),
+            kinney_graham_db(0.184 * 1.11, 100) + 40,
+            places=6,
+        )
+        self.assertAlmostEqual(
+            run_sqf(ACOUSTIC_SOURCE, ["explosion"], SOURCE_GLOBALS),
+            kinney_graham_db(6.6, 100) + 40,
+            places=6,
+        )
 
     def test_vehicle_is_the_eu_pass_by_limit(self):
-        self.assertAlmostEqual(run_sqf(ACOUSTIC_SOURCE, ["vehicle"]), 82 + 20 * math.log10(7.5), places=6)
+        self.assertAlmostEqual(
+            run_sqf(ACOUSTIC_SOURCE, ["vehicle"]), 82 + 20 * math.log10(7.5), places=6
+        )
 
     def test_every_named_kind_has_a_level(self):
         for kind in (
@@ -833,7 +848,9 @@ class TestAcousticSourceDb(unittest.TestCase):
             "vehicle",
             "footstep",
         ):
-            self.assertGreater(run_sqf(ACOUSTIC_SOURCE, [kind], SOURCE_GLOBALS), 0, kind)
+            self.assertGreater(
+                run_sqf(ACOUSTIC_SOURCE, [kind], SOURCE_GLOBALS), 0, kind
+            )
 
     def test_an_unknown_kind_is_silent(self):
         self.assertEqual(run_sqf(ACOUSTIC_SOURCE, [""]), 0)
@@ -1278,6 +1295,74 @@ ECOLOGY_BUDGET = FUNCS / "fnc_ecologyBudget.sqf"
 ECOLOGY_TICK = FUNCS / "fnc_ecologyTick.sqf"
 
 
+def ecology_tick(agents, environment=None, enabled=True):
+    """Run the real ecology tick with the engine surface stubbed.
+
+    agents are the registry rows [id, anchor, senses, thresholds, callback].  A
+    dict anchor is an object (the harness reads a mapping as an OBJECT); a list
+    anchor is a position, the non-object form fnc_agentRegister accepts.
+    environment is the cached environment store.  The tick runs dry, so no
+    action callback is invoked.  Returns (solved, perceived), where perceived
+    is the argument list of every fnc_wildlifePerceive call.
+
+    getVariable and setVariable raise on a non-object, as the engine does, so a
+    guard that is missing shows as a type error instead of a silent default.
+    """
+    obj_null = object()
+    perceived = []
+
+    def _get_variable(container, spec):
+        if not isinstance(container, dict):
+            raise TypeError("getVariable is not valid on this type")
+        return container.get(spec[0], spec[1])
+
+    def _set_variable(container, spec):
+        if not isinstance(container, dict):
+            raise TypeError("setVariable is not valid on this type")
+        container[spec[0]] = spec[1]
+
+    def _perceive(sample, suitability, species, state, heard):
+        perceived.append([sample, suitability, species, state, heard])
+        return [suitability, 0, [0, 0], heard]
+
+    store = {
+        "__QGVAR__cognitionEnabled": enabled,
+        "__QEGVAR__ai_agents": agents,
+        "__QGVAR__environment": list(environment or []),
+    }
+    globals_ = {
+        "missionNamespace": store,
+        "getVariable": _get_variable,
+        "setVariable": _set_variable,
+        "objNull": obj_null,
+        "isNull": lambda value: value is obj_null,
+        "getPos": lambda value: [0, 0, 0],
+        "hasInterface": True,
+        "CBA_missionTime": 100.0,
+        "diag_tickTime": 100.0,
+        "dayTime": 12.0,
+        "rain": 0.0,
+        "wind": [0.0, 0.0],
+        "WILDLIFE_COGNITION_BATCH": 16,
+        "WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB": -20,
+        "WILDLIFE_ACOUSTIC_EVENT_HORIZON": 5,
+        "WILDLIFE_ENVIRONMENT_HALF_LIFE": 60,
+        "__EFUNC__lib_readState": lambda key, floor, default: default,
+        "__EFUNC__ai_disturbanceKey": lambda position: [0, 0],
+        "__EFUNC__ai_disturbanceSample": lambda field, key, now, half_life: 0.0,
+        "__FUNC__environmentSuitability": _kernel(SUITABILITY),
+        "__FUNC__wildlifePerceive": _perceive,
+        "__FUNC__wildlifeThink": lambda perception, species, thresholds: [
+            "idle",
+            [],
+            [0, 0, 0],
+        ],
+        "__FUNC__ecologyBudget": _kernel(ECOLOGY_BUDGET),
+    }
+    solved = run_sqf(ECOLOGY_TICK, [True], globals_=globals_)
+    return solved, perceived
+
+
 class TestEcologyBudget(unittest.TestCase):
     """fnc_ecologyBudget runs from the real SQF."""
 
@@ -1314,6 +1399,59 @@ class TestEcologyBudget(unittest.TestCase):
             run_sqf(ECOLOGY_BUDGET, [1, 3, 0, 1]),
             run_sqf(ECOLOGY_BUDGET, [1, 3, 0, 1]),
         )
+
+
+class TestEcologyTick(unittest.TestCase):
+    """fnc_ecologyTick runs from the real SQF with engine stubs."""
+
+    def test_a_position_anchor_is_ticked_without_a_variable_read(self):
+        # Issue #278: fnc_agentRegister accepts a position anchor, and a
+        # getVariable on a non-object throws, so the tick must not read the
+        # anchor store for it.
+        solved, perceived = ecology_tick(
+            [["a1", [10, 20, 0], [100], [0.7, 0.3, 0.6, 0.2], None]]
+        )
+        self.assertEqual(solved, 1)
+        self.assertEqual(len(perceived), 1)
+
+    def test_a_position_anchor_takes_the_default_habitat(self):
+        # The guarded write path assumes the written default, so the read path
+        # gives the same default: no habitat weights, so zero suitability.
+        _solved, perceived = ecology_tick(
+            [["a1", [10, 20, 0], [100], [0.7, 0.3, 0.6, 0.2], None]]
+        )
+        self.assertEqual(perceived[0][0], [])
+        self.assertEqual(perceived[0][1], 0)
+
+    def test_the_per_cell_sample_reaches_suitability_in_the_canonical_shape(self):
+        # Issue #277: the tick reads the sampler's cached per-cell sample and
+        # hands it to fnc_environmentSuitability, so the cache must carry the
+        # surface votes, not a bare material string.
+        _result, store, _queries = sample(foliage=[], buildings=[], cells_per_axis=1)
+        rows = store["__QGVAR__environment"]
+        anchor = {"__QGVAR__habitatWeights": CRICKET_RULE}
+        agents = [["a1", anchor, [100], [0.7, 0.3, 0.6, 0.2], None]]
+
+        _solved, perceived = ecology_tick(agents, rows)
+        environment = perceived[0][0]
+        self.assertEqual(environment, rows[0][1])
+        # One cell contributes one surface vote, and the vote survives the
+        # cache: a bare material string made the suitability loop skip the
+        # vote and score concrete as a warm 0.5 surface.
+        self.assertEqual(environment[1], [["concrete", 1.0]])
+        # A cricket on cold concrete scores zero, not the 0.33 a string gave.
+        self.assertEqual(perceived[0][1], 0)
+
+    def test_an_object_anchor_reads_its_stored_habitat(self):
+        _result, store, _queries = sample(
+            water=True, foliage=[], buildings=[], cells_per_axis=1
+        )
+        anchor = {"__QGVAR__habitatWeights": [0, 0, 1, 0]}
+        agents = [["a1", anchor, [100], [0.7, 0.3, 0.6, 0.2], None]]
+        _solved, perceived = ecology_tick(agents, store["__QGVAR__environment"])
+        # A water-only rule scores the water cell 1, which the default habitat
+        # (all zero weights) cannot, so the read reached the anchor.
+        self.assertEqual(perceived[0][1], 1)
 
 
 class TestEcologyTickSourceContracts(unittest.TestCase):

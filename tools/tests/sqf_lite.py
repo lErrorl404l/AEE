@@ -515,7 +515,13 @@ BUILTINS: dict[str, Any] = {
     "set": _sqf_set,
     "createHashMapFromArray": lambda pairs: {p[0]: p[1] for p in pairs},
     "isKindOf": _sqf_isKindOf,
-    "param": lambda a, spec: (a[int(spec[0])] if isinstance(a, list) and 0 <= int(spec[0]) < len(a) and a[int(spec[0])] is not None else (spec[1] if len(spec) > 1 else None)),
+    "param": lambda a, spec: (
+        a[int(spec[0])]
+        if isinstance(a, list)
+        and 0 <= int(spec[0]) < len(a)
+        and a[int(spec[0])] is not None
+        else (spec[1] if len(spec) > 1 else None)
+    ),
     "find": lambda h, n: (
         float(h.find(n))
         if isinstance(h, str)
@@ -877,6 +883,13 @@ class SqfParser:
 
     def parse_unary(self):
         t = self.peek()
+        if t is not None and t.value == "+":
+            # Unary plus: SQF `+array` copies the array.  The ecology tick
+            # refills its pending queue with `+_agents` so the queue never
+            # aliases the live registry, and without this rule the tick
+            # cannot be executed by the harness at all.
+            self.next()
+            return UnaryCmd("copy", self.parse_unary())
         if t is not None and t.value == "-":
             self.next()
             return Bin("neg", Num(0.0), self.parse_unary())
@@ -1271,6 +1284,10 @@ class SqfRuntime:
                         return True
                 return self.eval(arg) is None
             value = self.eval(node.arg)
+            if node.op == "copy":
+                # Unary plus: a shallow copy of an array, the operand for
+                # anything else (SQF `+x` on a number is the number).
+                return list(value) if isinstance(value, list) else value
             if node.op == "count":
                 return len(value)
             if node.op == "abs":

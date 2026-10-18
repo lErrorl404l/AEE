@@ -16,7 +16,10 @@ surface score is the fraction of the votes that are not cold.
 Arguments:
   0: Array - the environment sample
              [foliageFrac, surfaceVotes, waterFrac, structureFrac, meanElev]
-             where surfaceVotes is an array of [materialClass, count] rows
+             where surfaceVotes is an array of [materialClass, count] rows.
+             One shape serves both callers: fnc_sampleNeighbourhood returns
+             the aggregate grid sample, and its cached per-cell sample is the
+             same shape with one vote row.
   1: Array - the habitat weights [foliage, surface, water, structures]
 
 Returns:
