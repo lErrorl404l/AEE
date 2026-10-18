@@ -391,6 +391,60 @@ class TestTideMidnightDayCarry(unittest.TestCase):
                 self.assertEqual(desc, tide_description(9000, ut_h, self.cons))
 
 
+class TestSpringNeapLabel(unittest.TestCase):
+    """Issue #295: the spring/neap label follows the SIGNED phase.
+
+    The label was once driven by `abs (cos ...)`, which folds neap (anti-phase,
+    cos near -1) onto spring (cos near +1): genuine neap reported "Spring
+    Tide" and mid-tide reported "Neap Tide".  The tidal range scales with the
+    signed cos in A_M2^2 + A_S2^2 + 2*A_M2*A_S2*cos(delta).
+
+    This runs the shipped kernel and compares its whole description against the
+    independent mirror in this file, which uses the signed cos.  The sweep of a
+    full spring/neap cycle (14.8 days) covers both extremes.
+    """
+
+    def setUp(self):
+        self.cons = tide_constituents()
+
+    def run_kernel(self, dn, ut_h):
+        state = {}
+        run_sqf(
+            TIDE_SQF,
+            [],
+            {
+                "date": [2025, 6, 15, 12, 0],
+                "dayTime": 12.0,
+                "missionNamespace": state,
+                "__FUNC__getTideConstituents": lambda: [self.cons, "samothraki"],
+                "__EFUNC__lib_getWorldLocation": lambda: [40.4, 0.0, 25.4],
+                "__EFUNC__lib_gameClockToUT": lambda *a: [dn, ut_h],
+            },
+            float32=True,
+        )
+        return state.get("__QEGVAR__core_currentTideDescription")
+
+    def test_the_label_matches_the_signed_phase_over_a_cycle(self):
+        seen = set()
+        for dn in range(2460320, 2460336):
+            for ut_h in (0.0, 6.0, 12.0, 18.0):
+                with self.subTest(dn=dn, ut_h=ut_h):
+                    got = self.run_kernel(dn, ut_h)
+                    want = tide_description(dn, ut_h, self.cons)
+                    self.assertEqual(got, want)
+                    if "(Spring Tide)" in (got or ""):
+                        seen.add("spring")
+                    if "(Neap Tide)" in (got or ""):
+                        seen.add("neap")
+        # A full cycle must show BOTH, or the test proves nothing.
+        self.assertEqual(seen, {"spring", "neap"})
+
+    def test_the_source_uses_the_signed_cos(self):
+        src = TIDE_SQF.read_text(encoding="utf-8")
+        self.assertIn("private _alignment = cos (", src)
+        self.assertNotIn("abs (cos", src)
+
+
 class TestCompassAnomalyScale(unittest.TestCase):
     """The dipole kernel returns SI flux density in nT, not field strength.
 

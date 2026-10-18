@@ -67,12 +67,28 @@ if (_tempC <= -900) then {
 // normalised to the game's initSpeed (the round's actual flight velocity),
 // NOT the database MV - the temperature ratio is what matters, and the
 // game value is the consistent reference the Fired EH applies.
-private _initSpeed = 0;
-{
-    if (getText (configFile >> "CfgMagazines" >> configName _x >> "ammo") == _ammo) exitWith {
-        _initSpeed = getNumber (configFile >> "CfgMagazines" >> configName _x >> "initSpeed");
-    };
-} forEach ((configFile >> "CfgMagazines") call BIS_fnc_returnChildren);
+// Resolve initSpeed per ammo class ONCE and memoise it.  This runs on the
+// Fired hot path, so an uncached pass would enumerate every CfgMagazines
+// class across every loaded mod on every shot.  The sibling resolvers
+// (getCartridgeData, getProjectileData, getWeaponData) cache by classname
+// for the same reason.  A zero is cached as zero: it means "no magazine
+// fires this ammo", which is stable for the session.
+private _cache = missionNamespace getVariable [QGVAR(initSpeedCache), nil];
+if (isNil "_cache") then {
+    _cache = createHashMap;
+    missionNamespace setVariable [QGVAR(initSpeedCache), _cache];
+};
+private _initSpeed = _cache getOrDefault [_ammo, -1];
+if (_initSpeed < 0) then {
+    _initSpeed = 0;
+    {
+        if (getText (configFile >> "CfgMagazines" >> configName _x >> "ammo") == _ammo) exitWith {
+            _initSpeed = getNumber (configFile >> "CfgMagazines" >> configName _x >> "initSpeed");
+        };
+    } forEach ((configFile >> "CfgMagazines") call BIS_fnc_returnChildren);
+    _cache set [_ammo, _initSpeed];
+    missionNamespace setVariable [QGVAR(initSpeedCache), _cache];
+};
 if (_initSpeed <= 0) exitWith { _initSpeed = 0; 1.0 };   // no MV data: no correction
 
 // ─── Correction ───────────────────────────────────────────────────────────

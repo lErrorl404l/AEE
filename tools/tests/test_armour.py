@@ -14,8 +14,13 @@ The penetration math is a Python mirror verified against the SOURCE
 text (the #204 no-drift lesson).
 """
 
+import sys
+import tempfile
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sqf_lite import run_sqf  # noqa: E402
 
 REPO = Path(__file__).parents[2]
 CONFIG = (REPO / "addons/armour/config.cpp").read_text(encoding="utf-8")
@@ -128,9 +133,15 @@ class TestACECoexistence(unittest.TestCase):
     def test_nij_certification_rounds(self):
         # NIJ Standard-0101.06 certification rounds: [mass g, dia mm, m/s].
         import re
+
         src = KERNEL
-        for row in ("[9.6, 7.82, 847", "[8.1, 9.02, 448", "[15.6, 10.9, 436",
-                    "[8.0, 9.02, 373", "[11.7, 10.16, 352"):
+        for row in (
+            "[9.6, 7.82, 847",
+            "[8.1, 9.02, 448",
+            "[15.6, 10.9, 436",
+            "[8.0, 9.02, 373",
+            "[11.7, 10.16, 352",
+        ):
             self.assertIn(row, src)
 
     def test_energy_density_outcomes(self):
@@ -143,11 +154,84 @@ class TestACECoexistence(unittest.TestCase):
 
         level_iii = density(9.6, 7.82, 847)
         level_iiia = max(density(8.1, 9.02, 448), density(15.6, 10.9, 436))
-        self.assertLessEqual(density(9.655, 7.8232, 838.2), level_iii)   # M80
-        self.assertLess(density(7.97, 7.874, 715), level_iii)            # M43
-        self.assertGreater(density(42.12, 12.954, 887), level_iii)       # M33
-        self.assertLess(density(8.0, 9.02, 380), level_iiia)             # 9 mm
-        self.assertGreater(density(4.0175, 5.6896, 914), level_iiia)     # M855
+        self.assertLessEqual(density(9.655, 7.8232, 838.2), level_iii)  # M80
+        self.assertLess(density(7.97, 7.874, 715), level_iii)  # M43
+        self.assertGreater(density(42.12, 12.954, 887), level_iii)  # M33
+        self.assertLess(density(8.0, 9.02, 380), level_iiia)  # 9 mm
+        self.assertGreater(density(4.0175, 5.6896, 914), level_iiia)  # M855
+
+
+class TestShotResponseAmmoIndex(unittest.TestCase):
+    """Issue #250: the HitPart `ammo` element is a single classname.
+
+    The old `_ammo param [4, ""]` read a fifth element that does not exist, so
+    `_ammoClass` was always "" and the response never fired.  These tests
+    execute the shipped normalisation (tools/tests/sqf_lite.py), not a mirror.
+    """
+
+    RESPONSE = REPO / "addons/armour/functions/fnc_applyShotResponse.sqf"
+    START = 'private _ammoClass = if (_ammo isEqualType "") then {'
+    END = 'if (_ammoClass == "") exitWith { false };'
+
+    def ammo_class(self, ammo):
+        text = self.RESPONSE.read_text(encoding="utf-8")
+        start = text.index(self.START)
+        end = text.index(self.END) + len(self.END)
+        body = 'params [["_ammo", "", ["", []]]];\n' + text[start:end] + "\n_ammoClass"
+        path = Path(tempfile.mkdtemp()) / "ammo_slice.sqf"
+        path.write_text(body, encoding="utf-8")
+        return run_sqf(path, [ammo], {})
+
+    def test_a_real_hitpart_ammo_string_reaches_the_model(self):
+        # A real HitPart ammo element: one string, the CfgAmmo classname.
+        self.assertEqual(self.ammo_class("B_556x45_Ball"), "B_556x45_Ball")
+        self.assertEqual(self.ammo_class("B_762x51_Ball"), "B_762x51_Ball")
+
+    def test_the_source_does_not_read_a_fifth_element(self):
+        src = self.RESPONSE.read_text(encoding="utf-8")
+        self.assertNotIn("param [4", src)
+
+    def test_an_empty_ammo_is_refused(self):
+        self.assertIs(self.ammo_class(""), False)
+        self.assertIs(self.ammo_class([]), False)
+
+    def test_an_array_form_yields_the_classname(self):
+        # Defensive: an array that carries the classname as a string element.
+        self.assertEqual(self.ammo_class(["x", "B_762x51_Ball"]), "B_762x51_Ball")
+
+
+class TestPenetrationGateInstall(unittest.TestCase):
+    """Issue #251: the gate must be installed for a Man as well as a vehicle.
+
+    installObjectEngineHandler matches by isKindOf, and a Man is not a kind of
+    LandVehicle, so the soldier branch of the gate was dead.
+    """
+
+    XEH = (REPO / "addons/armour/XEH_postInit.sqf").read_text(encoding="utf-8")
+    GATE = (REPO / "addons/armour/functions/fnc_penetrationGate.sqf").read_text(
+        encoding="utf-8"
+    )
+
+    def test_both_classes_are_installed(self):
+        self.assertIn('["LandVehicle", "HandleDamage"', self.XEH)
+        self.assertIn('["Man", "HandleDamage"', self.XEH)
+
+    def test_the_two_installs_use_distinct_keys(self):
+        self.assertIn("QGVAR(penetrationGateHandler)", self.XEH)
+        self.assertIn("QGVAR(penetrationGateManHandler)", self.XEH)
+
+    def test_the_handler_covers_both_families(self):
+        self.assertIn(
+            '_unit isKindOf "LandVehicle" || {_unit isKindOf "Man"}', self.XEH
+        )
+        self.assertIn(
+            '_unit isKindOf "LandVehicle" || {_unit isKindOf "Man"}', self.GATE
+        )
+
+    def test_the_install_is_not_narrowed_to_land_vehicles_only(self):
+        self.assertNotIn(
+            'if !(_unit isKindOf "LandVehicle") exitWith { _damage };', self.XEH
+        )
 
 
 if __name__ == "__main__":

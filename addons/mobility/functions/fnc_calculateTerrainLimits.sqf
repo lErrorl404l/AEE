@@ -71,12 +71,17 @@ private _spec = [0.40, 3.20, 0.76, 30];   // default: a light 4x4 / HMMWV
         _spec = _x select 1;
     };
 } forEach [
-    ["MRAP",        [0.66, 3.90, 0.99, 30]],   // Cougar: 0.99 m ford
-    ["Wheeled_APC", [0.50, 4.20, 1.00, 25]],
-    ["Tank",        [0.47, 4.60, 1.20, 20]],   // M1: 1.2 m, 2.0 m with DWFK
-    ["Tracked_APC", [0.45, 4.00, 1.00, 25]],
-    ["Car",         [0.20, 2.60, 0.40, 30]],
-    ["Truck",       [0.40, 4.00, 0.90, 25]]
+    ["MRAP_01_base_F",     [0.66, 3.90, 0.99, 30]],   // Cougar: 0.99 m ford
+    ["MRAP_02_base_F",     [0.66, 3.90, 0.99, 30]],
+    ["MRAP_03_base_F",     [0.66, 3.90, 0.99, 30]],
+    ["Wheeled_APC_F",      [0.50, 4.20, 1.00, 25]],
+    ["APC_Tracked_01_base_F", [0.45, 4.00, 1.00, 25]],
+    ["APC_Tracked_02_base_F", [0.45, 4.00, 1.00, 25]],
+    ["APC_Tracked_03_base_F", [0.45, 4.00, 1.00, 25]],
+    ["Tank",               [0.47, 4.60, 1.20, 20]],   // M1: 1.2 m, 2.0 m with DWFK
+    ["Truck_F",            [0.40, 4.00, 0.90, 25]],
+    ["Truck",              [0.40, 4.00, 0.90, 25]],
+    ["Car",                [0.20, 2.60, 0.40, 30]]
 ];
 
 // A sourced catalogue clearance beats the class-table estimate. The value

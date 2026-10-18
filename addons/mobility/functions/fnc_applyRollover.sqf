@@ -37,7 +37,10 @@ params [["_vehicle", objNull, [objNull]]];
 if (!GVAR(rolloverEnabled)) exitWith { false };
 if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith { false };
 if (isNull _vehicle || {!alive _vehicle}) exitWith { false };
-if (_vehicle isKindOf "Air") exitWith { false };
+// Land vehicles only.  A Ship is not kindOf Air: the gate let one through,
+// and the class table then built a ground-vehicle SSF for a hull (default
+// track 1.60 m, CG 1.00 m) and torqued a turning boat.
+if !(_vehicle isKindOf "LandVehicle") exitWith { false };
 
 // Local physics only. addTorque changes the object on this machine, so the
 // machine must own the vehicle or the impulse is fought by the network.

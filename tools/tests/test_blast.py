@@ -13,8 +13,12 @@ Run: python3 -m unittest tools.tests.test_blast
 """
 
 import math
+import sys
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sqf_lite import run_sqf  # noqa: E402
 
 
 # ─── Mirrors ───────────────────────────────────────────────────────────────
@@ -330,6 +334,66 @@ class TestBlastThrow(unittest.TestCase):
         self.assertGreater(o_hi, o_lo)
 
 
+class TestAirburstFragmentDensity(unittest.TestCase):
+    """Issue #252: the airburst areal density must carry the geometry factor.
+
+    Executes the shipped kernel (tools/tests/sqf_lite.py), not a mirror.  For an
+    isotropic burst at height h over a ground plane, the ground annulus
+    [R, R+dR] subtends dOmega = 2*pi*sin(theta)*dtheta and has area
+    2*pi*R*dR with R = h*tan(theta).  The number falling in it is
+    (N*f/4*pi)*dOmega, so
+
+        rho(R) = N*f*h / (4*pi*(R^2 + h^2)^(3/2))
+
+    which carries the cos(theta)/s^2 obliquity.  The pre-fix form
+    N*f/(4*pi*h*s) omits it and over-predicts by (R^2 + h^2)/h^2: 101x at
+    R=50, h=5 and at R=100, h=10, 7.25x at R=50, h=20.
+    """
+
+    KERNEL = (
+        Path(__file__).resolve().parents[2]
+        / "addons"
+        / "blast"
+        / "functions"
+        / "fragmentation"
+        / "fnc_calculateFragmentDensity.sqf"
+    )
+
+    def density(self, n, f, r, h):
+        return run_sqf(self.KERNEL, [n, f, r, h], {})
+
+    @staticmethod
+    def closed_form(n, f, r, h):
+        return n * f * h / (4 * math.pi * (r * r + h * h) ** 1.5)
+
+    def test_three_published_geometry_pairs(self):
+        # The three (R, h) pairs the issue quotes, against the closed form.
+        for r, h in ((50.0, 5.0), (50.0, 20.0), (100.0, 10.0)):
+            with self.subTest(r=r, h=h):
+                got = self.density(1000, 1.0, r, h)
+                self.assertAlmostEqual(got, self.closed_form(1000, 1.0, r, h), places=9)
+
+    def test_the_obliquity_factor_is_present(self):
+        # The over-prediction the pre-fix form carried: (R^2+h^2)/h^2.
+        n, f = 1000.0, 1.0
+        for r, h in ((50.0, 5.0), (50.0, 20.0), (100.0, 10.0)):
+            with self.subTest(r=r, h=h):
+                old = n / (4 * math.pi * h * math.sqrt(r * r + h * h))
+                ratio = old / self.density(n, f, r, h)
+                self.assertAlmostEqual(ratio, (r * r + h * h) / (h * h), places=6)
+
+    def test_ground_burst_branch_unchanged(self):
+        # h = 0 is the disk average, rho = N/(2*pi*R^2), and it is intentional.
+        self.assertAlmostEqual(
+            self.density(1000, 1.0, 50.0, 0.0),
+            1000.0 / (2 * math.pi * 50.0 * 50.0),
+            places=12,
+        )
+
+    def test_decreases_with_range(self):
+        near = self.density(1000, 1.0, 20.0, 5.0)
+        far = self.density(1000, 1.0, 200.0, 5.0)
+        self.assertLess(far, near)
 
 
 class TestContactRange(unittest.TestCase):
@@ -337,8 +401,14 @@ class TestContactRange(unittest.TestCase):
         # A 1 kg charge 0.1 m away (Z = 0.1) is inside the fit floor; the
         # pressure must not fall to zero there.
         self.assertGreaterEqual(kb_incident_pressure(0.1), kb_incident_pressure(0.2))
-        src = (Path(__file__).resolve().parents[2] / "addons" / "blast" / "functions"
-               / "blast" / "fnc_calculateBlastOverpressure.sqf").read_text(encoding="utf-8")
+        src = (
+            Path(__file__).resolve().parents[2]
+            / "addons"
+            / "blast"
+            / "functions"
+            / "blast"
+            / "fnc_calculateBlastOverpressure.sqf"
+        ).read_text(encoding="utf-8")
         self.assertIn("max 0.2", src)
 
 

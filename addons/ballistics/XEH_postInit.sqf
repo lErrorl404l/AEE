@@ -38,9 +38,21 @@ ADDON = false;
         missionNamespace setVariable [QGVAR(lastCartridge), [_cartridgeId, 0, _twist, 0, 0]];
     };
 
-    // Round kinetic energy (J): E = 0.5*m*v^2. Mass from CfgAmmo, or the
-    // resolved bullet where the config carries none.
-    private _mass = getNumber (configFile >> "CfgAmmo" >> _ammo >> "hit") * 0.5;
+    // Round kinetic energy (J): E = 0.5*m*v^2, with m in KILOGRAMS.
+    // The mass is the held bullet mass (FUNC(getProjectileData) returns
+    // grams).  The CfgAmmo `hit` value is a DAMAGE number, not a mass:
+    // halving it under-reports a large calibre badly (a .50 M33 is 42 g
+    // against a 15 g proxy), so it is only the fallback when the corpus
+    // holds no bullet for this ammo.
+    private _mass = 0;
+    private _projectileData = [_ammo] call FUNC(getProjectileData);
+    if ((_projectileData isEqualType []) && {(count _projectileData) > 1}) then {
+        private _massG = _projectileData select 1;
+        if (_massG isEqualType 0 && _massG > 0) then { _mass = _massG / 1000; };
+    };
+    if (_mass <= 0) then {
+        _mass = (getNumber (configFile >> "CfgAmmo" >> _ammo >> "hit") * 0.5) / 1000;
+    };
     if (_mass <= 0) then { _mass = 4.0 / 1000; };          // ~4 g baseline
     if (_initSpeed <= 0) then { _initSpeed = 905; };
     private _energyJ = 0.5 * _mass * (_initSpeed ^ 2);

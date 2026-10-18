@@ -39,11 +39,11 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `core` | `cartography` | 10 | [core-cartography.md](core-cartography.md) |
 | `thermal` | `thermal_display` | 10 | [thermal-thermal_display.md](thermal-thermal_display.md) |
 | `core` | `flight` | 9 | [core-flight.md](core-flight.md) |
+| `core` | `hydrology` | 9 | [core-hydrology.md](core-hydrology.md) |
 | `core` | `vision` | 8 | [core-vision.md](core-vision.md) |
 | `thermal_display` | `vision` | 8 | [thermal_display-vision.md](thermal_display-vision.md) |
 | `core` | `ballistics` | 7 | [core-ballistics.md](core-ballistics.md) |
 | `core` | `eye` | 7 | [core-eye.md](core-eye.md) |
-| `core` | `hydrology` | 7 | [core-hydrology.md](core-hydrology.md) |
 | `thermal_display` | `thermal` | 7 | [thermal_display-thermal.md](thermal_display-thermal.md) |
 | `altitude` | `physiology` | 6 | [altitude-physiology.md](altitude-physiology.md) |
 | `ambience` | `wildlife` | 6 | [ambience-wildlife.md](ambience-wildlife.md) |

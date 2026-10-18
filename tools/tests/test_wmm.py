@@ -148,6 +148,91 @@ class TestCompassDeclinationIsNotTheDeviation(unittest.TestCase):
         )
 
 
+class TestSouthernHemisphereDeclination(unittest.TestCase):
+    """Issues #286 and #287: the declination must work in the south.
+
+    The kernel once carried a LONGITUDE-only table plus a small additive
+    latitude tilt, `_declination + (_latDeg - 45) * 0.05`, which cannot cross
+    zero, so no southern value was reachable (Sydney came out near -9 degrees
+    against a real +12.8 east).  The latitude was also read as `_loc select 1`,
+    the MAGNITUDE of the shared source, not the signed value.
+
+    These tests EXECUTE the shipped compass function against the real WMM2025
+    kernel (tools/tests/sqf_lite.py) at a southern location.
+    """
+
+    SYDNEY_LAT = -33.9
+    SYDNEY_LON = 151.2
+    # WMM2025 declination at Sydney: +12.798 degrees EAST.
+    SYDNEY_DECLINATION = 12.798
+
+    def compass_at(self, lat, lon, *, mgrs_fails=False):
+        """Run the compass with the real WMM kernel at (lat, lon)."""
+        state = {"__QGVAR__wmmCache": ["", []]}
+        seen: dict = {}
+
+        def wmm(klat, klon, alt, year):
+            seen.update(lat=klat, lon=klon, year=year)
+            return run_sqf(KERNEL, [klat, klon, alt, year], {})
+
+        def world_to_mgrs(pos, anchor, mode):
+            if mgrs_fails:
+                return ["", 0, 0, 0, 0, 0]
+            return ["GRID", lat, lon, 0, 0, 0]
+
+        out = run_sqf(
+            COMPASS,
+            [],
+            {
+                "CBA_fnc_currentUnit": lambda: "unit",
+                "isNull": lambda u: u is None,
+                "date": [2025, 6, 15, 12, 0],
+                "missionNamespace": state,
+                "worldName": "Altis",
+                "getPosASL": lambda obj: [1000.0, 2000.0, 100.0],
+                "vehicle": lambda u: None,
+                "nearestObjects": lambda spec: [],
+                "__FUNC__wmmField": wmm,
+                "__FUNC__calculateMagneticAnomaly": lambda a, b: 0.0,
+                "__EFUNC__lib_getGeoAnchor": lambda: "anchor",
+                "__EFUNC__lib_worldToMgrs": world_to_mgrs,
+                "__EFUNC__lib_getWorldLocation": lambda: [lat, abs(lat), lon, 56],
+                "__EFUNC__lib_civilDayNumber": lambda *a: run_sqf(CIVIL, list(a)),
+            },
+            float32=True,
+        )
+        return out, state, seen
+
+    def test_sydney_is_east_not_west(self):
+        out, _, seen = self.compass_at(self.SYDNEY_LAT, self.SYDNEY_LON)
+        # The signed latitude reaches the model, not the magnitude.
+        self.assertAlmostEqual(seen["lat"], self.SYDNEY_LAT, places=3)
+        self.assertGreater(out, 0.0, "southern declination must be east here")
+        self.assertAlmostEqual(out, self.SYDNEY_DECLINATION, delta=0.5)
+
+    def test_the_signed_latitude_is_used_from_the_fallback(self):
+        # The MGRS route fails, so the kernel falls back to the shared
+        # geolocation: [signed, magnitude, lon, zone].  Reading slot 1 would
+        # pass +33.9 and give WEST declination.
+        out, _, seen = self.compass_at(
+            self.SYDNEY_LAT, self.SYDNEY_LON, mgrs_fails=True
+        )
+        self.assertAlmostEqual(seen["lat"], self.SYDNEY_LAT, places=3)
+        self.assertGreater(out, 0.0)
+
+    def test_the_magnitude_slot_is_not_read(self):
+        src = COMPASS.read_text(encoding="utf-8")
+        self.assertIn("_loc select 0", src)
+        self.assertNotIn("_loc select 1", src)
+
+    def test_a_northern_point_keeps_its_own_value(self):
+        # London: the WMM holds a small east value, so the sign is not
+        # forced negative by a hemisphere switch.
+        out, _, seen = self.compass_at(51.5, -0.1)
+        self.assertAlmostEqual(seen["lat"], 51.5, places=3)
+        self.assertAlmostEqual(out, 0.916, delta=0.5)
+
+
 class TestCompassDecimalYear(unittest.TestCase):
     """F3: the decimal year uses the shared exact day count.
 

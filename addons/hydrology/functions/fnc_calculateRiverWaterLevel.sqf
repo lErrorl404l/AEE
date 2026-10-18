@@ -31,14 +31,16 @@ private _curveNumber = switch (true) do {
     case (_biome in ["BSh","BSk"]):                   { 85 };  // scrub, thin soil
     default                                           { 75 };
 };
-// The position falls back to the map origin when no unit exists, the same
-// fallback updatePressure and calculateQNH use, so the curve number is
-// deterministic on a headless server.
-private _unit = call CBA_fnc_currentUnit;
-private _pos = [0, 0];
-if (!isNil "_unit" && {!isNull _unit}) then {
-    _pos = getPos _unit;
-};
+// The position feeds three map-scoped terms: the surface classification,
+// the D8 catchment index and the coast distance.  The river level is a
+// MAP-LEVEL state published to every machine as EGVAR(core,currentWaterLevel),
+// so its inputs must be identical on every machine.  The local player
+// position is NOT: a dedicated server has no unit at all (the old fallback
+// put it at the origin) and two clients on the same map would publish
+// different levels from the same weather.  The reference is the map centre,
+// the same fixed reference the mobility loops use when no player exists, and
+// it is constant for the whole session (issue #283).
+private _pos = [worldSize / 2, worldSize / 2];
 private _surfaceClass = (surfaceType _pos) call EFUNC(material,classifyBySurfaceType);
 // An impervious cover sheds almost everything, which is why a road floods
 // and the field beside it does not.
@@ -65,8 +67,36 @@ _curveNumber = _curveNumber min 100;
 // delivered is rain * (ENGINE_RAIN_FULL_MMH / 3600) * interval mm.
 private _rainIntensity = rain;
 if !(_rainIntensity isEqualType 0) then { _rainIntensity = 0; };
+
+// ─── The integration step is the REAL elapsed interval (issue #297) ───────
+// The core environment tick gates this chain at 30 s, but the kernel read
+// the global default updateInterval (5 s).  Every term below is scaled by
+// this interval: the storm depth delivered per call, the Nash storage
+// coefficient k, the discharge and the baseflow.  A 5 s constant against a
+// 30 s gate delivered one sixth of the real depth and divided a 30 s
+// accumulation by 5, so the whole chain integrated on the wrong dt.
+//
+// The kernel therefore measures its own elapsed time from the one clock
+// (EGVAR(core,simTime), published once per frame) instead of trusting a
+// constant that describes a different loop.  The first call has no previous
+// sample, so it falls back to the setting, which is what a direct caller
+// (a test, or a mission calling the kernel by hand) expects.
+private _now = missionNamespace getVariable [QEGVAR(core,simTime), diag_tickTime];
+if !(_now isEqualType 0) then { _now = diag_tickTime; };
+private _lastRun = missionNamespace getVariable [QGVAR(riverLastRunTime), -1];
 private _interval = EGVAR(core,updateInterval);
 if !(_interval isEqualType 0) then { _interval = 5; };
+if (_lastRun isEqualType 0 && _lastRun >= 0) then {
+    private _elapsed = _now - _lastRun;
+    if (_elapsed > 0) then { _interval = _elapsed; };
+};
+// Bound the step: a world-clock jump or a long pause must not deliver an
+// hour of rain-depth or drive the cascade coefficient past stability.
+// Split, not chained: `a max b min c` is read right-associatively by the
+// test harness, so the two clamps are written as two statements.
+_interval = _interval max 0.1;
+_interval = _interval min 60;
+missionNamespace setVariable [QGVAR(riverLastRunTime), _now];
 private _mmPerTick = _rainIntensity * (ENGINE_RAIN_FULL_MMH / 3600) * _interval;
 
 private _stormDepth = missionNamespace getVariable [QGVAR(stormDepth_mm), 0];
@@ -79,9 +109,11 @@ if (_rainIntensity > 0.01) then {
     _dryTicks = 0;
 } else {
     _dryTicks = _dryTicks + 1;
-    // Six dry ticks is half a minute. The event closes and the counter
-    // resets, so the next storm starts from its own abstraction.
-    if (_dryTicks >= 6) then {
+    // The event closes after 30 s of no rain, whatever the step: the close
+    // was six ticks, which was half a minute only while the step was the
+    // 5 s default (issue #297).
+    private _dryTicksToClose = (30 / _interval) max 1;
+    if (_dryTicks >= _dryTicksToClose) then {
         _stormDepth = 0;
         _dryTicks = 0;
     };
@@ -137,7 +169,10 @@ missionNamespace setVariable [QGVAR(depressionStore_mm), _newStored];
 
 // ─── Nash cascade — three serial linear reservoirs ─────────────────────────
 private _k = missionNamespace getVariable [QGVAR(riverResponseRate), 0.1];   // storage coefficient; 1/k = reservoir time constant
-_k = _k * (_interval / 5);
+// Explicit Euler: the coefficient is the rate times the step, so it scales
+// with the REAL interval (the 5 s in the ratio is the rate's reference step).
+// Clamped below 1, or the reservoir would overshoot and go negative.
+_k = (_k * (_interval / 5)) min 0.9;
 private _reservoirs = missionNamespace getVariable [QGVAR(riverReservoirs), [0, 0, 0]];
 private _r1 = _reservoirs select 0;
 private _r2 = _reservoirs select 1;

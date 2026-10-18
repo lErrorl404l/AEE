@@ -38,7 +38,11 @@ params [["_vehicle", objNull, [objNull]]];
 if (!GVAR(terrainDragEnabled)) exitWith { false };
 if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith { false };
 if (isNull _vehicle || {!alive _vehicle}) exitWith { false };
-if (_vehicle isKindOf "Air") exitWith { false };
+// Land vehicles only.  The caller's candidate list is land-only, but this
+// gate stands on its own: a Ship is not kindOf Air, and getTerrainSpeedFactor
+// returns 0.05 for water, so a boat afloat would be dragged to about 5% of
+// its maxSpeed and any naval mission would be degraded.
+if !(_vehicle isKindOf "LandVehicle") exitWith { false };
 
 // Local physics only: addForce changes the object on this machine.
 if (!local _vehicle) exitWith { false };
