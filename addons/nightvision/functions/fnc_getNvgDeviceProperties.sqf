@@ -80,13 +80,17 @@ switch (true) do {
     // ── Russian 1PN63/1PN58 (Gen 1) ──
     case (_h find "1pn63" >= 0 ||
           _h find "1pn58" >= 0):            { ["GEN1", 250, 30, 1.5, 1, 40] };
+    // ── Vanilla Gen 2 (OPFOR) ──
+    // The specific `nvgoggles_opfor` token must be tested BEFORE the broad
+    // `nvgoggles` token below.  A vanilla OPFOR Gen-2 classname contains the
+    // substring `nvgoggles`, so a broad match first resolves it as GEN3 and
+    // this case never runs (issue #260).
+    case (_h find "nvgen2" >= 0 ||
+          _h find "nvgoggles_opfor" >= 0):  { ["GEN2", 550, 28, 0.68, 1, 40] };
     // ── Vanilla Gen 3 (NVGoggles/INDEP = Gen 3, the engine's tier) ──
     case (_h find "nvgen3" >= 0 ||
           _h find "nvgoggles_indep" >= 0 ||
           _h find "nvgoggles" >= 0):        { ["GEN3", 1100, 64, 0.355, 1, 40] };
-    // ── Vanilla Gen 2 (OPFOR) ──
-    case (_h find "nvgen2" >= 0 ||
-          _h find "nvgoggles_opfor" >= 0):  { ["GEN2", 550, 28, 0.68, 1, 40] };
     // ── Vanilla Gen 1 (the oldest) ──
     case (_h find "gen1" >= 0):             { ["GEN1", 250, 30, 1.0, 1, 40] };
     default                                  { ["GEN3", 1100, 64, 0.355, 1, 40] };

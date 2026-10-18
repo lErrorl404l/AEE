@@ -125,6 +125,20 @@ class TestVisionModeResetLifecycle(unittest.TestCase):
                 f"branch: line {index + 1} of {VISION_MODE_HANDLER.name}",
             )
 
+    def test_the_nvg_teardown_runs_on_a_direct_one_to_two_transition(self):
+        # Issue #317: the teardown ran only when the destination mode was 0, so
+        # a direct 1 -> 2 handover left the tube grade, bloom, vignette and
+        # grain enabled with ppEffectForceInNVG over the thermal frame.
+        text = _read(VISION_MODE_HANDLER)
+        guard = re.search(
+            r"if\s*\(_visionMode != 1\)\s*then\s*\{(.*?)\n    \};", text, re.S
+        )
+        self.assertIsNotNone(guard, "the teardown guard is not keyed to mode 1")
+        body = guard.group(1)
+        self.assertIn("_visionMode == 0", body)
+        self.assertIn("nvgGrainActive", body)
+        self.assertIn("FUNC(teardownSensors)", body)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -46,7 +46,15 @@ if ((cameraOn != _player) && {cameraOn != _veh}) exitWith {
 };
 
 // A vision sensor owns the exposure.  The gate must come before any write.
-if (currentVisionMode _player != 0) exitWith {};
+// Hand the camera back on the way out: the sensor does not inherit AEE's pin,
+// so leaving it set freezes the exposure under NVG and thermal until the
+// operator returns to normal vision (issue #256).
+if (currentVisionMode _player != 0) exitWith {
+    if (!isNil QGVAR(eyePinned)) then {
+        setAperture -1;
+        GVAR(eyePinned) = nil;
+    };
+};
 
 // The operator turned the model off: hand the camera back once.
 if (!GVAR(eyeAdaptationEnabled)) exitWith {

@@ -38,9 +38,7 @@ PFH_SRC = (LTM / "fnc_ltmPFH.sqf").read_text(encoding="utf-8")
 TOGGLE_SRC = (LTM / "fnc_ltmToggle.sqf").read_text(encoding="utf-8")
 MODE_SRC = (LTM / "fnc_ltmToggleMode.sqf").read_text(encoding="utf-8")
 INIT_SRC = (LTM / "fnc_ltmInit.sqf").read_text(encoding="utf-8")
-PREP_SRC = (REPO / "addons" / "ltm" / "XEH_PREP.hpp").read_text(
-    encoding="utf-8"
-)
+PREP_SRC = (REPO / "addons" / "ltm" / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SETTINGS_SRC = (REPO / "addons" / "ltm" / "initSettings.inc.sqf").read_text(
     encoding="utf-8"
 )
@@ -116,10 +114,23 @@ class TestLtmBeamSegments(unittest.TestCase):
                     math.dist(starts[i], starts[i + 1]), STEP, places=3
                 )
 
-    def test_each_dash_is_the_step_long(self):
-        for seg in _segments(ORIGIN, TARGET):
+    def test_every_full_dash_is_the_step_long(self):
+        # Only the final dash may be shorter: it is truncated at the target
+        # (issue #309).  Every earlier dash is exactly one step.
+        segs = _segments(ORIGIN, TARGET)
+        for seg in segs[:-1]:
             with self.subTest(seg=seg):
                 self.assertAlmostEqual(math.dist(seg[0], seg[1]), STEP, places=3)
+
+    def test_the_final_dash_is_truncated_at_the_target(self):
+        segs = _segments(ORIGIN, TARGET)
+        end = segs[-1][1]
+        for axis in range(3):
+            self.assertAlmostEqual(end[axis], TARGET[axis], places=3)
+        remainder = math.dist(ORIGIN, TARGET) - (len(segs) - 1) * STEP
+        last = math.dist(segs[-1][0], segs[-1][1])
+        self.assertAlmostEqual(last, remainder, places=3)
+        self.assertLessEqual(last, STEP)
 
     def test_a_null_origin_returns_nothing(self):
         self.assertEqual(_segments([], TARGET), [])
@@ -132,6 +143,53 @@ class TestLtmBeamSegments(unittest.TestCase):
 
     def test_a_zero_count_returns_nothing(self):
         self.assertEqual(_segments(ORIGIN, TARGET, 0, STEP), [])
+
+    def test_a_zero_step_returns_nothing(self):
+        self.assertEqual(_segments(ORIGIN, TARGET, COUNT, 0.0), [])
+
+
+class TestLtmBeamClip(unittest.TestCase):
+    """The beam stops at the target, not at a fixed 10.5 km (issue #309).
+
+    The source model (workshop 2041057379) placed 21 beam objects 500 m apart
+    whatever the real range, so the dashes always ran past the target.
+    """
+
+    @staticmethod
+    def _range(target_range):
+        return _segments(ORIGIN, [ORIGIN[0] + target_range, ORIGIN[1], ORIGIN[2]])
+
+    def test_a_half_kilometre_target_gives_one_dash(self):
+        segs = self._range(500.0)
+        self.assertEqual(len(segs), 1)
+        self.assertAlmostEqual(math.dist(segs[0][0], segs[0][1]), STEP, places=3)
+
+    def test_a_target_shorter_than_the_step_gives_one_clipped_dash(self):
+        segs = self._range(150.0)
+        self.assertEqual(len(segs), 1)
+        self.assertAlmostEqual(math.dist(segs[0][0], segs[0][1]), 150.0, places=3)
+
+    def test_no_endpoint_lies_beyond_the_target(self):
+        for target_range in (120.0, 500.0, 1234.0, 5000.0, 10000.5, 30000.0):
+            for seg in self._range(target_range):
+                for point in seg:
+                    with self.subTest(r=target_range, point=point):
+                        self.assertLessEqual(
+                            math.dist(ORIGIN, point), target_range + 1e-6
+                        )
+
+    def test_a_target_within_reach_is_covered_end_to_end(self):
+        segs = self._range(1234.0)
+        self.assertEqual(len(segs), 3)
+        self.assertAlmostEqual(segs[-1][1][0], ORIGIN[0] + 1234.0, places=3)
+
+    def test_the_chain_is_capped_at_the_count(self):
+        # A target out of reach still draws at most the count in full dashes.
+        segs = self._range(30000.0)
+        self.assertEqual(len(segs), COUNT)
+        for seg in segs:
+            with self.subTest(seg=seg):
+                self.assertAlmostEqual(math.dist(seg[0], seg[1]), STEP, places=3)
 
 
 class TestLtmSourceContract(unittest.TestCase):
