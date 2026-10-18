@@ -89,6 +89,10 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
         missionNamespace setVariable [QGVAR(gLoad), _gLevel];
         missionNamespace setVariable [QGVAR(gLocStage), _stage];
         missionNamespace setVariable [QGVAR(altitudeDCSRisk), _dcsRisk];
+        // Published for observability: the G tolerance is deliberately unread.
+        // fnc_calculateGLOC applies it internally to derive the stage, and no
+        // HUD, effect or model reads the published copy (issue #293).  The
+        // consumer that is missing is a G-tolerance readout.
         missionNamespace setVariable [QGVAR(gLocTolerance), _glocRes select 2];
         // Apply the stage to the view.  Without a consumer the whole feature
         // is inert (issue #293).

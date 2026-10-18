@@ -113,6 +113,10 @@ private _acclimPercent = (_acclimTime / 336) min 1;
 // ─── Persist state ───────────────────────────────────────────────────────
 _altState set [_uid, [_acclimTime, _currentAlt, _now, _amsRisk, _timeAbove3000]];
 missionNamespace setVariable [QGVAR(altitudeState), _altState];
+// Published for observability: the AMS risk is deliberately unread.  No AMS
+// symptom or performance model exists; the survival-pressure kernel
+// aggregates five other hazards and this is not one of them (issue #293).
+// The consumer that is missing is an AMS symptom or performance model.
 missionNamespace setVariable [QGVAR(amsRisk), _amsRisk];
 missionNamespace setVariable [QGVAR(acclimatizationPercent), _acclimPercent];
 
