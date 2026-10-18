@@ -307,7 +307,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/altitude/XEH_postInit.sqf:43",
+        "addons/altitude/XEH_postInit.sqf:59",
         "addons/altitude/functions/altitude/fnc_calculateHypoxia.sqf:35",
         "addons/ltm/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:169",

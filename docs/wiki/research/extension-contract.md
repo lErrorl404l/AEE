@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (908)
+### Public functions (909)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -159,6 +159,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ai_fnc_survivalAction`
 - `aee_ai_fnc_survivalNeed`
 - `aee_ai_fnc_teardownAI`
+- `aee_altitude_fnc_applyGLOCEffects`
 - `aee_altitude_fnc_calculateAltitudeAcclimatization`
 - `aee_altitude_fnc_calculateAltitudeDCS`
 - `aee_altitude_fnc_calculateBarometricPressure`

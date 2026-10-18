@@ -16,6 +16,16 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
         params ["_unit"];
         if (_unit != call CBA_fnc_currentUnit) exitWith {};
 
+        // ── Real elapsed interval (issue #292) ──
+        // CBA's per-frame handler passes [_args, _handle] and no delta, and a
+        // hardcoded 1 s step makes physiology fall behind wall-clock on a
+        // lagging client.  Measure the wall-clock gap since the last pass;
+        // the floor keeps the first pass finite.
+        private _now = diag_tickTime;
+        private _dtSec = _now - (missionNamespace getVariable [QGVAR(lastTickTime), _now]);
+        missionNamespace setVariable [QGVAR(lastTickTime), _now];
+        _dtSec = _dtSec max 0.001;
+
         // ── G load from velocity deltas ──
         BEGIN_COUNTER(getGLoad);
         private _g = [_unit] call EFUNC(strain,getGLoad);
@@ -31,10 +41,16 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
         private _gsuit = parseNumber (missionNamespace getVariable [QGVAR(gsuitEquipped), false]);
         private _reclined = parseNumber (missionNamespace getVariable [QGVAR(seatReclined), false]);
         private _hypoxRisk = missionNamespace getVariable [QEGVAR(core,currentHypoxiaRisk), 0];
+        // The exposure held above tolerance is caller state, carried across
+        // passes so LOC is reached on the Whinnery-Forster time, not on the
+        // first tick above tolerance (issue #290).
+        private _exposurePrev = missionNamespace getVariable [QGVAR(gLocExposure_s), 0];
+        if !(_exposurePrev isEqualType 0) then { _exposurePrev = 0; };
         BEGIN_COUNTER(calculateGLOC);
-        private _glocRes = [_gLevel, 3, _agsm, _gsuit, _reclined, _hypoxRisk] call FUNC(calculateGLOC);
+        private _glocRes = [_gLevel, 3, _agsm, _gsuit, _reclined, _hypoxRisk, _exposurePrev, _dtSec] call FUNC(calculateGLOC);
         END_COUNTER(calculateGLOC);
         private _stage = _glocRes select 0;
+        missionNamespace setVariable [QGVAR(gLocExposure_s), _glocRes select 3];
 
         // ── Altitude DCS (above 21,000 ft the ZH-L16C R-ratio rises) ──
         // A pressurised fixed-wing cabin holds at most 8,000 ft cabin altitude
@@ -45,8 +61,12 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
         if (_altM > 6400) then {   // ~21,000 ft
             private _entry = [_unit] call EFUNC(dive,getDiveState);
             private _tissues = _entry select [0, 32];
-            private _res = [_altM, _tissues, 1] call FUNC(calculateAltitudeDCS);
-            _entry = _res select 2;
+            private _res = [_altM, _tissues, _dtSec] call FUNC(calculateAltitudeDCS);
+            // Splice the 32 tissue compartments back into the FULL dive
+            // state.  _res select 2 is the 32-element tissue result and the
+            // dive state is 38 elements (fnc_getDiveState), so reassigning
+            // _entry to the result dropped fN2/fHe/fO2, the last depth, the
+            // DCS accumulator and the ascent-violation count (issue #289).
             for "_i" from 0 to 31 do { _entry set [_i, _res select 2 select _i]; };
             private _state = missionNamespace getVariable [QEGVAR(dive,diveStates), -1];
             if (_state isEqualType 0) then {
@@ -70,6 +90,9 @@ if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) t
         missionNamespace setVariable [QGVAR(gLocStage), _stage];
         missionNamespace setVariable [QGVAR(altitudeDCSRisk), _dcsRisk];
         missionNamespace setVariable [QGVAR(gLocTolerance), _glocRes select 2];
+        // Apply the stage to the view.  Without a consumer the whole feature
+        // is inert (issue #293).
+        [] call FUNC(applyGLOCEffects);
         if (AEE_TRACE_ON) then {
             private _perfMsg = format ["gloc %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
             AEE_LOG_DEBUG(_perfMsg);

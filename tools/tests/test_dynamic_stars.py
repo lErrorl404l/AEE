@@ -189,3 +189,28 @@ class TestStarLogging(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestFaintStarGate(unittest.TestCase):
+    """The faint-star layer honours the starfield gate (issue #267).
+
+    fnc_drawFaintStars drew up to FAINT_STAR_MAX stars regardless of the
+    Dynamic Starfield setting, the daylight or the overcast, because the gate
+    lived only in fnc_starLightsSync.
+    """
+
+    def setUp(self):
+        self.draw = (SENSOR / "fnc_drawFaintStars.sqf").read_text(encoding="utf-8")
+        self.sync = (SENSOR / "fnc_starLightsSync.sqf").read_text(encoding="utf-8")
+
+    def test_the_draw_reads_the_published_gate(self):
+        self.assertIn("getVariable [QGVAR(starsRendering), false]", self.draw)
+
+    def test_the_draw_exits_before_the_star_loop(self):
+        gate = self.draw.split("private _stars = missionNamespace", 1)[0]
+        self.assertIn("starsRendering", gate)
+        self.assertIn("exitWith", gate)
+
+    def test_the_sync_publishes_the_gate_both_ways(self):
+        self.assertIn("setVariable [QGVAR(starsRendering), true]", self.sync)
+        self.assertIn("setVariable [QGVAR(starsRendering), false]", self.sync)

@@ -23,7 +23,11 @@ Arguments:
   1: Number - relative humidity, percent
   2: Number - surface pressure, hPa
 Returns:
-  Array - [CAPE J/kg, LCL height m, parcel-theory updraft m/s]
+  Array - [CAPE J/kg, LCL height m, parcel-theory updraft m/s, LNB height m]
+  The LNB (level of neutral buoyancy) is the top of the positive-buoyancy
+  layer above the LCL, i.e. the convective cloud top.  It is 0 when the
+  parcel is never buoyant above its LCL, so a consumer must treat 0 as
+  "no convective top" (issue #238).
 */
 params [["_tC", 15, [0]], ["_rh", 50, [0]], ["_ps", 1013.25, [0]]];
 private _g = 9.80665;
@@ -40,6 +44,9 @@ private _tl = 1 / ((1 / (_tdk - 56)) + ((ln (_tk / _tdk)) / 800)) + 56;
 private _zl = (_tk - _tl) / 0.0098;
 
 private _cape = 0;
+// LNB: the highest level above the LCL at which the parcel is still warmer
+// than the environment.  That height is the convective cloud top.
+private _lnbM = 0;
 private _tp = _tk;
 private _dz = 50;
 for "_k" from 0 to 320 do {
@@ -70,6 +77,9 @@ for "_k" from 0 to 320 do {
         _tp = _tp - _h * ([_tMid, _p] call _fnc_gm);
     };
     private _b = _g * (_tp - _te) / _te;
-    if (_b > 0) then { _cape = _cape + _b * _dz; };
+    if (_b > 0) then {
+        _cape = _cape + _b * _dz;
+        if (_z > _zl) then { _lnbM = _z; };
+    };
 };
-[_cape, _zl, sqrt (2 * _cape)]
+[_cape, _zl, sqrt (2 * _cape), _lnbM]

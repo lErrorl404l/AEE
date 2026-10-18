@@ -9,7 +9,13 @@ Run: python3 -m unittest tools.tests.test_gloc
 """
 
 import math
+import re
+import sys
 import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sqf_lite import run_sqf  # noqa: E402
 
 
 # ─── ICAO standard atmosphere (fnc_calculateBarometricPressure.sqf) ────────
@@ -176,16 +182,26 @@ def time_to_loc(onset_rate_gps):
     return 74.41 + (9.10 - 74.41) * frac  # linear in rate
 
 
-def gloc_stage(g_level, tolerance):
+def gloc_next_exposure(g_level, tolerance, exposure_s, dt_s):
+    """The exposure at the end of a step: held above tolerance, else reset."""
+    if g_level > tolerance:
+        return exposure_s + dt_s
+    return 0.0
+
+
+def gloc_stage(g_level, tolerance, exposure_s=0.0, time_to_loc_s=9.10):
     """0 none, 1 greyout, 2 blackout, 3 LOC.
 
-    Mirrors the SQF: excess = (g - tolerance) / tolerance; greyout
-    > 0.08, blackout > 0.08, LOC > 0.15 relative excess.
+    Mirrors the SQF: the instantaneous excess sets the visual warning
+    (greyout above 0.08 relative excess, blackout above that), and LOC is
+    reached only once the exposure held above tolerance passes timeToLoc.
+    (issue #290: LOC used to fire on the first tick above tolerance, so the
+    warning window was zero.)
     """
     if g_level <= tolerance:
         return 0
     excess = (g_level - tolerance) / tolerance
-    if excess > 0.15:
+    if exposure_s >= time_to_loc_s:
         return 3
     if excess > 0.08:
         return 2
@@ -389,16 +405,39 @@ class TestGLOC(unittest.TestCase):
 
     def test_stage_thresholds(self):
         tol = gloc_tolerance()  # 4.7
-        # Boundaries: greyout > tol, blackout > tol*1.08, LOC > tol*1.15.
+        # Below tolerance there is no stage; above it the instantaneous excess
+        # sets greyout, then blackout.
         self.assertEqual(gloc_stage(4.7, tol), 0)
         self.assertEqual(gloc_stage(5.0, tol), 1)  # excess 0.064 greyout
         self.assertEqual(gloc_stage(5.1, tol), 2)  # excess 0.085 blackout
         self.assertEqual(gloc_stage(5.3, tol), 2)  # excess 0.128 still blackout
-        self.assertEqual(gloc_stage(5.5, tol), 3)  # excess 0.170 LOC
+        # LOC is a time-to-event, not an instantaneous threshold (issue #290).
+        self.assertEqual(gloc_stage(5.5, tol), 2)  # excess 0.170, no exposure
+        self.assertEqual(gloc_stage(5.5, tol, exposure_s=9.10), 3)
 
-    def test_low_tolerance_stages_sooner(self):
+    def test_loc_needs_the_exposure_to_accumulate(self):
+        tol = gloc_tolerance()
+        exposure = 0.0
+        # Ten one-second steps just above tolerance never reach LOC...
+        for _ in range(9):
+            exposure = gloc_next_exposure(5.5, tol, exposure, 1.0)
+            self.assertLess(gloc_stage(5.5, tol, exposure), 3)
+        # ... and the tenth does (rapid onset, time to LOC 9.10 s).
+        exposure = gloc_next_exposure(5.5, tol, exposure, 1.0)
+        self.assertEqual(gloc_stage(5.5, tol, exposure), 3)
+
+    def test_below_tolerance_resets_the_exposure(self):
+        tol = gloc_tolerance()
+        exposure = gloc_next_exposure(5.5, tol, 8.0, 1.0)
+        self.assertAlmostEqual(exposure, 9.0, places=6)
+        self.assertAlmostEqual(gloc_next_exposure(4.0, tol, exposure, 1.0), 0.0)
+
+    def test_low_tolerance_lowers_the_stage_threshold(self):
         tol = gloc_tolerance(hypoxia_risk=1.0)  # 4.7 * 0.6 = 2.82
-        self.assertEqual(gloc_stage(4.7, tol), 3)  # well past LOC
+        self.assertEqual(gloc_stage(4.7, tol), 2)  # well past tolerance, no exposure
+        self.assertEqual(
+            gloc_stage(4.7, tol, exposure_s=9.10), 3
+        )  # LOC after the latency
 
 
 if __name__ == "__main__":
@@ -418,9 +457,157 @@ class TestAltitudeDcsCallSite(unittest.TestCase):
         import re
 
         addons = Path(__file__).resolve().parents[2] / "addons" / "altitude"
-        kernel = next(addons.rglob("fnc_calculateAltitudeDCS.sqf")).read_text(encoding="utf-8")
+        kernel = next(addons.rglob("fnc_calculateAltitudeDCS.sqf")).read_text(
+            encoding="utf-8"
+        )
         params = re.search(r"params \[(.*?)\];", kernel, re.S).group(1)
         names = re.findall(r'\["(_\w+)"', params)
         self.assertEqual(names[:3], ["_altM", "_tissues", "_dtSec"])
         caller = (addons / "XEH_postInit.sqf").read_text(encoding="utf-8")
-        self.assertIn("[_altM, _tissues, 1] call FUNC(calculateAltitudeDCS)", caller)
+        # The step is the measured interval, not a hardcoded 1 s (issue #292).
+        self.assertIn(
+            "[_altM, _tissues, _dtSec] call FUNC(calculateAltitudeDCS)", caller
+        )
+        self.assertNotIn("[_altM, _tissues, 1] call FUNC(calculateAltitudeDCS)", caller)
+
+
+class TestGlocKernelExecutes(unittest.TestCase):
+    """fnc_calculateGLOC runs from the real SQF (issue #290).
+
+    The kernel integrates the exposure held above tolerance and reaches LOC
+    only after timeToLoc.  Before the fix the stage jumped to LOC on the first
+    tick above 1.15 x tolerance, so the warning window was zero.
+    """
+
+    KERNEL = (
+        Path(__file__).resolve().parents[2]
+        / "addons"
+        / "altitude"
+        / "functions"
+        / "altitude"
+        / "fnc_calculateGLOC.sqf"
+    )
+
+    def _call(self, g, exposure=0.0, dt=0.0):
+        return run_sqf(self.KERNEL, [g, 3, 0, 0, 0, 0, exposure, dt])
+
+    def test_params_carry_the_exposure_and_step(self):
+        params = re.search(
+            r"params \[(.*?)\];", self.KERNEL.read_text(encoding="utf-8"), re.S
+        ).group(1)
+        names = re.findall(r'\["(_\w+)"', params)
+        self.assertEqual(names[-2:], ["_exposureSec", "_dtSec"])
+
+    def test_high_g_does_not_lose_consciousness_at_once(self):
+        stage, t_loc, tol, exposure = self._call(5.6, 0.0, 1.0)
+        self.assertEqual(stage, 2)  # blackout, not LOC
+        self.assertAlmostEqual(t_loc, 9.10, places=4)
+        self.assertAlmostEqual(tol, 4.7, places=4)
+        self.assertAlmostEqual(exposure, 1.0, places=6)
+
+    def test_loc_after_the_whinnery_forster_time(self):
+        stage, _, _, exposure = self._call(5.6, 9.0, 1.0)
+        self.assertAlmostEqual(exposure, 10.0, places=6)
+        self.assertEqual(stage, 3)
+
+    def test_exposure_resets_below_tolerance(self):
+        stage, _, _, exposure = self._call(2.0, 30.0, 1.0)
+        self.assertEqual(exposure, 0)
+        self.assertEqual(stage, 0)
+
+    def test_the_step_scales_the_exposure(self):
+        _, _, _, one = self._call(5.6, 0.0, 1.0)
+        _, _, _, two = self._call(5.6, 0.0, 2.0)
+        self.assertAlmostEqual(two, 2.0 * one, places=6)
+
+
+class TestLoopUsesTheRealInterval(unittest.TestCase):
+    """The physiology loop integrates over the real elapsed time (issue #292).
+
+    CBA's per-frame handler passes [_args, _handle] and no delta, so the loop
+    measures the wall-clock gap instead of assuming a 1 s cadence.
+    """
+
+    def setUp(self):
+        self.caller = (
+            Path(__file__).resolve().parents[2]
+            / "addons"
+            / "altitude"
+            / "XEH_postInit.sqf"
+        ).read_text(encoding="utf-8")
+
+    def test_the_interval_is_measured(self):
+        self.assertIn("diag_tickTime", self.caller)
+        self.assertIn("_dtSec = _now -", self.caller)
+
+    def test_the_measured_interval_reaches_both_integrators(self):
+        self.assertIn("_exposurePrev, _dtSec] call FUNC(calculateGLOC)", self.caller)
+        self.assertIn(
+            "[_altM, _tissues, _dtSec] call FUNC(calculateAltitudeDCS)", self.caller
+        )
+
+
+class TestGlocVisualConsumer(unittest.TestCase):
+    """The published G-LOC stage has a consumer (issue #293).
+
+    Before the fix the stage was written and never read except by the
+    diagnostic dump, so the whole feature was inert.
+    """
+
+    ALTITUDE = Path(__file__).resolve().parents[2] / "addons" / "altitude"
+
+    def test_the_loop_applies_the_stage(self):
+        caller = (self.ALTITUDE / "XEH_postInit.sqf").read_text(encoding="utf-8")
+        self.assertIn("[] call FUNC(applyGLOCEffects)", caller)
+
+    def test_the_consumer_reads_the_stage_and_owns_a_radial_blur(self):
+        src = (
+            self.ALTITUDE / "functions" / "altitude" / "fnc_applyGLOCEffects.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("getVariable [QGVAR(gLocStage), 0]", src)
+        self.assertIn('"RadialBlur"', src)
+        # The optics arbiter owns these four; the consumer must not create a
+        # second owner of any of them.  Comments may name them, so test code.
+        code = re.sub(r"/\*.*?\*/", "", src, flags=re.S)
+        code = "\n".join(line.split("//", 1)[0] for line in code.splitlines())
+        for owned in (
+            "ColorCorrections",
+            "DynamicBlur",
+            "ChromAberration",
+            "FilmGrain",
+        ):
+            self.assertNotIn(owned, code)
+
+    def test_the_consumer_is_prepped(self):
+        prep = (self.ALTITUDE / "XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREPS(altitude,applyGLOCEffects)", prep)
+
+
+class TestDiveStateSplice(unittest.TestCase):
+    """The altitude DCS tick keeps the FULL dive state (issue #289).
+
+    _entry was reassigned to the 32-element tissue result before the splice
+    loop, so the loop copied the result onto itself and the 38-element dive
+    state was truncated, losing fN2/fHe/fO2, the last depth, the DCS
+    accumulator and the ascent-violation count.
+    """
+
+    ROOT = Path(__file__).resolve().parents[2]
+
+    def test_the_dive_state_is_38_slots(self):
+        src = next(
+            (self.ROOT / "addons" / "dive").rglob("fnc_getDiveState.sqf")
+        ).read_text(encoding="utf-8")
+        self.assertIn("0..15", src)  # 16 N2 compartments
+        self.assertIn("16..31", src)  # 16 He compartments
+        self.assertIn("37", src)  # the last of the 38 slots
+
+    def test_the_splice_does_not_reassign_the_entry(self):
+        caller = (self.ROOT / "addons" / "altitude" / "XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(
+            'for "_i" from 0 to 31 do { _entry set [_i, _res select 2 select _i]; };',
+            caller,
+        )
+        self.assertNotIn("_entry = _res select 2;", caller)

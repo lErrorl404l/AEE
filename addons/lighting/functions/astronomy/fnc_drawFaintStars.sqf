@@ -10,9 +10,17 @@ faint field appears without consuming a dynamic light.  The count is capped at
 FAINT_STAR_MAX to bound the per-frame draw calls.
 
 fnc_getStarCatalog already excludes stars below the horizon and fainter than
-the NELM, and fnc_starLightsSync bypasses this layer on disable, daylight or
-solid overcast by leaving the visible set empty.
+the NELM, and fnc_starLightsSync owns the night, overcast and setting gate.
+
+The gate result is read from QGVAR(starsRendering), which fnc_starLightsSync
+publishes once per pass.  This layer once ran its own draw regardless of the
+setting, the daylight and the overcast, so disabling "Dynamic Starfield" at
+night still drew up to FAINT_STAR_MAX faint stars (issue #267).
 */
+
+if !(missionNamespace getVariable [QGVAR(starsRendering), false]) exitWith {
+    missionNamespace setVariable [QGVAR(faintStarCount), 0];
+};
 
 private _stars = missionNamespace getVariable [QGVAR(visibleStars), []];
 private _nelm = missionNamespace getVariable [QGVAR(effectiveNelm), 6.5];

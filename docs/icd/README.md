@@ -21,7 +21,7 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | Producer | Consumer | Variables | Document |
 |---|---|---|---|
 | `core` | `thermal` | 51 | [core-thermal.md](core-thermal.md) |
-| `core` | `atmos` | 47 | [core-atmos.md](core-atmos.md) |
+| `core` | `atmos` | 48 | [core-atmos.md](core-atmos.md) |
 | `core` | `weather` | 43 | [core-weather.md](core-weather.md) |
 | `core` | `actions` | 28 | [core-actions.md](core-actions.md) |
 | `core` | `persistence` | 28 | [core-persistence.md](core-persistence.md) |
@@ -57,12 +57,12 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `weather` | `atmos` | 5 | [weather-atmos.md](weather-atmos.md) |
 | `weatherfx` | `particles` | 5 | [weatherfx-particles.md](weatherfx-particles.md) |
 | `ai` | `wildlife` | 4 | [ai-wildlife.md](ai-wildlife.md) |
+| `core` | `altitude` | 4 | [core-altitude.md](core-altitude.md) |
 | `core` | `hud` | 4 | [core-hud.md](core-hud.md) |
 | `core` | `wildlife` | 4 | [core-wildlife.md](core-wildlife.md) |
 | `eye` | `optics` | 4 | [eye-optics.md](eye-optics.md) |
 | `weather` | `lighting` | 4 | [weather-lighting.md](weather-lighting.md) |
 | `weather` | `wildlife` | 4 | [weather-wildlife.md](weather-wildlife.md) |
-| `core` | `altitude` | 3 | [core-altitude.md](core-altitude.md) |
 | `core` | `lib` | 3 | [core-lib.md](core-lib.md) |
 | `diagnostics` | `core` | 3 | [diagnostics-core.md](diagnostics-core.md) |
 | `hud` | `cartography` | 3 | [hud-cartography.md](hud-cartography.md) |

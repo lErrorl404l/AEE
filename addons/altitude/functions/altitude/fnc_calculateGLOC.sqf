@@ -21,21 +21,24 @@ The sequence: greyout -> tunnel -> blackout -> LOC -> convulsions ->
 recovery -> relative incapacitation.  Rapid onset skips the visual
 warnings (LOC without greyout).
 
-Input:  [_g, _onsetRate, _agsm, _gsuit, _seat, _hypoxiaRisk]
+Input:  [_g, _onsetRate, _agsm, _gsuit, _seat, _hypoxiaRisk, _exposureSec, _dtSec]
   _g         - current +Gz load
   _onsetRate - G/s (rapid >= 1, gradual <= 0.2, else intermediate)
   _agsm      - 0/1 using the anti-G straining maneuver
   _gsuit     - 0/1 wearing a G-suit
   _seat      - reclined seat bonus (0.5 for F-16 style, else 0)
   _hypoxiaRisk - 0..1 from the hypoxia model
-Output: [stage, timeToLoc, toleranceG]
-  stage    - 0 none, 1 greyout, 2 blackout, 3 LOC, 4 convulsions,
-             5 recovery, 6 relative incapacitation
+  _exposureSec - seconds already held above tolerance (caller-owned state)
+  _dtSec     - the interval this evaluation advances the exposure by
+Output: [stage, timeToLoc, toleranceG, exposureSec]
+  stage    - 0 none, 1 greyout, 2 blackout, 3 LOC (after timeToLoc)
   timeToLoc - seconds to LOC at the given onset rate (5 s floor)
   toleranceG - the computed G tolerance (after AGSM/suit/seat/hypoxia)
+  exposureSec - the exposure at the end of this step, for the next call
 */
 params [["_g", 1, [0]], ["_onsetRate", 3, [0]], ["_agsm", 0, [0]],
-        ["_gsuit", 0, [0]], ["_seat", 0, [0]], ["_hypoxiaRisk", 0, [0]]];
+        ["_gsuit", 0, [0]], ["_seat", 0, [0]], ["_hypoxiaRisk", 0, [0]],
+        ["_exposureSec", 0, [0]], ["_dtSec", 0, [0]]];
 
 // ─── Tolerance ───────────────────────────────────────────────────────────
 private _tolerance = 4.7
@@ -61,21 +64,25 @@ private _tLoc = if (_onsetRate >= 1) then {
 _tLoc = _tLoc max 5;
 
 // ─── Stage ──────────────────────────────────────────────────────────────
-// Above tolerance the sequence progresses; below it the pilot is fine.
-// Greyout starts slightly below LOC; blackout between.
+// Above tolerance the sequence progresses; below it the pilot is fine and
+// the caller resets the exposure.
+// LOC is a time-to-event, not an instantaneous threshold: Whinnery & Forster
+// give a mean 9.1 s (rapid onset) to 74.4 s (gradual onset) from the moment
+// tolerance is exceeded.  The kernel integrates the exposure held above
+// tolerance and reaches LOC only once it passes timeToLoc.  Below that, the
+// instantaneous excess sets the visual warning (greyout, then blackout), so
+// the warning window is real.  (issue #290: the stage once jumped to LOC on
+// the first tick above tolerance, so the window was zero.)
+private _exposure = [0, _exposureSec + _dtSec] select (_g > _tolerance);
 private _stage = 0;
 if (_g > _tolerance) then {
-    // Over tolerance: the higher the excess, the faster to LOC.
     private _excess = (_g - _tolerance) / _tolerance;
-    if (_excess > 0.15) then {
-        _stage = 3;                          // LOC
+    if (_excess > 0.08) then {
+        _stage = 2;                          // blackout
     } else {
-        if (_excess > 0.08) then {
-            _stage = 2;                      // blackout
-        } else {
-            _stage = 1;                      // greyout
-        };
+        _stage = 1;                          // greyout
     };
+    if (_exposure >= _tLoc) then { _stage = 3; };   // LOC
 };
 
-[_stage, _tLoc, _tolerance]
+[_stage, _tLoc, _tolerance, _exposure]
