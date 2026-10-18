@@ -409,6 +409,33 @@ UNARY_COMMANDS = {
     # Damage queries used by fnc_updateDamageSystem.
     "getAllHitPointsDamage",
     "isDamageAllowed",
+    # Slot queries and carried-item queries used by the clothing library:
+    # `uniform _unit`, `items _unit`, `weaponCargo (unitBackpack _unit)`.
+    # Each resolves through globals_, so a test binds the unit surface.
+    "uniform",
+    "vest",
+    "headgear",
+    "goggles",
+    "backpack",
+    "primaryWeapon",
+    "secondaryWeapon",
+    "handgunWeapon",
+    "primaryWeaponItems",
+    "secondaryWeaponItems",
+    "handgunItems",
+    "items",
+    "assignedItems",
+    "hmd",
+    "binocular",
+    "weaponCargo",
+    "unitBackpack",
+    # Config reads used by the clothing classifiers and their override walk.
+    "getText",
+    "getNumber",
+    "configName",
+    "inheritsFrom",
+    # Array copy (`+assignedItems _unit`).
+    "copy",
 }
 
 
@@ -515,7 +542,13 @@ BUILTINS: dict[str, Any] = {
     "set": _sqf_set,
     "createHashMapFromArray": lambda pairs: {p[0]: p[1] for p in pairs},
     "isKindOf": _sqf_isKindOf,
-    "param": lambda a, spec: (a[int(spec[0])] if isinstance(a, list) and 0 <= int(spec[0]) < len(a) and a[int(spec[0])] is not None else (spec[1] if len(spec) > 1 else None)),
+    "param": lambda a, spec: (
+        a[int(spec[0])]
+        if isinstance(a, list)
+        and 0 <= int(spec[0]) < len(a)
+        and a[int(spec[0])] is not None
+        else (spec[1] if len(spec) > 1 else None)
+    ),
     "find": lambda h, n: (
         float(h.find(n))
         if isinstance(h, str)
@@ -597,6 +630,19 @@ class Each:
 class While:
     cond: list
     body: list
+
+
+@dataclass
+class Switch:
+    """SQF `switch (v) do { case X: {..}; default {..}; }`.
+
+    cases is a list of (value_expr | None, block) in source order; None
+    marks the default.  The engine evaluates the case expressions in
+    order and runs the first whose value equals the switch value.
+    """
+
+    expr: Any
+    cases: list
 
 
 @dataclass
@@ -765,38 +811,48 @@ class SqfParser:
         if self.peekv() == ";":
             self.next()
 
+    def parse_param_spec(self) -> tuple:
+        """One `[name, default, type, ...]` spec: the name and the default.
+
+        The type tag and the dimension count are validated by the engine,
+        not read by the harness, so they are skipped.
+        """
+        self.expect("[")
+        name = self.next()
+        # SQF params names are QUOTED strings: ["_obj", default, type]
+        if name.kind == "str":
+            name_value = name.value.lower()
+        elif name.kind == "id" and name.value.startswith("_"):
+            name_value = name.value
+        else:
+            raise SyntaxError(f"param name must be a string, got {name}")
+        default = None
+        if self.peekv() == ",":
+            self.next()
+            default = self.parse_expr()
+        # Optional trailing components: [type] and/or a dimension count,
+        # e.g. ["_eye", [0,0,0], [[]], 3] or ["_hSens", 0, [0]].
+        while self.peekv() == ",":
+            self.next()  # comma
+            if self.peekv() == "[":
+                self.next()
+                depth = 1
+                while self.peek() is not None and depth > 0:
+                    v = self.next().value
+                    if v == "[":
+                        depth += 1
+                    elif v == "]":
+                        depth -= 1
+            else:
+                self.parse_expr()
+        self.expect("]")
+        return (name_value, default)
+
     def parse_params(self) -> list:
         self.expect("[")
         specs = []
         while self.peekv() != "]":
-            self.expect("[")
-            name = self.next()
-            # SQF params names are QUOTED strings: ["_obj", default, type]
-            if name.kind == "str":
-                name_value = name.value.lower()
-            elif name.kind == "id" and name.value.startswith("_"):
-                name_value = name.value
-            else:
-                raise SyntaxError(f"param name must be a string, got {name}")
-            self.expect(",")
-            default = self.parse_expr()
-            # Optional trailing components: [type] and/or a dimension count,
-            # e.g. ["_eye", [0,0,0], [[]], 3] or ["_hSens", 0, [0]].
-            while self.peekv() == ",":
-                self.next()  # comma
-                if self.peekv() == "[":
-                    self.next()
-                    depth = 1
-                    while self.peek() is not None and depth > 0:
-                        v = self.next().value
-                        if v == "[":
-                            depth += 1
-                        elif v == "]":
-                            depth -= 1
-                else:
-                    self.parse_expr()
-            self.expect("]")
-            specs.append((name_value, default))
+            specs.append(self.parse_param_spec())
             if self.peekv() == ",":
                 self.next()
         self.expect("]")
@@ -815,6 +871,52 @@ class SqfParser:
                 self.next()
         self.expect("]")
         return names
+
+    def parse_lambda_specs(self) -> list:
+        """Lambda params in either form: `["_x"]` or `[["_x", 0, [0]]]`.
+
+        A block does carry defaulted params - the inventory walk's
+        resolver declares `[["_item"], ["_category", [], [[]]]]` - so the
+        harness must bind the default when the call omits the argument.
+        """
+        self.expect("[")
+        specs = []
+        while self.peekv() != "]":
+            if self.peekv() == "[":
+                specs.append(self.parse_param_spec())
+            else:
+                t = self.next()
+                if t.kind != "str":
+                    raise SyntaxError(f"lambda param must be a string, got {t.value}")
+                specs.append((t.value.lower(), None))
+            if self.peekv() == ",":
+                self.next()
+        self.expect("]")
+        return specs
+
+    def parse_switch(self):
+        """switch (v) do { case X: {..}; default {..}; }.
+
+        The `:` after a case value is not tokenised (the tokeniser has no
+        colon), so the block follows the value expression directly.
+        """
+        self.expect("(")
+        expr = self.parse_expr()
+        self.expect(")")
+        self.expect("do")
+        self.expect("{")
+        cases = []
+        while self.peekv() != "}":
+            t = self.next()
+            if t.value == "case":
+                cases.append((self.parse_expr(), self.parse_block()))
+            elif t.value == "default":
+                cases.append((None, self.parse_block()))
+            else:
+                raise SyntaxError(f"expected case or default, got {t.value}")
+            self.optional_semi()
+        self.expect("}")
+        return Switch(expr, cases)
 
     def parse_block(self) -> list:
         self.expect("{")
@@ -845,6 +947,8 @@ class SqfParser:
             ">=",
             "==",
             "!=",
+            # membership: `_x in _array` (the inventory walk's skip lists).
+            "in",
         ):
             op = self.next().value
             right = self.parse_add()
@@ -883,6 +987,13 @@ class SqfParser:
         if t is not None and t.value == "!":
             self.next()
             return Bin("not", Num(0.0), self.parse_unary())
+        if t is not None and t.value == "+":
+            # prefix + copies an array: `+assignedItems _unit`.
+            self.next()
+            return UnaryCmd("copy", self.parse_unary())
+        if t is not None and t.value == "switch":
+            self.next()
+            return self.parse_switch()
         # Prefix `call`: `call FUNC(x)` runs the function value with no args.
         # The postfix `args call FUNC(x)` form is handled in parse_postfix.
         if t is not None and t.value == "call" and self._is_cmd_use(t.value):
@@ -1024,9 +1135,9 @@ class SqfParser:
             params = []
             if self.peekv() == "params":
                 self.next()
-                # Simple lambda form: params ["_x", "_y"] - a bare array
-                # of quoted names, no defaults/type tags.
-                params = self.parse_lambda_params()
+                # Either form: params ["_x", "_y"] or the full spec form
+                # with defaults, [["_x", 0, [0]]].
+                params = self.parse_lambda_specs()
                 self.optional_semi()
             else:
                 self.i = save
@@ -1212,12 +1323,19 @@ class SqfRuntime:
             if node.op == "not":
                 return not self.eval(node.right)
             # A `{ ... }` block operand is SQF code and is run, not truthy by
-            # itself.  Evaluation stays eager (the harness's established
-            # behaviour) so guard-boundary tests keep seeing both operands.
+            # itself.  A `{ ... }` on the right of && or || is the engine's
+            # short-circuit idiom (`count _c == 0 && {_c select 0 == x}`), so
+            # it must NOT run when the left operand already settles the
+            # result; only the plain-value operands keep the harness's eager
+            # rule, so guard-boundary tests keep seeing both.
             left = self.eval(node.left)
-            right = self.eval(node.right)
             if isinstance(left, Lambda):
                 left = self._run_block(left)
+            if isinstance(node.right, Lambda) and (
+                (node.op == "&&" and not left) or (node.op == "||" and left)
+            ):
+                return bool(left)
+            right = self.eval(node.right)
             if isinstance(right, Lambda):
                 right = self._run_block(right)
             if node.op == "+":
@@ -1242,6 +1360,10 @@ class SqfRuntime:
                 return left == right
             if node.op == "!=":
                 return left != right
+            if node.op == "in":
+                # SQF membership: `_x in _array`.  A string in a string is
+                # a substring test in the engine; the kernels use arrays.
+                return left in right
             if node.op == "&&":
                 return bool(left) and bool(right)
             if node.op == "||":
@@ -1339,37 +1461,38 @@ class SqfRuntime:
                 return _sqf_type_tag(value)
             if node.op == "compile":
                 return value
-            # Engine terrain and object queries: supplied by the caller through
-            # globals_.  A test that exercises the wildlife sampler binds them.
-            if node.op in (
-                "surfaceType",
-                "surfaceIsWater",
-                "getTerrainHeightASL",
-                "nearestTerrainObjects",
-                # Object queries used by fnc_calculateCompassDeviation.
-                "nearestObjects",
-                "vehicle",
-                "getPosASL",
-                "values",
-                "isClass",
-                "getArray",
-                "fileExists",
-                # Object queries used by fnc_updateFuelSystem.
-                "local",
-                "isNull",
-                "alive",
-                "typeOf",
-                "fuel",
-                # Damage queries used by fnc_updateDamageSystem.
-                "getAllHitPointsDamage",
-                "isDamageAllowed",
-                # Hashmap construction: the generated data tables.
-                "createHashMapFromArray",
-            ):
-                fn = self.globals.get(node.op)
-                if callable(fn):
-                    return fn(value)
+            if node.op == "copy":
+                return list(value) if isinstance(value, list) else value
+            # Every remaining unary command is an engine query that the
+            # caller supplies through globals_ (surfaceType, isNull,
+            # uniform, items, getText, ...).  A command that is registered
+            # but not bound is a test error, reported as such.
+            fn = self.globals.get(node.op)
+            if callable(fn):
+                return fn(value)
             raise ValueError(f"unknown unary command {node.op}")
+        if isinstance(node, Switch):
+            value = self.eval(node.expr)
+            default = None
+            for case_value, block in node.cases:
+                if case_value is None:
+                    default = block
+                    continue
+                # The engine evaluates the case expressions in source
+                # order and runs the first that equals the switch value.
+                if self.eval(case_value) == value:
+                    self.push()
+                    try:
+                        return self.run(block)
+                    finally:
+                        self.pop()
+            if default is not None:
+                self.push()
+                try:
+                    return self.run(default)
+                finally:
+                    self.pop()
+            return None
         if isinstance(node, Each):
             arr = self.eval(node.arr)
             code = self.eval(node.code)
@@ -1444,8 +1567,16 @@ class SqfRuntime:
                 args = [args]
             if isinstance(fn, Lambda):
                 self.push()
-                for i, p in enumerate(fn.params):
-                    self.set(p, args[i] if i < len(args) else None)
+                for i, spec in enumerate(fn.params):
+                    name, default = spec if isinstance(spec, tuple) else (spec, None)
+                    if i < len(args):
+                        self.set(name, args[i])
+                    elif default is not None:
+                        # An omitted argument binds the EVALUATED default,
+                        # never the AST node.
+                        self.set(name, self.eval(default))
+                    else:
+                        self.set(name, None)
                 # closure vars visible (lambda declared in the solver scope)
                 for k, v in fn.closure.items():
                     if k not in self.scopes[-1]:
