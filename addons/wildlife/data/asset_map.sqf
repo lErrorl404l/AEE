@@ -16,9 +16,12 @@ has six columns:
   5 species        string, empty when the recording is not given a species
 
 A media string with a dot is a raw vanilla .wss file. A media string without
-a dot is a vanilla CfgSFX class. An UNKNOWN or UNCONFIRMED recording is
-never given a species. The sound map aee_ambience_fnc_speciesSound reads
-this table.
+a dot is a vanilla CfgSFX class, which is the group's attached-emitter
+looping source for aee_ambience_fnc_emitterClass. The generator derives that
+class from the group anchor's CfgSFX.<Class> config path; a group whose
+anchor names no CfgSFX class has no emitter source, and its corpus
+emitter_note records why. An UNKNOWN or UNCONFIRMED recording is never given
+a species. The sound map aee_ambience_fnc_speciesSound reads this table.
 */
 [
     ["fauna", "arid", "CONFIRMED", [], ["Goat_random_F", "Snake_vipera_random_F", "Snake_random_F", "Rabbit_F"], ""],
@@ -40,10 +43,10 @@ this table.
     ["sound", "hen", "UNCONFIRMED", ["a3\sounds_f\ambient\animals\hen1.wss", "a3\sounds_f\ambient\animals\hen2.wss", "a3\sounds_f\ambient\animals\hen3.wss"], [], ""],
     ["sound", "night_insect", "CONFIRMED", ["a3\sounds_f\ambient\basics\night_insects_birds_nowinds1.wss", "a3\sounds_f\ambient\basics\night_insects_birds_nowinds2.wss", "a3\sounds_f\ambient\basics\night_insects_birds_nowinds3.wss", "a3\sounds_f\ambient\basics\night_insects_birds_nowinds4.wss", "a3\sounds_f\ambient\basics\night_insects_birds_nowinds5.wss", "a3\sounds_f\ambient\basics\night_insects_birds_winds1.wss", "a3\sounds_f\ambient\basics\night_insects_birds_winds2.wss", "a3\sounds_f\ambient\basics\night_insects_birds_winds3.wss", "a3\sounds_f\ambient\basics\night_insects_birds_winds4.wss", "a3\sounds_f\ambient\basics\night_insects_birds_winds5.wss", "a3\sounds_f\ambient\basics\night_insects_nowinds6.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_01.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_02.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_03.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_04.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_05.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_06.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_07.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_08.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_09.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Night_10.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Raspy_01.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Insects\Insect_Raspy_02.wss"], [], ""],
     ["sound", "none", "UNKNOWN", [], [], ""],
-    ["sound", "owl", "CONFIRMED", ["a3\sounds_f\ambient\animals\owl1.wss", "a3\sounds_f\ambient\animals\owl2.wss", "a3\sounds_f\ambient\animals\owl3.wss"], [], ""],
+    ["sound", "owl", "CONFIRMED", ["a3\sounds_f\ambient\animals\owl1.wss", "a3\sounds_f\ambient\animals\owl2.wss", "a3\sounds_f\ambient\animals\owl3.wss", "Owl"], [], ""],
     ["sound", "sarance", "CONFIRMED", ["a3\sounds_f\ambient\animals\sarance1.wss", "a3\sounds_f\ambient\animals\sarance2.wss", "a3\sounds_f\ambient\animals\sarance3.wss", "a3\sounds_f\ambient\animals\sarance4.wss"], [], ""],
     ["sound", "sheep", "UNCONFIRMED", ["a3\animals_f_beta\sheep\data\sound\sheep1.wss", "a3\animals_f_beta\sheep\data\sound\sheep2.wss", "a3\animals_f_beta\sheep\data\sound\sheep3.wss", "a3\animals_f_beta\sheep\data\sound\sheep4.wss", "a3\animals_f_beta\sheep\data\sound\sheep5.wss"], [], ""],
-    ["sound", "songbird", "CONFIRMED", ["a3\sounds_f\ambient\animals\birds1.wss", "a3\sounds_f\ambient\animals\birds2.wss", "a3\sounds_f\ambient\animals\birds3.wss", "a3\sounds_f\ambient\animals\birds4.wss", "a3\sounds_f\ambient\animals\birds5.wss"], [], ""],
+    ["sound", "songbird", "CONFIRMED", ["a3\sounds_f\ambient\animals\birds1.wss", "a3\sounds_f\ambient\animals\birds2.wss", "a3\sounds_f\ambient\animals\birds3.wss", "a3\sounds_f\ambient\animals\birds4.wss", "a3\sounds_f\ambient\animals\birds5.wss", "Birds"], [], ""],
     ["sound", "water", "CONFIRMED", [], [], ""],
     ["sound", "wolf", "CONFIRMED", ["A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Animals\Wolves_01.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Animals\Wolves_02.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Animals\Wolves_03.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Animals\Wolves_04.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Animals\Wolves_05.wss", "A3\Sounds_F_Enoch\Assets\Environment\SpotFx\Fauna\Animals\Wolves_06.wss"], [], ""]
 ]

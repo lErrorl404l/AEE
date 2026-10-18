@@ -8,6 +8,7 @@ read the engine wiring, which the harness cannot execute.
 Run: python3 -m unittest tools.tests.test_wildlife -v
 """
 
+import json
 import math
 import re
 import sys
@@ -888,6 +889,7 @@ class TestWildlifeSettingsStrings(unittest.TestCase):
 
 
 ASSET_MAP = DATA / "asset_map.sqf"
+CORPUS = ROOT / "data" / "wildlife" / "asset_map.json"
 SPECIES_SOUND = AMBIENCE / "fnc_speciesSound.sqf"
 MEDIA_EXTENSIONS = {".wss", ".ogg", ".wav"}
 
@@ -1389,24 +1391,59 @@ class TestEmitterClass(unittest.TestCase):
     def test_an_empty_group_has_no_source(self):
         self.assertEqual(run_sqf(EMITTER_CLASS, ["", self.ASSET_MAP]), "")
 
-    def test_the_real_asset_map_resolves_no_sound_group_to_a_source(self):
-        # Issue #276: the shipped map holds only .wss paths, so the resolver
-        # returns "" for every group that has media and the emitter layer is
-        # inert.  This is the defect, pinned so a data fix is visible.
+    def test_the_real_asset_map_gives_a_media_bearing_group_a_source(self):
+        # Issue #276: the layer was inert because every media entry in the
+        # shipped map was a .wss path.  A media-bearing group must now resolve
+        # to a looping source, or the layer stays dead.
         rows = load_asset_map()
         groups = [row[1] for row in rows if row[0] == "sound" and row[3]]
         self.assertGreater(len(groups), 0)
-        for group in groups:
-            self.assertEqual(run_sqf(EMITTER_CLASS, [group, rows]), "", group)
+        resolved = [g for g in groups if run_sqf(EMITTER_CLASS, [g, rows]) != ""]
+        self.assertTrue(resolved, f"no media-bearing group resolves: {groups}")
 
-    def test_a_declared_looping_class_would_become_the_source(self):
+    def test_the_resolved_source_is_the_corpus_cfg_sfx_anchor_class(self):
+        # The generator derives the emitter class from the group anchor's
+        # CfgSFX.<Class> config path, so the resolver must return exactly the
+        # class the corpus anchor names, and nothing else.
+        rows = load_asset_map()
+        corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+        for entry in corpus["sound_groups"]:
+            group = entry["sound_group"]
+            anchor = entry.get("anchor") or {}
+            config = str(anchor.get("config", ""))
+            expected = config.split(".", 1)[1] if config.startswith("CfgSFX.") else ""
+            with self.subTest(group=group):
+                self.assertEqual(run_sqf(EMITTER_CLASS, [group, rows]), expected)
+
+    def test_every_media_bearing_group_resolves_or_carries_a_label(self):
+        # Residual gap, recorded in the corpus: vanilla ships no CfgSFX class
+        # for most media sets (docs/wiki/research/wildlife-sound-inventory.md
+        # section 2).  Those groups can never resolve, so each carries an
+        # emitter_note instead of a name that vanilla does not define.
+        rows = load_asset_map()
+        corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+        labels = {
+            entry["sound_group"]: entry.get("emitter_note")
+            for entry in corpus["sound_groups"]
+        }
+        for row in rows:
+            if row[0] != "sound" or not row[3]:
+                continue
+            group = row[1]
+            with self.subTest(group=group):
+                source = run_sqf(EMITTER_CLASS, [group, rows])
+                if source == "":
+                    self.assertTrue(labels.get(group), f"{group} has no emitter_note")
+                else:
+                    self.assertIn(source, row[3])
+
+    def test_a_declared_looping_class_becomes_the_source(self):
         # The data requirement, stated as an implication: a media entry with
         # no dot is the only form fnc_emitterClass returns, so the layer goes
-        # live as soon as the corpus names one.  Vacuous today because no
-        # media entry has one, which is the requirement issue #276 records.
-        # The class belongs in data/wildlife/asset_map.json (generated into
-        # this map by tools/validation/gen_wildlife_ecology.py), not in the
-        # addon: hand-editing the generated map is forbidden.
+        # live for exactly the groups the corpus names a class for.  The class
+        # belongs in data/wildlife/asset_map.json (generated into this map by
+        # tools/validation/gen_wildlife_ecology.py), not in the addon:
+        # hand-editing the generated map is forbidden.
         rows = load_asset_map()
         declared = [
             (row[1], entry)
@@ -1415,6 +1452,7 @@ class TestEmitterClass(unittest.TestCase):
             for entry in row[3]
             if "." not in entry
         ]
+        self.assertTrue(declared, "the map declares no looping class")
         for group, entry in declared:
             self.assertEqual(run_sqf(EMITTER_CLASS, [group, rows]), entry, group)
 

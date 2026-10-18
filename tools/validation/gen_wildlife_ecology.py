@@ -11,8 +11,9 @@ This generator reads the corpus and writes two SQF files:
 
 The generated files are data tables. The pure matcher
 aee_wildlife_fnc_getSpeciesMatch reads the ecology corpus. The sound map
-reads the asset map. CBA PREP compiles the data files; no function lives
-here.
+reads the asset map. An asset-map group anchor that names a CfgSFX class is
+emitted as that group's looping emitter source. CBA PREP compiles the data
+files; no function lives here.
 
 The order is by id, so the output is byte-stable. The `--check` mode writes
 nothing and returns 1 when an on-disk file differs from a fresh render.
@@ -89,9 +90,12 @@ has six columns:
   5 species        string, empty when the recording is not given a species
 
 A media string with a dot is a raw vanilla .wss file. A media string without
-a dot is a vanilla CfgSFX class. An UNKNOWN or UNCONFIRMED recording is
-never given a species. The sound map aee_ambience_fnc_speciesSound reads
-this table.
+a dot is a vanilla CfgSFX class, which is the group's attached-emitter
+looping source for aee_ambience_fnc_emitterClass. The generator derives that
+class from the group anchor's CfgSFX.<Class> config path; a group whose
+anchor names no CfgSFX class has no emitter source, and its corpus
+emitter_note records why. An UNKNOWN or UNCONFIRMED recording is never given
+a species. The sound map aee_ambience_fnc_speciesSound reads this table.
 */
 [
 __ROWS__
@@ -164,6 +168,28 @@ def ecology_rows(ecology: dict[str, object]) -> list[list[object]]:
     return rows
 
 
+def _anchor_classes(entry: dict[str, object]) -> list[str]:
+    """The looping emitter class a group anchor names, if it names one.
+
+    createSoundSourceLocal takes a CfgSFX class (docs/wiki/research/
+    wildlife-ambience-dossier.md, [P] BIKI), and an anchor of the form
+    CfgSFX.<Class> owns the very samples the media rows list.  The class is
+    derived from the anchor, so no class name is ever typed into the
+    generated map by hand.  An anchor that names a CfgSounds, CfgVehicles or
+    CfgSoundSet entry is not a sound source, so it yields nothing: a group
+    with no CfgSFX anchor has no emitter source, and its corpus emitter_note
+    records why.
+    """
+    anchor = entry.get("anchor")
+    if not isinstance(anchor, dict):
+        return []
+    config = str(anchor.get("config", ""))
+    if not config.startswith("CfgSFX."):
+        return []
+    name = config.split(".", 1)[1]
+    return [name] if name else []
+
+
 def asset_rows(asset_map: dict[str, object]) -> list[list[object]]:
     """Flatten every sound group and faunal group into a six-column row."""
     rows: list[list[object]] = []
@@ -176,6 +202,7 @@ def asset_rows(asset_map: dict[str, object]) -> list[list[object]]:
                 media.append(str(item["path"]))
             elif "cfg_sfx" in item:
                 media.append(str(item["cfg_sfx"]))
+        media += _anchor_classes(entry)
         species = entry.get("species")
         rows.append(
             [

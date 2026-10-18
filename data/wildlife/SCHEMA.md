@@ -150,7 +150,16 @@ classes, transcribed from `addons/wildlife/data/species_table.sqf`.
 Rules:
 
 - A media path begins with `a3\`. No path begins with `x\` or `z\`.
-- A CfgSFX class is `Owl` or `Sound_Stream`, the two the manifest confirms.
+- An `anchor` whose `config` is `CfgSFX.<Class>` is also the group's looping
+  emitter source. The generator derives that class from the anchor, so no
+  class name is typed into the generated map by hand. A group whose anchor
+  names a `CfgSounds`, `CfgVehicles` or `CfgSoundSet` entry has no emitter
+  class, because the engine sound-source command takes a `CfgSFX` class. Each
+  such media-bearing group carries an `emitter_note` that records why.
+- A CfgSFX class is one the vanilla sound inventory confirms with a config
+  locator (`docs/wiki/research/wildlife-sound-inventory.md` section 2): `Owl`
+  and `Birds`. `Sound_Stream` stays allowed but is the silent dummy, so no
+  group maps to it.
 - `sarance` is CONFIRMED cricket stridulation (Orthoptera). Its four files are
   byte-identical by md5 to the vanilla cricket set, so its `media_class` is
   `cricket`. The species is not pinned below the order, so it carries a `taxon`
