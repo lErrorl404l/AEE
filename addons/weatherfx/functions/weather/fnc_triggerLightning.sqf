@@ -59,7 +59,15 @@ _light setLightAmbient [1,1,1];
 _light setLightColor [1,1,1];
 _light setLightAttenuation [0,0,0,0,500,1000];
 
-// Thunder follows the flash: sound travels ~343 m/s, so delay the roll.
+// Thunder follows the flash: sound travels ~343 m/s, so delay the roll by
+// the distance to the strike.  The argument order is
+// [sound, source, isInside, position, volume, pitch, distance, offset, local]
+// (the reference is addons/ambience/functions/fnc_playOneShot.sqf).  The
+// propagation speed is NOT a playSound3D parameter, so the delay carries it
+// and the array does not (issue #279: the array was shifted by one slot, so
+// -1 became the volume, the volume became the pitch, the pitch became the
+// distance and 343 landed in the offset slot).
+private _thunderDelay = _dist / 343;
 [{
     params ["_pos", "_thunderVolume"];
     playSound3D [
@@ -67,12 +75,13 @@ _light setLightAttenuation [0,0,0,0,500,1000];
         objNull,
         false,
         _pos,
-        -1,                          // max-distance (unlimited)
         _thunderVolume * (0.5 + ([round (time * 10), 201] call EFUNC(lib,deterministicRandom))),  // volume
-        0.75 + (0.5 * ([round (time * 10), 202] call EFUNC(lib,deterministicRandom))), // pitch
-        343                          // propagation speed (m/s)
+        0.75 + (0.5 * ([round (time * 10), 202] call EFUNC(lib,deterministicRandom))),           // pitch
+        -1,                          // distance (unlimited)
+        0,                           // offset
+        true                         // local (never broadcast)
     ];
-}, [_pos, _thunderVolume], 2] call CBA_fnc_waitAndExecute;
+}, [_pos, _thunderVolume], _thunderDelay] call CBA_fnc_waitAndExecute;
 
 [{
     deleteVehicle _this;

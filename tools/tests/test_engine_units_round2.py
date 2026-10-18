@@ -348,3 +348,74 @@ class TestLunarHeader(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ─── Environment: snow accretion is driven by the snowfall rate ───────────
+
+
+class TestSnowAccretionGate(unittest.TestCase):
+    """The accretion gate and body must act on the same input (issue #275).
+
+    The gate admitted `T < 0 && (rain > 0 || overcast > 0.7)` but the body
+    multiplied by `rain`, so heavy overcast with no rain added exactly zero
+    and could never accrete.  The accretion is now driven by the phase model's
+    frozen precipitation rate (aee_core_snowfallRate), so a snowfall of any
+    kind accretes and the overcast clause is gone.
+    """
+
+    def setUp(self):
+        self.src = _read(SNOW)
+
+    def test_the_overcast_no_op_clause_is_gone(self):
+        self.assertNotIn("overcast > 0.7", self.src)
+
+    def test_accretion_reads_the_published_snowfall_rate(self):
+        self.assertIn("QEGVAR(core,snowfallRate)", self.src)
+
+    def test_accretion_is_a_body_the_gate_admits(self):
+        # The accretion branch acts on the value it gated on: a positive
+        # snowfall rate.
+        body = self.src.split("Accretion:", 1)[1].split("Melt:", 1)[0]
+        self.assertIn("snowfallRate", body)
+        self.assertIn("if (_sweMmH > 0) then", body)
+
+
+# ─── weatherfx: the thunder playSound3D array matches the engine contract ──
+
+
+class TestThunderPlaySound3DOrder(unittest.TestCase):
+    """The thunder sound array is positional, not shifted (issue #279).
+
+    The array was [sound, source, isInside, position, -1, volume, pitch, 343],
+    so -1 became the volume, the volume became the pitch, the pitch became the
+    distance and 343 landed in the offset slot.  The propagation speed is not
+    a playSound3D parameter, so the delay carries it.
+    """
+
+    THUNDER = (
+        REPO
+        / "addons"
+        / "weatherfx"
+        / "functions"
+        / "weather"
+        / "fnc_triggerLightning.sqf"
+    )
+
+    def setUp(self):
+        self.src = _read(self.THUNDER)
+        self.call = self.src.split("playSound3D [", 1)[1].split("];", 1)[0]
+
+    def test_the_volume_precedes_the_pitch(self):
+        self.assertLess(self.call.index("// volume"), self.call.index("// pitch"))
+
+    def test_the_propagation_speed_is_not_an_argument(self):
+        self.assertNotIn("343", self.call)
+
+    def test_the_array_carries_the_contract_slots(self):
+        # volume, pitch, distance, offset, local
+        for slot in ("// volume", "// pitch", "// distance", "// offset", "// local"):
+            self.assertIn(slot, self.call)
+
+    def test_the_delay_is_the_distance_over_the_speed_of_sound(self):
+        self.assertIn("_thunderDelay = _dist / 343;", self.src)
+        self.assertIn("], _thunderDelay] call CBA_fnc_waitAndExecute", self.src)

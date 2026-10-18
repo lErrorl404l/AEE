@@ -9,8 +9,8 @@ A variable named `aee_dive_{leaf}` is written as `EGVAR(dive,leaf)` by the produ
 
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
-| `aee_dive_diveStates` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/altitude/XEH_postInit.sqf:51` | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
-| `aee_dive_diveUID` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/altitude/XEH_postInit.sqf:56` | UNKNOWN |
+| `aee_dive_diveStates` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/altitude/XEH_postInit.sqf:71` | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
+| `aee_dive_diveUID` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/altitude/XEH_postInit.sqf:76` | UNKNOWN |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

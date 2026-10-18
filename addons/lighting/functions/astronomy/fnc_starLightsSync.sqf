@@ -38,10 +38,18 @@ if !(_overcast isEqualType 0) then { _overcast = 0; };
 if ((!_skyForce) && (!_settingOn || (_sunElev >= 0) || (_overcast >= 0.8))) exitWith {
     { deleteVehicle (_x select 1); } forEach _lights;
     missionNamespace setVariable [QGVAR(starLights), []];
+    // The faint-star Draw3D layer runs off this flag, so it stops with the
+    // light-emitter layer instead of drawing past the setting, the daylight
+    // and the overcast gate (issue #267).
+    missionNamespace setVariable [QGVAR(starsRendering), false];
 };
 
 private _stars = missionNamespace getVariable [QGVAR(visibleStars), []];
 private _eyePos = ((call CBA_fnc_currentUnit) call EFUNC(core,getEyeState)) select 0;
+
+// The gate passed: this pass renders.  Publish it for the faint-star layer
+// and the sky-state log, so every renderer shares one decision (issue #267).
+missionNamespace setVariable [QGVAR(starsRendering), true];
 
 // Forced limiting magnitude: publish the effective value and, when forced,
 // the emitter count.  The emitter path still caps at STAR_LIGHT_MAX_MAG, so

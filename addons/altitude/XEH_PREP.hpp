@@ -3,6 +3,7 @@
 // Hypoxia, G-LOC, altitude DCS, barometric pressure and oxygen delivery.
 // Split out of aee_physiology (ADR-032); oxygen/ carries the delivery model.
 
+PREPS(altitude,applyGLOCEffects);
 PREPS(altitude,calculateAltitudeAcclimatization);
 PREPS(altitude,calculateAltitudeDCS);
 PREPS(altitude,calculateBarometricPressure);

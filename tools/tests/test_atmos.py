@@ -384,3 +384,59 @@ class TestAirframeIcingDetectedConsumer(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def _parcel_lnb(t_c, rh, ps=1013.25):
+    """Run the real parcel kernel and return the LNB (cloud top), metres."""
+    import sys as _sys
+
+    _sys.path.insert(0, str(Path(__file__).parent))
+    from sqf_lite import run_sqf  # noqa: PLC0415
+
+    kernel = ROOT / "addons" / "atmos" / "functions" / "physics" / "fnc_calculateParcelCape.sqf"
+    return run_sqf(kernel, [t_c, rh, ps])[3]
+
+
+class TestLightningCloudTopContract(unittest.TestCase):
+    """The ice gate reads the cloud TOP, not the clamped base (issue #238).
+
+    fnc_calculateLightning read aee_core_cloudCeiling_m as the cloud top.
+    fnc_calculateCloudCeiling publishes the cloud BASE (the lifting
+    condensation level) clamped to 0..5000 m, so the ice factor
+    ((top - 5500) / 2500, clamped) was always zero and no strike was ever
+    generated.
+    """
+
+    LIGHTNING = (
+        ROOT / "addons" / "atmos" / "functions" / "physics" / "fnc_calculateLightning.sqf"
+    )
+    CEILING = (
+        ROOT / "addons" / "atmos" / "functions" / "physics" / "fnc_calculateCloudCeiling.sqf"
+    )
+    GATE_M = 5500
+
+    def test_the_gate_reads_the_cloud_top(self):
+        src = self.LIGHTNING.read_text(encoding="utf-8")
+        self.assertIn("getVariable [QEGVAR(core,cloudTop_m), 0]", src)
+        self.assertNotIn("getVariable [QEGVAR(core,cloudCeiling_m), 0]", src)
+
+    def test_the_producer_publishes_the_top(self):
+        src = self.CEILING.read_text(encoding="utf-8")
+        self.assertIn("setVariable [QEGVAR(core,cloudTop_m), _cloudTop]", src)
+
+    def test_the_base_cap_cannot_reach_the_gate(self):
+        # The base is the LCL, clamped to 5000 m.  That is the defect: the
+        # gate needs 5500 m, so the base alone can never open it.
+        src = self.CEILING.read_text(encoding="utf-8")
+        self.assertIn("_ceiling = 0 max _ceiling min 5000;", src)
+        self.assertLess(5000, self.GATE_M)
+
+    def test_a_convective_parcel_lifts_the_top_above_the_gate(self):
+        # A warm, humid parcel is deeply unstable, so the level of neutral
+        # buoyancy is above the ice gate and a strike becomes possible.
+        self.assertGreater(_parcel_lnb(25.0, 85.0), self.GATE_M)
+
+    def test_a_stable_parcel_has_no_convective_top(self):
+        # Cool, dry air is stable: the LNB is 0, so the top falls back to the
+        # base and the gate stays shut.  The gate cannot be forced open.
+        self.assertEqual(_parcel_lnb(5.0, 60.0), 0.0)

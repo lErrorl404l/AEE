@@ -69,9 +69,13 @@ private _risk = (_overcast * 0.3 + _rain * 0.3 + (_RH / 100) * 0.2 + _convective
 
 // ─── Ice-phase gate ─────────────────────────────────────────────────────
 // Deep clouds must reach the mixed-phase region for charge separation.
-// The cloud ceiling gives the cloud top. Below 5500 m the ice phase is
-// weak or absent; at 8000 m it is fully developed.
-private _cloudTop = missionNamespace getVariable [QEGVAR(core,cloudCeiling_m), 0];
+// The gate reads the cloud TOP (QEGVAR(core,cloudTop_m), published by
+// fnc_calculateCloudCeiling from the parcel model's level of neutral
+// buoyancy).  Below 5500 m the ice phase is weak or absent; at 8000 m it is
+// fully developed.  (issue #238: this once read cloudCeiling_m, the cloud
+// BASE, which the producer clamps to 5000 m, so the factor was always zero.)
+private _cloudTop = missionNamespace getVariable [QEGVAR(core,cloudTop_m), 0];
+if !(_cloudTop isEqualType 0) then { _cloudTop = 0; };
 private _iceFactor = ((_cloudTop - 5500) / 2500) min 1 max 0;
 _risk = _risk * _iceFactor;
 

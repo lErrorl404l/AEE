@@ -507,3 +507,23 @@ class TestMeteorWiring(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSiderealClockBase(unittest.TestCase):
+    """The sidereal clock advances from the world clock (issue #264).
+
+    `time` is seconds since the mission STARTED, so a kernel that used it as
+    the time of day drew the sky for the mission-start hour.  The shared
+    kernel must advance from `dayTime`, the engine's world clock.
+    """
+
+    def test_the_clock_base_is_the_world_clock(self):
+        src = SIDEREAL.read_text(encoding="utf-8")
+        self.assertIn("dayTime", src)
+        self.assertNotIn("private _hours = time / 3600;", src)
+
+    def test_the_split_uses_the_shared_kernel(self):
+        for name in ("fnc_getStarCatalog.sqf", "fnc_updateMilkyWay.sqf"):
+            with self.subTest(name=name):
+                src = (SENSOR / name).read_text(encoding="utf-8")
+                self.assertIn("call FUNC(siderealTime)", src)

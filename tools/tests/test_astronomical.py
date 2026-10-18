@@ -102,14 +102,23 @@ def ks_lunar_lux(phase):
 # ─── Limiting magnitude mirrors ────────────────────────────────────────────
 
 
-NELM_KERNEL = Path(__file__).resolve().parents[2] / "addons/lighting/functions/astronomy/fnc_calculateLimitingMagnitude.sqf"
+NELM_KERNEL = (
+    Path(__file__).resolve().parents[2]
+    / "addons/lighting/functions/astronomy/fnc_calculateLimitingMagnitude.sqf"
+)
 
 
-def calculate_limiting_magnitude(moon_alt=-90, moon_frac=0, twilight_lux=0, haze=0.08, houses=0):
+def calculate_limiting_magnitude(
+    moon_alt=-90, moon_frac=0, twilight_lux=0, haze=0.08, houses=0
+):
     """Run the real NELM kernel (light pollution held at zero)."""
     from sqf_lite import run_sqf
-    return run_sqf(NELM_KERNEL, [moon_alt, moon_frac, twilight_lux, haze, houses],
-                   {"__FUNC__lightPollutionPenalty": lambda *a: 0.0})
+
+    return run_sqf(
+        NELM_KERNEL,
+        [moon_alt, moon_frac, twilight_lux, haze, houses],
+        {"__FUNC__lightPollutionPenalty": lambda *a: 0.0},
+    )
 
 
 def knoll_nelm(b, k):
@@ -248,14 +257,24 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_ks_magnitude_law(self):
-        text = (Path(__file__).resolve().parents[2] / "addons/core/functions/fnc_moonIlluminance.sqf").read_text(encoding="utf-8")
+        text = (
+            Path(__file__).resolve().parents[2]
+            / "addons/core/functions/fnc_moonIlluminance.sqf"
+        ).read_text(encoding="utf-8")
         for token in ("-12.73", "0.026", "4e-9", "2.54e-6"):
             self.assertIn(token, text)
 
     def test_limiting_magnitude_constants(self):
         self._assert_in_sqf(
             "fnc_calculateLimitingMagnitude.sqf",
-            ["1.74e-4", "1.076e-9", "1e5", "2.54e-6", "10 ^ 5.36", "3.84 + (0.026 * _alpha)"],
+            [
+                "1.74e-4",
+                "1.076e-9",
+                "1e5",
+                "2.54e-6",
+                "10 ^ 5.36",
+                "3.84 + (0.026 * _alpha)",
+            ],
             "Falchi natural sky, Knoll threshold, Krisciunas-Schaefer moon",
             addon="env",
         )
@@ -436,7 +455,10 @@ class TestLimitingMagnitude(unittest.TestCase):
         self.assertLess(m, 2.5)
 
     def test_haze_raises_extinction(self):
-        self.assertLess(calculate_limiting_magnitude(haze=0.25)[0], calculate_limiting_magnitude(haze=0.05)[0])
+        self.assertLess(
+            calculate_limiting_magnitude(haze=0.25)[0],
+            calculate_limiting_magnitude(haze=0.05)[0],
+        )
 
     def test_brighter_moon_lowers_nelm(self):
         prev = calculate_limiting_magnitude(45, 0.1)[0]
@@ -658,3 +680,39 @@ class TestStarCatalogSortOrder(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSignedLatitudeContract(unittest.TestCase):
+    """Direction-dependent astronomy reads the SIGNED latitude.
+
+    getWorldLocation returns [signedLat, magnitude, lon, zone].  The star
+    catalogue (issue #265) and the solar radiation (issue #266) read the
+    magnitude at index 1, so a southern observer saw Polaris above the horizon
+    and a noon sun due south.  Both must read the signed value at index 0.
+    """
+
+    def test_the_star_catalogue_uses_the_signed_value(self):
+        src = _read_sqf("fnc_getStarCatalog.sqf", addon="env")
+        self.assertIn("([] call EFUNC(lib,getWorldLocation)) select 0", src)
+        self.assertNotIn("([] call EFUNC(lib,getWorldLocation)) select 1", src)
+
+    def test_the_solar_radiation_uses_the_signed_value(self):
+        src = _read_sqf("fnc_calculateSolarRadiation.sqf", addon="env")
+        self.assertIn("private _lat = _loc select 0;", src)
+
+    def test_the_milky_way_and_meteors_use_the_signed_value(self):
+        for name in ("fnc_updateMilkyWay.sqf", "fnc_updateMeteors.sqf"):
+            with self.subTest(name=name):
+                src = _read_sqf(name, addon="env")
+                self.assertIn("getWorldLocation)) select 0", src)
+                self.assertNotIn("getWorldLocation)) select 1", src)
+
+    def test_the_geolocation_source_returns_signed_then_magnitude(self):
+        # The contract the consumers depend on: index 0 signed, index 1 the
+        # magnitude.
+        loc = (
+            Path(__file__).resolve().parents[2]
+            / "addons/lib/functions/fnc_getWorldLocation.sqf"
+        )
+        src = loc.read_text(encoding="utf-8")
+        self.assertIn("[_signed, abs _signed, _lon, _zone]", src)

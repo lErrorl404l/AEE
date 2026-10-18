@@ -3,13 +3,14 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/atmos/`
 - Direction: one way. `core` must initialise before `atmos` reads.
-- Variables crossing: 47.
+- Variables crossing: 48.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
-| `aee_core_cloudCeiling_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudCeiling.sqf:42` | Cloud base height in metres |
+| `aee_core_cloudCeiling_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudCeiling.sqf:59` | Cloud base height in metres |
+| `aee_core_cloudTop_m` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudCeiling.sqf:11` | UNKNOWN |
 | `aee_core_currentAirDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateOrographicPrecipitation.sqf:45` | Air density in kg/m3 |
 | `aee_core_currentDayMeanTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateHumidity.sqf:32` | UNKNOWN |
 | `aee_core_currentExtinction` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateFog.sqf:55` | Total atmospheric extinction (fog + haze + rain), per km; drives the engine fog |
@@ -19,9 +20,9 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentGusts` | SCALAR | m/s | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateWind.sqf:88` | Gust speed in m/s |
 | `aee_core_currentHaze` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateHaze.sqf:22` | Clear-air (haze) extinction at 550 nm, per km (NOAA UPP RH visibility, sigma = 3.0 / vis) |
 | `aee_core_currentHazeVisibility` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateHaze.sqf:23` | Clear-air visibility from RH, km (NOAA UPP) |
-| `aee_core_currentHumidity` | SCALAR | percent | 0..100 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudCeiling.sqf:17` | Relative humidity percent |
+| `aee_core_currentHumidity` | SCALAR | percent | 0..100 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudCeiling.sqf:19` | Relative humidity percent |
 | `aee_core_currentLightningRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateLightning.sqf:15` | Lightning risk 0..1 |
-| `aee_core_currentPressure` | SCALAR | hPa | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudDevelopment.sqf:38` | Barometric pressure in hPa |
+| `aee_core_currentPressure` | SCALAR | hPa | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculateCloudCeiling.sqf:52` | Barometric pressure in hPa |
 | `aee_core_currentPressureTrend` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/physics/fnc_calculatePressureTrend.sqf:68` | Pressure trend value |
 | `aee_core_currentSolarRadiation` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/atmos/functions/volcanic/fnc_updateVolcanic.sqf:71` | Solar radiation factor 0..1 |
 | `aee_core_currentSunAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/atmos/functions/state/fnc_updateRainbow.sqf:23` | UNKNOWN |

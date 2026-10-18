@@ -37,19 +37,31 @@ def reference(tc, rh, ps=1013.25, dz=1.0):
         if z < 11000:
             p = ps * (1 - 0.0065 * z / tk) ** 5.2559
         else:
-            p = ps * (1 - 0.0065 * 11000 / tk) ** 5.2559 * math.exp(-g * (z - 11000) / (rd * (tk - 71.5)))
+            p = (
+                ps
+                * (1 - 0.0065 * 11000 / tk) ** 5.2559
+                * math.exp(-g * (z - 11000) / (rd * (tk - 71.5)))
+            )
         if z <= zl:
             tp = tk - 0.0098 * z
         elif z - dz < zl:
             tp = tl
             ews = es(tp - 273.15)
             rs = eps * ews / (p - ews)
-            gm = g * (1 + lv * rs / (rd * tp)) / (cp + lv * lv * rs * eps / (rd * tp * tp))
+            gm = (
+                g
+                * (1 + lv * rs / (rd * tp))
+                / (cp + lv * lv * rs * eps / (rd * tp * tp))
+            )
             tp -= gm * (z - zl)
         else:
             ews = es(tp - 273.15)
             rs = eps * ews / (p - ews)
-            gm = g * (1 + lv * rs / (rd * tp)) / (cp + lv * lv * rs * eps / (rd * tp * tp))
+            gm = (
+                g
+                * (1 + lv * rs / (rd * tp))
+                / (cp + lv * lv * rs * eps / (rd * tp * tp))
+            )
             tp -= gm * dz
         b = g * (tp - te) / te
         if b > 0:
@@ -61,7 +73,7 @@ def reference(tc, rh, ps=1013.25, dz=1.0):
 class TestParcelCape(unittest.TestCase):
     def test_matches_a_fine_integration(self):
         for tc, rh in ((30, 70), (25, 80), (30, 50)):
-            cape, zl, w = run_sqf(KERNEL, [tc, rh, 1013.25])
+            cape, zl, w, _lnb = run_sqf(KERNEL, [tc, rh, 1013.25])
             ref, rzl = reference(tc, rh)
             self.assertAlmostEqual(zl, rzl, places=3)
             self.assertAlmostEqual(cape, ref, delta=max(15, 0.03 * ref))
@@ -69,7 +81,7 @@ class TestParcelCape(unittest.TestCase):
 
     def test_lcl_is_about_125_m_per_degree_of_dew_point_depression(self):
         # Espy: z_LCL ~ 125 m per K of (T - Td).
-        _cape, zl, _w = run_sqf(KERNEL, [20, 50, 1013.25])
+        _cape, zl, _w, _lnb = run_sqf(KERNEL, [20, 50, 1013.25])
         e = 0.5 * es(20)
         ln = math.log(e / 6.112)
         td = 243.5 * ln / (17.67 - ln)
@@ -81,6 +93,14 @@ class TestParcelCape(unittest.TestCase):
 
     def test_humid_tropical_air_is_strongly_unstable(self):
         self.assertGreater(run_sqf(KERNEL, [30, 75, 1013.25])[0], 2000)
+
+    def test_the_lnb_is_the_top_of_the_positive_area(self):
+        # The 4th return element is the level of neutral buoyancy: 0 for a
+        # parcel that is never buoyant above its LCL, and above the LCL for an
+        # unstable one.  The lightning ice gate consumes it (issue #238).
+        self.assertEqual(run_sqf(KERNEL, [15, 50, 1013.25])[3], 0)
+        _cape, zl, _w, lnb = run_sqf(KERNEL, [30, 75, 1013.25])
+        self.assertGreater(lnb, zl)
 
 
 if __name__ == "__main__":
