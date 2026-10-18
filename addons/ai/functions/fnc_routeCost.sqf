@@ -34,7 +34,8 @@ one severe hazard dominates and no hazard is cancelled by a bonus:
 Every hazard factor is clamped to 0..1.  A missing or malformed key
 contributes 1, so a partial map is safe.  The PRODUCT combination treats the
 hazards as independent and a route as usable only when every one is
-survivable; it is a modelling choice, UNSOURCED.  The inputs are the repo's
+survivable: the probability of surviving independent hazards is the product
+of the individual survival probabilities.  The inputs are the repo's
 own state and the base is the caller's terrain score.
 
 Arguments:

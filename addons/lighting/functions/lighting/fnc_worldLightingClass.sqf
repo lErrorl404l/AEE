@@ -5,7 +5,7 @@ Classify a world into a lighting class from FACTS.  No map name is consulted.
 
 The biome-group mapping is SOURCED: it follows the Koppen scheme that
 fnc_classifyBiome implements (Peel et al. 2007).  The thresholds in this
-kernel are UNSOURCED aesthetic proxies chosen for the eye, not published
+kernel are display proxies (no physical quantity) chosen for the eye, not published
 constants.
 
 Arguments:

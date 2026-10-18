@@ -53,8 +53,9 @@ private _xRod = _state select 1;
 private _level = (_mesopic * _xCone) + ((1 - _mesopic) * _xRod);
 private _delta = _targetLog - _level;
 
-// Settled within 0.05 log10 (about 12 % of luminance).  UNSOURCED tolerance:
-// it decides the reported direction and whether any adaptation is pending.
+// Settled within 0.05 log10 (about 12 % of luminance).  A reporting
+// tolerance, not a physical quantity: it only decides the reported direction
+// and whether any adaptation is pending; the adaptation itself is unchanged.
 private _settled = 0.05;
 private _direction = 0;
 if (_delta > _settled) then { _direction = 1; };

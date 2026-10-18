@@ -39,7 +39,7 @@ is treated as non-liquefiable and the kernel returns a high FS.
 Honest limits: this is a single-layer, free-field check at one depth.  It does
 not model the full soil profile, fines content, or the CPT-based procedures.
 The subsidence amount a caller may apply is NOT derived here (the issue's
-0.1-0.5 m figure is UNSOURCED); this kernel returns only FS and the
+0.1-0.5 m figure has no published basis and is not used); this kernel returns only FS and the
 liquefiable flag.
 
 Input:  [_pgaG, _depthM, _n160, _mag, _waterTableM] - peak ground acceleration

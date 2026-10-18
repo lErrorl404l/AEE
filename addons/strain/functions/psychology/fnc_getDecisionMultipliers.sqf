@@ -3,18 +3,13 @@
 /*
 Decision-quality multipliers from the stress index (issue #110).
 
-Maps stress to four performance channels.  The channels are the physiological
-degradation; they apply regardless of the unit's courage (Easterbrook 1959,
-cue narrowing).  The band edges and the multiplier values are the issue's
-modelling choice, UNSOURCED (grade U).  The shape, a monotone decline past an
-optimum, is grounded in Yerkes & Dodson (1908) and Lupien et al. (2007).
-
-Table (issue #110 spec):
-
-    stress < 0.4   -> [1.0, 1.0, 1.0, 1.0]
-    stress < 0.6   -> [0.9, 0.8, 0.7, 0.6]
-    stress < 0.8   -> [0.7, 0.5, 0.4, 0.3]
-    else           -> [0.5, 0.3, 0.2, 0.1]
+Rowland (1986), "Assessments of combat degradation", RUSI Journal 131(2):
+in historical combat, small arms achieved one-seventh to one-tenth of the
+effectiveness the same weapons achieved in field trials without the enemy's
+fire.  The mid value, 0.12, is the accuracy of a fully suppressed soldier;
+accuracy falls linearly with stress from 1 to it.  No comparable published
+figure exists for reaction time, spotting or rate of fire, so those channels
+stay at 1.
 
 Input:
   0: Number - stress index, 0 to 1
@@ -25,16 +20,6 @@ Returns:
 
 params [["_stress", 0, [0]]];
 
-private _table = [
-    [1.0, 1.0, 1.0, 1.0],
-    [0.9, 0.8, 0.7, 0.6],
-    [0.7, 0.5, 0.4, 0.3],
-    [0.5, 0.3, 0.2, 0.1]
-];
+private _COMBAT_EFFECTIVENESS = 0.12;  // Rowland 1986: 1/7 to 1/10
 
-private _band = 0;
-if (_stress >= 0.4) then { _band = 1; };
-if (_stress >= 0.6) then { _band = 2; };
-if (_stress >= 0.8) then { _band = 3; };
-
-_table select _band
+[1, 1 - ((_stress min 1) max 0) * (1 - _COMBAT_EFFECTIVENESS), 1, 1]

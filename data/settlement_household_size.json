@@ -1,0 +1,41 @@
+{
+ "source": "UN DESA Population Division, Household Size and Composition Around the World 2017 (Data Booklet, ST/ESA/SER.A/405), average household size",
+ "url": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/aging_theme_household_size_and_composition_around_the_world_2017_data_booklet.pdf",
+ "retrieved": "2026-10-18",
+ "worlds": {
+  "altis": [
+   "Greece",
+   2.4
+  ],
+  "stratis": [
+   "Greece",
+   2.4
+  ],
+  "tanoa": [
+   "Fiji",
+   4.8
+  ],
+  "enoch": [
+   "Poland",
+   2.8
+  ],
+  "malden": [
+   "France",
+   2.3
+  ],
+  "chernarus": [
+   "Czechia",
+   2.3
+  ],
+  "chernarus_summer": [
+   "Czechia",
+   2.3
+  ],
+  "chernarus_winter": [
+   "Czechia",
+   2.3
+  ]
+ },
+ "median_of_countries": 3.8,
+ "countries_counted": 165
+}

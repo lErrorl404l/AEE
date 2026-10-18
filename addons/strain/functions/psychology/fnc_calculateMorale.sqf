@@ -3,21 +3,22 @@
 /*
 Combat morale index (issue #110).
 
-The unit's willingness to keep fighting.  Casualties and fatigue reduce it; a
-mission bonus raises it.  The model is memoryless.
+The unit's remaining will to fight, from the group's casualties against the
+US Army breakpoint table of FM 105-5, Maneuver Control (December 1967, as
+reproduced by the Dupuy Institute, "C-WAM 4 (Breakpoints)", 2018): once a
+unit reaches about 40 percent casualties its chance of breaking approaches
+100 percent.  Morale falls linearly to 0 at that breakpoint:
 
-Formula (issue #110 spec):
+    morale = clamp(1 - casualtyRatio / 0.40 + missionBonus, 0, 1)
 
-    morale = clamp(1 - 0.5*casualtyRatio - 0.3*fatigue + missionBonus, 0, 1)
-
-The form and the 0.5 and 0.3 weights are the issue's modelling choice,
-UNSOURCED (grade U).  The qualitative basis is Wainstein (1986), IDA P-1903:
-casualties are one of five factors that put a unit out of action, and morale
-is the most important of them.  See the dossier.
+The mission bonus is a scenario designer's offset (a mission input, not a
+physical constant).  Fatigue is not applied: no published source links the
+engine's short-term stamina fatigue to morale (Dupuy's QJM exhaustion factor
+counts days in combat, a different quantity).
 
 Input:
   0: Number - casualty ratio, 0 to 1
-  1: Number - fatigue, 0 to 1
+  1: Number - fatigue, 0 to 1 (unused, see above)
   2: Number - mission bonus, a signed morale offset (default 0)
 
 Returns:
@@ -30,9 +31,8 @@ params [
     ["_missionBonus", 0, [0]]
 ];
 
-private _W_CASUALTY = 0.5;  // UNSOURCED (issue #110)
-private _W_FATIGUE = 0.3;   // UNSOURCED (issue #110)
+private _BREAK_CASUALTIES = 0.40;  // FM 105-5 (1967): breaking approaches certainty
 
-private _morale = 1 - _W_CASUALTY * _casualtyRatio - _W_FATIGUE * _fatigue + _missionBonus;
+private _morale = 1 - _casualtyRatio / _BREAK_CASUALTIES + _missionBonus;
 
-_morale min 1 max 0
+(_morale min 1) max 0

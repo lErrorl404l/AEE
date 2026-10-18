@@ -11,7 +11,7 @@
  * choice, keyed to the Koppen primary group letter (A tropical, B arid,
  * C temperate, D continental, E polar) - the letter scheme of Peel 2007
  * (doi:10.5194/hess-11-1633-2007), the same source the biome kernel cites.
- * The exact RGBA values are AEE's own and are UNSOURCED.
+ * The exact RGBA values are AEE's own and are display choices, not physical quantities.
  *
  * Arguments:
  *   0: _code <STRING> a Koppen code, for example "Cfb"

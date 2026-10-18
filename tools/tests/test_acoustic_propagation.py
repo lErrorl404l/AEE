@@ -167,7 +167,7 @@ class TestAcousticSourceDb(unittest.TestCase):
         suppression = source_db("gunshot") - source_db("suppressed")
         self.assertGreaterEqual(suppression, 17.0)
         self.assertLessEqual(suppression, 24.0)
-        self.assertAlmostEqual(suppression, 22.0, places=6)
+        self.assertAlmostEqual(suppression, 20.5, places=6)
 
     def test_the_derivation_states_the_suppression_it_uses(self):
         # 22 dB is inside the measured 17-24 dB band and is not its mid, so
@@ -176,7 +176,7 @@ class TestAcousticSourceDb(unittest.TestCase):
         for path in (SOURCE_DB, REGISTER):
             with self.subTest(path=path.name):
                 text = path.read_text(encoding="utf-8")
-                self.assertIn("22 dB", text)
+                self.assertIn("20.5 dB", text)
                 self.assertIn("20.5", text)
                 self.assertIsNone(re.search(r"(?i)mid\s+reduction", text))
 

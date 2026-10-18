@@ -243,14 +243,8 @@ class TestCrossoverSurfaceStack(unittest.TestCase):
         self.assertNotIn("_stack select 1", self.code)
         self.assertNotIn("_stack select 2", self.code)
 
-    def test_fallback_switch_is_guarded_by_an_empty_stack(self):
-        self.assertIn("if (_stack isEqualTo []) then {", self.code)
-        # The fallback names every old ground state, but only inside the guard.
-        guard_at = self.code.index("if (_stack isEqualTo []) then {")
-        default_at = self.code.index(
-            "default        { _airTemp + 2 * (1 - _overcast) }"
-        )
-        self.assertLess(guard_at, default_at)
+    def test_the_empty_stack_guard_reads_the_air_temperature(self):
+        self.assertIn("if (_stack isEqualTo []) then { _surfaceTemp = _airTemp; };", self.code)
 
     def test_resolves_position_like_the_node_stack(self):
         self.assertIn("getPosASL _unit", self.code)

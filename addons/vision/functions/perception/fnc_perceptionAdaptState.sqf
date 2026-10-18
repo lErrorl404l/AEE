@@ -35,10 +35,10 @@ Published names this kernel consumes (bound in the driver, not here):
   aee_optics_eyeMesopic             mesopic photopic fraction, 0 to 1
 
 Constants (graded):
-  SETTLED_LOG   0.05 log10.  UNSOURCED.  It matches the eye adaptation
+  SETTLED_LOG   0.05 log10.  Display or diagnostic choice, no physical quantity.  It matches the eye adaptation
                 model's own settled tolerance, about 12 % of luminance.  It
                 only decides whether the fallback reports a direction.
-  LOG_FLOOR     1e-9.  UNSOURCED.  It guards log10 of a non-positive target.
+  LOG_FLOOR     1e-9.  Numerical guard.  It guards log10 of a non-positive target.
   TAU_95        ln(20), about 2.9957.  SOURCED: a first-order lag covers
                 95 % of the remaining distance in tau * ln(20).  The eye
                 adaptation model uses the same factor.

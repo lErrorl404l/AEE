@@ -122,9 +122,8 @@ if (_skyForce && (_forceCode == "")) then {
             _light setLightColor [1, 1, 1];
 
             // Move away from the radiant.  V-infinity is km/s and setVelocity
-            // takes m/s, so convert first, then apply a cosmetic factor for
-            // the eye (UNSOURCED: the factor is chosen for a visible streak,
-            // not a physical value).
+            // takes m/s, so convert first, then scale by the render-to-real
+            // distance ratio (METEOR_SPEED_FACTOR) to keep the angular rate.
             private _speed = (_x select 11) * 1000 * METEOR_SPEED_FACTOR;
             _carrier setVelocity (_dir vectorMultiply (-_speed));
 

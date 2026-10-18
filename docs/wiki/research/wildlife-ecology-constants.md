@@ -29,7 +29,7 @@ The kernels are `addons/wildlife/functions/`. The named constants are in
 | `WILDLIFE_ACOUSTIC_LOUD_DB` | 140 dB | U | stimulus one |
 | `WILDLIFE_SPOOK_ACOUSTIC_MIN` | 0.5 | U | spook threshold on the stimulus |
 | source level: gunshot | 160 dB | S | measured unsuppressed centre-fire peak, 160-170 dB; NIOSH HHE report 2013-0124-3208 (M4 152 dB, 9 mm 146 dB at the instructor; about 160 dB at 5 yards) and the NIOSH "Hit the Mark" bulletin, 2017 |
-| source level: suppressed | 138 dB | R | 160 dB less a 22 dB suppressor reduction: one value inside the measured 17-24 dB band, whose mid is 20.5 dB, not the mid itself. Murphy, Flamme and others 2017, Int. J. Audiology, DOI 10.1080/14992027.2017.1407459: the peak falls 17-24 dB |
+| source level: suppressed | 139.5 dB | S | 160 dB less the 20.5 dB mid of the measured 17-24 dB suppressor reduction. Murphy, Flamme and others 2017, Int. J. Audiology, DOI 10.1080/14992027.2017.1407459: the peak falls 17-24 dB |
 | source level: explosion | 180 dB | U | loudness order |
 | source level: grenade | 170 dB | U | loudness order |
 | source level: aircraft | 130 dB | U | loudness order |

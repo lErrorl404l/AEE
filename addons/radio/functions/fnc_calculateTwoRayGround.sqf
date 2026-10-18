@@ -31,11 +31,13 @@ breakpoint and the d^4 far-field form are standard.  The interference
 identity |1 - exp(-j*phi)| = 2*|sin(phi/2)| and the derivation are given at
 https://en.wikipedia.org/wiki/Two-ray_ground-reflection_model
 
-UNSOURCED (recorded, not derived): the reflectivity passed by the caller is a
-rough-ground effective value; the roughness reduction of the Fresnel
-coefficient is not computed here.  The interference factor is floored at
-1e-12 so the logarithm stays finite at an exact null; the floor is a
-numerical guard, not a modelled null depth.
+The reflectivity is the caller's |Gamma|: the Fresnel coefficient for the
+ground constants (ITU-R P.527) times the roughness factor.  The default is
+1, the grazing-incidence limit: as the grazing angle goes to zero the
+Fresnel coefficient of any finite ground tends to -1 for both polarisations
+(Balanis, "Advanced Engineering Electromagnetics", s.5.3).  The interference
+factor is floored at 1e-12 so the logarithm stays finite at an exact null; the
+floor is a numerical guard, not a modelled null depth.
 
 Args:
   0: distance     <NUMBER> link range, m
@@ -54,7 +56,7 @@ params [
     ["_freqHz", 1e8, [0]],
     ["_hTx", 2, [0]],
     ["_hRx", 1.5, [0]],
-    ["_reflectivity", 0.5, [0]]
+    ["_reflectivity", 1, [0]]
 ];
 
 private _lambda = 3e8 / (_freqHz max 1);

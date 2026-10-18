@@ -12,8 +12,8 @@
 
 // Modelling constants used by the ambience kernels.  Split out of aee_wildlife
 // (ADR-032); the shared values are mirrored from the wildlife header, the same
-// pattern aee_wildlife uses for AI_CELL_CAP.  UNSOURCED unless the kernel cites
-// a source.  One value is sourced: WILDLIFE_SHOT_REPORT_DB, 160 dB, is the
+// pattern aee_wildlife uses for AI_CELL_CAP.  Caps and budgets are performance
+// policy; physical values cite their source.  WILDLIFE_SHOT_REPORT_DB, 160 dB, is the
 // measured peak level of an unsuppressed centre-fire weapon (NIOSH HHE report
 // 2013-0124-3208; NIOSH "Hit the Mark" bulletin, 2017).
 #define WILDLIFE_ACOUSTIC_EVENT_CAP 64
@@ -29,7 +29,6 @@
 #define WILDLIFE_PITCH_JITTER 0.04
 #define WILDLIFE_PITCH_MAX 2.0
 #define WILDLIFE_PITCH_MIN 0.5
-#define WILDLIFE_PITCH_RATE_COUPLING 0.25
 #define WILDLIFE_SHOT_REPORT_DB 160
 #define WILDLIFE_SHOT_REPORT_REF_MV 900   // the M4 reference of the 160 dB peak (5.56 mm)
 #define WILDLIFE_SOUND_INSTANCE_CAP 3

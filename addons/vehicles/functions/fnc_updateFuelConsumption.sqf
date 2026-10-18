@@ -135,6 +135,25 @@ private _vehicles = [200, _player] call EFUNC(vehicles,getNearbyVehicles);
         _rolling getOrDefault ["truck", 0.007]
     };
     private _crr = _crrBase * _terrainMult;
+    // Mud: Caterpillar's "very soft, muddy, rutted, 300 mm penetration"
+    // surface, 20 % of weight for tyres and 8 % for tracks (Caterpillar,
+    // Rolling Resistance Factors; Performance Handbook surface H).
+    if (_groundState == "Mud") then { _crr = [0.20, 0.08] select (_type == "tracked"); };
+    // Wheeled vehicles on the surfaces Gillespie tabulates take his measured
+    // coefficient directly: loose dry soil (Dusty) is the dirt-road value,
+    // sand underfoot the sand value; frozen ground is a rigid surface, the
+    // base value (Gillespie, Fundamentals of Vehicle Dynamics, road loads).
+    if (_type != "tracked") then {
+        private _surf = toLower (surfaceType (getPosASL _veh));
+        switch (true) do {
+            case ((_surf find "sand") >= 0 || {(_surf find "beach") >= 0}): { _crr = _rolling getOrDefault ["sand", 0.3]; };
+            case (_groundState == "Dusty"): { _crr = _rolling getOrDefault ["dirt_road", 0.05575]; };
+            case (_groundState == "Frozen"): { _crr = _crrBase; };
+            // Dry snow under 22 cm: 0.017, the measured trailing-tyre motion
+            // resistance coefficient (Richmond 1995, CRREL Report 95-7).
+            case (_groundState == "Snow"): { _crr = 0.017 max _crrBase; };
+        };
+    };
 
     private _speedMS = vectorMagnitude (velocity _veh);
     private _prevSpeed = _veh getVariable [QGVAR(prevSpeedMS), _speedMS];

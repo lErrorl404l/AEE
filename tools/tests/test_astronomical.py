@@ -109,7 +109,7 @@ def calculate_limiting_magnitude(moon_alt=-90, moon_frac=0, twilight_lux=0, haze
     """Run the real NELM kernel (light pollution held at zero)."""
     from sqf_lite import run_sqf
     return run_sqf(NELM_KERNEL, [moon_alt, moon_frac, twilight_lux, haze, houses],
-                   {"__FUNC__lightPollutionPenalty": lambda h: 0.0})
+                   {"__FUNC__lightPollutionPenalty": lambda *a: 0.0})
 
 
 def knoll_nelm(b, k):

@@ -32,7 +32,7 @@ consistent and avoids streaming churn.
 The scene-aware shadow distance (aee-workshop-copy item 6) is re-derived
 from Adaptive Shadows (Workshop 3792830104).  The mod publishes no licence,
 so this is a re-implementation, not copied code.  No mod content is copied.
-The classifier is heuristic and its constants are UNSOURCED.  The shadow
+The classifier is heuristic and its constants are display choices, not physical quantities.  The shadow
 target is clamped to the object target and to the engine shadow maximum; the
 shadow path never calls setViewDistance and keeps its own ramp state.
 
@@ -105,7 +105,7 @@ private _shadowTargetFPS = missionNamespace getVariable [QGVAR(shadowTargetFPS),
 
 // Context probe constants for the classifier (aee-workshop-copy item 6).  A
 // hit at or below the close range counts as a close hit; the ceiling probe is
-// ONE upward lineIntersectsSurfaces of this length.  UNSOURCED heuristics.
+// ONE upward lineIntersectsSurfaces of this length.  performance heuristics (no physical quantity).
 private _CONTEXT_CLOSE_M = 12;
 private _CONTEXT_CEILING_M = 30;
 

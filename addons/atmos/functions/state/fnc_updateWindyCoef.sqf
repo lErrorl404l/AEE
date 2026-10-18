@@ -17,9 +17,8 @@ wind magnitude the wind owner publishes.  The engine applies `windyCoef` AT
 HEIGHTS, so the height dependence of the sound is the engine's and AEE
 supplies the modelled strength.
 
-THE MAPPING.  The engine states only the 0..1 range, no metre scale, so the
-m/s anchor is an AEE modelling choice and is marked UNSOURCED against the
-engine: 25 m/s is a storm (Beaufort 10 lower bound 24.5 m/s, the maritime
+THE MAPPING.  The engine states only the 0..1 range, no metre scale, so this
+is an engine mapping: full scale is put at storm force, 25 m/s (Beaufort 10 lower bound 24.5 m/s, the maritime
 Beaufort table AEE already holds).  The coefficient saturates at storm force.
 
 THE OTHER TWO ELEMENTS.  AEE does not own ambient life or ambient sound, so
@@ -49,7 +48,7 @@ if (!isNil "_unit" && {!isNull _unit}) then {
     };
 };
 
-// ─── 0..1 coefficient (the engine range; the m/s anchor is UNSOURCED) ───────
+// ─── 0..1 coefficient (engine mapping: storm force is full scale) ─────────
 private _fullMs = 25;   // storm force (Beaufort 10 lower bound 24.5 m/s)
 private _coef = (_windMs / _fullMs) max 0 min 1;
 

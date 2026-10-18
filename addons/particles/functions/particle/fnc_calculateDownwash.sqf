@@ -85,14 +85,16 @@ _rho = _rho max 0.1 min 1.5;
 
 // ─── 1. Induced velocity from momentum theory ─────────────────────────────
 // The aircraft's weight is the steady-state thrust.  Rotor disc area is
-// estimated from the rotor radius if the class declares one, else from a
-// typical rotor span for the airframe mass.
+// the area of the rotor disc measured from the model.
 private _mass = getMass _aircraft;
 if (_mass <= 0) exitWith { [0, 0, 0, 0] };
 private _thrust = _mass * _G;
 
-// A main-rotor radius between 3 m (light) and 11 m (heavy lift).
-private _radius = 3 + ((_mass / 12000) min 1) * 8;
+// The main-rotor radius from the model itself: a helicopter's widest
+// lateral extent is its main-rotor disc (the fuselage is far narrower),
+// so the radius is half the bounding-box width.
+private _bb = boundingBoxReal _aircraft;
+private _radius = ((((_bb select 1) select 0) - ((_bb select 0) select 0)) / 2) max 1;
 private _disc = pi * _radius * _radius;
 private _vInduced = sqrt (_thrust / (2 * _rho * _disc));
 

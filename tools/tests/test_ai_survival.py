@@ -76,35 +76,24 @@ class TestColdStressBands(unittest.TestCase):
 
 
 class TestHeatStressBands(unittest.TestCase):
-    """TB MED 507 / ISO 7243 WBGT anchors: 29 = 0.3, 34 = 0.6, 38 = 0.8,
-    and 0 at the top of the safe category (18 C)."""
+    """TB MED 507 Table 1, heavy work: the rest fraction of each hour."""
 
-    def test_no_risk_at_or_below_the_safe_category(self):
-        for wbgt in (0, 10, 18):
-            with self.subTest(wbgt=wbgt):
-                self.assertAlmostEqual(heat(wbgt), 0.0, places=4)
+    @staticmethod
+    def c(f):
+        return (f - 32) * 5 / 9
 
-    def test_the_anchors(self):
-        self.assertAlmostEqual(heat(29), 0.3, places=4)
-        self.assertAlmostEqual(heat(34), 0.6, places=4)
-        self.assertAlmostEqual(heat(38), 0.8, places=4)
+    def test_below_category_one_has_no_limit(self):
+        for f in (60, 70, 77.9):
+            self.assertAlmostEqual(heat(self.c(f)), 0.0, places=4)
 
-    def test_the_interior_is_linear(self):
-        self.assertAlmostEqual(heat(23.5), 0.15, places=4)  # 18 .. 29
-        self.assertAlmostEqual(heat(31.5), 0.45, places=4)  # 29 .. 34
-        self.assertAlmostEqual(heat(36), 0.7, places=4)  # 34 .. 38
+    def test_work_rest_table(self):
+        for f, rest in ((78, 20), (81.9, 20), (82, 30), (87.9, 30), (88, 40), (89.9, 40), (90, 50), (110, 50)):
+            with self.subTest(f=f):
+                self.assertAlmostEqual(heat(self.c(f)), rest / 60, places=4)
 
-    def test_the_unsourced_upper_anchor_is_45(self):
-        # The issue gives no WBGT for full pressure, so 45 C is the bounded
-        # clamp (UNSOURCED, named in the kernel docstring).
-        self.assertAlmostEqual(heat(45), 1.0, places=4)
-        self.assertAlmostEqual(heat(60), 1.0, places=4)
-
-    def test_hotter_never_lowers_the_risk(self):
-        xs = [x * 0.5 for x in range(-20, 121)]
-        vals = [heat(x) for x in xs]
-        for a, b in zip(vals, vals[1:]):
-            self.assertLessEqual(a, b + 1e-9)
+    def test_monotone(self):
+        vals = [heat(x / 2) for x in range(40, 90)]
+        self.assertEqual(vals, sorted(vals))
 
 
 class TestSurvivalPressure(unittest.TestCase):
@@ -166,9 +155,9 @@ class TestBehaviourIntegration(unittest.TestCase):
         self.assertEqual(action(p), 3)
 
     def test_heat_drives_a_survival_action(self):
-        # WBGT 45 C is full heat stress.
+        # Heat category 5: rest 50 min in every hour.
         p = pressure(0, 0, 0, heat(45), 0)
-        self.assertAlmostEqual(p, 1.0, places=4)
+        self.assertAlmostEqual(p, 50 / 60, places=4)
         self.assertEqual(action(p), 3)
 
     def test_a_mild_hazard_keeps_normal_behaviour(self):

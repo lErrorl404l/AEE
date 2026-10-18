@@ -129,7 +129,7 @@
 
     // ── Zoom range.  The map zooms out further. ──────────────────────────
     // scaleMax 2: AEE's own, double the vanilla zoom-out limit of 1.
-    // UNSOURCED (AEE model choice; no standard fixes the limit).
+    // a display choice (AEE model choice; no standard fixes the limit).
     scaleMax = 2;
     // scaleDefault 0.3: the engine strategic-map scale (ui_f.pbo
     // RscDisplayStrategicMap Map), so the map opens at the overview zoom.

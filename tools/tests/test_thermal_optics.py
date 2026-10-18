@@ -3881,7 +3881,7 @@ class TestSQFSync(unittest.TestCase):
                 "nearObjects 30",
                 "_sigma",
                 "^ 4",
-                "_F = 1 / (1 + ((_d * _d)",
+                "_F = (_xv - (sqrt ((_xv ^ 2) - 4))) / 2",
                 "applySelectionThermal",
                 "QGVAR(radiativeLastT)",
             ],
@@ -4182,14 +4182,8 @@ class TestSQFSync(unittest.TestCase):
     def test_crossover_surface_estimates(self):
         self._assert_in_sqf(
             "fnc_calculateThermalCrossover.sqf",
-            [
-                "_airTemp - 2",
-                "_airTemp - 1",
-                "_airTemp + 5",
-                "_airTemp - 3",
-                "_airTemp + 2 * (1 - _overcast)",
-            ],
-            "surface temperature estimates",
+            ["if (_stack isEqualTo []) then { _surfaceTemp = _airTemp; };"],
+            "empty-stack guard",
             addon="thermal",
         )
 
@@ -5719,9 +5713,8 @@ class TestBandAtmosphericTransmission(unittest.TestCase):
     """The band-resolved atmospheric transmission (T5).
 
     The kernel is executed from its real SQF.  LWIR keeps the three
-    published Minkina and Klecha 2016 anchors.  MWIR is the declared
-    ceiling: the clear-air return is exactly 1, and only fog and rain
-    attenuate it.
+    published Minkina and Klecha 2016 anchors.  MWIR follows the paper's
+    SW (2-5 um) curve, Fig. 2a.
     """
 
     _KERNEL = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
@@ -5747,14 +5740,15 @@ class TestBandAtmosphericTransmission(unittest.TestCase):
     def test_lwir_default_is_the_explicit_lwir_token(self):
         self.assertEqual(self._tau(1000), self._tau(1000, "lwir"))
 
-    def test_mwir_clear_air_is_exactly_one(self):
+    def test_mwir_reproduces_the_published_sw_curve(self):
+        # Minkina & Klecha 2016 Fig. 2a, SW at 15 C, 50 %: ~0.77 at 50 m,
+        # ~0.66 at 100 m; the LW curve stays above it.
         self.assertEqual(self._tau(0, "mwir"), 1)
-        for d in (100, 1000, 5000):
-            with self.subTest(d=d):
-                self.assertEqual(self._tau(d, "mwir"), 1)
+        self.assertAlmostEqual(self._tau(50, "mwir"), 0.77, delta=0.01)
+        self.assertAlmostEqual(self._tau(100, "mwir"), 0.66, delta=0.015)
+        self.assertLess(self._tau(100, "mwir"), self._tau(100, "lwir"))
 
     def test_mwir_stays_in_range_and_is_monotone_in_range(self):
-        # Fog makes the range term active, because clear-air is the ceiling.
         values = [self._tau(d, "mwir", fog=0.5) for d in range(0, 6000, 500)]
         for v in values:
             self.assertGreaterEqual(v, 0.0)
@@ -5769,8 +5763,8 @@ class TestBandAtmosphericTransmission(unittest.TestCase):
     def test_the_band_parameter_is_declared(self):
         code = _code_only(self._KERNEL.read_text(encoding="utf-8"))
         self.assertIn('["_bandToken", "lwir", [""]]', code)
-        self.assertIn('if ((toLower _bandToken) == "mwir") then', code)
-        self.assertIn("_alphaEff = 0;", code)
+        self.assertIn("if (_isMwir) then", code)
+        self.assertIn("0.0393", code)
 
     def test_the_python_mirror_agrees(self):
         for band in ("lwir", "mwir"):
@@ -5795,8 +5789,7 @@ def atmospheric_transmission(
     Returns -1 for an unusable input, matching the SQF refusal.  The
     square-root form is deliberate: one constant extinction cannot meet all
     three published anchors, because the implied extinction falls with range.
-    The MWIR band is the declared ceiling: the clear-air extinction is zero,
-    so the clear-air return is exactly 1, and only fog and rain attenuate.
+    The MWIR band uses the Minkina & Klecha 2016 SW coefficients.
     """
     for value in (range_m, rh_pct, t_c, fog, rain, rho):
         if not isinstance(value, (int, float)) or not math.isfinite(value):
@@ -5825,8 +5818,6 @@ def atmospheric_transmission(
     beta_clean = co2_km + a_foreign * e_torr * rho_rel + b_self * e_torr * e_torr
     beta_ref = co2_km + a_foreign * e_ref + b_self * e_ref * e_ref
     alpha_eff = alpha_ref * (beta_clean / beta_ref)
-    if band == "mwir":
-        alpha_eff = 0.0  # declared clear-air ceiling (UNSOURCED)
     # Chylek 1978 / Pinnick 1979: beta = 3 pi c_e W / (2 lambda rho_w).
     lam, ce = (4e-6, 0.64) if band == "mwir" else (11e-6, 0.31)
     beta_fog_km = 1000 * 3 * math.pi * ce * fog / (2 * lam * 1e6)
@@ -5835,6 +5826,10 @@ def atmospheric_transmission(
     if rain > 0:
         beta_rain_km = 1000 * 1e-6 * math.pi * 8000 / (4.1 * rain ** -0.21) ** 3
     beta_extra_km = beta_fog_km + beta_rain_km
+    if band == "mwir":
+        # Minkina & Klecha 2016 SW: alpha 0.0393 (reproduces Fig. 2a), beta 0.00049 /m.
+        alpha_eff = 0.0393 * (beta_clean / beta_ref)
+        beta_extra_km += 0.49 * (beta_clean / beta_ref)
     sqrt_part = max(math.sqrt(range_m) - math.sqrt(d_cal), 0.0)
     linear_part = max((range_m - d_cal) / 1000.0, 0.0)
     optical_depth = alpha_eff * sqrt_part + beta_extra_km * linear_part

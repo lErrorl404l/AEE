@@ -25,7 +25,7 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | `core` | `weather` | 43 | [core-weather.md](core-weather.md) |
 | `core` | `actions` | 28 | [core-actions.md](core-actions.md) |
 | `core` | `persistence` | 28 | [core-persistence.md](core-persistence.md) |
-| `core` | `optics` | 20 | [core-optics.md](core-optics.md) |
+| `core` | `optics` | 21 | [core-optics.md](core-optics.md) |
 | `core` | `mobility` | 16 | [core-mobility.md](core-mobility.md) |
 | `core` | `weatherfx` | 16 | [core-weatherfx.md](core-weatherfx.md) |
 | `core` | `diagnostics` | 15 | [core-diagnostics.md](core-diagnostics.md) |

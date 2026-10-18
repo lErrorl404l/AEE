@@ -28,5 +28,6 @@ AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Radio",false);
 // ── Radar detection (issue #104) ──────────────────────────────────────────
 // Radar detection is independent of any host radio mod, so it registers
 // unconditionally.  Default off: the model is opt-in until a held RCS
-// source replaces the issue's UNSOURCED class figures.
+// source replaces the issue's class figures, which have
+// no published source.
 AEE_SETTING_CHECKBOX(radarDetection,"AEE Radio","Radar",false);

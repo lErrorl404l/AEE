@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/optics/`
 - Direction: one way. `core` must initialise before `optics` reads.
-- Variables crossing: 20.
+- Variables crossing: 21.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -15,6 +15,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentSunAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateSolarGlare.sqf:43` | UNKNOWN |
 | `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateGreenFlash.sqf:28` | UNKNOWN |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateDewOnOptics.sqf:25` | Air temperature in C |
+| `aee_core_currentUVIndex` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateSnowBlindness.sqf:38` | UV index (core alias) |
 | `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateDewOnOptics.sqf:30` | Wind vector |
 | `aee_core_empActive` | BOOL | boolean | 0 or 1 | UNKNOWN | `addons/optics/functions/fnc_applyEmpSensorDamage.sqf:33` | EMP event active flag |
 | `aee_core_empOpticsCoupledVpm` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/fnc_applyEmpSensorDamage.sqf:40` | Field coupled into the optical sensor, V/m |

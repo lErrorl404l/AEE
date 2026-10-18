@@ -2,11 +2,11 @@
 /*
 Start the active-IR illuminator for one operator.
 
-UNSOURCED MECHANISM.  The illuminator is a workshop idea re-implemented as
+UNPUBLISHED MECHANISM.  The illuminator is a workshop idea re-implemented as
 AEE code.  No mod code, value or texture is copied.  The mechanism is an
 engine "#lightreflector" light with setLightIR true, so a real NVG or IR optic
 sees it and the unaided eye does not.  The light tuning values below have no
-published source; they are named here and marked UNSOURCED in the register
+published source; they are named here and marked as a preference in the register
 docs/wiki/chapters/sensor-value-audit.md.
 
 Creates the light once, attaches it at the operator's position, and stores it

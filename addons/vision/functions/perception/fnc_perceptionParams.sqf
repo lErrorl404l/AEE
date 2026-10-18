@@ -138,7 +138,7 @@ private _cc = [
 
 // The light-level scale multiplies the acuity grain intensity: a dark scene
 // raises it.  The intensity is bounded to the engine FilmGrain range 0 to
-// 0.05 (BIKI FilmGrain, default 0.005).  The scale itself is UNSOURCED: the
+// 0.05 (BIKI FilmGrain, default 0.005).  The scale itself is a display choice, not a physical quantity: the
 // issue's 2.25 to 2.7 values are a mod-derived scale, not an intensity.
 // The last FilmGrain element is the monochromatic flag.  BIKI Arma 3: 0 is
 // monochrome, any other value is colour.  0 desaturates normal vision, so the

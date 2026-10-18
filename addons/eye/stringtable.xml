@@ -10,32 +10,32 @@
             <English>Eye Adaptation</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeAmbientLuxScale_Description">
-            <Original>Scale on the engine ambient term, no unit. UNSOURCED: getLightingAt has no documented unit.</Original>
-            <English>Scale on the engine ambient term, no unit. UNSOURCED: getLightingAt has no documented unit.</English>
+            <Original>Scale on the engine ambient term, no unit. Engine mapping: getLightingAt has no documented unit, so the scale has no physical value.</Original>
+            <English>Scale on the engine ambient term, no unit. Engine mapping: getLightingAt has no documented unit, so the scale has no physical value.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeAmbientLuxScale_Name">
             <Original>Ambient Light Scale</Original>
             <English>Ambient Light Scale</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeBlindingLuxScale_Description">
-            <Original>Scale on the engine blinding term, no unit. UNSOURCED: apertureParams blinding has no documented unit. Default 0, off until tuned.</Original>
-            <English>Scale on the engine blinding term, no unit. UNSOURCED: apertureParams blinding has no documented unit. Default 0, off until tuned.</English>
+            <Original>Scale on the engine blinding term, no unit. Engine mapping: apertureParams blinding has no documented unit, so the scale has no physical value. Default 0, off until tuned.</Original>
+            <English>Scale on the engine blinding term, no unit. Engine mapping: apertureParams blinding has no documented unit, so the scale has no physical value. Default 0, off until tuned.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeBlindingLuxScale_Name">
             <Original>Blinding Light Scale</Original>
             <English>Blinding Light Scale</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeFastBlend_Description">
-            <Original>Weight of the fast pupil branch in the adapted luminance, 0 to 1. UNSOURCED: operator-tunable.</Original>
-            <English>Weight of the fast pupil branch in the adapted luminance, 0 to 1. UNSOURCED: operator-tunable.</English>
+            <Original>Weight of the fast pupil branch in the adapted luminance, 0 to 1. Operator preference, not a physical quantity.</Original>
+            <English>Weight of the fast pupil branch in the adapted luminance, 0 to 1. Operator preference, not a physical quantity.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeFastBlend_Name">
             <Original>Fast Pupil Blend</Original>
             <English>Fast Pupil Blend</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeLocalLuxScale_Description">
-            <Original>Scale on the engine local term, no unit. UNSOURCED: getLightingAt has no documented unit.</Original>
-            <English>Scale on the engine local term, no unit. UNSOURCED: getLightingAt has no documented unit.</English>
+            <Original>Scale on the engine local term, no unit. Engine mapping: getLightingAt has no documented unit, so the scale has no physical value.</Original>
+            <English>Scale on the engine local term, no unit. Engine mapping: getLightingAt has no documented unit, so the scale has no physical value.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeLocalLuxScale_Name">
             <Original>Local Light Scale</Original>
@@ -82,16 +82,16 @@
             <English>Pupil Redilation Time</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeReflectance_Description">
-            <Original>Assumed scene reflectance for the luminance step, 0 to 1. UNSOURCED: mid-grey assumption, 0.18.</Original>
-            <English>Assumed scene reflectance for the luminance step, 0 to 1. UNSOURCED: mid-grey assumption, 0.18.</English>
+            <Original>Assumed scene reflectance for the luminance step, 0 to 1. The photographic mid-grey, 0.18 (Kodak Gray Card R-27), stands in for the scene.</Original>
+            <English>Assumed scene reflectance for the luminance step, 0 to 1. The photographic mid-grey, 0.18 (Kodak Gray Card R-27), stands in for the scene.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeReflectance_Name">
             <Original>Scene Reflectance</Original>
             <English>Scene Reflectance</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeTauDarkCone_Description">
-            <Original>Cone-pool dark adaptation time constant, seconds. UNSOURCED: derived to fit the cone-rod break at 5 to 8 min, Hecht, Haig and Chase 1937.</Original>
-            <English>Cone-pool dark adaptation time constant, seconds. UNSOURCED: derived to fit the cone-rod break at 5 to 8 min, Hecht, Haig and Chase 1937.</English>
+            <Original>Cone-pool dark adaptation time constant, seconds. Cone photopigment regenerates with a time constant of about 2 min (Hollins and Alpern 1973, J. Gen. Physiol. 62:430), consistent with the cone-rod break at 5 to 8 min (Hecht, Haig and Chase 1937).</Original>
+            <English>Cone-pool dark adaptation time constant, seconds. Cone photopigment regenerates with a time constant of about 2 min (Hollins and Alpern 1973, J. Gen. Physiol. 62:430), consistent with the cone-rod break at 5 to 8 min (Hecht, Haig and Chase 1937).</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeTauDarkCone_Name">
             <Original>Cone Dark Adaptation Time</Original>
@@ -106,8 +106,8 @@
             <English>Rod Dark Adaptation Time</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeTauLight_Description">
-            <Original>Light-adaptation time constant, seconds. UNSOURCED: no single published perceptual value, operator-tunable, 2.0 s.</Original>
-            <English>Light-adaptation time constant, seconds. UNSOURCED: no single published perceptual value, operator-tunable, 2.0 s.</English>
+            <Original>Light-adaptation time constant, seconds. No single published perceptual value exists, so this is an operator preference, 2.0 s.</Original>
+            <English>Light-adaptation time constant, seconds. No single published perceptual value exists, so this is an operator preference, 2.0 s.</English>
         </Key>
         <Key ID="STR_AEE_Eye_eyeTauLight_Name">
             <Original>Light Adaptation Time</Original>

@@ -8,8 +8,8 @@ Re-derived from fn_calculatedepth.sqf in Adaptive Shadows (Workshop
 kernel, not copied code.  No mod content is copied.  The weighted-percentile
 fractions (near 0.50, base 0.65, far 0.75), the low-screen terrain weight
 0.30, the far threshold factor 2.3 and the coherent-neighbour radius 0.09 are
-UNSOURCED heuristics; they come from the mod's own tuning, not a published
-measurement.  The scene thresholds are also UNSOURCED.
+performance heuristics (no physical quantity); they come from the mod's own tuning, not a published
+measurement.  The scene thresholds are also display choices, not physical quantities.
 
 The kernel is PURE: no missionNamespace, no GVAR or EGVAR, no engine command.
 The driver does the engine sampling and passes the samples in.  The loops are

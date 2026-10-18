@@ -11,7 +11,7 @@ latitude, so the band moves with the starfield.  The Draw3D worker
 
 Surface brightness anchor: the published dark-sky value (21.8 mag/arcsec^2,
 Crumey 2014).  MILKY_WAY_NELM_MIN derives from that contrast; the colour,
-alpha, radius and sample count are render tunables and are UNSOURCED.
+alpha, radius and sample count are render tunables (display preferences, no physical quantity).
 
 Debug hooks, set on missionNamespace:
   - aee_lighting_skyForce       Boolean, force the whole night sky on

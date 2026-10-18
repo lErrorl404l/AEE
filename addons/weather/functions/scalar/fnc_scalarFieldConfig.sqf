@@ -51,7 +51,7 @@ Value sources:
 
   hotFraction 0.35 - a STATED modelling threshold, not a measured constant.
     A cell counts as "hot" (a candidate particle source) above 35 per cent of
-    the field's current peak.  UNSOURCED.
+    the field's current peak.  A modelling choice with no published figure.
 
 Return:
   ARRAY of field descriptors.

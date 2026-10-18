@@ -19,9 +19,9 @@ partial von Kries adaptation itself is in fnc_perceptionChromaticAdaptation.
 
 Per-constant source register:
   Rec.709 luma weights   REC709_LUMA_R, REC709_LUMA_G, REC709_LUMA_B.  SOURCED: ITU-R BT.709-6.
-  luma floor             EPSILON.  UNSOURCED: guards a division by zero on a
+  luma floor             EPSILON.  Numerical guard: prevents a division by zero on a
                          black or near-black ambient colour.
-  channel clamp          0.5 to 2.  UNSOURCED: bounds the tint magnitude.
+  channel clamp          0.5 to 2.  Display bound: limits the tint magnitude.
   D65 white              x 0.3127, y 0.3290.  SOURCED: CIE 15:2004.
 
 Arguments:

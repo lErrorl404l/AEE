@@ -98,7 +98,8 @@ private _bestSpeed = 1;
 if (_bestPos isEqualTo []) exitWith { nil };
 
 // ── Speed mode from the terrain speed factor (step 3) ──────────────────────
-// The thresholds are a modelling choice, UNSOURCED.
+// The thresholds split the 0..1 terrain speed factor into the engine's three
+// speed modes in equal thirds above 0.25: an engine mapping, no physical quantity.
 private _speedMode = "LIMITED";
 if (_bestSpeed >= 0.75) then { _speedMode = "FULL"; }
 else { if (_bestSpeed >= 0.5) then { _speedMode = "NORMAL"; }; };

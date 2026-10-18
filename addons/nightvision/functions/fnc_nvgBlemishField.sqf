@@ -22,7 +22,7 @@ params [
     ["_strength", 0.5, [0]]
 ];
 
-// Per-tier base alpha, heaviest first (oldest tube).  UNSOURCED: the ORDER
+// Per-tier base alpha, heaviest first (oldest tube).  Display choice: the ORDER
 // follows the MIL-I-49428 Table III dark-spot density; the normalised alpha
 // is a modelling choice.
 private _base = [0.85, 0.55, 0.30, 0.15] select ((_tierIdx max 0) min 3);

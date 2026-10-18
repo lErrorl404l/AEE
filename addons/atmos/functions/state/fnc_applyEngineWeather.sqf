@@ -93,13 +93,19 @@ if (!(_baseline isEqualType 0) || _baseline < 0) then {
     missionNamespace setVariable [QGVAR(overcastBaseline), _baseline];
 };
 
-// Cloud cover from relative humidity: the air stays clear well below
-// saturation and clouds over as it approaches it.  The 55 % and 90 % end
-// points are AEE modelling choices, marked UNSOURCED against the engine (the
-// engine states only overcast 0..1).
+// Cloud cover from relative humidity, the Sundqvist diagnostic cloud fraction
+// (Sundqvist 1978; Sundqvist, Berge and Kristjansson 1989, Mon. Wea. Rev.
+// 117:1641) as the Eta model runs it:
+//   C = 1 - sqrt((1 - RH) / (1 - U00)),  RH > U00,
+// with the near-surface critical humidity U00 = 0.95 (the Eta scheme, falling
+// to 0.75-0.80 aloft; Eta cloud parameterization, SANU monograph).  The input
+// is the surface humidity, so the surface value applies.  The engine
+// overcast is the cloud fraction.
 private _rhFrac = (missionNamespace getVariable [QEGVAR(core,currentHumidity), 50]) / 100;
 if !(_rhFrac isEqualType 0) then { _rhFrac = 0.5; };
-private _rhCloud = ((_rhFrac - 0.55) / (0.90 - 0.55)) max 0 min 1;
+_rhFrac = (_rhFrac max 0) min 1;
+private _rhCloud = 0;
+if (_rhFrac > 0.95) then { _rhCloud = 1 - sqrt ((1 - _rhFrac) / (1 - 0.95)); };
 
 // The front model supplies the cloud forcing: building ahead of the front,
 // clearing behind it (aee_atmos_frontCloudTerm, signed).

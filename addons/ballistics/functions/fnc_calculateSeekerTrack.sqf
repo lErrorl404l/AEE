@@ -11,8 +11,8 @@ gate has hysteresis so a signal at the threshold does not chatter:
     hold when      signal >= 0.5 * acquireThreshold  (already tracking)
 
 This is the issue #131 rule "acquire at threshold, track at 0.5x threshold".
-The half factor is the issue's stated hysteresis; it is a modelling choice,
-recorded as UNSOURCED.
+The half factor is the issue's stated hysteresis, a control-loop choice
+with no published seeker figure; it only stops chatter at the threshold.
 
 Arguments:
   0: _signal           (NUMBER) current signal (IR contrast, or a radar

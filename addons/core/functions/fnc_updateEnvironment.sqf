@@ -429,7 +429,14 @@ if ((diag_tickTime - _skyLast) >= 30) then {
         missionNamespace getVariable [QGVAR(currentMoonIllumination), 0],
         missionNamespace getVariable [QGVAR(twilightLux), 0],
         missionNamespace getVariable [QGVAR(currentHaze), 0.08],
-        _houseCount
+        _houseCount,
+        // Persons per household of the country the world portrays (UN DESA
+        // 2017, data/settlement_household_size.json); the 165-country median
+        // elsewhere.
+        (createHashMapFromArray [
+            ["altis", 2.4], ["stratis", 2.4], ["tanoa", 4.8], ["enoch", 2.8],
+            ["malden", 2.3], ["chernarus", 2.3], ["chernarus_summer", 2.3], ["chernarus_winter", 2.3]
+        ]) getOrDefault [toLower worldName, 3.8]
     ] call EFUNC(lighting,calculateLimitingMagnitude);
     missionNamespace setVariable [QEGVAR(lighting,limitingMagnitude), _nelm select 0];
     missionNamespace setVariable [QEGVAR(lighting,skyLuminance), _nelm select 1];

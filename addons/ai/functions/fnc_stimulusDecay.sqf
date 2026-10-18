@@ -10,8 +10,10 @@ after an age, using the exponential half-life form
 magnitude * 0.5 ^ (age / halfLife).  A negative age is a clock error and is
 clamped to the full magnitude.
 
-The 45 s half-life is a modelling choice, UNSOURCED.  See the per-constant
-register in the wildlife-ambience dossier.
+The half-life is the caller's.  Wildlife passes the measured animal recovery
+(WILDLIFE_ENVIRONMENT_HALF_LIFE, Griffin et al. 2020).  The engine-AI field
+passes AI_STIMULUS_HALF_LIFE, 45 s, a gameplay memory: no published value
+gives how long a soldier keeps a heard shot in mind.
 
 Arguments:
   0: Number - initial stimulus magnitude, 0 to 1

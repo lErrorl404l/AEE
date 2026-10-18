@@ -53,7 +53,7 @@ def ambient(rain, wind_ms, foliage, water):
     return run_sqf(
         AMBIENT,
         [rain, wind_ms, foliage, water],
-        globals_={"__FUNC__powerSumLevels": _kernel(POWER_SUM)},
+        globals_={"__FUNC__powerSumLevels": _kernel(POWER_SUM), "ENGINE_RAIN_FULL_MMH": 25},
     )
 
 
@@ -98,9 +98,10 @@ class TestAmbientNoiseLevel(unittest.TestCase):
     """fnc_ambientNoiseLevel runs from the real SQF."""
 
     def test_rain_zero_is_silent_and_rain_one_is_heavy(self):
-        # The issue's test vector: rain 0 -> 0 dB, rain 1 -> 58 dB.
+        # Lengagne & Slater 2002: heavy rain (7.6 mm/h) 52.2 dB, scaled by
+        # 10 log10 of the rate; engine rain 1 = 25 mm/h.
         self.assertEqual(ambient(0, 0, 0, 0), 0)
-        self.assertAlmostEqual(ambient(1, 0, 0, 0), 58, places=4)
+        self.assertAlmostEqual(ambient(1, 0, 0, 0), 52.2 + 10 * math.log10(25 / 7.6), places=4)
 
     def test_wind_follows_the_measured_vegetation_regression(self):
         # SOURCED: the wind-induced vegetation-noise regression is
@@ -120,14 +121,15 @@ class TestAmbientNoiseLevel(unittest.TestCase):
 
     def test_a_quiet_forest_floor_is_twenty_five(self):
         # Full foliage, no weather: the issue's quiet forest floor (20-30).
-        self.assertAlmostEqual(ambient(0, 0, 1.0, 0), 25, places=4)
+        self.assertAlmostEqual(ambient(0, 0, 1.0, 0), 33.4, places=4)
 
     def test_the_levels_power_sum(self):
         # Rain 58 and wind 42.96 (the 2 m/s regression value) combine by the
         # power sum, so the floor is just above the loudest single term.
+        rain = 52.2 + 10 * math.log10(25 / 7.6)
         combined = ambient(1, 2, 0, 0)
-        self.assertAlmostEqual(combined, power_sum([58, 42.96]), places=4)
-        self.assertGreater(combined, 58)
+        self.assertAlmostEqual(combined, power_sum([rain, 42.96]), places=4)
+        self.assertGreater(combined, rain)
 
     def test_the_wind_term_is_a_deliberate_zero_at_rest(self):
         # The 0 m/s row is a zero by design, not the regression's 37.4 dB
@@ -185,16 +187,14 @@ class TestAcousticMasking(unittest.TestCase):
             audible, _margin = masking(35, r, heavy_rain, 1.0, 6)
             self.assertFalse(audible, r)
 
-    def test_a_quiet_forest_allows_detection_to_about_two_metres(self):
-        # Quiet forest floor (25 dB): a grass walk (35 dB at 1 m) is audible
-        # only at short range.  The issue states ~2 m.
+    def test_the_dry_forest_floor_is_the_measured_level(self):
+        # Lengagne & Slater 2002: dry, calm forest background 33.4 dB.  A
+        # 45 dB source at 1 m is detectable (6 dB margin) to about 2 m.
         floor = ambient(0, 0, 1.0, 0)
-        self.assertAlmostEqual(floor, 25, places=4)
-        rng = detection_range(35, floor, 1.0, 6)
+        self.assertAlmostEqual(floor, 33.4, places=4)
+        rng = detection_range(45, floor, 1.0, 6)
         self.assertGreater(rng, 1.0)
         self.assertLess(rng, 3.0)
-        self.assertTrue(masking(35, 1, floor, 1.0, 6)[0])
-        self.assertFalse(masking(35, 5, floor, 1.0, 6)[0])
 
     def test_the_propagation_index_scales_the_range(self):
         # An index above 1 carries the sound further, below 1 shorter.

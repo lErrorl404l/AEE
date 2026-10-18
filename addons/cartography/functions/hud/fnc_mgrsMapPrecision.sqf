@@ -13,7 +13,7 @@
  * plottable precision (FM 3-25.26 chapter 4; TC 3-25.26 4-12; UK Military Map
  * Reading v2.0: 1:50,000 cannot give 8 figures, 1:25,000 can).  The scale to
  * digit thresholds have NO standard basis, so they are an engineering choice,
- * recorded UNSOURCED in ADR-023, the same grade as the anchor-box mapping.
+ * recorded as a display choice in ADR-023, the same grade as the anchor-box mapping.
  *
  * Arguments:
  *   0: _mapSize <NUMBER> world side length in metres (CfgWorlds mapSize)

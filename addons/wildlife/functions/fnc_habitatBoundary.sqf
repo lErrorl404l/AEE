@@ -13,7 +13,7 @@ inputs on any machine give the same result.
 The caller seeds the animal id with the mission time bin, so the seed already
 carries the time.  The integer hash is the exactly-representable pattern
 fnc_speciesForBiome used, so two machines agree.  The default exception rate
-is UNSOURCED and rare.
+has no published figure and is rare.
 
 Arguments:
   0: Number - the score at the current cell, 0 to 1

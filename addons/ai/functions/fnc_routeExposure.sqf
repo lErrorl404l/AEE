@@ -11,16 +11,14 @@ exposed.  The range is the repo's OWN visibility model output, not a second
 model: the driver passes EGVAR(vision,viewDistanceTarget), which
 fnc_calculateViewDistance derives from Koschmieder's law
 (V = 3.912 / sigma_total, Koschmieder 1924) and the Johnson detection
-criterion.  This kernel turns the range and the candidate-to-observer
-distance into a 0..1 exposure fraction.
+criterion.  The exposure is the apparent contrast of the candidate above the
+2 percent contrast threshold that defines that range: Koschmieder's
+attenuation C = C0 exp(-sigma d) with sigma = 3.912 / V, so
 
-  exposure = 1 - clamp(distance / viewRange, 0, 1)
+  exposure = (exp(-3.912 d / V) - 0.02) / (1 - 0.02), clamped to 0..1
 
 A candidate at the observer is fully exposed (1).  A candidate at or beyond
-the visibility range is not observable (0).
-
-The range is SOURCED (the repo's Koschmieder visibility model).  The linear
-observable fraction is a modelling choice, UNSOURCED.
+the visibility range is at the threshold and not observable (0).
 
 Arguments:
   0: Number - the candidate-to-observer distance, metres
@@ -37,6 +35,6 @@ params [
 
 if (_viewRange <= 0) exitWith { 0 };
 
-private _fraction = (((_distance / _viewRange) max 0) min 1);
+private _contrast = exp (-3.912 * ((_distance max 0) / _viewRange));
 
-1 - _fraction
+(((_contrast - 0.02) / 0.98) max 0) min 1

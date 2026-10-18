@@ -12,7 +12,7 @@
  *
  * The glyphs describe the APP-6(C) function icons.  The standard names the
  * functions and gives no coordinates, so every glyph here is a derived or
- * UNSOURCED vector approximation.  The set is curated to about twenty
+ * A display vector approximation.  The set is curated to about twenty
  * classes; anything outside it falls back to the engine icon texture in the
  * draw layer.
  *

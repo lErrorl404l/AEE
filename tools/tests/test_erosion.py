@@ -244,9 +244,9 @@ class TestSedimentDeposition(unittest.TestCase):
     def test_continuous_slope_transports(self):
         self.assertEqual(kernel("calculateSedimentDeposition", 0.10, 0.08), 0)
 
-    def test_gentle_ground_is_a_break(self):
-        """A downslope gradient under 2 percent deposits."""
-        self.assertEqual(kernel("calculateSedimentDeposition", 0.01, 0.015), 0.5)
+    def test_gentle_continuous_ground_transports(self):
+        """Only the NRCS half-steepness rule marks a break."""
+        self.assertEqual(kernel("calculateSedimentDeposition", 0.01, 0.015), 0)
 
     def test_break_ratio_is_the_published_rule_of_thumb(self):
         """Deposition starts where the steepness is half the upslope steepness.

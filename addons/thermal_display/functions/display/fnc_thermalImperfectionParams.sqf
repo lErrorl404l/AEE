@@ -9,7 +9,7 @@ the existing display chain.  The detector's fixed-pattern noise (FPN) and its
 NETD term already live in fnc_applyThermalVision.sqf; this kernel adds the
 drift and hunting that sit on top of them.
 
-Per-constant source register (UNSOURCED values are marked beside the clamp):
+Per-constant source register (display preferences are marked beside the clamp):
   temporal noise scale  1.0, range 0 to 2 (the operator setting, applied by
                         the driver).  Fixed-pattern and temporal noise are real
                         sensor noise.  FPN is DSNU plus PRNU, corrected by
@@ -24,9 +24,9 @@ Per-constant source register (UNSOURCED values are marked beside the clamp):
                         Reused, not duplicated.
   AGC hunt amplitude    0.05, range 0 to 0.1.  AGC compresses dynamic range,
                         which produces breathing and washout (Wikipedia
-                        Automatic gain control).  Hunting timescale
-                        UNSOURCED.
-  AGC hunt period       4.0 s, range 1 to 20 s.  UNSOURCED.  The AGC smooths
+                        Automatic gain control).  The amplitude is a display
+                        preference.
+  AGC hunt period       4.0 s, range 1 to 20 s.  A display preference.  The AGC smooths
                         at a 0.5 s time constant
                         (fnc_updateThermalAGC.sqf:285-289), so the hunt sits
                         above it.  The hunt is a sine that is zero at entry
@@ -34,12 +34,15 @@ Per-constant source register (UNSOURCED values are marked beside the clamp):
                         gain down first, the gain overshoot of a real AGC.
   NUC drift amplitude   0.15, range 0 to 0.3.  FPN drifts and NUC is
                         refreshed (Wikipedia fixed-pattern noise; EMVA 1288).
-                        The refresh cadence is UNSOURCED, modelled as a slow
-                        co-prime sine at 37 s.
+                        The drift grows from zero after each flat-field
+                        correction and resets at the next, every 180 s: the
+                        FLIR Lepton default automatic FFC period (Lepton
+                        Engineering Datasheet Rev 200, "SYS FFC Period"
+                        180000 ms).
   Hot-source bloom      0.08, range 0 to 0.15.  Thermal blooming and haloing
-                        have no authoritative source.  UNSOURCED.  It is the
+                        have no published magnitude; a display preference.  It is the
                         DynamicBlur spike the NVG model uses for halo.
-  Wake-up burst         0.5 s, fixed.  UNSOURCED.  A short interval after the
+  Wake-up burst         0.5 s, fixed.  A display choice.  A short interval after the
                         thermal view starts in which the artefacts sit at
                         their peak.  The driver passes a decaying settle
                         factor; the kernel scales the three artefacts by it.
@@ -80,8 +83,8 @@ _settle = (_settle max 0) min 1;
 // gives that phase; the full cycle spans twice the named period.
 private _agcHunt = -_huntAmp * sin(180 * _time / _huntPeriod);
 
-// NUC drift: a slow, co-prime refresh cadence so it beats against the hunt.
-private _nucDrift = _nucAmp * sin(360 * _time / 37);
+// NUC drift: grows since the last FFC and resets every 180 s (FLIR Lepton).
+private _nucDrift = _nucAmp * ((_time mod 180) / 180);
 
 private _bloom = _bloomBase * _hot;
 

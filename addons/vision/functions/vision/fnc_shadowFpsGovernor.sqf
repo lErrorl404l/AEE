@@ -7,7 +7,7 @@ Re-derived from the governor block in fn_run.sqf in Adaptive Shadows (Workshop
 3792830104).  The mod publishes no licence, so this is a re-derived numeric
 kernel, not copied code.  No mod content is copied.  The 800 per second
 reduction, the 120 per second recovery, the deadband 3 and the smoothing time
-0.5 are UNSOURCED heuristics.
+0.5 are performance heuristics (no physical quantity).
 
 The kernel is pure: it does NOT read diag_fps or getShadowDistance or
 missionNamespace.  The driver samples the frame rate and passes it in.

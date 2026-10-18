@@ -785,20 +785,29 @@ class TestNeedsTick(unittest.TestCase):
     """fnc_needsTick runs from the real SQF."""
 
     @staticmethod
-    def needs(hunger, thirst, dt, hunger_rate=0.02, thirst_rate=0.03):
+    def needs(hunger, thirst, dt, hunger_rate=0.02, thirst_rate=0.004):
         return run_sqf(NEEDS_TICK, [hunger, thirst, dt, hunger_rate, thirst_rate])
 
-    def test_thirst_above_its_threshold_wants_water(self):
-        _h, _t, goal = self.needs(0.1, 0.9, 0)
+    def test_a_due_thirst_wants_water(self):
+        _h, _t, goal = self.needs(0.1, 1.0, 0)
         self.assertEqual(goal, 2)
 
-    def test_hunger_only_wants_food(self):
-        _h, _t, goal = self.needs(0.9, 0.1, 0)
+    def test_water_wins_when_both_are_due(self):
+        _h, _t, goal = self.needs(1.0, 1.0, 0)
+        self.assertEqual(goal, 2)
+
+    def test_a_due_hunger_wants_food(self):
+        _h, _t, goal = self.needs(1.0, 0.1, 0)
         self.assertEqual(goal, 1)
 
-    def test_both_low_want_nothing(self):
-        _h, _t, goal = self.needs(0.1, 0.1, 0)
+    def test_a_need_short_of_its_interval_wants_nothing(self):
+        _h, _t, goal = self.needs(0.99, 0.99, 0)
         self.assertEqual(goal, 0)
+
+    def test_the_rate_ratio_is_the_measured_bout_ratio(self):
+        text = (WILDLIFE / "initSettings.inc.sqf").read_text(encoding="utf-8")
+        self.assertIn("hungerRate,\"AEE Wildlife\",\"Behaviour\",0.001,0.1,0.02,3", text)
+        self.assertIn("thirstRate,\"AEE Wildlife\",\"Behaviour\",0.001,0.2,0.004,3", text)
 
     def test_both_needs_rise_with_dt(self):
         hunger0, thirst0, _goal = self.needs(0.0, 0.0, 0)
@@ -823,7 +832,9 @@ class TestResourceScore(unittest.TestCase):
         self.assertAlmostEqual(self.score(0, 1.0, 0.0, True), 1.0)
 
     def test_long_distance_is_near_zero(self):
-        self.assertAlmostEqual(self.score(200, 1.0, 0.0, True), 0.0, places=6)
+        # 1.2 km, the measured deer-to-water distance.
+        self.assertAlmostEqual(self.score(1200, 1.0, 0.0, True), 0.0, places=6)
+        self.assertGreater(self.score(600, 1.0, 0.0, True), 0.0)
 
     def test_food_uses_the_vegetation_score(self):
         self.assertAlmostEqual(self.score(0, 0.0, 0.5, False), 0.5)
@@ -1442,7 +1453,6 @@ class TestEmitterSourceContracts(unittest.TestCase):
 
 PITCH_GLOBALS = {
     "WILDLIFE_PITCH_JITTER": 0.04,
-    "WILDLIFE_PITCH_RATE_COUPLING": 0.25,
     "WILDLIFE_PITCH_MIN": 0.5,
     "WILDLIFE_PITCH_MAX": 2.0,
 }
@@ -1477,11 +1487,10 @@ class TestCallPitch(unittest.TestCase):
         self.assertLess(cold, mild)
         self.assertLess(mild, warm)
 
-    def test_a_small_bird_is_higher_than_an_owl(self):
-        self.assertGreater(
-            call_pitch(42, "temperate_bird_dawn", 20, 0),
-            call_pitch(42, "owl", 20, 0),
-        )
+    def test_the_cricket_follows_the_measured_carrier_frequency(self):
+        # Mhatre et al. 2011: 2.4 kHz at 18 C, 3.3 kHz at 28 C.
+        r = call_pitch(7, "cricket", 28, 0) / call_pitch(7, "cricket", 18, 0)
+        self.assertAlmostEqual(r, 3.3 / 2.4, places=4)
 
     def test_the_pitch_is_clamped(self):
         # An extreme opening velocity is clamped to the pitch floor.
@@ -1517,7 +1526,6 @@ class TestPitchSourceContracts(unittest.TestCase):
             "WILDLIFE_PITCH_MIN",
             "WILDLIFE_PITCH_MAX",
             "WILDLIFE_PITCH_JITTER",
-            "WILDLIFE_PITCH_RATE_COUPLING",
         ):
             self.assertIn(name, constants, name)
         preps = (AMBIENCE.parent / "XEH_PREP.hpp").read_text(encoding="utf-8")

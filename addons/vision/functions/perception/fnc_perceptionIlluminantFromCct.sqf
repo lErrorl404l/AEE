@@ -33,8 +33,8 @@ Per-constant source register:
   XYZ from (x, y)         SOURCED: CIE 15:2004.
   Rec.709 matrix          SOURCED: IEC 61966-2-1 (sRGB), ITU-R BT.709-6.
   CCT band 1667 to 25000  SOURCED: the loci validity bands.
-  channel floor 0         UNSOURCED: the out-of-gamut floor.
-  y floor 0.0001          UNSOURCED: guards a division by zero.
+  channel floor 0         Numerical guard: the out-of-gamut floor.
+  y floor 0.0001          Numerical guard: prevents a division by zero.
 
 Arguments:
   0: Number - correlated colour temperature, kelvin

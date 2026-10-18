@@ -27,10 +27,9 @@ extinction k (mag per air mass):
 tau_aerosol from the published haze extinction (less Rayleigh, Bucholtz
 1995, times the 1.2 km aerosol scale height, Elterman 1968).
 
-Light pollution: the nearby house count still subtracts a bounded
-magnitude penalty (fnc_lightPollutionPenalty, UNSOURCED form) - the
-artificial sky brightness needs the light emission of the settlement,
-which the engine does not expose.
+Light pollution: the artificial zenith luminance of the settlement around
+the observer (fnc_lightPollutionPenalty, Albers & Duriscoe 2001 with the UN
+household size) adds to the sky luminance.
 
 Arguments:
   0: Number - Moon altitude, deg
@@ -38,6 +37,7 @@ Arguments:
   2: Number - twilight horizontal illuminance, lux
   3: Number - haze extinction at 550 nm, per km
   4: Number - nearby house count
+  5: Number - persons per household
 
 Pure.  The caller publishes aee_lighting_limitingMagnitude and
 aee_lighting_skyLuminance.
@@ -49,7 +49,8 @@ params [
     ["_moonFrac", 0, [0]],
     ["_twilightLux", 0, [0]],
     ["_haze", 0.08, [0]],
-    ["_houseCount", 0, [0]]
+    ["_houseCount", 0, [0]],
+    ["_perHouse", 3.8, [0]]
 ];
 
 private _tauAer = ((_haze - 0.0116) max 0) * 1.2;
@@ -68,11 +69,12 @@ if (_moonAlt > 0 && _moonFrac > 0) then {
 };
 
 _b = _b + ((_twilightLux max 0) / pi);
+_b = _b + ([_houseCount, _perHouse] call FUNC(lightPollutionPenalty));
 
 private _dI = 1.076e-9 * (sqrt (1 + (1e5 * _b)));
 private _mLim = (-2.5 * (log (_dI / 2.54e-6))) - _k;
 
-_mLim = _mLim - ([_houseCount] call FUNC(lightPollutionPenalty));
+
 _mLim = (_mLim max -2) min 8;
 
 [_mLim, _b]

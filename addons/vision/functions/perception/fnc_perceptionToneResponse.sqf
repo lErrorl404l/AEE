@@ -21,7 +21,7 @@ The exponent is the measured primate-cone value; the gains that map the
 tangent onto the engine's ColorCorrections are a DISPLAY MAPPING (no physical
 measurement exists for them) and are labelled so.
 
-Per-constant source register (UNSOURCED values are marked beside the clamp):
+Per-constant source register (display preferences are marked beside the clamp):
   Naka-Rushton exponent n   0.74.  SOURCED: primate cones in vivo,
                             V/Vm = I^n / (I^n + sigma^n), n = 0.74 for every
                             steady-state and transient record (Valeton &

@@ -24,8 +24,8 @@ Returns:
 
 params [["_sceneLog", -3, [0]]];
 
-// Guards around the physiological range, not sources: the dark floor is the
-// starlight luminance (10^-3 cd/m2 class) and the ceiling is a bright
-// daylight surface.  UNSOURCED clamps.
+// The operating range of human vision, 10^-6 cd/m2 (the absolute scotopic
+// threshold) to 10^8 cd/m2 (the onset of retinal damage); Hood and
+// Finkelstein 1986, Handbook of Perception and Human Performance, ch. 5.
 private _x = (_sceneLog max -6) min 8;
 [_x, _x]

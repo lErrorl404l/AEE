@@ -6,7 +6,7 @@ Single edge scale for the RadialBlur vignette.
 Arma exposes no radial pincushion parameter, so the edge read is a blur
 approximation.  The per-tier edge factors are the values already in the
 parent's inline erosion switch.  The true warp percent per generation is
-UNSOURCED.
+unpublished, so the edge factors are display choices.
 
 This returns ONE multiplier, applied exactly once by the parent.  The result
 is clamped so the final RadialBlur power stays at or below the parent's 0.01

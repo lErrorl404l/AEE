@@ -20,8 +20,8 @@ AEE_MODULE_POST_INIT
 // and the ones created later.  The class is named in the handler registration
 // rather than tested with isKindOf, so the vehicle class inventory is
 // unchanged.  Only a substantial hit emits smoke (damage >= 0.5): this
-// threshold is a STATED modelling choice, not a measured constant
-// (UNSOURCED).
+// threshold is on the engine's 0..1 damage scale, which has no physical
+// unit, so it is an engine mapping.
 private _fnAddSource = missionNamespace getVariable [QGVAR(fnc_scalarAddSource), nil];
 if (!isNil "_fnAddSource") then {
     private _emitSmoke = {

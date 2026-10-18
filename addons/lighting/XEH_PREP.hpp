@@ -23,7 +23,6 @@ PREPS(astronomy,renderMeteors);
 PREPS(astronomy,showerIsActive);
 PREPS(astronomy,siderealTime);
 PREPS(astronomy,skyGateReason);
-PREPS(astronomy,starBrightnessCoefficient);
 PREPS(astronomy,starCatalogData);
 PREPS(astronomy,starDirection);
 PREPS(astronomy,starLightsSync);

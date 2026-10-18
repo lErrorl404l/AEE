@@ -129,11 +129,12 @@ Arguments:
   5: _airDensity  (NUMBER) air density, kg/m^3, > 0
   6: _bandToken   (STRING) "lwir" (default) or "mwir"
 
-The LWIR path is the Minkina and Klecha 2016 model and is unchanged.  The
-MWIR path is the declared ceiling: the clear-air extinction is zero, so the
-clear-air return is exactly 1, while the fog and rain linear terms stay.  No
-machine-readable sea-level 2-5 um band-averaged transmittance curve is held,
-so the MWIR clear-air extinction is UNSOURCED.
+Both bands use the Minkina and Klecha 2016 Eq. (1) at 15 C and 50 %.  LWIR:
+alpha = 0.008, beta = 0.  MWIR (the AGEMA 470 Pro SW, 2-5 um): beta =
+0.00049 per m, and alpha = 0.0393; the paper prints 0.393, but its own
+Fig. 2a (SW Patm 0.77 at 50 m, 0.66 at 100 m) is reproduced only by 0.0393,
+so the printed value is a dropped zero.  Both scale with the modelled
+water-vapour extinction in the same way.
 
 Return Value: NUMBER, the path transmission in 0..1, or -1 when an input is
 unusable.
@@ -149,7 +150,7 @@ params [
     ["_rainScalar", 0, [0]],
     ["_airDensity", AERO_ISA_SEA_LEVEL_DENSITY, [0]],
     // The detector band.  The LWIR default keeps every existing caller
-    // bit-identical.  "mwir" selects the declared clear-air ceiling.
+    // bit-identical.  "mwir" selects the 2-5 um coefficients.
     ["_bandToken", "lwir", [""]]
 ];
 
@@ -225,16 +226,12 @@ if (_rainScalar > 0) then {
 private _betaExtraKm = _betaFogKm + _betaRainKm;
 
 // ─── Band-resolved clear-air extinction (T5) ──────────────────────────────
-// LWIR keeps the Minkina and Klecha 2016 square-root term unchanged.
-// MWIR is the declared ceiling: no machine-readable sea-level 2-5 um
-// band-averaged transmittance curve is held.  The NASA 1967 report covers
-// 35,000 ft slant paths from solar spectra, and the NASA 1965 report is a
-// model-parameter paper.  The clear-air extinction is therefore set to zero,
-// so the clear-air return is exactly 1, and the fog and rain linear terms
-// remain.  The MWIR clear-air extinction is UNSOURCED, and the dominant
-// absorbers it omits are H2O, CO2 at 4.3 um, N2O and CO.
-if ((toLower _bandToken) == "mwir") then {
-    _alphaEff = 0;
+// MWIR: Minkina and Klecha 2016, AGEMA 470 Pro SW, alpha 0.0393 (the value
+// that reproduces their Fig. 2a) and beta 0.00049 per m (0.49 per km), both
+// scaled like the LWIR alpha by the modelled clean-air extinction.
+if (_isMwir) then {
+    _alphaEff = 0.0393 * (_betaClean / _betaRef);
+    _betaExtraKm = _betaExtraKm + 0.49 * (_betaClean / _betaRef);
 };
 
 // ─── Transmission ─────────────────────────────────────────────────────────

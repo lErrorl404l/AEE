@@ -9,6 +9,7 @@ Run: python3 -m unittest tools.tests.test_ai -v
 """
 
 import re
+import math
 import sys
 import unittest
 from pathlib import Path
@@ -280,13 +281,13 @@ class TestRouteExposure(unittest.TestCase):
         self.assertAlmostEqual(exposure(0, 1000), 1.0)
 
     def test_at_the_visibility_range_is_not_observable(self):
-        self.assertAlmostEqual(exposure(1000, 1000), 0.0)
+        self.assertAlmostEqual(exposure(1000, 1000), 0.0, places=5)
 
     def test_beyond_the_range_is_clamped_to_zero(self):
         self.assertAlmostEqual(exposure(5000, 1000), 0.0)
 
-    def test_half_the_range_is_half_exposed(self):
-        self.assertAlmostEqual(exposure(500, 1000), 0.5)
+    def test_half_the_range_follows_koschmieder(self):
+        self.assertAlmostEqual(exposure(500, 1000), (math.exp(-3.912 * 0.5) - 0.02) / 0.98, places=5)
 
     def test_a_zero_range_is_not_observable(self):
         self.assertAlmostEqual(exposure(500, 0), 0.0)

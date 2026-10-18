@@ -6,7 +6,7 @@ Shadow depth and scene-state stabilization (aee-workshop-copy item 6, part 2).
 Re-derived from fn_stabilizedepth.sqf in Adaptive Shadows (Workshop
 3792830104).  The mod publishes no licence, so this is a re-derived numeric
 kernel, not copied code.  No mod content is copied.  The constants are
-UNSOURCED: the change threshold 3 m, the entry/exit counts 2, the similar
+Display choice (no physical quantity): the change threshold 3 m, the entry/exit counts 2, the similar
 threshold (changeThreshold * 2 max 8), the lower blend 0.60/0.40 and the
 default decrease delay 0.3 s.
 

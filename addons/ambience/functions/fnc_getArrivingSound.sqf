@@ -21,7 +21,8 @@ Model, per band:
     9613-1.  SOURCED.  This is the frequency-dependent term the broadband
     model lacks.
   - Occlusion: the caller's terrain loss in dB, applied flat across the bands.
-    UNSOURCED, the same convention fnc_acousticLevel uses.
+    The caller's value, the same convention fnc_acousticLevel uses; the
+    ISO 9613-2 barrier term's frequency dependence is not applied.
 
 Arguments:
   0: Array  - the source spectrum, rows [frequency Hz, source dB]

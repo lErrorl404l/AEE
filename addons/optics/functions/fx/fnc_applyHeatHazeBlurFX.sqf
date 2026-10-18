@@ -14,7 +14,7 @@ QGVAR(glareBlur).
 The mirage intensity is 0 unless a hot, arid or dusty surface is in view, so
 the blur only engages in the heat-haze regime the mirage already detects.
 
-Gates on EGVAR(core,opticsEnabled).  The scale is UNSOURCED (the engine has no
+Gates on EGVAR(core,opticsEnabled).  The scale is a display choice, not a physical quantity (the engine has no
 documented heat-haze defocus constant; the value is a small fraction of the
 DynamicBlur range the arbiter already uses).
 

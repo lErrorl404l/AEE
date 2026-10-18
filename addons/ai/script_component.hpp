@@ -5,8 +5,9 @@
 
 // ── Disturbance field constants ───────────────────────────────────────────
 // The field is a small grid of cells, each keyed by floor(pos / cell size)
-// and holding the strongest recent stimulus.  Every numeric here is a
-// modelling choice, UNSOURCED.  See the per-constant register in the
+// and holding the strongest recent stimulus.  The cell size, horizon, cap,
+// broadcast rate and tick are performance policy (no physical quantity); the
+// half-life is sourced in fnc_stimulusDecay.  See the per-constant register in the
 // wildlife-ambience dossier (docs/wiki/research/wildlife-ambience-dossier.md).
 #define AI_CELL_SIZE 50
 #define AI_STIMULUS_HALF_LIFE 45
@@ -28,7 +29,7 @@
 // model is introduced.
 //
 // AI_HEARING_BASE_RANGE is the baseline hearing range in metres.  It is a
-// modelling choice, UNSOURCED: the engine exposes no AI hearing range as a
+// modelling choice with no published figure: the engine exposes no AI hearing range as a
 // readable value.  The index scales it, so the effective range moves with the
 // weather, not a constant.
 #define AI_HEARING_BASE_RANGE 400

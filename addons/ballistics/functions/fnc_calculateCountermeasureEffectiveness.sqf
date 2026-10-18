@@ -15,8 +15,8 @@ for an IR seeker, or the chaff cloud RCS (fnc_calculateChaffCrossSection)
 for a radar seeker; targetSignal is the same quantity for the target.  The
 comparison is like-for-like, so a caller passes one unit on both sides.
 
-BASE EFFECTIVENESS IS UNSOURCED.  The issue #131 gives these bands as "tuning
-values", and no named source supports them:
+BASE EFFECTIVENESS IS THE CALLER'S.  The issue #131 bands below have no
+published source, so this kernel holds none of them:
     flare vs first-generation IR  0.6 to 0.9
     flare vs imaging IR           0.1 to 0.3
     chaff vs first-generation radar 0.5 to 0.8

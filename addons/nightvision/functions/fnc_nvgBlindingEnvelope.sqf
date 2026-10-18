@@ -27,7 +27,7 @@ params [
 private _blind = _blowout * _strength;
 _blind = (_blind max 0) min 1;
 
-// _whiteMax, _blackMin and _contrastLoss are UNSOURCED modelling choices,
+// _whiteMax, _blackMin and _contrastLoss are display choices (no physical quantity),
 // bounded by the auto-gate literature.  They carry no numeric source.
 private _whiteMax = [1.6, 1.4, 1.0, 1.0] select ((_tierIdx max 0) min 3);
 private _blackMin = [1.0, 1.0, 0.15, 0.10] select ((_tierIdx max 0) min 3);

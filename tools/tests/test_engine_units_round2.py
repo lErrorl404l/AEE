@@ -32,14 +32,6 @@ BIOLOGICAL_AMBIENT = WARNINGS / "fnc_calculateBiologicalAmbient.sqf"
 UPDATE_WIND = ATMOS_STATE / "fnc_updateWind.sqf"
 UPDATE_FOG = ATMOS_STATE / "fnc_updateFog.sqf"
 ENGINE_WAVES = REPO / "addons" / "maritime" / "functions" / "fnc_updateEngineWaves.sqf"
-STAR_COEF = (
-    REPO
-    / "addons"
-    / "lighting"
-    / "functions"
-    / "astronomy"
-    / "fnc_starBrightnessCoefficient.sqf"
-)
 SNOW = TERRAIN / "fnc_calculateSnowAccumulation.sqf"
 SPACE_WEATHER = CLIMATOLOGY / "fnc_calculateSpaceWeather.sqf"
 FOG_BASE = CLIMATOLOGY / "fnc_calculateFogBaseAltitude.sqf"
@@ -180,33 +172,6 @@ class TestFogForecastRead(unittest.TestCase):
             "if !(_forecastFog isEqualType 0) then { _forecastFog = _fogDensity; };",
             self.src,
         )
-
-
-# ─── M5: getLighting ambient brightness has no documented range ──────────
-
-
-class TestAmbientBrightnessClamp(unittest.TestCase):
-    """BIKI `getLighting` element 1 is a Number with no stated range; its own
-    example reads 28526.2 in daylight, so it is not a 0..1 fraction."""
-
-    def setUp(self):
-        self.src = _read(STAR_COEF)
-
-    def test_the_clamp_is_defensive_and_marked_unverified(self):
-        self.assertIn("UNVERIFIED RANGE", self.src)
-        self.assertIn("((_ambientBrightness max 0) min 1000)", self.src)
-
-    def test_the_lower_bound_is_applied(self):
-        # A negative brightness must not read as a lit sky through the ^4.
-        self.assertNotIn("((_ambientBrightness) ^ 4)", self.src)
-        self.assertIn("max 0", self.src)
-
-    def test_a_negative_value_clamps_to_the_zero_floor(self):
-        def coef2(brightness):
-            return ((1.5 - 0.5) ** 2) * (max(0.0, min(1000.0, brightness)) ** 4)
-
-        self.assertAlmostEqual(coef2(-5.0), coef2(0.0))
-        self.assertLess(coef2(0.0), coef2(10.0))
 
 
 # ─── Environment: the snow drift ramp reaches the declared 0..1 ──────────

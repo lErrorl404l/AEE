@@ -19,9 +19,9 @@ SOURCING.  The issue #131 cites DTIC ADA432299 for flare rejection.  That
 report is Bartak, "Mitigating the MANPADS Threat: International Agency, U.S.,
 and Russian Efforts", Naval Postgraduate School thesis, March 2005.  It holds
 no flare intensity or decay data, so it does NOT support this model.  No
-canonical open-literature J0 or tau for a specific flare was found, so BOTH
-J0 and tau are UNSOURCED tuning values.  The issue's 5-10 s burn is likewise
-UNSOURCED.  The consumer must treat them as tunables.
+canonical open-literature J0 or tau for a specific flare was found, so both
+are the caller's datasheet values and this kernel holds no default for
+either; the issue's 5-10 s burn has no published source and is not used.
 
 Arguments:
   0: _peakIntensity (NUMBER) J0, W/sr, >= 0

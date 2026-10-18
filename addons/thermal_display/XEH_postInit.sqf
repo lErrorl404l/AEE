@@ -34,7 +34,7 @@ if (hasInterface && {isNil QGVAR(outlineEH)}) then {
 
 // ── Active IR illuminator (issue #196) ────────────────────────────────────
 // The keybind flips the CBA setting; the per-second driver owns the light.
-// UNSOURCED mechanism: a workshop idea re-implemented as AEE code.
+// Unpublished mechanism: a workshop idea re-implemented as AEE code.
 ["AEE", "ActiveIRToggle", [LLSTRING(activeIRToggle), "Toggle the active-IR illuminator"], {
     private _on = missionNamespace getVariable [QEGVAR(thermal,activeIR), false];
     [QEGVAR(thermal,activeIR), !_on, 0, "client", true] call CBA_settings_fnc_set;

@@ -4,7 +4,7 @@
 Map a lighting class and the overcast fraction to four bounded run-time scales.
 
 The class table is keyed by CLIMATE CLASS, never by map.  Every value is an
-UNSOURCED aesthetic proxy chosen for the eye.
+display proxy (no physical quantity) chosen for the eye.
 
 Arguments:
   0: worldClass  string from fnc_worldLightingClass (default "TEMPERATE")

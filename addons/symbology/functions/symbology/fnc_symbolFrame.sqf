@@ -15,7 +15,7 @@
  *   equipment a circle
  * The arc samples use a parabola, a derived approximation of the standard's
  * curve.  The sea-surface hull arc of MIL-STD-2525 is a named per-2525
- * variant, UNSOURCED against APP-6(C), and is not drawn here.
+ * variant, not in APP-6(C), and is not drawn here.
  *
  * Arguments:
  *   0: _affiliation <STRING> "friend", "hostile", "neutral" or "unknown"

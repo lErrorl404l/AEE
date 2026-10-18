@@ -76,20 +76,13 @@ decision multiplier.
 | fatigue input | `getFatigue unit` | S | BI wiki command, stamina system, 0 to 1 |
 | courage input | `skill unit "courage"` | S | BI wiki command |
 | spotting input | `skill unit "spotDistance"` | S | BI wiki command |
-| stress shape | additive in suppression | U | issue #110 spec; no published additive stress index |
-| fatigue weight in stress | 0.3 | U | issue #110 spec |
-| casualty weight in stress | 0.3 | U | issue #110 spec |
-| morale shape | 1 minus penalties plus bonus | U | issue #110 spec |
-| casualty weight in morale | 0.5 | U | issue #110 spec |
-| fatigue weight in morale | 0.3 | U | issue #110 spec |
-| decision band edges | 0.4, 0.6, 0.8 | U | issue #110 spec |
-| decision multipliers, band below 0.4 | 1.0, 1.0, 1.0, 1.0 | U | issue #110 spec |
-| decision multipliers, band 0.4-0.6 | 0.9, 0.8, 0.7, 0.6 | U | issue #110 spec |
-| decision multipliers, band 0.6-0.8 | 0.7, 0.5, 0.4, 0.3 | U | issue #110 spec |
-| decision multipliers, band 0.8-1.0 | 0.5, 0.3, 0.2, 0.1 | U | issue #110 spec |
-| morale cover threshold | 0.30 | U | issue #110 spec |
-| morale break threshold | 0.15 | U | issue #110 spec |
-| courage weight | 0.2 | U | issue #110 spec |
+| stress | engine suppression | S | BI wiki `getSuppression`; no published weighting adds fatigue or casualties |
+| morale | 1 - casualties / 0.40 + mission bonus | S | FM 105-5 Maneuver Control (1967): breaking approaches certainty at ~40 % casualties (Dupuy Institute, "C-WAM 4 (Breakpoints)", 2018) |
+| halt (seek cover) | morale < 0.5 (20 % casualties) | S | FM 105-5: an attacker at ~20 % casualties is almost certain to halt |
+| break | morale <= 0 (40 % casualties) | S | FM 105-5 |
+| mission bonus | scenario offset | scenario | mission designer input |
+| accuracy at full stress | 0.12 | S | Rowland 1986, RUSI J. 131(2): combat small-arms effectiveness 1/7 to 1/10 of field trials |
+| reaction, spotting, firing rate | 1.0 | S | no published degradation figure, so none applied |
 | inversion-U shape of the curve | qualitative | S | Yerkes & Dodson 1908 |
 | downward arm past optimum | qualitative | S | Lupien et al. 2007 |
 | attention narrowing with arousal | qualitative | S-lit | Easterbrook 1959 |
@@ -97,7 +90,7 @@ decision multiplier.
 | stress impairs uncertain decisions | qualitative | S-lit | Starcke & Brand 2016 |
 | casualties are one of five collapse factors | qualitative | S-lit | Wainstein 1986 |
 
-## The shape is sourced, the numbers are not
+## The numbers (FM 105-5, Rowland 1986)
 
 The curve shape comes from published work. The exact multipliers do not. No
 peer-reviewed source gives a stress-index-to-reaction-time multiplier, and no

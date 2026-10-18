@@ -32,7 +32,7 @@ AEE_SETTING_SLIDER(spookSensitivity,"AEE Wildlife","Behaviour",0,2,1.0,2);
 
 AEE_SETTING_SLIDER(hungerRate,"AEE Wildlife","Behaviour",0.001,0.1,0.02,3);
 
-AEE_SETTING_SLIDER(thirstRate,"AEE Wildlife","Behaviour",0.001,0.2,0.03,3);
+AEE_SETTING_SLIDER(thirstRate,"AEE Wildlife","Behaviour",0.001,0.2,0.004,3);
 
 AEE_SETTING_SLIDER(herdSize,"AEE Wildlife","Behaviour",1,12,4,1);
 

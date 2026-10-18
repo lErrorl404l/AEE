@@ -39,7 +39,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_calculateDenseGasDispersion.sqf:41` | Wind vector |
 | `aee_core_currentWindDir` | SCALAR | degrees | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:35` | Wind direction in degrees |
 | `aee_core_currentWindStr` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/dispersion/fnc_updateCbrnPlume.sqf:63` | UNKNOWN |
-| `aee_core_dustSuppression` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/scalar/fnc_updateScalarFields.sqf:57` | Dust suppression 0..1 |
+| `aee_core_dustSuppression` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/weather/functions/scalar/fnc_updateScalarFields.sqf:59` | Dust suppression 0..1 |
 | `aee_core_fogBase_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/weather/functions/climatology/fnc_calculateFogBaseAltitude.sqf:28` | Fog base altitude in metres |
 | `aee_core_groundState` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/fnc_calculateScentDispersion.sqf:40` | Ground state |
 | `aee_core_moduleBiomeOverride` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/weather/functions/biome/fnc_getBiome.sqf:27` | EDEN biome override |

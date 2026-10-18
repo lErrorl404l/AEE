@@ -10,8 +10,8 @@ fnc_stimulusDecay with the stimulus half-life.  Deterministic, so two
 machines with the same field and the same time prune to the same field.
 
 The cap and the horizon are the field owner's policy and arrive as
-arguments.  The cell size, the half-life, the horizon and the cap are
-modelling choices, UNSOURCED.  See the per-constant register in the
+arguments.  The cell size, the horizon and the cap are performance
+policy (no physical quantity); the half-life is sourced in fnc_stimulusDecay.  See the per-constant register in the
 wildlife-ambience dossier.
 
 Arguments:

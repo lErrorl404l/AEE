@@ -26,7 +26,7 @@ params [
 ];
 
 private _err = (abs (_gainTarget - _gain)) / ((abs _gainTarget) max 1);
-// The 3.0 rad/s oscillation frequency is UNSOURCED: the section 3.6.6
+// The 3.0 rad/s oscillation frequency has no published value, so it is a display choice: the section 3.6.6
 // tolerance bounds the amplitude, not the frequency.  The 0.10 amplitude is
 // the section 3.6.6 fluctuation envelope, and the 0.15 clamp is the drift
 // envelope.

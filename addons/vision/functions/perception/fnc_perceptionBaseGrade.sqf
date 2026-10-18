@@ -21,14 +21,14 @@ Per-constant source register:
                           3553 of functions_f.pbo, build 2025-08-11.  The
                           fallback is a number triple with a source; it is not
                           shipped content.
-  brightness bound        0.03 either side of the anchor.  UNSOURCED:
+  brightness bound        0.03 either side of the anchor.  Display choice:
                           operator-tunable small deviation.
-  contrast bound          0.00 to 0.08 above the anchor.  UNSOURCED:
+  contrast bound          0.00 to 0.08 above the anchor.  Display choice:
                           operator-tunable small deviation; contrast may only
                           rise.
-  offset bound            -0.02 to 0.00 from the anchor.  UNSOURCED:
+  offset bound            -0.02 to 0.00 from the anchor.  Display choice:
                           operator-tunable; the black point may only deepen.
-  desaturation alpha      0 to 0.10.  UNSOURCED: the engine desaturates only and
+  desaturation alpha      0 to 0.10.  Display choice: the engine desaturates only and
                           the bounded improvement must not drain the image.
 
 Arguments:

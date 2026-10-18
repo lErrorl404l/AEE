@@ -24,10 +24,10 @@ not use this form.  This kernel is the point-source case.
 
 SOURCE.  Holst, "Electro-Optical Imaging System Performance", 6th ed., SPIE
 Press, 2017, ISBN 9781510611023; and Holst, "A Common Sense Approach to
-Thermal Imaging", SPIE Press, 2000.  The point-source range form is the
-standard EO one; its exact placement in Holst was NOT verified this session,
-so the FORM is cited as the EO-literature standard and marked PARTIALLY
-UNSOURCED.  The NEFD and SNR_min figures are seeker datasheet properties; SNR_min is a
+Thermal Imaging", SPIE Press, 2000.  The point-source range form is derived:
+a point source of intensity J gives the irradiance E = J tau / R^2 (the
+inverse-square law), and NEFD is by definition the irradiance at SNR 1, so
+SNR = E / NEFD and R = sqrt(J tau / (NEFD SNR_min)).  The NEFD and SNR_min figures are seeker datasheet properties; SNR_min is a
 detection threshold set by the required Pd/Pfa, not a derived constant.  The
 issue #131 range "5-10" for SNR_min is a plausible engineering band, not a
 sourced value, and is recorded as such.

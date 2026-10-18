@@ -11,8 +11,8 @@ shape as the disturbance field, so a second call in the cache window makes no
 object query.  surfaceVotes is an array of [materialClass, count] rows from
 fnc_classifyBySurfaceType.
 
-The grid, the object cap and the millisecond budget are modelling choices,
-UNSOURCED.  The sampler never exceeds the per-cell object cap or the
+The grid, the object cap and the millisecond budget are performance policy
+(no physical quantity).  The sampler never exceeds the per-cell object cap or the
 millisecond budget.  When the budget runs out, the unsampled cells are
 re-queued at the front of the pending list, so the next call resumes them and
 nothing starves.

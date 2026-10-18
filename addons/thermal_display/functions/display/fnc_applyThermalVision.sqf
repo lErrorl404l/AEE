@@ -136,7 +136,7 @@ private _effective = _contrast;
 // One pure kernel call builds the hot-source bloom, the AGC hunt, the NUC
 // drift and the temporal-noise term.  The detector FPN and NETD term below is
 // reused, not duplicated.  The three settling terms persist; the wake-up
-// burst is a decaying gain (UNSOURCED, 0.5 s) applied here.  The hunt and the
+// burst is a decaying gain (a display choice, 0.5 s) applied here.  The hunt and the
 // bloom change each tick, so the hunt goes into the ColorCorrections array,
 // which is written directly and never cached.
 private _impOn = missionNamespace getVariable [QGVAR(thermalImperfectionsEnabled), true];

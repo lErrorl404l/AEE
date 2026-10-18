@@ -278,8 +278,8 @@ private _callback = {
     _recovery
 };
 
-// The ecology tick reads these.  The defaults are UNSOURCED modelling
-// choices; a species-specific row is a later refinement.
+// The ecology tick reads these.  The defaults are modelling choices with no
+// published figure; a species-specific row is a later refinement.
 _agent setVariable [QGVAR(speciesRules), [1, 0.4, 0.6, 1]];
 _agent setVariable [QGVAR(habitatWeights), [0, 0, 0, 0]];
 _agent setVariable [QGVAR(speciesEmit), [0.5, true]];

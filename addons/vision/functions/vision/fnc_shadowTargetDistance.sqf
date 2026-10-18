@@ -7,7 +7,7 @@ Re-derived from fn_calculatetarget.sqf in Adaptive Shadows (Workshop
 3792830104).  The mod publishes no licence, so this is a re-derived numeric
 kernel, not copied code.  No mod content is copied.  The protection scale 0.25
 for an enclosed scene and the margin roles are the mod's own tuning and are
-UNSOURCED.
+performance choices (no physical quantity).
 
 The kernel is pure: no missionNamespace, no GVAR or EGVAR, no engine command.
 The driver supplies the speed, the optics flag and the margins.

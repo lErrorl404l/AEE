@@ -299,7 +299,6 @@ Vehicle and ground mobility.
 | `renderMeteors` | Register the client meteor renderer |
 | `showerIsActive` | Test whether a meteor shower is active |
 | `siderealTime` | Calculate the local sidereal time |
-| `starBrightnessCoefficient` | Compute the star render scale from moon phase, ambient and light pollution |
 | `starCatalogData` | Provide the generated BSC5 star catalogue |
 | `starDirection` | Convert star altitude and azimuth to a direction vector |
 | `starLightsSync` | Reconcile the star light emitters |

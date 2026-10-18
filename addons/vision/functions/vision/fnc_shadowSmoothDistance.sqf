@@ -7,7 +7,7 @@ Re-derived from fn_smoothdistance.sqf in Adaptive Shadows (Workshop
 3792830104).  The mod publishes no licence, so this is a re-derived numeric
 kernel, not copied code.  No mod content is copied.  The default rates
 (increase 2000 m/s, decrease 1000 m/s) and the fast-decrease factor 1.35 are
-UNSOURCED heuristics.
+performance heuristics (no physical quantity).
 
 The kernel is pure: no missionNamespace, no GVAR or EGVAR, no engine command.
 The driver reads the current shadow distance and passes it in.

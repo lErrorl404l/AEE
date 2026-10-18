@@ -21,10 +21,10 @@ Per-constant source register:
   photopic fraction m    SOURCED: CIE 191:2010.
   mesopic band           0.005 to 5.0 cd/m2.  SOURCED: CIE 191:2010.  The
                          fraction arrives already computed by the eye model.
-  desaturation amplitude 0.3, range 0 to 0.5.  UNSOURCED: operator-tunable.
+  desaturation amplitude 0.3, range 0 to 0.5.  Operator preference.
   Purkinje tint vector   blue-green toward 507 nm.  The tint amplitude is
-                         UNSOURCED; the hue direction is SOURCED to CIE 1951.
-  alpha clamp            0 to 0.5.  UNSOURCED: the engine desaturates only.
+                         a display choice; the hue direction is SOURCED to CIE 1951.
+  alpha clamp            0 to 0.5.  Display choice: the engine desaturates only.
 
 Arguments:
   0: Number - mesopic photopic fraction, 0 scotopic to 1 photopic

@@ -6,7 +6,7 @@ Shadow scene-sampling pattern (aee-workshop-copy item 6, part 1).
 Re-derived from fn_samplescene.sqf in Adaptive Shadows (Workshop 3792830104).
 The mod publishes no licence, so this is a re-derived numeric kernel, not
 copied code.  No mod content is copied.  The 25-point weighted pattern and the
-0.52 optics contraction are UNSOURCED heuristics: they come from the mod's
+0.52 optics contraction are performance heuristics (no physical quantity): they come from the mod's
 own tuning, not from a published measurement.
 
 The pattern is a set of screen-space points in normalised device coords,

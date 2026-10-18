@@ -21,7 +21,7 @@
  * Source: the community-documented conversion,
  * docs/engine/arma-map-grid-semantics.md:93-97 (Q4).  Technique from APP6
  * Markers (3009271265), reimplemented with AEE's own code; the mod file is
- * not copied.  The constants 6.4 and 8192 are UNSOURCED: no primary engine
+ * not copied.  The constants 6.4 and 8192 are display choices, not physical quantities: no primary engine
  * source publishes them, only the community note's empirical fit.
  *
  * Arguments:

@@ -20,7 +20,7 @@ The degree of adaptation D is partial.  CIECAM02 defines
 D = F * (1 - (1/3.6) * exp((-LA - 42) / 92)); F is 0.8 dim, 0.9 average, 1.0
 dark (CIE 159:2004).  The caller passes D; the default 0.9 is the average
 surround.  The engine cannot express a matrix, so the display-RGB diagonal and
-the blend cap are the approximation; both are UNSOURCED.
+the blend cap are the approximation; both are display choices, not physical quantities.
 
 The white target is the display white D65 at x 0.3127, y 0.3290 (CIE 15:2004
 and ITU-R BT.709-6).  The illuminant arrives normalised to unit luminance by
@@ -30,10 +30,10 @@ Per-constant source register:
   von Kries diagonal gain  SOURCED: von Kries 1902; CAT16 in Li et al. 2017.
   adaptation degree D      SOURCED: CIE 159:2004.  Default F 0.9, range 0.8-1.0.
   D65 white                SOURCED: CIE 15:2004 and ITU-R BT.709-6.
-  display-RGB diagonal     UNSOURCED: the engine has no matrix.
-  blend cap               0.25, UNSOURCED: a blend toward a solid colour washes
+  display-RGB diagonal     Display choice: the engine has no matrix.
+  blend cap               0.25.  Display choice: a blend toward a solid colour washes
                           the image out.
-  channel floor           EPSILON, UNSOURCED: guards a division by zero.
+  channel floor           EPSILON, Numerical guard: prevents a division by zero.
 
 Arguments:
   0: Array  - unit-luminance illuminant colour (fnc_perceptionIlluminant)
@@ -70,7 +70,7 @@ private _ir = (_illuminant select 0) max EPSILON;
 private _ig = (_illuminant select 1) max EPSILON;
 private _ib = (_illuminant select 2) max EPSILON;
 
-// The complementary tint in the display domain (UNSOURCED approximation).
+// The complementary tint in the display domain (a display approximation).
 private _compR = (((2 - _ir) max 0) min 1);
 private _compG = (((2 - _ig) max 0) min 1);
 private _compB = (((2 - _ib) max 0) min 1);

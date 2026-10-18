@@ -82,8 +82,8 @@
             <English>Herd Size</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_hungerRate_Description">
-            <Original>How fast an animal becomes hungry, per second</Original>
-            <English>How fast an animal becomes hungry, per second</English>
+            <Original>How fast an animal becomes hungry, per second. The animal seeks food when the value reaches 1, so this sets the interval between feeding bouts.</Original>
+            <English>How fast an animal becomes hungry, per second. The animal seeks food when the value reaches 1, so this sets the interval between feeding bouts.</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_hungerRate_Name">
             <Original>Hunger Rate</Original>
@@ -122,8 +122,8 @@
             <English>Spook Sensitivity</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_thirstRate_Description">
-            <Original>How fast an animal becomes thirsty, per second</Original>
-            <English>How fast an animal becomes thirsty, per second</English>
+            <Original>How fast an animal becomes thirsty, per second. The default is the hunger rate divided by five: a deer feeds about five times a day and drinks about once.</Original>
+            <English>How fast an animal becomes thirsty, per second. The default is the hunger rate divided by five: a deer feeds about five times a day and drinks about once.</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_thirstRate_Name">
             <Original>Thirst Rate</Original>

@@ -87,23 +87,11 @@ if (_starsForce isEqualType 0) then {
     if (_starsForce > 0) then { _mLim = _starsForce; };
 };
 
-// ─── Star brightness coefficient (item 3) ─────────────────────────────────
-// Rebuild the Star Light coefficient from the moon phase, the cached ambient
-// brightness (getLighting element 1), the cached house count, the engine
-// overcast and fog, and the matcher world star scale.  The combined value is a
-// 0..1 render-scale multiplier: 1 in a pristine dark sky, lower under moon,
-// light pollution, cloud or a harsh world.  Published for the renderers.
-private _moonPhase = moonPhase date;
-if !(_moonPhase isEqualType 0) then { _moonPhase = 0.5; };
-
-private _ambientBrightness = missionNamespace getVariable [QGVAR(ambientBrightness), 0];
-if !(_ambientBrightness isEqualType 0) then { _ambientBrightness = 0; };
-
-private _houseCount = missionNamespace getVariable [QGVAR(houseCount), 0];
-if !(_houseCount isEqualType 0) then { _houseCount = 0; };
-
-private _brightnessCoeff = [_moonPhase, _ambientBrightness, _houseCount] call FUNC(starBrightnessCoefficient);
-_brightnessCoeff = [_brightnessCoeff, overcast, fog] call FUNC(starWeatherFade);
+// ─── Star brightness coefficient ──────────────────────────────────────────
+// The moon, sky glow and light pollution are in the limiting magnitude; the
+// cloud fraction hides the rest (fnc_starWeatherFade).  The 0..1 render scale
+// is published for the renderers.
+private _brightnessCoeff = [1, overcast, fog] call FUNC(starWeatherFade);
 
 // Matcher world factor: element 1 of aee_lighting_worldLighting (starScale).
 private _worldLighting = missionNamespace getVariable [QGVAR(worldLighting), []];

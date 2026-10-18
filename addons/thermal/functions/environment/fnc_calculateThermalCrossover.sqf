@@ -10,16 +10,12 @@ triggering false positives.
 
 The surface temperature is the FIRST LAYER of the four-layer ground node
 stack (fnc_calculateGroundNodeStack, issue #198), so crossover reads the
-same surface every other thermal consumer exchanges with.  The ground-state
-offsets below are a fallback only, for the impossible empty stack, and are
-UNSOURCED.
+same surface every other thermal consumer exchanges with.
 
 Stored in GVAR(thermalCrossoverActive) (bool) and GVAR(surfaceTemperature).
 */
 
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
-private _overcast = overcast;
 
 // ─── Surface temperature from the four-layer ground node stack ───────────
 // Resolve the position the way the node stack does: the current unit's ASL
@@ -33,17 +29,9 @@ if (count _pos < 2) then { _pos = [0, 0, 0]; };
 private _stack = [_pos] call FUNC(calculateGroundNodeStack);
 private _surfaceTemp = _stack select 0;
 
-// Fallback for the impossible empty stack.  The ground-state offsets are
-// UNSOURCED and a normal run never reaches them.
-if (_stack isEqualTo []) then {
-    _surfaceTemp = switch (_groundState) do {
-        case "Snow":   { _airTemp - 2 };
-        case "Mud":    { _airTemp - 1 };
-        case "Dusty":  { _airTemp + 5 };
-        case "Frozen": { _airTemp - 3 };
-        default        { _airTemp + 2 * (1 - _overcast) }; // Normal: solar heating
-    };
-};
+// Guard for the impossible empty stack: with no surface state there is no
+// measured contrast, so the surface reads at the air temperature.
+if (_stack isEqualTo []) then { _surfaceTemp = _airTemp; };
 
 // ─── Crossover only in the twilight window ─────────────────────────────
 // True thermal crossover (isothermal condition) happens when the surface

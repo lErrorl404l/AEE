@@ -41,8 +41,9 @@ GVAR(ambientPFH) = [FUNC(wildlifeTickPFH), _interval] call CBA_fnc_addPerFrameHa
 // caller's own name, so it cannot collide with another addon's Fired handler.
 // The shot becomes a sound event with a source level, not a fixed magnitude.
 // A suppressed round is quieter through the ammo's own audible-fire factor,
-// and an explosive round is an explosion, not a gunshot.  The base levels and
-// the audible-fire mapping are UNSOURCED.
+// and an explosive round is an explosion, not a gunshot.  The base levels are
+// sourced in fnc_acousticSourceDb; the audible-fire factor is the ammo's own
+// config value, an engine quantity.
 ["Fired", {
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo"];
     if (isNull _unit) exitWith {};

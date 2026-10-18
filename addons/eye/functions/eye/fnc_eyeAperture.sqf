@@ -25,8 +25,9 @@ The luminance is the driver's rho * E / pi conversion (rho = the driver
 eyeReflectance default, kept in step).
 
 The aperture then runs the pupil range [1.9, 8.0] mm onto the BIKI scale
-[50, 8].  The 1.9 and 8.0 mm guards are UNSOURCED (the physiological pupil
-range); the fit itself is valid from about 2 mm to above 8 mm.
+[50, 8].  1.9 mm is the fit's bright asymptote (4.9 - 3.0); 8.0 mm is the
+dark-adapted end of the 2 to 8 mm adult range (Watson and Yellott 2012,
+J. Vision 12(10):12).
 
 Two engine facts from the retired bridge carry forward. (1) setApertureNew has
 effect only when HDR is enabled. (2) The engine resets the aperture at mission

@@ -38,8 +38,10 @@ _dt = _dt max 1;
 private _gridW = 31;
 private _gridH = 31;
 private _cellM = 1000;
-// Surface-layer depth for the dry-removal time constant tau = H / v_d.  A
-// STATED modelling depth, not a measured constant (UNSOURCED).
+// Surface-layer depth for the dry-removal time constant tau = H / v_d.  The
+// atmospheric surface layer is the bottom 10 % of the boundary layer (Stull,
+// "Practical Meteorology", ch. 18), and a daytime convective boundary layer
+// is about 1 km deep, so the surface layer is about 100 m.
 private _layerDepthM = 100;
 
 private _halfSpan = (_gridW * _cellM) / 2;

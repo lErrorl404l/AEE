@@ -17,14 +17,17 @@ Model, three terms on one base pitch:
     speed of sound and v the radial velocity of the emitter toward the
     listener (positive closing).  c = SOUND_SPEED_COEFF * sqrt(T + KELVIN_OFFSET) m/s, SOURCED
     (the dry-air speed of sound).  The velocity is clamped below c.
-  - Species.  A bird call pitch falls as the body grows, so an owl is lower
-    than a songbird.  The factor is a per-guild constant, UNSOURCED, because
-    no body mass is held.  A cricket and a cicada stridulate, and the
-    stridulation rate follows the Dolbear relation T_C = 5 + N8 (SOURCED,
-    held in the corpus); the pitch coupling to that rate is UNSOURCED.
+  - Species.  A tree cricket is a poikilotherm and its song carrier
+    frequency rises linearly with temperature: Oecanthus henryi sings at 2.4
+    kHz at 18 C and 3.3 kHz at 28 C, median 2.8 kHz (Mhatre, Bhattacharya,
+    Robert and Balakrishnan 2011, J. Exp. Biol. 214:2569; linear across four
+    Oecanthus species, Metrani and Balakrishnan 2005).  The recording is
+    taken as made at the 23 C mid-point, so the pitch is CF(T) / CF(23 C)
+    with CF = 2.4 + 0.09 (T - 18) kHz.  Other groups (a cicada's tymbal is a
+    resonator, a bird is a homeotherm) carry no temperature term.
 
-Constants: c from temperature is SOURCED.  The jitter spread, the pitch
-bounds, the guild factors and the stridulation pitch coupling are UNSOURCED.
+Constants: c from temperature and the cricket carrier frequency are SOURCED.
+The jitter spread and the pitch bounds are playback limits.
 
 Arguments:
   0: Number - the seed
@@ -60,9 +63,6 @@ private _contains = {
     _found
 };
 
-// Stridulators: their chirp rate follows the temperature.
-private _STRIDULATORS = ["cricket", "cicada"];
-
 // Local speed of sound, SOURCED: the dry-air relation c = SOUND_SPEED_COEFF*sqrt(T_K).
 private _speedOfSound = SOUND_SPEED_COEFF * (sqrt (_temperatureC + KELVIN_OFFSET));
 
@@ -76,19 +76,12 @@ private _hash = (((_seed * 37) + (count _species * 11)) mod 2001);
 private _unit = ((_hash / 1000) - 1);
 private _jitter = 1 + (_unit * WILDLIFE_PITCH_JITTER);
 
-// The species term.
+// The species term: the tree-cricket carrier frequency (Mhatre et al. 2011).
 private _speciesTerm = 1;
-private _stridulator = false;
-{
-    if ([_species, _x] call _contains) then { _stridulator = true; };
-} forEach _STRIDULATORS;
-
-if (_stridulator) then {
-    // The Dolbear rate in chirps per minute, N8 = 7*T - 30, and its value at
-    // 20 C.  The pitch coupling to the rate is UNSOURCED.
-    private _rate = ((7 * _temperatureC) - 30) max 0;
-    private _rateRef = 110;
-    _speciesTerm = 1 + (WILDLIFE_PITCH_RATE_COUPLING * ((_rate / _rateRef) - 1));
+if ([_species, "cricket"] call _contains) then {
+    private _cf = 2.4 + 0.09 * (_temperatureC - 18);
+    private _cfRef = 2.4 + 0.09 * (23 - 18);
+    _speciesTerm = (_cf max 0.1) / _cfRef;
 };
 
 private _pitch = _basePitch * _doppler * _jitter * _speciesTerm;

@@ -8,20 +8,20 @@ No-escape zone (pure).
     R_kinematic  range the missile can still reach the target kinematically, m
     R_seeker     range at which the seeker holds the target, m
     margin       fraction of the smaller range that is the guaranteed zone,
-                 0.7 to 0.9 (issue #131)
+                 0..1, the caller's safety factor
 
 Inside the NEZ the target cannot outrun the missile even with its best
 manoeuvre.  The margin exists because the two ranges are limits, not
 guarantees, so the zone is drawn inside both.
 
-MARGIN IS UNSOURCED.  The 0.7 to 0.9 band is the issue's stated figure; no
-named source fixes it.  The caller supplies the margin; this kernel only
-takes the smaller of the two ranges and scales it.
+The margin is the caller's safety factor.  The issue's 0.7 to 0.9 band has no
+published source, so the default is 1 (the zone is the smaller range itself);
+this kernel only takes the smaller of the two ranges and scales it.
 
 Arguments:
   0: _kinematicRangeM (NUMBER) R_kinematic, m, >= 0
   1: _seekerRangeM    (NUMBER) R_seeker, m, >= 0
-  2: _margin          (NUMBER) fraction, 0..1, default 0.8
+  2: _margin          (NUMBER) fraction, 0..1, default 1
 
 Return Value: NUMBER - no-escape-zone radius in metres.  Returns 0 when
 either range is zero (no zone).
@@ -31,7 +31,7 @@ Public: No
 params [
     ["_kinematicRangeM", 0, [0]],
     ["_seekerRangeM", 0, [0]],
-    ["_margin", 0.8, [0]]
+    ["_margin", 1, [0]]
 ];
 
 private _kinematic = _kinematicRangeM max 0;

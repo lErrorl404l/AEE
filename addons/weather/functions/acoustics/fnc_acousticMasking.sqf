@@ -16,10 +16,11 @@ fnc_updateSoundPropagation.  The index scales the EFFECTIVE range: an index
 above 1 carries the sound further, below 1 shorter.  This reuses the one
 propagation model; it does not add a second.
 
-The threshold is the issue's practical detection margin: 6 dB for DETECTION
-and 12 dB for RECOGNITION.  In the critical band a tone is detected near
-0 dB signal-to-noise (Fletcher 1940, DOI 10.1103/RevModPhys.12.47), and the
-6/12 dB are the UNSOURCED practical margins the issue states.
+The threshold is the caller's.  The published margins: in the critical band
+a tone is detected near 0 dB signal-to-noise (Fletcher 1940, DOI
+10.1103/RevModPhys.12.47); a signal is clearly audible when its A-weighted
+level exceeds the ambient noise by more than 15 dB (ISO 7731:2003, auditory
+danger signals, s.5.2.2).
 
 The floor is broadband (see fnc_ambientNoiseLevel), so this gate is
 broadband; the per-band critical-ratio refinement is not modelled.

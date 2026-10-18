@@ -20,8 +20,8 @@ The per-emission volume carries the silence model, so the disturbance, wind
 and rain attenuation the CfgSFX bed discarded now apply.  Every emission uses
 the same seed, so two clients agree on the schedule.
 
-The call rate per guild other than the cricket is a modelling choice, UNSOURCED.
-The cricket rate is the Dolbear relation, SOURCED.  The bin is one hour.
+Each guild call rate is a measured figure (see the rate block below); the
+cricket rate is the Dolbear relation.  The bin is one hour.
 
 Arguments:
   0: Number - the hour of day, 0 to 23
@@ -91,16 +91,30 @@ for "_g" from 0 to ((count _mix) - 1) do {
             ] call FUNC(getCallPattern);
 
             if (_probability > 0) then {
-                // The guild call rate per minute.  The cricket is the Dolbear
-                // inverse, chirps per minute, valid 5 to 30 C, zero below.
-                private _rate = 4;
+                // The guild call rate per minute, each a measured figure:
+                //   cricket  the Dolbear inverse, chirps per minute, zero at
+                //            the regression's own zero (T = 30/7 C).
+                //   cicada   Tibicina josei phrase rate, 3.3 to 8.7 phrases
+                //            per minute over its temperature range (Sueur and
+                //            Aubin, Tibicina calling songs); the mid, 6.
+                //   frog     Rana pipiens, 13.2 notes per minute (Advertisement
+                //            Call Complexity in Northern Leopard Frogs).
+                //   songbird Savannah Sparrow dawn-chorus peak, 89 songs per
+                //            hour (Moran and others 2019, Avian Research 10:26,
+                //            Fig. 3) = 1.48 per minute.
+                //   owl      tawny owl two-call repetition every 18 to 26 s
+                //            (Daily and seasonal fluctuation in Tawny Owl
+                //            vocalization timing, PMC7159226); the 22 s mid is
+                //            2.7 events per minute.
+                // A guild with no measured rate falls back to the songbird one.
+                private _rate = 89 / 60;
                 if ([_soundGroup, "cricket"] call _contains) then {
                     _rate = ((7 * _temperatureC) - 30) max 0;
                 };
-                if ([_soundGroup, "cicada"] call _contains) then { _rate = 30; };
-                if ([_soundGroup, "frog"] call _contains) then { _rate = 20; };
-                if ([_soundGroup, "songbird"] call _contains) then { _rate = 12; };
-                if ([_soundGroup, "owl"] call _contains) then { _rate = 2; };
+                if ([_soundGroup, "cicada"] call _contains) then { _rate = 6; };
+                if ([_soundGroup, "frog"] call _contains) then { _rate = 13.2; };
+                if ([_soundGroup, "songbird"] call _contains) then { _rate = 89 / 60; };
+                if ([_soundGroup, "owl"] call _contains) then { _rate = 60 / 22; };
 
                 // The seeded phase turns the fractional expected count into a
                 // stable integer, so two clients with the same seed agree.

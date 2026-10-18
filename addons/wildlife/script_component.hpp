@@ -3,7 +3,8 @@
 #include "\z\aee\addons\lib\script_mod.hpp"
 #include "\z\aee\addons\lib\script_macros.hpp"
 
-// Modelling constants, UNSOURCED.  See the wildlife-ambience dossier.
+// Wildlife constants.  Caps and budgets are performance policy (no physical
+// quantity); each ecological value names its source beside it.
 //
 // The concurrent one-shot cap is a density choice.  The acoustic niche
 // hypothesis (Krause 1987; Pijanowski et al. 2011, BioScience 61(3):203-216)
@@ -18,18 +19,17 @@
 
 // Attached emitter policy (task T27).  The cap bounds the attached looping
 // sources and the radius bounds which animals are near enough to carry one,
-// so the attachment cost is flat.  Both are UNSOURCED modelling choices.  The
+// so the attachment cost is flat.  Both are performance policy.  The
 // cap is the same density target as the one-shot layer above.
 #define WILDLIFE_EMITTER_CAP 3
 #define WILDLIFE_EMITTER_RADIUS 150
 
-// Call-pitch policy (task T28): bounds, seeded jitter spread and the
-// stridulation coupling to the Dolbear rate.  All UNSOURCED; the speed of
-// sound against temperature is SOURCED in fnc_callPitch.
+// Call-pitch policy (task T28): playback bounds and the seeded jitter
+// spread.  The speed of sound and the tree-cricket carrier frequency against
+// temperature are SOURCED in fnc_callPitch (Mhatre et al. 2011).
 #define WILDLIFE_PITCH_MIN 0.5
 #define WILDLIFE_PITCH_MAX 2.0
 #define WILDLIFE_PITCH_JITTER 0.04
-#define WILDLIFE_PITCH_RATE_COUPLING 0.25
 
 // Shot-audio policy (task T26).  The speed of sound against temperature is
 // SOURCED (20.05*sqrt(T_K), the same convention as the ballistics drag and
@@ -49,35 +49,37 @@
 #define AI_CELL_CAP 256
 #define AI_CELL_HORIZON 120
 
-// Neighbourhood environment sampler policy.  Modelling choices, UNSOURCED.
+// Neighbourhood environment sampler policy.  Performance policy.
 // The query cap bounds the object queries per call; the cell cap bounds the
-// cached per-cell sample store.  The horizon mirrors AI_CELL_HORIZON and the
-// half-life mirrors AI_STIMULUS_HALF_LIFE, so the environment cache ages like
-// the disturbance field.
+// cached per-cell sample store.  The horizon mirrors AI_CELL_HORIZON.  The
+// half-life is the animals' own recovery: shot-disturbed geese stayed vigilant
+// and fed less for 3 to 5 min (Griffin et al. 2020, in NatureScot Research
+// Report 1283, 2021); a 4 min relaxation time is a half-life of 240 ln 2 s.
 #define WILDLIFE_ENVIRONMENT_QUERY_CAP 64
 #define WILDLIFE_ENVIRONMENT_CAP 256
 #define WILDLIFE_ENVIRONMENT_HORIZON 120
-#define WILDLIFE_ENVIRONMENT_HALF_LIFE 45
+#define WILDLIFE_ENVIRONMENT_HALF_LIFE 166
 
-// The spawn suitability floor.  A group below it is not spawned.  UNSOURCED.
+// The spawn suitability floor.  A group below it is not spawned.  A modelling choice with no published figure.
 #define WILDLIFE_SUITABILITY_MIN 0.2
 
 // Acoustic propagation policy (task T25).  The spreading law is the SOURCED
 // inverse-square law: a point source loses 20*log10(d) dB, so 6 dB per
-// doubling of distance.  The occlusion loss and radius, the hearing floor and
-// the loud reference are UNSOURCED modelling choices.  The source levels live
+// doubling of distance.  Mirrored from addons/ambience/script_component.hpp:
+// the occlusion is the ISO 9613-2 single-diffraction cap (20 dB) and the loud
+// reference the WHO 1999 adult peak limit (140 dB).  The source levels live
 // in fnc_acousticSourceDb.sqf.  See the per-constant register in the dossier.
 #define WILDLIFE_ACOUSTIC_EVENT_CAP 64
 #define WILDLIFE_ACOUSTIC_EVENT_HORIZON 3
-#define WILDLIFE_ACOUSTIC_OCCLUSION_DB 6
+#define WILDLIFE_ACOUSTIC_OCCLUSION_DB 20
 #define WILDLIFE_ACOUSTIC_OCCLUSION_RADIUS_M 2.5
 #define WILDLIFE_ACOUSTIC_HEARING_FLOOR_DB 30
 #define WILDLIFE_ACOUSTIC_LOUD_DB 140
 
-// The spook threshold on the propagated level, 0 to 1.  UNSOURCED.
+// The spook threshold on the propagated level, 0 to 1.  A modelling choice with no published figure.
 #define WILDLIFE_SPOOK_ACOUSTIC_MIN 0.5
 
-// Cognition policy (tasks T16 and T17).  UNSOURCED modelling choices: the
+// Cognition policy (tasks T16 and T17).  Performance policy: the
 // count budget caps the animals visited per ecology tick; the call bus cap
 // and horizon mirror the disturbance field so the bus ages like the field.
 #define WILDLIFE_COGNITION_BATCH 8

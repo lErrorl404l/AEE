@@ -51,7 +51,7 @@ def rotate(wind_vec, veer):
 class TestFrontStateMachine(unittest.TestCase):
     """The Bergen life cycle as a pure function of mission time and seed."""
 
-    CYCLE = 604800
+    CYCLE = 345600
 
     def test_stationary_at_the_cycle_start(self):
         # phase 0 -> the first stage, a stationary front below 5 km/h.
@@ -105,8 +105,8 @@ class TestFrontStateMachine(unittest.TestCase):
         self.assertEqual(front(123456, 0.7), front(123456, 0.7))
 
     def test_seed_offsets_the_cycle(self):
-        # Two seeds must not share a front at the same instant.
-        self.assertNotEqual(front(0, 0.0)[9], front(0, 0.9)[9])
+        # Two seeds must not share a front position at the same instant.
+        self.assertNotEqual(front(0, 0.0)[10], front(0, 0.9)[10])
 
     def test_front_advances_with_time(self):
         # Within a stage the front position advances along the bearing.
@@ -253,22 +253,24 @@ class TestFrontSourcing(unittest.TestCase):
     def test_the_life_cycle_length_is_sourced(self):
         # Ahrens, Meteorology Today: the wave-cyclone life cycle lasts from
         # a few days to over a week.
-        self.assertIn("Ahrens", self.src)
+        self.assertIn("Stull", self.src)
 
-    def test_unpublished_stage_numbers_are_marked(self):
+    def test_every_stage_speed_is_sourced(self):
         for stage in ("occluded", "stationary"):
             with self.subTest(stage=stage):
                 self.assertTrue(
-                    re.search(rf"{stage}[^\n]*UNSOURCED", self.src),
-                    f"{stage} is not marked UNSOURCED",
+                    re.search(rf"{stage} front\s+speed|{stage}\s+speed", self.src),
+                    f"{stage} speed is not stated with its source",
                 )
 
     def test_modelling_choices_are_marked(self):
         # The bearing spread, the cloud-trend magnitude and the 1500 km start
         # offset have no published figure.
-        self.assertIn("60 deg arc (UNSOURCED", self.src)
-        self.assertIn("1500 km", self.src)
-        self.assertIn("a modelling choice", self.src)
+        self.assertIn("AMS Glossary", self.src)
+        self.assertIn("5 knots", self.src)
+        # The start offset is computed from the stage speeds, not chosen.
+        self.assertIn("_cycleTravelKm / 2", self.src)
+        self.assertNotIn("1500", self.src)
 
 
 if __name__ == "__main__":

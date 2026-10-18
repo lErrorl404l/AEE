@@ -1,23 +1,18 @@
 #include "..\..\script_component.hpp"
 
 /*
-Rain droplet accumulation on optical lenses (0–1).
+Rain drops on an exposed lens (0-1, the wetted fraction of the glass).
 
-Water droplets build up on scope, binocular, and camera lenses during
-precipitation, creating a blurred/distorted overlay.
-
-The engine `rain` command is a 0..1 level, not a rate (Arma 3 wiki, `rain`:
-0-1 intensity; tools/arma3-wiki/commands-reference.md), so this function
-converts the level to mm/h with the optics precipitation mapping: 1.0 engine
-rain = 25 mm/h (fnc_calculatePrecipitationVisibility.sqf).
-
-Accumulation:
-  • Rain rate > 0.2 mm/h  → +0.002 per tick (light drizzle)
-  • Rain rate > 2 mm/h    → +0.005 per tick (moderate rain)
-  • Rain rate > 10 mm/h   → +0.01  per tick (heavy downpour)
-
-Decay:
-  • Rain rate ≤ 0.2 mm/h  → −0.02 per tick (clears ~4 min)
+The objective faces the horizon, so it collects WIND-DRIVEN rain: the flux on
+a vertical surface is (2/9) v R^(8/9) mm/h for a wind v (m/s) against it
+and a rain rate R (mm/h) (the Lacy free-field relation of ISO 15927-3:2009,
+2/9 s/m being the inverse terminal speed of a typical drop).  Drops arrive
+with the Marshall-Palmer median volume diameter D0 = 0.89 R^0.21 mm
+(Marshall & Palmer 1948) and sit as hemispherical beads (a hydrophobic
+lens coating), radius a = (D0^3 / 4)^1/3, each holding (2/3) a of water
+per unit of wetted area, so the wetted fraction grows as
+  dC/dt = (1 - C) q / ((2/3) a),   q the vertical flux in m/s.
+Out of the rain the film clears at the rainDecayRate setting, a DISPLAY rate.
 
 Stored in QGVAR(rainOnOptics) for consumption by visual overlay systems.
 */
@@ -30,7 +25,7 @@ if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith
 };
 
 private _rainRate = rain;
-if (isNil "_rainRate") then { _rainRate = 0; };
+if !(_rainRate isEqualType 0) then { _rainRate = 0; };
 
 // The engine `rain` command is a 0..1 level, not a rate.  Convert it to mm/h
 // with the mapping the optics module owns: 1.0 engine rain = 25 mm/h, heavy
@@ -38,24 +33,19 @@ if (isNil "_rainRate") then { _rainRate = 0; };
 private _rainMMH = _rainRate * ENGINE_RAIN_FULL_MMH;
 
 private _droplets = missionNamespace getVariable [QGVAR(rainOnOptics), 0];
-
-// Rates are per-tick; scale by the update interval so behaviour is
-// interval-independent (5 s baseline).
-private _intervalScale = (EGVAR(core,updateInterval)) / 5;
-private _accumRate = (missionNamespace getVariable [QGVAR(rainAccumRate), 0.01]) * _intervalScale;
-private _decayRate = (missionNamespace getVariable [QGVAR(rainDecayRate), 0.02]) * _intervalScale;
-
-if (_rainMMH > 0.2) then {
-    switch (true) do {
-        case (_rainMMH > 10): { _droplets = _droplets + _accumRate; };
-        case (_rainMMH > 2):  { _droplets = _droplets + (_accumRate / 2); };
-        default               { _droplets = _droplets + (_accumRate / 5); };
-    };
-    _droplets = _droplets min 1;
+if !(_droplets isEqualType 0) then { _droplets = 0; };
+private _dt = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+if !(_dt isEqualType 0) then { _dt = 5; };
+private _decayRate = (missionNamespace getVariable [QGVAR(rainDecayRate), 0.02]) * (_dt / 5);
+if (_rainMMH > 0.1) then {
+    private _wind = vectorMagnitude (missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0]]);
+    private _qMMh = (2 / 9) * (_wind max 0.5) * (_rainMMH ^ (8 / 9));
+    private _q = _qMMh / 1000 / 3600;
+    private _d0 = 0.89e-3 * (_rainMMH ^ 0.21);
+    private _a = ((_d0 ^ 3) / 4) ^ (1 / 3);
+    _droplets = 1 - ((1 - _droplets) * exp (-(_q * _dt) / ((2 / 3) * _a)));
 } else {
     _droplets = (_droplets - _decayRate) max 0;
 };
-
 missionNamespace setVariable [QGVAR(rainOnOptics), _droplets];
-
 _droplets

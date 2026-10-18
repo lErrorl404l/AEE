@@ -62,16 +62,16 @@
             <English>Thermal Repaint Rate</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalAgcHuntPeriod_Description">
-            <Original>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</Original>
-            <English>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</English>
+            <Original>Period of the thermal AGC hunt, 1 to 20 seconds. A display preference. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</Original>
+            <English>Period of the thermal AGC hunt, 1 to 20 seconds. A display preference. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalAgcHuntPeriod_Name">
             <Original>Thermal AGC Hunt Period</Original>
             <English>Thermal AGC Hunt Period</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalAgcHunt_Description">
-            <Original>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</Original>
-            <English>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</English>
+            <Original>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The amplitude is a display preference.</Original>
+            <English>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The amplitude is a display preference.</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalAgcHunt_Name">
             <Original>Thermal AGC Hunt</Original>
@@ -86,8 +86,8 @@
             <English>Thermal Fixed-Pattern Noise</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalHotBloom_Description">
-            <Original>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</Original>
-            <English>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</English>
+            <Original>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming has no published magnitude, so this is a display preference. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</Original>
+            <English>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming has no published magnitude, so this is a display preference. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalHotBloom_Name">
             <Original>Thermal Hot-Source Bloom</Original>
@@ -102,8 +102,8 @@
             <English>Thermal Imperfections</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalNucDrift_Description">
-            <Original>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED.</Original>
-            <English>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED.</English>
+            <Original>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The drift resets every 180 s, the FLIR Lepton default automatic flat-field period.</Original>
+            <English>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The drift resets every 180 s, the FLIR Lepton default automatic flat-field period.</English>
         </Key>
         <Key ID="STR_AEE_Thermal_Display_thermalNucDrift_Name">
             <Original>Thermal NUC Drift</Original>

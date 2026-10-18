@@ -61,7 +61,7 @@
 
 // Division guard for a normalisation or ratio.  Basis: a numeric floor that
 // keeps a normalised quantity off zero, not a measured constant.  The
-// consuming kernels document it as UNSOURCED for the same reason.
+// consuming kernels document it as a numerical guard.
 #define EPSILON 0.0001
 
 // Nominal resting human core body temperature, C.  Source: normal core

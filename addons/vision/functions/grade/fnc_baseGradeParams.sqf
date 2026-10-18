@@ -28,23 +28,23 @@ ColorCorrections slot order (BIKI Post Process Effects, capture 20240220225631):
   grey; an earlier revision shipped exactly that class by trusting the wiki
   table's "0 = original colour" wording.
 
-Per-constant source register (UNSOURCED values are marked beside the clamp):
+Per-constant source register (display preferences are marked beside the clamp):
   contrast    1.15, range 0.8 to 1.6.  ACES tone scale is an S-shaped curve
               with a mid-grey log-log gamma below 1.55 (docs.acescentral.com,
               tone-mapping).  The engine contrast is linear, so this is a
-              stand-in.  Exact default UNSOURCED.
+              stand-in.  The default is a display preference.
   brightness  1.0, range 0.7 to 1.3.  BIKI Post Process Effects:
               ColorCorrections brightness, 0 black, 1 unchanged, 2 white.
   offset      -0.02, range -0.1 to 0.1.  Negative offset is proven in
               community code (AsYetUntitled/Framework fn_flashbang.sqf -0.01;
               Liberation-RX -0.35).  The BIKI range line says 0 and up.
-              Exact default UNSOURCED.
+              The default is a display preference.
   weights     [REC709_LUMA_R, REC709_LUMA_G, REC709_LUMA_B, 0], fixed.  The Rec.709 luma and the ASC
               CDL luma, used as the engine "rgb weights for desaturation"
               (slot 5).  Nonzero, so the engine desaturation is valid.  The
               repo treats [0,0,0,0] as a broken effect; the wiki has no such
               warning, so the repo rule is the authority and the wiki basis is
-              UNSOURCED.
+              absent; the value is a display choice.
   saturation  0.0, range 0 to 0.5.  The colorize alpha (slot 4): BIKI gives 0
               as the original colour and 1 as black and white.  So 0 is the
               identity.  The engine desaturates only.
@@ -52,7 +52,7 @@ Per-constant source register (UNSOURCED values are marked beside the clamp):
               the original colour.
   sharpness   4.0, range 1 to 20.  BIKI FilmGrain parameter named sharpness,
               default 1.25.  The wiki does not state what it sharpens.
-              UNSOURCED that it sharpens the scene.
+              The wiki does not state that it sharpens the scene, so it is a display choice.
   grain       0.006, range 0 to 0.05.  BIKI FilmGrain intensity, default 0.005.
   grain size  2.01, range 1 to 8.  BIKI FilmGrain, default 2.01.
   intensityX  0.75, 1.0, BIKI FilmGrain defaults.

@@ -7,7 +7,7 @@ A starved tube shows individual scintillation events, so dark-scene speckle
 is stronger than the existing uniform grain.  This kernel returns the
 FilmGrain tuple [intensity, sharpness, size].  The sharpness band 1.0-1.2
 and the size band 2.25-2.70 follow the ACE3-derived ranges already in the
-parent.  The 0.55, 0.25, 0.5 and 0.1 coefficients are UNSOURCED.
+parent.  The 0.55, 0.25, 0.5 and 0.1 coefficients have no published value (the engine FilmGrain has no physical unit), so they are display choices.
 
 Arguments:
   0: Number - scene illuminance, lux

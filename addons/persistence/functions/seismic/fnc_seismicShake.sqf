@@ -16,7 +16,7 @@ Society of America 84(4):974-1002.  DOI 10.1785/BSSA0840040974.  The rupture
 velocity as a fraction of the shear-wave velocity is the standard Brune (1970)
 value; 2.8 km/s is used.
 
-The issue's ladder M5 = 5 s, M6 = 15 s, M7 = 30 s, M8 = 60 s is UNSOURCED and
+The issue's ladder M5 = 5 s, M6 = 15 s, M7 = 30 s, M8 = 60 s has no published basis and
 is not used.  The length-magnitude relation gives about 9 s at M6.5 and about
 18 s at M7.
 

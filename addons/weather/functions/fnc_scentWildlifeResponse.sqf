@@ -13,7 +13,7 @@ recognition and avoidance in a songbird", Functional Ecology 22(2):289-293,
 DOI 10.1111/j.1365-2435.2007.01361.x.  The intensity is the repo's own scent
 model output (fnc_calculateScentDispersion).
 
-The detection threshold and the floor are UNSOURCED modelling choices: the
+The detection threshold and the floor are modelling choices with no published figure: the
 study reports the avoidance direction, not a magnitude, and the scent intensity
 is dimensionless (a detectability proxy), so the odour detection threshold
 cannot be transferred from a concentration unit (van Gemert 2003, "Odour

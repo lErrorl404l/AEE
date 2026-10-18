@@ -36,9 +36,9 @@ PERCEPTION_SCHEMA - the fixed field order the kernel returns (14 fields):
 Immutable defaults.  A key missing from the value map returns the default for
 its field, in PERCEPTION_SCHEMA order.  Each default is graded:
 
-  sceneLux            1            UNSOURCED.  A neutral 1 cd/m2 marker so a
+  sceneLux            1            Display or diagnostic choice, no physical quantity.  A neutral 1 cd/m2 marker so a
                                    missing key never fakes daylight or dark.
-  adaptedLux          1            UNSOURCED.  Neutral marker, as sceneLux.
+  adaptedLux          1            Display or diagnostic choice, no physical quantity.  Neutral marker, as sceneLux.
   eyeAperture         8            SOURCED: fnc_eyeAperture night anchor (BI
                                    wiki setApertureNew example [2, 8, 14]).
                                    Chosen wide open, the more-lit fallback.
@@ -52,13 +52,13 @@ its field, in PERCEPTION_SCHEMA order.  Each default is graded:
                                    zero desaturation alpha.
   cameraTint          [1,1,1,1]    SOURCED: the engine neutral colorize
                                    {1,1,1,1} (same config template).
-  nvgState            [false,0,0,0,false]  UNSOURCED.  The off state.
-  thermalState        [false,0,0,0,0]      UNSOURCED.  The off state.
-  uvIndex             0            UNSOURCED.  The night floor.
-  stressState         [0,0,0,0]    UNSOURCED.  No heat and cold stress.
-  injuryState         [0,0]        UNSOURCED.  No pain, no damage.
-  activeEffects       []           UNSOURCED.  No effect active.
-  eyeAdaptationState  [0,0,0,0]    UNSOURCED.  Level and target 0 (log10 of
+  nvgState            [false,0,0,0,false]  Display or diagnostic choice, no physical quantity.  The off state.
+  thermalState        [false,0,0,0,0]      Display or diagnostic choice, no physical quantity.  The off state.
+  uvIndex             0            Display or diagnostic choice, no physical quantity.  The night floor.
+  stressState         [0,0,0,0]    Display or diagnostic choice, no physical quantity.  No heat and cold stress.
+  injuryState         [0,0]        Display or diagnostic choice, no physical quantity.  No pain, no damage.
+  activeEffects       []           Display or diagnostic choice, no physical quantity.  No effect active.
+  eyeAdaptationState  [0,0,0,0]    Display or diagnostic choice, no physical quantity.  Level and target 0 (log10 of
                                    1 cd/m2), no direction, no remaining time.
 
 Arguments:

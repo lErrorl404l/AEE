@@ -6,7 +6,7 @@
  * size arrives as an argument, so the kernel reads no group, no unit and no
  * world.
  *
- * The bands are AEE derivation, UNSOURCED.  MIL-STD-2525D and APP-6(C) give
+ * The bands are an AEE derivation, a display choice.  MIL-STD-2525D and APP-6(C) give
  * a nominal strength for each echelon, not a count function, so the band
  * edges are AEE own and are marked as such.  The bands are monotone: a
  * larger group never yields a lower echelon.

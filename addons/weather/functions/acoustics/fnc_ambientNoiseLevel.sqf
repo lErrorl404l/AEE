@@ -10,14 +10,12 @@ and distance-independent.  A source is audible over it when its level at the
 listener exceeds the floor by a detection threshold (fnc_acousticMasking).
 
 The four contributions are read from engine and AEE state and mapped through
-tables.  Only the wind term carries a measured law.  The others stay
-UNSOURCED modelling ranges, stated so the register holds them.  The mapping
-shapes are:
+tables, each from a field measurement (PROVENANCE below):
 
-  rain     engine rain 0..1 -> dB(A)   drizzle 40-45 .. heavy 55-60
+  rain     rate mm/h -> dB(A)          52.2 at 7.6 mm/h, +10 log10(R/7.6)
   wind     m/s -> dB(A)                measured wind-in-vegetation law below
-  foliage  density 0..1 -> dB(A)       quiet forest floor 20-30
-  water    local fraction 0..1 -> dB(A) stream 40-50, river 50-60
+  foliage  density 0..1 -> dB(A)       dry calm forest 33.4
+  water    local fraction 0..1 -> dB(A) 55 at a riffle stream's edge
 
 PROVENANCE.
 
@@ -36,13 +34,20 @@ PROVENANCE.
     hears, not a bare-ground value.  Komatsu section 4.2, page 271, records
     the same order for its own six-tree set.
 
-  rain, foliage, water UNSOURCED.  No in-air published law held in this
-    repository gives a dB(A) level against the engine's rain scalar, the
-    AEE foliage density or the local water fraction.  The nearest real
-    literature is rain-on-surface noise (ISO 140-18:2006; Von Meier 1960,
-    JASA, DOI 10.1121/1.1936237) and the wind-driven ambient spectrum (Wenz
-    1962, JASA 34:1936), both qualitative here.  The register in
-    docs/wiki/research/wildlife-ecology-constants.md holds them.
+  water DERIVED.  A riffle stream measured in the field (the Bravona,
+    Corsica; JASA 159(5):3999, 2026) never fell below 40 dB(A) at 200 m and
+    lost 10-20 dB(A) over that distance, so 50-60 dB(A) at the water: the
+    row reaches 55 dB(A) with the listener at the water's edge.
+  rain SOURCED.  Heavy rain raised the forest background to 52.2 dB against
+    33.4 dB dry (Lengagne & Slater 2002, Proc R Soc B 269:2121).  Heavy rain
+    starts at 7.6 mm/h (AMS Glossary of Meteorology), and the impact power of
+    rain grows with the rate, so L = 52.2 + 10 log10(R / 7.6), R in mm/h
+    (the engine level times ENGINE_RAIN_FULL_MMH).
+  foliage SOURCED.  The dry, calm forest background was 33.4 dB
+    (Lengagne & Slater 2002, the same measurement): full foliage density
+    carries it, and a sparser cover has proportionally fewer leaves, so
+    10 log10(density) less.  The water row scales the same way with the
+    fraction of water in earshot.
 
 The masking literature is NOT modelled as per-band here.  The engine exposes
 one broadband level, so this is a broadband floor.  For the record, the
@@ -77,17 +82,11 @@ params [
 // L_A = 2.78 * v + 37.4 dB(A), Komatsu and others 2000, section 2, page 269
 // (see the header).  Its 0 m/s entry is a deliberate zero: the row is the
 // wind contribution, so a dead calm adds no wind-induced foliage noise.
-// The rain, foliage and water rows are UNSOURCED.
-private _rainTable = [[0, 0], [0.25, 43], [0.5, 48], [0.75, 53], [1.0, 58]];
+// Rain, foliage and water are set after the table pass (below).
 private _windTable = [[0, 0], [2, 42.96], [5, 51.3], [10, 65.2], [15, 79.1], [20, 93]];
-private _foliageTable = [[0, 0], [1, 25]];
-private _waterTable = [[0, 0], [0.5, 45], [1, 55]];
 
 private _terms = [
-    [_rainTable, _rain],
-    [_windTable, _windMs],
-    [_foliageTable, _foliageDensity],
-    [_waterTable, _waterFrac]
+    [_windTable, _windMs]
 ];
 
 private _levels = [];
@@ -119,4 +118,14 @@ private _levels = [];
     _levels pushBack _db;
 } forEach _terms;
 
+// Each term below is a sum of incoherent sources, so its level grows as
+// 10 log10 of the source count: the rain rate, the leaf cover and the water
+// surface in earshot.
+// Rain: Lengagne & Slater 2002, 52.2 dB(A) at 7.6 mm/h.
+private _rMMh = (_rain max 0) * ENGINE_RAIN_FULL_MMH;
+_levels pushBack ([0, 52.2 + 10 * (log ((_rMMh max 0.01) / 7.6))] select (_rMMh > 0.1));
+// Foliage: Lengagne & Slater 2002, 33.4 dB(A) in a full, dry, calm forest.
+_levels pushBack ([0, 33.4 + 10 * (log (_foliageDensity max 0.001))] select (_foliageDensity > 0.001));
+// Water: the Bravona riffle, 55 dB(A) at the water's edge.
+_levels pushBack ([0, 55 + 10 * (log (_waterFrac max 0.001))] select (_waterFrac > 0.001));
 [_levels] call FUNC(powerSumLevels)

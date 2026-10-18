@@ -284,8 +284,15 @@ class TestGetSeason(unittest.TestCase):
         self.assertEqual(run_sqf(SEASON, [1, "Cfb", -35])[0], 2)
         self.assertEqual(run_sqf(SEASON, [7, "Cfb", -35])[0], 0)
 
-    def test_the_tropics_swing_less(self):
-        self.assertLess(get_season(7, "Af")[1], get_season(7, "Cfb")[1])
+    def test_the_swing_follows_the_day_length(self):
+        # The sunrise equation: 0 at the equator, ~0.29 at 45 deg, 1 at the
+        # polar circle, where the swing is the whole 24 h day.
+        self.assertAlmostEqual(run_sqf(SEASON, [7, "Af", 0])[1], 0.0, places=4)
+        self.assertAlmostEqual(run_sqf(SEASON, [7, "Cfb", 45])[1], 0.286, delta=0.01)
+        self.assertAlmostEqual(run_sqf(SEASON, [7, "Dfc", 67])[1], 1.0, places=4)
+        self.assertLess(
+            run_sqf(SEASON, [7, "Af", 5])[1], run_sqf(SEASON, [7, "Cfb", 50])[1]
+        )
 
 
 class TestTemporalSourceContracts(unittest.TestCase):
@@ -316,7 +323,9 @@ class TestTemporalSourceContracts(unittest.TestCase):
     def test_the_dolbear_inverse_is_stated_with_its_band(self):
         code = CALL_PATTERN.read_text(encoding="utf-8")
         self.assertIn("7 * T_C - 30", code)
-        self.assertIn("5 to 30 C", code)
+        # The floor is the regression's own zero, not a chosen temperature.
+        self.assertIn("30/7 C", code)
+        self.assertIn("(30 / 7)", code)
 
 
 SAMPLER = FUNCS / "fnc_sampleNeighbourhood.sqf"

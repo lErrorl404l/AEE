@@ -15,8 +15,8 @@ sigma is the density ratio rho / rho0 with rho0 = 1.225 kg/m3 (ISO 2533).  The
 piston exponent 1.2 is the SAE J1349 density correction and reproduces the
 3 percent per 1000 ft rule within one to two points: sigma 0.789 at 8000 ft
 gives 0.752.  The turbojet and turbofan exponents are the standard thrust
-lapse.  The issue names only the piston and the two jets.  A turboprop is
-taken as gas-turbine-like and its exponent is UNSOURCED.
+lapse.  A turboprop's shaft power is linear with density, exponent 1
+(Virginia Tech AOE 3104, "Thrust and power models", Lutze).
 
 This is a pure kernel.
 

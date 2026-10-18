@@ -16,7 +16,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_clockJump` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_updateThermalAGC.sqf:423` | UNKNOWN |
 | `aee_core_clothingInsulation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:92` | UNKNOWN |
 | `aee_core_clothingInsulationFactor` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/surface/fnc_calculateClothingInsulation.sqf:14` | Clothing insulation 0.5..2.0 |
-| `aee_core_crossoverTimer` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:70` | UNKNOWN |
+| `aee_core_crossoverTimer` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:58` | UNKNOWN |
 | `aee_core_currentAirDensity` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:255` | Air density in kg/m3 |
 | `aee_core_currentDayMeanTemp` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:105` | UNKNOWN |
 | `aee_core_currentFogDensity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:87` | Engine fog value 0..1 (total extinction / 10 per km) |
@@ -54,10 +54,10 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf:208` | Snow depth in metres |
 | `aee_core_snowMeltFlux_Wm2` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf:261` | UNKNOWN |
 | `aee_core_soilMoisture` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf:133` | Soil moisture 0..1 |
-| `aee_core_surfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:84` | Surface temperature in C |
+| `aee_core_surfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:72` | Surface temperature in C |
 | `aee_core_surfaceWetness` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/thermal/functions/display/fnc_applySelectionThermal.sqf:676` | Surface wetness 0..1 |
 | `aee_core_tempLapseRate` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:100` | UNKNOWN |
-| `aee_core_thermalCrossoverActive` | BOOL | boolean | 0 or 1 | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:83` | Thermal crossover flag |
+| `aee_core_thermalCrossoverActive` | BOOL | boolean | 0 or 1 | UNKNOWN | `addons/thermal/functions/environment/fnc_calculateThermalCrossover.sqf:71` | Thermal crossover flag |
 | `aee_core_urbanHeatIsland` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:131` | UNKNOWN |
 | `aee_core_waterInfluenceRadius` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/thermal/functions/environment/fnc_updateTemperature.sqf:175` | UNKNOWN |
 

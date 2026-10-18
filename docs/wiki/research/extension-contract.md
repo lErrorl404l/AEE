@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (909)
+### Public functions (908)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -528,7 +528,6 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_lighting_fnc_showerIsActive`
 - `aee_lighting_fnc_siderealTime`
 - `aee_lighting_fnc_skyGateReason`
-- `aee_lighting_fnc_starBrightnessCoefficient`
 - `aee_lighting_fnc_starCatalogData`
 - `aee_lighting_fnc_starDirection`
 - `aee_lighting_fnc_starLightsSync`

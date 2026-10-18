@@ -16,8 +16,8 @@ The five inputs and their sources:
                    of Useful Consciousness (FAA AIM 8-1-1 TUC table).
   coldStress       FUNC(coldStress).  Wind chill over the TB MED 508
                    bands (-28 C = 0.3, -40 = 0.6, -48 = 0.8, -55 = 1.0).
-  heatStress       FUNC(heatStress).  WBGT over the TB MED 507 / ISO 7243
-                   bands (29 C = 0.3, 34 = 0.6, 38 = 0.8).
+  heatStress       FUNC(heatStress).  The TB MED 507 heavy-work rest
+                   fraction for the WBGT (1/3 at 78 F up to 5/6 at 90 F).
   fatigueRisk      1 - EGVAR(physiology,fatigueFactor).  The Borbely sleep
                    pressure (strain/calculateFatigueFactor: rested = 0.0,
                    under 5 h sleep = 0.7).

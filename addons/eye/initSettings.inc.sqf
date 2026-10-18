@@ -6,7 +6,7 @@
 
 // ── Eye adaptation (issue #141) ───────────────────────────────────────────
 // AEE pins the camera aperture and owns the eye adaptation rate.  Every
-// value here is traced to a published source or marked UNSOURCED in the
+// value here is traced to a published source or marked as a preference in the
 // stringtable description and beside the constant in the kernel.
 AEE_SETTING_CHECKBOX(eyeAdaptationEnabled,"AEE Eye","Eye Adaptation",true);
 

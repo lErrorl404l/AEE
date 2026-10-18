@@ -10,13 +10,13 @@ The kernels and their sources:
   fnc_calculateRadarRange      R = (Pt*G^2*lambda^2*sigma/((4pi)^3*Pmin))^(1/4)
                                Skolnik, Radar Handbook 3rd ed.
   fnc_calculateRadarNoiseFloor Pmin = k*T0*B*Fn*SNR_min        Skolnik
-  fnc_calculateChaffCrossSection sigma = N*0.17*lambda^2       Van Vleck 1947
-  fnc_calculateFlareIntensity  J(t) = J0*exp(-t/tau)           shape UNSOURCED
+  fnc_calculateChaffCrossSection sigma = N*0.158*lambda^2       Van Vleck 1947
+  fnc_calculateFlareIntensity  J(t) = J0*exp(-t/tau)           J0, tau from the caller
   fnc_calculateProportionalNavigation a = N'*Vc*lambda_dot     Zarchan
   fnc_calculateLosRate         acos(u1.u2)/dt
-  fnc_calculateNoEscapeZone    min(Rk, Rs)*margin              margin UNSOURCED
-  fnc_calculateSeekerTrack     hysteresis gate                 half factor UNSOURCED
-  fnc_calculateCountermeasureEffectiveness  seduction gate     bases UNSOURCED
+  fnc_calculateNoEscapeZone    min(Rk, Rs)*margin              margin = caller safety factor
+  fnc_calculateSeekerTrack     hysteresis gate                 half-factor hysteresis
+  fnc_calculateCountermeasureEffectiveness  seduction gate     bases from the caller
   fnc_calculateSeekerState     state machine
 
 Run: python3 -m unittest tools.tests.test_missile_seeker
@@ -112,18 +112,18 @@ class TestRadarNoiseFloor(unittest.TestCase):
 
 class TestChaffCrossSection(unittest.TestCase):
     def test_one_dipole_x_band(self):
-        # lambda = 0.03 m -> 0.17 * 9e-4 = 1.53e-4 m2.
+        # lambda = 0.03 m -> 0.158 * 9e-4 = 1.422e-4 m2.
         s = run_sqf(CHAFF, [1, 0.03])
-        self.assertAlmostEqual(s, 1.53e-4, places=9)
+        self.assertAlmostEqual(s, 1.422e-4, places=9)
 
-    def test_fighter_return_needs_39000_dipoles(self):
-        # A 6 m2 return from 0.17*lambda^2 dipoles needs ~39,000.
-        s = run_sqf(CHAFF, [39000, 0.03])
+    def test_fighter_return_needs_42000_dipoles(self):
+        # A 6 m2 return from 0.158*lambda^2 dipoles needs ~42,000.
+        s = run_sqf(CHAFF, [42200, 0.03])
         self.assertAlmostEqual(s, 6.0, delta=0.1)
 
     def test_dipole_count_for_rr188(self):
-        # RR-188 = 835 m2 -> N = 835 / 1.53e-4 = 5.46e6 dipoles.
-        s = run_sqf(CHAFF, [835 / (0.17 * 0.03 * 0.03), 0.03])
+        # RR-188 = 835 m2 -> N = 835 / 1.422e-4 = 5.87e6 dipoles.
+        s = run_sqf(CHAFF, [835 / (0.158 * 0.03 * 0.03), 0.03])
         self.assertAlmostEqual(s, 835, delta=1)
 
     def test_zero_count_refused(self):

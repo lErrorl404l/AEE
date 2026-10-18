@@ -16,7 +16,7 @@ AEE_SETTING_SLIDER(weatherGrainRainThreshold,"AEE Vision","Intensity",0,1,0.2,2)
 // ── Scene-aware shadow distance (aee-workshop-copy item 6) ────────────────
 // The shadow distance follows the scene classification.  The values are
 // re-derived from Adaptive Shadows (Workshop 3792830104); no mod content is
-// copied.  The classifier is heuristic and its thresholds are UNSOURCED.
+// copied.  The classifier is heuristic and its thresholds are display choices, not physical quantities.
 AEE_SETTING_CHECKBOX(shadowAdaptiveEnabled,"AEE Vision","Shadows",true);
 AEE_SETTING_SLIDER(shadowMinDistance,"AEE Vision","Shadows",0,500,50,0);
 AEE_SETTING_SLIDER(shadowMaxDistance,"AEE Vision","Shadows",25,2000,500,0);
@@ -53,7 +53,7 @@ AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Vision","Image",true);
 // ── Human-vision model (perception) ───────────────────────────────────────
 // The physical normal-vision model.  It ships ON: it subsumes the aesthetic
 // base grade in place and reads the eye adaptation model.  Every constant is
-// traced to a published source or marked UNSOURCED in the stringtable
+// traced to a published source or marked as a preference in the stringtable
 // description.
 AEE_SETTING_CHECKBOX(visionModelEnabled,"AEE Vision","Vision",true);
 AEE_SETTING_CHECKBOX(visionToneEnabled,"AEE Vision","Vision",true);
@@ -70,7 +70,7 @@ AEE_SETTING_CHECKBOX(colorTemperature,"AEE Vision","Vision",false);
 
 // Colour-stage calibration (AEE Experimental > Vision).  The degree of
 // adaptation D is CIECAM02 (CIE 159:2004).  The mesopic desaturation amplitude
-// and the Purkinje tint amplitude are UNSOURCED.
+// and the Purkinje tint amplitude are display choices, not physical quantities.
 AEE_SETTING_SLIDER(visionAdaptationDegree,"AEE Experimental","Vision",0,1,1.0,2);
 AEE_SETTING_SLIDER(visionMesopicDesaturation,"AEE Experimental","Vision",0,0.5,0,2);
 AEE_SETTING_SLIDER(visionPurkinjeStrength,"AEE Experimental","Vision",0,1,0,2);

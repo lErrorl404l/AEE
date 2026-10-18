@@ -20,16 +20,16 @@ Flags returned, in order:
   detail           a short string naming the flags that fired
 
 Constants (graded):
-  GRADE_TOL      0.02 per channel.  UNSOURCED.  It matches the aperture pin
+  GRADE_TOL      0.02 per channel.  Display or diagnostic choice, no physical quantity.  It matches the aperture pin
                  threshold the eye driver uses, the engine's own rounding.
-  ALPHA_TOL      0.02.  UNSOURCED.  Same reasoning as GRADE_TOL.
-  APERTURE_EPS   0.5.  UNSOURCED.  An aperture within this of a clamp end
+  ALPHA_TOL      0.02.  Display or diagnostic choice, no physical quantity.  Same reasoning as GRADE_TOL.
+  APERTURE_EPS   0.5.  Display or diagnostic choice, no physical quantity.  An aperture within this of a clamp end
                  counts as pinned.
-  PUPIL_EPS      0.1 mm.  UNSOURCED.  A pupil within this of a clamp end
+  PUPIL_EPS      0.1 mm.  Display or diagnostic choice, no physical quantity.  A pupil within this of a clamp end
                  counts as clamped.
-  LUX_FLOOR      0.01 cd/m2.  UNSOURCED.  At or below this the scene reads
+  LUX_FLOOR      0.01 cd/m2.  Display or diagnostic choice, no physical quantity.  At or below this the scene reads
                  as effectively black.
-  STUCK_TOL      0.05 s.  UNSOURCED.  A time to adapt that fell by less than
+  STUCK_TOL      0.05 s.  Display or diagnostic choice, no physical quantity.  A time to adapt that fell by less than
                  this over the window did not move.
 
 Arguments:

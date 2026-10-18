@@ -8,7 +8,7 @@ in the SQF fails here until the mirror is re-synced.
 
 The values are re-derived from Adaptive Shadows (Workshop 3792830104).  The
 mod publishes no licence, so this is a re-implementation, not copied code.
-The sample pattern and the scene thresholds are UNSOURCED heuristics.
+The sample pattern and the scene thresholds are performance heuristics (no physical quantity).
 
 MUTATION PROOF (executed by hand at commit time):
   - force the coherent-neighbour test false in fnc_shadowClassifyScene.sqf ->
@@ -460,7 +460,7 @@ class TestShadowClassifyScene(unittest.TestCase):
             self.assertIn("3792830104", text)
             self.assertIn("no licence", text)
             self.assertIn("No mod content is copied", text)
-            self.assertIn("UNSOURCED", text)
+            self.assertIn("no physical quantity", text)
 
     def test_prep_entries_exist(self) -> None:
         prep = PREP.read_text(encoding="utf-8")
@@ -595,7 +595,7 @@ class TestShadowKernelPurityAndMarking(unittest.TestCase):
             self.assertIn("3792830104", text)
             self.assertIn("no licence", text)
             self.assertIn("No mod content is copied", text)
-            self.assertIn("UNSOURCED", text)
+            self.assertIn("no physical quantity", text)
 
 
 class TestShadowDriverContract(unittest.TestCase):

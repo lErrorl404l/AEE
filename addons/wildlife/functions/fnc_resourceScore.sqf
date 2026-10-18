@@ -8,7 +8,11 @@ candidate point for one animal.  A point is best when it is close and the
 wanted resource is strong.  The animal picks the highest score among the ring
 points the resource search walks.
 
-The search range is a modelling choice, UNSOURCED.
+The search range is the distance a grazing animal will walk to a resource.
+Mule deer in northern California stayed 1.19 to 1.55 km from water with a
+mean maximum of 2.46 km (Boroski and Mossman, as cited in the mule deer
+water literature), so the range is taken as the 1.2 km lower figure: a point
+at that distance scores zero and the animal prefers a nearer one.
 
 Arguments:
   0: Number - the distance to the point, metres
@@ -27,7 +31,7 @@ params [
     ["_wantWater", false, [false]]
 ];
 
-private _range = 200;
+private _range = 1200;   // m, the measured deer-to-water distance
 private _strength = _vegScore;
 if (_wantWater) then {
     _strength = _waterProximity;

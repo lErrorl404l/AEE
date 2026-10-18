@@ -14,8 +14,11 @@ Williams 1975, J. Geophys. Res. 80(12):1656, DOI 10.1029/JC080i012p01656.
 A wet film converges toward the water value (Lavielle et al. 2024, Adv.
 Funct. Mater., DOI 10.1002/adfm.202403316).
 
-The linear film-coverage blend itself is a declared model and is UNSOURCED;
-it is recorded in the per-constant register.  The result is clamped to 0..1,
+The blend is the area-weighted emissivity of the two radiating fractions
+(Kirchhoff's law; the exitance of a mixed surface is the area sum), with the
+wetness the wetted area fraction.  A film is optically thick: liquid water's
+absorption coefficient near 10 um is about 800 per cm (Hale and Querry
+1973), a 1/e depth of about 12 um, so any visible film radiates as water.  The result is clamped to 0..1,
 so a computed emissivity can never exceed unity.
 
 Arguments:

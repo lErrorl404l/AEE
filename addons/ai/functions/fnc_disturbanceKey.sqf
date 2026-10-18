@@ -6,8 +6,8 @@ Disturbance cell key kernel (reusable AI substrate).
 Pure: no missionNamespace, no GVAR or EGVAR, no engine command.  Maps a
 position to its grid cell as the integer pair
 [floor(x / cellSize), floor(y / cellSize)].  Deterministic, so two machines
-at the same position land in the same cell.  The 50 m cell size is a
-modelling choice, UNSOURCED.
+at the same position land in the same cell.  The 50 m cell size is
+performance policy (no physical quantity).
 
 Arguments:
   0: Array - position [x, y] or [x, y, z]

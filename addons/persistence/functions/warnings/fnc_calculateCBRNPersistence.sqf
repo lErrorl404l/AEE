@@ -53,7 +53,7 @@ _persistenceH = _persistenceH * _windFactor;
 // reused: it encodes scent detectability and its sign (snow and frozen ground
 // suppress scent) inverts the surface-persistence physics.
 // The 0.2-in-rain magnitude is the scent model's own constant
-// (fnc_calculateScentDispersion) and is UNSOURCED as a CBRN scavenging
+// (fnc_calculateScentDispersion) and has no published basis as a CBRN scavenging
 // coefficient.  The read is a soft sibling read by name, defaulting to 1 (no
 // washout) when the scent model has not run.
 private _scentRainFactor = missionNamespace getVariable ["aee_weather_scentRainFactor", 1];
