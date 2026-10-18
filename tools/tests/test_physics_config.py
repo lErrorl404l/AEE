@@ -37,6 +37,12 @@ BINDINGS = DATA / "config_bindings.json"
 CLASS_BINDINGS = VEHICLE / "class_bindings.json"
 PARENTS = VEHICLE / "class_parents.json"
 GENERATED = REPO / "addons" / "vehicles" / "generated" / "CfgVehicles.hpp"
+AIRCRAFT = REPO / "data" / "aircraft"
+AIRCRAFT_CLASS_BINDINGS = AIRCRAFT / "class_bindings.json"
+AIRCRAFT_PARENTS = AIRCRAFT / "class_parents.json"
+
+# One emitted body `class X: Parent {`, whatever keys it carries.
+BODY_RE = re.compile(r"^[ \t]+class (\w+): (\w+) \{", re.M)
 
 
 def _write(path: Path, payload: object) -> None:
@@ -84,6 +90,14 @@ class PhysicsConfigTest(unittest.TestCase):
         cls.catalogue_ids = v.catalogue_by_id(VEHICLE)
         cls.class_bindings = v.class_binding_map(VEHICLE)
         cls.sources = v.sources_by_id(VEHICLE)
+        # The projection carries the aircraft structural zero, so validate
+        # against the full corpus the way the CLI does: the aircraft family
+        # shares the config-key contract.
+        cls.catalogue_ids.update(
+            v.catalogue_by_id(AIRCRAFT, profile=v.catalogue.AIRCRAFT_PROFILE)
+        )
+        cls.class_bindings.update(v.class_binding_map(AIRCRAFT))
+        cls.sources.update(v.sources_by_id(AIRCRAFT))
 
     def _errors(self, records: list[object]) -> list[str]:
         return v.validate_bindings(
@@ -242,20 +256,34 @@ class PhysicsConfigGeneratorTest(unittest.TestCase):
     def test_only_admitted_keys_are_emitted(self) -> None:
         # The generator owns maxSpeed and mass. It must never emit a key that
         # thermal or optics own, because this addon loads last and a
-        # redeclaration here would silently win.
+        # redeclaration here would silently win. The structural zero is its
+        # own key and no grade gates it.
         assignments = re.findall(r"^\s+(\w+) = ", self.rendered, re.M)
-        self.assertEqual(set(assignments), {"maxSpeed", "mass"})
+        self.assertEqual(set(assignments), {"maxSpeed", "mass", gen.AIRCRAFT_BURN_KEY})
         self.assertEqual(set(assignments) & set(FORBIDDEN_KEYS), set())
 
     def test_the_projection_is_fresh(self) -> None:
         committed = BINDINGS.read_text(encoding="utf-8")
-        self.assertEqual(committed, gen.render_projection(self.emissions))
+        expected = gen.render_projection(
+            self.emissions,
+            gen.build_aircraft_emissions(
+                AIRCRAFT_CLASS_BINDINGS, AIRCRAFT, AIRCRAFT_PARENTS
+            )[0],
+            gen.build_land_surface(CLASS_BINDINGS, VEHICLE),
+        )
+        self.assertEqual(committed, expected)
 
     def test_the_projection_matches_the_emitted_set(self) -> None:
         records = json.loads(BINDINGS.read_text(encoding="utf-8"))
-        self.assertEqual({record["game_class"] for record in records}, set(self.corpus))
+        names = {record["game_class"] for record in records}
+        bodies = {name for name, _parent in BODY_RE.findall(self.rendered)}
+        # The land corpus is the floor. The projection adds one class per
+        # driver-covered aircraft class, and every projected class must appear
+        # as an emitted body.
+        self.assertLessEqual(set(self.corpus), names)
+        self.assertLessEqual(names, bodies)
         for record in records:
-            self.assertIn(record["game_class"], self.children)
+            self.assertIn(record["game_class"], bodies)
 
     def test_the_parents_cache_covers_every_bound_class(self) -> None:
         parents = gen.load_parents(PARENTS)

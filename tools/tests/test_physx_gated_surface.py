@@ -7,7 +7,11 @@ use that one predicate:
 
   * the land carx/tankx/shipx surface from ``data/vehicle/class_bindings.json``
     and the held catalogue fields in ``LAND_SURFACE_FIELDS``;
-  * the aircraft keys from ``data/aircraft/class_bindings.json``.
+  * the held aircraft keys from ``data/aircraft/class_bindings.json``.
+
+The ``fuelConsumptionRate`` structural zero is not a held key and no grade
+gates it: it ships for every class the fuel driver burns, identified by the two
+guards ``fnc_updateFuelSystem`` applies.
 
 These tests prove three things:
 
@@ -18,8 +22,9 @@ These tests prove three things:
     ``fuelConsumptionRate``, ``mass`` and ``centerOfMass``, and the projection
     validates.
   * NON-REGRESSION: the production corpus carries zero documented identity, so
-    the shipped ``CfgVehicles.hpp`` carries no gated key. It declares only the
-    pre-existing ``maxSpeed`` and ``mass``.
+    the shipped ``CfgVehicles.hpp`` carries no held aircraft key and no gated
+    land key. It declares the pre-existing ``maxSpeed`` and ``mass`` and the
+    structural zero.
 
 Run: python3 -m unittest tools.tests.test_physx_gated_surface -v
 """
@@ -156,10 +161,54 @@ def _land_corpus(root: Path, grade: str) -> Path:
     return path
 
 
-def _aircraft_corpus(root: Path, grade: str) -> tuple[Path, Path]:
-    """Build a temp aircraft corpus with one documented sentinel binding."""
+def _aircraft_corpus(
+    root: Path, grade: str, *, covered: bool = True
+) -> tuple[Path, Path]:
+    """Build a temp aircraft corpus with one sentinel binding.
+
+    ``covered`` selects whether the fuel driver burns the sentinel. The driver
+    refuses a class unless its systems row carries a positive ``fuel_capacity``
+    and a positive ``fuel_density_kg_l``; the density is a named derivation
+    over the held ``fuel_type``, so omitting ``fuel_type`` removes the second
+    guard. The fixture is not a real aircraft and traces to no held document.
+    """
     _write(root / "class_map.json", [])
     _write(root / "sources.json", [_fixture_source()])
+    values = {
+        gen.AIRCRAFT_VALUE_FIELD: {
+            "value": 1234,
+            "unit": gen.AIRCRAFT_KEY_UNIT,
+            "source": "fixture_manual",
+            "locator": "fixture only, no real locator",
+            "state": "fixture only, no real configuration",
+            "grade": grade,
+        },
+        gen.AIRCRAFT_MASS_VALUE_FIELD: {
+            "value": 2345,
+            "unit": gen.AIRCRAFT_MASS_UNIT,
+            "source": "fixture_manual",
+            "locator": "fixture only, no real locator",
+            "state": "fixture only, no real configuration",
+            "grade": grade,
+        },
+        gen.AIRCRAFT_CG_VALUE_FIELD: {
+            "value": 1.25,
+            "unit": gen.AIRCRAFT_CG_UNIT,
+            "source": "fixture_manual",
+            "locator": "fixture only, no real locator",
+            "state": "fixture only, no real configuration",
+            "grade": grade,
+        },
+    }
+    if covered:
+        values["fuel_type"] = {
+            "value": "jet_a",
+            "unit": "enum",
+            "source": "fixture_manual",
+            "locator": "fixture only, no real locator",
+            "state": "fixture only, no real configuration",
+            "grade": grade,
+        }
     _write(
         root / "class_bindings.json",
         [
@@ -196,32 +245,7 @@ def _aircraft_corpus(root: Path, grade: str) -> tuple[Path, Path]:
                     "aliases": [],
                     "keywords": [],
                     "runtime_ready": False,
-                    "values": {
-                        gen.AIRCRAFT_VALUE_FIELD: {
-                            "value": 1234,
-                            "unit": gen.AIRCRAFT_KEY_UNIT,
-                            "source": "fixture_manual",
-                            "locator": "fixture only, no real locator",
-                            "state": "fixture only, no real configuration",
-                            "grade": grade,
-                        },
-                        gen.AIRCRAFT_MASS_VALUE_FIELD: {
-                            "value": 2345,
-                            "unit": gen.AIRCRAFT_MASS_UNIT,
-                            "source": "fixture_manual",
-                            "locator": "fixture only, no real locator",
-                            "state": "fixture only, no real configuration",
-                            "grade": grade,
-                        },
-                        gen.AIRCRAFT_CG_VALUE_FIELD: {
-                            "value": 1.25,
-                            "unit": gen.AIRCRAFT_CG_UNIT,
-                            "source": "fixture_manual",
-                            "locator": "fixture only, no real locator",
-                            "state": "fixture only, no real configuration",
-                            "grade": grade,
-                        },
-                    },
+                    "values": values,
                 }
             ],
         },
@@ -296,13 +320,32 @@ class AircraftGatedSurfaceTest(unittest.TestCase):
         burn = next(r for r in emitted if r["key"] == gen.AIRCRAFT_BURN_KEY)
         self.assertEqual(burn["value"], gen.AIRCRAFT_BURN_VALUE)
 
-    def test_a_claimed_fixture_emits_no_aircraft_key(self) -> None:
+    def test_a_claimed_fixture_emits_the_structural_zero_only(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             class_bindings, parents = _aircraft_corpus(root, "claimed")
             emissions, leads = gen.build_aircraft_emissions(
                 class_bindings, root, parents
             )
+        # The held keys are gated on the grade, so a claimed class emits none
+        # of them. The zero is not a held key: the driver burns this class, so
+        # the zero ships and the scripted burn is the only burn.
+        self.assertEqual(leads, [])
+        self.assertEqual(len(emissions), 1)
+        self.assertIsNone(emissions[0].value)
+        self.assertTrue(emissions[0].burn)
+        emitted = gen.aircraft_projection_records(emissions)
+        self.assertEqual({record["key"] for record in emitted}, {gen.AIRCRAFT_BURN_KEY})
+
+    def test_a_claimed_uncovered_fixture_emits_no_aircraft_key(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            class_bindings, parents = _aircraft_corpus(root, "claimed", covered=False)
+            emissions, leads = gen.build_aircraft_emissions(
+                class_bindings, root, parents
+            )
+        # The driver refuses a class with no positive fuel density, so the
+        # engine's own burn must stay on and nothing is emitted.
         self.assertEqual(emissions, [])
         self.assertEqual(leads, ["FIXTURE_SENTINEL_F"])
 
@@ -331,8 +374,8 @@ class ProductionShipsNoGatedKeyTest(unittest.TestCase):
     """Non-regression: production carries zero documented identity.
 
     While every class identity stays ``claimed``, the build-time gate emits no
-    gated key. The shipped override declares only the pre-existing ``maxSpeed``
-    and ``mass``.
+    held key. The shipped override declares the pre-existing ``maxSpeed`` and
+    ``mass`` and the structural zero, which no grade gates.
     """
 
     @classmethod
@@ -354,24 +397,45 @@ class ProductionShipsNoGatedKeyTest(unittest.TestCase):
             gen.build_land_surface(VEHICLE / "class_bindings.json", VEHICLE), {}
         )
 
-    def test_the_production_aircraft_emissions_are_empty(self) -> None:
+    def test_the_production_aircraft_emissions_carry_the_structural_zero(
+        self,
+    ) -> None:
         emissions, leads = gen.build_aircraft_emissions(
             AIRCRAFT / "class_bindings.json",
             AIRCRAFT,
             AIRCRAFT / "class_parents.json",
         )
-        self.assertEqual(emissions, [])
+        # Every production identity is claimed, so no held aircraft key ships.
+        # The structural zero ships for every driver-covered class a parent
+        # reopens: the covered set is the classes whose systems row carries a
+        # positive fuel_capacity and fuel_density_kg_l.
         self.assertTrue(leads)
+        self.assertEqual(emissions, [e for e in emissions if e.burn])
+        for emission in emissions:
+            with self.subTest(game_class=emission.game_class):
+                self.assertIsNone(emission.value)
+                self.assertIsNone(emission.mass)
+                self.assertIsNone(emission.cg)
+        records = gen.aircraft_projection_records(emissions)
+        self.assertEqual({record["key"] for record in records}, {gen.AIRCRAFT_BURN_KEY})
+        self.assertEqual({record["value"] for record in records}, {0})
 
-    def test_the_shipped_override_declares_no_gated_key(self) -> None:
+    def test_the_shipped_override_declares_the_structural_zero_only(self) -> None:
         assigned = set(KEY_RE.findall(self.text))
-        # The grandfathered land pair only. ``mass`` is the pre-existing land
-        # key, so it ships; the gated land shipx mass reuses the same key name
-        # and cannot be told apart by name, so it is proven through the empty
-        # land-surface projection above.
-        self.assertEqual(assigned, set(LAND_KEYS))
+        # The grandfathered land pair plus the structural zero. ``mass`` is the
+        # pre-existing land key, so it ships; the gated land shipx mass reuses
+        # the same key name and cannot be told apart by name, so it is proven
+        # through the empty land-surface projection above.
+        self.assertEqual(assigned, set(LAND_KEYS) | {gen.AIRCRAFT_BURN_KEY})
         gated = (set(AIRCRAFT_KEYS) | set(NUMERIC_LAND_FIELDS)) - set(LAND_KEYS)
+        gated -= {gen.AIRCRAFT_BURN_KEY}
         self.assertEqual(assigned & gated, set())
+        for key in sorted(gated):
+            with self.subTest(key=key):
+                self.assertIsNone(
+                    re.search(rf"^\s+{key} = ", self.text, re.M),
+                    f"{key} must not ship",
+                )
 
 
 class IdentityLeadDocTest(unittest.TestCase):

@@ -23,8 +23,17 @@ key is emitted.
 ``fuelConsumptionRate = 0`` disables the engine's own burn, so the scripted
 burn from the sourced systems-row ``fuel_consumption_rate`` is authoritative
 and the two never double-count. The sourced rate stays in the systems row and
-is NOT emitted to config. The zero is emitted ONLY for a class the fuel driver
-covers, so a class never has infinite fuel when the script is not running.
+is NOT emitted to config.
+
+The zero is a STRUCTURAL key with no held value of its own, so NO grade gates
+it. It is emitted for exactly the classes the fuel driver burns: those whose
+runtime systems row carries a positive ``fuel_capacity`` AND a positive
+``fuel_density_kg_l``, because ``fnc_updateFuelSystem`` refuses to burn a class
+that fails either guard. A class the driver does not burn keeps the engine's
+own burn, so the zero must never reach it: the zero beside a class the script
+never burns is the infinite-fuel fault. A covered class with no resolved parent
+cannot be reopened at all, so it keeps the double count until the parent cache
+resolves it.
 
 The land keys are pre-existing and NOT identity-derived: maxSpeed comes from
 the held catalogue and mass from the approved mass calibration. The gate never
@@ -38,13 +47,16 @@ the value grade (the held catalogue value object) are both ``documented``.
 Config is load-time and global, so the build-time predicate is the only gate:
 a runtime setting cannot gate it and the PBO is the only off switch. A
 ``claimed`` identity, a missing grade or any other grade emits no key and the
-class is recorded as a lead. The zero burn is emitted under the SAME
-predicate, so the two aircraft keys always agree on the class set.
+class is recorded as a lead. The STRUCTURAL ZERO is the exception: it is not a
+held value, so ``emit_key`` never gates it. It follows driver coverage, not the
+grade, and the held key set and the zero set therefore differ.
 
-PRODUCTION EMITS ZERO NEW KEYS TODAY. Every aircraft class binding is
+PRODUCTION SHIPS THE STRUCTURAL ZERO ONLY. Every aircraft class binding is
 ``claimed``, so fail-closed means no ``fuelCapacity`` key ships yet. That is
-the gate working, not a broken generator. The emission path is proved by the
-sentinel fixture in ``tools/tests/test_aircraft_systems.py``.
+the gate working, not a broken generator. The zero ships for the driver-covered
+classes that have a resolved parent; a covered class with no resolved parent
+keeps the double count. The emission path is proved by the sentinel fixture in
+``tools/tests/test_aircraft_systems.py``.
 
 The class set is ``data/vehicle/class_bindings.json``. The maxSpeed value
 comes from the catalogue ``max_speed_kmh`` field. The mass value comes from
@@ -147,6 +159,14 @@ AIRCRAFT_BURN_KEY = "fuelConsumptionRate"
 AIRCRAFT_BURN_UNIT = "unitless"
 AIRCRAFT_BURN_VALUE = 0
 AIRCRAFT_BURN_CONVERSION = "structural_zero"
+
+# The fuel-driver coverage. ``fnc_updateFuelSystem`` burns a class only when
+# its runtime systems row carries a positive ``fuel_capacity`` AND a positive
+# ``fuel_density_kg_l``: it refuses the class when either is non-positive. The
+# structural zero is emitted for exactly that set, and no grade gates it. The
+# density may be a named derivation over the held fuel type, so it resolves
+# through the same catalogue profile the systems generator reads.
+AIRCRAFT_DRIVER_DENSITY_FIELD = "fuel_density_kg_l"
 
 # The aircraft mass key. ``operating_weight_kg`` is the sourced operating
 # weight and projects to the engine ``mass`` key by the identity conversion.
@@ -251,19 +271,23 @@ HEADER = (
     "// calibrated scale of a held real mass, never a copied engine number,\n"
     "// from data/physics/mass_calibration.json.\n"
     "//\n"
-    "// The aircraft fuel keys are gated at BUILD TIME: they are emitted\n"
-    "// only when the class identity grade and the held value grade are both\n"
-    "// documented. Config is load-time and global, so the build-time\n"
-    "// predicate is the only gate. Every aircraft class binding is claimed\n"
-    "// today, so NO aircraft key ships yet. That is the gate working, not a\n"
-    "// broken generator.\n"
+    "// The held aircraft keys are gated at BUILD TIME: fuelCapacity, mass and\n"
+    "// centerOfMass are emitted only when the class identity grade and the\n"
+    "// held value grade are both documented. Config is load-time and global,\n"
+    "// so the build-time predicate is the only gate. Every aircraft class\n"
+    "// binding is claimed today, so NO held aircraft key ships yet. That is\n"
+    "// the gate working, not a broken generator.\n"
     "//\n"
-    "// fuelConsumptionRate = 0 is a STRUCTURAL ZERO. It disables the\n"
-    "// engine's own burn, so the scripted burn from the sourced systems-row\n"
-    "// fuel_consumption_rate is authoritative and the two never double-count.\n"
-    "// The sourced rate stays in the systems row and is never emitted here.\n"
-    "// The zero is emitted ONLY for a class the fuel driver covers, so a\n"
-    "// class never has infinite fuel when the script is not running.\n"
+    "// fuelConsumptionRate = 0 is a STRUCTURAL ZERO and no grade gates it. It\n"
+    "// disables the engine's own burn, so the scripted burn from the sourced\n"
+    "// systems-row fuel_consumption_rate is authoritative and the two never\n"
+    "// double-count. The sourced rate stays in the systems row and is never\n"
+    "// emitted here. The zero ships for exactly the classes the fuel driver\n"
+    "// burns: a positive systems-row fuel_capacity AND fuel_density_kg_l, the\n"
+    "// two guards fnc_updateFuelSystem applies. A class the driver does not\n"
+    "// burn keeps the engine's own burn, so the zero never reaches it and a\n"
+    "// class never has infinite fuel. A covered class with no resolved parent\n"
+    "// cannot be reopened here and keeps the double count.\n"
     "//\n"
     "// The aircraft mass key is gated the same way. CfgVehicles mass is the\n"
     "// PHYSX mass, NOT the RotorLib flight-dynamics mass: a RotorLib airframe\n"
@@ -318,9 +342,11 @@ class Emission:
 class AircraftEmission:
     """One aircraft binding that passes the build-time gate and can be emitted.
 
-    Each key is gated on its own held value grade, so a class may carry the
+    Each held key is gated on its own value grade, so a class may carry the
     mass or the centre of gravity without the fuel pair, or the reverse. A
-    key whose value is ``None`` emits nothing.
+    key whose value is ``None`` emits nothing. ``burn`` is the STRUCTURAL ZERO:
+    it is not a held value and no grade gates it, so it is set for every class
+    the fuel driver covers whether or not a held key passes the grade gate.
     """
 
     game_class: str
@@ -338,6 +364,9 @@ class AircraftEmission:
     cg_source_id: str | None = None
     cg_locator: str | None = None
     cg_grade: str | None = None
+    burn: bool = False
+    burn_source_id: str | None = None
+    burn_locator: str | None = None
 
 
 @dataclass(frozen=True)
@@ -378,6 +407,7 @@ class ClassBinding:
     fuel_capacity: object | None = None
     aircraft_mass: object | None = None
     aircraft_cg: object | None = None
+    structural_burn: bool = False
     land_surface: tuple[tuple[str, object], ...] = ()
 
 
@@ -832,6 +862,31 @@ def _gated_value(
     }
 
 
+def _driver_covers(
+    entry: "catalogue.CatalogueEntry | None",
+    capacity: dict[str, object] | None,
+) -> bool:
+    """True when the fuel driver burns this class, from its own two guards.
+
+    ``fnc_updateFuelSystem`` refuses a class unless the runtime systems row
+    carries a positive ``fuel_capacity`` AND a positive ``fuel_density_kg_l``.
+    The capacity is a held value; the density resolves through the aircraft
+    profile, where it may be a named derivation over the held fuel type. Both
+    are read through the same catalogue the systems generator reads, so the set
+    agrees with the row the driver sees at run time.
+    """
+    if entry is None or capacity is None:
+        return False
+    capacity_l = _number(capacity.get("value"))
+    if capacity_l is None or capacity_l <= 0:
+        return False
+    density = catalogue.resolve_field(
+        entry.values, AIRCRAFT_DRIVER_DENSITY_FIELD, catalogue.AIRCRAFT_PROFILE
+    )
+    density_kg_l = _number(density.value)
+    return density_kg_l is not None and density_kg_l > 0
+
+
 def build_aircraft_emissions(
     class_bindings_path: Path,
     aircraft_dir: Path,
@@ -840,13 +895,19 @@ def build_aircraft_emissions(
     """Return the gate-passing aircraft emissions and the rejected leads.
 
     The class identity grade comes from the aircraft class binding and each
-    key's value grade from its held catalogue value object. ``emit_key``
-    admits a key only when both are ``documented``. Each key is gated on its
-    own held value, so a class may carry the mass or the centre of gravity
-    without the fuel pair, or the reverse. A class that passes no key is a
-    lead: it emits nothing, needs no resolved parent and the build does not
-    fail for it. A gate-passing class with no resolved parent is an error,
-    because the generator emits no bare class.
+    held key's value grade from its held catalogue value object. ``emit_key``
+    admits a held key only when both are ``documented``. Each held key is gated
+    on its own held value, so a class may carry the mass or the centre of
+    gravity without the fuel pair, or the reverse.
+
+    The STRUCTURAL ZERO is not a held key and no grade gates it: it is emitted
+    for every class the fuel driver covers, whether or not a held key passes.
+    A class that emits nothing is a lead, so a class neither covered nor
+    gate-passing emits nothing and the build does not fail for it. A class that
+    passes a held key needs a resolved parent and its absence is an error,
+    because the generator emits no bare class. A covered class with no resolved
+    parent cannot be reopened either: it emits nothing, is recorded as a lead,
+    and keeps the double count until the parent cache resolves it.
     """
     load = catalogue.load(aircraft_dir, profile=catalogue.AIRCRAFT_PROFILE)
     entries = {entry.catalogue_id: entry for entry in load.entries}
@@ -869,15 +930,23 @@ def build_aircraft_emissions(
         fuel_ok = emit_key(identity_grade, fuel["grade"] if fuel is not None else None)
         mass_ok = emit_key(identity_grade, mass["grade"] if mass is not None else None)
         cg_ok = emit_key(identity_grade, cg["grade"] if cg is not None else None)
-        if not (fuel_ok or mass_ok or cg_ok):
+        covered = _driver_covers(entry, fuel)
+        if not (covered or mass_ok or cg_ok):
             leads.append(game_class)
             continue
         parent = parents.get(game_class)
         if parent is None:
-            raise ValueError(
-                f"{game_class}: no resolved parent in {parents_path}; "
-                "run --resolve-aircraft-parents against the game install"
-            )
+            if mass_ok or cg_ok:
+                raise ValueError(
+                    f"{game_class}: no resolved parent in {parents_path}; "
+                    "run --resolve-aircraft-parents against the game install"
+                )
+            # Covered, but no resolved parent: the generator emits no bare
+            # class, so the zero cannot reach this class and the engine burn
+            # stays on. The driver therefore double-counts it until the parent
+            # cache resolves the class.
+            leads.append(game_class)
+            continue
         emissions.append(
             AircraftEmission(
                 game_class=game_class,
@@ -895,6 +964,9 @@ def build_aircraft_emissions(
                 cg_source_id=str(cg["source_id"]) if cg_ok else None,
                 cg_locator=str(cg["locator"]) if cg_ok else None,
                 cg_grade=str(cg["grade"]) if cg_ok else None,
+                burn=covered,
+                burn_source_id=str(fuel["source_id"]) if covered else None,
+                burn_locator=str(fuel["locator"]) if covered else None,
             )
         )
     return emissions, leads
@@ -932,6 +1004,7 @@ def build_all_bindings(
                 fuel_capacity=emission.value,
                 aircraft_mass=emission.mass,
                 aircraft_cg=emission.cg,
+                structural_burn=emission.burn,
             )
         )
     return bindings, leads
@@ -959,9 +1032,11 @@ def render_bindings(bindings: Sequence[ClassBinding]) -> str:
             lines.append(
                 f"        {AIRCRAFT_KEY} = {_render_value(binding.fuel_capacity)};"
             )
-            # The zero burn is emitted under the SAME gate as the capacity, so
-            # the engine burn is disabled for exactly the classes the driver
-            # covers and no covered class has infinite fuel.
+        if binding.structural_burn:
+            # The zero is structural: it has no held value of its own and no
+            # grade gates it. It is emitted for exactly the classes the fuel
+            # driver burns, so the engine's own burn is off for every class the
+            # scripted burn covers and on for every class it does not.
             lines.append(
                 f"        {AIRCRAFT_BURN_KEY} = {_render_value(AIRCRAFT_BURN_VALUE)};"
             )
@@ -1000,23 +1075,23 @@ def projection_records(emissions: Sequence[Emission]) -> list[dict[str, object]]
 def aircraft_projection_records(
     emissions: Sequence[AircraftEmission],
 ) -> list[dict[str, object]]:
-    """Return the validator projection of the gate-passing aircraft emissions.
+    """Return the validator projection of the emittable aircraft emissions.
 
-    Each key is projected only when its held value passed the gate. The fuel
-    pair is the held ``fuelCapacity`` and the structural-zero
-    ``fuelConsumptionRate``: the zero has no held value of its own, so it
-    traces to the held ``fuel_capacity`` that qualifies the class. The sourced
-    systems-row rate is never projected. ``mass`` traces to the held
-    ``operating_weight_kg`` and ``centerOfMass`` to the held ``cg_empty_m``.
+    Each held key is projected only when its held value passed the gate. The
+    structural-zero ``fuelConsumptionRate`` is projected for every class the
+    fuel driver covers, whether or not the held ``fuelCapacity`` passed.
+    ``mass`` traces to the held ``operating_weight_kg`` and ``centerOfMass`` to
+    the held ``cg_empty_m``.
+
+    The zero has no held value of its own, so it traces to the held
+    ``fuel_capacity`` that qualifies the class: the driver burns the class only
+    because that capacity is positive. It carries the ``structural_zero``
+    conversion and the ``derived`` grade, because a named conversion is not a
+    held unit identity. The sourced systems-row rate is never projected.
     """
     records: list[dict[str, object]] = []
     for emission in emissions:
         if emission.value is not None:
-            source = {
-                "source_id": emission.source_id,
-                "locator": emission.locator,
-                "field": AIRCRAFT_VALUE_FIELD,
-            }
             records.append(
                 {
                     "game_class": emission.game_class,
@@ -1024,11 +1099,16 @@ def aircraft_projection_records(
                     "key": AIRCRAFT_KEY,
                     "value": emission.value,
                     "unit": emission.unit,
-                    "value_source": dict(source),
+                    "value_source": {
+                        "source_id": emission.source_id,
+                        "locator": emission.locator,
+                        "field": AIRCRAFT_VALUE_FIELD,
+                    },
                     "conversion": CONVERSION,
                     "grade": emission.grade,
                 }
             )
+        if emission.burn:
             records.append(
                 {
                     "game_class": emission.game_class,
@@ -1036,7 +1116,11 @@ def aircraft_projection_records(
                     "key": AIRCRAFT_BURN_KEY,
                     "value": AIRCRAFT_BURN_VALUE,
                     "unit": AIRCRAFT_BURN_UNIT,
-                    "value_source": dict(source),
+                    "value_source": {
+                        "source_id": emission.burn_source_id,
+                        "locator": emission.burn_locator,
+                        "field": AIRCRAFT_VALUE_FIELD,
+                    },
                     "conversion": AIRCRAFT_BURN_CONVERSION,
                     "grade": "derived",
                 }

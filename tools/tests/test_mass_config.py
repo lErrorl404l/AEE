@@ -133,10 +133,21 @@ class MassOverrideTest(unittest.TestCase):
         self.assertEqual(gen.main(["--check"]), 0)
 
     def test_every_bound_class_carries_a_calibrated_mass(self) -> None:
-        self.assertEqual(set(self.bodies), set(gen.bound_classes(CLASS_BINDINGS)))
-        for name, assigned in self.assigned.items():
+        land = set(gen.bound_classes(CLASS_BINDINGS))
+        # The header adds one body per driver-covered aircraft class beside the
+        # land bodies. Those carry the structural zero, never a land mass.
+        aircraft, _leads = gen.build_aircraft_emissions(
+            gen.DEFAULT_AIRCRAFT_CLASS_BINDINGS,
+            gen.DEFAULT_AIRCRAFT_DIR,
+            gen.DEFAULT_AIRCRAFT_PARENTS,
+        )
+        self.assertEqual(
+            set(self.bodies) - land, {emission.game_class for emission in aircraft}
+        )
+        self.assertLessEqual(land, set(self.bodies))
+        for name in sorted(land):
             with self.subTest(game_class=name):
-                self.assertIn("mass", assigned)
+                self.assertIn("mass", self.assigned[name])
 
     def test_every_mass_reproduces_from_the_calibration(self) -> None:
         for binding in self.bindings:
@@ -176,9 +187,11 @@ class MassOverrideTest(unittest.TestCase):
         self.assertEqual(self.rendered.count("class CfgVehicles"), 1)
 
     def test_only_admitted_keys_are_emitted(self) -> None:
-        for assigned in self.assigned.values():
-            with self.subTest(keys=sorted(assigned)):
-                self.assertLessEqual(set(assigned), {"maxSpeed", "mass"})
+        for name, assigned in self.assigned.items():
+            with self.subTest(game_class=name, keys=sorted(assigned)):
+                self.assertLessEqual(
+                    set(assigned), {"maxSpeed", "mass", gen.AIRCRAFT_BURN_KEY}
+                )
                 self.assertEqual(set(assigned) & set(FORBIDDEN_KEYS), set())
 
     def test_a_class_with_both_values_carries_both_keys(self) -> None:
