@@ -960,12 +960,20 @@ class SqfParser:
         return left
 
     def parse_add(self):
+        # BIKI Order of Precedence, precedence 6: addition, subtraction and
+        # the min/max commands share one level and run left to right, so
+        # `a max b min c` is `(a max b) min c`.
         left = self.parse_mul()
-        while self.peekv() in ("+", "-"):
-            op = self.next().value
-            right = self.parse_mul()
-            left = Bin(op, left, right)
-        return left
+        while True:
+            t = self.peekv()
+            if t in ("+", "-"):
+                self.next()
+                left = Bin(t, left, self.parse_mul())
+            elif t in ("max", "min"):
+                self.next()
+                left = MaxMin(t, left, self.parse_mul())
+            else:
+                return left
 
     def parse_mul(self):
         left = self.parse_pow()
@@ -1057,10 +1065,6 @@ class SqfParser:
                 self.next()
                 fn = self.parse_unary()
                 left = Call(fn, left)
-            elif t.value == "max" or t.value == "min":
-                self.next()
-                right = self.parse_unary()
-                left = MaxMin(t.value, left, right)
             elif t.value == "forEach":
                 self.next()
                 right = self.parse_unary()

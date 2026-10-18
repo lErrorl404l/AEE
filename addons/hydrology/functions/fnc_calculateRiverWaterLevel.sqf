@@ -91,9 +91,8 @@ if (_lastRun isEqualType 0 && _lastRun >= 0) then {
     if (_elapsed > 0) then { _interval = _elapsed; };
 };
 // Bound the step: a world-clock jump or a long pause must not deliver an
-// hour of rain-depth or drive the cascade coefficient past stability.
-// Split, not chained: `a max b min c` is read right-associatively by the
-// test harness, so the two clamps are written as two statements.
+// hour of rain-depth or drive the cascade coefficient past stability.  The
+// step stays in [0.1, 60] seconds.
 _interval = _interval max 0.1;
 _interval = _interval min 60;
 missionNamespace setVariable [QGVAR(riverLastRunTime), _now];
