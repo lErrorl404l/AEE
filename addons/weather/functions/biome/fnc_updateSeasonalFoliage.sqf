@@ -137,7 +137,7 @@ if (_raingreen || _summergreen) then {
             };
 
             // White, Thornton & Running (1997) eq. 6: the leaves are off.
-            private _off = ((_daylMin <= 655) && {_tNow <= 11.15}) || {_tNow <= 2.0};
+            private _off = ((_daylMin <= 655) && (_tNow <= 11.15)) || (_tNow <= 2.0);
 
             if (_off) then {
                 _phenology = 0;
