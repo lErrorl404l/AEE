@@ -17,7 +17,9 @@ Run: python3 -m unittest tools/tests/test_mobility.py
 """
 
 import math
+import re
 import unittest
+from pathlib import Path
 
 
 def engine_power_ratio(density_kgm3):
@@ -336,6 +338,203 @@ class TestVehicleCoupling(unittest.TestCase):
     def test_grip_loss_never_negative(self):
         self.assertEqual(grip_loss_force(-0.2, 1500.0), 0.0)
         self.assertEqual(grip_loss_force(0.25, 0.0), 0.0)
+
+
+# ─── Class-table resolution (issues #282, #281) ────────────────────────────
+#
+# The mobility class tables are walked in order with isKindOf, which matches
+# the WHOLE inheritance chain, so the row order is a contract: the first row
+# whose class the vehicle is a kind of wins.  The chains below are verified
+# from the shipped PBO configs (hemtt pbo extract + config derapify,
+# 2026-10-18) and the engine core config (Dta/bin.pbo):
+#
+#   engine core:  Car: LandVehicle ; Tank: LandVehicle ; Truck: Car ; APC: Tank
+#   APC_Tracked_01_base_F: Tank_F: Tank          (armor_f_beta.pbo)
+#   APC_Wheeled_01_base_F: Wheeled_APC_F: Car_F  (armor_f_beta.pbo)
+#   MRAP_01_base_F: Car_F: Car                   (soft_f.pbo)
+#   Truck_01_base_F: Truck_F: Car_F: Car         (soft_f_beta.pbo)
+#   Hatchback_01_base_F: Car_F: Car
+#
+# "MRAP", "Wheeled_APC" and "Tracked_APC" are AEE class TOKENS, not
+# CfgVehicles classes, so an isKindOf test on one is always false and a row
+# named for one can never match.
+ANCESTRY = {
+    "B_APC_Tracked_01_rcws_F": [
+        "B_APC_Tracked_01_base_F",
+        "APC_Tracked_01_base_F",
+        "Tank_F",
+        "Tank",
+        "LandVehicle",
+    ],
+    "O_APC_Tracked_02_cannon_F": [
+        "O_APC_Tracked_02_base_F",
+        "APC_Tracked_02_base_F",
+        "Tank_F",
+        "Tank",
+        "LandVehicle",
+    ],
+    "I_APC_tracked_03_cannon_F": [
+        "I_APC_tracked_03_base_F",
+        "APC_Tracked_03_base_F",
+        "Tank_F",
+        "Tank",
+        "LandVehicle",
+    ],
+    "B_MBT_01_cannon_F": ["B_MBT_01_base_F", "Tank_F", "Tank", "LandVehicle"],
+    "B_MRAP_01_F": ["MRAP_01_base_F", "Car_F", "Car", "LandVehicle"],
+    "B_APC_Wheeled_01_cannon_F": [
+        "B_APC_Wheeled_01_base_F",
+        "APC_Wheeled_01_base_F",
+        "Wheeled_APC_F",
+        "Car_F",
+        "Car",
+        "LandVehicle",
+    ],
+    "B_Truck_01_transport_F": [
+        "Truck_01_base_F",
+        "Truck_F",
+        "Car_F",
+        "Car",
+        "LandVehicle",
+    ],
+    "C_Hatchback_01_F": ["Hatchback_01_base_F", "Car_F", "Car", "LandVehicle"],
+    "B_Boat_Armed_01_minigun_F": ["Boat_Armed_01_base_F", "Ship_F", "Ship"],
+}
+
+# The row names that are AEE tokens and no CfgVehicles class.
+DEAD_TOKEN_ROWS = {"MRAP", "Wheeled_APC", "Tracked_APC"}
+
+REPO = Path(__file__).resolve().parents[2]
+SSF_SQF = (REPO / "addons/mobility/functions/fnc_calculateSSF.sqf").read_text(
+    encoding="utf-8"
+)
+LIMITS_SQF = (
+    REPO / "addons/mobility/functions/fnc_calculateTerrainLimits.sqf"
+).read_text(encoding="utf-8")
+TERRAIN_DRAG_SQF = (
+    REPO / "addons/mobility/functions/fnc_applyTerrainDrag.sqf"
+).read_text(encoding="utf-8")
+ROLLOVER_SQF = (REPO / "addons/mobility/functions/fnc_applyRollover.sqf").read_text(
+    encoding="utf-8"
+)
+XEH_POSTINIT = (REPO / "addons/mobility/XEH_postInit.sqf").read_text(encoding="utf-8")
+
+
+def _block(text, anchor):
+    start = text.index(anchor)
+    return text[start : text.index("];", start)]
+
+
+def number_rows(anchor, text=SSF_SQF):
+    """[class, value] rows of a scalar mobility table, in file order."""
+    return [
+        (m.group(1), float(m.group(2)))
+        for m in re.finditer(r'\["([^"]+)",\s*([0-9.]+)\]', _block(text, anchor))
+    ]
+
+
+def spec_rows(text=LIMITS_SQF):
+    """[class, [clearance, wheelbase, ford, side slope]] rows, in file order."""
+    return [
+        (m.group(1), [float(v) for v in m.group(2).replace(",", " ").split()])
+        for m in re.finditer(
+            r'\["([^"]+)",\s*\[([0-9.,\s]+)\]\]', _block(text, "} forEach [")
+        )
+    ]
+
+
+def resolve(rows, game_class):
+    """The first row the class is a kind of, as the SQF loop resolves it."""
+    chain = ANCESTRY.get(game_class, [])
+    for name, *value in rows:
+        if name == game_class or name in chain:
+            return value[0]
+    return None
+
+
+class TestMobilityClassTables(unittest.TestCase):
+    """Issue #282: the tables must resolve a tracked APC to the APC row."""
+
+    def setUp(self):
+        self.track = number_rows("private _trackTable = [")
+        self.cg = number_rows("private _cgTable = [")
+        self.spec = spec_rows()
+
+    def test_no_row_names_an_aee_token(self):
+        # A row named for a token can never match: the token is not a class.
+        for rows in (self.track, self.cg, self.spec):
+            for name, *_ in rows:
+                self.assertNotIn(
+                    name, DEAD_TOKEN_ROWS, f"{name} is an AEE token, not a class"
+                )
+
+    def test_tracked_apc_takes_the_tracked_apc_row(self):
+        for cls in (
+            "B_APC_Tracked_01_rcws_F",
+            "O_APC_Tracked_02_cannon_F",
+            "I_APC_tracked_03_cannon_F",
+        ):
+            with self.subTest(cls=cls):
+                self.assertEqual(resolve(self.track, cls), 2.50)
+                self.assertEqual(resolve(self.cg, cls), 0.70)
+                self.assertEqual(resolve(self.spec, cls), [0.45, 4.00, 1.00, 25])
+
+    def test_mbt_takes_the_tank_row(self):
+        self.assertEqual(resolve(self.track, "B_MBT_01_cannon_F"), 2.70)
+        self.assertEqual(resolve(self.cg, "B_MBT_01_cannon_F"), 0.60)
+        self.assertEqual(
+            resolve(self.spec, "B_MBT_01_cannon_F"), [0.47, 4.60, 1.20, 20]
+        )
+
+    def test_mrap_is_not_a_car(self):
+        self.assertEqual(resolve(self.track, "B_MRAP_01_F"), 2.00)
+        self.assertEqual(resolve(self.cg, "B_MRAP_01_F"), 1.65)
+        self.assertEqual(resolve(self.spec, "B_MRAP_01_F"), [0.66, 3.90, 0.99, 30])
+
+    def test_wheeled_apc_precedes_car(self):
+        self.assertEqual(resolve(self.track, "B_APC_Wheeled_01_cannon_F"), 2.10)
+        self.assertEqual(resolve(self.cg, "B_APC_Wheeled_01_cannon_F"), 1.10)
+        self.assertEqual(
+            resolve(self.spec, "B_APC_Wheeled_01_cannon_F"), [0.50, 4.20, 1.00, 25]
+        )
+
+    def test_truck_precedes_car(self):
+        self.assertEqual(resolve(self.track, "B_Truck_01_transport_F"), 1.90)
+        self.assertEqual(resolve(self.cg, "B_Truck_01_transport_F"), 1.00)
+        self.assertEqual(
+            resolve(self.spec, "B_Truck_01_transport_F"), [0.40, 4.00, 0.90, 25]
+        )
+
+    def test_plain_car_still_takes_the_car_row(self):
+        self.assertEqual(resolve(self.track, "C_Hatchback_01_F"), 1.55)
+        self.assertEqual(resolve(self.cg, "C_Hatchback_01_F"), 0.55)
+        self.assertEqual(resolve(self.spec, "C_Hatchback_01_F"), [0.20, 2.60, 0.40, 30])
+
+
+class TestLandOnlyEffects(unittest.TestCase):
+    """Issue #281: no land drag or rollover on a Ship.
+
+    A Ship is not kindOf Air, so the old `!(_x isKindOf "Air")` select and the
+    `isKindOf "Air"` guard in both appliers let a boat through.
+    """
+
+    def test_a_ship_is_not_a_land_vehicle(self):
+        self.assertNotIn("LandVehicle", ANCESTRY["B_Boat_Armed_01_minigun_F"])
+
+    def test_appliers_gate_on_land_vehicle(self):
+        for name, src in (
+            ("fnc_applyTerrainDrag", TERRAIN_DRAG_SQF),
+            ("fnc_applyRollover", ROLLOVER_SQF),
+        ):
+            with self.subTest(fn=name):
+                self.assertIn(
+                    'if !(_vehicle isKindOf "LandVehicle") exitWith { false };', src
+                )
+
+    def test_the_candidate_selects_are_land_only(self):
+        # Three PFH selects: rollover, terrain drag and the coupling loop.
+        self.assertEqual(XEH_POSTINIT.count('{(_x isKindOf "LandVehicle")} &&'), 3)
+        self.assertNotIn('!(_x isKindOf "Air")', XEH_POSTINIT)
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_mudAccretionEnabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_calculateMudAccretion.sqf:24` | UNKNOWN |
 | `aee_core_precipitationPhase` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_calculateWetTraction.sqf:48` | Phase (rain/sleet/snow/freezing_rain) |
 | `aee_core_rainAccum` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_calculateSoilBearingStrength.sqf:21` | Rain accumulation |
-| `aee_core_simTime` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_applyRollover.sqf:73` | UNKNOWN |
+| `aee_core_simTime` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_applyRollover.sqf:76` | UNKNOWN |
 | `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_applyAccretionMass.sqf:60` | Snow depth in metres |
 | `aee_core_surfaceWetness` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/mobility/functions/fnc_applyGripLoss.sqf:43` | Surface wetness 0..1 |
 | `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/mobility/functions/fnc_calculateMudAccretion.sqf:36` | Update interval in seconds |

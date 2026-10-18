@@ -30,7 +30,7 @@ if (GVAR(rolloverEnabled)) then {
         // arrives is picked up quickly.
         if ((time - GVAR(rolloverRefresh)) > 1) then {
             GVAR(rolloverVehicles) = vehicles select {
-                (alive _x) && {!(_x isKindOf "Air")} && {(_x distance _ref) < GVAR(rolloverRadius)}
+                (alive _x) && {(_x isKindOf "LandVehicle")} && {(_x distance _ref) < GVAR(rolloverRadius)}
             };
             GVAR(rolloverRefresh) = time;
         };
@@ -65,7 +65,7 @@ if (GVAR(terrainDragEnabled)) then {
         // refresh, not in the per-frame test.
         if ((time - GVAR(terrainRefresh)) > 1) then {
             GVAR(terrainVehicles) = vehicles select {
-                (alive _x) && {!(_x isKindOf "Air")} && {(_x distance _ref) < GVAR(terrainRadius)}
+                (alive _x) && {(_x isKindOf "LandVehicle")} && {(_x distance _ref) < GVAR(terrainRadius)}
             };
             GVAR(terrainRefresh) = time;
         };
@@ -101,7 +101,7 @@ if (EGVAR(vehicles,vehicleCouplingEnabled)) then {
 
         if ((time - GVAR(couplingRefresh)) > 1) then {
             GVAR(couplingVehicles) = vehicles select {
-                (alive _x) && {!(_x isKindOf "Air")} && {(_x distance _ref) < GVAR(terrainRadius)}
+                (alive _x) && {(_x isKindOf "LandVehicle")} && {(_x distance _ref) < GVAR(terrainRadius)}
             };
             GVAR(couplingRefresh) = time;
         };

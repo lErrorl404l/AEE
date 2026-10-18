@@ -53,15 +53,37 @@ if (isNull _vehicle) exitWith { [1.0, 0, 0, "table"] };
 // published dimensions of the real vehicle each class represents, since
 // the engine does not expose the geometry.  The list is ordered most
 // specific first, because isKindOf matches the whole inheritance chain.
+//
+// The selector must name an ENGINE class.  "MRAP", "Wheeled_APC" and
+// "Tracked_APC" are AEE class TOKENS, not CfgVehicles classes, so an
+// isKindOf test against them is always false and the row could never
+// match: an MRAP and a wheeled APC fell through to Car, and a tracked APC
+// to Tank.  The vanilla chains, verified from the shipped PBO configs
+// (hemtt derapify, 2026-10-18):
+//   MRAP_01_base_F : Car_F : Car        (soft_f.pbo)
+//   MRAP_02_base_F : Car_F : Car        (soft_f.pbo)
+//   MRAP_03_base_F : Car_F : Car        (soft_f_beta.pbo)
+//   Wheeled_APC_F  : Car_F : Car        (armor_f_beta.pbo)
+//   APC_Tracked_01_base_F : Tank_F : Tank  (armor_f_beta.pbo)
+//   APC_Tracked_02_base_F : Tank_F : Tank  (armor_f_beta.pbo)
+//   APC_Tracked_03_base_F : Tank_F : Tank  (armor_f_gamma.pbo)
+//   Truck_F : Car_F : Car   (soft_f_beta.pbo)
+//   Truck : Car             (engine core, Dta/bin.pbo)
+// Truck and Car are the engine's own classes and stay, but both must come
+// after every more specific class: a truck is kindOf Car.
 private _trackTable = [
-    ["MRAP",      2.00],   // RG-31 / MaxxPro class: wide V-hull, high CG
-    ["Wheeled_APC", 2.10],
+    ["MRAP_01_base_F", 2.00],   // RG-31 / MaxxPro class: wide V-hull, high CG
+    ["MRAP_02_base_F", 2.00],
+    ["MRAP_03_base_F", 2.00],
+    ["Wheeled_APC_F", 2.10],
+    ["APC_Tracked_01_base_F", 2.50],
+    ["APC_Tracked_02_base_F", 2.50],
+    ["APC_Tracked_03_base_F", 2.50],
     ["Tank",      2.70],   // track centres; full width is wider
-    ["Tracked_APC", 2.50],
     ["Helicopter", 0],     // not a ground rollover case
-    ["Car",       1.55],   // passenger car / light utility
+    ["Truck_F",   1.90],
     ["Truck",     1.90],
-    ["Wheeled_APC_F", 2.10]
+    ["Car",       1.55]    // passenger car / light utility
 ];
 
 // The real geometry first: the vehicle's own wheel points, read from its
@@ -110,12 +132,17 @@ if (_com isEqualType [] && {count _com == 3}) then {
 // values are the published CG heights of the class each represents.
 if (_cgHeight <= 0) then {
     private _cgTable = [
-        ["MRAP",      1.65],
+        ["MRAP_01_base_F", 1.65],
+        ["MRAP_02_base_F", 1.65],
+        ["MRAP_03_base_F", 1.65],
+        ["Wheeled_APC_F", 1.10],
+        ["APC_Tracked_01_base_F", 0.70],
+        ["APC_Tracked_02_base_F", 0.70],
+        ["APC_Tracked_03_base_F", 0.70],
         ["Tank",      0.60],
-        ["Tracked_APC", 0.70],
-        ["Car",       0.55],
+        ["Truck_F",   1.00],
         ["Truck",     1.00],
-        ["Wheeled_APC", 1.10]
+        ["Car",       0.55]
     ];
     _cgHeight = 1.00;
     {

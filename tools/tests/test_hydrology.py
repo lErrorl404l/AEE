@@ -15,8 +15,13 @@ USGS SIR 2022-5114 (baseflow recession).
 
 import math
 import re
+import sys
+import tempfile
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sqf_lite import run_sqf  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
 HYDROLOGY = REPO / "addons" / "hydrology" / "functions" / "hydrology"
@@ -433,6 +438,167 @@ class TestD8Source(unittest.TestCase):
         """The result is row-major, so the river can index it directly."""
         self.assertTrue(self.code.rstrip().endswith("_area"))
         self.assertIn("flat array", self.text)
+
+
+# ─── Issue #283: the river level is a MAP-level state ─────────────────────
+class TestRiverLevelIsMachineIndependent(unittest.TestCase):
+    """The kernel must not read the LOCAL player.
+
+    EGVAR(core,currentWaterLevel) is published to every machine, so its inputs
+    must be identical on every machine.  The local player position is not: a
+    dedicated server has no unit (the old fallback put it at the origin) and
+    two clients on the same map published different levels from the same
+    weather.
+    """
+
+    def setUp(self):
+        self.text = RIVER_SQF.read_text(encoding="utf-8")
+
+    def test_the_local_unit_is_not_read(self):
+        self.assertNotIn("CBA_fnc_currentUnit", self.text)
+        self.assertNotIn("getPos _unit", self.text)
+
+    def test_the_reference_position_is_the_map_centre(self):
+        self.assertIn("private _pos = [worldSize / 2, worldSize / 2];", self.text)
+
+    def test_the_map_centre_does_not_move_with_a_unit(self):
+        # The value is a constant for the session, so the three position
+        # consumers (surface class, D8 cell, coast distance) agree on every
+        # machine.
+        self.assertEqual(self.text.count("private _pos = "), 1)
+
+
+# ─── Issue #284: the D8 grid is pre-warmed, not built in the tick ─────────
+class TestD8GridPrewarm(unittest.TestCase):
+    """The first river tick must not build the grid.
+
+    The grid is ceil(worldSize/100)^2 cells, each a getTerrainHeightASL read:
+    94,864 reads on Altis.  It was built synchronously inside the first
+    environment tick that reached the river chain.
+    """
+
+    def setUp(self):
+        self.post = (REPO / "addons" / "hydrology" / "XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.river = RIVER_SQF.read_text(encoding="utf-8")
+
+    def test_postinit_warms_the_grid(self):
+        self.assertIn("call FUNC(routeRunoffD8)", self.post)
+
+    def test_the_prewarm_uses_the_kernels_cache_key(self):
+        # The cache key is [origin, nx, ny, step].  Both sides must derive it
+        # the same way, or the pre-warm fills a different key and the tick
+        # still builds its own grid.
+        self.assertIn("private _d8Step = 100;", self.post)
+        self.assertIn("private _d8Step = 100;", self.river)
+        self.assertIn("ceil (worldSize / _d8Step)", self.post)
+        self.assertIn("ceil (worldSize / _d8Step)", self.river)
+
+
+# ─── Issue #297: the river chain integrates on the real elapsed interval ──
+#
+# The core environment tick gates this chain at 30 s, but the kernel read the
+# global default updateInterval (5 s).  Every term scales with that interval:
+# the storm depth per call, the Nash coefficient, the discharge and the
+# baseflow.  A 5 s constant against a 30 s gate delivered one sixth of the
+# real depth.
+#
+# These tests EXECUTE the shipped interval and storm-depth code (the slice of
+# the kernel between the two markers below) with the harness in
+# tools/tests/sqf_lite.py.  The curve-number switch above the slice is not in
+# the harness subset, so the slice is taken after it; every line inside the
+# slice is the kernel's own text, not a mirror.
+INTERVAL_SLICE_START = "private _rainIntensity = rain;"
+INTERVAL_SLICE_END = "missionNamespace setVariable [QGVAR(stormDryTicks), _dryTicks];"
+
+
+def run_interval_slice(state, rain=0.8, setting=5.0):
+    """Run the kernel's real interval + storm-depth code over `state`.
+
+    The harness does not run the preprocessor.  `EGVAR(core,name)` expands to
+    the global variable `aee_core_name` (a setting, not a namespace key), so
+    the slice text gets the same expansion here and `setting` is injected
+    under it.  `QEGVAR(...)` is a namespace KEY and the harness handles it, so
+    it is left alone.
+    """
+    text = RIVER_SQF.read_text(encoding="utf-8")
+    start = text.index(INTERVAL_SLICE_START)
+    end = text.index(INTERVAL_SLICE_END) + len(INTERVAL_SLICE_END)
+    slice_src = re.sub(
+        r"(?<![A-Za-z_])EGVAR\((\w+),(\w+)\)", r"aee_\1_\2", text[start:end]
+    )
+    tmp = Path(tempfile.mkdtemp()) / "interval_slice.sqf"
+    tmp.write_text(slice_src, encoding="utf-8")
+    run_sqf(
+        tmp,
+        [],
+        {
+            "rain": rain,
+            "missionNamespace": state,
+            "aee_core_updateInterval": setting,
+            "diag_tickTime": 0.0,
+        },
+    )
+    return state
+
+
+class TestRiverInterval(unittest.TestCase):
+    def test_two_calls_thirty_seconds_apart_deliver_six_times_the_depth(self):
+        # First call: no previous sample, so the fallback interval applies.
+        state = {"__QEGVAR__core_simTime": 100.0}
+        run_interval_slice(state)
+        first = state["__QGVAR__stormDepth_mm"]
+        self.assertAlmostEqual(first, 0.8 * 25.0 / 3600.0 * 5.0, places=6)
+        # Second call, 30 s later: the depth delivered is the real 30 s of rain.
+        state["__QEGVAR__core_simTime"] = 130.0
+        run_interval_slice(state)
+        second = state["__QGVAR__stormDepth_mm"]
+        self.assertAlmostEqual(second - first, 6 * first, places=6)
+
+    def test_the_step_follows_the_clock_not_the_setting(self):
+        # Two different settings, the same 10 s of clock: the same depth.
+        depths = []
+        for setting in (5.0, 1.0):
+            state = {"__QEGVAR__core_simTime": 50.0}
+            run_interval_slice(state, setting=setting)
+            base = state["__QGVAR__stormDepth_mm"]
+            state["__QEGVAR__core_simTime"] = 60.0
+            run_interval_slice(state, setting=setting)
+            depths.append(state["__QGVAR__stormDepth_mm"] - base)
+        self.assertAlmostEqual(depths[0], depths[1], places=6)
+        self.assertAlmostEqual(depths[0], 0.8 * 25.0 / 3600.0 * 10.0, places=6)
+
+    def test_the_step_is_bounded(self):
+        # A clock jump or a long pause must not deliver an unbounded depth.
+        state = {"__QEGVAR__core_simTime": 0.0}
+        run_interval_slice(state)
+        base = state["__QGVAR__stormDepth_mm"]
+        state["__QEGVAR__core_simTime"] = 100000.0
+        run_interval_slice(state)
+        self.assertLessEqual(
+            state["__QGVAR__stormDepth_mm"] - base,
+            0.8 * 25.0 / 3600.0 * 60.0 + 1e-6,
+        )
+        self.assertGreater(state["__QGVAR__stormDepth_mm"] - base, 0.0)
+
+    def test_the_dry_event_closes_after_thirty_seconds(self):
+        # No rain: the storm event closes after 30 s of dry weather at ANY
+        # step.  The old test was six ticks, which is half a minute only at
+        # the 5 s default.
+        for step in (5.0, 30.0):
+            state = {
+                "__QEGVAR__core_simTime": 0.0,
+                "__QGVAR__stormDepth_mm": 2.0,
+            }
+            closed = False
+            for i in range(1, 20):
+                state["__QEGVAR__core_simTime"] = i * step
+                run_interval_slice(state, rain=0.0, setting=step)
+                if state["__QGVAR__stormDepth_mm"] == 0.0:
+                    closed = (i * step) <= 30.0 + step
+                    break
+            self.assertTrue(closed, f"event did not close within 30 s at step {step}")
 
 
 if __name__ == "__main__":
