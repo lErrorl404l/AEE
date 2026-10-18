@@ -26,10 +26,14 @@ Arguments:
 Returns [weight, armor, nirReflectance, clo].
 */
 params [["_unit", player, [objNull]]];
-if (isNull _unit) exitWith { [1.4, 2, 0.40, 0.07] };
+// An unworn slot carries no weight and no armour. The old NIJ-2 row
+// credited every bare head 1.4 kg and 10 mm of protection (issue #315).
+// The NIR and clo columns stay at the slot's ambient value, as for the
+// vest.
+if (isNull _unit) exitWith { [0, 0, 0.40, 0.07] };
 
 private _helmetItem = headgear _unit;
-if (_helmetItem == "") exitWith { [1.4, 2, 0.40, 0.07] };
+if (_helmetItem == "") exitWith { [0, 0, 0.40, 0.07] };
 
 private _helmetDef = [1.4, 2, 0.40, 0.07];
 private _h = toLower _helmetItem;

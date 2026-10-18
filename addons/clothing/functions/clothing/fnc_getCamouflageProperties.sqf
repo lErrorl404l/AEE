@@ -28,10 +28,12 @@ if (isNull _unit) exitWith { [0.7, 0.35, 0.5, 0.93] };
 private _uniform = uniform _unit;
 if (_uniform == "") exitWith { [0.7, 0.35, 0.5, 0.93] };
 
-// Per-frame cache: the uniform classname is stable.
-private _frame = diag_frameNo;
+// One-entry cache, keyed on the uniform classname.  The classname is the
+// query identity and it is stable; a frame counter is not an identity,
+// so two units queried in one frame shared the first unit's result
+// (issue #301).  One entry keeps the cache bounded.
 private _cache = missionNamespace getVariable [QGVAR(clothingCache), []];
-if (count _cache >= 2 && {(_cache select 0) == _frame}) exitWith {
+if (count _cache >= 2 && {(_cache select 0) == _uniform}) exitWith {
     _cache select 1
 };
 
@@ -51,7 +53,7 @@ while {isClass _candidate && _depth < 16} do {
             getNumber (_cloth >> "permeability"),
             getNumber (_cloth >> "emissivity")
         ];
-        missionNamespace setVariable [QGVAR(clothingCache), [_frame, _res]];
+        missionNamespace setVariable [QGVAR(clothingCache), [_uniform, _res]];
         _res
     };
     _candidate = inheritsFrom _candidate;
@@ -209,6 +211,6 @@ private _res = switch (true) do {
     default                           { [0.70, 0.40, 0.35, 0.93] };
 };
 
-missionNamespace setVariable [QGVAR(clothingCache), [_frame, _res]];
+missionNamespace setVariable [QGVAR(clothingCache), [_uniform, _res]];
 _res
 
