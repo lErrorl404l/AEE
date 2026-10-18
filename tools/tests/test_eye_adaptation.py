@@ -338,6 +338,20 @@ class TestEyeDriverContract(unittest.TestCase):
         text = DRIVER.read_text(encoding="utf-8")
         self.assertIn("setAperture -1", text)
 
+    def test_the_sensor_stand_down_releases_the_aperture(self):
+        # Issue #256: the stand-down exited before the release, so the AEE pin
+        # stayed set while NVG or thermal owned the view, freezing the
+        # exposure until the operator returned to normal vision.
+        code = self._code(DRIVER)
+        gate = re.search(
+            r"if\s*\(currentVisionMode[^)]*\)\s*exitWith\s*\{(.*?)\};",
+            code,
+            re.S,
+        )
+        self.assertIsNotNone(gate, "the sensor stand-down has no block")
+        self.assertIn("setAperture -1", gate.group(1))
+        self.assertIn("GVAR(eyePinned) = nil", gate.group(1))
+
     def test_starter_is_client_gated_and_idempotent(self):
         text = INIT.read_text(encoding="utf-8")
         self.assertIn("hasInterface", text)

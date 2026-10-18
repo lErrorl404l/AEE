@@ -52,6 +52,25 @@ THERMAL_TIERS = extract_tiers(THERMAL)
 OPTIC_TIERS = extract_tiers(OPTIC)
 
 
+def resolve_nvg(classname):
+    """First-match tier resolution in source order, as the SQF switch runs.
+
+    A keyword table (extract_tiers) loses the case order, and the order is the
+    defect in issue #260: a broad token placed earlier in the chain shadows a
+    specific one, so a vanilla `nvgoggles_opfor` classname resolved as GEN3.
+    """
+    m = re.search(r"switch \(true\) do \{(.*?)\n\};", NVG, re.S)
+    if not m:
+        raise SystemExit("switch block not found")
+    hay = classname.lower()
+    for case in re.finditer(
+        r"case\s*\((.*?)\):\s*\{(\s*\[[^\]]+\]\s*)\};", m.group(1), re.S
+    ):
+        if any(kw in hay for kw in re.findall(r'find "([^"]+)"', case.group(1))):
+            return re.sub(r"[^A-Z0-9]+", "", case.group(2).split(",")[0])
+    return None
+
+
 class TestNvgDeviceValues(unittest.TestCase):
     def assert_tier(self, kw, gen, sens, res, w, tubes, fov):
         self.assertIn(kw, NVG_TIERS, f"NVG keyword {kw} missing")
@@ -84,6 +103,25 @@ class TestNvgDeviceValues(unittest.TestCase):
         # 1PN63/1PN58: Gen 1 S-25, 250 uA/lm, 30 lp/mm.
         self.assert_tier("1pn63", "GEN1", 250, 30, 1.5, 1, 40)
         self.assert_tier("1pn58", "GEN1", 250, 30, 1.5, 1, 40)
+
+
+class TestNvgSubstringOrder(unittest.TestCase):
+    """A specific device token must precede a broad token (issue #260)."""
+
+    def test_the_opfor_gen2_goggle_is_not_shadowed_by_the_broad_token(self):
+        # "nvgoggles" is a substring of "nvgoggles_opfor".  With the broad case
+        # first, the OPFOR Gen-2 goggle resolved as GEN3 and its Gen-2 case was
+        # dead code.
+        self.assertEqual(resolve_nvg("NVGoggles_opfor"), "GEN2")
+
+    def test_the_broad_token_still_resolves_the_engine_tier(self):
+        self.assertEqual(resolve_nvg("NVGoggles"), "GEN3")
+        self.assertEqual(resolve_nvg("NVGoggles_indep"), "GEN3")
+
+    def test_the_specific_case_precedes_the_broad_case_in_source_order(self):
+        opfor = NVG.index('find "nvgoggles_opfor"')
+        broad = NVG.index('find "nvgoggles" >= 0')
+        self.assertLess(opfor, broad)
 
 
 class TestThermalDeviceValues(unittest.TestCase):
