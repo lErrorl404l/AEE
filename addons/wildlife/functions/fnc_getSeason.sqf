@@ -9,13 +9,15 @@ factor, the strength of the seasonal swing for that climate.  AEE publishes
 no season scalar and reads no engine season, so the month is the source, as
 fnc_updateSeasonalFoliage does with "date select 1".
 
-The northern-hemisphere four-season split and the per-family seasonality are
-modelling choices, UNSOURCED.  The tropical family swings little, so its
+The four seasons are the WMO meteorological seasons (December-February
+winter in the north), six months out of phase south of the equator.  The
+per-family seasonality factors are modelling choices, UNSOURCED.  The tropical family swings little, so its
 factor is low.
 
 Arguments:
   0: Number - the month, 1 to 12
   1: String - the Koppen biome code
+  2: Number - the latitude, degrees (positive north, default 45)
 
 Returns:
   Array - [season, seasonality] with season 0 winter, 1 spring, 2 summer,
@@ -24,11 +26,13 @@ Returns:
 
 params [
     ["_month", 6, [0]],
-    ["_koppen", "", [""]]
+    ["_koppen", "", [""]],
+    ["_lat", 45, [0]]
 ];
 
 private _m = (round _month) max 1;
 _m = _m min 12;
+if (_lat < 0) then { _m = ((_m + 5) mod 12) + 1; };
 
 private _season = 0;
 if ((_m >= 3) && (_m <= 5)) then { _season = 1; };

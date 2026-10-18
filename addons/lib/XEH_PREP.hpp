@@ -6,6 +6,8 @@ PREPS(settings,migrateLegacySettings);
 PREP(createPPEffect);
 PREP(destroyPPEffect);
 PREP(deterministicRandom);
+PREP(seasonalMonth);
+PREP(roughnessLength);
 PREP(pandolfMetabolicRate);
 PREP(pandolfTerrainFactor);
 PREP(unitMetabolicRate);

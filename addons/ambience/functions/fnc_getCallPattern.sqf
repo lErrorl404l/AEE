@@ -119,7 +119,7 @@ if (_isAmphibian) then {
 // The seasonal SHAPE (1.0 / 0.9 / 0.7 / 0.5) is UNSOURCED.
 private _seasonFactor = 1;
 private _seasonMonth = _month;
-if (_latitude < 0) then { _seasonMonth = ((_month + 5) mod 12) + 1; };
+if (_latitude < 0) then { _seasonMonth = ((_month + 5) mod 12) + 1; };  // = aee_lib_fnc_seasonalMonth (kept inline: pure kernel)
 if ((_isBird || _isAmphibian) && {(abs _latitude) >= 23.44}) then {
     _month = _seasonMonth;
     if ((_month >= 3) && (_month <= 5)) then { _seasonFactor = 1.0; }

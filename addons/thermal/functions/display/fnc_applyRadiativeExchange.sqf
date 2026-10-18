@@ -116,22 +116,25 @@ for "_i" from 0 to (_n - 2) do {
         private _tCold = (_aTemp min _bTemp);
         if (_tHot - _tCold < 5) then { continue; };   // negligible
 
-        // View factor: distance-falloff.  F ~ 1/(1 + d^2/A) - the
-        // fraction of the cold surface seeing the hot one.  A 1 m
-        // separation with a 1 m2 hot face gives F ~ 0.5; at 5 m it is
-        // ~0.04.
-        private _d = (_a distance _b) max 0.5;
-        private _area = 1.0;
-        private _F = 1 / (1 + ((_d * _d) / (_area max 0.5)));
+        // View factor between the facing surfaces, taken as two coaxial
+        // parallel discs of 1 m2 each (Incropera & DeWitt, Fundamentals of
+        // Heat and Mass Transfer, Table 13.2):
+        //   R = r / d,  X = 1 + (1 + R^2) / R^2,  F = (X - sqrt(X^2 - 4)) / 2
+        // 0.20 at 1 m, 0.012 at 5 m.
+        private _d = (_a distance _b) max 0.1;
+        private _r = sqrt (1.0 / pi);
+        private _rr = (_r / _d) ^ 2;
+        private _xv = 1 + ((1 + _rr) / _rr);
+        private _F = (_xv - (sqrt ((_xv ^ 2) - 4))) / 2;
 
-        // Mean emissivity of the pair (0.9 typical for painted metal).
+        // Emissivity of painted metal, 0.9 (Incropera Table A.11: paints 0.90-0.98).
         private _eps = 0.9;
         private _thK = _tHot + KELVIN_OFFSET;
         private _tcK = _tCold + KELVIN_OFFSET;
-        private _q = _eps * _sigma * (_F / 50.0) * ((_thK ^ 4) - (_tcK ^ 4));
-        // The /50 scales the W/m2 into the solver's flux convention
-        // (the two-node q_internal is the same order as the object
-        // heat sources).  Cap so a large dT cannot blow the solve.
+        // The net exchange in W/m2 of the receiving face: the solver's
+        // q_internal is a flux in W/m2, the same unit as the engine and
+        // wheel sources.  Cap so a large dT cannot blow the solve.
+        private _q = _eps * _sigma * _F * ((_thK ^ 4) - (_tcK ^ 4));
         _q = _q max 0 min 3000;
 
         // The colder object gains heat; the hotter loses it.  The pair's

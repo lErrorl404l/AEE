@@ -10,7 +10,12 @@ caller (ballistics, helicopter lift, turbulence) samples it at the point
 of interest, so the cost is paid only where a wind-sensitive model runs.
 
 Composition (per the issue spec):
-  V_local = V_global x min(S_terrain, S_building, S_canyon) + V_wake
+  V_local = V_global x S_height x min(S_terrain, S_building, S_canyon) + V_wake
+The global wind is the meteorological wind at the WMO standard height of
+10 m (WMO-No. 8 Part I ch. 5).  S_height is the neutral logarithmic profile
+(Prandtl; Garratt 1992 s.3.2), ln(z / z0) / ln(10 / z0), with the
+roughness length of the ground (aee_lib_fnc_roughnessLength), applied in the
+surface layer up to 100 m and held at its 100 m value above.
 
 Deterministic, no publicVariable, no state.  The building scan uses the
 engine's nearestObjects with a modest radius; the result is cached per
@@ -35,6 +40,11 @@ params [["_posAGL", [0, 0, 0], [[]]], ["_heightAGL", 1.5, [0]]];
 // building it is 60 m above.
 private _global = missionNamespace getVariable [QEGVAR(core,currentWind), wind];
 if !(_global isEqualType []) then { _global = wind; };
+// ─── Height: the logarithmic surface-layer profile from 10 m ─────────────
+private _z0 = [_posAGL] call EFUNC(lib,roughnessLength);
+private _zEff = ((_heightAGL max (2 * _z0)) max 0.5) min 100;
+private _heightS = ((ln (_zEff / _z0)) / (ln (10 / _z0))) max 0;
+_global = [(_global select 0) * _heightS, (_global select 1) * _heightS];
 if (_heightAGL > 50) exitWith {
     // Still check for a ridge within 200 m upwind (terrain lee effects
     // extend to 10h, which for a 100 m hill is 1000 m — but the spec

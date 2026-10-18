@@ -4,7 +4,7 @@
 Ambient biological sound intensity (0.0–1.0) for environmental audio.
 
 Models insect, bird, and cricket sound levels based on Köppen biome,
-air temperature, diurnal cycle (sunOrMoon), and northern-hemisphere
+air temperature, diurnal cycle (sunOrMoon), and hemisphere-corrected
 season (month).
 
 Stored in GVAR(biologicalAmbientIntensity).
@@ -65,12 +65,15 @@ private _tempFactor = if (_temp < 10) then {
 // use.
 private _nightFactor = [1, 0.6] select (sunOrMoon < 0.5);
 
-// ─── Season factor (northern-hemisphere) ──────────────────────────────
+// ─── Season factor (meteorological seasons, hemisphere-corrected) ─────
+// December-February is winter in the north (WMO meteorological seasons);
+// the month is shifted six months south of the equator.
+private _sMonth = [_month] call EFUNC(lib,seasonalMonth);
 private _seasonFactor = switch (true) do {
-    case (_month <= 2): { 0.3 };   // winter
-    case (_month <= 5): { 0.7 };   // spring
-    case (_month <= 8): { 1.0 };   // summer
-    default             { 0.5 };   // autumn
+    case (_sMonth == 12 || _sMonth <= 2): { 0.3 };   // winter
+    case (_sMonth <= 5): { 0.7 };   // spring
+    case (_sMonth <= 8): { 1.0 };   // summer
+    default              { 0.5 };   // autumn
 };
 
 private _intensity = _baseline * _tempFactor * _nightFactor * _seasonFactor;

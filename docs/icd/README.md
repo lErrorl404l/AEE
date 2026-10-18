@@ -21,11 +21,11 @@ Every boundary with 2 or more crossing variables has its own document. A boundar
 | Producer | Consumer | Variables | Document |
 |---|---|---|---|
 | `core` | `thermal` | 51 | [core-thermal.md](core-thermal.md) |
-| `core` | `atmos` | 48 | [core-atmos.md](core-atmos.md) |
+| `core` | `atmos` | 47 | [core-atmos.md](core-atmos.md) |
 | `core` | `weather` | 43 | [core-weather.md](core-weather.md) |
 | `core` | `actions` | 28 | [core-actions.md](core-actions.md) |
 | `core` | `persistence` | 28 | [core-persistence.md](core-persistence.md) |
-| `core` | `optics` | 19 | [core-optics.md](core-optics.md) |
+| `core` | `optics` | 20 | [core-optics.md](core-optics.md) |
 | `core` | `mobility` | 16 | [core-mobility.md](core-mobility.md) |
 | `core` | `weatherfx` | 16 | [core-weatherfx.md](core-weatherfx.md) |
 | `core` | `diagnostics` | 15 | [core-diagnostics.md](core-diagnostics.md) |

@@ -206,6 +206,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_atmos_updraftMax` | atmos | Parcel-theory updraft sqrt(2 CAPE), m/s (an upper bound) |
 | `aee_atmos_lclHeight` | atmos | Lifting condensation level of the surface parcel, m (Bolton 1980) |
 | `aee_core_iceAccretionRate` | thermal | Freezing-rain radial ice accretion, mm/h (Jones 1998 simple flux model) |
+| `aee_optics_lensTemperature` | optics | Lumped optic temperature, C (convection and sky radiation, for lens fogging) |
 | `aee_core_twilightLux` | core | Twilight horizontal illuminance, lux (Schlyter table, cloud-cut) |
 | `aee_core_moonLux` | core | Moonlight on a horizontal plane, lux (Krisciunas & Schaefer magnitude through air mass and extinction, cloud-cut) |
 | `aee_nightvision_nvgNoise` | nightvision | NVG noise |

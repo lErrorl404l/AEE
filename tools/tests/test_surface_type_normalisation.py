@@ -177,16 +177,19 @@ class TestCalculateTurbulence(unittest.TestCase):
 
     def setUp(self):
         self.code = code_only(read("turbulence"))
+        self.z0 = code_only((Path(__file__).resolve().parents[2] / "addons/lib/functions/fnc_roughnessLength.sqf").read_text(encoding="utf-8"))
 
-    def test_uses_the_davenport_roughness_lengths(self):
+    def test_uses_the_shared_davenport_roughness(self):
+        self.assertIn("EFUNC(lib,roughnessLength)", self.code)
         for token in ('["grass", 0.03]', '["forest", 1.0]', "0.0002"):
-            self.assertIn(token, self.code)
+            self.assertIn(token, self.z0)
 
     def test_does_not_use_the_vehicle_bumpiness(self):
         self.assertNotIn('"rough"', self.code)
+        self.assertNotIn('"rough"', self.z0)
 
     def test_matches_on_the_lower_case_surface_name(self):
-        self.assertIn("toLower (surfaceType _posASL)", self.code)
+        self.assertIn("toLower (surfaceType _pos)", self.z0)
 
 
 class TestClassifyBySurfaceType(unittest.TestCase):

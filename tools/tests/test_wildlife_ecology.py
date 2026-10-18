@@ -280,6 +280,10 @@ class TestGetSeason(unittest.TestCase):
         self.assertEqual(get_season(1)[0], 0)
         self.assertEqual(get_season(12)[0], 0)
 
+    def test_southern_seasons_are_reversed(self):
+        self.assertEqual(run_sqf(SEASON, [1, "Cfb", -35])[0], 2)
+        self.assertEqual(run_sqf(SEASON, [7, "Cfb", -35])[0], 0)
+
     def test_the_tropics_swing_less(self):
         self.assertLess(get_season(7, "Af")[1], get_season(7, "Cfb")[1])
 

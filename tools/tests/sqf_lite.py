@@ -1327,7 +1327,7 @@ class SqfRuntime:
             if node.op == "atan":
                 return math.degrees(math.atan(value))
             if node.op == "vectorMagnitude":
-                return math.sqrt(value[0] ** 2 + value[1] ** 2 + value[2] ** 2)
+                return math.sqrt(sum(float(c) ** 2 for c in value[:3]))
             if node.op == "vectorNormalized":
                 mag = math.sqrt(value[0] ** 2 + value[1] ** 2 + value[2] ** 2)
                 if mag == 0:

@@ -17,7 +17,9 @@ Stored in GVAR(currentCropDensity) — float 0–1
 private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 if (isNil "_biome" || _biome == "") then { _biome = "Cfb"; };
 
-private _monthIdx = ((date select 1) - 1) max 0 min 11;
+// The crop calendars below are northern-hemisphere; the seasonal month
+// shifts them six months in the south.
+private _monthIdx = (([date select 1] call EFUNC(lib,seasonalMonth)) - 1) max 0 min 11;
 
 private _cropDensity = switch (_biome) do {
     // Tropical — always dense

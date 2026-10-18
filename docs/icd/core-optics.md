@@ -3,7 +3,7 @@
 - Producer CI: `addons/core/`
 - Consumer CI: `addons/optics/`
 - Direction: one way. `core` must initialise before `optics` reads.
-- Variables crossing: 19.
+- Variables crossing: 20.
 
 A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the producer and read as `EGVAR(core,leaf)` or `QEGVAR(core,leaf)` by the consumer.
 
@@ -15,6 +15,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentSunAzimuth` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateSolarGlare.sqf:43` | UNKNOWN |
 | `aee_core_currentSunElevation` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateGreenFlash.sqf:28` | UNKNOWN |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateDewOnOptics.sqf:25` | Air temperature in C |
+| `aee_core_currentWind` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateDewOnOptics.sqf:30` | Wind vector |
 | `aee_core_empActive` | BOOL | boolean | 0 or 1 | UNKNOWN | `addons/optics/functions/fnc_applyEmpSensorDamage.sqf:33` | EMP event active flag |
 | `aee_core_empOpticsCoupledVpm` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/fnc_applyEmpSensorDamage.sqf:40` | Field coupled into the optical sensor, V/m |
 | `aee_core_empOpticsFactor` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/optics/functions/fnc_applyEmpSensorDamage.sqf:36` | Optics degradation factor now, 0..1 |
@@ -27,7 +28,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_opticsEnabled` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/optics/functions/fx/fnc_applyAtmosphericSeeingFX.sqf:8` | UNKNOWN |
 | `aee_core_snowDepth_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculatePrecipitationVisibility.sqf:31` | Snow depth in metres |
 | `aee_core_surfaceTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateMirageIntensity.sqf:24` | Surface temperature in C |
-| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateDewOnOptics.sqf:55` | Update interval in seconds |
+| `aee_core_updateInterval` | SCALAR | s | UNKNOWN | UNKNOWN | `addons/optics/functions/sensor/fnc_calculateDewOnOptics.sqf:31` | Update interval in seconds |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

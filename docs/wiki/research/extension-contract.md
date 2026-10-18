@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (907)
+### Public functions (909)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -498,7 +498,9 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_lib_fnc_pandolfTerrainFactor`
 - `aee_lib_fnc_parseMgrs`
 - `aee_lib_fnc_readState`
+- `aee_lib_fnc_roughnessLength`
 - `aee_lib_fnc_runGeoConsistency`
+- `aee_lib_fnc_seasonalMonth`
 - `aee_lib_fnc_soundPathLoss`
 - `aee_lib_fnc_unitMetabolicRate`
 - `aee_lib_fnc_utmToLatLon`
