@@ -5,8 +5,8 @@ Consistency failure line (pure).
 
 Builds the one-line human report for a failing invariant row.  It names every
 producer that disagrees with the row expectation and its value, then the row
-tolerance and the observed drift.  It is pure: no missionNamespace, no module
-global and no engine command, so the tests drive it with fixtures.
+tolerance and the observed drift.  It is pure: no missionNamespace read, no
+module global and no world query, so the tests drive it with fixtures.
 
 The string it returns is the AEE_LOG_WARN payload.  The macro adds the
 [AEE][core][WARN] tag, so the emitted line reads
@@ -44,8 +44,8 @@ private _tolerance = _row select 4;
 
 private _missing = "__aee_no_data__";
 
-// First matching pair.  A non-scalar value marks the producer absent, exactly
-// as the evaluator's own lookup does.
+// First matching pair.  A value that is not a scalar marks the producer absent,
+// exactly as the evaluator's own lookup does.
 private _lookup = {
     params ["_pairs", "_name", "_default"];
     private _out = _default;
@@ -59,13 +59,26 @@ private _lookup = {
     _out
 };
 
-// The producer entries that carry a scalar value (NUMBER or BOOL), in row
-// order.  A container (for example the per-cell aee_thermal_groundNodeStack
-// HashMap) is dropped, matching the evaluator, so the line never compares a
-// non-scalar.
+// The producer entries that carry a value (NUMBER or BOOL), in row order.  A
+// HashMap producer is reduced to the mean of its numeric values first, exactly
+// as the evaluator does, so the named entries and the drift agree with the
+// verdict for a row that names a container (aee_core_groundSurfaceTemp).
 private _present = [];
 {
     private _v = [_values, _x select 1, _missing] call _lookup;
+    if (_v isEqualType createHashMap) then {
+        private _cells = values _v;
+        private _sum = 0;
+        private _n = 0;
+        for "_i" from 0 to ((count _cells) - 1) do {
+            private _cell = _cells select _i;
+            if (_cell isEqualType 0) then {
+                _sum = _sum + _cell;
+                _n = _n + 1;
+            };
+        };
+        if (_n > 0) then { _v = _sum / _n; };
+    };
     if (_v isEqualTypeAny [0, true]) then {
         _present pushBack [_x select 0, _x select 1, _v];
     };

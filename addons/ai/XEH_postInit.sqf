@@ -8,8 +8,9 @@ if (hasInterface) then {
     [] call FUNC(initAI);
 };
 
-// Native engine-AI hearing (issue #74).  Server-side and inert until
-// aee_ai_nativeHearing is enabled; the function guards isServer.
+// Native engine-AI hearing (issue #74).  Inert until aee_ai_nativeHearing is
+// enabled; the function installs the server handler and the client path and
+// gates both on the setting per shot.
 [] call FUNC(initHearing);
 
 // Uniform per-module state dump (plan T3): one state line per second.

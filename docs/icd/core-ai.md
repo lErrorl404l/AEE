@@ -9,8 +9,8 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
-| `aee_core_currentFireRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/ai/functions/fnc_planRoute.sqf:61` | Fire spread risk 0..1 |
-| `aee_core_currentLightningRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/ai/functions/fnc_planRoute.sqf:62` | Lightning risk 0..1 |
+| `aee_core_currentFireRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/ai/functions/fnc_planRoute.sqf:74` | Fire spread risk 0..1 |
+| `aee_core_currentLightningRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/ai/functions/fnc_planRoute.sqf:75` | Lightning risk 0..1 |
 
 The default value and the update frequency are the producer's contract. They are set in the producer's CBA settings and recorded in `docs/wiki/annexes/annex-c-variable-reference.qmd`. This document records the boundary and the direction, not a second copy of the variable reference.
 

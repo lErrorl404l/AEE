@@ -209,6 +209,10 @@ BINARY_COMMANDS = {
     # Damage reads and writes used by fnc_updateDamageSystem.
     "getHitPointDamage",
     "setHitPointDamage",
+    # Network dispatch used by fnc_reportStimulus: the left operand is the
+    # argument array and the right is [function, target, ...].  The harness
+    # binds a recorder, so a test can assert what a machine sends.
+    "remoteExecCall",
 }
 
 
@@ -1168,6 +1172,14 @@ class SqfParser:
                 fn_name = self.next()
                 self.expect(")")
                 return Var(f"__EFUNC__{mod.value}_{fn_name.value}")
+            if t.value == "QFUNC":
+                # QFUNC(name) is the namespaced reference a remoteExec target
+                # takes.  The harness cannot resolve the addon prefix, so it
+                # returns a stable placeholder string, as QGVAR does.
+                self.expect("(")
+                name = self.next()
+                self.expect(")")
+                return Str(f"__QFUNC__{name.value}")
             if t.value in ("QGVAR", "QEGVAR"):
                 # QGVAR(name) is a namespaced variable name.  The harness
                 # cannot resolve the addon prefix, so it returns a stable

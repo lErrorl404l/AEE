@@ -11,12 +11,14 @@ ADDON = false;
 // their choice lists from it; the variation kernels read it.
 aee_symbology_variationFamilies = call (compile preprocessFileLineNumbers QPATHTOF(data\variation_families.sqf));
 
-#include "initSettings.inc.sqf"
-
 // ADR-032 settings migration. The NATO/OPFOR symbology settings moved here
 // from aee_optics and took the aee_symbology_* names; copy each set legacy
 // value to its new name BEFORE CBA_fnc_addSetting reads it, so a stored value
-// survives the rename. The pairs live beside the settings.
+// survives the rename.  The pairs live beside the settings.  The copy must
+// precede the ONE registration include below: it used to sit between two
+// copies of initSettings.inc.sqf, which registered every setting twice and ran
+// the copy after CBA_fnc_addSetting had already read the unset new name, so
+// nothing migrated.
 [call (compile preprocessFileLineNumbers QPATHTOF(data\settingsMigration.sqf)), "1"] call EFUNC(lib,migrateLegacySettings);
 
 #include "initSettings.inc.sqf"

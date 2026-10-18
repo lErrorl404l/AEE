@@ -27,8 +27,10 @@ private _lapse = ISA_LAPSE_RATE;
 private _denom = _temp + _lapse * _altitude + KELVIN_OFFSET;
 private _qnh = _pressure * (1 - (_lapse * _altitude / _denom)) ^ (-5.257);
 
-// Standard pressure altitude (rough approximation: ~30 ft / hPa)
-private _stdAlt = _altitude + (ISA_SEA_LEVEL_PRESSURE_HPA - _pressure) * 30;
+// Standard pressure altitude.  The readout is in metres, so the correction
+// is metres per hPa (about 8.3, see FUNC(standardAltitude)); the previous
+// factor of 30 was feet per hPa and overstated the reading by 3.6.
+private _stdAlt = [_altitude, _pressure] call FUNC(standardAltitude);
 
 // ─── Pressure trend ─────────────────────────────────────────────────────
 private _trendText = missionNamespace getVariable [QEGVAR(core,currentPressureTrend), ""];

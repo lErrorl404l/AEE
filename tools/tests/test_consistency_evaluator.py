@@ -10,6 +10,9 @@ Fixtures (no world):
   clean       every row passes, overallPass true.
   disagree    INV-2 ground-chain divergence: modulesInDisagreement 2.
   predicates  one fixture per predicate, positive and negative.
+  container   INV-2 against the real producer shape: aee_core_groundSurfaceTemp
+              is a HashMap of per-cell surface temperatures, not a scalar.
+              A row that names a container must run, not read no-data.
 
 Run: python3 -m unittest tools.tests.test_consistency_evaluator
 """
@@ -27,6 +30,19 @@ from sqf_lite import run_sqf  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
 EVAL = REPO / "addons" / "diagnostics" / "functions" / "fnc_evaluateConsistency.sqf"
+FAIL_LINE = (
+    REPO / "addons" / "diagnostics" / "functions" / "fnc_consistencyFailureLine.sqf"
+)
+# The real producer of the INV-2 ground-surface value, read only to pin the
+# fixture below to the shape the thermal addon publishes.
+GROUND_TEMP = (
+    REPO
+    / "addons"
+    / "thermal"
+    / "functions"
+    / "ground"
+    / "fnc_calculateGroundTemperature.sqf"
+)
 SQF_TABLE = (
     REPO / "addons" / "diagnostics" / "functions" / "fnc_consistencyLoadTable.sqf"
 )
@@ -77,14 +93,52 @@ RPT_NIGHT = [
     ["aee_lighting_nightClassification", 4.0],
 ]
 
+# The real producer shape for INV-2's ground-surface producer.  The thermal
+# ground chain publishes aee_core_groundSurfaceTemp as a HashMap, keyed
+# "<floor(x/5)>_<floor(y/5)>_<material>", with the solved surface temperature
+# in C as the value (fnc_calculateGroundTemperature.sqf:133-142).  A row that
+# names a container producer must resolve the container, not read no-data.
+GROUND_CELLS = {
+    "14_16_ground": 14.0,
+    "15_16_GdtAsphalt": 15.0,
+    "14_17_ground": 16.0,
+}
+# Cell key shape the writer above formats, so the fixture cannot drift from it.
+GROUND_KEY_RE = r"^-?\d+_-?\d+_[A-Za-z0-9_]+$"
+
+# Engine words sqf_lite resolves through the caller: the HashMap type literal
+# and the HashMap value list the container resolution uses.
+SQF_GLOBALS = {
+    "createHashMap": {},
+    "values": lambda mapping: list(mapping.values()),
+}
+
+
+def with_ground_map(cells):
+    """CLEAN with the ground-surface producer replaced by a per-cell map."""
+    values = [list(pair) for pair in CLEAN]
+    for pair in values:
+        if pair[0] == "aee_core_groundSurfaceTemp":
+            pair[1] = dict(cells)
+    return values
+
 
 def evaluate(values):
     table = run_sqf(SQF_TABLE, [])
-    return run_sqf(EVAL, [table, values])
+    return run_sqf(EVAL, [table, values], globals_=SQF_GLOBALS)
 
 
 def rows_by_id(result):
     return {row[0]: row for row in result[1]}
+
+
+def failure_line(values):
+    """The monitor's INV-2 failure line, driven with the same value map."""
+    table = run_sqf(SQF_TABLE, [])
+    overall, verdicts = run_sqf(EVAL, [table, values], globals_=SQF_GLOBALS)
+    row = next(entry for entry in table if entry[0] == "INV-2")
+    verdict = rows_by_id((overall, verdicts))["INV-2"]
+    return run_sqf(FAIL_LINE, [row, values, verdict], globals_=SQF_GLOBALS)
 
 
 def sqf_table():
@@ -230,6 +284,64 @@ class TestRptReplay(unittest.TestCase):
         row = rows_by_id((False, verdicts))["INV-1"]
         self.assertFalse(row[1])
         self.assertEqual(row[3], 1)
+
+
+class TestContainerProducer(unittest.TestCase):
+    """INV-2 names a HashMap producer (issue #244).
+
+    The row named aee_core_groundSurfaceTemp as a scalar producer and the
+    evaluator dropped every non-scalar, so the row read no-data for the life of
+    the process: it could never pass or fail.  These tests drive the shape the
+    thermal addon publishes rather than a synthetic number.
+    """
+
+    def test_the_fixture_is_the_shape_the_writer_publishes(self):
+        source = GROUND_TEMP.read_text(encoding="utf-8")
+        self.assertIn("createHashMap", source)
+        self.assertIn("EGVAR(core,groundSurfaceTemp)", source)
+        self.assertIn(
+            'format ["%1_%2_%3", floor ((_pos select 0) / 5), '
+            "floor ((_pos select 1) / 5), _material]",
+            source,
+        )
+        for cell in GROUND_CELLS:
+            self.assertRegex(cell, GROUND_KEY_RE)
+
+    def test_the_row_runs_on_the_map_instead_of_no_data(self):
+        overall, verdicts = evaluate(with_ground_map(GROUND_CELLS))
+        row = rows_by_id((overall, verdicts))["INV-2"]
+        self.assertNotEqual(row[2], "no-data")
+        self.assertTrue(row[1], row[2])
+        # The three cells average 15.0 C, which equals the air and the average
+        # ground temperature, so the row spread is zero.  A min or a max
+        # reduction would report a 2 C spread here.
+        self.assertEqual(row[2].split()[0], "range")
+        self.assertEqual(float(row[2].split()[1]), 0.0)
+        self.assertEqual(row[3], 0)
+
+    def test_a_diverging_map_fails_the_row(self):
+        overall, verdicts = evaluate(
+            with_ground_map({cell: 100.0 for cell in GROUND_CELLS})
+        )
+        row = rows_by_id((overall, verdicts))["INV-2"]
+        self.assertNotEqual(row[2], "no-data")
+        self.assertFalse(row[1])
+        self.assertEqual(row[3], 1)
+
+    def test_an_empty_map_is_still_no_data(self):
+        # No solved cell means no value: the row must not invent one.
+        _, verdicts = evaluate(with_ground_map({}))
+        row = rows_by_id((False, verdicts))["INV-2"]
+        self.assertEqual(row[2], "no-data")
+        self.assertTrue(row[1])
+
+    def test_the_failure_line_names_the_same_producer_the_verdict_counted(self):
+        message, drift, count = failure_line(
+            with_ground_map({cell: 100.0 for cell in GROUND_CELLS})
+        )
+        self.assertIn("core aee_core_groundSurfaceTemp=", message)
+        self.assertEqual(count, 1)
+        self.assertGreater(drift, 0)
 
 
 class TestPurity(unittest.TestCase):

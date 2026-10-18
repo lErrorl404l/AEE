@@ -22,6 +22,12 @@ The route is planned on AEE data even where the units cannot see it - the
 "seeing blind" behaviour.  No object is created and no unit is teleported: the
 driver only adds one waypoint.
 
+The waypoint commands run where the group is local, because addWaypoint on a
+remote group fails silently.  A caller on another machine gets nil rather than a
+plan that was never published, so the miss is visible to the caller (issue
+#273).  Call it where the group is simulated, which is the server for an AI
+group.
+
 Gate: the AEE AI > Pathfinding setting, default off.  Off returns nil.
 
 State read (each with a safe default; the repo's own producers):
@@ -42,7 +48,8 @@ Arguments:
 
 Returns:
   Array or nil - [position, score, speedFactor], or nil when the setting is
-  off, the group is null, or no candidate was returned.
+  off, the group is null, the group is not local, or no candidate was
+  returned.
 */
 
 params [
@@ -54,6 +61,12 @@ params [
 
 if (!(missionNamespace getVariable [QGVAR(pathfinding), false])) exitWith { nil };
 if (isNull _group) exitWith { nil };
+
+// Locality guard (issue #273).  addWaypoint must run where the group is
+// simulated: on a remote group it fails silently, so the caller would receive a
+// plan that no engine ever applied.  nil says the call landed on the wrong
+// machine.
+if !(local _group) exitWith { nil };
 
 // ── AEE state (the repo's own published values) ────────────────────────────
 private _passability = [QEGVAR(mobility,routePassability), 1, 1] call EFUNC(lib,readState);

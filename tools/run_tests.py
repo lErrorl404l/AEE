@@ -53,6 +53,10 @@ def main():
         "tools/tests/test_dense_gas.py",
         "tools/tests/test_blowing_snow.py",
         "tools/tests/test_addon_dependencies.py",
+        # Addon-local gates: the core environment tick's own toggles (issues
+        # #288, #296) and the actions altimeter readout (issue #294).
+        "tools/tests/test_env_tick_gates.py",
+        "tools/tests/test_actions_altimeter.py",
         "tools/tests/test_ground_frost.py",
         "tools/tests/test_orphan_wiring.py",
         "tools/tests/test_atmos.py",

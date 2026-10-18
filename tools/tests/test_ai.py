@@ -101,6 +101,63 @@ class TestDisturbanceField(unittest.TestCase):
         self.assertAlmostEqual(sample([], key([5, 5, 0]), 0, 45), 0.0)
 
 
+REPORT = AI / "fnc_reportStimulus.sqf"
+
+
+def report(pos, magnitude, now, last_report=None, rate=4):
+    """Run fnc_reportStimulus with the machine's two apply paths recorded.
+
+    The harness cannot reach the engine, so remoteExecCall is bound to a
+    recorder and `[_payload] call FUNC(receiveStimulus)` resolves to a local
+    recorder.  Together they are the two ways one machine can apply a stimulus,
+    so a duplicate is visible as two applies with no early return.
+    """
+    ns = {} if last_report is None else {"__QGVAR__lastReport": last_report}
+    remote: list = []
+    local: list = []
+    run_sqf(
+        REPORT,
+        [pos, magnitude],
+        globals_={
+            "missionNamespace": ns,
+            "CBA_missionTime": now,
+            "AI_BROADCAST_RATE": rate,
+            "remoteExecCall": lambda payload, spec: remote.append((payload, spec)),
+            "__FUNC__receiveStimulus": lambda payload: local.append(payload),
+        },
+    )
+    return ns, remote, local
+
+
+class TestReportStimulusSelfApply(unittest.TestCase):
+    """Issue #270: the shooter's own field must hold its own gunfire."""
+
+    def test_the_caller_applies_the_stimulus_to_its_own_field(self):
+        _, _, local = report([100, 200, 0], 0.5, 10.0)
+        self.assertEqual(len(local), 1, "the caller never applied its stimulus")
+
+    def test_the_caller_applies_the_broadcast_payload(self):
+        _, remote, local = report([100, 200, 0], 0.5, 10.0)
+        self.assertEqual(local[0], remote[0][0][0])
+
+    def test_the_caller_applies_it_once_and_not_twice(self):
+        """The broadcast excludes the caller, so the self-apply is the only one."""
+        _, remote, local = report([100, 200, 0], 0.5, 10.0)
+        self.assertEqual(len(local), 1)
+        self.assertEqual(remote[0][1][1], -2, "the broadcast includes the caller")
+
+    def test_a_rate_limited_call_applies_nothing_on_any_machine(self):
+        """The rate limit must not leave the caller's field ahead of the others."""
+        _, remote, local = report([100, 200, 0], 0.5, 0.1, last_report=0.0, rate=4)
+        self.assertEqual(local, [])
+        self.assertEqual(remote, [])
+
+    def test_a_call_after_the_window_applies_again(self):
+        _, remote, local = report([100, 200, 0], 0.5, 0.25, last_report=0.0, rate=4)
+        self.assertEqual(len(local), 1)
+        self.assertEqual(len(remote), 1)
+
+
 def _seed_field(now, cells, magnitude=1.0):
     # Distinct cells at a 50 m step, so each key is unique.
     return [
@@ -287,7 +344,9 @@ class TestRouteExposure(unittest.TestCase):
         self.assertAlmostEqual(exposure(5000, 1000), 0.0)
 
     def test_half_the_range_follows_koschmieder(self):
-        self.assertAlmostEqual(exposure(500, 1000), (math.exp(-3.912 * 0.5) - 0.02) / 0.98, places=5)
+        self.assertAlmostEqual(
+            exposure(500, 1000), (math.exp(-3.912 * 0.5) - 0.02) / 0.98, places=5
+        )
 
     def test_a_zero_range_is_not_observable(self):
         self.assertAlmostEqual(exposure(500, 0), 0.0)
@@ -365,6 +424,24 @@ class TestRouteSourceContracts(unittest.TestCase):
         text = (AI_DIR / "config.cpp").read_text(encoding="utf-8")
         for dep in ("aee_mobility", "aee_persistence", "aee_vision"):
             self.assertIn(f'"{dep}"', text, f"config.cpp omits {dep}")
+
+    def test_the_waypoint_is_guarded_by_locality(self):
+        """Issue #273: addWaypoint must run where the group is local.
+
+        The waypoint commands fail silently on a remote group, so the driver
+        bails with nil unless the group is local.  The guard must precede the
+        waypoint, or the silent failure it exists to prevent still happens.
+        """
+        text = PLAN_ROUTE.read_text(encoding="utf-8")
+        code = text.split("*/", 1)[-1]
+        code = "\n".join(line.split("//", 1)[0] for line in code.splitlines())
+        self.assertIn("if !(local _group) exitWith { nil };", code)
+        self.assertLess(
+            code.index("local _group"),
+            code.index("addWaypoint"),
+            "the locality guard must precede the waypoint call",
+        )
+        self.assertIn("the group is not local", text)
 
 
 if __name__ == "__main__":

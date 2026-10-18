@@ -41,3 +41,8 @@
 // the issue, not a new model.
 #define AI_HEARING_REVEAL_MIN 1.0
 #define AI_HEARING_REVEAL_MAX 1.4
+
+// The hearing scan rate limit, scans per second per machine.  A performance
+// policy value, not a physical quantity: it caps the frame cost of the
+// per-shot full-radius scan in fnc_revealSound under automatic fire.
+#define AI_HEARING_SCAN_RATE 4
