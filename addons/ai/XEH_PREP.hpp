@@ -20,5 +20,6 @@ PREP(survivalAction);
 PREP(survivalNeed);
 PREP(dumpState);
 PREP(hearingRange);
+PREP(hearingScanDue);
 PREP(revealSound);
 PREP(initHearing);

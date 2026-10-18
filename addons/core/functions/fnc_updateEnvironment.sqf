@@ -291,13 +291,16 @@ BEGIN_COUNTER(ballistics);
 END_COUNTER(ballistics);
 
 // ─── Radio / Comms ──────────────────────────────────────────────────────────
-// Sea-surface temperature feeds the evaporation-duct model (issue #37);
-// compute it before the propagation index reads it.
+// Sea-surface temperature has one producer, here.  It belongs to the Maritime
+// module: it feeds the evaporation-duct model (issue #37) and the maritime
+// internal-wave and underwater-acoustics drivers, which read it from their own
+// 1 Hz loops.  The radio toggle must not gate it (issue #296).  It stays above
+// the radio block so the propagation index reads a fresh value.
+if (GVAR(maritimeEnabled)) then {
+    [] call EFUNC(maritime,calculateSeaSurfaceTemperature);
+};
 BEGIN_COUNTER(radio);
 if (GVAR(radioPropagationEnabled)) then {
-    if (GVAR(maritimeEnabled)) then {
-        [] call EFUNC(maritime,calculateSeaSurfaceTemperature);
-    };
     [] call EFUNC(radio,calculateRadioPropagation);
 };
 END_COUNTER(radio);
@@ -479,8 +482,13 @@ if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateSeaState);
     // Engine wave rendering follows the sea state (issue #141).
     [] call EFUNC(maritime,updateEngineWaves);
-    [] call EFUNC(magnetism,calculateCompassDeviation);
 };
+// Declination and the local ferrous deflection are properties of the
+// geomagnetic field at the observer, not of the sea, and magnetism has no
+// enable switch of its own: it is a kernel set its callers drive.  Ungated, so
+// the Maritime toggle cannot silence the declination for the whole mod
+// (issue #288).  It also publishes the value the map's north rose draws.
+[] call EFUNC(magnetism,calculateCompassDeviation);
 
 // ─── Visual / Gameplay ────────────────────────────────────────────────────
 if (GVAR(opticsEnabled)) then {

@@ -317,5 +317,77 @@ class TestEveryModuleMigrates(unittest.TestCase):
         )
 
 
+class TestMigrationPrecedesRegistration(unittest.TestCase):
+    """Issue #249, the second half: the copy must precede the registration.
+
+    A module that includes initSettings.inc.sqf before the migration call
+    registers the new names first, so CBA_fnc_addSetting reads the unset name
+    and the copy lands too late.  symbology did exactly that, with the call
+    wedged between two copies of the include: every symbology setting
+    registered twice and no legacy value migrated.
+    """
+
+    @staticmethod
+    def preinit_lines() -> dict[str, list[str]]:
+        return {
+            path.parent.name: path.read_text(encoding="utf-8").splitlines()
+            for path in sorted(ADDONS.glob("*/XEH_preInit.sqf"))
+        }
+
+    def test_every_module_with_a_table_calls_the_migration(self):
+        """A count lock: the call sites and the pair tables are the same set.
+
+        A spot check passes while a module is skipped; this fails on the one
+        module left out, in either direction.
+        """
+        callers = {
+            module
+            for module, lines in self.preinit_lines().items()
+            if any("migrateLegacySettings" in line for line in lines)
+        }
+        self.assertEqual(
+            callers,
+            set(migration_tables()),
+            "the modules that call the migration and the modules that declare "
+            "a pair table differ",
+        )
+
+    def test_every_migration_call_precedes_the_settings_include(self):
+        late = []
+        for module, lines in self.preinit_lines().items():
+            call = [
+                index
+                for index, line in enumerate(lines)
+                if "migrateLegacySettings" in line and line.strip().startswith("[")
+            ]
+            register = [
+                index
+                for index, line in enumerate(lines)
+                if "#include" in line and "initSettings.inc.sqf" in line
+            ]
+            if call and (not register or call[0] > register[0]):
+                late.append(module)
+        self.assertEqual(
+            late, [], f"modules that register their settings before migrating: {late}"
+        )
+
+    def test_the_settings_include_appears_once(self):
+        """A second include re-registers every setting under the same name."""
+        repeated = {}
+        for module, lines in self.preinit_lines().items():
+            count = sum(
+                1
+                for line in lines
+                if "#include" in line and "initSettings.inc.sqf" in line
+            )
+            if count > 1:
+                repeated[module] = count
+        self.assertEqual(
+            repeated,
+            {},
+            f"modules that include the settings more than once: {repeated}",
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -209,6 +209,10 @@ BINARY_COMMANDS = {
     # Damage reads and writes used by fnc_updateDamageSystem.
     "getHitPointDamage",
     "setHitPointDamage",
+    # Network dispatch used by fnc_reportStimulus: the left operand is the
+    # argument array and the right is [function, target, ...].  The harness
+    # binds a recorder, so a test can assert what a machine sends.
+    "remoteExecCall",
 }
 
 
@@ -515,7 +519,13 @@ BUILTINS: dict[str, Any] = {
     "set": _sqf_set,
     "createHashMapFromArray": lambda pairs: {p[0]: p[1] for p in pairs},
     "isKindOf": _sqf_isKindOf,
-    "param": lambda a, spec: (a[int(spec[0])] if isinstance(a, list) and 0 <= int(spec[0]) < len(a) and a[int(spec[0])] is not None else (spec[1] if len(spec) > 1 else None)),
+    "param": lambda a, spec: (
+        a[int(spec[0])]
+        if isinstance(a, list)
+        and 0 <= int(spec[0]) < len(a)
+        and a[int(spec[0])] is not None
+        else (spec[1] if len(spec) > 1 else None)
+    ),
     "find": lambda h, n: (
         float(h.find(n))
         if isinstance(h, str)
@@ -1050,6 +1060,14 @@ class SqfParser:
                 fn_name = self.next()
                 self.expect(")")
                 return Var(f"__EFUNC__{mod.value}_{fn_name.value}")
+            if t.value == "QFUNC":
+                # QFUNC(name) is the namespaced reference a remoteExec target
+                # takes.  The harness cannot resolve the addon prefix, so it
+                # returns a stable placeholder string, as QGVAR does.
+                self.expect("(")
+                name = self.next()
+                self.expect(")")
+                return Str(f"__QFUNC__{name.value}")
             if t.value in ("QGVAR", "QEGVAR"):
                 # QGVAR(name) is a namespaced variable name.  The harness
                 # cannot resolve the addon prefix, so it returns a stable

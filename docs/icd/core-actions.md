@@ -20,7 +20,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | `aee_core_currentIcingSeverity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:55` | Airframe icing 0..1 |
 | `aee_core_currentLightningRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:38` | Lightning risk 0..1 |
 | `aee_core_currentPressure` | SCALAR | hPa | UNKNOWN | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:13` | Barometric pressure in hPa |
-| `aee_core_currentPressureTrend` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/actions/functions/fnc_openAltimeter.sqf:34` | Pressure trend value |
+| `aee_core_currentPressureTrend` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/actions/functions/fnc_openAltimeter.sqf:36` | Pressure trend value |
 | `aee_core_currentTemperature` | SCALAR | degrees C | UNKNOWN | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:12` | Air temperature in C |
 | `aee_core_currentTideDescription` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:60` | Tide description |
 | `aee_core_currentTideOffset_m` | SCALAR | m | UNKNOWN | UNKNOWN | `addons/actions/functions/fnc_calculateWeatherReport.sqf:61` | Tide offset in metres |

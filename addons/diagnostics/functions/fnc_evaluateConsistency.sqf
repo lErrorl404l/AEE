@@ -7,7 +7,8 @@ It takes the invariant table (data/consistency/invariants.json, compiled in by
 fnc_consistencyLoadTable) and a value map, and returns one verdict per row.
 It reads NO world state: there is no missionNamespace getVariable and no
 engine query.  It calls no other module's function.  The only commands used
-are the pure numeric operators abs, min, max, count, select, str and log.
+are the pure numeric operators abs, min, max, count, select, str, log and
+values, and the type tests isEqualType and isEqualTypeAny.
 
 Arguments:
   0: ARRAY - the invariant table.  Each row is
@@ -15,7 +16,9 @@ Arguments:
   1: ARRAY - the value map: a list of [variableName, value] pairs.  A name
              absent from the map marks that producer no-data.  The map may
              also carry predicate bounds and references under supplied keys
-             (see below); these are data, not world reads.
+             (see below); these are data, not world reads.  A producer that
+             publishes a HashMap of numbers resolves to the mean of them, so a
+             container producer is a value the row compares, not no-data.
 
 Supplied keys the map may carry:
   aee_thermal_skyBandTempC_max   NUMBER  the night sky band ceiling,
@@ -46,11 +49,11 @@ params [
     ["_values", [], [[]]]
 ];
 
-// No-data marker.  A producer value is present only when it is a scalar
-// (NUMBER or BOOL).  A missing producer resolves to this string, and a
-// container (for example the per-cell aee_thermal_groundNodeStack HashMap) is
-// treated the same way, so a non-scalar value can never reach a numeric
-// comparison and the evaluator never throws on it.
+// No-data marker.  A producer value enters the comparison only as a scalar
+// (NUMBER or BOOL).  A missing producer resolves to this string.  A HashMap
+// producer is reduced to the mean of its numeric values first, so the per-cell
+// aee_core_groundSurfaceTemp ground surface map is compared rather than
+// dropped, and no container ever reaches a numeric comparison.
 private _missing = "__aee_no_data__";
 
 // Look up a named value in the [name, value] pair list.  A small linear scan
@@ -86,6 +89,30 @@ while { _r < _rowCount } do {
     while { _p < _producerCount } do {
         private _pair = _producers select _p;
         private _v = [_values, _pair select 1, _missing] call _lookup;
+        // A producer that publishes a HashMap rather than a scalar is reduced
+        // to the mean of its numeric values.  The live case is the per-cell
+        // aee_core_groundSurfaceTemp ground surface map: the ground chain
+        // publishes the solved surface temperature of every grid cell it has
+        // touched, so the mean is the scene ground-surface temperature.  It is
+        // the reduction thermal already applies to its per-object map for
+        // aee_core_avgVehicleTemp.  A container that stayed a container left
+        // every row that names one permanently no-data (issue #244).
+        if (_v isEqualType createHashMap) then {
+            private _cells = values _v;
+            private _sum = 0;
+            private _n = 0;
+            for "_i" from 0 to ((count _cells) - 1) do {
+                private _cell = _cells select _i;
+                if (_cell isEqualType 0) then {
+                    _sum = _sum + _cell;
+                    _n = _n + 1;
+                };
+            };
+            // A map with no numeric cell stays a container and the test below
+            // marks the producer no-data: no solved cell means no value, never
+            // an invented one.
+            if (_n > 0) then { _v = _sum / _n; };
+        };
         if (_v isEqualTypeAny [0, true]) then { _vals pushBack _v; };
         _p = _p + 1;
     };

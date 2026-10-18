@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (908)
+### Public functions (910)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -135,6 +135,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_actions_fnc_dumpState`
 - `aee_actions_fnc_openAltimeter`
 - `aee_actions_fnc_openWeatherReport`
+- `aee_actions_fnc_standardAltitude`
 - `aee_ai_fnc_agentDecide`
 - `aee_ai_fnc_agentRegister`
 - `aee_ai_fnc_agentSense`
@@ -147,6 +148,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_ai_fnc_disturbanceSample`
 - `aee_ai_fnc_dumpState`
 - `aee_ai_fnc_hearingRange`
+- `aee_ai_fnc_hearingScanDue`
 - `aee_ai_fnc_initAI`
 - `aee_ai_fnc_initHearing`
 - `aee_ai_fnc_planRoute`

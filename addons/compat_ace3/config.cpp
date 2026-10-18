@@ -12,6 +12,11 @@ class CfgPatches {
             "aee_core",
             "aee_actions",
             "ace_medical",
+            // The vitals calls in fnc_integrateMedical live in
+            // ace_medical_status, which ace_medical does not pull.
+            "ace_medical_status",
+            // ace_medical_engine needs no entry: nothing here names one of
+            // its symbols, and ace_medical_status already requires it.
             "ace_weather",
             "cba_main",
             "cba_xeh"

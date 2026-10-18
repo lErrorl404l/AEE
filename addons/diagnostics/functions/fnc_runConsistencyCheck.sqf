@@ -36,16 +36,18 @@ Example: [] call aee_diagnostics_fnc_runConsistencyCheck
 private _table = [] call FUNC(consistencyLoadTable);
 
 // ── Value map from the published producers ─────────────────────────────────
-// Only scalars (NUMBER or BOOL) enter the map.  A missing producer resolves to
-// the no-data string, and a container (for example the per-cell
-// aee_thermal_groundNodeStack HashMap) is dropped, so the evaluator never
-// compares a non-scalar and the monitor never throws.
+// Each present producer enters the map unchanged, container or scalar; the
+// evaluator resolves it, and a HashMap producer (the per-cell
+// aee_core_groundSurfaceTemp ground surface map) becomes the mean of its
+// numeric values.  Filtering the type here dropped the container, which left
+// every invariant that names one permanently no-data (issue #244).  A producer
+// that is unset resolves to the no-data sentinel string and stays out.
 private _values = [];
 {
     private _producers = _x select 2;
     {
         private _v = missionNamespace getVariable [_x select 1, "__aee_no_data__"];
-        if (_v isEqualTypeAny [0, true]) then {
+        if (!(_v isEqualType "")) then {
             _values pushBack [(_x select 1), _v];
         };
     } forEach _producers;
