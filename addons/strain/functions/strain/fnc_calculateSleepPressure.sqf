@@ -44,11 +44,15 @@ peak in the LATE AFTERNOON / EARLY EVENING, the "wake maintenance zone"
 Sleepiness = S - C (sleep pressure minus circadian wake drive).
 A high value means sleepy.
 
-Input:  [_hoursAwake, _sleepDecayHours, _localHour, _sleeping]
-        _hoursAwake       - hours since last sleep onset (real)
+Input:  [_hoursAwake, _sleepDecayHours, _localHour, _sleeping, _processS0]
+        _hoursAwake       - hours awake in this step
         _sleepDecayHours  - hours of sleep elapsed in current sleep bout
         _localHour        - local wall-clock hour (0-24, fractional ok)
         _sleeping         - true while asleep
+        _processS0        - S at the start of the step, 0..1, or -1 (default)
+                            for a fresh bout (issue #314).  Passing the value
+                            last returned makes S continuous across the
+                            sleep/wake boundary.
 Output: [processS, processC, sleepiness]
          processS  0..1 homeostatic pressure (higher = sleepier)
          processC  -A..+A circadian wake drive (higher = more alert)
@@ -56,7 +60,8 @@ Output: [processS, processC, sleepiness]
 */
 
 params [["_hoursAwake", 0, [0]], ["_sleepDecayHours", 0, [0]],
-        ["_localHour", 12, [0]], ["_sleeping", false, [true]]];
+        ["_localHour", 12, [0]], ["_sleeping", false, [true]],
+        ["_processS0", -1, [0]]];
 
 private _TAU_S = 18.2;
 private _TAU_D = 4.2;
@@ -66,14 +71,25 @@ private _AMP   = missionNamespace getVariable [QGVAR(circadianAmplitude), 0.12];
 if !(_AMP isEqualType 0) then { _AMP = 0.12; };
 private _PHI   = 12.0;
 
+// S at the start of this step.  -1 means no carried state: a fresh wake
+// bout starts rested (S_min) and a fresh sleep bout starts at S_max, the
+// pre-#314 behaviour.  A caller that owns the state passes the value it was
+// last given, so a short rest decays from the current pressure instead of
+// restarting at S_max (issue #314).
+private _startS = if (_processS0 < 0) then {
+    [_S_MIN, _S_MAX] select _sleeping
+} else {
+    ((_processS0 max _S_MIN) min _S_MAX)
+};
+
 // ─── Process S ────────────────────────────────────────────────────────────
 private _processS = if (_sleeping) then {
     // Decay during sleep: S falls from its value at sleep onset toward
     // S_min with tau_d.  _sleepDecayHours is the elapsed sleep time.
-    _S_MIN + (_S_MAX - _S_MIN) * exp (-_sleepDecayHours / _TAU_D)
+    _S_MIN + (_startS - _S_MIN) * exp (-_sleepDecayHours / _TAU_D)
 } else {
     // Rise during wake: S saturates toward S_max with tau_s.
-    _S_MAX - (_S_MAX - _S_MIN) * exp (-_hoursAwake / _TAU_S)
+    _S_MAX - (_S_MAX - _startS) * exp (-_hoursAwake / _TAU_S)
 };
 
 // ─── Process C (circadian wake drive, peak ~18:00) ────────────────────────
