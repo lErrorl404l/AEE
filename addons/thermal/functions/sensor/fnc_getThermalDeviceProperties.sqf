@@ -55,13 +55,18 @@ Returns [netdDegC, resX, resY, weightKg, refreshHz, cooled, band]
   cooled    - 1 cooled (InSb/MCT), 0 uncooled (microbolometer)
   band      - the detector band token: "lwir" (8-14 um) or "mwir" (3-5 um)
 */
-params [["_unit", player, [objNull]], ["_weapon", objNull, [objNull]]];
+params [["_unit", player, [objNull]], ["_vehicle", objNull, [objNull]]];
 if (isNull _unit) exitWith { [0.05, 640, 480, 1.5, 30, 0, "lwir"] };
 
-// The thermal device: the weapon's optics slot (mounted thermal sight)
-// or the unit's NVG (fused/goggle thermal).
+// The thermal device: the unit's optics slot (mounted thermal sight) or the
+// unit's NVG (fused/goggle thermal).  primaryWeaponItems takes a soldier, and
+// the caller passed `vehicle _viewer`, so the slot read came back empty and
+// every mounted sight fell back to the default device (issue #261 twin).
+// The optic is resolved from the unit alone, so the second argument is not
+// read.  It stays in the signature because the call sites pass it and the
+// function is part of the addon's public PREP surface.
 private _optic = "";
-if (!isNull _weapon) then { _optic = primaryWeaponItems _weapon param [2, ""]; };
+if (!isNull _unit) then { _optic = primaryWeaponItems _unit param [2, ""]; };
 if (_optic == "") then { _optic = hmd _unit; };
 if (_optic == "") exitWith { [0.05, 640, 480, 1.5, 30, 0, "lwir"] };
 

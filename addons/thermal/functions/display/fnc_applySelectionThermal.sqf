@@ -348,7 +348,10 @@ if (_mode == "EXIT") then {
     if (_thermalOn && {!isNull _viewer}) then {
         private _wp = vehicle _viewer;
         private _optic = "";
-        if (!isNull _wp) then { _optic = primaryWeaponItems _wp param [2, ""]; };
+        // primaryWeaponItems takes a soldier, not the viewer's vehicle, so
+        // the slot is read from the viewer (issue #261 twin).  The cache key
+        // is then the same slot both device resolvers read.
+        if (!isNull _viewer) then { _optic = primaryWeaponItems _viewer param [2, ""]; };
         if (_optic == "") then { _optic = hmd _viewer; };
         // The researched sight physics.  The optic slot the device block reads
         // is the same slot the day-optic classifier keys on, so the resolved

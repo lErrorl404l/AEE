@@ -44,6 +44,9 @@ class TestThermalWiring(unittest.TestCase):
     PAINT = (
         REPO / "addons/thermal/functions/display/fnc_applySelectionThermal.sqf"
     ).read_text(encoding="utf-8")
+    RESOLVER = (
+        REPO / "addons/thermal/functions/sensor/fnc_getThermalDeviceProperties.sqf"
+    ).read_text(encoding="utf-8")
 
     def test_netd_from_device(self):
         # The selection caller resolves the device NETD (0.025 cooled /
@@ -56,6 +59,20 @@ class TestThermalWiring(unittest.TestCase):
                 REPO / "addons/thermal/functions/solver/fnc_calculateThermalNoise.sqf"
             ).exists()
         )
+
+    def test_the_device_slot_is_read_from_a_unit_not_a_vehicle(self):
+        # Same root cause as the optics layer (issue #261): primaryWeaponItems
+        # takes a soldier, and the caller passes `vehicle _viewer`.  The old
+        # read always came back empty, so every mounted thermal sight fell
+        # back to the default device row.
+        self.assertIn("primaryWeaponItems _unit", self.RESOLVER)
+        self.assertNotIn("primaryWeaponItems _weapon", self.RESOLVER)
+
+    def test_the_caller_reads_the_viewers_own_weapon_slot(self):
+        # The caller resolves its per-optic cache key from the same slot, so
+        # it must pass the viewer and not the viewer's vehicle.
+        self.assertIn("primaryWeaponItems _viewer", self.PAINT)
+        self.assertNotIn("primaryWeaponItems _wp", self.PAINT)
 
 
 class TestOpticKnowledgeLayer(unittest.TestCase):
