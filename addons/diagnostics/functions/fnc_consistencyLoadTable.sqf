@@ -54,7 +54,7 @@ private _table = [
         15.0,
         "warn",
         "derived",
-        "Air, ground-surface and average-ground temperatures agree within 15 C. aee_thermal_groundNodeStack is a per-cell HashMap store documented in Annex C, not a scalar, so it is excluded from the numeric comparison."
+        "Air, ground-surface and average-ground temperatures agree within 15 C. aee_core_groundSurfaceTemp is the per-cell container the ground chain publishes: a HashMap of solved surface temperature in C, keyed by 5 m cell and material. The evaluator resolves the container to the mean of its numeric cells and the row compares that value. An empty map stays no-data."
     ],
     [
         "INV-5",

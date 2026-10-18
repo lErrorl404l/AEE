@@ -2,10 +2,16 @@
 //
 // The runtime monitor runs on the server, but the evaluator it drives is pure:
 // it reads no world state and calls no module function.  This probe loads the
-// compiled-in invariant table and drives the evaluator with an agreeing map
-// and a disagreeing map, the same fixtures the Python kernel test uses.  The
-// disagreeing map splits the ground chain, so INV-2 must raise exactly two of
-// its three scalar producers and no other row may fail.
+// compiled-in invariant table, drives the REAL INV-2 ground-surface producer
+// (aee_thermal_fnc_calculateGroundTemperature) and hands the evaluator the
+// REAL aee_core_groundSurfaceTemp container that producer publishes, then
+// drives a disagreeing map.  The disagreeing map drops the air temperature
+// away from the real container, so INV-2 must raise exactly two of its
+// producers and no other row may fail.
+//
+// The ground-surface value is never a synthetic scalar.  A made-up number
+// passes the row without ever exercising the container resolution the row
+// depends on, which is the false assurance the unit test carried.
 //
 // The probe caps its own work at 200 ms and prints the diag_tickTime
 // measurement.  It renders nothing and needs no player.
@@ -14,9 +20,13 @@
 
 private _loadTable = missionNamespace getVariable ["aee_diagnostics_fnc_consistencyLoadTable", nil];
 private _evaluate = missionNamespace getVariable ["aee_diagnostics_fnc_evaluateConsistency", nil];
+private _groundProducer = missionNamespace getVariable ["aee_thermal_fnc_calculateGroundTemperature", nil];
 
 if (isNil "_loadTable" || {isNil "_evaluate"}) exitWith {
     diag_log text "[P101] [FAIL] consistency kernels not compiled (loadTable/evaluate)";
+};
+if (isNil "_groundProducer") exitWith {
+    diag_log text "[P101] [FAIL] ground-surface producer not compiled (calculateGroundTemperature)";
 };
 
 private _pass = 0;
@@ -25,38 +35,32 @@ private _notes = [];
 
 private _table = [] call _loadTable;
 
-// The agreeing map: every invariant holds.  It is a night scene, so INV-1's
-// night-scoped comparison runs: the eye scene illuminance (100 lx) equals the
-// core illuminance (100 lx) at a sun elevation below the horizon.
-private _agree = [
-    ["aee_core_illuminanceLux", 100],
-    ["aee_eye_eyeSceneLux", 100],
-    ["aee_core_currentTemperature", 15],
-    ["aee_core_groundSurfaceTemp", 14],
-    ["aee_core_avgGroundTemp", 15],
-    ["aee_core_currentSunElevation", -30],
-    ["aee_thermal_skyBandTempC", -20],
-    ["aee_core_lightIsNight", true],
-    ["aee_lighting_nightClassification", 4]
-];
+// Drive the REAL producer at a real map position.  The thermal wrapper solves
+// the 4-layer node stack and publishes aee_core_groundSurfaceTemp as a
+// per-cell HashMap of the solved surface temperature in C, keyed
+// "<floor(x/5)>_<floor(y/5)>_<material>" (fnc_calculateGroundTemperature.sqf,
+// lines 133-142).  The probe reads that real container and invents no value.
+private _probePos = [worldSize / 2, worldSize / 2, 0];
+[_probePos] call _groundProducer;
+private _groundContainer = missionNamespace getVariable ["aee_core_groundSurfaceTemp", nil];
 
-// The disagreeing map: the air temperature drops away from the two ground
-// surface values, so INV-2 raises two of its three scalar producers.
-private _disagree = +_agree;
-{
-    private _pair = _disagree select _forEachIndex;
-    switch (_pair select 0) do {
-        case "aee_core_currentTemperature": {
-            _disagree set [_forEachIndex, ["aee_core_currentTemperature", 0]];
-        };
-        case "aee_core_groundSurfaceTemp": {
-            _disagree set [_forEachIndex, ["aee_core_groundSurfaceTemp", 100]];
-        };
-        case "aee_core_avgGroundTemp": {
-            _disagree set [_forEachIndex, ["aee_core_avgGroundTemp", 100]];
-        };
+// The container must be real: a HashMap carrying at least one numeric cell.
+// A missing or empty container reads no-data, which PASSES, so the probe would
+// prove nothing.  This guard is the whole point of the change.
+private _containerOk = false;
+private _groundMean = 0;
+if (!(isNil "_groundContainer") && {_groundContainer isEqualType createHashMap}) then {
+    private _cells = values _groundContainer;
+    private _numeric = 0;
+    private _sum = 0;
+    {
+        if (_x isEqualType 0) then { _sum = _sum + _x; _numeric = _numeric + 1; };
+    } forEach _cells;
+    if (_numeric > 0) then {
+        _containerOk = true;
+        _groundMean = _sum / _numeric;
     };
-} forEach _disagree;
+};
 
 private _t0 = diag_tickTime;
 
@@ -72,20 +76,56 @@ if (_layoutOk) then {
     _notes pushBack format ["table layout %1 rows", count _table];
 };
 
-// 2. The agreeing map passes every row.
-private _agreeResult = [_table, _agree] call _evaluate;
-private _agreeOk = _agreeResult select 0;
-{
-    if !(_x select 1) then { _agreeOk = false; };
-} forEach (_agreeResult select 1);
-if (_agreeOk) then {
+// 2. The REAL producer published a resolvable container.
+if (_containerOk) then {
     _pass = _pass + 1;
 } else {
     _fail = _fail + 1;
-    _notes pushBack "agreeing map raised a row";
+    _notes pushBack "ground-surface container missing or empty";
 };
 
-// 3. The disagreeing map fails and raises exactly INV-2.
+// The agreeing map.  It is a night scene, so INV-1's night-scoped comparison
+// runs: the eye scene illuminance (100 lx) equals the core illuminance
+// (100 lx) at a sun elevation below the horizon.  INV-2's ground-surface
+// producer is the REAL container; the air and average-ground references are
+// pinned to the container's real mean, so the row resolves and agrees.
+private _agree = [
+    ["aee_core_illuminanceLux", 100],
+    ["aee_eye_eyeSceneLux", 100],
+    ["aee_core_currentTemperature", _groundMean],
+    ["aee_core_groundSurfaceTemp", _groundContainer],
+    ["aee_core_avgGroundTemp", _groundMean],
+    ["aee_core_currentSunElevation", -30],
+    ["aee_thermal_skyBandTempC", -20],
+    ["aee_core_lightIsNight", true],
+    ["aee_lighting_nightClassification", 4]
+];
+
+// 3. The agreeing map passes every row AND INV-2 resolves the container.  A
+//    no-data row also passes, so the detail is checked, not only the pass.
+private _agreeResult = [_table, _agree] call _evaluate;
+private _agreeOk = _agreeResult select 0;
+private _inv2Detail = "no-data";
+{
+    if !(_x select 1) then { _agreeOk = false; };
+    if ((_x select 0) == "INV-2") then { _inv2Detail = _x select 2; };
+} forEach (_agreeResult select 1);
+if (_agreeOk && {(_inv2Detail find "range") == 0}) then {
+    _pass = _pass + 1;
+} else {
+    _fail = _fail + 1;
+    _notes pushBack format ["agreeing map pass %1 INV-2 detail %2", _agreeOk, _inv2Detail];
+};
+
+// 4. The disagreeing map drops the air temperature 100 C below the real
+//    container, so INV-2 fails and raises exactly two producers.  The
+//    container is left unchanged: the real value, not a synthetic stand-in.
+private _disagree = +_agree;
+{
+    if ((_x select 0) == "aee_core_currentTemperature") then {
+        _disagree set [_forEachIndex, ["aee_core_currentTemperature", _groundMean - 100]];
+    };
+} forEach _disagree;
 private _disResult = [_table, _disagree] call _evaluate;
 private _verdicts = _disResult select 1;
 private _failed = [];
@@ -99,7 +139,7 @@ if (!(_disResult select 0) && {_failed isEqualTo ["INV-2"]}) then {
     _notes pushBack format ["failed rows %1", str _failed];
 };
 
-// 4. INV-2 names two modules in disagreement.
+// 5. INV-2 names two producers in disagreement.
 private _inv2 = [];
 {
     if ((_x select 0) == "INV-2") then { _inv2 = _x; };
@@ -116,7 +156,7 @@ if ((count _inv2) == 4) then {
     _notes pushBack "INV-2 row missing";
 };
 
-// 5. A missing producer is no-data, not a failure: the evaluator never throws.
+// 6. A missing producer is no-data, not a failure: the evaluator never throws.
 private _noData = [_table, [["aee_core_illuminanceLux", 100]]] call _evaluate;
 if (_noData select 0) then {
     _pass = _pass + 1;
@@ -133,10 +173,10 @@ if (_ms < 200) then {
     _notes pushBack format ["work %1 ms (cap 200)", _ms];
 };
 
-diag_log text format ["[P101] work %1 ms for 6 checks", _ms];
+diag_log text format ["[P101] work %1 ms for 7 checks", _ms];
 
 if (_fail == 0) then {
-    diag_log text format ["[P101] [PASS] consistency: table, agreement, ground-chain disagreement and no-data (%1 checks)", _pass];
+    diag_log text format ["[P101] [PASS] consistency: table, real ground container, agreement, ground-chain disagreement and no-data (%1 checks)", _pass];
 } else {
     diag_log text format ["[P101] [FAIL] consistency: %1 passed, %2 failed: %3", _pass, _fail, str _notes];
 };

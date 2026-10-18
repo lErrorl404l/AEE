@@ -303,9 +303,9 @@ advance tick (`diag_tickTime`).  A water position stores the same six values
 all set to the water temperature, so one shape covers land and water.  The
 stack has memory: a caller advances it by the real elapsed time since the
 last advance, and later callers in the same tick read the same state.  The
-consistency harness therefore reads the map, not a single number, and takes
-the surface layer (index 0) as the ground-surface estimate for INV-2.  Its
-Annex C row is added by task 18.
+consistency harness does not read this map: its cells are per-layer arrays,
+not scalars.  INV-2 reads `aee_core_groundSurfaceTemp` instead, the per-cell map
+of the solved surface temperature the wrapper publishes. The evaluator resolves that container to the mean of its numeric cells.
 
 ## MGRS and positioning constants
 
