@@ -48,6 +48,22 @@ SQF_TABLE = (
 )
 JSON_TABLE = REPO / "data" / "consistency" / "invariants.json"
 
+# The real INV-2 container and the producer that publishes it.  The container
+# is a per-cell HashMap of solved ground-surface temperature.  The node-stack
+# state (aee_thermal_groundNodeStack) holds per-layer arrays, so it is not a
+# scalar and not the row's container.
+CONTAINER = "aee_core_groundSurfaceTemp"
+GROUND_PRODUCER = "aee_thermal_fnc_calculateGroundTemperature"
+STALE_CONTAINER = "aee_thermal_groundNodeStack"
+PROBE = (
+    REPO
+    / "tests"
+    / "docker"
+    / "missions"
+    / "aee_test.Stratis"
+    / "aee_p101_consistency_probe.sqf"
+)
+
 ROW_ORDER = [
     "id",
     "name",
@@ -342,6 +358,82 @@ class TestContainerProducer(unittest.TestCase):
         self.assertIn("core aee_core_groundSurfaceTemp=", message)
         self.assertEqual(count, 1)
         self.assertGreater(drift, 0)
+
+
+class TestInv2ContainerRecord(unittest.TestCase):
+    """The INV-2 record names the container the evaluator resolves.
+
+    The row once called aee_thermal_groundNodeStack the excluded container.
+    That name is the node-stack state, whose cells are per-layer arrays, so it
+    is neither a scalar nor the row's container.  The row's real container is
+    aee_core_groundSurfaceTemp, and the evaluator now RESOLVES a container
+    producer to the mean of its numeric cells rather than excluding it.  The
+    JSON row and the SQF twin must say exactly that, byte for byte.
+    """
+
+    def _row(self):
+        rows = json.loads(JSON_TABLE.read_text(encoding="utf-8"))
+        return next(row for row in rows if row["id"] == "INV-2")
+
+    def test_the_row_names_the_container_it_resolves(self):
+        note = self._row()["note"]
+        self.assertIn(CONTAINER, note)
+        self.assertNotIn(STALE_CONTAINER, note)
+
+    def test_the_row_says_resolved_not_excluded(self):
+        note = self._row()["note"]
+        self.assertIn("resolves", note)
+        self.assertIn("mean", note)
+        self.assertNotIn("excluded", note)
+
+    def test_the_container_is_a_named_producer(self):
+        producers = [name for _, name in self._row()["producers"]]
+        self.assertIn(CONTAINER, producers)
+
+    def test_the_sqf_note_literal_is_byte_identical(self):
+        note = self._row()["note"]
+        sqf = SQF_TABLE.read_text(encoding="utf-8")
+        # The note carries no quote and no backslash, so the SQF literal is the
+        # note text wrapped in one pair of double quotes.  This pins the
+        # byte-level guarantee behind TestLockstep's parsed comparison.
+        self.assertIn(f'"{note}"', sqf)
+        self.assertEqual(next(row for row in sqf_table() if row[0] == "INV-2")[7], note)
+
+
+class TestP101ProbeDrivesTheRealProducer(unittest.TestCase):
+    """The headless INV-2 probe feeds the REAL container, not a scalar.
+
+    The probe once fed INV-2 a synthetic scalar (aee_core_groundSurfaceTemp =
+    14).  A made-up number passes the row without ever exercising the container
+    resolution the row depends on, so it is the same false assurance the unit
+    test carried.  The probe must drive the real producer and hand the
+    evaluator the real, per-cell container that producer publishes.
+    """
+
+    def setUp(self):
+        self.code = strip_comments(PROBE.read_text(encoding="utf-8"))
+
+    def test_it_calls_the_real_producer(self):
+        self.assertIn(GROUND_PRODUCER, self.code)
+        self.assertIn("[_probePos] call _groundProducer", self.code)
+
+    def test_it_reads_the_real_container(self):
+        self.assertIn(f'["{CONTAINER}", nil]', self.code)
+        self.assertIn(f'["{CONTAINER}", _groundContainer]', self.code)
+
+    def test_it_asserts_the_container_is_resolvable(self):
+        # A missing or empty container reads no-data, which PASSES, so the
+        # guard is what stops the probe from proving nothing.
+        self.assertIn("createHashMap", self.code)
+        self.assertIn("_containerOk", self.code)
+
+    def test_it_supplies_no_synthetic_scalar(self):
+        self.assertNotRegex(self.code, rf'\["{CONTAINER}",\s*[-+]?\d')
+
+    def test_it_checks_inv2_resolved_the_container(self):
+        # The agreeing branch must read the INV-2 detail, not only the pass: a
+        # no-data row would pass too.
+        self.assertIn('_inv2Detail find "range"', self.code)
 
 
 class TestPurity(unittest.TestCase):
