@@ -6,10 +6,14 @@ AEE_MODULE_POST_INIT
 // A new body has no heat acclimatisation or altitude adaptation.  The
 // acclimatisation state is owned by aee_altitude and published under its
 // name, so reset it there.
-["AEE_OnPlayerKilled", {
-    params ["_unit", "_killer", "_instigator", "_useEffects"];
+//
+// CBA 3.19.0 defines no CBA_fnc_addPlayerKilledHandler.  The BIS player
+// route takes any engine unit event and re-attaches to the new unit after
+// respawn, so "Killed" is the defined path (issue #302).  The event passes
+// [_unit, _killer], and the reset needs neither.
+["AEE_OnPlayerKilled", "Killed", {
     missionNamespace setVariable [QEGVAR(altitude,acclimatizationPercent), 0];
-}] call CBA_fnc_addPlayerKilledHandler;
+}] call CBA_fnc_addBISPlayerEventHandler;
 
 // Uniform per-module state dump, one line a second.
 [FUNC(dumpState), 1] call CBA_fnc_addPerFrameHandler;
