@@ -71,7 +71,11 @@ class TestFoliagePhenology(unittest.TestCase):
         src = FOLIAGE.read_text(encoding="utf-8")
         self.assertIn("Sitch", src)
         self.assertIn("_gdd5 / 200", src)
-        self.assertIn("< 5", src)
+        # The 5 C base is the subtrahend of the degree-day term, not a
+        # comparison: a month at or below the base contributes nothing
+        # because the excess is clamped at zero. An earlier draft of this
+        # assertion looked for a bare "< 5", which the kernel never held.
+        self.assertIn("([_m] call _meanT) - 5) max 0", src)
 
     def test_uses_the_gaussen_dry_month_on_the_station_normals(self):
         src = FOLIAGE.read_text(encoding="utf-8")

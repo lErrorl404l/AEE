@@ -126,8 +126,14 @@ if (_raingreen || _summergreen) then {
             // with the Cooper (1969) declination, in minutes.
             private _lat = ([] call EFUNC(lib,getWorldLocation)) select 0;
             if !(_lat isEqualType 0) then { _lat = 45; };
-            private _doy = (([0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334] select _calMonthIdx)
-                + ([31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] select _calMonthIdx) / 2);
+            // Month lengths, mean February: the only calendar constant here.
+            // The day of year is accumulated from it, so no day-of-year row
+            // exists to drift out of step with the month lengths.
+            private _monthDays = [31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            private _doy = (_monthDays select _calMonthIdx) / 2;
+            for "_d" from 0 to (_calMonthIdx - 1) do {
+                _doy = _doy + (_monthDays select _d);
+            };
             private _dec = 23.44 * (sin (360 * (284 + _doy) / 365));
             private _cosH = -((tan _lat) * (tan _dec));
             private _daylMin = switch (true) do {
@@ -152,7 +158,7 @@ if (_raingreen || _summergreen) then {
                 private _m = (_coldest + 1) mod 12;
                 private _guard = 0;
                 while { _guard < 12 } do {
-                    private _days = [31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] select _m;
+                    private _days = _monthDays select _m;
                     _gdd5 = _gdd5 + ((([_m] call _meanT) - 5) max 0) * _days;
                     if (_m == _calMonthIdx) exitWith {};
                     _m = (_m + 1) mod 12;
