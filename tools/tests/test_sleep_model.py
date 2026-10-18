@@ -21,11 +21,13 @@ Run: python3 -m unittest tools/tests/test_sleep_model.py
 """
 
 import math
+import sys
 import unittest
 from pathlib import Path
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _ADDONS = _REPO_ROOT / "addons"
+
 
 def _read_recursive(base, name):
     """Read an SQF function file, resolving categorised subfolders (issue
@@ -50,12 +52,20 @@ FLOOR = 0.30
 CIRCADIAN_SWING = 0.15
 
 
-def sleep_pressure(hours_awake, sleep_hours, local_hour, sleeping):
-    """Mirror of fnc_calculateSleepPressure.sqf."""
-    if sleeping:
-        process_s = S_MIN + (S_MAX - S_MIN) * math.exp(-sleep_hours / TAU_D)
+def sleep_pressure(hours_awake, sleep_hours, local_hour, sleeping, process_s0=None):
+    """Mirror of fnc_calculateSleepPressure.sqf.
+
+    process_s0 carries process S across a step (issue #314).  None keeps the
+    fresh-bout form: awake starts at S_min, asleep at S_max.
+    """
+    if process_s0 is None:
+        start_s = S_MAX if sleeping else S_MIN
     else:
-        process_s = S_MAX - (S_MAX - S_MIN) * math.exp(-hours_awake / TAU_S)
+        start_s = min(S_MAX, max(S_MIN, process_s0))
+    if sleeping:
+        process_s = S_MIN + (start_s - S_MIN) * math.exp(-sleep_hours / TAU_D)
+    else:
+        process_s = S_MAX - (S_MAX - start_s) * math.exp(-hours_awake / TAU_S)
     # SQF sin() takes degrees; the mirror converts to radians.
     process_c = AMP * math.sin(math.radians(360 * (local_hour - PHI) / 24))
     return process_s, process_c, process_s - process_c
@@ -213,6 +223,185 @@ class TestSQFSyncSleep(unittest.TestCase):
             ["wakefulnessHours", "sleepHours", "ACE_isUnconscious", "restingSeconds"],
             "sleep state accumulation and detection",
         )
+
+
+# ─── Shipped-SQF carry (issue #314) ─────────────────────────────────────────
+# The tracker and the kernel under test.  A red run points these two at
+# `git show HEAD:<path>` copies; nothing else needs to change.
+_FATIGUE_SQF = (
+    _ADDONS / "physiology" / "functions" / "state" / "fnc_updateFatigueState.sqf"
+)
+_PRESSURE_SQF = (
+    _ADDONS / "strain" / "functions" / "strain" / "fnc_calculateSleepPressure.sqf"
+)
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from sqf_lite import run_sqf  # noqa: E402
+
+REST_GATE_S = 300  # fnc_updateFatigueState: 5 min of prone stillness
+
+
+def step_tracker(state, unit, delta_hours, local_hour=23.0):
+    """Mirror of fnc_updateFatigueState.sqf.
+
+    The harness cannot parse the tracker: it has no `stance`/`speed` unary
+    command and no `in` operator (tools/tests/sqf_lite.py, blocked by
+    ownership).  The wrapper's control flow is mirrored here; the pressure
+    itself comes from the SHIPPED kernel, and the source locks in
+    TestTheTrackerSourceLocksTheCarry keep the mirror honest.
+    """
+    process_s0 = state.get("__QGVAR__processS", 0.0)
+    wake_h = state.get("__QGVAR__wakefulnessHours", 0.0)
+    sleep_h = state.get("__QGVAR__sleepHours", 0.0)
+
+    resting = (
+        unit.get("stance") in ("PRONE", "CROUCH")
+        and unit.get("speed", 0.0) < 0.1
+        and (local_hour >= 21 or local_hour <= 6)
+    )
+    rest_sec = unit.get("__QGVAR__restingSeconds", 0.0)
+    rest_sec = rest_sec + delta_hours * 3600 if resting else 0.0
+    unit["__QGVAR__restingSeconds"] = rest_sec
+    sleeping = rest_sec > REST_GATE_S
+
+    if sleeping:
+        sleep_h += delta_hours
+    else:
+        sleep_h = 0.0
+        wake_h += delta_hours
+
+    process_s, process_c, sleepiness = run_sqf(
+        _PRESSURE_SQF,
+        [delta_hours, sleep_h, local_hour, sleeping, process_s0],
+        {"missionNamespace": {}},
+    )
+    if sleeping:
+        wake_h = wake_h * (process_s / process_s0) if process_s0 > 1e-6 else 0.0
+
+    state["__QGVAR__processS"] = process_s
+    state["__QGVAR__wakefulnessHours"] = wake_h
+    state["__QGVAR__sleepHours"] = sleep_h
+    state["__QGVAR__sleepiness"] = sleepiness
+    state["__QGVAR__fatigueFactor"] = fatigue_factor(
+        sleepiness, process_s, process_c, wake_h
+    )
+    return state
+
+
+class TestProcessSContinuity(unittest.TestCase):
+    """S is continuous across the sleep/wake boundary (Daan 1984).
+
+    The kernel must decay from the value it is given, not from S_max.
+    """
+
+    def _kernel(self, hours_awake, sleep_hours, sleeping, s0):
+        out = run_sqf(
+            _PRESSURE_SQF,
+            [hours_awake, sleep_hours, 23.0, sleeping, s0],
+            {"missionNamespace": {}},
+        )
+        return out[0]
+
+    def test_sleep_decays_from_the_carried_pressure(self):
+        s24 = 1 - math.exp(-24 / TAU_S)
+        got = self._kernel(0.0, 1 / 12, True, s24)
+        self.assertAlmostEqual(got, s24 * math.exp(-(1 / 12) / TAU_D), places=5)
+
+    def test_a_five_minute_rest_returns_little(self):
+        # Issue #314 vector, kernel level: 24 h of pressure survives a 5 min
+        # rest.  A fresh bout would restart near S_max (0.98 at 5 min).
+        s24 = 1 - math.exp(-24 / TAU_S)
+        carried = self._kernel(0.0, 1 / 12, True, s24)
+        fresh = self._kernel(0.0, 1 / 12, True, -1)
+        self.assertGreater(carried, 0.70)
+        self.assertLess(carried, 0.80)
+        self.assertGreater(fresh, 0.97)
+        self.assertLess(carried, fresh - 0.20)
+
+    def test_a_fresh_bout_keeps_the_published_form(self):
+        # Default S0: today's published constants, unchanged.
+        self.assertAlmostEqual(
+            self._kernel(18.2, 0.0, False, -1), 1 - math.exp(-1), places=4
+        )
+        self.assertAlmostEqual(self._kernel(0.0, 4.2, True, -1), math.exp(-1), places=4)
+
+    def test_a_carried_value_is_clamped_to_the_published_range(self):
+        self.assertLessEqual(self._kernel(0.0, 0.0, False, 5.0), 1.0)
+        self.assertGreaterEqual(self._kernel(0.0, 0.0, True, -0.5), 0.0)
+
+
+class TestTheTrackerCarriesTheState(unittest.TestCase):
+    """fnc_updateFatigueState runs from the real SQF (issue #314)."""
+
+    REST_TICK = 1 / 60  # 60 s, the tick that crosses the 300 s rest gate
+
+    def _run(self, steps):
+        state = {}
+        unit = {}
+        for delta_hours, posture in steps:
+            unit["stance"] = posture
+            step_tracker(state, unit, delta_hours)
+        return state, None
+
+    def test_a_five_minute_rest_does_not_reset_a_day_awake(self):
+        steps = [(0.4, "STAND")] * 60 + [(self.REST_TICK, "PRONE")] * 6
+        ns, _ = self._run(steps)
+        s = ns["__QGVAR__processS"]
+        wake_h = ns["__QGVAR__wakefulnessHours"]
+        fatigue = ns["__QGVAR__fatigueFactor"]
+        # 24 h awake leaves S at 0.73; 6 minutes of rest must not clear it.
+        self.assertGreater(s, 0.55)
+        self.assertLess(s, 0.90)
+        self.assertGreater(wake_h, 20.0)
+        self.assertLess(fatigue, 0.75)
+
+    def test_long_sleep_drives_the_pressure_toward_min(self):
+        steps = [(0.4, "STAND")] * 60 + [(0.5, "PRONE")] * 48
+        ns, _ = self._run(steps)
+        self.assertLess(ns["__QGVAR__processS"], 0.01)
+        self.assertGreater(ns["__QGVAR__wakefulnessHours"], -1.0)
+        self.assertLess(ns["__QGVAR__wakefulnessHours"], 1.0)
+        self.assertAlmostEqual(ns["__QGVAR__fatigueFactor"], 1.0, places=2)
+
+    def test_wake_debt_falls_as_the_pressure_is_discharged(self):
+        # A short rest gives back about 2% (exp(-t/tau_d)), not 100%.
+        steps = [(0.4, "STAND")] * 60 + [(self.REST_TICK, "PRONE")] * 6
+        ns, _ = self._run(steps)
+        debt = ns["__QGVAR__wakefulnessHours"]
+        self.assertAlmostEqual(
+            debt / 24.1, math.exp(-(self.REST_TICK / TAU_D)), places=2
+        )
+
+
+class TestTheTrackerSourceLocksTheCarry(unittest.TestCase):
+    """The shipped tracker must carry S and must not reset the debt."""
+
+    def setUp(self):
+        self.src = _read_recursive(_ADDONS, "fnc_updateFatigueState.sqf")
+
+    def test_the_pressure_is_the_persisted_state(self):
+        self.assertIn("missionNamespace getVariable [QGVAR(processS), 0]", self.src)
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(processS), _processS]", self.src
+        )
+
+    def test_the_carried_pressure_is_passed_to_the_kernel(self):
+        self.assertIn(
+            "[_deltaHours, _sleepH, _localHour, _sleeping, _processS0]", self.src
+        )
+
+    def test_a_sleep_tick_no_longer_zeroes_the_wake_debt(self):
+        # This exact branch was the #314 defect.
+        self.assertNotIn(
+            "if (_sleeping) then {\n    _wakeH = 0;\n    _sleepH = _sleepH + _deltaHours;",
+            self.src,
+        )
+        self.assertIn("_wakeH = _wakeH * (_processS / _processS0);", self.src)
+
+    def test_the_mirror_uses_the_shipped_kernel(self):
+        # A mirror that re-implemented the pressure would drift silently.
+        self.assertIs(step_tracker.__globals__["run_sqf"], run_sqf)
+        self.assertIn("_PRESSURE_SQF", step_tracker.__code__.co_names)
 
 
 if __name__ == "__main__":

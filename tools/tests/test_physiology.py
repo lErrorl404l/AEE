@@ -9,10 +9,14 @@ Run: python3 -m unittest tools/tests/test_physiology.py
 
 import math
 import re
+import sys
 import unittest
 from pathlib import Path
 
 _ADDONS = Path(__file__).resolve().parents[2] / "addons"
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from sqf_lite import SqfParser, SqfRuntime, tokenize  # noqa: E402
 
 
 def _read_physiology(name):
@@ -43,8 +47,15 @@ def isa_pressure_hpa(alt_m):
 def _sqf_tuc_table():
     """The TUC table, read from the SQF so the mirror cannot drift."""
     src = _read_physiology("fnc_calculateHypoxia.sqf")
-    block = src[src.index("private _tucTable = [") : src.index("];", src.index("private _tucTable"))]
-    return [[float(a), float(b)] for a, b in re.findall(r"\[([0-9.]+),\s*([0-9.]+)\]", block)]
+    block = src[
+        src.index("private _tucTable = [") : src.index(
+            "];", src.index("private _tucTable")
+        )
+    ]
+    return [
+        [float(a), float(b)]
+        for a, b in re.findall(r"\[([0-9.]+),\s*([0-9.]+)\]", block)
+    ]
 
 
 TUC_TABLE = _sqf_tuc_table()
@@ -98,7 +109,9 @@ def uv_index(solar_elevation, ozone_du, altitude_m, overcast, doy=172):
     """Mirror of fnc_calculateUVIndex.sqf (Madronich 2007 clear sky, the
     Earth-Sun distance term, WHO altitude term, overcast CMF 0.35)."""
     mu0 = max(0.0, math.sin(math.radians(solar_elevation)))
-    uv_clear = 12.50 * mu0 ** 2.42 * (max(ozone_du, 100) / 300) ** -1.23 if mu0 > 0 else 0.0
+    uv_clear = (
+        12.50 * mu0**2.42 * (max(ozone_du, 100) / 300) ** -1.23 if mu0 > 0 else 0.0
+    )
     dist = 1 + 0.033 * math.cos(math.radians(360 * (doy - 3) / 365))
     alt_factor = 1 + (altitude_m / 1000) * 0.1
     cloud_factor = 1 - overcast * 0.65
@@ -120,9 +133,15 @@ class TestHypoxiaTUC(unittest.TestCase):
     def test_tuc_matches_faa_ac_61_107b(self):
         # Each published altitude falls inside its published TUC range.
         for alt_ft, lo_s, hi_s in (
-            (18000, 1200, 1800), (22000, 600, 600), (25000, 180, 300),
-            (28000, 150, 180), (30000, 60, 120), (35000, 30, 60),
-            (40000, 15, 20), (45000, 9, 15), (50000, 9, 12),
+            (18000, 1200, 1800),
+            (22000, 600, 600),
+            (25000, 180, 300),
+            (28000, 150, 180),
+            (30000, 60, 120),
+            (35000, 30, 60),
+            (40000, 15, 20),
+            (45000, 9, 15),
+            (50000, 9, 12),
         ):
             value = tuc(alt_ft * FT + 0.5)
             self.assertGreaterEqual(value, lo_s * 0.97, f"{alt_ft} ft: {value:.0f} s")
@@ -243,7 +262,15 @@ class TestSQFSyncPhysiology(unittest.TestCase):
     def test_hypoxia_constants(self):
         self._assert_in_sqf(
             "fnc_calculateHypoxia.sqf",
-            ["44330.8", "ISA_SEA_LEVEL_PRESSURE_HPA", "226.321", "5486", "1500", "15240", "10.5"],
+            [
+                "44330.8",
+                "ISA_SEA_LEVEL_PRESSURE_HPA",
+                "226.321",
+                "5486",
+                "1500",
+                "15240",
+                "10.5",
+            ],
             "ISA hypsometric and FAA TUC table",
         )
 
@@ -303,6 +330,7 @@ class TestUVIndex(unittest.TestCase):
 DEHYDRATION_AMPLIFIES_HYPOXIA_CAP = 1.25  # Gopinathan 1988
 HYPOXIA_AMPLIFIES_DEHYDRATION_CAP = 1.3  # Anand 1996
 
+
 class TestDriftLockCrossSensitivity(unittest.TestCase):
     """Pins the cross-sensitivity caps AND their behavioural consequence."""
 
@@ -331,6 +359,90 @@ class TestDriftLockCrossSensitivity(unittest.TestCase):
         text = _read_physiology("fnc_applyCrossSensitivity.sqf")
         self.assertIn("1.25", text)
         self.assertIn("1.3", text)
+
+
+# ─── CBA player-event registration (issue #302) ─────────────────────────────
+PHYSIOLOGY_POST_INIT = _ADDONS / "physiology" / "XEH_postInit.sqf"
+
+# The CBA functions this component may call.  Checked against CBA A3 3.19.0
+# build 260808: cba_events.pbo and cba_common.pbo, extracted with Mikero
+# extractpbo on 2026-10-18.  CBA defines no CBA_fnc_addPlayerKilledHandler,
+# which is the #302 defect: the call aborted and the reset never registered.
+CBA_3_19_0_FUNCS = {
+    "CBA_fnc_addBISPlayerEventHandler",
+    "CBA_fnc_addEventHandler",
+    "CBA_fnc_addPerFrameHandler",
+    "CBA_fnc_addPlayerEventHandler",
+    "CBA_fnc_currentUnit",
+}
+
+# The exact shipped registration.  "Killed" is an engine unit event; the CBA
+# BIS player route installs it on the controlled unit and re-attaches after
+# respawn.  The handler reads neither argument, so no params line is needed.
+KILLED_REGISTRATION = re.compile(
+    r'\["AEE_OnPlayerKilled",\s*"Killed",\s*(\{.*?\})\s*\]'
+    r"\s*call\s+CBA_fnc_addBISPlayerEventHandler;",
+    re.S,
+)
+
+
+def _code(text):
+    """Source with comments removed.  AEE comments name the very functions
+    these tests scan for, so a raw-text scan matches prose first."""
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
+    return "\n".join(re.sub(r"//.*$", "", line) for line in text.splitlines())
+
+
+class TestKilledHandlerRegistration(unittest.TestCase):
+    """The acclimatisation reset must register through a CBA function that
+    exists, on an event the engine raises (issue #302)."""
+
+    def setUp(self):
+        self.src = PHYSIOLOGY_POST_INIT.read_text(encoding="utf-8")
+        self.code = _code(self.src)
+
+    def test_every_cba_function_used_is_one_cba_defines(self):
+        used = set(re.findall(r"\bCBA_fnc_\w+", self.code))
+        self.assertTrue(used, "the postInit registers no CBA handler")
+        unknown = sorted(used - CBA_3_19_0_FUNCS)
+        self.assertFalse(unknown, f"not defined by CBA 3.19.0: {unknown}")
+
+    def test_the_reset_registers_on_the_killed_event(self):
+        self.assertNotIn("CBA_fnc_addPlayerKilledHandler", self.code)
+        self.assertIsNotNone(
+            KILLED_REGISTRATION.search(self.code),
+            "the killed-handler registration moved or changed event",
+        )
+
+    def test_the_registered_handler_resets_acclimatisation(self):
+        """Run the shipped registration and the shipped handler body."""
+        match = KILLED_REGISTRATION.search(self.code)
+        self.assertIsNotNone(match, "the killed-handler registration moved")
+        ns = {}
+        captured = {}
+        rt = SqfRuntime({"missionNamespace": ns})
+
+        def add_bis(key, event_type, code, ignore_virtual=True):
+            captured.update(key=key, event_type=event_type)
+            # The engine raises Killed with [_unit, _killer].
+            rt.push()
+            rt.set("_this", [{}, {}])
+            try:
+                rt.run(code.body)
+            finally:
+                rt.pop()
+            return True
+
+        rt.globals["CBA_fnc_addBISPlayerEventHandler"] = add_bis
+        rt.run(SqfParser(tokenize(match.group(0))).parse_program())
+
+        self.assertEqual(captured["key"], "AEE_OnPlayerKilled")
+        self.assertEqual(captured["event_type"], "Killed")
+        self.assertEqual(
+            ns.get("__QEGVAR__altitude_acclimatizationPercent"),
+            0,
+            "the handler did not reset the acclimatisation state",
+        )
 
 
 if __name__ == "__main__":
