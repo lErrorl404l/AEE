@@ -126,26 +126,70 @@ def fire_area(area, ros, interval):
     return max(0.0, min(1e6, area))
 
 
-def slope_risk(slope_deg):
-    """Mirror of the slope curve in fnc_calculateAvalancheRisk.sqf (Schweizer 2003)."""
-    return max(0.0, min(1.0, 1 - abs(slope_deg - 35) / 20))
+STANDARD_GRAVITY = 9.80665  # addons/lib/constants.hpp
+WEAK_LAYER_MIN_KPA = 0.2  # Fohn, Camponovo & Krusi 1998, Ann. Glaciol. 26:1-6
+WEAK_LAYER_MAX_KPA = 3.0
+SLAB_DENSITY_KGM3 = 300.0  # aee_persistence_slabDensity default
+SLAB_DEPTH_M = 1.0  # aee_persistence_slabDepth default
+RELEASE_SLOPE_BAND_DEG = (30.0, 45.0)  # Schweizer et al. 2003
 
 
-def avalanche_risk(slope_deg, wind_ms, temp_c, rain, ground_state="Snow"):
-    """Mirror of the combined risk in fnc_calculateAvalancheRisk.sqf."""
+def avalanche_shear_stress_kpa(
+    slope_deg, slab_depth_m=SLAB_DEPTH_M, rho_kgm3=SLAB_DENSITY_KGM3
+):
+    """Mirror of the slab shear stress in fnc_calculateAvalancheRisk.sqf.
+
+    tau = rho*g*h*sin(psi), returned in kPa.  The SQF sin takes degrees.
+    """
+    return (
+        rho_kgm3
+        * STANDARD_GRAVITY
+        * slab_depth_m
+        * math.sin(math.radians(slope_deg))
+        / 1000.0
+    )
+
+
+def weak_layer_strength_kpa(setting=WEAK_LAYER_MIN_KPA):
+    """Mirror of the clamped weak-layer strength in fnc_calculateAvalancheRisk."""
+    if isinstance(setting, bool) or not isinstance(setting, (int, float)):
+        setting = WEAK_LAYER_MIN_KPA
+    return max(WEAK_LAYER_MIN_KPA, min(WEAK_LAYER_MAX_KPA, setting))
+
+
+def avalanche_stability_index(shear_stress_kpa, strength_kpa):
+    """Mirror of S = tau_strength / tau.  A flat slope is stable at 99."""
+    if shear_stress_kpa <= 0:
+        return 99.0
+    return strength_kpa / shear_stress_kpa
+
+
+def avalanche_risk(
+    slope_deg,
+    strength_kpa=WEAK_LAYER_MIN_KPA,
+    snow24_cm=0.0,
+    temp_c=-10.0,
+    slab_depth_m=SLAB_DEPTH_M,
+    rho_kgm3=SLAB_DENSITY_KGM3,
+    ground_state="Snow",
+):
+    """Mirror of fnc_calculateAvalancheRisk.sqf (McClung & Schaerer slab physics).
+
+    Release needs S < 1 and a trigger: 30 cm of snow in 24 h, or air above
+    2 C.  Wind, warming and rain are not graded factors.  The kernel has none.
+    """
     if ground_state not in ("Snow", "Frozen"):
         return 0.0
-    risk = slope_risk(slope_deg)
-    wind_factor = 0
-    if wind_ms > 8:
-        wind_factor = min((wind_ms - 8) / 20, 0.2)
-    temp_factor = 0
-    if temp_c > 0:
-        temp_factor = min(((temp_c - 0) / 20) * 0.15, 0.15)
-    rain_factor = 0
-    if ground_state == "Snow" and rain > 0:
-        rain_factor = min(rain * 0.15, 0.15)
-    return min(risk + wind_factor + temp_factor + rain_factor, 1.0)
+    tau = avalanche_shear_stress_kpa(slope_deg, slab_depth_m, rho_kgm3)
+    s = avalanche_stability_index(tau, weak_layer_strength_kpa(strength_kpa))
+    trigger = snow24_cm >= 30.0 or temp_c > 2.0
+    if s < 1.0:
+        risk = (1.0 - s) * (0.6 + 0.4 * trigger)
+    elif s < 1.5:
+        risk = (1.5 - s) * 0.4
+    else:
+        risk = 0.0
+    return min(risk, 1.0)
 
 
 def freeze_thaw(fdd, tdd, temp_c, interval=5):
@@ -419,30 +463,111 @@ class TestFireSpread(unittest.TestCase):
 
 
 class TestAvalanche(unittest.TestCase):
-    def test_slope_peak(self):
-        self.assertEqual(slope_risk(35), 1.0)
+    """The mirror is the McClung & Schaerer shear-stress model, not the
+    four-factor heuristic: tau = rho*g*h*sin(psi), S = tau_strength/(tau/1000),
+    release at S < 1 with a trigger (30 cm of snow in 24 h, or air above 2 C).
 
-    def test_slope_tails(self):
-        self.assertEqual(slope_risk(15), 0.0)
-        self.assertEqual(slope_risk(55), 0.0)
+    Deleted on 2026-10-18 with commit 7710b6cc, which removed the warm and
+    rain penalties from the kernel (the wind factor had already gone with the
+    model): test_warm_increases_risk asserted the graded warm-up factor, and
+    the mirror no longer takes a wind or a rain input.  Reasons: no published
+    weak-layer shear-strength coefficient exists for any of the three, and the
+    graded warm-up now stands only as the binary 2 C trigger, which
+    test_temperature_is_a_trigger_not_a_gradient covers.
 
-    def test_slope_midpoint(self):
-        self.assertAlmostEqual(slope_risk(25), 0.5)
+    The slope weight is no longer a triangle peaking at 35 deg with zero tails
+    at 15 and 55 deg: shear stress rises with sin(psi), so test_slope_tails now
+    asserts the loaded tail.  35 deg stays the release-prone reference
+    because it sits in the published 30-45 deg release band (Schweizer et al.
+    2003).
+    """
 
-    def test_no_snow_zero(self):
-        # No snowpack: the SQF exits with risk 0.
-        self.assertEqual(avalanche_risk(35, 0, 0, 0, "Normal"), 0.0)
+    def test_flat_slope_is_stable(self):
+        # A flat slope carries no shear stress: S is maximal, nothing releases.
+        self.assertEqual(avalanche_shear_stress_kpa(0.0), 0.0)
+        self.assertEqual(avalanche_stability_index(0.0, WEAK_LAYER_MIN_KPA), 99.0)
+        self.assertEqual(avalanche_risk(0.0, 0.2, 50.0, 5.0), 0.0)
 
-    def test_warm_increases_risk(self):
-        # Rapid warm-up adds a temperature factor; cold air adds none.
+    def test_35_deg_is_the_release_reference(self):
+        # Retarget of test_slope_peak: 35 deg is inside the published release
+        # band, so a 1.0 kPa weak layer releases there and holds on a 10 deg
+        # slope, the shallow end below the band.
+        self.assertLessEqual(RELEASE_SLOPE_BAND_DEG[0], 35.0)
+        self.assertLessEqual(35.0, RELEASE_SLOPE_BAND_DEG[1])
+        self.assertGreater(avalanche_risk(35.0, 1.0, 50.0, 5.0), 0.4)
+        self.assertEqual(avalanche_risk(10.0, 1.0, 50.0, 5.0), 0.0)
+
+    def test_steeper_slab_is_less_stable(self):
+        # Retarget of test_slope_tails: the 55 deg end carries load, not none,
+        # so it releases where the 35 deg slab of the same strength holds.
         self.assertGreater(
-            avalanche_risk(25, 0, 20, 0, "Snow"), avalanche_risk(25, 0, -5, 0, "Snow")
+            avalanche_shear_stress_kpa(55.0), avalanche_shear_stress_kpa(35.0)
+        )
+        self.assertGreater(
+            avalanche_risk(55.0, 3.0, 0.0, -10.0),
+            avalanche_risk(35.0, 3.0, 0.0, -10.0),
         )
 
-    def test_risk_clamped(self):
-        # All factors at maximum still clamp to 1.0.
-        self.assertEqual(avalanche_risk(35, 30, 30, 1.0, "Snow"), 1.0)
-        self.assertGreaterEqual(avalanche_risk(25, 10, 10, 0.5, "Snow"), 0.0)
+    def test_slope_enters_as_the_sine(self):
+        # Retarget of test_slope_midpoint: the slope curve is sin(psi), so the
+        # 25/35 deg stress ratio is sin(25)/sin(35), not 0.5/1.0.  The anchor:
+        # 40 deg on a 300 kg/m3, 1 m slab is 1.891 kPa.
+        self.assertAlmostEqual(
+            avalanche_shear_stress_kpa(25.0) / avalanche_shear_stress_kpa(35.0),
+            math.sin(math.radians(25)) / math.sin(math.radians(35)),
+        )
+        self.assertAlmostEqual(avalanche_shear_stress_kpa(40.0), 1.891, places=3)
+        self.assertAlmostEqual(
+            avalanche_stability_index(avalanche_shear_stress_kpa(40.0), 5.0),
+            5.0 / 1.891,
+            places=3,
+        )
+
+    def test_weaker_weak_layer_is_less_stable(self):
+        # The kernel clamps the weak layer into the published 0.2-3 kPa band
+        # (Fohn 1998): the low end releases on a 40 deg slope, the high holds.
+        tau = avalanche_shear_stress_kpa(40.0)
+        self.assertLess(
+            avalanche_stability_index(tau, weak_layer_strength_kpa(0.2)), 1.0
+        )
+        self.assertGreater(
+            avalanche_stability_index(tau, weak_layer_strength_kpa(3.0)), 1.0
+        )
+        self.assertGreater(
+            avalanche_risk(40.0, 0.5, 0.0, -10.0),
+            avalanche_risk(40.0, 2.5, 0.0, -10.0),
+        )
+
+    def test_no_snow_zero(self):
+        # No snowpack: the SQF exits with risk 0.  "Frozen" is a snowpack.
+        self.assertEqual(
+            avalanche_risk(35.0, 0.2, 50.0, 5.0, ground_state="Normal"), 0.0
+        )
+        self.assertEqual(
+            avalanche_risk(35.0, 0.2, 50.0, 5.0, ground_state="Frozen"),
+            avalanche_risk(35.0, 0.2, 50.0, 5.0, ground_state="Snow"),
+        )
+
+    def test_risk_never_exceeds_the_clamp(self):
+        # Retarget of test_risk_clamped: the kernel clamps at 1.0, and under
+        # the stability model the ceiling does not bind.  The weakest published
+        # layer (0.2 kPa) still leaves S above 0, so the risk approaches 1.
+        for slope_deg in (35.0, 45.0, 60.0, 90.0):
+            with self.subTest(slope_deg=slope_deg):
+                risk = avalanche_risk(slope_deg, 0.2, 60.0, 5.0)
+                self.assertGreater(risk, 0.8)
+                self.assertLessEqual(risk, 1.0)
+        self.assertLess(avalanche_risk(90.0, 0.2, 60.0, 5.0), 1.0)
+
+    def test_temperature_is_a_trigger_not_a_gradient(self):
+        # Below the threshold the air temperature changes nothing.  Above 2 C
+        # it is one of the two triggers, and 30 cm of fresh snow is the other.
+        cold = avalanche_risk(35.0, 1.0, 0.0, -20.0)
+        mild = avalanche_risk(35.0, 1.0, 0.0, 0.0)
+        warm = avalanche_risk(35.0, 1.0, 0.0, 5.0)
+        self.assertEqual(cold, mild)
+        self.assertGreater(warm, mild)
+        self.assertEqual(avalanche_risk(35.0, 1.0, 30.0, -20.0), warm)
 
 
 class TestFreezeThaw(unittest.TestCase):
