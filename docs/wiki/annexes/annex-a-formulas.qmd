@@ -179,15 +179,20 @@ Where $FDD$ and $TDD$ are the accumulated freezing and thawing
 degree-days. Depth grows with the square root, so a warm spell melts fast
 initially then slows — the physically correct non-linear response.
 
-## CBRN persistence (Arrhenius Q10)
+## CBRN persistence (per-agent Arrhenius)
 
 $$
-P(T) = \frac{P_{15}}{2^{(T-15)/10}} \cdot \frac{1}{1 + 0.5 \cdot \frac{RH - 50}{50}} \cdot \frac{1}{1 + 0.05 v}
-$$ {#eq-q10}
+P(T) = \frac{P_{ref}}{\exp\left(-\frac{\Delta H_{vap}}{R}\left(\frac{1}{T} - \frac{1}{T_{ref}}\right)\right)} \cdot f_{rain}
+$$ {#eq-cbrn-arrhenius}
 
-Hydrolysis roughly doubles per 10 °C rise (Q10 rule of thumb). $P_{15}$ is
-the reference persistence at 15 °C, $RH$ is relative humidity in percent,
-and $v$ is wind speed.
+The kinetic term is the Clausius-Clapeyron slope of the agent's latent heat of
+vaporisation $\Delta H_{vap}$ (FM 3-11.9, January 2005, Appendix G), with
+$T_{ref} = 298.15$ K and $R = 8.314462618$ J/(mol K). A warmer agent decays
+faster. The implied Q10 over 15 to 25 C runs 1.42 (CG) to 3.09 (VX) per agent,
+so the generic Q10 rule of thumb is gone. $P_{ref}$ is the reference
+persistence at 25 C and $f_{rain}$ the scent model's rain washout factor.
+Humidity and wind are not factors: humidity acts indirectly through condensed
+water and its pH, and wind is dispersion, which the plume path owns.
 
 ## Avalanche slope risk
 

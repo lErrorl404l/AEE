@@ -10,7 +10,7 @@ A variable named `aee_core_{leaf}` is written as `EGVAR(core,leaf)` by the produ
 | Variable | Type | Unit | Range | Update | Evidence (first read) | Purpose (Annex C) |
 |---|---|---|---|---|---|---|
 | `aee_core_biome` | STRING | code | UNKNOWN | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateFireSpreadRisk.sqf:43` | Koppen biome code (map climate class) |
-| `aee_core_cbrnPersistence` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf:17` | CBRN persistence 0.225..2.1 |
+| `aee_core_cbrnPersistence` | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf:42` | CBRN persistence 0.225..2.1 |
 | `aee_core_currentAvalancheRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateAvalancheRisk.sqf:22` | Avalanche risk 0..1 |
 | `aee_core_currentCropDensity` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateFireSpreadRisk.sqf:44` | Crop density 0..1 |
 | `aee_core_currentFireRisk` | SCALAR | fraction | 0..1 | UNKNOWN | `addons/persistence/functions/warnings/fnc_calculateFireSpreadRisk.sqf:28` | Fire spread risk 0..1 |

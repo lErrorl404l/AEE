@@ -11,16 +11,23 @@ Sources (see each kernel header):
                           Emissions, ATDL.
   Stability class         Pasquill-Gifford: EPA SRDT (EPA-454/R-99-005
                           Table 6-7) by day, Turner AP-26 by night.
-  Agent parameters        FM 3-11, Chemical Operations (2003), Table 4-1.
+  Agent parameters        FM 3-11.9 / MCRP 3-37.1B / NTRP 3-11.32 / AFTTP(I)
+                          3-2.55, Potential Military Chemical/Biological
+                          Agents and Compounds, January 2005: Chapter II
+                          agent tables and Appendix G.
+  Persistence band        JP 1-02 / FM 3-11.9 Table G-6.
 
 Run: python3 -m unittest tools.tests.test_cbrn_plume -v
 """
 
 from __future__ import annotations
 
+import math
 import sys
 import unittest
 from pathlib import Path
+
+R_GAS = 8.314462618  # J/(mol*K), CODATA 2018 (molar gas constant)
 
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
@@ -61,7 +68,11 @@ class TestStabilityClass(unittest.TestCase):
     def test_epa_srdt_day_key(self):
         # EPA-454/R-99-005 Table 6-7, every cell.
         key = {
-            1.0: "AABD", 2.5: "ABCD", 4.0: "BBCD", 5.5: "CCDD", 7.0: "CDDD",
+            1.0: "AABD",
+            2.5: "ABCD",
+            4.0: "BBCD",
+            5.5: "CCDD",
+            7.0: "CDDD",
         }
         for wind, row in key.items():
             for rad, cls in zip((950, 800, 400, 100), row):
@@ -154,34 +165,126 @@ class TestPuffConcentration(unittest.TestCase):
 
 
 class TestDecay(unittest.TestCase):
+    """The point half-life path: a caller that holds a measured point value
+    still gets the single first-order decayed number."""
+
     def test_exactly_half_after_one_half_life(self):
         # Issue vector: exactly 0.5 * C0 after one half-life.
         c = run_sqf(DECAY, [100.0, 36.0, 36.0])
         self.assertAlmostEqual(c, 50.0, places=6)
 
-    def test_vx_half_life_is_36h(self):
-        # FM 3-11: VX is the persistent agent (days-weeks) -> 36 h.
+    def test_point_half_life_is_still_supported(self):
         self.assertAlmostEqual(run_sqf(DECAY, [1.0, 36.0, 36.0]), 0.5, places=6)
 
-    def test_gb_decays_in_an_hour(self):
-        self.assertAlmostEqual(run_sqf(DECAY, [1.0, 1.0, 1.0]), 0.5, places=6)
+    def test_quarter_after_two_half_lives(self):
+        self.assertAlmostEqual(run_sqf(DECAY, [1.0, 2.0, 1.0]), 0.25, places=6)
+
+
+class TestDecayEnvelope(unittest.TestCase):
+    """No point half-life is published for any agent, so the row carries the
+    JP 1-02 / FM 3-11.9 Table G-6 persistence band and the kernel returns the
+    decay envelope between the band limits."""
+
+    def test_zero_time_envelope_is_the_initial_concentration(self):
+        self.assertEqual(run_sqf(DECAY, [2.0, 0.0, [24, 336]]), [2.0, 2.0])
+
+    def test_envelope_brackets_the_band(self):
+        fast, slow = run_sqf(DECAY, [1.0, 24.0, [24, 336]])
+        # The fast edge is one half-life at the 24 h band limit.
+        self.assertAlmostEqual(fast, 0.5, places=6)
+        # The slow edge decays on the 336 h band limit.
+        self.assertAlmostEqual(slow, math.exp(-24.0 / (336.0 / math.log(2))), places=6)
+        self.assertLess(fast, slow)
+
+    def test_envelope_never_inverts(self):
+        for band in ([24, 336], [336, 24], [10 / 60, 15 / 60], [0.5, 0.5]):
+            with self.subTest(band=band):
+                fast, slow = run_sqf(DECAY, [1.0, 1.0, band])
+                self.assertLessEqual(fast, slow)
+
+    def test_both_edges_decay_with_time(self):
+        f1, s1 = run_sqf(DECAY, [1.0, 1.0, [24, 336]])
+        f2, s2 = run_sqf(DECAY, [1.0, 2.0, [24, 336]])
+        self.assertLess(f2, f1)
+        self.assertLess(s2, s1)
+
+    def test_reversed_band_is_the_same_band(self):
+        self.assertEqual(
+            run_sqf(DECAY, [1.0, 3.0, [24, 336]]),
+            run_sqf(DECAY, [1.0, 3.0, [336, 24]]),
+        )
+
+    def test_temperature_scales_the_band_per_agent(self):
+        # Clausius-Clapeyron on the agent's latent heat (FM 3-11.9 Appendix G):
+        # VX (80.3 kJ/mol) slows from 25 to 15 C far more than CG (24.8).
+        vx = run_sqf(DECAY, [1.0, 24.0, [24, 336], 288.15, 80.3e3])[0]
+        cg = run_sqf(DECAY, [1.0, 24.0, [24, 336], 288.15, 24.8e3])[0]
+        warm = run_sqf(DECAY, [1.0, 24.0, [24, 336], 298.15, 80.3e3])[0]
+        self.assertGreater(vx, warm)
+        self.assertGreater(vx, cg)
+
+    def test_no_agent_no_temperature_term(self):
+        # No deltaHvap means no source for a temperature term.
+        cold, _ = run_sqf(DECAY, [1.0, 24.0, [24, 336], 288.15, 0])
+        warm, _ = run_sqf(DECAY, [1.0, 24.0, [24, 336], 298.15, 0])
+        self.assertAlmostEqual(cold, warm, places=9)
+
+    def test_implied_q10_matches_the_source(self):
+        # The report's deltaHvap-implied Q10 over 15-25 C per agent.
+        for dh_kjmol, q10 in (
+            (24.8, 1.42),
+            (48.5, 1.97),
+            (55.2, 2.17),
+            (62.8, 2.42),
+            (80.3, 3.09),
+        ):
+            with self.subTest(dh_kjmol=dh_kjmol):
+                got = math.exp(dh_kjmol * 1000 / R_GAS * 10 / (288 * 298))
+                self.assertAlmostEqual(got, q10, places=1)
 
 
 class TestAgentTable(unittest.TestCase):
-    def test_vx_parameters(self):
+    """The FM 3-11.9 (January 2005) rows: LCt50, vapour pressure, volatility,
+    latent heat of vaporisation and the JP 1-02 persistence band."""
+
+    def test_vx_row(self):
         row = run_sqf(AGENT, ["VX"])
-        self.assertEqual(row[0], 10)  # LCt50 mg*min/m3
-        self.assertAlmostEqual(row[1], 0.0007)  # VP mmHg
-        self.assertAlmostEqual(row[3], 36)  # half-life h
+        self.assertEqual(row[0], 15)  # LCt50, Table II-15
+        self.assertAlmostEqual(row[1], 8.78e-4)  # VP torr at 25 C
+        self.assertAlmostEqual(row[2], 12.6)  # volatility mg/m3
+        self.assertAlmostEqual(row[3], 80.3)  # dHvap kJ/mol
+        self.assertEqual(row[4], [24, 336])  # JP 1-02 persistent
 
-    def test_gb_parameters(self):
+    def test_gb_row(self):
         row = run_sqf(AGENT, ["GB"])
-        self.assertEqual(row[0], 85)  # midpoint of 70-100
-        self.assertAlmostEqual(row[3], 1)
+        self.assertEqual(row[0], 35)  # Table II-9
+        self.assertAlmostEqual(row[1], 2.48)
+        self.assertAlmostEqual(row[2], 18700)
+        self.assertAlmostEqual(row[3], 48.5)
+        self.assertAlmostEqual(row[4][0], 10 / 60)
+        self.assertAlmostEqual(row[4][1], 15 / 60)
 
-    def test_cg_is_minutes(self):
+    def test_gd_row(self):
+        row = run_sqf(AGENT, ["GD"])
+        self.assertEqual(row[0], 35)  # Table II-11
+        self.assertAlmostEqual(row[1], 0.401)
+        self.assertAlmostEqual(row[2], 3930)
+        self.assertAlmostEqual(row[3], 55.2)
+
+    def test_cg_row(self):
         row = run_sqf(AGENT, ["CG"])
-        self.assertAlmostEqual(row[3], 0.1667, places=3)
+        self.assertEqual(row[0], 1500)  # Table II-3
+        self.assertAlmostEqual(row[1], 1400)
+        self.assertAlmostEqual(row[2], 7.46e6)
+        self.assertAlmostEqual(row[3], 24.8)
+
+    def test_h_row_is_the_default(self):
+        row = run_sqf(AGENT, ["H"])
+        self.assertEqual(row[0], 1000)  # Table II-25
+        self.assertAlmostEqual(row[1], 0.106)
+        self.assertAlmostEqual(row[2], 906)
+        self.assertAlmostEqual(row[3], 62.8)
+        self.assertEqual(row[4], [24, 336])
 
     def test_case_insensitive(self):
         self.assertEqual(run_sqf(AGENT, ["vx"]), run_sqf(AGENT, ["VX"]))
@@ -189,11 +292,20 @@ class TestAgentTable(unittest.TestCase):
     def test_unknown_defaults_to_H(self):
         self.assertEqual(run_sqf(AGENT, ["XX"]), run_sqf(AGENT, ["H"]))
 
+    def test_every_row_carries_a_band_not_a_point(self):
+        for agent in ("VX", "GB", "GD", "H", "CG"):
+            with self.subTest(agent=agent):
+                band = run_sqf(AGENT, [agent])[4]
+                self.assertIsInstance(band, list)
+                self.assertEqual(len(band), 2)
+                self.assertLess(band[0], band[1])
+
 
 class TestDose(unittest.TestCase):
     def test_issue_vector_vx_lethal_in_4_5_min(self):
-        # Issue vector: VX (LCt50 10) at 2.20 mg/m3 is lethal in ~4.5 min
-        # (10 / 2.20 = 4.545 min).  Just past 4.5 min it crosses LCt50.
+        # Issue vector: LCt50 10 (the vector's own value; VX's FM 3-11.9
+        # value is 15, and the kernel takes LCt50 as an argument) at
+        # 2.20 mg/m3 is lethal in ~4.5 min (10 / 2.20 = 4.545 min).
         dt = 4.55 * 60
         _, lethal, _ = run_sqf(DOSE, [0, 2.20, dt, 10, 0])
         self.assertTrue(lethal)
@@ -255,6 +367,26 @@ class TestWiring(unittest.TestCase):
         driver = DRIVER.read_text(encoding="utf-8")
         self.assertIn("EGVAR(core,currentWind)", driver)
         self.assertIn("EFUNC(persistence,getCbrnProtection)", driver)
+
+    def test_driver_decays_the_band_envelope(self):
+        # The driver must pass the band, the air temperature and the agent's
+        # latent heat to the decay kernel, and take the slow (casualty
+        # conservative) edge of the envelope.
+        driver = DRIVER.read_text(encoding="utf-8")
+        self.assertIn("_agentRow select 4", driver)
+        self.assertIn("_envelope select 1", driver)
+        self.assertIn("QEGVAR(core,currentTemperature)", driver)
+        self.assertIn("KELVIN_OFFSET", driver)
+        self.assertIn("_agentRow select 3) * 1000", driver)
+
+    def test_core_tick_supplies_the_agent_delta_hvap(self):
+        # The persistence kernel cannot resolve an agent, so the tick passes
+        # the active agent's dHvap.
+        env = UPDATE_ENV.read_text(encoding="utf-8")
+        self.assertIn("EFUNC(weather,getCbrnAgent)", env)
+        self.assertIn(
+            "[_cbrnDeltaHvapJmol] call EFUNC(persistence,calculateCBRNPersistence)", env
+        )
 
 
 if __name__ == "__main__":

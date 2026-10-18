@@ -11,21 +11,43 @@ Run: python3 -m unittest tools/tests/test_environmental.py
 
 import math
 import unittest
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+CBRN_PERSISTENCE = (
+    REPO / "addons/persistence/functions/warnings/fnc_calculateCBRNPersistence.sqf"
+)
+
+R_GAS = 8.314462618  # J/(mol*K), CODATA 2018 (molar gas constant)
+T_REF_K = 298.15  # K, 25 C: the temperature the agent data is quoted at
 
 
-def cbrn_persistence(temp_c, humidity_pct, wind_ms, base_h=24, interval=5):
-    """Mirror of fnc_calculateCBRNPersistence.sqf (Arrhenius Q10).
+def cbrn_persistence_h(temp_c, delta_hvap_jmol=0.0, base_h=24.0):
+    """Mirror of the temperature term in fnc_calculateCBRNPersistence.sqf.
+
+    Per-agent Clausius-Clapeyron on the latent heat of vaporisation
+    (FM 3-11.9, January 2005, Appendix G).  delta_hvap_jmol = 0 is the
+    no-agent case, where the term is 1 (no published value exists for an
+    unidentified agent).  Returns the persistence in hours.
+    """
+    rate_multiplier = 1.0
+    if delta_hvap_jmol != 0:
+        temp_k = max(temp_c + 273.15, 1.0)
+        rate_multiplier = math.exp(
+            -(delta_hvap_jmol / R_GAS) * (1.0 / temp_k - 1.0 / T_REF_K)
+        )
+    return base_h / rate_multiplier
+
+
+def cbrn_persistence(temp_c, delta_hvap_jmol=0.0, base_h=24, interval=5):
+    """Mirror of fnc_calculateCBRNPersistence.sqf (per-agent Arrhenius).
 
     Returns the per-tick exponential decay factor. A higher factor means
     slower decay, hence longer persistence.
     """
-    rate_multiplier = 2 ** ((temp_c - 15) / 10)
-    persistence_h = base_h / rate_multiplier
-    humidity_factor = 1 / (1 + ((humidity_pct - 50) / 50) * 0.5)
-    persistence_h = persistence_h * humidity_factor
-    wind_factor = 1 / (1 + wind_ms * 0.05)
-    persistence_h = persistence_h * wind_factor
-    return math.exp(-(interval / 3600) / persistence_h)
+    return math.exp(
+        -(interval / 3600) / cbrn_persistence_h(temp_c, delta_hvap_jmol, base_h)
+    )
 
 
 def equilibrium_moisture(temp_c, rh_pct):
@@ -167,30 +189,83 @@ def surface_wetness(wetness, rain, temp, dewpoint, overcast, wind, interval=5):
 
 
 class TestCBRNPersistence(unittest.TestCase):
+    """The temperature term is per-agent Arrhenius on the latent heat of
+    vaporisation (FM 3-11.9, January 2005, Appendix G)."""
+
+    VX = 80.3e3  # kJ/mol -> J/mol, the VX latent heat of vaporisation
+    CG = 24.8e3
+
     def test_warmer_temp_shorter_persistence(self):
-        # Q10: decay rate doubles per 10 C rise, so the decay factor falls.
-        self.assertLess(cbrn_persistence(20, 50, 0), cbrn_persistence(10, 50, 0))
+        # A positive latent heat makes the agent decay faster when warmer.
+        self.assertLess(cbrn_persistence(25, self.VX), cbrn_persistence(15, self.VX))
 
-    def test_higher_humidity_shorter_persistence(self):
-        # High humidity accelerates hydrolysis.
-        self.assertLess(cbrn_persistence(15, 80, 0), cbrn_persistence(15, 20, 0))
+    def test_no_agent_no_temperature_term(self):
+        # The Q10 = 2 rule of thumb is gone: with no agent there is no
+        # published kinetic constant, so the term is 1.
+        self.assertAlmostEqual(cbrn_persistence(25, 0), cbrn_persistence(5, 0))
+        self.assertAlmostEqual(cbrn_persistence_h(25, 0), 24.0)
 
-    def test_higher_wind_shorter_persistence(self):
-        # Wind disperses the agent cloud.
-        self.assertLess(cbrn_persistence(15, 50, 5), cbrn_persistence(15, 50, 0))
+    def test_implied_q10_per_agent(self):
+        # The report's deltaHvap-implied Q10 over 15-25 C per agent.
+        for dh_kjmol, q10 in (
+            (24.8, 1.42),
+            (48.5, 1.97),
+            (55.2, 2.17),
+            (62.8, 2.42),
+            (80.3, 3.09),
+        ):
+            with self.subTest(dh_kjmol=dh_kjmol):
+                got = cbrn_persistence_h(15, dh_kjmol * 1000) / cbrn_persistence_h(
+                    25, dh_kjmol * 1000
+                )
+                self.assertAlmostEqual(got, q10, places=1)
 
     def test_persistence_never_negative(self):
         # The decay factor is exp(negative), always in (0, 1].
-        for args in [(15, 50, 0), (40, 100, 20), (-20, 0, 0), (15, 50, 50)]:
-            modifier = cbrn_persistence(*args)
-            self.assertGreater(modifier, 0.0)
-            self.assertLessEqual(modifier, 1.0)
+        for args in ((15, self.VX), (40, self.VX), (-20, self.CG), (15, 0)):
+            with self.subTest(args=args):
+                modifier = cbrn_persistence(*args)
+                self.assertGreater(modifier, 0.0)
+                self.assertLessEqual(modifier, 1.0)
 
     def test_reference_tick_math(self):
-        # At 15 C, RH 50, calm: all factors are 1, persistence = base_h.
+        # At 25 C the row data is quoted at, the term is 1: persistence = base_h.
         self.assertAlmostEqual(
-            cbrn_persistence(15, 50, 0, 24, 5), math.exp(-(5 / 3600) / 24)
+            cbrn_persistence(25, self.VX, 24, 5), math.exp(-(5 / 3600) / 24)
         )
+
+
+class TestCBRNPersistenceRemovals(unittest.TestCase):
+    """The invented environmental terms are gone from the kernel."""
+
+    def setUp(self):
+        self.text = CBRN_PERSISTENCE.read_text(encoding="utf-8")
+
+    def test_no_humidity_multiplier(self):
+        # No published "RH to persistence" multiplier exists; humidity acts
+        # indirectly through condensed water and its pH.
+        self.assertNotIn("_humidityFactor", self.text)
+        self.assertNotIn("currentHumidity", self.text)
+
+    def test_no_wind_factor(self):
+        # Wind is dispersion, not decay, and the plume path models it.
+        self.assertNotIn("_windFactor", self.text)
+        self.assertNotIn("vectorMagnitude wind", self.text)
+
+    def test_no_q10_rule_of_thumb(self):
+        self.assertNotIn("Q10 = 2", self.text)
+        self.assertNotIn("2 ^ ((_temp_C - 15) / 10)", self.text)
+
+    def test_arrhenius_term_is_sourced(self):
+        self.assertIn("Clausius-Clapeyron", self.text)
+        self.assertIn("8.314462618", self.text)
+        self.assertIn("298.15", self.text)
+        self.assertIn("_deltaHvapJmol", self.text)
+
+    def test_interim_basis_is_marked(self):
+        # FM 3-11.9 gives dHvap, not a hydrolysis activation energy.
+        self.assertIn("INTERIM", self.text)
+        self.assertIn("UNSOURCED", self.text)
 
 
 class TestFireSpread(unittest.TestCase):

@@ -3,10 +3,10 @@
 /*
 CBRN inhalation dose accumulation and the exposure thresholds.
 
-Source: FM 3-11, "Chemical Operations" (2003).  The inhaled dose is the
-concentration-time product, Dose += C * dt with dt in minutes and C in
-mg/m3, giving mg*min/m3.  An agent is lethal at 1.0 x LCt50 and
-incapacitating at 0.1 x LCt50 (the FM 3-11 miosis/incapacitation tier).
+Source: FM 3-11.9, "Potential Military Chemical/Biological Agents and
+Compounds" (January 2005).  The inhaled dose is the concentration-time
+product, Dose += C * dt with dt in minutes and C in mg/m3, giving mg*min/m3.
+An agent is lethal at 1.0 x LCt50 and incapacitating at 0.1 x LCt50.
 The CBRN protection factor (fnc_getCbrnProtection) scales the inhaled
 fraction, so a full kit blocks most of the agent.
 

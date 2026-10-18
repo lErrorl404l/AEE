@@ -451,7 +451,18 @@ if ((diag_tickTime - _skyLast) >= 30) then {
 };
 if (GVAR(environmentalEnabled)) then {
     [] call EFUNC(weather,calculateBiologicalAmbient);
-    [] call EFUNC(persistence,calculateCBRNPersistence);
+    // The CBRN persistence temperature term is per agent: the Arrhenius slope
+    // of the agent's latent heat of vaporisation (FM 3-11.9, Appendix G).
+    // persistence cannot read the agent table without a dependency cycle
+    // (weather already reads persistence), so the core tick resolves the
+    // active agent's deltaHvap here.  No release means no value, and the
+    // kernel then applies no temperature term.
+    private _cbrnDeltaHvapJmol = 0;
+    private _cbrnRelease = missionNamespace getVariable [QEGVAR(core,cbrnRelease), []];
+    if ((_cbrnRelease isEqualType []) && {(count _cbrnRelease) >= 7} && {_cbrnRelease select 0}) then {
+        _cbrnDeltaHvapJmol = (([_cbrnRelease select 2] call EFUNC(weather,getCbrnAgent)) select 3) * 1000;
+    };
+    [_cbrnDeltaHvapJmol] call EFUNC(persistence,calculateCBRNPersistence);
     [] call EFUNC(weather,calculateDenseGasDispersion);
 };
 if (GVAR(physiologyEnabled)) then {

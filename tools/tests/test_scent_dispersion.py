@@ -138,39 +138,49 @@ class TestWildlifeAmbientConsumesScent(unittest.TestCase):
 
 
 class TestCbrnRainWashoutMath(unittest.TestCase):
-    """Python mirror of the rain washout in fnc_calculateCBRNPersistence."""
+    """Python mirror of the rain washout in fnc_calculateCBRNPersistence.
+
+    The kernel's only environmental factor besides the per-agent Arrhenius
+    temperature term is the rain washout the scent model publishes.  The
+    invented humidity and wind factors are gone (no published value).
+    """
 
     @staticmethod
     def persistence(
-        temp_c, humidity_pct, wind_ms, rain_factor=1.0, base_h=24, interval=5
+        temp_c=15.0,
+        delta_hvap_jmol=0.0,
+        rain_factor=1.0,
+        base_h=24,
+        interval=5,
     ):
-        rate_multiplier = 2 ** ((temp_c - 15) / 10)
-        persistence_h = base_h / rate_multiplier
-        humidity_factor = 1 / (1 + ((humidity_pct - 50) / 50) * 0.5)
-        persistence_h = persistence_h * humidity_factor
-        wind_factor = 1 / (1 + wind_ms * 0.05)
-        persistence_h = persistence_h * wind_factor
-        persistence_h = persistence_h * rain_factor
+        rate_multiplier = 1.0
+        if delta_hvap_jmol != 0:
+            temp_k = max(temp_c + 273.15, 1.0)
+            rate_multiplier = math.exp(
+                -(delta_hvap_jmol / 8.314462618) * (1.0 / temp_k - 1.0 / 298.15)
+            )
+        persistence_h = (base_h / rate_multiplier) * rain_factor
         return math.exp(-(interval / 3600) / persistence_h)
 
     def test_dry_rain_factor_is_no_change(self):
         self.assertAlmostEqual(
-            self.persistence(15, 50, 0, 1.0), self.persistence(15, 50, 0)
+            self.persistence(15.0, 80.3e3, 1.0), self.persistence(15.0, 80.3e3)
         )
 
     def test_rain_shortens_persistence(self):
         # A larger decay factor means slower decay, so rain must lower it.
         self.assertLess(
-            self.persistence(15, 50, 0, 0.2), self.persistence(15, 50, 0, 1.0)
+            self.persistence(15.0, 80.3e3, 0.2), self.persistence(15.0, 80.3e3, 1.0)
         )
 
     def test_still_within_the_decay_factor_range(self):
         # The published decay factor is always in (0, 1].
         for rf in (1.0, 0.2):
-            for args in [(15, 50, 0), (40, 100, 20), (-20, 0, 0), (15, 50, 50)]:
-                m = self.persistence(*args, rain_factor=rf)
-                self.assertGreater(m, 0.0)
-                self.assertLessEqual(m, 1.0)
+            for args in ((15.0, 80.3e3), (40.0, 24.8e3), (-20.0, 55.2e3), (15.0, 0.0)):
+                with self.subTest(args=args, rain_factor=rf):
+                    m = self.persistence(*args, rain_factor=rf)
+                    self.assertGreater(m, 0.0)
+                    self.assertLessEqual(m, 1.0)
 
     def test_scent_constant_transfers(self):
         # The value the CBRN consumer inherits from the scent model.
