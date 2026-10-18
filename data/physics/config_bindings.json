@@ -180,5 +180,61 @@
     },
     "conversion": "identity",
     "grade": "documented"
+  },
+  {
+    "game_class": "B_Heli_Light_01_F",
+    "config_class": "CfgVehicles",
+    "key": "fuelConsumptionRate",
+    "value": 0,
+    "unit": "unitless",
+    "value_source": {
+      "source_id": "src_md500e_2023",
+      "locator": "60.5 Gallon (229 liter) Crash Resistant Fuel System",
+      "field": "fuel_capacity"
+    },
+    "conversion": "structural_zero",
+    "grade": "derived"
+  },
+  {
+    "game_class": "C_Heli_Light_01_civil_F",
+    "config_class": "CfgVehicles",
+    "key": "fuelConsumptionRate",
+    "value": 0,
+    "unit": "unitless",
+    "value_source": {
+      "source_id": "src_md500e_2023",
+      "locator": "60.5 Gallon (229 liter) Crash Resistant Fuel System",
+      "field": "fuel_capacity"
+    },
+    "conversion": "structural_zero",
+    "grade": "derived"
+  },
+  {
+    "game_class": "C_Plane_Civil_01_F",
+    "config_class": "CfgVehicles",
+    "key": "fuelConsumptionRate",
+    "value": 0,
+    "unit": "unitless",
+    "value_source": {
+      "source_id": "src_cessna_172sp_poh",
+      "locator": "Fuel Capacity: Total Capacity: 56.0 U.S. gallons",
+      "field": "fuel_capacity"
+    },
+    "conversion": "structural_zero",
+    "grade": "derived"
+  },
+  {
+    "game_class": "I_Heli_Transport_02_F",
+    "config_class": "CfgVehicles",
+    "key": "fuelConsumptionRate",
+    "value": 0,
+    "unit": "unitless",
+    "value_source": {
+      "source_id": "src_easa_tcds_r013",
+      "locator": "Fluid capacities, Fuel, Tank capacity: 4 155 litres in four tanks of each 1 059 litres",
+      "field": "fuel_capacity"
+    },
+    "conversion": "structural_zero",
+    "grade": "derived"
   }
 ]
