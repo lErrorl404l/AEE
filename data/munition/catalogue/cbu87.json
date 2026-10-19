@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for CBU-87 Combined Effects Munition from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "cbu87",
+   "canonical_name": "CBU-87 Combined Effects Munition",
+   "munition_type": "bomb",
+   "aliases": [
+    "CBU-87",
+    "CEM"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 430.0,
+     "unit": "kg",
+     "source": "wikipedia_cbu_87_combined_effects_munition",
+     "locator": "Infobox, mass: 950 lb (430 kg): 430 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2330.0,
+     "unit": "mm",
+     "source": "wikipedia_cbu_87_combined_effects_munition",
+     "locator": "Infobox, length: 7 ft 8 in (2.33 m): 2.33 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 396.0,
+     "unit": "mm",
+     "source": "wikipedia_cbu_87_combined_effects_munition",
+     "locator": "Infobox, diameter: 15.6 in (396 mm): 396 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

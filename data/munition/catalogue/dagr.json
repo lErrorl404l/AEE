@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for DAGR (Direct Attack Guided Rocket): the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The figures are in a Specifications list rather than an infobox, so each carries the list item it was read from.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "dagr",
+   "canonical_name": "DAGR (Direct Attack Guided Rocket)",
+   "munition_type": "rocket",
+   "aliases": [
+    "DAGR"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 15.8,
+     "unit": "kg",
+     "source": "wikipedia_direct_attack_guided_rocket",
+     "locator": "Specifications: 'Weight: 35.0 lb (15.8 kg)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 70.0,
+     "unit": "mm",
+     "source": "wikipedia_direct_attack_guided_rocket",
+     "locator": "Specifications: 'Diameter: 2.75 in (70 mm)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1900.0,
+     "unit": "mm",
+     "source": "wikipedia_direct_attack_guided_rocket",
+     "locator": "Specifications: 'Length: 75 in (1.9 m)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

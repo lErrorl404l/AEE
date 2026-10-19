@@ -1,0 +1,45 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 2A46 125 mm gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "2a46",
+   "canonical_name": "2A46 125 mm gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "2A26",
+    "2A46",
+    "D-81",
+    "D-81T"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 2675.0,
+     "unit": "kg",
+     "source": "wikipedia_2a46_125_mm_gun",
+     "locator": "Infobox, mass: 2A46: 2,675 kg 2A46M: 2,400 kg: 2,675 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 6350.0,
+     "unit": "mm",
+     "source": "wikipedia_2a46_125_mm_gun",
+     "locator": "Infobox, length: 2A46: 6,350 mm 2A46M: 6,381 mm: 6,350 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 125.0,
+     "unit": "mm",
+     "source": "wikipedia_2a46_125_mm_gun",
+     "locator": "Infobox, caliber: 125 mm (4.9 in): 125 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

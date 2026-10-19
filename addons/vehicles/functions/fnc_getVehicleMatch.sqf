@@ -149,6 +149,7 @@ private _table = [
     ["centauro", "centauro", "wheeled", "", "", "centauro|b1centauro|centauro1", "tankdestroyer|8x8|b1centaur", "wikipedia_centauro", [24000, 0, 0, 0, 387.763933, "automatic", ""]],
     ["challenger_1", "challenger_1", "tracked", "", "", "challenger|challenger1|fv4030", "", "challenger_1_aesp_230_p_100_201", [62000, 650, 0, 500, 894.839846, "automatic", ""]],
     ["challenger_2", "challenger_2", "tracked", "", "", "challenger2|challengerii|fv4034", "challenger", "wikipedia_challenger_2", [64000, 0, 0, 500, 894.839846, "", ""]],
+    ["chevrolet_suburban_gmt900", "chevrolet_suburban_gmt900", "wheeled", "", "", "suburban|chevroletsuburban", "chevroletsuburbangmt900|gmt900|suburbangmt900", "wikipedia_chevrolet_suburban", [2540, 0, 0, 0, 0, "", ""]],
     ["cougar_4x4", "cougar_4x4", "wheeled", "", "", "cougar|cougar4x4|mrapcougar|cgrcat1a2|cat1a2", "mineresistant|4x4", "gdls_cougar_4x4_datasheet", [15422, 395.0, 1179.5, 380, 246.080958, "automatic", ""]],
     ["cv90", "cv90", "tracked", "", "", "cv90|combatvehicle90|stridsfordon90", "combatvehicle|vehicle90", "wikipedia_cv90", [23000, 0, 0, 0, 0, "", ""]],
     ["cv90_denmark", "cv90_denmark", "tracked", "", "", "cv9035dk|cv90denmark|combatvehicle90denmark", "cv90|combatvehicle|vehicle90|90denmark|cv9035d|cv90denmar|combatvehicle90denmar", "wikipedia_cv90", [23000, 0, 0, 0, 0, "", ""]],
@@ -466,7 +467,7 @@ private _tie = false;
                     };
                 };
             };
-            if (_score < _bestScore && {_score > _runnerUp}) then {
+            if (_score < _bestScore && _score > _runnerUp) then {
                 _runnerUp = _score;
             };
         };

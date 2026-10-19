@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for KGGB from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "kggb",
+   "canonical_name": "KGGB",
+   "munition_type": "bomb",
+   "aliases": [
+    "KGGB"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 316.0,
+     "unit": "kg",
+     "source": "wikipedia_kggb",
+     "locator": "Infobox, mass: Total weight: 316 kilograms (697 lb) CK-100K guidance kit: 89 kilogram: 316 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 50.8,
+     "unit": "mm",
+     "source": "wikipedia_kggb",
+     "locator": "Infobox, length: 2.5 meters (8 ft 2 in): 2 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "GPS/INS with fire-and-forget",
+     "unit": "name",
+     "source": "wikipedia_kggb",
+     "locator": "Infobox, guidance system: GPS/INS with fire-and-forget",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

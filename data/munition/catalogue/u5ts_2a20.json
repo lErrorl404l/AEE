@@ -1,0 +1,27 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for U-5TS from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "u5ts_2a20",
+   "canonical_name": "U-5TS",
+   "munition_type": "cannon",
+   "aliases": [
+    "2A20",
+    "U-5TS"
+   ],
+   "keywords": [],
+   "values": {
+    "calibre_mm": {
+     "value": 115.062,
+     "unit": "mm",
+     "source": "wikipedia_u_5ts",
+     "locator": "Infobox, caliber: 115 millimetres (4.53 in): 4.53 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

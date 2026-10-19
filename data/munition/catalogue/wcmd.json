@@ -1,0 +1,28 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Wind Corrected Munitions Dispenser from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "wcmd",
+   "canonical_name": "Wind Corrected Munitions Dispenser",
+   "munition_type": "bomb",
+   "aliases": [
+    "CBU-103",
+    "CBU-104",
+    "WCMD"
+   ],
+   "keywords": [],
+   "values": {
+    "guidance": {
+     "value": "Inertial guidance / GPS",
+     "unit": "name",
+     "source": "wikipedia_wind_corrected_munitions_dispenser",
+     "locator": "Infobox, guidance system: Inertial guidance / GPS",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

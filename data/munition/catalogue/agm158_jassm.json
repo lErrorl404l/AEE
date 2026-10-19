@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-158 JASSM from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm158_jassm",
+   "canonical_name": "AGM-158 JASSM",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-158",
+    "JASSM"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 1021.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_158_jassm",
+     "locator": "Infobox, mass: 2,251 lb (1,021 kg): 1,021 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 450.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_158_jassm",
+     "locator": "Infobox, warhead weight: 1,000 lb (450 kg): 450 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4287.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_158_jassm",
+     "locator": "Infobox, length: 14 ft 1 in (4.287 m): 4.287 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "GPS , INS , IIR",
+     "unit": "name",
+     "source": "wikipedia_agm_158_jassm",
+     "locator": "Infobox, guidance system: GPS , INS , IIR",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

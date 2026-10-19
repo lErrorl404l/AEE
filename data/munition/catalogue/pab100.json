@@ -1,0 +1,19 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for PAB-100 practice bomb: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. IDENTITY ONLY. The article is the register of Soviet and Russian aerial bomb designations and it states what the prefix means - 'P, PAB (\u041f, \u041f\u0410\u0411) - practical', that is a practice bomb - but no mass, warhead mass or diameter for the PAB-100. So this entry holds no figure at all: it lets the matcher NAME the bomb and says plainly that the corpus holds nothing else about it. The 100 is the kilogram class the designation carries, which is a designation and not a measured mass, so it is not recorded as one.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pab100",
+   "canonical_name": "PAB-100 practice bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "PAB",
+    "PAB-100",
+    "PAB100"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

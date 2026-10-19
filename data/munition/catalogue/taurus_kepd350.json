@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Taurus KEPD 350 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "taurus_kepd350",
+   "canonical_name": "Taurus KEPD 350",
+   "munition_type": "missile",
+   "aliases": [
+    "KEPD 350",
+    "Taurus"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 1400.0,
+     "unit": "kg",
+     "source": "wikipedia_taurus_kepd_350",
+     "locator": "Infobox, mass: 1,400 kg (3,100 lb): 1,400 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 480.0,
+     "unit": "kg",
+     "source": "wikipedia_taurus_kepd_350",
+     "locator": "Infobox, warhead weight: 480 kg (1,060 lb): 480 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 5100.0,
+     "unit": "mm",
+     "source": "wikipedia_taurus_kepd_350",
+     "locator": "Infobox, length: 5.1 m (16 ft 9 in): 5.1 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "INS , GPS , image-based navigation (IBN), RADALT",
+     "unit": "name",
+     "source": "wikipedia_taurus_kepd_350",
+     "locator": "Infobox, guidance system: INS , GPS , image-based navigation (IBN), RADALT",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

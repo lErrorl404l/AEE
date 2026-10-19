@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AS-30 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "as30",
+   "canonical_name": "AS-30",
+   "munition_type": "missile",
+   "aliases": [
+    "AS-30L",
+    "AS30",
+    "AS30L"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 520.0,
+     "unit": "kg",
+     "source": "wikipedia_as_30",
+     "locator": "Infobox, mass: 520 kg (1,146 lb): 520 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 240.0,
+     "unit": "kg",
+     "source": "wikipedia_as_30",
+     "locator": "Infobox, warhead: 240 kg (529 lb) impact-fuzed SAPHE (Semi-Armor-Piercing High-Explosive: 240 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3840.0,
+     "unit": "mm",
+     "source": "wikipedia_as_30",
+     "locator": "Infobox, length: 3.84 m (12 ft 7.57 in) for AS-30 3.65m (11 ft 11.7 in) for AS-30L: 3.84 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 340.0,
+     "unit": "mm",
+     "source": "wikipedia_as_30",
+     "locator": "Infobox, diameter: 340mm (13 in): 340 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "semi-active laser homing (AS-30L) Radio MCLOS (original AS-30)",
+     "unit": "name",
+     "source": "wikipedia_as_30",
+     "locator": "Infobox, guidance system: semi-active laser homing (AS-30L) Radio MCLOS (original AS-30)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

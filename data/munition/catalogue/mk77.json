@@ -1,0 +1,28 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mark 77 bomb from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mk77",
+   "canonical_name": "Mark 77 bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "MK77",
+    "Mk 77",
+    "Napalm"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 340.0,
+     "unit": "kg",
+     "source": "wikipedia_mark_77_bomb",
+     "locator": "Infobox, mass: 750 lb (340 kg): 340 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 2A70 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "2a70",
+   "canonical_name": "2A70",
+   "munition_type": "cannon",
+   "aliases": [
+    "2A70"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 311.6,
+     "unit": "kg",
+     "source": "wikipedia_2a70",
+     "locator": "Infobox, mass: 311.6 kilograms (687 lb): 311.6 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3942.08,
+     "unit": "mm",
+     "source": "wikipedia_2a70",
+     "locator": "Infobox, length: 3,943 millimetres (155.2 in): 155.2 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 99.06,
+     "unit": "mm",
+     "source": "wikipedia_2a70",
+     "locator": "Infobox, caliber: 100 millimetres (3.9 in): 3.9 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

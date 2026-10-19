@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-5 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl5",
+   "canonical_name": "PL-5",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-5"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 148.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_5",
+     "locator": "Infobox, mass: 148 kg (PL-5B, PL-5C), 83kg (PL-5E): 148 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 6.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_5",
+     "locator": "Infobox, warhead: 6kg blast-frag , or expanding rod (RF-fuse): 6 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3128.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_5",
+     "locator": "Infobox, length: 3.128 m (PL-5B, PL-5C), 2.893m (PL-5E): 3.128 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 127.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_5",
+     "locator": "Infobox, diameter: 0.127m (PL-5E): 0.127 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Infrared homing , multi-element, dual band detector(PL-5EII)",
+     "unit": "name",
+     "source": "wikipedia_pl_5",
+     "locator": "Infobox, guidance system: Infrared homing , multi-element, dual band detector(PL-5EII)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

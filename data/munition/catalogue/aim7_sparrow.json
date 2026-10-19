@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AIM-7 Sparrow from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aim7_sparrow",
+   "canonical_name": "AIM-7 Sparrow",
+   "munition_type": "missile",
+   "aliases": [
+    "AIM-7",
+    "CATM-7",
+    "Sparrow"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 230.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_7_sparrow",
+     "locator": "Infobox, mass: 510 lb (230 kg): 230 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 29.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_7_sparrow",
+     "locator": "Infobox, warhead: High explosive blast-fragmentation AIM-7C/D/E: 65 pounds (29 kg) AIM-7: 29 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3700.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_7_sparrow",
+     "locator": "Infobox, length: 12 ft (3.7 m): 3.7 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 200.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_7_sparrow",
+     "locator": "Infobox, diameter: 8 in (200 mm): 200 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "semi-active radar homing",
+     "unit": "name",
+     "source": "wikipedia_aim_7_sparrow",
+     "locator": "Infobox, guidance system: semi-active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

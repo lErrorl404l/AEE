@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Delilah (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "delilah",
+   "canonical_name": "Delilah (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "Delilah"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 187.0,
+     "unit": "kg",
+     "source": "wikipedia_delilah_missile",
+     "locator": "Infobox, mass: 187 kilograms (412 lb): 187 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 30.0,
+     "unit": "kg",
+     "source": "wikipedia_delilah_missile",
+     "locator": "Infobox, warhead weight: 30 kilograms (66 lb): 30 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 279.4,
+     "unit": "mm",
+     "source": "wikipedia_delilah_missile",
+     "locator": "Infobox, length: 2.71 metres (8 ft 11 in): 11 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 25.4,
+     "unit": "mm",
+     "source": "wikipedia_delilah_missile",
+     "locator": "Infobox, diameter: 0.33 metres (1 ft 1 in): 1 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "CCD \\ IIR with GPS \\ INS",
+     "unit": "name",
+     "source": "wikipedia_delilah_missile",
+     "locator": "Infobox, guidance system: CCD \\ IIR with GPS \\ INS",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

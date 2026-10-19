@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Zuni (rocket) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "zuni",
+   "canonical_name": "Zuni (rocket)",
+   "munition_type": "rocket",
+   "aliases": [
+    "Zuni"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 36.1,
+     "unit": "kg",
+     "source": "wikipedia_zuni_rocket",
+     "locator": "Infobox, mass: 79.5 pounds (36.1 kg) (motor only): 36.1 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2000.0,
+     "unit": "mm",
+     "source": "wikipedia_zuni_rocket",
+     "locator": "Infobox, length: 77 inches (2,000 mm): 2,000 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 127.0,
+     "unit": "mm",
+     "source": "wikipedia_zuni_rocket",
+     "locator": "Infobox, diameter: 5 inches (127 mm): 127 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "None",
+     "unit": "name",
+     "source": "wikipedia_zuni_rocket",
+     "locator": "Infobox, guidance system: None",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

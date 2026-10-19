@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mark 82 bomb from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'Mk 82 bomb' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mk82",
+   "canonical_name": "Mark 82 bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "MK82",
+    "Mk 82",
+    "Mk82"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 241.0,
+     "unit": "kg",
+     "source": "wikipedia_mk_82_bomb",
+     "locator": "Infobox, mass: 531 lb (241 kg): 241 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "charge_mass_kg": {
+     "value": 89.0,
+     "unit": "kg",
+     "source": "wikipedia_mk_82_bomb",
+     "locator": "Infobox, filling weight: 196 lb (89 kg): 89 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2210.0,
+     "unit": "mm",
+     "source": "wikipedia_mk_82_bomb",
+     "locator": "Infobox, length: 7 ft 3 in (2.21 m): 2.21 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 273.0,
+     "unit": "mm",
+     "source": "wikipedia_mk_82_bomb",
+     "locator": "Infobox, diameter: 10.7 in (273 mm): 273 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "filling": {
+     "value": "Tritonal",
+     "unit": "name",
+     "source": "wikipedia_mk_82_bomb",
+     "locator": "Infobox, filling: Tritonal , Comp H-6 or PBXN-109",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Storm Shadow from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "storm_shadow",
+   "canonical_name": "Storm Shadow",
+   "munition_type": "missile",
+   "aliases": [
+    "Scalp",
+    "Storm Shadow",
+    "Stormshadow"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 1300.0,
+     "unit": "kg",
+     "source": "wikipedia_storm_shadow",
+     "locator": "Infobox, mass: 1,300 kg (2,900 lb): 1,300 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 450.0,
+     "unit": "kg",
+     "source": "wikipedia_storm_shadow",
+     "locator": "Infobox, warhead weight: 450 kilograms (990 lb): 450 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 5100.0,
+     "unit": "mm",
+     "source": "wikipedia_storm_shadow",
+     "locator": "Infobox, length: 5.1 m (16 ft 9 in): 5.1 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "GPS , INS , IIR & TERPROM",
+     "unit": "name",
+     "source": "wikipedia_storm_shadow",
+     "locator": "Infobox, guidance system: GPS , INS , IIR & TERPROM",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

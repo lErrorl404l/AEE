@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Sea Eagle (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "sea_eagle",
+   "canonical_name": "Sea Eagle (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "Sea Eagle",
+    "SeaEagle"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 580.0,
+     "unit": "kg",
+     "source": "wikipedia_sea_eagle_missile",
+     "locator": "Infobox, mass: 580 kg: 580 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 230.0,
+     "unit": "kg",
+     "source": "wikipedia_sea_eagle_missile",
+     "locator": "Infobox, warhead weight: 230 kg: 230 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4140.0,
+     "unit": "mm",
+     "source": "wikipedia_sea_eagle_missile",
+     "locator": "Infobox, length: 4.14 m: 4.14 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 400.0,
+     "unit": "mm",
+     "source": "wikipedia_sea_eagle_missile",
+     "locator": "Infobox, diameter: 0.4 m: 0.4 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial, with active radar homing",
+     "unit": "name",
+     "source": "wikipedia_sea_eagle_missile",
+     "locator": "Infobox, guidance system: Inertial, with active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

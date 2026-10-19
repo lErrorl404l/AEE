@@ -1,0 +1,62 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mark 81 bomb from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mk81",
+   "canonical_name": "Mark 81 bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "MK81",
+    "MK81e",
+    "Mk 81",
+    "Mk81",
+    "SnakeEye"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 119.0,
+     "unit": "kg",
+     "source": "wikipedia_mark_81_bomb",
+     "locator": "Infobox, mass: 262 lb (119 kg): 119 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "charge_mass_kg": {
+     "value": 44.0,
+     "unit": "kg",
+     "source": "wikipedia_mark_81_bomb",
+     "locator": "Infobox, filling weight: 96 lb (44 kg): 44 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1880.0,
+     "unit": "mm",
+     "source": "wikipedia_mark_81_bomb",
+     "locator": "Infobox, length: 74 in (1.88 m): 1.88 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 230.0,
+     "unit": "mm",
+     "source": "wikipedia_mark_81_bomb",
+     "locator": "Infobox, diameter: 9 in (23 cm): 23 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "filling": {
+     "value": "Tritonal",
+     "unit": "name",
+     "source": "wikipedia_mark_81_bomb",
+     "locator": "Infobox, filling: Tritonal , Minol or Composition H-6",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

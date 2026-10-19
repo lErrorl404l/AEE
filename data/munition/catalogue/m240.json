@@ -1,0 +1,37 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M240 machine gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m240",
+   "canonical_name": "M240 machine gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "M240",
+    "M240B",
+    "M240C",
+    "M240D"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 12.5,
+     "unit": "kg",
+     "source": "wikipedia_m240_machine_gun",
+     "locator": "Infobox, mass: 27.6 lb (12.5 kg) (M240B): 12.5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1260.0,
+     "unit": "mm",
+     "source": "wikipedia_m240_machine_gun",
+     "locator": "Infobox, length: 49.7 in (1,260 mm): 1,260 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

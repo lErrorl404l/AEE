@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-88 HARM from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm88_harm",
+   "canonical_name": "AGM-88 HARM",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-88",
+    "HARM"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 361.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_88_harm",
+     "locator": "Infobox, mass: 796 lb (361 kg): 361 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 68.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_88_harm",
+     "locator": "Infobox, warhead weight: 150 lb (68 kg): 68 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4170.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_88_harm",
+     "locator": "Infobox, length: 13 ft 8 in (4.17 m): 4.17 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 254.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_88_harm",
+     "locator": "Infobox, diameter: 10 in (254 mm): 254 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Passive radar homing with home-on-jam , additional GPS/INS",
+     "unit": "name",
+     "source": "wikipedia_agm_88_harm",
+     "locator": "Infobox, guidance system: Passive radar homing with home-on-jam , additional GPS/INS",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

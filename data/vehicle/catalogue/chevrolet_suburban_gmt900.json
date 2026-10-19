@@ -1,0 +1,35 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for the GMT900 Chevrolet Suburban. The article carries one infobox per generation and only the GMT900 figure is taken; the Tahoe shares the platform but is the short-wheelbase vehicle, so this weight is NOT carried across to it.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "chevrolet_suburban_gmt900",
+      "canonical_name": "Chevrolet Suburban (GMT900)",
+      "maker": "Chevrolet",
+      "model": "Chevrolet Suburban",
+      "variant": "GMT900",
+      "variant_id": "chevrolet_suburban_gmt900",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "suburban",
+        "chevrolet suburban"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 2540,
+          "unit": "kg",
+          "source": "wikipedia_chevrolet_suburban",
+          "locator": "Tenth generation (GMT900) infobox, Curb weight: 2,540-2,857 kg (5,600-6,299 lb)",
+          "state": "curb weight, GMT900 generation, lower end of the published range; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

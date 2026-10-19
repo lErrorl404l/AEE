@@ -1,0 +1,20 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for BGL (Bombe Guidee Laser): the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. IDENTITY ONLY. The article states no mass, no warhead mass and no diameter for any BGL mark, so this entry holds no figure at all: it lets the matcher NAME the bomb and says plainly that the corpus holds nothing else about it. The mark numbers 66, 400 and 1000 are the kilogram classes the family is sold in, which is a designation, not a measured mass, so none of them is recorded as one.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "bgl",
+   "canonical_name": "BGL (Bombe Guidee Laser)",
+   "munition_type": "bomb",
+   "aliases": [
+    "BGL",
+    "BGL-1000",
+    "BGL-400",
+    "BGL-66"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

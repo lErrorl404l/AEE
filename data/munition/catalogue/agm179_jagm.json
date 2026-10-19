@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-179 JAGM from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm179_jagm",
+   "canonical_name": "AGM-179 JAGM",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-179",
+    "JAGM"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 49.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_179_jagm",
+     "locator": "Infobox, mass: 108 lb (49 kg): 49 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1778.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_179_jagm",
+     "locator": "Infobox, length: 70 in (1,778 mm): 1,778 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 178.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_179_jagm",
+     "locator": "Infobox, diameter: 7 in (178 mm): 178 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi-active laser and millimeter-wave radar",
+     "unit": "name",
+     "source": "wikipedia_agm_179_jagm",
+     "locator": "Infobox, guidance system: Semi-active laser and millimeter-wave radar",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 9M14 Malyutka from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "malyutka",
+   "canonical_name": "9M14 Malyutka",
+   "munition_type": "missile",
+   "aliases": [
+    "9K11",
+    "9M14"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 10.9,
+     "unit": "kg",
+     "source": "wikipedia_9m14_malyutka",
+     "locator": "Infobox, mass: 10.9 kg (9M14M) 11.4 kg (9M14P1) 12.5 kg (Malyutka-2) ~12 kg (Malyutka: 10.9 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 2.6,
+     "unit": "kg",
+     "source": "wikipedia_9m14_malyutka",
+     "locator": "Infobox, warhead weight: 2.6 kg (9M14M, 9M14P1) 3.5 kg (Malyutka-2, Malyutka-2F): 2.6 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 860.0,
+     "unit": "mm",
+     "source": "wikipedia_9m14_malyutka",
+     "locator": "Infobox, length: 860 mm 1,005 mm combat ready (Malyutka-2): 860 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 125.0,
+     "unit": "mm",
+     "source": "wikipedia_9m14_malyutka",
+     "locator": "Infobox, diameter: 125 mm: 125 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "MCLOS , SACLOS (Later variants)",
+     "unit": "name",
+     "source": "wikipedia_9m14_malyutka",
+     "locator": "Infobox, guidance system: MCLOS , SACLOS (Later variants)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

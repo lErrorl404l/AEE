@@ -1,0 +1,34 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AAM-3 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'Mitsubishi AAM-3' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aam3",
+   "canonical_name": "AAM-3",
+   "munition_type": "missile",
+   "aliases": [
+    "AAM-3"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 91.0,
+     "unit": "kg",
+     "source": "wikipedia_mitsubishi_aam_3",
+     "locator": "Infobox, mass: 91 kilograms (200 pounds 10 ounces ): 91 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "dual wavelength light wave homing + infrared homing/ultraviolet homing, with inf",
+     "unit": "name",
+     "source": "wikipedia_mitsubishi_aam_3",
+     "locator": "Infobox, guidance system: dual wavelength light wave homing + infrared homing/ultraviolet homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

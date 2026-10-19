@@ -1,0 +1,44 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for D-10 tank gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "d10_tank_gun",
+   "canonical_name": "D-10 tank gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "D-10",
+    "D10-T2S",
+    "D10-TG"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 1438.0,
+     "unit": "kg",
+     "source": "wikipedia_d_10_tank_gun",
+     "locator": "Infobox, mass: 1,438 kg (3,170 lbs): 1,438 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 5608.0,
+     "unit": "mm",
+     "source": "wikipedia_d_10_tank_gun",
+     "locator": "Infobox, length: 5.608 m (18 ft 4.8 in): 5.608 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 100.0,
+     "unit": "mm",
+     "source": "wikipedia_d_10_tank_gun",
+     "locator": "Infobox, calibre: 100 mm (3.93 in): 100 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

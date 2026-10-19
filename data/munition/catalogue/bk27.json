@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mauser BK-27 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "bk27",
+   "canonical_name": "Mauser BK-27",
+   "munition_type": "cannon",
+   "aliases": [
+    "BK-27",
+    "BK27"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 100.0,
+     "unit": "kg",
+     "source": "wikipedia_mauser_bk_27",
+     "locator": "Infobox, mass: 100 kg (220 lb 7 oz ): 100 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2310.0,
+     "unit": "mm",
+     "source": "wikipedia_mauser_bk_27",
+     "locator": "Infobox, length: 2.31 m (7 ft 7 in): 2.31 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 27.0,
+     "unit": "mm",
+     "source": "wikipedia_mauser_bk_27",
+     "locator": "Infobox, caliber: 27 mm (1.063 in) caliber: 27 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

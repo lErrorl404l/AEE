@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for R-27 (air-to-air missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "r27",
+   "canonical_name": "R-27 (air-to-air missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "R-27",
+    "R-27ER",
+    "R-27ET"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 253.0,
+     "unit": "kg",
+     "source": "wikipedia_r_27_air_to_air_missile",
+     "locator": "Infobox, mass: 253 kg (558 lb): 253 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 39.0,
+     "unit": "kg",
+     "source": "wikipedia_r_27_air_to_air_missile",
+     "locator": "Infobox, warhead weight: 39 kg (86 lb): 39 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4080.0,
+     "unit": "mm",
+     "source": "wikipedia_r_27_air_to_air_missile",
+     "locator": "Infobox, length: 4.08 m (13.4 ft): 4.08 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 230.0,
+     "unit": "mm",
+     "source": "wikipedia_r_27_air_to_air_missile",
+     "locator": "Infobox, diameter: 230 mm (9.1 in): 230 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi-active radar homing (R-27R/ER/EM) Active-radar homing (R-27A/EA) Infrared h",
+     "unit": "name",
+     "source": "wikipedia_r_27_air_to_air_missile",
+     "locator": "Infobox, guidance system: Semi-active radar homing (R-27R/ER/EM)  Active-radar homing (R-27A/EA)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

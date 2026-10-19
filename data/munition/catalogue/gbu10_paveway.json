@@ -1,0 +1,44 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for GBU-10 Paveway II from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gbu10_paveway",
+   "canonical_name": "GBU-10 Paveway II",
+   "munition_type": "bomb",
+   "aliases": [
+    "GBU-10",
+    "PW2",
+    "Paveway II"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 910.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_10_paveway_ii",
+     "locator": "Infobox, mass: 2,000 lb (910 kg): 910 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4370.0,
+     "unit": "mm",
+     "source": "wikipedia_gbu_10_paveway_ii",
+     "locator": "Infobox, length: 14 ft 4 in (4.37 m): 4.37 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 460.0,
+     "unit": "mm",
+     "source": "wikipedia_gbu_10_paveway_ii",
+     "locator": "Infobox, diameter: 18 in (460 mm): 460 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

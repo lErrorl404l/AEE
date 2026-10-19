@@ -1,0 +1,45 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Python (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "python_missile",
+   "canonical_name": "Python (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "Python",
+    "Python 3",
+    "Python 4",
+    "Python 5"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 103.6,
+     "unit": "kg",
+     "source": "wikipedia_python_missile",
+     "locator": "Infobox, mass: 103.6 kilograms (228 pounds 6 ounces ): 103.6 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 11.0,
+     "unit": "kg",
+     "source": "wikipedia_python_missile",
+     "locator": "Infobox, warhead: 11 kg (24 lb 4 oz): 11 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "infrared homing + 320\u00d7240 pixel dual waveband electro-optical imaging seeker, lo",
+     "unit": "name",
+     "source": "wikipedia_python_missile",
+     "locator": "Infobox, guidance system: infrared homing + 320\u00d7240 pixel dual waveband electro-optical imaging ",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

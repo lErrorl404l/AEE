@@ -1,0 +1,77 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for Cessna O-3A. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "o3a_skymaster",
+      "canonical_name": "Cessna O-3A",
+      "maker": "Cessna",
+      "model": "Cessna O-3A",
+      "variant": "base",
+      "variant_id": "o3a_skymaster",
+      "vehicle_type": "fixed_wing",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "o-3a",
+        "o3a"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_m": {
+          "value": 9.07,
+          "unit": "m",
+          "source": "wikipedia_o3a_skymaster",
+          "locator": "Specifications, length: 29 ft 9 in (9.07 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_m": {
+          "value": 2.84,
+          "unit": "m",
+          "source": "wikipedia_o3a_skymaster",
+          "locator": "Specifications, height: 9 ft 4 in (2.84 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "wing_span_m": {
+          "value": 11.58,
+          "unit": "m",
+          "source": "wikipedia_o3a_skymaster",
+          "locator": "Specifications, wingspan: 38 ft 0 in (11.58 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): wingspan as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 320,
+          "unit": "km/h",
+          "source": "wikipedia_o3a_skymaster",
+          "locator": "Specifications, maximum speed: 199 mph (320 km/h, 173 kn) at sea level",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): maximum speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "cruise_speed_kmh": {
+          "value": 232,
+          "unit": "km/h",
+          "source": "wikipedia_o3a_skymaster",
+          "locator": "Specifications, cruise speed: 144 mph (232 km/h, 125 kn) at 10,000 ft (3,000 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): cruise speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "2 × Continental IO-360 C/D air-cooled flat-six engines, 210 hp (160 kW) each",
+          "unit": "text",
+          "source": "wikipedia_o3a_skymaster",
+          "locator": "Specifications, powerplant: 2 × Continental IO-360 C/D air-cooled flat-six engines, 210 ",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): engine as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      },
+      "propulsion": "piston_prop",
+      "role": "recon"
+    }
+  ]
+}

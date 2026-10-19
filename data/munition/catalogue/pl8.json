@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-8 (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl8",
+   "canonical_name": "PL-8 (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-8"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 115.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_8_missile",
+     "locator": "Infobox, mass: 115 kg (254 lb): 115 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 11.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_8_missile",
+     "locator": "Infobox, warhead: 11 kg (24 lb) high explosive: 11 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2950.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_8_missile",
+     "locator": "Infobox, length: 2.95 m (9 ft 8 in): 2.95 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 160.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_8_missile",
+     "locator": "Infobox, diameter: 160 mm (6 in): 160 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Passive infrared homing",
+     "unit": "name",
+     "source": "wikipedia_pl_8_missile",
+     "locator": "Infobox, guidance system: Passive infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

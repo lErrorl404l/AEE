@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for R.550 Magic from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "r550_magic",
+   "canonical_name": "R.550 Magic",
+   "munition_type": "missile",
+   "aliases": [
+    "Magic",
+    "Matra 550",
+    "R.550"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 89.0,
+     "unit": "kg",
+     "source": "wikipedia_r_550_magic",
+     "locator": "Infobox, mass: 89 kg (196 lb): 89 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 12.7,
+     "unit": "kg",
+     "source": "wikipedia_r_550_magic",
+     "locator": "Infobox, warhead: High explosive pre-fragmented 12.7 kg (28 lb) warhead: 12.7 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2720.0,
+     "unit": "mm",
+     "source": "wikipedia_r_550_magic",
+     "locator": "Infobox, length: 2.72 m (8 ft 11 in): 2.72 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 157.0,
+     "unit": "mm",
+     "source": "wikipedia_r_550_magic",
+     "locator": "Infobox, diameter: 157 mm (6 in): 157 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Infrared homing",
+     "unit": "name",
+     "source": "wikipedia_r_550_magic",
+     "locator": "Infobox, guidance system: Infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

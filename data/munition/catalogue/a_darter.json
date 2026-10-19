@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for A-Darter from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "a_darter",
+   "canonical_name": "A-Darter",
+   "munition_type": "missile",
+   "aliases": [
+    "A-Darter"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 89.0,
+     "unit": "kg",
+     "source": "wikipedia_a_darter",
+     "locator": "Infobox, mass: 89 kilograms (196 lb): 89 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2971.8,
+     "unit": "mm",
+     "source": "wikipedia_a_darter",
+     "locator": "Infobox, length: 2.98 metres (117 in): 117 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 165.1,
+     "unit": "mm",
+     "source": "wikipedia_a_darter",
+     "locator": "Infobox, diameter: 0.166 metres (6.5 in): 6.5 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "dual-colour Infrared homing",
+     "unit": "name",
+     "source": "wikipedia_a_darter",
+     "locator": "Infobox, guidance system: dual-colour Infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-06",
-  "note": "First-slice aircraft catalogue capture.",
+  "note": "First-slice aircraft catalogue capture. The Su-57's prototypes were the T-50 series of the PAK FA programme (wikipedia_su57_t50), so the entry answers to those designations. Note the KAI T-50 Golden Eagle is a different aircraft and is not held here.",
   "sources": [],
   "entries": [
     {
@@ -132,7 +132,11 @@
       "era": "modern",
       "aliases": [
         "felon",
-        "su57"
+        "su57",
+        "t-50",
+        "t50",
+        "pakfa",
+        "pak fa"
       ],
       "keywords": [
         "stealth",

@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Brimstone (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "brimstone",
+   "canonical_name": "Brimstone (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "Brimstone"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 50.0,
+     "unit": "kg",
+     "source": "wikipedia_brimstone_missile",
+     "locator": "Infobox, mass: 50 kg (110 lb): 50 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 6.3,
+     "unit": "kg",
+     "source": "wikipedia_brimstone_missile",
+     "locator": "Infobox, warhead: 6.3 kg (14 lb) HEAT tandem shaped warhead: 6.3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1800.0,
+     "unit": "mm",
+     "source": "wikipedia_brimstone_missile",
+     "locator": "Infobox, length: 1.8 m (71 in): 1.8 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 180.0,
+     "unit": "mm",
+     "source": "wikipedia_brimstone_missile",
+     "locator": "Infobox, diameter: 180 mm (7.1 in): 180 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "94-GHz millimetric-wave active radar homing and INS autopilot; dual-mode, II, an",
+     "unit": "name",
+     "source": "wikipedia_brimstone_missile",
+     "locator": "Infobox, guidance system: 94-GHz millimetric-wave active radar homing and INS autopilot; dual-mo",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

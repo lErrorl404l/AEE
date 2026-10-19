@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for RBS 15 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'RBS-15' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "rbs15",
+   "canonical_name": "RBS 15",
+   "munition_type": "missile",
+   "aliases": [
+    "RBS-15"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 746.0,
+     "unit": "kg",
+     "source": "wikipedia_rbs_15",
+     "locator": "Infobox, mass: RBS 15 Mk1:  746 kg (1,645 lb) (with boosters) 568 kg (1,252 lb) (in f: 746 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 200.0,
+     "unit": "kg",
+     "source": "wikipedia_rbs_15",
+     "locator": "Infobox, warhead: 200 kg (440 lb) HE blast and pre-fragmented warhead: 200 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4350.0,
+     "unit": "mm",
+     "source": "wikipedia_rbs_15",
+     "locator": "Infobox, length: 4,350 mm (14 ft 3 in): 4,350 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 500.0,
+     "unit": "mm",
+     "source": "wikipedia_rbs_15",
+     "locator": "Infobox, diameter: 500 mm (1 ft 8 in): 500 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "RBS 15 Mk1: 70 km (43 mi) Navigation: Inertial Navigation System</span>\"}]]}'> I",
+     "unit": "name",
+     "source": "wikipedia_rbs_15",
+     "locator": "Infobox, guidance system: RBS 15 Mk1: 70 km (43 mi)  Navigation: Inertial Navigation System</spa",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

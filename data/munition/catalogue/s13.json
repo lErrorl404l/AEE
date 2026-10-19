@@ -1,0 +1,27 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for S-13 rocket from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "s13",
+   "canonical_name": "S-13 rocket",
+   "munition_type": "rocket",
+   "aliases": [
+    "S-13",
+    "S13"
+   ],
+   "keywords": [],
+   "values": {
+    "calibre_mm": {
+     "value": 122.0,
+     "unit": "mm",
+     "source": "wikipedia_s_13_rocket",
+     "locator": "Infobox, caliber: 122 mm: 122 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

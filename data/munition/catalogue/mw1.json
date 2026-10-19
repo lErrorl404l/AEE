@@ -1,0 +1,18 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for MW-1 munitions dispenser: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. IDENTITY ONLY. The only mass the article states, 3.4 kg, is a SUBMUNITION (the MUSA/MUSPA mine), not the dispenser, so it is not recorded as this weapon's mass. The article states no figure for the dispenser itself.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mw1",
+   "canonical_name": "MW-1 munitions dispenser",
+   "munition_type": "bomb",
+   "aliases": [
+    "MW-1",
+    "MW1"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

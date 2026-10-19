@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Paveway IV from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "paveway_iv",
+   "canonical_name": "Paveway IV",
+   "munition_type": "bomb",
+   "aliases": [
+    "PW4",
+    "Paveway IV"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 230.0,
+     "unit": "kg",
+     "source": "wikipedia_paveway_iv",
+     "locator": "Infobox, mass: 500 lb (230 kg): 230 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial , GPS Aided Inertial and/or Semi-Active Laser",
+     "unit": "name",
+     "source": "wikipedia_paveway_iv",
+     "locator": "Infobox, guidance system: Inertial , GPS Aided Inertial and/or Semi-Active Laser",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

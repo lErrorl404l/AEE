@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M777 howitzer from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m777",
+   "canonical_name": "M777 howitzer",
+   "munition_type": "cannon",
+   "aliases": [
+    "Howitzer 155",
+    "M777"
+   ],
+   "keywords": [],
+   "values": {
+    "length_mm": {
+     "value": 10700.0,
+     "unit": "mm",
+     "source": "wikipedia_m777_howitzer",
+     "locator": "Infobox, length: .mw-parser-output .plainlist ol,.mw-parser-output .plainlist ul{line-h: 10.7 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 155.0,
+     "unit": "mm",
+     "source": "wikipedia_m777_howitzer",
+     "locator": "Infobox, caliber: 155 mm (6.1 in): 155 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

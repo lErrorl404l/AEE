@@ -1,0 +1,37 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for S-8 rocket: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The article states a RANGE of 11.3 to 15.2 kg across the sub-types; the first bound it writes is recorded and the locator carries the whole range.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "s8_rocket",
+   "canonical_name": "S-8 rocket",
+   "munition_type": "rocket",
+   "aliases": [
+    "S-8",
+    "S-8KOM",
+    "S-8OFP",
+    "S8"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 11.3,
+     "unit": "kg",
+     "source": "wikipedia_s_8_rocket",
+     "locator": "Body: the S-8 'is 1.7 meters (5 ft 7 in) long and weighs between 11.3 kg (25 lb) and 15.2 kg (33.5 lb), depending on warhead and fuse'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 80.0,
+     "unit": "mm",
+     "source": "wikipedia_s_8_rocket",
+     "locator": "Body, lead: 'Developed in the 1970s, the S-8 is an 80 mm (3.1 in) rocket used by fighter bombers and helicopters'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

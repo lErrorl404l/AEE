@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Advanced Precision Kill Weapon System from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "apkws",
+   "canonical_name": "Advanced Precision Kill Weapon System",
+   "munition_type": "rocket",
+   "aliases": [
+    "APKWS"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 15.0,
+     "unit": "kg",
+     "source": "wikipedia_advanced_precision_kill_weapon_system",
+     "locator": "Infobox, mass: 32 lb (15 kg): 15 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1870.0,
+     "unit": "mm",
+     "source": "wikipedia_advanced_precision_kill_weapon_system",
+     "locator": "Infobox, length: 73.8 in (1.87 m): 1.87 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 70.0,
+     "unit": "mm",
+     "source": "wikipedia_advanced_precision_kill_weapon_system",
+     "locator": "Infobox, diameter: 2.75 in (70 mm) (unfired): 70 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

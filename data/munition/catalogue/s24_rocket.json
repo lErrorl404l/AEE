@@ -1,0 +1,44 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for S-24 rocket: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "s24_rocket",
+   "canonical_name": "S-24 rocket",
+   "munition_type": "rocket",
+   "aliases": [
+    "S-24",
+    "S-24B",
+    "S24"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 235.0,
+     "unit": "kg",
+     "source": "wikipedia_s_24_rocket",
+     "locator": "Body: the S-24 is '2.33 metres (7 ft 8 in) long, with a launch weight of 235 kg (520 lb)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 123.0,
+     "unit": "kg",
+     "source": "wikipedia_s_24_rocket",
+     "locator": "Body: 'It has a 123 kg (271 lb) blast-fragmentation warhead'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 240.0,
+     "unit": "mm",
+     "source": "wikipedia_s_24_rocket",
+     "locator": "Body, lead: 'The name is based on the diameter of the rocket, 24 cm (9.4 in)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

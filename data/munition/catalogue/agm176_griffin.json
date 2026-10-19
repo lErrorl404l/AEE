@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-176 Griffin from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm176_griffin",
+   "canonical_name": "AGM-176 Griffin",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-176",
+    "Griffin"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 20.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_176_griffin",
+     "locator": "Infobox, mass: 45 pounds (20 kg) (w/ launch tube): 20 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 5.9,
+     "unit": "kg",
+     "source": "wikipedia_agm_176_griffin",
+     "locator": "Infobox, warhead weight: 13 lb (5.9 kg): 5.9 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1100.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_176_griffin",
+     "locator": "Infobox, length: 42 inches (110 cm): 110 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 140.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_176_griffin",
+     "locator": "Infobox, diameter: 5.5 inches (140 mm): 140 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Laser , GPS or INS",
+     "unit": "name",
+     "source": "wikipedia_agm_176_griffin",
+     "locator": "Infobox, guidance system: Laser , GPS or INS",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

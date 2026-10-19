@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Skyflash from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "skyflash",
+   "canonical_name": "Skyflash",
+   "munition_type": "missile",
+   "aliases": [
+    "Skyflash"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 193.0,
+     "unit": "kg",
+     "source": "wikipedia_skyflash",
+     "locator": "Infobox, mass: 193 kg (425 lb): 193 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 39.5,
+     "unit": "kg",
+     "source": "wikipedia_skyflash",
+     "locator": "Infobox, warhead: 39.5 kg (87 lb): 39.5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3680.0,
+     "unit": "mm",
+     "source": "wikipedia_skyflash",
+     "locator": "Infobox, length: 3.68 m (12 ft 1 in): 3.68 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 203.0,
+     "unit": "mm",
+     "source": "wikipedia_skyflash",
+     "locator": "Infobox, diameter: 203 mm: 203 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Marconi inverse monopulse semi-active radar homing",
+     "unit": "name",
+     "source": "wikipedia_skyflash",
+     "locator": "Infobox, guidance system: Marconi inverse monopulse semi-active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

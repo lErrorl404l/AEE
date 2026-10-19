@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for DEFA cannon from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "defa_553",
+   "canonical_name": "DEFA cannon",
+   "munition_type": "cannon",
+   "aliases": [
+    "DEFA"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 80.0,
+     "unit": "kg",
+     "source": "wikipedia_defa_cannon",
+     "locator": "Infobox, mass: 552 : 80 kg (180 lb) 553 : 83 kg (183 lb) 554 : 85 kg (187 lb): 80 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1660.0,
+     "unit": "mm",
+     "source": "wikipedia_defa_cannon",
+     "locator": "Infobox, length: 552 : 1.66 m (5 ft 5 in) 553 : 1.86 m (6 ft 1 in) 554 : 2.01 m (6 ft 7: 1.66 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 30.0,
+     "unit": "mm",
+     "source": "wikipedia_defa_cannon",
+     "locator": "Infobox, calibre: 30 mm (1.2 in): 30 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

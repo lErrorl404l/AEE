@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AIM-174B Gunslinger from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aim174b",
+   "canonical_name": "AIM-174B Gunslinger",
+   "munition_type": "missile",
+   "aliases": [
+    "AIM-174",
+    "AIM-174B",
+    "Gunslinger"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 830.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_174b_gunslinger",
+     "locator": "Infobox, mass: 1,830 lb (830 kg): 830 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 64.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_174b_gunslinger",
+     "locator": "Infobox, warhead weight: 140 lb (64 kg): 64 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 5000.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_174b_gunslinger",
+     "locator": "Infobox, length: 16.5 ft (5.0 m): 5.0 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 340.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_174b_gunslinger",
+     "locator": "Infobox, diameter: 13.5 in (0.34 m): 0.34 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance , terminal active and semi-active radar homing",
+     "unit": "name",
+     "source": "wikipedia_aim_174b_gunslinger",
+     "locator": "Infobox, guidance system: Inertial guidance , terminal active and semi-active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

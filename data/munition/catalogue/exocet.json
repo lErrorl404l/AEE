@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Exocet from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "exocet",
+   "canonical_name": "Exocet",
+   "munition_type": "missile",
+   "aliases": [
+    "AM-39",
+    "Exocet"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 780.0,
+     "unit": "kg",
+     "source": "wikipedia_exocet",
+     "locator": "Infobox, mass: 780 kg (1,720 lb): 780 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 165.0,
+     "unit": "kg",
+     "source": "wikipedia_exocet",
+     "locator": "Infobox, warhead: 165 kg (364 lb): 165 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 6000.0,
+     "unit": "mm",
+     "source": "wikipedia_exocet",
+     "locator": "Infobox, length: 6 m (19 ft 8 in): 6 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 348.0,
+     "unit": "mm",
+     "source": "wikipedia_exocet",
+     "locator": "Infobox, diameter: 34.8 cm (1 ft 1.7 in): 34.8 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance , active radar homing , and GPS guidance",
+     "unit": "name",
+     "source": "wikipedia_exocet",
+     "locator": "Infobox, guidance system: Inertial guidance , active radar homing , and GPS guidance",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

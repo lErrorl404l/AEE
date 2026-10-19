@@ -1,0 +1,77 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for Lockheed L-18 Lodestar. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "l18_lodestar",
+      "canonical_name": "Lockheed L-18 Lodestar",
+      "maker": "Lockheed",
+      "model": "Lockheed L-18 Lodestar",
+      "variant": "base",
+      "variant_id": "l18_lodestar",
+      "vehicle_type": "fixed_wing",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "l-18",
+        "l18"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_m": {
+          "value": 15.19,
+          "unit": "m",
+          "source": "wikipedia_l18_lodestar",
+          "locator": "Specifications, length: 49 ft 10 in (15.19 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_m": {
+          "value": 3.61,
+          "unit": "m",
+          "source": "wikipedia_l18_lodestar",
+          "locator": "Specifications, height: 11 ft 10 in (3.61 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "wing_span_m": {
+          "value": 19.96,
+          "unit": "m",
+          "source": "wikipedia_l18_lodestar",
+          "locator": "Specifications, wingspan: 65 ft 6 in (19.96 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): wingspan as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 428,
+          "unit": "km/h",
+          "source": "wikipedia_l18_lodestar",
+          "locator": "Specifications, maximum speed: 266 mph (428 km/h, 231 kn) at 1,750 ft (530 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): maximum speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "cruise_speed_kmh": {
+          "value": 320,
+          "unit": "km/h",
+          "source": "wikipedia_l18_lodestar",
+          "locator": "Specifications, cruise speed: 200 mph (320 km/h, 170 kn)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): cruise speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "2 × Wright R-1820 -87 nine-cylinder air-cooled radial engines , 1,200 hp (890 kW) each",
+          "unit": "text",
+          "source": "wikipedia_l18_lodestar",
+          "locator": "Specifications, powerplant: 2 × Wright R-1820 -87 nine-cylinder air-cooled radial engine",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): engine as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      },
+      "propulsion": "piston_prop",
+      "role": "transport"
+    }
+  ]
+}

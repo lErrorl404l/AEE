@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for R.530 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "r530",
+   "canonical_name": "R.530",
+   "munition_type": "missile",
+   "aliases": [
+    "Matra 530",
+    "Matra 530D",
+    "R.530"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 192.0,
+     "unit": "kg",
+     "source": "wikipedia_r_530",
+     "locator": "Infobox, mass: 192 kg: 192 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 27.2,
+     "unit": "kg",
+     "source": "wikipedia_r_530",
+     "locator": "Infobox, warhead weight: 27.2 kg: 27.2 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3280.0,
+     "unit": "mm",
+     "source": "wikipedia_r_530",
+     "locator": "Infobox, length: 3.28 m: 3.28 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 263.0,
+     "unit": "mm",
+     "source": "wikipedia_r_530",
+     "locator": "Infobox, diameter: 263 mm: 263 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi active radar homing and infrared homing",
+     "unit": "name",
+     "source": "wikipedia_r_530",
+     "locator": "Infobox, guidance system: Semi active radar homing and infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Spike (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "spike",
+   "canonical_name": "Spike (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "Spike",
+    "Spike-ER",
+    "Spike-NLOS"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 34.0,
+     "unit": "kg",
+     "source": "wikipedia_spike_missile",
+     "locator": "Infobox, mass: Spike ER from Helicopter : Missile Round: 34 kg (75 lb) Launcher: 55 k: 34 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1200.0,
+     "unit": "mm",
+     "source": "wikipedia_spike_missile",
+     "locator": "Infobox, length: Spike MR/LR : 1,200 mm (3 ft 11 in) Spike ER : 1,670 mm (5 ft 6 in): 1,200 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 130.0,
+     "unit": "mm",
+     "source": "wikipedia_spike_missile",
+     "locator": "Infobox, diameter: Spike MR/LR : 130 mm (5.1 in) Spike ER : 170 mm (6.7 in): 130 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Target Acquisition : Infrared seeker CCD Missile Guidance: IIR homing CCD CCD + ",
+     "unit": "name",
+     "source": "wikipedia_spike_missile",
+     "locator": "Infobox, guidance system: Target Acquisition : Infrared seeker CCD Missile Guidance: IIR homing ",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

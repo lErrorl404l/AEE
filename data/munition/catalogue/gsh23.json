@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Gryazev-Shipunov GSh-23 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gsh23",
+   "canonical_name": "Gryazev-Shipunov GSh-23",
+   "munition_type": "cannon",
+   "aliases": [
+    "GSh-23"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 49.2,
+     "unit": "kg",
+     "source": "wikipedia_gryazev_shipunov_gsh_23",
+     "locator": "Infobox, mass: GSh-23: 49.2 kg (108 lb) GSh-23L: 50 kg (110 lb): 49.2 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1387.0,
+     "unit": "mm",
+     "source": "wikipedia_gryazev_shipunov_gsh_23",
+     "locator": "Infobox, length: GSh-23: 1,387 mm (4 ft 7 in) GSh-23L: 1,537 mm (5 ft 1 in): 1,387 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 23.0,
+     "unit": "mm",
+     "source": "wikipedia_gryazev_shipunov_gsh_23",
+     "locator": "Infobox, caliber: 23mm: 23 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

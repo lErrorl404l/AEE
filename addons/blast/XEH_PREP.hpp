@@ -20,6 +20,12 @@ PREPS(fragmentation,calculateMottCount);
 PREPS(fragmentation,calculateMottMass);
 PREPS(fragmentation,getFragmentationWarhead);
 
+// Munition identity: the real round a game class names, and what it
+// carries. Both files are GENERATED from data/munition/ by
+// tools/validation/gen_munition_data.py.
+PREPS(munition,getMunitionMatch);
+PREPS(munition,getMunitionData);
+
 // Crater kernels (issue #19): Hopkinson-Cranz scaling, the WES / TM 5-855-1
 // crater size and shape model, and the terrain grid for setTerrainHeight.
 PREPS(crater,calculateCrater);

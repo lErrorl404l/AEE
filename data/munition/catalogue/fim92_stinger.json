@@ -1,0 +1,61 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for FIM-92 Stinger from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "fim92_stinger",
+   "canonical_name": "FIM-92 Stinger",
+   "munition_type": "missile",
+   "aliases": [
+    "ATAS",
+    "FIM-92",
+    "FIM-92F",
+    "Stinger"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 10.1,
+     "unit": "kg",
+     "source": "wikipedia_fim_92_stinger",
+     "locator": "Infobox, mass: .mw-parser-output .plainlist ol,.mw-parser-output .plainlist ul{line-h: 10.1 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 3.0,
+     "unit": "kg",
+     "source": "wikipedia_fim_92_stinger",
+     "locator": "Infobox, warhead weight: 6.6 lb (3 kg): 3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1530.0,
+     "unit": "mm",
+     "source": "wikipedia_fim_92_stinger",
+     "locator": "Infobox, length: At launch \u2013 5 ft (1.53 m) In flight \u2013 4 ft 6 in (1.37 m): 1.53 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 70.0,
+     "unit": "mm",
+     "source": "wikipedia_fim_92_stinger",
+     "locator": "Infobox, diameter: 2.8 in (70 mm): 70 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Infrared homing",
+     "unit": "name",
+     "source": "wikipedia_fim_92_stinger",
+     "locator": "Infobox, guidance system: Infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

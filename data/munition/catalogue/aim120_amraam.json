@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AIM-120 AMRAAM from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aim120_amraam",
+   "canonical_name": "AIM-120 AMRAAM",
+   "munition_type": "missile",
+   "aliases": [
+    "AIM-120",
+    "AMRAAM",
+    "CATM-120"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 161.5,
+     "unit": "kg",
+     "source": "wikipedia_aim_120_amraam",
+     "locator": "Infobox, mass: 356 lb (161.5 kg): 161.5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 20.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_120_amraam",
+     "locator": "Infobox, warhead weight: 44 lb (20 kg): 20 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3650.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_120_amraam",
+     "locator": "Infobox, length: 12 ft (3.65 m): 3.65 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 178.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_120_amraam",
+     "locator": "Infobox, diameter: 7 in (178 mm): 178 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance , terminal active radar homing , optional mid-course update da",
+     "unit": "name",
+     "source": "wikipedia_aim_120_amraam",
+     "locator": "Infobox, guidance system: Inertial guidance , terminal active radar homing , optional mid-course",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

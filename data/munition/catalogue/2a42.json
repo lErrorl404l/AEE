@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Shipunov 2A42 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "2a42",
+   "canonical_name": "Shipunov 2A42",
+   "munition_type": "cannon",
+   "aliases": [
+    "2A42"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 115.0,
+     "unit": "kg",
+     "source": "wikipedia_shipunov_2a42",
+     "locator": "Infobox, mass: 115 kilograms (254 lb): 115 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3027.0,
+     "unit": "mm",
+     "source": "wikipedia_shipunov_2a42",
+     "locator": "Infobox, length: 3.027 m (9 ft 11.2 in): 3.027 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 30.0,
+     "unit": "mm",
+     "source": "wikipedia_shipunov_2a42",
+     "locator": "Infobox, caliber: 30 mm: 30 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

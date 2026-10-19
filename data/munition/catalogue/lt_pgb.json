@@ -1,0 +1,52 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for LT PGB from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "lt_pgb",
+   "canonical_name": "LT PGB",
+   "munition_type": "bomb",
+   "aliases": [
+    "LT PGB",
+    "LT-2",
+    "LT-3"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 570.0,
+     "unit": "kg",
+     "source": "wikipedia_lt_pgb",
+     "locator": "Infobox, mass: 570kg: 570 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3580.0,
+     "unit": "mm",
+     "source": "wikipedia_lt_pgb",
+     "locator": "Infobox, length: 3580mm: 3580 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 380.0,
+     "unit": "mm",
+     "source": "wikipedia_lt_pgb",
+     "locator": "Infobox, diameter: 380mm: 380 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "laser guidance",
+     "unit": "name",
+     "source": "wikipedia_lt_pgb",
+     "locator": "Infobox, guidance system: laser guidance",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

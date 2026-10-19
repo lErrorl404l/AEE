@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-9 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl9",
+   "canonical_name": "PL-9",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-9"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 123.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_9",
+     "locator": "Infobox, mass: 123kg (PL-9) 115kg (PL-9C): 123 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 11.8,
+     "unit": "kg",
+     "source": "wikipedia_pl_9",
+     "locator": "Infobox, warhead: 11.8kg blast-frag , or expanding rod (RF-fuse): 11.8 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2900.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_9",
+     "locator": "Infobox, length: 2.9m (PL-9/C): 2.9 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 157.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_9",
+     "locator": "Infobox, diameter: 0.157m (PL-9C): 0.157 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "multi-element infrared",
+     "unit": "name",
+     "source": "wikipedia_pl_9",
+     "locator": "Infobox, guidance system: multi-element infrared",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

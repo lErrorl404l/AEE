@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for ADEN cannon from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aden",
+   "canonical_name": "ADEN cannon",
+   "munition_type": "cannon",
+   "aliases": [
+    "ADEN"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 196.0,
+     "unit": "kg",
+     "source": "wikipedia_aden_cannon",
+     "locator": "Infobox, mass: 196 kg (432 lb) with 200 rounds: 196 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1590.0,
+     "unit": "mm",
+     "source": "wikipedia_aden_cannon",
+     "locator": "Infobox, length: 1,590\u20131,639 mm (5 ft 2.6 in \u2013 5 ft 4.5 in): 1,590 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 30.0,
+     "unit": "mm",
+     "source": "wikipedia_aden_cannon",
+     "locator": "Infobox, calibre: 30 mm (1.2 in): 30 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

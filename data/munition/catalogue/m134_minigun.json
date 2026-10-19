@@ -1,0 +1,36 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M134 Minigun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m134_minigun",
+   "canonical_name": "M134 Minigun",
+   "munition_type": "cannon",
+   "aliases": [
+    "M134",
+    "M134D",
+    "Minigun"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 39.0,
+     "unit": "kg",
+     "source": "wikipedia_m134_minigun",
+     "locator": "Infobox, mass: 85 lb (39 kg), 41 lb (19 kg) lightweight mod.: 39 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 801.6,
+     "unit": "mm",
+     "source": "wikipedia_m134_minigun",
+     "locator": "Infobox, length: 801.6 mm (31.56 in): 801.6 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

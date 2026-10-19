@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for CRV7: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The article states the motor's EMPTY weight, 6.6 kg, and the warhead's, 4.5 kg, but no all-up weight, so none is recorded: adding the two would be this corpus's arithmetic, not the source's figure.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "crv7",
+   "canonical_name": "CRV7",
+   "munition_type": "rocket",
+   "aliases": [
+    "CRV-7",
+    "CRV7"
+   ],
+   "keywords": [],
+   "values": {
+    "warhead_mass_kg": {
+     "value": 4.5,
+     "unit": "kg",
+     "source": "wikipedia_crv7",
+     "locator": "Body: 'The empty weight of the rocket is 6.6 kg, and it is normally equipped with a 10 lb (4.5 kg) high-explosive warhead'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 70.0,
+     "unit": "mm",
+     "source": "wikipedia_crv7",
+     "locator": "Body, lead: 'The CRV7, short for \"Canadian Rocket Vehicle 7\", is a 2.75-inch (70 mm) folding-fin ground attack rocket produced by Bristol Aerospace'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

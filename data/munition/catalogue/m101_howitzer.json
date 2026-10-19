@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M101 howitzer from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m101_howitzer",
+   "canonical_name": "M101 howitzer",
+   "munition_type": "cannon",
+   "aliases": [
+    "Howitzer 105",
+    "M101"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 2260.0,
+     "unit": "kg",
+     "source": "wikipedia_m101_howitzer",
+     "locator": "Infobox, mass: 4,980 lb (2,260 kg): 2,260 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 5940.0,
+     "unit": "mm",
+     "source": "wikipedia_m101_howitzer",
+     "locator": "Infobox, length: 19 ft 6 in (5.94 m): 5.94 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 105.0,
+     "unit": "mm",
+     "source": "wikipedia_m101_howitzer",
+     "locator": "Infobox, caliber: 105 mm (4.1 in): 105 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for OTR-21 Tochka from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "tochka",
+   "canonical_name": "OTR-21 Tochka",
+   "munition_type": "missile",
+   "aliases": [
+    "9M79",
+    "9M79-1"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 2000.0,
+     "unit": "kg",
+     "source": "wikipedia_otr_21_tochka",
+     "locator": "Infobox, mass: 2,000 kg (4,400 lb) Scarab A 2,010 kg (4,430 lb) Scarab B: 2,000 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 6400.0,
+     "unit": "mm",
+     "source": "wikipedia_otr_21_tochka",
+     "locator": "Infobox, length: 6,400 mm (250 in): 6,400 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 650.0,
+     "unit": "mm",
+     "source": "wikipedia_otr_21_tochka",
+     "locator": "Infobox, diameter: 650 mm (26 in): 650 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance , Tochka-R added passive radar against radar installations",
+     "unit": "name",
+     "source": "wikipedia_otr_21_tochka",
+     "locator": "Infobox, guidance system: Inertial guidance , Tochka-R added passive radar against radar install",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

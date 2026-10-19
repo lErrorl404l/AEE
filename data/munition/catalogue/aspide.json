@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Aspide from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aspide",
+   "canonical_name": "Aspide",
+   "munition_type": "missile",
+   "aliases": [
+    "ASPIDE"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 220.0,
+     "unit": "kg",
+     "source": "wikipedia_aspide",
+     "locator": "Infobox, mass: Aspide Mk. 1: 220 kg (490 lb) Aspide 2000: 240 kg (530 lb): 220 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 35.0,
+     "unit": "kg",
+     "source": "wikipedia_aspide",
+     "locator": "Infobox, warhead: 35 kg (77 lb): 35 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3700.0,
+     "unit": "mm",
+     "source": "wikipedia_aspide",
+     "locator": "Infobox, length: 3.7 m (12 ft): 3.7 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 203.0,
+     "unit": "mm",
+     "source": "wikipedia_aspide",
+     "locator": "Infobox, diameter: Aspide Mk. 1: 203 mm (8.0 in) Aspide 2000: 234 mm (9.2 in): 203 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "semi-active radar homing",
+     "unit": "name",
+     "source": "wikipedia_aspide",
+     "locator": "Infobox, guidance system: semi-active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

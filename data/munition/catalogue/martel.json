@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Martel (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "martel",
+   "canonical_name": "Martel (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "AJ168",
+    "AS.37",
+    "Martel"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 550.0,
+     "unit": "kg",
+     "source": "wikipedia_martel_missile",
+     "locator": "Infobox, mass: 550 kg (1,210 lb): 550 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 150.0,
+     "unit": "kg",
+     "source": "wikipedia_martel_missile",
+     "locator": "Infobox, warhead: 150 kg (330 lb) and fitted with a Misznay\u2013Schardin plate: 150 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4180.0,
+     "unit": "mm",
+     "source": "wikipedia_martel_missile",
+     "locator": "Infobox, length: 4.18 m (13 ft 9 in): 4.18 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 400.0,
+     "unit": "mm",
+     "source": "wikipedia_martel_missile",
+     "locator": "Infobox, diameter: 0.4 m (16 in): 0.4 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "passive radar homing, video guided",
+     "unit": "name",
+     "source": "wikipedia_martel_missile",
+     "locator": "Infobox, guidance system: passive radar homing, video guided",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

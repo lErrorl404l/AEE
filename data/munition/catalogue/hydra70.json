@@ -1,0 +1,57 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Hydra 70 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "hydra70",
+   "canonical_name": "Hydra 70",
+   "munition_type": "rocket",
+   "aliases": [
+    "Hydra",
+    "Hydra 70",
+    "M151",
+    "M229",
+    "M255",
+    "M257",
+    "M261",
+    "M278"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 6.2,
+     "unit": "kg",
+     "source": "wikipedia_hydra_70",
+     "locator": "Infobox, mass: 13.6 lb (6.2 kg ) (Mk 66 Mod 4 rocket motor only) about 25 lb for the : 6.2 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1060.0,
+     "unit": "mm",
+     "source": "wikipedia_hydra_70",
+     "locator": "Infobox, length: 41.7 in (1,060 mm): 1,060 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 70.0,
+     "unit": "mm",
+     "source": "wikipedia_hydra_70",
+     "locator": "Infobox, diameter: 2.75 in (70 mm): 70 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "unguided",
+     "unit": "name",
+     "source": "wikipedia_hydra_70",
+     "locator": "Infobox, guidance system: unguided",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

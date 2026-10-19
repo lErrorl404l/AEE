@@ -1,0 +1,76 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for Bristol Britannia. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bristol_britannia",
+      "canonical_name": "Bristol Britannia",
+      "maker": "Bristol",
+      "model": "Bristol Britannia",
+      "variant": "base",
+      "variant_id": "bristol_britannia",
+      "vehicle_type": "fixed_wing",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "contemporary",
+      "aliases": [
+        "britannia"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_m": {
+          "value": 37.87,
+          "unit": "m",
+          "source": "wikipedia_bristol_britannia",
+          "locator": "Specifications, length: 124 ft 3 in (37.87 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_m": {
+          "value": 11.43,
+          "unit": "m",
+          "source": "wikipedia_bristol_britannia",
+          "locator": "Specifications, height: 37 ft 6 in (11.43 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "wing_span_m": {
+          "value": 43.36,
+          "unit": "m",
+          "source": "wikipedia_bristol_britannia",
+          "locator": "Specifications, wingspan: 142 ft 3 in (43.36 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): wingspan as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 639,
+          "unit": "km/h",
+          "source": "wikipedia_bristol_britannia",
+          "locator": "Specifications, maximum speed: 397 mph (639 km/h, 345 kn)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): maximum speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "cruise_speed_kmh": {
+          "value": 575,
+          "unit": "km/h",
+          "source": "wikipedia_bristol_britannia",
+          "locator": "Specifications, cruise speed: 357 mph (575 km/h, 310 kn) at 22,000 ft (6,700 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): cruise speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "4 × Bristol Proteus 765 turboprop engines, 4,450 shp (3,320 kW) each equivalent",
+          "unit": "text",
+          "source": "wikipedia_bristol_britannia",
+          "locator": "Specifications, powerplant: 4 × Bristol Proteus 765 turboprop engines, 4,450 shp (3,320 ",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): engine as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      },
+      "propulsion": "turboprop",
+      "role": "transport"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Identity capture for the Pchela-1T reconnaissance UAV (wikipedia_pchela). The article states no figure in a form this capture reads, so none is claimed.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "pchela_1t",
+      "canonical_name": "Yakovlev Pchela-1T",
+      "maker": "Yakovlev",
+      "model": "Yakovlev Pchela-1T",
+      "variant": "base",
+      "variant_id": "pchela_1t",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "piston_prop",
+      "role": "recon",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "pchela",
+        "pchela1t",
+        "pchela-1t"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

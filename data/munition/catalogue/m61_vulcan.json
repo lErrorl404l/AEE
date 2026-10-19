@@ -1,0 +1,44 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M61 Vulcan from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m61_vulcan",
+   "canonical_name": "M61 Vulcan",
+   "munition_type": "cannon",
+   "aliases": [
+    "M61",
+    "M61A2",
+    "Vulcan"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 112.0,
+     "unit": "kg",
+     "source": "wikipedia_m61_vulcan",
+     "locator": "Infobox, mass: M61A1: 248 lb (112 kg) M61A2: 202 lb (92 kg) (light barrel), 228 lb (1: 112 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1827.0,
+     "unit": "mm",
+     "source": "wikipedia_m61_vulcan",
+     "locator": "Infobox, length: 71.93 in (1.827 m): 1.827 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 20.0,
+     "unit": "mm",
+     "source": "wikipedia_m61_vulcan",
+     "locator": "Infobox, caliber: 20 mm (0.8 in): 20 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

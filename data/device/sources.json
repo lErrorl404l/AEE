@@ -26,6 +26,22 @@
   "note": "Manufacturer datasheet. The row holds the lower bound of the published signal-to-noise range. The sheet's resolution figure conflicts with the compilation, so the resolution is not claimed."
  },
  {
+  "source_id": "armyrecognition_psq36_fgs",
+  "tier": 5,
+  "type": "compilation",
+  "title": "AN/PSQ-36 L3 FGS Fusion Goggle System technical data sheet",
+  "edition": "Page snapshot held as HTML, retrieved 2026-10-19",
+  "identifier": "https://www.armyrecognition.com/military-products/army/weapons/field-equipment/an-psq-36-l3-fgs-fusion-google-system-night-vision-binocular-technical-data-sheet-specifications",
+  "locator": "Description: 'The Fusion Goggle System (FGS) (AN/PSQ-36) is a portable, battery operated system' combining image intensification with thermal imaging",
+  "published": "",
+  "retrieved": "2026-10-19",
+  "url": "https://www.armyrecognition.com/military-products/army/weapons/field-equipment/an-psq-36-l3-fgs-fusion-google-system-night-vision-binocular-technical-data-sheet-specifications",
+  "licence": "Held for reference. Secondary source, not a maker specification.",
+  "primary_held": false,
+  "sha256": "08149b3887ccd5db8dae72d12486a18e04822c3ae818b58694b05676d33c3ad7",
+  "note": "Identity evidence: it names the AN/PSQ-36 as the L3 Fusion Goggle System, an I2 and thermal fused binocular."
+ },
+ {
   "source_id": "cui_2012_halo",
   "tier": 3,
   "type": "measurement",
@@ -76,6 +92,22 @@
   "url": "",
   "primary_held": false,
   "note": "Manufacturer note. It corroborates the two phosphor colours. It is not claimed as the source of a device figure."
+ },
+ {
+  "source_id": "geardocrow_kestrel_bnvd",
+  "tier": 5,
+  "type": "compilation",
+  "title": "First look: The Army's new KESTREL BNVDs",
+  "edition": "Weblog article held as HTML, retrieved 2026-10-19",
+  "identifier": "The Geardo Crow, 'First look: The Army's new KESTREL BNVDs', 2 May 2020",
+  "locator": "Narrative: 'The Kestrels feature dual tubes'; 'they do run white phosphor tubes'",
+  "published": "2020-05-02",
+  "retrieved": "2026-10-19",
+  "url": "https://thegeardocrow.wordpress.com/2020/05/02/first-look-the-armys-new-kestrel-bnvds/",
+  "licence": "Weblog article held for reference only.",
+  "primary_held": false,
+  "sha256": "8eeda5537989a0c159438c115c562cd711d3a9eb9d7d85fc102030a0f51afc38",
+  "note": "IDENTITY evidence only, and weak: a serving soldier's first-person account. It establishes that 'Kestrel BNVD' names a dual-tube white phosphor goggle in US Army service. It names no maker, no model number and no measured figure, so NO value is taken from it."
  },
  {
   "source_id": "l3harris_bnvd1531",
@@ -170,6 +202,22 @@
   "url": "https://www.safran-group.com/products-services/ecoti-enhanced-clip-thermal-imager-soldiers-night-vision-devices",
   "primary_held": false,
   "note": "Manufacturer product page. It corroborates the product identity only and is not claimed as the source of a device figure."
+ },
+ {
+  "source_id": "tnvc_bnvd_fused",
+  "tier": 5,
+  "type": "compilation",
+  "title": "L3Harris BNVD-FUSED Fusion Binocular (F-BINO) dealer listing",
+  "edition": "Page snapshot held as HTML, retrieved 2026-10-19",
+  "identifier": "https://tnvc.com/shop/l3harris-bnvd-fused-fusion-binocular-f-bino-envg-b-dovetail-variant/",
+  "locator": "Description: 'the culmination of several different programs including the USSOCOM AN/PVS-31A Binocular Night Vision Device (BNVD) and AN/PSQ-36 Fusion Goggle Enhanced (FGE)'",
+  "published": "",
+  "retrieved": "2026-10-19",
+  "url": "https://tnvc.com/shop/l3harris-bnvd-fused-fusion-binocular-f-bino-envg-b-dovetail-variant/",
+  "licence": "Held for reference. Secondary source, not a maker specification.",
+  "primary_held": false,
+  "sha256": "c294606547fe878e905e8311f8198a2b1ec35c40dc886456b3921486e9623b88",
+  "note": "Identity evidence only, and a dealer listing rather than the maker: it establishes that the BNVD-FUSED is its own product drawing on the AN/PVS-31A and the AN/PSQ-36."
  },
  {
   "source_id": "wikipedia_elcan_specter",

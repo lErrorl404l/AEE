@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for R-77 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "r77",
+   "canonical_name": "R-77",
+   "munition_type": "missile",
+   "aliases": [
+    "R-77"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 175.0,
+     "unit": "kg",
+     "source": "wikipedia_r_77",
+     "locator": "Infobox, mass: 175 kg (R-77), 190 kg (R-77-1): 175 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 22.5,
+     "unit": "kg",
+     "source": "wikipedia_r_77",
+     "locator": "Infobox, warhead: 22.5 kg HE fragmenting (R-77): 22.5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3600.0,
+     "unit": "mm",
+     "source": "wikipedia_r_77",
+     "locator": "Infobox, length: 3.6 m (R-77), 3.71 m (R-77-1): 3.6 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 200.0,
+     "unit": "mm",
+     "source": "wikipedia_r_77",
+     "locator": "Infobox, diameter: 200 mm: 200 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Transis guiding phase: Inertial guidance with mid-course SARH and datalink updat",
+     "unit": "name",
+     "source": "wikipedia_r_77",
+     "locator": "Infobox, guidance system: Transis guiding phase: Inertial guidance with mid-course SARH and data",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

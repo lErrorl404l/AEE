@@ -55,12 +55,22 @@ BY_CARTRIDGE = {
     "shotgun": ["12_gauge"],
 }
 
+# A machine gun is named, not implied by its cartridge: it shares its
+# chambering with rifles. Its WEIGHT CLASS, though, follows the cartridge.
+MACHINE_GUN = re.compile(
+    r"\b(m249|m240|pkm|pkp|mg3|mg42|mg5|minimi|negev|m60|rpd|rpk|saw"
+    r"|mag58|mk ?48|browning m2|dshk|kord|nsv)\b"
+)
+
+# A light machine gun fires the intermediate cartridge of the rifle it
+# serves beside - 5.56, 5.45, 7.62x39, or the 6.5 mm of a service that
+# fields one. A medium machine gun fires the full-power rifle cartridge
+# and is the heavier weapon for it, so the two must not share a figure.
+LIGHT_MG_CARTRIDGES = {"556x45_nato", "545x39", "762x39", "58x42", "65_grendel"}
+MEDIUM_MG_CARTRIDGES = {"762x51_nato", "308_win", "7_62_x_54_r"}
+
 # Families a cartridge cannot imply, matched on the weapon's own model name.
 BY_NAME = {
-    "machinegun": re.compile(
-        r"\b(m249|m240|pkm|pkp|mg3|mg42|mg5|minimi|negev|m60|rpd|rpk|saw"
-        r"|mag58|mk ?48|browning m2|dshk|kord|nsv)\b"
-    ),
     "smg": re.compile(
         r"\b(mp5|mp7|mp9|p90|uzi|scorpion|ump|vector|sten|thompson"
         r"|pp-19|bizon|apc9|mpx)\b"
@@ -73,9 +83,11 @@ CLASS_KEYWORDS = [
     ("srifle", "sniper"),
     ("sniper", "sniper"),
     ("dmr", "dmr"),
-    ("lmg", "machinegun"),
-    ("mmg", "machinegun"),
-    ("machinegun", "machinegun"),
+    ("lmg", "machinegun_light"),
+    # SAW: the squad automatic weapon, a light machine gun by designation.
+    ("saw", "machinegun_light"),
+    ("mmg", "machinegun_medium"),
+    ("machinegun", "machinegun_medium"),
     ("smg", "smg"),
     ("pdw", "smg"),
     ("revolver", "revolver"),
@@ -91,6 +103,12 @@ def load_masses() -> list:
     corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
     out = []
     for w in corpus:
+        # Only a weapon a soldier carries and loads with a cartridge can
+        # join a family median. A launcher and a crew-served gun are
+        # neither, and their masses would drag the median away from the
+        # weapons the fallback is actually asked about.
+        if w.get("kind") in ("crew_served", "launcher"):
+            continue
         values = w.get("values") or {}
         entry = values.get("mass_kg")
         if not entry:
@@ -109,13 +127,21 @@ def families(masses: list) -> dict:
         name = " ".join(
             [str(weapon.get("weapon_id") or "")] + list(weapon.get("names") or [])
         ).lower()
+        cartridge = weapon.get("cartridge_id") or ""
         family = None
-        for fam, pattern in BY_NAME.items():
-            if pattern.search(name):
-                family = fam
-                break
+        if MACHINE_GUN.search(name):
+            if cartridge in LIGHT_MG_CARTRIDGES:
+                family = "machinegun_light"
+            elif cartridge in MEDIUM_MG_CARTRIDGES:
+                family = "machinegun_medium"
+            # A heavy machine gun (12.7 mm) is neither, and is left out
+            # rather than dragged into one of their medians.
         if family is None:
-            cartridge = weapon.get("cartridge_id") or ""
+            for fam, pattern in BY_NAME.items():
+                if pattern.search(name):
+                    family = fam
+                    break
+        if family is None:
             for fam, ids in BY_CARTRIDGE.items():
                 if cartridge in ids:
                     family = fam

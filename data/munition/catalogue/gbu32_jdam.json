@@ -1,0 +1,27 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for GBU-32 JDAM: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The JDAM is a GUIDANCE KIT fitted to a Mark 80 bomb, so the entry's mass is the mass of the equipped weapon as the article states it by class: 'JDAM-equipped bombs range from 500 to 2,000 pounds (230 to 910 kg)', and 'the program expanded to the 500-pound (230 kg) Mark 82 and 1,000-pound (450 kg) Mark 83'. No charge mass is recorded: the filling is the base bomb's and the article does not restate it here.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gbu32_jdam",
+   "canonical_name": "GBU-32 JDAM",
+   "munition_type": "bomb",
+   "aliases": [
+    "GBU-32",
+    "GBU-55"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 450.0,
+     "unit": "kg",
+     "source": "wikipedia_joint_direct_attack_munition",
+     "locator": "Body: 'the program expanded to ... 1,000-pound (450 kg) Mark 83'; the GBU-32 is the Mark 83 fitted with the JDAM kit",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

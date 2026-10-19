@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Type 80 air-to-ship missile from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "asm1_type80",
+   "canonical_name": "Type 80 air-to-ship missile",
+   "munition_type": "missile",
+   "aliases": [
+    "ASM-1"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 600.0,
+     "unit": "kg",
+     "source": "wikipedia_type_80_air_to_ship_missile",
+     "locator": "Infobox, mass: 600 kg (1,323 lb): 600 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 150.0,
+     "unit": "kg",
+     "source": "wikipedia_type_80_air_to_ship_missile",
+     "locator": "Infobox, warhead weight: 150 kg (331 lb): 150 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4000.0,
+     "unit": "mm",
+     "source": "wikipedia_type_80_air_to_ship_missile",
+     "locator": "Infobox, length: 4.0 m (13.1 ft): 4.0 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 350.0,
+     "unit": "mm",
+     "source": "wikipedia_type_80_air_to_ship_missile",
+     "locator": "Infobox, diameter: 350 mm (13.8 in): 350 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance and terminal active radar homing",
+     "unit": "name",
+     "source": "wikipedia_type_80_air_to_ship_missile",
+     "locator": "Infobox, guidance system: Inertial guidance and terminal active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

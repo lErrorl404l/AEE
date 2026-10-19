@@ -2023,6 +2023,22 @@
   "note": "Held tier-5 English Wikipedia compilation for the Challenger 2. The registry marks primary_held false because the article is a secondary compilation. It carries the base mass, the gun-forward length, the width, the height, the ground clearance, the engine model and swept volume, the engine rating as a published range, the transmission gear count, the maximum road speed and the road range. The held tier-2 AESP 230-P-100-201 (1983) covers the Challenger 1 only, so it does not support this entry. Every value from this source is grade claimed."
  },
  {
+  "source_id": "wikipedia_chevrolet_suburban",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Chevrolet Suburban",
+  "edition": "English Wikipedia, article snapshot held as HTML, retrieved 2026-10-19",
+  "identifier": "English Wikipedia article 'Chevrolet Suburban'",
+  "locator": "Tenth generation (GMT900) infobox, Curb weight: 2,540-2,857 kg (5,600-6,299 lb)",
+  "retrieved": "2026-10-19",
+  "url": "https://en.wikipedia.org/wiki/Chevrolet_Suburban",
+  "archive_ref": "Held as HTML at data/vehicle/sources/wikipedia_chevrolet_suburban.html",
+  "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
+  "primary_held": false,
+  "sha256": "5277169e8eeb9bb649defd17bf1702496cc9a5077439c84bcc7b57616cb4e36a",
+  "note": "Captured to close a catalogue gap found by scanning the installed game content. The GENERATION matters: the figure is the GMT900's, not another generation's."
+ },
+ {
   "source_id": "wikipedia_chieftain",
   "tier": 5,
   "type": "compilation",

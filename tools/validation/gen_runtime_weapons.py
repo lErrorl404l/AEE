@@ -26,10 +26,32 @@ BANDS_OUT = (
 
 MIN_ALIAS = 3
 SCAN_ALIAS = 4
+# A two-character designation is still a designation: "M9" and "T3" name
+# real weapons. It is admitted only when it carries a digit, which is what
+# makes it a type number rather than an abbreviation, and only when ONE
+# entry in the catalogue advertises it - two would make it ambiguous and
+# the resolver would answer with whichever was indexed first.
+SHORT_ALIAS_MIN = 2
 
 
-def row(rec):
-    aliases = {a for a in rec.get("aliases", []) if len(a) >= MIN_ALIAS}
+def unique_short(db):
+    """The short designations exactly one catalogue entry advertises."""
+    counts = {}
+    for rec in db:
+        for alias in set(rec.get("aliases") or []):
+            if SHORT_ALIAS_MIN <= len(alias) < MIN_ALIAS and any(
+                c.isdigit() for c in alias
+            ):
+                counts[alias] = counts.get(alias, 0) + 1
+    return frozenset(a for a, n in counts.items() if n == 1)
+
+
+def row(rec, unique=frozenset()):
+    aliases = {
+        a
+        for a in rec.get("aliases", [])
+        if len(a) >= MIN_ALIAS or a in unique
+    }
     if not aliases:
         return None
     values = rec["values"]
@@ -266,7 +288,8 @@ def render_bands(rows):
 
 def _render_all():
     db = json.loads(DB.read_text(encoding="utf-8"))
-    rows = [r for r in (row(rec) for rec in db) if r]
+    unique = unique_short(db)
+    rows = [r for r in (row(rec, unique) for rec in db) if r]
     rows.sort(key=lambda r: r[0])
     return rows, band_rows(db)
 

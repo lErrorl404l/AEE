@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-65 Maverick from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm65_maverick",
+   "canonical_name": "AGM-65 Maverick",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-65",
+    "Maverick"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 210.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_65_maverick",
+     "locator": "Infobox, mass: 463\u2013670 lb (210\u2013304 kg): 210 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 57.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_65_maverick",
+     "locator": "Infobox, warhead: .mw-parser-output .plainlist ol,.mw-parser-output .plainlist ul{line-h: 57 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2490.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_65_maverick",
+     "locator": "Infobox, length: 249 cm (8 ft 2 in): 249 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 300.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_65_maverick",
+     "locator": "Infobox, diameter: 12 in (30 cm): 30 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "A/B/H/J/K: Contrast seeker D/F/G: imaging infrared guidance E/E2/L: Laser guidan",
+     "unit": "name",
+     "source": "wikipedia_agm_65_maverick",
+     "locator": "Infobox, guidance system: A/B/H/J/K: Contrast seeker D/F/G: imaging infrared guidance E/E2/L: La",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

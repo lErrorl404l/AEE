@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for TY-90 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "ty90",
+   "canonical_name": "TY-90",
+   "munition_type": "missile",
+   "aliases": [
+    "TY-90"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 25.0,
+     "unit": "kg",
+     "source": "wikipedia_ty_90",
+     "locator": "Infobox, mass: 25 kg: 25 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 3.0,
+     "unit": "kg",
+     "source": "wikipedia_ty_90",
+     "locator": "Infobox, warhead: 3 kg warhead: 3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 90.0,
+     "unit": "mm",
+     "source": "wikipedia_ty_90",
+     "locator": "Infobox, diameter: 90 mm: 90 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "ImIR IR",
+     "unit": "name",
+     "source": "wikipedia_ty_90",
+     "locator": "Infobox, guidance system: ImIR IR",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

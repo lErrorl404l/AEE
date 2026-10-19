@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for SPEAR 3 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "spear3",
+   "canonical_name": "SPEAR 3",
+   "munition_type": "missile",
+   "aliases": [
+    "SPEAR 3",
+    "Spear3"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 90.0,
+     "unit": "kg",
+     "source": "wikipedia_spear_3",
+     "locator": "Infobox, mass: < 90 kg (200 lb): 90 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1800.0,
+     "unit": "mm",
+     "source": "wikipedia_spear_3",
+     "locator": "Infobox, length: 1.8 m (5.9 ft): 1.8 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 180.0,
+     "unit": "mm",
+     "source": "wikipedia_spear_3",
+     "locator": "Infobox, diameter: 180 mm (7.1 in): 180 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Millimeter wave active radar homing , Semi-active laser guidance , GPS coupled I",
+     "unit": "name",
+     "source": "wikipedia_spear_3",
+     "locator": "Infobox, guidance system: Millimeter wave active radar homing , Semi-active laser guidance , GPS",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

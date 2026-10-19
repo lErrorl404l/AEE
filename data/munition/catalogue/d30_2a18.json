@@ -1,0 +1,37 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 122 mm howitzer 2A18 (D-30) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "d30_2a18",
+   "canonical_name": "122 mm howitzer 2A18 (D-30)",
+   "munition_type": "cannon",
+   "aliases": [
+    "2A18",
+    "2A18M",
+    "D-30",
+    "D-30A"
+   ],
+   "keywords": [],
+   "values": {
+    "length_mm": {
+     "value": 5400.0,
+     "unit": "mm",
+     "source": "wikipedia_122_mm_howitzer_2a18_d_30",
+     "locator": "Infobox, length: Transport: 5.4 m (17 ft 9 in): 5.4 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 122.0,
+     "unit": "mm",
+     "source": "wikipedia_122_mm_howitzer_2a18_d_30",
+     "locator": "Infobox, caliber: 122 mm (4.8 in): 122 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

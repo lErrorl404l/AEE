@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Kh-31 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "kh31",
+   "canonical_name": "Kh-31",
+   "munition_type": "missile",
+   "aliases": [
+    "KH-31A",
+    "Kh-31",
+    "Kh-31P"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 610.0,
+     "unit": "kg",
+     "source": "wikipedia_kh_31",
+     "locator": "Infobox, mass: Kh-31A :610 kg (1,340 lb)  Kh-31P :600 kg (1,320 lb): 610 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 94.0,
+     "unit": "kg",
+     "source": "wikipedia_kh_31",
+     "locator": "Infobox, warhead weight: Kh-31A :94 kg (207 lb)  Kh-31P :87 kg (192 lb): 94 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4700.0,
+     "unit": "mm",
+     "source": "wikipedia_kh_31",
+     "locator": "Infobox, length: Mod 1 : 4.7 m (15 ft 5 in)  Mod 2 (AD/PD) : 5.3 m (17 ft 5 in): 4.7 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 360.0,
+     "unit": "mm",
+     "source": "wikipedia_kh_31",
+     "locator": "Infobox, diameter: 360 mm (14 in): 360 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Kh-31A: inertial guidance with active radar homing Kh-31P: inertial with passive",
+     "unit": "name",
+     "source": "wikipedia_kh_31",
+     "locator": "Infobox, guidance system: Kh-31A: inertial guidance with active radar homing  Kh-31P: inertial w",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

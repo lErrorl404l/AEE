@@ -1,0 +1,36 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for LS PGB from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "ls_pgb",
+   "canonical_name": "LS PGB",
+   "munition_type": "bomb",
+   "aliases": [
+    "LS PGB",
+    "LS-6",
+    "LS-6 500"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 50.0,
+     "unit": "kg",
+     "source": "wikipedia_ls_pgb",
+     "locator": "Infobox, mass: 50 kg, 100 kg, 250 kg, 500 kg: 50 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "INS with GNSS / laser guidance /scene matching area correlator",
+     "unit": "name",
+     "source": "wikipedia_ls_pgb",
+     "locator": "Infobox, guidance system: INS with GNSS / laser guidance /scene matching area correlator",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

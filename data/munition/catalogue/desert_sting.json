@@ -1,0 +1,27 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Desert Sting from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "desert_sting",
+   "canonical_name": "Desert Sting",
+   "munition_type": "bomb",
+   "aliases": [
+    "Desert Sting",
+    "Desert Sting 16"
+   ],
+   "keywords": [],
+   "values": {
+    "warhead_mass_kg": {
+     "value": 5.0,
+     "unit": "kg",
+     "source": "wikipedia_desert_sting",
+     "locator": "Infobox, warhead: DS-5: 5kg DS-8: 7kg DS-16: 15kg DS-25: 25kg: 5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

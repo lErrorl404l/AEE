@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for R-60 (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "r60",
+   "canonical_name": "R-60 (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "R-60",
+    "R-60M"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 44.0,
+     "unit": "kg",
+     "source": "wikipedia_r_60_missile",
+     "locator": "Infobox, mass: 44 kg (97 lb): 44 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 3.0,
+     "unit": "kg",
+     "source": "wikipedia_r_60_missile",
+     "locator": "Infobox, warhead: 3 kg (6.6 lb): 3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2090.0,
+     "unit": "mm",
+     "source": "wikipedia_r_60_missile",
+     "locator": "Infobox, length: 2,090 mm (6 ft 10 in): 2,090 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 120.0,
+     "unit": "mm",
+     "source": "wikipedia_r_60_missile",
+     "locator": "Infobox, diameter: 120 mm (4.7 in): 120 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Infrared homing",
+     "unit": "name",
+     "source": "wikipedia_r_60_missile",
+     "locator": "Infobox, guidance system: Infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

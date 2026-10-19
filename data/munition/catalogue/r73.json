@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for R-73 (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "r73",
+   "canonical_name": "R-73 (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "R-73"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 105.0,
+     "unit": "kg",
+     "source": "wikipedia_r_73_missile",
+     "locator": "Infobox, mass: 105 kilograms (231 lb): 105 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 7.4,
+     "unit": "kg",
+     "source": "wikipedia_r_73_missile",
+     "locator": "Infobox, warhead: 7.4 kilograms (16 lb): 7.4 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 177.8,
+     "unit": "mm",
+     "source": "wikipedia_r_73_missile",
+     "locator": "Infobox, length: 2.93 metres (9 ft 7 in): 7 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 165.1,
+     "unit": "mm",
+     "source": "wikipedia_r_73_missile",
+     "locator": "Infobox, diameter: 165 millimetres (6.5 in): 6.5 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "All-aspect infrared homing",
+     "unit": "name",
+     "source": "wikipedia_r_73_missile",
+     "locator": "Infobox, guidance system: All-aspect infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M230 chain gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m230",
+   "canonical_name": "M230 chain gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "M230",
+    "M230-E1"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 59.5,
+     "unit": "kg",
+     "source": "wikipedia_m230_chain_gun",
+     "locator": "Infobox, mass: 59.5 kg (130 lb): 59.5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2181.0,
+     "unit": "mm",
+     "source": "wikipedia_m230_chain_gun",
+     "locator": "Infobox, length: 2,181 mm (85.9 in): 2,181 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 29.972,
+     "unit": "mm",
+     "source": "wikipedia_m230_chain_gun",
+     "locator": "Infobox, caliber: 30 millimetres (1.18 in) caliber: 1.18 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

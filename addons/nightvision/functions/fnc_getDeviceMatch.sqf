@@ -96,6 +96,7 @@ private _tableAll = [
     ["active_nv", "optic", "1pn51|1pn93|1pn120|nvs", "1pn51|1pn93|1pn120|nvs|nvg|thermal", "activenvgorthermalsight|activenvg|nvgor|orthermal|thermalsight", "aee_sensor_device_library", [3.5, 50, 5, 2.0, 14, "active"]],
     ["anvis9", "nvg", "anavs9|anvis|avs9", "anvis|avs9", "", "elbit_anvis9", ["", 64, 0, 0.5533]],
     ["bnvd1531", "nvg", "bnvd1531", "bnvd1531", "l3harrisbnvd1531|l3harris|l3harri", "", ["", 0, 0, 0]],
+    ["bnvd_fused", "nvg", "bnvdfused", "bnvdfused|fbino", "l3harrisbnvdfused|l3harris|l3harri", "", ["", 0, 0, 0]],
     ["catherine", "thermal", "catherinemp|catherine", "catherine", "catherinemplw", "aee_sensor_device_library", [0.025, 1280, 1024, 50, "cooled", 7.9, "lwir"]],
     ["coti", "thermal", "anpas29coti|coti|pas29", "coti|pas29", "pas29coti", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.15, "lwir"]],
     ["ecoti", "thermal", "ecoti", "ecoti", "safranoptics1ecoti|safranoptics|optics1|1ecoti", "safran_ecoti_datasheet", [0, 640, 480, 0, "uncooled", 0.125, "lwir"]],
@@ -108,6 +109,7 @@ private _tableAll = [
     ["helion", "thermal", "pulsarhelion|helion", "helion", "pulsarhelion", "aee_sensor_device_library", [0.04, 384, 288, 50, "uncooled", 0.5, "lwir"]],
     ["holographic", "optic", "eotechexps3|exps|553", "eotech|exps|553", "holographicsight", "aee_sensor_device_library", [1, 0, 0, 0.32, 0, "passive"]],
     ["jim_lr", "thermal", "jimlr|jim", "jim", "jimlr|safranjim|safranjimlr", "aee_sensor_device_library", [0.025, 384, 288, 50, "cooled", 2.8, "mwir"]],
+    ["kestrel_bnvd", "nvg", "kestrelbnvd", "kestrelbnvd", "kestrel", "", ["", 0, 0, 0]],
     ["m145_class", "optic", "m145mgo|c79|mgo", "m145|c79|mgo", "m145mgoandc79|m145mgo|mgoand|andc79", "aee_sensor_device_library", [3.4, 28, 8.5, 0.68, 8.2, "passive"]],
     ["mowgli", "thermal", "1pn97|mowgli", "mowgli|1pn97", "1pn97mowgli2m|mowgli2m|mowgli2", "aee_sensor_device_library", [0.05, 320, 240, 50, "uncooled", 1.5, "lwir"]],
     ["pas13_base", "thermal", "anpas13|pas13", "", "pas13", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134, "lwir"]],
@@ -116,6 +118,7 @@ private _tableAll = [
     ["pas13_v3", "thermal", "anpas13ev3|pas13v3", "pas13v3", "pas13gv3|pas13ev3hwts|pas13ev3", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.497, "lwir"]],
     ["prism_4x", "optic", "acog|ta31|ta11|m150rco|susat|zf|4x", "acog|ta31|ta11|rco|susat|zf|4x", "fixed4xprismsight|fixed4x|4xprism|prismsight", "aee_sensor_device_library", [4, 32, 7, 0.42, 8, "passive"]],
     ["pso_class", "optic", "pso1|posp|1p78|kashtan|1p69|hyperon", "pso|posp|1p78|kashtan|1p69|hyperon", "pso1andpospclass|pso1|pso1and|andposp|pospclass", "aee_sensor_device_library", [4, 24, 6, 0.6, 6, "passive"]],
+    ["psq36_fgs", "nvg", "psq36", "psq36|fgs|fge", "psq36fusiongogglesystem|psq36fusion|fusiongoggle|gogglesystem", "", ["", 0, 0, 0]],
     ["pvs14", "nvg", "anpvs14|pvs14", "pvs14", "", "elbit_pvs14", ["", 64, 31, 0.5533]],
     ["pvs15", "nvg", "anpvs15|pvs15", "pvs15", "", "l3harris_pvs15", ["", 64, 0, 0.5533]],
     ["pvs31", "nvg", "anpvs31|pvs31|pvs31a|pvs31c|nvgw", "pvs31|nvgw", "", "l3harris_pvs31c", ["white", 72, 33, 0.5533]],
@@ -245,7 +248,7 @@ private _tie = false;
                     };
                 };
             };
-            if (_score < _bestScore && {_score > _runnerUp}) then {
+            if (_score < _bestScore && _score > _runnerUp) then {
                 _runnerUp = _score;
             };
         };

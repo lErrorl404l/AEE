@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mark 83 bomb from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mk83",
+   "canonical_name": "Mark 83 bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "MK83",
+    "Mk 83",
+    "Mk83"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 447.0,
+     "unit": "kg",
+     "source": "wikipedia_mark_83_bomb",
+     "locator": "Infobox, mass: 985 lb (447 kg): 447 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 202.0,
+     "unit": "kg",
+     "source": "wikipedia_mark_83_bomb",
+     "locator": "Infobox, warhead weight: 445 lb (202 kg): 202 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3000.0,
+     "unit": "mm",
+     "source": "wikipedia_mark_83_bomb",
+     "locator": "Infobox, length: 9.8 ft (3 m) overall: 3 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 350.0,
+     "unit": "mm",
+     "source": "wikipedia_mark_83_bomb",
+     "locator": "Infobox, diameter: 14 in (350 mm): 350 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "filling": {
+     "value": "PBXN-109",
+     "unit": "name",
+     "source": "wikipedia_mark_83_bomb",
+     "locator": "Infobox, warhead: H6 or PBXN-109",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

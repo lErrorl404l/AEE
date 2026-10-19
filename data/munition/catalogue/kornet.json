@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 9M133 Kornet from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "kornet",
+   "canonical_name": "9M133 Kornet",
+   "munition_type": "missile",
+   "aliases": [
+    "9K133",
+    "9M133",
+    "Kornet"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 27.0,
+     "unit": "kg",
+     "source": "wikipedia_9m133_kornet",
+     "locator": "Infobox, mass: 27 kg (29 kg with launch tube) / 63.7 kg (weight with tripod/firing un: 27 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 4.6,
+     "unit": "kg",
+     "source": "wikipedia_9m133_kornet",
+     "locator": "Infobox, warhead weight: 4.6 kg (10 lb) HEAT: 4.6 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1200.0,
+     "unit": "mm",
+     "source": "wikipedia_9m133_kornet",
+     "locator": "Infobox, length: 1200 mm: 1200 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 152.0,
+     "unit": "mm",
+     "source": "wikipedia_9m133_kornet",
+     "locator": "Infobox, diameter: 152 mm: 152 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "SACLOS laser beam riding",
+     "unit": "name",
+     "source": "wikipedia_9m133_kornet",
+     "locator": "Infobox, guidance system: SACLOS laser beam riding",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

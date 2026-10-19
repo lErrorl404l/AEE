@@ -1,0 +1,37 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M2 Browning from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m2_browning",
+   "canonical_name": "M2 Browning",
+   "munition_type": "cannon",
+   "aliases": [
+    "M2",
+    "M2HB",
+    "M3 HMG",
+    "M3P"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 38.0,
+     "unit": "kg",
+     "source": "wikipedia_m2_browning",
+     "locator": "Infobox, mass: 38 kg (84 lb) 28 kg (62 lb) (AN/M2) 58 kg (128 lb) with tripod and tra: 38 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1654.0,
+     "unit": "mm",
+     "source": "wikipedia_m2_browning",
+     "locator": "Infobox, length: 1,654 mm (65.1 in) 1,429 mm (56.3 in) (AN/M2): 1,654 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

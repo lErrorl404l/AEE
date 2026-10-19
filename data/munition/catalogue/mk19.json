@@ -1,0 +1,36 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mk 19 grenade launcher from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mk19",
+   "canonical_name": "Mk 19 grenade launcher",
+   "munition_type": "grenade",
+   "aliases": [
+    "MK19",
+    "Mk 19",
+    "Mk. 19"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 35.2,
+     "unit": "kg",
+     "source": "wikipedia_mk_19_grenade_launcher",
+     "locator": "Infobox, mass: 77.6 pounds (35.2 kg) (empty, without accessories): 35.2 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1090.0,
+     "unit": "mm",
+     "source": "wikipedia_mk_19_grenade_launcher",
+     "locator": "Infobox, length: 43.1 inches (1,090 mm): 1,090 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

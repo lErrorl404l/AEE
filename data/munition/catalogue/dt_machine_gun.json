@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Degtyaryov machine gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "dt_machine_gun",
+   "canonical_name": "Degtyaryov machine gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "DT"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 9.12,
+     "unit": "kg",
+     "source": "wikipedia_degtyaryov_machine_gun",
+     "locator": "Infobox, mass: 9.12 kg (20.11 lb) (unloaded) 11.5 kg (25 lb) (loaded): 9.12 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1270.0,
+     "unit": "mm",
+     "source": "wikipedia_degtyaryov_machine_gun",
+     "locator": "Infobox, length: 1,270 mm (50.0 in): 1,270 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 7.62,
+     "unit": "mm",
+     "source": "wikipedia_degtyaryov_machine_gun",
+     "locator": "Infobox, caliber: 7.62 mm: 7.62 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

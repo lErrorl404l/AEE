@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AAM-4 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'Mitsubishi AAM-4' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aam4",
+   "canonical_name": "AAM-4",
+   "munition_type": "missile",
+   "aliases": [
+    "AAM-4"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 222.0,
+     "unit": "kg",
+     "source": "wikipedia_mitsubishi_aam_4",
+     "locator": "Infobox, mass: 489 lb (222 kg): 222 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 31.3,
+     "unit": "kg",
+     "source": "wikipedia_mitsubishi_aam_4",
+     "locator": "Infobox, warhead weight: 69 lb (31.3 kg): 31.3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3667.0,
+     "unit": "mm",
+     "source": "wikipedia_mitsubishi_aam_4",
+     "locator": "Infobox, length: 12 ft (3,667 mm): 3,667 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 203.0,
+     "unit": "mm",
+     "source": "wikipedia_mitsubishi_aam_4",
+     "locator": "Infobox, diameter: 8 in (203 mm): 203 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Fuzzy guidance logic Mid-Course: Inertial guidance , datalink , SARH Terminal: A",
+     "unit": "name",
+     "source": "wikipedia_mitsubishi_aam_4",
+     "locator": "Infobox, guidance system: Fuzzy guidance logic Mid-Course: Inertial guidance , datalink , SARH T",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

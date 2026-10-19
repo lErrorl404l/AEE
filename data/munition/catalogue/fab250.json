@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for FAB-250 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "fab250",
+   "canonical_name": "FAB-250",
+   "munition_type": "bomb",
+   "aliases": [
+    "FAB-250",
+    "FAB250"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 250.0,
+     "unit": "kg",
+     "source": "wikipedia_fab_250",
+     "locator": "Infobox, mass: 250 kilograms (551 lb): 250 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "charge_mass_kg": {
+     "value": 100.0,
+     "unit": "kg",
+     "source": "wikipedia_fab_250",
+     "locator": "Infobox, filling weight: 100 kg: 100 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1920.0,
+     "unit": "mm",
+     "source": "wikipedia_fab_250",
+     "locator": "Infobox, length: 1.92 m: 1.92 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 300.0,
+     "unit": "mm",
+     "source": "wikipedia_fab_250",
+     "locator": "Infobox, diameter: 0.3 m: 0.3 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

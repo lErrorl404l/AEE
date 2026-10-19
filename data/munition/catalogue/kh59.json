@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Kh-59 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "kh59",
+   "canonical_name": "Kh-59",
+   "munition_type": "missile",
+   "aliases": [
+    "KH-59me",
+    "Kh-59"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 930.0,
+     "unit": "kg",
+     "source": "wikipedia_kh_59",
+     "locator": "Infobox, mass: 930 kg (2,050 lb): 930 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 320.0,
+     "unit": "kg",
+     "source": "wikipedia_kh_59",
+     "locator": "Infobox, warhead weight: 320 kg (705 lb): 320 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 5700.0,
+     "unit": "mm",
+     "source": "wikipedia_kh_59",
+     "locator": "Infobox, length: 570 cm (220 in): 570 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 380.0,
+     "unit": "mm",
+     "source": "wikipedia_kh_59",
+     "locator": "Infobox, diameter: 38.0 cm (15.0 in): 38.0 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance (then TV guidance ), millimeter wave active radar homing (Kh-5",
+     "unit": "name",
+     "source": "wikipedia_kh_59",
+     "locator": "Infobox, guidance system: Inertial guidance (then TV guidance ), millimeter wave active radar ho",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

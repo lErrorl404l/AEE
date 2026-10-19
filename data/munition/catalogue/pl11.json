@@ -1,0 +1,34 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-11 (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl11",
+   "canonical_name": "PL-11 (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-11"
+   ],
+   "keywords": [],
+   "values": {
+    "length_mm": {
+     "value": 3700.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_11_missile",
+     "locator": "Infobox, length: 3.7 m (12 ft 2 in): 3.7 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi-active radar homing",
+     "unit": "name",
+     "source": "wikipedia_pl_11_missile",
+     "locator": "Infobox, guidance system: Semi-active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

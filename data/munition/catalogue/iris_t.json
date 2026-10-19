@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for IRIS-T from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "iris_t",
+   "canonical_name": "IRIS-T",
+   "munition_type": "missile",
+   "aliases": [
+    "IRIS-T"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 87.4,
+     "unit": "kg",
+     "source": "wikipedia_iris_t",
+     "locator": "Infobox, mass: 87.4 kg (193 lb): 87.4 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 11.4,
+     "unit": "kg",
+     "source": "wikipedia_iris_t",
+     "locator": "Infobox, warhead weight: 11.4 kg (25 lb): 11.4 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2940.0,
+     "unit": "mm",
+     "source": "wikipedia_iris_t",
+     "locator": "Infobox, length: 2.94 m (9.6 ft): 2.94 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 127.0,
+     "unit": "mm",
+     "source": "wikipedia_iris_t",
+     "locator": "Infobox, diameter: 127 mm (5.0 in): 127 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Imaging infrared homing",
+     "unit": "name",
+     "source": "wikipedia_iris_t",
+     "locator": "Infobox, guidance system: Imaging infrared homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

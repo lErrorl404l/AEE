@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 249
-- Emitted runtime rows: 249
+- Catalogue entries: 250
+- Emitted runtime rows: 250
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 248
-- Absent fields: 1123
+- Entries with an absent runtime field: 249
+- Absent fields: 1129
 
 ## 2s19_msta_s - 2S19 Msta-S (tracked)
 
@@ -1542,6 +1542,32 @@ is a labelled zero, not a refusal.
 |---|---|
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## chevrolet_suburban_gmt900 - Chevrolet Suburban (GMT900) (wheeled)
+
+- Capture: `data/vehicle/catalogue/chevrolet_suburban_gmt900.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 2540 | `wikipedia_chevrolet_suburban` | Tenth generation (GMT900) infobox, Curb weight: 2,540-2,857 kg (5,600-6,299 lb) | curb weight, GMT900 generation, lower end of the published range; source tier-5 compilation |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 

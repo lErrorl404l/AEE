@@ -1,0 +1,76 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for Hawker Siddeley Nimrod. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "hs_nimrod",
+      "canonical_name": "Hawker Siddeley Nimrod",
+      "maker": "Hawker Siddeley",
+      "model": "Hawker Siddeley Nimrod",
+      "variant": "base",
+      "variant_id": "hs_nimrod",
+      "vehicle_type": "fixed_wing",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "contemporary",
+      "aliases": [
+        "nimrod"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_m": {
+          "value": 38.63,
+          "unit": "m",
+          "source": "wikipedia_hs_nimrod",
+          "locator": "Specifications, length: 126 ft 9 in (38.63 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_m": {
+          "value": 9.4,
+          "unit": "m",
+          "source": "wikipedia_hs_nimrod",
+          "locator": "Specifications, height: 31 ft (9.4 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "wing_span_m": {
+          "value": 35.0,
+          "unit": "m",
+          "source": "wikipedia_hs_nimrod",
+          "locator": "Specifications, wingspan: 114 ft 10 in (35.00 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): wingspan as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 930,
+          "unit": "km/h",
+          "source": "wikipedia_hs_nimrod",
+          "locator": "Specifications, maximum speed: 500 kn (580 mph, 930 km/h)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): maximum speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "cruise_speed_kmh": {
+          "value": 789,
+          "unit": "km/h",
+          "source": "wikipedia_hs_nimrod",
+          "locator": "Specifications, cruise speed: 426 kn (490 mph, 789 km/h)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): cruise speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "4 × Rolls-Royce Spey turbofan engines, 12,160 lbf (54.1 kN) thrust each",
+          "unit": "text",
+          "source": "wikipedia_hs_nimrod",
+          "locator": "Specifications, powerplant: 4 × Rolls-Royce Spey turbofan engines, 12,160 lbf (54.1 kN) ",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): engine as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      },
+      "propulsion": "turbofan",
+      "role": "recon"
+    }
+  ]
+}

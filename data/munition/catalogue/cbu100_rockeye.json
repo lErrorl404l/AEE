@@ -1,0 +1,32 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for CBU-100 Rockeye II: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The article also states the Mod 6's thermal coating raises it to 229 kg, and that 'Each bomblet weighs 1.32 pounds (600 g)'. The assembled unit's mass is the weapon's; the bomblet is a submunition and is not recorded as this entry's charge.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "cbu100_rockeye",
+   "canonical_name": "CBU-100 Rockeye II",
+   "munition_type": "bomb",
+   "aliases": [
+    "CBU-100",
+    "CBU100",
+    "Mk 20",
+    "Mk 20 Rockeye II",
+    "Mk-20",
+    "Rockeye",
+    "Rockeye II"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 222.0,
+     "unit": "kg",
+     "source": "wikipedia_cbu_100_cluster_bomb",
+     "locator": "Body: 'They deploy 247 Mk 118 Rockeye submunitions, a HEAT bomblet, and weigh 489 lb (222 kg) as an assembled unit'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

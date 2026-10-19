@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for NSV machine gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "nsv",
+   "canonical_name": "NSV machine gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "NSV",
+    "NSVT"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 25.0,
+     "unit": "kg",
+     "source": "wikipedia_nsv_machine_gun",
+     "locator": "Infobox, mass: 25 kg (55.12 lb) (gun only) 41 kg (90.39 lb) on tripod 11 kg (24.25 lb: 25 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1560.0,
+     "unit": "mm",
+     "source": "wikipedia_nsv_machine_gun",
+     "locator": "Infobox, length: 1,560 mm (61.4 in): 1,560 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 12.7,
+     "unit": "mm",
+     "source": "wikipedia_nsv_machine_gun",
+     "locator": "Infobox, caliber: 12.7 mm: 12.7 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

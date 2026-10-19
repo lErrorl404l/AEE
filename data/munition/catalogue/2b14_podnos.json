@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 2B14 Podnos from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "2b14_podnos",
+   "canonical_name": "2B14 Podnos",
+   "munition_type": "mortar",
+   "aliases": [
+    "2B14",
+    "Podnos"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 41.88,
+     "unit": "kg",
+     "source": "wikipedia_2b14_podnos",
+     "locator": "Infobox, mass: 41.88 kg (92.3 lb): 41.88 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 82.0,
+     "unit": "mm",
+     "source": "wikipedia_2b14_podnos",
+     "locator": "Infobox, caliber: 82 mm (3.2 in): 82 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

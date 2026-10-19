@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Matra Durandal from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "blu107_durandal",
+   "canonical_name": "Matra Durandal",
+   "munition_type": "bomb",
+   "aliases": [
+    "BLU-107",
+    "Durandal"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 200.0,
+     "unit": "kg",
+     "source": "wikipedia_matra_durandal",
+     "locator": "Infobox, mass: 200 kg (440 lb): 200 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 100.0,
+     "unit": "kg",
+     "source": "wikipedia_matra_durandal",
+     "locator": "Infobox, warhead weight: 100 kg (220 lb) primary charge 15 kg (33 lb) secondary charge: 100 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2700.0,
+     "unit": "mm",
+     "source": "wikipedia_matra_durandal",
+     "locator": "Infobox, length: 2.7 m (8 ft 10 in): 2.7 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 223.0,
+     "unit": "mm",
+     "source": "wikipedia_matra_durandal",
+     "locator": "Infobox, diameter: 22.3 cm (8.8 in): 22.3 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

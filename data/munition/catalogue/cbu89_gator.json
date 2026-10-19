@@ -1,0 +1,45 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for CBU-89 GATOR: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The Navy CBU-78/B on the same article is the 230 kg (500 lb) dispenser; the Air Force CBU-89/B figure is the one recorded, and the alias list carries both designations because the article states they are the same mine system in two dispensers.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "cbu89_gator",
+   "canonical_name": "CBU-89 GATOR",
+   "munition_type": "bomb",
+   "aliases": [
+    "CBU-104",
+    "CBU-78",
+    "CBU-89",
+    "Gator"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 450.0,
+     "unit": "kg",
+     "source": "wikipedia_gator_mine_system",
+     "locator": "Body: 'CBU-89/B Primary function: 450 kg (1,000 lb) unpowered cluster munition weapon'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2340.0,
+     "unit": "mm",
+     "source": "wikipedia_gator_mine_system",
+     "locator": "Body: 'Length: 2.34 m (7 ft 8 in)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 410.0,
+     "unit": "mm",
+     "source": "wikipedia_gator_mine_system",
+     "locator": "Body: 'Diameter: 410 mm (16 in)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

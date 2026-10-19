@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Meteor (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "meteor",
+   "canonical_name": "Meteor (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "Meteor"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 190.0,
+     "unit": "kg",
+     "source": "wikipedia_meteor_missile",
+     "locator": "Infobox, mass: 190 kg (419 lb): 190 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3650.0,
+     "unit": "mm",
+     "source": "wikipedia_meteor_missile",
+     "locator": "Infobox, length: 3.65 m (12 ft 0 in): 3.65 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 178.0,
+     "unit": "mm",
+     "source": "wikipedia_meteor_missile",
+     "locator": "Infobox, diameter: 17.8 cm (7.0 in): 17.8 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance , mid-course update via datalink, terminal active radar homing",
+     "unit": "name",
+     "source": "wikipedia_meteor_missile",
+     "locator": "Infobox, guidance system: Inertial guidance , mid-course update via datalink, terminal active ra",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

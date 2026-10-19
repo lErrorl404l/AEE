@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for ASRAAM from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'AIM-132 ASRAAM' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aim132_asraam",
+   "canonical_name": "ASRAAM",
+   "munition_type": "missile",
+   "aliases": [
+    "AIM-132",
+    "ASRAAM"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 88.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_132_asraam",
+     "locator": "Infobox, mass: 88 kg (194 lb): 88 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 10.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_132_asraam",
+     "locator": "Infobox, warhead: 10 kg (22 lb) blast/fragmentation: 10 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2900.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_132_asraam",
+     "locator": "Infobox, length: 2.90 m (9 ft 6 in): 2.90 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 166.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_132_asraam",
+     "locator": "Infobox, diameter: 166 mm (6.5 in) (motor diameter): 166 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Blocks 1-5: Hughes (Raytheon) Imaging infrared homing , 128\u00d7128 element focal pl",
+     "unit": "name",
+     "source": "wikipedia_aim_132_asraam",
+     "locator": "Infobox, guidance system: Blocks 1-5: Hughes (Raytheon) Imaging infrared homing , 128\u00d7128 elemen",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

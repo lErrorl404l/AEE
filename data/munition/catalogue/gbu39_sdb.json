@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for GBU-39 Small Diameter Bomb from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gbu39_sdb",
+   "canonical_name": "GBU-39 Small Diameter Bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "GBU-39",
+    "SDB"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 129.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_39_small_diameter_bomb",
+     "locator": "Infobox, mass: 285 lb (129 kg): 129 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 93.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_39_small_diameter_bomb",
+     "locator": "Infobox, warhead weight: All SDB I variants 206 lb (93 kg) total   SDB I (GBU-39/B) Explosive f: 93 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1800.0,
+     "unit": "mm",
+     "source": "wikipedia_gbu_39_small_diameter_bomb",
+     "locator": "Infobox, length: 70.8 in (1.80 m): 1.80 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "SDB I (GBU-39/B) SDB FLM (GBU-39A/B) GPS / INS Laser SDB (GBU-39B/B) GPS / INS w",
+     "unit": "name",
+     "source": "wikipedia_gbu_39_small_diameter_bomb",
+     "locator": "Infobox, guidance system: SDB I (GBU-39/B) SDB FLM (GBU-39A/B) GPS / INS Laser SDB (GBU-39B/B) G",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

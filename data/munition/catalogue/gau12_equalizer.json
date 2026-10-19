@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for GAU-12 Equalizer from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gau12_equalizer",
+   "canonical_name": "GAU-12 Equalizer",
+   "munition_type": "cannon",
+   "aliases": [
+    "GAU-12",
+    "GAU-22"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 120.0,
+     "unit": "kg",
+     "source": "wikipedia_gau_12_equalizer",
+     "locator": "Infobox, mass: GAU-12: 270 pounds (120 kg) with feed system GAU-22: 230 pounds (100 k: 120 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2110.0,
+     "unit": "mm",
+     "source": "wikipedia_gau_12_equalizer",
+     "locator": "Infobox, length: 83.2 in (2.11 m): 2.11 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 25.0,
+     "unit": "mm",
+     "source": "wikipedia_gau_12_equalizer",
+     "locator": "Infobox, caliber: 25 mm (0.98 in): 25 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

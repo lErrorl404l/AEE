@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-15 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl15",
+   "canonical_name": "PL-15",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-15"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 200.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_15",
+     "locator": "Infobox, mass: 200\u2013230 kg (441\u2013507 lb) (PL-15)  \u2264210 kg (463 lb) (PL-15E): 200 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3996.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_15",
+     "locator": "Infobox, length: 399.6 cm (13 ft 1.3 in) (PL-15E): 399.6 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 203.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_15",
+     "locator": "Infobox, diameter: 20.3 cm (8.0 in) (PL-15E): 20.3 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Active radar homing",
+     "unit": "name",
+     "source": "wikipedia_pl_15",
+     "locator": "Infobox, guidance system: Active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

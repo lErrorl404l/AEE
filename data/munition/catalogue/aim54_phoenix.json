@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AIM-54 Phoenix from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aim54_phoenix",
+   "canonical_name": "AIM-54 Phoenix",
+   "munition_type": "missile",
+   "aliases": [
+    "AIM-54",
+    "CATM-54",
+    "Phoenix"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 443.0,
+     "unit": "kg",
+     "source": "wikipedia_aim_54_phoenix",
+     "locator": "Infobox, mass: AIM-54A/B - 976 lb (443 kg) AIM-54C \u2013 1,015 lb (460 kg): 443 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 60.33,
+     "unit": "kg",
+     "source": "wikipedia_aim_54_phoenix",
+     "locator": "Infobox, warhead weight: 133 lb (60.33 kg): 60.33 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3900.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_54_phoenix",
+     "locator": "Infobox, length: .mw-parser-output .frac{white-space:nowrap}.mw-parser-output .frac .nu: 3.9 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 380.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_54_phoenix",
+     "locator": "Infobox, diameter: 15 in (380 mm): 380 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi-active radar homing and terminal phase active radar homing",
+     "unit": "name",
+     "source": "wikipedia_aim_54_phoenix",
+     "locator": "Infobox, guidance system: Semi-active radar homing and terminal phase active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

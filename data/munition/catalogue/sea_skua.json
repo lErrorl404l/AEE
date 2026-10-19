@@ -1,0 +1,67 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Sea Skua from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "sea_skua",
+   "canonical_name": "Sea Skua",
+   "munition_type": "missile",
+   "aliases": [
+    "Sea Skua",
+    "SeaSkua"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 145.0,
+     "unit": "kg",
+     "source": "wikipedia_sea_skua",
+     "locator": "Infobox, mass: 145 kg: 145 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 30.0,
+     "unit": "kg",
+     "source": "wikipedia_sea_skua",
+     "locator": "Infobox, warhead: 30 kg semi armour piercing, 9 kg RDX: 30 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2500.0,
+     "unit": "mm",
+     "source": "wikipedia_sea_skua",
+     "locator": "Infobox, length: 2.5 m: 2.5 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 250.0,
+     "unit": "mm",
+     "source": "wikipedia_sea_skua",
+     "locator": "Infobox, diameter: 0.25 m: 0.25 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "filling": {
+     "value": "RDX",
+     "unit": "name",
+     "source": "wikipedia_sea_skua",
+     "locator": "Infobox, warhead: 30 kg semi armour piercing, 9 kg RDX",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi-active radar homing",
+     "unit": "name",
+     "source": "wikipedia_sea_skua",
+     "locator": "Infobox, guidance system: Semi-active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for KAB-500L: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The article adds that 'roughly 50% is blast-effect high explosive'. 'Roughly' is not a figure, so no charge mass is recorded: halving the warhead would be this corpus's estimate, not the source's.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "kab500l",
+   "canonical_name": "KAB-500L",
+   "munition_type": "bomb",
+   "aliases": [
+    "KAB-250L",
+    "KAB-500",
+    "KAB-500Kr",
+    "KAB-500L",
+    "KAB-500S-E",
+    "KAB500",
+    "KAB500KR",
+    "KAB500S-E"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 525.0,
+     "unit": "kg",
+     "source": "wikipedia_kab_500l",
+     "locator": "Body: the KAB-500L 'weighs 525 kg (1,157 lb)'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 450.0,
+     "unit": "kg",
+     "source": "wikipedia_kab_500l",
+     "locator": "Body: 'Its warhead makes up 450 kg (990 lb) of the total weight'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

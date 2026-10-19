@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Lightweight Multirole Missile from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'Martlet (missile' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "martlet_lmm",
+   "canonical_name": "Lightweight Multirole Missile",
+   "munition_type": "missile",
+   "aliases": [
+    "LMM",
+    "Martlet"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 13.0,
+     "unit": "kg",
+     "source": "wikipedia_martlet_missile",
+     "locator": "Infobox, mass: 13 kg (29 lb): 13 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 3.0,
+     "unit": "kg",
+     "source": "wikipedia_martlet_missile",
+     "locator": "Infobox, warhead weight: 3 kg (6.6 lb): 3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1300.0,
+     "unit": "mm",
+     "source": "wikipedia_martlet_missile",
+     "locator": "Infobox, length: 1.3 m (4 ft 3 in): 1.3 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 76.0,
+     "unit": "mm",
+     "source": "wikipedia_martlet_missile",
+     "locator": "Infobox, diameter: 76 mm (3.0 in): 76 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "SAL + LBR (Mode A) IR Terminal homing (Mode B) IIR Terminal homing (Mode C) INS ",
+     "unit": "name",
+     "source": "wikipedia_martlet_missile",
+     "locator": "Infobox, guidance system: SAL + LBR (Mode A) IR Terminal homing (Mode B) IIR Terminal homing (Mo",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for S-25 (rocket) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'S-25 rocket' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "s25",
+   "canonical_name": "S-25 (rocket)",
+   "munition_type": "rocket",
+   "aliases": [
+    "S-25",
+    "S25",
+    "S25L",
+    "S25O"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 370.0,
+     "unit": "kg",
+     "source": "wikipedia_s_25_rocket",
+     "locator": "Infobox, mass: 820 lb (370 kg): 370 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3560.0,
+     "unit": "mm",
+     "source": "wikipedia_s_25_rocket",
+     "locator": "Infobox, length: 140 in (3.56 m): 3.56 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 340.0,
+     "unit": "mm",
+     "source": "wikipedia_s_25_rocket",
+     "locator": "Infobox, diameter: 13 in (340 mm): 340 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "unguided / laser-guided (S-25L)",
+     "unit": "name",
+     "source": "wikipedia_s_25_rocket",
+     "locator": "Infobox, guidance system: unguided / laser-guided (S-25L)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

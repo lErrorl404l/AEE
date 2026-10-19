@@ -11,8 +11,9 @@ and stringtables are read. A binarised config is rapified, which this
 decodes directly rather than shelling out to an unpacking tool. A whole
 install scans in seconds.
 
-Each row is {source, kind, class, display, parent, fmt}:
-  kind    CfgVehicles, CfgWeapons or CfgMagazines
+Each row is {source, kind, class, display, parent, fmt, feeds, magazines,
+ammo, damage}:
+  kind    CfgVehicles, CfgWeapons, CfgMagazines or CfgAmmo
   display the resolved display name; a $STR_ key is resolved from the
           stringtable.xml files inside the scanned PBOs themselves
   parent  the class it inherits, so a consumer can walk the chain and tell
@@ -20,6 +21,14 @@ Each row is {source, kind, class, display, parent, fmt}:
   feeds   true when the class declares magazines or muzzles, which is what
           separates a firearm from the uniforms and helmets that also live
           in CfgWeapons
+  magazines the magazines the class feeds from, its own and its muzzles',
+          so a consumer can follow a weapon to the round it fires
+  ammo    the CfgAmmo class a magazine holds
+  damage  what a round does on arrival, the largest of hit, indirectHit
+          and explosive. A fire-control entry - a master arm switch, a
+          burst limit, a pod inhibit - lives in CfgWeapons and declares
+          magazines like any weapon, but nothing it can reach does any
+          damage, which is how it is told apart from a weapon
   fmt     "bin" for a binarised config, "cpp" for raw source. Raw source
           is NOT preprocessed here, so a config built from macros can
           mis-associate a display name: trust "bin" for measurement.
@@ -43,7 +52,7 @@ from pathlib import Path
 WANT = re.compile(r"(config\.(cpp|bin)|stringtable\.xml)$", re.I)
 STR_RE = re.compile(r'<Key ID="([^"]+)"[^>]*>(.*?)</Key>', re.S | re.I)
 ENG_RE = re.compile(r"<(?:English|Original)>(.*?)</(?:English|Original)>", re.S | re.I)
-ROOTS = ("CfgVehicles", "CfgWeapons", "CfgMagazines")
+ROOTS = ("CfgVehicles", "CfgWeapons", "CfgMagazines", "CfgAmmo")
 
 
 # ─── PBO container ─────────────────────────────────────────────────────────
@@ -285,6 +294,20 @@ def scan(path: Path, table: dict):
                             cb = r.body(coff)
                         except Exception:
                             continue
+                        # What this class FIRES, read from the config so a
+                        # consumer can tell a weapon that launches something
+                        # from a fire-control entry that launches nothing.
+                        # A weapon hangs its magazines on itself or on its
+                        # muzzle subclasses, so both are read.
+                        mags = list(cb.get("magazines") or [])
+                        for muzzle in (cb.get("muzzles") or []):
+                            moff = cb["__children__"].get(str(muzzle))
+                            if moff is None:
+                                continue
+                            try:
+                                mags.extend(r.body(moff).get("magazines") or [])
+                            except Exception:
+                                continue
                         rows.append(
                             (
                                 rootname,
@@ -297,6 +320,9 @@ def scan(path: Path, table: dict):
                                 # helmets, which never do, so this is what
                                 # separates a weapon from a wearable.
                                 bool(cb.get("magazines") or cb.get("muzzles")),
+                                [str(m) for m in mags],
+                                str(cb.get("ammo") or ""),
+                                _damage(cb),
                             )
                         )
             except Exception:
@@ -309,11 +335,23 @@ def scan(path: Path, table: dict):
     local = dict(table)
     local.update(strings)
     out = []
-    for kind, cls, dn, parent, fmt, feeds in rows:
+    for row in rows:
+        kind, cls, dn, parent, fmt, feeds = row[:6]
         if dn.startswith("$"):
             dn = local.get(dn[1:].upper(), dn)
-        out.append((kind, cls, dn, parent, fmt, feeds))
+        rest = tuple(row[6:]) or ([], "", 0.0)
+        out.append((kind, cls, dn, parent, fmt, feeds) + tuple(rest))
     return out, strings
+
+
+def _damage(cb) -> float:
+    """What this round does on arrival, as the config states it."""
+    out = 0.0
+    for field in ("hit", "indirectHit", "explosive"):
+        value = cb.get(field)
+        if isinstance(value, (int, float)):
+            out = max(out, float(value))
+    return out
 
 
 def collect_strings(pbos) -> dict:
@@ -363,7 +401,9 @@ def main() -> int:
                 rows, _ = scan(pbo, table)
             except Exception:
                 continue
-            for kind, cls, dn, parent, fmt, feeds in rows:
+            for row in rows:
+                kind, cls, dn, parent, fmt, feeds = row[:6]
+                mags, ammo, damage = (list(row[6:]) + [[], "", 0.0])[:3]
                 out.write(
                     json.dumps(
                         {
@@ -374,6 +414,9 @@ def main() -> int:
                             "parent": parent,
                             "fmt": fmt,
                             "feeds": feeds,
+                            "magazines": mags,
+                            "ammo": ammo,
+                            "damage": damage,
                         }
                     )
                     + "\n"

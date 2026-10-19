@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-114 Hellfire from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm114_hellfire",
+   "canonical_name": "AGM-114 Hellfire",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-114",
+    "Hellfire"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 45.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_114_hellfire",
+     "locator": "Infobox, mass: 100\u2013108 lb (45\u201349 kg): 45 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1600.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_114_hellfire",
+     "locator": "Infobox, length: 64 in (1.6 m): 1.6 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 180.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_114_hellfire",
+     "locator": "Infobox, diameter: 7 in (180 mm): 180 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi-active laser homing Millimeter-wave radar seeker",
+     "unit": "name",
+     "source": "wikipedia_agm_114_hellfire",
+     "locator": "Infobox, guidance system: Semi-active laser homing Millimeter-wave radar seeker",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

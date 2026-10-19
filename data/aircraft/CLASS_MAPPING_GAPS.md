@@ -13,8 +13,8 @@ speed values that no binding reaches.
 - Air tokens with a binding: 3
 - Air tokens without a binding: 1
 - Class bindings: 99
-- Catalogue entries holding max_speed_kmh: 7
-- Of those with no class binding: 7
+- Catalogue entries holding max_speed_kmh: 12
+- Of those with no class binding: 12
 
 ## Class binding records
 

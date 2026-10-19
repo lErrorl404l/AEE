@@ -1,0 +1,28 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for RBK-500: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The article states nothing else numeric, so nothing else is recorded.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "rbk500",
+   "canonical_name": "RBK-500",
+   "munition_type": "bomb",
+   "aliases": [
+    "RBK-500",
+    "RBK-500 SPBE-D",
+    "RBK500"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 500.0,
+     "unit": "kg",
+     "source": "wikipedia_rbk_500",
+     "locator": "Body, lead: 'RBK-500 is a Russian 500 kg cluster bomb'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

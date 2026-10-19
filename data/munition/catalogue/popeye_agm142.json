@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Popeye (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "popeye_agm142",
+   "canonical_name": "Popeye (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-142",
+    "Popeye",
+    "Raptor"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 1360.0,
+     "unit": "kg",
+     "source": "wikipedia_popeye_missile",
+     "locator": "Infobox, mass: 1,360 kg (3,000 lb): 1,360 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 340.0,
+     "unit": "kg",
+     "source": "wikipedia_popeye_missile",
+     "locator": "Infobox, warhead: 340 kg (750 lb) blast fragmentation or 360 kg (790 lb) I-800 penetrati: 340 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4820.0,
+     "unit": "mm",
+     "source": "wikipedia_popeye_missile",
+     "locator": "Infobox, length: 4.82 m (15 ft 10 in): 4.82 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 533.0,
+     "unit": "mm",
+     "source": "wikipedia_popeye_missile",
+     "locator": "Infobox, diameter: 533 mm (21.0 in): 533 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial plus IIR or TV",
+     "unit": "name",
+     "source": "wikipedia_popeye_missile",
+     "locator": "Infobox, guidance system: Inertial plus IIR or TV",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

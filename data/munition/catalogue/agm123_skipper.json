@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-123 Skipper II from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'AGM-123 Skipper' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm123_skipper",
+   "canonical_name": "AGM-123 Skipper II",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-123",
+    "Skipper"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 582.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_123_skipper",
+     "locator": "Infobox, mass: 582 kg (1,283 lb): 582 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 450.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_123_skipper",
+     "locator": "Infobox, warhead: 1000 lb (450 kg) Mk 83 bomb: 450 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4300.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_123_skipper",
+     "locator": "Infobox, length: 4.3 m (14 ft 1.2 in): 4.3 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 500.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_123_skipper",
+     "locator": "Infobox, diameter: 0.5 m (1 ft 7.6 in): 0.5 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "laser-guidance",
+     "unit": "name",
+     "source": "wikipedia_agm_123_skipper",
+     "locator": "Infobox, guidance system: laser-guidance",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

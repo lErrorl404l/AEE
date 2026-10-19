@@ -1,0 +1,40 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for S-5 rocket: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The article states 'about 5 kg ... depending on warhead and fuze' for the S-5 and 6 kg for the later S-5M; the S-5 figure is the one recorded, and the variation is the article's own. The alias '57mm' is the launch tube the held source states - 'a 55 mm (2.2 in) calibre unguided rocket fired from a 57 mm calibre tube' - because that is the figure a rocket pod of them is labelled with.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "s5_rocket",
+   "canonical_name": "S-5 rocket",
+   "munition_type": "rocket",
+   "aliases": [
+    "57 mm",
+    "57mm",
+    "S-5",
+    "S-5K",
+    "S-5M",
+    "S-5MO",
+    "S5"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 5.0,
+     "unit": "kg",
+     "source": "wikipedia_s_5_rocket",
+     "locator": "Body: the S-5 'is 1.4 meters (4 feet 7 inches) long and weighs about 5 kg (11 lb), depending on warhead and fuze'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 55.0,
+     "unit": "mm",
+     "source": "wikipedia_s_5_rocket",
+     "locator": "Body, lead: 'The S-5 is a 55 mm (2.2 in) calibre unguided rocket fired from a 57 mm calibre tube.' The ROCKET's calibre is recorded; 57 mm is the launch tube, not the round.",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

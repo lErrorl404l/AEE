@@ -268,7 +268,7 @@ private _tie = false;
                     };
                 };
             };
-            if (_score < _bestScore && {_score > _runnerUp}) then {
+            if (_score < _bestScore && _score > _runnerUp) then {
                 _runnerUp = _score;
             };
         };

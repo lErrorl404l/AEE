@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for DShK from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "dshk",
+   "canonical_name": "DShK",
+   "munition_type": "cannon",
+   "aliases": [
+    "DShK",
+    "DShKM"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 34.0,
+     "unit": "kg",
+     "source": "wikipedia_dshk",
+     "locator": "Infobox, mass: 34 kg (74 lb 15 oz) (gun only) 157 kg (346 lb 2 oz) on wheeled mountin: 34 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1625.0,
+     "unit": "mm",
+     "source": "wikipedia_dshk",
+     "locator": "Infobox, length: 1,625 mm (5 ft 4.0 in): 1,625 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

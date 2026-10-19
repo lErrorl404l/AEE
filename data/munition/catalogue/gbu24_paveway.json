@@ -1,0 +1,52 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for GBU-24 Paveway III from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gbu24_paveway",
+   "canonical_name": "GBU-24 Paveway III",
+   "munition_type": "bomb",
+   "aliases": [
+    "GBU-24",
+    "PW3",
+    "Paveway III"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 1050.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_24_paveway_iii",
+     "locator": "Infobox, mass: 1,050 kg (2,315 lb): 1,050 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "charge_mass_kg": {
+     "value": 910.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_24_paveway_iii",
+     "locator": "Infobox, filling weight: 910 kilograms (2,000 lb): 910 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4390.0,
+     "unit": "mm",
+     "source": "wikipedia_gbu_24_paveway_iii",
+     "locator": "Infobox, length: 4.39 m (14 ft 5 in): 4.39 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 457.2,
+     "unit": "mm",
+     "source": "wikipedia_gbu_24_paveway_iii",
+     "locator": "Infobox, diameter: 460 millimetres (18 in): 18 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

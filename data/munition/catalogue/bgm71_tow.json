@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for BGM-71 TOW from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "bgm71_tow",
+   "canonical_name": "BGM-71 TOW",
+   "munition_type": "missile",
+   "aliases": [
+    "BGM-71",
+    "TOW"
+   ],
+   "keywords": [],
+   "values": {
+    "warhead_mass_kg": {
+     "value": 3.9,
+     "unit": "kg",
+     "source": "wikipedia_bgm_71_tow",
+     "locator": "Infobox, warhead weight: 3.9\u20136.14 kg (penetration 430\u2013900 mm RHA ): 3.9 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1160.0,
+     "unit": "mm",
+     "source": "wikipedia_bgm_71_tow",
+     "locator": "Infobox, length: 1.16\u20131.17 m with probe folded 1.41\u20131.51 m with probe extended (some va: 1.16 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 152.0,
+     "unit": "mm",
+     "source": "wikipedia_bgm_71_tow",
+     "locator": "Infobox, diameter: 152 mm: 152 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Optically tracked, wire-guided ( Wireless radio-guided in RF variants)",
+     "unit": "name",
+     "source": "wikipedia_bgm_71_tow",
+     "locator": "Infobox, guidance system: Optically tracked, wire-guided ( Wireless radio-guided in RF variants)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

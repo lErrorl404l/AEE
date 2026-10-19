@@ -1,0 +1,44 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for CBU-97 Sensor Fuzed Weapon from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "cbu97_sfw",
+   "canonical_name": "CBU-97 Sensor Fuzed Weapon",
+   "munition_type": "bomb",
+   "aliases": [
+    "CBU-105",
+    "CBU-97",
+    "SFW"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 427.0,
+     "unit": "kg",
+     "source": "wikipedia_cbu_97_sensor_fuzed_weapon",
+     "locator": "Infobox, mass: 941 lb (427 kg): 427 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2340.0,
+     "unit": "mm",
+     "source": "wikipedia_cbu_97_sensor_fuzed_weapon",
+     "locator": "Infobox, length: 7 ft 8 in (2.34 m): 2.34 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 400.0,
+     "unit": "mm",
+     "source": "wikipedia_cbu_97_sensor_fuzed_weapon",
+     "locator": "Infobox, diameter: 16 in (400 mm): 400 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

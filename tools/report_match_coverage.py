@@ -27,21 +27,76 @@ REPO = Path(__file__).parents[1]
 VEHICLE = REPO / "addons/vehicles/functions/fnc_getVehicleMatch.sqf"
 AIRCRAFT = REPO / "addons/flight/functions/fnc_getAircraftMatch.sqf"
 WEAPON = REPO / "addons/ballistics/functions/fnc_getWeaponData.sqf"
+MUNITION_TABLE = REPO / "addons/blast/functions/munition/fnc_getMunitionMatch.sqf"
 
-# CfgWeapons also holds vehicle armament. The weapon catalogue is a
-# SMALL-ARMS catalogue, so munitions are counted apart rather than scored
-# against a table that was never meant to name them.
+# CfgWeapons holds every weapon the game has, not just the ones a soldier
+# carries, and the weapon catalogue is a SMALL-ARMS catalogue: it holds one
+# datum per weapon, the rifling twist. So the split is taken from the
+# game's OWN taxonomy - the CfgWeapons inheritance root - rather than from
+# a list of names, which is what makes it hold for a mod nobody has
+# written yet.
+#
+#   RifleCore, PistolCore      a small arm, which the catalogue names
+#   Launcher_Base_F            a launcher a soldier carries: it fires a
+#                              rocket or a recoilless round, so a rifling
+#                              twist is not a thing it has
+#   LauncherCore, CannonCore,  vehicle armament
+#   MGunCore, MissileLauncher,
+#   RocketPods, BombCore,
+#   GatlingCore
+#   anything else              a store, a countermeasure or a pod: not a
+#                              weapon that fires a projectile at all
+SMALL_ARMS_ROOT = {"riflecore", "pistolcore"}
+CARRIED_LAUNCHER_ROOT = {"launcher_base_f", "launcher_base"}
 VEHICLE_ARMAMENT_ROOT = {
-    "cannoncore", "missilelauncher", "rocketpods", "bombcore", "mgun",
-    "autocannon", "gatlingcore", "bomblauncher", "rocketlauncher",
+    "launchercore", "cannoncore", "missilelauncher", "rocketpods",
+    "bombcore", "mgun", "mguncore", "autocannon", "gatlingcore",
+    "bomblauncher", "rocketlauncher",
 }
+# A mod base class whose own parent is declared in a PBO this scan did not
+# read leaves the chain short. The classname still says what it is, so the
+# vanilla weapon-slot prefixes carry the fallback.
+SMALL_ARMS_PREFIX = re.compile(r"\b(a|s|h|l|m)?(rifle|gun|hgun|smg|lmg|mmg)_", re.I)
+# A classname ending in BASE is a base class the mod builds others from.
+BASE_CLASS = re.compile(r"_base(_[a-z]{1,2})?$", re.I)
+
+# Things that live in CfgWeapons under an armament root and are NOT a
+# munition. The config cannot tell them apart from one: a master-arm
+# switch declares a magazine holding an undamaging round, and a recon pod
+# declares one holding a damaging one, so neither "reaches a round" nor
+# "reaches a damaging round" separates them. What does separate them is
+# what they ARE, so each term below names a KIND of equipment, never a mod:
+#
+#   a cockpit switch       master arm, safe, inhibit, burst or salvo limit
+#   a targeting pod        Litening, Sniper, TARPS and other recon pods
+#   a countermeasure       DIRCM, flare and chaff dispensers, jammers,
+#                          smoke generators
+#   a leaflet dispenser    PDU-5/B
+#   a ship launcher cell   Mk 41 VLS
+#
+# A catalogue of real munitions should not be scored against any of them.
+NOT_A_MUNITION = re.compile(
+    r"master arm|\binhibit\b|\bsafe\b|burst limit|salvo limit"
+    # A GUN POD is not in this list: it holds a real gun, the gun is a
+    # real munition-firing weapon, and the catalogue should name it.
+    r"|(?<!gun )(?<!gun)\bpod\b|tarps|dircm|\birjam\b|jammer|dispenser|decoy"
+    r"|smoke generator|\bvls\b|flare|chaff"
+    # A generic label naming no weapon at all: the slot, not the store.
+    r"|^rocket launcher$|^action in progress",
+    re.I,
+)
 MUNITION = re.compile(
     r"rocket|missile|bomb|gbu|agm|aim-|flare|dagr|apkws|crv7|torpedo|shell"
     r"|railgun|laser|cannon|pods?\b"
     # Stores and countermeasures also live in CfgWeapons and declare
     # magazines, but none of them is a small arm either.
     r"|chaff|irjam|jammer|napalm|\bsdb\b|\blgb\b|\bsraw\b|gas\b"
-    r"|agent|incendiary|cluster|decoy|smoke ?(launcher|generator)",
+    r"|agent|incendiary|cluster|decoy|smoke ?(launcher|generator)"
+    # The weapon corpus holds ONE datum per weapon, the rifling twist, so a
+    # weapon with no rifled barrel is not something it can ever name: a
+    # rocket or grenade launcher, a dazzler, a smoke or flare discharger.
+    r"|\brpg[- ]?\d|\bgp-?2\d\b|\bpbg\d|dazzler|\bchf/flr\b"
+    r"|^smoke\b|\baction in progress\b",
     re.I,
 )
 SCAN_MIN = 3
@@ -58,6 +113,14 @@ PROP = re.compile(
     r"towel|stool|chair|matress|mattress|seatable|parachute|wreck|ejection"
     r"|cruise missile|\bpod\b|radar|rope|dummy|spawner|helper|static"
     r"|hammock|forklift|fork ?lift|\bvls\b|satcom|\bffv\b|\bpylon\b"
+    # A camera round is fired from a mortar; it is not an aircraft.
+    r"|huntir"
+    # Arma hangs STATIC WEAPONS and radars off vehicle classes. A tripod
+    # machine gun, a recoilless gun, a towed howitzer, a MANPADS post and a
+    # surveillance radar are not vehicles, and a catalogue of real vehicles
+    # should not be scored against them.
+    r"|\bnsv\b|\bkord\b|dshkm?\b|\bags-?\d|\bspg-?9|\bd-?30a?\b"
+    r"|\b2a18m\b|\b9k3\d\b|djigit|\bp-37\b|\bprv-?\d"
     r"|anti-ship|\basm\b|missile|torpedo|\bbase class\b|\bcrate\b",
     re.I,
 )
@@ -87,6 +150,27 @@ def rows(path: Path) -> list:
     return out
 
 
+def munition_rows(path: Path) -> list:
+    """The munition table: id, type, classes, aliases, keywords."""
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        s = line.strip()
+        if not s.startswith('["'):
+            continue
+        p = re.findall(r'"([^"]*)"', s)
+        if len(p) <= 4:
+            continue
+        out.append(
+            {
+                "id": p[0],
+                "classes": [x for x in p[2].split("|") if x],
+                "aliases": [x for x in p[3].split("|") if x],
+                "keywords": [x for x in p[4].split("|") if x],
+            }
+        )
+    return out
+
+
 def matcher(table: list):
     """The runtime ladder: exact class, alias, keyword, then closest."""
 
@@ -94,16 +178,27 @@ def matcher(table: list):
         key = fold(text)
         if not key:
             return None
+        # The runtime splits the identity into TOKENS for the alias layer,
+        # because a curated alias is a whole designation and must match a
+        # whole word of the query: "S-5" folds to "s5", which the folded
+        # whole identity never equals. The mirror has to split the same
+        # way or it under-reports every short alias.
+        tokens = {fold(t) for t in re.split(r"[ _\-.]+", text) if fold(t)}
         hit = [r for r in table if key in r["classes"]]
         if len(hit) == 1:
             return hit[0]
-        hit = [r for r in table if key in r["aliases"]]
+        hit = [r for r in table if tokens & set(r["aliases"])]
         if len(hit) == 1:
             return hit[0]
+        # The runtime's keyword layer scans the aliases too, so a curated
+        # alias long enough to be a substring is still a way in.
         hit = [
             r
             for r in table
-            if any(len(w) >= SCAN_MIN and w in key for w in r["keywords"])
+            if any(
+                len(w) >= SCAN_MIN and w in key
+                for w in (r["keywords"] + r["aliases"])
+            )
         ]
         if len(hit) == 1:
             return hit[0]
@@ -265,7 +360,8 @@ def main() -> int:
         return out
 
     match_w = weapon_matcher(weapon_table())
-    small, armament, wseen = [], [], set()
+    small, carried, armament, wseen = [], [], [], set()
+    other = 0
     for r in scanned:
         # A firearm declares what it feeds from; a uniform does not.
         if r["kind"] != "CfgWeapons" or not r.get("feeds"):
@@ -277,25 +373,55 @@ def main() -> int:
         if key in wseen:
             continue
         wseen.add(key)
-        is_armament = any(
-            c in VEHICLE_ARMAMENT_ROOT for c in wchain(r["class"])
-        ) or bool(MUNITION.search(dn))
-        (armament if is_armament else small).append(r)
+        # A BASE CLASS is scaffolding, not a weapon anyone is issued: its
+        # display name is whatever the mod left there, often a UI string.
+        if BASE_CLASS.search(r["class"]):
+            other += 1
+            continue
+        chain = set(wchain(r["class"]))
+        if chain & SMALL_ARMS_ROOT or SMALL_ARMS_PREFIX.search(r["class"]):
+            small.append(r)
+        elif chain & CARRIED_LAUNCHER_ROOT:
+            carried.append(r)
+        elif chain & VEHICLE_ARMAMENT_ROOT:
+            if NOT_A_MUNITION.search(dn):
+                other += 1
+            else:
+                armament.append(r)
+        else:
+            # A store, a countermeasure or a pod. Not a weapon that fires
+            # a projectile, so no catalogue of weapons should be scored
+            # against it.
+            other += 1
 
-    for label, sel in (("small arms", small), ("vehicle armament", armament)):
+    print(f"  ({other} CfgWeapons entries are stores, countermeasures or pods)")
+    # Vehicle armament is scored against the MUNITION catalogue, which is
+    # the corpus written to name it; the small-arms corpus holds a rifling
+    # twist and was never meant to.
+    match_m = (
+        matcher(munition_rows(MUNITION_TABLE))
+        if MUNITION_TABLE.exists()
+        else None
+    )
+    for label, sel in (
+        ("small arms", small),
+        ("carried launchers", carried),
+        ("vehicle armament", armament),
+    ):
         if not sel:
             continue
+        pick = match_m if (label == "vehicle armament" and match_m) else match_w
         gaps = defaultdict(list)
         hit = 0
         for r in sel:
-            if match_w(r["class"] + " " + r["display"]):
+            if pick(r["class"] + " " + r["display"]):
                 hit += 1
             else:
                 gaps[r["display"]].append(r["class"])
         print(f"{label}: {hit}/{len(sel)} ({100 * hit / len(sel):.1f}%) named by the catalogue")
         if args.gaps and gaps:
             print(f"  {len(gaps)} unnamed display names, most-used first:")
-            for dn, cls in sorted(gaps.items(), key=lambda kv: -len(kv[1]))[:20]:
+            for dn, cls in sorted(gaps.items(), key=lambda kv: -len(kv[1]))[:200]:
                 print(f"    {len(cls):3d}  {dn}")
     return 0
 

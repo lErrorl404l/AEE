@@ -1,0 +1,34 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M119 howitzer from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m119",
+   "canonical_name": "M119 howitzer",
+   "munition_type": "cannon",
+   "aliases": [
+    "M119A2"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 2320.0,
+     "unit": "kg",
+     "source": "wikipedia_m119_howitzer",
+     "locator": "Infobox, mass: With BII: 5,110 lb (2,320 kg) Without BII: 4,690 lb (2,130 kg) Cannon : 2,320 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 105.0,
+     "unit": "mm",
+     "source": "wikipedia_m119_howitzer",
+     "locator": "Infobox, caliber: 105 mm (4.13 in): 105 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

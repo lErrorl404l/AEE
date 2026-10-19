@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGS-30 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "ags30",
+   "canonical_name": "AGS-30",
+   "munition_type": "grenade",
+   "aliases": [
+    "AGS-30"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 16.0,
+     "unit": "kg",
+     "source": "wikipedia_ags_30",
+     "locator": "Infobox, mass: 16 kg unloaded: 16 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1165.0,
+     "unit": "mm",
+     "source": "wikipedia_ags_30",
+     "locator": "Infobox, length: 1,165 mm: 1,165 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 30.0,
+     "unit": "mm",
+     "source": "wikipedia_ags_30",
+     "locator": "Infobox, caliber: 30 mm: 30 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

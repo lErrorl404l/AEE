@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for RIM-162 ESSM from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "rim162_essm",
+   "canonical_name": "RIM-162 ESSM",
+   "munition_type": "missile",
+   "aliases": [
+    "ESSM",
+    "RIM-162"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 280.0,
+     "unit": "kg",
+     "source": "wikipedia_rim_162_essm",
+     "locator": "Infobox, mass: 620 lb (280 kg): 280 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 39.0,
+     "unit": "kg",
+     "source": "wikipedia_rim_162_essm",
+     "locator": "Infobox, warhead: 86 lb (39 kg) blast- fragmentation: 39 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3660.0,
+     "unit": "mm",
+     "source": "wikipedia_rim_162_essm",
+     "locator": "Infobox, length: 12 ft (3.66 m): 3.66 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 254.0,
+     "unit": "mm",
+     "source": "wikipedia_rim_162_essm",
+     "locator": "Infobox, diameter: 10 in (254 mm): 254 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Mid-course update datalink Terminal semi-active radar homing for Block 1, dual s",
+     "unit": "name",
+     "source": "wikipedia_rim_162_essm",
+     "locator": "Infobox, guidance system: Mid-course update datalink Terminal semi-active radar homing for Block",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

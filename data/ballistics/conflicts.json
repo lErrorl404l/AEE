@@ -1527,16 +1527,5 @@
   "resolution": "Kept the existing standard value. A CIP or SAAMI pressure and a NATO EPVAT pressure use different test methods.",
   "rule_applied": "Record both. Do not average.",
   "date": "2026-09-22"
- },
- {
-  "entity": "mp7",
-  "field": "twist_m",
-  "value_a": 0.16,
-  "source_a": "hk_catalog_2009",
-  "value_b": 0.15,
-  "source_b": "batch_batch_final_02.json",
-  "resolution": "Kept the record from the earlier file.",
-  "rule_applied": "A disagreement is recorded, never averaged.",
-  "date": "2026-09-22"
  }
 ]

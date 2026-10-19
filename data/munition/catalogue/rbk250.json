@@ -1,0 +1,27 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Hand-authored capture for RBK-250: the article states its figures in the body text rather than in an infobox, so each value carries the sentence it was read from. Every value is grade claimed. The article also states the bomblet: 'Each bomblet is 33 cm long, weights 2.8 kg and carries 500 g of explosives.' That is the submunition, not the weapon, so it is not recorded as this entry's charge.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "rbk250",
+   "canonical_name": "RBK-250",
+   "munition_type": "bomb",
+   "aliases": [
+    "RBK-250",
+    "RBK250"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 250.0,
+     "unit": "kg",
+     "source": "wikipedia_rbk_250",
+     "locator": "Body: 'RBK-250 is a Soviet 250 kg cluster bomb'",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

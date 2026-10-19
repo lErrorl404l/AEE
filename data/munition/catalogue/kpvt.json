@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for KPV heavy machine gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "kpvt",
+   "canonical_name": "KPV heavy machine gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "KPV",
+    "KPVT"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 49.0,
+     "unit": "kg",
+     "source": "wikipedia_kpv_heavy_machine_gun",
+     "locator": "Infobox, mass: 49 kg (108.03 lb): 49 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1980.0,
+     "unit": "mm",
+     "source": "wikipedia_kpv_heavy_machine_gun",
+     "locator": "Infobox, length: 1,980 mm (78.0 in): 1,980 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 14.5,
+     "unit": "mm",
+     "source": "wikipedia_kpv_heavy_machine_gun",
+     "locator": "Infobox, caliber: 14.5 mm: 14.5 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for ATACMS from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'MGM-140 ATACMS' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m39_atacms",
+   "canonical_name": "ATACMS",
+   "munition_type": "missile",
+   "aliases": [
+    "ATACMS",
+    "M39",
+    "M39A2"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 1670.0,
+     "unit": "kg",
+     "source": "wikipedia_mgm_140_atacms",
+     "locator": "Infobox, mass: 3,690 pounds (1,670 kg): 1,670 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 213.0,
+     "unit": "kg",
+     "source": "wikipedia_mgm_140_atacms",
+     "locator": "Infobox, warhead: Block 1: 950 M74 bomblets Block 1A: 300 M74 bomblets or 470 lb (213 kg: 213 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4000.0,
+     "unit": "mm",
+     "source": "wikipedia_mgm_140_atacms",
+     "locator": "Infobox, length: 13 feet (4.0 m): 4.0 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 610.0,
+     "unit": "mm",
+     "source": "wikipedia_mgm_140_atacms",
+     "locator": "Infobox, diameter: 24 inches (610 mm): 610 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "GPS-aided inertial navigation guidance",
+     "unit": "name",
+     "source": "wikipedia_mgm_140_atacms",
+     "locator": "Infobox, guidance system: GPS-aided inertial navigation guidance",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Type 93 air-to-ship missile from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "asm2_type93",
+   "canonical_name": "Type 93 air-to-ship missile",
+   "munition_type": "missile",
+   "aliases": [
+    "ASM-2"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 530.0,
+     "unit": "kg",
+     "source": "wikipedia_type_93_air_to_ship_missile",
+     "locator": "Infobox, mass: 530kg: 530 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4000.0,
+     "unit": "mm",
+     "source": "wikipedia_type_93_air_to_ship_missile",
+     "locator": "Infobox, length: 4m: 4 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 350.0,
+     "unit": "mm",
+     "source": "wikipedia_type_93_air_to_ship_missile",
+     "locator": "Infobox, diameter: 0.35m: 0.35 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial guidance and IR Imaging, GPS (ASM2b)",
+     "unit": "name",
+     "source": "wikipedia_type_93_air_to_ship_missile",
+     "locator": "Infobox, guidance system: Inertial guidance and IR Imaging, GPS (ASM2b)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

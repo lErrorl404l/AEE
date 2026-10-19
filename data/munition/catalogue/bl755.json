@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for BL755 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "bl755",
+   "canonical_name": "BL755",
+   "munition_type": "bomb",
+   "aliases": [
+    "BL755"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 264.0,
+     "unit": "kg",
+     "source": "wikipedia_bl755",
+     "locator": "Infobox, mass: 264 kg (582 lb): 264 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2451.0,
+     "unit": "mm",
+     "source": "wikipedia_bl755",
+     "locator": "Infobox, length: 2,451 mm (8 ft 0.5 in): 2,451 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 419.0,
+     "unit": "mm",
+     "source": "wikipedia_bl755",
+     "locator": "Infobox, diameter: 419 mm (16.5 in): 419 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

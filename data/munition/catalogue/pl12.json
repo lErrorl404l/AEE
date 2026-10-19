@@ -1,0 +1,34 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-12 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl12",
+   "canonical_name": "PL-12",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-12"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 180.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_12",
+     "locator": "Infobox, mass: 180 kilograms (400 lb): 180 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Active radar homing",
+     "unit": "name",
+     "source": "wikipedia_pl_12",
+     "locator": "Infobox, guidance system: Active radar homing",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

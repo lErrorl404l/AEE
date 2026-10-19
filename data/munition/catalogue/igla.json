@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 9K38 Igla from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "igla",
+   "canonical_name": "9K38 Igla",
+   "munition_type": "missile",
+   "aliases": [
+    "9K38",
+    "Djigit",
+    "Igla"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 10.8,
+     "unit": "kg",
+     "source": "wikipedia_9k38_igla",
+     "locator": "Infobox, mass: Missile weight: 10.8 kg (24 lb) Full system: 17.9 kg (39 lb): 10.8 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 1.17,
+     "unit": "kg",
+     "source": "wikipedia_9k38_igla",
+     "locator": "Infobox, warhead: 1.17 kg (2.6 lb) with 390 g (14 oz) explosive: 1.17 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1574.0,
+     "unit": "mm",
+     "source": "wikipedia_9k38_igla",
+     "locator": "Infobox, length: 1.574 m (5.16 ft): 1.574 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 72.0,
+     "unit": "mm",
+     "source": "wikipedia_9k38_igla",
+     "locator": "Infobox, diameter: 72 mm: 72 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Dual waveband infra-red (S-version)",
+     "unit": "name",
+     "source": "wikipedia_9k38_igla",
+     "locator": "Infobox, guidance system: Dual waveband infra-red (S-version)",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

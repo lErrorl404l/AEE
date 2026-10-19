@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-2 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl2",
+   "canonical_name": "PL-2",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-2"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 60.0,
+     "unit": "kg",
+     "source": "wikipedia_pl_2",
+     "locator": "Infobox, mass: 60\u2013152.3 kg (132\u2013336 lb): 60 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 11.3,
+     "unit": "kg",
+     "source": "wikipedia_pl_2",
+     "locator": "Infobox, warhead: 11.3 kg (25 lb) high explosive: 11.3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2150.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_2",
+     "locator": "Infobox, length: 2.15\u20132.99 m (7 ft 1 in \u2013 9 ft 10 in): 2.15 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 127.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_2",
+     "locator": "Infobox, diameter: 127 mm (5 in): 127 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Nitrogen cooled passive InPb infrared seeker",
+     "unit": "name",
+     "source": "wikipedia_pl_2",
+     "locator": "Infobox, guidance system: Nitrogen cooled passive InPb infrared seeker",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

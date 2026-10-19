@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 9M113 Konkurs from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "konkurs",
+   "canonical_name": "9M113 Konkurs",
+   "munition_type": "missile",
+   "aliases": [
+    "9M113"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 14.6,
+     "unit": "kg",
+     "source": "wikipedia_9m113_konkurs",
+     "locator": "Infobox, mass: 14.6 kg (32 lb) (Missile weight) 22.5 kg (50 lbs) (9P135 launching pos: 14.6 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 2.7,
+     "unit": "kg",
+     "source": "wikipedia_9m113_konkurs",
+     "locator": "Infobox, warhead: 2.7 kg (6.0 lb) 9N131 HEAT: 2.7 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1150.0,
+     "unit": "mm",
+     "source": "wikipedia_9m113_konkurs",
+     "locator": "Infobox, length: 1,150 mm (45 in) 875 mm (34.4 in) without gas generator: 1,150 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 135.0,
+     "unit": "mm",
+     "source": "wikipedia_9m113_konkurs",
+     "locator": "Infobox, diameter: 135 mm (5.3 in): 135 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Wire-guided SACLOS",
+     "unit": "name",
+     "source": "wikipedia_9m113_konkurs",
+     "locator": "Infobox, guidance system: Wire-guided SACLOS",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

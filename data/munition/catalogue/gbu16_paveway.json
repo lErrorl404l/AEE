@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for GBU-16 Paveway II from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gbu16_paveway",
+   "canonical_name": "GBU-16 Paveway II",
+   "munition_type": "bomb",
+   "aliases": [
+    "GBU-16"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 450.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_16_paveway_ii",
+     "locator": "Infobox, mass: 1,000 lb (450 kg): 450 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "charge_mass_kg": {
+     "value": 202.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_16_paveway_ii",
+     "locator": "Infobox, filling weight: 202 kilograms (445 lb): 202 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 355.6,
+     "unit": "mm",
+     "source": "wikipedia_gbu_16_paveway_ii",
+     "locator": "Infobox, diameter: 360 millimetres (14 in): 14 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

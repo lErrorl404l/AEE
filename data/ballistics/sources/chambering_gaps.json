@@ -1,24 +1,8 @@
 {
  "retrieved": "2026-09-23",
- "weapons_resolved": 1571,
- "weapons_unresolved": 61,
+ "weapons_resolved": 1567,
+ "weapons_unresolved": 60,
  "gaps": [
-  {
-   "chambering": "6.8x51mm",
-   "canonical_key": "68x51",
-   "weapons": [
-    "m250",
-    "m7",
-    "mcxspear",
-    "xm250",
-    "xm5",
-    "xm7"
-   ],
-   "count": 6,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
   {
    "chambering": "6.5mm (6.5 Creedmoor/6.5 PRC)",
    "canonical_key": "6565creedmoor/65prc",
@@ -57,6 +41,20 @@
     "cdxmckraken",
     "crossmagnum300prc",
     "magnuslr"
+   ],
+   "count": 4,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "6.8x51mm",
+   "canonical_key": "68x51",
+   "weapons": [
+    "m250",
+    "m7",
+    "mcxspear",
+    "xm250"
    ],
    "count": 4,
    "status": "absent_from_register",
@@ -366,17 +364,6 @@
    "note": ""
   },
   {
-   "chambering": "7.62\u00d735mm",
-   "canonical_key": "762x35",
-   "weapons": [
-    "mcxrattler"
-   ],
-   "count": 1,
-   "status": "absent_from_register",
-   "candidate_ids": [],
-   "note": ""
-  },
-  {
    "chambering": "7.62\u00d751mm NATO (.308 Win)",
    "canonical_key": "762x51nato308win",
    "weapons": [
@@ -388,6 +375,17 @@
     "308_win",
     "762x51_nato"
    ],
+   "note": ""
+  },
+  {
+   "chambering": "8x22mm Nambu",
+   "canonical_key": "8x22nambu",
+   "weapons": [
+    "type94nambu"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
    "note": ""
   },
   {
@@ -406,6 +404,17 @@
    "canonical_key": "9x19",
    "weapons": [
     "n9theschwartz"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "9x21mm Gyurza",
+   "canonical_key": "9x21gyurza",
+   "weapons": [
+    "sr1vektor"
    ],
    "count": 1,
    "status": "absent_from_register",

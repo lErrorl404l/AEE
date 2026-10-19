@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for ZU-23-2 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "azp23",
+   "canonical_name": "ZU-23-2",
+   "munition_type": "cannon",
+   "aliases": [
+    "AZP-23",
+    "ZU-23"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 949.8224,
+     "unit": "kg",
+     "source": "wikipedia_zu_23_2",
+     "locator": "Infobox, mass: 0.95 tonnes (2,094 lbs): 2,094 lb",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4570.0,
+     "unit": "mm",
+     "source": "wikipedia_zu_23_2",
+     "locator": "Infobox, length: 4.57 m (10 ft): 4.57 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 23.0,
+     "unit": "mm",
+     "source": "wikipedia_zu_23_2",
+     "locator": "Infobox, caliber: 23 mm: 23 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

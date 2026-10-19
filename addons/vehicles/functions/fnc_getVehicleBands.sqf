@@ -97,6 +97,7 @@ private _table = [
     ["centauro", "wheeled", 0, 24000, 7850, 2940, 2730],
     ["challenger_1", "tracked", 1, 62000, 11560, 3510, 2950],
     ["challenger_2", "tracked", 1, 64000, 13500, 3500, 2490],
+    ["chevrolet_suburban_gmt900", "wheeled", 0, 2540, 0, 0, 0],
     ["cougar_4x4", "wheeled", 0, 15422, 6350, 2710, 3020],
     ["cv90", "tracked", 1, 23000, 6800, 3200, 2800],
     ["cv90_denmark", "tracked", 1, 23000, 6800, 3200, 2800],

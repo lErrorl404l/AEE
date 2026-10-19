@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for GAU-8 Avenger from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gau8_avenger",
+   "canonical_name": "GAU-8 Avenger",
+   "munition_type": "cannon",
+   "aliases": [
+    "GAU-8"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 281.0,
+     "unit": "kg",
+     "source": "wikipedia_gau_8_avenger",
+     "locator": "Infobox, mass: 619.5 lb (281 kg): 281 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 6060.0,
+     "unit": "mm",
+     "source": "wikipedia_gau_8_avenger",
+     "locator": "Infobox, length: 19 ft 10.5 in (6.06 m) (total system) 112.28 in (2.85 m) (gun only): 6.06 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 30.0,
+     "unit": "mm",
+     "source": "wikipedia_gau_8_avenger",
+     "locator": "Infobox, caliber: 30 mm: 30 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

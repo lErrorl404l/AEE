@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PK machine gun from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pkt",
+   "canonical_name": "PK machine gun",
+   "munition_type": "cannon",
+   "aliases": [
+    "PKM",
+    "PKT"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 9.0,
+     "unit": "kg",
+     "source": "wikipedia_pk_machine_gun",
+     "locator": "Infobox, mass: 9 kg (19.84 lb) (with integral bipod): 9 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1203.0,
+     "unit": "mm",
+     "source": "wikipedia_pk_machine_gun",
+     "locator": "Infobox, length: 1,203 mm (47.4 in): 1,203 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

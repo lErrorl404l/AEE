@@ -131,6 +131,7 @@ private _table = [
     ["bk117", "bk117", "rotary_wing", "Helicopter", "", "bk117", "kawasakibk117|kawasakibk", "", [0, 0, 0, 0]],
     ["blackburn_buccaneer", "blackburn_buccaneer", "fixed_wing", "", "", "buccaneer", "blackburnbuccaneer", "", [0, 0, 0, 0]],
     ["bo105", "bo105", "rotary_wing", "Helicopter", "", "bo105", "messerschmittbolkowblohmbo105|messerschmittbolkowblohmbo", "", [0, 0, 0, 0]],
+    ["bristol_britannia", "bristol_britannia", "fixed_wing", "", "", "britannia", "bristolbritannia", "", [0, 0, 0, 0]],
     ["c130_hercules", "c130_hercules", "fixed_wing", "", "", "c130|hercules", "lockheedc130hercules|lockheedc130|c130hercules", "", [0, 0, 0, 0]],
     ["camcopter_s100", "camcopter_s100", "rotary_wing", "Helicopter", "", "camcopter", "schiebelcamcopters100|s100|schiebelcamcopter|camcopters100", "", [0, 0, 0, 0]],
     ["cessna_172_skyhawk", "172s", "fixed_wing", "Plane", "cplanecivil01f|cplanecivil01racingf|icplanecivil01f", "skyhawk|c172", "civil|cessna172skyhawk|cessna172|172skyhawk", "src_faa_tcds_3a12", [1157, 134225.97696, 0, 0]],
@@ -189,6 +190,8 @@ private _table = [
     ["hawker_hurricane_mk_i", "hurricane_i", "fixed_wing", "", "", "hurricane", "hawkerhurricanemki|hawkerhurricane|hurricanemk", "", [0, 0, 0, 0]],
     ["hawker_typhoon_mk_ib", "typhoon_ib", "fixed_wing", "", "", "typhoon|tiffy", "hawkertyphoonmkib|hawkertyphoon|typhoonmk", "", [0, 0, 0, 0]],
     ["hh60g_pave_hawk", "hh60g_pave_hawk", "rotary_wing", "Helicopter", "", "pavehawk", "sikorskyhh60gpavehawk|hh60g|hh60|sikorskyhh60g|hh60gpave", "", [0, 0, 0, 0]],
+    ["hs681", "hs681", "fixed_wing", "", "", "hs681", "hawkersiddeleyhs681|hawkersiddeley|siddeleyhs681", "", [0, 0, 0, 0]],
+    ["hs_nimrod", "hs_nimrod", "fixed_wing", "", "", "nimrod", "hawkersiddeleynimrod|hawkersiddeley|siddeleynimrod", "", [0, 0, 0, 0]],
     ["jas39c_gripen", "jas39c", "fixed_wing", "Plane", "iplanefighter04clusterf|iplanefighter04f", "gripen|jas39", "multirole|saabjas39cgripen|39c|saabjas|jas39c|39cgripen", "src_saab_gripen_c", [14000, 31305555.5645, 0, 0]],
     ["junkers_ju87d_stuka", "ju87d", "fixed_wing", "", "", "stuka", "junkersju87dstuka|87d|junkersju|ju87d|87dstuka|ju87", "", [0, 0, 0, 0]],
     ["ka27_helix", "ka27_helix", "rotary_wing", "Helicopter", "", "helix", "kamovka27helix|ka27|kamovka27|ka27helix", "", [0, 0, 0, 0]],
@@ -198,6 +201,7 @@ private _table = [
     ["ka52_alligator", "ka52", "rotary_wing", "", "", "", "kamovka52alligator|ka52|kamovka52|ka52alligator", "", [0, 0, 0, 0]],
     ["ka60_kasatka", "ka60_kasatka", "rotary_wing", "Helicopter", "", "kasatka", "kamovka60kasatka|ka60|kamovka60|ka60kasatka", "", [0, 0, 0, 0]],
     ["l159_alca", "l159", "fixed_wing", "Plane", "iplanefighter03aaf|iplanefighter03casf|iplanefighter03clusterf|iplanefighter03dynamicloadoutf", "alca|l159", "lightattack|aerol159alca|aerol159|l159alca", "", [0, 0, 0, 0]],
+    ["l18_lodestar", "l18_lodestar", "fixed_wing", "", "", "l18", "lockheedl18lodestar|lockheedl18|l18lodestar", "", [0, 0, 0, 0]],
     ["light_utility_rotary", "mi2", "rotary_wing", "Helicopter", "ohelilight02f|ohelilight02dynamicloadoutf|ohelilight02unarmedf|ohelilight02v2f", "hoplite|mi2", "milmi2", "src_opfor_weg", [1076, 298279.9488, 0, 167.415473]],
     ["lynx_has3", "lynx_has3", "rotary_wing", "Helicopter", "", "lynx", "westlandlynxhas3|has3|westlandlynx|lynxhas3", "", [0, 0, 0, 0]],
     ["md500", "md500e", "rotary_wing", "Helicopter", "bhelilight01f|bhelilight01strippedf|chelilight01bluelinef|chelilight01bluef|chelilight01digitalf|chelilight01ellipticalf|chelilight01furiousf|chelilight01graywatcherf|chelilight01ionf|chelilight01jeansf|chelilight01lightf|chelilight01luxef|chelilight01redf|chelilight01shadowf|chelilight01sherifff|chelilight01speedyf|chelilight01strippedf|chelilight01sunsetf|chelilight01vranaf|chelilight01waspf|chelilight01wavef", "md500|hummingbird", "mdhelicoptersmd500", "src_md500e_2023", [752, 313000.0, 0, 50.895764]],
@@ -254,6 +258,7 @@ private _table = [
     ["mq9a_reaper", "mq9a", "fixed_wing", "UAV", "buav02casf|buav02f|buav02dynamicloadoutf|iuav02casf|iuav02f|iuav02dynamicloadoutf|ouav02casf|ouav02f|ouav02dynamicloadoutf", "reaper|mq9a", "generalatomicsmq9areaper|mq9|generalatomics|atomicsmq9a|mq9areaper", "src_odin_weg_2025", [4763, 0, 0, 0]],
     ["nh90_nfh", "nh90_nfh", "rotary_wing", "Helicopter", "", "nh90", "nhindustriesnh90nfh|nhindustriesnh90|nh90nfh", "", [0, 0, 0, 0]],
     ["nh90_tth", "nh90_tth", "rotary_wing", "", "", "", "nhindustriesnh90tth|nh90|nhindustriesnh90|nh90tth", "", [0, 0, 0, 0]],
+    ["o3a_skymaster", "o3a_skymaster", "fixed_wing", "", "", "o3a", "cessnao3a", "", [0, 0, 0, 0]],
     ["oh58a_kiowa", "oh58a_kiowa", "rotary_wing", "Helicopter", "", "kiowa", "belloh58akiowa|oh58a|oh58|belloh58a|oh58akiowa", "", [0, 0, 0, 0]],
     ["oh58c_kiowa", "oh58c_kiowa", "rotary_wing", "Helicopter", "", "kiowa", "belloh58ckiowa|oh58c|oh58|belloh58c|oh58ckiowa", "", [0, 0, 0, 0]],
     ["oh58d_kiowa_warrior", "oh58d_kiowa_warrior", "rotary_wing", "Helicopter", "", "kiowawarrior", "belloh58dkiowawarrior|oh58d|oh58|belloh58d|oh58dkiowa", "", [0, 0, 0, 0]],
@@ -264,9 +269,11 @@ private _table = [
     ["p51d_mustang", "p51d", "fixed_wing", "", "", "", "northamericanp51dmustang|p51d|p51|americanp51d|p51dmustang", "", [0, 0, 0, 0]],
     ["p61b_black_widow", "p61b", "fixed_wing", "", "", "blackwidow", "northropp61bblackwidow|p61b|p61|northropp61b|p61bblack", "", [0, 0, 0, 0]],
     ["panavia_tornado_gr4", "tornado_gr4", "fixed_wing", "", "", "tornado", "panaviatornadogr4|gr4|panaviatornado|tornadogr4", "", [0, 0, 0, 0]],
+    ["pchela_1t", "pchela_1t", "fixed_wing", "", "", "pchela|pchela1t", "yakovlevpchela1t|pchela1", "", [0, 0, 0, 0]],
     ["rafale_c", "rafale_c", "fixed_wing", "", "", "", "dassaultrafalec|dassaultrafale|rafalec|rafale", "", [0, 0, 0, 0]],
     ["rah66_comanche", "rah66", "rotary_wing", "Helicopter", "bheliattack01f|bheliattack01dynamicloadoutf|bheliattack01pylonsdynamicloadoutf", "comanche|rah66", "scout|boeingsikorskyrah66comanche|boeingsikorskyrah66|rah66comanche", "src_rah66_case", [3526, 0, 0, 0]],
     ["rq8_fire_scout", "rq8_fire_scout", "rotary_wing", "Helicopter", "", "firescout", "northropgrummanrq8firescout|rq8|northropgrumman|grummanrq8|rq8fire", "", [0, 0, 0, 0]],
+    ["s70i_black_hawk", "s70i_black_hawk", "rotary_wing", "", "", "s70i", "sikorskys70i|s70", "", [0, 0, 0, 0]],
     ["s76", "s76", "rotary_wing", "Helicopter", "", "s76", "sikorskys76", "", [0, 0, 0, 0]],
     ["s92", "s92", "rotary_wing", "Helicopter", "", "s92", "sikorskys92", "", [0, 0, 0, 0]],
     ["sa321_super_frelon", "sa321_super_frelon", "rotary_wing", "Helicopter", "", "superfrelon", "aerospatialesa321superfrelon|sa321|321super", "", [0, 0, 0, 0]],
@@ -292,7 +299,7 @@ private _table = [
     ["su33_flanker_d", "su33", "fixed_wing", "", "", "flanker", "sukhoisu33flankerd|su33|sukhoisu33|su33flankerd", "", [0, 0, 0, 0]],
     ["su34_fullback", "su34", "fixed_wing", "", "", "fullback", "sukhoisu34fullback|su34|sukhoisu34|su34fullback", "", [0, 0, 0, 0]],
     ["su35s_flanker_e", "su35s", "fixed_wing", "", "", "", "sukhoisu35sflankere|su35s|su35|sukhoisu35s|su35sflankere", "", [0, 0, 0, 0]],
-    ["su57_felon", "su57", "fixed_wing", "Plane", "oplanefighter02clusterf|oplanefighter02f|oplanefighter02stealthf", "felon|su57", "stealth|multirole|sukhoisu57", "src_odin_weg_2025", [18000, 0, 0, 0]],
+    ["su57_felon", "su57", "fixed_wing", "Plane", "oplanefighter02clusterf|oplanefighter02f|oplanefighter02stealthf", "felon|su57|t50|pakfa", "stealth|multirole|sukhoisu57", "src_odin_weg_2025", [18000, 0, 0, 0]],
     ["su7b_fitter", "su7b", "fixed_wing", "", "", "fitter", "sukhoisu7bfitter|su7b|su7|sukhoisu7b|su7bfitter", "", [0, 0, 0, 0]],
     ["t38a_talon", "t38a", "fixed_wing", "", "", "talon", "northropt38atalon|t38a|t38|northropt38a|t38atalon", "", [0, 0, 0, 0]],
     ["th67_creek", "th67_creek", "rotary_wing", "Helicopter", "", "creek", "bellth67creek|th67|bellth67|th67creek", "", [0, 0, 0, 0]],
@@ -445,7 +452,7 @@ private _tie = false;
                     };
                 };
             };
-            if (_score < _bestScore && {_score > _runnerUp}) then {
+            if (_score < _bestScore && _score > _runnerUp) then {
                 _runnerUp = _score;
             };
         };

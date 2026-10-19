@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for FAB-500 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "fab500",
+   "canonical_name": "FAB-500",
+   "munition_type": "bomb",
+   "aliases": [
+    "FAB-500",
+    "FAB500"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 500.0,
+     "unit": "kg",
+     "source": "wikipedia_fab_500",
+     "locator": "Infobox, mass: 500 kilograms (1,100 lb): 500 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "charge_mass_kg": {
+     "value": 201.0,
+     "unit": "kg",
+     "source": "wikipedia_fab_500",
+     "locator": "Infobox, filling weight: 201 kilograms (440 lb): 201 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2468.88,
+     "unit": "mm",
+     "source": "wikipedia_fab_500",
+     "locator": "Infobox, length: 2,470 millimetres (97.2 in): 97.2 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 398.78,
+     "unit": "mm",
+     "source": "wikipedia_fab_500",
+     "locator": "Infobox, diameter: 400 millimetres (15.7 in): 15.7 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

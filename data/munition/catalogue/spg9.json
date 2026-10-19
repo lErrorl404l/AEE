@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for SPG-9 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "spg9",
+   "canonical_name": "SPG-9",
+   "munition_type": "cannon",
+   "aliases": [
+    "SPG-9"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 47.5,
+     "unit": "kg",
+     "source": "wikipedia_spg_9",
+     "locator": "Infobox, mass: 47.5 kg (105 lb) 59.5 kg (131 lb) with tripod: 47.5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2110.0,
+     "unit": "mm",
+     "source": "wikipedia_spg_9",
+     "locator": "Infobox, length: 2.11 m (6 ft 11 in): 2.11 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 73.0,
+     "unit": "mm",
+     "source": "wikipedia_spg_9",
+     "locator": "Infobox, caliber: 73 mm (2.9 in) smoothbore: 73 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

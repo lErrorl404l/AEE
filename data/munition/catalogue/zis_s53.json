@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 85 mm air defense gun M1939 (52-K) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'ZiS-S-53' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "zis_s53",
+   "canonical_name": "85 mm air defense gun M1939 (52-K)",
+   "munition_type": "cannon",
+   "aliases": [
+    "ZiS S-53"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 4500.0,
+     "unit": "kg",
+     "source": "wikipedia_zis_s_53",
+     "locator": "Infobox, mass: combat: 4,500 kg (9,921 lbs) travel: 4,500 kg (9,921 lbs): 4,500 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 7050.0,
+     "unit": "mm",
+     "source": "wikipedia_zis_s_53",
+     "locator": "Infobox, length: 7.05 m (23 ft 2 in): 7.05 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 85.0,
+     "unit": "mm",
+     "source": "wikipedia_zis_s_53",
+     "locator": "Infobox, caliber: 85 mm (3.34 in): 85 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

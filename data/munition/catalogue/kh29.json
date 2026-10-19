@@ -1,0 +1,61 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Kh-29 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "kh29",
+   "canonical_name": "Kh-29",
+   "munition_type": "missile",
+   "aliases": [
+    "Kh-29",
+    "Kh-29D",
+    "Kh-29L",
+    "Kh-29T"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 660.0,
+     "unit": "kg",
+     "source": "wikipedia_kh_29",
+     "locator": "Infobox, mass: Kh-29L: 660 kg (1,460 lb)  Kh-29T: 685 kg (1,510 lb)  Kh-29TE: 690 kg : 660 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 320.0,
+     "unit": "kg",
+     "source": "wikipedia_kh_29",
+     "locator": "Infobox, warhead weight: 320 kg (705 lb): 320 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3900.0,
+     "unit": "mm",
+     "source": "wikipedia_kh_29",
+     "locator": "Infobox, length: Kh-29L/T: 390 cm (12 ft 10 in)  Kh-29TE: 387.5 cm (12 ft 9 in): 390 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 380.0,
+     "unit": "mm",
+     "source": "wikipedia_kh_29",
+     "locator": "Infobox, diameter: 38.0 cm (15.0 in): 38.0 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Kh-29L: semi-active laser guidance Kh-29T/TE: passive homing TV guidance Kh-29D:",
+     "unit": "name",
+     "source": "wikipedia_kh_29",
+     "locator": "Infobox, guidance system: Kh-29L: semi-active laser guidance Kh-29T/TE: passive homing TV guidan",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-02",
-  "note": "Night vision device entries. The tube figures come from manufacturer datasheets and from the AEE sensor device library. The halo comes from the Cui 2012 measurement. The BNVD-1531 is held as its own entry: the maker states it draws on the AN/PVS-15 and AN/PVS-31 rather than being either, so neither entry's values are copied to it.",
+  "note": "Night vision device entries. The tube figures come from manufacturer datasheets and from the AEE sensor device library. The halo comes from the Cui 2012 measurement. The BNVD-1531 is held as its own entry: the maker states it draws on the AN/PVS-15 and AN/PVS-31 rather than being either, so neither entry's values are copied to it. The Kestrel BNVD is held as identity only: the one account of it states dual tubes and white phosphor but no measured figure and no maker, so no other goggle's values are copied to it. The AN/PSQ-36 and the BNVD-FUSED are held as identity only: both are fused I2-and-thermal goggles, the held pages state no measured tube figure for either, and neither is the AN/PVS-31A whose values they draw on.",
   "sources": [],
   "entries": [
     {
@@ -491,6 +491,66 @@
       ],
       "keywords": [
         "bnvd1531"
+      ],
+      "values": {}
+    },
+    {
+      "device_id": "kestrel_bnvd",
+      "canonical_name": "Kestrel BNVD",
+      "family": "nvg",
+      "maker": "",
+      "country": "US",
+      "class_names": [
+        "Kestrel_BNVD"
+      ],
+      "aliases": [
+        "kestrel bnvd",
+        "kestrelbnvd"
+      ],
+      "keywords": [
+        "kestrel"
+      ],
+      "values": {}
+    },
+    {
+      "device_id": "psq36_fgs",
+      "canonical_name": "AN/PSQ-36 Fusion Goggle System",
+      "family": "nvg",
+      "maker": "L3Harris",
+      "country": "US",
+      "class_names": [
+        "PSQ-36",
+        "PSQ36"
+      ],
+      "aliases": [
+        "psq36",
+        "psq-36",
+        "fgs",
+        "fge"
+      ],
+      "keywords": [
+        "psq36"
+      ],
+      "values": {}
+    },
+    {
+      "device_id": "bnvd_fused",
+      "canonical_name": "L3Harris BNVD-FUSED",
+      "family": "nvg",
+      "maker": "L3Harris",
+      "country": "US",
+      "class_names": [
+        "BNVD-FUSED",
+        "BNVDFUSED"
+      ],
+      "aliases": [
+        "bnvdfused",
+        "bnvd-fused",
+        "fbino",
+        "f-bino"
+      ],
+      "keywords": [
+        "bnvdfused"
       ],
       "values": {}
     }

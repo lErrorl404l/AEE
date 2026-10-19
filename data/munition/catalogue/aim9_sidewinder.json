@@ -1,0 +1,61 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AIM-9 Sidewinder from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aim9_sidewinder",
+   "canonical_name": "AIM-9 Sidewinder",
+   "munition_type": "missile",
+   "aliases": [
+    "AIM-9",
+    "CATM-9",
+    "CATM-9M",
+    "Sidewinder"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 85.3,
+     "unit": "kg",
+     "source": "wikipedia_aim_9_sidewinder",
+     "locator": "Infobox, mass: 188 pounds (85.3 kg): 85.3 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 9.4,
+     "unit": "kg",
+     "source": "wikipedia_aim_9_sidewinder",
+     "locator": "Infobox, warhead weight: 20.8 lb (9.4 kg): 9.4 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3020.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_9_sidewinder",
+     "locator": "Infobox, length: 9 feet 11 inches (3.02 m): 3.02 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 127.0,
+     "unit": "mm",
+     "source": "wikipedia_aim_9_sidewinder",
+     "locator": "Infobox, diameter: 5 in (127.0 mm): 127.0 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Imaging infrared homing , 128\u00d7128 element focal plane array (AIM-9X), Infrared h",
+     "unit": "name",
+     "source": "wikipedia_aim_9_sidewinder",
+     "locator": "Infobox, guidance system: Imaging infrared homing , 128\u00d7128 element focal plane array (AIM-9X), ",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M242 Bushmaster from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m242_bushmaster",
+   "canonical_name": "M242 Bushmaster",
+   "munition_type": "cannon",
+   "aliases": [
+    "25mm M242",
+    "M242"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 119.0,
+     "unit": "kg",
+     "source": "wikipedia_m242_bushmaster",
+     "locator": "Infobox, mass: 119 kilograms (262 lb ): 119 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2672.0,
+     "unit": "mm",
+     "source": "wikipedia_m242_bushmaster",
+     "locator": "Infobox, length: 2,672 mm (105.2 in): 2,672 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

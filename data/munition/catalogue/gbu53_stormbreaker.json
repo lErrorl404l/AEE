@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for GBU-53/B StormBreaker from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gbu53_stormbreaker",
+   "canonical_name": "GBU-53/B StormBreaker",
+   "munition_type": "bomb",
+   "aliases": [
+    "GBU-53",
+    "SDB II",
+    "StormBreaker"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 93.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_53_b_stormbreaker",
+     "locator": "Infobox, mass: 204 lb (93 kg): 93 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 48.0,
+     "unit": "kg",
+     "source": "wikipedia_gbu_53_b_stormbreaker",
+     "locator": "Infobox, warhead: 105 lb (48 kg): 48 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1760.0,
+     "unit": "mm",
+     "source": "wikipedia_gbu_53_b_stormbreaker",
+     "locator": "Infobox, length: 69 in (176 cm): 176 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 150.0,
+     "unit": "mm",
+     "source": "wikipedia_gbu_53_b_stormbreaker",
+     "locator": "Infobox, diameter: 6\u20137 in (15\u201318 cm): 15 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Millimeter wave Active radar homing / Semi-active laser guidance / Infrared homi",
+     "unit": "name",
+     "source": "wikipedia_gbu_53_b_stormbreaker",
+     "locator": "Infobox, guidance system: Millimeter wave Active radar homing / Semi-active laser guidance / Inf",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -110,12 +110,20 @@ class TestWiring(unittest.TestCase):
             key = re.sub(r"[^a-z0-9]", "", rec["weapon_id"].lower())
             for alias in rec.get("aliases", []):
                 if maker and alias.startswith(maker):
-                    # A maker-prefixed alias must still carry the model
-                    # key, so the maker alone never identifies a weapon.
-                    self.assertIn(
-                        key,
-                        re.sub(r"[^a-z0-9]", "", alias.lower()),
-                        f"{rec['weapon_id']} alias {alias} lacks the key",
+                    # A maker-prefixed alias must still carry a MODEL, so
+                    # the maker alone never identifies a weapon. The model
+                    # need not be this record's id: a weapon is often
+                    # published under a second model name as well ("Beretta
+                    # 92FS" beside "Beretta 92 / M9"), and that name is a
+                    # designation of the same gun. What the rule forbids is
+                    # a bare maker, so what is required is that a model
+                    # survives the maker prefix - "92FS" after "Beretta",
+                    # "SKS" after "Tula Izhevsk Arsenals".
+                    folded = re.sub(r"[^a-z0-9]", "", alias.lower())
+                    model = folded[len(maker):]
+                    self.assertTrue(
+                        key in folded or len(model) >= 2,
+                        f"{rec['weapon_id']} alias {alias} carries no model",
                     )
 
     def test_catalogue_is_sourced(self):
@@ -234,10 +242,25 @@ class TestWeaponMassBand(unittest.TestCase):
                 continue
             with self.subTest(weapon=rec["weapon_id"]):
                 self.assertEqual(entry["unit"], "kg")
-                # A small arm is 0.2 kg to 20 kg. Anything above the band is
-                # the grams-under-kg defect or a heavier weapon class.
+                # A small arm is 0.2 kg to 20 kg. Anything above the band
+                # is the grams-under-kg defect - the thing this test was
+                # written to catch - or a weapon nobody carries. A record
+                # that SAYS it is crew served is the second case and is
+                # held to the lower bound only: a rotary gun on a mount
+                # weighs 39 kg and that figure is its maker's, not a unit
+                # slip. It is still the corpus's business, because the
+                # rifling it carries is what the ballistics kernel needs.
+                #
+                #   small arm      0.2 - 20 kg   the corpus's own band
+                #   launcher       0.2 - 40 kg   a Javelin ready to fire is
+                #                                22.3 kg, a loaded RPG-29
+                #                                18.8 kg
+                #   crew served    0.2 - 150 kg  a rotary gun on a mount
+                ceiling = {"launcher": 40.0, "crew_served": 150.0}.get(
+                    rec.get("kind"), 20.0
+                )
                 self.assertGreaterEqual(entry["value"], 0.2)
-                self.assertLessEqual(entry["value"], 20.0)
+                self.assertLessEqual(entry["value"], ceiling)
 
     def test_the_eight_pistols_hold_their_kg_value(self):
         rows = {rec["weapon_id"]: rec for rec in self.db}

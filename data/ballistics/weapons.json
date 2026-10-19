@@ -294,11 +294,13 @@
   ],
   "aliases": [
    "1522",
-   "smithwesson1522"
+   "mp1522",
+   "smithwesson1522",
+   "smithwessonmp1522"
   ],
   "manufacturer": "Smith & Wesson",
   "cartridge_id": "22_long_rifle",
-  "note": "15-22 (United States). M&P15-22 rimfire carbine. Twist not stated on the catalogue pages retrieved.",
+  "note": "15-22 (United States). M&P15-22 rimfire carbine. Twist not stated on the catalogue pages retrieved. M&P15-22 (United States). M&P15-22 product page states the caliber; twist not stated on the page retrieved.",
   "values": {
    "cartridge": {
     "value": ".22 LR",
@@ -3635,27 +3637,6 @@
   }
  },
  {
-  "weapon_id": "553r",
-  "names": [
-   "SIG SG 553 R"
-  ],
-  "aliases": [
-   "553r",
-   "sigsaueragswitzerland553r"
-  ],
-  "manufacturer": "SIG Sauer AG (Switzerland)",
-  "cartridge_id": "762x39",
-  "note": "553 R (Switzerland). twist not stated",
-  "values": {
-   "cartridge": {
-    "value": "7.62x39mm",
-    "unit": "name",
-    "source": "sig_sauer_ag_catalogue_2023",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "556",
   "names": [
    "Ruger 556 (AR-556)"
@@ -4143,27 +4124,6 @@
     "value": ".22 LR",
     "unit": "name",
     "source": "beretta_defense_catalogue",
-    "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "751sapr",
-  "names": [
-   "SIG SG 751 SAPR"
-  ],
-  "aliases": [
-   "751sapr",
-   "sigsaueragswitzerland751sapr"
-  ],
-  "manufacturer": "SIG Sauer AG (Switzerland)",
-  "cartridge_id": "762x51_nato",
-  "note": "751 SAPR (Switzerland). twist not stated",
-  "values": {
-   "cartridge": {
-    "value": "7.62x51mm NATO",
-    "unit": "name",
-    "source": "sig_sauer_ag_catalogue_2023",
     "grade": "claimed"
    }
   }
@@ -4888,13 +4848,18 @@
    "Beretta 92 / M9 Pistol"
   ],
   "aliases": [
+   "92m9",
    "beretta92_m9",
+   "beretta92fs",
    "beretta92m9",
-   "beretta92m9pistol"
+   "beretta92m9pistol",
+   "berettam9",
+   "m9",
+   "pistolsemiautomatic9mmm9"
   ],
   "manufacturer": "Beretta",
   "cartridge_id": "9x19",
-  "note": "Barrel 125 mm (4.92 in). Rifling right hand, 6 grooves, pitch 250 mm (1 turn in 10 in). The groove count was checked against the page image.",
+  "note": "Barrel 125 mm (4.92 in). Rifling right hand, 6 grooves, pitch 250 mm (1 turn in 10 in). The groove count was checked against the page image. English Wikipedia 'Beretta M9', infobox: Mass 'Unloaded - 34.2 oz (970 g)', Barrel length '125 mm', Cartridge '9x19mm Parabellum'; lead: 'The Beretta M9, officially the Pistol, Semiautomatic, 9mm, M9, is the designation for the Beretta 92FS semi-automatic pistol used by the United States Armed Forces'. The designations are those the lead states. The M9A1, M9A2 and M9A3 the infobox lists are separate variants and are NOT recorded as names of this one. The article states no rifling twist, so none is recorded and the entry keeps the twist it already holds.",
   "values": {
    "cartridge": {
     "value": "9x19mm",
@@ -4913,6 +4878,12 @@
     "unit": "count",
     "source": "beretta_m9_tm",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.97,
+    "unit": "kg",
+    "source": "wikipedia_beretta_m9",
+    "grade": "claimed"
    }
   }
  },
@@ -10186,50 +10157,18 @@
   ],
   "aliases": [
    "benellim4",
-   "l128a1"
+   "l128a1",
+   "m1014"
   ],
   "manufacturer": "",
   "cartridge_id": "12_gauge",
-  "note": "L128A1 (). MOD DESA factsheet: 'BENELLI L128A1 ... The L128A1 is a combat shotgun operating on an ARGO (Auto Regulating Gas Operated) twin operating system'. 12 bore smoothbore, so no rifling twist.",
+  "note": "L128A1 (). MOD DESA factsheet: 'BENELLI L128A1 ... The L128A1 is a combat shotgun operating on an ARGO (Auto Regulating Gas Operated) twin operating system'. 12 bore smoothbore, so no rifling twist. M1014 (United States). Benelli M4 tactical semi-auto shotgun product page. Smoothbore, so twist is null.",
   "values": {
    "cartridge": {
     "value": "12 gauge",
     "unit": "name",
     "source": "desa_benelli_l128a1",
     "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "beretta92_m9",
-  "names": [
-   "Beretta 92 / M9 Pistol"
-  ],
-  "aliases": [
-   "beretta92m9",
-   "beretta92m9pistol"
-  ],
-  "manufacturer": "Beretta",
-  "cartridge_id": "9x19",
-  "note": "Barrel 125 mm (4.92 in). Rifling right hand, 6 grooves, pitch 250 mm (1 turn in 10 in). The groove count was checked against the page image.",
-  "values": {
-   "cartridge": {
-    "value": "9x19mm",
-    "unit": "name",
-    "source": "beretta_m9_tm",
-    "grade": "documented"
-   },
-   "twist_m": {
-    "value": 0.25,
-    "unit": "m per turn",
-    "source": "beretta_m9_tm",
-    "grade": "documented"
-   },
-   "grooves": {
-    "value": 6,
-    "unit": "count",
-    "source": "beretta_m9_tm",
-    "grade": "documented"
    }
   }
  },
@@ -10456,11 +10395,12 @@
   ],
   "aliases": [
    "bizon",
-   "kalashnikovconcernbizon"
+   "kalashnikovconcernbizon",
+   "pp19bizon"
   ],
-  "manufacturer": "Kalashnikov Concern",
+  "manufacturer": "KBP",
   "cartridge_id": "9x19",
-  "note": "Bizon (Russia). 9x19 helical magazine; EPVAT 250 mm chambering reference.",
+  "note": "Barrel: Four-groove with right-hand twist of one turn. In 240 mm (9.4 inches). The bore and chamber are chrome lined.",
   "values": {
    "cartridge": {
     "value": "9x19mm",
@@ -10591,27 +10531,6 @@
   }
  },
  {
-  "weapon_id": "browninghp",
-  "names": [
-   "Browning Hi-Power (P35)"
-  ],
-  "aliases": [
-   "browninghp",
-   "l9a1"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "9x19",
-  "note": "L9A1 (). gov.uk: 'The Glock 17 Gen4 pistol is not only much lighter than the Browning L9A1'. Taji list: 'Pistol Automatic 9mm L9A1' and 'L9A1 Browning'. No maker twist source located.",
-  "values": {
-   "cartridge": {
-    "value": "9x19mm Parabellum",
-    "unit": "name",
-    "source": "gov_newpistols",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "bushmaster",
   "names": [
    "Bushmaster Firearms AR-15"
@@ -10731,12 +10650,16 @@
  {
   "weapon_id": "c8",
   "names": [
+   "Colt Canada C8 (Diemaco)",
    "Colt Canada C8 Carbine"
   ],
-  "aliases": [],
+  "aliases": [
+   "coltcanadac8",
+   "l119a1"
+  ],
   "manufacturer": "",
   "cartridge_id": "556x45_nato",
-  "note": "C8 (Canada). C8 listed in the C7 family manual; 1 in 17.8 cm rifling.",
+  "note": "C8 (Canada). C8 listed in the C7 family manual; 1 in 17.8 cm rifling. L119A1 (). gov.uk: 'Their main weapon is the 5.56mm C8 Colt Diemaco (L119A1), made in Canada.' MOD THPS lists '5.56mm Diemarco C8 Standard (16\") L119A1'. C8 barrel 1 turn in 178 mm (7 in) = 177.8 mm.",
   "values": {
    "cartridge": {
     "value": "5.56x45mm NATO",
@@ -11448,33 +11371,6 @@
     "unit": "kg",
     "source": "wp_colt_cm901",
     "grade": "documented"
-   }
-  }
- },
- {
-  "weapon_id": "coltcanadac8",
-  "names": [
-   "Colt Canada C8 (Diemaco)"
-  ],
-  "aliases": [
-   "coltcanadac8",
-   "l119a1"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "556x45_nato",
-  "note": "L119A1 (). gov.uk: 'Their main weapon is the 5.56mm C8 Colt Diemaco (L119A1), made in Canada.' MOD THPS lists '5.56mm Diemarco C8 Standard (16\") L119A1'. C8 barrel 1 turn in 178 mm (7 in) = 177.8 mm.",
-  "values": {
-   "cartridge": {
-    "value": "5.56x45mm NATO",
-    "unit": "name",
-    "source": "eliteukforces_c8",
-    "grade": "claimed"
-   },
-   "twist_m": {
-    "value": 0.1778,
-    "unit": "m per turn",
-    "source": "eliteukforces_c8",
-    "grade": "claimed"
    }
   }
  },
@@ -12586,6 +12482,26 @@
   }
  },
  {
+  "weapon_id": "cz807",
+  "names": [
+   "CZ 807"
+  ],
+  "aliases": [
+   "cz807"
+  ],
+  "manufacturer": "\u010cesk\u00e1 zbrojovka Uhersk\u00fd Brod",
+  "cartridge_id": "556x45_nato",
+  "note": "English Wikipedia 'CZ 807', infobox Cartridge: '5.56x45mm NATO ... 7.62x39mm'. The 5.56 chambering is taken; the article states no rifling twist, so none is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "5.56\u00d745mm NATO",
+    "unit": "name",
+    "source": "wikipedia_cz807",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "cz99",
   "names": [
    "Zastava CZ99"
@@ -13493,6 +13409,32 @@
   }
  },
  {
+  "weapon_id": "dsr1",
+  "names": [
+   "DSR-1"
+  ],
+  "aliases": [
+   "dsr1"
+  ],
+  "manufacturer": "DSR-Precision GmbH",
+  "cartridge_id": "308_win",
+  "note": "English Wikipedia 'DSR-1', infobox: Mass '5.9 kg (unloaded, without scope)', Barrel length '650 mm', Cartridge '.308 Winchester / .300 Winchester Magnum / .338 Lapua Magnum'. The first listed chambering is taken and the one published mass is the rifle's; the article states no rifling twist, so none is recorded.",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "wikipedia_dsr1",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 5.9,
+    "unit": "kg",
+    "source": "wikipedia_dsr1",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "dvc",
   "names": [
    "Dvc semi-auto"
@@ -13746,20 +13688,28 @@
  {
   "weapon_id": "eseries",
   "names": [
-   "Smith & Wesson SW1911 E-Series"
+   "SW1911 E-Series Pistol"
   ],
   "aliases": [
    "eseries",
-   "smithwessoneseries"
+   "smithwessoneseries",
+   "sw1911eseries",
+   "sw1911eseriespistol"
   ],
   "manufacturer": "Smith & Wesson",
   "cartridge_id": "45_auto",
-  "note": "E-Series (United States). SW1911 E-Series. Twist not stated on the catalogue pages retrieved.",
+  "note": "Parts listing for the Smith & Wesson OEM barrel, part 275500000: 'Authentic OEM factory new 5\" stainless steel barrel for the Smith & Wesson 1911 Government model pistol. Features a 1-in-16\" twist rate optimized for .45 ACP, machined to factory specification for a drop-in fit on S&W 1911 Government frames.' Part table: 'Brand: Smith & Wesson / Caliber: .45 ACP / Barrel Length: 5\" / Twist Rate: 1 in 16\"'. 1 turn in 16 in = 406.4 mm. This is the factory barrel used by the SW1911 E-Series (5 in, .45 ACP); Smith & Wesson does not publish a twist figure on the model product page or its 2011 model spec sheet.",
   "values": {
    "cartridge": {
     "value": ".45 ACP",
     "unit": "name",
-    "source": "sw_home",
+    "source": "sw_1911_government_oem_barrel_275500000",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.4064,
+    "unit": "m per turn",
+    "source": "sw_1911_government_oem_barrel_275500000",
     "grade": "claimed"
    },
    "mass_kg": {
@@ -14163,6 +14113,35 @@
     "unit": "name",
     "source": "tme_30_451",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "fgm148javelin",
+  "names": [
+   "FGM-148 Javelin"
+  ],
+  "aliases": [
+   "fgm148",
+   "fgm148javelin",
+   "javelin"
+  ],
+  "manufacturer": "Raytheon and Lockheed Martin",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'FGM-148 Javelin', infobox Mass: '22.3 kg (49 lb), ready to fire / 6.4 kg (14 lb), detachable CLU / 15.9 kg (35 lb), missile in launch tube'. The ready-to-fire mass is taken, because the game class is the weapon a soldier shoulders. A guided missile has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_fgm148_javelin",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 22.3,
+    "unit": "kg",
+    "source": "wikipedia_fgm148_javelin",
+    "grade": "claimed"
    }
   }
  },
@@ -15712,26 +15691,6 @@
   }
  },
  {
-  "weapon_id": "g95",
-  "names": [
-   "Heckler & Koch HK416A7 (G95)"
-  ],
-  "aliases": [
-   "g95"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "556x45_nato",
-  "note": "G95 (Germany). German service designation of the HK416A7; no twist published in cited sheet.",
-  "values": {
-   "cartridge": {
-    "value": "5.56x45mm NATO",
-    "unit": "name",
-    "source": "hk416_a5",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "g95a1",
   "names": [
    "Heckler & Koch HK416A8 16.5 in (Bundeswehr G95A1)"
@@ -15760,14 +15719,17 @@
  {
   "weapon_id": "g95k",
   "names": [
-   "Heckler & Koch HK416A7 (Bundeswehr G95k)"
+   "Heckler & Koch HK416A7 (Bundeswehr G95k)",
+   "Heckler & Koch HK416A7 (G95)"
   ],
   "aliases": [
-   "g95k"
+   "g95",
+   "g95k",
+   "hk416a7"
   ],
   "manufacturer": "",
   "cartridge_id": "556x45_nato",
-  "note": "G95k (Germany). G95k article: 'Beim G95k (HK416A7) handelt es sich ...'; Kandidatenwaffe HK416A7, barrel length 368 mm (14.5 in). Twist from HK416 technical data (178 mm).",
+  "note": "G95k (Germany). G95k article: 'Beim G95k (HK416A7) handelt es sich ...'; Kandidatenwaffe HK416A7, barrel length 368 mm (14.5 in). Twist from HK416 technical data (178 mm). G95 (Germany). German service designation of the HK416A7; no twist published in cited sheet. HK416A7 (Germany). A7/G95 not covered by the cited info sheet; no twist published there.",
   "values": {
    "cartridge": {
     "value": "5.56x45mm NATO",
@@ -17259,15 +17221,18 @@
  {
   "weapon_id": "hipower",
   "names": [
+   "Browning Hi-Power (P35)",
    "FN Browning Hi-Power"
   ],
   "aliases": [
+   "browninghp",
    "fnherstalhipower",
-   "hipower"
+   "hipower",
+   "l9a1"
   ],
   "manufacturer": "FN Herstal",
   "cartridge_id": "9x19",
-  "note": "Hi-Power (Belgium). RH 1 in 10 in",
+  "note": "Hi-Power (Belgium). RH 1 in 10 in L9A1 (). gov.uk: 'The Glock 17 Gen4 pistol is not only much lighter than the Browning L9A1'. Taji list: 'Pistol Automatic 9mm L9A1' and 'L9A1 Browning'. No maker twist source located.",
   "values": {
    "cartridge": {
     "value": "9x19mm Parabellum",
@@ -17748,26 +17713,6 @@
   }
  },
  {
-  "weapon_id": "hk416a7",
-  "names": [
-   "Heckler & Koch HK416A7 (G95)"
-  ],
-  "aliases": [
-   "hk416a7"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "556x45_nato",
-  "note": "HK416A7 (Germany). A7/G95 not covered by the cited info sheet; no twist published there.",
-  "values": {
-   "cartridge": {
-    "value": "5.56x45mm NATO",
-    "unit": "name",
-    "source": "hk416_a5",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "hk416f",
   "names": [
    "Heckler & Koch HK416F"
@@ -18120,11 +18065,12 @@
   ],
   "aliases": [
    "hkmp5a3",
-   "l92a1"
+   "l92a1",
+   "mp5a3"
   ],
   "manufacturer": "",
   "cartridge_id": "9x19",
-  "note": "L92A1 (). Altair (defence publication): 'L92A1 (MP5A3)'. MOD THPS lists '9mm Heckler & Koch MP5A3'. HK MP5 manual: 1 turn in 9.86\" = 250.4 mm right hand twist. The UK government source confirms the MP5A3 but not the L-number.",
+  "note": "L92A1 (). Altair (defence publication): 'L92A1 (MP5A3)'. MOD THPS lists '9mm Heckler & Koch MP5A3'. HK MP5 manual: 1 turn in 9.86\" = 250.4 mm right hand twist. The UK government source confirms the MP5A3 but not the L-number. MP5A3 (Germany). MP5 family document: 'MP5A3 - ... Same as MP5A2 but fitted with retractable buttstock'. No twist length published.",
   "values": {
    "cartridge": {
     "value": "9x19mm Parabellum",
@@ -18153,11 +18099,12 @@
   ],
   "aliases": [
    "hkmp5k",
-   "l80a1"
+   "l80a1",
+   "mp5k"
   ],
   "manufacturer": "",
   "cartridge_id": "9x19",
-  "note": "L80A1 (). Altair (defence publication): 'L80A1 (MP5K)'. MOD THPS lists '9mm Heckler & Koch MP5K' in UK service. HK MP5 manual: '1 turn in 9.86\"' = 250.4 mm right hand twist. The UK government source confirms the MP5K but not the L-number.",
+  "note": "L80A1 (). Altair (defence publication): 'L80A1 (MP5K)'. MOD THPS lists '9mm Heckler & Koch MP5K' in UK service. HK MP5 manual: '1 turn in 9.86\"' = 250.4 mm right hand twist. The UK government source confirms the MP5K but not the L-number. MP5K (Germany). HK MP5K Operator's Manual, cal. 9 mm x 19, barrel 115 mm. No twist length is stated (only barrel length and muzzle velocity). The 9x19 standard is 250 mm.",
   "values": {
    "cartridge": {
     "value": "9x19mm Parabellum",
@@ -20164,26 +20111,6 @@
   }
  },
  {
-  "weapon_id": "m1014",
-  "names": [
-   "Benelli M4 Super 90"
-  ],
-  "aliases": [
-   "m1014"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "12_gauge",
-  "note": "M1014 (United States). Benelli M4 tactical semi-auto shotgun product page. Smoothbore, so twist is null.",
-  "values": {
-   "cartridge": {
-    "value": "12 gauge",
-    "unit": "name",
-    "source": "us_sup_benelli_m4",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "m107",
   "names": [
    "M107 / M82 Long Range Sniper Rifle"
@@ -20251,11 +20178,14 @@
    "SIG Sauer P228"
   ],
   "aliases": [
-   "m11"
+   "l107a1",
+   "m11",
+   "p228",
+   "sigp228"
   ],
   "manufacturer": "",
   "cartridge_id": "9x19",
-  "note": "M11 (United States). SIG classic-pistol manual documents the P228; the P228 is the weapon designated M11. No twist stated in the manual.",
+  "note": "M11 (United States). SIG classic-pistol manual documents the P228; the P228 is the weapon designated M11. No twist stated in the manual. L107A1 (). MOD DIN Digest September 2013: 'Service Date of L107A1 P228 Tri Service'. No twist stated for the P228 in the sources examined.",
   "values": {
    "cartridge": {
     "value": "9x19mm",
@@ -20382,6 +20312,64 @@
     "value": "9x19mm Parabellum",
     "unit": "name",
     "source": "beretta_defense_catalogue",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "m134minigun",
+  "names": [
+   "M134 Minigun"
+  ],
+  "aliases": [
+   "m134",
+   "m134minigun",
+   "minigun"
+  ],
+  "manufacturer": "General Electric",
+  "kind": "crew_served",
+  "cartridge_id": "762x51_nato",
+  "note": "English Wikipedia 'M134 Minigun', infobox: Mass '85 lb (39 kg), 41 lb (19 kg) lightweight mod.', Barrel length '558.8 mm', Cartridge '7.62x51mm NATO', Barrels '6'. The standard mass is taken, not the lightweight modification. The article states no rifling twist, so none is recorded. It names Dillon Aero as one of the makers but states no 'M134D' designation, so none is recorded as a name of this gun. The article's lead calls it a 'six-barrel rotary machine gun with an external power source, normally an electric motor', so it is recorded as crew served: the mass is the gun's own and is not a mass a soldier carries.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x51mm NATO",
+    "unit": "name",
+    "source": "wikipedia_m134_minigun",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 39.0,
+    "unit": "kg",
+    "source": "wikipedia_m134_minigun",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "m136at4",
+  "names": [
+   "M136 AT4"
+  ],
+  "aliases": [
+   "at4",
+   "m136",
+   "m136at4"
+  ],
+  "manufacturer": "Saab Bofors Dynamics",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'AT4', infobox Mass: '6.7 kg (14.8 lb) (AT4) / 8 kg (18 lb) (AT4-CS)'; Variants/M136 AT4: 'American version with modified launch tube bumpers, sights, and slings'. The AT4 mass is taken for the M136, which the article states is the American AT4. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_at4",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 6.7,
+    "unit": "kg",
+    "source": "wikipedia_at4",
     "grade": "claimed"
    }
   }
@@ -20966,39 +20954,6 @@
    "mass_kg": {
     "value": 1.179,
     "unit": "kg",
-    "source": "tm_9_1005_211_12",
-    "grade": "documented"
-   }
-  }
- },
- {
-  "weapon_id": "m1911a1",
-  "names": [
-   "M1911A1 Pistol"
-  ],
-  "aliases": [
-   "m1911a1",
-   "m1911a1pistol"
-  ],
-  "manufacturer": "Colt",
-  "cartridge_id": "45_auto",
-  "note": "TM 9-1005-211-12, pistol characteristics table: \"Number of lands and grooves 6\" and \"Rifling, left hand, one turn in 16 in.\" States a six-groove LEFT-hand 1 turn in 16 inches twist = 406.4 mm per turn.",
-  "values": {
-   "cartridge": {
-    "value": ".45 ACP",
-    "unit": "name",
-    "source": "tm_9_1005_211_12",
-    "grade": "documented"
-   },
-   "twist_m": {
-    "value": 0.4064,
-    "unit": "m per turn",
-    "source": "tm_9_1005_211_12",
-    "grade": "documented"
-   },
-   "grooves": {
-    "value": 6,
-    "unit": "count",
     "source": "tm_9_1005_211_12",
     "grade": "documented"
    }
@@ -21695,11 +21650,12 @@
   ],
   "aliases": [
    "m21",
-   "zastavaarmsm21"
+   "zastavaarmsm21",
+   "zastavam21"
   ],
   "manufacturer": "Zastava Arms",
   "cartridge_id": "556x45_nato",
-  "note": "M21 (Serbia). Zastava 5.56x45 rifle.",
+  "note": "English Wikipedia 'Zastava M21', infobox Cartridge: '5.56x45mm NATO'. The article states no rifling twist, so none is recorded.",
   "values": {
    "cartridge": {
     "value": "5.56x45mm NATO",
@@ -22497,6 +22453,38 @@
     "unit": "count",
     "source": "fm_23_41_m3",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "m3maaws",
+  "names": [
+   "M3 MAAWS (Carl Gustaf M3)"
+  ],
+  "aliases": [
+   "carlgustafm3",
+   "m3carlgustaf",
+   "m3maaws",
+   "m3maawscarlgustafm3",
+   "maaws",
+   "raws"
+  ],
+  "manufacturer": "Saab Bofors Dynamics",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'Carl Gustaf 8.4 cm recoilless rifle', infobox Mass: 'M2: 14.2 kg / M3: 10 kg / M4+M3A1: 6.6 kg'; body: 'In US military service, it is officially known as the M3 Multi-Role Anti-Armor Anti-Personnel Weapon System (MAAWS) or Ranger Antitank Weapons System (RAWS), but is often simply called the M3 Carl Gustaf'. The M3 mass is taken, because M3 MAAWS is the M3. The barrel IS rifled, but the corpus holds the rifling twist for a cartridge-firing small arm and this article states none, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_carl_gustaf_84",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 10.0,
+    "unit": "kg",
+    "source": "wikipedia_carl_gustaf_84",
+    "grade": "claimed"
    }
   }
  },
@@ -23492,6 +23480,38 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   }
+  }
+ },
+ {
+  "weapon_id": "m72a7law",
+  "names": [
+   "M72A7 LAW"
+  ],
+  "aliases": [
+   "m72a4",
+   "m72a5",
+   "m72a6",
+   "m72a7",
+   "m72a7law",
+   "m72law"
+  ],
+  "manufacturer": "Nammo Raufoss",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'M72 LAW', infobox Mass: '2.5 kg (5.5 lb) (M72A1-3) / 3.6 kg (7.9 lb) (M72A4-7)'. The M72A7 falls in the A4-A7 band, so 3.6 kg is its published mass. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_m72_law",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "wikipedia_m72_law",
+    "grade": "claimed"
    }
   }
  },
@@ -25022,15 +25042,19 @@
  {
   "weapon_id": "mcxspear",
   "names": [
-   "SIG SAUER MCX-SPEAR"
+   "SIG SAUER MCX-SPEAR",
+   "SIG SAUER MCX-SPEAR (XM5)",
+   "SIG SAUER MCX-SPEAR (XM7)"
   ],
   "aliases": [
    "mcxspear",
-   "sigmcxspear"
+   "sigmcxspear",
+   "xm5",
+   "xm7"
   ],
   "manufacturer": "",
   "cartridge_id": "",
-  "note": "SIG MCX Spear (United States). SIG lists a 1:7 twist for the MCX-SPEAR; not confirmed in a downloaded datasheet.",
+  "note": "SIG MCX Spear (United States). SIG lists a 1:7 twist for the MCX-SPEAR; not confirmed in a downloaded datasheet. XM5 (United States). Original NGSW designation of the MCX-SPEAR, later XM7. XM7 (United States). US Army NGSW-Rifle designation of the MCX-SPEAR, later M7.",
   "values": {
    "cartridge": {
     "value": "6.8x51mm",
@@ -26004,6 +26028,37 @@
   }
  },
  {
+  "weapon_id": "mk153smaw",
+  "names": [
+   "MK153 Mod 0 SMAW"
+  ],
+  "aliases": [
+   "mk153",
+   "mk153mod0",
+   "mk153mod0smaw",
+   "mk153smaw",
+   "smaw"
+  ],
+  "manufacturer": "Talley Defense Systems",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'Shoulder-Launched Multipurpose Assault Weapon', infobox Mass: '16.92 lb (7.67 kg) (empty) / 29.34 lb (13.31 kg) (loaded with HEDM)'. The empty mass is the launcher's own; the round is carried as ammunition. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_smaw",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.67,
+    "unit": "kg",
+    "source": "wikipedia_smaw",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "mk16",
   "names": [
    "FN SCAR-L (Mk 16 Mod 0)"
@@ -26237,6 +26292,38 @@
     "unit": "m per turn",
     "source": "hk_mark23_manual",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "mk40sraw",
+  "names": [
+   "Mk 40 Mod 0 SRAW (Predator)"
+  ],
+  "aliases": [
+   "fgm172",
+   "mk40",
+   "mk40mod0srawpredator",
+   "mk40sraw",
+   "predatorsraw",
+   "sraw"
+  ],
+  "manufacturer": "Lockheed Martin",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'Predator SRAW', infobox Mass: '9.7 kg (21 lb)', Warhead 'FGM-172A: explosively formed penetrator / FGM-172B: multipurpose blast warhead'. A guided missile has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_predator_sraw",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 9.7,
+    "unit": "kg",
+    "source": "wikipedia_predator_sraw",
+    "grade": "claimed"
    }
   }
  },
@@ -26983,27 +27070,6 @@
   }
  },
  {
-  "weapon_id": "mp1522",
-  "names": [
-   "Smith & Wesson M&P15-22"
-  ],
-  "aliases": [
-   "mp1522",
-   "smithwessonmp1522"
-  ],
-  "manufacturer": "Smith & Wesson",
-  "cartridge_id": "22_long_rifle",
-  "note": "M&P15-22 (United States). M&P15-22 product page states the caliber; twist not stated on the page retrieved.",
-  "values": {
-   "cartridge": {
-    "value": ".22 LR",
-    "unit": "name",
-    "source": "sw_m_p_15_22_sport",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "mp18",
   "names": [
    "Bergmann Maschinenpistole 18 (MP18)"
@@ -27352,26 +27418,6 @@
   }
  },
  {
-  "weapon_id": "mp5a3",
-  "names": [
-   "Heckler & Koch MP5A3"
-  ],
-  "aliases": [
-   "mp5a3"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "9x19",
-  "note": "MP5A3 (Germany). MP5 family document: 'MP5A3 - ... Same as MP5A2 but fitted with retractable buttstock'. No twist length published.",
-  "values": {
-   "cartridge": {
-    "value": "9x19mm Parabellum",
-    "unit": "name",
-    "source": "hk_mp5_family",
-    "grade": "documented"
-   }
-  }
- },
- {
   "weapon_id": "mp5a4",
   "names": [
    "Heckler & Koch MP5A4"
@@ -27429,26 +27475,6 @@
     "unit": "name",
     "source": "mke_products",
     "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "mp5k",
-  "names": [
-   "Heckler & Koch MP5K"
-  ],
-  "aliases": [
-   "mp5k"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "9x19",
-  "note": "MP5K (Germany). HK MP5K Operator's Manual, cal. 9 mm x 19, barrel 115 mm. No twist length is stated (only barrel length and muzzle velocity). The 9x19 standard is 250 mm.",
-  "values": {
-   "cartridge": {
-    "value": "9x19mm Parabellum",
-    "unit": "name",
-    "source": "hk_mp5k_om",
-    "grade": "documented"
    }
   }
  },
@@ -27852,7 +27878,7 @@
   ],
   "manufacturer": "Heckler & Koch",
   "cartridge_id": "4_6_x_30",
-  "note": "Barrel 180 mm. The bore is a polygonal profile with 6 twist lines, right hand. The sheet does not state a pitch in mm. Twist not verified. HK Product Catalog 2009, MP7A1 description: \"7-inch cold-hammer forged barrel with right hand twist rifling (1 turn in 6.3 inches)\". A 1 turn in 6.3 inch twist = 6.3 x 25.4 = 160.0 mm per turn.",
+  "note": "Barrel 180 mm. The bore is a polygonal profile with 6 twist lines, right hand. The sheet does not state a pitch in mm. Twist not verified. HK Product Catalog 2009, MP7A1 description: \"7-inch cold-hammer forged barrel with right hand twist rifling (1 turn in 6.3 inches)\". A 1 turn in 6.3 inch twist = 6.3 x 25.4 = 160.0 mm per turn. C.I.P. TDCC Tab I datasheet for the 4,6 x 30 (4.6\u00d730 mm) cartridge, \"Barrel / Grooves\" block: \"N = 6\" and \"u = 150.00\". In the C.I.P. TDCC drawing u is the twist (pitch of rifling) in millimetres, so the standard twist is one turn in 150.00 mm with 6 grooves. Heckler & Koch's own MP7A1 Technical Data sheet (hk-manuals) states \"Barrel profile/Twist: Polygonal profile, 6 twist lines, right-hand twist\" but gives no pitch.",
   "values": {
    "cartridge": {
     "value": "4.6x30mm",
@@ -27863,6 +27889,12 @@
    "twist_m": {
     "value": 0.16,
     "unit": "m per turn",
+    "source": "hk_catalog_2009",
+    "grade": "standard"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
     "source": "hk_catalog_2009",
     "grade": "standard"
    }
@@ -29977,7 +30009,9 @@
   ],
   "aliases": [
    "p220",
-   "p220pistol"
+   "p22045",
+   "p220pistol",
+   "sigsauerp22045"
   ],
   "manufacturer": "SIG Sauer",
   "cartridge_id": "45_auto",
@@ -29999,33 +30033,6 @@
     "value": 0.8,
     "unit": "kg",
     "source": "manual_sig_p220",
-    "grade": "documented"
-   }
-  }
- },
- {
-  "weapon_id": "p22045",
-  "names": [
-   "SIG Sauer P220 (.45 ACP)"
-  ],
-  "aliases": [
-   "p22045",
-   "sigsauerp22045"
-  ],
-  "manufacturer": "SIG Sauer",
-  "cartridge_id": "45_auto",
-  "note": "P220-45 (Germany/Switzerland). SIG Classic Manual P220 Super Match / Match / Elite, .45 ACP column: Rifling Twist 1 in 16 in = 406.4 mm.",
-  "values": {
-   "cartridge": {
-    "value": ".45 ACP",
-    "unit": "name",
-    "source": "sig_classic_8501154",
-    "grade": "documented"
-   },
-   "twist_m": {
-    "value": 0.4064,
-    "unit": "m per turn",
-    "source": "sig_classic_8501154",
     "grade": "documented"
    }
   }
@@ -31950,20 +31957,21 @@
  {
   "weapon_id": "pm63rak",
   "names": [
-   "FB Radom PM-63 RAK"
+   "PM-63 RAK"
   ],
   "aliases": [
    "fbradomfabrykabronipm63rak",
+   "pm63",
    "pm63rak"
   ],
-  "manufacturer": "FB Radom (Fabryka Broni)",
+  "manufacturer": "FB Radom",
   "cartridge_id": "9x18_makarov",
-  "note": "PM-63 RAK (Poland). Polish 9x18 machine pistol; no held source states the twist.",
+  "note": "English Wikipedia 'PM-63', infobox Cartridge: '9x18mm Makarov'. The article states no rifling twist, so none is recorded.",
   "values": {
    "cartridge": {
-    "value": "9x18mm Makarov",
+    "value": "9\u00d718mm Makarov",
     "unit": "name",
-    "source": "fb_radom",
+    "source": "wikipedia_pm63",
     "grade": "claimed"
    }
   }
@@ -32138,38 +32146,6 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
-   }
-  }
- },
- {
-  "weapon_id": "pp19bizon",
-  "names": [
-   "PP-19 Bizon"
-  ],
-  "aliases": [
-   "pp19bizon"
-  ],
-  "manufacturer": "KBP",
-  "cartridge_id": "9x19",
-  "note": "Barrel: Four-groove with right-hand twist of one turn. In 240 mm (9.4 inches). The bore and chamber are chrome lined.",
-  "values": {
-   "cartridge": {
-    "value": "9\u00d719mm Parabellum",
-    "unit": "name",
-    "source": "club-guns-ru-bizon",
-    "grade": "claimed"
-   },
-   "twist_m": {
-    "value": 0.24,
-    "unit": "m per turn",
-    "source": "club-guns-ru-bizon",
-    "grade": "claimed"
-   },
-   "grooves": {
-    "value": 4,
-    "unit": "count",
-    "source": "club-guns-ru-bizon",
-    "grade": "claimed"
    }
   }
  },
@@ -32772,27 +32748,6 @@
     "value": "6.5 Creedmoor",
     "unit": "name",
     "source": "proof_tundra",
-    "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "proseries",
-  "names": [
-   "Smith & Wesson SW1911 Pro Series"
-  ],
-  "aliases": [
-   "proseries",
-   "smithwessonproseries"
-  ],
-  "manufacturer": "Smith & Wesson",
-  "cartridge_id": "45_auto",
-  "note": "Pro Series (United States). SW1911 Pro Series. Twist not stated on the catalogue pages retrieved.",
-  "values": {
-   "cartridge": {
-    "value": ".45 ACP",
-    "unit": "name",
-    "source": "sw_home",
     "grade": "claimed"
    }
   }
@@ -34741,6 +34696,180 @@
   }
  },
  {
+  "weapon_id": "rpg18",
+  "names": [
+   "RPG-18 Mukha"
+  ],
+  "aliases": [
+   "mukha",
+   "rpg18",
+   "rpg18mukha"
+  ],
+  "manufacturer": "Bazalt",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'RPG-18', infobox Mass: '1.4 kg (projectile) / 2.6 kg (loaded)'. The loaded mass is the weapon's own, because the RPG-18 is a disposable launcher. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_rpg18",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.6,
+    "unit": "kg",
+    "source": "wikipedia_rpg18",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "rpg26",
+  "names": [
+   "RPG-26 Aglen"
+  ],
+  "aliases": [
+   "aglen",
+   "rpg26",
+   "rpg26aglen"
+  ],
+  "manufacturer": "Bazalt",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'RPG-26', infobox Mass: '1.8 kg (projectile) / 2.9 kg (loaded)'. The loaded mass is the weapon's own, because the RPG-26 is a disposable launcher that is issued loaded and cannot be reloaded. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_rpg26",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "wikipedia_rpg26",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "rpg29",
+  "names": [
+   "RPG-29 Vampir"
+  ],
+  "aliases": [
+   "rpg29",
+   "rpg29vampir",
+   "vampir"
+  ],
+  "manufacturer": "Bazalt",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'RPG-29', infobox Mass: '12.1 kg (27 lb) unloaded (with optical sight) / 18.8 kg (41 lb) loaded (ready to fire)'. The UNLOADED mass is taken, because the corpus's weapon mass is the weapon's own and the round is carried as ammunition. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_rpg29",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 12.1,
+    "unit": "kg",
+    "source": "wikipedia_rpg29",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "rpg30",
+  "names": [
+   "RPG-30 Kryuk"
+  ],
+  "aliases": [
+   "kryuk",
+   "rpg30",
+   "rpg30kryuk"
+  ],
+  "manufacturer": "Bazalt",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'RPG-30', infobox Mass: '10.3 kg', Caliber '105 mm'; lead: 'also known as the Kryuk ... a Russian hand-held disposable anti-tank rocket launcher'. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_rpg30",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 10.3,
+    "unit": "kg",
+    "source": "wikipedia_rpg30",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "rpg7",
+  "names": [
+   "RPG-7"
+  ],
+  "aliases": [
+   "rpg7",
+   "rpg7d",
+   "rpg7d3",
+   "rpg7v",
+   "rpg7v2"
+  ],
+  "manufacturer": "Bazalt",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'RPG-7', infobox Mass: '6.3 kg (13.9 lb) (without a telescopic sight) / 7 kg (15.4 lb) (with PGO-7)', Variants: 'RPG-7V2 (current model), RPG-7D3 (paratrooper)'; body: 'Russia produces the RPG-7V2 ... The RPG-7D3 is the equivalent paratrooper model'. The mass without the sight is taken, because the sight is a separate item. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_rpg7",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 6.3,
+    "unit": "kg",
+    "source": "wikipedia_rpg7",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "rpg75",
+  "names": [
+   "RPG-75"
+  ],
+  "aliases": [
+   "rpg75"
+  ],
+  "manufacturer": "Povazske strojarne",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'RPG-75', infobox Mass: '3.2 kg (7 lb)', Caliber '68 mm'; lead: 'a portable, disposable, single-shot' launcher. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_rpg75",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.2,
+    "unit": "kg",
+    "source": "wikipedia_rpg75",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "rpk",
   "names": [
    "Kalashnikov RPK light machine gun"
@@ -35040,6 +35169,35 @@
     "value": "5.56x45mm NATO",
     "unit": "name",
     "source": "rra",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "rshg2",
+  "names": [
+   "RShG-2 Aglen-2"
+  ],
+  "aliases": [
+   "aglen2",
+   "rshg2",
+   "rshg2aglen2"
+  ],
+  "manufacturer": "Bazalt",
+  "kind": "launcher",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'RPG-26', Variants/RShG-2: 'The RShG-2 ... is a RPG-26 variant with thermobaric warhead. It is also called the Aglen-2 ... The RShG-2 is heavier than the RPG-26 at 3.5 kilograms (7.7 lb)'. The RShG-2 has no article of its own; that title redirects to this one. A rocket launcher has no rifled barrel, so no twist is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "",
+    "unit": "name",
+    "source": "wikipedia_rpg26",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "wikipedia_rpg26",
     "grade": "claimed"
    }
   }
@@ -36240,6 +36398,36 @@
   }
  },
  {
+  "weapon_id": "savz61skorpion",
+  "names": [
+   "Sa vz. 61 Skorpion"
+  ],
+  "aliases": [
+   "samopalvzor61",
+   "savz61",
+   "savz61skorpion",
+   "skorpionvz61",
+   "vz61"
+  ],
+  "manufacturer": "Ceska zbrojovka Uhersky Brod",
+  "cartridge_id": "32_acp",
+  "note": "English Wikipedia 'Skorpion vz. 61', infobox: Mass '1.30 kg', Barrel length '115 mm', Cartridge '.32 ACP, .380 ACP'. The .32 ACP chambering of the original vz. 61 is taken; the article states no rifling twist, so none is recorded. The designations are the ones the article states: 'the Skorpion vz. 61 (or Sa vz. 61 Skorpion) ... produced under the official designation Samopal vzor 61', and the variants list writes the base model 'vz. 61'.",
+  "values": {
+   "cartridge": {
+    "value": ".32 ACP",
+    "unit": "name",
+    "source": "wikipedia_skorpion_vz61",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.3,
+    "unit": "kg",
+    "source": "wikipedia_skorpion_vz61",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "sbe3",
   "names": [
    "Benelli Super Black Eagle 3"
@@ -36282,44 +36470,20 @@
   }
  },
  {
-  "weapon_id": "scar16",
+  "weapon_id": "scar16s",
   "names": [
+   "FN FN SCAR 16S",
    "FN SCAR 16S"
   ],
   "aliases": [
-   "fnherstalscar16",
-   "scar16"
-  ],
-  "manufacturer": "FN Herstal",
-  "cartridge_id": "556x45_nato",
-  "note": "SCAR 16 (Belgium). civilian SCAR-L",
-  "values": {
-   "cartridge": {
-    "value": "5.56x45mm NATO",
-    "unit": "name",
-    "source": "fn_scar_l_datasheet",
-    "grade": "documented"
-   },
-   "mass_kg": {
-    "value": 3.29,
-    "unit": "kg",
-    "source": "wp_fn_scar",
-    "grade": "documented"
-   }
-  }
- },
- {
-  "weapon_id": "scar16s",
-  "names": [
-   "FN FN SCAR 16S"
-  ],
-  "aliases": [
    "fnamericascar16s",
+   "fnherstalscar16",
+   "scar16",
    "scar16s"
   ],
   "manufacturer": "FN America",
   "cartridge_id": "556x45_nato",
-  "note": "SCAR 16S (United States). SCAR 16S product page states the caliber; the page does not state a twist.",
+  "note": "SCAR 16S (United States). SCAR 16S product page states the caliber; the page does not state a twist. SCAR 16 (Belgium). civilian SCAR-L",
   "values": {
    "cartridge": {
     "value": "5.56x45mm NATO",
@@ -36342,44 +36506,20 @@
   }
  },
  {
-  "weapon_id": "scar17",
+  "weapon_id": "scar17s",
   "names": [
+   "FN FN SCAR 17S",
    "FN SCAR 17S"
   ],
   "aliases": [
-   "fnherstalscar17",
-   "scar17"
-  ],
-  "manufacturer": "FN Herstal",
-  "cartridge_id": "762x51_nato",
-  "note": "SCAR 17 (Belgium). civilian SCAR-H",
-  "values": {
-   "cartridge": {
-    "value": "7.62x51mm NATO",
-    "unit": "name",
-    "source": "fn_scar_h_datasheet",
-    "grade": "documented"
-   },
-   "mass_kg": {
-    "value": 4.037,
-    "unit": "kg",
-    "source": "fn_scar17s",
-    "grade": "documented"
-   }
-  }
- },
- {
-  "weapon_id": "scar17s",
-  "names": [
-   "FN FN SCAR 17S"
-  ],
-  "aliases": [
    "fnamericascar17s",
+   "fnherstalscar17",
+   "scar17",
    "scar17s"
   ],
   "manufacturer": "FN America",
   "cartridge_id": "762x51_nato",
-  "note": "SCAR 17S (United States). SCAR 17S product page: 1:12 RH twist.",
+  "note": "SCAR 17S (United States). SCAR 17S product page: 1:12 RH twist. SCAR 17 (Belgium). civilian SCAR-H",
   "values": {
    "cartridge": {
     "value": "7.62x51mm NATO",
@@ -36398,42 +36538,30 @@
     "unit": "count",
     "source": "fn_fn_scar_17s",
     "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "scar20",
-  "names": [
-   "FN SCAR 20S"
-  ],
-  "aliases": [
-   "fnherstalscar20",
-   "scar20"
-  ],
-  "manufacturer": "FN Herstal",
-  "cartridge_id": "762x51_nato",
-  "note": "SCAR 20 (Belgium). marksman variant",
-  "values": {
-   "cartridge": {
-    "value": "7.62x51mm NATO",
-    "unit": "name",
-    "source": "fn_herstal_products",
-    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.037,
+    "unit": "kg",
+    "source": "fn_scar17s",
+    "grade": "documented"
    }
   }
  },
  {
   "weapon_id": "scar20s",
   "names": [
-   "FN FN SCAR 20S"
+   "FN FN SCAR 20S",
+   "FN SCAR 20S"
   ],
   "aliases": [
    "fnamericascar20s",
+   "fnherstalscar20",
+   "scar20",
    "scar20s"
   ],
   "manufacturer": "FN America",
   "cartridge_id": "762x51_nato",
-  "note": "SCAR 20S (United States). SCAR 20S product page: 1:10 twist.",
+  "note": "SCAR 20S (United States). SCAR 20S product page: 1:10 twist. SCAR 20 (Belgium). marksman variant",
   "values": {
    "cartridge": {
     "value": "7.62x51mm NATO",
@@ -36451,27 +36579,6 @@
     "value": 6,
     "unit": "count",
     "source": "fn_fn_scar_20s",
-    "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "scar_h",
-  "names": [
-   "FN SCAR-H"
-  ],
-  "aliases": [
-   "fnscarh",
-   "scarh"
-  ],
-  "manufacturer": "FN Herstal",
-  "cartridge_id": "762x51_nato",
-  "note": "The FN datasheet states a 16 in (406 mm) barrel but does not state the twist. Twist not verified.",
-  "values": {
-   "cartridge": {
-    "value": "7.62x51mm NATO",
-    "unit": "name",
-    "source": "fn_scar_h_technical_data",
     "grade": "claimed"
    }
   }
@@ -36500,20 +36607,22 @@
  {
   "weapon_id": "scarh",
   "names": [
+   "FN SCAR-H",
    "SCAR-H Sniper Rifle"
   ],
   "aliases": [
+   "fnscarh",
    "scarh",
    "scarhsniperrifle"
   ],
   "manufacturer": "FN Herstal",
   "cartridge_id": "762x51_nato",
-  "note": "FN eStore (manufacturer) SCAR 17S barrel assembly: \"Cold hammer-forged, chrome-lined, free-floating barrel with muzzle device for SCAR 17S in 7.62x51mm, 1:12\\\" twist.\" The SCAR-H/Mk 17 uses the SCAR 17S barrel. States a 1 turn in 12 inch twist = 304.8 mm per turn.",
+  "note": "The FN datasheet states a 16 in (406 mm) barrel but does not state the twist. Twist not verified. FN eStore (manufacturer) SCAR 17S barrel assembly: \"Cold hammer-forged, chrome-lined, free-floating barrel with muzzle device for SCAR 17S in 7.62x51mm, 1:12\\\" twist.\" The SCAR-H/Mk 17 uses the SCAR 17S barrel. States a 1 turn in 12 inch twist = 304.8 mm per turn.",
   "values": {
    "cartridge": {
-    "value": "7.62\u00d751mm NATO",
+    "value": "7.62x51mm NATO",
     "unit": "name",
-    "source": "fn_scarh_fnestore",
+    "source": "fn_scar_h_technical_data",
     "grade": "claimed"
    },
    "twist_m": {
@@ -37341,12 +37450,14 @@
    "SIG SG 553 R"
   ],
   "aliases": [
+   "553r",
    "sg553r",
+   "sigsaueragswitzerland553r",
    "sigsauersg553r"
   ],
   "manufacturer": "SIG Sauer",
   "cartridge_id": "762x39",
-  "note": "SG 553 R (Switzerland). SIG 2023 Swiss catalog Technische Daten SG 553 R (Laufl\u00e4nge 303 mm): Kaliber 7.62 x 39, Dralll\u00e4nge 240 mm (9.5 in), Anzahl der Z\u00fcge 4.",
+  "note": "SG 553 R (Switzerland). SIG 2023 Swiss catalog Technische Daten SG 553 R (Laufl\u00e4nge 303 mm): Kaliber 7.62 x 39, Dralll\u00e4nge 240 mm (9.5 in), Anzahl der Z\u00fcge 4. 553 R (Switzerland). twist not stated",
   "values": {
    "cartridge": {
     "value": "7.62x39mm",
@@ -37463,11 +37574,13 @@
   ],
   "aliases": [
    "sg716g2",
-   "sigsauersg716g2"
+   "sig716g2",
+   "sigsauersg716g2",
+   "sigsauersig716g2"
   ],
   "manufacturer": "SIG Sauer",
   "cartridge_id": "762x51_nato",
-  "note": "SG 716 G2 (United States). 716 G2 is a 716 series rifle. 2011 SIG catalog: SIG716 7.62x51 1 in 10 in = 254.0 mm.",
+  "note": "SG 716 G2 (United States). 716 G2 is a 716 series rifle. 2011 SIG catalog: SIG716 7.62x51 1 in 10 in = 254.0 mm. SIG 716 G2 (United States). 716 G2 is a 716 series rifle. 2011 SIG catalog: SIG716 7.62x51mm NATO 1 in 10 in = 254.0 mm.",
   "values": {
    "cartridge": {
     "value": "7.62x51mm NATO",
@@ -37543,12 +37656,14 @@
    "SIG SG 751 SAPR"
   ],
   "aliases": [
+   "751sapr",
    "sg751sapr",
+   "sigsaueragswitzerland751sapr",
    "sigsauersg751sapr"
   ],
   "manufacturer": "SIG Sauer",
   "cartridge_id": "762x51_nato",
-  "note": "SG 751 SAPR (Switzerland). SIG 2023 Swiss catalog Technische Daten SG 751 SAPR SB (Laufl\u00e4nge 365 mm) and LB (455 mm): 7.62 mm x 51 NATO (.308 Win.), Dralll\u00e4nge 279 mm (11 in), Anzahl der Z\u00fcge 4.",
+  "note": "SG 751 SAPR (Switzerland). SIG 2023 Swiss catalog Technische Daten SG 751 SAPR SB (Laufl\u00e4nge 365 mm) and LB (455 mm): 7.62 mm x 51 NATO (.308 Win.), Dralll\u00e4nge 279 mm (11 in), Anzahl der Z\u00fcge 4. 751 SAPR (Switzerland). twist not stated",
   "values": {
    "cartridge": {
     "value": "7.62x51mm NATO",
@@ -37641,33 +37756,6 @@
     "unit": "name",
     "source": "sig_sauer",
     "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "sig716g2",
-  "names": [
-   "SIG 716 G2"
-  ],
-  "aliases": [
-   "sig716g2",
-   "sigsauersig716g2"
-  ],
-  "manufacturer": "SIG Sauer",
-  "cartridge_id": "762x51_nato",
-  "note": "SIG 716 G2 (United States). 716 G2 is a 716 series rifle. 2011 SIG catalog: SIG716 7.62x51mm NATO 1 in 10 in = 254.0 mm.",
-  "values": {
-   "cartridge": {
-    "value": "7.62x51mm NATO",
-    "unit": "name",
-    "source": "sig2011_catalog",
-    "grade": "standard"
-   },
-   "twist_m": {
-    "value": 0.254,
-    "unit": "m per turn",
-    "source": "sig2011_catalog",
-    "grade": "standard"
    }
   }
  },
@@ -37781,12 +37869,14 @@
   ],
   "aliases": [
    "l105a1",
+   "l105a2",
    "mk25",
-   "sigp226"
+   "sigp226",
+   "sigp226_2"
   ],
   "manufacturer": "",
   "cartridge_id": "9x19",
-  "note": "L105A1 (). Taji list: '9mm Sig Sauer L105A1'. SIG Sauer P226 manual technical data: 'Rifling lead 250 mm' for 9mm.",
+  "note": "L105A1 (). Taji list: '9mm Sig Sauer L105A1'. SIG Sauer P226 manual technical data: 'Rifling lead 250 mm' for 9mm. L105A2 (). RAF: 'Glock - L131A1 and Sig Sauer L105A2'. MOD Army Dress Committee minutes: 'Pistol Automatic L105A2 (Sig Sauer)'. Taji list: 'L105A2 SIG 226A2'. SIG P226 manual: rifling lead 250 mm.",
   "values": {
    "cartridge": {
     "value": "9x19mm Parabellum",
@@ -37809,67 +37899,20 @@
   }
  },
  {
-  "weapon_id": "sigp226_2",
-  "names": [
-   "SIG Sauer P226"
-  ],
-  "aliases": [
-   "l105a2",
-   "sigp226",
-   "sigp226_2"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "9x19",
-  "note": "L105A2 (). RAF: 'Glock - L131A1 and Sig Sauer L105A2'. MOD Army Dress Committee minutes: 'Pistol Automatic L105A2 (Sig Sauer)'. Taji list: 'L105A2 SIG 226A2'. SIG P226 manual: rifling lead 250 mm.",
-  "values": {
-   "cartridge": {
-    "value": "9x19mm Parabellum",
-    "unit": "name",
-    "source": "sig_p226_manual",
-    "grade": "claimed"
-   },
-   "twist_m": {
-    "value": 0.25,
-    "unit": "m per turn",
-    "source": "sig_p226_manual",
-    "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "sigp228",
-  "names": [
-   "SIG Sauer P228"
-  ],
-  "aliases": [
-   "l107a1",
-   "p228",
-   "sigp228"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "9x19",
-  "note": "L107A1 (). MOD DIN Digest September 2013: 'Service Date of L107A1 P228 Tri Service'. No twist stated for the P228 in the sources examined.",
-  "values": {
-   "cartridge": {
-    "value": "9x19mm Parabellum",
-    "unit": "name",
-    "source": "mod_din_digest_2013",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "simonovsks",
   "names": [
+   "Simonov SKS",
    "Simonov SKS (designer designation)"
   ],
   "aliases": [
    "simonovsks",
-   "tulaizhevskarsenalssimonovsks"
+   "sks",
+   "tulaizhevskarsenalssimonovsks",
+   "tulaizhevskarsenalssks"
   ],
   "manufacturer": "Tula / Izhevsk arsenals",
   "cartridge_id": "762x39",
-  "note": "Simonov SKS (Russia). Same weapon as SKS; 7.62x39, 240 mm.",
+  "note": "Simonov SKS (Russia). Same weapon as SKS; 7.62x39, 240 mm. SKS (Russia). 7.62x39; C.I.P. TDCC 240 mm, 4 grooves (Soviet service pitch).",
   "values": {
    "cartridge": {
     "value": "7.62x39mm",
@@ -37954,39 +37997,6 @@
     "unit": "kg",
     "source": "ruger_newmodelsinglesix_0661",
     "grade": "documented"
-   }
-  }
- },
- {
-  "weapon_id": "sks",
-  "names": [
-   "Simonov SKS"
-  ],
-  "aliases": [
-   "sks",
-   "tulaizhevskarsenalssks"
-  ],
-  "manufacturer": "Tula / Izhevsk arsenals",
-  "cartridge_id": "762x39",
-  "note": "SKS (Russia). 7.62x39; C.I.P. TDCC 240 mm, 4 grooves (Soviet service pitch).",
-  "values": {
-   "cartridge": {
-    "value": "7.62x39mm",
-    "unit": "name",
-    "source": "cip_762x39",
-    "grade": "standard"
-   },
-   "twist_m": {
-    "value": 0.24,
-    "unit": "m per turn",
-    "source": "cip_762x39",
-    "grade": "standard"
-   },
-   "grooves": {
-    "value": 4,
-    "unit": "count",
-    "source": "cip_762x39",
-    "grade": "standard"
    }
   }
  },
@@ -38545,6 +38555,36 @@
   }
  },
  {
+  "weapon_id": "sr1vektor",
+  "names": [
+   "SR-1 Vektor"
+  ],
+  "aliases": [
+   "6p53",
+   "gyurza",
+   "serdyukovsps",
+   "sr1",
+   "sr1vektor"
+  ],
+  "manufacturer": "TsNIITochMash",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'SR-1 Vektor', infobox: Mass '950 g', Barrel length '112 mm', Cartridge '9x21mm Gyurza'; lead: 'The SR-1 Vektor, also known as the Gyurza ... or Serdyukov SPS'. The GRAU index is from Small Arms Review, which states 'Russian armament authorities, the Main Missile and Artillery Directorate, designate it with the less slick name GRAU 6P53'. The chambering does not join the register's 9 x 21, which is the C.I.P. (IMI) round and a different cartridge, so it is left unresolved rather than joined to the wrong one. Neither source states a rifling twist, so none is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "9x21mm Gyurza",
+    "unit": "name",
+    "source": "wikipedia_sr1_vektor",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.95,
+    "unit": "kg",
+    "source": "wikipedia_sr1_vektor",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "sr2",
   "names": [
    "SR-2 Veresk"
@@ -38575,7 +38615,7 @@
   ],
   "manufacturer": "Knight's Armament",
   "cartridge_id": "762x51_nato",
-  "note": "KAC catalog lists the SR-25 20 in 5R match barrel with a 1:11 twist (279.4 mm). Other SR-25 variants are listed at 16 in with the same 1:11 twist.",
+  "note": "KAC catalog lists the SR-25 20 in 5R match barrel with a 1:11 twist (279.4 mm). Other SR-25 variants are listed at 16 in with the same 1:11 twist. KAC 2018 Catalog, SR-25 E2 series: \"SR-25 E2 ADVANCED PRECISION RIFLE M-LOK P/N: 31961 ... Barrel 20\"(51 cm) 5R Cut 1:10 Twist\". All SR-25 E2 models in the catalog (16 in, 14.5 in, 20 in) are listed 1:10. 1 turn in 10 in = 254 mm.",
   "values": {
    "cartridge": {
     "value": "7.62x51mm NATO",
@@ -38586,6 +38626,12 @@
    "twist_m": {
     "value": 0.2794,
     "unit": "m per turn",
+    "source": "kac_catalog",
+    "grade": "claimed"
+   },
+   "grooves": {
+    "value": 5,
+    "unit": "count",
     "source": "kac_catalog",
     "grade": "claimed"
    }
@@ -39637,43 +39683,10 @@
   ],
   "manufacturer": "Izhmash",
   "cartridge_id": "7_62_x_54_r",
-  "note": "The Russian technical manual states 4 grooves but does not state the twist. Not verified.",
+  "note": "The Russian technical manual states 4 grooves but does not state the twist. Not verified. TM 8370-50097-OR/15, \"Table 1. SVD Sniper Rifle Characteristics\": \"Rifling  1 turn in 10 inches, right-hand twist\". A 1 turn in 10 inch twist = 10 x 25.4 = 254.0 mm per turn.",
   "values": {
    "cartridge": {
     "value": "7.62x54mmR",
-    "unit": "name",
-    "source": "svd_ru_manual",
-    "grade": "claimed"
-   },
-   "grooves": {
-    "value": 4,
-    "unit": "count",
-    "source": "svd_ru_manual",
-    "grade": "claimed"
-   },
-   "mass_kg": {
-    "value": 4.3,
-    "unit": "kg",
-    "source": "svd_ru_manual",
-    "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "svddragunov",
-  "names": [
-   "SVD Dragunov Sniper Rifle"
-  ],
-  "aliases": [
-   "svddragunov",
-   "svddragunovsniperrifle"
-  ],
-  "manufacturer": "Izhmash",
-  "cartridge_id": "7_62_x_54_r",
-  "note": "TM 8370-50097-OR/15, \"Table 1. SVD Sniper Rifle Characteristics\": \"Rifling  1 turn in 10 inches, right-hand twist\". A 1 turn in 10 inch twist = 10 x 25.4 = 254.0 mm per turn.",
-  "values": {
-   "cartridge": {
-    "value": "7.62\u00d754mmR",
     "unit": "name",
     "source": "svd_tm_or15",
     "grade": "documented"
@@ -39683,6 +39696,18 @@
     "unit": "m per turn",
     "source": "svd_tm_or15",
     "grade": "documented"
+   },
+   "grooves": {
+    "value": 4,
+    "unit": "count",
+    "source": "svd_tm_or15",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.3,
+    "unit": "kg",
+    "source": "svd_ru_manual",
+    "grade": "claimed"
    }
   }
  },
@@ -39813,38 +39838,13 @@
   }
  },
  {
-  "weapon_id": "sw1911eseries",
-  "names": [
-   "SW1911 E-Series Pistol"
-  ],
-  "aliases": [
-   "sw1911eseries",
-   "sw1911eseriespistol"
-  ],
-  "manufacturer": "Smith & Wesson",
-  "cartridge_id": "45_auto",
-  "note": "Parts listing for the Smith & Wesson OEM barrel, part 275500000: 'Authentic OEM factory new 5\" stainless steel barrel for the Smith & Wesson 1911 Government model pistol. Features a 1-in-16\" twist rate optimized for .45 ACP, machined to factory specification for a drop-in fit on S&W 1911 Government frames.' Part table: 'Brand: Smith & Wesson / Caliber: .45 ACP / Barrel Length: 5\" / Twist Rate: 1 in 16\"'. 1 turn in 16 in = 406.4 mm. This is the factory barrel used by the SW1911 E-Series (5 in, .45 ACP); Smith & Wesson does not publish a twist figure on the model product page or its 2011 model spec sheet.",
-  "values": {
-   "cartridge": {
-    "value": ".45 ACP",
-    "unit": "name",
-    "source": "sw_1911_government_oem_barrel_275500000",
-    "grade": "claimed"
-   },
-   "twist_m": {
-    "value": 0.4064,
-    "unit": "m per turn",
-    "source": "sw_1911_government_oem_barrel_275500000",
-    "grade": "claimed"
-   }
-  }
- },
- {
   "weapon_id": "sw1911proseries",
   "names": [
    "SW1911 Pro Series Pistol"
   ],
   "aliases": [
+   "proseries",
+   "smithwessonproseries",
    "sw1911proseries",
    "sw1911proseriespistol"
   ],
@@ -40176,12 +40176,15 @@
    "Tikka T3"
   ],
   "aliases": [
+   "t3",
+   "tikkat3",
    "tikkat3308",
+   "tikkatikkat3",
    "tikkatikkat3308"
   ],
   "manufacturer": "Tikka",
   "cartridge_id": "308_win",
-  "note": "Tikka T3 .308 (Finland). 11 in",
+  "note": "Tikka T3 .308 (Finland). 11 in T3 (Finland). Tikka manual caliber/rate-of-twist table",
   "values": {
    "cartridge": {
     "value": ".308 Winchester",
@@ -41134,34 +41137,6 @@
     "unit": "kg",
     "source": "dockery_m1a1_thompson",
     "grade": "claimed"
-   }
-  }
- },
- {
-  "weapon_id": "tikkat3",
-  "names": [
-   "Tikka T3"
-  ],
-  "aliases": [
-   "t3",
-   "tikkat3",
-   "tikkatikkat3"
-  ],
-  "manufacturer": "Tikka",
-  "cartridge_id": "308_win",
-  "note": "T3 (Finland). Tikka manual caliber/rate-of-twist table",
-  "values": {
-   "cartridge": {
-    "value": ".308 Winchester",
-    "unit": "name",
-    "source": "tikka_t3x_manual",
-    "grade": "documented"
-   },
-   "twist_m": {
-    "value": 0.2794,
-    "unit": "m per turn",
-    "source": "tikka_t3x_manual",
-    "grade": "documented"
    }
   }
  },
@@ -42300,6 +42275,34 @@
   }
  },
  {
+  "weapon_id": "type94nambu",
+  "names": [
+   "Type 94 Nambu"
+  ],
+  "aliases": [
+   "type94",
+   "type94handgun",
+   "type94nambu"
+  ],
+  "manufacturer": "Nambu Rifle Manufacturing Company",
+  "cartridge_id": "",
+  "note": "English Wikipedia 'Type 94 Nambu pistol', infobox: Mass '765 g', Barrel length '96 mm', Cartridge '8x22mm Nambu'. The 8x22mm Nambu is not in the cartridge register, so the chambering stays unresolved rather than being joined to a round it is not. The article states no rifling twist, so none is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "8x22mm Nambu",
+    "unit": "name",
+    "source": "wikipedia_type94_nambu",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.765,
+    "unit": "kg",
+    "source": "wikipedia_type94_nambu",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "type95",
   "names": [
    "Norinco Type 95"
@@ -43258,6 +43261,27 @@
     "value": "5.56x45mm NATO",
     "unit": "name",
     "source": "hs_produkt_catalogue_2025",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "vhsd2",
+  "names": [
+   "HS Produkt VHS-D2"
+  ],
+  "aliases": [
+   "hsproduktvhsd2",
+   "vhsd2"
+  ],
+  "manufacturer": "HS Produkt",
+  "cartridge_id": "556x45_nato",
+  "note": "English Wikipedia 'VHS-2': 'The VHS-2 line consists of the VHS-D2 assault rifle and the VHS-K2 carbine', infobox Cartridge '5.56x45mm NATO'. The infobox mass and barrel length are the first-generation VHS-D and VHS-K figures, so neither is recorded against the D2; the article states no rifling twist either.",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "wikipedia_vhs2",
     "grade": "claimed"
    }
   }
@@ -44561,46 +44585,6 @@
   }
  },
  {
-  "weapon_id": "xm5",
-  "names": [
-   "SIG SAUER MCX-SPEAR (XM5)"
-  ],
-  "aliases": [
-   "xm5"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "",
-  "note": "XM5 (United States). Original NGSW designation of the MCX-SPEAR, later XM7.",
-  "values": {
-   "cartridge": {
-    "value": "6.8x51mm",
-    "unit": "name",
-    "source": "sig_mcx_spear",
-    "grade": "documented"
-   }
-  }
- },
- {
-  "weapon_id": "xm7",
-  "names": [
-   "SIG SAUER MCX-SPEAR (XM7)"
-  ],
-  "aliases": [
-   "xm7"
-  ],
-  "manufacturer": "",
-  "cartridge_id": "",
-  "note": "XM7 (United States). US Army NGSW-Rifle designation of the MCX-SPEAR, later M7.",
-  "values": {
-   "cartridge": {
-    "value": "6.8x51mm",
-    "unit": "name",
-    "source": "sig_mcx_spear",
-    "grade": "documented"
-   }
-  }
- },
- {
   "weapon_id": "xmodel44mag",
   "names": [
    "X Model .44 Mag black synthetic lever, 17.4\" barrel, M-Lok forend"
@@ -44712,6 +44696,139 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   }
+  }
+ },
+ {
+  "weapon_id": "zastavam21a",
+  "names": [
+   "Zastava M21A"
+  ],
+  "aliases": [
+   "m21a",
+   "zastavam21a"
+  ],
+  "manufacturer": "Zastava Arms",
+  "cartridge_id": "556x45_nato",
+  "note": "English Wikipedia 'Zastava M21', infobox: Mass '4.15 kg (M21 A)', Barrel length '460 mm (M21 A)', Cartridge '5.56x45mm NATO'. The article states no rifling twist, so none is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "wikipedia_zastava_m21",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.15,
+    "unit": "kg",
+    "source": "wikipedia_zastava_m21",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "zastavam21c",
+  "names": [
+   "Zastava M21C"
+  ],
+  "aliases": [
+   "m21c",
+   "zastavam21c"
+  ],
+  "manufacturer": "Zastava Arms",
+  "cartridge_id": "556x45_nato",
+  "note": "English Wikipedia 'Zastava M21', infobox: Mass '3.91 kg (M21 C)', Barrel length '290 mm (M21 C)', Cartridge '5.56x45mm NATO'. The article states no rifling twist, so none is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "wikipedia_zastava_m21",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.91,
+    "unit": "kg",
+    "source": "wikipedia_zastava_m21",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "zastavam21s",
+  "names": [
+   "Zastava M21S"
+  ],
+  "aliases": [
+   "m21s",
+   "zastavam21s"
+  ],
+  "manufacturer": "Zastava Arms",
+  "cartridge_id": "556x45_nato",
+  "note": "English Wikipedia 'Zastava M21', infobox: Mass '4.07 kg (M21 S)', Barrel length '375 mm (M21 S)', Cartridge '5.56x45mm NATO'. The article states no rifling twist, so none is recorded.",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "wikipedia_zastava_m21",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.07,
+    "unit": "kg",
+    "source": "wikipedia_zastava_m21",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "zastavam84",
+  "names": [
+   "Zastava M84"
+  ],
+  "aliases": [
+   "m84",
+   "m84m",
+   "zastavam84"
+  ],
+  "manufacturer": "Zastava Arms",
+  "cartridge_id": "7_62_x_54_r",
+  "note": "English Wikipedia 'Zastava M84', infobox Cartridge: '7.62x54mmR'. The article states no rifling twist, so none is recorded. English Wikipedia 'Zastava M84', infobox: Mass '8.8 kg', Barrel length '658 mm', Cartridge '7.62x54mmR'. A general-purpose machine gun, a licensed copy of the PKM. The article states no rifling twist, so none is recorded. NOT the Zastava M84 Skorpion machine pistol, which is a different weapon on the same designation. The designations are the ones the Variants section states: 'M84', 'M86', 'M84M'. The M86 is the coaxial tank version and is a different weapon, so it is not recorded as a name of this one.",
+  "values": {
+   "cartridge": {
+    "value": "7.62\u00d754mmR",
+    "unit": "name",
+    "source": "wikipedia_zastava_m84",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 8.8,
+    "unit": "kg",
+    "source": "wikipedia_zastava_m84",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "zastavam84skorpion",
+  "names": [
+   "Zastava M84 Skorpion"
+  ],
+  "aliases": [
+   "m84scorpion",
+   "m84skorpion",
+   "scorpion",
+   "skorpion",
+   "zastavam84skorpion"
+  ],
+  "manufacturer": "Zastava Arms",
+  "cartridge_id": "32_acp",
+  "note": "English Wikipedia 'Skorpion vz. 61', Variants/Yugoslavia: 'Zastava M84 - A licensed variant of the Skorpion (Serbian: M84 SKORPION), it features a synthetic pistol grip in place of the wooden original', and the article's manufacturer citation is 'Zastava M84 7.65 mm machine pistol (Serbia)', so the chambering is the 7.65 mm (.32 ACP) of the vz. 61. The article states no separate mass or twist for the licensed variant, so neither is recorded. NOT the Zastava M84 machine gun, which is a different weapon on the same designation. 'Scorpion' is recorded beside 'Skorpion' as the English spelling of the same name: the article's title carries the hacek ('Skorpion'), the Serbian designation is Cyrillic, and an English transliteration drops the diacritic either way. It is an identity spelling, not a figure.",
+  "values": {
+   "cartridge": {
+    "value": ".32 ACP",
+    "unit": "name",
+    "source": "wikipedia_skorpion_vz61",
+    "grade": "claimed"
    }
   }
  },

@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AGM-154 Joint Standoff Weapon from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm154_jsow",
+   "canonical_name": "AGM-154 Joint Standoff Weapon",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-154",
+    "JSOW"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 497.0,
+     "unit": "kg",
+     "source": "wikipedia_agm_154_joint_standoff_weapon",
+     "locator": "Infobox, mass: 483 to 497 kg (1,065 to 1,095 lb): 497 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4100.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_154_joint_standoff_weapon",
+     "locator": "Infobox, length: 4.1 m (160 in): 4.1 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 330.0,
+     "unit": "mm",
+     "source": "wikipedia_agm_154_joint_standoff_weapon",
+     "locator": "Infobox, diameter: 330 mm (13 in): 330 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Inertial Navigation System coupled with Global Positioning System , terminal Inf",
+     "unit": "name",
+     "source": "wikipedia_agm_154_joint_standoff_weapon",
+     "locator": "Infobox, guidance system: Inertial Navigation System coupled with Global Positioning System , te",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

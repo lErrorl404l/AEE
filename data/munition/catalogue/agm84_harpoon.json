@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Harpoon (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "agm84_harpoon",
+   "canonical_name": "Harpoon (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "AGM-84",
+    "Harpoon",
+    "SLAM-ER"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 691.0,
+     "unit": "kg",
+     "source": "wikipedia_harpoon_missile",
+     "locator": "Infobox, mass: 1,523 lb (691 kg) including booster: 691 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 221.0,
+     "unit": "kg",
+     "source": "wikipedia_harpoon_missile",
+     "locator": "Infobox, warhead: 488 pounds (221 kg): 221 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3800.0,
+     "unit": "mm",
+     "source": "wikipedia_harpoon_missile",
+     "locator": "Infobox, length: .mw-parser-output .plainlist ol,.mw-parser-output .plainlist ul{line-h: 3.8 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 340.0,
+     "unit": "mm",
+     "source": "wikipedia_harpoon_missile",
+     "locator": "Infobox, diameter: 13.5 in (34 cm): 34 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Sea-skimming cruise monitored by radar altimeter , active radar terminal homing.",
+     "unit": "name",
+     "source": "wikipedia_harpoon_missile",
+     "locator": "Infobox, guidance system: Sea-skimming cruise monitored by radar altimeter , active radar termin",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

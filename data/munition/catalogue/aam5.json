@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for AAM-5 (missile) from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'Mitsubishi AAM-5' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "aam5",
+   "canonical_name": "AAM-5 (missile)",
+   "munition_type": "missile",
+   "aliases": [
+    "AAM-5"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 95.0,
+     "unit": "kg",
+     "source": "wikipedia_mitsubishi_aam_5",
+     "locator": "Infobox, mass: 95 kg (209 lb): 95 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3105.0,
+     "unit": "mm",
+     "source": "wikipedia_mitsubishi_aam_5",
+     "locator": "Infobox, length: 3.105 m (10.19 ft): 3.105 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 130.0,
+     "unit": "mm",
+     "source": "wikipedia_mitsubishi_aam_5",
+     "locator": "Infobox, diameter: 130 mm (5.1 in): 130 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Infrared homing AAM-5: (IIR + INS) AAM-5B: ((Dual Wavelength) IIR + INS)",
+     "unit": "name",
+     "source": "wikipedia_mitsubishi_aam_5",
+     "locator": "Infobox, guidance system: Infrared homing AAM-5: (IIR + INS) AAM-5B: ((Dual Wavelength) IIR + IN",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

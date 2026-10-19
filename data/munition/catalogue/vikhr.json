@@ -1,0 +1,59 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 9K121 Vikhr from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "vikhr",
+   "canonical_name": "9K121 Vikhr",
+   "munition_type": "missile",
+   "aliases": [
+    "9K121",
+    "Vikhr"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 45.0,
+     "unit": "kg",
+     "source": "wikipedia_9k121_vikhr",
+     "locator": "Infobox, mass: 45 kg: 45 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 8.0,
+     "unit": "kg",
+     "source": "wikipedia_9k121_vikhr",
+     "locator": "Infobox, warhead: 8\u201312 kg tandem HEAT charge, armor penetration behind ERA , 1,000 mm;  : 8 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 2800.0,
+     "unit": "mm",
+     "source": "wikipedia_9k121_vikhr",
+     "locator": "Infobox, length: 2.80 m: 2.80 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 130.0,
+     "unit": "mm",
+     "source": "wikipedia_9k121_vikhr",
+     "locator": "Infobox, diameter: 130 mm: 130 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Laser beam riding",
+     "unit": "name",
+     "source": "wikipedia_9k121_vikhr",
+     "locator": "Infobox, guidance system: Laser beam riding",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

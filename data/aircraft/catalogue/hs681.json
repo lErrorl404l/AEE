@@ -1,0 +1,29 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Identity capture for the HS.681, a projected British STOL military transport of the early 1960s (wikipedia_hs681). It was never built, so no measured figure exists and none is claimed.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "hs681",
+      "canonical_name": "Hawker Siddeley HS.681",
+      "maker": "Hawker Siddeley",
+      "model": "Hawker Siddeley HS.681",
+      "variant": "base",
+      "variant_id": "hs681",
+      "vehicle_type": "fixed_wing",
+      "propulsion": "turbofan",
+      "role": "transport",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "historical",
+      "aliases": [
+        "hs681",
+        "hs.681",
+        "hs 681"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

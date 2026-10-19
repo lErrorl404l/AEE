@@ -1,0 +1,50 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for ALARM from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title 'ALARM (missile' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "alarm",
+   "canonical_name": "ALARM",
+   "munition_type": "missile",
+   "aliases": [
+    "ALARM"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 268.0,
+     "unit": "kg",
+     "source": "wikipedia_alarm_missile",
+     "locator": "Infobox, mass: 268 kg (591 lb): 268 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4240.0,
+     "unit": "mm",
+     "source": "wikipedia_alarm_missile",
+     "locator": "Infobox, length: 4.24 m (13 ft 11 in): 4.24 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 230.0,
+     "unit": "mm",
+     "source": "wikipedia_alarm_missile",
+     "locator": "Infobox, diameter: 230 mm (9 in): 230 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Pre-programmed/ passive radar seeker",
+     "unit": "name",
+     "source": "wikipedia_alarm_missile",
+     "locator": "Infobox, guidance system: Pre-programmed/ passive radar seeker",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

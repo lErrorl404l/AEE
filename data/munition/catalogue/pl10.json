@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for PL-10 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "pl10",
+   "canonical_name": "PL-10",
+   "munition_type": "missile",
+   "aliases": [
+    "PL-10"
+   ],
+   "keywords": [],
+   "values": {
+    "length_mm": {
+     "value": 3000.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_10",
+     "locator": "Infobox, length: 3.0 m (9 ft 10 in): 3.0 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 160.0,
+     "unit": "mm",
+     "source": "wikipedia_pl_10",
+     "locator": "Infobox, diameter: 160 mm (6.3 in): 160 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Multi-element imaging infrared (IIR) Active radar seeker",
+     "unit": "name",
+     "source": "wikipedia_pl_10",
+     "locator": "Infobox, guidance system: Multi-element imaging infrared (IIR)  Active radar seeker",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

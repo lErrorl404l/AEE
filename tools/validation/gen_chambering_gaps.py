@@ -47,6 +47,11 @@ def main():
         if record.get("cartridge_id"):
             resolved += 1
             continue
+        # A launcher fires a rocket or a recoilless round. It has no
+        # chambering to join, so it is not a gap and does not belong on a
+        # worklist of chamberings still to research.
+        if record.get("kind") == "launcher":
+            continue
         # The record is blank, so it is a gap whatever the string resolves
         # to on its own. A standalone hit that the join did not apply is
         # still a blank id the consumer cannot use.

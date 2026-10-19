@@ -1,0 +1,265 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Weapons found in installed game content with no catalogue entry (tools/report_match_coverage.py, small-arms gap list). Every figure is the one its held source states; where an article states no rifling twist, none is recorded, and a twist from a fan wiki is not a source this corpus admits.",
+ "sources": [
+  {
+   "source_id": "wikipedia_skorpion_vz61",
+   "title": "English Wikipedia article 'Skorpion vz. 61'",
+   "url": "https://en.wikipedia.org/wiki/%C5%A0korpion",
+   "sha256": "3f693ac1b2fa62bf530818be03c42daddf59fae609b7d1dc71e8968bf9781c28"
+  },
+  {
+   "source_id": "wikipedia_sr1_vektor",
+   "title": "English Wikipedia article 'SR-1 Vektor'",
+   "url": "https://en.wikipedia.org/wiki/SR-1_Vektor",
+   "sha256": "cd45497bb42e86ec0bf10ce6641b75d288840d5836978089bb345ae5838cbca2"
+  },
+  {
+   "source_id": "wikipedia_dsr1",
+   "title": "English Wikipedia article 'DSR-1'",
+   "url": "https://en.wikipedia.org/wiki/DSR-1",
+   "sha256": "602ccc38c43e1582e8c91f172e1e331fc754bd3496694e1a0357085493c53eb2"
+  },
+  {
+   "source_id": "wikipedia_type94_nambu",
+   "title": "English Wikipedia article 'Type 94 Nambu pistol'",
+   "url": "https://en.wikipedia.org/wiki/Type_94_Nambu_pistol",
+   "sha256": "e003d20e4a6fdb7840c55c11dc6e32b1a14e83ad63495207ab9396fadb33d730"
+  },
+  {
+   "source_id": "wikipedia_m134_minigun",
+   "title": "English Wikipedia article 'M134 Minigun'",
+   "url": "https://en.wikipedia.org/wiki/M134_Minigun",
+   "sha256": "c36318632b6d2ec9ecb9a75c40c5709213cb9dfad9ac5eca6b1dedf24aeb3cd6"
+  },
+  {
+   "source_id": "wikipedia_vhs2",
+   "title": "English Wikipedia article 'VHS-2'",
+   "url": "https://en.wikipedia.org/wiki/VHS-2",
+   "sha256": "36d5b90b3a862fab34c02f70d1110bb08f2303ca627c49dc1e041a2ecec86f29"
+  },
+  {
+   "source_id": "smallarmsreview_gyurza",
+   "title": "Small Arms Review, 'Gyurza' (SR-1 Vektor), by Lynndon Schooler",
+   "url": "https://smallarmsreview.com/?p=42183",
+   "sha256": "e242aaaea2f704949b969ab7a9db04e935ec420776f43bd2cd000cd6529ab566"
+  },
+  {
+   "source_id": "wikipedia_beretta_m9",
+   "title": "English Wikipedia article 'Beretta M9'",
+   "url": "https://en.wikipedia.org/wiki/Beretta_M9",
+   "sha256": "fceb64740df59afac031cd07b346701f692154bf8144785956f70b73cfcd17e0"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "savz61skorpion",
+   "name": "Sa vz. 61 Skorpion",
+   "manufacturer": "Ceska zbrojovka Uhersky Brod",
+   "cartridge": ".32 ACP",
+   "mass_kg": 1.3,
+   "barrel_mm": 115,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_skorpion_vz61",
+   "source_note": "English Wikipedia 'Skorpion vz. 61', infobox: Mass '1.30 kg', Barrel length '115 mm', Cartridge '.32 ACP, .380 ACP'. The .32 ACP chambering of the original vz. 61 is taken; the article states no rifling twist, so none is recorded. The designations are the ones the article states: 'the Skorpion vz. 61 (or Sa vz. 61 Skorpion) ... produced under the official designation Samopal vzor 61', and the variants list writes the base model 'vz. 61'.",
+   "aliases": [
+    "Sa vz. 61",
+    "Samopal vzor 61",
+    "vz. 61",
+    "Skorpion vz. 61"
+   ]
+  },
+  {
+   "weapon_id": "zastavam84skorpion",
+   "name": "Zastava M84 Skorpion",
+   "manufacturer": "Zastava Arms",
+   "cartridge": ".32 ACP",
+   "mass_kg": null,
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_skorpion_vz61",
+   "source_note": "English Wikipedia 'Skorpion vz. 61', Variants/Yugoslavia: 'Zastava M84 - A licensed variant of the Skorpion (Serbian: M84 SKORPION), it features a synthetic pistol grip in place of the wooden original', and the article's manufacturer citation is 'Zastava M84 7.65 mm machine pistol (Serbia)', so the chambering is the 7.65 mm (.32 ACP) of the vz. 61. The article states no separate mass or twist for the licensed variant, so neither is recorded. NOT the Zastava M84 machine gun, which is a different weapon on the same designation. 'Scorpion' is recorded beside 'Skorpion' as the English spelling of the same name: the article's title carries the hacek ('Skorpion'), the Serbian designation is Cyrillic, and an English transliteration drops the diacritic either way. It is an identity spelling, not a figure.",
+   "aliases": [
+    "M84 Skorpion",
+    "Zastava M84 Skorpion",
+    "M84 Scorpion",
+    "Skorpion",
+    "Scorpion"
+   ]
+  },
+  {
+   "weapon_id": "sr1vektor",
+   "name": "SR-1 Vektor",
+   "manufacturer": "TsNIITochMash",
+   "cartridge": "9x21mm Gyurza",
+   "mass_kg": 0.95,
+   "barrel_mm": 112,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_sr1_vektor",
+   "source_note": "English Wikipedia 'SR-1 Vektor', infobox: Mass '950 g', Barrel length '112 mm', Cartridge '9x21mm Gyurza'; lead: 'The SR-1 Vektor, also known as the Gyurza ... or Serdyukov SPS'. The GRAU index is from Small Arms Review, which states 'Russian armament authorities, the Main Missile and Artillery Directorate, designate it with the less slick name GRAU 6P53'. The chambering does not join the register's 9 x 21, which is the C.I.P. (IMI) round and a different cartridge, so it is left unresolved rather than joined to the wrong one. Neither source states a rifling twist, so none is recorded.",
+   "aliases": [
+    "SR-1",
+    "Gyurza",
+    "Serdyukov SPS",
+    "6P53"
+   ],
+   "alias_sources": [
+    "smallarmsreview_gyurza"
+   ]
+  },
+  {
+   "weapon_id": "dsr1",
+   "name": "DSR-1",
+   "manufacturer": "DSR-Precision GmbH",
+   "cartridge": ".308 Winchester",
+   "mass_kg": 5.9,
+   "barrel_mm": 650,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_dsr1",
+   "source_note": "English Wikipedia 'DSR-1', infobox: Mass '5.9 kg (unloaded, without scope)', Barrel length '650 mm', Cartridge '.308 Winchester / .300 Winchester Magnum / .338 Lapua Magnum'. The first listed chambering is taken and the one published mass is the rifle's; the article states no rifling twist, so none is recorded.",
+   "aliases": [
+    "DSR-1",
+    "DSR 1"
+   ]
+  },
+  {
+   "weapon_id": "type94nambu",
+   "name": "Type 94 Nambu",
+   "manufacturer": "Nambu Rifle Manufacturing Company",
+   "cartridge": "8x22mm Nambu",
+   "mass_kg": 0.765,
+   "barrel_mm": 96,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_type94_nambu",
+   "source_note": "English Wikipedia 'Type 94 Nambu pistol', infobox: Mass '765 g', Barrel length '96 mm', Cartridge '8x22mm Nambu'. The 8x22mm Nambu is not in the cartridge register, so the chambering stays unresolved rather than being joined to a round it is not. The article states no rifling twist, so none is recorded.",
+   "aliases": [
+    "Type 94",
+    "Type 94 Nambu",
+    "Type 94 handgun"
+   ]
+  },
+  {
+   "weapon_id": "m134minigun",
+   "name": "M134 Minigun",
+   "manufacturer": "General Electric",
+   "cartridge": "7.62x51mm NATO",
+   "mass_kg": 39,
+   "barrel_mm": 558.8,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_m134_minigun",
+   "source_note": "English Wikipedia 'M134 Minigun', infobox: Mass '85 lb (39 kg), 41 lb (19 kg) lightweight mod.', Barrel length '558.8 mm', Cartridge '7.62x51mm NATO', Barrels '6'. The standard mass is taken, not the lightweight modification. The article states no rifling twist, so none is recorded. It names Dillon Aero as one of the makers but states no 'M134D' designation, so none is recorded as a name of this gun. The article's lead calls it a 'six-barrel rotary machine gun with an external power source, normally an electric motor', so it is recorded as crew served: the mass is the gun's own and is not a mass a soldier carries.",
+   "aliases": [
+    "M134",
+    "Minigun"
+   ],
+   "kind": "crew_served"
+  },
+  {
+   "weapon_id": "vhsd2",
+   "name": "HS Produkt VHS-D2",
+   "manufacturer": "HS Produkt",
+   "cartridge": "5.56x45mm NATO",
+   "mass_kg": null,
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_vhs2",
+   "source_note": "English Wikipedia 'VHS-2': 'The VHS-2 line consists of the VHS-D2 assault rifle and the VHS-K2 carbine', infobox Cartridge '5.56x45mm NATO'. The infobox mass and barrel length are the first-generation VHS-D and VHS-K figures, so neither is recorded against the D2; the article states no rifling twist either.",
+   "aliases": [
+    "VHS-D2"
+   ]
+  },
+  {
+   "weapon_id": "zastavam21a",
+   "name": "Zastava M21A",
+   "manufacturer": "Zastava Arms",
+   "cartridge": "5.56x45mm NATO",
+   "mass_kg": 4.15,
+   "barrel_mm": 460,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_zastava_m21",
+   "source_note": "English Wikipedia 'Zastava M21', infobox: Mass '4.15 kg (M21 A)', Barrel length '460 mm (M21 A)', Cartridge '5.56x45mm NATO'. The article states no rifling twist, so none is recorded.",
+   "aliases": [
+    "M21A",
+    "M21 A"
+   ]
+  },
+  {
+   "weapon_id": "zastavam21s",
+   "name": "Zastava M21S",
+   "manufacturer": "Zastava Arms",
+   "cartridge": "5.56x45mm NATO",
+   "mass_kg": 4.07,
+   "barrel_mm": 375,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_zastava_m21",
+   "source_note": "English Wikipedia 'Zastava M21', infobox: Mass '4.07 kg (M21 S)', Barrel length '375 mm (M21 S)', Cartridge '5.56x45mm NATO'. The article states no rifling twist, so none is recorded.",
+   "aliases": [
+    "M21S",
+    "M21 S"
+   ]
+  },
+  {
+   "weapon_id": "zastavam21c",
+   "name": "Zastava M21C",
+   "manufacturer": "Zastava Arms",
+   "cartridge": "5.56x45mm NATO",
+   "mass_kg": 3.91,
+   "barrel_mm": 290,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_zastava_m21",
+   "source_note": "English Wikipedia 'Zastava M21', infobox: Mass '3.91 kg (M21 C)', Barrel length '290 mm (M21 C)', Cartridge '5.56x45mm NATO'. The article states no rifling twist, so none is recorded.",
+   "aliases": [
+    "M21C",
+    "M21 C"
+   ]
+  },
+  {
+   "weapon_id": "zastavam84",
+   "name": "Zastava M84",
+   "manufacturer": "Zastava Arms",
+   "cartridge": "7.62x54mmR",
+   "mass_kg": 8.8,
+   "barrel_mm": 658,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "wikipedia_zastava_m84",
+   "source_note": "English Wikipedia 'Zastava M84', infobox: Mass '8.8 kg', Barrel length '658 mm', Cartridge '7.62x54mmR'. A general-purpose machine gun, a licensed copy of the PKM. The article states no rifling twist, so none is recorded. NOT the Zastava M84 Skorpion machine pistol, which is a different weapon on the same designation. The designations are the ones the Variants section states: 'M84', 'M86', 'M84M'. The M86 is the coaxial tank version and is a different weapon, so it is not recorded as a name of this one.",
+   "aliases": [
+    "M84",
+    "M84M"
+   ]
+  },
+  {
+   "weapon_id": "92_m9",
+   "name": "Beretta 92 / M9 Pistol",
+   "manufacturer": "Beretta",
+   "cartridge": "9x19mm Parabellum",
+   "mass_kg": 0.97,
+   "barrel_mm": 125,
+   "twist_mm": null,
+   "grooves": null,
+   "aliases": [
+    "M9",
+    "Beretta M9",
+    "Beretta 92FS",
+    "Pistol Semiautomatic 9mm M9"
+   ],
+   "source_id": "wikipedia_beretta_m9",
+   "source_note": "English Wikipedia 'Beretta M9', infobox: Mass 'Unloaded - 34.2 oz (970 g)', Barrel length '125 mm', Cartridge '9x19mm Parabellum'; lead: 'The Beretta M9, officially the Pistol, Semiautomatic, 9mm, M9, is the designation for the Beretta 92FS semi-automatic pistol used by the United States Armed Forces'. The designations are those the lead states. The M9A1, M9A2 and M9A3 the infobox lists are separate variants and are NOT recorded as names of this one. The article states no rifling twist, so none is recorded and the entry keeps the twist it already holds.",
+   "mass_source_id": "wikipedia_beretta_m9",
+   "alias_sources": [
+    "wikipedia_beretta_m9"
+   ]
+  }
+ ]
+}

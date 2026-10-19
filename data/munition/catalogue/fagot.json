@@ -1,0 +1,58 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for 9K111 Fagot from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The title '9M111 Fagot' redirects to this article.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "fagot",
+   "canonical_name": "9K111 Fagot",
+   "munition_type": "missile",
+   "aliases": [
+    "9M111"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 12.5,
+     "unit": "kg",
+     "source": "wikipedia_9m111_fagot",
+     "locator": "Infobox, mass: 12.5 kg (28 lb) (missile weight) 22.5 kg (50 lb) (9P135 launching post: 12.5 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 1.7,
+     "unit": "kg",
+     "source": "wikipedia_9m111_fagot",
+     "locator": "Infobox, warhead weight: 1.7 kg (3.7 lb): 1.7 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1100.0,
+     "unit": "mm",
+     "source": "wikipedia_9m111_fagot",
+     "locator": "Infobox, length: 1,100 mm (3 ft 7 in): 1,100 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 120.0,
+     "unit": "mm",
+     "source": "wikipedia_9m111_fagot",
+     "locator": "Infobox, diameter: 120 mm (4.7 in): 120 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "SACLOS wire-guided missile",
+     "unit": "name",
+     "source": "wikipedia_9m111_fagot",
+     "locator": "Infobox, guidance system: SACLOS wire-guided missile",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for M197 electric cannon from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m197",
+   "canonical_name": "M197 electric cannon",
+   "munition_type": "cannon",
+   "aliases": [
+    "M197"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 60.0,
+     "unit": "kg",
+     "source": "wikipedia_m197_electric_cannon",
+     "locator": "Infobox, mass: 132 pounds (60 kg): 60 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1828.8,
+     "unit": "mm",
+     "source": "wikipedia_m197_electric_cannon",
+     "locator": "Infobox, length: 1,828 millimetres (72.0 in): 72.0 in",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 20.0,
+     "unit": "mm",
+     "source": "wikipedia_m197_electric_cannon",
+     "locator": "Infobox, caliber: 20 mm: 20 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

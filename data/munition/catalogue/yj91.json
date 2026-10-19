@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for YJ-91 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "yj91",
+   "canonical_name": "YJ-91",
+   "munition_type": "missile",
+   "aliases": [
+    "YJ-91",
+    "YJ91"
+   ],
+   "keywords": [],
+   "values": {
+    "warhead_mass_kg": {
+     "value": 87.0,
+     "unit": "kg",
+     "source": "wikipedia_yj_91",
+     "locator": "Infobox, warhead: 87\u201390 kg HE blast/fragmentation: 87 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Passive/anti-radiation",
+     "unit": "name",
+     "source": "wikipedia_yj_91",
+     "locator": "Infobox, guidance system: Passive/anti-radiation",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

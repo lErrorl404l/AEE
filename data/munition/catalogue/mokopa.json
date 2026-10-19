@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mokopa from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mokopa",
+   "canonical_name": "Mokopa",
+   "munition_type": "missile",
+   "aliases": [
+    "Mokopa",
+    "ZT-6"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 49.8,
+     "unit": "kg",
+     "source": "wikipedia_mokopa",
+     "locator": "Infobox, mass: 49.8 kg (110 lb): 49.8 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1995.0,
+     "unit": "mm",
+     "source": "wikipedia_mokopa",
+     "locator": "Infobox, length: 1.995 m (6.55 ft): 1.995 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 178.0,
+     "unit": "mm",
+     "source": "wikipedia_mokopa",
+     "locator": "Infobox, diameter: 17.8 cm (7.0 in): 17.8 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "Semi-active laser homing millimetre wave radar seeker",
+     "unit": "name",
+     "source": "wikipedia_mokopa",
+     "locator": "Infobox, guidance system: Semi-active laser homing millimetre wave radar seeker",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Gryazev-Shipunov GSh-30-1 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "gsh302",
+   "canonical_name": "Gryazev-Shipunov GSh-30-1",
+   "munition_type": "cannon",
+   "aliases": [
+    "GSh-30-2",
+    "Gsh-30"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 46.0,
+     "unit": "kg",
+     "source": "wikipedia_gryazev_shipunov_gsh_30_1",
+     "locator": "Infobox, mass: 46 kg (101 lb): 46 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 1978.0,
+     "unit": "mm",
+     "source": "wikipedia_gryazev_shipunov_gsh_30_1",
+     "locator": "Infobox, length: 1,978 mm (77.87 in): 1,978 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 30.0,
+     "unit": "mm",
+     "source": "wikipedia_gryazev_shipunov_gsh_30_1",
+     "locator": "Infobox, caliber: 30mm: 30 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

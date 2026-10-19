@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for RIM-66 Standard from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "standard_missile",
+   "canonical_name": "RIM-66 Standard",
+   "munition_type": "missile",
+   "aliases": [
+    "RIM-66",
+    "Standard Missile"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 707.0,
+     "unit": "kg",
+     "source": "wikipedia_rim_66_standard",
+     "locator": "Infobox, mass: SM-2 \u2013 1,558 lb (707 kg): 707 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 4720.0,
+     "unit": "mm",
+     "source": "wikipedia_rim_66_standard",
+     "locator": "Infobox, length: 15 ft 6 in (4.72 m): 4.72 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 343.0,
+     "unit": "mm",
+     "source": "wikipedia_rim_66_standard",
+     "locator": "Infobox, diameter: 13.5 in (34.3 cm): 34.3 cm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "SM-2MR Block IIIA Command and Inertial midcourse guidance with monopulse semi-ac",
+     "unit": "name",
+     "source": "wikipedia_rim_66_standard",
+     "locator": "Infobox, guidance system: SM-2MR Block IIIA Command and Inertial midcourse guidance with monopul",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

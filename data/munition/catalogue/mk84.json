@@ -1,0 +1,60 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Mark 84 bomb from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "mk84",
+   "canonical_name": "Mark 84 bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "MK84",
+    "Mk 84",
+    "Mk84"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 925.0,
+     "unit": "kg",
+     "source": "wikipedia_mark_84_bomb",
+     "locator": "Infobox, mass: 2,039 lb (925 kg): 925 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 429.0,
+     "unit": "kg",
+     "source": "wikipedia_mark_84_bomb",
+     "locator": "Infobox, warhead weight: 946 lb (429 kg): 429 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "length_mm": {
+     "value": 3840.0,
+     "unit": "mm",
+     "source": "wikipedia_mark_84_bomb",
+     "locator": "Infobox, length: 12 ft 7 in (3.84 m): 3.84 m",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 460.0,
+     "unit": "mm",
+     "source": "wikipedia_mark_84_bomb",
+     "locator": "Infobox, diameter: 18 in (460 mm): 460 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "filling": {
+     "value": "Tritonal",
+     "unit": "name",
+     "source": "wikipedia_mark_84_bomb",
+     "locator": "Infobox, warhead: Tritonal , H6 or PBXN-109",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}
