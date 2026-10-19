@@ -131,6 +131,7 @@ private _table = [
     ["k2_black_panther", "tracked", 1, 56000, 10800, 3600, 2400],
     ["k808_white_tiger", "wheeled", 0, 20000, 7200, 2100, 2700],
     ["k9_thunder", "tracked", 1, 47000, 12000, 3400, 2730],
+    ["kamaz_4310", "wheeled", 0, 7080, 7435, 2500, 2630],
     ["kamaz_5350_mustang", "wheeled", 0, 9600, 7690, 2500, 3080],
     ["kamaz_63968_typhoon_k", "wheeled", 0, 21000, 8990, 2450, 3320],
     ["karrar_tank", "tracked", 1, 51000, 9780, 3680, 2500],

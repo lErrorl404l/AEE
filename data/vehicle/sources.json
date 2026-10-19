@@ -1128,6 +1128,21 @@
   "note": "Gap-research source. The value it carries is grade claimed; the source is a compilation, not a primary document."
  },
  {
+  "source_id": "ru_wikipedia_kamaz_4310",
+  "tier": 5,
+  "type": "compilation",
+  "title": "КАМАЗ-4310",
+  "edition": "Russian Wikipedia, article wikitext read 2026-10-19",
+  "identifier": "Russian Wikipedia article 'КАМАЗ-4310'",
+  "locator": "Карточка: длина 7435 мм; ширина 2500 мм; высота 2630 мм (без тента); клиренс 365 мм; колёсная база 3190+1320 мм; колея 2010 мм; масса 7080 кг; полная масса 15 т; грузоподъёмность 7 т; макс. скорость 85 км/ч; двигатель КАМАЗ-740.10, объём 10850 см3, мощность 154 кВт (210 л. с.) при 2600 об/мин, крутящий момент 637 Н·м при 1500...1800 об/мин; кпп 5-скор. МКПП. Раздел «Подвеска, колёса, тормоза»: шины 1220x400-533 модели ИП-184",
+  "retrieved": "2026-10-19",
+  "url": "https://ru.wikipedia.org/wiki/%D0%9A%D0%90%D0%9C%D0%90%D0%97-4310",
+  "archive_ref": "",
+  "licence": "Russian Wikipedia text under CC BY-SA. It is a secondary compilation and not a primary document.",
+  "primary_held": false,
+  "note": "Captured while closing the modded vehicle gaps. The article publishes the kerb weight, the gross weight, the payload, the three extents, the ground clearance, the wheelbase, the track, the tyre size, the engine model, displacement, rating and torque, the gearbox and the road speed of the KamAZ-4310. The article publishes two unlabelled maximum-speed figures, 85 and 100 km/h, so the capture records 85 and names the second in the state. It publishes no net power basis, so the hp rating is recorded and the net figure derives."
+ },
+ {
   "source_id": "ru_wikipedia_object_681",
   "tier": 5,
   "type": "compilation",

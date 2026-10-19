@@ -21,11 +21,21 @@ is an ArmaFPV first-person-view drone whose own text ("Crocus AT TI", "AR-2
 Darter") states no designation any published source holds, so a row would
 have to invent one.
 
+The second round closed no further vehicle class and the closed count stays
+sixteen. The remaining twenty-nine vehicle gaps are locked below with the
+reason each stays open, and data/vehicle/MODDED_CLASS_GAPS.md holds the same
+table with its evidence. The KamAZ-4310 entry publishes the real truck, but
+no installed class names the model: the Project OPFOR trucks state "KAMAZ"
+and a body word alone, and the class name carries no 4310 token, so an
+alias on the maker word would capture the RHS KamAZ-5350 as well. That is a
+false answer, not a closure, so the entry binds no class.
+
 Run: python3 -m unittest tools.tests.test_mod_class_resolution -v
 """
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 import unittest
@@ -101,32 +111,138 @@ VEHICLE_EMPLACEMENT_CASES: tuple[str, ...] = (
 # links for the Arma 3 Offroad (data/vehicle/class_bindings.json names the
 # Land Rover Wolf; data/vehicle/stringtable_bindings.json names the Toyota
 # Land Cruiser J70), so promoting either to an alias would invent an answer.
-VEHICLE_FICTIONAL_REUSE_CASES: tuple[tuple[str, str], ...] = (
-    ("LOP_Offroad_base", "Offroad"),
-    ("LOP_Offroad_M2_base", "Offroad (M2)"),
-    ("CBRN_Offroad", "Offroad"),
-    ("LOP_AA_Offroad", "ANA Offroad"),
-    ("LOP_AA_Offroad_Police", "ANP Offroad"),
-    ("LOP_AA_Offroad_M2", "ANA Offroad (M2)"),
-    ("LOP_AA_Offroad_M2_Police", "ANP Offroad (M2)"),
-    ("LOP_SUV_base", "SUV"),
-    ("LOP_Hatchback_base", "Hatchback"),
-    ("CBRN_Containment_Vehicle", "Van (Utility)"),
-    ("Gendarmerie_CBRN_Vehicle", "Van (Utility)"),
-    ("RHS_Civ_Truck_02_transport_F", "Zamak Transport"),
+VEHICLE_FICTIONAL_REUSE_CASES: tuple[tuple[str, str, str], ...] = (
+    (
+        "LOP_Offroad_base",
+        "Offroad",
+        "fictional Offroad display; the corpus holds two conflicting real links (Land Rover Wolf, Toyota Land Cruiser J70)",
+    ),
+    (
+        "LOP_Offroad_M2_base",
+        "Offroad (M2)",
+        "fictional Offroad display; same contested real identity, plus an Arma-only M2 mount",
+    ),
+    (
+        "CBRN_Offroad",
+        "Offroad",
+        "fictional Offroad display; same contested real identity as the base game",
+    ),
+    (
+        "LOP_AA_Offroad",
+        "ANA Offroad",
+        "fictional Offroad display behind a faction prefix; no real model published",
+    ),
+    (
+        "LOP_AA_Offroad_Police",
+        "ANP Offroad",
+        "fictional Offroad display behind a faction prefix; no real model published",
+    ),
+    (
+        "LOP_AA_Offroad_M2",
+        "ANA Offroad (M2)",
+        "fictional Offroad display behind a faction prefix; no real model published",
+    ),
+    (
+        "LOP_AA_Offroad_M2_Police",
+        "ANP Offroad (M2)",
+        "fictional Offroad display behind a faction prefix; no real model published",
+    ),
+    (
+        "LOP_SUV_base",
+        "SUV",
+        "fictional SUV display; the text names a body class, not a model",
+    ),
+    (
+        "LOP_Hatchback_base",
+        "Hatchback",
+        "fictional Hatchback display; the text names a body class, not a model",
+    ),
+    (
+        "CBRN_Containment_Vehicle",
+        "Van (Utility)",
+        "fictional Van display; the text names a body class, not a model",
+    ),
+    (
+        "Gendarmerie_CBRN_Vehicle",
+        "Van (Utility)",
+        "fictional Van display; the text names a body class, not a model",
+    ),
+    (
+        "RHS_Civ_Truck_02_transport_F",
+        "Zamak Transport",
+        "fictional Zamak display; the RHS civilian retexture names no real model",
+    ),
 )
 
 # A modded class whose text names only the maker, or only a family. The
-# KamAZ trucks of Project Opfor are retextures of the Arma 3 Truck_02 Zamak
-# and state "KAMAZ" alone. The family base classes (FMTV, the LOP "_base"
-# scaffolding) state a family, and a family is not one vehicle, so the
-# catalogue correctly refuses to name one.
-VEHICLE_MAKER_OR_FAMILY_CASES: tuple[tuple[str, str], ...] = (
-    ("LOP_KAMAZ_fuel_base", "KamAZ (fuel)"),
-    ("LOP_UKR_KAMAZ_Fuel", "KAMAZ (fuel)"),
-    ("LOP_KAMAZ_cov_base", "KAMAZ (covered)"),
-    ("rhsusf_fmtv_base", "FMTV"),
-    ("LOP_Nissan_PKM_base", "Nissan (PKM)"),
+# KamAZ trucks of Project OPFOR are retextures of the Arma 3 Truck_02 Zamak
+# and state "KAMAZ" plus a body word. No class name and no display name in
+# the installed content carries a model token: the scan holds no "4310"
+# anywhere, so the maker plus a body cannot name the KamAZ-4310 without
+# capturing the RHS KamAZ-5350 classes at the same time. The family base
+# classes (FMTV, the LOP "_base" scaffolding) state a family, and a family is
+# not one vehicle, so the catalogue correctly refuses to name one.
+VEHICLE_MAKER_OR_FAMILY_CASES: tuple[tuple[str, str, str], ...] = (
+    (
+        "LOP_KAMAZ_fuel_base",
+        "KamAZ (fuel)",
+        "maker plus fuel body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_UKR_KAMAZ_Fuel",
+        "KAMAZ (fuel)",
+        "maker plus fuel body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_CDF_KAMAZ_Fuel",
+        "KAMAZ (fuel)",
+        "maker plus fuel body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_IRAN_KAMAZ_Fuel",
+        "KAMAZ (fuel)",
+        "maker plus fuel body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_SYR_KAMAZ_Fuel",
+        "KAMAZ (fuel)",
+        "maker plus fuel body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_KAMAZ_cov_base",
+        "KAMAZ (covered)",
+        "maker plus covered body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_KAMAZ_trans_base",
+        "KAMAZ (open)",
+        "maker plus open body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_KAMAZ_rep_base",
+        "KAMAZ (repair)",
+        "maker plus repair body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_KAMAZ_med_base",
+        "Kamaz Medical",
+        "maker plus medical body; the model is not published for this retexture",
+    ),
+    (
+        "LOP_KAMAZ_ammo_base",
+        "KAMAZ (ammo)",
+        "maker plus ammo body; the model is not published for this retexture",
+    ),
+    (
+        "rhsusf_fmtv_base",
+        "FMTV",
+        "family label with no M-number token in the class name or the display",
+    ),
+    (
+        "LOP_Nissan_PKM_base",
+        "Nissan (PKM)",
+        "maker plus the fitted PKM; no model is published for this technical",
+    ),
 )
 
 # Modded aircraft gaps. Every one is an ArmaFPV FPV drone or its base class.
@@ -286,15 +402,86 @@ class OpenModdedVehicleTest(unittest.TestCase):
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name))
 
+    def test_the_open_modded_vehicle_class_count_is_twenty_nine(self) -> None:
+        # Five emplacements, twelve fictional re-uses and twelve maker or
+        # family names. The count is the measured modded gap list, so a
+        # class that leaves one table has to arrive in another.
+        total = (
+            len(VEHICLE_EMPLACEMENT_CASES)
+            + len(VEHICLE_FICTIONAL_REUSE_CASES)
+            + len(VEHICLE_MAKER_OR_FAMILY_CASES)
+        )
+        self.assertEqual(29, total)
+
+    def test_every_open_class_states_a_one_line_reason(self) -> None:
+        for name, _display, reason in (
+            VEHICLE_FICTIONAL_REUSE_CASES + VEHICLE_MAKER_OR_FAMILY_CASES
+        ):
+            with self.subTest(game_class=name):
+                self.assertTrue(reason.strip())
+                self.assertNotIn("\n", reason)
+
     def test_a_fictional_display_re_use_stays_open(self) -> None:
-        for name, display in VEHICLE_FICTIONAL_REUSE_CASES:
+        for name, display, _reason in VEHICLE_FICTIONAL_REUSE_CASES:
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name, display))
 
     def test_a_maker_or_family_name_stays_open(self) -> None:
-        for name, display in VEHICLE_MAKER_OR_FAMILY_CASES:
+        for name, display, _reason in VEHICLE_MAKER_OR_FAMILY_CASES:
             with self.subTest(game_class=name):
                 self.assertIsNone(resolve(self.table, name, display))
+
+
+class Kamaz4310EntryTest(unittest.TestCase):
+    """The KamAZ-4310 entry publishes the truck and binds no game class.
+
+    No installed class text names the model, so a maker alias would have to
+    carry the closure. A "kamaz" alias would also capture the RHS KamAZ-5350
+    classes, which is a false answer, so the entry advertises the model only
+    and the maker-name classes stay open.
+    """
+
+    table: list[dict[str, object]] = []
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.table = rows(VEHICLE_MATCH)
+
+    def test_the_entry_holds_only_sourced_values(self) -> None:
+        capture = json.loads(
+            (REPO / "data/vehicle/catalogue/kamaz_4310.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        entries = [e for e in capture["entries"] if e["catalogue_id"] == "kamaz_4310"]
+        self.assertEqual(1, len(entries))
+        values = entries[0]["values"]
+        self.assertTrue(values)
+        for field, held in values.items():
+            with self.subTest(field=field):
+                for key in ("unit", "source", "locator", "state", "grade"):
+                    self.assertTrue(held.get(key))
+
+    def test_the_entry_advertises_the_model_and_not_the_maker(self) -> None:
+        row = [r for r in self.table if r["id"] == "kamaz_4310"]
+        self.assertEqual(1, len(row))
+        terms = set(row[0]["aliases"]) | set(row[0]["keywords"])
+        self.assertIn("kamaz4310", terms)
+        self.assertNotIn("kamaz", terms)
+        self.assertNotIn("4310", terms)
+
+    def test_no_installed_kamaz_class_resolves_to_the_entry(self) -> None:
+        for name, display, _reason in VEHICLE_MAKER_OR_FAMILY_CASES:
+            if "KAMAZ" not in name.upper():
+                continue
+            with self.subTest(game_class=name):
+                self.assertNotEqual("kamaz_4310", resolve(self.table, name, display))
+
+    def test_the_rhs_kamaz_5350_still_resolves_to_the_5350(self) -> None:
+        self.assertEqual(
+            "kamaz_5350_mustang",
+            resolve(self.table, "rhs_kamaz5350", "KamAZ-5350 Mustang"),
+        )
 
 
 class OpenModdedAircraftTest(unittest.TestCase):

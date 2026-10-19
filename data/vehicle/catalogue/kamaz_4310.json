@@ -1,0 +1,194 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for the KamAZ-4310, the Soviet 6x6 cargo truck built 1981 to 2001. Every value is grade claimed from a tier-5 compilation. The entry binds no game class: the installed content that carries the maker name states 'KAMAZ' and no model, so no class text names the 4310. data/vehicle/MODDED_CLASS_GAPS.md records that finding. The capture holds one entry and the retired capture-level sources array stays empty. The wheelbase row is not carried: the source publishes the front-to-bogie distance and the bogie spacing as one '3190+1320' expression, which is not the single front-to-rear-axle distance the field means.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "kamaz_4310",
+      "canonical_name": "KamAZ-4310",
+      "maker": "KamAZ",
+      "model": "KamAZ-4310",
+      "variant": "base",
+      "variant_id": "kamaz_4310",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "kamaz-4310"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 7080,
+          "unit": "kg",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, масса = 7080 кг",
+          "state": "kerb weight as published, no crew and no payload",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 15000,
+          "unit": "kg",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, полная масса = 15 т",
+          "state": "gross vehicle weight as published",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 7000,
+          "unit": "kg",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, грузоподъёмность = 7 т",
+          "state": "payload capacity as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7435,
+          "unit": "mm",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, длина = 7435 мм",
+          "state": "overall length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, ширина = 2500 мм",
+          "state": "overall width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2630,
+          "unit": "mm",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, высота = 2630 мм (без тента)",
+          "state": "overall height as published, without the tarpaulin",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 365,
+          "unit": "mm",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, клиренс = 365 мм",
+          "state": "ground clearance as published",
+          "grade": "claimed"
+        },
+        "track_mm": {
+          "value": 2010,
+          "unit": "mm",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, колея передняя = 2010 мм; колея задняя = 2010 мм",
+          "state": "track as published, front and rear agree",
+          "grade": "claimed"
+        },
+        "tyre_size_text": {
+          "value": "1220x400-533 ИП-184",
+          "unit": "text",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Раздел «Подвеска, колёса, тормоза»: шины 1220×400-533 модели ИП-184 (широкопрофильные)",
+          "state": "tyre size code as published",
+          "grade": "claimed"
+        },
+        "tyre_width_mm": {
+          "value": 400,
+          "unit": "mm",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Раздел «Подвеска, колёса, тормоза»: шины 1220×400-533, section 400 mm",
+          "state": "section width read from the published size code",
+          "grade": "claimed"
+        },
+        "tyre_diameter_mm": {
+          "value": 1220,
+          "unit": "mm",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Раздел «Подвеска, колёса, тормоза»: шины 1220×400-533, outside diameter 1220 mm",
+          "state": "outside diameter read from the published size code",
+          "grade": "claimed"
+        },
+        "wheel_count": {
+          "value": 6,
+          "unit": "count",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, колёсная формула = 6×6",
+          "state": "wheel stations as published by the 6x6 formula",
+          "grade": "claimed"
+        },
+        "axle_count": {
+          "value": 3,
+          "unit": "count",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, колёсная формула = 6×6; колёсная база = 3190+1320 мм",
+          "state": "axles as published: one front axle and a two-axle rear bogie",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "KamAZ-740.10 V8 diesel",
+          "unit": "text",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, двигатель: КАМАЗ-740.10; раздел «Двигатель»: V8, 8 цилиндров",
+          "state": "engine as published",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 10.85,
+          "unit": "L",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, объём = 10850 (см3)",
+          "state": "swept volume as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 210,
+          "unit": "hp",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, мощность лс = 210 220; раздел «Двигатель»: 154 кВт (210 л. с.) при 2600 об/мин",
+          "state": "maximum rating at 2600 rpm, no net basis; the source also lists a 220 hp variant under the 740.10-20 engine, which this entry does not carry",
+          "grade": "claimed"
+        },
+        "torque_nm": {
+          "value": 637,
+          "unit": "N m",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Раздел «Двигатель»: крутящий момент 637 Н·м при 1600—1800 об/мин",
+          "state": "peak torque as published, rated speed range 1600 to 1800 rpm",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, кпп = 5-скор. МКПП",
+          "state": "five-speed manual gearbox as published",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 5,
+          "unit": "count",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, кпп = 5-скор. МКПП",
+          "state": "forward ratios as published",
+          "grade": "claimed"
+        },
+        "drivetrain": {
+          "value": "6x6 permanent all-wheel drive",
+          "unit": "enum",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Раздел «Трансмиссия и рулевое управление»: привод постоянный полный; карточка, колёсная формула 6×6",
+          "state": "drive arrangement as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 85,
+          "unit": "km/h",
+          "source": "ru_wikipedia_kamaz_4310",
+          "locator": "Карточка, макс. скорость = 85 км/ч",
+          "state": "maximum road speed as published; conflict: max_speed_kmh: the same infobox row carries a second unlabelled figure of 100 km/h; the labelled 85 km/h is recorded and the second is not",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
