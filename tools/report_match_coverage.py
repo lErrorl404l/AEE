@@ -20,10 +20,20 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
 REPO = Path(__file__).parents[1]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from tools.validation.munition_kind import (  # noqa: E402
+    is_munition,
+    kind_of,
+    screened,
+)
+
 VEHICLE = REPO / "addons/vehicles/functions/fnc_getVehicleMatch.sqf"
 AIRCRAFT = REPO / "addons/flight/functions/fnc_getAircraftMatch.sqf"
 WEAPON = REPO / "addons/ballistics/functions/fnc_getWeaponData.sqf"
@@ -61,30 +71,10 @@ SMALL_ARMS_PREFIX = re.compile(r"\b(a|s|h|l|m)?(rifle|gun|hgun|smg|lmg|mmg)_", r
 BASE_CLASS = re.compile(r"_base(_[a-z]{1,2})?$", re.I)
 
 # Things that live in CfgWeapons under an armament root and are NOT a
-# munition. The config cannot tell them apart from one: a master-arm
-# switch declares a magazine holding an undamaging round, and a recon pod
-# declares one holding a damaging one, so neither "reaches a round" nor
-# "reaches a damaging round" separates them. What does separate them is
-# what they ARE, so each term below names a KIND of equipment, never a mod:
-#
-#   a cockpit switch       master arm, safe, inhibit, burst or salvo limit
-#   a targeting pod        Litening, Sniper, TARPS and other recon pods
-#   a countermeasure       DIRCM, flare and chaff dispensers, jammers,
-#                          smoke generators
-#   a leaflet dispenser    PDU-5/B
-#   a ship launcher cell   Mk 41 VLS
-#
-# A catalogue of real munitions should not be scored against any of them.
-NOT_A_MUNITION = re.compile(
-    r"master arm|\binhibit\b|\bsafe\b|burst limit|salvo limit"
-    # A GUN POD is not in this list: it holds a real gun, the gun is a
-    # real munition-firing weapon, and the catalogue should name it.
-    r"|(?<!gun )(?<!gun)\bpod\b|tarps|dircm|\birjam\b|jammer|dispenser|decoy"
-    r"|smoke generator|\bvls\b|flare|chaff"
-    # A generic label naming no weapon at all: the slot, not the store.
-    r"|^rocket launcher$|^action in progress",
-    re.I,
-)
+# munition are filtered by tools/validation/munition_kind.py, which the
+# runtime matcher shares.  A catalogue of real munitions is not scored
+# against a cockpit switch, a targeting pod, a countermeasure discharger, a
+# leaflet dispenser or an aircraft weapon bay.
 MUNITION = re.compile(
     r"rocket|missile|bomb|gbu|agm|aim-|flare|dagr|apkws|crv7|torpedo|shell"
     r"|railgun|laser|cannon|pods?\b"
@@ -361,6 +351,7 @@ def main() -> int:
 
     match_w = weapon_matcher(weapon_table())
     small, carried, armament, wseen = [], [], [], set()
+    excluded: dict[str, list] = defaultdict(list)
     other = 0
     for r in scanned:
         # A firearm declares what it feeds from; a uniform does not.
@@ -384,10 +375,18 @@ def main() -> int:
         elif chain & CARRIED_LAUNCHER_ROOT:
             carried.append(r)
         elif chain & VEHICLE_ARMAMENT_ROOT:
-            if NOT_A_MUNITION.search(dn):
-                other += 1
-            else:
+            # The runtime screen reads a folded substring, so a classname
+            # that joins its words with an underscore is caught by the
+            # second test and not by the first.  The measurement and the
+            # runtime then agree.
+            equipment = not is_munition(dn) or screened(dn, r["class"]) != ""
+            if not equipment:
                 armament.append(r)
+            else:
+                excluded[kind_of(dn) or screened(dn, r["class"])].append(
+                    (r["class"], dn)
+                )
+                other += 1
         else:
             # A store, a countermeasure or a pod. Not a weapon that fires
             # a projectile, so no catalogue of weapons should be scored
@@ -395,6 +394,12 @@ def main() -> int:
             other += 1
 
     print(f"  ({other} CfgWeapons entries are stores, countermeasures or pods)")
+    if excluded:
+        total = sum(len(v) for v in excluded.values())
+        print(f"  {total} armament classes are equipment, not munitions:")
+        for kind, members in sorted(excluded.items()):
+            sample = ", ".join(sorted({c for c, _dn in members})[:4])
+            print(f"    {len(members):3d}  {kind:<20} e.g. {sample}")
     # Vehicle armament is scored against the MUNITION catalogue, which is
     # the corpus written to name it; the small-arms corpus holds a rifling
     # twist and was never meant to.
