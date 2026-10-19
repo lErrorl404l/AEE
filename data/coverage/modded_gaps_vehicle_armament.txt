@@ -1,36 +1,21 @@
 # modded match coverage gaps: vehicle armament
-# 33 unresolved of 373 modded classes (91.2% resolved)
+# 18 unresolved of 374 modded classes (95.2% resolved)
 # class	display	parent	source
 ANZ_WPLauncher	WP Marker Rockets	RocketPods	anz_napalmmod.pbo
 disco_nimrod_bomb_launcher	1000 lb HE bombs	Mk82BombLauncher	disco_nimrod.pbo
-FIR_BDU57	BDU-57 LGTR	Mk82BombLauncher	FIR_AirWeaponSystem_US_cfg.pbo
 FIR_CMLauncher	CHF/FLR	SmokeLauncher	FIR_AirWeaponSystem_US_cfg.pbo
-FIR_GCS1	GCS-1 500lb	FIR_LGBLauncher	FIR_AirWeaponSystem_US_cfg.pbo
-FIR_Mk12	Mk 12 Autocannon	Cannon_30mm_Plane_CAS_02_F	FIR_AirWeaponSystem_US_cfg.pbo
-FIR_Poniard_Launcher	Poniard	FIR_RKT_Base	FIR_AirWeaponSystem_US_cfg.pbo
 FIR_Smokewinder	Smokewinder	CannonCore	FIR_AirWeaponSystem_US_cfg.pbo
 PHEN_FSPLUS_AsphyxiantBomb_Unguided_rack	[Tier 2] Asphyxiant Gas	Mk82BombLauncher	PHAN_CW.pbo
 PHEN_FSPLUS_BlisterBomb_Unguided_rack	Blister Agent	Mk82BombLauncher	PHAN_CW.pbo
 PHEN_FSPLUS_NerveBomb_Unguided_rack	[Tier 3] Nerve Gas	Mk82BombLauncher	PHAN_CW.pbo
 PHEN_FSPLUS_NovaBomb_Unguided_rack	[Tier 5] Nova Gas	Mk82BombLauncher	PHAN_CW.pbo
 PHEN_FSPLUS_RiotCSGasBomb_Unguided_rack	[Tier 1] Riot CS Gas	Mk82BombLauncher	PHAN_CW.pbo
-rhs_weap_2k4	2K4	rhs_weap_9m111	rhs_c_heavyweapons.pbo
-rhs_weap_2p130	2P130-1	mortar_82mm	rhs_c_heavyweapons.pbo
 rhs_weap_902a	Smoke 902A	SmokeLauncher	rhs_c_heavyweapons.pbo
 rhs_weap_afganit_smoke	Smoke Launcher	rhs_weap_902a	rhs_c_heavyweapons.pbo
-rhs_weap_gi2	GI-2	rhs_weap_M197	rhsgref_c_airweapons.pbo
-rhs_weap_m70c	M70 Commando	mortar_82mm	rhssaf_c_weapons.pbo
 rhs_weap_M301	M301	rhs_weap_M197	rhsusf_c_heavyweapons.pbo
 rksla3_wpn_ba21	BA-21	rksla3_wpn_agm114l	rksla3-cvwp.pbo
-rksla3_wpn_dy90	DY-90	rksla3_wpn_ty90	rksla3-cvwp.pbo
-rksla3_wpn_dy90_sam	DY90	MissileLauncher	rksla3-cvwp.pbo
 rksla3_wpn_fulger_sam	FULGER	MissileLauncher	rksla3-cvwp.pbo
 rksla3_wpn_furypgm	FURY PGM	Mk82BombLauncher	rksla3-cvwp.pbo
 rksla3_wpn_gp19_pod	GP19 Gunpod	LMG_Minigun	rksla3-cvwp.pbo
-rksla3_wpn_hmp250_pod	HMP250 Gun pod	LMG_Minigun	rksla3-cvwp.pbo
-rksla3_wpn_hmp400_pod	HMP400 Gun pod	rksla3_wpn_hmp250_pod	rksla3-cvwp.pbo
 rksla3_wpn_mikholit	Mikholit	Mk82BombLauncher	rksla3-cvwp.pbo
-rksla3_wpn_qjk99_127_1_pod	QJK99-12.7-1 Gunpod	LMG_Minigun	rksla3-cvwp.pbo
 rksla3_wpn_sampt21	SAMPT21 GP	rksla3_wpn_fab500m62	rksla3-cvwp.pbo
-rksla3_wpn_uk1000gp	UK 1000lb GP	rksla3_wpn_fab500m62	rksla3-cvwp.pbo
-rksla3_wpn_uk500gp	UK 500lb GP	rksla3_wpn_fab500m62	rksla3-cvwp.pbo

@@ -274,17 +274,17 @@
         "countermeasure": 10,
         "generic label": 1,
         "leaflet dispenser": 1,
-        "recon pod": 5,
+        "recon pod": 4,
         "ship launcher cell": 3,
         "weapon bay": 1
       },
       "label": "vehicle armament",
       "modded": {
-        "hit": 340,
-        "pct": 91.15,
-        "total": 373
+        "hit": 356,
+        "pct": 95.19,
+        "total": 374
       },
-      "unresolved_modded": 33
+      "unresolved_modded": 18
     },
     "vehicles": {
       "base": {
