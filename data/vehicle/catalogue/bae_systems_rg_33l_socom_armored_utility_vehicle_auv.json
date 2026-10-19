@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-01",
-  "note": "Tranche-2 capture for BAE Systems RG-33L SOCOM Armored Utility Vehicle (AUV). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty. RG-33L SOCOM AUV mark; designation evidence held as warwheels_rg33l_designations.",
+  "note": "Tranche-2 capture for BAE Systems RG-33L SOCOM Armored Utility Vehicle (AUV). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty. RG-33L SOCOM AUV mark; the WarWheels RG-33L index names it 'M1239 Special Operations Command (SOCOM) Armored Utility Vehicle (AUV)', the designation evidence held as warwheels_rg33l_designations.",
   "sources": [],
   "entries": [
     {
@@ -16,6 +16,7 @@
       "era": "modern",
       "aliases": [
         "bae systems rg-33l socom armored utility vehicle (auv)",
+        "m1239",
         "rg-33l socom",
         "socom auv"
       ],

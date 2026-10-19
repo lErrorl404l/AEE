@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-01",
-  "note": "Tranche-2 capture for BAE Systems RG-33L (6x6). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty. Fielded as the M1232 RG-33L 6x6 (WarWheels RG-33L index, page heading); designation evidence held as warwheels_rg33l_designations.",
+  "note": "Tranche-2 capture for BAE Systems RG-33L (6x6). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty. Fielded as the M1232 RG-33L 6x6 (WarWheels RG-33L index, page heading); the uparmoured RG-33L carries the M1237 designation there: 'to differentiate the uparmored vehicles from the originals, they were designated as the M1237 RG-33L \"Plus\" vehicles'. Designation evidence held as warwheels_rg33l_designations.",
   "sources": [],
   "entries": [
     {
@@ -17,6 +17,7 @@
       "aliases": [
         "bae systems rg-33l (6x6)",
         "m1232",
+        "m1237",
         "rg-33l",
         "rg33l"
       ],

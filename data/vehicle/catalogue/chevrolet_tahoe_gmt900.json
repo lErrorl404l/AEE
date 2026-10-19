@@ -1,0 +1,59 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for the GMT900 Chevrolet Tahoe (third generation, 2007-2014 model years), the short-wheelbase sibling of the GMT900 Suburban. The held article infobox publishes the three extents and no curb weight, so the operating weight resolves to a labelled absent zero and the row still names the vehicle. The Tahoe's own extents are taken; the Suburban's are not carried across. Every value is grade claimed from a tier-5 compilation.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "chevrolet_tahoe_gmt900",
+      "canonical_name": "Chevrolet Tahoe (GMT900)",
+      "maker": "Chevrolet",
+      "model": "Chevrolet Tahoe",
+      "variant": "GMT900",
+      "variant_id": "chevrolet_tahoe_gmt900",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "chevrolet tahoe",
+        "tahoe"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 5131,
+          "unit": "mm",
+          "source": "wikipedia_chevrolet_tahoe",
+          "locator": "Third generation (2007) infobox, GMT900: Length 202.0 in (5,131 mm)",
+          "state": "overall length, GMT900 generation, as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2007,
+          "unit": "mm",
+          "source": "wikipedia_chevrolet_tahoe",
+          "locator": "Third generation (2007) infobox, GMT900: Width 79.0 in (2,007 mm)",
+          "state": "overall width, GMT900 generation, as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1895,
+          "unit": "mm",
+          "source": "wikipedia_chevrolet_tahoe",
+          "locator": "Third generation (2007) infobox, GMT900: Height 74.6-77.0 in (1,895-1,956 mm)",
+          "state": "overall height, GMT900 generation, lower end of the published range; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "wikipedia_chevrolet_tahoe",
+          "locator": "Third generation (2007) infobox, GMT900, Transmission: '4-speed 4L60-E automatic', '6-speed 6L80 automatic', '4-speed automatic CVT 2ML70'",
+          "state": "transmission published as automatic for every GMT900 combination; no manual transmission is published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

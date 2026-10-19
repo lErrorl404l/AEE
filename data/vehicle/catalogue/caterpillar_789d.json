@@ -1,0 +1,52 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for the Caterpillar 789D haul truck, the current mark of the 789 model line introduced in 1986. Every value is grade claimed from a tier-5 compilation. The article publishes the payload capacity, the engine rating and the tyre diameter only; no operating weight and no overall dimensions are published, so those fields stay absent and the row still names the vehicle. The engine rating is held as published horsepower, so the net power is the named derivation.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "caterpillar_789d",
+      "canonical_name": "Caterpillar 789D",
+      "maker": "Caterpillar Inc.",
+      "model": "Caterpillar 789",
+      "variant": "789D",
+      "variant_id": "caterpillar_789d",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "cat 789d",
+        "caterpillar 789d",
+        "789d"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "tyre_diameter_mm": {
+          "value": 3657.6,
+          "unit": "mm",
+          "source": "wikipedia_caterpillar_789",
+          "locator": "Body: 'It has six tires, each of which are 12 ft (3.66 m) in diameter' (12 ft = 3,657.6 mm)",
+          "state": "tyre diameter as published; source tier-5 compilation. The source gives the fitted tyre diameter, not a size code, so the value is held and not derived",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1770,
+          "unit": "hp",
+          "source": "wikipedia_caterpillar_789",
+          "locator": "Body: 'The 789 has a capacity of 177 tonnes, and its engine can produce 1770 horsepower.'",
+          "state": "engine rating as published in horsepower; the source states power output, so net_power_kw is the named derivation",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 177000,
+          "unit": "kg",
+          "source": "wikipedia_caterpillar_789",
+          "locator": "Body: 'The 789 has a capacity of 177 tonnes' (177 t = 177,000 kg)",
+          "state": "payload capacity as published; the tonne is taken as 1,000 kg. It is the rated load, not an operating weight, so it never fills operating_weight_kg",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

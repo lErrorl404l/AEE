@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 250
-- Emitted runtime rows: 250
+- Catalogue entries: 253
+- Emitted runtime rows: 253
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 249
-- Absent fields: 1129
+- Entries with an absent runtime field: 252
+- Absent fields: 1144
 
 ## 2s19_msta_s - 2S19 Msta-S (tracked)
 
@@ -1475,6 +1475,31 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## caterpillar_789d - Caterpillar 789D (wheeled)
+
+- Capture: `data/vehicle/catalogue/caterpillar_789d.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | claimed | 3657.6 | `wikipedia_caterpillar_789` | Body: 'It has six tires, each of which are 12 ft (3.66 m) in diameter' (12 ft = 3,657.6 mm) | tyre diameter as published; source tier-5 compilation. The source gives the fitted tyre diameter, not a size code, so the value is held and not derived |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 1319.888773 | `wikipedia_caterpillar_789` | Body: 'The 789 has a capacity of 177 tonnes, and its engine can produce 1770 horsepower.' | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a standard characteristics manual, for example TM 55-46-1, or the vehicle sustainment manual |
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## centauro - Centauro (wheeled)
 
 - Capture: `data/vehicle/catalogue/wikipedia_centauro.json`
@@ -1569,6 +1594,32 @@ is a labelled zero, not a refusal.
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## chevrolet_tahoe_gmt900 - Chevrolet Tahoe (GMT900) (wheeled)
+
+- Capture: `data/vehicle/catalogue/chevrolet_tahoe_gmt900.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | claimed | automatic | `wikipedia_chevrolet_tahoe` | Third generation (2007) infobox, GMT900, Transmission: '4-speed 4L60-E automatic', '6-speed 6L80 automatic', '4-speed automatic CVT 2ML70' | transmission published as automatic for every GMT900 combination; no manual transmission is published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a standard characteristics manual, for example TM 55-46-1, or the vehicle sustainment manual |
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## cougar_4x4 - Cougar 4x4 (wheeled)
@@ -4454,6 +4505,30 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## object_681 - Object 681 (tracked)
+
+- Capture: `data/vehicle/catalogue/object_681.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13600 | `ru_wikipedia_object_681` | Карточка, Масса, т = 13,6 (13.6 t = 13,600 kg) | combat weight as published; source tier-5 compilation |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 420 | `ru_wikipedia_object_681` | Карточка, Клиренс, мм = 420 | ground clearance as published |
+| `net_power_kw` | derived | 223.709962 | `ru_wikipedia_object_681` | Карточка, Мощность двигателя, л.с. = 300 (УТД-20 diesel, 6 cylinders, V) | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 

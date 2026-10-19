@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-01",
-  "note": "Gap-research capture for KAMAZ-63968 Typhoon-K. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "note": "Gap-research capture for KAMAZ-63968 Typhoon-K. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty. The family short name is Typhoon: the value source wikipedia_kamaz_typhoon names the vehicle 'Kamaz Typhoon' and its variants 'Typhoon-K'.",
   "sources": [],
   "entries": [
     {
@@ -15,7 +15,8 @@
       "country": "Russia",
       "era": "modern",
       "aliases": [
-        "kamaz-63968 typhoon-k"
+        "kamaz-63968 typhoon-k",
+        "typhoon"
       ],
       "keywords": [],
       "runtime_ready": false,

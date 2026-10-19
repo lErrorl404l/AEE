@@ -1,0 +1,83 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for the Object 681 (Объект 681), the Soviet Kurganmashzavod infantry fighting vehicle prototype of 1977. It was never produced in series and one example survives at Kubinka. Every value is grade claimed from a tier-5 compilation. The engine rating is held as published brake horsepower, so the net power is the named derivation.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "object_681",
+      "canonical_name": "Object 681",
+      "maker": "Kurganmashzavod",
+      "model": "Object 681",
+      "variant": "prototype",
+      "variant_id": "object_681",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "object 681",
+        "obyekt 681"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13600,
+          "unit": "kg",
+          "source": "ru_wikipedia_object_681",
+          "locator": "Карточка, Масса, т = 13,6 (13.6 t = 13,600 kg)",
+          "state": "combat weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6735,
+          "unit": "mm",
+          "source": "ru_wikipedia_object_681",
+          "locator": "Карточка, Длина, мм = 6735 (hull length)",
+          "state": "hull length as published; the row carries no gun-forward length",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3140,
+          "unit": "mm",
+          "source": "ru_wikipedia_object_681",
+          "locator": "Карточка, Ширина, мм = 3140",
+          "state": "overall width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2400,
+          "unit": "mm",
+          "source": "ru_wikipedia_object_681",
+          "locator": "Карточка, Высота, мм = 2400",
+          "state": "overall height as published",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 420,
+          "unit": "mm",
+          "source": "ru_wikipedia_object_681",
+          "locator": "Карточка, Клиренс, мм = 420",
+          "state": "ground clearance as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 300,
+          "unit": "hp",
+          "source": "ru_wikipedia_object_681",
+          "locator": "Карточка, Мощность двигателя, л.с. = 300 (УТД-20 diesel, 6 cylinders, V)",
+          "state": "engine rating as published in metric horsepower; the source states brake power, so net_power_kw is the named derivation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "ru_wikipedia_object_681",
+          "locator": "Карточка, Скорость по шоссе, км/ч = 65",
+          "state": "road speed as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
