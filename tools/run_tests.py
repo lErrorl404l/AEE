@@ -202,6 +202,10 @@ def main():
         "tools/tests/test_runtime_aircraft.py",
         "tools/tests/test_aircraft_corpus.py",
         "tools/tests/test_aircraft_coverage.py",
+        # Matcher coverage on MODDED content: the base-versus-modded split,
+        # the gap lists under data/coverage/, and the baseline that the
+        # closing work is measured against.
+        "tools/tests/test_match_coverage.py",
         "tools/tests/test_aircraft_roster.py",
         "tools/tests/test_aircraft_systems.py",
         "tools/tests/test_aircraft_systems_lookup.py",

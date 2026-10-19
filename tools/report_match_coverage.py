@@ -5,20 +5,43 @@ Coverage is not a guess: tools/scan_game_classes.py reads what the game
 and the installed mods declare, and this walks that scan through the same
 ladder the runtime matcher uses, so the number is what a player would get.
 
+Every table is reported twice: BASE, the classes the game itself ships, and
+MODDED, the classes a mod declares. The base game is `<install>/Addons`, so
+the split is derived from the install and never from a list of names. The
+modded number is the one that must reach 100%: a mod nobody has written yet
+is measured by the same rule as one that is installed.
+
 It also prints the gap list - the real vehicles and aircraft that appear in
 the content but that no catalogue entry can name - which is the worklist
-for capturing new entries.
+for capturing new entries. `--modded` prints the same list restricted to
+modded classes, as one tab-separated record per class, carrying the class,
+the display name, the parent and the source PBO.
+
+Two artefacts make the closing work a stable input rather than a fresh
+derivation. Both carry their provenance:
+
+  data/coverage/modded_gaps_<table>.txt   one file per table, tab-separated
+                                          class, display, parent, source
+  data/coverage/modded_baseline.json      per table: base count, modded
+                                          count, and the scan, date, install
+                                          and base PBO count behind them
 
 Run:
     OUT=/tmp/all.jsonl python3 tools/scan_game_classes.py \\
         "<game>/Addons" "<workshop>/107410"
-    python3 tools/report_match_coverage.py /tmp/all.jsonl --gaps
+    python3 tools/report_match_coverage.py /tmp/all.jsonl \\
+        --modded --gaps \\
+        --write-gaps data/coverage \\
+        --write-baseline data/coverage/modded_baseline.json
 """
 
 from __future__ import annotations
 
 import argparse
+import datetime
+import hashlib
 import json
+import os
 import re
 import sys
 from collections import defaultdict
@@ -38,6 +61,12 @@ VEHICLE = REPO / "addons/vehicles/functions/fnc_getVehicleMatch.sqf"
 AIRCRAFT = REPO / "addons/flight/functions/fnc_getAircraftMatch.sqf"
 WEAPON = REPO / "addons/ballistics/functions/fnc_getWeaponData.sqf"
 MUNITION_TABLE = REPO / "addons/blast/functions/munition/fnc_getMunitionMatch.sqf"
+
+# The base game is the PBOs the install ships. Everything else in a scan is
+# modded. The directory name comes from the install, and the environment
+# variable lets a caller point at a second install without editing this file.
+BASE_ADDONS = "Addons"
+INSTALL_ENV = "AEE_ARMA3_DIR"
 
 # CfgWeapons holds every weapon the game has, not just the ones a soldier
 # carries, and the weapon catalogue is a SMALL-ARMS catalogue: it holds one
@@ -270,21 +299,109 @@ def weapon_matcher(table: list):
     return match
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("scan", type=Path)
-    ap.add_argument("--gaps", action="store_true")
-    args = ap.parse_args()
+def install_dir(explicit: str | None) -> Path:
+    """The Arma 3 install. `<install>/Addons` is the base game, by definition."""
+    if explicit:
+        root = Path(explicit).expanduser()
+    elif os.environ.get(INSTALL_ENV):
+        root = Path(os.environ[INSTALL_ENV]).expanduser()
+    else:
+        # The Steam library says where the game is. Ask it rather than
+        # hard-code a path that holds on one machine only.
+        from tools.proton import find_arma3
 
-    scanned = [
-        json.loads(line)
-        for line in args.scan.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
-    # A raw config.cpp is not preprocessed by the scanner, so a macro-built
-    # config can mis-attach a display name. Measure on binarised configs.
-    scanned = [r for r in scanned if r.get("fmt") == "bin"]
+        found = find_arma3()
+        if not found:
+            raise SystemExit(
+                f"no Arma 3 install found: set {INSTALL_ENV}=<dir>, pass --install, "
+                "or make the Steam library readable"
+            )
+        root = Path(found["path"])
+    if not (root / BASE_ADDONS).is_dir():
+        raise SystemExit(
+            f"{root} holds no {BASE_ADDONS}/ directory: the base game cannot be "
+            "told from the mods, and neither can the coverage"
+        )
+    return root
 
+
+def base_sources(install: Path) -> set[str]:
+    """The PBO names the base game ships, lower case.
+
+    Every other source in the scan is modded. The names are derived from the
+    install, never listed here, and the tool records them in the baseline
+    artefact so a reader without the install can still see the split.
+    """
+    names = {p.name.lower() for p in (install / BASE_ADDONS).glob("*.pbo")}
+    if not names:
+        raise SystemExit(
+            f"no *.pbo under {install / BASE_ADDONS}: refusing to call every class modded"
+        )
+    return names
+
+
+def slug(label: str) -> str:
+    """The table name as an artefact slug: "small arms" -> "small_arms"."""
+    return label.replace(" ", "_")
+
+
+def pct(count: dict) -> float:
+    return (100.0 * count["hit"] / count["total"]) if count["total"] else 0.0
+
+
+def score(selected: list, match, base: set[str]) -> dict:
+    """The coverage of one table, split by who DECLARES the class.
+
+    A class the base game ships is base. Every other class is modded,
+    including a mod class that inherits a base one: the catalogue still has
+    to name the thing the player is looking at. The split is by the PBO that
+    declares the class, so a mod nobody has written yet is measured the same
+    way as one that is installed.
+    """
+    out = {
+        "base": {"hit": 0, "total": 0},
+        "modded": {"hit": 0, "total": 0},
+        "unresolved": [],
+    }
+    for r in selected:
+        group = "base" if r["source"].lower() in base else "modded"
+        out[group]["total"] += 1
+        if match(r["class"] + " " + r["display"]):
+            out[group]["hit"] += 1
+        else:
+            out["unresolved"].append(
+                {
+                    "group": group,
+                    "class": r["class"],
+                    "display": r["display"],
+                    "parent": r.get("parent") or "",
+                    "source": r["source"],
+                }
+            )
+    return out
+
+
+def modded_gaps(res: dict) -> list:
+    """The unresolved classes of one table that a MOD declares."""
+    return [u for u in res["unresolved"] if u["group"] == "modded"]
+
+
+def _order(row: dict) -> tuple:
+    return (row["source"].lower(), row["class"].lower())
+
+
+def _tidy(text: str) -> str:
+    """One line per row, so a tab or a newline cannot break the record."""
+    return " ".join(text.split())
+
+
+def measure(scanned: list, base: set[str]) -> dict:
+    """Walk the scan through every matcher, table by table.
+
+    Returns {"tables": {slug: {label, base, modded, unresolved}}, "excluded",
+    "other"}. `excluded` names every class dropped as equipment that is not a
+    munition, by kind, so no exclusion is silent.
+    """
     parent = {}
     for r in scanned:
         if r["kind"] == "CfgVehicles" and r["parent"] and r["class"] not in parent:
@@ -315,25 +432,14 @@ def main() -> int:
         seen.add(key)
         named.append(r)
 
+    tables: dict[str, dict] = {}
     for want, path, label in (
         ("land", VEHICLE, "vehicles"),
         ("air", AIRCRAFT, "aircraft"),
     ):
         match = matcher(rows(path))
         sel = [r for r in named if kind(r["class"]) == want]
-        gaps = defaultdict(list)
-        hit = 0
-        for r in sel:
-            if match(r["class"] + " " + r["display"]):
-                hit += 1
-            else:
-                gaps[r["display"]].append(r["class"])
-        pct = (100 * hit / len(sel)) if sel else 0
-        print(f"{label}: {hit}/{len(sel)} ({pct:.1f}%) named by the catalogue")
-        if args.gaps and gaps:
-            print(f"  {len(gaps)} unnamed display names, most-used first:")
-            for dn, cls in sorted(gaps.items(), key=lambda kv: -len(kv[1]))[:40]:
-                print(f"    {len(cls):3d}  {dn}")
+        tables[slug(label)] = {"label": label, **score(sel, match, base)}
 
     # ── Small arms ────────────────────────────────────────────────────────
     wpar = {}
@@ -393,20 +499,11 @@ def main() -> int:
             # against it.
             other += 1
 
-    print(f"  ({other} CfgWeapons entries are stores, countermeasures or pods)")
-    if excluded:
-        total = sum(len(v) for v in excluded.values())
-        print(f"  {total} armament classes are equipment, not munitions:")
-        for kind, members in sorted(excluded.items()):
-            sample = ", ".join(sorted({c for c, _dn in members})[:4])
-            print(f"    {len(members):3d}  {kind:<20} e.g. {sample}")
     # Vehicle armament is scored against the MUNITION catalogue, which is
     # the corpus written to name it; the small-arms corpus holds a rifling
     # twist and was never meant to.
     match_m = (
-        matcher(munition_rows(MUNITION_TABLE))
-        if MUNITION_TABLE.exists()
-        else None
+        matcher(munition_rows(MUNITION_TABLE)) if MUNITION_TABLE.exists() else None
     )
     for label, sel in (
         ("small arms", small),
@@ -416,18 +513,216 @@ def main() -> int:
         if not sel:
             continue
         pick = match_m if (label == "vehicle armament" and match_m) else match_w
-        gaps = defaultdict(list)
-        hit = 0
-        for r in sel:
-            if pick(r["class"] + " " + r["display"]):
-                hit += 1
-            else:
-                gaps[r["display"]].append(r["class"])
-        print(f"{label}: {hit}/{len(sel)} ({100 * hit / len(sel):.1f}%) named by the catalogue")
-        if args.gaps and gaps:
-            print(f"  {len(gaps)} unnamed display names, most-used first:")
-            for dn, cls in sorted(gaps.items(), key=lambda kv: -len(kv[1]))[:200]:
-                print(f"    {len(cls):3d}  {dn}")
+        tables[slug(label)] = {"label": label, **score(sel, pick, base)}
+
+    return {"tables": tables, "excluded": excluded, "other": other}
+
+
+def report(tables: dict) -> None:
+    """Print base, modded and combined coverage for every table."""
+    for res in tables.values():
+        base, modded = res["base"], res["modded"]
+        both = {
+            "hit": base["hit"] + modded["hit"],
+            "total": base["total"] + modded["total"],
+        }
+        print(
+            f"{res['label']}: base {base['hit']}/{base['total']} ({pct(base):.1f}%), "
+            f"modded {modded['hit']}/{modded['total']} ({pct(modded):.1f}%), "
+            f"all {both['hit']}/{both['total']} ({pct(both):.1f}%)"
+        )
+
+
+def print_evidence(result: dict) -> None:
+    """Name every class the measurement drops, and why.
+
+    Coverage must not rise by excluding a class in silence, so the excluded
+    classes are listed by the KIND of equipment they are, from the shared
+    filter in tools/validation/munition_kind.py.
+    """
+    other = result["other"]
+    excluded = result["excluded"]
+    print(f"  ({other} CfgWeapons entries are stores, countermeasures or pods)")
+    if excluded:
+        total = sum(len(v) for v in excluded.values())
+        print(f"  {total} armament classes are equipment, not munitions:")
+        for kind, members in sorted(excluded.items()):
+            sample = ", ".join(sorted({c for c, _dn in members})[:4])
+            print(f"    {len(members):3d}  {kind:<20} e.g. {sample}")
+
+
+def print_gaps(tables: dict) -> None:
+    """The unnamed display names of every table, most-used first."""
+    for res in tables.values():
+        gaps: dict[str, list] = defaultdict(list)
+        for row in res["unresolved"]:
+            gaps[row["display"]].append(row["class"])
+        if not gaps:
+            continue
+        print(f"{res['label']}: {len(gaps)} unnamed display names, most-used first:")
+        for dn, cls in sorted(gaps.items(), key=lambda kv: -len(kv[1]))[:40]:
+            print(f"    {len(cls):3d}  {dn}")
+
+
+def print_modded(tables: dict) -> None:
+    """Every unresolved MODDED class, as a tab-separated record.
+
+    The closing work needs the class to fix, the name the player sees, what
+    the mod inherits and the PBO that declares it, so one line carries all
+    four and a consumer can read it with cut(1).
+    """
+    for res in tables.values():
+        gaps = modded_gaps(res)
+        print(f"# {res['label']}: {len(gaps)} unresolved modded classes")
+        print("# class\tdisplay\tparent\tsource")
+        for row in sorted(gaps, key=_order):
+            print(
+                f"{row['class']}\t{_tidy(row['display'])}\t"
+                f"{row['parent']}\t{row['source']}"
+            )
+
+
+def write_gaps(directory: Path, tables: dict) -> None:
+    """Write one gap file per table: data/coverage/modded_gaps_<table>.txt.
+
+    The shape is the one `--modded` prints: a header of `#` comment lines,
+    then one tab-separated record per unresolved modded class -
+    class, display, parent, source. Rows are ordered by source then class, so
+    a rewrite of the same content is byte-identical and a worker can diff it.
+    """
+    directory.mkdir(parents=True, exist_ok=True)
+    for name, res in tables.items():
+        gaps = modded_gaps(res)
+        lines = [
+            f"# modded match coverage gaps: {res['label']}",
+            f"# {len(gaps)} unresolved of {res['modded']['total']} modded classes "
+            f"({pct(res['modded']):.1f}% resolved)",
+            "# class\tdisplay\tparent\tsource",
+        ]
+        for row in sorted(gaps, key=_order):
+            lines.append(
+                f"{row['class']}\t{_tidy(row['display'])}\t"
+                f"{row['parent']}\t{row['source']}"
+            )
+        (directory / f"modded_gaps_{name}.txt").write_text(
+            "\n".join(lines) + "\n", encoding="utf-8"
+        )
+
+
+def write_baseline(
+    path: Path,
+    *,
+    scan: Path,
+    install: Path,
+    base: set[str],
+    scan_rows: int,
+    measured_rows: int,
+    tables: dict,
+) -> None:
+    """Record the modded coverage, with the provenance to reproduce it.
+
+    The base PBO list is written here, so the split can be read - and the
+    measurement reproduced - without the game install to hand.
+    """
+    payload = {
+        "schema": "aee.match_coverage.baseline/1",
+        "provenance": {
+            "generated": datetime.date.today().isoformat(),
+            "scan": str(scan),
+            "scan_sha256": hashlib.sha256(scan.read_bytes()).hexdigest(),
+            "scan_rows": scan_rows,
+            "measured_rows": measured_rows,
+            "install": str(install),
+            "base_addons": str(install / BASE_ADDONS),
+            "base_pbo_count": len(base),
+            "base_pbos": sorted(base),
+            "method": (
+                "A class is BASE when the PBO that declares it is in the base "
+                "game's Addons directory, and MODDED otherwise. Rows come from "
+                "the binarised configs only. Regenerate with "
+                "tools/report_match_coverage.py --write-gaps --write-baseline."
+            ),
+        },
+        "tables": {
+            name: {
+                "label": res["label"],
+                "base": {**res["base"], "pct": round(pct(res["base"]), 2)},
+                "modded": {**res["modded"], "pct": round(pct(res["modded"]), 2)},
+                "unresolved_modded": len(modded_gaps(res)),
+            }
+            for name, res in tables.items()
+        },
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("scan", type=Path, help="the scan_game_classes.py JSONL scan")
+    ap.add_argument(
+        "--install",
+        help=f"Arma 3 install directory. Default: ${INSTALL_ENV}, else the "
+        "install the Steam library points at",
+    )
+    ap.add_argument(
+        "--modded",
+        action="store_true",
+        help="list every unresolved modded class: class, display, parent, source",
+    )
+    ap.add_argument("--gaps", action="store_true", help="list unnamed display names")
+    ap.add_argument(
+        "--write-gaps",
+        type=Path,
+        metavar="DIR",
+        help="write DIR/modded_gaps_<table>.txt for every table",
+    )
+    ap.add_argument(
+        "--write-baseline",
+        type=Path,
+        metavar="PATH",
+        help="write the modded coverage baseline and its provenance to PATH",
+    )
+    args = ap.parse_args()
+
+    if not args.scan.is_file():
+        raise SystemExit(
+            f"no scan at {args.scan}: run tools/scan_game_classes.py first"
+        )
+    raw = [
+        json.loads(line)
+        for line in args.scan.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    # A raw config.cpp is not preprocessed by the scanner, so a macro-built
+    # config can mis-attach a display name. Measure on binarised configs.
+    scanned = [r for r in raw if r.get("fmt") == "bin"]
+
+    install = install_dir(args.install)
+    base = base_sources(install)
+
+    result = measure(scanned, base)
+    tables = result["tables"]
+    report(tables)
+    print_evidence(result)
+    if args.gaps:
+        print_gaps(tables)
+    if args.modded:
+        print_modded(tables)
+    if args.write_gaps:
+        write_gaps(args.write_gaps, tables)
+    if args.write_baseline:
+        write_baseline(
+            args.write_baseline,
+            scan=args.scan,
+            install=install,
+            base=base,
+            scan_rows=len(raw),
+            measured_rows=len(scanned),
+            tables=tables,
+        )
     return 0
 
 

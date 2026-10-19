@@ -1,0 +1,48 @@
+# modded match coverage gaps: vehicles
+# 45 unresolved of 440 modded classes (89.8% resolved)
+# class	display	parent	source
+Jbad_cat_dumper	Cat 789D	Truck_F	Jbad_Vehicles.pbo
+CBRN_Containment_Vehicle	Van (Utility)	Van_02_vehicle_base_F	PHAN_CW.pbo
+CBRN_Offroad	Offroad	Offroad_01_civil_base_F	PHAN_CW.pbo
+CBRN_Typhoon_Truck	Typhoon Truck	O_Truck_03_repair_F	PHAN_CW.pbo
+Gendarmerie_CBRN_Vehicle	Van (Utility)	Van_02_vehicle_base_F	PHAN_CW.pbo
+LOP_UKR_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_eu.pbo
+LOP_CDF_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_fic.pbo
+LOP_AA_Offroad	ANA Offroad	LOP_Offroad_base	po_factions_me.pbo
+LOP_AA_Offroad_M2	ANA Offroad (M2)	LOP_Offroad_M2_base	po_factions_me.pbo
+LOP_AA_Offroad_M2_Police	ANP Offroad (M2)	LOP_Offroad_M2_base	po_factions_me.pbo
+LOP_AA_Offroad_Police	ANP Offroad	LOP_Offroad_base	po_factions_me.pbo
+LOP_IRAN_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_me.pbo
+LOP_SYR_KAMAZ_Fuel	KAMAZ (fuel)	LOP_KAMAZ_fuel_base	po_factions_me.pbo
+LOP_Hatchback_base	Hatchback	C_Hatchback_01_F	po_main.pbo
+LOP_KAMAZ_ammo_base	KAMAZ (ammo)	O_Truck_02_Ammo_F	po_main.pbo
+LOP_KAMAZ_cov_base	KAMAZ (covered)	O_Truck_02_covered_F	po_main.pbo
+LOP_KAMAZ_fuel_base	KamAZ (fuel)	O_Truck_02_fuel_F	po_main.pbo
+LOP_KAMAZ_med_base	Kamaz Medical	O_Truck_02_medical_F	po_main.pbo
+LOP_KAMAZ_rep_base	KAMAZ (repair)	O_Truck_02_box_F	po_main.pbo
+LOP_KAMAZ_trans_base	KAMAZ (open)	O_Truck_02_transport_F	po_main.pbo
+LOP_Nissan_PKM_base	Nissan (PKM)	PO_Pickup_PK_base	po_main.pbo
+LOP_Offroad_base	Offroad	Offroad_01_civil_base_F	po_main.pbo
+LOP_Offroad_M2_base	Offroad (M2)	Offroad_01_armed_base_F	po_main.pbo
+LOP_SUV_base	SUV	C_SUV_01_F	po_main.pbo
+RHS_Civ_Truck_02_transport_F	Zamak Transport	Truck_02_base_F	rhs_c_a2port_car.pbo
+rhs_Ob_681_2	Obyekt-681-2	rhs_bmp2e_msv	rhs_c_bmp.pbo
+rhsusf_fmtv_base	FMTV	Truck_01_base_F	rhsusf_c_fmtv.pbo
+rhsusf_M1237_M2_usarmy_d	M1237 (O-GPK/M2)	rhsusf_M1237_base	rhsusf_c_rg33l.pbo
+rhsusf_M1237_M2_usarmy_wd	M1237 (O-GPK/M2)	rhsusf_M1237_M2_usarmy_d	rhsusf_c_rg33l.pbo
+rhsusf_M1237_MK19_usarmy_d	M1237 (O-GPK/Mk19)	rhsusf_M1237_M2_usarmy_d	rhsusf_c_rg33l.pbo
+rhsusf_M1237_MK19_usarmy_wd	M1237 (O-GPK/Mk19)	rhsusf_M1237_MK19_usarmy_d	rhsusf_c_rg33l.pbo
+rhsusf_M1239_M2_Deploy_socom_d	M1239 AUV Deploy (CROWS/M2)	rhsusf_M1239_Deploy_base	rhsusf_c_socomauv.pbo
+rhsusf_M1239_M2_socom_d	M1239 AUV (CROWS/M2)	rhsusf_M1239_CROWS_base	rhsusf_c_socomauv.pbo
+rhsusf_M1239_MK19_Deploy_socom_d	M1239 AUV Deploy (CROWS/Mk19)	rhsusf_M1239_DeployMK19_base	rhsusf_c_socomauv.pbo
+rhsusf_M1239_MK19_socom_d	M1239 AUV (CROWS/Mk19)	rhsusf_M1239_CROWSMK19_base	rhsusf_c_socomauv.pbo
+rhsusf_M1239_socom_d	M1239 AUV	rhsusf_M1239_base	rhsusf_c_socomauv.pbo
+RHS_M119_base	M119A2	StaticCannon	rhsusf_c_statics.pbo
+rhs_m2staticmg_base	M2HB (M3 AA)	StaticMGWeapon	rhsusf_c_statics.pbo
+RHS_M2StaticMG_MiniTripod_base	M2HB (M3)	rhs_m2staticmg_base	rhsusf_c_statics.pbo
+RHS_MK19_TriPod_base	Mk19 (M3)	StaticGrenadeLauncher	rhsusf_c_statics.pbo
+RHS_Stinger_AA_pod_Base	FIM-92F (DMS)	StaticAAWeapon	rhsusf_c_statics.pbo
+tahoe_08	Chevrolet Tahoe	tahoe_08_base	tahoe_08.pbo
+tahoe_ltz_08	Chevrolet Tahoe VIP	tahoe_08_base	tahoe_08.pbo
+tahoe_LUMI	Chevrolet Tahoe'08 Lumi Edition	tahoe_08_base	tahoe_08.pbo
+tahoe_UNM	Chevrolet Tahoe Security	tahoe_08_base	tahoe_08.pbo
