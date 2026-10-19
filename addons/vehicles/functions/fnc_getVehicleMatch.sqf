@@ -183,6 +183,7 @@ private _table = [
     ["k2_black_panther", "k2_black_panther", "tracked", "", "", "k2|k2blackpanther|blackpanther", "k2black|k2blackpanthe", "wikipedia_k2_black_panther", [56000, 0, 0, 0, 0, "", ""]],
     ["k808_white_tiger", "k808_white_tiger", "wheeled", "", "", "k808|whitetiger|k806", "koreanapc|k808whitetiger|k808white", "k808_white_tiger", [20000, 0, 0, 0, 313.193946, "", ""]],
     ["k9_thunder", "k9_thunder", "tracked", "", "", "k9|k9thunder|k9a1", "selfpropelledhowitzer|sph|k9thunde", "wikipedia_k9_thunder", [47000, 0, 0, 410, 745.699872, "", ""]],
+    ["kamaz_4310", "kamaz_4310", "wheeled", "", "", "kamaz4310", "", "ru_wikipedia_kamaz_4310", [7080, 400, 1220, 365, 156.596973, "manual", ""]],
     ["kamaz_5350_mustang", "kamaz_5350_mustang", "wheeled", "", "", "kamaz5350mustang", "kamaz5350|kamaz5350mustan", "de_wikipedia_kamaz_5350", [9600, 0, 0, 0, 0, "", ""]],
     ["kamaz_63968_typhoon_k", "kamaz_63968_typhoon_k", "wheeled", "", "", "kamaz63968typhoonk|typhoon", "kamaz63968|kamaz63968typhoon", "wikipedia_kamaz_typhoon", [21000, 0, 0, 0, 0, "", ""]],
     ["karrar_tank", "karrar_tank", "tracked", "", "", "karrar", "iraniantank|karrarmbt", "karrar_tank", [51000, 0, 0, 0, 0, "", ""]],

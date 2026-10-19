@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 253
-- Emitted runtime rows: 253
+- Catalogue entries: 254
+- Emitted runtime rows: 254
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 252
-- Absent fields: 1144
+- Entries with an absent runtime field: 253
+- Absent fields: 1145
 
 ## 2s19_msta_s - 2S19 Msta-S (tracked)
 
@@ -2394,6 +2394,27 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## kamaz_4310 - KamAZ-4310 (wheeled)
+
+- Capture: `data/vehicle/catalogue/kamaz_4310.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 7080 | `ru_wikipedia_kamaz_4310` | Карточка, масса = 7080 кг | kerb weight as published, no crew and no payload |
+| `tyre_width_mm` | claimed | 400 | `ru_wikipedia_kamaz_4310` | Раздел «Подвеска, колёса, тормоза»: шины 1220×400-533, section 400 mm | section width read from the published size code |
+| `tyre_diameter_mm` | claimed | 1220 | `ru_wikipedia_kamaz_4310` | Раздел «Подвеска, колёса, тормоза»: шины 1220×400-533, outside diameter 1220 mm | outside diameter read from the published size code |
+| `ground_clearance_mm` | claimed | 365 | `ru_wikipedia_kamaz_4310` | Карточка, клиренс = 365 мм | ground clearance as published |
+| `net_power_kw` | derived | 156.596973 | `ru_wikipedia_kamaz_4310` | Карточка, мощность лс = 210 220; раздел «Двигатель»: 154 кВт (210 л. с.) при 2600 об/мин | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | manual | `ru_wikipedia_kamaz_4310` | Карточка, кпп = 5-скор. МКПП | five-speed manual gearbox as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## kamaz_5350_mustang - KAMAZ-5350 Mustang (wheeled)
