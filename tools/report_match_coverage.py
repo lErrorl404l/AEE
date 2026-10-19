@@ -124,6 +124,12 @@ SCAN_MIN = 3
 LAND = {"car", "tank", "truck", "motorcycle", "landvehicle", "wheeled_apc_f",
         "apc_tracked_01_base_f"}
 AIR = {"air", "helicopter", "plane", "uav"}
+# A tripod gun or a mortar inherits LandVehicle without being a vehicle. The
+# fleet inventory excludes it by the same rule, in
+# tools/validation/gen_vehicle_bindings.py: a ground class is a LandVehicle
+# that is not a StaticWeapon.
+STATIC_WEAPON = "staticweapon"
+STATIC_WEAPON_KIND = "static weapon emplacements"
 # Things that inherit a vehicle but are not one.
 # A class can inherit a vehicle and still not be one: Arma hangs seating,
 # scenery and weapon emplacements off vehicle classes. None of these is a
@@ -398,21 +404,26 @@ def _tidy(text: str) -> str:
 def measure(scanned: list, base: set[str]) -> dict:
     """Walk the scan through every matcher, table by table.
 
-    Returns {"tables": {slug: {label, base, modded, unresolved}}, "excluded",
-    "other"}. `excluded` names every class dropped as equipment that is not a
-    munition, by kind, so no exclusion is silent.
+    Returns {"tables": {slug: {label, base, modded, unresolved, excluded}},
+    "excluded", "emplacements", "other"}. `excluded` names every armament
+    class dropped as equipment that is not a munition, by kind, and
+    `emplacements` holds the ground classes dropped as weapon positions, so
+    no exclusion is silent.
     """
     parent = {}
     for r in scanned:
         if r["kind"] == "CfgVehicles" and r["parent"] and r["class"] not in parent:
             parent[r["class"]] = r["parent"]
 
-    def kind(cls: str):
+    def chain_of(cls: str) -> list[str]:
         seen, cur, chain = set(), cls, []
         while cur and cur not in seen:
             seen.add(cur)
             chain.append(cur.lower())
             cur = parent.get(cur)
+        return chain
+
+    def kind(chain: list[str]):
         if any(c in AIR for c in chain):
             return "air"
         if any(c in LAND for c in chain):
@@ -432,14 +443,29 @@ def measure(scanned: list, base: set[str]) -> dict:
         seen.add(key)
         named.append(r)
 
+    emplacements: list[dict] = []
+    ground, air = [], []
+    for r in named:
+        chain = chain_of(r["class"])
+        table = kind(chain)
+        if table is None:
+            continue
+        if table == "land" and STATIC_WEAPON in chain:
+            emplacements.append(r)
+            continue
+        (air if table == "air" else ground).append(r)
+
     tables: dict[str, dict] = {}
-    for want, path, label in (
-        ("land", VEHICLE, "vehicles"),
-        ("air", AIRCRAFT, "aircraft"),
+    for sel, path, label, dropped in (
+        (ground, VEHICLE, "vehicles", emplacements),
+        (air, AIRCRAFT, "aircraft", []),
     ):
         match = matcher(rows(path))
-        sel = [r for r in named if kind(r["class"]) == want]
-        tables[slug(label)] = {"label": label, **score(sel, match, base)}
+        tables[slug(label)] = {
+            "label": label,
+            **score(sel, match, base),
+            "excluded": {STATIC_WEAPON_KIND: len(dropped)} if dropped else {},
+        }
 
     # ── Small arms ────────────────────────────────────────────────────────
     wpar = {}
@@ -513,9 +539,25 @@ def measure(scanned: list, base: set[str]) -> dict:
         if not sel:
             continue
         pick = match_m if (label == "vehicle armament" and match_m) else match_w
-        tables[slug(label)] = {"label": label, **score(sel, pick, base)}
+        # The armament table's denominator is what the shared kind filter
+        # left in it, so the kinds it dropped belong in its record.
+        kept = (
+            {kind: len(members) for kind, members in excluded.items()}
+            if label == "vehicle armament"
+            else {}
+        )
+        tables[slug(label)] = {
+            "label": label,
+            **score(sel, pick, base),
+            "excluded": kept,
+        }
 
-    return {"tables": tables, "excluded": excluded, "other": other}
+    return {
+        "tables": tables,
+        "excluded": excluded,
+        "emplacements": emplacements,
+        "other": other,
+    }
 
 
 def report(tables: dict) -> None:
@@ -542,7 +584,15 @@ def print_evidence(result: dict) -> None:
     """
     other = result["other"]
     excluded = result["excluded"]
+    emplacements = result.get("emplacements", [])
     print(f"  ({other} CfgWeapons entries are stores, countermeasures or pods)")
+    if emplacements:
+        named = sorted({r["class"] for r in emplacements})
+        print(
+            f"  {len(emplacements)} ground classes are {STATIC_WEAPON_KIND}, "
+            "not vehicles:"
+        )
+        print(f"    {', '.join(named)}")
     if excluded:
         total = sum(len(v) for v in excluded.values())
         print(f"  {total} armament classes are equipment, not munitions:")
@@ -642,6 +692,25 @@ def write_baseline(
                 "the binarised configs only. Regenerate with "
                 "tools/report_match_coverage.py --write-gaps --write-baseline."
             ),
+            # The platform worker classified the gaps that survive the corpus.
+            # They are expected to stay unresolved, so a future reader must
+            # not read them as regression.
+            "known_unresolvable": {
+                "vehicle_modded": {
+                    "fictional_display_reuse": 12,
+                    "maker_or_family_only": 12,
+                    "armafpv_drone_no_published_designation": 9,
+                    "note": (
+                        "Classes left after sixteen modded vehicle gaps were "
+                        "closed (411/440 at commit 0ff5ecd0). The fictional "
+                        "display re-uses hold a contested real-world link in "
+                        "the corpus: the Arma 3 Offroad carries two conflicting "
+                        "bindings. The three groups are the platform worker's "
+                        "classification and are not stated to be disjoint. "
+                        "None of them is a failure."
+                    ),
+                }
+            },
         },
         "tables": {
             name: {
@@ -649,6 +718,7 @@ def write_baseline(
                 "base": {**res["base"], "pct": round(pct(res["base"]), 2)},
                 "modded": {**res["modded"], "pct": round(pct(res["modded"]), 2)},
                 "unresolved_modded": len(modded_gaps(res)),
+                "excluded": res.get("excluded", {}),
             }
             for name, res in tables.items()
         },

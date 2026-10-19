@@ -12,6 +12,18 @@ recorded in the baseline, so the split is readable without the install.
 A mod class that inherits a base class is modded: the catalogue still has
 to name the thing the player is looking at.
 
+Two kinds of class leave a table before it is scored, and both stay named
+in the output and in the baseline under `excluded`:
+
+- a ground class whose chain passes `StaticWeapon` is a weapon
+  emplacement, not a vehicle. The fleet inventory states the same rule in
+  `tools/validation/gen_vehicle_bindings.py`: a ground class is a
+  `LandVehicle` that is not a `StaticWeapon`.
+- an armament class that the shared kind filter reads as equipment rather
+  than a munition is not a weapon that fires a projectile. The filter is
+  `tools/validation/munition_kind.py`.
+
+
 ## Regenerate
 
 ```bash
@@ -47,8 +59,12 @@ worker can diff two runs.
 
 `aee.match_coverage.baseline/1`. `provenance` holds the date, the scan
 file, its SHA-256, its row count, the install, the base PBO count and the
-base PBO list. `tables` holds, per table, the `base` and `modded` counts
-(`hit`, `total`, `pct`) and `unresolved_modded`.
+base PBO list. It also holds `known_unresolvable`, the modded vehicle gaps
+that are expected to stay: twelve fictional display re-uses whose real
+link is contested in the corpus, twelve maker-or-family-only classes, and
+nine FPV drones with no published designation. `tables` holds, per table,
+the `base` and `modded` counts (`hit`, `total`, `pct`),
+`unresolved_modded`, and `excluded` by kind.
 
 `tools/tests/test_match_coverage.py` holds the lock. It re-derives every
 table from the scan and compares the result with this file, and it checks

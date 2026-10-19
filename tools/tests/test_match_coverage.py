@@ -136,6 +136,68 @@ class TestSplit(unittest.TestCase):
         self.assertEqual(res["unresolved"], [])
 
 
+class TestEmplacementExclusion(unittest.TestCase):
+    """A weapon position is not a vehicle, and the exclusion is named."""
+
+    BASE = {"base_vehicles.pbo"}
+
+    def scan(self) -> list:
+        # The engine hangs a static emplacement under LandVehicle, so the
+        # chain of a tripod gun passes the vehicle test exactly as a tank's
+        # does. Only the StaticWeapon ancestor tells them apart.
+        return [
+            row("base_vehicles.pbo", "LandVehicle", ""),
+            row("base_vehicles.pbo", "StaticWeapon", "", "LandVehicle"),
+            row("base_vehicles.pbo", "HMG_01_base_F", "HMG 12.7 mm", "StaticWeapon"),
+            row(
+                "base_vehicles.pbo", "B_MBT_01_cannon_F", "M2A1 Slammer", "LandVehicle"
+            ),
+        ]
+
+    def test_a_static_weapon_chain_leaves_the_vehicle_table(self):
+        result = m.measure(self.scan(), self.BASE)
+        table = result["tables"]["vehicles"]
+        self.assertEqual(
+            [r["class"] for r in result["emplacements"]], ["HMG_01_base_F"]
+        )
+        self.assertEqual(table["excluded"], {m.STATIC_WEAPON_KIND: 1})
+        self.assertEqual(table["base"]["total"], 1)
+
+    def test_the_exclusion_carries_a_named_kind(self):
+        result = m.measure(self.scan(), self.BASE)
+        kinds = result["tables"]["vehicles"]["excluded"]
+        self.assertEqual(list(kinds), [m.STATIC_WEAPON_KIND])
+        self.assertTrue(m.STATIC_WEAPON_KIND)
+
+    def test_the_aircraft_table_keeps_its_denominator_whole(self):
+        # The rule is a ground rule: it must not touch the air table.
+        result = m.measure(self.scan(), self.BASE)
+        self.assertEqual(result["tables"]["aircraft"]["excluded"], {})
+
+    def test_the_baseline_records_the_excluded_kind(self):
+        result = m.measure(self.scan(), self.BASE)
+        with tempfile.TemporaryDirectory() as tmp:
+            scan = Path(tmp) / "scan.jsonl"
+            scan.write_text("", encoding="utf-8")
+            install = Path(tmp) / "arma3"
+            (install / "Addons").mkdir(parents=True)
+            out = Path(tmp) / "baseline.json"
+            m.write_baseline(
+                out,
+                scan=scan,
+                install=install,
+                base=self.BASE,
+                scan_rows=0,
+                measured_rows=0,
+                tables=result["tables"],
+            )
+            payload = json.loads(out.read_text(encoding="utf-8"))
+        self.assertEqual(
+            payload["tables"]["vehicles"]["excluded"], {m.STATIC_WEAPON_KIND: 1}
+        )
+        self.assertEqual(payload["tables"]["aircraft"]["excluded"], {})
+
+
 class TestInstallSplit(unittest.TestCase):
     """The base game is `<install>/Addons`, and its absence is loud."""
 
@@ -241,6 +303,31 @@ class TestBaselineArtefact(unittest.TestCase):
         gaps = sum(t["unresolved_modded"] for t in self.payload["tables"].values())
         self.assertGreater(gaps, 0)
 
+    def test_every_table_states_what_it_excluded(self):
+        # An exclusion that is not recorded is a silent raise of coverage.
+        for name, table in self.payload["tables"].items():
+            with self.subTest(table=name):
+                self.assertIn("excluded", table)
+                for kind, count in table["excluded"].items():
+                    self.assertTrue(kind)
+                    self.assertGreater(count, 0)
+
+    def test_the_vehicle_table_names_the_static_weapon_exclusion(self):
+        excluded = self.payload["tables"]["vehicles"]["excluded"]
+        self.assertIn(m.STATIC_WEAPON_KIND, excluded)
+        self.assertGreater(excluded[m.STATIC_WEAPON_KIND], 0)
+
+    def test_the_provenance_records_the_gaps_expected_to_stay(self):
+        known = self.payload["provenance"]["known_unresolvable"]["vehicle_modded"]
+        for key in (
+            "fictional_display_reuse",
+            "maker_or_family_only",
+            "armafpv_drone_no_published_designation",
+            "note",
+        ):
+            self.assertIn(key, known)
+        self.assertTrue(known["note"])
+
     def test_the_gap_files_agree_with_the_baseline(self):
         base_pbos = set(self.payload["provenance"]["base_pbos"])
         for name, table in self.payload["tables"].items():
@@ -287,7 +374,8 @@ class TestBaselineReproduces(unittest.TestCase):
                 f"no scan at {cls.scan}: re-scan with tools/scan_game_classes.py, "
                 "or set AEE_COVERAGE_SCAN to a scan, to re-derive the baseline"
             )
-        cls.tables = cls.measure(cls.scan)
+        cls.result = cls.measure(cls.scan)
+        cls.tables = cls.result["tables"]
 
     @classmethod
     def measure(cls, scan: Path) -> dict:
@@ -304,7 +392,7 @@ class TestBaselineReproduces(unittest.TestCase):
             base = m.base_sources(install)
         else:
             base = set(cls.payload["provenance"]["base_pbos"])
-        return m.measure(scanned, base)["tables"]
+        return m.measure(scanned, base)
 
     def test_every_table_matches_the_baseline(self):
         for name, table in self.payload["tables"].items():
@@ -315,6 +403,34 @@ class TestBaselineReproduces(unittest.TestCase):
                 self.assertEqual(got["modded"]["total"], table["modded"]["total"])
                 self.assertEqual(got["modded"]["hit"], table["modded"]["hit"])
                 self.assertEqual(len(m.modded_gaps(got)), table["unresolved_modded"])
+                self.assertEqual(
+                    got["excluded"].get(m.STATIC_WEAPON_KIND, 0),
+                    table["excluded"].get(m.STATIC_WEAPON_KIND, 0),
+                )
+
+    def test_the_named_emplacements_are_excluded_not_unresolved(self):
+        """The five RHS emplacements are weapon positions, not missing vehicles."""
+        classes = {r["class"].lower() for r in self.result["emplacements"]}
+        gaps = {
+            g["class"].lower()
+            for g in m.modded_gaps(self.tables["vehicles"])
+        }
+        for cls in (
+            "rhs_m2staticmg_base",
+            "rhs_m2staticmg_minitripod_base",
+            "rhs_mk19_tripod_base",
+            "rhs_stinger_aa_pod_base",
+            "rhs_m119_base",
+        ):
+            with self.subTest(cls=cls):
+                self.assertIn(cls, classes)
+                self.assertNotIn(cls, gaps)
+
+    def test_the_excluded_count_is_the_emplacement_count(self):
+        self.assertEqual(
+            len(self.result["emplacements"]),
+            self.tables["vehicles"]["excluded"][m.STATIC_WEAPON_KIND],
+        )
 
     def test_the_split_is_not_one_sided(self):
         # A split that put every row in one half would pass the equality

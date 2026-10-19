@@ -202,6 +202,14 @@
     ],
     "generated": "2026-10-19",
     "install": "/ext/SteamLibrary/steamapps/common/Arma 3",
+    "known_unresolvable": {
+      "vehicle_modded": {
+        "armafpv_drone_no_published_designation": 9,
+        "fictional_display_reuse": 12,
+        "maker_or_family_only": 12,
+        "note": "Classes left after sixteen modded vehicle gaps were closed (411/440 at commit 0ff5ecd0). The fictional display re-uses hold a contested real-world link in the corpus: the Arma 3 Offroad carries two conflicting bindings. The three groups are the platform worker's classification and are not stated to be disjoint. None of them is a failure."
+      }
+    },
     "measured_rows": 135427,
     "method": "A class is BASE when the PBO that declares it is in the base game's Addons directory, and MODDED otherwise. Rows come from the binarised configs only. Regenerate with tools/report_match_coverage.py --write-gaps --write-baseline.",
     "scan": "/tmp/opencode/scan_all.jsonl",
@@ -216,6 +224,7 @@
         "pct": 62.79,
         "total": 43
       },
+      "excluded": {},
       "label": "aircraft",
       "modded": {
         "hit": 214,
@@ -230,6 +239,7 @@
         "pct": 0.0,
         "total": 2
       },
+      "excluded": {},
       "label": "carried launchers",
       "modded": {
         "hit": 18,
@@ -244,6 +254,7 @@
         "pct": 21.43,
         "total": 14
       },
+      "excluded": {},
       "label": "small arms",
       "modded": {
         "hit": 116,
@@ -258,6 +269,15 @@
         "pct": 34.21,
         "total": 38
       },
+      "excluded": {
+        "cockpit switch": 7,
+        "countermeasure": 10,
+        "generic label": 1,
+        "leaflet dispenser": 1,
+        "recon pod": 5,
+        "ship launcher cell": 3,
+        "weapon bay": 1
+      },
       "label": "vehicle armament",
       "modded": {
         "hit": 340,
@@ -269,16 +289,19 @@
     "vehicles": {
       "base": {
         "hit": 21,
-        "pct": 24.42,
-        "total": 86
+        "pct": 26.58,
+        "total": 79
+      },
+      "excluded": {
+        "static weapon emplacements": 12
       },
       "label": "vehicles",
       "modded": {
-        "hit": 395,
-        "pct": 89.77,
-        "total": 440
+        "hit": 411,
+        "pct": 94.48,
+        "total": 435
       },
-      "unresolved_modded": 45
+      "unresolved_modded": 24
     }
   }
 }
