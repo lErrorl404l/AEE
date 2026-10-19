@@ -84,14 +84,26 @@ KINDS: tuple[tuple[str, str, bool], ...] = (
     ("rocket launcher", "generic label", True),
 )
 
-# Two phrases need more than a word boundary: "pod" excepts a gun pod, and
-# "safe" must not match inside a longer word.  The countermeasure words are
-# plain substrings, because the device is named by a compound ("Flares",
-# "CMChaffLauncher").
-_SPECIAL = {
-    "pod": r"(?<!gun )(?<!gun)\bpod\b",
-    "safe": r"\bsafe\b",
-}
+# A GUN POD is not the sensor pod this kind names, and the two are written
+# the same way. A gun always carries a designation with a digit in it
+# (GAU-22/A Pod, HMP250 Gun pod), while a sensor pod is named by a word
+# alone (Litening Pod, Sniper XR Pod). So a pod whose name carries a
+# designation, or the word "gun", holds a real weapon the catalogue names,
+# and is not screened.
+_GUN_POD = re.compile(r"\bgun\b|[a-z]*\d\S*\s+pod\b", re.I)
+_POD = re.compile(r"\bpod\b", re.I)
+
+
+def sensor_pod(text: str) -> bool:
+    """True when the text names a pod that carries a sensor, not a gun."""
+    return bool(_POD.search(text)) and not _GUN_POD.search(text)
+
+
+# Two phrases need more than a word boundary: "safe" must not match inside a
+# longer word, and "pod" is decided by the predicate above. The countermeasure
+# words are plain substrings, because the device is named by a compound
+# ("Flares", "CMChaffLauncher").
+_SPECIAL = {"safe": r"\bsafe\b"}
 _PLAIN = {"flare", "chaff", "decoy"}
 _PHRASE = {
     phrase: _SPECIAL.get(
@@ -99,10 +111,13 @@ _PHRASE = {
         re.escape(phrase) if phrase in _PLAIN else r"\b" + re.escape(phrase) + r"\b",
     )
     for phrase, _kind, _screen in KINDS
+    if phrase != "pod"
 }
 
-# The coverage filter.  A class that matches is not a munition.
-NOT_A_MUNITION = re.compile("|".join(_PHRASE[p] for p, _k, _s in KINDS), re.I)
+# The coverage filter, for a caller that wants one compiled pattern.  "pod"
+# is absent from it because a gun pod and a sensor pod cannot be told apart
+# by a pattern; kind_of() decides that one case.
+NOT_A_MUNITION = re.compile("|".join(_PHRASE.values()), re.I)
 
 # The runtime screen: the folded substrings the generated matcher tests,
 # and the kind each one names.
@@ -143,6 +158,10 @@ def kind_of(*texts: str) -> str:
         if not text:
             continue
         for phrase, kind, _screen in KINDS:
+            if phrase == "pod":
+                if sensor_pod(text):
+                    return kind
+                continue
             if re.search(_PHRASE[phrase], text, re.I):
                 return kind
     return ""

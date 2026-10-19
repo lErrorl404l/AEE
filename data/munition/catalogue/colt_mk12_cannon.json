@@ -1,0 +1,35 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Colt Mk 12 cannon from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "colt_mk12_cannon",
+   "canonical_name": "Colt Mk 12 cannon",
+   "munition_type": "cannon",
+   "aliases": [
+    "Colt Mk 12",
+    "Mk 12"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 46.0,
+     "unit": "kg",
+     "source": "wikipedia_colt_mk_12_cannon",
+     "locator": "Infobox, mass: 46.0 kg (101.4 lb): 46.0 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 20.0,
+     "unit": "mm",
+     "source": "wikipedia_colt_mk_12_cannon",
+     "locator": "Infobox, caliber: 20 mm (0.787 in): 20 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

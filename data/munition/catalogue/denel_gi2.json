@@ -1,0 +1,26 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Denel GI-2 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "denel_gi2",
+   "canonical_name": "Denel GI-2",
+   "munition_type": "cannon",
+   "aliases": [
+    "GI-2"
+   ],
+   "keywords": [],
+   "values": {
+    "calibre_mm": {
+     "value": 20.0,
+     "unit": "mm",
+     "source": "wikipedia_denel_land_systems_gi_2",
+     "locator": "Infobox, calibre: 20 millimetres (0.79 in): 20 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

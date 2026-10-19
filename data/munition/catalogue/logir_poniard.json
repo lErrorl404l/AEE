@@ -1,0 +1,51 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "Capture for Poniard from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "logir_poniard",
+   "canonical_name": "Poniard",
+   "munition_type": "rocket",
+   "aliases": [
+    "LOGIR",
+    "Poniard"
+   ],
+   "keywords": [],
+   "values": {
+    "total_mass_kg": {
+     "value": 14.0,
+     "unit": "kg",
+     "source": "wikipedia_low_cost_guided_imaging_rocket",
+     "locator": "Infobox, mass: 14 kilograms (31 lb): 14 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "warhead_mass_kg": {
+     "value": 4.0,
+     "unit": "kg",
+     "source": "wikipedia_low_cost_guided_imaging_rocket",
+     "locator": "Infobox, warhead weight: 4 kilograms (8.8 lb): 4 kg",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "calibre_mm": {
+     "value": 70.0,
+     "unit": "mm",
+     "source": "wikipedia_low_cost_guided_imaging_rocket",
+     "locator": "Infobox, diameter: 70 millimeters (2.75 in): 70 mm",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    },
+    "guidance": {
+     "value": "INS / IIR with Fire-and-forget",
+     "unit": "name",
+     "source": "wikipedia_low_cost_guided_imaging_rocket",
+     "locator": "Infobox, guidance system: INS / IIR with Fire-and-forget",
+     "state": "as published; source tier-5 compilation",
+     "grade": "claimed"
+    }
+   }
+  }
+ ]
+}

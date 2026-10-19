@@ -1,0 +1,17 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The article states no figure this corpus can hold for 1,000 lb General-Purpose Bomb. The entry names the item and holds a labelled zero for every field. The held article is the evidence of the identity. The article's British section publishes this body as the 1,000 lb (450 kg) General-Purpose Bomb. It entered service in 1939, and the 1,000 lb MC replaced it in 1943. '1000 lb GP' is the article's own abbreviation of that designation.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "uk_1000lb_gp",
+   "canonical_name": "1,000 lb General-Purpose Bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "1000 lb GP"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

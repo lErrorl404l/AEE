@@ -1,0 +1,17 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The held tier-5 source 'globalsecurity_lgtr' publishes Laser Guided Training Round in its body text. It states no figure this corpus can hold. The entry names the item and holds a labelled zero for every field. The page names the low-cost training round for laser-guided bombs. It does not publish the BDU-57 designation, so this entry does not carry it.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "lgtr",
+   "canonical_name": "Laser Guided Training Round",
+   "munition_type": "bomb",
+   "aliases": [
+    "LGTR"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

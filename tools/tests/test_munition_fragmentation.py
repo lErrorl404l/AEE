@@ -230,6 +230,21 @@ class TestKindFilter(unittest.TestCase):
         ):
             self.assertTrue(is_munition(display), display)
 
+    def test_a_gun_pod_is_not_a_sensor_pod(self):
+        # Both are written "... Pod", and only one carries a munition: the
+        # gun pod holds a real gun, which the catalogue names, and the sensor
+        # pod carries no warhead at all.
+        for display, kind in (
+            ("GAU-22/A Pod", ""),
+            ("HMP250 Gun pod", ""),
+            ("GP19 Gunpod", ""),
+            ("QJK99-12.7-1 Gunpod", ""),
+            ("Litening Pod", "recon pod"),
+            ("Sniper XR Pod", "recon pod"),
+            ("Targeting Pod", "recon pod"),
+        ):
+            self.assertEqual(kind_of(display), kind, display)
+
     def test_no_catalogue_entry_is_screened(self):
         # The runtime screen is a substring test on the folded identity. A
         # term that appeared in a catalogue entry could reject a munition
