@@ -35,9 +35,18 @@ from tools.tests.sqf_lite import run_sqf  # noqa: E402
 FRAG = ROOT / "addons" / "blast" / "functions" / "fragmentation"
 
 
-def call(name, args):
-    """Run one fragmentation kernel with the given arguments."""
-    return run_sqf(FRAG / f"fnc_{name}.sqf", args)
+def call(name, args, match=None):
+    """Run one fragmentation kernel with the given arguments.
+
+    The warhead resolver calls aee_blast_fnc_getMunitionMatch, which reads
+    the config tree this harness does not hold. The suite supplies that
+    matcher: no match by default, or the row the caller passes.
+    """
+    return run_sqf(
+        FRAG / f"fnc_{name}.sqf",
+        args,
+        {"__FUNC__getMunitionMatch": lambda *_a: match or []},
+    )
 
 
 class TestGurneyVelocity(unittest.TestCase):

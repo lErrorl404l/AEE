@@ -38,6 +38,12 @@ or an empty array. The value row is
 and a zero or an empty string means the corpus holds no published figure
 for that field.
 
+A class that names equipment rather than a munition - a cockpit switch, a
+targeting pod, a countermeasure discharger, an aircraft weapon bay - returns
+an empty array whatever it declares. The kinds are the ones in
+tools/validation/munition_kind.py, so the runtime and the coverage
+measurement share one filter.
+
 Arguments:
   0: className (STRING, a CfgAmmo, CfgMagazines or CfgWeapons classname,
      default "")
@@ -80,6 +86,16 @@ private _tokens = [];
     private _token = _x call _normalise;
     if (_token != "") then { _tokens pushBack _token; };
 } forEach (_identity splitString " _-.");
+
+// Kind screen. A class that names equipment rather than a munition
+// never resolves, whatever it declares. The terms are the folded kinds in
+// tools/validation/munition_kind.py, which the coverage tool shares.
+private _screened = false;
+{
+    if (_query find _x >= 0) exitWith { _screened = true; };
+} forEach ["masterarm", "inhibit", "burstlimit", "salvolimit", "internalbay", "targetingpod", "reconpod", "tarps", "dircm", "irjam", "jammer", "smokegenerator", "smokescreen", "pdu5", "vls", "actioninprogress", "rocketlauncher"];
+
+if (_screened) exitWith { [] };
 
 private _table = [
     ["2a42", "cannon", "", "2a42", "shipunov2a42|2a42", "wikipedia_shipunov_2a42", [115, 0, 0, 30, 3027, ""]],

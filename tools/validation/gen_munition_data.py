@@ -26,6 +26,11 @@ an entry the sources give nothing about still NAMES its munition and says
 plainly that no figure is held. An unknown class and an ambiguous match
 both return an empty array. There is no default.
 
+A class that names equipment rather than a munition - a cockpit switch, a
+targeting pod, a countermeasure discharger, an aircraft weapon bay - never
+resolves. The kinds are the ones in tools/validation/munition_kind.py,
+which the coverage tool shares, so the runtime and the measurement agree.
+
 Run:  python3 tools/validation/gen_munition_data.py
       python3 tools/validation/gen_munition_data.py --check
 """
@@ -42,6 +47,7 @@ if str(_REPO) not in sys.path:
 
 from tools.validation.identity_designations import designations as _designations
 from tools.validation.identity_designations import fold as _fold
+from tools.validation.munition_kind import SCREEN_TERMS
 
 ROOT = _REPO
 DATA = ROOT / "data" / "munition"
@@ -209,6 +215,12 @@ or an empty array. The value row is
 and a zero or an empty string means the corpus holds no published figure
 for that field.
 
+A class that names equipment rather than a munition - a cockpit switch, a
+targeting pod, a countermeasure discharger, an aircraft weapon bay - returns
+an empty array whatever it declares. The kinds are the ones in
+tools/validation/munition_kind.py, so the runtime and the coverage
+measurement share one filter.
+
 Arguments:
   0: className (STRING, a CfgAmmo, CfgMagazines or CfgWeapons classname,
      default "")
@@ -251,6 +263,16 @@ private _tokens = [];
     private _token = _x call _normalise;
     if (_token != "") then {{ _tokens pushBack _token; }};
 }} forEach (_identity splitString " _-.");
+
+// Kind screen. A class that names equipment rather than a munition
+// never resolves, whatever it declares. The terms are the folded kinds in
+// tools/validation/munition_kind.py, which the coverage tool shares.
+private _screened = false;
+{{
+    if (_query find _x >= 0) exitWith {{ _screened = true; }};
+}} forEach {screen};
+
+if (_screened) exitWith {{ [] }};
 
 private _table = [
 {rows}
@@ -406,7 +428,8 @@ def build() -> tuple[str, str]:
     entries = load()
     body = "\n".join(f"{row}," for row in rows(entries))
     body = body.rstrip(",")
-    match = MATCH_TEMPLATE.format(rows=body, scan=SCAN_MIN)
+    screen = "[" + ", ".join(f'"{t}"' for t in SCREEN_TERMS) + "]"
+    match = MATCH_TEMPLATE.format(rows=body, scan=SCAN_MIN, screen=screen)
     return match, DATA_TEMPLATE.format()
 
 
