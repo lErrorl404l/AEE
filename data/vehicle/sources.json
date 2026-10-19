@@ -1128,6 +1128,21 @@
   "note": "Gap-research source. The value it carries is grade claimed; the source is a compilation, not a primary document."
  },
  {
+  "source_id": "ru_wikipedia_object_681",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Объект 681",
+  "edition": "Russian Wikipedia, article wikitext read 2026-10-19",
+  "identifier": "Russian Wikipedia article 'Объект 681'",
+  "locator": "Карточка: Масса, т = 13,6; Длина, мм = 6735; Ширина, мм = 3140; Высота, мм = 2400; Клиренс, мм = 420; Мощность двигателя, л.с. = 300; Скорость по шоссе, км/ч = 65",
+  "retrieved": "2026-10-19",
+  "url": "https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82_681",
+  "archive_ref": "",
+  "licence": "Russian Wikipedia text under CC BY-SA. It is a secondary compilation and not a primary document.",
+  "primary_held": false,
+  "note": "Captured to close a catalogue gap found by scanning the installed game content. The article publishes the combat weight, the hull length, the width, the height, the ground clearance, the engine rating and the road speed of the single Object 681 prototype."
+ },
+ {
   "source_id": "stengg_terrex_family_datasheet",
   "tier": 4,
   "type": "manufacturer",
@@ -1991,6 +2006,21 @@
   "note": "Held tier-5 English Wikipedia compilation for the Bushmaster protected mobility vehicle. The registry marks primary_held false. It publishes the kerb weight and the gross vehicle mass, the length, the width, the height, the engine model, the engine rating and torque, the transmission, the governed speed and the range. Its clearance row carries overhang and angles, not a ground clearance, so that field is absent."
  },
  {
+  "source_id": "wikipedia_caterpillar_789",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Caterpillar 789",
+  "edition": "English Wikipedia, article wikitext read 2026-10-19",
+  "identifier": "English Wikipedia article 'Caterpillar 789'",
+  "locator": "Body: 'The 789 has a capacity of 177 tonnes, and its engine can produce 1770 horsepower.' and 'It has six tires, each of which are 12 ft (3.66 m) in diameter'",
+  "retrieved": "2026-10-19",
+  "url": "https://en.wikipedia.org/wiki/Caterpillar_789",
+  "archive_ref": "",
+  "licence": "Wikipedia text under CC BY-SA. It is a secondary compilation and not a primary document. The bytes are not held; the values were read at the retrieved date.",
+  "primary_held": false,
+  "note": "Captured to close a catalogue gap found by scanning the installed game content. The article publishes the model designation, the payload capacity, the engine rating and the tyre diameter of the 789 haul truck. It publishes no operating weight and no overall dimensions, so those fields stay absent."
+ },
+ {
   "source_id": "wikipedia_centauro",
   "tier": 5,
   "type": "compilation",
@@ -2037,6 +2067,22 @@
   "primary_held": false,
   "sha256": "5277169e8eeb9bb649defd17bf1702496cc9a5077439c84bcc7b57616cb4e36a",
   "note": "Captured to close a catalogue gap found by scanning the installed game content. The GENERATION matters: the figure is the GMT900's, not another generation's."
+ },
+ {
+  "source_id": "wikipedia_chevrolet_tahoe",
+  "tier": 5,
+  "type": "compilation",
+  "title": "Chevrolet Tahoe",
+  "edition": "English Wikipedia, article snapshot held as HTML, retrieved 2026-10-19",
+  "identifier": "English Wikipedia article 'Chevrolet Tahoe'",
+  "locator": "Third generation (2007) infobox, GMT900: Length 202.0 in (5,131 mm), Width 79.0 in (2,007 mm), Height 74.6-77.0 in (1,895-1,956 mm). The infobox publishes no curb weight for this generation.",
+  "retrieved": "2026-10-19",
+  "url": "https://en.wikipedia.org/wiki/Chevrolet_Tahoe",
+  "archive_ref": "Held as HTML at data/vehicle/sources/wikipedia_chevrolet_tahoe.html",
+  "licence": "Wikipedia text under CC BY-SA. Secondary compilation; the held bytes are the article HTML, not a primary document.",
+  "primary_held": false,
+  "sha256": "53028b83c89d6af6847848a876761de36d078e5cd819266f25dd42f4bae918aa",
+  "note": "Captured to close a catalogue gap found by scanning the installed game content. The GENERATION matters: the three extents are the GMT900's (2007-2014 model years, third generation). The infobox publishes no curb weight for that generation, so the operating weight stays a labelled zero; the GMT900 Suburban's figure is not carried across to the short-wheelbase Tahoe."
  },
  {
   "source_id": "wikipedia_chieftain",
