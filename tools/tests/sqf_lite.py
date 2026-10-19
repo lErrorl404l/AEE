@@ -364,6 +364,10 @@ UNARY_COMMANDS = {
     "atan",
     "vectorMagnitude",
     "vectorNormalized",
+    # parseNumber X - SQF's string/boolean to number: `parseNumber true` is
+    # 1 and `parseNumber false` is 0.  The blast-injury and call-pattern
+    # kernels use it to turn a comparison into a 0/1 term.
+    "parseNumber",
     # str X - SQF number/other to display string (HUD heading/grid).
     "str",
     # Engine terrain and object queries used by the wildlife neighbourhood
@@ -820,7 +824,13 @@ class SqfParser:
 
         The type tag and the dimension count are validated by the engine,
         not read by the harness, so they are skipped.
+
+        A bare string entry is also legal SQF: `params ["_a", "_b"]`
+        declares required parameters with no default, and the ballistics
+        kernels use that form.
         """
+        if self.peek().kind == "str":
+            return (self.next().value.lower(), None)
         self.expect("[")
         name = self.next()
         # SQF params names are QUOTED strings: ["_obj", default, type]
@@ -1424,6 +1434,15 @@ class SqfRuntime:
                 return len(value)
             if node.op == "abs":
                 return abs(value)
+            if node.op == "parseNumber":
+                if isinstance(value, bool):
+                    return 1 if value else 0
+                if isinstance(value, (int, float)):
+                    return value
+                try:
+                    return float(str(value).strip().split()[0])
+                except (ValueError, IndexError):
+                    return 0
             if node.op == "toLower":
                 return str(value).lower()
             if node.op == "toLowerANSI":

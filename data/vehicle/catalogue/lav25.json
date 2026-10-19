@@ -1,0 +1,75 @@
+{
+  "retrieved": "2026-10-18",
+  "note": "Capture for LAV-25. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "lav25",
+      "canonical_name": "LAV-25",
+      "maker": "General Dynamics Land Systems",
+      "model": "LAV-25",
+      "variant": "base",
+      "variant_id": "lav25",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "lav25",
+        "lav 25"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 12800,
+          "unit": "kg",
+          "source": "wikipedia_lav25",
+          "locator": "Infobox, mass: LAV-25: 12.80 t (14.11 short tons ) LAV-25A2: 14.4 t (15.87 ",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6390,
+          "unit": "mm",
+          "source": "wikipedia_lav25",
+          "locator": "Infobox, length: 6.39 m (21 ft 0 in)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "wikipedia_lav25",
+          "locator": "Infobox, width: 2.50 m (8 ft 2 in)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2690,
+          "unit": "mm",
+          "source": "wikipedia_lav25",
+          "locator": "Infobox, height: 2.69 m (8 ft 10 in)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 205.0,
+          "unit": "kW",
+          "source": "wikipedia_lav25",
+          "locator": "Infobox, engine: Detroit Diesel 6V53T 300 hp (205 kW )",
+          "state": "engine power as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Detroit Diesel 6V53T 300 hp (205 kW )",
+          "unit": "text",
+          "source": "wikipedia_lav25",
+          "locator": "Infobox, engine: Detroit Diesel 6V53T 300 hp (205 kW )",
+          "state": "engine make and model as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

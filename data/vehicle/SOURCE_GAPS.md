@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 245
-- Emitted runtime rows: 245
+- Catalogue entries: 249
+- Emitted runtime rows: 249
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 244
-- Absent fields: 1102
+- Entries with an absent runtime field: 248
+- Absent fields: 1123
 
 ## 2s19_msta_s - 2S19 Msta-S (tracked)
 
@@ -115,6 +115,31 @@ is a labelled zero, not a refusal.
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## 2s9_nona_s - 2S9 Nona-S (tracked)
+
+- Capture: `data/vehicle/catalogue/2s9_nona_s.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 8700 | `wikipedia_2s9_nona_s` | Infobox, mass: 8.7 t (8.6 long tons; 9.6 short tons) | operating weight as published; source tier-5 compilation |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 180.0 | `wikipedia_2s9_nona_s` | Infobox, engine: 5D20 Diesel 180 kW (240 hp) | engine power as published; source tier-5 compilation |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
@@ -2023,6 +2048,32 @@ is a labelled zero, not a refusal.
 |---|---|
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## hmmwv_m1025 - M1025 HMMWV (wheeled)
+
+- Capture: `data/vehicle/catalogue/hmmwv_m1025.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | documented | 2706 | `tm_9_2320_280_10` | Table 1-18, Curb Weight, row M1025: 5,960 lb (2,706 kg) | curb weight, M1025 armament carrier, as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## hmmwv_m998 - M998 HMMWV (wheeled)
 
 - Capture: `data/vehicle/catalogue/tm_9_2320_280_10.json`
@@ -2436,6 +2487,31 @@ is a labelled zero, not a refusal.
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## lav25 - LAV-25 (wheeled)
+
+- Capture: `data/vehicle/catalogue/lav25.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 12800 | `wikipedia_lav25` | Infobox, mass: LAV-25: 12.80 t (14.11 short tons ) LAV-25A2: 14.4 t (15.87  | operating weight as published; source tier-5 compilation |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 205.0 | `wikipedia_lav25` | Infobox, engine: Detroit Diesel 6V53T 300 hp (205 kW ) | engine power as published; source tier-5 compilation |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
@@ -3385,6 +3461,31 @@ is a labelled zero, not a refusal.
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m6_linebacker - M6 Linebacker (tracked)
+
+- Capture: `data/vehicle/catalogue/m6_linebacker.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 27600 | `wikipedia_m6_linebacker` | Infobox, mass: 30.4 short tons (27.6 t) | operating weight as published; source tier-5 compilation |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 450.0 | `wikipedia_m6_linebacker` | Infobox, engine: Cummins VTA-903T diesel 600 hp (450 kW) | engine power as published; source tier-5 compilation |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 

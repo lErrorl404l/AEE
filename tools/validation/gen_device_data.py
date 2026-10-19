@@ -40,6 +40,7 @@ _REPO = Path(__file__).parents[2]
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
+from tools.validation.identity_designations import designations as _designations
 from tools.validation import device_catalogue as catalogue  # noqa: E402
 
 ROOT = _REPO
@@ -203,36 +204,73 @@ _candidates = [];
     private _hit = false;
     {
         if ((count _x) >= __SCAN__ && {_query find _x >= 0}) then { _hit = true; };
-    } forEach (_keywords splitString "|");
+    } forEach ((_aliases + "|" + _keywords) splitString "|");
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 3, "keyword"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+// Several entries hold a designation the query contains. That is NOT a
+// draw: one may name the exact mark while the others only share the family
+// stem, so the scored layer below weighs them. It still answers nothing on
+// a real draw.
 
 // Layer 4: closest. The longest alias or keyword substring of the query,
 // at least four characters, with a strictly lower runner-up score.
 private _bestRow = [];
 private _bestScore = 0;
 private _runnerUp = 0;
+private _bestCount = 0;
+private _bestName = 0;
 private _tie = false;
 {
     _x params ["_device", "_devFamily", "_classes", "_aliases", "_keywords", "_source", "_values"];
     private _row = _x;
+    // The same scoring the vehicle and aircraft matchers use, so one rule
+    // reads every domain: sum EVERY designation of this entry that the
+    // query holds, and weight one carrying a type number double. A
+    // descriptive word ("recon") then cannot outvote the designation that
+    // names the device ("gpnvg18").
     private _score = 0;
+    private _count = 0;
+    private _longest = 0;
     {
-        if ((count _x) >= __SCAN__ && {count _x > _score} && {_query find _x >= 0}) then {
-            _score = count _x;
+        _count = _count + 1;
+        if ((count _x) >= __SCAN__ && {_query find _x >= 0}) then {
+            private _hasDigit = false;
+            {
+                if (_x >= 48 && _x <= 57) exitWith { _hasDigit = true; };
+            } forEach (toArray _x);
+            _score = _score + (count _x) * ([1, 2] select _hasDigit);
         };
+        if ((count _x) > _longest) then { _longest = count _x; };
     } forEach ((_aliases + "|" + _keywords) splitString "|");
     if (_score >= __SCAN__) then {
         if (_score > _bestScore) then {
             _runnerUp = _bestScore;
             _bestScore = _score;
             _bestRow = _row;
+            _bestCount = _count;
+            _bestName = _longest;
             _tie = false;
         } else {
-            if (_score == _bestScore) then { _tie = true; };
-            if (_score > _runnerUp) then { _runnerUp = _score; };
+            if (_score == _bestScore) then {
+                // Equal evidence: fewer designations, then the shorter own
+                // name, marks the less qualified entry - the base device.
+                if (_count < _bestCount) then {
+                    _bestRow = _row; _bestCount = _count;
+                    _bestName = _longest; _tie = false;
+                } else {
+                    if (_count == _bestCount) then {
+                        if (_longest < _bestName) then {
+                            _bestRow = _row; _bestName = _longest; _tie = false;
+                        } else {
+                            if (_longest == _bestName) then { _tie = true; };
+                        };
+                    };
+                };
+            };
+            if (_score < _bestScore && {_score > _runnerUp}) then {
+                _runnerUp = _score;
+            };
         };
     };
 } forEach _table;
@@ -340,14 +378,24 @@ def build_row(
         )
         if key
     )
-    keywords_blob = "|".join(
-        key
-        for key in (
-            catalogue.normalise(str(item))
-            for item in (keywords if isinstance(keywords, list) else [])
-        )
-        if key
-    )
+    # The keyword layer is matched by SUBSTRING, so it also carries the
+    # designations derived from the device's own published name, by the
+    # rule every AEE matcher shares. That is what lets "GPNVG-18 TI
+    # (Recon)" be read as a GPNVG-18 rather than as something "recon".
+    _alias_keys = aliases_blob.split("|") if aliases_blob else []
+    keyword_keys: list[str] = []
+    for key in (
+        catalogue.normalise(str(item))
+        for item in (keywords if isinstance(keywords, list) else [])
+    ):
+        if key and key not in _alias_keys and key not in keyword_keys:
+            keyword_keys.append(key)
+    for key in _designations(
+        entry.get("canonical_name"), entry.get("model"), entry.get("device_name")
+    ):
+        if key not in _alias_keys and key not in keyword_keys:
+            keyword_keys.append(key)
+    keywords_blob = "|".join(keyword_keys)
     source_record_id = next(
         (field.source for field in fields if field.grade != "absent" and field.source),
         "",
@@ -467,38 +515,65 @@ def match_row(
     if len(alias) > 1:
         return None
 
+    # The substring layer scans ALIASES as well as keywords. A device whose
+    # full designation is held as an alias ("pas13v1") must be able to
+    # compete here, or the shorter family keyword of another entry
+    # ("pas13") wins the layer alone and answers for a mark that is not it.
     keyword = [
         row
         for row in scoped
         if any(
             len(word) >= SCAN_MIN and word in query
-            for word in str(row[COL_KEYWORDS]).split("|")
+            for word in (
+                str(row[COL_ALIASES]) + "|" + str(row[COL_KEYWORDS])
+            ).split("|")
         )
     ]
     if len(keyword) == 1:
         return result(keyword[0], 3, "keyword")
-    if len(keyword) > 1:
-        return None
+    # Several entries hold a designation the query contains. That is NOT a
+    # draw: one of them may name the exact mark while the others only share
+    # the family stem. Fall through and let the scored layer below weigh
+    # them, which still answers nothing on a real draw.
 
     best: Sequence[object] | None = None
     best_score = 0
     runner_up = 0
+    best_count = 0
+    best_name = 0
     tie = False
     for row in scoped:
-        score = 0
-        for word in (str(row[COL_ALIASES]) + "|" + str(row[COL_KEYWORDS])).split("|"):
-            if len(word) >= SCAN_MIN and len(word) > score and word in query:
-                score = len(word)
+        words = [
+            w
+            for w in (str(row[COL_ALIASES]) + "|" + str(row[COL_KEYWORDS])).split("|")
+            if w
+        ]
+        # Sum every designation the query holds, weighting one that carries
+        # a type number double: it names the device, a plain word only
+        # describes it. This mirrors the generated ladder exactly.
+        score = sum(
+            len(w) * (2 if any(c.isdigit() for c in w) else 1)
+            for w in words
+            if len(w) >= SCAN_MIN and w in query
+        )
+        count = len(words)
+        longest = max((len(w) for w in words), default=0)
         if score >= SCAN_MIN:
             if score > best_score:
                 runner_up = best_score
-                best_score = score
-                best = row
-                tie = False
+                best_score, best, best_count, best_name, tie = (
+                    score, row, count, longest, False
+                )
             else:
                 if score == best_score:
-                    tie = True
-                if score > runner_up:
+                    if count < best_count:
+                        best, best_count, best_name, tie = row, count, longest, False
+                    elif count == best_count:
+                        if longest < best_name:
+                            best, best_name, tie = row, longest, False
+                        elif longest == best_name:
+                            tie = True
+                if score < best_score and score > runner_up:
                     runner_up = score
     if best is not None and not tie and best_score > runner_up:
         return result(best, 4, "closest")

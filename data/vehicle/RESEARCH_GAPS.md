@@ -198,3 +198,16 @@ answer, not an open question.
   direct source. A terramechanics model that gives an accreted volume
   for a tracked or a wheeled vehicle is the next best. A manufacturer
   mud-pack mass or a cleaning specification is also a candidate.
+
+## M1237 RG-33L "Plus"
+
+Found by scanning the installed game content (tools/scan_game_classes.py):
+four classes name the M1237 and no entry answers to it.
+
+The mark is identified - warwheels_rg33l_designations states "they were
+designated as the M1237 RG-33L 'Plus' vehicles" - but that page states no
+figure for it, and the base RG-33L's weight is NOT the Plus's, because the
+Plus is the uparmoured mark. An entry was NOT created on the base vehicle's
+numbers.
+
+Needed: a source stating the M1237's own weight, dimensions or power.

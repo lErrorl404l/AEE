@@ -1,0 +1,77 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for Tupolev Tu-95. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "tu95_bear",
+      "canonical_name": "Tupolev Tu-95",
+      "maker": "Tupolev",
+      "model": "Tupolev Tu-95",
+      "variant": "base",
+      "variant_id": "tu95_bear",
+      "vehicle_type": "fixed_wing",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "contemporary",
+      "aliases": [
+        "tu95",
+        "bear"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_m": {
+          "value": 46.2,
+          "unit": "m",
+          "source": "wikipedia_tu95_bear",
+          "locator": "Specifications, length: 46.2 m (151 ft 7 in)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_m": {
+          "value": 12.12,
+          "unit": "m",
+          "source": "wikipedia_tu95_bear",
+          "locator": "Specifications, height: 12.12 m (39 ft 9 in)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "wing_span_m": {
+          "value": 50.1,
+          "unit": "m",
+          "source": "wikipedia_tu95_bear",
+          "locator": "Specifications, wingspan: 50.1 m (164 ft 4 in)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): wingspan as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 925,
+          "unit": "km/h",
+          "source": "wikipedia_tu95_bear",
+          "locator": "Specifications, maximum speed: 925 km/h (575 mph, 499 kn)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): maximum speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "cruise_speed_kmh": {
+          "value": 710,
+          "unit": "km/h",
+          "source": "wikipedia_tu95_bear",
+          "locator": "Specifications, cruise speed: 710 km/h (440 mph, 380 kn)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): cruise speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "4 × Kuznetsov NK-12 turboprop engines 15,000 PS (15,000 hp; 11,000 kW)",
+          "unit": "text",
+          "source": "wikipedia_tu95_bear",
+          "locator": "Specifications, powerplant: 4 × Kuznetsov NK-12 turboprop engines 15,000 PS (15,000 hp; ",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): engine as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      },
+      "propulsion": "turboprop",
+      "role": "bomber"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-01",
-  "note": "Gap-research capture for BAE Systems Caiman (XM1220 / XM1230 Caiman Plus). Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "note": "Gap-research capture for BAE Systems Caiman (XM1220 / XM1230 Caiman Plus). Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty. The Caiman and Caiman Plus were assigned the formal US Army designations XM1220 and XM1230 and fielded as the M1220 and M1230 (GlobalSecurity mrap-var); designation evidence held as globalsecurity_mrap_variants.",
   "sources": [],
   "entries": [
     {
@@ -15,7 +15,12 @@
       "country": "United States",
       "era": "modern",
       "aliases": [
-        "bae systems caiman (xm1220 / xm1230 caiman plus)"
+        "bae systems caiman (xm1220 / xm1230 caiman plus)",
+        "m1220",
+        "m1230",
+        "xm1220",
+        "xm1230",
+        "caiman"
       ],
       "keywords": [],
       "runtime_ready": false,

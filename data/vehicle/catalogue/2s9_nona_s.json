@@ -1,0 +1,77 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for 2S9 Nona-S. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "2s9_nona_s",
+      "canonical_name": "2S9 Nona-S",
+      "maker": "Central Research Institute for Precision Machine Building",
+      "model": "2S9 Nona-S",
+      "variant": "base",
+      "variant_id": "2s9_nona_s",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "contemporary",
+      "aliases": [
+        "2s9",
+        "nona",
+        "nona-s",
+        "sochor"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 8700,
+          "unit": "kg",
+          "source": "wikipedia_2s9_nona_s",
+          "locator": "Infobox, mass: 8.7 t (8.6 long tons; 9.6 short tons)",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6020,
+          "unit": "mm",
+          "source": "wikipedia_2s9_nona_s",
+          "locator": "Infobox, length: 6.02 m (19.8 ft)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2630,
+          "unit": "mm",
+          "source": "wikipedia_2s9_nona_s",
+          "locator": "Infobox, width: 2.63 m (8 ft 8 in)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2300,
+          "unit": "mm",
+          "source": "wikipedia_2s9_nona_s",
+          "locator": "Infobox, height: 2.3 m (7 ft 7 in)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 180.0,
+          "unit": "kW",
+          "source": "wikipedia_2s9_nona_s",
+          "locator": "Infobox, engine: 5D20 Diesel 180 kW (240 hp)",
+          "state": "engine power as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "5D20 Diesel 180 kW (240 hp)",
+          "unit": "text",
+          "source": "wikipedia_2s9_nona_s",
+          "locator": "Infobox, engine: 5D20 Diesel 180 kW (240 hp)",
+          "state": "engine make and model as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

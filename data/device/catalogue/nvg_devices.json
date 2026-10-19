@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-02",
-  "note": "Night vision device entries. The tube figures come from manufacturer datasheets and from the AEE sensor device library. The halo comes from the Cui 2012 measurement.",
+  "note": "Night vision device entries. The tube figures come from manufacturer datasheets and from the AEE sensor device library. The halo comes from the Cui 2012 measurement. The BNVD-1531 is held as its own entry: the maker states it draws on the AN/PVS-15 and AN/PVS-31 rather than being either, so neither entry's values are copied to it.",
   "sources": [],
   "entries": [
     {
@@ -474,6 +474,25 @@
           "grade": "documented"
         }
       }
+    },
+    {
+      "device_id": "bnvd1531",
+      "canonical_name": "L3Harris BNVD-1531",
+      "family": "nvg",
+      "maker": "L3Harris",
+      "country": "US",
+      "class_names": [
+        "BNVD-1531",
+        "BNVD1531"
+      ],
+      "aliases": [
+        "bnvd1531",
+        "bnvd-1531"
+      ],
+      "keywords": [
+        "bnvd1531"
+      ],
+      "values": {}
     }
   ]
 }

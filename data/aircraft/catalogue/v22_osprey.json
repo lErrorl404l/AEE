@@ -1,0 +1,69 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for Bell Boeing V-22 Osprey. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "v22_osprey",
+      "canonical_name": "Bell Boeing V-22 Osprey",
+      "maker": "Bell Boeing",
+      "model": "Bell Boeing V-22 Osprey",
+      "variant": "base",
+      "variant_id": "v22_osprey",
+      "vehicle_type": "rotary_wing",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "v22",
+        "osprey"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_m": {
+          "value": 17.48,
+          "unit": "m",
+          "source": "wikipedia_v22_osprey",
+          "locator": "Specifications, length: 57 ft 4 in (17.48 m) Length folded: 62 ft 7.6 in (19.091 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_m": {
+          "value": 6.73,
+          "unit": "m",
+          "source": "wikipedia_v22_osprey",
+          "locator": "Specifications, height: 22 ft 1 in (6.73 m) engine nacelles vertical;",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "wing_span_m": {
+          "value": 13.97,
+          "unit": "m",
+          "source": "wikipedia_v22_osprey",
+          "locator": "Specifications, wingspan: 45 ft 10 in (13.97 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): wingspan as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 509,
+          "unit": "km/h",
+          "source": "wikipedia_v22_osprey",
+          "locator": "Specifications, maximum speed: 275 kn (316 mph, 509 km/h)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): maximum speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "2 × Rolls-Royce T406-AD-400 turboprop / turboshaft engines, 6,150 hp (4,590 kW) each maximum at 15,000 rpm at sea level,",
+          "unit": "text",
+          "source": "wikipedia_v22_osprey",
+          "locator": "Specifications, powerplant: 2 × Rolls-Royce T406-AD-400 turboprop / turboshaft engines, ",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): engine as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      },
+      "propulsion": "turboshaft",
+      "role": "transport"
+    }
+  ]
+}

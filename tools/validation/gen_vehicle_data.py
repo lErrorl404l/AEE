@@ -34,6 +34,7 @@ Run:  python3 tools/validation/gen_vehicle_data.py
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections.abc import Iterable, Sequence
 from pathlib import Path
@@ -44,6 +45,11 @@ _REPO = Path(__file__).parents[2]
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
+from tools.validation.identity_designations import (
+    CATEGORY_WORDS as _CATEGORY_WORDS,
+)
+from tools.validation.identity_designations import designations as _designations
+from tools.validation.identity_designations import fold as _designation_fold
 from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 ROOT = _REPO
@@ -68,7 +74,10 @@ COL_SOURCE = 7
 COL_VALUES = 8
 
 # The shortest alias or keyword the closest layer accepts.
-SCAN_MIN = 4
+# A non-numeric designation advertised by more entries than this names a
+# category or a maker, not one thing.
+SHARED_WORD_MAX = 3
+SCAN_MIN = 3
 
 MATCH_TEMPLATE = """#include "..\\script_component.hpp"
 /*
@@ -227,25 +236,72 @@ if ((count _candidates) > 1) exitWith { [] };
 private _bestRow = [];
 private _bestScore = 0;
 private _runnerUp = 0;
+private _bestCount = 0;
+private _bestName = 0;
 private _tie = false;
 {
     _x params ["_catalogue", "_variant", "_type", "_token", "_classes", "_aliases", "_keywords", "_source", "_values"];
     private _row = _x;
+    // Score by the TOTAL of every distinct designation of this entry that
+    // the query holds, not by the longest one alone. A reporting name is
+    // shared across the marks of a type ("Frogfoot" names every Su-25), so
+    // the longest single match would let any mark answer for the type;
+    // summing makes the entry whose type number AND name both appear win.
     private _score = 0;
+    private _count = 0;
+    private _longest = 0;
     {
-        if ((count _x) >= __SCAN__ && {count _x > _score} && {_query find _x >= 0}) then {
-            _score = count _x;
+        _count = _count + 1;
+        if ((count _x) >= __SCAN__ && {_query find _x >= 0}) then {
+            // A designation carrying a TYPE NUMBER identifies the thing;
+            // a plain word only describes it ("gunship" fits every gunship).
+            // So a type number is worth double, and a described match can
+            // no longer outvote the designation that names the aircraft.
+            private _hasDigit = false;
+            {
+                if (_x >= 48 && _x <= 57) exitWith { _hasDigit = true; };
+            } forEach (toArray _x);
+            _score = _score + (count _x) * ([1, 2] select _hasDigit);
         };
+        if ((count _x) > _longest) then { _longest = count _x; };
     } forEach ((_aliases + "|" + _keywords) splitString "|");
     if (_score >= __SCAN__) then {
         if (_score > _bestScore) then {
             _runnerUp = _bestScore;
             _bestScore = _score;
             _bestRow = _row;
+            _bestCount = _count;
+            _bestName = _longest;
             _tie = false;
         } else {
-            if (_score == _bestScore) then { _tie = true; };
-            if (_score > _runnerUp) then { _runnerUp = _score; };
+            if (_score == _bestScore) then {
+                // Equal evidence. Two rules separate sibling marks, in
+                // order: the entry advertising FEWER designations is the
+                // less qualified one, and failing that the entry whose own
+                // longest designation is SHORTER carries the less qualified
+                // name ("AW101 Merlin" before "AW101 HM2 Merlin"). When a
+                // query names the type but not the mark, the base mark is
+                // the right answer. A true draw still stays a draw.
+                if (_count < _bestCount) then {
+                    _bestRow = _row;
+                    _bestCount = _count;
+                    _bestName = _longest;
+                    _tie = false;
+                } else {
+                    if (_count == _bestCount) then {
+                        if (_longest < _bestName) then {
+                            _bestRow = _row;
+                            _bestName = _longest;
+                            _tie = false;
+                        } else {
+                            if (_longest == _bestName) then { _tie = true; };
+                        };
+                    };
+                };
+            };
+            if (_score < _bestScore && {_score > _runnerUp}) then {
+                _runnerUp = _score;
+            };
         };
     };
 } forEach _table;
@@ -355,6 +411,27 @@ def _mapping(value: object) -> dict[str, object] | None:
     return {str(key): item for key, item in value.items()}
 
 
+def designations(entry: dict) -> tuple[str, ...]:
+    """The designations this vehicle is published under.
+
+    The rule is shared with every other AEE matcher
+    (tools/validation/identity_designations.py), so a vehicle, an aircraft,
+    a weapon and a device are all recognised from their own text by the
+    same derivation and no domain carries a per-mod class list.
+
+    Only the PUBLISHED identity is passed: the canonical name, the model
+    and the curated aliases. The catalogue and variant keys are repository
+    bookkeeping, not identity, so they stay out of the matcher.
+    """
+    return tuple(
+        _designations(
+            entry.get("canonical_name"),
+            entry.get("model"),
+            *(entry.get("aliases") or []),
+        )
+    )
+
+
 def _normalised_list(value: object) -> tuple[str, ...]:
     """Return the deduplicated normalised keys of an alias or keyword array."""
     if not isinstance(value, list):
@@ -403,13 +480,29 @@ def resolve_row(record: object) -> list[catalogue.ResolvedField] | None:
 
 
 def build_row(
-    record: object, mapped_classes: Iterable[str] = ()
+    record: object,
+    mapped_classes: Iterable[str] = (),
+    reserved_identities: frozenset[str] = frozenset(),
+    shared_words: frozenset[str] = frozenset(),
 ) -> list[object] | None:
     """Return one runtime row, or None when the record has no identity.
 
     ``mapped_classes`` names the AEE game classes the class map links to the
     entry. It fills column 4 as a normalised blob. Every value column is graded
     in ``resolve_row``: a held value, a named derivation or a labelled zero.
+
+    ``shared_words`` holds the designations that carry NO type number and
+    that many entries advertise. A word like "mrap", "mainbattletank",
+    "attack" or a maker's own name is a CATEGORY: it says what kind of
+    thing this is, never which one, so as a designation it ties every
+    query against its whole class. A designation carrying a type number is
+    never dropped, however many marks share it, because that is exactly
+    what a family designation looks like.
+
+    ``reserved_identities`` holds the folded canonical name of every OTHER
+    entry. A derived designation equal to one of them is dropped: a sub-mark
+    must not advertise the base model's own name, or a query naming the base
+    model ties against every sub-mark and the matcher answers nothing.
     """
     fields = resolve_row(record)
     if fields is None:
@@ -424,8 +517,38 @@ def build_row(
     classes_blob = "|".join(
         key for key in (normalise(str(item)) for item in mapped_classes) if key
     )
-    aliases_blob = "|".join(_normalised_list(entry.get("aliases")))
-    keywords_blob = "|".join(_normalised_list(entry.get("keywords")))
+    # The alias layer stays CURATED: it is matched by equality, so one
+    # curated alias must name one entry.
+    alias_keys = list(_normalised_list(entry.get("aliases")))
+    aliases_blob = "|".join(alias_keys)
+    # The keyword layer is matched by SUBSTRING, so it carries the derived
+    # identity designations: that is what lets the matcher identify a
+    # vanilla or modded class from its own text with no per-mod class list.
+    # The category words the corpus keeps for documentation are left out
+    # on purpose - "tracked" or "transport" would match half the catalogue
+    # and tie every query.
+    keyword_keys: list[str] = []
+    for key in _normalised_list(entry.get("keywords")):
+        if key in alias_keys or key in _CATEGORY_WORDS:
+            continue
+        # A curated keyword is held for documentation and many of them are
+        # categories ("mrap", "attack", "mainbattletank") or makers. Those
+        # must not reach the matcher: they tie a query against a whole
+        # class instead of naming one thing.
+        if key in shared_words and not any(ch.isdigit() for ch in key):
+            continue
+        keyword_keys.append(key)
+    own_identity = _designation_fold(entry.get("canonical_name") or "")
+    for key in designations(entry):
+        if key in alias_keys or key in keyword_keys:
+            continue
+        # A base model owns its own name; a sub-mark may not claim it.
+        if key != own_identity and key in reserved_identities:
+            continue
+        if key in shared_words and not any(ch.isdigit() for ch in key):
+            continue
+        keyword_keys.append(key)
+    keywords_blob = "|".join(keyword_keys)
     source_record_id = next(
         (field.source for field in fields if field.grade != "absent" and field.source),
         "",
@@ -445,11 +568,18 @@ def build_row(
 
 
 def load_binding_classes(data_dir: Path = DEFAULT_DATA) -> dict[str, list[str]]:
-    """Map each catalogue id to the game classes the binding artefact names.
+    """Map each catalogue id to the base-game classes research has bound.
 
-    The artefact is generated by tools/validation/gen_vehicle_bindings.py from
-    the game stringtables. A missing artefact yields no bindings: it is an
-    input, not a failure, so the matcher still generates without a game install.
+    Only a binding read out of the BASE GAME's own config is kept, which
+    its locator shows by sitting under the game's "a3" addon root. Those
+    are the classes whose own text names no real vehicle - a fictional
+    in-game name cannot be derived back to the thing it was modelled on -
+    so the researched binding is the only evidence there is.
+
+    Every other binding describes content outside the base game. Those are
+    dropped: the matcher identifies such a class generically, from the
+    designations the real vehicle is published under, so it needs no list
+    and must not carry one.
     """
     path = data_dir / BINDINGS_FILE
     if not path.is_file():
@@ -468,6 +598,20 @@ def load_binding_classes(data_dir: Path = DEFAULT_DATA) -> dict[str, list[str]]:
             continue
         catalogue_id = raw.get("catalogue_id")
         game_class = raw.get("game_class")
+        # Keep only a binding whose evidence is the BASE GAME's own data:
+        # a config read out of the game's Addons tree AND a display name
+        # read out of the game's own stringtable namespace. A binding
+        # evidenced by any other package describes content that is not the
+        # base game, and the matcher identifies that generically, from the
+        # designations the real vehicle is published under.
+        locator = raw.get("config_locator")
+        name_key = raw.get("display_name_key")
+        if not isinstance(locator, str) or not locator.strip().startswith("Addons/"):
+            continue
+        if not isinstance(name_key, str) or not name_key.strip().upper().startswith(
+            "$STR_A3_"
+        ):
+            continue
         if isinstance(catalogue_id, str) and isinstance(game_class, str):
             owners.setdefault(catalogue_id, set()).add(game_class)
     return {key: sorted(value) for key, value in owners.items()}
@@ -496,6 +640,31 @@ def build_rows(
 ) -> list[list[object]]:
     """Build every row and sort it. The order is catalogue then variant."""
     table = mappings if mappings is not None else {}
+    records = [record for record in records]
+    # Every entry's own folded canonical name. A derived designation equal
+    # to another entry's name is that entry's identity, not this one's.
+    identities: set[str] = set()
+    for record in records:
+        entry = _mapping(record)
+        if entry is None:
+            continue
+        key = _designation_fold(entry.get("canonical_name") or "")
+        if len(key) >= 3:
+            identities.add(key)
+    reserved = frozenset(identities)
+    # Count how many entries each candidate designation would come from.
+    # A word shared by more than a handful is a category or a maker.
+    tally: dict[str, int] = {}
+    for record in records:
+        entry = _mapping(record)
+        if entry is None:
+            continue
+        words = set(designations(entry)) | set(
+            _normalised_list(entry.get("keywords"))
+        )
+        for key in words:
+            tally[key] = tally.get(key, 0) + 1
+    shared = frozenset(k for k, n in tally.items() if n > SHARED_WORD_MAX)
     rows: list[list[object]] = []
     for record in records:
         entry = _mapping(record)
@@ -503,7 +672,7 @@ def build_rows(
             continue
         cid = entry.get("catalogue_id")
         classes = table.get(cid, ()) if isinstance(cid, str) else ()
-        row = build_row(entry, classes)
+        row = build_row(entry, classes, reserved, shared)
         if row is not None:
             rows.append(row)
     rows.sort(key=lambda row: (str(row[COL_CATALOGUE]), str(row[COL_VARIANT])))

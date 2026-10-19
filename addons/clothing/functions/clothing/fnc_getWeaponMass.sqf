@@ -33,28 +33,16 @@ if (!isNil "aee_ballistics_fnc_getWeaponData") then {
 };
 if (_researched > 0) exitWith { _researched };
 
-// The family fallback. The order matters: the most specific family
-// first, so a classname that holds "lmg" is not read as a rifle.
+// The family fallback, when the catalogue does not hold the weapon.  The
+// table is GENERATED from the corpus (fnc_weaponMassFallback.sqf): every
+// figure in it is the median of the published masses the weapon catalogue
+// holds for that family, so nothing here is invented.  The order matters:
+// the most specific family first, so a classname holding "lmg" is not read
+// as a rifle.
 private _class = toLower _weapon;
-private _tiers = [
-    ["launcher", 5.0],
-    ["missile", 5.0],
-    ["srifle", 6.5],
-    ["sniper", 6.5],
-    ["dmr", 4.5],
-    ["lmg", 8.0],
-    ["mmg", 11.0],
-    ["machinegun", 9.0],
-    ["smg", 2.8],
-    ["pdw", 2.5],
-    ["revolver", 1.1],
-    ["hgun", 0.9],
-    ["pistol", 0.9],
-    ["shotgun", 3.2],
-    ["carbine", 3.2]
-];
-private _mass = 3.5;
+([] call FUNC(weaponMassFallback)) params ["_tiers", "_default"];
 
+private _mass = _default;
 {
     if (_class find (_x select 0) >= 0) exitWith { _mass = _x select 1; };
 } forEach _tiers;

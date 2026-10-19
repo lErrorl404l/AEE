@@ -127,7 +127,7 @@ source by `tools/gen_extension_contract.py --check`.
 | `aee_weatherfx` | `weatherfx` |
 | `aee_wildlife` | `wildlife` |
 
-### Public functions (911)
+### Public functions (912)
 
 Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespace. Call one as `call aee_<component>_fnc_<name>`.
 
@@ -345,6 +345,7 @@ Compiled by CBA XEH `PREP`/`PREPS` into the `aee_<component>_fnc_<name>` namespa
 - `aee_clothing_fnc_getWeaponLoad`
 - `aee_clothing_fnc_getWeaponMass`
 - `aee_clothing_fnc_selectBand`
+- `aee_clothing_fnc_weaponMassFallback`
 - `aee_compat_ace3_fnc_dumpState`
 - `aee_compat_ace3_fnc_getAceItemMass`
 - `aee_compat_ace3_fnc_integrateKestrel`

@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 226
-- Emitted runtime rows: 226
+- Catalogue entries: 234
+- Emitted runtime rows: 234
 - Runtime-ready entries: 15
-- Entries with an absent runtime field: 211
-- Absent fields: 515
+- Entries with an absent runtime field: 219
+- Absent fields: 533
 
 ## a10a_thunderbolt_ii - Fairchild A-10A Thunderbolt II (fixed_wing)
 
@@ -51,6 +51,23 @@ is a labelled zero, not a refusal.
 ## a1h_skyraider - Douglas A-1H Skyraider (fixed_wing)
 
 - Capture: `data/aircraft/catalogue/fixed_wing_fw.json`
+- Required set: fixed_wing (2 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+
+## a29_super_tucano - Embraer A-29 Super Tucano (fixed_wing)
+
+- Capture: `data/aircraft/catalogue/a29_super_tucano.json`
 - Required set: fixed_wing (2 fields)
 - Runtime row: yes
 - Runtime-ready: no
@@ -324,6 +341,23 @@ is a labelled zero, not a refusal.
 ## amx_gibli - AMX International AMX Ghibli (fixed_wing)
 
 - Capture: `data/aircraft/catalogue/fixed_wing_fw.json`
+- Required set: fixed_wing (2 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+
+## an2_colt - Antonov An-2 (fixed_wing)
+
+- Capture: `data/aircraft/catalogue/an2_colt.json`
 - Required set: fixed_wing (2 fields)
 - Runtime row: yes
 - Runtime-ready: no
@@ -829,6 +863,23 @@ is a labelled zero, not a refusal.
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
 
+## blackburn_buccaneer - Blackburn Buccaneer (fixed_wing)
+
+- Capture: `data/aircraft/catalogue/blackburn_buccaneer.json`
+- Required set: fixed_wing (2 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+
 ## bo105 - Messerschmitt-Bolkow-Blohm Bo 105 (rotary_wing)
 
 - Capture: `data/aircraft/catalogue/rotary_wing_rw.json`
@@ -847,6 +898,23 @@ is a labelled zero, not a refusal.
 | `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+
+## c130_hercules - Lockheed C-130 Hercules (fixed_wing)
+
+- Capture: `data/aircraft/catalogue/c130_hercules.json`
+- Required set: fixed_wing (2 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 
 ## camcopter_s100 - Schiebel Camcopter S-100 (rotary_wing)
 
@@ -2173,6 +2241,25 @@ is a labelled zero, not a refusal.
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
 
+## mh60m - Sikorsky MH-60M Black Hawk (rotary_wing)
+
+- Capture: `data/aircraft/catalogue/mh60m.json`
+- Required set: rotary_wing (3 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+
 ## mh60r_seahawk - Sikorsky MH-60R Seahawk (rotary_wing)
 
 - Capture: `data/aircraft/catalogue/rotary_wing_rw.json`
@@ -2504,9 +2591,9 @@ is a labelled zero, not a refusal.
 | `rated_power_w` | derived | 1267689.7824 | `src_opfor_weg` | Engines: 2x 1,700-shp Isotov TV2-117A | derived rated power from the published power: rated_power_w = published_power_hp * 745.699872 (1 hp = 745.699872 W) |
 | `rotor_disc_area_m2` | derived | 356.327293 | `src_opfor_weg` | Main Rotor Diameter: 21.3 | derived rotor disc area from the rotor diameter 21.3 m: rotor_disc_area_m2 = pi * (rotor_diameter_m / 2)^2 |
 
-## mi8t_hip - Mil Mi-8T Hip (rotary_wing)
+## mi8amtsh - Mil Mi-8AMTSh (rotary_wing)
 
-- Capture: `data/aircraft/catalogue/historical.json`
+- Capture: `data/aircraft/catalogue/mi8amtsh_terminator.json`
 - Required set: rotary_wing (3 fields)
 - Runtime row: yes
 - Runtime-ready: no
@@ -3671,10 +3758,10 @@ is a labelled zero, not a refusal.
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
 
-## uh1h_iroquois - Bell UH-1H Iroquois (rotary_wing)
+## tu22m_backfire - Tupolev Tu-22M (fixed_wing)
 
-- Capture: `data/aircraft/catalogue/historical.json`
-- Required set: rotary_wing (3 fields)
+- Capture: `data/aircraft/catalogue/tu22m_backfire.json`
+- Required set: fixed_wing (2 fields)
 - Runtime row: yes
 - Runtime-ready: no
 
@@ -3682,17 +3769,32 @@ is a labelled zero, not a refusal.
 |---|---|---|---|---|---|
 | `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
 | `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
-| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
 | `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
-| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
 
-## uh1h_v - Bell UH-1H Iroquois (rotary_wing)
+## tu95_bear - Tupolev Tu-95 (fixed_wing)
 
-- Capture: `data/aircraft/catalogue/rotary_wing_rw.json`
+- Capture: `data/aircraft/catalogue/tu95_bear.json`
+- Required set: fixed_wing (2 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+
+## uh1h_iroquois - Bell UH-1H Iroquois (rotary_wing)
+
+- Capture: `data/aircraft/catalogue/historical.json`
 - Required set: rotary_wing (3 fields)
 - Runtime row: yes
 - Runtime-ready: no
@@ -3821,9 +3923,47 @@ is a labelled zero, not a refusal.
 | `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
 | `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
 
+## v22_osprey - Bell Boeing V-22 Osprey (rotary_wing)
+
+- Capture: `data/aircraft/catalogue/v22_osprey.json`
+- Required set: rotary_wing (3 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+
 ## w3_sokol - PZL W-3 Sokol (rotary_wing)
 
 - Capture: `data/aircraft/catalogue/rotary_wing_rw.json`
+- Required set: rotary_wing (3 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rated_power_w` | absent | 0 | `` |  | no held value and no derivation applies |
+| `rotor_disc_area_m2` | absent | 0 | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a tier 2 operating manual or a tier 4 manufacturer datasheet |
+| `rated_power_w` | the engine maker rating, or a tier 4 manufacturer datasheet |
+| `rotor_disc_area_m2` | a tier 3 or tier 4 rotor diameter datasheet |
+
+## westland_sea_king - Westland Sea King (rotary_wing)
+
+- Capture: `data/aircraft/catalogue/westland_sea_king.json`
 - Required set: rotary_wing (3 fields)
 - Runtime row: yes
 - Runtime-ready: no

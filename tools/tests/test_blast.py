@@ -3,7 +3,7 @@
 
 Mirrors fnc_calculateBlastOverpressure.sqf (Kingery-Bulmash / Swisdak
 1994 simplified fits) and fnc_calculateBlastInjury.sqf (Bowen 1968 P-I
-curves + tertiary throw).
+curves + measured tertiary blowdown).
 
 The reference values are verified against the `kingery-bulmash` pip
 package (fcento100, Swisdak ADA526744) and the issue's published anchors:
@@ -129,8 +129,18 @@ def blast_injury(p_so, td, indoor_mult=1.0):
     lung50 = 0.5 if P >= thr[2] else 0.0
     lung99 = 1.0 if P >= thr[3] else 0.0
 
-    # Tertiary throw: likely above ~15 kPa.
-    throw01 = min((P - 15) / 5, 1.0) if P > 15 else 0.0
+    # Tertiary blowdown: Richmond & Fletcher dummy anchors (JRC119310
+    # Table 3), log-interpolated in the dynamic-pressure impulse.
+    qo = 2.5 * P * P / (7 * 101.325 + P)
+    jq = qo * max(td, 0.0) / 2
+    if jq <= 8.78:
+        throw01 = 0.0
+    elif jq >= 379.13:
+        throw01 = 1.0
+    elif jq >= 58.27:
+        throw01 = 0.5 + 0.5 * (math.log(jq / 58.27) / math.log(379.13 / 58.27))
+    else:
+        throw01 = 0.5 * (math.log(jq / 8.78) / math.log(58.27 / 8.78))
 
     return [eardrum, lung_thresh, lung1, lung50, lung99, throw01]
 
@@ -205,8 +215,41 @@ class TestKBOverpressure(unittest.TestCase):
         self.assertAlmostEqual(t8, t1 * 2, delta=t1 * 0.1)
 
 
+BLAST_INJURY_SQF = (
+    Path(__file__).resolve().parents[2]
+    / "addons/blast/functions/blast/fnc_calculateBlastInjury.sqf"
+)
+BLAST_THROW_SQF = (
+    Path(__file__).resolve().parents[2]
+    / "addons/blast/functions/blast/fnc_calculateBlastThrow.sqf"
+)
+
+
+class TestBlastInjurySqfMatchesTheMirror(unittest.TestCase):
+    """The REAL kernel, executed, against the independent mirror above.
+
+    Without this the mirror could drift from the shipped SQF unnoticed.
+    """
+
+    def test_the_sqf_matches_over_a_sweep(self):
+        for p in (5, 20, 35, 60, 103, 160, 202, 300, 600):
+            for td in (1, 5, 10, 30, 100, 200):
+                with self.subTest(p=p, td=td):
+                    got = run_sqf(BLAST_INJURY_SQF, [p, td, 1])
+                    want = blast_injury(p, td)
+                    for i, (g, w) in enumerate(zip(got, want)):
+                        self.assertAlmostEqual(g, w, places=6, msg=f"slot {i}")
+
+    def test_the_throw_kernel_uses_the_measured_drag_area(self):
+        src = BLAST_THROW_SQF.read_text(encoding="utf-8")
+        self.assertIn("_cdArea = 0.735", src)
+        self.assertIn("Richmond & Fletcher", src)
+        # 0.735 m2 is 0.01050 m/s per kPa.ms times the 70 kg subject.
+        self.assertAlmostEqual(0.010499 * 70, 0.735, places=3)
+
+
 class TestBlastInjury(unittest.TestCase):
-    """Bowen P-I curves + tertiary throw."""
+    """Bowen P-I curves + measured tertiary blowdown."""
 
     def test_eardrum_thresholds(self):
         # 35 threshold, 103 50%, 202 100%.
@@ -235,10 +278,22 @@ class TestBlastInjury(unittest.TestCase):
         p100 = blast_injury(160, 100)[1]  # row 50-200 interpolated
         self.assertGreater(p100, p10, "longer duration should be more dangerous")
 
-    def test_throw_threshold(self):
-        self.assertEqual(blast_injury(10, 10)[5], 0.0)
-        self.assertGreater(blast_injury(20, 10)[5], 0.0)
-        self.assertAlmostEqual(blast_injury(20, 10)[5], 1.0, places=3)
+    def test_blowdown_follows_the_measured_anchors(self):
+        # The anchors are stated as a dynamic-pressure impulse, so drive the
+        # kernel with the (P, t_d) pairs that produce them.
+        def jq(p, td):
+            return 2.5 * p * p / (7 * 101.325 + p) * td / 2
+
+        # Below the measured 8.78 kPa.ms no-blowdown anchor.
+        self.assertLess(jq(20, 10), 8.78)
+        self.assertEqual(blast_injury(20, 10)[5], 0.0)
+        # 50 % blowdown at 58.27 kPa.ms.
+        p50 = 20.0
+        while jq(p50, 10) < 58.27:
+            p50 += 0.01
+        self.assertAlmostEqual(blast_injury(p50, 10)[5], 0.5, places=2)
+        # A long positive phase blows a body down at a far lower peak.
+        self.assertGreater(blast_injury(20, 200)[5], blast_injury(20, 10)[5])
 
     def test_indoor_amplification(self):
         # Indoor 2x: a 60 kPa outdoor shot becomes 120 kPa indoors.
@@ -260,7 +315,7 @@ class TestValidationTargets(unittest.TestCase):
     the OLD WRONG cubic model the issue replaces (P = 0.84·(W^(1/3)/Z)^3,
     2-17x error).  The correct Kingery-Bulmash distances, from this
     implementation (verified against the kingery-bulmash pip package):
-      M107 (7 kg):  lung99 3.73 m, eardrum50 6.07 m, throw onset 19.0 m
+      M107 (7 kg):  lung99 3.73 m, eardrum50 6.07 m, 50% blowdown 7.03 m
       Mk82 (100 kg): lung99 9.06 m, eardrum50 14.72 m
     """
 
@@ -276,11 +331,16 @@ class TestValidationTargets(unittest.TestCase):
         e65 = blast_injury(*blast_overpressure(m, 6.07))[0]
         self.assertGreater(e65, 0.4)
         self.assertLess(e65, 0.6)
-        # throw active inside ~19 m (P > 15 kPa); gone beyond.
-        t16 = blast_injury(*blast_overpressure(m, 16.0))[5]
-        self.assertGreater(t16, 0.5)
-        t19 = blast_injury(*blast_overpressure(m, 19.1))[5]
-        self.assertLess(t19, 0.01)
+        # Blowdown follows the measured dynamic-pressure impulse, so it
+        # depends on the positive-phase duration, not the peak alone: a
+        # 7 kg shell has a ~8 ms phase, giving 50 % blowdown at ~7.0 m and
+        # nothing beyond ~13.3 m (the 8.78 kPa.ms no-blowdown anchor).
+        self.assertAlmostEqual(blast_injury(*blast_overpressure(m, 7.03))[5], 0.5, delta=0.02)
+        self.assertEqual(blast_injury(*blast_overpressure(m, 13.4))[5], 0.0)
+        # The larger charge's longer phase blows a body down much further.
+        self.assertAlmostEqual(
+            blast_injury(*blast_overpressure(100.0, 22.72))[5], 0.5, delta=0.02
+        )
         self.assertLess(blast_injury(*blast_overpressure(m, 21.0))[0], 0.1)
 
     def test_mk82(self):

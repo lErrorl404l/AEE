@@ -1,0 +1,31 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Identity capture for the Mi-8AMTSh, the armed transport mark of the Mi-8/Mi-17 family (wikipedia_mi17_variants, Variants: 'Mi-8AMTSh Armed transport version with improved navigation and targeting systems'). Its export designation is the Mi-171Sh. No value is claimed: the source states none for this mark, and the entry exists so the matcher can name the aircraft.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "mi8amtsh",
+      "canonical_name": "Mil Mi-8AMTSh",
+      "maker": "Mil",
+      "model": "Mi-8",
+      "variant": "AMTSh",
+      "variant_id": "mi8amtsh",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "mi-8amtsh",
+        "mi8amtsh",
+        "mi-171sh",
+        "mi171sh",
+        "terminator"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

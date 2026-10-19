@@ -16,9 +16,22 @@ Bowen curves (70 kg man, from the compiled Zirh & Sari 2025 data):
               50-200 ms:    28/90/125/185
   Linear interpolation in t_d between the three rows.
 
-Tertiary throw: blast wind q_o = 2.5·P_so^2/(7·P_0 + P_so) exceeds the
-drag needed to move a 70 kg soldier.  Game rule from the issue: throw
-becomes likely at P_so ~ 15-20 kPa.
+Tertiary blowdown: measured.  The blast wind carries a dynamic pressure
+q_o = 2.5·P_so^2/(7·P_0 + P_so) (Kinney & Graham 1985), whose impulse over
+the positive phase drives the body.  Richmond & Fletcher blew instrumented
+dummies down on the open desert surface (Project LN401; "Blast Displacement
+of Dummies on the Surface" and "Blast Displacement of Prone Dummies"), and
+their three reported points, compiled as Table 3 of the EC Joint Research
+Centre survey "A survey of computational models for blast induced human
+injuries for security" (JRC119310, 2019), are
+
+     dynamic pressure impulse   peak body velocity   outcome
+         8.78 kPa.ms                0.092 m/s        no blowdown
+        58.27 kPa.ms                0.61  m/s        50 % blowdown
+       379.13 kPa.ms                4.0   m/s        1 % serious injury
+
+so the blowdown probability is interpolated between those measured anchors,
+linearly in the logarithm of the impulse.
 
 Indoor amplification: 2x (vented) to 4x (sealed) applied to P_so before
 the thresholds.
@@ -86,7 +99,9 @@ for "_i" from 1 to 4 do {
 };
 
 // Probability of exceeding each pressure threshold (linear between them).
-private _lungThresh = if (_P >= (_thr select 3)) then { 1 } else {
+// NOTE the 100: every branch here is a PERCENTAGE, divided by 100 below.
+// Returning 1 instead collapsed a certain-death overpressure to 1 per cent.
+private _lungThresh = if (_P >= (_thr select 3)) then { 100 } else {
     if (_P > (_thr select 0)) then {
         // thresh->1% maps to 0->1% prob; 1%->50% maps 1->50; 50%->99% maps 50->99
         if (_P < (_thr select 1)) then {
@@ -106,12 +121,26 @@ private _lung1 = (parseNumber (_P >= (_thr select 1))) * 0.01;
 private _lung50 = (parseNumber (_P >= (_thr select 2))) * 0.5;
 private _lung99 = parseNumber (_P >= (_thr select 3));
 
-// ─── Tertiary throw (blast wind) ─────────────────────────────────────────
-// q_o = 2.5·P_so^2/(7·P_0 + P_so); P_0 = 101.3 kPa.  Throw likely above
-// ~15-20 kPa incident (game rule from the issue): scale 15->0, 20->1.
+// ─── Tertiary blowdown (blast wind) ──────────────────────────────────────
+// Peak dynamic pressure behind the shock (Kinney & Graham 1985), then its
+// impulse over the positive phase as the equivalent triangular pulse the
+// blast literature uses for impulse (UFC 3-340-02): J_q = q_o * t_d / 2.
+private _qo = 2.5 * _P * _P / (7 * 101.325 + _P);
+private _jq = _qo * (_td max 0) / 2;          // kPa.ms
+
+// The Richmond & Fletcher dummy anchors (see the header), log-interpolated.
 private _throw = 0;
-if (_P > 15) then {
-    _throw = ((_P - 15) / 5) min 1;
+if (_jq > 8.78) then {
+    if (_jq >= 379.13) then {
+        _throw = 1;
+    } else {
+        if (_jq >= 58.27) then {
+            _throw = 0.5 + 0.5 * ((ln _jq - ln 58.27) / (ln 379.13 - ln 58.27));
+        } else {
+            _throw = 0.5 * ((ln _jq - ln 8.78) / (ln 58.27 - ln 8.78));
+        };
+    };
 };
+_throw = (_throw max 0) min 1;
 
 [_eardrum, _lungThresh, _lung1, _lung50, _lung99, _throw]

@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-24",
-  "note": "Catalogue capture for the held tier-4 General Dynamics Land Systems product datasheet for the Cougar 4x4 MRAP. It holds the Cougar 4x4 (MRAP Category I) as a wheeled entry. The datasheet is the maker product page, so every value is grade claimed. It publishes the identity, overall dimensions, the curb and combat weights, the payload, ground clearance, the Caterpillar C7 rating of 330 hp, the Allison 3500 SP automatic transmission, the range and the fording depth. The datasheet prints no company name, so the maker rests on the maker product page that publishes it. No freely downloadable operator manual for the Cougar or the RG-31 exists, so this maker datasheet is the held document.",
+  "note": "Catalogue capture for the held tier-4 General Dynamics Land Systems product datasheet for the Cougar 4x4 MRAP. It holds the Cougar 4x4 (MRAP Category I) as a wheeled entry. The datasheet is the maker product page, so every value is grade claimed. It publishes the identity, overall dimensions, the curb and combat weights, the payload, ground clearance, the Caterpillar C7 rating of 330 hp, the Allison 3500 SP automatic transmission, the range and the fording depth. The datasheet prints no company name, so the maker rests on the maker product page that publishes it. No freely downloadable operator manual for the Cougar or the RG-31 exists, so this maker datasheet is the held document. The Cougar 4x4 is the MRAP programme's Category I vehicle and is fielded in A1 and A2 marks (globalsecurity_cougar_a1_a2), so the entry also answers to the CAT I A2 shorthand.",
   "sources": [],
   "entries": [
     {
@@ -14,8 +14,19 @@
       "class_token": "",
       "country": "United States",
       "era": "modern",
-      "aliases": ["cougar", "cougar 4x4", "mrap cougar"],
-      "keywords": ["mrap", "mine resistant", "cougar", "4x4"],
+      "aliases": [
+        "cougar",
+        "cougar 4x4",
+        "mrap cougar",
+        "cgrcat1a2",
+        "cat1a2"
+      ],
+      "keywords": [
+        "mrap",
+        "mine resistant",
+        "cougar",
+        "4x4"
+      ],
       "runtime_ready": false,
       "values": {
         "length_mm": {

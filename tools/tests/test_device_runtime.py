@@ -208,8 +208,13 @@ class TestMatcherLayers(unittest.TestCase):
         self.assertIn(str(gen.SCAN_MIN), MATCH)
 
     def test_a_tie_at_a_layer_returns_empty(self):
+        # Two layers, not three: the KEYWORD layer no longer gives up when
+        # several entries hold a designation the query contains. One of
+        # them may name the exact mark while the others share only the
+        # family stem, so it falls through to the scored layer, which still
+        # answers nothing on a real draw.
         self.assertEqual(
-            MATCH.count("if ((count _candidates) > 1) exitWith { [] };"), 3
+            MATCH.count("if ((count _candidates) > 1) exitWith { [] };"), 2
         )
         self.assertIn("_tie = true", MATCH)
 
@@ -494,10 +499,8 @@ class TestThermalFamilyIsolation(unittest.TestCase):
                         self.assertEqual(found[COL_FAMILY], "thermal")
 
     def test_pas13_variants_do_not_resolve_to_the_base(self):
-        # The base device must not steal a variant through its old broad
-        # "pas13" alias. A variant token selects the variant row, and a
-        # separated variant token matches nothing here so the resolver's
-        # static fallback selects the variant.
+        # The base device must not steal a variant through its broad
+        # "pas13" keyword: the variant's own designation outscores it.
         table = rows()
         for class_name in (
             "AN/PAS-13E(V)1",
@@ -512,7 +515,12 @@ class TestThermalFamilyIsolation(unittest.TestCase):
                 self.assertIsNotNone(found)
                 assert found is not None
                 self.assertEqual(found[COL_DEVICE], "pas13_v1")
-        self.assertIsNone(gen.match_row(table, "PAS-13E(V)1", family="thermal"))
+        # PAS-13E(V)1 IS the V1 mark, and the scored layer now says so
+        # rather than giving up and leaving it to a fallback.
+        resolved = gen.match_row(table, "PAS-13E(V)1", family="thermal")
+        self.assertIsNotNone(resolved)
+        assert resolved is not None
+        self.assertEqual(resolved[COL_DEVICE], "pas13_v1")
         for class_name in ("AN/PAS-13", "PAS-13"):
             with self.subTest(class_name=class_name):
                 base = gen.match_row(table, class_name, family="thermal")

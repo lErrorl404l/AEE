@@ -15,12 +15,17 @@ is added.  The chain:
         u = sqrt(2 * q_o / rho_0)                         [m/s]
     Kinney & Graham.  Approximate: it uses the AMBIENT density, so it is
     an upper bound (the post-shock density is higher).
-  - Drag impulse on a bluff body over the positive phase:
-        J = C_d * q_o * A * t_d                           [N.s]
+  - Drag impulse on the body over the positive phase:
+        J = (C_d A) * q_o * t_d                           [N.s]
         dv = J / m                                        [m/s]
-    C_d = 1.2 and A = 0.7 m2 for a standing adult: a bluff body at high
-    Reynolds number (engineeringtoolbox drag coefficients; human-body
-    drag, Building and Environment 2024).
+    The drag-area product C_d*A is MEASURED, not assumed.  Richmond &
+    Fletcher blew instrumented dummies down on the open desert surface
+    (Project LN401), and their three reported dynamic-pressure impulses
+    and peak body velocities (Table 3 of EC JRC119310, 2019: 8.78 kPa.ms
+    -> 0.092 m/s, 58.27 -> 0.61, 379.13 -> 4.0) give a constant velocity
+    per unit impulse of 0.01050 m/s per kPa.ms for their 70 kg subject,
+    so C_d*A = 0.0105 * 70 = 0.735 m2.  The three points agree on it to
+    better than 1 per cent.
   - The body cannot outrun the wind: dv is capped at u.
   - CEILING.  The impulse model over-predicts close in, where the model
     ignores body disruption, so dv is capped at the human terminal
@@ -51,9 +56,8 @@ private _qo = 2.5 * _pSo * _pSo / (7 * _p0 + _pSo);
 private _u = sqrt (2 * (_qo * 1000) / _rho0);
 
 // Drag impulse over the positive phase.
-private _cd = 1.2;               // bluff body, high Reynolds number
-private _area = 0.7;             // m2, standing adult frontal area
-private _j = _cd * (_qo * 1000) * _area * (_td / 1000);
+private _cdArea = 0.735;         // m2, measured (Richmond & Fletcher; see header)
+private _j = _cdArea * (_qo * 1000) * (_td / 1000);
 
 private _dv = _j / _massKg;
 

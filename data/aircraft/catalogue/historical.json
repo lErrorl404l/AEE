@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-06",
-  "note": "historical curated set; leads until a held source is found.",
+  "note": "historical curated set; leads until a held source is found. The mi8t_hip entry was removed: it duplicated mi8_hip (same model and variant, and Hip-C is that aircraft's own NATO reporting name) and carried no values, so it only made every Mi-8T query ambiguous.",
   "sources": [],
   "entries": [
     {
@@ -231,9 +231,14 @@
       "role": "utility",
       "class_token": "",
       "country": "US",
-      "era": "historical",
-      "aliases": [],
-      "keywords": [],
+      "era": "modern",
+      "aliases": [
+        "huey",
+        "iroquois"
+      ],
+      "keywords": [
+        "utility"
+      ],
       "runtime_ready": false,
       "values": {
         "engine_oil_pressure_min_kpa": {
@@ -298,24 +303,6 @@
       "role": "attack",
       "class_token": "",
       "country": "US",
-      "era": "historical",
-      "aliases": [],
-      "keywords": [],
-      "runtime_ready": false,
-      "values": {}
-    },
-    {
-      "catalogue_id": "mi8t_hip",
-      "canonical_name": "Mil Mi-8T Hip",
-      "maker": "Mil",
-      "model": "Mi-8",
-      "variant": "T",
-      "variant_id": "mi8t",
-      "vehicle_type": "rotary_wing",
-      "propulsion": "turboshaft",
-      "role": "transport",
-      "class_token": "",
-      "country": "RU",
       "era": "historical",
       "aliases": [],
       "keywords": [],

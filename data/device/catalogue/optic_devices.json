@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-02",
-  "note": "Rifle optic entries. Every value comes from the rifle optic table of the AEE sensor device library, a tier-5 compilation, so every value is grade claimed.",
+  "note": "Rifle optic entries. Every value comes from the rifle optic table of the AEE sensor device library, a tier-5 compilation, so every value is grade claimed. The SpecterDR's US service designation is the SU-230/PVS (wikipedia_elcan_specter), so the 1-4x class answers to it; the SU-230A is the 7.62 mm variant of the same sight.",
   "sources": [],
   "entries": [
     {
@@ -247,7 +247,11 @@
         "1-6",
         "1x4",
         "1x6",
-        "lds"
+        "lds",
+        "su230",
+        "su-230",
+        "su230a",
+        "su-230a"
       ],
       "keywords": [
         "specterdr",

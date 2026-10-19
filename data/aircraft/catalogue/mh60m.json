@@ -1,0 +1,28 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Identity capture for the MH-60M, the US Army special-operations mark of the UH-60M (wikipedia_uh60_variants, Variants). No value is claimed: the source states none for this mark, and the entry exists so the matcher can name the aircraft.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "mh60m",
+      "canonical_name": "Sikorsky MH-60M Black Hawk",
+      "maker": "Sikorsky",
+      "model": "MH-60",
+      "variant": "M",
+      "variant_id": "mh60m",
+      "vehicle_type": "rotary_wing",
+      "propulsion": "turboshaft",
+      "role": "transport",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "mh-60m",
+        "mh60m"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {}
+    }
+  ]
+}

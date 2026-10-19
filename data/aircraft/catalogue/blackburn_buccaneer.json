@@ -1,0 +1,68 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for Blackburn Buccaneer. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "blackburn_buccaneer",
+      "canonical_name": "Blackburn Buccaneer",
+      "maker": "Blackburn",
+      "model": "Blackburn Buccaneer",
+      "variant": "base",
+      "variant_id": "blackburn_buccaneer",
+      "vehicle_type": "fixed_wing",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "contemporary",
+      "aliases": [
+        "buccaneer"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "length_m": {
+          "value": 19.33,
+          "unit": "m",
+          "source": "wikipedia_blackburn_buccaneer",
+          "locator": "Specifications, length: 63 ft 5 in (19.33 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_m": {
+          "value": 4.95,
+          "unit": "m",
+          "source": "wikipedia_blackburn_buccaneer",
+          "locator": "Specifications, height: 16 ft 3 in (4.95 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "wing_span_m": {
+          "value": 13.0,
+          "unit": "m",
+          "source": "wikipedia_blackburn_buccaneer",
+          "locator": "Specifications, wingspan: 44 ft (13 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): wingspan as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 1070,
+          "unit": "km/h",
+          "source": "wikipedia_blackburn_buccaneer",
+          "locator": "Specifications, maximum speed: 580 kn (670 mph, 1,070 km/h) at 200 ft (61 m)",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): maximum speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "2 × Rolls-Royce Spey Mk.101 turbofan engines, 11,000 lbf (49 kN) thrust each",
+          "unit": "text",
+          "source": "wikipedia_blackburn_buccaneer",
+          "locator": "Specifications, powerplant: 2 × Rolls-Royce Spey Mk.101 turbofan engines, 11,000 lbf (49",
+          "state": "UNSOURCED (tier-5 compilation, primary not held): engine as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      },
+      "propulsion": "turbojet",
+      "role": "attack"
+    }
+  ]
+}

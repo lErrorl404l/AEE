@@ -1,0 +1,76 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture for M6 Linebacker. Every value is grade claimed: the source is a tier-5 compilation. Captured to close a gap found by scanning the installed game content.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m6_linebacker",
+      "canonical_name": "M6 Linebacker",
+      "maker": "United Defense",
+      "model": "M6 Linebacker",
+      "variant": "base",
+      "variant_id": "m6_linebacker",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "m6",
+        "m6a2",
+        "linebacker"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 27600,
+          "unit": "kg",
+          "source": "wikipedia_m6_linebacker",
+          "locator": "Infobox, mass: 30.4 short tons (27.6 t)",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6550,
+          "unit": "mm",
+          "source": "wikipedia_m6_linebacker",
+          "locator": "Infobox, length: 21.5 ft (6.55 m)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3600,
+          "unit": "mm",
+          "source": "wikipedia_m6_linebacker",
+          "locator": "Infobox, width: 12 ft (3.6 m)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2980,
+          "unit": "mm",
+          "source": "wikipedia_m6_linebacker",
+          "locator": "Infobox, height: 9.8 ft (2.98 m)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 450.0,
+          "unit": "kW",
+          "source": "wikipedia_m6_linebacker",
+          "locator": "Infobox, engine: Cummins VTA-903T diesel 600 hp (450 kW)",
+          "state": "engine power as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins VTA-903T diesel 600 hp (450 kW)",
+          "unit": "text",
+          "source": "wikipedia_m6_linebacker",
+          "locator": "Infobox, engine: Cummins VTA-903T diesel 600 hp (450 kW)",
+          "state": "engine make and model as published; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

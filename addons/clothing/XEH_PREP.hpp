@@ -14,6 +14,7 @@ PREPS(clothing,getWeaponLoad);
 PREPS(clothing,getMagazineLoad);
 PREPS(clothing,getMagazineMass);
 PREPS(clothing,getWeaponMass);
+PREPS(clothing,weaponMassFallback);
 PREPS(clothing,getNirPerSelection);
 PREPS(clothing,getGloveProperties);
 PREPS(clothing,getUniformProperties);

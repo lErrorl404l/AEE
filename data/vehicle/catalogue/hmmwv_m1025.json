@@ -1,0 +1,61 @@
+{
+  "retrieved": "2026-10-19",
+  "note": "Capture of the M1025 armament carrier from the SAME held operator manual as the M998 (TM 9-2320-280-10). It is a separate entry rather than an alias on the M998 because it is a different model: the manual gives it its own curb weight, 2,706 kg against the M998's 2,361 kg, and its own height.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "hmmwv_m1025",
+      "canonical_name": "M1025 HMMWV",
+      "maker": "AM General",
+      "model": "M1025 HMMWV",
+      "variant": "armament carrier",
+      "variant_id": "hmmwv_m1025",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "contemporary",
+      "aliases": [
+        "m1025",
+        "m1025a1",
+        "m1025a2",
+        "m1026"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 2706,
+          "unit": "kg",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-18, Curb Weight, row M1025: 5,960 lb (2,706 kg)",
+          "state": "curb weight, M1025 armament carrier, as published",
+          "grade": "documented"
+        },
+        "length_mm": {
+          "value": 4570,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-13, Vehicle Dimensions, row M1025/M1025A1, column Length Overall: 180 in (457 cm)",
+          "state": "overall length, M1025, published as 180 in (457 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2160,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-13, Vehicle Dimensions, row All, column Width Overall: 85 in (216 cm)",
+          "state": "overall width, all M998 series, published as 85 in (216 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 1850,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-13, Vehicle Dimensions, row M1025/M1025A1, column Height Overall: 73 in (185 cm)",
+          "state": "overall height, M1025 armament carrier, published as 73 in (185 cm); the cm figure converted to mm",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

@@ -93,45 +93,46 @@ private _tokens = [];
 } forEach (_identity splitString " _-.");
 
 private _tableAll = [
-    ["active_nv", "optic", "1pn51|1pn93|1pn120|nvs", "1pn51|1pn93|1pn120|nvs|nvg|thermal", "1pn51|1pn93|1pn120|nvs|nvg|thermal", "aee_sensor_device_library", [3.5, 50, 5, 2.0, 14, "active"]],
-    ["anvis9", "nvg", "anavs9|anvis|avs9", "anvis|avs9", "anvis|avs9", "elbit_anvis9", ["", 64, 0, 0.5533]],
-    ["catherine", "thermal", "catherinemp|catherine", "catherine", "catherine", "aee_sensor_device_library", [0.025, 1280, 1024, 50, "cooled", 7.9, "lwir"]],
-    ["coti", "thermal", "anpas29coti|coti|pas29", "coti|pas29", "coti|pas29", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.15, "lwir"]],
-    ["ecoti", "thermal", "ecoti", "ecoti", "ecoti", "safran_ecoti_datasheet", [0, 640, 480, 0, "uncooled", 0.125, "lwir"]],
-    ["envg_thermal", "thermal", "envgb|anpsq42", "envg|envgb", "envg|psq42", "aee_sensor_device_library", [0.04, 640, 480, 30, "uncooled", 1.133, "lwir"]],
-    ["envgb", "nvg", "envgb|envg|anpsq42|anpsq44|nvgogglesb", "envg|envgb|psq42|psq44|nvgogglesb", "envg|psq42|psq44|nvgogglesb", "l3harris_envgb", ["white", 72, 32, 0.5533]],
-    ["fixed_10x", "optic", "leupoldmark4|mark4|10x", "mark4|10x", "mark4|10x", "aee_sensor_device_library", [10, 40, 3.5, 0.68, 4, "passive"]],
-    ["flir_recon", "thermal", "flirreconv|recon", "recon", "recon", "aee_sensor_device_library", [0.025, 640, 480, 50, "cooled", 1.9, "mwir"]],
-    ["flir_scout", "thermal", "flirscoutiii640|scout", "scout", "scout", "aee_sensor_device_library", [0.05, 640, 512, 30, "uncooled", 0.34, "lwir"]],
-    ["gpnvg18", "nvg", "gpnvg18|panogoggles|nvwide", "gpnvg|pano|nvwide", "gpnvg|nvwide|panoramic", "l3harris_gpnvg18", ["white", 64, 0, 0.5533]],
-    ["helion", "thermal", "pulsarhelion|helion", "helion", "helion", "aee_sensor_device_library", [0.04, 384, 288, 50, "uncooled", 0.5, "lwir"]],
-    ["holographic", "optic", "eotechexps3|exps|553", "eotech|exps|553", "eotech|exps|553", "aee_sensor_device_library", [1, 0, 0, 0.32, 0, "passive"]],
-    ["jim_lr", "thermal", "jimlr|jim", "jim", "jimlr|safranjim", "aee_sensor_device_library", [0.025, 384, 288, 50, "cooled", 2.8, "mwir"]],
-    ["m145_class", "optic", "m145mgo|c79|mgo", "m145|c79|mgo", "m145|c79|mgo", "aee_sensor_device_library", [3.4, 28, 8.5, 0.68, 8.2, "passive"]],
-    ["mowgli", "thermal", "1pn97|mowgli", "mowgli|1pn97", "mowgli|1pn97", "aee_sensor_device_library", [0.05, 320, 240, 50, "uncooled", 1.5, "lwir"]],
-    ["pas13_base", "thermal", "anpas13|pas13", "", "", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134, "lwir"]],
-    ["pas13_v1", "thermal", "anpas13ev1|pas13v1", "pas13v1", "pas13v1|pas13gv1", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.885, "lwir"]],
-    ["pas13_v2", "thermal", "anpas13ev2|pas13v2", "pas13v2", "pas13v2|pas13gv2", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134, "lwir"]],
-    ["pas13_v3", "thermal", "anpas13ev3|pas13v3", "pas13v3", "pas13v3|pas13gv3", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.497, "lwir"]],
-    ["prism_4x", "optic", "acog|ta31|ta11|m150rco|susat|zf|4x", "acog|ta31|ta11|rco|susat|zf|4x", "acog|ta31|ta11|rco|susat|4x", "aee_sensor_device_library", [4, 32, 7, 0.42, 8, "passive"]],
-    ["pso_class", "optic", "pso1|posp|1p78|kashtan|1p69|hyperon", "pso|posp|1p78|kashtan|1p69|hyperon", "pso|posp|1p78|kashtan|1p69|hyperon", "aee_sensor_device_library", [4, 24, 6, 0.6, 6, "passive"]],
-    ["pvs14", "nvg", "anpvs14|pvs14", "pvs14", "pvs14", "elbit_pvs14", ["", 64, 31, 0.5533]],
-    ["pvs15", "nvg", "anpvs15|pvs15", "pvs15", "pvs15", "l3harris_pvs15", ["", 64, 0, 0.5533]],
-    ["pvs31", "nvg", "anpvs31|pvs31|pvs31a|pvs31c|nvgw", "pvs31|nvgw", "pvs31|nvgw", "l3harris_pvs31c", ["white", 72, 33, 0.5533]],
-    ["pvs5", "nvg", "anpvs5|pvs5", "pvs5", "pvs5", "aee_sensor_device_library", ["", 28, 0, 0.2388]],
-    ["pvs7", "nvg", "anpvs7|pvs7", "pvs7", "pvs7", "anvs_pvs7", ["", 0, 12, 0.2388]],
-    ["red_dot", "optic", "compm4|m68|t2|1p87|reddot|reflex", "compm|t2|m68|1p87|reddot|reflex", "compm|m68|1p87|reddot|reflex", "aee_sensor_device_library", [1, 23, 0, 0.27, 0, "passive"]],
-    ["russian_1pn138", "nvg", "1pn138|1pn97", "1pn138|1pn97", "1pn138|1pn97", "", ["", 0, 0, 0]],
-    ["russian_1pn63", "nvg", "1pn63|1pn58", "1pn63|1pn58", "1pn63|1pn58", "aee_sensor_device_library", ["", 30, 0, 0]],
-    ["russian_1pn93", "nvg", "1pn93", "1pn93", "1pn93", "", ["", 0, 0, 0]],
-    ["shakhin", "thermal", "1pn139|1pn140|shakhin", "shakhin|1pn139|1pn140", "shakhin|1pn139|1pn140", "aee_sensor_device_library", [0.05, 640, 480, 50, "uncooled", 2.2, "lwir"]],
-    ["sophie", "thermal", "thalessophie|sophie", "sophie", "sophie", "aee_sensor_device_library", [0.05, 384, 288, 50, "uncooled", 2.0, "lwir"]],
-    ["sophie_ultima", "thermal", "sophieultima|ultima", "ultima", "ultima", "aee_sensor_device_library", [0.025, 640, 512, 50, "cooled", 2.5, "mwir"]],
-    ["thermion", "thermal", "pulsarthermionxp50|thermion", "thermion", "thermion", "aee_sensor_device_library", [0.025, 640, 480, 50, "uncooled", 0.9, "lwir"]],
-    ["vanilla_gen2", "nvg", "nvgogglesopfor|nvgen2", "", "nvgen2|nvgogglesopfor", "cui_2012_halo", ["", 0, 0, 0.2388]],
-    ["vanilla_gen3", "nvg", "nvgoggles|nvgogglesindep|nvgen3", "", "nvgen3|nvgogglesindep", "cui_2012_halo", ["", 0, 0, 0.5533]],
-    ["variable_1_4x", "optic", "specterdr|14x|16x|lds", "specterdr|14|16|1x4|1x6|lds", "specterdr|14x|16x|lds", "aee_sensor_device_library", [4, 30, 8, 0.6, 7.5, "passive"]],
-    ["variable_sniper", "optic", "atacr|pmii|mark5|525x56", "atacr|pmii|pm2|mark5|525", "atacr|pmii|mark5|525", "aee_sensor_device_library", [10, 56, 3, 1.05, 5.6, "passive"]]
+    ["active_nv", "optic", "1pn51|1pn93|1pn120|nvs", "1pn51|1pn93|1pn120|nvs|nvg|thermal", "activenvgorthermalsight|activenvg|nvgor|orthermal|thermalsight", "aee_sensor_device_library", [3.5, 50, 5, 2.0, 14, "active"]],
+    ["anvis9", "nvg", "anavs9|anvis|avs9", "anvis|avs9", "", "elbit_anvis9", ["", 64, 0, 0.5533]],
+    ["bnvd1531", "nvg", "bnvd1531", "bnvd1531", "l3harrisbnvd1531|l3harris|l3harri", "", ["", 0, 0, 0]],
+    ["catherine", "thermal", "catherinemp|catherine", "catherine", "catherinemplw", "aee_sensor_device_library", [0.025, 1280, 1024, 50, "cooled", 7.9, "lwir"]],
+    ["coti", "thermal", "anpas29coti|coti|pas29", "coti|pas29", "pas29coti", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.15, "lwir"]],
+    ["ecoti", "thermal", "ecoti", "ecoti", "safranoptics1ecoti|safranoptics|optics1|1ecoti", "safran_ecoti_datasheet", [0, 640, 480, 0, "uncooled", 0.125, "lwir"]],
+    ["envg_thermal", "thermal", "envgb|anpsq42", "envg|envgb", "psq42|envgbthermalchannel|envgbthermal|thermalchannel", "aee_sensor_device_library", [0.04, 640, 480, 30, "uncooled", 1.133, "lwir"]],
+    ["envgb", "nvg", "envgb|envg|anpsq42|anpsq44|nvgogglesb", "envg|envgb|psq42|psq44|nvgogglesb", "", "l3harris_envgb", ["white", 72, 32, 0.5533]],
+    ["fixed_10x", "optic", "leupoldmark4|mark4|10x", "mark4|10x", "fixed10xsniperoptic|fixed10x|10xsniper|sniperoptic", "aee_sensor_device_library", [10, 40, 3.5, 0.68, 4, "passive"]],
+    ["flir_recon", "thermal", "flirreconv|recon", "recon", "flirreconv|flirrecon|reconv", "aee_sensor_device_library", [0.025, 640, 480, 50, "cooled", 1.9, "mwir"]],
+    ["flir_scout", "thermal", "flirscoutiii640|scout", "scout", "flirscoutiii640|flirscout|scoutiii|iii640", "aee_sensor_device_library", [0.05, 640, 512, 30, "uncooled", 0.34, "lwir"]],
+    ["gpnvg18", "nvg", "gpnvg18|panogoggles|nvwide", "gpnvg|pano|nvwide", "panoramic|gpnvg18", "l3harris_gpnvg18", ["white", 64, 0, 0.5533]],
+    ["helion", "thermal", "pulsarhelion|helion", "helion", "pulsarhelion", "aee_sensor_device_library", [0.04, 384, 288, 50, "uncooled", 0.5, "lwir"]],
+    ["holographic", "optic", "eotechexps3|exps|553", "eotech|exps|553", "holographicsight", "aee_sensor_device_library", [1, 0, 0, 0.32, 0, "passive"]],
+    ["jim_lr", "thermal", "jimlr|jim", "jim", "jimlr|safranjim|safranjimlr", "aee_sensor_device_library", [0.025, 384, 288, 50, "cooled", 2.8, "mwir"]],
+    ["m145_class", "optic", "m145mgo|c79|mgo", "m145|c79|mgo", "m145mgoandc79|m145mgo|mgoand|andc79", "aee_sensor_device_library", [3.4, 28, 8.5, 0.68, 8.2, "passive"]],
+    ["mowgli", "thermal", "1pn97|mowgli", "mowgli|1pn97", "1pn97mowgli2m|mowgli2m|mowgli2", "aee_sensor_device_library", [0.05, 320, 240, 50, "uncooled", 1.5, "lwir"]],
+    ["pas13_base", "thermal", "anpas13|pas13", "", "pas13", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134, "lwir"]],
+    ["pas13_v1", "thermal", "anpas13ev1|pas13v1", "pas13v1", "pas13gv1|pas13ev1lwts|pas13ev1", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.885, "lwir"]],
+    ["pas13_v2", "thermal", "anpas13ev2|pas13v2", "pas13v2", "pas13gv2|pas13ev2mwts|pas13ev2", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134, "lwir"]],
+    ["pas13_v3", "thermal", "anpas13ev3|pas13v3", "pas13v3", "pas13gv3|pas13ev3hwts|pas13ev3", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.497, "lwir"]],
+    ["prism_4x", "optic", "acog|ta31|ta11|m150rco|susat|zf|4x", "acog|ta31|ta11|rco|susat|zf|4x", "fixed4xprismsight|fixed4x|4xprism|prismsight", "aee_sensor_device_library", [4, 32, 7, 0.42, 8, "passive"]],
+    ["pso_class", "optic", "pso1|posp|1p78|kashtan|1p69|hyperon", "pso|posp|1p78|kashtan|1p69|hyperon", "pso1andpospclass|pso1|pso1and|andposp|pospclass", "aee_sensor_device_library", [4, 24, 6, 0.6, 6, "passive"]],
+    ["pvs14", "nvg", "anpvs14|pvs14", "pvs14", "", "elbit_pvs14", ["", 64, 31, 0.5533]],
+    ["pvs15", "nvg", "anpvs15|pvs15", "pvs15", "", "l3harris_pvs15", ["", 64, 0, 0.5533]],
+    ["pvs31", "nvg", "anpvs31|pvs31|pvs31a|pvs31c|nvgw", "pvs31|nvgw", "", "l3harris_pvs31c", ["white", 72, 33, 0.5533]],
+    ["pvs5", "nvg", "anpvs5|pvs5", "pvs5", "", "aee_sensor_device_library", ["", 28, 0, 0.2388]],
+    ["pvs7", "nvg", "anpvs7|pvs7", "pvs7", "", "anvs_pvs7", ["", 0, 12, 0.2388]],
+    ["red_dot", "optic", "compm4|m68|t2|1p87|reddot|reflex", "compm|t2|m68|1p87|reddot|reflex", "reddotsight|dotsight", "aee_sensor_device_library", [1, 23, 0, 0.27, 0, "passive"]],
+    ["russian_1pn138", "nvg", "1pn138|1pn97", "1pn138|1pn97", "", "", ["", 0, 0, 0]],
+    ["russian_1pn63", "nvg", "1pn63|1pn58", "1pn63|1pn58", "", "aee_sensor_device_library", ["", 30, 0, 0]],
+    ["russian_1pn93", "nvg", "1pn93", "1pn93", "", "", ["", 0, 0, 0]],
+    ["shakhin", "thermal", "1pn139|1pn140|shakhin", "shakhin|1pn139|1pn140", "1pn140shakhin", "aee_sensor_device_library", [0.05, 640, 480, 50, "uncooled", 2.2, "lwir"]],
+    ["sophie", "thermal", "thalessophie|sophie", "sophie", "thalessophie", "aee_sensor_device_library", [0.05, 384, 288, 50, "uncooled", 2.0, "lwir"]],
+    ["sophie_ultima", "thermal", "sophieultima|ultima", "ultima", "sophieultima", "aee_sensor_device_library", [0.025, 640, 512, 50, "cooled", 2.5, "mwir"]],
+    ["thermion", "thermal", "pulsarthermionxp50|thermion", "thermion", "pulsarthermionxp50|xp50|pulsarthermion|thermionxp50", "aee_sensor_device_library", [0.025, 640, 480, 50, "uncooled", 0.9, "lwir"]],
+    ["vanilla_gen2", "nvg", "nvgogglesopfor|nvgen2", "", "nvgen2|nvgogglesopfor|nvgogglesopforgen2|nvgogglesopforgen", "cui_2012_halo", ["", 0, 0, 0.2388]],
+    ["vanilla_gen3", "nvg", "nvgoggles|nvgogglesindep|nvgen3", "", "nvgen3|nvgogglesindep|nvgogglesgen3|nvgogglesgen", "cui_2012_halo", ["", 0, 0, 0.5533]],
+    ["variable_1_4x", "optic", "specterdr|14x|16x|lds", "specterdr|14|16|1x4|1x6|lds|su230|su230a", "14x|16x|variable14xcombatoptic|variable14x|14xcombat|combatoptic", "aee_sensor_device_library", [4, 30, 8, 0.6, 7.5, "passive"]],
+    ["variable_sniper", "optic", "atacr|pmii|mark5|525x56", "atacr|pmii|pm2|mark5|525", "variableprecisionoptic|variableprecision|precisionoptic", "aee_sensor_device_library", [10, 56, 3, 1.05, 5.6, "passive"]]
 ];
 
 // Filter by family so a class two families share cannot tie.
@@ -180,36 +181,73 @@ _candidates = [];
     private _hit = false;
     {
         if ((count _x) >= 4 && {_query find _x >= 0}) then { _hit = true; };
-    } forEach (_keywords splitString "|");
+    } forEach ((_aliases + "|" + _keywords) splitString "|");
     if (_hit) then { _candidates pushBack _row; };
 } forEach _table;
 if ((count _candidates) == 1) exitWith { [_candidates select 0, 3, "keyword"] call _result };
-if ((count _candidates) > 1) exitWith { [] };
+// Several entries hold a designation the query contains. That is NOT a
+// draw: one may name the exact mark while the others only share the family
+// stem, so the scored layer below weighs them. It still answers nothing on
+// a real draw.
 
 // Layer 4: closest. The longest alias or keyword substring of the query,
 // at least four characters, with a strictly lower runner-up score.
 private _bestRow = [];
 private _bestScore = 0;
 private _runnerUp = 0;
+private _bestCount = 0;
+private _bestName = 0;
 private _tie = false;
 {
     _x params ["_device", "_devFamily", "_classes", "_aliases", "_keywords", "_source", "_values"];
     private _row = _x;
+    // The same scoring the vehicle and aircraft matchers use, so one rule
+    // reads every domain: sum EVERY designation of this entry that the
+    // query holds, and weight one carrying a type number double. A
+    // descriptive word ("recon") then cannot outvote the designation that
+    // names the device ("gpnvg18").
     private _score = 0;
+    private _count = 0;
+    private _longest = 0;
     {
-        if ((count _x) >= 4 && {count _x > _score} && {_query find _x >= 0}) then {
-            _score = count _x;
+        _count = _count + 1;
+        if ((count _x) >= 4 && {_query find _x >= 0}) then {
+            private _hasDigit = false;
+            {
+                if (_x >= 48 && _x <= 57) exitWith { _hasDigit = true; };
+            } forEach (toArray _x);
+            _score = _score + (count _x) * ([1, 2] select _hasDigit);
         };
+        if ((count _x) > _longest) then { _longest = count _x; };
     } forEach ((_aliases + "|" + _keywords) splitString "|");
     if (_score >= 4) then {
         if (_score > _bestScore) then {
             _runnerUp = _bestScore;
             _bestScore = _score;
             _bestRow = _row;
+            _bestCount = _count;
+            _bestName = _longest;
             _tie = false;
         } else {
-            if (_score == _bestScore) then { _tie = true; };
-            if (_score > _runnerUp) then { _runnerUp = _score; };
+            if (_score == _bestScore) then {
+                // Equal evidence: fewer designations, then the shorter own
+                // name, marks the less qualified entry - the base device.
+                if (_count < _bestCount) then {
+                    _bestRow = _row; _bestCount = _count;
+                    _bestName = _longest; _tie = false;
+                } else {
+                    if (_count == _bestCount) then {
+                        if (_longest < _bestName) then {
+                            _bestRow = _row; _bestName = _longest; _tie = false;
+                        } else {
+                            if (_longest == _bestName) then { _tie = true; };
+                        };
+                    };
+                };
+            };
+            if (_score < _bestScore && {_score > _runnerUp}) then {
+                _runnerUp = _score;
+            };
         };
     };
 } forEach _table;
