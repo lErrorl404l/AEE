@@ -1,0 +1,17 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The held tier-5 source 'wikipedia_12_7x108mm' publishes QJK-99 in its body text. It states no figure this corpus can hold. The entry names the item and holds a labelled zero for every field. The article lists the designation among its 12.7 mm heavy machine guns.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "qjk99_gun",
+   "canonical_name": "QJK-99",
+   "munition_type": "cannon",
+   "aliases": [
+    "QJK-99"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

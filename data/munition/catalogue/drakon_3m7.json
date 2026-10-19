@@ -1,0 +1,18 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The article states no figure this corpus can hold for 3M7 Drakon. The entry names the item and holds a labelled zero for every field. The held article is the evidence of the identity. The article documents the IT-1 missile tank. It publishes two designations: the 2K4 launcher and the 3M7 Drakon missile that the launcher fired. The infobox figures describe the carrier, not the missile.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "drakon_3m7",
+   "canonical_name": "3M7 Drakon",
+   "munition_type": "missile",
+   "aliases": [
+    "2K4",
+    "Drakon"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The article states no figure this corpus can hold for 500 lb General-Purpose Bomb. The entry names the item and holds a labelled zero for every field. The held article is the evidence of the identity. The article's British section publishes this body as the 500 lb (230 kg) General-Purpose Bomb. It entered service in 1926, and the 500 lb MC replaced it in 1942. '500 lb GP' is the article's own abbreviation of that designation.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "uk_500lb_gp",
+   "canonical_name": "500 lb General-Purpose Bomb",
+   "munition_type": "bomb",
+   "aliases": [
+    "500 lb GP"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

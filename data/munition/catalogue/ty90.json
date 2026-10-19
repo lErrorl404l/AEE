@@ -1,6 +1,6 @@
 {
  "retrieved": "2026-10-19",
- "note": "Capture for TY-90 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent.",
+ "note": "Capture for TY-90 from its encyclopaedia article. Every value is grade claimed: a tier-5 compilation backs nothing better. Fields the article does not state are absent. The article also publishes the land-based air-defence designation DY-90 for the same missile, so this entry answers to both.",
  "sources": [],
  "entries": [
   {
@@ -8,7 +8,8 @@
    "canonical_name": "TY-90",
    "munition_type": "missile",
    "aliases": [
-    "TY-90"
+    "TY-90",
+    "DY-90"
    ],
    "keywords": [],
    "values": {

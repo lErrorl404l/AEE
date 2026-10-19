@@ -1,0 +1,18 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The held tier-5 source 'wikipedia_prp_3' publishes 9M41 in its body text. It states no figure this corpus can hold. The entry names the item and holds a labelled zero for every field. The article publishes the 2P130-1 launcher and the 90 mm unguided illumination rocket 9M41 that it fires. It writes them in Cyrillic, as 2\u041f130-1 and 9\u041c41. The corpus keys the Latin rendering that the game uses.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "rocket_9m41",
+   "canonical_name": "9M41",
+   "munition_type": "rocket",
+   "aliases": [
+    "2P130-1",
+    "9M41"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

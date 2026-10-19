@@ -100,6 +100,13 @@ def designations(
         # other. A designation must carry at least one letter.
         if not key or key.isdigit():
             return
+        # A bare WEIGHT is not an identity either, and for the same reason:
+        # "500 lb" names every 500 lb-class store, so as a key the 500 lb
+        # General-Purpose bomb would answer for the GCS-1 500 lb or a
+        # Paveway II 500 lb. The nominal weight stays in the canonical name
+        # and the locator, never in a key.
+        if re.fullmatch(r"\d+(?:lb|kg|t)", key):
+            return
         if len(key) >= floor and key not in blocked and key not in out:
             out.append(key)
 

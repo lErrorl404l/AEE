@@ -1,0 +1,17 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The held tier-4 source 'fnherstal_machine_gun_pods' publishes FN D HMP400 in its body text. It states no figure this corpus can hold. The entry names the item and holds a labelled zero for every field. The maker publishes the pod designation with its 400-round capacity and the FN M3P machine gun that it carries. It states no pod mass or length.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "fn_hmp400",
+   "canonical_name": "FN D HMP400",
+   "munition_type": "cannon",
+   "aliases": [
+    "HMP400"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}

@@ -20,11 +20,16 @@ its own entry with --id and --mark.
 
 The article is a TIER-5 COMPILATION, so every value it yields is graded
 ``claimed``. A field the article does not state is simply absent; nothing
-is invented to fill it.
+is invented to fill it. With --identity-only the entry is written even
+when the article states no figure the corpus holds, because a row that
+NAMES the item with a labelled zero is worth more than no row at all.
 
 Run:
     python3 tools/ingest_wikipedia_munition.py --article AGM-114_Hellfire \\
         --id agm114_hellfire --type missile
+    python3 tools/ingest_wikipedia_munition.py --article M57_mortar \\
+        --id m70_60mm_mortar --type mortar --name "M70 60 mm mortar" \\
+        --alias M70 --identity-only
     python3 tools/ingest_wikipedia_munition.py --list FILE
 """
 
@@ -126,10 +131,10 @@ def mass_kg(text: str):
 
 def length_mm(text: str):
     for pattern, scale, unit in (
-        (_NUM + r"mm", 1.0, "mm"),
-        (_NUM + r"cm", 10.0, "cm"),
-        (_NUM + r"m\b", 1000.0, "m"),
-        (_NUM + r"in\b", IN_TO_MM, "in"),
+        (_NUM + r"(?:mm|millimetres?|millimeters?)", 1.0, "mm"),
+        (_NUM + r"(?:cm|centimetres?|centimeters?)", 10.0, "cm"),
+        (_NUM + r"(?:m|metres?|meters?)\b", 1000.0, "m"),
+        (_NUM + r"(?:in|inch(?:es)?)\b", IN_TO_MM, "in"),
     ):
         m = re.search(pattern, text, re.I)
         if m:
@@ -223,12 +228,14 @@ def build_values(box: dict, source: str) -> dict:
     return out
 
 
-def capture(article, cid, mtype, aliases, name=None, force=False) -> int:
+def capture(
+    article, cid, mtype, aliases, name=None, force=False, identity_only=False
+) -> int:
     raw = fetch(article)
     digest = hashlib.sha256(raw).hexdigest()
     title = article_title(raw)
     box = infobox(raw)
-    if not box:
+    if not box and not identity_only:
         print(f"{cid}: the article states no infobox, nothing captured")
         return 1
 
@@ -260,8 +267,8 @@ def capture(article, cid, mtype, aliases, name=None, force=False) -> int:
         )
         SOURCES.write_text(json.dumps(registry, indent=1) + "\n", encoding="utf-8")
 
-    values = build_values(box, source_id)
-    if not values:
+    values = {} if identity_only else build_values(box, source_id)
+    if not values and not identity_only:
         print(f"{cid}: the infobox states no figure this corpus holds")
         return 1
 
@@ -275,6 +282,13 @@ def capture(article, cid, mtype, aliases, name=None, force=False) -> int:
         f"value is grade claimed: a tier-5 compilation backs nothing better. "
         f"Fields the article does not state are absent."
     )
+    if identity_only:
+        note = (
+            f"IDENTITY ONLY. The article states no figure this corpus can hold "
+            f"for {name or title}. The entry names the item and holds a labelled "
+            f"zero for every field. The held article is the evidence of the "
+            f"identity."
+        )
     if redirect:
         note += f" The title '{redirect}' redirects to this article."
     out.write_text(
@@ -312,6 +326,14 @@ def main() -> int:
     ap.add_argument("--alias", action="append", default=[])
     ap.add_argument("--force", action="store_true")
     ap.add_argument(
+        "--identity-only",
+        action="store_true",
+        help="hold the article as the source of the IDENTITY when it states "
+        "no figure: the entry names the munition and carries a labelled zero "
+        "for every field. For an article that documents the item in its body "
+        "text, or a body the article does not publish figures for.",
+    )
+    ap.add_argument(
         "--list",
         help="a TSV of id<TAB>article<TAB>type<TAB>alias,alias,... to capture in one run",
     )
@@ -329,7 +351,9 @@ def main() -> int:
             aliases = parts[3].split(",") if len(parts) > 3 else []
             name = parts[4] if len(parts) > 4 and parts[4] else None
             try:
-                bad += capture(article, cid, mtype, aliases, name, args.force)
+                bad += capture(
+                    article, cid, mtype, aliases, name, args.force, args.identity_only
+                )
             except Exception as exc:  # a dead title must not stop the run
                 print(f"{cid}: FAILED {exc}")
                 bad += 1
@@ -337,7 +361,15 @@ def main() -> int:
 
     if not (args.article and args.id):
         ap.error("--article and --id are required without --list")
-    return capture(args.article, args.id, args.type, args.alias, args.name, args.force)
+    return capture(
+        args.article,
+        args.id,
+        args.type,
+        args.alias,
+        args.name,
+        args.force,
+        args.identity_only,
+    )
 
 
 if __name__ == "__main__":

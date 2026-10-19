@@ -1,0 +1,17 @@
+{
+ "retrieved": "2026-10-19",
+ "note": "IDENTITY ONLY. The article states no figure this corpus can hold for M70 60 mm mortar. The entry names the item and holds a labelled zero for every field. The held article is the evidence of the identity. The article documents the Yugoslav 60 mm M57 mortar family. Its table of Serbian mortars publishes the M70 commando mortar that this entry names. The article states no figure for the M70.",
+ "sources": [],
+ "entries": [
+  {
+   "catalogue_id": "m70_60mm_mortar",
+   "canonical_name": "M70 60 mm mortar",
+   "munition_type": "mortar",
+   "aliases": [
+    "M70"
+   ],
+   "keywords": [],
+   "values": {}
+  }
+ ]
+}
